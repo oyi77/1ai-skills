@@ -1,0 +1,1 @@
+Panduan Penggunaan:\n1. Pilih instruksi yang sesuai dengan kebutuhan Anda.\n2. Upload pose_model.jpg dan product_blouse.jpg ke Gemini Link.\n3. Ikuti instruksi yang ada di dalam file instruksi.
