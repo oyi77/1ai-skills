@@ -103,3 +103,34 @@ You: [Fix progress indicators]
 - Request clarification
 
 See template at: requesting-code-review/code-reviewer.md
+
+## Overview
+
+Request code review to catch issues before they cascade. Dispatch superpowers:code-reviewer subagent.
+
+## When to Use
+
+- Completing tasks
+- Implementing major features
+- Before merging
+- After subagent-driven development tasks
+
+## When NOT to Use
+
+- When you're receiving review (use receiving-code-review)
+- For trivial changes
+- When you need fast turnaround on emergency fixes
+
+## Quick Reference
+
+- Review early, review often
+- Don't skip because "it's simple"
+- Address Critical issues first
+- Push back with technical reasoning if reviewer wrong
+
+## Common Mistakes
+
+- Skipping review for simple changes
+- Ignoring Critical issues
+- Proceeding with unfixed Important issues
+- Not using the code-reviewer template

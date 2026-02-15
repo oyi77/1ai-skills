@@ -1,22 +1,38 @@
 ---
-slug: joko-orchestrator
-name: Joko Orchestrator
-version: 2.0.0
-description: >
-  Deterministically coordinates autonomous planning and execution across available skills under
-  strict guardrails. Use only when the user explicitly activates this skill by name to run
-  autonomously until a stop command is issued. Trigger keywords include: "use autonomous-skill-orchestrator",
-  "activate autonomous-skill-orchestrator", "start autonomous orchestration".
-metadata:
-  owner: "oyi77"
-  inspired_by: "oh-my-opencode (Sisyphus, Atlas, Prometheus)"
+name: joko-orchestrator
+description: Use when deterministically coordinating autonomous planning and execution across available skills under strict guardrails.
 ---
 
 # Autonomous Skill Orchestrator v2.0
 
-> Inspired by oh-my-opencode's three-layer architecture, adapted for OpenClaw's ecosystem.
+## Overview
 
-## Core Philosophy
+Deterministically coordinate autonomous planning and execution across available skills under strict guardrails. Inspired by oh-my-opencode's three-layer architecture.
+
+## When to Use
+
+- When coordinating multiple skills for complex tasks
+- When planning and executing multi-step workflows
+- When you need strict guardrails for autonomous execution
+- When managing context across long-running tasks
+
+## When NOT to Use
+
+- For simple, single-step tasks
+- When strict coordination isn't needed
+
+## Quick Reference
+
+**Three-Layer Architecture:**
+1. Planning Layer - Interview + Plan Generation
+2. Execution Layer - Task Dispatch + Verification
+3. Review Layer - Quality gates + Feedback
+
+## Common Mistakes
+
+- Skipping planning phase
+- Not using guardrails
+- Not coordinating skills properly
 
 Traditional AI follows: user asks → AI responds. This fails for complex work because:
 1. **Context overload**: Large tasks exceed context windows

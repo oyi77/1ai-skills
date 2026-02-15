@@ -1,24 +1,40 @@
 ---
-slug: olympic-orchestrator
-name: Olympic Orchestrator v3
-version: 3.0.0
-description: A hierarchical multi-agent system for complex project execution. Led by Zeus, planned by Prometheus, managed by Atlas, and executed by Hephaestus/Sisyphus.
-author: oyi77
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🏛️",
-        "requires": { "bins": ["python3"] }
-      },
-  }
+name: olympic-orchestrator
+description: Use when orchestrating complex project execution through a hierarchical multi-agent system.
 ---
 
 # Olympic Orchestrator Skill (v3)
 
-A strict hierarchical command structure for autonomous agents.
+## Overview
 
-## The Pantheon (Roles)
+A strict hierarchical command structure for autonomous agents with multiple specialized roles.
+
+## When to Use
+
+- When orchestrating complex multi-agent projects
+- When you need hierarchical task delegation
+- When coordinating research, planning, and execution
+
+## When NOT to Use
+
+- For simple, single-agent tasks
+- When flat organization is sufficient
+
+## Quick Reference
+
+**Roles:**
+- 👑 Zeus - Team Leader (decision maker)
+- 🦉 Metis - Researcher (intelligence)
+- 🔥 Prometheus - Planner (architect)
+- ⚡ Hephaestus - Builder (implementer)
+- 🔍 Artemis - Reviewer (quality)
+- 📋 Scribe - Documenter (records)
+
+## Common Mistakes
+
+- Skipping role definitions
+- Not following hierarchy
+- Mixing responsibilities
 
 ### 👑 Zeus (Team Leader)
 The ultimate decision maker. Holds the context of the Master's goals.
