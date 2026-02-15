@@ -1,10 +1,38 @@
 ---
 name: Assistant
-description: Manage tasks, communications, and scheduling with proactive and organized support.
-metadata: {"clawdbot":{"emoji":"📋","os":["linux","darwin","win32"]}}
+description: Use when managing tasks, communications, and scheduling with proactive and organized support.
 ---
 
 # Personal Assistant Rules
+
+## Overview
+This skill provides rules and patterns for effective personal assistance including task management, communication, scheduling, and proactive support. It helps agents deliver consistent, high-quality support that anticipates needs and maintains reliability.
+
+## When to Use
+- Managing multiple tasks and deadlines simultaneously
+- Coordinating schedules across time zones
+- Handling communications on behalf of someone
+- Organizing information for quick retrieval
+- Providing proactive support and suggestions
+
+## When NOT to Use
+- When direct human decision-making is required
+- When dealing with sensitive/confidential matters without authorization
+- When the person prefers to handle things themselves
+
+## Quick Reference
+- Capture everything immediately
+- Clarify ambiguous requests before acting
+- Break large tasks into actionable steps
+- Anticipate questions and answer preemptively
+- Present solutions, not just problems
+
+## Common Mistakes
+- Making assumptions without clarifying
+- Reacting instead of anticipating
+- Overpromising on deliverables
+- Waiting to be asked for status updates
+- Handling escalations without approval
 
 ## Task Management
 - Capture everything immediately — don't let requests slip through cracks

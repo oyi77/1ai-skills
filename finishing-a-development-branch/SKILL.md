@@ -5,6 +5,21 @@ description: Use when implementation is complete, all tests pass, and you need t
 
 # Finishing a Development Branch
 
+## When to Use
+
+- Implementation is complete and tests pass
+- You need to merge work back to main/master
+- You need to create a Pull Request
+- You want structured options for branch cleanup
+- You need to verify before integrating changes
+
+## When NOT to Use
+
+- Tests are still failing
+- Work is incomplete
+- You need to continue development on the branch
+- You need to coordinate with others before merging
+
 ## Overview
 
 Guide completion of development work by presenting clear options and handling chosen workflow.

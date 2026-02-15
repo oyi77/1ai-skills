@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: Use when doing any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.
 ---
 
 # Brainstorming Ideas Into Designs
@@ -94,3 +94,34 @@ digraph brainstorming {
 - **Explore alternatives** - Always propose 2-3 approaches before settling
 - **Incremental validation** - Present design, get approval before moving on
 - **Be flexible** - Go back and clarify when something doesn't make sense
+
+## When to Use
+
+- Creating new features or components
+- Building anything new
+- Adding functionality
+- Modifying behavior
+- When user says "build X" or "implement Y"
+
+## When NOT to Use
+
+- When design is already approved
+- When implementing an already-approved plan
+- Quick bug fixes (use systematic-debugging instead)
+- Read-only operations
+
+## Quick Reference
+
+- Ask questions one at a time
+- Get user approval before implementation
+- Write design to docs/plans/
+- Use writing-plans skill next
+- Explore alternatives before settling
+
+## Common Mistakes
+
+- Skipping design for "simple" projects
+- Implementing before approval
+- Asking too many questions at once
+- Not exploring alternatives
+- Not writing down the design
