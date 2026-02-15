@@ -1,8 +1,44 @@
+---
+name: gemini-image-generator
+description: Use when generating professional posed product images for e-commerce using Gemini AI with optimized prompts
+---
+
 # Gemini Image Generator Skill
 
 ## Overview
 
 Generate professional posed product images using Gemini AI with optimized prompts for e-commerce and content creation.
+
+## When to Use
+
+- When you need to create product images with model poses for e-commerce
+- When preparing TikTok/social media content featuring products
+- When you have product images and need them "modeled" without hiring photographers
+- When batch-generating multiple product variations
+
+## When NOT to Use
+
+- When you need photorealistic human faces (AI limitations)
+- When legal compliance requires real photography
+- When the product requires accurate color representation (AI may shift colors)
+- When generating trademarked brand items
+
+## Quick Reference
+
+```bash
+# Generate prompt
+python prompt_optimizer.py --category fashion --product "white dress"
+
+# Full workflow
+python workflow_runner.py --pose pose.jpg --product dress.jpg --category fashion
+```
+
+## Common Mistakes
+
+- Using low-resolution input images (results will be blurry)
+- Not specifying lighting setup in prompts (inconsistent results)
+- Skipping the ChatGPT video step (misses viral content optimization)
+- Ignoring TikTok AI disclosure requirements
 
 ## Workflow
 

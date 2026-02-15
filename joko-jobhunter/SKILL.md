@@ -1,8 +1,57 @@
+---
+name: joko-jobhunter
+description: Use when conducting aggressive, strategic job search beyond Easy Apply - treating it as a sales process with research, customization, and multi-channel outreach
+---
+
 # JobHunter Master
 
 **The aggressive job hunting skill that goes beyond "Easy Apply".**
 
 Most job seekers spray and pray. This skill hunts.
+
+## Overview
+
+The aggressive job hunting skill that goes beyond "Easy Apply". Treats job search as a sales process with research, customization, and multi-channel outreach.
+
+## When to Use
+
+- When applying to competitive roles where Easy Apply won't stand out
+- When you want to significantly increase interview callback rates
+- When targeting specific companies (not just applying to any open position)
+- When you need a systematic approach to job hunting
+- When you want to build relationships with hiring teams
+
+## When NOT to Use
+
+- When you're in a rush and just need to mass-apply (use standard Easy Apply)
+- When the company has strict application processes that don't allow outreach
+- When you're not willing to put in the research effort (this is high-effort)
+- When applying to companies that explicitly prohibit contact with employees
+
+## Quick Reference
+
+**The Funnel:**
+1. Research — Know the company better than their employees
+2. Qualify — Match your experience to their pain points
+3. Customize — Tailor CV & cover letter for THIS job
+4. Find the humans — HR, hiring manager, team lead, insider
+5. Engage — Comment, connect, message, email
+6. Follow up — Persistence without being annoying
+
+**Follow-Up Cadence:**
+- Day 0: Apply + Connect on LinkedIn
+- Day 3: Follow-up email if no response
+- Day 7: LinkedIn message or comment
+- Day 14: Final follow-up with new angle
+
+## Common Mistakes
+
+- Applying without researching the company (shows in your message)
+- Sending generic cover letters (they can tell)
+- Not personalizing connection requests (ignored)
+- Following up too aggressively (desperate vibe)
+- Spamming multiple people at the same company (looks bad)
+- Giving up after one follow-up (persistence pays off)
 
 ## Philosophy
 

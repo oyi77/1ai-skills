@@ -1,6 +1,6 @@
 ---
 name: google-flow
-description: Navigate and operate Google Flow (labs.google/fx/tools/flow) - an AI video generation tool. Use when the user wants to create AI-generated videos with text-to-video prompts. Covers project management, scenebuilder interface, prompt entry, preset selection, model configuration, and video generation workflow.
+description: Use when navigating and operating Google Flow (labs.google/fx/tools/flow) - an AI video generation tool. Helps with project management, scenebuilder interface, prompt entry, preset selection, model configuration, and video generation workflow.
 ---
 
 # Google Flow Skill
@@ -8,6 +8,37 @@ description: Navigate and operate Google Flow (labs.google/fx/tools/flow) - an A
 ## Overview
 
 Google Flow is an AI video generation tool that creates videos from text prompts using Google's Veo model. This skill guides automation of the Flow interface.
+
+## When to Use
+
+- When generating AI videos from text prompts
+- When automating Google Flow project management
+- When configuring video generation settings
+- When building video scenes programmatically
+
+## When NOT to Use
+
+- When you need image generation (use gemini-image-generator)
+- When you don't have Google Flow access
+- When credits are low/empty
+
+## Quick Reference
+
+**Access:** https://labs.google/fx/tools/flow
+
+**Workflow:**
+1. Access Flow
+2. Create/select project
+3. Enter prompt
+4. Configure settings
+5. Generate video
+
+## Common Mistakes
+
+- Not checking credit balance before generating
+- Using wrong aspect ratio for intended use
+- Not saving intermediate results
+- Skipping prompt refinement iterations
 
 ## Prerequisites
 
