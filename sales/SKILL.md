@@ -1,8 +1,6 @@
 ---
 name: sales
-version: 1.0.0
-description: "CRM integration, lead tracking, outreach automation, and pipeline management. Transform your AI agent into a sales assistant that never lets leads slip through the cracks."
-author: openclaw
+description: Use when doing CRM integration, lead tracking, outreach automation, and pipeline management.
 ---
 
 # Sales Skill 💼
@@ -25,40 +23,24 @@ Track leads, manage pipelines, automate outreach, and never lose a deal to poor 
 ---
 
 ## Quick Start
-
-1. Set up your sales workspace:
-```bash
-./scripts/sales-init.sh
-```
-
-2. Configure your preferences in `TOOLS.md`:
-```markdown
-### Sales
-- CRM: [HubSpot/Salesforce/Notion/Built-in]
-- Default pipeline stages: [Stages]
-- Follow-up cadence: [Days between touchpoints]
-- Meeting booking link: [URL]
-```
-
-3. Start tracking leads!
+1. Set up: `./scripts/sales-init.sh`
+2. Configure in `TOOLS.md`
+3. Start tracking!
 
 ---
 
 ## Lead Management
 
-### Lead Qualification Framework (BANT)
+### Lead Qualification (BANT)
+- **Budget** — Can they afford it?
+- **Authority** — Are they the decision-maker?
+- **Need** — Do they have a real problem you solve?
+- **Timeline** — When do they need a solution?
 
-| Criteria | Question | Weight |
-|----------|----------|--------|
-| **Budget** | Can they afford it? | 25% |
-| **Authority** | Are they the decision-maker? | 25% |
-| **Need** | Do they have a real problem you solve? | 30% |
-| **Timeline** | When do they need a solution? | 20% |
-
-**Lead Score Thresholds:**
-- 80-100: Hot 🔥 — Contact immediately
+### Lead Score
+- 80-100: Hot — Contact immediately
 - 60-79: Warm — Nurture actively
-- 40-59: Cool — Keep in nurture sequence
+- 40-59: Cool — Keep in sequence
 - 0-39: Cold — Low priority
 
 ### Lead Capture Template
@@ -96,149 +78,40 @@ Track leads, manage pipelines, automate outreach, and never lose a deal to poor 
 
 ---
 
-## Pipeline Management
+## Pipeline Stages
+- **Lead** — Initial contact
+- **Qualified** — BANT criteria met
+- **Discovery** — Understanding needs
+- **Demo/Proposal** — Presenting solution
+- **Negotiation** — Terms discussion
+- **Closed Won** — Deal signed
+- **Closed Lost** — Deal lost
 
-### Standard Pipeline Stages
-
-| Stage | Definition | Typical Actions |
-|-------|------------|-----------------|
-| **Lead** | Initial contact, not yet qualified | Qualify, research, initial outreach |
-| **Qualified** | BANT criteria met | Discovery call, needs analysis |
-| **Discovery** | Understanding needs | Demo prep, stakeholder mapping |
-| **Demo/Proposal** | Presenting solution | Demo, proposal creation |
-| **Negotiation** | Terms discussion | Handle objections, negotiate |
-| **Closed Won** | Deal signed | Onboarding handoff |
-| **Closed Lost** | Deal lost | Loss analysis, nurture |
-
-### Pipeline Tracking Template
-
-```markdown
-# Sales Pipeline — [Month]
-
-## Summary
-- Total pipeline value: $[X]
-- Weighted pipeline: $[X]
-- Deals in pipeline: [X]
-- Expected closes this month: [X]
-
-## By Stage
-
-### Lead ([X] deals, $[X])
-| Company | Value | Owner | Last Activity | Next Step |
-|---------|-------|-------|---------------|-----------|
-| [Name] | $[X] | [You] | [Date] | [Action] |
-
-### Qualified ([X] deals, $[X])
-...
-
-### Demo/Proposal ([X] deals, $[X])
-...
-
-### Negotiation ([X] deals, $[X])
-...
-
-## Stale Deals (>14 days no activity)
-| Company | Stage | Last Activity | Recommended Action |
-|---------|-------|---------------|-------------------|
-```
-
-### Pipeline Velocity Metrics
-
-| Metric | How to Calculate | Target |
-|--------|------------------|--------|
-| **Win Rate** | Won ÷ (Won + Lost) | >25% |
-| **Average Deal Size** | Total Won ÷ # Won | Track trend |
-| **Sales Cycle** | Avg days from Lead → Won | <30 days |
-| **Pipeline Coverage** | Pipeline ÷ Quota | 3x+ |
+### Pipeline Metrics
+- **Win Rate:** >25%
+- **Sales Cycle:** <30 days
+- **Pipeline Coverage:** 3x+ quota
 
 ---
 
-## Outreach Automation
-
-### Cold Outreach Sequence
-
-**Day 1: Initial Email**
-```
-Subject: [Personalized hook based on research]
-
-Hi [Name],
-
-[Observation about their company/role — show you did research].
-
-[One sentence about what you do and why it's relevant to them].
-
-[Specific question or soft CTA].
-
-Best,
-[Your name]
-```
-
-**Day 3: Follow-up 1**
-```
-Subject: Re: [Original subject]
-
-Hi [Name],
-
-Wanted to make sure this didn't get buried — [brief restate of value].
-
-[New angle or additional value point].
-
-Worth a quick chat?
-
-[Your name]
-```
-
-**Day 7: Follow-up 2 (Value Add)**
-```
-Subject: [Related resource or insight]
-
-Hi [Name],
-
-Found this [article/resource/insight] and thought of you: [link]
-
-[Brief explanation of why it's relevant].
-
-If this resonates, happy to share how we helped [similar company] with [similar challenge].
-
-[Your name]
-```
-
-**Day 14: Break-up Email**
-```
-Subject: Should I close your file?
-
-Hi [Name],
-
-I haven't heard back, so I'm assuming the timing isn't right.
-
-No worries — I'll close out my notes for now.
-
-If things change, feel free to reply anytime.
-
-[Your name]
-```
-
-### Personalization Research Checklist
-
-Before outreach, gather:
-- [ ] Recent company news (funding, launch, hire)
-- [ ] LinkedIn activity (posts, comments, likes)
-- [ ] Company blog/newsletter
-- [ ] Mutual connections
-- [ ] Tech stack (if relevant)
-- [ ] Competitors they might use
+## Outreach Sequence
+Day 1: Initial email
+Day 3: Follow-up
+Day 7: Value add
+Day 14: Break-up email
 
 ---
 
 ## Follow-up System
 
-### Never Miss a Follow-up
+**Rule:** Every deal has a next action with due date.
 
-**The Rule:** Every deal has a next action with a due date. No exceptions.
-
-**Follow-up Cadence by Stage:**
-| Stage | Check-in Frequency |
-|-------|--------------------|
+**Check-in Frequency:**
+- Lead: Every 7 days
+- Qualified: Every 5 days
+- Discovery: Every 3 days
+- Demo/Proposal: Every 2 days
+- Negotiation: Daily
 | Lead | Every 3-5 days |
 | Qualified | Every 2-3 days |
 | Demo/Proposal | Every 1-2 days |
@@ -519,3 +392,30 @@ sales/
 ---
 
 *"Sales is not about selling anymore, but about building trust and educating." — Siva Devaki*
+
+## Overview
+
+Turn your AI agent into an elite sales operations partner. Track leads, manage pipelines, automate outreach, and never lose a deal to poor follow-up again.
+
+## When to Use
+
+- CRM integration and lead tracking
+- Outreach automation
+- Pipeline management
+- Follow-up automation
+- Sales operations tasks
+
+## When NOT to Use
+
+- Business development (use business-development skill)
+- Marketing tasks (use marketing skill)
+- Technical implementation
+- Product development
+
+## Quick Reference
+
+- Track leads through pipeline stages
+- Use CRM for all customer data
+- Automate follow-ups
+- Personalize outreach
+- Track metrics: meetings held, not calls made

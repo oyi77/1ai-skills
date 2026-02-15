@@ -7,7 +7,7 @@ description: Use when facing 2+ independent tasks that can be worked on without 
 
 ## Overview
 
-When you have multiple unrelated failures (different test files, different subsystems, different bugs), investigating them sequentially wastes time. Each investigation is independent and can happen in parallel.
+When you have multiple unrelated failures (different test files, different subsystems, different bugs), investigating them wastes time. Each investigation is independent and can happen in parallel.
 
 **Core principle:** Dispatch one agent per independent problem domain. Let them work concurrently.
 
@@ -178,3 +178,11 @@ From debugging session (2025-10-03):
 - All investigations completed concurrently
 - All fixes integrated successfully
 - Zero conflicts between agent changes
+
+## Quick Reference
+
+- Use when: 3+ independent failures, different subsystems, no shared state
+- Don't use when: Failures related, need full context, exploratory
+- Dispatch one agent per problem domain
+- Each agent needs: specific scope, clear goal, constraints, expected output
+- After return: Review summaries, check conflicts, run full suite

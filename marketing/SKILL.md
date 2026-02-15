@@ -1,8 +1,6 @@
 ---
 name: marketing
-version: 1.0.0
-description: "Social media automation, content scheduling, analytics tracking, and campaign management. Transform your AI agent into a marketing powerhouse that handles multi-platform content strategy."
-author: openclaw
+description: Use when doing social media automation, content scheduling, analytics tracking, and campaign management.
 ---
 
 # Marketing Skill 📢
@@ -50,40 +48,28 @@ Handle social media, content scheduling, analytics, and campaign management acro
 
 | Stage | Purpose | Example Hook |
 |-------|---------|--------------|
-| **Attention** | Stop the scroll | "Most marketers waste 80% of their budget on this..." |
-| **Interest** | Build curiosity | "Here's what the top 1% do differently..." |
-| **Desire** | Create want | "Imagine doubling your engagement in 30 days..." |
-| **Action** | Drive behavior | "Try this today: [actionable tip]" |
+| **Attention** | Stop the scroll | "Most marketers waste 80%..." |
+| **Interest** | Build curiosity | "Here's what top 1% do..." |
+| **Desire** | Create want | "Imagine doubling engagement..." |
+| **Action** | Drive behavior | "Try this today: [tip]"
 
 ### Platform-Specific Best Practices
 
 **Twitter/X:**
 - Optimal length: 100-280 characters
-- Use threads for long-form (5-15 tweets)
-- Hook in first line — no fluff
+- Use threads for long-form
+- Hook in first line
 - 1-2 hashtags max
-- Best times: 9am, 12pm, 5pm local
 
 **LinkedIn:**
-- Professional but personable tone
-- Open with a bold statement or question
-- Use line breaks for readability
-- 1300-2000 characters performs best
-- Include relevant hashtags (3-5)
+- Professional tone
+- Open with bold statement
+- 1300-2000 characters
 
 **Instagram:**
-- Visual-first thinking
+- Visual-first
 - Captions: tell a story
-- Hashtag strategy: 20-30 in first comment
-- Call-to-action in every post
-- Carousel posts get highest engagement
-
-**Newsletter:**
-- Subject lines: 40-60 characters
-- Preview text matters (first 90 chars)
-- One clear CTA per email
-- Personal stories increase open rates
-- Send consistently (same day/time)
+- CTA in every post
 
 ---
 
@@ -407,3 +393,36 @@ Use data-analyst skill to visualize marketing performance and identify optimizat
 ---
 
 *"Marketing is no longer about the stuff you make, but about the stories you tell." — Seth Godin*
+
+## Overview
+
+Turn your AI agent into a strategic marketing partner. Handle social media, content scheduling, analytics, and campaign management across platforms.
+
+## When to Use
+
+- Social media automation
+- Content scheduling
+- Analytics tracking
+- Campaign management
+- Marketing operations
+
+## When NOT to Use
+
+- Sales tasks (use sales skill)
+- Business development (use business-development skill)
+- Technical implementation
+- Product development
+
+## Quick Reference
+
+- Schedule content in advance
+- Track analytics consistently
+- Personalize campaigns
+- Test and iterate
+
+## Common Mistakes
+
+- Posting without strategy
+- Ignoring analytics
+- Not testing variations
+- Inconsistent posting schedule
