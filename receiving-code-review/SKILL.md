@@ -1,6 +1,6 @@
 ---
 name: receiving-code-review
-description: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation
+description: Use when getting code feedback, before implementing suggestions.
 ---
 
 # Code Review Reception
@@ -211,3 +211,23 @@ When replying to inline review comments on GitHub, reply in the comment thread (
 Verify. Question. Then implement.
 
 No performative agreement. Technical rigor always.
+
+## When to Use
+
+- Receiving code review feedback
+- Before implementing review suggestions
+- When feedback seems unclear
+- When feedback seems technically questionable
+
+## When NOT to Use
+
+- When you're the one giving review (use requesting-code-review)
+- For non-code reviews
+- For trivial changes where review isn't needed
+
+## Quick Reference
+
+- Verify before implementing
+- Ask before assuming
+- Technical correctness over social comfort
+- Reply in correct GitHub thread
