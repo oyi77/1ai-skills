@@ -1,6 +1,6 @@
 ---
 name: executing-plans
-description: Use when you have a written implementation plan to execute in a separate session with review checkpoints
+description: Use when you have a completed, Momus-approved plan artifact ready for execution with checkpoint discipline
 ---
 
 # Executing Plans
@@ -9,17 +9,61 @@ description: Use when you have a written implementation plan to execute in a sep
 
 Load plan, review critically, execute tasks in batches, report for review between batches.
 
+## When to Use
+
+- When you have a completed, Momus-approved plan ready for implementation
+- When following a structured plan with clear task breakdowns
+- When checkpoint reviews are needed between execution phases
+- When you need to execute multi-step implementation plans
+
+## When NOT to Use
+
+- When there's no plan artifact (must have .sisyphus/plans/ file)
+- When Momus verdict is not OKAY (execution blocked)
+- When the plan lacks clear task breakdowns
+- When doing exploratory work without a plan
+
+## Quick Reference
+
+**Gate Check:**
+1. Verify plan exists under `.sisyphus/plans/`
+2. Verify Momus verdict is `OKAY`
+3. If not satisfied: STOP - only planning actions allowed
+
+**Execution Flow:**
+1. Load and review plan
+2. Execute first 3 tasks (batch)
+3. Report results
+4. Wait for feedback
+5. Continue or revise
+
+## Common Mistakes
+
+- Skipping the plan verification step
+- Executing without Momus OKAY
+- Running too many tasks before checkpoint
+- Not showing verification output
+- Proceeding without feedback
+
 **Core principle:** Batch execution with checkpoints for architect review.
+
+**Canonical standard:** `agent-docs/plan-artifact-standard.md`
+
+**Execution gate:** no implementation execution before plan exists under `.sisyphus/plans/` and Momus verdict is `OKAY`.
 
 **Announce at start:** "I'm using the executing-plans skill to implement this plan."
 
 ## The Process
 
 ### Step 1: Load and Review Plan
-1. Read plan file
-2. Review critically - identify any questions or concerns about the plan
-3. If concerns: Raise them with your human partner before starting
-4. If no concerns: Create TodoWrite and proceed
+1. Read plan file from `.sisyphus/plans/`
+2. Verify plan header includes `Plan ID`, `Status`, `Momus Verdict`, and `Evidence Path`
+3. Verify latest Momus verdict is `OKAY`
+4. Verify evidence path points to latest Momus review
+5. If gate not satisfied: STOP execution; only planning-phase exception actions are allowed
+6. Review critically - identify any questions or concerns about the plan
+7. If concerns: Raise them with your human partner before starting
+8. If no concerns: Create TodoWrite and proceed
 
 ### Step 2: Execute Batch
 **Default: First 3 tasks**
@@ -65,6 +109,16 @@ After all tasks complete and verified:
 - Partner updates the plan based on your feedback
 - Fundamental approach needs rethinking
 
+## Plan Drift Protocol
+
+Plan drift means execution reality no longer matches the approved plan.
+
+When drift is detected:
+1. Pause execution immediately.
+2. Update the plan under `.sisyphus/plans/`.
+3. Re-run Momus review.
+4. Resume only after Momus verdict is `OKAY` and evidence is updated.
+
 **Don't force through blockers** - stop and ask.
 
 ## Remember
@@ -75,6 +129,7 @@ After all tasks complete and verified:
 - Between batches: just report and wait
 - Stop when blocked, don't guess
 - Never start implementation on main/master branch without explicit user consent
+- Planning-phase exception only allows plan edits + Momus review before `OKAY`
 
 ## Integration
 

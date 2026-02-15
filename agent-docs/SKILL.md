@@ -1,11 +1,25 @@
 ---
 name: agent-docs
-description: Create documentation optimized for AI agent consumption. Use when writing SKILL.md files, README files, API docs, or any documentation that will be read by LLMs in context windows. Helps structure content for RAG retrieval, token efficiency, and the Hybrid Context Hierarchy.
+description: Use when writing documentation optimized for AI agent consumption - SKILL.md files, README files, API docs, or any documentation that will be read by LLMs in context windows.
 ---
 
 # Agent Docs
 
+## Overview
+
 Write documentation that AI agents can efficiently consume. Based on Vercel benchmarks and industry standards (AGENTS.md, llms.txt, CLAUDE.md).
+
+## When to Use
+
+- Writing SKILL.md files that will be loaded by agents
+- Creating README files for agent consumption
+- Building API documentation
+- Any documentation that will be read by LLMs in context windows
+
+## When NOT to Use
+
+- Writing human-only documentation without agent context
+- Creating content that won't be read by AI agents
 
 ## The Hybrid Context Hierarchy
 
@@ -28,6 +42,20 @@ Three-layer architecture for optimal agent performance:
 ```
 
 **Include:**
+
+## Quick Reference
+
+- Use markdown formatting for RAG retrieval
+- Keep token count low for context efficiency
+- Structure content in layers: Constitution → Reference → Detail
+- Include code examples inline
+
+## Common Mistakes
+
+- Putting too much detail in context (exceeds token limits)
+- Not structuring content for RAG retrieval
+- Missing critical information in first 2000 tokens
+- Using prose instead of scannable lists
 - Security rules, architecture constraints
 - Build/test/lint commands (top for primacy bias)
 - Documentation map (where to find more)

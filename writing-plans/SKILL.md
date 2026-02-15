@@ -9,13 +9,50 @@ description: Use when you have a spec or requirements for a multi-step task, bef
 
 Write comprehensive implementation plans assuming the engineer has zero context for our codebase and questionable taste. Document everything they need to know: which files to touch for each task, code, testing, docs they might need to check, how to test it. Give them the whole plan as bite-sized tasks. DRY. YAGNI. TDD. Frequent commits.
 
+## When to Use
+
+- When you have requirements or a spec for a multi-step task
+- Before any code implementation begins
+- When breaking down complex features into executable tasks
+- When you need to coordinate multiple agents or workstreams
+
+## When NOT to Use
+
+- When the task is simple enough to do in one step
+- When exploring or experimenting (use brainstorming instead)
+- When you don't have clear requirements yet
+
+## Quick Reference
+
+**Plan Structure:**
+1. Header with Plan ID, Status, Momus Verdict
+2. Context section
+3. Work Objectives
+4. Task list (bite-sized, 2-5 min each)
+
+**Save to:** `.sisyphus/plans/YYYY-MM-DD-<feature-name>.md`
+
+**Execution gate:** Momus OKAY required before execution
+
+## Common Mistakes
+
+- Writing tasks too large (should be 2-5 minutes each)
+- Skipping the plan header requirements
+- Not saving to correct location
+- Executing without Momus approval
+- Not using worktree isolation
+
 Assume they are a skilled developer, but know almost nothing about our toolset or problem domain. Assume they don't know good test design very well.
 
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
 **Context:** This should be run in a dedicated worktree (created by brainstorming skill).
 
-**Save plans to:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
+**Canonical standard:** `agent-docs/plan-artifact-standard.md`
+
+**Save plans to:** `.sisyphus/plans/YYYY-MM-DD-<feature-name>.md`
+
+**Execution gate contract:** plans written by this skill are execution-eligible only after Momus returns `OKAY` and evidence is recorded per the canonical standard.
 
 ## Bite-Sized Task Granularity
 
@@ -41,8 +78,44 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 **Tech Stack:** [Key technologies/libraries]
 
+**Plan ID:** [stable identifier]
+
+**Status:** DRAFT
+
+**Momus Verdict:** NOT OKAY
+
+**Evidence Path:** [path to Momus review evidence]
+
 ---
 ```
+
+**Required minimum sections in every plan:**
+- `TL;DR`
+- `Context`
+- `Objectives`
+- `Verification Strategy`
+- `Execution Strategy`
+- `TODOs`
+- `Success Criteria`
+
+**Required failure coverage:** include at least one explicit negative or failure scenario in `Verification Strategy`.
+
+## Planning-Phase Exception
+
+Before Momus `OKAY`, the only allowed actions are:
+- Writing or updating the plan artifact
+- Running Momus review
+- Recording review evidence
+
+Implementation execution is blocked until the plan is saved under `.sisyphus/plans/` and Momus verdict is `OKAY`.
+
+## Plan-Drift Protocol
+
+If execution later drifts from this approved plan:
+- Pause execution immediately
+- Update the plan artifact in `.sisyphus/plans/`
+- Re-run Momus review and refresh evidence
+- Resume only after Momus verdict is `OKAY`
 
 ## Task Structure
 
@@ -98,7 +171,7 @@ git commit -m "feat: add specific feature"
 
 After saving the plan, offer execution choice:
 
-**"Plan complete and saved to `docs/plans/<filename>.md`. Two execution options:**
+**"Plan complete and saved to `.sisyphus/plans/<filename>.md`. Two execution options:**
 
 **1. Subagent-Driven (this session)** - I dispatch fresh subagent per task, review between tasks, fast iteration
 

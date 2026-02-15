@@ -9,7 +9,42 @@ description: Use when about to claim work is complete, fixed, or passing, before
 
 Claiming work is complete without verification is dishonesty, not efficiency.
 
+## When to Use
+
+- Before claiming any work is complete
+- Before committing code or creating PRs
+- When claiming tests pass
+- When asserting bugs are fixed
+- When saying "it works"
+
+## When NOT to Use
+
+- When you've already run verification in this session
+- When claiming status of work done by someone else
+- When stating facts about the codebase (not implementation claims)
+
+## Quick Reference
+
+**The Gate Function:**
+1. IDENTIFY: What command proves this claim?
+2. RUN: Execute the FULL command (fresh, complete)
+3. READ: Full output, check exit code, count failures
+4. VERIFY: Does output confirm the claim?
+5. ONLY THEN: Make the claim
+
+**Evidence before assertions, always.**
+
+## Common Mistakes
+
+- Claiming tests pass without running them
+- Looking at old output instead of fresh verification
+- Trusting subagent claims without verification
+- Skipping verification steps to "save time"
+- Expressing satisfaction without evidence
+
 **Core principle:** Evidence before claims, always.
+
+**Plan-gate dependency:** execution claims are invalid unless the active plan follows `agent-docs/plan-artifact-standard.md`, is stored under `.sisyphus/plans/`, and has Momus verdict `OKAY`.
 
 **Violating the letter of this rule is violating the spirit of this rule.**
 
@@ -48,6 +83,7 @@ Skip any step = lying, not verifying
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
+| Execution was authorized | Plan in `.sisyphus/plans/` + Momus `OKAY` + evidence path | Having only a draft plan |
 
 ## Red Flags - STOP
 
@@ -75,6 +111,18 @@ Skip any step = lying, not verifying
 
 ## Key Patterns
 
+**Execution authorization gate:**
+```
+✅ [Read active plan] [See: `.sisyphus/plans/...`] [See: Momus Verdict = OKAY + evidence path] "Execution was authorized"
+❌ "Plan existed" / "Review probably happened"
+```
+
+**Plan drift handling:**
+```
+✅ Drift detected → pause execution → update `.sisyphus/plans/...` plan → re-run Momus → verify `OKAY` + updated evidence → continue
+❌ Drift detected but execution continues on stale approved plan
+```
+
 **Tests:**
 ```
 ✅ [Run test command] [See: 34/34 pass] "All tests pass"
@@ -95,7 +143,7 @@ Skip any step = lying, not verifying
 
 **Requirements:**
 ```
-✅ Re-read plan → Create checklist → Verify each → Report gaps or completion
+✅ Re-read approved plan (`.sisyphus/plans/` + Momus `OKAY`) → Create checklist → Verify each → Report gaps or completion
 ❌ "Tests pass, phase complete"
 ```
 

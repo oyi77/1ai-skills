@@ -1,18 +1,47 @@
 ---
 name: mckinsey-research
-description: |
-  Run a full McKinsey-level market research and strategy analysis using 12 specialized prompts.
-  Use when the user asks for: market research, competitive analysis, business strategy, TAM analysis,
-  customer personas, pricing strategy, go-to-market plan, financial modeling, risk assessment,
-  SWOT analysis, market entry strategy, or comprehensive business analysis.
-  Also triggers on: بحث سوق, تحليل استراتيجي, تحليل منافسين, دراسة جدوى, خطة عمل
+description: Use when running McKinsey-level market research and strategy analysis - competitive analysis, TAM analysis, pricing strategy, go-to-market planning, and business strategy.
 ---
 
 # McKinsey Research - AI Strategy Consultant
 
+## Overview
+
 Transform AI into a full strategy consulting team using 12 specialized prompts that cover the complete market research and strategic analysis cycle.
 
-## Workflow
+## When to Use
+
+- When you need market research and competitive analysis
+- When you need TAM analysis and pricing strategy
+- When building go-to-market plans
+- When doing business strategy analysis
+
+## When NOT to Use
+
+- For simple questions (not full analysis)
+- When you don't have the required business information
+
+## Quick Reference
+
+**12 Consulting Analyses:**
+1. Market Sizing & TAM
+2. Competitive Landscape
+3. Customer Personas
+4. Industry Trends
+5. SWOT + Porter's Five Forces
+6. Pricing Strategy
+7. Go-To-Market Plan
+8. Customer Journey Mapping
+9. Financial Modeling
+10. Risk Assessment
+11. Market Entry Strategy
+12. Executive Strategy Synthesis
+
+## Common Mistakes
+
+- Not providing complete business information
+- Skipping the information gathering phase
+- Trying to run analysis without sufficient data
 
 ### Phase 1: Language Selection
 

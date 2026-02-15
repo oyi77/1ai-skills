@@ -216,3 +216,18 @@ Ready to implement auth feature
 
 **Pairs with:**
 - **finishing-a-development-branch** - REQUIRED for cleanup after work complete
+
+## When to Use
+
+- Starting feature work that needs isolation
+- Before executing implementation plans
+- Working on multiple branches simultaneously
+- When you need clean test baseline
+- Any work that shouldn't affect main workspace
+
+## When NOT to Use
+
+- Simple quick fixes in main branch
+- When you only have one task
+- Read-only operations
+- When worktree isn't supported (some legacy systems)

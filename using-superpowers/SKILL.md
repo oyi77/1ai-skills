@@ -3,6 +3,43 @@ name: using-superpowers
 description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions
 ---
 
+## Overview
+
+Establishes the fundamental workflow for finding and invoking skills before any task execution. This is the entry point skill that ensures other skills are properly loaded when needed.
+
+## When to Use
+
+- At the start of ANY conversation or task
+- When you think a skill might apply (even 1% chance)
+- Before responding to clarifying questions
+- When starting creative work (features, components, functionality)
+- When encountering bugs or unexpected behavior
+- When planning multi-step tasks
+
+## When NOT to Use
+
+- When you already have the skill loaded and are mid-task
+- For simple informational queries that don't require domain expertise
+- When explicitly told to skip skill invocation
+
+## Quick Reference
+
+**The Golden Rule:** If you think a skill might apply, invoke it first.
+
+**Skill Invocation Steps:**
+1. Consider if any skill matches your task
+2. Use Skill tool to load the relevant skill
+3. Follow the skill's guidance exactly
+4. If skill was wrong, try another
+
+## Common Mistakes
+
+- Skipping skill invocation "just this once"
+- Rationalizing that the task is "simple enough"
+- Not checking if a skill exists for your domain
+- Using memory instead of checking skill content
+- Ignoring skill prompts to use other skills
+
 <EXTREMELY-IMPORTANT>
 If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
 
@@ -93,3 +130,13 @@ The skill itself tells you which.
 ## User Instructions
 
 Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.
+
+## Workflow Gate Everything Contract
+
+For workflow skills that plan, execute, or verify implementation work (`writing-plans`, `executing-plans`, `verification-before-completion`):
+
+- Use `agent-docs/plan-artifact-standard.md` as canonical contract.
+- Require plan artifact under `.sisyphus/plans/`.
+- Require Momus verdict `OKAY` before any implementation execution.
+- Allow planning-phase exception only for plan writing/updates and Momus review + evidence capture.
+- If plan drift occurs: pause execution, update plan, re-run Momus, resume only after `OKAY`.

@@ -1,21 +1,40 @@
 ---
 name: humanizer-zh
-description: |
-  去除文本中的 AI 生成痕迹。适用于编辑或审阅文本，使其听起来更自然、更像人类书写。
-  基于维基百科的"AI 写作特征"综合指南。检测并修复以下模式：夸大的象征意义、
-  宣传性语言、以 -ing 结尾的肤浅分析、模糊的归因、破折号过度使用、三段式法则、
-  AI 词汇、否定式排比、过多的连接性短语。
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - AskUserQuestion
-metadata:
-  trigger: 编辑或审阅文本，去除 AI 写作痕迹
-  source: 翻译自 blader/humanizer，参考 hardikpandya/stop-slop
+description: Use when removing AI writing痕迹 from Chinese text to make it sound more natural and human-written.
 ---
 
 # Humanizer-zh: 去除 AI 写作痕迹
+
+## Overview
+
+中文版的 AI 写作去痕工具。识别和去除 AI 生成文本的痕迹，使中文写作更自然、更有人味。基于维基百科的"AI 写作特征"页面。
+
+## When to Use
+
+- 当文本 AI 味道太重时
+- 当需要让 AI 写作更自然时
+- 当编辑 AI 辅助内容时
+
+## When NOT to Use
+
+- 当文本应该保持技术性/正式性时
+- 当需要保留 AI  authorship disclosure 时
+
+## Quick Reference
+
+**24 种 AI 写作模式：**
+1. 过度强调意义
+2. 模糊归因
+3. AI 词汇（此外、至关重要）
+4. 系动词回避
+5. 三段式法则过度使用
+6. 公式化挑战
+
+## Common Mistakes
+
+- 只去模式不加灵魂
+- 过度修正导致不自然
+- 丢失原文含义
 
 你是一位文字编辑，专门识别和去除 AI 生成文本的痕迹，使文字听起来更自然、更有人味。本指南基于维基百科的"AI 写作特征"页面，由 WikiProject AI Cleanup 维护。
 
