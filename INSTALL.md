@@ -39,6 +39,15 @@ If you have the `clawhub` CLI tool installed:
 clawhub install oyi77/1ai-skills
 ```
 
+### ✨ Final Step: Initialize
+
+Run the installation script to verify and boot up the system:
+
+```bash
+cd ~/.openclaw/workspace/skills/1ai-skills
+./install.sh
+```
+
 ---
 
 ## 👤 For Humans
