@@ -43,7 +43,7 @@ curl -s https://raw.githubusercontent.com/paijo/1ai-skills/refs/heads/main/LLM.m
 | Intelligence | self-improving-agent |
 | Quality | receiving-code-review, requesting-code-review, verification-before-completion |
 | Tools | agent-docs |
-| Jobs | jobhunter-master, joko-proactive-agent |
+| Jobs | job-hunter, joko-proactive-agent |
 | Platforms | clawild-moltbook, joko-moltbook, moltbook-interact, google-flow |
 | Browser Automation | agent-browser, browser-use |
 | Growth | free-tool-strategy, referral-program, programmatic-seo, schema-markup, product-marketing-context, marketing-ideas, marketing-psychology |

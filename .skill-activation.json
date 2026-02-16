@@ -317,7 +317,7 @@
                 ],
                 "priority": "medium"
             },
-            "automation/jobhunter-master": {
+            "automation/job-hunter": {
                 "keywords": [
                     "job search",
                     "job hunting",

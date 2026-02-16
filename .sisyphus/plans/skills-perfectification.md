@@ -45,7 +45,7 @@ Each path contains a `SKILL.md`:
 - `google-flow/google-flow/SKILL.md`
 - `humanizer/SKILL.md`
 - `humanizer-zh/SKILL.md`
-- `jobhunter-master/SKILL.md`
+- `job-hunter/SKILL.md`
 - `joko-jobhunter/SKILL.md`
 - `joko-moltbook/SKILL.md`
 - `joko-orchestrator/SKILL.md`

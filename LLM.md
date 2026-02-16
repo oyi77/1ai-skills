@@ -75,7 +75,7 @@ Say congratulations! 🎉
 | **Intelligence** | self-improving-agent |
 | **Quality** | receiving-code-review, requesting-code-review, verification-before-completion |
 | **Tools** | agent-docs |
-| **Jobs** | jobhunter-master, joko-proactive-agent |
+| **Jobs** | job-hunter, joko-proactive-agent |
 | **Platforms** | clawild-moltbook, joko-moltbook, moltbook-interact, google-flow |
 | **Orchestration** | joko-orchestrator |
 | **Team Orchestrators** | revenue-team, operations-team, product-team, governance-team |

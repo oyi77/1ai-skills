@@ -73,7 +73,7 @@ const pathMappings = {
     'dispatching-parallel-agents': 'research/dispatching-parallel-agents',
 
     // Automation
-    'jobhunter-master': 'automation/jobhunter-master',
+    'job-hunter': 'automation/job-hunter',
     'moltbook-interact': 'automation/moltbook-interact',
     'joko-moltbook': 'automation/joko-moltbook',
     'clawild-moltbook': 'automation/clawild-moltbook',

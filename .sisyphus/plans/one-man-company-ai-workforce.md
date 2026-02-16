@@ -885,7 +885,7 @@ npx skills list
 | **Quality** | receiving-code-review, requesting-code-review, verification-before-completion |
 | **Productivity** | dispatching-parallel-agents, using-superpowers, loadpage |
 | **Tools** | agent-docs, assistant |
-| **Jobs** | jobhunter-master, joko-jobhunter, joko-proactive-agent |
+| **Jobs** | job-hunter, joko-jobhunter, joko-proactive-agent |
 | **Platforms** | clawild-moltbook, joko-moltbook, moltbook-interact |
 
 ## Auto-Activation
