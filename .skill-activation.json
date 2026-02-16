@@ -83,6 +83,54 @@
                 "mcps": [],
                 "priority": "high"
             },
+            "marketing/content-scheduler": {
+                "keywords": [
+                    "schedule post",
+                    "schedule content",
+                    "content calendar",
+                    "queue posts",
+                    "schedule social media",
+                    "posting schedule"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "marketing/analytics-dashboard": {
+                "keywords": [
+                    "analytics",
+                    "metrics",
+                    "performance tracking",
+                    "dashboard",
+                    "social media analytics",
+                    "track engagement"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "marketing/email-marketing": {
+                "keywords": [
+                    "email campaign",
+                    "newsletter",
+                    "drip campaign",
+                    "email automation",
+                    "send email",
+                    "email marketing"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "marketing/seo-optimizer": {
+                "keywords": [
+                    "seo",
+                    "search engine optimization",
+                    "keyword research",
+                    "rank tracking",
+                    "on-page seo",
+                    "organic traffic"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
             "marketing/analytics-reporting": {
                 "keywords": [
                     "analytics",
@@ -308,6 +356,33 @@
                 ],
                 "mcps": [],
                 "priority": "medium"
+            },
+            "content/video-editor": {
+                "keywords": [
+                    "edit video",
+                    "video editing",
+                    "ffmpeg",
+                    "add captions",
+                    "trim video",
+                    "merge videos",
+                    "video post-production"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "operations/payment-invoicing": {
+                "keywords": [
+                    "payment",
+                    "invoice",
+                    "tripay",
+                    "midtrans",
+                    "lynk",
+                    "accept payment",
+                    "payment gateway",
+                    "generate invoice"
+                ],
+                "mcps": [],
+                "priority": "high"
             }
         },
         "mcpMapping": {
