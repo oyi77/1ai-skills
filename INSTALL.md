@@ -41,11 +41,11 @@ clawhub install oyi77/1ai-skills
 
 ### ✨ Final Step: Initialize
 
-Run the installation script to verify and boot up the system:
+Run the installation script to verify and boot up the system (Works on Windows/Mac/Linux):
 
 ```bash
 cd ~/.openclaw/workspace/skills/1ai-skills
-./install.sh
+npm install
 ```
 
 ---
