@@ -1,7 +1,7 @@
 # 1ai-skills - AI Workforce for One-Person Company
 
 ## What is This?
-AI workforce for one-person company - you're the owner, AI agents do all the work. This repo contains 45+ skills that can be loaded into your AI agent to help run your business.
+AI workforce for one-person company - you're the owner, AI agents do all the work. This repo contains 73 skills (42 local + 31 external) that can be loaded into your AI agent to help run your business.
 
 ## Installation
 
@@ -71,13 +71,14 @@ Say congratulations! 🎉
 | **Content** | humanizer, humanizer-zh, writing-skills, gemini-image-generator, content-creator |
 | **Research** | mckinsey-research, polymarket-analyst, market-research |
 | **Operations** | customer-support, project-management, analytics-reporting |
-| **Productivity** | google-canvas, dispatching-parallel-agents, using-superpowers, loadpage |
+| **Productivity** | google-canvas, google-workspace, email-automation, calendar-management, dispatching-parallel-agents, using-superpowers |
 | **Intelligence** | self-improving-agent |
 | **Quality** | receiving-code-review, requesting-code-review, verification-before-completion |
-| **Tools** | agent-docs, assistant |
-| **Jobs** | jobhunter-master, joko-jobhunter, joko-proactive-agent |
+| **Tools** | agent-docs |
+| **Jobs** | jobhunter-master, joko-proactive-agent |
 | **Platforms** | clawild-moltbook, joko-moltbook, moltbook-interact, google-flow |
-| **Team Orchestrators** | revenue-team, operations-team, product-team, governance-team, joko-orchestrator, olympic-orchestrator |
+| **Orchestration** | joko-orchestrator |
+| **Team Orchestrators** | revenue-team, operations-team, product-team, governance-team |
 
 ## Auto-Activation
 

@@ -2,7 +2,7 @@
 
 This guide walks you through completing the remaining setup items.
 
-## Current Status: 66/71 Complete (93%)
+## Current Status: 69/73 Complete (95%)
 
 The following items require your action to complete - they are BLOCKED by environment-specific setup:
 
@@ -48,6 +48,7 @@ After setup, test with:
 ```
 Load content-creator skill
 Load self-improving-agent skill
+Load google-workspace skill
 ```
 
 ### 5. Test Auto-Activation
@@ -55,6 +56,8 @@ Try directives like:
 - "Create a LinkedIn post about AI" → activates content-creator
 - "Research our competitors" → activates market-research
 - "Fix this bug" → activates systematic-debugging
+- "Send an email to..." → activates email-automation
+- "Schedule a meeting..." → activates calendar-management
 
 ## Files Created
 
@@ -69,12 +72,16 @@ Try directives like:
 | docs/policies.md | AI policies |
 | docs/auto-activation.md | Activation guide |
 | content-creator/ | Multi-platform content |
-| google-canvas/ | Workspace automation |
+| google-canvas/ | Canvas workspace automation |
+| google-workspace/ | Docs/Sheets/Slides automation |
+| email-automation/ | Gmail browser automation |
+| calendar-management/ | Calendar browser automation |
 | customer-support/ | Support automation |
 | self-improving-agent/ | Continuous learning |
 | market-research/ | Intelligence gathering |
 | project-management/ | Task coordination |
 | analytics-reporting/ | Data & reporting |
+| joko-orchestrator/ | Unified orchestration |
 | revenue-team/ | Revenue orchestrator |
 | operations-team/ | Operations orchestrator |
 | product-team/ | Product orchestrator |

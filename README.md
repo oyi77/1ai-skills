@@ -16,7 +16,7 @@ https://raw.githubusercontent.com/paijo/1ai-skills/refs/heads/main/LLM.md
 Fetch the installation guide and follow it:
 curl -s https://raw.githubusercontent.com/paijo/1ai-skills/refs/heads/main/LLM.md
 
-## Skills (66 skills - 44 local + 22 external)
+## Skills (73 skills - 42 local + 31 external)
 
 | Category | Skills |
 |----------|--------|
@@ -27,14 +27,15 @@ curl -s https://raw.githubusercontent.com/paijo/1ai-skills/refs/heads/main/LLM.m
 | Content | humanizer, humanizer-zh, writing-skills, gemini-image-generator, content-creator, copy-editing |
 | Research | mckinsey-research, polymarket-analyst, market-research, competitor-alternatives |
 | Operations | customer-support, project-management, analytics-reporting |
-| Productivity | google-canvas, dispatching-parallel-agents, using-superpowers, loadpage |
+| Productivity | google-canvas, google-workspace, email-automation, calendar-management, dispatching-parallel-agents, using-superpowers |
 | Intelligence | self-improving-agent |
 | Quality | receiving-code-review, requesting-code-review, verification-before-completion |
-| Tools | agent-docs, assistant |
-| Jobs | jobhunter-master, joko-jobhunter, joko-proactive-agent |
+| Tools | agent-docs |
+| Jobs | jobhunter-master, joko-proactive-agent |
 | Platforms | clawild-moltbook, joko-moltbook, moltbook-interact, google-flow |
 | Browser Automation | agent-browser, browser-use |
 | Growth | free-tool-strategy, referral-program, programmatic-seo, schema-markup, product-marketing-context, marketing-ideas, marketing-psychology |
+| Orchestration | joko-orchestrator |
 | Team Orchestrators | revenue-team, operations-team, product-team, governance-team |
 
 ## Quick Links
