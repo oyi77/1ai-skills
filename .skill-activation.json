@@ -1,0 +1,383 @@
+{
+    "skillActivation": {
+        "strategy": "selective",
+        "description": "Selective skill loading to prevent performance issues",
+        "coreSkills": [
+            "core/agent-docs",
+            "core/joko-orchestrator",
+            "development/writing-plans"
+        ],
+        "limits": {
+            "maxConcurrentSkills": 10,
+            "maxConcurrentMCPs": 5,
+            "memoryBudgetMB": 500
+        },
+        "mcpLoading": {
+            "strategy": "lazy",
+            "connectionPooling": true,
+            "idleTimeoutMinutes": 5,
+            "maxConcurrentConnections": 5
+        },
+        "activationRules": {
+            "marketing/ads-manager": {
+                "keywords": [
+                    "ads",
+                    "advertising",
+                    "competitor",
+                    "campaign",
+                    "Google Ads",
+                    "Meta",
+                    "TikTok",
+                    "LinkedIn ads"
+                ],
+                "mcps": [
+                    "ads-mcp",
+                    "quanti"
+                ],
+                "priority": "high"
+            },
+            "marketing/marketing-strategy": {
+                "keywords": [
+                    "marketing strategy",
+                    "go-to-market",
+                    "positioning",
+                    "brand"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "marketing/content-creator": {
+                "keywords": [
+                    "content",
+                    "blog post",
+                    "social media",
+                    "copywriting"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "marketing/analytics-reporting": {
+                "keywords": [
+                    "analytics",
+                    "metrics",
+                    "KPI",
+                    "reporting",
+                    "dashboard"
+                ],
+                "mcps": [
+                    "quanti"
+                ],
+                "priority": "medium"
+            },
+            "sales/sales-strategy": {
+                "keywords": [
+                    "sales",
+                    "CRM",
+                    "leads",
+                    "pipeline",
+                    "HubSpot",
+                    "deals"
+                ],
+                "mcps": [
+                    "hubspot"
+                ],
+                "priority": "high"
+            },
+            "sales/business-development": {
+                "keywords": [
+                    "partnership",
+                    "business development",
+                    "BD",
+                    "strategic partnerships"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "sales/customer-support": {
+                "keywords": [
+                    "customer support",
+                    "help desk",
+                    "tickets",
+                    "customer service"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "productivity/google-workspace": {
+                "keywords": [
+                    "Google Docs",
+                    "Google Sheets",
+                    "Google Drive",
+                    "Google Calendar"
+                ],
+                "mcps": [
+                    "google-cloud"
+                ],
+                "priority": "medium"
+            },
+            "productivity/email-automation": {
+                "keywords": [
+                    "email",
+                    "Gmail",
+                    "email campaign",
+                    "bulk email"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "productivity/calendar-management": {
+                "keywords": [
+                    "calendar",
+                    "meeting",
+                    "schedule",
+                    "appointment"
+                ],
+                "mcps": [
+                    "tldv"
+                ],
+                "priority": "medium"
+            },
+            "productivity/google-canvas": {
+                "keywords": [
+                    "Google Canvas",
+                    "whiteboard",
+                    "brainstorm"
+                ],
+                "mcps": [],
+                "priority": "low"
+            },
+            "productivity/google-flow": {
+                "keywords": [
+                    "Google Flow",
+                    "workflow automation"
+                ],
+                "mcps": [],
+                "priority": "low"
+            },
+            "research/mckinsey-research": {
+                "keywords": [
+                    "research",
+                    "market research",
+                    "competitive analysis",
+                    "web scraping"
+                ],
+                "mcps": [
+                    "apify",
+                    "firecrawl"
+                ],
+                "priority": "high"
+            },
+            "research/polymarket-analyst": {
+                "keywords": [
+                    "Polymarket",
+                    "prediction market",
+                    "betting odds"
+                ],
+                "mcps": [],
+                "priority": "low"
+            },
+            "research/brainstorming": {
+                "keywords": [
+                    "brainstorm",
+                    "ideation",
+                    "creative thinking"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "research/dispatching-parallel-agents": {
+                "keywords": [
+                    "parallel",
+                    "multiple agents",
+                    "concurrent tasks"
+                ],
+                "mcps": [],
+                "priority": "low"
+            },
+            "development/systematic-debugging": {
+                "keywords": [
+                    "debug",
+                    "bug",
+                    "error",
+                    "troubleshoot",
+                    "fix"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "development/test-driven-development": {
+                "keywords": [
+                    "test",
+                    "TDD",
+                    "unit test",
+                    "testing"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "development/subagent-driven-development": {
+                "keywords": [
+                    "subagent",
+                    "code review",
+                    "implementation"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "operations/project-management": {
+                "keywords": [
+                    "project management",
+                    "roadmap",
+                    "milestones",
+                    "sprint"
+                ],
+                "mcps": [
+                    "linear"
+                ],
+                "priority": "medium"
+            },
+            "automation/jobhunter-master": {
+                "keywords": [
+                    "job search",
+                    "job hunting",
+                    "resume",
+                    "cover letter",
+                    "LinkedIn"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "content/humanizer": {
+                "keywords": [
+                    "humanize",
+                    "rewrite",
+                    "natural language"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "content/gemini-image-generator": {
+                "keywords": [
+                    "generate image",
+                    "create image",
+                    "image generation"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            }
+        },
+        "mcpMapping": {
+            "ads-mcp": {
+                "skills": [
+                    "marketing/ads-manager"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "google-ads",
+                    "tiktok"
+                ]
+            },
+            "quanti": {
+                "skills": [
+                    "marketing/ads-manager",
+                    "marketing/analytics-reporting"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "google-ads",
+                    "meta-ads",
+                    "tiktok",
+                    "google-analytics"
+                ]
+            },
+            "hubspot": {
+                "skills": [
+                    "sales/sales-strategy"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "hubspot-crm"
+                ]
+            },
+            "notion": {
+                "skills": [
+                    "productivity/*"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "notion"
+                ]
+            },
+            "slack": {
+                "skills": [
+                    "operations/*"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "slack"
+                ]
+            },
+            "google-cloud": {
+                "skills": [
+                    "productivity/google-workspace"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "google-cloud"
+                ]
+            },
+            "tldv": {
+                "skills": [
+                    "productivity/calendar-management"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "google-meet",
+                    "zoom",
+                    "teams"
+                ]
+            },
+            "linear": {
+                "skills": [
+                    "operations/project-management"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "linear"
+                ]
+            },
+            "apify": {
+                "skills": [
+                    "research/mckinsey-research"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "web-scraping"
+                ]
+            },
+            "firecrawl": {
+                "skills": [
+                    "research/mckinsey-research"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "web-crawling"
+                ]
+            },
+            "exa": {
+                "skills": [
+                    "research/*"
+                ],
+                "priority": "low",
+                "platforms": [
+                    "ai-search"
+                ]
+            }
+        },
+        "monitoring": {
+            "logActivations": true,
+            "trackPerformance": true,
+            "alertOnLimits": true
+        }
+    }
+}
