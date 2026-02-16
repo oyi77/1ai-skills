@@ -260,7 +260,11 @@
                 "keywords": [
                     "generate image",
                     "create image",
-                    "image generation"
+                    "image generation",
+                    "video",
+                    "create video",
+                    "generate video",
+                    "animation"
                 ],
                 "mcps": [],
                 "priority": "medium"
