@@ -5,6 +5,7 @@
         "coreSkills": [
             "core/agent-docs",
             "core/joko-orchestrator",
+            "core/find-skills",
             "development/writing-plans"
         ],
         "limits": {
@@ -497,6 +498,12 @@
             "logActivations": true,
             "trackPerformance": true,
             "alertOnLimits": true
+        },
+        "fallbackBehavior": {
+            "searchCommunity": true,
+            "minCredibilityScore": 70,
+            "autoInstallThreshold": 90,
+            "askUserBelow": 90
         }
     }
 }
