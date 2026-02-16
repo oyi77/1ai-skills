@@ -4,10 +4,31 @@
 
 If you are running OpenClaw locally, you can simply link this folder to your OpenClaw configuration.
 
-### Option 1: Update OpenClaw Config
+## Standard Installation (workspace/skills)
 
-1. Locate your OpenClaw configuration file (usually `~/.openclaw/config.json` or `config.json` in your OpenClaw directory).
-2. Add the path to this repository in the `skills_paths` section:
+The standard way to install skills in OpenClaw is to place them in your `workspace/skills` directory.
+
+### Option 1: Git Clone (Recommended)
+
+Navigate to your OpenClaw `workspace/skills` directory and clone this repository:
+
+```bash
+cd path/to/openclaw/workspace/skills
+git clone https://github.com/your-username/1ai-skills.git
+```
+
+### Option 2: Symlink
+
+If you want to keep your development repo separate but usable by OpenClaw:
+
+```bash
+# Assuming you are in your openclaw/workspace/skills folder
+ln -s /Users/paijo/1ai-skills .
+```
+
+### Option 3: Configure Paths (Advanced)
+
+If you prefer to keep skills elsewhere, update your `config.json`:
 
 ```json
 {
@@ -16,15 +37,6 @@ If you are running OpenClaw locally, you can simply link this folder to your Ope
   ],
   "activation_rules_path": "/Users/paijo/1ai-skills/.skill-activation.json"
 }
-```
-
-### Option 2: Symlink Strategy (Recommended)
-
-Link your skills directory to OpenClaw's skills folder:
-
-```bash
-# Assuming OpenClaw is at ~/openclaw
-ln -s /Users/paijo/1ai-skills ~/openclaw/skills/1ai
 ```
 
 ---
