@@ -5,6 +5,18 @@ AI workforce for one-person company - you're the owner, AI agents do the work.
 
 ## Installation
 
+This toolkit is designed to be **cross-platform** (Windows, macOS, Linux).
+
+**Requirement**: Node.js 18+
+
+### Quick Install
+```bash
+cd ~/.openclaw/workspace/skills
+git clone https://github.com/paijo/1ai-skills.git
+cd 1ai-skills
+npm install
+```
+
 ### For Humans
 Paste this into your LLM agent session:
 ```
