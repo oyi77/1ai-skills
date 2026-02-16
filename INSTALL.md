@@ -1,72 +1,74 @@
 # Installation
 
-The standard installation method is to place this repository inside your OpenClaw `skills` directory.
-
-> **Target Directory**: `~/.openclaw/workspace/skills/1ai-skills`
-
----
+This repository contains a collection of skills for OpenClaw.
 
 ## 🤖 For AI Agents
 
-Execute these exact commands to install:
+Choose one of the following methods to install:
+
+### Method 1: Clone Repository (Recommended)
+
+Clone the repository directly into your OpenClaw workspace:
 
 ```bash
-# 1. Ensure skills directory exists
-mkdir -p ~/.openclaw/workspace/skills
+# Linux/macOS
+git clone https://github.com/oyi77/1ai-skills.git ~/.openclaw/workspace/skills/1ai-skills
 
-# 2. Clone repository directly into it
-cd ~/.openclaw/workspace/skills
-git clone https://github.com/paijo/1ai-skills.git
-
-# 3. Verify installation
-ls -l ~/.openclaw/workspace/skills/1ai-skills/SKILL_INDEX.json
+# Windows
+git clone https://github.com/oyi77/1ai-skills.git C:\Users\USER\.openclaw\workspace\skills\1ai-skills
 ```
 
-*OpenClaw will automatically detect skills in this directory. No config changes needed.*
+### Method 2: Copy Skills Folder
+
+If you already have a workspace with other content:
+
+1. Clone this repo to a temporary location
+2. Copy the contents of this repo into your workspace's `skills/` directory
+3. **IMPORTANT**: Do not overwrite critical files like `.git`, `memory/`, or config files.
+
+```bash
+# Example
+cp -r 1ai-skills/* ~/.openclaw/workspace/skills/
+```
+
+### Method 3: ClawHub CLI
+
+If you have the `clawhub` CLI tool installed:
+
+```bash
+clawhub install oyi77/1ai-skills
+```
 
 ---
 
 ## 👤 For Humans
 
-### Step 1: Install
-Open your terminal and run:
+1. **Navigate to your workspace skills folder**:
+   ```bash
+   cd ~/.openclaw/workspace/skills
+   ```
 
-```bash
-cd ~/.openclaw/workspace/skills
-git clone https://github.com/paijo/1ai-skills.git
-```
+2. **Clone the repository**:
+   ```bash
+   git clone https://github.com/oyi77/1ai-skills.git
+   ```
 
-### Step 2: Configure Environment
-Copy the environment file and add your keys:
+3. **Verify installation**:
+   ```bash
+   ls -l 1ai-skills/SKILL_INDEX.json
+   ```
 
-```bash
-cd 1ai-skills
-cp .env.example .env
-nano .env  # or use your favorite editor
-```
-
-### Step 3: Reload OpenClaw
-Restart your OpenClaw instance to load the new skills.
+4. **(Optional) Configure Environment**:
+   Copy `.env.example` to `.env` inside the `1ai-skills` folder and add your API keys.
 
 ---
 
-## 🔍 Verification
+## 📦 Verified Skills Reference
 
-To confirm everything is working, ask OpenClaw:
+Once installed, the following skill paths will be available:
 
-> "List all available skills from 1ai-skills"
-
-Or run the CLI command:
-```bash
-openclaw skills list
-```
-
----
-
-## 📦 What gets installed?
-- **Operations**: `payment-invoicing` (TriPay, Midtrans)
-- **Marketing**: `social-media-upload`, `analytics-dashboard`
-- **Content**: `grok-video-generation`, `google-flow`
-- **Core**: `find-skills` (Auto-discovery)
-- **Development**: `systematic-debugging`, `test-driven-development`
-- ...and 40+ more!
+- `marketing/social-media-upload`
+- `operations/payment-invoicing`
+- `core/find-skills`
+- `content/grok-video-generation`
+- ...and 70+ more.
