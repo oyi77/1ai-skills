@@ -149,10 +149,15 @@
             "productivity/google-flow": {
                 "keywords": [
                     "Google Flow",
-                    "workflow automation"
+                    "workflow automation",
+                    "video",
+                    "create video",
+                    "generate video",
+                    "animation",
+                    "video generation"
                 ],
                 "mcps": [],
-                "priority": "low"
+                "priority": "high"
             },
             "research/mckinsey-research": {
                 "keywords": [
@@ -260,11 +265,7 @@
                 "keywords": [
                     "generate image",
                     "create image",
-                    "image generation",
-                    "video",
-                    "create video",
-                    "generate video",
-                    "animation"
+                    "image generation"
                 ],
                 "mcps": [],
                 "priority": "medium"
