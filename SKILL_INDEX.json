@@ -1,0 +1,531 @@
+{
+  "version": "1.1",
+  "last_updated": "2026-02-16",
+  "total_skills": 75,
+  "local_skills": 44,
+  "external_skills": 31,
+  "skills": [
+    {
+      "name": "brainstorming",
+      "description": "Collaborative idea exploration and design refinement",
+      "keywords": ["brainstorm", "ideas", "design", "think", "explore"],
+      "domains": ["planning", "strategy"],
+      "source": "local"
+    },
+    {
+      "name": "writing-plans",
+      "description": "Create detailed implementation plans from requirements",
+      "keywords": ["plan", "create plan", "implementation", "roadmap", "tasks"],
+      "domains": ["planning"],
+      "source": "local"
+    },
+    {
+      "name": "executing-plans",
+      "description": "Execute implementation plans with orchestration",
+      "keywords": ["execute", "run plan", "implement", "do it"],
+      "domains": ["execution"],
+      "source": "local"
+    },
+    {
+      "name": "test-driven-development",
+      "description": "TDD workflow with RED-GREEN-REFACTOR cycle",
+      "keywords": ["test", "tdd", "red green", "unittest"],
+      "domains": ["development"],
+      "source": "local"
+    },
+    {
+      "name": "systematic-debugging",
+      "description": "Root cause analysis and systematic bug fixes",
+      "keywords": ["debug", "fix", "bug", "error", "issue"],
+      "domains": ["development"],
+      "source": "local"
+    },
+    {
+      "name": "marketing",
+      "description": "Marketing strategy and campaign execution",
+      "keywords": ["marketing", "campaign", "brand", "awareness"],
+      "domains": ["marketing", "sales"],
+      "source": "local"
+    },
+    {
+      "name": "sales",
+      "description": "Sales pipeline and deal closure",
+      "keywords": ["sales", "deal", "close", "pipeline", "crm"],
+      "domains": ["sales", "revenue"],
+      "source": "local"
+    },
+    {
+      "name": "business-development",
+      "description": "Partnerships and business growth",
+      "keywords": ["bd", "partnership", "deal", "growth", "expand"],
+      "domains": ["business", "revenue"],
+      "source": "local"
+    },
+    {
+      "name": "humanizer",
+      "description": "Make AI content sound more human and natural",
+      "keywords": ["humanize", "natural", "authentic", "voice"],
+      "domains": ["content"],
+      "source": "local"
+    },
+    {
+      "name": "writing-skills",
+      "description": "Professional writing and content creation",
+      "keywords": ["write", "content", "draft", "edit"],
+      "domains": ["content"],
+      "source": "local"
+    },
+    {
+      "name": "mckinsey-research",
+      "description": "Structured business research and analysis",
+      "keywords": ["research", "analysis", "market", "competitor"],
+      "domains": ["research"],
+      "source": "local"
+    },
+    {
+      "name": "polymarket-analyst",
+      "description": "Predictive market analysis and decision support",
+      "keywords": ["predict", "market", "forecast", "probability"],
+      "domains": ["research", "analytics"],
+      "source": "local"
+    },
+    {
+      "name": "joko-orchestrator",
+      "description": "Task orchestration and agent coordination",
+      "keywords": ["orchestrate", "coordinate", "delegate", "team"],
+      "domains": ["orchestration"],
+      "source": "local"
+    },
+    {
+      "name": "olympic-orchestrator",
+      "description": "High-performance team orchestration",
+      "keywords": ["orchestrate", "team", "performance", "optimize"],
+      "domains": ["orchestration"],
+      "source": "local"
+    },
+    {
+      "name": "receiving-code-review",
+      "description": "Handle code review feedback professionally",
+      "keywords": ["review", "feedback", "respond", "critique"],
+      "domains": ["development", "quality"],
+      "source": "local"
+    },
+    {
+      "name": "requesting-code-review",
+      "description": "Request effective code reviews",
+      "keywords": ["review", "request", "pr", "merge"],
+      "domains": ["development", "quality"],
+      "source": "local"
+    },
+    {
+      "name": "verification-before-completion",
+      "description": "Verify work meets requirements before completion",
+      "keywords": ["verify", "complete", "check", "validate"],
+      "domains": ["quality"],
+      "source": "local"
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "description": "Run multiple agents in parallel for speed",
+      "keywords": ["parallel", "agents", "concurrent", "dispatch"],
+      "domains": ["execution"],
+      "source": "local"
+    },
+    {
+      "name": "using-superpowers",
+      "description": "Load and utilize skills effectively",
+      "keywords": ["skill", "load", "superpower", "capability"],
+      "domains": ["meta"],
+      "source": "local"
+    },
+    {
+      "name": "subagent-driven-development",
+      "description": "Multi-agent development with specialized roles",
+      "keywords": ["subagent", "specialist", "delegate", "team"],
+      "domains": ["development"],
+      "source": "local"
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "description": "Complete development work and prepare for merge",
+      "keywords": ["finish", "complete", "merge", "branch"],
+      "domains": ["development"],
+      "source": "local"
+    },
+    {
+      "name": "using-git-worktrees",
+      "description": "Isolated worktrees for feature development",
+      "keywords": ["git", "worktree", "isolate", "branch"],
+      "domains": ["development"],
+      "source": "local"
+    },
+    {
+      "name": "agent-docs",
+      "description": "Create documentation for agents and skills",
+      "keywords": ["docs", "documentation", "agent", "spec"],
+      "domains": ["documentation"],
+      "source": "local"
+    },
+    {
+      "name": "gemini-image-generator",
+      "description": "Generate images using Gemini AI",
+      "keywords": ["image", "generate", "gemini", "picture"],
+      "domains": ["content", "media"],
+      "source": "local"
+    },
+    {
+      "name": "content-creator",
+      "description": "Multi-platform content generation via browser automation",
+      "keywords": ["create content", "generate", "post", "video", "image", "tiktok", "instagram", "linkedin", "twitter"],
+      "domains": ["marketing", "content", "social-media"],
+      "platforms": ["chatgpt", "gemini", "grok", "google-flow", "canva"],
+      "source": "local"
+    },
+    {
+      "name": "google-canvas",
+      "description": "Google Canvas workspace automation",
+      "keywords": ["canvas", "google", "document", "spreadsheet", "slides"],
+      "domains": ["productivity"],
+      "source": "local"
+    },
+    {
+      "name": "customer-support",
+      "description": "Automated customer support via browser",
+      "keywords": ["support", "ticket", "help", "customer", "email"],
+      "domains": ["operations", "support"],
+      "source": "local"
+    },
+    {
+      "name": "self-improving-agent",
+      "description": "Continuous AI learning from feedback",
+      "keywords": ["improve", "learn", "feedback", "iterate", "optimize"],
+      "domains": ["intelligence"],
+      "source": "local"
+    },
+    {
+      "name": "market-research",
+      "description": "Market intelligence gathering and analysis",
+      "keywords": ["market", "research", "competitor", "trend", "analysis"],
+      "domains": ["research", "intelligence"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "project-management",
+      "description": "Task and project coordination",
+      "keywords": ["project", "task", "manage", "deadline", "sprint"],
+      "domains": ["operations"],
+      "source": "local"
+    },
+    {
+      "name": "analytics-reporting",
+      "description": "Data analytics and reporting",
+      "keywords": ["analytics", "report", "data", "metrics", "dashboard"],
+      "domains": ["analytics", "operations"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "revenue-team",
+      "description": "Revenue orchestration - marketing, sales, BD, content",
+      "keywords": ["revenue", "sales", "deals", "marketing", "partnerships", "campaign", "close deal", "generate leads"],
+      "domains": ["orchestration", "revenue"],
+      "source": "local"
+    },
+    {
+      "name": "operations-team",
+      "description": "Operations orchestration - projects, support, research",
+      "keywords": ["operations", "project", "support", "research", "manage", "help", "sprint"],
+      "domains": ["orchestration", "operations"],
+      "source": "local"
+    },
+    {
+      "name": "product-team",
+      "description": "Product orchestration - development, QA, deployment",
+      "keywords": ["product", "build", "develop", "ship", "deploy", "release", "feature"],
+      "domains": ["orchestration", "product"],
+      "source": "local"
+    },
+    {
+      "name": "governance-team",
+      "description": "Quality orchestration - reviews, docs, compliance",
+      "keywords": ["governance", "review", "docs", "compliance", "quality", "audit", "documentation"],
+      "domains": ["orchestration", "governance"],
+      "source": "local"
+    },
+    {
+      "name": "ab-test-setup",
+      "description": "A/B test configuration and setup",
+      "keywords": ["ab test", "split test", "experiment", "variant"],
+      "domains": ["marketing", "analytics"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "agent-browser",
+      "description": "Browser automation for web tasks",
+      "keywords": ["browser", "automate", "web", "scrape", "navigate"],
+      "domains": ["automation", "browser"],
+      "source": "external",
+      "skill_source": "vercel-labs/agent-browser"
+    },
+    {
+      "name": "analytics-tracking",
+      "description": "Analytics implementation and tracking",
+      "keywords": ["analytics", "track", "pixel", "measurement", "ga4"],
+      "domains": ["marketing", "analytics"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "browser-use",
+      "description": "Browser automation using AI",
+      "keywords": ["browser", "ai", "automation", "web", "scrape"],
+      "domains": ["automation", "browser"],
+      "source": "external",
+      "skill_source": "browser-use/browser-use"
+    },
+    {
+      "name": "competitor-alternatives",
+      "description": "Competitor analysis and alternatives",
+      "keywords": ["competitor", "alternative", "comparison", "vs"],
+      "domains": ["research", "marketing"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "content-strategy",
+      "description": "Content marketing strategy",
+      "keywords": ["content", "strategy", "plan", "editorial"],
+      "domains": ["marketing", "content"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "copy-editing",
+      "description": "Copy editing and proofreading",
+      "keywords": ["copy", "edit", "proofread", "polish"],
+      "domains": ["content"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "copywriting",
+      "description": "Professional copywriting for marketing",
+      "keywords": ["copywriting", "write", "ad", "promo", "cta"],
+      "domains": ["marketing", "content"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "email-sequence",
+      "description": "Email marketing sequences",
+      "keywords": ["email", "sequence", "automation", "newsletter", "drip"],
+      "domains": ["marketing", "email"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "form-cro",
+      "description": "Form conversion optimization",
+      "keywords": ["form", "cro", "conversion", "optimize", "field"],
+      "domains": ["marketing", "cro"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "free-tool-strategy",
+      "description": "Free tool marketing strategy",
+      "keywords": ["free", "tool", "freemium", "lead magnet"],
+      "domains": ["marketing", "growth"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "launch-strategy",
+      "description": "Product launch strategy",
+      "keywords": ["launch", "release", "go live", "announce"],
+      "domains": ["marketing", "product"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "marketing-ideas",
+      "description": "Marketing ideas generation",
+      "keywords": ["marketing", "ideas", "campaign", "brainstorm"],
+      "domains": ["marketing"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "marketing-psychology",
+      "description": "Marketing psychology and persuasion",
+      "keywords": ["psychology", "persuasion", "influence", "behavior"],
+      "domains": ["marketing", "psychology"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "onboarding-cro",
+      "description": "Onboarding conversion optimization",
+      "keywords": ["onboarding", "cro", "conversion", "welcome"],
+      "domains": ["marketing", "cro"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "page-cro",
+      "description": "Page-level conversion optimization",
+      "keywords": ["page", "cro", "landing", "conversion", "optimize"],
+      "domains": ["marketing", "cro"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "paid-ads",
+      "description": "Paid advertising campaigns",
+      "keywords": ["ads", "paid", "advertising", "ppc", "campaign"],
+      "domains": ["marketing", "advertising"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "paywall-upgrade-cro",
+      "description": "Paywall and upgrade conversion optimization",
+      "keywords": ["paywall", "upgrade", "subscription", "convert"],
+      "domains": ["marketing", "cro", "subscription"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "popup-cro",
+      "description": "Popup conversion optimization",
+      "keywords": ["popup", "modal", "cro", "conversion", "lead"],
+      "domains": ["marketing", "cro"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "pricing-strategy",
+      "description": "Pricing strategy and optimization",
+      "keywords": ["pricing", "price", "strategy", "pricing page"],
+      "domains": ["marketing", "strategy"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "product-marketing-context",
+      "description": "Product marketing context and positioning",
+      "keywords": ["product", "marketing", "positioning", "messaging"],
+      "domains": ["marketing", "product"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "programmatic-seo",
+      "description": "Programmatic SEO strategy",
+      "keywords": ["seo", "programmatic", "pages", "dynamic"],
+      "domains": ["marketing", "seo"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "referral-program",
+      "description": "Referral program strategy",
+      "keywords": ["referral", "refer", "viral", "referral program"],
+      "domains": ["marketing", "growth"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "schema-markup",
+      "description": "Schema.org markup implementation",
+      "keywords": ["schema", "seo", "structured data", "json-ld"],
+      "domains": ["marketing", "seo"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "seo-audit",
+      "description": "SEO audit and analysis",
+      "keywords": ["seo", "audit", "optimize", "ranking"],
+      "domains": ["marketing", "seo"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "signup-flow-cro",
+      "description": "Signup flow conversion optimization",
+      "keywords": ["signup", "registration", "cro", "conversion"],
+      "domains": ["marketing", "cro"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "social-content",
+      "description": "Social media content creation",
+      "keywords": ["social", "content", "post", "twitter", "linkedin"],
+      "domains": ["marketing", "content", "social-media"],
+      "source": "external",
+      "skill_source": "coreyhaines31/marketingskills"
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "description": "Vercel composition patterns",
+      "keywords": ["vercel", "composition", "pattern", "react"],
+      "domains": ["development"],
+      "source": "external",
+      "skill_source": "vercel-labs/agent-skills"
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "description": "React best practices for Vercel",
+      "keywords": ["react", "vercel", "best practices", "optimize"],
+      "domains": ["development"],
+      "source": "external",
+      "skill_source": "vercel-labs/agent-skills"
+    },
+    {
+      "name": "vercel-react-native-skills",
+      "description": "React Native skills for Vercel",
+      "keywords": ["react native", "mobile", "vercel", "app"],
+      "domains": ["development"],
+      "source": "external",
+      "skill_source": "vercel-labs/agent-skills"
+    },
+    {
+      "name": "web-design-guidelines",
+      "description": "Web design guidelines and principles",
+      "keywords": ["design", "web", "ui", "ux", "guidelines"],
+      "domains": ["design", "development"],
+      "source": "external",
+      "skill_source": "vercel-labs/agent-skills"
+    }
+  ],
+  "teams": [
+    {
+      "name": "revenue-team",
+      "skills": ["marketing", "sales", "business-development", "content-creator"],
+      "keywords": ["revenue", "sales", "deals", "marketing", "partnerships", "close deal", "generate leads", "campaign"],
+      "directive_patterns": ["close deal", "generate leads", "marketing campaign", "get customers"]
+    },
+    {
+      "name": "operations-team",
+      "skills": ["project-management", "customer-support", "market-research"],
+      "keywords": ["operations", "project", "support", "research", "manage", "help"],
+      "directive_patterns": ["manage project", "research market", "handle support"]
+    },
+    {
+      "name": "product-team",
+      "skills": ["subagent-driven-development", "verification-before-completion", "finishing-a-development-branch"],
+      "keywords": ["product", "build", "develop", "ship", "deploy"],
+      "directive_patterns": ["build feature", "ship product", "develop"]
+    },
+    {
+      "name": "governance-team",
+      "skills": ["receiving-code-review", "agent-docs", "systematic-debugging"],
+      "keywords": ["governance", "review", "docs", "compliance", "quality"],
+      "directive_patterns": ["review code", "write docs", "ensure quality"]
+    }
+  ]
+}

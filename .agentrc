@@ -1,0 +1,56 @@
+# .agentrc - Auto-Activation Configuration
+# One-Person AI Company Workforce
+
+version: "1.0"
+
+auto_activation:
+  enabled: true
+  method: "keywords"  # keywords or embeddings (upgradeable)
+  confidence_threshold: 0.7
+  fallback_to_ask: true
+
+company_info:
+  name: "One-Person Company"
+  owner: "You (Human)"
+  industry: "General"
+
+company_policies:
+  transparency:
+    enabled: true
+    disclosure_required: ["legal", "financial", "customer-facing"]
+  data_privacy:
+    enabled: true
+    no_external_sharing: true
+  responsible_ai:
+    enabled: true
+    human_review_for: ["contracts", "payments", "terminations"]
+
+skill_loading:
+  default_stack: ["using-superpowers"]
+  auto_load_related: true
+
+quality_standards:
+  self_grade_required: true
+  iteration_on_fail: true
+  max_iterations: 3
+
+# Skill keyword mappings for auto-activation
+skill_keywords:
+  brainstorming: ["brainstorm", "ideas", "design", "think", "explore"]
+  writing-plans: ["plan", "create plan", "implementation", "roadmap", "tasks"]
+  executing-plans: ["execute", "run plan", "implement", "do it"]
+  marketing: ["marketing", "campaign", "brand", "awareness"]
+  sales: ["sales", "deal", "close", "pipeline", "crm"]
+  business-development: ["bd", "partnership", "deal", "growth", "expand"]
+  content-creator: ["create content", "generate", "post", "video", "image", "tiktok", "instagram", "linkedin", "twitter"]
+  customer-support: ["support", "ticket", "help", "customer", "email"]
+  market-research: ["market", "research", "competitor", "trend", "analysis"]
+  project-management: ["project", "task", "manage", "deadline", "sprint"]
+  self-improving-agent: ["improve", "learn", "feedback", "iterate", "optimize"]
+
+# Team orchestrator triggers
+team_triggers:
+  revenue-team: ["revenue", "sales", "deals", "marketing", "partnerships", "close deal", "generate leads", "campaign"]
+  operations-team: ["operations", "project", "support", "research", "manage", "help"]
+  product-team: ["product", "build", "develop", "ship", "deploy"]
+  governance-team: ["review", "docs", "compliance", "quality", "audit"]
