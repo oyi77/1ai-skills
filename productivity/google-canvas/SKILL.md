@@ -1,49 +1,181 @@
 ---
 name: google-canvas
-description: Use when creating, opening, reading, editing, or collaborating on Google Canvas documents through browser automation.
+description: Use when creating, opening, reading, editing, or collaborating on Google Canvas documents and Gemini Canvas shared applications through browser automation.
 ---
 
 # Google Canvas Skill
 
 ## Overview
 
-Full lifecycle Google Canvas automation — create new documents, open shared canvases by URL, read content, edit existing documents, manage collaboration, and handle permissions. All via browser at `canvas.google.com`.
+Full lifecycle Google Canvas and Gemini Canvas automation — create new documents, open shared canvases by URL, interact with embedded applications, read content, edit existing documents, manage collaboration, and handle permissions. Supports both traditional Canvas documents and Gemini-powered interactive applications.
+
+**Access**: 
+- Google Canvas: `canvas.google.com`
+- Gemini Canvas: `gemini.google.com/share/{id}`
 
 ## When to Use
 
 - Create new Google Canvas documents (doc, sheet, code, data)
-- Open and read shared Canvas documents by URL
+- Open and interact with Gemini Canvas shared applications
+- Read content from Canvas documents or embedded apps
 - Edit existing Canvas content (append, replace, modify)
 - Collaborate on shared canvases (comment, suggest)
 - Extract data from Canvas documents
+- Interact with AI-powered applications in Gemini Canvas
 - Manage sharing permissions
 
 ## When NOT to Use
 
-- Traditional Google Docs/Sheets/Slides at `docs.google.com` (use google-workspace)
+- Traditional Google Docs/Sheets/Slides at `docs.google.com` (use `productivity/google-workspace`)
 - When you need direct API access (use Google Workspace MCP)
 - Simple text editing (use local files instead)
 
-## Quick Reference
+---
 
-| Action | URL Pattern |
-|--------|-------------|
-| Home | `canvas.google.com` |
-| New doc | Click "+ New" → select type |
-| Open shared | `canvas.google.com/doc/{document-id}` |
-| Open by link | Paste shared URL in browser |
+## Gemini Canvas Shared Applications
 
-## Common Mistakes
+### Overview
 
-- Confusing Google Canvas (`canvas.google.com`) with Google Docs (`docs.google.com`) — they are different products
-- Not waiting for content to fully load before reading
-- Trying to edit without proper permissions (viewer vs editor)
-- Not handling auth prompts when opening shared documents
-- Forgetting to save/sync before navigating away
+Gemini Canvas can host interactive AI-powered applications accessible via share links. These apps run in iframes and provide specialized functionality beyond traditional documents.
+
+### Accessing Shared Applications
+
+**URL Pattern**: `https://gemini.google.com/share/{share-id}`
+
+**Login Workflow**:
+```javascript
+// 1. Navigate to shared URL
+window.location.href = 'https://gemini.google.com/share/e5bf9afa6676';
+
+// 2. Wait for page load
+await new Promise(r => setTimeout(r, 3000));
+
+// 3. Focus iframe (app runs in cross-origin iframe)
+const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
+// Click center to focus iframe
+
+// 4. Tab to input field
+// Press Tab key
+
+// 5. Enter email
+// Type email address
+
+// 6. Submit
+// Press Enter
+```
+
+**Common Login Elements**:
+- Email input field (usually centered)
+- Submit button or Enter key submission
+- Verification/loading screen
+- Dashboard after successful login
+
+### Example: Affiliate GO Foto Studio
+
+**Tested Application**: AI-powered photo studio for affiliate marketing content generation.
+
+**Interface Structure**:
+
+#### Sidebar Navigation
+- **Beranda (Home)**: Dashboard with AI Assistant
+- **Membuat Model**: AI model generation from photos
+- **Mockup Studio**: Product visualization templates
+- **POV Tangan**: Hand-holding product shots
+- **Foto Touring**: Travel/car-themed staging
+- **POV Mirror Selfie**: Mirror-style product shots
+- **Foto Produk Affiliate**: Professional product staging
+- **Affiliate Islami**: Ramadan/Lebaran themed content
+
+#### Header Elements
+- **Cici Button**: AI Assistant chatbot toggle
+- **Logout Button**: End session
+- **Collapse Sidebar**: Expand workspace
+
+### Interaction Patterns for Embedded Apps
+
+#### Navigation
+```javascript
+// Click sidebar items (approximate coordinates)
+// Sidebar is ~15% of viewport width (~250px on 1710px screen)
+
+// Example: Click "Mockup Studio"
+const sidebarX = 100; // Left sidebar area
+const mockupY = 500; // Approximate Y position
+// Click at (sidebarX, mockupY)
+```
+
+#### Content Generation Workflow
+```
+1. Select Module
+   - Click sidebar item (e.g., "Mockup Studio")
+   
+2. Upload Content
+   - Find upload zone (dashed rectangle)
+   - Click or drag-and-drop file
+   - Supported: PNG, JPG, HEIC (max 10MB)
+   
+3. Configure Settings
+   - Model/Template selection
+   - Aspect ratio: 1:1, 16:9, 3:4, 9:16
+   - Theme selection
+   
+4. Generate
+   - Click primary action button
+   - Example: "Generate 7 Mockup"
+   
+5. View Results
+   - Results appear in "Hasil" (Result) panel
+   - Download or save generated content
+```
+
+#### AI Assistant (Cici)
+```javascript
+// Toggle AI assistant
+// Click "Cici" button in header (top-right area)
+// Approximate coordinates: X=905, Y=115
+
+// Use for:
+// - Creative suggestions
+// - Prompt refinement
+// - Troubleshooting
+// - Feature guidance
+```
+
+### Technical Considerations
+
+**Cross-Origin Iframes**:
+- Apps run in `shim.html` iframes
+- Direct DOM access limited
+- Use pixel-based clicking or keyboard navigation
+- Focus iframe before interactions
+
+**Element Selectors**:
+```javascript
+// Since iframe is cross-origin, use coordinate-based clicking
+// or keyboard navigation
+
+// Focus iframe
+click(centerX, centerY);
+
+// Tab navigation
+pressKey('Tab');
+
+// Type in focused field
+type('text content');
+
+// Submit
+pressKey('Enter');
+```
+
+**File Uploads**:
+- Handle via browser file picker
+- Drag-and-drop simulation
+- Upload zones are large dashed rectangles
 
 ---
 
-## Core Workflows
+## Google Canvas Documents
 
 ### 1. Create New Canvas Document
 
@@ -206,22 +338,152 @@ Google Canvas has built-in AI capabilities:
 
 ---
 
+## Complete Automation Examples
+
+### Example 1: Access Gemini Canvas App
+
+```javascript
+// Complete workflow: Open shared app and navigate
+async function accessGeminiCanvasApp(shareUrl, loginEmail) {
+  // 1. Navigate to shared URL
+  window.location.href = shareUrl;
+  await new Promise(r => setTimeout(r, 5000));
+  
+  // 2. Focus iframe
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+  // Click center to focus
+  
+  // 3. Tab to email input
+  // Press Tab
+  
+  // 4. Enter email
+  // Type loginEmail
+  
+  // 5. Submit
+  // Press Enter
+  
+  // 6. Wait for dashboard load
+  await new Promise(r => setTimeout(r, 5000));
+  
+  return 'App loaded successfully';
+}
+
+// Usage
+await accessGeminiCanvasApp(
+  'https://gemini.google.com/share/e5bf9afa6676',
+  'user@gmail.com'
+);
+```
+
+### Example 2: Generate Content in Embedded App
+
+```javascript
+// Workflow: Upload and generate in Affiliate GO
+async function generateMockup(productImagePath) {
+  // 1. Click Mockup Studio in sidebar
+  // Click at (100, 500)
+  
+  // 2. Wait for module to load
+  await new Promise(r => setTimeout(r, 2000));
+  
+  // 3. Upload product image
+  // Click upload zone or use file picker
+  // Upload productImagePath
+  
+  // 4. Select template (e.g., "Manekin")
+  // Click template button
+  
+  // 5. Choose aspect ratio (e.g., 1:1)
+  // Click aspect ratio button
+  
+  // 6. Generate
+  // Click "Generate 7 Mockup" button
+  
+  // 7. Wait for generation
+  await new Promise(r => setTimeout(r, 30000));
+  
+  // 8. Download results
+  // Right-click generated images and save
+  
+  return 'Mockups generated successfully';
+}
+```
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+**Issue**: Cannot access iframe content
+- **Cause**: Cross-origin restrictions
+- **Solution**: Use pixel-based clicking or keyboard navigation
+
+**Issue**: Login not working
+- **Cause**: Input field not focused
+- **Solution**: Click center of page first, then Tab to input
+
+**Issue**: Sidebar navigation not responding
+- **Cause**: Page not fully loaded
+- **Solution**: Wait 5-10 seconds after page load
+
+**Issue**: Upload not working
+- **Cause**: File picker requires user interaction
+- **Solution**: Use browser automation file upload methods
+
+**Issue**: Generated content not appearing
+- **Cause**: Generation takes time
+- **Solution**: Wait 30-60 seconds for AI processing
+
+**Issue**: "You need access" message
+- **Cause**: Not logged in or no permissions
+- **Solution**: Login with authorized email address
+
+---
+
 ## URL Patterns
 
 | Action | URL |
 |--------|-----|
-| Home/Dashboard | `https://canvas.google.com` |
-| Specific document | `https://canvas.google.com/doc/{id}` |
-| New document | Create via UI from home page |
+| Google Canvas Home | `https://canvas.google.com` |
+| Canvas Document | `https://canvas.google.com/doc/{id}` |
+| Gemini Canvas Shared App | `https://gemini.google.com/share/{id}` |
+| New Canvas Document | Create via UI from home page |
+
+---
 
 ## Integration with Other Skills
 
-- `google-flow` — For video generation workflows
-- `content-creator` — Canvas as content drafting tool
-- `marketing` — Canvas for campaign planning docs
-- `mckinsey-research` — Canvas for strategy deliverables
+- `productivity/google-flow` — For video generation workflows
+- `content/gemini-image-generator` — For image generation
+- `marketing/content-creator` — Canvas as content drafting tool
+- `marketing/ads-manager` — Canvas for campaign planning docs
+- `research/mckinsey-research` — Canvas for strategy deliverables
 
-## Files
+---
 
-- `canvas-templates/` — Reusable document templates
-- `canvas-output/` — Downloaded/exported documents
+## Best Practices
+
+### For Gemini Canvas Apps
+
+1. **Always wait for iframe load**: 5-10 seconds after navigation
+2. **Focus iframe first**: Click center before interactions
+3. **Use keyboard navigation**: Tab, Enter for cross-origin iframes
+4. **Handle file uploads carefully**: May require automation-specific methods
+5. **Wait for AI generation**: 30-60 seconds for content generation
+6. **Download immediately**: Results may be session-based
+
+### For Google Canvas Documents
+
+1. **Wait for content load**: Canvas loads asynchronously
+2. **Check permissions**: Verify editor access before attempting edits
+3. **Use keyboard shortcuts**: Faster than clicking for common actions
+4. **Auto-save is automatic**: No manual save needed
+5. **Test with small edits first**: Verify access and functionality
+
+---
+
+**Last Updated**: 2026-02-16  
+**Tested**: ✅ Gemini Canvas shared app (Affiliate GO Foto Studio)  
+**Features**: Login workflow, sidebar navigation, content generation, AI assistant
