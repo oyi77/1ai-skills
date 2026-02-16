@@ -50,11 +50,38 @@
                 "keywords": [
                     "content",
                     "blog post",
-                    "social media",
                     "copywriting"
                 ],
                 "mcps": [],
                 "priority": "medium"
+            },
+            "marketing/social-media-upload": {
+                "keywords": [
+                    "post to social media",
+                    "upload to instagram",
+                    "post to x",
+                    "post to twitter",
+                    "upload to tiktok",
+                    "post to linkedin",
+                    "distribute content",
+                    "social media posting"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "marketing/social-media-engagement": {
+                "keywords": [
+                    "like posts",
+                    "comment on posts",
+                    "follow accounts",
+                    "social media engagement",
+                    "dm",
+                    "direct message",
+                    "reply to comments",
+                    "social media automation"
+                ],
+                "mcps": [],
+                "priority": "high"
             },
             "marketing/analytics-reporting": {
                 "keywords": [
