@@ -269,6 +269,18 @@
                 ],
                 "mcps": [],
                 "priority": "medium"
+            },
+            "content/grok-video-generation": {
+                "keywords": [
+                    "grok",
+                    "grok imagine",
+                    "aurora",
+                    "aurora ai",
+                    "x.ai video",
+                    "grok video"
+                ],
+                "mcps": [],
+                "priority": "medium"
             }
         },
         "mcpMapping": {
