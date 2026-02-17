@@ -69,6 +69,9 @@ class BacktestMetrics:
     max_drawdown_points: float = 0.0
     max_drawdown_money: float = 0.0
     expectancy: float = 0.0
+    starting_capital: float = 0.0
+    ending_capital: float = 0.0
+    roi_percent: float = 0.0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -83,6 +86,9 @@ class BacktestMetrics:
             "max_drawdown_points": self.max_drawdown_points,
             "max_drawdown_money": self.max_drawdown_money,
             "expectancy": self.expectancy,
+            "starting_capital": self.starting_capital,
+            "ending_capital": self.ending_capital,
+            "roi_percent": self.roi_percent,
         }
 
 
@@ -362,6 +368,15 @@ class BacktestEngine:
 
         expectancy = total_pnl_money / len(self.trades)
 
+        # Capital calculations
+        starting_capital = self.initial_balance
+        ending_capital = self.initial_balance + total_pnl_money
+        roi_percent = (
+            ((ending_capital - starting_capital) / starting_capital) * 100
+            if starting_capital > 0
+            else 0
+        )
+
         # Max drawdown
         max_dd = 0
         peak = self.initial_balance
@@ -383,6 +398,9 @@ class BacktestEngine:
             profit_factor=profit_factor,
             max_drawdown_points=max_dd,
             expectancy=expectancy,
+            starting_capital=starting_capital,
+            ending_capital=ending_capital,
+            roi_percent=roi_percent,
         )
 
     def export_trades(self, filename: str = "backtest_trades.json"):
@@ -402,15 +420,22 @@ class BacktestEngine:
         return f"""
 === Backtest Results ===
 
-Total Trades: {metrics.total_trades}
-Win Rate: {metrics.win_rate:.1f}%
-Winning: {metrics.winning_trades}
-Losing: {metrics.losing_trades}
+Capital:
+  Starting: ${metrics.starting_capital:,.2f}
+  Ending:   ${metrics.ending_capital:,.2f}
+  PnL:      ${metrics.total_pnl_money:,.2f}
+  ROI:      {metrics.roi_percent:.2f}%
 
-Total PnL (Points): {metrics.total_pnl_points:.1f}
-Total PnL ($): ${metrics.total_pnl_money:.2f}
-Average R: {metrics.avg_r:.2f}
-Profit Factor: {metrics.profit_factor:.2f}
-Expectancy: ${metrics.expectancy:.2f}
-Max Drawdown: {metrics.max_drawdown_points:.1f}%
+Trades:
+  Total:    {metrics.total_trades}
+  Wins:     {metrics.winning_trades}
+  Losses:   {metrics.losing_trades}
+  Win Rate: {metrics.win_rate:.1f}%
+
+Performance:
+  Total PnL (Points): {metrics.total_pnl_points:.1f}
+  Average R: {metrics.avg_r:.2f}
+  Profit Factor: {metrics.profit_factor:.2f}
+  Expectancy: ${metrics.expectancy:.2f}
+  Max Drawdown: {metrics.max_drawdown_points:.1f}%
 """
