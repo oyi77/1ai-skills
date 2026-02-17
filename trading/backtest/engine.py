@@ -116,6 +116,8 @@ class BacktestEngine:
         self.commission = self.config.get("commission", 0)
         self.spread_points = self.config.get("spread_points", 0)
         self.lot_size = self.config.get("lot_size", 0.01)
+        self.leverage = self.config.get("leverage", 200)
+        self.risk_percent = self.config.get("risk_percent", 1.0)
 
         # Metadata
         self._pair = self.config.get("pair", "XAUUSD")
@@ -123,6 +125,13 @@ class BacktestEngine:
         self._strategy_name = strategy.name if hasattr(strategy, "name") else "Strategy"
         self._start_date = ""
         self._end_date = ""
+
+        # Risk manager for lot sizing
+        from ..risk.manager import RiskManager, RiskConfig
+
+        self.risk_manager = RiskManager(
+            RiskConfig(leverage=self.leverage, risk_percent=self.risk_percent)
+        )
 
     def run(
         self,
@@ -319,15 +328,34 @@ class BacktestEngine:
         reason: str,
     ) -> TradeResult:
         """Create trade result from execution."""
+        # Get current account balance for lot sizing
+        current_balance = self.initial_balance
+        if self.trades:
+            last_trade = self.trades[-1]
+            current_balance = self.initial_balance + sum(
+                t.pnl_money for t in self.trades
+            )
+
+        # Calculate lot size using risk manager
+        sl_price = signal.buy_sl if side == "BUY" else signal.sell_sl
+        lot_result = self.risk_manager.calculate_lot_size(
+            account_balance=current_balance,
+            entry_price=entry_price,
+            sl_price=sl_price,
+            risk_percent=self.risk_percent,
+            leverage=self.leverage,
+        )
+        lot_size = lot_result["lot_size"]
+
         # Calculate PnL
         if side == "BUY":
             pnl_points = exit_price - entry_price
         else:
             pnl_points = entry_price - exit_price
 
-        # Convert to money: for XAUUSD, 1 point = $1 per 1 lot
-        # lot_size 0.01 = 1 oz = $0.01 per point
-        pnl_money = pnl_points * self.lot_size
+        # Convert to money: lot_size * pnl_points * point_value
+        # For XAUUSD: point_value = 0.01, so 1 point = $0.01 per 0.01 lot
+        pnl_money = pnl_points * lot_size
 
         # Determine result
         if pnl_points > 0:
@@ -348,7 +376,7 @@ class BacktestEngine:
             side=side,
             entry_price=entry_price,
             exit_price=exit_price,
-            volume=self.lot_size,
+            volume=lot_size,
             sl=signal.buy_sl if side == "BUY" else signal.sell_sl,
             tp=signal.buy_tp if side == "BUY" else signal.sell_tp,
             result=result,

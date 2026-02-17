@@ -16,6 +16,7 @@ class RiskConfig:
     fixed_lot: float = 0.01
     risk_percent: float = 1.0  # Risk 1% of account per trade
     rr_ratio: float = 2.0  # Risk:Reward ratio
+    leverage: int = 200  # Account leverage (e.g., 200, 500, 1000, 2000)
     max_spread_points: float = 30.0
     max_drawdown_percent: float = 10.0
     max_daily_trades: int = 1
@@ -79,6 +80,92 @@ class RiskManager:
         position_size = max(position_size, 0.01)
 
         return position_size
+
+    def calculate_lot_size(
+        self,
+        account_balance: float,
+        entry_price: float,
+        sl_price: float,
+        risk_percent: float = None,
+        leverage: int = None,
+        point_value: float = 0.01,
+    ) -> Dict[str, float]:
+        """
+        Calculate lot size with leverage support.
+
+        Args:
+            account_balance: Account balance in USD
+            entry_price: Entry price
+            sl_price: Stop loss price
+            risk_percent: Risk percentage (default from config)
+            leverage: Account leverage (default from config)
+            point_value: Point value for the symbol
+
+        Returns:
+            Dict with lot_size, risk_amount, max_lot, margin_required
+        """
+        if risk_percent is None:
+            risk_percent = self.config.risk_percent
+        if leverage is None:
+            leverage = self.config.leverage
+
+        # Calculate risk amount
+        risk_amount = account_balance * (risk_percent / 100)
+
+        # Calculate SL distance in points
+        sl_distance = abs(entry_price - sl_price)
+        sl_points = sl_distance / point_value if point_value > 0 else 0
+
+        # For XAUUSD: 1 lot = 100 oz
+        # Point value: 1 point = $1 per 1 lot = $0.01 per 0.01 lot
+        # Risk = lot_size * sl_points * point_value * 100 (for 1 lot = 100 oz)
+        # Simplified: Risk = lot_size * sl_points * point_value
+        if sl_points > 0 and point_value > 0:
+            lot_by_risk = risk_amount / (sl_points * point_value)
+        else:
+            lot_by_risk = self.config.fixed_lot
+
+        # Calculate max lot by leverage
+        # Max position = account_balance * leverage
+        # For XAUUSD: 1 lot = 100 oz, value = entry_price * 100
+        contract_size = 100
+        max_position = account_balance * leverage
+        max_lot = max_position / (entry_price * contract_size)
+
+        # Use the smaller of the two
+        lot_size = min(lot_by_risk, max_lot)
+
+        # Round to broker's lot step (0.01)
+        lot_size = round(lot_size, 2)
+        lot_size = max(lot_size, 0.01)  # Minimum
+
+        # Calculate actual margin required
+        margin_per_lot = entry_price * contract_size / leverage
+        margin_required = lot_size * margin_per_lot
+
+        return {
+            "lot_size": lot_size,
+            "risk_amount": risk_amount,
+            "max_lot": round(max_lot, 2),
+            "margin_required": round(margin_required, 2),
+            "sl_points": sl_points,
+        }
+
+    def get_max_lot(
+        self,
+        account_balance: float,
+        entry_price: float,
+        leverage: int = None,
+    ) -> float:
+        """Get maximum lot size based on leverage."""
+        if leverage is None:
+            leverage = self.config.leverage
+
+        contract_size = 100  # 100 oz per lot for gold
+        max_position = account_balance * leverage
+        max_lot = max_position / (entry_price * contract_size)
+
+        return round(max_lot, 2)
 
     def calculate_sl_tp(
         self,
