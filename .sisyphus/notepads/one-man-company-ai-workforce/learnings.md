@@ -35,3 +35,18 @@
 - Skills coordinate with each other through team orchestrators
 - Self-improvement loop built into self-improving-agent
 - Quality gates implemented in all team workflows
+
+## Session: 2026-02-17
+
+### Market Research Skill Refresh
+
+- Created new wrapper skill at `market-research/SKILL.md` to align with Task 10 expectations.
+- Integrated `competitor-alternatives` workflow for competitor analysis and alternatives mapping.
+- Integrated `seo-audit` workflow for SERP-based market positioning analysis.
+- Added custom browser workflows for customer research, keyword research, and product feedback analysis.
+- Added explicit quality rubric (weighted scoring + pass threshold) and concrete usage examples.
+
+### Installation Notes
+
+- `npx skills add ... --skill competitor-alternatives -g -y` completed.
+- `npx skills add ... --skill seo-audit -g -y` completed.
