@@ -63,6 +63,9 @@ class BacktestMetrics:
     strategy: str = ""
     start_date: str = ""
     end_date: str = ""
+    leverage: int = 200
+    risk_percent: float = 1.0
+    avg_lot_size: float = 0.0
     total_trades: int = 0
     winning_trades: int = 0
     losing_trades: int = 0
@@ -85,6 +88,9 @@ class BacktestMetrics:
             "strategy": self.strategy,
             "start_date": self.start_date,
             "end_date": self.end_date,
+            "leverage": self.leverage,
+            "risk_percent": self.risk_percent,
+            "avg_lot_size": self.avg_lot_size,
             "total_trades": self.total_trades,
             "winning_trades": self.winning_trades,
             "losing_trades": self.losing_trades,
@@ -415,6 +421,8 @@ class BacktestEngine:
                 strategy=self._strategy_name,
                 start_date=self._start_date,
                 end_date=self._end_date,
+                leverage=self.leverage,
+                risk_percent=self.risk_percent,
             )
 
         winning = [t for t in self.trades if t.result == "WIN"]
@@ -431,6 +439,11 @@ class BacktestEngine:
         avg_r = sum(t.r_multiple for t in self.trades) / len(self.trades)
 
         expectancy = total_pnl_money / len(self.trades)
+
+        # Average lot size
+        avg_lot = (
+            sum(t.volume for t in self.trades) / len(self.trades) if self.trades else 0
+        )
 
         # Capital calculations
         starting_capital = self.initial_balance
@@ -457,6 +470,9 @@ class BacktestEngine:
             strategy=self._strategy_name,
             start_date=self._start_date,
             end_date=self._end_date,
+            leverage=self.leverage,
+            risk_percent=self.risk_percent,
+            avg_lot_size=avg_lot,
             total_trades=len(self.trades),
             winning_trades=len(winning),
             losing_trades=len(losing),
