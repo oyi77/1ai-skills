@@ -152,14 +152,37 @@ class BacktestEngine:
         """Get unique trading dates from OHLCV data."""
         dates = set()
         for candle in ohlcv_data:
-            dates.add(candle.timestamp.date())
+            # Get the timestamp, making it timezone-aware if needed
+            ts = candle.timestamp
+            if ts.tzinfo is None:
+                # If naive, assume UTC
+                import pytz
+
+                ts = ts.replace(tzinfo=pytz.utc)
+            dates.add(ts.date())
+
+        # Return sorted dates, preserving timezone info from first candle if available
+        first_ts = ohlcv_data[0].timestamp if ohlcv_data else None
+        if first_ts and first_ts.tzinfo:
+            tz = first_ts.tzinfo
+            return sorted(
+                [
+                    datetime.combine(d, datetime.min.time()).replace(tzinfo=tz)
+                    for d in dates
+                ]
+            )
         return sorted([datetime.combine(d, datetime.min.time()) for d in dates])
 
     def _get_day_data(self, ohlcv_data: List[OHLCV], date: datetime) -> List[OHLCV]:
         """Get OHLCV data for a specific day."""
         # Get data from 2 days before to ensure we have enough
-        start = date.replace(hour=0, minute=0)
-        end = date.replace(hour=23, minute=59)
+        # Handle timezone-aware and naive datetimes
+        if date.tzinfo is None:
+            start = date.replace(hour=0, minute=0)
+            end = date.replace(hour=23, minute=59, second=59)
+        else:
+            start = date.replace(hour=0, minute=0, second=0)
+            end = date.replace(hour=23, minute=59, second=59)
 
         return [c for c in ohlcv_data if start <= c.timestamp <= end]
 

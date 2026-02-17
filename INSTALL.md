@@ -140,11 +140,24 @@ ls -la 1ai-skills/trading/
 
 Some skills require additional packages:
 
+### For Trading Skills (Python)
+
 ```bash
-# Install globally for trading skills
+# Create virtual environment (recommended to avoid conflicts)
+python3 -m venv ~/.venv/trading
+source ~/.venv/trading/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install trading dependencies
 pip install MetaTrader5    # For MT5 broker
-pip install ccxt          # For crypto exchanges
-pip install pandas pytz   # For data analysis
+pip install ccxt          # For crypto exchanges (Binance, Bybit, etc.)
+pip install pandas pytz   # For data analysis and timezone handling
+```
+
+### For Other Skills (Node.js)
+
+```bash
+# Install for all skills
+npm install
 ```
 
 ---
@@ -157,6 +170,8 @@ pip install pandas pytz   # For data analysis
 | npm install fails | Use Node.js 18+ |
 | Trading skills don't work | Install required Python packages |
 | Path issues | Verify you're in the correct agent's skills directory |
+| ModuleNotFoundError in trading | Use virtual environment: `source .venv/bin/activate` |
+| Import errors | Ensure you're running Python from project root |
 
 ---
 
