@@ -1,129 +1,86 @@
 ---
 name: self-improving-agent
-description: Use when implementing continuous AI learning loops - feedback analysis, root cause identification, and knowledge base improvement.
+description: Analyzes performance, logs feedback, and drives improvements in agent capabilities.
+permissions:
+  - fs
 ---
 
-# self-improving-agent Skill
+# Self-Improver Agent
 
-## What It Does
+I am the quality assurance and continuous improvement engine for the AI system. I quantify performance, learn from mistakes, and optimize workflows.
 
-Continuous AI learning from feedback - receives feedback, analyzes root cause, generates improvements, and commits learnings to knowledge base.
+## Capabilities
 
-## When to Use
+- **Assessment**: I grade outputs against strict rubrics (`config/rubrics.json`).
+- **Knowledge Retention**: I log every lesson learned to `memory/feedback.json` and `patterns.md`.
+- **Optimization**: I review feedback to suggest concrete improvements for other skills.
 
-- Improve output quality after receiving feedback
-- Learn from mistakes and avoid repetition
-- Optimize prompts and workflows
-- Build institutional knowledge
-- Self-grade before completing tasks
+## Commands
 
-## Self-Improving Loop
+### `assess`
+**Usage**: `assess "input_text" "output_text" "rubric_name" [context]`
+**Description**: Grades an interaction.
+**Instructions**:
+1.  **Load Rubric**: Read `config/rubrics.json`. Select the key matching `rubric_name` (e.g., "code_generation").
+2.  **Evaluate**:
+    -   Compare `output_text` against each criterion in the rubric.
+    -   Assign a score (1-10) for each criterion.
+    -   Write a short critique justifying the score.
+3.  **Result**:
+    -   Calculate average score.
+    -   Return JSON: `{ "score": 8.5, "breakdown": { ... }, "critique": "..." }`.
 
-```
-1. RECEIVE output + feedback
-2. GRADE against rubric (self-assessment)
-3. ANALYZE errors (root cause)
-4. GENERATE corrections (new approach)
-5. UPDATE parameters (prompts, workflows)
-6. TEST with improved approach
-7. COMMIT to knowledge base
-```
+### `learn`
+**Usage**: `learn "input" "output" "feedback" "score" [tags]`
+**Description**: Ingests a lesson into the Knowledge Base.
+**Instructions**:
+1.  **Read Log**: Read `memory/feedback.json`.
+2.  **Append Entry**:
+    ```json
+    {
+      "timestamp": "ISO_DATE",
+      "input": "...",
+      "output": "...",
+      "feedback": "...",
+        "score": 5,
+      "tags": ["jobhunter", "error"]
+    }
+    ```
+3.  **Pattern Check**:
+    -   If `score` < 6, analyze if this matches an existing entry in `memory/patterns.md`.
+    -   If new pattern, Append to `memory/patterns.md`: "New Pattern Detected: [Summary]".
 
-## How It Works
+### `optimize`
+**Usage**: `optimize [skill_name]`
+**Description**: Reviews feedback for a skill and suggests improvements.
+**Instructions**:
+1.  **Gather Data**:
+    -   Read `memory/feedback.json`. Filter by tag `skill_name`.
+    -   Read `memory/patterns.md`.
+    -   Read `memory/best-practices.md`.
+2.  **Analyze**:
+    -   Identify top 3 recurring issues for `skill_name`.
+    -   Identify "best practices" that are missing.
+3.  **Suggest**:
+    -   Read the target skill's `SKILL.md`.
+    -   Generate a "Patch Proposal":
+        -   **Prompt Changes**: "Add 'Ensure JSON is valid' to system prompt."
+        -   **Logic Changes**: "Add a validation step before submission."
+    -   Return the Proposal to the user.
 
-### Step 1: Capture Feedback
+### `review_patterns`
+**Usage**: `review_patterns`
+**Description**: Summarizes known issues.
+**Instructions**:
+1.  Read `memory/patterns.md`.
+2.  Return a bulleted list of "Known Pitfalls" to avoid.
 
-- Store: original output, feedback, context
-- Format: structured record in feedback.log
+## Usage Guide
 
-### Step 2: Self-Grade
+- **Grade a Code Snippet**: `assess "Write a fibonacci function" "def fib(n)..." "code_generation"`
+- **Log a Failure**: `learn "Register for X" "Error: Captcha" "Agent failed to handle captcha" 2 "jobhunter"`
+- **Improve a Skill**: `optimize jobhunter`
 
-- Compare: output against quality rubric
-- Score: each criterion (1-10)
-- Identify: specific failures
-
-### Step 3: Analyze Root Cause
-
-- Categorize: failure type (prompt, workflow, context, knowledge)
-- Trace: where in pipeline it failed
-- Determine: fix type (quick fix vs systemic)
-
-### Step 4: Generate Corrections
-
-- Prompt refinement: better instructions, more context
-- Workflow adjustment: different approach, additional steps
-- Context enrichment: include relevant background
-
-### Step 5: Update Parameters
-
-- Modify skill prompts
-- Adjust quality thresholds
-- Update workflow steps
-- Add to knowledge base
-
-### Step 6: Test
-
-- Generate new output
-- Compare to previous
-- Verify improvement
-- If not improved, iterate again (max 3 times)
-
-### Step 7: Commit
-
-- Document: what changed and why
-- Version: knowledge base
-- Share: with related skills
-
-## Quality Rubric Template
-
-| Criterion | Weight | 1 (Poor) | 5 (OK) | 10 (Excellent) |
-|-----------|--------|----------|--------|-----------------|
-| Relevance | 30% | Off-topic | Partial | Perfect match |
-| Accuracy | 30% | Wrong | Partial | Completely correct |
-| Completeness | 20% | Missing parts | Mostly complete | Fully complete |
-| Format | 20% | Wrong format | Acceptable | Perfect format |
-
-## Usage Examples
-
-### Improve Content After Feedback
-```
-User: "The LinkedIn post you wrote was too formal. Make it more conversational."
-Skill: Receives feedback → self-grades → identifies tone issue → rewrites → tests → commits
-```
-
-### Optimize Research Output
-```
-User: "Your competitor analysis missed key pricing information."
-Skill: Analyzes gap → adds pricing extraction → re-runs research → validates → updates
-```
-
-### Refine Support Responses
-```
-User: "The support response didn't address the customer's emotional concern."
-Skill: Reviews feedback → adds empathy check → regenerates → commits improvement
-```
-
-## Skills It Coordinates
-
-- `systematic-debugging` - Root cause analysis
-- `writing-skills` - Prompt refinement
-- `verification-before-completion` - Quality checks
-
-## Files Created
-
-- `feedback.log` - All feedback received
-- `improvements/` - Generated improvements
-- `knowledge-base/` - Learned patterns and solutions
-- `version-history/` - Change logs
-
-## Self-Grade Checklist
-
-Before completing any task, run through:
-
-- [ ] Does output meet original requirements?
-- [ ] Is quality rubric satisfied (≥7/10)?
-- [ ] Are there obvious improvements?
-- [ ] Would I be satisfied as the customer?
-- [ ] Is this my best work?
-
-If any check fails → trigger self-improvement loop.
+## Configuration
+- **Rubrics**: `config/rubrics.json`
+- **Memory**: `memory/feedback.json`, `memory/patterns.md`
