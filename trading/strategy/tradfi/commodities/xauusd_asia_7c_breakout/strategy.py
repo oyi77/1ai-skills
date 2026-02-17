@@ -17,7 +17,8 @@ from datetime import datetime, time
 from typing import List, Optional, Dict, Any
 import pytz
 
-from ..base import Strategy, TradingSignal, OHLCV
+from trading.strategy.base import Strategy, TradingSignal
+from trading.brokers.base import OHLCV
 
 
 class XAUUSDAsia7CBreakout(Strategy):

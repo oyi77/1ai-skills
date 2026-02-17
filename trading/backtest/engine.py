@@ -5,7 +5,7 @@ Historical strategy testing with detailed metrics.
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 import json
 
@@ -58,6 +58,14 @@ class TradeResult:
 class BacktestMetrics:
     """Backtest performance metrics."""
 
+    pair: str = ""
+    timeframe: str = ""
+    strategy: str = ""
+    start_date: str = ""
+    end_date: str = ""
+    leverage: int = 200
+    risk_percent: float = 1.0
+    avg_lot_size: float = 0.0
     total_trades: int = 0
     winning_trades: int = 0
     losing_trades: int = 0
@@ -69,9 +77,20 @@ class BacktestMetrics:
     max_drawdown_points: float = 0.0
     max_drawdown_money: float = 0.0
     expectancy: float = 0.0
+    starting_capital: float = 0.0
+    ending_capital: float = 0.0
+    roi_percent: float = 0.0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
+            "pair": self.pair,
+            "timeframe": self.timeframe,
+            "strategy": self.strategy,
+            "start_date": self.start_date,
+            "end_date": self.end_date,
+            "leverage": self.leverage,
+            "risk_percent": self.risk_percent,
+            "avg_lot_size": self.avg_lot_size,
             "total_trades": self.total_trades,
             "winning_trades": self.winning_trades,
             "losing_trades": self.losing_trades,
@@ -83,6 +102,9 @@ class BacktestMetrics:
             "max_drawdown_points": self.max_drawdown_points,
             "max_drawdown_money": self.max_drawdown_money,
             "expectancy": self.expectancy,
+            "starting_capital": self.starting_capital,
+            "ending_capital": self.ending_capital,
+            "roi_percent": self.roi_percent,
         }
 
 
@@ -96,9 +118,26 @@ class BacktestEngine:
         self.equity_curve: List[Dict[str, Any]] = []
 
         # Default config
-        self.initial_balance = self.config.get("initial_balance", 10000)
+        self.initial_balance = self.config.get("initial_balance", 100)
         self.commission = self.config.get("commission", 0)
         self.spread_points = self.config.get("spread_points", 0)
+        self.lot_size = self.config.get("lot_size", 0.01)
+        self.leverage = self.config.get("leverage", 200)
+        self.risk_percent = self.config.get("risk_percent", 1.0)
+
+        # Metadata
+        self._pair = self.config.get("pair", "XAUUSD")
+        self._timeframe = self.config.get("timeframe", "H1")
+        self._strategy_name = strategy.name if hasattr(strategy, "name") else "Strategy"
+        self._start_date = ""
+        self._end_date = ""
+
+        # Risk manager for lot sizing
+        from ..risk.manager import RiskManager, RiskConfig
+
+        self.risk_manager = RiskManager(
+            RiskConfig(leverage=self.leverage, risk_percent=self.risk_percent)
+        )
 
     def run(
         self,
@@ -109,6 +148,17 @@ class BacktestEngine:
         """Run backtest on historical data."""
         self.trades = []
         self.equity_curve = []
+
+        # Capture date range from data if not provided
+        if ohlcv_data:
+            if not start_date:
+                start_date = ohlcv_data[0].timestamp
+            if not end_date:
+                end_date = ohlcv_data[-1].timestamp
+
+        # Store date range
+        self._start_date = start_date.strftime("%Y-%m-%d") if start_date else ""
+        self._end_date = end_date.strftime("%Y-%m-%d") if end_date else ""
 
         # Filter by date if specified
         if start_date:
@@ -152,14 +202,37 @@ class BacktestEngine:
         """Get unique trading dates from OHLCV data."""
         dates = set()
         for candle in ohlcv_data:
-            dates.add(candle.timestamp.date())
+            # Get the timestamp, making it timezone-aware if needed
+            ts = candle.timestamp
+            if ts.tzinfo is None:
+                # If naive, assume UTC
+                import pytz
+
+                ts = ts.replace(tzinfo=pytz.utc)
+            dates.add(ts.date())
+
+        # Return sorted dates, preserving timezone info from first candle if available
+        first_ts = ohlcv_data[0].timestamp if ohlcv_data else None
+        if first_ts and first_ts.tzinfo:
+            tz = first_ts.tzinfo
+            return sorted(
+                [
+                    datetime.combine(d, datetime.min.time()).replace(tzinfo=tz)
+                    for d in dates
+                ]
+            )
         return sorted([datetime.combine(d, datetime.min.time()) for d in dates])
 
     def _get_day_data(self, ohlcv_data: List[OHLCV], date: datetime) -> List[OHLCV]:
-        """Get OHLCV data for a specific day."""
-        # Get data from 2 days before to ensure we have enough
-        start = date.replace(hour=0, minute=0)
-        end = date.replace(hour=23, minute=59)
+        """Get OHLCV data for a specific day plus lookback for strategy."""
+        # Get data from 5 days before to ensure we have enough lookback candles
+        # (handles gaps in hourly data from weekends/holidays)
+        if date.tzinfo is None:
+            start = date.replace(hour=0, minute=0) - timedelta(days=5)
+            end = date.replace(hour=23, minute=59, second=59)
+        else:
+            start = date.replace(hour=0, minute=0, second=0) - timedelta(days=5)
+            end = date.replace(hour=23, minute=59, second=59)
 
         return [c for c in ohlcv_data if start <= c.timestamp <= end]
 
@@ -261,14 +334,34 @@ class BacktestEngine:
         reason: str,
     ) -> TradeResult:
         """Create trade result from execution."""
+        # Get current account balance for lot sizing
+        current_balance = self.initial_balance
+        if self.trades:
+            last_trade = self.trades[-1]
+            current_balance = self.initial_balance + sum(
+                t.pnl_money for t in self.trades
+            )
+
+        # Calculate lot size using risk manager
+        sl_price = signal.buy_sl if side == "BUY" else signal.sell_sl
+        lot_result = self.risk_manager.calculate_lot_size(
+            account_balance=current_balance,
+            entry_price=entry_price,
+            sl_price=sl_price,
+            risk_percent=self.risk_percent,
+            leverage=self.leverage,
+        )
+        lot_size = lot_result["lot_size"]
+
         # Calculate PnL
         if side == "BUY":
             pnl_points = exit_price - entry_price
         else:
             pnl_points = entry_price - exit_price
 
-        # Convert to money (simplified)
-        pnl_money = pnl_points * 100  # Assuming 1 lot = 100 per point
+        # Convert to money: lot_size * pnl_points * point_value
+        # For XAUUSD: point_value = 0.01, so 1 point = $0.01 per 0.01 lot
+        pnl_money = pnl_points * lot_size
 
         # Determine result
         if pnl_points > 0:
@@ -289,7 +382,7 @@ class BacktestEngine:
             side=side,
             entry_price=entry_price,
             exit_price=exit_price,
-            volume=0.01,  # Default lot
+            volume=lot_size,
             sl=signal.buy_sl if side == "BUY" else signal.sell_sl,
             tp=signal.buy_tp if side == "BUY" else signal.sell_tp,
             result=result,
@@ -322,7 +415,15 @@ class BacktestEngine:
     def _calculate_metrics(self) -> BacktestMetrics:
         """Calculate performance metrics."""
         if not self.trades:
-            return BacktestMetrics()
+            return BacktestMetrics(
+                pair=self._pair,
+                timeframe=self._timeframe,
+                strategy=self._strategy_name,
+                start_date=self._start_date,
+                end_date=self._end_date,
+                leverage=self.leverage,
+                risk_percent=self.risk_percent,
+            )
 
         winning = [t for t in self.trades if t.result == "WIN"]
         losing = [t for t in self.trades if t.result == "LOSS"]
@@ -339,6 +440,20 @@ class BacktestEngine:
 
         expectancy = total_pnl_money / len(self.trades)
 
+        # Average lot size
+        avg_lot = (
+            sum(t.volume for t in self.trades) / len(self.trades) if self.trades else 0
+        )
+
+        # Capital calculations
+        starting_capital = self.initial_balance
+        ending_capital = self.initial_balance + total_pnl_money
+        roi_percent = (
+            ((ending_capital - starting_capital) / starting_capital) * 100
+            if starting_capital > 0
+            else 0
+        )
+
         # Max drawdown
         max_dd = 0
         peak = self.initial_balance
@@ -350,6 +465,14 @@ class BacktestEngine:
                 max_dd = dd
 
         return BacktestMetrics(
+            pair=self._pair,
+            timeframe=self._timeframe,
+            strategy=self._strategy_name,
+            start_date=self._start_date,
+            end_date=self._end_date,
+            leverage=self.leverage,
+            risk_percent=self.risk_percent,
+            avg_lot_size=avg_lot,
             total_trades=len(self.trades),
             winning_trades=len(winning),
             losing_trades=len(losing),
@@ -360,6 +483,9 @@ class BacktestEngine:
             profit_factor=profit_factor,
             max_drawdown_points=max_dd,
             expectancy=expectancy,
+            starting_capital=starting_capital,
+            ending_capital=ending_capital,
+            roi_percent=roi_percent,
         )
 
     def export_trades(self, filename: str = "backtest_trades.json"):
@@ -379,15 +505,27 @@ class BacktestEngine:
         return f"""
 === Backtest Results ===
 
-Total Trades: {metrics.total_trades}
-Win Rate: {metrics.win_rate:.1f}%
-Winning: {metrics.winning_trades}
-Losing: {metrics.losing_trades}
+Strategy: {metrics.strategy}
+Pair:     {metrics.pair}
+Timeframe: {metrics.timeframe}
+Period:   {metrics.start_date} to {metrics.end_date}
 
-Total PnL (Points): {metrics.total_pnl_points:.1f}
-Total PnL ($): ${metrics.total_pnl_money:.2f}
-Average R: {metrics.avg_r:.2f}
-Profit Factor: {metrics.profit_factor:.2f}
-Expectancy: ${metrics.expectancy:.2f}
-Max Drawdown: {metrics.max_drawdown_points:.1f}%
+Capital:
+  Starting: ${metrics.starting_capital:,.2f}
+  Ending:   ${metrics.ending_capital:,.2f}
+  PnL:      ${metrics.total_pnl_money:,.2f}
+  ROI:      {metrics.roi_percent:.2f}%
+
+Trades:
+  Total:    {metrics.total_trades}
+  Wins:     {metrics.winning_trades}
+  Losses:   {metrics.losing_trades}
+  Win Rate: {metrics.win_rate:.1f}%
+
+Performance:
+  Total PnL (Points): {metrics.total_pnl_points:.1f}
+  Average R: {metrics.avg_r:.2f}
+  Profit Factor: {metrics.profit_factor:.2f}
+  Expectancy: ${metrics.expectancy:.2f}
+  Max Drawdown: {metrics.max_drawdown_points:.1f}%
 """

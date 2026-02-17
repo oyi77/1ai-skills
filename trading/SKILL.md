@@ -133,7 +133,21 @@ backtest start=2024-01-01 end=2024-12-31
 
 ## Dependencies
 
-- MetaTrader5 Python: `pip install MetaTrader5`
-- CCXT: `pip install ccxt`
-- Pandas: `pip install pandas`
-- pytz: `pip install pytz`
+### Python Environment (Required)
+
+```bash
+# Create virtual environment in trading directory
+cd /path/to/1ai-skills/trading
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install MetaTrader5  # For MT5 broker
+pip install ccxt         # For crypto exchanges
+pip install pandas pytz  # For data analysis
+pip install yfinance     # For free XAUUSD/Gold data (no broker needed)
+```
+
+### Note
+- Run Python from project root (parent of `trading/` directory)
+- Or add `trading/` to Python path: `export PYTHONPATH=$PYTHONPATH:/path/to/1ai-skills`

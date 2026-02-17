@@ -12,11 +12,31 @@ Comprehensive trading automation system for 1ai-skills.
 
 ## Installation
 
+### Python Dependencies
+
 ```bash
+# Create virtual environment (recommended)
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
 pip install MetaTrader5
 pip install ccxt
 pip install pandas
 pip install pytz
+pip install yfinance  # For free XAUUSD/Gold data
+```
+
+### Quick Test
+
+```bash
+# Test the backtest engine
+python3 -c "
+from trading.brokers.base import OHLCV
+from trading.strategy.tradfi.commodities.xauusd_asia_7c_breakout.strategy import XAUUSDAsia7CBreakout
+from trading.backtest.engine import BacktestEngine
+print('All imports OK!')
+"
 ```
 
 ## Quick Start
