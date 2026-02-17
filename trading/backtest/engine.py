@@ -5,7 +5,7 @@ Historical strategy testing with detailed metrics.
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 import json
 
@@ -174,14 +174,14 @@ class BacktestEngine:
         return sorted([datetime.combine(d, datetime.min.time()) for d in dates])
 
     def _get_day_data(self, ohlcv_data: List[OHLCV], date: datetime) -> List[OHLCV]:
-        """Get OHLCV data for a specific day."""
-        # Get data from 2 days before to ensure we have enough
-        # Handle timezone-aware and naive datetimes
+        """Get OHLCV data for a specific day plus lookback for strategy."""
+        # Get data from 5 days before to ensure we have enough lookback candles
+        # (handles gaps in hourly data from weekends/holidays)
         if date.tzinfo is None:
-            start = date.replace(hour=0, minute=0)
+            start = date.replace(hour=0, minute=0) - timedelta(days=5)
             end = date.replace(hour=23, minute=59, second=59)
         else:
-            start = date.replace(hour=0, minute=0, second=0)
+            start = date.replace(hour=0, minute=0, second=0) - timedelta(days=5)
             end = date.replace(hour=23, minute=59, second=59)
 
         return [c for c in ohlcv_data if start <= c.timestamp <= end]

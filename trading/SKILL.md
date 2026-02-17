@@ -145,6 +145,7 @@ source .venv/bin/activate
 pip install MetaTrader5  # For MT5 broker
 pip install ccxt         # For crypto exchanges
 pip install pandas pytz  # For data analysis
+pip install yfinance     # For free XAUUSD/Gold data (no broker needed)
 ```
 
 ### Note

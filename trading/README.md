@@ -24,6 +24,7 @@ pip install MetaTrader5
 pip install ccxt
 pip install pandas
 pip install pytz
+pip install yfinance  # For free XAUUSD/Gold data
 ```
 
 ### Quick Test
