@@ -58,6 +58,11 @@ class TradeResult:
 class BacktestMetrics:
     """Backtest performance metrics."""
 
+    pair: str = ""
+    timeframe: str = ""
+    strategy: str = ""
+    start_date: str = ""
+    end_date: str = ""
     total_trades: int = 0
     winning_trades: int = 0
     losing_trades: int = 0
@@ -75,6 +80,11 @@ class BacktestMetrics:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
+            "pair": self.pair,
+            "timeframe": self.timeframe,
+            "strategy": self.strategy,
+            "start_date": self.start_date,
+            "end_date": self.end_date,
             "total_trades": self.total_trades,
             "winning_trades": self.winning_trades,
             "losing_trades": self.losing_trades,
@@ -102,9 +112,17 @@ class BacktestEngine:
         self.equity_curve: List[Dict[str, Any]] = []
 
         # Default config
-        self.initial_balance = self.config.get("initial_balance", 10000)
+        self.initial_balance = self.config.get("initial_balance", 100)
         self.commission = self.config.get("commission", 0)
         self.spread_points = self.config.get("spread_points", 0)
+        self.lot_size = self.config.get("lot_size", 0.01)
+
+        # Metadata
+        self._pair = self.config.get("pair", "XAUUSD")
+        self._timeframe = self.config.get("timeframe", "H1")
+        self._strategy_name = strategy.name if hasattr(strategy, "name") else "Strategy"
+        self._start_date = ""
+        self._end_date = ""
 
     def run(
         self,
@@ -115,6 +133,17 @@ class BacktestEngine:
         """Run backtest on historical data."""
         self.trades = []
         self.equity_curve = []
+
+        # Capture date range from data if not provided
+        if ohlcv_data:
+            if not start_date:
+                start_date = ohlcv_data[0].timestamp
+            if not end_date:
+                end_date = ohlcv_data[-1].timestamp
+
+        # Store date range
+        self._start_date = start_date.strftime("%Y-%m-%d") if start_date else ""
+        self._end_date = end_date.strftime("%Y-%m-%d") if end_date else ""
 
         # Filter by date if specified
         if start_date:
@@ -296,8 +325,9 @@ class BacktestEngine:
         else:
             pnl_points = entry_price - exit_price
 
-        # Convert to money (simplified)
-        pnl_money = pnl_points * 100  # Assuming 1 lot = 100 per point
+        # Convert to money: for XAUUSD, 1 point = $1 per 1 lot
+        # lot_size 0.01 = 1 oz = $0.01 per point
+        pnl_money = pnl_points * self.lot_size
 
         # Determine result
         if pnl_points > 0:
@@ -318,7 +348,7 @@ class BacktestEngine:
             side=side,
             entry_price=entry_price,
             exit_price=exit_price,
-            volume=0.01,  # Default lot
+            volume=self.lot_size,
             sl=signal.buy_sl if side == "BUY" else signal.sell_sl,
             tp=signal.buy_tp if side == "BUY" else signal.sell_tp,
             result=result,
@@ -351,7 +381,13 @@ class BacktestEngine:
     def _calculate_metrics(self) -> BacktestMetrics:
         """Calculate performance metrics."""
         if not self.trades:
-            return BacktestMetrics()
+            return BacktestMetrics(
+                pair=self._pair,
+                timeframe=self._timeframe,
+                strategy=self._strategy_name,
+                start_date=self._start_date,
+                end_date=self._end_date,
+            )
 
         winning = [t for t in self.trades if t.result == "WIN"]
         losing = [t for t in self.trades if t.result == "LOSS"]
@@ -388,6 +424,11 @@ class BacktestEngine:
                 max_dd = dd
 
         return BacktestMetrics(
+            pair=self._pair,
+            timeframe=self._timeframe,
+            strategy=self._strategy_name,
+            start_date=self._start_date,
+            end_date=self._end_date,
             total_trades=len(self.trades),
             winning_trades=len(winning),
             losing_trades=len(losing),
@@ -419,6 +460,11 @@ class BacktestEngine:
         """Format metrics as readable summary."""
         return f"""
 === Backtest Results ===
+
+Strategy: {metrics.strategy}
+Pair:     {metrics.pair}
+Timeframe: {metrics.timeframe}
+Period:   {metrics.start_date} to {metrics.end_date}
 
 Capital:
   Starting: ${metrics.starting_capital:,.2f}
