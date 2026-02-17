@@ -1,83 +1,175 @@
 # Installation
 
-This repository contains a collection of skills for OpenClaw.
+This repository contains a collection of skills for AI agents.
 
-## 🤖 For AI Agents
+---
 
-Choose one of the following methods to install:
+## Agent-Specific Installation
 
-### Method 1: Clone Repository (Recommended)
+Each AI agent has its own skills directory. Choose your agent below:
 
-Clone the repository directly into your OpenClaw workspace:
+---
+
+### For OpenCraw (OpenClaw)
+
+**Skills Directory**: `~/.openclaw/workspace/skills/`
 
 ```bash
-# Linux/macOS
-git clone https://github.com/oyi77/1ai-skills.git ~/.openclaw/workspace/skills/1ai-skills
+# Navigate to OpenCraw skills directory
+cd ~/.openclaw/workspace/skills
 
-# Windows
-git clone https://github.com/oyi77/1ai-skills.git C:\Users\USER\.openclaw\workspace\skills\1ai-skills
+# Clone the repository
+git clone https://github.com/oyi77/1ai-skills.git
+
+# Install dependencies
+cd 1ai-skills
+npm install
 ```
 
-### Method 2: Copy Skills Folder
+**Skill Path**: `~/.openclaw/workspace/skills/1ai-skills/`
 
-If you already have a workspace with other content:
+---
 
-1. Clone this repo to a temporary location
-2. Copy the contents of this repo into your workspace's `skills/` directory
-3. **IMPORTANT**: Do not overwrite critical files like `.git`, `memory/`, or config files.
+### For OpenCode
+
+**Skills Directory**: `~/.opencode/skills/` or `~/.config/opencode/skills/`
 
 ```bash
-# Example
-cp -r 1ai-skills/* ~/.openclaw/workspace/skills/
+# Navigate to OpenCode skills directory
+cd ~/.opencode/skills
+
+# Or if using config directory
+cd ~/.config/opencode/skills
+
+# Clone the repository
+git clone https://github.com/oyi77/1ai-skills.git
+
+# Install dependencies
+cd 1ai-skills
+npm install
 ```
 
-### Method 3: ClawHub CLI
-
-If you have the `clawhub` CLI tool installed:
-
+**Alternative using OpenCode CLI**:
 ```bash
-clawhub install oyi77/1ai-skills
+opencode skills install oyi77/1ai-skills
 ```
 
-### ✨ Final Step: Initialize
+**Skill Path**: `~/.opencode/skills/1ai-skills/` or `~/.config/opencode/skills/1ai-skills/`
 
-Run the installation script to verify and boot up the system (Works on Windows/Mac/Linux):
+---
+
+### For Claude Code
+
+**Skills Directory**: Claude Code uses npm packages. Install globally:
 
 ```bash
-cd ~/.openclaw/workspace/skills/1ai-skills
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
+
+# Install skills package
+claude install paijo/1ai-skills
+
+# Or install specific skill
+claude install paijo/1ai-skills --skill trading
+```
+
+**Alternative: Manual Clone**
+```bash
+# Claude Code may use different locations
+# Check Claude settings for custom skills path
+
+# Common locations:
+cd ~/.claude/skills
+# or
+cd ~/.config/claude/skills
+
+# Clone
+git clone https://github.com/oyi77/1ai-skills.git
+```
+
+**Skill Path**: Varies by Claude Code version - check with `claude settings`
+
+---
+
+### For Other Agents (Cursor, Windsurf, etc.)
+
+```bash
+# Find your agent's skills directory
+# Common locations:
+# - ~/.cursor/skills
+# - ~/.windsurf/skills
+# - ~/.github/skills
+
+# Clone to your agent's skills directory
+cd YOUR_AGENT_SKILLS_DIR
+git clone https://github.com/oyi77/1ai-skills.git
+```
+
+---
+
+## Quick Install (All Agents)
+
+If you're unsure which agent you're using, try this universal method:
+
+```bash
+# Try OpenCraw location first
+mkdir -p ~/.openclaw/workspace/skills
+cd ~/.openclaw/workspace/skills
+git clone https://github.com/oyi77/1ai-skills.git
+cd 1ai-skills
 npm install
 ```
 
 ---
 
-## 👤 For Humans
+## Verification
 
-1. **Navigate to your workspace skills folder**:
-   ```bash
-   cd ~/.openclaw/workspace/skills
-   ```
+After installation, verify by checking:
 
-2. **Clone the repository**:
-   ```bash
-   git clone https://github.com/oyi77/1ai-skills.git
-   ```
+```bash
+# Check SKILL_INDEX.json exists
+ls -la 1ai-skills/SKILL_INDEX.json
 
-3. **Verify installation**:
-   ```bash
-   ls -l 1ai-skills/SKILL_INDEX.json
-   ```
-
-4. **(Optional) Configure Environment**:
-   Copy `.env.example` to `.env` inside the `1ai-skills` folder and add your API keys.
+# Or check trading skills
+ls -la 1ai-skills/trading/
+```
 
 ---
 
-## 📦 Verified Skills Reference
+## Dependencies
 
-Once installed, the following skill paths will be available:
+Some skills require additional packages:
 
-- `marketing/social-media-upload`
-- `operations/payment-invoicing`
-- `core/find-skills`
-- `content/grok-video-generation`
-- ...and 70+ more.
+```bash
+# Install globally for trading skills
+pip install MetaTrader5    # For MT5 broker
+pip install ccxt          # For crypto exchanges
+pip install pandas pytz   # For data analysis
+```
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Skills not loading | Check agent's skill directory path |
+| npm install fails | Use Node.js 18+ |
+| Trading skills don't work | Install required Python packages |
+| Path issues | Verify you're in the correct agent's skills directory |
+
+---
+
+## Skill Categories Available
+
+After installation, you'll have access to:
+
+- **Trading**: trading, trading-researcher, trading-strategist, trading-risk-manager, trading-executor, trading-team, xauusd-asia-7c-breakout
+- **Planning**: brainstorming, writing-plans, executing-plans
+- **Development**: test-driven-development, systematic-debugging, subagent-driven-development
+- **Marketing**: marketing, sales, seo-audit, competitor-alternatives
+- **Content**: humanizer, writing-skills, content-creator
+- **Research**: mckinsey-research, polymarket-analyst
+- **Operations**: customer-support, project-management
+- **Productivity**: google-workspace, email-automation
+- **And 70+ more skills...**
