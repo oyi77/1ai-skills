@@ -1,92 +1,143 @@
 ---
 name: content-scheduler
-description: Schedule social media posts across multiple platforms. Queue content, optimize posting times, manage content calendar, and automate distribution for consistent social media presence.
+description: Schedule and manage content publishing across platforms with Notion calendar
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# Content Scheduler Skill
+# Content Scheduler
 
-## Overview
+Schedule and manage content publishing across platforms. Use Notion as a calendar and content repository, with Slack notifications for publishing alerts.
 
-Automate content scheduling across X, Instagram, TikTok, and LinkedIn. Queue posts in advance, optimize posting times, manage content calendar, and maintain consistent social media presence without manual posting.
+## Required Tools
 
-## When to Use
-
-- Schedule posts in advance
-- Batch content creation
-- Maintain posting consistency
-- Optimize posting times
-- Plan content calendar
-- Automate recurring posts
-- Cross-platform scheduling
-
-## Core Features
-
-### 1. Queue Management
-```javascript
-const contentQueue = {
-  platform: 'x',  // x, instagram, tiktok, linkedin
-  content: {
-    text: 'Check out our latest AI video!',
-    media: '/path/to/video.mp4',
-    hashtags: ['#AI', '#Video']
-  },
-  scheduledTime: '2026-02-20T10:00:00+07:00',
-  status: 'queued'  // queued, posted, failed
-};
-```
-
-### 2. Optimal Time Suggestions
-```javascript
-const optimalTimes = {
-  x: ['12:00', '15:00', '17:00'],
-  instagram: ['11:00', '13:00', '19:00'],
-  tiktok: ['07:00', '12:00', '20:00'],
-  linkedin: ['08:00', '12:00', '17:00']
-};
-```
-
-### 3. Recurring Posts
-```javascript
-const recurringPost = {
-  content: 'Weekly tip: ...',
-  schedule: 'every Monday at 10:00',
-  platforms: ['x', 'linkedin']
-};
-```
-
-### 4. Content Calendar View
-```
-Week of Feb 17-23, 2026
-Mon: 3 posts (X, Instagram, LinkedIn)
-Tue: 2 posts (TikTok, X)
-Wed: 4 posts (All platforms)
-...
-```
-
-## Integration with social-media-upload
-```javascript
-async function scheduleAndPost(queuedPost) {
-  const now = new Date();
-  const scheduledTime = new Date(queuedPost.scheduledTime);
-  
-  if (now >= scheduledTime) {
-    // Time to post
-    await uploadToPlatform(
-      queuedPost.platform,
-      queuedPost.content
-    );
-    queuedPost.status = 'posted';
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@makenotion/mcp-server"],
+      "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
   }
 }
 ```
 
-## Best Practices
-- Schedule 1-2 weeks in advance
-- Post 1-3 times per day per platform
-- Use analytics to optimize times
-- Batch create content weekly
-- Mix content types (video, image, text)
+## MCP References
+
+- **Notion MCP**: https://github.com/makenotion/mcp-server-notion
+- **Slack MCP**: https://github.com/modelcontextprotocol/server-slack
+
+## Capabilities
+
+- Manage content calendar in Notion
+- Schedule posts for multiple platforms
+- Track publishing status
+- Send alerts when content is ready to publish
+
+## Pseudo Code
+
+### Schedule Content
+
+```typescript
+// 1. Get content details
+const content = {
+  title: "Blog Post: 5 Tips for Better Productivity",
+  platform: "LinkedIn",
+  scheduledDate: new Date("2024-02-20T10:00:00Z"),
+  author: "John",
+  status: "Ready to Publish"
+};
+
+// 2. Create calendar entry in Notion
+const scheduledPost = await notion.pages.create({
+  parent: { databaseId: contentCalendarDbId },
+  properties: {
+    "Content": { "title": [{ "text": { "content": content.title } }] },
+    "Platform": { "select": { "name": content.platform } },
+    "Scheduled Date": { "date": { "start": content.scheduledDate.toISOString() } },
+    "Status": { "status": { "name": content.status } },
+    "Author": { "people": [{ "id": content.authorId }] }
+  }
+});
+
+// 3. Set reminder for publishing
+const reminderDate = new Date(content.scheduledDate);
+reminderDate.setHours(reminderDate.getHours() - 2);
+
+await slack.chat_postMessage({
+  channel: "#content-publishing",
+  text: `⏰ Content scheduled: "${content.title}" for ${content.platform} on ${formatDate(content.scheduledDate)}`
+});
+```
+
+### Check Upcoming Content
+
+```typescript
+// 1. Query content calendar for next 7 days
+const upcomingContent = await notion.databases.query({
+  databaseId: contentCalendarDbId,
+  filter: {
+    "and": [
+      {
+        "property": "Scheduled Date",
+        "date": { "after": "today" }
+      },
+      {
+        "property": "Scheduled Date",
+        "date": { "before": "7 days from now" }
+      },
+      {
+        "property": "Status",
+        "status": { "does_not_equal": "Published" }
+      }
+    ]
+  },
+  sorts: [{ "property": "Scheduled Date", "direction": "ascending" }]
+});
+
+// 2. Group by platform
+const byPlatform = groupBy(upcomingContent.results, "Platform.select.name");
+
+// 3. Send summary to Slack
+await slack.chat_postMessage({
+  channel: "#content-calendar",
+  text: "📅 Upcoming content for the week:",
+  blocks: Object.entries(byPlatform).map(([platform, posts]) => ({
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": `*${platform}*\n${posts.map(p => `• ${p.properties.Content.title[0].plain_text}`).join("\n")}`
+    }
+  }))
+});
+```
+
+### Update Publishing Status
+
+```typescript
+// Update status after publishing
+await notion.pages.update({
+  pageId: postId,
+  properties: {
+    "Status": { "status": { "name": "Published" } },
+    "Published Date": { "date": { "start": new Date().toISOString() } }
+  }
+});
+
+// Notify team
+await slack.chat_postMessage({
+  channel: "#content-published",
+  text: `✅ Published: ${postTitle}`
+});
+```
 
 ---
 
-**Related Skills**: `marketing/social-media-upload`, `marketing/analytics-dashboard`
+*Skill v2.0 - Content Scheduler*

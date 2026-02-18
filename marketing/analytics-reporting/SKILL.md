@@ -1,96 +1,160 @@
 ---
 name: analytics-reporting
-description: Use when collecting data, analyzing metrics, generating dashboards, and creating actionable reports.
+description: Generate analytics reports, dashboards, and business metrics with Notion and Slack
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# analytics-reporting Skill
+# Analytics Reporting
 
-## What It Does
+Generate analytics reports, dashboards, and business metrics. Store reports in Notion and send notifications via Slack.
 
-Data analytics and reporting - collect data from various sources, analyze metrics, generate dashboards, and create actionable reports.
+## Required Tools
 
-## When to Use
-
-- Track business metrics
-- Generate performance reports
-- Create dashboards
-- Analyze trends
-- Support data-driven decisions
-
-## Key Capabilities
-
-- **Data Collection**: Gather data from multiple sources
-- **Metric Analysis**: Calculate and interpret KPIs
-- **Dashboard Creation**: Visual data representation
-- **Report Generation**: Structured insights and recommendations
-- **Trend Analysis**: Identify patterns over time
-
-## Browser Workflows
-
-### Collect Analytics Data
-
-1. Navigate: analytics platform (GA4, Mixpanel, etc.)
-2. Select: date range and metrics
- data to CSV/She3. Export:ets
-4. Process: clean and structure data
-5. Store: in data warehouse
-
-### Generate Report
-
-1. Gather: data from all sources
-2. Analyze: calculate metrics and trends
-3. Visualize: create charts and graphs
-4. Write: insights and recommendations
-5. Export: to PDF/Docs/Sheets
-
-## Usage Examples
-
-### Weekly Business Review
-```
-User: "Generate our weekly metrics report"
-Skill: Collects data → calculates KPIs → creates visualizations → generates report
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@makenotion/mcp-server"],
+      "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
+  }
+}
 ```
 
-### Marketing Campaign Analysis
+## MCP References
+
+- **Notion MCP**: https://github.com/makenotion/mcp-server-notion
+- **Slack MCP**: https://github.com/modelcontextprotocol/server-slack
+
+## Capabilities
+
+- Aggregate data from multiple sources
+- Generate business metrics and KPIs
+- Create visual dashboards in Notion
+- Schedule automated reports to Slack
+
+## Pseudo Code
+
+### Generate Weekly Report
+
+```typescript
+// 1. Fetch data from sources
+const salesData = await notion.databases.query({
+  databaseId: salesDbId,
+  filter: {
+    "property": "Date",
+    "date": { "after": "7 days ago" }
+  }
+});
+
+const marketingData = await notion.databases.query({
+  databaseId: marketingDbId,
+  filter: {
+    "property": "Date",
+    "date": { "after": "7 days ago" }
+  }
+});
+
+// 2. Calculate metrics
+const metrics = {
+  totalRevenue: sum(salesData.results, "Value"),
+  dealsClosed: count(salesData.results, "Stage", "Closed"),
+  leadsGenerated: count(marketingData.results, "Source", "Organic"),
+  conversionRate: calculateRate(dealsClosed, leadsGenerated),
+  avgDealSize: calculateAvg(salesData.results, "Value")
+};
+
+// 3. Store report in Notion
+const reportPage = await notion.pages.create({
+  parent: { databaseId: reportsDbId },
+  properties: {
+    "Title": { "title": [{ "text": { "content": `Weekly Report - ${formatDate(new Date())}` } }] },
+    "Total Revenue": { "number": metrics.totalRevenue },
+    "Deals Closed": { "number": metrics.dealsClosed },
+    "Conversion Rate": { "number": metrics.conversionRate },
+    "Report Date": { "date": { "start": new Date().toISOString() } }
+  },
+  children: [
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": { "rich_text": [{ "text": { "content": "Key Metrics" } }] }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          { "text": { "content": `• Revenue: $${metrics.totalRevenue.toLocaleString()}` } },
+          { "text": { "content": `\n• Deals: ${metrics.dealsClosed}` } },
+          { "text": { "content": `\n• Conversion: ${metrics.conversionRate}%` } }
+        ]
+      }
+    }
+  ]
+});
+
+// 4. Send summary to Slack
+await slack.chat_postMessage({
+  channel: "#metrics",
+  text: `📊 Weekly Report: $${metrics.totalRevenue} revenue, ${metrics.dealsClosed} deals`,
+  blocks: [
+    {
+      "type": "header",
+      "text": { "type": "plain_text", "text": "Weekly Business Metrics" }
+    },
+    {
+      "type": "section",
+      "fields": [
+        { "type": "mrkdwn", "text": `*Revenue*\n$${metrics.totalRevenue.toLocaleString()}` },
+        { "type": "mrkdwn", "text": `*Deals Closed*\n${metrics.dealsClosed}` },
+        { "type": "mrkdwn", "text": `*Conversion Rate*\n${metrics.conversionRate}%` },
+        { "type": "mrkdwn", "text": `*Avg Deal Size*\n$${metrics.avgDealSize.toLocaleString()}` }
+      ]
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": { "type": "plain_text", "text": "View Full Report" },
+          "url": reportPage.url
+        }
+      ]
+    }
+  ]
+});
 ```
-User: "How did our Q1 campaign perform?"
-Skill: Analyzes campaign data → compares to goals → identifies wins/issues → reports
+
+### Create Dashboard
+
+```typescript
+// Create dashboard page in Notion
+const dashboard = await notion.pages.create({
+  parent: { pageId: dashboardParentId },
+  properties: {
+    "Title": { "title": [{ "text": { "content": "Business Dashboard" } }] }
+  },
+  children: [
+    // Revenue chart
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": { "rich_text": [{ "text": { "content": "Revenue Trend" } }] }
+    },
+    // Add more widgets...
+  ]
+});
 ```
 
-### Dashboard Update
-```
-User: "Update the sales dashboard with latest data"
-Skill: Pulls latest numbers → updates charts → refreshes display → notifies team
-```
+---
 
-## Skills It Coordinates
-
-- `agent-browser` - Browser automation
-- `analytics-tracking` (skills.sh) - Analytics implementation
-- `google-workspace` MCP - Sheets/Docs integration
-- `supabase` MCP - Data storage (when available)
-
-## Key Metrics Tracked
-
-| Category | Metrics |
-|----------|---------|
-| Revenue | MRR, ARR, Growth Rate, Churn |
-| Marketing | Traffic, Leads, CAC, Conversion Rate |
-| Product | DAU, MAU, Retention, NPS |
-| Support | Ticket Volume, Resolution Time, CSAT |
-
-## Report Quality Rubric
-
-| Criterion | Weight | Threshold |
-|-----------|--------|-----------|
-| Accuracy | 35% | Data verified |
-| Clarity | 25% | Easy to understand |
-| Actionability | 25% | Clear recommendations |
-| Completeness | 15% | All relevant data |
-
-## Files Created
-
-- `analytics-data/` - Raw data exports
-- `dashboards/` - Dashboard definitions
-- `reports/` - Generated reports
-- `insights/` - Key insights and learnings
+*Skill v2.0 - Analytics Reporting*

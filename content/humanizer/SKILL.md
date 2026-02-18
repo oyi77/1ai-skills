@@ -1,54 +1,159 @@
 ---
 name: humanizer
-description: Use when removing signs of AI-generated writing from text to make it sound more natural and human-written.
+description: Transform AI-generated content into natural, human-sounding writing with proper tone and style
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(exa:*)
 ---
 
-# Humanizer: Remove AI Writing Patterns
+# Humanizer
 
-## Overview
-A writing editor that identifies and removes signs of AI-generated text to make writing sound more natural. Based on Wikipedia's "Signs of AI writing" page.
+Transform AI-generated content into natural, human-sounding writing. Uses Exa to research author voice/tone and stores refined content in Notion.
 
-## When to Use
-- When text sounds too AI-generated
-- When editing AI-assisted content
-- When removing "AI patterns" from drafts
+## Required Tools
 
-## When NOT to Use
-- When text should sound technical/formal
-- When preserving AI authorship disclosure
-- When original voice is already natural
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@makenotion/mcp-server"],
+      "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@exa/mcp-server"],
+      "env": { "EXA_API_KEY": "${EXA_API_KEY}" }
+    }
+  }
+}
+```
 
-## Quick Reference
+## MCP References
 
-**Key AI Patterns:**
-1. Significance inflation
-2. Vague attributions ("Experts believe...")
-3. AI vocabulary ("additionally", "testament")
-4. Copula avoidance ("serves as" vs "is")
-5. Rule of three (forcing groups of three)
-6. Filler phrases ("In order to", "Due to the fact that")
-7. Excessive hedging ("could potentially possibly")
-8. Generic conclusions ("The future looks bright")
+- **Notion MCP**: https://github.com/makenotion/mcp-server-notion
+- **Exa MCP**: https://github.com/exa/mcp-server
 
-**Key Insight:** LLMs use statistical algorithms - result tends toward most likely.
+## Capabilities
 
-## Your Task
-1. Identify AI patterns
-2. Rewrite problematic sections
-3. Preserve meaning
-4. Maintain voice
-5. Add soul (don't just remove - inject personality)
+- Analyze source content for AI patterns
+- Research target author's writing style
+- Rewrite content to sound human
+- Remove common AI writing artifacts
 
-## Common Mistakes
-- Only removing patterns without adding voice
-- Making everything neutral/soulless
-- Over-correcting to sound weird
-- Not preserving original meaning
+## Pseudo Code
 
-## Example
+### Rewrite Content
 
-**Before (AI-sounding):**
-> The new software serves as a testament to innovation. Moreover, it provides a seamless, intuitive experience.
+```typescript
+// 1. Load source content
+const content = await notion.pages.retrieve({ pageId: draftId });
+const text = content.blocks.map(b => b.paragraph.rich_text[0]?.plain_text).join("\n");
 
-**After (Humanized):**
-> The software adds batch processing and keyboard shortcuts. Early feedback has been positive.
+// 2. Analyze for AI patterns
+const patterns = detectAIPatterns(text);
+// Returns: ["significance_inflation", "copula_avoidance", "formulaic_challenges", "ai_vocabulary"]
+
+// 3. Research target voice (optional)
+const targetVoice = "tech journalist"; // or retrieve from Notion
+const samples = await exa.search(targetVoice, {
+  category: "content",
+  numResults: 5
+});
+const voiceProfile = extractVoiceFromSamples(samples);
+
+// 4. Rewrite with LLM
+const humanized = await rewrite(text, {
+  patternsToFix: patterns,
+  tone: voiceProfile || "professional",
+  preserveMeaning: true
+});
+
+// 5. Store in Notion
+const refinedPage = await notion.pages.create({
+  parent: { databaseId: refinedContentDbId },
+  properties: {
+    "Title": { "title": [{ "text": { "content": `Refined: ${content.title}` } }] },
+    "Source": { "url": content.url },
+    "Patterns Fixed": { "multi_select": patterns.map(p => ({ "name": p })) }
+  },
+  children: [
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": { "rich_text": [{ "text": { "content": "Original" } }] }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": { "rich_text": [{ "text": { "content": text } }] }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": { "rich_text": [{ "text": { "content": "Humanized" } }] }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": { "rich_text": [{ "text": { "content": humanized } }] }
+    }
+  ]
+});
+```
+
+### Detect AI Patterns
+
+```typescript
+function detectAIPatterns(text: string): string[] {
+  const patterns: string[] = [];
+  
+  // Significance inflation
+  if (text.match(/pivotal|groundbreaking|unprecedented|transformative/gi)) {
+    patterns.push("significance_inflation");
+  }
+  
+  // Copula avoidance (serves as, acts as)
+  if (text.match(/\b(serves as|acts as|functions as)\b/gi)) {
+    patterns.push("copula_avoidance");
+  }
+  
+  // Formulaic challenges
+  if (text.match(/despite (challenges|difficulties|obstacles)/gi)) {
+    patterns.push("formulaic_challenges");
+  }
+  
+  // AI vocabulary
+  const aiWords = ["additionally", "moreover", "furthermore", "testament", "landscape", "realm"];
+  if (aiWords.some(w => text.toLowerCase().includes(w))) {
+    patterns.push("ai_vocabulary");
+  }
+  
+  // Em dash overuse
+  if ((text.match(/—/g) || []).length > 2) {
+    patterns.push("em_dash_overuse");
+  }
+  
+  // Filler phrases
+  if (text.match(/\b(in order to|due to the fact that|it is important to note)\b/gi)) {
+    patterns.push("filler_phrases");
+  }
+  
+  return patterns;
+}
+```
+
+### Common AI Patterns to Fix
+
+| Pattern | AI Version | Human Version |
+|---------|------------|---------------|
+| Significance inflation | "marking a pivotal moment" | specific facts |
+| Copula avoidance | "serves as" | "is" |
+| Formulaic challenges | "Despite challenges..." | direct statement |
+| AI vocabulary | "Additionally..." | "Also..." or start new thought |
+| Em dash overuse | Multiple "—" in one paragraph | Use sparingly |
+| Filler phrases | "In order to" | "To" |
+
+---
+
+*Skill v2.0 - Humanizer*

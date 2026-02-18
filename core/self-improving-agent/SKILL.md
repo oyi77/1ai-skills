@@ -1,86 +1,135 @@
 ---
 name: self-improving-agent
-description: Analyzes performance, logs feedback, and drives improvements in agent capabilities.
-permissions:
-  - fs
+description: Agent that learns from feedback and improves its own performance over time
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# Self-Improver Agent
+# Self-Improving Agent
 
-I am the quality assurance and continuous improvement engine for the AI system. I quantify performance, learn from mistakes, and optimize workflows.
+Agent that learns from feedback, tracks performance metrics, and continuously improves its own performance using Notion for knowledge base and Slack for notifications.
+
+## Required Tools
+
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@makenotion/mcp-server"],
+      "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
+  }
+}
+```
+
+## MCP References
+
+- **Notion MCP**: https://github.com/makenotion/mcp-server-notion
+- **Slack MCP**: https://github.com/modelcontextprotocol/server-slack
 
 ## Capabilities
 
-- **Assessment**: I grade outputs against strict rubrics (`config/rubrics.json`).
-- **Knowledge Retention**: I log every lesson learned to `memory/feedback.json` and `patterns.md`.
-- **Optimization**: I review feedback to suggest concrete improvements for other skills.
+- Track feedback and performance metrics in Notion
+- Analyze patterns in successful vs unsuccessful attempts
+- Suggest improvements based on learned patterns
+- Alert team to significant performance changes
 
-## Commands
+## Pseudo Code
 
-### `assess`
-**Usage**: `assess "input_text" "output_text" "rubric_name" [context]`
-**Description**: Grades an interaction.
-**Instructions**:
-1.  **Load Rubric**: Read `config/rubrics.json`. Select the key matching `rubric_name` (e.g., "code_generation").
-2.  **Evaluate**:
-    -   Compare `output_text` against each criterion in the rubric.
-    -   Assign a score (1-10) for each criterion.
-    -   Write a short critique justifying the score.
-3.  **Result**:
-    -   Calculate average score.
-    -   Return JSON: `{ "score": 8.5, "breakdown": { ... }, "critique": "..." }`.
+### Track Feedback
 
-### `learn`
-**Usage**: `learn "input" "output" "feedback" "score" [tags]`
-**Description**: Ingests a lesson into the Knowledge Base.
-**Instructions**:
-1.  **Read Log**: Read `memory/feedback.json`.
-2.  **Append Entry**:
-    ```json
-    {
-      "timestamp": "ISO_DATE",
-      "input": "...",
-      "output": "...",
-      "feedback": "...",
-        "score": 5,
-      "tags": ["jobhunter", "error"]
-    }
-    ```
-3.  **Pattern Check**:
-    -   If `score` < 6, analyze if this matches an existing entry in `memory/patterns.md`.
-    -   If new pattern, Append to `memory/patterns.md`: "New Pattern Detected: [Summary]".
+```typescript
+// 1. Log feedback in Notion
+await notion.pages.create({
+  parent: { databaseId: feedbackDbId },
+  properties: {
+    "Task Type": { "select": { "name": taskType } },
+    "Outcome": { "select": { "name": success ? "Success" : "Failure" } },
+    "Feedback": { "rich_text": [{ "text": { "content": feedback } }] },
+    "Suggestions": { "rich_text": [{ "text": { "content": suggestions } }] },
+    "Date": { "date": { "start": new Date().toISOString() } }
+  }
+});
+```
 
-### `optimize`
-**Usage**: `optimize [skill_name]`
-**Description**: Reviews feedback for a skill and suggests improvements.
-**Instructions**:
-1.  **Gather Data**:
-    -   Read `memory/feedback.json`. Filter by tag `skill_name`.
-    -   Read `memory/patterns.md`.
-    -   Read `memory/best-practices.md`.
-2.  **Analyze**:
-    -   Identify top 3 recurring issues for `skill_name`.
-    -   Identify "best practices" that are missing.
-3.  **Suggest**:
-    -   Read the target skill's `SKILL.md`.
-    -   Generate a "Patch Proposal":
-        -   **Prompt Changes**: "Add 'Ensure JSON is valid' to system prompt."
-        -   **Logic Changes**: "Add a validation step before submission."
-    -   Return the Proposal to the user.
+### Analyze Performance Patterns
 
-### `review_patterns`
-**Usage**: `review_patterns`
-**Description**: Summarizes known issues.
-**Instructions**:
-1.  Read `memory/patterns.md`.
-2.  Return a bulleted list of "Known Pitfalls" to avoid.
+```typescript
+// 1. Query feedback database
+const feedback = await notion.databases.query({
+  databaseId: feedbackDbId,
+  filter: {
+    "property": "Date",
+    "date": { "after": "30 days ago" }
+  }
+});
 
-## Usage Guide
+// 2. Calculate success rate by task type
+const byType = groupBy(feedback.results, "Task Type");
+const metrics = Object.entries(byType).map(([type, items]) => ({
+  type,
+  successRate: items.filter(i => i.properties.Outcome.select.name === "Success").length / items.length,
+  avgScore: calculateAvgScore(items)
+}));
 
-- **Grade a Code Snippet**: `assess "Write a fibonacci function" "def fib(n)..." "code_generation"`
-- **Log a Failure**: `learn "Register for X" "Error: Captcha" "Agent failed to handle captcha" 2 "jobhunter"`
-- **Improve a Skill**: `optimize jobhunter`
+// 3. Identify improvement opportunities
+const lowPerformers = metrics.filter(m => m.successRate < 0.7);
+if (lowPerformers.length > 0) {
+  // 4. Notify team
+  await slack.chat_postMessage({
+    channel: "#agent-metrics",
+    text: `Performance alert: ${lowPerformers.map(p => `${p.type}: ${p.successRate*100}%`).join(", ")}`
+  });
+}
+```
 
-## Configuration
-- **Rubrics**: `config/rubrics.json`
-- **Memory**: `memory/feedback.json`, `memory/patterns.md`
+### Self-Improvement Loop
+
+```typescript
+async function improveFromFeedback(): Promise<void> {
+  // 1. Get recent feedback
+  const recentFeedback = await getRecentFeedback(days: 7);
+  
+  // 2. Extract common failure patterns
+  const patterns = extractPatterns(recentFeedback.failures);
+  
+  // 3. Generate improvement suggestions
+  const suggestions = patterns.map(pattern => ({
+    pattern,
+    recommendation: generateRecommendation(pattern),
+    priority: pattern.frequency * pattern.impact
+  }));
+  
+  // 4. Update knowledge base in Notion
+  for (const suggestion of suggestions) {
+    await notion.pages.create({
+      parent: { databaseId: improvementsDbId },
+      properties: {
+        "Pattern": { "rich_text": [{ "text": { "content": suggestion.pattern } }] },
+        "Recommendation": { "rich_text": [{ "text": { "content": suggestion.recommendation } }] },
+        "Priority": { "select": { "name": suggestion.priority > 0.5 ? "High" : "Medium" } },
+        "Status": { "status": { "name": "To Implement" } }
+      }
+    });
+  }
+  
+  // 5. Alert if major improvement opportunity found
+  if (suggestions.some(s => s.priority > 0.7)) {
+    await slack.chat_postMessage({
+      channel: "#agent-updates",
+      text": "Major improvement opportunities identified - review recommended changes"
+    });
+  }
+}
+```
+
+---
+
+*Skill v2.0 - Self-Improving Agent*

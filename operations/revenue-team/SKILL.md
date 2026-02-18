@@ -1,90 +1,50 @@
 ---
 name: revenue-team
-description: Use when orchestrating revenue-generating activities - marketing, sales pipeline, business development, and content creation.
+description: Manage sales pipeline, forecast revenue, track deals with HubSpot and Notion
+allowed-tools:
+  - MCP(hubspot:*)
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# revenue-team Orchestrator
+# Revenue Team
 
-## What It Does
+Manage sales pipeline, forecast revenue, track deals with HubSpot and Notion integration.
 
-Orchestrates all revenue-generating activities - marketing campaigns, sales pipeline, business development, and content creation. Coordinates multiple skills to execute complete revenue workflows.
+## Required Tools
 
-## When to Use
-
-- Execute marketing campaigns
-- Close sales deals
-- Generate leads
-- Build partnerships
-- Create revenue-generating content
-
-## Team Members (Skills)
-
-| Skill | Role |
-|-------|------|
-| marketing | Campaign strategy and execution |
-| sales | Deal pipeline and closing |
-| business-development | Partnerships and growth |
-| content-creator | Content generation |
-| market-research | Audience and competitor insights |
-
-## Workflows
-
-### Marketing Campaign
-
-```
-1. Brief: Receive campaign objectives
-2. Research: Use market-research to understand audience
-3. Strategy: Use marketing to plan campaign
-4. Content: Use content-creator to generate assets
-5. Execute: Launch campaign
-6. Track: Use analytics-reporting to measure
-7. Optimize: Loop back based on results
+```json
+{
+  "mcpServers": {
+    "hubspot": { "command": "npx", "args": ["-y", "@sheffieldp/mcp-hubspot"], "env": { "HUBSPOT_API_KEY": "${HUBSPOT_API_KEY}" } },
+    "notion": { "command": "npx", "args": ["-y", "@makenotion/mcp-server"], "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" } },
+    "slack": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-slack"], "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" } }
+  }
+}
 ```
 
-### Sales Pipeline
+## Pseudo Code
 
-```
-1. Lead: Receive lead or find new prospects
-2. Research: Use market-research to understand prospect
-3. Outreach: Use sales to engage
-4. Nurture: Use content-creator for follow-up content
-5. Close: Use sales to close deal
-6. Handoff: Use customer-support for onboarding
-```
+### Pipeline Update
 
-### Partnership Development
+```typescript
+// 1. Get deals
+const deals = await hubspot.getDeals({ stage: "qualified" });
 
-```
-1. Target: Identify potential partners
-2. Research: Use market-research to evaluate
-3. Outreach: Use business-development to initiate
-4. Negotiate: Coordinate terms
-5. Close: Formalize partnership
-6. Activate: Coordinate implementation
+// 2. Calculate forecast
+const forecast = deals.reduce((sum, d) => sum + d.amount, 0);
+
+// 3. Update Notion
+await notion.update("Revenue Forecast", { forecast });
 ```
 
-## Trigger Phrases
+### Stage Progression
 
-- "close deal"
-- "generate leads"
-- "marketing campaign"
-- "get customers"
-- "partnership"
-- "sales pipeline"
-- "revenue"
+```typescript
+// Move deal to next stage
+await hubspot.updateDeal(dealId, { dealstage: "contract_sent" });
+await slack.notify("#sales", `Deal moved to contract: ${dealName}`);
+```
 
-## Coordination Pattern
-
-When triggered, the orchestrator:
-1. Analyzes the request
-2. Determines which team members needed
-3. Calls skills in sequence/parallel as appropriate
-4. Aggregates results
-5. Presents unified output
-
-## Quality Gates
-
-- All content reviewed before publishing
-- All deals validated against criteria
-- All partnerships evaluated for fit
-- Results tracked in analytics
+---
+*Skill v2.0 - Revenue Team*

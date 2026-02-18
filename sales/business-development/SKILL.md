@@ -1,94 +1,158 @@
 ---
 name: business-development
-description: Use when doing partnership outreach, market research, competitor analysis, and proposal generation.
+description: Generate leads, research prospects, and manage outreach with HubSpot and Exa integration
+allowed-tools:
+  - MCP(hubspot:*)
+  - MCP(exa:*)
+  - MCP(slack:*)
 ---
 
-# Business Development Skill
+# Business Development
 
-## Overview
-Research markets, identify partnerships, analyze competitors, generate proposals.
+Generate leads, research prospects, and manage outreach. Use HubSpot for CRM, Exa for prospect research, and Slack for team coordination.
 
-## When to Use
-- Partnership outreach and partner research
-- Market research and competitor analysis
-- Proposal generation for business opportunities
-- Building strategic partnerships
+## Required Tools
 
-## When NOT to Use
-- Technical implementation tasks
-- Code development or debugging
-- Tasks requiring direct product development
+```json
+{
+  "mcpServers": {
+    "hubspot": {
+      "command": "npx",
+      "args": ["-y", "@hubspot/mcp-server"],
+      "env": { "HUBSPOT_ACCESS_TOKEN": "${HUBSPOT_ACCESS_TOKEN}" }
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@exa/mcp-server"],
+      "env": { "EXA_API_KEY": "${EXA_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
+  }
+}
+```
 
-## What This Skill Does
-- Partnership Outreach — Identify and approach potential partners
-- Market Research — Analyze market size and opportunities
-- Competitor Analysis — Track competitors and identify advantages
-- Proposal Generation — Create compelling partnership proposals
-- Pipeline Management — Track opportunities from lead to deal
+## MCP References
 
-## Quick Start
-1. Configure BD focus in `TOOLS.md`
-2. Set up workspace: `./scripts/bd-init.sh`
-3. Start building partnerships!
+- **HubSpot MCP**: https://github.com/HubSpot/mcp-hubspot
+- **Exa MCP**: https://github.com/exa/mcp-server
+- **Slack MCP**: https://github.com/modelcontextprotocol/server-slack
 
-## Partnership Types
-- **Integration** — Technical connection, expand functionality
-- **Reseller** — Sell through partners, scale faster
-- **Co-Marketing** — Joint marketing, share audiences
-- **Referral** — Lead sharing, lower friction
-- **Strategic** — Deep collaboration
+## Capabilities
 
-## Partner Qualification (PARTNER Score)
-| Criteria | Question |
-|----------|----------|
-| Potential | What's the upside? |
-| Alignment | Do goals match? |
-| Reach | What audience? |
-| Timing | Ready now? |
-| Need | Need what we offer? |
+- Search for potential leads using Exa
+- Enrich leads with company/contact data
+- Manage CRM records in HubSpot
+- Coordinate outreach via Slack
 
-**Score 70+:** Prioritize | **50-70:** Keep warm | **<50:** Deprioritize
+## Pseudo Code
 
-## Outreach Sequence
-1. **Research first** — Company website, LinkedIn, recent news
-2. **Initial outreach** — Personalized email with value proposition
-3. **Follow-up** — Day 5 and Day 12
+### Generate Leads
 
-## Pipeline Stages
-- **Research** — Identify and qualify prospects
-- **Outreach** — Initial contact attempts
-- **Discussion** — Exploring mutual interest
-- **Proposal** — Formal proposal submitted
-- **Negotiation** — Terms discussion
-- **Active** — Partnership live
+```typescript
+// 1. Search for potential leads using Exa
+const prospects = await exa.search("SaaS founders CEO enterprise software 2024", {
+  category: "company",
+  numResults: 20,
+  fields: ["title", "description", "domain", "company"]
+});
 
-## Market Research (TAM/SAM/SOM)
-- **TAM** — Total Addressable Market (if 100% share)
-- **SAM** — Serviceable Addressable Market (reachable)
-- **SOM** — Serviceable Obtainable Market (realistic)
+// 2. Filter and enrich
+const qualifiedLeads = prospects.filter(lead => 
+  !excludeDomains.includes(lead.domain) &&
+  lead.employeeCount > 10
+);
 
-## Competitor Analysis
-Track: Product, pricing, market position, strengths, weaknesses, recent moves.
+// 3. Create leads in HubSpot
+for (const lead of qualifiedLeads) {
+  const contact = await hubspot.contacts.create({
+    properties: {
+      email: `info@${lead.domain}`,
+      firstname: lead.firstName,
+      lastname: lead.lastName,
+      company: lead.company,
+      website: lead.domain,
+      lead_source: "Exa Research"
+    }
+  });
+  
+  // 4. Add to sequence
+  await hubspot.sequences.add_contact({
+    sequenceId: outreachSequenceId,
+    contactId: contact.id
+  });
+}
+```
 
-## Proposal Structure
-1. Executive Summary
-2. Market Opportunity
-3. Partnership Concept
-4. Value to Both Parties
-5. Timeline
-6. Commercial Terms
-7. Success Metrics
+### Research Prospect
 
-## Common Mistakes
-- Pitching too early — Understand needs first
-- Overselling — Under-promise, over-deliver
-- Ignoring champions — Find and nurture them
-- Slow follow-up — Momentum matters
-- Vague proposals — Specific asks get specific answers
+```typescript
+// 1. Get prospect company info
+const companyInfo = await exa.search(companyDomain, {
+  category: "company",
+  numResults: 5
+});
 
-## Quick Reference
-- Partnership types: Integration, Reseller, Co-Marketing, Referral, Strategic
-- Partner qualification: PARTNER Score (70+ prioritize, 50-70 keep warm, <50 deprioritize)
-- Pipeline stages: Research → Outreach → Discussion → Proposal → Negotiation → Active
-- Research before outreach
-- Track in CRM or pipeline tool
+// 2. Get recent news/funding
+const news = await exa.search(`${company} funding news`, {
+  type: "news",
+  numResults: 5
+});
+
+// 3. Store research in HubSpot
+await hubspot.contacts.update(contactId, {
+  properties: {
+    "research_notes": formatResearchNotes(companyInfo, news),
+    "last_research_date": new Date().toISOString()
+  }
+});
+
+// 4. Send to Slack for review
+await slack.chat_postMessage({
+  channel: "#bd-team",
+  text: `Research complete for ${company}:`,
+  blocks: [
+    {
+      "type": "section",
+      "text": { "type": "mrkdwn", "text": `*${company}*\n${news.map(n => `• ${n.title}`).join("\n")}` }
+    }
+  ]
+});
+```
+
+### Track Outreach
+
+```typescript
+// Get outreach metrics from HubSpot
+const metrics = await hubspot.contacts.search({
+  filterGroups: [{
+    filters: [{
+      propertyName: "hs_analytics_source",
+      operator: "EQ",
+      value: "Outreach"
+    }]
+  }]
+});
+
+// Post weekly metrics
+await slack.chat_postMessage({
+  channel: "#bd-metrics",
+  text: `📊 BD Weekly: ${metrics.length} outreach emails sent`,
+  blocks: [
+    {
+      "type": "section",
+      "fields": [
+        { "type": "mrkdwn", "text": "*Outreach Sent*\n" + metrics.length },
+        { "type": "mrkdwn", "text": "*Replies Received*\n" + metrics.filter(m => m.properties.hs_email_open).length }
+      ]
+    }
+  ]
+});
+```
+
+---
+
+*Skill v2.0 - Business Development*
