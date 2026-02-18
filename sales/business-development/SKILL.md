@@ -9,19 +9,150 @@ allowed-tools:
 
 # Business Development
 
-Generate leads, research prospects, and manage outreach.
+Generate leads, research prospects, and manage outreach. Use HubSpot for CRM, Exa for prospect research, and Slack for team coordination.
 
 ## Required Tools
 
 ```json
 {
   "mcpServers": {
-    "hubspot": { "env": { "HUBSPOT_API_KEY": "${HUBSPOT_API_KEY}" } },
-    "exa": { "env": { "EXA_API_KEY": "${EXA_API_KEY}" } },
-    "slack": { "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" } }
+    "hubspot": {
+      "command": "npx",
+      "args": ["-y", "@hubspot/mcp-server"],
+      "env": { "HUBSPOT_ACCESS_TOKEN": "${HUBSPOT_ACCESS_TOKEN}" }
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@exa/mcp-server"],
+      "env": { "EXA_API_KEY": "${EXA_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
   }
 }
 ```
 
+## MCP References
+
+- **HubSpot MCP**: https://github.com/HubSpot/mcp-hubspot
+- **Exa MCP**: https://github.com/exa/mcp-server
+- **Slack MCP**: https://github.com/modelcontextprotocol/server-slack
+
+## Capabilities
+
+- Search for potential leads using Exa
+- Enrich leads with company/contact data
+- Manage CRM records in HubSpot
+- Coordinate outreach via Slack
+
+## Pseudo Code
+
+### Generate Leads
+
+```typescript
+// 1. Search for potential leads using Exa
+const prospects = await exa.search("SaaS founders CEO enterprise software 2024", {
+  category: "company",
+  numResults: 20,
+  fields: ["title", "description", "domain", "company"]
+});
+
+// 2. Filter and enrich
+const qualifiedLeads = prospects.filter(lead => 
+  !excludeDomains.includes(lead.domain) &&
+  lead.employeeCount > 10
+);
+
+// 3. Create leads in HubSpot
+for (const lead of qualifiedLeads) {
+  const contact = await hubspot.contacts.create({
+    properties: {
+      email: `info@${lead.domain}`,
+      firstname: lead.firstName,
+      lastname: lead.lastName,
+      company: lead.company,
+      website: lead.domain,
+      lead_source: "Exa Research"
+    }
+  });
+  
+  // 4. Add to sequence
+  await hubspot.sequences.add_contact({
+    sequenceId: outreachSequenceId,
+    contactId: contact.id
+  });
+}
+```
+
+### Research Prospect
+
+```typescript
+// 1. Get prospect company info
+const companyInfo = await exa.search(companyDomain, {
+  category: "company",
+  numResults: 5
+});
+
+// 2. Get recent news/funding
+const news = await exa.search(`${company} funding news`, {
+  type: "news",
+  numResults: 5
+});
+
+// 3. Store research in HubSpot
+await hubspot.contacts.update(contactId, {
+  properties: {
+    "research_notes": formatResearchNotes(companyInfo, news),
+    "last_research_date": new Date().toISOString()
+  }
+});
+
+// 4. Send to Slack for review
+await slack.chat_postMessage({
+  channel: "#bd-team",
+  text: `Research complete for ${company}:`,
+  blocks: [
+    {
+      "type": "section",
+      "text": { "type": "mrkdwn", "text": `*${company}*\n${news.map(n => `• ${n.title}`).join("\n")}` }
+    }
+  ]
+});
+```
+
+### Track Outreach
+
+```typescript
+// Get outreach metrics from HubSpot
+const metrics = await hubspot.contacts.search({
+  filterGroups: [{
+    filters: [{
+      propertyName: "hs_analytics_source",
+      operator: "EQ",
+      value: "Outreach"
+    }]
+  }]
+});
+
+// Post weekly metrics
+await slack.chat_postMessage({
+  channel: "#bd-metrics",
+  text: `📊 BD Weekly: ${metrics.length} outreach emails sent`,
+  blocks: [
+    {
+      "type": "section",
+      "fields": [
+        { "type": "mrkdwn", "text": "*Outreach Sent*\n" + metrics.length },
+        { "type": "mrkdwn", "text": "*Replies Received*\n" + metrics.filter(m => m.properties.hs_email_open).length }
+      ]
+    }
+  ]
+});
+```
+
 ---
+
 *Skill v2.0 - Business Development*
