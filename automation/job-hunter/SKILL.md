@@ -1,87 +1,214 @@
 ---
 name: jobhunter
-description: Autonomous job hunting agent that tracks state, tailors applications, and reports progress.
-permissions:
-  - browser
-  - fs
-cron: "0 9 * * 1-5" # Runs at 9 AM Monday-Friday
+description: Autonomous job hunting agent with state tracking, tailored applications, and multi-platform job search
+allowed-tools:
+  - Bash(browser-use:*)
+  - Bash(linkedin:*)
+  - Bash(indeed:*)
+  - MCP(google-sheets:*)
+  - MCP(gmail:*)
+cron: "0 9 * * 1-5"
 ---
 
 # Job Hunter Agent (Autonomous)
 
 I am an advanced, state-aware job hunting agent. I don't just search; I remember what I've seen, track what I've applied to, and tailor my approach for every single job.
 
+## Required Tools
+
+### MCP Servers
+
+```json
+{
+  "mcpServers": {
+    "google-sheets": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-sheets"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${GOOGLE_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${GOOGLE_CLIENT_SECRET}"
+      }
+    },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gmail"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${GOOGLE_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${GOOGLE_CLIENT_SECRET}"
+      }
+    }
+  }
+}
+```
+
+### Tool Permissions
+
+| Tool | Capabilities |
+|------|-------------|
+| `Bash(browser-use:*)` | Browser automation for job sites |
+| `Bash(linkedin:*)` | LinkedIn interaction |
+| `Bash(indeed:*)` | Indeed job search |
+| `MCP(google-sheets:*)` | Track applications in Sheets |
+| `MCP(gmail:*)` | Send applications via email |
+
 ## Capabilities
-- **State Management**: I track every job in `memory/jobs.json` to avoid duplicates.
-- **Smart Tailoring**: I read your `memory/profile.md` to generate custom cover letters for each application.
-- **Multi-Platform**: I support LinkedIn, Kalibrr, Indeed, Jobseeker, and Google Jobs with specific CSS selectors.
-- **Reporting**: I provide daily summaries of my activities.
+
+- **State Management**: Track every job in `memory/jobs.json` to avoid duplicates
+- **Smart Tailoring**: Read `memory/profile.md` to generate custom cover letters
+- **Multi-Platform**: LinkedIn, Indeed, Glassdoor, Google Jobs with CSS selectors
+- **Reporting**: Daily summaries of activities
+
+## Authentication
+
+### Setup Steps
+
+1. **Configure Credentials**
+   ```bash
+   mkdir -p memory
+   echo "# My Profile" > memory/profile.md
+   echo "# LinkedIn Login" > memory/credentials.md
+   ```
+
+2. **Update Profile**
+   ```markdown
+   # My Profile
+   - Name: John Doe
+   - Title: Senior Software Engineer
+   - Skills: Python, JavaScript, React, AWS
+   - Experience: 5 years
+   - Location: San Francisco, CA
+   - Remote: Yes
+   ```
 
 ## Commands
 
-### `hunt`
-**Usage**: `hunt [query] [location]`
-**Description**: Searches for jobs, filters duplicates, and presents new opportunities.
-**Instructions**:
-1.  **Load State**: Read `memory/jobs.json`.
-2.  **Load Config**: Read `config/platforms.json`.
-3.  **Search**: For each platform:
-    -   Navigate to search URL.
-    -   **Scrape**: Use `selectors` from config to extract Job Title, Company, URL, and ID (unique hash or URL).
-    -   **Filter**:
-        -   If Job ID is in `seen_jobs`, SKIP.
-        -   Else, add to `seen_jobs` and list as a NEW opportunity.
-4.  **Save State**: specific instructions to update `memory/jobs.json` with new `seen_jobs`.
-5.  **Present**: specific instructions to show table of NEW jobs found.
+### `hunt [query] [location]`
 
-### `apply`
-**Usage**: `apply [job_url]`
-**Description**: smart application with Resume/Cover Letter tailoring.
-**Instructions**:
-1.  **Check History**: Read `memory/jobs.json`. If `job_url` is in `applications`, warn user (but allow override).
-2.  **Analyze**: Open URL. Extract Job Description (JD).
-3.  **Tailor Materials**:
-    -   Read `memory/profile.md`.
-    -   **Generate Cover Letter**: "Context: User Profile vs Job Description. Task: Write a persuasive cover letter."
-    -   Save draft to `memory/job-applications/[Company]-[Role]/cover-letter.txt`.
-4.  **Execute**:
-    -   **Easy Apply**: specific instructions to click button (use selector), fill details, paste Cover Letter if asked.
-    -   **Email**: specific instructions to draft email using the generated cover letter content.
-    -   **Manual**: specific instructions to notify user if automation fails.
-5.  **Record**:
-    -   Update `memory/jobs.json` adding this job to `applications` with `status: applied` (or `failed`).
+Search for jobs, filter duplicates, present new opportunities.
 
-### `register`
-**Usage**: `register [platform]`
-**Description**: Checks login status and attempts registration.
-**Instructions**:
-1.  **Check Credentials**: specific instructions to look in `memory/credentials.md` (or template).
-2.  **Navigate**: specific instructions to use `login` URL.
-3.  **Auth Flow**:
-    -   If not logged in, try credentials.
-    -   If fails, register.
-    -   **CAPTCHA**: specific instructions to pause and Notify User if needed.
-    -   Save new credentials to `memory/credentials.md`.
+```typescript
+// 1. Load state
+const state = await read("memory/jobs.json");
+const seenJobs = state.seen_jobs || [];
+
+// 2. Load platform config
+const config = await read("config/platforms.json");
+
+// 3. Search each platform
+for (const platform of config.platforms) {
+  await browser.navigate(platform.searchUrl + `?q=${query}&l=${location}`);
+  const jobs = await browser.extract(platform.selectors.jobCard);
+  const newJobs = jobs.filter(job => !seenJobs.includes(job.id));
+  seenJobs.push(...newJobs.map(j => j.id));
+}
+
+// 4. Save state
+await write("memory/jobs.json", { seen_jobs: seenJobs });
+console.table(newJobs);
+```
+
+### `apply [job_url]`
+
+Smart application with Resume/Cover Letter tailoring.
+
+```typescript
+// 1. Check history
+const state = await read("memory/jobs.json");
+if (state.applications[job_url]) {
+  console.warn("Already applied! Use --force to override");
+}
+
+// 2. Analyze job
+await browser.navigate(job_url);
+const jobDescription = await browser.extract(".job-description");
+
+// 3. Generate tailored cover letter
+const coverLetter = await generateCoverLetter({
+  profile: await read("memory/profile.md"),
+  jobDescription
+});
+
+// 4. Save application
+await fs.write(`memory/job-applications/${company}/cover-letter.txt`, coverLetter);
+
+// 5. Apply (Easy Apply or Email)
+if (isEasyApply) {
+  await browser.click(".easy-apply-button");
+  await browser.fill(".cover-letter-input", coverLetter);
+  await browser.click(".submit-button");
+} else {
+  await gmail.send({ to: job.email, subject: `Application for ${job.title}`, body: coverLetter });
+}
+
+// 6. Record result
+state.applications[job_url] = { status: "applied", date: new Date() };
+await write("memory/jobs.json", state);
+```
+
+### `register [platform]`
+
+Check login status and register if needed.
+
+```typescript
+const credentials = await read("memory/credentials.md");
+await browser.navigate(`${platform}.com/login`);
+
+const result = await tryLogin(credentials);
+if (result.requiresCaptcha) {
+  await notifyUser("Please complete CAPTCHA");
+  await browser.waitForHuman();
+}
+```
 
 ### `report`
-**Usage**: `report`
-**Description**: Summarizes today's activity.
-**Instructions**:
-1.  Read `memory/jobs.json`.
-2.  Filter `applications` by today's date.
-3.  Filter `seen_jobs` added today.
-4.  Generate Markdown summary:
-    -   **Jobs Found**: X
-    -   **Applied**: Y
-    -   **Success Rate**: Z%
-    -   **Issues**: (List any failed applications)
 
-## Usage Guide
-- **Start**: `hunt "Senior Engineer" "Remote"`
-- **Apply**: `apply [url]`
-- **Report**: `report`
+Generate daily activity summary.
 
-## Configuration
-- **Platforms**: `config/platforms.json`
-- **State**: `memory/jobs.json`
-- **Profile**: `memory/profile.md`
+```typescript
+const state = await read("memory/jobs.json");
+const today = new Date().toISOString().split("T")[0];
+
+const todayApps = Object.values(state.applications).filter(a => a.date.startsWith(today));
+console.log(`
+# Daily Report - ${today}
+- Applied: ${todayApps.length}
+- Success Rate: ${calculateRate(todayApps)}%
+`);
+```
+
+## File Structure
+
+```
+memory/
+├── jobs.json          # All seen and applied jobs
+├── profile.md         # User profile for tailoring
+├── credentials.md     # Platform login credentials
+└── job-applications/  # Individual application materials
+
+config/
+└── platforms.json     # Platform URLs and selectors
+```
+
+## Best Practices
+
+1. **Daily Run**: Use cron for automatic job hunting
+2. **Customize Each Application**: Use profile to tailor cover letters
+3. **Track Everything**: Always update state after actions
+4. **Handle CAPTCHA**: Notify user when human interaction needed
+
+## Usage
+
+```bash
+hunt "Senior Engineer" "Remote"
+apply "https://linkedin.com/jobs/view/123456"
+register linkedin
+report
+```
+
+## Related Skills
+
+- `productivity/email-automation` - Send applications via email
+- `productivity/google-workspace` - Track in Sheets
+
+---
+*Skill v2.0 - Autonomous Job Hunter*
