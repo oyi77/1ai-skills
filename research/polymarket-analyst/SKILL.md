@@ -1,73 +1,173 @@
 ---
 name: polymarket-analyst
-description: Use when analyzing Polymarket prediction markets - researching event probabilities, analyzing trading data, and identifying arbitrage opportunities
+description: Analyze Polymarket predictions, calculate EV, and monitor markets for trading opportunities
+allowed-tools:
+  - Bash(firecrawl:*)
+  - MCP(firecrawl:*)
+  - MCP(exa:*)
+  - MCP(slack:*)
 ---
 
 # Polymarket Analyst
 
-## Overview
+Analyze Polymarket predictions, calculate expected value, and identify trading opportunities.
 
-Analyze Polymarket prediction markets to understand event probabilities, track market movements, and identify trading opportunities.
+## Required Tools
 
-## When to Use
+### MCP Servers
 
-- When researching event probabilities for decision making
-- When analyzing prediction market trends and sentiment
-- When identifying mispriced markets or arbitrage opportunities
-- When tracking specific events or topics on Polymarket
-- When needing data-driven insights for trading decisions
+```json
+{
+  "mcpServers": {
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "@firecrawl/mcp-server"],
+      "env": { "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}" }
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@exa/mcp-server"],
+      "env": { "EXA_API_KEY": "${EXA_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
+  }
+}
+```
 
-## When NOT to Use
+## Authentication
 
-- When you need financial advice (not a financial advisor)
-- When the market is highly illiquid (spread too wide)
-- When dealing with markets that have known manipulation
-- When you don't understand the risks of prediction markets
+### Setup
 
-## Quick Reference
+1. **Firecrawl** (Web Scraping)
+   ```bash
+   export FIRECRAWL_API_KEY="your-key"
+   ```
 
-**Key Metrics to Track:**
-- Volume: Higher = more liquidity
-- Yes/No prices: Current probability
-- Trade volume: Recent activity
-- Open interest: Total outstanding positions
+2. **Exa** (AI Search)
+   ```bash
+   export EXA_API_KEY="your-key"
+   ```
 
-**Analysis Steps:**
-1. Find relevant markets on Polymarket
-2. Analyze volume and price history
-3. Research the event context
-4. Compare with other information sources
-5. Identify confidence levels
+3. **Slack** (Alerts)
+   ```bash
+   export SLACK_BOT_TOKEN="xoxb-your-token"
+   ```
 
-## Common Mistakes
+## Pseudo Code
 
-- Ignoring volume/liquidity (can't exit positions)
-- Not checking for market manipulation
-- Overconfident in low-probability events
-- Not diversifying across markets
-- Ignoring fees and slippage
+### Example 1: Market Discovery and Filtering
 
-## Workflow
+```typescript
+// 1. Fetch trending markets
+const markets = await polymarket.getMarkets({
+  limit: 100,
+  status: "open"
+});
 
-### Finding Markets
+// 2. Filter by liquidity
+const liquid = markets.filter(m => m.volume > 50000);
 
-Search for topics of interest on Polymarket.com. Look for:
-- Active markets with good volume
-- Clear resolution criteria
-- Reasonable probabilities (not too extreme)
+// 3. Get news context for each
+for (const market of liquid.slice(0, 20)) {
+  const news = await exa.search(market.question, {
+    numResults: 3,
+    category: "news"
+  });
+  
+  console.log(`${market.question}: ${news.length} related articles`);
+}
+```
 
-### Analyzing Data
+### Example 2: Calculate Implied Probability and EV
 
-Review:
-- Price history chart
-- Recent trade volume
-- Number of unique traders
-- Market comments/discussion
+```typescript
+// 1. Get current price
+const price = await polymarket.getPrice(marketId); // e.g., 0.30
 
-### Making Decisions
+// 2. Calculate implied probability
+const impliedProb = price; // 30%
 
-Consider:
-- Your confidence level
-- Position sizing
-- Exit strategy
-- Risk/reward ratio
+// 3. Calculate expected value
+function calculateEV(price, trueProb, fee = 0.02) {
+  const netWin = (1 - fee) - price;
+  const netLoss = -price;
+  return (trueProb * netWin) + ((1 - trueProb) * netLoss);
+}
+
+// 4. Assess opportunity
+const trueProb = 0.45; // Your estimate
+const ev = calculateEV(price, trueProb);
+
+if (ev > 0.05) {
+  console.log(`Strong buy! EV: ${(ev * 100).toFixed(1)}%`);
+}
+```
+
+### Example 3: Watchlist Monitoring with Alerts
+
+```typescript
+// 1. Load watchlist
+const watchlist = await notion.query("Polymarket Watchlist");
+
+// 2. Monitor each market
+for (const market of watchlist) {
+  const current = await polymarket.getPrice(market.id);
+  const change = Math.abs(current - market.targetPrice);
+  
+  // Alert on significant movement
+  if (change > market.threshold) {
+    await slack.alert({
+      channel: "#trading-alerts",
+      text: `🚨 ${market.question} moved ${change * 100}% to ${current * 100}%`
+    });
+  }
+}
+```
+
+## CLI Reference
+
+| Command | Description |
+|---------|-------------|
+| `polymarket markets --volume 50000` | List liquid markets |
+| `polymarket price <market-id>` | Get current price |
+| `polymarket analyze <market-id>` | Full EV analysis |
+
+## Error Handling
+
+| Error Code | Meaning | Fix |
+|------------|---------|-----|
+| `AUTH_001` | Invalid API key | Check keys |
+| `API_001` | Polymarket API error | Retry later |
+| `DATA_001` | Insufficient data | Skip market |
+
+## Common Patterns
+
+### EV Calculation with Fees
+
+```typescript
+function calculateEV(price, estimatedProb, fee = 0.02) {
+  const spread = fee * price;
+  const effectivePrice = price + spread;
+  
+  const winReturn = 1 - effectivePrice;
+  const lossReturn = -effectivePrice;
+  
+  return (estimatedProb * winReturn) + ((1 - estimatedProb) * lossReturn);
+}
+```
+
+### Position Sizing
+
+```typescript
+function calculatePositionSize(bankroll, ev, kellyFraction = 0.25) {
+  const fraction = (ev * kellyFraction) / 1;
+  return bankroll * fraction;
+}
+```
+
+---
+*Skill v2.0 - Polymarket Analyst*

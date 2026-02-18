@@ -1,69 +1,202 @@
 ---
 name: content-publisher
-description: Automates drafting and publishing articles to Substack and Medium.
-permissions:
-  - browser
-  - fs
+description: Automates drafting and publishing articles to Substack and Medium with Apify and Notion integration
+allowed-tools:
+  - Bash(apify:*)
+  - MCP(apify:*)
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
 # Content Publisher Agent
 
-I help you build your personal brand by drafting and publishing content to Substack and Medium.
+Automates drafting and publishing articles to Substack and Medium with workflow automation.
+
+## Required Tools
+
+### MCP Servers
+
+#### Apify MCP (Publishing Automation)
+
+```json
+{
+  "mcpServers": {
+    "apify": {
+      "command": "npx",
+      "args": ["-y", "@apify/mcp-server"],
+      "env": { "APIFY_API_TOKEN": "${APIFY_API_TOKEN}" }
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@makenotion/mcp-server"],
+      "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
+  }
+}
+```
+
+### Tool Permissions
+
+| Tool | Capabilities |
+|------|-------------|
+| `Bash(apify:*)` | Execute browser automation for publishing |
+| `MCP(apify:*)` | Run web scraping/automation actors |
+| `MCP(notion:*)` | Store editorial calendar, track drafts |
+| `MCP(slack:*)` | Send approval notifications |
+
+## Authentication
+
+### Setup
+
+1. **Apify Token**
+   ```bash
+   export APIFY_API_TOKEN="your-token"
+   ```
+
+2. **Notion Integration**
+   - Create integration at https://www.notion.so/my-integrations
+   - Share database with integration
+
+3. **Slack (optional)**
+   ```bash
+   export SLACK_BOT_TOKEN="xoxb-your-token"
+   ```
 
 ## Capabilities
 
-- **Drafting**: I turn ideas into structured Markdown drafts.
-- **publishing**: I navigate to platform editors and paste your content.
-- **Cross-Posting**: I can help you sycn content between platforms.
+- **Drafting**: Turn ideas into structured Markdown drafts
+- **Publishing**: Navigate to platform editors and publish
+- **Cross-Posting**: Sync content between platforms
+- **Scheduling**: Schedule posts for future publication
+- **Editorial Calendar**: Track in Notion
 
-## Commands
+## Pseudo Code
 
-### `draft`
-**Usage**: `draft [topic_or_context]`
-**Description**: Generates a blog post.
-**Instructions**:
-1.  **Analyze Request**: Identify the topic, tone, and target audience.
-2.  **Generate Content**:
-    -   Write a catchy Title and Subtitle.
-    -   Write the Body in Markdown (Use headings, lists, bold text).
-    -   **Context**: Use `browser` to research the topic if needed.
-3.  **Save**:
-    -   Create a file in `memory/drafts/[YYYY-MM-DD]-[Topic-Slug].md`.
-    -   Notify user: "Draft saved to [Path]. Please review."
+### Example 1: Draft Article
 
-### `publish`
-**Usage**: `publish [file_path] [platform] [mode=draft|live]`
-**Description**: Uploads a markdown file to the platform.
-**Instructions**:
-1.  **Read Draft**: Read the file at `file_path`. Extract Title, Subtitle, and Body.
-2.  **Login Check**:
-    -   Read `config/platforms.json` for URL.
-    -   Check if logged in. If not, use credentials from `memory/credentials.md`.
-3.  **Navigate to Editor**: Go to the "New Post" URL.
-4.  **Input Content**:
-    -   **Title**: specific instructions to find Title input and type.
-    -   **Body**: specific instructions to find Body editor and paste/type the markdown content.
-    -   **Formatting**: Note: Markdown might need conversion to rich text. Instruct agent to "Copy as Rich Text" or handle formatting manually if possible.
-5.  **Finalize**:
-    -   **Draft Mode** (Default): Click "Save Draft". Notify User to review in browser.
-    -   **Live Mode**: Click "Publish". **CRITICAL**: Only do this if explicitly requested.
+```typescript
+// 1. Analyze request
+const topic = "The impact of Agentic AI on coding";
+const audience = "developers";
+const tone = "professional";
 
-### `schedule`
-**Usage**: `schedule [file_path] [platform] [datetime]`
-**Description**: Schedules a post.
-**Instructions**:
-1.  Perform steps 1-4 of `publish`.
-2.  **Schedule Flow**:
-    -   Click "Settings" or "Schedule".
-    -   Input the `datetime`.
-    -   Confirm.
+// 2. Research if needed
+const context = await apify.actor("apify/firecrawl-scraper", {
+  urls: [`https://news.ycombinator.com/?q=${topic}`]
+});
 
-## Usage Guide
+// 3. Generate content
+const draft = await generateArticle({ topic, audience, tone, context });
 
-- **Write a Post**: `draft "The impact of Agentic AI on coding"`
-- **Upload to Substack**: `publish memory/drafts/agentic-ai.md substack`
-- **Upload to Medium**: `publish memory/drafts/agentic-ai.md medium`
+// 4. Save to drafts folder
+const filename = `memory/drafts/${dateSlug(topic)}.md`;
+await fs.write(filename, draft);
 
-## Configuration
-- **Platforms**: `config/platforms.json`
-- **Credentials**: `memory/credentials.md`
+// 5. Log to Notion editorial calendar
+await notion.createPage("Editorial Calendar", {
+  title: draft.title,
+  status: "Draft",
+  scheduledDate: null,
+  platform: "both"
+});
+```
+
+### Example 2: Publish to Platform
+
+```typescript
+// 1. Read draft
+const content = await fs.read("memory/drafts/agentic-ai.md");
+
+// 2. Navigate to platform
+await browser.goto("https://medium.com/new-post");
+
+// 3. Fill content
+await browser.fill(".title-input", content.title);
+await browser.fill(".body-editor", content.body);
+
+// 4. Add tags
+for (const tag of content.tags) {
+  await browser.click(".tag-input");
+  await browser.type(tag);
+}
+
+// 5. Publish or save draft
+if (mode === "live") {
+  await browser.click(".publish-button");
+  await slack.notify("#content", `Published: ${content.title}`);
+} else {
+  await browser.click(".save-draft");
+}
+```
+
+### Example 3: Cross-Post to Both Platforms
+
+```typescript
+// 1. Read content
+const content = await fs.read(draftPath);
+
+// 2. Convert for each platform
+const mediumContent = convertToMedium(content);
+const substackContent = convertToSubstack(content);
+
+// 3. Publish to Medium
+await publishToMedium(mediumContent);
+
+// 4. Publish to Substack
+await publishToSubstack(substackContent);
+
+// 5. Update Notion
+await notion.updatePage(draftId, { status: "Published" });
+```
+
+## CLI Reference
+
+| Command | Description |
+|---------|-------------|
+| `draft "topic"` | Generate article draft |
+| `publish <file> <platform>` | Publish to platform |
+| `publish <file> <platform> live` | Publish live |
+| `schedule <file> <platform> <datetime>` | Schedule post |
+
+## Error Handling
+
+| Error Code | Meaning | Fix |
+|------------|---------|-----|
+| `AUTH_001` | Not logged in | Check credentials, re-login |
+| `PUBLISH_001` | Platform changed UI | Update selectors |
+| `RATE_001` | Rate limited | Wait and retry |
+| `VALIDATE_001` | Content validation failed | Check format |
+
+## Common Patterns
+
+### Pattern: Dry-Run Publishing
+
+```typescript
+async function publishWithDryRun(content, platform, dryRun = true) {
+  // Validate content
+  if (!content.title || !content.body) {
+    throw new Error("Missing required fields");
+  }
+
+  // Preview
+  console.log("=== PREVIEW ===");
+  console.log(`Title: ${content.title}`);
+  console.log(`Platform: ${platform}`);
+  
+  if (dryRun) {
+    console.log("DRY RUN - No actual publishing");
+    return { status: "preview" };
+  }
+
+  // Actually publish
+  return await platform.publish(content);
+}
+```
+
+---
+*Skill v2.0 - Content Publisher with MCP*

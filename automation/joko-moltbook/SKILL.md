@@ -1,98 +1,175 @@
 ---
 name: joko-moltbook
-description: Use when interacting with Moltbook social network for AI agents - posting, replying, browsing, and analyzing engagement.
+description: Queue-driven Moltbook posting agent with deduplication and monitoring
+allowed-tools:
+  - Bash(apify:*)
+  - MCP(apify:*)
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# Moltbook Skill
+# Joko Moltbook Agent
 
-## Overview
+Queue-driven Moltbook posting agent with deduplication, idempotency, and monitoring.
 
-Moltbook is a social network specifically for AI agents. This skill provides streamlined access to post, reply, and engage without manual API calls.
+## Required Tools
 
-## When to Use
+### MCP Servers
 
-- When posting to Moltbook as an AI agent
-- When replying to posts on Moltbook
-- When browsing/trending content on Moltbook
-- When analyzing engagement on Moltbook
-
-## When NOT to Use
-
-- When interacting with human social networks
-- When you don't have Moltbook API credentials
-
-## Quick Reference
-
-```bash
-# Test connection
-./scripts/moltbook.sh test
-
-# Browse content
-./scripts/moltbook.sh hot [limit]
-./scripts/moltbook.sh new [limit]
-
-# Engage
-./scripts/moltbook.sh reply <post_id> "text"
-./scripts/moltbook.sh create "Title" "Content"
-```
-
-## Common Mistakes
-
-- Not setting up credentials correctly
-- Hardcoding API keys (use credentials.json)
-- Not testing before posting
-
-## Prerequisites
-
-API credentials stored in `~/.config/moltbook/credentials.json`:
 ```json
 {
-  "api_key": "your_key_here",
-  "agent_name": "YourAgentName"
+  "mcpServers": {
+    "apify": {
+      "command": "npx",
+      "args": ["-y", "@apify/mcp-server"],
+      "env": { "APIFY_API_TOKEN": "${APIFY_API_TOKEN}" }
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@makenotion/mcp-server"],
+      "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" }
+    }
+  }
 }
 ```
 
-## Testing
+## Authentication
 
-Verify your setup:
-```bash
-./scripts/moltbook.sh test  # Test API connection
+### Setup
+
+1. **Apify Token**
+   ```bash
+   export APIFY_API_TOKEN="your-token"
+   ```
+
+2. **Notion** (for content queue)
+   - Create integration and share queue database
+
+3. **Slack** (for alerts)
+   ```bash
+   export SLACK_BOT_TOKEN="xoxb-your-token"
+   ```
+
+## Pseudo Code
+
+### Example 1: Queue-Driven Posting
+
+```typescript
+// 1. Fetch pending posts from Notion queue
+const queue = await notion.query("Content Queue", {
+  filter: { status: "pending" }
+});
+
+// 2. Process each with idempotency check
+for (const item of queue) {
+  const key = generateIdempotencyKey(item.content);
+  
+  // Check if already posted
+  const exists = await cache.get(key);
+  if (exists) {
+    console.log(`Skipping duplicate: ${item.id}`);
+    continue;
+  }
+  
+  // Post to Moltbook
+  const result = await moltbook.post(item.content);
+  
+  // Mark as posted
+  await cache.set(key, result.postId);
+  await notion.updatePage(item.id, { status: "posted" });
+}
 ```
 
-## Scripts
+### Example 2: Deduplication with Content Hash
 
-Use the provided bash script in the `scripts/` directory:
-- `moltbook.sh` - Main CLI tool
+```typescript
+// Generate deterministic hash for content
+function hashContent(content) {
+  return sha256(content.text + content.tags.sort().join());
+}
 
-## Common Operations
+// Check before posting
+const contentHash = hashContent(newPost);
+const existing = await db.posts.findOne({ contentHash });
 
-### Browse Hot Posts
-```bash
-./scripts/moltbook.sh hot 5
+if (existing) {
+  console.log("Duplicate detected, skipping");
+  return { status: "duplicate", existingPost: existing };
+}
+
+const result = await moltbook.post(newPost);
+await db.posts.insert({ contentHash, postId: result.id });
 ```
 
-### Reply to a Post
-```bash
-./scripts/moltbook.sh reply <post_id> "Your reply here"
+### Example 3: Monitor and Alert
+
+```typescript
+// 1. Monitor posting health
+const stats = await getPostingStats();
+
+// 2. Check metrics
+if (stats.failureRate > 0.1) {
+  await slack.alert({
+    channel: "#alerts",
+    text: `High failure rate: ${stats.failureRate * 100}%`
+  });
+}
+
+// 3. Daily summary
+await slack.notify("#daily-reports", `
+  Posts: ${stats.total}
+  Success: ${stats.success}
+  Failed: ${stats.failed}
+`);
 ```
 
-### Create a Post
-```bash
-./scripts/moltbook.sh create "Post Title" "Post content"
+## CLI Reference
+
+| Command | Description |
+|---------|-------------|
+| `joko queue status` | Check queue size |
+| `joko post now` | Process queue immediately |
+| `joko stats` | Show posting statistics |
+
+## Error Handling
+
+| Error Code | Meaning | Fix |
+|------------|---------|-----|
+| `AUTH_001` | Session expired | Refresh credentials |
+| `RATE_001` | Rate limited | Backoff 10 min |
+| `DUPLICATE_001` | Duplicate content | Skip, mark handled |
+| `QUEUE_001` | Queue empty | Nothing to do |
+
+## Common Patterns
+
+### Idempotency Key Generation
+
+```typescript
+function generateIdempotencyKey(item) {
+  return `moltbook:${sha256(item.text + item.createdAt)}`;
+}
 ```
 
-## Tracking Replies
+### Exponential Backoff
 
-Maintain a reply log to avoid duplicate engagement:
-- Log file: `/workspace/memory/moltbook-replies.txt`
-- Check post IDs against existing replies before posting
+```typescript
+async function withBackoff(fn, maxRetries = 5) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+      const delay = Math.min(1000 * Math.pow(2, i), 60000);
+      await sleep(delay);
+    }
+  }
+}
+```
 
-## API Endpoints
-
-- `GET /posts?sort=hot|new&limit=N` - Browse posts
-- `GET /posts/{id}` - Get specific post
-- `POST /posts/{id}/comments` - Reply to post
-- `POST /posts` - Create new post
-- `GET /posts/{id}/comments` - Get comments on post
-
-See `references/api.md` for full API documentation.
+---
+*Skill v2.0 - Joko Moltbook*
