@@ -1,86 +1,56 @@
 ---
 name: operations-team
-description: Use when orchestrating daily business operations - project management, customer support, and market research.
+description: Execute SOPs, handle on-call triage, manage SLA breaches with Notion and Slack
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# operations-team Orchestrator
+# Operations Team
 
-## What It Does
+Execute SOPs, handle on-call triage, manage SLA breaches.
 
-Orchestrates daily business operations - project management, customer support, and market research. Keeps the business running smoothly.
+## Required Tools
 
-## When to Use
-
-- Manage ongoing projects
-- Handle customer support issues
-- Research markets and competitors
-- Coordinate daily operations
-- Maintain business continuity
-
-## Team Members (Skills)
-
-| Skill | Role |
-|-------|------|
-| project-management | Task and sprint coordination |
-| customer-support | Support ticket handling |
-| market-research | Intelligence gathering |
-| analytics-reporting | Performance tracking |
-
-## Workflows
-
-### Project Execution
-
-```
-1. Plan: Use project-management to create tasks
-2. Execute: Delegate to product-team for builds
-3. Track: Use project-management to monitor
-4. Report: Use analytics-reporting for status
-5. Iterate: Adjust based on feedback
+```json
+{
+  "mcpServers": {
+    "notion": { "command": "npx", "args": ["-y", "@makenotion/mcp-server"], "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" } },
+    "slack": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-slack"], "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" } }
+  }
+}
 ```
 
-### Support Handling
+## Pseudo Code
 
-```
-1. Receive: Customer issue via any channel
-2. Triage: Use customer-support to classify
-3. Resolve: Use customer-support to respond
-4. Escalate: If needed, route to human
-5. Follow-up: Ensure resolution
-6. Learn: Use self-improving-agent to improve
-```
+### SOP Execution
 
-### Research Initiative
+```typescript
+// 1. Load SOP
+const sop = await notion.get("sop-id");
 
-```
-1. Brief: Research objective
-2. Execute: Use market-research to gather data
-3. Analyze: Use analytics-reporting for insights
-4. Report: Generate findings
-5. Recommend: Action items
+// 2. Execute steps
+for (const step of sop.steps) {
+  await execute(step);
+  await log(step.result);
+}
 ```
 
-## Trigger Phrases
+### On-Call Triage
 
-- "manage project"
-- "handle support"
-- "research market"
-- "operations"
-- "daily tasks"
-- "sprint"
+```typescript
+// 1. Check alerts
+const alerts = await fetchAlerts();
 
-## Coordination Pattern
+for (const alert of alerts) {
+  const severity = await assessSeverity(alert);
+  
+  if (severity === "critical") {
+    await slack.alert("#oncall", `CRITICAL: ${alert.message}`);
+    await page(alert);
+  }
+}
+```
 
-When triggered, the orchestrator:
-1. Assesses operational needs
-2. Prioritizes tasks
-3. Delegates to appropriate skills
-4. Monitors progress
-5. Reports status
-6. Escalates if needed
-
-## Quality Gates
-
-- SLA compliance for support tickets
-- Project milestones met
-- Research quality validated
-- Daily operations stable
+---
+*Skill v2.0 - Operations Team*

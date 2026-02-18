@@ -1,99 +1,57 @@
 ---
 name: governance-team
-description: Use when orchestrating quality assurance, compliance, documentation, and standards enforcement.
+description: Manage policies, access control, compliance, and governance processes with Notion and Slack
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(slack:*)
 ---
 
-# governance-team Orchestrator
+# Governance Team
 
-## What It Does
+Manage policies, access control, compliance, and governance processes.
 
-Orchestrates quality assurance, compliance, documentation, and continuous improvement. Maintains standards across all operations.
+## Required Tools
 
-## When to Use
-
-- Review code and content
-- Ensure compliance
-- Write documentation
-- Maintain quality standards
-- Audit processes
-
-## Team Members (Skills)
-
-| Skill | Role |
-|-------|------|
-| receiving-code-review | Handle feedback professionally |
-| requesting-code-review | Get effective reviews |
-| agent-docs | Create documentation |
-| systematic-debugging | Issue resolution |
-| self-improving-agent | Continuous improvement |
-
-## Workflows
-
-### Code Review
-
-```
-1. Submit: Request code review
-2. Review: Use requesting-code-review to get feedback
-3. Respond: Use receiving-code-review to handle
-4. Fix: Implement improvements
-5. Iterate: Repeat until approved
+```json
+{
+  "mcpServers": {
+    "notion": { "command": "npx", "args": ["-y", "@makenotion/mcp-server"], "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" } },
+    "slack": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-slack"], "env": { "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}" } }
+  }
+}
 ```
 
-### Documentation
+## Pseudo Code
 
+### Policy Change
+
+```typescript
+// 1. Create proposal
+const proposal = await notion.createPage("Governance", {
+  title: "Update Data Retention Policy",
+  type: "policy-change",
+  status: "draft",
+  content: policyDraft
+});
+
+// 2. Request review
+await slack.notify("#governance", `New policy: ${proposal.title}`);
+
+// 3. Collect approvals
+for (const approver of approvers) {
+  await slack.dm(approver, `Please review: ${proposal.url}`);
+}
 ```
-1. Assess: What needs documenting?
-2. Plan: Use agent-docs to structure
-3. Write: Generate documentation
-4. Review: Quality check
-5. Publish: Make available
-6. Maintain: Keep updated
+
+### Access Control
+
+```typescript
+// Check access
+const hasAccess = await checkPermissions(user, resource);
+if (!hasAccess) {
+  await slack.alert("#security", `Unauthorized access: ${user} -> ${resource}`);
+}
 ```
 
-### Quality Audit
-
-```
-1. Define: Quality criteria
-2. Assess: Current state
-3. Identify: Gaps
-4. Recommend: Improvements
-5. Implement: Fix issues
-6. Monitor: Track progress
-```
-
-## Trigger Phrases
-
-- "review code"
-- "write docs"
-- "ensure quality"
-- "governance"
-- "compliance"
-- "audit"
-- "documentation"
-
-## Coordination Pattern
-
-When triggered, the orchestrator:
-1. Identifies governance need
-2. Applies appropriate skill
-3. Ensures standards met
-4. Documents decisions
-5. Tracks compliance
-
-## Quality Standards
-
-| Area | Standard |
-|------|----------|
-| Code | All reviews approved |
-| Docs | Complete and accurate |
-| Compliance | All policies followed |
-| Quality | Meets defined thresholds |
-| Security | No vulnerabilities |
-
-## Self-Improvement Integration
-
-The governance-team works with self-improving-agent to:
-- Learn from audit findings
-- Improve processes
-- Update standards
-- Document lessons learned
+---
+*Skill v2.0 - Governance Team*
