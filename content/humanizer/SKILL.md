@@ -1,54 +1,44 @@
 ---
 name: humanizer
-description: Use when removing signs of AI-generated writing from text to make it sound more natural and human-written.
+description: Transform AI-generated content into natural, human-sounding writing with proper tone and style
+allowed-tools:
+  - MCP(notion:*)
+  - MCP(exa:*)
 ---
 
-# Humanizer: Remove AI Writing Patterns
+# Humanizer
 
-## Overview
-A writing editor that identifies and removes signs of AI-generated text to make writing sound more natural. Based on Wikipedia's "Signs of AI writing" page.
+Transform AI-generated content into natural, human-sounding writing.
 
-## When to Use
-- When text sounds too AI-generated
-- When editing AI-assisted content
-- When removing "AI patterns" from drafts
+## Required Tools
 
-## When NOT to Use
-- When text should sound technical/formal
-- When preserving AI authorship disclosure
-- When original voice is already natural
+```json
+{
+  "mcpServers": {
+    "notion": { "command": "npx", "args": ["-y", "@makenotion/mcp-server"], "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" } },
+    "exa": { "command": "npx", "args": ["-y", "@exa/mcp-server"], "env": { "EXA_API_KEY": "${EXA_API_KEY}" } }
+  }
+}
+```
 
-## Quick Reference
+## Pseudo Code
 
-**Key AI Patterns:**
-1. Significance inflation
-2. Vague attributions ("Experts believe...")
-3. AI vocabulary ("additionally", "testament")
-4. Copula avoidance ("serves as" vs "is")
-5. Rule of three (forcing groups of three)
-6. Filler phrases ("In order to", "Due to the fact that")
-7. Excessive hedging ("could potentially possibly")
-8. Generic conclusions ("The future looks bright")
+### Rewrite Content
 
-**Key Insight:** LLMs use statistical algorithms - result tends toward most likely.
+```typescript
+// 1. Analyze source content
+const content = await loadDraft();
 
-## Your Task
-1. Identify AI patterns
-2. Rewrite problematic sections
-3. Preserve meaning
-4. Maintain voice
-5. Add soul (don't just remove - inject personality)
+// 2. Identify voice/tone from samples
+const samples = await exa.search(author, { numResults: 5 });
+const voice = extractVoice(samples);
 
-## Common Mistakes
-- Only removing patterns without adding voice
-- Making everything neutral/soulless
-- Over-correcting to sound weird
-- Not preserving original meaning
+// 3. Rewrite
+const humanized = await rewrite(content, {
+  tone: voice,
+  preserveMeaning: true
+});
+```
 
-## Example
-
-**Before (AI-sounding):**
-> The new software serves as a testament to innovation. Moreover, it provides a seamless, intuitive experience.
-
-**After (Humanized):**
-> The software adds batch processing and keyboard shortcuts. Early feedback has been positive.
+---
+*Skill v2.0 - Humanizer*
