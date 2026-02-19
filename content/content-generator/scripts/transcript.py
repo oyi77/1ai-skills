@@ -12,6 +12,9 @@ from typing import Optional
 from .providers.base import AIProvider, GenerationResult
 from .providers.groq import GroqProvider
 from .providers.ollama import OllamaProvider
+from .providers.xai import XAIProvider
+from .providers.byteplus import BytePlusProvider
+from .providers.nvidia import NVIDIAProvider
 
 
 class ScriptStyle(Enum):
@@ -143,15 +146,49 @@ Include tips, warnings, and encouragement for the viewer.""",
     def _auto_init_provider(self) -> Optional[AIProvider]:
         """Auto-initialize an LLM provider based on available API keys.
 
+        Priority order:
+        1. XAI (grok-2 - best for script generation)
+        2. BytePlus (for video scripts)
+        3. NVIDIA (for image-to-script)
+        4. Groq (fast fallback)
+        5. Ollama (local fallback)
+
         Returns:
             Initialized provider or None if no provider available
         """
-        # Try Groq first
+        # Try XAI first (recommended for script generation)
+        xai_key = os.environ.get("XAI_API_KEY")
+        if xai_key:
+            try:
+                return XAIProvider(api_key=xai_key)
+            except Exception:
+                pass
+
+        # Try BytePlus
+        byteplus_key = os.environ.get("BYTEPLUS_API_KEY")
+        if byteplus_key:
+            try:
+                return BytePlusProvider(api_key=byteplus_key)
+            except Exception:
+                pass
+
+        # Try NVIDIA
+        nvidia_key = os.environ.get("NVIDIA_API_KEY")
+        if nvidia_key:
+            try:
+                return NVIDIAProvider(api_key=nvidia_key)
+            except Exception:
+                pass
+
+        # Try Groq (fast text generation)
         groq_key = os.environ.get("GROQ_API_KEY")
         if groq_key:
-            return GroqProvider(api_key=groq_key)
+            try:
+                return GroqProvider(api_key=groq_key)
+            except Exception:
+                pass
 
-        # Try Ollama
+        # Try Ollama (local fallback)
         try:
             ollama = OllamaProvider()
             # Check if Ollama is available
@@ -161,6 +198,29 @@ Include tips, warnings, and encouragement for the viewer.""",
             pass
 
         return None
+
+    def set_provider(self, provider: AIProvider) -> None:
+        """Manually set the LLM provider.
+
+        Args:
+            provider: The AIProvider instance to use
+        """
+        self.provider = provider
+
+    @classmethod
+    def with_provider(cls, provider: AIProvider, **kwargs) -> "ScriptGenerator":
+        """Create a ScriptGenerator with a specific provider.
+
+        Args:
+            provider: The AIProvider to use
+            **kwargs: Additional arguments for ScriptGenerator
+
+        Returns:
+            ScriptGenerator instance with the specified provider
+        """
+        generator = cls(**kwargs)
+        generator.set_provider(provider)
+        return generator
 
     async def generate_script(
         self,
