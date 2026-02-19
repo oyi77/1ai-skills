@@ -1,0 +1,338 @@
+# Content Generator Configuration
+# Production-ready configuration template
+# Copy to config.yaml and configure with your API keys
+
+# ==============================================================================
+# CONTENT GENERATION SETTINGS
+# ==============================================================================
+content_generation:
+  # Strategy options: fast, quality, cheap, balanced, failsafe
+  # - fast: Prioritize speed over quality
+  # - quality: Best quality, slower generation
+  # - cheap: Cost-optimized generation
+  # - balanced: Default balance of speed/quality/cost
+  # - failsafe: Maximum redundancy with fallbacks
+  strategy: "balanced"
+  
+  # Default platform for content generation
+  # Options: tiktok, youtube, instagram, facebook
+  default_platform: "tiktok"
+  
+  # Default storyboard template
+  # Options: ad_short, product_showcase, storytelling, tutorial
+  default_template: "ad_short"
+  
+  # Maximum concurrent generations
+  max_concurrent: 3
+  
+  # Timeout for generation (seconds)
+  generation_timeout: 300
+
+# ==============================================================================
+# PROVIDER CONFIGURATIONS
+# ==============================================================================
+providers:
+  # NVIDIA NIM - Image generation (Flux, SDXL)
+  nvidia:
+    api_key: "${NVIDIA_API_KEY}"
+    enabled: true
+    base_url: "https://integrate.api.nvidia.com/v1"
+    # Model selection: flux, flux-schnell, sdxl
+    model: "flux"
+    # Generation settings
+    width: 1024
+    height: 1024
+    num_images: 1
+    # Retry settings
+    max_retries: 3
+    retry_delay: 2
+
+  # BytePlus Seedance - Video generation
+  byteplus:
+    api_key: "${BYTEPLUS_API_KEY}"
+    enabled: true
+    base_url: "https://visual-creator.byteplusapi.com"
+    # Model: seedance
+    model: "seedance"
+    # Video settings
+    fps: 30
+    resolution: "720p"
+    # Retry settings
+    max_retries: 3
+    retry_delay: 5
+
+  # XAI Grok - Video generation and editing
+  xai:
+    api_key: "${XAI_API_KEY}"
+    enabled: true
+    base_url: "https://api.x.ai/v1"
+    # Model: grok-2-vision
+    model: "grok-2-vision"
+    # Video editing
+    max_duration: 10
+    # Retry settings
+    max_retries: 3
+    retry_delay: 2
+
+  # Groq - Fast LLM inference
+  groq:
+    api_key: "${GROQ_API_KEY}"
+    enabled: true
+    base_url: "https://api.groq.com/openai/v1"
+    # Default model
+    model: "llama-3.3-70b-versatile"
+    # Fallback model
+    fallback_model: "llama-3.1-8b-instant"
+    # Retry settings
+    max_retries: 3
+    retry_delay: 1
+
+  # Replicate - Image generation (SD 3.5)
+  replicate:
+    api_key: "${REPLICATE_API_KEY}"
+    enabled: true
+    base_url: "https://api.replicate.com/v1"
+    # Model: sd35, sdxl-turbo
+    model: "sd35"
+    # Generation settings
+    width: 1024
+    height: 1024
+    # Retry settings
+    max_retries: 3
+    retry_delay: 5
+
+  # HuggingFace - Inference API
+  huggingface:
+    api_key: "${HUGGINGFACE_API_KEY}"
+    enabled: true
+    base_url: "https://api-inference.huggingface.co"
+    # Model: stabilityai/stable-diffusion-3.5-large
+    model: "stabilityai/stable-diffusion-3.5-large"
+    # Generation settings
+    width: 1024
+    height: 1024
+    # Retry settings
+    max_retries: 3
+    retry_delay: 2
+
+  # Ollama - Local LLM
+  ollama:
+    enabled: true
+    base_url: "http://localhost:11434"
+    # Default model
+    model: "llama3.2"
+    # Fallback model
+    fallback_model: "mistral"
+    # Generation settings
+    temperature: 0.7
+    max_tokens: 2048
+    # Retry settings
+    max_retries: 2
+    retry_delay: 1
+
+# ==============================================================================
+# COST MANAGEMENT
+# ==============================================================================
+cost_limits:
+  # Maximum cost per single generation (USD)
+  max_per_generation: 1.00
+  
+  # Maximum monthly budget (USD)
+  max_per_month: 100.00
+  
+  # Alert threshold percentage (0-100)
+  alert_at_percent: 80
+  
+  # Cost tracking enabled
+  enabled: true
+  
+  # Cost tracking database path
+  db_path: ".content_generator_costs.db"
+
+# ==============================================================================
+# PLATFORM SPECIFICATIONS
+# ==============================================================================
+platforms:
+  tiktok:
+    aspect_ratio: "9:16"
+    resolution: [1080, 1920]
+    fps: 30
+    bitrate: "8000k"
+    max_duration: 180
+    ideal_duration: 30
+    format: "mp4"
+    max_file_size_mb: 287
+  
+  youtube:
+    aspect_ratio: "16:9"
+    resolution: [1920, 1080]
+    fps: 30
+    bitrate: "20000k"
+    max_duration: 43200
+    ideal_duration: 600
+    format: "mp4"
+    max_file_size_mb: 128000
+  
+  instagram:
+    aspect_ratio: "9:16"
+    resolution: [1080, 1920]
+    fps: 30
+    bitrate: "3500k"
+    max_duration: 60
+    ideal_duration: 15
+    format: "mp4"
+    max_file_size_mb: 650
+  
+  facebook:
+    aspect_ratio: "16:9"
+    resolution: [1920, 1080]
+    fps: 30
+    bitrate: "10000k"
+    max_duration: 14400
+    ideal_duration: 120
+    format: "mp4"
+    max_file_size_mb: 10240
+
+# ==============================================================================
+# CACHE SETTINGS
+# ==============================================================================
+cache:
+  # Enable caching
+  enabled: true
+  
+  # Cache type: sqlite, memory
+  type: "sqlite"
+  
+  # SQLite database path
+  db_path: ".content_generator_cache.db"
+  
+  # Cache TTL in seconds (default: 24 hours)
+  ttl: 86400
+  
+  # Maximum cache size in MB
+  max_size_mb: 1000
+  
+  # Cache cleanup interval in seconds
+  cleanup_interval: 3600
+
+# ==============================================================================
+# VIDEO PROCESSING DEFAULTS
+# ==============================================================================
+video_processing:
+  # Processing engine: ffmpeg
+  engine: "ffmpeg"
+  
+  # Default codec settings
+  codec:
+    video: "libx264"
+    audio: "aac"
+    preset: "medium"
+    crf: 23
+  
+  # Default framerate
+  framerate: 30
+  
+  # Default bitrate settings
+  bitrate:
+    video: "auto"
+    audio: "128k"
+  
+  # Output settings
+  output:
+    format: "mp4"
+    cleanup_temp: true
+  
+  # FFmpeg path (auto-detect if not specified)
+  ffmpeg_path: null
+  ffprobe_path: null
+
+# ==============================================================================
+# STATE MANAGEMENT
+# ==============================================================================
+state:
+  # Enable state management for resume capability
+  enabled: true
+  
+  # State directory
+  dir: ".content_generator_states"
+  
+  # Auto-save interval in seconds
+  auto_save_interval: 30
+  
+  # Maximum state age in days before cleanup
+  max_age_days: 30
+
+# ==============================================================================
+# FALLBACK CHAIN CONFIGURATION
+# ==============================================================================
+fallback:
+  # Enable automatic fallback on failure
+  enabled: true
+  
+  # Provider fallback order for image generation
+  image_providers:
+    - nvidia
+    - replicate
+    - huggingface
+  
+  # Provider fallback order for video generation
+  video_providers:
+    - byteplus
+    - xai
+  
+  # Provider fallback order for LLM
+  llm_providers:
+    - groq
+    - ollama
+  
+  # Maximum fallback attempts
+  max_attempts: 3
+  
+  # Delay between retries in seconds
+  retry_delay: 2
+
+# ==============================================================================
+# UPLOAD SETTINGS
+# ==============================================================================
+upload:
+  # Image hosting service
+  imbbb:
+    api_key: "${IMGBB_API_KEY}"
+    enabled: true
+  
+  # Default upload timeout in seconds
+  timeout: 60
+  
+  # Retry settings
+  max_retries: 3
+
+# ==============================================================================
+# LOGGING
+# ==============================================================================
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  
+  # Log file path
+  file: ".content_generator.log"
+  
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Log rotation
+  max_bytes: 10485760
+  backup_count: 5
+
+# ==============================================================================
+# STORYBOARD TEMPLATES
+# ==============================================================================
+templates:
+  # Default template directory
+  dir: "templates"
+  
+  # Available templates
+  available:
+    - ad_short
+    - product_showcase
+    - storytelling
+    - tutorial
