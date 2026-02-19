@@ -49,9 +49,50 @@ Get trading signals for today.
 **Usage**: `signal today symbol=XAUUSD timeframe=H1`
 
 ### `backtest`
-Run historical backtest.
+Run historical backtest with full metrics.
 
-**Usage**: `backtest symbol=XAUUSD start=2024-01-01 end=2024-12-31`
+**Usage**:
+```bash
+# Quick backtest (uses breakout strategy with Yahoo Finance data)
+python scripts/xauusd_backtest.py --initial-balance 100 --start 2025-01-01 --end 2026-01-01
+
+# With custom parameters
+python scripts/xauusd_backtest.py --initial-balance 100 --start 2025-01-01 --end 2026-01-01 --lookback 20 --tp 0.02 --sl 0.01
+```
+
+**Output includes**:
+- Initial Balance / Ending Balance
+- Net PNL with Return %
+- Max Drawdown (absolute + %)
+- PNL in USD
+- PNL in Points/Pips
+- Avg Win/Loss
+- Profit Factor
+- Win Rate
+
+**Quick Commands**:
+```bash
+cd C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading
+.venv\Scripts\activate
+python scripts\xauusd_backtest.py
+```
+
+### `summary`
+Generate trading summary from CSV file.
+
+**Usage**:
+```bash
+python scripts/backtest_summary.py --file trades.csv
+python scripts/backtest_summary.py --file trades.csv --json
+python scripts/backtest_summary.py --file trades.csv --initial-balance 5000
+```
+
+**Input Format** (CSV):
+```csv
+pair,pnl_usd,pnl_points,win
+XAUUSD,27.00,2.7,True
+XAUUSD,-45.00,-4.5,False
+```
 
 ### `paper start`
 Start paper trading mode.
@@ -131,23 +172,66 @@ backtest start=2024-01-01 end=2024-12-31
 3. **Hard limits**: 1 trade per day, max spread, max drawdown
 4. **Opposite cancellation**: Cancel pending order when opposite triggers
 
-## Dependencies
+## Quick Start
 
-### Python Environment (Required)
+### 1. Setup Python Environment
 
 ```bash
-# Create virtual environment in trading directory
+# Windows
+cd C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading
+python -m venv .venv
+.venv\Scripts\activate
+
+# Install dependencies
+pip install yfinance pandas pytz openpyxl
+
+# Linux/Mac
 cd /path/to/1ai-skills/trading
 python3 -m venv .venv
 source .venv/bin/activate
+pip install yfinance pandas pytz openpyxl
+```
 
-# Install dependencies
-pip install MetaTrader5  # For MT5 broker
-pip install ccxt         # For crypto exchanges
-pip install pandas pytz  # For data analysis
-pip install yfinance     # For free XAUUSD/Gold data (no broker needed)
+### 2. Run Backtest
+
+```bash
+# XAUUSD backtest
+python scripts/xauusd_backtest.py --initial-balance 100
+
+# Custom period
+python scripts/xauusd_backtest.py --start 2025-01-01 --end 2026-01-01 --initial-balance 100
+```
+
+### 3. Generate Summary from CSV
+
+```bash
+python scripts/backtest_summary.py --file your_trades.csv
+```
+
+## Available Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `xauusd_backtest.py` | Backtest XAUUSD using Yahoo Finance data |
+| `backtest_summary.py` | Generate metrics summary from trade CSV |
+| `xauusd_backtest.ps1` | PowerShell alternative (no Python deps) |
+
+## Dependencies
+
+### Required Packages
+
+```bash
+pip install yfinance pandas pytz openpyxl
+```
+
+### Optional Packages
+
+```bash
+pip install MetaTrader5  # For MT5 broker connection
+pip install ccxt         # For crypto exchanges (Binance, Bybit, etc.)
 ```
 
 ### Note
-- Run Python from project root (parent of `trading/` directory)
-- Or add `trading/` to Python path: `export PYTHONPATH=$PYTHONPATH:/path/to/1ai-skills`
+- Run scripts from `trading/scripts/` directory
+- Or from parent directory with: `python scripts/script_name.py`
+- For MT5: requires Windows + MT5 terminal installed
