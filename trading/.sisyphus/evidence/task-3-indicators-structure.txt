@@ -1,0 +1,79 @@
+================================================================================
+Task 3 Evidence: Indicators Base Module Structure
+================================================================================
+Date: 2026-02-19
+Task: Create indicators base class and module structure
+
+================================================================================
+Directory Structure
+================================================================================
+trading/indicators/
+├── __init__.py
+├── base.py
+└── utils.py
+
+================================================================================
+Files Created
+================================================================================
+
+1. trading/indicators/__init__.py
+   - Exports Indicator class
+   
+2. trading/indicators/base.py
+   - Indicator abstract base class
+   - Methods:
+     * __init__(self, **kwargs) - Configuration initialization
+     * calculate(self, data: List[OHLCV]) -> Any (abstract method)
+     * validate_input(self, data: List[OHLCV]) -> bool
+     * name property
+     * get_required_period() -> int
+     * get_config(key, default) -> Any
+     * __repr__() for string representation
+
+3. trading/indicators/utils.py
+   - Helper functions:
+     * validate_period(period, data_length) -> bool
+     * calculate_change(prices: List[float]) -> List[float]
+     * extract_prices(data: List[OHLCV], price_type) -> List[float]
+     * calculate_sma(prices, period) -> Optional[float]
+     * calculate_ema(prices, period, prev_ema) -> Optional[float]
+
+================================================================================
+Import Tests
+================================================================================
+
+Test 1: Import Indicator base class
+Command: python -c "from trading.indicators.base import Indicator; print('Indicator base OK')"
+Result: Indicator base OK
+Status: PASSED
+
+Test 2: Import utility functions
+Command: python -c "from trading.indicators.utils import validate_period, calculate_change; print('Utils OK')"
+Result: Utils OK
+Status: PASSED
+
+================================================================================
+Base Class Features
+================================================================================
+
+Indicator(ABC) features:
+- Abstract base class requiring calculate() implementation
+- Configuration via **kwargs in __init__
+- Built-in validation via validate_input()
+- Logging support with indicator-specific logger
+- Name property returning class name
+- Required period defaults to 1
+- Configuration access via get_config()
+
+================================================================================
+Status
+================================================================================
+ALL REQUIREMENTS MET:
+- trading/indicators/ directory exists
+- trading/indicators/base.py has Indicator abstract class
+- Can import: from trading.indicators.base import Indicator
+- Evidence saved to .sisyphus/evidence/task-3-indicators-structure.txt
+
+Ready for Tasks 6-9 (actual indicator implementations)
+
+================================================================================

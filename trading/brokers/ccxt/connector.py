@@ -8,7 +8,8 @@ from datetime import datetime
 from typing import List, Optional, Dict, Any
 import logging
 
-from ..brokers.base import (
+from trading.utils.error_handler import retry
+from ..base import (
     BrokerConnector,
     BrokerType,
     OHLCV,
@@ -27,6 +28,30 @@ class CCXTConnector(BrokerConnector):
         super().__init__(BrokerType.CCXT)
         self.exchange_id = exchange_id
         self._exchange = None
+        self._health_status = False
+
+    @property
+    def is_healthy(self) -> bool:
+        """Check if the connector is healthy."""
+        return self._health_status
+
+    def health_check(self) -> bool:
+        """Test connection to the exchange.
+        
+        Returns:
+            True if connection is healthy, False otherwise.
+        """
+        try:
+            exchange = self._get_exchange()
+            # Try to fetch time to verify connection
+            exchange.fetch_time()
+            self._health_status = True
+            logger.info(f"Health check passed for {self.exchange_id}")
+            return True
+        except Exception as e:
+            self._health_status = False
+            logger.error(f"Health check failed for {self.exchange_id}: {e}")
+            return False
 
     def _get_exchange(self):
         """Get or create CCXT exchange instance."""
@@ -47,33 +72,7 @@ class CCXTConnector(BrokerConnector):
                 raise ImportError("CCXT package not installed")
         return self._exchange
 
-    def connect(self, **kwargs) -> bool:
-        """Connect to exchange (CCXT doesn't require explicit connection)."""
-        exchange = self._get_exchange()
-
-        # Set API keys if provided
-        if "apiKey" in kwargs:
-            exchange.apiKey = kwargs["apiKey"]
-        if "secret" in kwargs:
-            exchange.secret = kwargs["secret"]
-
-        # Load markets
-        try:
-            exchange.load_markets()
-            self.connected = True
-            logger.info(f"Connected to {self.exchange_id}")
-            return True
-        except Exception as e:
-            logger.error(f"Failed to connect to {self.exchange_id}: {e}")
-            return False
-
-    def disconnect(self) -> bool:
-        """Disconnect from exchange."""
-        self._exchange = None
-        self.connected = False
-        logger.info(f"Disconnected from {self.exchange_id}")
-        return True
-
+    @retry(max_attempts=3, backoff=1.0)
     def get_ohlcv(
         self,
         symbol: str,
@@ -105,11 +104,8 @@ class CCXTConnector(BrokerConnector):
         if count:
             params["limit"] = count
 
-        try:
-            ohlcv_data = exchange.fetch_ohlcv(symbol, ccxt_timeframe, **params)
-        except Exception as e:
-            logger.error(f"Failed to fetch OHLCV for {symbol}: {e}")
-            return []
+        # Let exceptions propagate to retry decorator
+        ohlcv_data = exchange.fetch_ohlcv(symbol, ccxt_timeframe, **params)
 
         # Convert to OHLCV objects
         ohlcv_list = []
@@ -127,6 +123,7 @@ class CCXTConnector(BrokerConnector):
 
         return ohlcv_list
 
+    @retry(max_attempts=3, backoff=1.0)
     def place_order(
         self,
         symbol: str,
@@ -165,32 +162,27 @@ class CCXTConnector(BrokerConnector):
         # CCXT doesn't support SL/TP directly, implement via params
         # For now, just place basic order
 
-        try:
-            result = exchange.create_order(**order_params)
+        # Let exceptions propagate to retry decorator
+        result = exchange.create_order(**order_params)
 
-            return Order(
-                ticket=hash(result["id"]),
-                symbol=symbol,
-                order_type=order_type,
-                volume=volume,
-                price=result.get("price", price or 0),
-                sl=sl,
-                tp=tp,
-                comment=result.get("id", ""),
-            )
-        except Exception as e:
-            logger.error(f"Failed to place order: {e}")
-            return None
+        return Order(
+            ticket=hash(result["id"]),
+            symbol=symbol,
+            order_type=order_type,
+            volume=volume,
+            price=result.get("price", price or 0),
+            sl=sl,
+            tp=tp,
+            comment=result.get("id", ""),
+        )
 
+    @retry(max_attempts=3, backoff=1.0)
     def get_positions(self, symbol: Optional[str] = None) -> List[Position]:
         """Get open positions."""
         exchange = self._get_exchange()
 
-        try:
-            positions = exchange.fetch_positions()
-        except Exception as e:
-            logger.error(f"Failed to get positions: {e}")
-            return []
+        # Let exceptions propagate to retry decorator
+        positions = exchange.fetch_positions()
 
         position_list = []
         for pos in positions:
@@ -214,15 +206,13 @@ class CCXTConnector(BrokerConnector):
 
         return position_list
 
+    @retry(max_attempts=3, backoff=1.0)
     def get_account_info(self) -> Optional[AccountInfo]:
         """Get account information."""
         exchange = self._get_exchange()
 
-        try:
-            balance = exchange.fetch_balance()
-        except Exception as e:
-            logger.error(f"Failed to get account info: {e}")
-            return None
+        # Let exceptions propagate to retry decorator
+        balance = exchange.fetch_balance()
 
         total = balance.get("total", {})
         free = balance.get("free", {})

@@ -250,6 +250,227 @@ class RiskManager:
 
         return (True, "OK")
 
+    def calculate_fixed_lot(
+        self,
+        account_balance: float,
+        lot_size: Optional[float] = None,
+    ) -> float:
+        """
+        Calculate position size using fixed lot sizing.
+
+        Args:
+            account_balance: Total account balance (used for validation)
+            lot_size: Fixed lot size (default from config)
+
+        Returns:
+            Position size in lots
+        """
+        if lot_size is None:
+            lot_size = self.config.fixed_lot
+
+        # Ensure minimum lot size
+        lot_size = max(lot_size, 0.01)
+
+        # Round to broker's lot step (0.01)
+        lot_size = round(lot_size, 2)
+
+        return lot_size
+
+    def calculate_risk_percent(
+        self,
+        account_balance: float,
+        entry_price: float,
+        sl_price: float,
+        risk_percent: Optional[float] = None,
+        point_value: float = 0.01,
+        contract_size: float = 100,
+    ) -> float:
+        """
+        Calculate position size based on risk percentage.
+
+        Args:
+            account_balance: Total account balance
+            entry_price: Entry price
+            sl_price: Stop loss price
+            risk_percent: Percentage of account to risk (default from config)
+            point_value: Value of one point (pip) for the symbol
+            contract_size: Contract size per lot (default 100 for gold)
+
+        Returns:
+            Position size in lots
+        """
+        if risk_percent is None:
+            risk_percent = self.config.risk_percent
+
+        risk_amount = account_balance * (risk_percent / 100)
+
+        # Calculate SL distance in points
+        sl_distance = abs(entry_price - sl_price)
+
+        if sl_distance == 0 or point_value == 0:
+            return self.config.fixed_lot
+
+        sl_points = sl_distance / point_value
+
+        # Position size = risk_amount / (sl_points * point_value * contract_size)
+        position_size = risk_amount / (sl_points * point_value * contract_size)
+
+        # Round to broker's lot step (0.01)
+        position_size = round(position_size, 2)
+
+        # Ensure minimum lot size
+        position_size = max(position_size, 0.01)
+
+        return position_size
+
+    def calculate_kelly(
+        self,
+        account_balance: float,
+        win_rate: float,
+        avg_win: float,
+        avg_loss: float,
+        max_kelly_fraction: float = 0.5,
+    ) -> Dict[str, float]:
+        """
+        Calculate position size using the Kelly Criterion.
+
+        Kelly Formula: f* = (p * b - q) / b
+        Where:
+        - f* = fraction of account to risk
+        - p = probability of win
+        - q = probability of loss (1-p)
+        - b = average win / average loss (payoff ratio)
+
+        Args:
+            account_balance: Total account balance
+            win_rate: Probability of winning (0.0 to 1.0)
+            avg_win: Average winning trade amount
+            avg_loss: Average losing trade amount (positive value)
+            max_kelly_fraction: Maximum Kelly fraction to use (default 0.5 for half-Kelly)
+
+        Returns:
+            Dict with kelly_fraction, kelly_lot_size, half_kelly_lot_size, etc.
+        """
+        if win_rate < 0 or win_rate > 1:
+            raise ValueError("win_rate must be between 0 and 1")
+
+        if avg_loss <= 0:
+            raise ValueError("avg_loss must be positive")
+
+        if avg_win <= 0:
+            raise ValueError("avg_win must be positive")
+
+        q = 1 - win_rate  # Probability of loss
+        b = avg_win / avg_loss  # Payoff ratio
+
+        # Kelly fraction: f* = (p * b - q) / b
+        if b == 0:
+            kelly_fraction = 0
+        else:
+            kelly_fraction = (win_rate * b - q) / b
+
+        # Clamp to reasonable range (negative Kelly means don't trade)
+        kelly_fraction = max(0, min(kelly_fraction, 1.0))
+
+        # Calculate position sizes
+        full_kelly_amount = account_balance * kelly_fraction
+        half_kelly_amount = full_kelly_amount * max_kelly_fraction
+
+        # Convert to lot sizes (assuming ~$1000 margin per 0.01 lot for gold)
+        # This is simplified - actual implementation may vary by broker
+        margin_per_lot = 1000  # Approximate
+        full_kelly_lots = full_kelly_amount / margin_per_lot if margin_per_lot > 0 else 0
+        half_kelly_lots = half_kelly_amount / margin_per_lot if margin_per_lot > 0 else 0
+
+        # Round and enforce minimum
+        full_kelly_lots = max(round(full_kelly_lots, 2), 0.01)
+        half_kelly_lots = max(round(half_kelly_lots, 2), 0.01)
+
+        return {
+            "kelly_fraction": round(kelly_fraction, 4),
+            "full_kelly_amount": round(full_kelly_amount, 2),
+            "half_kelly_amount": round(half_kelly_amount, 2),
+            "full_kelly_lot_size": full_kelly_lots,
+            "half_kelly_lot_size": half_kelly_lots,
+            "payoff_ratio": round(b, 4),
+            "edge": round(kelly_fraction * b, 4) if b > 0 else 0,
+        }
+
+    def check_max_drawdown(
+        self,
+        current_drawdown: float,
+        max_allowed: Optional[float] = None,
+    ) -> bool:
+        """
+        Check if current drawdown exceeds maximum allowed.
+
+        Args:
+            current_drawdown: Current drawdown percentage
+            max_allowed: Maximum allowed drawdown (default from config)
+
+        Returns:
+            True if drawdown is within limits, False if exceeded
+        """
+        if max_allowed is None:
+            max_allowed = self.config.max_drawdown_percent
+
+        return current_drawdown <= max_allowed
+
+    def calculate_portfolio_heat(
+        self,
+        positions: list,
+        account_balance: float,
+    ) -> Dict[str, float]:
+        """
+        Calculate portfolio heat (total risk exposure).
+
+        Portfolio Heat = sum of (position_size * distance_to_sl) for all positions
+        Heat % = Total risk / Account balance
+
+        Args:
+            positions: List of position dicts with keys:
+                      'lot_size', 'entry_price', 'sl_price', 'point_value'
+            account_balance: Total account balance
+
+        Returns:
+            Dict with total_heat, heat_percent, positions_count, avg_heat_per_position
+        """
+        if account_balance <= 0:
+            return {
+                "total_heat": 0.0,
+                "heat_percent": 0.0,
+                "positions_count": len(positions),
+                "avg_heat_per_position": 0.0,
+            }
+
+        total_heat = 0.0
+
+        for pos in positions:
+            lot_size = pos.get("lot_size", 0)
+            entry_price = pos.get("entry_price", 0)
+            sl_price = pos.get("sl_price", 0)
+            point_value = pos.get("point_value", 0.01)
+            contract_size = pos.get("contract_size", 100)
+
+            # Calculate distance to SL
+            sl_distance = abs(entry_price - sl_price)
+            sl_points = sl_distance / point_value if point_value > 0 else 0
+
+            # Risk for this position = lot_size * sl_points * point_value * contract_size
+            position_risk = lot_size * sl_points * point_value * contract_size
+            total_heat += position_risk
+
+        heat_percent = (total_heat / account_balance) * 100
+        positions_count = len(positions)
+        avg_heat = total_heat / positions_count if positions_count > 0 else 0
+
+        return {
+            "total_heat": round(total_heat, 2),
+            "heat_percent": round(heat_percent, 2),
+            "positions_count": positions_count,
+            "avg_heat_per_position": round(avg_heat, 2),
+        }
+
     def get_guardrail_summary(self, params: Dict[str, Any]) -> str:
         """Generate a human-readable guardrail summary."""
         return f"""

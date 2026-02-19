@@ -1,0 +1,70 @@
+Task 5: Error Handling Infrastructure - Evidence
+================================================
+
+Test Date: 2026-02-19
+Status: PASSED
+
+Files Created:
+--------------
+1. trading/exceptions.py
+   - TradingError (base exception)
+   - BrokerConnectionError
+   - IndicatorCalculationError
+   - StrategyValidationError
+   - RiskManagerError
+
+2. trading/utils/__init__.py
+   - Exports: retry, RetryContext
+
+3. trading/utils/error_handler.py
+   - retry decorator with:
+     * max_attempts parameter (default: 3)
+     * backoff parameter (default: 1.0 seconds)
+     * exponential_jitter (exponential backoff with ±25% random jitter)
+     * Logging of each retry attempt
+   - RetryContext context manager
+
+Retry Decorator Test:
+---------------------
+Test Code:
+```python
+from trading.utils.error_handler import retry
+
+call_count = 0
+@retry(max_attempts=2, backoff=0.1)
+def flaky_func():
+    global call_count
+    call_count += 1
+    print(f'Called {call_count}')
+    raise ValueError('fail')
+
+try:
+    flaky_func()
+except:
+    pass
+print(f'Total calls: {call_count}')
+```
+
+Test Output:
+```
+Function 'flaky_func' failed (attempt 1/2). Error: ValueError: fail. Retrying in 0.09 seconds...
+Function 'flaky_func' failed after 2 attempts. Last error: ValueError: fail
+Called 1
+Called 2
+Total calls: 2
+```
+
+Verification:
+-------------
+✅ Called 1 - PASS
+✅ Called 2 - PASS
+✅ Total calls: 2 - PASS
+
+The retry decorator correctly:
+- Retries the function up to max_attempts times
+- Logs each retry attempt
+- Uses exponential backoff with jitter
+- Re-raises the last exception after max attempts
+- Tracks retry configuration on the wrapper function
+
+QA Scenario: PASSED

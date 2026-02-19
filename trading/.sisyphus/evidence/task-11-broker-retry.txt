@@ -1,0 +1,20 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading
+configfile: pytest.ini
+plugins: cov-7.0.0
+collecting ... collected 10 items
+
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_get_account_info_retry_on_failure PASSED [ 10%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_get_ohlcv_max_retries_exceeded PASSED [ 20%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_get_ohlcv_retry_on_failure PASSED [ 30%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_get_positions_retry_on_failure PASSED [ 40%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_health_check_failure PASSED [ 50%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_health_check_success PASSED [ 60%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_is_healthy_property PASSED [ 70%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_place_order_retry_on_failure PASSED [ 80%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetry::test_retry_config_attached PASSED [ 90%]
+tests/test_brokers/test_ccxt.py::TestCCXTConnectorRetryWithCustomParams::test_retry_respects_max_attempts PASSED [100%]
+
+============================= 10 passed in 14.20s =============================

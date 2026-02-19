@@ -9,12 +9,13 @@ from typing import List, Optional
 import yfinance as yf
 
 from ..brokers.base import OHLCV
+from .symbols import get_yahoo_ticker, get_symbol_config
 
 
 class YahooFinanceProvider:
     """Yahoo Finance data provider."""
 
-    # Symbol mapping for Yahoo Finance
+    # Symbol mapping for Yahoo Finance (fallback for symbols not in symbols.py)
     SYMBOL_MAP = {
         "XAUUSD": "GC=F",  # Gold Futures
         "XAUUSD.D": "GC=F",
@@ -30,7 +31,16 @@ class YahooFinanceProvider:
 
     def get_symbol(self, symbol: str) -> str:
         """Map symbol to Yahoo Finance ticker."""
+        # First try symbol configs
+        yahoo_ticker = get_yahoo_ticker(symbol)
+        if yahoo_ticker != symbol:
+            return yahoo_ticker
+        # Fall back to local SYMBOL_MAP
         return self.SYMBOL_MAP.get(symbol, symbol)
+
+    def get_symbol_config(self, symbol: str):
+        """Get symbol configuration if available."""
+        return get_symbol_config(symbol)
 
     def get_ohlcv(
         self,
