@@ -1,0 +1,12 @@
+# 1ai-skills-bundle Python dependencies
+# Core package - minimal dependencies
+setuptools>=45
+wheel
+setuptools_scm>=6.2
+
+# Optional: Trading skills dependencies
+# Uncomment if you need trading features
+# ccxt>=2.0.0
+# metatrader5>=5.0.0
+# pandas>=1.5.0
+# numpy>=1.21.0
