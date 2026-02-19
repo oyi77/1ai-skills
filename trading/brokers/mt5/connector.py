@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import List, Optional, Dict, Any
 import logging
 
-from .base import BrokerConnector, BrokerType, OHLCV, Order, Position, AccountInfo
+from ..base import BrokerConnector, BrokerType, OHLCV, Order, Position, AccountInfo
 
 logger = logging.getLogger(__name__)
 
@@ -265,3 +265,185 @@ class MT5Connector(BrokerConnector):
             "volume_max": info.volume_max,
             "volume_step": info.volume_step,
         }
+
+    # ============ PENDING ORDER SUPPORT (For XAUUSD 7-Candle Strategy) ============
+
+    def place_pending_order(
+        self,
+        symbol: str,
+        order_type: str,
+        volume: float,
+        price: float,
+        sl: Optional[float] = None,
+        tp: Optional[float] = None,
+        **kwargs,
+    ) -> Optional[Order]:
+        """Place a pending order (BUY_STOP, SELL_STOP, BUY_LIMIT, SELL_LIMIT).
+        
+        This is essential for the XAUUSD 7-Candle Breakout strategy.
+        """
+        mt5 = self._import_mt5()
+
+        # Map order type for pending orders
+        order_type_map = {
+            "BUY_STOP": mt5.ORDER_TYPE_BUY_STOP,
+            "SELL_STOP": mt5.ORDER_TYPE_SELL_STOP,
+            "BUY_LIMIT": mt5.ORDER_TYPE_BUY_LIMIT,
+            "SELL_LIMIT": mt5.ORDER_TYPE_SELL_LIMIT,
+        }
+        mt5_order_type = order_type_map.get(order_type.upper())
+
+        if mt5_order_type is None:
+            logger.error(f"Invalid pending order type: {order_type}")
+            return None
+
+        # Build request for pending order
+        request = {
+            "action": mt5.TRADE_ACTION_PENDING,
+            "symbol": symbol,
+            "volume": volume,
+            "type": mt5_order_type,
+            "price": price,
+            "deviation": kwargs.get("deviation", 20),
+            "magic": kwargs.get("magic", 234000),
+            "comment": kwargs.get("comment", "trading-skill-pending"),
+            "type_time": mt5.ORDER_TIME_GTC,
+            "type_filling": mt5.ORDER_FILLING_RETURN,
+        }
+
+        if sl:
+            request["sl"] = sl
+        if tp:
+            request["tp"] = tp
+
+        # Send order
+        result = mt5.order_send(request)
+
+        if result.retcode != mt5.TRADE_RETCODE_DONE:
+            logger.error(f"Pending order failed: {result.comment}")
+            return None
+
+        return Order(
+            ticket=result.order,
+            symbol=symbol,
+            order_type=order_type,
+            volume=volume,
+            price=price,
+            sl=sl,
+            tp=tp,
+            magic=request["magic"],
+            comment=request["comment"],
+        )
+
+    def cancel_pending_order(self, ticket: int) -> bool:
+        """Cancel a pending order by ticket number."""
+        mt5 = self._import_mt5()
+
+        request = {
+            "action": mt5.TRADE_ACTION_REMOVE,
+            "order": ticket,
+            "comment": "trading-skill-cancel",
+        }
+
+        result = mt5.order_send(request)
+
+        if result.retcode != mt5.TRADE_RETCODE_DONE:
+            logger.error(f"Cancel order failed: {result.comment}")
+            return False
+
+        return True
+
+    def get_pending_orders(self, symbol: Optional[str] = None) -> List[Order]:
+        """Get pending orders."""
+        mt5 = self._import_mt5()
+
+        if symbol:
+            orders = mt5.orders_get(symbol=symbol)
+        else:
+            orders = mt5.orders_get()
+
+        if orders is None:
+            return []
+
+        order_list = []
+        for order in orders:
+            # Map MT5 order type back to string
+            type_map = {
+                mt5.ORDER_TYPE_BUY_LIMIT: "BUY_LIMIT",
+                mt5.ORDER_TYPE_SELL_LIMIT: "SELL_LIMIT",
+                mt5.ORDER_TYPE_BUY_STOP: "BUY_STOP",
+                mt5.ORDER_TYPE_SELL_STOP: "SELL_STOP",
+            }
+            order_type_str = type_map.get(order.type, "UNKNOWN")
+
+            order_list.append(
+                Order(
+                    ticket=order.ticket,
+                    symbol=order.symbol,
+                    order_type=order_type_str,
+                    volume=order.volume_initial,
+                    price=order.price_open,
+                    sl=order.sl,
+                    tp=order.tp,
+                    magic=order.magic,
+                    comment=order.comment,
+                    time_setup=datetime.fromtimestamp(order.time_setup),
+                    time_done=datetime.fromtimestamp(order.time_done) if order.time_done > 0 else None,
+                )
+            )
+
+        return order_list
+
+    def cancel_all_pending_orders(self, symbol: Optional[str] = None) -> int:
+        """Cancel all pending orders."""
+        pending_orders = self.get_pending_orders(symbol)
+        cancelled = 0
+
+        for order in pending_orders:
+            if order.symbol == symbol or symbol is None:
+                if self.cancel_pending_order(order.ticket):
+                    cancelled += 1
+
+        logger.info(f"Cancelled {cancelled} pending orders")
+        return cancelled
+
+    def get_history_deals(
+        self,
+        symbol: Optional[str] = None,
+        start: Optional[datetime] = None,
+        end: Optional[datetime] = None,
+    ) -> List[Dict[str, Any]]:
+        """Get historical deals."""
+        mt5 = self._import_mt5()
+
+        if start is None:
+            start = datetime.now().replace(day=1)  # Default to first of month
+
+        if end is None:
+            end = datetime.now()
+
+        if symbol:
+            deals = mt5.history_deals_get(symbol, start, end)
+        else:
+            deals = mt5.history_deals_get(start, end)
+
+        if deals is None:
+            return []
+
+        deal_list = []
+        for deal in deals:
+            deal_list.append({
+                "ticket": deal.ticket,
+                "order": deal.order,
+                "symbol": deal.symbol,
+                "type": "BUY" if deal.type == 0 else "SELL",
+                "volume": deal.volume,
+                "price": deal.price,
+                "profit": deal.profit,
+                "fee": deal.fee,
+                "commission": deal.commission,
+                "time": datetime.fromtimestamp(deal.time),
+                "comment": deal.comment,
+            })
+
+        return deal_list
