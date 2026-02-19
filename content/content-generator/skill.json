@@ -1,0 +1,66 @@
+{
+  "name": "content-generator",
+  "version": "1.0.0",
+  "description": "Multi-provider automated video content generation platform. Generates videos from text prompts using AI providers (NVIDIA, BytePlus, XAI, Groq) with FFmpeg processing. Supports single video, batch processing, scheduled posting, and multi-platform output (TikTok, YouTube, Instagram, Facebook).",
+  "main": "scripts/cli.py",
+  "keywords": [
+    "ai",
+    "video-generation",
+    "content-creation",
+    "automation",
+    "nvidia",
+    "byteplus",
+    "xai",
+    "groq",
+    "ffmpeg",
+    "social-media",
+    "tiktok",
+    "youtube",
+    "instagram",
+    "facebook"
+  ],
+  "author": "Paijo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oyi77/1ai-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oyi77/1ai-skills/issues"
+  },
+  "homepage": "https://github.com/oyi77/1ai-skills/tree/master/content/content-generator",
+  "requirements": {
+    "python": ">=3.11",
+    "ffmpeg": ">=4.0"
+  },
+  "installation": {
+    "instructions": "Install Python 3.11+ and FFmpeg, then set your API keys in environment variables."
+  },
+  "entryPoints": {
+    "cli": "scripts/cli.py"
+  },
+  "categories": [
+    "content-creation",
+    "video-editing",
+    "social-media",
+    "automation"
+  ],
+  "commands": {
+    "generate": {
+      "description": "Generate content from a prompt",
+      "usage": "python -m scripts.cli generate --prompt <prompt> [--platform <platform>] [--template <template>] [--strategy <strategy>]"
+    },
+    "batch": {
+      "description": "Generate content for multiple prompts",
+      "usage": "python -m scripts.cli batch --prompts <prompt1> <prompt2> ... [--platform <platform>] [--template <template>] [--max-concurrent <number>]"
+    },
+    "schedule": {
+      "description": "Schedule content for later posting",
+      "usage": "python -m scripts.cli schedule --prompt <prompt> --platform <platform> --time <time>"
+    },
+    "post": {
+      "description": "Generate and post content to a platform",
+      "usage": "python -m scripts.cli post --prompt <prompt> --platform <platform> [--template <template>]"
+    }
+  }
+}
