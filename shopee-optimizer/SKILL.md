@@ -1,3 +1,8 @@
+---
+name: shopee-optimizer
+description: Shopee product management automation - listings, pricing, inventory, and order processing
+---
+
 # Shopee Optimizer Skill 🛍️
 
 **Production-ready** automation untuk Shopee product management & optimization.

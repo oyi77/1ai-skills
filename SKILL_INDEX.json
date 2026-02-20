@@ -1,8 +1,8 @@
 {
-  "version": "1.2",
-  "last_updated": "2026-02-20",
-  "total_skills": 91,
-  "local_skills": 57,
+  "version": "1.3",
+  "last_updated": "2026-02-21",
+  "total_skills": 95,
+  "local_skills": 61,
   "external_skills": 33,
   "skills": [
     {
@@ -1504,6 +1504,84 @@
         "features"
       ],
       "source": "local"
+    },
+    {
+      "name": "tiktok-automation",
+      "description": "TikTok content posting automation with session persistence, dynamic element detection, and selector learning",
+      "keywords": [
+        "tiktok",
+        "video",
+        "upload",
+        "social media",
+        "posting",
+        "automation",
+        "content"
+      ],
+      "domains": [
+        "automation",
+        "social-media",
+        "content"
+      ],
+      "source": "local",
+      "path": "tiktok-automation"
+    },
+    {
+      "name": "shopee-optimizer",
+      "description": "Shopee product management automation - listings, pricing, inventory, and order processing",
+      "keywords": [
+        "shopee",
+        "ecommerce",
+        "e-commerce",
+        "product",
+        "listing",
+        "pricing",
+        "inventory",
+        "orders"
+      ],
+      "domains": [
+        "e-commerce",
+        "automation",
+        "operations"
+      ],
+      "source": "local",
+      "path": "shopee-optimizer"
+    },
+    {
+      "name": "google-flow",
+      "description": "Google Flow AI video generation automation - project management, prompt entry, and video generation",
+      "keywords": [
+        "google flow",
+        "video generation",
+        "ai video",
+        "veo",
+        "flow",
+        "google"
+      ],
+      "domains": [
+        "content",
+        "media",
+        "ai"
+      ],
+      "source": "local",
+      "path": "google-flow"
+    },
+    {
+      "name": "model-router",
+      "description": "Intelligent model routing via subagents - automatically spawn the right model for each task complexity",
+      "keywords": [
+        "model",
+        "router",
+        "routing",
+        "subspawn",
+        "agent",
+        "delegate"
+      ],
+      "domains": [
+        "orchestration",
+        "ai"
+      ],
+      "source": "local",
+      "path": "model-router"
     }
   ],
   "teams": [
@@ -1591,6 +1669,41 @@
         "review code",
         "write docs",
         "ensure quality"
+      ]
+    },
+    {
+      "name": "digital-ops-team",
+      "description": "Digital operations automation - social media, e-commerce, and AI content generation",
+      "skills": [
+        "tiktok-automation",
+        "shopee-optimizer",
+        "google-flow",
+        "model-router"
+      ],
+      "keywords": [
+        "digital",
+        "ops",
+        "automation",
+        "tiktok",
+        "shopee",
+        "google flow",
+        "video",
+        "ecommerce",
+        "model",
+        "router",
+        "content",
+        "posting",
+        "product"
+      ],
+      "directive_patterns": [
+        "automate tiktok",
+        "post to tiktok",
+        "optimize shopee",
+        "manage shopee products",
+        "generate video",
+        "create ai video",
+        "route model",
+        "delegate to model"
       ]
     }
   ]

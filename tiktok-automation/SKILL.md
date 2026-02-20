@@ -1,3 +1,10 @@
+---
+name: tiktok-automation
+description: TikTok content posting automation with session persistence, dynamic element detection, and selector learning
+dependencies:
+  - playwright
+---
+
 # TikTok Automation Skill 🎵
 
 **Production-ready** automation untuk TikTok content posting & management.
