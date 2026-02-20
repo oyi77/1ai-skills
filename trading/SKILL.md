@@ -129,6 +129,154 @@ Export trade history.
 
 **Usage**: `export trades format=csv`
 
+## Strategies
+
+### FOREX Strategies
+
+#### `holy_grail`
+Multi-timeframe trend-following strategy using EMA crossovers and ADX confirmation.
+
+**Usage**: `signal today symbol=EURUSD strategy=holy_grail timeframe=H1`
+
+**Parameters**:
+- `ema_fast`: Fast EMA period (default: 9)
+- `ema_slow`: Slow EMA period (default: 21)
+- `adx_period`: ADX period for trend strength (default: 14)
+- `adx_threshold`: Minimum ADX value to confirm trend (default: 25)
+
+**Example**:
+```bash
+signal today symbol=GBPUSD timeframe=H1 ema_fast=12 ema_slow=26 adx_threshold=30
+```
+
+#### `momentum_elder`
+Impulse system based on Elder Ray concept with volume confirmation.
+
+**Usage**: `signal today symbol=USDJPY strategy=momentum_elder timeframe=H4`
+
+**Parameters**:
+- `ema_period`: EMA period for trend direction (default: 13)
+- `bull_power_threshold`: Minimum bull power for long signals (default: 0.0001)
+- `bear_power_threshold`: Maximum bear power for short signals (default: -0.0001)
+
+**Example**:
+```bash
+signal today symbol=AUDUSD timeframe=D1 ema_period=21
+```
+
+#### `kumo_breakout`
+Ichimoku Kumo breakout strategy with cloud analysis.
+
+**Usage**: `signal today symbol=USDCAD strategy=kumo_breakout timeframe=H1`
+
+**Parameters**:
+- `tenkan_period`: Tenkan-sen period (default: 9)
+- `kijun_period`: Kijun-sen period (default: 26)
+- `senkou_span_b`: Senkou Span B period (default: 52)
+- `cloud_threshold`: Cloud thickness filter (default: 0.0005)
+
+**Example**:
+```bash
+signal today symbol=EURJPY timeframe=H4 tenkan_period=12 kijun_period=24
+```
+
+### CRYPTO Strategies
+
+#### `funding_reversal`
+Arbitrage strategy based on funding rate divergences across exchanges.
+
+**Usage**: `signal today symbol=BTC/USDT strategy=funding_reversal exchange=binance`
+
+**Parameters**:
+- `funding_threshold`: Minimum funding rate difference (default: 0.01%)
+- `holding_period`: Maximum holding period in hours (default: 24)
+- `min_spread`: Minimum price spread between exchanges (default: 0.1%)
+
+**Example**:
+```bash
+signal today symbol=ETH/USDT strategy=funding_reversal exchange=bybit funding_threshold=0.02%
+```
+
+#### `volume_momentum`
+Volume-weighted momentum strategy with volume spike detection.
+
+**Usage**: `signal today symbol=SOL/USDT strategy=volume_momentum timeframe=1h`
+
+**Parameters**:
+- `volume_ma_period`: Volume MA period (default: 20)
+- `volume_multiplier`: Volume spike threshold (default: 2.0)
+- `momentum_period`: Momentum calculation period (default: 14)
+
+**Example**:
+```bash
+signal today symbol=DOGE/USDT strategy=volume_momentum timeframe=4h volume_multiplier=2.5
+```
+
+### STOCKS Strategies
+
+#### `golden_cross`
+Classic golden cross strategy with moving average crossovers.
+
+**Usage**: `signal today symbol=AAPL strategy=golden_cross timeframe=D1`
+
+**Parameters**:
+- `fast_ma`: Fast moving average period (default: 50)
+- `slow_ma`: Slow moving average period (default: 200)
+- `ma_type`: MA type (SMA, EMA, WMA) (default: SMA)
+
+**Example**:
+```bash
+signal today symbol=TSLA strategy=golden_cross timeframe=D1 fast_ma=50 slow_ma=200 ma_type=EMA
+```
+
+#### `rsi_divergence`
+RSI divergence detection for reversal signals.
+
+**Usage**: `signal today symbol=NVDA strategy=rsi_divergence timeframe=H1`
+
+**Parameters**:
+- `rsi_period`: RSI period (default: 14)
+- `oversold`: Oversold threshold (default: 30)
+- `overbought`: Overbought threshold (default: 70)
+- `divergence_lookback`: Lookback period for divergence (default: 14)
+
+**Example**:
+```bash
+signal today symbol=MSFT strategy=rsi_divergence timeframe=H4 rsi_period=21 oversold=25 overbought=75
+```
+
+### COMMODITY Strategies
+
+#### `gold_silver_ratio`
+Precious metals ratio trading strategy.
+
+**Usage**: `signal today symbol=XAUUSD strategy=gold_silver_ratio timeframe=D1`
+
+**Parameters**:
+- `ratio_ma_period`: Ratio MA period (default: 50)
+- `ratio_threshold`: Upper/lower threshold for signals (default: 80)
+- `correlation_check`: Verify correlation before trading (default: true)
+
+**Example**:
+```bash
+signal today symbol=XAGUSD strategy=gold_silver_ratio timeframe=D1 ratio_threshold=75
+```
+
+#### `seasonal`
+Seasonal pattern strategy based on historical monthly performance.
+
+**Usage**: `signal today symbol=CLNYMEX strategy=seasonal timeframe=D1`
+
+**Parameters**:
+- `lookback_years`: Years of historical data (default: 10)
+- `min_win_rate`: Minimum historical win rate (default: 55%)
+- `seasonal_month`: Specific month to trade (optional)
+
+**Example**:
+```bash
+signal today symbol=GCNYMEX strategy=seasonal timeframe=D1 lookback_years=15 min_win_rate=60
+```
+
 ## Configuration
 
 ### Session Settings

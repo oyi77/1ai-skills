@@ -1,9 +1,9 @@
 {
   "version": "1.1",
   "last_updated": "2026-02-16",
-  "total_skills": 80,
-  "local_skills": 49,
-  "external_skills": 31,
+  "total_skills": 85,
+  "local_skills": 51,
+  "external_skills": 33,
   "skills": [
     {
       "name": "brainstorming",
@@ -299,6 +299,162 @@
       ],
       "source": "local",
       "path": "trading/strategy/tradfi/commodities/xauusd_asia_7c_breakout"
+    },
+    {
+      "name": "holy-grail",
+      "description": "FOREX Holy Grail strategy with multi-timeframe analysis and precise entry signals",
+      "keywords": [
+        "trading",
+        "forex",
+        "holy grail",
+        "strategy",
+        "multi-timeframe"
+      ],
+      "domains": [
+        "trading",
+        "forex"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/forex/holy_grail"
+    },
+    {
+      "name": "momentum-elder",
+      "description": "Elder Impulse System momentum strategy for FOREX with trend confirmation",
+      "keywords": [
+        "trading",
+        "forex",
+        "momentum",
+        "elder",
+        "impulse",
+        "trend"
+      ],
+      "domains": [
+        "trading",
+        "forex"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/forex/momentum_elder"
+    },
+    {
+      "name": "kumo-breakout",
+      "description": "Ichimoku Kumo breakout strategy for FOREX with cloud-based signals",
+      "keywords": [
+        "trading",
+        "forex",
+        "ichimoku",
+        "kumo",
+        "breakout",
+        "cloud"
+      ],
+      "domains": [
+        "trading",
+        "forex"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/forex/kumo_breakout"
+    },
+    {
+      "name": "funding-reversal",
+      "description": "Crypto funding rate reversal strategy with institutional flow analysis",
+      "keywords": [
+        "trading",
+        "crypto",
+        "funding",
+        "reversal",
+        "institutional"
+      ],
+      "domains": [
+        "trading",
+        "crypto"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/crypto/funding_reversal"
+    },
+    {
+      "name": "volume-momentum",
+      "description": "Volume-weighted momentum strategy for crypto with smart money tracking",
+      "keywords": [
+        "trading",
+        "crypto",
+        "volume",
+        "momentum",
+        "smart money"
+      ],
+      "domains": [
+        "trading",
+        "crypto"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/crypto/volume_momentum"
+    },
+    {
+      "name": "golden-cross",
+      "description": "Golden cross moving average strategy for stocks with multiple timeframe confirmation",
+      "keywords": [
+        "trading",
+        "stocks",
+        "golden cross",
+        "moving average",
+        "ma"
+      ],
+      "domains": [
+        "trading",
+        "stocks"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/stocks/golden_cross"
+    },
+    {
+      "name": "rsi-divergence",
+      "description": "RSI divergence strategy for stocks with hidden and regular divergence detection",
+      "keywords": [
+        "trading",
+        "stocks",
+        "rsi",
+        "divergence",
+        "oscillator"
+      ],
+      "domains": [
+        "trading",
+        "stocks"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/stocks/rsi_divergence"
+    },
+    {
+      "name": "gold-silver-ratio",
+      "description": "Gold-Silver ratio trading strategy for commodities with spread analysis",
+      "keywords": [
+        "trading",
+        "commodities",
+        "gold",
+        "silver",
+        "ratio",
+        "spread"
+      ],
+      "domains": [
+        "trading",
+        "commodities"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/commodities/gold_silver_ratio"
+    },
+    {
+      "name": "seasonal-pattern",
+      "description": "Seasonal pattern trading strategy for commodities with historical performance analysis",
+      "keywords": [
+        "trading",
+        "commodities",
+        "seasonal",
+        "pattern",
+        "historical"
+      ],
+      "domains": [
+        "trading",
+        "commodities"
+      ],
+      "source": "local",
+      "path": "trading/strategy/templates/commodities/seasonal"
     },
     {
       "name": "joko-orchestrator",
