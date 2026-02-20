@@ -492,6 +492,110 @@
                 "platforms": [
                     "ai-search"
                 ]
+            },
+            "integrations/oh-my-opencode": {
+                "keywords": [
+                    "opencode",
+                    "oh-my-opencode",
+                    "sisyphus",
+                    "hephaestus",
+                    "oracle agent",
+                    "librarian agent",
+                    "opencode agent",
+                    "multi-model",
+                    "parallel agents",
+                    "agent orchestration",
+                    "autonomous coding",
+                    "advanced coding",
+                    "deep work coding",
+                    "tambahkan fitur",
+                    "add feature",
+                    "implement",
+                    "implementasi",
+                    "create feature",
+                    "build feature",
+                    "refactor",
+                    "refactoring",
+                    "arsitektur",
+                    "architecture",
+                    "design system",
+                    "end-to-end",
+                    "full-stack",
+                    "multi-file",
+                    "multi-module",
+                    "complex task",
+                    "complex coding",
+                    "advanced task",
+                    "difficult task",
+                    "research first",
+                    "explore codebase",
+                    "autonomous",
+                    "parallel execution",
+                    "background execution",
+                    "persistent task",
+                    "finish the job",
+                    "complete task"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "integrations/oh-my-opencode/installation": {
+                "keywords": [
+                    "install opencode",
+                    "setup opencode",
+                    "install oh-my-opencode",
+                    "opencode not installed",
+                    "configure opencode"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "integrations/oh-my-opencode/agents": {
+                "keywords": [
+                    "sisyphus",
+                    "hephaestus",
+                    "oracle",
+                    "librarian",
+                    "explore",
+                    "which agent",
+                    "agent selection",
+                    "opencode agent"
+                ],
+                "mcps": [],
+                "priority": "high"
+            },
+            "integrations/oh-my-opencode/usage": {
+                "keywords": [
+                    "opencode commands",
+                    "opencode usage",
+                    "opencode cli",
+                    "opencode session",
+                    "how to use opencode"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "integrations/oh-my-opencode/configuration": {
+                "keywords": [
+                    "configure opencode",
+                    "opencode config",
+                    "opencode settings",
+                    "opencode agents",
+                    "opencode mcp"
+                ],
+                "mcps": [],
+                "priority": "medium"
+            },
+            "integrations/oh-my-opencode/features": {
+                "keywords": [
+                    "opencode features",
+                    "oh-my-opencode features",
+                    "opencode hooks",
+                    "opencode lsp",
+                    "opencode tools"
+                ],
+                "mcps": [],
+                "priority": "low"
             }
         },
         "monitoring": {

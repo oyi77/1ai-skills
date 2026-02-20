@@ -1,8 +1,8 @@
 {
-  "version": "1.1",
-  "last_updated": "2026-02-16",
-  "total_skills": 85,
-  "local_skills": 51,
+  "version": "1.2",
+  "last_updated": "2026-02-20",
+  "total_skills": 91,
+  "local_skills": 57,
   "external_skills": 33,
   "skills": [
     {
@@ -1392,6 +1392,118 @@
         "competitive-analysis",
         "mcp"
       ]
+    },
+    {
+      "name": "oh-my-opencode",
+      "path": "integrations/oh-my-opencode",
+      "category": "integration",
+      "description": "Master OpenCode AI coding agent with oh-my-opencode harness - agents, tools, MCPs, and workflow automation",
+      "keywords": [
+        "opencode",
+        "oh-my-opencode",
+        "sisyphus",
+        "hephaestus",
+        "oracle",
+        "agent",
+        "coding",
+        "multi-model"
+      ],
+      "domains": [
+        "development",
+        "integration"
+      ],
+      "source": "local"
+    },
+    {
+      "name": "oh-my-opencode-installation",
+      "path": "integrations/oh-my-opencode/installation",
+      "category": "integration",
+      "description": "Smart installation and configuration for OpenCode with oh-my-opencode - detects existing installation and only installs if needed",
+      "keywords": [
+        "install opencode",
+        "setup oh-my-opencode",
+        "configure opencode",
+        "opencode installation"
+      ],
+      "domains": [
+        "integration",
+        "setup"
+      ],
+      "source": "local"
+    },
+    {
+      "name": "oh-my-opencode-agents",
+      "path": "integrations/oh-my-opencode/agents",
+      "category": "integration",
+      "description": "Deep dive into oh-my-opencode agents: Sisyphus, Hephaestus, Oracle, Librarian, Explore - when to use each",
+      "keywords": [
+        "sisyphus agent",
+        "hephaestus agent",
+        "oracle agent",
+        "librarian agent",
+        "explore agent",
+        "oh-my-opencode agents",
+        "which agent to use"
+      ],
+      "domains": [
+        "development",
+        "agents"
+      ],
+      "source": "local"
+    },
+    {
+      "name": "oh-my-opencode-usage",
+      "path": "integrations/oh-my-opencode/usage",
+      "category": "integration",
+      "description": "Daily usage patterns for oh-my-opencode - commands, sessions, agent invocation, and productivity workflows",
+      "keywords": [
+        "opencode commands",
+        "opencode usage",
+        "opencode session",
+        "sisyphus workflow",
+        "opencode cli"
+      ],
+      "domains": [
+        "integration",
+        "workflow"
+      ],
+      "source": "local"
+    },
+    {
+      "name": "oh-my-opencode-configuration",
+      "path": "integrations/oh-my-opencode/configuration",
+      "category": "integration",
+      "description": "Complete oh-my-opencode configuration - agents, MCPs, hooks, categories, permissions, and advanced options",
+      "keywords": [
+        "configure opencode",
+        "opencode config",
+        "oh-my-opencode settings",
+        "opencode agents config",
+        "opencode mcp"
+      ],
+      "domains": [
+        "integration",
+        "configuration"
+      ],
+      "source": "local"
+    },
+    {
+      "name": "oh-my-opencode-features",
+      "path": "integrations/oh-my-opencode/features",
+      "category": "integration",
+      "description": "Complete reference of oh-my-opencode features - 5 agents, MCP integration, hooks, LSP tools, and productivity enhancements",
+      "keywords": [
+        "opencode features",
+        "oh-my-opencode features",
+        "opencode mcp",
+        "opencode hooks",
+        "opencode lsp"
+      ],
+      "domains": [
+        "integration",
+        "features"
+      ],
+      "source": "local"
     }
   ],
   "teams": [
