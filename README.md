@@ -27,7 +27,7 @@ npm install
 npm install -g @anthropic-ai/claude-code
 
 # Or use direct install
-claude install paijo/1ai-skills
+claude install oyi77/1ai-skills
 ```
 
 ### For OpenCode
@@ -37,7 +37,7 @@ cd ~/.opencode/skills
 git clone https://github.com/oyi77/1ai-skills.git
 
 # Or use OpenCode's skill management
-opencode skills install paijo/1ai-skills
+opencode skills install oyi77/1ai-skills
 ```
 
 ### For OpenCraw
@@ -55,7 +55,7 @@ npm install
 Paste this into your LLM agent session:
 ```
 Install and configure 1ai-skills by following the instructions here:
-https://raw.githubusercontent.com/paijo/1ai-skills/refs/heads/main/LLM.md
+https://raw.githubusercontent.com/oyi77/1ai-skills/refs/heads/main/LLM.md
 ```
 
 ### For LLM Agents
