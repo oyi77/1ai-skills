@@ -8,14 +8,10 @@ import os
 import subprocess
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-#QS|# Trading directory - auto-detect cross-platform
-#QS|# Get script's directory and resolve relative to it
+# Trading directory - auto-detect cross-platform
+# Get script's directory and resolve relative to it
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-TRADING_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, '..'))
-#QS|# Get script's directory and resolve relative to it
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-TRADING_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, '..'))
-TRADING_DIR = r"/home/openclaw/C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading"
+TRADING_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, ".."))
 
 # Change to trading directory
 os.chdir(TRADING_DIR)
@@ -29,69 +25,112 @@ print()
 
 # Simple test for each strategy
 STRATEGIES_TO_TEST = [
-    ("XAUUSD", "H1", "strategy/tradfi/commodities/xauusd_asia_7c_breakout/xauusd_asia_7c_breakout.py"),
-    ("XAUUSD", "H4", "strategy/tradfi/commodities/xauusd_asia_7c_breakout/xauusd_asia_7c_breakout.py"),
-    ("XAUUSD", "D1", "strategy/tradfi/commodities/xauusd_asia_7c_breakout/xauusd_asia_7c_breakout.py"),
+    (
+        "XAUUSD",
+        "H1",
+        "strategy/tradfi/commodities/xauusd_asia_7c_breakout/xauusd_asia_7c_breakout.py",
+    ),
+    (
+        "XAUUSD",
+        "H4",
+        "strategy/tradfi/commodities/xauusd_asia_7c_breakout/xauusd_asia_7c_breakout.py",
+    ),
+    (
+        "XAUUSD",
+        "D1",
+        "strategy/tradfi/commodities/xauusd_asia_7c_breakout/xauusd_asia_7c_breakout.py",
+    ),
     ("GBPUSD", "H1", "strategy/templates/forex/holy_grail.py"),
     ("GBPUSD", "H4", "strategy/templates/forex/holy_grail.py"),
     ("GBPUSD", "D1", "strategy/templates/forex/holy_grail.py"),
+    ("EURUSD", "H1", "strategy/templates/forex/holy_grail.py"),
+    ("EURUSD", "H4", "strategy/templates/forex/holy_grail.py"),
+    ("USDJPY", "H1", "strategy/templates/forex/holy_grail.py"),
+    ("USDJPY", "H4", "strategy/templates/forex/holy_grail.py"),
 ]
 
-def run_backtest(pair, tf, script):
-    """Run single backtest."""
-    cmd = ["python3", script, "backtest", "2025-01-01", "2025-12-31", "--initial-balance", "100"]
 
-    print(f"[{pair} {tf}] Running...")
+def run_backtest(pair, tf, script):
+    """Run backtest."""
+    cmd = [
+        "python3",
+        script,
+        "backtest",
+        "2025-01-01",
+        "2025-12-31",
+        "--initial-balance",
+        "100",
+    ]
+
+    print(f"[{pair} {tf}] Running {script}...")
 
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
 
     if result.returncode != 0:
-        return {"pair": pair, "tf": tf, "status": "FAILED", "error": result.stderr[:100]}
+        return {
+            "pair": pair,
+            "tf": tf,
+            "status": "FAILED",
+            "error": result.stderr[:200],
+        }
 
-    # Parse basic output
-    output = result.stdout
+    # Parse
     metrics = {"pair": pair, "tf": tf, "status": "OK"}
-
-    for line in output.split('\n'):
-        if "Win Rate:" in line: metrics["wr"] = float(line.split(":")[1].strip().replace("%", ""))
-        elif "Total Trades:" in line: metrics["trades"] = int(line.split(":")[1].strip())
-        elif "Net PNL:" in line and "$" in line: metrics["pnl"] = float(line.split(":")[1].strip().replace("$", ""))
+    for line in result.stdout.split("\n"):
+        if "Win Rate:" in line:
+            try:
+                metrics["wr"] = float(line.split(":")[1].strip().replace("%", ""))
+            except:
+                pass
+        elif "Net PNL:" in line and "$" in line:
+            try:
+                metrics["pnl"] = float(line.split(":")[1].strip().replace("$", ""))
+            except:
+                pass
 
     if "wr" in metrics:
-        print(f"[{pair} {tf}] SUCCESS: {metrics['wr']:.1f}% WR, ${metrics.get('pnl', 0):.2f} PNL")
+        print(
+            f"[{pair} {tf}] SUCCESS: {metrics['wr']:.1f}% WR, ${metrics.get('pnl', 0):.2f} PNL"
+        )
 
     return metrics
 
-# Run tests
-print("="*80)
+
+print("=" * 80)
 print("SIMPLE BACKTEST RUNNER")
-print("="*80)
+print("=" * 80)
 print()
 
 results = []
 with ProcessPoolExecutor(max_workers=4) as executor:
-    futures = {executor.submit(run_backtest, p, t, s): (p, t, s) for p, t, s in STRATEGIES_TO_TEST}
+    futures = {
+        executor.submit(run_backtest, p, t, s): (p, t, s)
+        for p, t, s in STRATEGIES_TO_TEST
+    }
 
     for future in as_completed(futures):
         result = future.result()
-        if result:
+        if result and result["status"] == "OK":
             results.append(result)
 
-# Summary
-print("\n" + "="*80)
-print("SUMMARY")
-print("="*80)
+print("\n" + "=" * 80)
+print("RESULTS")
+print("=" * 80)
 
-successful = [r for r in results if r["status"] == "OK"]
-failed = [r for r in results if r["status"] == "FAILED"]
+if results:
+    print(f"Successful: {len(results)}")
+    print("\nSTRATEGY PERFORMANCE:")
+    print("-" * 80)
+    for r in sorted(results, key=lambda x: -x.get("wr", 0)):
+        print(
+            f"{r['pair']:<8} {r['tf']:>3} WR: {r['wr']:>5.1f}% PNL: ${r.get('pnl', 0):>7.2f}"
+        )
 
-print(f"\nSuccessful: {len(successful)}")
-print(f"Failed: {len(failed)}")
+    best = max(results, key=lambda x: x.get("wr", 0))
+    print("\nBEST:")
+    print(f"Pair: {best['pair']}")
+    print(f"TF: {best['tf']}")
+    print(f"WR: {best['wr']:.1f}%")
+    print(f"PNL: ${best.get('pnl', 0):.2f}")
 
-if successful:
-    print("\nWINNERS (by win rate):")
-    print("-"*80)
-    for r in sorted(successful, key=lambda x: -x.get("wr", 0)):
-        print(f"{r['pair']} {r['tf']:>3} WR: {r['wr']:>5.1f}% PNL: ${r.get('pnl', 0):>7.2f}")
-
-print("\n" + "="*80)
+print("\n" + "=" * 80)
