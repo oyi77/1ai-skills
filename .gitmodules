@@ -1,0 +1,3 @@
+[submodule "skills/1ai-skills"]
+	path = skills/1ai-skills
+	url = https://github.com/oyi77/1ai-skills.git
