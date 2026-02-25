@@ -1,0 +1,103 @@
+====================================================================================================
+VILONA FINAL BACKTEST - 36 STRATEGIES - BERKAHKARYA QUANT FUND
+====================================================================================================
+Period: 2025-01-01 to 2025-12-31
+Total configs: 39
+Workers: 4
+Venv Python: /home/openclaw/.trading-venv/bin/python
+Working dir: /home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/1ai-skills/trading
+====================================================================================================
+
+[1/39] ❌  GBPUSD  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[2/39] ❌  GBPUSD  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[3/39] ❌  GBPUSD  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[4/39] ❌  EURUSD  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[5/39] ❌  EURUSD  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[6/39] ❌  EURUSD  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[7/39] ❌  USDJPY  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[8/39] ❌  USDJPY  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[9/39] ❌  USDJPY  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[10/39] ❌  GBPUSD  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[11/39] ❌  GBPUSD  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[12/39] ❌  GBPUSD  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[13/39] ❌  EURUSD  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[14/39] ❌  EURUSD  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[15/39] ❌  EURUSD  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[16/39] ❌  USDJPY  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[17/39] ❌  USDJPY  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[18/39] ❌  USDJPY  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[19/39] ❌  GBPUSD  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[20/39] ❌  GBPUSD  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[21/39] ❌  GBPUSD  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[22/39] ❌  EURUSD  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[23/39] ❌  EURUSD  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[24/39] ❌  EURUSD  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[25/39] ❌  USDJPY  H1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[26/39] ❌  USDJPY  H4 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[27/39] ❌  USDJPY  D1 - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[28/39] ❌ BTCUSDT  1h - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[29/39] ❌ BTCUSDT  4h - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[30/39] ❌ BTCUSDT  1d - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[31/39] ❌ ETHUSDT  1h - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[32/39] ❌ ETHUSDT  4h - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[33/39] ❌ ETHUSDT  1d - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[34/39] ❌ SOLUSDT  1h - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[35/39] ❌ SOLUSDT  4h - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[36/39] ❌ SOLUSDT  1d - Traceback (most recent call last):
+  File "/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/
+[37/39] ❌  XAUUSD  D1 - No JSON found
+[38/39] ❌  XAUUSD  H4 - No JSON found
+[39/39] ❌  XAUUSD  H1 - No JSON found
+
+====================================================================================================
+FINAL REPORT - BERKAHKARYA QUANT FUND
+====================================================================================================
+
+❌ No successful backtests!
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+   Total configs tested: 39
+   Successful: 0
+   Failed: 39
+
+💡 REKOMENDASI VILONA:
+   ❌ Tidak ada strategy yang profitable
+   → Perlu develop strategy baru
+====================================================================================================

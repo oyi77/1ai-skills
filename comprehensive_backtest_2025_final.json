@@ -1,0 +1,19 @@
+{
+  "config": {
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "initial_balance": 100.0
+  },
+  "results": [],
+  "strategy_summary": {},
+  "best_overall": {
+    "strategy": null,
+    "pair": null,
+    "win_rate": 0,
+    "net_pnl": 0,
+    "profit_factor": 0,
+    "max_drawdown": 0
+  },
+  "best_by_pair": {},
+  "timestamp": "2026-02-22T23:48:03.638891"
+}
