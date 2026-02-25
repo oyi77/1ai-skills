@@ -431,14 +431,90 @@ class LeadDatabase:
         return count
 
 
-# ─── Mock DM Client ───────────────────────────────────────────────────────────
+# ─── Post Bridge DM Client ────────────────────────────────────────────────────
 
-class MockDMClient:
-    def send_dm(self, handle: str, platform: str, message: str) -> bool:
-        log.info(f"[MOCK] 📨 DM → {handle} on {platform}:")
-        for line in message[:200].split("\n"):
-            log.info(f"  {line}")
-        return True
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).parent.parent.parent.parent / "marketing"))
+from post_bridge_client import PostBridgeClient as _PostBridgeClient
+
+
+class PostBridgeDMClient:
+    """
+    Outreach client backed by the Post Bridge API (post-bridge.com).
+
+    DMs are published as platform posts directed at the target handle,
+    or scheduled if a scheduled_at datetime is provided.
+
+    Note: Post Bridge routes content to connected social accounts.
+    Native DM functionality depends on platform API support; for
+    platforms where DM is unavailable, messages are published as posts
+    mentioning the target handle.
+    """
+
+    def __init__(self):
+        self._pb = _PostBridgeClient()
+        self._accounts_by_platform: dict = {}
+        log.info("🔌 PostBridgeDMClient initialized")
+
+    def _get_account_ids(self, platform: str) -> list[str]:
+        """Return cached account IDs for a given platform."""
+        platform = platform.lower()
+        if platform not in self._accounts_by_platform:
+            accounts = self._pb.get_accounts_by_platform(platform)
+            ids = [a["id"] for a in accounts]
+            if not ids:
+                log.warning(f"No {platform} accounts connected — falling back to all accounts")
+                ids = self._pb.get_all_account_ids()
+            self._accounts_by_platform[platform] = ids
+        return self._accounts_by_platform[platform]
+
+    def send_dm(
+        self,
+        handle: str,
+        platform: str,
+        message: str,
+        scheduled_at: Optional[str] = None,
+    ) -> bool:
+        """
+        Send an outreach DM via Post Bridge.
+
+        Prepends the target handle to the message so it reads as a directed
+        post/mention. Supports optional scheduling via scheduled_at (ISO 8601).
+
+        Args:
+            handle:       Target user handle (e.g. "@username").
+            platform:     Platform name (twitter, instagram, linkedin, tiktok).
+            message:      DM/message text.
+            scheduled_at: Optional ISO 8601 schedule time.
+
+        Returns:
+            True on success, False on failure.
+        """
+        account_ids = self._get_account_ids(platform)
+        # Prepend handle mention so the message is directed at the target
+        caption = f"{handle} {message}" if not message.startswith(handle) else message
+
+        log.info(f"[PostBridge] 📨 Sending outreach to {handle} on {platform}"
+                 + (f" (scheduled: {scheduled_at})" if scheduled_at else ""))
+
+        result = self._pb.create_post(
+            caption=caption,
+            account_ids=account_ids,
+            scheduled_at=scheduled_at,
+        )
+        success = "error" not in result
+        if success:
+            log.info(f"  ✅ Post Bridge accepted | id={result.get('id', '?')}")
+        else:
+            log.error(f"  ❌ Post Bridge rejected: {result.get('error')}")
+        return success
+
+
+# Legacy alias for dry-run / backward compat
+class MockDMClient(PostBridgeDMClient):
+    """Legacy alias — now backed by PostBridgeClient."""
+    pass
 
 
 # ─── Outreach Engine ──────────────────────────────────────────────────────────
@@ -449,7 +525,7 @@ class OutreachEngine:
         self.dry_run     = dry_run
         self.db          = LeadDatabase()
         self.ai          = DMAIPersonalizer()
-        self.dm_client   = MockDMClient()
+        self.dm_client   = PostBridgeDMClient()
         log.info(f"🚀 OutreachEngine initialized | sender={sender_name} | dry_run={dry_run}")
 
     def add_lead(self, lead: dict) -> dict:

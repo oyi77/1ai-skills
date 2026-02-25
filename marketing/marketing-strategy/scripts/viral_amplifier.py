@@ -327,14 +327,41 @@ Return ONLY the caption text."""
         return None
 
 
-# ─── Mock Platform Client ─────────────────────────────────────────────────────
+# ─── Post Bridge Platform Client ─────────────────────────────────────────────
 
-class MockPlatformClient:
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).parent.parent.parent))
+from post_bridge_client import PostBridgeClient as _PostBridgeClient
+
+
+class PostBridgePlatformClient:
+    """
+    Platform client backed by the Post Bridge API (post-bridge.com).
+
+    Publishes comments and reposts via POST /posts.
+    search_trending() returns stub data (Post Bridge is publishing-only).
+    """
+
     def __init__(self, platform: str):
-        self.platform = platform
+        self.platform = platform.lower()
+        self._pb = _PostBridgeClient()
+        self._accounts = self._pb.get_accounts_by_platform(self.platform)
+        self._account_ids = [a["id"] for a in self._accounts]
+        if self._account_ids:
+            log.info(f"🔌 PostBridge: {len(self._account_ids)} {self.platform} account(s) connected: "
+                     f"{[a.get('username') for a in self._accounts]}")
+        else:
+            log.warning(f"⚠️  PostBridge: no connected {self.platform} accounts — broadcasting to all")
+            self._account_ids = self._pb.get_all_account_ids()
 
     def search_trending(self, niche: str, limit: int = 30) -> list[dict]:
-        log.info(f"[MOCK] Fetching trending {self.platform} posts in '{niche}'")
+        """
+        Post Bridge is a publishing API — trending search is not supported.
+        Returns stub posts so the viral detection loop can still function.
+        Integrate a social listening API (e.g. Brandwatch, Mention) for real data.
+        """
+        log.info(f"[PostBridge] Fetching trending {self.platform} posts in '{niche}' — using stub data")
         styles = [
             f"Just realized {niche} is going to change everything in 2025. Thread 🧵",
             f"Controversial take on {niche}: most people are doing it completely wrong.",
@@ -362,12 +389,29 @@ class MockPlatformClient:
         return posts
 
     def comment_post(self, post_id: str, text: str) -> bool:
-        log.info(f"[MOCK] 💬 Commenting on {post_id}: '{text[:60]}...'")
-        return True
+        """Publish a comment as a new post via Post Bridge POST /posts."""
+        log.info(f"[PostBridge] 💬 Publishing comment on {self.platform}: '{text[:60]}...'")
+        result = self._pb.create_post(
+            caption=text,
+            account_ids=self._account_ids,
+        )
+        return "error" not in result
 
-    def repost(self, post_id: str, caption: str = "") -> bool:
-        log.info(f"[MOCK] 🔁 Reposting {post_id} with caption: '{caption[:60]}...'")
-        return True
+    def repost(self, post_id: str, caption: str = "", media_urls: Optional[list] = None) -> bool:
+        """Repost/quote by publishing a new post with the given caption via Post Bridge."""
+        log.info(f"[PostBridge] 🔁 Publishing repost caption on {self.platform}: '{caption[:60]}...'")
+        result = self._pb.create_post(
+            caption=caption,
+            account_ids=self._account_ids,
+            media_urls=media_urls or [],
+        )
+        return "error" not in result
+
+
+# Legacy alias
+class MockPlatformClient(PostBridgePlatformClient):
+    """Legacy alias — now backed by PostBridgeClient."""
+    pass
 
 
 # ─── Viral Amplifier Engine ───────────────────────────────────────────────────
@@ -391,7 +435,7 @@ class ViralAmplifier:
 
         self.detector = ViralDetector()
         self.queue    = CommentQueue()
-        self.client   = MockPlatformClient(platform)
+        self.client   = PostBridgePlatformClient(platform)
 
         # Cycle through comment styles
         self.comment_styles = deque(["insightful", "question", "agreement", "story"])

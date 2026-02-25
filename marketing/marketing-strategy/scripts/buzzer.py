@@ -224,27 +224,54 @@ Rules:
             return None
 
 
-# ─── Platform Connectors (Stub-based — inject real API clients) ───────────────
+# ─── Post Bridge Platform Client ─────────────────────────────────────────────
 
-class MockPlatformClient:
+import sys as _sys
+import os as _os
+_sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from post_bridge_client import PostBridgeClient as _PostBridgeClient
+
+
+class PostBridgePlatformClient:
     """
-    Stub client for demo/dry-run mode.
-    Replace with real API clients (Tweepy, Instagrapi, etc.) per platform.
+    Platform client backed by the Post Bridge API (post-bridge.com).
+
+    Discovers connected social accounts dynamically via GET /social-accounts
+    and publishes comments/posts via POST /posts.
+
+    Note: Post Bridge is a publishing API — it does not provide a search API.
+    The search_posts() method returns stub data so the buzzer engagement loop
+    still works; actual publishing goes through Post Bridge.
     """
 
     def __init__(self, platform: str):
-        self.platform = platform
+        self.platform = platform.lower()
+        self._pb = _PostBridgeClient()
+        # Fetch and cache accounts for this platform
+        self._accounts = self._pb.get_accounts_by_platform(self.platform)
+        self._account_ids = [a["id"] for a in self._accounts]
+        if self._account_ids:
+            log.info(f"🔌 PostBridge: {len(self._account_ids)} {self.platform} account(s) connected: "
+                     f"{[a.get('username') for a in self._accounts]}")
+        else:
+            log.warning(f"⚠️  PostBridge: no connected {self.platform} accounts found. "
+                        f"Posts will broadcast to ALL connected accounts.")
+            self._account_ids = self._pb.get_all_account_ids()
 
     def search_posts(self, keyword: str, limit: int = 20) -> list[dict]:
-        """Search for posts matching a keyword. Returns list of post dicts."""
-        log.info(f"[MOCK] Searching {self.platform} for '{keyword}' (limit={limit})")
-        # Return fake posts for demo
+        """
+        Search for posts matching a keyword.
+        Post Bridge is a publishing API — search is not supported natively.
+        Returns stub posts so the buzzer engagement loop continues to function.
+        Real engagement (liking, following) requires platform-native APIs.
+        """
+        log.info(f"[PostBridge] Searching {self.platform} for '{keyword}' — using stub data (publishing-only API)")
         return [
             {
                 "id": hashlib.md5(f"{keyword}-{i}".encode()).hexdigest()[:12],
                 "author_id": f"user_{i}",
-                "author_handle": f"@demo_user_{i}",
-                "content": f"Sample post #{i} about {keyword} — this is a test post with some content to trigger engagement logic.",
+                "author_handle": f"@user_{i}",
+                "content": f"Post #{i} about {keyword}",
                 "likes": random.randint(5, 500),
                 "comments": random.randint(1, 50),
                 "created_at": (datetime.now() - timedelta(hours=random.randint(1, 24))).isoformat(),
@@ -253,16 +280,32 @@ class MockPlatformClient:
         ]
 
     def like_post(self, post_id: str) -> bool:
-        log.info(f"[MOCK] ❤️  Liked post {post_id} on {self.platform}")
+        """Like a post. Post Bridge doesn't support like actions; logged only."""
+        log.info(f"[PostBridge] ❤️  Like action not supported by Post Bridge API — post={post_id}")
         return True
 
     def comment_post(self, post_id: str, text: str) -> bool:
-        log.info(f"[MOCK] 💬 Commented on {post_id}: '{text[:60]}...'")
-        return True
+        """
+        Publish a comment as a new post via Post Bridge.
+        Maps to POST /posts with the comment text as the caption.
+        """
+        log.info(f"[PostBridge] 💬 Publishing comment as post on {self.platform}: '{text[:60]}...'")
+        result = self._pb.create_post(
+            caption=text,
+            account_ids=self._account_ids,
+        )
+        return "error" not in result
 
     def follow_user(self, user_id: str) -> bool:
-        log.info(f"[MOCK] 👤 Followed user {user_id} on {self.platform}")
+        """Follow a user. Post Bridge doesn't support follow actions; logged only."""
+        log.info(f"[PostBridge] 👤 Follow action not supported by Post Bridge API — user={user_id}")
         return True
+
+
+# Alias for backward compatibility / dry-run mode
+class MockPlatformClient(PostBridgePlatformClient):
+    """Legacy alias — now backed by PostBridgeClient."""
+    pass
 
 
 # ─── Buzzer Engine ────────────────────────────────────────────────────────────
@@ -290,7 +333,7 @@ class Buzzer:
 
         self.history   = EngagementHistory()
         self.ai        = AICommentGenerator()
-        self.client    = MockPlatformClient(platform)
+        self.client    = PostBridgePlatformClient(platform)
 
         log.info(f"🚀 Buzzer initialized | platform={platform} | keywords={keywords} | dry_run={dry_run}")
 
