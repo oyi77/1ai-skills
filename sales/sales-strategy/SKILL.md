@@ -336,6 +336,85 @@ Generate pipeline reports.
 
 ---
 
+## 🤖 Automation Scripts (AI-Powered)
+
+### outreach.py — Warm DM Outreach Automation
+
+Automates personalized DM sequences for social media sales.
+Lead scoring from engagement signals. AI-powered personalization via BytePlus.
+NOT spam — warm, human-feeling outreach with context-aware follow-ups.
+
+```bash
+# Add a lead and auto-send first DM
+python3 scripts/outreach.py add @username \
+  --platform instagram \
+  --name "Sarah" \
+  --niche "fitness" \
+  --notes "Asked about pricing in comments" \
+  --liked 3 \
+  --followed-you \
+  --sequence intro \
+  --send
+
+# Dry-run (preview messages without sending)
+python3 scripts/outreach.py add @username --platform twitter --dry-run --send
+
+# Process all due follow-ups
+python3 scripts/outreach.py followups
+python3 scripts/outreach.py followups --dry-run
+
+# Score a lead (0-100)
+python3 scripts/outreach.py score @username --platform instagram
+
+# Import leads from JSON file
+python3 scripts/outreach.py import leads.json
+
+# Pipeline overview
+python3 scripts/outreach.py stats
+```
+
+**Lead Sequences:**
+- `intro` — 4-message sequence (day 0, 3, 7, 14) for cold-warm leads
+- `warm`  — 2-message sequence (day 0, 5) for already-engaged leads  
+- `hot`   — 2-message fast sequence (day 0, 2) for price-inquiry leads
+
+**Lead Score Tiers:**
+| Score | Tier | Action |
+|-------|------|--------|
+| 80-100 | 🔥 Hot  | DM immediately |
+| 60-79  | 🌡️ Warm | Queue within 24h |
+| 40-59  | ⚪ Cool | Nurture first |
+| 0-39   | ❄️ Cold | Organic only |
+
+**Engagement Signals (add to leads.json):**
+```json
+{
+  "handle": "@username",
+  "platform": "instagram",
+  "name": "Sarah",
+  "niche": "fitness",
+  "sequence": "warm",
+  "engagement_signals": {
+    "followed_you": true,
+    "commented": true,
+    "liked_posts_3plus": true,
+    "asked_question": false,
+    "mentioned_price": false
+  },
+  "notes": "Liked 5 posts, commented with a question about results"
+}
+```
+
+**Platform CTA Templates** (auto-selected):
+- **TikTok:** "Check link in bio — I made a free guide on this."
+- **Instagram:** "DM me 'GUIDE' and I'll send it over."
+- **Twitter:** "Want me to share the full breakdown thread?"
+- **LinkedIn:** "Happy to share a case study if useful."
+
+**Data tracked:** `data/leads.json`, `data/outreach.log`
+
+---
+
 ## CRM Integration
 
 ### Built-in Tracking

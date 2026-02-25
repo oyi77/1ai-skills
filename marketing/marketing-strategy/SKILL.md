@@ -334,6 +334,112 @@ Generate weekly analytics summaries.
 
 ---
 
+## 🤖 Automation Scripts (AI-Powered)
+
+### buzzer.py — Strategic Engagement Buzzer
+
+Monitors keywords/hashtags and engages (like/comment/follow) strategically.
+Tracks history in `data/engagement_history.json` to avoid over-engaging.
+Generates authentic AI comments via BytePlus (seed-1-6-250915).
+
+```bash
+# Engage with twitter posts about "indie hacker"
+python3 scripts/buzzer.py --keywords "indie hacker,solopreneur" --platform twitter
+
+# Instagram engagement, dry-run first
+python3 scripts/buzzer.py --keywords "dropshipping" --platform instagram --dry-run
+
+# Continuous mode (every 2h cycles, 5-30min random delays between actions)
+python3 scripts/buzzer.py --keywords "productivty,build in public" --continuous --interval 2
+
+# Show today's engagement stats
+python3 scripts/buzzer.py --stats
+
+# Use a JSON config file
+python3 scripts/buzzer.py --config ~/.buzzer-config.json
+```
+
+**Config file** (`~/.buzzer-config.json`):
+```json
+{
+  "keywords": ["indie hacker", "solopreneur"],
+  "platform": "twitter",
+  "brand_voice": "friendly, knowledgeable",
+  "niche": "productivity tools",
+  "max_likes_per_day": 50,
+  "max_comments_per_day": 15,
+  "max_follows_per_day": 20
+}
+```
+
+**Data tracked:** `data/engagement_history.json`
+
+---
+
+### viral_amplifier.py — Viral Post Amplification
+
+Detects viral posts by engagement velocity and queues niche-relevant comments.
+Spaces out comments 8+ minutes apart to look natural.
+
+```bash
+# Scan for viral posts in "productivity" niche on twitter
+python3 scripts/viral_amplifier.py --niche "productivity" --platform twitter
+
+# Watch mode: scan every 30min continuously
+python3 scripts/viral_amplifier.py --niche "dropshipping" --platform tiktok --watch
+
+# Auto-repost extremely viral content
+python3 scripts/viral_amplifier.py --niche "fitness" --auto-repost
+
+# Check comment queue status
+python3 scripts/viral_amplifier.py --queue-status
+
+# Adjust viral detection threshold (default: 5 engagements/minute)
+python3 scripts/viral_amplifier.py --niche "crypto" --threshold 10
+```
+
+**Viral Formula:** velocity = (likes + comments×2 + shares×3) / minutes_since_posted
+
+**Data tracked:** `data/viral_queue.json`
+
+---
+
+### analytics.py — Performance Analytics
+
+Tracks post performance, identifies patterns, generates reports.
+
+```bash
+# Record a post's metrics
+python3 scripts/analytics.py record \
+  --post-id ig_20240115_001 --platform instagram \
+  --content-type reel --topic productivity \
+  --likes 1250 --comments 87 --shares 43 --saves 156 \
+  --reach 15000 --followers 8500
+
+# Update metrics after 48h
+python3 scripts/analytics.py update --post-id ig_20240115_001 --likes 1890
+
+# Full dashboard
+python3 scripts/analytics.py dashboard
+
+# Weekly report (JSON)
+python3 scripts/analytics.py report --week
+python3 scripts/analytics.py report --compare   # vs last week
+
+# Best times to post
+python3 scripts/analytics.py best-times --platform instagram
+
+# Content pattern analysis
+python3 scripts/analytics.py patterns
+
+# Seed demo data for testing
+python3 scripts/analytics.py demo
+```
+
+**Data tracked:** `data/analytics.json`
+
+---
+
 ## Integration Tips
 
 ### With Other Skills
