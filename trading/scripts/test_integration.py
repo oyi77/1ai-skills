@@ -4,15 +4,15 @@ Run with: python -m pytest scripts/test_integration.py -v
 """
 
 import pytest
-from data.symbols import get_symbol_config
-from indicators.rsi import RSI
-from indicators.macd import MACD
-from indicators.bollinger_bands import BollingerBands
-from indicators.moving_averages import SMA, EMA, WMA
-from risk.manager import RiskManager
-from exceptions import TradingError
-from utils.error_handler import retry
-from brokers.base import OHLCV
+from ..data.symbols import get_symbol_config
+from ..indicators.rsi import RSI
+from ..indicators.macd import MACD
+from ..indicators.bollinger_bands import BollingerBands
+from ..indicators.moving_averages import SMA, EMA, WMA
+from ..risk.manager import RiskManager
+from ..exceptions import TradingError
+from ..utils.error_handler import retry
+from ..brokers.base import OHLCV
 from datetime import datetime, timedelta
 
 

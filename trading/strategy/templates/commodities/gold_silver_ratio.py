@@ -26,8 +26,8 @@ from datetime import datetime
 from typing import List, Optional, Tuple, Dict, Any
 import logging
 
-from trading.brokers.base import OHLCV
-from trading.strategy.templates.base import StrategyTemplate, Signal, SignalType
+from ...brokers.base import OHLCV
+from ..base import StrategyTemplate, Signal, SignalType
 
 logger = logging.getLogger("strategy.templates.gold_silver_ratio")
 

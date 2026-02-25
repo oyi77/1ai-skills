@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import List, Optional, Dict, Any
 import logging
 
-from trading.utils.error_handler import retry
+from ...utils.error_handler import retry
 from ..base import (
     BrokerConnector,
     BrokerType,

@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
-FINAL FIXED BACKTEST RUNNER - CORRECT PATHS
+FINAL FIXED BACKTEST RUNNER - CROSS-PLATFORM
 
-Working directory structure:
-/home/openclaw/C:\Users\EX PC\.openclaw\workspace/skills/1ai-skills/trading
-"""
+Uses dynamic path detection for Windows/Linux/Mac compatibility.
 
 import sys
 import os

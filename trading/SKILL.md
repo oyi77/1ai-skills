@@ -376,10 +376,54 @@ pip install yfinance pandas pytz openpyxl
 
 ```bash
 pip install MetaTrader5  # For MT5 broker connection
-pip install ccxt         # For crypto exchanges (Binance, Bybit, etc.)
+pip install ccxt         # For crypto exchanges (Binance, Bybit, OKX, KuCoin, etc.)
+
+# For cTrader (Native Linux support!)
+pip install ctrader-open-api ejtraderCT
+
+# For Ostium (Decentralized Perpetual Exchange)
+pip install ostium-python-sdk
+```
+
+### Broker Platform Support
+
+| Broker | MT4 | MT5 | cTrader | API | Linux Support |
+|---------|------|------|----------|------|---------------|
+| MetaQuotes-Demo | ✅ | ✅ | ❌ | REST/FIX | ⚠️ Wine required (CPU AVX2+) |
+| Exness | ✅ | ✅ | ❌ | Python SDK | ❌ No cTrader |
+| Fusion Markets | - | - | ✅ | Open API | ✅ Native |
+| Pepperstone | ✅ | ✅ | ✅ | Open API | ✅ Native |
+| FP Markets | - | - | ✅ | Open API | ✅ Native |
+| Axi | ✅ | ✅ | ✅ | Open API | ✅ Native |
+| **Ostium** | - | - | - | Python SDK | ✅ **Native!** |
+
+### Broker Connectors Available
+
+```python
+from trading.brokers.mt5 import MT5Connector
+from trading.brokers.ccxt import CCXTConnector
+from trading.brokers.ctrader import CTraderConnector
+from trading.brokers.ostium import OstiumConnector
+
+# MT5 (Windows/Linux Wine)
+mt5 = MT5Connector()
+mt5.connect(login=12345, password="xxx", server="Broker-Server")
+
+# CCXT (Crypto)
+ccxt = CCXTConnector()
+ccxt.connect(exchange="binance", api_key="xxx", secret="xxx")
+
+# cTrader (Native Linux!)
+ctrader = CTraderConnector()
+ctrader.connect(client_id="xxx", client_secret="xxx", access_token="xxx")
+
+# Ostium (Decentralized Perpetual)
+ostium = OstiumConnector()
+ostium.connect(api_key="xxx", wallet_address="0x...")
 ```
 
 ### Note
 - Run scripts from `trading/scripts/` directory
 - Or from parent directory with: `python scripts/script_name.py`
 - For MT5: requires Windows + MT5 terminal installed
+- **For Linux users**: cTrader and Ostium provide native support without Wine!

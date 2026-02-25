@@ -17,6 +17,8 @@ class BrokerType(Enum):
     MT5 = "mt5"  # MetaTrader 5
     MT4 = "mt4"  # MetaTrader 4
     CCXT = "ccxt"  # CCXT (Crypto exchanges)
+    CTRADER = "ctrader"  # cTrader (Open API)
+    OSTIUM = "ostium"  # Ostium (Decentralized Perpetual Exchange)
 
 
 @dataclass

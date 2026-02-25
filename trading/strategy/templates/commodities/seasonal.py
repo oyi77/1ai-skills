@@ -12,8 +12,8 @@ from datetime import datetime
 from typing import List, Optional, Tuple, Dict, Any
 from dataclasses import dataclass
 
-from trading.brokers.base import OHLCV
-from trading.strategy.templates.base import StrategyTemplate, Signal, SignalType
+from ...brokers.base import OHLCV
+from ..base import StrategyTemplate, Signal, SignalType
 
 
 @dataclass

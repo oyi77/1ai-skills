@@ -16,10 +16,10 @@ from datetime import datetime
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import argparse
 
-# FIXED PATH for BerkahKarya trading system
-# The workspace uses Windows-style backslashes but we need to use forward slashes
-TRADING_BASE = "/home/openclaw/C:\\Users\\EX PC\\.openclaw\\workspace/skills/1ai-skills/trading"
-REPORT_PATH = TRADING_BASE + "/backtest_report_vilona.json"
+# Cross-platform path detection for trading system
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TRADING_BASE = os.path.dirname(SCRIPT_DIR)  # Parent of scripts/
+REPORT_PATH = os.path.join(TRADING_BASE, "backtest_report_vilona.json")
 
 # Market configurations - 7 pairs for research
 MARKETS = {

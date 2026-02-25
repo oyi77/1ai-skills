@@ -11,7 +11,7 @@ from enum import Enum
 from typing import List, Optional, Dict, Any, Tuple
 import logging
 
-from trading.brokers.base import OHLCV
+from ...brokers.base import OHLCV
 
 logger = logging.getLogger(__name__)
 

@@ -16,9 +16,9 @@ Supported Pairs: BTC/USD, ETH/USD
 from datetime import datetime
 from typing import List, Optional, Tuple
 
-from trading.brokers.base import OHLCV
-from trading.strategy.templates.base import StrategyTemplate, Signal, SignalType
-from trading.data.funding import FundingRateData, PersistenceData
+from ....brokers.base import OHLCV
+from ..base import StrategyTemplate, Signal, SignalType
+from ....data.funding import FundingRateData, PersistenceData
 
 
 class FundingReversalStrategy(StrategyTemplate):

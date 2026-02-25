@@ -38,6 +38,16 @@ from typing import Optional
 
 import requests
 
+# ─── Social Scraper (real web scraping, no API keys) ──────────────────────────
+import sys as _scraper_sys
+import os as _scraper_os
+_scraper_sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+try:
+    from scrapers.social_scraper import SocialScraper as _SocialScraper
+    _SCRAPER_AVAILABLE = True
+except ImportError:
+    _SCRAPER_AVAILABLE = False
+
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 BYTEPLUS_API_URL = "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"
@@ -260,12 +270,21 @@ class PostBridgePlatformClient:
 
     def search_posts(self, keyword: str, limit: int = 20) -> list[dict]:
         """
-        Search for posts matching a keyword.
-        Post Bridge is a publishing API — search is not supported natively.
-        Returns stub posts so the buzzer engagement loop continues to function.
-        Real engagement (liking, following) requires platform-native APIs.
+        Search for posts matching a keyword using real web scraping (SocialScraper).
+        Falls back to stub data if scraper is unavailable.
         """
-        log.info(f"[PostBridge] Searching {self.platform} for '{keyword}' — using stub data (publishing-only API)")
+        if _SCRAPER_AVAILABLE:
+            log.info(f"[PostBridge] Scraping {self.platform} for '{keyword}' (real data)...")
+            try:
+                scraper = _SocialScraper()
+                posts = scraper.search(keyword, platform=self.platform, limit=limit)
+                if posts:
+                    log.info(f"[PostBridge] Got {len(posts)} real posts for '{keyword}'")
+                    return posts
+            except Exception as e:
+                log.warning(f"[PostBridge] SocialScraper failed: {e} — falling back to stub data")
+
+        log.info(f"[PostBridge] Searching {self.platform} for '{keyword}' — using stub data (scraper unavailable)")
         return [
             {
                 "id": hashlib.md5(f"{keyword}-{i}".encode()).hexdigest()[:12],
@@ -278,6 +297,21 @@ class PostBridgePlatformClient:
             }
             for i in range(limit)
         ]
+
+    def get_trending(self, category: str = "general", limit: int = 20) -> list[dict]:
+        """
+        Fetch trending posts for this platform using real web scraping.
+        Falls back to empty list if scraper is unavailable.
+        """
+        if _SCRAPER_AVAILABLE:
+            try:
+                scraper = _SocialScraper()
+                posts = scraper.get_trending(platform=self.platform, category=category, limit=limit)
+                log.info(f"[PostBridge] Got {len(posts)} trending posts for {self.platform}/{category}")
+                return posts
+            except Exception as e:
+                log.warning(f"[PostBridge] get_trending scraper failed: {e}")
+        return []
 
     def like_post(self, post_id: str) -> bool:
         """Like a post. Post Bridge doesn't support like actions; logged only."""

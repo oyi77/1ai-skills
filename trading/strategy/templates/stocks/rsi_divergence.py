@@ -16,9 +16,9 @@ Exit: RSI crosses 50 centerline or opposite signal
 from datetime import datetime
 from typing import List, Optional, Tuple
 
-from trading.brokers.base import OHLCV
-from trading.strategy.templates.base import StrategyTemplate, Signal, SignalType
-from trading.indicators.rsi import RSI, calculate_rsi
+from ...brokers.base import OHLCV
+from ..base import StrategyTemplate, Signal, SignalType
+from ...indicators.rsi import RSI, calculate_rsi
 
 
 class RSIDivergenceStrategy(StrategyTemplate):

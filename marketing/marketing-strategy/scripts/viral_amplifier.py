@@ -29,6 +29,15 @@ from collections import deque
 
 import requests
 
+# ─── Social Scraper (real web scraping, no API keys) ──────────────────────────
+import sys as _scraper_sys
+_scraper_sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+try:
+    from scrapers.social_scraper import SocialScraper as _SocialScraper
+    _SCRAPER_AVAILABLE = True
+except ImportError:
+    _SCRAPER_AVAILABLE = False
+
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 BYTEPLUS_API_URL = "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"
@@ -357,11 +366,36 @@ class PostBridgePlatformClient:
 
     def search_trending(self, niche: str, limit: int = 30) -> list[dict]:
         """
-        Post Bridge is a publishing API — trending search is not supported.
-        Returns stub posts so the viral detection loop can still function.
-        Integrate a social listening API (e.g. Brandwatch, Mention) for real data.
+        Fetch trending posts via real web scraping (SocialScraper).
+        Viral velocity is computed from real scraped metrics:
+          velocity = (likes + comments*2 + shares*3) / age_minutes
+        Falls back to stub data if scraper is unavailable.
         """
-        log.info(f"[PostBridge] Fetching trending {self.platform} posts in '{niche}' — using stub data")
+        if _SCRAPER_AVAILABLE:
+            log.info(f"[PostBridge] Scraping trending {self.platform} posts in '{niche}' (real data)...")
+            try:
+                scraper = _SocialScraper()
+                # First try get_trending for the niche category
+                category = niche.lower().replace(" ", "_")
+                posts = scraper.get_trending(platform=self.platform, category=category, limit=limit)
+                if not posts:
+                    # Fall back to keyword search on the niche term itself
+                    log.info(f"[PostBridge] No trending results for category '{category}', trying keyword search...")
+                    posts = scraper.search(niche, platform=self.platform, limit=limit)
+
+                if posts:
+                    log.info(f"[PostBridge] Got {len(posts)} real trending posts for '{niche}'")
+                    # Ensure created_at is present for velocity computation
+                    for p in posts:
+                        if "created_at" not in p or not p["created_at"]:
+                            p["created_at"] = datetime.now().isoformat()
+                        if "shares" not in p:
+                            p["shares"] = p.get("retweets", 0)
+                    return posts
+            except Exception as e:
+                log.warning(f"[PostBridge] SocialScraper trending failed: {e} — falling back to stub data")
+
+        log.info(f"[PostBridge] Fetching trending {self.platform} posts in '{niche}' — using stub data (scraper unavailable)")
         styles = [
             f"Just realized {niche} is going to change everything in 2025. Thread 🧵",
             f"Controversial take on {niche}: most people are doing it completely wrong.",
