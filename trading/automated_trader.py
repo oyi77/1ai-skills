@@ -3,15 +3,18 @@
 BerkahKarya Automated Trader
 =============================
 Runs XAUUSD Asia 7-Candle Breakout strategy automatically.
-Supports MT5, cTrader, and Paper trading modes.
+Supports MT5 (via mt5linux), cTrader, and Paper trading modes.
 
 Usage:
-    python automated_trader.py --broker paper --mode paper      # Paper trading (yfinance)
-    python automated_trader.py --broker mt5 --mode demo         # MT5 demo account
-    python automated_trader.py --broker mt5 --mode real         # MT5 real account
-    python automated_trader.py --broker ctrader --mode real     # cTrader real
-    
-    python automated_trader.py --balance 5000 --dry-run --once  # Test run
+    python automated_trader.py --broker paper --mode paper --once  # Paper test
+    python automated_trader.py --broker mt5 --mode demo            # MT5 demo
+    python automated_trader.py --broker mt5 --mode real            # MT5 real
+    python automated_trader.py --broker paper --dry-run --once     # Dry run
+
+MT5 env vars:
+    MT5_LOGIN    — account number (integer)
+    MT5_PASSWORD — account password
+    MT5_SERVER   — broker server name
 """
 
 import argparse
@@ -19,25 +22,31 @@ import logging
 import os
 import sys
 import time
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional, Dict, Any
 
 import pytz
 
-# Import broker connectors
-from brokers.mt5.connector import MT5Connector
-from brokers.ctrader.connector import CTraderConnector
+# ─────────────────────────────────────────────────────────────────────────────
+# Sys-path: allow running from any directory
+# ─────────────────────────────────────────────────────────────────────────────
+_TRADING_DIR = Path(__file__).resolve().parent
+if str(_TRADING_DIR) not in sys.path:
+    sys.path.insert(0, str(_TRADING_DIR))
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Imports
+# ─────────────────────────────────────────────────────────────────────────────
 from brokers.simulated import SimulatedBroker
 
-# ---------------------------------------------------------------------------
-# Paths & logging setup
-# ---------------------------------------------------------------------------
-TRADING_DIR = Path(__file__).parent
-LOGS_DIR = TRADING_DIR / "logs"
+# ─────────────────────────────────────────────────────────────────────────────
+# Logging
+# ─────────────────────────────────────────────────────────────────────────────
+LOGS_DIR = _TRADING_DIR / "logs"
 LOGS_DIR.mkdir(exist_ok=True)
+LOG_FILE  = LOGS_DIR / "trading.log"
 
-LOG_FILE = LOGS_DIR / "trading.log"
 
 def setup_logger() -> logging.Logger:
     logger = logging.getLogger("automated_trader")
@@ -45,7 +54,7 @@ def setup_logger() -> logging.Logger:
 
     fmt = logging.Formatter(
         "%(asctime)s [%(levelname)s] %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S"
+        datefmt="%Y-%m-%d %H:%M:%S",
     )
 
     fh = logging.FileHandler(LOG_FILE, encoding="utf-8")
@@ -63,314 +72,401 @@ def setup_logger() -> logging.Logger:
 
 log = setup_logger()
 
-# ---------------------------------------------------------------------------
+# ─────────────────────────────────────────────────────────────────────────────
 # Constants
-# ---------------------------------------------------------------------------
-JAKARTA_TZ = pytz.timezone("Asia/Jakarta")
-SESSION_START = (7, 0)   # 07:00 WIB
-SESSION_END = (15, 0)    # 15:00 WIB
+# ─────────────────────────────────────────────────────────────────────────────
+JAKARTA_TZ   = pytz.timezone("Asia/Jakarta")
+SESSION_START = (7, 0)    # 07:00 WIB
+SESSION_END   = (15, 0)   # 15:00 WIB
 
-SYMBOL = "XAUUSD"
+SYMBOL    = "XAUUSD"
 MAX_TRADES = 3
-RISK_PCT = 0.01
-RR_RATIO = 2.0
-POLL_SECS = 60
+RISK_PCT   = 0.01   # 1% per trade
+RR_RATIO   = 2.0
+POLL_SECS  = 60
 
-# ---------------------------------------------------------------------------
-# Broker Factory
-# ---------------------------------------------------------------------------
-def create_broker(broker: str, mode: str = "paper", **kwargs):
-    """Create broker instance based on type."""
-    broker = broker.lower()
-    
-    if broker == "mt5":
-        log.info(f"Initializing MT5 connector (mode: {mode})")
-        mt5 = MT5Connector()
-        
-        if mode in ["demo", "real"]:
-            login = int(os.environ.get("MT5_LOGIN", kwargs.get("login", 0)))
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Broker factory
+# ─────────────────────────────────────────────────────────────────────────────
+
+def create_broker(broker_type: str, mode: str = "paper", **kwargs):
+    """
+    Create and connect a broker instance.
+
+    broker_type: 'mt5' | 'ctrader' | 'paper'
+    mode:        'paper' | 'demo' | 'real'
+    """
+    broker_type = broker_type.lower()
+
+    # ── Paper / Simulated ──────────────────────────────────────────────────
+    if broker_type == "paper":
+        log.info("Initializing SimulatedBroker (paper trading)")
+        sim = SimulatedBroker()
+        sim.connect()
+        return sim
+
+    # ── MetaTrader 5 via mt5linux ──────────────────────────────────────────
+    elif broker_type == "mt5":
+        log.info(f"Initializing MT5 connector (mode={mode}) via mt5linux")
+        try:
+            from brokers.mt5.connector import MT5Connector
+        except ImportError as e:
+            log.error(f"Could not import MT5Connector: {e}")
+            return None
+
+        mt5 = MT5Connector(host="5.189.138.144", port=18812)
+
+        if mode in ("demo", "real"):
+            login    = int(os.environ.get("MT5_LOGIN", kwargs.get("login", 0)))
             password = os.environ.get("MT5_PASSWORD", kwargs.get("password", ""))
-            server = os.environ.get("MT5_SERVER", kwargs.get("server", ""))
-            
-            if not all([login, password, server]):
-                log.error("MT5 credentials required: set MT5_LOGIN, MT5_PASSWORD, MT5_SERVER env vars")
+            server   = os.environ.get("MT5_SERVER",   kwargs.get("server",   ""))
+
+            if not login:
+                log.error(
+                    "MT5 login required. Set env vars: MT5_LOGIN, MT5_PASSWORD, MT5_SERVER"
+                )
                 return None
-            
-            connected = mt5.connect(
-                login=login,
-                password=password,
-                server=server
-            )
-            if not connected:
-                log.error("Failed to connect to MT5")
-                return None
-        
+
+            ok = mt5.connect(login=login, password=password, server=server)
+        else:
+            # paper mode with MT5 connector — just initialize, no login
+            ok = mt5.connect()
+
+        if not ok:
+            log.error("Failed to connect to MT5")
+            return None
+
+        log.info("MT5 connected successfully")
         return mt5
-    
-    elif broker == "ctrader":
-        log.info(f"Initializing cTrader connector (mode: {mode})")
+
+    # ── cTrader ───────────────────────────────────────────────────────────
+    elif broker_type == "ctrader":
+        log.info(f"Initializing cTrader connector (mode={mode})")
+        try:
+            from brokers.ctrader.connector import CTraderConnector
+        except ImportError as e:
+            log.error(f"Could not import CTraderConnector: {e}")
+            return None
+
         ctrader = CTraderConnector()
-        
-        if mode in ["demo", "real"]:
-            client_id = os.environ.get("CTRADER_CLIENT_ID", kwargs.get("client_id", ""))
-            client_secret = os.environ.get("CTRADER_CLIENT_SECRET", kwargs.get("client_secret", ""))
-            access_token = os.environ.get("CTRADER_ACCESS_TOKEN", kwargs.get("access_token", ""))
-            
+
+        if mode in ("demo", "real"):
+            client_id     = os.environ.get("CTRADER_CLIENT_ID",     kwargs.get("client_id", ""))
+            client_secret = os.environ.get("CTRADER_CLIENT_SECRET",  kwargs.get("client_secret", ""))
+            access_token  = os.environ.get("CTRADER_ACCESS_TOKEN",   kwargs.get("access_token", ""))
+
             if not all([client_id, client_secret, access_token]):
-                log.error("cTrader credentials required: set CTRADER_CLIENT_ID, CTRADER_CLIENT_SECRET, CTRADER_ACCESS_TOKEN")
+                log.error(
+                    "cTrader credentials required. Set: CTRADER_CLIENT_ID, "
+                    "CTRADER_CLIENT_SECRET, CTRADER_ACCESS_TOKEN"
+                )
                 return None
-            
-            connected = ctrader.connect(
+
+            ok = ctrader.connect(
                 client_id=client_id,
                 client_secret=client_secret,
-                access_token=access_token
+                access_token=access_token,
             )
-            if not connected:
+            if not ok:
                 log.error("Failed to connect to cTrader")
                 return None
-        
+
         return ctrader
-    
-    elif broker == "paper":
-        log.info("Initializing SimulatedBroker (paper trading with yfinance)")
-        simulated = SimulatedBroker()
-        simulated.connect()
-        return simulated
-    
+
     else:
-        log.error(f"Unknown broker: {broker}. Use: mt5, ctrader, or paper")
+        log.error(f"Unknown broker: '{broker_type}'. Use: mt5, ctrader, paper")
         return None
 
-# ---------------------------------------------------------------------------
-# 7-Candle Strategy
-# ---------------------------------------------------------------------------
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Asia 7-Candle Signal Calculator
+# ─────────────────────────────────────────────────────────────────────────────
+
 def calculate_7c_signal(ohlcv_list: list) -> Dict[str, Any]:
-    """Calculate XAUUSD Asia 7-Candle Breakout signal.
-    
-    Asia session: 07:00-15:00 WIB (00:00-08:00 UTC)
-    Take first 7 candles from 00:00 UTC = 07:00 WIB
+    """
+    Calculate XAUUSD Asia 7-Candle Breakout signal.
+
+    Takes the 7 most recent candles from the Asia session window,
+    finds HH/LL, and sets pending order levels.
     """
     if len(ohlcv_list) < 8:
         return {"signal": "WAIT", "reason": "Insufficient data"}
-    
-    # Use 7 candles starting from first of session (candle index 1, 0 is partial)
+
+    # Use candles 1..7 (skip candle[0] which may be partial)
     candles = ohlcv_list[1:8]
-    
+
     hh = max(c.high for c in candles)
-    ll = min(c.low for c in candles)
-    hc = max(c.close for c in candles)
-    lc = min(c.close for c in candles)
-    
-    # Current price
+    ll = min(c.low  for c in candles)
+    r  = hh - ll
+
+    if r <= 0:
+        return {"signal": "WAIT", "reason": "Zero range"}
+
+    buffer    = min(0.5, r * 0.01)
+    buy_stop  = hh + buffer
+    sell_stop = ll - buffer
+
+    buy_tp   = buy_stop  + r * RR_RATIO
+    buy_sl   = buy_stop  - r
+    sell_tp  = sell_stop - r * RR_RATIO
+    sell_sl  = sell_stop + r
+
     current = ohlcv_list[-1]
-    
-    # Breakout levels
-    buy_stop = hh + 0.5  # 0.5 pts above HH
-    sell_stop = ll - 0.5  # 0.5 pts below LL
-    
-    # TP/SL (2:1 reward to risk)
-    risk = buy_stop - ll if buy_stop - ll > hh - sell_stop else hh - sell_stop
-    tp_buy = buy_stop + risk * RR_RATIO
-    sl_buy = buy_stop - risk
-    tp_sell = sell_stop - risk * RR_RATIO
-    sl_sell = sell_stop + risk
-    
+
     return {
-        "signal": "BREAKOUT",
-        "hh": hh,
-        "ll": ll,
-        "buy_stop": buy_stop,
-        "sell_stop": sell_stop,
-        "tp_buy": tp_buy,
-        "sl_buy": sl_buy,
-        "tp_sell": tp_sell,
-        "sl_sell": sl_sell,
-        "range": hh - ll,
-        "current": current.close,
-        "timestamp": datetime.now(JAKARTA_TZ).isoformat()
+        "signal":     "BREAKOUT",
+        "hh":         hh,
+        "ll":         ll,
+        "range":      r,
+        "buy_stop":   buy_stop,
+        "sell_stop":  sell_stop,
+        "buy_tp":     buy_tp,
+        "buy_sl":     buy_sl,
+        "sell_tp":    sell_tp,
+        "sell_sl":    sell_sl,
+        "current":    current.close,
+        "timestamp":  datetime.now(JAKARTA_TZ).isoformat(),
     }
 
-# ---------------------------------------------------------------------------
-# Broker Actions
-# ---------------------------------------------------------------------------
-def place_pending_orders(broker, signal: Dict, balance: float, dry_run: bool):
-    """Place buy stop and sell stop orders."""
-    if signal["signal"] != "BREAKOUT":
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Order helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+def place_pending_orders(broker, signal: Dict, balance: float, dry_run: bool) -> bool:
+    """Place BUY_STOP and SELL_STOP orders via the broker's unified interface."""
+    if signal.get("signal") != "BREAKOUT":
         return False
-    
-    from brokers.base import Order
-    
-    risk_amount = balance * RISK_PCT
-    lot_size = risk_amount / signal["range"] / 100  # Gold: 100 oz per lot = $1 per pip per 0.01 lot
-    
-    orders_placed = 0
-    
-    # Buy Stop
-    buy_order = Order(
-        ticket=0,
-        symbol=SYMBOL,
-        order_type="BUYSTOP",
-        volume=round(lot_size, 2),
-        price=signal["buy_stop"],
-        sl=signal["sl_buy"],
-        tp=signal["tp_buy"],
-        comment="Asia 7C Buy"
-    )
-    
-    if broker.place_order(buy_order, dry_run):
-        orders_placed += 1
-        log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] BUYSTOP {SYMBOL} @ {signal['buy_stop']} SL={signal['sl_buy']} TP={signal['tp_buy']}")
-    
-    # Sell Stop
-    sell_order = Order(
-        ticket=0,
-        symbol=SYMBOL,
-        order_type="SELLSTOP",
-        volume=round(lot_size, 2),
-        price=signal["sell_stop"],
-        sl=signal["sl_sell"],
-        tp=signal["tp_sell"],
-        comment="Asia 7C Sell"
-    )
-    
-    if broker.place_order(sell_order, dry_run):
-        orders_placed += 1
-        log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] SELLSTOP {SYMBOL} @ {signal['sell_stop']} SL={signal['sl_sell']} TP={signal['tp_sell']}")
-    
-    return orders_placed > 0
+
+    r        = signal["range"]
+    lot_size = (balance * RISK_PCT) / (r * 100 + 1e-9)
+    lot_size = max(0.01, round(lot_size, 2))
+
+    prefix   = "[DRY-RUN] " if dry_run else "[REAL] "
+    placed   = 0
+
+    for direction, entry, tp, sl, label in [
+        ("BUY_STOP",  signal["buy_stop"],  signal["buy_tp"],  signal["buy_sl"],  "Asia 7C Buy"),
+        ("SELL_STOP", signal["sell_stop"], signal["sell_tp"], signal["sell_sl"], "Asia 7C Sell"),
+    ]:
+        try:
+            order = broker.place_order(
+                symbol=SYMBOL,
+                order_type=direction,
+                volume=lot_size,
+                price=entry,
+                sl=sl,
+                tp=tp,
+                comment=label,
+                dry_run=dry_run,
+            )
+            if order is not None:
+                placed += 1
+                log.info(
+                    f"{prefix}{direction} {SYMBOL} lot={lot_size} "
+                    f"@ {entry:.2f}  SL={sl:.2f}  TP={tp:.2f}"
+                )
+        except Exception as e:
+            log.error(f"Failed to place {direction} order: {e}")
+
+    return placed > 0
+
 
 def check_trade_result(broker, signal: Dict, dry_run: bool):
-    """Check open positions and close if SL/TP hit."""
-    positions = broker.get_positions()
-    
+    """Check open positions; close if SL/TP hit."""
+    try:
+        positions = broker.get_positions()
+    except Exception as e:
+        log.warning(f"get_positions failed: {e}")
+        return
+
+    current_price = signal.get("current", 0.0)
+
     for pos in positions:
-        current = broker._get_price(pos.symbol) if hasattr(broker, '_get_price') else signal["current"]
-        
+        # Try to get live price if broker supports it
+        if hasattr(broker, "_get_price"):
+            try:
+                current_price = broker._get_price(pos.symbol)
+            except Exception:
+                pass
+
+        hit = None
         if pos.order_type.startswith("BUY"):
-            if pos.sl and current <= pos.sl:
-                log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] BUY hit SL @ {current}")
-                broker.close_position(pos.ticket, dry_run)
-            elif pos.tp and current >= pos.tp:
-                log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] BUY hit TP @ {current}")
-                broker.close_position(pos.ticket, dry_run)
+            if pos.sl and current_price <= pos.sl:
+                hit = ("SL", pos.sl)
+            elif pos.tp and current_price >= pos.tp:
+                hit = ("TP", pos.tp)
         else:
-            if pos.sl and current >= pos.sl:
-                log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] SELL hit SL @ {current}")
-                broker.close_position(pos.ticket, dry_run)
-            elif pos.tp and current <= pos.tp:
-                log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] SELL hit TP @ {current}")
-                broker.close_position(pos.ticket, dry_run)
+            if pos.sl and current_price >= pos.sl:
+                hit = ("SL", pos.sl)
+            elif pos.tp and current_price <= pos.tp:
+                hit = ("TP", pos.tp)
 
-def cancel_pending_orders(broker, dry_run: bool):
+        if hit:
+            log.info(
+                f"[{'DRY-RUN' if dry_run else 'REAL'}] "
+                f"{pos.order_type} {pos.symbol} hit {hit[0]} @ {current_price:.2f}"
+            )
+            try:
+                broker.close_position(pos.ticket, dry_run=dry_run)
+            except Exception as e:
+                log.error(f"close_position failed: {e}")
+
+
+def cancel_all_pending(broker, dry_run: bool):
     """Cancel all pending orders at session end."""
-    # For paper broker, just log
-    log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] Session end — cancelling pending orders")
+    log.info(f"[{'DRY-RUN' if dry_run else 'REAL'}] Cancelling pending orders at session end")
+    if hasattr(broker, "cancel_all_pending_orders"):
+        try:
+            n = broker.cancel_all_pending_orders(SYMBOL)
+            log.info(f"Cancelled {n} pending orders")
+        except Exception as e:
+            log.warning(f"cancel_all_pending_orders failed: {e}")
 
-# ---------------------------------------------------------------------------
-# Day State
-# ---------------------------------------------------------------------------
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Day state
+# ─────────────────────────────────────────────────────────────────────────────
+
 class DayState:
     def __init__(self):
-        self.trades_today = 0
         self.signal_placed = False
-        self.open_trade = False
+        self.trades_today  = 0
 
-    def can_trade(self):
+    def can_trade(self) -> bool:
         return self.trades_today < MAX_TRADES
 
-# ---------------------------------------------------------------------------
-# Main Loop
-# ---------------------------------------------------------------------------
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Main loop
+# ─────────────────────────────────────────────────────────────────────────────
+
 def run_loop(balance: float, dry_run: bool, once: bool, broker_type: str, mode: str):
-    """Main trading loop."""
-    log.info(f"BerkahKarya Automated Trader started | balance=${balance} | broker={broker_type} | mode={mode}")
-    log.info(f"Strategy: XAUUSD Asia 7-Candle Breakout | Session: 07:00-15:00 WIB | Risk: {RISK_PCT*100}%/trade")
-    
-    # Create broker
+    log.info(
+        f"BerkahKarya Automated Trader | broker={broker_type} | mode={mode} | "
+        f"balance=${balance:,.2f} | dry_run={dry_run}"
+    )
+    log.info(f"Strategy: XAUUSD Asia 7-Candle Breakout | Risk={RISK_PCT*100:.0f}%/trade | RR=1:{RR_RATIO}")
+
     broker = create_broker(broker_type, mode)
-    if not broker:
-        log.error("Failed to initialize broker. Exiting.")
+    if broker is None:
+        log.error("Broker init failed. Exiting.")
         return
-    
+
+    # Attempt account info
+    try:
+        info = broker.get_account_info()
+        if info:
+            log.info(f"Account: login={info.login} balance=${info.balance:.2f} equity=${info.equity:.2f}")
+    except Exception as e:
+        log.warning(f"get_account_info failed: {e}")
+
     state = DayState()
-    
+    signal = {}
+
     try:
         while True:
             now = datetime.now(JAKARTA_TZ)
-            current_hour, current_min = now.hour, now.minute
-            
-            # Check session
-            session_open = SESSION_START[0] <= current_hour < SESSION_END[0]
-            
-            # Session opened
-            if session_open and not state.signal_placed:
-                log.info(f"=== New trading day: {now.date()} ===")
-                
-                # Get OHLCV data
-                ohlcv = broker.get_ohlcv(SYMBOL, "H1", count=10)
-                
-                # Calculate signal
-                signal = calculate_7c_signal(ohlcv)
-                
-                if signal["signal"] == "BREAKOUT" and state.can_trade():
-                    # Place orders
-                    if place_pending_orders(broker, signal, balance, dry_run):
-                        state.signal_placed = True
-                        log.info(f"Signal placed: Range={signal['range']:.2f}pts | HH={signal['hh']:.2f} LL={signal['ll']:.2f}")
+            h, m = now.hour, now.minute
+
+            in_session = SESSION_START[0] <= h < SESSION_END[0]
+
+            # ── New session: generate signal ────────────────────────────────
+            if in_session and not state.signal_placed:
+                log.info(f"=== Session open: {now.strftime('%Y-%m-%d %H:%M WIB')} ===")
+
+                try:
+                    ohlcv = broker.get_ohlcv(SYMBOL, "H1", count=15)
+                except Exception as e:
+                    log.error(f"get_ohlcv failed: {e}")
+                    ohlcv = []
+
+                if ohlcv:
+                    signal = calculate_7c_signal(ohlcv)
+
+                    if signal.get("signal") == "BREAKOUT" and state.can_trade():
+                        log.info(
+                            f"Signal: HH={signal['hh']:.2f} LL={signal['ll']:.2f} "
+                            f"Range={signal['range']:.2f}  "
+                            f"BUY@{signal['buy_stop']:.2f}  SELL@{signal['sell_stop']:.2f}"
+                        )
+                        if place_pending_orders(broker, signal, balance, dry_run):
+                            state.signal_placed = True
+                            state.trades_today += 1
+                    else:
+                        log.info(
+                            f"Signal: {signal.get('signal')} — {signal.get('reason', 'N/A')}"
+                        )
                 else:
-                    log.info(f"Signal: {signal['signal']} | Reason: {signal.get('reason', 'N/A')}")
-            
-            # Check trade result during session
-            if state.signal_placed:
+                    log.warning("No OHLCV data available")
+
+            # ── Check SL/TP on open positions ───────────────────────────────
+            if state.signal_placed and signal:
                 check_trade_result(broker, signal, dry_run)
-            
-            # Session ended
-            if not session_open and (state.signal_placed or state.open_trade):
-                log.info("Session ended")
-                cancel_pending_orders(broker, dry_run)
-                state = DayState()  # Reset for next day
-            
+
+            # ── Session closed: reset for next day ──────────────────────────
+            if not in_session and state.signal_placed:
+                log.info("Session ended — cancelling pending, resetting state")
+                cancel_all_pending(broker, dry_run)
+                state = DayState()
+                signal = {}
+
             if once:
-                log.info("--once flag set, exiting after single loop")
+                log.info("--once flag set, exiting after single poll")
                 break
-            
+
             time.sleep(POLL_SECS)
-    
+
     except KeyboardInterrupt:
         log.info("Received interrupt, shutting down...")
     finally:
-        if broker:
+        try:
             broker.disconnect()
+        except Exception:
+            pass
         log.info("Automated trader stopped")
 
-# ---------------------------------------------------------------------------
-# Entry Point
-# ---------------------------------------------------------------------------
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Entry point
+# ─────────────────────────────────────────────────────────────────────────────
+
 def main():
     parser = argparse.ArgumentParser(
         description="BerkahKarya Automated Trader — XAUUSD Asia 7-Candle Breakout"
     )
-    parser.add_argument("--balance", type=float, default=1000.0,
-                        help="Account balance in USD (default: 1000)")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Log orders without executing them")
-    parser.add_argument("--once", action="store_true",
-                        help="Run one poll cycle and exit (testing)")
-    parser.add_argument("--broker", type=str, default="paper",
-                        choices=["mt5", "ctrader", "paper"],
-                        help="Broker type: mt5, ctrader, or paper (default: paper)")
-    parser.add_argument("--mode", type=str, default="paper",
-                        choices=["paper", "demo", "real"],
-                        help="Trading mode: paper, demo, or real (default: paper)")
-    
+    parser.add_argument(
+        "--balance", type=float, default=1000.0,
+        help="Account balance in USD (default: 1000)"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true",
+        help="Log orders without executing them"
+    )
+    parser.add_argument(
+        "--once", action="store_true",
+        help="Run one poll cycle and exit (testing)"
+    )
+    parser.add_argument(
+        "--broker", type=str, default="paper",
+        choices=["mt5", "ctrader", "paper"],
+        help="Broker: mt5, ctrader, paper (default: paper)"
+    )
+    parser.add_argument(
+        "--mode", type=str, default="paper",
+        choices=["paper", "demo", "real"],
+        help="Mode: paper, demo, real (default: paper)"
+    )
+
     args = parser.parse_args()
-    
+
     run_loop(
         balance=args.balance,
         dry_run=args.dry_run,
         once=args.once,
         broker_type=args.broker,
-        mode=args.mode
+        mode=args.mode,
     )
 
 

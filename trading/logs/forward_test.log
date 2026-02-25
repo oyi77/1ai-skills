@@ -1,0 +1,14 @@
+2026-02-25 15:02:09 [INFO] Forward Test started | strategies=['asia7c'] | balance=$1,000.00 | risk=1.0%
+2026-02-25 15:02:09 [INFO] ── Poll at 2026-02-25 15:02:09 WIB ──
+2026-02-25 15:02:09 [INFO] Live price: 5205.80
+2026-02-25 15:02:09 [INFO] [Asia7C] Signal: HH=5230.00 LL=5154.30 Range=75.70  BUY@5230.5 TP=5381.9 SL=5154.8  |  SELL@5153.8 TP=5002.4 SL=5229.5
+2026-02-25 15:02:26 [INFO] Loaded forward test state: 0 trades, balance=$1,000.00
+2026-02-25 15:02:26 [INFO] Forward Test started | strategies=['asia7c'] | balance=$1,000.00 | risk=1.0%
+2026-02-25 15:02:26 [INFO] ── Poll at 2026-02-25 15:02:26 WIB ──
+2026-02-25 15:02:26 [INFO] Live price: 5205.40
+2026-02-25 15:02:26 [INFO] [Summary] Trades=0 W/L=0/0 WR=0.0% Net=$+0.00 Bal=$1,000.00
+2026-02-25 15:02:50 [INFO] Forward Test started | strategies=['asia7c'] | balance=$1,000.00 | risk=1.0%
+2026-02-25 15:02:50 [INFO] ── Poll at 2026-02-25 15:02:50 WIB ──
+2026-02-25 15:02:50 [INFO] Live price: 5203.30
+2026-02-25 15:02:50 [INFO] [Asia7C] Signal: HH=5230.00 LL=5154.30 Range=75.70  BUY@5230.5 TP=5381.9 SL=5154.8  |  SELL@5153.8 TP=5002.4 SL=5229.5
+2026-02-25 15:02:50 [INFO] [Summary] Trades=0 W/L=0/0 WR=0.0% Net=$+0.00 Bal=$1,000.00

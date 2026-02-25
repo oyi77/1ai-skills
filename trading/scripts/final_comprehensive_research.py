@@ -20,7 +20,11 @@ import argparse
 import time
 import subprocess
 
-# Base path for trading skill
+#HP|# Base path for trading skill - auto-detect from script location
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TRADING_BASE = os.path.normpath(os.path.join(SCRIPT_DIR, '..'))
+#SS|SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+#SS|TRADING_BASE = os.path.normpath(os.path.join(SCRIPT_DIR, '..'))
 TRADING_BASE = "/home/openclaw/C:\\Users\\EX PC\\.openclaw\\workspace/skills/1ai-skills/trading"
 
 # Convert to proper Unix path

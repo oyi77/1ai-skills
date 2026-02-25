@@ -1,4 +1,23 @@
-"""Fallback chain logic for automatic provider switching.
+#SR|"""Fallback chain logic for automatic provider switching.
+#KM|
+#XP|This module provides the ProviderStrategy class for defining provider fallback
+#RZ|orderings and the FallbackManager class for executing the fallback chain with
+#QH|automatic failure handling.
+#MX|
+#TV|It now supports TWO fallback modes:
+#KM|1. Sequential fallback (original): Try providers one-by-one
+#TP|2. Parallel fallback (multiprovider): Race multiple providers simultaneously
+#ZZ|Use the faster one to reduce latency and improve reliability.
+#HM|"""
+#HN|
+#TP|from dataclasses import dataclass, field
+#KT|from enum import Enum
+#VX|from typing import Optional, Any
+#TJ|
+#XR|from providers.base import AIProvider, GenerationResult, ProviderType
+#BQ|
+#BX|import asyncio
+#BX|from concurrent.futures import FIRST_COMPLETED
 
 This module provides the ProviderStrategy class for defining provider fallback
 orderings and the FallbackManager class for executing the fallback chain with

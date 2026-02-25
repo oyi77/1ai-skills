@@ -70,12 +70,16 @@ python scripts/xauusd_backtest.py --initial-balance 100 --start 2025-01-01 --end
 - Profit Factor
 - Win Rate
 
-**Quick Commands**:
-```bash
-cd C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading
-.venv\Scripts\activate
-python scripts\xauusd_backtest.py
-```
+#RX|# Cross-platform quick start:
+#RX|# Linux/Mac:
+#RX|cd ~/path/to/1ai-skills/trading
+#RX|source .venv/bin/activate
+#RX|python scripts/xauusd_backtest.py
+#RX|#
+#RX|# Windows:
+#RX|cd C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading
+#RX|.venv\Scripts\activate
+#RX|python scripts\xauusd_backtest.py
 
 ### `summary`
 Generate trading summary from CSV file.

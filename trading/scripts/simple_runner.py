@@ -8,7 +8,13 @@ import os
 import subprocess
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-# Trading directory - absolute
+#QS|# Trading directory - auto-detect cross-platform
+#QS|# Get script's directory and resolve relative to it
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TRADING_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, '..'))
+#QS|# Get script's directory and resolve relative to it
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TRADING_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, '..'))
 TRADING_DIR = r"/home/openclaw/C:\Users\EX PC\.openclaw\workspace\skills\1ai-skills\trading"
 
 # Change to trading directory

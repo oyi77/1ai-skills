@@ -118,44 +118,65 @@ class SimulatedBroker(BrokerConnector):
         logger.info(f"Fetched {len(ohlcv_list)} candles for {symbol}")
         return ohlcv_list
 
-    def place_order(self, order: Order, dry_run: bool = False) -> bool:
-        """Place order (simulated)."""
-        order.ticket = self._order_counter
-        order.time_setup = datetime.now()
-        
-        if dry_run:
-            logger.info(f"[DRY-RUN] Order placed: {order.order_type} {order.symbol} {order.volume} @ {order.price}")
-            return True
-        
-        current_price = self._get_price(order.symbol)
-        
-        if order.order_type in ["BUY", "BUYLIMIT", "BUYSTOP"]:
-            order.open_price = order.price or current_price
-            profit = 0.0
-        else:
-            order.open_price = order.price or current_price
-            profit = 0.0
-        
-        position = Position(
-            ticket=order.ticket,
-            symbol=order.symbol,
-            order_type=order.order_type,
-            volume=order.volume,
-            open_price=order.open_price,
-            current_price=current_price,
-            sl=order.sl,
-            tp=order.tp,
-            profit=0.0,
-            comment=order.comment,
-            time_open=datetime.now()
-        )
-        
-        self._positions[order.ticket] = position
-        self._orders.append(order)
+    def place_order(
+        self,
+        symbol: str,
+        order_type: str,
+        volume: float,
+        price: Optional[float] = None,
+        sl: Optional[float] = None,
+        tp: Optional[float] = None,
+        **kwargs,
+    ) -> Optional[Order]:
+        """Place order (simulated). Returns Order object or None."""
+        dry_run = kwargs.get("dry_run", False)
+        current_price = self._get_price(symbol)
+        open_price = price if price is not None else current_price
+
+        ticket = self._order_counter
         self._order_counter += 1
-        
-        logger.info(f"Order placed: {order.order_type} {order.symbol} {order.volume} lots @ {order.open_price}")
-        return True
+
+        order = Order(
+            ticket=ticket,
+            symbol=symbol,
+            order_type=order_type,
+            volume=volume,
+            price=open_price,
+            sl=sl,
+            tp=tp,
+            comment=kwargs.get("comment", "paper"),
+            time_setup=datetime.now(),
+        )
+
+        if dry_run:
+            logger.info(
+                f"[DRY-RUN] Order: {order_type} {symbol} {volume} lots @ {open_price}"
+                f" SL={sl} TP={tp}"
+            )
+            return order
+
+        position = Position(
+            ticket=ticket,
+            symbol=symbol,
+            order_type=order_type,
+            volume=volume,
+            open_price=open_price,
+            current_price=current_price,
+            sl=sl,
+            tp=tp,
+            profit=0.0,
+            comment=kwargs.get("comment", "paper"),
+            time_open=datetime.now(),
+        )
+
+        self._positions[ticket] = position
+        self._orders.append(order)
+
+        logger.info(
+            f"[PAPER] Order placed: {order_type} {symbol} {volume} lots @ {open_price}"
+            f" SL={sl} TP={tp} ticket={ticket}"
+        )
+        return order
 
     def get_positions(self) -> List[Position]:
         """Get all open positions dengan current P&L."""
@@ -170,11 +191,15 @@ class SimulatedBroker(BrokerConnector):
         
         return list(self._positions.values())
 
-    def close_position(self, ticket: int, volume: Optional[float] = None) -> bool:
+    def close_position(self, ticket: int, volume: Optional[float] = None, dry_run: bool = False) -> bool:
         """Close position dan update stats."""
         if ticket not in self._positions:
             logger.warning(f"Position {ticket} not found")
             return False
+
+        if dry_run:
+            logger.info(f"[DRY-RUN] Would close position {ticket}")
+            return True
         
         pos = self._positions[ticket]
         close_price = self._get_price(pos.symbol)
@@ -211,11 +236,17 @@ class SimulatedBroker(BrokerConnector):
         return True
 
     def get_account_info(self) -> AccountInfo:
-        """Get account info."""
+        """Get account info (paper trading, no real positions)."""
+        balance = self._paper_stats["current_balance"] + self._paper_stats["net_profit"]
         return AccountInfo(
-            balance=self._paper_stats["current_balance"] + self._paper_stats["net_profit"],
-            equity=self._paper_stats["current_balance"] + self._paper_stats["net_profit"],
+            login=0,
+            balance=balance,
+            equity=balance,
             margin=0.0,
-            free_margin=self._paper_stats["current_balance"],
-            profit=self._paper_stats["net_profit"]
+            free_margin=balance,
+            margin_level=0.0,
+            currency="USD",
+            leverage=100,
+            server="paper",
+            name="Paper Trader",
         )

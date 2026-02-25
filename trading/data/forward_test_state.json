@@ -1,0 +1,22 @@
+{
+  "balance": 1000.0,
+  "initial": 1000.0,
+  "trades": [],
+  "open_trades": {},
+  "signal_today": {
+    "asia7c_2026-02-25": {
+      "strategy": "asia7c",
+      "hh": 5230.0,
+      "ll": 5154.2998046875,
+      "range": 75.7,
+      "buy_stop": 5230.5,
+      "sell_stop": 5153.8,
+      "buy_tp": 5381.9,
+      "buy_sl": 5154.8,
+      "sell_tp": 5002.4,
+      "sell_sl": 5229.5,
+      "risk_r": 75.7
+    }
+  },
+  "last_run": null
+}

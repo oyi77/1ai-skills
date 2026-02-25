@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import json
 import argparse
-import time
+import subprocess
 
 # Use highest available models for research
 # Available models can be checked with: agents_list
@@ -142,10 +142,26 @@ def run_single_backtest(cfg):
             BACKTEST_CONFIG["end_date"],
             "--initial-balance", str(BACKTEST_CONFIG["initial_balance"])
         ]
-
+#VM|
+#VY|        print(f"[RUN] {pair} {timeframe} {strategy['name']}...")
+#PT|
+#KP|        result = subprocess.run(
+#QB|            cmd,
+#KK|            capture_output=True,
+#XY|            text=True,
+#TB|            timeout=1200,  # 20 minutes
+#KN|            cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # trading directory
+#WQ|        )
+#JB|
         print(f"[RUN] {pair} {timeframe} {strategy['name']}...")
 
-        result = subprocess.run(
+        #KP|        result = subprocess.run(
+#QB|            cmd,
+#KK|            capture_output=True,
+#XY|            text=True,
+#TB|            timeout=1200,  # 20 minutes
+#KN|            cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # trading directory
+#HW|        )
             cmd,
             capture_output=True,
             text=True,

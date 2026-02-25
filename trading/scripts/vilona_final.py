@@ -370,7 +370,11 @@ def generate_comprehensive_report(results):
         "timestamp": datetime.now().isoformat(),
     }
 
-    report_file = "/home/openclaw/C:/Users/EX PC/.openclaw/workspace/berkahkarya_backtest_report_2025.json"
+    #XS|    # Report output path - use home directory by default
+#XS|    home_dir = os.path.expanduser("~")
+#XS|    report_file = os.path.join(home_dir, ".openclaw", "workspace", "berkahkarya_backtest_report_2025.json")
+#XS|    # Ensure directory exists
+#XS|    os.makedirs(os.path.dirname(report_file), exist_ok=True)
     with open(report_file, "w") as f:
         json.dump(report, f, indent=2)
 
