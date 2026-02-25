@@ -51,14 +51,22 @@ function findSkillDirs() {
 
 function createSymlink(skillDir) {
     const symlinkPath = path.join(SKILLS_DIR, skillDir.name);
-
+    
+    // Calculate relative path from skills directory to the skill
+    const relativeTarget = path.relative(SKILLS_DIR, skillDir.fullPath);
+    
     // Check if symlink already exists
     if (fs.existsSync(symlinkPath)) {
         const stat = fs.lstatSync(symlinkPath);
         if (stat.isSymbolicLink()) {
-            // Check if it points to the right place
-            const target = fs.readlinkSync(symlinkPath);
-            if (target === skillDir.fullPath) {
+            // Check if it points to the right place (compare relative paths)
+            const currentTarget = fs.readlinkSync(symlinkPath);
+            // Normalize for comparison
+            const normalizedCurrent = path.normalize(currentTarget);
+            const normalizedRelative = path.normalize(relativeTarget);
+            
+            if (normalizedCurrent === normalizedRelative || 
+                currentTarget === skillDir.fullPath) {
                 return { success: true, message: `Already exists and correct` };
             } else {
                 // Remove incorrect symlink
@@ -71,12 +79,18 @@ function createSymlink(skillDir) {
         }
     }
 
-    // Create symlink
+    // Create relative symlink
     try {
-        fs.symlinkSync(skillDir.fullPath, symlinkPath);
-        return { success: true, message: `Created symlink` };
+        fs.symlinkSync(relativeTarget, symlinkPath, 'junction');
+        return { success: true, message: `Created relative symlink -> ${relativeTarget}` };
     } catch (err) {
-        return { success: false, message: `Error: ${err.message}` };
+        // If junction fails (e.g., on Unix), try without type parameter
+        try {
+            fs.symlinkSync(relativeTarget, symlinkPath);
+            return { success: true, message: `Created relative symlink -> ${relativeTarget}` };
+        } catch (err2) {
+            return { success: false, message: `Error: ${err2.message}` };
+        }
     }
 }
 
@@ -85,7 +99,7 @@ function main() {
     const skillDirs = findSkillDirs();
     log(`Found ${skillDirs.length} skills`, 'green');
 
-    log('\n=== Creating Symlinks ===', 'yellow');
+    log('\n=== Creating Relative Symlinks ===', 'yellow');
 
     let successCount = 0;
     let skipCount = 0;
@@ -112,7 +126,7 @@ function main() {
     log(`Skipped: ${skipCount}`, 'yellow');
     log(`Failed: ${failCount}`, failCount > 0 ? 'red' : 'green');
 
-    log('\n✓ Done! Skills are now available to OpenClaw.', 'green');
+    log('\n✓ Done! Relative symlinks created.', 'green');
 }
 
 main();
