@@ -1691,6 +1691,131 @@
       ],
       "source": "local",
       "path": "model-router"
+    },
+    {
+      "name": "voice-ai-agent",
+      "description": "AI voice agent for handling calls, appointment scheduling, lead qualification, and 24/7 customer service without human intervention.",
+      "keywords": [
+        "voice ai",
+        "phone",
+        "calls",
+        "receptionist",
+        "appointment",
+        "scheduling",
+        "ivr",
+        "voice agent",
+        "call handling"
+      ],
+      "domains": [
+        "automation",
+        "customer-service",
+        "sales"
+      ],
+      "source": "local",
+      "path": "automation/voice-ai-agent"
+    },
+    {
+      "name": "ai-agent-development",
+      "description": "Build and sell custom AI agents as services. Create vertical-specific AI solutions and generate $2K-$8K/month recurring revenue.",
+      "keywords": [
+        "ai agent",
+        "development",
+        "saas",
+        "custom agent",
+        "recurring revenue",
+        "agent service",
+        "build agent"
+      ],
+      "domains": [
+        "development",
+        "services",
+        "revenue"
+      ],
+      "source": "local",
+      "path": "services/ai-agent-development"
+    },
+    {
+      "name": "faceless-youtube",
+      "description": "Build automated faceless YouTube channels with AI. Create engaging videos without showing your face and monetize through ads, sponsorships, and affiliates.",
+      "keywords": [
+        "youtube",
+        "faceless",
+        "video",
+        "automation",
+        "monetization",
+        "youtube channel",
+        "passive income",
+        "content"
+      ],
+      "domains": [
+        "content",
+        "media",
+        "revenue"
+      ],
+      "source": "local",
+      "path": "content/faceless-youtube"
+    },
+    {
+      "name": "ai-consulting",
+      "description": "Offer fractional AI engineering and consulting services. Act as part-time AI executive for companies that can't afford full-time AI staff.",
+      "keywords": [
+        "ai consulting",
+        "fractional ai",
+        "advisor",
+        "consultant",
+        "ai strategy",
+        "implementation",
+        "ai lead"
+      ],
+      "domains": [
+        "services",
+        "consulting",
+        "revenue"
+      ],
+      "source": "local",
+      "path": "services/ai-consulting"
+    },
+    {
+      "name": "ai-lead-generation",
+      "description": "Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings.",
+      "keywords": [
+        "lead generation",
+        "prospecting",
+        "outreach",
+        "cold email",
+        "sales",
+        "crm",
+        "enrichment",
+        "ai sales"
+      ],
+      "domains": [
+        "sales",
+        "automation",
+        "marketing"
+      ],
+      "source": "local",
+      "path": "sales/ai-lead-generation"
+    },
+    {
+      "name": "ai-research-agent",
+      "description": "Autonomous AI agent that continuously researches, learns, and enhances skills. Self-improving system that discovers new opportunities.",
+      "keywords": [
+        "research",
+        "ai agent",
+        "autonomous",
+        "trends",
+        "opportunities",
+        "learning",
+        "improvement",
+        "automation"
+      ],
+      "domains": [
+        "research",
+        "intelligence",
+        "development"
+      ],
+      "source": "local",
+      "path": "research/ai-research-agent"
     }
   ],
   "teams": [
@@ -1705,7 +1830,10 @@
         "twitter-automation",
         "build-in-public",
         "stripe-revenue-bot",
-        "affiliate-marketing"
+        "affiliate-marketing",
+        "ai-consulting",
+        "ai-agent-development",
+        "ai-lead-generation"
       ],
       "keywords": [
         "revenue",
@@ -1844,6 +1972,48 @@
           "google-flow"
         ]
       }
+    },
+    {
+      "name": "automation-team",
+      "description": "Automation team - voice AI, lead generation, and workflow automation",
+      "skills": [
+        "voice-ai-agent",
+        "ai-lead-generation",
+        "automation"
+      ],
+      "keywords": [
+        "automation",
+        "voice",
+        "ai agent",
+        "efficiency",
+        "workflow"
+      ],
+      "directive_patterns": [
+        "set up voice ai",
+        "automate calls",
+        "generate leads"
+      ]
+    },
+    {
+      "name": "research-team",
+      "description": "Research team - continuous learning, trend monitoring, and skill development",
+      "skills": [
+        "ai-research-agent",
+        "mckinsey-research",
+        "market-research"
+      ],
+      "keywords": [
+        "research",
+        "trends",
+        "ai agent",
+        "learning",
+        "monitoring"
+      ],
+      "directive_patterns": [
+        "research trends",
+        "find opportunities",
+        "analyze market"
+      ]
     }
   ]
 }
