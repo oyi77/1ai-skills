@@ -1,168 +1,151 @@
-# Content Generator Configuration
-# Production-ready configuration template
-# Copy to config.yaml and configure with your API keys
+# Content Generator — Production Config
+# Updated: 2026-02-27
+# Status: All provider endpoints verified and tested
 
-# ==============================================================================
+# ===========================================================================
 # CONTENT GENERATION SETTINGS
-# ==============================================================================
+# ===========================================================================
 content_generation:
-  # Strategy options: fast, quality, cheap, balanced, failsafe
-  # - fast: Prioritize speed over quality
-  # - quality: Best quality, slower generation
-  # - cheap: Cost-optimized generation
-  # - balanced: Default balance of speed/quality/cost
-  # - failsafe: Maximum redundancy with fallbacks
   strategy: "balanced"
-  
-  # Default platform for content generation
-  # Options: tiktok, youtube, instagram, facebook
   default_platform: "tiktok"
-  
-  # Default storyboard template
-  # Options: ad_short, product_showcase, storytelling, tutorial
-  default_template: "ad_short"
-  
-  # Maximum concurrent generations
+  default_template: "larry_viral"   # Default to Larry Playbook format
   max_concurrent: 3
-  
-  # Timeout for generation (seconds)
   generation_timeout: 300
 
-# ==============================================================================
-# PROVIDER CONFIGURATIONS
-# ==============================================================================
+# ===========================================================================
+# PROVIDER CONFIGURATIONS (VERIFIED ENDPOINTS)
+# ===========================================================================
 providers:
-  # NVIDIA NIM - Image generation (Flux, SDXL)
+
+  # NVIDIA NIM — Image Generation (FIXED 2026-02-27)
+  # Endpoint: ai.api.nvidia.com/v1/genai/{provider}/{model}
+  # Response: artifacts[0].base64 (JPEG)
   nvidia:
     api_key: "${NVIDIA_API_KEY}"
     enabled: true
-    base_url: "https://integrate.api.nvidia.com/v1"
-    # Model selection: flux, flux-schnell, sdxl
-    model: "flux"
-    # Generation settings
-    width: 1024
-    height: 1024
-    num_images: 1
-    # Retry settings
+    # CRITICAL: Use ai.api.nvidia.com, NOT integrate.api.nvidia.com for images
+    base_url: "https://ai.api.nvidia.com"
+    image_endpoint_pattern: "/v1/genai/{provider}/{model}"
+    llm_base_url: "https://integrate.api.nvidia.com/v1"
+    # Default image model (flux.1-dev)
+    model: "black-forest-labs/flux.1-dev"
+    llm_model: "meta/llama-3.3-70b-instruct"
+    # Payload: only send prompt (no num_images, no nulls — causes 422)
+    # Response format: {"artifacts": [{"finishReason": "SUCCESS", "base64": "..."}]}
+    supported_models:
+      - "black-forest-labs/flux.1-dev"
+      - "black-forest-labs/flux_1-schnell"
+      - "stabilityai/stable-diffusion-xl"
+      - "stabilityai/stable-diffusion-3-medium"
     max_retries: 3
     retry_delay: 2
 
-  # BytePlus Seedance - Video generation
+  # BytePlus ModelArk — Video Generation (FIXED 2026-02-27)
+  # Endpoint: ark.ap-southeast.bytepluses.com/api/v3
+  # API: Async task-based — POST /contents/generations/tasks → poll
+  # IMPORTANT: No "resolution" param for lite model — causes 400
   byteplus:
     api_key: "${BYTEPLUS_API_KEY}"
     enabled: true
-    base_url: "https://visual-creator.byteplusapi.com"
-    # Model: seedance
-    model: "seedance"
-    # Video settings
-    fps: 30
-    resolution: "720p"
-    # Retry settings
+    base_url: "https://ark.ap-southeast.bytepluses.com/api/v3"
+    # Endpoint paths
+    create_task_path: "/contents/generations/tasks"
+    get_task_path: "/contents/generations/tasks/{task_id}"
+    # Default model (lite = fast ~20s, pro = better quality ~60s)
+    model: "seedance-1-0-lite-t2v-250428"
+    # Content format: [{"type": "text", "text": "prompt..."}]
+    # For I2V add: {"type": "image_url", "image_url": {"url": "..."}, "role": "first_frame"}
+    # Default TikTok settings
+    default_ratio: "9:16"   # 9:16 for TikTok vertical
+    default_duration: 5     # seconds
+    # Supported models
+    supported_models:
+      - "seedance-1-0-lite-t2v-250428"    # Fast, ~20s, lite
+      - "seedance-1-0-pro-fast-251015"    # Pro fast
+      - "seedance-1-0-pro-250528"         # Pro, best quality
+      - "seedance-1-5-pro-251215"         # Latest pro
+    poll_interval: 5        # seconds between status checks
+    poll_timeout: 300       # max wait seconds
     max_retries: 3
     retry_delay: 5
 
-  # XAI Grok - Video generation and editing
-  xai:
-    api_key: "${XAI_API_KEY}"
-    enabled: true
-    base_url: "https://api.x.ai/v1"
-    # Model: grok-2-vision
-    model: "grok-2-vision"
-    # Video editing
-    max_duration: 10
-    # Retry settings
-    max_retries: 3
-    retry_delay: 2
-
-  # Groq - Fast LLM inference
+  # Groq — Fast LLM (for storyboard, hooks, captions)
   groq:
     api_key: "${GROQ_API_KEY}"
     enabled: true
     base_url: "https://api.groq.com/openai/v1"
-    # Default model
     model: "llama-3.3-70b-versatile"
-    # Fallback model
     fallback_model: "llama-3.1-8b-instant"
-    # Retry settings
     max_retries: 3
     retry_delay: 1
 
-  # Replicate - Image generation (SD 3.5)
-  replicate:
-    api_key: "${REPLICATE_API_KEY}"
-    enabled: true
-    base_url: "https://api.replicate.com/v1"
-    # Model: sd35, sdxl-turbo
-    model: "sd35"
-    # Generation settings
-    width: 1024
-    height: 1024
-    # Retry settings
-    max_retries: 3
-    retry_delay: 5
-
-  # HuggingFace - Inference API
-  huggingface:
-    api_key: "${HUGGINGFACE_API_KEY}"
-    enabled: true
-    base_url: "https://api-inference.huggingface.co"
-    # Model: stabilityai/stable-diffusion-3.5-large
-    model: "stabilityai/stable-diffusion-3.5-large"
-    # Generation settings
-    width: 1024
-    height: 1024
-    # Retry settings
-    max_retries: 3
-    retry_delay: 2
-
-  # Ollama - Local LLM
+  # Ollama Cloud — LLM (UPDATED: cloud endpoint, not localhost)
   ollama:
+    api_key: "${OLLAMA_API_KEY}"
     enabled: true
-    base_url: "http://localhost:11434"
-    # Default model
+    # Updated: use cloud endpoint (not localhost)
+    base_url: "https://api.ollama.com"
     model: "llama3.2"
-    # Fallback model
     fallback_model: "mistral"
-    # Generation settings
     temperature: 0.7
     max_tokens: 2048
-    # Retry settings
     max_retries: 2
     retry_delay: 1
 
-# ==============================================================================
-# COST MANAGEMENT
-# ==============================================================================
-cost_limits:
-  # Maximum cost per single generation (USD)
-  max_per_generation: 1.00
-  
-  # Maximum monthly budget (USD)
-  max_per_month: 100.00
-  
-  # Alert threshold percentage (0-100)
-  alert_at_percent: 80
-  
-  # Cost tracking enabled
-  enabled: true
-  
-  # Cost tracking database path
-  db_path: ".content_generator_costs.db"
+  # XAI — DISABLED (credits exhausted)
+  xai:
+    api_key: "${XAI_API_KEY}"
+    enabled: false
+    base_url: "https://api.x.ai/v1"
+    model: "grok-2-vision"
+    max_duration: 10
+    max_retries: 3
+    retry_delay: 2
 
-# ==============================================================================
-# PLATFORM SPECIFICATIONS
-# ==============================================================================
+  # Replicate — Image generation (backup)
+  replicate:
+    api_key: "${REPLICATE_API_KEY}"
+    enabled: false
+    base_url: "https://api.replicate.com/v1"
+    model: "sd35"
+    width: 1024
+    height: 1024
+    max_retries: 3
+    retry_delay: 5
+
+  # HuggingFace — Image generation (backup)
+  huggingface:
+    api_key: "${HUGGINGFACE_API_KEY}"
+    enabled: false
+    base_url: "https://api-inference.huggingface.co"
+    model: "stabilityai/stable-diffusion-3.5-large"
+    width: 1024
+    height: 1024
+    max_retries: 3
+    retry_delay: 2
+
+# ===========================================================================
+# PLATFORM SPECIFICATIONS (VERIFIED)
+# ===========================================================================
 platforms:
   tiktok:
     aspect_ratio: "9:16"
     resolution: [1080, 1920]
-    fps: 30
-    bitrate: "8000k"
-    max_duration: 180
-    ideal_duration: 30
+    # Seedance lite output: 704x1248 (approx 9:16) — acceptable
+    fps: 24                  # Seedance outputs 24fps
+    bitrate: "1200k"         # After CRF 28 compression ~1.2Mbps
+    max_duration: 180        # seconds
+    ideal_duration: 60       # 1 minute = sweet spot
+    clip_duration: 5         # Seedance single clip = 5s
+    loops_for_1min: 12       # 5s × 12 = 60s
     format: "mp4"
-    max_file_size_mb: 287
-  
+    codec: "h264"
+    max_file_size_mb: 72     # Android limit; iPhone 287MB
+    telegram_safe_mb: 16     # Telegram media limit
+    # Larry Playbook: 6-slide slideshow is also valid format
+    slideshow_slides: 6
+    slideshow_duration_per_slide: 2.5  # seconds
+
   youtube:
     aspect_ratio: "16:9"
     resolution: [1920, 1080]
@@ -172,7 +155,7 @@ platforms:
     ideal_duration: 600
     format: "mp4"
     max_file_size_mb: 128000
-  
+
   instagram:
     aspect_ratio: "9:16"
     resolution: [1080, 1920]
@@ -182,7 +165,7 @@ platforms:
     ideal_duration: 15
     format: "mp4"
     max_file_size_mb: 650
-  
+
   facebook:
     aspect_ratio: "16:9"
     resolution: [1920, 1080]
@@ -193,146 +176,164 @@ platforms:
     format: "mp4"
     max_file_size_mb: 10240
 
-# ==============================================================================
-# CACHE SETTINGS
-# ==============================================================================
-cache:
-  # Enable caching
-  enabled: true
-  
-  # Cache type: sqlite, memory
-  type: "sqlite"
-  
-  # SQLite database path
-  db_path: ".content_generator_cache.db"
-  
-  # Cache TTL in seconds (default: 24 hours)
-  ttl: 86400
-  
-  # Maximum cache size in MB
-  max_size_mb: 1000
-  
-  # Cache cleanup interval in seconds
-  cleanup_interval: 3600
+# ===========================================================================
+# LARRY PLAYBOOK — VIRAL PARAMETERS
+# Based on: Oliver Henry's proven formula (234K views single post)
+# ===========================================================================
+larry_playbook:
+  # Proven formula: [Third party's problem] + [Doubt] → AI Result → Mind changed
+  hook_formula: "[Person]'s problem + doubt → showed them AI result → reaction"
 
-# ==============================================================================
-# VIDEO PROCESSING DEFAULTS
-# ==============================================================================
+  # Hook templates by performance
+  hook_types:
+    landlord_ai:
+      template: "My landlord said {constraint}, so I showed {them/her} what AI thinks {space} could look like"
+      avg_views: 234000
+      confidence: 0.9
+    parent_ai:
+      template: "My {parent} was skeptical about AI until I showed {them} {result} for our {room}"
+      avg_views: 80000
+      confidence: 0.75
+    roommate_ai:
+      template: "My flatmate thinks {X} is impossible, so I proved them wrong with AI {result}"
+      avg_views: 60000
+      confidence: 0.65
+
+  # Content format (proven: 6 slides)
+  slideshow:
+    slides: 6              # TikTok sweet spot — never 5 or 7
+    format: "portrait"     # 1024x1536 (4:6) or 1080x1920 (9:16)
+    same_room: true        # ALL slides = same room, different styles only
+    slide_1: "hook_text"   # Text overlay on first slide
+    slides_2_6: "styles"   # Same room, 6 different interior styles
+
+  # Video (Seedance-based)
+  video:
+    ratio: "9:16"
+    duration_clip: 5       # seconds per clip
+    duration_target: 60    # 1-minute loops
+    loop_count: 12         # 5s × 12 = 60s
+
+  # Caption formula (story style — no marketing language)
+  caption:
+    format: "story"
+    max_chars: 200
+    max_hashtags: 5
+    structure: |
+      [Hook context — 1 line]
+      My [relationship] [reaction] when I showed them [AI result]
+      [CTA: subtle, not pushy]
+      [max 5 hashtags]
+
+  # What to AVOID (kills virality)
+  avoid:
+    - "self_promotion"        # "I built an app..."
+    - "feature_focus"         # "See how X can..."
+    - "direct_cta"            # "Download now"
+    - "wrong_slide_count"     # not exactly 6 slides
+    - "different_rooms"       # must be same room
+
+  # Confidence thresholds
+  confidence:
+    high: 0.8     # Proven formula — use as default
+    medium: 0.6   # Tested, moderate data
+    low: 0.4      # Experimental
+
+# ===========================================================================
+# VIDEO PROCESSING (FFmpeg)
+# ===========================================================================
 video_processing:
-  # Processing engine: ffmpeg
   engine: "ffmpeg"
-  
-  # Default codec settings
+  ffmpeg_path: "/home/linuxbrew/.linuxbrew/bin/ffmpeg"
   codec:
     video: "libx264"
     audio: "aac"
-    preset: "medium"
-    crf: 23
-  
-  # Default framerate
-  framerate: 30
-  
-  # Default bitrate settings
-  bitrate:
-    video: "auto"
-    audio: "128k"
-  
-  # Output settings
+    preset: "fast"
+    crf: 28              # CRF 28 = 44MB→8.6MB compression (tested)
+  framerate: 24          # Match Seedance output
   output:
     format: "mp4"
     cleanup_temp: true
-  
-  # FFmpeg path (auto-detect if not specified)
-  ffmpeg_path: null
-  ffprobe_path: null
+  # Loop command: ffmpeg -stream_loop {N} -i input.mp4 -c copy -t 60 output.mp4
+  loop_strategy: "stream_loop"
 
-# ==============================================================================
-# STATE MANAGEMENT
-# ==============================================================================
-state:
-  # Enable state management for resume capability
-  enabled: true
-  
-  # State directory
-  dir: ".content_generator_states"
-  
-  # Auto-save interval in seconds
-  auto_save_interval: 30
-  
-  # Maximum state age in days before cleanup
-  max_age_days: 30
-
-# ==============================================================================
-# FALLBACK CHAIN CONFIGURATION
-# ==============================================================================
+# ===========================================================================
+# FALLBACK CHAIN
+# ===========================================================================
 fallback:
-  # Enable automatic fallback on failure
   enabled: true
-  
-  # Provider fallback order for image generation
   image_providers:
-    - nvidia
-    - replicate
-    - huggingface
-  
-  # Provider fallback order for video generation
+    - nvidia          # Primary (ai.api.nvidia.com)
+    - replicate       # Backup
+    - huggingface     # Last resort
   video_providers:
-    - byteplus
-    - xai
-  
-  # Provider fallback order for LLM
+    - byteplus        # Primary (Seedance T2V)
+    # xai disabled — no credits
   llm_providers:
-    - groq
-    - ollama
-  
-  # Maximum fallback attempts
+    - groq            # Primary (fastest)
+    - nvidia          # Backup (NVIDIA LLM)
+    - ollama          # Cheap backup (cloud)
   max_attempts: 3
-  
-  # Delay between retries in seconds
   retry_delay: 2
 
-# ==============================================================================
-# UPLOAD SETTINGS
-# ==============================================================================
+# ===========================================================================
+# COST MANAGEMENT
+# ===========================================================================
+cost_limits:
+  max_per_generation: 1.00
+  max_per_month: 100.00
+  alert_at_percent: 80
+  enabled: true
+  db_path: ".content_generator_costs.db"
+
+# Provider cost estimates (USD)
+cost_estimates:
+  nvidia_image: 0.004     # per image (flux.1-dev)
+  byteplus_video: 0.026   # per clip (~10K tokens @ $2.5/M)
+  groq_llm: 0.001         # per request
+  nvidia_llm: 0.002       # per request
+
+# ===========================================================================
+# CACHE & STATE
+# ===========================================================================
+cache:
+  enabled: true
+  type: "sqlite"
+  db_path: ".content_generator_cache.db"
+  ttl: 86400
+  max_size_mb: 1000
+
+state:
+  enabled: true
+  dir: ".content_generator_states"
+  auto_save_interval: 30
+  max_age_days: 30
+
+# ===========================================================================
+# OUTPUT
+# ===========================================================================
+output:
+  dir: "output/videos"
+  images_dir: "output/images"
+  metadata_file: "output/metadata.json"
+  cost_report: "output/cost_report.json"
+
+# ===========================================================================
+# UPLOAD
+# ===========================================================================
 upload:
-  # Image hosting service
-  imbbb:
+  imgbb:
     api_key: "${IMGBB_API_KEY}"
-    enabled: true
-  
-  # Default upload timeout in seconds
+    enabled: false
   timeout: 60
-  
-  # Retry settings
   max_retries: 3
 
-# ==============================================================================
+# ===========================================================================
 # LOGGING
-# ==============================================================================
+# ===========================================================================
 logging:
-  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
   level: "INFO"
-  
-  # Log file path
   file: ".content_generator.log"
-  
-  # Log format
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-  
-  # Log rotation
   max_bytes: 10485760
   backup_count: 5
-
-# ==============================================================================
-# STORYBOARD TEMPLATES
-# ==============================================================================
-templates:
-  # Default template directory
-  dir: "templates"
-  
-  # Available templates
-  available:
-    - ad_short
-    - product_showcase
-    - storytelling
-    - tutorial

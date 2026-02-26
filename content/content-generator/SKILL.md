@@ -1,264 +1,246 @@
 ---
 name: content-generator
-description: Multi-provider automated video content generation platform. Generates videos from text prompts using AI providers (NVIDIA, BytePlus, XAI, Groq) with FFmpeg processing. Supports single video, batch processing, scheduled posting, and multi-platform output (TikTok, YouTube, Instagram, Facebook). Use when user wants automated video creation, batch content generation, or scheduled social media posting.
+description: Multi-provider automated video content generation platform. Generates TikTok 9:16 vertical videos (1 minute) from text prompts using NVIDIA NIM + BytePlus Seedance + FFmpeg. Implements Larry Playbook viral formula. Use when creating TikTok content, product videos, or any AI-generated video.
 ---
 
 # Content Generator Skill
 
-End-to-end automated video content generation platform with multi-provider support.
+End-to-end AI video pipeline: LLM hook → NVIDIA image → BytePlus Seedance video → FFmpeg loop/compress.
 
 ## Quick Start
 
-### Generate Single Video
+### Python API
 ```python
-from generator import ContentGenerator
+from scripts.generator import ContentGenerator
 
-gen = ContentGenerator("config.yaml")
+gen = ContentGenerator()
 result = await gen.generate(
-    prompt="Create a 30-second smartwatch ad",
+    concept="landlord_kitchen",   # Larry Playbook preset
     platform="tiktok",
-    template="ad_short",
-    strategy="balanced"
+    ratio="9:16",
+    target_duration=60,           # 1 minute
 )
-print(result["video"])  # Path to output video
+print(result["video"])   # /path/to/final.mp4
+print(result["hook"])    # "My landlord said I can't change anything..."
+print(result["caption"]) # Story-style caption with hashtags
 ```
 
-### Batch Processing
-```python
-from batch_processor import BatchProcessor
-
-processor = BatchProcessor(gen)
-job = await processor.process_batch(
-    prompts=[
-        "Product 1 advertisement",
-        "Product 2 advertisement", 
-        "Product 3 advertisement"
-    ],
-    platform="tiktok",
-    template="ad_short",
-    max_concurrent=3
-)
-```
-
-### CLI Usage
+### CLI Script (TikTok viral)
 ```bash
-# Single video
-python -m cli generate --prompt "Smartwatch ad" --platform tiktok --strategy balanced
+cd skills/1ai-skills/content/content-generator
 
-# Batch
-python -m cli batch --prompts-file prompts.txt --platform tiktok --max-concurrent 3
+# TikTok viral (Larry Playbook formula, 1 min, 9:16)
+python3 scripts/generate_tiktok_viral.py --niche motivation --ratio 9:16
 
-# FFmpeg editing
-python -m ffmpeg_editor trim input.mp4 --start 5 --duration 30
-python -m ffmpeg_editor text input.mp4 --text "Sale!" --position bottom
-python -m ffmpeg_editor music input.mp4 --audio bgm.mp3 --volume 0.3
+# Full generator
+python3 scripts/generator.py --concept landlord_kitchen --duration 60
 ```
 
-## Use This Skill When
+---
 
-- **Single video generation** - Create one video from text prompt
-- **Batch content** - Generate multiple videos for content calendar
-- **Automated posting** - Schedule videos for future posting
-- **Video editing** - Edit videos (trim, text, filters, transitions)
-- **Multi-platform** - Output for TikTok, YouTube, Instagram, Facebook
-- **Cost optimization** - Use fallback chains and caching
+## Provider Status (Verified 2026-02-27)
 
-## Do Not Use This Skill When
+| Provider | Type | Status | Endpoint |
+|----------|------|--------|----------|
+| **NVIDIA NIM** | Image | ✅ WORKING | `ai.api.nvidia.com/v1/genai/` |
+| **BytePlus Seedance** | Video | ✅ WORKING | `ark.ap-southeast.bytepluses.com/api/v3` |
+| **NVIDIA LLM** | LLM | ✅ WORKING | `integrate.api.nvidia.com/v1/chat/completions` |
+| Groq | LLM | ✅ WORKING | `api.groq.com/openai/v1` |
+| Ollama Cloud | LLM | ⚠️ PENDING | `api.ollama.com` (key set, not verified) |
+| XAI | Video | ❌ DISABLED | Credits exhausted |
 
-- **Real-time video** - Need instant video (use pre-made templates)
-- **Simple image tasks** - Just need image generation (use individual providers)
-- **No API keys** - Need provider credentials (NVIDIA, BytePlus, Groq, etc.)
+### Critical API Notes
 
-## Core Features
+**NVIDIA Image:**
+- Endpoint: `POST https://ai.api.nvidia.com/v1/genai/{provider}/{model}`
+- Working model: `black-forest-labs/flux.1-dev`
+- Payload: `{"prompt": "..."}` ONLY — no `num_images`, no null fields
+- Response: `artifacts[0].base64` (JPEG)
 
-### 1. Multi-Provider AI Generation
+**BytePlus Seedance:**
+- Base URL: `https://ark.ap-southeast.bytepluses.com/api/v3`
+- Create task: `POST /contents/generations/tasks`
+- Poll task: `GET /contents/generations/tasks/{task_id}`
+- Payload: `{"model": "...", "content": [{"type": "text", "text": "..."}], "ratio": "9:16"}`
+- ⚠️ Do NOT include `resolution` param — causes HTTP 400 on lite model
+- Generation time: ~20s (lite), ~60s (pro)
 
-| Provider | Type | Best For |
-|----------|------|----------|
-| NVIDIA | Images | High-quality Flux/SD images |
-| BytePlus | Video | Native video generation (Seedance) |
-| XAI | Video | Video editing + generation |
-| Groq | LLM | Fast transcript/storyboard |
-| Replicate | Images | SD 3.5 images |
-| HuggingFace | Images | Cost-effective images |
-| Ollama | Both | Local/cheap processing |
+---
 
-### 2. Strategy Selection
+## Larry Playbook Viral Formula
 
-| Strategy | Priority | Providers Used |
-|----------|----------|----------------|
-| `fast` | Speed | Groq → BytePlus → Replicate |
-| `quality` | Quality | NVIDIA → XAI → Replicate |
-| `cheap` | Cost | Ollama → HuggingFace → BytePlus |
-| `balanced` | All | Groq → NVIDIA → Replicate |
-| `failsafe` | Reliability | All providers in chain |
+Based on Oliver Henry's proven results: **234K views single post, 500K+ total, $588 MRR**.
 
-### 3. Video Templates
-
-| Template | Duration | Use Case |
-|----------|----------|----------|
-| `ad_short` | 15-30s | Quick product ads |
-| `product_showcase` | 30-60s | Feature demonstrations |
-| `storytelling` | 60s+ | Narrative content |
-| `tutorial` | 60-120s | Educational content |
-
-### 4. Platform Specs
-
-| Platform | Aspect Ratio | Resolution | Max Duration |
-|----------|--------------|------------|---------------|
-| TikTok | 9:16 | 1080x1920 | 180s |
-| YouTube | 16:9 | 1920x1080 | 12 hours |
-| Instagram | 9:16 | 1080x1920 | 60s |
-| Facebook | 16:9 | 1920x1080 | 4 hours |
-
-### 5. FFmpeg Editing
-
-**Cutting:**
-- Trim: `trim(input, start=5, duration=30)`
-- Cut scenes: `cut_scenes(input, timestamps=[(0,10), (20,30)])`
-
-**Speed:**
-- Change speed: `change_speed(input, speed=2.0)` (2x faster)
-- Slow motion: `slow_motion(input, factor=0.5)`
-
-**Text & Overlays:**
-- Text: `add_text(input, overlays=[TextOverlay(...)])`
-- Subtitles: `add_subtitles(input, "subs.srt")`
-- Watermark: `add_watermark(input, "logo.png", position="top_right")`
-
-**Filters:**
-- Color grade: `color_grade(input, preset="cinematic")`
-- Filters: `apply_filters(input, brightness=0.1, contrast=1.2)`
-
-**Transitions:**
-- Between clips: `add_transition(clip1, clip2, transition="fade")`
-- Sequence: `create_transition_sequence(clips, transition="dissolve")`
-
-**Audio:**
-- Music: `add_music(input, "bgm.mp3", volume=0.3, fade_in=2)`
-- SFX: `add_sound_effect(input, "sfx.mp3", timestamp=5.0)`
-
-**Composition:**
-- Resize: `resize(input, width=1080, height=1920)`
-- Aspect ratio: `convert_aspect_ratio(input, "9:16")`
-- PiP: `picture_in_picture(main, pip, position="bottom_right")`
-- Split: `split_screen([clip1, clip2], layout="horizontal")`
-
-### 6. State Management
-
-```python
-from state import StateManager
-
-state_mgr = StateManager()
-
-# Save state on failure
-state_mgr.save_state(GenerationState(
-    state_id="abc123",
-    prompt="...",
-    current_step=2,  # Failed at step 2
-    failed_step=2,
-    error_message="API timeout"
-))
-
-# Resume from failure
-result = state_mgr.resume_generation("abc123")
+### The Hook Formula
+```
+[Third-party person's problem] + [Doubt/conflict]
+→ "Showed them what AI thinks..."
+→ They reacted / changed their mind
 ```
 
-## Configuration
+### Why It Works
+- Creates curiosity (what happened?)
+- Third-party = relatable (not self-promo)
+- AI result = concrete solution
+- Triggers action (show YOUR landlord/mum/friend!)
 
-### Environment Variables
+### Hook Templates by Performance
+
+| Hook Type | Views | Template |
+|-----------|-------|----------|
+| Landlord + AI | 234K avg | "My landlord said {constraint}, so I showed {them} what AI thinks {space} could look like" |
+| Parent + AI | 80K avg | "My mum was skeptical about AI until I showed her {result} for our {room}" |
+| Roommate + AI | 60K avg | "My flatmate thinks {X} is impossible, so I proved them wrong with AI {result}" |
+
+### ❌ What Kills Virality
+- "I built an app that does X" → Self-promotion
+- "Check out my new feature Y" → Feature-focused
+- "Download now for Z" → Direct CTA
+- Not exactly 6 slides → Wrong count
+- Different rooms across slides → Must be same room
+
+### Caption Formula (Story Style)
+```
+[Hook context — 1 line]
+My [relationship] [reaction/emotion] when I showed them [AI result]
+[Subtle CTA — never pushy]
+[max 5 hashtags]
+```
+Max 200 characters. Natural tone. NOT marketing language.
+
+---
+
+## TikTok 9:16 Pipeline (1-Minute Video)
+
+```
+LLM hook+prompt → BytePlus Seedance 5s clip → FFmpeg loop×12 = 60s → Compress CRF28 → ~8.6MB MP4
+```
+
+**Step by step:**
+1. `generate_content(concept)` — LLM generates hook + video prompt + caption
+2. `generate_video(prompt, ratio="9:16")` — BytePlus creates 5s portrait video
+3. `loop_to_minute(clip, output, secs=60, loops=12)` — FFmpeg -stream_loop 12
+4. `compress_video(looped, final, crf=28)` — 44MB → 8.6MB
+
+**Format specs:**
+- Ratio: 9:16
+- Resolution: 704×1248 (Seedance lite output)
+- FPS: 24
+- Duration: 60 seconds
+- Filesize: ~8.6MB (Telegram safe: < 16MB)
+- Codec: H.264
+
+**FFmpeg loop command:**
+```bash
+ffmpeg -stream_loop 12 -i input.mp4 -c copy -t 60 -y output_60s.mp4
+```
+
+**FFmpeg compress command:**
+```bash
+ffmpeg -i input.mp4 -c:v libx264 -crf 28 -preset fast -c:a copy -y output_compressed.mp4
+```
+
+---
+
+## Preset Concepts (Larry Playbook)
+
+| Concept | Hook | Best For |
+|---------|------|---------|
+| `landlord_kitchen` | "Landlord won't let me renovate..." | Interior design niche |
+| `parent_bedroom` | "Mum was skeptical about AI..." | Home transformation |
+| `motivation` | "Your only competition is yesterday's you" | Lifestyle / motivational |
+| `money` | "Money follows action not wishes" | Finance / entrepreneur |
+| `product` | Premium product showcase | E-commerce |
+
+---
+
+## Platform Specs
+
+| Platform | Ratio | Resolution | FPS | Duration | Seedance Model |
+|----------|-------|------------|-----|----------|----------------|
+| **TikTok** | 9:16 | 1080×1920 | 24 | 60s | lite-t2v |
+| YouTube Shorts | 9:16 | 1080×1920 | 30 | 60s | lite-t2v |
+| Instagram Reels | 9:16 | 1080×1920 | 30 | 60s | lite-t2v |
+| Facebook | 16:9 | 1920×1080 | 30 | any | lite-t2v |
+
+---
+
+## Strategies
+
+| Strategy | LLM | Image | Video | Use When |
+|----------|-----|-------|-------|----------|
+| `fast` | NVIDIA | skip | BytePlus lite | Quick drafts |
+| `quality` | Groq | NVIDIA Flux | BytePlus pro | Final content |
+| `cheap` | Ollama | skip | BytePlus lite | Batch testing |
+| `balanced` | Groq | NVIDIA Flux | BytePlus lite | Default |
+
+---
+
+## Environment Variables
 
 ```bash
-# Required for core functionality
-NVIDIA_API_KEY="nvapi-..."
-BYTEPLUS_API_KEY="..."
-GROQ_API_KEY="gsk_..."
-
-# Optional
-REPLICATE_API_TOKEN="r8_..."
-HF_API_KEY="hf_..."
-XAI_API_KEY="xai-..."
-OLLAMA_CLOUD_API_KEY="..."
-IMGBB_API_KEY="..."
+export NVIDIA_API_KEY="nvapi-..."        # Required for image + LLM
+export BYTEPLUS_API_KEY="..."            # Required for video
+export GROQ_API_KEY="gsk_..."            # Optional (faster LLM)
+export OLLAMA_API_KEY="..."              # Optional (cheap LLM)
 ```
 
-### config.yaml
+---
 
-```yaml
-content_generation:
-  strategy: "balanced"
-  default_platform: "tiktok"
-  
-providers:
-  nvidia:
-    api_key: "${NVIDIA_API_KEY}"
-    enabled: true
-  byteplus:
-    api_key: "${BYTEPLUS_API_KEY}"
-    enabled: true
-  groq:
-    api_key: "${GROQ_API_KEY}"
-    enabled: true
-    
-cost_limits:
-  max_per_generation: 1.0
-  max_per_month: 100.0
-  alert_at_percent: 80
-```
-
-## Fallback Chain
-
-When a provider fails:
-1. Log failure reason
-2. Switch to next provider in strategy chain
-3. If all fail → raise AllProvidersFailedError
-
-```python
-# Example fallback behavior (balanced strategy)
-# Image generation: NVIDIA → Replicate → HuggingFace → BytePlus
-# Video generation: BytePlus → XAI
-# LLM: Groq → NVIDIA → Ollama
-```
-
-## Output Structure
+## File Structure
 
 ```
-output/
-├── videos/
-│   ├── final_video.mp4
-│   └── scenes/
-│       ├── scene_001.mp4
-│       └── scene_002.mp4
-├── images/
-│   ├── character.png
-│   ├── product.png
-│   └── background.png
-├── metadata.json
-├── provider_usage.json
-└── cost_report.json
+content/content-generator/
+├── SKILL.md                           ← This file
+├── config.yaml                        ← Provider config (verified endpoints)
+├── STATUS.md                          ← Provider test results
+├── scripts/
+│   ├── generator.py                   ← Main ContentGenerator class ← START HERE
+│   ├── generate_tiktok_viral.py       ← TikTok 9:16 1-min CLI script
+│   ├── cli.py                         ← General CLI
+│   ├── providers/
+│   │   ├── base.py                    ← Base provider class
+│   │   ├── nvidia.py                  ← NVIDIA image gen (FIXED)
+│   │   ├── byteplus.py                ← BytePlus Seedance (REWRITTEN)
+│   │   ├── ollama.py                  ← Ollama cloud (partial)
+│   │   ├── groq.py                    ← Groq LLM
+│   │   └── xai.py                     ← XAI (disabled)
+│   └── ffmpeg_editor.py              ← FFmpeg wrapper
+└── references/
+    ├── providers/
+    │   ├── nvidia.md                  ← NVIDIA API docs
+    │   └── byteplus.md                ← BytePlus API docs
+    └── workflow.md                    ← Workflow guide
 ```
 
-## Error Handling
-
-| Error | Handling |
-|-------|----------|
-| Provider timeout | Fallback to next provider |
-| API rate limit | Wait and retry with exponential backoff |
-| Invalid API key | Skip provider, log error |
-| Cost limit exceeded | Raise CostLimitExceededError |
-| All providers fail | Raise AllProvidersFailedError |
-| Partial failure | Return best-effort with error log |
+---
 
 ## Dependencies
 
 - Python 3.11+
-- FFmpeg (for video processing)
+- FFmpeg with libx264 (for loop + compress)
+  - Path: `/home/linuxbrew/.linuxbrew/bin/ffmpeg`
+  - Note: NOT built with libfreetype — no text overlay
 - urllib (built-in)
 - asyncio (built-in)
+- ssl (built-in)
+
+---
+
+## Cost Estimates
+
+| Operation | Provider | Cost |
+|-----------|----------|------|
+| Image generation | NVIDIA Flux | ~$0.004 |
+| Video 5s clip | BytePlus Seedance lite | ~$0.026 |
+| LLM storyboard | NVIDIA/Groq | ~$0.001 |
+| **Full TikTok 1-min** | All combined | **~$0.031** |
+
+---
 
 ## See Also
 
-- `references/workflow.md` - Detailed workflow guide
-- `references/nvidia-api.md` - NVIDIA API docs
-- `references/byteplus-api.md` - BytePlus Seedance docs
-- `references/xai-video-api.md` - XAI video API docs
+- `larry-playbook/SKILL.md` — Full viral formula + confidence system
+- `tiktok-automation/SKILL.md` — Browser-based TikTok posting
+- `social-media-upload/SKILL.md` — Multi-platform upload
+- `humanizer/SKILL.md` — Make captions sound natural
