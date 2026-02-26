@@ -90,6 +90,64 @@ def _get_attr(obj: Any, key: str, default: Any = None) -> Any:
     return getattr(obj, key, default)
 
 
+def _normalize_position_type(pos_type: Any) -> int:
+    """Normalize position type to integer (0=BUY, 1=SELL)."""
+    if pos_type is None:
+        return -1
+    if isinstance(pos_type, int):
+        return pos_type
+    if isinstance(pos_type, str):
+        if pos_type.upper() in ["BUY", "POSITION_TYPE_BUY"]:
+            return 0
+        elif pos_type.upper() in ["SELL", "POSITION_TYPE_SELL"]:
+            return 1
+    return -1
+
+
+def _normalize_order_type(order_type: Any) -> int:
+    """Normalize order type to integer."""
+    if order_type is None:
+        return -1
+    if isinstance(order_type, int):
+        return order_type
+    if isinstance(order_type, str):
+        upper = order_type.upper()
+        if "BUY" in upper and "STOP" in upper:
+            return 2  # BUY_STOP
+        elif "SELL" in upper and "STOP" in upper:
+            return 3  # SELL_STOP
+        elif "BUY" in upper:
+            return 0  # BUY
+        elif "SELL" in upper:
+            return 1  # SELL
+    return -1
+
+
+# Mapping dari field name alternatif
+# Position dataclass menggunakan 'order_type', bukan 'type'
+# Order dataclass menggunakan 'type'
+_POSITION_TYPE_ALIASES = ['order_type', 'type']
+_ORDER_TYPE_ALIASES = ['order_type', 'type']
+
+
+def _get_position_type(pos: Any) -> int:
+    """Get position type from position object (handles field name variations)."""
+    for alias in _POSITION_TYPE_ALIASES:
+        val = _get_attr(pos, alias)
+        if val is not None:
+            return _normalize_position_type(val)
+    return -1
+
+
+def _get_order_type(order: Any) -> int:
+    """Get order type from order object (handles field name variations)."""
+    for alias in _ORDER_TYPE_ALIASES:
+        val = _get_attr(order, alias)
+        if val is not None:
+            return _normalize_order_type(val)
+    return -1
+
+
 class MaybeHFT:
     """
     Maybe HFT Hedging EA Implementation
@@ -192,12 +250,14 @@ class MaybeHFT:
         return self.broker.get_bid()
     
     def count_main_orders(self) -> int:
-        """Count active positions dengan magic number ini"""
+        """Count active positions dengan magic number ini (BUY positions only = main)"""
         count = 0
         for pos in self.broker.positions:
             pos_symbol = _get_attr(pos, 'symbol')
             pos_magic = _get_attr(pos, 'magic')
-            if pos_symbol == self.config.symbol and pos_magic == self.config.magic:
+            pos_type = _normalize_position_type(_get_attr(pos, 'type'))
+            # Main order = BUY positions only
+            if pos_symbol == self.config.symbol and pos_magic == self.config.magic and pos_type == 0:
                 count += 1
         return count
     
@@ -207,7 +267,7 @@ class MaybeHFT:
         for order in self.broker.orders:
             order_symbol = _get_attr(order, 'symbol')
             order_magic = _get_attr(order, 'magic')
-            order_type = _get_attr(order, 'type')
+            order_type = _normalize_order_type(_get_attr(order, 'type'))
             if (order_symbol == self.config.symbol and 
                 order_magic == self.config.magic and
                 order_type in [OrderType.BUY_STOP.value, OrderType.SELL_STOP.value]):
@@ -268,7 +328,7 @@ class MaybeHFT:
             if pos_symbol != self.config.symbol or pos_magic != self.config.magic:
                 continue
             
-            pos_type = _get_attr(pos, 'type')
+            pos_type = _get_position_type(pos)
             open_price = _get_attr(pos, 'open_price')
             sl = _get_attr(pos, 'sl', 0)
             ticket = _get_attr(pos, 'ticket')
@@ -305,7 +365,7 @@ class MaybeHFT:
             pos_symbol = _get_attr(pos, 'symbol')
             pos_magic = _get_attr(pos, 'magic')
             if pos_symbol == self.config.symbol and pos_magic == self.config.magic:
-                main_type = _get_attr(pos, 'type')
+                main_type = _normalize_position_type(_get_attr(pos, 'type'))
                 main_sl = _get_attr(pos, 'sl', 0)
                 break
                 
@@ -324,7 +384,7 @@ class MaybeHFT:
         for order in self.broker.orders:
             order_symbol = _get_attr(order, 'symbol')
             order_magic = _get_attr(order, 'magic')
-            order_type = _get_attr(order, 'type')
+            order_type = _normalize_order_type(_get_attr(order, 'type'))
             if (order_symbol == self.config.symbol and 
                 order_magic == self.config.magic and
                 order_type in [OrderType.BUY_STOP.value, OrderType.SELL_STOP.value]):
@@ -431,7 +491,7 @@ class MaybeHFT:
         print(f" -" * 30)
         
         for pos in positions:
-            pos_type = _get_attr(pos, 'type')
+            pos_type = _get_position_type(pos)
             pos_type_str = "BUY" if pos_type == 0 else "SELL"
             open_price = _get_attr(pos, 'open_price')
             sl = _get_attr(pos, 'sl', 0)
@@ -442,13 +502,15 @@ class MaybeHFT:
                   f"Open={open_price:.5f}, SL={sl:.5f}, TP={tp:.5f}, Profit={profit:.2f}")
             
         for order in orders:
-            order_type = _get_attr(order, 'type')
+            order_type = _get_order_type(order)
             order_type_str = "BUY_STOP" if order_type == 2 else "SELL_STOP"
             price = _get_attr(order, 'price_open')
             sl = _get_attr(order, 'sl', 0)
             ticket = _get_attr(order, 'ticket')
+            price_str = f"{price:.5f}" if price else "N/A"
+            sl_str = f"{sl:.5f}" if sl else "N/A"
             print(f"  ⏳ {order_type_str} #{ticket}: "
-                  f"Price={price:.5f}, SL={sl:.5f}")
+                  f"Price={price_str}, SL={sl_str}")
         
         print(f"{'='*60}\n")
     

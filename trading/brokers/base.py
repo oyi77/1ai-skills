@@ -88,6 +88,7 @@ class Position:
     sl: Optional[float] = None
     tp: Optional[float] = None
     profit: float = 0.0
+    magic: int = 0  # Magic number for EA identification
     comment: str = ""
     time_open: Optional[datetime] = None
 

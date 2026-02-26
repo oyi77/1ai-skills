@@ -28,7 +28,8 @@ class SimulatedBroker(BrokerConnector):
         self._symbol = symbol
         self._positions: Dict[int, Position] = {}
         self._orders: List[Order] = []
-        self._order_counter = 1000
+        self._position_counter = 1000  # Start at 1000 for positions
+        self._order_counter = 2000      # Start at 2000 for orders
         self._paper_stats = self._load_stats()
         self._price_cache = {}
         self._point = 0.01  # Default for XAUUSD
@@ -137,7 +138,7 @@ class SimulatedBroker(BrokerConnector):
         return False
 
     def buy(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
-        """Place BUY market order."""
+        """Place BUY market order (creates position immediately)."""
         order = self.place_order(
             symbol=symbol,
             order_type="BUY",
@@ -146,12 +147,13 @@ class SimulatedBroker(BrokerConnector):
             sl=sl,
             tp=tp,
             magic=magic,
-            comment=comment
+            comment=comment,
+            create_position=True  # Market order creates position
         )
         return order is not None
 
     def sell(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
-        """Place SELL market order."""
+        """Place SELL market order (creates position immediately)."""
         order = self.place_order(
             symbol=symbol,
             order_type="SELL",
@@ -160,12 +162,13 @@ class SimulatedBroker(BrokerConnector):
             sl=sl,
             tp=tp,
             magic=magic,
-            comment=comment
+            comment=comment,
+            create_position=True  # Market order creates position
         )
         return order is not None
 
     def buy_stop(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
-        """Place BUY STOP pending order."""
+        """Place BUY STOP pending order (creates order only, not position)."""
         order = self.place_order(
             symbol=symbol,
             order_type="BUY_STOP",
@@ -174,12 +177,13 @@ class SimulatedBroker(BrokerConnector):
             sl=sl,
             tp=tp,
             magic=magic,
-            comment=comment
+            comment=comment,
+            create_position=False  # Pending order doesn't create position yet
         )
         return order is not None
 
     def sell_stop(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
-        """Place SELL STOP pending order."""
+        """Place SELL STOP pending order (creates order only, not position)."""
         order = self.place_order(
             symbol=symbol,
             order_type="SELL_STOP",
@@ -188,7 +192,8 @@ class SimulatedBroker(BrokerConnector):
             sl=sl,
             tp=tp,
             magic=magic,
-            comment=comment
+            comment=comment,
+            create_position=False  # Pending order doesn't create position yet
         )
         return order is not None
 
@@ -255,20 +260,24 @@ class SimulatedBroker(BrokerConnector):
     ) -> Optional[Order]:
         """Place order (simulated). Returns Order object or None."""
         dry_run = kwargs.get("dry_run", False)
+        create_position = kwargs.get("create_position", False)  # False for pending orders
         current_price = self._get_price(symbol)
         open_price = price if price is not None else current_price
+        magic = kwargs.get("magic", 0)
 
-        ticket = self._order_counter
+        # Separate ticket numbers for orders (2000+) and positions (1000+)
+        order_ticket = self._order_counter
         self._order_counter += 1
 
         order = Order(
-            ticket=ticket,
+            ticket=order_ticket,
             symbol=symbol,
             order_type=order_type,
             volume=volume,
             price=open_price,
             sl=sl,
             tp=tp,
+            magic=magic,
             comment=kwargs.get("comment", "paper"),
             time_setup=datetime.now(),
         )
@@ -280,26 +289,35 @@ class SimulatedBroker(BrokerConnector):
             )
             return order
 
-        position = Position(
-            ticket=ticket,
-            symbol=symbol,
-            order_type=order_type,
-            volume=volume,
-            open_price=open_price,
-            current_price=current_price,
-            sl=sl,
-            tp=tp,
-            profit=0.0,
-            comment=kwargs.get("comment", "paper"),
-            time_open=datetime.now(),
-        )
+        # Only create position for market orders (not pending orders)
+        if create_position:
+            position_ticket = self._position_counter
+            self._position_counter += 1
+            position = Position(
+                ticket=position_ticket,
+                symbol=symbol,
+                order_type=order_type,
+                volume=volume,
+                open_price=open_price,
+                current_price=current_price,
+                sl=sl,
+                tp=tp,
+                profit=0.0,
+                magic=magic,
+                comment=kwargs.get("comment", "paper"),
+                time_open=datetime.now(),
+            )
+            self._positions[position_ticket] = position
+            logger.info(
+                f"[PAPER] Position opened: {order_type} {symbol} {volume} lots @ {open_price}"
+                f" SL={sl} TP={tp} ticket={position_ticket}"
+            )
 
-        self._positions[ticket] = position
         self._orders.append(order)
 
         logger.info(
             f"[PAPER] Order placed: {order_type} {symbol} {volume} lots @ {open_price}"
-            f" SL={sl} TP={tp} ticket={ticket}"
+            f" SL={sl} TP={tp} order_ticket={order_ticket} {'(position created)' if create_position else '(pending)'}"
         )
         return order
 
