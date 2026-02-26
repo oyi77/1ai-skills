@@ -2029,6 +2029,28 @@
       ],
       "source": "local",
       "path": "research/continuous-learning"
+    },
+    {
+      "name": "trendradar",
+      "description": "AI-powered trending topic monitoring from 35+ platforms. Aggregate trends, analyze sentiment, get real-time notifications. MCP server with 4.5K+ stars.",
+      "keywords": [
+        "trending",
+        "trends",
+        "monitoring",
+        "sentiment",
+        "mcp",
+        "analytics",
+        "research",
+        "social media",
+        "news"
+      ],
+      "domains": [
+        "research",
+        "analytics",
+        "monitoring"
+      ],
+      "source": "local",
+      "path": "research/trendradar"
     }
   ],
   "teams": [
