@@ -1,0 +1,27 @@
+{
+  "total_posts": 4,
+  "total_views": 0,
+  "avg_views": 0,
+  "winning_hooks": {},
+  "losing_hooks": {},
+  "flow_performance": {
+    "multi_platform_posting": {
+      "attempts": 2,
+      "successes": 2,
+      "last_result": {
+        "success": true,
+        "timestamp": "2026-02-27T02:16:49.669177",
+        "error": ""
+      }
+    },
+    "larry_slideshow": {
+      "attempts": 2,
+      "successes": 2,
+      "last_result": {
+        "success": true,
+        "timestamp": "2026-02-27T02:16:49.669444",
+        "error": ""
+      }
+    }
+  }
+}

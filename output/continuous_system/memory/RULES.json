@@ -1,0 +1,46 @@
+{
+  "hook_formulas": {
+    "landlord_ai": {
+      "confidence": 0.9,
+      "views_avg": 150000
+    },
+    "parent_ai": {
+      "confidence": 0.7,
+      "views_avg": 80000
+    },
+    "doubter_wrong": {
+      "confidence": 0.6,
+      "views_avg": 60000
+    }
+  },
+  "content_types": {
+    "slideshow_6_slides": {
+      "confidence": 0.85,
+      "views_avg": 100000
+    },
+    "single_image": {
+      "confidence": 0.6,
+      "views_avg": 40000
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "confidence": 0.8,
+      "engagement_rate": 0.12
+    },
+    "facebook": {
+      "confidence": 0.6,
+      "engagement_rate": 0.08
+    },
+    "instagram": {
+      "confidence": 0.7,
+      "engagement_rate": 0.1
+    }
+  },
+  "confidence_requirements": {
+    "larry_slideshow": 0.8071984000000001,
+    "multi_platform_posting": 0.5,
+    "social_engagement": 0.6,
+    "viral_image_post": 0.6
+  }
+}

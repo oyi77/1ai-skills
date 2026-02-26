@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "niche": "Motivational",
+    "scheduled": "2026-02-27 02:17 WIB",
+    "video": "output/viral_videos/video1.mp4",
+    "facebook": true,
+    "tiktok": true
+  },
+  {
+    "id": 2,
+    "niche": "Money Mindset",
+    "scheduled": "2026-02-27 06:17 WIB",
+    "video": "output/viral_videos/video2.mp4",
+    "facebook": true,
+    "tiktok": true
+  },
+  {
+    "id": 3,
+    "niche": "Success Mindset",
+    "scheduled": "2026-02-27 10:17 WIB",
+    "video": "output/viral_videos/video3.mp4",
+    "facebook": true,
+    "tiktok": true
+  },
+  {
+    "id": 4,
+    "niche": "Growth Mindset",
+    "scheduled": "2026-02-27 14:17 WIB",
+    "video": "output/viral_videos/video4.mp4",
+    "facebook": true,
+    "tiktok": true
+  },
+  {
+    "id": 5,
+    "niche": "Productivity",
+    "scheduled": "2026-02-27 18:17 WIB",
+    "video": "output/viral_videos/video5.mp4",
+    "facebook": true,
+    "tiktok": true
+  }
+]

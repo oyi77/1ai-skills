@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "niche": "Motivational",
+    "scheduled": "2026-02-27 02:10 WIB",
+    "image": "output/viral_pil/viral1.jpg",
+    "url": "https://i.ibb.co/FbM9SXYz/500b422b63b6.jpg",
+    "facebook": true,
+    "tiktok": true,
+    "fb_response": {
+      "id": "61205799-7513-4cf0-8a9d-d60c340ea627",
+      "caption": "Every single day is a fresh start. Stop comparing yourself to others. The only race that matters is the one you run against your past self. Drop a \ud83d\udcaa if you needed to hear this today! #motivation #mindset #success #growth #viral",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-26T19:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45676,
+        45675,
+        45674,
+        45673,
+        45672,
+        45671,
+        45670,
+        45669,
+        45668,
+        45667,
+        45666,
+        45665,
+        45664,
+        45663,
+        45645,
+        45644,
+        45643,
+        45639,
+        45637,
+        45635,
+        45633,
+        45632,
+        45631,
+        45629
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/FbM9SXYz/500b422b63b6.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:01.815765+00:00",
+      "updated_at": "2026-02-26T18:41:01.815765+00:00",
+      "is_draft": false
+    },
+    "tik_response": {
+      "id": "73845791-e385-4216-967f-f99c49209362",
+      "caption": "Every single day is a fresh start. Stop comparing yourself to others. The only race that matters is the one you run against your past self. Drop a \ud83d\udcaa if you needed to hear this today! #motivation #mindset #success #growth #viral",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-26T19:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45648
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/FbM9SXYz/500b422b63b6.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:04.987757+00:00",
+      "updated_at": "2026-02-26T18:41:04.987757+00:00",
+      "is_draft": false
+    }
+  },
+  {
+    "id": 2,
+    "niche": "Money Mindset",
+    "scheduled": "2026-02-27 06:10 WIB",
+    "image": "output/viral_pil/viral2.jpg",
+    "url": "https://i.ibb.co/Y47K0ttw/bc040a6af9fb.jpg",
+    "facebook": true,
+    "tiktok": true,
+    "fb_response": {
+      "id": "9e74c11a-c90f-4887-a24b-5667cec37f07",
+      "caption": "Stop waiting for the 'perfect moment'. The people winning financially are NOT the smartest. They're the ones who STARTED. What's ONE thing you can do TODAY? Comment below \ud83d\udc47 #money #wealth #entrepreneur #success #mindset",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-26T23:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45676,
+        45675,
+        45674,
+        45673,
+        45672,
+        45671,
+        45670,
+        45669,
+        45668,
+        45667,
+        45666,
+        45665,
+        45664,
+        45663,
+        45645,
+        45644,
+        45643,
+        45639,
+        45637,
+        45635,
+        45633,
+        45632,
+        45631,
+        45629
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/Y47K0ttw/bc040a6af9fb.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:07.929064+00:00",
+      "updated_at": "2026-02-26T18:41:07.929064+00:00",
+      "is_draft": false
+    },
+    "tik_response": {
+      "id": "73dfe2c2-ecad-44cb-8d76-68f390ed0dbf",
+      "caption": "Stop waiting for the 'perfect moment'. The people winning financially are NOT the smartest. They're the ones who STARTED. What's ONE thing you can do TODAY? Comment below \ud83d\udc47 #money #wealth #entrepreneur #success #mindset",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-26T23:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45648
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/Y47K0ttw/bc040a6af9fb.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:11.106326+00:00",
+      "updated_at": "2026-02-26T18:41:11.106326+00:00",
+      "is_draft": false
+    }
+  },
+  {
+    "id": 3,
+    "niche": "Success Mindset",
+    "scheduled": "2026-02-27 10:10 WIB",
+    "image": "output/viral_pil/viral3.jpg",
+    "url": "https://i.ibb.co/b5wmFkdm/204dc55d209e.jpg",
+    "facebook": true,
+    "tiktok": true,
+    "fb_response": {
+      "id": "6c7a530f-c4ec-4a56-ba75-d2db54e8ae35",
+      "caption": "365 days. That's all it takes. I stopped talking and started DOING. Like this if you're working on your glow-up right now \ud83d\udc47 #transformation #success #glowup #motivation #viral",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-27T03:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45676,
+        45675,
+        45674,
+        45673,
+        45672,
+        45671,
+        45670,
+        45669,
+        45668,
+        45667,
+        45666,
+        45665,
+        45664,
+        45663,
+        45645,
+        45644,
+        45643,
+        45639,
+        45637,
+        45635,
+        45633,
+        45632,
+        45631,
+        45629
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/b5wmFkdm/204dc55d209e.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:14.223223+00:00",
+      "updated_at": "2026-02-26T18:41:14.223223+00:00",
+      "is_draft": false
+    },
+    "tik_response": {
+      "id": "679fc8f8-ed48-46b1-8f8d-e55495a6ffb7",
+      "caption": "365 days. That's all it takes. I stopped talking and started DOING. Like this if you're working on your glow-up right now \ud83d\udc47 #transformation #success #glowup #motivation #viral",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-27T03:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45648
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/b5wmFkdm/204dc55d209e.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:17.390735+00:00",
+      "updated_at": "2026-02-26T18:41:17.390735+00:00",
+      "is_draft": false
+    }
+  },
+  {
+    "id": 4,
+    "niche": "Growth Mindset",
+    "scheduled": "2026-02-27 14:10 WIB",
+    "image": "output/viral_pil/viral4.jpg",
+    "url": "https://i.ibb.co/ymc7w84R/88e926459836.jpg",
+    "facebook": true,
+    "tiktok": true,
+    "fb_response": {
+      "id": "fe006b56-af69-4931-bd0a-7dcd5bdc8a64",
+      "caption": "Nothing grows in the comfort zone. Every breakthrough starts with being uncomfortable. Embrace the struggle. Growth is waiting on the other side. \ud83d\udcaa #growth #mindset #motivation #success #viral",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-27T07:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45676,
+        45675,
+        45674,
+        45673,
+        45672,
+        45671,
+        45670,
+        45669,
+        45668,
+        45667,
+        45666,
+        45665,
+        45664,
+        45663,
+        45645,
+        45644,
+        45643,
+        45639,
+        45637,
+        45635,
+        45633,
+        45632,
+        45631,
+        45629
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/ymc7w84R/88e926459836.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:20.471521+00:00",
+      "updated_at": "2026-02-26T18:41:20.471521+00:00",
+      "is_draft": false
+    },
+    "tik_response": {
+      "id": "6adabb63-9495-4254-a8da-4f46f5714dea",
+      "caption": "Nothing grows in the comfort zone. Every breakthrough starts with being uncomfortable. Embrace the struggle. Growth is waiting on the other side. \ud83d\udcaa #growth #mindset #motivation #success #viral",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-27T07:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45648
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/ymc7w84R/88e926459836.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:23.616546+00:00",
+      "updated_at": "2026-02-26T18:41:23.616546+00:00",
+      "is_draft": false
+    }
+  },
+  {
+    "id": 5,
+    "niche": "Productivity",
+    "scheduled": "2026-02-27 18:10 WIB",
+    "image": "output/viral_pil/viral5.jpg",
+    "url": "https://i.ibb.co/qFNRHVsq/fcc31588b707.jpg",
+    "facebook": true,
+    "tiktok": true,
+    "fb_response": {
+      "id": "01e6100e-aaca-47d9-b0d5-ae08c324089c",
+      "caption": "Started waking up at 5AM: more productive, clearer mind, less anxiety. First 3 days are hard. After that, you'll never go back. Save this if you want to try it! \ud83d\udd16 #5am #productivity #habits #success",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-27T11:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45676,
+        45675,
+        45674,
+        45673,
+        45672,
+        45671,
+        45670,
+        45669,
+        45668,
+        45667,
+        45666,
+        45665,
+        45664,
+        45663,
+        45645,
+        45644,
+        45643,
+        45639,
+        45637,
+        45635,
+        45633,
+        45632,
+        45631,
+        45629
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/qFNRHVsq/fcc31588b707.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:26.555897+00:00",
+      "updated_at": "2026-02-26T18:41:26.555897+00:00",
+      "is_draft": false
+    },
+    "tik_response": {
+      "id": "f4146bc2-01cf-4012-9e37-08f577a00251",
+      "caption": "Started waking up at 5AM: more productive, clearer mind, less anxiety. First 3 days are hard. After that, you'll never go back. Save this if you want to try it! \ud83d\udd16 #5am #productivity #habits #success",
+      "status": "scheduled",
+      "scheduled_at": "2026-02-27T11:10:59+00:00",
+      "platform_configurations": null,
+      "account_configurations": null,
+      "social_accounts": [
+        45648
+      ],
+      "media": [
+        "{\"url\":\"https://i.ibb.co/qFNRHVsq/fcc31588b707.jpg\"}"
+      ],
+      "created_at": "2026-02-26T18:41:29.893633+00:00",
+      "updated_at": "2026-02-26T18:41:29.893633+00:00",
+      "is_draft": false
+    }
+  }
+]

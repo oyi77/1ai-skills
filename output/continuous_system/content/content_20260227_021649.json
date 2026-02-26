@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-02-27T02:16:49.668930",
+  "based_on_research": "research_20260227_02.json",
+  "selected_hook": "My partner thinks [X] can't work, so I showed AI's solution",
+  "content_type": "larry_slideshow",
+  "confidence": 0.8,
+  "platforms": [
+    "tiktok"
+  ],
+  "content": {
+    "hook": "My partner thinks [X] can't work, so I showed AI's solution",
+    "caption": "My landlord wouldn't approve bathroom, so I showed them AI's idea! 🏠 #aiinteriordesign #viral",
+    "hashtags": "#aiinteriordesign #roomtransformation #viral #homedesign",
+    "estimated_views": 100000
+  }
+}

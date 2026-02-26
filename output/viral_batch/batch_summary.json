@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "niche": "Motivational",
+    "scheduled_at": "2026-02-27 02:06 WIB",
+    "image": null,
+    "video": null,
+    "image_url": "",
+    "post_results": [
+      {
+        "platform": "facebook",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      },
+      {
+        "platform": "tiktok",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      }
+    ],
+    "status": "failed"
+  },
+  {
+    "id": 2,
+    "niche": "Money Mindset",
+    "scheduled_at": "2026-02-27 06:06 WIB",
+    "image": null,
+    "video": null,
+    "image_url": "",
+    "post_results": [
+      {
+        "platform": "facebook",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      },
+      {
+        "platform": "tiktok",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      }
+    ],
+    "status": "failed"
+  },
+  {
+    "id": 3,
+    "niche": "Satisfying Nature",
+    "scheduled_at": "2026-02-27 10:06 WIB",
+    "image": null,
+    "video": null,
+    "image_url": "",
+    "post_results": [
+      {
+        "platform": "facebook",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      },
+      {
+        "platform": "tiktok",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      }
+    ],
+    "status": "failed"
+  },
+  {
+    "id": 4,
+    "niche": "Success Story Hook",
+    "scheduled_at": "2026-02-27 14:06 WIB",
+    "image": null,
+    "video": null,
+    "image_url": "",
+    "post_results": [
+      {
+        "platform": "facebook",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      },
+      {
+        "platform": "tiktok",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      }
+    ],
+    "status": "failed"
+  },
+  {
+    "id": 5,
+    "niche": "Life Hack / Value",
+    "scheduled_at": "2026-02-27 18:06 WIB",
+    "image": null,
+    "video": null,
+    "image_url": "",
+    "post_results": [
+      {
+        "platform": "facebook",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      },
+      {
+        "platform": "tiktok",
+        "result": {
+          "error": "HTTP Error 400: Bad Request",
+          "body": "{\"statusCode\":400,\"message\":\"Invalid Request\",\"errors\":[\"at least one social_account is required\"]}"
+        }
+      }
+    ],
+    "status": "failed"
+  }
+]

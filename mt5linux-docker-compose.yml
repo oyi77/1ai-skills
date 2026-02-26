@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mt5linux:
+    image: lprett/mt5linux:mt5-installed
+    container_name: mt5linux
+    restart: unless-stopped
+    ports:
+      - "18812:18812"    # rpyc port
+      - "6081:6081"      # web VNC
+    environment:
+      - MT5_INSTALLED=True
+    volumes:
+      - mt5linux_data:/root/.wine
+    cap_add:
+      - SYS_ADMIN
+    shm_size: 2gb
+
+volumes:
+  mt5linux_data:
+    driver: local
