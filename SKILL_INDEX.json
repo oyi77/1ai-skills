@@ -2051,6 +2051,111 @@
       ],
       "source": "local",
       "path": "research/trendradar"
+    },
+    {
+      "name": "database-mcp",
+      "description": "MCP server for SQL databases. Connect AI agents to PostgreSQL, MySQL, and SQLite for natural language queries, schema management, and data operations.",
+      "keywords": [
+        "mcp",
+        "database",
+        "postgres",
+        "mysql",
+        "sql",
+        "query",
+        "schema",
+        "mcp server"
+      ],
+      "domains": [
+        "integrations",
+        "database",
+        "development"
+      ],
+      "source": "local",
+      "path": "integrations/database-mcp"
+    },
+    {
+      "name": "communication-mcp",
+      "description": "MCP servers for team communication. Connect AI agents to Slack, Discord, and Telegram for notifications, messaging, and channel management.",
+      "keywords": [
+        "mcp",
+        "slack",
+        "discord",
+        "telegram",
+        "notification",
+        "messaging",
+        "communication",
+        "mcp server"
+      ],
+      "domains": [
+        "integrations",
+        "communication",
+        "automation"
+      ],
+      "source": "local",
+      "path": "integrations/communication-mcp"
+    },
+    {
+      "name": "cloud-mcp",
+      "description": "MCP servers for cloud infrastructure. Connect AI agents to AWS, GCP, and Azure for deployment, management, and infrastructure automation.",
+      "keywords": [
+        "mcp",
+        "aws",
+        "gcp",
+        "azure",
+        "cloud",
+        "infrastructure",
+        "deployment",
+        "mcp server"
+      ],
+      "domains": [
+        "integrations",
+        "cloud",
+        "devops"
+      ],
+      "source": "local",
+      "path": "integrations/cloud-mcp"
+    },
+    {
+      "name": "storage-mcp",
+      "description": "MCP servers for cloud storage. Connect AI agents to S3, Google Drive, and Dropbox for automated backup, sync, and file management.",
+      "keywords": [
+        "mcp",
+        "s3",
+        "storage",
+        "backup",
+        "sync",
+        "google drive",
+        "dropbox",
+        "mcp server"
+      ],
+      "domains": [
+        "integrations",
+        "storage",
+        "backup"
+      ],
+      "source": "local",
+      "path": "integrations/storage-mcp"
+    },
+    {
+      "name": "vulnerability-scanner",
+      "description": "Automated security vulnerability scanning for code, dependencies, and infrastructure. Detect vulnerabilities early with SAST, SCA, container scanning.",
+      "keywords": [
+        "security",
+        "vulnerability",
+        "scanning",
+        "sast",
+        "sca",
+        "container",
+        "cve",
+        "security audit"
+      ],
+      "domains": [
+        "security",
+        "development",
+        "devops"
+      ],
+      "source": "local",
+      "path": "security/vulnerability-scanner"
     }
   ],
   "teams": [
