@@ -1,7 +1,7 @@
-"""Ollama provider for local LLM inference.
+"""Ollama provider for local/Cloud LLM inference.
 
 This module provides the OllamaProvider class for generating text content
-using Ollama's local LLM inference API.
+using Ollama's API (both local and cloud).
 """
 
 import json
@@ -13,10 +13,10 @@ from .base import AIProvider, GenerationResult, ProviderType
 
 
 class OllamaProvider(AIProvider):
-    """Ollama provider for local LLM inference.
+    """Ollama provider for LLM inference.
 
-    Ollama runs locally and provides inference for large language models
-    without requiring any API keys or external services.
+    Ollama provides inference for large language models.
+    Supports both local (localhost:11434) and cloud (api.ollama.com) endpoints.
 
     Attributes:
         provider_type: Always ProviderType.LLM for this provider
@@ -24,7 +24,7 @@ class OllamaProvider(AIProvider):
         supported_models: List of supported Ollama models
     """
 
-    # Ollama models (running locally - no API costs)
+    # Ollama models
     PRICING = {
         "llama3.3": {"input": 0.0, "output": 0.0},
         "llama3.2": {"input": 0.0, "output": 0.0},
@@ -53,14 +53,14 @@ class OllamaProvider(AIProvider):
     def __init__(
         self,
         api_key: Optional[str] = None,
-        base_url: str = "http://localhost:11434",
+        base_url: Optional[str] = None,
         **kwargs,
     ):
         """Initialize the Ollama provider.
 
         Args:
-            api_key: Not required for Ollama (runs locally), kept for compatibility
-            base_url: Base URL for the Ollama API (defaults to localhost:11434)
+            api_key: Ollama Cloud API key (required for cloud)
+            base_url: Base URL for Ollama API (defaults to https://api.ollama.com for cloud)
             **kwargs: Additional provider-specific configuration
         """
         super().__init__(
@@ -69,7 +69,8 @@ class OllamaProvider(AIProvider):
             api_key=api_key,
             **kwargs,
         )
-        self.base_url = base_url.rstrip("/")
+        # Default to Ollama Cloud if not specified
+        self.base_url = (base_url or "https://api.ollama.com").rstrip("/")
 
     @property
     def supported_models(self) -> list[str]:
@@ -91,11 +92,11 @@ class OllamaProvider(AIProvider):
             **kwargs: Additional parameters like temperature, max_tokens, etc.
 
         Returns:
-            GenerationResult containing the generated text and metadata
+            GenerationResult containing generated text and metadata
         """
         model = model or self.get_default_model()
 
-        # Build the request payload
+        # Build request payload
         payload = {
             "model": model,
             "prompt": prompt,
@@ -109,17 +110,17 @@ class OllamaProvider(AIProvider):
         if "stop" in kwargs:
             payload["stop"] = kwargs["stop"]
 
-        # Estimate cost before making request (always $0 for local)
+        # Estimate cost before making request
         _ = self.get_cost_estimate(prompt, model, **kwargs)
 
         try:
-            # Make the API request
+            # Make API request
             response_data = self._make_request(
                 endpoint="/api/generate",
                 payload=payload,
             )
 
-            # Extract the generated content
+            # Extract generated content
             content = response_data.get("response", "")
 
             if not content:
@@ -139,7 +140,7 @@ class OllamaProvider(AIProvider):
             return GenerationResult(
                 success=True,
                 data=content,
-                cost=0.0,  # Local inference is free
+                cost=0.0,
                 provider=self.provider_name,
                 model=model,
                 metadata={
@@ -173,12 +174,12 @@ class OllamaProvider(AIProvider):
             )
 
     async def is_available(self) -> bool:
-        """Check if the Ollama service is available.
+        """Check if Ollama service is available.
 
-        Performs a lightweight check by attempting to reach the Ollama API.
+        Performs a lightweight check by attempting to reach Ollama API.
 
         Returns:
-            True if the provider is available, False otherwise
+            True if provider is available, False otherwise
         """
         try:
             self._make_request(endpoint="/api/tags", method="GET")
@@ -189,9 +190,9 @@ class OllamaProvider(AIProvider):
     def get_cost_estimate(
         self, prompt: str, model: Optional[str] = None, **kwargs
     ) -> float:
-        """Estimate the cost of a generation operation.
+        """Estimate cost of a generation operation.
 
-        Ollama runs locally, so the cost is always $0.
+        Ollama Cloud charges apply, local is free.
 
         Args:
             prompt: The input prompt
@@ -199,15 +200,15 @@ class OllamaProvider(AIProvider):
             **kwargs: Additional parameters
 
         Returns:
-            Estimated cost in USD (always 0.0 for local inference)
+            Estimated cost in USD
         """
-        # Local inference is free
+        # Local inference is free, cloud charges apply
         return 0.0
 
     def _make_request(
         self, endpoint: str, payload: Optional[dict] = None, method: str = "POST"
     ) -> dict[str, Any]:
-        """Make an HTTP request to the Ollama API.
+        """Make an HTTP request to Ollama API.
 
         Args:
             endpoint: API endpoint path
@@ -226,7 +227,7 @@ class OllamaProvider(AIProvider):
             "Content-Type": "application/json",
         }
 
-        # Add API key if provided (some local setups may use it)
+        # Add API key for cloud authentication
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
 
@@ -245,7 +246,7 @@ class OllamaProvider(AIProvider):
             return json.loads(response.read().decode("utf-8"))
 
     def list_installed_models(self) -> list[dict[str, Any]]:
-        """List all models installed locally in Ollama.
+        """List all models available in Ollama.
 
         Returns:
             List of model information dictionaries

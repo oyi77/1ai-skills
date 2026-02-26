@@ -15,26 +15,26 @@ from typing import Any, Optional
 from .base import AIProvider, ProviderType, GenerationResult
 
 
-# Default NVIDIA NIM API base URL
-DEFAULT_NIM_BASE_URL = "https://integrate.api.nvidia.com"
+# Default NVIDIA NIM API base URL for image generation (genai endpoint)
+DEFAULT_NIM_BASE_URL = "https://ai.api.nvidia.com"
 
-# Default image generation models
-DEFAULT_IMAGE_MODEL = "nvidia/flux-1.1-pro"
+# Default image generation models (format: provider/model-id for genai endpoint)
+DEFAULT_IMAGE_MODEL = "black-forest-labs/flux.1-dev"
 SUPPORTED_IMAGE_MODELS = [
-    "nvidia/flux-1.1-pro",
-    "nvidia/flux-1.1-dev",
-    "nvidia/flux-1-schnell",
-    "nvidia/stable-diffusion-xl-1024-v1-0",
-    "nvidia/stable-diffusion-3-medium",
+    "black-forest-labs/flux.1-dev",
+    "black-forest-labs/flux_1-schnell",
+    "stabilityai/stable-diffusion-xl",
+    "stabilityai/stable-diffusion-3-medium",
+    "stabilityai/stable-video-diffusion",
 ]
 
 # Cost estimates per image (USD)
 MODEL_COSTS = {
-    "nvidia/flux-1.1-pro": 0.003,
-    "nvidia/flux-1.1-dev": 0.004,
-    "nvidia/flux-1-schnell": 0.001,
-    "nvidia/stable-diffusion-xl-1024-v1-0": 0.002,
-    "nvidia/stable-diffusion-3-medium": 0.0025,
+    "black-forest-labs/flux.1-dev": 0.004,
+    "black-forest-labs/flux_1-schnell": 0.001,
+    "stabilityai/stable-diffusion-xl": 0.002,
+    "stabilityai/stable-diffusion-3-medium": 0.0025,
+    "stabilityai/stable-video-diffusion": 0.005,
 }
 
 
@@ -130,27 +130,26 @@ class NVIDIAProvider(AIProvider):
             )
 
         # Extract generation parameters
-        width = kwargs.get("width", 1024)
-        height = kwargs.get("height", 1024)
-        num_images = kwargs.get("num_images", 1)
+        width = kwargs.get("width")
+        height = kwargs.get("height")
         seed = kwargs.get("seed")
         steps = kwargs.get("steps")
 
-        # Build request payload
-        payload = {
-            "prompt": prompt,
-            "width": width,
-            "height": height,
-            "num_images": num_images,
-        }
+        # Build minimal request payload (genai endpoint only needs prompt)
+        payload = {"prompt": prompt}
 
+        # Only add optional fields if explicitly provided
+        if width is not None:
+            payload["width"] = width
+        if height is not None:
+            payload["height"] = height
         if seed is not None:
             payload["seed"] = seed
         if steps is not None:
             payload["steps"] = steps
 
-        # Build request URL
-        url = f"{self.base_url}/v1/images/generation/{model}"
+        # Build request URL - NVIDIA genai endpoint pattern: /v1/genai/{provider}/{model-id}
+        url = f"{self.base_url}/v1/genai/{model}"
 
         # Create request with headers
         headers = {
@@ -176,37 +175,38 @@ class NVIDIAProvider(AIProvider):
                 response_data = json.loads(response.read().decode("utf-8"))
 
             # Extract image data from response
-            images = response_data.get("data", [])
-            if not images:
-                # Try alternative response format
-                images = response_data.get("images", [])
+            # genai endpoint returns: {"artifacts": [{"finishReason": "SUCCESS", "base64": "...", "seed": ...}]}
+            # fallback: standard OpenAI format {"data": [{"url": "...", "b64_json": "..."}]}
+            artifacts = response_data.get("artifacts", [])
+            images = response_data.get("data", []) or response_data.get("images", [])
 
-            if not images:
+            if artifacts:
+                # genai endpoint format
+                art = artifacts[0]
+                image_base64 = art.get("base64")
+                image_url = art.get("url")
+                all_images = artifacts
+            elif images:
+                # OpenAI-compat format
+                img = images[0] if isinstance(images, list) else images
+                image_base64 = img.get("b64_json") or img.get("base64") if isinstance(img, dict) else None
+                image_url = img.get("url") if isinstance(img, dict) else None
+                all_images = images
+            else:
                 return GenerationResult(
                     success=False,
                     data=None,
                     cost=self.get_cost_estimate(prompt, model),
                     provider=self.provider_name,
                     model=model,
-                    metadata={"error": "No images returned from API"},
+                    metadata={"error": f"No images returned from API. Response: {response_data}"},
                 )
-
-            # Get the first image (or list of images)
-            image_data = images[0] if len(images) == 1 else images
-
-            # Extract image URL or base64 data
-            image_url = (
-                image_data.get("url") if isinstance(image_data, dict) else image_data
-            )
-            image_base64 = (
-                image_data.get("base64") if isinstance(image_data, dict) else None
-            )
 
             # Prepare result data
             result_data = {
                 "url": image_url,
                 "base64": image_base64,
-                "images": images,
+                "images": all_images,
             }
 
             # Calculate cost
@@ -221,7 +221,6 @@ class NVIDIAProvider(AIProvider):
                 metadata={
                     "width": width,
                     "height": height,
-                    "num_images": len(images) if isinstance(images, list) else 1,
                     "seed": seed,
                     "steps": steps,
                 },
@@ -306,13 +305,9 @@ class NVIDIAProvider(AIProvider):
             Estimated cost in USD
         """
         model = model or self.get_default_model()
-        num_images = kwargs.get("num_images", 1)
-
-        # Get base cost for the model
+        # Get base cost for the model (per image)
         base_cost = MODEL_COSTS.get(model, 0.003)
-
-        # Calculate total cost
-        return base_cost * num_images
+        return base_cost
 
 
 # Export the provider

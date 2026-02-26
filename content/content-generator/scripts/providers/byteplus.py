@@ -1,225 +1,217 @@
-"""BytePlus provider for video generation using Seedance.
+"""BytePlus ModelArk provider for video generation using Seedance.
 
 This module provides the BytePlusProvider class for native video generation
-through BytePlus Seedance API.
+through BytePlus ModelArk's Seedance API.
+
+API Endpoints:
+  - Create task: POST /contents/generations/tasks
+  - Get task:    GET  /contents/generations/tasks/{task_id}
+
+Base URL: https://ark.ap-southeast.bytepluses.com/api/v3
 """
 
 import json
-import urllib.request
+import os
+import ssl
+import time
 import urllib.error
+import urllib.request
 from typing import Optional
 
 from .base import AIProvider, GenerationResult, ProviderType
 
 
+# Base URL for BytePlus ModelArk API
+DEFAULT_BASE_URL = "https://ark.ap-southeast.bytepluses.com/api/v3"
+
+# Seedance model versions
+SEEDANCE_LITE_T2V = "seedance-1-0-lite-t2v-250428"
+SEEDANCE_PRO_FAST = "seedance-1-0-pro-fast-251015"
+SEEDANCE_PRO = "seedance-1-0-pro-250528"
+SEEDANCE_PRO_15 = "seedance-1-5-pro-251215"
+
+DEFAULT_MODEL = SEEDANCE_LITE_T2V
+
+# Supported models
+SUPPORTED_MODELS = [
+    SEEDANCE_LITE_T2V,
+    SEEDANCE_PRO_FAST,
+    SEEDANCE_PRO,
+    SEEDANCE_PRO_15,
+]
+
+# Cost per million tokens (USD)
+MODEL_COSTS = {
+    SEEDANCE_LITE_T2V: 1.0,
+    SEEDANCE_PRO_FAST: 2.0,
+    SEEDANCE_PRO: 2.5,
+    SEEDANCE_PRO_15: 3.0,
+}
+
+# Task status values
+STATUS_QUEUED = "queued"
+STATUS_RUNNING = "running"
+STATUS_SUCCEEDED = "succeeded"
+STATUS_FAILED = "failed"
+STATUS_CANCELLED = "cancelled"
+
+
 class BytePlusProvider(AIProvider):
-    """BytePlus provider for video generation using Seedance API.
+    """BytePlus ModelArk provider for video generation using Seedance.
 
-    Supports both text-to-video and image-to-video generation through
-    BytePlus's Seedance models.
+    Uses async task-based API:
+    1. Create task → get task_id
+    2. Poll GET /contents/generations/tasks/{task_id}
+    3. When status="succeeded", return content.video_url
 
-    Attributes:
-        seedance_t2v: Text-to-video model identifier
-        seedance_i2v: Image-to-video model identifier
+    Supports text-to-video (T2V) and image-to-video (I2V).
     """
-
-    # Seedance model identifiers
-    SEEDANCE_T2V = "seedance-t2v"
-    SEEDANCE_I2V = "seedance-i2v"
-
-    # Default model
-    DEFAULT_MODEL = SEEDANCE_T2V
-
-    # Cost per second in USD (approximate)
-    COST_PER_SECOND = 0.05
-
-    # API endpoints
-    BASE_URL = "https://open.byteplusapi.com"
 
     def __init__(
         self,
         api_key: Optional[str] = None,
-        region: str = "us-east-1",
+        base_url: Optional[str] = None,
         **kwargs,
     ):
-        """Initialize the BytePlus provider.
-
-        Args:
-            api_key: BytePlus API key for authentication
-            region: AWS region for API calls (default: us-east-1)
-            **kwargs: Additional provider-specific configuration
-        """
         super().__init__(
             provider_type=ProviderType.VIDEO,
             provider_name="BytePlus Seedance",
             api_key=api_key,
             **kwargs,
         )
-        self.region = region
+        self.base_url = (base_url or DEFAULT_BASE_URL).rstrip("/")
+
+        if not self.api_key:
+            self.api_key = os.environ.get("BYTEPLUS_API_KEY") or os.environ.get("ARK_API_KEY")
 
     @property
     def supported_models(self) -> list[str]:
-        """Get list of supported model identifiers.
+        return SUPPORTED_MODELS
 
-        Returns:
-            List of supported model IDs
-        """
-        return [self.SEEDANCE_T2V, self.SEEDANCE_I2V]
-
-    def _get_endpoint(self, model: str) -> str:
-        """Get the appropriate API endpoint for the model.
-
-        Args:
-            model: Model identifier
-
-        Returns:
-            API endpoint URL
-        """
-        if model == self.SEEDANCE_I2V:
-            return f"{self.BASE_URL}/videoextraction/v1/generation/image_to_video"
-        return f"{self.BASE_URL}/videoextraction/v1/generation/text_to_video"
-
-    def _build_headers(self) -> dict:
-        """Build HTTP headers for API requests.
-
-        Returns:
-            Dictionary of HTTP headers
-        """
+    def _make_request(self, method: str, path: str, body: Optional[dict] = None) -> dict:
+        """Make authenticated HTTP request to BytePlus API."""
+        url = f"{self.base_url}{path}"
         headers = {
             "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}",
         }
-        if self.api_key:
-            headers["Authorization"] = f"Bearer {self.api_key}"
-        return headers
 
-    def _make_request(self, endpoint: str, payload: dict) -> dict:
-        """Make HTTP request to BytePlus API.
+        data = json.dumps(body).encode("utf-8") if body else None
+        req = urllib.request.Request(url, data=data, headers=headers, method=method)
 
-        Args:
-            endpoint: API endpoint URL
-            payload: Request payload
+        ssl_context = ssl.create_default_context()
+        with urllib.request.urlopen(req, context=ssl_context, timeout=60) as resp:
+            return json.loads(resp.read().decode("utf-8"))
 
-        Returns:
-            Response data as dictionary
+    def _create_task(self, model: str, content: list, **kwargs) -> str:
+        """Create a video generation task. Returns task_id."""
+        body = {
+            "model": model,
+            "content": content,
+        }
 
-        Raises:
-            urllib.error.HTTPError: On HTTP errors
-            urllib.error.URLError: On network errors
-        """
-        headers = self._build_headers()
+        # Optional parameters (NOTE: do NOT include "resolution" — causes 400 error on lite model)
+        for key in ["ratio", "duration", "seed", "watermark",
+                    "camera_fixed", "generate_audio", "return_last_frame"]:
+            if key in kwargs and kwargs[key] is not None:
+                body[key] = kwargs[key]
 
-        data = json.dumps(payload).encode("utf-8")
-        req = urllib.request.Request(
-            endpoint,
-            data=data,
-            headers=headers,
-            method="POST",
-        )
+        result = self._make_request("POST", "/contents/generations/tasks", body)
+        task_id = result.get("id")
+        if not task_id:
+            raise ValueError(f"No task_id returned: {result}")
+        return task_id
 
-        with urllib.request.urlopen(req, timeout=60) as response:
-            return json.loads(response.read().decode("utf-8"))
+    def _poll_task(self, task_id: str, timeout: int = 300, interval: int = 5) -> dict:
+        """Poll task until completed or timeout (seconds). Returns task result."""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            result = self._make_request("GET", f"/contents/generations/tasks/{task_id}")
+            status = result.get("status", "")
+
+            if status == STATUS_SUCCEEDED:
+                return result
+            elif status in (STATUS_FAILED, STATUS_CANCELLED):
+                error = result.get("error", {})
+                raise RuntimeError(f"Task {status}: {error.get('message', 'Unknown error')} (code: {error.get('code', 'N/A')})")
+
+            time.sleep(interval)
+
+        raise TimeoutError(f"Task {task_id} timed out after {timeout}s")
 
     async def generate(
         self, prompt: str, model: Optional[str] = None, **kwargs
     ) -> GenerationResult:
-        """Generate video based on the given prompt.
+        """Generate video from text (or image) prompt.
 
         Args:
-            prompt: The prompt/description for video generation
-            model: Optional model identifier (uses default if not specified)
-            **kwargs: Additional generation parameters:
-                - image_url: str, required for image-to-video
-                - duration: int, video duration in seconds (default: 5)
-                - fps: int, frames per second (default: 24)
-                - resolution: str, video resolution (default: "1280x720")
+            prompt: Text description for video generation
+            model: Seedance model ID (defaults to seedance-1-0-lite-t2v-250428)
+            **kwargs:
+                - image_url: str, for image-to-video (I2V mode)
+                - resolution: str, e.g. "1280x720", "1920x1080"
+                - ratio: str, e.g. "16:9", "9:16", "1:1"
+                - duration: int, seconds (2-12 for pro, 5 for lite)
+                - seed: int
+                - poll_timeout: int, seconds to wait (default 300)
 
         Returns:
-            GenerationResult containing the generated video URL and metadata
+            GenerationResult with data["video_url"] on success
         """
         if not self.validate_api_key():
             return GenerationResult(
                 success=False,
                 provider=self.provider_name,
-                model=model or self.get_default_model(),
-                metadata={"error": "API key is required"},
+                model=model or DEFAULT_MODEL,
+                metadata={"error": "API key not configured (set BYTEPLUS_API_KEY)"},
             )
 
-        model = model or self.get_default_model()
+        model = model or DEFAULT_MODEL
+        poll_timeout = kwargs.pop("poll_timeout", 300)
 
-        # Extract generation parameters
-        duration = kwargs.get("duration", 5)
-        fps = kwargs.get("fps", 24)
-        resolution = kwargs.get("resolution", "1280x720")
-        image_url = kwargs.get("image_url")
+        # Build content array
+        content = [{"type": "text", "text": prompt}]
 
-        # Build request payload
-        if model == self.SEEDANCE_I2V:
-            if not image_url:
-                return GenerationResult(
-                    success=False,
-                    provider=self.provider_name,
-                    model=model,
-                    metadata={
-                        "error": "image_url is required for image-to-video generation"
-                    },
-                )
-            payload = {
-                "prompt": prompt,
-                "image_url": image_url,
-                "duration": duration,
-                "fps": fps,
-                "resolution": resolution,
-            }
-        else:
-            payload = {
-                "prompt": prompt,
-                "duration": duration,
-                "fps": fps,
-                "resolution": resolution,
-            }
-
-        endpoint = self._get_endpoint(model)
+        # Add image for I2V if provided
+        image_url = kwargs.pop("image_url", None)
+        if image_url:
+            content.append({
+                "type": "image_url",
+                "image_url": {"url": image_url},
+                "role": "first_frame",
+            })
 
         try:
-            response = self._make_request(endpoint, payload)
+            task_id = self._create_task(model, content, **kwargs)
+            task_result = self._poll_task(task_id, timeout=poll_timeout)
 
-            # Parse response
-            if response.get("code") == 0 or response.get("status") == "success":
-                video_url = response.get("data", {}).get("video_url") or response.get(
-                    "video_url"
-                )
-                task_id = response.get("data", {}).get("task_id") or response.get(
-                    "task_id"
-                )
+            task_content = task_result.get("content", {})
+            video_url = task_content.get("video_url", "")
 
-                cost = self.get_cost_estimate(prompt, model, **kwargs)
+            cost = self.get_cost_estimate(prompt, model)
 
-                return GenerationResult(
-                    success=True,
-                    data={
-                        "video_url": video_url,
-                        "task_id": task_id,
-                    },
-                    cost=cost,
-                    provider=self.provider_name,
-                    model=model,
-                    metadata={
-                        "duration": duration,
-                        "fps": fps,
-                        "resolution": resolution,
-                        "prompt": prompt,
-                    },
-                )
-            else:
-                error_msg = (
-                    response.get("message") or response.get("error") or "Unknown error"
-                )
-                return GenerationResult(
-                    success=False,
-                    provider=self.provider_name,
-                    model=model,
-                    metadata={"error": error_msg},
-                )
+            return GenerationResult(
+                success=True,
+                data={
+                    "video_url": video_url,
+                    "task_id": task_id,
+                    "last_frame_url": task_content.get("last_frame_url", ""),
+                    "duration": task_result.get("duration"),
+                    "resolution": task_result.get("resolution"),
+                    "ratio": task_result.get("ratio"),
+                    "frames": task_result.get("frames"),
+                    "fps": task_result.get("framespersecond"),
+                    "seed": task_result.get("seed"),
+                },
+                cost=cost,
+                provider=self.provider_name,
+                model=model,
+                metadata={
+                    "prompt": prompt,
+                    "revised_prompt": task_result.get("revised_prompt", ""),
+                    "status": STATUS_SUCCEEDED,
+                },
+            )
 
         except urllib.error.HTTPError as e:
             error_body = e.read().decode("utf-8") if e.fp else str(e)
@@ -229,12 +221,12 @@ class BytePlusProvider(AIProvider):
                 model=model,
                 metadata={"error": f"HTTP {e.code}: {error_body}"},
             )
-        except urllib.error.URLError as e:
+        except (TimeoutError, RuntimeError) as e:
             return GenerationResult(
                 success=False,
                 provider=self.provider_name,
                 model=model,
-                metadata={"error": f"Network error: {str(e.reason)}"},
+                metadata={"error": str(e)},
             )
         except Exception as e:
             return GenerationResult(
@@ -245,58 +237,25 @@ class BytePlusProvider(AIProvider):
             )
 
     async def is_available(self) -> bool:
-        """Check if the BytePlus provider is currently available.
-
-        This performs a lightweight health check by verifying API connectivity.
-
-        Returns:
-            True if the provider is available, False otherwise
-        """
+        """Check provider availability by listing recent tasks."""
         if not self.validate_api_key():
             return False
-
-        # Try a simple connectivity check
         try:
-            test_endpoint = f"{self.BASE_URL}/v1/health"
-            req = urllib.request.Request(
-                test_endpoint,
-                headers=self._build_headers(),
-                method="GET",
-            )
-            with urllib.request.urlopen(req, timeout=10) as response:
-                return response.status == 200
-        except urllib.error.HTTPError:
-            # Health endpoint might not exist, check auth instead
-            return self.validate_api_key()
-        except urllib.error.URLError:
-            return False
+            self._make_request("GET", "/contents/generations/tasks?page_size=1")
+            return True
+        except urllib.error.HTTPError as e:
+            # 400/404 still means the API is reachable and auth worked
+            return e.code in (400, 404)
         except Exception:
-            # If we can't determine availability, assume available if API key is set
-            return self.validate_api_key()
+            return False
 
     def get_cost_estimate(
         self, prompt: str, model: Optional[str] = None, **kwargs
     ) -> float:
-        """Estimate the cost of a video generation operation.
+        model = model or DEFAULT_MODEL
+        # Rough estimate: video generation uses ~10K tokens
+        cost_per_m = MODEL_COSTS.get(model, 2.5)
+        return round(cost_per_m * 10_000 / 1_000_000, 4)
 
-        Args:
-            prompt: The prompt/description for video generation
-            model: Optional model identifier
-            **kwargs: Additional generation parameters:
-                - duration: int, video duration in seconds (default: 5)
 
-        Returns:
-            Estimated cost in USD
-        """
-        model = model or self.get_default_model()
-        duration = kwargs.get("duration", 5)
-
-        # Base cost calculation
-        cost = duration * self.COST_PER_SECOND
-
-        # Add model-specific adjustments
-        if model == self.SEEDANCE_I2V:
-            # Image-to-video typically costs more
-            cost *= 1.5
-
-        return round(cost, 4)
+__all__ = ["BytePlusProvider"]
