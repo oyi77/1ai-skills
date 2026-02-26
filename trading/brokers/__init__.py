@@ -7,6 +7,7 @@ Multi-broker support for trading operations.
 from .base import BrokerType, BrokerConnector, OHLCV, Order, Position, AccountInfo
 from .mt5 import MT5Connector
 from .ctrader import CTraderConnector
+from .simulated import SimulatedBroker
 
 # CCXT and Ostium have import issues - disabled for now
 # from .ccxt import CCXTConnector
@@ -21,4 +22,5 @@ __all__ = [
     "AccountInfo",
     "MT5Connector",
     "CTraderConnector",
+    "SimulatedBroker",
 ]

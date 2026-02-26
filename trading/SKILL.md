@@ -431,3 +431,38 @@ ostium.connect(api_key="xxx", wallet_address="0x...")
 - Or from parent directory with: `python scripts/script_name.py`
 - For MT5: requires Windows + MT5 terminal installed
 - **For Linux users**: cTrader and Ostium provide native support without Wine!
+
+### Note
+- Run scripts from `trading/scripts/` directory
+- Or from parent directory with: `python scripts/script_name.py`
+- For MT5: requires Windows + MT5 terminal installed
+- **For Linux users**: cTrader and Ostium provide native support without Wine!
+
+## MT5 Setup
+
+### Remote MT5 Server
+
+You can connect to a remote MT5 server without running MT5 locally:
+
+**Server Details**:
+- Host: `5.189.138.144`
+- RPyC Port: `18812`
+- VNC Access: http://5.189.138.144:6081/vnc.html
+- Login: `5046812779`
+- Server: `MetaQuotes-Demo`
+- Password: `PiUk_5Ql`
+- Investor Password: `NiSf_x5r`
+
+> **Note**: The Docker container on this server has Wine compatibility issues with AMD EPYC CPU. Use SimulatedBroker for now.
+
+### Simulated Broker (Default)
+
+The simulated broker uses Yahoo Finance and works reliably:
+
+```python
+from trading.brokers.simulated import SimulatedBroker
+
+broker = SimulatedBroker()
+broker.connect(symbol="XAUUSD")
+data = broker.get_ohlcv("XAUUSD", "H1", count=100)
+```
