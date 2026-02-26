@@ -95,6 +95,92 @@
       "source": "local"
     },
     {
+      "name": "affiliate-marketing",
+      "description": "AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.",
+      "keywords": [
+        "affiliate",
+        "marketing",
+        "passive income",
+        "commission",
+        "reviews",
+        "saas",
+        "monetization",
+        "ai marketing"
+      ],
+      "domains": [
+        "marketing",
+        "revenue",
+        "content"
+      ],
+      "source": "local",
+      "path": "marketing/affiliate-marketing"
+    },
+    {
+      "name": "stripe-revenue-bot",
+      "description": "Automate posting Stripe revenue milestones to Twitter/X. Build trust through transparency, attract customers, and join the build in public movement.",
+      "keywords": [
+        "stripe",
+        "revenue",
+        "bot",
+        "twitter",
+        "automation",
+        "payment",
+        "mrr",
+        "sales",
+        "milestone"
+      ],
+      "domains": [
+        "marketing",
+        "automation",
+        "revenue"
+      ],
+      "source": "local",
+      "path": "marketing/stripe-revenue-bot"
+    },
+    {
+      "name": "build-in-public",
+      "description": "Document and share your startup journey, revenue, and learnings on social media. Build audience, attract customers, and find co-founders through transparent sharing.",
+      "keywords": [
+        "build in public",
+        "startup",
+        "transparency",
+        "journey",
+        "revenue",
+        "saas",
+        "indie hacker",
+        "solopreneur"
+      ],
+      "domains": [
+        "marketing",
+        "branding",
+        "content"
+      ],
+      "source": "local",
+      "path": "marketing/build-in-public"
+    },
+    {
+      "name": "twitter-automation",
+      "description": "Automate Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.",
+      "keywords": [
+        "twitter",
+        "automation",
+        "x",
+        "social media",
+        "posting",
+        "engagement",
+        "schedule",
+        "growth",
+        "autopilot"
+      ],
+      "domains": [
+        "marketing",
+        "social-media",
+        "automation"
+      ],
+      "source": "local",
+      "path": "marketing/twitter-automation"
+    },
+    {
       "name": "sales",
       "description": "Sales pipeline and deal closure",
       "keywords": [
@@ -1615,7 +1701,11 @@
         "sales",
         "business-development",
         "content-creator",
-        "larry-playbook"
+        "larry-playbook",
+        "twitter-automation",
+        "build-in-public",
+        "stripe-revenue-bot",
+        "affiliate-marketing"
       ],
       "keywords": [
         "revenue",
