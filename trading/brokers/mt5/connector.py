@@ -25,17 +25,49 @@ class MT5Connector(BrokerConnector):
         self._host = host
         self._port = port
 
-    def _import_mt5(self):
-        """Lazy import and connect to MT5 via mt5linux."""
+    def _check_server(self, timeout: int = 5) -> bool:
+        """Quick TCP check to see if MT5 rpyc server is reachable."""
+        import socket
+        try:
+            sock = socket.create_connection((self._host, self._port), timeout=timeout)
+            sock.close()
+            return True
+        except (socket.timeout, ConnectionRefusedError, OSError):
+            return False
+
+    def _import_mt5(self, timeout: int = 8):
+        """Lazy import and connect to MT5 via mt5linux with SIGALRM timeout."""
         if self._mt5 is None:
             try:
                 from mt5linux import MetaTrader5
+            except ImportError:
+                raise ImportError("mt5linux not installed. Run: pip install mt5linux")
+
+            if not self._check_server():
+                raise ConnectionError(
+                    f"MT5 server unreachable at {self._host}:{self._port}"
+                )
+
+            import signal
+
+            def _alarm(signum, frame):
+                raise TimeoutError(f"MT5 init timed out after {timeout}s")
+
+            old_handler = signal.signal(signal.SIGALRM, _alarm)
+            signal.alarm(timeout)
+            try:
                 self._mt5 = MetaTrader5(host=self._host, port=self._port)
                 logger.info(f"mt5linux connected to {self._host}:{self._port}")
-            except ImportError:
-                raise ImportError(
-                    "mt5linux not installed. Run: pip install mt5linux"
+            except TimeoutError:
+                raise ConnectionError(
+                    f"MT5 server at {self._host}:{self._port} timed out — "
+                    "server may be broken (check MetaTrader5 install on server)"
                 )
+            except Exception as e:
+                raise ConnectionError(f"MT5 server error: {e}")
+            finally:
+                signal.alarm(0)
+                signal.signal(signal.SIGALRM, old_handler)
         return self._mt5
 
     def connect(self, **kwargs) -> bool:

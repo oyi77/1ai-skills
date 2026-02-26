@@ -1,0 +1,12 @@
+# Maybe HFT EA Dependencies
+# Install: pip install -r requirements.txt
+
+# Core dependencies
+yfinance>=0.2.0
+PyYAML>=6.0
+
+# MT5 dependencies (only needed for mt5 broker)
+# mt5linux>=1.0.3  # Already installed in ~/.trading-venv/
+
+# Optional: For building executable
+# pyinstaller>=5.0  # pip install pyinstaller

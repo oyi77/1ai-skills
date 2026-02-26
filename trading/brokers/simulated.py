@@ -23,13 +23,15 @@ PAPER_FILE = DATA_DIR / "paper_trading.json"
 class SimulatedBroker(BrokerConnector):
     """Paper trading broker menggunakan yfinance untuk harga real-time."""
 
-    def __init__(self):
-        super().__init__(BrokerType.CTRADER)  # Use CTADER type for compatibility
+    def __init__(self, symbol: str = "XAUUSD"):
+        super().__init__(BrokerType.CTRADER)  # Use CTRADER type for compatibility
+        self._symbol = symbol
         self._positions: Dict[int, Position] = {}
         self._orders: List[Order] = []
         self._order_counter = 1000
         self._paper_stats = self._load_stats()
         self._price_cache = {}
+        self._point = 0.01  # Default for XAUUSD
 
     def _load_stats(self) -> Dict[str, Any]:
         """Load paper trading statistics."""
@@ -76,6 +78,129 @@ class SimulatedBroker(BrokerConnector):
         self.connected = True
         logger.info("SimulatedBroker connected (paper trading mode)")
         return True
+
+    # ========== EA Compatibility Methods ==========
+
+    def get_point(self) -> float:
+        """Get symbol point size."""
+        return self._point
+
+    def get_ask(self) -> float:
+        """Get current ask price."""
+        return self._get_price(self._symbol)
+
+    def get_bid(self) -> float:
+        """Get current bid price."""
+        # For gold, bid is slightly lower than ask
+        return self._get_price(self._symbol) - self._point
+
+    def subscribe(self, symbol: str):
+        """Subscribe to symbol for price updates."""
+        self._symbol = symbol
+        logger.info(f"Subscribed to {symbol}")
+
+    def refresh(self):
+        """Refresh price data."""
+        self._get_price(self._symbol)
+        # Update positions with current price
+        for pos in self._positions.values():
+            pos.current_price = self._get_price(self._symbol)
+
+    def position_modify(self, ticket: int, sl: Optional[float] = None, tp: Optional[float] = None) -> bool:
+        """Modify position SL/TP."""
+        if ticket not in self._positions:
+            logger.warning(f"Position {ticket} not found")
+            return False
+        
+        if sl is not None:
+            self._positions[ticket].sl = sl
+        if tp is not None:
+            self._positions[ticket].tp = tp
+        
+        logger.info(f"Position {ticket} modified: SL={sl}, TP={tp}")
+        return True
+
+    def order_modify(self, ticket: int, price: Optional[float] = None, sl: Optional[float] = None, tp: Optional[float] = None) -> bool:
+        """Modify pending order."""
+        for i, order in enumerate(self._orders):
+            if order.ticket == ticket:
+                if price is not None:
+                    order.price = price
+                if sl is not None:
+                    order.sl = sl
+                if tp is not None:
+                    order.tp = tp
+                logger.info(f"Order {ticket} modified: Price={price}, SL={sl}, TP={tp}")
+                return True
+        
+        logger.warning(f"Order {ticket} not found")
+        return False
+
+    def buy(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
+        """Place BUY market order."""
+        order = self.place_order(
+            symbol=symbol,
+            order_type="BUY",
+            volume=volume,
+            price=price,
+            sl=sl,
+            tp=tp,
+            magic=magic,
+            comment=comment
+        )
+        return order is not None
+
+    def sell(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
+        """Place SELL market order."""
+        order = self.place_order(
+            symbol=symbol,
+            order_type="SELL",
+            volume=volume,
+            price=price,
+            sl=sl,
+            tp=tp,
+            magic=magic,
+            comment=comment
+        )
+        return order is not None
+
+    def buy_stop(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
+        """Place BUY STOP pending order."""
+        order = self.place_order(
+            symbol=symbol,
+            order_type="BUY_STOP",
+            volume=volume,
+            price=price,
+            sl=sl,
+            tp=tp,
+            magic=magic,
+            comment=comment
+        )
+        return order is not None
+
+    def sell_stop(self, volume: float, symbol: str, price: float, sl: float, tp: float, magic: int = 0, comment: str = "") -> bool:
+        """Place SELL STOP pending order."""
+        order = self.place_order(
+            symbol=symbol,
+            order_type="SELL_STOP",
+            volume=volume,
+            price=price,
+            sl=sl,
+            tp=tp,
+            magic=magic,
+            comment=comment
+        )
+        return order is not None
+
+    @property
+    def positions(self) -> List[Position]:
+        """Get all positions (compatibility property)."""
+        return self.get_positions()
+
+    @property
+    def orders(self) -> List[Order]:
+        """Get all orders (compatibility property)."""
+        return self._orders
 
     def disconnect(self) -> bool:
         """Disconnect."""

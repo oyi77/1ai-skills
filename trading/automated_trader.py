@@ -2,19 +2,28 @@
 """
 BerkahKarya Automated Trader
 =============================
-Runs XAUUSD Asia 7-Candle Breakout strategy automatically.
+Runs XAUUSD trading strategies automatically.
 Supports MT5 (via mt5linux), cTrader, and Paper trading modes.
 
+Strategies:
+    - asia7c  : Asia 7-Candle Breakout (default)
+    - maybe_hft: Maybe HFT Hedging EA (main + hedge with trailing)
+    - london  : London Breakout strategy
+    - ny_momentum : NY Momentum strategy
+
 Usage:
-    python automated_trader.py --broker paper --mode paper --once  # Paper test
-    python automated_trader.py --broker mt5 --mode demo            # MT5 demo
-    python automated_trader.py --broker mt5 --mode real            # MT5 real
-    python automated_trader.py --broker paper --dry-run --once     # Dry run
+    python automated_trader.py --strategy asia7c --broker paper --mode paper --once
+    python automated_trader.py --strategy maybe_hft --broker mt5 --mode demo
+    python automated_trader.py --strategy london --broker mt5 --mode real
+    python automated_trader.py --strategy ny_momentum --broker paper --dry-run --once
 
 MT5 env vars:
     MT5_LOGIN    — account number (integer)
     MT5_PASSWORD — account password
     MT5_SERVER   — broker server name
+
+Maybe HFT EA parameters:
+    --lots 0.05 --stoploss 1000 --trailing 300 --x-distance 300
 """
 
 import argparse
@@ -39,6 +48,14 @@ if str(_TRADING_DIR) not in sys.path:
 # Imports
 # ─────────────────────────────────────────────────────────────────────────────
 from brokers.simulated import SimulatedBroker
+
+# Maybe HFT EA import
+try:
+    from EA.maybe_hft import MaybeHFT, EAConfig
+    MAYBE_HFT_AVAILABLE = True
+except ImportError:
+    MAYBE_HFT_AVAILABLE = False
+    print("⚠️ Maybe HFT EA not available (EA/maybe_hft.py not found)")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Logging
@@ -108,14 +125,18 @@ def create_broker(broker_type: str, mode: str = "paper", **kwargs):
 
     # ── MetaTrader 5 via mt5linux ──────────────────────────────────────────
     elif broker_type == "mt5":
-        log.info(f"Initializing MT5 connector (mode={mode}) via mt5linux")
+        log.info(f"Initializing MT5 connector (mode={mode}) via mt5linux @ 5.189.138.144:18812")
         try:
             from brokers.mt5.connector import MT5Connector
         except ImportError as e:
-            log.error(f"Could not import MT5Connector: {e}")
-            return None
+            log.warning(f"MT5Connector not available: {e} — falling back to paper")
+            sim = SimulatedBroker(); sim.connect(); return sim
 
-        mt5 = MT5Connector(host="5.189.138.144", port=18812)
+        try:
+            mt5 = MT5Connector(host="5.189.138.144", port=18812)
+        except (ConnectionError, Exception) as e:
+            log.warning(f"MT5 server unreachable: {e} — falling back to paper")
+            sim = SimulatedBroker(); sim.connect(); return sim
 
         if mode in ("demo", "real"):
             login    = int(os.environ.get("MT5_LOGIN", kwargs.get("login", 0)))
@@ -134,8 +155,10 @@ def create_broker(broker_type: str, mode: str = "paper", **kwargs):
             ok = mt5.connect()
 
         if not ok:
-            log.error("Failed to connect to MT5")
-            return None
+            log.warning("Failed to connect to MT5 — falling back to SimulatedBroker (paper mode)")
+            sim = SimulatedBroker()
+            sim.connect()
+            return sim
 
         log.info("MT5 connected successfully")
         return mt5
@@ -342,7 +365,105 @@ class DayState:
 # Main loop
 # ─────────────────────────────────────────────────────────────────────────────
 
-def run_loop(balance: float, dry_run: bool, once: bool, broker_type: str, mode: str):
+# ─────────────────────────────────────────────────────────────────────────────
+# Maybe HFT EA Strategy Runner
+# ─────────────────────────────────────────────────────────────────────────────
+
+def run_maybe_hft_ea(
+    balance: float,
+    dry_run: bool,
+    once: bool,
+    broker_type: str,
+    mode: str,
+    lots: float,
+    stoploss: int,
+    trailing: int,
+    trail_start: int,
+    x_distance: int,
+    start_direction: int,
+    magic: int,
+    symbol: str,
+    interval: float,
+):
+    """
+    Run Maybe HFT Hedging EA as a strategy.
+    
+    Args:
+        balance: Account balance (for lot sizing if needed)
+        dry_run: If True, only log (EA uses broker's dry_run internally)
+        once: Run once and exit
+        broker_type: mt5, paper, ctrader
+        mode: paper, demo, real
+        lots: Position size in lots
+        stoploss: StopLoss in points
+        trailing: Trailing stop distance
+        trail_start: Min profit before trailing
+        x_distance: Hedge pending distance from SL
+        start_direction: 0=BUY first, 1=SELL first
+        magic: Magic number
+        symbol: Trading symbol
+        interval: Check interval in seconds
+    """
+    if not MAYBE_HFT_AVAILABLE:
+        log.error("Maybe HFT EA not available. Please check EA/maybe_hft.py")
+        return
+    
+    log.info(
+        f"Maybe HFT EA | broker={broker_type} | mode={mode} | "
+        f"symbol={symbol} | lots={lots} | SL={stoploss}pts | "
+        f"Trail={trailing}pts | StartDir={'BUY' if start_direction == 0 else 'SELL'}"
+    )
+    
+    # Determine effective broker type (EA handles its own broker choice)
+    ea_broker = broker_type
+    
+    # Create EA configuration
+    config = EAConfig(
+        symbol=symbol,
+        lots=lots,
+        stoploss=stoploss,
+        trailing=trailing,
+        trail_start=trail_start,
+        x_distance=x_distance,
+        magic=magic,
+        start_direction=start_direction,
+        broker=ea_broker,
+        mode=mode if not dry_run else "paper",
+        once=once,
+        interval=interval,
+    )
+    
+    # Create and run EA
+    ea = MaybeHFT(config)
+    
+    if mode == "live" and not dry_run:
+        log.warning("⚠️⚠️⚠️ LIVE TRADING MODE - REAL MONEY ⚠️⚠️⚠️")
+        log.warning("Press Ctrl+C to cancel within 10 seconds...")
+        time.sleep(10)
+    
+    try:
+        if once:
+            # Single run mode
+            if ea.initialize_broker():
+                ea.broker.subscribe(symbol)
+                ea.broker.refresh()
+                ea.trail_orders()
+                ea.handle_pending()
+                if ea.count_main_orders() == 0 and ea.count_pending_orders() == 0:
+                    ea.open_main_order(start_direction)
+                log.info("✅ Maybe HFT EA single run completed")
+                ea.broker.disconnect()
+            else:
+                log.error("Failed to initialize broker for Maybe HFT EA")
+        else:
+            # Continuous mode
+            ea.run()
+    except KeyboardInterrupt:
+        log.info("Maybe HFT EA interrupted by user")
+    except Exception as e:
+        log.error(f"Maybe HFT EA error: {e}")
+    finally:
+        log.info("Maybe HFT EA stopped")
     log.info(
         f"BerkahKarya Automated Trader | broker={broker_type} | mode={mode} | "
         f"balance=${balance:,.2f} | dry_run={dry_run}"
@@ -434,7 +555,12 @@ def run_loop(balance: float, dry_run: bool, once: bool, broker_type: str, mode: 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="BerkahKarya Automated Trader — XAUUSD Asia 7-Candle Breakout"
+        description="BerkahKarya Automated Trader — Multi-strategy XAUUSD trading"
+    )
+    parser.add_argument(
+        "--strategy", type=str, default="asia7c",
+        choices=["asia7c", "maybe_hft", "london", "ny_momentum"],
+        help="Trading strategy: asia7c (default), maybe_hft, london, ny_momentum"
     )
     parser.add_argument(
         "--balance", type=float, default=1000.0,
@@ -458,16 +584,123 @@ def main():
         choices=["paper", "demo", "real"],
         help="Mode: paper, demo, real (default: paper)"
     )
+    
+    # Maybe HFT EA parameters
+    parser.add_argument(
+        "--lots", type=float, default=0.10,
+        help="Lot size for Maybe HFT EA (default: 0.10)"
+    )
+    parser.add_argument(
+        "--stoploss", type=int, default=1500,
+        help="StopLoss in points for Maybe HFT EA (default: 1500)"
+    )
+    parser.add_argument(
+        "--trailing", type=int, default=500,
+        help="Trailing distance in points for Maybe HFT EA (default: 500)"
+    )
+    parser.add_argument(
+        "--trail-start", type=int, default=1000,
+        help="Min profit before trailing for Maybe HFT EA (default: 1000)"
+    )
+    parser.add_argument(
+        "--x-distance", type=int, default=300,
+        help="Hedge pending distance from SL for Maybe HFT EA (default: 300)"
+    )
+    parser.add_argument(
+        "--start-direction", type=int, default=0, choices=[0, 1],
+        help="0=BUY first, 1=SELL first for Maybe HFT EA (default: 0)"
+    )
+    parser.add_argument(
+        "--magic", type=int, default=12345,
+        help="Magic number for order identification (default: 12345)"
+    )
+    parser.add_argument(
+        "--symbol", type=str, default="GC=X",
+        help="Trading symbol (default: GC=X for XAUUSD)"
+    )
+    parser.add_argument(
+        "--interval", type=float, default=1.0,
+        help="Check interval in seconds (default: 1.0)"
+    )
 
     args = parser.parse_args()
-
-    run_loop(
-        balance=args.balance,
-        dry_run=args.dry_run,
-        once=args.once,
-        broker_type=args.broker,
-        mode=args.mode,
-    )
+    
+    strategy = args.strategy
+    
+    log.info(f"=" * 60)
+    log.info(f"BerkahKarya Automated Trader v2.0")
+    log.info(f"Strategy: {strategy.upper()}")
+    log.info(f"=" * 60)
+    
+    # Route to appropriate strategy
+    if strategy == "maybe_hft":
+        run_maybe_hft_ea(
+            balance=args.balance,
+            dry_run=args.dry_run,
+            once=args.once,
+            broker_type=args.broker,
+            mode=args.mode,
+            lots=args.lots,
+            stoploss=args.stoploss,
+            trailing=args.trailing,
+            trail_start=args.trail_start,
+            x_distance=args.x_distance,
+            start_direction=args.start_direction,
+            magic=args.magic,
+            symbol=args.symbol,
+            interval=args.interval,
+        )
+    elif strategy == "london":
+        log.info("London Breakout strategy - Use: python london_breakout.py")
+        log.info("Importing and running London Breakout EA...")
+        try:
+            from london_breakout import LondonBreakoutEA
+            ea = LondonBreakoutEA(
+                broker_type=args.broker,
+                mode=args.mode,
+                symbol=args.symbol,
+                lots=args.lots,
+                stoploss=args.stoploss,
+                takeprofit=args.stoploss * 2,  # 1:2 RR default
+                dry_run=args.dry_run,
+            )
+            if args.once:
+                ea.run_once()
+            else:
+                ea.run()
+        except ImportError:
+            log.error("London Breakout EA not found: london_breakout.py")
+            
+    elif strategy == "ny_momentum":
+        log.info("NY Momentum strategy - Use: python ny_momentum.py")
+        log.info("Importing and running NY Momentum EA...")
+        try:
+            from ny_momentum import NYMomentumEA
+            ea = NYMomentumEA(
+                broker_type=args.broker,
+                mode=args.mode,
+                symbol=args.symbol,
+                lots=args.lots,
+                stoploss=args.stoploss,
+                takeprofit=args.stoploss * 2,
+                dry_run=args.dry_run,
+            )
+            if args.once:
+                ea.run_once()
+            else:
+                ea.run()
+        except ImportError:
+            log.error("NY Momentum EA not found: ny_momentum.py")
+            
+    else:
+        # Default: Asia 7-Candle strategy
+        run_loop(
+            balance=args.balance,
+            dry_run=args.dry_run,
+            once=args.once,
+            broker_type=args.broker,
+            mode=args.mode,
+        )
 
 
 if __name__ == "__main__":

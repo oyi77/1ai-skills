@@ -20,3 +20,24 @@
 2026-02-25 15:01:50 [INFO] Automated trader stopped
 2026-02-25 15:03:19 [INFO] [DRY-RUN] BUY_STOP XAUUSD lot=0.01 @ 2390.50  SL=2380.50  TP=2410.50
 2026-02-25 15:03:19 [INFO] [DRY-RUN] SELL_STOP XAUUSD lot=0.01 @ 2379.50  SL=2389.50  TP=2359.50
+2026-02-25 15:06:50 [INFO] BerkahKarya Automated Trader | broker=paper | mode=paper | balance=$1,000.00 | dry_run=True
+2026-02-25 15:06:50 [INFO] Strategy: XAUUSD Asia 7-Candle Breakout | Risk=1%/trade | RR=1:2.0
+2026-02-25 15:06:50 [INFO] Initializing SimulatedBroker (paper trading)
+2026-02-25 15:06:50 [INFO] Account: login=0 balance=$10000.00 equity=$10000.00
+2026-02-25 15:06:50 [INFO] --once flag set, exiting after single poll
+2026-02-25 15:06:50 [INFO] Automated trader stopped
+2026-02-25 15:07:07 [INFO] BerkahKarya Automated Trader | broker=paper | mode=paper | balance=$1,000.00 | dry_run=True
+2026-02-25 15:07:07 [INFO] Strategy: XAUUSD Asia 7-Candle Breakout | Risk=1%/trade | RR=1:2.0
+2026-02-25 15:07:07 [INFO] Initializing SimulatedBroker (paper trading)
+2026-02-25 15:07:07 [INFO] Account: login=0 balance=$10000.00 equity=$10000.00
+2026-02-25 15:07:07 [INFO] --once flag set, exiting after single poll
+2026-02-25 15:07:07 [INFO] Automated trader stopped
+2026-02-25 15:07:26 [INFO] BerkahKarya Automated Trader | broker=mt5 | mode=paper | balance=$1,000.00 | dry_run=True
+2026-02-25 15:07:26 [INFO] Strategy: XAUUSD Asia 7-Candle Breakout | Risk=1%/trade | RR=1:2.0
+2026-02-25 15:07:26 [INFO] Initializing MT5 connector (mode=paper) via mt5linux
+2026-02-25 15:08:09 [INFO] BerkahKarya Automated Trader | broker=mt5 | mode=paper | balance=$1,000.00 | dry_run=True
+2026-02-25 15:08:09 [INFO] Strategy: XAUUSD Asia 7-Candle Breakout | Risk=1%/trade | RR=1:2.0
+2026-02-25 15:08:09 [INFO] Initializing MT5 connector (mode=paper) via mt5linux
+2026-02-25 15:09:01 [INFO] BerkahKarya Automated Trader | broker=mt5 | mode=paper | balance=$1,000.00 | dry_run=True
+2026-02-25 15:09:01 [INFO] Strategy: XAUUSD Asia 7-Candle Breakout | Risk=1%/trade | RR=1:2.0
+2026-02-25 15:09:01 [INFO] Initializing MT5 connector (mode=paper) via mt5linux @ 5.189.138.144:18812
