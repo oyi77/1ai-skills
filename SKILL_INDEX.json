@@ -702,6 +702,29 @@
       "source": "local"
     },
     {
+      "name": "larry-playbook",
+      "description": "Viral TikTok content generation with continuous learning - research trending content, generate viral slideshows, multi-platform posting via Post-Bridge, confidence-based flow selection",
+      "keywords": [
+        "viral",
+        "tiktok",
+        "content",
+        "slideshow",
+        "social media",
+        "posting",
+        "trending",
+        "hooks",
+        "virality",
+        "post-bridge"
+      ],
+      "domains": [
+        "content",
+        "social-media",
+        "marketing"
+      ],
+      "source": "local",
+      "path": "content/larry-playbook"
+    },
+    {
       "name": "google-canvas",
       "description": "Full lifecycle Google Canvas automation - create, open shared, read, edit, collaborate, and manage permissions",
       "keywords": [
@@ -1591,7 +1614,8 @@
         "marketing",
         "sales",
         "business-development",
-        "content-creator"
+        "content-creator",
+        "larry-playbook"
       ],
       "keywords": [
         "revenue",
@@ -1673,33 +1697,63 @@
     },
     {
       "name": "digital-ops-team",
-      "description": "Digital operations automation - social media, e-commerce, and AI content generation",
+      "description": "Full content operations orchestration - research, generate, humanize, and publish content across social media platforms",
       "skills": [
+        "seedance",
+        "larry-playbook",
+        "content-creator",
+        "content-generator",
+        "humanizer",
+        "grok-video-generation",
+        "gemini-image-generator",
         "tiktok-automation",
         "shopee-optimizer",
         "google-flow"
       ],
       "keywords": [
-        "digital",
-        "ops",
-        "automation",
-        "tiktok",
-        "shopee",
-        "google flow",
-        "video",
-        "ecommerce",
         "content",
+        "creation",
+        "generation",
+        "social media",
+        "tiktok",
+        "instagram",
+        "facebook",
         "posting",
-        "product"
+        "automation",
+        "viral",
+        "engagement",
+        "marketing"
       ],
       "directive_patterns": [
-        "automate tiktok",
+        "create viral content",
+        "generate social media posts",
         "post to tiktok",
+        "automate tiktok",
+        "create video content",
+        "humanize content",
         "optimize shopee",
-        "manage shopee products",
-        "generate video",
-        "create ai video"
-      ]
+        "generate ai video"
+      ],
+      "workflow": {
+        "stage_1_research": [
+          "larry-playbook"
+        ],
+        "stage_2_generate": [
+          "seedance",
+          "content-creator",
+          "content-generator",
+          "grok-video-generation",
+          "gemini-image-generator"
+        ],
+        "stage_3_humanize": [
+          "humanizer"
+        ],
+        "stage_4_publish": [
+          "tiktok-automation",
+          "shopee-optimizer",
+          "google-flow"
+        ]
+      }
     }
   ]
 }
