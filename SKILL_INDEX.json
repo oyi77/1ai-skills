@@ -1958,6 +1958,77 @@
       ],
       "source": "local",
       "path": "core/skill-performance-monitor"
+    },
+    {
+      "name": "code-reviewer",
+      "description": "Professional code review skill. Review local changes or PRs for correctness, maintainability, and best practices.",
+      "keywords": [
+        "code review",
+        "pr",
+        "pull request",
+        "review",
+        "quality",
+        "best practices"
+      ],
+      "domains": [
+        "development",
+        "code-quality"
+      ],
+      "source": "local",
+      "path": "development/code-reviewer"
+    },
+    {
+      "name": "brainstorming",
+      "description": "Effective brainstorming skill for features and projects. Clarify intent, explore options, and guide design decisions.",
+      "keywords": [
+        "brainstorm",
+        "design",
+        "planning",
+        "product",
+        "decisions",
+        "requirements"
+      ],
+      "domains": [
+        "development",
+        "product"
+      ],
+      "source": "local",
+      "path": "development/brainstorming"
+    },
+    {
+      "name": "prd-generator",
+      "description": "Generate detailed Product Requirement Documents from feature descriptions. Create structured specifications ready for implementation.",
+      "keywords": [
+        "prd",
+        "specification",
+        "requirements",
+        "product",
+        "documentation"
+      ],
+      "domains": [
+        "development",
+        "product"
+      ],
+      "source": "local",
+      "path": "development/prd-generator"
+    },
+    {
+      "name": "continuous-learning",
+      "description": "Evolve insights from sessions into actionable skills with confidence-weighted learning. Self-improvement through feedback loops.",
+      "keywords": [
+        "learning",
+        "insights",
+        "feedback",
+        "improvement",
+        "skills",
+        "confidence"
+      ],
+      "domains": [
+        "core",
+        "learning"
+      ],
+      "source": "local",
+      "path": "research/continuous-learning"
     }
   ],
   "teams": [
