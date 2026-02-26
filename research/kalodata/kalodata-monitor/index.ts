@@ -13,7 +13,7 @@ import {
   createProductResearcher,
   type ProcessedProduct,
   type DateRange,
-} from '../../src/kalodata/product-research.js';
+} from '../lib/product-research.js';
 
 // @ts-ignore - Node.js types expected at runtime
 import * as fs from 'fs';

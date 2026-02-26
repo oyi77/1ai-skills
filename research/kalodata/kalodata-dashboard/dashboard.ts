@@ -7,7 +7,7 @@
  * Works with ProcessedProduct data from kalodata module.
  */
 
-import { type ProcessedProduct } from '../../src/kalodata/product-research.js';
+import { type ProcessedProduct } from '../lib/product-research.js';
 
 // ============================================================================
 // Types

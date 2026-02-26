@@ -1,4 +1,9 @@
 {
+  "version": "1.4",
+  "last_updated": "2026-02-27",
+  "total_skills": 100,
+  "local_skills": 66,
+  "external_skills": 33,
   "version": "1.3",
   "last_updated": "2026-02-21",
   "total_skills": 95,
@@ -2155,8 +2160,83 @@
         "devops"
       ],
       "source": "local",
-      "path": "security/vulnerability-scanner"
+    },
+    {
+      "name": "ruvector",
+      "description": "Self-learning vector database with Graph Neural Networks for autonomous AI memory. Stores embeddings, queries with Cypher, runs LLMs locally, and improves search results over time.",
+      "keywords": [
+        "vector database",
+        "gnn",
+        "graph neural network",
+        "embeddings",
+        "self-learning",
+        "local llm",
+        "rag",
+        "memory",
+        "cypher",
+        "mcp"
+      ],
+      "domains": [
+        "core",
+        "infrastructure",
+        "ai"
+      ],
+      "source": "local",
+      "path": "core/ruvector"
+    },
+    {
+      "name": "zvec",
+      "description": "Alibaba's lightweight in-process vector database - the SQLite of vector databases. Blazing fast, simple, embedded vector search built on Proxima engine.",
+      "keywords": [
+        "vector database",
+        "alibaba",
+        "proximA",
+        "embeddings",
+        "rag",
+        "local",
+        "in-process",
+        "fast",
+        "lightweight"
+      ],
+      "domains": [
+        "core",
+        "infrastructure",
+        "ai"
+      ],
+      "source": "local",
+    },
+    {
+      "name": "vilona",
+      "description": "BerkahKarya AI General Manager - primary persona for strategic business consulting, data-driven decision making, and crisis management",
+      "keywords": [
+        "vilona",
+        "strategy",
+        "revenue",
+        "cashflow",
+        "business",
+        "consulting",
+        "crisis",
+        "survival",
+        "decision",
+        "planning"
+      ],
+      "domains": [
+        "core",
+        "strategy",
+        "business"
+      ],
+      "source": "local",
+      "path": "core/vilona",
+      "persona": true,
+      "autoActivate": true
     }
+  ],
+  "teams": [
+  ],
+  "teams": [
+    }
+  ],
+  "teams": [
   ],
   "teams": [
     {

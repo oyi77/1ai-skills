@@ -1,0 +1,154 @@
+{
+  "version": "1.0.0",
+  "description": "Auto-activation rules for 1ai-skills",
+  "default_persona": "vilona",
+  
+  "skill_activation_rules": {
+    "vilona": {
+      "always_active": true,
+      "priority": 100,
+      "triggers": [
+        "strategy", "revenue", "cashflow", "survival",
+        "business", "marketing", "planning", "decision"
+      ]
+    },
+    "oh-my-opencode": {
+      "auto_load": true,
+      "priority": 90,
+      "triggers": [
+        "build", "create", "implement", "code", "debug",
+        "refactor", "develop", "program", "feature"
+      ],
+      "category_hints": {
+        "deep": ["architecture", "complex", "refactor"],
+        "ultrabrain": ["hard", "difficult", "novel"],
+        "artistry": ["creative", "unconventional", "unique"],
+        "quick": ["fix", "simple", "typo"]
+      }
+    },
+    "mckinsey-research": {
+      "auto_load": false,
+      "priority": 80,
+      "triggers": [
+        "research", "analyze", "market", "competitor",
+        "strategy", "tam", "pricing", "gtm"
+      ]
+    },
+    "trendradar": {
+      "auto_load": false,
+      "priority": 70,
+      "triggers": [
+        "trending", "trends", "viral", "hot topic"
+      ]
+    },
+    "larry-playbook": {
+      "auto_load": false,
+      "priority": 65,
+      "triggers": [
+        "tiktok", "content", "viral content", "slideshow"
+      ]
+    },
+    "content-generator": {
+      "auto_load": false,
+      "priority": 65,
+      "triggers": [
+        "generate content", "create video", "create post"
+      ]
+    },
+    "ads-manager": {
+      "auto_load": false,
+      "priority": 60,
+      "triggers": [
+        "ads", "facebook ads", "google ads", "campaign"
+      ]
+    },
+    "trading-team": {
+      "auto_load": false,
+      "priority": 60,
+      "triggers": [
+        "trading", "forex", "xauusd", "crypto", "trade"
+      ]
+    },
+    "shopee-optimizer": {
+      "auto_load": false,
+      "priority": 55,
+      "triggers": [
+        "shopee", "ecommerce", "produk", "jual"
+      ]
+    },
+    "ai-newsletter": {
+      "auto_load": false,
+      "priority": 50,
+      "triggers": [
+        "newsletter", "email marketing", "beehiiv"
+      ]
+    },
+    "ai-podcast": {
+      "auto_load": false,
+      "priority": 50,
+      "triggers": [
+        "podcast", "audio", "voice"
+      ]
+    },
+    "ai-lead-generation": {
+      "auto_load": false,
+      "priority": 50,
+      "triggers": [
+        "leads", "prospecting", "cold email", "outreach"
+      ]
+    },
+    "database-mcp": {
+      "auto_load": false,
+      "priority": 45,
+      "triggers": [
+        "database", "sql", "query", "postgres"
+      ]
+    },
+    "vulnerability-scanner": {
+      "auto_load": false,
+      "priority": 40,
+      "triggers": [
+        "security", "vulnerability", "scan", "audit"
+      ]
+    }
+  },
+  
+  "model_routing": {
+    "fast": {
+      "models": ["llama-3.2-1b", "gemma-3-1b"],
+      "use_for": ["status check", "acknowledgment", "simple question"]
+    },
+    "balanced": {
+      "models": ["claude-sonnet", "gpt-4", "llama-3.1-8b"],
+      "use_for": ["general tasks", "market summaries", "strategy drafts"]
+    },
+    "advanced": {
+      "models": ["claude-opus", "gpt-4.1", "llama-3.1-70b"],
+      "use_for": ["complex reasoning", "long-context analysis", "multi-step research"]
+    },
+    "reasoning": {
+      "models": ["deepseek-r1", "phi-4-mini"],
+      "use_for": ["mathematical", "logical", "step-by-step analysis"]
+    },
+    "code": {
+      "models": ["qwen-coder", "starcoder2", "codellama"],
+      "use_for": ["programming", "debugging", "code review"]
+    }
+  },
+  
+  "rag_config": {
+    "vector_db": "zvec",
+    "collections": [
+      "strategic_decisions",
+      "lessons_learned", 
+      "market_insights",
+      "team_context",
+      "project_memory"
+    ],
+    "retrieval": {
+      "top_k": 5,
+      "similarity_threshold": 0.75
+    },
+    "auto_index": true
+  }
+}

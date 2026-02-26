@@ -14,7 +14,7 @@ import {
   createClient,
   type ClientOptions,
   type Product,
-} from '../../src/kalodata/index.js';
+} from '../lib/index.js';
 
 import {
   ProductResearcher,
@@ -22,20 +22,20 @@ import {
   type ProcessedProduct,
   type GoalAnalysis,
   type DateRange as ProductDateRange,
-} from '../../src/kalodata/product-research.js';
+} from '../lib/product-research.js';
 
 import {
   VideoAnalyzer,
   createVideoAnalyzer,
   type ProductVideoAnalysis,
-} from '../../src/kalodata/video-analysis.js';
+} from '../lib/video-analysis.js';
 
 import {
   StoryboardExtractor,
   createStoryboardExtractor,
   type StoryboardResult,
   type ContentIdea,
-} from '../../src/kalodata/storyboard-extract.js';
+} from '../lib/storyboard-extract.js';
 
 // ============================================================================
 // Types
@@ -459,9 +459,9 @@ export function createResearchAutomation(
 // Utility Functions
 // ============================================================================
 
-export { createProductResearcher } from '../../src/kalodata/product-research.js';
-export { createVideoAnalyzer } from '../../src/kalodata/video-analysis.js';
-export { createStoryboardExtractor } from '../../src/kalodata/storyboard-extract.js';
+export { createProductResearcher } from '../lib/product-research.js';
+export { createVideoAnalyzer } from '../lib/video-analysis.js';
+export { createStoryboardExtractor } from '../lib/storyboard-extract.js';
 
 export type {
   ProcessedProduct,
@@ -470,6 +470,6 @@ export type {
   StoryboardResult,
   ContentIdea,
   DateRange as ProductDateRange,
-} from '../../src/kalodata/index.js';
+} from '../lib/index.js';
 
 export default ResearchAutomation;

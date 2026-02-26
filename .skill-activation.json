@@ -3,6 +3,12 @@
         "strategy": "selective",
         "description": "Selective skill loading to prevent performance issues",
         "coreSkills": [
+            "core/vilona",
+            "core/agent-docs",
+            "core/joko-orchestrator",
+            "core/find-skills",
+            "development/writing-plans"
+        ],
             "core/agent-docs",
             "core/joko-orchestrator",
             "core/find-skills",
@@ -19,7 +25,97 @@
             "idleTimeoutMinutes": 5,
             "maxConcurrentConnections": 5
         },
-        "activationRules": {
+            "core/vilona": {
+                "keywords": [
+                    "strategy",
+                    "revenue",
+                    "cashflow",
+                    "survival",
+                    "business",
+                    "planning",
+                    "decision",
+                    "consulting"
+                ],
+                "mcps": [],
+                "priority": "critical",
+                "alwaysActive": true
+            },
+            "automation/n8n": {
+                "keywords": [
+                    "n8n",
+                    "workflow",
+                    "automation",
+                    "connect app",
+                    "integrate"
+                ],
+                "mcps": ["n8n-mcp"],
+                "priority": "high"
+            },
+            "productivity/notion": {
+                "keywords": [
+                    "notion",
+                    "docs",
+                    "documentation",
+                    "knowledge base"
+                ],
+                "mcps": ["notion-mcp"],
+                "priority": "high"
+            },
+            "operations/jira": {
+                "keywords": [
+                    "jira",
+                    "issue",
+                    "ticket",
+                    "sprint",
+                    "project"
+                ],
+                "mcps": ["jira-mcp"],
+                "priority": "high"
+            },
+            "operations/clickup": {
+                "keywords": [
+                    "clickup",
+                    "task",
+                    "todo",
+                    "assign"
+                ],
+                "mcps": ["clickup-mcp"],
+                "priority": "high"
+            },
+            "operations/multi-channel-reminder": {
+                "keywords": [
+                    "remind",
+                    "reminder",
+                    "notify",
+                    "alert",
+                    "whatsapp",
+                    "signal",
+                    "slack",
+                    "discord",
+                    "telegram",
+                    "email",
+                    "call"
+                ],
+                "mcps": ["signal", "whatsapp", "slack"],
+                "priority": "high"
+            },
+            "marketing/ads-manager": {
+            "core/vilona": {
+                "keywords": [
+                    "strategy",
+                    "revenue",
+                    "cashflow",
+                    "survival",
+                    "business",
+                    "planning",
+                    "decision",
+                    "consulting"
+                ],
+                "mcps": [],
+                "priority": "critical",
+                "alwaysActive": true
+            },
+            "marketing/ads-manager": {
             "marketing/ads-manager": {
                 "keywords": [
                     "ads",
@@ -594,6 +690,65 @@
                     "opencode lsp",
                     "opencode tools"
                 ],
+                "mcps": [],
+                "priority": "low"
+            },
+            "n8n-mcp": {
+                "skills": [
+                    "automation/n8n"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "n8n"
+                ]
+            },
+            "notion-mcp": {
+                "skills": [
+                    "productivity/notion"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "notion"
+                ]
+            },
+            "jira-mcp": {
+                "skills": [
+                    "operations/jira"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "jira"
+                ]
+            },
+            "clickup-mcp": {
+                "skills": [
+                    "operations/clickup"
+                ],
+                "priority": "high",
+                "platforms": [
+                    "clickup"
+                ]
+            },
+            "signal": {
+                "skills": [
+                    "operations/multi-channel-reminder"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "signal"
+                ]
+            },
+            "whatsapp": {
+                "skills": [
+                    "operations/multi-channel-reminder"
+                ],
+                "priority": "medium",
+                "platforms": [
+                    "whatsapp",
+                    "twilio"
+                ]
+            }
+        },
                 "mcps": [],
                 "priority": "low"
             }

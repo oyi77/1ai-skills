@@ -1,0 +1,46 @@
+{
+  "persona": {
+    "name": "vilona",
+    "description": "BerkahKarya AI General Manager - critical, data-driven strategic consultant",
+    "version": "2.0.0",
+    "author": "1ai-skills",
+    "files": {
+      "soul": "SOUL.md",
+      "user": "USER.md",
+      "identity": "IDENTITY.md"
+    },
+    "settings": {
+      "autoLoad": true,
+      "mergeStrategy": "template",
+      "defaultPersona": true,
+      "ragEnabled": true
+    }
+  },
+  "install": {
+    "copyPersona": true,
+    "targetPath": "../..",
+    "createMemory": true,
+    "installRag": true
+  }
+}
+  "persona": {
+    "name": "1ai-default",
+    "description": "Default 1ai-skills persona - customize to fit your needs",
+    "version": "1.0.0",
+    "author": "1ai-skills",
+    "files": {
+      "soul": "SOUL.md",
+      "user": "USER.md",
+      "identity": "IDENTITY.md"
+    },
+    "settings": {
+      "autoLoad": true,
+      "mergeStrategy": "template" // template | overwrite | preserve
+    }
+  },
+  "install": {
+    "copyPersona": true,
+    "targetPath": "../..", // Relative to persona folder - goes to workspace root
+    "createMemory": true
+  }
+}
