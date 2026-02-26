@@ -1816,6 +1816,148 @@
       ],
       "source": "local",
       "path": "research/ai-research-agent"
+    },
+    {
+      "name": "ai-podcast",
+      "description": "Create and automate AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts. Build audience and monetize.",
+      "keywords": [
+        "podcast",
+        "ai podcast",
+        "audio",
+        "voice",
+        "automation",
+        "content",
+        "music",
+        "narration"
+      ],
+      "domains": [
+        "content",
+        "media",
+        "audio"
+      ],
+      "source": "local",
+      "path": "content/ai-podcast"
+    },
+    {
+      "name": "ai-newsletter",
+      "description": "Build and monetize AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions. Generate $1K-20K/month.",
+      "keywords": [
+        "newsletter",
+        "email",
+        "beehiiv",
+        "substack",
+        "curation",
+        "subscribers",
+        "sponsorships"
+      ],
+      "domains": [
+        "content",
+        "email",
+        "media"
+      ],
+      "source": "local",
+      "path": "content/ai-newsletter"
+    },
+    {
+      "name": "ai-digital-products",
+      "description": "Create and sell AI-powered digital products. Build templates, prompt libraries, workflows, and Notion systems. Generate $500-5K/month passive income.",
+      "keywords": [
+        "digital products",
+        "templates",
+        "prompt library",
+        "notion",
+        "gumroad",
+        "passive income",
+        "sell"
+      ],
+      "domains": [
+        "product",
+        "revenue",
+        "passive"
+      ],
+      "source": "local",
+      "path": "marketing/ai-digital-products"
+    },
+    {
+      "name": "ai-marketplace",
+      "description": "Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients.",
+      "keywords": [
+        "fiverr",
+        "upwork",
+        "freelance",
+        "marketplace",
+        "services",
+        "clients",
+        "toptal"
+      ],
+      "domains": [
+        "sales",
+        "freelance",
+        "services"
+      ],
+      "source": "local",
+      "path": "sales/ai-marketplace"
+    },
+    {
+      "name": "runtime-self-improvement",
+      "description": "Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect gaps, enhance skills, and self-optimize during operation.",
+      "keywords": [
+        "self-improvement",
+        "runtime",
+        "auto",
+        "optimize",
+        "enhance",
+        "openclaw",
+        "autonomous"
+      ],
+      "domains": [
+        "core",
+        "autonomous",
+        "optimization"
+      ],
+      "source": "local",
+      "path": "core/runtime-self-improvement"
+    },
+    {
+      "name": "auto-git-commiter",
+      "description": "Automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning and deployment-ready commits.",
+      "keywords": [
+        "git",
+        "commit",
+        "auto",
+        "push",
+        "github",
+        "version",
+        "deploy",
+        "automation"
+      ],
+      "domains": [
+        "core",
+        "devops",
+        "automation"
+      ],
+      "source": "local",
+      "path": "core/auto-git-commiter"
+    },
+    {
+      "name": "skill-performance-monitor",
+      "description": "Monitor and analyze skill effectiveness in real-time. Track usage, success rates, response quality, and user satisfaction for optimization.",
+      "keywords": [
+        "monitor",
+        "performance",
+        "analytics",
+        "metrics",
+        "tracking",
+        "optimization",
+        "skills"
+      ],
+      "domains": [
+        "core",
+        "analytics",
+        "optimization"
+      ],
+      "source": "local",
+      "path": "core/skill-performance-monitor"
     }
   ],
   "teams": [
@@ -1833,7 +1975,11 @@
         "affiliate-marketing",
         "ai-consulting",
         "ai-agent-development",
-        "ai-lead-generation"
+        "ai-lead-generation",
+        "ai-podcast",
+        "ai-newsletter",
+        "ai-digital-products",
+        "ai-marketplace"
       ],
       "keywords": [
         "revenue",
