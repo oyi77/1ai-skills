@@ -153,10 +153,18 @@ def generate_image(prompt: str, model: str, out_path: str) -> str:
         req = urllib.request.Request(url, data=payload, headers=headers, method="POST")
         with urllib.request.urlopen(req, timeout=90) as resp:
             data = json.loads(resp.read())
-        b64 = data.get("image") if key else data.get("artifacts", [{}])[0].get("base64", "")
+        artifact   = data.get("artifacts", [{}])[0] if not key else {}
+        b64        = data.get("image") if key else artifact.get("base64", "")
+        finish_rsn = artifact.get("finishReason", "")
 
-        if not b64:
-            # Flux filtered → fallback to SD3
+        # Flux content-filter detection: 6KB black image or CONTENT_FILTERED reason
+        is_filtered = (
+            finish_rsn == "CONTENT_FILTERED"
+            or (b64 and len(base64.b64decode(b64)) < 10_000)
+            or not b64
+        )
+        if is_filtered:
+            print(f"    ⚠️  Flux filtered → SD3 fallback")
             req2 = urllib.request.Request(
                 "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium",
                 data=payload, headers=headers, method="POST")

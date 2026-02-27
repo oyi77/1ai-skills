@@ -59,9 +59,20 @@ def generate_image_for_batch(prompt: str, model: str, idx: int, output_dir: str)
         with urllib.request.urlopen(req, timeout=90) as resp:
             data = json.loads(resp.read())
 
-        b64 = data.get("image") if key else data.get("artifacts", [{}])[0].get("base64", "")
-        if not b64:
-            # Flux content filtered → fallback SD3
+        artifact   = data.get("artifacts", [{}])[0] if not key else {}
+        b64        = data.get("image") if key else artifact.get("base64", "")
+        finish_rsn = artifact.get("finishReason", "")
+
+        # Flux content-filter: returns 6KB black image + finishReason=CONTENT_FILTERED
+        # OR image is suspiciously tiny (<10KB decoded) — fallback to SD3
+        is_filtered = (
+            finish_rsn == "CONTENT_FILTERED"
+            or (b64 and len(base64.b64decode(b64)) < 10_000)
+            or not b64
+        )
+
+        if is_filtered:
+            print(f"    ⚠️  Flux filtered ({finish_rsn or 'tiny'}) → SD3 fallback")
             url2 = "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium"
             req2 = urllib.request.Request(url2, data=payload, headers=headers, method="POST")
             with urllib.request.urlopen(req2, timeout=90) as resp2:
