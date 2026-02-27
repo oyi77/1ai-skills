@@ -89,9 +89,10 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     today = date.today()
     year  = year or today.year
     month = month or today.month
-    start = int(datetime(year, month, 1).timestamp())
-    end   = int(datetime(year, month+1 if month < 12 else 1,
-                         1, year=year if month < 12 else year+1).timestamp()) if month < 12 else int(datetime(year+1, 1, 1).timestamp())
+    start     = int(datetime(year, month, 1).timestamp())
+    next_year = year + 1 if month == 12 else year
+    next_mon  = 1 if month == 12 else month + 1
+    end       = int(datetime(next_year, next_mon, 1).timestamp())
 
     with _conn() as conn:
         rows = conn.execute(
