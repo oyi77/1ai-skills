@@ -52,7 +52,8 @@ providers:
     create_task_path: "/contents/generations/tasks"
     get_task_path: "/contents/generations/tasks/{task_id}"
     # Default model (lite = fast ~20s, pro = better quality ~60s)
-    model: "seedance-1-0-lite-t2v-250428"
+    # UPDATED 2026-02-27: switched to Pro for hyperrealistic output
+    model: "seedance-1-0-pro-250528"
     # Content format: [{"type": "text", "text": "prompt..."}]
     # For I2V add: {"type": "image_url", "image_url": {"url": "..."}, "role": "first_frame"}
     # Default TikTok settings
