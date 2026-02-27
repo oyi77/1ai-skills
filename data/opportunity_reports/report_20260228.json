@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-02-28T03:29:44.523454",
+  "total_opportunities": 4,
+  "top_opportunities": [
+    {
+      "id": "content-1",
+      "source": "social_media",
+      "title": "Behind the Scenes Content",
+      "description": "BTS content performing well for brand",
+      "time_to_revenue": "very_low",
+      "risk": "very_low",
+      "estimated_roi": "medium",
+      "score": 85.0
+    },
+    {
+      "id": "trending-1",
+      "source": "trending_topics",
+      "title": "AI Video Content",
+      "description": "Short-form AI video content trending on TikTok",
+      "time_to_revenue": "low",
+      "risk": "medium",
+      "estimated_roi": "high",
+      "score": 71.0
+    },
+    {
+      "id": "trending-2",
+      "source": "trending_topics",
+      "title": "Local Indonesian Products",
+      "description": "Growing interest in local/Indonesian products",
+      "time_to_revenue": "low",
+      "risk": "low",
+      "estimated_roi": "medium",
+      "score": 71.0
+    },
+    {
+      "id": "trading-1",
+      "source": "trading_signals",
+      "title": "XAUUSD Breakout",
+      "description": "Gold showing strong upward momentum on daily",
+      "time_to_revenue": "medium",
+      "risk": "high",
+      "estimated_roi": "high",
+      "score": 53.0
+    }
+  ],
+  "by_source": {
+    "social_media": 1,
+    "trending_topics": 2,
+    "trading_signals": 1
+  },
+  "recommendations": [
+    "Focus on: Behind the Scenes Content (Score: 85.0)",
+    "Quick wins: 2 low-time-to-revenue opportunities",
+    "Trading: 1 signals identified"
+  ]
+}

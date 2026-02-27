@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "idx": 1,
+      "style": "dark_moody",
+      "format": "foto",
+      "image": "/home/openclaw/.openclaw/workspace/output/survival_slideshow_1/batch_00_img.jpg",
+      "video": null,
+      "status": "\u274c"
+    },
+    {
+      "idx": 2,
+      "style": "clean_white",
+      "format": "foto",
+      "image": "/home/openclaw/.openclaw/workspace/output/survival_slideshow_1/batch_01_img.jpg",
+      "video": null,
+      "status": "\u274c"
+    },
+    {
+      "idx": 3,
+      "style": "luxury",
+      "format": "foto",
+      "image": "/home/openclaw/.openclaw/workspace/output/survival_slideshow_1/batch_02_img.jpg",
+      "video": null,
+      "status": "\u274c"
+    },
+    {
+      "idx": 4,
+      "style": "splash",
+      "format": "foto",
+      "image": "/home/openclaw/.openclaw/workspace/output/survival_slideshow_1/batch_03_img.jpg",
+      "video": null,
+      "status": "\u274c"
+    },
+    {
+      "idx": 5,
+      "style": "lifestyle",
+      "format": "foto",
+      "image": "/home/openclaw/.openclaw/workspace/output/survival_slideshow_1/batch_04_img.jpg",
+      "video": null,
+      "status": "\u274c"
+    }
+  ],
+  "estimate": {
+    "count": 5,
+    "total_usd": 0.028,
+    "total_idr": 456,
+    "breakdown": [
+      {
+        "style": "dark_moody",
+        "format": "foto",
+        "cost": 0.0056
+      },
+      {
+        "style": "clean_white",
+        "format": "foto",
+        "cost": 0.0056
+      },
+      {
+        "style": "luxury",
+        "format": "foto",
+        "cost": 0.0056
+      },
+      {
+        "style": "splash",
+        "format": "foto",
+        "cost": 0.0056
+      },
+      {
+        "style": "lifestyle",
+        "format": "foto",
+        "cost": 0.0056
+      }
+    ]
+  }
+}

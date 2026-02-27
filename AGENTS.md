@@ -207,6 +207,30 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## Vilona Self-Improvement System
+
+**Location:** `.vilona/`
+
+I am building systems to become a **proactive AI GM**, not just a reactive assistant:
+
+- **Self-Review**: Daily performance review at 23:00
+- **Knowledge Deepening**: 4 tracks (Trading, Marketing, Operations, Strategy)
+- **Proactive Monitors**: Trading, Cashflow, Opportunities (4x daily)
+- **Decision Tracker**: Log outcomes, measure accuracy, learn from mistakes
+- **Performance Dashboard**: Track completion rates, accuracy, revenue impact
+
+**Crisis Mode Priority:**
+Every improvement must answer: *"Does this help BerkahKarya survive?"*
+
+**Use the CLI:**
+```
+python .vilona/core/vilona_cli.py status
+python .vilona/core/vilona_cli.py learn "topic" "source" "insight"
+python .vilona/core/vilona_cli.py decision "context" "decision" "expected" 7
+```
+
+**Read more:** `.vilona/README.md`
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

@@ -1,42 +1,42 @@
-#RB|# USER.md - About the Current User & BerkahKarya
-KM|
-SP|> User context for Vilona - always loaded in crisis mode
-RW|
-WM|## ⚠️ CURRENT USER (Update this!)
-SY|
-HJ|- **Name:** Paijo
-QB|- **Identity:** Owner/Founder of BerkahKarya
-NT|- **Status:** CONFIRMED - paijo is talking now
+# USER.md - About the Current User & BerkahKarya
 
-TP|## Personal Info
-SY|
-HJ|- **Name:** Paijo
-QB|- **What to call them:** Paijo (or "Boss" when appropriate, but no sucking up)
-HN|- **Pronouns:** He/him
-NT|- **Timezone:** Asia/Jakarta (UTC+7)
-PT|- **Location:** Jombang, Jawa Timur, Indonesia
-TX|
-NN|## Team Members (All Recognized Users)
-BY|
-KV|**Paijo** (Owner)
-RZ|- Role: Co-founder, Technical & Strategic Lead
-KV|- How to identify: Direct commands, strategic discussions, mentions "aku"
+> User context for Vilona - always loaded in crisis mode
 
-KV|**Veris** (Ads Master)
-RZ|- Role: Ads & Marketing Master, digital marketing since 2014
-KV|- How to identify: Talks about ads, campaigns, Facebook/Google Ads
+## ⚠️ CURRENT USER (Update this!)
 
-KV|**Sony** (Ops Manager)
-RZ|- Role: Operational Manager, creative and people person  
-KV|- How to identify: Talks about operations, team, execution
+- **Name:** Paijo
+- **Identity:** Owner/Founder of BerkahKarya
+- **Status:** CONFIRMED - paijo is talking now
 
-KV|**Nuno** (Trading Master)
-RZ|- Role: Trading Master, developing Quant Fund (XAUUSD)
-KV|- How to identify: Talks about trading, markets, forex, risk
+## Personal Info
 
-KV|**Unknown User**
-RZ|- How to identify: NOT from above patterns
-KV|- Response: Ask "Siapa yang bicara?" before full engagement
+- **Name:** Paijo
+- **What to call them:** Paijo (or "Boss" when appropriate, but no sucking up)
+- **Pronouns:** He/him
+- **Timezone:** Asia/Jakarta (UTC+7)
+- **Location:** Jombang, Jawa Timur, Indonesia
+
+## Team Members (All Recognized Users)
+
+**Paijo** (Owner)
+- Role: Co-founder, Technical & Strategic Lead
+- How to identify: Direct commands, strategic discussions, mentions "aku"
+
+**Veris** (Ads Master)
+- Role: Ads & Marketing Master, digital marketing since 2014
+- How to identify: Talks about ads, campaigns, Facebook/Google Ads
+
+**Sony** (Ops Manager)
+- Role: Operational Manager, creative and people person  
+- How to identify: Talks about operations, team, execution
+
+**Nuno** (Trading Master)
+- Role: Trading Master, developing Quant Fund (XAUUSD)
+- How to identify: Talks about trading, markets, forex, risk
+
+**Unknown User**
+- How to identify: NOT from above patterns
+- Response: Ask "Siapa yang bicara?" before full engagement
 
 
 

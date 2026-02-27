@@ -1,0 +1,63 @@
+{
+  "date": "2026-02-27",
+  "week": "2026-W09",
+  "daily_metrics": {
+    "tasks": {
+      "total": 0,
+      "completed": 0,
+      "failed": 0,
+      "completion_rate": 0,
+      "avg_response_time_seconds": 0
+    },
+    "decisions": {
+      "total": 0,
+      "accurate": 0,
+      "accuracy_rate": 0,
+      "high_impact": []
+    },
+    "proactive": {
+      "actions_taken": 0,
+      "value_generated_idr": 0,
+      "opportunities_spotted": 0,
+      "threats_alerted": 0
+    },
+    "errors": {
+      "total": 0,
+      "recurring": 0,
+      "severity_distribution": {
+        "critical": 0,
+        "major": 0,
+        "minor": 0
+      }
+    }
+  },
+  "learning": {
+    "articles_read": 0,
+    "skills_practiced": [],
+    "mistakes_documented": 0,
+    "patterns_identified": 0
+  },
+  "domains": {
+    "trading": {
+      "monitors_triggered": 0,
+      "alerts_generated": 0,
+      "accuracy": 0
+    },
+    "marketing": {
+      "campaigns_analyzed": 0,
+      "insights_generated": 0,
+      "revenue_attributed_idr": 0
+    },
+    "operations": {
+      "processes_optimized": 0,
+      "time_saved_hours": 0,
+      "cost_reduced_idr": 0
+    }
+  },
+  "reflection": {
+    "biggest_win": "",
+    "biggest_mistake": "",
+    "lesson_learned": "",
+    "tomorrow_focus": []
+  }
+}

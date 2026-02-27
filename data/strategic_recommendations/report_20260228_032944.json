@@ -1,0 +1,231 @@
+{
+  "generated_at": "2026-02-28T03:29:44.542573",
+  "review": {
+    "period": {
+      "start": "2026-02-21T03:29:44.522944",
+      "end": "2026-02-28T03:29:44.522944",
+      "days": 7
+    },
+    "revenue": {
+      "overall": {
+        "streams": {
+          "content": {
+            "revenue": 0.0,
+            "currency": "IDR",
+            "transactions": 0
+          },
+          "trading": {
+            "revenue": 0.0,
+            "currency": "USD",
+            "transactions": 0
+          },
+          "services": {
+            "revenue": 0.0,
+            "currency": "IDR",
+            "transactions": 0
+          }
+        },
+        "total": {
+          "IDR": 0.0,
+          "USD": 0.0
+        },
+        "last_updated": null
+      },
+      "weekly_transactions": 0,
+      "weekly_totals": {},
+      "has_activity": false
+    },
+    "opportunities": {
+      "total": 4,
+      "top_opportunities": [
+        {
+          "id": "content-1",
+          "source": "social_media",
+          "title": "Behind the Scenes Content",
+          "description": "BTS content performing well for brand",
+          "time_to_revenue": "very_low",
+          "risk": "very_low",
+          "estimated_roi": "medium",
+          "score": 85.0
+        },
+        {
+          "id": "trending-1",
+          "source": "trending_topics",
+          "title": "AI Video Content",
+          "description": "Short-form AI video content trending on TikTok",
+          "time_to_revenue": "low",
+          "risk": "medium",
+          "estimated_roi": "high",
+          "score": 71.0
+        },
+        {
+          "id": "trending-2",
+          "source": "trending_topics",
+          "title": "Local Indonesian Products",
+          "description": "Growing interest in local/Indonesian products",
+          "time_to_revenue": "low",
+          "risk": "low",
+          "estimated_roi": "medium",
+          "score": 71.0
+        }
+      ],
+      "risk_distribution": {
+        "low": 2,
+        "medium": 1,
+        "high": 1
+      },
+      "by_source": {
+        "social_media": 1,
+        "trending_topics": 2,
+        "trading_signals": 1
+      }
+    },
+    "summary": {
+      "revenue_active": false,
+      "transaction_count": 0,
+      "opportunity_count": 4,
+      "high_risk_opportunities": 1
+    }
+  },
+  "recommendations": [
+    {
+      "category": "risk",
+      "title": "Revenue Drought Risk",
+      "description": "No revenue recorded this week. Prolonged inactivity signals pipeline or execution issues.",
+      "action": "Conduct emergency review of all revenue-generating activities.",
+      "impact": "very_high",
+      "urgency": "very_high",
+      "effort": "low",
+      "risk": "low",
+      "priority_score": 88.0,
+      "rank": 1,
+      "generated_at": "2026-02-28T03:29:44.542534"
+    },
+    {
+      "category": "revenue",
+      "title": "No Revenue Activity This Week",
+      "description": "No transactions recorded in the past 7 days. Review active revenue streams and identify blockers.",
+      "action": "Audit all revenue streams for stalled pipelines or missed invoices.",
+      "impact": "high",
+      "urgency": "high",
+      "effort": "low",
+      "risk": "low",
+      "priority_score": 76.0,
+      "rank": 2,
+      "generated_at": "2026-02-28T03:29:44.542550"
+    },
+    {
+      "category": "operations",
+      "title": "Execution Gap: Opportunities vs Revenue",
+      "description": "4 opportunities identified but only 0 transactions. Ideas are not converting to revenue.",
+      "action": "Focus on converting top 2 opportunities into revenue before scouting more.",
+      "impact": "high",
+      "urgency": "high",
+      "effort": "medium",
+      "risk": "low",
+      "priority_score": 72.0,
+      "rank": 3,
+      "generated_at": "2026-02-28T03:29:44.542554"
+    },
+    {
+      "category": "growth",
+      "title": "2 Low-Risk Growth Opportunities",
+      "description": "Found 2 low-risk opportunities. These can generate returns with minimal downside.",
+      "action": "Prioritize low-risk opportunities for quick wins this week.",
+      "impact": "medium",
+      "urgency": "medium",
+      "effort": "low",
+      "risk": "very_low",
+      "priority_score": 62.0,
+      "rank": 4,
+      "generated_at": "2026-02-28T03:29:44.542557"
+    },
+    {
+      "category": "growth",
+      "title": "Pursue Top Opportunity: Behind the Scenes Content",
+      "description": "BTS content performing well for brand (Scout score: 85.0)",
+      "action": "Allocate resources to evaluate and execute on 'Behind the Scenes Content'.",
+      "impact": "high",
+      "urgency": "medium",
+      "effort": "medium",
+      "risk": "medium",
+      "priority_score": 60.5,
+      "rank": 5,
+      "generated_at": "2026-02-28T03:29:44.542560"
+    },
+    {
+      "category": "revenue",
+      "title": "Insufficient Stream Diversification",
+      "description": "Only 0 active revenue stream(s). Multiple streams reduce single-point-of-failure risk.",
+      "action": "Activate at least 2 revenue streams: content, trading, services.",
+      "impact": "high",
+      "urgency": "medium",
+      "effort": "high",
+      "risk": "low",
+      "priority_score": 58.5,
+      "rank": 6,
+      "generated_at": "2026-02-28T03:29:44.542566"
+    },
+    {
+      "category": "operations",
+      "title": "Weekly Systems Health Check",
+      "description": "Review automation pipelines, API integrations, and scheduled tasks for failures or degraded performance.",
+      "action": "Run diagnostics on all automated systems and fix any issues.",
+      "impact": "medium",
+      "urgency": "low",
+      "effort": "low",
+      "risk": "very_low",
+      "priority_score": 57.0,
+      "rank": 7,
+      "generated_at": "2026-02-28T03:29:44.542570"
+    }
+  ],
+  "recommendation_count": 7,
+  "categories": {
+    "risk": 1,
+    "revenue": 2,
+    "operations": 2,
+    "growth": 2
+  },
+  "top_3": [
+    {
+      "category": "risk",
+      "title": "Revenue Drought Risk",
+      "description": "No revenue recorded this week. Prolonged inactivity signals pipeline or execution issues.",
+      "action": "Conduct emergency review of all revenue-generating activities.",
+      "impact": "very_high",
+      "urgency": "very_high",
+      "effort": "low",
+      "risk": "low",
+      "priority_score": 88.0,
+      "rank": 1,
+      "generated_at": "2026-02-28T03:29:44.542534"
+    },
+    {
+      "category": "revenue",
+      "title": "No Revenue Activity This Week",
+      "description": "No transactions recorded in the past 7 days. Review active revenue streams and identify blockers.",
+      "action": "Audit all revenue streams for stalled pipelines or missed invoices.",
+      "impact": "high",
+      "urgency": "high",
+      "effort": "low",
+      "risk": "low",
+      "priority_score": 76.0,
+      "rank": 2,
+      "generated_at": "2026-02-28T03:29:44.542550"
+    },
+    {
+      "category": "operations",
+      "title": "Execution Gap: Opportunities vs Revenue",
+      "description": "4 opportunities identified but only 0 transactions. Ideas are not converting to revenue.",
+      "action": "Focus on converting top 2 opportunities into revenue before scouting more.",
+      "impact": "high",
+      "urgency": "high",
+      "effort": "medium",
+      "risk": "low",
+      "priority_score": 72.0,
+      "rank": 3,
+      "generated_at": "2026-02-28T03:29:44.542554"
+    }
+  ]
+}

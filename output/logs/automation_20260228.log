@@ -1,0 +1,9 @@
+[2026-02-28 01:06:43] [INFO] Starting lead management automation...
+[2026-02-28 01:06:43] [INFO] ✅ Lead report generated: /home/openclaw/.openclaw/workspace/output/reports/lead_report_20260228.md
+[2026-02-28 01:06:43] [INFO] ✅ Found 0 leads needing follow-up
+[2026-02-28 01:06:43] [INFO] ✅ Follow-up tasks saved: /home/openclaw/.openclaw/workspace/output/reports/followup_tasks_20260228.json
+[2026-02-28 01:06:43] [INFO] Starting social media automation...
+[2026-02-28 01:06:43] [INFO] ✅ Found 0 items ready to post
+[2026-02-28 01:06:43] [INFO] ✅ Social media report saved: /home/openclaw/.openclaw/workspace/output/reports/social_report_20260228.md
+[2026-02-28 01:06:43] [INFO] Generating automation summary...
+[2026-02-28 01:06:43] [INFO] ✅ Automation summary saved: /home/openclaw/.openclaw/workspace/output/reports/automation_summary_20260228.md
