@@ -189,7 +189,7 @@ def submit_i2v(image_path: str, anim_prompt: str, duration: int = 5) -> str:
     img_b64 = base64.b64encode(img_bytes).decode()
 
     payload = json.dumps({
-        "model": "seedance-1-0-pro-i2v-250528",
+        "model": "seedance-1-0-lite-i2v-250428",
         "content": [
             {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}, "role": "first_frame"},
             {"type": "text", "text": anim_prompt}

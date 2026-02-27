@@ -35,7 +35,7 @@ def enhance_image_prompt(prompt: str) -> str:
 # ─── VIDEO GENERATION (BytePlus Seedance) ────────────────────────────
 # Pro model = significantly higher quality than Lite
 VIDEO_MODEL_T2V = "seedance-1-0-pro-250528"      # Text-to-Video Pro
-VIDEO_MODEL_I2V = "seedance-1-0-pro-i2v-250528"  # Image-to-Video Pro
+VIDEO_MODEL_I2V = "seedance-1-0-lite-i2v-250428"  # Image-to-Video Pro
 VIDEO_MODEL_I2V_FALLBACK = "seedance-1-0-lite-i2v-250428"  # Fallback if Pro unavailable
 
 VIDEO_ANIM_SUFFIX = (
@@ -108,5 +108,5 @@ anim = enhance_anim_prompt("slow breathing movement, laptop screen flickering")
 #    photorealistic movement, professional camera work..."
 
 # Use Pro model
-model = VIDEO_MODEL_I2V  # "seedance-1-0-pro-i2v-250528"
+model = VIDEO_MODEL_I2V  # "seedance-1-0-lite-i2v-250428"
 """

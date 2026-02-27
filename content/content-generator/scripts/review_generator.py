@@ -342,7 +342,7 @@ async def generate_review_video(
     img_b64 = base64.b64encode(_buf.getvalue()).decode()
 
     i2v_payload = json.dumps({
-        "model": "seedance-1-0-pro-i2v-250528",
+        "model": "seedance-1-0-lite-i2v-250428",
         "content": [
             {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}, "role": "first_frame"},
             {"type": "text", "text": anim_prompt}

@@ -110,7 +110,7 @@ def submit_i2v_batch(image_path: str, anim_prompt: str, duration: int = 5) -> st
     img_b64 = base64.b64encode(img_bytes).decode()
 
     payload = json.dumps({
-        "model": "seedance-1-0-pro-i2v-250528",
+        "model": "seedance-1-0-lite-i2v-250428",
         "content": [
             {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}, "role": "first_frame"},
             {"type": "text", "text": anim_prompt}
@@ -163,7 +163,7 @@ def poll_all_tasks(task_map: dict, output_dir: str, timeout: int = 300) -> dict:
                                     "-t", str(duration), "-c", "copy", out_path],
                                    capture_output=True)
                     results[idx] = out_path
-                    log_cost("byteplus_pro", f"batch_i2v_{idx}")
+                    log_cost("byteplus_lite", f"batch_i2v_{idx}")
                     print(f"    Variation {idx} ✅")
                     done.append(idx)
                 elif status in ("failed", "cancelled"):
