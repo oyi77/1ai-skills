@@ -97,3 +97,25 @@ python -m pytest tests/ -v
 - Tests use fixtures for DRY principle
 - Tests validate both structure and behavior
 - Ready for TDD development cycle
+
+# Learnings — Bundle v2.0 Packaging
+
+## Workspace Structure
+- Skills live at `skills/` with hyphenated names (e.g., `task-manager`)
+- Underscore symlinks already exist (e.g., `task_manager → task-manager`) for Python imports
+- Automation modules at `automation/` — cron_setup.py, heartbeat.py, self_healing.py
+- Bundle packaging at `1ai-skills-bundle/`
+- Tests at `tests/` using pytest with `pytest.ini` config
+
+## Symlink Pairs (hyphen → underscore)
+- task-manager → task_manager
+- telegram-bot → telegram_bot
+- revenue-dashboard → revenue_dashboard
+- opportunity-scout → opportunity_scout
+- strategic-recommendations → strategic_recommendations
+- ai-services → ai_services
+
+## install.sh Design
+- 5-step process: Python check → symlinks → deps → cron validate → file verify
+- Supports --dry-run, --skip-deps, --skip-cron flags
+- 67 tests all pass in 0.65s

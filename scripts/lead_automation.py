@@ -29,19 +29,23 @@ REPORTS_DIR = Path('/home/openclaw/.openclaw/workspace/output/reports')
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 class Lead:
-    def __init__(self, shop_name: str, shop_url: str, email: str = None, status: str = 'new'):
+    def __init__(self, shop_name: str, shop_url: str, email: str = None, status: str = 'new', 
+                 created_at: str = None, last_contacted: str = None, follow_ups: List = None, 
+                 assigned_free_videos: bool = False, signed_package: Dict = None, **kwargs):
         self.shop_name = shop_name
         self.shop_url = shop_url
         self.email = email
         self.status = status
-        self.created_at = datetime.now().isoformat()
-        self.last_contacted = None
-        self.follow_ups = []
-        self.assigned_free_videos = False
-        self.signed_package = None
+        self.created_at = created_at or datetime.now().isoformat()
+        self.last_contacted = last_contacted
+        self.follow_ups = follow_ups or []
+        self.assigned_free_videos = assigned_free_videos
+        self.signed_package = signed_package
+        # Store extra fields (like those from multi_platform_research)
+        self.extra_data = kwargs
 
     def to_dict(self):
-        return {
+        data = {
             'shop_name': self.shop_name,
             'shop_url': self.shop_url,
             'email': self.email,
@@ -52,6 +56,10 @@ class Lead:
             'assigned_free_videos': self.assigned_free_videos,
             'signed_package': self.signed_package
         }
+        # Merge extra data back if needed, but for now let's keep it clean
+        if self.extra_data:
+            data.update(self.extra_data)
+        return data
 
 class LeadManager:
     def __init__(self):
@@ -62,7 +70,18 @@ class LeadManager:
         if LEADS_DB.exists():
             with open(LEADS_DB, 'r') as f:
                 data = json.load(f)
-                return [Lead(**lead) for lead in data]
+                leads = []
+                for lead_data in data:
+                    # Adapt fields from multi_platform_research
+                    if 'business_name' in lead_data and 'shop_name' not in lead_data:
+                        lead_data['shop_name'] = lead_data.pop('business_name')
+                    if 'url' in lead_data and 'shop_url' not in lead_data:
+                        lead_data['shop_url'] = lead_data.pop('url')
+                    if 'researched_at' in lead_data and 'created_at' not in lead_data:
+                        lead_data['created_at'] = lead_data.pop('researched_at')
+                    
+                    leads.append(Lead(**lead_data))
+                return leads
         return []
 
     def save_leads(self):

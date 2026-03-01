@@ -206,14 +206,16 @@ def main():
     
     # Step 1: Multi-Platform Research
     print("Step 1: Multi-Platform Research Automation")
-    print("-"*60)
-    total_leads = 0
-    if not run_multi_platform_research():
+    print("-" * 60)
+    result = run_multi_platform_research()
+    
+    if result is False:
         success = False
-    print()
+        print("❌ Multi-platform research failed")
     else:
-        total_leads = run_multi_platform_research()
+        total_leads = result
         print(f"✅ Generated {total_leads} research URLs")
+    print()
     
     # Step 2: Lead Management
     print("Step 1: Lead Management Automation")

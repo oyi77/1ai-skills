@@ -140,7 +140,8 @@ SEARCH_KEYWORDS = [
 class BusinessLead:
     def __init__(self, business_name: str, contact_info: str = None, 
                  source: str = None, platform: str = None, url: str = None,
-                 category: str = None, location: str = None):
+                 category: str = None, location: str = None, researched_at: str = None,
+                 status: str = 'new', notes: List = None, **kwargs):
         self.business_name = business_name
         self.contact_info = contact_info
         self.source = source
@@ -148,9 +149,11 @@ class BusinessLead:
         self.url = url
         self.category = category
         self.location = location
-        self.researched_at = datetime.now().isoformat()
-        self.status = 'new'
-        self.notes = []
+        self.researched_at = researched_at or datetime.now().isoformat()
+        self.status = status
+        self.notes = notes or []
+        # Store extra data
+        self.extra_data = kwargs
 
     def to_dict(self):
         return {
