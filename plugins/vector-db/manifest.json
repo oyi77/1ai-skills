@@ -1,0 +1,39 @@
+{
+  "name": "vector-db",
+  "version": "1.0.0",
+  "description": "OpenClaw plugin for vector database integrations (ZVec, PageIndex, Ruvector)",
+  "author": "Vilona AI",
+  "type": "tool",
+  "tools": [
+    "zvec",
+    "pageindex", 
+    "ruvector",
+    "semantic_search",
+    "smart_chunk"
+  ],
+  "entryPoints": {
+    "zvec": "zvec/handler.py",
+    "pageindex": "pageindex/handler.py",
+    "ruvector": "ruvector/handler.py",
+    "shared": "shared/engine.py"
+  },
+  "config": {
+    "defaultEngine": "zvec",
+    "chunkSize": 500,
+    "maxTokens": 8192,
+    "cacheEnabled": true
+  },
+  "dependencies": {
+    "python": [
+      "chromadb",
+      "sentence-transformers",
+      "numpy",
+      "tiktoken"
+    ]
+  },
+  "hooks": {
+    "memory_search": "shared/engine.py:enhance_memory_search",
+    "document_index": "pageindex/handler.py:index_document"
+  },
+  "enabled": true
+}
