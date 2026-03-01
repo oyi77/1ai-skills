@@ -1,0 +1,1402 @@
+{
+  "campaign": "GAS BLITZ",
+  "start_time": "2026-03-01T00:52:29.089771",
+  "end_time": "2026-03-01T00:55:23.121059",
+  "results": [
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "\ud83d\ude80 STARTING FACEBOOK ADS GAS BLITZ"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "======================================================================"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "\n\ud83d\udcc2 Preparing slideshow assets..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 01_agency_os_intro"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 02_aura_beauty_demo"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 03_guru_ai_content"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 04_jobmagnet_recruitment"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 05_social_media_manager"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 06_email_automation"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 07_analytics_dashboard"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 08_whatsapp_business_bot"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 09_tiktok_generator"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 10_instagram_reels"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 11_youtube_shorts"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 12_seo_optimizer"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f No slideshow assets found! Creating placeholders..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "\n\ud83d\udce2 EXECUTING SLIDESHOW BLITZ..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "======================================================================"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 1/12: 01_agency_os_intro"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:29",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:30",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:31",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:31",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:32",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:33",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:34",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:34",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:35",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:35",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:36",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:37",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:38",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:38",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:39",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:40",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:41",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:41",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:42",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:43",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:44",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 2/12: 02_aura_beauty_demo"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:44",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:44",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:45",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:46",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:47",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:47",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:48",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:48",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:49",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:50",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:51",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:51",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:52",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:53",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:54",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:54",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:55",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:56",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:57",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:57",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:58",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 3/12: 03_guru_ai_content"
+    },
+    {
+      "timestamp": "2026-03-01 00:52:58",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:52:59",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:00",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:00",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:01",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:01",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:02",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:03",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:04",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:04",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:05",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:06",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:07",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:07",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:08",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:09",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:10",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:10",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:11",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:11",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:12",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 4/12: 04_jobmagnet_recruitment"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:12",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:13",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:14",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:14",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:15",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:16",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:17",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:17",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:18",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:19",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:20",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:20",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:21",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:22",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:23",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:23",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:24",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:25",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:26",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:26",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:27",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 5/12: 05_social_media_manager"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:27",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:27",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:28",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:29",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:30",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:30",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:31",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:32",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:33",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:33",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:34",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:35",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:36",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:36",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:37",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:38",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:39",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:39",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:40",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:40",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:41",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 6/12: 06_email_automation"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:42",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:42",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:43",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:43",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:44",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:45",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:46",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:46",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:47",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:48",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:49",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:49",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:50",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:51",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:52",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:52",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:53",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:54",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:55",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:55",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:56",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 7/12: 07_analytics_dashboard"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:56",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:56",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:57",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:58",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:53:59",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:53:59",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:00",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:01",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:02",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:02",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:03",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:04",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:05",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:05",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:06",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:07",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:08",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:08",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:09",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:10",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:11",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 8/12: 08_whatsapp_business_bot"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:11",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:11",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:12",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:12",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:13",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:14",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:15",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:15",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:16",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:17",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:18",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:18",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:19",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:20",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:21",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:21",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:22",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:23",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:24",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:24",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:25",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 9/12: 09_tiktok_generator"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:25",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:26",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:27",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:27",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:28",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:29",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:30",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:30",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:31",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:32",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:33",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:33",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:34",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:34",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:35",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:36",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:37",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:37",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:38",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:39",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:40",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 10/12: 10_instagram_reels"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:40",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:40",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:41",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:41",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:42",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:43",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:44",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:44",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:45",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:46",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:47",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:47",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:48",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:49",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:50",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:50",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:51",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:52",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:53",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:53",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:54",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 11/12: 11_youtube_shorts"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:54",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:54",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:55",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:56",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:57",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:57",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:54:58",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:54:59",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:00",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:00",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:01",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:02",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:03",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:03",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:04",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:05",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:06",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:06",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:07",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:08",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:09",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 12/12: 12_seo_optimizer"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:09",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:09",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Belanja: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:10",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:10",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Stevi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:11",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:12",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Dewi Shop: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:13",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:13",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Clara Store: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:14",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:15",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Hani Fujiati: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:16",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:16",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Rahapu Developer: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:17",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:18",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Anindira: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:19",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:19",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Divya Elena: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:20",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:20",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Bunda Corla: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:21",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-03-01 00:55:22",
+      "level": "ERROR",
+      "message": "\u274c Failed to post to Sunny Aurra: {\"message\":\"Invalid or expired token, or missing user identifier.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\n======================================================================"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\ud83d\udcca BLITZ REPORT"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "======================================================================"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\u23f1\ufe0f  Duration: 174.03 seconds"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\ud83d\udce4 Total Posts: 120"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\u2705 Successful: 0"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\u274c Failed: 120"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "\ud83d\udcc8 Success Rate: 0.00%"
+    },
+    {
+      "timestamp": "2026-03-01 00:55:23",
+      "level": "INFO",
+      "message": "======================================================================"
+    }
+  ]
+}

@@ -1,0 +1,1402 @@
+{
+  "campaign": "GAS BLITZ",
+  "start_time": "2026-02-28T03:48:14.007621",
+  "end_time": "2026-02-28T03:51:14.103929",
+  "results": [
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "\ud83d\ude80 STARTING FACEBOOK ADS GAS BLITZ"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "======================================================================"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "\n\ud83d\udcc2 Preparing slideshow assets..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 01_agency_os_intro"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 02_aura_beauty_demo"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 03_guru_ai_content"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 04_jobmagnet_recruitment"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 05_social_media_manager"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 06_email_automation"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 07_analytics_dashboard"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 08_whatsapp_business_bot"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 09_tiktok_generator"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 10_instagram_reels"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 11_youtube_shorts"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f Folder not found: 12_seo_optimizer"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "WARNING",
+      "message": "\u26a0\ufe0f No slideshow assets found! Creating placeholders..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "\n\ud83d\udce2 EXECUTING SLIDESHOW BLITZ..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "======================================================================"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 1/12: 01_agency_os_intro"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:14",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225294"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:15",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:16",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225296"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:17",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:17",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225297"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:18",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:19",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225299"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:20",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:20",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225300"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:21",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:22",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225302"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:23",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:23",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225303"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:24",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:25",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225305"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:26",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:26",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225306"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:27",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:28",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225308"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:29",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 2/12: 02_aura_beauty_demo"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:29",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:29",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225309"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:30",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:31",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225311"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:32",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:32",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225312"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:33",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:34",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225314"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:35",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:35",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225315"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:36",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:37",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225317"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:38",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:38",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225318"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:39",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:40",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225320"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:41",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:41",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225321"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:42",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:43",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225323"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:44",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 3/12: 03_guru_ai_content"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:44",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:44",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225324"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:45",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:46",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225326"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:47",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:47",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225327"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:48",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:49",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225329"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:50",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:50",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225330"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:51",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:52",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225332"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:53",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:53",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225333"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:54",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:55",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225335"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:56",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:56",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225336"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:57",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:58",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225338"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:59",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 4/12: 04_jobmagnet_recruitment"
+    },
+    {
+      "timestamp": "2026-02-28 03:48:59",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:48:59",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225339"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:00",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:01",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225341"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:02",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:02",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225342"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:03",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:04",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225344"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:05",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:05",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225345"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:06",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:07",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225347"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:08",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:08",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225348"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:09",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:10",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225350"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:11",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:11",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225351"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:12",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:13",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225353"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:14",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 5/12: 05_social_media_manager"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:14",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:14",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225354"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:15",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:16",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225356"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:17",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:17",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225357"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:18",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:19",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225359"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:20",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:20",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225360"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:21",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:22",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225362"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:23",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:23",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225363"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:24",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:25",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225365"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:26",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:26",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225366"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:27",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:28",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225368"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:29",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 6/12: 06_email_automation"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:29",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:29",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225369"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:30",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:31",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225371"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:32",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:32",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225372"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:33",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:34",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225374"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:35",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:35",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225375"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:36",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:37",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225377"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:38",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:38",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225378"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:39",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:40",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225380"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:41",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:41",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225381"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:42",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:43",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225383"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:44",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 7/12: 07_analytics_dashboard"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:44",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:44",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225384"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:45",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:46",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225386"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:47",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:47",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225387"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:48",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:49",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225389"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:50",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:50",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225390"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:51",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:52",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225392"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:53",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:53",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225393"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:54",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:55",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225395"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:56",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:56",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225396"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:57",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:58",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225398"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:59",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 8/12: 08_whatsapp_business_bot"
+    },
+    {
+      "timestamp": "2026-02-28 03:49:59",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:49:59",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225399"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:00",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:01",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225401"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:02",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:02",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225402"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:03",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:04",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225404"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:05",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:05",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225405"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:06",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:07",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225407"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:08",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:08",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225408"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:09",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:10",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225410"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:11",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:11",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225411"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:12",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:13",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225413"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:14",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 9/12: 09_tiktok_generator"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:14",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:14",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225414"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:15",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:16",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225416"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:17",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:17",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225417"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:18",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:19",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225419"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:20",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:20",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225420"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:21",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:22",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225422"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:23",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:23",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225423"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:24",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:25",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225425"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:26",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:26",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225426"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:27",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:28",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225428"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:29",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 10/12: 10_instagram_reels"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:29",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:29",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225429"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:30",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:31",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225431"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:32",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:32",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225432"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:33",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:34",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225434"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:35",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:35",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225435"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:36",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:37",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225437"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:38",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:38",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225438"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:39",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:40",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225440"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:41",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:41",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225441"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:42",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:43",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225443"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:44",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 11/12: 11_youtube_shorts"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:44",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:44",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225444"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:45",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:46",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225446"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:47",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:47",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225447"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:48",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:49",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225449"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:50",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:50",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225450"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:51",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:52",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225452"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:53",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:53",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225453"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:54",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:55",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225455"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:56",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:56",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225456"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:57",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:58",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225458"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:59",
+      "level": "INFO",
+      "message": "\n\ud83c\udfac Folder 12/12: 12_seo_optimizer"
+    },
+    {
+      "timestamp": "2026-02-28 03:50:59",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Belanja..."
+    },
+    {
+      "timestamp": "2026-02-28 03:50:59",
+      "level": "INFO",
+      "message": "\u2705 Posted to Belanja (ID: 45667) - Post ID: 45667_1772225459"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:00",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Stevi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:01",
+      "level": "INFO",
+      "message": "\u2705 Posted to Stevi Shop (ID: 45668) - Post ID: 45668_1772225461"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:02",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Dewi Shop..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:02",
+      "level": "INFO",
+      "message": "\u2705 Posted to Dewi Shop (ID: 45669) - Post ID: 45669_1772225462"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:03",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Clara Store..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:04",
+      "level": "INFO",
+      "message": "\u2705 Posted to Clara Store (ID: 45670) - Post ID: 45670_1772225464"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:05",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Hani Fujiati..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:05",
+      "level": "INFO",
+      "message": "\u2705 Posted to Hani Fujiati (ID: 45671) - Post ID: 45671_1772225465"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:06",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Rahapu Developer..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:07",
+      "level": "INFO",
+      "message": "\u2705 Posted to Rahapu Developer (ID: 45672) - Post ID: 45672_1772225467"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:08",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Anindira..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:08",
+      "level": "INFO",
+      "message": "\u2705 Posted to Anindira (ID: 45673) - Post ID: 45673_1772225468"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:09",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Divya Elena..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:10",
+      "level": "INFO",
+      "message": "\u2705 Posted to Divya Elena (ID: 45674) - Post ID: 45674_1772225470"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:11",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Bunda Corla..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:11",
+      "level": "INFO",
+      "message": "\u2705 Posted to Bunda Corla (ID: 45675) - Post ID: 45675_1772225471"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:12",
+      "level": "INFO",
+      "message": "   \ud83d\udce4 Posting to Sunny Aurra..."
+    },
+    {
+      "timestamp": "2026-02-28 03:51:13",
+      "level": "INFO",
+      "message": "\u2705 Posted to Sunny Aurra (ID: 45676) - Post ID: 45676_1772225473"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\n======================================================================"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\ud83d\udcca BLITZ REPORT"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "======================================================================"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\u23f1\ufe0f  Duration: 180.10 seconds"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\ud83d\udce4 Total Posts: 120"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\u2705 Successful: 120"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\u274c Failed: 0"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "\ud83d\udcc8 Success Rate: 100.00%"
+    },
+    {
+      "timestamp": "2026-02-28 03:51:14",
+      "level": "INFO",
+      "message": "======================================================================"
+    }
+  ]
+}

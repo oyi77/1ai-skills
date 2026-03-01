@@ -1,0 +1,16 @@
+{
+  "history": [
+    {
+      "job_id": "test_cache",
+      "resolved": true,
+      "final_status": "success",
+      "total_duration_seconds": 0.01,
+      "attempts_count": 1,
+      "failure_type": "cache_corruption",
+      "error_message": "cache decode error",
+      "timestamp": "2026-02-27T20:49:26.312795+00:00"
+    }
+  ],
+  "handled_ids": [],
+  "last_updated": "2026-02-27T20:49:26.312805+00:00"
+}
