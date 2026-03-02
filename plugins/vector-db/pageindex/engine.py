@@ -15,8 +15,12 @@ except ImportError:
     SENTENCE_TRANSFORMERS_AVAILABLE = False
 
 import os
+import sys
 import re
 from typing import List, Dict, Optional
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 class PageIndexSearchResult:
     def __init__(self, content: str, score: float, metadata: Dict, source: str = "pageindex"):
@@ -38,16 +42,24 @@ class PageIndexEngine:
         self.use_google_auth = config.get('useGoogleAuth', False)
         self.model_name = 'paraphrase-multilingual-mpnet-base-v2'
         
-        # Initialize ChromaDB
+        # Initialize ChromaDB (v0.4+ compatible)
         if CHROMADB_AVAILABLE:
             self.persist_dir = os.path.expanduser("~/.openclaw/vector-cache/pageindex")
             os.makedirs(self.persist_dir, exist_ok=True)
             
-            self.client = chromadb.Client(Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory=self.persist_dir,
-                anonymized_telemetry=False
-            ))
+            # Use PersistentClient for v0.4+
+            try:
+                self.client = chromadb.PersistentClient(
+                    path=self.persist_dir,
+                    settings=Settings(anonymized_telemetry=False)
+                )
+            except AttributeError:
+                # Fallback for older versions
+                self.client = chromadb.Client(Settings(
+                    chroma_db_impl="duckdb+parquet",
+                    persist_directory=self.persist_dir,
+                    anonymized_telemetry=False
+                ))
             
             self.collection = self.client.get_or_create_collection(
                 name="pageindex_collection",

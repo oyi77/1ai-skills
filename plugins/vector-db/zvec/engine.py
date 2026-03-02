@@ -17,7 +17,11 @@ except ImportError:
     print("⚠️  SentenceTransformers not installed. Run: pip install sentence-transformers")
 
 import os
+import sys
 from typing import List, Dict, Optional
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 class ZVecSearchResult:
     def __init__(self, content: str, score: float, metadata: Dict, source: str = "zvec"):
@@ -36,19 +40,27 @@ class ZVecEngine:
     
     def __init__(self, config: Dict):
         self.config = config
-        self.model_name = config.get('model', 'bge-m3')
+        self.model_name = config.get('model', 'BAAI/bge-m3')
         self.collection_name = "zvec_collection"
         
-        # Initialize ChromaDB
+        # Initialize ChromaDB (v0.4+ compatible)
         if CHROMADB_AVAILABLE:
             self.persist_dir = os.path.expanduser("~/.openclaw/vector-cache/zvec")
             os.makedirs(self.persist_dir, exist_ok=True)
             
-            self.client = chromadb.Client(Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory=self.persist_dir,
-                anonymized_telemetry=False
-            ))
+            # Use PersistentClient for v0.4+
+            try:
+                self.client = chromadb.PersistentClient(
+                    path=self.persist_dir,
+                    settings=Settings(anonymized_telemetry=False)
+                )
+            except AttributeError:
+                # Fallback for older versions
+                self.client = chromadb.Client(Settings(
+                    chroma_db_impl="duckdb+parquet",
+                    persist_directory=self.persist_dir,
+                    anonymized_telemetry=False
+                ))
             
             self.collection = self.client.get_or_create_collection(
                 name=self.collection_name,
@@ -108,7 +120,8 @@ class ZVecEngine:
         )
         
         # Persist
-        self.client.persist()
+        if hasattr(self.client, 'persist'):
+            self.client.persist()
     
     def delete_document(self, doc_id: str):
         """Delete a document and its chunks"""
@@ -122,13 +135,14 @@ class ZVecEngine:
         
         if results['ids']:
             self.collection.delete(ids=results['ids'])
-            self.client.persist()
+            if hasattr(self.client, 'persist'):
+                self.client.persist()
 
 
 # Tool interface
 def search(query: str, top_k: int = 5) -> List[Dict]:
     """OpenClaw tool: Search ZVec"""
-    config = {'enabled': True, 'model': 'bge-m3'}
+    config = {'enabled': True, 'model': 'BAAI/bge-m3'}
     engine = ZVecEngine(config)
     results = engine.search(query, top_k)
     return [
@@ -145,7 +159,7 @@ def index(content: str, doc_id: Optional[str] = None, metadata: Dict = None) -> 
     """OpenClaw tool: Index content to ZVec"""
     from shared.engine import smart_chunk
     
-    config = {'enabled': True, 'model': 'bge-m3'}
+    config = {'enabled': True, 'model': 'BAAI/bge-m3'}
     engine = ZVecEngine(config)
     
     chunks = smart_chunk(content, 500)
@@ -157,7 +171,7 @@ def index(content: str, doc_id: Optional[str] = None, metadata: Dict = None) -> 
 if __name__ == "__main__":
     print("🧪 Testing ZVec Engine...")
     
-    config = {'enabled': True, 'model': 'bge-m3'}
+    config = {'enabled': True, 'model': 'BAAI/bge-m3'}
     engine = ZVecEngine(config)
     
     # Test indexing

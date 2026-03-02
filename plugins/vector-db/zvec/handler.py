@@ -13,7 +13,7 @@ def handler(args: dict) -> dict:
         query = args.get('query', '')
         top_k = args.get('top_k', 5)
         
-        config = {'enabled': True, 'model': 'bge-m3'}
+        config = {'enabled': True, 'model': 'BAAI/bge-m3'}
         engine = ZVecEngine(config)
         results = engine.search(query, top_k)
         
@@ -41,7 +41,7 @@ def handler(args: dict) -> dict:
         chunks = smart_chunk(content)
         doc_id = doc_id or f"doc_{hash(content) % 100000}"
         
-        config = {'enabled': True, 'model': 'bge-m3'}
+        config = {'enabled': True, 'model': 'BAAI/bge-m3'}
         engine = ZVecEngine(config)
         engine.index_chunks(chunks, doc_id, {'title': title, 'source': source})
         
@@ -53,7 +53,7 @@ def handler(args: dict) -> dict:
         }
     
     elif action == 'status':
-        config = {'enabled': True, 'model': 'bge-m3'}
+        config = {'enabled': True, 'model': 'BAAI/bge-m3'}
         engine = ZVecEngine(config)
         count = engine.collection.count() if hasattr(engine, 'collection') else 0
         
@@ -61,7 +61,7 @@ def handler(args: dict) -> dict:
             'success': True,
             'engine': 'zvec',
             'documents_indexed': count,
-            'model': 'bge-m3',
+            'model': 'BAAI/bge-m3',
             'status': 'active' if engine else 'inactive'
         }
     

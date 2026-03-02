@@ -5,6 +5,7 @@ Unified interface for ZVec, PageIndex, and Ruvector
 """
 
 import os
+import sys
 import json
 import hashlib
 from typing import List, Dict, Optional, Tuple
@@ -43,36 +44,53 @@ class VectorEngine:
             'chunkSize': 500,
             'maxTokens': 8192,
             'cacheEnabled': True,
-            'zvec': {'enabled': True, 'model': 'bge-m3'},
+            'zvec': {'enabled': True, 'model': 'BAAI/bge-m3'},
             'pageindex': {'enabled': True, 'useGoogleAuth': False},
             'ruvector': {'enabled': True, 'model': 'paraphrase-multilingual-mpnet-base-v2'}
         }
     
     def _init_engines(self):
         """Initialize available engines"""
+        # Get plugin directory for imports
+        plugin_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if plugin_dir not in sys.path:
+            sys.path.insert(0, plugin_dir)
+        
         # ZVec-style engine (using ChromaDB)
         if self.config.get('zvec', {}).get('enabled', True):
             try:
-                from zvec.engine import ZVecEngine
+                from plugins.vector_db.zvec.engine import ZVecEngine
                 self.engines['zvec'] = ZVecEngine(self.config['zvec'])
             except ImportError as e:
-                print(f"⚠️  ZVec not available: {e}")
+                try:
+                    from zvec.engine import ZVecEngine
+                    self.engines['zvec'] = ZVecEngine(self.config['zvec'])
+                except ImportError as e2:
+                    print(f"⚠️  ZVec not available: {e}, {e2}")
         
         # PageIndex-style engine
         if self.config.get('pageindex', {}).get('enabled', True):
             try:
-                from pageindex.engine import PageIndexEngine
+                from plugins.vector_db.pageindex.engine import PageIndexEngine
                 self.engines['pageindex'] = PageIndexEngine(self.config['pageindex'])
             except ImportError as e:
-                print(f"⚠️  PageIndex not available: {e}")
+                try:
+                    from pageindex.engine import PageIndexEngine
+                    self.engines['pageindex'] = PageIndexEngine(self.config['pageindex'])
+                except ImportError as e2:
+                    print(f"⚠️  PageIndex not available: {e}, {e2}")
         
         # Ruvector-style engine
         if self.config.get('ruvector', {}).get('enabled', True):
             try:
-                from ruvector.engine import RuvectorEngine
+                from plugins.vector_db.ruvector.engine import RuvectorEngine
                 self.engines['ruvector'] = RuvectorEngine(self.config['ruvector'])
             except ImportError as e:
-                print(f"⚠️  Ruvector not available: {e}")
+                try:
+                    from ruvector.engine import RuvectorEngine
+                    self.engines['ruvector'] = RuvectorEngine(self.config['ruvector'])
+                except ImportError as e2:
+                    print(f"⚠️  Ruvector not available: {e}, {e2}")
     
     def search(self, query: str, top_k: int = 5, 
                engine: Optional[str] = None) -> List[SearchResult]:

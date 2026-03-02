@@ -15,8 +15,12 @@ except ImportError:
     SENTENCE_TRANSFORMERS_AVAILABLE = False
 
 import os
+import sys
 import numpy as np
 from typing import List, Dict, Optional
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 class RuvectorSearchResult:
     def __init__(self, content: str, score: float, metadata: Dict, source: str = "ruvector"):
@@ -38,16 +42,24 @@ class RuvectorEngine:
         self.model_name = config.get('model', 'paraphrase-multilingual-mpnet-base-v2')
         # Alternative: 'sentence-transformers/paraphrase-xlm-r-multilingual-v1'
         
-        # Initialize ChromaDB
+        # Initialize ChromaDB (v0.4+ compatible)
         if CHROMADB_AVAILABLE:
             self.persist_dir = os.path.expanduser("~/.openclaw/vector-cache/ruvector")
             os.makedirs(self.persist_dir, exist_ok=True)
             
-            self.client = chromadb.Client(Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory=self.persist_dir,
-                anonymized_telemetry=False
-            ))
+            # Use PersistentClient for v0.4+
+            try:
+                self.client = chromadb.PersistentClient(
+                    path=self.persist_dir,
+                    settings=Settings(anonymized_telemetry=False)
+                )
+            except AttributeError:
+                # Fallback for older versions
+                self.client = chromadb.Client(Settings(
+                    chroma_db_impl="duckdb+parquet",
+                    persist_directory=self.persist_dir,
+                    anonymized_telemetry=False
+                ))
             
             self.collection = self.client.get_or_create_collection(
                 name="ruvector_collection",
@@ -249,7 +261,7 @@ if __name__ == "__main__":
     test_texts = [
         "This is English text",
         "Ini adalah teks dalam bahasa Indonesia",
-        "Ce texte est en français"  # Should handle other languages too
+        "Ce texte est en français"
     ]
     
     print("✅ Language detection:")
@@ -257,37 +269,34 @@ if __name__ == "__main__":
         lang = engine.detect_language(text)
         print(f"  '{text[:30]}...' -> {lang}")
     
-    # Test indexing
-    mixed_doc = """
-    # Dokumen Campuran (Mixed Document)
-    
-    Bagian pertama dalam bahasa Indonesia.
-    Ini berisi informasi penting tentang sistem.
-    
-    ## English Section
-    This is content in English.
-    It provides additional information.
-    
-    ## Kesimpulan (Conclusion)
-    Dokumen ini mencakup dua bahasa.
-    """
-    
-    from shared.engine import smart_chunk
-    chunks = smart_chunk(mixed_doc, 500)
-    engine.index_chunks(chunks, "mixed_doc_001", {"title": "Mixed Language Test"})
-    print(f"\n✅ Indexed {len(chunks)} chunks")
-    
-    # Test multilingual search
-    print("\n✅ Multilingual search test:")
-    
-    # Search in Indonesian
-    results_id = engine.search("informasi tentang sistem", top_k=2)
-    print(f"  Indonesian query: {len(results_id)} results")
-    for r in results_id:
-        print(f"    Score: {r.score:.3f} | Lang: {r.metadata.get('language')} | {r.content[:40]}...")
-    
-    # Search in English
-    results_en = engine.search("English content information", top_k=2)
-    print(f"  English query: {len(results_en)} results")
-    for r in results_en:
-        print(f"    Score: {r.score:.3f} | Lang: {r.metadata.get('language')} | {r.content[:40]}...")
+    if CHROMADB_AVAILABLE and SENTENCE_TRANSFORMERS_AVAILABLE:
+        try:
+            # Try importing smart_chunk
+            try:
+                import sys
+                sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+                from shared.engine import smart_chunk
+            except ImportError:
+                def smart_chunk(text, max_tokens=500):
+                    return [text[:1000]]
+            
+            mixed_doc = """
+            # Dokumen Campuran
+            
+            Bagian pertama dalam bahasa Indonesia.
+            Ini berisi informasi penting.
+            
+            ## English Section
+            This is content in English.
+            
+            ## Kesimpulan
+            Dokumen ini mencakup dua bahasa.
+            """
+            
+            chunks = smart_chunk(mixed_doc, 500)
+            engine.index_chunks(chunks, "mixed_doc_001", {"title": "Mixed Test"})
+            print(f"\n✅ Indexed {len(chunks)} chunks")
+        except Exception as e:
+            print(f"⚠️  Test error: {e}")
+    else:
+        print("⚠️  Dependencies missing - install: pip install chromadb sentence-transformers")

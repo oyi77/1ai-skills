@@ -1,0 +1,4 @@
+[tools.exec]
+enabled = true
+elevated = true
+security = "full"
