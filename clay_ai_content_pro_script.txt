@@ -1,0 +1,125 @@
+================================================================================
+RINGKASAN PROYEK
+================================================================================
+Topik: AI Content Pro (Rp 89.000)
+Style: Clay Art / Plasticine Diorama
+Duration: 34s
+Platform: TikTok / Instagram Reels / YouTube Shorts
+Tone: Productivity
+
+================================================================================
+SCENE BREAKDOWN
+================================================================================
+
+================================================================================
+SCENE 1 - Hook - 3s
+================================================================================
+Narrative: STOP! Ribet bikin konten?
+Visual: REALISTIC AI Content Pro in clay env
+Caption: BERHENTI!
+Clay Prompt: REALISTIC AI Content Pro product original, NOT clay
+placed inside clay art diorama environment
+handmade plasticine background
+visible fingerprint marks on clay
+smooth matte clay surface
+Malam
+Close detail
+diorama world, mini scale
+8k resolution, sharp focus
+soft bokeh clay background
+Animation: Product close-up
+
+================================================================================
+SCENE 2 - Problem - 8s
+================================================================================
+Narrative: Manual editing makan waktu...
+Visual: Clay person frustrated with laptop
+Caption: Capek ribet!
+Clay Prompt: Clay person with clay laptop
+placed inside clay art diorama environment
+handmade plasticine background
+visible fingerprint marks on clay
+smooth matte clay surface
+Indoor
+Tokoh
+diorama world, mini scale
+8k resolution, sharp focus
+soft bokeh clay background
+Animation: Frustrated movement
+
+================================================================================
+SCENE 3 - Solution - 8s
+================================================================================
+Narrative: Ada AI Content Pro!
+Visual: REALISTIC AI Content Pro in clay office
+Caption: Ada solusinya!
+Clay Prompt: REALISTIC AI Content Pro in bright clay office
+placed inside clay art diorama environment
+handmade plasticine background
+visible fingerprint marks on clay
+smooth matte clay surface
+Siang
+Bangunan
+diorama world, mini scale
+8k resolution, sharp focus
+soft bokeh clay background
+Animation: Product reveal
+
+================================================================================
+SCENE 4 - Benefits - 10s
+================================================================================
+Narrative: AI Content Pro save waktu, hemat!
+Visual: Clay people happy with product
+Caption: Kamu bisa!
+Clay Prompt: Clay people celebrating with REALISTIC product
+placed inside clay art diorama environment
+handmade plasticine background
+visible fingerprint marks on clay
+smooth matte clay surface
+Sore
+Bangunan
+diorama world, mini scale
+8k resolution, sharp focus
+soft bokeh clay background
+Animation: Group celebration
+
+================================================================================
+SCENE 5 - CTA - 5s
+================================================================================
+Narrative: Cek AI Content Pro cuma Rp 89.000!
+Visual: REALISTIC product with price tag
+Caption: Cek https://lynk.id/jendralbot/d70eo2x45em5!
+Clay Prompt: REALISTIC AI Content Pro with clay price tag
+placed inside clay art diorama environment
+handmade plasticine background
+visible fingerprint marks on clay
+smooth matte clay surface
+Indoor
+Close detail
+diorama world, mini scale
+8k resolution, sharp focus
+soft bokeh clay background
+Animation: Product pulse
+
+================================================================================
+MUSIC & AUDIO
+================================================================================
+Music: Upbeat and playful
+Tone: Whimsical and charming
+Tempo: 100-120 BPM
+Voice: Friendly character voice
+
+================================================================================
+NARRATION
+================================================================================
+STOP! Ribet bikin konten? Manual editing makan waktu... Ada AI Content Pro! AI Content Pro save waktu, hemat! Cek AI Content Pro cuma Rp 89.000! 
+
+================================================================================
+PRODUCTION GUIDE
+================================================================================
+1. Generate images using clay prompts (NVIDIA/Gemini)
+2. Create video with FFmpeg or AI tools
+3. Duration: 34s, 9:16 format
+4. Link: https://lynk.id/jendralbot/d70eo2x45em5
+5. Hashtags: #AIcontent #professional #clayart #AIautomation
+================================================================================

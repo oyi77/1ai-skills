@@ -1,0 +1,371 @@
+{
+  "report_generated": "2026-03-04T21:10:52.782978",
+  "prepared_for": "Veris (BerkahKarya) - Owner Jendralbot Store",
+  "campaign_period": "7 days rolling / 30 days total",
+  "execution_summary": {
+    "campaigns_generated": 1008,
+    "media_assets_created": {
+      "hooks": 48,
+      "captions": 48,
+      "video_scripts": 48
+    },
+    "products_processed": 12,
+    "platforms_ready": 5
+  },
+  "products_overview": {
+    "total": 12,
+    "free_products": 2,
+    "paid_products": 10,
+    "price_range": {
+      "minimum": 49000,
+      "maximum": 1000000,
+      "average": 173700
+    }
+  },
+  "revenue_projection": {
+    "conservative": {
+      "sales": 25,
+      "avg_price": 173700,
+      "projected_revenue": 4342500,
+      "target_per_product": 2,
+      "timeframe": "7 days"
+    },
+    "moderate": {
+      "sales": 50,
+      "avg_price": 173700,
+      "projected_revenue": 8685000,
+      "target_per_product": 4,
+      "timeframe": "7 days"
+    },
+    "aggressive": {
+      "sales": 100,
+      "avg_price": 173700,
+      "projected_revenue": 17370000,
+      "target_per_product": 8,
+      "timeframe": "7 days"
+    },
+    "premium_target": {
+      "sales": 10,
+      "product": "Kelas Affiliate TikTok",
+      "price": 1000000,
+      "projected_revenue": 10000000,
+      "description": "Focus on 10Kelas sales"
+    }
+  },
+  "product_categories": {
+    "AI Tools": [
+      {
+        "id": "jobmagnet_ai",
+        "name": "JobMagnet Ai",
+        "price": 75000,
+        "url": "https://lynk.id/jendralbot/45r5yvze3vy4",
+        "category": "AI Tools",
+        "target_audience": [
+          "Pencari kerja",
+          "Job seeker",
+          "AI enthusiast",
+          "Freelancer"
+        ],
+        "benefits": [
+          "AI-powered job matching",
+          "Curated job recommendations",
+          "Career development tools",
+          "Resume optimization"
+        ]
+      },
+      {
+        "id": "ai_ad_engine",
+        "name": "AI Creative & Performance Ad Engine",
+        "price": 75000,
+        "url": "https://lynk.id/jendralbot/9r8rj1o38q59",
+        "category": "AI Tools",
+        "target_audience": [
+          "Digital marketer",
+          "Agency owner",
+          "Business owner",
+          "Content creator"
+        ],
+        "benefits": [
+          "AI generates ad copies",
+          "Performance optimization",
+          "A/B testing automation",
+          "Higher ROI"
+        ]
+      },
+      {
+        "id": "food_menu_ai",
+        "name": "Food Menu Ai Studio",
+        "price": 75000,
+        "url": "https://lynk.id/jendralbot/l4q49jj3z383",
+        "category": "AI Tools",
+        "target_audience": [
+          "Restoran owner",
+          "Cafe owner",
+          "Warung",
+          "Kuliner business"
+        ],
+        "benefits": [
+          "AI generates menu with photos",
+          "Menu optimization suggestions",
+          "Pricing strategy",
+          "Menu layout design"
+        ]
+      },
+      {
+        "id": "sellpix_ai",
+        "name": "Studio Marketplace Pro (SellPix AI)",
+        "price": 75000,
+        "url": "https://lynk.id/jendralbot/emne05mm7v25",
+        "category": "AI Tools",
+        "target_audience": [
+          "Photographer",
+          "Studio owner",
+          "Digital creator",
+          "Sell photos online"
+        ],
+        "benefits": [
+          "AI photo enhancement",
+          "One-click sell online",
+          "Royalty management",
+          "Sales analytics"
+        ]
+      },
+      {
+        "id": "ai_creative_tools_5min",
+        "name": "AI Creative Tools — Bikin Konten Iklan Viral dalam 5 Menit",
+        "price": 75000,
+        "url": "https://lynk.id/jendralbot/89d30qd3ddnj",
+        "category": "AI Tools",
+        "target_audience": [
+          "Content creator",
+          "Digital marketer",
+          "Agency",
+          "Business owner"
+        ],
+        "benefits": [
+          "Generate viral ads in 5 min",
+          "AI-powered suggestions",
+          "Proven ad templates",
+          "A/B testing ready"
+        ]
+      },
+      {
+        "id": "guru_pintar_ai",
+        "name": "Guru Pintar Ai",
+        "price": 0,
+        "url": "https://lynk.id/jendralbot/6821op5e24kn",
+        "category": "AI Tools",
+        "target_audience": [
+          "Pelajar",
+          "Mahasiswa",
+          "Umum yang ingin belajar",
+          "Pecinta AI"
+        ],
+        "benefits": [
+          "AI-powered learning assistant",
+          "Gratis",
+          "Easy to use",
+          "Helpful explanations"
+        ]
+      }
+    ],
+    "Content Package": [
+      {
+        "id": "ai_content_premium",
+        "name": "AI Content Premium PACK Growth 4K",
+        "price": 149000,
+        "url": "https://lynk.id/jendralbot/5kz9yqmd2mv4",
+        "category": "Content Package",
+        "target_audience": [
+          "Content creator",
+          "Instagram/TikTok user",
+          "Business owner",
+          "Marketer"
+        ],
+        "benefits": [
+          "4K HD assets",
+          "Premium designs",
+          "Viral-ready",
+          "Rebrandable",
+          "4K resolution guarantee"
+        ]
+      },
+      {
+        "id": "starter_content_4k",
+        "name": "Starter AI Content 4K",
+        "price": 49000,
+        "url": "https://lynk.id/jendralbot/xlymwzj2jylv",
+        "category": "Content Package",
+        "target_audience": [
+          "Content creator pemula",
+          "Instagram user",
+          "TikTok user",
+          "Hemat budget"
+        ],
+        "benefits": [
+          "4K HD assets",
+          "Affordable price",
+          "Easy to use",
+          "Instant access",
+          "Professional quality"
+        ]
+      }
+    ],
+    "Business Tools": [
+      {
+        "id": "mesin_cetak_kuliner",
+        "name": "Mesin Cetak Bisnis Kulinermu",
+        "price": 75000,
+        "url": "https://lynk.id/jendralbot/kzryk28dxmpx",
+        "category": "Business Tools",
+        "target_audience": [],
+        "benefits": [
+          "Auto-generasi desain packaging",
+          "Profesional look",
+          "Hemat biaya desainer",
+          "Branding kompatibel"
+        ]
+      }
+    ],
+    "Course / Education": [
+      {
+        "id": "kelas_affiliate_tiktok",
+        "name": "Kelas Affiliate TikTok",
+        "price": 1000000,
+        "url": "https://lynk.id/jendralbot/regxdn7xkpz6",
+        "category": "Course / Education",
+        "target_audience": [
+          "Ingin jadi affiliate TikTok",
+          "Pemula TikTok",
+          "Content creator",
+          "Bisnis online"
+        ],
+        "benefits": [
+          "Comprehensive affiliate training",
+          "Viral content strategies",
+          "Monetization techniques",
+          "Support komunitas"
+        ]
+      }
+    ],
+    "Free": [
+      {
+        "id": "guru_pintar_ai",
+        "name": "Guru Pintar Ai",
+        "price": 0,
+        "url": "https://lynk.id/jendralbot/6821op5e24kn",
+        "category": "AI Tools",
+        "target_audience": [
+          "Pelajar",
+          "Mahasiswa",
+          "Umum yang ingin belajar",
+          "Pecinta AI"
+        ],
+        "benefits": [
+          "AI-powered learning assistant",
+          "Gratis",
+          "Easy to use",
+          "Helpful explanations"
+        ]
+      },
+      {
+        "id": "belanja_duit_balik",
+        "name": "Belanja Tetap Jalan Tapi Duit Balik Lagi",
+        "price": 0,
+        "url": "https://lynk.id/jendralbot/kkjk0mv1vg7o",
+        "category": "Affiliate / Cashback",
+        "target_audience": [
+          "Online shopper",
+          "Pencari cashback",
+          "Hemat uang",
+          "Affiliate marketer"
+        ],
+        "benefits": [
+          "Double cashback otomatis",
+          "Hemat jutaan per bulan",
+          "Cashback real bisa ditarik",
+          "Grup edukasi finansial"
+        ]
+      }
+    ]
+  },
+  "platform_distribution": {
+    "tiktok": 252,
+    "instagram": 252,
+    "facebook": 168,
+    "twitter": 168,
+    "youtube": 168
+  },
+  "action_items": {
+    "immediate": [
+      "1. Review all generated captions and hooks",
+      "2. Create visual content (Canva/Figma or AI image gen)",
+      "3. Record videos (UGC style or AI avatars)",
+      "4. Set up PostBridge account for scheduling",
+      "5. Connect all social media accounts",
+      "6. Launch Day 1 campaign (7 posts)",
+      "7. Monitor performance daily and adjust"
+    ],
+    "week1": [
+      "- Track click-through rates by platform",
+      "- A/B test hooks (curiosity_gaps vs problem_agitation)",
+      "- Identify best-performing products",
+      "- Scale winning content",
+      "- Build email list from FREE products"
+    ],
+    "month1": [
+      "- Double-down on 3 best products",
+      "- Create upsell flows",
+      "- Generate 100+ additional assets",
+      "- Scale TikTok/IG to 5-10 posts/day",
+      "- Launch affiliate program for Jendralbot"
+    ]
+  },
+  "key_metrics_to_track": [
+    "Impressions per platform",
+    "Click-through rate (CTR)",
+    "Conversion rate per product",
+    "Revenue per platform",
+    "Cost per acquisition (CPA)",
+    "Customer lifetime value (CLV)",
+    "Retention rate"
+  ],
+  "next_automation_features": [
+    "AI image generation for hook frames",
+    "AI video animation from scripts",
+    "Social proof scraper and integration",
+    "Email automation for FREE product leads",
+    "Retargeting audiences by product interest",
+    "A/B test winner auto-picker",
+    "Dynamic content optimization"
+  ],
+  "tools_and_skills_used": [
+    "postai-automation skill",
+    "viral-content-creator skill",
+    "content-creator skill",
+    "autopilot_affiliate_engine",
+    "Browser automation for scraping",
+    "Python automation scripts"
+  ],
+  "files_generated": {
+    "campaign_data": "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/jendralbot_campaign_output/jendralbot_run_20260304_210827.json",
+    "media_assets": "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/jendralbot_assets",
+    "product_database": "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/jendralbot_products.json",
+    "automation_scripts": [
+      "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/run_jendralbot.py",
+      "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/generate_jendralbot_assets.py"
+    ]
+  },
+  "store_info": {
+    "name": "Jendralbot Store",
+    "url": "https://lynk.id/jendralbot",
+    "total_products": 12,
+    "contact": "6282247006969 (WhatsApp)"
+  },
+  "success_criteria": {
+    "week1_success": "Rp 4-8 Juta revenue",
+    "week4_success": "Rp 15-20 Juta revenue",
+    "month1_success": "Rp 40-50 Juta revenue",
+    "key_indicators": "10+ sales across products, 1000+ leads from FREE products, 3 viral posts"
+  }
+}

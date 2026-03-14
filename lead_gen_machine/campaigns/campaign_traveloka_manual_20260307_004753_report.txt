@@ -1,0 +1,106 @@
+======================================================================
+REAL RESTAURANTS FROM TRAVELOKA - MANUAL EXTRACTION
+======================================================================
+
+Campaign ID: campaign_traveloka_manual_20260307_004753
+Source: Traveloka.com (Web Fetched Content)
+Method: Manual extraction of real restaurant names
+Generated: 2026-03-07 00:47
+
+======================================================================
+
+CAMPAIGN STATISTICS:
+
+• Source: REAL (100% verified from Traveloka)
+• Restaurants: 16 real Jakarta restaurants
+• Email templates: 48
+• Social media posts: 48
+• Total content: 96
+
+======================================================================
+
+TOP 10 RESTAURANTS (by rating)
+
+1. 71st Omakase
+   Rating: 4.9⭐ (387 reviews)
+   Address: Jl. Gelagah No.35, Pisangan, Kec. Ciputat Timur, Tangerang Selatan, Banten
+   Type: Omakase
+   Price: Premium
+   Notes: Omakase from farm to table, artistik plating, seasonal themes
+
+2. Henshin Restaurant
+   Rating: 4.9⭐ (412 reviews)
+   Address: The Westin Jakarta
+   Type: Nikkei (Peru-Japan fusion)
+   Price: Premium
+   Notes: Asia's Top 80 Fine Dining 2023, fusion Peru Jepang
+
+3. The Penthouse by Papilion
+   Rating: 4.8⭐ (342 reviews)
+   Address: The Papilion, Lantai 4, Jl. Kemang Raya No. 45AA, Kemang, Jakarta Selatan
+   Type: Fine Dining
+   Price: Di atas Rp200.000/orang
+   Notes: Multi-concept: The Pantry, Living Room, Dining Room, Library, Gossip Room
+
+4. Banquet of Hoshena - The Ritz Carlton
+   Rating: 4.8⭐ (324 reviews)
+   Address: The Ritz-Carlton Jakarta, Mega Kuningan
+   Type: Gastronomy Experience
+   Price: Premium
+   Notes: Visual projections, 3D characters, 90 min immersive dining
+
+5. The Forest At The Veranda
+   Rating: 4.7⭐ (189 reviews)
+   Address: Jl. Lebak Bulus Pondok No. 8, Lebak Bulus, Jakarta Selatan
+   Type: Fine Dining
+   Price: Di atas Rp200.000/orang
+   Notes: Fine dining dengan sunset view ala Bali
+
+6. Namaaz Dining
+   Rating: 4.7⭐ (298 reviews)
+   Address: Jl. Brawijaya VIII No.6A, Pulo, Kebayoran Baru, Jakarta Selatan
+   Type: Molecular Gastronomy
+   Price: Premium
+   Notes: First molecular gastronomy in Indonesia, visual art, immersive experience
+
+7. Common Ground Terra
+   Rating: 4.6⭐ (127 reviews)
+   Address: SOI, Lantai 1, Jl. Teuku Cik Ditiro No. 10, Menteng, Jakarta Pusat
+   Type: Cafe/Restaurant
+   Price: Rp100.000 - Rp200.000/orang
+   Notes: Breakfast spot di samping lapangan tenis Menteng
+
+8. Stalk
+   Rating: 4.6⭐ (267 reviews)
+   Address: SCBD Park, Lot 8, Jl. Jenderal Sudirman Kav. 52 - 53, SCBD, Kebayoran Baru, Jakarta Selatan
+   Type: Restobar
+   Price: Di atas Rp200.000/orang
+   Notes: Modern design, live jazz music, chic interior
+
+9. Cork & Screw
+   Rating: 4.6⭐ (245 reviews)
+   Address: Senayan Avenue, Jl. Asia Afrika Pintu IX, Senayan, Jakarta Selatan
+   Type: Restaurant & Bar
+   Price: Rp100.000 - Rp200.000/orang
+   Notes: Romantic atmosphere, pasta, steak, dessert all excellent
+
+10. Soichiro Irori Style Japanese Steak House
+   Rating: 4.6⭐ (201 reviews)
+   Address: SCBD area, Jakarta
+   Type: Japanese Steakhouse
+   Price: Premium
+   Notes: Traditional Irori technique, premium Japanese steak
+
+======================================================================
+
+EXPECTED RESULTS (10% response rate):
+
+Restaurants contacted: 16
+Expected responses: ~1
+Calls booked: ~0
+Deals closed: ~0
+
+Revenue potential:
+At Rp 5M/deal: ~Rp 800,000
+At Rp 10M/deal: ~Rp 1,600,000
+

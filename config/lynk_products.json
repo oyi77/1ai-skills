@@ -1,0 +1,61 @@
+{
+  "products": [
+    {
+      "name": "Mesin Cetak Bisnis Kuliner",
+      "slug": "kzryk28dxmpx",
+      "price": 0,
+      "type": "free"
+    },
+    {
+      "name": "Guru Pintar AI",
+      "slug": "6821op5e24kn",
+      "price": 49000,
+      "type": "paid"
+    },
+    {
+      "name": "AI Creative Tools",
+      "slug": "89d30qd3ddnj",
+      "price": 0,
+      "type": "free"
+    },
+    {
+      "name": "Studio Marketplace Pro (SellPix)",
+      "slug": "emne05mm7v25",
+      "price": 79000,
+      "type": "paid"
+    },
+    {
+      "name": "Belanja Duit Balik",
+      "slug": "kkjk0mv1vg7o",
+      "price": 59000,
+      "type": "paid"
+    },
+    {
+      "name": "JobMagnet AI",
+      "slug": "45r5yvze3vy4",
+      "price": 0,
+      "type": "free"
+    },
+    {
+      "name": "Food Menu AI Studio",
+      "slug": "l4q49jj3z383",
+      "price": 0,
+      "type": "free"
+    },
+    {
+      "name": "AI Creative & Performance Ad Engine",
+      "slug": "9r8rj1o38q59",
+      "price": 0,
+      "type": "paid"
+    },
+    {
+      "name": "Kelas Affiliate Pesugihan TikTok",
+      "slug": "regxdn7xkpz6",
+      "price": 0,
+      "type": "paid"
+    }
+  ],
+  "base_url": "https://lynk.id/jendralbot",
+  "profile_url": "https://lynk.id/jendralbot",
+  "updated": "2026-03-13"
+}

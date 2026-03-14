@@ -1,0 +1,43 @@
+{
+  "products": [
+    {
+      "name": "Mesin Cetak Bisnis Kulinermu",
+      "price": "IDR 75K",
+      "type": "Business Tool",
+      "lynk": "https://lynk.id/jendralbot/mesin-cetak-bisnis-kulinermu",
+      "hooks_file": "temp/viral_hooks_mesin_kuliner.json",
+      "hooks_count": 51,
+      "status": "ready"
+    },
+    {
+      "name": "AI Content Pro Seller",
+      "price": "IDR 89K",
+      "type": "Advanced",
+      "lynk": "https://lynk.id/jendralbot/ai-content-pro-seller",
+      "hooks_file": "output/viral-tiktok-hooks-ai-content-pro.json",
+      "hooks_count": 50,
+      "status": "ready"
+    },
+    {
+      "name": "Starter AI Content 4K",
+      "price": "IDR 49K",
+      "type": "Entry Level",
+      "lynk": "https://lynk.id/jendralbot/starter-ai-content-4k",
+      "hooks_file": "viral_hooks_starter_4k.json",
+      "hooks_count": 50,
+      "status": "ready"
+    }
+  ],
+  "metadata": {
+    "total_hooks": 151,
+    "created": "2026-03-07",
+    "format": "TikTok 9:16, Post 4:5 vertical",
+    "style": "Dark background, white text"
+  },
+  "platforms": ["TikTok", "IG Reels", "YouTube Shorts"],
+  "posting_schedule": {
+    "tiktok": "18 posts/day (7-8 PM peak)",
+    "ig_reels": "18 posts/day (7-8 PM peak)",
+    "youtube_shorts": "18 posts/day (7-8 PM peak)"
+  }
+}

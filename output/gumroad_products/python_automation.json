@@ -1,0 +1,15 @@
+{
+  "title": "Python Automation Starter Pack",
+  "scripts": [
+    "web_scraper.py - Scrape any website to CSV",
+    "email_sender.py - Bulk email sender with templates",
+    "social_poster.py - Auto-post to social media",
+    "file_organizer.py - Organize files by type/date",
+    "pdf_merger.py - Merge/split PDFs",
+    "image_resizer.py - Bulk resize images",
+    "data_cleaner.py - Clean CSV/Excel data",
+    "api_monitor.py - Monitor API uptime",
+    "invoice_generator.py - Auto-generate invoices",
+    "backup_automator.py - Automated backups"
+  ]
+}

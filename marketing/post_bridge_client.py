@@ -87,8 +87,8 @@ class PostBridgeClient:
                 # Some APIs wrap in {"data": [...]}
                 accounts = accounts.get("data", accounts.get("accounts", []))
             self._accounts_cache = accounts
-            log.info(f"📋 Found {len(accounts)} connected accounts: "
-                     f"{[f'{a.get(\"platform\")}:{a.get(\"username\")}' for a in accounts]}")
+            account_list = [f'{a.get("platform")}:{a.get("username")}' for a in accounts]
+            log.info(f"📋 Found {len(accounts)} connected accounts: {account_list}")
             return accounts
         except Exception as e:
             log.error(f"Failed to fetch social accounts: {e}")

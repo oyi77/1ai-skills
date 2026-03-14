@@ -1,0 +1,41 @@
+{
+  "channel_type": "restoration",
+  "content_style": "satisfying ASMR restoration",
+  
+  "crosspost_targets": {
+    "tiktok": [48374, 48336, 48337],
+    "youtube_shorts": [47690, 49678],
+    "facebook_reels": [49672, 48171, 49667],
+    "threads": [49644, 49612],
+    "instagram_reels": [49682, 49676]
+  },
+  
+  "posting_schedule": {
+    "slot_1": "08:00",
+    "slot_2": "12:00", 
+    "slot_3": "18:00",
+    "slot_4": "21:00"
+  },
+  
+  "caption_template": "✨ Satisfying Restoration ✨\n\n{description}\n\nFollow for more! 🔧\n\n#restoration #satisfying #asmr #beforeandafter #oddlysatisfying #cleaning #transform #rustytoshine",
+  
+  "video_prompts_generated": [
+    "Rusty pocket knife restoration",
+    "Antique hammer restoration",
+    "Vintage camera lens restoration", 
+    "Rusty wristwatch restoration",
+    "Old bicycle restoration"
+  ],
+  
+  "monetization_path": {
+    "phase_1": "Build audience (1K subs)",
+    "phase_2": "Apply YPP (10M Shorts views)",
+    "phase_3": "Ad revenue + affiliate links"
+  },
+  
+  "estimated_per_video_reach": {
+    "tiktok": "5K-50K views",
+    "youtube_shorts": "1K-20K views",
+    "facebook": "2K-10K views"
+  }
+}

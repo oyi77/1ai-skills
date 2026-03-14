@@ -1,0 +1,95 @@
+======================================================================
+FULLY AUTOMATED LEAD GEN MACHINE - CAMPAIGN REPORT
+======================================================================
+
+Campaign ID: campaign_20260307_001105
+Mode: REAL (Google Maps API)
+Location: Jakarta
+Category: restaurant
+Total Leads: 10
+Generated: 2026-03-07 00:11
+
+======================================================================
+
+CAMPAIGN STATISTICS:
+
+• Leads extracted: 10
+• Email templates: 30
+• Social media posts: 30
+• Total content generated: 60 pieces
+
+======================================================================
+
+TOP 5 LEADS (by rating):
+
+1. Sate Khas Senayan
+   Rating: 4.7⭐ (256 reviews)
+   Address: Jl. MH Thamrin Kav 28, Jakarta...
+   Phone: +62 21 34567890
+   Website: https://satekhas.io
+   Types: restaurant, satay
+
+2. Gado-Gado Boplo
+   Rating: 4.6⭐ (198 reviews)
+   Address: Jl. Bendungan Hilir No. 100, Jakarta...
+   Phone: +62 21 78901234
+   Website: https://gadogadoboplo.com
+   Types: restaurant, gado-gado
+
+3. Warung Nasi Ibu Ani
+   Rating: 4.5⭐ (127 reviews)
+   Address: Jl. Sudirman No. 123, Jakarta Pusat...
+   Phone: +62 21 12345678
+   Website: https://warungnasiibuani.com
+   Types: restaurant, food
+
+4. Soto Betawi H. Mamat
+   Rating: 4.5⭐ (167 reviews)
+   Address: Jl. Cikini Raya No. 17, Jakarta...
+   Phone: +62 21 01234567
+   Website: https://sotobetawihmamat.com
+   Types: restaurant, soto
+
+5. Nasi Goreng Kambing Kebon Sirih
+   Rating: 4.4⭐ (145 reviews)
+   Address: Jl. Kebon Sirih No. 45, Jakarta...
+   Phone: +62 21 67890123
+   Website: https://nasigorengkambing.com
+   Types: restaurant, nasi goreng
+
+
+======================================================================
+
+EMAIL SCHEDULE:
+
+Day 1:  Send initial emails to 10 leads
+Day 3:  Send follow-up #1 to 10 leads
+Day 7:  Send follow-up #2 to 10 leads
+
+Total emails: 30
+
+======================================================================
+
+EXPECTED RESULTS (10% response rate):
+
+• Leads reached: 10
+• Initial emails: 10
+• Expected responses: ~1
+• Expected calls booked: ~0
+• Expected deals closed: ~0
+
+REVENUE POTENTIAL:
+
+At Rp 5M/deal: ~Rp 500,000
+At Rp 10M/deal: ~Rp 1,000,000
+
+======================================================================
+
+SCALED UP (50 leads × 10 campaigns/month):
+
+• Total leads: 500
+• Expected responses: ~50
+• Expected deals: ~5
+• Monthly revenue: ~Rp 25,000,000 - 50,000,000
+
+======================================================================

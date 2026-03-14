@@ -1,0 +1,33 @@
+{
+  "date": "2026-03-14",
+  "phases": {
+    "research": {
+      "status": "done",
+      "file": "/home/openclaw/.openclaw/workspace/content_suite/output/2026-03-14/trends.json"
+    },
+    "plan": {
+      "status": "done",
+      "file": "/home/openclaw/.openclaw/workspace/content_suite/output/2026-03-14/plan.json",
+      "count": 9
+    },
+    "produce": {
+      "status": "done",
+      "file": "/home/openclaw/.openclaw/workspace/content_suite/output/2026-03-14/produced.json",
+      "count": 9,
+      "with_image": 9
+    },
+    "review": {
+      "status": "done",
+      "approved": 7,
+      "rejected": 2
+    },
+    "publish": {
+      "status": "done",
+      "scheduled": 14,
+      "failed": 0,
+      "file": "/home/openclaw/.openclaw/workspace/content_suite/output/2026-03-14/schedule_log.json"
+    }
+  },
+  "posts_scheduled": 42,
+  "errors": []
+}

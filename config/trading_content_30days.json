@@ -1,0 +1,64 @@
+{
+  "plan": "30 Days Trading Education Content",
+  "target_accounts": {
+    "digital_product": {
+      "youtube": [49816],
+      "twitter": [49814],
+      "threads": [49811],
+      "instagram": [49810]
+    },
+    "brand_agency": {
+      "instagram": [47681],
+      "threads": [49658],
+      "tiktok_jasakontenai": []
+    },
+    "video_accounts": [49816, 49810, 49811, 49814],
+    "all_ids": [49816, 49814, 49811, 49810]
+  },
+  "prime_times_wib": ["07:00", "12:00", "15:00", "18:00", "21:00"],
+  "prime_times_utc": ["00:00", "05:00", "08:00", "11:00", "14:00"],
+  "format_mix": {
+    "video_clip_10s": 2,
+    "carousel_5slides": 2,
+    "text_tip": 1
+  },
+  "credits_budget": {
+    "available": 1224,
+    "video_per_day": 6,
+    "total_video_30days": 180,
+    "carousel_per_day": 0,
+    "text_per_day": 0
+  },
+  "topics": [
+    {"day": 1,  "theme": "Stop Loss Basics", "subtopics": ["Apa itu stop loss", "Kenapa wajib pasang SL", "SL percentage rule", "SL vs mental stop", "Quiz: SL placement"]},
+    {"day": 2,  "theme": "Risk Management 101", "subtopics": ["Risk per trade 1-2%", "Risk:Reward ratio", "Position sizing", "Account preservation", "Risk management checklist"]},
+    {"day": 3,  "theme": "Candlestick Patterns", "subtopics": ["Doji explained", "Engulfing pattern", "Hammer & Shooting star", "Morning/Evening star", "Pattern quiz"]},
+    {"day": 4,  "theme": "Support & Resistance", "subtopics": ["How to draw S/R", "S/R flip zones", "Round numbers as S/R", "Multi-timeframe S/R", "S/R trading strategy"]},
+    {"day": 5,  "theme": "Fibonacci Retracement", "subtopics": ["What is Fibonacci", "Key levels 38.2/50/61.8", "How to draw Fib", "Fib + S/R confluence", "Golden ratio trading"]},
+    {"day": 6,  "theme": "Trend Analysis", "subtopics": ["Uptrend vs downtrend", "Higher highs higher lows", "Trendline drawing", "Trend = your friend", "When trends reverse"]},
+    {"day": 7,  "theme": "Moving Averages", "subtopics": ["SMA vs EMA", "MA 20/50/200", "Golden cross/death cross", "MA as dynamic S/R", "MA trading strategy"]},
+    {"day": 8,  "theme": "Trading Psychology", "subtopics": ["Fear vs greed", "FOMO is the enemy", "Revenge trading trap", "Patience pays", "Trading journal habit"]},
+    {"day": 9,  "theme": "Money Management", "subtopics": ["Never risk rent money", "Compounding explained", "Drawdown recovery math", "Scaling in/out", "Capital allocation"]},
+    {"day": 10, "theme": "Chart Timeframes", "subtopics": ["M15 vs H1 vs D1", "Multi-timeframe analysis", "Top-down approach", "Scalping vs swing", "Best timeframe for beginners"]},
+    {"day": 11, "theme": "XAUUSD Gold Trading", "subtopics": ["Why trade gold", "Gold market hours", "Gold vs forex pairs", "Gold volatility tips", "Gold trading mistakes"]},
+    {"day": 12, "theme": "Trading Sessions", "subtopics": ["Asian session traits", "London session power", "NY session volatility", "Session overlaps", "Best session for gold"]},
+    {"day": 13, "theme": "Order Types", "subtopics": ["Market vs limit order", "Buy stop vs buy limit", "Take profit explained", "Trailing stop", "OCO orders"]},
+    {"day": 14, "theme": "Breakout Trading", "subtopics": ["What is breakout", "Breakout vs fakeout", "Volume confirmation", "Range breakout setup", "Breakout entry rules"]},
+    {"day": 15, "theme": "Reversal Patterns", "subtopics": ["Double top/bottom", "Head and shoulders", "V-shape reversal", "Exhaustion candles", "Reversal confirmation"]},
+    {"day": 16, "theme": "RSI Indicator", "subtopics": ["RSI explained", "Overbought/oversold", "RSI divergence", "RSI + price action", "RSI trading mistakes"]},
+    {"day": 17, "theme": "MACD Indicator", "subtopics": ["MACD components", "Signal line crossover", "MACD histogram", "MACD divergence", "MACD + trend filter"]},
+    {"day": 18, "theme": "Price Action Trading", "subtopics": ["Clean chart trading", "Pin bar strategy", "Inside bar setup", "Engulfing entry", "Price action vs indicators"]},
+    {"day": 19, "theme": "Trading Plan", "subtopics": ["Why need a plan", "Plan components", "Entry/exit rules", "Trading checklist", "Plan vs emotion"]},
+    {"day": 20, "theme": "Backtesting", "subtopics": ["What is backtesting", "Manual vs auto backtest", "Win rate calculation", "Profit factor explained", "Backtesting mistakes"]},
+    {"day": 21, "theme": "Leverage & Margin", "subtopics": ["Leverage explained", "Margin call danger", "Safe leverage levels", "Leverage vs lot size", "Overleveraging kills"]},
+    {"day": 22, "theme": "News Trading", "subtopics": ["Economic calendar", "NFP impact on gold", "FOMC meetings", "CPI & inflation data", "News trading risks"]},
+    {"day": 23, "theme": "Trading Mistakes", "subtopics": ["Top 5 beginner mistakes", "Overtrading habit", "Moving stop loss", "No plan no profit", "Learning from losses"]},
+    {"day": 24, "theme": "Algorithmic Trading Intro", "subtopics": ["What is algo trading", "EA/Bot basics", "Algo vs manual", "Backtest before live", "Algo trading myths"]},
+    {"day": 25, "theme": "Risk:Reward Deep Dive", "subtopics": ["1:2 minimum rule", "Calculating R:R", "R:R with win rate", "Asymmetric returns", "R:R optimization"]},
+    {"day": 26, "theme": "Market Structure", "subtopics": ["BOS explained", "CHoCH pattern", "Order blocks", "Fair value gaps", "Smart money concepts"]},
+    {"day": 27, "theme": "Correlation Trading", "subtopics": ["DXY vs gold", "USD pairs correlation", "Correlation coefficient", "Hedging with correlation", "Correlation changes"]},
+    {"day": 28, "theme": "Trading Routine", "subtopics": ["Morning routine", "Pre-market analysis", "Trade review process", "Weekend preparation", "Consistency habit"]},
+    {"day": 29, "theme": "Scaling Your Trading", "subtopics": ["Paper to live transition", "Increasing lot size", "Multiple strategies", "Funded accounts", "Trading as business"]},
+    {"day": 30, "theme": "Trading Mastery Summary", "subtopics": ["30 days recap", "Key takeaways", "Your trading edge", "Next steps", "Join community CTA"]}
+  ]
+}

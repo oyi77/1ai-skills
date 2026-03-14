@@ -1,0 +1,38 @@
+{
+  "content_routing": {
+    "shopee_affiliate": {
+      "description": "Product review, diskon, promo Shopee",
+      "tiktok": [48374, 48336, 48337],
+      "youtube": [47690],
+      "threads": [49644, 49612, 49614],
+      "facebook": [49611, 49609, 45675, 45673]
+    },
+    "health_wellness": {
+      "description": "Tips kesehatan, herbal, wellness",
+      "tiktok": [49642, 48372, 48338, 48373, 48335],
+      "facebook": [48177]
+    },
+    "food_recipe": {
+      "description": "Resep, cooking, dapur",
+      "youtube": [49636, 45629],
+      "threads": [49634, 49618],
+      "facebook": [49633]
+    },
+    "fb_engagement": {
+      "description": "Viral, entertainment, engagement",
+      "facebook": [49667, 49668, 49670, 48171, 49603, 49669, 49665, 49672, 49664, 49666, 48174, 49671, 48170, 48178, 49675, 49601, 49674]
+    },
+    "trading_edu": {
+      "description": "Trading education, algo, finance",
+      "youtube": [49816],
+      "twitter": [49814],
+      "threads": [49811],
+      "instagram": [49810]
+    }
+  },
+  "video_only_accounts": {
+    "youtube": [47690, 49636, 45629, 49816, 49678],
+    "tiktok": [48374, 48336, 48337, 49642, 48372, 48338, 48373, 48335],
+    "instagram_reels": [49810, 49682, 49676]
+  }
+}

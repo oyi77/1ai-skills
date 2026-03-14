@@ -1,0 +1,21 @@
+{
+  "timestamp": 1773251053.932554,
+  "providers": {
+    "nvidia": {
+      "status": "healthy",
+      "message": "Key present"
+    },
+    "byteplus": {
+      "status": "down",
+      "message": "Known limit reached (SetLimitExceeded)"
+    },
+    "xai": {
+      "status": "healthy",
+      "message": "Key present"
+    },
+    "openai": {
+      "status": "healthy",
+      "message": "Key present"
+    }
+  }
+}

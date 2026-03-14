@@ -1,0 +1,369 @@
+{
+  "date": "2026-03-13",
+  "summary": {
+    "total_analytics_records": 4,
+    "total_posts": 500,
+    "total_post_results": 500,
+    "total_views": 469,
+    "total_likes": 3,
+    "total_comments": 0,
+    "total_shares": 0,
+    "overall_engagement_rate": 0.6397
+  },
+  "platform_breakdown": {
+    "tiktok": {
+      "views": 370,
+      "likes": 3,
+      "comments": 0,
+      "shares": 0,
+      "posts": 2,
+      "avg_views_per_post": 185.0,
+      "avg_engagement_rate": 1.0563
+    },
+    "youtube": {
+      "views": 99,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "posts": 2,
+      "avg_views_per_post": 49.5,
+      "avg_engagement_rate": 0.0
+    }
+  },
+  "content_types": {
+    "cashback": {
+      "posts": 1,
+      "total_views": 142,
+      "total_likes": 3,
+      "avg_views_per_post": 142.0,
+      "avg_engagement_rate": 2.1127,
+      "examples": [
+        {
+          "platform": "tiktok",
+          "views": 142,
+          "hook": "personal_story",
+          "url": "https://www.tiktok.com/@jasakontenai/video/7613417658423250192?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso"
+        }
+      ]
+    },
+    "viral_hook": {
+      "posts": 3,
+      "total_views": 327,
+      "total_likes": 0,
+      "avg_views_per_post": 109.0,
+      "avg_engagement_rate": 0.0,
+      "examples": [
+        {
+          "platform": "youtube",
+          "views": 0,
+          "hook": "value_hook",
+          "url": "https://www.youtube.com/watch?v=mmhjPOLvxrQ"
+        },
+        {
+          "platform": "youtube",
+          "views": 99,
+          "hook": "value_hook",
+          "url": "https://www.youtube.com/watch?v=Jm4M9FkVQH8"
+        },
+        {
+          "platform": "tiktok",
+          "views": 228,
+          "hook": "value_hook",
+          "url": "https://www.tiktok.com/@jasakontenai/video/7613696341297941778?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso"
+        }
+      ]
+    }
+  },
+  "funnel": {
+    "funnel_stages": {
+      "1_views": {
+        "count": 469,
+        "label": "Total Video Views",
+        "drop_off_pct": 0.0
+      },
+      "2_engagement": {
+        "count": 3,
+        "label": "Total Engagements (likes+comments+shares)",
+        "drop_off_pct": 99.4
+      },
+      "3_profile_visits_est": {
+        "count": 14,
+        "label": "Estimated Profile Visits (3% of views)",
+        "drop_off_pct": 97.0,
+        "is_estimate": true
+      },
+      "4_lynk_clicks": {
+        "count": 196,
+        "label": "LYNK Link Clicks",
+        "drop_off_pct": -1300.0
+      },
+      "5_sales": {
+        "count": 0,
+        "label": "Confirmed Sales",
+        "drop_off_pct": 100.0
+      }
+    },
+    "conversion_rates": {
+      "view_to_click": "41.791%",
+      "click_to_sale": "0.0%",
+      "view_to_sale": "0.0%",
+      "engagement_rate": "0.6397%"
+    },
+    "bottleneck": "reach",
+    "recommendation": "CRITICAL: Need more views. Post more content, optimize hooks. Target 10K+ views.",
+    "raw_counts": {
+      "views": 469,
+      "engagement": 3,
+      "lynk_clicks": 196,
+      "sales": 0
+    },
+    "analyzed_at": "2026-03-13T00:53:24.573414"
+  },
+  "trend": {
+    "growth": {
+      "trend": "growing",
+      "growth_pct": 130.3,
+      "first_half_views": 142,
+      "second_half_views": 327,
+      "first_period": "2026-03-04 \u2192 2026-03-04",
+      "second_period": "2026-03-05 \u2192 2026-03-06"
+    },
+    "platform_trends": {
+      "youtube": {
+        "trend": "declining",
+        "growth_pct": -100.0,
+        "first_half_views": 99,
+        "second_half_views": 0,
+        "first_period": "2026-03-05 \u2192 2026-03-05",
+        "second_period": "2026-03-06 \u2192 2026-03-06"
+      },
+      "tiktok": {
+        "trend": "growing",
+        "growth_pct": 60.6,
+        "first_half_views": 142,
+        "second_half_views": 228,
+        "first_period": "2026-03-04 \u2192 2026-03-04",
+        "second_period": "2026-03-05 \u2192 2026-03-05"
+      }
+    },
+    "best_times": [
+      {
+        "hour": "16:00",
+        "posts": 2,
+        "total_views": 327,
+        "total_engagement": 0,
+        "avg_views": 163.5
+      },
+      {
+        "hour": "22:00",
+        "posts": 1,
+        "total_views": 142,
+        "total_engagement": 3,
+        "avg_views": 142.0
+      },
+      {
+        "hour": "11:00",
+        "posts": 1,
+        "total_views": 0,
+        "total_engagement": 0,
+        "avg_views": 0.0
+      }
+    ],
+    "best_days": [
+      {
+        "day": "Thursday",
+        "posts": 2,
+        "total_views": 327,
+        "avg_views": 163.5
+      },
+      {
+        "day": "Wednesday",
+        "posts": 1,
+        "total_views": 142,
+        "avg_views": 142.0
+      },
+      {
+        "day": "Friday",
+        "posts": 1,
+        "total_views": 0,
+        "avg_views": 0.0
+      }
+    ]
+  },
+  "roi": {
+    "status": "NO REVENUE \u2014 INVESTMENT STAGE \ud83d\udd34",
+    "investment": {
+      "total_cost_idr": 1083333,
+      "cost_per_post_idr": 2167,
+      "num_posts": 500,
+      "cost_breakdown": {
+        "api_cost": 0,
+        "ai_generation": 500,
+        "time_cost": 1667
+      }
+    },
+    "revenue": {
+      "sales": 0,
+      "avg_price_idr": 49000,
+      "gross_revenue_idr": 0,
+      "platform_fee_idr": 0,
+      "net_revenue_idr": 0
+    },
+    "profitability": {
+      "profit_idr": -1083333,
+      "roi_pct": -100.0
+    },
+    "unit_economics": {
+      "cost_per_view_idr": 2309.88,
+      "cost_per_click_idr": 5527,
+      "cost_per_engagement_idr": 361111,
+      "revenue_per_post_idr": 0
+    },
+    "break_even": {
+      "sales_needed": 23,
+      "views_needed_est": 23000,
+      "explanation": "Need 23 sales at avg IDR 49,000 to cover IDR 1,083,333 investment"
+    },
+    "totals": {
+      "views": 469,
+      "engagement": 3,
+      "lynk_clicks": 196
+    },
+    "calculated_at": "2026-03-13T00:53:24.574317"
+  },
+  "optimization": {
+    "critical_count": 3,
+    "recommendations": [
+      {
+        "priority": "CRITICAL",
+        "category": "volume",
+        "action": "POST MORE \u2014 current volume is too low",
+        "reason": "Only 469 total views. Need 10K+ for meaningful funnel data.",
+        "metric": "Target: 50+ posts/day across all platforms",
+        "urgency": "today"
+      },
+      {
+        "priority": "CRITICAL",
+        "category": "technical",
+        "action": "FIX Instagram \u2014 ALL posts need media (images/videos)",
+        "reason": "40 Instagram posts FAILED due to missing media",
+        "metric": "0% success rate on Instagram text-only posts",
+        "urgency": "today",
+        "fix": "Always attach image/video when posting to Instagram. Use /v1/media/create-upload-url first."
+      },
+      {
+        "priority": "CRITICAL",
+        "category": "conversion",
+        "action": "AUDIT LYNK.ID landing page \u2014 196 clicks \u2192 0 sales is broken",
+        "reason": "CTR exists but conversion is 0%. Page or product is not converting.",
+        "metric": "196 clicks, 0 sales = 0% conversion (industry: 1-3%)",
+        "urgency": "today",
+        "suggestions": [
+          "Review LYNK page product descriptions",
+          "Check if price IDR 49-89K is appropriate for audience",
+          "Add social proof / testimonials",
+          "Test free product funnel first (MOVA)",
+          "Add urgency / scarcity messaging"
+        ]
+      },
+      {
+        "priority": "HIGH",
+        "category": "platform",
+        "action": "DOUBLE DOWN on TIKTOK",
+        "reason": "Best performer: 185.0 avg views/post, score 100.0/100",
+        "metric": "tiktok: 185.0 avg views vs others",
+        "urgency": "immediate"
+      },
+      {
+        "priority": "HIGH",
+        "category": "content_type",
+        "action": "CREATE MORE 'CASHBACK' content",
+        "reason": "Best content type: 142.0 avg views, 2.1127% ER",
+        "metric": "1 posts \u2192 142 total views",
+        "urgency": "immediate"
+      },
+      {
+        "priority": "MEDIUM",
+        "category": "timing",
+        "action": "SCHEDULE POSTS for 16:00 WIB (peak time)",
+        "reason": "Highest avg views at 16:00",
+        "metric": "Data from 2 posts",
+        "urgency": "this_week"
+      }
+    ],
+    "action_plan": {
+      "today": [
+        "POST MORE \u2014 current volume is too low",
+        "FIX Instagram \u2014 ALL posts need media (images/videos)",
+        "AUDIT LYNK.ID landing page \u2014 196 clicks \u2192 0 sales is broken"
+      ],
+      "this_week": [
+        "SCHEDULE POSTS for 16:00 WIB (peak time)"
+      ],
+      "ongoing": [
+        "DOUBLE DOWN on TIKTOK",
+        "CREATE MORE 'CASHBACK' content"
+      ],
+      "priority_count": {
+        "CRITICAL": 3,
+        "HIGH": 2,
+        "MEDIUM": 1
+      }
+    }
+  },
+  "ab_tests": {
+    "hook_winner": "personal_story",
+    "platform_winner": "tiktok",
+    "caption_length_winner": "long (200+ chars)"
+  },
+  "errors": {
+    "tiktok": {
+      "success": 0,
+      "failed": 196,
+      "total": 196,
+      "success_rate": 0.0,
+      "error_types": {
+        "No files provided": 196
+      },
+      "examples": [
+        "No files provided",
+        "No files provided"
+      ]
+    },
+    "instagram": {
+      "success": 0,
+      "failed": 166,
+      "total": 166,
+      "success_rate": 0.0,
+      "error_types": {
+        "no_media_files": 166
+      },
+      "examples": [
+        "No supported media files found. Instagram only supports images and videos.",
+        "No supported media files found. Instagram only supports images and videos."
+      ]
+    },
+    "facebook": {
+      "success": 129,
+      "failed": 0,
+      "total": 129,
+      "success_rate": 100.0,
+      "error_types": {},
+      "examples": []
+    },
+    "twitter": {
+      "success": 1,
+      "failed": 8,
+      "total": 9,
+      "success_rate": 11.1,
+      "error_types": {
+        "Failed to post to Twitter: Request failed with cod": 8
+      },
+      "examples": [
+        "Failed to post to Twitter: Request failed with code 403",
+        "Failed to post to Twitter: Request failed with code 403"
+      ]
+    }
+  },
+  "generated_at": "2026-03-13T00:53:24.574324"
+}

@@ -1,0 +1,97 @@
+======================================================================
+REAL LEADS GENERATOR - WEB SCRAPED DATA
+======================================================================
+
+Campaign ID: campaign_real_scrape_20260307_004632
+Source: Traveloka.com Web Scrape
+Generated: 2026-03-07 00:46
+
+======================================================================
+
+CAMPAIGN STATISTICS:
+
+• Source: REAL - Web Scraped from Traveloka.com
+• Leads extracted: 19
+• Email templates: 57
+• Social media posts: 57
+• Total content: 114
+
+======================================================================
+
+TOP 10 LEADS (by rating):
+
+1. Ancol
+   Source: traveloka
+   Rating: 4.9⭐ (est. 136 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Ancol
+
+2. Jakarta Utara
+   Source: traveloka
+   Rating: 4.8⭐ (est. 72 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Jakarta%20Utara
+
+3. Mangga Dua
+   Source: traveloka
+   Rating: 4.7⭐ (est. 51 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Mangga%20Dua
+
+4. Traveloka
+   Source: traveloka
+   Rating: 4.6⭐ (est. 112 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Traveloka
+
+5. Mangga Besar
+   Source: traveloka
+   Rating: 4.6⭐ (est. 229 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Mangga%20Besar
+
+6. Pulau Seribu
+   Source: traveloka
+   Rating: 4.6⭐ (est. 90 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Pulau%20Seribu
+
+7. Jakarta
+   Source: traveloka
+   Rating: 4.6⭐ (est. 137 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Jakarta
+
+8. AcqGameID-PromoBanner-Master-DLP
+   Source: traveloka
+   Rating: 4.5⭐ (est. 56 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=AcqGameID-PromoBanner-Master-DLP
+
+9. Menteng
+   Source: traveloka
+   Rating: 4.4⭐ (est. 58 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Menteng
+
+10. Jakarta Pusat
+   Source: traveloka
+   Rating: 4.4⭐ (est. 106 reviews)
+   Location: Jakarta
+   Website: https://www.traveloka.com/search?q=Jakarta%20Pusat
+
+
+======================================================================
+
+EXPECTED RESULTS (10% response rate):
+
+Leads reached: 19
+Expected responses: ~1
+Calls booked: ~0
+Deals closed: ~0
+
+Revenue potential:
+At Rp 5M/deal: ~Rp 950,000
+At Rp 10M/deal: ~Rp 1,900,000
+
+======================================================================

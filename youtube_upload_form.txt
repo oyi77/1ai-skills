@@ -1,0 +1,73 @@
+
+═════════════════════════════════════════════════════════════════════
+🎬 YOUTUBE UPLOAD INSTRUCTIONS (MANUAL)
+═════════════════════════════════════════════════════════════════════
+
+Step 1: Open YouTube Studio
+   → Go to: https://studio.youtube.com
+   → Login with your YouTube account
+
+Step 2: Upload Videos
+   → Click "Create" → "Upload videos"
+   → Select videos from: ~/.openclaw/workspace/videos/
+
+Step 3: Upload Settings (For each video)
+   Privacy: "Unlisted" or "Public" (Recommended: Unlisted first)
+   Title: [Product Name] - [Price] - Jendralbot
+   Example: "Starter AI Content - Rp 49.000 - Jendralbot"
+
+Step 4: Description
+   Copy caption from POSTING_GUIDE_TODAY.md
+
+Step 5: Tags
+   Copy hashtags from caption
+
+Step 6: After Upload Complete:
+   → Click "Share" or copy video URL
+   → Format: https://www.youtube.com/watch?v=VIDEO_ID
+   → Copy this URL!
+
+═════════════════════════════════════════════════════════════════════
+📋 VIDEOS TO UPLOAD:
+═════════════════════════════════════════════════════════════════════
+
+
+
+╔═══════════════════════════════════════════════════════════════════╗
+║  YOUTUBE UPLOAD FORM - FILL AFTER UPLOADING EACH VIDEO            ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+Copy each video URL here after uploading to YouTube:
+
+1. Starter AI Content (Rp 49.000)
+   Video: starter_ai_content_shorts.mp4
+   URL: ______________________________________________
+
+2. Studio Marketplace Pro (Rp 75.000)
+   Video: studio_marketplace_pro_shorts.mp4
+   URL: ______________________________________________
+
+3. Mesin Cetak Kuliner (Rp 75.000)
+   Video: mesin_cetak_kuliner_shorts.mp4
+   URL: ______________________________________________
+
+4. AI Content Pro (Rp 89.000)
+   Video: ai_content_pro_shorts.mp4
+   URL: ______________________________________________
+
+5. Guru Pintar AI (GRATIS)
+   Video: guru_pintar_ai_shorts.mp4
+   URL: ______________________________________________
+
+6. Belanja Duit Balik (GRATIS)
+   Video: belanja_duit_balik_shorts.mp4
+   URL: ______________________________________________
+
+═════════════════════════════════════════════════════════════════════
+
+After filling ALL URLs:
+→ Run: python3 scripts/postbridge_poster.py
+→ Enter each URL when prompted
+→ Videos will be posted to all TikTok accounts!
+
+═════════════════════════════════════════════════════════════════════

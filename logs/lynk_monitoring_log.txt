@@ -1,0 +1,167 @@
+[
+  {
+    "timestamp": "2026-03-12T21:00:01.890954",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-12T21:00:01.890496",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T00:00:01.388701",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-13T00:00:01.388352",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T03:00:02.138610",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-13T03:00:02.138158",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T06:00:01.525712",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-13T06:00:01.525147",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T09:00:01.280814",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-13T09:00:01.280449",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T12:00:01.697240",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-13T12:00:01.696861",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T15:00:01.353767",
+    "checkpoint": {
+      "created_at": "2026-03-08T18:00:01.903492",
+      "last_check": "2026-03-13T15:00:01.353399",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T18:00:01.845874",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-13T18:00:01.845617",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-13T21:00:01.539085",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-13T21:00:01.538669",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T00:00:01.181676",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-14T00:00:01.179791",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T03:00:01.642074",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-14T03:00:01.641464",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T06:00:01.787668",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-14T06:00:01.783089",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T09:00:01.657138",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-14T09:00:01.656745",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T12:00:01.780494",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-14T12:00:01.779025",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T15:00:01.940786",
+    "checkpoint": {
+      "created_at": "2026-03-13T18:00:01.845342",
+      "last_check": "2026-03-14T15:00:01.940322",
+      "last_revenue": null,
+      "last_views": null,
+      "last_clicks": null,
+      "status": "Manual check required"
+    }
+  }
+]

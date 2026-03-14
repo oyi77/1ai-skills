@@ -1,0 +1,13 @@
+GENERATED: 2026-03-14T16:30:01.609856
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-14T16:30:01.608256
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page

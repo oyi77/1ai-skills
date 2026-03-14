@@ -16,6 +16,13 @@ except ImportError:
     SENTENCE_TRANSFORMERS_AVAILABLE = False
     print("⚠️  SentenceTransformers not installed. Run: pip install sentence-transformers")
 
+# OpenAI embeddings fallback
+try:
+    import openai
+    OPENAI_AVAILABLE = True
+except ImportError:
+    OPENAI_AVAILABLE = False
+
 import os
 import sys
 from typing import List, Dict, Optional
@@ -32,9 +39,9 @@ class ZVecSearchResult:
 
 class ZVecEngine:
     """
-    ZVec-style Vector Database
+    ZVec-style Vector Database with fallback embeddings
     - Uses ChromaDB for storage
-    - BGE-M3 for embeddings (multilingual)
+    - Multiple embedding models with automatic fallback
     - Optimized for similarity search
     """
     
@@ -48,14 +55,12 @@ class ZVecEngine:
             self.persist_dir = os.path.expanduser("~/.openclaw/vector-cache/zvec")
             os.makedirs(self.persist_dir, exist_ok=True)
             
-            # Use PersistentClient for v0.4+
             try:
                 self.client = chromadb.PersistentClient(
                     path=self.persist_dir,
                     settings=Settings(anonymized_telemetry=False)
                 )
             except AttributeError:
-                # Fallback for older versions
                 self.client = chromadb.Client(Settings(
                     chroma_db_impl="duckdb+parquet",
                     persist_directory=self.persist_dir,
@@ -67,23 +72,96 @@ class ZVecEngine:
                 metadata={"hnsw:space": "cosine"}
             )
         
-        # Initialize embedding model
-        if SENTENCE_TRANSFORMERS_AVAILABLE:
-            self.model = SentenceTransformer(self.model_name)
+        # Initialize embedding model with fallback
+        self.model = self._init_embedding_model()
+    
+    def _init_embedding_model(self):
+        """Initialize embedding model with fallback chain"""
+        models = []
+        
+        # Priority 1: BGE-M3 (multilingual, high quality)
+        try:
+            from sentence_transformers import SentenceTransformer
+            models.append(('BAAI/bge-m3', SentenceTransformer('BAAI/bge-m3')))
+            print("✅ Using BGE-M3 embedding model")
+        except Exception as e:
+            print(f"⚠️  BGE-M3 unavailable: {e}")
+        
+        # Priority 2: MiniLM (faster, single language)
+        try:
+            from sentence_transformers import SentenceTransformer
+            models.append(('all-MiniLM-L6-v2', SentenceTransformer('all-MiniLM-L6-v2')))
+            print("✅ Using MiniLM fallback model")
+        except Exception as e:
+            print(f"⚠️  MiniLM unavailable: {e}")
+        
+        # Priority 3: OpenAI embeddings (as fallback)
+        if OPENAI_AVAILABLE:
+            try:
+                api_key = os.getenv("OPENAI_API_KEY", "")
+                if api_key:
+                    openai.api_key = api_key
+                    models.append(('openai/text-embedding-3-small', None))  # Will use OpenAI directly
+                    print("✅ OpenAI embeddings available as fallback")
+                else:
+                    print("⚠️  OPENAI_API_KEY not set")
+            except Exception as e:
+                print(f"⚠️  OpenAI init failed: {e}")
+        
+        if not models:
+            print("❌ No embedding models available!")
+            return None
+        
+        # Use best available model
+        return models[0][1] if models[0][1] else models[0][0]
+    
+    def _get_embeddings(self, texts: List[str]) -> List[List[float]]:
+        """
+        Get embeddings with automatic fallback
+        """
+        if self.model is None:
+            raise Exception("No embedding model available")
+        
+        # If using OpenAI as model (not instantiated)
+        if isinstance(self.model, str) and self.model.startswith('openai'):
+            try:
+                import openai
+                embeddings = []
+                for text in texts:
+                    response = openai.Embedding.create(
+                        input=text,
+                        model="text-embedding-3-small"
+                    )
+                    embeddings.append(response['data'][0]['embedding'])
+                return embeddings
+            except Exception as e:
+                print(f"⚠️  OpenAI failed, trying fallback...")
+                # Fall back to local models
+        
+        # Use local models
+        return self.model.encode(texts).tolist()
     
     def search(self, query: str, top_k: int = 5) -> List[ZVecSearchResult]:
-        """Semantic search using ZVec"""
-        if not CHROMADB_AVAILABLE or not SENTENCE_TRANSFORMERS_AVAILABLE:
+        """Semantic search using ZVec with fallback"""
+        if not CHROMADB_AVAILABLE:
             return []
         
-        # Generate query embedding
-        query_emb = self.model.encode(query).tolist()
+        # Generate query embedding with fallback
+        try:
+            query_emb = self._get_embeddings([query])[0]
+        except Exception as e:
+            print(f"⚠️  Embedding generation failed: {e}")
+            return []
         
         # Search
-        results = self.collection.query(
-            query_embeddings=[query_emb],
-            n_results=top_k
-        )
+        try:
+            results = self.collection.query(
+                query_embeddings=[query_emb],
+                n_results=top_k
+            )
+        except Exception as e:
+            print(f"⚠️  Collection query failed: {e}")
+            return []
         
         # Format results
         search_results = []
@@ -100,43 +178,52 @@ class ZVecEngine:
     
     def index_chunks(self, chunks: List[str], doc_id: str, metadata: Optional[Dict] = None):
         """Index document chunks"""
-        if not CHROMADB_AVAILABLE or not SENTENCE_TRANSFORMERS_AVAILABLE:
+        if not CHROMADB_AVAILABLE:
             return
         
         metadata = metadata or {}
         
-        # Generate embeddings
-        embeddings = self.model.encode(chunks).tolist()
+        # Generate embeddings with fallback
+        try:
+            embeddings = self._get_embeddings(chunks)
+        except Exception as e:
+            print(f"⚠️  Embedding generation failed: {e}")
+            return
         
         # Create IDs
         ids = [f"{doc_id}_chunk_{i}" for i in range(len(chunks))]
         
         # Add to collection
-        self.collection.add(
-            embeddings=embeddings,
-            documents=chunks,
-            ids=ids,
-            metadatas=[{**metadata, 'chunk_index': i} for i in range(len(chunks))]
-        )
-        
-        # Persist
-        if hasattr(self.client, 'persist'):
-            self.client.persist()
+        try:
+            self.collection.add(
+                embeddings=embeddings,
+                documents=chunks,
+                ids=ids,
+                metadatas=[{**metadata, 'chunk_index': i} for i in range(len(chunks))]
+            )
+            
+            # Persist
+            if hasattr(self.client, 'persist'):
+                self.client.persist()
+        except Exception as e:
+            print(f"⚠️  Collection add failed: {e}")
     
     def delete_document(self, doc_id: str):
         """Delete a document and its chunks"""
         if not CHROMADB_AVAILABLE:
             return
         
-        # Get all IDs matching doc_id
-        results = self.collection.get(
-            where={"doc_id": doc_id}
-        )
-        
-        if results['ids']:
-            self.collection.delete(ids=results['ids'])
-            if hasattr(self.client, 'persist'):
-                self.client.persist()
+        try:
+            results = self.collection.get(
+                where={"doc_id": doc_id}
+            )
+            
+            if results['ids']:
+                self.collection.delete(ids=results['ids'])
+                if hasattr(self.client, 'persist'):
+                    self.client.persist()
+        except Exception as e:
+            print(f"⚠️  Delete failed: {e}")
 
 
 # Tool interface
@@ -155,44 +242,18 @@ def search(query: str, top_k: int = 5) -> List[Dict]:
         for r in results
     ]
 
-def index(content: str, doc_id: Optional[str] = None, metadata: Dict = None) -> str:
-    """OpenClaw tool: Index content to ZVec"""
-    from shared.engine import smart_chunk
-    
-    config = {'enabled': True, 'model': 'BAAI/bge-m3'}
-    engine = ZVecEngine(config)
-    
-    chunks = smart_chunk(content, 500)
-    doc_id = doc_id or f"doc_{hash(content) % 100000}"
-    
-    engine.index_chunks(chunks, doc_id, metadata)
-    return doc_id
-
 if __name__ == "__main__":
-    print("🧪 Testing ZVec Engine...")
+    # Test
+    print("=" * 60)
+    print("ZVec Engine - Fallback Test")
+    print("=" * 60)
     
-    config = {'enabled': True, 'model': 'BAAI/bge-m3'}
-    engine = ZVecEngine(config)
-    
-    # Test indexing
-    test_doc = """
-    # Test Document
-    This is a test document about OpenClaw plugins.
-    The plugin system makes it easy to extend functionality.
-    
-    ## Features
-    - Semantic search
-    - Document chunking
-    - Multiple engines
-    """
-    
-    from shared.engine import smart_chunk
-    chunks = smart_chunk(test_doc, 500)
-    engine.index_chunks(chunks, "test_doc_001", {"title": "Test"})
-    print(f"✅ Indexed {len(chunks)} chunks")
+    engine = ZVecEngine({})
     
     # Test search
-    results = engine.search("OpenClaw plugins", top_k=3)
-    print(f"✅ Found {len(results)} results")
+    results = engine.search("trading strategy", top_k=3)
+    
+    print(f"\nResults: {len(results)}")
     for r in results:
-        print(f"  Score: {r.score:.3f} | {r.content[:50]}...")
+        print(f"Score: {r.score:.3f}")
+        print(f"Content: {r.content[:100]}...")

@@ -1,0 +1,56 @@
+======================================================================
+FULLY AUTOMATED LEAD GEN MACHINE - ALL IN PRODUCTION
+======================================================================
+
+Campaign ID: campaign_allin_20260307_002235
+Mode: PRODUCTION - ALL IN
+API: Legacy Places API (Working)
+Generated: 2026-03-07 00:22
+
+======================================================================
+
+CAMPAIGN STATISTICS:
+
+• Searches performed: 5
+• Leads extracted: 0
+• Email templates: 0
+• Social media posts: 0
+• Total content: 0
+
+SEARCH BREAKDOWN:
+
+• restaurant in Jakarta
+• restaurant in Surabaya
+• restaurant in Bandung
+• cafe in Jakarta
+• bakery in Jakarta
+
+======================================================================
+
+TOP 10 LEADS (by rating):
+
+
+======================================================================
+
+EXPECTED RESULTS (10% response rate):
+
+Leads reached: 0
+Expected responses: ~0
+Calls booked: ~0
+Deals closed: ~0
+
+Revenue potential:
+At Rp 5M/deal: ~Rp 0
+At Rp 10M/deal: ~Rp 0
+
+======================================================================
+
+SCALED UP (run 20 campaigns/month):
+
+Monthly leads: 0
+Expected responses: ~0
+Calls booked: ~0
+Deals closed: ~0
+Monthly revenue: ~Rp 0 - 0
+
+======================================================================

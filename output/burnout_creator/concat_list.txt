@@ -1,6 +1,0 @@
-file '/home/openclaw/.openclaw/workspace/output/burnout_creator/clips/scene_1_composed.mp4'
-file '/home/openclaw/.openclaw/workspace/output/burnout_creator/clips/scene_2_composed.mp4'
-file '/home/openclaw/.openclaw/workspace/output/burnout_creator/clips/scene_3_composed.mp4'
-file '/home/openclaw/.openclaw/workspace/output/burnout_creator/clips/scene_4_composed.mp4'
-file '/home/openclaw/.openclaw/workspace/output/burnout_creator/clips/scene_5_composed.mp4'
-file '/home/openclaw/.openclaw/workspace/output/burnout_creator/clips/scene_6_composed.mp4'

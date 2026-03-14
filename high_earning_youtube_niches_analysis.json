@@ -1,0 +1,507 @@
+{
+  "analysis_date": "2026-03-10",
+  "target_market": "International (US/UK/Europe)",
+  "methodology": "AI-generated content focus - Analyzed highest CPM niches, AI generation feasibility, monetization potential, and real-world successful channels",
+  "top_niches": [
+    {
+      "rank": 1,
+      "niche": "Personal Finance & Investment Education",
+      "cpm_range": "$12-$22",
+      "estimated_monthly_revenue": "$5,000-$50,000",
+      "search_volume": "High",
+      "competition": "Medium",
+      "ai_feasibility": "EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 10,
+      "ai_generation_difficulty": 2,
+      "time_to_$1k_per_month": "3-6 months",
+      "top_channels": [
+        {
+          "name": "Ben Felix",
+          "subscribers": "1.5M+",
+          "monthly_views": "N/A",
+          "content_style": "Evidence-based investing, academic research, portfolio management"
+        },
+        {
+          "name": "Various faceless finance channels",
+          "subscribers": "500K-1M",
+          "monthly_views": "2-5M",
+          "content_style": "Stock analysis, crypto education, real estate investment"
+        }
+      ],
+      "viral_topics": [
+        "Index fund vs stock picking",
+        "How to invest $1000",
+        "Retirement planning strategies",
+        "Crypto vs traditional investments",
+        "Real estate investing for beginners"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'The Scientific Way to Invest $10,000 in 2026' - analyze research-backed strategies with charts and data, (2) 'Why 90% of Traders Fail (And How to Be in the Top 10%)' - use AI-generated statistics and visual explanations, (3) 'Index Funds vs ETFs vs Individual Stocks: Complete Comparison' - side-by-side analysis with animated visuals, (4) 'Recession-Proof Your Portfolio: 7 Assets to Own Now' - data-driven recommendations, (5) 'The Truth About Passive Income: 4 Strategies That Actually Work' - debunk myths with real examples",
+      "generation_tools": "ChatGPT/Ollama for scripts, Midjourney/DALL-E for charts/visuals, ElevenLabs/Murf for voiceover, Canva for data visualization, stock footage platforms",
+      "challenges": "Requires financial accuracy, regulatory compliance considerations (not financial advice disclaimers), high competition from established channels, need to stay current with market trends"
+    },
+    {
+      "rank": 2,
+      "niche": "Science & Educational Explaners",
+      "cpm_range": "$9-$14",
+      "estimated_monthly_revenue": "$3,000-$30,000",
+      "search_volume": "High",
+      "competition": "Medium-High",
+      "ai_feasibility": "MEDIUM-EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 9,
+      "ai_generation_difficulty": 3,
+      "time_to_$1k_per_month": "4-8 months",
+      "top_channels": [
+        {
+          "name": "Kurzgesagt",
+          "subscribers": "23.3M+",
+          "monthly_views": "20M+",
+          "content_style": "Animated science explainers, space, biology, physics concepts"
+        },
+        {
+          "name": "Two Minute Papers",
+          "subscribers": "1.5M+",
+          "monthly_views": "3-5M",
+          "content_style": "AI research papers explained, cutting-edge technology"
+        },
+        {
+          "name": "Primer",
+          "subscribers": "900K+",
+          "monthly_views": "2-4M",
+          "content_style": "History, politics, social science animated explanations"
+        }
+      ],
+      "viral_topics": [
+        "How quantum computers work",
+        "The science of black holes",
+        "Climate change: What science tells us",
+        "AI and the future of humanity",
+        "Evolutionary biology explained"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'Quantum Computing in 10 Minutes: What You Need to Know' - use AI-generated visual metaphors and animations, (2) 'The Science of Memory: How Your Brain Actually Works' - illustrate neural networks and memory formation, (3) 'Black Holes Explained: What Happens When You Fall In?' - combine stunning visuals with clear explanations, (4) 'CRISPR and the Future of Genetics: Designer Babies?' - balanced scientific exploration with ethical considerations, (5) 'The Mathematics of Chaos: Why Weather is Unpredictable' - beautiful fractal visualizations",
+      "generation_tools": "Katalist.ai, Runway ML, Pika Labs for video generation, ChatGPT for script simplification, stock footage (Pexels, Storyblocks), animation libraries, professional voice synthesis",
+      "challenges": "High production quality expectations, strong competition from established channels, need for accurate scientific information, requires longer videos (10-20 minutes) for in-depth topics, more complex visuals than other niches"
+    },
+    {
+      "rank": 3,
+      "niche": "Make Money Online & Business Automation",
+      "cpm_range": "$15-$20",
+      "estimated_monthly_revenue": "$4,000-$40,000",
+      "search_volume": "High",
+      "competition": "High",
+      "ai_feasibility": "EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 9,
+      "ai_generation_difficulty": 2,
+      "time_to_$1k_per_month": "2-5 months",
+      "top_channels": [
+        {
+          "name": "Ali Abdaal (faceless versions exist)",
+          "subscribers": "5M+",
+          "monthly_views": "10M+",
+          "content_style": "Productivity, business strategies, entrepreneurship"
+        },
+        {
+          "name": "Mark Tilbury (faceless versions)",
+          "subscribers": "2M+",
+          "monthly_views": "5-8M",
+          "content_style": "Business education, money-making strategies"
+        },
+        {
+          "name": "BRIGHT SIDE",
+          "subscribers": "44M+",
+          "monthly_views": "50M+",
+          "content_style": "General education, life hacks, business topics"
+        }
+      ],
+      "viral_topics": [
+        "7 side hustles that pay $100/hour",
+        "How to start a business with $0",
+        "Passive income ideas for 2026",
+        "AI tools that automate business",
+        "Dropshipping vs affiliate marketing"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'I Tried 7 Side Hustles in 30 Days: Here's What Actually Made Money' - document real experiments with AI voiceover and screen captures, (2) 'The 10 AI Tools That Will Replace Your Job (If You Don't Use Them)' - walkthrough demonstrations with screen recording, (3) 'How People Are Making $10K/Month on YouTube Without Showing Their Face' - case studies and step-by-step breakdowns, (4) 'The Truth About Passive Income: 5 Myths Debunked' - analyze real data and examples, (5) 'ChatGPT Side Hustle: 7 Ways to Make Money with AI' - practical tutorial style",
+      "generation_tools": "OBS for screen recording, ChatGPT for research and scripts, stock business footage, AI avatars (Synthesia/HeyGen), Canva for infographics, affiliate link tracking platforms",
+      "challenges": "Highly saturated market, authenticity concerns (need to show real results), YouTube algorithm may flag generic \"make money\" content, requires constant trend monitoring to stay relevant"
+    },
+    {
+      "rank": 4,
+      "niche": "Personal Development & Motivation",
+      "cpm_range": "$6-$12",
+      "estimated_monthly_revenue": "$2,000-$25,000",
+      "search_volume": "High",
+      "competition": "High",
+      "ai_feasibility": "EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 8,
+      "ai_generation_difficulty": 2,
+      "time_to_$1k_per_month": "3-7 months",
+      "top_channels": [
+        {
+          "name": "Motiversity",
+          "subscribers": "6M+",
+          "monthly_views": "10M+",
+          "content_style": "Motivational speeches with background visuals"
+        },
+        {
+          "name": "Ben Lionel Scott",
+          "subscribers": "3M+",
+          "monthly_views": "5-8M",
+          "content_style": "Fitness and life motivation, curated content"
+        },
+        {
+          "name": "The Art of Improvement",
+          "subscribers": "1M+",
+          "monthly_views": "2-4M",
+          "content_style": "Self-improvement, productivity, stoicism"
+        },
+        {
+          "name": "Einzelgänger",
+          "subscribers": "3M+",
+          "monthly_views": "5M+",
+          "content_style": "Philosophical self-improvement, stoicism"
+        }
+      ],
+      "viral_topics": [
+        "The comfort zone is killing you",
+        "How to build self-discipline",
+        "10 morning habits of successful people",
+        "The psychology of success",
+        "Overcoming procrastination"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'Why Your Comfort Zone is Destroying Your Life (And How to Break Free)' - powerful narration with motivational imagery, (2) 'The 7 Habits of Self-Made Millionaires (Backed by Science)' - research-based with compelling visuals, (3) 'How I Built Unbreakable Self-Discipline in 90 Days' - journey-style with actionable steps, (4) 'The Neuroscience of Motivation: Dopamine and Success' - educational yet motivational approach, (5) 'Stoic Rules for Life That Will Change Everything' - timeless wisdom with modern application",
+      "generation_tools": "Premium stock footage (envato elements), AI voiceover with emotional delivery (ElevenLabs custom voices), cinematic music libraries (Epidemic Sound), ChatGPT for script writing, Canva for thumbnail design",
+      "challenges": "Extremely competitive, requires emotional impact in voice delivery, repetitive content formats, need for constant fresh angles, engagement depends heavily on music and pacing quality"
+    },
+    {
+      "rank": 5,
+      "niche": "Technology & AI Tutorials",
+      "cpm_range": "$8-$12",
+      "estimated_monthly_revenue": "$3,000-$20,000",
+      "search_volume": "High",
+      "competition": "Medium",
+      "ai_feasibility": "EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 8,
+      "ai_generation_difficulty": 2,
+      "time_to_$1k_per_month": "3-6 months",
+      "top_channels": [
+        {
+          "name": "AI Explained",
+          "subscribers": "1M+",
+          "monthly_views": "2-4M",
+          "content_style": "AI developments explained, deep analysis"
+        },
+        {
+          "name": "Matthew Berman",
+          "subscribers": "500K+",
+          "monthly_views": "1-3M",
+          "content_style": "Open source AI, LLM tutorials, coding"
+        },
+        {
+          "name": "CodeWithHarry (faceless versions exist)",
+          "subscribers": "5M+",
+          "monthly_views": "8-12M",
+          "content_style": "Coding tutorials, programming education"
+        }
+      ],
+      "viral_topics": [
+        "ChatGPT alternatives you need to try",
+        "AI tools that save 10 hours per week",
+        "How to use ChatGPT for business",
+        "The future of AI in 2026",
+        "No-code AI tools for beginners"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'The 10 AI Tools That Will Replace Your Job (If You Don't Use Them)' - screen-recorded demonstrations, (2) 'How to Build Your Own AI Chatbot in 10 Minutes' - step-by-step tutorial, (3) 'ChatGPT-5 vs GPT-4: What's Actually New?' - feature comparison with examples, (4) '7 AI Side Hustles That Are Actually Working in 2026' - detailed walkthroughs, (5) 'The Complete Guide to Using AI for Content Creation' - comprehensive tutorial",
+      "generation_tools": "OBS for screen recording, AI coding assistants (Cursor, GitHub Copilot), ChatGPT for code explanations, stock tech footage, AI avatar generation (Synthesia), video editing with AI enhancements (Runway)",
+      "challenges": "Rapidly changing AI landscape requires constant content updates, technical accuracy critical, some tutorials require actual coding/usage demonstrations (not fully AI), need to stay current with new AI releases"
+    },
+    {
+      "rank": 6,
+      "niche": "Health, Fitness & Wellness",
+      "cpm_range": "$5-$12",
+      "estimated_monthly_revenue": "$1,500-$15,000",
+      "search_volume": "High",
+      "competition": "High",
+      "ai_feasibility": "EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 7,
+      "ai_generation_difficulty": 2,
+      "time_to_$1k_per_month": "4-9 months",
+      "top_channels": [
+        {
+          "name": "Trainer Winny",
+          "subscribers": "799K+",
+          "monthly_views": "3-5M",
+          "content_style": "Health and fitness with 2D animations, AI voiceovers"
+        },
+        {
+          "name": "Athlean-X (faceless versions)",
+          "subscribers": "13M+",
+          "monthly_views": "20-30M",
+          "content_style": "Science-based fitness, workout demonstrations"
+        },
+        {
+          "name": "MadFit",
+          "subscribers": "8M+",
+          "monthly_views": "15-20M",
+          "content_style": "Home workouts, exercise tutorials"
+        }
+      ],
+      "viral_topics": [
+        "10-minute full body workout at home",
+        "Intermittent fasting for beginners",
+        "The science of weight loss",
+        "Foods that boost metabolism",
+        "Stretches for lower back pain"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'The 10-Minute HIIT Workout That Burns 300 Calories' - AI-generated exercise demonstrations, (2) 'Intermittent Fasting: What Science Actually Says' - research-based with animated visuals, (3) '5 Foods That Destroy Your Metabolism (And What to Eat Instead)' - nutritional breakdown with food visuals, (4) 'The Truth About Supplements: What Actually Works?' - scientific analysis with data visualizations, (5) 'How to Fix Forward Head Posture in 30 Days' - practical exercises with animated guides",
+      "generation_tools": "AI exercise animation (CapCut templates, Loom AI), ChatGPT for workout design and nutritional research, stock fitness footage, exercise animation libraries, AI voiceover (energetic delivery), music licensing for workout motivation",
+      "challenges": "Exercise accuracy critical (wrong form causes harm), fitness content saturated, mental health topics require careful handling, medical disclaimer requirements, health niche may attract scrutiny from YouTube's policy team"
+    },
+    {
+      "rank": 7,
+      "niche": "Product Reviews (Software & Digital Services)",
+      "cpm_range": "$8-$12",
+      "estimated_monthly_revenue": "$2,000-$15,000",
+      "search_volume": "Medium-High",
+      "competition": "Medium",
+      "ai_feasibility": "MEDIUM-HARD",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 7,
+      "ai_generation_difficulty": 4,
+      "time_to_$1k_per_month": "5-10 months",
+      "top_channels": [
+        {
+          "name": "Tech review channels (faceless)",
+          "subscribers": "500K-1M",
+          "monthly_views": "2-4M",
+          "content_style": "Software reviews, SaaS comparisons"
+        },
+        {
+          "name": "SaaS review channels",
+          "subscribers": "200K-500K",
+          "monthly_views": "1-2M",
+          "content_style": "Digital product reviews, tutorials"
+        }
+      ],
+      "viral_topics": [
+        "Notion vs Obsidian: The Ultimate Comparison",
+        "Best AI tools for content creators 2026",
+        "Canva vs Figma for beginners",
+        "Project management software reviewed",
+        "Video editing AI tools compared"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'Notion vs Obsidian: Which Should You Use in 2026?' - side-by-side comparison with screen captures, (2) 'I Tested 10 AI Writing Tools: Here's the Best One' - genuine testing with AI voiceover, (3) 'The 7 AI Video Generators That Actually Work' - demo each tool's output, (4) 'Canva vs Figma: Complete Comparison for Non-Designers' - detailed feature breakdown, (5) 'The Best Project Management Tools (Tested and Ranked)' - hands-on reviews with real project examples",
+      "generation_tools": "Actual software testing (can't fully automate), screen recording (OBS, Loom), AI voiceover for commentary, stock footage for B-roll, video editing with product highlights, affiliate link integration",
+      "challenges": "CANNOT be fully AI-generated - requires actual hands-on testing for credibility, viewers want to see real software usage, authenticity concerns if not actually testing, product demos take significant time, software updates may invalidate old reviews"
+    },
+    {
+      "rank": 8,
+      "niche": "Gaming (Gameplay with AI Commentary)",
+      "cpm_range": "$1-$3",
+      "estimated_monthly_revenue": "$500-$5,000",
+      "search_volume": "Very High",
+      "competition": "Very High",
+      "ai_feasibility": "EASY",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 5,
+      "ai_generation_difficulty": 1,
+      "time_to_$1k_per_month": "6-12 months",
+      "top_channels": [
+        {
+          "name": "No commentary gaming channels",
+          "subscribers": "1M-5M",
+          "monthly_views": "5-10M",
+          "content_style": "Pure gameplay with text/music"
+        },
+        {
+          "name": "AI commentary gaming",
+          "subscribers": "500K-1M",
+          "monthly_views": "2-5M",
+          "content_style": "Gameplay with AI voice analysis"
+        }
+      ],
+      "viral_topics": [
+        "AI playing Minecraft perfectly",
+        "Speedrun explanations and tutorials",
+        "Easter eggs you missed",
+        "Game mechanics explained",
+        "Best gaming moments compilations"
+      ],
+      "content_examples": "3-5 video ideas: (1) 'Can AI Beat Elden Ring? First Attempt' - AI attempts gameplay with commentary, (2) '10 Secret Mechanics in [Popular Game] You Never Noticed' - hidden features explained, (3) 'The Complete Guide to [Game Name]: Beginner to Pro' - comprehensive tutorial, (4) 'AI vs Human: Who Builds Faster?' - creative mode competitions, (5) 'Top 100 Best Gaming Moments of 2025' - compilation with AI commentary",
+      "generation_tools": "Game capture software (OBS), AI voice synthesis for commentary, video editing with highlight detection, music libraries, thumbnail generators, gaming clip compilation tools",
+      "challenges": "Very low CPM compared to other niches, requires high view counts for meaningful revenue, extremely saturated, gameplay can get repetitive, need fresh angles constantly, copyright issues with game footage"
+    },
+    {
+      "rank": 9,
+      "niche": "How-To & Educational Guides",
+      "cpm_range": "$6-$11",
+      "estimated_monthly_revenue": "$2,000-$12,000",
+      "search_volume": "High",
+      "competition": "High",
+      "ai_feasibility": "MEDIUM",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 7,
+      "ai_generation_difficulty": 3,
+      "time_to_$1k_per_month": "4-8 months",
+      "top_channels": [
+        {
+          "name": "5-Minute Crafts",
+          "subscribers": "81M+",
+          "monthly_views": "100M+",
+          "content_style": "Life hacks, DIY tutorials"
+        },
+        {
+          "name": "Bright Side",
+          "subscribers": "44M+",
+          "monthly_views": "50M+",
+          "content_style": "Educational DIY, life tips"
+        },
+        {
+          "name": "Explainer channels",
+          "subscribers": "1M-5M",
+          "monthly_views": "2-10M",
+          "content_style": "Topic-specific how-to guides"
+        }
+      ],
+      "viral_topics": [
+        "10 Excel hacks that save hours",
+        "How to start a business from scratch",
+        "DIY home projects under $100",
+        "Productivity shortcuts for [app]",
+        "Life hacks you didn't know you needed"
+      ],
+      "content_examples": "3-5 video ideas: (1) '10 Excel Formulas That Will Save You 10 Hours Per Week' - screen-recorded demonstrations, (2) 'How to Build Professional Website in 30 Minutes' - step-by-step tutorial with AI narration, (3) 'DIY Home Office Setup Under $200' - budget guide with product recommendations, (4) 'The Complete Guide to Meal Prep for Beginners' - cooking tutorials with AI narration, (5) '15 Life Hacks for [Specific App] You Need to Know' - practical tips and tricks",
+      "generation_tools": "Screen recording for software tutorials (OBS, Loom), stock footage for DIY, AI voiceover for narration, ChatGPT for research and script generation, template libraries for consistent formatting, music licensing",
+      "challenges": "Wide niche with many sub-categories, content must be genuinely useful not just filler, competition from established channels, some topics require actual demonstrations (can't AI-generate everything), need to stay current with software updates"
+    },
+    {
+      "rank": 10,
+      "niche": "Travel Destination Overviews",
+      "cpm_range": "$5-$9",
+      "estimated_monthly_revenue": "$1,000-$8,000",
+      "search_volume": "Medium",
+      "competition": "Medium",
+      "ai_feasibility": "MEDIUM",
+      "content_types": ["Long-form YouTube", "YouTube Shorts", "Both"],
+      "earning_potential_score": 6,
+      "ai_generation_difficulty": 3,
+      "time_to_$1k_per_month": "5-10 months",
+      "top_channels": [
+        {
+          "name": "Touropia",
+          "subscribers": "N/A",
+          "monthly_views": "N/A",
+          "content_style": "Top 10 travel destinations, virtual tours"
+        },
+        {
+          "name": "Travel list channels",
+          "subscribers": "500K-1M",
+          "monthly_views": "1-3M",
+          "content_style": "Destination overviews, travel tips"
+        }
+      ],
+      "viral_topics": [
+        "Top 10 hidden gem destinations 2026",
+        "Where to travel on a budget",
+        "Most underrated cities in Europe",
+        "Travel hacks that save thousands",
+        "Best destinations solo travelers"
+      ],
+      "content_examples": "3-5 video ideas: (1) '10 Hidden Gem Destinations in Europe You've Never Heard Of' - AI-generated visuals of each location, (2) 'How to Travel Europe on $50/Day (Complete Guide)' - budget breakdown with country-specific tips, (3) 'The Most Underrated Cities to Visit in 2026' - cultural highlights, costs, and must-see spots, (4) 'Solo Travel Safety Guide: Do's and Don'ts' - practical advice for solo travelers, (5) 'Budget vs Luxury: Same Trip Compared' - show same itinerary with different price points",
+      "generation_tools": "AI image generation for destinations (Midjourney with specific prompts), stock travel footage (Pexels, Storyblocks), AI video generation (Runway, Pika) for destination highlights, AI voiceover with accent options, travel data APIs for costs and logistics",
+      "challenges": "Travel content often expected to be authentic/experiential - AI may feel inauthentic to some viewers, destination footage must be accurate (can't hallucinate landmarks), requires up-to-date travel information (COVID rules, visa requirements), lower CPM compared to high-value niches, affiliate revenue from bookings may be primary monetization"
+    }
+  ],
+  "quality_check_summary": {
+    "fully_ai_generable": [
+      "Personal Finance & Investment Education",
+      "Make Money Online & Business Automation",
+      "Personal Development & Motivation",
+      "Technology & AI Tutorials",
+      "Health, Fitness & Wellness",
+      "Gaming (with AI commentary)"
+    ],
+    "partial_ai_generable": [
+      "Science & Educational Explainers",
+      "How-To & Educational Guides",
+      "Travel Destination Overviews"
+    ],
+    "not_fully_ai_generable": [
+      "Product Reviews (software requires actual testing)",
+      "News/Current Events (policy risks)"
+    ],
+    "$1000_plus_monthly_possible": "All ranked niches can reach $1000/month but finance/science/business niches are fastest",
+    "western_market_demand": "Strong demand in US/UK/Europe for all ranked niches",
+    "unique_titles_possible": "Yes - with AI-generated unique angles, data-driven hooks, and authentic examples"
+  },
+  "recommendations_for_immediate_execution": [
+    {
+      "priority": 1,
+      "niche": "Personal Finance & Investment Education",
+      "action": "Start with 3-5 high-value topics using ChatGPT scripts + ElevenLabs voice + data visualization",
+      "expected_timeline": "$1K/month in 3-6 months with consistent posting"
+    },
+    {
+      "priority": 2,
+      "niche": "Science & Educational Explainers",
+      "action": "Partner with animation tools (Katalist, Runway) for high-quality visuals",
+      "expected_timeline": "$1K/month in 4-8 months, higher long-term potential"
+    },
+    {
+      "priority": 3,
+      "niche": "Make Money Online & Business Automation",
+      "action": "Leverage current AI trends, show real tools in action with screen recording",
+      "expected_timeline": "$1K/month in 2-5 months if content is genuinely valuable"
+    }
+  ],
+  "ai_tool_stack": {
+    "script_writing": "ChatGPT, Claude, Ollama-Cloud (GLM-4.7)",
+    "voiceover": "ElevenLabs, Murf AI, Amazon Polly",
+    "visuals": "Midjourney, DALL-E 3, Adobe Firefly",
+    "video_generation": "Katalist, Runway ML, Pika Labs, Pictory",
+    "screen_recording": "OBS, Loom",
+    "editing": "CapCut, Canva, Premiere Pro",
+    "thumbnails": "Canva, Leonardo.ai, Adobe Firefly",
+    "music": "Epidemic Sound, YouTube Audio Library",
+    "stock_footage": "Pexels, Storyblocks, Envato Elements"
+  },
+  "key_findings": {
+    "highest_cpm_niches": [
+      "Personal Finance ($12-22 CPM)",
+      "Make Money Online ($15-20 CPM)",
+      "Legal/Finance Specialty ($12-22 CPM)"
+    ],
+    "easiest_niches_to_ai_generate": [
+      "Personal Development (visuals + narration)",
+      "Technology (screen recording + AI voice)",
+      "Finance (data visualization)",
+      "Motivation (stock footage + powerful script)"
+    ],
+    "fastest_time_to_$1k_month": [
+      "Make Money Online (2-5 months)",
+      "Personal Finance (3-6 months)",
+      "Technology/AI (3-6 months)"
+    ],
+    "highest_potential_niches": [
+      "Personal Finance - highest CPM + easy AI generation",
+      "Science/Education - high CPM + evergreen content",
+      "Make Money Online - very high CPM + viral potential"
+    ]
+  },
+  "warnings_and_considerations": {
+    "youtube_policy_changes": "July 2025 monetization update cracked down on low-quality AI content - focus on HIGH QUALITY, unique value",
+    "saturation_in_some_niches": "Motivation/make money online are highly competitive - need unique angles",
+    "authenticity_matters": "Product reviews and travel content may suffer from lack of authenticity",
+    "avoid_news_current_events": "YouTube has strict policies on AI-generated news - low feasibility"
+  },
+  "next_steps": {
+    "immediate_action": "Select 1-2 niches from top 3, research competition, create 10-15 topic backlog",
+    "content_pipeline": "Build AI content generation workflow using identified tools",
+    "posting_schedule": "Aim for 3-5 videos/week for YouTube + 7-10 Shorts",
+    "monetization_strategy": "Ad revenue + affiliate links + potential digital products after 3 months"
+  }
+}

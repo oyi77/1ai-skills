@@ -1,0 +1,871 @@
+{
+  "campaign_id": "campaign_real_scrape_20260307_004632",
+  "mode": "REAL_DATA_WEB_SCRAPE",
+  "source": "Traveloka.com",
+  "stats": {
+    "leads_extracted": 19,
+    "emails_generated": 57,
+    "social_posts": 57,
+    "total_content": 114,
+    "generated_at": "2026-03-07T00:46:32.654205"
+  },
+  "leads": [
+    {
+      "business_name": "AcqGameID-PromoBanner-Master-DLP",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=AcqGameID-PromoBanner-Master-DLP",
+      "rating": 4.5,
+      "reviews": 56,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/rekomendasi-restoran-hits-di-jakarta/418012",
+      "extracted_at": "2026-03-07T00:46:32.151468"
+    },
+    {
+      "business_name": "Traveloka",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Traveloka",
+      "rating": 4.6,
+      "reviews": 112,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/rekomendasi-restoran-hits-di-jakarta/418012",
+      "extracted_at": "2026-03-07T00:46:32.151505"
+    },
+    {
+      "business_name": "Fachri Rizki",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Fachri%20Rizki",
+      "rating": 4.0,
+      "reviews": 238,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/rekomendasi-restoran-hits-di-jakarta/418012",
+      "extracted_at": "2026-03-07T00:46:32.151517"
+    },
+    {
+      "business_name": "title",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=title",
+      "rating": 3.9,
+      "reviews": 239,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653002"
+    },
+    {
+      "business_name": "Jakarta Utara",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Jakarta%20Utara",
+      "rating": 4.8,
+      "reviews": 72,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653042"
+    },
+    {
+      "business_name": "Menteng",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Menteng",
+      "rating": 4.4,
+      "reviews": 58,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653051"
+    },
+    {
+      "business_name": "Kuningan",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Kuningan",
+      "rating": 3.8,
+      "reviews": 105,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653059"
+    },
+    {
+      "business_name": "Jakarta Barat",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Jakarta%20Barat",
+      "rating": 4.1,
+      "reviews": 204,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653068"
+    },
+    {
+      "business_name": "Kemayoran",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Kemayoran",
+      "rating": 3.8,
+      "reviews": 100,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653076"
+    },
+    {
+      "business_name": "Mangga Besar",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Mangga%20Besar",
+      "rating": 4.6,
+      "reviews": 229,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653084"
+    },
+    {
+      "business_name": "Jakarta Pusat",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Jakarta%20Pusat",
+      "rating": 4.4,
+      "reviews": 106,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653092"
+    },
+    {
+      "business_name": "Kemang",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Kemang",
+      "rating": 4.3,
+      "reviews": 121,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653099"
+    },
+    {
+      "business_name": "Mangga Dua",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Mangga%20Dua",
+      "rating": 4.7,
+      "reviews": 51,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653107"
+    },
+    {
+      "business_name": "Pulau Seribu",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Pulau%20Seribu",
+      "rating": 4.6,
+      "reviews": 90,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653115"
+    },
+    {
+      "business_name": "Jakarta",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Jakarta",
+      "rating": 4.6,
+      "reviews": 137,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653123"
+    },
+    {
+      "business_name": "Jakarta Selatan",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Jakarta%20Selatan",
+      "rating": 4.1,
+      "reviews": 105,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653140"
+    },
+    {
+      "business_name": "Ancol",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Ancol",
+      "rating": 4.9,
+      "reviews": 136,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653157"
+    },
+    {
+      "business_name": "Tebet",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Tebet",
+      "rating": 3.9,
+      "reviews": 147,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653164"
+    },
+    {
+      "business_name": "Cengkareng",
+      "address": "Jakarta, Indonesia",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/search?q=Cengkareng",
+      "rating": 3.9,
+      "reviews": 266,
+      "types": [
+        "restaurant"
+      ],
+      "city": "Jakarta",
+      "source": "traveloka",
+      "url": "https://www.traveloka.com/id-id/explore/destination/fine-dining-di-jakarta-acc/563008",
+      "extracted_at": "2026-03-07T00:46:32.653171"
+    }
+  ],
+  "generated_content": [
+    {
+      "lead_id": "lead_real_0000",
+      "business_name": "AcqGameID-PromoBanner-Master-DLP",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653437",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, AcqGameID-PromoBanner-Master-DLP",
+          "body": "Hi AcqGameID-PromoBanner-Master-DLP,\n\nI found AcqGameID-PromoBanner-Master-DLP on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for AcqGameID-PromoBanner-Master-DLP?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: AcqGameID-PromoBanner-Master-DLP",
+          "body": "Hi AcqGameID-PromoBanner-Master-DLP,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like AcqGameID-PromoBanner-Master-DLP, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: AcqGameID-PromoBanner-Master-DLP",
+          "body": "Hello AcqGameID-PromoBanner-Master-DLP,\n\nLast follow-up - I promise!\n\nHere's what I can do for AcqGameID-PromoBanner-Master-DLP:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.5,
+      "reviews": 56
+    },
+    {
+      "lead_id": "lead_real_0001",
+      "business_name": "Traveloka",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653497",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Traveloka",
+          "body": "Hi Traveloka,\n\nI found Traveloka on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Traveloka?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Traveloka",
+          "body": "Hi Traveloka,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Traveloka, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Traveloka",
+          "body": "Hello Traveloka,\n\nLast follow-up - I promise!\n\nHere's what I can do for Traveloka:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.6,
+      "reviews": 112
+    },
+    {
+      "lead_id": "lead_real_0002",
+      "business_name": "Fachri Rizki",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653537",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Fachri Rizki",
+          "body": "Hi Fachri Rizki,\n\nI found Fachri Rizki on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Fachri Rizki?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Fachri Rizki",
+          "body": "Hi Fachri Rizki,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Fachri Rizki, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Fachri Rizki",
+          "body": "Hello Fachri Rizki,\n\nLast follow-up - I promise!\n\nHere's what I can do for Fachri Rizki:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.0,
+      "reviews": 238
+    },
+    {
+      "lead_id": "lead_real_0003",
+      "business_name": "title",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653572",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, title",
+          "body": "Hi title,\n\nI found title on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for title?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: title",
+          "body": "Hi title,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like title, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: title",
+          "body": "Hello title,\n\nLast follow-up - I promise!\n\nHere's what I can do for title:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 3.9,
+      "reviews": 239
+    },
+    {
+      "lead_id": "lead_real_0004",
+      "business_name": "Jakarta Utara",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653606",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Jakarta Utara",
+          "body": "Hi Jakarta Utara,\n\nI found Jakarta Utara on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Jakarta Utara?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Jakarta Utara",
+          "body": "Hi Jakarta Utara,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Jakarta Utara, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Jakarta Utara",
+          "body": "Hello Jakarta Utara,\n\nLast follow-up - I promise!\n\nHere's what I can do for Jakarta Utara:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.8,
+      "reviews": 72
+    },
+    {
+      "lead_id": "lead_real_0005",
+      "business_name": "Menteng",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653645",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Menteng",
+          "body": "Hi Menteng,\n\nI found Menteng on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Menteng?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Menteng",
+          "body": "Hi Menteng,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Menteng, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Menteng",
+          "body": "Hello Menteng,\n\nLast follow-up - I promise!\n\nHere's what I can do for Menteng:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.4,
+      "reviews": 58
+    },
+    {
+      "lead_id": "lead_real_0006",
+      "business_name": "Kuningan",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653679",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Kuningan",
+          "body": "Hi Kuningan,\n\nI found Kuningan on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Kuningan?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Kuningan",
+          "body": "Hi Kuningan,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Kuningan, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Kuningan",
+          "body": "Hello Kuningan,\n\nLast follow-up - I promise!\n\nHere's what I can do for Kuningan:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 3.8,
+      "reviews": 105
+    },
+    {
+      "lead_id": "lead_real_0007",
+      "business_name": "Jakarta Barat",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653721",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Jakarta Barat",
+          "body": "Hi Jakarta Barat,\n\nI found Jakarta Barat on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Jakarta Barat?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Jakarta Barat",
+          "body": "Hi Jakarta Barat,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Jakarta Barat, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Jakarta Barat",
+          "body": "Hello Jakarta Barat,\n\nLast follow-up - I promise!\n\nHere's what I can do for Jakarta Barat:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.1,
+      "reviews": 204
+    },
+    {
+      "lead_id": "lead_real_0008",
+      "business_name": "Kemayoran",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653755",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Kemayoran",
+          "body": "Hi Kemayoran,\n\nI found Kemayoran on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Kemayoran?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Kemayoran",
+          "body": "Hi Kemayoran,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Kemayoran, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Kemayoran",
+          "body": "Hello Kemayoran,\n\nLast follow-up - I promise!\n\nHere's what I can do for Kemayoran:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 3.8,
+      "reviews": 100
+    },
+    {
+      "lead_id": "lead_real_0009",
+      "business_name": "Mangga Besar",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653788",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Mangga Besar",
+          "body": "Hi Mangga Besar,\n\nI found Mangga Besar on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Mangga Besar?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Mangga Besar",
+          "body": "Hi Mangga Besar,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Mangga Besar, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Mangga Besar",
+          "body": "Hello Mangga Besar,\n\nLast follow-up - I promise!\n\nHere's what I can do for Mangga Besar:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.6,
+      "reviews": 229
+    },
+    {
+      "lead_id": "lead_real_0010",
+      "business_name": "Jakarta Pusat",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653825",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Jakarta Pusat",
+          "body": "Hi Jakarta Pusat,\n\nI found Jakarta Pusat on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Jakarta Pusat?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Jakarta Pusat",
+          "body": "Hi Jakarta Pusat,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Jakarta Pusat, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Jakarta Pusat",
+          "body": "Hello Jakarta Pusat,\n\nLast follow-up - I promise!\n\nHere's what I can do for Jakarta Pusat:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.4,
+      "reviews": 106
+    },
+    {
+      "lead_id": "lead_real_0011",
+      "business_name": "Kemang",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653860",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Kemang",
+          "body": "Hi Kemang,\n\nI found Kemang on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Kemang?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Kemang",
+          "body": "Hi Kemang,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Kemang, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Kemang",
+          "body": "Hello Kemang,\n\nLast follow-up - I promise!\n\nHere's what I can do for Kemang:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.3,
+      "reviews": 121
+    },
+    {
+      "lead_id": "lead_real_0012",
+      "business_name": "Mangga Dua",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653893",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Mangga Dua",
+          "body": "Hi Mangga Dua,\n\nI found Mangga Dua on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Mangga Dua?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Mangga Dua",
+          "body": "Hi Mangga Dua,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Mangga Dua, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Mangga Dua",
+          "body": "Hello Mangga Dua,\n\nLast follow-up - I promise!\n\nHere's what I can do for Mangga Dua:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.7,
+      "reviews": 51
+    },
+    {
+      "lead_id": "lead_real_0013",
+      "business_name": "Pulau Seribu",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653925",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Pulau Seribu",
+          "body": "Hi Pulau Seribu,\n\nI found Pulau Seribu on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Pulau Seribu?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Pulau Seribu",
+          "body": "Hi Pulau Seribu,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Pulau Seribu, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Pulau Seribu",
+          "body": "Hello Pulau Seribu,\n\nLast follow-up - I promise!\n\nHere's what I can do for Pulau Seribu:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.6,
+      "reviews": 90
+    },
+    {
+      "lead_id": "lead_real_0014",
+      "business_name": "Jakarta",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653957",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Jakarta",
+          "body": "Hi Jakarta,\n\nI found Jakarta on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Jakarta?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Jakarta",
+          "body": "Hi Jakarta,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Jakarta, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Jakarta",
+          "body": "Hello Jakarta,\n\nLast follow-up - I promise!\n\nHere's what I can do for Jakarta:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.6,
+      "reviews": 137
+    },
+    {
+      "lead_id": "lead_real_0015",
+      "business_name": "Jakarta Selatan",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.653993",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Jakarta Selatan",
+          "body": "Hi Jakarta Selatan,\n\nI found Jakarta Selatan on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Jakarta Selatan?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Jakarta Selatan",
+          "body": "Hi Jakarta Selatan,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Jakarta Selatan, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Jakarta Selatan",
+          "body": "Hello Jakarta Selatan,\n\nLast follow-up - I promise!\n\nHere's what I can do for Jakarta Selatan:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.1,
+      "reviews": 105
+    },
+    {
+      "lead_id": "lead_real_0016",
+      "business_name": "Ancol",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.654027",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Ancol",
+          "body": "Hi Ancol,\n\nI found Ancol on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Ancol?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Ancol",
+          "body": "Hi Ancol,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Ancol, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Ancol",
+          "body": "Hello Ancol,\n\nLast follow-up - I promise!\n\nHere's what I can do for Ancol:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 4.9,
+      "reviews": 136
+    },
+    {
+      "lead_id": "lead_real_0017",
+      "business_name": "Tebet",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.654061",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Tebet",
+          "body": "Hi Tebet,\n\nI found Tebet on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Tebet?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Tebet",
+          "body": "Hi Tebet,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Tebet, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Tebet",
+          "body": "Hello Tebet,\n\nLast follow-up - I promise!\n\nHere's what I can do for Tebet:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 3.9,
+      "reviews": 147
+    },
+    {
+      "lead_id": "lead_real_0018",
+      "business_name": "Cengkareng",
+      "source": "Traveloka web scrape",
+      "generated_at": "2026-03-07T00:46:32.654094",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Cengkareng",
+          "body": "Hi Cengkareng,\n\nI found Cengkareng on Traveloka - looks like a great restaurant! \ud83c\udf1f\n\nQuick question: Are you looking to attract more customers and reservations online?\n\nI help restaurants fully automate their marketing:\n\n\u2022 Social media automation (5 platforms simultaneously)\n\u2022 Customer acquisition (50-100+ new inquiries/month)\n\u2022 Content creation (photos, videos, reviews, menu content)\n\u2022 Marketing automation (save 15+ hours/week)\n\nReal results from similar restaurants:\n\u2022 +250% more orders and reservations\n\u2022 +200% social media engagement\n\u2022 50+ new customer inquiries per month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a quick 15-min chat to see how this could work for Cengkareng?\n\nBest,\nAI Marketing Specialist\nPhone: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Cengkareng",
+          "body": "Hi Cengkareng,\n\nJust following up on my email about automating your marketing.\n\nFor restaurants like Cengkareng, I can set up a complete automated marketing system this week:\n\n\u2022 Auto-post food and menu content to Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ quality leads through targeted outreach\n\u2022 Create review content and menu highlights automatically\n\u2022 Set up automated reservation and inquiry follow-ups\n\nWant a free 15-min demo? No obligation at all.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Cengkareng",
+          "body": "Hello Cengkareng,\n\nLast follow-up - I promise!\n\nHere's what I can do for Cengkareng:\n\nSetup a fully automated marketing system within 1 week that will:\n\n\u2022 Generate 50-100+ leads/inquiries coming in automatically\n\u2022 Publish social media content daily on autopilot\n\u2022 Create blog and website content generating automatically\n\u2022 Run email campaigns nurturing your leads automatically\n\nMy satisfaction guarantee: If you don't see at least 10 new qualified leads in the first 30 days, full refund.\n\nSound fair?\n\n15-minute call to show you exactly how it works:\n[Your Calendar Link]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more orders and reservations per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' to learn more \ud83d\ude80",
+        "instagram": "Jakarta Restaurants! \ud83c\udf7d\ufe0f\n\nLet me help you get 50-100+ new orders and reservations each month with fully automated marketing:\n\n\u2705 Auto-post to 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ quality leads automatically\n\u2705 Create review and menu content daily\n\u2705 Automated reservation follow-up sequences\n\nReal results from Jakarta restaurants:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week on marketing\n\nDM me 'DEMO' for a free demo! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new orders and reservations per month on autopilot?\n\nI setup complete fully automated marketing systems:\n\n\u2022 Social media: Auto-post food and menu content daily\n\u2022 Lead generation: Scrape and outreach to 100+ potential customers daily\n\u2022 Content: Generate photos, videos, reviews, and menu content automatically\n\u2022 Auto-nurture: Follow up automatically with interested customers\n\nTypical results for restaurants:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 new orders/reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "rating": 3.9,
+      "reviews": 266
+    }
+  ]
+}

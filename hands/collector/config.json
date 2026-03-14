@@ -1,0 +1,56 @@
+{
+  "name": "BerkahKarya Intelligence Collector",
+  "version": "1.0",
+  "collection_targets": [
+    {
+      "name": "competitor_monitoring",
+      "enabled": true,
+      "queries": [
+        "Indonesian AI content tools",
+        "Social media automation Indonesia",
+        "TikTok content generation tools"
+      ],
+      "sources": [
+        "web_search"
+      ],
+      "schedule": "daily",
+      "priority": "high"
+    },
+    {
+      "name": "market_trends",
+      "enabled": true,
+      "queries": [
+        "Digital marketing trends 2026",
+        "AI automation adoption",
+        "Content creator tools market"
+      ],
+      "sources": [
+        "web_search"
+      ],
+      "schedule": "daily",
+      "priority": "medium"
+    },
+    {
+      "name": "opportunity_scanning",
+      "enabled": true,
+      "queries": [
+        "Affiliate marketing opportunities Indonesia",
+        "Viral content trends",
+        "Best selling digital products"
+      ],
+      "sources": [
+        "web_search"
+      ],
+      "schedule": "daily",
+      "priority": "high"
+    }
+  ],
+  "reporting": {
+    "format": [
+      "json",
+      "markdown"
+    ],
+    "include_sources": true,
+    "include_timestamps": true
+  }
+}

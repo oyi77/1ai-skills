@@ -1,0 +1,234 @@
+#!/usr/bin/env python3
+"""
+Sunday Decision Generator - Takes filled candle data and generates entry decision
+Usage: Fill temp/sunday-decision-template-2026-03-08.md, then run this script
+"""
+
+import sys
+from datetime import datetime
+
+def get_candle_data():
+    """Get candle data from user input"""
+    print("\n" + "="*80)
+    print("SUNDAY TRADING DECISION GENERATOR")
+    print("="*80)
+    print("\nEnter 7-candle highs and lows:")
+
+    candles = []
+    for i in range(1, 8):
+        try:
+            high = float(input(f"\nCandle {i} - High: $"))
+            low = float(input(f"Candle {i} - Low: $"))
+            candles.append({"candle": i, "high": high, "low": low})
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            return None
+
+    return candles
+
+def calculate_range(candles):
+    """Calculate 7-candle range"""
+    if not candles or len(candles) < 7:
+        return None, None, None
+
+    highest_high = max(c["high"] for c in candles)
+    lowest_low = min(c["low"] for c in candles)
+    range_pips = highest_high - lowest_low
+
+    return highest_high, lowest_low, range_pips
+
+def generate_decision(range_pips):
+    """Generate entry decision"""
+    if range_pips < 5:
+        decision = "NO ENTRY"
+        qualification = "❌ TOO SMALL"
+        action = "Market consolidation, no clear breakout signal"
+        next_step = "Wait for Monday's session. Consider 4H timeframe analysis."
+    elif range_pips >= 5:
+        decision = "ENTRY QUALIFIED"
+        qualification = "✅ QUALIFIED"
+        action = f"Breakout signal present. Range meets minimum requirement."
+        next_step = "Monitor at 15:00 UTC+7 for price breaking above high or below low."
+    else:
+        decision = "INDECISIVE"
+        qualification = "⚠️ ERROR"
+        action = "Range calculation failed"
+        next_step = "Manual review required."
+
+    return {
+        "decision": decision,
+        "qualification": qualification,
+        "action": action,
+        "next_step": next_step
+    }
+
+def generate_report(candles, highest_high, lowest_low, range_pips, decision_data):
+    """Generate decision report"""
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    report = f"""# Sunday Trading Decision Report - March 8, 2026
+
+## 🕐 Decision Summary
+
+**Generated:** {now} UTC+7
+**Decision:** {decision_data['decision']}
+**Qualification:** {decision_data['qualification']}
+
+---
+
+## 📊 7-Candle Data
+
+| Candle | High | Low |
+|--------|------|-----|
+"""
+
+    for c in candles:
+        report += f"| {c['candle']} | \${c['high']:.2f} | \${c['low']:.2f} |\n"
+
+    report += f"""
+
+## 📈 Range Calculation
+
+**Highest High:** \${highest_high:.2f}
+**Lowest Low:** \${lowest_low:.2f}
+**7-Candle Range:** {range_pips:.2f} pips
+
+---
+
+## 🎯 Entry Decision Matrix
+
+| Range (pips) | Qualification | Action |
+|--------------|---------------|--------|
+| < 5 pips | ❌ Too small | NO ENTRY |
+| >= 5 pips | ✅ Qualified | ENTRY |
+
+**Current Range:** {range_pips:.2f} pips → {decision_data['qualification']}
+
+---
+
+## 🎯 Final Decision
+
+**Status:** {decision_data['decision']}
+
+**Reason:** {decision_data['action']}
+
+**Next Steps:** {decision_data['next_step']}
+
+---
+
+## 💡 What To Do Now
+
+### At 15:00 UTC+7 (Entry Window):
+
+**If ENTRY QUALIFIED (Range >= 5 pips):**
+1. Monitor price at 14:58-15:00
+2. Watch for breakouts:
+   - Price breaks **ABOVE** \${highest_high:.2f}: Consider BUY entry
+   - Price breaks **BELOW** \${lowest_low:.2f}: Consider SELL entry
+3. Without broker connection: Document decision in worksheet
+4. If/When broker configured: Execute with stop loss at opposite edge of range
+
+**If NO ENTRY (Range < 5 pips):**
+1. Market is consolidating (no clear trend)
+2. Wait for Monday's session (07:00 UTC+7)
+3. Consider analyzing 4H timeframe for better signal
+4. No action at 15:00 - just observe
+
+---
+
+## 📋 Decision Documentation
+
+**Decision File:** `temp/sunday-decision-2026-03-08-final.md`
+**Worksheet:** `temp/sunday-trading-prep-2026-03-08.md`
+**Status:** Decision recorded, execution pending/complete
+
+---
+
+## 🔮 Monday Preparation
+
+**If Entry Made Today:**
+- [ ] Monitor position throughout session
+- [ ] Document P&L at close
+- [ ] Learn from outcome
+- [ ] Plan next trade
+
+**If No Entry Today:**
+- [ ] Review strategy effectiveness
+- [ ] Consider timeframe adjustment (4H charts)
+- [ ] Prepare for Monday's Asia session
+- [ ] Focus on marketing revenue (priority anyway)
+
+---
+
+## 🚨 Infrastructure Notes
+
+**Broker Status:** Not configured (Ostium)
+**Impact:** Cannot execute trades - documentation only
+**Work Required:** 1-2 hours when marketing generates revenue
+**Priority:** LOW (cashflow and marketing are higher priority)
+
+**PostBridge Status:** DOWN (HTTP 500)
+**Impact:** 47 uploads blocked, revenue verification delayed
+**Priority:** HIGHEST (after cashflow check)
+
+---
+
+**Generated by:** Vilona (Sunday candle tracker + decision generator)
+**Created:** {now} UTC+7
+**Mode:** Automated calculation from manual inputs
+**Confidence:** Range is mathematically precise; strategy performance unknown without broker
+
+---
+
+✅ *Decision calculated, documented, ready for 14:50-15:00 execution window*
+"""
+
+    return report
+
+def save_report(report):
+    """Save report to file"""
+    filename = "/home/openclaw/.openclaw/workspace/temp/sunday-decision-2026-03-08-final.md"
+    with open(filename, 'w') as f:
+        f.write(report)
+    print(f"\n✅ Decision report saved to: {filename}")
+
+def main():
+    """Main execution"""
+    print("\n📈 SUNDAY TRADING DECISION GENERATOR")
+    print("="*80)
+    print("This script takes your 7-candle data and generates the entry decision.\n")
+
+    # Get candle data from user
+    candles = get_candle_data()
+    if not candles:
+        print("\n❌ Failed to get candle data")
+        return 1
+
+    # Calculate range
+    highest_high, lowest_low, range_pips = calculate_range(candles)
+    if not highest_high:
+        print("\n❌ Failed to calculate range")
+        return 1
+
+    # Generate decision
+    decision_data = generate_decision(range_pips)
+
+    # Generate and display report
+    report = generate_report(candles, highest_high, lowest_low, range_pips, decision_data)
+
+    print("\n" + "="*80)
+    print("DECISION GENERATED")
+    print("="*80)
+    print(report)
+    print("="*80)
+
+    # Save report
+    save_report(report)
+
+    print("\n✅ Decision process complete!")
+    print("You can now execute at 15:00 UTC+7 (if qualified)")
+
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

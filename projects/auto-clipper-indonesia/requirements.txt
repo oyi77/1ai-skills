@@ -1,0 +1,27 @@
+# Auto Clipper Indonesia - Requirements
+# Python 3.11+ required
+
+# Video Processing
+moviepy>=1.0.3
+opencv-python>=4.9.0.80
+ffmpeg-python>=0.2.0
+
+# AI & Analysis
+faster-whisper>=1.0.1
+textblob>=0.17.1
+vaderSentiment>=3.3.2
+
+# GUI
+customtkinter>=5.2.1
+Pillow>=10.2.0
+
+# Platform Interactions
+yt-dlp>=2024.3.10
+requests>=2.31.0
+
+# Utilities
+tqdm>=4.66.2
+python-dotenv>=1.0.1
+
+# Packaging
+pyinstaller>=6.4.0

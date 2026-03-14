@@ -1,0 +1,2262 @@
+[2026-03-08 18:06:56] [INFO] ======================================================================
+
+[2026-03-08 18:06:56] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-08 18:06:56] [INFO] Time: 2026-03-08 18:06:56
+
+[2026-03-08 18:06:56] [INFO] ======================================================================
+
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 279, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 275, in main
+    run_collector()
+    ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 180, in run_collector
+    log()
+    ~~~^^
+TypeError: log() missing 1 required positional argument: 'message'
+[2026-03-08 18:08:10] [INFO] ======================================================================
+
+[2026-03-08 18:08:10] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-08 18:08:10] [INFO] Time: 2026-03-08 18:08:10
+
+[2026-03-08 18:08:10] [INFO] ======================================================================
+
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 279, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 275, in main
+    run_collector()
+    ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 180, in run_collector
+    log()
+    ~~~^^
+TypeError: log() missing 1 required positional argument: 'message'
+[2026-03-08 23:15:49] [INFO] ======================================================================
+
+[2026-03-08 23:15:49] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-08 23:15:49] [INFO] Time: 2026-03-08 23:15:49
+
+[2026-03-08 23:15:49] [INFO] ======================================================================
+
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 279, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 275, in main
+    run_collector()
+    ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/hands/collector/hand.py", line 180, in run_collector
+    log()
+    ~~~^^
+TypeError: log() missing 1 required positional argument: 'message'
+[2026-03-08 23:19:07] [INFO] ======================================================================
+
+[2026-03-08 23:19:07] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-08 23:19:07] [INFO] Time: 2026-03-08 23:19:07
+
+[2026-03-08 23:19:07] [INFO] ======================================================================
+
+[2026-03-08 23:19:07] [INFO]  
+
+[2026-03-08 23:19:07] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-08 23:19:07] [INFO] Targets: 3
+
+[2026-03-08 23:19:07] [INFO]  
+
+[2026-03-08 23:19:07] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-08 23:19:07] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-08 23:19:07] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-08 23:19:07] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO]   Query: TikTok content generation tools
+
+[2026-03-08 23:19:07] [INFO] Searching: TikTok content generation tools
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-08 23:19:07] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-08 23:19:07] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 2 results
+
+[2026-03-08 23:19:07] [INFO]   Query: AI automation adoption
+
+[2026-03-08 23:19:07] [INFO] Searching: AI automation adoption
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO]   Query: Content creator tools market
+
+[2026-03-08 23:19:07] [INFO] Searching: Content creator tools market
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-08 23:19:07] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-08 23:19:07] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO]   Query: Viral content trends
+
+[2026-03-08 23:19:07] [INFO] Searching: Viral content trends
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 2 results
+
+[2026-03-08 23:19:07] [INFO]   Query: Best selling digital products
+
+[2026-03-08 23:19:07] [INFO] Searching: Best selling digital products
+
+[2026-03-08 23:19:07] [INFO] ✅ Collected 0 results
+
+[2026-03-08 23:19:07] [INFO]  
+
+[2026-03-08 23:19:07] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260308_231907.json
+
+[2026-03-08 23:19:07] [INFO] Total sources queried: 9
+
+[2026-03-08 23:19:07] [INFO] Total results: 4
+
+[2026-03-08 23:19:07] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260308_231907.md
+
+[2026-03-08 23:19:07] [INFO]  
+
+[2026-03-08 23:19:07] [INFO] ======================================================================
+
+[2026-03-08 23:19:07] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-08 23:19:07] [INFO] Intelligence collected: 9 sources
+
+[2026-03-08 23:19:07] [INFO] Total results: 4
+
+[2026-03-08 23:19:07] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260308_231907.json
+
+[2026-03-08 23:19:07] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260308_231907.md
+
+[2026-03-08 23:19:07] [INFO] ======================================================================
+
+[2026-03-09 00:00:01] [INFO] ======================================================================
+
+[2026-03-09 00:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-09 00:00:01] [INFO] Time: 2026-03-09 00:00:01
+
+[2026-03-09 00:00:01] [INFO] ======================================================================
+
+[2026-03-09 00:00:01] [INFO]  
+
+[2026-03-09 00:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-09 00:00:01] [INFO] Targets: 3
+
+[2026-03-09 00:00:01] [INFO]  
+
+[2026-03-09 00:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-09 00:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-09 00:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-09 00:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-09 00:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-09 00:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-09 00:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 00:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-09 00:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-09 00:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-09 00:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 00:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-09 00:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 00:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-09 00:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-09 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 00:00:01] [INFO]  
+
+[2026-03-09 00:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_000001.json
+
+[2026-03-09 00:00:01] [INFO] Total sources queried: 9
+
+[2026-03-09 00:00:01] [INFO] Total results: 4
+
+[2026-03-09 00:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_000001.md
+
+[2026-03-09 00:00:01] [INFO]  
+
+[2026-03-09 00:00:01] [INFO] ======================================================================
+
+[2026-03-09 00:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-09 00:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-09 00:00:01] [INFO] Total results: 4
+
+[2026-03-09 00:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_000001.json
+
+[2026-03-09 00:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_000001.md
+
+[2026-03-09 00:00:01] [INFO] ======================================================================
+
+[2026-03-09 06:00:01] [INFO] ======================================================================
+
+[2026-03-09 06:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-09 06:00:01] [INFO] Time: 2026-03-09 06:00:01
+
+[2026-03-09 06:00:01] [INFO] ======================================================================
+
+[2026-03-09 06:00:01] [INFO]  
+
+[2026-03-09 06:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-09 06:00:01] [INFO] Targets: 3
+
+[2026-03-09 06:00:01] [INFO]  
+
+[2026-03-09 06:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-09 06:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-09 06:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-09 06:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-09 06:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-09 06:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-09 06:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 06:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-09 06:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-09 06:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-09 06:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 06:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-09 06:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 06:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-09 06:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-09 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 06:00:01] [INFO]  
+
+[2026-03-09 06:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_060001.json
+
+[2026-03-09 06:00:01] [INFO] Total sources queried: 9
+
+[2026-03-09 06:00:01] [INFO] Total results: 4
+
+[2026-03-09 06:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_060001.md
+
+[2026-03-09 06:00:01] [INFO]  
+
+[2026-03-09 06:00:01] [INFO] ======================================================================
+
+[2026-03-09 06:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-09 06:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-09 06:00:01] [INFO] Total results: 4
+
+[2026-03-09 06:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_060001.json
+
+[2026-03-09 06:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_060001.md
+
+[2026-03-09 06:00:01] [INFO] ======================================================================
+
+[2026-03-09 12:00:01] [INFO] ======================================================================
+
+[2026-03-09 12:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-09 12:00:01] [INFO] Time: 2026-03-09 12:00:01
+
+[2026-03-09 12:00:01] [INFO] ======================================================================
+
+[2026-03-09 12:00:01] [INFO]  
+
+[2026-03-09 12:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-09 12:00:01] [INFO] Targets: 3
+
+[2026-03-09 12:00:01] [INFO]  
+
+[2026-03-09 12:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-09 12:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-09 12:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-09 12:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-09 12:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-09 12:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-09 12:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 12:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-09 12:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-09 12:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-09 12:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 12:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-09 12:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 12:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-09 12:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-09 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 12:00:01] [INFO]  
+
+[2026-03-09 12:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_120001.json
+
+[2026-03-09 12:00:01] [INFO] Total sources queried: 9
+
+[2026-03-09 12:00:01] [INFO] Total results: 4
+
+[2026-03-09 12:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_120001.md
+
+[2026-03-09 12:00:01] [INFO]  
+
+[2026-03-09 12:00:01] [INFO] ======================================================================
+
+[2026-03-09 12:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-09 12:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-09 12:00:01] [INFO] Total results: 4
+
+[2026-03-09 12:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_120001.json
+
+[2026-03-09 12:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_120001.md
+
+[2026-03-09 12:00:01] [INFO] ======================================================================
+
+[2026-03-09 18:00:01] [INFO] ======================================================================
+
+[2026-03-09 18:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-09 18:00:01] [INFO] Time: 2026-03-09 18:00:01
+
+[2026-03-09 18:00:01] [INFO] ======================================================================
+
+[2026-03-09 18:00:01] [INFO]  
+
+[2026-03-09 18:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-09 18:00:01] [INFO] Targets: 3
+
+[2026-03-09 18:00:01] [INFO]  
+
+[2026-03-09 18:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-09 18:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-09 18:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-09 18:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-09 18:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-09 18:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-09 18:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 18:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-09 18:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-09 18:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-09 18:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 18:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-09 18:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-09 18:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-09 18:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-09 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-09 18:00:01] [INFO]  
+
+[2026-03-09 18:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_180001.json
+
+[2026-03-09 18:00:01] [INFO] Total sources queried: 9
+
+[2026-03-09 18:00:01] [INFO] Total results: 4
+
+[2026-03-09 18:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_180001.md
+
+[2026-03-09 18:00:01] [INFO]  
+
+[2026-03-09 18:00:01] [INFO] ======================================================================
+
+[2026-03-09 18:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-09 18:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-09 18:00:01] [INFO] Total results: 4
+
+[2026-03-09 18:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260309_180001.json
+
+[2026-03-09 18:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260309_180001.md
+
+[2026-03-09 18:00:01] [INFO] ======================================================================
+
+[2026-03-10 00:00:01] [INFO] ======================================================================
+
+[2026-03-10 00:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-10 00:00:01] [INFO] Time: 2026-03-10 00:00:01
+
+[2026-03-10 00:00:01] [INFO] ======================================================================
+
+[2026-03-10 00:00:01] [INFO]  
+
+[2026-03-10 00:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-10 00:00:01] [INFO] Targets: 3
+
+[2026-03-10 00:00:01] [INFO]  
+
+[2026-03-10 00:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-10 00:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-10 00:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-10 00:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-10 00:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-10 00:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-10 00:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-10 00:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-10 00:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-10 00:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-10 00:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 00:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-10 00:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-10 00:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-10 00:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-10 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 00:00:01] [INFO]  
+
+[2026-03-10 00:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_000001.json
+
+[2026-03-10 00:00:01] [INFO] Total sources queried: 9
+
+[2026-03-10 00:00:01] [INFO] Total results: 4
+
+[2026-03-10 00:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_000001.md
+
+[2026-03-10 00:00:01] [INFO]  
+
+[2026-03-10 00:00:01] [INFO] ======================================================================
+
+[2026-03-10 00:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-10 00:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-10 00:00:01] [INFO] Total results: 4
+
+[2026-03-10 00:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_000001.json
+
+[2026-03-10 00:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_000001.md
+
+[2026-03-10 00:00:01] [INFO] ======================================================================
+
+[2026-03-10 06:00:01] [INFO] ======================================================================
+
+[2026-03-10 06:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-10 06:00:01] [INFO] Time: 2026-03-10 06:00:01
+
+[2026-03-10 06:00:01] [INFO] ======================================================================
+
+[2026-03-10 06:00:01] [INFO]  
+
+[2026-03-10 06:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-10 06:00:01] [INFO] Targets: 3
+
+[2026-03-10 06:00:01] [INFO]  
+
+[2026-03-10 06:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-10 06:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-10 06:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-10 06:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-10 06:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-10 06:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-10 06:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-10 06:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-10 06:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-10 06:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-10 06:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 06:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-10 06:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-10 06:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-10 06:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-10 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-10 06:00:01] [INFO]  
+
+[2026-03-10 06:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_060001.json
+
+[2026-03-10 06:00:01] [INFO] Total sources queried: 9
+
+[2026-03-10 06:00:01] [INFO] Total results: 4
+
+[2026-03-10 06:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_060001.md
+
+[2026-03-10 06:00:01] [INFO]  
+
+[2026-03-10 06:00:01] [INFO] ======================================================================
+
+[2026-03-10 06:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-10 06:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-10 06:00:01] [INFO] Total results: 4
+
+[2026-03-10 06:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_060001.json
+
+[2026-03-10 06:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_060001.md
+
+[2026-03-10 06:00:01] [INFO] ======================================================================
+
+[2026-03-10 12:00:02] [INFO] ======================================================================
+
+[2026-03-10 12:00:02] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-10 12:00:02] [INFO] Time: 2026-03-10 12:00:02
+
+[2026-03-10 12:00:02] [INFO] ======================================================================
+
+[2026-03-10 12:00:02] [INFO]  
+
+[2026-03-10 12:00:02] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-10 12:00:02] [INFO] Targets: 3
+
+[2026-03-10 12:00:02] [INFO]  
+
+[2026-03-10 12:00:02] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-10 12:00:02] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-10 12:00:02] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-10 12:00:02] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO]   Query: TikTok content generation tools
+
+[2026-03-10 12:00:02] [INFO] Searching: TikTok content generation tools
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-10 12:00:02] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-10 12:00:02] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 2 results
+
+[2026-03-10 12:00:02] [INFO]   Query: AI automation adoption
+
+[2026-03-10 12:00:02] [INFO] Searching: AI automation adoption
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO]   Query: Content creator tools market
+
+[2026-03-10 12:00:02] [INFO] Searching: Content creator tools market
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-10 12:00:02] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 12:00:02] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO]   Query: Viral content trends
+
+[2026-03-10 12:00:02] [INFO] Searching: Viral content trends
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 2 results
+
+[2026-03-10 12:00:02] [INFO]   Query: Best selling digital products
+
+[2026-03-10 12:00:02] [INFO] Searching: Best selling digital products
+
+[2026-03-10 12:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 12:00:02] [INFO]  
+
+[2026-03-10 12:00:02] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_120002.json
+
+[2026-03-10 12:00:02] [INFO] Total sources queried: 9
+
+[2026-03-10 12:00:02] [INFO] Total results: 4
+
+[2026-03-10 12:00:02] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_120002.md
+
+[2026-03-10 12:00:02] [INFO]  
+
+[2026-03-10 12:00:02] [INFO] ======================================================================
+
+[2026-03-10 12:00:02] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-10 12:00:02] [INFO] Intelligence collected: 9 sources
+
+[2026-03-10 12:00:02] [INFO] Total results: 4
+
+[2026-03-10 12:00:02] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_120002.json
+
+[2026-03-10 12:00:02] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_120002.md
+
+[2026-03-10 12:00:02] [INFO] ======================================================================
+
+[2026-03-10 18:00:02] [INFO] ======================================================================
+
+[2026-03-10 18:00:02] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-10 18:00:02] [INFO] Time: 2026-03-10 18:00:02
+
+[2026-03-10 18:00:02] [INFO] ======================================================================
+
+[2026-03-10 18:00:02] [INFO]  
+
+[2026-03-10 18:00:02] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-10 18:00:02] [INFO] Targets: 3
+
+[2026-03-10 18:00:02] [INFO]  
+
+[2026-03-10 18:00:02] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-10 18:00:02] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-10 18:00:02] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-10 18:00:02] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO]   Query: TikTok content generation tools
+
+[2026-03-10 18:00:02] [INFO] Searching: TikTok content generation tools
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-10 18:00:02] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-10 18:00:02] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 2 results
+
+[2026-03-10 18:00:02] [INFO]   Query: AI automation adoption
+
+[2026-03-10 18:00:02] [INFO] Searching: AI automation adoption
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO]   Query: Content creator tools market
+
+[2026-03-10 18:00:02] [INFO] Searching: Content creator tools market
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-10 18:00:02] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 18:00:02] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO]   Query: Viral content trends
+
+[2026-03-10 18:00:02] [INFO] Searching: Viral content trends
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 2 results
+
+[2026-03-10 18:00:02] [INFO]   Query: Best selling digital products
+
+[2026-03-10 18:00:02] [INFO] Searching: Best selling digital products
+
+[2026-03-10 18:00:02] [INFO] ✅ Collected 0 results
+
+[2026-03-10 18:00:02] [INFO]  
+
+[2026-03-10 18:00:02] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_180002.json
+
+[2026-03-10 18:00:02] [INFO] Total sources queried: 9
+
+[2026-03-10 18:00:02] [INFO] Total results: 4
+
+[2026-03-10 18:00:02] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_180002.md
+
+[2026-03-10 18:00:02] [INFO]  
+
+[2026-03-10 18:00:02] [INFO] ======================================================================
+
+[2026-03-10 18:00:02] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-10 18:00:02] [INFO] Intelligence collected: 9 sources
+
+[2026-03-10 18:00:02] [INFO] Total results: 4
+
+[2026-03-10 18:00:02] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260310_180002.json
+
+[2026-03-10 18:00:02] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260310_180002.md
+
+[2026-03-10 18:00:02] [INFO] ======================================================================
+
+[2026-03-11 18:00:01] [INFO] ======================================================================
+
+[2026-03-11 18:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-11 18:00:01] [INFO] Time: 2026-03-11 18:00:01
+
+[2026-03-11 18:00:01] [INFO] ======================================================================
+
+[2026-03-11 18:00:01] [INFO]  
+
+[2026-03-11 18:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-11 18:00:01] [INFO] Targets: 3
+
+[2026-03-11 18:00:01] [INFO]  
+
+[2026-03-11 18:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-11 18:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-11 18:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-11 18:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-11 18:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-11 18:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-11 18:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-11 18:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-11 18:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-11 18:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-11 18:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-11 18:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-11 18:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-11 18:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-11 18:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-11 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-11 18:00:01] [INFO]  
+
+[2026-03-11 18:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260311_180001.json
+
+[2026-03-11 18:00:01] [INFO] Total sources queried: 9
+
+[2026-03-11 18:00:01] [INFO] Total results: 4
+
+[2026-03-11 18:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260311_180001.md
+
+[2026-03-11 18:00:01] [INFO]  
+
+[2026-03-11 18:00:01] [INFO] ======================================================================
+
+[2026-03-11 18:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-11 18:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-11 18:00:01] [INFO] Total results: 4
+
+[2026-03-11 18:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260311_180001.json
+
+[2026-03-11 18:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260311_180001.md
+
+[2026-03-11 18:00:01] [INFO] ======================================================================
+
+[2026-03-12 00:00:01] [INFO] ======================================================================
+
+[2026-03-12 00:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-12 00:00:01] [INFO] Time: 2026-03-12 00:00:01
+
+[2026-03-12 00:00:01] [INFO] ======================================================================
+
+[2026-03-12 00:00:01] [INFO]  
+
+[2026-03-12 00:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-12 00:00:01] [INFO] Targets: 3
+
+[2026-03-12 00:00:01] [INFO]  
+
+[2026-03-12 00:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-12 00:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-12 00:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-12 00:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-12 00:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-12 00:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-12 00:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 00:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-12 00:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-12 00:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-12 00:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 00:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-12 00:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 00:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-12 00:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-12 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 00:00:01] [INFO]  
+
+[2026-03-12 00:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_000001.json
+
+[2026-03-12 00:00:01] [INFO] Total sources queried: 9
+
+[2026-03-12 00:00:01] [INFO] Total results: 4
+
+[2026-03-12 00:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_000001.md
+
+[2026-03-12 00:00:01] [INFO]  
+
+[2026-03-12 00:00:01] [INFO] ======================================================================
+
+[2026-03-12 00:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-12 00:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-12 00:00:01] [INFO] Total results: 4
+
+[2026-03-12 00:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_000001.json
+
+[2026-03-12 00:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_000001.md
+
+[2026-03-12 00:00:01] [INFO] ======================================================================
+
+[2026-03-12 06:00:01] [INFO] ======================================================================
+
+[2026-03-12 06:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-12 06:00:01] [INFO] Time: 2026-03-12 06:00:01
+
+[2026-03-12 06:00:01] [INFO] ======================================================================
+
+[2026-03-12 06:00:01] [INFO]  
+
+[2026-03-12 06:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-12 06:00:01] [INFO] Targets: 3
+
+[2026-03-12 06:00:01] [INFO]  
+
+[2026-03-12 06:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-12 06:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-12 06:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-12 06:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-12 06:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-12 06:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-12 06:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 06:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-12 06:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-12 06:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-12 06:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 06:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-12 06:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 06:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-12 06:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-12 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 06:00:01] [INFO]  
+
+[2026-03-12 06:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_060001.json
+
+[2026-03-12 06:00:01] [INFO] Total sources queried: 9
+
+[2026-03-12 06:00:01] [INFO] Total results: 4
+
+[2026-03-12 06:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_060001.md
+
+[2026-03-12 06:00:01] [INFO]  
+
+[2026-03-12 06:00:01] [INFO] ======================================================================
+
+[2026-03-12 06:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-12 06:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-12 06:00:01] [INFO] Total results: 4
+
+[2026-03-12 06:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_060001.json
+
+[2026-03-12 06:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_060001.md
+
+[2026-03-12 06:00:01] [INFO] ======================================================================
+
+[2026-03-12 12:00:01] [INFO] ======================================================================
+
+[2026-03-12 12:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-12 12:00:01] [INFO] Time: 2026-03-12 12:00:01
+
+[2026-03-12 12:00:01] [INFO] ======================================================================
+
+[2026-03-12 12:00:01] [INFO]  
+
+[2026-03-12 12:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-12 12:00:01] [INFO] Targets: 3
+
+[2026-03-12 12:00:01] [INFO]  
+
+[2026-03-12 12:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-12 12:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-12 12:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-12 12:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-12 12:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-12 12:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-12 12:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 12:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-12 12:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-12 12:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-12 12:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 12:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-12 12:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 12:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-12 12:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-12 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 12:00:01] [INFO]  
+
+[2026-03-12 12:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_120001.json
+
+[2026-03-12 12:00:01] [INFO] Total sources queried: 9
+
+[2026-03-12 12:00:01] [INFO] Total results: 4
+
+[2026-03-12 12:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_120001.md
+
+[2026-03-12 12:00:01] [INFO]  
+
+[2026-03-12 12:00:01] [INFO] ======================================================================
+
+[2026-03-12 12:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-12 12:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-12 12:00:01] [INFO] Total results: 4
+
+[2026-03-12 12:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_120001.json
+
+[2026-03-12 12:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_120001.md
+
+[2026-03-12 12:00:01] [INFO] ======================================================================
+
+[2026-03-12 18:00:01] [INFO] ======================================================================
+
+[2026-03-12 18:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-12 18:00:01] [INFO] Time: 2026-03-12 18:00:01
+
+[2026-03-12 18:00:01] [INFO] ======================================================================
+
+[2026-03-12 18:00:01] [INFO]  
+
+[2026-03-12 18:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-12 18:00:01] [INFO] Targets: 3
+
+[2026-03-12 18:00:01] [INFO]  
+
+[2026-03-12 18:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-12 18:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-12 18:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-12 18:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-12 18:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-12 18:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-12 18:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 18:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-12 18:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-12 18:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-12 18:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 18:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-12 18:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-12 18:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-12 18:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-12 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-12 18:00:01] [INFO]  
+
+[2026-03-12 18:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_180001.json
+
+[2026-03-12 18:00:01] [INFO] Total sources queried: 9
+
+[2026-03-12 18:00:01] [INFO] Total results: 4
+
+[2026-03-12 18:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_180001.md
+
+[2026-03-12 18:00:01] [INFO]  
+
+[2026-03-12 18:00:01] [INFO] ======================================================================
+
+[2026-03-12 18:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-12 18:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-12 18:00:01] [INFO] Total results: 4
+
+[2026-03-12 18:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260312_180001.json
+
+[2026-03-12 18:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260312_180001.md
+
+[2026-03-12 18:00:01] [INFO] ======================================================================
+
+[2026-03-13 00:00:01] [INFO] ======================================================================
+
+[2026-03-13 00:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-13 00:00:01] [INFO] Time: 2026-03-13 00:00:01
+
+[2026-03-13 00:00:01] [INFO] ======================================================================
+
+[2026-03-13 00:00:01] [INFO]  
+
+[2026-03-13 00:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-13 00:00:01] [INFO] Targets: 3
+
+[2026-03-13 00:00:01] [INFO]  
+
+[2026-03-13 00:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-13 00:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-13 00:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-13 00:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-13 00:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-13 00:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-13 00:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 00:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-13 00:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-13 00:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-13 00:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 00:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-13 00:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 00:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-13 00:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-13 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 00:00:01] [INFO]  
+
+[2026-03-13 00:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_000001.json
+
+[2026-03-13 00:00:01] [INFO] Total sources queried: 9
+
+[2026-03-13 00:00:01] [INFO] Total results: 4
+
+[2026-03-13 00:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_000001.md
+
+[2026-03-13 00:00:01] [INFO]  
+
+[2026-03-13 00:00:01] [INFO] ======================================================================
+
+[2026-03-13 00:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-13 00:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-13 00:00:01] [INFO] Total results: 4
+
+[2026-03-13 00:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_000001.json
+
+[2026-03-13 00:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_000001.md
+
+[2026-03-13 00:00:01] [INFO] ======================================================================
+
+[2026-03-13 06:00:01] [INFO] ======================================================================
+
+[2026-03-13 06:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-13 06:00:01] [INFO] Time: 2026-03-13 06:00:01
+
+[2026-03-13 06:00:01] [INFO] ======================================================================
+
+[2026-03-13 06:00:01] [INFO]  
+
+[2026-03-13 06:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-13 06:00:01] [INFO] Targets: 3
+
+[2026-03-13 06:00:01] [INFO]  
+
+[2026-03-13 06:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-13 06:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-13 06:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-13 06:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-13 06:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-13 06:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-13 06:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 06:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-13 06:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-13 06:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-13 06:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 06:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-13 06:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 06:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-13 06:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-13 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 06:00:01] [INFO]  
+
+[2026-03-13 06:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_060001.json
+
+[2026-03-13 06:00:01] [INFO] Total sources queried: 9
+
+[2026-03-13 06:00:01] [INFO] Total results: 4
+
+[2026-03-13 06:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_060001.md
+
+[2026-03-13 06:00:01] [INFO]  
+
+[2026-03-13 06:00:01] [INFO] ======================================================================
+
+[2026-03-13 06:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-13 06:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-13 06:00:01] [INFO] Total results: 4
+
+[2026-03-13 06:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_060001.json
+
+[2026-03-13 06:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_060001.md
+
+[2026-03-13 06:00:01] [INFO] ======================================================================
+
+[2026-03-13 12:00:01] [INFO] ======================================================================
+
+[2026-03-13 12:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-13 12:00:01] [INFO] Time: 2026-03-13 12:00:01
+
+[2026-03-13 12:00:01] [INFO] ======================================================================
+
+[2026-03-13 12:00:01] [INFO]  
+
+[2026-03-13 12:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-13 12:00:01] [INFO] Targets: 3
+
+[2026-03-13 12:00:01] [INFO]  
+
+[2026-03-13 12:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-13 12:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-13 12:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-13 12:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-13 12:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-13 12:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-13 12:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 12:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-13 12:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-13 12:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-13 12:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 12:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-13 12:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 12:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-13 12:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-13 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 12:00:01] [INFO]  
+
+[2026-03-13 12:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_120001.json
+
+[2026-03-13 12:00:01] [INFO] Total sources queried: 9
+
+[2026-03-13 12:00:01] [INFO] Total results: 4
+
+[2026-03-13 12:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_120001.md
+
+[2026-03-13 12:00:01] [INFO]  
+
+[2026-03-13 12:00:01] [INFO] ======================================================================
+
+[2026-03-13 12:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-13 12:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-13 12:00:01] [INFO] Total results: 4
+
+[2026-03-13 12:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_120001.json
+
+[2026-03-13 12:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_120001.md
+
+[2026-03-13 12:00:01] [INFO] ======================================================================
+
+[2026-03-13 18:00:01] [INFO] ======================================================================
+
+[2026-03-13 18:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-13 18:00:01] [INFO] Time: 2026-03-13 18:00:01
+
+[2026-03-13 18:00:01] [INFO] ======================================================================
+
+[2026-03-13 18:00:01] [INFO]  
+
+[2026-03-13 18:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-13 18:00:01] [INFO] Targets: 3
+
+[2026-03-13 18:00:01] [INFO]  
+
+[2026-03-13 18:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-13 18:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-13 18:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-13 18:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-13 18:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-13 18:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-13 18:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 18:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-13 18:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-13 18:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-13 18:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 18:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-13 18:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-13 18:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-13 18:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-13 18:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-13 18:00:01] [INFO]  
+
+[2026-03-13 18:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_180001.json
+
+[2026-03-13 18:00:01] [INFO] Total sources queried: 9
+
+[2026-03-13 18:00:01] [INFO] Total results: 4
+
+[2026-03-13 18:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_180001.md
+
+[2026-03-13 18:00:01] [INFO]  
+
+[2026-03-13 18:00:01] [INFO] ======================================================================
+
+[2026-03-13 18:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-13 18:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-13 18:00:01] [INFO] Total results: 4
+
+[2026-03-13 18:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260313_180001.json
+
+[2026-03-13 18:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260313_180001.md
+
+[2026-03-13 18:00:01] [INFO] ======================================================================
+
+[2026-03-14 00:00:01] [INFO] ======================================================================
+
+[2026-03-14 00:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-14 00:00:01] [INFO] Time: 2026-03-14 00:00:01
+
+[2026-03-14 00:00:01] [INFO] ======================================================================
+
+[2026-03-14 00:00:01] [INFO]  
+
+[2026-03-14 00:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-14 00:00:01] [INFO] Targets: 3
+
+[2026-03-14 00:00:01] [INFO]  
+
+[2026-03-14 00:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-14 00:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-14 00:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-14 00:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-14 00:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-14 00:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-14 00:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-14 00:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-14 00:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-14 00:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-14 00:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-14 00:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-14 00:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-14 00:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-14 00:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-14 00:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 00:00:01] [INFO]  
+
+[2026-03-14 00:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260314_000001.json
+
+[2026-03-14 00:00:01] [INFO] Total sources queried: 9
+
+[2026-03-14 00:00:01] [INFO] Total results: 4
+
+[2026-03-14 00:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260314_000001.md
+
+[2026-03-14 00:00:01] [INFO]  
+
+[2026-03-14 00:00:01] [INFO] ======================================================================
+
+[2026-03-14 00:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-14 00:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-14 00:00:01] [INFO] Total results: 4
+
+[2026-03-14 00:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260314_000001.json
+
+[2026-03-14 00:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260314_000001.md
+
+[2026-03-14 00:00:01] [INFO] ======================================================================
+
+[2026-03-14 06:00:01] [INFO] ======================================================================
+
+[2026-03-14 06:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-14 06:00:01] [INFO] Time: 2026-03-14 06:00:01
+
+[2026-03-14 06:00:01] [INFO] ======================================================================
+
+[2026-03-14 06:00:01] [INFO]  
+
+[2026-03-14 06:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-14 06:00:01] [INFO] Targets: 3
+
+[2026-03-14 06:00:01] [INFO]  
+
+[2026-03-14 06:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-14 06:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-14 06:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-14 06:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-14 06:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-14 06:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-14 06:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-14 06:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-14 06:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-14 06:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-14 06:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-14 06:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-14 06:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-14 06:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-14 06:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-14 06:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 06:00:01] [INFO]  
+
+[2026-03-14 06:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260314_060001.json
+
+[2026-03-14 06:00:01] [INFO] Total sources queried: 9
+
+[2026-03-14 06:00:01] [INFO] Total results: 4
+
+[2026-03-14 06:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260314_060001.md
+
+[2026-03-14 06:00:01] [INFO]  
+
+[2026-03-14 06:00:01] [INFO] ======================================================================
+
+[2026-03-14 06:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-14 06:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-14 06:00:01] [INFO] Total results: 4
+
+[2026-03-14 06:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260314_060001.json
+
+[2026-03-14 06:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260314_060001.md
+
+[2026-03-14 06:00:01] [INFO] ======================================================================
+
+[2026-03-14 12:00:01] [INFO] ======================================================================
+
+[2026-03-14 12:00:01] [INFO] OpenFang Hand: COLLECTOR
+
+[2026-03-14 12:00:01] [INFO] Time: 2026-03-14 12:00:01
+
+[2026-03-14 12:00:01] [INFO] ======================================================================
+
+[2026-03-14 12:00:01] [INFO]  
+
+[2026-03-14 12:00:01] [INFO] Collector: BerkahKarya Intelligence Collector
+
+[2026-03-14 12:00:01] [INFO] Targets: 3
+
+[2026-03-14 12:00:01] [INFO]  
+
+[2026-03-14 12:00:01] [INFO] 
+Target: competitor_monitoring (Priority: high)
+
+[2026-03-14 12:00:01] [INFO]   Query: Indonesian AI content tools
+
+[2026-03-14 12:00:01] [INFO] Searching: Indonesian AI content tools
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO]   Query: Social media automation Indonesia
+
+[2026-03-14 12:00:01] [INFO] Searching: Social media automation Indonesia
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO]   Query: TikTok content generation tools
+
+[2026-03-14 12:00:01] [INFO] Searching: TikTok content generation tools
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO] 
+Target: market_trends (Priority: medium)
+
+[2026-03-14 12:00:01] [INFO]   Query: Digital marketing trends 2026
+
+[2026-03-14 12:00:01] [INFO] Searching: Digital marketing trends 2026
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-14 12:00:01] [INFO]   Query: AI automation adoption
+
+[2026-03-14 12:00:01] [INFO] Searching: AI automation adoption
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO]   Query: Content creator tools market
+
+[2026-03-14 12:00:01] [INFO] Searching: Content creator tools market
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO] 
+Target: opportunity_scanning (Priority: high)
+
+[2026-03-14 12:00:01] [INFO]   Query: Affiliate marketing opportunities Indonesia
+
+[2026-03-14 12:00:01] [INFO] Searching: Affiliate marketing opportunities Indonesia
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO]   Query: Viral content trends
+
+[2026-03-14 12:00:01] [INFO] Searching: Viral content trends
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 2 results
+
+[2026-03-14 12:00:01] [INFO]   Query: Best selling digital products
+
+[2026-03-14 12:00:01] [INFO] Searching: Best selling digital products
+
+[2026-03-14 12:00:01] [INFO] ✅ Collected 0 results
+
+[2026-03-14 12:00:01] [INFO]  
+
+[2026-03-14 12:00:01] [INFO] ✅ Intelligence saved: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260314_120001.json
+
+[2026-03-14 12:00:01] [INFO] Total sources queried: 9
+
+[2026-03-14 12:00:01] [INFO] Total results: 4
+
+[2026-03-14 12:00:01] [INFO] ✅ Markdown report: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260314_120001.md
+
+[2026-03-14 12:00:01] [INFO]  
+
+[2026-03-14 12:00:01] [INFO] ======================================================================
+
+[2026-03-14 12:00:01] [INFO] COLLECTOR HAND COMPLETE
+
+[2026-03-14 12:00:01] [INFO] Intelligence collected: 9 sources
+
+[2026-03-14 12:00:01] [INFO] Total results: 4
+
+[2026-03-14 12:00:01] [INFO] JSON: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/intel_20260314_120001.json
+
+[2026-03-14 12:00:01] [INFO] Markdown: /home/openclaw/.openclaw/workspace/hands/collector/intelligence/report_20260314_120001.md
+
+[2026-03-14 12:00:01] [INFO] ======================================================================
+

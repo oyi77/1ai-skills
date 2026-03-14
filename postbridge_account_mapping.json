@@ -1,0 +1,550 @@
+{
+  "mapping_version": "2026-03-14",
+  "total_accounts": 87,
+  "categories": {
+    "restoration_clipper": {
+      "description": "Konten restoration/REMIX \u2014 gun, car, vintage object restoration videos",
+      "accounts": [
+        {
+          "id": 49639,
+          "platform": "youtube",
+          "name": "BK METAL",
+          "note": "Metal restoration theme fits perfectly"
+        },
+        {
+          "id": 49660,
+          "platform": "youtube",
+          "name": "berkah karya digital agency",
+          "note": "General agency channel"
+        },
+        {
+          "id": 49663,
+          "platform": "tiktok",
+          "name": "bkjaya00",
+          "note": "Short clips restoration"
+        },
+        {
+          "id": 49662,
+          "platform": "threads",
+          "name": "bkjayautama"
+        },
+        {
+          "id": 49661,
+          "platform": "instagram",
+          "name": "bkjayautama"
+        }
+      ]
+    },
+    "digital_product": {
+      "description": "Konten digital product \u2014 templates, masterclass, prompt packs, toolkit",
+      "accounts": [
+        {
+          "id": 49680,
+          "platform": "threads",
+          "name": "berkahkaryadigitalproduct"
+        },
+        {
+          "id": 48186,
+          "platform": "instagram",
+          "name": "berkahkaryadigitalproduct"
+        },
+        {
+          "id": 45648,
+          "platform": "tiktok",
+          "name": "jasakontenai",
+          "note": "AI content service promo"
+        }
+      ]
+    },
+    "affiliate_shopee": {
+      "description": "Konten affiliate Shopee \u2014 product review, flash sale, diskon hunting",
+      "accounts": [
+        {
+          "id": 48374,
+          "platform": "tiktok",
+          "name": "riviewprodukfashionjujur"
+        },
+        {
+          "id": 49646,
+          "platform": "threads",
+          "name": "riviewprodukcek"
+        },
+        {
+          "id": 49644,
+          "platform": "instagram",
+          "name": "riviewprodukcek"
+        },
+        {
+          "id": 49613,
+          "platform": "threads",
+          "name": "riviewprodukaffiliate"
+        },
+        {
+          "id": 49612,
+          "platform": "instagram",
+          "name": "riviewprodukaffiliate"
+        },
+        {
+          "id": 49614,
+          "platform": "threads",
+          "name": "valdoaffiliate"
+        },
+        {
+          "id": 47690,
+          "platform": "youtube",
+          "name": "Diskon Hunter"
+        },
+        {
+          "id": 48336,
+          "platform": "tiktok",
+          "name": "baimwongdiskon"
+        },
+        {
+          "id": 48337,
+          "platform": "tiktok",
+          "name": "nugrohopratama5"
+        },
+        {
+          "id": 49611,
+          "platform": "facebook",
+          "name": "Belanja"
+        },
+        {
+          "id": 49609,
+          "platform": "facebook",
+          "name": "Dewi Shop"
+        },
+        {
+          "id": 45675,
+          "platform": "facebook",
+          "name": "Stevi Shop"
+        },
+        {
+          "id": 45673,
+          "platform": "facebook",
+          "name": "Clara Store"
+        }
+      ]
+    },
+    "health_wellness": {
+      "description": "Konten kesehatan \u2014 herbal, sehat, tips kesehatan, obat alami",
+      "accounts": [
+        {
+          "id": 49642,
+          "platform": "tiktok",
+          "name": "sehatseraiphari"
+        },
+        {
+          "id": 48372,
+          "platform": "tiktok",
+          "name": "divasehatsetiaphari"
+        },
+        {
+          "id": 48338,
+          "platform": "tiktok",
+          "name": "massehatyuk"
+        },
+        {
+          "id": 48373,
+          "platform": "tiktok",
+          "name": "drlifehacks1"
+        },
+        {
+          "id": 48335,
+          "platform": "tiktok",
+          "name": "clinicguru"
+        },
+        {
+          "id": 48177,
+          "platform": "facebook",
+          "name": "Vanezia Herbal"
+        }
+      ]
+    },
+    "food_recipe": {
+      "description": "Konten masakan \u2014 resep, dapur, food content",
+      "accounts": [
+        {
+          "id": 49636,
+          "platform": "youtube",
+          "name": "Resep Dapur Nyami"
+        },
+        {
+          "id": 49635,
+          "platform": "threads",
+          "name": "nyamiresepdapur"
+        },
+        {
+          "id": 49634,
+          "platform": "instagram",
+          "name": "nyamiresepdapur"
+        },
+        {
+          "id": 49633,
+          "platform": "facebook",
+          "name": "Nyamiresep"
+        },
+        {
+          "id": 49638,
+          "platform": "youtube",
+          "name": "Mak e Nok"
+        },
+        {
+          "id": 47689,
+          "platform": "youtube",
+          "name": "Mak E Nok"
+        },
+        {
+          "id": 49619,
+          "platform": "instagram",
+          "name": "emake.nok"
+        },
+        {
+          "id": 49618,
+          "platform": "threads",
+          "name": "emake.nok"
+        },
+        {
+          "id": 45629,
+          "platform": "facebook",
+          "name": "Mak E Nok"
+        }
+      ]
+    },
+    "lifestyle_entertainment": {
+      "description": "Konten lifestyle \u2014 personal brand, entertainment, engagement",
+      "accounts": [
+        {
+          "id": 49631,
+          "platform": "threads",
+          "name": "ameliacintaimoet"
+        },
+        {
+          "id": 49630,
+          "platform": "instagram",
+          "name": "ameliacintaimoet"
+        },
+        {
+          "id": 49641,
+          "platform": "threads",
+          "name": "ardanardiawan"
+        },
+        {
+          "id": 49640,
+          "platform": "instagram",
+          "name": "ardanardiawan"
+        },
+        {
+          "id": 49683,
+          "platform": "threads",
+          "name": "favisoraanggraeni"
+        },
+        {
+          "id": 49682,
+          "platform": "instagram",
+          "name": "favisoraanggraeni"
+        },
+        {
+          "id": 49677,
+          "platform": "threads",
+          "name": "chayangkasih"
+        },
+        {
+          "id": 49676,
+          "platform": "instagram",
+          "name": "chayangkasih"
+        },
+        {
+          "id": 49637,
+          "platform": "youtube",
+          "name": "Chill Work Zone Lofi"
+        }
+      ]
+    },
+    "brand_agency": {
+      "description": "Konten branding BerkahKarya \u2014 marketing agency, profesional, B2B",
+      "accounts": [
+        {
+          "id": 47681,
+          "platform": "instagram",
+          "name": "berkahkaryadigitalmarketing"
+        },
+        {
+          "id": 49658,
+          "platform": "threads",
+          "name": "berkahkaryadigitalmarketing"
+        },
+        {
+          "id": 47682,
+          "platform": "twitter",
+          "name": "AgencyKarya"
+        },
+        {
+          "id": 47664,
+          "platform": "facebook",
+          "name": "Berkah Karya Digital Marketing Agency"
+        },
+        {
+          "id": 49617,
+          "platform": "linkedin",
+          "name": "Andik veris febriyanto"
+        },
+        {
+          "id": 49659,
+          "platform": "tiktok",
+          "name": "catatanoperator"
+        }
+      ]
+    },
+    "facebook_engagement": {
+      "description": "Facebook pages \u2014 engagement, viral, entertainment (soft CTA only)",
+      "accounts": [
+        {
+          "id": 49675,
+          "platform": "facebook",
+          "name": "WARZ"
+        },
+        {
+          "id": 49674,
+          "platform": "facebook",
+          "name": "Lizbeth Anguiano"
+        },
+        {
+          "id": 49673,
+          "platform": "facebook",
+          "name": "Noticias de actualidad"
+        },
+        {
+          "id": 49672,
+          "platform": "facebook",
+          "name": "Mavigadget house"
+        },
+        {
+          "id": 49671,
+          "platform": "facebook",
+          "name": "Dylan Anderson"
+        },
+        {
+          "id": 49670,
+          "platform": "facebook",
+          "name": "Mr Degree"
+        },
+        {
+          "id": 49669,
+          "platform": "facebook",
+          "name": "Su Hao"
+        },
+        {
+          "id": 49668,
+          "platform": "facebook",
+          "name": "LankyBox"
+        },
+        {
+          "id": 49667,
+          "platform": "facebook",
+          "name": "MrBeast"
+        },
+        {
+          "id": 49666,
+          "platform": "facebook",
+          "name": "Cookieswirlc"
+        },
+        {
+          "id": 49665,
+          "platform": "facebook",
+          "name": "DONA"
+        },
+        {
+          "id": 49664,
+          "platform": "facebook",
+          "name": "Marta and Rustam"
+        },
+        {
+          "id": 49607,
+          "platform": "facebook",
+          "name": "Hani Fujiati"
+        },
+        {
+          "id": 49606,
+          "platform": "facebook",
+          "name": "Rahapu Developer"
+        },
+        {
+          "id": 49605,
+          "platform": "facebook",
+          "name": "Anindira"
+        },
+        {
+          "id": 49604,
+          "platform": "facebook",
+          "name": "Divya Elena"
+        },
+        {
+          "id": 49603,
+          "platform": "facebook",
+          "name": "Bunda Corla"
+        },
+        {
+          "id": 49602,
+          "platform": "facebook",
+          "name": "Sunny Aurra"
+        },
+        {
+          "id": 49601,
+          "platform": "facebook",
+          "name": "Home 4"
+        },
+        {
+          "id": 49600,
+          "platform": "facebook",
+          "name": "MetDaan Oke"
+        },
+        {
+          "id": 49599,
+          "platform": "facebook",
+          "name": "Sandraskin"
+        },
+        {
+          "id": 49598,
+          "platform": "facebook",
+          "name": "Sandraskin fans"
+        },
+        {
+          "id": 48178,
+          "platform": "facebook",
+          "name": "Anak cerdas & kreatif"
+        },
+        {
+          "id": 48176,
+          "platform": "facebook",
+          "name": "Marcello Mastroiani"
+        },
+        {
+          "id": 48175,
+          "platform": "facebook",
+          "name": "Francesca Inaudi"
+        },
+        {
+          "id": 48174,
+          "platform": "facebook",
+          "name": "Kiro Ebra"
+        },
+        {
+          "id": 48173,
+          "platform": "facebook",
+          "name": "Chicas Sexys"
+        },
+        {
+          "id": 48172,
+          "platform": "facebook",
+          "name": "Sandra skins"
+        },
+        {
+          "id": 48171,
+          "platform": "facebook",
+          "name": "Sandraskin"
+        },
+        {
+          "id": 48170,
+          "platform": "facebook",
+          "name": "Big bank challenge"
+        }
+      ]
+    },
+    "electronics_gadget": {
+      "description": "Konten elektronik \u2014 gadget review, tech",
+      "accounts": [
+        {
+          "id": 47691,
+          "platform": "youtube",
+          "name": "grahaelektroniktws"
+        }
+      ]
+    },
+    "youtube_general": {
+      "description": "YouTube channels \u2014 tatapan (vlog/general)",
+      "accounts": [
+        {
+          "id": 49678,
+          "platform": "youtube",
+          "name": "dengan tatapan",
+          "note": "VIDEO ONLY \u2014 no images"
+        }
+      ]
+    },
+    "trading_education": {
+      "description": "Konten edukasi trading \u2014 XAUUSD, forex, risk management, technical analysis, trading psychology",
+      "accounts": [
+        {
+          "id": 49816,
+          "platform": "youtube",
+          "name": "Algo Expert Hub",
+          "note": "Trading education videos"
+        },
+        {
+          "id": 49814,
+          "platform": "twitter",
+          "name": "algoexperthub",
+          "note": "Trading threads & tips"
+        },
+        {
+          "id": 49811,
+          "platform": "threads",
+          "name": "algoexperthub",
+          "note": "Trading education"
+        },
+        {
+          "id": 49810,
+          "platform": "instagram",
+          "name": "algoexperthub",
+          "note": "Trading infographics + reels"
+        }
+      ]
+    }
+  },
+  "platform_rules": {
+    "youtube": "VIDEO ONLY \u2014 never post images",
+    "instagram": "MEDIA REQUIRED \u2014 always include image or video",
+    "tiktok": "MEDIA REQUIRED \u2014 video or image carousel",
+    "threads": "ALL FORMATS \u2014 text, image, or video OK",
+    "facebook": "ALL FORMATS \u2014 text, image, or video OK",
+    "twitter": "ALL FORMATS \u2014 text, image, or video OK",
+    "linkedin": "ALL FORMATS \u2014 prefer professional tone"
+  },
+  "content_routing": {
+    "restoration_remix_full": [
+      "restoration_clipper"
+    ],
+    "restoration_tiktok_clips": [
+      "restoration_clipper",
+      "facebook_engagement"
+    ],
+    "digital_product_promo": [
+      "digital_product",
+      "brand_agency"
+    ],
+    "affiliate_shopee": [
+      "affiliate_shopee"
+    ],
+    "health_tips": [
+      "health_wellness"
+    ],
+    "food_recipe": [
+      "food_recipe"
+    ],
+    "lifestyle_engagement": [
+      "lifestyle_entertainment",
+      "facebook_engagement"
+    ],
+    "agency_portfolio": [
+      "brand_agency"
+    ],
+    "viral_entertainment": [
+      "facebook_engagement",
+      "lifestyle_entertainment"
+    ],
+    "trading_education": [
+      "trading_education"
+    ]
+  }
+}

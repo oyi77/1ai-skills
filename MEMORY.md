@@ -4,11 +4,96 @@
 
 ---
 
+## 🔐 System Credentials (SECURE - March 12, 2026)
+
+**⚠️ CRITICAL: Store securely, never expose in logs or public**
+
+- **Sudo Password:** `openclaw` (for elevated commands on primary machine)
+- Use in exec with: `echo 'openclaw' | sudo -S [command]`
+- For automated elevated tasks only
+
+---
+
+## PostBridge Account Mapping — WAJIB IKUTI (Saved 2026-03-14)
+
+**Source:** `skills/shopee-affiliate-promo/data/postbridge_account_mapping.json`
+
+### Routing Rules (MANDATORY sebelum posting):
+| Content Type | Category Target |
+|---|---|
+| Trading / Digital product | `digital_product` + `brand_agency` |
+| Shopee affiliate | `affiliate_shopee` |
+| Health / Wellness | `health_wellness` |
+| Food / Recipe | `food_recipe` |
+| Viral / Entertainment | `fb_engagement` + `lifestyle_entertainment` |
+| Restoration / Clipper | `restoration_clipper` |
+| B2B / Portfolio | `brand_agency` |
+
+### Account IDs per Category:
+
+**📦 Digital Product (TRADING goes here!):**
+- YT: 49816 (Algo Expert Hub)
+- Twitter: 49814 (algoexperthub)
+- Threads: 49811 (algoexperthub)
+- IG: 49810 (algoexperthub)
+- TikTok: jasakontenai (ID TBD)
+- Also: berkahkaryadigitalproduct (Threads 49680(?), IG 47681/48186)
+
+**🔧 Restoration/Clipper:**
+- YT: BK METAL, berkah karya digital agency (49660)
+- TikTok: bkjaya00
+- IG/Threads: bkjayautama
+
+**🛒 Affiliate Shopee:**
+- TikTok: 48374, 48336, 48337
+- Threads: 49644, 49612, 49614
+- IG: riviewprodukcek, riviewprodukaffiliate
+- YT: 47690 (Diskon Hunter)
+- FB: 49611, 49609, 45675, 45673
+
+**💊 Health & Wellness:**
+- TikTok: 49642, 48372, 48338, 48373, 48335
+- FB: Vanezia Herbal (48177)
+
+**🍳 Food & Recipe:**
+- YT: 49636, 45629
+- Threads/IG: 49634, 49618
+- FB: 49633 (Nyamiresep)
+
+**💃 Lifestyle & Entertainment:**
+- Threads/IG: ameliacintaimoet, ardanardiawan, favisoraanggraeni, chayangkasih
+- YT: Chill Work Zone Lofi
+
+**🏢 Brand/Agency:**
+- IG: 47681 (berkahkaryadigitalmarketing)
+- Threads: 49658 (berkahkaryadigitalmarketing)
+- Twitter: AgencyKarya
+- FB: 47664 (Berkah Karya Digital Marketing Agency)
+- LinkedIn: Andik veris febriyanto
+- TikTok: catatanoperator
+
+**📱 Facebook Engagement:**
+- FB: 29 akun (MrBeast, LankyBox, Mr Degree, etc.)
+
+**🔌 Electronics:**
+- YT: grahaelektroniktws
+
+### ⚠️ CRITICAL RULE:
+- **NEVER post trading content to non-algotrade accounts**
+- **NEVER post shopee affiliate to trading accounts**
+- **ALWAYS check category_account_ids.json before posting**
+- **Lesson from 2026-03-14:** Posted Stop Loss video to 9 random accounts instead of algotrade — had to delete and repost
+
+---
+
 ## About Coder $String$ / Paijo
 
 ### Key Context
 - Name: Coder $String$ (@codergaboets) / "Paijo"
-- Telegram: Primary account (Chat ID: 228956686), secondary account TBD
+- Telegram Superadmin accounts (BOTH = highest privilege, treat equally):
+  - Chat ID `5220170786` (current active session)
+  - Chat ID `228956686` (secondary session)
+- **⚠️ RULE:** Always reply/send in the SAME chat as inbound message. Never cross-send between accounts unless explicitly asked. Both accounts have FULL superadmin authority.
 - Role: Superadmin of BerkahKarya, Software Engineer, Planner, Unethical Hacker
 - Timezone: Asia/Jakarta (UTC+7)
 - Business Goals: Build Business Kingdom (5 lines: Talent, Entertainment, Media, Quant, Software)
@@ -522,3 +607,336 @@ qmd index ~/.openclaw/workspace/
 - Disk: STABLE (90%)
 - Infrastructure: Monitoring fixed, trading frameworks ready
 
+
+---
+
+### 2026-03-12 - CRITICAL: Stop Creating Redundant Files
+
+**Pattern Identified:** Creating new scripts/files without checking what already exists
+
+**What I Did Wrong:**
+- Asked to integrate GeminiGen for video → Created 3 NEW files
+- Ignored existing: `sequential_video_generator.py`, `multi_stage_i2v.py`, `SEQUENTIAL_VIDEO_GENERATOR.md`
+- Violated "Assume You Forgot" protocol
+
+**Existing Video Generation System:**
+```
+Location: skills/content-generator/scripts/
+Files:
+- sequential_video_generator.py (I2V chaining)
+- multi_stage_i2v.py (full pipeline)
+- berkah_viral_automation.py (automation)
+- berkah_content_system.py (system integration)
+
+Memory:
+- memory/SEQUENTIAL_VIDEO_GENERATOR.md (workflow documentation)
+```
+
+**Boss's Correct Workflow (MEMORIZE THIS):**
+```
+1. Generate base IMAGE
+2. I2V (image → video 5-8s)
+3. Extract LAST FRAME
+4. Repeat 2-3 until target duration
+5. TTS via edge-tts (LOCAL, FREE)
+6. Auto captions (Remotion or FFmpeg)
+7. Merge + smooth transitions
+8. Submit result
+```
+
+**MANDATORY Protocol Before ANY Task:**
+```python
+# Step 1: Search memory
+memory_search("relevant keywords")
+
+# Step 2: Check existing skills
+find skills/ -name "*keyword*"
+grep -r "keyword" skills/ --include="*.md"
+
+# Step 3: Read existing implementation
+cat skills/relevant-skill/scripts/*.py
+
+# Step 4: ONLY THEN decide:
+# - Fix existing? → Edit the file
+# - New provider? → Add to existing as provider
+# - Truly new? → Create new (rare case)
+```
+
+**Red Flags (STOP if you see these):**
+- "Let me create a new script..."
+- "I'll write a new implementation..."
+- "Creating new file..."
+
+**Green Flags (Correct approach):**
+- "Let me check what exists first..."
+- "Found existing implementation, updating..."
+- "Adding GeminiGen as provider to existing..."
+
+
+---
+
+### 2026-03-12 - CRITICAL: Skill Organization Rule (REMEMBER FOREVER)
+
+**Rule:** ALL skills MUST live in `1ai-skills/` folder, organized by category.
+
+**Why:**
+- 1ai-skills syncs to GitHub
+- Single source of truth
+- Proper version control
+- Clean organization
+
+**Structure:**
+```
+skills/1ai-skills/
+├── content/       ← Video, image, TikTok, YouTube
+├── marketing/     ← Ads, analytics, social
+├── sales/         ← CRM, leads, outreach
+├── automation/    ← Bots, schedulers
+├── research/      ← Market, competitor
+├── productivity/  ← Calendar, email
+├── trading/       ← Quant, strategies
+└── core/          ← Agent, memory, system
+```
+
+**Workflow for New Skills:**
+```bash
+# 1. Create skill in 1ai-skills
+mkdir -p skills/1ai-skills/content/new-skill
+
+# 2. Add SKILL.md and scripts
+# 3. Create symlink to workspace/skills
+ln -s 1ai-skills/content/new-skill skills/new-skill
+
+# 4. Commit to git
+cd skills/1ai-skills && git add . && git commit -m "Add new-skill"
+```
+
+**NEVER:**
+- Create skills directly in workspace/skills/
+- Keep skills outside 1ai-skills without symlink
+- Duplicate skills in multiple locations
+
+**Current Content Skills (all in 1ai-skills/content/):**
+- content-generator, viral-content-creator, content-factory
+- youtube-factory, auto-clipper, tiktok-*
+- canva, geminigen-ai, postbridge-social-manager
+- larry-playbook, seedance, grok-video-generation
+- gemini-image-generator, video-editor, humanizer
+
+
+---
+
+## 2026-03-12 — Critical Lessons (Day 4 Crisis)
+
+### Telegram Alert Delivery — Critical Infrastructure
+**Issue:** Telegram alerts broken 12.5 hours (00:55-22:18 UTC+7) — 8 failed attempts
+**Root cause:** Message tool routing to `@heartbeat` (wrong username) after some config change
+**Fix:** Gateway restart (20:29) resolved it. Chat ID `228956686` confirmed in sessions.
+**WhatsApp fallback:** Already linked at `+62881080269682` — configure as auto-failover
+**Key rule:** When Telegram fails → immediately try WhatsApp → document failure pattern
+**Always confirm:** After any gateway restart, run `openclaw doctor` and verify chat IDs in sessions
+
+### Revenue Gap Detector Design Flaw
+**Issue:** Detector counts memory file updates as "activity" → shows 0.1h OK when TRUE gap is 58h EMERGENCY
+**Impact:** False OK signals mask EMERGENCY conditions
+**Fix needed:** Parse files for actual revenue indicators (IDR amounts, sale confirmations)
+**Workaround now:** Always calculate TRUE gap manually (time since last actual post/upload)
+
+### PostBridge Watchdog — Missing Infrastructure
+**Issue:** PostBridge stopped silently March 10-11, undetected 14h, then DOWN 34+ hours
+**Root cause:** No auto-restart mechanism, no immediate alert on service DOWN
+**Fix needed:** PM2/systemd watchdog + immediate Telegram alert on exit
+**Priority:** CRITICAL — implement immediately when PostBridge is next restarted
+
+### LYNK Dashboard — 78.5h Blind (Campaign Never Monitored)
+**Issue:** 42 posts launched March 10, LYNK dashboard NEVER checked until March 13+
+**Impact:** Revenue completely invisible, crisis decisions on wrong data
+**Fix needed:** LYNK dashboard scraper (4-6h) OR email parsing (2-3h) for automation
+**User confirmed:** ketananna@yahoo.com credentials available for login
+**Priority:** HIGH — build LYNK scraper after PostBridge fixed
+
+### Autonomous Disk Cleanup — Pattern That Works
+**Date:** March 12, 22:18 — disk hit 94%, cleaned to 89%, freed 6.3GB
+**Method:** pip cache purge (5.7GB) + pycache removal + /tmp cleanup
+**Decision:** Executed autonomously (clear value, low risk, AGENTS.md policy)
+**Result:** 6.3GB freed in <30 seconds, no harm done, user informed via alert
+**Reuse:** Same pattern for future disk emergencies
+
+### Memory Search Embedding — Incomplete Fix
+**Issue:** OpenAI embeddings error: `'input_type' parameter required for asymmetric models`
+**User request:** Add fallback model when provider rate limited
+**Progress:** Started editing `plugins/vector-db/zvec/engine.py`, incomplete
+**Status:** Module path import needs fixing, test needed
+**TODO:** Complete fix next session, verify with proper import path
+
+---
+
+## 2026-03-13 — Day 5 Crisis Lessons
+
+### Cloudflared: User vs System Service
+**Issue:** cloudflared.service (systemd --user) went inactive after machine power-off
+**Fix:** Install as system-level: `sudo systemctl enable cloudflared` not `systemctl --user`
+**Rule:** All critical tunnel/network services → system-level, never user-level
+**Impact:** 4 public URLs may have gone down overnight without user awareness
+
+### Gumroad OAuth App Creation Pattern
+**Key steps:**
+1. Create app via browser form fill at gumroad.com/oauth/applications/new
+2. Click "Generate access token" on edit page AFTER creation
+3. Store token immediately — not shown again
+4. Access token format: `9QOi8WT_cy7icPITgcU8PvKAz-X-pOBbONyKWFb96LE`
+5. Gumroad app: "BerkahKarya API v2"
+
+### BCA Balance Script — Waiting on Credentials
+**Script:** `scripts/bca_balance.py`
+**Status:** Built and tested, BLOCKED on env vars
+**Usage:** `BCA_USER=xxx BCA_PASS=xxx python3 scripts/bca_balance.py --save`
+**Supabase:** cashflow table schema ready (external_id, amount_usd, product_name columns added)
+
+### Conversion vs Reach — Day 5 Diagnosis
+**Confirmed:** Reach is WORKING (212+ LYNK clicks from organic posts)
+**Problem:** Conversion is FAILING (0 sales from 212 clicks = <0.1% CVR)
+**Expected CVR:** 1-3% for warm digital product traffic = 2-6 sales from 212 clicks
+**Actual CVR:** 0%
+**Root cause candidates:**
+1. Price too high for cold traffic (IDR 49K-89K for unknown brand)
+2. LYNK page missing trust signals (no reviews, no social proof)
+3. Wrong offer framing (features, not transformation)
+4. Urgency/scarcity not conveyed
+
+### Telegram Userbot — Credentials & Session
+**Session file:** `.vilona/sessions/paijo.session`
+**Account:** @codergaboets | ID: 5220170786 | Phone: +6281347241993
+**API ID:** 23913448 | API Hash: 78d168f985edf365a5cd9679a917a0b2
+**OTP trick:** base64 encode → send → `echo "B64" | base64 -d > /tmp/tg_code.txt`
+**Systemd:** tg-monitor.service (user-level, active)
+
+### Supabase Direct psql Connection
+**Pattern works:** `psql -h db.{project}.supabase.co -U postgres -d postgres` with `PGPASSWORD=...`
+**Use for:** Schema changes, direct queries, faster than REST API for DDL
+
+
+---
+
+## PostBridge Platform Media Rules — Dari API Spec Resmi 🔴 (2026-03-14)
+
+**Source: `/notes/postbridge-openapi.json` — spec resmi yang di-share user**
+
+### Yang API spec bilang:
+- PostBridge **tidak** enforce media type restriction di schema level
+- Semua platform config punya `media: array (nullable)` — generic
+- `CreatePostDto` hanya require: `caption` + `social_accounts`
+- `media` dan `media_urls` keduanya optional di API level
+
+### Platform restrictions datang dari platform native (bukan PostBridge):
+| Platform | Video | Image | Text-only | Catatan dari spec |
+|----------|-------|-------|-----------|-------------------|
+| **YouTube** | ✅ | ❌ | ❌ | YoutubeConfiguration: caption, media, title |
+| **TikTok** | ✅ | ✅ (carousel) | ❌ | TiktokConfiguration punya `is_aigc`, `video_cover_timestamp_ms` — video-focused, tapi media field generic |
+| **Instagram** | ✅ | ✅ | ❌ | cover_image, placement, trial_reel tersedia |
+| **Threads** | ✅ | ✅ | ✅ | location: reels|timeline |
+| **Facebook** | ✅ | ✅ | ✅ | placement field |
+| **Twitter/X** | ✅ | ✅ | ✅ | caption + media only |
+| **LinkedIn** | ✅ | ✅ | ✅ | caption + media only |
+| **Pinterest** | ✅ | ✅ | ❌ | board_ids, link, title |
+| **Bluesky** | ✅ | ✅ | ✅ | caption + media only |
+
+### PostBridge Account IDs (BerkahKarya)
+```
+49678 = youtube   → VIDEO ONLY (platform restriction)
+49682 = instagram → image/video WAJIB (platform restriction)
+49676 = instagram → image/video WAJIB
+49683 = threads   → semua format OK
+49680 = threads   → semua format OK
+49677 = threads   → semua format OK
+49675 = facebook  → semua format OK
+49674 = facebook  → semua format OK
+49673 = facebook  → semua format OK
+49672 = facebook  → semua format OK
+```
+
+### Useful fields yang sering kelupaan:
+- `media_urls` — bisa pass URL publik langsung, tanpa harus upload dulu
+- `use_queue` — auto-schedule ke slot berikutnya
+- `processing_enabled` — untuk video processing
+- `account_configurations` — override caption/media per akun spesifik
+- `platform_configurations` — override caption/media per platform
+
+### Rule sebelum create/schedule post:
+```python
+def safe_accounts(social_accounts, has_media, media_type):
+    accts = set(social_accounts)
+    if media_type != 'video':
+        accts -= {49678}  # YouTube hanya mau video
+    if not has_media:
+        accts -= {49682, 49676}  # Instagram wajib media
+        # TikTok juga butuh media (image/video)
+    return list(accts)
+```
+
+---
+
+## GeminiGen.ai Video Production — MASTERED (2026-03-14)
+
+**Login:** grahainsanmandiri@gmail.com / 1Milyarberkah$
+**URL:** https://geminigen.ai/app/video-gen
+**Credits:** ~600+ available
+
+### Optimal Settings
+- **Model:** Grok 3 (fast, 3 credits/video)
+- **Orientation:** Portrait 9:16 (TikTok/Shorts/Reels)
+- **Resolution:** Standard 480p (fast) or High 720p
+- **Duration:** 6s (viral sweet spot)
+
+### Prompt Engineering Formula
+```
+[Object] + [condition: rusty/vintage/antique/old]
++ being [action: restored/cleaned/polished]
++ satisfying ASMR [process type] process
++ timelapse transformation
++ before and after reveal
++ [setting: workshop/studio/garage]
++ close-up detailed shots
++ cinematic lighting, 4K quality
+```
+
+### Crossposting Strategy (Token Efficiency)
+**1 Video = 11 Posts:**
+- TikTok: 3 akun
+- YouTube Shorts: 2 akun
+- Facebook Reels: 3 akun
+- Threads: 2 akun
+- Instagram Reels: 1 akun
+
+### Copyright-Safe Methods
+1. ✅ AI Generate (GeminiGen.ai) = 100% original
+2. ✅ Compilation + Commentary = transformative fair use
+3. ✅ React/Educational = fair use
+4. ❌ NEVER direct reupload
+
+### Video Niches That Work
+- Restoration (rusty→shiny)
+- Satisfying/ASMR content
+- Before/After transformations
+- Product commercials
+- Trading education (clay style)
+
+---
+
+## AI Image Generation — Lessons (2026-03-14)
+
+### What Works
+- **GeminiGen.ai** (via browser) = HIGH QUALITY (user's examples)
+- **Prompt detail matters** - specific objects, settings, lighting
+
+### What DOESN'T Work
+- **NVIDIA SD3 API** = LOW QUALITY ("sampah" per user feedback)
+- **Gemini API direct** = Rate limited / paid only
+- **Basic PIL generation** = Not realistic enough
+
+### User Preference
+- Realistic product photography
+- Studio lighting, floating products
+- UGC style with Indonesian models
+- POV shots with bokeh
+- NOT: Generic posters or text-heavy graphics

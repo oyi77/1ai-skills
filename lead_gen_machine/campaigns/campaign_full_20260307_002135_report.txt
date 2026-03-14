@@ -1,0 +1,37 @@
+======================================================================
+FULLY AUTOMATED LEAD GEN MACHINE - PRODUCTION
+======================================================================
+
+Campaign ID: campaign_full_20260307_002135
+Mode: PLACES API (New) - v1
+Generated: 2026-03-07 00:21
+
+======================================================================
+
+CAMPAIGN STATISTICS:
+
+• Locations searched: 3
+• Leads extracted: 0
+• Email templates: 0
+• Social posts: 0
+• Total content: 0
+
+======================================================================
+
+TOP 10 LEADS (by rating):
+
+
+======================================================================
+
+EXPECTED RESULTS (10% response rate):
+
+Leads reached: 0
+Expected responses: ~0
+Calls booked: ~0
+Deals closed: ~0
+
+Revenue potential:
+At Rp 5M/deal: ~Rp 0
+At Rp 10M/deal: ~Rp 0
+
+======================================================================

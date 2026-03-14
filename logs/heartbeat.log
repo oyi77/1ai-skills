@@ -1,0 +1,569 @@
+2026-03-08T17:58:36.652899 | 90% | 0.0 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+2026-03-08T18:00:02.092204 | 90% | 0.1 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+======================================================================
+Heartbeat - 2026-03-08 18:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 1099 lines
+  Yesterday's Memory: 209 lines
+
+📈 Revenue:
+  Gap: 0.1 hours
+
+🌐 PostBridge:
+  API Status: ❌ Error
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: Never tracked
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Report queued: 🚨 CRITICAL ALERT:
+
+🆘 CRITICAL: PostBridge API down...
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-08T18:21:04.874321 | 90% | 0.4 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+2026-03-08T23:22:28.481849 | 90% | 1.9 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+2026-03-09T00:00:01.669257 | 90% | 24.0 hours | ❌ Error | 🆘 CRITICAL: Revenue gap 24.0 hours,🆘 CRITICAL: PostBridge API down
+======================================================================
+Heartbeat - 2026-03-09 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1349 lines
+
+📈 Revenue:
+  Gap: 24.0 hours
+
+🌐 PostBridge:
+  API Status: ❌ Error
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: Never tracked
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Report queued: 🚨 CRITICAL ALERT:
+
+🆘 CRITICAL: Revenue gap 24.0 ho...
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-09T06:00:02.075247 | 90% | 0.5 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+======================================================================
+Heartbeat - 2026-03-09 06:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 179 lines
+  Yesterday's Memory: 1385 lines
+
+📈 Revenue:
+  Gap: 0.5 hours
+
+🌐 PostBridge:
+  API Status: ❌ Error
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: Never tracked
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Report queued: 🚨 CRITICAL ALERT:
+
+🆘 CRITICAL: PostBridge API down...
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-09T12:00:01.954101 | 91% | 1.5 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+======================================================================
+Heartbeat - 2026-03-09 12:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 831 lines
+  Yesterday's Memory: 1385 lines
+
+📈 Revenue:
+  Gap: 1.5 hours
+
+🌐 PostBridge:
+  API Status: ❌ Error
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: Never tracked
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Report queued: 🚨 CRITICAL ALERT:
+
+🆘 CRITICAL: PostBridge API down...
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-09T12:28:20.080994 | 91% | 1.9 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+2026-03-09T15:29:45.179050 | 76% | 1.9 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+2026-03-09T15:36:58.029318 | 76% | 0.1 hours | ❌ Error | 🆘 CRITICAL: PostBridge API down
+2026-03-09T15:40:08.514158 | 76% | 0.1 hours | ❌ NameError: name 'timedelta' is not defined | 🆘 CRITICAL: PostBridge API down
+
+Error details: ❌ NameError: name 'timedelta' is not defined
+2026-03-09T15:40:31.474658 | 76% | 0.1 hours | ✅ OK | 
+2026-03-09T18:00:04.256880 | 76% | 0.2 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-09 18:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 76%
+  Today's Memory: 382 lines
+  Yesterday's Memory: 1385 lines
+
+📈 Revenue:
+  Gap: 0.2 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 2.2h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-10T00:00:04.161022 | 77% | 8.2 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-10 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 77%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1483 lines
+
+📈 Revenue:
+  Gap: 8.2 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 8.2h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-10T00:47:04.184912 | 77% | 0.0 hours | ✅ OK | 
+2026-03-10T06:00:04.671812 | 77% | 0.6 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-10 06:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 77%
+  Today's Memory: 469 lines
+  Yesterday's Memory: 1483 lines
+
+📈 Revenue:
+  Gap: 0.6 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 5.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-10T12:00:07.584893 | 78% | 11.0 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-10 12:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 78%
+  Today's Memory: 1089 lines
+  Yesterday's Memory: 1483 lines
+
+📈 Revenue:
+  Gap: 11.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 11.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-10T18:00:09.980236 | 78% | 17.0 hours | ✅ OK | 🆘 CRITICAL: Revenue gap 17.0 hours
+======================================================================
+Heartbeat - 2026-03-10 18:00:04
+======================================================================
+
+📊 System Status:
+  Disk Used: 78%
+  Today's Memory: 1240 lines
+  Yesterday's Memory: 1483 lines
+
+📈 Revenue:
+  Gap: 17.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 17.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 7317)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-11T18:00:03.567791 | 80% | 1.9 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-11 18:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 80%
+  Today's Memory: 688 lines
+  Yesterday's Memory: 1383 lines
+
+📈 Revenue:
+  Gap: 1.9 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 4.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-12T00:00:03.886228 | 80% | 5.9 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-12 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 80%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1068 lines
+
+📈 Revenue:
+  Gap: 5.9 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 5.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-12T06:00:03.999057 | 91% | 11.9 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-12 06:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 614 lines
+  Yesterday's Memory: 1068 lines
+
+📈 Revenue:
+  Gap: 11.9 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 11.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-12T12:00:04.637004 | 91% | 0.4 hours | ✅ OK | 
+======================================================================
+Heartbeat - 2026-03-12 12:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 980 lines
+  Yesterday's Memory: 1068 lines
+
+📈 Revenue:
+  Gap: 0.4 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 2.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-12T14:59:11.881033 | 91% | 5.9 hours | ✅ OK | 
+2026-03-12T18:00:02.949620 | 91% | 8.9 hours | ✅ OK (27 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-12 18:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 1348 lines
+  Yesterday's Memory: 1068 lines
+
+📈 Revenue:
+  Gap: 8.9 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (27 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 8.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-13T00:00:03.768147 | 80% | 5.9 hours | ✅ OK (27 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-13 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 80%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 2041 lines
+
+📈 Revenue:
+  Gap: 5.9 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (27 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 5.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-13T06:00:03.307519 | 92% | 0.1 hours | ✅ OK (27 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-13 06:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 92%
+  Today's Memory: 408 lines
+  Yesterday's Memory: 2074 lines
+
+📈 Revenue:
+  Gap: 0.1 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (27 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 11.9h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-13T12:00:03.458256 | 88% | 0.5 hours | ✅ OK (27 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-13 12:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 88%
+  Today's Memory: 123 lines
+  Yesterday's Memory: 2074 lines
+
+📈 Revenue:
+  Gap: 0.5 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (27 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 3.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-13T18:00:03.621652 | 88% | 0.2 hours | ✅ OK (77 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-13 18:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 88%
+  Today's Memory: 338 lines
+  Yesterday's Memory: 2074 lines
+
+📈 Revenue:
+  Gap: 0.2 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (77 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 9.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-14T00:00:03.872217 | 89% | 15.0 hours | ✅ OK (83 accounts connected) | 🆘 CRITICAL: Revenue gap 15.0 hours
+======================================================================
+Heartbeat - 2026-03-14 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 89%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1556 lines
+
+📈 Revenue:
+  Gap: 15.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (83 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 15.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 9702)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-14T06:00:03.862753 | 87% | 0.1 hours | ✅ OK (86 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-14 06:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 87%
+  Today's Memory: 970 lines
+  Yesterday's Memory: 1600 lines
+
+📈 Revenue:
+  Gap: 0.1 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 21.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-14T12:00:04.329172 | 88% | 27.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 27.0 hours
+======================================================================
+Heartbeat - 2026-03-14 12:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 88%
+  Today's Memory: 1003 lines
+  Yesterday's Memory: 1600 lines
+
+📈 Revenue:
+  Gap: 27.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 27.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 10252)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================

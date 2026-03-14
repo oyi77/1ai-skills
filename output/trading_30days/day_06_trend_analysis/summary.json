@@ -1,0 +1,23 @@
+{
+  "day": 6,
+  "theme": "Trend Analysis",
+  "date": "2026-03-20",
+  "posts": [
+    {
+      "post_id": "f2137ba4-5ab4-41b0-9654-8d258731b5ab",
+      "time": "2026-03-20T00:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "40e87d65-1155-4f15-9267-5a16b657132d",
+      "time": "2026-03-20T08:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "65be53c3-eea6-4ed8-91b6-8275ab378b0e",
+      "time": "2026-03-20T11:00:00.000Z",
+      "status": "scheduled"
+    }
+  ],
+  "generated_at": "2026-03-14T16:17:08.040371"
+}

@@ -1,0 +1,434 @@
+2026-03-14 01:25:01,547 [INFO] Retrying 14 queued posts...
+2026-03-14 01:25:01,547 [INFO] Retrying 14 queued posts...
+2026-03-14 01:25:02,127 [WARNING]   ⚠️  trading-finance: 500 (retry #1)
+2026-03-14 01:25:02,127 [WARNING]   ⚠️  trading-finance: 500 (retry #1)
+2026-03-14 01:25:02,954 [WARNING]   ⚠️  trading-finance: 500 (retry #1)
+2026-03-14 01:25:02,954 [WARNING]   ⚠️  trading-finance: 500 (retry #1)
+2026-03-14 01:25:03,971 [WARNING]   ⚠️  product-review: 500 (retry #1)
+2026-03-14 01:25:03,971 [WARNING]   ⚠️  product-review: 500 (retry #1)
+2026-03-14 01:25:04,790 [WARNING]   ⚠️  product-review: 500 (retry #1)
+2026-03-14 01:25:04,790 [WARNING]   ⚠️  product-review: 500 (retry #1)
+2026-03-14 01:25:05,609 [WARNING]   ⚠️  digital-marketing: 500 (retry #1)
+2026-03-14 01:25:05,609 [WARNING]   ⚠️  digital-marketing: 500 (retry #1)
+2026-03-14 01:25:06,617 [WARNING]   ⚠️  digital-marketing: 500 (retry #1)
+2026-03-14 01:25:06,617 [WARNING]   ⚠️  digital-marketing: 500 (retry #1)
+2026-03-14 01:25:07,646 [WARNING]   ⚠️  food-recipe: 500 (retry #1)
+2026-03-14 01:25:07,646 [WARNING]   ⚠️  food-recipe: 500 (retry #1)
+2026-03-14 01:25:08,690 [WARNING]   ⚠️  food-recipe: 500 (retry #1)
+2026-03-14 01:25:08,690 [WARNING]   ⚠️  food-recipe: 500 (retry #1)
+2026-03-14 01:25:09,700 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #1)
+2026-03-14 01:25:09,700 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #1)
+2026-03-14 01:25:10,676 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #1)
+2026-03-14 01:25:10,676 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #1)
+2026-03-14 01:25:11,505 [WARNING]   ⚠️  ai-content-creator: 500 (retry #1)
+2026-03-14 01:25:11,505 [WARNING]   ⚠️  ai-content-creator: 500 (retry #1)
+2026-03-14 01:25:12,504 [WARNING]   ⚠️  ai-content-creator: 500 (retry #1)
+2026-03-14 01:25:12,504 [WARNING]   ⚠️  ai-content-creator: 500 (retry #1)
+2026-03-14 01:25:13,309 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #1)
+2026-03-14 01:25:13,309 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #1)
+2026-03-14 01:25:14,181 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #1)
+2026-03-14 01:25:14,181 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #1)
+2026-03-14 01:25:14,482 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:25:14,482 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:30:01,655 [INFO] Retrying 14 queued posts...
+2026-03-14 01:30:01,655 [INFO] Retrying 14 queued posts...
+2026-03-14 01:30:02,186 [WARNING]   ⚠️  trading-finance: 500 (retry #2)
+2026-03-14 01:30:02,186 [WARNING]   ⚠️  trading-finance: 500 (retry #2)
+2026-03-14 01:30:03,217 [WARNING]   ⚠️  trading-finance: 500 (retry #2)
+2026-03-14 01:30:03,217 [WARNING]   ⚠️  trading-finance: 500 (retry #2)
+2026-03-14 01:30:04,061 [WARNING]   ⚠️  product-review: 500 (retry #2)
+2026-03-14 01:30:04,061 [WARNING]   ⚠️  product-review: 500 (retry #2)
+2026-03-14 01:30:04,887 [WARNING]   ⚠️  product-review: 500 (retry #2)
+2026-03-14 01:30:04,887 [WARNING]   ⚠️  product-review: 500 (retry #2)
+2026-03-14 01:30:05,719 [WARNING]   ⚠️  digital-marketing: 500 (retry #2)
+2026-03-14 01:30:05,719 [WARNING]   ⚠️  digital-marketing: 500 (retry #2)
+2026-03-14 01:30:06,550 [WARNING]   ⚠️  digital-marketing: 500 (retry #2)
+2026-03-14 01:30:06,550 [WARNING]   ⚠️  digital-marketing: 500 (retry #2)
+2026-03-14 01:30:07,555 [WARNING]   ⚠️  food-recipe: 500 (retry #2)
+2026-03-14 01:30:07,555 [WARNING]   ⚠️  food-recipe: 500 (retry #2)
+2026-03-14 01:30:08,375 [WARNING]   ⚠️  food-recipe: 500 (retry #2)
+2026-03-14 01:30:08,375 [WARNING]   ⚠️  food-recipe: 500 (retry #2)
+2026-03-14 01:30:09,379 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #2)
+2026-03-14 01:30:09,379 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #2)
+2026-03-14 01:30:10,207 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #2)
+2026-03-14 01:30:10,207 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #2)
+2026-03-14 01:30:11,026 [WARNING]   ⚠️  ai-content-creator: 500 (retry #2)
+2026-03-14 01:30:11,026 [WARNING]   ⚠️  ai-content-creator: 500 (retry #2)
+2026-03-14 01:30:11,854 [WARNING]   ⚠️  ai-content-creator: 500 (retry #2)
+2026-03-14 01:30:11,854 [WARNING]   ⚠️  ai-content-creator: 500 (retry #2)
+2026-03-14 01:30:12,707 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #2)
+2026-03-14 01:30:12,707 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #2)
+2026-03-14 01:30:13,581 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #2)
+2026-03-14 01:30:13,581 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #2)
+2026-03-14 01:30:13,883 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:30:13,883 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:35:01,600 [INFO] Retrying 14 queued posts...
+2026-03-14 01:35:01,600 [INFO] Retrying 14 queued posts...
+2026-03-14 01:35:02,306 [WARNING]   ⚠️  trading-finance: 500 (retry #3)
+2026-03-14 01:35:02,306 [WARNING]   ⚠️  trading-finance: 500 (retry #3)
+2026-03-14 01:35:03,323 [WARNING]   ⚠️  trading-finance: 500 (retry #3)
+2026-03-14 01:35:03,323 [WARNING]   ⚠️  trading-finance: 500 (retry #3)
+2026-03-14 01:35:04,152 [WARNING]   ⚠️  product-review: 500 (retry #3)
+2026-03-14 01:35:04,152 [WARNING]   ⚠️  product-review: 500 (retry #3)
+2026-03-14 01:35:05,151 [WARNING]   ⚠️  product-review: 500 (retry #3)
+2026-03-14 01:35:05,151 [WARNING]   ⚠️  product-review: 500 (retry #3)
+2026-03-14 01:35:05,980 [WARNING]   ⚠️  digital-marketing: 500 (retry #3)
+2026-03-14 01:35:05,980 [WARNING]   ⚠️  digital-marketing: 500 (retry #3)
+2026-03-14 01:35:06,819 [WARNING]   ⚠️  digital-marketing: 500 (retry #3)
+2026-03-14 01:35:06,819 [WARNING]   ⚠️  digital-marketing: 500 (retry #3)
+2026-03-14 01:35:07,811 [WARNING]   ⚠️  food-recipe: 500 (retry #3)
+2026-03-14 01:35:07,811 [WARNING]   ⚠️  food-recipe: 500 (retry #3)
+2026-03-14 01:35:08,635 [WARNING]   ⚠️  food-recipe: 500 (retry #3)
+2026-03-14 01:35:08,635 [WARNING]   ⚠️  food-recipe: 500 (retry #3)
+2026-03-14 01:35:09,669 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #3)
+2026-03-14 01:35:09,669 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #3)
+2026-03-14 01:35:10,487 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #3)
+2026-03-14 01:35:10,487 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #3)
+2026-03-14 01:35:11,302 [WARNING]   ⚠️  ai-content-creator: 500 (retry #3)
+2026-03-14 01:35:11,302 [WARNING]   ⚠️  ai-content-creator: 500 (retry #3)
+2026-03-14 01:35:12,144 [WARNING]   ⚠️  ai-content-creator: 500 (retry #3)
+2026-03-14 01:35:12,144 [WARNING]   ⚠️  ai-content-creator: 500 (retry #3)
+2026-03-14 01:35:12,977 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #3)
+2026-03-14 01:35:12,977 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #3)
+2026-03-14 01:35:13,817 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #3)
+2026-03-14 01:35:13,817 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #3)
+2026-03-14 01:35:14,119 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:35:14,119 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:40:01,656 [INFO] Retrying 14 queued posts...
+2026-03-14 01:40:01,656 [INFO] Retrying 14 queued posts...
+2026-03-14 01:40:02,281 [WARNING]   ⚠️  trading-finance: 500 (retry #4)
+2026-03-14 01:40:02,281 [WARNING]   ⚠️  trading-finance: 500 (retry #4)
+2026-03-14 01:40:03,308 [WARNING]   ⚠️  trading-finance: 500 (retry #4)
+2026-03-14 01:40:03,308 [WARNING]   ⚠️  trading-finance: 500 (retry #4)
+2026-03-14 01:40:04,324 [WARNING]   ⚠️  product-review: 500 (retry #4)
+2026-03-14 01:40:04,324 [WARNING]   ⚠️  product-review: 500 (retry #4)
+2026-03-14 01:40:05,160 [WARNING]   ⚠️  product-review: 500 (retry #4)
+2026-03-14 01:40:05,160 [WARNING]   ⚠️  product-review: 500 (retry #4)
+2026-03-14 01:40:06,005 [WARNING]   ⚠️  digital-marketing: 500 (retry #4)
+2026-03-14 01:40:06,005 [WARNING]   ⚠️  digital-marketing: 500 (retry #4)
+2026-03-14 01:40:06,836 [WARNING]   ⚠️  digital-marketing: 500 (retry #4)
+2026-03-14 01:40:06,836 [WARNING]   ⚠️  digital-marketing: 500 (retry #4)
+2026-03-14 01:40:07,910 [WARNING]   ⚠️  food-recipe: 500 (retry #4)
+2026-03-14 01:40:07,910 [WARNING]   ⚠️  food-recipe: 500 (retry #4)
+2026-03-14 01:40:08,940 [WARNING]   ⚠️  food-recipe: 500 (retry #4)
+2026-03-14 01:40:08,940 [WARNING]   ⚠️  food-recipe: 500 (retry #4)
+2026-03-14 01:40:09,932 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #4)
+2026-03-14 01:40:09,932 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #4)
+2026-03-14 01:40:10,753 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #4)
+2026-03-14 01:40:10,753 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #4)
+2026-03-14 01:40:11,794 [WARNING]   ⚠️  ai-content-creator: 500 (retry #4)
+2026-03-14 01:40:11,794 [WARNING]   ⚠️  ai-content-creator: 500 (retry #4)
+2026-03-14 01:40:12,670 [WARNING]   ⚠️  ai-content-creator: 500 (retry #4)
+2026-03-14 01:40:12,670 [WARNING]   ⚠️  ai-content-creator: 500 (retry #4)
+2026-03-14 01:40:13,691 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #4)
+2026-03-14 01:40:13,691 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #4)
+2026-03-14 01:40:14,681 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #4)
+2026-03-14 01:40:14,681 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #4)
+2026-03-14 01:40:14,982 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:40:14,982 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:45:01,660 [INFO] Retrying 14 queued posts...
+2026-03-14 01:45:01,660 [INFO] Retrying 14 queued posts...
+2026-03-14 01:45:02,561 [WARNING]   ⚠️  trading-finance: 500 (retry #5)
+2026-03-14 01:45:02,561 [WARNING]   ⚠️  trading-finance: 500 (retry #5)
+2026-03-14 01:45:03,593 [WARNING]   ⚠️  trading-finance: 500 (retry #5)
+2026-03-14 01:45:03,593 [WARNING]   ⚠️  trading-finance: 500 (retry #5)
+2026-03-14 01:45:04,445 [WARNING]   ⚠️  product-review: 500 (retry #5)
+2026-03-14 01:45:04,445 [WARNING]   ⚠️  product-review: 500 (retry #5)
+2026-03-14 01:45:05,273 [WARNING]   ⚠️  product-review: 500 (retry #5)
+2026-03-14 01:45:05,273 [WARNING]   ⚠️  product-review: 500 (retry #5)
+2026-03-14 01:45:06,317 [WARNING]   ⚠️  digital-marketing: 500 (retry #5)
+2026-03-14 01:45:06,317 [WARNING]   ⚠️  digital-marketing: 500 (retry #5)
+2026-03-14 01:45:07,128 [WARNING]   ⚠️  digital-marketing: 500 (retry #5)
+2026-03-14 01:45:07,128 [WARNING]   ⚠️  digital-marketing: 500 (retry #5)
+2026-03-14 01:45:08,154 [WARNING]   ⚠️  food-recipe: 500 (retry #5)
+2026-03-14 01:45:08,154 [WARNING]   ⚠️  food-recipe: 500 (retry #5)
+2026-03-14 01:45:09,201 [WARNING]   ⚠️  food-recipe: 500 (retry #5)
+2026-03-14 01:45:09,201 [WARNING]   ⚠️  food-recipe: 500 (retry #5)
+2026-03-14 01:45:10,225 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #5)
+2026-03-14 01:45:10,225 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #5)
+2026-03-14 01:45:11,057 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #5)
+2026-03-14 01:45:11,057 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #5)
+2026-03-14 01:45:12,107 [WARNING]   ⚠️  ai-content-creator: 500 (retry #5)
+2026-03-14 01:45:12,107 [WARNING]   ⚠️  ai-content-creator: 500 (retry #5)
+2026-03-14 01:45:12,950 [WARNING]   ⚠️  ai-content-creator: 500 (retry #5)
+2026-03-14 01:45:12,950 [WARNING]   ⚠️  ai-content-creator: 500 (retry #5)
+2026-03-14 01:45:13,978 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #5)
+2026-03-14 01:45:13,978 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #5)
+2026-03-14 01:45:14,811 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #5)
+2026-03-14 01:45:14,811 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #5)
+2026-03-14 01:45:15,112 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:45:15,112 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:50:01,598 [INFO] Retrying 14 queued posts...
+2026-03-14 01:50:01,598 [INFO] Retrying 14 queued posts...
+2026-03-14 01:50:02,337 [WARNING]   ⚠️  trading-finance: 500 (retry #6)
+2026-03-14 01:50:02,337 [WARNING]   ⚠️  trading-finance: 500 (retry #6)
+2026-03-14 01:50:03,199 [WARNING]   ⚠️  trading-finance: 500 (retry #6)
+2026-03-14 01:50:03,199 [WARNING]   ⚠️  trading-finance: 500 (retry #6)
+2026-03-14 01:50:04,424 [WARNING]   ⚠️  product-review: 500 (retry #6)
+2026-03-14 01:50:04,424 [WARNING]   ⚠️  product-review: 500 (retry #6)
+2026-03-14 01:50:05,269 [WARNING]   ⚠️  product-review: 500 (retry #6)
+2026-03-14 01:50:05,269 [WARNING]   ⚠️  product-review: 500 (retry #6)
+2026-03-14 01:50:06,146 [WARNING]   ⚠️  digital-marketing: 500 (retry #6)
+2026-03-14 01:50:06,146 [WARNING]   ⚠️  digital-marketing: 500 (retry #6)
+2026-03-14 01:50:06,965 [WARNING]   ⚠️  digital-marketing: 500 (retry #6)
+2026-03-14 01:50:06,965 [WARNING]   ⚠️  digital-marketing: 500 (retry #6)
+2026-03-14 01:50:07,990 [WARNING]   ⚠️  food-recipe: 500 (retry #6)
+2026-03-14 01:50:07,990 [WARNING]   ⚠️  food-recipe: 500 (retry #6)
+2026-03-14 01:50:08,826 [WARNING]   ⚠️  food-recipe: 500 (retry #6)
+2026-03-14 01:50:08,826 [WARNING]   ⚠️  food-recipe: 500 (retry #6)
+2026-03-14 01:50:09,888 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #6)
+2026-03-14 01:50:09,888 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #6)
+2026-03-14 01:50:10,719 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #6)
+2026-03-14 01:50:10,719 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #6)
+2026-03-14 01:50:11,545 [WARNING]   ⚠️  ai-content-creator: 500 (retry #6)
+2026-03-14 01:50:11,545 [WARNING]   ⚠️  ai-content-creator: 500 (retry #6)
+2026-03-14 01:50:12,382 [WARNING]   ⚠️  ai-content-creator: 500 (retry #6)
+2026-03-14 01:50:12,382 [WARNING]   ⚠️  ai-content-creator: 500 (retry #6)
+2026-03-14 01:50:13,200 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #6)
+2026-03-14 01:50:13,200 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #6)
+2026-03-14 01:50:14,030 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #6)
+2026-03-14 01:50:14,030 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #6)
+2026-03-14 01:50:14,331 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:50:14,331 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:55:01,495 [INFO] Retrying 14 queued posts...
+2026-03-14 01:55:01,495 [INFO] Retrying 14 queued posts...
+2026-03-14 01:55:02,278 [WARNING]   ⚠️  trading-finance: 500 (retry #7)
+2026-03-14 01:55:02,278 [WARNING]   ⚠️  trading-finance: 500 (retry #7)
+2026-03-14 01:55:03,124 [WARNING]   ⚠️  trading-finance: 500 (retry #7)
+2026-03-14 01:55:03,124 [WARNING]   ⚠️  trading-finance: 500 (retry #7)
+2026-03-14 01:55:03,966 [WARNING]   ⚠️  product-review: 500 (retry #7)
+2026-03-14 01:55:03,966 [WARNING]   ⚠️  product-review: 500 (retry #7)
+2026-03-14 01:55:04,976 [WARNING]   ⚠️  product-review: 500 (retry #7)
+2026-03-14 01:55:04,976 [WARNING]   ⚠️  product-review: 500 (retry #7)
+2026-03-14 01:55:05,820 [WARNING]   ⚠️  digital-marketing: 500 (retry #7)
+2026-03-14 01:55:05,820 [WARNING]   ⚠️  digital-marketing: 500 (retry #7)
+2026-03-14 01:55:06,678 [WARNING]   ⚠️  digital-marketing: 500 (retry #7)
+2026-03-14 01:55:06,678 [WARNING]   ⚠️  digital-marketing: 500 (retry #7)
+2026-03-14 01:55:07,725 [WARNING]   ⚠️  food-recipe: 500 (retry #7)
+2026-03-14 01:55:07,725 [WARNING]   ⚠️  food-recipe: 500 (retry #7)
+2026-03-14 01:55:08,615 [WARNING]   ⚠️  food-recipe: 500 (retry #7)
+2026-03-14 01:55:08,615 [WARNING]   ⚠️  food-recipe: 500 (retry #7)
+2026-03-14 01:55:09,666 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #7)
+2026-03-14 01:55:09,666 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #7)
+2026-03-14 01:55:10,490 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #7)
+2026-03-14 01:55:10,490 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #7)
+2026-03-14 01:55:11,505 [WARNING]   ⚠️  ai-content-creator: 500 (retry #7)
+2026-03-14 01:55:11,505 [WARNING]   ⚠️  ai-content-creator: 500 (retry #7)
+2026-03-14 01:55:12,531 [WARNING]   ⚠️  ai-content-creator: 500 (retry #7)
+2026-03-14 01:55:12,531 [WARNING]   ⚠️  ai-content-creator: 500 (retry #7)
+2026-03-14 01:55:13,366 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #7)
+2026-03-14 01:55:13,366 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #7)
+2026-03-14 01:55:14,726 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #7)
+2026-03-14 01:55:14,726 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #7)
+2026-03-14 01:55:15,027 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 01:55:15,027 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:00:01,601 [INFO] Retrying 14 queued posts...
+2026-03-14 02:00:01,601 [INFO] Retrying 14 queued posts...
+2026-03-14 02:00:02,432 [WARNING]   ⚠️  trading-finance: 500 (retry #8)
+2026-03-14 02:00:02,432 [WARNING]   ⚠️  trading-finance: 500 (retry #8)
+2026-03-14 02:00:03,489 [WARNING]   ⚠️  trading-finance: 500 (retry #8)
+2026-03-14 02:00:03,489 [WARNING]   ⚠️  trading-finance: 500 (retry #8)
+2026-03-14 02:00:04,381 [WARNING]   ⚠️  product-review: 500 (retry #8)
+2026-03-14 02:00:04,381 [WARNING]   ⚠️  product-review: 500 (retry #8)
+2026-03-14 02:00:05,463 [WARNING]   ⚠️  product-review: 500 (retry #8)
+2026-03-14 02:00:05,463 [WARNING]   ⚠️  product-review: 500 (retry #8)
+2026-03-14 02:00:07,638 [WARNING]   ⚠️  digital-marketing: 500 (retry #8)
+2026-03-14 02:00:07,638 [WARNING]   ⚠️  digital-marketing: 500 (retry #8)
+2026-03-14 02:00:08,674 [WARNING]   ⚠️  digital-marketing: 500 (retry #8)
+2026-03-14 02:00:08,674 [WARNING]   ⚠️  digital-marketing: 500 (retry #8)
+2026-03-14 02:00:09,790 [WARNING]   ⚠️  food-recipe: 500 (retry #8)
+2026-03-14 02:00:09,790 [WARNING]   ⚠️  food-recipe: 500 (retry #8)
+2026-03-14 02:00:10,876 [WARNING]   ⚠️  food-recipe: 500 (retry #8)
+2026-03-14 02:00:10,876 [WARNING]   ⚠️  food-recipe: 500 (retry #8)
+2026-03-14 02:00:11,918 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #8)
+2026-03-14 02:00:11,918 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #8)
+2026-03-14 02:00:12,795 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #8)
+2026-03-14 02:00:12,795 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #8)
+2026-03-14 02:00:13,665 [WARNING]   ⚠️  ai-content-creator: 500 (retry #8)
+2026-03-14 02:00:13,665 [WARNING]   ⚠️  ai-content-creator: 500 (retry #8)
+2026-03-14 02:00:14,717 [WARNING]   ⚠️  ai-content-creator: 500 (retry #8)
+2026-03-14 02:00:14,717 [WARNING]   ⚠️  ai-content-creator: 500 (retry #8)
+2026-03-14 02:00:15,746 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #8)
+2026-03-14 02:00:15,746 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #8)
+2026-03-14 02:00:16,813 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #8)
+2026-03-14 02:00:16,813 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #8)
+2026-03-14 02:00:17,114 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:00:17,114 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:05:01,376 [INFO] Retrying 14 queued posts...
+2026-03-14 02:05:01,376 [INFO] Retrying 14 queued posts...
+2026-03-14 02:05:02,471 [WARNING]   ⚠️  trading-finance: 500 (retry #9)
+2026-03-14 02:05:02,471 [WARNING]   ⚠️  trading-finance: 500 (retry #9)
+2026-03-14 02:05:03,480 [WARNING]   ⚠️  trading-finance: 500 (retry #9)
+2026-03-14 02:05:03,480 [WARNING]   ⚠️  trading-finance: 500 (retry #9)
+2026-03-14 02:05:04,317 [WARNING]   ⚠️  product-review: 500 (retry #9)
+2026-03-14 02:05:04,317 [WARNING]   ⚠️  product-review: 500 (retry #9)
+2026-03-14 02:05:05,329 [WARNING]   ⚠️  product-review: 500 (retry #9)
+2026-03-14 02:05:05,329 [WARNING]   ⚠️  product-review: 500 (retry #9)
+2026-03-14 02:05:06,155 [WARNING]   ⚠️  digital-marketing: 500 (retry #9)
+2026-03-14 02:05:06,155 [WARNING]   ⚠️  digital-marketing: 500 (retry #9)
+2026-03-14 02:05:06,990 [WARNING]   ⚠️  digital-marketing: 500 (retry #9)
+2026-03-14 02:05:06,990 [WARNING]   ⚠️  digital-marketing: 500 (retry #9)
+2026-03-14 02:05:07,869 [WARNING]   ⚠️  food-recipe: 500 (retry #9)
+2026-03-14 02:05:07,869 [WARNING]   ⚠️  food-recipe: 500 (retry #9)
+2026-03-14 02:05:08,692 [WARNING]   ⚠️  food-recipe: 500 (retry #9)
+2026-03-14 02:05:08,692 [WARNING]   ⚠️  food-recipe: 500 (retry #9)
+2026-03-14 02:05:09,535 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #9)
+2026-03-14 02:05:09,535 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #9)
+2026-03-14 02:05:10,519 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #9)
+2026-03-14 02:05:10,519 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #9)
+2026-03-14 02:05:11,530 [WARNING]   ⚠️  ai-content-creator: 500 (retry #9)
+2026-03-14 02:05:11,530 [WARNING]   ⚠️  ai-content-creator: 500 (retry #9)
+2026-03-14 02:05:12,351 [WARNING]   ⚠️  ai-content-creator: 500 (retry #9)
+2026-03-14 02:05:12,351 [WARNING]   ⚠️  ai-content-creator: 500 (retry #9)
+2026-03-14 02:05:13,184 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #9)
+2026-03-14 02:05:13,184 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #9)
+2026-03-14 02:05:14,016 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #9)
+2026-03-14 02:05:14,016 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #9)
+2026-03-14 02:05:14,318 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:05:14,318 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:10:01,425 [INFO] Retrying 14 queued posts...
+2026-03-14 02:10:01,425 [INFO] Retrying 14 queued posts...
+2026-03-14 02:10:02,198 [WARNING]   ⚠️  trading-finance: 500 (retry #10)
+2026-03-14 02:10:02,198 [WARNING]   ⚠️  trading-finance: 500 (retry #10)
+2026-03-14 02:10:03,254 [WARNING]   ⚠️  trading-finance: 500 (retry #10)
+2026-03-14 02:10:03,254 [WARNING]   ⚠️  trading-finance: 500 (retry #10)
+2026-03-14 02:10:04,071 [WARNING]   ⚠️  product-review: 500 (retry #10)
+2026-03-14 02:10:04,071 [WARNING]   ⚠️  product-review: 500 (retry #10)
+2026-03-14 02:10:05,093 [WARNING]   ⚠️  product-review: 500 (retry #10)
+2026-03-14 02:10:05,093 [WARNING]   ⚠️  product-review: 500 (retry #10)
+2026-03-14 02:10:05,925 [WARNING]   ⚠️  digital-marketing: 500 (retry #10)
+2026-03-14 02:10:05,925 [WARNING]   ⚠️  digital-marketing: 500 (retry #10)
+2026-03-14 02:10:06,946 [WARNING]   ⚠️  digital-marketing: 500 (retry #10)
+2026-03-14 02:10:06,946 [WARNING]   ⚠️  digital-marketing: 500 (retry #10)
+2026-03-14 02:10:07,974 [WARNING]   ⚠️  food-recipe: 500 (retry #10)
+2026-03-14 02:10:07,974 [WARNING]   ⚠️  food-recipe: 500 (retry #10)
+2026-03-14 02:10:08,791 [WARNING]   ⚠️  food-recipe: 500 (retry #10)
+2026-03-14 02:10:08,791 [WARNING]   ⚠️  food-recipe: 500 (retry #10)
+2026-03-14 02:10:09,626 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #10)
+2026-03-14 02:10:09,626 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #10)
+2026-03-14 02:10:10,631 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #10)
+2026-03-14 02:10:10,631 [WARNING]   ⚠️  fashion-lifestyle: 500 (retry #10)
+2026-03-14 02:10:11,641 [WARNING]   ⚠️  ai-content-creator: 500 (retry #10)
+2026-03-14 02:10:11,641 [WARNING]   ⚠️  ai-content-creator: 500 (retry #10)
+2026-03-14 02:10:12,459 [WARNING]   ⚠️  ai-content-creator: 500 (retry #10)
+2026-03-14 02:10:12,459 [WARNING]   ⚠️  ai-content-creator: 500 (retry #10)
+2026-03-14 02:10:13,294 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #10)
+2026-03-14 02:10:13,294 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #10)
+2026-03-14 02:10:14,287 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #10)
+2026-03-14 02:10:14,287 [WARNING]   ⚠️  entertainment-engagement: 500 (retry #10)
+2026-03-14 02:10:14,588 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:10:14,588 [INFO] 📊 Result: 0 OK, 14 retry, 0 dropped. Queue: 14 pending
+2026-03-14 02:15:01,430 [INFO] Retrying 14 queued posts...
+2026-03-14 02:15:01,430 [INFO] Retrying 14 queued posts...
+2026-03-14 02:15:02,747 [INFO]   ✅ trading-finance (retry #11) → 1850eca8-47d3-4dd3-aff2-e065ccc9dfcd
+2026-03-14 02:15:02,747 [INFO]   ✅ trading-finance (retry #11) → 1850eca8-47d3-4dd3-aff2-e065ccc9dfcd
+2026-03-14 02:15:03,898 [INFO]   ✅ trading-finance (retry #11) → d0f4d5d9-9548-4405-97d3-85f2dd5b1d02
+2026-03-14 02:15:03,898 [INFO]   ✅ trading-finance (retry #11) → d0f4d5d9-9548-4405-97d3-85f2dd5b1d02
+2026-03-14 02:15:04,730 [INFO]   ✅ product-review (retry #11) → a2ae7228-3b40-439f-ac27-cd3d9757d223
+2026-03-14 02:15:04,730 [INFO]   ✅ product-review (retry #11) → a2ae7228-3b40-439f-ac27-cd3d9757d223
+2026-03-14 02:15:05,795 [INFO]   ✅ product-review (retry #11) → a2d0032a-28c4-47e6-af95-88f2bc4bde38
+2026-03-14 02:15:05,795 [INFO]   ✅ product-review (retry #11) → a2d0032a-28c4-47e6-af95-88f2bc4bde38
+2026-03-14 02:15:07,023 [INFO]   ✅ digital-marketing (retry #11) → 4fb503a3-ff59-450b-a02b-5316fd27eea4
+2026-03-14 02:15:07,023 [INFO]   ✅ digital-marketing (retry #11) → 4fb503a3-ff59-450b-a02b-5316fd27eea4
+2026-03-14 02:15:08,335 [INFO]   ✅ digital-marketing (retry #11) → 819ffe94-19f6-4d2e-8100-806d00f33148
+2026-03-14 02:15:08,335 [INFO]   ✅ digital-marketing (retry #11) → 819ffe94-19f6-4d2e-8100-806d00f33148
+2026-03-14 02:15:09,203 [INFO]   ✅ food-recipe (retry #11) → 45cdd0a9-6a9c-4253-a666-f9e473602eb2
+2026-03-14 02:15:09,203 [INFO]   ✅ food-recipe (retry #11) → 45cdd0a9-6a9c-4253-a666-f9e473602eb2
+2026-03-14 02:15:13,211 [INFO]   ✅ food-recipe (retry #11) → 2ff5c7f9-c904-4ac4-86a5-9d1d6365b86d
+2026-03-14 02:15:13,211 [INFO]   ✅ food-recipe (retry #11) → 2ff5c7f9-c904-4ac4-86a5-9d1d6365b86d
+2026-03-14 02:15:14,281 [INFO]   ✅ fashion-lifestyle (retry #11) → 1fb83f9d-a07f-4c5b-81d1-def9e390ffd8
+2026-03-14 02:15:14,281 [INFO]   ✅ fashion-lifestyle (retry #11) → 1fb83f9d-a07f-4c5b-81d1-def9e390ffd8
+2026-03-14 02:15:15,156 [INFO]   ✅ fashion-lifestyle (retry #11) → effd15b9-6b71-417d-815c-910576a31048
+2026-03-14 02:15:15,156 [INFO]   ✅ fashion-lifestyle (retry #11) → effd15b9-6b71-417d-815c-910576a31048
+2026-03-14 02:15:16,007 [INFO]   ✅ ai-content-creator (retry #11) → 2ca9ec2d-90ff-4bb2-a943-9acb29243de3
+2026-03-14 02:15:16,007 [INFO]   ✅ ai-content-creator (retry #11) → 2ca9ec2d-90ff-4bb2-a943-9acb29243de3
+2026-03-14 02:15:16,734 [INFO]   ✅ ai-content-creator (retry #11) → 83d226a0-205f-4b24-a4f1-34ce83c8602b
+2026-03-14 02:15:16,734 [INFO]   ✅ ai-content-creator (retry #11) → 83d226a0-205f-4b24-a4f1-34ce83c8602b
+2026-03-14 02:15:20,151 [INFO]   ✅ entertainment-engagement (retry #11) → ad271cd2-0cb9-416f-a08e-d5927148ebb2
+2026-03-14 02:15:20,151 [INFO]   ✅ entertainment-engagement (retry #11) → ad271cd2-0cb9-416f-a08e-d5927148ebb2
+2026-03-14 02:15:23,517 [INFO]   ✅ entertainment-engagement (retry #11) → df704633-c068-4f92-b141-686b6a8556d1
+2026-03-14 02:15:23,517 [INFO]   ✅ entertainment-engagement (retry #11) → df704633-c068-4f92-b141-686b6a8556d1
+2026-03-14 02:15:23,518 [INFO] 📊 Result: 14 OK, 0 retry, 0 dropped. Queue: 0 pending
+2026-03-14 02:15:23,518 [INFO] 📊 Result: 14 OK, 0 retry, 0 dropped. Queue: 0 pending
+2026-03-14 02:20:02,066 [INFO] No queued posts
+2026-03-14 02:20:02,066 [INFO] No queued posts
+2026-03-14 02:25:01,526 [INFO] No queued posts
+2026-03-14 02:25:01,526 [INFO] No queued posts
+2026-03-14 02:30:02,016 [INFO] No queued posts
+2026-03-14 02:30:02,016 [INFO] No queued posts
+2026-03-14 02:35:01,918 [INFO] No queued posts
+2026-03-14 02:35:01,918 [INFO] No queued posts
+2026-03-14 02:40:01,339 [INFO] No queued posts
+2026-03-14 02:40:01,339 [INFO] No queued posts
+2026-03-14 02:45:01,541 [INFO] No queued posts
+2026-03-14 02:45:01,541 [INFO] No queued posts
+2026-03-14 02:50:01,921 [INFO] No queued posts
+2026-03-14 02:50:01,921 [INFO] No queued posts
+2026-03-14 02:55:01,445 [INFO] No queued posts
+2026-03-14 02:55:01,445 [INFO] No queued posts
+2026-03-14 03:00:01,879 [INFO] No queued posts
+2026-03-14 03:00:01,879 [INFO] No queued posts
+2026-03-14 03:05:01,714 [INFO] No queued posts
+2026-03-14 03:05:01,714 [INFO] No queued posts
+2026-03-14 03:10:02,105 [INFO] No queued posts
+2026-03-14 03:10:02,105 [INFO] No queued posts
+2026-03-14 03:15:01,425 [INFO] No queued posts
+2026-03-14 03:15:01,425 [INFO] No queued posts
+2026-03-14 03:20:01,855 [INFO] No queued posts
+2026-03-14 03:20:01,855 [INFO] No queued posts
+2026-03-14 03:25:02,264 [INFO] No queued posts
+2026-03-14 03:25:02,264 [INFO] No queued posts
+2026-03-14 03:30:01,981 [INFO] No queued posts
+2026-03-14 03:30:01,981 [INFO] No queued posts
+2026-03-14 03:35:02,100 [INFO] No queued posts
+2026-03-14 03:35:02,100 [INFO] No queued posts
+2026-03-14 03:40:01,981 [INFO] No queued posts
+2026-03-14 03:40:01,981 [INFO] No queued posts
+2026-03-14 03:45:02,093 [INFO] No queued posts
+2026-03-14 03:45:02,093 [INFO] No queued posts
+2026-03-14 03:50:02,192 [INFO] No queued posts
+2026-03-14 03:50:02,192 [INFO] No queued posts
+2026-03-14 03:55:03,315 [INFO] No queued posts
+2026-03-14 03:55:03,315 [INFO] No queued posts
+2026-03-14 04:00:02,014 [INFO] No queued posts
+2026-03-14 04:00:02,014 [INFO] No queued posts
+2026-03-14 04:05:01,965 [INFO] No queued posts
+2026-03-14 04:05:01,965 [INFO] No queued posts
+2026-03-14 04:10:02,000 [INFO] No queued posts
+2026-03-14 04:10:02,000 [INFO] No queued posts
+2026-03-14 04:15:02,145 [INFO] No queued posts
+2026-03-14 04:15:02,145 [INFO] No queued posts
+2026-03-14 04:20:01,783 [INFO] No queued posts
+2026-03-14 04:20:01,783 [INFO] No queued posts
+2026-03-14 04:25:01,478 [INFO] No queued posts
+2026-03-14 04:25:01,478 [INFO] No queued posts
+2026-03-14 04:30:01,530 [INFO] No queued posts
+2026-03-14 04:30:01,530 [INFO] No queued posts
+2026-03-14 04:35:01,639 [INFO] No queued posts
+2026-03-14 04:35:01,639 [INFO] No queued posts
+2026-03-14 04:40:01,611 [INFO] No queued posts
+2026-03-14 04:40:01,611 [INFO] No queued posts
+2026-03-14 04:45:01,338 [INFO] No queued posts
+2026-03-14 04:45:01,338 [INFO] No queued posts
+2026-03-14 04:50:01,467 [INFO] No queued posts
+2026-03-14 04:50:01,467 [INFO] No queued posts
+2026-03-14 04:55:01,495 [INFO] No queued posts
+2026-03-14 04:55:01,495 [INFO] No queued posts
+2026-03-14 05:00:01,626 [INFO] No queued posts
+2026-03-14 05:00:01,626 [INFO] No queued posts
+2026-03-14 05:05:01,478 [INFO] No queued posts
+2026-03-14 05:05:01,478 [INFO] No queued posts
+2026-03-14 05:10:01,962 [INFO] No queued posts
+2026-03-14 05:10:01,962 [INFO] No queued posts
+2026-03-14 05:15:01,361 [INFO] No queued posts
+2026-03-14 05:15:01,361 [INFO] No queued posts
+2026-03-14 05:20:01,520 [INFO] No queued posts
+2026-03-14 05:20:01,520 [INFO] No queued posts
+2026-03-14 05:25:01,611 [INFO] No queued posts
+2026-03-14 05:25:01,611 [INFO] No queued posts
+2026-03-14 05:30:02,334 [INFO] No queued posts
+2026-03-14 05:30:02,334 [INFO] No queued posts
+2026-03-14 05:35:01,556 [INFO] No queued posts
+2026-03-14 05:35:01,556 [INFO] No queued posts
+2026-03-14 05:40:01,276 [INFO] No queued posts
+2026-03-14 05:40:01,276 [INFO] No queued posts

@@ -7,5 +7,10 @@
         "postinstall": "node install.js"
     },
     "author": "Paijo",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "@remotion/cli": "^4.0.434",
+        "@remotion/renderer": "^4.0.434",
+        "remotion": "^4.0.434"
+    }
 }

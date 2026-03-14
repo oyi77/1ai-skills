@@ -1,0 +1,18 @@
+{
+  "dashboard_url": "https://lynk.id/jendralbot",
+  "check_interval_minutes": 60,
+  "products": {
+    "Belanja Tetap Jalan Tapi Duit Balik": "6821op5e24kn",
+    "Guru Pintar AI": "n2o3p4q5r6s7",
+    "Studio Marketplace Pro": "emne05mm7v25",
+    "Mesin Cetak Bisnis Kulinermu": "mesin-cetak-bisnis-kulinermu",
+    "AI Content Pro Seller": "ai-content-pro-seller",
+    "Starter AI Content 4K": "starter-ai-content-4k"
+  },
+  "alert_thresholds": {
+    "low_views": 100,
+    "low_ctr_pct": 0.5,
+    "zero_conversions_hours": 48
+  },
+  "log_path": "logs/lynk_performance.log"
+}

@@ -1,0 +1,8 @@
+  File "/home/openclaw/.openclaw/workspace/scripts/daily_schedule.py", line 97
+    with open(queue_file) as 'r') as f:
+                                ^
+SyntaxError: unmatched ')'
+  File "/home/openclaw/.openclaw/workspace/scripts/daily_schedule.py", line 97
+    with open(queue_file) as 'r') as f:
+                                ^
+SyntaxError: unmatched ')'

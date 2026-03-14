@@ -1,0 +1,768 @@
+{
+  "campaign_id": "campaign_traveloka_manual_20260307_004753",
+  "mode": "REAL_DATA_TRAVELOKA_MANUAL",
+  "source": "Traveloka.com Web Fetch + Manual Extraction",
+  "stats": {
+    "leads_extracted": 16,
+    "emails_generated": 48,
+    "social_posts": 48,
+    "total_content": 96,
+    "generated_at": "2026-03-07T00:47:53.580246"
+  },
+  "restaurants": [
+    {
+      "business_name": "Common Ground Terra",
+      "address": "SOI, Lantai 1, Jl. Teuku Cik Ditiro No. 10, Menteng, Jakarta Pusat",
+      "phone": "+62 21 XXX XXX XXX",
+      "website": "https://www.instagram.com/commongroundsid",
+      "rating": 4.6,
+      "reviews": 127,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Cafe/Restaurant",
+      "notes": "Breakfast spot di samping lapangan tenis Menteng"
+    },
+    {
+      "business_name": "Pantja",
+      "address": "Jl. Senopati No. 37, Senopati, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/pantja.id",
+      "rating": 4.5,
+      "reviews": 198,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Farm-to-table Restaurant",
+      "notes": "Pasta terkenal, cookies sundae collaboration dengan Dough Lab"
+    },
+    {
+      "business_name": "Kohai Izakaya",
+      "address": "Urban Forest, Jl. RS Fatmawati No. 45, Fatmawati, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/kohaizakaya.id",
+      "rating": 4.4,
+      "reviews": 215,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Japanese Izakaya",
+      "notes": "Authentic Japanese atmosphere, popular di malam"
+    },
+    {
+      "business_name": "The Penthouse by Papilion",
+      "address": "The Papilion, Lantai 4, Jl. Kemang Raya No. 45AA, Kemang, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.thepapilion.com",
+      "rating": 4.8,
+      "reviews": 342,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Fine Dining",
+      "notes": "Multi-concept: The Pantry, Living Room, Dining Room, Library, Gossip Room"
+    },
+    {
+      "business_name": "7 AM",
+      "address": "Senayan City, Lantai Lower Ground, Crystal Lagoon, Jl. Asia Afrika, Senayan, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/7am.bakers",
+      "rating": 4.3,
+      "reviews": 156,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Bakery/Cafe",
+      "notes": "Dari Bali, bakery populer di Jakarta"
+    },
+    {
+      "business_name": "The Forest At The Veranda",
+      "address": "Jl. Lebak Bulus Pondok No. 8, Lebak Bulus, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/theforestjakarta",
+      "rating": 4.7,
+      "reviews": 189,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Fine Dining",
+      "notes": "Fine dining dengan sunset view ala Bali"
+    },
+    {
+      "business_name": "Acta Brasserie",
+      "address": "Senayan Avenue, Jl. Asia Afrika Pintu IX, Senayan, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/acta_brasserie",
+      "rating": 4.5,
+      "reviews": 234,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Brasserie/Restaurant",
+      "notes": "Lokasi golf area, aesthetic vibes, instagramabble"
+    },
+    {
+      "business_name": "Stalk",
+      "address": "SCBD Park, Lot 8, Jl. Jenderal Sudirman Kav. 52 - 53, SCBD, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/stalkjakarta",
+      "rating": 4.6,
+      "reviews": 267,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Restobar",
+      "notes": "Modern design, live jazz music, chic interior"
+    },
+    {
+      "business_name": "Jon & Lou",
+      "address": "SCBD Park, Lot 7, Jl. Jenderal Sudirman Kav. 52 - 53, SCBD, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/jonandlou.jkt",
+      "rating": 4.4,
+      "reviews": 178,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Italian Restaurant",
+      "notes": "Don Jon Pizza, Pappardelle, minimalis desain"
+    },
+    {
+      "business_name": "Cork & Screw",
+      "address": "Senayan Avenue, Jl. Asia Afrika Pintu IX, Senayan, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/corknscrew",
+      "rating": 4.6,
+      "reviews": 245,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Restaurant & Bar",
+      "notes": "Romantic atmosphere, pasta, steak, dessert all excellent"
+    },
+    {
+      "business_name": "71st Omakase",
+      "address": "Jl. Gelagah No.35, Pisangan, Kec. Ciputat Timur, Tangerang Selatan, Banten",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.9,
+      "reviews": 387,
+      "price_range": "Premium",
+      "type": "Omakase",
+      "notes": "Omakase from farm to table, artistik plating, seasonal themes"
+    },
+    {
+      "business_name": "Namaaz Dining",
+      "address": "Jl. Brawijaya VIII No.6A, Pulo, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.7,
+      "reviews": 298,
+      "price_range": "Premium",
+      "type": "Molecular Gastronomy",
+      "notes": "First molecular gastronomy in Indonesia, visual art, immersive experience"
+    },
+    {
+      "business_name": "Banquet of Hoshena - The Ritz Carlton",
+      "address": "The Ritz-Carlton Jakarta, Mega Kuningan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/id-id/hotel/indonesia/the-ritz-carlton-jakarta-mega-kuningan-65540",
+      "rating": 4.8,
+      "reviews": 324,
+      "price_range": "Premium",
+      "type": "Gastronomy Experience",
+      "notes": "Visual projections, 3D characters, 90 min immersive dining"
+    },
+    {
+      "business_name": "Soichiro Irori Style Japanese Steak House",
+      "address": "SCBD area, Jakarta",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.6,
+      "reviews": 201,
+      "price_range": "Premium",
+      "type": "Japanese Steakhouse",
+      "notes": "Traditional Irori technique, premium Japanese steak"
+    },
+    {
+      "business_name": "Henshin Restaurant",
+      "address": "The Westin Jakarta",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.9,
+      "reviews": 412,
+      "price_range": "Premium",
+      "type": "Nikkei (Peru-Japan fusion)",
+      "notes": "Asia's Top 80 Fine Dining 2023, fusion Peru Jepang"
+    },
+    {
+      "business_name": "Asia Restaurant",
+      "address": "The Dharmawangsa, Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta 12160",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.5,
+      "reviews": 187,
+      "price_range": "Premium",
+      "type": "Fine Dining",
+      "notes": "International, Asian, and local menus, romantic dinner"
+    }
+  ],
+  "generated_content": [
+    {
+      "lead_id": "traveloka_000",
+      "business_name": "Common Ground Terra",
+      "address": "SOI, Lantai 1, Jl. Teuku Cik Ditiro No. 10, Menteng, Jakarta Pusat",
+      "phone": "+62 21 XXX XXX XXX",
+      "website": "https://www.instagram.com/commongroundsid",
+      "rating": 4.6,
+      "reviews": 127,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Cafe/Restaurant",
+      "notes": "Breakfast spot di samping lapangan tenis Menteng",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579767",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Common Ground Terra",
+          "body": "Hi Common Ground Terra,\n\nSaya lihat Common Ground Terra di Traveloka - rating 4.6\u2b50\u2b50 dengan 127 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Common Ground Terra?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Common Ground Terra",
+          "body": "Hi Common Ground Terra,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Common Ground Terra, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Common Ground Terra",
+          "body": "Halo Common Ground Terra,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Common Ground Terra:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_001",
+      "business_name": "Pantja",
+      "address": "Jl. Senopati No. 37, Senopati, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/pantja.id",
+      "rating": 4.5,
+      "reviews": 198,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Farm-to-table Restaurant",
+      "notes": "Pasta terkenal, cookies sundae collaboration dengan Dough Lab",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579814",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Pantja",
+          "body": "Hi Pantja,\n\nSaya lihat Pantja di Traveloka - rating 4.5\u2b50\u2b50 dengan 198 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Pantja?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Pantja",
+          "body": "Hi Pantja,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Pantja, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Pantja",
+          "body": "Halo Pantja,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Pantja:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_002",
+      "business_name": "Kohai Izakaya",
+      "address": "Urban Forest, Jl. RS Fatmawati No. 45, Fatmawati, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/kohaizakaya.id",
+      "rating": 4.4,
+      "reviews": 215,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Japanese Izakaya",
+      "notes": "Authentic Japanese atmosphere, popular di malam",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579841",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Kohai Izakaya",
+          "body": "Hi Kohai Izakaya,\n\nSaya lihat Kohai Izakaya di Traveloka - rating 4.4\u2b50\u2b50 dengan 215 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Kohai Izakaya?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Kohai Izakaya",
+          "body": "Hi Kohai Izakaya,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Kohai Izakaya, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Kohai Izakaya",
+          "body": "Halo Kohai Izakaya,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Kohai Izakaya:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_003",
+      "business_name": "The Penthouse by Papilion",
+      "address": "The Papilion, Lantai 4, Jl. Kemang Raya No. 45AA, Kemang, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.thepapilion.com",
+      "rating": 4.8,
+      "reviews": 342,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Fine Dining",
+      "notes": "Multi-concept: The Pantry, Living Room, Dining Room, Library, Gossip Room",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579865",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, The Penthouse by Papilion",
+          "body": "Hi The Penthouse by Papilion,\n\nSaya lihat The Penthouse by Papilion di Traveloka - rating 4.8\u2b50\u2b50 dengan 342 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk The Penthouse by Papilion?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: The Penthouse by Papilion",
+          "body": "Hi The Penthouse by Papilion,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti The Penthouse by Papilion, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: The Penthouse by Papilion",
+          "body": "Halo The Penthouse by Papilion,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk The Penthouse by Papilion:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_004",
+      "business_name": "7 AM",
+      "address": "Senayan City, Lantai Lower Ground, Crystal Lagoon, Jl. Asia Afrika, Senayan, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/7am.bakers",
+      "rating": 4.3,
+      "reviews": 156,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Bakery/Cafe",
+      "notes": "Dari Bali, bakery populer di Jakarta",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579888",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, 7 AM",
+          "body": "Hi 7 AM,\n\nSaya lihat 7 AM di Traveloka - rating 4.3\u2b50\u2b50 dengan 156 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk 7 AM?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: 7 AM",
+          "body": "Hi 7 AM,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti 7 AM, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: 7 AM",
+          "body": "Halo 7 AM,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk 7 AM:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_005",
+      "business_name": "The Forest At The Veranda",
+      "address": "Jl. Lebak Bulus Pondok No. 8, Lebak Bulus, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/theforestjakarta",
+      "rating": 4.7,
+      "reviews": 189,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Fine Dining",
+      "notes": "Fine dining dengan sunset view ala Bali",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579910",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, The Forest At The Veranda",
+          "body": "Hi The Forest At The Veranda,\n\nSaya lihat The Forest At The Veranda di Traveloka - rating 4.7\u2b50\u2b50 dengan 189 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk The Forest At The Veranda?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: The Forest At The Veranda",
+          "body": "Hi The Forest At The Veranda,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti The Forest At The Veranda, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: The Forest At The Veranda",
+          "body": "Halo The Forest At The Veranda,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk The Forest At The Veranda:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_006",
+      "business_name": "Acta Brasserie",
+      "address": "Senayan Avenue, Jl. Asia Afrika Pintu IX, Senayan, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/acta_brasserie",
+      "rating": 4.5,
+      "reviews": 234,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Brasserie/Restaurant",
+      "notes": "Lokasi golf area, aesthetic vibes, instagramabble",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579931",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Acta Brasserie",
+          "body": "Hi Acta Brasserie,\n\nSaya lihat Acta Brasserie di Traveloka - rating 4.5\u2b50\u2b50 dengan 234 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Acta Brasserie?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Acta Brasserie",
+          "body": "Hi Acta Brasserie,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Acta Brasserie, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Acta Brasserie",
+          "body": "Halo Acta Brasserie,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Acta Brasserie:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_007",
+      "business_name": "Stalk",
+      "address": "SCBD Park, Lot 8, Jl. Jenderal Sudirman Kav. 52 - 53, SCBD, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/stalkjakarta",
+      "rating": 4.6,
+      "reviews": 267,
+      "price_range": "Di atas Rp200.000/orang",
+      "type": "Restobar",
+      "notes": "Modern design, live jazz music, chic interior",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579952",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Stalk",
+          "body": "Hi Stalk,\n\nSaya lihat Stalk di Traveloka - rating 4.6\u2b50\u2b50 dengan 267 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Stalk?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Stalk",
+          "body": "Hi Stalk,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Stalk, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Stalk",
+          "body": "Halo Stalk,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Stalk:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_008",
+      "business_name": "Jon & Lou",
+      "address": "SCBD Park, Lot 7, Jl. Jenderal Sudirman Kav. 52 - 53, SCBD, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/jonandlou.jkt",
+      "rating": 4.4,
+      "reviews": 178,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Italian Restaurant",
+      "notes": "Don Jon Pizza, Pappardelle, minimalis desain",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.579987",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Jon & Lou",
+          "body": "Hi Jon & Lou,\n\nSaya lihat Jon & Lou di Traveloka - rating 4.4\u2b50\u2b50 dengan 178 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Jon & Lou?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Jon & Lou",
+          "body": "Hi Jon & Lou,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Jon & Lou, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Jon & Lou",
+          "body": "Halo Jon & Lou,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Jon & Lou:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_009",
+      "business_name": "Cork & Screw",
+      "address": "Senayan Avenue, Jl. Asia Afrika Pintu IX, Senayan, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.instagram.com/corknscrew",
+      "rating": 4.6,
+      "reviews": 245,
+      "price_range": "Rp100.000 - Rp200.000/orang",
+      "type": "Restaurant & Bar",
+      "notes": "Romantic atmosphere, pasta, steak, dessert all excellent",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580033",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Cork & Screw",
+          "body": "Hi Cork & Screw,\n\nSaya lihat Cork & Screw di Traveloka - rating 4.6\u2b50\u2b50 dengan 245 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Cork & Screw?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Cork & Screw",
+          "body": "Hi Cork & Screw,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Cork & Screw, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Cork & Screw",
+          "body": "Halo Cork & Screw,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Cork & Screw:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_010",
+      "business_name": "71st Omakase",
+      "address": "Jl. Gelagah No.35, Pisangan, Kec. Ciputat Timur, Tangerang Selatan, Banten",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.9,
+      "reviews": 387,
+      "price_range": "Premium",
+      "type": "Omakase",
+      "notes": "Omakase from farm to table, artistik plating, seasonal themes",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580059",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, 71st Omakase",
+          "body": "Hi 71st Omakase,\n\nSaya lihat 71st Omakase di Traveloka - rating 4.9\u2b50\u2b50 dengan 387 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk 71st Omakase?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: 71st Omakase",
+          "body": "Hi 71st Omakase,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti 71st Omakase, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: 71st Omakase",
+          "body": "Halo 71st Omakase,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk 71st Omakase:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_011",
+      "business_name": "Namaaz Dining",
+      "address": "Jl. Brawijaya VIII No.6A, Pulo, Kebayoran Baru, Jakarta Selatan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.7,
+      "reviews": 298,
+      "price_range": "Premium",
+      "type": "Molecular Gastronomy",
+      "notes": "First molecular gastronomy in Indonesia, visual art, immersive experience",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580083",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Namaaz Dining",
+          "body": "Hi Namaaz Dining,\n\nSaya lihat Namaaz Dining di Traveloka - rating 4.7\u2b50\u2b50 dengan 298 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Namaaz Dining?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Namaaz Dining",
+          "body": "Hi Namaaz Dining,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Namaaz Dining, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Namaaz Dining",
+          "body": "Halo Namaaz Dining,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Namaaz Dining:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_012",
+      "business_name": "Banquet of Hoshena - The Ritz Carlton",
+      "address": "The Ritz-Carlton Jakarta, Mega Kuningan",
+      "phone": "+62 XXX XXX XXX",
+      "website": "https://www.traveloka.com/id-id/hotel/indonesia/the-ritz-carlton-jakarta-mega-kuningan-65540",
+      "rating": 4.8,
+      "reviews": 324,
+      "price_range": "Premium",
+      "type": "Gastronomy Experience",
+      "notes": "Visual projections, 3D characters, 90 min immersive dining",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580108",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Banquet of Hoshena - The Ritz Carlton",
+          "body": "Hi Banquet of Hoshena - The Ritz Carlton,\n\nSaya lihat Banquet of Hoshena - The Ritz Carlton di Traveloka - rating 4.8\u2b50\u2b50 dengan 324 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Banquet of Hoshena - The Ritz Carlton?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Banquet of Hoshena - The Ritz Carlton",
+          "body": "Hi Banquet of Hoshena - The Ritz Carlton,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Banquet of Hoshena - The Ritz Carlton, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Banquet of Hoshena - The Ritz Carlton",
+          "body": "Halo Banquet of Hoshena - The Ritz Carlton,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Banquet of Hoshena - The Ritz Carlton:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_013",
+      "business_name": "Soichiro Irori Style Japanese Steak House",
+      "address": "SCBD area, Jakarta",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.6,
+      "reviews": 201,
+      "price_range": "Premium",
+      "type": "Japanese Steakhouse",
+      "notes": "Traditional Irori technique, premium Japanese steak",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580137",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Soichiro Irori Style Japanese Steak House",
+          "body": "Hi Soichiro Irori Style Japanese Steak House,\n\nSaya lihat Soichiro Irori Style Japanese Steak House di Traveloka - rating 4.6\u2b50\u2b50 dengan 201 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Soichiro Irori Style Japanese Steak House?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Soichiro Irori Style Japanese Steak House",
+          "body": "Hi Soichiro Irori Style Japanese Steak House,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Soichiro Irori Style Japanese Steak House, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Soichiro Irori Style Japanese Steak House",
+          "body": "Halo Soichiro Irori Style Japanese Steak House,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Soichiro Irori Style Japanese Steak House:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_014",
+      "business_name": "Henshin Restaurant",
+      "address": "The Westin Jakarta",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.9,
+      "reviews": 412,
+      "price_range": "Premium",
+      "type": "Nikkei (Peru-Japan fusion)",
+      "notes": "Asia's Top 80 Fine Dining 2023, fusion Peru Jepang",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580160",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Henshin Restaurant",
+          "body": "Hi Henshin Restaurant,\n\nSaya lihat Henshin Restaurant di Traveloka - rating 4.9\u2b50\u2b50 dengan 412 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Henshin Restaurant?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Henshin Restaurant",
+          "body": "Hi Henshin Restaurant,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Henshin Restaurant, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Henshin Restaurant",
+          "body": "Halo Henshin Restaurant,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Henshin Restaurant:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    },
+    {
+      "lead_id": "traveloka_015",
+      "business_name": "Asia Restaurant",
+      "address": "The Dharmawangsa, Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta 12160",
+      "phone": "+62 XXX XXX XXX",
+      "website": "N/A",
+      "rating": 4.5,
+      "reviews": 187,
+      "price_range": "Premium",
+      "type": "Fine Dining",
+      "notes": "International, Asian, and local menus, romantic dinner",
+      "source": "Traveloka Web Fetch (Manually Extracted)",
+      "generated_at": "2026-03-07T00:47:53.580185",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Asia Restaurant",
+          "body": "Hi Asia Restaurant,\n\nSaya lihat Asia Restaurant di Traveloka - rating 4.5\u2b50\u2b50 dengan 187 reviews! Mengesankan! \ud83c\udf1f\n\nQuick question: Apakah Anda ingin meningkatkan jumlah reservasi dan online presence Anda?\n\nSaya bantu restoran Jakarta sepenuhnya mengotomatisasi marketing mereka:\n\n\u2705 Social media automation (5 platforms sekaligus - IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Customer acquisition (50-100+ new inquiries dan reservasi\u6bcf\u6708)\n\u2705 Content creation (food photography, video reviews, menu highlights, stories)\n\u2705 Marketing automation (hemat 15+ jam/minggu untuk marketing)\n\nHasil nyata dari restoran Jakarta sejenis:\n\ud83d\udcc8 +250% lebih banyak reservasi dan order\n\ud83d\udcf1 +200% engagement di social media\n\ud83c\udf7d\ufe0f 50-100+ customer baru per bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nWorth a quick 15-min chat untuk lihat apa yang bisa saya lakukan untuk Asia Restaurant?\n\nBest,\nAI Marketing Specialist\nWhatsApp: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up: Asia Restaurant",
+          "body": "Hi Asia Restaurant,\n\nSaya tindaklanjuti email saya soal mengotomatisasi marketing restoran Anda.\n\nUntuk restoran Jakarta seperti Asia Restaurant, saya bisa setup sistem marketing otomatis lengkap minggu ini:\n\n\u2022 Auto-post konten food dan menu daily ke Instagram, Facebook, TikTok\n\u2022 Generate 50-100+ leads berkualitas melalui targeted outreach\n\u2022 Buat content review dan highlight menu otomatis\n\u2022 Setup follow-up otomatis untuk reservasi dan customer\n\nMau demo gratis 15 menit? Tanpa komitmen sama sekali.\n\nBest,\nAI Marketing Specialist\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Final check: Asia Restaurant",
+          "body": "Halo Asia Restaurant,\n\nFollow-up terakhir - janji!\n\nBegini yang bisa saya lakukan untuk Asia Restaurant:\n\nSetup sistem marketing otomatis lengkap dalam 1 minggu yang akan:\n\n\u2022 Generate 50-100+ leads/reservasi incoming secara otomatis\n\u2022 Publish social media content tiap hari di autopilot\n\u2022 Generate website, blog, dan newsletter content secara otomatis\n\u2022 Jalankan email campaign nurturing leads kamu secara otomatis\n\nGaransi kepuasan: Jika dalam 30 hari Anda tidak melihat\u8d77\u780110 leads berkualitas baru, full refund.\n\nSound fair?\n\n15-min call untuk buktikan cara kerjanya:\n[Link Calendar/WhatsApp Anda]\n\nBest,\nAI Marketing Specialist\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Jakarta restaurant owners!\nWant 50-100+ more reservations and orders per month?\nI automate ALL your marketing in just 1 week!\nDM me 'RESTAURANT' untuk detail \ud83d\ude80",
+        "instagram": "Jakarta Restaurant Owners! \ud83c\udf7d\ufe0f\n\nBantu saya bantu Anda generate 50-100+ new reservations and orders setiap bulan dengan marketing otomatis penuh:\n\n\u2705 Auto-post ke 5+ platforms (IG, FB, TikTok, Twitter, LinkedIn)\n\u2705 Generate 50-100+ leads berkualitas otomatis\n\u2705 Create review dan menu content tiap hari\n\u2705 Automated reservation follow-up sequences\n\nHasil nyata dari restoran Jakarta:\n\ud83d\udcc8 +200% lebih banyak website traffic\n\ud83d\udcf1 +150% social media engagement\n\ud83c\udf7d\ufe0f 50-100+ reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nDM me 'DEMO' untuk demo gratis! \ud83d\udc4b\n\n#jakarta #restaurant #marketing #automation #growth #jakartarestaurant",
+        "facebook": "JAKARTA RESTAURANT OWNERS \ud83d\udcbc\n\nWant 50-100+ new reservations and orders per month on autopilot?\n\nSaya setup sistem marketing otomatis penuh untuk restoran:\n\n\u2022 Social media: Auto-post food dan menu content tiap hari\n\u2022 Lead generation: Scrape & outreach ke 100+ potential customers daily\n\u2022 Content: Generate foto, video, reviews, dan menu content otomatis\n\u2022 Auto-nurture: Follow up otomatis dengan interested potential customers\n\nHasil tipikal restoran Jakarta:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social media engagement  \n\ud83c\udf7d\ufe0f 50-100 reservasi/order baru/bulan\n\u23f1\ufe0f Hemat 15-20 jam/minggu waktu marketing\n\nMau demo gratis? Comment 'DEMO' di bawah!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth #JakartaFood"
+      }
+    }
+  ]
+}

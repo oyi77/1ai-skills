@@ -1,0 +1,162 @@
+{
+  "campaign_id": "demo_v1",
+  "target": {
+    "location": "Jakarta",
+    "category": "restaurant",
+    "num_leads": 5
+  },
+  "demo_leads": [
+    {
+      "business_name": "Warung Nasi Ibu Ani",
+      "address": "Jl. Sudirman No. 123, Jakarta",
+      "phone": "+62 21 1234567",
+      "website": "https://warungnasiibuani.com",
+      "rating": 4.5,
+      "reviews": 127
+    },
+    {
+      "business_name": "Padang Sederhana",
+      "address": "Jl. Thamrin No. 456, Jakarta",
+      "phone": "+62 21 7654321",
+      "website": "https://padangsederhana.id",
+      "rating": 4.2,
+      "reviews": 89
+    },
+    {
+      "business_name": "Sate Khas Senayan",
+      "address": "Jl. MH Thamrin Kav 28, Jakarta",
+      "phone": "+62 21 9876543",
+      "website": "https://satekhas.io",
+      "rating": 4.7,
+      "reviews": 256
+    },
+    {
+      "business_name": "Bakmi Jawa Mbok Sri",
+      "address": "Jl. Wahid Hasyim No. 78, Jakarta",
+      "phone": "+62 21 4567890",
+      "website": "https://bakmijawa.id",
+      "rating": 4.3,
+      "reviews": 112
+    },
+    {
+      "business_name": "Restoran Sunda Rasa Bumi",
+      "address": "Jl. Fatmawati Raya No. 99, Jakarta",
+      "phone": "+62 21 3456789",
+      "website": "https://rasabumu.com",
+      "rating": 4.1,
+      "reviews": 78
+    }
+  ],
+  "generated_content": [
+    {
+      "lead": "Warung Nasi Ibu Ani",
+      "generated_at": "2026-03-06T23:45:48.359006",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Warung Nasi Ibu Ani",
+          "body": "Hi Warung Nasi Ibu Ani,\n\nCame across Warung Nasi Ibu Ani on Google Maps - impressive 4.5\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurants:\n\u2022 +250% more reservations\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Warung Nasi Ibu Ani?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup",
+          "subject": "Following up on my email to Warung Nasi Ibu Ani",
+          "body": "Hi Warung Nasi Ibu Ani,\n\nJust checking regarding my email about automating your marketing.\n\nFor restaurants like Warung Nasi Ibu Ani, I can set up a fully automated system this week:\n\n\u2022 Auto-post food photos to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated reservation follow-ups\n\nWant a free demo? 15 mins, no obligation.\n\nBest,\n[Your Name]"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more reservations/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTO' \ud83d\ude80",
+        "instagram": "Restaurant owners! \ud83c\udf7d\ufe0f\n\nLet me help you get 50+ new reservations/month with fully automated marketing:\n\n\u2705 Auto-post food content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Reservation follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant #jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new reservations/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post food content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested diners\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "custom_offer": "Special offer for Warung Nasi Ibu Ani: Free marketing audit + 15-min demo session. No obligation!"
+    },
+    {
+      "lead": "Padang Sederhana",
+      "generated_at": "2026-03-06T23:45:48.359048",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Padang Sederhana",
+          "body": "Hi Padang Sederhana,\n\nCame across Padang Sederhana on Google Maps - impressive 4.2\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurants:\n\u2022 +250% more reservations\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Padang Sederhana?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup",
+          "subject": "Following up on my email to Padang Sederhana",
+          "body": "Hi Padang Sederhana,\n\nJust checking regarding my email about automating your marketing.\n\nFor restaurants like Padang Sederhana, I can set up a fully automated system this week:\n\n\u2022 Auto-post food photos to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated reservation follow-ups\n\nWant a free demo? 15 mins, no obligation.\n\nBest,\n[Your Name]"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more reservations/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTO' \ud83d\ude80",
+        "instagram": "Restaurant owners! \ud83c\udf7d\ufe0f\n\nLet me help you get 50+ new reservations/month with fully automated marketing:\n\n\u2705 Auto-post food content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Reservation follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant #jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new reservations/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post food content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested diners\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "custom_offer": "Special offer for Padang Sederhana: Free marketing audit + 15-min demo session. No obligation!"
+    },
+    {
+      "lead": "Sate Khas Senayan",
+      "generated_at": "2026-03-06T23:45:48.359064",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Sate Khas Senayan",
+          "body": "Hi Sate Khas Senayan,\n\nCame across Sate Khas Senayan on Google Maps - impressive 4.7\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurants:\n\u2022 +250% more reservations\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Sate Khas Senayan?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup",
+          "subject": "Following up on my email to Sate Khas Senayan",
+          "body": "Hi Sate Khas Senayan,\n\nJust checking regarding my email about automating your marketing.\n\nFor restaurants like Sate Khas Senayan, I can set up a fully automated system this week:\n\n\u2022 Auto-post food photos to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated reservation follow-ups\n\nWant a free demo? 15 mins, no obligation.\n\nBest,\n[Your Name]"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more reservations/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTO' \ud83d\ude80",
+        "instagram": "Restaurant owners! \ud83c\udf7d\ufe0f\n\nLet me help you get 50+ new reservations/month with fully automated marketing:\n\n\u2705 Auto-post food content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Reservation follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant #jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new reservations/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post food content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested diners\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "custom_offer": "Special offer for Sate Khas Senayan: Free marketing audit + 15-min demo session. No obligation!"
+    },
+    {
+      "lead": "Bakmi Jawa Mbok Sri",
+      "generated_at": "2026-03-06T23:45:48.359078",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Bakmi Jawa Mbok Sri",
+          "body": "Hi Bakmi Jawa Mbok Sri,\n\nCame across Bakmi Jawa Mbok Sri on Google Maps - impressive 4.3\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurants:\n\u2022 +250% more reservations\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Bakmi Jawa Mbok Sri?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup",
+          "subject": "Following up on my email to Bakmi Jawa Mbok Sri",
+          "body": "Hi Bakmi Jawa Mbok Sri,\n\nJust checking regarding my email about automating your marketing.\n\nFor restaurants like Bakmi Jawa Mbok Sri, I can set up a fully automated system this week:\n\n\u2022 Auto-post food photos to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated reservation follow-ups\n\nWant a free demo? 15 mins, no obligation.\n\nBest,\n[Your Name]"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more reservations/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTO' \ud83d\ude80",
+        "instagram": "Restaurant owners! \ud83c\udf7d\ufe0f\n\nLet me help you get 50+ new reservations/month with fully automated marketing:\n\n\u2705 Auto-post food content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Reservation follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant #jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new reservations/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post food content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested diners\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "custom_offer": "Special offer for Bakmi Jawa Mbok Sri: Free marketing audit + 15-min demo session. No obligation!"
+    },
+    {
+      "lead": "Restoran Sunda Rasa Bumi",
+      "generated_at": "2026-03-06T23:45:48.359091",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Restoran Sunda Rasa Bumi",
+          "body": "Hi Restoran Sunda Rasa Bumi,\n\nCame across Restoran Sunda Rasa Bumi on Google Maps - impressive 4.1\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurants:\n\u2022 +250% more reservations\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Restoran Sunda Rasa Bumi?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup",
+          "subject": "Following up on my email to Restoran Sunda Rasa Bumi",
+          "body": "Hi Restoran Sunda Rasa Bumi,\n\nJust checking regarding my email about automating your marketing.\n\nFor restaurants like Restoran Sunda Rasa Bumi, I can set up a fully automated system this week:\n\n\u2022 Auto-post food photos to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated reservation follow-ups\n\nWant a free demo? 15 mins, no obligation.\n\nBest,\n[Your Name]"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more reservations/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTO' \ud83d\ude80",
+        "instagram": "Restaurant owners! \ud83c\udf7d\ufe0f\n\nLet me help you get 50+ new reservations/month with fully automated marketing:\n\n\u2705 Auto-post food content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Reservation follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant #jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new reservations/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post food content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested diners\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new reservations/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#JakartaRestaurant #RestaurantMarketing #Automation #Growth"
+      },
+      "custom_offer": "Special offer for Restoran Sunda Rasa Bumi: Free marketing audit + 15-min demo session. No obligation!"
+    }
+  ]
+}

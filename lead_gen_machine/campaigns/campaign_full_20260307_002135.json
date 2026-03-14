@@ -1,0 +1,15 @@
+{
+  "campaign_id": "campaign_full_20260307_002135",
+  "mode": "PLACES_API_NEW",
+  "api_version": "v1",
+  "stats": {
+    "leads_extracted": 0,
+    "emails_generated": 0,
+    "social_posts": 0,
+    "total_content": 0,
+    "locations_searched": 3,
+    "generated_at": "2026-03-07T00:21:35.284605"
+  },
+  "leads": [],
+  "generated_content": []
+}

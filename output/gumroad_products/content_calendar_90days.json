@@ -1,0 +1,52 @@
+{
+  "title": "Content Calendar Pro - 90 Hari Konten Siap Pakai",
+  "days": 90,
+  "platforms": [
+    "Instagram",
+    "TikTok",
+    "Facebook",
+    "YouTube Shorts"
+  ],
+  "content_mix": {
+    "edukasi": "40%",
+    "engagement": "30%",
+    "promosi": "30%"
+  },
+  "sample_week": [
+    {
+      "day": "Senin",
+      "type": "Edukasi",
+      "template": "Tips #{nomor}: {topik}. {detail}. Save untuk nanti!"
+    },
+    {
+      "day": "Selasa",
+      "type": "Engagement",
+      "template": "Poll: {pertanyaan}? A. {opsi1} B. {opsi2}"
+    },
+    {
+      "day": "Rabu",
+      "type": "Behind the scenes",
+      "template": "Proses bikin {produk}: {langkah}"
+    },
+    {
+      "day": "Kamis",
+      "type": "Testimonial",
+      "template": "{nama}: '{testimoni}'"
+    },
+    {
+      "day": "Jumat",
+      "type": "Promosi",
+      "template": "WEEKEND SALE! {produk} cuma {harga}. Link di bio!"
+    },
+    {
+      "day": "Sabtu",
+      "type": "Fun/Meme",
+      "template": "Relatable content: {joke_topik}"
+    },
+    {
+      "day": "Minggu",
+      "type": "Recap",
+      "template": "Weekly recap: {highlight_minggu_ini}"
+    }
+  ]
+}

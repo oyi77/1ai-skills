@@ -1,0 +1,33 @@
+{
+  "day": 4,
+  "theme": "Support & Resistance",
+  "date": "2026-03-18",
+  "posts": [
+    {
+      "post_id": "6cf34da2-92be-408e-937c-7750fb854d72",
+      "time": "2026-03-18T00:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "5ca26f69-cd6e-4933-9237-b98efcac4963",
+      "time": "2026-03-18T05:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "1c287993-167d-4a88-8ccc-520f0583d0ab",
+      "time": "2026-03-18T08:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "fca8f90b-aaef-45d1-9421-0d9ce37837a9",
+      "time": "2026-03-18T11:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "dfd63db3-d28e-4699-8db3-09328acd03ea",
+      "time": "2026-03-18T14:00:00.000Z",
+      "status": "scheduled"
+    }
+  ],
+  "generated_at": "2026-03-14T14:59:45.019944"
+}

@@ -1,0 +1,19 @@
+{
+  "video_captions": [
+    "🔥 WAJIB PUNYA! 🔥\n\n{product_name} yang lagi VIRAL!\nHarga TERMURAH cuma di link bio 👆\n\n🛒 ho.link/racunshopeediskon\n\n#ShopeeAffiliate #DiskonGila #ViralProduct",
+    "😫 Capek {problem}?\n\n✅ Solusinya: {product_name}!\nKualitas premium, harga merakyat 💯\n\n🛒 ho.link/racunshopeediskon\n\n#SolusiRumahTangga #ProdukViral",
+    "⚡ FLASH SALE! ⚡\n\n{product_name} DISKON GEDE!\nStock TERBATAS - Buruan sebelum habis!\n\n🛒 ho.link/racunshopeediskon\n\n#FlashSale #DiskonHariIni",
+    "⭐⭐⭐⭐⭐ BEST SELLER!\n\n{product_name} - 10,000+ TERJUAL!\nReview 4.9/5 💯\n\n🛒 ho.link/racunshopeediskon\n\n#BestSeller #TerpercayaShopee",
+    "✨ Hidup jadi LEBIH MUDAH! ✨\n\nDengan {product_name}:\n✅ Hemat waktu\n✅ Hemat tenaga  \n\n🛒 ho.link/racunshopeediskon\n\n#LifeHack #ProdukWajib"
+  ],
+  "variables": [
+    "product_name",
+    "problem"
+  ],
+  "hashtag_sets": {
+    "general": "#ShopeeAffiliate #DiskonShopee #PromoHariIni",
+    "electronics": "#GadgetMurah #SmartHome",
+    "kitchen": "#PerlengkapanDapur #KitchenHack",
+    "cleaning": "#BersihRumah #CleaningHack"
+  }
+}

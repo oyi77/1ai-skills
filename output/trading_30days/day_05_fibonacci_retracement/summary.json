@@ -1,0 +1,33 @@
+{
+  "day": 5,
+  "theme": "Fibonacci Retracement",
+  "date": "2026-03-19",
+  "posts": [
+    {
+      "post_id": "12c036c0-d64d-431f-aeea-b70d5ec7e1e8",
+      "time": "2026-03-19T00:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "2f94a759-2d99-411f-97cb-221cd9b8d203",
+      "time": "2026-03-19T05:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "b682e7b8-5c8c-49bc-ae89-99ee3a936011",
+      "time": "2026-03-19T08:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "027e48ef-a13f-40fd-b6a9-a02709755b54",
+      "time": "2026-03-19T11:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "a261ec87-38af-4df4-a5bc-9aaa57a21043",
+      "time": "2026-03-19T14:00:00.000Z",
+      "status": "scheduled"
+    }
+  ],
+  "generated_at": "2026-03-14T15:01:50.828306"
+}

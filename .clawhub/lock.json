@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "skills": {
+    "postai-automation": {
+      "version": "1.0.0",
+      "installedAt": 1773396317273
+    },
+    "self-improving": {
+      "version": "1.2.1",
+      "installedAt": 1772619922575
+    },
+    "youtube-factory": {
+      "version": "1.3.0",
+      "installedAt": 1773396311827
+    },
+    "viral-content-creator": {
+      "version": "2.0.0",
+      "installedAt": 1773392311976
+    },
+    "canva": {
+      "version": "1.0.0",
+      "installedAt": 1773392309377
+    },
+    "prompt-engineering-expert": {
+      "version": "1.0.0",
+      "installedAt": 1772696760450
+    },
+    "tiktok-slideshow": {
+      "version": "1.0.0",
+      "installedAt": 1773396314304
+    },
+    "polymarket-api": {
+      "version": "1.0.0",
+      "installedAt": 1773392196877
+    },
+    "mia-polymarket-trader": {
+      "version": "1.0.0",
+      "installedAt": 1773392199272
+    },
+    "crypto-trading-bot": {
+      "version": "1.0.0",
+      "installedAt": 1773392201517
+    },
+    "polymarket-weather-trader": {
+      "version": "1.14.1",
+      "installedAt": 1773392191998
+    },
+    "polymarket-fast-loop": {
+      "version": "1.3.5",
+      "installedAt": 1773392194540
+    },
+    "content-creator": {
+      "version": "2.1.1",
+      "installedAt": 1773396283578
+    },
+    "content-factory": {
+      "version": "1.0.0",
+      "installedAt": 1773396286525
+    },
+    "auto-clipper": {
+      "version": "1.0.0",
+      "installedAt": 1773396294001
+    },
+    "gemini-image-generator": {
+      "version": "1.0.6",
+      "installedAt": 1773396298011
+    },
+    "humanizer": {
+      "version": "1.0.0",
+      "installedAt": 1773396301636
+    },
+    "nano-banana-pro": {
+      "version": "1.0.1",
+      "installedAt": 1773396319187
+    }
+  }
+}

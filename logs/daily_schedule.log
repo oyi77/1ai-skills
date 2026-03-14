@@ -1,0 +1,150 @@
+{"timestamp": "2026-03-08T02:29:36.531383", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T02:29:36.531450", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T02:29:36.531475", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T02:29:36.531505", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T02:29:36.531532", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T02:29:36.535113", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T02:29:36.535141", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T02:29:36.535298", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T02:29:36.535444", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T02:29:36.535465", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T02:29:36.535487", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T04:00:01.464291", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T04:00:01.464363", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T04:00:01.464389", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T04:00:01.464417", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T04:00:01.464436", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T04:00:01.468164", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T04:00:01.468192", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T04:00:01.468347", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T04:00:01.468501", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T04:00:01.468523", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T04:00:01.468539", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T05:00:01.638001", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T05:00:01.638064", "message": "Checking for failed instagram uploads to resume..."}
+{"timestamp": "2026-03-08T06:00:01.796637", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T06:00:01.796705", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T06:00:01.796730", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T06:00:01.796759", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T06:00:01.796778", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T06:00:01.800562", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T06:00:01.800593", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T06:00:01.800754", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T06:00:01.800904", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T06:00:01.800926", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T06:00:01.800952", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T08:00:01.148293", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T08:00:01.148353", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T08:00:01.148377", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T08:00:01.148405", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T08:00:01.148424", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T08:00:01.152356", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T08:00:01.152400", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T08:00:01.152566", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T08:00:01.152698", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T08:00:01.152718", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T08:00:01.152733", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T10:00:01.752399", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T10:00:01.752463", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T10:00:01.752488", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T10:00:01.752516", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T10:00:01.752535", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T10:00:01.756249", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T10:00:01.756279", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T10:00:01.756418", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T10:00:01.756546", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T10:00:01.756576", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T10:00:01.756601", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T12:00:02.032112", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T12:00:02.032180", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T12:00:02.032204", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T12:00:02.032232", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T12:00:02.032252", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T12:00:02.035936", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T12:00:02.035972", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T12:00:02.036155", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T12:00:02.036301", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T12:00:02.036323", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T12:00:02.036348", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T14:00:01.305055", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T14:00:01.305115", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T14:00:01.305139", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T14:00:01.305166", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T14:00:01.305184", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T14:00:01.308814", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T14:00:01.308842", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T14:00:01.308997", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T14:00:01.309141", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T14:00:01.309162", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T14:00:01.309187", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T15:00:01.473031", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T15:00:01.473091", "message": "\n======================================================================"}
+{"timestamp": "2026-03-08T15:00:01.473115", "message": "JENDRALBOT DAILY SCHEDULE"}
+{"timestamp": "2026-03-08T15:00:01.473132", "message": "======================================================================"}
+{"timestamp": "2026-03-08T15:00:01.473148", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T15:00:01.473175", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T15:00:01.473201", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T15:00:01.473217", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T15:00:01.476892", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T15:00:01.476921", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T15:00:01.477078", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T15:00:01.477223", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T15:00:01.477243", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T15:00:01.477266", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T15:00:01.477283", "message": "Uploads will resume automatically when rate limit clears"}
+{"timestamp": "2026-03-08T15:00:01.477297", "message": "Daily report generated"}
+{"timestamp": "2026-03-08T16:00:01.645540", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T16:00:01.645606", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T16:00:01.645636", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T16:00:01.645670", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T16:00:01.645694", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T16:00:01.650196", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T16:00:01.650233", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T16:00:01.650408", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T16:00:01.650590", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T16:00:01.650618", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T16:00:01.650637", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T18:00:01.934708", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T18:00:01.934796", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T18:00:01.934834", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T18:00:01.934877", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T18:00:01.934908", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T18:00:01.941989", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T18:00:01.942063", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T18:00:01.942481", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T18:00:01.942740", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T18:00:01.942776", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T18:00:01.942804", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T20:00:01.802975", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T20:00:01.803059", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T20:00:01.803087", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T20:00:01.803116", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T20:00:01.803135", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T20:00:01.807047", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T20:00:01.807100", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T20:00:01.807343", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T20:00:01.807515", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T20:00:01.807549", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T20:00:01.807574", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-08T22:00:01.591682", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-08T22:00:01.591740", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-08T22:00:01.591766", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-08T22:00:01.591804", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-08T22:00:01.591825", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-08T22:00:01.595583", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-08T22:00:01.595634", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-08T22:00:01.595811", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-08T22:00:01.595950", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-08T22:00:01.595973", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-08T22:00:01.595992", "message": "=== END HEARTBEAT ===\n"}
+{"timestamp": "2026-03-09T00:00:01.489553", "message": "Jendralbot Scheduler initialized"}
+{"timestamp": "2026-03-09T00:00:01.489638", "message": "\n=== DAILY HEARTBEAT ==="}
+{"timestamp": "2026-03-09T00:00:01.489675", "message": "Checking LYNK dashboard status..."}
+{"timestamp": "2026-03-09T00:00:01.489720", "message": "LYNK performance log not found"}
+{"timestamp": "2026-03-09T00:00:01.489750", "message": "Scheduling next batch of uploads..."}
+{"timestamp": "2026-03-09T00:00:01.495789", "message": "Total posts: 312, Successful: 0, Pending: 312"}
+{"timestamp": "2026-03-09T00:00:01.495921", "message": "Pending uploads found. Use rate_limit_aware_upload.py to continue."}
+{"timestamp": "2026-03-09T00:00:01.496408", "message": "Checking rate limit status..."}
+{"timestamp": "2026-03-09T00:00:01.496731", "message": "\u26a0\ufe0f  Rate limit still active: 20 recent failures"}
+{"timestamp": "2026-03-09T00:00:01.496812", "message": "\u23f8\ufe0f  Waiting 24 hours before resuming uploads"}
+{"timestamp": "2026-03-09T00:00:01.496884", "message": "=== END HEARTBEAT ===\n"}

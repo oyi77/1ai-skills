@@ -1,0 +1,33 @@
+{
+  "day": 3,
+  "theme": "Candlestick Patterns",
+  "date": "2026-03-17",
+  "posts": [
+    {
+      "post_id": "aea8aaf9-cca4-410c-888f-ae4c12968b9b",
+      "time": "2026-03-17T00:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "faed47a1-cd86-4611-bda9-246ba5d62c77",
+      "time": "2026-03-17T05:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "66fdf229-8964-4810-9b25-bb8a87ac0f2e",
+      "time": "2026-03-17T08:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "8e9363a7-5f9c-4cf8-a217-df83c418f3cc",
+      "time": "2026-03-17T11:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "fa1a7414-a53f-483e-9978-5471a4006a18",
+      "time": "2026-03-17T14:00:00.000Z",
+      "status": "scheduled"
+    }
+  ],
+  "generated_at": "2026-03-14T14:57:43.747079"
+}

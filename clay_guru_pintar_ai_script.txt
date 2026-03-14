@@ -1,0 +1,125 @@
+================================================================================
+RINGKASAN PROYEK
+================================================================================
+Topik: Guru Pintar AI (GRATIS)
+Style: Clay Art / Plasticine Diorama
+Duration: 35s
+Platform: TikTok / Instagram Reels / YouTube Shorts
+Tone: Edukatif
+
+================================================================================
+SCENE BREAKDOWN
+================================================================================
+
+================================================================================
+SCENE 1 - Intro - 5s
+================================================================================
+Narrative: Apa rahasia Guru Pintar AI?
+Visual: Clay character muncul
+Caption: Apa itu Guru Pintar AI?
+Clay Prompt: Clay book character with glow
+clay art style, handmade plasticine sculpture
+stop-motion animation, polymer clay
+visible fingerprint marks
+rich saturated clay colors
+Indoor
+Tokoh
+diorama world, whimsical atmosphere
+ultra detailed, 8k resolution
+sharp focus, soft bokeh background
+Animation: Slow glow
+
+================================================================================
+SCENE 2 - Problem - 7s
+================================================================================
+Narrative: Banyak orang punya masalah...
+Visual: Clay characters frustrated
+Caption: Kamu juga?
+Clay Prompt: Clay people worried
+clay art style, handmade plasticine sculpture
+stop-motion animation, polymer clay
+visible fingerprint marks
+rich saturated clay colors
+Sore
+Tokoh
+diorama world, whimsical atmosphere
+ultra detailed, 8k resolution
+sharp focus, soft bokeh background
+Animation: Frustrated movement
+
+================================================================================
+SCENE 3 - Discovery - 8s
+================================================================================
+Narrative: Temukan Guru Pintar AI!
+Visual: Clay character discovers product
+Caption: Lho! Apa ini?
+Clay Prompt: Clay character finding product
+clay art style, handmade plasticine sculpture
+stop-motion animation, polymer clay
+visible fingerprint marks
+rich saturated clay colors
+Sore
+Tokoh
+diorama world, whimsical atmosphere
+ultra detailed, 8k resolution
+sharp focus, soft bokeh background
+Animation: Discovery glow
+
+================================================================================
+SCENE 4 - Transform - 10s
+================================================================================
+Narrative: Guru Pintar AI mengubah semua!
+Visual: Clay world happy & bright
+Caption: Semua berubah!
+Clay Prompt: Happy clay world celebrating
+clay art style, handmade plasticine sculpture
+stop-motion animation, polymer clay
+visible fingerprint marks
+rich saturated clay colors
+Siang
+Bangunan
+diorama world, whimsical atmosphere
+ultra detailed, 8k resolution
+sharp focus, soft bokeh background
+Animation: Celebration wide shot
+
+================================================================================
+SCENE 5 - CTA - 5s
+================================================================================
+Narrative: Cek https://lynk.id/jendralbot/6821op5e24kn sekarang!
+Visual: Clay character shows link
+Caption: Cek https://lynk.id/jendralbot/6821op5e24kn!
+Clay Prompt: Clay character pointing to signboard
+clay art style, handmade plasticine sculpture
+stop-motion animation, polymer clay
+visible fingerprint marks
+rich saturated clay colors
+Indoor
+Tokoh
+diorama world, whimsical atmosphere
+ultra detailed, 8k resolution
+sharp focus, soft bokeh background
+Animation: Pointing bounce
+
+================================================================================
+MUSIC & AUDIO
+================================================================================
+Music: Upbeat and playful
+Tone: Whimsical and charming
+Tempo: 100-120 BPM
+Voice: Friendly character voice
+
+================================================================================
+NARRATION
+================================================================================
+Apa rahasia Guru Pintar AI? Banyak orang punya masalah... Temukan Guru Pintar AI! Guru Pintar AI mengubah semua! Cek https://lynk.id/jendralbot/6821op5e24kn sekarang! 
+
+================================================================================
+PRODUCTION GUIDE
+================================================================================
+1. Generate images using clay prompts (NVIDIA/Gemini)
+2. Create video with FFmpeg or AI tools
+3. Duration: 35s, 9:16 format
+4. Link: https://lynk.id/jendralbot/6821op5e24kn
+5. Hashtags: #free #AItraining #clayart #belajarAI #gratis
+================================================================================

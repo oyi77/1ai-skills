@@ -1,0 +1,2342 @@
+[
+  {
+    "date": "2026-03-01",
+    "day": 1,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-02",
+    "day": 2,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-03",
+    "day": 3,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-04",
+    "day": 4,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-05",
+    "day": 5,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-06",
+    "day": 6,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-07",
+    "day": 7,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-08",
+    "day": 8,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-09",
+    "day": 9,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "day": 10,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "day": 11,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-12",
+    "day": 12,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-13",
+    "day": 13,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-14",
+    "day": 14,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "day": 15,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-16",
+    "day": 16,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-17",
+    "day": 17,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-18",
+    "day": 18,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-19",
+    "day": 19,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-20",
+    "day": 20,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-21",
+    "day": 21,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
+    "day": 22,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-23",
+    "day": 23,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
+    "day": 24,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
+    "day": 25,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-26",
+    "day": 26,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-27",
+    "day": 27,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-28",
+    "day": 28,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-29",
+    "day": 29,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-30",
+    "day": 30,
+    "posts": [
+      {
+        "time": "00:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 0:00 - Rp 49.000"
+      },
+      {
+        "time": "02:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 2:00 - Rp 75.000"
+      },
+      {
+        "time": "04:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 4:00 - GRATIS"
+      },
+      {
+        "time": "06:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 6:00 - Rp 49.000"
+      },
+      {
+        "time": "08:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 8:00 - Rp 75.000"
+      },
+      {
+        "time": "10:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 10:00 - GRATIS"
+      },
+      {
+        "time": "12:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 12:00 - Rp 49.000"
+      },
+      {
+        "time": "14:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 14:00 - Rp 75.000"
+      },
+      {
+        "time": "16:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 16:00 - GRATIS"
+      },
+      {
+        "time": "18:00",
+        "type": "sales",
+        "product": "Starter AI Content",
+        "caption": "SALES - Starter AI Content at 18:00 - Rp 49.000"
+      },
+      {
+        "time": "20:00",
+        "type": "sales",
+        "product": "Mesin Cetak Kuliner",
+        "caption": "SALES - Mesin Cetak Kuliner at 20:00 - Rp 75.000"
+      },
+      {
+        "time": "22:00",
+        "type": "sales",
+        "product": "Guru Pintar AI",
+        "caption": "SALES - Guru Pintar AI at 22:00 - GRATIS"
+      }
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "name": "BerkahKarya Lead Generation",
+  "version": "1.0",
+  "target_profile": {
+    "company_type": [
+      "SME",
+      "e-commerce",
+      "digital business",
+      "content creators"
+    ],
+    "size": [
+      "small",
+      "medium"
+    ],
+    "industry": [
+      "technology",
+      "marketing",
+      "e-commerce",
+      "digital products"
+    ],
+    "location": [
+      "Indonesia"
+    ],
+    "keywords": [
+      "digital marketing",
+      "AI tools",
+      "automation",
+      "social media",
+      "content creation"
+    ]
+  },
+  "enrichment_fields": [
+    "company_website",
+    "company_size",
+    "industry",
+    "location",
+    "contact_email",
+    "contact_name",
+    "social_media",
+    "revenue_estimate"
+  ]
+}

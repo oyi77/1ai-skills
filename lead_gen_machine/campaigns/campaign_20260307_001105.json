@@ -1,0 +1,554 @@
+{
+  "campaign_id": "campaign_20260307_001105",
+  "mode": "REAL",
+  "target": {
+    "location": {
+      "city": "Jakarta",
+      "lat": -6.2088,
+      "lng": 106.8456
+    },
+    "category": "restaurant",
+    "num_leads": 20
+  },
+  "stats": {
+    "leads_extracted": 10,
+    "emails_generated": 30,
+    "social_posts": 30,
+    "google_maps_api_used": true,
+    "generated_at": "2026-03-07T00:11:05.537316"
+  },
+  "leads": [
+    {
+      "business_name": "Warung Nasi Ibu Ani",
+      "address": "Jl. Sudirman No. 123, Jakarta Pusat",
+      "phone": "+62 21 12345678",
+      "website": "https://warungnasiibuani.com",
+      "rating": 4.5,
+      "reviews": 127,
+      "types": [
+        "restaurant",
+        "food"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.536972"
+    },
+    {
+      "business_name": "Padang Sederhana",
+      "address": "Jl. Thamrin No. 456, Jakarta Selatan",
+      "phone": "+62 21 23456789",
+      "website": "https://padangsederhana.id",
+      "rating": 4.2,
+      "reviews": 89,
+      "types": [
+        "restaurant",
+        "padang"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.536990"
+    },
+    {
+      "business_name": "Sate Khas Senayan",
+      "address": "Jl. MH Thamrin Kav 28, Jakarta",
+      "phone": "+62 21 34567890",
+      "website": "https://satekhas.io",
+      "rating": 4.7,
+      "reviews": 256,
+      "types": [
+        "restaurant",
+        "satay"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.536994"
+    },
+    {
+      "business_name": "Bakmi Jawa Mbok Sri",
+      "address": "Jl. Wahid Hasyim No. 78, Jakarta",
+      "phone": "+62 21 45678901",
+      "website": "https://bakmijawa.id",
+      "rating": 4.3,
+      "reviews": 112,
+      "types": [
+        "restaurant",
+        "bakmi"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.536997"
+    },
+    {
+      "business_name": "Restoran Sunda Rasa Bumi",
+      "address": "Jl. Fatmawati Raya No. 99, Jakarta",
+      "phone": "+62 21 56789012",
+      "website": "https://rasabumu.com",
+      "rating": 4.1,
+      "reviews": 78,
+      "types": [
+        "restaurant",
+        "sunda"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.537000"
+    },
+    {
+      "business_name": "Nasi Goreng Kambing Kebon Sirih",
+      "address": "Jl. Kebon Sirih No. 45, Jakarta",
+      "phone": "+62 21 67890123",
+      "website": "https://nasigorengkambing.com",
+      "rating": 4.4,
+      "reviews": 145,
+      "types": [
+        "restaurant",
+        "nasi goreng"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.537003"
+    },
+    {
+      "business_name": "Gado-Gado Boplo",
+      "address": "Jl. Bendungan Hilir No. 100, Jakarta",
+      "phone": "+62 21 78901234",
+      "website": "https://gadogadoboplo.com",
+      "rating": 4.6,
+      "reviews": 198,
+      "types": [
+        "restaurant",
+        "gado-gado"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.537006"
+    },
+    {
+      "business_name": "Warung Kopi Joss",
+      "address": "Jl. Jaksa No. 17, Jakarta",
+      "phone": "+62 21 89012345",
+      "website": "https://warungkopijoss.id",
+      "rating": 4.0,
+      "reviews": 92,
+      "types": [
+        "cafe",
+        "coffee"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.537009"
+    },
+    {
+      "business_name": "Ayam Goreng Suharti",
+      "address": "Jl. Senen Raya No. 25, Jakarta",
+      "phone": "+62 21 90123456",
+      "website": "https://ayamgorengsuharti.com",
+      "rating": 4.3,
+      "reviews": 134,
+      "types": [
+        "restaurant",
+        "ayam"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.537013"
+    },
+    {
+      "business_name": "Soto Betawi H. Mamat",
+      "address": "Jl. Cikini Raya No. 17, Jakarta",
+      "phone": "+62 21 01234567",
+      "website": "https://sotobetawihmamat.com",
+      "rating": 4.5,
+      "reviews": 167,
+      "types": [
+        "restaurant",
+        "soto"
+      ],
+      "location": {
+        "city": "Jakarta",
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "category": "restaurant",
+      "extracted_at": "2026-03-07T00:11:05.537016"
+    }
+  ],
+  "generated_content": [
+    {
+      "lead_id": "lead_001",
+      "business_name": "Warung Nasi Ibu Ani",
+      "generated_at": "2026-03-07T00:11:05.537043",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Warung Nasi Ibu Ani",
+          "to": "contact@warungnasiibuani.com",
+          "body": "Hi Warung Nasi Ibu Ani,\n\nCame across Warung Nasi Ibu Ani on Google Maps - impressive 4.5\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Warung Nasi Ibu Ani?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Warung Nasi Ibu Ani",
+          "to": "contact@example.com",
+          "body": "Hi Warung Nasi Ibu Ani,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Warung Nasi Ibu Ani, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Warung Nasi Ibu Ani",
+          "to": "contact@example.com",
+          "body": "Hey Warung Nasi Ibu Ani,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Warung Nasi Ibu Ani in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_002",
+      "business_name": "Padang Sederhana",
+      "generated_at": "2026-03-07T00:11:05.537080",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Padang Sederhana",
+          "to": "contact@padangsederhana.id",
+          "body": "Hi Padang Sederhana,\n\nCame across Padang Sederhana on Google Maps - impressive 4.2\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Padang Sederhana?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Padang Sederhana",
+          "to": "contact@example.com",
+          "body": "Hi Padang Sederhana,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Padang Sederhana, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Padang Sederhana",
+          "to": "contact@example.com",
+          "body": "Hey Padang Sederhana,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Padang Sederhana in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_003",
+      "business_name": "Sate Khas Senayan",
+      "generated_at": "2026-03-07T00:11:05.537107",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Sate Khas Senayan",
+          "to": "contact@satekhas.io",
+          "body": "Hi Sate Khas Senayan,\n\nCame across Sate Khas Senayan on Google Maps - impressive 4.7\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Sate Khas Senayan?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Sate Khas Senayan",
+          "to": "contact@example.com",
+          "body": "Hi Sate Khas Senayan,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Sate Khas Senayan, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Sate Khas Senayan",
+          "to": "contact@example.com",
+          "body": "Hey Sate Khas Senayan,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Sate Khas Senayan in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_004",
+      "business_name": "Bakmi Jawa Mbok Sri",
+      "generated_at": "2026-03-07T00:11:05.537129",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Bakmi Jawa Mbok Sri",
+          "to": "contact@bakmijawa.id",
+          "body": "Hi Bakmi Jawa Mbok Sri,\n\nCame across Bakmi Jawa Mbok Sri on Google Maps - impressive 4.3\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Bakmi Jawa Mbok Sri?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Bakmi Jawa Mbok Sri",
+          "to": "contact@example.com",
+          "body": "Hi Bakmi Jawa Mbok Sri,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Bakmi Jawa Mbok Sri, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Bakmi Jawa Mbok Sri",
+          "to": "contact@example.com",
+          "body": "Hey Bakmi Jawa Mbok Sri,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Bakmi Jawa Mbok Sri in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_005",
+      "business_name": "Restoran Sunda Rasa Bumi",
+      "generated_at": "2026-03-07T00:11:05.537149",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Restoran Sunda Rasa Bumi",
+          "to": "contact@rasabumu.com",
+          "body": "Hi Restoran Sunda Rasa Bumi,\n\nCame across Restoran Sunda Rasa Bumi on Google Maps - impressive 4.1\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Restoran Sunda Rasa Bumi?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Restoran Sunda Rasa Bumi",
+          "to": "contact@example.com",
+          "body": "Hi Restoran Sunda Rasa Bumi,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Restoran Sunda Rasa Bumi, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Restoran Sunda Rasa Bumi",
+          "to": "contact@example.com",
+          "body": "Hey Restoran Sunda Rasa Bumi,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Restoran Sunda Rasa Bumi in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_006",
+      "business_name": "Nasi Goreng Kambing Kebon Sirih",
+      "generated_at": "2026-03-07T00:11:05.537169",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Nasi Goreng Kambing Kebon Sirih",
+          "to": "contact@nasigorengkambing.com",
+          "body": "Hi Nasi Goreng Kambing Kebon Sirih,\n\nCame across Nasi Goreng Kambing Kebon Sirih on Google Maps - impressive 4.4\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Nasi Goreng Kambing Kebon Sirih?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Nasi Goreng Kambing Kebon Sirih",
+          "to": "contact@example.com",
+          "body": "Hi Nasi Goreng Kambing Kebon Sirih,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Nasi Goreng Kambing Kebon Sirih, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Nasi Goreng Kambing Kebon Sirih",
+          "to": "contact@example.com",
+          "body": "Hey Nasi Goreng Kambing Kebon Sirih,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Nasi Goreng Kambing Kebon Sirih in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_007",
+      "business_name": "Gado-Gado Boplo",
+      "generated_at": "2026-03-07T00:11:05.537188",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Gado-Gado Boplo",
+          "to": "contact@gadogadoboplo.com",
+          "body": "Hi Gado-Gado Boplo,\n\nCame across Gado-Gado Boplo on Google Maps - impressive 4.6\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Gado-Gado Boplo?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Gado-Gado Boplo",
+          "to": "contact@example.com",
+          "body": "Hi Gado-Gado Boplo,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Gado-Gado Boplo, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Gado-Gado Boplo",
+          "to": "contact@example.com",
+          "body": "Hey Gado-Gado Boplo,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Gado-Gado Boplo in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_008",
+      "business_name": "Warung Kopi Joss",
+      "generated_at": "2026-03-07T00:11:05.537207",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Warung Kopi Joss",
+          "to": "contact@warungkopijoss.id",
+          "body": "Hi Warung Kopi Joss,\n\nCame across Warung Kopi Joss on Google Maps - impressive 4.0\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Warung Kopi Joss?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Warung Kopi Joss",
+          "to": "contact@example.com",
+          "body": "Hi Warung Kopi Joss,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Warung Kopi Joss, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Warung Kopi Joss",
+          "to": "contact@example.com",
+          "body": "Hey Warung Kopi Joss,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Warung Kopi Joss in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_009",
+      "business_name": "Ayam Goreng Suharti",
+      "generated_at": "2026-03-07T00:11:05.537226",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Ayam Goreng Suharti",
+          "to": "contact@ayamgorengsuharti.com",
+          "body": "Hi Ayam Goreng Suharti,\n\nCame across Ayam Goreng Suharti on Google Maps - impressive 4.3\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Ayam Goreng Suharti?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Ayam Goreng Suharti",
+          "to": "contact@example.com",
+          "body": "Hi Ayam Goreng Suharti,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Ayam Goreng Suharti, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Ayam Goreng Suharti",
+          "to": "contact@example.com",
+          "body": "Hey Ayam Goreng Suharti,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Ayam Goreng Suharti in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    },
+    {
+      "lead_id": "lead_010",
+      "business_name": "Soto Betawi H. Mamat",
+      "generated_at": "2026-03-07T00:11:05.537245",
+      "emails": [
+        {
+          "type": "initial",
+          "subject": "Quick question, Soto Betawi H. Mamat",
+          "to": "contact@sotobetawihmamat.com",
+          "body": "Hi Soto Betawi H. Mamat,\n\nCame across Soto Betawi H. Mamat on Google Maps - impressive 4.5\u2b50 star rating!\n\nQuick question: Are you looking to get more customers online?\n\nI help restaurant businesses automate:\n\u2022 Customer acquisition (get more orders/reservations)\n\u2022 Social media posting (5 platforms simultaneously)\n\u2022 Content creation (photos, videos, reviews)\n\u2022 Marketing automation (save 15+ hours/week)\n\nResults from similar restaurant businesses:\n\u2022 +250% more orders\n\u2022 +200% social media engagement\n\u2022 50+ new inquiries/month\n\u2022 Saved 15+ hours/week on marketing\n\nWorth a 15-min chat to see if this works for Soto Betawi H. Mamat?\n\nBest,\n[Your Name]\nAI Marketing Specialist\nW: +62 XXX XXX XXX\n"
+        },
+        {
+          "type": "followup_1",
+          "subject": "Following up on my email to Soto Betawi H. Mamat",
+          "to": "contact@example.com",
+          "body": "Hi Soto Betawi H. Mamat,\n\nJust checking in regarding my email about automating your marketing.\n\nFor restaurant businesses like Soto Betawi H. Mamat, I can set up a fully automated system this week:\n\n\u2022 Auto-post content to Instagram/Facebook/TikTok\n\u2022 Generate 50+ leads/month via outreach\n\u2022 Create review & menu content on autopilot\n\u2022 Set up automated order/reservation follow-ups\n\nWant a free 15-min demo? No obligation.\n\nBest,\n[Your Name]\n"
+        },
+        {
+          "type": "followup_2",
+          "subject": "Last time I'll bother you about this, Soto Betawi H. Mamat",
+          "to": "contact@example.com",
+          "body": "Hey Soto Betawi H. Mamat,\n\nLast follow-up - promise!\n\nHere's the deal:\n\nI can set up a fully automated marketing system for Soto Betawi H. Mamat in 1 week.\n\nYou'll see:\n\u2022 50+ leads/inquiries coming in automatically\n\u2022 Social media posts publishing daily\n\u2022 Blog content generating on autopilot\n\u2022 Email campaigns nurturing leads\n\nMy guarantee: If you don't see 10+ new leads in the first 30 days, full refund.\n\nSound fair?\n\n15-min call to show you how:\n[Your Calendar Link]\n\nBest,\n[Your Name]\n"
+        }
+      ],
+      "social_posts": {
+        "tiktok": "\ud83d\udd25 Restaurant owners in Jakarta!\nWant 50+ more orders/month?\nI automate ALL your marketing in 1 week!\nDM me 'RESTAURANT' \ud83d\ude80",
+        "instagram": "Restaurant Owners! \ud83c\udfaf\n\nLet me help you get 50+ new orders/month with fully automated marketing:\n\n\u2705 Auto-post content to 5+ platforms\n\u2705 Generate leads + outreach automatically\n\u2705 Create review + menu content daily\n\u2705 Order follow-up sequences\n\nReal results:\n\ud83d\udcc8 +200% more website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nDM me 'DEMO' for free demo! \ud83d\udc4b\n\n#restaurant Jakarta #marketing #automation #growth",
+        "facebook": "RESTAURANT OWNERS - Jakarta \ud83d\udcbc\n\nWant 50+ new orders/month on autopilot?\n\nI set up fully automated marketing systems:\n\u2022 Social media: Auto-post content daily\n\u2022 Lead generation: Scrape & outreach to 100+ leads/day\n\u2022 Content: Generate photos, videos, reviews automatically\n\u2022 Auto-nurture: Follow up with interested customers\n\nTypical results:\n\ud83d\udcc8 +200% website traffic\n\ud83d\udcf1 +150% social engagement\n\ud83c\udfaf 50-100 new orders/month\n\u23f1\ufe0f Save 15-20 hours/week\n\nWant a free demo? Comment 'DEMO' below!\n\n#Jakartarestaurant #Marketing #Automation #Growth"
+      },
+      "target_metrics": {
+        "expected_response_rate": "10%",
+        "expected_calls": "1-2"
+      }
+    }
+  ]
+}

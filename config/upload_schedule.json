@@ -1,0 +1,47 @@
+{
+  "schedule": {
+    "daily_posts": {
+      "tiktok": 18,
+      "ig_reels": 18,
+      "youtube_shorts": 18
+    },
+    "peak_hours": {
+      "weekday": ["19:00", "20:00", "21:00"],
+      "weekend": ["20:00", "21:00", "22:00"]
+    },
+    "posting_frequency": {
+      "batch_size": 6,
+      "batch_interval_minutes": 30
+    }
+  },
+  "content_distribution": {
+    "per_product": {
+      "hooks_per_day": 3
+    },
+    "hook_types": {
+      "shock": 0.25,
+      "problem": 0.25,
+      "solution": 0.15,
+      "social_proof": 0.15,
+      "curiosity": 0.10,
+      "urgency": 0.10
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "post_format": "9:16",
+      "image_format": "4:5",
+      "hashtags": ["#JENDRALBOT", "#AItools", "#Digitalproducts", "#Productivity", "#Businesshacks"]
+    },
+    "ig_reels": {
+      "post_format": "9:16",
+      "image_format": "4:5",
+      "hashtags": ["#JENDRALBOT", "#AItools", "#Digitalproducts", "#Productivity", "#Businesshacks"]
+    },
+    "youtube_shorts": {
+      "post_format": "9:16",
+      "image_format": "4:5",
+      "hashtags": ["#JENDRALBOT", "#AItools", "#Digitalproducts", "#Productivity", "#Businesshacks"]
+    }
+  }
+}

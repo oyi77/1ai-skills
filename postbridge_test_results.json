@@ -1,0 +1,144 @@
+[
+  {
+    "post_number": 1,
+    "product": "Guru Pintar AI (GRATIS)",
+    "results": [
+      {
+        "account": "jasakontenai",
+        "account_id": 45648,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "massehatyuk",
+        "account_id": 48338,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "nugrohopratama5",
+        "account_id": 48337,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "baimwongdiskon",
+        "account_id": 48336,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "clinicguru",
+        "account_id": 48335,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "post_number": 2,
+    "product": "Belanja Duit Balik (GRATIS)",
+    "results": [
+      {
+        "account": "jasakontenai",
+        "account_id": 45648,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "massehatyuk",
+        "account_id": 48338,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "nugrohopratama5",
+        "account_id": 48337,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "baimwongdiskon",
+        "account_id": 48336,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      },
+      {
+        "account": "clinicguru",
+        "account_id": 48335,
+        "status": "failed",
+        "result": {
+          "statusCode": 400,
+          "message": "Invalid Request",
+          "errors": [
+            "caption is required",
+            "at least one social_account is required"
+          ]
+        }
+      }
+    ]
+  }
+]

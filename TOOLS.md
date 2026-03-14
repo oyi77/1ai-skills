@@ -504,3 +504,49 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 
 *Last updated: 2026-03-07 02:50*
 *Review periodicallly for new tool configurations*
+
+---
+
+## 📱 Platform Media Rules — WAJIB CEK SEBELUM POST (Updated 2026-03-14)
+
+**Source: PostBridge API spec (TikTokConfiguration schema) + platform native rules.**
+
+```
+PLATFORM    | VIDEO | IMAGE/CAROUSEL | TEXT-ONLY | Notes
+------------|-------|----------------|-----------|------------------------
+YouTube     | ✅    | ❌             | ❌        | VIDEO ONLY (mp4)
+TikTok      | ✅    | ✅ Slideshow   | ❌        | video OR image, NOT text
+Instagram   | ✅    | ✅             | ❌        | Media WAJIB
+Facebook    | ✅    | ✅             | ✅        | All formats OK
+Threads     | ✅    | ✅             | ✅        | All formats OK
+Twitter/X   | ✅    | ✅             | ✅        | All formats OK
+LinkedIn    | ✅    | ✅             | ✅        | All formats OK
+Pinterest   | ✅    | ✅             | ❌        | Media preferred
+Bluesky     | ✅    | ✅             | ✅        | All formats OK
+```
+
+### PostBridge Account IDs (BerkahKarya)
+```python
+YOUTUBE_ACCTS   = {49678}                      # VIDEO ONLY
+INSTAGRAM_ACCTS = {49682, 49676}               # image/video WAJIB
+THREADS_ACCTS   = {49683, 49680, 49677}        # media optional
+FACEBOOK_ACCTS  = {49675, 49674, 49673, 49672} # media optional
+# TikTok: if/when connected — image OR video, NOT text-only
+```
+
+### Validation Logic:
+```python
+def filter_accounts_for_post(social_accounts, has_media, media_type):
+    """
+    media_type: 'video' | 'image' | None (text-only)
+    Returns: (valid_accounts, removed_accounts)
+    """
+    accts = set(social_accounts)
+    remove = set()
+    if media_type == 'image' or not has_media:
+        remove |= (accts & YOUTUBE_ACCTS)   # YouTube: no images
+    if not has_media:
+        remove |= (accts & INSTAGRAM_ACCTS) # Instagram: needs media
+        # TikTok also needs media (image or video)
+    return list(accts - remove), list(remove)
+```

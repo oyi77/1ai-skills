@@ -1,0 +1,173 @@
+[2026-03-08 23:18:07] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-08 23:18:07] [INFO] Checking dependencies...
+[2026-03-08 23:18:07] [INFO] ❌ yt-dlp not found
+[2026-03-08 23:18:07] [INFO] ✅ ffmpeg installed
+[2026-03-08 23:18:07] [INFO] ❌ Missing dependencies
+[2026-03-08 23:19:07] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-08 23:19:07] [INFO] Checking dependencies...
+[2026-03-08 23:19:08] [INFO] ✅ yt-dlp installed
+[2026-03-08 23:19:08] [INFO] ✅ ffmpeg installed
+[2026-03-08 23:19:08] [INFO] Downloading YouTube video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-08 23:19:11] [INFO] ✅ Video downloaded
+[2026-03-08 23:19:11] [INFO] Analyzing video for best moments...
+[2026-03-08 23:19:11] [INFO] Video duration: 213.04 seconds
+[2026-03-08 23:19:11] [INFO] ✅ Generated 3 clip segments
+[2026-03-08 23:19:11] [INFO] Extracting clip 0
+[2026-03-08 23:19:11] [INFO] ✅ Clip 0 extracted
+[2026-03-08 23:19:11] [INFO] Converting to vertical format...
+[2026-03-08 23:19:41] [INFO] ✅ Converted to vertical format
+[2026-03-08 23:19:41] [INFO] Extracting clip 1
+[2026-03-08 23:19:41] [INFO] ✅ Clip 1 extracted
+[2026-03-08 23:19:41] [INFO] Converting to vertical format...
+[2026-03-08 23:20:11] [INFO] ✅ Converted to vertical format
+[2026-03-08 23:20:11] [INFO] Extracting clip 2
+[2026-03-08 23:20:11] [INFO] ✅ Clip 2 extracted
+[2026-03-08 23:20:11] [INFO] Converting to vertical format...
+[2026-03-08 23:20:41] [INFO] ✅ Converted to vertical format
+[2026-03-08 23:20:41] [INFO] ✅ Pipeline complete: 3 clips generated
+[2026-03-08 23:20:41] [INFO] 📁 Session directory: /home/openclaw/.openclaw/workspace/hands/clip/workspace/20260308_231908
+[2026-03-09 00:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-09 00:00:01] [INFO] Checking dependencies...
+[2026-03-09 00:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-09 00:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-09 00:00:01] [INFO] ❌ Missing dependencies
+[2026-03-09 04:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-09 04:00:01] [INFO] Checking dependencies...
+[2026-03-09 04:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-09 04:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-09 04:00:01] [INFO] ❌ Missing dependencies
+[2026-03-09 08:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-09 08:00:01] [INFO] Checking dependencies...
+[2026-03-09 08:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-09 08:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-09 08:00:01] [INFO] ❌ Missing dependencies
+[2026-03-09 12:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-09 12:00:01] [INFO] Checking dependencies...
+[2026-03-09 12:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-09 12:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-09 12:00:01] [INFO] ❌ Missing dependencies
+[2026-03-09 16:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-09 16:00:01] [INFO] Checking dependencies...
+[2026-03-09 16:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-09 16:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-09 16:00:01] [INFO] ❌ Missing dependencies
+[2026-03-09 20:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-09 20:00:01] [INFO] Checking dependencies...
+[2026-03-09 20:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-09 20:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-09 20:00:01] [INFO] ❌ Missing dependencies
+[2026-03-10 00:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-10 00:00:01] [INFO] Checking dependencies...
+[2026-03-10 00:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-10 00:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-10 00:00:01] [INFO] ❌ Missing dependencies
+[2026-03-10 04:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-10 04:00:01] [INFO] Checking dependencies...
+[2026-03-10 04:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-10 04:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-10 04:00:01] [INFO] ❌ Missing dependencies
+[2026-03-10 08:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-10 08:00:01] [INFO] Checking dependencies...
+[2026-03-10 08:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-10 08:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-10 08:00:01] [INFO] ❌ Missing dependencies
+[2026-03-10 12:00:02] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-10 12:00:02] [INFO] Checking dependencies...
+[2026-03-10 12:00:02] [INFO] ❌ yt-dlp not found
+[2026-03-10 12:00:02] [INFO] ❌ ffmpeg not found
+[2026-03-10 12:00:02] [INFO] ❌ Missing dependencies
+[2026-03-11 16:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-11 16:00:01] [INFO] Checking dependencies...
+[2026-03-11 16:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-11 16:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-11 16:00:01] [INFO] ❌ Missing dependencies
+[2026-03-11 20:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-11 20:00:01] [INFO] Checking dependencies...
+[2026-03-11 20:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-11 20:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-11 20:00:01] [INFO] ❌ Missing dependencies
+[2026-03-12 00:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-12 00:00:01] [INFO] Checking dependencies...
+[2026-03-12 00:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-12 00:00:01] [INFO] ❌ ffmpeg not found
+[2026-03-12 00:00:01] [INFO] ❌ Missing dependencies
+[2026-03-12 04:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-12 04:00:01] [INFO] Checking dependencies...
+[2026-03-12 04:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-12 04:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-12 04:00:01] [INFO] ❌ Missing dependencies
+[2026-03-12 08:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-12 08:00:01] [INFO] Checking dependencies...
+[2026-03-12 08:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-12 08:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-12 08:00:01] [INFO] ❌ Missing dependencies
+[2026-03-12 12:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-12 12:00:01] [INFO] Checking dependencies...
+[2026-03-12 12:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-12 12:00:02] [INFO] ✅ ffmpeg installed
+[2026-03-12 12:00:02] [INFO] ❌ Missing dependencies
+[2026-03-12 16:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-12 16:00:01] [INFO] Checking dependencies...
+[2026-03-12 16:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-12 16:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-12 16:00:01] [INFO] ❌ Missing dependencies
+[2026-03-12 20:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-12 20:00:01] [INFO] Checking dependencies...
+[2026-03-12 20:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-12 20:00:02] [INFO] ✅ ffmpeg installed
+[2026-03-12 20:00:02] [INFO] ❌ Missing dependencies
+[2026-03-13 00:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-13 00:00:01] [INFO] Checking dependencies...
+[2026-03-13 00:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-13 00:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-13 00:00:01] [INFO] ❌ Missing dependencies
+[2026-03-13 04:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-13 04:00:01] [INFO] Checking dependencies...
+[2026-03-13 04:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-13 04:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-13 04:00:01] [INFO] ❌ Missing dependencies
+[2026-03-13 08:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-13 08:00:01] [INFO] Checking dependencies...
+[2026-03-13 08:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-13 08:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-13 08:00:01] [INFO] ❌ Missing dependencies
+[2026-03-13 12:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-13 12:00:01] [INFO] Checking dependencies...
+[2026-03-13 12:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-13 12:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-13 12:00:01] [INFO] ❌ Missing dependencies
+[2026-03-13 16:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-13 16:00:01] [INFO] Checking dependencies...
+[2026-03-13 16:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-13 16:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-13 16:00:01] [INFO] ❌ Missing dependencies
+[2026-03-13 20:00:02] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-13 20:00:02] [INFO] Checking dependencies...
+[2026-03-13 20:00:02] [INFO] ❌ yt-dlp not found
+[2026-03-13 20:00:02] [INFO] ✅ ffmpeg installed
+[2026-03-13 20:00:02] [INFO] ❌ Missing dependencies
+[2026-03-14 00:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-14 00:00:01] [INFO] Checking dependencies...
+[2026-03-14 00:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-14 00:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-14 00:00:01] [INFO] ❌ Missing dependencies
+[2026-03-14 04:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-14 04:00:01] [INFO] Checking dependencies...
+[2026-03-14 04:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-14 04:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-14 04:00:01] [INFO] ❌ Missing dependencies
+[2026-03-14 08:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-14 08:00:01] [INFO] Checking dependencies...
+[2026-03-14 08:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-14 08:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-14 08:00:01] [INFO] ❌ Missing dependencies
+[2026-03-14 12:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-14 12:00:01] [INFO] Checking dependencies...
+[2026-03-14 12:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-14 12:00:02] [INFO] ✅ ffmpeg installed
+[2026-03-14 12:00:02] [INFO] ❌ Missing dependencies
+[2026-03-14 16:00:01] [INFO] Processing YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+[2026-03-14 16:00:01] [INFO] Checking dependencies...
+[2026-03-14 16:00:01] [INFO] ❌ yt-dlp not found
+[2026-03-14 16:00:01] [INFO] ✅ ffmpeg installed
+[2026-03-14 16:00:01] [INFO] ❌ Missing dependencies

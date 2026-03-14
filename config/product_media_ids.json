@@ -1,0 +1,188 @@
+{
+  "product_media_ids": {
+    "89d30qd3ddnj": [
+      {
+        "media_id": "a0d01422-dbd0-4892-afd3-95cdbe7362b4",
+        "filename": "ai_content_pro_seller_hook1_shock.png",
+        "hook_type": "shock"
+      },
+      {
+        "media_id": "3dd95360-4eb8-4ddf-9a93-8534288c461b",
+        "filename": "ai_content_pro_seller_hook2_problem.png",
+        "hook_type": "problem"
+      },
+      {
+        "media_id": "baf6eb54-5c19-449a-82b6-9de2a4e93d25",
+        "filename": "ai_content_pro_seller_hook3_solution.png",
+        "hook_type": "solution"
+      },
+      {
+        "media_id": "f612ced3-3423-4028-b536-a847e604e549",
+        "filename": "89d30qd3ddnj_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "97565f5a-e7a3-45e6-9493-21187182c327",
+        "filename": "89d30qd3ddnj_stat.png",
+        "template": "stat"
+      }
+    ],
+    "kkjk0mv1vg7o": [
+      {
+        "media_id": "9dc22a66-68cc-409b-a3b7-ed9bd5f53d39",
+        "filename": "belanja_duit_balik_hook1_shock.png",
+        "hook_type": "shock"
+      },
+      {
+        "media_id": "69012bfc-e340-4071-a22f-a8b1c2aad489",
+        "filename": "belanja_duit_balik_hook2_problem.png",
+        "hook_type": "problem"
+      },
+      {
+        "media_id": "c5c770c6-db52-4e9f-8624-45861e70a973",
+        "filename": "belanja_duit_balik_hook3_solution.png",
+        "hook_type": "solution"
+      },
+      {
+        "media_id": "cd2038e6-6078-469f-b6c9-b22c7bece8d3",
+        "filename": "kkjk0mv1vg7o_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "5b00f0b4-4fbd-495a-9bef-cd936a1dc3f8",
+        "filename": "kkjk0mv1vg7o_stat.png",
+        "template": "stat"
+      }
+    ],
+    "6821op5e24kn": [
+      {
+        "media_id": "2c87eaab-8a1e-4c88-973a-f6281cbdf22f",
+        "filename": "guru_pintar_ai_hook1_shock.png",
+        "hook_type": "shock"
+      },
+      {
+        "media_id": "cd6ca8b5-fa95-4d20-a9a7-6200c34459ef",
+        "filename": "guru_pintar_ai_hook2_problem.png",
+        "hook_type": "problem"
+      },
+      {
+        "media_id": "cdf7a38e-5d86-427a-afe4-fc546fa565db",
+        "filename": "guru_pintar_ai_hook3_solution.png",
+        "hook_type": "solution"
+      },
+      {
+        "media_id": "a1a06dbe-12cb-4862-a977-e27285ffe186",
+        "filename": "6821op5e24kn_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "e86aaca4-5ab0-4291-a53e-ba85299c06b1",
+        "filename": "6821op5e24kn_stat.png",
+        "template": "stat"
+      }
+    ],
+    "kzryk28dxmpx": [
+      {
+        "media_id": "3f02277e-d12e-4fb6-b5f7-fd44d09fa1bf",
+        "filename": "mesin_cetak_kuliner_hook1_shock.png",
+        "hook_type": "shock"
+      },
+      {
+        "media_id": "e000f0d4-1169-455f-99a6-155c2cf4360d",
+        "filename": "mesin_cetak_kuliner_hook2_problem.png",
+        "hook_type": "problem"
+      },
+      {
+        "media_id": "aa17453f-5ed6-4222-9b30-d1c32a2de987",
+        "filename": "mesin_cetak_kuliner_hook3_solution.png",
+        "hook_type": "solution"
+      },
+      {
+        "media_id": "591536c8-137e-458f-83b4-fb7e37ceec53",
+        "filename": "kzryk28dxmpx_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "f2b46da3-1c5c-4534-9f48-7b24e234b905",
+        "filename": "kzryk28dxmpx_stat.png",
+        "template": "stat"
+      }
+    ],
+    "emne05mm7v25": [
+      {
+        "media_id": "24d56899-9385-4e9d-b9d4-cc42ffd0768a",
+        "filename": "sellpix_ai_hook1_shock.png",
+        "hook_type": "shock"
+      },
+      {
+        "media_id": "5a283623-8087-4379-a011-935db39b1116",
+        "filename": "sellpix_ai_hook2_problem.png",
+        "hook_type": "problem"
+      },
+      {
+        "media_id": "0c6f81e2-b033-4ccd-992b-7b671c0cd307",
+        "filename": "sellpix_ai_hook3_solution.png",
+        "hook_type": "solution"
+      },
+      {
+        "media_id": "9b0af2ec-4107-4b88-b8c5-9d05bc619307",
+        "filename": "emne05mm7v25_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "4b561538-e5c9-420a-b0d2-b92dbe32a8f4",
+        "filename": "emne05mm7v25_stat.png",
+        "template": "stat"
+      }
+    ],
+    "45r5yvze3vy4": [
+      {
+        "media_id": "4732235b-33af-45d2-9bec-4e393bdf26d5",
+        "filename": "45r5yvze3vy4_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "1a082274-c462-4944-96d5-db30625fa283",
+        "filename": "45r5yvze3vy4_stat.png",
+        "template": "stat"
+      }
+    ],
+    "9r8rj1o38q59": [
+      {
+        "media_id": "cdd6d5f7-5432-40f0-b6dd-41fd6b44389f",
+        "filename": "9r8rj1o38q59_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "942c3d49-430b-4c31-a086-b02a94e23f76",
+        "filename": "9r8rj1o38q59_stat.png",
+        "template": "stat"
+      }
+    ],
+    "l4q49jj3z383": [
+      {
+        "media_id": "ff694fc6-3062-4c95-8094-233a2420fc1e",
+        "filename": "l4q49jj3z383_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "7764d43e-32a5-45c7-8747-19c58fb8c6c6",
+        "filename": "l4q49jj3z383_stat.png",
+        "template": "stat"
+      }
+    ],
+    "regxdn7xkpz6": [
+      {
+        "media_id": "8779ffda-0b4a-4937-b28c-a055205b5705",
+        "filename": "regxdn7xkpz6_problem.png",
+        "template": "problem"
+      },
+      {
+        "media_id": "c7594877-b118-47c0-9e2c-5e828885ae45",
+        "filename": "regxdn7xkpz6_stat.png",
+        "template": "stat"
+      }
+    ]
+  },
+  "updated": "2026-03-13"
+}

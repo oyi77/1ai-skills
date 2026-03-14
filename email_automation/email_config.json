@@ -1,0 +1,18 @@
+{
+  "mode": "MANUAL_START",
+  "campaign_id": "campaign_traveloka_manual_20260307_004753",
+  "queue_ready": true,
+  "queue_size": 48,
+  "batch_schedule": {
+    "day_1": {
+      "emails": 16
+    },
+    "day_3": {
+      "emails": 16
+    },
+    "day_7": {
+      "emails": 16
+    }
+  },
+  "setup_at": "2026-03-07T00:58:07.811022"
+}

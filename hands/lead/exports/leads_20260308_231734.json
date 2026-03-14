@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Digital Nusantara Agency",
+    "website": "https://digitalnusantara.com",
+    "industry": "Digital Marketing",
+    "location": "Jakarta",
+    "size": "Small (10-50 employees)",
+    "discovered": "2026-03-08T23:17:34.723731",
+    "contact_email": "contact@digitalnusantaraagency.com",
+    "social_media": {
+      "linkedin": "linkedin.com/company/digitalnusantaraagency",
+      "instagram": "instagram.com/digitalnusantaraagency"
+    },
+    "revenue_estimate": "IDR 500M - 5B",
+    "enrichment_details": {
+      "website_status": "Active",
+      "social_presence": "High",
+      "content_frequency": "Daily posts"
+    },
+    "enriched": true,
+    "enriched_at": "2026-03-08T23:17:34.724021",
+    "score": 60
+  },
+  {
+    "name": "Indonesian E-Commerce Solutions",
+    "website": "https://iecs.co.id",
+    "industry": "Technology",
+    "location": "Bandung",
+    "size": "Medium (50-200 employees)",
+    "discovered": "2026-03-08T23:17:34.723746",
+    "contact_email": "business@indonesiane-commercesolutions.com",
+    "social_media": {
+      "linkedin": "linkedin.com/company/indonesiane-commercesolutions",
+      "github": "github.com/indonesian-e-commerce-solutions"
+    },
+    "revenue_estimate": "IDR 1B - 20B",
+    "enrichment_details": {
+      "website_status": "Active",
+      "social_presence": "Medium",
+      "tech_stack": "Modern"
+    },
+    "enriched": true,
+    "enriched_at": "2026-03-08T23:17:34.724357",
+    "score": 60
+  },
+  {
+    "name": "AI Tools Indonesia",
+    "website": "https://aitoolsindo.com",
+    "industry": "Technology",
+    "location": "Jakarta",
+    "size": "Start-up",
+    "discovered": "2026-03-08T23:17:34.723756",
+    "contact_email": "business@aitoolsindonesia.com",
+    "social_media": {
+      "linkedin": "linkedin.com/company/aitoolsindonesia",
+      "github": "github.com/ai-tools-indonesia"
+    },
+    "revenue_estimate": "IDR 1B - 20B",
+    "enrichment_details": {
+      "website_status": "Active",
+      "social_presence": "Medium",
+      "tech_stack": "Modern"
+    },
+    "enriched": true,
+    "enriched_at": "2026-03-08T23:17:34.724973",
+    "score": 69
+  },
+  {
+    "name": "Social Media Automation",
+    "website": "https://social-auto.id",
+    "industry": "Marketing",
+    "location": "Jakarta",
+    "size": "Small (10-30 employees)",
+    "discovered": "2026-03-08T23:17:34.723759",
+    "contact_email": "contact@socialmediaautomation.com",
+    "social_media": {
+      "linkedin": "linkedin.com/company/socialmediaautomation",
+      "instagram": "instagram.com/socialmediaautomation"
+    },
+    "revenue_estimate": "IDR 500M - 5B",
+    "enrichment_details": {
+      "website_status": "Active",
+      "social_presence": "High",
+      "content_frequency": "Daily posts"
+    },
+    "enriched": true,
+    "enriched_at": "2026-03-08T23:17:34.725334",
+    "score": 77
+  }
+]

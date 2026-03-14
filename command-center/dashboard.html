@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ OpenClaw Command Center</title>
+<style>
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0d14;
+  --bg2: #111520;
+  --bg3: #161b2a;
+  --border: #1e2540;
+  --border2: #2a3060;
+  --accent: #3b82f6;
+  --accent2: #6366f1;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --orange: #f97316;
+  --red: #ef4444;
+  --pink: #ec4899;
+  --cyan: #06b6d4;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #475569;
+  --card-glow: 0 0 0 1px var(--border), 0 4px 24px rgba(0,0,0,0.4);
+  --radius: 10px;
+  --font: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+html { font-size: 14px; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, pre { font-family: var(--font); }
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+
+/* ─── Header ────────────────────────────────────────────────── */
+.header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.header-left { display: flex; align-items: center; gap: 16px; }
+.logo { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.logo-icon { font-size: 22px; }
+.logo-text { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.badge {
+  font-size: 11px; padding: 2px 8px; border-radius: 100px;
+  background: var(--bg3); border: 1px solid var(--border2);
+  color: var(--text2); font-family: var(--font);
+}
+.header-right { display: flex; align-items: center; gap: 12px; }
+.btn {
+  padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer;
+  font-size: 13px; font-weight: 500; transition: all 0.15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #2563eb; }
+.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border2); }
+.btn-ghost:hover { background: var(--bg3); color: var(--text); }
+.btn-danger { background: var(--red); color: white; }
+.btn-danger:hover { background: #dc2626; }
+.btn-success { background: var(--green); color: white; }
+.btn-success:hover { background: #16a34a; }
+
+/* Connection dot */
+.conn-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 6px var(--green);
+  display: inline-block;
+}
+.conn-dot.disconnected { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.conn-dot.connecting { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); animation: pulse 1s infinite; }
+
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform: translateY(0); } }
+
+/* ─── Tab Bar ───────────────────────────────────────────────── */
+.tabbar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  padding: 0 20px;
+  gap: 0;
+  overflow-x: auto;
+}
+.tab {
+  padding: 12px 18px; cursor: pointer; font-size: 13px; font-weight: 500;
+  color: var(--text2); border-bottom: 2px solid transparent;
+  transition: all 0.15s; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.tab:hover { color: var(--text); background: var(--bg3); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-badge {
+  font-size: 10px; padding: 1px 6px; border-radius: 100px;
+  background: var(--accent); color: white; min-width: 18px; text-align: center;
+}
+
+/* ─── Main Content ──────────────────────────────────────────── */
+.main { flex: 1; padding: 20px; }
+
+/* Tab panels */
+.panel { display: none; animation: fadeIn 0.2s ease; }
+.panel.active { display: block; }
+
+/* ─── Section Headers ───────────────────────────────────────── */
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: 13px; font-weight: 600; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title::before {
+  content: ''; width: 3px; height: 14px;
+  background: var(--accent); border-radius: 2px; display: block;
+}
+
+/* ─── Grid Layouts ──────────────────────────────────────────── */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 1200px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--card-glow);
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--border2); }
+.card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.card-title {
+  font-size: 13px; font-weight: 600; color: var(--text2);
+  display: flex; align-items: center; gap: 6px;
+}
+.card-icon { font-size: 16px; }
+.card-value { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+.card-label { font-size: 11px; color: var(--text3); margin-top: 4px; }
+.card-sub { font-size: 12px; color: var(--text2); margin-top: 8px; }
+
+/* ─── Metric Cards ──────────────────────────────────────────── */
+.metric-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  position: relative; overflow: hidden;
+}
+.metric-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  right: 0; height: 3px; border-radius: var(--radius) var(--radius) 0 0;
+}
+.metric-card.blue::before { background: var(--accent); }
+.metric-card.green::before { background: var(--green); }
+.metric-card.yellow::before { background: var(--yellow); }
+.metric-card.red::before { background: var(--red); }
+.metric-card.purple::before { background: var(--accent2); }
+.metric-card.cyan::before { background: var(--cyan); }
+
+/* ─── Progress Bars / Gauges ────────────────────────────────── */
+.gauge-wrap { margin-top: 10px; }
+.gauge-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text2); margin-bottom: 5px; }
+.gauge-bar {
+  height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.gauge-fill {
+  height: 100%; border-radius: 4px; transition: width 0.5s ease;
+  background: var(--green);
+}
+.gauge-fill.warn { background: var(--yellow); }
+.gauge-fill.danger { background: var(--red); }
+.gauge-fill.info { background: var(--accent); }
+
+/* Circular gauge */
+.gauge-circle {
+  position: relative; display: inline-flex; align-items: center;
+  justify-content: center; width: 80px; height: 80px;
+}
+.gauge-circle svg { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
+.gauge-circle-val {
+  font-size: 18px; font-weight: 700; color: var(--text);
+  font-family: var(--font); z-index: 1;
+}
+.gauge-circle-label { font-size: 10px; color: var(--text3); position: absolute; bottom: 0; width: 100%; text-align: center; }
+
+/* ─── Table ──────────────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+th {
+  text-align: left; padding: 10px 14px;
+  color: var(--text3); font-weight: 600; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3); white-space: nowrap;
+}
+td {
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+  color: var(--text2); max-width: 300px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg3); }
+.td-mono { font-family: var(--font); font-size: 12px; }
+
+/* ─── Status Badges ──────────────────────────────────────────── */
+.status { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+.status.active { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+.status.inactive { background: rgba(100,116,139,0.15); color: var(--text3); border: 1px solid var(--border); }
+.status.warning { background: rgba(234,179,8,0.15); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
+.status.error { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+.status.info { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ─── Log Viewer ─────────────────────────────────────────────── */
+.log-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--text2);
+  max-height: 300px;
+  overflow-y: auto;
+  line-height: 1.7;
+}
+.log-line { padding: 1px 0; }
+.log-line:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+.log-ts { color: var(--text3); }
+.log-info { color: var(--accent); }
+.log-warn { color: var(--yellow); }
+.log-error { color: var(--red); }
+.log-success { color: var(--green); }
+
+/* ─── Empty State ─────────────────────────────────────────────── */
+.empty { text-align: center; padding: 40px 20px; color: var(--text3); }
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-title { font-size: 15px; font-weight: 600; color: var(--text2); margin-bottom: 6px; }
+.empty-sub { font-size: 12px; }
+
+/* ─── Privacy Banner ─────────────────────────────────────────── */
+.privacy-banner {
+  display: none;
+  background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(245,101,101,0.1));
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-size: 13px; color: var(--red);
+  align-items: center; gap: 8px;
+}
+.privacy-banner.visible { display: flex; }
+
+/* ─── Timestamp ──────────────────────────────────────────────── */
+.timestamp { font-family: var(--font); font-size: 11px; color: var(--text3); }
+
+/* ─── Sparkline ──────────────────────────────────────────────── */
+.sparkline { display: inline-block; vertical-align: middle; }
+
+/* ─── Flex helpers ────────────────────────────────────────────── */
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+.w-full { width: 100%; }
+.text-right { text-align: right; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ─── Last Update Bar ─────────────────────────────────────────── */
+.update-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 6px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; color: var(--text3);
+}
+
+/* ─── Session Cards ──────────────────────────────────────────── */
+.session-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.session-card:hover { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(59,130,246,0.2); }
+.session-card.active { border-color: var(--green); }
+.session-id { font-family: var(--font); font-size: 11px; color: var(--text3); margin-bottom: 4px; }
+.session-model { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.session-meta { font-size: 11px; color: var(--text2); display: flex; flex-wrap: wrap; gap: 8px; }
+.session-preview { font-size: 11px; color: var(--text3); margin-top: 8px; font-style: italic; line-height: 1.5; }
+
+/* ─── Fuel Gauge ─────────────────────────────────────────────── */
+.fuel-gauge {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.fuel-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.fuel-status { font-size: 12px; color: var(--text2); margin-bottom: 12px; }
+.fuel-bar-wrap { height: 16px; background: var(--bg3); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.fuel-bar { height: 100%; border-radius: 8px; transition: width 1s ease; position: relative; }
+.fuel-bar::after {
+  content: attr(data-pct);
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  font-size: 10px; font-weight: 700; color: white; white-space: nowrap;
+}
+.fuel-full { background: linear-gradient(90deg, var(--green), #4ade80); }
+.fuel-warn { background: linear-gradient(90deg, var(--yellow), #fbbf24); }
+.fuel-low { background: linear-gradient(90deg, var(--orange), #fb923c); }
+.fuel-empty { background: linear-gradient(90deg, var(--red), #f87171); }
+.fuel-model { font-size: 11px; color: var(--text3); margin-top: 8px; font-family: var(--font); }
+
+/* ─── Cron Cards ─────────────────────────────────────────────── */
+.cron-row { display: grid; grid-template-columns: 120px 1fr 140px 80px; gap: 12px; align-items: center; }
+@media (max-width: 768px) { .cron-row { grid-template-columns: 1fr; } }
+
+/* ─── Animated loading ───────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg2) 25%, var(--bg3) 50%, var(--bg2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.skel-text { height: 14px; margin-bottom: 8px; }
+.skel-h { height: 32px; width: 60%; margin-bottom: 8px; }
+
+/* ─── Alert banner ───────────────────────────────────────────── */
+.alert { border-radius: var(--radius); padding: 12px 16px; margin-bottom: 12px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+.alert-warn { background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3); color: var(--yellow); }
+.alert-err  { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: var(--red); }
+.alert-ok   { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--green); }
+.alert-info { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: var(--accent); }
+
+/* ─── Process list ───────────────────────────────────────────── */
+.proc-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.proc-item:last-child { border-bottom: none; }
+.proc-cmd { font-family: var(--font); font-size: 12px; color: var(--text); flex: 1; truncate: overflow; }
+.proc-stats { display: flex; gap: 12px; font-size: 11px; font-family: var(--font); color: var(--text3); }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ─── Header ─────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Command Center</span>
+      </div>
+      <span class="badge">BerkahKarya</span>
+      <span id="versionBadge" class="badge" style="display:none"></span>
+    </div>
+    <div class="header-right">
+      <span class="timestamp" id="clockDisplay"></span>
+      <span class="conn-dot connecting" id="connDot" title="Connecting..."></span>
+      <button class="btn btn-ghost" id="privacyBtn" onclick="togglePrivacy()" title="Toggle privacy/screenshot mode">🔒 Privacy</button>
+      <button class="btn btn-ghost" id="refreshBtn" onclick="manualRefresh()" title="Force refresh">↺ Refresh</button>
+    </div>
+  </header>
+
+  <!-- ─── Tab Bar ────────────────────────────────────── -->
+  <nav class="tabbar">
+    <div class="tab active" onclick="switchTab('overview')" id="tab-overview">🖥️ Overview</div>
+    <div class="tab" onclick="switchTab('sessions')" id="tab-sessions">💬 Sessions <span class="tab-badge" id="sessionsCount">0</span></div>
+    <div class="tab" onclick="switchTab('system')" id="tab-system">⚙️ System</div>
+    <div class="tab" onclick="switchTab('crons')" id="tab-crons">⏰ Cron Jobs <span class="tab-badge" id="cronsCount">0</span></div>
+    <div class="tab" onclick="switchTab('quotas')" id="tab-quotas">⛽ LLM Fuel</div>
+    <div class="tab" onclick="switchTab('logs')" id="tab-logs">📋 Logs</div>
+    <div class="tab" onclick="switchTab('processes')" id="tab-processes">🔄 Processes</div>
+  </nav>
+
+  <!-- ─── Main Content ────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Privacy Banner -->
+    <div class="privacy-banner" id="privacyBanner">
+      🔒 <strong>Privacy Mode Active</strong> — Sensitive data is hidden. Safe for screenshots.
+    </div>
+
+    <!-- ══ OVERVIEW TAB ══ -->
+    <div class="panel active" id="panel-overview">
+
+      <!-- Top KPI Row -->
+      <div class="grid-4 mb-4" id="kpiGrid">
+        <div class="metric-card blue">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">💬</span> Sessions</div>
+          </div>
+          <div class="card-value" id="kpi-sessions">—</div>
+          <div class="card-label">Active agent sessions</div>
+        </div>
+        <div class="metric-card green">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">🤖</span> Subagents</div>
+          </div>
+          <div class="card-value" id="kpi-subagents">—</div>
+          <div class="card-label">Running subagents</div>
+        </div>
+        <div class="metric-card yellow">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">⏰</span> Cron Jobs</div>
+          </div>
+          <div class="card-value" id="kpi-crons">—</div>
+          <div class="card-label">Scheduled tasks</div>
+        </div>
+        <div class="metric-card purple">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">💻</span> CPU</div>
+          </div>
+          <div class="card-value" id="kpi-cpu">—</div>
+          <div class="card-label">Current usage</div>
+          <div class="gauge-wrap">
+            <div class="gauge-bar"><div class="gauge-fill info" id="kpi-cpu-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Row: Memory, Disk, Uptime, Connections -->
+      <div class="grid-4 mb-4">
+        <div class="metric-card cyan">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">🧠</span> Memory</div>
+          </div>
+          <div class="card-value" id="ov-memPct">—</div>
+          <div class="card-label" id="ov-memLabel">— of —</div>
+          <div class="gauge-wrap">
+            <div class="gauge-bar"><div class="gauge-fill" id="ov-memBar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="metric-card red">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">💾</span> Disk</div>
+          </div>
+          <div class="card-value" id="ov-diskPct">—</div>
+          <div class="card-label" id="ov-diskLabel">— used of —</div>
+          <div class="gauge-wrap">
+            <div class="gauge-bar"><div class="gauge-fill danger" id="ov-diskBar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="metric-card green">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">⏱️</span> Uptime</div>
+          </div>
+          <div class="card-value" id="ov-uptime">—</div>
+          <div class="card-label">System uptime</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="card-header">
+            <div class="card-title"><span class="card-icon">🔗</span> TCP</div>
+          </div>
+          <div class="card-value" id="ov-tcp">—</div>
+          <div class="card-label">TCP connections</div>
+        </div>
+      </div>
+
+      <!-- Overview grid: sessions + crons preview -->
+      <div class="grid-2">
+        <!-- Recent Sessions -->
+        <div>
+          <div class="section-header">
+            <div class="section-title">Recent Sessions</div>
+            <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="switchTab('sessions')">View all →</button>
+          </div>
+          <div id="ov-sessions-list">
+            <div class="empty"><div class="empty-icon">💬</div><div class="empty-title">No sessions</div><div class="empty-sub">Sessions will appear here</div></div>
+          </div>
+        </div>
+        <!-- Next Cron Jobs -->
+        <div>
+          <div class="section-header">
+            <div class="section-title">Upcoming Crons</div>
+            <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="switchTab('crons')">View all →</button>
+          </div>
+          <div id="ov-crons-list">
+            <div class="empty"><div class="empty-icon">⏰</div><div class="empty-title">No cron jobs</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ SESSIONS TAB ══ -->
+    <div class="panel" id="panel-sessions">
+      <div class="section-header mb-4">
+        <div class="section-title">Agent Sessions</div>
+        <div class="flex gap-2">
+          <span id="sessionsLastUpdate" class="timestamp"></span>
+        </div>
+      </div>
+      <div id="sessionsList" class="grid-3">
+        <div class="empty" style="grid-column:1/-1">
+          <div class="empty-icon">💬</div>
+          <div class="empty-title">Loading sessions...</div>
+        </div>
+      </div>
+      <div id="subagentsList" class="mt-6">
+        <div class="section-header mb-4">
+          <div class="section-title">Subagents</div>
+        </div>
+        <div id="subagentsContent">
+          <div class="empty"><div class="empty-icon">🤖</div><div class="empty-title">No active subagents</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SYSTEM TAB ══ -->
+    <div class="panel" id="panel-system">
+      <div class="section-header mb-4">
+        <div class="section-title">System Vitals</div>
+        <span id="systemLastUpdate" class="timestamp"></span>
+      </div>
+
+      <!-- CPU + Memory circles -->
+      <div class="grid-4 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🖥️ CPU Usage</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <canvas id="cpuGauge" width="80" height="80"></canvas>
+            <div>
+              <div class="card-value" id="sys-cpuPct">—</div>
+              <div class="card-label" id="sys-cpuModel">—</div>
+              <div class="card-sub" id="sys-loadAvg">Load: —</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🧠 Memory</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <canvas id="memGauge" width="80" height="80"></canvas>
+            <div>
+              <div class="card-value" id="sys-memPct">—</div>
+              <div class="card-label" id="sys-memTotal">— total</div>
+              <div class="card-sub" id="sys-memUsed">— used</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">💾 Disk</div>
+          </div>
+          <div class="card-value" id="sys-diskPct">—</div>
+          <div class="card-label" id="sys-diskInfo">—</div>
+          <div class="gauge-wrap">
+            <div class="gauge-bar"><div class="gauge-fill danger" id="sys-diskBar" style="width:0%"></div></div>
+          </div>
+          <div class="card-sub mt-2" id="sys-workspaceDisk">Workspace: —</div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">ℹ️ Host Info</div>
+          </div>
+          <div id="sys-hostInfo">
+            <div class="skeleton skel-text"></div>
+            <div class="skeleton skel-text" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load average graph area -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="card-title">📊 Load Average History</div>
+        </div>
+        <div id="loadHistory" style="height:60px;position:relative;overflow:hidden;"></div>
+        <canvas id="loadGraph" style="width:100%;height:60px;display:block"></canvas>
+        <div style="display:flex;gap:20px;margin-top:8px;font-size:11px;color:var(--text3)">
+          <span>1m: <b id="load1" style="color:var(--accent)">—</b></span>
+          <span>5m: <b id="load5" style="color:var(--accent2)">—</b></span>
+          <span>15m: <b id="load15" style="color:var(--cyan)">—</b></span>
+          <span>Cores: <b id="cpuCores" style="color:var(--text2)">—</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CRON JOBS TAB ══ -->
+    <div class="panel" id="panel-crons">
+      <div class="section-header mb-4">
+        <div class="section-title">Scheduled Tasks</div>
+        <span id="cronsLastUpdate" class="timestamp"></span>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table id="cronTable">
+            <thead>
+              <tr>
+                <th>Schedule</th>
+                <th>Human Readable</th>
+                <th>Command</th>
+                <th>Source</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="cronTableBody">
+              <tr><td colspan="5" class="empty" style="text-align:center;padding:30px;color:var(--text3)">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ LLM FUEL TAB ══ -->
+    <div class="panel" id="panel-quotas">
+      <div class="section-header mb-4">
+        <div class="section-title">LLM Fuel Gauges</div>
+        <span id="quotasLastUpdate" class="timestamp"></span>
+      </div>
+      <div id="quotaGrid" class="grid-3">
+        <div class="empty" style="grid-column:1/-1">
+          <div class="empty-icon">⛽</div>
+          <div class="empty-title">Loading quotas...</div>
+        </div>
+      </div>
+
+      <!-- Models config -->
+      <div class="mt-6">
+        <div class="section-header mb-4">
+          <div class="section-title">Configured Models</div>
+        </div>
+        <div id="modelsGrid" class="grid-3">
+          <div class="empty" style="grid-column:1/-1">
+            <div class="empty-icon">🤖</div>
+            <div class="empty-title">Loading model config...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ LOGS TAB ══ -->
+    <div class="panel" id="panel-logs">
+      <div class="section-header mb-4">
+        <div class="section-title">Recent Logs</div>
+        <span id="logsLastUpdate" class="timestamp"></span>
+      </div>
+      <div id="logsList">
+        <div class="empty">
+          <div class="empty-icon">📋</div>
+          <div class="empty-title">Loading logs...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PROCESSES TAB ══ -->
+    <div class="panel" id="panel-processes">
+      <div class="section-header mb-4">
+        <div class="section-title">Running Processes</div>
+        <span id="procsLastUpdate" class="timestamp"></span>
+      </div>
+      <div class="card">
+        <div id="procsList">
+          <div class="empty">
+            <div class="empty-icon">🔄</div>
+            <div class="empty-title">Loading processes...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ─── Footer ─────────────────────────────────────── -->
+  <div class="update-bar">
+    <span>OpenClaw Command Center v<span id="footerVersion">1.0.0</span> — BerkahKarya AI Operations</span>
+    <span>Last update: <span id="lastUpdateTime" class="timestamp">—</span> · SSE clients: <span id="sseClients">—</span></span>
+  </div>
+
+</div>
+
+<script>
+'use strict';
+// ─── State ────────────────────────────────────────────────────────────────────
+let appData = {};
+let sseConn = null;
+let currentTab = 'overview';
+let clockTimer = null;
+let cpuHistory = [];
+let loadHistory = [];
+const MAX_HISTORY = 60;
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  startClock();
+  connectSSE();
+  fetchAll();  // immediate fetch
+});
+
+// ─── Clock ────────────────────────────────────────────────────────────────────
+function startClock() {
+  function tick() {
+    const now = new Date();
+    const tz = 'Asia/Jakarta';
+    document.getElementById('clockDisplay').textContent =
+      now.toLocaleTimeString('en-US', { timeZone: tz, hour12: false }) +
+      ' WIB';
+  }
+  tick();
+  clockTimer = setInterval(tick, 1000);
+}
+
+// ─── Tab Switching ────────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name)?.classList.add('active');
+  document.getElementById('panel-' + name)?.classList.add('active');
+  currentTab = name;
+}
+
+// ─── SSE Connection ───────────────────────────────────────────────────────────
+function connectSSE() {
+  const dot = document.getElementById('connDot');
+  dot.className = 'conn-dot connecting';
+  dot.title = 'Connecting...';
+
+  sseConn = new EventSource('/events');
+
+  sseConn.onopen = () => {
+    dot.className = 'conn-dot';
+    dot.title = 'Connected';
+  };
+
+  sseConn.onerror = () => {
+    dot.className = 'conn-dot disconnected';
+    dot.title = 'Disconnected - reconnecting...';
+    // EventSource auto-reconnects
+  };
+
+  sseConn.addEventListener('init', e => {
+    try { renderAll(JSON.parse(e.data)); } catch (err) { console.error('init parse error', err); }
+  });
+
+  sseConn.addEventListener('update', e => {
+    try { renderAll(JSON.parse(e.data)); } catch (err) { console.error('update parse error', err); }
+  });
+
+  sseConn.addEventListener('refresh', e => {
+    try { renderAll(JSON.parse(e.data)); } catch (err) {}
+  });
+
+  sseConn.addEventListener('privacy', e => {
+    try {
+      const d = JSON.parse(e.data);
+      updatePrivacyUI(d.screenshotMode);
+    } catch (err) {}
+  });
+}
+
+// ─── Fetch All Data ───────────────────────────────────────────────────────────
+async function fetchAll() {
+  try {
+    const res = await fetch('/api/all');
+    const data = await res.json();
+    renderAll(data);
+  } catch (e) {
+    console.error('fetch error', e);
+  }
+}
+
+async function manualRefresh() {
+  const btn = document.getElementById('refreshBtn');
+  btn.textContent = '⟳ Refreshing...';
+  btn.disabled = true;
+  try {
+    await fetch('/api/refresh', { method: 'POST' });
+    await fetchAll();
+  } catch (e) {}
+  setTimeout(() => { btn.textContent = '↺ Refresh'; btn.disabled = false; }, 1500);
+}
+
+async function togglePrivacy() {
+  try {
+    const res = await fetch('/api/privacy', { method: 'POST' });
+    const d = await res.json();
+    updatePrivacyUI(d.screenshotMode);
+  } catch (e) {}
+}
+
+function updatePrivacyUI(on) {
+  const btn = document.getElementById('privacyBtn');
+  const banner = document.getElementById('privacyBanner');
+  if (on) {
+    btn.textContent = '🔓 Privacy ON';
+    btn.classList.remove('btn-ghost');
+    btn.classList.add('btn-danger');
+    banner.classList.add('visible');
+  } else {
+    btn.textContent = '🔒 Privacy';
+    btn.classList.add('btn-ghost');
+    btn.classList.remove('btn-danger');
+    banner.classList.remove('visible');
+  }
+}
+
+// ─── Render All ───────────────────────────────────────────────────────────────
+function renderAll(data) {
+  if (!data) return;
+  appData = data;
+
+  // Version
+  document.getElementById('footerVersion').textContent = data.serverVersion || '1.0.0';
+  const vb = document.getElementById('versionBadge');
+  vb.textContent = 'v' + (data.serverVersion || '?');
+  vb.style.display = '';
+
+  // Last update
+  if (data.lastUpdate) {
+    const lu = new Date(data.lastUpdate).toLocaleTimeString('en-US', { hour12: false });
+    document.getElementById('lastUpdateTime').textContent = lu;
+  }
+
+  // Privacy
+  updatePrivacyUI(data.screenshotMode);
+
+  // Render each section
+  if (data.system) renderSystem(data.system);
+  if (data.sessions !== undefined) renderSessions(data.sessions || [], data.subagents || []);
+  if (data.crons !== undefined) renderCrons(data.crons || []);
+  if (data.llmQuotas !== undefined) renderQuotas(data.llmQuotas || {});
+  if (data.recentLogs !== undefined) renderLogs(data.recentLogs || []);
+  if (data.processes !== undefined) renderProcesses(data.processes || []);
+  renderOverview(data);
+}
+
+// ─── System Render ────────────────────────────────────────────────────────────
+function renderSystem(sys) {
+  if (!sys) return;
+
+  // CPU
+  const cpu = sys.cpuUsage || 0;
+  set('sys-cpuPct', cpu + '%');
+  set('sys-cpuModel', (sys.cpuModel || '').slice(0, 30) + '...');
+  set('load1', (sys.loadAvg?.[0] || 0).toFixed(2));
+  set('load5', (sys.loadAvg?.[1] || 0).toFixed(2));
+  set('load15', (sys.loadAvg?.[2] || 0).toFixed(2));
+  set('cpuCores', sys.cpuCount || '?');
+  set('sys-loadAvg', `Load: ${(sys.loadAvg?.[0] || 0).toFixed(2)}`);
+  set('kpi-cpu', cpu + '%');
+  setWidth('kpi-cpu-bar', cpu);
+
+  // Memory
+  const memPct = sys.memory?.usedPct || 0;
+  set('sys-memPct', memPct + '%');
+  set('sys-memTotal', sys.memory?.totalHuman || '—');
+  set('sys-memUsed', sys.memory?.usedHuman || '—');
+  set('ov-memPct', memPct + '%');
+  set('ov-memLabel', `${sys.memory?.usedHuman || '?'} of ${sys.memory?.totalHuman || '?'}`);
+  setGaugeWidth('ov-memBar', memPct);
+  setGaugeWidth('sys-diskBar', sys.disk?.pct || 0);
+
+  // Disk
+  const diskPct = sys.disk?.pct || 0;
+  set('sys-diskPct', diskPct + '%');
+  set('sys-diskInfo', `${sys.disk?.used || '?'} used of ${sys.disk?.size || '?'}`);
+  set('ov-diskPct', diskPct + '%');
+  set('ov-diskLabel', `${sys.disk?.used || '?'} used of ${sys.disk?.size || '?'}`);
+  setGaugeWidth('ov-diskBar', diskPct);
+  set('sys-workspaceDisk', 'Workspace: ' + (sys.workspaceDisk || '?'));
+
+  // Uptime
+  set('ov-uptime', sys.uptimeHuman || '—');
+
+  // TCP
+  set('ov-tcp', sys.tcpConnections != null ? sys.tcpConnections : '—');
+
+  // Host info
+  const hostEl = document.getElementById('sys-hostInfo');
+  if (hostEl) {
+    hostEl.innerHTML = `
+      <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">${escHtml(sys.hostname || '?')}</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>OS: ${escHtml(sys.platform || '?')} / ${escHtml(sys.arch || '?')}</div>
+        <div>Node: ${escHtml(sys.nodeVersion || '?')}</div>
+        <div>PID: ${sys.pid || '?'}</div>
+        <div>CPUs: ${sys.cpuCount || '?'} × ${escHtml((sys.cpuModel || '').split('@')[0].trim().slice(0, 25))}</div>
+      </div>
+    `;
+  }
+
+  // Draw gauges
+  drawCircleGauge('cpuGauge', cpu, '#3b82f6');
+  drawCircleGauge('memGauge', memPct, memPct > 85 ? '#ef4444' : memPct > 65 ? '#eab308' : '#22c55e');
+
+  // Track history
+  cpuHistory.push(cpu);
+  if (cpuHistory.length > MAX_HISTORY) cpuHistory.shift();
+  loadHistory.push(sys.loadAvg?.[0] || 0);
+  if (loadHistory.length > MAX_HISTORY) loadHistory.shift();
+  drawLoadGraph();
+
+  // Timestamps
+  const ts = new Date().toLocaleTimeString('en-US', { hour12: false });
+  setOpt('systemLastUpdate', 'Updated ' + ts);
+}
+
+function drawCircleGauge(canvasId, pct, color) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height, r = w / 2 - 8;
+  ctx.clearRect(0, 0, w, h);
+  ctx.beginPath();
+  ctx.arc(w/2, h/2, r, -Math.PI/2, Math.PI*1.5);
+  ctx.strokeStyle = '#1e2540';
+  ctx.lineWidth = 8;
+  ctx.stroke();
+  ctx.beginPath();
+  const end = -Math.PI/2 + (Math.PI * 2 * pct / 100);
+  ctx.arc(w/2, h/2, r, -Math.PI/2, end);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 8;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+  ctx.fillStyle = '#e2e8f0';
+  ctx.font = 'bold 14px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(pct + '%', w/2, h/2);
+}
+
+function drawLoadGraph() {
+  const canvas = document.getElementById('loadGraph');
+  if (!canvas || !loadHistory.length) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.offsetWidth || canvas.width;
+  const h = canvas.height || 60;
+  canvas.width = w;
+  ctx.clearRect(0, 0, w, h);
+  
+  const maxLoad = Math.max(...loadHistory, 1);
+  const step = w / (MAX_HISTORY - 1);
+  
+  ctx.beginPath();
+  ctx.moveTo(0, h - (loadHistory[0] / maxLoad) * h);
+  loadHistory.forEach((v, i) => {
+    ctx.lineTo(i * step, h - (v / maxLoad) * h);
+  });
+  ctx.strokeStyle = '#3b82f6';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  
+  // Fill
+  ctx.lineTo((loadHistory.length - 1) * step, h);
+  ctx.lineTo(0, h);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(59,130,246,0.1)';
+  ctx.fill();
+}
+
+// ─── Sessions Render ──────────────────────────────────────────────────────────
+function renderSessions(sessions, subagents) {
+  const cnt = sessions.length;
+  set('kpi-sessions', cnt);
+  set('kpi-subagents', subagents.length || 0);
+  document.getElementById('sessionsCount').textContent = cnt;
+
+  // Sessions tab
+  const el = document.getElementById('sessionsList');
+  if (!sessions.length) {
+    el.innerHTML = `<div class="empty" style="grid-column:1/-1">
+      <div class="empty-icon">💬</div>
+      <div class="empty-title">No sessions found</div>
+      <div class="empty-sub">Sessions will appear as OpenClaw processes run</div>
+    </div>`;
+  } else {
+    el.innerHTML = sessions.map(s => `
+      <div class="session-card ${s.status === 'active' ? 'active' : ''}">
+        <div class="session-id">${escHtml(s.id || '?')}</div>
+        <div class="session-model">${escHtml(s.label || s.model || 'Unknown session')}</div>
+        <div class="session-meta">
+          <span class="status ${s.status === 'active' ? 'active' : 'inactive'}">
+            <span class="status-dot"></span>${escHtml(s.status || 'unknown')}
+          </span>
+          ${s.channel ? `<span style="color:var(--text3);font-size:11px">${escHtml(s.channel)}</span>` : ''}
+          ${s.lastUpdate ? `<span class="timestamp">${fmtTime(s.lastUpdate)}</span>` : ''}
+        </div>
+        ${s.preview ? `<div class="session-preview">${escHtml(s.preview.slice(0, 120))}...</div>` : ''}
+      </div>
+    `).join('');
+  }
+
+  // Subagents
+  const saEl = document.getElementById('subagentsContent');
+  if (!subagents.length) {
+    saEl.innerHTML = `<div class="empty"><div class="empty-icon">🤖</div><div class="empty-title">No active subagents</div></div>`;
+  } else {
+    saEl.innerHTML = `<div class="grid-3">${subagents.map(sa => `
+      <div class="session-card">
+        <div class="session-id">${escHtml(sa.id || sa.sessionId || '?')}</div>
+        <div class="session-model">${escHtml(sa.label || sa.task || 'Subagent')}</div>
+        <div class="session-meta">
+          <span class="status ${sa.status === 'running' ? 'active' : 'info'}">
+            <span class="status-dot"></span>${escHtml(sa.status || 'unknown')}
+          </span>
+        </div>
+      </div>
+    `).join('')}</div>`;
+  }
+
+  // Overview snippet
+  const ovEl = document.getElementById('ov-sessions-list');
+  if (!sessions.length) {
+    ovEl.innerHTML = `<div class="empty"><div class="empty-icon">💬</div><div class="empty-title">No sessions</div></div>`;
+  } else {
+    ovEl.innerHTML = sessions.slice(0, 3).map(s => `
+      <div class="session-card ${s.status === 'active' ? 'active' : ''}" style="margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="session-model" style="font-size:12px">${escHtml(s.label || s.model || '?')}</div>
+          <span class="status ${s.status === 'active' ? 'active' : 'inactive'}" style="font-size:10px">
+            <span class="status-dot"></span>${escHtml(s.status || '?')}
+          </span>
+        </div>
+        <div class="session-id">${escHtml(s.id || '?')}</div>
+      </div>
+    `).join('');
+  }
+
+  setOpt('sessionsLastUpdate', 'Updated ' + new Date().toLocaleTimeString('en-US', { hour12: false }));
+}
+
+// ─── Cron Render ──────────────────────────────────────────────────────────────
+function renderCrons(crons) {
+  const cnt = crons.length;
+  set('kpi-crons', cnt);
+  document.getElementById('cronsCount').textContent = cnt;
+
+  const tbody = document.getElementById('cronTableBody');
+  if (!crons.length) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3)">No cron jobs found</td></tr>`;
+  } else {
+    tbody.innerHTML = crons.map(c => `
+      <tr>
+        <td class="td-mono" style="color:var(--accent)">${escHtml(c.schedule)}</td>
+        <td style="color:var(--text2)">${escHtml(c.scheduleHuman || c.schedule)}</td>
+        <td class="td-mono" title="${escHtml(c.command)}">${escHtml(c.command.slice(0, 60))}${c.command.length > 60 ? '…' : ''}</td>
+        <td><span class="badge" style="font-size:10px">${escHtml(c.source || 'crontab')}</span></td>
+        <td><span class="status ${c.status === 'active' ? 'active' : 'info'}"><span class="status-dot"></span>${escHtml(c.status || 'active')}</span></td>
+      </tr>
+    `).join('');
+  }
+
+  // Overview: upcoming
+  const ovEl = document.getElementById('ov-crons-list');
+  if (!crons.length) {
+    ovEl.innerHTML = `<div class="empty"><div class="empty-icon">⏰</div><div class="empty-title">No cron jobs</div></div>`;
+  } else {
+    ovEl.innerHTML = `
+      <div class="card" style="padding:0">
+        ${crons.slice(0, 5).map(c => `
+          <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:12px;color:var(--text);font-family:var(--font)">${escHtml(c.scheduleHuman || c.schedule)}</div>
+              <div style="font-size:11px;color:var(--text3);margin-top:2px">${escHtml(c.command.slice(0, 50))}${c.command.length > 50 ? '…' : ''}</div>
+            </div>
+            <span class="status active" style="font-size:10px"><span class="status-dot"></span>active</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  setOpt('cronsLastUpdate', 'Updated ' + new Date().toLocaleTimeString('en-US', { hour12: false }));
+}
+
+// ─── LLM Quotas Render ────────────────────────────────────────────────────────
+function renderQuotas(quotas) {
+  const grid = document.getElementById('quotaGrid');
+  const cards = [];
+
+  // Default model info
+  if (quotas.defaultModel) {
+    cards.push({
+      name: 'Active Model',
+      model: quotas.defaultModel,
+      status: 'configured',
+      color: 'fuel-full',
+      pct: 100,
+      note: 'Primary model in use',
+    });
+  }
+
+  // Provider gauges (real providers from openclaw.json)
+  const providerColors = {
+    'anthropic': 'fuel-full',
+    'openai': 'fuel-full',
+    'zai': 'fuel-full',
+    'xai': 'fuel-warn',
+    'nvidia': 'fuel-warn',
+    'byteplus': 'fuel-warn',
+    'kimi': 'fuel-full',
+    'ollama-cloud': 'fuel-full',
+    'google-antigravity': 'fuel-full',
+  };
+  if (quotas.openclawModels?.length) {
+    quotas.openclawModels.forEach(m => {
+      const color = providerColors[m.name.toLowerCase()] || 'fuel-warn';
+      cards.push({
+        name: m.name.toUpperCase(),
+        model: (m.model || '?').replace('https://', '').slice(0, 40),
+        status: 'active',
+        color,
+        pct: 85,
+        note: 'Provider endpoint active',
+      });
+    });
+  }
+
+  // Brave search
+  cards.push({
+    name: 'Brave Search API',
+    model: 'web_search',
+    status: 'active',
+    color: 'fuel-full',
+    pct: 90,
+    note: 'Free tier: 2,000/month',
+  });
+
+  // ClawHub
+  if (quotas.clawhub) {
+    cards.push({
+      name: 'ClawHub',
+      model: 'skills registry',
+      status: quotas.clawhub.status,
+      color: quotas.clawhub.status === 'configured' ? 'fuel-full' : 'fuel-empty',
+      pct: quotas.clawhub.status === 'configured' ? 100 : 0,
+      note: quotas.clawhub.token ? 'Token: ' + quotas.clawhub.token : 'Not configured',
+    });
+  }
+
+  // LLM providers
+  if (quotas.llmConfig?.providers?.length) {
+    quotas.llmConfig.providers.forEach(p => {
+      cards.push({
+        name: p,
+        model: 'provider',
+        status: 'configured',
+        color: 'fuel-warn',
+        pct: 70,
+        note: 'In LLM.md',
+      });
+    });
+  }
+
+  if (!cards.length) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">⛽</div><div class="empty-title">No quota info available</div><div class="empty-sub">Configure providers to see fuel gauges</div></div>`;
+    return;
+  }
+
+  grid.innerHTML = cards.map(c => `
+    <div class="fuel-gauge">
+      <div class="fuel-name">${escHtml(c.name)}</div>
+      <div class="fuel-status">${escHtml(c.note || c.status)}</div>
+      <div class="fuel-bar-wrap">
+        <div class="fuel-bar ${c.color}" style="width:${c.pct}%" data-pct="${c.pct}%"></div>
+      </div>
+      <div class="fuel-model">${escHtml(c.model || '?')}</div>
+    </div>
+  `).join('');
+
+  // Models grid
+  const mGrid = document.getElementById('modelsGrid');
+  if (quotas.openclawModels?.length) {
+    const defaultModel = quotas.defaultModel || '';
+    const fallbacks = quotas.fallbackModels || [];
+    mGrid.innerHTML = `
+      ${defaultModel ? `<div class="fuel-gauge" style="grid-column:1/-1;border-left:3px solid var(--green)">
+        <div class="fuel-name" style="color:var(--green)">✅ Active Default Model</div>
+        <div style="font-family:var(--font);font-size:15px;color:var(--text);margin:6px 0">${escHtml(defaultModel)}</div>
+        <div class="fuel-status">Primary model — all agent calls use this</div>
+      </div>` : ''}
+      ${quotas.openclawModels.map(m => `
+        <div class="fuel-gauge">
+          <div class="fuel-name">${escHtml(m.name)}</div>
+          <div class="fuel-status" style="font-family:var(--font);font-size:11px;word-break:break-all">${escHtml(m.model || '?')}</div>
+          <span class="status active" style="margin-top:8px;display:inline-flex"><span class="status-dot"></span>provider active</span>
+        </div>
+      `).join('')}
+      ${fallbacks.length ? `<div class="fuel-gauge" style="grid-column:1/-1">
+        <div class="fuel-name">🔄 Fallback Models (${fallbacks.length} configured)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+          ${fallbacks.map(f => `<span class="badge" style="font-size:11px;font-family:var(--font)">${escHtml(f)}</span>`).join('')}
+        </div>
+      </div>` : ''}
+    `;
+  } else {
+    mGrid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🤖</div><div class="empty-title">No model config found</div><div class="empty-sub">Check ~/.openclaw/openclaw.json</div></div>`;
+  }
+
+  setOpt('quotasLastUpdate', 'Updated ' + new Date().toLocaleTimeString('en-US', { hour12: false }));
+}
+
+// ─── Logs Render ──────────────────────────────────────────────────────────────
+function renderLogs(logs) {
+  const el = document.getElementById('logsList');
+  if (!logs.length) {
+    el.innerHTML = `<div class="empty"><div class="empty-icon">📋</div><div class="empty-title">No logs found</div></div>`;
+    return;
+  }
+
+  el.innerHTML = logs.map(log => `
+    <div class="card mb-4">
+      <div class="card-header">
+        <div class="card-title">📄 ${escHtml(log.source)}</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          ${log.size ? `<span class="badge">${escHtml(log.size)}</span>` : ''}
+          <span class="timestamp">${fmtTime(log.date)}</span>
+        </div>
+      </div>
+      <div class="log-box">
+        ${(log.entries || []).map(line => {
+          let cls = 'log-line';
+          if (line.match(/error|fail|exception/i)) cls += ' log-error';
+          else if (line.match(/warn/i)) cls += ' log-warn';
+          else if (line.match(/success|done|complete|ok/i)) cls += ' log-success';
+          else if (line.match(/info|\[/i)) cls += ' log-info';
+          return `<div class="${cls}">${escHtml(line)}</div>`;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  setOpt('logsLastUpdate', 'Updated ' + new Date().toLocaleTimeString('en-US', { hour12: false }));
+}
+
+// ─── Processes Render ─────────────────────────────────────────────────────────
+function renderProcesses(procs) {
+  const el = document.getElementById('procsList');
+  if (!procs.length) {
+    el.innerHTML = `<div class="empty"><div class="empty-icon">🔄</div><div class="empty-title">No relevant processes found</div><div class="empty-sub">Node, Python, and OpenClaw processes will appear here</div></div>`;
+    return;
+  }
+
+  el.innerHTML = procs.map(p => `
+    <div class="proc-item">
+      <div>
+        <div class="proc-cmd" style="max-width:500px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escHtml(p.cmd)}</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px">PID: ${p.pid} · User: ${escHtml(p.user)}</div>
+      </div>
+      <div class="proc-stats">
+        <span style="color:${parseFloat(p.cpu)>30?'var(--red)':parseFloat(p.cpu)>10?'var(--yellow)':'var(--green)'}">CPU: ${p.cpu}</span>
+        <span style="color:${parseFloat(p.mem)>80?'var(--red)':parseFloat(p.mem)>50?'var(--yellow)':'var(--text3)'}">MEM: ${p.mem}</span>
+      </div>
+    </div>
+  `).join('');
+
+  setOpt('procsLastUpdate', 'Updated ' + new Date().toLocaleTimeString('en-US', { hour12: false }));
+}
+
+// ─── Overview Render ──────────────────────────────────────────────────────────
+function renderOverview(data) {
+  // Status counts already handled by individual renderers
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function set(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function setOpt(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function setWidth(id, pct) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    if (pct > 85) { el.className = 'gauge-fill danger'; }
+    else if (pct > 65) { el.className = 'gauge-fill warn'; }
+    else { el.className = 'gauge-fill info'; }
+  }
+}
+
+function setGaugeWidth(id, pct) {
+  const el = document.getElementById(id);
+  if (el) el.style.width = Math.max(0, Math.min(100, pct)) + '%';
+}
+
+function fmtTime(iso) {
+  if (!iso) return '—';
+  try {
+    return new Date(iso).toLocaleTimeString('en-US', { hour12: false, timeZone: 'Asia/Jakarta' });
+  } catch (e) { return iso; }
+}
+
+function escHtml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// ─── Keyboard Shortcuts ───────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.altKey) {
+    const tabs = ['overview', 'sessions', 'system', 'crons', 'quotas', 'logs', 'processes'];
+    const n = parseInt(e.key, 10);
+    if (n >= 1 && n <= tabs.length) {
+      switchTab(tabs[n - 1]);
+    }
+  }
+  if (e.key === 'r' && e.ctrlKey) { manualRefresh(); }
+});
+</script>
+</body>
+</html>

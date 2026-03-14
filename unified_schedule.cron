@@ -1,0 +1,97 @@
+# Unified Autonomous Schedule - 2026-03-09
+# Consolidated from 21 jobs to CLEAN schedule
+# Redundant jobs removed, critical coverage maintained
+
+# ========================================================================
+# 🚨 CRITICAL MONITORING (Every 30 minutes - 2 hours)
+# ========================================================================
+
+# PostBridge API Health Check - Every 30 minutes (HIGHEST PRIORITY)
+# Detect HTTP 500 failures immediately, prevent revenue blockage
+*/30 * * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/postbridge_health.py >> logs/postbridge_health.log 2>&1
+
+# Revenue Gap Detection - Every 2 hours (CRITICAL - ZERO REVENUE ALERT)
+# Detect >12 hour revenue gaps, trigger URGENT alerts immediately
+0 */2 * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/revenue_gap_detector_standalone.py >> logs/revenue_gaps.log 2>&1
+
+# System Heartbeat - Every 6 hours (REGULAR REPORTING)
+# Summary of all systems, alerts, metrics sent to user
+0 */6 * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/heartbeat_run.py >> logs/heartbeat.log 2>&1
+
+# ========================================================================
+# 💰 REVENUE & BUSINESS OPERATIONS (Daily + Weekly)
+# ========================================================================
+
+# Cashflow Monitoring - Daily 09:00 AM (EMERGENCY ALERT IF BLIND > 24h)
+# Force user to track bank balances before making decisions
+0 9 * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/cashflow_monitor.py >> logs/cashflow.log 2>&1
+
+# LYNK Affiliate Dashboard - Every 3 hours (MANUAL CHECK REMINDERS)
+# Remind user to check https://lynk.id/jendralbot for revenue
+0 */3 * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/lynk_monitor.py >> logs/lynk_monitoring.log 2>&1
+
+# ========================================================================
+# 🤖 OpenFang Hands (Intelligent Autonomous Agents)
+# ========================================================================
+
+# LEAD Hand - Daily 10:00 AM (Lead Generation)
+# Discover prospects, enrich, score 0-100, add to database
+0 10 * * * cd /home/openclaw/.openclaw/workspace && bash scripts/run_hand.sh lead >> logs/lead_schedule.log 2>&1
+
+# COLLECTOR Hand - Every 6 hours (Intelligence Gathering)
+# Competitor monitoring, market trends, opportunity scanning
+0 */6 * * * cd /home/openclaw/.openclaw/workspace && bash scripts/run_hand.sh collector >> logs/collector_schedule.log 2>&1
+
+# CLIP Hand - Every 4 hours (Video Processing Queue)
+# YouTube → vertical shorts (9:16) automated pipeline
+0 */4 * * * cd /home/openclaw/.openclaw/workspace && bash scripts/run_hand.sh clip >> logs/clip_schedule.log 2>&1
+
+# ========================================================================
+# 📱 JENDRALBOT Affiliate Engine (Content Generation)
+# ========================================================================
+
+# Morning Workflow - Daily 08:00 WIB (Research + Schedule)
+# Generate and schedule 162 posts (54 TikTok + 54 IG + 54 YouTube)
+0 8 * * * cd /home/openclaw/.openclaw/workspace/autopilot_affiliate_engine && python3 fully_autonomous.py morning >> ~/automation.log 2>&1
+
+# Evening Workflow - Daily 20:00 WIB (Stats + Revenue + Report)
+# Generate daily performance report, estimate LYNK revenue
+0 20 * * * cd /home/openclaw/.openclaw/workspace/autopilot_affiliate_engine && python3 fully_autonomous.py evening >> ~/automation.log 2>&1
+
+# Weekly Content Refresh - Sunday 22:00 WIB
+# Generate fresh content for next 6 days (972 posts total)
+0 22 * * 0 cd /home/openclaw/.openclaw/workspace/autopilot_affiliate_engine && python3 generate_content_fresh.py >> ~/automation.log 2>&1
+
+# Queue Update + Upload - Sunday 22:30 WIB
+# Refresh timestamps and upload to PostBridge/Instagram
+30 22 * * 0 cd /home/openclaw/.openclaw/workspace/autopilot_affiliate_engine && bash -c "python3 update_queue_timestamps.py && python3 auto_postbridge_robust_v2.py" >> ~/automation.log 2>&1
+
+# ========================================================================
+# 🗂️ SYSTEM MAINTENANCE (Automated Cleanup)
+# ========================================================================
+
+# Memory Compaction - Daily 03:00 AM
+# Cleanup memory files, remove duplicates, extract insights
+0 3 * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/memory_compaction.py >> logs/compaction.log 2>&1
+
+# Disk Space Monitor - Every 6 hours (WARNING if >90%, CRITICAL if >95%)
+# Check disk usage, trigger URGENT alerts if critical
+0 */6 * * * cd /home/openclaw/.openclaw/workspace && python3 scripts/disk_cleanup_automation.py --dry-run >> logs/disk_monitor.log 2>&1
+
+# ========================================================================
+# SUMMARY
+# ========================================================================
+# Total Jobs: 15 (down from 21 - removed 6 redundant)
+# Coverage:
+#   - Revenue: Every 30 min (API), 2 hours (gap), 3 hours (LYNK), daily (cashflow)
+#   - System Health: Every 30 min (PostBridge), 6 hours (heartbeat, disk)
+#   - Business Ops: Daily 8 AM (JENDRALBOT), 10 AM (LEAD), 8 PM (report)
+#   - Content: 162 posts/day (JENDRALBOT), weekly refresh (972 posts)
+#   - Intelligence: Every 6 hours (COLLECTOR), daily 10 AM (LEAD)
+#   - Video: Every 4 hours (CLIP)
+#
+# Redundant jobs removed:
+#   - [x] Duplicate revenue gap checks (3 → 1)
+#   - [x] Duplicate heartbeat runs (2 → 1)
+#   - [x] Legacy daily_schedule.py jobs (replaced by JENDRALBOT)
+# ========================================================================

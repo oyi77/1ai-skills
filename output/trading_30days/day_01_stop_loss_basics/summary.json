@@ -1,0 +1,28 @@
+{
+  "day": 1,
+  "theme": "Stop Loss Basics",
+  "date": "2026-03-15",
+  "posts": [
+    {
+      "post_id": "386b3d20-eac7-4010-899c-699a526466c9",
+      "time": "2026-03-15T00:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "2b2d6e23-8c70-462b-8fdd-386b4842a27a",
+      "time": "2026-03-15T05:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "bd805123-f7e6-452c-8129-45dba23e7fb8",
+      "time": "2026-03-15T08:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "3385d36c-440e-417d-ad6a-0cead81d8d08",
+      "time": "2026-03-15T11:00:00.000Z",
+      "status": "scheduled"
+    }
+  ],
+  "generated_at": "2026-03-14T14:53:42.210836"
+}

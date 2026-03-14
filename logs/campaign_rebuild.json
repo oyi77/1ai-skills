@@ -1,0 +1,316 @@
+{
+  "started_at": "2026-03-12T19:05:52.128094+07:00",
+  "posts_created": [
+    {
+      "product": "JobMagnet Ai",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-13T06:00:00+07:00",
+      "post_id": "7f03ddf1-8c59-4b9b-9f5e-73e136a781cf",
+      "media_id": "56d7742a-2bba-4f2d-8ce6-bd74a2b173c9"
+    },
+    {
+      "product": "AI Creative & Performance Ad Engine",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-13T12:00:00+07:00",
+      "post_id": "09ded09c-733f-43d2-bcab-cc2e795bd198",
+      "media_id": "4cb0d712-d227-4677-8ef8-764d7cc98c47"
+    },
+    {
+      "product": "Food Menu AI Studio",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-13T18:00:00+07:00",
+      "post_id": "de79928f-722c-48f9-92ab-1261cc200f33",
+      "media_id": "e68e2e7a-3636-4293-a479-35e253853ef5"
+    },
+    {
+      "product": "Studio Marketplace Pro (SellPix AI)",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-14T06:00:00+07:00",
+      "post_id": "86eac136-fb31-41e6-a863-eb20460811e5",
+      "media_id": "6d9df260-bb06-4124-8f2a-69a1f8a649e9"
+    },
+    {
+      "product": "AI Creative Tools",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-14T12:00:00+07:00",
+      "post_id": "3f797ac0-d65a-436d-9d05-4ab10bf19518",
+      "media_id": "0210516b-e27d-4bbd-aa91-f254d596232a"
+    },
+    {
+      "product": "Guru Pintar AI",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-14T18:00:00+07:00",
+      "post_id": "ca310a4f-3032-4fbe-ad4a-048d87ecb339",
+      "media_id": "84f95c1d-5403-430b-a662-adf5ac510227"
+    },
+    {
+      "product": "Mesin Cetak Bisnis Kulinermu",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-15T06:00:00+07:00",
+      "post_id": "2f917f50-efdd-4a88-b80e-8009f27b91af",
+      "media_id": "ccaa2aef-3edd-40b2-90fd-4c394404acc1"
+    },
+    {
+      "product": "Belanja Tetap Jalan Tapi Duit Balik Lagi",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-15T12:00:00+07:00",
+      "post_id": "f38312b2-7ee4-4870-9226-25f698c5e130",
+      "media_id": "b5a66e22-e838-4556-87a8-3a5594cd497b"
+    },
+    {
+      "product": "Kelas Affiliate Pesugihan TikTok",
+      "variation": 1,
+      "platform": "instagram",
+      "account_ids": [
+        48186
+      ],
+      "scheduled_at": "2026-03-15T18:00:00+07:00",
+      "post_id": "d3322a09-c4e5-4730-9aa7-6f14f3fd1879",
+      "media_id": "6cd5a3f1-c4ce-49d3-a3a1-76f139bde685"
+    },
+    {
+      "product": "JobMagnet Ai",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48372
+      ],
+      "scheduled_at": "2026-03-16T06:00:00+07:00",
+      "post_id": "24574251-0250-4ab9-a82e-ca3b231fd6e0",
+      "media_id": "56d7742a-2bba-4f2d-8ce6-bd74a2b173c9"
+    },
+    {
+      "product": "AI Creative & Performance Ad Engine",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48338
+      ],
+      "scheduled_at": "2026-03-16T12:00:00+07:00",
+      "post_id": "3a0a4611-7dbc-4997-aeda-23a40923bf01",
+      "media_id": "4cb0d712-d227-4677-8ef8-764d7cc98c47"
+    },
+    {
+      "product": "Food Menu AI Studio",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48337
+      ],
+      "scheduled_at": "2026-03-16T18:00:00+07:00",
+      "post_id": "497ec356-5a99-4715-8183-8a82d72a6e33",
+      "media_id": "e68e2e7a-3636-4293-a479-35e253853ef5"
+    },
+    {
+      "product": "Studio Marketplace Pro (SellPix AI)",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48336
+      ],
+      "scheduled_at": "2026-03-17T06:00:00+07:00",
+      "post_id": "33d5cc3f-717d-4b99-bc4a-e73fe6e752eb",
+      "media_id": "6d9df260-bb06-4124-8f2a-69a1f8a649e9"
+    },
+    {
+      "product": "AI Creative Tools",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48335
+      ],
+      "scheduled_at": "2026-03-17T12:00:00+07:00",
+      "post_id": "f167ec29-329e-4d8b-9a03-c0489d0c9297",
+      "media_id": "0210516b-e27d-4bbd-aa91-f254d596232a"
+    },
+    {
+      "product": "Guru Pintar AI",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48374
+      ],
+      "scheduled_at": "2026-03-17T18:00:00+07:00",
+      "post_id": "2a8edb8b-dcc5-4bda-81dc-38461198f989",
+      "media_id": "84f95c1d-5403-430b-a662-adf5ac510227"
+    },
+    {
+      "product": "Mesin Cetak Bisnis Kulinermu",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48373
+      ],
+      "scheduled_at": "2026-03-18T06:00:00+07:00",
+      "post_id": "b091b107-68f8-416f-98a1-810d4512ce50",
+      "media_id": "ccaa2aef-3edd-40b2-90fd-4c394404acc1"
+    },
+    {
+      "product": "Belanja Tetap Jalan Tapi Duit Balik Lagi",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48372
+      ],
+      "scheduled_at": "2026-03-18T12:00:00+07:00",
+      "post_id": "b935c7e5-e7e6-4fc5-9229-c55eb8373dd8",
+      "media_id": "b5a66e22-e838-4556-87a8-3a5594cd497b"
+    },
+    {
+      "product": "Kelas Affiliate Pesugihan TikTok",
+      "variation": 2,
+      "platform": "tiktok",
+      "account_ids": [
+        48338
+      ],
+      "scheduled_at": "2026-03-18T18:00:00+07:00",
+      "post_id": "00d74be3-0234-4e3e-8cff-dc4954c58da1",
+      "media_id": "6cd5a3f1-c4ce-49d3-a3a1-76f139bde685"
+    },
+    {
+      "product": "JobMagnet Ai",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48176
+      ],
+      "scheduled_at": "2026-03-19T06:00:00+07:00",
+      "post_id": "75571055-0ba6-44e0-b594-b9c49d971d81",
+      "media_id": "56d7742a-2bba-4f2d-8ce6-bd74a2b173c9"
+    },
+    {
+      "product": "AI Creative & Performance Ad Engine",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48175
+      ],
+      "scheduled_at": "2026-03-19T12:00:00+07:00",
+      "post_id": "4dd3d14b-191d-4f8b-a865-e93b5adc6ef3",
+      "media_id": "4cb0d712-d227-4677-8ef8-764d7cc98c47"
+    },
+    {
+      "product": "Food Menu AI Studio",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48178
+      ],
+      "scheduled_at": "2026-03-19T18:00:00+07:00",
+      "post_id": "34188591-9f78-459e-9954-a371804e2493",
+      "media_id": "e68e2e7a-3636-4293-a479-35e253853ef5"
+    },
+    {
+      "product": "Studio Marketplace Pro (SellPix AI)",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48177
+      ],
+      "scheduled_at": "2026-03-13T06:00:00+07:00",
+      "post_id": "29ea92ae-c584-40f2-9957-4b9f58ef3cd4",
+      "media_id": "6d9df260-bb06-4124-8f2a-69a1f8a649e9"
+    },
+    {
+      "product": "AI Creative Tools",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48176
+      ],
+      "scheduled_at": "2026-03-13T12:00:00+07:00",
+      "post_id": "173f6681-df69-46e4-a4c7-b11f5a915989",
+      "media_id": "0210516b-e27d-4bbd-aa91-f254d596232a"
+    },
+    {
+      "product": "Guru Pintar AI",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48175
+      ],
+      "scheduled_at": "2026-03-13T18:00:00+07:00",
+      "post_id": "c4a5493b-31fa-4de0-88ea-24200b4bb566",
+      "media_id": "84f95c1d-5403-430b-a662-adf5ac510227"
+    },
+    {
+      "product": "Mesin Cetak Bisnis Kulinermu",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48178
+      ],
+      "scheduled_at": "2026-03-14T06:00:00+07:00",
+      "post_id": "1509c973-3f74-4d13-b925-9feeb34edb72",
+      "media_id": "ccaa2aef-3edd-40b2-90fd-4c394404acc1"
+    },
+    {
+      "product": "Belanja Tetap Jalan Tapi Duit Balik Lagi",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48177
+      ],
+      "scheduled_at": "2026-03-14T12:00:00+07:00",
+      "post_id": "685c9dd6-9490-49ca-8351-d91a2850f826",
+      "media_id": "b5a66e22-e838-4556-87a8-3a5594cd497b"
+    },
+    {
+      "product": "Kelas Affiliate Pesugihan TikTok",
+      "variation": 3,
+      "platform": "facebook",
+      "account_ids": [
+        48176
+      ],
+      "scheduled_at": "2026-03-14T18:00:00+07:00",
+      "post_id": "dd259f60-9e6a-4411-a71b-faf43d01c40e",
+      "media_id": "6cd5a3f1-c4ce-49d3-a3a1-76f139bde685"
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total_posts_attempted": 27,
+    "posts_created": 27,
+    "errors": 0,
+    "images_uploaded": 9,
+    "platforms": {
+      "instagram": 9,
+      "tiktok": 9,
+      "facebook": 9
+    },
+    "schedule_range": "2026-03-13 to 2026-03-19",
+    "completed_at": "2026-03-12T19:06:36.696454+07:00"
+  }
+}

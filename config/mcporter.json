@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "lifi": {
+      "baseUrl": "https://mcp.li.quest/mcp"
+    },
+    "coingecko": {
+      "baseUrl": "https://mcp.api.coingecko.com/mcp"
+    }
+  },
+  "imports": []
+}

@@ -41,11 +41,13 @@
 - [ ] Check Ostium positions if live trading active
 - [ ] XAUUSD price alerts (Asia session breakout)
 - [ ] Paper trading P&L summary
+- ⚠️ **BLOCKER**: scripts/trading_monitor.py not implemented yet
 
 ### Cashflow Monitors (Daily 09:00, 18:00)
 - [ ] Revenue vs burn rate check
 - [ ] Outstanding invoices follow-up
 - [ ] Expense anomaly alerts
+- ⚠️ **BLOCKER**: scripts/cashflow_monitor.py not implemented yet (HIGH PRIORITY)
 
 ### Opportunity Monitors (Weekly)
 - [ ] New client lead scoring
@@ -87,4 +89,12 @@ Execute → Review → Extract Pattern → Update Memory → Apply
 
 ---
 
-*Next: Setup cron jobs and knowledge directories*
+**Status March 4, 2026:**
+- ✅ Daily self-review system active
+- ✅ Metrics tracking functional
+- ⚠️ Vector DB sync has recurring hang issues (documented)
+- ❌ Missing monitoring scripts: trading_monitor.py, cashflow_monitor.py (HIGH PRIORITY)
+
+**Next: Create cashflow_monitor.py and implement timeout handling for vector_db_sync.py**
+
+*Next review: 2026-03-05 23:00*

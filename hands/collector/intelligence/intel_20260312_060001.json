@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-03-12T06:00:01.313967",
+  "session_id": "20260312_060001",
+  "collector": "BerkahKarya Intelligence Collector",
+  "total_results": 4,
+  "intelligence": [
+    {
+      "source": "web_search",
+      "query": "Indonesian AI content tools",
+      "timestamp": "2026-03-12T06:00:01.311095",
+      "results": []
+    },
+    {
+      "source": "web_search",
+      "query": "Social media automation Indonesia",
+      "timestamp": "2026-03-12T06:00:01.311319",
+      "results": []
+    },
+    {
+      "source": "web_search",
+      "query": "TikTok content generation tools",
+      "timestamp": "2026-03-12T06:00:01.311535",
+      "results": []
+    },
+    {
+      "source": "web_search",
+      "query": "Digital marketing trends 2026",
+      "timestamp": "2026-03-12T06:00:01.311845",
+      "results": [
+        {
+          "title": "AI Content Generation Dominates 2026 Marketing",
+          "url": "https://example.com/ai-trends-2026",
+          "snippet": "Industry report shows 67% of marketers plan to adopt AI content tools this year.",
+          "relevance": "high",
+          "type": "trend"
+        },
+        {
+          "title": "TikTok Automation Goes Mainstream",
+          "url": "https://example.com/tiktok-automation-mainstream",
+          "snippet": "Automation tools for TikTok content creation see unprecedented adoption rates.",
+          "relevance": "high",
+          "type": "trend"
+        }
+      ]
+    },
+    {
+      "source": "web_search",
+      "query": "AI automation adoption",
+      "timestamp": "2026-03-12T06:00:01.312043",
+      "results": []
+    },
+    {
+      "source": "web_search",
+      "query": "Content creator tools market",
+      "timestamp": "2026-03-12T06:00:01.312615",
+      "results": []
+    },
+    {
+      "source": "web_search",
+      "query": "Affiliate marketing opportunities Indonesia",
+      "timestamp": "2026-03-12T06:00:01.313083",
+      "results": []
+    },
+    {
+      "source": "web_search",
+      "query": "Viral content trends",
+      "timestamp": "2026-03-12T06:00:01.313445",
+      "results": [
+        {
+          "title": "AI Content Generation Dominates 2026 Marketing",
+          "url": "https://example.com/ai-trends-2026",
+          "snippet": "Industry report shows 67% of marketers plan to adopt AI content tools this year.",
+          "relevance": "high",
+          "type": "trend"
+        },
+        {
+          "title": "TikTok Automation Goes Mainstream",
+          "url": "https://example.com/tiktok-automation-mainstream",
+          "snippet": "Automation tools for TikTok content creation see unprecedented adoption rates.",
+          "relevance": "high",
+          "type": "trend"
+        }
+      ]
+    },
+    {
+      "source": "web_search",
+      "query": "Best selling digital products",
+      "timestamp": "2026-03-12T06:00:01.313791",
+      "results": []
+    }
+  ]
+}

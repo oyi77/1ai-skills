@@ -1,0 +1,38 @@
+{
+  "date": "2026-03-05",
+  "cashflow": {
+    "date": "2026-03-05",
+    "revenue": {
+      "jendralbot": 0,
+      "ai_consulting": 0,
+      "marketplace": 0,
+      "other": 0
+    },
+    "expenses": {
+      "ads": 0,
+      "operations": 0,
+      "tools": 0
+    },
+    "total_revenue": 0,
+    "total_expenses": 0,
+    "net": 0
+  },
+  "runway_days": 15.0,
+  "cash_reserve": 75000000,
+  "monthly_burn": 150000000,
+  "survival_date": 1773946075.768187,
+  "alerts": [
+    {
+      "level": "WARNING",
+      "message": "\u26a1 RUNWAY TIGHT: 15.0 days remaining",
+      "action": "PRIORITY: Execute marketing campaigns aggressively"
+    }
+  ],
+  "priority_actions": [
+    "\ud83d\ude80 LAUNCH JENDRALBOT TODAY - execute LAUNCH_CHECKLIST.md",
+    "\ud83d\udcf1 Post all 6 scheduled posts across platforms",
+    "\ud83c\udfaf Monitor for viral indicators hourly",
+    "\ud83d\udcb0 Track all affiliate clicks and conversions",
+    "\u26a1 Prepare next week's content batch"
+  ]
+}

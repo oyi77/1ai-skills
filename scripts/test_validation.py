@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""
+Test Content Validation - Single Product Review
+Generate 1 sample → Show → Human review → Approval/Reject
+"""
+
+from pathlib import Path
+
+workspace = Path.home() / ".openclaw" / "workspace"
+
+print("=" * 80)
+print("📋 CONTENT VALIDATION - TEST 1 PRODUCT")
+print("=" * 80)
+print()
+
+# Single sample to review
+product_key = "guru_pintar_ai"
+content_type = "faceless_info_benefit"
+variant = 1
+
+print(f"Product: {product_key}")
+print(f"Type: {content_type}")
+print(f"Variant: v{variant}")
+print()
+print("=" * 80)
+print("📄 SAMPLE CONTENT")
+print("=" * 80)
+print()
+
+# Read and display the sample file
+sample_file = workspace / "content" / "samples" / f"{product_key}_{content_type}_v{variant}.txt"
+
+with open(sample_file, "r") as f:
+    sample_content = f.read()
+    print(sample_content)
+
+print()
+print("=" * 80)
+print("🎯 QUALITY CHECKLIST - MANUAL REVIEW")
+print("=" * 80)
+print()
+print("Silakan review quality checklist di atas:")
+print()
+print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+print("✅ Image Quality   → Apakah GAMBAR/VIDEO clear? Tidak blur/low quality?")
+print("✅ Text Overlay    → Apakah TEKS visible & readable? Tidak terlalu kecil/")
+print("  tidak terlalu gelap?")
+print("✅ Hook Strength   → Apakah HOOK kuat di 3 detik PERHATI?")
+print("  (🔥 STOP! Konten manual makan waktu 4 jam/post!)")
+print("✅ CTA Clarity     → Apakah CTA jelas di AKHIR video?")
+print("  (Start dengan GRATIS, level-up ke https://lnkd.in/ai-content-pro)")
+print("✅ Brand Voice     → Apakah TONE sesuai Jendralbot? Natural, friendly,")
+print("  professional? Bukan robot voice?")
+print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+print()
+
+print()
+print("=" * 80)
+print("📝 REVIEW INSTRUCTIONS")
+print("=" * 80)
+print()
+print("Setelah review quality checklist, respon:")
+print()
+print("📢 KETIK salah satu opsi:")
+print()
+print("  'ACC'         ✅ → Sample ini LAYAK")
+print("                     → Bisa di-scale ke 50-100 pieces")
+print()
+print("  'EDIT [instruksi]'  🔄 → Sample perlu revisi")
+print("                     → Beri instruksi spesifik untuk perbaikan")
+print()
+print("  'SKIP'        ⏭️  → Skip sample ini")
+print("                     → Biarkan pending, bisa review lain kali")
+print()
+print("  'REJECT'      ❌ → Sample ini TIDAK LAYAK")
+print("                     → Jangan di-scale, generate ulang dari awal")
+print()
+print()
+print("=" * 80)
+print("📋 CONTOH RESPON:")
+print("=" * 80)
+print()
+print("✅ LAYAK:")
+print("  'ACC'")
+print("  → Result: Sample ini dianggap APPROVED")
+print("  → Next: Generate batch 50-100 pieces")
+print()
+print("🔄 PERLU REVISI:")
+print("  'EDIT Text overlay terlalu kecil, buat lebih besar & putih'")
+print("  'EDIT Hook kurang menarik, ganti dengan angka yang lebih shocking'")
+print("  'EDIT CTA perlu lebih spesifik, tambahkan benefit dalam 3 kata'")
+print("  → Result: Feedback disimpan, akan di-regenerate sesuai instruksi")
+print()
+print("⏭️  SKIP:")
+print("  'SKIP'")
+print("  → Result: Sample tetap pending, bisa review lain kali")
+print()
+print("❌ TIDAK LAYAK:")
+print("  'REJECT'")
+print("  → Result: Sample di-reject, jangan scale, generate ulang dari awal")
+print()
+print()
+print("=" * 80)
+print("🚀 NEXT STEPS (SETELAH ACC)")
+print("=" * 80)
+print()
+print("Setelah kamu memberi approval 'ACC', jalankan:")
+print()
+print(f"  python3 scripts/content_validator.py --batch {product_key} {content_type} 50")
+print()
+print(" ini akan:")
+print("  ✅ Load approved sample")
+print("  ✅ Generate 50 variations dari template ini")
+print("  ✅ Queue semua 50 pieces untuk posting via PostBridge")
+print()
+print()
+print("=" * 80)
+print()
+print("📝 SAATNYA REVIEW!")
+print("Silakan baca sample di atas, cek quality checklist,")
+print("lalu kirim respon (ACC/EDIT/SKIP/REJECT)")
+print()
+print("=" * 80)

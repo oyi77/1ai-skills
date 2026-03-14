@@ -1,0 +1,49 @@
+{
+  "multi_agent": {
+    "default_mode": "parallel",
+    "parallel_threshold": 2,
+    "max_parallel_agents": 20,
+    "crisis_mode": true,
+    "force_parallelization": true,
+    "auto_detect_parallelizable": true,
+    "built-in_tools": {
+      "sessions_spawn": "always_available",
+      "sessions_send": "always_available",
+      "subagents": "always_available",
+      "sessions_list": "always_available",
+      "sessions_history": "always_available"
+    }
+  },
+  "performance": {
+    "minimum_speedup": "2x",
+    "target_speedup": "5x",
+    "excellence_speedup": "10x",
+    "crisis_mode": "no_compromise"
+  },
+  "data_policy": {
+    "real_data_only": true,
+    "no_simulation": true,
+    "user_verified": true
+  },
+  "crisis_mode": {
+    "active": true,
+    "context": "BerhasilKarya on brink of bankruptcy",
+    "priority": "MAXIMAL output",
+    "principles": [
+      "MAXIMIZE parallelization",
+      "MAXIMIZE skill usage",
+      "MAXIMIZE output",
+      "MAXIMIZE revenue",
+      "ZERO compromise"
+    ]
+  },
+  "learning": {
+    "2026-03-06-multi-agent": {
+      "lesson": "ALWAYS check for parallelization first",
+      "what_happened": "Made single sequential agent despite having multi-agent capability",
+      "consequence": "41 min execution, 30 posts, low revenue",
+      "fix": "Created 12 parallel agents, 4x faster, 4x more output",
+      "applied_globally": true
+    }
+  }
+}

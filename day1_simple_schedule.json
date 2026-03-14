@@ -1,0 +1,78 @@
+{
+  "date": "2026-03-07",
+  "phase": "Foundation Day 1",
+  "posts": [
+    {
+      "time": "00:00",
+      "type": "sales",
+      "product": "guru_pintar_ai",
+      "caption": "guru_pintar_ai post at 00:00"
+    },
+    {
+      "time": "02:00",
+      "type": "education",
+      "product": "belanja_duit_balik",
+      "caption": "belanja_duit_balik post at 02:00"
+    },
+    {
+      "time": "04:00",
+      "type": "sales",
+      "product": "guru_pintar_ai",
+      "caption": "guru_pintar_ai post at 04:00"
+    },
+    {
+      "time": "06:00",
+      "type": "education",
+      "product": "belanja_duit_balik",
+      "caption": "belanja_duit_balik post at 06:00"
+    },
+    {
+      "time": "08:00",
+      "type": "sales",
+      "product": "guru_pintar_ai",
+      "caption": "guru_pintar_ai post at 08:00"
+    },
+    {
+      "time": "10:00",
+      "type": "education",
+      "product": "belanja_duit_balik",
+      "caption": "belanja_duit_balik post at 10:00"
+    },
+    {
+      "time": "12:00",
+      "type": "sales",
+      "product": "guru_pintar_ai",
+      "caption": "guru_pintar_ai post at 12:00"
+    },
+    {
+      "time": "14:00",
+      "type": "education",
+      "product": "belanja_duit_balik",
+      "caption": "belanja_duit_balik post at 14:00"
+    },
+    {
+      "time": "16:00",
+      "type": "sales",
+      "product": "guru_pintar_ai",
+      "caption": "guru_pintar_ai post at 16:00"
+    },
+    {
+      "time": "18:00",
+      "type": "education",
+      "product": "belanja_duit_balik",
+      "caption": "belanja_duit_balik post at 18:00"
+    },
+    {
+      "time": "20:00",
+      "type": "sales",
+      "product": "guru_pintar_ai",
+      "caption": "guru_pintar_ai post at 20:00"
+    },
+    {
+      "time": "22:00",
+      "type": "education",
+      "product": "belanja_duit_balik",
+      "caption": "belanja_duit_balik post at 22:00"
+    }
+  ]
+}

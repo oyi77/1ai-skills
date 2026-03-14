@@ -1,0 +1,78 @@
+{
+  "last_updated": "2026-03-12T18:00:00+07:00",
+  "strategy": "Asia 7-Candle Breakout XAUUSD",
+  "session_status": {
+    "date": "2026-03-12",
+    "session": "After-hours",
+    "session_hours": "07:00-15:00 UTC+7 (completed)",
+    "current_local_time": "18:00 UTC+7",
+    "hours_since_session_end": 3.0,
+    "entry_window_status": "14:50-15:05 UTC+7 - CLOSED (3 hours ago)",
+    "session_complete": true,
+    "entry_decision": "NO ENTRY (deprioritized - crisis mode)"
+  },
+  "positions": {
+    "open_positions": 0,
+    "positions": [],
+    "pending_orders": 0,
+    "stop_losses": 0,
+    "take_profits": 0
+  },
+  "paper_trading": {
+    "status": "NOT_STARTED",
+    "broker": "Ostium (not configured)",
+    "account_balance": 0,
+    "account_currency": "USD",
+    "activated": false
+  },
+  "price_alerts": {
+    "active_alerts": 0,
+    "alerts": []
+  },
+  "monitor": {
+    "last_check": "2026-03-12T18:00:00+07:00",
+    "check_type": "scheduled_monitor",
+    "checks_today": 4,
+    "check_times": ["09:00", "12:00", "15:05", "18:00"],
+    "system_status": "deprioritized - crisis mode active",
+    "priority": "low",
+    "reason": "Crisis mode + PostBridge DOWN 30+h + Revenue gap EMERGENCY ~51h + Telegram broken 8 failures"
+  },
+  "daily_summary": {
+    "date": "2026-03-12",
+    "trades_taken": 0,
+    "trades_skipped": 1,
+    "paper_trading_active": false,
+    "revenue_generated": "0 USD",
+    "sessions_monitored": 1,
+    "check_times": ["09:00", "12:00", "15:05", "18:00"],
+    "total_skip_count": 14,
+    "skip_accuracy": "100%",
+    "skip_reason": "Crisis mode + no paper trading + PostBridge DOWN + 0 revenue path + Telegram broken"
+  },
+  "crisis_mode_tracking": {
+    "mode_active": true,
+    "start_date": "2026-03-09",
+    "days_in_crisis": 4,
+    "revenue_gap_hours": 51,
+    "trading_checks_in_crisis": 14,
+    "trading_checks_correct": 14,
+    "skip_accuracy": "100%"
+  },
+  "next_session": {
+    "date": "2026-03-13",
+    "session": "Asia",
+    "entry_window": "14:50-15:05 UTC+7",
+    "time_until_entry": "~21 hours",
+    "ready_for_entry": false,
+    "status": "Deprioritized (crisis mode unless resolved by user action)"
+  },
+  "notes": [
+    "March 12 18:00: After-hours check (Asia session ended 3h ago)",
+    "Today's checks: 4 (09:00, 12:00, 15:05, 18:00) — all correctly SKIPPED",
+    "Consistency: Day 4 of crisis mode, 14/14 trading checks correctly skipped (100%)",
+    "No regret: Paper trading = 0 revenue, correct deprioritization all day",
+    "Crisis worsening: PostBridge DOWN 30+h, Telegram broken 17+h (8 failed alerts), revenue gap ~51h EMERGENCY",
+    "LYNK dashboard: NEVER checked 73.5h since campaign launch"
+  ]
+}

@@ -37,6 +37,14 @@
       "search": {
         "keywords": ["search", "find", "cari", "lookup", "explore"],
         "priority": "medium"
+      },
+      "n8n-manager": {
+        "keywords": ["n8n", "workflow", "automation", "execute workflow", "trigger", "n8n workflow"],
+        "priority": "high"
+      },
+      "paperclip-monitor": {
+        "keywords": ["paperclip", "task", "issue", "goal", "agent", "BER-", "status", "dashboard", "monitor"],
+        "priority": "high"
       }
     }
   },

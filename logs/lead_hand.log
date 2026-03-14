@@ -1,0 +1,255 @@
+[2026-03-08 23:16:45] [INFO] ======================================================================
+[2026-03-08 23:16:45] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:16:45] [INFO] Time: 2026-03-08 23:16:45
+[2026-03-08 23:16:45] [INFO] ======================================================================
+[2026-03-08 23:17:01] [INFO] ======================================================================
+[2026-03-08 23:17:01] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:17:01] [INFO] Time: 2026-03-08 23:17:01
+[2026-03-08 23:17:01] [INFO] ======================================================================
+[2026-03-08 23:17:01] [INFO]  
+[2026-03-08 23:17:06] [INFO] ======================================================================
+[2026-03-08 23:17:06] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:17:06] [INFO] Time: 2026-03-08 23:17:06
+[2026-03-08 23:17:06] [INFO] ======================================================================
+[2026-03-08 23:17:06] [INFO]  
+[2026-03-08 23:17:14] [INFO] ======================================================================
+[2026-03-08 23:17:14] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:17:14] [INFO] Time: 2026-03-08 23:17:14
+[2026-03-08 23:17:14] [INFO] ======================================================================
+[2026-03-08 23:17:14] [INFO]  
+[2026-03-08 23:17:14] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-08 23:17:14] [INFO]  
+[2026-03-08 23:17:14] [INFO] Existing database: 0 leads
+[2026-03-08 23:17:14] [INFO] Discovering prospects (max 5)...
+[2026-03-08 23:17:14] [INFO] ✅ Discovered 5 prospects
+[2026-03-08 23:17:14] [INFO] Deduplicating 5 prospects against 0 existing...
+[2026-03-08 23:17:14] [INFO] ✅ 5 new prospects (from 5 total)
+[2026-03-08 23:17:14] [INFO] 
+Processing: Digital Nusantara Agency
+[2026-03-08 23:17:14] [INFO]   + Industry match: Digital Marketing
+[2026-03-08 23:17:34] [INFO] ======================================================================
+[2026-03-08 23:17:34] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:17:34] [INFO] Time: 2026-03-08 23:17:34
+[2026-03-08 23:17:34] [INFO] ======================================================================
+[2026-03-08 23:17:34] [INFO]  
+[2026-03-08 23:17:34] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-08 23:17:34] [INFO]  
+[2026-03-08 23:17:34] [INFO] Existing database: 0 leads
+[2026-03-08 23:17:34] [INFO] Discovering prospects (max 5)...
+[2026-03-08 23:17:34] [INFO] ✅ Discovered 5 prospects
+[2026-03-08 23:17:34] [INFO] Deduplicating 5 prospects against 0 existing...
+[2026-03-08 23:17:34] [INFO] ✅ 5 new prospects (from 5 total)
+[2026-03-08 23:17:34] [INFO] 
+Processing: Digital Nusantara Agency
+[2026-03-08 23:17:34] [INFO]   + Industry match: Digital Marketing
+[2026-03-08 23:17:34] [INFO]   Data completeness: 5/8 = 6.2
+[2026-03-08 23:17:34] [INFO]   Final score: 60/100
+[2026-03-08 23:17:34] [INFO] ✅ Qualified (60/100): Digital Nusantara Agency
+[2026-03-08 23:17:34] [INFO] 
+Processing: Indonesian E-Commerce Solutions
+[2026-03-08 23:17:34] [INFO]   + Industry match: Technology
+[2026-03-08 23:17:34] [INFO]   Data completeness: 5/8 = 6.2
+[2026-03-08 23:17:34] [INFO]   Final score: 60/100
+[2026-03-08 23:17:34] [INFO] ✅ Qualified (60/100): Indonesian E-Commerce Solutions
+[2026-03-08 23:17:34] [INFO] 
+Processing: Content Creator Hub
+[2026-03-08 23:17:34] [INFO]   - No industry match: Content Creation
+[2026-03-08 23:17:34] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-08 23:17:34] [INFO]   Final score: 41/100
+[2026-03-08 23:17:34] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-08 23:17:34] [INFO] 
+Processing: AI Tools Indonesia
+[2026-03-08 23:17:34] [INFO]   + Industry match: Technology
+[2026-03-08 23:17:34] [INFO]   + Keyword match: AI tools
+[2026-03-08 23:17:34] [INFO]   Data completeness: 5/8 = 6.2
+[2026-03-08 23:17:34] [INFO]   Final score: 69/100
+[2026-03-08 23:17:34] [INFO] ✅ Qualified (69/100): AI Tools Indonesia
+[2026-03-08 23:17:34] [INFO] 
+Processing: Social Media Automation
+[2026-03-08 23:17:34] [INFO]   + Industry match: Marketing
+[2026-03-08 23:17:34] [INFO]   + Keyword match: automation
+[2026-03-08 23:17:34] [INFO]   + Keyword match: social media
+[2026-03-08 23:17:34] [INFO]   Data completeness: 5/8 = 6.2
+[2026-03-08 23:17:34] [INFO]   Final score: 77/100
+[2026-03-08 23:17:34] [INFO] ✅ Qualified (77/100): Social Media Automation
+[2026-03-08 23:17:34] [INFO]  
+[2026-03-08 23:17:34] [INFO] Qualified leads: 4
+[2026-03-08 23:17:34] [INFO] ✅ CSV exported: /home/openclaw/.openclaw/workspace/hands/lead/exports/leads_20260308_231734.csv
+[2026-03-08 23:17:34] [INFO] ✅ JSON exported: /home/openclaw/.openclaw/workspace/hands/lead/exports/leads_20260308_231734.json
+[2026-03-08 23:17:34] [INFO] ✅ Markdown exported: /home/openclaw/.openclaw/workspace/hands/lead/exports/leads_20260308_231734.md
+[2026-03-08 23:17:34] [INFO] ✅ Database saved: 4 leads
+[2026-03-08 23:17:55] [INFO] ======================================================================
+[2026-03-08 23:17:55] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:17:55] [INFO] Time: 2026-03-08 23:17:55
+[2026-03-08 23:17:55] [INFO] ======================================================================
+[2026-03-08 23:17:55] [INFO]  
+[2026-03-08 23:17:55] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-08 23:17:55] [INFO]  
+[2026-03-08 23:17:55] [INFO] Existing database: 4 leads
+[2026-03-08 23:17:55] [INFO] Discovering prospects (max 5)...
+[2026-03-08 23:17:55] [INFO] ✅ Discovered 5 prospects
+[2026-03-08 23:17:55] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-08 23:17:55] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-08 23:17:55] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-08 23:17:55] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-08 23:17:55] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-08 23:17:55] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-08 23:17:55] [INFO] 
+Processing: Content Creator Hub
+[2026-03-08 23:17:55] [INFO]   - No industry match: Content Creation
+[2026-03-08 23:17:55] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-08 23:17:55] [INFO]   Final score: 41/100
+[2026-03-08 23:17:55] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-08 23:17:55] [INFO]  
+[2026-03-08 23:17:55] [INFO] Qualified leads: 0
+[2026-03-08 23:17:55] [INFO] No qualified leads to export
+[2026-03-08 23:19:07] [INFO] ======================================================================
+[2026-03-08 23:19:07] [INFO] OpenFang Hand: LEAD
+[2026-03-08 23:19:07] [INFO] Time: 2026-03-08 23:19:07
+[2026-03-08 23:19:07] [INFO] ======================================================================
+[2026-03-08 23:19:07] [INFO]  
+[2026-03-08 23:19:07] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-08 23:19:07] [INFO]  
+[2026-03-08 23:19:07] [INFO] Existing database: 4 leads
+[2026-03-08 23:19:07] [INFO] Discovering prospects (max 5)...
+[2026-03-08 23:19:07] [INFO] ✅ Discovered 5 prospects
+[2026-03-08 23:19:07] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-08 23:19:07] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-08 23:19:07] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-08 23:19:07] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-08 23:19:07] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-08 23:19:07] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-08 23:19:07] [INFO] 
+Processing: Content Creator Hub
+[2026-03-08 23:19:07] [INFO]   - No industry match: Content Creation
+[2026-03-08 23:19:07] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-08 23:19:07] [INFO]   Final score: 41/100
+[2026-03-08 23:19:07] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-08 23:19:07] [INFO]  
+[2026-03-08 23:19:07] [INFO] Qualified leads: 0
+[2026-03-08 23:19:07] [INFO] No qualified leads to export
+[2026-03-09 10:00:01] [INFO] ======================================================================
+[2026-03-09 10:00:01] [INFO] OpenFang Hand: LEAD
+[2026-03-09 10:00:01] [INFO] Time: 2026-03-09 10:00:01
+[2026-03-09 10:00:01] [INFO] ======================================================================
+[2026-03-09 10:00:01] [INFO]  
+[2026-03-09 10:00:01] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-09 10:00:01] [INFO]  
+[2026-03-09 10:00:01] [INFO] Existing database: 4 leads
+[2026-03-09 10:00:01] [INFO] Discovering prospects (max 5)...
+[2026-03-09 10:00:01] [INFO] ✅ Discovered 5 prospects
+[2026-03-09 10:00:01] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-09 10:00:01] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-09 10:00:01] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-09 10:00:01] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-09 10:00:01] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-09 10:00:01] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-09 10:00:01] [INFO] 
+Processing: Content Creator Hub
+[2026-03-09 10:00:01] [INFO]   - No industry match: Content Creation
+[2026-03-09 10:00:01] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-09 10:00:01] [INFO]   Final score: 41/100
+[2026-03-09 10:00:01] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-09 10:00:01] [INFO]  
+[2026-03-09 10:00:01] [INFO] Qualified leads: 0
+[2026-03-09 10:00:01] [INFO] No qualified leads to export
+[2026-03-10 10:00:01] [INFO] ======================================================================
+[2026-03-10 10:00:01] [INFO] OpenFang Hand: LEAD
+[2026-03-10 10:00:01] [INFO] Time: 2026-03-10 10:00:01
+[2026-03-10 10:00:01] [INFO] ======================================================================
+[2026-03-10 10:00:01] [INFO]  
+[2026-03-10 10:00:01] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-10 10:00:01] [INFO]  
+[2026-03-10 10:00:01] [INFO] Existing database: 4 leads
+[2026-03-10 10:00:01] [INFO] Discovering prospects (max 5)...
+[2026-03-10 10:00:01] [INFO] ✅ Discovered 5 prospects
+[2026-03-10 10:00:01] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-10 10:00:01] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-10 10:00:01] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-10 10:00:01] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-10 10:00:01] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-10 10:00:01] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-10 10:00:01] [INFO] 
+Processing: Content Creator Hub
+[2026-03-10 10:00:01] [INFO]   - No industry match: Content Creation
+[2026-03-10 10:00:01] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-10 10:00:01] [INFO]   Final score: 41/100
+[2026-03-10 10:00:01] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-10 10:00:01] [INFO]  
+[2026-03-10 10:00:01] [INFO] Qualified leads: 0
+[2026-03-10 10:00:01] [INFO] No qualified leads to export
+[2026-03-12 10:00:01] [INFO] ======================================================================
+[2026-03-12 10:00:01] [INFO] OpenFang Hand: LEAD
+[2026-03-12 10:00:01] [INFO] Time: 2026-03-12 10:00:01
+[2026-03-12 10:00:01] [INFO] ======================================================================
+[2026-03-12 10:00:01] [INFO]  
+[2026-03-12 10:00:01] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-12 10:00:01] [INFO]  
+[2026-03-12 10:00:01] [INFO] Existing database: 4 leads
+[2026-03-12 10:00:01] [INFO] Discovering prospects (max 5)...
+[2026-03-12 10:00:01] [INFO] ✅ Discovered 5 prospects
+[2026-03-12 10:00:01] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-12 10:00:01] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-12 10:00:01] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-12 10:00:01] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-12 10:00:01] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-12 10:00:01] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-12 10:00:01] [INFO] 
+Processing: Content Creator Hub
+[2026-03-12 10:00:01] [INFO]   - No industry match: Content Creation
+[2026-03-12 10:00:01] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-12 10:00:01] [INFO]   Final score: 41/100
+[2026-03-12 10:00:01] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-12 10:00:01] [INFO]  
+[2026-03-12 10:00:01] [INFO] Qualified leads: 0
+[2026-03-12 10:00:01] [INFO] No qualified leads to export
+[2026-03-13 10:00:01] [INFO] ======================================================================
+[2026-03-13 10:00:01] [INFO] OpenFang Hand: LEAD
+[2026-03-13 10:00:01] [INFO] Time: 2026-03-13 10:00:01
+[2026-03-13 10:00:01] [INFO] ======================================================================
+[2026-03-13 10:00:01] [INFO]  
+[2026-03-13 10:00:01] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-13 10:00:01] [INFO]  
+[2026-03-13 10:00:01] [INFO] Existing database: 4 leads
+[2026-03-13 10:00:01] [INFO] Discovering prospects (max 5)...
+[2026-03-13 10:00:01] [INFO] ✅ Discovered 5 prospects
+[2026-03-13 10:00:01] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-13 10:00:01] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-13 10:00:01] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-13 10:00:01] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-13 10:00:01] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-13 10:00:01] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-13 10:00:01] [INFO] 
+Processing: Content Creator Hub
+[2026-03-13 10:00:01] [INFO]   - No industry match: Content Creation
+[2026-03-13 10:00:01] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-13 10:00:01] [INFO]   Final score: 41/100
+[2026-03-13 10:00:01] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-13 10:00:01] [INFO]  
+[2026-03-13 10:00:01] [INFO] Qualified leads: 0
+[2026-03-13 10:00:01] [INFO] No qualified leads to export
+[2026-03-14 10:00:01] [INFO] ======================================================================
+[2026-03-14 10:00:01] [INFO] OpenFang Hand: LEAD
+[2026-03-14 10:00:01] [INFO] Time: 2026-03-14 10:00:01
+[2026-03-14 10:00:01] [INFO] ======================================================================
+[2026-03-14 10:00:01] [INFO]  
+[2026-03-14 10:00:01] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-14 10:00:01] [INFO]  
+[2026-03-14 10:00:01] [INFO] Existing database: 4 leads
+[2026-03-14 10:00:01] [INFO] Discovering prospects (max 5)...
+[2026-03-14 10:00:01] [INFO] ✅ Discovered 5 prospects
+[2026-03-14 10:00:01] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-14 10:00:01] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-14 10:00:01] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-14 10:00:01] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-14 10:00:01] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-14 10:00:01] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-14 10:00:01] [INFO] 
+Processing: Content Creator Hub
+[2026-03-14 10:00:01] [INFO]   - No industry match: Content Creation
+[2026-03-14 10:00:01] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-14 10:00:01] [INFO]   Final score: 41/100
+[2026-03-14 10:00:01] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-14 10:00:01] [INFO]  
+[2026-03-14 10:00:01] [INFO] Qualified leads: 0
+[2026-03-14 10:00:01] [INFO] No qualified leads to export

@@ -1,0 +1,375 @@
+[2026-03-13 18:40:09] === PostBridge Monitor Run ===
+[2026-03-13 18:40:11] Analytics sync: tiktok, youtube, instagram
+[2026-03-13 18:40:12] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-13 18:40:42] Results: 1400 total | ✅ 350 (25%) | ❌ 1050
+[2026-03-13 18:40:42] Error breakdown:
+[2026-03-13 18:40:42]   [565x] No supported media files found. Instagram only sup
+[2026-03-13 18:40:42]   [346x] No files provided
+[2026-03-13 18:40:42]   [68x] Failed to post to Youtube: Only videos are support
+[2026-03-13 18:40:42]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-13 18:40:42]   [18x] Failed to post to TikTok: File access error. Pleas
+[2026-03-13 18:40:43] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-13 18:40:43] Scheduled posts: 0
+[2026-03-13 18:40:56] Posts today: 95
+[2026-03-13 18:40:56] ⚠️ HIGH FAILURE RATE — checking for patterns...
+[2026-03-13 18:40:56]   Account 47681: 469 failures
+[2026-03-13 18:40:56]   Account 45648: 111 failures
+[2026-03-13 18:40:56]   Account 48186: 105 failures
+[2026-03-13 18:40:56]   Account 48335: 40 failures
+[2026-03-13 18:40:56]   Account 48336: 40 failures
+[2026-03-13 18:40:56] === Monitor Complete ===
+
+[2026-03-13 20:00:02] === PostBridge Monitor Run ===
+[2026-03-13 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-13 20:00:04] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-13 20:00:41] Results: 1900 total | ✅ 798 (42%) | ❌ 1102
+[2026-03-13 20:00:41] Error breakdown:
+[2026-03-13 20:00:41]   [582x] No supported media files found. Instagram only sup
+[2026-03-13 20:00:41]   [355x] No files provided
+[2026-03-13 20:00:41]   [75x] Failed to post to Youtube: Only videos are support
+[2026-03-13 20:00:41]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-13 20:00:41]   [18x] Failed to post to TikTok: File access error. Pleas
+[2026-03-13 20:00:42] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-13 20:00:43] Scheduled posts: 60
+[2026-03-13 20:00:56] Posts today: 95
+[2026-03-13 20:00:56] ⚠️ HIGH FAILURE RATE — checking for patterns...
+[2026-03-13 20:00:56]   Account 47681: 477 failures
+[2026-03-13 20:00:56]   Account 45648: 120 failures
+[2026-03-13 20:00:56]   Account 48186: 105 failures
+[2026-03-13 20:00:56]   Account 48335: 40 failures
+[2026-03-13 20:00:56]   Account 48336: 40 failures
+[2026-03-13 20:00:56] === Monitor Complete ===
+
+[2026-03-13 20:00:02] === PostBridge Monitor Run ===
+[2026-03-13 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-13 20:00:04] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-13 20:00:41] Results: 1900 total | ✅ 798 (42%) | ❌ 1102
+[2026-03-13 20:00:41] Error breakdown:
+[2026-03-13 20:00:41]   [582x] No supported media files found. Instagram only sup
+[2026-03-13 20:00:41]   [355x] No files provided
+[2026-03-13 20:00:41]   [75x] Failed to post to Youtube: Only videos are support
+[2026-03-13 20:00:41]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-13 20:00:41]   [18x] Failed to post to TikTok: File access error. Pleas
+[2026-03-13 20:00:42] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-13 20:00:43] Scheduled posts: 60
+[2026-03-13 20:00:56] Posts today: 95
+[2026-03-13 20:00:56] ⚠️ HIGH FAILURE RATE — checking for patterns...
+[2026-03-13 20:00:56]   Account 47681: 477 failures
+[2026-03-13 20:00:56]   Account 45648: 120 failures
+[2026-03-13 20:00:56]   Account 48186: 105 failures
+[2026-03-13 20:00:56]   Account 48335: 40 failures
+[2026-03-13 20:00:56]   Account 48336: 40 failures
+[2026-03-13 20:00:56] === Monitor Complete ===
+
+[2026-03-13 22:00:01] === PostBridge Monitor Run ===
+[2026-03-13 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-13 22:00:03] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-13 22:00:42] Results: 1900 total | ✅ 798 (42%) | ❌ 1102
+[2026-03-13 22:00:42] Error breakdown:
+[2026-03-13 22:00:42]   [582x] No supported media files found. Instagram only sup
+[2026-03-13 22:00:42]   [355x] No files provided
+[2026-03-13 22:00:42]   [75x] Failed to post to Youtube: Only videos are support
+[2026-03-13 22:00:42]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-13 22:00:42]   [18x] Failed to post to TikTok: File access error. Pleas
+[2026-03-13 22:00:42] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-13 22:00:43] Scheduled posts: 60
+[2026-03-13 22:00:56] Posts today: 95
+[2026-03-13 22:00:56] ⚠️ HIGH FAILURE RATE — checking for patterns...
+[2026-03-13 22:00:56]   Account 47681: 477 failures
+[2026-03-13 22:00:56]   Account 45648: 120 failures
+[2026-03-13 22:00:56]   Account 48186: 105 failures
+[2026-03-13 22:00:56]   Account 48335: 40 failures
+[2026-03-13 22:00:56]   Account 48336: 40 failures
+[2026-03-13 22:00:56] === Monitor Complete ===
+
+[2026-03-13 22:00:01] === PostBridge Monitor Run ===
+[2026-03-13 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-13 22:00:03] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-13 22:00:42] Results: 1900 total | ✅ 798 (42%) | ❌ 1102
+[2026-03-13 22:00:42] Error breakdown:
+[2026-03-13 22:00:42]   [582x] No supported media files found. Instagram only sup
+[2026-03-13 22:00:42]   [355x] No files provided
+[2026-03-13 22:00:42]   [75x] Failed to post to Youtube: Only videos are support
+[2026-03-13 22:00:42]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-13 22:00:42]   [18x] Failed to post to TikTok: File access error. Pleas
+[2026-03-13 22:00:42] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-13 22:00:43] Scheduled posts: 60
+[2026-03-13 22:00:56] Posts today: 95
+[2026-03-13 22:00:56] ⚠️ HIGH FAILURE RATE — checking for patterns...
+[2026-03-13 22:00:56]   Account 47681: 477 failures
+[2026-03-13 22:00:56]   Account 45648: 120 failures
+[2026-03-13 22:00:56]   Account 48186: 105 failures
+[2026-03-13 22:00:56]   Account 48335: 40 failures
+[2026-03-13 22:00:56]   Account 48336: 40 failures
+[2026-03-13 22:00:56] === Monitor Complete ===
+
+[2026-03-14 00:00:01] === PostBridge Monitor Run ===
+[2026-03-14 00:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 00:00:03] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-14 00:00:55] Results: 3000 total | ✅ 1887 (63%) | ❌ 1113
+[2026-03-14 00:00:55] Error breakdown:
+[2026-03-14 00:00:55]   [576x] No supported media files found. Instagram only sup
+[2026-03-14 00:00:55]   [346x] No files provided
+[2026-03-14 00:00:55]   [69x] Failed to post to Youtube: Only videos are support
+[2026-03-14 00:00:55]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-14 00:00:55]   [28x] Failed to post to Threads
+[2026-03-14 00:00:56] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 00:00:56] Scheduled posts: 72
+[2026-03-14 00:01:11] Posts today: 0
+[2026-03-14 00:01:11] === Monitor Complete ===
+
+[2026-03-14 00:00:01] === PostBridge Monitor Run ===
+[2026-03-14 00:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 00:00:03] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-14 00:00:55] Results: 3000 total | ✅ 1887 (63%) | ❌ 1113
+[2026-03-14 00:00:55] Error breakdown:
+[2026-03-14 00:00:55]   [576x] No supported media files found. Instagram only sup
+[2026-03-14 00:00:55]   [346x] No files provided
+[2026-03-14 00:00:55]   [69x] Failed to post to Youtube: Only videos are support
+[2026-03-14 00:00:55]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-14 00:00:55]   [28x] Failed to post to Threads
+[2026-03-14 00:00:56] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 00:00:56] Scheduled posts: 72
+[2026-03-14 00:01:11] Posts today: 0
+[2026-03-14 00:01:11] === Monitor Complete ===
+
+[2026-03-14 02:00:01] === PostBridge Monitor Run ===
+[2026-03-14 02:00:07] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 02:00:07] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-14 02:01:03] Results: 3100 total | ✅ 1932 (62%) | ❌ 1168
+[2026-03-14 02:01:03] Error breakdown:
+[2026-03-14 02:01:03]   [588x] No supported media files found. Instagram only sup
+[2026-03-14 02:01:03]   [360x] No files provided
+[2026-03-14 02:01:03]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 02:01:03]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-14 02:01:03]   [29x] Failed to post to Threads
+[2026-03-14 02:01:03] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 02:01:03] Scheduled posts: 471
+[2026-03-14 02:01:18] Posts today: 0
+[2026-03-14 02:01:18] === Monitor Complete ===
+
+[2026-03-14 02:00:01] === PostBridge Monitor Run ===
+[2026-03-14 02:00:07] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 02:00:07] Accounts: 83 (facebook:38, instagram:11, linkedin:1, threads:12, tiktok:11, twitter:1, youtube:9)
+[2026-03-14 02:01:03] Results: 3100 total | ✅ 1932 (62%) | ❌ 1168
+[2026-03-14 02:01:03] Error breakdown:
+[2026-03-14 02:01:03]   [588x] No supported media files found. Instagram only sup
+[2026-03-14 02:01:03]   [360x] No files provided
+[2026-03-14 02:01:03]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 02:01:03]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-14 02:01:03]   [29x] Failed to post to Threads
+[2026-03-14 02:01:03] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 02:01:03] Scheduled posts: 471
+[2026-03-14 02:01:18] Posts today: 0
+[2026-03-14 02:01:18] === Monitor Complete ===
+
+[2026-03-14 04:00:02] === PostBridge Monitor Run ===
+[2026-03-14 04:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 04:00:03] Accounts: 87 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:11, twitter:2, youtube:10)
+[2026-03-14 04:00:58] Results: 3100 total | ✅ 1936 (62%) | ❌ 1164
+[2026-03-14 04:00:58] Error breakdown:
+[2026-03-14 04:00:58]   [582x] No supported media files found. Instagram only sup
+[2026-03-14 04:00:58]   [359x] No files provided
+[2026-03-14 04:00:58]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 04:00:58]   [35x] Failed to post to Threads
+[2026-03-14 04:00:58]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-14 04:00:59] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 04:00:59] Scheduled posts: 1067
+[2026-03-14 04:01:13] Posts today: 0
+[2026-03-14 04:01:13] === Monitor Complete ===
+
+[2026-03-14 04:00:02] === PostBridge Monitor Run ===
+[2026-03-14 04:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 04:00:03] Accounts: 87 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:11, twitter:2, youtube:10)
+[2026-03-14 04:00:58] Results: 3100 total | ✅ 1936 (62%) | ❌ 1164
+[2026-03-14 04:00:58] Error breakdown:
+[2026-03-14 04:00:58]   [582x] No supported media files found. Instagram only sup
+[2026-03-14 04:00:58]   [359x] No files provided
+[2026-03-14 04:00:58]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 04:00:58]   [35x] Failed to post to Threads
+[2026-03-14 04:00:58]   [33x] Failed to post to Facebook Failed to get file
+[2026-03-14 04:00:59] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 04:00:59] Scheduled posts: 1067
+[2026-03-14 04:01:13] Posts today: 0
+[2026-03-14 04:01:13] === Monitor Complete ===
+
+[2026-03-14 06:00:02] === PostBridge Monitor Run ===
+[2026-03-14 06:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 06:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 06:01:14] Results: 4100 total | ✅ 2711 (66%) | ❌ 1389
+[2026-03-14 06:01:14] Error breakdown:
+[2026-03-14 06:01:14]   [654x] No supported media files found. Instagram only sup
+[2026-03-14 06:01:14]   [251x] No files provided
+[2026-03-14 06:01:14]   [241x] Failed to post to Threads
+[2026-03-14 06:01:14]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 06:01:14]   [48x] Failed to post to Instagram: Access token expired.
+[2026-03-14 06:01:15] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 06:01:16] Scheduled posts: 1031
+[2026-03-14 06:01:29] Posts today: 0
+[2026-03-14 06:01:29] === Monitor Complete ===
+
+[2026-03-14 06:00:02] === PostBridge Monitor Run ===
+[2026-03-14 06:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 06:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 06:01:14] Results: 4100 total | ✅ 2711 (66%) | ❌ 1389
+[2026-03-14 06:01:14] Error breakdown:
+[2026-03-14 06:01:14]   [654x] No supported media files found. Instagram only sup
+[2026-03-14 06:01:14]   [251x] No files provided
+[2026-03-14 06:01:14]   [241x] Failed to post to Threads
+[2026-03-14 06:01:14]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 06:01:14]   [48x] Failed to post to Instagram: Access token expired.
+[2026-03-14 06:01:15] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 06:01:16] Scheduled posts: 1031
+[2026-03-14 06:01:29] Posts today: 0
+[2026-03-14 06:01:29] === Monitor Complete ===
+
+[2026-03-14 08:00:01] === PostBridge Monitor Run ===
+[2026-03-14 08:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 08:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 08:01:20] Results: 4400 total | ✅ 2917 (66%) | ❌ 1483
+[2026-03-14 08:01:20] Error breakdown:
+[2026-03-14 08:01:20]   [664x] No supported media files found. Instagram only sup
+[2026-03-14 08:01:20]   [300x] Failed to post to Threads
+[2026-03-14 08:01:20]   [252x] No files provided
+[2026-03-14 08:01:20]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 08:01:20]   [55x] Failed to post to Instagram: Access token expired.
+[2026-03-14 08:01:21] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 08:01:21] Scheduled posts: 1040
+[2026-03-14 08:01:37] Posts today: 22
+[2026-03-14 08:01:37] === Monitor Complete ===
+
+[2026-03-14 08:00:01] === PostBridge Monitor Run ===
+[2026-03-14 08:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 08:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 08:01:20] Results: 4400 total | ✅ 2917 (66%) | ❌ 1483
+[2026-03-14 08:01:20] Error breakdown:
+[2026-03-14 08:01:20]   [664x] No supported media files found. Instagram only sup
+[2026-03-14 08:01:20]   [300x] Failed to post to Threads
+[2026-03-14 08:01:20]   [252x] No files provided
+[2026-03-14 08:01:20]   [78x] Failed to post to Youtube: Only videos are support
+[2026-03-14 08:01:20]   [55x] Failed to post to Instagram: Access token expired.
+[2026-03-14 08:01:21] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 08:01:21] Scheduled posts: 1040
+[2026-03-14 08:01:37] Posts today: 22
+[2026-03-14 08:01:37] === Monitor Complete ===
+
+[2026-03-14 10:00:01] === PostBridge Monitor Run ===
+[2026-03-14 10:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 10:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 10:01:19] Results: 4400 total | ✅ 2930 (67%) | ❌ 1470
+[2026-03-14 10:01:19] Error breakdown:
+[2026-03-14 10:01:19]   [653x] No supported media files found. Instagram only sup
+[2026-03-14 10:01:19]   [302x] Failed to post to Threads
+[2026-03-14 10:01:19]   [251x] No files provided
+[2026-03-14 10:01:19]   [79x] Failed to post to Youtube: Only videos are support
+[2026-03-14 10:01:19]   [55x] Failed to post to Instagram: Access token expired.
+[2026-03-14 10:01:20] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 10:01:20] Scheduled posts: 10
+[2026-03-14 10:01:35] Posts today: 25
+[2026-03-14 10:01:35] === Monitor Complete ===
+
+[2026-03-14 10:00:01] === PostBridge Monitor Run ===
+[2026-03-14 10:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 10:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 10:01:19] Results: 4400 total | ✅ 2930 (67%) | ❌ 1470
+[2026-03-14 10:01:19] Error breakdown:
+[2026-03-14 10:01:19]   [653x] No supported media files found. Instagram only sup
+[2026-03-14 10:01:19]   [302x] Failed to post to Threads
+[2026-03-14 10:01:19]   [251x] No files provided
+[2026-03-14 10:01:19]   [79x] Failed to post to Youtube: Only videos are support
+[2026-03-14 10:01:19]   [55x] Failed to post to Instagram: Access token expired.
+[2026-03-14 10:01:20] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 10:01:20] Scheduled posts: 10
+[2026-03-14 10:01:35] Posts today: 25
+[2026-03-14 10:01:35] === Monitor Complete ===
+
+[2026-03-14 12:00:02] === PostBridge Monitor Run ===
+[2026-03-14 12:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 12:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 12:01:22] Results: 4500 total | ✅ 2953 (66%) | ❌ 1547
+[2026-03-14 12:01:22] Error breakdown:
+[2026-03-14 12:01:22]   [720x] No supported media files found. Instagram only sup
+[2026-03-14 12:01:22]   [302x] Failed to post to Threads
+[2026-03-14 12:01:22]   [254x] No files provided
+[2026-03-14 12:01:22]   [91x] Failed to post to Youtube: Only videos are support
+[2026-03-14 12:01:22]   [55x] Failed to post to Instagram: Access token expired.
+[2026-03-14 12:01:22] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 12:01:23] Scheduled posts: 30
+[2026-03-14 12:01:39] Posts today: 25
+[2026-03-14 12:01:39] === Monitor Complete ===
+
+[2026-03-14 12:00:02] === PostBridge Monitor Run ===
+[2026-03-14 12:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 12:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 12:01:22] Results: 4500 total | ✅ 2953 (66%) | ❌ 1547
+[2026-03-14 12:01:22] Error breakdown:
+[2026-03-14 12:01:22]   [720x] No supported media files found. Instagram only sup
+[2026-03-14 12:01:22]   [302x] Failed to post to Threads
+[2026-03-14 12:01:22]   [254x] No files provided
+[2026-03-14 12:01:22]   [91x] Failed to post to Youtube: Only videos are support
+[2026-03-14 12:01:22]   [55x] Failed to post to Instagram: Access token expired.
+[2026-03-14 12:01:22] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 12:01:23] Scheduled posts: 30
+[2026-03-14 12:01:39] Posts today: 25
+[2026-03-14 12:01:39] === Monitor Complete ===
+
+[2026-03-14 14:00:02] === PostBridge Monitor Run ===
+[2026-03-14 14:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 14:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 14:01:26] Results: 4700 total | ✅ 3148 (67%) | ❌ 1552
+[2026-03-14 14:01:26] Error breakdown:
+[2026-03-14 14:01:26]   [660x] No supported media files found. Instagram only sup
+[2026-03-14 14:01:26]   [357x] Failed to post to Threads
+[2026-03-14 14:01:26]   [251x] No files provided
+[2026-03-14 14:01:26]   [79x] Failed to post to Youtube: Only videos are support
+[2026-03-14 14:01:26]   [60x] Failed to post to Instagram: Access token expired.
+[2026-03-14 14:01:26] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 14:01:27] Scheduled posts: 74
+[2026-03-14 14:01:41] Posts today: 25
+[2026-03-14 14:01:41] === Monitor Complete ===
+
+[2026-03-14 14:00:02] === PostBridge Monitor Run ===
+[2026-03-14 14:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 14:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 14:01:26] Results: 4700 total | ✅ 3148 (67%) | ❌ 1552
+[2026-03-14 14:01:26] Error breakdown:
+[2026-03-14 14:01:26]   [660x] No supported media files found. Instagram only sup
+[2026-03-14 14:01:26]   [357x] Failed to post to Threads
+[2026-03-14 14:01:26]   [251x] No files provided
+[2026-03-14 14:01:26]   [79x] Failed to post to Youtube: Only videos are support
+[2026-03-14 14:01:26]   [60x] Failed to post to Instagram: Access token expired.
+[2026-03-14 14:01:26] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 14:01:27] Scheduled posts: 74
+[2026-03-14 14:01:41] Posts today: 25
+[2026-03-14 14:01:41] === Monitor Complete ===
+
+[2026-03-14 16:00:01] === PostBridge Monitor Run ===
+[2026-03-14 16:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 16:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 16:01:57] Results: 6700 total | ✅ 4411 (66%) | ❌ 2289
+[2026-03-14 16:01:57] Error breakdown:
+[2026-03-14 16:01:57]   [764x] Failed to post to Threads
+[2026-03-14 16:01:57]   [691x] No supported media files found. Instagram only sup
+[2026-03-14 16:01:57]   [251x] No files provided
+[2026-03-14 16:01:57]   [239x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 16:01:57]   [93x] Failed to post to Instagram: Access token expired.
+[2026-03-14 16:01:58] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 16:01:58] Scheduled posts: 94
+[2026-03-14 16:02:14] Posts today: 26
+[2026-03-14 16:02:14] === Monitor Complete ===
+
+[2026-03-14 16:00:01] === PostBridge Monitor Run ===
+[2026-03-14 16:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 16:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 16:01:57] Results: 6700 total | ✅ 4411 (66%) | ❌ 2289
+[2026-03-14 16:01:57] Error breakdown:
+[2026-03-14 16:01:57]   [764x] Failed to post to Threads
+[2026-03-14 16:01:57]   [691x] No supported media files found. Instagram only sup
+[2026-03-14 16:01:57]   [251x] No files provided
+[2026-03-14 16:01:57]   [239x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 16:01:57]   [93x] Failed to post to Instagram: Access token expired.
+[2026-03-14 16:01:58] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 16:01:58] Scheduled posts: 94
+[2026-03-14 16:02:14] Posts today: 26
+[2026-03-14 16:02:14] === Monitor Complete ===
+

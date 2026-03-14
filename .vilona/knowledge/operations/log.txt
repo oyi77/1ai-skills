@@ -1,0 +1,91 @@
+# Operations Learning Rotation Log
+
+## 2026-03-08 06:15 AM UTC+7 (Sunday - Crisis Mode)
+
+### Rotation Focus: Operations Track
+
+**Files Reviewed:**
+1. ✅ `principles.md` - Updated from February 27 (9 days stale)
+2. ✅ `vector_db_management.md` - Assessed (March 4, 4 days old—reasonably current)
+
+### Knowledge Status Updates
+
+**principles.md - MAJOR UPDATE:**
+- Crisis mode protocols added (3 protocols detailed)
+- Infrastructure status dashboard created (services, data visibility)
+- Active projects tracker updated (5 current projects)
+- Crisis protocols section added (weekend execution status)
+- Learned lessons section (5 key lessons from March 5-8)
+- Team capacity tracker (crisis mode edition)
+- Related documentation links added
+
+**Key Gaps Identified:**
+1. PostBridge service failure (HTTP 500) - NOT documented in operations knowledge
+2. Cashflow blindness (36+ hours) - tracking protocols existed but not enforced
+3. Revenue gap detector - operational but not linked to SOPs
+4. Sunday trading prep - new proactive framework pattern
+
+### Operational Insights (Crisis Mode)
+
+**Infrastructure Reliability:**
+- PostBridge = single point of failure for marketing uploads
+- 47 posts blocked by HTTP 500 (58/105 success rate)
+- Need: Service monitoring + automatic recovery protocols
+
+**Data Visibility Critical Path:**
+- Cashflow blind = 40% decision error margin
+- Bank check was Protocol A "non-negotiable" on Saturday but skipped
+- Need: Automated cashflow visibility (manual only currently)
+
+**Execution vs Planning Pattern:**
+- All 3 weekend protocols: Planning = 100%, Execution = 0-55%
+- Protocol A (cashflow): 0% - bank check not done
+- Protocol B (marketing): 55% - PostBridge blocked
+- Protocol C (trading): Framework ready, execution pending
+- Lesson: Infrastructure gaps cascade into execution failures
+
+**Proactive Framework Value:**
+- Created Sunday trading worksheet at 04:25 AM (before session)
+- Reduced cognitive load, enables follow-the-plan execution
+- Pattern worth replicating for routine operational tasks
+
+### Action Items from This Rotation
+
+**Immediate (Today):**
+- [ ] PostBridge service restart (37 mins estimated)
+- [ ] Cashflow check (20-30 mins)
+- [ ] Follow Sunday trading worksheet at 14:50-15:00
+
+**This Week:**
+- [ ] Add PostBridge service monitoring to SOPs
+- [ ] Document HTTP 500 recovery procedure
+- [ ] Create cashflow automation priority backlog item
+
+**Documentation:**
+- [ ] Link revenue_gap_detector.py to crisis protocols
+- [ ] Add infrastructure dashboard to daily standup checklist
+- [ ] Document "proactive framework" pattern for other protocols
+
+### Knowledge Rotation Schedule
+
+- **Monday:** Trading track (last updated March 5)
+- **Tuesday:** Marketing track (last updated March 6)
+- **Wednesday:** Operations track
+- **Thursday:** Trading track
+- **Friday:** Marketing track
+- **Saturday:** Operations track
+- **Sunday:** Operations track (today)
+
+### Next Rotation
+
+**Date:** Monday, March 9, 2026 at 06:00 AM
+**Track:** Trading
+**Files to review:**
+- `trading/principles.md` (March 5 - check for updates)
+- `trading/log.txt` (update with weekend Protocol C execution)
+
+---
+*Rotation executed: 2026-03-08 06:15 AM*
+*Duration: 20 minutes*
+*Files updated: 1 (principles.md)*
+*Next rotation: Monday 06:00 AM - Trading track*

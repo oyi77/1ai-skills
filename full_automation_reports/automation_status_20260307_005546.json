@@ -1,0 +1,61 @@
+{
+  "automation_id": "auto_full_20260307_005546",
+  "status": "ACTIVE",
+  "components": {
+    "lead_generation": {
+      "status": "READY",
+      "campaigns": 7,
+      "latest_campaign": "campaign_traveloka_manual_20260307_004753"
+    },
+    "email_automation": {
+      "status": "READY (MANUAL)",
+      "configs": 0,
+      "total_emails": 48
+    },
+    "social_media": {
+      "status": "READY (MANUAL)",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "facebook"
+      ],
+      "total_posts": 48
+    },
+    "content_generation": {
+      "status": "READY",
+      "files": 1
+    }
+  },
+  "schedule": {
+    "daily_morning": {
+      "time": "08:00 WIB",
+      "tasks": [
+        "Generate new content (if needed)",
+        "Review yesterday's leads/responses",
+        "Prepare email updates",
+        "Schedule social media posts"
+      ]
+    },
+    "daily_evening": {
+      "time": "20:00 WIB",
+      "tasks": [
+        "Send today's emails",
+        "Post to social media platforms",
+        "Track responses and metrics",
+        "Generate daily report"
+      ]
+    },
+    "weekly_sunday": {
+      "time": "23:00 WIB",
+      "tasks": [
+        "Generate fresh campaigns",
+        "Update email queues",
+        "Refresh social content",
+        "Send weekly summary"
+      ]
+    }
+  },
+  "run_count": 0,
+  "last_run": null,
+  "started_at": "2026-03-07T00:55:46.799747"
+}

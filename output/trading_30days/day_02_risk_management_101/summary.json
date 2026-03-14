@@ -1,0 +1,33 @@
+{
+  "day": 2,
+  "theme": "Risk Management 101",
+  "date": "2026-03-16",
+  "posts": [
+    {
+      "post_id": "e7bbfc41-aa31-4c06-b9d1-48ef62588912",
+      "time": "2026-03-16T00:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "d517bb8d-421e-4297-a095-982ddeb4a98b",
+      "time": "2026-03-16T05:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "b8d09513-e2e7-471c-9da4-2fceec2964e2",
+      "time": "2026-03-16T08:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "9d255af3-4c11-4745-b781-ae47e6584cc4",
+      "time": "2026-03-16T11:00:00.000Z",
+      "status": "scheduled"
+    },
+    {
+      "post_id": "9232181d-b5c3-4fa3-8ef9-6f44b9dd546c",
+      "time": "2026-03-16T14:00:00.000Z",
+      "status": "scheduled"
+    }
+  ],
+  "generated_at": "2026-03-14T14:55:45.225837"
+}

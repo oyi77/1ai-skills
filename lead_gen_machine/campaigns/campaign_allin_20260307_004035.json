@@ -1,0 +1,42 @@
+{
+  "campaign_id": "campaign_allin_20260307_004035",
+  "mode": "PRODUCTION_ALL_IN",
+  "api_endpoint": "legacy_textsearch",
+  "stats": {
+    "leads_extracted": 0,
+    "emails_generated": 0,
+    "social_posts": 0,
+    "total_content": 0,
+    "searches_performed": 5,
+    "generated_at": "2026-03-07T00:40:35.045809"
+  },
+  "searches": [
+    {
+      "city": "Jakarta",
+      "query": "restaurant in Jakarta",
+      "target": 30
+    },
+    {
+      "city": "Surabaya",
+      "query": "restaurant in Surabaya",
+      "target": 20
+    },
+    {
+      "city": "Bandung",
+      "query": "restaurant in Bandung",
+      "target": 20
+    },
+    {
+      "city": "Jakarta",
+      "query": "cafe in Jakarta",
+      "target": 15
+    },
+    {
+      "city": "Jakarta",
+      "query": "bakery in Jakarta",
+      "target": 15
+    }
+  ],
+  "leads": [],
+  "generated_content": []
+}

@@ -1,0 +1,43 @@
+{
+  "title": "AI Prompt Bible Indonesia - 500+ Prompt untuk Pebisnis",
+  "categories": [
+    {
+      "name": "Marketing & Copywriting",
+      "count": 100
+    },
+    {
+      "name": "Social Media Content",
+      "count": 100
+    },
+    {
+      "name": "Business Strategy",
+      "count": 50
+    },
+    {
+      "name": "Customer Service",
+      "count": 50
+    },
+    {
+      "name": "Product Development",
+      "count": 50
+    },
+    {
+      "name": "Email Marketing",
+      "count": 50
+    },
+    {
+      "name": "SEO & Content",
+      "count": 50
+    },
+    {
+      "name": "Data Analysis",
+      "count": 50
+    }
+  ],
+  "sample_prompts": [
+    "Buatkan 5 headline iklan untuk produk {produk} yang menargetkan {audience}. Gunakan formula PAS (Problem-Agitation-Solution).",
+    "Analisis competitor {nama_competitor} dan buatkan strategi diferensiasi untuk bisnis {bisnis_saya}.",
+    "Buatkan content calendar 30 hari untuk akun Instagram {niche} dengan mix: 40% edukasi, 30% engagement, 30% promosi."
+  ],
+  "total": 500
+}

@@ -1,0 +1,27 @@
+{
+  "thresholds": {
+    "warning_hours": 4,
+    "critical_hours": 8,
+    "emergency_hours": 12
+  },
+  "sources": [
+    {
+      "name": "postbridge_api",
+      "type": "api",
+      "url": "http://localhost:8080/api/posts/latest",
+      "enabled": true
+    },
+    {
+      "name": "trading_logs",
+      "type": "file",
+      "path": "/home/openclaw/.openclaw/workspace/.vilona/knowledge/trading/trading_log.json",
+      "enabled": true
+    },
+    {
+      "name": "cashflow_files",
+      "type": "glob",
+      "pattern": "/home/openclaw/.openclaw/workspace/cashflow/*.md",
+      "enabled": true
+    }
+  ]
+}

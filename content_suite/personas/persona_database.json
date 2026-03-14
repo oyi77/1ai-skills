@@ -1,0 +1,581 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-14",
+    "total_personas": 9,
+    "total_accounts": 83,
+    "lynk_base_url": "https://lynk.id/jendralbot",
+    "brand": "BerkahKarya"
+  },
+  "personas": [
+    {
+      "persona_id": "trading-finance",
+      "display_name": "BK Jaya Trading",
+      "niche": "trading & finance",
+      "language": "id",
+      "account_ids": [49663, 49662, 49661, 49660, 49677, 49676, 47682],
+      "platform_accounts": [
+        {"id": 49663, "platform": "tiktok", "handle": "bkjaya00"},
+        {"id": 49662, "platform": "threads", "handle": "bkjayautama"},
+        {"id": 49661, "platform": "instagram", "handle": "bkjayautama"},
+        {"id": 49660, "platform": "youtube", "handle": "berkah karya digital agency"},
+        {"id": 49677, "platform": "threads", "handle": "chayangkasih"},
+        {"id": 49676, "platform": "instagram", "handle": "chayangkasih"},
+        {"id": 47682, "platform": "twitter", "handle": "AgencyKarya"}
+      ],
+      "primary_product": "master-trading-journal",
+      "secondary_products": ["content-calendar-pro"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#0A2342",
+        "accent_color": "#F0A500",
+        "text_color": "#FFFFFF",
+        "template": "finance-professional",
+        "emoji_signature": "📈"
+      },
+      "voice": {
+        "tone": "profesional, tegas, berbasis data, otoritatif namun bisa dipahami pemula",
+        "signature_openings": [
+          "Trader pro nggak asal entry. Ini strateginya 👇",
+          "Kalau kamu serius di trading, catat ini baik-baik 📝",
+          "99% trader rugi karena satu kesalahan ini — kamu sudah tahu?",
+          "Buka chart dulu sebelum baca caption ini 📊",
+          "Rahasia konsistensi profit yang jarang dibahas trader senior 🔐"
+        ],
+        "forbidden_words": ["cepet kaya", "pasti profit", "100% akurat", "sinyal gratis", "dijamin untung", "tanpa risiko"],
+        "hashtags": [
+          "#TradingIndonesia",
+          "#BelajarTrading",
+          "#ForexIndonesia",
+          "#TradingJournal",
+          "#AnalisisTeknikal",
+          "#TraderPemula",
+          "#ManajemenRisiko",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Pembukaan hook kuat → masalah yang relatable → solusi singkat → CTA ke lynk.id. Panjang optimal 150-250 karakter untuk TikTok/IG, lebih panjang untuk Threads/YouTube deskripsi."
+      },
+      "content": {
+        "pillars": [
+          "Edukasi teknikal (candlestick, support/resistance, indikator)",
+          "Psikologi trading dan manajemen emosi",
+          "Review jurnal trading harian dan weekly",
+          "Strategi manajemen risiko dan money management"
+        ],
+        "formats": ["video", "carousel", "single_image", "text_thread"],
+        "posting_times": ["07:00", "12:00", "19:00", "21:00"],
+        "posts_per_day": 2
+      }
+    },
+    {
+      "persona_id": "health-wellness",
+      "display_name": "Sehat Serai Hari",
+      "niche": "health & wellness",
+      "language": "id",
+      "account_ids": [49642, 48372, 48338, 48373],
+      "platform_accounts": [
+        {"id": 49642, "platform": "tiktok", "handle": "sehatseraiphari"},
+        {"id": 48372, "platform": "tiktok", "handle": "divasehatsetiaphari"},
+        {"id": 48338, "platform": "tiktok", "handle": "massehatyuk"},
+        {"id": 48373, "platform": "tiktok", "handle": "drlifehacks1"}
+      ],
+      "primary_product": "content-calendar-pro",
+      "secondary_products": ["ai-prompt-bible"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#2E7D32",
+        "accent_color": "#A5D6A7",
+        "text_color": "#FFFFFF",
+        "template": "health-natural",
+        "emoji_signature": "🌿"
+      },
+      "voice": {
+        "tone": "hangat, peduli, mudah dipahami, seperti teman yang paham kesehatan — bukan menggurui",
+        "signature_openings": [
+          "Kamu capek terus? Ini bukan soal kurang tidur 👇",
+          "1 kebiasaan pagi yang ubah energi seharian — gratis dan gampang 🌅",
+          "Dokter nggak bilang ini ke kamu, tapi penting banget soal tubuhmu 🩺",
+          "Badan sehat bukan soal mahal. Ini caranya yang beneran works ✅",
+          "Kalau kamu sering sakit-sakitan, coba cek kebiasaan ini dulu 🔍"
+        ],
+        "forbidden_words": ["obat ajaib", "sembuh dalam semalam", "dokter bohong", "pasti sembuh", "100% ampuh", "no side effect"],
+        "hashtags": [
+          "#HidupSehat",
+          "#TipsKesehatan",
+          "#SehatAlami",
+          "#KesehatanIndonesia",
+          "#PolaHidupSehat",
+          "#FitnessTips",
+          "#NutrisiSehat",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Hook berupa fakta mengejutkan atau pertanyaan relatable → penjelasan singkat dan praktis → tips actionable 1-3 poin → CTA engaging (simpan, share ke teman). Nada bersahabat, tidak menghakimi."
+      },
+      "content": {
+        "pillars": [
+          "Tips kesehatan harian yang praktis dan gratis",
+          "Nutrisi dan makanan sehat berbasis lokal Indonesia",
+          "Olahraga ringan dan aktivitas fisik tanpa gym",
+          "Kesehatan mental dan manajemen stres"
+        ],
+        "formats": ["video", "carousel", "single_image"],
+        "posting_times": ["06:30", "12:30", "18:00", "21:30"],
+        "posts_per_day": 3
+      }
+    },
+    {
+      "persona_id": "product-review",
+      "display_name": "Review Produk Jujur",
+      "niche": "product review & affiliate",
+      "language": "id",
+      "account_ids": [49646, 49644, 49613, 49612, 48374],
+      "platform_accounts": [
+        {"id": 49646, "platform": "threads", "handle": "riviewprodukcek"},
+        {"id": 49644, "platform": "instagram", "handle": "riviewprodukcek"},
+        {"id": 49613, "platform": "threads", "handle": "riviewprodukaffiliate"},
+        {"id": 49612, "platform": "instagram", "handle": "riviewprodukaffiliate"},
+        {"id": 48374, "platform": "tiktok", "handle": "riviewprodukfashionjujur"}
+      ],
+      "primary_product": "ai-prompt-bible",
+      "secondary_products": ["content-calendar-pro"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#6A1B9A",
+        "accent_color": "#E040FB",
+        "text_color": "#FFFFFF",
+        "template": "review-honest",
+        "emoji_signature": "🔍"
+      },
+      "voice": {
+        "tone": "jujur, kritis, berbasis pengalaman nyata — bukan endorse asal-asalan, selalu ada nilai edukatif",
+        "signature_openings": [
+          "Sebelum beli, tonton/baca ini dulu — udah aku coba sendiri 🔍",
+          "Jujur review, no sponsor bias. Ini yang beneran worth it 💯",
+          "3 hal yang brand nggak mau kamu tahu soal produk ini 👀",
+          "Udah habis berapa juta buat coba ini — ini hasilnya 💸",
+          "Rating bintang 5 itu bohong? Ini review jujurnya dari aku 🎯"
+        ],
+        "forbidden_words": ["pasti bagus", "terbaik di dunia", "wajib beli", "rugi kalau nggak beli", "100% original", "no tipu"],
+        "hashtags": [
+          "#ReviewJujur",
+          "#ReviewProduk",
+          "#Unboxing",
+          "#RekomendProduk",
+          "#AffiliateProduk",
+          "#BelanjaOnline",
+          "#ReviewFashion",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Buka dengan pengalaman pribadi → highlight pro & con secara berimbang → skor/penilaian → rekomendasi untuk siapa produk ini cocok → CTA ke lynk.id. Selalu ada sudut jujur yang bikin audience percaya."
+      },
+      "content": {
+        "pillars": [
+          "Review produk digital (tools, software, kursus online)",
+          "Review produk fashion dan lifestyle",
+          "Perbandingan produk sejenis (A vs B)",
+          "Tips belanja cerdas dan menghindari produk abal-abal"
+        ],
+        "formats": ["video", "carousel", "single_image", "text_thread"],
+        "posting_times": ["10:00", "14:00", "20:00"],
+        "posts_per_day": 2
+      }
+    },
+    {
+      "persona_id": "digital-marketing",
+      "display_name": "Berkah Karya Digital",
+      "niche": "digital marketing & bisnis",
+      "language": "id",
+      "account_ids": [49680, 48186, 47681, 49658, 47664, 49617],
+      "platform_accounts": [
+        {"id": 49680, "platform": "threads", "handle": "berkahkaryadigitalproduct"},
+        {"id": 48186, "platform": "instagram", "handle": "berkahkaryadigitalproduct"},
+        {"id": 47681, "platform": "instagram", "handle": "berkahkaryadigitalmarketing"},
+        {"id": 49658, "platform": "threads", "handle": "berkahkaryadigitalmarketing"},
+        {"id": 47664, "platform": "facebook", "handle": "Berkah Karya Digital Marketing Agency"},
+        {"id": 49617, "platform": "linkedin", "handle": "Andik veris febriyanto"}
+      ],
+      "primary_product": "content-calendar-pro",
+      "secondary_products": ["ai-prompt-bible", "python-automation-starter-pack"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#1565C0",
+        "accent_color": "#FF6F00",
+        "text_color": "#FFFFFF",
+        "template": "corporate-modern",
+        "emoji_signature": "🚀"
+      },
+      "voice": {
+        "tone": "profesional, strategis, berbasis ROI dan data — bicara bahasa pebisnis dan marketer Indonesia",
+        "signature_openings": [
+          "Bisnis kamu stagnan? Ini framework yang kami pakai untuk klien enterprise 🚀",
+          "Digital marketing bukan soal viral. Ini yang beneran menghasilkan konversi 💰",
+          "Kesalahan marketing yang bikin budget habis sia-sia — dan cara menghindarinya 🎯",
+          "Dari 0 ke 100K followers dalam 90 hari — ini strategi kontennya step by step 📈",
+          "Content calendar yang benar bukan cuma jadwal. Ini bedanya dengan yang asal-asalan 📅"
+        ],
+        "forbidden_words": ["viral cepat", "tanpa modal", "jutaan dalam sehari", "auto profit", "pasif income instan", "mudah banget"],
+        "hashtags": [
+          "#DigitalMarketing",
+          "#MarketingIndonesia",
+          "#BisnisDIgital",
+          "#ContentMarketing",
+          "#SocialMediaMarketing",
+          "#GrowthHacking",
+          "#BerkahKaryaAgency",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Pembukaan berupa insight bisnis tajam → breakdown strategi konkret dengan angka/data → studi kasus singkat (bisa anonim) → nilai produk yang ditawarkan → CTA profesional ke lynk.id. Nada ekspertif tapi tidak arogan."
+      },
+      "content": {
+        "pillars": [
+          "Strategi konten dan content planning untuk bisnis",
+          "Ads management dan optimasi iklan digital",
+          "Personal branding dan thought leadership",
+          "Tools dan automasi marketing untuk efisiensi"
+        ],
+        "formats": ["carousel", "single_image", "text_thread", "video"],
+        "posting_times": ["08:00", "11:00", "17:00", "20:00"],
+        "posts_per_day": 2
+      }
+    },
+    {
+      "persona_id": "food-recipe",
+      "display_name": "Nyami Resep Dapur",
+      "niche": "food & recipe",
+      "language": "id",
+      "account_ids": [49635, 49634, 49633, 49636],
+      "platform_accounts": [
+        {"id": 49635, "platform": "threads", "handle": "nyamiresepdapur"},
+        {"id": 49634, "platform": "instagram", "handle": "nyamiresepdapur"},
+        {"id": 49633, "platform": "facebook", "handle": "Nyamiresep"},
+        {"id": 49636, "platform": "youtube", "handle": "Resep Dapur Nyami"}
+      ],
+      "primary_product": "content-calendar-pro",
+      "secondary_products": ["ai-prompt-bible"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#E53935",
+        "accent_color": "#FFF176",
+        "text_color": "#FFFFFF",
+        "template": "food-warm",
+        "emoji_signature": "🍳"
+      },
+      "voice": {
+        "tone": "hangat, cheerful, seperti Ibu atau Mbak yang suka masak dan senang berbagi resep di dapur",
+        "signature_openings": [
+          "Lauk apa hari ini? Cobain resep simpel ini, dijamin keluarga suka! 🍳",
+          "Resep 15 menit yang bikin meja makan makin meriah — bahan dari dapur sendiri 🥘",
+          "Nggak perlu chef, kamu bisa masak ini sendiri di rumah! Simak caranya 👩‍🍳",
+          "Bosen masak yang itu-itu aja? Ini ide menu baru yang enak dan hemat 💡",
+          "Rahasia bumbu dapur yang bikin masakan selalu nagih — dari nenek aku 🌶️"
+        ],
+        "forbidden_words": ["susah banget", "butuh alat mahal", "ribet", "gagal terus", "nggak bisa masak"],
+        "hashtags": [
+          "#ResepMasakan",
+          "#MasakDirumah",
+          "#ResepMudah",
+          "#KulinerIndonesia",
+          "#MasakanIndonesia",
+          "#TipsMemasak",
+          "#ResepHarian",
+          "#NyamiResep"
+        ],
+        "caption_style": "Buka dengan deskripsi menggugah selera → list bahan singkat → langkah masak 3-5 poin → tips rahasia satu baris → CTA simpan dan share. Gunakan emoji makanan untuk visual warmth. Nada seperti berbagi ke teman dekat."
+      },
+      "content": {
+        "pillars": [
+          "Resep masakan Indonesia sehari-hari yang mudah dan hemat",
+          "Masakan kekinian dan fusion untuk anak muda",
+          "Tips dan trik dapur (penyimpanan, substitusi bahan, pengolahan)",
+          "Konten food content creator — cara bikin konten makanan yang menarik"
+        ],
+        "formats": ["video", "carousel", "single_image", "text_thread"],
+        "posting_times": ["07:00", "11:30", "17:30", "20:00"],
+        "posts_per_day": 2
+      }
+    },
+    {
+      "persona_id": "fashion-lifestyle",
+      "display_name": "Favisora Anggraeni",
+      "niche": "fashion & lifestyle",
+      "language": "id",
+      "account_ids": [49683, 49682, 49631, 49630],
+      "platform_accounts": [
+        {"id": 49683, "platform": "threads", "handle": "favisoraanggraeni"},
+        {"id": 49682, "platform": "instagram", "handle": "favisoraanggraeni"},
+        {"id": 49631, "platform": "threads", "handle": "ameliacintaimoet"},
+        {"id": 49630, "platform": "instagram", "handle": "ameliacintaimoet"}
+      ],
+      "primary_product": "ai-prompt-bible",
+      "secondary_products": ["content-calendar-pro"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#AD1457",
+        "accent_color": "#F8BBD9",
+        "text_color": "#FFFFFF",
+        "template": "fashion-aesthetic",
+        "emoji_signature": "✨"
+      },
+      "voice": {
+        "tone": "stylish, relatable, percaya diri, inspiratif — seperti best friend yang selalu OOTD on-point dan mau berbagi tips",
+        "signature_openings": [
+          "OOTD budget 200K tapi keliatan premium ✨ — ini triknya!",
+          "Capsule wardrobe 10 item yang bisa mix & match jadi 30 outfit berbeda 👗",
+          "Kalau kamu masih beli outfit impulsif, baca ini dulu sebelum checkout 🛍️",
+          "Gaya hidup aesthetic nggak harus mahal — ini proof-nya dari lemari aku 💅",
+          "Tren fashion 2026 yang worth it investasi vs yang skip aja — aku kasih tau 🎨"
+        ],
+        "forbidden_words": ["norak", "murahan", "kampungan", "nggak fashionable", "malu-maluin", "cupu"],
+        "hashtags": [
+          "#OOTD",
+          "#FashionIndonesia",
+          "#StyleInspo",
+          "#LifestyleIndonesia",
+          "#FashionTips",
+          "#OutfitIdeas",
+          "#BeautyTips",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Buka dengan visual hook (OOTD detail atau lifestyle moment) → breakdown style tips yang actionable → pesan empowering soal percaya diri → CTA ke lynk.id atau save untuk inspo. Nada upbeat, positif, inklusif untuk semua body type dan budget."
+      },
+      "content": {
+        "pillars": [
+          "OOTD inspirasi dan style tips untuk berbagai occasion",
+          "Budget fashion — tampil stylish tanpa harus mahal",
+          "Beauty dan self-care routine",
+          "Lifestyle dan mindset untuk perempuan modern Indonesia"
+        ],
+        "formats": ["carousel", "single_image", "video", "text_thread"],
+        "posting_times": ["07:30", "12:00", "18:30", "21:00"],
+        "posts_per_day": 2
+      }
+    },
+    {
+      "persona_id": "ai-content-creator",
+      "display_name": "Catatan Operator AI",
+      "niche": "AI content creator, tech & affiliate",
+      "language": "id",
+      "account_ids": [49659, 49641, 49640, 49614, 48336, 48335, 48337],
+      "platform_accounts": [
+        {"id": 49659, "platform": "tiktok", "handle": "catatanoperator"},
+        {"id": 49641, "platform": "threads", "handle": "ardanardiawan"},
+        {"id": 49640, "platform": "instagram", "handle": "ardanardiawan"},
+        {"id": 49614, "platform": "threads", "handle": "valdoaffiliate"},
+        {"id": 48336, "platform": "tiktok", "handle": "baimwongdiskon"},
+        {"id": 48335, "platform": "tiktok", "handle": "clinicguru"},
+        {"id": 48337, "platform": "tiktok", "handle": "nugrohopratama5"}
+      ],
+      "primary_product": "ai-prompt-bible",
+      "secondary_products": ["python-automation-starter-pack", "content-calendar-pro"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#00695C",
+        "accent_color": "#69F0AE",
+        "text_color": "#FFFFFF",
+        "template": "tech-modern",
+        "emoji_signature": "🤖"
+      },
+      "voice": {
+        "tone": "geek yang bisa jelasin hal teknis dengan cara simpel, excited soal teknologi, helpful, dan selalu share discovery terbaru",
+        "signature_openings": [
+          "AI ini bisa gantiin kerjaan 3 jam kamu dalam 5 menit — dan gratis 🤖",
+          "Aku habiskan 200 jam eksperimen prompt AI — ini yang paling works 📋",
+          "Kalau kamu content creator dan belum pakai tools ini, kamu rugi besar ⚡",
+          "Python automation yang aku build ini hemat 40 jam kerja per bulan — mau tahu? 🐍",
+          "Cara kerja AI yang nggak diajarkan di mana-mana — dan kenapa itu penting 🧠"
+        ],
+        "forbidden_words": ["susah dipahami", "butuh coding expert", "hanya untuk programmer", "terlalu teknis", "nggak bisa dipelajari sendiri"],
+        "hashtags": [
+          "#AIIndonesia",
+          "#ChatGPT",
+          "#PromptEngineering",
+          "#ContentCreatorIndonesia",
+          "#TechIndonesia",
+          "#AITools",
+          "#OtomasisiBisnis",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Hook berupa hasil/output AI yang wow → eksplanasi singkat how it works → langkah praktis yang bisa langsung dicoba → value proposition produk digital → CTA ke lynk.id. Selipkan humor tech-nerd yang relatable. Sertakan angka konkret (waktu saved, efisiensi %)."
+      },
+      "content": {
+        "pillars": [
+          "Tutorial AI tools praktis untuk content creator dan marketer",
+          "Python dan automasi untuk non-programmer",
+          "Prompt engineering tips dan template siap pakai",
+          "Review dan perbandingan tools AI terbaru"
+        ],
+        "formats": ["video", "carousel", "text_thread", "single_image"],
+        "posting_times": ["08:00", "13:00", "19:00", "22:00"],
+        "posts_per_day": 3
+      }
+    },
+    {
+      "persona_id": "tech-developer",
+      "display_name": "Dev Pintar Automasi",
+      "niche": "tech & developer (merged with AI content creator)",
+      "language": "id",
+      "account_ids": [],
+      "platform_accounts": [],
+      "note": "Group 8 has no dedicated accounts. This persona's content strategy is merged into ai-content-creator (persona_id: ai-content-creator). Developer-focused content (python-automation-starter-pack) is served via ai-content-creator accounts.",
+      "primary_product": "python-automation-starter-pack",
+      "secondary_products": ["ai-prompt-bible"],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "avatar": {
+        "primary_color": "#263238",
+        "accent_color": "#00BCD4",
+        "text_color": "#FFFFFF",
+        "template": "developer-dark",
+        "emoji_signature": "🐍"
+      },
+      "voice": {
+        "tone": "pragmatis, berbasis kode nyata, menghargai waktu developer — langsung ke inti masalah dan solusi",
+        "signature_openings": [
+          "Kode Python 20 baris ini otomatisasi tugas yang biasa kamu lakukan manual setiap hari 🐍",
+          "Stop buang waktu. Ini script automation yang aku pakai untuk hemat 3 jam/hari ⏱️",
+          "Junior dev nggak diajarkan ini di bootcamp — tapi ini skill yang paling dibutuhkan 💻",
+          "Dari satu Python script sederhana bisa jadi income passive IDR 2 juta/bulan — caranya 💰",
+          "API automation yang sebenarnya mudah — kalau kamu tahu framework yang tepat 🔧"
+        ],
+        "forbidden_words": ["susah coding", "harus expert dulu", "butuh gelar komputer", "terlalu advance", "nggak ada waktu belajar"],
+        "hashtags": [
+          "#PythonIndonesia",
+          "#DevIndonesia",
+          "#CodeIndonesia",
+          "#AutomasiPython",
+          "#ProgrammerIndonesia",
+          "#BelajarCoding",
+          "#TechSkills",
+          "#BerkahKarya"
+        ],
+        "caption_style": "Hook berupa masalah dev sehari-hari → solusi kode singkat (snippet atau pseudocode) → use case nyata dan manfaat konkret → CTA ke python-automation-starter-pack via lynk.id. Format list/numbered sangat disukai developer audience."
+      },
+      "content": {
+        "pillars": [
+          "Python scripting untuk automasi tugas berulang",
+          "Web scraping dan pengolahan data praktis",
+          "API integration dan workflow automation",
+          "Side income sebagai freelance developer Indonesia"
+        ],
+        "formats": ["carousel", "text_thread", "video", "single_image"],
+        "posting_times": ["09:00", "14:00", "21:00"],
+        "posts_per_day": 2
+      }
+    },
+    {
+      "persona_id": "entertainment-engagement",
+      "display_name": "Entertainment Hub BK",
+      "niche": "entertainment & engagement (Facebook)",
+      "language": "id",
+      "account_ids": [49675, 49674, 49673, 49672, 49671, 49670, 49669, 49668, 49667, 49666, 49665, 49664, 49611, 49609, 49607, 49606, 49605, 49604, 49603, 49602, 49601, 49600, 49599, 49598],
+      "platform_accounts": [
+        {"id": 49675, "platform": "facebook", "handle": "WARZ", "type": "engagement"},
+        {"id": 49674, "platform": "facebook", "handle": "Lizbeth Anguiano", "type": "engagement"},
+        {"id": 49673, "platform": "facebook", "handle": "Noticias celebridades", "type": "engagement"},
+        {"id": 49672, "platform": "facebook", "handle": "Mavigadget", "type": "engagement"},
+        {"id": 49671, "platform": "facebook", "handle": "Dylan Anderson", "type": "engagement"},
+        {"id": 49670, "platform": "facebook", "handle": "Mr Degree", "type": "engagement"},
+        {"id": 49669, "platform": "facebook", "handle": "Su Hao", "type": "engagement"},
+        {"id": 49668, "platform": "facebook", "handle": "LankyBox", "type": "engagement"},
+        {"id": 49667, "platform": "facebook", "handle": "MrBeast", "type": "engagement"},
+        {"id": 49666, "platform": "facebook", "handle": "Cookieswirlc", "type": "engagement"},
+        {"id": 49665, "platform": "facebook", "handle": "DONA", "type": "engagement"},
+        {"id": 49664, "platform": "facebook", "handle": "Marta and Rustam", "type": "engagement"},
+        {"id": 49611, "platform": "facebook", "handle": "facebook_shop_49611", "type": "shop"},
+        {"id": 49609, "platform": "facebook", "handle": "facebook_shop_49609", "type": "shop"},
+        {"id": 49607, "platform": "facebook", "handle": "facebook_shop_49607", "type": "shop"},
+        {"id": 49606, "platform": "facebook", "handle": "facebook_shop_49606", "type": "shop"},
+        {"id": 49605, "platform": "facebook", "handle": "facebook_shop_49605", "type": "shop"},
+        {"id": 49604, "platform": "facebook", "handle": "facebook_shop_49604", "type": "shop"},
+        {"id": 49603, "platform": "facebook", "handle": "facebook_shop_49603", "type": "shop"},
+        {"id": 49602, "platform": "facebook", "handle": "facebook_shop_49602", "type": "shop"},
+        {"id": 49601, "platform": "facebook", "handle": "facebook_shop_49601", "type": "shop"},
+        {"id": 49600, "platform": "facebook", "handle": "facebook_shop_49600", "type": "shop"},
+        {"id": 49599, "platform": "facebook", "handle": "facebook_shop_49599", "type": "shop"},
+        {"id": 49598, "platform": "facebook", "handle": "facebook_shop_49598", "type": "shop"}
+      ],
+      "primary_product": null,
+      "secondary_products": [],
+      "lynk_url": "https://lynk.id/jendralbot",
+      "strategy": "engagement-only",
+      "engagement_goal": "Membangun audiens Facebook yang besar dan aktif melalui konten viral/hiburan, kemudian redirect traffic ke akun konversi BerkahKarya atau lynk.id secara organik",
+      "avatar": {
+        "primary_color": "#1877F2",
+        "accent_color": "#FF5722",
+        "text_color": "#FFFFFF",
+        "template": "facebook-entertainment",
+        "emoji_signature": "🎭"
+      },
+      "voice": {
+        "tone": "fun, relatable, menghibur, viral-friendly — konten yang bikin orang komen, share, dan tag teman tanpa terasa hard-selling",
+        "signature_openings": [
+          "Tag teman yang paling butuh lihat ini 👇😂",
+          "Siapa yang relate? Drop emoji di komen! 👇",
+          "Fakta ini bikin aku speechless — kamu udah tahu? 🤯",
+          "POV: kamu baca ini jam 2 pagi dan besok kerja pagi 😅",
+          "Kalau kamu lahir tahun 90an, pasti ingat ini 🥹"
+        ],
+        "forbidden_words": ["beli sekarang", "promo habis", "daftar link bio", "klik link", "harga spesial hari ini"],
+        "hashtags": [
+          "#Hiburan",
+          "#Viral",
+          "#FunnyMoments",
+          "#RelatabeMoment",
+          "#Trending",
+          "#FYP",
+          "#Entertainment",
+          "#FunFacts"
+        ],
+        "caption_style": "Konten murni entertainment dan engagement. TIDAK ada hard-selling langsung. Fokus pada: humor, nostalgia, fakta mengejutkan, pertanyaan yang memancing komentar, konten yang bikin orang tag teman. Sesekali selipkan soft CTA ke lynk.id hanya saat relevan dan natural."
+      },
+      "content": {
+        "pillars": [
+          "Konten hiburan dan meme yang sedang viral",
+          "Fakta unik dan mind-blowing yang bikin penasaran",
+          "Konten nostalgia dan throwback yang memancing interaksi",
+          "Quiz, tebak-tebakan, dan konten interaktif yang memancing komentar"
+        ],
+        "formats": ["video", "single_image", "carousel"],
+        "posting_times": ["09:00", "12:00", "15:00", "19:00", "21:00"],
+        "posts_per_day": 4
+      }
+    }
+  ],
+  "product_catalog": {
+    "master-trading-journal": {
+      "slug": "master-trading-journal",
+      "name": "Master Trading Journal",
+      "price_usd": 9,
+      "price_idr": 150000,
+      "target_audience": "trader pemula hingga menengah",
+      "lynk_url": "https://lynk.id/jendralbot",
+      "description": "Jurnal trading digital terstruktur untuk mencatat, analisis, dan tingkatkan konsistensi profit trading"
+    },
+    "ai-prompt-bible": {
+      "slug": "ai-prompt-bible",
+      "name": "AI Prompt Bible",
+      "price_usd": 17,
+      "price_idr": 270000,
+      "target_audience": "content creator, marketer, pemilik bisnis",
+      "lynk_url": "https://lynk.id/jendralbot",
+      "description": "Koleksi 500+ prompt AI siap pakai untuk konten, marketing, bisnis, dan produktivitas harian"
+    },
+    "content-calendar-pro": {
+      "slug": "content-calendar-pro",
+      "name": "Content Calendar Pro",
+      "price_usd": 12,
+      "price_idr": 195000,
+      "target_audience": "pemilik bisnis, social media manager, content creator",
+      "lynk_url": "https://lynk.id/jendralbot",
+      "description": "Template content calendar profesional lengkap dengan strategi posting, ide konten, dan tracking engagement"
+    },
+    "python-automation-starter-pack": {
+      "slug": "python-automation-starter-pack",
+      "name": "Python Automation Starter Pack",
+      "price_usd": 15,
+      "price_idr": 240000,
+      "target_audience": "developer, freelancer, pemilik bisnis yang ingin automasi",
+      "lynk_url": "https://lynk.id/jendralbot",
+      "description": "Koleksi 30+ script Python siap pakai untuk automasi bisnis, web scraping, dan produktivitas kerja"
+    }
+  }
+}

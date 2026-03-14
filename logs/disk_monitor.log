@@ -1,0 +1,1377 @@
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-08 18:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 94G (90%)
+  Available: 11G
+  Free: 11.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 11.0 GB
+After cleanup: 11.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-09 00:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 94G (90%)
+  Available: 11G
+  Free: 11.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 11.0 GB
+After cleanup: 11.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-09 06:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 94G (90%)
+  Available: 11G
+  Free: 11.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 11.0 GB
+After cleanup: 11.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-09 12:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 94G (91%)
+  Available: 11G
+  Free: 11.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 1
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 11.0 GB
+After cleanup: 11.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-09 18:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 80G (76%)
+  Available: 26G
+  Free: 26.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 2
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 26.0 GB
+After cleanup: 26.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-10 00:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 80G (77%)
+  Available: 25G
+  Free: 25.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 2
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 25.0 GB
+After cleanup: 25.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-10 06:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 81G (77%)
+  Available: 25G
+  Free: 25.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 4
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - /workspace/tools/__pycache__/vector_db_tools.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+    0.0 MB - claw/workspace/__pycache__/vector_db_startup.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 25.0 GB
+After cleanup: 25.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-10 12:00:02
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 81G (78%)
+  Available: 24G
+  Free: 24.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 4
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - /workspace/tools/__pycache__/vector_db_tools.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+    0.0 MB - claw/workspace/__pycache__/vector_db_startup.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 24.0 GB
+After cleanup: 24.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-10 18:00:02
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 81G (78%)
+  Available: 24G
+  Free: 24.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 7
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - nerator/scripts/providers/__pycache__/nvidia.cpython-313.pyc
+    0.0 MB - generator/scripts/providers/__pycache__/base.cpython-313.pyc
+    0.0 MB - /workspace/tools/__pycache__/vector_db_tools.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 24.0 GB
+After cleanup: 24.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-11 18:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 83G (80%)
+  Available: 22G
+  Free: 22.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 7
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - nerator/scripts/providers/__pycache__/nvidia.cpython-313.pyc
+    0.0 MB - generator/scripts/providers/__pycache__/base.cpython-313.pyc
+    0.0 MB - /workspace/tools/__pycache__/vector_db_tools.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 22.0 GB
+After cleanup: 22.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-12 00:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 84G (80%)
+  Available: 22G
+  Free: 22.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 7
+  Size: 0.0 MB / 0.0 GB
+  Largest:
+    0.0 MB - nerator/scripts/providers/__pycache__/nvidia.cpython-313.pyc
+    0.0 MB - generator/scripts/providers/__pycache__/base.cpython-313.pyc
+    0.0 MB - /workspace/tools/__pycache__/vector_db_tools.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+    0.0 MB - utopilot_affiliate_engine/__pycache__/config.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 22.0 GB
+After cleanup: 22.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-12 06:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 95G (91%)
+  Available: 9.8G
+  Free: 9.8 GB
+
+Target: 10 GB free
+To free: 0.2 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 6763
+  Size: 134.8 MB / 0.1 GB
+  Largest:
+    1.4 MB - y/polys/benchmarks/__pycache__/bench_solvers.cpython-313.pyc
+    0.9 MB - ernal/__pycache__/common_methods_invocations.cpython-313.pyc
+    0.8 MB - /physics/quantum/tests/__pycache__/test_spin.cpython-313.pyc
+    0.7 MB - umpy/_core/tests/__pycache__/test_multiarray.cpython-313.pyc
+    0.5 MB - ges/sympy/polys/__pycache__/polyquinticconst.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.1 GB
+  Compression: 0.0 GB
+  Total: 0.1 GB
+
+Current free: 9.8 GB
+After cleanup: 9.9 GB
+
+Target: 10 GB free
+Status: ❌ BELOW TARGET - cleanup needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+Found 1 virtual environment(s):
+  venv (7.1 GB / 7253 MB)
+
+RECOMMENDATION:
+  1. Check if vector-db-venv is used:
+     cd ~/.openclaw/workspace
+     grep -r 'vector-db-venv' . --exclude-dir=.git --exclude-dir=vector-db-venv 2>/dev/null
+  2. If unused, remove it:
+     rm -rf vector-db-venv/
+  3. Verify space freed:
+     df -h | grep '/$'
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-12 12:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 95G (91%)
+  Available: 9.7G
+  Free: 9.7 GB
+
+Target: 10 GB free
+To free: 0.3 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 6763
+  Size: 134.8 MB / 0.1 GB
+  Largest:
+    1.4 MB - y/polys/benchmarks/__pycache__/bench_solvers.cpython-313.pyc
+    0.9 MB - ernal/__pycache__/common_methods_invocations.cpython-313.pyc
+    0.8 MB - /physics/quantum/tests/__pycache__/test_spin.cpython-313.pyc
+    0.7 MB - umpy/_core/tests/__pycache__/test_multiarray.cpython-313.pyc
+    0.5 MB - ges/sympy/polys/__pycache__/polyquinticconst.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.1 GB
+  Compression: 0.0 GB
+  Total: 0.1 GB
+
+Current free: 9.7 GB
+After cleanup: 9.8 GB
+
+Target: 10 GB free
+Status: ❌ BELOW TARGET - cleanup needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+Found 1 virtual environment(s):
+  venv (7.1 GB / 7253 MB)
+
+RECOMMENDATION:
+  1. Check if vector-db-venv is used:
+     cd ~/.openclaw/workspace
+     grep -r 'vector-db-venv' . --exclude-dir=.git --exclude-dir=vector-db-venv 2>/dev/null
+  2. If unused, remove it:
+     rm -rf vector-db-venv/
+  3. Verify space freed:
+     df -h | grep '/$'
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-12 18:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 95G (91%)
+  Available: 9.5G
+  Free: 9.5 GB
+
+Target: 10 GB free
+To free: 0.5 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 6764
+  Size: 134.8 MB / 0.1 GB
+  Largest:
+    1.4 MB - y/polys/benchmarks/__pycache__/bench_solvers.cpython-313.pyc
+    0.9 MB - ernal/__pycache__/common_methods_invocations.cpython-313.pyc
+    0.8 MB - /physics/quantum/tests/__pycache__/test_spin.cpython-313.pyc
+    0.7 MB - umpy/_core/tests/__pycache__/test_multiarray.cpython-313.pyc
+    0.5 MB - ges/sympy/polys/__pycache__/polyquinticconst.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.1 GB
+  Compression: 0.0 GB
+  Total: 0.1 GB
+
+Current free: 9.5 GB
+After cleanup: 9.6 GB
+
+Target: 10 GB free
+Status: ❌ BELOW TARGET - cleanup needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+Found 1 virtual environment(s):
+  venv (7.1 GB / 7253 MB)
+
+RECOMMENDATION:
+  1. Check if vector-db-venv is used:
+     cd ~/.openclaw/workspace
+     grep -r 'vector-db-venv' . --exclude-dir=.git --exclude-dir=vector-db-venv 2>/dev/null
+  2. If unused, remove it:
+     rm -rf vector-db-venv/
+  3. Verify space freed:
+     df -h | grep '/$'
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-13 00:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 83G (80%)
+  Available: 22G
+  Free: 22.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 14
+  Size: 0.1 MB / 0.0 GB
+  Largest:
+    0.0 MB - ator/scripts/providers/__pycache__/replicate.cpython-313.pyc
+    0.0 MB - rator/scripts/providers/__pycache__/fallback.cpython-313.pyc
+    0.0 MB - or/scripts/providers/__pycache__/huggingface.cpython-313.pyc
+    0.0 MB - scripts/providers/__pycache__/remotion_local.cpython-313.pyc
+    0.0 MB - -generator/scripts/providers/__pycache__/xai.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 22.0 GB
+After cleanup: 22.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+Found 1 virtual environment(s):
+  venv (7.0 GB / 7118 MB)
+
+RECOMMENDATION:
+  1. Check if vector-db-venv is used:
+     cd ~/.openclaw/workspace
+     grep -r 'vector-db-venv' . --exclude-dir=.git --exclude-dir=vector-db-venv 2>/dev/null
+  2. If unused, remove it:
+     rm -rf vector-db-venv/
+  3. Verify space freed:
+     df -h | grep '/$'
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-13 06:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 96G (92%)
+  Available: 9.0G
+  Free: 9.0 GB
+
+Target: 10 GB free
+To free: 1.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 44
+  Size: 0.6 MB / 0.0 GB
+  Largest:
+    0.1 MB - ace/MetaClaw/metaclaw/__pycache__/api_server.cpython-313.pyc
+    0.1 MB - ace/MetaClaw/metaclaw/__pycache__/api_server.cpython-311.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_manager.cpython-311.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_manager.cpython-313.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_evolver.cpython-311.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 9.0 GB
+After cleanup: 9.0 GB
+
+Target: 10 GB free
+Status: ❌ BELOW TARGET - cleanup needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+Found 1 virtual environment(s):
+  venv (7.0 GB / 7157 MB)
+
+RECOMMENDATION:
+  1. Check if vector-db-venv is used:
+     cd ~/.openclaw/workspace
+     grep -r 'vector-db-venv' . --exclude-dir=.git --exclude-dir=vector-db-venv 2>/dev/null
+  2. If unused, remove it:
+     rm -rf vector-db-venv/
+  3. Verify space freed:
+     df -h | grep '/$'
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-13 12:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 92G (88%)
+  Available: 13G
+  Free: 13.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 45
+  Size: 0.6 MB / 0.0 GB
+  Largest:
+    0.1 MB - ace/MetaClaw/metaclaw/__pycache__/api_server.cpython-313.pyc
+    0.1 MB - ace/MetaClaw/metaclaw/__pycache__/api_server.cpython-311.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_manager.cpython-311.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_manager.cpython-313.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_evolver.cpython-311.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 13.0 GB
+After cleanup: 13.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+Found 1 virtual environment(s):
+  venv (7.0 GB / 7157 MB)
+
+RECOMMENDATION:
+  1. Check if vector-db-venv is used:
+     cd ~/.openclaw/workspace
+     grep -r 'vector-db-venv' . --exclude-dir=.git --exclude-dir=vector-db-venv 2>/dev/null
+  2. If unused, remove it:
+     rm -rf vector-db-venv/
+  3. Verify space freed:
+     df -h | grep '/$'
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-13 18:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 92G (88%)
+  Available: 13G
+  Free: 13.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 59
+  Size: 0.7 MB / 0.0 GB
+  Largest:
+    0.1 MB - ace/MetaClaw/metaclaw/__pycache__/api_server.cpython-313.pyc
+    0.1 MB - ace/MetaClaw/metaclaw/__pycache__/api_server.cpython-311.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_manager.cpython-311.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_manager.cpython-313.pyc
+    0.0 MB - /MetaClaw/metaclaw/__pycache__/skill_evolver.cpython-311.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 13.0 GB
+After cleanup: 13.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-14 00:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 93G (89%)
+  Available: 13G
+  Free: 13.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 13.0 GB
+After cleanup: 13.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-14 06:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 91G (87%)
+  Available: 14G
+  Free: 14.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 4
+  Size: 0.1 MB / 0.0 GB
+  Largest:
+    0.0 MB - market-fast-loop/__pycache__/fastloop_trader.cpython-313.pyc
+    0.0 MB - tent_suite/__pycache__/persona_visual_engine.cpython-313.pyc
+    0.0 MB - ent_suite/__pycache__/postbridge_queue_retry.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 14.0 GB
+After cleanup: 14.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-14 12:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 91G (88%)
+  Available: 14G
+  Free: 14.0 GB
+
+Target: 10 GB free
+To free: 0.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+*.pyc (age > 0 days):
+  Files: 4
+  Size: 0.1 MB / 0.0 GB
+  Largest:
+    0.0 MB - market-fast-loop/__pycache__/fastloop_trader.cpython-313.pyc
+    0.0 MB - tent_suite/__pycache__/persona_visual_engine.cpython-313.pyc
+    0.0 MB - ent_suite/__pycache__/postbridge_queue_retry.cpython-313.pyc
+    0.0 MB - rkspace/scripts/__pycache__/telegram_raw_api.cpython-313.pyc
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 14.0 GB
+After cleanup: 14.0 GB
+
+Target: 10 GB free
+Status: ✅ ALREADY MEETS TARGET - no action needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete

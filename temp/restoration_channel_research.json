@@ -1,0 +1,285 @@
+{
+  "research_metadata": {
+    "timestamp": "2026-03-14T03:03:00Z",
+    "total_channels": 6,
+    "method": "yt-dlp channel video extraction",
+    "videos_analyzed": 120
+  },
+  "channels": {
+    "GarageTreasures77": {
+      "channel_url": "https://www.youtube.com/@GarageTreasures77",
+      "content_style": "Iconic car restoration ASMR - pop culture references (Cars, Star Wars, SpongeBob, Mario, Scooby-Doo), high production 4K, dramatic titles, monetized clickbait with beloved characters",
+      "top_3_videos": [
+        {
+          "rank": 1,
+          "title": "I Bought the Cursed Rusted Mack from Cars for $500… and Restored It (4K ASMR)",
+          "views": 730159,
+          "duration_seconds": 637,
+          "url": "https://www.youtube.com/watch?v=Mhkg2oS2ag0"
+        },
+        {
+          "rank": 2,
+          "title": "We Dug Up an Abandoned Mack Truck from Cars… Then Restored It (4K ASMR)",
+          "views": 147099,
+          "duration_seconds": 620,
+          "url": "https://www.youtube.com/watch?v=nZ4a8AUudBM"
+        },
+        {
+          "rank": 3,
+          "title": "I Found SpongeBob's Abandoned Boatmobile in Real Life… I Restored It (4K ASMR)",
+          "views": 20282,
+          "duration_seconds": 538,
+          "url": "https://www.youtube.com/watch?v=yrpEy5zX-_Y"
+        }
+      ]
+    },
+    "Auto88CarRestoration": {
+      "channel_url": "https://www.youtube.com/@Auto88CarRestoration",
+      "content_style": "ASMR vehicle restoration with emphasis on historical vehicles (WWII military, antique trucks, classic luxury cars), high production quality, longer videos (20-30 min), detailed restoration process documentation",
+      "top_3_videos": [
+        {
+          "rank": 1,
+          "title": "ASMR Military Vehicle Restoration Historic WWII Armored Vehicle Rebuilt",
+          "views": 56933,
+          "duration_seconds": 1341,
+          "url": "https://www.youtube.com/watch?v=Oryl_ba2sxU"
+        },
+        {
+          "rank": 2,
+          "title": "ASMR Vehicle Restoration Historic Military Rescue Vehicle Rebuilt WC-54",
+          "views": 21411,
+          "duration_seconds": 1391,
+          "url": "https://www.youtube.com/watch?v=g_lOS_dWNZU"
+        },
+        {
+          "rank": 3,
+          "title": "ASMR Vehicle Restoration Mack Fire Pumper Truck 1948 1955 To Like New",
+          "views": 17476,
+          "duration_seconds": 1773,
+          "url": "https://www.youtube.com/watch?v=UO2MmZC5Zgg"
+        }
+      ]
+    },
+    "kamilbusiness-22": {
+      "channel_url": "https://www.youtube.com/@kamilbusiness-22",
+      "content_style": "AI-generated ASMR car restoration with historical/fictional themes (world's first cars, legendary models, iconic movie cars like Lightning McQueen), heavily CGI/AI produced, clickbait titles, 15-20 min videos",
+      "top_3_videos": [
+        {
+          "rank": 1,
+          "title": "ASMR Car Restoration! Full Restoration of a British Leyland Mini 1000 from Total Disrepair to New",
+          "views": 131802,
+          "duration_seconds": 1204,
+          "url": "https://www.youtube.com/watch?v=Xf2ZsHBEyJQ"
+        },
+        {
+          "rank": 2,
+          "title": "ASMR Car Restoration! Full Restoration of Lightning McQueen Abandoned in the forest",
+          "views": 63641,
+          "duration_seconds": 1177,
+          "url": "https://www.youtube.com/watch?v=wY_iY5uuC6s"
+        },
+        {
+          "rank": 3,
+          "title": "ASMR Car Restoration! 100-Year-Old Ford Model T: Total Disrepair to Showroom New",
+          "views": 45892,
+          "duration_seconds": 1115,
+          "url": "https://www.youtube.com/watch?v=-zg7uWW13YA"
+        }
+      ]
+    },
+    "GoldDust-w5m": {
+      "channel_url": "https://www.youtube.com/@GoldDust-w5m",
+      "content_style": "Thomas the Tank Engine restoration ASMR - heavily repetitive content focusing on Thomas trains in various scenarios (swamp, forest, tunnels, snowy), AI-generated visuals, emoji-heavy titles, 23-30 min videos, niche but viral-friendly",
+      "top_3_videos": [
+        {
+          "rank": 1,
+          "title": "ASMR Car Restoration 😱 – Abandoned Thomas Train Found in the Swamp | Full Rebuild",
+          "views": 205246,
+          "duration_seconds": 1514,
+          "url": "https://www.youtube.com/watch?v=Su2BM8vOhlk"
+        },
+        {
+          "rank": 2,
+          "title": "ASMR Car Restoration 🚂 – Restoring Forgotten Thomas & Friends Trains in the Forest | Full Rebuild",
+          "views": 95916,
+          "duration_seconds": 1712,
+          "url": "https://www.youtube.com/watch?v=4GhWmm-d1FQ"
+        },
+        {
+          "rank": 3,
+          "title": "ASRM Car Restoration 🚂 – Restoring an Abandoned Thomas Trapped in a Collapsed Tunnel",
+          "views": 78849,
+          "duration_seconds": 1592,
+          "url": "https://www.youtube.com/watch?v=-gZOzRv2C1Y"
+        }
+      ]
+    },
+    "Rust_to_royal1": {
+      "channel_url": "https://www.youtube.com/@Rust_to_royal1",
+      "content_style": "Extremely low-engagement AI restoration content (vehicles, aircraft, heavy machinery, niche subjects like Batmobile and Choo-Choo Charles), poorly optimized titles, 5-7 min videos, appears to be auto-generated or minimal production quality, virtually no audience traction",
+      "top_3_videos": [
+        {
+          "rank": 1,
+          "title": "ASMR Car Restoration! Full Restoration Kenworth W900L Salvage",
+          "views": 1154,
+          "duration_seconds": 364,
+          "url": "https://www.youtube.com/watch?v=Ispl8yQIRtw"
+        },
+        {
+          "rank": 2,
+          "title": "ASMR Bus Restoration! Full Restoration 2015 Mercedes Sprinter Burnt → Looking New",
+          "views": 930,
+          "duration_seconds": 243,
+          "url": "https://www.youtube.com/watch?v=RMwFPCsfpaU"
+        },
+        {
+          "rank": 3,
+          "title": "ASMR Car Restoration! Full Restoration 2011 Sea Ray Boat",
+          "views": 265,
+          "duration_seconds": 343,
+          "url": "https://www.youtube.com/watch?v=nIifxwmN0us"
+        }
+      ]
+    },
+    "Rusty_Restore": {
+      "channel_url": "https://www.youtube.com/@Rusty_Restore",
+      "content_style": "Weapon & mechanical restoration ASMR - heavy focus on military/historical firearms (Mauser rifles, machine guns, WWI pistols), vintage machinery (radios, guitars), non-AI production, methodical ASMR narration, 10-60 min videos, highly specialized niche with dedicated audience",
+      "top_3_videos": [
+        {
+          "rank": 1,
+          "title": "ZB 1940 | Old Machine Gun Restoration",
+          "views": 1162923,
+          "duration_seconds": 1312,
+          "url": "https://www.youtube.com/watch?v=6xefDPPtIbI"
+        },
+        {
+          "rank": 2,
+          "title": "Legendary Mauser K-98 | Real German Rifle Rebuild",
+          "views": 795538,
+          "duration_seconds": 804,
+          "url": "https://www.youtube.com/watch?v=W_KkGvd7mT0"
+        },
+        {
+          "rank": 3,
+          "title": "Old Guitar FULL Restoration | Jolana",
+          "views": 251488,
+          "duration_seconds": 2318,
+          "url": "https://www.youtube.com/watch?v=_rB2ROwd3wo"
+        }
+      ]
+    }
+  },
+  "best_remix_candidates": [
+    {
+      "rank": 1,
+      "title": "ZB 1940 | Old Machine Gun Restoration",
+      "channel": "Rusty_Restore",
+      "views": 1162923,
+      "duration_seconds": 1312,
+      "url": "https://www.youtube.com/watch?v=6xefDPPtIbI",
+      "remix_potential": "EXTREME - Highest engagement across all channels, specialized military history niche"
+    },
+    {
+      "rank": 2,
+      "title": "Legendary Mauser K-98 | Real German Rifle Rebuild",
+      "channel": "Rusty_Restore",
+      "views": 795538,
+      "duration_seconds": 804,
+      "url": "https://www.youtube.com/watch?v=W_KkGvd7mT0",
+      "remix_potential": "EXTREME - Viral historical weapon restoration content"
+    },
+    {
+      "rank": 3,
+      "title": "I Bought the Cursed Rusted Mack from Cars for $500… and Restored It (4K ASMR)",
+      "channel": "GarageTreasures77",
+      "views": 730159,
+      "duration_seconds": 637,
+      "url": "https://www.youtube.com/watch?v=Mhkg2oS2ag0",
+      "remix_potential": "HIGH - Pop culture reference + dramatic storytelling + 4K visuals"
+    },
+    {
+      "rank": 4,
+      "title": "Old Guitar FULL Restoration | Jolana",
+      "channel": "Rusty_Restore",
+      "views": 251488,
+      "duration_seconds": 2318,
+      "url": "https://www.youtube.com/watch?v=_rB2ROwd3wo",
+      "remix_potential": "HIGH - Music instrument restoration, longer-form content"
+    },
+    {
+      "rank": 5,
+      "title": "ASMR Car Restoration 😱 – Abandoned Thomas Train Found in the Swamp | Full Rebuild",
+      "channel": "GoldDust-w5m",
+      "views": 205246,
+      "duration_seconds": 1514,
+      "url": "https://www.youtube.com/watch?v=Su2BM8vOhlk",
+      "remix_potential": "MEDIUM-HIGH - Niche but growing (Thomas trains have dedicated fanbase)"
+    },
+    {
+      "rank": 6,
+      "title": "We Dug Up an Abandoned Mack Truck from Cars… Then Restored It (4K ASMR)",
+      "channel": "GarageTreasures77",
+      "views": 147099,
+      "duration_seconds": 620,
+      "url": "https://www.youtube.com/watch?v=nZ4a8AUudBM",
+      "remix_potential": "HIGH - Pop culture ASMR restoration, short-form friendly"
+    },
+    {
+      "rank": 7,
+      "title": "ASMR Car Restoration! Full Restoration of a British Leyland Mini 1000 from Total Disrepair to New",
+      "channel": "kamilbusiness-22",
+      "views": 131802,
+      "duration_seconds": 1204,
+      "url": "https://www.youtube.com/watch?v=Xf2ZsHBEyJQ",
+      "remix_potential": "MEDIUM - Historical car + AI production quality"
+    },
+    {
+      "rank": 8,
+      "title": "Old Rare Revolver Restoration | 1860 Deprez",
+      "channel": "Rusty_Restore",
+      "views": 115315,
+      "duration_seconds": 911,
+      "url": "https://www.youtube.com/watch?v=7APr15K3rjk",
+      "remix_potential": "HIGH - Rare historical firearm with dedicated collector audience"
+    },
+    {
+      "rank": 9,
+      "title": "ASMR Car Restoration! Full Restoration of Lightning McQueen Abandoned in the forest",
+      "channel": "kamilbusiness-22",
+      "views": 63641,
+      "duration_seconds": 1177,
+      "url": "https://www.youtube.com/watch?v=wY_iY5uuC6s",
+      "remix_potential": "MEDIUM - Pixar movie character tie-in, AI restoration content"
+    },
+    {
+      "rank": 10,
+      "title": "ASMR Military Vehicle Restoration Historic WWII Armored Vehicle Rebuilt",
+      "channel": "Auto88CarRestoration",
+      "views": 56933,
+      "duration_seconds": 1341,
+      "url": "https://www.youtube.com/watch?v=Oryl_ba2sxU",
+      "remix_potential": "HIGH - Military history + detailed ASMR restoration"
+    }
+  ],
+  "insights": {
+    "top_performing_channel": "Rusty_Restore",
+    "top_performing_reason": "Specialized niche (military/historical weapons restoration) with authentic, non-AI production. High view counts indicate dedicated collector/history enthusiast audience.",
+    "strongest_themes": [
+      "Military/historical items (WWII vehicles, rifles, machine guns)",
+      "Pop culture character vehicles (Cars franchise, SpongeBob, Mario)",
+      "Thomas the Tank Engine (niche but viral-growing)",
+      "High-value antique vehicles (luxury cars, rare models)"
+    ],
+    "content_style_patterns": {
+      "authentic_restoration": "Rusty_Restore dominates with real mechanical expertise",
+      "ai_generated_asmr": "kamilbusiness-22 and GoldDust-w5m use CGI/AI heavily, medium engagement",
+      "pop_culture_asmr": "GarageTreasures77 uses narrative storytelling + iconic characters",
+      "historical_focus": "Auto88CarRestoration targets history buffs with detailed preservation"
+    },
+    "remix_opportunity_score": {
+      "highest": "Rusty_Restore top 3 videos (average 733k views)",
+      "medium": "GarageTreasures77 pop culture tie-ins",
+      "emerging": "GoldDust-w5m Thomas engine niche market"
+    }
+  }
+}

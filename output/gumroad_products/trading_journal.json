@@ -1,0 +1,30 @@
+{
+  "title": "Master Trading Journal - XAUUSD & Forex Pro Template",
+  "sections": [
+    "Trade Log",
+    "Daily P&L",
+    "Weekly Review",
+    "Monthly Analysis",
+    "Risk Dashboard"
+  ],
+  "fields": [
+    "Date",
+    "Pair",
+    "Direction",
+    "Entry",
+    "SL",
+    "TP",
+    "Lot Size",
+    "Result",
+    "R:R",
+    "Notes",
+    "Screenshot"
+  ],
+  "metrics": [
+    "Win Rate",
+    "Profit Factor",
+    "Avg R:R",
+    "Max Drawdown",
+    "Sharpe Ratio"
+  ]
+}
