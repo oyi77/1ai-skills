@@ -1,350 +1,356 @@
 ---
 name: content-factory
-description: All-in-one YouTube content generator - create regular videos, Shorts from scratch, and Shorts from long videos. Combines best of youtube-factory and AI-Youtube-Shorts-Generator with 100% free tools.
-version: 1.0.0
-author: Mayank8290
-homepage: https://github.com/Mayank8290/openclaw-video-skills
-tags: video, youtube, shorts, content-creation, tts, automation, faceless, ai-generation
-metadata: { "openclaw": { "requires": { "bins": ["ffmpeg", "edge-tts"], "env": ["PEXELS_API_KEY"] }, "primaryEnv": "PEXELS_API_KEY" }, "clawhub": { "support": "https://buymeacoffee.com/mayank8290", "cryptoTip": "https://tip.md/oyi77" } }
+description: "Multi-agent content production system. One piece of source content becomes many formats — social posts, email, scripts, headlines, and more. Five specialized agent personas: Writer, Remixer, Editor, Scriptwriter, and Headline Machine."
+requiredEnv: []
+permissions:
+  - network: None required (optional — if spawning sub-agents via cloud API)
+  - filesystem: Reads source content and writes output drafts to working directory
+source:
+  url: https://github.com/Batsirai/carson-skills
+  author: Carson Jarvis (@CarsonJarvisAI)
+  github: https://github.com/Batsirai/carson-skills
+  verified: true
+security:
+  note: No API keys required for base operation. Sub-agent spawning is optional.
 ---
 
-# Content Factory
+# Content Factory — Multi-Agent Content Production System
 
-All-in-one YouTube content generator. Create regular videos, Shorts from scratch, and convert long videos into Shorts. Combines the best of **youtube-factory** and **AI-Youtube-Shorts-Generator** with 100% free tools.
-
-**Three powerful modes in one skill:**
-1. **Regular Video Mode** - Generate complete YouTube videos from prompts
-2. **Shorts from Scratch** - Create vertical Shorts from text prompts
-3. **Shorts from Long** - Convert long videos into engaging Shorts
-
-> **Love this skill? Support the creator!**
->
-> [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/mayank8290)
->
-> [![Tip in Crypto](https://tip.md/badge.svg)](https://tip.md/oyi77)
-
-## What This Skill Does
-
-### 🎬 Regular Video Mode
-Turn any topic into a publish-ready YouTube video:
-- **Script Generation** - Uses your LLM to write engaging scripts
-- **Voiceover** - Free Microsoft Edge TTS (natural-sounding voices)
-- **Stock Footage** - Auto-fetches relevant B-roll from Pexels (free)
-- **Video Assembly** - FFmpeg combines everything seamlessly
-- **Captions** - Styled subtitles burned into video
-- **Thumbnail** - Auto-generated clickable thumbnail
-
-### 📱 Shorts from Long Mode
-Convert long videos (YouTube or local) into viral Shorts:
-- **Smart Download** - Supports YouTube URLs via yt-dlp
-- **AI Transcription** - Whisper for accurate speech-to-text (optional)
-- **Highlight Detection** - AI finds the most engaging segments
-- **Vertical Cropping** - Intelligent 9:16 crop focused on center
-- **Caption Extraction** - Extracts text from highlighted segment
-- **Multiple Sessions** - Running concurrently without conflicts
-
-### ⚡ Shorts from Scratch Mode
-Create viral Shorts from text prompts:
-- **Short Scripts** - Optimized for 60-second format
-- **Snap Voiceover** - Quick TTS generation
-- **Vertical Stock** - Pexels videos pre-cropped for Shorts
-
-## Quick Start
-
-### Regular Video
-```
-Create a YouTube video about "5 Morning Habits of Successful People"
-```
-
-### Shorts from Long Video
-```
-Convert this YouTube video to Shorts: https://youtu.be/VIDEO_ID
-```
-
-### Shorts from Scratch
-```
-Make a YouTube Short about "surprising facts about coffee"
-```
-
-## Commands
-
-### Generate Regular Video
-```
-/content-factory [topic]
-```
-Creates complete YouTube video with all elements.
-
-### Generate Shorts from Long
-```
-/content-factory "https://youtu.be/VIDEO_ID" --shorts
-/content-factory "/path/to/video.mp4" --shorts
-```
-Converts long video to vertical Shorts.
-
-### Generate Shorts from Scratch
-```
-/content-factory [topic] --shorts
-```
-Creates Shorts from text prompt.
-
-### Custom Options
-```
-/content-factory [topic] --style documentary --length 10
-/content-factory [topic] --voice en-US-JennyNeural
-/content-factory --shorts --duration 45
-```
-
-## Video Styles
-- `documentary` - Serious, informative (default)
-- `listicle` - "Top 10" format with clear sections
-- `tutorial` - Step-by-step instructional
-- `casual` - Friendly, conversational tone
-
-## TTS Voices
-Free Microsoft Edge TTS voices:
-- `en-US-ChristopherNeural` - Male, professional (default)
-- `en-US-JennyNeural` - Female, friendly
-- `en-US-GuyNeural` - Male, casual
-- `en-US-AriaNeural` - Female, news anchor
-- `en-GB-SoniaNeural` - British female
-- `en-AU-NatashaNeural` - Australian female
-
-## Output Files
-
-### Regular Videos
-After generation, you'll find in `~/Videos/OpenClaw/`:
-```
-your-video-title/
-├── script.md          # The full script
-├── voiceover.mp3      # Audio track
-├── video_raw.mp4      # Without captions
-├── video_final.mp4    # With captions (upload this!)
-├── thumbnail.jpg      # YouTube thumbnail
-└── metadata.json      # Title, description, tags
-```
-
-### Shorts
-```
-video-title/
-├── source.mp4         # Original long video
-├── audio.wav          # Extracted audio
-├── video_short_cropped.mp4  # Extracted segment
-├── video_short.mp4    # Final vertical short
-└── captions.txt       # Captions for the short
-```
-
-## Requirements
-
-### Basic (All Modes)
-- FFmpeg installed (`brew install ffmpeg` or `apt install ffmpeg`)
-- Edge TTS (`pip install edge-tts`)
-
-### Regular Videos
-- Free Pexels API key (get at https://pexels.com/api)
-
-### Shorts from Long (Optional AI Features)
-- OpenAI Whisper for transcription (`pip install openai-whisper`)
-- yt-dlp for YouTube downloads (`pip install yt-dlp`)
-
-## Setup
-
-### Install Dependencies
-
-**macOS:**
-```bash
-brew install ffmpeg
-pip install edge-tts pillow python-dotenv requests
-```
-
-**Linux (Ubuntu/Debian):**
-```bash
-sudo apt install ffmpeg
-pip install edge-tts pillow python-dotenv requests
-```
-
-**Windows:**
-```bash
-# Install FFmpeg from https://ffmpeg.org/download.html
-pip install edge-tts pillow python-dotenv requests
-```
-
-### Optional: AI Features
-```bash
-pip install openai-whisper yt-dlp
-```
-
-### Configure API Keys
-Create config directory:
-```bash
-mkdir -p ~/.openclaw-content-factory
-```
-
-Add Pexels API key:
-```bash
-echo "PEXELS_API_KEY=your_key" >> ~/.openclaw-content-factory/config.env
-```
-
-Optional: OpenAI API key (for advanced features):
-```bash
-echo "OPENAI_API_KEY=your_key" >> ~/.openclaw-content-factory/config.env
-```
-
-Optional: Configure defaults:
-```bash
-echo "DEFAULT_VOICE=en-US-ChristopherNeural" >> ~/.openclaw-content-factory/config.env
-echo "WHISPER_MODEL=base" >> ~/.openclaw-content-factory/config.env
-```
-
-## Features
-
-### ✨ Regular Video Mode
-- 100% free stock footage from Pexels
-- Natural-sounding voiceover with edge-tts
-- Professional captions burned into video
-- Auto-generated thumbnails
-- Metadata for YouTube upload
-
-### 🚀 Shorts from Long Mode
-- YouTube video download support
-- Local video file support
-- Whisper AI transcription (optional)
-- Smart highlight detection
-- Intelligent vertical cropping
-- Fast processing (< 2 minutes for 5 min video)
-- Concurrent execution support
-
-### ⚡ Shorts from Scratch Mode
-- Quick script generation
-- Snap TTS processing
-- Vertical stock footage
-- Optimized for 60-second format
-
-## Monetization
-
-| Method | Potential |
-|--------|-----------|
-| Fiverr/Upwork service | $200-500/video |
-| Monthly retainer | $1,500-3,000/client |
-| Your own channels | $2,000-10,000/mo AdSense |
-| Sell this skill | $50-150 on ClawHub |
-| Shorts agency | $100-300/short |
-
-### Video Ideas
-- **Faceless Finance Channel** - "The Psychology of Money"
-- **Tech Tutorials** - "How to Start Coding with AI"
-- **Productivity** - "5 Morning Habits of Success"
-- **Viral Shorts** - "Coffee facts you didn't know"
-- **Educational** - "History of Your City"
-
-## Examples
-
-### Regular Video
-```
-Create a 10-minute YouTube video about "The Psychology of Money"
-Style: Documentary
-Include 5 key lessons
-Professional male voice
-```
-
-### Shorts from Long
-```
-Convert this video to Shorts:
-https://youtu.be/dQw4w9WgXcQ
-Highlight duration: 60 seconds
-```
-
-### Shorts from Scratch
-```
-Make a YouTube Short about a surprising fact about sleep
-Style: Casual
-Female voice
-```
-
-### Tutorial Content
-```
-Generate a tutorial video:
-Topic: How to Start Investing with $100
-Length: 12 minutes
-Style: Tutorial with clear steps
-Voice: Friendly female
-```
-
-## Architecture
-
-This skill combines two powerful tools:
-1. **youtube-factory** - For regular video generation
-2. **AI-Youtube-Shorts-Generator** - For long video to Shorts conversion
-
-### Mode Decision Logic
-
-```
-Input → Check source type
-  ├─ YouTube URL OR local file → Shorts from Long mode
-  ├─ --shorts flag → Shorts from Scratch mode
-  └─ Otherwise → Regular Video mode
-```
-
-## Troubleshooting
-
-### No Stock Footage
-Ensure Pexels API key is set:
-```bash
-cat ~/.openclaw-content-factory/config.env
-```
-
-### Whisper Not Found
-Install Whisper:
-```bash
-pip install openai-whisper
-```
-
-### YouTube Download Fails
-Install yt-dlp:
-```bash
-pip install yt-dlp
-```
-
-### FFmpeg Not Found
-Install FFmpeg:
-```bash
-# macOS
-brew install ffmpeg
-
-# Ubuntu/Debian
-sudo apt install ffmpeg
-
-# Windows
-# Download from https://ffmpeg.org/download.html
-```
-
-## Performance Optimization
-
-### For Faster Processing
-- Use WHISPER_MODEL=base instead of large
-- Set shorter highlight durations
-- Use SSD for temporary files
-
-### For Better Quality
-- Use WHISPER_MODEL=medium or large
-- Higher resolution stock footage
-- Professional voiceover from your own studio
-
-## Support This Project
-
-If this skill saved you time or made you money, consider supporting your friendly AI assistant!
-
-**[Buy Me a Coffee](https://buymeacoffee.com/mayank8290)**
-
-**[Tip in Crypto](https://tip.md/oyi77)**
-
-Every coffee or crypto tip helps me build more free tools for the OpenClaw community.
-
-## License
-
-MIT License - Feel free to use, modify, and distribute!
+> One source → many formats. One system → consistent brand voice.
 
 ---
 
-Built for OpenClaw | 100% Free Tools | [Support the Creator](https://buymeacoffee.com/mayank8290)
+## What This Is
 
-**Made with ❤️ by the OpenClaw community**
+Content Factory is a structured system for content production. Instead of one agent doing everything, five specialized agent personas handle different parts of the pipeline — each with a specific role, set of templates, and quality standard.
+
+Load this skill when:
+- User wants to create content from scratch, a topic, or a research dump
+- User has one piece of content and wants it adapted to multiple platforms
+- User needs consistent brand voice across formats
+- User wants a repeatable content production process
+
+---
+
+## The Agent Roster
+
+| Agent | Role | Input | Output |
+|-------|------|-------|--------|
+| **Writer** | Long-form drafts | Topic + research + brain dump | Articles, essays, guides, newsletters |
+| **Remixer** | One-to-many adaptation | Finished source content | Twitter thread, LinkedIn, email, captions, scripts |
+| **Editor** | Clarity + polish + voice | Draft content | Publication-ready content |
+| **Scriptwriter** | Video + animation scripts | Topic or source content | 30-sec hooks, episode scripts, reels |
+| **Headline Machine** | Headlines + hooks | Topic + audience + angle | 20 headlines ranked by estimated CTR |
+
+---
+
+## The Pipeline
+
+```
+Topic/Research/Brain Dump
+        ↓
+    [WRITER] → Long-form draft
+        ↓
+    [EDITOR] → Clarity + polish pass
+        ↓
+    [REMIXER] → Twitter, LinkedIn, email, captions, slides
+    [SCRIPTWRITER] → Video scripts + animation hooks
+    [HEADLINE MACHINE] → Distribution hooks for each format
+```
+
+You can run the full pipeline, or jump to any agent directly.
+
+---
+
+## How to Trigger Each Agent
+
+Tell the agent which persona to adopt, give it the input, and specify the output format(s) you want.
+
+```
+# Full pipeline
+"Run the content factory on this article: [paste or link]. I need LinkedIn, Twitter thread, email, and 3 headline options."
+
+# Just the writer
+"Act as the Writer agent. Write a 1,200-word article on [topic] for [target audience]. Use the first-draft template."
+
+# Just the remixer
+"Act as the Remixer. Take this article and produce: Twitter thread, LinkedIn post, email newsletter section, and 5 pull quotes."
+
+# Just the editor
+"Act as the Editor. Cut this draft by 30%, sharpen the voice, and flag anything unclear."
+
+# Just the scriptwriter
+"Act as the Scriptwriter. Write a 30-second hook script for this article. Include visual direction notes."
+
+# Just the headline machine
+"Act as the Headline Machine. Generate 20 headlines for this article using the headline formulas."
+```
+
+---
+
+## Agent Instructions
+
+### Writer — The Drafting Engine
+
+**Role:** Long-form content creation from research, notes, or brain dumps.
+
+**How the Writer works:**
+1. **Start with the reader's ache** — not the topic. What are they struggling with?
+2. **Lead with story, not information** — hook with a moment they recognize
+3. **Structure for scannability** — subheadings, short paragraphs, one idea per paragraph
+4. **End with action** — what does the reader DO after reading?
+
+**Templates to use:**
+- `prompts/first-draft.md` — for turning notes into articles
+- `prompts/argument-builder.md` — for persuasive/opinion pieces
+- `prompts/research-pipeline.md` — for research-backed articles
+- `prompts/story-overlay.md` — when content needs narrative structure
+
+**Quality bar:**
+- No filler paragraphs — if a section doesn't earn its space, cut it
+- Concrete > abstract
+- Statistics need sources; opinions need framing
+- Read the output aloud (mentally). If it's flat, rewrite it.
+
+**Output format:**
+```markdown
+# [Headline]
+
+[Hook — 1-2 sentences, specific moment or question]
+
+[Body — structured with H2 subheadings]
+
+[Closing — action step or reflection prompt]
+
+---
+Meta:
+- Word count: [X]
+- Target audience: [who]
+- Voice: [whose voice / what tone]
+```
+
+---
+
+### Remixer — The Format Alchemist
+
+**Role:** One piece of source content → multiple platform-native formats.
+
+**How the Remixer works:**
+1. **Extract the core message** — one sentence capturing the essential idea
+2. **Identify the emotional hook** — what's the feeling that makes people stop scrolling?
+3. **Adapt tone to platform** — each platform has its own native register
+4. **Keep message integrity** — the idea doesn't change, only the packaging
+
+**Output formats:**
+
+#### Twitter/X Thread
+- Tweet 1: Hook that stops the scroll. Standalone — don't start with "Thread 🧵"
+- Each tweet: one idea, standalone value
+- Last tweet: CTA or reflection
+- No hashtags. Short lines, not walls of text.
+- Length: 6–12 tweets
+
+#### LinkedIn Post
+- Open with insight, not "I've been thinking about..."
+- 150–300 words for reach; longer for real stories
+- Line breaks after every 1–2 sentences
+- End with a question to drive comments
+- 3–5 hashtags at the end
+
+#### Email Newsletter Section
+- Subject line that creates curiosity (test: would you open it?)
+- Personal tone — like writing to one reader
+- One CTA, clear and specific
+- 200–350 words
+
+#### Instagram Caption
+- First line: the hook (must earn the "more" click)
+- 100–200 words
+- Line breaks for readability
+- 5–10 relevant hashtags at the end
+
+#### 30-Second Video Script
+- Opening hook: 3 seconds (what grabs them)
+- Core message: 20 seconds (the payoff)
+- Closing: 7 seconds (CTA or reflection)
+- Include visual direction notes for each beat
+
+#### Slide Deck Outline
+- 8 slides, one idea per slide
+- Bullet points, not paragraphs
+- Speaker notes for context
+
+#### Pull Quotes (5 options)
+- Self-contained, quotable without context
+- Under 280 characters each
+
+#### FAQ Section (5 questions)
+- Real questions the audience actually asks
+- Direct answers — no hedging
+
+**Platform rules:**
+- **Twitter/X:** No hashtags. Thread hooks matter most.
+- **LinkedIn:** No emojis in first line. Professional warmth.
+- **Instagram:** Visual-first. Caption supports, doesn't repeat the image.
+- **Email:** Subject line is 80% of the work.
+
+---
+
+### Editor — The Clarity Surgeon
+
+**Role:** Take drafts and make them publication-ready.
+
+**How the Editor works (5 passes):**
+
+**Pass 1: Clarity Surgery**
+- Cut word count by 30% minimum
+- Remove: jargon, passive voice, hedge words (perhaps, might, could, somewhat)
+- Replace abstract nouns with concrete verbs
+- Break sentences over 20 words
+- Kill adverbs unless they genuinely add meaning
+
+**Pass 2: Story & Flow**
+- Does the opening hook in 2 sentences or less?
+- Are transitions smooth between sections?
+- Does sentence length vary?
+- Does the ending land?
+
+**Pass 3: Voice Consistency**
+- Does this sound like the intended voice?
+- Remove clichés
+- Replace generic phrases with specific ones
+
+**Pass 4: Quality Check**
+- No manipulative language (guilt, shame, fear, urgency faking)
+- No claims without sources
+- No phrases that could apply to any company
+
+**Pass 5: Technical Polish**
+- Grammar, spelling, punctuation
+- Subheadings are descriptive and scannable
+- Meta info complete
+
+**Output format:**
+```markdown
+# [Title] — EDITED
+
+[Clean final version]
+
+---
+## Edit Report
+- Word count: Before [X] → After [Y] ([Z]% reduction)
+- Major changes: [list with reasoning]
+- Voice match: [assessment]
+- Confidence: [ready to publish / needs review on X]
+```
+
+---
+
+### Scriptwriter — The Animation Director
+
+**Role:** Video and animation scripts — 30-second hooks, episode scripts, reel scripts.
+
+**How the Scriptwriter works:**
+1. **Visual-first thinking** — every line has a corresponding visual
+2. **Hook in 3 seconds** — the first frame and first words decide if they keep watching
+3. **One idea, tight execution** — don't try to say too much
+4. **End with the scene** — a visual moment, not just words
+
+**Script format:**
+```markdown
+## [Title] — [Duration] Script
+
+**HOOK (0–3s):**
+Visual: [what the viewer sees]
+Audio: "[what they hear]"
+
+**BODY (3–[N]s):**
+Visual: [description]
+Audio: "[dialogue or narration]"
+
+**CLOSE ([N]–[total]s):**
+Visual: [closing scene]
+Audio: "[CTA or reflective line]"
+
+---
+Production notes: [pacing, tone, music direction]
+```
+
+---
+
+### Headline Machine — The Hook Factory
+
+**Role:** Generate 20+ headline and hook options for any piece of content.
+
+**Headline formulas to use:**
+
+| Formula | Example |
+|---------|---------|
+| Number + benefit | "7 Ways to Cut Content Creation Time in Half" |
+| Question | "Are You Leaving 80% of Your Content's Value on the Table?" |
+| How-to | "How to Turn One Blog Post Into a Month of Social Content" |
+| Counterintuitive | "Why Posting Less Actually Grew Our Audience 3x" |
+| Specific result | "The Exact System That Produced 60 Posts From One Article" |
+| Warning | "Stop Creating New Content Until You Do This First" |
+| Before/after | "From One Idea to 12 Formats in Under an Hour" |
+| Secret/unknown | "The Content Repurposing Strategy Most Creators Don't Know About" |
+
+**Output:** 20 headlines sorted by estimated CTR potential, with rationale for the top 5.
+
+---
+
+## Content Principles (All Agents)
+
+**Write this:**
+- One idea per piece of content
+- Specific beats vague ("We cut production time by 60%" vs. "We improved efficiency")
+- Show, don't tell
+- Lead with the interesting thing
+
+**Never write this:**
+- "delve," "tapestry," "leverage," "harness," "utilize"
+- "excited to announce," "game-changer," "revolutionary," "disruptive"
+- "at the end of the day," "in today's fast-paced world," "now more than ever"
+- Anything that could apply to literally any company
+
+**The human test:** Before finalizing any piece, ask: "Would a real person say this out loud to a friend?" If no, rewrite it.
+
+---
+
+## Spawning Sub-Agents
+
+For heavy content work, spawn separate sub-agents for each role:
+
+```
+# Spawn a writer for a long article
+sessions_spawn --task "Act as the Writer agent (Content Factory skill). Write a 1,500-word article on [topic] for [audience]. Tone: [voice]. Use prompts/first-draft.md format."
+
+# Spawn the remixer after the article is done
+sessions_spawn --task "Act as the Remixer agent (Content Factory skill). Remix this article into: Twitter thread, LinkedIn post, email section, and 5 pull quotes. Source: [article]"
+```
+
+---
+
+## File Structure
+
+```
+content-factory/
+├── SKILL.md                    ← This file
+├── README.md                   ← Human-readable overview
+└── prompts/
+    ├── first-draft.md          ← Brain dump → structured article
+    ├── argument-builder.md     ← Thesis → persuasive essay
+    ├── clarity-pass.md         ← Cut 30%, remove jargon
+    ├── remix-engine.md         ← One piece → 10 formats
+    ├── research-pipeline.md    ← Sources → original article
+    ├── headlines.md            ← 20 headlines from formulas
+    ├── empathy-rewrite.md      ← Technical → accessible
+    ├── story-overlay.md        ← Boring → narrative structure
+    ├── polish-pass.md          ← Final edit checklist
+    └── voice-cloner.md         ← Match writing style
+```
+
+---
+
+*Content Factory v1.0 — February 2026*
+*A product by Carson Jarvis (@CarsonJarvisAI)*

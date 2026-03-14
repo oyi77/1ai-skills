@@ -1,586 +1,468 @@
 ---
 name: tiktok-slideshow
 description: >
-  Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge API.
-  Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,
-  post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation.
-  Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing or
-  video creation (this is for photo slideshows only), non-TikTok social media platforms, or any task unrelated
-  to creating visual slideshow content for TikTok.
-metadata:
-  {
-    "openclaw": {
-      "emoji": "📱",
-      "requires": { "bins": ["ffmpeg", "curl"], "env": ["PEXELS_API_KEY"] }
-    }
-  }
+  Creates TikTok image carousels (slideshows with text overlays on photos) via the ViralBaby API.
+  Use when the user wants to: create TikTok slideshows or carousels, find/search for background
+  images for social media content, post or upload slideshow content to TikTok, edit slide text,
+  or manage image collections for content creation.
+  Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing
+  or video creation (this is for photo slideshows only), non-TikTok social media platforms, or
+  any task unrelated to creating visual slideshow content for TikTok.
 ---
 
-# TikTok Slideshow (Pexels + FFmpeg + PostBridge)
+# ViralBaby API v1 — TikTok Slideshow Creation
 
-**Custom implementation for BerkahKarya** - Creates TikTok carousels with professional text overlays.
+Create image carousels with text overlays for TikTok — search images, build slides, edit text, and upload to TikTok drafts.
 
-## Architecture
+Base URL: `https://viralbaby.co`
 
-**Flow:**
-```
-Topic Research → Pexels Image Search → FFmpeg Text Overlay → PostBridge Upload → TikTok Carousel
-```
+All endpoints (except auth) require: `Authorization: Bearer $VB_KEY`
 
-**Stack:**
-- **Image Search**: Pexels API (high-quality stock photos/videos)
-- **Text Overlay**: FFmpeg (professional text rendering)
-- **Upload**: PostBridge API (multi-platform posting)
-- **Format**: TikTok Carousel 1080×1920px (9:16 vertical)
+**All indices are 1-based** — image indices, slide indices, etc. Slide 1 is the first slide.
 
 ---
 
-## Prerequisites
+## Authentication & API Key
 
-### 1. Pexels API Key
+**IMPORTANT — check environment variables first, in this order:**
 
-Get FREE API key at: https://www.pexels.com/api/
+1. **Check `$VB_KEY`** — if set, you already have an API key. Skip straight to using the API.
+2. **Check `$VB_PASSWORD`** — if set, you have a saved password. Log in to get a new API key.
+3. **If neither exists**, sign up as a new user (see below).
 
-Set environment variable:
+### Sign Up (new user)
+```
+POST /api/v1/auth
+Body: { "email": "user@example.com", "password": "securepassword", "action": "signup" }
+Response: { "key": "vb_live_abc123...", "keyId": "uuid", "userId": "user_...", "message": "Account created..." }
+```
+
+When signing up, auto-generate a secure password for the user. **Immediately save both** the API key and the password as environment variables so they persist across sessions:
 ```bash
-export PEXELS_API_KEY="your_pexels_api_key_here"
+export VB_KEY="vb_live_..."
+export VB_PASSWORD="the-generated-password"
 ```
 
-### 2. PostBridge API Key
+### Log In (existing user)
+If `$VB_KEY` is missing but `$VB_PASSWORD` is set, log in to get a fresh API key:
+```
+POST /api/v1/auth
+Body: { "email": "user@example.com", "password": "$VB_PASSWORD" }
+Response: { "key": "vb_live_abc123...", "keyId": "uuid", "userId": "user_...", "message": "Logged in..." }
+```
+Then save the new key: `export VB_KEY="vb_live_..."`
 
-Already configured in PostBridge Client:
+The API key is only shown once and cannot be retrieved later. Always save it immediately. Use it as `Authorization: Bearer $VB_KEY` for all other endpoints.
 
-```bash
-export POST_BRIDGE_API_KEY="pb_live_Kyc2gafDF7Qc8c2ALELtEC"
-export POST_BRIDGE_BASE_URL="https://api.post-bridge.com/v1"
+---
+
+## User Preferences
+
+Store and retrieve the user's business context and content style. **Always fetch preferences at the start of a new session before creating any content.**
+
+### Get Preferences
+```
+GET /api/v1/preferences
+Response: {
+  "style": { "id": "uuid", "name": "Casual", "content": "8th grade reading level, lowercase, first-person POV..." } | null,
+  "product_info": { "id": "uuid", "name": "My Business", "content": "We sell organic skincare products..." } | null
+}
 ```
 
-### 3. FFmpeg Installation
-
-Check if installed:
-```bash
-ffmpeg -version
+### Save or Update a Preference
+```
+PUT /api/v1/preferences
+Body: { "type": "style", "name": "My Style", "content": "casual tone, 8th grade reading level..." }
+Body: { "type": "product_info", "name": "My Business", "content": "we sell X to Y audience..." }
+Response: { "id": "uuid", "type": "style", "name": "...", "content": "..." }
 ```
 
-**Install:**
-```bash
-# Debian/Ubuntu
-sudo apt update && sudo apt install ffmpeg
+Types: `style` (voice/tone/format) or `product_info` (business/product description).
 
-# macOS
-brew install ffmpeg
+**Workflow:**
+1. On first session: `GET /api/v1/preferences` — if both are null, ask the user for their business description and content style, then save with `PUT`
+2. On subsequent sessions: fetch silently, use the stored context without asking again
+3. User can update preferences anytime by asking (e.g. "update my style to be more professional")
 
-# Alternative: Use Docker
-docker run -v $(pwd):/workdir -it jrottenberg/ffmpeg:latest
+---
+
+## Content Ideation Process
+
+Before creating a slideshow, always think through:
+
+1. **Hook** — what makes someone stop scrolling? Lead with a bold claim, surprising fact, relatable pain point, or "you're doing X wrong" angle
+2. **Content** — what does the audience actually need to hear? Use the stored `product_info` for business context
+3. **Voice** — use the stored `style` preference for tone and format (reading level, POV, capitalization, etc.)
+4. **CTA** — last slide should drive action: follow, save, comment, or visit
+
+Do NOT ask the user to describe their business or style on every session if preferences are already stored.
+
+---
+
+## Image Search
+
+### Search Unsplash
+```
+POST /api/v1/images/search
+Body: { "query": "sunset beach", "per_page": 20, "page": 1, "color": "teal" }
+Response: {
+  "searchId": "uuid",
+  "results": [{
+    "index": 1,
+    "id": "unsplash-id",
+    "description": "A sunset over the ocean",
+    "thumbnailUrl": "https://...",
+    "url": "https://...",
+    "photographer": "John Doe"
+  }],
+  "total": 500
+}
 ```
 
-### 4. Directory Structure
+Save `searchId` — needed for collection creation and the preview page URL.
 
-Skill will create:
+**`color` parameter** (optional) — filter results by dominant color. Best values for dark slideshow backgrounds:
+- `teal` — moody, atmospheric (works great for most topics)
+- `black` — very dark, high drama
+- `blue` — cool, calm, professional
+- Omit for no filter (broadest results)
+
+Results are automatically diversified across photographers — no two consecutive photos from the same person.
+
+**Image selection modes:**
+
+**Auto mode** (AI picks, no human review):
+- Search with a `color` filter matching the content mood
+- Use descriptions to reason about background suitability: prefer images described as landscapes, architecture, abstract, nature, or atmospheric scenes — avoid portraits, close-up faces, and busy text-heavy scenes
+- Pick 8–12 images from across the result indices (not just the first few)
+
+**Preview mode** (human picks):
+- After searching, share the preview URL: `https://viralbaby.co/preview/search/{searchId}`
+- Tell the user: "Here are the search results — tell me which numbers you want to use (e.g. '1, 3, 5, 8')"
+- Wait for their response, then use those indices to create the collection
+
+---
+
+## Collections
+
+### List Collections
 ```
-~/.tiktok-slideshow/
-├── images/          # Downloaded from Pexels
-├── rendered/        # FFmpeg rendered slides
-├── scripts/         # Helper scripts
-└── projects/        # Project metadata
+GET /api/v1/collections
+Response: [{ "id": "uuid", "name": "Beach Vibes", "imageCount": 12, "coverImageUrl": "..." }]
+```
+
+### Create Empty Collection
+```
+POST /api/v1/collections
+Body: { "name": "Beach Vibes", "description": "Sunset and ocean photos" }
+Response: { "id": "uuid", "name": "Beach Vibes" }
+```
+
+### Create Collection from Search Results
+```
+POST /api/v1/collections/from-search
+Body: { "name": "Beach Vibes", "searchId": "uuid", "imageIndices": [1, 4, 6, 8] }
+Response: { "collection": { "id": "uuid", "name": "Beach Vibes" }, "stats": { "total": 4, "successful": 4, "failed": 0 } }
+```
+This downloads the selected search result images to permanent storage. Maximum 30 images per request.
+
+### Get Collection Details
+```
+GET /api/v1/collections/{id}
+Response: { "id": "uuid", "name": "...", "imageCount": 12, "images": [{ "id": "uuid", "url": "https://..." }] }
+```
+
+### Delete Collection
+```
+DELETE /api/v1/collections/{id}
+Response: { "success": true }
 ```
 
 ---
 
-## TikTok Carousel Best Practices (2026)
+## Slideshows
 
-**Algorithm Metrics** (from latest research):
-- **Swipe-through rate**: Percentage of users who swipe all slides
-- **Dwell time**: Time spent viewing each slide
-- **Reverse swipes**: Users swiping back to re-view
-
-**Optimal Format:**
+### List Slideshows
 ```
-Resolution: 1080 × 1920px (9:16 vertical)
-Slides: 5-10 images (best engagement)
-Image size: < 100KB per slide (fast loading)
-Aspect ratio: 9:16 (native TikTok)
+GET /api/v1/slideshows
+GET /api/v1/slideshows?status=draft
+Response: [{ "id": "uuid", "title": "...", "status": "draft", "slideCount": 5, "previewUrl": "https://viralbaby.co/preview/uuid" }]
 ```
 
-**Engagement Tips:**
-1. **Hook in first slide**: Bold, attention-grabbing text
-2. **Storytelling progression**: Each slide builds on previous
-3. **CTA on last slide**: Follow, save, share, or link
-4. **Consistent visual style**: Same font, color palette
-5. **High-quality images**: Use high-res Pexels images
+### Create Slideshow
+Each slide is a background image with text overlays. Maximum 30 slides per slideshow.
 
-**Text Overlay Best Practices:**
-- Font size: 32-48px for titles, 24-32px for subtitles
-- Position: Centered with margins
-- Color: White text with black outline (high contrast)
-- Background: Semi-transparent dark box for readability
-- Length: Max 2-3 lines per slide
+Each slide can get its image from three sources (in priority order):
+1. `imageUrl` — direct URL to any image
+2. `searchId` + `imageIndex` — reference a previous search result by 1-based index
+3. `collectionId` — random image from a collection
 
----
+Text element options:
+- `text` (required) — the text content
+- `type` (required) — `"title"` (larger, bolder) or `"subtitle"` (smaller)
+- `fontSize` (optional) — font size in px, defaults to 16 for title, 14 for subtitle. For better readability on TikTok, consider using 18–20 for titles.
+- Text is always white with black outline. Long text auto-wraps to fit within the slide.
+- Text positioning is automatic: single elements center vertically, title + subtitle position at 40%/60% for clear separation.
 
-## Complete Workflow
-
-### Step 1: Search Images with Pexels API
-
-```bash
-POST https://api.pexels.com/v1/search
-Authorization: {PEXELS_API_KEY}
-
-Query Parameters:
-- query: "morning routine aesthetic"
-- orientation: "vertical"  # For TikTok 9:16
-- size: "large"
-- per_page: 20
-
-Response:
-{
-  "photos": [
+```
+POST /api/v1/slideshows
+Body: {
+  "title": "5 Morning Routine Tips",
+  "aspectRatio": "3:4",
+  "slides": [
     {
-      "id": 123456,
-      "url": "https://...",
-      "src": {
-        "original": "https://...",
-        "large2x": "https://...",
-        "large": "https://...",
-        "medium": "https://...",
-        "small": "https://..."
-      },
-      "photographer": "John Doe",
-      "alt": "Aesthetic morning routine"
+      "imageUrl": "https://example.com/photo.jpg",
+      "textElements": [{ "text": "Your morning routine is broken", "type": "title" }]
+    },
+    {
+      "searchId": "uuid",
+      "imageIndex": 3,  // 1-indexed
+      "textElements": [{ "text": "Here's why", "type": "title", "fontSize": 18 }]
+    },
+    {
+      "collectionId": "uuid",
+      "textElements": [
+        { "text": "Tip #1: Wake up early", "type": "title" },
+        { "text": "Even 30 minutes makes a difference", "type": "subtitle" }
+      ]
     }
+  ]
+}
+Response: {
+  "id": "uuid",
+  "title": "5 Morning Routine Tips",
+  "previewUrl": "https://viralbaby.co/preview/uuid",
+  "slides": [{ "id": "slide-...", "imageUrl": "...", "textElements": [...] }],
+  "status": "draft"
+}
+```
+
+Aspect ratios: `3:4` (default, best for TikTok), `1:1`, `9:16`, `4:5`
+
+### Get Slideshow
+```
+GET /api/v1/slideshows/{id}
+Response: { "id": "uuid", "title": "...", "slides": [...], "status": "draft", "previewUrl": "..." }
+```
+
+### Update Slideshow
+Use this to edit slides — change text, reorder, add/remove slides, update title, etc.
+
+```
+PUT /api/v1/slideshows/{id}
+Body: { "title": "New Title", "slides": [...], "status": "ready_to_publish" }
+Response: { "id": "uuid", "title": "New Title", ... }
+```
+
+**How to edit slides:**
+1. `GET /api/v1/slideshows/{id}` — fetch current slideshow with all slides
+2. Modify the `slides` array as needed (change text, reorder, add/remove)
+3. `PUT /api/v1/slideshows/{id}` with the updated `slides` array
+
+Each slide in the array has this structure:
+```json
+{
+  "id": "slide-uuid",
+  "imageUrl": "https://cdn.viralbaby.co/...",
+  "aspectRatio": "3:4",
+  "textElements": [
+    { "text": "Your hook text here", "type": "title", "fontSize": 16 },
+    { "text": "Supporting subtitle", "type": "subtitle", "fontSize": 14 }
   ]
 }
 ```
 
-**Recommendation**: Download `large` quality (best balance of quality + size).
+Keep existing `id` and `imageUrl` when editing text — only change what you need.
 
-### Step 2: Download Images
-
-```python
-import requests
-
-def download_image(url, filename):
-    """Download image from Pexels URL."""
-    response = requests.get(url, stream=True)
-    response.raise_for_status()
-
-    with open(filename, 'wb') as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
-
-    print(f"✅ Downloaded: {filename}")
+### Delete Slideshow
+```
+DELETE /api/v1/slideshows/{id}
+Response: { "success": true }
 ```
 
-### Step 3: Create Text Overlay with FFmpeg
+### Render Slides (Server-Side)
+Renders slides as JPEG images with text overlaid on background images. Returns S3 URLs.
 
-**Basic FFmpeg command:**
-```bash
-ffmpeg -i input.jpg \
-  -vf "drawtext=text='Your Text':fontfile=/path/to/font.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:borderw=3:bordercolor=black" \
-  -vf "scale=1080:-1" \
-  output.jpg
 ```
-
-**Advanced FFmpeg command (with background box):**
-```bash
-ffmpeg -i input.jpg \
-  -vf "
-    scale=1080:1920,
-    drawtext=text='Hook Text Here':fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:borderw=4:bordercolor=black:box=1:boxcolor=black@0.5:boxborderw=10
-  " \
-  -q:v 2 \
-  output.jpg
-```
-
-**Parameter explanations:**
-- `scale=1080:1920`: Resize to TikTok format
-- `fontsize=48`: Title font size (use 32 for subtitle)
-- `fontcolor=white`: Text color
-- `borderw=4:bordercolor=black`: Text outline
-- `box=1:boxcolor=black@0.5`: Semi-transparent background box
-- `boxborderw=10`: Box padding around text
-- `-q:v 2`: JPEG quality (lower = better, 2-5 recommended)
-
-**Multiple lines + subtitle:**
-```bash
-ffmpeg -i input.jpg \
-  -vf "
-    scale=1080:1920,
-    drawtext=text='Main Title':fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:borderw=4:bordercolor=black:box=1:boxcolor=black@0.5:boxborderw=10,
-    drawtext=text='Subtitle here':fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:fontsize=32:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2+80:borderw=3:bordercolor=black:box=1:boxcolor=black@0.5:boxborderw=8
-  " \
-  -q:v 2 \
-  output.jpg
-```
-
-### Step 4: Upload to TikTok via PostBridge
-
-Using PostBridge client:
-
-```python
-from skills_1ai_skills.marketing.post_bridge_client import PostBridgeClient
-
-client = PostBridgeClient()
-
-# Get TikTok account
-tiktok_accounts = client.get_accounts_by_platform("tiktok")
-if not tiktok_accounts:
-    raise Exception("No TikTok account connected")
-
-account_id = tiktok_accounts[0]['id']
-
-# Prepare media URLs (host your images)
-# You'll need to host rendered images on a CDN or use temporary URLs
-media_urls = [
-    "https://your-cdn.com/slide-1.jpg",
-    "https://your-cdn.com/slide-2.jpg",
-    # ...
-]
-
-# Create post
-result = client.create_post(
-    caption="""
-Your carousel caption here...
-
-Save this for later! 👇
-
-#tiktokcarousel #slideshow #viralcontent
-    """.strip(),
-    account_ids=[account_id],
-    media_urls=media_urls,
-)
-
-if "error" in result:
-    print(f"❌ Upload failed: {result['error']}")
-else:
-    print(f"✅ Uploaded successfully! Post ID: {result['id']}")
+POST /api/v1/slideshows/{id}/render
+Body: { "slideIndices": [1, 3] }   // optional (1-indexed), defaults to all slides
+Response: { "renderedSlides": [{ "index": 1, "url": "https://s3.../rendered-slide.jpg" }] }
 ```
 
 ---
 
-## Complete Example Script
+## TikTok Integration
 
-```python
-#!/usr/bin/env python3
-"""
-tiktok_slideshow.py - Create TikTok carousels with Pexels + FFmpeg + PostBridge
+### Connect TikTok Account
+Returns a one-time OAuth URL. Open it in any browser — no dashboard login required.
 
-Usage:
-    python tiktok_slideshow.py create "topic" "hook" 5
-    python tiktok_slideshow.py upload project_name
-"""
+```
+GET /api/v1/tiktok/connect
+Response: {
+  "authUrl": "https://www.tiktok.com/v2/auth/authorize/?...",
+  "message": "Open this URL in any browser to connect your TikTok account."
+}
+```
 
-import os
-import json
-import requests
-import subprocess
-from pathlib import Path
-from typing import List, Dict
+Give the `authUrl` to the user to open in their browser. They will complete TikTok's OAuth flow and see a success page when done. This only needs to be done once.
 
-# Configuration
-PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY")
-POST_BRIDGE_API_KEY = os.environ.get("POST_BRIDGE_API_KEY", "pb_live_Kyc2gafDF7Qc8c2ALELtEC")
+### Check Connection Status
+```
+GET /api/v1/tiktok/status
+Response: { "connected": true, "tokenExpired": false, "user": { "display_name": "..." } }
+// or
+Response: { "connected": false, "message": "TikTok not connected..." }
+```
 
-# Directories
-BASE_DIR = Path.home() / ".tiktok-slideshow"
-IMAGES_DIR = BASE_DIR / "images"
-RENDERED_DIR = BASE_DIR / "rendered"
-PROJECTS_DIR = BASE_DIR / "projects"
+### Upload to TikTok Drafts
+Renders all slides server-side and uploads to the user's **TikTok drafts** (not published directly). The user must open the TikTok app to review and publish from their drafts.
 
-for dir_path in [BASE_DIR, IMAGES_DIR, RENDERED_DIR, PROJECTS_DIR]:
-    dir_path.mkdir(parents=True, exist_ok=True)
+```
+POST /api/v1/tiktok/upload
+Body: {
+  "slideshowId": "uuid",
+  "title": "5 Morning Routine Tips",
+  "description": "I used to wake up exhausted every single day. Hitting snooze 5 times, scrolling my phone before my feet even touched the floor...\n\nThen I made 3 small changes and everything shifted. These aren't complicated hacks — they're simple habits anyone can start tomorrow.\n\nSave this for your morning tomorrow 👇",
+  "hashtags": ["morningroutine", "productivity", "tips"]
+}
+Response: { "success": true, "publishId": "tiktok-publish-id", "renderedSlides": 5 }
+```
 
+- `title` — short title for the TikTok post
+- `description` — caption text, up to 4000 characters. **Write long, detailed descriptions** — longer captions tend to perform better on TikTok. Include storytelling, context, call-to-action, and relatable hooks. Aim for 500–2000 characters minimum, not just 1-2 sentences.
+- `hashtags` — array of up to 5 hashtags (with or without `#` prefix, auto-added). Appended to the description.
 
-def search_pexels_images(query: str, count: int = 10) -> List[Dict]:
-    """Search images on Pexels."""
-    if not PEXELS_API_KEY:
-        raise Exception("PEXELS_API_KEY not set")
+After a successful upload, tell the user: "Your slideshow has been uploaded to your TikTok drafts. Open the TikTok app to review and publish it."
 
-    url = "https://api.pexels.com/v1/search"
-    headers = {"Authorization": PEXELS_API_KEY}
-    params = {
-        "query": query,
-        "orientation": "vertical",
-        "size": "large",
-        "per_page": count
-    }
+---
 
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
+## Complete Workflow Example
 
-    photos = response.json().get("photos", [])
-    print(f"📸 Found {len(photos)} images for: {query}")
+Here's how to create and upload a slideshow end-to-end:
 
-    return photos
+```
+0. Check credentials (in order):
+   a. If $VB_KEY is set → skip to step 1
+   b. If $VB_PASSWORD is set → POST /api/v1/auth { "email": "...", "password": "$VB_PASSWORD" } → export VB_KEY="vb_live_..."
+   c. Otherwise → POST /api/v1/auth { "email": "...", "password": "<auto-generate>", "action": "signup" } → export VB_KEY="vb_live_..." && export VB_PASSWORD="..."
 
+0b. Fetch preferences
+   GET /api/v1/preferences
+   → If style or product_info is null, ask user and save with PUT /api/v1/preferences
+   → Use stored context for all content decisions going forward
 
-def download_image(url: str, filename: Path) -> Path:
-    """Download image from URL."""
-    response = requests.get(url, stream=True)
-    response.raise_for_status()
+1. Search for images
+   POST /api/v1/images/search  { "query": "morning routine aesthetic" }
+   → save searchId
 
-    with open(filename, 'wb') as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
+2. Create a collection from search results
+   POST /api/v1/collections/from-search  { "name": "Morning Routine", "searchId": "...", "imageIndices": [1, 3, 6, 9, 12] }
+   → save collectionId
 
-    print(f"✅ Downloaded: {filename}")
-    return filename
+3. Create the slideshow (one slide per element in the array, up to 30 slides)
+   POST /api/v1/slideshows  {
+     "title": "5 Morning Routine Tips",
+     "aspectRatio": "3:4",
+     "slides": [
+       { "collectionId": "...", "textElements": [{ "text": "Your morning routine is broken", "type": "title" }] },
+       { "collectionId": "...", "textElements": [{ "text": "Tip #1: Wake up at the same time", "type": "title" }, { "text": "Consistency beats motivation", "type": "subtitle" }] },
+       { "collectionId": "...", "textElements": [{ "text": "Tip #2: No phone for 30 min", "type": "title" }] },
+       { "collectionId": "...", "textElements": [{ "text": "Tip #3: Move your body", "type": "title" }] },
+       { "collectionId": "...", "textElements": [{ "text": "Follow for more tips", "type": "title" }] }
+     ]
+   }
+   → save slideshowId, get previewUrl
 
+4. (Optional) Edit slides
+   GET /api/v1/slideshows/{id}  → get current slides
+   Modify text/elements as needed, then:
+   PUT /api/v1/slideshows/{id}  { "slides": [...updated slides...] }
 
-def create_text_overlay(input_path: Path, output_path: Path, text: str, subtitle: str = "") -> Path:
-    """Add text overlay to image using FFmpeg."""
-    # FFmpeg command for text overlay
-    command = [
-        "ffmpeg",
-        "-i", str(input_path),
-        "-vf", f"scale=1080:1920,drawtext=text='{text}':fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:borderw=4:bordercolor=black:box=1:boxcolor=black@0.5:boxborderw=10",
-        "-q:v", "2",
-        "-y",  # Overwrite output
-        str(output_path)
-    ]
+5. Preview the slideshow
+   Share previewUrl with the user so they can verify in their browser
 
-    if subtitle:
-        # Add subtitle as second drawtext chain
-        command[3] = f"scale=1080:1920,drawtext=text='{text}':fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:borderw=4:bordercolor=black:box=1:boxcolor=black@0.5:boxborderw=10,drawtext=text='{subtitle}':fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:fontsize=32:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2+80:borderw=3:bordercolor=black:box=1:boxcolor=black@0.5:boxborderw=8"
+6. Connect TikTok (first time only)
+   GET /api/v1/tiktok/connect  → give authUrl to user to open in browser → complete OAuth
+   GET /api/v1/tiktok/status   → verify connected: true
 
-    result = subprocess.run(command, capture_output=True, text=True)
-
-    if result.returncode != 0:
-        raise Exception(f"FFmpeg failed: {result.stderr}")
-
-    print(f"✅ Rendered: {output_path}")
-    return output_path
-
-
-def create_slideshow(topic: str, hook: str, num_slides: int = 5) -> str:
-    """Create a TikTok slideshow."""
-    print(f"\n📱 Creating slideshow for: {topic}")
-    print(f"🎯 Hook: {hook}")
-    print(f"📊 Slides: {num_slides}\n")
-
-    # Search images
-    photos = search_pexels_images(topic, num_slides)
-
-    # Download & render slides
-    slides = []
-
-    for i, photo in enumerate(photos, 1):
-        # Download
-        img_url = photo['src']['large']
-        img_filename = IMAGES_DIR / f"temp_{i}.jpg"
-        download_image(img_url, img_filename)
-
-        # Render with text
-        if i == 1:
-            text = hook
-        elif i == len(photos):
-            text = "Follow for more! 👇"
-        else:
-            text = f"Tip #{i-1}"
-
-        output_filename = RENDERED_DIR / f"slide_{i}.jpg"
-        create_text_overlay(img_filename, output_filename, text)
-        slides.append(str(output_filename))
-
-    # Save project metadata
-    project_id = f"{topic.replace(' ', '_').lower()}_{len(photos)}"
-    metadata = {
-        "id": project_id,
-        "topic": topic,
-        "hook": hook,
-        "num_slides": len(photos),
-        "slides": slides,
-        "created_at": str(Path.ctime(IMAGES_DIR))
-    }
-
-    project_file = PROJECTS_DIR / f"{project_id}.json"
-    with open(project_file, 'w') as f:
-        json.dump(metadata, f, indent=2)
-
-    print(f"\n✅ Slideshow created: {project_id}")
-    print(f"📁 Slides: {len(slides)}")
-    print(f"📂 Location: {RENDERED_DIR}/")
-
-    return project_id
-
-
-if __name__ == "__main__":
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Usage:")
-        print("  python tiktok_slideshow.py create <topic> <hook> <num_slides>")
-        print("  python tiktok_slideshow.py upload <project_id>")
-        sys.exit(1)
-
-    command = sys.argv[1]
-
-    if command == "create":
-        topic = sys.argv[2]
-        hook = sys.argv[3]
-        num_slides = int(sys.argv[4]) if len(sys.argv) > 4 else 5
-
-        project_id = create_slideshow(topic, hook, num_slides)
-        print(f"\nNext step: Upload to TikTok")
-        print(f"  python tiktok_slideshow.py upload {project_id}")
-
-    elif command == "upload":
-        project_id = sys.argv[2]
-        print(f"📤 Uploading project: {project_id}")
-        # TODO: Implement upload logic with PostBridge
-        print("⚠️ Upload feature coming soon!")
-
-    else:
-        print(f"Unknown command: {command}")
-        sys.exit(1)
+7. Upload to TikTok drafts
+   POST /api/v1/tiktok/upload  { "slideshowId": "...", "title": "5 Morning Routine Tips", "description": "I used to wake up and immediately reach for my phone...\n\n(write a long, detailed caption — 500-2000+ chars)", "hashtags": ["morningroutine", "productivity"] }
+   → Tell user to open TikTok app to review and publish from drafts
 ```
 
 ---
 
-## Publishing to ClawHub
+## Billing
 
-After modifying this skill, publish to ClawHub:
+Free tier: 5 TikTok uploads. Pro: $49 one-time payment, unlimited uploads.
 
-```bash
-export GITHUB_TOKEN="clh_Nf4OK9akiUsJe4mKeVaCJiupZILjii6g35bxs9LX5-w"
+The upload endpoint (`POST /api/v1/tiktok/upload`) is the only gated endpoint. All other endpoints (search, collections, slideshows, editing) are free and unlimited.
 
-clawhub publish \
-  ~/.openclaw/workspace/skills/tiktok-slideshow \
-  --slug tiktok-slideshow \
-  --name "TikTok Slideshow (Pexels + FFmpeg + PostBridge)" \
-  --version 2.0.0 \
-  --changelog "Replaced ViralBaby API with custom Pexels + FFmpeg + PostBridge flow. Removed dependency on external slideshow API. Added TikTok Carousel best practices." \
-  --tags latest,tiktok,slideshow,carousel,pexels,ffmpeg
+### Check Billing Status
+```
+GET /api/v1/billing
+Authorization: Bearer $VB_KEY
+Response: {
+  "plan": "free",
+  "uploadCount": 3,
+  "limit": 5,
+  "upgradeUrl": "https://viralbaby.co/checkout?userId=user_xxx"
+}
 ```
 
-**Learn more:** https://www.tip.md/oyi77
+### Handling 402 (Upload Limit Reached)
+When the free upload limit is exhausted, `POST /api/v1/tiktok/upload` returns:
+```
+HTTP 402
+{
+  "error": "Free upload limit reached. Upgrade to Pro for unlimited uploads.",
+  "plan": "free",
+  "uploadCount": 5,
+  "limit": 5,
+  "upgradeUrl": "https://viralbaby.co/checkout?userId=user_xxx"
+}
+```
+
+When you receive a 402:
+1. Tell the user they've used all 5 free uploads
+2. Share the `upgradeUrl` so they can upgrade to Pro ($49 one-time)
+3. After payment, uploads work immediately — no action needed from the user
+
+### Pro Plan
+After upgrading, `GET /api/v1/billing` returns:
+```json
+{ "plan": "pro", "uploadCount": 5, "limit": "unlimited" }
+```
 
 ---
 
-## Resources
+## Feedback & Error Reporting
 
-- **Pexels API**: https://www.pexels.com/api/
-- **FFmpeg Documentation**: https://ffmpeg.org/documentation.html
-- **PostBridge Documentation**: Check local skill docs
-- **TikTok Carousel Best Practices**: Regularly research algorithm changes (meta updates frequently)
-- **Publishing Help**: https://docs.openclaw.ai/tools/clawhub
+If you encounter an error from the API, or if the user shares feedback about ViralBaby, report it:
+
+```
+POST /api/v1/feedback
+Body: { "type": "error", "message": "POST /api/v1/tiktok/upload returned 500: Internal server error. Slideshow ID: abc123" }
+Body: { "type": "feedback", "message": "User says: would love to be able to change font styles" }
+```
+
+- `type` — `"error"` for API errors/bugs, `"feedback"` for user suggestions (defaults to `"feedback"`)
+- `message` — free-form text. For errors, include the endpoint, status code, error message, and any relevant IDs. For feedback, include the user's words.
+
+Report errors automatically when an API call fails unexpectedly (5xx, or repeated 4xx that shouldn't happen). Don't report 401/402 — those are expected.
 
 ---
 
-*BerkahKarya Custom Implementation - 2026*
+## Error Responses
 
----
-
-## 🚨 PostBridge API — Critical Updates (2026-03-12)
-
-**Base URL:** `https://api.post-bridge.com/v1`  
-**API Key:** `pb_live_AT9Xm4PKaYBzAvFZYGgexi`  
-**Auth:** `Authorization: Bearer {api_key}`  
-**Rate Limit:** 10 requests/second — add `time.sleep(0.2)` between calls in batch ops
-
-### ⚠️ CRITICAL: Instagram Posts REQUIRE Media
-
-> **26 posts FAILED SILENTLY because they were text-only.**  
-> Instagram posts MUST include `media[]` (image or video).  
-> Text-only Instagram posts are REJECTED without any error message.  
-> **ALWAYS upload media before posting to Instagram.**
-
-### Correct Endpoints (Use These — Not Old Docs)
-
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| POST | `/v1/posts` | Create post. **REQUIRED:** `caption`, `scheduled_at`, `social_accounts[]`, `media[]` |
-| GET | `/v1/posts` | List posts. Filter: `?platform=tiktok&status=posted\|scheduled\|processing` |
-| GET | `/v1/post-results` | Check success/failure of each post — **ALWAYS CHECK AFTER POSTING** |
-| GET | `/v1/social-accounts` | Get connected account IDs. Filter: `?platform=tiktok` |
-| POST | `/v1/media/create-upload-url` | Get signed URL. Body: `{name, mime_type, size_bytes}` |
-| GET | `/v1/analytics` | Get view_count, like_count, comment_count, share_count |
-| POST | `/v1/analytics/sync` | Trigger refresh. Query: `?platform=tiktok\|youtube\|instagram` |
-| GET | `/v1/analytics/{id}` | Analytics for specific post |
-
-### Media Upload Workflow (Required for Instagram)
-
-```python
-import requests, time
-
-API_KEY = "pb_live_AT9Xm4PKaYBzAvFZYGgexi"
-BASE_URL = "https://api.post-bridge.com/v1"
-HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
-
-# Step 1: Get signed upload URL
-resp = requests.post(f"{BASE_URL}/media/create-upload-url", headers=HEADERS,
-    json={"name": "video.mp4", "mime_type": "video/mp4", "size_bytes": file_size})
-media_id = resp.json()["media_id"]
-upload_url = resp.json()["upload_url"]
-
-# Step 2: Upload file
-with open(file_path, "rb") as f:
-    requests.put(upload_url, data=f, headers={"Content-Type": "video/mp4"})
-
-# Step 3: Use media_id in post
-time.sleep(0.2)  # Rate limit
-requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={
-    "caption": "Your caption",
-    "scheduled_at": "2026-03-12T15:00:00Z",
-    "social_accounts": ["acc_id_1", "acc_id_2"],
-    "media": [media_id]  # REQUIRED for Instagram
-})
+All errors follow this format:
+```json
+{ "error": "Human-readable error message" }
 ```
 
-### Always Verify Post Results
-
-```python
-# After posting, ALWAYS check results
-results = requests.get(f"{BASE_URL}/post-results", headers=HEADERS).json()
-for r in results:
-    status = "✅" if r.get("status") == "success" else "❌"
-    print(f"{status} {r.get('platform')} — {r.get('error', 'OK')}")
-```
-
-### Analytics Sync Workflow
-
-```python
-# Step 1: Trigger sync
-requests.post(f"{BASE_URL}/analytics/sync?platform=tiktok", headers=HEADERS)
-time.sleep(30)  # Wait for sync
-
-# Step 2: Fetch metrics
-analytics = requests.get(f"{BASE_URL}/analytics", headers=HEADERS).json()
-# Returns: view_count, like_count, comment_count, share_count per post
-```
-
-### Rate Limit Handling
-
-```python
-# 10 req/sec max — use 0.2s delay between calls
-for post in posts:
-    create_post(post)
-    time.sleep(0.2)  # Safety margin
-
-# For large batches: pause every 10 items
-if i % 10 == 0:
-    time.sleep(1)
-```
-
-### Connected Accounts (12 total)
-- TikTok: 7 accounts
-- Instagram: 1 account (`berkahkaryadigitalproduct`) ← **REQUIRES MEDIA**
-- Facebook: 4 accounts
-
-**Full PostBridge reference:** `~/.openclaw/workspace/skills/postbridge-social-manager/SKILL.md`
-
-### ⚠️ PostBridgeClient Compatibility Warning
-
-The `PostBridgeClient.create_post(media_urls=[...])` method uses the **old API format**.  
-The new API requires uploading media first via `/media/create-upload-url` and using the returned `media_id`.
-
-**Correct flow:**
-```python
-# OLD (broken): media_urls=["https://..."]
-# NEW (correct):
-r = requests.post(f"{BASE_URL}/media/create-upload-url", headers=HEADERS,
-    json={"name": "img.jpg", "mime_type": "image/jpeg", "size_bytes": size})
-media_id = r.json()["media_id"]
-requests.put(r.json()["upload_url"], data=open(path,"rb"))
-# Then use: "media": [media_id] in the post body
-```
+Common status codes:
+- `400` — Bad request (missing/invalid parameters)
+- `401` — Invalid or missing API key
+- `402` — Free upload limit reached (includes `upgradeUrl`)
+- `404` — Resource not found
+- `500` — Server error
