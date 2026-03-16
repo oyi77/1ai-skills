@@ -1,0 +1,53 @@
+# =============================================================================
+# PROMETHEUS CONFIGURATION
+# =============================================================================
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+rule_files:
+  # - "alert_rules.yml"
+
+scrape_configs:
+  # =============================================================================
+  # PROMETHEUS SELF-MONITORING
+  # =============================================================================
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # =============================================================================
+  # OPENCLAW BOT
+  # =============================================================================
+  - job_name: 'openclaw-bot'
+    static_configs:
+      - targets: ['bot:3000']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # =============================================================================
+  # NODE EXPORTER (if running)
+  # =============================================================================
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # =============================================================================
+  # POSTGRESQL EXPORTER (if running)
+  # =============================================================================
+  - job_name: 'postgres-exporter'
+    static_configs:
+      - targets: ['postgres-exporter:9187']
+
+  # =============================================================================
+  # REDIS EXPORTER (if running)
+  # =============================================================================
+  - job_name: 'redis-exporter'
+    static_configs:
+      - targets: ['redis-exporter:9121']

@@ -74,3 +74,64 @@ Message: Tracked 24.0h ago
 ✅ Cashflow tracking up to date
 ======================================================================
 2026-03-14T15:18:55+07:00 | BCA 1131323722 | Tabungan | IDR 0.37
+======================================================================
+Cashflow Monitoring - 2026-03-15 09:00:01
+======================================================================
+
+Status: WARNING
+Last Track: 48.0h ago
+Message: Tracked 48.0h ago (should be daily)
+
+🚨 ALERT GENERATED
+
+📊 CASHFLOW TRACKING ALERT
+
+Status: WARNING
+Tracked 48.0h ago (should be daily)
+
+
+⚠️ Tracking overdue by 24h
+
+Recommended: Track cashflow today
+Location: /home/openclaw/.openclaw/workspace/cashflow/
+
+Template:
+Date: 2026-03-15
+Cash Balance Start: IDR ________
+Revenue Today: Trading IDR ____, Marketing IDR ____
+Expenses Today: IDR ________
+Cash Balance End: IDR ________
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/cashflow_alert.txt
+======================================================================
+======================================================================
+Cashflow Monitoring - 2026-03-16 09:00:01
+======================================================================
+
+Status: URGENT
+Last Track: 72.0h ago
+Message: OVERDUE: Tracked 72.0h ago
+
+🚨 ALERT GENERATED
+
+📊 CASHFLOW TRACKING ALERT
+
+Status: URGENT
+OVERDUE: Tracked 72.0h ago
+
+
+🚨 URGENT: Cashflow tracking significantly overdue
+
+Last tracked: 72h ago
+Standard: Every 24h
+
+⚠️  Strategic decisions may be WRONG without current cashflow data
+
+🚨 Action Required IMMEDIATELY:
+1. Check ALL bank balances
+2. Calculate current runway
+3. Update: /home/openclaw/.openclaw/workspace/cashflow/
+4. Make decisions based on ACTUAL data
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/cashflow_alert.txt
+======================================================================

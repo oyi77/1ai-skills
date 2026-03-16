@@ -115,6 +115,33 @@ Once a week, ask your human:
 
 ---
 
+## 🎬 Video Generation Monitoring (Auto-Check)
+
+### Check Pending Downloads
+```bash
+# Find stuck video downloads (>30 min old)
+find ~/.openclaw/workspace/temp -name "*.pending" -mmin +30 2>/dev/null
+find ~/.openclaw/workspace/downloads -name "*.part" -mmin +30 2>/dev/null
+```
+
+### Auto-Actions (NO PERMISSION NEEDED)
+| Condition | Auto-Action |
+|-----------|-------------|
+| Video complete | SEND FILE immediately (never links) |
+| Download failed | Auto-retry ×3, then report |
+| Stuck >2h | Flag stuck, retry pipeline |
+| Partial/corrupt file | Delete, regenerate, resend |
+
+### Video Stuck Thresholds
+| Duration | Status | Action |
+|----------|--------|--------|
+| <30 min | ✅ Normal | Monitor |
+| 30min-2h | ⚠️ Warning | Check status |
+| 2h-4h | 🚨 Critical | Retry download |
+| >4h | 🆘 Emergency | Alert + restart |
+
+---
+
 ## 📊 Proactive Reporting Rules ⚠️ CRITICAL
 
 ### When to Send Reports (MANDATORY)

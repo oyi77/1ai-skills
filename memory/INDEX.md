@@ -45,7 +45,7 @@
 - `memory/lynk_skill_enhancement.md` - Platform learning
 - `memory/lynk_product_verification.md` - Product verification attempt
 - `memory/lynk_verification_complete.md` - Campaign status confirmed
-- Skills: `skills/lynk/` - Full LYNK skill
+- Skills: `skills/lynk-manager/SKILL.md` - Full LYNK page management skill (browser automation, TEXT block edit, router intercept pattern)
 
 ### Trading
 - `memory/2026-03-05.md` - Trading strategy
@@ -119,7 +119,7 @@
 grep -r "browser" memory/*.md notes/*.md
 
 # Find LYNK lessons
-grep -r "lynk" memory/*.md skills/lynk/*.md
+grep -r "lynk" memory/*.md skills/lynk-manager/*.md
 
 # Find cashflow issues
 grep -r "cashflow" memory/*.md cashflow/*.md

@@ -373,3 +373,663 @@
 [2026-03-14 16:02:14] Posts today: 26
 [2026-03-14 16:02:14] === Monitor Complete ===
 
+[2026-03-14 18:00:01] === PostBridge Monitor Run ===
+[2026-03-14 18:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 18:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 18:02:04] Results: 7100 total | ✅ 4663 (66%) | ❌ 2437
+[2026-03-14 18:02:04] Error breakdown:
+[2026-03-14 18:02:04]   [841x] Failed to post to Threads
+[2026-03-14 18:02:04]   [691x] No supported media files found. Instagram only sup
+[2026-03-14 18:02:04]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 18:02:04]   [251x] No files provided
+[2026-03-14 18:02:04]   [100x] Failed to post to Instagram: Access token expired.
+[2026-03-14 18:02:05] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 18:02:05] Scheduled posts: 121
+[2026-03-14 18:02:21] Posts today: 27
+[2026-03-14 18:02:21] === Monitor Complete ===
+
+[2026-03-14 18:00:01] === PostBridge Monitor Run ===
+[2026-03-14 18:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 18:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 18:02:04] Results: 7100 total | ✅ 4663 (66%) | ❌ 2437
+[2026-03-14 18:02:04] Error breakdown:
+[2026-03-14 18:02:04]   [841x] Failed to post to Threads
+[2026-03-14 18:02:04]   [691x] No supported media files found. Instagram only sup
+[2026-03-14 18:02:04]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 18:02:04]   [251x] No files provided
+[2026-03-14 18:02:04]   [100x] Failed to post to Instagram: Access token expired.
+[2026-03-14 18:02:05] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 18:02:05] Scheduled posts: 121
+[2026-03-14 18:02:21] Posts today: 27
+[2026-03-14 18:02:21] === Monitor Complete ===
+
+[2026-03-14 20:00:01] === PostBridge Monitor Run ===
+[2026-03-14 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 20:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 20:02:09] Results: 7200 total | ✅ 4728 (66%) | ❌ 2472
+[2026-03-14 20:02:09] Error breakdown:
+[2026-03-14 20:02:09]   [863x] Failed to post to Threads
+[2026-03-14 20:02:09]   [706x] No supported media files found. Instagram only sup
+[2026-03-14 20:02:09]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 20:02:09]   [251x] No files provided
+[2026-03-14 20:02:09]   [100x] Failed to post to Instagram: Access token expired.
+[2026-03-14 20:02:09] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 20:02:10] Scheduled posts: 119
+[2026-03-14 20:02:26] Posts today: 29
+[2026-03-14 20:02:26] === Monitor Complete ===
+
+[2026-03-14 20:00:01] === PostBridge Monitor Run ===
+[2026-03-14 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 20:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 20:02:09] Results: 7200 total | ✅ 4728 (66%) | ❌ 2472
+[2026-03-14 20:02:09] Error breakdown:
+[2026-03-14 20:02:09]   [863x] Failed to post to Threads
+[2026-03-14 20:02:09]   [706x] No supported media files found. Instagram only sup
+[2026-03-14 20:02:09]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 20:02:09]   [251x] No files provided
+[2026-03-14 20:02:09]   [100x] Failed to post to Instagram: Access token expired.
+[2026-03-14 20:02:09] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 20:02:10] Scheduled posts: 119
+[2026-03-14 20:02:26] Posts today: 29
+[2026-03-14 20:02:26] === Monitor Complete ===
+
+[2026-03-14 22:00:01] === PostBridge Monitor Run ===
+[2026-03-14 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 22:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 22:02:11] Results: 7400 total | ✅ 4875 (66%) | ❌ 2525
+[2026-03-14 22:02:11] Error breakdown:
+[2026-03-14 22:02:11]   [907x] Failed to post to Threads
+[2026-03-14 22:02:11]   [715x] No supported media files found. Instagram only sup
+[2026-03-14 22:02:11]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 22:02:11]   [251x] No files provided
+[2026-03-14 22:02:11]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-14 22:02:12] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 22:02:12] Scheduled posts: 117
+[2026-03-14 22:02:28] Posts today: 31
+[2026-03-14 22:02:28] === Monitor Complete ===
+
+[2026-03-14 22:00:01] === PostBridge Monitor Run ===
+[2026-03-14 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-14 22:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-14 22:02:11] Results: 7400 total | ✅ 4875 (66%) | ❌ 2525
+[2026-03-14 22:02:11] Error breakdown:
+[2026-03-14 22:02:11]   [907x] Failed to post to Threads
+[2026-03-14 22:02:11]   [715x] No supported media files found. Instagram only sup
+[2026-03-14 22:02:11]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-14 22:02:11]   [251x] No files provided
+[2026-03-14 22:02:11]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-14 22:02:12] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-14 22:02:12] Scheduled posts: 117
+[2026-03-14 22:02:28] Posts today: 31
+[2026-03-14 22:02:28] === Monitor Complete ===
+
+[2026-03-15 00:00:01] === PostBridge Monitor Run ===
+[2026-03-15 00:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 00:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 00:02:12] Results: 7400 total | ✅ 4873 (66%) | ❌ 2527
+[2026-03-15 00:02:12] Error breakdown:
+[2026-03-15 00:02:12]   [907x] Failed to post to Threads
+[2026-03-15 00:02:12]   [717x] No supported media files found. Instagram only sup
+[2026-03-15 00:02:12]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 00:02:12]   [251x] No files provided
+[2026-03-15 00:02:12]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-15 00:02:13] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 00:02:14] Scheduled posts: 115
+[2026-03-15 00:02:30] Posts today: 0
+[2026-03-15 00:02:30] === Monitor Complete ===
+
+[2026-03-15 00:00:01] === PostBridge Monitor Run ===
+[2026-03-15 00:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 00:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 00:02:12] Results: 7400 total | ✅ 4873 (66%) | ❌ 2527
+[2026-03-15 00:02:12] Error breakdown:
+[2026-03-15 00:02:12]   [907x] Failed to post to Threads
+[2026-03-15 00:02:12]   [717x] No supported media files found. Instagram only sup
+[2026-03-15 00:02:12]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 00:02:12]   [251x] No files provided
+[2026-03-15 00:02:12]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-15 00:02:13] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 00:02:14] Scheduled posts: 115
+[2026-03-15 00:02:30] Posts today: 0
+[2026-03-15 00:02:30] === Monitor Complete ===
+
+[2026-03-15 02:00:02] === PostBridge Monitor Run ===
+[2026-03-15 02:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 02:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 02:00:32] Results: 2000 total | ✅ 1260 (63%) | ❌ 740
+[2026-03-15 02:00:32] Error breakdown:
+[2026-03-15 02:00:32]   [389x] Failed to post to Threads
+[2026-03-15 02:00:32]   [223x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 02:00:32]   [57x] No supported media files found. Instagram only sup
+[2026-03-15 02:00:32]   [34x] Failed to post to Facebook Kami membatasi seberapa
+[2026-03-15 02:00:32]   [29x] Failed to post to Instagram: Access token expired.
+[2026-03-15 02:00:33] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 02:00:34] Scheduled posts: 113
+[2026-03-15 02:00:48] Posts today: 0
+[2026-03-15 02:00:48] === Monitor Complete ===
+
+[2026-03-15 02:00:02] === PostBridge Monitor Run ===
+[2026-03-15 02:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 02:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 02:00:32] Results: 2000 total | ✅ 1260 (63%) | ❌ 740
+[2026-03-15 02:00:32] Error breakdown:
+[2026-03-15 02:00:32]   [389x] Failed to post to Threads
+[2026-03-15 02:00:32]   [223x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 02:00:32]   [57x] No supported media files found. Instagram only sup
+[2026-03-15 02:00:32]   [34x] Failed to post to Facebook Kami membatasi seberapa
+[2026-03-15 02:00:32]   [29x] Failed to post to Instagram: Access token expired.
+[2026-03-15 02:00:33] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 02:00:34] Scheduled posts: 113
+[2026-03-15 02:00:48] Posts today: 0
+[2026-03-15 02:00:48] === Monitor Complete ===
+
+[2026-03-15 04:00:01] === PostBridge Monitor Run ===
+[2026-03-15 04:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 04:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 04:02:18] Results: 7400 total | ✅ 4870 (66%) | ❌ 2530
+[2026-03-15 04:02:18] Error breakdown:
+[2026-03-15 04:02:18]   [908x] Failed to post to Threads
+[2026-03-15 04:02:18]   [718x] No supported media files found. Instagram only sup
+[2026-03-15 04:02:18]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 04:02:18]   [251x] No files provided
+[2026-03-15 04:02:18]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-15 04:02:19] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 04:02:20] Scheduled posts: 111
+[2026-03-15 04:02:36] Posts today: 0
+[2026-03-15 04:02:36] === Monitor Complete ===
+
+[2026-03-15 04:00:01] === PostBridge Monitor Run ===
+[2026-03-15 04:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 04:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 04:02:18] Results: 7400 total | ✅ 4870 (66%) | ❌ 2530
+[2026-03-15 04:02:18] Error breakdown:
+[2026-03-15 04:02:18]   [908x] Failed to post to Threads
+[2026-03-15 04:02:18]   [718x] No supported media files found. Instagram only sup
+[2026-03-15 04:02:18]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 04:02:18]   [251x] No files provided
+[2026-03-15 04:02:18]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-15 04:02:19] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 04:02:20] Scheduled posts: 111
+[2026-03-15 04:02:36] Posts today: 0
+[2026-03-15 04:02:36] === Monitor Complete ===
+
+[2026-03-15 06:00:01] === PostBridge Monitor Run ===
+[2026-03-15 06:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 06:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 06:02:18] Results: 7400 total | ✅ 4870 (66%) | ❌ 2530
+[2026-03-15 06:02:18] Error breakdown:
+[2026-03-15 06:02:18]   [908x] Failed to post to Threads
+[2026-03-15 06:02:18]   [719x] No supported media files found. Instagram only sup
+[2026-03-15 06:02:18]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 06:02:18]   [251x] No files provided
+[2026-03-15 06:02:18]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-15 06:02:19] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 06:02:20] Scheduled posts: 109
+[2026-03-15 06:02:36] Posts today: 0
+[2026-03-15 06:02:36] === Monitor Complete ===
+
+[2026-03-15 06:00:01] === PostBridge Monitor Run ===
+[2026-03-15 06:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 06:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 06:02:18] Results: 7400 total | ✅ 4870 (66%) | ❌ 2530
+[2026-03-15 06:02:18] Error breakdown:
+[2026-03-15 06:02:18]   [908x] Failed to post to Threads
+[2026-03-15 06:02:18]   [719x] No supported media files found. Instagram only sup
+[2026-03-15 06:02:18]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 06:02:18]   [251x] No files provided
+[2026-03-15 06:02:18]   [103x] Failed to post to Instagram: Access token expired.
+[2026-03-15 06:02:19] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 06:02:20] Scheduled posts: 109
+[2026-03-15 06:02:36] Posts today: 0
+[2026-03-15 06:02:36] === Monitor Complete ===
+
+[2026-03-15 08:00:02] === PostBridge Monitor Run ===
+[2026-03-15 08:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 08:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 08:02:25] Results: 7700 total | ✅ 5062 (66%) | ❌ 2638
+[2026-03-15 08:02:25] Error breakdown:
+[2026-03-15 08:02:25]   [953x] Failed to post to Threads
+[2026-03-15 08:02:25]   [741x] No supported media files found. Instagram only sup
+[2026-03-15 08:02:25]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 08:02:25]   [251x] No files provided
+[2026-03-15 08:02:25]   [106x] Failed to post to Instagram: Access token expired.
+[2026-03-15 08:02:26] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 08:02:27] Scheduled posts: 105
+[2026-03-15 08:02:43] Posts today: 3
+[2026-03-15 08:02:43] === Monitor Complete ===
+
+[2026-03-15 08:00:02] === PostBridge Monitor Run ===
+[2026-03-15 08:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 08:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 08:02:25] Results: 7700 total | ✅ 5062 (66%) | ❌ 2638
+[2026-03-15 08:02:25] Error breakdown:
+[2026-03-15 08:02:25]   [953x] Failed to post to Threads
+[2026-03-15 08:02:25]   [741x] No supported media files found. Instagram only sup
+[2026-03-15 08:02:25]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 08:02:25]   [251x] No files provided
+[2026-03-15 08:02:25]   [106x] Failed to post to Instagram: Access token expired.
+[2026-03-15 08:02:26] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 08:02:27] Scheduled posts: 105
+[2026-03-15 08:02:43] Posts today: 3
+[2026-03-15 08:02:43] === Monitor Complete ===
+
+[2026-03-15 10:00:01] === PostBridge Monitor Run ===
+[2026-03-15 10:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 10:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 10:02:26] Results: 7700 total | ✅ 5061 (66%) | ❌ 2639
+[2026-03-15 10:02:26] Error breakdown:
+[2026-03-15 10:02:26]   [954x] Failed to post to Threads
+[2026-03-15 10:02:26]   [742x] No supported media files found. Instagram only sup
+[2026-03-15 10:02:26]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 10:02:26]   [251x] No files provided
+[2026-03-15 10:02:26]   [106x] Failed to post to Instagram: Access token expired.
+[2026-03-15 10:02:27] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 10:02:27] Scheduled posts: 101
+[2026-03-15 10:02:43] Posts today: 7
+[2026-03-15 10:02:43] === Monitor Complete ===
+
+[2026-03-15 10:00:01] === PostBridge Monitor Run ===
+[2026-03-15 10:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 10:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 10:02:26] Results: 7700 total | ✅ 5061 (66%) | ❌ 2639
+[2026-03-15 10:02:26] Error breakdown:
+[2026-03-15 10:02:26]   [954x] Failed to post to Threads
+[2026-03-15 10:02:26]   [742x] No supported media files found. Instagram only sup
+[2026-03-15 10:02:26]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 10:02:26]   [251x] No files provided
+[2026-03-15 10:02:26]   [106x] Failed to post to Instagram: Access token expired.
+[2026-03-15 10:02:27] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 10:02:27] Scheduled posts: 101
+[2026-03-15 10:02:43] Posts today: 7
+[2026-03-15 10:02:43] === Monitor Complete ===
+
+[2026-03-15 12:00:01] === PostBridge Monitor Run ===
+[2026-03-15 12:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 12:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 12:02:29] Results: 7800 total | ✅ 5153 (66%) | ❌ 2647
+[2026-03-15 12:02:29] Error breakdown:
+[2026-03-15 12:02:29]   [954x] Failed to post to Threads
+[2026-03-15 12:02:29]   [741x] No supported media files found. Instagram only sup
+[2026-03-15 12:02:29]   [297x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 12:02:29]   [269x] No files provided
+[2026-03-15 12:02:29]   [107x] Failed to post to Instagram: Access token expired.
+[2026-03-15 12:02:30] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 12:02:31] Scheduled posts: 97
+[2026-03-15 12:02:48] Posts today: 11
+[2026-03-15 12:02:48] === Monitor Complete ===
+
+[2026-03-15 12:00:01] === PostBridge Monitor Run ===
+[2026-03-15 12:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 12:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 12:02:29] Results: 7800 total | ✅ 5153 (66%) | ❌ 2647
+[2026-03-15 12:02:29] Error breakdown:
+[2026-03-15 12:02:29]   [954x] Failed to post to Threads
+[2026-03-15 12:02:29]   [741x] No supported media files found. Instagram only sup
+[2026-03-15 12:02:29]   [297x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 12:02:29]   [269x] No files provided
+[2026-03-15 12:02:29]   [107x] Failed to post to Instagram: Access token expired.
+[2026-03-15 12:02:30] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 12:02:31] Scheduled posts: 97
+[2026-03-15 12:02:48] Posts today: 11
+[2026-03-15 12:02:48] === Monitor Complete ===
+
+[2026-03-15 14:00:01] === PostBridge Monitor Run ===
+[2026-03-15 14:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 14:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 14:02:28] Results: 7800 total | ✅ 5143 (66%) | ❌ 2657
+[2026-03-15 14:02:28] Error breakdown:
+[2026-03-15 14:02:28]   [989x] Failed to post to Threads
+[2026-03-15 14:02:28]   [744x] No supported media files found. Instagram only sup
+[2026-03-15 14:02:28]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 14:02:28]   [251x] No files provided
+[2026-03-15 14:02:28]   [108x] Failed to post to Instagram: Access token expired.
+[2026-03-15 14:02:29] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 14:02:29] Scheduled posts: 94
+[2026-03-15 14:02:46] Posts today: 14
+[2026-03-15 14:02:46] === Monitor Complete ===
+
+[2026-03-15 14:00:01] === PostBridge Monitor Run ===
+[2026-03-15 14:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 14:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 14:02:28] Results: 7800 total | ✅ 5143 (66%) | ❌ 2657
+[2026-03-15 14:02:28] Error breakdown:
+[2026-03-15 14:02:28]   [989x] Failed to post to Threads
+[2026-03-15 14:02:28]   [744x] No supported media files found. Instagram only sup
+[2026-03-15 14:02:28]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 14:02:28]   [251x] No files provided
+[2026-03-15 14:02:28]   [108x] Failed to post to Instagram: Access token expired.
+[2026-03-15 14:02:29] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 14:02:29] Scheduled posts: 94
+[2026-03-15 14:02:46] Posts today: 14
+[2026-03-15 14:02:46] === Monitor Complete ===
+
+[2026-03-15 16:00:02] === PostBridge Monitor Run ===
+[2026-03-15 16:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 16:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 16:02:37] Results: 8100 total | ✅ 5333 (66%) | ❌ 2767
+[2026-03-15 16:02:37] Error breakdown:
+[2026-03-15 16:02:37]   [1035x] Failed to post to Threads
+[2026-03-15 16:02:37]   [765x] No supported media files found. Instagram only sup
+[2026-03-15 16:02:37]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 16:02:37]   [251x] No files provided
+[2026-03-15 16:02:37]   [111x] Failed to post to Instagram: Access token expired.
+[2026-03-15 16:02:38] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 16:02:38] Scheduled posts: 91
+[2026-03-15 16:02:54] Posts today: 17
+[2026-03-15 16:02:54] === Monitor Complete ===
+
+[2026-03-15 16:00:02] === PostBridge Monitor Run ===
+[2026-03-15 16:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 16:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 16:02:37] Results: 8100 total | ✅ 5333 (66%) | ❌ 2767
+[2026-03-15 16:02:37] Error breakdown:
+[2026-03-15 16:02:37]   [1035x] Failed to post to Threads
+[2026-03-15 16:02:37]   [765x] No supported media files found. Instagram only sup
+[2026-03-15 16:02:37]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 16:02:37]   [251x] No files provided
+[2026-03-15 16:02:37]   [111x] Failed to post to Instagram: Access token expired.
+[2026-03-15 16:02:38] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 16:02:38] Scheduled posts: 91
+[2026-03-15 16:02:54] Posts today: 17
+[2026-03-15 16:02:54] === Monitor Complete ===
+
+[2026-03-15 18:00:02] === PostBridge Monitor Run ===
+[2026-03-15 18:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 18:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 18:02:34] Results: 8100 total | ✅ 5329 (66%) | ❌ 2771
+[2026-03-15 18:02:34] Error breakdown:
+[2026-03-15 18:02:34]   [1039x] Failed to post to Threads
+[2026-03-15 18:02:34]   [764x] No supported media files found. Instagram only sup
+[2026-03-15 18:02:34]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 18:02:34]   [252x] No files provided
+[2026-03-15 18:02:34]   [111x] Failed to post to Instagram: Access token expired.
+[2026-03-15 18:02:35] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 18:02:35] Scheduled posts: 88
+[2026-03-15 18:02:53] Posts today: 20
+[2026-03-15 18:02:53] === Monitor Complete ===
+
+[2026-03-15 18:00:02] === PostBridge Monitor Run ===
+[2026-03-15 18:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 18:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 18:02:34] Results: 8100 total | ✅ 5329 (66%) | ❌ 2771
+[2026-03-15 18:02:34] Error breakdown:
+[2026-03-15 18:02:34]   [1039x] Failed to post to Threads
+[2026-03-15 18:02:34]   [764x] No supported media files found. Instagram only sup
+[2026-03-15 18:02:34]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 18:02:34]   [252x] No files provided
+[2026-03-15 18:02:34]   [111x] Failed to post to Instagram: Access token expired.
+[2026-03-15 18:02:35] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 18:02:35] Scheduled posts: 88
+[2026-03-15 18:02:53] Posts today: 20
+[2026-03-15 18:02:53] === Monitor Complete ===
+
+[2026-03-15 20:00:01] === PostBridge Monitor Run ===
+[2026-03-15 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 20:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 20:02:37] Results: 8200 total | ✅ 5411 (66%) | ❌ 2789
+[2026-03-15 20:02:37] Error breakdown:
+[2026-03-15 20:02:37]   [1070x] Failed to post to Threads
+[2026-03-15 20:02:37]   [766x] No supported media files found. Instagram only sup
+[2026-03-15 20:02:37]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 20:02:37]   [252x] No files provided
+[2026-03-15 20:02:37]   [113x] Failed to post to Instagram: Access token expired.
+[2026-03-15 20:02:37] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 20:02:38] Scheduled posts: 87
+[2026-03-15 20:02:55] Posts today: 21
+[2026-03-15 20:02:55] === Monitor Complete ===
+
+[2026-03-15 20:00:01] === PostBridge Monitor Run ===
+[2026-03-15 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 20:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 20:02:37] Results: 8200 total | ✅ 5411 (66%) | ❌ 2789
+[2026-03-15 20:02:37] Error breakdown:
+[2026-03-15 20:02:37]   [1070x] Failed to post to Threads
+[2026-03-15 20:02:37]   [766x] No supported media files found. Instagram only sup
+[2026-03-15 20:02:37]   [294x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 20:02:37]   [252x] No files provided
+[2026-03-15 20:02:37]   [113x] Failed to post to Instagram: Access token expired.
+[2026-03-15 20:02:37] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 20:02:38] Scheduled posts: 87
+[2026-03-15 20:02:55] Posts today: 21
+[2026-03-15 20:02:55] === Monitor Complete ===
+
+[2026-03-15 22:00:01] === PostBridge Monitor Run ===
+[2026-03-15 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 22:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 22:02:45] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-15 22:02:45] Error breakdown:
+[2026-03-15 22:02:45]   [1126x] Failed to post to Threads
+[2026-03-15 22:02:45]   [775x] No supported media files found. Instagram only sup
+[2026-03-15 22:02:45]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 22:02:45]   [252x] No files provided
+[2026-03-15 22:02:45]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-15 22:02:46] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 22:02:47] Scheduled posts: 87
+[2026-03-15 22:03:03] Posts today: 21
+[2026-03-15 22:03:03] === Monitor Complete ===
+
+[2026-03-15 22:00:01] === PostBridge Monitor Run ===
+[2026-03-15 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-15 22:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-15 22:02:45] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-15 22:02:45] Error breakdown:
+[2026-03-15 22:02:45]   [1126x] Failed to post to Threads
+[2026-03-15 22:02:45]   [775x] No supported media files found. Instagram only sup
+[2026-03-15 22:02:45]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-15 22:02:45]   [252x] No files provided
+[2026-03-15 22:02:45]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-15 22:02:46] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-15 22:02:47] Scheduled posts: 87
+[2026-03-15 22:03:03] Posts today: 21
+[2026-03-15 22:03:03] === Monitor Complete ===
+
+[2026-03-16 00:00:02] === PostBridge Monitor Run ===
+[2026-03-16 00:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 00:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 00:02:50] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 00:02:50] Error breakdown:
+[2026-03-16 00:02:50]   [1126x] Failed to post to Threads
+[2026-03-16 00:02:50]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 00:02:50]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 00:02:50]   [252x] No files provided
+[2026-03-16 00:02:50]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 00:02:51] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 00:02:51] Scheduled posts: 87
+[2026-03-16 00:03:07] Posts today: 0
+[2026-03-16 00:03:07] === Monitor Complete ===
+
+[2026-03-16 00:00:02] === PostBridge Monitor Run ===
+[2026-03-16 00:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 00:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 00:02:50] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 00:02:50] Error breakdown:
+[2026-03-16 00:02:50]   [1126x] Failed to post to Threads
+[2026-03-16 00:02:50]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 00:02:50]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 00:02:50]   [252x] No files provided
+[2026-03-16 00:02:50]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 00:02:51] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 00:02:51] Scheduled posts: 87
+[2026-03-16 00:03:07] Posts today: 0
+[2026-03-16 00:03:07] === Monitor Complete ===
+
+[2026-03-16 02:00:01] === PostBridge Monitor Run ===
+[2026-03-16 02:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 02:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 02:02:47] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 02:02:47] Error breakdown:
+[2026-03-16 02:02:47]   [1126x] Failed to post to Threads
+[2026-03-16 02:02:47]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 02:02:47]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 02:02:47]   [252x] No files provided
+[2026-03-16 02:02:47]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 02:02:48] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 02:02:49] Scheduled posts: 87
+[2026-03-16 02:03:06] Posts today: 0
+[2026-03-16 02:03:06] === Monitor Complete ===
+
+[2026-03-16 02:00:01] === PostBridge Monitor Run ===
+[2026-03-16 02:00:02] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 02:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 02:02:47] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 02:02:47] Error breakdown:
+[2026-03-16 02:02:47]   [1126x] Failed to post to Threads
+[2026-03-16 02:02:47]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 02:02:47]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 02:02:47]   [252x] No files provided
+[2026-03-16 02:02:47]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 02:02:48] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 02:02:49] Scheduled posts: 87
+[2026-03-16 02:03:06] Posts today: 0
+[2026-03-16 02:03:06] === Monitor Complete ===
+
+[2026-03-16 04:00:02] === PostBridge Monitor Run ===
+[2026-03-16 04:00:05] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 04:00:07] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 04:04:12] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 04:04:12] Error breakdown:
+[2026-03-16 04:04:12]   [1126x] Failed to post to Threads
+[2026-03-16 04:04:12]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 04:04:12]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 04:04:12]   [252x] No files provided
+[2026-03-16 04:04:12]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 04:04:13] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 04:04:13] Scheduled posts: 87
+[2026-03-16 04:04:31] Posts today: 0
+[2026-03-16 04:04:31] === Monitor Complete ===
+
+[2026-03-16 04:00:02] === PostBridge Monitor Run ===
+[2026-03-16 04:00:05] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 04:00:07] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 04:04:12] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 04:04:12] Error breakdown:
+[2026-03-16 04:04:12]   [1126x] Failed to post to Threads
+[2026-03-16 04:04:12]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 04:04:12]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 04:04:12]   [252x] No files provided
+[2026-03-16 04:04:12]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 04:04:13] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 04:04:13] Scheduled posts: 87
+[2026-03-16 04:04:31] Posts today: 0
+[2026-03-16 04:04:31] === Monitor Complete ===
+
+[2026-03-16 06:00:02] === PostBridge Monitor Run ===
+[2026-03-16 06:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 06:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 06:02:50] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 06:02:50] Error breakdown:
+[2026-03-16 06:02:50]   [1126x] Failed to post to Threads
+[2026-03-16 06:02:50]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 06:02:50]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 06:02:50]   [252x] No files provided
+[2026-03-16 06:02:50]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 06:02:51] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 06:02:51] Scheduled posts: 87
+[2026-03-16 06:03:08] Posts today: 0
+[2026-03-16 06:03:08] === Monitor Complete ===
+
+[2026-03-16 06:00:02] === PostBridge Monitor Run ===
+[2026-03-16 06:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 06:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 06:02:50] Results: 8500 total | ✅ 5572 (66%) | ❌ 2928
+[2026-03-16 06:02:50] Error breakdown:
+[2026-03-16 06:02:50]   [1126x] Failed to post to Threads
+[2026-03-16 06:02:50]   [775x] No supported media files found. Instagram only sup
+[2026-03-16 06:02:50]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 06:02:50]   [252x] No files provided
+[2026-03-16 06:02:50]   [116x] Failed to post to Instagram: Access token expired.
+[2026-03-16 06:02:51] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 06:02:51] Scheduled posts: 87
+[2026-03-16 06:03:08] Posts today: 0
+[2026-03-16 06:03:08] === Monitor Complete ===
+
+[2026-03-16 08:00:01] === PostBridge Monitor Run ===
+[2026-03-16 08:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 08:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 08:03:00] Results: 8700 total | ✅ 5698 (65%) | ❌ 3002
+[2026-03-16 08:03:00] Error breakdown:
+[2026-03-16 08:03:00]   [1171x] Failed to post to Threads
+[2026-03-16 08:03:00]   [803x] No supported media files found. Instagram only sup
+[2026-03-16 08:03:00]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 08:03:00]   [252x] No files provided
+[2026-03-16 08:03:00]   [117x] Failed to post to Instagram: Access token expired.
+[2026-03-16 08:03:00] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 08:03:01] Scheduled posts: 85
+[2026-03-16 08:03:18] Posts today: 2
+[2026-03-16 08:03:18] === Monitor Complete ===
+
+[2026-03-16 08:00:01] === PostBridge Monitor Run ===
+[2026-03-16 08:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 08:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 08:03:00] Results: 8700 total | ✅ 5698 (65%) | ❌ 3002
+[2026-03-16 08:03:00] Error breakdown:
+[2026-03-16 08:03:00]   [1171x] Failed to post to Threads
+[2026-03-16 08:03:00]   [803x] No supported media files found. Instagram only sup
+[2026-03-16 08:03:00]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 08:03:00]   [252x] No files provided
+[2026-03-16 08:03:00]   [117x] Failed to post to Instagram: Access token expired.
+[2026-03-16 08:03:00] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 08:03:01] Scheduled posts: 85
+[2026-03-16 08:03:18] Posts today: 2
+[2026-03-16 08:03:18] === Monitor Complete ===
+
+[2026-03-16 10:00:01] === PostBridge Monitor Run ===
+[2026-03-16 10:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 10:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 10:02:56] Results: 8700 total | ✅ 5697 (65%) | ❌ 3003
+[2026-03-16 10:02:56] Error breakdown:
+[2026-03-16 10:02:56]   [1171x] Failed to post to Threads
+[2026-03-16 10:02:56]   [804x] No supported media files found. Instagram only sup
+[2026-03-16 10:02:56]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 10:02:56]   [252x] No files provided
+[2026-03-16 10:02:56]   [117x] Failed to post to Instagram: Access token expired.
+[2026-03-16 10:02:57] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 10:02:57] Scheduled posts: 83
+[2026-03-16 10:03:15] Posts today: 3
+[2026-03-16 10:03:15] === Monitor Complete ===
+
+[2026-03-16 10:00:01] === PostBridge Monitor Run ===
+[2026-03-16 10:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 10:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 10:02:56] Results: 8700 total | ✅ 5697 (65%) | ❌ 3003
+[2026-03-16 10:02:56] Error breakdown:
+[2026-03-16 10:02:56]   [1171x] Failed to post to Threads
+[2026-03-16 10:02:56]   [804x] No supported media files found. Instagram only sup
+[2026-03-16 10:02:56]   [303x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 10:02:56]   [252x] No files provided
+[2026-03-16 10:02:56]   [117x] Failed to post to Instagram: Access token expired.
+[2026-03-16 10:02:57] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 10:02:57] Scheduled posts: 83
+[2026-03-16 10:03:15] Posts today: 3
+[2026-03-16 10:03:15] === Monitor Complete ===
+
+[2026-03-16 12:00:02] === PostBridge Monitor Run ===
+[2026-03-16 12:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 12:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 12:03:05] Results: 9000 total | ✅ 5911 (66%) | ❌ 3089
+[2026-03-16 12:03:05] Error breakdown:
+[2026-03-16 12:03:05]   [1204x] Failed to post to Threads
+[2026-03-16 12:03:05]   [815x] No supported media files found. Instagram only sup
+[2026-03-16 12:03:05]   [309x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 12:03:05]   [252x] No files provided
+[2026-03-16 12:03:05]   [121x] Failed to post to Instagram: Access token expired.
+[2026-03-16 12:03:06] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 12:03:06] Scheduled posts: 81
+[2026-03-16 12:03:23] Posts today: 6
+[2026-03-16 12:03:23] === Monitor Complete ===
+
+[2026-03-16 12:00:02] === PostBridge Monitor Run ===
+[2026-03-16 12:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-16 12:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-16 12:03:05] Results: 9000 total | ✅ 5911 (66%) | ❌ 3089
+[2026-03-16 12:03:05] Error breakdown:
+[2026-03-16 12:03:05]   [1204x] Failed to post to Threads
+[2026-03-16 12:03:05]   [815x] No supported media files found. Instagram only sup
+[2026-03-16 12:03:05]   [309x] Failed to post to Instagram: An unexpected error o
+[2026-03-16 12:03:05]   [252x] No files provided
+[2026-03-16 12:03:05]   [121x] Failed to post to Instagram: Access token expired.
+[2026-03-16 12:03:06] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-16 12:03:06] Scheduled posts: 81
+[2026-03-16 12:03:23] Posts today: 6
+[2026-03-16 12:03:23] === Monitor Complete ===
+

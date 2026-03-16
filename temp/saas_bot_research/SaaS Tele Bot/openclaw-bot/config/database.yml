@@ -1,0 +1,119 @@
+# =============================================================================
+# DATABASE CONFIGURATION
+# =============================================================================
+
+# Development Environment
+development:
+  postgres:
+    host: localhost
+    port: 5432
+    database: openclaw_dev
+    pool:
+      min: 2
+      max: 10
+      acquire: 5000
+      idle: 10000
+    ssl: false
+    logging: true
+  
+  redis:
+    host: localhost
+    port: 6379
+    db: 0
+    password: null
+    keyPrefix: "openclaw:dev:"
+
+# Staging Environment
+staging:
+  postgres:
+    host: "${STAGING_DB_HOST}"
+    port: 5432
+    database: openclaw_staging
+    pool:
+      min: 5
+      max: 25
+      acquire: 5000
+      idle: 30000
+    ssl: true
+    logging: false
+    replica:
+      host: "${STAGING_DB_REPLICA_HOST}"
+      port: 5432
+  
+  redis:
+    host: "${STAGING_REDIS_HOST}"
+    port: 6379
+    db: 0
+    password: "${STAGING_REDIS_PASSWORD}"
+    keyPrefix: "openclaw:staging:"
+    cluster:
+      enabled: false
+
+# Production Environment
+production:
+  postgres:
+    host: "${PROD_DB_HOST}"
+    port: 5432
+    database: openclaw_prod
+    pool:
+      min: 5
+      max: 50
+      acquire: 5000
+      idle: 30000
+    ssl: true
+    logging: false
+    replica:
+      host: "${PROD_DB_REPLICA_HOST}"
+      port: 5432
+    
+    # Connection pool settings
+    poolConfig:
+      evictionRunIntervalMillis: 1000
+      numTestsPerEvictionRun: 5
+      testOnBorrow: true
+      testOnReturn: false
+  
+  redis:
+    host: "${PROD_REDIS_HOST}"
+    port: 6379
+    db: 0
+    password: "${PROD_REDIS_PASSWORD}"
+    keyPrefix: "openclaw:prod:"
+    cluster:
+      enabled: true
+      nodes:
+        - "${PROD_REDIS_NODE_1}"
+        - "${PROD_REDIS_NODE_2}"
+        - "${PROD_REDIS_NODE_3}"
+      options:
+        maxRetriesPerRequest: 3
+        enableReadyCheck: true
+
+# =============================================================================
+# MIGRATION CONFIGURATION
+# =============================================================================
+migrations:
+  directory: "./migrations"
+  tableName: "migrations"
+  schema: "public"
+  
+# =============================================================================
+# SEED CONFIGURATION
+# =============================================================================
+seeds:
+  directory: "./seeds"
+  
+# =============================================================================
+# BACKUP CONFIGURATION
+# =============================================================================
+backup:
+  enabled: true
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  retention: 30  # days
+  storage:
+    type: "s3"
+    bucket: "openclaw-backups"
+    region: "ap-southeast-1"
+  encryption:
+    enabled: true
+    algorithm: "AES-256"

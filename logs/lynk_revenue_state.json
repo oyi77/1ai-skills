@@ -1,7 +1,7 @@
 {
   "last_order_ids": [],
   "total_revenue": 0,
-  "last_check": "2026-03-14 16:00",
+  "last_check": "2026-03-16 12:00",
   "known_order_ids": [
     "b8bedb7a60125de0054fe2319d409389",
     "f3cd654dbbe04bbe57789afc0eb5d74b",
@@ -15,13 +15,14 @@
     "EXPIRED": 0
   },
   "known_ids": [
-    "e88869e4bad03309bc25fc5e90aaea6d",
     "f3cd654dbbe04bbe57789afc0eb5d74b",
-    "b8bedb7a60125de0054fe2319d409389"
+    "e88869e4bad03309bc25fc5e90aaea6d",
+    "b8bedb7a60125de0054fe2319d409389",
+    "428e630ed9a9e18d2f9047a6c825e579"
   ],
   "total_paid": 0,
   "stats": {
-    "total_orders": 3,
+    "total_orders": 4,
     "paid": 0,
     "free": 1
   }

@@ -1,0 +1,282 @@
+# =============================================================================
+# PAYMENT GATEWAY CONFIGURATION
+# =============================================================================
+
+# =============================================================================
+# GATEWAY SETTINGS
+# =============================================================================
+gateways:
+  # Primary Gateway: Midtrans
+  midtrans:
+    enabled: true
+    environment: "${MIDTRANS_ENVIRONMENT}"
+    server_key: "${MIDTRANS_SERVER_KEY}"
+    client_key: "${MIDTRANS_CLIENT_KEY}"
+    merchant_id: "${MIDTRANS_MERCHANT_ID}"
+    snap_mode: true
+    
+    # Payment channels
+    channels:
+      - qris
+      - bank_transfer
+      - echannel
+      - gopay
+      - shopeepay
+      - credit_card
+    
+    # Retry configuration
+    retry:
+      max_attempts: 3
+      backoff: "exponential"
+      initial_delay: 2000
+      max_delay: 30000
+    
+    # Circuit breaker
+    circuit_breaker:
+      failure_threshold: 10
+      recovery_timeout: 60000
+      half_open_max_calls: 5
+    
+    # Webhook
+    webhook:
+      endpoint: "/webhooks/midtrans"
+      secret: "${MIDTRANS_WEBHOOK_SECRET}"
+      verify_signature: true
+      idempotency_key: true
+  
+  # Backup Gateway: Tripay
+  tripay:
+    enabled: true
+    environment: "${TRIPAY_ENVIRONMENT}"
+    api_key: "${TRIPAY_API_KEY}"
+    private_key: "${TRIPAY_PRIVATE_KEY}"
+    merchant_code: "${TRIPAY_MERCHANT_CODE}"
+    
+    # Payment channels
+    channels:
+      - qris
+      - va
+      - retail
+      - ewallet
+    
+    # Activation condition
+    activation:
+      condition: "primary_failure_rate > 10%"
+      auto_failback: true
+      failback_delay: 300000  # 5 minutes
+    
+    # Webhook
+    webhook:
+      endpoint: "/webhooks/tripay"
+      verify_signature: true
+
+# =============================================================================
+# PAYMENT SETTINGS
+# =============================================================================
+settings:
+  # Transaction timeout
+  timeout_minutes: 30
+  
+  # Expiry settings
+  expiry:
+    pending: 1800  # 30 minutes
+    processing: 300  # 5 minutes
+  
+  # Retry settings
+  retry:
+    max_attempts: 3
+    backoff_strategy: "exponential"
+    initial_delay: 2000
+    max_delay: 30000
+  
+  # Fraud detection
+  fraud_detection:
+    enabled: true
+    velocity_check: true
+    max_transactions_per_hour: 5
+    max_amount_per_day: 5000000  # 5 million IDR
+    manual_review_threshold: 1000000  # 1 million IDR
+  
+  # Notification settings
+  notifications:
+    pending_reminder: [900, 1800]  # 15 min, 30 min
+    success: true
+    failure: true
+    expiry: true
+
+# =============================================================================
+# CREDIT PACKAGES
+# =============================================================================
+packages:
+  starter:
+    id: "starter"
+    name: "Starter"
+    name_id: "Paket Starter"
+    price_idr: 50000
+    credits: 5
+    bonus: 1
+    expiry_days: 30
+    savings_percent: 0
+    features:
+      - "5 video 30 detik"
+      - "Bonus 1 video"
+    
+  growth:
+    id: "growth"
+    name: "Growth"
+    name_id: "Paket Growth"
+    price_idr: 150000
+    credits: 15
+    bonus: 3
+    expiry_days: 60
+    savings_percent: 10
+    features:
+      - "15 video 30 detik"
+      - "Bonus 3 video"
+      - "Hemat 10%"
+    
+  scale:
+    id: "scale"
+    name: "Scale"
+    name_id: "Paket Scale"
+    price_idr: 500000
+    credits: 60
+    bonus: 15
+    expiry_days: 90
+    savings_percent: 20
+    features:
+      - "60 video 30 detik"
+      - "Bonus 15 video"
+      - "Hemat 20%"
+      - "Prioritas queue"
+    
+  enterprise:
+    id: "enterprise"
+    name: "Enterprise"
+    name_id: "Paket Enterprise"
+    price_idr: 1500000
+    credits: 200
+    bonus: 60
+    expiry_days: null  # Never expire
+    savings_percent: 30
+    features:
+      - "200 video 30 detik"
+      - "Bonus 60 video"
+      - "Hemat 30%"
+      - "Prioritas tertinggi"
+      - "Tidak expired"
+
+# =============================================================================
+# SUBSCRIPTION PLANS
+# =============================================================================
+subscriptions:
+  lite:
+    id: "lite"
+    name: "Lite"
+    name_id: "Lite"
+    price_monthly_idr: 99000
+    price_yearly_idr: 1069200  # 10% discount
+    credits_included: 20
+    features:
+      - "20 kredit/bulan"
+      - "Priority queue (1.5x)"
+      - "Basic support"
+      - "No watermark"
+    
+  pro:
+    id: "pro"
+    name: "Pro"
+    name_id: "Pro"
+    price_monthly_idr: 199000
+    price_yearly_idr: 2149200  # 10% discount
+    credits_included: 50
+    features:
+      - "50 kredit/bulan"
+      - "All formats & ratios"
+      - "Multi-angle (3 variants)"
+      - "1 free revision"
+      - "Priority queue (2x)"
+      - "Email support"
+    
+  agency:
+    id: "agency"
+    name: "Agency"
+    name_id: "Agency"
+    price_monthly_idr: 499000
+    price_yearly_idr: 5389200  # 10% discount
+    credits_included: 150
+    features:
+      - "150 kredit/bulan"
+      - "White-label export"
+      - "Bulk upload (20 files)"
+      - "API key access"
+      - "Team workspace (5 seats)"
+      - "Dedicated manager"
+      - "Custom voice cloning"
+
+# =============================================================================
+# REFERRAL COMMISSION
+# =============================================================================
+referral:
+  enabled: true
+  
+  tiers:
+    tier1:
+      name: "Direct"
+      commission_rate: 0.10  # 10%
+      lifetime: true
+      min_withdrawal: 50000
+    
+    tier2:
+      name: "Indirect"
+      commission_rate: 0.05  # 5%
+      lifetime: true
+      min_withdrawal: 100000
+  
+  # Withdrawal settings
+  withdrawal:
+    manual_review_threshold: 1000000  # 1 million IDR
+    processing_time: "3-5 business days"
+    methods:
+      - bank_transfer
+      - ewallet
+  
+  # Gamification
+  gamification:
+    enabled: true
+    leaderboard:
+      enabled: true
+      period: "monthly"
+      prizes:
+        rank_1:
+          credits: 50
+          tier_upgrade: "pro_1_month"
+        rank_2:
+          credits: 30
+        rank_3:
+          credits: 15
+        rank_4_10:
+          credits: 5
+    
+    milestones:
+      first_10:
+        referrals: 10
+        reward:
+          credits: 5
+      first_50:
+        referrals: 50
+        reward:
+          credits: 20
+      first_100:
+        referrals: 100
+        reward:
+          credits: 50
+          tier_upgrade: "agency_1_month"
+    
+    streaks:
+      enabled: true
+      rewards:
+        3_months:
+          description: "Auto-upgrade to next tier for 1 month"
+        6_months:
+          description: "10% discount on all purchases permanently"

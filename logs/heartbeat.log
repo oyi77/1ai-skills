@@ -567,3 +567,218 @@ Heartbeat - 2026-03-14 12:00:02
 
 🚨 URGENT REPORT SENT
 ======================================================================
+2026-03-14T18:00:03.006254 | 89% | 0.1 hours | ✅ OK (86 accounts connected) | 
+======================================================================
+Heartbeat - 2026-03-14 18:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 89%
+  Today's Memory: 1921 lines
+  Yesterday's Memory: 1600 lines
+
+📈 Revenue:
+  Gap: 0.1 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 33.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+
+✅ All systems normal
+📊 REGULAR REPORT QUEUED
+======================================================================
+2026-03-15T00:00:04.008830 | 90% | 39.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 39.0 hours
+======================================================================
+Heartbeat - 2026-03-15 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1958 lines
+
+📈 Revenue:
+  Gap: 39.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 39.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 10889)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-15T06:00:04.005312 | 90% | 45.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 45.0 hours
+======================================================================
+Heartbeat - 2026-03-15 06:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1958 lines
+
+📈 Revenue:
+  Gap: 45.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 45.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 10911)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-15T12:00:04.029808 | 90% | 51.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 51.0 hours
+======================================================================
+Heartbeat - 2026-03-15 12:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1958 lines
+
+📈 Revenue:
+  Gap: 51.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 51.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 10912)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-15T18:00:04.281804 | 90% | 57.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 57.0 hours
+======================================================================
+Heartbeat - 2026-03-15 18:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 1958 lines
+
+📈 Revenue:
+  Gap: 57.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 57.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 10992)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-16T00:00:04.679383 | 90% | 63.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 63.0 hours
+======================================================================
+Heartbeat - 2026-03-16 00:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 90%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 0 lines
+
+📈 Revenue:
+  Gap: 63.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 63.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11067)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-16T06:00:04.261859 | 96% | 69.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Disk nearly full,🆘 CRITICAL: Revenue gap 69.0 hours
+======================================================================
+Heartbeat - 2026-03-16 06:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 96%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 0 lines
+
+📈 Revenue:
+  Gap: 69.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 69.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11350)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-16T12:00:04.594750 | 96% | 75.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Disk nearly full,🆘 CRITICAL: Revenue gap 75.0 hours
+======================================================================
+Heartbeat - 2026-03-16 12:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 96%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 0 lines
+
+📈 Revenue:
+  Gap: 75.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 75.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11378)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================

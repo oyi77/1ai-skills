@@ -1,0 +1,297 @@
+# =============================================================================
+# AI PIPELINE CONFIGURATION
+# =============================================================================
+
+# =============================================================================
+# AI PROVIDERS
+# =============================================================================
+providers:
+  # Primary Provider: GeminiGen.ai
+  geminigen:
+    enabled: true
+    priority: 1
+    base_url: "https://api.geminigen.ai/v1"
+    api_key: "${GEMINIGEN_API_KEY}"
+    timeout: 60000
+    
+    models:
+      video_generation:
+        name: "veo-3"
+        version: "latest"
+        max_duration: 120
+        supported_formats: ["mp4"]
+        max_resolution: "1080p"
+      
+      image_generation:
+        name: "imagen-4"
+        version: "latest"
+        max_resolution: "2048x2048"
+        supported_formats: ["png", "jpg", "webp"]
+      
+      text_to_speech:
+        name: "gemini-tts-v2"
+        version: "latest"
+        supported_languages: ["id", "en"]
+        voice_options: ["neutral", "energetic", "calm", "professional"]
+      
+      script_generation:
+        name: "gemini-pro-vision"
+        version: "latest"
+        max_tokens: 2048
+        temperature: 0.7
+    
+    # Rate limiting
+    rate_limit:
+      requests_per_minute: 60
+      requests_per_hour: 1000
+    
+    # Cost tracking
+    cost_tracking:
+      enabled: true
+      video_per_minute: 0.05  # USD
+      image_per_request: 0.02  # USD
+      tts_per_character: 0.00001  # USD
+  
+  # Fallback Provider 1: Kling AI
+  kling:
+    enabled: true
+    priority: 2
+    base_url: "https://api.klingai.com"
+    api_key: "${KLING_API_KEY}"
+    timeout: 120000
+    
+    models:
+      video_generation:
+        name: "kling-v1"
+        max_duration: 60
+    
+    activation:
+      condition: "primary_failure_rate > 20%"
+      auto_failback: true
+  
+  # Fallback Provider 2: Runway
+  runway:
+    enabled: true
+    priority: 3
+    base_url: "https://api.runwayml.com"
+    api_key: "${RUNWAY_API_KEY}"
+    timeout: 120000
+    
+    models:
+      video_generation:
+        name: "gen-3"
+        max_duration: 16
+    
+    activation:
+      condition: "primary_and_fallback1_down"
+      auto_failback: true
+
+# =============================================================================
+# CIRCUIT BREAKER
+# =============================================================================
+circuit_breaker:
+  enabled: true
+  failure_threshold: 5
+  recovery_timeout: 60000
+  half_open_max_calls: 3
+  
+  # Monitoring
+  monitoring:
+    log_failures: true
+    alert_threshold: 10
+
+# =============================================================================
+# VIDEO GENERATION SETTINGS
+# =============================================================================
+video_generation:
+  # Quality settings
+  quality:
+    default: "high"
+    options: ["low", "medium", "high", "ultra"]
+    
+  # Format settings
+  formats:
+    default: "mp4"
+    supported: ["mp4", "mov"]
+    
+  # Resolution settings
+  resolutions:
+    default: "1080p"
+    supported: ["720p", "1080p", "4k"]
+    
+  # Duration limits by tier
+  duration_limits:
+    free: 15
+    basic: 30
+    pro: 60
+    agency: 120
+  
+  # Scene limits by tier
+  scene_limits:
+    free: 3
+    basic: 5
+    pro: 8
+    agency: 12
+  
+  # Concurrent jobs by tier
+  concurrent_jobs:
+    free: 1
+    basic: 2
+    pro: 5
+    agency: 20
+
+# =============================================================================
+# SCRIPT GENERATION
+# =============================================================================
+script_generation:
+  # Template structure
+  template:
+    structure: "hook → problem → solution → CTA"
+    
+    sections:
+      hook:
+        duration: "3-5 seconds"
+        word_count: "5-10 words"
+        purpose: "Grab attention"
+      
+      problem:
+        duration: "5-10 seconds"
+        word_count: "15-25 words"
+        purpose: "Identify pain point"
+      
+      solution:
+        duration: "10-20 seconds"
+        word_count: "25-50 words"
+        purpose: "Present product as solution"
+      
+      cta:
+        duration: "3-5 seconds"
+        word_count: "5-10 words"
+        purpose: "Call to action"
+  
+  # Tone options by niche
+  tones:
+    fnb: ["appetizing", "casual", "trendy"]
+    beauty: ["aspirational", "confident", "transformative"]
+    retail: ["exciting", "urgent", "benefit-focused"]
+    services: ["trustworthy", "professional", "results-oriented"]
+    professional: ["authoritative", "educational", "reassuring"]
+    hospitality: ["welcoming", "luxurious", "experience-focused"]
+
+# =============================================================================
+# VOICE GENERATION
+# =============================================================================
+voice_generation:
+  # Default settings
+  defaults:
+    language: "id"
+    voice: "neutral"
+    speed: 1.0
+    pitch: 1.0
+  
+  # Language options
+  languages:
+    id:
+      name: "Bahasa Indonesia"
+      voices: ["neutral", "energetic", "calm", "professional"]
+    en:
+      name: "English"
+      voices: ["neutral", "energetic", "calm", "professional"]
+  
+  # Voice cloning (Pro+ feature)
+  voice_cloning:
+    enabled: true
+    min_tier: "pro"
+    requirements:
+      - "Minimum 30 seconds of clear audio"
+      - "No background noise"
+      - "Consistent speaking style"
+    cost: 0.5  # credits per use
+
+# =============================================================================
+# IMAGE GENERATION
+# =============================================================================
+image_generation:
+  # Default settings
+  defaults:
+    resolution: "1024x1024"
+    format: "png"
+    quality: "high"
+  
+  # Resolution options
+  resolutions:
+    - "512x512"
+    - "1024x1024"
+    - "2048x2048"
+  
+  # Cost
+  cost: 0.1  # credits per image
+
+# =============================================================================
+# QUALITY CONTROL
+# =============================================================================
+quality_control:
+  enabled: true
+  
+  automated_checks:
+    blur_detection:
+      enabled: true
+      threshold: 100  # laplacian variance
+      action: "flag_for_review"
+    
+    audio_sync:
+      enabled: true
+      tolerance: 50  # milliseconds
+      action: "auto_retry"
+    
+    text_readability:
+      enabled: true
+      contrast_ratio: 4.5
+      action: "flag_for_review"
+    
+    duration_accuracy:
+      enabled: true
+      tolerance: 1  # seconds
+      action: "auto_trim"
+  
+  # Manual review queue
+  manual_review:
+    enabled: true
+    trigger_conditions:
+      - "low_confidence_score"
+      - "failed_auto_qc"
+      - "user_complaint"
+    
+    sla: "24 hours"
+
+# =============================================================================
+# MULTI-ANGLE CREATIVE
+# =============================================================================
+multi_angle:
+  enabled: true
+  min_tier: "pro"
+  
+  variants:
+    count: 13
+    from_single_image: true
+  
+  pricing:
+    base_video: 1.0  # credits
+    per_additional: 0.3  # credits
+    bundle_3: 1.5  # credits (save 0.4)
+    bundle_all: 4.0  # credits (save 0.9)
+  
+  angles:
+    - classic_showcase
+    - lifestyle_context
+    - problem_solution
+    - asmr_unboxing
+    - before_after
+    - text_only_hook
+    - testimonial
+    - comparison
+    - behind_scenes
+    - ugc_style
+    - luxury
+    - promo
+    - viral

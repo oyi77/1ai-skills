@@ -1,0 +1,122 @@
+{
+  "name": "openclaw-bot",
+  "version": "3.0.0",
+  "description": "AI Video Marketing SaaS Platform - Telegram Bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:prod": "NODE_ENV=production node dist/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "jest --config jest.e2e.config.js",
+    "lint": "eslint src/ --ext .ts",
+    "lint:fix": "eslint src/ --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:prod": "prisma migrate deploy",
+    "migrate:status": "prisma migrate status",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "db:generate": "prisma generate",
+    "setup": "bash scripts/setup.sh",
+    "deploy": "bash scripts/deploy.sh",
+    "health-check": "bash scripts/health-check.sh",
+    "backup": "bash scripts/backup.sh",
+    "docker:build": "docker build -t openclaw-bot:latest .",
+    "docker:run": "docker run -d --env-file .env -p 3000:3000 openclaw-bot:latest",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "telegram-bot",
+    "ai-video",
+    "marketing",
+    "saas",
+    "openclaw"
+  ],
+  "author": "OpenClaw Team <team@openclaw.ai>",
+  "license": "PROPRIETARY",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.0",
+    "bullmq": "^4.15.0",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.24.0",
+    "ioredis": "^5.3.2",
+    "telegraf": "^4.15.0",
+    "winston": "^3.11.0",
+    "zod": "^3.22.0",
+    "axios": "^1.6.0",
+    "form-data": "^4.0.0",
+    "mime-types": "^2.1.35",
+    "uuid": "^9.0.0",
+    "date-fns": "^2.30.0",
+    "lodash": "^4.17.21",
+    "js-yaml": "^4.1.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "rate-limiter-flexible": "^4.0.1",
+    "@sentry/node": "^7.80.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/jest": "^29.5.0",
+    "@types/uuid": "^9.0.0",
+    "@types/lodash": "^4.14.0",
+    "@types/mime-types": "^2.1.0",
+    "@types/js-yaml": "^4.0.0",
+    "@types/bcryptjs": "^2.4.0",
+    "@types/jsonwebtoken": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "prisma": "^5.7.0",
+    "ts-jest": "^29.1.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.2.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/tests"
+    ],
+    "testMatch": [
+      "**/*.test.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts",
+      "!src/index.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
+}

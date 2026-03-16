@@ -1,0 +1,356 @@
+# =============================================================================
+# FEATURE FLAGS CONFIGURATION
+# =============================================================================
+# 
+# This file contains all feature flags for the OpenClaw Bot.
+# Features can be enabled/disabled globally or per tier/region.
+#
+# Usage:
+# - Set 'enabled: true/false' for global toggle
+## - Use 'tiers' to restrict by user tier
+# - Use 'regions' to restrict by geography
+# - Use 'percentage' for gradual rollout
+#
+# =============================================================================
+
+# =============================================================================
+# CORE FEATURES
+# =============================================================================
+
+# Video Generation
+core_video_generation:
+  enabled: true
+  description: "Core video generation functionality"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+
+# Image Upload
+core_image_upload:
+  enabled: true
+  description: "Upload images for video generation"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+  limits:
+    free:
+      max_files: 3
+      max_size_mb: 5
+    basic:
+      max_files: 5
+      max_size_mb: 10
+    pro:
+      max_files: 10
+      max_size_mb: 20
+    agency:
+      max_files: 20
+      max_size_mb: 50
+
+# =============================================================================
+# PAYMENT FEATURES
+# =============================================================================
+
+# Topup System
+feature_topup:
+  enabled: true
+  description: "Credit topup functionality"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+
+# Subscription System
+feature_subscription:
+  enabled: true
+  description: "Monthly subscription plans"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+
+# Multiple Payment Gateways
+feature_multi_gateway:
+  enabled: true
+  description: "Multiple payment gateway options"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+  gateways:
+    - midtrans
+    - tripay
+
+# =============================================================================
+# REFERRAL FEATURES
+# =============================================================================
+
+# Referral System
+feature_referral:
+  enabled: true
+  description: "Referral code system"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+
+# Tier 2 Affiliate
+feature_affiliate_tier2:
+  enabled: true
+  description: "2-tier affiliate commission"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+
+# Affiliate Dashboard
+feature_affiliate_dashboard:
+  enabled: true
+  description: "Affiliate statistics dashboard"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+
+# Affiliate Withdrawal
+feature_affiliate_withdrawal:
+  enabled: true
+  description: "Commission withdrawal"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+  min_withdrawal: 50000
+
+# =============================================================================
+# VIDEO FEATURES
+# =============================================================================
+
+# Multi-Platform Export
+feature_multi_platform:
+  enabled: true
+  description: "Export to multiple platforms"
+  tiers: ["free", "basic", "pro", "agency"]
+  regions: ["all"]
+  platforms:
+    free: ["tiktok", "instagram"]
+    basic: ["tiktok", "instagram", "youtube", "facebook"]
+    pro: ["tiktok", "instagram", "youtube", "facebook", "twitter"]
+    agency: ["tiktok", "instagram", "youtube", "facebook", "twitter", "linkedin"]
+
+# Multi-Angle Creative
+feature_multi_angle:
+  enabled: true
+  description: "Generate multiple creative angles"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  variants:
+    pro: 3
+    agency: 13
+
+# Voice Cloning
+feature_voice_cloning:
+  enabled: true
+  description: "Clone user's voice for voiceover"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  cost: 0.5  # credits per use
+
+# No Watermark
+feature_no_watermark:
+  enabled: true
+  description: "Remove OpenClaw watermark"
+  tiers: ["basic", "pro", "agency"]
+  regions: ["all"]
+
+# Priority Queue
+feature_priority_queue:
+  enabled: true
+  description: "Priority processing queue"
+  tiers: ["lite", "pro", "agency"]
+  regions: ["all"]
+  multipliers:
+    lite: 1.5
+    pro: 2.0
+    agency: 3.0
+
+# Free Revision
+feature_free_revision:
+  enabled: true
+  description: "One free revision per video"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  count:
+    pro: 1
+    agency: 999  # unlimited
+
+# =============================================================================
+# AI FEATURES
+# =============================================================================
+
+# Auto Niche Detection
+feature_auto_detect_niche:
+  enabled: true
+  description: "Automatically detect product niche"
+  tiers: ["basic", "pro", "agency"]
+  regions: ["all"]
+
+# Competitor Analysis
+feature_competitor_analysis:
+  enabled: false
+  description: "Analyze competitor videos"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# Trending Audio Sync
+feature_trending_audio:
+  enabled: false
+  description: "Sync with trending audio"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# Best Time Posting
+feature_best_time_posting:
+  enabled: false
+  description: "AI-suggested optimal posting time"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# =============================================================================
+# TEAM FEATURES
+# =============================================================================
+
+# Team Workspace
+feature_team_workspace:
+  enabled: false
+  description: "Collaborative workspace for teams"
+  tiers: ["agency"]
+  regions: ["all"]
+  max_seats: 5
+  rollout_percentage: 0  # Not yet released
+
+# Client Review
+feature_client_review:
+  enabled: false
+  description: "Client review and approval workflow"
+  tiers: ["agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# Comment & Annotate
+feature_comment_annotate:
+  enabled: false
+  description: "Comment on specific video frames"
+  tiers: ["agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# =============================================================================
+# INTEGRATION FEATURES
+# =============================================================================
+
+# Direct Social Publish
+feature_direct_publish:
+  enabled: false
+  description: "Publish directly to social media"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  platforms:
+    - tiktok
+    - instagram
+    - youtube
+    - facebook
+  rollout_percentage: 0  # Not yet released
+
+# Analytics Sync
+feature_analytics_sync:
+  enabled: false
+  description: "Sync performance analytics"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# E-commerce Connect
+feature_ecommerce_connect:
+  enabled: false
+  description: "Connect to e-commerce platforms"
+  tiers: ["agency"]
+  regions: ["all"]
+  platforms:
+    - tokopedia
+    - shopee
+    - tiktok_shop
+  rollout_percentage: 0  # Not yet released
+
+# =============================================================================
+# ADVANCED FEATURES
+# =============================================================================
+
+# Custom Brand Kit
+feature_brand_kit:
+  enabled: true
+  description: "Upload logo, colors, fonts"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+
+# A/B Testing
+feature_ab_testing:
+  enabled: false
+  description: "Generate and test multiple variants"
+  tiers: ["agency"]
+  regions: ["all"]
+  rollout_percentage: 0  # Not yet released
+
+# Template Marketplace
+feature_template_marketplace:
+  enabled: false
+  description: "Buy/sell custom templates"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  revenue_share: "70/30"  # creator/platform
+  rollout_percentage: 0  # Not yet released
+
+# API Access
+feature_api_access:
+  enabled: false
+  description: "External API access"
+  tiers: ["agency"]
+  regions: ["all"]
+  rate_limits:
+    requests_per_minute: 60
+    requests_per_hour: 1000
+  rollout_percentage: 0  # Not yet released
+
+# White Label
+feature_white_label:
+  enabled: true
+  description: "Remove OpenClaw branding"
+  tiers: ["agency"]
+  regions: ["all"]
+
+# =============================================================================
+# EXPERIMENTAL FEATURES
+# =============================================================================
+
+# Use with caution - may be unstable
+
+experimental_fast_generation:
+  enabled: false
+  description: "Faster generation with reduced quality"
+  tiers: ["pro", "agency"]
+  regions: ["all"]
+  rollout_percentage: 0
+
+experimental_ai_chat:
+  enabled: false
+  description: "AI-powered chat assistant"
+  tiers: ["all"]
+  regions: ["all"]
+  rollout_percentage: 0
+
+# =============================================================================
+# FEATURE FLAG MANAGEMENT
+# =============================================================================
+
+# How to add new features:
+# 1. Add entry below with unique key
+# 2. Set enabled: false initially
+# 3. Use rollout_percentage for gradual rollout
+# 4. Update tiers/regions as needed
+# 5. Set enabled: true when ready for full release
+
+# Rollout strategy:
+# - Start with rollout_percentage: 5
+# - Monitor for 24-48 hours
+# - Increase gradually: 10, 25, 50, 100
+# - Once stable, set enabled: true
+
+# Emergency disable:
+# - Set enabled: false to immediately disable
+# - All users affected immediately

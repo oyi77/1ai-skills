@@ -1,0 +1,237 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =============================================================================
+// USER MODEL
+// =============================================================================
+model User {
+  id                BigInt    @id @default(autoincrement())
+  telegramId        BigInt    @unique @map("telegram_id")
+  uuid              String    @unique @default(uuid()) @db.Uuid
+  username          String?   @db.VarChar(32)
+  firstName         String    @map("first_name") @db.VarChar(64)
+  lastName          String?   @map("last_name") @db.VarChar(64)
+  phoneNumber       String?   @map("phone_number") @db.VarChar(20)
+  
+  // Tier & Credits
+  tier              String    @default("free") @db.VarChar(16)
+  creditBalance     Decimal   @default(0) @map("credit_balance") @db.Decimal(10, 2)
+  creditExpiresAt   DateTime? @map("credit_expires_at")
+  
+  // Referral
+  referralCode      String?   @unique @map("referral_code") @db.VarChar(32)
+  referredBy        String?   @map("referred_by") @db.Uuid
+  referralTier      Int       @default(1) @map("referral_tier")
+  
+  // Settings
+  language          String    @default("id") @db.VarChar(5)
+  notificationsEnabled Boolean @default(true) @map("notifications_enabled")
+  autoRenewal       Boolean   @default(false) @map("auto_renewal")
+  
+  // Security
+  isBanned          Boolean   @default(false) @map("is_banned")
+  banReason         String?   @map("ban_reason")
+  bannedAt          DateTime? @map("banned_at")
+  fraudScore        Int       @default(0) @map("fraud_score")
+  
+  // Metadata
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  lastActivityAt    DateTime  @default(now()) @map("last_activity_at")
+  
+  // Relations
+  transactions      Transaction[]
+  videos            Video[]
+  commissions       Commission[]
+  subscriptions     Subscription[]
+  
+  @@index([telegramId])
+  @@index([referralCode])
+  @@index([tier])
+  @@index([lastActivityAt])
+  @@map("users")
+}
+
+// =============================================================================
+// TRANSACTION MODEL
+// =============================================================================
+model Transaction {
+  id                    BigInt    @id @default(autoincrement())
+  orderId               String    @unique @map("order_id") @db.VarChar(64)
+  userId                BigInt    @map("user_id")
+  
+  // Transaction details
+  type                  String    @db.VarChar(32)
+  packageName           String?   @map("package_name") @db.VarChar(32)
+  amountIdr             Decimal   @map("amount_idr") @db.Decimal(12, 2)
+  creditsAmount         Decimal?  @map("credits_amount") @db.Decimal(10, 2)
+  
+  // Payment details
+  gateway               String    @db.VarChar(16)
+  gatewayTransactionId  String?   @map("gateway_transaction_id") @db.VarChar(128)
+  paymentMethod         String?   @map("payment_method") @db.VarChar(32)
+  paymentChannel        String?   @map("payment_channel") @db.VarChar(32)
+  
+  // Status tracking
+  status                String    @default("pending") @db.VarChar(16)
+  statusHistory         Json?     @map("status_history")
+  
+  // Timestamps
+  createdAt             DateTime  @default(now()) @map("created_at")
+  paidAt                DateTime? @map("paid_at")
+  expiredAt             DateTime? @default(dbgenerated("NOW() + INTERVAL '30 minutes'")) @map("expired_at")
+  
+  // Metadata
+  ipAddress             String?   @map("ip_address") @db.Inet
+  userAgent             String?   @map("user_agent")
+  metadata              Json?
+  
+  // Relations
+  user                  User      @relation(fields: [userId], references: [telegramId])
+  
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("transactions")
+}
+
+// =============================================================================
+// VIDEO MODEL
+// =============================================================================
+model Video {
+  id              BigInt    @id @default(autoincrement())
+  userId          BigInt    @map("user_id")
+  jobId           String    @unique @map("job_id") @db.VarChar(64)
+  
+  // Video details
+  title           String?   @db.VarChar(255)
+  description     String?   @db.Text
+  
+  // Generation params
+  niche           String    @db.VarChar(32)
+  platform        String    @db.VarChar(32)
+  duration        Int
+  scenes          Int
+  
+  // Output
+  thumbnailUrl    String?   @map("thumbnail_url")
+  videoUrl        String?   @map("video_url")
+  downloadUrl     String?   @map("download_url")
+  
+  // Status
+  status          String    @default("processing") @db.VarChar(16)
+  progress        Int       @default(0)
+  errorMessage    String?   @map("error_message")
+  
+  // Credits
+  creditsUsed     Decimal   @map("credits_used") @db.Decimal(10, 2)
+  
+  // Timestamps
+  createdAt       DateTime  @default(now()) @map("created_at")
+  completedAt     DateTime? @map("completed_at")
+  expiresAt       DateTime? @default(dbgenerated("NOW() + INTERVAL '30 days'")) @map("expires_at")
+  
+  // Relations
+  user            User      @relation(fields: [userId], references: [telegramId])
+  
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("videos")
+}
+
+// =============================================================================
+// COMMISSION MODEL (Affiliate)
+// =============================================================================
+model Commission {
+  id              BigInt    @id @default(autoincrement())
+  referrerId      BigInt    @map("referrer_id")
+  referredId      BigInt    @map("referred_id")
+  
+  // Commission details
+  amount          Decimal   @db.Decimal(12, 2)
+  tier            Int
+  status          String    @default("pending") @db.VarChar(16)
+  
+  // Availability
+  availableAt     DateTime  @map("available_at")
+  withdrawnAt     DateTime? @map("withdrawn_at")
+  
+  // Timestamps
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  
+  // Relations
+  referrer        User      @relation(fields: [referrerId], references: [telegramId])
+  
+  @@index([referrerId])
+  @@index([status])
+  @@index([availableAt])
+  @@map("commissions")
+}
+
+// =============================================================================
+// SUBSCRIPTION MODEL
+// =============================================================================
+model Subscription {
+  id                  BigInt    @id @default(autoincrement())
+  userId              BigInt    @map("user_id")
+  
+  plan                String    @db.VarChar(16)
+  billingCycle        String    @map("billing_cycle") @db.VarChar(16)
+  
+  status              String    @default("active") @db.VarChar(16)
+  
+  currentPeriodStart  DateTime  @map("current_period_start")
+  currentPeriodEnd    DateTime  @map("current_period_end")
+  
+  cancelAtPeriodEnd   Boolean   @default(false) @map("cancel_at_period_end")
+  cancelledAt         DateTime? @map("cancelled_at")
+  
+  paymentMethodId     String?   @map("payment_method_id") @db.VarChar(64)
+  
+  metadata            Json?
+  
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+  
+  // Relations
+  user                User      @relation(fields: [userId], references: [telegramId])
+  
+  @@index([userId])
+  @@index([status])
+  @@index([currentPeriodEnd])
+  @@map("subscriptions")
+}
+
+// =============================================================================
+// AUDIT LOG MODEL
+// =============================================================================
+model AuditLog {
+  id          BigInt    @id @default(autoincrement())
+  userId      BigInt?   @map("user_id")
+  action      String    @db.VarChar(64)
+  entityType  String    @map("entity_type") @db.VarChar(32)
+  entityId    String    @map("entity_id") @db.VarChar(64)
+  oldValue    Json?     @map("old_value")
+  newValue    Json?     @map("new_value")
+  ipAddress   String?   @map("ip_address") @db.Inet
+  userAgent   String?   @map("user_agent")
+  metadata    Json?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  
+  @@index([userId])
+  @@index([action])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

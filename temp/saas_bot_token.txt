@@ -1,0 +1,3 @@
+BOT_TOKEN=8696544399:AAGWVi96hW5DCpytP1HFeaRu1fhoj1qdywg
+BOT_USERNAME=@berkahkarya_saas_bot
+BOT_NAME=OpenClaw SaaS Bot

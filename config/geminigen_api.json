@@ -1,0 +1,97 @@
+{
+  "api_key": "geminiai-4318f9ef07c91969d314b67c3afeb3bf",
+  "base_url": "https://api.geminigen.ai",
+  "endpoints": {
+    "generate_image": "POST /uapi/v1/generate_image",
+    "generate_video_veo": "POST /uapi/v1/generate (check docs)",
+    "generate_video_sora": "POST /uapi/v1/generate (check docs)",
+    "generate_video_grok": "POST /uapi/v1/video-gen/grok",
+    "text_to_speech": "POST /uapi/v1/generate (check docs)",
+    "history": "GET /uapi/v1/history (check docs)"
+  },
+  "image_models": [
+    "nano-banana-pro",
+    "nano-banana-2",
+    "imagen-4"
+  ],
+  "image_aspect_ratios": [
+    "1:1",
+    "16:9",
+    "9:16",
+    "4:3",
+    "3:4"
+  ],
+  "image_styles": [
+    "None",
+    "Photorealistic",
+    "3D Render",
+    "Anime General",
+    "Creative",
+    "Dynamic",
+    "Fashion",
+    "Illustration",
+    "Stock Photo",
+    "Watercolor",
+    "Portrait",
+    "Portrait Cinematic"
+  ],
+  "image_formats": [
+    "jpeg",
+    "png"
+  ],
+  "image_resolutions": [
+    "1K",
+    "2K",
+    "4K"
+  ],
+  "rate_limits": {
+    "nano-banana-pro": "5/min, 100/hour, 1000/day (FREE)",
+    "other": "no rate limit"
+  },
+  "status_codes": {
+    "1": "Processing",
+    "2": "Completed",
+    "3": "Failed"
+  },
+  "auth_header": "x-api-key",
+  "content_type": "multipart/form-data",
+  "test_result": {
+    "uuid": "8169dca0-1f8a-11f1-bfd8-7e3ffaaece3e",
+    "status": "processing",
+    "user_id": 694647
+  },
+  "updated": "2026-03-14",
+  "video_grok": {
+    "models": [
+      "grok-3"
+    ],
+    "resolutions": [
+      "480p",
+      "720p"
+    ],
+    "aspect_ratios": {
+      "landscape": "16:9",
+      "portrait": "9:16",
+      "square": "1:1",
+      "vertical": "2:3",
+      "horizontal": "3:2"
+    },
+    "durations": [
+      6,
+      10,
+      15
+    ],
+    "modes": [
+      "custom",
+      "normal",
+      "extremely-crazy",
+      "extremely-spicy-or-crazy"
+    ],
+    "ref_image_methods": [
+      "files",
+      "file_urls",
+      "ref_images"
+    ],
+    "ref_image_priority": "files > file_urls > ref_images"
+  }
+}
