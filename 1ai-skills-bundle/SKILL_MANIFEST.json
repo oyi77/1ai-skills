@@ -1,0 +1,35 @@
+{
+  "project": "Business Kingdom 1ai-skills",
+  "version": "1.0.0",
+  "author": "Coder $String$ / Vilona",
+  "description": "Unified portable manifest for the complete Business Kingdom stack",
+  "required_ports": {
+    "ClawPanel": 19527,
+    "Gateway": 18789,
+    "Paperclip": 3100
+  },
+  "critical_scripts": [
+    "scripts/full_auto_engine.py",
+    "scripts/bca_balance_v2.py",
+    "scripts/disk_cleanup_automation.py",
+    "scripts/lynk_monitor.py"
+  ],
+  "api_keys_required": [
+    "PostBridge",
+    "NVIDIA",
+    "xAI",
+    "Google Gemini",
+    "Brave Search"
+  ],
+  "orchestration": {
+    "manager_agent": "main",
+    "worker_runtimes": ["subagent", "acp"],
+    "automatic_retry": true,
+    "revenue_tracking": true
+  },
+  "deployment": {
+    "os": "Linux (Kali/Ubuntu)",
+    "node_version": ">=22",
+    "python_version": ">=3.10"
+  }
+}

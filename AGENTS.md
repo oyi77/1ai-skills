@@ -15,6 +15,7 @@ Before doing anything:
 4. Read `MEMORY.md` for long-term lessons
 5. **Read `memory/INDEX.md` — quick reference to ALL lessons**
 6. **Check `notes/open-loops.md` — critical blockers**
+7. **Check `DIRECTIVE.md` — Autonomous Manager instructions (MANDATORY)**
 
 Don't ask permission. Just do it.
 
