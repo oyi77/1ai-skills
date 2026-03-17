@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-03-17T13:27:52.017222",
+  "commerce": {
+    "postbridge": {
+      "total_views": 3287,
+      "total_likes": 34,
+      "post_count": 100
+    },
+    "lynk_clicks": 0,
+    "revenue_est": 0
+  },
+  "treasury": {
+    "bca_idr": 1666116.37
+  },
+  "infrastructure": {
+    "disk_used_pct": 91.29,
+    "disk_free_gb": 9.56,
+    "status": "HEALTHY"
+  }
+}

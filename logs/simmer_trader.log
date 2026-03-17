@@ -1987,6 +1987,7 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.simmer.market
     ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 54 trades today.
   Final: $10,030.79 | PnL: $30.79 | Trades: 0
 
+<<<<<<< Updated upstream
 [2026-03-14 17:35] Simmer Quick Trader
   Balance: $10,025.79 | PnL: $25.79
   BTC: $70,434 (-2.71%) → down
@@ -2330,3 +2331,148 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.simmer.market
     Prob: 0.511 → YES $5.0
     ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
   Final: $10,128.41 | PnL: $128.41 | Trades: 0
+=======
+[2026-03-16 17:10] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $73,327 (+2.16%) → up
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-16 17:15] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $73,354 (+2.17%) → up
+  Trading: XRP Up or Down - March 16, 6:10AM-6:15AM ET
+    Prob: 0.495 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-16 19:25] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $73,631 (+2.69%) → up
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-16 19:30] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $73,800 (+2.90%) → up
+  Trading: Solana Up or Down - March 16, 8:25AM-8:30AM ET
+    Prob: 0.485 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 02:40] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,144 (+3.68%) → up
+  Trading: Bitcoin Up or Down - March 17, 3:15PM-3:30PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 02:45] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,177 (+3.74%) → up
+  Trading: XRP Up or Down - March 16, 3:40PM-3:45PM ET
+    Prob: 0.505 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 05:10] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,838 (+3.94%) → up
+  Trading: Bitcoin Up or Down - March 16, 6:05PM-6:10PM ET
+    Prob: 0.442 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 05:15] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,827 (+4.19%) → up
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:05PM ET
+    Prob: 0.501 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 05:20] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,834 (+4.20%) → up
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:15PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:05PM ET
+    Prob: 0.501 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 05:25] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,692 (+3.87%) → up
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:15PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:05PM ET
+    Prob: 0.501 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 05:30] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,660 (+3.81%) → up
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:15PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Trading: Bitcoin Up or Down - March 17, 6:00PM-6:05PM ET
+    Prob: 0.515 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 06:35] Simmer Quick Trader
+  Balance: $10,133.21 | PnL: $133.21
+  BTC: $74,714 (+3.07%) → up
+  Trading: Bitcoin Up or Down - March 17, 7:15PM-7:30PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,133.21 | PnL: $133.21 | Trades: 0
+
+[2026-03-17 07:40] Simmer Quick Trader
+  Balance: $10,132.36 | PnL: $132.36
+  BTC: $75,138 (+3.47%) → up
+  Final: $10,132.36 | PnL: $132.36 | Trades: 0
+
+[2026-03-17 08:40] Simmer Quick Trader
+  Balance: $10,141.63 | PnL: $141.63
+  BTC: $75,726 (+4.27%) → up
+  Final: $10,141.63 | PnL: $141.63 | Trades: 0
+
+[2026-03-17 10:35] Simmer Quick Trader
+  Balance: $10,121.93 | PnL: $121.93
+  BTC: $74,678 (+1.62%) → up
+  Trading: Bitcoin Up or Down - March 17, 11:25PM-11:30PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Trading: Bitcoin Up or Down - March 17, 11:15PM-11:30PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,121.93 | PnL: $121.93 | Trades: 0
+
+[2026-03-17 10:45] Simmer Quick Trader
+  Balance: $10,121.93 | PnL: $121.93
+  BTC: $74,447 (+0.94%) → up
+  Trading: Bitcoin Up or Down - March 17, 11:25PM-11:30PM ET
+    Prob: 0.505 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Trading: Bitcoin Up or Down - March 17, 11:15PM-11:30PM ET
+    Prob: 0.500 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,121.93 | PnL: $121.93 | Trades: 0
+
+[2026-03-17 11:15] Simmer Quick Trader
+  Balance: $10,121.93 | PnL: $121.93
+  BTC: $74,621 (+1.31%) → up
+  Final: $10,121.93 | PnL: $121.93 | Trades: 0
+
+[2026-03-17 12:00] Simmer Quick Trader
+  Balance: $10,121.93 | PnL: $121.93
+  BTC: $74,279 (+0.57%) → up
+  Trading: XRP Up or Down - March 17, 12:55AM-1:00AM ET
+    Prob: 0.515 → YES $5.0
+    ❌ Daily trade limit reached (50 trades/day, across all venues). You've made 50 trades today.
+  Final: $10,121.93 | PnL: $121.93 | Trades: 0
+>>>>>>> Stashed changes

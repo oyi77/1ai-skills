@@ -567,6 +567,7 @@ Heartbeat - 2026-03-14 12:00:02
 
 🚨 URGENT REPORT SENT
 ======================================================================
+<<<<<<< Updated upstream
 2026-03-14T18:00:03.006254 | 89% | 0.1 hours | ✅ OK (86 accounts connected) | 
 ======================================================================
 Heartbeat - 2026-03-14 18:00:01
@@ -708,26 +709,48 @@ Heartbeat - 2026-03-16 00:00:02
 
 📊 System Status:
   Disk Used: 90%
+=======
+2026-03-16T18:00:04.592014 | 97% | 81.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Disk nearly full,🆘 CRITICAL: Revenue gap 81.0 hours
+======================================================================
+Heartbeat - 2026-03-16 18:00:02
+======================================================================
+
+📊 System Status:
+  Disk Used: 97%
+>>>>>>> Stashed changes
   Today's Memory: 0 lines
   Yesterday's Memory: 0 lines
 
 📈 Revenue:
+<<<<<<< Updated upstream
   Gap: 63.0 hours
+=======
+  Gap: 81.0 hours
+>>>>>>> Stashed changes
 
 🌐 PostBridge:
   API Status: ✅ OK (86 accounts connected)
   Posts Scheduled: 58
 
 💰 Cashflow:
+<<<<<<< Updated upstream
   Last Track: 63.0h ago
 
 📊 LYNK:
   Status: Needs manual check
 ✅ Telegram message sent (Message ID: 11067)
+=======
+  Last Track: 81.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11504)
+>>>>>>> Stashed changes
 ✅ Report sent to Telegram successfully via Bot API
 
 🚨 URGENT REPORT SENT
 ======================================================================
+<<<<<<< Updated upstream
 2026-03-16T06:00:04.261859 | 96% | 69.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Disk nearly full,🆘 CRITICAL: Revenue gap 69.0 hours
 ======================================================================
 Heartbeat - 2026-03-16 06:00:02
@@ -740,21 +763,44 @@ Heartbeat - 2026-03-16 06:00:02
 
 📈 Revenue:
   Gap: 69.0 hours
+=======
+2026-03-17T00:00:04.238729 | 91% | 87.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 87.0 hours
+======================================================================
+Heartbeat - 2026-03-17 00:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 0 lines
+  Yesterday's Memory: 97 lines
+
+📈 Revenue:
+  Gap: 87.0 hours
+>>>>>>> Stashed changes
 
 🌐 PostBridge:
   API Status: ✅ OK (86 accounts connected)
   Posts Scheduled: 58
 
 💰 Cashflow:
+<<<<<<< Updated upstream
   Last Track: 69.0h ago
 
 📊 LYNK:
   Status: Needs manual check
 ✅ Telegram message sent (Message ID: 11350)
+=======
+  Last Track: 87.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11527)
+>>>>>>> Stashed changes
 ✅ Report sent to Telegram successfully via Bot API
 
 🚨 URGENT REPORT SENT
 ======================================================================
+<<<<<<< Updated upstream
 2026-03-16T12:00:04.594750 | 96% | 75.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Disk nearly full,🆘 CRITICAL: Revenue gap 75.0 hours
 ======================================================================
 Heartbeat - 2026-03-16 12:00:02
@@ -767,17 +813,66 @@ Heartbeat - 2026-03-16 12:00:02
 
 📈 Revenue:
   Gap: 75.0 hours
+=======
+2026-03-17T06:00:03.975328 | 91% | 93.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 93.0 hours
+======================================================================
+Heartbeat - 2026-03-17 06:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 418 lines
+  Yesterday's Memory: 97 lines
+
+📈 Revenue:
+  Gap: 93.0 hours
+>>>>>>> Stashed changes
 
 🌐 PostBridge:
   API Status: ✅ OK (86 accounts connected)
   Posts Scheduled: 58
 
 💰 Cashflow:
+<<<<<<< Updated upstream
   Last Track: 75.0h ago
 
 📊 LYNK:
   Status: Needs manual check
 ✅ Telegram message sent (Message ID: 11378)
+=======
+  Last Track: 93.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11745)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================
+2026-03-17T12:00:04.067972 | 91% | 99.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 99.0 hours
+======================================================================
+Heartbeat - 2026-03-17 12:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 91%
+  Today's Memory: 418 lines
+  Yesterday's Memory: 97 lines
+
+📈 Revenue:
+  Gap: 99.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 99.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11752)
+>>>>>>> Stashed changes
 ✅ Report sent to Telegram successfully via Bot API
 
 🚨 URGENT REPORT SENT

@@ -1,26 +1,12 @@
 {
-  "last_order_ids": [],
-  "total_revenue": 0,
-  "last_check": "2026-03-16 12:00",
-  "known_order_ids": [
+  "known_ids": [
     "b8bedb7a60125de0054fe2319d409389",
     "f3cd654dbbe04bbe57789afc0eb5d74b",
+    "428e630ed9a9e18d2f9047a6c825e579",
     "e88869e4bad03309bc25fc5e90aaea6d"
   ],
-  "total_paid_idr": 0,
-  "order_count": 3,
-  "summary": {
-    "SUCCESS": 0,
-    "PENDING": 0,
-    "EXPIRED": 0
-  },
-  "known_ids": [
-    "f3cd654dbbe04bbe57789afc0eb5d74b",
-    "e88869e4bad03309bc25fc5e90aaea6d",
-    "b8bedb7a60125de0054fe2319d409389",
-    "428e630ed9a9e18d2f9047a6c825e579"
-  ],
   "total_paid": 0,
+  "last_check": "2026-03-17 13:00",
   "stats": {
     "total_orders": 4,
     "paid": 0,

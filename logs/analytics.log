@@ -10,6 +10,7 @@
 {"timestamp": "2026-03-14T12:01:22.882245", "accounts": 86, "results_total": 4500, "success": 2953, "fail": 1547, "success_rate": 65.6, "views": 0, "likes": 0, "comments": 0, "shares": 0}
 {"timestamp": "2026-03-14T14:01:26.760627", "accounts": 86, "results_total": 4700, "success": 3148, "fail": 1552, "success_rate": 67.0, "views": 0, "likes": 0, "comments": 0, "shares": 0}
 {"timestamp": "2026-03-14T16:01:58.116978", "accounts": 86, "results_total": 6700, "success": 4411, "fail": 2289, "success_rate": 65.8, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+<<<<<<< Updated upstream
 {"timestamp": "2026-03-14T18:02:05.528470", "accounts": 86, "results_total": 7100, "success": 4663, "fail": 2437, "success_rate": 65.7, "views": 0, "likes": 0, "comments": 0, "shares": 0}
 {"timestamp": "2026-03-14T20:02:09.887859", "accounts": 86, "results_total": 7200, "success": 4728, "fail": 2472, "success_rate": 65.7, "views": 0, "likes": 0, "comments": 0, "shares": 0}
 {"timestamp": "2026-03-14T22:02:12.086648", "accounts": 86, "results_total": 7400, "success": 4875, "fail": 2525, "success_rate": 65.9, "views": 0, "likes": 0, "comments": 0, "shares": 0}
@@ -32,3 +33,16 @@
 {"timestamp": "2026-03-16T08:03:00.955482", "accounts": 86, "results_total": 8700, "success": 5698, "fail": 3002, "success_rate": 65.5, "views": 0, "likes": 0, "comments": 0, "shares": 0}
 {"timestamp": "2026-03-16T10:02:57.057577", "accounts": 86, "results_total": 8700, "success": 5697, "fail": 3003, "success_rate": 65.5, "views": 0, "likes": 0, "comments": 0, "shares": 0}
 {"timestamp": "2026-03-16T12:03:06.043250", "accounts": 86, "results_total": 9000, "success": 5911, "fail": 3089, "success_rate": 65.7, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+=======
+{"timestamp": "2026-03-16T14:03:05.923707", "accounts": 86, "results_total": 9000, "success": 5878, "fail": 3122, "success_rate": 65.3, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-16T16:03:08.618490", "accounts": 86, "results_total": 9200, "success": 6018, "fail": 3182, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-16T18:03:07.803911", "accounts": 86, "results_total": 9200, "success": 6018, "fail": 3182, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-16T20:03:19.605783", "accounts": 86, "results_total": 9500, "success": 6209, "fail": 3291, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T00:03:27.102527", "accounts": 86, "results_total": 9500, "success": 6209, "fail": 3291, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T02:03:21.762240", "accounts": 86, "results_total": 9500, "success": 6209, "fail": 3291, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T04:03:21.598319", "accounts": 86, "results_total": 9500, "success": 6209, "fail": 3291, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T06:03:22.974598", "accounts": 86, "results_total": 9500, "success": 6209, "fail": 3291, "success_rate": 65.4, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T08:03:30.597586", "accounts": 86, "results_total": 9800, "success": 6403, "fail": 3397, "success_rate": 65.3, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T10:03:32.183426", "accounts": 86, "results_total": 9800, "success": 6402, "fail": 3398, "success_rate": 65.3, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+{"timestamp": "2026-03-17T12:03:36.818451", "accounts": 86, "results_total": 9900, "success": 6495, "fail": 3405, "success_rate": 65.6, "views": 0, "likes": 0, "comments": 0, "shares": 0}
+>>>>>>> Stashed changes

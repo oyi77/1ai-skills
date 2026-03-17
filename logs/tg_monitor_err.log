@@ -1,2 +1,6 @@
 /usr/bin/python3: can't open file '/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py': [Errno 2] No such file or directory
+<<<<<<< Updated upstream
 /usr/bin/python3: can't open file '/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py': [Errno 2] No such file or directory
+=======
+Server closed the connection: [Errno 104] Connection reset by peer
+>>>>>>> Stashed changes

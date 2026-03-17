@@ -253,6 +253,7 @@ Processing: Content Creator Hub
 [2026-03-14 10:00:01] [INFO]  
 [2026-03-14 10:00:01] [INFO] Qualified leads: 0
 [2026-03-14 10:00:01] [INFO] No qualified leads to export
+<<<<<<< Updated upstream
 [2026-03-15 10:00:01] [INFO] ======================================================================
 [2026-03-15 10:00:01] [INFO] OpenFang Hand: LEAD
 [2026-03-15 10:00:01] [INFO] Time: 2026-03-15 10:00:01
@@ -303,3 +304,30 @@ Processing: Content Creator Hub
 [2026-03-16 10:00:01] [INFO]  
 [2026-03-16 10:00:01] [INFO] Qualified leads: 0
 [2026-03-16 10:00:01] [INFO] No qualified leads to export
+=======
+[2026-03-17 10:00:01] [INFO] ======================================================================
+[2026-03-17 10:00:01] [INFO] OpenFang Hand: LEAD
+[2026-03-17 10:00:01] [INFO] Time: 2026-03-17 10:00:01
+[2026-03-17 10:00:01] [INFO] ======================================================================
+[2026-03-17 10:00:01] [INFO]  
+[2026-03-17 10:00:01] [INFO] ICP loaded: BerkahKarya Lead Generation
+[2026-03-17 10:00:01] [INFO]  
+[2026-03-17 10:00:01] [INFO] Existing database: 4 leads
+[2026-03-17 10:00:01] [INFO] Discovering prospects (max 5)...
+[2026-03-17 10:00:01] [INFO] ✅ Discovered 5 prospects
+[2026-03-17 10:00:01] [INFO] Deduplicating 5 prospects against 4 existing...
+[2026-03-17 10:00:01] [INFO]   - Duplicate skipped: Digital Nusantara Agency
+[2026-03-17 10:00:01] [INFO]   - Duplicate skipped: Indonesian E-Commerce Solutions
+[2026-03-17 10:00:01] [INFO]   - Duplicate skipped: AI Tools Indonesia
+[2026-03-17 10:00:01] [INFO]   - Duplicate skipped: Social Media Automation
+[2026-03-17 10:00:01] [INFO] ✅ 1 new prospects (from 5 total)
+[2026-03-17 10:00:01] [INFO] 
+Processing: Content Creator Hub
+[2026-03-17 10:00:01] [INFO]   - No industry match: Content Creation
+[2026-03-17 10:00:01] [INFO]   Data completeness: 2/8 = 2.5
+[2026-03-17 10:00:01] [INFO]   Final score: 41/100
+[2026-03-17 10:00:01] [INFO] ❌ Not qualified (41/100): Content Creator Hub
+[2026-03-17 10:00:01] [INFO]  
+[2026-03-17 10:00:01] [INFO] Qualified leads: 0
+[2026-03-17 10:00:01] [INFO] No qualified leads to export
+>>>>>>> Stashed changes

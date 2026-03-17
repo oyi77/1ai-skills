@@ -1,6 +1,0 @@
-2026-02-28 03:49:26,303 [INFO] self_healing - [test_cache] Failure detected: cache_corruption — cache decode error
-2026-02-28 03:49:26,304 [INFO] self_healing - [test_cache] Attempt 1/3 — strategy: clear_cache
-2026-02-28 03:49:26,304 [INFO] self_healing - [test_cache] Strategy: clear_cache
-2026-02-28 03:49:26,310 [INFO] self_healing - [test_cache] Removed: /home/openclaw/.openclaw/workspace/automation/__pycache__
-2026-02-28 03:49:26,312 [INFO] self_healing - [test_cache] Cleared 1 cache/lock items
-2026-02-28 03:49:26,312 [INFO] self_healing - [test_cache] Recovered on attempt 1 via clear_cache

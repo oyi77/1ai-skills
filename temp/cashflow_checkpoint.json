@@ -1,5 +1,11 @@
 {
+<<<<<<< Updated upstream
   "last_alert": "2026-03-16T09:00:01.314026",
   "alert_level": "urgent",
   "hours_since": 71.9662515025
+=======
+  "last_alert": "2026-03-17T09:00:01.393687",
+  "alert_level": "emergency",
+  "hours_since": 95.96627370416667
+>>>>>>> Stashed changes
 }

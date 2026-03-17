@@ -86,6 +86,14 @@
 
 ---
 
+## Bot SaaS & Ads Integration (March 17, 2026)
+
+- Completed integration of **Ads Growth Engine** into `@berkahkarya_saas_bot`.
+- Added commands: `/report_today`, `/creative_ideas` to core bot.
+- Backend implementation in Node.js/TypeScript (src/services/ads.service.ts).
+- Funnel data (12-14 Mar) initialized as base metrics.
+- Bot now supports both AI Video generation and Marketing Analytics.
+
 ## About Coder $String$ / Paijo
 
 ### Key Context

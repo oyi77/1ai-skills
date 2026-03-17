@@ -3311,7 +3311,11 @@ Last Error Time: 2026-03-14T16:30:01.608256
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 17:00:01
+=======
+PostBridge Health Check - 2026-03-16 12:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3329,7 +3333,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T17:00:01.466758
+=======
+Last Error Time: 2026-03-16T12:30:01.332643
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3339,7 +3347,11 @@ Last Error Time: 2026-03-14T17:00:01.466758
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 17:30:02
+=======
+PostBridge Health Check - 2026-03-16 13:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3357,7 +3369,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T17:30:02.209202
+=======
+Last Error Time: 2026-03-16T13:00:01.655515
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3367,7 +3383,11 @@ Last Error Time: 2026-03-14T17:30:02.209202
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 18:00:01
+=======
+PostBridge Health Check - 2026-03-16 13:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3385,7 +3405,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T18:00:01.527361
+=======
+Last Error Time: 2026-03-16T13:30:01.800929
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3395,7 +3419,11 @@ Last Error Time: 2026-03-14T18:00:01.527361
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 18:30:01
+=======
+PostBridge Health Check - 2026-03-16 14:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3413,7 +3441,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T18:30:01.877553
+=======
+Last Error Time: 2026-03-16T14:00:01.949828
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3423,7 +3455,11 @@ Last Error Time: 2026-03-14T18:30:01.877553
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 19:00:02
+=======
+PostBridge Health Check - 2026-03-16 14:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3441,7 +3477,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T19:00:02.386935
+=======
+Last Error Time: 2026-03-16T14:30:01.582178
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3451,7 +3491,11 @@ Last Error Time: 2026-03-14T19:00:02.386935
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 19:30:01
+=======
+PostBridge Health Check - 2026-03-16 15:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3469,7 +3513,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T19:30:01.498994
+=======
+Last Error Time: 2026-03-16T15:00:01.740607
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3479,7 +3527,11 @@ Last Error Time: 2026-03-14T19:30:01.498994
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 20:00:01
+=======
+PostBridge Health Check - 2026-03-16 15:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3497,7 +3549,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T20:00:01.779071
+=======
+Last Error Time: 2026-03-16T15:30:02.397856
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3507,7 +3563,11 @@ Last Error Time: 2026-03-14T20:00:01.779071
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 20:30:01
+=======
+PostBridge Health Check - 2026-03-16 16:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3525,7 +3585,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T20:30:01.528705
+=======
+Last Error Time: 2026-03-16T16:00:01.822701
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3535,7 +3599,11 @@ Last Error Time: 2026-03-14T20:30:01.528705
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 21:00:01
+=======
+PostBridge Health Check - 2026-03-16 16:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3553,7 +3621,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T21:00:01.776821
+=======
+Last Error Time: 2026-03-16T16:30:02.113530
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3563,7 +3635,11 @@ Last Error Time: 2026-03-14T21:00:01.776821
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 21:30:01
+=======
+PostBridge Health Check - 2026-03-16 17:00:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3581,7 +3657,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T21:30:01.922594
+=======
+Last Error Time: 2026-03-16T17:00:02.398184
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3591,7 +3671,11 @@ Last Error Time: 2026-03-14T21:30:01.922594
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-14 22:00:01
+=======
+PostBridge Health Check - 2026-03-16 17:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -3609,7 +3693,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-14T22:00:01.844274
+=======
+Last Error Time: 2026-03-16T17:30:01.556825
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -3618,6 +3706,7 @@ Last Error Time: 2026-03-14T22:00:01.844274
 
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
+<<<<<<< Updated upstream
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ======================================================================
 PostBridge Health Check - 2026-03-14 23:30:02
 ======================================================================
@@ -4824,6 +4913,10 @@ Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
 PostBridge Health Check - 2026-03-15 21:00:01
+=======
+======================================================================
+PostBridge Health Check - 2026-03-16 18:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -4841,7 +4934,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-15T21:00:01.732109
+=======
+Last Error Time: 2026-03-16T18:00:01.938811
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -4851,7 +4948,11 @@ Last Error Time: 2026-03-15T21:00:01.732109
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-15 21:30:01
+=======
+PostBridge Health Check - 2026-03-16 18:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -4869,7 +4970,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-15T21:30:01.726010
+=======
+Last Error Time: 2026-03-16T18:30:01.936750
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -4879,7 +4984,11 @@ Last Error Time: 2026-03-15T21:30:01.726010
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-15 22:00:01
+=======
+PostBridge Health Check - 2026-03-16 19:00:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -4897,7 +5006,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-15T22:00:01.931369
+=======
+Last Error Time: 2026-03-16T19:00:02.267417
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -4907,7 +5020,11 @@ Last Error Time: 2026-03-15T22:00:01.931369
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-15 22:30:01
+=======
+PostBridge Health Check - 2026-03-16 19:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -4925,7 +5042,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-15T22:30:01.277288
+=======
+Last Error Time: 2026-03-16T19:30:01.466966
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -4935,7 +5056,11 @@ Last Error Time: 2026-03-15T22:30:01.277288
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-15 23:00:01
+=======
+PostBridge Health Check - 2026-03-16 20:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -4953,7 +5078,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-15T23:00:01.613139
+=======
+Last Error Time: 2026-03-16T20:00:01.671694
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -4963,7 +5092,11 @@ Last Error Time: 2026-03-15T23:00:01.613139
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-15 23:30:01
+=======
+PostBridge Health Check - 2026-03-17 00:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -4981,7 +5114,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-15T23:30:01.857425
+=======
+Last Error Time: 2026-03-17T00:00:01.930156
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -4991,7 +5128,11 @@ Last Error Time: 2026-03-15T23:30:01.857425
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 00:00:02
+=======
+PostBridge Health Check - 2026-03-17 00:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5009,7 +5150,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T00:00:02.237809
+=======
+Last Error Time: 2026-03-17T00:30:01.345385
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5019,7 +5164,11 @@ Last Error Time: 2026-03-16T00:00:02.237809
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 00:30:01
+=======
+PostBridge Health Check - 2026-03-17 01:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5037,7 +5186,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T00:30:01.444273
+=======
+Last Error Time: 2026-03-17T01:00:01.509623
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5047,7 +5200,11 @@ Last Error Time: 2026-03-16T00:30:01.444273
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 01:00:02
+=======
+PostBridge Health Check - 2026-03-17 01:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5065,7 +5222,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T01:00:02.014787
+=======
+Last Error Time: 2026-03-17T01:30:01.645026
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5075,7 +5236,11 @@ Last Error Time: 2026-03-16T01:00:02.014787
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 01:30:01
+=======
+PostBridge Health Check - 2026-03-17 02:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5093,7 +5258,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T01:30:01.454459
+=======
+Last Error Time: 2026-03-17T02:00:01.839589
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5103,7 +5272,11 @@ Last Error Time: 2026-03-16T01:30:01.454459
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 02:00:01
+=======
+PostBridge Health Check - 2026-03-17 02:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5121,7 +5294,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T02:00:01.430423
+=======
+Last Error Time: 2026-03-17T02:30:01.461873
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5131,7 +5308,11 @@ Last Error Time: 2026-03-16T02:00:01.430423
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 02:30:01
+=======
+PostBridge Health Check - 2026-03-17 03:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5149,7 +5330,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T02:30:01.789150
+=======
+Last Error Time: 2026-03-17T03:00:01.412547
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5159,7 +5344,11 @@ Last Error Time: 2026-03-16T02:30:01.789150
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 03:00:02
+=======
+PostBridge Health Check - 2026-03-17 03:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5177,7 +5366,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T03:00:02.117471
+=======
+Last Error Time: 2026-03-17T03:30:01.452120
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5187,7 +5380,11 @@ Last Error Time: 2026-03-16T03:00:02.117471
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 03:30:02
+=======
+PostBridge Health Check - 2026-03-17 04:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5205,7 +5402,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T03:30:02.136561
+=======
+Last Error Time: 2026-03-17T04:00:01.748182
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5215,7 +5416,11 @@ Last Error Time: 2026-03-16T03:30:02.136561
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 04:00:02
+=======
+PostBridge Health Check - 2026-03-17 04:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5233,7 +5438,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T04:00:02.346105
+=======
+Last Error Time: 2026-03-17T04:30:02.069055
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5243,7 +5452,11 @@ Last Error Time: 2026-03-16T04:00:02.346105
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 04:30:01
+=======
+PostBridge Health Check - 2026-03-17 05:00:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5261,7 +5474,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T04:30:01.708203
+=======
+Last Error Time: 2026-03-17T05:00:02.272146
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5271,7 +5488,11 @@ Last Error Time: 2026-03-16T04:30:01.708203
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 05:00:01
+=======
+PostBridge Health Check - 2026-03-17 05:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5289,7 +5510,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T05:00:01.569069
+=======
+Last Error Time: 2026-03-17T05:30:01.942016
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5299,7 +5524,11 @@ Last Error Time: 2026-03-16T05:00:01.569069
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 05:30:01
+=======
+PostBridge Health Check - 2026-03-17 06:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5317,7 +5546,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T05:30:01.829754
+=======
+Last Error Time: 2026-03-17T06:00:01.565334
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5327,7 +5560,11 @@ Last Error Time: 2026-03-16T05:30:01.829754
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 06:00:02
+=======
+PostBridge Health Check - 2026-03-17 06:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5345,7 +5582,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T06:00:02.158561
+=======
+Last Error Time: 2026-03-17T06:30:02.052032
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5355,7 +5596,11 @@ Last Error Time: 2026-03-16T06:00:02.158561
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 06:30:01
+=======
+PostBridge Health Check - 2026-03-17 07:00:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5373,7 +5618,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T06:30:01.715649
+=======
+Last Error Time: 2026-03-17T07:00:02.235734
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5383,7 +5632,11 @@ Last Error Time: 2026-03-16T06:30:01.715649
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 07:00:01
+=======
+PostBridge Health Check - 2026-03-17 07:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5401,7 +5654,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T07:00:01.387283
+=======
+Last Error Time: 2026-03-17T07:30:01.415306
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5411,7 +5668,11 @@ Last Error Time: 2026-03-16T07:00:01.387283
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 07:30:01
+=======
+PostBridge Health Check - 2026-03-17 08:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5429,7 +5690,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T07:30:01.609040
+=======
+Last Error Time: 2026-03-17T08:00:01.993675
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5439,7 +5704,11 @@ Last Error Time: 2026-03-16T07:30:01.609040
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 08:00:01
+=======
+PostBridge Health Check - 2026-03-17 08:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5457,7 +5726,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T08:00:01.948233
+=======
+Last Error Time: 2026-03-17T08:30:02.092029
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5467,7 +5740,11 @@ Last Error Time: 2026-03-16T08:00:01.948233
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 08:30:01
+=======
+PostBridge Health Check - 2026-03-17 09:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5485,7 +5762,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T08:30:01.331143
+=======
+Last Error Time: 2026-03-17T09:00:01.623713
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5495,7 +5776,11 @@ Last Error Time: 2026-03-16T08:30:01.331143
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 09:00:01
+=======
+PostBridge Health Check - 2026-03-17 09:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5513,7 +5798,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T09:00:01.541265
+=======
+Last Error Time: 2026-03-17T09:30:01.672172
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5523,7 +5812,11 @@ Last Error Time: 2026-03-16T09:00:01.541265
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 09:30:01
+=======
+PostBridge Health Check - 2026-03-17 10:00:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5541,7 +5834,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T09:30:01.539319
+=======
+Last Error Time: 2026-03-17T10:00:02.071347
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5551,7 +5848,11 @@ Last Error Time: 2026-03-16T09:30:01.539319
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 10:00:01
+=======
+PostBridge Health Check - 2026-03-17 10:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5569,7 +5870,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T10:00:01.817730
+=======
+Last Error Time: 2026-03-17T10:30:02.255037
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5579,7 +5884,11 @@ Last Error Time: 2026-03-16T10:00:01.817730
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 10:30:01
+=======
+PostBridge Health Check - 2026-03-17 11:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5597,7 +5906,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T10:30:01.656700
+=======
+Last Error Time: 2026-03-17T11:00:01.961590
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5607,7 +5920,11 @@ Last Error Time: 2026-03-16T10:30:01.656700
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 11:00:02
+=======
+PostBridge Health Check - 2026-03-17 11:30:02
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5625,7 +5942,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T11:00:02.301929
+=======
+Last Error Time: 2026-03-17T11:30:02.143569
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5635,7 +5956,11 @@ Last Error Time: 2026-03-16T11:00:02.301929
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 11:30:01
+=======
+PostBridge Health Check - 2026-03-17 12:00:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5653,7 +5978,11 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T11:30:01.922876
+=======
+Last Error Time: 2026-03-17T12:00:01.854676
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
@@ -5663,7 +5992,11 @@ Last Error Time: 2026-03-16T11:30:01.922876
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
 ======================================================================
+<<<<<<< Updated upstream
 PostBridge Health Check - 2026-03-16 12:00:02
+=======
+PostBridge Health Check - 2026-03-17 12:30:01
+>>>>>>> Stashed changes
 ======================================================================
 
 Status: ERROR
@@ -5681,12 +6014,40 @@ Trends (Last 10 checks):
 Status: error
 Error: name 'test_payload' is not defined
 Consecutive Failures: 10
+<<<<<<< Updated upstream
 Last Error Time: 2026-03-16T12:00:02.294498
+=======
+Last Error Time: 2026-03-17T12:30:01.958558
+>>>>>>> Stashed changes
 
 🆘 Action Required:
 - Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
 - Contact support: support@post-bridge.com
 - Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 13:00:02
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 0%
+  Consecutive Errors: 0
+  Total History: 1 checks
+
+🚨 ALERT GENERATED
+
+⚠️ WARNING: PostBridge API Issue
+
+Status: error
+Error: name 'test_payload' is not defined
+Time: 2026-03-17T13:00:02.174505
+
+🔄 Will continue monitoring...
 
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================

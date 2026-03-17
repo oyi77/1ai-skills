@@ -1,8 +1,0 @@
-npm error code ENOENT
-npm error syscall open
-npm error path /home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/package.json
-npm error errno -2
-npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/package.json'
-npm error enoent This is related to npm not being able to find a file.
-npm error enoent
-npm error A complete log of this run can be found in: /home/openclaw/.npm/_logs/2026-03-12T07_55_41_686Z-debug-0.log
