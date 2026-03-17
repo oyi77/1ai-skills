@@ -19,6 +19,11 @@ The system is built on specialized "islands" of automation, orchestrated by Open
     - Located in: `~/scripts/` and `~/1ai-skills-bundle/`.
     - Capabilities: Content generation, video editing, social posting.
 
+## 📋 Integration Backlog
+- [ ] **AutoResearchClaw Integration**: Autonomous deep-research engine for whitepaper generation (Authority Building).
+- [ ] **n8n API Bridge**: Unified status reporting from visual workflows.
+- [ ] **Paperclip First-Class Tooling**: Native task creation from agent sessions.
+
 ## 🔧 Infrastructure Details
 
 ### 📡 Communications & Posting (PostBridge)
@@ -53,4 +58,4 @@ To reach full autonomous revenue generation, the stack must transition from **Ta
 - `notes/`: Business strategy and market research intelligence.
 
 ---
-*Updated: 2026-03-17 00:30 UTC+7 by Vilona*
+*Updated: 2026-03-17 14:05 UTC+7 by Vilona*

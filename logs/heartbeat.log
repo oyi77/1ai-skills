@@ -877,3 +877,30 @@ Heartbeat - 2026-03-17 12:00:01
 
 🚨 URGENT REPORT SENT
 ======================================================================
+2026-03-17T18:00:03.901970 | 92% | 105.0 hours | ✅ OK (86 accounts connected) | 🆘 CRITICAL: Revenue gap 105.0 hours
+======================================================================
+Heartbeat - 2026-03-17 18:00:01
+======================================================================
+
+📊 System Status:
+  Disk Used: 92%
+  Today's Memory: 703 lines
+  Yesterday's Memory: 97 lines
+
+📈 Revenue:
+  Gap: 105.0 hours
+
+🌐 PostBridge:
+  API Status: ✅ OK (86 accounts connected)
+  Posts Scheduled: 58
+
+💰 Cashflow:
+  Last Track: 105.0h ago
+
+📊 LYNK:
+  Status: Needs manual check
+✅ Telegram message sent (Message ID: 11853)
+✅ Report sent to Telegram successfully via Bot API
+
+🚨 URGENT REPORT SENT
+======================================================================

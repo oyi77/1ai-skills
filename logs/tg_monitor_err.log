@@ -4,3 +4,220 @@
 =======
 Server closed the connection: [Errno 104] Connection reset by peer
 >>>>>>> Stashed changes
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 82, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 82, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 82, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 86, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 86, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 86, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 86, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py", line 40, in main
+    await client.connect()
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 563, in connect
+    self.session.auth_key = self._sender.auth_key
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 180, in auth_key
+    self._update_session_table()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/openclaw/.local/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 194, in _update_session_table
+    c.execute('delete from sessions')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+/usr/bin/python3: can't open file '/home/openclaw/.openclaw/workspace/skills/1ai-skills/automation/telegram-userbot/scripts/monitor_daemon.py': [Errno 2] No such file or directory
+Server resent the older message 7618155782559340545, ignoring
+Server sent a very new message with ID 7618155960661990401, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618155965816863745, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618155966185871361, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618155998075696129, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618156021274990593, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618156041201951745, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618156050055525377, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618156050303466497, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618156064270680065, ignoring (see FAQ for details)
+Server sent a very new message with ID 7618156068203658241, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156069253646337, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156069524439041, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156069553920001, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156079541122049, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156079825549313, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156088576589825, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156088880019457, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156114816680961, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156115021910017, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156124553034753, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156129953434625, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156130752709633, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156166346264577, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server sent a very new message with ID 7618156193191521281, ignoring (see FAQ for details)
+Security error while unpacking a received message: Too many messages had to be ignored consecutively
+Server resent the older message 7618156299133803521, ignoring

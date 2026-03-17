@@ -6051,3 +6051,475 @@ Time: 2026-03-17T13:00:02.174505
 
 Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
 ======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 13:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 2
+  Total History: 2 checks
+
+🚨 ALERT GENERATED
+
+⚠️ WARNING: PostBridge API Issue
+
+Status: error
+Error: name 'test_payload' is not defined
+Time: 2026-03-17T13:30:01.300224
+
+🔄 Will continue monitoring...
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 14:00:02
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 3
+  Total History: 3 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 3
+Last Error Time: 2026-03-17T14:00:02.509318
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 14:30:02
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 4
+  Total History: 4 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 4
+Last Error Time: 2026-03-17T14:30:02.046273
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 15:00:02
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 5
+  Total History: 5 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 5
+Last Error Time: 2026-03-17T15:00:02.295237
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 15:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 6
+  Total History: 6 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 6
+Last Error Time: 2026-03-17T15:30:01.299039
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 17:00:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 7
+  Total History: 7 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 7
+Last Error Time: 2026-03-17T17:00:01.889329
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 17:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 8
+  Total History: 8 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 8
+Last Error Time: 2026-03-17T17:30:01.859119
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 18:00:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 9
+  Total History: 9 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 9
+Last Error Time: 2026-03-17T18:00:01.593955
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 18:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 10 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T18:30:01.826220
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 19:00:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 11 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T19:00:01.640384
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 19:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 12 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T19:30:01.785063
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 20:00:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 13 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T20:00:01.986445
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 20:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 14 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T20:30:01.527694
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 21:00:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 15 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T21:00:01.778943
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 21:30:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 16 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T21:30:01.815988
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 22:00:01
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 17 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T22:00:01.713231
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================
+======================================================================
+PostBridge Health Check - 2026-03-17 22:30:02
+======================================================================
+
+Status: ERROR
+Error: name 'test_payload' is not defined
+
+Trends (Last 10 checks):
+  Error Rate: 100%
+  Consecutive Errors: 10
+  Total History: 18 checks
+
+🚨 ALERT GENERATED
+
+🚨 CRITICAL: PostBridge API DOWN
+
+Status: error
+Error: name 'test_payload' is not defined
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T22:30:02.134356
+
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page
+
+Alert saved: /home/openclaw/.openclaw/workspace/temp/postbridge_alert.txt
+======================================================================

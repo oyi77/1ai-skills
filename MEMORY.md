@@ -94,6 +94,18 @@
 - Funnel data (12-14 Mar) initialized as base metrics.
 - Bot now supports both AI Video generation and Marketing Analytics.
 
+## n8n Cloud Integration (March 17, 2026)
+
+- **Server:** 5.189.138.144 (root / raimuasu)
+- **URL:** https://n8n.aitradepulse.com/
+- **Container:** 1Panel-n8n-FmAU (n8n 2.11.2)
+- **Encryption Key:** `kjvkl1luW4o2uBvvNVU0CZLreZ0QDEqu`
+- **Workflows:**
+  - `kzMojbWXrlJOhMUf` - WhatsApp RAG Chatbot (Active)
+  - `paperclipMonitor01` - Telegram Paperclip Monitor (Active) - Commands: status, progress, blocked, help
+- **Status:** ✅ Integration complete, monitor active
+- **Doc:** `memory/2026-03-17-n8n-integration.md`
+
 ## About Coder $String$ / Paijo
 
 ### Key Context
@@ -948,3 +960,68 @@ def safe_accounts(social_accounts, has_media, media_type):
 - UGC style with Indonesian models
 - POV shots with bokeh
 - NOT: Generic posters or text-heavy graphics
+
+### 2026-03-17 - Model Fallback System Fix (CRITICAL LESSON)
+
+**Problem:** Primary model (`zai/glm-5`) timing out, fallback (`qtcool/gpt-5.2-codex`) returning 403 error (requires VIP).
+
+**Solution Implemented:**
+- **Primary:** `nvidia/mistralai/devstral-2-123b-instruct-2512` (FREE, 262K context, reasoning)
+- **Fallback Chain (3 layers):**
+  1. `nvidia/deepseek-ai/deepseek-v3.1` (reasoning)
+  2. `nvidia/deepseek-ai/deepseek-v3.1-terminus` (reasoning)
+  3. `nvidia/mistralai/devstral-2-123b-instruct-2512` (same as primary, backup)
+
+**Why This Works:**
+- All models are **FREE** (no API key issues or rate limits)
+- All have **reasoning capability** (better for complex tasks)
+- DeepSeek V3.2 is latest and most powerful (2025 model)
+- Devstral 2 is high-performance mistral model
+- Supports multimodal (text + images)
+
+**Commands Used:**
+\`\`\`bash
+openclaw models fallbacks clear
+openclaw models fallbacks add nvidia/deepseek-ai/deepseek-v3.1
+openclaw models fallbacks add nvidia/deepseek-ai/deepseek-v3.1-terminus
+openclaw models fallbacks add nvidia/mistralai/devstral-2-123b-instruct-2512
+openclaw models set nvidia/mistralai/devstral-2-123b-instruct-2512
+\`\`\`
+
+**Verification:** \`openclaw models status\` confirmed fallbacks (3) active
+
+**Doc:** \`memory/2026-03-17-model-fallback-fix.md\`
+
+
+### 2026-03-17 - Cross-Provider Fallback System (ROBUST FIX)
+
+**Problem:** Previous fallback system used models from the same provider (zai/glm-5 → qtcool/gpt-5.2-codex), causing single point of failure.
+
+**Solution Implemented:**
+
+**Final Setup (Cross-Provider Fallback Chain):**
+- **Primary:** `metaclaw/anthropic/claude-opus-4-6` (Anthropic)
+- **Fallbacks (3):**
+  1. `metaclaw/anthropic/claude-sonnet-4-6` (Anthropic)
+  2. `kimi/kimi-for-coding` (ZhiPu)
+  3. `nvidia/deepseek-ai/deepseek-v3.2` (Nvidia)
+
+**Why This Works:**
+✅ **Cross-provider redundancy** - Falls back across 3 different providers (Anthropic, ZhiPu, Nvidia)
+✅ **All FREE models** - No API key issues or rate limits
+✅ **Claude Opus 4.6** - Most powerful Anthropic model, 200K context window
+✅ **DeepSeek V3.2** - Latest and most powerful (2025 model)
+✅ **Kimi For Coding** - Specialized for coding tasks
+
+**Commands Used:**
+\`\`\`bash
+openclaw models fallbacks clear
+openclaw models fallbacks add metaclaw/anthropic/claude-sonnet-4-6
+openclaw models fallbacks add kimi/kimi-for-coding
+openclaw models fallbacks add nvidia/deepseek-ai/deepseek-v3.2
+openclaw models set metaclaw/anthropic/claude-opus-4-6
+\`\`\`
+
+**Verification:** `openclaw models status` confirms 3 fallbacks active
+
+---

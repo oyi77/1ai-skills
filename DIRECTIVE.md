@@ -1,5 +1,6 @@
-# 🚩 AUTO-DIRECTIVE — 2026-03-17 00:31
+# 🚩 AUTO-DIRECTIVE — 2026-03-17 20:00
 
 Detected vitality issues. Orchestrate these actions immediately:
 
-- 🚨 ALERT: Disk space critical (90.89%). RUN disk_cleanup_automation.py now.
+- 🆘 CRITICAL: Kingdom views too low (3288). TRIGGERING CONTENT REGENERATION.
+- 🚨 ALERT: Disk space critical (91.94%). TRIGGERING CLEANUP.

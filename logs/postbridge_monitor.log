@@ -1365,3 +1365,162 @@
 [2026-03-17 12:03:55] === Monitor Complete ===
 >>>>>>> Stashed changes
 
+[2026-03-17 14:00:02] === PostBridge Monitor Run ===
+[2026-03-17 14:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 14:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 14:03:37] Results: 9900 total | ✅ 6483 (65%) | ❌ 3417
+[2026-03-17 14:03:37] Error breakdown:
+[2026-03-17 14:03:37]   [1409x] Failed to post to Threads
+[2026-03-17 14:03:37]   [823x] No supported media files found. Instagram only sup
+[2026-03-17 14:03:37]   [306x] Failed to post to Instagram: An unexpected error o
+[2026-03-17 14:03:37]   [253x] No files provided
+[2026-03-17 14:03:37]   [147x] Failed to post to Instagram: Rate limit reached. T
+[2026-03-17 14:03:38] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-17 14:03:38] Scheduled posts: 85
+[2026-03-17 14:04:01] Posts today: 7
+[2026-03-17 14:04:01] === Monitor Complete ===
+
+[2026-03-17 14:00:02] === PostBridge Monitor Run ===
+[2026-03-17 14:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 14:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 14:03:37] Results: 9900 total | ✅ 6483 (65%) | ❌ 3417
+[2026-03-17 14:03:37] Error breakdown:
+[2026-03-17 14:03:37]   [1409x] Failed to post to Threads
+[2026-03-17 14:03:37]   [823x] No supported media files found. Instagram only sup
+[2026-03-17 14:03:37]   [306x] Failed to post to Instagram: An unexpected error o
+[2026-03-17 14:03:37]   [253x] No files provided
+[2026-03-17 14:03:37]   [147x] Failed to post to Instagram: Rate limit reached. T
+[2026-03-17 14:03:38] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-17 14:03:38] Scheduled posts: 85
+[2026-03-17 14:04:01] Posts today: 7
+[2026-03-17 14:04:01] === Monitor Complete ===
+
+[2026-03-17 18:00:01] === PostBridge Monitor Run ===
+[2026-03-17 18:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 18:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 18:00:01] === PostBridge Monitor Run ===
+[2026-03-17 18:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 18:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 903, in _error_catcher
+    yield
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 1028, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 1011, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "/usr/lib/python3.13/http/client.py", line 484, in read
+    s = self.fp.read(amt)
+  File "/usr/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 820, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 1257, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 1112, in read
+    data = self._raw_read(amt)
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 1027, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/response.py", line 930, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(104, 'Connection reset by peer')", ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/postbridge_monitor.py", line 139, in <module>
+    results = get_all("/post-results")
+  File "/home/openclaw/.openclaw/workspace/scripts/postbridge_monitor.py", line 100, in get_all
+    r = requests.get(f"{API}{endpoint}", headers=HDR, params={**params, "limit": 100, "offset": offset}, timeout=30)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 746, in send
+    r.content
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 902, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 822, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(104, 'Connection reset by peer')", ConnectionResetError(104, 'Connection reset by peer'))
+[2026-03-17 20:00:01] === PostBridge Monitor Run ===
+[2026-03-17 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 20:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 20:03:36] Results: 9900 total | ✅ 6478 (65%) | ❌ 3422
+[2026-03-17 20:03:36] Error breakdown:
+[2026-03-17 20:03:36]   [1412x] Failed to post to Threads
+[2026-03-17 20:03:36]   [827x] No supported media files found. Instagram only sup
+[2026-03-17 20:03:36]   [306x] Failed to post to Instagram: An unexpected error o
+[2026-03-17 20:03:36]   [254x] No files provided
+[2026-03-17 20:03:36]   [147x] Failed to post to Instagram: Rate limit reached. T
+[2026-03-17 20:03:36] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-17 20:03:37] Scheduled posts: 79
+[2026-03-17 20:03:54] Posts today: 13
+[2026-03-17 20:03:54] === Monitor Complete ===
+
+[2026-03-17 20:00:01] === PostBridge Monitor Run ===
+[2026-03-17 20:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 20:00:04] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 20:03:36] Results: 9900 total | ✅ 6478 (65%) | ❌ 3422
+[2026-03-17 20:03:36] Error breakdown:
+[2026-03-17 20:03:36]   [1412x] Failed to post to Threads
+[2026-03-17 20:03:36]   [827x] No supported media files found. Instagram only sup
+[2026-03-17 20:03:36]   [306x] Failed to post to Instagram: An unexpected error o
+[2026-03-17 20:03:36]   [254x] No files provided
+[2026-03-17 20:03:36]   [147x] Failed to post to Instagram: Rate limit reached. T
+[2026-03-17 20:03:36] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-17 20:03:37] Scheduled posts: 79
+[2026-03-17 20:03:54] Posts today: 13
+[2026-03-17 20:03:54] === Monitor Complete ===
+
+[2026-03-17 22:00:01] === PostBridge Monitor Run ===
+[2026-03-17 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 22:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 22:03:38] Results: 9900 total | ✅ 6477 (65%) | ❌ 3423
+[2026-03-17 22:03:38] Error breakdown:
+[2026-03-17 22:03:38]   [1413x] Failed to post to Threads
+[2026-03-17 22:03:38]   [828x] No supported media files found. Instagram only sup
+[2026-03-17 22:03:38]   [306x] Failed to post to Instagram: An unexpected error o
+[2026-03-17 22:03:38]   [254x] No files provided
+[2026-03-17 22:03:38]   [147x] Failed to post to Instagram: Rate limit reached. T
+[2026-03-17 22:03:39] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-17 22:03:39] Scheduled posts: 78
+[2026-03-17 22:03:56] Posts today: 14
+[2026-03-17 22:03:56] === Monitor Complete ===
+
+[2026-03-17 22:00:01] === PostBridge Monitor Run ===
+[2026-03-17 22:00:03] Analytics sync: tiktok, youtube, instagram
+[2026-03-17 22:00:03] Accounts: 86 (facebook:38, instagram:12, linkedin:1, threads:13, tiktok:10, twitter:2, youtube:10)
+[2026-03-17 22:03:38] Results: 9900 total | ✅ 6477 (65%) | ❌ 3423
+[2026-03-17 22:03:38] Error breakdown:
+[2026-03-17 22:03:38]   [1413x] Failed to post to Threads
+[2026-03-17 22:03:38]   [828x] No supported media files found. Instagram only sup
+[2026-03-17 22:03:38]   [306x] Failed to post to Instagram: An unexpected error o
+[2026-03-17 22:03:38]   [254x] No files provided
+[2026-03-17 22:03:38]   [147x] Failed to post to Instagram: Rate limit reached. T
+[2026-03-17 22:03:39] Analytics: 0 views | 0 likes | 0 comments | 0 shares
+[2026-03-17 22:03:39] Scheduled posts: 78
+[2026-03-17 22:03:56] Posts today: 14
+[2026-03-17 22:03:56] === Monitor Complete ===
+

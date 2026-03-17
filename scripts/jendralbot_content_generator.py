@@ -8,11 +8,32 @@ Full content generation with complete placeholder replacement
 import json
 from datetime import datetime, timedelta
 import random
+import os
+
+# --- Viral Hooks Injection Logic ---
+VIRAL_HOOKS_FILE = "notes/viral_hooks_jendralbot_20260317.md"
+
+def load_killer_hooks():
+    hooks = []
+    if os.path.exists(VIRAL_HOOKS_FILE):
+        with open(VIRAL_HOOKS_FILE, 'r') as f:
+            for line in f:
+                if "---" in line:
+                    parts = line.split("---")
+                    if len(parts) >= 2:
+                        hook_text = parts[0].strip()
+                        # Remove leading numbers like "1. "
+                        if ". " in hook_text[:4]:
+                            hook_text = hook_text.split(". ", 1)[1]
+                        hooks.append(hook_text)
+    return hooks
+
+KILLER_HOOKS = load_killer_hooks()
 
 PRODUCTS = {
     "starter_ai_content": {
         "name": "Starter AI Content",
-        "price": 49000,
+        "price": 75000,
         "link": "https://lynk.id/jendralbot/xlymwzj2jylv",
         "category": "Entry Level",
         "keywords": ["pemula", "AI content", "belajar AI", "content creation", "beginner"],
@@ -102,8 +123,14 @@ def generate_tiktok_content(product):
     benefit = random.choice(product["benefits"])
     timeline = random.choice(TIMELINES)
 
+    # Use killer hooks if available, otherwise fallback to template
+    if KILLER_HOOKS:
+        hook = random.choice(KILLER_HOOKS)
+    else:
+        hook = f"🔥 STOP: {pain}?"
+
     content = {
-        "hook": f"🔥 STOP: {pain}?",
+        "hook": hook,
         "problem": f"Problem: {pain}\n\nIni bikin kamu frustrasi kan?",
         "solution": f"Solusinya: {product['name']}\n\n{benefit}",
         "result": f"{timeline}\n\n{action}",

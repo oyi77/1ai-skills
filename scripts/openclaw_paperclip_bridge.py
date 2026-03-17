@@ -314,6 +314,10 @@ if __name__ == "__main__":
         share_postbridge_analytics()
         print()
         create_revenue_tasks()
+    elif cmd == "create":
+        title = sys.argv[2] if len(sys.argv) > 2 else "New OpenClaw Alert"
+        desc = sys.argv[3] if len(sys.argv) > 3 else "Details in OpenClaw logs."
+        create_issue(title=title, description=desc, priority="high")
     else:
         print(f"Unknown command: {cmd}")
-        print("Usage: status | sync | analytics | create-revenue-tasks | full-bridge")
+        print("Usage: status | sync | analytics | create-revenue-tasks | full-bridge | create")

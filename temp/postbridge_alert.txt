@@ -1,9 +1,13 @@
-GENERATED: 2026-03-17T13:00:02.175283
+GENERATED: 2026-03-17T22:30:02.134999
 
-⚠️ WARNING: PostBridge API Issue
+🚨 CRITICAL: PostBridge API DOWN
 
 Status: error
 Error: name 'test_payload' is not defined
-Time: 2026-03-17T13:00:02.174505
+Consecutive Failures: 10
+Last Error Time: 2026-03-17T22:30:02.134356
 
-🔄 Will continue monitoring...
+🆘 Action Required:
+- Check PostBridge Discord: https://discord.gg/ypq3AhPTxf
+- Contact support: support@post-bridge.com
+- Verify service status page

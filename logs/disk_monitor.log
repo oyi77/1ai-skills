@@ -2061,3 +2061,58 @@ NEXT STEPS
 3. Or manually execute specific deletions:
    rm -rf vector-db-venv/  # if unused
    find logs/ -name '*.log' -mtime +7 -delete
+
+[================================================================================]
+Disk Cleanup Automation - 2026-03-17 18:00:01
+[================================================================================]
+
+MODE: DRY RUN - Analyzing only, no changes made
+
+================================================================================
+DISK CLEANUP DRY RUN ANALYSIS
+================================================================================
+
+Current Disk Status:
+  Total: 110G
+  Used: 96G (92%)
+  Available: 9.0G
+  Free: 9.0 GB
+
+Target: 10 GB free
+To free: 1.0 GB
+
+================================================================================
+SAFE DELETIONS
+================================================================================
+
+================================================================================
+POTENTIAL COMPRESSION
+================================================================================
+
+================================================================================
+SUMMARY
+================================================================================
+Potential to reclaim:
+  Safe deletions: 0.0 GB
+  Compression: 0.0 GB
+  Total: 0.0 GB
+
+Current free: 9.0 GB
+After cleanup: 9.0 GB
+
+Target: 10 GB free
+Status: ❌ BELOW TARGET - cleanup needed
+
+================================================================================
+URGENT: VENV CLEANUP
+================================================================================
+
+================================================================================
+NEXT STEPS
+================================================================================
+1. Review the analysis above
+2. If acceptable, run with --execute:
+   python3 scripts/disk_cleanup_automation.py --execute
+3. Or manually execute specific deletions:
+   rm -rf vector-db-venv/  # if unused
+   find logs/ -name '*.log' -mtime +7 -delete

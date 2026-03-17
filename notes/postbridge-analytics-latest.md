@@ -1,14 +1,184 @@
 # PostBridge Analytics Report
-Generated: 2026-03-17T00:31:43.565536
+Generated: 2026-03-17T20:00:07.175085
 
 ## Summary
-- Total Views: 6677
-- Total Likes: 72
+- Total Views: 2904
+- Total Likes: 34
 - Total Comments: 0
 - Total Shares: 1
-- Analytics Records: 41
+- Analytics Records: 209
 
 ## Per-Post Breakdown
+
+### instagram - 17859156459564033
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8dLk8ERis/
+
+### instagram - 18075357488166898
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8dCz3kQzb/
+
+### instagram - 18011560697842492
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8c9riEe7g/
+
+### instagram - 18073858058181035
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8c9OeEbBB/
+
+### instagram - 18038873570559676
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8c7fBkeN5/
+
+### instagram - 17870656275570110
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8BfmBkXuy/
+
+### instagram - 18109973857782341
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8Beh5kYKJ/
+
+### instagram - 18056747396443939
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8Bcy5kcl8/
+
+### instagram - 17874070482556502
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV8BcKTET2q/
+
+### instagram - 18014273732827883
+- Views: 1
+- Likes: 0
+- URL: https://www.instagram.com/p/DV7s4dYjaC0/
+
+### instagram - 18076667684123472
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV7s1_IDVkj/
+
+### instagram - 18565053409052995
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV7s18ujTBM/
+
+### instagram - 17878486488513693
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV7Kx8SESb3/
+
+### instagram - 17851073337688525
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV6GDcBEb5j/
+
+### instagram - 18090423662144548
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV6GDm0kVoB/
+
+### instagram - 18111124855782335
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV6F9joEZ35/
+
+### instagram - 17874554898551622
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV54YMCEdaq/
+
+### instagram - 18088693165898265
+- Views: 1
+- Likes: 0
+- URL: https://www.instagram.com/p/DV54WzMkTjd/
+
+### instagram - 17879297616397778
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV5czWTESZr/
+
+### instagram - 17922885732098144
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV5cwnWFeRz/
+
+### instagram - 18214183519321587
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV5cqLplbDb/
+
+### instagram - 18367916473161503
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV5IJGnlxDU/
+
+### instagram - 18343095367242848
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV5IHTnl821/
+
+### instagram - 17873022942558970
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV4l59aEah3/
+
+### instagram - 18075643787432418
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV4l2v8EXQJ/
+
+### instagram - 18114870934660590
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV4l0zIkY0J/
+
+### instagram - 17874444690435044
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV4lzG7kfse/
+
+### instagram - 18098919538758782
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV4ly_1EUqn/
+
+### instagram - 18226213558307913
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV3hJo5FAp6/
+
+### instagram - 18092605718471675
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV3hJqElLM9/
+
+### instagram - 18095988755102793
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV3hJrPlEp3/
+
+### instagram - 18041606210567258
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV3hI6NlAuD/
+
+### instagram - 18104906095902762
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV3hIqBlBfV/
+
+### instagram - 18118916623620527
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV3hILBFNJP/
 
 ### tiktok - 7617049262232292616
 - Views: 221
@@ -25,15 +195,20 @@ Generated: 2026-03-17T00:31:43.565536
 - Likes: 3
 - URL: https://www.tiktok.com/@divasehatsetiaphari/video/7617049199233748245?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
 
+### tiktok - 7617049037400804624
+- Views: 0
+- Likes: 0
+- URL: https://www.tiktok.com/@bkjaya00/video/7617049037400804624?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
+
 ### tiktok - 7617049041582542096
 - Views: 469
 - Likes: 6
 - URL: https://www.tiktok.com/@nugrohopratama5/video/7617049041582542096?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
 
-### tiktok - 7617049037400804624
-- Views: 0
+### instagram - 17852798079635074
+- Views: 11
 - Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7617049037400804624?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
+- URL: https://www.instagram.com/p/DV3Fl0WkVwl/
 
 ### tiktok - 7617049149858434320
 - Views: 436
@@ -56,161 +231,31 @@ Generated: 2026-03-17T00:31:43.565536
 - URL: https://www.tiktok.com/@sehatseraiphari/video/7617049135211990293?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
 
 ### tiktok - 7617048956597587217
-- Views: 144
+- Views: 145
 - Likes: 1
 - URL: https://www.tiktok.com/@massehatyuk/video/7617048956597587217?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
 
-### tiktok - 7616911141511466248
-- Views: 99
-- Likes: 0
-- URL: https://www.tiktok.com/@baimwongdiskon/video/7616911141511466248?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616911114512665876
-- Views: 109
-- Likes: 0
-- URL: https://www.tiktok.com/@nugrohopratama5/video/7616911114512665876?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616911092777798928
-- Views: 91
-- Likes: 0
-- URL: https://www.tiktok.com/@riviewprodukfashionjujur/video/7616911092777798928?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### youtube - EPdhRFaUK4s
+### instagram - 17852955066634914
 - Views: 0
 - Likes: 0
-- URL: https://www.youtube.com/watch?v=EPdhRFaUK4s
+- URL: https://www.instagram.com/p/DV2jSwtDXyn/
 
-### youtube - -l3zvzVT4jE
+### instagram - 17939999754011517
 - Views: 0
 - Likes: 0
-- URL: https://www.youtube.com/watch?v=-l3zvzVT4jE
+- URL: https://www.instagram.com/p/DV2jSrfjcL0/
 
-### youtube - 5kmKdYFHzSM
+### instagram - 18447886777105461
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV2jRXsDULi/
+
+### instagram - 17915821218317310
+- Views: 0
+- Likes: 0
+- URL: https://www.instagram.com/p/DV2jQrRjUNS/
+
+### instagram - 17853059718634629
 - Views: 1
 - Likes: 0
-- URL: https://www.youtube.com/watch?v=5kmKdYFHzSM
-
-### youtube - G2f9wGLg7Lg
-- Views: 1
-- Likes: 0
-- URL: https://www.youtube.com/watch?v=G2f9wGLg7Lg
-
-### tiktok - 7616878081122307349
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616878081122307349?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616878037518355720
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616878037518355720?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616871480550362376
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616871480550362376?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616871476410567954
-- Views: 6
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616871476410567954?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616871354301746448
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616871354301746448?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616870103379905793
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616870103379905793?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616864541959376146
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616864541959376146?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616862415837285653
-- Views: 0
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616862415837285653?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616862402776239378
-- Views: 155
-- Likes: 5
-- URL: https://www.tiktok.com/@bkjaya00/video/7616862402776239378?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616862397625650450
-- Views: 303
-- Likes: 11
-- URL: https://www.tiktok.com/@bkjaya00/video/7616862397625650450?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616859570840816917
-- Views: 325
-- Likes: 9
-- URL: https://www.tiktok.com/@bkjaya00/video/7616859570840816917?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616765952658574609
-- Views: 433
-- Likes: 2
-- URL: https://www.tiktok.com/@bkjaya00/video/7616765952658574609?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616766142648012040
-- Views: 431
-- Likes: 1
-- URL: https://www.tiktok.com/@catatanoperator/video/7616766142648012040?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616766133282032917
-- Views: 316
-- Likes: 1
-- URL: https://www.tiktok.com/@bkjaya00/video/7616766133282032917?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616766002537319696
-- Views: 139
-- Likes: 0
-- URL: https://www.tiktok.com/@catatanoperator/video/7616766002537319696?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616766003329961232
-- Views: 77
-- Likes: 0
-- URL: https://www.tiktok.com/@bkjaya00/video/7616766003329961232?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616766166106787090
-- Views: 211
-- Likes: 2
-- URL: https://www.tiktok.com/@catatanoperator/video/7616766166106787090?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616569622149500176
-- Views: 230
-- Likes: 1
-- URL: https://www.tiktok.com/@drlifehacks1/video/7616569622149500176?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616569804308172050
-- Views: 192
-- Likes: 0
-- URL: https://www.tiktok.com/@divasehatsetiaphari/video/7616569804308172050?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7616569039703280913
-- Views: 199
-- Likes: 3
-- URL: https://www.tiktok.com/@riviewprodukfashionjujur/video/7616569039703280913?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### youtube - mmhjPOLvxrQ
-- Views: 0
-- Likes: 0
-- URL: https://www.youtube.com/watch?v=mmhjPOLvxrQ
-
-### youtube - Jm4M9FkVQH8
-- Views: 99
-- Likes: 0
-- URL: https://www.youtube.com/watch?v=Jm4M9FkVQH8
-
-### tiktok - 7613696341297941778
-- Views: 229
-- Likes: 0
-- URL: https://www.tiktok.com/@jasakontenai/video/7613696341297941778?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
-
-### tiktok - 7613417658423250192
-- Views: 142
-- Likes: 3
-- URL: https://www.tiktok.com/@jasakontenai/video/7613417658423250192?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso
+- URL: https://www.instagram.com/p/DV2jRGCjadd/

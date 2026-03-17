@@ -1430,3 +1430,195 @@ Traceback (most recent call last):
     obj, end = self.scan_once(s, idx)
                ~~~~~~~~~~~~~~^^^^^^^^
 json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 267, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 231, in main
+    state = load_state()
+  File "/home/openclaw/.openclaw/workspace/scripts/full_auto_engine.py", line 35, in load_state
+    return json.load(open(STATE_FILE))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 7 column 1 (char 132)
