@@ -762,16 +762,143 @@ def _phase_schedule(cfg: dict, paperclip: PaperclipClient | None = None) -> dict
 
 def _phase_post(cfg: dict) -> dict:
     """
-    Phase 7: POST
-    Monitors posting via PostBridge API — checks for failures and retries.
-    Delegates retry logic to auto_postbridge_robust_v2.py (already has retry/backoff).
+    Phase 7: POST — Upload media + Create posts on PostBridge
+    Creates new posts from media files generated in Phase 4 (CREATE).
+    Then monitors posting & retries failures.
     """
     import requests as req
+    import base64
 
     api_key = cfg.get("postbridge_api_key", "")
     base_url = cfg.get("postbridge_base_url", "https://api.post-bridge.com/v1")
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
+    result = {
+        "posts_created": 0,
+        "posts_failed": 0,
+        "media_uploaded": 0,
+        "total_checked": 0,
+        "successful": 0,
+        "failed": 0,
+    }
+
+    # ── Step 1: Upload today's media files to PostBridge ──────────────────────
+    media_dir = SKILL_DIR / "output" / "media" / datetime.now().strftime("%Y-%m-%d")
+    if media_dir.exists():
+        log.info("Phase 7 POST — uploading media from %s", media_dir)
+        media_files = list(media_dir.glob("*")) 
+        
+        for mfile in media_files[:10]:  # Limit to 10 files per run
+            if mfile.suffix.lower() not in (".mp4", ".png", ".jpg", ".jpeg", ".mov"):
+                continue
+            
+            try:
+                # Upload media via PostBridge /media/create-upload-url → upload → attach
+                with open(mfile, "rb") as f:
+                    media_bytes = f.read()
+                
+                # Step 1a: Get upload URL
+                upload_req = {
+                    "file_name": mfile.name,
+                    "file_size": len(media_bytes),
+                    "file_type": "video" if mfile.suffix.lower() in (".mp4", ".mov") else "image",
+                }
+                resp = req.post(f"{base_url}/media/create-upload-url", 
+                              json=upload_req, headers=headers, timeout=30)
+                if resp.status_code not in (200, 201):
+                    log.warning("Upload URL failed: %s", resp.text[:100])
+                    continue
+                
+                upload_data = resp.json()
+                upload_url = upload_data.get("upload_url") or upload_data.get("url")
+                media_id = upload_data.get("media_id") or upload_data.get("id")
+                
+                if not upload_url:
+                    log.warning("No upload URL in response")
+                    continue
+                
+                # Step 1b: Upload file to URL
+                upload_resp = req.put(upload_url, data=media_bytes, timeout=60)
+                if upload_resp.status_code not in (200, 201, 204):
+                    log.warning("Upload to S3 failed: %s", upload_resp.text[:100])
+                    continue
+                
+                log.info("Media uploaded: %s → %s", mfile.name, media_id)
+                result["media_uploaded"] += 1
+                
+            except Exception as e:
+                log.warning("Media upload failed (%s): %s", mfile.name, e)
+                continue
+
+    # ── Step 2: Create posts from media + scripts ──────────────────────────────
+    try:
+        scripts_file = SKILL_DIR / "output" / f"scripts_{datetime.now().strftime('%Y-%m-%d')}.json"
+        if scripts_file.exists():
+            scripts = json.loads(scripts_file.read_text()).get("scripts", [])[:5]  # First 5 posts
+            
+            # Get PostBridge account IDs
+            accounts = cfg.get("postbridge_accounts", {})
+            tiktok_accts = accounts.get("tiktok", [])
+            insta_accts = accounts.get("instagram", [])
+            yt_accts = accounts.get("youtube", [])
+            fb_accts = accounts.get("facebook", [])
+            
+            for script in scripts:
+                platform = script.get("platform", "tiktok").lower()
+                caption = script.get("caption", "")[:2000]  # PostBridge limit
+                
+                # Pick accounts for this platform
+                if platform == "tiktok":
+                    social_accts = tiktok_accts
+                elif platform == "instagram":
+                    social_accts = insta_accts
+                elif platform == "youtube":
+                    social_accts = yt_accts
+                else:
+                    social_accts = fb_accts
+                
+                if not social_accts:
+                    log.warning("No accounts for %s", platform)
+                    continue
+                
+                # Find media file for this script (match video_00, image_02, etc.)
+                script_id = script.get("id", "")[:2]  # "video_00" → "00"
+                media_file = media_dir / f"video_00_{platform}.mp4"  # Look for matching video
+                if not media_file.exists():
+                    # Try image instead
+                    media_file = media_dir / f"image_*_{platform}.png"
+                    media_files = list(media_dir.glob(media_file.name))
+                    media_file = media_files[0] if media_files else None
+                
+                # Create post
+                post_data = {
+                    "caption": caption,
+                    "social_accounts": social_accts,
+                    "scheduled_at": (datetime.now(timezone.utc).isoformat()),
+                    "media": [
+                        {
+                            "type": "video" if media_file and media_file.suffix.lower() in (".mp4", ".mov") else "image",
+                            "url": str(media_file) if media_file else None
+                        }
+                    ] if media_file else []
+                }
+                
+                if not media_file:
+                    log.warning("No media file for %s, creating text-only post", script.get("id"))
+                    post_data.pop("media", None)
+                
+                resp = req.post(f"{base_url}/posts", json=post_data, headers=headers, timeout=30)
+                if resp.status_code in (200, 201):
+                    log.info("Post created: %s", script.get("id"))
+                    result["posts_created"] += 1
+                else:
+                    log.warning("Post creation failed: %s", resp.text[:100])
+                    result["posts_failed"] += 1
+    
+    except Exception as e:
+        log.warning("Post creation step failed: %s", e)
+
+    # ── Step 3: Monitor existing posts (original logic) ─────────────────────────
     try:
         resp = req.get(f"{base_url}/post-results?page=1&limit=50", headers=headers, timeout=20)
         resp.raise_for_status()
@@ -781,23 +908,20 @@ def _phase_post(cfg: dict) -> dict:
         failures = [r for r in results if r.get("status") in ("failed", "error")]
         successes = [r for r in results if r.get("status") in ("published", "success")]
 
-        retry_count = 0
         if failures:
-            log.info("Found %d failed posts — triggering retry via robust_v2", len(failures))
+            log.info("Found %d failed posts — triggering retry", len(failures))
             ok, _, _ = run_script(ENGINE_DIR / "auto_postbridge_robust_v2.py", timeout=300)
             if ok:
-                retry_count = len(failures)
+                result["retried"] = len(failures)
 
-        return {
-            "total_checked": len(results),
-            "successful": len(successes),
-            "failed": len(failures),
-            "retried": retry_count,
-        }
+        result["total_checked"] = len(results)
+        result["successful"] = len(successes)
+        result["failed"] = len(failures)
 
     except Exception as exc:
-        log.warning("PostBridge post-results fetch failed: %s", exc)
-        return {"error": str(exc), "retried": 0}
+        log.warning("PostBridge monitoring failed: %s", exc)
+
+    return result
 
 
 def _phase_engage(cfg: dict, prev_comment_counts: dict | None = None) -> dict:
