@@ -782,163 +782,154 @@ def _phase_post(cfg: dict) -> dict:
         "failed": 0,
     }
 
-    # ── Step 1: Upload today's media files to PostBridge ──────────────────────
-    media_dir = SKILL_DIR / "output" / "media" / datetime.now().strftime("%Y-%m-%d")
-    if media_dir.exists():
-        log.info("Phase 7 POST — uploading media from %s", media_dir)
-        media_files = list(media_dir.glob("*")) 
-        
-        for mfile in media_files[:10]:  # Limit to 10 files per run
-            if mfile.suffix.lower() not in (".mp4", ".png", ".jpg", ".jpeg", ".mov"):
-                continue
-            
-            try:
-                # Upload media via PostBridge /media/create-upload-url → upload → attach
-                with open(mfile, "rb") as f:
-                    media_bytes = f.read()
-                
-                # Step 1a: Get upload URL
-                is_video = mfile.suffix.lower() in (".mp4", ".mov")
-                mime_type = "video/mp4" if is_video else "image/png"
-                if mfile.suffix.lower() == ".jpg":
-                    mime_type = "image/jpeg"
-                
-                upload_req = {
-                    "file_name": mfile.name,
-                    "file_size": len(media_bytes),
-                    "file_type": "video" if is_video else "image",
-                    "mime_type": mime_type,
-                }
-                resp = req.post(f"{base_url}/media/create-upload-url", 
-                              json=upload_req, headers=headers, timeout=30)
-                if resp.status_code not in (200, 201):
-                    log.warning("Upload URL failed: %s", resp.text[:100])
-                    continue
-                
-                upload_data = resp.json()
-                upload_url = upload_data.get("upload_url") or upload_data.get("url")
-                media_id = upload_data.get("media_id") or upload_data.get("id")
-                
-                if not upload_url:
-                    log.warning("No upload URL in response")
-                    continue
-                
-                # Step 1b: Upload file to URL
-                upload_resp = req.put(upload_url, data=media_bytes, timeout=60)
-                if upload_resp.status_code not in (200, 201, 204):
-                    log.warning("Upload to S3 failed: %s", upload_resp.text[:100])
-                    continue
-                
-                log.info("Media uploaded: %s → %s", mfile.name, media_id)
-                result["media_uploaded"] += 1
-                
-            except Exception as e:
-                log.warning("Media upload failed (%s): %s", mfile.name, e)
-                continue
+    # Platform media requirements
+    PLATFORMS_NEED_VIDEO   = {"youtube", "tiktok"}   # video REQUIRED
+    PLATFORMS_NEED_MEDIA   = {"instagram"}            # any media required
+    PLATFORMS_SKIP         = {"instagram"}            # tokens expired — skip for now
 
-    # ── Step 2: Create posts from media + scripts ──────────────────────────────
-    # Platform media requirements (based on real PostBridge errors)
-    PLATFORMS_NEED_VIDEO   = {"youtube", "tiktok"}      # video REQUIRED
-    PLATFORMS_NEED_MEDIA   = {"instagram"}               # any media required (but token expired)
-    PLATFORMS_ALLOW_TEXT   = {"facebook", "threads", "twitter", "x", "linkedin"}
-    PLATFORMS_DISABLED     = set()  # populated from config
-
-    # Respect enabled=false in config
+    # Build disabled set from config
+    PLATFORMS_DISABLED = set()
     platforms_cfg = cfg.get("platforms", {})
     for pname, pcfg in platforms_cfg.items():
         if not pcfg.get("enabled", True):
             PLATFORMS_DISABLED.add(pname)
-            log.info("Platform %s disabled in config — skipping", pname)
 
+    # ── Step 1: Upload today's media & build media_id map ─────────────────────
+    # media_id_map: { "video": media_id_or_None, "image": media_id_or_None }
+    media_dir = SKILL_DIR / "output" / "media" / datetime.now().strftime("%Y-%m-%d")
+    media_id_map = {}  # suffix_group -> media_id
+
+    def _upload_file(mfile: Path) -> str | None:
+        """Upload one file, return media_id or None on failure."""
+        try:
+            media_bytes = mfile.read_bytes()
+            if len(media_bytes) == 0:
+                log.warning("Empty file skipped: %s", mfile.name)
+                return None
+            is_video = mfile.suffix.lower() in (".mp4", ".mov")
+            mime_type = "video/mp4" if is_video else (
+                "image/jpeg" if mfile.suffix.lower() in (".jpg", ".jpeg") else "image/png"
+            )
+            r = req.post(
+                f"{base_url}/media/create-upload-url",
+                json={
+                    "name": mfile.name,
+                    "size_bytes": len(media_bytes),
+                    "file_type": "video" if is_video else "image",
+                    "mime_type": mime_type,
+                },
+                headers=headers, timeout=30,
+            )
+            if r.status_code not in (200, 201):
+                log.warning("Upload URL failed (%s): %s", mfile.name, r.text[:120])
+                return None
+            data = r.json()
+            upload_url = data.get("upload_url") or data.get("url")
+            mid = data.get("media_id") or data.get("id")
+            if not upload_url:
+                log.warning("No upload URL for %s", mfile.name)
+                return None
+            # Upload to Supabase/S3 storage
+            put_resp = req.put(upload_url, data=media_bytes,
+                               headers={"Content-Type": mime_type}, timeout=120)
+            if put_resp.status_code not in (200, 201, 204):
+                log.warning("S3 upload failed (%s): %s", mfile.name, put_resp.text[:80])
+                return None
+            log.info("Uploaded %s → media_id=%s", mfile.name, mid)
+            result["media_uploaded"] += 1
+            return mid
+        except Exception as exc:
+            log.warning("Upload exception (%s): %s", mfile.name, exc)
+            return None
+
+    if media_dir.exists():
+        log.info("Phase 7 POST — uploading media from %s", media_dir)
+        # Upload best video and best image (first found)
+        video_files = sorted(media_dir.glob("video_*.mp4"))
+        image_files = sorted(media_dir.glob("image_*.png")) + sorted(media_dir.glob("image_*.jpg"))
+        if video_files:
+            mid = _upload_file(video_files[0])
+            if mid:
+                media_id_map["video"] = mid
+        if image_files:
+            mid = _upload_file(image_files[0])
+            if mid:
+                media_id_map["image"] = mid
+    else:
+        log.warning("No media dir for today: %s", media_dir)
+
+    # ── Step 2: Create posts ──────────────────────────────────────────────────
     try:
         scripts_file = SKILL_DIR / "output" / f"scripts_{datetime.now().strftime('%Y-%m-%d')}.json"
-        if scripts_file.exists():
-            scripts = json.loads(scripts_file.read_text()).get("scripts", [])[:5]  # First 5 posts
-            
-            # Get PostBridge account IDs from real API data
+        if not scripts_file.exists():
+            log.warning("No scripts file for today — skipping post creation")
+        else:
+            scripts = json.loads(scripts_file.read_text()).get("scripts", [])[:6]
             accounts = cfg.get("postbridge_accounts", {})
-            tiktok_accts = accounts.get("tiktok", [])
-            insta_accts  = accounts.get("instagram", [])
-            yt_accts     = accounts.get("youtube", [])
-            fb_accts     = accounts.get("facebook", [])
-            threads_accts= accounts.get("threads", [])
-            twitter_accts= accounts.get("twitter", [])
-            
+
+            ACCT_MAP = {
+                "tiktok":    accounts.get("tiktok", []),
+                "instagram": accounts.get("instagram", []),
+                "youtube":   accounts.get("youtube", []),
+                "facebook":  accounts.get("facebook", []),
+                "threads":   accounts.get("threads", []),
+                "twitter":   accounts.get("twitter", []),
+                "x":         accounts.get("twitter", []),
+                "linkedin":  accounts.get("linkedin", []),
+            }
+
             for script in scripts:
                 platform = script.get("platform", "facebook").lower()
-                caption = script.get("caption", "")[:2000]  # PostBridge limit
-                
-                # Skip disabled platforms
+
                 if platform in PLATFORMS_DISABLED:
-                    log.info("Skipping %s — disabled", platform)
+                    log.info("Skipping %s — disabled in config", platform)
                     continue
-                
-                # Pick accounts for this platform
-                if platform == "tiktok":
-                    social_accts = tiktok_accts
-                elif platform == "instagram":
-                    social_accts = insta_accts
-                elif platform == "youtube":
-                    social_accts = yt_accts
-                elif platform in ("threads",):
-                    social_accts = threads_accts
-                elif platform in ("twitter", "x"):
-                    social_accts = twitter_accts
-                else:  # facebook default
-                    social_accts = fb_accts
-                
+                if platform in PLATFORMS_SKIP:
+                    log.info("Skipping %s — token expired, manual reconnect needed", platform)
+                    continue
+
+                social_accts = ACCT_MAP.get(platform, accounts.get("facebook", []))
                 if not social_accts:
-                    log.warning("No accounts for %s", platform)
+                    log.warning("No accounts configured for %s", platform)
                     continue
-                
-                # Find media file: prefer video for video-required platforms
-                media_file = None
+
+                caption = script.get("caption", "")[:2000]
+
+                # Determine which media_id to use
+                post_media = []
                 if platform in PLATFORMS_NEED_VIDEO:
-                    # Strictly need video
-                    video_files = sorted(media_dir.glob("video_*.mp4")) if media_dir.exists() else []
-                    media_file = video_files[0] if video_files else None
-                    if not media_file:
-                        log.warning("No video available for %s — skipping post", platform)
+                    if "video" not in media_id_map:
+                        log.warning("No video uploaded — skipping %s post", platform)
                         continue
+                    post_media = [{"media_id": media_id_map["video"]}]
                 elif platform in PLATFORMS_NEED_MEDIA:
-                    # Any media ok
-                    all_media = (sorted(media_dir.glob("video_*.mp4")) + 
-                                 sorted(media_dir.glob("image_*.png"))) if media_dir.exists() else []
-                    media_file = all_media[0] if all_media else None
-                    if not media_file:
-                        log.warning("No media for %s — skipping", platform)
+                    mid = media_id_map.get("image") or media_id_map.get("video")
+                    if not mid:
+                        log.warning("No media uploaded — skipping %s post", platform)
                         continue
+                    post_media = [{"media_id": mid}]
                 else:
-                    # Text-ok platforms — include media if available, ok without
-                    all_media = (sorted(media_dir.glob("video_*.mp4")) + 
-                                 sorted(media_dir.glob("image_*.png"))) if media_dir.exists() else []
-                    media_file = all_media[0] if all_media else None
-                
-                # Create post
-                post_data = {
+                    # Text-OK: attach media if available (video preferred)
+                    mid = media_id_map.get("video") or media_id_map.get("image")
+                    if mid:
+                        post_media = [{"media_id": mid}]
+
+                post_data: dict = {
                     "caption": caption,
                     "social_accounts": social_accts,
-                    "scheduled_at": (datetime.now(timezone.utc).isoformat()),
-                    "media": [
-                        {
-                            "type": "video" if media_file and media_file.suffix.lower() in (".mp4", ".mov") else "image",
-                            "url": str(media_file) if media_file else None
-                        }
-                    ] if media_file else []
+                    "scheduled_at": datetime.now(timezone.utc).isoformat(),
                 }
-                
-                if not media_file:
-                    log.warning("No media file for %s, creating text-only post", script.get("id"))
-                    post_data.pop("media", None)
-                
+                if post_media:
+                    post_data["media"] = post_media
+
                 resp = req.post(f"{base_url}/posts", json=post_data, headers=headers, timeout=30)
                 if resp.status_code in (200, 201):
-                    log.info("Post created: %s", script.get("id"))
+                    log.info("✅ Post created — platform=%s script=%s", platform, script.get("id"))
                     result["posts_created"] += 1
                 else:
-                    log.warning("Post creation failed: %s", resp.text[:100])
+                    log.warning("❌ Post failed — platform=%s: %s", platform, resp.text[:150])
                     result["posts_failed"] += 1
-    
+
     except Exception as e:
         log.warning("Post creation step failed: %s", e)
 
