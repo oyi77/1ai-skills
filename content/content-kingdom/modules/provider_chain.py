@@ -365,8 +365,7 @@ def _vid_xai_geminigen(prompt: str) -> str | None:
         r = client.generate_video_grok(
             prompt=prompt,
             model="grok-3",
-            resolution="480p",
-            aspect_ratio="9:16",
+            aspect_ratio="portrait",   # 9:16 portrait; do NOT pass resolution
             duration=6,
         )
         if r and r.get("uuid"):
