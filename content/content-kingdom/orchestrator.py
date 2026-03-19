@@ -837,21 +837,41 @@ def _phase_post(cfg: dict) -> dict:
                 continue
 
     # ── Step 2: Create posts from media + scripts ──────────────────────────────
+    # Platform media requirements (based on real PostBridge errors)
+    PLATFORMS_NEED_VIDEO   = {"youtube", "tiktok"}      # video REQUIRED
+    PLATFORMS_NEED_MEDIA   = {"instagram"}               # any media required (but token expired)
+    PLATFORMS_ALLOW_TEXT   = {"facebook", "threads", "twitter", "x", "linkedin"}
+    PLATFORMS_DISABLED     = set()  # populated from config
+
+    # Respect enabled=false in config
+    platforms_cfg = cfg.get("platforms", {})
+    for pname, pcfg in platforms_cfg.items():
+        if not pcfg.get("enabled", True):
+            PLATFORMS_DISABLED.add(pname)
+            log.info("Platform %s disabled in config — skipping", pname)
+
     try:
         scripts_file = SKILL_DIR / "output" / f"scripts_{datetime.now().strftime('%Y-%m-%d')}.json"
         if scripts_file.exists():
             scripts = json.loads(scripts_file.read_text()).get("scripts", [])[:5]  # First 5 posts
             
-            # Get PostBridge account IDs
+            # Get PostBridge account IDs from real API data
             accounts = cfg.get("postbridge_accounts", {})
             tiktok_accts = accounts.get("tiktok", [])
-            insta_accts = accounts.get("instagram", [])
-            yt_accts = accounts.get("youtube", [])
-            fb_accts = accounts.get("facebook", [])
+            insta_accts  = accounts.get("instagram", [])
+            yt_accts     = accounts.get("youtube", [])
+            fb_accts     = accounts.get("facebook", [])
+            threads_accts= accounts.get("threads", [])
+            twitter_accts= accounts.get("twitter", [])
             
             for script in scripts:
-                platform = script.get("platform", "tiktok").lower()
+                platform = script.get("platform", "facebook").lower()
                 caption = script.get("caption", "")[:2000]  # PostBridge limit
+                
+                # Skip disabled platforms
+                if platform in PLATFORMS_DISABLED:
+                    log.info("Skipping %s — disabled", platform)
+                    continue
                 
                 # Pick accounts for this platform
                 if platform == "tiktok":
@@ -860,21 +880,39 @@ def _phase_post(cfg: dict) -> dict:
                     social_accts = insta_accts
                 elif platform == "youtube":
                     social_accts = yt_accts
-                else:
+                elif platform in ("threads",):
+                    social_accts = threads_accts
+                elif platform in ("twitter", "x"):
+                    social_accts = twitter_accts
+                else:  # facebook default
                     social_accts = fb_accts
                 
                 if not social_accts:
                     log.warning("No accounts for %s", platform)
                     continue
                 
-                # Find media file for this script (match video_00, image_02, etc.)
-                script_id = script.get("id", "")[:2]  # "video_00" → "00"
-                media_file = media_dir / f"video_00_{platform}.mp4"  # Look for matching video
-                if not media_file.exists():
-                    # Try image instead
-                    media_file = media_dir / f"image_*_{platform}.png"
-                    media_files = list(media_dir.glob(media_file.name))
-                    media_file = media_files[0] if media_files else None
+                # Find media file: prefer video for video-required platforms
+                media_file = None
+                if platform in PLATFORMS_NEED_VIDEO:
+                    # Strictly need video
+                    video_files = sorted(media_dir.glob("video_*.mp4")) if media_dir.exists() else []
+                    media_file = video_files[0] if video_files else None
+                    if not media_file:
+                        log.warning("No video available for %s — skipping post", platform)
+                        continue
+                elif platform in PLATFORMS_NEED_MEDIA:
+                    # Any media ok
+                    all_media = (sorted(media_dir.glob("video_*.mp4")) + 
+                                 sorted(media_dir.glob("image_*.png"))) if media_dir.exists() else []
+                    media_file = all_media[0] if all_media else None
+                    if not media_file:
+                        log.warning("No media for %s — skipping", platform)
+                        continue
+                else:
+                    # Text-ok platforms — include media if available, ok without
+                    all_media = (sorted(media_dir.glob("video_*.mp4")) + 
+                                 sorted(media_dir.glob("image_*.png"))) if media_dir.exists() else []
+                    media_file = all_media[0] if all_media else None
                 
                 # Create post
                 post_data = {
