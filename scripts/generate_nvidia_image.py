@@ -325,7 +325,7 @@ async def main():
                     # Send via message tool
                     message_result = message(
                         action="send",
-                        target="157228659",
+                        target="5220170786",
                         media=final_path,
                         filename="nvidia_hook_final.png",
                         caption="""✅ **PROFESSIONAL HOOK IMAGE - NVIDIA AI GENERATED**
