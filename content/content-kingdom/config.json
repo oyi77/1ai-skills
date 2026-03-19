@@ -237,10 +237,17 @@
       "account_mapping": []
     }
   ],
+  "postbridge_accounts": {
+    "tiktok": [49679, 49680, 49681, 49682, 49683, 49684, 49685],
+    "instagram": [49682, 49676],
+    "facebook": [49675, 49674, 49673, 49672],
+    "youtube": [49678],
+    "threads": [49683, 49680, 49677]
+  },
   "platforms": {
     "tiktok": {
       "enabled": true,
-      "account_ids": [],
+      "account_ids": [49679, 49680, 49681, 49682, 49683, 49684, 49685],
       "content_types": [
         "short_video",
         "slideshow"
@@ -251,7 +258,7 @@
     },
     "instagram": {
       "enabled": true,
-      "account_ids": [],
+      "account_ids": [49682, 49676],
       "content_types": [
         "reel",
         "carousel",
@@ -263,7 +270,7 @@
     },
     "facebook": {
       "enabled": true,
-      "account_ids": [],
+      "account_ids": [49675, 49674, 49673, 49672],
       "content_types": [
         "video",
         "post",
@@ -274,8 +281,8 @@
       "caption_max_chars": 63206
     },
     "youtube": {
-      "enabled": false,
-      "account_ids": [],
+      "enabled": true,
+      "account_ids": [49678],
       "content_types": [
         "short",
         "video"
@@ -344,7 +351,7 @@
     "state_file": "/home/openclaw/.openclaw/workspace/skills/content-kingdom/state.json"
   },
   "_self_improve": {
-    "last_run": "2026-03-20T00:30:17.143350",
+    "last_run": "2026-03-20T01:31:22.989253",
     "last_insights": {
       "winning_products": [],
       "losing_products": [],
@@ -353,6 +360,6 @@
       "hook_patterns": [],
       "recommendations": []
     },
-    "total_runs": 8
+    "total_runs": 10
   }
 }

@@ -798,10 +798,16 @@ def _phase_post(cfg: dict) -> dict:
                     media_bytes = f.read()
                 
                 # Step 1a: Get upload URL
+                is_video = mfile.suffix.lower() in (".mp4", ".mov")
+                mime_type = "video/mp4" if is_video else "image/png"
+                if mfile.suffix.lower() == ".jpg":
+                    mime_type = "image/jpeg"
+                
                 upload_req = {
                     "file_name": mfile.name,
                     "file_size": len(media_bytes),
-                    "file_type": "video" if mfile.suffix.lower() in (".mp4", ".mov") else "image",
+                    "file_type": "video" if is_video else "image",
+                    "mime_type": mime_type,
                 }
                 resp = req.post(f"{base_url}/media/create-upload-url", 
                               json=upload_req, headers=headers, timeout=30)
