@@ -144,3 +144,17 @@ sudo systemctl daemon-reload && sudo systemctl restart omniroute
 git clone https://github.com/oyi77/1ai-workspace.git
 git clone https://github.com/oyi77/1ai-skills.git
 ```
+
+## 🖥️ Virtual Display (Xvfb)
+
+| Component | Config |
+|-----------|--------|
+| Service | `xvfb.service` (systemd, enabled) |
+| Display | `:99` (1920x1080x24) |
+| Purpose | Fake display untuk browser automation tanpa GUI |
+| DISPLAY env | `DISPLAY=:99` — set di `~/.bashrc` + openclaw-gateway.service |
+| Install | `apt install xvfb` (already installed) |
+
+**Browser sekarang support dua mode:**
+- `headless: false` + Xvfb → GUI-capable di server (recommended)  
+- `headless: true` → pure headless, lebih ringan tapi ada limitasi
