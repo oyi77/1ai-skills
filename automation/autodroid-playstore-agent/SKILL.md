@@ -1,5 +1,5 @@
 ---
-name:1ai-playstore-agent
+name: autodroid-playstore-agent
 description: Android Play Store automation on top of1ai-autodroid. Use this when you need to install, update, or open apps on an Android device via Google Play Store using ADB + UI flows. Supports: checking if a package is installed, opening Play Store app, searching apps by name, opening app detail page via URL, and tapping Install/Update/Open buttons. Acts as the installer/foundation for other Android sub-skills (Gemini, Grok, TikTok, Shopee, etc.).
 ---
 
