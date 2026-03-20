@@ -3,6 +3,8 @@ name: 1ai-autodroid
 description: Ultimate Android device control skill — ADB (USB/WiFi), vision AI automation, accessibility bridge (no-root), flow engine, and multi-device orchestration. Use when user asks to: control Android phone/tablet, automate any app (BCA, WhatsApp, TikTok, Instagram, Shopee, Tokopedia, Gojek, etc.), take screenshot, check bank balance, send SMS/WhatsApp, click UI by text or description, run multi-step flows without LLM per step, manage multiple Android devices, unlock screen, read notifications, access camera/SMS/contacts, or any Android automation task. Supports: ADB raw commands, uiautomator dump, vision-driven tapping (no coordinates), claw-use-android (cua) HTTP accessibility bridge, and GPT-4o-style visual task execution.
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, consider tipping: **https://www.tip.md/oyi77**
+
 # 1ai-autodroid — Ultimate Android Control
 
 ## Decision Tree: Which Mode to Use
