@@ -615,6 +615,19 @@ python scripts/postbridge_uploader.py --batch-size 10
 
 ---
 
+### YouTube Shorts Pipeline
+
+**Generate viral short-form scripts with captions, hashtags, and B-roll suggestions:**
+```bash
+python scripts/youtube_shorts_pipeline.py --topic "cara dapat uang dari TikTok"
+python scripts/youtube_shorts_pipeline.py --topic "tips trading emas" --hook "Stop! Jangan trading sebelum tau ini"
+python scripts/youtube_shorts_pipeline.py --topic "skincare routine" --style ugc --lang id
+```
+
+**Output:** JSON with script (hook + body + CTA), caption, hashtags, B-roll keywords, and PostBridge-ready payload.
+
+---
+
 ## Integration with Other Skills
 
 ### PostAI Automation

@@ -1,0 +1,208 @@
+#!/usr/bin/env python3
+"""
+Competitor Intelligence Agent
+
+Researches competitors via web search, extracts key business intelligence,
+and generates structured analysis reports using OmniRoute LLM.
+
+Usage:
+    python competitor_intel.py --name "PostAI"
+    python competitor_intel.py --url "https://postai.com"
+    python competitor_intel.py --name "Canva" --focus "pricing,api"
+"""
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime
+from pathlib import Path
+
+OMNIROUTE_BASE = "http://localhost:20128/v1"
+OMNIROUTE_KEY = "omniroute"
+OMNIROUTE_MODEL = "auto/pro-chat"
+REPORTS_DIR = Path(__file__).parent.parent / "reports"
+
+
+def get_llm_client():
+    """Get OpenAI-compatible client via OmniRoute."""
+    try:
+        from openai import OpenAI
+    except ImportError:
+        print("ERROR: openai not installed. Run: pip install openai")
+        sys.exit(1)
+    return OpenAI(base_url=OMNIROUTE_BASE, api_key=OMNIROUTE_KEY)
+
+
+def llm_chat(client, system_prompt, user_prompt, temperature=0.3):
+    """Send chat completion via OmniRoute."""
+    try:
+        resp = client.chat.completions.create(
+            model=OMNIROUTE_MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=temperature,
+        )
+        return resp.choices[0].message.content
+    except Exception as e:
+        return f"[LLM Error: {e}]"
+
+
+def search_competitor(query, max_results=10):
+    """Search for competitor info via DuckDuckGo."""
+    try:
+        from duckduckgo_search import DDGS
+    except ImportError:
+        print("ERROR: duckduckgo-search not installed. Run: pip install duckduckgo-search")
+        sys.exit(1)
+
+    results = []
+    try:
+        with DDGS() as ddgs:
+            for r in ddgs.text(query, max_results=max_results):
+                results.append({
+                    "title": r.get("title", ""),
+                    "body": r.get("body", ""),
+                    "href": r.get("href", ""),
+                })
+    except Exception as e:
+        print(f"  Search warning: {e}")
+
+    return results
+
+
+def gather_intel(name, url=None, focus=None):
+    """Gather intelligence from multiple search queries."""
+    queries = [
+        f"{name} pricing plans",
+        f"{name} features review",
+        f"{name} target audience customers",
+        f"{name} vs competitors comparison",
+        f'"{name}" marketing strategy',
+    ]
+
+    if url:
+        queries.append(f"site:{url} pricing")
+
+    if focus:
+        for f in focus.split(","):
+            queries.append(f"{name} {f.strip()}")
+
+    all_results = {}
+    for q in queries:
+        print(f"  Searching: {q}")
+        results = search_competitor(q, max_results=5)
+        all_results[q] = results
+
+    return all_results
+
+
+def analyze_intel(client, name, url, search_results, focus):
+    """Analyze gathered intelligence via LLM."""
+    system = """You are a competitive intelligence analyst for BerkahKarya, an Indonesian digital business.
+Analyze the search results about a competitor and produce a comprehensive markdown report.
+
+Report structure:
+## Company Overview
+## Pricing & Plans
+## Key Features
+## Marketing Angle & Positioning
+## Target Audience
+## Strengths
+## Weaknesses
+## Opportunities for BerkahKarya
+
+Be specific with numbers, pricing tiers, and feature details. If information is unavailable,
+note it as "Not found in search results" rather than guessing."""
+
+    # Flatten results for the prompt
+    flat_results = []
+    for query, results in search_results.items():
+        for r in results:
+            flat_results.append(f"[{query}] {r['title']}: {r['body']}")
+
+    focus_note = f"\nFocus areas: {focus}" if focus else ""
+
+    prompt = f"""Competitor: {name}
+URL: {url or 'Not provided'}
+{focus_note}
+
+Search Results:
+{chr(10).join(flat_results[:30])}
+
+Generate a comprehensive competitor intelligence report."""
+
+    return llm_chat(client, system, prompt)
+
+
+def run_research(name, url=None, focus=None, output=None):
+    """Run the full competitor intelligence pipeline."""
+    print(f"[Competitor Intel] Researching: {name}")
+    if url:
+        print(f"  URL: {url}")
+    print()
+
+    # Step 1: Gather intel
+    print("[1/2] Gathering intelligence...")
+    search_results = gather_intel(name, url, focus)
+    total_results = sum(len(v) for v in search_results.values())
+    print(f"  Found {total_results} results across {len(search_results)} queries")
+
+    # Step 2: Analyze
+    print("[2/2] Analyzing with LLM...")
+    client = get_llm_client()
+    report = analyze_intel(client, name, url, search_results, focus)
+
+    # Add header
+    slug = name.lower().replace(" ", "-").replace("/", "-")
+    date = datetime.now().strftime("%Y-%m-%d")
+    header = f"""# Competitor Intelligence: {name}
+
+**Date:** {date}
+**URL:** {url or 'N/A'}
+**Generated by:** OpenClaw Competitor Intel Agent
+
+---
+
+"""
+    full_report = header + report
+
+    # Save report
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    if output:
+        out_path = Path(output)
+    else:
+        out_path = REPORTS_DIR / f"{date}-{slug}.md"
+
+    with open(out_path, "w") as f:
+        f.write(full_report)
+
+    print(f"\nReport saved: {out_path}")
+    print()
+    print(full_report)
+
+    return {"name": name, "url": url, "report_path": str(out_path), "results_count": total_results}
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Competitor Intelligence Agent")
+    parser.add_argument("--name", "-n", help="Competitor name")
+    parser.add_argument("--url", "-u", help="Competitor URL")
+    parser.add_argument("--focus", "-f", help="Comma-separated focus areas (e.g. pricing,api,features)")
+    parser.add_argument("--output", "-o", help="Custom output path for report")
+
+    args = parser.parse_args()
+
+    if not args.name and not args.url:
+        print("ERROR: Provide --name or --url")
+        parser.print_help()
+        sys.exit(1)
+
+    name = args.name or args.url
+    run_research(name, args.url, args.focus, args.output)
+
+
+if __name__ == "__main__":
+    main()
