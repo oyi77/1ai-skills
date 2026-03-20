@@ -628,6 +628,36 @@ python scripts/youtube_shorts_pipeline.py --topic "skincare routine" --style ugc
 
 ---
 
+### YouTube Content Pipeline (Full-Length)
+
+**Full YouTube content pipeline: idea scouting → topic research → script generation → performance tracking:**
+```bash
+# Scout trending video ideas for a niche
+python scripts/youtube_pipeline.py --niche "trading tips"
+
+# Research + generate script for a specific idea
+python scripts/youtube_pipeline.py --idea "cara profit trading emas" --generate-script
+
+# Full pipeline: scout → research → script
+python scripts/youtube_pipeline.py --niche "crypto" --lang id
+
+# Track video performance
+python scripts/youtube_pipeline.py --track --video-id "abc123"
+
+# Save output to file
+python scripts/youtube_pipeline.py --niche "AI tools" --output result.json
+```
+
+**Functions:**
+- `idea_scout(niche)` — searches trending topics via DuckDuckGo, generates video ideas via LLM
+- `research_topic(idea)` — deep-researches topic with competitor analysis and unique angles
+- `generate_script(topic)` — creates full video script with intro, sections, outro, tags
+- `track_performance()` — video metrics tracking (connect YouTube Data API)
+
+**Output:** JSON with idea + research + full script + keywords + PostBridge-ready payload.
+
+---
+
 ## Integration with Other Skills
 
 ### PostAI Automation
