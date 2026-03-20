@@ -1,5 +1,7 @@
 # Viral Content Creator
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 **Advanced Multi-Platform Content Generation & Automation System**
 
 Generate viral social media content at scale - 1 input, 50+ outputs, fully automated.

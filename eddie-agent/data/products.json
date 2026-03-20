@@ -1,0 +1,182 @@
+[
+  {
+    "id": "belanja_tetap_jalan",
+    "name": "Belanja Tetap Jalan",
+    "price": 0,
+    "price_label": "FREE",
+    "lynk_url": "https://lynk.id/jendralbot/kkjk0mv1vg7o",
+    "category": "starter",
+    "hook_frames_prefix": "belanja_duit_balik",
+    "hooks": {
+      "curiosity_gap": "Gimana caranya belanja online tapi duit BALIK lagi? Ini rahasia yang jarang orang tau...",
+      "contrarian": "Semua orang bilang hemat duit = jangan belanja. Tapi strategi ini bikin belanja HASILKAN uang.",
+      "number_based": "3 langkah belanja online dan dapat cashback sampai 40% — gratis, tanpa modal",
+      "social_proof": "Ribuan orang udah buktiin: belanja kebutuhan sehari-hari bisa jadi sumber income passif"
+    },
+    "captions": {
+      "tiktok": "Bro, gue serius. Belanja biasa aja bisa dapet duit balik 😱 Link di bio, GRATIS! #BelanjaCerdas #CashbackKeren #AffiliateTips",
+      "instagram": "Strategi belanja yang bikin dompet makin tebal, bukan makin tipis. Gratis — ambil sekarang di link bio! 🛍️💰",
+      "facebook": "Kalau kamu sering belanja online, wajib baca ini. Cara dapat uang balik dari belanja yang selama ini kamu lakuin — GRATIS!"
+    }
+  },
+  {
+    "id": "jobmagnet_ai",
+    "name": "JobMagnet AI",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/45r5yvze3vy4",
+    "category": "career",
+    "hook_frames_prefix": "starter_content_4k",
+    "hooks": {
+      "curiosity_gap": "Kenapa orang-orang dengan CV biasa ini dipanggil interview terus, sementara kamu belum? Jawabannya ada di sini...",
+      "contrarian": "Skill bukan satu-satunya yang recruiter lihat. Yang bikin CV kamu langsung di-skip adalah ini...",
+      "number_based": "7 dari 10 CV yang masuk langsung dibuang dalam 6 detik — ini cara lolos seleksi pertama",
+      "social_proof": "Puluhan fresh graduate udah landing job impian mereka pakai sistem AI ini. Sekarang giliran kamu."
+    },
+    "captions": {
+      "tiktok": "CV kamu udah bener tapi nggak dipanggil-panggil? Coba JobMagnet AI — bukan biasa 🔥 Link di bio! #CareerTips #CVOptimasi #JobHunting",
+      "instagram": "Recruiter hanya butuh 6 detik untuk skip CV-mu. Pastikan kamu lolos filter pertama dengan JobMagnet AI. Link di bio 👆",
+      "facebook": "Sudah lamar ratusan lowongan tapi belum ada panggilan? Masalahnya bukan kamu — tapi cara presentasi CV kamu. Solusi 75K ini udah bantu banyak orang!"
+    }
+  },
+  {
+    "id": "ai_creative_ad_engine",
+    "name": "AI Creative Ad Engine",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/9r8rj1o38q59",
+    "category": "marketing",
+    "hook_frames_prefix": "ai_content_pro_seller_hook",
+    "hooks": {
+      "curiosity_gap": "Iklan yang konversi tinggi punya formula tersembunyi yang 90% pebisnis tidak tau — sampai sekarang...",
+      "contrarian": "Desain bagus BUKAN penentu iklan laris. Yang bikin orang beli adalah ini — dan AI bisa buatnya dalam 30 detik",
+      "number_based": "5 elemen iklan yang wajib ada biar ROAS kamu bisa tembus 10x — semua bisa di-generate AI",
+      "social_proof": "Brand lokal pakai engine ini dan iklan mereka outperform agency yang charge 10x lebih mahal"
+    },
+    "captions": {
+      "tiktok": "Iklan kamu habis budget tapi nggak ada sales? Coba AI Creative Ad Engine 🚀 Link di bio! #IklanOnline #MarketingTips #AdsStrategy",
+      "instagram": "Stop buang budget ads untuk iklan yang nggak convert. AI Creative Ad Engine hasilkan copy + visual yang proven laris. 75K aja! Link di bio 🔥",
+      "facebook": "Mau iklan yang langsung bikin orang klik dan beli? Bukan soal desain mahal — tapi formula yang tepat. AI ini tau caranya."
+    }
+  },
+  {
+    "id": "food_menu_ai_studio",
+    "name": "Food Menu AI Studio",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/l4q49jj3z383",
+    "category": "food_business",
+    "hook_frames_prefix": "mesin_cetak_kuliner",
+    "hooks": {
+      "curiosity_gap": "Kenapa menu yang sama di restoran A laku keras, tapi di tempat kamu sepi? Rahasianya bukan di rasa...",
+      "contrarian": "Menu yang terlalu banyak pilihan justru MEMBUNUH penjualan. Ini counterintuitive tapi terbukti secara psikologi",
+      "number_based": "3 teknik menu engineering yang bisa naikkan average spending pelanggan 30% tanpa ganti harga",
+      "social_proof": "Ratusan warung dan cafe udah redesign menu dengan AI ini — rata-rata omset naik dalam 2 minggu pertama"
+    },
+    "captions": {
+      "tiktok": "Menu kamu udah enak tapi penjualan masih segitu-gitu aja? Masalahnya di desain menu bro 👀 Link di bio! #FoodBusiness #KulinerTips #MenuDesign",
+      "instagram": "Food business kamu butuh lebih dari rasa yang enak — butuh menu yang JUAL. Food Menu AI Studio bikin itu jadi gampang. 75K! 🍜",
+      "facebook": "Kalau kamu punya usaha kuliner dan mau omset naik tanpa nambah modal besar — ini tool yang harus kamu coba."
+    }
+  },
+  {
+    "id": "sellpix_ai",
+    "name": "SellPix AI",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/emne05mm7v25",
+    "category": "ecommerce",
+    "hook_frames_prefix": "sellpix_ai",
+    "hooks": {
+      "curiosity_gap": "Foto produk yang sama bisa laku 10x lebih banyak hanya dengan perubahan ini — bukan kamera atau studio mahal",
+      "contrarian": "Foto DSLR mahal bukan jaminan produk laku. Yang benar-benar memengaruhi konversi adalah psikologi visual ini",
+      "number_based": "4 angle foto produk yang proven meningkatkan click-through rate sampai 67% di marketplace",
+      "social_proof": "Seller Shopee & Tokopedia pakai SellPix AI dan produk mereka masuk halaman pertama dalam seminggu"
+    },
+    "captions": {
+      "tiktok": "Foto produk kamu udah bagus tapi nggak ada yang beli? Coba SellPix AI — game changer buat seller! 📸 Link di bio #JualOnline #MarketplaceTips",
+      "instagram": "Foto produk yang convert tinggi punya rahasia tersendiri. SellPix AI ungkapin semuanya — 75K dan langsung bisa dipraktekkin! 🛒",
+      "facebook": "Kamu jual di Shopee, Tokopedia, atau TikTok Shop? Foto produk kamu mungkin yang bikin orang scroll dan nggak jadi beli. SellPix AI fix itu."
+    }
+  },
+  {
+    "id": "ai_creative_tools",
+    "name": "AI Creative Tools",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/89d30qd3ddnj",
+    "category": "creative",
+    "hook_frames_prefix": "ai_content_pro_seller_hook",
+    "hooks": {
+      "curiosity_gap": "Content creator profesional ini produksi 30 konten per hari — sendirian — pakai tool AI ini",
+      "contrarian": "Kreativitas bukan tentang ide yang orisinil. Yang bikin konten viral adalah sistem produksi yang AI bisa handle",
+      "number_based": "10 AI creative tools yang bisa replace tim desain seharga 30 juta per bulan — total cost: 75K",
+      "social_proof": "Freelancer desain pakai bundle ini dan bisa ambil 5x lebih banyak klien tanpa kerja lembur"
+    },
+    "captions": {
+      "tiktok": "Desain, edit video, bikin konten — semua bisa dikerjain AI dalam menit! Bundle tools 75K ini worth banget 🎨 Link di bio #AITools #ContentCreator",
+      "instagram": "Mau jadi content creator yang produktif tapi nggak punya tim? AI Creative Tools ini semua yang kamu butuh. 75K. Link di bio! ✨",
+      "facebook": "Freelancer dan content creator — ini bundle AI tools yang bakal mengubah cara kerja kamu. Hemat waktu, hasilkan lebih banyak."
+    }
+  },
+  {
+    "id": "guru_pintar_ai",
+    "name": "Guru Pintar AI",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/6821op5e24kn",
+    "category": "education",
+    "hook_frames_prefix": "guru_pintar_ai",
+    "hooks": {
+      "curiosity_gap": "Guru dan tutor ini bisa handle 3x lebih banyak murid tanpa kerja ekstra — ini sistemnya",
+      "contrarian": "Les privat mahal bukan solusi terbaik untuk nilai jelek. Yang benar-benar membantu adalah pendekatan ini",
+      "number_based": "5 metode AI yang bikin proses belajar 2x lebih cepat dan hasilnya terukur",
+      "social_proof": "Ratusan guru privat dan tutor pakai Guru Pintar AI dan income mereka naik tanpa tambah jam kerja"
+    },
+    "captions": {
+      "tiktok": "Guru dan tutor wajib tau ini — AI yang bikin murid bisa belajar mandiri dan hasilnya terukur 🎓 Link di bio! #GuruPintar #PendidikanAI",
+      "instagram": "Metode mengajar yang lebih efektif, murid lebih cepat paham, dan kamu punya waktu lebih banyak. Guru Pintar AI — 75K. Link di bio! 📚",
+      "facebook": "Kalau kamu guru, tutor, atau punya usaha bimbel — Guru Pintar AI ini tool yang bakal naikkan kualitas pengajaran kamu drastis."
+    }
+  },
+  {
+    "id": "mesin_cetak_bisnis_kulinermu",
+    "name": "Mesin Cetak Bisnis Kulinermu",
+    "price": 75000,
+    "price_label": "75K",
+    "lynk_url": "https://lynk.id/jendralbot/kzryk28dxmpx",
+    "category": "food_business",
+    "hook_frames_prefix": "mesin_cetak_kuliner",
+    "hooks": {
+      "curiosity_gap": "Warung kecil ini punya omset 50 juta per bulan — rahasianya bukan resep, tapi sistem bisnis ini",
+      "contrarian": "Modal besar bukan syarat bisnis kuliner sukses. Justru yang modal kecil dengan sistem ini yang lebih cepat balik modal",
+      "number_based": "7 sistem operasi bisnis kuliner yang bikin warung biasa jadi mesin cetak uang otomatis",
+      "social_proof": "Pedagang kaki lima sampai restoran mid-scale pakai framework ini dan omset mereka dobel dalam 3 bulan"
+    },
+    "captions": {
+      "tiktok": "Bisnis kuliner kamu masih subsisten? Ini sistem yang bikin warung jadi mesin cetak duit 💰 Link di bio! #BisnisKuliner #FoodBusiness #UMKM",
+      "instagram": "Dari warung biasa jadi bisnis kuliner yang scalable — Mesin Cetak Bisnis Kulinermu kasih kamu sistemnya. 75K! 🍽️ Link di bio",
+      "facebook": "Punya usaha kuliner tapi omset segitu-segitu aja? Masalahnya bukan produk kamu — tapi sistem bisnis yang perlu dibenerin. Ini solusinya."
+    }
+  },
+  {
+    "id": "kelas_affiliate_pesugihan_tiktok",
+    "name": "Kelas Affiliate Pesugihan TikTok",
+    "price": 1000000,
+    "price_label": "1 Juta",
+    "lynk_url": "https://lynk.id/jendralbot/regxdn7xkpz6",
+    "category": "affiliate",
+    "hook_frames_prefix": "belanja_duit_balik",
+    "hooks": {
+      "curiosity_gap": "Orang ini dapat 15 juta dari TikTok tanpa punya produk sendiri — metodenya bukan yang kamu kira",
+      "contrarian": "TikTok affiliate bukan soal followers. Akun dengan 200 followers ini generate lebih banyak dari yang punya 100K",
+      "number_based": "Sistem 3 konten per hari yang bisa hasilkan 5-20 juta per bulan dari TikTok affiliate — terbukti",
+      "social_proof": "50+ alumni kelas ini sudah generate income dari TikTok affiliate dalam 30 hari pertama"
+    },
+    "captions": {
+      "tiktok": "Mau income dari TikTok tanpa produk sendiri? Kelas Affiliate Pesugihan TikTok — sistem yang udah terbukti 🔥 Link di bio! #TikTokAffiliate #IncomePasif",
+      "instagram": "TikTok affiliate yang benar itu bukan soal viral — tapi soal sistem yang konsisten. Kelas ini ajarin kamu caranya. Link di bio 💸",
+      "facebook": "Kalau kamu serius mau income dari TikTok affiliate, ini kelas paling komprehensif yang ada. Alumni sudah buktikan hasilnya dalam 30 hari."
+    }
+  }
+]

@@ -1,0 +1,42 @@
+{
+ "workspace_id": "demo",
+ "name": "Demo Workspace",
+ "facebook": {
+ "app_id": "YOUR_FB_APP_ID",
+ "app_secret": "YOUR_FB_APP_SECRET",
+ "access_token": "YOUR_FB_ACCESS_TOKEN",
+ "ad_account_ids": ["act_123456789"],
+ "pixel_ids": ["1234567890"],
+ "page_ids": ["123456"]
+ },
+ "shopee": {
+ "partner_id": "YOUR_SHOPEE_PARTNER_ID",
+ "partner_key": "YOUR_SHOPEE_PARTNER_KEY",
+ "shop_id": "YOUR_SHOP_ID",
+ "affiliate_token": "YOUR_AFFILIATE_TOKEN"
+ },
+ "reporting": {
+ "telegram_bot_token": "8624975557:AAEDsSXNtPaUSAapozKkvbgxqpoxNbNTgWk",
+ "telegram_chat_id": "6077091585",
+ "schedule": {
+ "daily": "07:00",
+ "weekly": "Monday09:00"
+ }
+ },
+ "thresholds": {
+ "winning_roas":2.0,
+ "losing_roas":0.8,
+ "max_cpa":50000,
+ "min_ctr":0.02,
+ "min_epc":2000
+ },
+ "creative": {
+ "brand_voice": "bold",
+ "languages": ["id-ID"],
+ "video_length_sec":60
+ },
+ "dashboard": {
+ "url": "https://dashboard.affiliateengine.com",
+ "api_key": "YOUR_DASHBOARD_API_KEY"
+ }
+}

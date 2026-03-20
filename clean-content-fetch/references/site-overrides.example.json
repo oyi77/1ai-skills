@@ -1,0 +1,11 @@
+{
+  "example.com": [
+    ".article-content",
+    ".entry-content",
+    "article"
+  ],
+  "news.example.org": [
+    ".post-body",
+    "main"
+  ]
+}

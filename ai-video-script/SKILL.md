@@ -3,6 +3,8 @@ name: ai-video-script
 description: AI视频脚本生成器。根据用户输入的主题/关键词，生成完整的视频脚本，包含分镜描述、画面提示词、配音文案。适用于短视频创作者、AI视频制作者、内容营销人员。触发词：视频脚本、分镜、AI视频、短视频文案、视频策划。
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 # AI 视频脚本生成器
 
 快速生成 AI 视频脚本的工具，包含分镜、提示词、配音文案。

@@ -5,6 +5,8 @@ homepage: https://ffmpeg.org
 metadata: {"clawdbot":{"emoji":"🎞️","requires":{"bins":["ffmpeg"]},"install":[{"id":"brew","kind":"brew","formula":"ffmpeg","bins":["ffmpeg"],"label":"Install ffmpeg (brew)"}]}}
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 # Video Frames (ffmpeg)
 
 Extract a single frame from a video, or create quick thumbnails for inspection.

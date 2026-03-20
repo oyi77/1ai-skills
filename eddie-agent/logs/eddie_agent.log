@@ -1,0 +1,129 @@
+[2026-03-20 14:25:02] [INFO] eddie — 🚀 Eddie Agent starting | mode=dry-run
+[2026-03-20 14:25:02] [INFO] eddie — === Eddie POST run | dry_run=True | 2026-03-20 14:25 ===
+[2026-03-20 14:25:02] [INFO] eddie — Active platforms: ['tiktok', 'instagram', 'facebook']
+[2026-03-20 14:25:02] [INFO] eddie.content — Found media by prefix 'belanja_duit_balik': belanja_duit_balik_hook1_shock.png
+[2026-03-20 14:25:02] [INFO] eddie.content — [DRY RUN] Would upload: belanja_duit_balik_hook1_shock.png
+[2026-03-20 14:25:02] [INFO] eddie — [DRY RUN] Would post to tiktok | product=kelas_affiliate_pesugihan_tiktok | accounts=['48335', '48336', '48337', '48338', '48339', '48373', '48374'] | media=none
+[2026-03-20 14:25:02] [INFO] eddie —   Caption preview: Mau income dari TikTok tanpa produk sendiri? Kelas Affiliate Pesugihan TikTok — ...
+[2026-03-20 14:25:02] [INFO] eddie.content — Found media by prefix 'guru_pintar_ai': guru_pintar_ai_hook1_shock.png
+[2026-03-20 14:25:02] [INFO] eddie.content — [DRY RUN] Would upload: guru_pintar_ai_hook1_shock.png
+[2026-03-20 14:25:02] [INFO] eddie — [DRY RUN] Would post to instagram | product=guru_pintar_ai | accounts=['48186'] | media=none
+[2026-03-20 14:25:02] [INFO] eddie —   Caption preview: Metode mengajar yang lebih efektif, murid lebih cepat paham, dan kamu punya wakt...
+[2026-03-20 14:25:02] [INFO] eddie — [DRY RUN] Would post to facebook | product=ai_creative_tools | accounts=['48177', '48178'] | media=none
+[2026-03-20 14:25:02] [INFO] eddie —   Caption preview: Freelancer dan content creator — ini bundle AI tools yang bakal mengubah cara ke...
+[2026-03-20 14:25:02] [INFO] eddie — POST run complete — success=3, failed=0
+[2026-03-20 14:25:02] [INFO] eddie — ✅ Eddie Agent done | mode=dry-run
+[2026-03-20 14:25:05] [INFO] eddie — 🚀 Eddie Agent starting | mode=post
+[2026-03-20 14:25:05] [INFO] eddie — === Eddie POST run | dry_run=False | 2026-03-20 14:25 ===
+[2026-03-20 14:25:05] [INFO] eddie — Active platforms: ['tiktok', 'instagram', 'facebook']
+[2026-03-20 14:25:05] [INFO] eddie.content — Found media by prefix 'ai_content_pro_seller_hook': ai_content_pro_seller_hook3_solution.png
+[2026-03-20 14:25:05] [INFO] eddie.content — Found media by prefix 'ai_content_pro_seller_hook': ai_content_pro_seller_hook3_solution.png
+[2026-03-20 14:25:05] [INFO] eddie.postbridge — Starting media upload: ai_content_pro_seller_hook3_solution.png (image/png, 60720 bytes)
+[2026-03-20 14:25:05] [INFO] eddie.postbridge — Uploading ai_content_pro_seller_hook3_solution.png (60720 bytes) to signed URL
+[2026-03-20 14:25:06] [INFO] eddie.postbridge — Upload successful: ai_content_pro_seller_hook3_solution.png
+[2026-03-20 14:25:06] [INFO] eddie.postbridge — Media uploaded successfully. media_id=e550e88d-b414-4a2e-9d4d-6892318390af
+[2026-03-20 14:25:06] [INFO] eddie.content — Uploaded media for ai_creative_ad_engine on tiktok: media_id=e550e88d-b414-4a2e-9d4d-6892318390af
+[2026-03-20 14:25:06] [INFO] eddie.postbridge — Creating post on accounts ['48335', '48336', '48337', '48338', '48339', '48373', '48374'] | media=['e550e88d-b414-4a2e-9d4d-6892318390af']
+[2026-03-20 14:25:07] [ERROR] eddie.postbridge — HTTP error: 400 Client Error: Bad Request for url: https://api.post-bridge.com/v1/posts | Response: {"statusCode":400,"message":"Invalid Request","errors":["invalid social accounts, not owned by user"]}
+[2026-03-20 14:25:07] [ERROR] eddie — ❌ Failed to post on tiktok: 400 Client Error: Bad Request for url: https://api.post-bridge.com/v1/posts
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/eddie-agent/eddie.py", line 132, in run_post
+    resp = pb.create_post(
+        caption=caption,
+        social_account_ids=account_ids,
+        media_ids=media_ids
+    )
+  File "/home/openclaw/.openclaw/workspace/skills/eddie-agent/modules/postbridge.py", line 229, in create_post
+    return self._request("POST", "/posts", json=payload)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/skills/eddie-agent/modules/postbridge.py", line 79, in _request
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.post-bridge.com/v1/posts
+[2026-03-20 14:25:07] [INFO] eddie.content — Found media by prefix 'sellpix_ai': sellpix_ai_hook1_shock.png
+[2026-03-20 14:25:07] [INFO] eddie.content — Found media by prefix 'sellpix_ai': sellpix_ai_hook1_shock.png
+[2026-03-20 14:25:07] [INFO] eddie.postbridge — Starting media upload: sellpix_ai_hook1_shock.png (image/png, 42892 bytes)
+[2026-03-20 14:25:07] [INFO] eddie.postbridge — Uploading sellpix_ai_hook1_shock.png (42892 bytes) to signed URL
+[2026-03-20 14:25:08] [INFO] eddie.postbridge — Upload successful: sellpix_ai_hook1_shock.png
+[2026-03-20 14:25:08] [INFO] eddie.postbridge — Media uploaded successfully. media_id=cf08b288-c555-4c83-8fd5-51f62d6e5713
+[2026-03-20 14:25:08] [INFO] eddie.content — Uploaded media for sellpix_ai on instagram: media_id=cf08b288-c555-4c83-8fd5-51f62d6e5713
+[2026-03-20 14:25:08] [INFO] eddie.postbridge — Creating post on accounts ['48186'] | media=['cf08b288-c555-4c83-8fd5-51f62d6e5713']
+[2026-03-20 14:25:09] [INFO] eddie — ✅ Posted to instagram | product=sellpix_ai | accounts=1 | post_id=48fa4390-67e9-4d6a-b08b-e48691314122
+[2026-03-20 14:25:09] [INFO] eddie.postbridge — Creating post on accounts ['48177', '48178'] | media=None
+[2026-03-20 14:25:10] [INFO] eddie — ✅ Posted to facebook | product=food_menu_ai_studio | accounts=2 | post_id=99df66a2-cd0a-4d19-8c0d-9153534efc69
+[2026-03-20 14:25:10] [INFO] eddie — POST run complete — success=2, failed=1
+[2026-03-20 14:25:10] [INFO] eddie — ✅ Eddie Agent done | mode=post
+[2026-03-20 14:25:38] [INFO] eddie — 🚀 Eddie Agent starting | mode=dry-run
+[2026-03-20 14:25:38] [INFO] eddie — === Eddie POST run | dry_run=True | 2026-03-20 14:25 ===
+[2026-03-20 14:25:38] [INFO] eddie — Active platforms: ['instagram', 'threads', 'twitter']
+[2026-03-20 14:25:38] [INFO] eddie.content — Found media by prefix 'ai_content_pro_seller_hook': ai_content_pro_seller_hook2_problem.png
+[2026-03-20 14:25:38] [INFO] eddie.content — [DRY RUN] Would upload: ai_content_pro_seller_hook2_problem.png
+[2026-03-20 14:25:38] [INFO] eddie — [DRY RUN] Would post to instagram | product=ai_creative_tools | accounts=['49810', '49682', '49676'] | media=none
+[2026-03-20 14:25:38] [INFO] eddie —   Caption preview: Mau jadi content creator yang produktif tapi nggak punya tim? AI Creative Tools ...
+[2026-03-20 14:25:38] [INFO] eddie — [DRY RUN] Would post to threads | product=ai_creative_ad_engine | accounts=['49811', '49683', '49680', '49677'] | media=none
+[2026-03-20 14:25:38] [INFO] eddie —   Caption preview: Desain bagus BUKAN penentu iklan laris. Yang bikin orang beli adalah ini — dan A...
+[2026-03-20 14:25:38] [INFO] eddie — [DRY RUN] Would post to twitter | product=kelas_affiliate_pesugihan_tiktok | accounts=['49814'] | media=none
+[2026-03-20 14:25:38] [INFO] eddie —   Caption preview: Sistem 3 konten per hari yang bisa hasilkan 5-20 juta per bulan dari TikTok affi...
+[2026-03-20 14:25:38] [INFO] eddie — POST run complete — success=3, failed=0
+[2026-03-20 14:25:38] [INFO] eddie — ✅ Eddie Agent done | mode=dry-run
+[2026-03-20 14:25:41] [INFO] eddie — 🚀 Eddie Agent starting | mode=post
+[2026-03-20 14:25:41] [INFO] eddie — === Eddie POST run | dry_run=False | 2026-03-20 14:25 ===
+[2026-03-20 14:25:41] [INFO] eddie — Active platforms: ['instagram', 'threads', 'twitter']
+[2026-03-20 14:25:41] [INFO] eddie.content — Found media by prefix 'ai_content_pro_seller_hook': ai_content_pro_seller_hook1_shock.png
+[2026-03-20 14:25:41] [INFO] eddie.content — Found media by prefix 'ai_content_pro_seller_hook': ai_content_pro_seller_hook2_problem.png
+[2026-03-20 14:25:41] [INFO] eddie.postbridge — Starting media upload: ai_content_pro_seller_hook2_problem.png (image/png, 59205 bytes)
+[2026-03-20 14:25:42] [INFO] eddie.postbridge — Uploading ai_content_pro_seller_hook2_problem.png (59205 bytes) to signed URL
+[2026-03-20 14:25:42] [INFO] eddie.postbridge — Upload successful: ai_content_pro_seller_hook2_problem.png
+[2026-03-20 14:25:42] [INFO] eddie.postbridge — Media uploaded successfully. media_id=31bc87ac-60cb-4f11-913a-8eff33b20764
+[2026-03-20 14:25:42] [INFO] eddie.content — Uploaded media for ai_creative_ad_engine on instagram: media_id=31bc87ac-60cb-4f11-913a-8eff33b20764
+[2026-03-20 14:25:42] [INFO] eddie.postbridge — Creating post on accounts ['49810', '49682', '49676'] | media=['31bc87ac-60cb-4f11-913a-8eff33b20764']
+[2026-03-20 14:25:44] [INFO] eddie — ✅ Posted to instagram | product=ai_creative_ad_engine | accounts=3 | post_id=a9ce8317-fb0f-425e-a311-00752ccf92b9
+[2026-03-20 14:25:44] [INFO] eddie.postbridge — Creating post on accounts ['49811', '49683', '49680', '49677'] | media=None
+[2026-03-20 14:25:45] [INFO] eddie — ✅ Posted to threads | product=belanja_tetap_jalan | accounts=4 | post_id=f1ca083c-d1e7-42d6-abb0-1479bc92d144
+[2026-03-20 14:25:45] [INFO] eddie.postbridge — Creating post on accounts ['49814'] | media=None
+[2026-03-20 14:25:46] [INFO] eddie — ✅ Posted to twitter | product=belanja_tetap_jalan | accounts=1 | post_id=b8f26ad5-b6c7-4a5a-8d41-664ec8a62a34
+[2026-03-20 14:25:46] [INFO] eddie — POST run complete — success=3, failed=0
+[2026-03-20 14:25:46] [INFO] eddie — ✅ Eddie Agent done | mode=post
+[2026-03-20 19:00:02] [INFO] eddie — 🚀 Eddie Agent starting | mode=all
+[2026-03-20 19:00:02] [INFO] eddie — === Eddie POST run | dry_run=False | 2026-03-20 19:00 ===
+[2026-03-20 19:00:02] [INFO] eddie — Active platforms: ['instagram', 'threads', 'twitter']
+[2026-03-20 19:00:03] [INFO] eddie.content — Found media by prefix 'belanja_duit_balik': belanja_duit_balik_hook3_solution.png
+[2026-03-20 19:00:03] [INFO] eddie.content — Found media by prefix 'belanja_duit_balik': belanja_duit_balik_hook2_problem.png
+[2026-03-20 19:00:03] [INFO] eddie.postbridge — Starting media upload: belanja_duit_balik_hook2_problem.png (image/png, 54023 bytes)
+[2026-03-20 19:00:04] [INFO] eddie.postbridge — Uploading belanja_duit_balik_hook2_problem.png (54023 bytes) to signed URL
+[2026-03-20 19:00:05] [INFO] eddie.postbridge — Upload successful: belanja_duit_balik_hook2_problem.png
+[2026-03-20 19:00:05] [INFO] eddie.postbridge — Media uploaded successfully. media_id=1f30de53-d77b-447b-87d7-56e5d22835c8
+[2026-03-20 19:00:05] [INFO] eddie.content — Uploaded media for kelas_affiliate_pesugihan_tiktok on instagram: media_id=1f30de53-d77b-447b-87d7-56e5d22835c8
+[2026-03-20 19:00:05] [INFO] eddie.postbridge — Creating post on accounts ['49810', '49682', '49676'] | media=['1f30de53-d77b-447b-87d7-56e5d22835c8']
+[2026-03-20 19:00:06] [INFO] eddie — ✅ Posted to instagram | product=kelas_affiliate_pesugihan_tiktok | accounts=3 | post_id=8d3addbb-023d-4927-a809-8075b1b1fbb9
+[2026-03-20 19:00:06] [INFO] eddie.postbridge — Creating post on accounts ['49811', '49683', '49680', '49677'] | media=None
+[2026-03-20 19:00:08] [INFO] eddie — ✅ Posted to threads | product=jobmagnet_ai | accounts=4 | post_id=c04ea58d-7ce4-4b8d-b2b1-3029220571c9
+[2026-03-20 19:00:08] [INFO] eddie.postbridge — Creating post on accounts ['49814'] | media=None
+[2026-03-20 19:00:09] [INFO] eddie — ✅ Posted to twitter | product=sellpix_ai | accounts=1 | post_id=afa460ab-2b04-4148-b897-da18623ce701
+[2026-03-20 19:00:09] [INFO] eddie — POST run complete — success=3, failed=0
+[2026-03-20 19:00:09] [INFO] eddie — === Eddie REPORT run ===
+[2026-03-20 19:00:09] [INFO] eddie.kpi — Generating KPI report (last 7 days)
+[2026-03-20 19:00:09] [INFO] eddie.kpi — Pulling analytics 2026-03-13 → 2026-03-20
+[2026-03-20 19:00:09] [INFO] eddie.postbridge — Triggering analytics sync...
+[2026-03-20 19:00:10] [INFO] eddie.kpi — Analytics sync triggered
+[2026-03-20 19:00:10] [INFO] eddie.kpi — Pulling post results...
+[2026-03-20 19:00:11] [INFO] eddie.kpi — Report saved: /home/openclaw/.openclaw/workspace/skills/eddie-agent/reports/kpi_report_2026-03-20_1900.md
+[2026-03-20 19:00:11] [INFO] eddie — # 📊 Eddie KPI Report
+[2026-03-20 19:00:11] [INFO] eddie — **Generated:** 2026-03-20 19:00 WIB
+[2026-03-20 19:00:11] [INFO] eddie — **Period:** 2026-03-13 → 2026-03-20 (7 days)
+[2026-03-20 19:00:11] [INFO] eddie — 
+[2026-03-20 19:00:11] [INFO] eddie — ---
+[2026-03-20 19:00:11] [INFO] eddie — 
+[2026-03-20 19:00:11] [INFO] eddie — ## 🔗 Connected Accounts
+[2026-03-20 19:00:11] [INFO] eddie — 
+[2026-03-20 19:00:11] [INFO] eddie — | Platform | Label | ID | Active |
+[2026-03-20 19:00:11] [INFO] eddie — |----------|-------|----|--------|
+[2026-03-20 19:00:11] [INFO] eddie — | Instagram | IG-algoexperthub | 49810 | ✅ |
+[2026-03-20 19:00:11] [INFO] eddie — | Instagram | IG-favisoraanggraeni | 49682 | ✅ |
+[2026-03-20 19:00:11] [INFO] eddie — | Instagram | IG-chayangkasih | 49676 | ✅ |
+[2026-03-20 19:00:11] [INFO] eddie — | Threads | Threads-algoexperthub | 49811 | ✅ |
+[2026-03-20 19:00:11] [INFO] eddie — | Threads | Threads-favisoraanggraeni | 49683 | ✅ |
+[2026-03-20 19:00:11] [INFO] eddie — KPI report generated successfully
+[2026-03-20 19:00:11] [INFO] eddie — ✅ Eddie Agent done | mode=all

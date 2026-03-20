@@ -1,156 +1,303 @@
 ---
 name: deep-research-pro
-version: 1.0.0
-description: "Multi-source deep research agent. Searches the web, synthesizes findings, and delivers cited reports. No API keys required."
+version: 1.1.0
+description: "Exhaustive multi-source research agent with academic rigor. Mandated 2-cycle research per theme, APA 7th citations, evidence hierarchy, and 3 user checkpoints. Uses DuckDuckGo search — no API keys required."
 homepage: https://github.com/paragshah/deep-research-pro
 metadata: {"clawdbot":{"emoji":"🔬","category":"research"}}
 ---
 
 # Deep Research Pro 🔬
 
-A powerful, self-contained deep research skill that produces thorough, cited reports from multiple web sources. No paid APIs required — uses DuckDuckGo search.
+A powerful, self-contained deep research skill that produces thorough, cited reports from multiple web sources. Combines practical multi-source search with academic-grade methodology — evidence hierarchy, APA citations, mandated research cycles, and structured checkpoints.
 
-## How It Works
+**No paid APIs required** — uses DuckDuckGo search.
 
-When the user asks for research on any topic, follow this workflow:
+## When to Use This Skill
 
-### Step 1: Understand the Goal (30 seconds)
+Use `/research` or trigger this skill when:
+- User asks for "deep research" or "exhaustive analysis"
+- Complex topics requiring multi-source investigation
+- Literature reviews, competitive analysis, or trend reports
+- "Tell me everything about X"
+- Claims need verification from multiple sources
 
-Ask 1-2 quick clarifying questions:
-- "What's your goal — learning, making a decision, or writing something?"
-- "Any specific angle or depth you want?"
+## Tool Configuration
+
+| Tool | Purpose | Configuration |
+|------|---------|---------------|
+| `web_search` | Broad context gathering | `count=20` for comprehensive coverage |
+| `web_fetch` | Deep extraction from specific sources | Use for detailed page analysis |
+| `sessions_spawn` | Parallel research tracks | For investigating multiple themes simultaneously |
+| DDG search script | Free web + news search | `--max 8` per query |
+
+## Core Workflow (Three Checkpoints)
+
+### Phase 1: Initial Engagement [CHECKPOINT — WAIT FOR USER]
+
+Before any research begins:
+
+1. **Ask 1-3 clarifying questions:**
+   - What is the primary question or problem you're trying to solve?
+   - What depth of analysis do you need? (overview vs. exhaustive)
+   - Any specific time constraints, geographic focuses, or source preferences?
+
+2. **Reflect understanding back** — summarize what you understand their need to be.
+
+3. **Wait for response before proceeding.**
 
 If the user says "just research it" — skip ahead with reasonable defaults.
 
-### Step 2: Plan the Research (think before searching)
+---
 
-Break the topic into 3-5 research sub-questions. For example:
-- Topic: "Impact of AI on healthcare"
-  - What are the main AI applications in healthcare today?
-  - What clinical outcomes have been measured?
-  - What are the regulatory challenges?
-  - What companies are leading this space?
-  - What's the market size and growth trajectory?
+### Phase 2: Research Planning [CHECKPOINT — WAIT FOR APPROVAL]
 
-### Step 3: Execute Multi-Source Search
+Present the complete research plan:
 
-For EACH sub-question, run the DDG search script:
+#### 1. Major Themes Identified
+List 3-5 major themes for investigation. For each:
+- **Theme name**
+- **Key questions to investigate**
+- **Expected research approach**
 
+#### 2. Research Execution Plan
+| Step | Action | Tool | Expected Output |
+|------|--------|------|-----------------|
+| 1 | [Action] | web_search/ddg | [What you'll capture] |
+| 2 | ... | ... | ... |
+
+#### 3. Expected Deliverables
+- Report format, citation style, estimated depth
+
+**Wait for explicit user approval before proceeding.**
+
+---
+
+### Phase 3: Mandated Research Cycles [EXECUTE FULLY]
+
+**MINIMUM REQUIREMENTS:**
+- Two full research cycles per theme
+- Evidence trail for each conclusion
+- Multiple sources per claim
+- Documentation of contradictions
+- Analysis of limitations
+
+#### For Each Theme — Cycle 1: Landscape Analysis
+
+**Step 1: Broad Search**
 ```bash
-# Web search
-/home/clawdbot/clawd/skills/ddg-search/scripts/ddg "<sub-question keywords>" --max 8
-
-# News search (for current events)
-/home/clawdbot/clawd/skills/ddg-search/scripts/ddg news "<topic>" --max 5
+# Web search with comprehensive coverage
+web_search count=20 "theme keywords"
+# Or DDG fallback
+/home/clawdbot/clawd/skills/ddg-search/scripts/ddg "<keywords>" --max 8
 ```
 
-**Search strategy:**
-- Use 2-3 different keyword variations per sub-question
-- Mix web + news searches
-- Aim for 15-30 unique sources total
-- Prioritize: academic, official, reputable news > blogs > forums
+**Step 2: Synthesize**
+- Extract key patterns and trends
+- Map knowledge structure
+- Form initial hypotheses
+- Note contradictions
 
-### Step 4: Deep-Read Key Sources
+**Step 3: Gap Identification**
+- What key concepts were found?
+- What knowledge gaps remain?
+- What contradictions appeared?
 
-For the most promising URLs, fetch full content:
+#### For Each Theme — Cycle 2: Deep Investigation
 
-```bash
-curl -sL "<url>" | python3 -c "
-import sys, re
-html = sys.stdin.read()
-# Strip tags, get text
-text = re.sub('<[^>]+>', ' ', html)
-text = re.sub(r'\s+', ' ', text).strip()
-print(text[:5000])
-"
+**Step 1: Targeted Deep Search & Fetch**
+- `web_search` targeting identified gaps
+- `web_fetch` on primary sources for deep extraction
+- Use `freshness` parameter for recent developments
+
+**Step 2: Comprehensive Analysis**
+- Test hypotheses against new evidence
+- Challenge assumptions from Cycle 1
+- Find contradictions between sources
+- Build connections to previous findings
+
+**Step 3: Knowledge Synthesis**
+- New evidence found in Cycle 2
+- Connections to Cycle 1 findings
+- Remaining uncertainties
+
+#### Required Analysis Between Tool Uses
+
+After EACH tool call, show your work:
+1. **Connect** new findings to previous results
+2. **Show evolution** of understanding
+3. **Highlight** pattern changes
+4. **Address** contradictions with sources
+5. **Build** coherent narrative
+
+#### Knowledge Integration (Cross-Theme)
+
+After completing all theme cycles:
+1. Identify shared conclusions across themes
+2. Note when themes reinforce or challenge each other
+3. Map relationships between discoveries
+4. Form unified understanding
+
+---
+
+## Evidence Hierarchy
+
+1. **Systematic reviews & meta-analyses** — Highest confidence
+2. **Randomized controlled trials** — High confidence
+3. **Cohort / longitudinal studies** — Medium-high confidence
+4. **Expert consensus / guidelines** — Medium confidence
+5. **Cross-sectional / observational** — Medium confidence
+6. **Expert opinion / editorials** — Lower confidence
+7. **Media reports / blogs** — Lowest confidence, verify against primary sources
+
+### Confidence Annotations
+- **[HIGH]** — Multiple high-quality sources agree
+- **[MEDIUM]** — Limited or mixed evidence
+- **[LOW]** — Single source, preliminary, or needs verification
+- **[SPECULATIVE]** — Hypothesis or emerging area
+
+---
+
+## Quality Rules
+
+1. **Every claim needs a source.** No unsourced assertions.
+2. **Cross-reference.** If only one source says it, flag as unverified.
+3. **Recency matters.** Prefer sources from the last 12 months.
+4. **Acknowledge gaps.** If you couldn't find good info, say so.
+5. **No hallucination.** If you don't know, say "insufficient data found."
+6. **All contradictions must be addressed** — document and analyze conflicts.
+
+---
+
+## Citation Standards (APA 7th Edition)
+
+### In-Text Citations
+```
+Recent research has demonstrated significant effects (Johnson et al., 2023).
+Multiple meta-analyses have confirmed this finding (Smith, 2020; Williams & Thompson, 2021).
 ```
 
-Read 3-5 key sources in full for depth. Don't just rely on search snippets.
+### Reference Format
+```
+Garcia, J., Martinez, A., & Lee, S. (2022). Title of article. Journal Name,
+    15(3), 245-267. https://doi.org/10.xxxx/example
+```
 
-### Step 5: Synthesize & Write Report
+**Rules:**
+- ~1-2 citations per paragraph
+- Use "et al." for 3+ authors in-text
+- Full author list in references
+- Alphabetize by first author's surname
+- If source lacks formal citation data: (Source Name, n.d.) with URL
 
-Structure the report as:
+---
+
+## Writing Style
+
+### Final Report Requirements
+- **Flowing narrative style** — prose, not lists
+- **Academic but accessible** — rigorous but readable
+- **Evidence integrated naturally** into sentences
+- **Progressive logical development** — each paragraph builds on previous
+- Data and statistics woven into narrative sentences
+
+### Paragraph Structure
+- **Topic sentence:** Core claim
+- **Evidence:** Supporting sources with citations
+- **Analysis:** Interpretation and implications
+- **Transition:** Link to next idea
+
+### Prohibited in Final Report
+- Bullet points or numbered lists (convert to prose)
+- Data tables (describe in prose)
+- Isolated data points without narrative context
+
+---
+
+## Final Report Structure [CHECKPOINT THREE — PRESENT TO USER]
 
 ```markdown
-# [Topic]: Deep Research Report
-*Generated: [date] | Sources: [N] | Confidence: [High/Medium/Low]*
+# Research Report: [Topic]
 
 ## Executive Summary
-[3-5 sentence overview of key findings]
+Two to three paragraphs: core question, primary findings, significance.
 
-## 1. [First Major Theme]
-[Findings with inline citations]
-- Key point ([Source Name](url))
-- Supporting data ([Source Name](url))
+## Knowledge Development
+How understanding evolved through the research process.
 
-## 2. [Second Major Theme]
-...
+## Comprehensive Analysis
 
-## 3. [Third Major Theme]
-...
+### Primary Findings and Implications
+### Patterns and Trends Across Research Phases
+### Contradictions and Competing Evidence
+### Strength of Evidence for Major Conclusions
+### Limitations and Gaps
 
-## Key Takeaways
-- [Actionable insight 1]
-- [Actionable insight 2]
-- [Actionable insight 3]
+## Practical Implications
+### Immediate Applications
+### Long-Term Implications
+### Risk Factors and Mitigation
+### Future Research Directions
 
-## Sources
-1. [Title](url) — [one-line summary]
-2. ...
+## References
+[Full APA-formatted reference list]
 
-## Methodology
-Searched [N] queries across web and news. Analyzed [M] sources.
-Sub-questions investigated: [list]
+## Appendices (if needed)
+### Search Strategy
+### Source Reliability Assessment
 ```
 
-### Step 6: Save & Deliver
+---
 
-Save the full report:
+## Error Handling
+
+### Empty or Insufficient Results
+1. Broaden query terms, use synonyms
+2. Try related concepts
+3. Document the gap
+4. Mark as [LOW] or [SPECULATIVE]
+
+### Contradictory Sources
+1. Present both claims with full context
+2. Analyze why they differ
+3. Assess evidence quality on each side
+4. Document as unresolved if necessary
+
+### Technical Failures
+- `web_fetch` fails → document URL, note as inaccessible
+- Rate limiting → slow down, retry with backoff
+
+---
+
+## Parallel Research Strategy
+
+For independent themes, use `sessions_spawn`:
+
+```
+Theme A:
+→ sessions_spawn(
+    task="Research [topic]. Complete 2 cycles:
+    Cycle 1: web_search count=20 on [aspect]. Analyze, identify gaps.
+    Cycle 2: web_fetch top sources, deep dive contradictions.
+    Return: Key findings, confidence levels, gaps, source list."
+  )
+```
+
+**Important:** Sub-agents run in isolation — pass any cross-cutting context in task descriptions.
+
+---
+
+## Save & Deliver
+
 ```bash
 mkdir -p ~/clawd/research/[slug]
 # Write report to ~/clawd/research/[slug]/report.md
 ```
 
-Then deliver:
-- **Short topics**: Post the full report in chat
-- **Long reports**: Post the executive summary + key takeaways, offer full report as file
-
-## Quality Rules
-
-1. **Every claim needs a source.** No unsourced assertions.
-2. **Cross-reference.** If only one source says it, flag it as unverified.
-3. **Recency matters.** Prefer sources from the last 12 months.
-4. **Acknowledge gaps.** If you couldn't find good info on a sub-question, say so.
-5. **No hallucination.** If you don't know, say "insufficient data found."
-
-## Examples
-
-```
-"Research the current state of nuclear fusion energy"
-"Deep dive into Rust vs Go for backend services in 2026"
-"Research the best strategies for bootstrapping a SaaS business"
-"What's happening with the US housing market right now?"
-```
-
-## For Sub-Agent Usage
-
-When spawning as a sub-agent, include the full research request and context:
-
-```
-sessions_spawn(
-  task: "Run deep research on [TOPIC]. Follow the deep-research-pro SKILL.md workflow.
-  Read /home/clawdbot/clawd/skills/deep-research-pro/SKILL.md first.
-  Goal: [user's goal]
-  Specific angles: [any specifics]
-  Save report to ~/clawd/research/[slug]/report.md
-  When done, wake the main session with key findings.",
-  label: "research-[slug]",
-  model: "opus"
-)
-```
+- **Short topics**: Post full report in chat
+- **Long reports**: Post executive summary + key takeaways, offer full report as file
 
 ## Requirements
 
-- DDG search script: `/home/clawdbot/clawd/skills/ddg-search/scripts/ddg`
-- curl (for fetching full pages)
+- `web_search` / `web_fetch` (native OpenClaw tools)
+- DDG search script (fallback): `/home/clawdbot/clawd/skills/ddg-search/scripts/ddg`
 - No API keys needed!

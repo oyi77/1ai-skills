@@ -1,5 +1,7 @@
 # NotebookLM Automation
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 **Automate Google NotebookLM for content research, podcast generation, and study materials.**
 
 ---

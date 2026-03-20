@@ -6,6 +6,8 @@ homepage: https://github.com/abgohel/canva-skill
 metadata: {"clawdbot":{"emoji":"🎨","category":"design","requires":{"env":["CANVA_CLIENT_ID","CANVA_CLIENT_SECRET"]}}}
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 # Canva Skill
 
 Create, export, and manage Canva designs via the Connect API.

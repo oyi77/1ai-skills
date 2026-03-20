@@ -5,6 +5,8 @@ version: "1.0.0"
 metadata: {"openclaw":{"emoji":"🎬","requires":{"bins":["node","npm","python3"]}, "tags":["video", "remotion", "motion-graphics", "production"]}}
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 # Remotion Video Generator
 
 > "Create professional motion graphics videos programmatically with React and Remotion."

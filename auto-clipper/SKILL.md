@@ -5,6 +5,8 @@ description: Automatically create clips and videos from media files in a specifi
 version: 1.0.0
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 # AutoClipper
 
 ## Description

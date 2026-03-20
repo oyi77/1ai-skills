@@ -1,0 +1,260 @@
+{
+  "affiliate_shopee": {
+    "ids": [
+      48374,
+      48336,
+      48337,
+      49644,
+      49612,
+      49614,
+      47690,
+      49611,
+      49609,
+      45675,
+      45673
+    ],
+    "details": [
+      {
+        "id": 48374,
+        "name": "riviewprodukfashionjujur",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48336,
+        "name": "baimwongdiskon",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48337,
+        "name": "nugrohopratama5",
+        "platform": "tiktok"
+      },
+      {
+        "id": 49644,
+        "name": "riviewprodukcek",
+        "platform": "threads"
+      },
+      {
+        "id": 49612,
+        "name": "riviewprodukaffiliate",
+        "platform": "threads"
+      },
+      {
+        "id": 49614,
+        "name": "valdoaffiliate",
+        "platform": "threads"
+      },
+      {
+        "id": 47690,
+        "name": "Diskon Hunter",
+        "platform": "youtube"
+      },
+      {
+        "id": 49611,
+        "name": "Belanja",
+        "platform": "facebook"
+      },
+      {
+        "id": 49609,
+        "name": "Dewi Shop",
+        "platform": "facebook"
+      },
+      {
+        "id": 45675,
+        "name": "Stevi Shop",
+        "platform": "facebook"
+      },
+      {
+        "id": 45673,
+        "name": "Clara Store",
+        "platform": "facebook"
+      }
+    ]
+  },
+  "health_wellness": {
+    "ids": [
+      49642,
+      48372,
+      48338,
+      48373,
+      48335,
+      48177
+    ],
+    "details": [
+      {
+        "id": 49642,
+        "name": "sehatseraiphari",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48372,
+        "name": "divasehatsetiaphari",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48338,
+        "name": "massehatyuk",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48373,
+        "name": "drlifehacks1",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48335,
+        "name": "clinicguru",
+        "platform": "tiktok"
+      },
+      {
+        "id": 48177,
+        "name": "Vanezia Herbal",
+        "platform": "facebook"
+      }
+    ]
+  },
+  "food_recipe": {
+    "ids": [
+      49636,
+      45629,
+      49634,
+      49618,
+      49633
+    ],
+    "details": [
+      {
+        "id": 49636,
+        "name": "Resep Dapur Nyami",
+        "platform": "youtube"
+      },
+      {
+        "id": 45629,
+        "name": "Mak e Nok",
+        "platform": "youtube"
+      },
+      {
+        "id": 49634,
+        "name": "nyamiresepdapur",
+        "platform": "threads"
+      },
+      {
+        "id": 49618,
+        "name": "emake.nok",
+        "platform": "threads"
+      },
+      {
+        "id": 49633,
+        "name": "Nyamiresep",
+        "platform": "facebook"
+      }
+    ]
+  },
+  "fb_engagement": {
+    "ids": [
+      49667,
+      49668,
+      49670,
+      48171,
+      49603,
+      49669,
+      49665,
+      49672,
+      49664,
+      49666,
+      48174,
+      49671,
+      48170,
+      48178,
+      49675,
+      49601,
+      49674
+    ],
+    "details": [
+      {
+        "id": 49667,
+        "name": "MrBeast",
+        "platform": "facebook"
+      },
+      {
+        "id": 49668,
+        "name": "LankyBox",
+        "platform": "facebook"
+      },
+      {
+        "id": 49670,
+        "name": "Mr Degree",
+        "platform": "facebook"
+      },
+      {
+        "id": 48171,
+        "name": "Sandraskin",
+        "platform": "facebook"
+      },
+      {
+        "id": 49603,
+        "name": "Bunda Corla",
+        "platform": "facebook"
+      },
+      {
+        "id": 49669,
+        "name": "Su Hao",
+        "platform": "facebook"
+      },
+      {
+        "id": 49665,
+        "name": "DONA \ub3c4\ub098",
+        "platform": "facebook"
+      },
+      {
+        "id": 49672,
+        "name": "Mavigadget house",
+        "platform": "facebook"
+      },
+      {
+        "id": 49664,
+        "name": "Marta and Rustam",
+        "platform": "facebook"
+      },
+      {
+        "id": 49666,
+        "name": "Cookieswirlc",
+        "platform": "facebook"
+      },
+      {
+        "id": 48174,
+        "name": "Kiro Ebra",
+        "platform": "facebook"
+      },
+      {
+        "id": 49671,
+        "name": "Dylan Anderson",
+        "platform": "facebook"
+      },
+      {
+        "id": 48170,
+        "name": "Big bank challenge",
+        "platform": "facebook"
+      },
+      {
+        "id": 48178,
+        "name": "Anak cerdas & kreatif",
+        "platform": "facebook"
+      },
+      {
+        "id": 49675,
+        "name": "WARZ",
+        "platform": "facebook"
+      },
+      {
+        "id": 49601,
+        "name": "Home 4",
+        "platform": "facebook"
+      },
+      {
+        "id": 49674,
+        "name": "Lizbeth Anguiano",
+        "platform": "facebook"
+      }
+    ]
+  }
+}

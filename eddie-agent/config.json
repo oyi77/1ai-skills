@@ -1,0 +1,69 @@
+{
+  "postbridge": {
+    "api_key": "pb_live_AT9Xm4PKaYBzAvFZYGgexi",
+    "base_url": "https://api.post-bridge.com/v1",
+    "rate_limit_rps": 10,
+    "timeout_seconds": 30,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 2
+  },
+  "accounts": {
+    "instagram": [
+      {"id": "49810", "label": "IG-algoexperthub", "platform": "instagram", "active": true},
+      {"id": "49682", "label": "IG-favisoraanggraeni", "platform": "instagram", "active": true},
+      {"id": "49676", "label": "IG-chayangkasih", "platform": "instagram", "active": true}
+    ],
+    "threads": [
+      {"id": "49811", "label": "Threads-algoexperthub", "platform": "threads", "active": true},
+      {"id": "49683", "label": "Threads-favisoraanggraeni", "platform": "threads", "active": true},
+      {"id": "49680", "label": "Threads-berkahkaryadigitalproduct", "platform": "threads", "active": true},
+      {"id": "49677", "label": "Threads-chayangkasih", "platform": "threads", "active": true}
+    ],
+    "youtube": [
+      {"id": "49816", "label": "YT-AlgoExpertHub", "platform": "youtube", "active": false},
+      {"id": "49678", "label": "YT-dengantatapan", "platform": "youtube", "active": false}
+    ],
+    "twitter": [
+      {"id": "49814", "label": "Twitter-algoexperthub", "platform": "twitter", "active": true}
+    ]
+  },
+  "media": {
+    "assets_dir": "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/jendralbot_assets/hook_frames_canva/hook_frames_canva_output",
+    "supported_extensions": [".png", ".jpg", ".jpeg", ".mp4", ".mov"],
+    "image_mime_types": {
+      ".png": "image/png",
+      ".jpg": "image/jpeg",
+      ".jpeg": "image/jpeg"
+    },
+    "video_mime_types": {
+      ".mp4": "video/mp4",
+      ".mov": "video/quicktime"
+    }
+  },
+  "content": {
+    "default_hook_formula": "curiosity_gap",
+    "posts_per_run": 1,
+    "platforms_requiring_media": ["instagram"],
+    "schedule_wib": ["08:00", "12:00", "19:00"]
+  },
+  "kpi": {
+    "report_output_dir": "/home/openclaw/.openclaw/workspace/skills/eddie-agent/reports",
+    "metrics": ["views", "likes", "comments", "shares", "reach"],
+    "alert_thresholds": {
+      "min_views_per_post": 100,
+      "min_engagement_rate": 0.02
+    }
+  },
+  "support": {
+    "auto_reply_enabled": true,
+    "intents": ["buy", "price", "info", "complaint", "spam"],
+    "escalate_intents": ["complaint"],
+    "escalate_to": "telegram:@codergaboets"
+  },
+  "logging": {
+    "level": "INFO",
+    "log_dir": "/home/openclaw/.openclaw/workspace/skills/eddie-agent/logs",
+    "max_bytes": 5242880,
+    "backup_count": 5
+  }
+}

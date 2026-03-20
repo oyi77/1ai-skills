@@ -1,0 +1,36 @@
+{
+  "viral_hooks": [
+    "🔥 DISKON GILA! {product} cuma Rp{price}! Buruan sebelum habis!",
+    "⚠️ Jangan beli {product} sebelum liat ini... Harga cuma Rp{price}!",
+    "Shopee ERROR?! {product} harga Rp{price} aja! Link di bio 👆",
+    "Lagi cari {category}? Ini rekomendasi terbaik! {product} ⭐",
+    "REVIEW JUJUR: {product} worth it gak sih? Spoiler: WORTH BANGET!",
+    "Beli ini nyesel... NYESEL GAK BELI DARI DULU! {product} 🛒",
+    "POV: Kamu nemu {product} harga Rp{price} 😱",
+    "Trust me bro, {product} ini game changer! Link di bio ⬆️",
+    "Racun Shopee hari ini: {product} 💸 Siap-siap checkout!",
+    "FLASH SALE! {product} diskon {discount}%! Grab it fast! ⚡"
+  ],
+  "cta_variants": [
+    "🛒 Link ada di bio!",
+    "👆 Cek link di bio sekarang!",
+    "💸 Checkout sebelum kehabisan!",
+    "🔗 Klik link di bio buat order!",
+    "⬆️ Link pembelian di bio ya!",
+    "📲 Langsung aja ke link di bio!",
+    "🛍️ Swipe up / link di bio!",
+    "✨ Grab yours di link bio!"
+  ],
+  "hashtags": {
+    "general": ["#ShopeeAffiliate", "#RacunShopee", "#DiskonShopee", "#PromoShopee", "#ShopeeHaul"],
+    "fashion": ["#OOTD", "#FashionMurah", "#StyleInspo", "#OutfitIdeas"],
+    "gadget": ["#TechReview", "#GadgetMurah", "#Elektronik", "#SmartGadget"],
+    "beauty": ["#SkincareRoutine", "#MakeupHaul", "#BeautyTips", "#Skincare"],
+    "home": ["#HomeDecor", "#RumahMinimalis", "#PerabotanRumah", "#InteriorDesign"]
+  },
+  "emoji_sets": {
+    "sale": ["🔥", "⚡", "💥", "🎉", "✨"],
+    "shopping": ["🛒", "🛍️", "💸", "🏷️", "📦"],
+    "reaction": ["😱", "🤯", "😍", "🥰", "💕"]
+  }
+}
