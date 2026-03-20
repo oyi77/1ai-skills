@@ -166,11 +166,40 @@ Vilona: [Creates webhook-based workflow]
 | `database-mcp` | Store execution history |
 | `ai-lead-generation` | Automate lead follow-ups |
 
+## Python CLI Client
+
+A standalone REST API client is available for direct n8n interaction from scripts and agents.
+Use n8n for complex API integrations -- agent calls n8n webhook, n8n handles credentials, auth, retries.
+Agent never touches external API keys.
+
+```bash
+# Set API key
+export N8N_API_KEY="your-key"
+export N8N_BASE_URL="http://localhost:5678"  # default
+
+# List workflows
+python scripts/n8n_client.py --action list
+
+# Trigger a workflow
+python scripts/n8n_client.py --action trigger --workflow-id 123 --data '{"key": "value"}'
+
+# View recent executions
+python scripts/n8n_client.py --action executions --workflow-id 123
+
+# Create a webhook workflow
+python scripts/n8n_client.py --action create-webhook --name "My Hook" --path "/my-hook"
+
+# Activate/deactivate
+python scripts/n8n_client.py --action activate --workflow-id 123
+python scripts/n8n_client.py --action deactivate --workflow-id 123
+```
+
 ## Files in This Skill
 
 - `SKILL.md` - This file
 - `templates/` - Pre-built workflow templates
+- `../../scripts/n8n_client.py` - REST API client (list, trigger, create, manage workflows)
 
 ---
 
-*Use n8n to automate BerkahKarya operations. Reduce manual work, increase efficiency.*
+*Use n8n to automate operations. Reduce manual work, increase efficiency.*
