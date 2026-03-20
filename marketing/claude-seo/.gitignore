@@ -1,0 +1,87 @@
+# Generated output
+output/
+.planning/
+*.tmp
+*.bak
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Node (if any)
+node_modules/
+
+# Logs
+*.log
+
+# Archives (don't commit zips)
+*.zip
+*.tar.gz
+
+# Screenshots (generated during analysis)
+screenshots/
+
+# Temporary analysis files
+*-AUDIT-REPORT.md
+*-ACTION-PLAN.md
+FULL-AUDIT-REPORT.md
+ACTION-PLAN.md
+GEO-ANALYSIS.md
+SCHEMA-REPORT.md
+SITEMAP-REPORT*.md
+VALIDATION-REPORT.md
+
+# Generated artifacts from audits
+charts/
+*.pdf
+report.html
+generated-schema.json
+rankenstein-schema-audit.md
+capture_closeups.py
+capture_desktop.py
+generate_charts.py
+generate_pdf.py
+
+# Debug logs
+firebase-debug.log
+firebase-debug.*.log
+
+# Generated / site-specific scripts (not part of the generic tool)
+scripts/mobile_analysis.py
+
+# Audit reports with alternate naming conventions
+sitemap-validation-report.md
+*-validation-report.md
+
+# Temporary download directories
+claude-ads-main/
+claude-seo-main/
+
+# Root-level duplicate media files (originals live in screenshots/)
+Cover Image.jpeg
+seo audit demo.gif
+seo command demo.gif
+.github-audit/
