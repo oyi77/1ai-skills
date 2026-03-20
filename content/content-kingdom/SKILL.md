@@ -14,6 +14,8 @@ skill_dir: skills/1ai-skills/content/content-kingdom
 symlink: skills/content-kingdom
 ---
 
+> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+
 # Content Kingdom Orchestrator
 
 ## Overview
