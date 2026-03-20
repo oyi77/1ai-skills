@@ -1,0 +1,83 @@
+2026-03-19 23:50:09,339 [INFO] ContentKingdom — 🚀 Content Kingdom Daily Pipeline — 2026-03-19 [run_20260319_235009]
+2026-03-19 23:50:09,361 [INFO] ContentKingdom — 📋 Paperclip parent issue: 6d9e031e-c595-428f-bc9c-4ed18163a329
+2026-03-19 23:50:09,499 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 1: RESEARCH
+============================================================
+2026-03-19 23:50:09,675 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 2: PLAN
+============================================================
+2026-03-19 23:50:09,703 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 3: SCRIPT
+============================================================
+2026-03-19 23:50:09,705 [INFO] ContentKingdom — Storyboard templates available: ['ad_short', 'product_showcase', 'storytelling', 'tutorial']
+2026-03-19 23:50:09,728 [WARNING] ContentKingdom — PersonaManager load failed: attempted relative import with no known parent package
+2026-03-19 23:50:09,743 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 4: CREATE
+============================================================
+2026-03-19 23:50:09,786 [INFO] ContentKingdom.MediaGen — Video: trying gemini...
+2026-03-19 23:50:09,786 [INFO] ContentKingdom.MediaGen — Gemini video: not yet supported natively, falling back
+2026-03-19 23:50:09,787 [INFO] ContentKingdom.MediaGen — Video: trying byteplus...
+2026-03-19 23:50:35,961 [WARNING] ContentKingdom.MediaGen — BytePlus: succeeded but no video URL
+2026-03-19 23:50:35,961 [INFO] ContentKingdom.MediaGen — Video: trying gemini...
+2026-03-19 23:50:35,961 [INFO] ContentKingdom.MediaGen — Gemini video: not yet supported natively, falling back
+2026-03-19 23:50:35,961 [INFO] ContentKingdom.MediaGen — Video: trying byteplus...
+2026-03-19 23:51:01,747 [WARNING] ContentKingdom.MediaGen — BytePlus: succeeded but no video URL
+2026-03-19 23:51:01,748 [INFO] ContentKingdom.MediaGen — Image: trying nvidia...
+2026-03-19 23:51:02,827 [WARNING] ContentKingdom.MediaGen — NVIDIA: HTTP Error 422: Unprocessable Entity
+2026-03-19 23:51:02,828 [INFO] ContentKingdom.MediaGen — Image: trying gemini...
+2026-03-19 23:51:07,416 [WARNING] ContentKingdom.MediaGen — Gemini: exit 1: Error generating image: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, hea
+2026-03-19 23:51:07,567 [WARNING] ContentKingdom — PIL placeholder used for instagram/2
+2026-03-19 23:51:07,567 [INFO] ContentKingdom.MediaGen — Image: trying nvidia...
+2026-03-19 23:51:08,369 [WARNING] ContentKingdom.MediaGen — NVIDIA: HTTP Error 422: Unprocessable Entity
+2026-03-19 23:51:08,369 [INFO] ContentKingdom.MediaGen — Image: trying gemini...
+2026-03-19 23:51:09,538 [WARNING] ContentKingdom.MediaGen — Gemini: exit 1: Error generating image: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, hea
+2026-03-19 23:51:09,553 [WARNING] ContentKingdom — PIL placeholder used for instagram/3
+2026-03-19 23:51:09,553 [INFO] ContentKingdom.MediaGen — Image: trying nvidia...
+2026-03-19 23:51:10,365 [WARNING] ContentKingdom.MediaGen — NVIDIA: HTTP Error 422: Unprocessable Entity
+2026-03-19 23:51:10,366 [INFO] ContentKingdom.MediaGen — Image: trying gemini...
+2026-03-19 23:51:11,395 [WARNING] ContentKingdom.MediaGen — Gemini: exit 1: Error generating image: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, hea
+2026-03-19 23:51:11,410 [WARNING] ContentKingdom — PIL placeholder used for facebook/4
+2026-03-19 23:51:11,423 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 5: REVIEW
+============================================================
+2026-03-19 23:51:11,464 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 6: SCHEDULE
+============================================================
+2026-03-19 23:51:20,656 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 7: POST
+============================================================
+2026-03-19 23:51:21,895 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 8: ENGAGE
+============================================================
+2026-03-19 23:51:22,399 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 9: ANALYZE
+============================================================
+2026-03-19 23:51:25,428 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 10: OPTIMIZE
+============================================================
+2026-03-19 23:51:25,981 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 11: REPURPOSE
+============================================================
+2026-03-19 23:51:26,024 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/auto-clipper/scripts/auto_clipper.py exited 2:
+usage: auto_clipper.py [-h] [--dry-run] [--force] [--output OUTPUT]
+                       {run,watch,status}
+auto_clipper.py: error: the following arguments are required: command
+
+2026-03-19 23:51:26,036 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 12: SCALE
+============================================================
+2026-03-19 23:51:26,099 [INFO] ContentKingdom — ✅ Pipeline complete. Run ID: run_20260319_235009
+2026-03-19 23:51:59,483 [INFO] ContentKingdom — Storyboard templates available: ['ad_short', 'product_showcase', 'storytelling', 'tutorial']
+2026-03-19 23:51:59,483 [WARNING] ContentKingdom — PersonaManager load failed: Can't instantiate abstract class PersonaManager without an implementation for abstract methods '_execute', 'name'

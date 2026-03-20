@@ -889,8 +889,11 @@ def _phase_post(cfg: dict) -> dict:
                     continue
 
                 social_accts = ACCT_MAP.get(platform, accounts.get("facebook", []))
+                # BER-130: enforce BK-only accounts
+                BK_IDS = {47681,48186,49661,49658,49680,49662,49663,47682,47664,49660,49639,49810,49811,49814}
+                social_accts = [a for a in social_accts if a in BK_IDS]
                 if not social_accts:
-                    log.warning("No accounts configured for %s", platform)
+                    log.warning("No BK accounts configured for %s (BER-130 filter)", platform)
                     continue
 
                 caption = script.get("caption", "")[:2000]

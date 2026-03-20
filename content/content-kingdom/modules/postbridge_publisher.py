@@ -26,6 +26,17 @@ logger = logging.getLogger("content_kingdom.postbridge")
 
 API_BASE = "https://api.post-bridge.com/v1"
 
+# BER-130: BK-only account allowlist (pivot directive BER-95)
+BK_ACCOUNT_IDS = {
+    47681, 48186, 49661,  # IG
+    49658, 49680, 49662,  # Threads
+    49663,                # TikTok
+    47682,                # Twitter
+    47664,                # Facebook
+    49660, 49639,         # YouTube
+    49810, 49811, 49814,  # AlgoExpertHub
+}
+
 
 class PostBridgeClient:
     """Thin HTTP client for PostBridge API. No external deps (uses urllib)."""
@@ -74,7 +85,14 @@ class PostBridgeClient:
 
     def create_post(self, caption: str, social_account_ids: list,
                     media_ids: list | None = None, scheduled_at: str | None = None) -> dict:
-        payload = {"caption": caption, "social_accounts": social_account_ids}
+        # BER-130: enforce BK-only accounts
+        filtered = [aid for aid in social_account_ids if aid in BK_ACCOUNT_IDS]
+        blocked = len(social_account_ids) - len(filtered)
+        if blocked > 0:
+            logger.warning(f"[BK-FILTER] Blocked {blocked} non-BK account(s)")
+        if not filtered:
+            raise ValueError("BER-130: All requested accounts are non-BK. Post blocked.")
+        payload = {"caption": caption, "social_accounts": filtered}
         if media_ids:
             payload["media"] = media_ids
         if scheduled_at:
@@ -156,8 +174,10 @@ class PostBridgePublisher(BaseModule):
     def create_post(self, caption: str, media_ids: Optional[List[str]] = None,
                     account_ids: Optional[List[str]] = None,
                     scheduled_at: Optional[str] = None) -> dict:
+        # BER-130: enforce BK-only at publisher level too
+        safe_ids = [aid for aid in (account_ids or []) if aid in BK_ACCOUNT_IDS]
         return self._client.create_post(
-            caption=caption, social_account_ids=account_ids or [],
+            caption=caption, social_account_ids=safe_ids,
             media_ids=media_ids or [], scheduled_at=scheduled_at)
 
     def get_scheduled_posts(self, limit: int = 50) -> list:

@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-19",
+  "by_platform": {
+    "youtube": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "count": 6
+    },
+    "instagram": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "count": 79
+    },
+    "tiktok": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "count": 15
+    }
+  },
+  "recommendations": [
+    "youtube: avg views low (0) \u2014 test new hooks",
+    "instagram: avg views low (0) \u2014 test new hooks",
+    "tiktok: avg views low (0) \u2014 test new hooks"
+  ],
+  "revenue_tracker_ran": true
+}

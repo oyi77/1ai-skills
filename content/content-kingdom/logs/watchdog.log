@@ -1,0 +1,300 @@
+[2026-03-19 23:50:09] Last run: run_20260313_184820 (492760 hours ago)
+[2026-03-19 23:50:09] Starting pipeline...
+[2026-03-20 00:00:02] Last run: run_20260319_235009 (492761 hours ago)
+[2026-03-20 00:00:02] Last run: run_20260319_235009 (492761 hours ago)
+[2026-03-20 00:00:02] Starting pipeline...
+[2026-03-20 00:00:02] Starting pipeline...
+[2026-03-20 00:00:30] ✅ Pipeline completed successfully
+[2026-03-20 00:00:30] ✅ Pipeline completed successfully
+[2026-03-20 00:00:30] ============================================================
+[2026-03-20 00:00:30] Self-Improve Engine starting...
+[2026-03-20 00:00:30] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 00:00:30] No analytics data — using state.json winners
+[2026-03-20 00:00:30] Insights: winners=[], losers=[]
+[2026-03-20 00:00:30] No config changes needed — pipeline performing optimally
+[2026-03-20 00:00:30] ✅ Config updated
+[2026-03-20 00:00:30] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 00:00:30] ✅ Self-improve complete
+[2026-03-20 00:30:01] Last run: run_20260320_000002 (492761 hours ago)
+[2026-03-20 00:30:01] Last run: run_20260320_000002 (492761 hours ago)
+[2026-03-20 00:30:01] Starting pipeline...
+[2026-03-20 00:30:01] Starting pipeline...
+[2026-03-20 00:30:17] ✅ Pipeline completed successfully
+[2026-03-20 00:30:17] ✅ Pipeline completed successfully
+[2026-03-20 00:30:17] ============================================================
+[2026-03-20 00:30:17] Self-Improve Engine starting...
+[2026-03-20 00:30:17] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 00:30:17] No analytics data — using state.json winners
+[2026-03-20 00:30:17] Insights: winners=[], losers=[]
+[2026-03-20 00:30:17] No config changes needed — pipeline performing optimally
+[2026-03-20 00:30:17] ✅ Config updated
+[2026-03-20 00:30:17] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 00:30:17] ✅ Self-improve complete
+[2026-03-20 01:00:02] Last run: never (492762 hours ago)
+[2026-03-20 01:00:02] Last run: never (492762 hours ago)
+[2026-03-20 01:00:02] Starting pipeline...
+[2026-03-20 01:00:02] Starting pipeline...
+[2026-03-20 01:00:02] ❌ Pipeline failed (exit 2)
+[2026-03-20 01:00:02] ❌ Pipeline failed (exit 2)
+[2026-03-20 01:00:02] Attempting self-heal (failure 1/3)...
+[2026-03-20 01:00:02] Attempting self-heal (failure 1/3)...
+[2026-03-20 01:00:02] Self-heal starting...
+[2026-03-20 01:00:02] Analyzing: pipeline_20260320_010002.log
+[2026-03-20 01:00:02] No auto-heal applied — issue requires manual review
+[2026-03-20 01:00:02] Last 20 lines of failed log:
+python3: can't open file '/home/openclaw/.openclaw/workspace/skills/content-kingdom/orchestrator.py': [Errno 2] No such file or directory
+[2026-03-20 01:30:01] Last run: None (492762 hours ago)
+[2026-03-20 01:30:01] Last run: None (492762 hours ago)
+[2026-03-20 01:30:01] Starting pipeline...
+[2026-03-20 01:30:01] Starting pipeline...
+[2026-03-20 01:31:22] ✅ Pipeline completed successfully
+[2026-03-20 01:31:22] ✅ Pipeline completed successfully
+[2026-03-20 01:31:22] ============================================================
+[2026-03-20 01:31:22] Self-Improve Engine starting...
+[2026-03-20 01:31:22] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 01:31:22] No analytics data — using state.json winners
+[2026-03-20 01:31:22] Insights: winners=[], losers=[]
+[2026-03-20 01:31:22] No config changes needed — pipeline performing optimally
+[2026-03-20 01:31:22] ✅ Config updated
+[2026-03-20 01:31:22] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 01:31:22] ✅ Self-improve complete
+[2026-03-20 02:00:01] Last run: run_20260320_013145 (492763 hours ago)
+[2026-03-20 02:00:01] Last run: run_20260320_013145 (492763 hours ago)
+[2026-03-20 02:00:01] Starting pipeline...
+[2026-03-20 02:00:01] Starting pipeline...
+[2026-03-20 02:01:34] ✅ Pipeline completed successfully
+[2026-03-20 02:01:34] ✅ Pipeline completed successfully
+[2026-03-20 02:01:34] ============================================================
+[2026-03-20 02:01:34] Self-Improve Engine starting...
+[2026-03-20 02:01:34] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 02:01:34] No analytics data — using state.json winners
+[2026-03-20 02:01:34] Insights: winners=[], losers=[]
+[2026-03-20 02:01:34] No config changes needed — pipeline performing optimally
+[2026-03-20 02:01:34] ✅ Config updated
+[2026-03-20 02:01:34] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 02:01:34] ✅ Self-improve complete
+[2026-03-20 02:30:01] Last run: run_20260320_020001 (492763 hours ago)
+[2026-03-20 02:30:01] Last run: run_20260320_020001 (492763 hours ago)
+[2026-03-20 02:30:01] Starting pipeline...
+[2026-03-20 02:30:01] Starting pipeline...
+[2026-03-20 02:31:26] ✅ Pipeline completed successfully
+[2026-03-20 02:31:26] ✅ Pipeline completed successfully
+[2026-03-20 02:31:26] ============================================================
+[2026-03-20 02:31:26] Self-Improve Engine starting...
+[2026-03-20 02:31:26] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 02:31:26] No analytics data — using state.json winners
+[2026-03-20 02:31:26] Insights: winners=[], losers=[]
+[2026-03-20 02:31:26] No config changes needed — pipeline performing optimally
+[2026-03-20 02:31:26] ✅ Config updated
+[2026-03-20 02:31:26] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 02:31:26] ✅ Self-improve complete
+[2026-03-20 03:00:01] Last run: run_20260320_023001 (492764 hours ago)
+[2026-03-20 03:00:01] Last run: run_20260320_023001 (492764 hours ago)
+[2026-03-20 03:00:02] Starting pipeline...
+[2026-03-20 03:00:02] Starting pipeline...
+[2026-03-20 03:02:20] ✅ Pipeline completed successfully
+[2026-03-20 03:02:20] ✅ Pipeline completed successfully
+[2026-03-20 03:02:20] ============================================================
+[2026-03-20 03:02:20] Self-Improve Engine starting...
+[2026-03-20 03:02:20] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 03:02:20] No analytics data — using state.json winners
+[2026-03-20 03:02:20] Insights: winners=[], losers=[]
+[2026-03-20 03:02:20] No config changes needed — pipeline performing optimally
+[2026-03-20 03:02:20] ✅ Config updated
+[2026-03-20 03:02:20] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 03:02:20] ✅ Self-improve complete
+[2026-03-20 03:30:01] Last run: run_20260320_030002 (492764 hours ago)
+[2026-03-20 03:30:01] Last run: run_20260320_030002 (492764 hours ago)
+[2026-03-20 03:30:01] Starting pipeline...
+[2026-03-20 03:30:01] Starting pipeline...
+[2026-03-20 03:32:21] ✅ Pipeline completed successfully
+[2026-03-20 03:32:21] ✅ Pipeline completed successfully
+[2026-03-20 03:32:21] ============================================================
+[2026-03-20 03:32:21] Self-Improve Engine starting...
+[2026-03-20 03:32:21] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 03:32:21] No analytics data — using state.json winners
+[2026-03-20 03:32:21] Insights: winners=[], losers=[]
+[2026-03-20 03:32:21] No config changes needed — pipeline performing optimally
+[2026-03-20 03:32:21] ✅ Config updated
+[2026-03-20 03:32:21] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 03:32:21] ✅ Self-improve complete
+[2026-03-20 04:00:01] Last run: run_20260320_033001 (492765 hours ago)
+[2026-03-20 04:00:01] Last run: run_20260320_033001 (492765 hours ago)
+[2026-03-20 04:00:02] Starting pipeline...
+[2026-03-20 04:00:02] Starting pipeline...
+[2026-03-20 04:02:16] ✅ Pipeline completed successfully
+[2026-03-20 04:02:16] ✅ Pipeline completed successfully
+[2026-03-20 04:02:16] ============================================================
+[2026-03-20 04:02:16] Self-Improve Engine starting...
+[2026-03-20 04:02:16] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 04:02:16] No analytics data — using state.json winners
+[2026-03-20 04:02:16] Insights: winners=[], losers=[]
+[2026-03-20 04:02:16] No config changes needed — pipeline performing optimally
+[2026-03-20 04:02:16] ✅ Config updated
+[2026-03-20 04:02:16] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 04:02:16] ✅ Self-improve complete
+[2026-03-20 04:30:01] Last run: run_20260320_040002 (492765 hours ago)
+[2026-03-20 04:30:01] Last run: run_20260320_040002 (492765 hours ago)
+[2026-03-20 04:30:01] Starting pipeline...
+[2026-03-20 04:30:01] Starting pipeline...
+[2026-03-20 04:32:14] ✅ Pipeline completed successfully
+[2026-03-20 04:32:14] ✅ Pipeline completed successfully
+[2026-03-20 04:32:14] ============================================================
+[2026-03-20 04:32:14] Self-Improve Engine starting...
+[2026-03-20 04:32:14] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 04:32:14] No analytics data — using state.json winners
+[2026-03-20 04:32:14] Insights: winners=[], losers=[]
+[2026-03-20 04:32:14] No config changes needed — pipeline performing optimally
+[2026-03-20 04:32:14] ✅ Config updated
+[2026-03-20 04:32:14] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 04:32:14] ✅ Self-improve complete
+[2026-03-20 05:00:01] Last run: run_20260320_043001 (492766 hours ago)
+[2026-03-20 05:00:01] Last run: run_20260320_043001 (492766 hours ago)
+[2026-03-20 05:00:01] Starting pipeline...
+[2026-03-20 05:00:01] Starting pipeline...
+[2026-03-20 05:02:09] ✅ Pipeline completed successfully
+[2026-03-20 05:02:09] ✅ Pipeline completed successfully
+[2026-03-20 05:02:09] ============================================================
+[2026-03-20 05:02:09] Self-Improve Engine starting...
+[2026-03-20 05:02:09] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 05:02:09] No analytics data — using state.json winners
+[2026-03-20 05:02:09] Insights: winners=[], losers=[]
+[2026-03-20 05:02:09] No config changes needed — pipeline performing optimally
+[2026-03-20 05:02:09] ✅ Config updated
+[2026-03-20 05:02:09] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 05:02:09] ✅ Self-improve complete
+[2026-03-20 05:30:01] Last run: run_20260320_050001 (492766 hours ago)
+[2026-03-20 05:30:01] Last run: run_20260320_050001 (492766 hours ago)
+[2026-03-20 05:30:01] Starting pipeline...
+[2026-03-20 05:30:01] Starting pipeline...
+[2026-03-20 05:32:10] ✅ Pipeline completed successfully
+[2026-03-20 05:32:10] ✅ Pipeline completed successfully
+[2026-03-20 05:32:10] ============================================================
+[2026-03-20 05:32:10] Self-Improve Engine starting...
+[2026-03-20 05:32:10] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 05:32:10] No analytics data — using state.json winners
+[2026-03-20 05:32:10] Insights: winners=[], losers=[]
+[2026-03-20 05:32:10] No config changes needed — pipeline performing optimally
+[2026-03-20 05:32:10] ✅ Config updated
+[2026-03-20 05:32:10] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 05:32:10] ✅ Self-improve complete
+[2026-03-20 06:00:01] Last run: run_20260320_053002 (492767 hours ago)
+[2026-03-20 06:00:01] Last run: run_20260320_053002 (492767 hours ago)
+[2026-03-20 06:00:01] Starting pipeline...
+[2026-03-20 06:00:01] Starting pipeline...
+[2026-03-20 06:02:13] ✅ Pipeline completed successfully
+[2026-03-20 06:02:13] ✅ Pipeline completed successfully
+[2026-03-20 06:02:13] ============================================================
+[2026-03-20 06:02:13] Self-Improve Engine starting...
+[2026-03-20 06:02:13] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 06:02:13] No analytics data — using state.json winners
+[2026-03-20 06:02:13] Insights: winners=[], losers=[]
+[2026-03-20 06:02:13] No config changes needed — pipeline performing optimally
+[2026-03-20 06:02:13] ✅ Config updated
+[2026-03-20 06:02:13] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 06:02:13] ✅ Self-improve complete
+[2026-03-20 06:30:01] Last run: run_20260320_060001 (492767 hours ago)
+[2026-03-20 06:30:01] Last run: run_20260320_060001 (492767 hours ago)
+[2026-03-20 06:30:01] Starting pipeline...
+[2026-03-20 06:30:01] Starting pipeline...
+[2026-03-20 06:35:36] ✅ Pipeline completed successfully
+[2026-03-20 06:35:36] ✅ Pipeline completed successfully
+[2026-03-20 06:35:36] ============================================================
+[2026-03-20 06:35:36] Self-Improve Engine starting...
+[2026-03-20 06:35:36] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 06:35:36] No analytics data — using state.json winners
+[2026-03-20 06:35:36] Insights: winners=[], losers=[]
+[2026-03-20 06:35:36] No config changes needed — pipeline performing optimally
+[2026-03-20 06:35:36] ✅ Config updated
+[2026-03-20 06:35:36] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 06:35:36] ✅ Self-improve complete
+[2026-03-20 07:00:01] Last run: run_20260320_063001 (492768 hours ago)
+[2026-03-20 07:00:01] Last run: run_20260320_063001 (492768 hours ago)
+[2026-03-20 07:00:01] Starting pipeline...
+[2026-03-20 07:00:01] Starting pipeline...
+[2026-03-20 07:05:40] ✅ Pipeline completed successfully
+[2026-03-20 07:05:40] ✅ Pipeline completed successfully
+[2026-03-20 07:05:40] ============================================================
+[2026-03-20 07:05:40] Self-Improve Engine starting...
+[2026-03-20 07:05:40] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 07:05:40] No analytics data — using state.json winners
+[2026-03-20 07:05:40] Insights: winners=[], losers=[]
+[2026-03-20 07:05:40] No config changes needed — pipeline performing optimally
+[2026-03-20 07:05:40] ✅ Config updated
+[2026-03-20 07:05:40] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 07:05:40] ✅ Self-improve complete
+[2026-03-20 07:30:02] Last run: run_20260320_070001 (492768 hours ago)
+[2026-03-20 07:30:02] Last run: run_20260320_070001 (492768 hours ago)
+[2026-03-20 07:30:02] Starting pipeline...
+[2026-03-20 07:30:02] Starting pipeline...
+[2026-03-20 07:32:16] ✅ Pipeline completed successfully
+[2026-03-20 07:32:16] ✅ Pipeline completed successfully
+[2026-03-20 07:32:16] ============================================================
+[2026-03-20 07:32:16] Self-Improve Engine starting...
+[2026-03-20 07:32:16] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 07:32:16] No analytics data — using state.json winners
+[2026-03-20 07:32:17] Insights: winners=[], losers=[]
+[2026-03-20 07:32:17] No config changes needed — pipeline performing optimally
+[2026-03-20 07:32:17] ✅ Config updated
+[2026-03-20 07:32:17] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 07:32:17] ✅ Self-improve complete
+[2026-03-20 08:00:01] Last run: run_20260320_073002 (492769 hours ago)
+[2026-03-20 08:00:01] Last run: run_20260320_073002 (492769 hours ago)
+[2026-03-20 08:00:01] Starting pipeline...
+[2026-03-20 08:00:01] Starting pipeline...
+[2026-03-20 08:02:14] ✅ Pipeline completed successfully
+[2026-03-20 08:02:14] ✅ Pipeline completed successfully
+[2026-03-20 08:02:14] ============================================================
+[2026-03-20 08:02:14] Self-Improve Engine starting...
+[2026-03-20 08:02:14] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 08:02:14] No analytics data — using state.json winners
+[2026-03-20 08:02:14] Insights: winners=[], losers=[]
+[2026-03-20 08:02:14] No config changes needed — pipeline performing optimally
+[2026-03-20 08:02:14] ✅ Config updated
+[2026-03-20 08:02:14] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 08:02:14] ✅ Self-improve complete
+[2026-03-20 08:30:01] Last run: run_20260320_080001 (492769 hours ago)
+[2026-03-20 08:30:01] Last run: run_20260320_080001 (492769 hours ago)
+[2026-03-20 08:30:01] Starting pipeline...
+[2026-03-20 08:30:01] Starting pipeline...
+[2026-03-20 08:36:19] ✅ Pipeline completed successfully
+[2026-03-20 08:36:19] ✅ Pipeline completed successfully
+[2026-03-20 08:36:19] ============================================================
+[2026-03-20 08:36:19] Self-Improve Engine starting...
+[2026-03-20 08:36:19] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 08:36:19] No analytics data — using state.json winners
+[2026-03-20 08:36:19] Insights: winners=[], losers=[]
+[2026-03-20 08:36:19] No config changes needed — pipeline performing optimally
+[2026-03-20 08:36:19] ✅ Config updated
+[2026-03-20 08:36:19] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 08:36:19] ✅ Self-improve complete
+[2026-03-20 09:00:01] Last run: run_20260320_083001 (492770 hours ago)
+[2026-03-20 09:00:01] Last run: run_20260320_083001 (492770 hours ago)
+[2026-03-20 09:00:01] Starting pipeline...
+[2026-03-20 09:00:01] Starting pipeline...
+[2026-03-20 09:02:12] ✅ Pipeline completed successfully
+[2026-03-20 09:02:12] ✅ Pipeline completed successfully
+[2026-03-20 09:02:12] ============================================================
+[2026-03-20 09:02:12] Self-Improve Engine starting...
+[2026-03-20 09:02:12] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 09:02:12] No analytics data — using state.json winners
+[2026-03-20 09:02:12] Insights: winners=[], losers=[]
+[2026-03-20 09:02:12] No config changes needed — pipeline performing optimally
+[2026-03-20 09:02:12] ✅ Config updated
+[2026-03-20 09:02:12] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 09:02:12] ✅ Self-improve complete
+[2026-03-20 09:30:02] Last run: run_20260320_090001 (492770 hours ago)
+[2026-03-20 09:30:02] Last run: run_20260320_090001 (492770 hours ago)
+[2026-03-20 09:30:02] Starting pipeline...
+[2026-03-20 09:30:02] Starting pipeline...
+[2026-03-20 09:32:17] ✅ Pipeline completed successfully
+[2026-03-20 09:32:17] ✅ Pipeline completed successfully
+[2026-03-20 09:32:17] ============================================================
+[2026-03-20 09:32:17] Self-Improve Engine starting...
+[2026-03-20 09:32:17] Loaded 0 analytics records, 1 phase outputs
+[2026-03-20 09:32:17] No analytics data — using state.json winners
+[2026-03-20 09:32:17] Insights: winners=[], losers=[]
+[2026-03-20 09:32:17] No config changes needed — pipeline performing optimally
+[2026-03-20 09:32:17] ✅ Config updated
+[2026-03-20 09:32:17] Learning saved: /home/openclaw/.openclaw/workspace/skills/content-kingdom/learnings/learning_2026-03-20.json
+[2026-03-20 09:32:17] ✅ Self-improve complete

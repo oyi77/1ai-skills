@@ -1,0 +1,106 @@
+2026-03-20 09:30:02,455 [INFO] ContentKingdom — 🚀 Content Kingdom Daily Pipeline — 2026-03-20 [run_20260320_093002]
+2026-03-20 09:30:02,457 [WARNING] ContentKingdom — Paperclip GET /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues failed: HTTPConnectionPool(host='localhost', port=3100): Max retries exceeded with url: /api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues?limit=50 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=3100): Failed to establish a new connection: [Errno 111] Connection refused"))
+2026-03-20 09:30:02,459 [WARNING] ContentKingdom — Paperclip GET /issues failed: HTTPConnectionPool(host='localhost', port=3100): Max retries exceeded with url: /api/issues?limit=50 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=3100): Failed to establish a new connection: [Errno 111] Connection refused"))
+2026-03-20 09:30:02,460 [WARNING] ContentKingdom — Paperclip POST /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues failed: HTTPConnectionPool(host='localhost', port=3100): Max retries exceeded with url: /api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues (Caused by NewConnectionError("HTTPConnection(host='localhost', port=3100): Failed to establish a new connection: [Errno 111] Connection refused"))
+2026-03-20 09:30:02,461 [WARNING] ContentKingdom — Paperclip POST /issues failed: HTTPConnectionPool(host='localhost', port=3100): Max retries exceeded with url: /api/issues (Caused by NewConnectionError("HTTPConnection(host='localhost', port=3100): Failed to establish a new connection: [Errno 111] Connection refused"))
+2026-03-20 09:30:02,461 [WARNING] ContentKingdom — Paperclip parent issue creation failed or server unavailable
+2026-03-20 09:30:02,461 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 1: RESEARCH
+============================================================
+2026-03-20 09:30:02,712 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 2: PLAN
+============================================================
+2026-03-20 09:30:02,727 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 3: SCRIPT
+============================================================
+2026-03-20 09:30:02,729 [INFO] ContentKingdom — Storyboard templates available: ['ad_short', 'product_showcase', 'storytelling', 'tutorial']
+2026-03-20 09:30:02,729 [WARNING] ContentKingdom — PersonaManager load failed: Can't instantiate abstract class PersonaManager without an implementation for abstract methods '_execute', 'name'
+2026-03-20 09:30:02,743 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 4: CREATE
+============================================================
+2026-03-20 09:30:02,745 [INFO] ContentKingdom.ProviderChain — Video: trying byteplus...
+2026-03-20 09:30:33,975 [INFO] ContentKingdom.ProviderChain — Video: byteplus ✅ https://ark-content-generation-ap-southeast-1.tos-ap-southea
+2026-03-20 09:30:36,277 [INFO] ContentKingdom — Provider chain video: byteplus → /home/openclaw/.openclaw/workspace/skills/content-kingdom/output/media/2026-03-20/video_00_tiktok.mp4
+2026-03-20 09:30:36,278 [INFO] ContentKingdom.ProviderChain — Video: trying byteplus...
+2026-03-20 09:31:07,174 [INFO] ContentKingdom.ProviderChain — Video: byteplus ✅ https://ark-content-generation-ap-southeast-1.tos-ap-southea
+2026-03-20 09:31:07,757 [INFO] ContentKingdom — Provider chain video: byteplus → /home/openclaw/.openclaw/workspace/skills/content-kingdom/output/media/2026-03-20/video_01_tiktok.mp4
+2026-03-20 09:31:07,758 [INFO] ContentKingdom.ProviderChain — Image: trying geminigen...
+2026-03-20 09:31:07,765 [INFO] ContentKingdom.ProviderChain — Image: trying nvidia...
+2026-03-20 09:31:07,766 [INFO] ContentKingdom.ProviderChain — Image: nvidia skipped — no API key
+2026-03-20 09:31:07,766 [INFO] ContentKingdom.ProviderChain — Image: trying replicate...
+2026-03-20 09:31:07,766 [INFO] ContentKingdom.ProviderChain — Image: replicate skipped — no API key
+2026-03-20 09:31:07,766 [INFO] ContentKingdom.ProviderChain — Image: trying falai...
+2026-03-20 09:31:08,592 [INFO] ContentKingdom.ProviderChain — Image: trying pexels...
+2026-03-20 09:31:08,734 [INFO] ContentKingdom.ProviderChain — Image: trying pil...
+2026-03-20 09:31:08,803 [INFO] ContentKingdom.ProviderChain — Image: PIL placeholder ✅ /tmp/tmp214gz36z.jpg
+2026-03-20 09:31:08,804 [INFO] ContentKingdom — Provider chain image: pil → /home/openclaw/.openclaw/workspace/skills/content-kingdom/output/media/2026-03-20/image_02_facebook.png
+2026-03-20 09:31:08,804 [INFO] ContentKingdom.ProviderChain — Image: trying geminigen...
+2026-03-20 09:31:08,805 [INFO] ContentKingdom.ProviderChain — Image: trying nvidia...
+2026-03-20 09:31:08,805 [INFO] ContentKingdom.ProviderChain — Image: nvidia skipped — no API key
+2026-03-20 09:31:08,805 [INFO] ContentKingdom.ProviderChain — Image: trying replicate...
+2026-03-20 09:31:08,805 [INFO] ContentKingdom.ProviderChain — Image: replicate skipped — no API key
+2026-03-20 09:31:08,805 [INFO] ContentKingdom.ProviderChain — Image: trying falai...
+2026-03-20 09:31:09,564 [INFO] ContentKingdom.ProviderChain — Image: trying pexels...
+2026-03-20 09:31:09,662 [INFO] ContentKingdom.ProviderChain — Image: trying pil...
+2026-03-20 09:31:09,683 [INFO] ContentKingdom.ProviderChain — Image: PIL placeholder ✅ /tmp/tmp0uuo7h_r.jpg
+2026-03-20 09:31:09,752 [INFO] ContentKingdom — Provider chain image: pil → /home/openclaw/.openclaw/workspace/skills/content-kingdom/output/media/2026-03-20/image_03_facebook.png
+2026-03-20 09:31:09,753 [INFO] ContentKingdom.ProviderChain — Video: trying byteplus...
+2026-03-20 09:31:40,655 [INFO] ContentKingdom.ProviderChain — Video: byteplus ✅ https://ark-content-generation-ap-southeast-1.tos-ap-southea
+2026-03-20 09:31:42,171 [INFO] ContentKingdom — Provider chain video: byteplus → /home/openclaw/.openclaw/workspace/skills/content-kingdom/output/media/2026-03-20/video_04_youtube.mp4
+2026-03-20 09:31:42,177 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 5: REVIEW
+============================================================
+2026-03-20 09:31:42,222 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 6: SCHEDULE
+============================================================
+2026-03-20 09:31:50,412 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 7: POST
+============================================================
+2026-03-20 09:31:50,412 [INFO] ContentKingdom — Phase 7 POST — uploading media from /home/openclaw/.openclaw/workspace/skills/content-kingdom/output/media/2026-03-20
+2026-03-20 09:31:54,525 [INFO] ContentKingdom — Uploaded video_00_tiktok.mp4 → media_id=a6c33bce-498a-4911-8665-bc08ab6aeeee
+2026-03-20 09:31:55,831 [INFO] ContentKingdom — Uploaded image_02_facebook.png → media_id=cf6865f3-9a32-48fe-bbab-bf9e27f9668d
+2026-03-20 09:31:57,681 [INFO] ContentKingdom — ✅ Post created — platform=tiktok script=None
+2026-03-20 09:31:59,314 [INFO] ContentKingdom — ✅ Post created — platform=tiktok script=None
+2026-03-20 09:32:03,967 [INFO] ContentKingdom — ✅ Post created — platform=facebook script=None
+2026-03-20 09:32:08,709 [INFO] ContentKingdom — ✅ Post created — platform=facebook script=None
+2026-03-20 09:32:10,569 [INFO] ContentKingdom — ✅ Post created — platform=youtube script=None
+2026-03-20 09:32:12,379 [INFO] ContentKingdom — ✅ Post created — platform=youtube script=None
+2026-03-20 09:32:13,330 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 8: ENGAGE
+============================================================
+[CommentManager] PostBridge unavailable: HTTP Error 404: Not Found
+2026-03-20 09:32:13,604 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 9: ANALYZE
+============================================================
+2026-03-20 09:32:16,463 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 10: OPTIMIZE
+============================================================
+2026-03-20 09:32:17,172 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 11: REPURPOSE
+============================================================
+2026-03-20 09:32:17,206 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/auto-clipper/scripts/auto_clipper.py exited 2:
+usage: auto_clipper.py [-h] [--dry-run] [--force] [--output OUTPUT]
+                       {run,watch,status}
+auto_clipper.py: error: the following arguments are required: command
+
+2026-03-20 09:32:17,212 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 12: SCALE
+============================================================
+[EngagementEngine] 0 actions scheduled for 164e39ef-9e71-4da3-921b-fa726bb0cefb across 4 waves
+[EngagementEngine] 0 actions scheduled for 00004dc7-bc96-4257-a382-119fb803f790 across 4 waves
+[EngagementEngine] 0 actions scheduled for d14acdd0-ba64-464f-8153-d8078a44dd63 across 4 waves
+[EngagementEngine] 0 actions scheduled for 8babbf60-a679-4925-9f93-8fc96817183d across 4 waves
+[EngagementEngine] 0 actions scheduled for 254bbfa8-7338-4183-baaa-8444ee5a90a0 across 4 waves
+2026-03-20 09:32:17,230 [INFO] ContentKingdom — ✅ Pipeline complete. Run ID: run_20260320_093002

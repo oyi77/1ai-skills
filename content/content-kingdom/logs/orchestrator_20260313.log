@@ -1,0 +1,257 @@
+2026-03-13 18:42:52,743 [INFO] ContentKingdom — 🚀 Content Kingdom Daily Pipeline — 2026-03-13 [run_20260313_184252]
+2026-03-13 18:42:52,766 [INFO] ContentKingdom — 📋 Paperclip parent issue: f6dc2e73-a0f6-42fb-94e8-bb9eca225534
+2026-03-13 18:42:52,926 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 1: RESEARCH
+============================================================
+2026-03-13 18:42:53,181 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/151443af-967b-4da1-a06c-ecbd82005722 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/151443af-967b-4da1-a06c-ecbd82005722
+2026-03-13 18:42:53,181 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 2: PLAN
+============================================================
+2026-03-13 18:42:53,191 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/b116758f-38e7-4ce0-8cfa-4d2450e022ae failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/b116758f-38e7-4ce0-8cfa-4d2450e022ae
+2026-03-13 18:42:53,191 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 3: SCRIPT
+============================================================
+2026-03-13 18:42:53,194 [INFO] ContentKingdom — Storyboard templates available: ['ad_short', 'product_showcase', 'storytelling', 'tutorial']
+2026-03-13 18:42:53,196 [WARNING] ContentKingdom — PersonaManager load failed: attempted relative import with no known parent package
+2026-03-13 18:42:53,204 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/920b6d21-a2ab-4334-947a-b6309ae8c840 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/920b6d21-a2ab-4334-947a-b6309ae8c840
+2026-03-13 18:42:53,204 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 4: CREATE
+============================================================
+2026-03-13 18:42:53,248 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 2:
+usage: generate_image.py [-h] --prompt PROMPT --filename FILENAME
+                         [--input-image INPUT_IMAGE] [--resolution {1K,2K,4K}]
+                         [--api-key API_KEY]
+generate_image.py: error: the following arguments are required: --filename/-f
+
+2026-03-13 18:42:53,287 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 2:
+usage: generate_image.py [-h] --prompt PROMPT --filename FILENAME
+                         [--input-image INPUT_IMAGE] [--resolution {1K,2K,4K}]
+                         [--api-key API_KEY]
+generate_image.py: error: the following arguments are required: --filename/-f
+
+2026-03-13 18:42:53,329 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 2:
+usage: generate_image.py [-h] --prompt PROMPT --filename FILENAME
+                         [--input-image INPUT_IMAGE] [--resolution {1K,2K,4K}]
+                         [--api-key API_KEY]
+generate_image.py: error: the following arguments are required: --filename/-f
+
+2026-03-13 18:42:53,370 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 2:
+usage: generate_image.py [-h] --prompt PROMPT --filename FILENAME
+                         [--input-image INPUT_IMAGE] [--resolution {1K,2K,4K}]
+                         [--api-key API_KEY]
+generate_image.py: error: the following arguments are required: --filename/-f
+
+2026-03-13 18:42:53,408 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 2:
+usage: generate_image.py [-h] --prompt PROMPT --filename FILENAME
+                         [--input-image INPUT_IMAGE] [--resolution {1K,2K,4K}]
+                         [--api-key API_KEY]
+generate_image.py: error: the following arguments are required: --filename/-f
+
+2026-03-13 18:42:53,415 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/0edc6e9c-21a4-4f3c-a15c-ca82352fe114 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/0edc6e9c-21a4-4f3c-a15c-ca82352fe114
+2026-03-13 18:42:53,415 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 5: REVIEW
+============================================================
+2026-03-13 18:42:53,422 [ERROR] ContentKingdom — Phase [review] raised: module 'quality_gate' has no attribute '_load_all'
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 812, in run_phase
+    data = phase_meta["fn"](self.cfg, **kwargs)
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 449, in _phase_review
+    all_gates = quality_gate._load_all()
+                ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'quality_gate' has no attribute '_load_all'
+2026-03-13 18:42:53,430 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/82249b62-3770-43b3-b380-f879ec36c5cf failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/82249b62-3770-43b3-b380-f879ec36c5cf
+2026-03-13 18:42:53,430 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 6: SCHEDULE
+============================================================
+2026-03-13 18:43:17,651 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/830a85cc-d770-42a1-b643-3286ab482b66 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/830a85cc-d770-42a1-b643-3286ab482b66
+2026-03-13 18:43:17,651 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 7: POST
+============================================================
+2026-03-13 18:43:18,707 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/b0e9f0b9-4922-4105-82a8-a5d82ca1b721 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/b0e9f0b9-4922-4105-82a8-a5d82ca1b721
+2026-03-13 18:43:18,707 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 8: ENGAGE
+============================================================
+2026-03-13 18:43:18,753 [ERROR] ContentKingdom — Phase [engage] raised: PostBridgeClient not found.
+  Tried: ['postbridge_interface', 'postbridge']
+  Install requests or check autopilot_affiliate_engine path.
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 812, in run_phase
+    data = phase_meta["fn"](self.cfg, **kwargs)
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 568, in _phase_engage
+    from modules.comment_manager import CommentManager  # noqa: PLC0415
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/modules/__init__.py", line 15, in <module>
+    from .postbridge_publisher import PostBridgePublisher
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/modules/postbridge_publisher.py", line 65, in <module>
+    PostBridgeClient = _load_postbridge_client()
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/modules/postbridge_publisher.py", line 58, in _load_postbridge_client
+    raise ImportError(
+    ...<3 lines>...
+    )
+ImportError: PostBridgeClient not found.
+  Tried: ['postbridge_interface', 'postbridge']
+  Install requests or check autopilot_affiliate_engine path.
+2026-03-13 18:43:18,764 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/8dd8c28b-672a-43ff-b2a2-55d680f77662 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/8dd8c28b-672a-43ff-b2a2-55d680f77662
+2026-03-13 18:43:18,765 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 9: ANALYZE
+============================================================
+2026-03-13 18:43:21,241 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/ac5f5329-0b05-4b2b-aea9-ab353964f9ac failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/ac5f5329-0b05-4b2b-aea9-ab353964f9ac
+2026-03-13 18:43:21,241 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 10: OPTIMIZE
+============================================================
+2026-03-13 18:43:22,073 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/8a9a176d-8013-427b-a919-def9933fcbd8 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/8a9a176d-8013-427b-a919-def9933fcbd8
+2026-03-13 18:43:22,073 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 11: REPURPOSE
+============================================================
+2026-03-13 18:43:22,073 [ERROR] ContentKingdom — Phase [repurpose] raised: _phase_repurpose() got an unexpected keyword argument 'analyze_data'
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 812, in run_phase
+    data = phase_meta["fn"](self.cfg, **kwargs)
+TypeError: _phase_repurpose() got an unexpected keyword argument 'analyze_data'
+2026-03-13 18:43:22,080 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/82bfb9af-cc85-4558-a598-89c586aae6ef failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/82bfb9af-cc85-4558-a598-89c586aae6ef
+2026-03-13 18:43:22,080 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 12: SCALE
+============================================================
+2026-03-13 18:43:22,080 [ERROR] ContentKingdom — Phase [scale] raised: 'EngagementEngine' object has no attribute 'run'
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 812, in run_phase
+    data = phase_meta["fn"](self.cfg, **kwargs)
+  File "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/orchestrator.py", line 690, in _phase_scale
+    result = module.run(analytics_data={"posts": raw_posts})
+             ^^^^^^^^^^
+AttributeError: 'EngagementEngine' object has no attribute 'run'
+2026-03-13 18:43:22,087 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/14106ed9-9163-405d-904b-9f8f83834e22 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/14106ed9-9163-405d-904b-9f8f83834e22
+2026-03-13 18:43:22,088 [INFO] ContentKingdom — ✅ Pipeline complete. Run ID: run_20260313_184252
+2026-03-13 18:48:20,462 [INFO] ContentKingdom — 🚀 Content Kingdom Daily Pipeline — 2026-03-13 [run_20260313_184820]
+2026-03-13 18:48:20,478 [INFO] ContentKingdom — 📋 Paperclip parent issue: 421be89a-7e01-4feb-a97c-381b37ebac53
+2026-03-13 18:48:20,607 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 1: RESEARCH
+============================================================
+2026-03-13 18:48:20,882 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/87f80e25-219d-4914-8f1d-851d3fbb6d37 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/87f80e25-219d-4914-8f1d-851d3fbb6d37
+2026-03-13 18:48:20,882 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 2: PLAN
+============================================================
+2026-03-13 18:48:20,890 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/66ccb901-8c9d-4264-99e1-a4ab951e4673 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/66ccb901-8c9d-4264-99e1-a4ab951e4673
+2026-03-13 18:48:20,891 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 3: SCRIPT
+============================================================
+2026-03-13 18:48:20,892 [INFO] ContentKingdom — Storyboard templates available: ['ad_short', 'product_showcase', 'storytelling', 'tutorial']
+2026-03-13 18:48:20,893 [WARNING] ContentKingdom — PersonaManager load failed: attempted relative import with no known parent package
+2026-03-13 18:48:20,899 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/c8c4e96e-87e3-485c-b701-1c2140a10b3f failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/c8c4e96e-87e3-485c-b701-1c2140a10b3f
+2026-03-13 18:48:20,900 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 4: CREATE
+============================================================
+2026-03-13 18:48:20,953 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 1:
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 70, in main
+    from google import genai
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+2026-03-13 18:48:21,004 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 1:
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 70, in main
+    from google import genai
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+2026-03-13 18:48:21,059 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 1:
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 70, in main
+    from google import genai
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+2026-03-13 18:48:21,115 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 1:
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 70, in main
+    from google import genai
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+2026-03-13 18:48:21,162 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py exited 1:
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "/home/openclaw/.openclaw/workspace/skills/nano-banana-pro/scripts/generate_image.py", line 70, in main
+    from google import genai
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+2026-03-13 18:48:21,168 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/5dfb71a9-c991-405c-9e65-abca2e1ccb03 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/5dfb71a9-c991-405c-9e65-abca2e1ccb03
+2026-03-13 18:48:21,168 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 5: REVIEW
+============================================================
+2026-03-13 18:48:21,174 [INFO] ContentKingdom — QualityGate module: PostBridgeClient not found.
+  Tried: ['postbridge_interface', 'postbridge']
+  Install requests or check autopilot_affiliate_engine path. — falling back to basic check
+2026-03-13 18:48:21,180 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/8b73f2a7-c617-4aa4-9616-21a91d250f4d failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/8b73f2a7-c617-4aa4-9616-21a91d250f4d
+2026-03-13 18:48:21,180 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 6: SCHEDULE
+============================================================
+2026-03-13 18:48:45,417 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/7b8183f3-2155-44a4-bb6d-5b874763e1a8 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/7b8183f3-2155-44a4-bb6d-5b874763e1a8
+2026-03-13 18:48:45,418 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 7: POST
+============================================================
+2026-03-13 18:48:46,021 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/2b512423-5c6b-4ffb-9128-75c12dd943b0 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/2b512423-5c6b-4ffb-9128-75c12dd943b0
+2026-03-13 18:48:46,021 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 8: ENGAGE
+============================================================
+2026-03-13 18:48:46,326 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/671332a3-746d-43d1-9a88-a2f64d7a2f5c failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/671332a3-746d-43d1-9a88-a2f64d7a2f5c
+2026-03-13 18:48:46,326 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 9: ANALYZE
+============================================================
+2026-03-13 18:48:48,637 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/b54d2b48-bbab-4389-bf2f-401703c4ce76 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/b54d2b48-bbab-4389-bf2f-401703c4ce76
+2026-03-13 18:48:48,637 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 10: OPTIMIZE
+============================================================
+2026-03-13 18:48:49,440 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/eb21c613-a2af-497e-a17e-e6703b93c2c2 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/eb21c613-a2af-497e-a17e-e6703b93c2c2
+2026-03-13 18:48:49,441 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 11: REPURPOSE
+============================================================
+2026-03-13 18:48:49,502 [WARNING] ContentKingdom — Script /home/openclaw/.openclaw/workspace/skills/auto-clipper/scripts/auto_clipper.py exited 2:
+usage: auto_clipper.py [-h] [--dry-run] [--force] [--output OUTPUT]
+                       {run,watch,status}
+auto_clipper.py: error: the following arguments are required: command
+
+2026-03-13 18:48:49,510 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/4c9d08cb-3587-486d-9a2e-93cd6aa6f163 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/4c9d08cb-3587-486d-9a2e-93cd6aa6f163
+2026-03-13 18:48:49,510 [INFO] ContentKingdom — 
+============================================================
+▶ Phase 12: SCALE
+============================================================
+2026-03-13 18:48:49,519 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/ad3ea763-b58f-4169-a868-30f6bf164dec failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/ad3ea763-b58f-4169-a868-30f6bf164dec
+2026-03-13 18:48:49,520 [INFO] ContentKingdom — ✅ Pipeline complete. Run ID: run_20260313_184820
+2026-03-13 19:27:46,819 [INFO] ContentKingdom — 📋 Paperclip: reusing existing issue 421be89a-7e01-4feb-a97c-381b37ebac53
+2026-03-13 19:27:46,827 [WARNING] ContentKingdom — Paperclip PATCH /companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/421be89a-7e01-4feb-a97c-381b37ebac53 failed: 404 Client Error: Not Found for url: http://localhost:3100/api/companies/33e1e20e-d9f2-45f2-b907-0579ab795942/issues/421be89a-7e01-4feb-a97c-381b37ebac53
+2026-03-13 19:28:13,487 [INFO] ContentKingdom — 📋 Paperclip: reusing existing issue 421be89a-7e01-4feb-a97c-381b37ebac53

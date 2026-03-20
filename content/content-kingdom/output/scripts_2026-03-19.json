@@ -1,0 +1,323 @@
+{
+  "date": "2026-03-19",
+  "scripts": [
+    {
+      "platform": "tiktok",
+      "template": "ad_short",
+      "product_id": "emne05mm7v25",
+      "product_name": "SellPix AI",
+      "generated": "2026-03-19",
+      "caption": "Coba SellPix AI sekarang!\n\n#AI #digitalproduct #jendralbot #fyp #viral",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 3.0,
+          "description": "Opening hook - attention grabber",
+          "visual_prompt": "Bold, eye-catching visual with motion",
+          "text_overlay": "Attention-grabbing headline"
+        },
+        {
+          "scene": 2,
+          "duration": 5.0,
+          "description": "Problem statement",
+          "visual_prompt": "Relatable problem scenario",
+          "text_overlay": "Problem statement text"
+        },
+        {
+          "scene": 3,
+          "duration": 5.0,
+          "description": "Product/service introduction",
+          "visual_prompt": "Showcase the product or service",
+          "text_overlay": "Product name and tagline"
+        },
+        {
+          "scene": 4,
+          "duration": 5.0,
+          "description": "Benefits highlight",
+          "visual_prompt": "Demonstrate key benefits",
+          "text_overlay": "Benefit points"
+        },
+        {
+          "scene": 5,
+          "duration": 2.0,
+          "description": "Call to action",
+          "visual_prompt": "Strong closing visual",
+          "text_overlay": "CTA with link"
+        }
+      ],
+      "total_duration": 20.0
+    },
+    {
+      "platform": "tiktok",
+      "template": "product_showcase",
+      "product_id": "emne05mm7v25",
+      "product_name": "SellPix AI",
+      "generated": "2026-03-19",
+      "caption": "Coba SellPix AI sekarang!\n\n#AI #digitalproduct #jendralbot #fyp #viral",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 2.0,
+          "description": "Title card",
+          "visual_prompt": "Clean product name display",
+          "text_overlay": "Product name"
+        },
+        {
+          "scene": 2,
+          "duration": 6.0,
+          "description": "Product reveal - wide shot",
+          "visual_prompt": "Full product in context",
+          "text_overlay": null
+        },
+        {
+          "scene": 3,
+          "duration": 8.0,
+          "description": "Feature 1 demonstration",
+          "visual_prompt": "Close-up of feature 1 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 4,
+          "duration": 8.0,
+          "description": "Feature 2 demonstration",
+          "visual_prompt": "Close-up of feature 2 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 5,
+          "duration": 8.0,
+          "description": "Feature 3 demonstration",
+          "visual_prompt": "Close-up of feature 3 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 6,
+          "duration": 4.0,
+          "description": "Lifestyle/context shot",
+          "visual_prompt": "Product in real-world use",
+          "text_overlay": "Use case tagline"
+        },
+        {
+          "scene": 7,
+          "duration": 3.0,
+          "description": "Closing shot",
+          "visual_prompt": "Product with logo",
+          "text_overlay": "Logo and CTA"
+        }
+      ],
+      "total_duration": 39.0
+    },
+    {
+      "platform": "instagram",
+      "template": "ad_short",
+      "product_id": "emne05mm7v25",
+      "product_name": "SellPix AI",
+      "generated": "2026-03-19",
+      "caption": "Coba SellPix AI sekarang!\n\nLink di bio! \ud83d\udd25\n\n#AI #digitalproduct #jendralbot #affiliatemarketing #passiveincome",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 3.0,
+          "description": "Opening hook - attention grabber",
+          "visual_prompt": "Bold, eye-catching visual with motion",
+          "text_overlay": "Attention-grabbing headline"
+        },
+        {
+          "scene": 2,
+          "duration": 5.0,
+          "description": "Problem statement",
+          "visual_prompt": "Relatable problem scenario",
+          "text_overlay": "Problem statement text"
+        },
+        {
+          "scene": 3,
+          "duration": 5.0,
+          "description": "Product/service introduction",
+          "visual_prompt": "Showcase the product or service",
+          "text_overlay": "Product name and tagline"
+        },
+        {
+          "scene": 4,
+          "duration": 5.0,
+          "description": "Benefits highlight",
+          "visual_prompt": "Demonstrate key benefits",
+          "text_overlay": "Benefit points"
+        },
+        {
+          "scene": 5,
+          "duration": 2.0,
+          "description": "Call to action",
+          "visual_prompt": "Strong closing visual",
+          "text_overlay": "CTA with link"
+        }
+      ],
+      "total_duration": 20.0
+    },
+    {
+      "platform": "instagram",
+      "template": "product_showcase",
+      "product_id": "emne05mm7v25",
+      "product_name": "SellPix AI",
+      "generated": "2026-03-19",
+      "caption": "Coba SellPix AI sekarang!\n\nLink di bio! \ud83d\udd25\n\n#AI #digitalproduct #jendralbot #affiliatemarketing #passiveincome",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 2.0,
+          "description": "Title card",
+          "visual_prompt": "Clean product name display",
+          "text_overlay": "Product name"
+        },
+        {
+          "scene": 2,
+          "duration": 6.0,
+          "description": "Product reveal - wide shot",
+          "visual_prompt": "Full product in context",
+          "text_overlay": null
+        },
+        {
+          "scene": 3,
+          "duration": 8.0,
+          "description": "Feature 1 demonstration",
+          "visual_prompt": "Close-up of feature 1 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 4,
+          "duration": 8.0,
+          "description": "Feature 2 demonstration",
+          "visual_prompt": "Close-up of feature 2 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 5,
+          "duration": 8.0,
+          "description": "Feature 3 demonstration",
+          "visual_prompt": "Close-up of feature 3 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 6,
+          "duration": 4.0,
+          "description": "Lifestyle/context shot",
+          "visual_prompt": "Product in real-world use",
+          "text_overlay": "Use case tagline"
+        },
+        {
+          "scene": 7,
+          "duration": 3.0,
+          "description": "Closing shot",
+          "visual_prompt": "Product with logo",
+          "text_overlay": "Logo and CTA"
+        }
+      ],
+      "total_duration": 39.0
+    },
+    {
+      "platform": "facebook",
+      "template": "ad_short",
+      "product_id": "emne05mm7v25",
+      "product_name": "SellPix AI",
+      "generated": "2026-03-19",
+      "caption": "Coba SellPix AI sekarang!",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 3.0,
+          "description": "Opening hook - attention grabber",
+          "visual_prompt": "Bold, eye-catching visual with motion",
+          "text_overlay": "Attention-grabbing headline"
+        },
+        {
+          "scene": 2,
+          "duration": 5.0,
+          "description": "Problem statement",
+          "visual_prompt": "Relatable problem scenario",
+          "text_overlay": "Problem statement text"
+        },
+        {
+          "scene": 3,
+          "duration": 5.0,
+          "description": "Product/service introduction",
+          "visual_prompt": "Showcase the product or service",
+          "text_overlay": "Product name and tagline"
+        },
+        {
+          "scene": 4,
+          "duration": 5.0,
+          "description": "Benefits highlight",
+          "visual_prompt": "Demonstrate key benefits",
+          "text_overlay": "Benefit points"
+        },
+        {
+          "scene": 5,
+          "duration": 2.0,
+          "description": "Call to action",
+          "visual_prompt": "Strong closing visual",
+          "text_overlay": "CTA with link"
+        }
+      ],
+      "total_duration": 20.0
+    },
+    {
+      "platform": "facebook",
+      "template": "product_showcase",
+      "product_id": "emne05mm7v25",
+      "product_name": "SellPix AI",
+      "generated": "2026-03-19",
+      "caption": "Coba SellPix AI sekarang!",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 2.0,
+          "description": "Title card",
+          "visual_prompt": "Clean product name display",
+          "text_overlay": "Product name"
+        },
+        {
+          "scene": 2,
+          "duration": 6.0,
+          "description": "Product reveal - wide shot",
+          "visual_prompt": "Full product in context",
+          "text_overlay": null
+        },
+        {
+          "scene": 3,
+          "duration": 8.0,
+          "description": "Feature 1 demonstration",
+          "visual_prompt": "Close-up of feature 1 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 4,
+          "duration": 8.0,
+          "description": "Feature 2 demonstration",
+          "visual_prompt": "Close-up of feature 2 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 5,
+          "duration": 8.0,
+          "description": "Feature 3 demonstration",
+          "visual_prompt": "Close-up of feature 3 in use",
+          "text_overlay": "Feature name"
+        },
+        {
+          "scene": 6,
+          "duration": 4.0,
+          "description": "Lifestyle/context shot",
+          "visual_prompt": "Product in real-world use",
+          "text_overlay": "Use case tagline"
+        },
+        {
+          "scene": 7,
+          "duration": 3.0,
+          "description": "Closing shot",
+          "visual_prompt": "Product with logo",
+          "text_overlay": "Logo and CTA"
+        }
+      ],
+      "total_duration": 39.0
+    }
+  ]
+}
