@@ -1,0 +1,580 @@
+{
+  "architecture": {
+    "bot": "@pika_art_bot",
+    "extracted_at": "2026-03-21T18:06:58Z",
+    "extracted_by": "@alwayscuanbos",
+    "extractor_version": "v2",
+    "user_data": {},
+    "commands": {
+      "/start": {
+        "text": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is temporarily unavailable while we perform planned updates.\n\nYou can use our other active bots:\n• @HailuoAIBot — Video generation (online)\n• @Pix_VerseAIbot — Video generation (online)\n• @KlingAibot — Video generation (online)\n• @seedreamaibot — Image editing & generation (online)\n• @Nano_Banana_AIbot — Image editing & generation (online)\n\nWe will notify you once @Pika_Art_bot is back online.\nThanks for ",
+        "buttons": [
+          {
+            "text": "Support",
+            "type": "url",
+            "data": null,
+            "url": "https://t.me/NeuralBotSupport"
+          },
+          {
+            "text": "Links",
+            "type": "callback",
+            "data": "start:links",
+            "url": null
+          }
+        ],
+        "input_state": null,
+        "response_time_ms": 145.8,
+        "media_type": null,
+        "status": "implemented"
+      },
+      "/help": {
+        "text": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is temporarily unavailable while we perform planned updates.\n\nYou can use our other active bots:\n• @HailuoAIBot — Video generation (online)\n• @Pix_VerseAIbot — Video generation (online)\n• @KlingAibot — Video generation (online)\n• @seedreamaibot — Image editing & generation (online)\n• @Nano_Banana_AIbot — Image editing & generation (online)\n\nWe will notify you once @Pika_Art_bot is back online.\nThanks for ",
+        "buttons": [
+          {
+            "text": "Support",
+            "type": "url",
+            "data": null,
+            "url": "https://t.me/NeuralBotSupport"
+          },
+          {
+            "text": "Links",
+            "type": "callback",
+            "data": "start:links",
+            "url": null
+          }
+        ],
+        "input_state": null,
+        "response_time_ms": 98.2,
+        "media_type": null,
+        "status": "implemented"
+      },
+      "/admin": {
+        "text": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is temporarily unavailable while we perform planned updates.\n\nYou can use our other active bots:\n• @HailuoAIBot — Video generation (online)\n• @Pix_VerseAIbot — Video generation (online)\n• @KlingAibot — Video generation (online)\n• @seedreamaibot — Image editing & generation (online)\n• @Nano_Banana_AIbot — Image editing & generation (online)\n\nWe will notify you once @Pika_Art_bot is back online.\nThanks for ",
+        "buttons": [
+          {
+            "text": "Support",
+            "type": "url",
+            "data": null,
+            "url": "https://t.me/NeuralBotSupport"
+          },
+          {
+            "text": "Links",
+            "type": "callback",
+            "data": "start:links",
+            "url": null
+          }
+        ],
+        "input_state": null,
+        "response_time_ms": 105.0,
+        "media_type": null,
+        "status": "implemented"
+      },
+      "/settings": {
+        "text": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is temporarily unavailable while we perform planned updates.\n\nYou can use our other active bots:\n• @HailuoAIBot — Video generation (online)\n• @Pix_VerseAIbot — Video generation (online)\n• @KlingAibot — Video generation (online)\n• @seedreamaibot — Image editing & generation (online)\n• @Nano_Banana_AIbot — Image editing & generation (online)\n\nWe will notify you once @Pika_Art_bot is back online.\nThanks for ",
+        "buttons": [
+          {
+            "text": "Support",
+            "type": "url",
+            "data": null,
+            "url": "https://t.me/NeuralBotSupport"
+          },
+          {
+            "text": "Links",
+            "type": "callback",
+            "data": "start:links",
+            "url": null
+          }
+        ],
+        "input_state": null,
+        "response_time_ms": 122.7,
+        "media_type": null,
+        "status": "implemented"
+      },
+      "/status": {
+        "text": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is temporarily unavailable while we perform planned updates.\n\nYou can use our other active bots:\n• @HailuoAIBot — Video generation (online)\n• @Pix_VerseAIbot — Video generation (online)\n• @KlingAibot — Video generation (online)\n• @seedreamaibot — Image editing & generation (online)\n• @Nano_Banana_AIbot — Image editing & generation (online)\n\nWe will notify you once @Pika_Art_bot is back online.\nThanks for ",
+        "buttons": [
+          {
+            "text": "Support",
+            "type": "url",
+            "data": null,
+            "url": "https://t.me/NeuralBotSupport"
+          },
+          {
+            "text": "Links",
+            "type": "callback",
+            "data": "start:links",
+            "url": null
+          }
+        ],
+        "input_state": null,
+        "response_time_ms": 101.2,
+        "media_type": null,
+        "status": "implemented"
+      },
+      "/credits": {
+        "text": "/credits",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 126.9,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/info": {
+        "text": "/info",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 111.1,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/menu": {
+        "text": "/menu",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 100.4,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/about": {
+        "text": "/about",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 105.1,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/cancel": {
+        "text": "/cancel",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 162.2,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/panel": {
+        "text": "/panel",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 163.2,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/dashboard": {
+        "text": "/dashboard",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 103.5,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/profile": {
+        "text": "/profile",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 100.8,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/account": {
+        "text": "/account",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 109.6,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/language": {
+        "text": "/language",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 97.3,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/lang": {
+        "text": "/lang",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 103.5,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/premium": {
+        "text": "/premium",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 103.6,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/upgrade": {
+        "text": "/upgrade",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 100.5,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/plan": {
+        "text": "/plan",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 103.6,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/history": {
+        "text": "/history",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 110.2,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/balance": {
+        "text": "/balance",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 104.2,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/refer": {
+        "text": "/refer",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 117.9,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/invite": {
+        "text": "/invite",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 114.4,
+        "media_type": null,
+        "status": "not_implemented"
+      },
+      "/support": {
+        "text": "/support",
+        "buttons": [],
+        "input_state": null,
+        "response_time_ms": 102.8,
+        "media_type": null,
+        "status": "not_implemented"
+      }
+    },
+    "menus": {
+      "__root__": {
+        "trigger": "/start",
+        "text": "/start",
+        "buttons": [],
+        "input_state": null,
+        "depth": 0,
+        "path": [],
+        "media_type": null
+      }
+    },
+    "input_flows": [],
+    "dead_buttons": [],
+    "url_buttons": [],
+    "media_types_observed": [],
+    "tech_hints": {
+      "avg_response_time_ms": 113.1,
+      "max_response_time_ms": 163.2,
+      "min_response_time_ms": 97.3,
+      "estimated_backend": "sync"
+    },
+    "button_data_map": {},
+    "summary": {
+      "total_menus": 1,
+      "total_callbacks": 0,
+      "total_input_flows": 0,
+      "dead_buttons": [],
+      "url_buttons": [],
+      "deepest_level": 0,
+      "commands_implemented": [
+        "/start",
+        "/help",
+        "/admin",
+        "/settings",
+        "/status"
+      ],
+      "commands_not_implemented": [
+        "/credits",
+        "/info",
+        "/menu",
+        "/about",
+        "/cancel",
+        "/panel",
+        "/dashboard",
+        "/profile",
+        "/account",
+        "/language",
+        "/lang",
+        "/premium",
+        "/upgrade",
+        "/plan",
+        "/history",
+        "/balance",
+        "/refer",
+        "/invite",
+        "/support"
+      ],
+      "estimated_backend": "sync",
+      "avg_response_time_ms": 113.1,
+      "media_types_observed": []
+    },
+    "ux_score": {
+      "score": 43,
+      "max_score": 100,
+      "breakdown": {
+        "start_menu": 0,
+        "commands": 15,
+        "input_flows": 0,
+        "no_dead_buttons": 15,
+        "menu_depth": 3,
+        "navigation": 0,
+        "speed": 10,
+        "external_links": 0
+      },
+      "issues": [
+        "No buttons on /start — poor discoverability",
+        "No input flows detected — bot may be view-only",
+        "No back buttons — user may get stuck"
+      ],
+      "strengths": [
+        "5 commands implemented",
+        "No dead buttons found",
+        "Fast responses (113ms avg)"
+      ]
+    },
+    "state_machine": {
+      "states": {
+        "MAIN_MENU": {
+          "trigger": "/start",
+          "transitions": {},
+          "input_state": null,
+          "timeout_fallback": null,
+          "has_back_button": false,
+          "type": "terminal",
+          "input_type": null,
+          "has_cancel": false
+        },
+        "CMD_START": {
+          "trigger": "/start",
+          "transitions": {},
+          "input_state": null,
+          "timeout_fallback": "MAIN_MENU",
+          "has_back_button": false,
+          "type": "terminal",
+          "input_type": null,
+          "has_cancel": false
+        },
+        "CMD_HELP": {
+          "trigger": "/help",
+          "transitions": {},
+          "input_state": null,
+          "timeout_fallback": "MAIN_MENU",
+          "has_back_button": false,
+          "type": "terminal",
+          "input_type": null,
+          "has_cancel": false
+        },
+        "CMD_ADMIN": {
+          "trigger": "/admin",
+          "transitions": {},
+          "input_state": null,
+          "timeout_fallback": "MAIN_MENU",
+          "has_back_button": false,
+          "type": "terminal",
+          "input_type": null,
+          "has_cancel": false
+        },
+        "CMD_SETTINGS": {
+          "trigger": "/settings",
+          "transitions": {},
+          "input_state": null,
+          "timeout_fallback": "MAIN_MENU",
+          "has_back_button": false,
+          "type": "terminal",
+          "input_type": null,
+          "has_cancel": false
+        },
+        "CMD_STATUS": {
+          "trigger": "/status",
+          "transitions": {},
+          "input_state": null,
+          "timeout_fallback": "MAIN_MENU",
+          "has_back_button": false,
+          "type": "terminal",
+          "input_type": null,
+          "has_cancel": false
+        }
+      },
+      "total_states": 6,
+      "dead_ends": [
+        "MAIN_MENU",
+        "CMD_START",
+        "CMD_HELP",
+        "CMD_ADMIN",
+        "CMD_SETTINGS",
+        "CMD_STATUS"
+      ],
+      "missing_cancel": [],
+      "deepest_path": [
+        "MAIN_MENU"
+      ],
+      "issues": {
+        "circular_states": [],
+        "dead_ends": [
+          "MAIN_MENU",
+          "CMD_START",
+          "CMD_HELP",
+          "CMD_ADMIN",
+          "CMD_SETTINGS",
+          "CMD_STATUS"
+        ],
+        "missing_cancel_handlers": []
+      }
+    },
+    "format_analysis": {
+      "__root__": {
+        "length": 6,
+        "line_count": 1,
+        "formatting": [],
+        "format_type": "plain",
+        "emojis_used": 0,
+        "emoji_categories": {},
+        "structure": "simple",
+        "structure_parts": []
+      }
+    },
+    "bot_personality": {
+      "language": "en",
+      "language_ratio": {
+        "id": 0.0,
+        "en": 1.0
+      },
+      "formality": "casual",
+      "formality_scores": {
+        "formal": 0,
+        "casual": 2
+      },
+      "tone": "friendly",
+      "emoji_density": "medium",
+      "emoji_per_message": 2.5,
+      "total_unique_emojis": 3,
+      "avg_message_length": 61.0,
+      "uses_bold": false,
+      "uses_italic": true,
+      "uses_code": false,
+      "formatting_style": "plain"
+    },
+    "weakness_report": [
+      {
+        "type": "missing_feature",
+        "detail": "No /cancel command (Cancel handler)",
+        "severity": "high"
+      },
+      {
+        "type": "missing_feature",
+        "detail": "No /support command (Support contact)",
+        "severity": "medium"
+      },
+      {
+        "type": "missing_onboarding",
+        "detail": "No clear onboarding or welcome tutorial for new users",
+        "severity": "low"
+      },
+      {
+        "type": "lazy_routing",
+        "detail": "All implemented commands return identical response (catch-all pattern)",
+        "severity": "medium"
+      },
+      {
+        "type": "no_multimedia",
+        "detail": "Bot uses text-only responses with no photos/videos/documents",
+        "severity": "low"
+      }
+    ],
+    "clone_difficulty": {
+      "score": 2.0,
+      "max_score": 10,
+      "breakdown": {
+        "menu_complexity": 0.5,
+        "input_integrations": 0,
+        "external_integrations": 0,
+        "backend_complexity": 1,
+        "command_scope": 0.5
+      },
+      "estimated_hours": 26,
+      "estimated_days": 3,
+      "key_challenges": []
+    },
+    "mermaid_flowchart": "graph TD\n    N1[\"/start\"]"
+  },
+  "blueprint": {
+    "description": "Clone blueprint for @pika_art_bot",
+    "generated_at": "2026-03-21T18:07:46Z",
+    "states": [],
+    "commands": [
+      {
+        "command": "/start",
+        "handler": "handle_start_command",
+        "response": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is tempo",
+        "has_keyboard": true
+      },
+      {
+        "command": "/help",
+        "handler": "handle_help_command",
+        "response": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is tempo",
+        "has_keyboard": true
+      },
+      {
+        "command": "/admin",
+        "handler": "handle_admin_command",
+        "response": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is tempo",
+        "has_keyboard": true
+      },
+      {
+        "command": "/settings",
+        "handler": "handle_settings_command",
+        "response": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is tempo",
+        "has_keyboard": true
+      },
+      {
+        "command": "/status",
+        "handler": "handle_status_command",
+        "response": "Hello, Andik veris! 👋\nWelcome to @Pika_Art_bot.\n\n⚠️ NOTICE: Scheduled maintenance\n\nThis bot is tempo",
+        "has_keyboard": true
+      }
+    ],
+    "callback_handlers": [],
+    "message_handlers": [],
+    "recommended_stack": "python-telegram-bot v20+ or aiogram 3.x",
+    "clone_difficulty": {
+      "score": 2,
+      "estimated_dev_hours": 40,
+      "factors": {
+        "input_flows": 0,
+        "url_buttons": 0,
+        "async_backend": false
+      }
+    },
+    "weakness_report": {
+      "missing_commands": [
+        "/cancel",
+        "/support"
+      ],
+      "no_error_handling": true,
+      "no_onboarding": true,
+      "input_flows_without_cancel": [],
+      "suggestions": [
+        "Add /cancel command to abort input flows",
+        "Add error messages for invalid inputs",
+        "Expand /start with a welcome tutorial or feature overview"
+      ]
+    }
+  }
+}
