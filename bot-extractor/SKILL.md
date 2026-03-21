@@ -1,185 +1,275 @@
 ---
 name: bot-extractor
 description: >
-  Extract, reverse-engineer, and clone full architecture from any Telegram bot.
-  Maps all menus, buttons, callback data, commands, flows, and API endpoints.
-  Use when: analyzing competitor bots, cloning bot structures, understanding bot UX flows.
+  Extract, clone, and improve any Telegram bot. Maps full architecture (menus,
+  callbacks, commands, flows, input states), fingerprints tech stack, generates
+  clone blueprint, and produces improvement recommendations.
+  Use when: reverse-engineering competitor bots, cloning bot structures,
+  auditing own bots, generating implementation code from any bot.
 ---
 
 # Bot Extractor Skill
 
-## What It Does
+## Three Modes
 
-Systematically explores a Telegram bot using Telethon user sessions to:
-1. **Map full menu tree** — all buttons, callback_data, text responses
-2. **Trace all flows** — click every button, follow every path
-3. **Extract commands** — /start, /help, /admin, /settings, etc.
-4. **Detect tech stack** — backend hints, API providers, webhook patterns
-5. **Generate clone blueprint** — full JSON architecture + implementation guide
+| Mode | Command | Output |
+|------|---------|--------|
+| **Extract** | `--mode extract` | Full JSON architecture map |
+| **Clone** | `--mode clone` | Python bot code ready to deploy |
+| **Improve** | `--mode improve` | UX audit + improvement suggestions |
 
-## Sessions Available
+## Quick Start
+
+```bash
+# Extract any bot
+python3 skills/bot-extractor/scripts/bot_extractor.py @targetbot
+
+# Full extract + clone blueprint
+python3 skills/bot-extractor/scripts/bot_extractor.py @targetbot --mode clone --output my_clone/
+
+# UX improvement audit
+python3 skills/bot-extractor/scripts/bot_extractor.py @targetbot --mode improve
+
+# Use specific session
+python3 skills/bot-extractor/scripts/bot_extractor.py @targetbot --session paijo
+```
+
+## Sessions Pool
 
 ```python
 SESSIONS = {
-    'paijo': '/home/openclaw/.openclaw/workspace/.vilona/sessions/paijo',           # @codergaboets
-    'alwayscuanbos': '/home/openclaw/.openclaw/workspace/.vilona/sessions/alwayscuanbos',  # @alwayscuanbos
+    'paijo':          '/home/openclaw/.openclaw/workspace/.vilona/sessions/paijo',          # @codergaboets
+    'alwayscuanbos':  '/home/openclaw/.openclaw/workspace/.vilona/sessions/alwayscuanbos',  # @alwayscuanbos
 }
 API_ID = 23913448
 API_HASH = '78d168f985edf365a5cd9679a917a0b2'
 ```
 
-## Usage
-
+Add more sessions:
 ```bash
-# Full extraction (recommended)
-python3 skills/bot-extractor/scripts/bot_extractor.py @botname --session alwayscuanbos
-
-# Quick map (menus only, no deep dive)
-python3 skills/bot-extractor/scripts/bot_extractor.py @botname --quick
-
-# Save architecture to file
-python3 skills/bot-extractor/scripts/bot_extractor.py @botname --output architecture.json
-
-# Generate clone blueprint
-python3 skills/bot-extractor/scripts/bot_extractor.py @botname --blueprint
+python3 scripts/telethon_add_session.py list              # list sessions
+python3 scripts/telethon_add_session.py request-code +62xxx  # request OTP
+python3 scripts/telethon_add_session.py add <name> <phone> <otp> [2fa_password]
 ```
 
-## Case Study: @vidabot_generator_bot
+---
 
-### Architecture Map
+## Mode: EXTRACT
 
-```
-/start
-├── 🖼️ Buat Gambar Model → menu_generate_image
-│   └── [Coming Soon] → back_to_main_menu
-├── 🎬 Buat Video → menu_generate_video
-│   ├── 🖼️📱 Image Portrait → video_i2v_portrait
-│   │   └── [Send photo] → bot waits for image input → generates video
-│   ├── 🖼️🖥️ Image Landscape → video_i2v_landscape
-│   │   └── [Send photo] → generates landscape video
-│   ├── 📝📱 Text Portrait → video_t2v_portrait
-│   │   └── [Type description] → generates video from text
-│   ├── 📝🖥️ Text Landscape → video_t2v_landscape
-│   └── 🔙 Kembali → back_to_main_menu
-├── 🎬 Shortcut: Image to Video → shortcut_i2v
-│   ├── 📱 Portrait (9:16) → shortcut_i2v_portrait
-│   ├── 🖥️ Landscape (16:9) → shortcut_i2v_landscape
-│   └── 🔙 Kembali → back_to_main_menu
-└── 🛠️ Tools Lain → tools_menu
-    ├── 🎨 UGC Lipsync AISTUDIO → [no callback_data, likely URL button]
-    ├── ✨ UGC Lipsync Ringan → [no callback_data, likely URL button]
-    ├── 🖼️ Convert Gambar ke JPG → tools_convert_jpg
-    │   └── [Send file as document] → converts to JPG
-    └── ◀️ Kembali → back_to_admin_start
-```
+Maps every reachable node of a bot via BFS traversal.
 
-### User Data Exposed
-- Email: `ketananna@yahoo.com`
-- Telegram ID: `157228659`
+**What it captures:**
+- All `/commands` and their responses
+- Every inline button + `callback_data`
+- Sub-menu trees (unlimited depth)
+- Input flow states (WAITING_IMAGE / TEXT / FILE / VIDEO)
+- User data exposed in bot messages (email, phone, ID)
+- URL buttons → external service hints
+- Response timing → processing type (sync vs async AI)
 
-### Tech Stack Analysis
-- **Platform**: Telegram Bot (python-telegram-bot or aiogram likely)
-- **Video gen**: External AI API (takes 1-5 min per video → cloud inference)
-- **Storage**: Files sent directly via Telegram (no CDN exposed)
-- **Auth**: Telegram user ID based (no separate login)
-- **State management**: Conversation states (bot waits for user input after menu select)
-- **Admin panel**: `/admin` command exists but locked (separate admin session)
-
-### Callback Data Patterns
-```
-menu_*          → main menu navigation
-video_*         → video generation flows
-shortcut_*      → quick access flows
-tools_*         → utility tools
-back_to_*       → navigation back
-```
-
-### Input Flows Detected
-| Flow | Trigger | Expected Input | Output |
-|------|---------|----------------|--------|
-| I2V Portrait | video_i2v_portrait | Photo (image) | Video 9:16 |
-| I2V Landscape | video_i2v_landscape | Photo (image) | Video 16:9 |
-| T2V Portrait | video_t2v_portrait | Text description | Video 9:16 |
-| T2V Landscape | video_t2v_landscape | Text description | Video 16:9 |
-| Convert JPG | tools_convert_jpg | File/document | JPG file |
-
-## Clone Blueprint
-
-To replicate this bot:
-
-```python
-# 1. State machine
-STATES = {
-    'IDLE': 'waiting for menu selection',
-    'WAITING_IMAGE': 'user must send photo',
-    'WAITING_TEXT': 'user must send text description',
-    'WAITING_FILE': 'user must send document',
-    'GENERATING': 'AI processing in progress',
+**Output JSON schema:**
+```json
+{
+  "bot": "@targetbot",
+  "extracted_at": "...",
+  "user_data": { "email": "...", "telegram_id": "..." },
+  "commands": {
+    "/start": { "text": "...", "buttons": [...], "input_state": null },
+    "/help": { "text": "...", "buttons": [...] }
+  },
+  "menus": {
+    "__root__": { "trigger": "/start", "text": "...", "buttons": [...] },
+    "Menu A": { "trigger": "cb_a", "text": "...", "buttons": [...], "depth": 1 },
+    "Menu A > Sub B": { "trigger": "cb_b", "text": "...", "depth": 2 }
+  },
+  "input_flows": [
+    { "trigger": "cb_x", "state": "WAITING_IMAGE", "path": ["Menu", "Sub"] }
+  ],
+  "button_data_map": { "cb_a": "Button Label", "cb_b": "Sub Label" },
+  "tech_hints": {
+    "framework": "aiogram",
+    "max_processing_min": 5,
+    "external_urls": ["https://api.openai.com/..."]
+  }
 }
-
-# 2. Callback handlers
-CALLBACKS = {
-    'menu_generate_image': show_coming_soon,
-    'menu_generate_video': show_video_menu,
-    'video_i2v_portrait': start_i2v_flow(ratio='9:16'),
-    'video_i2v_landscape': start_i2v_flow(ratio='16:9'),
-    'video_t2v_portrait': start_t2v_flow(ratio='9:16'),
-    'video_t2v_landscape': start_t2v_flow(ratio='16:9'),
-    'shortcut_i2v': show_shortcut_menu,
-    'shortcut_i2v_portrait': start_i2v_flow(ratio='9:16'),
-    'shortcut_i2v_landscape': start_i2v_flow(ratio='16:9'),
-    'tools_menu': show_tools,
-    'tools_convert_jpg': start_jpg_convert,
-    'back_to_main_menu': show_main_menu,
-    'back_to_admin_start': show_tools,  # same as tools for non-admin
-}
-
-# 3. Message handlers (by state)
-# When state=WAITING_IMAGE → receive photo → call AI API → return video
-# When state=WAITING_TEXT → receive text → call AI API → return video
-# When state=WAITING_FILE → receive document → convert → return JPG
 ```
 
-## Extraction Methodology
+---
 
-### Phase 1: Command Discovery
-```python
-commands = ['/start', '/help', '/admin', '/settings', '/status', 
-            '/credits', '/info', '/menu', '/cancel', '/about']
+## Mode: CLONE
+
+Generates a working Python bot from extracted architecture.
+
+**Output structure:**
+```
+output_dir/
+├── bot.py              # Main bot entry point
+├── handlers/
+│   ├── commands.py     # /start, /help, etc.
+│   ├── callbacks.py    # All inline button handlers
+│   └── messages.py     # Input state handlers
+├── keyboards/
+│   └── menus.py        # All InlineKeyboardMarkup definitions
+├── states.py           # FSM state definitions
+├── config.py           # Token, API keys placeholders
+└── requirements.txt    # Dependencies
 ```
 
-### Phase 2: Button Tree Traversal (BFS)
+**Example generated handler:**
 ```python
-# Start from /start
-# For each button with callback_data:
-#   - Click it, record response
-#   - Extract new buttons from response
-#   - Add unseen buttons to queue
-# Repeat until queue empty
+# handlers/callbacks.py (auto-generated)
+
+@router.callback_query(F.data == "menu_generate_video")
+async def handle_menu_generate_video(callback: CallbackQuery, state: FSMContext):
+    await callback.answer()
+    await callback.message.edit_text(
+        "🎬 **Buat Video**\n\nPilih mode dan rasio video:",
+        reply_markup=video_menu_keyboard(),
+        parse_mode="Markdown"
+    )
+
+@router.callback_query(F.data == "video_i2v_portrait")
+async def handle_video_i2v_portrait(callback: CallbackQuery, state: FSMContext):
+    await callback.answer()
+    await state.set_state(GenerateStates.WAITING_IMAGE)
+    await callback.message.edit_text(
+        "🎬 **Image-to-Video** 📱\n\n🖼️ Silakan kirim foto:",
+        reply_markup=cancel_keyboard(),
+        parse_mode="Markdown"
+    )
 ```
 
-### Phase 3: Input Flow Detection
-```python
-# After each response, check if bot is waiting for input:
-# - "Silakan kirim foto" → WAITING_IMAGE
-# - "Silakan ketik" → WAITING_TEXT
-# - "Kirim sebagai FILE" → WAITING_FILE
-# Record each input state and its trigger
+---
+
+## Mode: IMPROVE
+
+Audits extracted architecture and generates improvement recommendations.
+
+**Audit criteria:**
+| Check | Good | Bad |
+|-------|------|-----|
+| Menu depth | ≤ 3 levels | > 3 (too deep) |
+| Buttons per row | 2-3 | 1 (wastes space) or 5+ (cluttered) |
+| Back buttons | Every menu has one | Dead ends |
+| Error handling | /cancel works | Stuck states |
+| CTA clarity | Clear action text | Vague labels |
+| Onboarding | /start has tutorial | Drops user cold |
+| Commands coverage | /help exists | Only /start |
+
+**Sample improvement output:**
+```
+🔍 UX AUDIT: @vidabot_generator_bot
+
+Score: 72/100
+
+Issues:
+  🔴 [CRITICAL] "UGC Lipsync" buttons have no callback_data (dead buttons)
+  🟡 [MEDIUM]  /help command not implemented (echo only)
+  🟡 [MEDIUM]  No /cancel command during input states
+  🟢 [GOOD]    Consistent back navigation on all menus
+  🟢 [GOOD]    Clear input prompts for image/text flows
+
+Recommendations:
+  1. Fix dead buttons → add actual handlers for UGC Lipsync
+  2. Add /help with feature list
+  3. Add /cancel that works in any state
+  4. Add progress indicator during video generation (currently generic text)
+  5. Add /status command to check ongoing generations
 ```
 
-### Phase 4: Tech Stack Fingerprinting
+---
+
+## Extraction Methodology (BFS)
+
+```
+1. COMMAND DISCOVERY
+   Send all probe commands → record responses
+   Probe list: /start /help /admin /settings /status /credits /info /menu /panel /cancel
+
+2. BUTTON TREE (BFS)
+   Queue = [/start buttons]
+   While queue not empty:
+     Pop callback_data
+     Click it (from /start context)
+     Record response + sub-buttons
+     Add unseen sub-buttons to queue
+
+3. INPUT FLOW DETECTION
+   After each click, check for input waiting patterns:
+   - "kirim foto/send photo" → WAITING_IMAGE
+   - "ketik/type" → WAITING_TEXT
+   - "kirim file/send document" → WAITING_FILE
+
+4. TECH FINGERPRINTING
+   - Response time < 500ms → sync/simple
+   - Response time > 2s → async/AI backend
+   - URL buttons → external APIs
+   - Error message patterns → framework detection
+   - File naming conventions → storage patterns
+
+5. USER DATA COLLECTION
+   - Regex scan all responses for email, phone, ID, name
+```
+
+---
+
+## Case Studies
+
+### @vidabot_generator_bot (extracted 2026-03-21)
+
+**Architecture:**
+```
+/start (4 main menus)
+├── Buat Gambar Model → COMING SOON
+├── Buat Video (4 sub-modes: I2V/T2V × Portrait/Landscape)
+│   └── Each → input flow (WAITING_IMAGE or WAITING_TEXT)
+├── Shortcut I2V (2 sub-modes: Portrait/Landscape)
+└── Tools Lain
+    ├── UGC Lipsync × 2 (DEAD BUTTONS - no callback)
+    └── Convert JPG (WAITING_FILE)
+```
+
+**Key findings:**
+- Email registered: `ketananna@yahoo.com`
+- Video generation: 1-5 minutes (cloud AI inference)
+- Dead buttons: UGC Lipsync (callback_data = None)
+- Missing: /help, /cancel, /status
+- Tech: Likely aiogram or python-telegram-bot, async AI backend
+
+**Clone estimate:** ~300 lines Python + AI API integration
+
+---
+
+## Automated Workflow (Vilona can run this)
+
 ```python
-# Timing: response time → inference time
-# Error messages: reveal framework
-# URL buttons: reveal external services
-# File naming: reveal storage patterns
-# Bot description: /getMyCommands API
+# Step 1: Extract
+arch = await extract_bot('@targetbot', session='alwayscuanbos')
+
+# Step 2: Save
+save_json(arch, 'skills/bot-extractor/references/targetbot_arch.json')
+
+# Step 3: Generate clone
+generate_clone(arch, output_dir='projects/targetbot_clone/')
+
+# Step 4: Improve
+audit = generate_improvement_report(arch)
+print(audit)
 ```
 
 ## Script Reference
 
-| Script | Purpose |
-|--------|---------|
-| `bot_extractor.py` | Main extraction script |
-| `session_manager.py` | Multi-session Telethon pool |
-| `bot_cloner.py` | Generate clone from architecture JSON |
+| Script | Description |
+|--------|-------------|
+| `bot_extractor.py` | Main extraction + clone + improve engine |
+| `session_manager.py` | Add/list/test Telethon sessions |
+| `bot_cloner.py` | Generate full Python bot from architecture JSON |
+| `bot_auditor.py` | UX audit + improvement recommendations |
+
+## References
+
+```
+skills/bot-extractor/references/
+├── vidabot_generator_bot_arch.json    # @vidabot_generator_bot full architecture
+└── [future extracted bots here]
+```

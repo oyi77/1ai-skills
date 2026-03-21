@@ -1,0 +1,310 @@
+{
+  "bot": "@vidabot_generator_bot",
+  "extracted_at": "2026-03-21T23:12:00Z",
+  "extracted_by": "@alwayscuanbos",
+  "user_data": {
+    "email": "ketananna@yahoo.com",
+    "telegram_id": "157228659"
+  },
+  "commands": {
+    "/start": {
+      "text": "Halo Andik! Selamat datang di VIDABOT Generator Telegram",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "data": "menu_generate_image"
+        },
+        {
+          "text": "🎬 Buat Video",
+          "data": "menu_generate_video"
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "data": "shortcut_i2v"
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "data": "tools_menu"
+        }
+      ],
+      "input_state": null
+    }
+  },
+  "menus": {
+    "__root__": {
+      "trigger": "/start",
+      "text": "👋 Halo Andik!\n\nSelamat datang kembali di VIDABOT Generator Telegram",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "data": "menu_generate_image",
+          "type": "callback"
+        },
+        {
+          "text": "🎬 Buat Video",
+          "data": "menu_generate_video",
+          "type": "callback"
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "data": "shortcut_i2v",
+          "type": "callback"
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "data": "tools_menu",
+          "type": "callback"
+        }
+      ],
+      "input_state": null,
+      "depth": 0
+    },
+    "Buat Gambar Model": {
+      "trigger": "menu_generate_image",
+      "text": "🚧 Coming Soon",
+      "buttons": [
+        {
+          "text": "🔙 Kembali ke Menu",
+          "data": "back_to_main_menu",
+          "type": "callback"
+        }
+      ],
+      "input_state": null,
+      "depth": 1
+    },
+    "Buat Video": {
+      "trigger": "menu_generate_video",
+      "text": "🎬 Buat Video\nPilih mode dan rasio:",
+      "buttons": [
+        {
+          "text": "🖼️📱 Image Portrait",
+          "data": "video_i2v_portrait",
+          "type": "callback"
+        },
+        {
+          "text": "🖼️🖥️ Image Landscape",
+          "data": "video_i2v_landscape",
+          "type": "callback"
+        },
+        {
+          "text": "📝📱 Text Portrait",
+          "data": "video_t2v_portrait",
+          "type": "callback"
+        },
+        {
+          "text": "📝🖥️ Text Landscape",
+          "data": "video_t2v_landscape",
+          "type": "callback"
+        },
+        {
+          "text": "🔙 Kembali",
+          "data": "back_to_main_menu",
+          "type": "callback"
+        }
+      ],
+      "input_state": null,
+      "depth": 1
+    },
+    "Buat Video > Image Portrait": {
+      "trigger": "video_i2v_portrait",
+      "text": "🖼️ Silakan kirim foto:",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "data": "menu_generate_video",
+          "type": "callback"
+        }
+      ],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2
+    },
+    "Buat Video > Image Landscape": {
+      "trigger": "video_i2v_landscape",
+      "text": "🖼️ Silakan kirim foto:",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "data": "menu_generate_video",
+          "type": "callback"
+        }
+      ],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2
+    },
+    "Buat Video > Text Portrait": {
+      "trigger": "video_t2v_portrait",
+      "text": "📝 Silakan ketik deskripsi:",
+      "buttons": [],
+      "input_state": "WAITING_TEXT",
+      "depth": 2
+    },
+    "Buat Video > Text Landscape": {
+      "trigger": "video_t2v_landscape",
+      "text": "📝 Silakan ketik deskripsi:",
+      "buttons": [],
+      "input_state": "WAITING_TEXT",
+      "depth": 2
+    },
+    "Shortcut I2V": {
+      "trigger": "shortcut_i2v",
+      "text": "🎬 Shortcut: Image to Video",
+      "buttons": [
+        {
+          "text": "📱 Portrait (9:16)",
+          "data": "shortcut_i2v_portrait",
+          "type": "callback"
+        },
+        {
+          "text": "🖥️ Landscape (16:9)",
+          "data": "shortcut_i2v_landscape",
+          "type": "callback"
+        },
+        {
+          "text": "🔙 Kembali",
+          "data": "back_to_main_menu",
+          "type": "callback"
+        }
+      ],
+      "input_state": null,
+      "depth": 1
+    },
+    "Shortcut I2V > Portrait": {
+      "trigger": "shortcut_i2v_portrait",
+      "text": "🖼️ Kirim foto:",
+      "buttons": [],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2
+    },
+    "Shortcut I2V > Landscape": {
+      "trigger": "shortcut_i2v_landscape",
+      "text": "🖼️ Kirim foto:",
+      "buttons": [],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2
+    },
+    "Tools": {
+      "trigger": "tools_menu",
+      "text": "🛠️ Tools Lain",
+      "buttons": [
+        {
+          "text": "🎨 UGC Lipsync AISTUDIO",
+          "data": null,
+          "type": "callback"
+        },
+        {
+          "text": "✨ UGC Lipsync Ringan",
+          "data": null,
+          "type": "callback"
+        },
+        {
+          "text": "🖼️ Convert Gambar ke JPG",
+          "data": "tools_convert_jpg",
+          "type": "callback"
+        },
+        {
+          "text": "◀️ Kembali ke Menu",
+          "data": "back_to_admin_start",
+          "type": "callback"
+        }
+      ],
+      "input_state": null,
+      "depth": 1
+    },
+    "Tools > Convert JPG": {
+      "trigger": "tools_convert_jpg",
+      "text": "🖼️ Kirim gambar sebagai FILE/DOKUMEN",
+      "buttons": [],
+      "input_state": "WAITING_FILE",
+      "depth": 2
+    }
+  },
+  "input_flows": [
+    {
+      "trigger": "video_i2v_portrait",
+      "path": [
+        "Buat Video",
+        "Image Portrait"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "Silakan kirim foto"
+    },
+    {
+      "trigger": "video_i2v_landscape",
+      "path": [
+        "Buat Video",
+        "Image Landscape"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "Silakan kirim foto"
+    },
+    {
+      "trigger": "video_t2v_portrait",
+      "path": [
+        "Buat Video",
+        "Text Portrait"
+      ],
+      "state": "WAITING_TEXT",
+      "prompt": "Silakan ketik deskripsi"
+    },
+    {
+      "trigger": "video_t2v_landscape",
+      "path": [
+        "Buat Video",
+        "Text Landscape"
+      ],
+      "state": "WAITING_TEXT",
+      "prompt": "Silakan ketik deskripsi"
+    },
+    {
+      "trigger": "shortcut_i2v_portrait",
+      "path": [
+        "Shortcut",
+        "Portrait"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "Kirim foto"
+    },
+    {
+      "trigger": "shortcut_i2v_landscape",
+      "path": [
+        "Shortcut",
+        "Landscape"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "Kirim foto"
+    },
+    {
+      "trigger": "tools_convert_jpg",
+      "path": [
+        "Tools",
+        "Convert JPG"
+      ],
+      "state": "WAITING_FILE",
+      "prompt": "Kirim sebagai FILE/DOKUMEN"
+    }
+  ],
+  "button_data_map": {
+    "menu_generate_image": "🖼️ Buat Gambar Model",
+    "menu_generate_video": "🎬 Buat Video",
+    "shortcut_i2v": "🎬 Shortcut: Image to Video",
+    "tools_menu": "🛠️ Tools Lain",
+    "video_i2v_portrait": "🖼️📱 Image Portrait",
+    "video_i2v_landscape": "🖼️🖥️ Image Landscape",
+    "video_t2v_portrait": "📝📱 Text Portrait",
+    "video_t2v_landscape": "📝🖥️ Text Landscape",
+    "shortcut_i2v_portrait": "📱 Portrait (9:16)",
+    "shortcut_i2v_landscape": "🖥️ Landscape (16:9)",
+    "tools_convert_jpg": "🖼️ Convert Gambar ke JPG",
+    "back_to_main_menu": "🔙 Kembali ke Menu",
+    "back_to_admin_start": "◀️ Kembali ke Menu"
+  },
+  "tech_hints": {
+    "max_processing_min": 5,
+    "framework": "aiogram_or_ptb",
+    "backend": "async_ai_inference",
+    "dead_buttons": [
+      "UGC Lipsync AISTUDIO (no callback)",
+      "UGC Lipsync Ringan (no callback)"
+    ]
+  }
+}
