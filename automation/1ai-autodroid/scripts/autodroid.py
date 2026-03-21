@@ -62,6 +62,11 @@ def run_with_root_fallback(cmd: str):
 
 # ─── Commands ────────────────────────────────────────────────────────────────
 def screenshot(path="/tmp/autodroid_screen.png"):
+    import time
+    run_with_root_fallback("input keyevent 224")
+    time.sleep(0.5)
+    run_with_root_fallback("input swipe 360 1400 360 700")
+    time.sleep(0.5)
     remote = "/sdcard/autodroid_cap.png"
     run(f"shell screencap {remote}")
     run(f"pull {remote} {path}")
