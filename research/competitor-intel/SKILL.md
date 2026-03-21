@@ -53,3 +53,21 @@ pip install duckduckgo-search openai
 
 **Author:** Veris (BerkahKarya)
 **Version:** 1.0.0
+
+---
+
+## Extended: Business Espionage Modules (added 2026-03-21)
+
+Full competitive intelligence via `biz_spy.py`:
+
+```bash
+# Full espionage
+python3 scripts/biz_spy.py --target "@targetbot" --modules social,tech,funnel,revenue,bot,model
+
+# All modules
+python3 scripts/biz_spy.py --target "competitor.com" --all
+```
+
+Modules: `social` | `ads` | `funnel` | `revenue` | `bot` | `tech` | `content` | `seo` | `model`
+
+See `scripts/biz_spy.py` for full documentation.
