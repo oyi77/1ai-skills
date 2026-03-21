@@ -17,7 +17,8 @@ SKILL_DIR = WORKSPACE / 'skills/biz-intel'
 REPORTS_DIR = SKILL_DIR / 'reports'
 REPORTS_DIR.mkdir(exist_ok=True)
 
-ALL_MODULES = ['social', 'ads', 'funnel', 'revenue', 'bot', 'tech', 'content', 'seo', 'model', 'gumroad', 'lynk', 'content-calendar']
+ALL_MODULES = ['social', 'ads', 'funnel', 'revenue', 'bot', 'tech', 'content', 'seo', 'model', 'gumroad', 'lynk', 'content-calendar',
+               'business_model', 'ads_intel', 'landing_page', 'content_intel', 'promotion', 'revenue_intel', 'market_opportunity']
 
 
 # ─── Module: SOCIAL SPY ─────────────────────────────────────────────────────
@@ -1274,16 +1275,1447 @@ def generate_report(target: str, all_data: dict, mode: str = 'report') -> str:
             lines.append(f'   - Action: {opp["action"]}')
         lines.append('')
 
+    # Landing Page Deep Analysis
+    if 'landing_page' in all_data:
+        lp = all_data['landing_page']
+        lines += [
+            '## Landing Page Deep Analysis',
+            f'- URL: **{lp.get("url", "N/A")}**',
+            f'- H1: **{lp.get("h1", "N/A")}**',
+            f'- H2s: {", ".join(lp.get("h2s", [])[:5]) or "none"}',
+            f'- CTA Buttons: {", ".join(lp.get("cta_buttons", [])[:5]) or "none"}',
+            f'- Funnel Type: **{lp.get("funnel_guess", "unknown")}**',
+            f'- Price Display: **{lp.get("price_display_type", "unknown")}**',
+            f'- Page Load: **{lp.get("page_load_time_ms", 0)}ms**',
+            f'- Mobile Optimized: **{lp.get("mobile_optimized", False)}**',
+            f'- Video Present: **{lp.get("video_present", False)}**',
+            f'- Popup Detected: **{lp.get("popup_detected", False)}**',
+        ]
+        trust = lp.get('trust_signals', {})
+        if trust:
+            lines.append(f'- Testimonials: **{trust.get("testimonials_count", 0)}** | Reviews: **{trust.get("review_count", 0)}** | Badges: {", ".join(trust.get("badges", []))}')
+        urgency = lp.get('urgency', {})
+        if urgency.get('scarcity_text') or urgency.get('fomo_triggers'):
+            lines.append(f'- Urgency: Scarcity={urgency.get("scarcity_text", [])}, FOMO={urgency.get("fomo_triggers", [])}')
+        if lp.get('screenshot_path'):
+            lines.append(f'- Screenshot: `{lp["screenshot_path"]}`')
+        lines.append('')
+
+    # Business Model Analysis
+    if 'business_model' in all_data:
+        bm = all_data['business_model']
+        lines += [
+            '## Business Model Intelligence',
+            f'- Model Type: **{bm.get("business_model_type", "unknown")}**',
+            f'- Value Proposition: **{bm.get("value_proposition", "N/A")}**',
+            f'- Target Audience: **{bm.get("target_audience", "N/A")}**',
+            f'- Primary CTA: **{bm.get("primary_cta", "N/A")}**',
+            f'- Free Tier: **{bm.get("free_tier", False)}** {bm.get("free_tier_details", "")}',
+            f'- Trial: **{bm.get("trial", False)}** {bm.get("trial_duration", "")}',
+            f'- Refund: **{bm.get("refund_policy", False)}** {bm.get("refund_duration", "")}',
+            f'- Revenue Model Score: **{bm.get("revenue_model_score", 0)}/10**',
+        ]
+        if bm.get('pricing_tiers'):
+            lines.append('- **Pricing Tiers:**')
+            for tier in bm['pricing_tiers'][:5]:
+                if isinstance(tier, dict):
+                    lines.append(f'  - {tier.get("name", "?")} : {tier.get("price", "?")} / {tier.get("period", "?")}')
+        lines.append('')
+
+    # Ads Intelligence
+    if 'ads_intel' in all_data:
+        ai = all_data['ads_intel']
+        fb = ai.get('fb_ads', {})
+        lines += [
+            '## Ads Intelligence',
+            f'- FB Ads Count: **{fb.get("count", 0)}**',
+            f'- FB Estimated Spend: **IDR {fb.get("estimated_spend_idr", 0):,}**',
+            f'- TikTok Hooks Found: **{ai.get("tiktok_ads", {}).get("count", 0)}**',
+            f'- Budget Estimate: **{ai.get("budget_estimate", "unknown")}**',
+        ]
+        wp = ai.get('winning_patterns', {})
+        if wp.get('top_ctas'):
+            lines.append(f'- Top CTAs: {", ".join(wp["top_ctas"][:5])}')
+        if wp.get('emotional_triggers'):
+            lines.append(f'- Emotional Triggers: {", ".join(wp["emotional_triggers"])}')
+        lines.append('')
+
+    # Content Intelligence
+    if 'content_intel' in all_data:
+        ci = all_data['content_intel']
+        cs = ci.get('content_strategy', {})
+        lines += [
+            '## Content Intelligence',
+            f'- Primary Platform: **{cs.get("primary_platform", "unknown")}**',
+            f'- Top Content Type: **{cs.get("top_content_type", "unknown")}**',
+        ]
+        if cs.get('viral_hooks'):
+            lines.append('- **Viral Hooks:**')
+            for h in cs['viral_hooks'][:5]:
+                lines.append(f'  - {h}')
+        if cs.get('hashtags_used'):
+            lines.append(f'- Top Hashtags: {", ".join("#" + h for h in cs["hashtags_used"][:10])}')
+        # Per-platform summary
+        tt = ci.get('tiktok', {})
+        if tt and not tt.get('error'):
+            lines.append(f'- TikTok: **{tt.get("followers", 0):,}** followers, **{tt.get("video_count", 0)}** videos, ER={tt.get("engagement_rate", "N/A")}')
+        ig = ci.get('instagram', {})
+        if ig and not ig.get('error'):
+            lines.append(f'- Instagram: **{ig.get("followers", 0):,}** followers, **{ig.get("posts_count", 0)}** posts')
+        yt = ci.get('youtube', {})
+        if yt and not yt.get('error'):
+            lines.append(f'- YouTube: **{yt.get("subscribers", "?")}** subscribers, **{yt.get("total_videos", "?")}** videos')
+        lines.append('')
+
+    # Promotion Strategy
+    if 'promotion' in all_data:
+        ps = all_data['promotion']
+        lines += [
+            '## Promotion Strategy',
+            f'- Paid vs Organic: **{ps.get("paid_vs_organic", "unknown")}**',
+            f'- Active Channels: **{", ".join(ps.get("active_channels", []))}**',
+            f'- Growth Strategy: **{ps.get("growth_strategy", "unknown")}**',
+            f'- Affiliate Program: **{ps.get("has_affiliate_program", False)}**',
+            f'- Telegram Community: **{ps.get("has_telegram_community", False)}**',
+            f'- Email List: **{ps.get("has_email_list", False)}**',
+            f'- SEO Presence: **{ps.get("seo_presence", "none")}**',
+            f'- Budget Estimate: **{ps.get("promotion_budget_estimate", "unknown")}**',
+            '',
+        ]
+
+    # Revenue Intelligence
+    if 'revenue_intel' in all_data:
+        ri = all_data['revenue_intel']
+        est = ri.get('total_revenue_estimate', {})
+        lines += [
+            '## Revenue Intelligence (Deep)',
+            f'- **Low:** {est.get("low", "N/A")}',
+            f'- **Mid:** {est.get("mid", "N/A")}',
+            f'- **High:** {est.get("high", "N/A")}',
+            f'- Revenue Model Score: **{ri.get("revenue_model_score", 0)}/10**',
+        ]
+        if ri.get('revenue_sources'):
+            lines.append('- **Revenue Sources:**')
+            for src in ri['revenue_sources'][:5]:
+                lines.append(f'  - {src.get("source", "?")}: IDR {src.get("estimated_monthly_idr", 0):,}/mo [{src.get("confidence", "?")}]')
+        ue = ri.get('unit_economics', {})
+        if ue.get('cac_estimate_idr'):
+            lines.append(f'- Unit Economics: CAC=IDR {ue["cac_estimate_idr"]:,} | LTV=IDR {ue.get("ltv_estimate_idr", 0):,} | Ratio={ue.get("ltv_cac_ratio", 0)}')
+        if ri.get('key_revenue_drivers'):
+            lines.append(f'- Key Drivers: {", ".join(ri["key_revenue_drivers"])}')
+        if ri.get('revenue_risks'):
+            lines.append('- **Risks:**')
+            for risk in ri['revenue_risks']:
+                lines.append(f'  - {risk}')
+        lines.append('')
+
+    # Market Opportunities
+    if 'market_opportunity' in all_data:
+        mo = all_data['market_opportunity']
+        opps = mo.get('opportunities', [])
+        if opps:
+            lines += [
+                '## Market Opportunities (AI-Generated)',
+            ]
+            for i, opp in enumerate(opps, 1):
+                lines.append(f'{i}. **{opp.get("opportunity", "?")}**')
+                lines.append(f'   - Effort: {opp.get("effort", "?")} | Time: {opp.get("time_to_revenue", "?")} | Revenue: IDR {opp.get("revenue_potential_idr", 0):,}/mo')
+                lines.append(f'   - Risk: {opp.get("risk", "?")}')
+                lines.append(f'   - Why we win: {opp.get("why_we_can_win", "?")}')
+                lines.append(f'   - Next action: {opp.get("next_action", "?")}')
+            lines.append('')
+
     return '\n'.join(lines)
+
+
+# ─── Module: BUSINESS MODEL SPY ──────────────────────────────────────────────
+
+async def business_model_spy(url: str, target_name: str) -> dict:
+    """Scrape landing page + social profiles to classify business model and pricing."""
+    result = {
+        'module': 'business_model_spy',
+        'target': target_name,
+        'url': url,
+        'business_model_type': 'unknown',
+        'pricing_tiers': [],
+        'free_tier': False,
+        'free_tier_details': '',
+        'trial': False,
+        'trial_duration': '',
+        'refund_policy': False,
+        'refund_duration': '',
+        'primary_cta': '',
+        'value_proposition': '',
+        'target_audience': '',
+        'revenue_model_score': 0,
+    }
+
+    try:
+        os.environ.setdefault('DISPLAY', ':99')
+        from playwright.sync_api import sync_playwright
+        import threading
+
+        page_data_holder = [None]
+        error_holder = [None]
+
+        def run_sync():
+            try:
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(
+                        headless=True,
+                        args=["--no-sandbox", "--disable-setuid-sandbox"]
+                    )
+                    context = browser.new_context(
+                        user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
+                    )
+                    page = context.new_page()
+                    page.goto(url, wait_until='domcontentloaded', timeout=20000)
+                    page.wait_for_timeout(3000)
+
+                    # Extract headings
+                    headings = []
+                    for tag in ['h1', 'h2', 'h3']:
+                        els = page.query_selector_all(tag)
+                        for el in els[:10]:
+                            txt = el.inner_text().strip()
+                            if txt:
+                                headings.append({'tag': tag, 'text': txt})
+
+                    # Extract price elements
+                    price_texts = []
+                    for sel in ['[class*="price"]', '[class*="Price"]', '[class*="plan"]', '[class*="Plan"]',
+                                '[class*="tier"]', '[class*="Tier"]', '[class*="pricing"]']:
+                        els = page.query_selector_all(sel)
+                        for el in els[:10]:
+                            txt = el.inner_text().strip()
+                            if txt and len(txt) < 500:
+                                price_texts.append(txt)
+
+                    # Extract CTA buttons
+                    cta_texts = []
+                    for sel in ['button', 'a[class*="cta"]', 'a[class*="btn"]', 'a[class*="button"]',
+                                '[class*="CTA"]', '[class*="action"]']:
+                        els = page.query_selector_all(sel)
+                        for el in els[:15]:
+                            txt = el.inner_text().strip()
+                            if txt and 2 < len(txt) < 100:
+                                cta_texts.append(txt)
+
+                    full_text = page.inner_text('body')[:5000]
+
+                    page_data_holder[0] = {
+                        'headings': headings,
+                        'price_texts': price_texts,
+                        'cta_texts': cta_texts,
+                        'full_text': full_text,
+                    }
+                    browser.close()
+            except Exception as e:
+                error_holder[0] = str(e)
+
+        t = threading.Thread(target=run_sync)
+        t.start()
+        t.join(timeout=35)
+
+        if error_holder[0]:
+            raise Exception(error_holder[0])
+        if not page_data_holder[0]:
+            raise Exception('Playwright timeout - no content')
+
+        page_data = page_data_holder[0]
+
+        # Use LLM to classify business model
+        try:
+            from openai import OpenAI
+            client = OpenAI(
+                base_url="http://localhost:20128/v1",
+                api_key=os.environ.get('OMNIROUTE_KEY', 'omniroute')
+            )
+
+            prompt_content = (
+                f"Analyze this landing page data for '{target_name}' and return a JSON object.\n\n"
+                f"Headings: {json.dumps(page_data['headings'][:15])}\n"
+                f"Price elements: {json.dumps(page_data['price_texts'][:10])}\n"
+                f"CTA buttons: {json.dumps(page_data['cta_texts'][:10])}\n"
+                f"Page text excerpt: {page_data['full_text'][:2000]}\n\n"
+                "Return ONLY valid JSON with these keys:\n"
+                '- business_model_type: "bot_subscription" | "one_time_product" | "freemium" | "affiliate" | "course" | "saas"\n'
+                '- pricing_tiers: [{name, price, period, features}] (up to 5)\n'
+                '- free_tier: true/false\n- free_tier_details: string\n'
+                '- trial: true/false\n- trial_duration: string\n'
+                '- refund_policy: true/false\n- refund_duration: string\n'
+                '- primary_cta: string\n- value_proposition: string\n'
+                '- target_audience: string\n- revenue_model_score: 1-10'
+            )
+
+            resp = client.chat.completions.create(
+                model='gpt-4o-mini',
+                messages=[
+                    {'role': 'system', 'content': 'You are a business analyst. Return only valid JSON, no markdown.'},
+                    {'role': 'user', 'content': prompt_content}
+                ],
+                temperature=0.3,
+                max_tokens=1500,
+            )
+
+            raw = resp.choices[0].message.content.strip()
+            # Strip markdown code fences if present
+            if raw.startswith('```'):
+                raw = raw.split('\n', 1)[1] if '\n' in raw else raw[3:]
+                if raw.endswith('```'):
+                    raw = raw[:-3]
+            parsed = json.loads(raw)
+            result.update(parsed)
+
+        except Exception as e:
+            result['llm_error'] = str(e)[:200]
+
+        # Store raw scraped data for reference
+        result['_scraped'] = {
+            'headings_count': len(page_data['headings']),
+            'price_elements_count': len(page_data['price_texts']),
+            'cta_count': len(page_data['cta_texts']),
+        }
+
+    except Exception as e:
+        result['error'] = str(e)[:200]
+
+    return result
+
+
+# ─── Module: ADS INTELLIGENCE SPY ───────────────────────────────────────────
+
+async def ads_intelligence_spy(target_name: str, page_id: str = None) -> dict:
+    """Full ad creative intelligence from Facebook Ad Library and TikTok Creative Center."""
+    result = {
+        'module': 'ads_intelligence_spy',
+        'target': target_name,
+        'fb_ads': {'count': 0, 'ads': [], 'estimated_spend_idr': 0},
+        'tiktok_ads': {'count': 0, 'top_hooks': []},
+        'winning_patterns': {'top_ctas': [], 'top_hooks': [], 'emotional_triggers': []},
+        'budget_estimate': 'unknown',
+    }
+
+    # --- Facebook Ad Library ---
+    try:
+        os.environ.setdefault('DISPLAY', ':99')
+        from playwright.sync_api import sync_playwright
+        import threading
+
+        fb_data_holder = [None]
+        fb_error_holder = [None]
+
+        def run_fb():
+            try:
+                clean = target_name.lstrip('@').replace('_', '+')
+                fb_url = f'https://www.facebook.com/ads/library/?q={clean}&search_type=keyword_unordered&active_status=active'
+
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(
+                        headless=True,
+                        slow_mo=500,
+                        args=["--no-sandbox", "--disable-setuid-sandbox"]
+                    )
+                    context = browser.new_context(
+                        user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+                    )
+                    page = context.new_page()
+                    page.goto(fb_url, wait_until='domcontentloaded', timeout=25000)
+                    page.wait_for_timeout(5000)
+
+                    html = page.content()
+
+                    # Try to extract ad cards
+                    import re as _re
+                    ads = []
+                    # Look for ad container divs
+                    ad_cards = page.query_selector_all('[class*="xrvj5dj"], [class*="ad-card"], [data-testid*="ad"]')
+                    if not ad_cards:
+                        ad_cards = page.query_selector_all('div._7jvw') or []
+
+                    for i, card in enumerate(ad_cards[:20]):
+                        try:
+                            text = card.inner_text().strip()
+                            lines = [l.strip() for l in text.split('\n') if l.strip()]
+                            headline = lines[0] if lines else ''
+                            body = lines[1] if len(lines) > 1 else ''
+                            cta = lines[-1] if len(lines) > 2 else ''
+
+                            # Try to extract start date
+                            date_match = _re.search(r'Started running on\s*(\w+ \d+,?\s*\d{4})', text)
+                            start_date = date_match.group(1) if date_match else ''
+
+                            # Estimate days running
+                            days_running = 30  # default
+                            if start_date:
+                                try:
+                                    from datetime import datetime
+                                    sd = datetime.strptime(start_date.replace(',', ''), '%b %d %Y')
+                                    days_running = max(1, (datetime.now() - sd).days)
+                                except Exception:
+                                    pass
+
+                            ads.append({
+                                'headline': headline[:150],
+                                'body': body[:300],
+                                'cta': cta[:80],
+                                'start_date': start_date,
+                                'days_running': days_running,
+                                'platform': 'facebook',
+                                'media_type': 'image',  # default
+                            })
+                        except Exception:
+                            continue
+
+                    # Count from page
+                    count_match = _re.search(r'"total_count":(\d+)', html)
+                    ad_count = int(count_match.group(1)) if count_match else len(ads)
+                    if ad_count == 0:
+                        ad_count = len(ads)
+
+                    fb_data_holder[0] = {'count': ad_count, 'ads': ads}
+                    browser.close()
+            except Exception as e:
+                fb_error_holder[0] = str(e)
+
+        t = threading.Thread(target=run_fb)
+        t.start()
+        t.join(timeout=45)
+
+        if fb_data_holder[0]:
+            fb = fb_data_holder[0]
+            result['fb_ads']['count'] = fb['count']
+            result['fb_ads']['ads'] = fb['ads']
+
+            # Estimate spend: ad_count * 300000 IDR * avg_days_running / 30
+            if fb['ads']:
+                avg_days = sum(a.get('days_running', 30) for a in fb['ads']) / len(fb['ads'])
+            else:
+                avg_days = 30
+            result['fb_ads']['estimated_spend_idr'] = int(fb['count'] * 300000 * avg_days / 30)
+        elif fb_error_holder[0]:
+            result['fb_ads']['error'] = fb_error_holder[0][:200]
+
+    except Exception as e:
+        result['fb_ads']['error'] = str(e)[:200]
+
+    # --- TikTok Creative Center ---
+    try:
+        from playwright.sync_api import sync_playwright
+        import threading
+
+        tt_data_holder = [None]
+        tt_error_holder = [None]
+
+        def run_tt():
+            try:
+                tt_url = 'https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en'
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(
+                        headless=True,
+                        args=["--no-sandbox", "--disable-setuid-sandbox"]
+                    )
+                    context = browser.new_context(
+                        user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+                    )
+                    page = context.new_page()
+                    page.goto(tt_url, wait_until='domcontentloaded', timeout=20000)
+                    page.wait_for_timeout(4000)
+
+                    # Try to search for keyword
+                    clean_kw = target_name.lstrip('@').replace('_', ' ')
+                    search_input = page.query_selector('input[type="text"], input[placeholder*="Search"]')
+                    if search_input:
+                        search_input.fill(clean_kw)
+                        page.keyboard.press('Enter')
+                        page.wait_for_timeout(3000)
+
+                    html = page.content()
+                    import re as _re
+
+                    # Extract top hooks from visible ad copy
+                    hooks = []
+                    ad_texts = page.query_selector_all('[class*="title"], [class*="desc"], [class*="caption"]')
+                    for el in ad_texts[:20]:
+                        txt = el.inner_text().strip()
+                        if txt and 5 < len(txt) < 200:
+                            hooks.append(txt)
+
+                    tt_data_holder[0] = {'count': len(hooks), 'top_hooks': hooks[:10]}
+                    browser.close()
+            except Exception as e:
+                tt_error_holder[0] = str(e)
+
+        t2 = threading.Thread(target=run_tt)
+        t2.start()
+        t2.join(timeout=35)
+
+        if tt_data_holder[0]:
+            result['tiktok_ads'] = tt_data_holder[0]
+        elif tt_error_holder[0]:
+            result['tiktok_ads']['error'] = tt_error_holder[0][:200]
+
+    except Exception as e:
+        result['tiktok_ads']['error'] = str(e)[:200]
+
+    # --- Synthesize winning patterns ---
+    try:
+        all_ctas = [a.get('cta', '') for a in result['fb_ads'].get('ads', []) if a.get('cta')]
+        all_hooks = [a.get('headline', '') for a in result['fb_ads'].get('ads', []) if a.get('headline')]
+        all_hooks += result['tiktok_ads'].get('top_hooks', [])
+
+        from collections import Counter
+        result['winning_patterns']['top_ctas'] = [c for c, _ in Counter(all_ctas).most_common(5)]
+        result['winning_patterns']['top_hooks'] = all_hooks[:10]
+
+        # Emotional triggers
+        triggers_map = {
+            'fear': ['jangan', 'bahaya', 'rugi', 'stop', 'awas'],
+            'greed': ['gratis', 'bonus', 'diskon', 'hemat', 'murah', 'free'],
+            'urgency': ['terbatas', 'sekarang', 'hari ini', 'terakhir', 'limited'],
+            'curiosity': ['ternyata', 'rahasia', 'cara', 'trik', 'hack'],
+            'social_proof': ['ribuan', 'orang', 'testimoni', 'pengguna', 'terbukti'],
+        }
+        detected_triggers = []
+        combined_text = ' '.join(all_hooks + all_ctas).lower()
+        for trigger, keywords in triggers_map.items():
+            if any(kw in combined_text for kw in keywords):
+                detected_triggers.append(trigger)
+        result['winning_patterns']['emotional_triggers'] = detected_triggers
+
+    except Exception:
+        pass
+
+    # --- Budget estimate ---
+    try:
+        spend = result['fb_ads'].get('estimated_spend_idr', 0)
+        if spend < 5000000:
+            result['budget_estimate'] = 'low (<5M/month)'
+        elif spend < 20000000:
+            result['budget_estimate'] = 'medium (5-20M)'
+        else:
+            result['budget_estimate'] = 'high (>20M)'
+    except Exception:
+        pass
+
+    return result
+
+
+# ─── Module: LANDING PAGE DEEP SPY ──────────────────────────────────────────
+
+async def landing_page_deep_spy(url: str) -> dict:
+    """Full landing page intelligence with screenshot capture."""
+    import re as _re
+    from urllib.parse import urlparse
+
+    result = {
+        'module': 'landing_page_deep_spy',
+        'url': url,
+        'h1': '',
+        'h2s': [],
+        'cta_buttons': [],
+        'trust_signals': {
+            'testimonials_count': 0,
+            'star_ratings': [],
+            'review_count': 0,
+            'badges': [],
+        },
+        'urgency': {
+            'countdown_timer': False,
+            'scarcity_text': [],
+            'fomo_triggers': [],
+        },
+        'lead_magnets': [],
+        'popup_detected': False,
+        'price_display_type': 'unknown',
+        'social_proof_numbers': [],
+        'video_present': False,
+        'mobile_optimized': False,
+        'page_load_time_ms': 0,
+        'funnel_guess': 'unknown',
+        'screenshot_path': '',
+    }
+
+    try:
+        os.environ.setdefault('DISPLAY', ':99')
+        from playwright.sync_api import sync_playwright
+        import threading
+
+        page_data_holder = [None]
+        error_holder = [None]
+
+        screenshots_dir = Path(__file__).parent.parent / 'reports' / 'screenshots'
+        screenshots_dir.mkdir(parents=True, exist_ok=True)
+        domain = urlparse(url).netloc.replace('www.', '') or 'unknown'
+        screenshot_path = str(screenshots_dir / f'{domain}.png')
+
+        def run_sync():
+            try:
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(
+                        headless=True,
+                        args=["--no-sandbox", "--disable-setuid-sandbox"]
+                    )
+                    context = browser.new_context(
+                        user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15',
+                        viewport={'width': 390, 'height': 844},
+                        is_mobile=True,
+                    )
+                    page = context.new_page()
+
+                    start_time = time.time()
+                    page.goto(url, wait_until='domcontentloaded', timeout=25000)
+                    page.wait_for_timeout(3000)
+                    load_time_ms = int((time.time() - start_time) * 1000)
+
+                    # Full page screenshot
+                    try:
+                        page.screenshot(path=screenshot_path, full_page=True, timeout=15000)
+                    except Exception:
+                        pass
+
+                    html = page.content()
+
+                    # Extract h1
+                    h1_el = page.query_selector('h1')
+                    h1_text = h1_el.inner_text().strip() if h1_el else ''
+
+                    # Extract h2s
+                    h2_els = page.query_selector_all('h2')
+                    h2_texts = [el.inner_text().strip() for el in h2_els[:5] if el.inner_text().strip()]
+
+                    # CTA buttons
+                    cta_texts = []
+                    for sel in ['button', 'a[class*="btn"]', 'a[class*="cta"]', 'a[class*="button"]',
+                                '[class*="CTA"]', '[role="button"]']:
+                        for el in page.query_selector_all(sel)[:15]:
+                            txt = el.inner_text().strip()
+                            if txt and 2 < len(txt) < 100:
+                                cta_texts.append(txt)
+
+                    # Check for video
+                    video_present = bool(page.query_selector('video, iframe[src*="youtube"], iframe[src*="vimeo"]'))
+
+                    # Check mobile meta viewport
+                    viewport_meta = page.query_selector('meta[name="viewport"]')
+                    mobile_opt = bool(viewport_meta)
+
+                    # Popup detection
+                    popup_detected = False
+                    try:
+                        popup_sels = ['[class*="popup"]', '[class*="modal"]', '[class*="overlay"]',
+                                      '[id*="popup"]', '[id*="modal"]']
+                        for sel in popup_sels:
+                            el = page.query_selector(sel)
+                            if el and el.is_visible():
+                                popup_detected = True
+                                break
+                    except Exception:
+                        pass
+
+                    body_text = page.inner_text('body')[:8000]
+
+                    page_data_holder[0] = {
+                        'html': html,
+                        'h1': h1_text,
+                        'h2s': h2_texts,
+                        'cta_texts': list(set(cta_texts))[:10],
+                        'video_present': video_present,
+                        'mobile_optimized': mobile_opt,
+                        'popup_detected': popup_detected,
+                        'load_time_ms': load_time_ms,
+                        'body_text': body_text,
+                    }
+                    browser.close()
+            except Exception as e:
+                error_holder[0] = str(e)
+
+        t = threading.Thread(target=run_sync)
+        t.start()
+        t.join(timeout=45)
+
+        if error_holder[0]:
+            raise Exception(error_holder[0])
+        if not page_data_holder[0]:
+            raise Exception('Playwright timeout - no content')
+
+        pd = page_data_holder[0]
+        html = pd['html']
+        body_text = pd['body_text']
+
+        result['h1'] = pd['h1']
+        result['h2s'] = pd['h2s']
+        result['cta_buttons'] = pd['cta_texts']
+        result['video_present'] = pd['video_present']
+        result['mobile_optimized'] = pd['mobile_optimized']
+        result['popup_detected'] = pd['popup_detected']
+        result['page_load_time_ms'] = pd['load_time_ms']
+
+        if Path(screenshot_path).exists():
+            result['screenshot_path'] = screenshot_path
+
+        # Trust signals
+        body_lower = body_text.lower()
+        testimoni_keywords = ['testimoni', 'testimonial', 'review', 'kata mereka', 'customer say']
+        for kw in testimoni_keywords:
+            count = body_lower.count(kw)
+            if count > 0:
+                result['trust_signals']['testimonials_count'] += count
+
+        star_matches = _re.findall(r'(\d(?:\.\d)?)\s*(?:/5|stars?|bintang)', body_lower)
+        result['trust_signals']['star_ratings'] = star_matches[:5]
+
+        review_match = _re.search(r'(\d[\d,.]*)\s*(?:review|ulasan|rating)', body_lower)
+        if review_match:
+            result['trust_signals']['review_count'] = int(review_match.group(1).replace(',', '').replace('.', ''))
+
+        badge_keywords = ['verified', 'certified', 'official', 'trusted', 'secure', 'ssl', 'garansi']
+        result['trust_signals']['badges'] = [b for b in badge_keywords if b in body_lower]
+
+        # Urgency signals
+        result['urgency']['countdown_timer'] = bool(_re.search(r'countdown|timer|hour.*minute.*second', html.lower()))
+        scarcity_keywords = ['terbatas', 'limited', 'sisa', 'hanya', 'only', 'habis', 'slot']
+        result['urgency']['scarcity_text'] = [s for s in scarcity_keywords if s in body_lower]
+        fomo_keywords = ['orang sedang melihat', 'baru saja membeli', 'people viewing', 'just purchased',
+                         'jangan sampai', 'harga naik', 'besok']
+        result['urgency']['fomo_triggers'] = [f for f in fomo_keywords if f in body_lower]
+
+        # Lead magnets
+        lead_keywords = ['download gratis', 'free download', 'ebook gratis', 'free ebook', 'lead magnet',
+                         'free template', 'template gratis', 'checklist', 'cheat sheet']
+        result['lead_magnets'] = [lm for lm in lead_keywords if lm in body_lower]
+
+        # Price display type
+        if _re.search(r'(?:Rp|IDR|USD|\$)\s*[\d.,]+', body_text):
+            if _re.search(r'(?:per\s*(?:bulan|month|tahun|year))|(?:/(?:mo|month|yr|year|bulan))', body_lower):
+                result['price_display_type'] = 'subscription'
+            else:
+                result['price_display_type'] = 'one_time'
+        elif 'gratis' in body_lower or 'free' in body_lower:
+            result['price_display_type'] = 'free'
+        else:
+            result['price_display_type'] = 'hidden'
+
+        # Social proof numbers
+        sp_matches = _re.findall(r'(\d[\d,.]*)\+?\s*(?:pengguna|user|customer|pelanggan|orang|member|download|subscriber)',
+                                 body_lower)
+        result['social_proof_numbers'] = sp_matches[:5]
+
+        # Funnel guess
+        if result['lead_magnets']:
+            result['funnel_guess'] = 'lead_magnet'
+        elif any(kw in body_lower for kw in ['demo', 'jadwalkan', 'schedule', 'book a call']):
+            result['funnel_guess'] = 'demo_call'
+        elif result['price_display_type'] == 'free' or 'freemium' in body_lower:
+            result['funnel_guess'] = 'freemium'
+        elif any(kw in body_lower for kw in ['affiliate', 'afiliasi', 'referral', 'komisi']):
+            result['funnel_guess'] = 'affiliate'
+        elif result['price_display_type'] in ('one_time', 'subscription'):
+            result['funnel_guess'] = 'direct_sales'
+        else:
+            result['funnel_guess'] = 'unknown'
+
+    except Exception as e:
+        result['error'] = str(e)[:200]
+
+    return result
+
+
+# ─── Module: CONTENT INTELLIGENCE SPY ───────────────────────────────────────
+
+async def content_intelligence_spy(handles: dict) -> dict:
+    """Deep content intelligence across TikTok, Instagram, YouTube, and Twitter."""
+    import re as _re
+
+    result = {
+        'module': 'content_intelligence_spy',
+        'handles': handles,
+        'tiktok': {},
+        'instagram': {},
+        'youtube': {},
+        'twitter': {},
+        'content_strategy': {
+            'primary_platform': 'unknown',
+            'posting_frequency': {},
+            'top_content_type': 'unknown',
+            'viral_hooks': [],
+            'engagement_rate': {},
+            'content_calendar': {'days': [], 'times': []},
+            'hashtags_used': [],
+        },
+    }
+
+    # --- TikTok ---
+    tiktok_handle = handles.get('tiktok', '').lstrip('@')
+    if tiktok_handle:
+        try:
+            os.environ.setdefault('DISPLAY', ':99')
+            from playwright.sync_api import sync_playwright
+            import threading
+
+            tt_holder = [None]
+            def run_tiktok():
+                try:
+                    with sync_playwright() as p:
+                        browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-setuid-sandbox"])
+                        context = browser.new_context(
+                            user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
+                        )
+                        page = context.new_page()
+                        page.goto(f'https://www.tiktok.com/@{tiktok_handle}', wait_until='domcontentloaded', timeout=15000)
+                        page.wait_for_timeout(4000)
+                        html = page.content()
+                        tt_holder[0] = html
+                        browser.close()
+                except Exception:
+                    pass
+
+            t = threading.Thread(target=run_tiktok)
+            t.start()
+            t.join(timeout=30)
+
+            html = tt_holder[0] or ''
+            if html:
+                followers = _re.search(r'"followerCount":(\d+)', html)
+                following = _re.search(r'"followingCount":(\d+)', html)
+                likes = _re.search(r'"heartCount":(\d+)', html) or _re.search(r'"heart":(\d+)', html)
+                video_count = _re.search(r'"videoCount":(\d+)', html)
+                bio = _re.search(r'"signature":"([^"]*)"', html)
+
+                result['tiktok'] = {
+                    'username': tiktok_handle,
+                    'followers': int(followers.group(1)) if followers else 0,
+                    'following': int(following.group(1)) if following else 0,
+                    'total_likes': int(likes.group(1)) if likes else 0,
+                    'video_count': int(video_count.group(1)) if video_count else 0,
+                    'bio': bio.group(1) if bio else '',
+                }
+
+                # Top 12 videos
+                video_items = _re.findall(
+                    r'"id":"(\d+)".*?"desc":"([^"]*)".*?"playCount":(\d+).*?"diggCount":(\d+).*?"commentCount":(\d+).*?"shareCount":(\d+)',
+                    html
+                )
+                if not video_items:
+                    video_items = _re.findall(
+                        r'"id":"(\d+)".*?"desc":"([^"]*)".*?"playCount":(\d+).*?"diggCount":(\d+)', html
+                    )
+                    video_items = [(v[0], v[1], v[2], v[3], '0', '0') for v in video_items]
+
+                top_videos = []
+                viral_hooks = []
+                for vid_id, desc, views, lks, comments, shares in video_items[:12]:
+                    top_videos.append({
+                        'desc': desc[:120],
+                        'views': int(views),
+                        'likes': int(lks),
+                        'comments': int(comments) if comments else 0,
+                        'shares': int(shares) if shares else 0,
+                    })
+                    if desc.strip():
+                        hook = desc.split('.')[0].split('!')[0].split('?')[0][:80]
+                        if hook:
+                            viral_hooks.append(hook)
+
+                result['tiktok']['top_videos'] = top_videos
+                result['tiktok']['viral_hooks'] = viral_hooks[:5]
+
+                # Posting frequency estimate
+                if result['tiktok'].get('video_count', 0) > 0:
+                    result['tiktok']['posting_frequency'] = 'active' if result['tiktok']['video_count'] > 50 else 'moderate'
+
+                # Best content type inference
+                if top_videos:
+                    avg_views = sum(v['views'] for v in top_videos) / len(top_videos)
+                    result['tiktok']['avg_views'] = int(avg_views)
+                    total_followers = result['tiktok'].get('followers', 1) or 1
+                    result['tiktok']['engagement_rate'] = f'{(sum(v["likes"] for v in top_videos) / len(top_videos) / total_followers * 100):.2f}%'
+
+        except Exception as e:
+            result['tiktok'] = {'error': str(e)[:150]}
+
+    # --- Instagram ---
+    ig_handle = handles.get('instagram', '').lstrip('@')
+    if ig_handle:
+        try:
+            from playwright.sync_api import sync_playwright
+            import threading
+
+            ig_holder = [None]
+            def run_ig():
+                try:
+                    with sync_playwright() as p:
+                        browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-setuid-sandbox"])
+                        context = browser.new_context(
+                            user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15',
+                            viewport={'width': 390, 'height': 844},
+                            is_mobile=True,
+                        )
+                        page = context.new_page()
+                        page.goto(f'https://www.instagram.com/{ig_handle}/', wait_until='domcontentloaded', timeout=15000)
+                        page.wait_for_timeout(4000)
+                        ig_holder[0] = page.content()
+                        browser.close()
+                except Exception:
+                    pass
+
+            t2 = threading.Thread(target=run_ig)
+            t2.start()
+            t2.join(timeout=30)
+
+            html = ig_holder[0] or ''
+            if html:
+                followers = _re.search(r'"edge_followed_by":\{"count":(\d+)', html) or _re.search(r'"follower_count":(\d+)', html)
+                following = _re.search(r'"edge_follow":\{"count":(\d+)', html) or _re.search(r'"following_count":(\d+)', html)
+                posts = _re.search(r'"edge_owner_to_timeline_media":\{"count":(\d+)', html) or _re.search(r'"media_count":(\d+)', html)
+                bio = _re.search(r'"biography":"([^"]*)"', html)
+
+                result['instagram'] = {
+                    'username': ig_handle,
+                    'followers': int(followers.group(1)) if followers else 0,
+                    'following': int(following.group(1)) if following else 0,
+                    'posts_count': int(posts.group(1)) if posts else 0,
+                    'bio': bio.group(1) if bio else '',
+                }
+
+                # Bio links
+                bio_link = _re.search(r'"external_url":"([^"]*)"', html)
+                if bio_link:
+                    result['instagram']['bio_link'] = bio_link.group(1)
+
+                # Story highlights
+                highlight_count = len(_re.findall(r'"highlight_reel_count":(\d+)', html))
+                result['instagram']['story_highlights'] = highlight_count
+
+        except Exception as e:
+            result['instagram'] = {'error': str(e)[:150]}
+
+    # --- YouTube ---
+    yt_handle = handles.get('youtube', '').lstrip('@')
+    if yt_handle:
+        try:
+            import urllib.request
+            yt_url = f'https://www.youtube.com/@{yt_handle}'
+            req = urllib.request.Request(yt_url, headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                'Accept-Language': 'en-US,en;q=0.9',
+            })
+            r = urllib.request.urlopen(req, timeout=12)
+            html = r.read().decode('utf-8', errors='ignore')
+
+            sub_match = _re.search(r'"subscriberCountText":\{"simpleText":"([\d.]+[KMB]?) subscriber', html)
+            vid_count = _re.search(r'"videosCountText":\{"runs":\[\{"text":"([\d,]+)"', html)
+            desc = _re.search(r'"description":"([^"]{0,500})"', html)
+
+            result['youtube'] = {
+                'channel': yt_handle,
+                'subscribers': sub_match.group(1) if sub_match else 'unknown',
+                'total_videos': vid_count.group(1) if vid_count else 'unknown',
+                'description': desc.group(1)[:200] if desc else '',
+            }
+
+            # Recent videos
+            video_entries = _re.findall(
+                r'"title":\{"runs":\[\{"text":"([^"]+)"\}\].*?"viewCountText":\{"simpleText":"([\d,.]+ views?)".*?"publishedTimeText":\{"simpleText":"([^"]+)"',
+                html
+            )
+            recent_videos = []
+            for title, views_str, pub_date in video_entries[:10]:
+                views_clean = _re.sub(r'[^\d]', '', views_str)
+                recent_videos.append({
+                    'title': title[:100],
+                    'views': int(views_clean) if views_clean else 0,
+                    'date': pub_date,
+                })
+            result['youtube']['recent_videos'] = recent_videos
+
+        except Exception as e:
+            result['youtube'] = {'error': str(e)[:150]}
+
+    # --- Twitter (from handles if provided) ---
+    tw_handle = handles.get('twitter', '').lstrip('@')
+    if tw_handle:
+        result['twitter'] = {'handle': tw_handle, 'note': 'Use social_spy for detailed Twitter data'}
+
+    # --- Synthesize content_strategy ---
+    try:
+        # Determine primary platform by follower count
+        platform_followers = {}
+        if result['tiktok'].get('followers', 0) > 0:
+            platform_followers['tiktok'] = result['tiktok']['followers']
+        if result['instagram'].get('followers', 0) > 0:
+            platform_followers['instagram'] = result['instagram']['followers']
+        yt_subs = result.get('youtube', {}).get('subscribers', '0')
+        if yt_subs and yt_subs != 'unknown':
+            # Parse K/M/B
+            yt_num = yt_subs.replace('K', '000').replace('M', '000000').replace('B', '000000000').replace('.', '')
+            try:
+                platform_followers['youtube'] = int(yt_num)
+            except ValueError:
+                pass
+
+        if platform_followers:
+            result['content_strategy']['primary_platform'] = max(platform_followers, key=platform_followers.get)
+            result['content_strategy']['engagement_rate'] = {}
+            if 'tiktok' in result and result['tiktok'].get('engagement_rate'):
+                result['content_strategy']['engagement_rate']['tiktok'] = result['tiktok']['engagement_rate']
+
+        # Viral hooks
+        hooks = result.get('tiktok', {}).get('viral_hooks', [])
+        result['content_strategy']['viral_hooks'] = hooks[:5]
+
+        # Hashtags from TikTok videos
+        all_descs = ' '.join(v.get('desc', '') for v in result.get('tiktok', {}).get('top_videos', []))
+        hashtags = _re.findall(r'#(\w+)', all_descs)
+        if hashtags:
+            from collections import Counter
+            result['content_strategy']['hashtags_used'] = [h for h, _ in Counter(hashtags).most_common(10)]
+
+    except Exception:
+        pass
+
+    return result
+
+
+# ─── Module: PROMOTION STRATEGY SPY ─────────────────────────────────────────
+
+def promotion_strategy_spy(target: str, all_data: dict) -> dict:
+    """Cross-analyze all data to infer promotion strategy."""
+    result = {
+        'module': 'promotion_strategy_spy',
+        'target': target,
+        'paid_vs_organic': 'unknown',
+        'active_channels': [],
+        'has_affiliate_program': False,
+        'has_telegram_community': False,
+        'has_email_list': False,
+        'seo_presence': 'none',
+        'influencer_marketing': False,
+        'promotion_budget_estimate': 'unknown',
+        'growth_strategy': 'unknown',
+    }
+
+    try:
+        social = all_data.get('social', {})
+        ads = all_data.get('ads', {}) or all_data.get('ads_intel', {})
+        funnel = all_data.get('funnel', {})
+        tech = all_data.get('tech', {})
+        lynk = all_data.get('lynk', {})
+        landing = all_data.get('landing_page', {})
+        content_intel = all_data.get('content_intel', {})
+
+        # Active channels
+        platforms = social.get('platforms', {})
+        for plat, data in platforms.items():
+            if isinstance(data, dict) and not data.get('error'):
+                result['active_channels'].append(plat)
+
+        # Check content intel platforms
+        for plat in ['tiktok', 'instagram', 'youtube']:
+            ci_data = content_intel.get(plat, {})
+            if ci_data and not ci_data.get('error') and ci_data.get('followers', ci_data.get('subscribers', 0)):
+                if plat not in result['active_channels']:
+                    result['active_channels'].append(plat)
+
+        # Lynk social links
+        for sl in lynk.get('social_links', []):
+            plat = sl.get('platform', '')
+            if plat and plat not in result['active_channels']:
+                result['active_channels'].append(plat)
+
+        # Paid vs organic
+        fb_ad_count = 0
+        if isinstance(ads, dict):
+            fb_ads = ads.get('fb_ads', ads.get('facebook_ads', {}))
+            if isinstance(fb_ads, dict):
+                fb_ad_count = fb_ads.get('count', fb_ads.get('active_ads_found', 0))
+
+        has_pixels = bool(tech.get('pixels'))
+        if fb_ad_count > 5 or has_pixels:
+            result['paid_vs_organic'] = 'mostly_paid' if fb_ad_count > 10 else 'balanced'
+        else:
+            result['paid_vs_organic'] = 'mostly_organic'
+
+        # Affiliate program detection
+        combined_text = json.dumps(all_data, default=str).lower()
+        result['has_affiliate_program'] = any(kw in combined_text for kw in ['affiliate', 'afiliasi', 'referral', 'komisi'])
+
+        # Telegram community
+        result['has_telegram_community'] = any(kw in combined_text for kw in ['t.me/', 'telegram', 'join group'])
+
+        # Email list
+        result['has_email_list'] = any(kw in combined_text for kw in ['newsletter', 'email list', 'subscribe', 'berlangganan'])
+
+        # SEO presence
+        if tech.get('framework') in ('WordPress', 'Next.js', 'Nuxt.js'):
+            result['seo_presence'] = 'strong'
+        elif tech.get('hosting') != 'unknown':
+            result['seo_presence'] = 'weak'
+        else:
+            result['seo_presence'] = 'none'
+
+        # Influencer marketing
+        result['influencer_marketing'] = any(kw in combined_text for kw in ['collab', 'kolaborasi', 'influencer', 'kol', 'endorsement'])
+
+        # Budget estimate from ads data
+        ads_intel = all_data.get('ads_intel', {})
+        if ads_intel.get('budget_estimate'):
+            result['promotion_budget_estimate'] = ads_intel['budget_estimate']
+        elif fb_ad_count > 10:
+            result['promotion_budget_estimate'] = 'medium (5-20M)'
+        elif fb_ad_count > 0:
+            result['promotion_budget_estimate'] = 'low (<5M/month)'
+        else:
+            result['promotion_budget_estimate'] = 'low (<5M/month)'
+
+        # Growth strategy inference
+        if result['paid_vs_organic'] == 'mostly_paid':
+            result['growth_strategy'] = 'paid_acquisition'
+        elif result['has_affiliate_program']:
+            result['growth_strategy'] = 'affiliate_viral'
+        elif result['has_telegram_community']:
+            result['growth_strategy'] = 'community_led'
+        elif len(result['active_channels']) >= 3:
+            result['growth_strategy'] = 'multi_channel_organic'
+        else:
+            result['growth_strategy'] = 'single_channel_organic'
+
+    except Exception as e:
+        result['error'] = str(e)[:200]
+
+    return result
+
+
+# ─── Module: REVENUE INTELLIGENCE ───────────────────────────────────────────
+
+def revenue_intelligence(all_data: dict, target_name: str) -> dict:
+    """Synthesize revenue intelligence from all modules."""
+    result = {
+        'module': 'revenue_intelligence',
+        'target': target_name,
+        'revenue_sources': [],
+        'total_revenue_estimate': {'low': 0, 'mid': 0, 'high': 0},
+        'unit_economics': {
+            'cac_estimate_idr': 0,
+            'ltv_estimate_idr': 0,
+            'ltv_cac_ratio': 0,
+        },
+        'revenue_model_score': 0,
+        'key_revenue_drivers': [],
+        'revenue_risks': [],
+    }
+
+    try:
+        social = all_data.get('social', {})
+        funnel = all_data.get('funnel', {})
+        lynk = all_data.get('lynk', {})
+        gumroad = all_data.get('gumroad', {})
+        ads = all_data.get('ads', {}) or all_data.get('ads_intel', {})
+        bm = all_data.get('business_model', {})
+        content_intel = all_data.get('content_intel', {})
+        revenue_old = all_data.get('revenue', {})
+
+        total_low = 0
+        total_mid = 0
+        total_high = 0
+
+        # --- Source 1: Ads-based traffic estimation ---
+        fb_ads = {}
+        if isinstance(ads, dict):
+            fb_ads = ads.get('fb_ads', ads.get('facebook_ads', {}))
+        fb_count = fb_ads.get('count', fb_ads.get('active_ads_found', 0)) if isinstance(fb_ads, dict) else 0
+
+        if fb_count > 0:
+            # Estimate: each ad generates ~500-2000 clicks/month
+            traffic_low = fb_count * 500
+            traffic_high = fb_count * 2000
+            avg_price = 75000  # IDR default
+
+            # Try to get real price from funnel/bm
+            if funnel.get('pricing'):
+                try:
+                    prices = funnel['pricing']
+                    vals = [float(p.replace('.', '').replace(',', '')) for p in prices[:5] if p.replace('.', '').replace(',', '').isdigit()]
+                    if vals:
+                        avg_price = sum(vals) / len(vals)
+                except Exception:
+                    pass
+
+            cvr = 0.005  # 0.5% CVR
+            rev_low = int(traffic_low * cvr * avg_price)
+            rev_high = int(traffic_high * cvr * avg_price)
+            result['revenue_sources'].append({
+                'source': 'paid_ads_traffic',
+                'estimated_monthly_idr': int((rev_low + rev_high) / 2),
+                'confidence': 'medium',
+            })
+            total_low += rev_low
+            total_high += rev_high
+
+        # --- Source 2: LYNK products ---
+        if lynk.get('products'):
+            products = lynk['products']
+            avg_price = 75000
+            try:
+                price_vals = []
+                for p in products:
+                    px = p.get('price', '').replace('Rp', '').replace('.', '').replace(',', '').strip()
+                    if px.isdigit():
+                        price_vals.append(float(px))
+                if price_vals:
+                    avg_price = sum(price_vals) / len(price_vals)
+            except Exception:
+                pass
+
+            # Conservative: 50 sales/month per product
+            sales_per_product = 50
+            rev = int(len(products) * sales_per_product * avg_price)
+            result['revenue_sources'].append({
+                'source': 'lynk_products',
+                'estimated_monthly_idr': rev,
+                'confidence': 'low',
+            })
+            total_low += int(rev * 0.5)
+            total_high += int(rev * 2)
+
+        # --- Source 3: Gumroad ---
+        if gumroad.get('products'):
+            for p in gumroad['products']:
+                try:
+                    price_usd = float(p.get('price', '$0').replace('$', '').replace(',', ''))
+                    reviews = p.get('reviews', 0)
+                    sales_est = reviews * 10
+                    rev_usd = price_usd * sales_est
+                    rev_idr = int(rev_usd * 16000)  # approx IDR conversion
+                    result['revenue_sources'].append({
+                        'source': f'gumroad_{p.get("name", "unknown")[:30]}',
+                        'estimated_monthly_idr': int(rev_idr / 12),
+                        'confidence': 'medium',
+                    })
+                    total_low += int(rev_idr / 12 * 0.5)
+                    total_high += int(rev_idr / 12 * 2)
+                except Exception:
+                    pass
+
+        # --- Source 4: Bot subscriptions ---
+        bot = all_data.get('bot', {})
+        if bot and isinstance(bot, dict):
+            # Estimate subscribers from social engagement
+            tt_data = content_intel.get('tiktok', {}) or social.get('platforms', {}).get('tiktok', {})
+            followers = tt_data.get('followers', tt_data.get('follower_count', 0))
+            if followers > 0:
+                # Rough: followers / 5 = potential bot users
+                bot_users = max(followers // 5, 100)
+                # Assume subscription ~50K IDR/month, 10% conversion
+                rev = int(bot_users * 0.1 * 50000)
+                result['revenue_sources'].append({
+                    'source': 'bot_subscriptions',
+                    'estimated_monthly_idr': rev,
+                    'confidence': 'low',
+                })
+                total_low += int(rev * 0.3)
+                total_high += int(rev * 3)
+
+        # Total
+        total_mid = int((total_low + total_high) / 2)
+        result['total_revenue_estimate'] = {
+            'low': f'IDR {total_low:,.0f}',
+            'mid': f'IDR {total_mid:,.0f}',
+            'high': f'IDR {total_high:,.0f}',
+        }
+
+        # Unit economics
+        ads_spend = 0
+        if isinstance(fb_ads, dict):
+            ads_spend = fb_ads.get('estimated_spend_idr', 0)
+        if ads_spend > 0 and fb_count > 0:
+            traffic = fb_count * 1000  # mid estimate
+            conversions = int(traffic * 0.005)
+            cac = int(ads_spend / max(conversions, 1))
+            avg_price_val = 75000
+            if funnel.get('pricing'):
+                try:
+                    vals = [float(p.replace('.', '').replace(',', '')) for p in funnel['pricing'][:5]
+                            if p.replace('.', '').replace(',', '').isdigit()]
+                    if vals:
+                        avg_price_val = sum(vals) / len(vals)
+                except Exception:
+                    pass
+            ltv = int(avg_price_val * 3)  # assume 3 purchases lifetime
+            result['unit_economics'] = {
+                'cac_estimate_idr': cac,
+                'ltv_estimate_idr': ltv,
+                'ltv_cac_ratio': round(ltv / max(cac, 1), 2),
+            }
+
+        # Revenue model score
+        score = 0
+        if len(result['revenue_sources']) >= 3:
+            score += 3
+        elif len(result['revenue_sources']) >= 1:
+            score += 1
+        if total_mid > 10000000:
+            score += 3
+        elif total_mid > 1000000:
+            score += 2
+        if result['unit_economics'].get('ltv_cac_ratio', 0) > 3:
+            score += 2
+        elif result['unit_economics'].get('ltv_cac_ratio', 0) > 1:
+            score += 1
+        bm_type = bm.get('business_model_type', '')
+        if bm_type in ('saas', 'bot_subscription'):
+            score += 2  # recurring revenue
+        elif bm_type == 'freemium':
+            score += 1
+        result['revenue_model_score'] = min(10, score)
+
+        # Key revenue drivers
+        drivers = []
+        sorted_sources = sorted(result['revenue_sources'], key=lambda x: x.get('estimated_monthly_idr', 0), reverse=True)
+        for s in sorted_sources[:3]:
+            drivers.append(s['source'])
+        result['key_revenue_drivers'] = drivers
+
+        # Revenue risks
+        risks = []
+        if result['paid_vs_organic'] if 'paid_vs_organic' in result else all_data.get('promotion', {}).get('paid_vs_organic') == 'mostly_paid':
+            risks.append('Heavy reliance on paid ads - vulnerable to ad cost increases')
+        if len(result['revenue_sources']) <= 1:
+            risks.append('Single revenue source - no diversification')
+        if total_mid < 5000000:
+            risks.append('Low estimated revenue - may not be sustainable')
+        if not risks:
+            risks = ['No critical risks identified from available data']
+        result['revenue_risks'] = risks[:3]
+
+    except Exception as e:
+        result['error'] = str(e)[:200]
+
+    return result
+
+
+# ─── Module: MARKET OPPORTUNITY SPY ─────────────────────────────────────────
+
+def market_opportunity_spy(target_data: dict, our_assets: dict = None) -> dict:
+    """Identify top market opportunities based on competitor data and our assets."""
+    if our_assets is None:
+        our_assets = {
+            "tools": ["PostBridge", "Kling AI", "KlingBot", "vidabot clone capability"],
+            "skills": ["bot development", "AI video gen", "content creation", "Telegram bots"],
+            "audience": ["TikTok", "Telegram", "Instagram"],
+            "budget": "low (< IDR 5M/month)",
+        }
+
+    result = {
+        'module': 'market_opportunity_spy',
+        'our_assets': our_assets,
+        'opportunities': [],
+    }
+
+    try:
+        from openai import OpenAI
+        client = OpenAI(
+            base_url="http://localhost:20128/v1",
+            api_key=os.environ.get('OMNIROUTE_KEY', 'omniroute')
+        )
+
+        # Build a summary of competitor data for the prompt
+        data_summary = {}
+        for key in ['social', 'funnel', 'lynk', 'gumroad', 'business_model', 'ads_intel',
+                     'landing_page', 'content_intel', 'promotion', 'revenue_intel', 'revenue', 'tech', 'bot']:
+            val = target_data.get(key)
+            if val and isinstance(val, dict):
+                # Trim large nested data
+                trimmed = {}
+                for k, v in val.items():
+                    if k.startswith('_') or k == 'html':
+                        continue
+                    if isinstance(v, str) and len(v) > 300:
+                        trimmed[k] = v[:300]
+                    elif isinstance(v, list) and len(v) > 10:
+                        trimmed[k] = v[:10]
+                    else:
+                        trimmed[k] = v
+                data_summary[key] = trimmed
+
+        prompt = (
+            f"Based on this competitor intelligence data and our assets, identify the TOP 5 market opportunities.\n\n"
+            f"COMPETITOR DATA:\n{json.dumps(data_summary, indent=2, default=str)[:6000]}\n\n"
+            f"OUR ASSETS:\n{json.dumps(our_assets, indent=2)}\n\n"
+            "Return ONLY a valid JSON array of 5 objects, each with:\n"
+            '- opportunity: string (short description)\n'
+            '- effort: "low" | "medium" | "high"\n'
+            '- time_to_revenue: "1 week" | "1 month" | "3 months"\n'
+            '- revenue_potential_idr: number (monthly IDR estimate)\n'
+            '- risk: "low" | "medium" | "high"\n'
+            '- why_we_can_win: string\n'
+            '- next_action: string\n\n'
+            'Sort by: highest revenue_potential * (1/effort) * (1/time). Return ONLY the JSON array.'
+        )
+
+        resp = client.chat.completions.create(
+            model='gpt-4o-mini',
+            messages=[
+                {'role': 'system', 'content': 'You are a business strategist for an Indonesian digital product company. Return only valid JSON arrays.'},
+                {'role': 'user', 'content': prompt}
+            ],
+            temperature=0.4,
+            max_tokens=2000,
+        )
+
+        raw = resp.choices[0].message.content.strip()
+        if raw.startswith('```'):
+            raw = raw.split('\n', 1)[1] if '\n' in raw else raw[3:]
+            if raw.endswith('```'):
+                raw = raw[:-3]
+        opportunities = json.loads(raw)
+
+        if isinstance(opportunities, list):
+            # Sort by score: revenue_potential * (1/effort_score) * (1/time_score)
+            effort_map = {'low': 1, 'medium': 2, 'high': 3}
+            time_map = {'1 week': 1, '1 month': 2, '3 months': 3}
+
+            for opp in opportunities:
+                rev = opp.get('revenue_potential_idr', 0)
+                eff = effort_map.get(opp.get('effort', 'high'), 3)
+                tm = time_map.get(opp.get('time_to_revenue', '3 months'), 3)
+                opp['_score'] = rev / max(eff * tm, 1)
+
+            opportunities.sort(key=lambda x: x.get('_score', 0), reverse=True)
+
+            # Remove internal score
+            for opp in opportunities:
+                opp.pop('_score', None)
+
+            result['opportunities'] = opportunities[:5]
+
+    except Exception as e:
+        result['error'] = str(e)[:200]
+        # Fallback static opportunities
+        result['opportunities'] = [
+            {
+                'opportunity': 'Clone competitor bot with improvements',
+                'effort': 'medium',
+                'time_to_revenue': '1 month',
+                'revenue_potential_idr': 5000000,
+                'risk': 'low',
+                'why_we_can_win': 'We have bot development skills and can fix their UX issues',
+                'next_action': 'Use bot-extractor to map their bot, then build improved version',
+            }
+        ]
+
+    return result
 
 
 # ─── Main Orchestrator ───────────────────────────────────────────────────────
 
-async def run_spy(target: str, modules: list, mode: str = 'report') -> dict:
+async def run_spy(target: str, modules: list, mode: str = 'report', url: str = None) -> dict:
     """Run selected intelligence modules."""
     all_data = {}
     print(f'🕵️ Starting intelligence gathering on: {target}')
     print(f'   Modules: {modules}')
+    if url:
+        print(f'   URL: {url}')
     print()
 
     # Social spy
@@ -1375,6 +2807,123 @@ async def run_spy(target: str, modules: list, mode: str = 'report') -> dict:
     if all_data['competitive_opportunities']:
         print(f'Target: {len(all_data["competitive_opportunities"])} opportunities found')
 
+    # ── New deep intelligence modules ──
+
+    # Infer URL if not provided
+    target_url = url
+    if not target_url:
+        clean = target.lstrip('@').replace('_bot', '').replace('_', '')
+        # Try to infer from lynk or funnel entry points
+        if all_data.get('lynk', {}).get('products'):
+            target_url = f'https://lynk.id/{clean}'
+        elif all_data.get('funnel', {}).get('entry_points'):
+            for ep in all_data['funnel']['entry_points']:
+                if ep.get('status') == 'found':
+                    target_url = ep.get('url', '')
+                    break
+        if not target_url:
+            target_url = f'https://{clean}'
+
+    # Landing Page Deep Spy
+    if 'landing_page' in modules:
+        print('🔍 Landing Page Deep Spy...')
+        try:
+            all_data['landing_page'] = await landing_page_deep_spy(target_url)
+            lp = all_data['landing_page']
+            print(f'   H1: {lp.get("h1", "?")[:60]} | Funnel: {lp.get("funnel_guess", "?")} | Load: {lp.get("page_load_time_ms", 0)}ms')
+        except Exception as e:
+            print(f'   Landing page spy error: {e}')
+            all_data['landing_page'] = {'error': str(e)[:200]}
+
+    # Business Model Spy
+    if 'business_model' in modules:
+        print('🏢 Business Model Spy...')
+        try:
+            all_data['business_model'] = await business_model_spy(target_url, target)
+            bm = all_data['business_model']
+            print(f'   Type: {bm.get("business_model_type", "?")} | Score: {bm.get("revenue_model_score", 0)}/10')
+        except Exception as e:
+            print(f'   Business model spy error: {e}')
+            all_data['business_model'] = {'error': str(e)[:200]}
+
+    # Ads Intelligence Spy
+    if 'ads_intel' in modules:
+        print('📊 Ads Intelligence Spy...')
+        try:
+            all_data['ads_intel'] = await ads_intelligence_spy(target)
+            ai = all_data['ads_intel']
+            print(f'   FB ads: {ai.get("fb_ads", {}).get("count", 0)} | Budget: {ai.get("budget_estimate", "?")}')
+        except Exception as e:
+            print(f'   Ads intelligence spy error: {e}')
+            all_data['ads_intel'] = {'error': str(e)[:200]}
+
+    # Content Intelligence Spy
+    if 'content_intel' in modules:
+        print('📝 Content Intelligence Spy...')
+        try:
+            # Build handles from social data and lynk data
+            handles = {}
+            clean_target = target.lstrip('@').replace('_bot', '')
+            handles['tiktok'] = f'@{clean_target}'
+
+            # Try to get handles from lynk social links
+            for sl in all_data.get('lynk', {}).get('social_links', []):
+                plat = sl.get('platform', '')
+                handle = sl.get('handle', '')
+                if plat and handle:
+                    handles[plat] = f'@{handle.lstrip("@")}'
+
+            # Defaults if not found
+            if 'instagram' not in handles:
+                handles['instagram'] = f'@{clean_target}'
+            if 'youtube' not in handles:
+                handles['youtube'] = f'@{clean_target}'
+
+            all_data['content_intel'] = await content_intelligence_spy(handles)
+            ci = all_data['content_intel']
+            cs = ci.get('content_strategy', {})
+            print(f'   Primary: {cs.get("primary_platform", "?")} | Hooks: {len(cs.get("viral_hooks", []))}')
+        except Exception as e:
+            print(f'   Content intelligence spy error: {e}')
+            all_data['content_intel'] = {'error': str(e)[:200]}
+
+    # Promotion Strategy Spy
+    if 'promotion' in modules:
+        print('📣 Promotion Strategy Spy...')
+        try:
+            all_data['promotion'] = promotion_strategy_spy(target, all_data)
+            ps = all_data['promotion']
+            print(f'   Strategy: {ps.get("growth_strategy", "?")} | Channels: {", ".join(ps.get("active_channels", []))}')
+        except Exception as e:
+            print(f'   Promotion spy error: {e}')
+            all_data['promotion'] = {'error': str(e)[:200]}
+
+    # Revenue Intelligence
+    if 'revenue_intel' in modules:
+        print('💎 Revenue Intelligence...')
+        try:
+            all_data['revenue_intel'] = revenue_intelligence(all_data, target)
+            ri = all_data['revenue_intel']
+            est = ri.get('total_revenue_estimate', {})
+            print(f'   Estimate: {est.get("low", "?")} - {est.get("high", "?")} | Score: {ri.get("revenue_model_score", 0)}/10')
+        except Exception as e:
+            print(f'   Revenue intelligence error: {e}')
+            all_data['revenue_intel'] = {'error': str(e)[:200]}
+
+    # Market Opportunity Spy
+    if 'market_opportunity' in modules:
+        print('🎯 Market Opportunity Spy...')
+        try:
+            all_data['market_opportunity'] = market_opportunity_spy(all_data)
+            mo = all_data['market_opportunity']
+            opps = mo.get('opportunities', [])
+            print(f'   Opportunities found: {len(opps)}')
+            for i, opp in enumerate(opps[:3], 1):
+                print(f'   {i}. {opp.get("opportunity", "?")[:60]} (IDR {opp.get("revenue_potential_idr", 0):,}/mo)')
+        except Exception as e:
+            print(f'   Market opportunity spy error: {e}')
+            all_data['market_opportunity'] = {'error': str(e)[:200]}
+
     return all_data
 
 
@@ -1386,13 +2935,14 @@ async def main():
     parser.add_argument('--all', action='store_true', help='Run all modules')
     parser.add_argument('--mode', default='report', choices=['report', 'clone', 'improve'])
     parser.add_argument('--output', help='Output file (JSON or MD)')
+    parser.add_argument('--url', help='Landing page URL for deep analysis')
     parser.add_argument('--compare', help='Compare with own business URL')
     args = parser.parse_args()
 
     modules = ALL_MODULES if args.all else args.modules.split(',')
 
     # Run
-    all_data = await run_spy(args.target, modules, args.mode)
+    all_data = await run_spy(args.target, modules, args.mode, url=getattr(args, 'url', None))
 
     # Generate report
     print('\n' + '='*50)
