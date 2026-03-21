@@ -1063,6 +1063,23 @@ def generate_report(target: str, all_data: dict, mode: str = 'report') -> str:
             f'- Avg views/post: **{tw.get("avg_views_per_post", 0):,}**',
             f'- Engagement rate: **{tw.get("engagement_rate", "N/A")}**',
         ]
+        # TikTok
+        tt = s.get('platforms', {}).get('tiktok', {})
+        if tt and not tt.get('error'):
+            lines += [
+                f'- TikTok followers: **{tt.get("follower_count", 0):,}**',
+                f'- TikTok total likes: **{tt.get("total_likes", 0):,}**',
+                f'- TikTok videos: **{tt.get("video_count", 0)}**',
+            ]
+
+        # YouTube
+        yt = s.get('platforms', {}).get('youtube', {})
+        if yt and not yt.get('error'):
+            lines += [
+                f'- YouTube subscribers: **{yt.get("subscriber_count", "unknown")}**',
+                f'- YouTube videos: **{yt.get("video_count", "unknown")}**',
+            ]
+
         if s.get('top_hooks'):
             lines.append('- **Top Hooks:**')
             for h in s['top_hooks']:
@@ -1129,6 +1146,58 @@ def generate_report(target: str, all_data: dict, mode: str = 'report') -> str:
             if k != 'total_estimate':
                 lines.append(f'- {k}: **{v}**')
         lines.append(f'- **TOTAL: {m.get("clone_effort", {}).get("total_estimate", "unknown")}**')
+        lines.append('')
+
+    # Gumroad
+    if 'gumroad' in all_data:
+        g = all_data['gumroad']
+        lines += [
+            '## Gumroad Products',
+            f'- Total products: **{g.get("total_products", 0)}**',
+            f'- Est. monthly revenue: **{g.get("estimated_monthly_revenue", "unknown")}**',
+        ]
+        for p in g.get('products', [])[:5]:
+            lines.append(f'  - {p["name"]}: {p["price"]} ({p.get("reviews", 0)} reviews)')
+        lines.append('')
+
+    # LYNK
+    if 'lynk' in all_data:
+        l = all_data['lynk']
+        lines += [
+            '## LYNK Products',
+            f'- Total products: **{l.get("total_products", 0)}**',
+            f'- Est. revenue: **{l.get("estimated_revenue", "unknown")}**',
+        ]
+        for p in l.get('products', [])[:5]:
+            lines.append(f'  - {p["name"]}: {p["price"]}')
+        if l.get('social_links'):
+            lines.append(f'- Social links: {", ".join(s["platform"] for s in l["social_links"])}')
+        lines.append('')
+
+    # Content Calendar
+    if 'content_calendar' in all_data:
+        cc = all_data['content_calendar']
+        lines += [
+            '## Content Calendar Analysis',
+            f'- Consistency score: **{cc.get("consistency_score", 0)}/10**',
+            f'- Best days: **{", ".join(cc.get("best_days", []))}**',
+            f'- Best hours: **{cc.get("best_hours", [])}**',
+            f'- Posting gaps: **{", ".join(cc.get("posting_gaps", []))}**',
+        ]
+        if cc.get('heatmap'):
+            lines += ['', '```', cc['heatmap'], '```']
+        lines.append('')
+
+    # Competitive Opportunities
+    if 'competitive_opportunities' in all_data:
+        opps = all_data['competitive_opportunities']
+        lines += [
+            '## Competitive Opportunities',
+        ]
+        for i, opp in enumerate(opps, 1):
+            lines.append(f'{i}. **{opp["area"]}** [{opp.get("priority", "medium")}]')
+            lines.append(f'   - Insight: {opp["insight"]}')
+            lines.append(f'   - Action: {opp["action"]}')
         lines.append('')
 
     return '\n'.join(lines)

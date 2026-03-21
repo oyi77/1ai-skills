@@ -326,6 +326,532 @@ def compute_ux_score(architecture):
     }
 
 
+def build_state_machine(architecture):
+    """Build a complete state machine from the bot architecture."""
+    states = {}
+
+    menus = architecture.get('menus', {})
+    commands = architecture.get('commands', {})
+    input_flows = architecture.get('input_flows', [])
+    button_map = architecture.get('button_data_map', {})
+
+    # Build state for each menu
+    for key, menu in menus.items():
+        state_name = key if key != '__root__' else 'MAIN_MENU'
+        transitions = {}
+
+        for btn in menu.get('buttons', []):
+            if btn['type'] == 'callback' and btn['data']:
+                # Find the target menu for this callback
+                target_menu = None
+                for mk, mv in menus.items():
+                    if mv.get('trigger') == btn['data']:
+                        target_menu = mk if mk != '__root__' else 'MAIN_MENU'
+                        break
+                transitions[btn['text']] = {
+                    'callback': btn['data'],
+                    'next_state': target_menu or 'UNKNOWN',
+                }
+            elif btn['type'] == 'url':
+                transitions[btn['text']] = {
+                    'type': 'url',
+                    'url': btn['url'],
+                    'next_state': state_name,  # stays in same state
+                }
+
+        input_state = menu.get('input_state')
+
+        states[state_name] = {
+            'trigger': menu.get('trigger'),
+            'transitions': transitions,
+            'input_state': input_state,
+            'timeout_fallback': 'MAIN_MENU' if input_state else None,
+            'has_back_button': any(
+                kw in (b.get('text') or '').lower()
+                for b in menu.get('buttons', [])
+                for kw in ['kembali', 'back', 'batal', 'cancel']
+            ),
+        }
+
+    # Add command-triggered states
+    for cmd, data in commands.items():
+        if data.get('status') == 'implemented':
+            cmd_state = f'CMD_{cmd.lstrip("/").upper()}'
+            if cmd_state not in states:
+                states[cmd_state] = {
+                    'trigger': cmd,
+                    'transitions': {},
+                    'input_state': data.get('input_state'),
+                    'timeout_fallback': 'MAIN_MENU',
+                    'has_back_button': False,
+                }
+
+    # Detect issues
+    issues = {
+        'circular_states': [],
+        'dead_ends': [],
+        'missing_cancel_handlers': [],
+    }
+
+    for state_name, state in states.items():
+        # Dead ends: states with no transitions and no input state
+        if not state['transitions'] and not state['input_state']:
+            issues['dead_ends'].append(state_name)
+
+        # Missing cancel: input states without cancel/back
+        if state['input_state'] and not state['has_back_button']:
+            issues['missing_cancel_handlers'].append(state_name)
+
+        # Circular: state that transitions back to itself
+        for trans_name, trans in state['transitions'].items():
+            if trans.get('next_state') == state_name:
+                issues['circular_states'].append({
+                    'state': state_name,
+                    'via': trans_name,
+                })
+
+    return {
+        'states': states,
+        'total_states': len(states),
+        'issues': issues,
+    }
+
+
+def analyze_payload_patterns(architecture):
+    """Analyze input flow requirements and validation hints."""
+    input_flows = architecture.get('input_flows', [])
+    analyzed = []
+
+    for flow in input_flows:
+        prompt = flow.get('prompt', '')
+        prompt_lower = prompt.lower()
+
+        requirements = []
+
+        # Size requirements
+        size_match = re.search(r'(?:maksimal|max|maximum|up to)\s*(\d+)\s*(?:MB|KB|mb|kb)', prompt)
+        if size_match:
+            requirements.append(f'max_size: {size_match.group(0)}')
+
+        # Format requirements
+        formats = re.findall(r'\b(jpg|jpeg|png|webp|gif|mp4|mp3|pdf|heic|bmp|tiff|avif)\b', prompt_lower)
+        if formats:
+            requirements.append(f'formats: {", ".join(set(formats))}')
+
+        # Dimension hints
+        dim_match = re.search(r'(\d+)\s*[x×]\s*(\d+)', prompt)
+        if dim_match:
+            requirements.append(f'dimensions: {dim_match.group(0)}')
+
+        # Ratio hints
+        ratio_match = re.search(r'(\d+:\d+)', prompt)
+        if ratio_match:
+            requirements.append(f'ratio: {ratio_match.group(0)}')
+
+        # Send-as hints
+        if 'sebagai file' in prompt_lower or 'as document' in prompt_lower or 'sebagai dokumen' in prompt_lower:
+            requirements.append('send_as: document (not compressed photo)')
+
+        # Example/template hints
+        example_match = re.search(r'(?:contoh|example|e\.g\.)[:.]?\s*["\']?([^"\'\n]{10,80})', prompt_lower)
+        if example_match:
+            requirements.append(f'example: {example_match.group(1).strip()}')
+
+        analyzed.append({
+            **flow,
+            'requirements': requirements,
+        })
+
+    return analyzed
+
+
+def analyze_message_formats(architecture):
+    """Analyze text formatting patterns in bot messages."""
+    menus = architecture.get('menus', {})
+    results = {}
+
+    for key, menu in menus.items():
+        text = menu.get('text', '')
+        if not text:
+            continue
+
+        analysis = {
+            'length': len(text),
+            'line_count': text.count('\n') + 1,
+        }
+
+        # Formatting markers
+        formatting = []
+        if '**' in text:
+            formatting.append('bold_markdown')
+        if '__' in text:
+            formatting.append('italic_markdown')
+        if '`' in text:
+            formatting.append('code_markdown')
+        if '<b>' in text or '<strong>' in text:
+            formatting.append('bold_html')
+        if '<i>' in text or '<em>' in text:
+            formatting.append('italic_html')
+        if '<code>' in text:
+            formatting.append('code_html')
+        analysis['formatting'] = formatting
+        analysis['format_type'] = 'MarkdownV2' if any('markdown' in f for f in formatting) else ('HTML' if any('html' in f for f in formatting) else 'plain')
+
+        # Emoji analysis
+        emojis = re.findall(r'[\U0001F300-\U0001F9FF\U00002600-\U000027BF\U0000FE00-\U0000FE0F\U0001FA00-\U0001FA6F\U0001FA70-\U0001FAFF\U00002702-\U000027B0]', text)
+        emoji_categories = {}
+        for e in emojis:
+            cp = ord(e)
+            if 0x1F600 <= cp <= 0x1F64F:
+                cat = 'emoticons'
+            elif 0x1F680 <= cp <= 0x1F6FF:
+                cat = 'transport'
+            elif 0x1F300 <= cp <= 0x1F5FF:
+                cat = 'symbols_pictographs'
+            elif 0x2600 <= cp <= 0x27BF:
+                cat = 'misc_symbols'
+            else:
+                cat = 'other'
+            emoji_categories[cat] = emoji_categories.get(cat, 0) + 1
+
+        analysis['emojis_used'] = len(emojis)
+        analysis['emoji_categories'] = emoji_categories
+
+        # Text structure
+        has_header = bool(re.match(r'^[^\n]*\*\*[^\n]+\*\*', text))
+        has_bullets = bool(re.search(r'\n[•\-\*]\s', text))
+        has_numbered = bool(re.search(r'\n\d+[.)]\s', text))
+        has_cta = bool(re.search(r'(?:pilih|klik|tekan|select|click|tap|kirim|send)', text.lower()))
+
+        structure_parts = []
+        if has_header:
+            structure_parts.append('header')
+        if has_bullets or has_numbered:
+            structure_parts.append('list')
+        if has_cta:
+            structure_parts.append('cta')
+
+        analysis['structure'] = 'structured' if len(structure_parts) >= 2 else 'simple'
+        analysis['structure_parts'] = structure_parts
+
+        results[key] = analysis
+
+    return results
+
+
+def detect_bot_personality(architecture):
+    """Analyze bot personality from all response texts."""
+    menus = architecture.get('menus', {})
+    commands = architecture.get('commands', {})
+
+    all_texts = []
+    for menu in menus.values():
+        if menu.get('text'):
+            all_texts.append(menu['text'])
+    for cmd in commands.values():
+        if cmd.get('text') and cmd.get('status') == 'implemented':
+            all_texts.append(cmd['text'])
+
+    combined = ' '.join(all_texts)
+    combined_lower = combined.lower()
+    total_words = len(combined.split())
+
+    if total_words == 0:
+        return {'note': 'No text to analyze'}
+
+    # Language detection
+    indo_words = ['silakan', 'pilih', 'kirim', 'kembali', 'batal', 'menu', 'yang', 'dan', 'untuk', 'dengan', 'ini', 'itu', 'sudah', 'belum', 'halo', 'selamat']
+    eng_words = ['please', 'select', 'send', 'back', 'cancel', 'menu', 'click', 'choose', 'enter', 'welcome', 'hello']
+
+    indo_count = sum(1 for w in indo_words if w in combined_lower)
+    eng_count = sum(1 for w in eng_words if w in combined_lower)
+    total_lang = indo_count + eng_count or 1
+
+    indo_ratio = round(indo_count / total_lang, 2)
+    eng_ratio = round(eng_count / total_lang, 2)
+
+    if indo_ratio > 0.7:
+        language = 'Indonesian'
+    elif eng_ratio > 0.7:
+        language = 'English'
+    else:
+        language = 'Mixed'
+
+    # Formality
+    formal_markers = ['silakan', 'terima kasih', 'mohon', 'dengan hormat', 'please', 'thank you', 'kindly']
+    casual_markers = ['yuk', 'nih', 'dong', 'kak', 'bang', 'hey', 'yo', 'gue', 'lo', 'wkwk', 'hehe']
+
+    formal_count = sum(1 for m in formal_markers if m in combined_lower)
+    casual_count = sum(1 for m in casual_markers if m in combined_lower)
+
+    if formal_count > casual_count * 2:
+        formality = 'formal'
+    elif casual_count > formal_count * 2:
+        formality = 'casual'
+    else:
+        formality = 'semi-formal'
+
+    # Tone
+    urgent_words = ['segera', 'sekarang', 'urgent', 'immediately', 'cepat', 'buruan']
+    friendly_words = ['halo', 'hai', 'selamat', 'welcome', 'hello', 'hi', 'kak']
+    professional_words = ['informasi', 'layanan', 'fitur', 'service', 'feature', 'information']
+
+    urgent = sum(1 for w in urgent_words if w in combined_lower)
+    friendly = sum(1 for w in friendly_words if w in combined_lower)
+    professional = sum(1 for w in professional_words if w in combined_lower)
+
+    if friendly > professional and friendly > urgent:
+        tone = 'friendly'
+    elif professional > friendly:
+        tone = 'professional'
+    elif urgent > 0:
+        tone = 'urgent'
+    else:
+        tone = 'neutral'
+
+    # Emoji density
+    emojis = re.findall(r'[\U0001F300-\U0001F9FF\U00002600-\U000027BF\U0000FE00-\U0000FE0F\U0001FA00-\U0001FA6F\U0001FA70-\U0001FAFF\U00002702-\U000027B0]', combined)
+    emoji_per_msg = len(emojis) / max(len(all_texts), 1)
+
+    if emoji_per_msg > 3:
+        emoji_density = 'high'
+    elif emoji_per_msg > 1:
+        emoji_density = 'medium'
+    else:
+        emoji_density = 'low'
+
+    return {
+        'language': language,
+        'language_ratio': {'indonesian': indo_ratio, 'english': eng_ratio},
+        'formality': formality,
+        'formality_scores': {'formal': formal_count, 'casual': casual_count},
+        'tone': tone,
+        'emoji_density': emoji_density,
+        'emoji_per_message': round(emoji_per_msg, 1),
+        'total_unique_emojis': len(set(emojis)),
+        'avg_message_length': round(total_words / max(len(all_texts), 1), 1),
+    }
+
+
+def generate_weakness_report(architecture):
+    """Auto-generate competitive weaknesses from extraction data."""
+    weaknesses = []
+
+    commands = architecture.get('commands', {})
+    menus = architecture.get('menus', {})
+    input_flows = architecture.get('input_flows', [])
+    dead_buttons = architecture.get('dead_buttons', [])
+    url_buttons = architecture.get('url_buttons', [])
+    ux = architecture.get('ux_score', {})
+
+    # Missing standard commands
+    standard_commands = {'/help': 'Help system', '/cancel': 'Cancel handler', '/settings': 'User settings', '/support': 'Support contact'}
+    for cmd, purpose in standard_commands.items():
+        if commands.get(cmd, {}).get('status') == 'not_implemented':
+            weaknesses.append({
+                'type': 'missing_feature',
+                'detail': f'No {cmd} command ({purpose})',
+                'severity': 'high' if cmd in ['/help', '/cancel'] else 'medium',
+            })
+
+    # Dead buttons
+    if dead_buttons:
+        weaknesses.append({
+            'type': 'dead_buttons',
+            'detail': f'{len(dead_buttons)} unresponsive buttons: {[db.get("label") for db in dead_buttons[:3]]}',
+            'severity': 'high',
+        })
+
+    # UX friction: deep menus without shortcuts
+    max_depth = max((m.get('depth', 0) for m in menus.values()), default=0)
+    if max_depth > 3:
+        weaknesses.append({
+            'type': 'ux_friction',
+            'detail': f'Deep menu structure (depth {max_depth}) without shortcuts',
+            'severity': 'medium',
+        })
+
+    # Missing onboarding (if /start just shows menu without welcome)
+    start = menus.get('__root__', {})
+    start_text = start.get('text', '').lower()
+    if not any(w in start_text for w in ['selamat datang', 'welcome', 'tutorial', 'panduan', 'guide']):
+        weaknesses.append({
+            'type': 'missing_onboarding',
+            'detail': 'No clear onboarding or welcome tutorial for new users',
+            'severity': 'low',
+        })
+
+    # Input flows without clear error handling
+    for flow in input_flows:
+        prompt = flow.get('prompt', '').lower()
+        if not any(w in prompt for w in ['batal', 'cancel', 'salah', 'error', 'ulang', 'retry']):
+            weaknesses.append({
+                'type': 'missing_error_handling',
+                'detail': f'Input flow "{flow.get("state")}" at {" > ".join(flow.get("path", []))} has no visible error/cancel guidance',
+                'severity': 'medium',
+            })
+
+    # All commands redirect to same menu (lazy catch-all)
+    impl_texts = set()
+    for cmd, data in commands.items():
+        if data.get('status') == 'implemented':
+            impl_texts.add(data.get('text', '')[:100])
+    if len(impl_texts) == 1 and len([c for c in commands.values() if c.get('status') == 'implemented']) > 2:
+        weaknesses.append({
+            'type': 'lazy_routing',
+            'detail': 'All implemented commands return identical response (catch-all pattern)',
+            'severity': 'medium',
+        })
+
+    # No multimedia
+    if not architecture.get('media_types_observed'):
+        weaknesses.append({
+            'type': 'no_multimedia',
+            'detail': 'Bot uses text-only responses with no photos/videos/documents',
+            'severity': 'low',
+        })
+
+    return weaknesses
+
+
+def estimate_clone_difficulty(architecture):
+    """Estimate difficulty of cloning this bot."""
+    breakdown = {}
+
+    menus = architecture.get('menus', {})
+    input_flows = architecture.get('input_flows', [])
+    url_buttons = architecture.get('url_buttons', [])
+    tech = architecture.get('tech_hints', {})
+    commands = architecture.get('commands', {})
+
+    menu_count = len(menus)
+    flow_count = len(input_flows)
+    unique_urls = set(ub.get('url', '') for ub in url_buttons)
+    backend = tech.get('estimated_backend', 'sync')
+    impl_count = sum(1 for c in commands.values() if c.get('status') == 'implemented')
+
+    # Scoring
+    breakdown['menu_complexity'] = 2 if menu_count > 20 else (1.5 if menu_count > 10 else (1 if menu_count > 5 else 0.5))
+    breakdown['input_integrations'] = 3 if flow_count > 5 else (2 if flow_count > 2 else (1 if flow_count > 0 else 0))
+    breakdown['external_integrations'] = 2 if len(unique_urls) > 5 else (1.5 if len(unique_urls) > 2 else (1 if len(unique_urls) > 0 else 0))
+    breakdown['backend_complexity'] = 2 if backend == 'async_ai' else 1
+    breakdown['command_scope'] = min(1, round(impl_count / 10, 1))
+
+    score = round(min(sum(breakdown.values()), 10), 1)
+
+    # Estimate hours
+    estimated_hours = round(
+        20 +  # base bot skeleton
+        menu_count * 0.5 +
+        flow_count * 4 +
+        len(unique_urls) * 2 +
+        impl_count * 1
+    )
+
+    challenges = [c for c in [
+        f'{flow_count} input flows requiring AI/processing backends' if flow_count > 0 else None,
+        f'{len(unique_urls)} external service integrations' if unique_urls else None,
+        'Async AI backend detected - needs queue/webhook system' if backend == 'async_ai' else None,
+        f'{menu_count} menu nodes to replicate' if menu_count > 10 else None,
+    ] if c]
+
+    return {
+        'score': score,
+        'max_score': 10,
+        'breakdown': breakdown,
+        'estimated_hours': estimated_hours,
+        'estimated_days': round(estimated_hours / 8),
+        'key_challenges': challenges,
+    }
+
+
+def generate_flowchart(architecture):
+    """Generate mermaid.js graph TD flowchart from bot architecture."""
+    lines = ['graph TD']
+
+    menus = architecture.get('menus', {})
+    input_flows = architecture.get('input_flows', [])
+    url_buttons = architecture.get('url_buttons', [])
+
+    node_map = {}
+    counter = [0]
+
+    def node_id(name):
+        if name not in node_map:
+            counter[0] += 1
+            node_map[name] = f'N{counter[0]}'
+        return node_map[name]
+
+    def safe_label(text, max_len=40):
+        return text.replace('"', "'").replace('\n', ' ')[:max_len]
+
+    # Root
+    root_id = node_id('__root__')
+    lines.append(f'    {root_id}["/start"]')
+
+    # Input states set for parallelogram detection
+    input_state_triggers = set(f['trigger'] for f in input_flows)
+
+    for key, menu in menus.items():
+        if key == '__root__':
+            continue
+
+        nid = node_id(key)
+        label = safe_label(key)
+        trigger = menu.get('trigger', '')
+
+        if trigger in input_state_triggers:
+            # Parallelogram for input states
+            state = menu.get('input_state', 'INPUT')
+            lines.append(f'    {nid}[/"{label}\\n[{state}]"/]')
+        elif menu.get('buttons'):
+            # Rectangle for menus
+            lines.append(f'    {nid}["{label}"]')
+        else:
+            # Stadium for outputs/dead ends
+            lines.append(f'    {nid}(["{label}"])')
+
+        # Connect to parent
+        path = menu.get('path', [])
+        if len(path) <= 1:
+            lines.append(f'    {root_id} --> {nid}')
+        else:
+            parent_path = path[:-1]
+            parent_key = parent_path[0] if len(parent_path) == 1 else ' > '.join(parent_path)
+            # Find best parent
+            if parent_key in node_map:
+                lines.append(f'    {node_map[parent_key]} --> {nid}')
+            else:
+                # Try finding by first path element
+                for mk in menus:
+                    if mk == parent_path[0] or mk.endswith(parent_path[-1] if len(parent_path) > 0 else ''):
+                        if mk in node_map:
+                            lines.append(f'    {node_map[mk]} --> {nid}')
+                            break
+                else:
+                    lines.append(f'    {root_id} --> {nid}')
+
+    # URL buttons as dotted connections
+    seen_urls = set()
+    for ub in url_buttons:
+        url_text = ub.get('text', 'Link')
+        url = ub.get('url', '')
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        uid = node_id(f'url_{url}')
+        label = safe_label(url_text, 35)
+        lines.append(f'    {uid}>"{label}"]')
+
+        path = ub.get('path', [])
+        if path:
+            parent_key = path[0] if len(path) == 1 else ' > '.join(path)
+            if parent_key in node_map:
+                lines.append(f'    {node_map[parent_key]} -.-> {uid}')
+
+    return '\n'.join(lines)
+
+
 async def extract_bot(bot_username, session_name='alwayscuanbos', quick=False, verbose=True):
     """Main extraction function with retries, timing, context navigation."""
     session_path = SESSIONS.get(session_name)
@@ -681,6 +1207,45 @@ async def extract_bot(bot_username, session_name='alwayscuanbos', quick=False, v
 
     architecture['ux_score'] = compute_ux_score(architecture)
 
+    # ============================
+    # Phase 5: Advanced Analysis
+    # ============================
+    if verbose:
+        print(f'\n[Phase 5] Advanced Analysis')
+        print('-' * 40)
+
+    architecture['state_machine'] = build_state_machine(architecture)
+    if verbose:
+        sm = architecture['state_machine']
+        print(f'  States: {sm["total_states"]}')
+        print(f'  Dead ends: {sm["issues"]["dead_ends"]}')
+        print(f'  Missing cancel: {sm["issues"]["missing_cancel_handlers"]}')
+
+    architecture['input_flows'] = analyze_payload_patterns(architecture)
+
+    architecture['format_analysis'] = analyze_message_formats(architecture)
+
+    architecture['bot_personality'] = detect_bot_personality(architecture)
+    if verbose:
+        bp = architecture['bot_personality']
+        print(f'  Language: {bp.get("language")} | Tone: {bp.get("tone")} | Formality: {bp.get("formality")}')
+        print(f'  Emoji density: {bp.get("emoji_density")} ({bp.get("emoji_per_message")} per msg)')
+
+    architecture['weakness_report'] = generate_weakness_report(architecture)
+    if verbose:
+        wr = architecture['weakness_report']
+        print(f'  Weaknesses found: {len(wr)}')
+        for w in wr[:3]:
+            print(f'    [{w["severity"]}] {w["detail"]}')
+
+    architecture['clone_difficulty'] = estimate_clone_difficulty(architecture)
+    if verbose:
+        cd = architecture['clone_difficulty']
+        print(f'  Clone difficulty: {cd["score"]}/{cd["max_score"]}')
+        print(f'  Estimated: {cd["estimated_hours"]}h ({cd["estimated_days"]} days)')
+
+    architecture['mermaid_flowchart'] = generate_flowchart(architecture)
+
     if verbose:
         s = architecture['summary']
         ux = architecture['ux_score']
@@ -764,6 +1329,7 @@ async def main():
     parser.add_argument('--output', help='Output JSON file path')
     parser.add_argument('--blueprint', action='store_true', help='Generate clone blueprint')
     parser.add_argument('--quiet', action='store_true', help='Suppress verbose output')
+    parser.add_argument('--flowchart', action='store_true', help='Generate mermaid flowchart')
     args = parser.parse_args()
 
     architecture = await extract_bot(
@@ -783,6 +1349,17 @@ async def main():
         if not args.quiet:
             print('\n[Blueprint]')
             print(json.dumps(blueprint, indent=2, ensure_ascii=False))
+
+    if args.flowchart:
+        flowchart = generate_flowchart(architecture if not args.blueprint else output_data.get('architecture', architecture))
+        if not args.quiet:
+            print('\n[Mermaid Flowchart]')
+            print(flowchart)
+        # Save flowchart
+        fc_path = (args.output or f'{args.bot.lstrip("@")}_flowchart.md').replace('.json', '_flowchart.md')
+        with open(fc_path, 'w') as f:
+            f.write(f'# Flowchart: {args.bot}\n\n```mermaid\n{flowchart}\n```\n')
+        print(f'Flowchart saved to {fc_path}')
 
     if args.output:
         with open(args.output, 'w', encoding='utf-8') as f:
