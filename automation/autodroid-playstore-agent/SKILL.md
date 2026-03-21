@@ -1,65 +1,98 @@
----
-name: autodroid-playstore-agent
-description: Android Play Store automation on top of1ai-autodroid. Use this when you need to install, update, or open apps on an Android device via Google Play Store using ADB + UI flows. Supports: checking if a package is installed, opening Play Store app, searching apps by name, opening app detail page via URL, and tapping Install/Update/Open buttons. Acts as the installer/foundation for other Android sub-skills (Gemini, Grok, TikTok, Shopee, etc.).
----
+# autodroid-playstore-agent v2.0
 
-> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
+Robust Play Store automation via ADB. Install/uninstall apps, search, take screenshots.
 
-#1ai-playstore-agent
+## Install Strategy (3 layers)
 
-Play Store automation layer built on top of **1ai-autodroid**.
+1. **market:// URI** → direct package page → find Instal button by UI dump
+2. **Search by name** → tap first result → find Instal button
+3. Graceful failure → JSON error + screenshot of current state
 
-## When to use
-
-- Sebelum pakai `1ai-gemini-agent`, `1ai-grok-agent`, `1ai-tiktok-agent`, `1ai-shopee-agent`, dll.
-- Saat kamu perlu:
- - Install app baru dari Play Store.
- - Cek apakah sebuah package sudah terinstall.
- - Open halaman Play Store untuk app tertentu.
-
-## Capabilities (v1)
-
-- `status` — cek apakah package terinstall (via `adb shell pm list packages`).
-- `open-store` — buka Play Store ke halaman utama.
-- `search` — buka Play Store, fokus ke search, ketik nama app.
-- `open-by-url` — buka Play Store page via browser URL (jika pattern URL disediakan).
-- `install` (best-effort) — search app dan tap tombol **Install** jika terlihat.
-
-Semua operasi UI dilakukan via `1ai-autodroid` primitives:
-- `autodroid.py launch <package>`
-- `autodroid.py tap-text "<label>"`
-- `autodroid.py screenshot`
-
-Lihat `references/flows.md` untuk detail langkah per UI.
-
-## Quickstart
+## Quick Start
 
 ```bash
-# Cek apakah TikTok sudah terinstall
-python3 skills/1ai-autodroid/scripts/autodroid.py adb-shell "pm list packages | grep -i musically"
+cd /mnt/data/berkahkarya/skills/1ai-skills/automation/autodroid-playstore-agent
 
-# Pakai helper Play Store agent (nanti)
-python3 skills/1ai-playstore-agent/scripts/playstore_agent.py status --package com.zhiliaoapp.musically
+# List devices
+python3 scripts/playstore_agent.py devices
 
-# Buka Play Store home
-python3 skills/1ai-playstore-agent/scripts/playstore_agent.py open-store
+# Check if installed
+python3 scripts/playstore_agent.py status --package com.instagram.android
 
-# Search "TikTok"
-python3 skills/1ai-playstore-agent/scripts/playstore_agent.py search --query "TikTok"
+# Install by package ID (most reliable)
+python3 scripts/playstore_agent.py install --package com.instagram.android
 
-# Attempt install app by name
-python3 skills/1ai-playstore-agent/scripts/playstore_agent.py install --name "TikTok"
+# Install by name (fallback)
+python3 scripts/playstore_agent.py install --name "Instagram"
+
+# Install by both (safest)
+python3 scripts/playstore_agent.py install --package com.instagram.android --name "Instagram"
+
+# Search
+python3 scripts/playstore_agent.py search --query "photo editor"
+
+# Uninstall
+python3 scripts/playstore_agent.py uninstall --package com.instagram.android
+
+# Screenshot
+python3 scripts/playstore_agent.py screenshot
+
+# Start API server
+python3 scripts/playstore_agent.py server --port 8771
 ```
 
-## Implementation notes
+## Output (always JSON)
 
-- Selalu gunakan `1ai-autodroid` sebagai backend — JANGAN langsung panggil `adb` di sini tanpa melalui skill core, kecuali untuk check `pm list packages` yang simple.
-- Flows Play Store bisa berubah UI; simpan mapping terbaru di `references/flows.md` agar agent lain dapat reuse.
-- Target minimal v1: cukup robust untuk install app mainstream (TikTok, Gemini, Shopee) di device utama.
+```json
+// status
+{"ok": true, "installed": true, "package": "com.instagram.android", "device": "SGZTONV4OBL74TJZ"}
 
-## Files
+// install - success
+{"ok": true, "installed": true, "package": "...", "strategy": "market_uri", "screenshot_path": "..."}
 
-- `scripts/playstore_agent.py` — CLI wrapper untuk status/open/search/install.
-- `references/flows.md` — dokumentasi flow UI Play Store.
+// install - already installed
+{"ok": true, "already_installed": true, "package": "..."}
 
-Gunakan skill ini sebagai fondasi sebelum membangun sub-skill spesifik app.
+// install - by name only (can't verify)
+{"ok": true, "installed": null, "note": "Install tapped but cannot verify (no --package given)"}
+
+// install - failed
+{"ok": false, "error": "Install button not found after all strategies", "strategies_tried": [...], "screenshot_path": "..."}
+```
+
+## API Endpoints (port 8771)
+
+| Method | Path | Params | Description |
+|--------|------|--------|-------------|
+| GET | /health | — | Server health |
+| GET | /devices | — | List ADB devices |
+| GET | /status | `?package=` | Check install |
+| POST | /open-store | — | Launch Play Store |
+| GET | /search | `?query=` | Search apps |
+| POST | /install | `{package, name, wait}` | Install app |
+| POST | /uninstall | `{package}` | Uninstall |
+| GET | /screenshot | — | Screenshot |
+| GET | /docs | — | Swagger UI |
+
+## Graceful Error Handling
+
+- Missing `--package` and `--name` → `{"ok": false, "error": "Provide --package or --name"}`
+- Already installed → `{"ok": true, "already_installed": true, ...}` (idempotent)
+- Instal button not found → tries next strategy
+- All strategies failed → returns screenshot for debugging
+
+## Multi-Device
+
+```bash
+python3 scripts/playstore_agent.py install --package com.instagram.android --device SERIAL1
+```
+
+## Features
+- ✅ 3-strategy install with auto-fallback
+- ✅ Always returns JSON (never crashes with argparse error)
+- ✅ Already-installed check (idempotent)
+- ✅ Wake device before all operations
+- ✅ Popup/promo dismissal
+- ✅ Wait-for-install polling (120s timeout)
+- ✅ FastAPI server
+- ✅ Multi-device support

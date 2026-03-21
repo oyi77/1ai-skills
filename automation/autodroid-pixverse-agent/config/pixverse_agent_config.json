@@ -1,0 +1,13 @@
+{
+  "device_serial": "SGZTONV4OBL74TJZ",
+  "adb_host": "localhost",
+  "adb_port": 8775,
+  "screenshot_dir": "~/.openclaw/workspace/downloads",
+  "ai_intercept": true,
+  "tap_delay_ms": 500,
+  "max_retries": 3,
+  "timeout_seconds": 180,
+  "server_port": 8775,
+  "package": "com.pixverse.app",
+  "generation_timeout": 180
+}
