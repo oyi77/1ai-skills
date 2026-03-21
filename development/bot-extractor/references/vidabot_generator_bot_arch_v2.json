@@ -1,0 +1,923 @@
+{
+  "bot": "@vidabot_generator_bot",
+  "extracted_at": "2026-03-21T17:24:29Z",
+  "extracted_by": "@alwayscuanbos",
+  "extractor_version": "v2",
+  "user_data": {
+    "email": "ketananna@yahoo.com",
+    "telegram_id": "157228659"
+  },
+  "commands": {
+    "/start": {
+      "text": "👋 Halo **Andik**!\n\nSelamat datang kembali di **VIDABOT Generator Telegram**\n\n🆔 Telegram ID: `157228659`\n📧 Email: `ketananna@yahoo.com`\n\nPilih menu yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "type": "callback",
+          "data": "menu_generate_image",
+          "url": null
+        },
+        {
+          "text": "🎬 Buat Video",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "response_time_ms": 254.0,
+      "media_type": null,
+      "status": "implemented"
+    },
+    "/help": {
+      "text": "👋 Halo **Andik**!\n\nSelamat datang kembali di **VIDABOT Generator Telegram**\n\n🆔 Telegram ID: `157228659`\n📧 Email: `ketananna@yahoo.com`\n\nPilih menu yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "type": "callback",
+          "data": "menu_generate_image",
+          "url": null
+        },
+        {
+          "text": "🎬 Buat Video",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "response_time_ms": 306.1,
+      "media_type": null,
+      "status": "implemented"
+    },
+    "/admin": {
+      "text": "👋 Halo **Andik**!\n\nSelamat datang kembali di **VIDABOT Generator Telegram**\n\n🆔 Telegram ID: `157228659`\n📧 Email: `ketananna@yahoo.com`\n\nPilih menu yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "type": "callback",
+          "data": "menu_generate_image",
+          "url": null
+        },
+        {
+          "text": "🎬 Buat Video",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "response_time_ms": 414.0,
+      "media_type": null,
+      "status": "implemented"
+    },
+    "/settings": {
+      "text": "👋 Halo **Andik**!\n\nSelamat datang kembali di **VIDABOT Generator Telegram**\n\n🆔 Telegram ID: `157228659`\n📧 Email: `ketananna@yahoo.com`\n\nPilih menu yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "type": "callback",
+          "data": "menu_generate_image",
+          "url": null
+        },
+        {
+          "text": "🎬 Buat Video",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "response_time_ms": 755.9,
+      "media_type": null,
+      "status": "implemented"
+    },
+    "/status": {
+      "text": "👋 Halo **Andik**!\n\nSelamat datang kembali di **VIDABOT Generator Telegram**\n\n🆔 Telegram ID: `157228659`\n📧 Email: `ketananna@yahoo.com`\n\nPilih menu yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "type": "callback",
+          "data": "menu_generate_image",
+          "url": null
+        },
+        {
+          "text": "🎬 Buat Video",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "response_time_ms": 754.7,
+      "media_type": null,
+      "status": "implemented"
+    },
+    "/credits": {
+      "text": "/credits",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 711.4,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/info": {
+      "text": "/info",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 768.2,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/menu": {
+      "text": "/menu",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 863.7,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/about": {
+      "text": "/about",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 1006.2,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/cancel": {
+      "text": "/cancel",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 759.0,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/panel": {
+      "text": "/panel",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 437.9,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/dashboard": {
+      "text": "/dashboard",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 436.6,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/profile": {
+      "text": "/profile",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 361.7,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/account": {
+      "text": "/account",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 233.5,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/language": {
+      "text": "/language",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 295.6,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/lang": {
+      "text": "/lang",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 266.8,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/premium": {
+      "text": "/premium",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 243.6,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/upgrade": {
+      "text": "/upgrade",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 273.2,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/plan": {
+      "text": "/plan",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 284.7,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/history": {
+      "text": "/history",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 286.6,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/balance": {
+      "text": "/balance",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 261.3,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/refer": {
+      "text": "/refer",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 177.5,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/invite": {
+      "text": "/invite",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 148.6,
+      "media_type": null,
+      "status": "not_implemented"
+    },
+    "/support": {
+      "text": "/support",
+      "buttons": [],
+      "input_state": null,
+      "response_time_ms": 170.9,
+      "media_type": null,
+      "status": "not_implemented"
+    }
+  },
+  "menus": {
+    "__root__": {
+      "trigger": "/start",
+      "text": "👋 Halo **Andik**!\n\nSelamat datang kembali di **VIDABOT Generator Telegram**\n\n🆔 Telegram ID: `157228659`\n📧 Email: `ketananna@yahoo.com`\n\nPilih menu yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🖼️ Buat Gambar Model",
+          "type": "callback",
+          "data": "menu_generate_image",
+          "url": null
+        },
+        {
+          "text": "🎬 Buat Video",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        },
+        {
+          "text": "🎬 Shortcut: Image to Video",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        },
+        {
+          "text": "🛠️ Tools Lain",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 0,
+      "path": [],
+      "media_type": null
+    },
+    "🖼️ Buat Gambar Model": {
+      "trigger": "menu_generate_image",
+      "text": "🖼️ **Buat Gambar Model**\n\n🚧 **Coming Soon ya Kak!**\n\nFitur ini sedang dalam pengembangan.\nNantikan update selanjutnya! 🎉",
+      "buttons": [
+        {
+          "text": "🔙 Kembali ke Menu",
+          "type": "callback",
+          "data": "back_to_main_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 1,
+      "path": [
+        "🖼️ Buat Gambar Model"
+      ],
+      "response_time_ms": 663.1,
+      "media_type": null
+    },
+    "🎬 Buat Video": {
+      "trigger": "menu_generate_video",
+      "text": "🎬 **Buat Video**\n\nPilih mode dan rasio video:\n\n🖼️ = Dari Gambar (Image-to-Video)\n📝 = Dari Teks (Text-to-Video)\n📱 = Portrait (9:16)\n🖥️ = Landscape (16:9)",
+      "buttons": [
+        {
+          "text": "🖼️📱 Image Portrait",
+          "type": "callback",
+          "data": "video_i2v_portrait",
+          "url": null
+        },
+        {
+          "text": "🖼️🖥️ Image Landscape",
+          "type": "callback",
+          "data": "video_i2v_landscape",
+          "url": null
+        },
+        {
+          "text": "📝📱 Text Portrait",
+          "type": "callback",
+          "data": "video_t2v_portrait",
+          "url": null
+        },
+        {
+          "text": "📝🖥️ Text Landscape",
+          "type": "callback",
+          "data": "video_t2v_landscape",
+          "url": null
+        },
+        {
+          "text": "🔙 Kembali",
+          "type": "callback",
+          "data": "back_to_main_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 1,
+      "path": [
+        "🎬 Buat Video"
+      ],
+      "response_time_ms": 703.2,
+      "media_type": null
+    },
+    "🎬 Shortcut: Image to Video": {
+      "trigger": "shortcut_i2v",
+      "text": "🎬 **Shortcut: Image to Video**\n\nPilih orientasi video:\n\n📱 Portrait = 9:16 (cocok untuk TikTok, Reels)\n🖥️ Landscape = 16:9 (cocok untuk YouTube)",
+      "buttons": [
+        {
+          "text": "📱 Portrait (9:16)",
+          "type": "callback",
+          "data": "shortcut_i2v_portrait",
+          "url": null
+        },
+        {
+          "text": "🖥️ Landscape (16:9)",
+          "type": "callback",
+          "data": "shortcut_i2v_landscape",
+          "url": null
+        },
+        {
+          "text": "🔙 Kembali",
+          "type": "callback",
+          "data": "back_to_main_menu",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 1,
+      "path": [
+        "🎬 Shortcut: Image to Video"
+      ],
+      "response_time_ms": 513.4,
+      "media_type": null
+    },
+    "🛠️ Tools Lain": {
+      "trigger": "tools_menu",
+      "text": "🛠️ **Tools Lain**\n\nPilih tools yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+          "type": "url",
+          "data": null,
+          "url": "https://ai.studio/apps/drive/1uBba4LX8jJkvIKDb410YA3EoUtgQUUrt?fullscreenApplet=true"
+        },
+        {
+          "text": "✨ UGC Lipsync - Baru - Ringan",
+          "type": "url",
+          "data": null,
+          "url": "https://gemini.google.com/share/957bd63fad4a"
+        },
+        {
+          "text": "🖼️ Convert Gambar ke JPG",
+          "type": "callback",
+          "data": "tools_convert_jpg",
+          "url": null
+        },
+        {
+          "text": "◀️ Kembali ke Menu",
+          "type": "callback",
+          "data": "back_to_admin_start",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 1,
+      "path": [
+        "🛠️ Tools Lain"
+      ],
+      "response_time_ms": 537.6,
+      "media_type": null
+    },
+    "🖼️ Buat Gambar Model > 🔙 Kembali ke Menu": {
+      "trigger": "back_to_main_menu",
+      "text": "🛠️ **Tools Lain**\n\nPilih tools yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+          "type": "url",
+          "data": null,
+          "url": "https://ai.studio/apps/drive/1uBba4LX8jJkvIKDb410YA3EoUtgQUUrt?fullscreenApplet=true"
+        },
+        {
+          "text": "✨ UGC Lipsync - Baru - Ringan",
+          "type": "url",
+          "data": null,
+          "url": "https://gemini.google.com/share/957bd63fad4a"
+        },
+        {
+          "text": "🖼️ Convert Gambar ke JPG",
+          "type": "callback",
+          "data": "tools_convert_jpg",
+          "url": null
+        },
+        {
+          "text": "◀️ Kembali ke Menu",
+          "type": "callback",
+          "data": "back_to_admin_start",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 2,
+      "path": [
+        "🖼️ Buat Gambar Model",
+        "🔙 Kembali ke Menu"
+      ],
+      "response_time_ms": 551.4,
+      "media_type": null
+    },
+    "🎬 Buat Video > 🖼️📱 Image Portrait": {
+      "trigger": "video_i2v_portrait",
+      "text": "🛠️ **Tools Lain**\n\nPilih tools yang ingin digunakan:",
+      "buttons": [
+        {
+          "text": "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+          "type": "url",
+          "data": null,
+          "url": "https://ai.studio/apps/drive/1uBba4LX8jJkvIKDb410YA3EoUtgQUUrt?fullscreenApplet=true"
+        },
+        {
+          "text": "✨ UGC Lipsync - Baru - Ringan",
+          "type": "url",
+          "data": null,
+          "url": "https://gemini.google.com/share/957bd63fad4a"
+        },
+        {
+          "text": "🖼️ Convert Gambar ke JPG",
+          "type": "callback",
+          "data": "tools_convert_jpg",
+          "url": null
+        },
+        {
+          "text": "◀️ Kembali ke Menu",
+          "type": "callback",
+          "data": "back_to_admin_start",
+          "url": null
+        }
+      ],
+      "input_state": null,
+      "depth": 2,
+      "path": [
+        "🎬 Buat Video",
+        "🖼️📱 Image Portrait"
+      ],
+      "response_time_ms": 563.9,
+      "media_type": null
+    },
+    "🎬 Buat Video > 🖼️🖥️ Image Landscape": {
+      "trigger": "video_i2v_landscape",
+      "text": "🎬 **Image-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n🖼️ Silakan kirim foto yang ingin dijadikan video:\n\n__Foto bisa berupa wajah, pemandangan, objek, dll.__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2,
+      "path": [
+        "🎬 Buat Video",
+        "🖼️🖥️ Image Landscape"
+      ],
+      "response_time_ms": 908.7,
+      "media_type": null
+    },
+    "🎬 Buat Video > 📝📱 Text Portrait": {
+      "trigger": "video_t2v_portrait",
+      "text": "🎬 **Text-to-Video** 📱\n\n📐 Rasio: Portrait (9:16)\n\n📝 Silakan ketik deskripsi video yang ingin dibuat:\n\n__Contoh: \"Kucing bermain bola di taman dengan background sunset\"__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_TEXT",
+      "depth": 2,
+      "path": [
+        "🎬 Buat Video",
+        "📝📱 Text Portrait"
+      ],
+      "response_time_ms": 628.0,
+      "media_type": null
+    },
+    "🎬 Buat Video > 📝🖥️ Text Landscape": {
+      "trigger": "video_t2v_landscape",
+      "text": "🎬 **Text-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n📝 Silakan ketik deskripsi video yang ingin dibuat:\n\n__Contoh: \"Kucing bermain bola di taman dengan background sunset\"__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_TEXT",
+      "depth": 2,
+      "path": [
+        "🎬 Buat Video",
+        "📝🖥️ Text Landscape"
+      ],
+      "response_time_ms": 663.3,
+      "media_type": null
+    },
+    "🎬 Shortcut: Image to Video > 📱 Portrait (9:16)": {
+      "trigger": "shortcut_i2v_portrait",
+      "text": "🎬 **Text-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n📝 Silakan ketik deskripsi video yang ingin dibuat:\n\n__Contoh: \"Kucing bermain bola di taman dengan background sunset\"__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "menu_generate_video",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_TEXT",
+      "depth": 2,
+      "path": [
+        "🎬 Shortcut: Image to Video",
+        "📱 Portrait (9:16)"
+      ],
+      "response_time_ms": 709.0,
+      "media_type": null
+    },
+    "🎬 Shortcut: Image to Video > 🖥️ Landscape (16:9)": {
+      "trigger": "shortcut_i2v_landscape",
+      "text": "🎬 **Image-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n🖼️ Silakan kirim foto yang ingin dijadikan video:\n\n__Foto bisa berupa wajah, pemandangan, objek, dll.__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "shortcut_i2v",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2,
+      "path": [
+        "🎬 Shortcut: Image to Video",
+        "🖥️ Landscape (16:9)"
+      ],
+      "response_time_ms": 755.8,
+      "media_type": null
+    },
+    "🛠️ Tools Lain > 🖼️ Convert Gambar ke JPG": {
+      "trigger": "tools_convert_jpg",
+      "text": "🖼️ **Convert Gambar ke JPG**\n\nKirim gambar dalam format apapun:\nPNG, WEBP, HEIC, BMP, TIFF, GIF, AVIF, dll\n\n📎 Kirim sebagai **FILE/DOKUMEN** (bukan foto)\nagar format asli tidak diubah Telegram.\n\n__Ketik ____/cancel____ untuk batal__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2,
+      "path": [
+        "🛠️ Tools Lain",
+        "🖼️ Convert Gambar ke JPG"
+      ],
+      "response_time_ms": 575.5,
+      "media_type": null
+    },
+    "🛠️ Tools Lain > ◀️ Kembali ke Menu": {
+      "trigger": "back_to_admin_start",
+      "text": "🖼️ **Convert Gambar ke JPG**\n\nKirim gambar dalam format apapun:\nPNG, WEBP, HEIC, BMP, TIFF, GIF, AVIF, dll\n\n📎 Kirim sebagai **FILE/DOKUMEN** (bukan foto)\nagar format asli tidak diubah Telegram.\n\n__Ketik ____/cancel____ untuk batal__",
+      "buttons": [
+        {
+          "text": "❌ Batal",
+          "type": "callback",
+          "data": "tools_menu",
+          "url": null
+        }
+      ],
+      "input_state": "WAITING_IMAGE",
+      "depth": 2,
+      "path": [
+        "🛠️ Tools Lain",
+        "◀️ Kembali ke Menu"
+      ],
+      "response_time_ms": 734.5,
+      "media_type": null
+    }
+  },
+  "input_flows": [
+    {
+      "trigger": "video_i2v_landscape",
+      "path": [
+        "🎬 Buat Video",
+        "🖼️🖥️ Image Landscape"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "🎬 **Image-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n🖼️ Silakan kirim foto yang ingin dijadikan video:\n\n__Foto bisa berupa wajah, pemandangan, objek, dll.__"
+    },
+    {
+      "trigger": "video_t2v_portrait",
+      "path": [
+        "🎬 Buat Video",
+        "📝📱 Text Portrait"
+      ],
+      "state": "WAITING_TEXT",
+      "prompt": "🎬 **Text-to-Video** 📱\n\n📐 Rasio: Portrait (9:16)\n\n📝 Silakan ketik deskripsi video yang ingin dibuat:\n\n__Contoh: \"Kucing bermain bola di taman dengan background sunset\"__"
+    },
+    {
+      "trigger": "video_t2v_landscape",
+      "path": [
+        "🎬 Buat Video",
+        "📝🖥️ Text Landscape"
+      ],
+      "state": "WAITING_TEXT",
+      "prompt": "🎬 **Text-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n📝 Silakan ketik deskripsi video yang ingin dibuat:\n\n__Contoh: \"Kucing bermain bola di taman dengan background sunset\"__"
+    },
+    {
+      "trigger": "shortcut_i2v_portrait",
+      "path": [
+        "🎬 Shortcut: Image to Video",
+        "📱 Portrait (9:16)"
+      ],
+      "state": "WAITING_TEXT",
+      "prompt": "🎬 **Text-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n📝 Silakan ketik deskripsi video yang ingin dibuat:\n\n__Contoh: \"Kucing bermain bola di taman dengan background sunset\"__"
+    },
+    {
+      "trigger": "shortcut_i2v_landscape",
+      "path": [
+        "🎬 Shortcut: Image to Video",
+        "🖥️ Landscape (16:9)"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "🎬 **Image-to-Video** 🖥️\n\n📐 Rasio: Landscape (16:9)\n\n🖼️ Silakan kirim foto yang ingin dijadikan video:\n\n__Foto bisa berupa wajah, pemandangan, objek, dll.__"
+    },
+    {
+      "trigger": "tools_convert_jpg",
+      "path": [
+        "🛠️ Tools Lain",
+        "🖼️ Convert Gambar ke JPG"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "🖼️ **Convert Gambar ke JPG**\n\nKirim gambar dalam format apapun:\nPNG, WEBP, HEIC, BMP, TIFF, GIF, AVIF, dll\n\n📎 Kirim sebagai **FILE/DOKUMEN** (bukan foto)\nagar format asli tidak diubah Telegram.\n\n__Ket"
+    },
+    {
+      "trigger": "back_to_admin_start",
+      "path": [
+        "🛠️ Tools Lain",
+        "◀️ Kembali ke Menu"
+      ],
+      "state": "WAITING_IMAGE",
+      "prompt": "🖼️ **Convert Gambar ke JPG**\n\nKirim gambar dalam format apapun:\nPNG, WEBP, HEIC, BMP, TIFF, GIF, AVIF, dll\n\n📎 Kirim sebagai **FILE/DOKUMEN** (bukan foto)\nagar format asli tidak diubah Telegram.\n\n__Ket"
+    }
+  ],
+  "dead_buttons": [],
+  "url_buttons": [
+    {
+      "text": "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+      "url": "https://ai.studio/apps/drive/1uBba4LX8jJkvIKDb410YA3EoUtgQUUrt?fullscreenApplet=true",
+      "depth": 1,
+      "path": [
+        "🛠️ Tools Lain"
+      ]
+    },
+    {
+      "text": "✨ UGC Lipsync - Baru - Ringan",
+      "url": "https://gemini.google.com/share/957bd63fad4a",
+      "depth": 1,
+      "path": [
+        "🛠️ Tools Lain"
+      ]
+    },
+    {
+      "text": "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+      "url": "https://ai.studio/apps/drive/1uBba4LX8jJkvIKDb410YA3EoUtgQUUrt?fullscreenApplet=true",
+      "depth": 2,
+      "path": [
+        "🖼️ Buat Gambar Model",
+        "🔙 Kembali ke Menu"
+      ]
+    },
+    {
+      "text": "✨ UGC Lipsync - Baru - Ringan",
+      "url": "https://gemini.google.com/share/957bd63fad4a",
+      "depth": 2,
+      "path": [
+        "🖼️ Buat Gambar Model",
+        "🔙 Kembali ke Menu"
+      ]
+    },
+    {
+      "text": "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+      "url": "https://ai.studio/apps/drive/1uBba4LX8jJkvIKDb410YA3EoUtgQUUrt?fullscreenApplet=true",
+      "depth": 2,
+      "path": [
+        "🎬 Buat Video",
+        "🖼️📱 Image Portrait"
+      ]
+    },
+    {
+      "text": "✨ UGC Lipsync - Baru - Ringan",
+      "url": "https://gemini.google.com/share/957bd63fad4a",
+      "depth": 2,
+      "path": [
+        "🎬 Buat Video",
+        "🖼️📱 Image Portrait"
+      ]
+    }
+  ],
+  "media_types_observed": [],
+  "tech_hints": {
+    "avg_response_time_ms": 498.0,
+    "max_response_time_ms": 1006.2,
+    "min_response_time_ms": 148.6,
+    "estimated_backend": "sync"
+  },
+  "button_data_map": {
+    "menu_generate_image": "🖼️ Buat Gambar Model",
+    "menu_generate_video": "🎬 Buat Video",
+    "shortcut_i2v": "🎬 Shortcut: Image to Video",
+    "tools_menu": "🛠️ Tools Lain",
+    "back_to_main_menu": "🔙 Kembali ke Menu",
+    "video_i2v_portrait": "🖼️📱 Image Portrait",
+    "video_i2v_landscape": "🖼️🖥️ Image Landscape",
+    "video_t2v_portrait": "📝📱 Text Portrait",
+    "video_t2v_landscape": "📝🖥️ Text Landscape",
+    "shortcut_i2v_portrait": "📱 Portrait (9:16)",
+    "shortcut_i2v_landscape": "🖥️ Landscape (16:9)",
+    "tools_convert_jpg": "🖼️ Convert Gambar ke JPG",
+    "back_to_admin_start": "◀️ Kembali ke Menu"
+  },
+  "summary": {
+    "total_menus": 14,
+    "total_callbacks": 13,
+    "total_input_flows": 7,
+    "dead_buttons": [],
+    "url_buttons": [
+      "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+      "✨ UGC Lipsync - Baru - Ringan",
+      "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+      "✨ UGC Lipsync - Baru - Ringan",
+      "🎨 Buat Bahan UGC Linsync - AISTUDIO VIDABOT",
+      "✨ UGC Lipsync - Baru - Ringan"
+    ],
+    "deepest_level": 2,
+    "commands_implemented": [
+      "/start",
+      "/help",
+      "/admin",
+      "/settings",
+      "/status"
+    ],
+    "commands_not_implemented": [
+      "/credits",
+      "/info",
+      "/menu",
+      "/about",
+      "/cancel",
+      "/panel",
+      "/dashboard",
+      "/profile",
+      "/account",
+      "/language",
+      "/lang",
+      "/premium",
+      "/upgrade",
+      "/plan",
+      "/history",
+      "/balance",
+      "/refer",
+      "/invite",
+      "/support"
+    ],
+    "estimated_backend": "sync",
+    "avg_response_time_ms": 498.0,
+    "media_types_observed": []
+  },
+  "ux_score": {
+    "score": 97,
+    "max_score": 100,
+    "breakdown": {
+      "start_menu": 20,
+      "commands": 15,
+      "input_flows": 15,
+      "no_dead_buttons": 15,
+      "menu_depth": 7,
+      "navigation": 10,
+      "speed": 10,
+      "external_links": 5
+    },
+    "issues": [],
+    "strengths": [
+      "Clear main menu with buttons on /start",
+      "5 commands implemented",
+      "7 input flows detected",
+      "No dead buttons found",
+      "Good back-button navigation",
+      "Fast responses (498ms avg)",
+      "6 external service links"
+    ]
+  }
+}
