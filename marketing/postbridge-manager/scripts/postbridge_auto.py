@@ -35,8 +35,8 @@ def _api(method, path, data=None):
 
 def auto_retry_failed():
     """Fetch failed posts and retry them."""
-    print("[*] Fetching post results (limit=200)...")
-    result = _api("GET", "/post-results?limit=200")
+    print("[*] Fetching post results (limit=100)...")
+    result = _api("GET", "/post-results?limit=100")
     if not result:
         print("[!] Could not fetch post results.")
         return
@@ -47,7 +47,7 @@ def auto_retry_failed():
 
     for post in posts:
         status = post.get("status", "").upper()
-        error = post.get("error", post.get("error_code", "")).upper()
+        error = (post.get("error") or post.get("error_code") or "").upper()
 
         if status not in ("FAILED", "ERROR"):
             continue
