@@ -80,51 +80,56 @@ async def social_spy(target: str) -> dict:
     # TikTok profile scraping
     try:
         from playwright.sync_api import sync_playwright
+        import threading as _threading
         tiktok_user = target.lstrip('@').replace('_bot', '')
-        with sync_playwright() as p:
-            browser = p.chromium.launch(
-                headless=True,
-                args=["--no-sandbox", "--disable-setuid-sandbox"]
-            )
-            context = browser.new_context(
-                user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
-            )
-            page = context.new_page()
-            page.goto(f'https://www.tiktok.com/@{tiktok_user}', wait_until='networkidle', timeout=15000)
-            page.wait_for_timeout(3000)
-            html = page.content()
 
-            # Extract profile metrics
-            import re as _re
-            follower_match = _re.search(r'"followerCount":(\d+)', html)
-            following_match = _re.search(r'"followingCount":(\d+)', html)
-            likes_match = _re.search(r'"heartCount":(\d+)', html) or _re.search(r'"heart":(\d+)', html)
-            video_match = _re.search(r'"videoCount":(\d+)', html)
-            bio_match = _re.search(r'"signature":"([^"]*)"', html)
+        html_holder2 = [None]
+        def run_tiktok():
+            try:
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-setuid-sandbox"])
+                    context = browser.new_context(user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15')
+                    page = context.new_page()
+                    page.goto(f'https://www.tiktok.com/@{tiktok_user}', wait_until='domcontentloaded', timeout=15000)
+                    page.wait_for_timeout(3000)
+                    html_holder2[0] = page.content()
+                    browser.close()
+            except: pass
+        t2 = _threading.Thread(target=run_tiktok)
+        t2.start()
+        t2.join(timeout=25)
+        html = html_holder2[0] or ''
 
-            tiktok_data = {
-                'username': tiktok_user,
-                'follower_count': int(follower_match.group(1)) if follower_match else 0,
-                'following_count': int(following_match.group(1)) if following_match else 0,
-                'total_likes': int(likes_match.group(1)) if likes_match else 0,
-                'video_count': int(video_match.group(1)) if video_match else 0,
-                'bio': bio_match.group(1) if bio_match else '',
-            }
+        # Extract profile metrics
+        import re as _re
+        follower_match = _re.search(r'"followerCount":(\d+)', html)
+        following_match = _re.search(r'"followingCount":(\d+)', html)
+        likes_match = _re.search(r'"heartCount":(\d+)', html) or _re.search(r'"heart":(\d+)', html)
+        video_match = _re.search(r'"videoCount":(\d+)', html)
+        bio_match = _re.search(r'"signature":"([^"]*)"', html)
 
-            # Extract top 5 videos
-            video_items = _re.findall(r'"id":"(\d+)".*?"desc":"([^"]*)".*?"playCount":(\d+).*?"diggCount":(\d+)', html)
-            top_videos = []
-            for vid_id, desc, views, likes in video_items[:5]:
-                top_videos.append({
-                    'id': vid_id,
-                    'description': desc[:100],
-                    'views': int(views),
-                    'likes': int(likes),
-                })
-            tiktok_data['top_videos'] = top_videos
+        tiktok_data = {
+            'username': tiktok_user,
+            'follower_count': int(follower_match.group(1)) if follower_match else 0,
+            'following_count': int(following_match.group(1)) if following_match else 0,
+            'total_likes': int(likes_match.group(1)) if likes_match else 0,
+            'video_count': int(video_match.group(1)) if video_match else 0,
+            'bio': bio_match.group(1) if bio_match else '',
+        }
 
-            result['platforms']['tiktok'] = tiktok_data
-            browser.close()
+        # Extract top 5 videos
+        video_items = _re.findall(r'"id":"(\d+)".*?"desc":"([^"]*)".*?"playCount":(\d+).*?"diggCount":(\d+)', html)
+        top_videos = []
+        for vid_id, desc, views, likes in video_items[:5]:
+            top_videos.append({
+                'id': vid_id,
+                'description': desc[:100],
+                'views': int(views),
+                'likes': int(likes),
+            })
+        tiktok_data['top_videos'] = top_videos
+
+        result['platforms']['tiktok'] = tiktok_data
     except Exception as e:
         result['platforms']['tiktok'] = {'error': str(e)[:100]}
 
@@ -470,20 +475,39 @@ async def lynk_spy(username: str) -> dict:
     try:
         os.environ.setdefault('DISPLAY', ':99')
         from playwright.sync_api import sync_playwright
+        import threading
 
-        with sync_playwright() as p:
-            browser = p.chromium.launch(
-                headless=True,
-                args=["--no-sandbox", "--disable-setuid-sandbox"]
-            )
-            context = browser.new_context(
-                user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
-            )
-            page = context.new_page()
-            page.goto(url, wait_until='networkidle', timeout=15000)
-            page.wait_for_timeout(3000)
-            html = page.content()
-            browser.close()
+        html_holder = [None]
+        error_holder = [None]
+
+        def run_sync():
+            try:
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(
+                        headless=True,
+                        args=["--no-sandbox", "--disable-setuid-sandbox"]
+                    )
+                    context = browser.new_context(
+                        user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
+                    )
+                    page = context.new_page()
+                    page.goto(url, wait_until='domcontentloaded', timeout=15000)
+                    page.wait_for_timeout(4000)
+                    html_holder[0] = page.content()
+                    browser.close()
+            except Exception as e:
+                error_holder[0] = str(e)
+
+        t = threading.Thread(target=run_sync)
+        t.start()
+        t.join(timeout=30)
+
+        if error_holder[0]:
+            raise Exception(error_holder[0])
+        if not html_holder[0]:
+            raise Exception('Playwright timeout - no content')
+
+        html = html_holder[0]
 
         import re
 
