@@ -1318,6 +1318,30 @@ def generate_blueprint(architecture):
             'handler': f'handle_{flow["state"].lower()}_input',
         })
 
+    # Clone difficulty estimation
+    input_flows_count = len(architecture.get('input_flows', []))
+    url_buttons_count = len(architecture.get('url_buttons', []))
+    tech = architecture.get('tech_fingerprint', {})
+    has_async_backend = tech.get('estimated_backend') == 'async_ai'
+
+    difficulty_score = min(10, max(1,
+        2  # base complexity
+        + min(3, input_flows_count)  # more input flows = harder
+        + min(2, url_buttons_count // 3)  # external integrations
+        + (3 if has_async_backend else 0)  # async/AI backend is hard
+    ))
+    estimated_dev_hours = input_flows_count * 8 + url_buttons_count * 4 + 40
+
+    blueprint['clone_difficulty'] = {
+        'score': difficulty_score,
+        'estimated_dev_hours': estimated_dev_hours,
+        'factors': {
+            'input_flows': input_flows_count,
+            'url_buttons': url_buttons_count,
+            'async_backend': has_async_backend,
+        },
+    }
+
     return blueprint
 
 
