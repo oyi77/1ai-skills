@@ -17,7 +17,7 @@ SKILL_DIR = WORKSPACE / 'skills/biz-intel'
 REPORTS_DIR = SKILL_DIR / 'reports'
 REPORTS_DIR.mkdir(exist_ok=True)
 
-ALL_MODULES = ['social', 'ads', 'funnel', 'revenue', 'bot', 'tech', 'content', 'seo', 'model']
+ALL_MODULES = ['social', 'ads', 'funnel', 'revenue', 'bot', 'tech', 'content', 'seo', 'model', 'gumroad', 'lynk', 'content-calendar']
 
 
 # ─── Module: SOCIAL SPY ─────────────────────────────────────────────────────
@@ -76,6 +76,144 @@ async def social_spy(target: str) -> dict:
 
     except Exception as e:
         result['platforms']['twitter'] = {'error': str(e)}
+
+    # TikTok profile scraping
+    try:
+        from playwright.sync_api import sync_playwright
+        tiktok_user = target.lstrip('@').replace('_bot', '')
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-setuid-sandbox"]
+            )
+            context = browser.new_context(
+                user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
+            )
+            page = context.new_page()
+            page.goto(f'https://www.tiktok.com/@{tiktok_user}', wait_until='networkidle', timeout=15000)
+            page.wait_for_timeout(3000)
+            html = page.content()
+
+            # Extract profile metrics
+            import re as _re
+            follower_match = _re.search(r'"followerCount":(\d+)', html)
+            following_match = _re.search(r'"followingCount":(\d+)', html)
+            likes_match = _re.search(r'"heartCount":(\d+)', html) or _re.search(r'"heart":(\d+)', html)
+            video_match = _re.search(r'"videoCount":(\d+)', html)
+            bio_match = _re.search(r'"signature":"([^"]*)"', html)
+
+            tiktok_data = {
+                'username': tiktok_user,
+                'follower_count': int(follower_match.group(1)) if follower_match else 0,
+                'following_count': int(following_match.group(1)) if following_match else 0,
+                'total_likes': int(likes_match.group(1)) if likes_match else 0,
+                'video_count': int(video_match.group(1)) if video_match else 0,
+                'bio': bio_match.group(1) if bio_match else '',
+            }
+
+            # Extract top 5 videos
+            video_items = _re.findall(r'"id":"(\d+)".*?"desc":"([^"]*)".*?"playCount":(\d+).*?"diggCount":(\d+)', html)
+            top_videos = []
+            for vid_id, desc, views, likes in video_items[:5]:
+                top_videos.append({
+                    'id': vid_id,
+                    'description': desc[:100],
+                    'views': int(views),
+                    'likes': int(likes),
+                })
+            tiktok_data['top_videos'] = top_videos
+
+            result['platforms']['tiktok'] = tiktok_data
+            browser.close()
+    except Exception as e:
+        result['platforms']['tiktok'] = {'error': str(e)[:100]}
+
+    # YouTube channel scraping
+    try:
+        import urllib.request as _urllib_req
+        yt_name = target.lstrip('@').replace('_bot', '').replace('_', '')
+        yt_url = f'https://www.youtube.com/@{yt_name}'
+        req = _urllib_req.Request(yt_url, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+            'Accept-Language': 'en-US,en;q=0.9',
+        })
+        r = _urllib_req.urlopen(req, timeout=10)
+        yt_html = r.read().decode('utf-8', errors='ignore')
+
+        sub_match = re.search(r'"subscriberCountText":\{"simpleText":"([\d.]+[KMB]?) subscriber', yt_html)
+        vid_count_match = re.search(r'"videosCountText":\{"runs":\[\{"text":"([\d,]+)"', yt_html)
+        desc_match = re.search(r'"description":"([^"]{0,300})"', yt_html)
+
+        result['platforms']['youtube'] = {
+            'channel_url': yt_url,
+            'subscriber_count': sub_match.group(1) if sub_match else 'unknown',
+            'video_count': vid_count_match.group(1) if vid_count_match else 'unknown',
+            'description': desc_match.group(1)[:200] if desc_match else '',
+        }
+    except Exception as e:
+        result['platforms']['youtube'] = {'error': str(e)[:100]}
+
+    # Posting frequency analysis from Twitter data
+    try:
+        tweet_dates = re.findall(r'created_at: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2})', output)
+        if not tweet_dates:
+            tweet_dates = re.findall(r'(\d{4}-\d{2}-\d{2})', output)
+
+        if tweet_dates:
+            from datetime import datetime
+            parsed = []
+            for d in tweet_dates:
+                try:
+                    parsed.append(datetime.fromisoformat(d.replace('Z', '')))
+                except:
+                    pass
+
+            if parsed:
+                days = [p.strftime('%A') for p in parsed]
+                hours = [p.hour for p in parsed]
+
+                from collections import Counter
+                day_counts = Counter(days)
+                hour_counts = Counter(hours)
+
+                date_range = (max(parsed) - min(parsed)).days or 1
+                posts_per_week = round(len(parsed) / (date_range / 7), 1) if date_range >= 7 else len(parsed)
+
+                result['content_strategy']['posting_schedule'] = {
+                    'posts_per_week': posts_per_week,
+                    'best_day_of_week': day_counts.most_common(1)[0][0] if day_counts else 'unknown',
+                    'best_hour_of_day': hour_counts.most_common(1)[0][0] if hour_counts else 'unknown',
+                    'day_distribution': dict(day_counts),
+                    'hour_distribution': dict(hour_counts),
+                }
+    except Exception:
+        pass
+
+    # Hook pattern classification
+    hook_types = {}
+    hook_keywords = {
+        'pain_point': ['masalah', 'gagal', 'susah', 'kenapa', 'problem', 'struggle', 'capek', 'bingung'],
+        'curiosity': ['ternyata', 'rahasia', 'cara', 'gimana', 'how', 'secret', 'hack', 'trik'],
+        'story': ['dulu', 'cerita', 'pengalaman', 'story', 'kisah', 'awalnya', 'pertama'],
+        'social_proof': ['orang', 'pengguna', 'customer', 'testimoni', 'sudah', 'ribuan', '500+'],
+        'fomo': ['terbatas', 'harga naik', 'besok', 'sekarang', 'limited', 'habis', 'last chance'],
+        'controversy': ['stop', 'jangan', 'salah', 'bohong', 'mitos', 'wrong', 'never'],
+    }
+    classified_hooks = []
+    for h in result['top_hooks']:
+        h_lower = h.lower()
+        hook_type = 'other'
+        for htype, keywords in hook_keywords.items():
+            if any(kw in h_lower for kw in keywords):
+                hook_type = htype
+                break
+        classified_hooks.append({'text': h, 'type': hook_type})
+        hook_types[hook_type] = hook_types.get(hook_type, 0) + 1
+
+    result['content_strategy']['hook_types'] = {
+        'classified_hooks': classified_hooks,
+        'distribution': hook_types,
+    }
 
     return result
 
@@ -191,9 +329,432 @@ async def funnel_spy(target: str) -> dict:
     return result
 
 
+# ─── Module: GUMROAD SPY ────────────────────────────────────────────────────
+
+async def gumroad_spy(target: str) -> dict:
+    """Scrape Gumroad products and estimate revenue."""
+    import urllib.request, re
+
+    result = {
+        'module': 'gumroad_spy',
+        'target': target,
+        'products': [],
+        'total_products': 0,
+        'estimated_monthly_revenue': 'unknown',
+    }
+
+    username = target.lstrip('@').replace('_bot', '').replace('_', '')
+    url = f'https://gumroad.com/{username}'
+
+    try:
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+        })
+        r = urllib.request.urlopen(req, timeout=10)
+        html = r.read().decode('utf-8', errors='ignore')
+
+        # Extract products
+        product_blocks = re.findall(
+            r'class="product-card".*?data-label="([^"]*)".*?'
+            r'(?:\$|USD\s*)([\d.,]+).*?'
+            r'(?:(\d+)\s*rating|(\d[\d,.]*)\s*review)',
+            html, re.DOTALL
+        )
+
+        # Fallback: try simpler patterns
+        if not product_blocks:
+            names = re.findall(r'<h\d[^>]*class="[^"]*product[^"]*"[^>]*>([^<]+)', html)
+            prices = re.findall(r'\$([\d.,]+)', html)
+            ratings = re.findall(r'([\d.]+)\s*(?:stars?|rating)', html)
+            reviews = re.findall(r'(\d+)\s*(?:reviews?|ratings?)', html)
+
+            for i, name in enumerate(names[:20]):
+                product = {
+                    'name': name.strip(),
+                    'price': f'${prices[i]}' if i < len(prices) else 'unknown',
+                    'rating': float(ratings[i]) if i < len(ratings) else None,
+                    'reviews': int(reviews[i]) if i < len(reviews) else 0,
+                }
+                result['products'].append(product)
+        else:
+            for name, price, rating, review_count in product_blocks:
+                result['products'].append({
+                    'name': name.strip(),
+                    'price': f'${price}',
+                    'rating': float(rating) if rating else None,
+                    'reviews': int(review_count.replace(',', '')) if review_count else 0,
+                })
+
+        result['total_products'] = len(result['products'])
+
+        # Estimate revenue: reviews x 10 (industry proxy for sales) x price
+        if result['products']:
+            total_est = 0
+            for p in result['products']:
+                try:
+                    price_val = float(p['price'].replace('$', '').replace(',', ''))
+                    sales_est = p.get('reviews', 0) * 10
+                    total_est += price_val * sales_est
+                except:
+                    pass
+            if total_est > 0:
+                result['estimated_monthly_revenue'] = f'${total_est / 12:,.0f}'
+                result['estimated_total_revenue'] = f'${total_est:,.0f}'
+
+    except Exception as e:
+        result['error'] = str(e)[:100]
+
+    return result
+
+
+# ─── Module: LYNK SPY ───────────────────────────────────────────────────────
+
+async def lynk_spy(username: str) -> dict:
+    """Scrape lynk.id profile using Playwright (JS-rendered)."""
+
+    result = {
+        'module': 'lynk_spy',
+        'target': username,
+        'products': [],
+        'total_products': 0,
+        'contact_info': {},
+        'social_links': [],
+        'estimated_revenue': 'unknown',
+    }
+
+    clean = username.lstrip('@').replace('_bot', '').replace('_', '')
+    url = f'https://lynk.id/{clean}'
+
+    try:
+        from playwright.sync_api import sync_playwright
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-setuid-sandbox"]
+            )
+            context = browser.new_context(
+                user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
+            )
+            page = context.new_page()
+            page.goto(url, wait_until='networkidle', timeout=15000)
+            page.wait_for_timeout(3000)
+            html = page.content()
+            browser.close()
+
+        import re
+
+        # Extract products with prices
+        # Lynk shows product cards with name, price, original price
+        product_names = re.findall(r'class="[^"]*product[^"]*name[^"]*"[^>]*>([^<]+)', html)
+        if not product_names:
+            product_names = re.findall(r'<h\d[^>]*>([^<]{3,50})</h\d>', html)
+
+        prices = re.findall(r'(?:Rp|IDR)[.\s]?([\d.,]+)', html)
+        original_prices = re.findall(r'(?:line-through|strikethrough)[^>]*>(?:Rp|IDR)[.\s]?([\d.,]+)', html)
+
+        for i, name in enumerate(product_names[:30]):
+            product = {
+                'name': name.strip(),
+                'price': f'Rp {prices[i]}' if i < len(prices) else 'unknown',
+                'original_price': f'Rp {original_prices[i]}' if i < len(original_prices) else None,
+                'category': 'digital_product',
+            }
+            result['products'].append(product)
+
+        result['total_products'] = len(result['products'])
+
+        # Extract social links
+        social_patterns = {
+            'instagram': r'instagram\.com/([^\s"\']+)',
+            'tiktok': r'tiktok\.com/@([^\s"\']+)',
+            'twitter': r'(?:twitter|x)\.com/([^\s"\']+)',
+            'youtube': r'youtube\.com/(?:@|channel/)([^\s"\']+)',
+            'telegram': r't\.me/([^\s"\']+)',
+            'whatsapp': r'wa\.me/([^\s"\']+)',
+        }
+        for platform, pattern in social_patterns.items():
+            match = re.search(pattern, html)
+            if match:
+                result['social_links'].append({
+                    'platform': platform,
+                    'handle': match.group(1),
+                })
+
+        # Extract contact info
+        email = re.search(r'[\w.+-]+@[\w-]+\.\w+', html)
+        if email:
+            result['contact_info']['email'] = email.group(0)
+        phone = re.search(r'\+?(?:62|08)\d{8,12}', html)
+        if phone:
+            result['contact_info']['phone'] = phone.group(0)
+
+        # Estimate revenue
+        if result['products'] and prices:
+            try:
+                price_values = []
+                for px in prices[:10]:
+                    val = float(px.replace('.', '').replace(',', ''))
+                    price_values.append(val)
+                if price_values:
+                    avg_price = sum(price_values) / len(price_values)
+                    # Estimated: products x avg_price x conversion estimate
+                    est_monthly = result['total_products'] * avg_price * 15  # 15 sales/month/product conservative
+                    result['estimated_revenue'] = f'IDR {est_monthly:,.0f}/month'
+            except:
+                pass
+
+    except Exception as e:
+        result['error'] = str(e)[:100]
+
+    return result
+
+
+# ─── Module: CONTENT CALENDAR SPY ───────────────────────────────────────────
+
+def content_calendar_spy(twitter_data: dict) -> dict:
+    """Analyze posting schedule from Twitter data timestamps."""
+    from collections import Counter
+
+    result = {
+        'module': 'content_calendar_spy',
+        'best_days': [],
+        'best_hours': [],
+        'posting_gaps': [],
+        'consistency_score': 0,
+        'heatmap': '',
+    }
+
+    tweets = twitter_data.get('platforms', {}).get('twitter', {})
+    schedule = twitter_data.get('content_strategy', {}).get('posting_schedule', {})
+
+    if not schedule:
+        result['note'] = 'No posting schedule data available'
+        return result
+
+    day_dist = schedule.get('day_distribution', {})
+    hour_dist = schedule.get('hour_distribution', {})
+
+    # Best days
+    day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    sorted_days = sorted(day_dist.items(), key=lambda x: x[1], reverse=True)
+    result['best_days'] = [d[0] for d in sorted_days[:3]]
+
+    # Best hours
+    sorted_hours = sorted(hour_dist.items(), key=lambda x: int(x[1]), reverse=True)
+    result['best_hours'] = [int(h[0]) for h in sorted_hours[:3]]
+
+    # Posting gaps (days with zero posts)
+    all_days = set(day_order)
+    active_days = set(day_dist.keys())
+    result['posting_gaps'] = sorted(all_days - active_days)
+
+    # Consistency score (0-10)
+    active_ratio = len(active_days) / 7
+    posts_per_week = schedule.get('posts_per_week', 0)
+    if posts_per_week >= 7:
+        freq_score = 5
+    elif posts_per_week >= 3:
+        freq_score = 3
+    elif posts_per_week >= 1:
+        freq_score = 1
+    else:
+        freq_score = 0
+    consistency = round(active_ratio * 5 + freq_score, 1)
+    result['consistency_score'] = min(10, consistency)
+
+    # ASCII heatmap
+    heatmap_lines = ['    ' + ''.join(f'{h:3d}' for h in range(0, 24, 3))]
+    for day in day_order:
+        row = f'{day[:3]} '
+        for h in range(0, 24, 3):
+            count = sum(hour_dist.get(str(hh), hour_dist.get(hh, 0)) for hh in range(h, h+3))
+            if isinstance(count, str):
+                count = int(count)
+            if count >= 3:
+                row += ' ## '
+            elif count >= 1:
+                row += ' .  '
+            else:
+                row += ' -  '
+        heatmap_lines.append(row)
+
+    result['heatmap'] = '\n'.join(heatmap_lines)
+
+    return result
+
+
+# ─── Competitive Opportunities Analyzer ─────────────────────────────────────
+
+def analyze_competitive_opportunities(all_data: dict) -> list:
+    """Cross-analyze all modules to find competitive opportunities for BerkahKarya."""
+    opportunities = []
+
+    social = all_data.get('social', {})
+    funnel = all_data.get('funnel', {})
+    tech = all_data.get('tech', {})
+    bot = all_data.get('bot', {})
+    gumroad = all_data.get('gumroad', {})
+    lynk = all_data.get('lynk', {})
+    calendar = all_data.get('content_calendar', {})
+
+    # Gap: Missing platforms
+    platforms = social.get('platforms', {})
+    if not platforms.get('tiktok') or platforms.get('tiktok', {}).get('error'):
+        opportunities.append({
+            'area': 'TikTok Presence',
+            'insight': 'Competitor has weak/no TikTok presence',
+            'action': 'Build TikTok content strategy targeting same audience with better content',
+            'priority': 'high',
+        })
+
+    # Gap: Missing payment options
+    payments = funnel.get('payment_methods', [])
+    missing_payments = [p for p in ['qris', 'gopay', 'dana'] if p not in payments]
+    if missing_payments:
+        opportunities.append({
+            'area': 'Payment Options',
+            'insight': f'Competitor missing: {", ".join(missing_payments)}',
+            'action': 'Offer more payment methods to capture lost conversions',
+            'priority': 'medium',
+        })
+
+    # Gap: Bot UX issues
+    if bot and isinstance(bot, dict):
+        ux = bot.get('ux_score', {})
+        if isinstance(ux, dict) and ux.get('score', 100) < 80:
+            issues = ux.get('issues', [])
+            opportunities.append({
+                'area': 'Bot UX',
+                'insight': f'Competitor bot score: {ux.get("score")}/100. Issues: {"; ".join(issues[:3])}',
+                'action': 'Build bot with better UX, fix their known issues',
+                'priority': 'high',
+            })
+
+    # Gap: Content consistency
+    if calendar and calendar.get('consistency_score', 10) < 6:
+        gaps = calendar.get('posting_gaps', [])
+        opportunities.append({
+            'area': 'Content Consistency',
+            'insight': f'Competitor inconsistent (score: {calendar.get("consistency_score")}). Gaps on: {", ".join(gaps[:3])}',
+            'action': 'Maintain daily posting schedule to outperform on consistency',
+            'priority': 'medium',
+        })
+
+    # Gap: No subscription model detected
+    if not any('subscription' in str(s).lower() for s in [funnel, gumroad, lynk]):
+        opportunities.append({
+            'area': 'Subscription Revenue',
+            'insight': 'Competitor appears to use one-time sales only',
+            'action': 'Implement subscription model for recurring revenue advantage',
+            'priority': 'high',
+        })
+
+    # Default opportunities
+    if len(opportunities) < 3:
+        opportunities.extend([
+            {
+                'area': 'Product Bundle',
+                'insight': 'Opportunity to create bundled offering at premium price',
+                'action': 'Bundle multiple tools/services at 20-30% discount vs individual purchase',
+                'priority': 'medium',
+            },
+            {
+                'area': 'B2B / White Label',
+                'insight': 'No B2B or agency offering detected from competitor',
+                'action': 'Create white-label or agency pricing for volume buyers',
+                'priority': 'medium',
+            },
+        ])
+
+    return opportunities[:5]
+
+
+# ─── Mermaid Diagram Generator ──────────────────────────────────────────────
+
+def generate_mermaid_diagram(architecture_json: dict) -> str:
+    """Generate mermaid.js flowchart from bot architecture."""
+    lines = ['graph TD']
+
+    if isinstance(architecture_json, str):
+        import json
+        architecture_json = json.loads(architecture_json)
+
+    menus = architecture_json.get('menus', {})
+    input_flows = architecture_json.get('input_flows', [])
+    url_buttons = architecture_json.get('url_buttons', [])
+
+    # Node ID generator
+    node_map = {}
+    counter = [0]
+    def get_node_id(name):
+        if name not in node_map:
+            counter[0] += 1
+            node_map[name] = f'N{counter[0]}'
+        return node_map[name]
+
+    # Root node
+    root = menus.get('__root__', {})
+    root_id = get_node_id('start')
+    lines.append(f'    {root_id}["/start Menu"]')
+
+    # Process menus
+    for key, menu in menus.items():
+        if key == '__root__':
+            continue
+
+        node_id = get_node_id(key)
+        depth = menu.get('depth', 0)
+        input_state = menu.get('input_state')
+        label = key.replace('"', "'")
+
+        if input_state:
+            # Input state = parallelogram shape
+            lines.append(f'    {node_id}[/"{label}\\n({input_state})"/]')
+        else:
+            # Regular menu = rectangle
+            lines.append(f'    {node_id}["{label}"]')
+
+        # Connect to parent
+        path = menu.get('path', [])
+        if len(path) <= 1:
+            lines.append(f'    {root_id} --> {node_id}')
+        elif len(path) >= 2:
+            parent_key = ' > '.join(path[:-1])
+            if parent_key in menus:
+                parent_id = get_node_id(parent_key)
+            elif path[0] in [k for k in menus.keys()]:
+                parent_id = get_node_id(path[0])
+            else:
+                parent_id = root_id
+            lines.append(f'    {parent_id} --> {node_id}')
+
+    # URL buttons as stadium shapes
+    seen_urls = set()
+    for ub in url_buttons:
+        url_text = ub.get('text', 'Link')
+        if url_text in seen_urls:
+            continue
+        seen_urls.add(url_text)
+        url_id = get_node_id(f'url_{url_text}')
+        label = url_text.replace('"', "'")[:40]
+        lines.append(f'    {url_id}(["{label}"])')
+
+        # Connect from parent
+        path = ub.get('path', [])
+        if path:
+            parent_key = ' > '.join(path) if len(path) > 1 else path[0]
+            if parent_key in node_map:
+                lines.append(f'    {node_map[parent_key]} -.-> {url_id}')
+            elif path[0] in node_map:
+                lines.append(f'    {node_map[path[0]]} -.-> {url_id}')
+
+    return '\n'.join(lines)
+
+
 # ─── Module: REVENUE SPY ─────────────────────────────────────────────────────
 
-async def revenue_spy(target: str, social_data: dict = None, funnel_data: dict = None) -> dict:
+async def revenue_spy(target: str, social_data: dict = None, funnel_data: dict = None, lynk_data: dict = None, gumroad_data: dict = None) -> dict:
     """Estimate competitor revenue."""
 
     result = {
@@ -234,6 +795,61 @@ async def revenue_spy(target: str, social_data: dict = None, funnel_data: dict =
                     'avg_price': f'IDR {avg_price:,.0f}',
                 }
             }
+
+    # Method 2: LYNK-based estimation
+    if lynk_data and lynk_data.get('products'):
+        products = lynk_data['products']
+        avg_price = 75000  # default
+        try:
+            price_vals = []
+            for p in products:
+                px = p.get('price', '').replace('Rp', '').replace('.', '').replace(',', '').strip()
+                if px.isdigit():
+                    price_vals.append(float(px))
+            if price_vals:
+                avg_price = sum(price_vals) / len(price_vals)
+        except:
+            pass
+
+        est_conversion = 0.02  # 2% conversion estimate
+        product_count = len(products)
+        lynk_monthly = product_count * avg_price * est_conversion * 1000  # estimated visitors
+
+        result['estimation_method'].append('lynk_product_model')
+        result['lynk_estimate'] = {
+            'product_count': product_count,
+            'avg_price': f'IDR {avg_price:,.0f}',
+            'estimated_monthly': f'IDR {lynk_monthly:,.0f}',
+        }
+
+    # Method 3: Gumroad-based estimation
+    if gumroad_data and gumroad_data.get('products'):
+        total_gumroad = 0
+        for p in gumroad_data['products']:
+            try:
+                price_val = float(p['price'].replace('$', '').replace(',', ''))
+                sales_est = p.get('reviews', 0) * 10  # industry proxy
+                total_gumroad += price_val * sales_est
+            except:
+                pass
+
+        if total_gumroad > 0:
+            result['estimation_method'].append('gumroad_review_proxy')
+            result['gumroad_estimate'] = {
+                'estimated_total_sales': f'${total_gumroad:,.0f}',
+                'estimated_monthly': f'${total_gumroad / 12:,.0f}',
+            }
+
+    # Confidence scoring
+    data_sources = len(result['estimation_method'])
+    if data_sources >= 3:
+        result['confidence'] = 'high'
+    elif data_sources >= 2:
+        result['confidence'] = 'medium'
+    elif data_sources >= 1:
+        result['confidence'] = 'low'
+    else:
+        result['confidence'] = 'very_low'
 
     # Revenue streams analysis
     result['revenue_streams'] = [
@@ -571,13 +1187,37 @@ async def run_spy(target: str, modules: list, mode: str = 'report') -> dict:
         except Exception as e:
             print(f'   Bot spy error: {e}')
 
+    # Gumroad spy
+    if 'gumroad' in modules:
+        print('🛒 Gumroad Spy...')
+        all_data['gumroad'] = await gumroad_spy(target)
+        g = all_data['gumroad']
+        print(f'   Products: {g.get("total_products", 0)} | Rev: {g.get("estimated_monthly_revenue", "?")}')
+
+    # LYNK spy
+    if 'lynk' in modules:
+        print('🔗 LYNK Spy...')
+        all_data['lynk'] = await lynk_spy(target)
+        l = all_data['lynk']
+        print(f'   Products: {l.get("total_products", 0)} | Rev: {l.get("estimated_revenue", "?")}')
+
+    # Content Calendar spy
+    if 'content-calendar' in modules or 'content' in modules:
+        if 'social' in all_data:
+            print('📅 Content Calendar Spy...')
+            all_data['content_calendar'] = content_calendar_spy(all_data['social'])
+            cc = all_data['content_calendar']
+            print(f'   Consistency: {cc.get("consistency_score", 0)}/10 | Best days: {cc.get("best_days", [])}')
+
     # Revenue estimate
     if 'revenue' in modules:
         print('💰 Revenue Spy...')
         all_data['revenue'] = await revenue_spy(
             target,
             all_data.get('social'),
-            all_data.get('funnel')
+            all_data.get('funnel'),
+            all_data.get('lynk'),
+            all_data.get('gumroad')
         )
         est = all_data['revenue'].get('monthly_estimate', {})
         print(f'   Estimate: {est.get("low","?")} - {est.get("high","?")} /month')
@@ -586,6 +1226,11 @@ async def run_spy(target: str, modules: list, mode: str = 'report') -> dict:
     if 'model' in modules:
         print('🏗️  Model Synthesis...')
         all_data['model'] = model_spy(target, all_data)
+
+    # Competitive opportunities
+    all_data['competitive_opportunities'] = analyze_competitive_opportunities(all_data)
+    if all_data['competitive_opportunities']:
+        print(f'Target: {len(all_data["competitive_opportunities"])} opportunities found')
 
     return all_data
 

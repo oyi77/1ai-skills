@@ -1,3 +1,4 @@
+import os
 """
 Kling AI Account Generator
 ==========================
@@ -621,7 +622,7 @@ Examples:
 
 # ─── 1proxy Integration ───────────────────────────────────────────────────────
 
-ONEPROXY_API = "http://localhost:8000"  # Local 1proxy backend
+ONEPROXY_API = os.environ.get("ONEPROXY_API_URL", "https://helpful-alignment-production-2ae5.up.railway.app")  # Local 1proxy backend
 
 
 def get_proxy_from_1proxy(
@@ -629,35 +630,44 @@ def get_proxy_from_1proxy(
     protocol: str = "http",
     max_latency: int = 3000,
     session_id: str = None,
+    retries: int = 2,
 ) -> Optional[str]:
     """
-    Get a fresh proxy from local 1proxy backend.
+    Get a fresh proxy from 1proxy backend (Railway cloud).
+    Handles Railway cold-start with retry.
     
     Returns:
         Proxy URL string like "http://ip:port" or None if unavailable
     """
-    try:
-        params = {
-            "strategy": strategy,
-            "protocol": protocol,
-        }
-        if max_latency:
-            params["max_latency"] = max_latency
-        if session_id:
-            params["session_id"] = session_id
+    params = {
+        "strategy": strategy,
+        "protocol": protocol,
+    }
+    if max_latency:
+        params["max_latency"] = max_latency
+    if session_id:
+        params["session_id"] = session_id
 
-        r = requests.get(
-            f"{ONEPROXY_API}/api/v1/proxies/rotate",
-            params=params,
-            timeout=5
-        )
-        if r.status_code == 200:
-            data = r.json()
-            url = data.get("url")
-            if url:
-                return url
-    except Exception as e:
-        logging.debug(f"1proxy unavailable: {e}")
+    for attempt in range(retries + 1):
+        try:
+            # Railway cold start can take 15-30s
+            timeout = 30 if attempt > 0 else 10
+            r = requests.get(
+                f"{ONEPROXY_API}/api/v1/proxies/rotate",
+                params=params,
+                timeout=timeout
+            )
+            if r.status_code == 200:
+                data = r.json()
+                url = data.get("url")
+                if url:
+                    return url
+        except Exception as e:
+            if attempt < retries:
+                logging.info(f"1proxy attempt {attempt+1} failed ({e}), retrying (Railway cold start)...")
+                time.sleep(5)
+            else:
+                logging.debug(f"1proxy unavailable after {retries+1} attempts: {e}")
     return None
 
 
