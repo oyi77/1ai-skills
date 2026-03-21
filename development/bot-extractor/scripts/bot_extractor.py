@@ -410,9 +410,51 @@ def build_state_machine(architecture):
                     'via': trans_name,
                 })
 
+    # Find deepest path via BFS
+    deepest_path = []
+    try:
+        visited = set()
+        bfs_queue = deque([('MAIN_MENU', ['MAIN_MENU'])])
+        while bfs_queue:
+            current, path = bfs_queue.popleft()
+            if current in visited:
+                continue
+            visited.add(current)
+            if len(path) > len(deepest_path):
+                deepest_path = path
+            state = states.get(current, {})
+            for trans in state.get('transitions', {}).values():
+                ns = trans.get('next_state', 'UNKNOWN')
+                if ns != 'UNKNOWN' and ns not in visited:
+                    bfs_queue.append((ns, path + [ns]))
+    except Exception:
+        pass
+
+    # Flat convenience lists matching requested API
+    dead_ends = issues['dead_ends']
+    missing_cancel = issues['missing_cancel_handlers']
+
+    # Add normalized per-state type/input_type/has_cancel for requested schema
+    states_normalized = {}
+    for sn, sv in states.items():
+        stype = 'input' if sv.get('input_state') else ('menu' if sv.get('transitions') else 'terminal')
+        input_type_map = {
+            'WAITING_IMAGE': 'photo', 'WAITING_TEXT': 'text', 'WAITING_FILE': 'file',
+            'WAITING_VIDEO': 'video', 'WAITING_AUDIO': 'audio', 'WAITING_INPUT': 'text',
+        }
+        states_normalized[sn] = {
+            **sv,
+            'type': stype,
+            'input_type': input_type_map.get(sv.get('input_state')),
+            'has_cancel': sv.get('has_back_button', False),
+        }
+
     return {
-        'states': states,
-        'total_states': len(states),
+        'states': states_normalized,
+        'total_states': len(states_normalized),
+        'dead_ends': dead_ends,
+        'missing_cancel': missing_cancel,
+        'deepest_path': deepest_path,
         'issues': issues,
     }
 
@@ -539,8 +581,129 @@ def analyze_message_formats(architecture):
     return results
 
 
+def analyze_personality(all_texts):
+    """Analyze bot personality from all collected response texts.
+
+    Args:
+        all_texts: list of all bot response text strings.
+
+    Returns dict with language, formality, tone, emoji_density,
+    avg_message_length, formatting markers, and formatting_style.
+    """
+    combined = ' '.join(t for t in all_texts if t)
+    combined_lower = combined.lower()
+    words = combined.split()
+    total_words = len(words)
+
+    if total_words == 0:
+        return {'note': 'No text to analyze'}
+
+    # --- Language detection (count Indonesian vs English words) ---
+    indo_words = [
+        'silakan', 'pilih', 'kirim', 'kembali', 'batal', 'yang', 'dan',
+        'untuk', 'dengan', 'ini', 'itu', 'sudah', 'belum', 'halo',
+        'selamat', 'terima', 'kasih', 'mohon', 'masukkan', 'tunggu',
+    ]
+    eng_words = [
+        'please', 'select', 'send', 'back', 'cancel', 'click', 'choose',
+        'enter', 'welcome', 'hello', 'submit', 'done', 'next', 'the',
+    ]
+
+    indo_count = sum(1 for w in words if w.lower().strip('.,!?:') in indo_words)
+    eng_count = sum(1 for w in words if w.lower().strip('.,!?:') in eng_words)
+    total_lang = indo_count + eng_count or 1
+
+    indo_ratio = round(indo_count / total_lang, 2)
+    eng_ratio = round(eng_count / total_lang, 2)
+
+    if indo_ratio > 0.6:
+        language = 'id'
+    elif eng_ratio > 0.6:
+        language = 'en'
+    else:
+        language = 'mixed'
+
+    # --- Formality ---
+    formal_markers = ['anda', 'bapak', 'ibu', 'silakan', 'mohon', 'dengan hormat', 'please', 'thank you', 'kindly']
+    casual_markers = ['kamu', 'lo', 'gue', 'yuk', 'nih', 'dong', 'kak', 'bang', 'hey', 'yo', 'wkwk', 'hehe']
+
+    formal_count = sum(1 for m in formal_markers if m in combined_lower)
+    casual_count = sum(1 for m in casual_markers if m in combined_lower)
+
+    if formal_count > casual_count * 2:
+        formality = 'formal'
+    elif casual_count > formal_count * 2:
+        formality = 'casual'
+    else:
+        formality = 'mixed'
+
+    # --- Tone ---
+    exclamation_count = combined.count('!')
+    emoji_pattern = r'[\U0001F300-\U0001F9FF\U00002600-\U000027BF\U0000FE00-\U0000FE0F\U0001FA00-\U0001FA6F\U0001FA70-\U0001FAFF\U00002702-\U000027B0]'
+    emojis = re.findall(emoji_pattern, combined)
+    emoji_per_msg = len(emojis) / max(len(all_texts), 1)
+
+    urgent_words = ['segera', 'sekarang', 'urgent', 'immediately', 'cepat', 'buruan']
+    friendly_words = ['halo', 'hai', 'selamat', 'welcome', 'hello', 'hi', 'kak']
+    professional_words = ['informasi', 'layanan', 'fitur', 'service', 'feature', 'information']
+
+    urgent = sum(1 for w in urgent_words if w in combined_lower)
+    friendly = sum(1 for w in friendly_words if w in combined_lower)
+    professional = sum(1 for w in professional_words if w in combined_lower)
+
+    if exclamation_count > len(all_texts) * 2 or urgent > 2:
+        tone = 'urgent'
+    elif friendly > professional and friendly > urgent:
+        tone = 'friendly'
+    elif professional > friendly:
+        tone = 'professional'
+    else:
+        tone = 'friendly'
+
+    # --- Emoji density ---
+    if emoji_per_msg > 3:
+        emoji_density = 'high'
+    elif emoji_per_msg > 1:
+        emoji_density = 'medium'
+    else:
+        emoji_density = 'low'
+
+    # --- Formatting detection ---
+    uses_bold = '**' in combined or '<b>' in combined or '<strong>' in combined
+    uses_italic = '__' in combined or '_' in combined or '<i>' in combined or '<em>' in combined
+    uses_code = '`' in combined or '<code>' in combined
+
+    has_markdown = '**' in combined or '__' in combined or '`' in combined
+    has_html = bool(re.search(r'<(b|i|em|strong|code|pre|a)\b', combined))
+
+    if has_markdown and not has_html:
+        formatting_style = 'markdown'
+    elif has_html and not has_markdown:
+        formatting_style = 'html'
+    elif has_markdown and has_html:
+        formatting_style = 'markdown'  # prefer markdown classification
+    else:
+        formatting_style = 'plain'
+
+    return {
+        'language': language,
+        'language_ratio': {'id': indo_ratio, 'en': eng_ratio},
+        'formality': formality,
+        'formality_scores': {'formal': formal_count, 'casual': casual_count},
+        'tone': tone,
+        'emoji_density': emoji_density,
+        'emoji_per_message': round(emoji_per_msg, 1),
+        'total_unique_emojis': len(set(emojis)),
+        'avg_message_length': round(total_words / max(len(all_texts), 1), 1),
+        'uses_bold': uses_bold,
+        'uses_italic': uses_italic,
+        'uses_code': uses_code,
+        'formatting_style': formatting_style,
+    }
+
+
 def detect_bot_personality(architecture):
-    """Analyze bot personality from all response texts."""
+    """Analyze bot personality from architecture (wrapper around analyze_personality)."""
     menus = architecture.get('menus', {})
     commands = architecture.get('commands', {})
 
@@ -552,85 +715,7 @@ def detect_bot_personality(architecture):
         if cmd.get('text') and cmd.get('status') == 'implemented':
             all_texts.append(cmd['text'])
 
-    combined = ' '.join(all_texts)
-    combined_lower = combined.lower()
-    total_words = len(combined.split())
-
-    if total_words == 0:
-        return {'note': 'No text to analyze'}
-
-    # Language detection
-    indo_words = ['silakan', 'pilih', 'kirim', 'kembali', 'batal', 'menu', 'yang', 'dan', 'untuk', 'dengan', 'ini', 'itu', 'sudah', 'belum', 'halo', 'selamat']
-    eng_words = ['please', 'select', 'send', 'back', 'cancel', 'menu', 'click', 'choose', 'enter', 'welcome', 'hello']
-
-    indo_count = sum(1 for w in indo_words if w in combined_lower)
-    eng_count = sum(1 for w in eng_words if w in combined_lower)
-    total_lang = indo_count + eng_count or 1
-
-    indo_ratio = round(indo_count / total_lang, 2)
-    eng_ratio = round(eng_count / total_lang, 2)
-
-    if indo_ratio > 0.7:
-        language = 'Indonesian'
-    elif eng_ratio > 0.7:
-        language = 'English'
-    else:
-        language = 'Mixed'
-
-    # Formality
-    formal_markers = ['silakan', 'terima kasih', 'mohon', 'dengan hormat', 'please', 'thank you', 'kindly']
-    casual_markers = ['yuk', 'nih', 'dong', 'kak', 'bang', 'hey', 'yo', 'gue', 'lo', 'wkwk', 'hehe']
-
-    formal_count = sum(1 for m in formal_markers if m in combined_lower)
-    casual_count = sum(1 for m in casual_markers if m in combined_lower)
-
-    if formal_count > casual_count * 2:
-        formality = 'formal'
-    elif casual_count > formal_count * 2:
-        formality = 'casual'
-    else:
-        formality = 'semi-formal'
-
-    # Tone
-    urgent_words = ['segera', 'sekarang', 'urgent', 'immediately', 'cepat', 'buruan']
-    friendly_words = ['halo', 'hai', 'selamat', 'welcome', 'hello', 'hi', 'kak']
-    professional_words = ['informasi', 'layanan', 'fitur', 'service', 'feature', 'information']
-
-    urgent = sum(1 for w in urgent_words if w in combined_lower)
-    friendly = sum(1 for w in friendly_words if w in combined_lower)
-    professional = sum(1 for w in professional_words if w in combined_lower)
-
-    if friendly > professional and friendly > urgent:
-        tone = 'friendly'
-    elif professional > friendly:
-        tone = 'professional'
-    elif urgent > 0:
-        tone = 'urgent'
-    else:
-        tone = 'neutral'
-
-    # Emoji density
-    emojis = re.findall(r'[\U0001F300-\U0001F9FF\U00002600-\U000027BF\U0000FE00-\U0000FE0F\U0001FA00-\U0001FA6F\U0001FA70-\U0001FAFF\U00002702-\U000027B0]', combined)
-    emoji_per_msg = len(emojis) / max(len(all_texts), 1)
-
-    if emoji_per_msg > 3:
-        emoji_density = 'high'
-    elif emoji_per_msg > 1:
-        emoji_density = 'medium'
-    else:
-        emoji_density = 'low'
-
-    return {
-        'language': language,
-        'language_ratio': {'indonesian': indo_ratio, 'english': eng_ratio},
-        'formality': formality,
-        'formality_scores': {'formal': formal_count, 'casual': casual_count},
-        'tone': tone,
-        'emoji_density': emoji_density,
-        'emoji_per_message': round(emoji_per_msg, 1),
-        'total_unique_emojis': len(set(emojis)),
-        'avg_message_length': round(total_words / max(len(all_texts), 1), 1),
-    }
+    return analyze_personality(all_texts)
 
 
 def generate_weakness_report(architecture):
@@ -1218,8 +1303,9 @@ async def extract_bot(bot_username, session_name='alwayscuanbos', quick=False, v
     if verbose:
         sm = architecture['state_machine']
         print(f'  States: {sm["total_states"]}')
-        print(f'  Dead ends: {sm["issues"]["dead_ends"]}')
-        print(f'  Missing cancel: {sm["issues"]["missing_cancel_handlers"]}')
+        print(f'  Dead ends: {sm["dead_ends"]}')
+        print(f'  Missing cancel: {sm["missing_cancel"]}')
+        print(f'  Deepest path: {" -> ".join(sm["deepest_path"])}')
 
     architecture['input_flows'] = analyze_payload_patterns(architecture)
 
@@ -1340,6 +1426,54 @@ def generate_blueprint(architecture):
             'url_buttons': url_buttons_count,
             'async_backend': has_async_backend,
         },
+    }
+
+    # --- Weakness Report ---
+    commands = architecture.get('commands', {})
+    menus = architecture.get('menus', {})
+    input_flows = architecture.get('input_flows', [])
+
+    commands_implemented = [c for c, d in commands.items() if d.get('status') == 'implemented']
+    all_response_texts = ' '.join(
+        (m.get('text') or '') for m in list(menus.values()) + list(commands.values())
+    ).lower()
+
+    missing_commands = []
+    for std_cmd in ['/help', '/cancel', '/settings', '/support']:
+        if std_cmd not in commands_implemented:
+            missing_commands.append(std_cmd)
+
+    no_error_handling = not any(
+        kw in all_response_texts for kw in ['error', 'maaf', 'gagal', 'fail', 'salah', 'tidak valid']
+    )
+
+    start_text = menus.get('__root__', {}).get('text', '')
+    no_onboarding = len(start_text) < 200
+
+    flows_without_cancel = []
+    for flow in input_flows:
+        prompt = (flow.get('prompt') or '').lower()
+        if not any(kw in prompt for kw in ['batal', 'cancel', '/cancel', 'kembali', 'back']):
+            flows_without_cancel.append(' > '.join(flow.get('path', [])) or flow.get('state', 'unknown'))
+
+    suggestions = []
+    if '/help' in missing_commands:
+        suggestions.append('Add /help command with usage instructions')
+    if '/cancel' in missing_commands:
+        suggestions.append('Add /cancel command to abort input flows')
+    if no_error_handling:
+        suggestions.append('Add error messages for invalid inputs')
+    if no_onboarding:
+        suggestions.append('Expand /start with a welcome tutorial or feature overview')
+    if flows_without_cancel:
+        suggestions.append('Add cancel/back option to all input flows')
+
+    blueprint['weakness_report'] = {
+        'missing_commands': missing_commands,
+        'no_error_handling': no_error_handling,
+        'no_onboarding': no_onboarding,
+        'input_flows_without_cancel': flows_without_cancel,
+        'suggestions': suggestions,
     }
 
     return blueprint
