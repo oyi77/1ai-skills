@@ -332,11 +332,12 @@ async def funnel_spy(target: str) -> dict:
 # ─── Module: GUMROAD SPY ────────────────────────────────────────────────────
 
 async def gumroad_spy(target: str) -> dict:
-    """Scrape Gumroad products and estimate revenue."""
+    """Scrape Gumroad products and estimate revenue. Parses JSON-LD first, HTML fallback."""
     import urllib.request, re
 
     result = {
         'module': 'gumroad_spy',
+        'username': target,
         'target': target,
         'products': [],
         'total_products': 0,
@@ -353,37 +354,76 @@ async def gumroad_spy(target: str) -> dict:
         r = urllib.request.urlopen(req, timeout=10)
         html = r.read().decode('utf-8', errors='ignore')
 
-        # Extract products
-        product_blocks = re.findall(
-            r'class="product-card".*?data-label="([^"]*)".*?'
-            r'(?:\$|USD\s*)([\d.,]+).*?'
-            r'(?:(\d+)\s*rating|(\d[\d,.]*)\s*review)',
-            html, re.DOTALL
-        )
+        # Method 1: Parse JSON-LD structured data
+        jsonld_blocks = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.DOTALL)
+        jsonld_parsed = False
+        for block in jsonld_blocks:
+            try:
+                ld = json.loads(block)
+                items = ld if isinstance(ld, list) else [ld]
+                for item in items:
+                    if item.get('@type') in ('Product', 'CreativeWork', 'DigitalDocument'):
+                        price_cents = item.get('offers', {}).get('price', 0)
+                        try:
+                            price_val = float(price_cents)
+                        except (ValueError, TypeError):
+                            price_val = 0
+                        # Gumroad JSON-LD prices may be in cents or dollars
+                        price_usd = price_val / 100 if price_val > 100 else price_val
+                        rating_obj = item.get('aggregateRating', {})
+                        result['products'].append({
+                            'name': item.get('name', 'Unknown'),
+                            'price_usd': round(price_usd, 2),
+                            'price': f'${price_usd:.2f}',
+                            'rating': float(rating_obj.get('ratingValue', 0)) if rating_obj else None,
+                            'reviews': int(rating_obj.get('reviewCount', 0)) if rating_obj else 0,
+                        })
+                        jsonld_parsed = True
+            except (json.JSONDecodeError, TypeError):
+                continue
 
-        # Fallback: try simpler patterns
-        if not product_blocks:
-            names = re.findall(r'<h\d[^>]*class="[^"]*product[^"]*"[^>]*>([^<]+)', html)
-            prices = re.findall(r'\$([\d.,]+)', html)
-            ratings = re.findall(r'([\d.]+)\s*(?:stars?|rating)', html)
-            reviews = re.findall(r'(\d+)\s*(?:reviews?|ratings?)', html)
+        # Method 2: HTML regex fallback
+        if not jsonld_parsed:
+            product_blocks = re.findall(
+                r'class="product-card".*?data-label="([^"]*)".*?'
+                r'(?:\$|USD\s*)([\d.,]+).*?'
+                r'(?:(\d+)\s*rating|(\d[\d,.]*)\s*review)',
+                html, re.DOTALL
+            )
 
-            for i, name in enumerate(names[:20]):
-                product = {
-                    'name': name.strip(),
-                    'price': f'${prices[i]}' if i < len(prices) else 'unknown',
-                    'rating': float(ratings[i]) if i < len(ratings) else None,
-                    'reviews': int(reviews[i]) if i < len(reviews) else 0,
-                }
-                result['products'].append(product)
-        else:
-            for name, price, rating, review_count in product_blocks:
-                result['products'].append({
-                    'name': name.strip(),
-                    'price': f'${price}',
-                    'rating': float(rating) if rating else None,
-                    'reviews': int(review_count.replace(',', '')) if review_count else 0,
-                })
+            if not product_blocks:
+                names = re.findall(r'<h\d[^>]*class="[^"]*product[^"]*"[^>]*>([^<]+)', html)
+                prices = re.findall(r'\$([\d.,]+)', html)
+                ratings = re.findall(r'([\d.]+)\s*(?:stars?|rating)', html)
+                reviews = re.findall(r'(\d+)\s*(?:reviews?|ratings?)', html)
+
+                for i, name in enumerate(names[:20]):
+                    price_str = prices[i] if i < len(prices) else '0'
+                    try:
+                        price_usd = float(price_str.replace(',', ''))
+                    except ValueError:
+                        price_usd = 0.0
+                    product = {
+                        'name': name.strip(),
+                        'price_usd': price_usd,
+                        'price': f'${price_str}',
+                        'rating': float(ratings[i]) if i < len(ratings) else None,
+                        'reviews': int(reviews[i]) if i < len(reviews) else 0,
+                    }
+                    result['products'].append(product)
+            else:
+                for name, price, rating, review_count in product_blocks:
+                    try:
+                        price_usd = float(price.replace(',', ''))
+                    except ValueError:
+                        price_usd = 0.0
+                    result['products'].append({
+                        'name': name.strip(),
+                        'price_usd': price_usd,
+                        'price': f'${price}',
+                        'rating': float(rating) if rating else None,
+                        'reviews': int(review_count.replace(',', '')) if review_count else 0,
+                    })
 
         result['total_products'] = len(result['products'])
 
@@ -410,13 +450,15 @@ async def gumroad_spy(target: str) -> dict:
 # ─── Module: LYNK SPY ───────────────────────────────────────────────────────
 
 async def lynk_spy(username: str) -> dict:
-    """Scrape lynk.id profile using Playwright (JS-rendered)."""
+    """Scrape lynk.id profile using Playwright (JS-rendered, DISPLAY=:99)."""
 
     result = {
         'module': 'lynk_spy',
+        'username': username,
         'target': username,
         'products': [],
         'total_products': 0,
+        'contact': {},
         'contact_info': {},
         'social_links': [],
         'estimated_revenue': 'unknown',
@@ -426,6 +468,7 @@ async def lynk_spy(username: str) -> dict:
     url = f'https://lynk.id/{clean}'
 
     try:
+        os.environ.setdefault('DISPLAY', ':99')
         from playwright.sync_api import sync_playwright
 
         with sync_playwright() as p:
@@ -485,9 +528,11 @@ async def lynk_spy(username: str) -> dict:
         email = re.search(r'[\w.+-]+@[\w-]+\.\w+', html)
         if email:
             result['contact_info']['email'] = email.group(0)
+            result['contact']['email'] = email.group(0)
         phone = re.search(r'\+?(?:62|08)\d{8,12}', html)
         if phone:
             result['contact_info']['phone'] = phone.group(0)
+            result['contact']['phone'] = phone.group(0)
 
         # Estimate revenue
         if result['products'] and prices:
@@ -750,6 +795,11 @@ def generate_mermaid_diagram(architecture_json: dict) -> str:
                 lines.append(f'    {node_map[path[0]]} -.-> {url_id}')
 
     return '\n'.join(lines)
+
+
+def generate_mermaid(arch: dict) -> str:
+    """Alias for generate_mermaid_diagram — generates mermaid.js graph TD flowchart from bot architecture JSON."""
+    return generate_mermaid_diagram(arch)
 
 
 # ─── Module: REVENUE SPY ─────────────────────────────────────────────────────
