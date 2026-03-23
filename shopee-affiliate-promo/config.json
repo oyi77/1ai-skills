@@ -1,0 +1,41 @@
+{
+  "shopee_affiliate": {
+    "griyadalaman": {
+      "affiliate_id": "11392860738",
+      "user_id": "1297479286",
+      "email": "griyaperabotan99@gmail.com",
+      "cookies_file": "../../temp/shopee_affiliate_veris.json",
+      "use_for": "organic_promo"
+    },
+    "kak_niluh": {
+      "affiliate_id": "11317960507",
+      "user_id": "1155961796",
+      "email": "nyamiresepdapur@gmail.com",
+      "use_for": "meta_ads"
+    }
+  },
+  "holink": {
+    "url": "https://ho.link/racunshopeediskon",
+    "email": "grahainsanmandiri@gmail.com",
+    "dashboard": "https://app.holink.com/links"
+  },
+  "facebook": {
+    "user_id": "100056956485990",
+    "cookies_file": "../../temp/facebook_cookies.json"
+  },
+  "postbridge": {
+    "api_key": "pb_live_AT9Xm4PKaYBzAvFZYGgexi",
+    "base_url": "https://api.post-bridge.com/v1",
+    "accounts": {
+      "facebook": ["WARZ", "Mavigadget house", "LankyBox", "MrBeast"],
+      "instagram": ["berkahkaryadigitalproduct", "riviewprodukcek", "nyamiresepdapur"],
+      "tiktok": ["bkjaya00", "riviewprodukfashionjujur", "massehatyuk"],
+      "youtube": ["Resep Dapur Nyami", "Diskon Hunter"]
+    }
+  },
+  "posting_schedule": {
+    "times": ["07:00", "12:00", "15:00", "19:00", "21:00"],
+    "timezone": "Asia/Jakarta",
+    "posts_per_day": 5
+  }
+}

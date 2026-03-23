@@ -1,0 +1,106 @@
+{
+  "categories": {
+    "restoration_clipper": {
+      "name": "🔧 Restoration/Clipper",
+      "accounts": {
+        "youtube": ["BK METAL", "berkah karya digital agency"],
+        "tiktok": ["bkjaya00"],
+        "instagram": ["bkjayautama"],
+        "threads": ["bkjayautama"]
+      },
+      "content_types": ["REMIX restoration", "gun/car/vintage", "clipper content"]
+    },
+    "digital_product": {
+      "name": "📦 Digital Product",
+      "accounts": {
+        "youtube": ["Algo Expert Hub"],
+        "twitter": ["algoexperthub"],
+        "threads": ["algoexperthub", "berkahkaryadigitalproduct"],
+        "instagram": ["algoexperthub", "berkahkaryadigitalproduct"],
+        "tiktok": ["jasakontenai"]
+      },
+      "content_types": ["Template", "masterclass", "prompt pack", "digital product"]
+    },
+    "affiliate_shopee": {
+      "name": "🛒 Affiliate Shopee",
+      "accounts": {
+        "tiktok": ["riviewprodukfashionjujur", "baimwongdiskon", "nugrohopratama5"],
+        "threads": ["riviewprodukcek", "riviewprodukaffiliate", "valdoaffiliate"],
+        "instagram": ["riviewprodukcek", "riviewprodukaffiliate"],
+        "youtube": ["Diskon Hunter"],
+        "facebook": ["Belanja", "Dewi Shop", "Stevi Shop", "Clara Store"]
+      },
+      "content_types": ["Product review", "flash sale", "diskon", "shopee affiliate", "racun shopee"]
+    },
+    "health_wellness": {
+      "name": "💊 Health & Wellness",
+      "accounts": {
+        "tiktok": ["sehatseraiphari", "divasehatsetiaphari", "massehatyuk", "drlifehacks1", "clinicguru"],
+        "facebook": ["Vanezia Herbal"]
+      },
+      "content_types": ["Tips kesehatan", "herbal", "lifestyle sehat", "health"]
+    },
+    "food_recipe": {
+      "name": "🍳 Food & Recipe",
+      "accounts": {
+        "youtube": ["Resep Dapur Nyami", "Mak e Nok", "Mak E Nok"],
+        "threads": ["nyamiresepdapur", "emake.nok"],
+        "instagram": ["nyamiresepdapur", "emake.nok"],
+        "facebook": ["Nyamiresep", "Mak E Nok"]
+      },
+      "content_types": ["Resep masakan", "food content", "cooking", "recipe"]
+    },
+    "lifestyle_entertainment": {
+      "name": "💃 Lifestyle & Entertainment",
+      "accounts": {
+        "threads": ["ameliacintaimoet", "ardanardiawan", "favisoraanggraeni", "chayangkasih"],
+        "instagram": ["ameliacintaimoet", "ardanardiawan", "favisoraanggraeni", "chayangkasih"],
+        "youtube": ["Chill Work Zone Lofi"]
+      },
+      "content_types": ["Personal brand", "lifestyle", "entertainment", "engagement"]
+    },
+    "brand_agency": {
+      "name": "🏢 Brand/Agency",
+      "accounts": {
+        "instagram": ["berkahkaryadigitalmarketing"],
+        "threads": ["berkahkaryadigitalmarketing"],
+        "twitter": ["AgencyKarya"],
+        "facebook": ["Berkah Karya Digital Marketing Agency"],
+        "linkedin": ["Andik veris febriyanto"],
+        "tiktok": ["catatanoperator"]
+      },
+      "content_types": ["B2B", "portfolio", "profesional", "agency"]
+    },
+    "fb_engagement": {
+      "name": "📱 Facebook Engagement",
+      "accounts": {
+        "facebook": [
+          "MrBeast", "LankyBox", "Mr Degree", "Sandraskin", "Sandraskin fans",
+          "Bunda Corla", "Francesca Inaudi", "Su Hao", "DONA 도나", "Mavigadget house",
+          "Sandra skins", "Marta and Rustam", "Cookieswirlc", "Kiro Ebra",
+          "Marcello Mastroiani", "Dylan Anderson", "Chicas Sexys", "Big bank challenge",
+          "Anak cerdas & kreatif", "WARZ", "Home 4", "Lizbeth Anguiano", "MetDaan Oke",
+          "Noticias de actualidad sobre celebridades", "Hani Fujiati", "Rahapu Developer",
+          "Sunny Aurra", "Divya Elena", "Anindira"
+        ]
+      },
+      "content_types": ["Viral", "entertainment", "soft CTA", "engagement"]
+    },
+    "electronics": {
+      "name": "🔌 Electronics",
+      "accounts": {
+        "youtube": ["grahaelektroniktws"]
+      },
+      "content_types": ["Gadget review", "tech", "electronics"]
+    }
+  },
+  "routing": {
+    "remix_restoration": ["restoration_clipper"],
+    "remix_tiktok": ["restoration_clipper", "fb_engagement"],
+    "digital_product": ["digital_product", "brand_agency"],
+    "shopee_affiliate": ["affiliate_shopee"],
+    "health": ["health_wellness"],
+    "food_recipe": ["food_recipe"],
+    "entertainment_viral": ["fb_engagement", "lifestyle_entertainment"]
+  }
+}

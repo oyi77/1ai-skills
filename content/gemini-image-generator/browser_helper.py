@@ -1,1 +1,0 @@
-# Browser automation for Gemini Product Image Generation

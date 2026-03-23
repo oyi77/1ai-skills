@@ -1,1 +1,0 @@
-function autoPaperBet(signal) { if (signal === 

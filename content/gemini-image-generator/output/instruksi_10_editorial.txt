@@ -1,1 +1,0 @@
-STYLE: Editorial\nREFINER PRODUKSI: Studio\nRasio: 9:16\nLighting: Pencahayaan yang dramatis dan profesional\nIntruksi tambahan: Buatlah model di studio dengan pencahayaan yang dramatis dan profesional.\n---\nCatatan: Upload pose_model.jpg + product_blouse.jpg ke Gemini Link: https://gemini.google.com/share/c7150b8213a4

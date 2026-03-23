@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sample_1",
+    "name": "Headset Gaming RGB Bass Stereo",
+    "price": "89000",
+    "category": "gadget",
+    "original_url": "https://shopee.co.id/sample",
+    "affiliate_link": "https://shope.ee/placeholder1",
+    "shop_id": null,
+    "item_id": null,
+    "added_at": "2026-03-13T19:30:00",
+    "posted_count": 0,
+    "note": "GANTI DENGAN LINK AFFILIATE ASLI"
+  },
+  {
+    "id": "sample_2",
+    "name": "Skincare Set Lengkap Anti Aging",
+    "price": "159000",
+    "category": "beauty",
+    "original_url": "https://shopee.co.id/sample",
+    "affiliate_link": "https://shope.ee/placeholder2",
+    "shop_id": null,
+    "item_id": null,
+    "added_at": "2026-03-13T19:30:00",
+    "posted_count": 0,
+    "note": "GANTI DENGAN LINK AFFILIATE ASLI"
+  },
+  {
+    "id": "sample_3",
+    "name": "Tas Selempang Wanita Import Korea",
+    "price": "79000",
+    "category": "fashion",
+    "original_url": "https://shopee.co.id/sample",
+    "affiliate_link": "https://shope.ee/placeholder3",
+    "shop_id": null,
+    "item_id": null,
+    "added_at": "2026-03-13T19:30:00",
+    "posted_count": 0,
+    "note": "GANTI DENGAN LINK AFFILIATE ASLI"
+  }
+]

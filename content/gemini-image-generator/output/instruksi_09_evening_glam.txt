@@ -1,1 +1,0 @@
-STYLE: Evening Glam\nREFINER PRODUKSI: Hotel mewah\nRasio: 9:16\nLighting: Pencahayaan malam yang mewah\nIntruksi tambahan: Buatlah model di hotel mewah dengan pencahayaan malam yang mewah.\n---\nCatatan: Upload pose_model.jpg + product_blouse.jpg ke Gemini Link: https://gemini.google.com/share/c7150b8213a4

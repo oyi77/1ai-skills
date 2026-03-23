@@ -1,0 +1,83 @@
+{
+  "platforms": {
+    "tiktok": {
+      "max_caption_length": 2200,
+      "optimal_caption_length": 150,
+      "hashtag_count": 5,
+      "hashtag_strategy": "mix",
+      "cta_position": "end",
+      "templates": {
+        "hook_reveal": "{hook} 👇 Link di bio! {hashtags}",
+        "problem_solution": "{problem}? {solution_tease} — cek link di bio! {hashtags}",
+        "social_proof_cta": "{social_proof} 🔥 {cta} Link di bio! {hashtags}",
+        "number_hook": "{number_hook} ✅ Link di bio! {hashtags}"
+      },
+      "universal_hashtags": ["#JendralBot", "#AffiliateTips", "#DigitalProduct", "#CaraBisnis", "#IncomeTambahan"],
+      "product_hashtags": {
+        "career": ["#CareerTips", "#CVOptimasi", "#JobHunting", "#KarirImpian"],
+        "marketing": ["#IklanOnline", "#MarketingDigital", "#AdsStrategy", "#UMKM"],
+        "food_business": ["#BisnisKuliner", "#FoodBusiness", "#UMKM", "#UsahaKuliner"],
+        "ecommerce": ["#JualOnline", "#MarketplaceTips", "#TokopediaTips", "#ShopeeTips"],
+        "creative": ["#ContentCreator", "#AITools", "#DesainGratis", "#FreelancerIndonesia"],
+        "education": ["#GuruPintar", "#PendidikanAI", "#LesPribadi", "#BimbelOnline"],
+        "affiliate": ["#TikTokAffiliate", "#IncomePasif", "#AffiliateMarketing", "#TikTokShop"],
+        "starter": ["#BelanjaCerdas", "#CashbackKeren", "#HematBelanja", "#ShoppingHacks"]
+      }
+    },
+    "instagram": {
+      "max_caption_length": 2200,
+      "optimal_caption_length": 300,
+      "hashtag_count": 15,
+      "hashtag_strategy": "block_at_end",
+      "cta_position": "middle_and_end",
+      "templates": {
+        "story_hook": "{hook}\n\n{body}\n\n➡️ Link di bio untuk akses sekarang!\n\n{hashtags}",
+        "value_drop": "{value_statement}\n\n{details}\n\nGratis/hanya {price_label} — link di bio 👆\n\n{hashtags}",
+        "before_after": "Before: {before}\nAfter: {after}\n\nIni bukan kebetulan — {product_name} yang bikin itu terjadi.\n\n{hashtags}"
+      },
+      "universal_hashtags": ["#JendralBot", "#BerkahKarya", "#AffiliateTips", "#DigitalProduct", "#BisnisonlineIndonesia", "#CaraBisnis", "#IncomeTambahan", "#UMKM"],
+      "engagement_boosters": ["Setuju? Drop ✅ di komen", "Tag teman yang butuh ini", "Save dulu biar nggak lupa"]
+    },
+    "facebook": {
+      "max_caption_length": 63206,
+      "optimal_caption_length": 500,
+      "hashtag_count": 3,
+      "hashtag_strategy": "inline",
+      "cta_position": "end",
+      "templates": {
+        "story_format": "{personal_hook}\n\n{elaboration}\n\n{cta_with_link}",
+        "educational": "{lesson_title}\n\n{key_points}\n\nMau tau lebih lengkap? Klik link ini: {lynk_url}",
+        "social_proof": "{testimonial_hook}\n\n{details}\n\n{cta_with_link}"
+      },
+      "audience_segments": ["pebisnis_lokal", "mahasiswa", "ibu_rumah_tangga", "karyawan", "freelancer"]
+    }
+  },
+  "hook_formulas": {
+    "curiosity_gap": {
+      "pattern": "Kenapa [X] terjadi/bisa, padahal [Y]? Ini yang jarang orang tau...",
+      "example": "Kenapa orang ini penghasilan 20 juta dari TikTok padahal followernya cuma 500? Ini yang jarang orang tau...",
+      "best_for": ["tiktok", "instagram"]
+    },
+    "contrarian": {
+      "pattern": "Semua orang percaya [common belief]. Tapi faktanya [surprising truth].",
+      "example": "Semua orang percaya CV bagus = dipanggil interview. Tapi faktanya recruiter rata-rata cuma baca 6 detik.",
+      "best_for": ["facebook", "instagram"]
+    },
+    "number_based": {
+      "pattern": "[Number] cara/langkah/rahasia [desirable outcome] yang [qualifier]",
+      "example": "3 langkah dapat cashback 40% dari belanja sehari-hari — gratis, tanpa modal",
+      "best_for": ["tiktok", "instagram", "facebook"]
+    },
+    "social_proof": {
+      "pattern": "[Relatable persona] udah [specific result] pakai [product/method] — sekarang giliran kamu",
+      "example": "Ibu RT di Surabaya ini dapat 5 juta per bulan dari rumah pakai sistem ini — sekarang giliran kamu",
+      "best_for": ["facebook", "instagram"]
+    }
+  },
+  "posting_schedule": {
+    "optimal_times_wib": ["08:00", "12:00", "19:00"],
+    "tiktok_peak": ["19:00", "20:00", "21:00"],
+    "instagram_peak": ["12:00", "18:00", "20:00"],
+    "facebook_peak": ["09:00", "13:00", "19:00"]
+  }
+}
