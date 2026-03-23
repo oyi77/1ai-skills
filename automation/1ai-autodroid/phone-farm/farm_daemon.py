@@ -331,8 +331,8 @@ class FarmDaemon:
 
         app = FastAPI(title="Phone Farm Dashboard v2", version="2.0.0")
 
-        @app.get("/")
-        async def root():
+        @app.get("/api")
+        async def api_root():
             state = FarmDaemon.get_status()
             return state
 
@@ -405,6 +405,17 @@ class FarmDaemon:
         async def wifi_connect(ip: str, port: int = 5555, name: str = None):
             ok = self.dm.connect_wifi(ip, port, name)
             return {"status": "connected" if ok else "failed"}
+
+        # Serve static dashboard
+        from fastapi.staticfiles import StaticFiles
+        static_dir = Path(__file__).parent / "static"
+        if static_dir.exists():
+            app.mount("/dashboard", StaticFiles(directory=str(static_dir), html=True), name="dashboard")
+
+            @app.get("/")
+            async def index():
+                from fastapi.responses import RedirectResponse
+                return RedirectResponse("/dashboard/")
 
         log.info(f"Farm API on http://0.0.0.0:{self.dashboard_port}")
         uvicorn.run(app, host="0.0.0.0", port=self.dashboard_port, log_level="warning")

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📱 Phone Farm Dashboard</title>
+<style>
+  :root { --bg: #0f1117; --card: #1a1d27; --border: #2a2d3a; --accent: #6c5ce7; --green: #00b894; --red: #e17055; --yellow: #fdcb6e; --text: #dfe6e9; --muted: #636e72; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .header { background: var(--card); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 20px; }
+  .header h1 span { font-size: 24px; }
+  .header .status { display: flex; gap: 16px; font-size: 13px; color: var(--muted); }
+  .header .status .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+  .header .status .dot.on { background: var(--green); }
+  .header .status .dot.off { background: var(--red); }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .stat-card .value { font-size: 32px; font-weight: 700; }
+  .stat-card .value.green { color: var(--green); }
+  .stat-card .value.red { color: var(--red); }
+  .stat-card .value.yellow { color: var(--yellow); }
+  .stat-card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 24px; overflow: hidden; }
+  .section-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .section-header h2 { font-size: 16px; }
+  .section-header .actions { display: flex; gap: 8px; }
+  .btn { background: var(--accent); color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; transition: opacity 0.2s; }
+  .btn:hover { opacity: 0.85; }
+  .btn.sm { padding: 4px 10px; font-size: 12px; }
+  .btn.green { background: var(--green); }
+  .btn.red { background: var(--red); }
+  .btn.yellow { background: var(--yellow); color: #333; }
+  .device-card { padding: 20px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; }
+  .device-card:last-child { border-bottom: none; }
+  .device-icon { width: 48px; height: 48px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .device-info h3 { font-size: 15px; margin-bottom: 4px; }
+  .device-info .meta { font-size: 12px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
+  .device-info .meta span { display: flex; align-items: center; gap: 4px; }
+  .device-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge.green { background: rgba(0,184,148,0.15); color: var(--green); }
+  .badge.red { background: rgba(225,112,85,0.15); color: var(--red); }
+  .badge.yellow { background: rgba(253,203,110,0.15); color: var(--yellow); }
+  .task-row { padding: 10px 20px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 90px 1fr 100px 80px 80px; gap: 12px; font-size: 13px; align-items: center; }
+  .task-row:last-child { border-bottom: none; }
+  .task-row .time { color: var(--muted); font-size: 12px; }
+  .alert-row { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: center; font-size: 13px; }
+  .alert-row:last-child { border-bottom: none; }
+  .alert-row .icon { font-size: 18px; }
+  .screenshot-container { padding: 20px; text-align: center; }
+  .screenshot-container img { max-width: 300px; border-radius: 12px; border: 2px solid var(--border); }
+  .screenshot-container .empty { color: var(--muted); padding: 40px; }
+  .skills-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+  .skill-tag { background: rgba(108,92,231,0.15); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+  .refresh-bar { text-align: center; padding: 8px; font-size: 11px; color: var(--muted); }
+  @media (max-width: 768px) { .task-row { grid-template-columns: 1fr 1fr; } .device-card { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>📱</span> Phone Farm</h1>
+  <div class="status">
+    <span id="daemon-status"><span class="dot off"></span> Loading...</span>
+    <span id="uptime">--</span>
+    <span id="last-update">--</span>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Stats -->
+  <div class="grid" id="stats-grid">
+    <div class="stat-card"><div class="label">Devices Connected</div><div class="value green" id="s-connected">-</div><div class="sub" id="s-total">of - registered</div></div>
+    <div class="stat-card"><div class="label">Tasks (1h)</div><div class="value" id="s-tasks">-</div><div class="sub" id="s-tasks-fail">- failed</div></div>
+    <div class="stat-card"><div class="label">Queue</div><div class="value" id="s-queue">-</div><div class="sub">pending tasks</div></div>
+    <div class="stat-card"><div class="label">Alerts</div><div class="value" id="s-alerts">-</div><div class="sub">unacknowledged</div></div>
+  </div>
+
+  <!-- Devices -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📱 Devices</h2>
+      <div class="actions">
+        <button class="btn sm" onclick="refreshAll()">🔄 Refresh</button>
+        <button class="btn sm green" onclick="screenshotAll()">📸 Screenshot All</button>
+      </div>
+    </div>
+    <div id="devices-list"><div class="device-card"><div>Loading devices...</div></div></div>
+  </div>
+
+  <!-- Live Screenshot -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📸 Live Screenshot</h2>
+      <div class="actions">
+        <select id="screenshot-device" class="btn sm" style="background:var(--border);"></select>
+        <button class="btn sm" onclick="takeScreenshot()">📸 Capture</button>
+      </div>
+    </div>
+    <div class="screenshot-container" id="screenshot-area">
+      <div class="empty">Select a device and click Capture</div>
+    </div>
+  </div>
+
+  <!-- Recent Tasks -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📋 Recent Tasks</h2>
+      <div class="actions">
+        <button class="btn sm" onclick="loadTasks()">🔄 Refresh</button>
+      </div>
+    </div>
+    <div class="task-row" style="font-weight:600;color:var(--muted);">
+      <span>Time</span><span>Task</span><span>Device</span><span>Status</span><span>Duration</span>
+    </div>
+    <div id="tasks-list"></div>
+  </div>
+
+  <!-- Alerts -->
+  <div class="section">
+    <div class="section-header">
+      <h2>🚨 Alerts</h2>
+    </div>
+    <div id="alerts-list"><div class="alert-row"><span class="icon">✅</span><span>No alerts</span></div></div>
+  </div>
+
+  <div class="refresh-bar">Auto-refreshes every 10s · <span id="timer">10</span>s</div>
+</div>
+
+<script>
+const API = window.location.origin;
+let devices = [];
+let countdown = 10;
+
+async function api(path) {
+  try {
+    const r = await fetch(API + path);
+    return await r.json();
+  } catch(e) { console.error(path, e); return null; }
+}
+
+async function loadStats() {
+  const s = await api('/stats');
+  if (!s) return;
+  const st = s.stats || {};
+  document.getElementById('s-connected').textContent = s.devices_connected || 0;
+  document.getElementById('s-total').textContent = `of ${s.devices_total || 0} registered`;
+  document.getElementById('s-tasks').textContent = st.tasks_1h_ok || 0;
+  document.getElementById('s-tasks-fail').textContent = `${st.tasks_1h_fail || 0} failed`;
+  document.getElementById('s-queue').textContent = s.queue_depth || 0;
+  document.getElementById('s-alerts').textContent = st.unacked_alerts || 0;
+  document.getElementById('s-alerts').className = `value ${(st.unacked_alerts||0) > 0 ? 'red' : 'green'}`;
+  
+  const dot = document.querySelector('#daemon-status .dot');
+  dot.className = `dot ${s.pid ? 'on' : 'off'}`;
+  document.getElementById('daemon-status').innerHTML = `<span class="dot ${s.pid?'on':'off'}"></span> ${s.mode || 'offline'}`;
+  
+  const up = s.uptime_seconds || 0;
+  const h = Math.floor(up/3600), m = Math.floor((up%3600)/60);
+  document.getElementById('uptime').textContent = `⏱️ ${h}h ${m}m`;
+  document.getElementById('last-update').textContent = `🕐 ${new Date().toLocaleTimeString()}`;
+}
+
+async function loadDevices() {
+  devices = await api('/devices') || [];
+  const sel = document.getElementById('screenshot-device');
+  sel.innerHTML = devices.map(d => `<option value="${d.serial}">${d.name || d.serial}</option>`).join('');
+  
+  const html = devices.map(d => {
+    const config = JSON.parse(d.config_json || '{}');
+    const skills = config.assigned_skills || [];
+    const connected = d.connected;
+    const bat = d.battery >= 0 ? d.battery : '?';
+    const batColor = bat > 20 ? 'green' : bat > 10 ? 'yellow' : 'red';
+    return `
+      <div class="device-card">
+        <div class="device-icon">${connected ? '📱' : '📵'}</div>
+        <div class="device-info">
+          <h3>${d.name || d.serial} <span class="badge ${connected?'green':'red'}">${connected?'ONLINE':'OFFLINE'}</span></h3>
+          <div class="meta">
+            <span>🔋 <span class="badge ${batColor}">${bat}%</span></span>
+            <span>📱 ${d.model || '?'}</span>
+            <span>🤖 Android ${d.android_ver || '?'}</span>
+            <span>📡 ${d.connection || 'usb'}</span>
+            ${d.current_app ? `<span>📦 ${d.current_app}</span>` : ''}
+          </div>
+          <div class="skills-tags">
+            ${skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
+          </div>
+        </div>
+        <div class="device-actions">
+          <button class="btn sm" onclick="runTask('${d.serial}','health_check')">❤️ Health</button>
+          <button class="btn sm green" onclick="captureDevice('${d.serial}')">📸</button>
+          <button class="btn sm yellow" onclick="runTask('${d.serial}','go_home')">🏠</button>
+          <button class="btn sm" onclick="runTask('${d.serial}','wake_screen')">💡 Wake</button>
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('devices-list').innerHTML = html || '<div class="device-card">No devices registered</div>';
+}
+
+async function loadTasks() {
+  const tasks = await api('/tasks?limit=20') || [];
+  const html = tasks.map(t => {
+    const time = t.ts_str ? t.ts_str.split(' ')[1] || t.ts_str : '--';
+    const icon = t.success ? '✅' : '❌';
+    return `<div class="task-row">
+      <span class="time">${time}</span>
+      <span>${t.task_type}</span>
+      <span>${t.device_name || t.serial}</span>
+      <span>${icon}</span>
+      <span>${t.duration_ms}ms</span>
+    </div>`;
+  }).join('');
+  document.getElementById('tasks-list').innerHTML = html || '<div class="task-row"><span>No tasks yet</span></div>';
+}
+
+async function loadAlerts() {
+  const alerts = await api('/alerts') || [];
+  if (!alerts.length) {
+    document.getElementById('alerts-list').innerHTML = '<div class="alert-row"><span class="icon">✅</span><span>No alerts</span></div>';
+    return;
+  }
+  const html = alerts.map(a => {
+    const icon = a.alert_type?.includes('critical') ? '🔴' : a.alert_type?.includes('reconnect') ? '✅' : '🟡';
+    return `<div class="alert-row"><span class="icon">${icon}</span><span>${a.message}</span><span class="time" style="margin-left:auto;color:var(--muted)">${a.ts_str||''}</span></div>`;
+  }).join('');
+  document.getElementById('alerts-list').innerHTML = html;
+}
+
+async function runTask(serial, type) {
+  const r = await fetch(`${API}/device/${serial}/task/${type}`, {method:'POST'});
+  const data = await r.json();
+  loadTasks();
+  loadDevices();
+  loadStats();
+}
+
+async function captureDevice(serial) {
+  document.getElementById('screenshot-area').innerHTML = '<div class="empty">Capturing...</div>';
+  const ts = Date.now();
+  document.getElementById('screenshot-area').innerHTML = `<img src="${API}/device/${serial}/screenshot?t=${ts}" onerror="this.parentElement.innerHTML='<div class=empty>Capture failed</div>'" />`;
+}
+
+function takeScreenshot() {
+  const sel = document.getElementById('screenshot-device');
+  if (sel.value) captureDevice(sel.value);
+}
+
+function screenshotAll() {
+  devices.forEach(d => { if(d.connected) runTask(d.serial, 'screenshot'); });
+}
+
+function refreshAll() {
+  loadStats(); loadDevices(); loadTasks(); loadAlerts();
+}
+
+// Auto-refresh
+setInterval(() => {
+  countdown--;
+  document.getElementById('timer').textContent = countdown;
+  if (countdown <= 0) { countdown = 10; refreshAll(); }
+}, 1000);
+
+// Initial load
+refreshAll();
+</script>
+</body>
+</html>
