@@ -1,25 +1,21 @@
 #!/usr/bin/env python3
 """
-Phone Farm Daemon — Autonomous orchestrator for Android device farm.
+Phone Farm Daemon v2 — Production-grade autonomous orchestrator.
 
-Runs as a persistent daemon that:
-  1. Monitors device health (every 5 min)
-  2. Auto-reconnects disconnected devices
-  3. Runs scheduled tasks per device
-  4. Sends alerts on critical issues (battery low, disconnect)
-  5. Takes periodic screenshots for audit
-  6. Exposes HTTP API for real-time status
+Architecture:
+  - Scheduler thread: dispatches tasks at configured intervals
+  - N worker threads (TaskRunner): execute tasks from priority queue
+  - Watchdog thread: monitors ADB servers, reconnects dead devices
+  - Alert thread: reads DB alerts and sends Telegram notifications
+  - HTTP API thread: FastAPI dashboard (non-blocking)
+  - Pruner thread: keeps DB clean (old task logs)
 
-Daemon modes:
-  --mode monitor   : Health checks + screenshots only (safe, default)
-  --mode active    : Full task automation (opens apps, checks inboxes)
-  --mode dashboard : HTTP API only (no autonomous tasks)
-
-Usage:
-  python3 farm_daemon.py                    # default monitor mode
-  python3 farm_daemon.py --mode active      # full automation
-  python3 farm_daemon.py --mode dashboard   # API only (port 8889)
-  python3 farm_daemon.py --status           # print current state and exit
+Design principles:
+  - NO sequential device loops in hot path
+  - All device work goes through TaskRunner priority queue
+  - State in SQLite (survives restarts)
+  - Graceful shutdown with SIGTERM
+  - Configurable intervals per device
 """
 
 import asyncio
@@ -30,13 +26,13 @@ import signal
 import sys
 import threading
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).parent))
 from device_manager import DeviceManager
-from task_runner import TaskRunner
+from task_runner import TaskRunner, PRIORITY_HIGH, PRIORITY_NORMAL, PRIORITY_LOW
+import db
 
 logging.basicConfig(
     level=logging.INFO,
@@ -52,207 +48,276 @@ logging.basicConfig(
 )
 log = logging.getLogger("farm_daemon")
 
-STATE_FILE = Path(__file__).parent.parent.parent / "logs" / "phone-farm" / "daemon_state.json"
 PID_FILE = Path("/tmp/phone-farm-daemon.pid")
+STATE_FILE = Path(__file__).parent.parent.parent / "logs" / "phone-farm" / "daemon_state.json"
 
-# ── Alert thresholds ─────────────────────────────────────────────────────
-BATTERY_WARN = 20
-BATTERY_CRIT = 10
-DISCONNECT_ALERT_AFTER_SEC = 300  # 5 min disconnected = alert
-HEALTH_INTERVAL = 300             # 5 min
-SCREENSHOT_INTERVAL = 120        # 2 min
-ACTIVE_TASK_INTERVAL = 600       # 10 min (for active mode tasks)
-RECONNECT_INTERVAL = 60          # 1 min between reconnect attempts
+# Intervals
+HEALTH_INTERVAL      = 300   # 5 min
+SCREENSHOT_INTERVAL  = 120   # 2 min
+ACTIVE_INTERVAL      = 600   # 10 min (active mode)
+WATCHDOG_INTERVAL    = 60    # 1 min
+ALERT_INTERVAL       = 30    # 30s
+PRUNE_INTERVAL       = 3600  # 1 hour
+STATE_SAVE_INTERVAL  = 30    # 30s
+DISCONNECT_ALERT_SEC = 300   # 5 min before alerting
 
 
 class FarmDaemon:
-    """Autonomous phone farm orchestrator."""
 
-    def __init__(self, mode: str = "monitor"):
+    def __init__(self, mode: str = "monitor", workers: int = 16,
+                 dashboard_port: int = 8889):
         self.mode = mode
-        self.dm = DeviceManager()
-        self.runner = TaskRunner(self.dm)
+        self.workers = workers
+        self.dashboard_port = dashboard_port
+        self.dm = DeviceManager(workers=workers)
+        self.runner = TaskRunner(self.dm, workers=workers)
         self.running = False
         self.start_time = time.time()
-        self.last_health = 0
-        self.last_screenshot = 0
-        self.last_active_task = 0
-        self.last_reconnect = 0
-        self.alerts: list[dict] = []
-        self.stats = {
-            "tasks_run": 0,
-            "tasks_failed": 0,
+        self._threads: list[threading.Thread] = []
+        self._lock = threading.Lock()
+        self._stats = {
+            "start_time": datetime.now().isoformat(),
+            "mode": mode,
             "reconnects": 0,
             "alerts_sent": 0,
-            "screenshots_taken": 0,
+            "prune_runs": 0,
         }
 
     def start(self):
-        """Start the daemon main loop."""
         self.running = True
         self._write_pid()
-        log.info(f"Farm daemon started in {self.mode} mode (PID {os.getpid()})")
+        log.info(f"Farm daemon v2 starting — mode={self.mode}, workers={self.workers}")
         signal.signal(signal.SIGTERM, self._handle_signal)
         signal.signal(signal.SIGINT, self._handle_signal)
 
-        # Initial refresh
-        self.dm.refresh_all()
-        connected = [s for s, d in self.dm.devices.items() if d.connected]
-        log.info(f"Devices: {len(self.dm.devices)} registered, {len(connected)} connected")
+        # Init DB
+        db.init_db()
 
-        if self.mode == "dashboard":
-            self._run_dashboard()
+        # Initial discovery
+        connected = self.dm.discover()
+        log.info(f"Initial discovery: {len(connected)} devices connected")
+
+        # Start TaskRunner workers
+        self.runner.start()
+
+        # Start background threads
+        self._spawn(self._scheduler_loop, "scheduler")
+        self._spawn(self._watchdog_loop, "watchdog")
+        self._spawn(self._alert_loop, "alerter")
+        self._spawn(self._state_save_loop, "state-saver")
+        self._spawn(self._prune_loop, "pruner")
+
+        if self.mode in ("monitor", "active"):
+            self._spawn(self._screenshot_loop, "screenshotter")
+
+        if self.mode == "active":
+            self._spawn(self._active_task_loop, "active-tasks")
+
+        if self.mode != "dashboard":
+            # Block main thread on HTTP API
+            self._run_api()
         else:
-            self._run_loop()
+            self._run_api()
 
-    def _run_loop(self):
-        """Main daemon loop."""
+    def _spawn(self, target, name: str) -> threading.Thread:
+        t = threading.Thread(target=target, name=name, daemon=True)
+        t.start()
+        self._threads.append(t)
+        return t
+
+    # ── Scheduler: dispatches health checks ─────────────────────────────
+
+    def _scheduler_loop(self):
+        last_health = 0
+        while self.running:
+            now = time.time()
+            if now - last_health >= HEALTH_INTERVAL:
+                connected = [d["serial"] for d in db.get_all_devices(connected_only=True)]
+                if connected:
+                    log.info(f"Scheduling health checks for {len(connected)} devices")
+                    self.runner.submit_all(connected, "health_check", priority=PRIORITY_HIGH)
+                last_health = now
+            time.sleep(10)
+
+    # ── Screenshot loop ──────────────────────────────────────────────────
+
+    def _screenshot_loop(self):
+        last_ss = 0
+        while self.running:
+            now = time.time()
+            if now - last_ss >= SCREENSHOT_INTERVAL:
+                connected = [d["serial"] for d in db.get_all_devices(connected_only=True)]
+                if connected:
+                    log.debug(f"Scheduling screenshots for {len(connected)} devices")
+                    self.runner.submit_all(connected, "screenshot", priority=PRIORITY_LOW)
+                last_ss = now
+            time.sleep(15)
+
+    # ── Active task loop (active mode) ───────────────────────────────────
+
+    def _active_task_loop(self):
+        last_active = 0
+        while self.running:
+            now = time.time()
+            if now - last_active >= ACTIVE_INTERVAL:
+                devices = db.get_all_devices(connected_only=True)
+                for device in devices:
+                    serial = device["serial"]
+                    config = json.loads(device.get("config_json", "{}"))
+                    skills = config.get("assigned_skills", [])
+                    task_map = {
+                        "tiktok": "tiktok_inbox",
+                        "shopee": "shopee_orders",
+                        "whatsapp": "whatsapp_unread",
+                        "instagram": "instagram_dms",
+                    }
+                    for skill in skills:
+                        task = task_map.get(skill)
+                        if task:
+                            self.runner.submit(serial, task, priority=PRIORITY_NORMAL)
+                    # Return to home after tasks
+                    self.runner.submit(serial, "go_home", priority=PRIORITY_LOW)
+                last_active = now
+            time.sleep(30)
+
+    # ── Watchdog: detect disconnects, auto-reconnect ─────────────────────
+
+    def _watchdog_loop(self):
         while self.running:
             try:
-                now = time.time()
+                # Check ADB servers first
+                self.dm.pool.health_check_all_servers()
+                # Discover connected devices
+                actual_connected = set(self.dm.pool.list_devices())
+                all_devices = db.get_all_devices()
+                for device in all_devices:
+                    serial = device["serial"]
+                    was_connected = bool(device.get("connected", 0))
+                    is_now = serial in actual_connected
+                    if was_connected and not is_now:
+                        # Device just disconnected
+                        db.upsert_device(serial=serial, connected=0)
+                        log.warning(f"Device disconnected: {device.get('name', serial)}")
+                    elif not was_connected and is_now:
+                        # Device reconnected!
+                        db.upsert_device(serial=serial, connected=1, last_seen=time.time())
+                        log.info(f"Device reconnected: {device.get('name', serial)}")
+                        with self._lock:
+                            self._stats["reconnects"] += 1
+                        if not db.is_alert_recent(serial, "reconnected"):
+                            db.insert_alert(serial, "reconnected",
+                                            f"✅ {device.get('name', serial)} reconnected")
 
-                # Health check every HEALTH_INTERVAL
-                if now - self.last_health >= HEALTH_INTERVAL:
-                    self._do_health_checks()
-                    self.last_health = now
+                # Check long-disconnected devices
+                for device in all_devices:
+                    serial = device["serial"]
+                    if not device.get("connected"):
+                        last_seen = device.get("last_seen", 0)
+                        if last_seen and (time.time() - last_seen) > DISCONNECT_ALERT_SEC:
+                            if not db.is_alert_recent(serial, "disconnect", 3600):
+                                db.insert_alert(
+                                    serial, "disconnect",
+                                    f"❌ {device.get('name', serial)} offline "
+                                    f"{int((time.time()-last_seen)/60)}min"
+                                )
 
-                # Screenshots every SCREENSHOT_INTERVAL
-                if now - self.last_screenshot >= SCREENSHOT_INTERVAL:
-                    self._do_screenshots()
-                    self.last_screenshot = now
-
-                # Active mode tasks every ACTIVE_TASK_INTERVAL
-                if self.mode == "active" and now - self.last_active_task >= ACTIVE_TASK_INTERVAL:
-                    self._do_active_tasks()
-                    self.last_active_task = now
-
-                # Reconnect check
-                if now - self.last_reconnect >= RECONNECT_INTERVAL:
-                    self._check_reconnect()
-                    self.last_reconnect = now
-
-                # Save state
-                self._save_state()
-
-                # Sleep 10s between cycles
-                time.sleep(10)
-
-            except KeyboardInterrupt:
-                self.stop()
             except Exception as e:
-                log.error(f"Daemon loop error: {e}", exc_info=True)
-                time.sleep(30)
+                log.error(f"Watchdog error: {e}")
+            time.sleep(WATCHDOG_INTERVAL)
 
-    def _do_health_checks(self):
-        log.info("Running health checks...")
-        self.dm.refresh_all()
-        for serial, state in self.dm.devices.items():
-            if not state.connected:
-                self._alert("disconnect", serial, f"Device {state.name} ({serial}) disconnected")
-                continue
+    # ── Alert loop: send Telegram notifications ───────────────────────────
 
-            health = self.dm.health_check(serial)
-            self.stats["tasks_run"] += 1
-
-            # Battery alerts
-            if health["battery"] >= 0:
-                if health["battery"] <= BATTERY_CRIT:
-                    self._alert("battery_critical", serial,
-                                f"🔴 {state.name} battery CRITICAL: {health['battery']}%")
-                elif health["battery"] <= BATTERY_WARN:
-                    self._alert("battery_low", serial,
-                                f"🟡 {state.name} battery low: {health['battery']}%")
-
-            if health["issues"]:
-                log.warning(f"Device {state.name} issues: {health['issues']}")
-
-    def _do_screenshots(self):
-        for serial, state in self.dm.devices.items():
-            if state.connected:
+    def _alert_loop(self):
+        last_check = 0
+        while self.running:
+            now = time.time()
+            if now - last_check >= ALERT_INTERVAL:
                 try:
-                    self.dm.screenshot(serial)
-                    self.stats["screenshots_taken"] += 1
+                    alerts = db.get_recent_alerts(limit=10, acked=False)
+                    for alert in alerts:
+                        if now - alert.get("ts", 0) < ALERT_INTERVAL * 2:
+                            self._send_telegram(alert["message"])
+                            # Mark acked
+                            conn = db.get_conn()
+                            conn.execute("UPDATE alerts SET acked=1 WHERE id=?", (alert["id"],))
+                            conn.commit()
+                            with self._lock:
+                                self._stats["alerts_sent"] += 1
                 except Exception as e:
-                    log.warning(f"Screenshot failed {state.name}: {e}")
+                    log.error(f"Alert loop error: {e}")
+                last_check = now
+            time.sleep(5)
 
-    def _do_active_tasks(self):
-        """Run active automation tasks on devices (active mode only)."""
-        log.info("Running active tasks...")
-        for serial, state in self.dm.devices.items():
-            if not state.connected:
-                continue
-            for skill in state.assigned_skills:
-                task_map = {
-                    "tiktok": "tiktok_inbox",
-                    "shopee": "shopee_orders",
-                    "whatsapp": "whatsapp_unread",
-                    "instagram": "instagram_dms",
-                }
-                task = task_map.get(skill)
-                if task:
-                    try:
-                        result = self.runner.run_task(serial, task)
-                        self.stats["tasks_run"] += 1
-                        if not result.success:
-                            self.stats["tasks_failed"] += 1
-                    except Exception as e:
-                        log.error(f"Active task {task} failed: {e}")
-                        self.stats["tasks_failed"] += 1
-                    # Go home between tasks
-                    self.dm.press_key(serial, "HOME")
-                    time.sleep(2)
+    def _send_telegram(self, message: str):
+        """Send alert via Telegram (OpenClaw message routing)."""
+        try:
+            # Use openclaw's message tool via subprocess
+            import subprocess
+            msg = f"📱 Phone Farm\n{message}"
+            log.info(f"Alert: {message}")
+            # Direct Telegram API call using bot token if available
+            import os
+            bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+            chat_id = os.environ.get("TELEGRAM_CHAT_ID", "228956686")
+            if bot_token:
+                import urllib.request, urllib.parse
+                data = urllib.parse.urlencode({
+                    "chat_id": chat_id,
+                    "text": msg,
+                    "parse_mode": "HTML",
+                }).encode()
+                req = urllib.request.Request(
+                    f"https://api.telegram.org/bot{bot_token}/sendMessage", data=data
+                )
+                urllib.request.urlopen(req, timeout=5)
+        except Exception as e:
+            log.warning(f"Telegram send failed: {e} — alert logged to DB only")
 
-    def _check_reconnect(self):
-        """Auto-reconnect disconnected devices."""
-        for serial, state in self.dm.devices.items():
-            if not state.connected and state.last_seen > 0:
-                elapsed = time.time() - state.last_seen
-                if elapsed > DISCONNECT_ALERT_AFTER_SEC:
-                    log.info(f"Attempting reconnect for {state.name} (disconnected {int(elapsed)}s)")
-                    if self.dm.reconnect(serial):
-                        self.stats["reconnects"] += 1
-                        self._alert("reconnected", serial, f"✅ {state.name} reconnected")
+    # ── State save loop ──────────────────────────────────────────────────
 
-    def _alert(self, alert_type: str, serial: str, message: str):
-        """Record an alert (deduplication: same type+serial within 30min)."""
-        now = time.time()
-        # Dedup: skip if same alert within 30 minutes
-        for existing in self.alerts[-50:]:
-            if (existing["type"] == alert_type
-                    and existing["serial"] == serial
-                    and now - existing["timestamp"] < 1800):
-                return
-
-        alert = {
-            "type": alert_type,
-            "serial": serial,
-            "message": message,
-            "timestamp": now,
-            "time_str": datetime.now().isoformat(),
-        }
-        self.alerts.append(alert)
-        self.stats["alerts_sent"] += 1
-        log.warning(f"ALERT [{alert_type}]: {message}")
+    def _state_save_loop(self):
+        while self.running:
+            try:
+                self._save_state()
+            except Exception as e:
+                log.error(f"State save error: {e}")
+            time.sleep(STATE_SAVE_INTERVAL)
 
     def _save_state(self):
+        devices = db.get_all_devices()
+        db_stats = db.get_stats()
         state = {
-            "mode": self.mode,
             "pid": os.getpid(),
+            "mode": self.mode,
             "uptime_seconds": int(time.time() - self.start_time),
             "last_updated": datetime.now().isoformat(),
-            "stats": self.stats,
-            "devices": self.dm.to_dict(),
-            "recent_alerts": [
-                {k: v for k, v in a.items() if k != "timestamp"}
-                for a in self.alerts[-20:]
-            ],
+            "stats": {**self._stats, **db_stats},
+            "queue_depth": self.runner.queue_depth(),
+            "devices_total": len(devices),
+            "devices_connected": sum(1 for d in devices if d.get("connected")),
+            "adb_servers": self.dm.pool.get_server_status(),
         }
         STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
         with open(STATE_FILE, "w") as f:
             json.dump(state, f, indent=2)
 
-    def _run_dashboard(self):
-        """Run HTTP API server for dashboard mode."""
+    # ── Prune loop ───────────────────────────────────────────────────────
+
+    def _prune_loop(self):
+        while self.running:
+            time.sleep(PRUNE_INTERVAL)
+            try:
+                deleted = db.prune_old_tasks(days=7)
+                if deleted:
+                    log.info(f"Pruned {deleted} old task records")
+                with self._lock:
+                    self._stats["prune_runs"] += 1
+            except Exception as e:
+                log.error(f"Prune error: {e}")
+
+    # ── HTTP API ─────────────────────────────────────────────────────────
+
+    def _run_api(self):
         try:
             from fastapi import FastAPI
             from fastapi.responses import JSONResponse, FileResponse
@@ -264,25 +329,39 @@ class FarmDaemon:
             from fastapi.responses import JSONResponse, FileResponse
             import uvicorn
 
-        app = FastAPI(title="Phone Farm Dashboard", version="2.0.0")
+        app = FastAPI(title="Phone Farm Dashboard v2", version="2.0.0")
 
         @app.get("/")
         async def root():
-            return {"status": "running", "mode": self.mode, "uptime": int(time.time() - self.start_time)}
+            state = FarmDaemon.get_status()
+            return state
 
         @app.get("/devices")
-        async def devices():
-            self.dm.refresh_all()
-            return self.dm.to_dict()
+        async def devices(connected: bool = False):
+            return db.get_all_devices(connected_only=connected)
 
         @app.get("/health")
         async def health():
-            self.dm.refresh_all()
-            results = {}
-            for serial, state in self.dm.devices.items():
-                if state.connected:
-                    results[serial] = self.dm.health_check(serial)
-            return results
+            connected = [d["serial"] for d in db.get_all_devices(connected_only=True)]
+            states = self.dm.refresh_all(connected)
+            return [
+                {"serial": s, "battery": st.battery, "screen_on": st.screen_on,
+                 "current_app": st.current_app, "connected": st.connected}
+                for s, st in states.items()
+            ]
+
+        @app.get("/stats")
+        async def stats():
+            self._save_state()
+            return FarmDaemon.get_status()
+
+        @app.get("/tasks")
+        async def tasks(serial: str = None, limit: int = 50):
+            return db.get_recent_tasks(serial=serial, limit=limit)
+
+        @app.get("/alerts")
+        async def alerts():
+            return db.get_recent_alerts(limit=50)
 
         @app.get("/device/{serial}/screenshot")
         async def screenshot(serial: str):
@@ -294,21 +373,8 @@ class FarmDaemon:
 
         @app.post("/device/{serial}/task/{task_type}")
         async def run_task(serial: str, task_type: str):
-            result = self.runner.run_task(serial, task_type)
-            from dataclasses import asdict
-            return asdict(result)
-
-        @app.get("/stats")
-        async def stats():
-            return {
-                "mode": self.mode,
-                "uptime": int(time.time() - self.start_time),
-                "stats": self.stats,
-                "alerts": [
-                    {k: v for k, v in a.items() if k != "timestamp"}
-                    for a in self.alerts[-20:]
-                ],
-            }
+            result = self.runner.run_now(serial, task_type)
+            return result
 
         @app.post("/device/{serial}/launch/{package}")
         async def launch(serial: str, package: str):
@@ -318,52 +384,67 @@ class FarmDaemon:
         @app.post("/device/{serial}/tap/{x}/{y}")
         async def tap(serial: str, x: int, y: int):
             self.dm.tap(serial, x, y)
-            return {"status": "tapped", "x": x, "y": y}
+            return {"status": "tapped"}
 
         @app.post("/device/{serial}/key/{key}")
-        async def press(serial: str, key: str):
+        async def key(serial: str, key: str):
             self.dm.press_key(serial, key)
-            return {"status": "pressed", "key": key}
+            return {"status": "pressed"}
 
-        port = 8889
-        log.info(f"Dashboard API on http://0.0.0.0:{port}")
-        uvicorn.run(app, host="0.0.0.0", port=port)
+        @app.post("/device/{serial}/screenshot")
+        async def take_screenshot(serial: str):
+            path = self.dm.screenshot(serial)
+            return {"path": path}
+
+        @app.post("/device/add")
+        async def add_device(serial: str, name: str, connection: str = "usb"):
+            self.dm.register_device(serial, name, connection=connection)
+            return {"status": "registered", "serial": serial}
+
+        @app.post("/wifi/connect")
+        async def wifi_connect(ip: str, port: int = 5555, name: str = None):
+            ok = self.dm.connect_wifi(ip, port, name)
+            return {"status": "connected" if ok else "failed"}
+
+        log.info(f"Farm API on http://0.0.0.0:{self.dashboard_port}")
+        uvicorn.run(app, host="0.0.0.0", port=self.dashboard_port, log_level="warning")
+
+    # ── Lifecycle ────────────────────────────────────────────────────────
 
     def _write_pid(self):
         PID_FILE.write_text(str(os.getpid()))
 
     def _handle_signal(self, signum, frame):
-        log.info(f"Received signal {signum}, shutting down...")
+        log.info(f"Signal {signum} — shutting down")
         self.stop()
 
     def stop(self):
+        log.info("Farm daemon stopping...")
         self.running = False
+        self.runner.stop()
         self._save_state()
-        if PID_FILE.exists():
-            PID_FILE.unlink()
+        self.dm.shutdown()
+        PID_FILE.unlink(missing_ok=True)
         log.info("Farm daemon stopped")
         sys.exit(0)
 
     @staticmethod
     def get_status() -> dict:
-        """Read daemon state from file (no daemon needed)."""
         if STATE_FILE.exists():
             with open(STATE_FILE) as f:
                 return json.load(f)
-        if PID_FILE.exists():
-            pid = PID_FILE.read_text().strip()
-            return {"status": "pid_exists", "pid": pid, "state_file": "missing"}
         return {"status": "not_running"}
 
 
 # ── CLI ──────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Phone Farm Daemon")
-    parser.add_argument("--mode", choices=["monitor", "active", "dashboard"],
-                        default="monitor", help="Daemon mode")
-    parser.add_argument("--status", action="store_true", help="Print status and exit")
-    parser.add_argument("--stop", action="store_true", help="Stop running daemon")
+    parser = argparse.ArgumentParser(description="Phone Farm Daemon v2")
+    parser.add_argument("--mode", choices=["monitor", "active", "dashboard"], default="monitor")
+    parser.add_argument("--workers", type=int, default=16)
+    parser.add_argument("--port", type=int, default=8889)
+    parser.add_argument("--status", action="store_true")
+    parser.add_argument("--stop", action="store_true")
     args = parser.parse_args()
 
     if args.status:
@@ -373,15 +454,9 @@ if __name__ == "__main__":
     if args.stop:
         if PID_FILE.exists():
             pid = int(PID_FILE.read_text().strip())
-            try:
-                os.kill(pid, signal.SIGTERM)
-                print(f"Sent SIGTERM to PID {pid}")
-            except ProcessLookupError:
-                print(f"PID {pid} not running, cleaning up")
-                PID_FILE.unlink()
-        else:
-            print("Daemon not running (no PID file)")
+            os.kill(pid, signal.SIGTERM)
+            print(f"Sent SIGTERM to PID {pid}")
         sys.exit(0)
 
-    daemon = FarmDaemon(mode=args.mode)
+    daemon = FarmDaemon(mode=args.mode, workers=args.workers, dashboard_port=args.port)
     daemon.start()
