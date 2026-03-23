@@ -1,0 +1,101 @@
+# ── Python ───────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── Virtual envs ─────────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+
+# ── Large binary / media files ───────────────────────────────────────────
+# Videos
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.webm
+*.ts
+*.m4v
+# Audio
+*.mp3
+*.wav
+*.aac
+*.flac
+# Images (generated outputs — NOT skill assets)
+output/media/
+output/*/
+*/output/media/
+*/output/raw_*.jpg
+*/output/raw_*.png
+# Model weights
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.h5
+*.pkl
+*.pickle
+# Archives
+*.zip
+*.tar.gz
+*.tar.bz2
+*.7z
+
+# ── Logs ─────────────────────────────────────────────────────────────────
+*.log
+logs/
+*/logs/
+*.jsonl
+
+# ── Generated / runtime state ────────────────────────────────────────────
+state.json
+*.bak
+*.bak.*
+daemon_state.json
+farm.db
+/tmp/
+
+# ── Content pipeline outputs ─────────────────────────────────────────────
+content/content-kingdom/output/
+content/content-kingdom/state.json
+content/content-kingdom/config.json.bak*
+content/content-kingdom/__pycache__/
+content/comment-reply-manager/logs/
+
+# ── OS ───────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Node ─────────────────────────────────────────────────────────────────
+node_modules/
+package-lock.json
+
+# ── Secrets ──────────────────────────────────────────────────────────────
+.env
+*.env
+.env.*
+secrets.json
+credentials.json
+*_creds.txt
+*_token.txt
+
+# Large generated images
+affiliate_content/user_samples/
+*.webp
