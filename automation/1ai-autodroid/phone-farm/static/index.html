@@ -8,266 +8,465 @@
   :root { --bg: #0f1117; --card: #1a1d27; --border: #2a2d3a; --accent: #6c5ce7; --green: #00b894; --red: #e17055; --yellow: #fdcb6e; --text: #dfe6e9; --muted: #636e72; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  .header { background: var(--card); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-  .header h1 { font-size: 20px; }
-  .header h1 span { font-size: 24px; }
-  .header .status { display: flex; gap: 16px; font-size: 13px; color: var(--muted); }
-  .header .status .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
-  .header .status .dot.on { background: var(--green); }
-  .header .status .dot.off { background: var(--red); }
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .stat-card .value { font-size: 32px; font-weight: 700; }
-  .stat-card .value.green { color: var(--green); }
-  .stat-card .value.red { color: var(--red); }
-  .stat-card .value.yellow { color: var(--yellow); }
-  .stat-card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  
+  /* Nav */
+  .nav { background: var(--card); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 56px; gap: 24px; }
+  .nav .logo { font-size: 18px; font-weight: 700; white-space: nowrap; }
+  .nav .tabs { display: flex; gap: 4px; }
+  .nav .tab { padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; color: var(--muted); transition: all 0.2s; }
+  .nav .tab:hover { background: var(--border); color: var(--text); }
+  .nav .tab.active { background: var(--accent); color: white; }
+  .nav .status-bar { margin-left: auto; display: flex; gap: 16px; font-size: 12px; color: var(--muted); align-items: center; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+  .dot.on { background: var(--green); } .dot.off { background: var(--red); }
+
+  /* Pages */
+  .page { display: none; max-width: 1600px; margin: 0 auto; padding: 24px; }
+  .page.active { display: block; }
+
+  /* Stats grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .stat-card .value { font-size: 28px; font-weight: 700; }
+  .stat-card .value.green { color: var(--green); } .stat-card .value.red { color: var(--red); } .stat-card .value.yellow { color: var(--yellow); }
+
+  /* Section */
   .section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 24px; overflow: hidden; }
-  .section-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .section-header h2 { font-size: 16px; }
-  .section-header .actions { display: flex; gap: 8px; }
-  .btn { background: var(--accent); color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; transition: opacity 0.2s; }
+  .section-header { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .section-header h2 { font-size: 15px; }
+
+  /* Buttons */
+  .btn { background: var(--accent); color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: opacity 0.2s; }
   .btn:hover { opacity: 0.85; }
-  .btn.sm { padding: 4px 10px; font-size: 12px; }
-  .btn.green { background: var(--green); }
-  .btn.red { background: var(--red); }
-  .btn.yellow { background: var(--yellow); color: #333; }
-  .device-card { padding: 20px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; }
-  .device-card:last-child { border-bottom: none; }
-  .device-icon { width: 48px; height: 48px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-  .device-info h3 { font-size: 15px; margin-bottom: 4px; }
-  .device-info .meta { font-size: 12px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
-  .device-info .meta span { display: flex; align-items: center; gap: 4px; }
-  .device-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .btn.sm { padding: 4px 10px; font-size: 11px; }
+  .btn.green { background: var(--green); } .btn.red { background: var(--red); } .btn.yellow { background: var(--yellow); color: #333; }
+  .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* Badge */
   .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
   .badge.green { background: rgba(0,184,148,0.15); color: var(--green); }
   .badge.red { background: rgba(225,112,85,0.15); color: var(--red); }
   .badge.yellow { background: rgba(253,203,110,0.15); color: var(--yellow); }
-  .task-row { padding: 10px 20px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 90px 1fr 100px 80px 80px; gap: 12px; font-size: 13px; align-items: center; }
+  .skill-tag { background: rgba(108,92,231,0.15); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 10px; display: inline-block; margin: 2px 2px 0 0; }
+
+  /* ── LIVE MONITOR ── */
+  .monitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .phone-frame { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .phone-frame:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .phone-frame .screen { width: 100%; aspect-ratio: 9/20; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; position: relative; }
+  .phone-frame .screen img { width: 100%; height: 100%; object-fit: cover; }
+  .phone-frame .screen .placeholder { color: var(--muted); font-size: 32px; }
+  .phone-frame .screen .refresh-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; font-size: 32px; }
+  .phone-frame .screen:hover .refresh-overlay { opacity: 1; }
+  .phone-frame .info-bar { padding: 10px 12px; border-top: 1px solid var(--border); }
+  .phone-frame .info-bar .name { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+  .phone-frame .info-bar .meta { font-size: 11px; color: var(--muted); margin-top: 4px; display: flex; gap: 8px; }
+  .phone-frame .info-bar .quick-actions { display: flex; gap: 4px; margin-top: 6px; }
+  .phone-frame.offline { opacity: 0.5; }
+  .phone-frame .live-badge { position: absolute; top: 8px; right: 8px; background: var(--red); color: white; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 700; animation: pulse 2s infinite; z-index: 2; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  /* Fullscreen modal */
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.active { display: flex; }
+  .modal-content { max-width: 400px; max-height: 90vh; position: relative; }
+  .modal-content img { width: 100%; border-radius: 12px; }
+  .modal-close { position: absolute; top: -12px; right: -12px; background: var(--red); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+  .modal-info { text-align: center; margin-top: 12px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+
+  /* Device list (overview page) */
+  .device-card { padding: 16px 20px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; }
+  .device-card:last-child { border-bottom: none; }
+  .device-icon { width: 44px; height: 44px; background: var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .device-info h3 { font-size: 14px; margin-bottom: 3px; }
+  .device-info .meta { font-size: 11px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Tasks */
+  .task-row { padding: 8px 20px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 80px 1fr 100px 60px 70px; gap: 10px; font-size: 12px; align-items: center; }
   .task-row:last-child { border-bottom: none; }
-  .task-row .time { color: var(--muted); font-size: 12px; }
-  .alert-row { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: center; font-size: 13px; }
+  .task-row .time { color: var(--muted); }
+
+  /* Alerts */
+  .alert-row { padding: 10px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; font-size: 12px; }
   .alert-row:last-child { border-bottom: none; }
-  .alert-row .icon { font-size: 18px; }
-  .screenshot-container { padding: 20px; text-align: center; }
-  .screenshot-container img { max-width: 300px; border-radius: 12px; border: 2px solid var(--border); }
-  .screenshot-container .empty { color: var(--muted); padding: 40px; }
-  .skills-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
-  .skill-tag { background: rgba(108,92,231,0.15); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
   .refresh-bar { text-align: center; padding: 8px; font-size: 11px; color: var(--muted); }
-  @media (max-width: 768px) { .task-row { grid-template-columns: 1fr 1fr; } .device-card { grid-template-columns: 1fr; } }
+
+  /* Monitor settings */
+  .monitor-controls { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .monitor-controls label { font-size: 12px; color: var(--muted); }
+  .monitor-controls select, .monitor-controls input { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 4px 8px; border-radius: 6px; font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .monitor-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .nav { padding: 0 12px; gap: 8px; }
+    .nav .logo { font-size: 15px; }
+    .task-row { grid-template-columns: 1fr 1fr; }
+    .device-card { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1><span>📱</span> Phone Farm</h1>
-  <div class="status">
-    <span id="daemon-status"><span class="dot off"></span> Loading...</span>
-    <span id="uptime">--</span>
-    <span id="last-update">--</span>
+<!-- Navigation -->
+<div class="nav">
+  <div class="logo">📱 Phone Farm</div>
+  <div class="tabs">
+    <div class="tab active" onclick="showPage('monitor')">🖥️ Live Monitor</div>
+    <div class="tab" onclick="showPage('overview')">📊 Overview</div>
+    <div class="tab" onclick="showPage('tasks')">📋 Tasks</div>
+    <div class="tab" onclick="showPage('alerts')">🚨 Alerts</div>
+  </div>
+  <div class="status-bar">
+    <span id="daemon-status"><span class="dot off"></span> --</span>
+    <span id="uptime">⏱️ --</span>
+    <span id="devices-count">📱 --</span>
   </div>
 </div>
 
-<div class="container">
-  <!-- Stats -->
+<!-- PAGE: Live Monitor -->
+<div class="page active" id="page-monitor">
+  <div class="monitor-controls">
+    <label>Refresh interval:</label>
+    <select id="refresh-interval" onchange="setRefreshInterval(this.value)">
+      <option value="3">3s</option>
+      <option value="5" selected>5s</option>
+      <option value="10">10s</option>
+      <option value="30">30s</option>
+    </select>
+    <label>Grid size:</label>
+    <select id="grid-size" onchange="setGridSize(this.value)">
+      <option value="180">Small</option>
+      <option value="240" selected>Medium</option>
+      <option value="320">Large</option>
+      <option value="400">XL</option>
+    </select>
+    <button class="btn sm green" onclick="refreshAllScreens()">📸 Refresh All</button>
+    <button class="btn sm" onclick="toggleAutoRefresh()">⏸️ <span id="auto-label">Pause</span></button>
+    <span id="next-refresh" style="font-size:11px;color:var(--muted)">Next: 5s</span>
+  </div>
+  <div class="monitor-grid" id="monitor-grid"></div>
+</div>
+
+<!-- PAGE: Overview -->
+<div class="page" id="page-overview">
   <div class="grid" id="stats-grid">
-    <div class="stat-card"><div class="label">Devices Connected</div><div class="value green" id="s-connected">-</div><div class="sub" id="s-total">of - registered</div></div>
-    <div class="stat-card"><div class="label">Tasks (1h)</div><div class="value" id="s-tasks">-</div><div class="sub" id="s-tasks-fail">- failed</div></div>
-    <div class="stat-card"><div class="label">Queue</div><div class="value" id="s-queue">-</div><div class="sub">pending tasks</div></div>
-    <div class="stat-card"><div class="label">Alerts</div><div class="value" id="s-alerts">-</div><div class="sub">unacknowledged</div></div>
+    <div class="stat-card"><div class="label">Connected</div><div class="value green" id="s-connected">-</div><div style="font-size:11px;color:var(--muted)" id="s-total">of -</div></div>
+    <div class="stat-card"><div class="label">Tasks/hour</div><div class="value" id="s-tasks">-</div><div style="font-size:11px;color:var(--muted)" id="s-tasks-fail">- failed</div></div>
+    <div class="stat-card"><div class="label">Queue</div><div class="value" id="s-queue">-</div></div>
+    <div class="stat-card"><div class="label">Alerts</div><div class="value" id="s-alerts">-</div></div>
+    <div class="stat-card"><div class="label">ADB Servers</div><div class="value" id="s-adb">-</div></div>
   </div>
-
-  <!-- Devices -->
   <div class="section">
-    <div class="section-header">
-      <h2>📱 Devices</h2>
-      <div class="actions">
-        <button class="btn sm" onclick="refreshAll()">🔄 Refresh</button>
-        <button class="btn sm green" onclick="screenshotAll()">📸 Screenshot All</button>
-      </div>
-    </div>
-    <div id="devices-list"><div class="device-card"><div>Loading devices...</div></div></div>
+    <div class="section-header"><h2>📱 Devices</h2><div class="actions"><button class="btn sm" onclick="loadDevices()">🔄</button></div></div>
+    <div id="devices-list"></div>
   </div>
+</div>
 
-  <!-- Live Screenshot -->
+<!-- PAGE: Tasks -->
+<div class="page" id="page-tasks">
   <div class="section">
-    <div class="section-header">
-      <h2>📸 Live Screenshot</h2>
-      <div class="actions">
-        <select id="screenshot-device" class="btn sm" style="background:var(--border);"></select>
-        <button class="btn sm" onclick="takeScreenshot()">📸 Capture</button>
-      </div>
-    </div>
-    <div class="screenshot-container" id="screenshot-area">
-      <div class="empty">Select a device and click Capture</div>
-    </div>
-  </div>
-
-  <!-- Recent Tasks -->
-  <div class="section">
-    <div class="section-header">
-      <h2>📋 Recent Tasks</h2>
-      <div class="actions">
-        <button class="btn sm" onclick="loadTasks()">🔄 Refresh</button>
-      </div>
-    </div>
-    <div class="task-row" style="font-weight:600;color:var(--muted);">
-      <span>Time</span><span>Task</span><span>Device</span><span>Status</span><span>Duration</span>
-    </div>
+    <div class="section-header"><h2>📋 Recent Tasks</h2><div class="actions"><button class="btn sm" onclick="loadTasks()">🔄</button></div></div>
+    <div class="task-row" style="font-weight:600;color:var(--muted);"><span>Time</span><span>Task</span><span>Device</span><span>OK</span><span>ms</span></div>
     <div id="tasks-list"></div>
   </div>
-
-  <!-- Alerts -->
-  <div class="section">
-    <div class="section-header">
-      <h2>🚨 Alerts</h2>
-    </div>
-    <div id="alerts-list"><div class="alert-row"><span class="icon">✅</span><span>No alerts</span></div></div>
-  </div>
-
-  <div class="refresh-bar">Auto-refreshes every 10s · <span id="timer">10</span>s</div>
 </div>
+
+<!-- PAGE: Alerts -->
+<div class="page" id="page-alerts">
+  <div class="section">
+    <div class="section-header"><h2>🚨 Alerts</h2></div>
+    <div id="alerts-list"></div>
+  </div>
+</div>
+
+<!-- Fullscreen modal -->
+<div class="modal-overlay" id="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img id="modal-img" src="" />
+    <div class="modal-info">
+      <strong id="modal-name">--</strong>
+      <div style="font-size:12px;color:var(--muted)" id="modal-meta">--</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn sm" onclick="modalAction('health_check')">❤️ Health</button>
+      <button class="btn sm green" onclick="modalAction('screenshot')">📸 Refresh</button>
+      <button class="btn sm yellow" onclick="modalAction('go_home')">🏠 Home</button>
+      <button class="btn sm" onclick="modalAction('wake_screen')">💡 Wake</button>
+      <button class="btn sm red" onclick="modalAction('tiktok_inbox')">🎵 TikTok</button>
+      <button class="btn sm" onclick="modalAction('shopee_orders')">🛒 Shopee</button>
+    </div>
+  </div>
+</div>
+
+<div class="refresh-bar">Auto-refresh <span id="auto-status">ON</span> · Next in <span id="timer">5</span>s</div>
 
 <script>
 const API = window.location.origin;
 let devices = [];
-let countdown = 10;
+let refreshMs = 5000;
+let autoRefresh = true;
+let refreshTimer = null;
+let countdown = 5;
+let currentModal = null;
+let screenCache = {};
+
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelector(`.tab[onclick="showPage('${name}')"]`).classList.add('active');
+  if (name === 'overview') { loadStats(); loadDevices(); }
+  if (name === 'tasks') loadTasks();
+  if (name === 'alerts') loadAlerts();
+}
 
 async function api(path) {
-  try {
-    const r = await fetch(API + path);
-    return await r.json();
-  } catch(e) { console.error(path, e); return null; }
+  try { const r = await fetch(API + path); return await r.json(); } catch(e) { return null; }
 }
+
+// ── LIVE MONITOR ──
+
+function buildMonitorGrid() {
+  const grid = document.getElementById('monitor-grid');
+  grid.innerHTML = devices.map(d => {
+    const connected = d.connected;
+    const bat = d.battery >= 0 ? d.battery : '?';
+    const batColor = bat === '?' ? 'yellow' : bat > 20 ? 'green' : bat > 10 ? 'yellow' : 'red';
+    const config = JSON.parse(d.config_json || '{}');
+    const skills = config.assigned_skills || [];
+    return `
+      <div class="phone-frame ${connected ? '' : 'offline'}" id="frame-${d.serial}">
+        ${connected ? '<div class="live-badge">● LIVE</div>' : ''}
+        <div class="screen" onclick="openModal('${d.serial}')">
+          <img id="screen-${d.serial}" src="" style="display:none" />
+          <div class="placeholder" id="ph-${d.serial}">📱</div>
+          <div class="refresh-overlay">🔄</div>
+        </div>
+        <div class="info-bar">
+          <div class="name">
+            ${d.name || d.serial}
+            <span class="badge ${connected ? 'green' : 'red'}">${connected ? 'ON' : 'OFF'}</span>
+          </div>
+          <div class="meta">
+            <span>🔋 <span class="badge ${batColor}">${bat}%</span></span>
+            <span>${d.model || ''}</span>
+            <span>${d.current_app ? '📦 ' + d.current_app.split('.').pop() : ''}</span>
+          </div>
+          <div class="quick-actions">
+            <button class="btn sm green" onclick="event.stopPropagation();captureOne('${d.serial}')">📸</button>
+            <button class="btn sm yellow" onclick="event.stopPropagation();quickTask('${d.serial}','go_home')">🏠</button>
+            <button class="btn sm" onclick="event.stopPropagation();quickTask('${d.serial}','wake_screen')">💡</button>
+            ${skills.map(s => {
+              const icons = {tiktok:'🎵',shopee:'🛒',whatsapp:'💬',instagram:'📸'};
+              const tasks = {tiktok:'tiktok_inbox',shopee:'shopee_orders',whatsapp:'whatsapp_unread',instagram:'instagram_dms'};
+              return `<button class="btn sm" onclick="event.stopPropagation();quickTask('${d.serial}','${tasks[s]||'health_check'}')" title="${s}">${icons[s]||'📱'}</button>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  
+  // Load cached screenshots
+  devices.forEach(d => {
+    if (screenCache[d.serial]) {
+      const img = document.getElementById('screen-' + d.serial);
+      const ph = document.getElementById('ph-' + d.serial);
+      if (img) { img.src = screenCache[d.serial]; img.style.display = 'block'; }
+      if (ph) ph.style.display = 'none';
+    }
+  });
+}
+
+async function captureOne(serial) {
+  const img = document.getElementById('screen-' + serial);
+  const ph = document.getElementById('ph-' + serial);
+  if (!img) return;
+  const ts = Date.now();
+  const url = `${API}/device/${serial}/screenshot?t=${ts}`;
+  try {
+    const resp = await fetch(url);
+    if (resp.ok) {
+      const blob = await resp.blob();
+      const objUrl = URL.createObjectURL(blob);
+      screenCache[serial] = objUrl;
+      img.src = objUrl;
+      img.style.display = 'block';
+      if (ph) ph.style.display = 'none';
+    }
+  } catch(e) { console.error('Screenshot failed', serial, e); }
+}
+
+async function refreshAllScreens() {
+  const connected = devices.filter(d => d.connected);
+  // Capture all in parallel
+  await Promise.allSettled(connected.map(d => captureOne(d.serial)));
+}
+
+function setRefreshInterval(val) {
+  refreshMs = parseInt(val) * 1000;
+  countdown = parseInt(val);
+}
+
+function setGridSize(val) {
+  document.querySelector('.monitor-grid').style.gridTemplateColumns = `repeat(auto-fill, minmax(${val}px, 1fr))`;
+}
+
+function toggleAutoRefresh() {
+  autoRefresh = !autoRefresh;
+  document.getElementById('auto-label').textContent = autoRefresh ? 'Pause' : 'Resume';
+  document.getElementById('auto-status').textContent = autoRefresh ? 'ON' : 'OFF';
+}
+
+// ── Modal ──
+
+function openModal(serial) {
+  currentModal = serial;
+  const d = devices.find(x => x.serial === serial);
+  if (!d) return;
+  const config = JSON.parse(d.config_json || '{}');
+  document.getElementById('modal-name').textContent = d.name || serial;
+  document.getElementById('modal-meta').textContent = `${d.model} · Android ${d.android_ver} · 🔋${d.battery}% · ${d.connection}`;
+  const img = document.getElementById('modal-img');
+  if (screenCache[serial]) {
+    img.src = screenCache[serial];
+  } else {
+    img.src = `${API}/device/${serial}/screenshot?t=${Date.now()}`;
+  }
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  currentModal = null;
+}
+
+async function modalAction(task) {
+  if (!currentModal) return;
+  await fetch(`${API}/device/${currentModal}/task/${task}`, {method:'POST'});
+  // Wait a sec for task to complete then refresh screenshot
+  setTimeout(() => {
+    captureOne(currentModal);
+    const img = document.getElementById('modal-img');
+    if (screenCache[currentModal]) img.src = screenCache[currentModal];
+  }, 3000);
+}
+
+async function quickTask(serial, task) {
+  await fetch(`${API}/device/${serial}/task/${task}`, {method:'POST'});
+  setTimeout(() => captureOne(serial), 3000);
+}
+
+// ── Overview ──
 
 async function loadStats() {
   const s = await api('/stats');
   if (!s) return;
   const st = s.stats || {};
   document.getElementById('s-connected').textContent = s.devices_connected || 0;
-  document.getElementById('s-total').textContent = `of ${s.devices_total || 0} registered`;
+  document.getElementById('s-total').textContent = `of ${s.devices_total || 0}`;
   document.getElementById('s-tasks').textContent = st.tasks_1h_ok || 0;
   document.getElementById('s-tasks-fail').textContent = `${st.tasks_1h_fail || 0} failed`;
   document.getElementById('s-queue').textContent = s.queue_depth || 0;
   document.getElementById('s-alerts').textContent = st.unacked_alerts || 0;
   document.getElementById('s-alerts').className = `value ${(st.unacked_alerts||0) > 0 ? 'red' : 'green'}`;
+  document.getElementById('s-adb').textContent = (s.adb_servers||[]).length;
   
-  const dot = document.querySelector('#daemon-status .dot');
-  dot.className = `dot ${s.pid ? 'on' : 'off'}`;
-  document.getElementById('daemon-status').innerHTML = `<span class="dot ${s.pid?'on':'off'}"></span> ${s.mode || 'offline'}`;
-  
-  const up = s.uptime_seconds || 0;
-  const h = Math.floor(up/3600), m = Math.floor((up%3600)/60);
-  document.getElementById('uptime').textContent = `⏱️ ${h}h ${m}m`;
-  document.getElementById('last-update').textContent = `🕐 ${new Date().toLocaleTimeString()}`;
+  document.getElementById('daemon-status').innerHTML = `<span class="dot ${s.pid?'on':'off'}"></span> ${s.mode||'off'}`;
+  const up = s.uptime_seconds||0;
+  document.getElementById('uptime').textContent = `⏱️ ${Math.floor(up/3600)}h${Math.floor((up%3600)/60)}m`;
+  document.getElementById('devices-count').textContent = `📱 ${s.devices_connected||0}/${s.devices_total||0}`;
 }
 
 async function loadDevices() {
   devices = await api('/devices') || [];
-  const sel = document.getElementById('screenshot-device');
-  sel.innerHTML = devices.map(d => `<option value="${d.serial}">${d.name || d.serial}</option>`).join('');
-  
+  // Overview list
   const html = devices.map(d => {
     const config = JSON.parse(d.config_json || '{}');
     const skills = config.assigned_skills || [];
-    const connected = d.connected;
     const bat = d.battery >= 0 ? d.battery : '?';
-    const batColor = bat > 20 ? 'green' : bat > 10 ? 'yellow' : 'red';
-    return `
-      <div class="device-card">
-        <div class="device-icon">${connected ? '📱' : '📵'}</div>
-        <div class="device-info">
-          <h3>${d.name || d.serial} <span class="badge ${connected?'green':'red'}">${connected?'ONLINE':'OFFLINE'}</span></h3>
-          <div class="meta">
-            <span>🔋 <span class="badge ${batColor}">${bat}%</span></span>
-            <span>📱 ${d.model || '?'}</span>
-            <span>🤖 Android ${d.android_ver || '?'}</span>
-            <span>📡 ${d.connection || 'usb'}</span>
-            ${d.current_app ? `<span>📦 ${d.current_app}</span>` : ''}
-          </div>
-          <div class="skills-tags">
-            ${skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
-          </div>
+    const batColor = bat === '?' ? 'yellow' : bat > 20 ? 'green' : bat > 10 ? 'yellow' : 'red';
+    return `<div class="device-card">
+      <div class="device-icon">${d.connected ? '📱' : '📵'}</div>
+      <div class="device-info">
+        <h3>${d.name||d.serial} <span class="badge ${d.connected?'green':'red'}">${d.connected?'ONLINE':'OFFLINE'}</span></h3>
+        <div class="meta">
+          <span>🔋 <span class="badge ${batColor}">${bat}%</span></span>
+          <span>📱 ${d.model||'?'}</span>
+          <span>🤖 ${d.android_ver||'?'}</span>
+          <span>📡 ${d.connection||'usb'}</span>
+          ${d.current_app ? `<span>📦 ${d.current_app}</span>` : ''}
         </div>
-        <div class="device-actions">
-          <button class="btn sm" onclick="runTask('${d.serial}','health_check')">❤️ Health</button>
-          <button class="btn sm green" onclick="captureDevice('${d.serial}')">📸</button>
-          <button class="btn sm yellow" onclick="runTask('${d.serial}','go_home')">🏠</button>
-          <button class="btn sm" onclick="runTask('${d.serial}','wake_screen')">💡 Wake</button>
-        </div>
-      </div>`;
+        <div>${skills.map(s=>`<span class="skill-tag">${s}</span>`).join('')}</div>
+      </div>
+      <div class="actions">
+        <button class="btn sm" onclick="quickTask('${d.serial}','health_check')">❤️</button>
+        <button class="btn sm green" onclick="captureOne('${d.serial}')">📸</button>
+        <button class="btn sm yellow" onclick="quickTask('${d.serial}','go_home')">🏠</button>
+      </div>
+    </div>`;
   }).join('');
-  document.getElementById('devices-list').innerHTML = html || '<div class="device-card">No devices registered</div>';
+  document.getElementById('devices-list').innerHTML = html || '<div style="padding:20px;color:var(--muted)">No devices</div>';
+  // Rebuild monitor grid
+  buildMonitorGrid();
 }
 
 async function loadTasks() {
-  const tasks = await api('/tasks?limit=20') || [];
-  const html = tasks.map(t => {
-    const time = t.ts_str ? t.ts_str.split(' ')[1] || t.ts_str : '--';
-    const icon = t.success ? '✅' : '❌';
-    return `<div class="task-row">
-      <span class="time">${time}</span>
-      <span>${t.task_type}</span>
-      <span>${t.device_name || t.serial}</span>
-      <span>${icon}</span>
-      <span>${t.duration_ms}ms</span>
-    </div>`;
-  }).join('');
-  document.getElementById('tasks-list').innerHTML = html || '<div class="task-row"><span>No tasks yet</span></div>';
+  const tasks = await api('/tasks?limit=30') || [];
+  document.getElementById('tasks-list').innerHTML = tasks.map(t => {
+    const time = t.ts_str ? t.ts_str.split(' ')[1]||t.ts_str.slice(11,19) : '--';
+    return `<div class="task-row"><span class="time">${time}</span><span>${t.task_type}</span><span>${t.device_name||''}</span><span>${t.success?'✅':'❌'}</span><span>${t.duration_ms}ms</span></div>`;
+  }).join('') || '<div style="padding:20px;color:var(--muted)">No tasks</div>';
 }
 
 async function loadAlerts() {
   const alerts = await api('/alerts') || [];
-  if (!alerts.length) {
-    document.getElementById('alerts-list').innerHTML = '<div class="alert-row"><span class="icon">✅</span><span>No alerts</span></div>';
-    return;
-  }
-  const html = alerts.map(a => {
-    const icon = a.alert_type?.includes('critical') ? '🔴' : a.alert_type?.includes('reconnect') ? '✅' : '🟡';
-    return `<div class="alert-row"><span class="icon">${icon}</span><span>${a.message}</span><span class="time" style="margin-left:auto;color:var(--muted)">${a.ts_str||''}</span></div>`;
-  }).join('');
-  document.getElementById('alerts-list').innerHTML = html;
+  document.getElementById('alerts-list').innerHTML = alerts.length ? alerts.map(a => {
+    const icon = a.alert_type?.includes('critical')?'🔴':a.alert_type?.includes('reconnect')?'✅':'🟡';
+    return `<div class="alert-row"><span>${icon}</span><span>${a.message}</span><span style="margin-left:auto;color:var(--muted)">${a.ts_str||''}</span></div>`;
+  }).join('') : '<div class="alert-row">✅ No alerts</div>';
 }
 
-async function runTask(serial, type) {
-  const r = await fetch(`${API}/device/${serial}/task/${type}`, {method:'POST'});
-  const data = await r.json();
-  loadTasks();
-  loadDevices();
-  loadStats();
-}
+// ── Tick ──
 
-async function captureDevice(serial) {
-  document.getElementById('screenshot-area').innerHTML = '<div class="empty">Capturing...</div>';
-  const ts = Date.now();
-  document.getElementById('screenshot-area').innerHTML = `<img src="${API}/device/${serial}/screenshot?t=${ts}" onerror="this.parentElement.innerHTML='<div class=empty>Capture failed</div>'" />`;
-}
-
-function takeScreenshot() {
-  const sel = document.getElementById('screenshot-device');
-  if (sel.value) captureDevice(sel.value);
-}
-
-function screenshotAll() {
-  devices.forEach(d => { if(d.connected) runTask(d.serial, 'screenshot'); });
-}
-
-function refreshAll() {
-  loadStats(); loadDevices(); loadTasks(); loadAlerts();
-}
-
-// Auto-refresh
-setInterval(() => {
+async function tick() {
+  if (!autoRefresh) return;
   countdown--;
   document.getElementById('timer').textContent = countdown;
-  if (countdown <= 0) { countdown = 10; refreshAll(); }
-}, 1000);
+  document.getElementById('next-refresh').textContent = `Next: ${countdown}s`;
+  if (countdown <= 0) {
+    countdown = refreshMs / 1000;
+    await loadStats();
+    // Only refresh screens if on monitor page
+    if (document.getElementById('page-monitor').classList.contains('active')) {
+      await loadDevices();
+      await refreshAllScreens();
+    }
+    // Update modal if open
+    if (currentModal && screenCache[currentModal]) {
+      document.getElementById('modal-img').src = screenCache[currentModal];
+    }
+  }
+}
+
+setInterval(tick, 1000);
 
 // Initial load
-refreshAll();
+(async () => {
+  await loadStats();
+  await loadDevices();
+  buildMonitorGrid();
+  refreshAllScreens();
+})();
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'r' && !e.ctrlKey) refreshAllScreens();
+});
 </script>
 </body>
 </html>
