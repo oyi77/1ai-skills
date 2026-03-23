@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📱 {{SERIAL}} — Remote Control</title>
+<style>
+  :root { --bg: #0f1117; --card: #1a1d27; --border: #2a2d3a; --accent: #6c5ce7; --green: #00b894; --red: #e17055; --text: #dfe6e9; --muted: #636e72; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+  .toolbar { background: var(--card); border-bottom: 1px solid var(--border); padding: 8px 16px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; height: 48px; }
+  .toolbar .title { font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .toolbar .status { font-size: 11px; padding: 3px 8px; border-radius: 4px; }
+  .toolbar .status.connected { background: rgba(0,184,148,0.15); color: var(--green); }
+  .toolbar .status.disconnected { background: rgba(225,112,85,0.15); color: var(--red); }
+  .toolbar .sep { width: 1px; height: 24px; background: var(--border); }
+  .toolbar .btn { background: var(--border); color: var(--text); border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: background 0.2s; }
+  .toolbar .btn:hover { background: var(--accent); }
+  .toolbar .btn.active { background: var(--accent); }
+  .toolbar select, .toolbar input[type=range] { background: var(--border); color: var(--text); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; font-size: 11px; }
+  .toolbar label { font-size: 11px; color: var(--muted); }
+  .toolbar .spacer { flex: 1; }
+  .toolbar .fps-display { font-size: 11px; color: var(--muted); }
+
+  .main { flex: 1; display: flex; overflow: hidden; }
+  
+  .screen-container { flex: 1; display: flex; align-items: center; justify-content: center; background: #000; position: relative; overflow: hidden; }
+  .screen-container canvas { max-width: 100%; max-height: 100%; cursor: crosshair; touch-action: none; }
+  .screen-container .no-stream { color: var(--muted); font-size: 18px; }
+
+  .sidebar { width: 220px; background: var(--card); border-left: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
+  .sidebar.hidden { display: none; }
+  .sidebar h3 { font-size: 12px; color: var(--muted); padding: 12px 12px 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .sidebar .btn-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; padding: 4px 12px; }
+  .sidebar .btn-grid .btn { padding: 10px 4px; font-size: 16px; text-align: center; border-radius: 8px; }
+  .sidebar .text-input { padding: 8px 12px; }
+  .sidebar .text-input input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 8px; border-radius: 6px; font-size: 13px; }
+  .sidebar .info { padding: 8px 12px; font-size: 11px; color: var(--muted); line-height: 1.6; }
+
+  .touch-indicator { position: absolute; width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.3s; }
+  .touch-indicator.show { opacity: 1; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .toolbar { flex-wrap: wrap; height: auto; padding: 6px 8px; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="title">📱 {{SERIAL}}</span>
+  <span class="status disconnected" id="ws-status">Connecting...</span>
+  <div class="sep"></div>
+  <button class="btn" onclick="sendKey('home')" title="Home">🏠</button>
+  <button class="btn" onclick="sendKey('back')" title="Back">◀️</button>
+  <button class="btn" onclick="sendKey('recent')" title="Recent">⬜</button>
+  <button class="btn" onclick="sendKey('notification')" title="Notifications">🔔</button>
+  <div class="sep"></div>
+  <label>FPS:</label>
+  <input type="range" id="fps-slider" min="1" max="20" value="10" style="width:80px" oninput="setFPS(this.value)">
+  <span class="fps-display" id="fps-label">10</span>
+  <label>Quality:</label>
+  <input type="range" id="quality-slider" min="10" max="90" value="40" style="width:80px" oninput="setQuality(this.value)">
+  <span class="fps-display" id="quality-label">40</span>
+  <div class="spacer"></div>
+  <span class="fps-display" id="stream-info">--</span>
+  <button class="btn" onclick="toggleSidebar()">⚙️</button>
+  <a href="/dashboard/" class="btn" style="text-decoration:none">← Dashboard</a>
+</div>
+
+<div class="main">
+  <div class="screen-container" id="screen-container">
+    <canvas id="screen" width="360" height="800"></canvas>
+    <div class="touch-indicator" id="touch-ind"></div>
+    <div class="no-stream" id="no-stream" style="display:none">Connecting to device...</div>
+  </div>
+  
+  <div class="sidebar" id="sidebar">
+    <h3>Navigation</h3>
+    <div class="btn-grid">
+      <button class="btn" onclick="sendKey('home')">🏠<br><small>Home</small></button>
+      <button class="btn" onclick="sendKey('back')">◀️<br><small>Back</small></button>
+      <button class="btn" onclick="sendKey('recent')">⬜<br><small>Recent</small></button>
+      <button class="btn" onclick="sendKey('power')">⏻<br><small>Power</small></button>
+      <button class="btn" onclick="sendKey('notification')">🔔<br><small>Notify</small></button>
+      <button class="btn" onclick="sendKey('menu')">☰<br><small>Menu</small></button>
+    </div>
+    
+    <h3>Volume</h3>
+    <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
+      <button class="btn" onclick="sendKey('volume_up')">🔊 Up</button>
+      <button class="btn" onclick="sendKey('volume_down')">🔉 Down</button>
+    </div>
+
+    <h3>D-Pad</h3>
+    <div class="btn-grid">
+      <div></div>
+      <button class="btn" onclick="sendKey('up')">⬆️</button>
+      <div></div>
+      <button class="btn" onclick="sendKey('left')">⬅️</button>
+      <button class="btn" onclick="sendKey('enter')">⏎</button>
+      <button class="btn" onclick="sendKey('right')">➡️</button>
+      <div></div>
+      <button class="btn" onclick="sendKey('down')">⬇️</button>
+      <div></div>
+    </div>
+
+    <h3>Type Text</h3>
+    <div class="text-input">
+      <input type="text" id="text-input" placeholder="Type and press Enter..." 
+             onkeydown="if(event.key==='Enter'){sendText(this.value);this.value='';}" />
+    </div>
+
+    <h3>Quick Actions</h3>
+    <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
+      <button class="btn" onclick="sendKey('delete')">⌫ Delete</button>
+      <button class="btn" onclick="sendKey('tab')">⇥ Tab</button>
+    </div>
+
+    <h3>Stream Info</h3>
+    <div class="info" id="stream-details">
+      Resolution: --<br>
+      Frame size: --<br>
+      Frames received: 0<br>
+      Connection: --
+    </div>
+  </div>
+</div>
+
+<script>
+const SERIAL = "{{SERIAL}}";
+const WS_URL = "{{WS_URL}}";
+
+let ws = null;
+let canvas, ctx;
+let frameCount = 0;
+let lastFrameTime = 0;
+let actualFps = 0;
+let totalBytes = 0;
+let isDown = false;
+let startX, startY;
+let sidebarVisible = true;
+
+// ── Canvas setup ──
+canvas = document.getElementById('screen');
+ctx = canvas.getContext('2d');
+
+// ── WebSocket ──
+function connect() {
+  ws = new WebSocket(WS_URL);
+  ws.binaryType = 'arraybuffer';
+  
+  ws.onopen = () => {
+    document.getElementById('ws-status').textContent = '● Connected';
+    document.getElementById('ws-status').className = 'status connected';
+    document.getElementById('no-stream').style.display = 'none';
+  };
+  
+  ws.onclose = () => {
+    document.getElementById('ws-status').textContent = '● Disconnected';
+    document.getElementById('ws-status').className = 'status disconnected';
+    // Auto-reconnect
+    setTimeout(connect, 2000);
+  };
+  
+  ws.onerror = () => {
+    document.getElementById('ws-status').textContent = '● Error';
+    document.getElementById('ws-status').className = 'status disconnected';
+  };
+  
+  ws.onmessage = (event) => {
+    if (event.data instanceof ArrayBuffer) {
+      renderFrame(event.data);
+    } else {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.error) console.error('Server error:', data.error);
+      } catch(e) {}
+    }
+  };
+}
+
+function renderFrame(buffer) {
+  const blob = new Blob([buffer], { type: 'image/jpeg' });
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.onload = () => {
+    // Resize canvas to match image aspect ratio
+    if (canvas.width !== img.width || canvas.height !== img.height) {
+      canvas.width = img.width;
+      canvas.height = img.height;
+    }
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(url);
+    
+    frameCount++;
+    totalBytes += buffer.byteLength;
+    const now = performance.now();
+    if (now - lastFrameTime > 1000) {
+      actualFps = frameCount;
+      frameCount = 0;
+      lastFrameTime = now;
+      document.getElementById('stream-info').textContent = 
+        `${actualFps}fps · ${(buffer.byteLength/1024).toFixed(0)}KB/frame`;
+      document.getElementById('stream-details').innerHTML = 
+        `Resolution: ${img.width}x${img.height}<br>` +
+        `Frame size: ${(buffer.byteLength/1024).toFixed(1)}KB<br>` +
+        `Actual FPS: ${actualFps}<br>` +
+        `Total: ${(totalBytes/1048576).toFixed(1)}MB`;
+    }
+  };
+  img.src = url;
+}
+
+// ── Touch / Mouse input ──
+
+function getCanvasCoords(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  return {
+    x: Math.round((clientX - rect.left) * scaleX),
+    y: Math.round((clientY - rect.top) * scaleY)
+  };
+}
+
+canvas.addEventListener('pointerdown', (e) => {
+  e.preventDefault();
+  const pos = getCanvasCoords(e);
+  isDown = true;
+  startX = pos.x;
+  startY = pos.y;
+  // Show touch indicator
+  showTouchIndicator(e.clientX, e.clientY);
+});
+
+canvas.addEventListener('pointerup', (e) => {
+  e.preventDefault();
+  if (!isDown) return;
+  isDown = false;
+  const pos = getCanvasCoords(e);
+  const dx = pos.x - startX;
+  const dy = pos.y - startY;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  
+  if (dist < 10) {
+    // Tap
+    sendCmd({ cmd: 'tap', x: startX, y: startY });
+  } else {
+    // Swipe
+    sendCmd({ cmd: 'swipe', x1: startX, y1: startY, x2: pos.x, y2: pos.y, duration: 300 });
+  }
+  hideTouchIndicator();
+});
+
+canvas.addEventListener('pointercancel', () => { isDown = false; hideTouchIndicator(); });
+
+// Long press detection
+let longPressTimer = null;
+canvas.addEventListener('pointerdown', (e) => {
+  longPressTimer = setTimeout(() => {
+    if (isDown) {
+      const pos = getCanvasCoords(e);
+      sendCmd({ cmd: 'longpress', x: pos.x, y: pos.y, duration: 1000 });
+      isDown = false;
+    }
+  }, 800);
+});
+canvas.addEventListener('pointerup', () => clearTimeout(longPressTimer));
+canvas.addEventListener('pointercancel', () => clearTimeout(longPressTimer));
+
+// Touch indicator
+function showTouchIndicator(x, y) {
+  const ind = document.getElementById('touch-ind');
+  ind.style.left = x + 'px';
+  ind.style.top = y + 'px';
+  ind.classList.add('show');
+}
+function hideTouchIndicator() {
+  document.getElementById('touch-ind').classList.remove('show');
+}
+
+// ── Keyboard passthrough ──
+document.addEventListener('keydown', (e) => {
+  if (document.activeElement.tagName === 'INPUT') return;
+  
+  const keyMap = {
+    'Backspace': 'delete', 'Delete': 'delete',
+    'Enter': 'enter', 'Tab': 'tab',
+    'ArrowUp': 'up', 'ArrowDown': 'down',
+    'ArrowLeft': 'left', 'ArrowRight': 'right',
+    'Home': 'home', 'Escape': 'back',
+  };
+  
+  if (keyMap[e.key]) {
+    e.preventDefault();
+    sendKey(keyMap[e.key]);
+  } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+    e.preventDefault();
+    sendText(e.key);
+  }
+});
+
+// ── Commands ──
+
+function sendCmd(data) {
+  if (ws && ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify(data));
+  }
+}
+
+function sendKey(key) {
+  sendCmd({ cmd: 'key', key: key });
+}
+
+function sendText(text) {
+  if (text) sendCmd({ cmd: 'type', text: text });
+}
+
+function setFPS(val) {
+  document.getElementById('fps-label').textContent = val;
+  sendCmd({ cmd: 'fps', value: parseInt(val) });
+}
+
+function setQuality(val) {
+  document.getElementById('quality-label').textContent = val;
+  sendCmd({ cmd: 'quality', value: parseInt(val) });
+}
+
+function toggleSidebar() {
+  sidebarVisible = !sidebarVisible;
+  document.getElementById('sidebar').classList.toggle('hidden');
+}
+
+// Start
+connect();
+</script>
+</body>
+</html>
