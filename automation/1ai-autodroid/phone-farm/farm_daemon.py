@@ -431,6 +431,11 @@ class FarmDaemon:
             self.dm.tap(serial, x, y)
             return {"status": "tapped"}
 
+        @app.post("/device/{serial}/swipe/{x1}/{y1}/{x2}/{y2}")
+        async def swipe(serial: str, x1: int, y1: int, x2: int, y2: int, dur: int = 300):
+            self.dm.swipe(serial, x1, y1, x2, y2, dur)
+            return {"status": "swiped"}
+
         @app.post("/device/{serial}/key/{key}")
         async def press(serial: str, key: str):
             self.dm.press_key(serial, key)

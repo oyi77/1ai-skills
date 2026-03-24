@@ -231,15 +231,20 @@ function buildMonitor(){
 
 // ── Inline touch: tap & swipe directly on phone screen ──
 let pState={};
+function getScale(serial, rect){
+  // Use image natural size if loaded, else fall back to device resolution (720x1640)
+  const img=document.getElementById('img-'+serial);
+  const nw=img&&img.naturalWidth>0?img.naturalWidth:720;
+  const nh=img&&img.naturalHeight>0?img.naturalHeight:1640;
+  return {sx:nw/rect.width, sy:nh/rect.height};
+}
 function pDown(e,serial){
   e.preventDefault();
+  e.target.setPointerCapture(e.pointerId);
   const rect=e.target.closest('.screen').getBoundingClientRect();
-  const img=document.getElementById('img-'+serial);
-  if(!img||!img.naturalWidth)return;
-  const sx=img.naturalWidth/rect.width, sy=img.naturalHeight/rect.height;
+  const {sx,sy}=getScale(serial,rect);
   const x=Math.round((e.clientX-rect.left)*sx), y=Math.round((e.clientY-rect.top)*sy);
   pState[serial]={x,y,t:Date.now(),cx:e.clientX,cy:e.clientY};
-  // Show touch dot
   const td=document.getElementById('td-'+serial);
   if(td){td.style.left=(e.clientX-rect.left)+'px';td.style.top=(e.clientY-rect.top)+'px';td.classList.add('show')}
 }
@@ -248,23 +253,20 @@ function pUp(e,serial){
   const s=pState[serial];if(!s)return;
   delete pState[serial];
   const rect=e.target.closest('.screen').getBoundingClientRect();
-  const img=document.getElementById('img-'+serial);
-  if(!img||!img.naturalWidth)return;
-  const sx=img.naturalWidth/rect.width, sy=img.naturalHeight/rect.height;
+  const {sx,sy}=getScale(serial,rect);
   const x2=Math.round((e.clientX-rect.left)*sx), y2=Math.round((e.clientY-rect.top)*sy);
   const dist=Math.sqrt((x2-s.x)**2+(y2-s.y)**2);
-  // Hide touch dot
   const td=document.getElementById('td-'+serial);if(td)td.classList.remove('show');
-  if(dist<15){
+  if(dist<20){
     // TAP
+    console.log('TAP',serial,s.x,s.y);
     fetch(`/device/${serial}/tap/${s.x}/${s.y}`,{method:'POST'});
-    // Quick visual feedback + refresh
-    setTimeout(()=>captureOne(serial),500);
+    setTimeout(()=>captureOne(serial),600);
   } else {
-    // SWIPE — use input API
-    fetch(`/api/input/${serial}`,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({cmd:'swipe',x1:s.x,y1:s.y,x2,y2,duration:300})}).catch(()=>{});
-    setTimeout(()=>captureOne(serial),800);
+    // SWIPE — use the swipe endpoint
+    console.log('SWIPE',serial,s.x,s.y,'->',x2,y2);
+    fetch(`/device/${serial}/swipe/${s.x}/${s.y}/${x2}/${y2}`,{method:'POST'});
+    setTimeout(()=>captureOne(serial),900);
   }
 }
 function pCancel(serial){delete pState[serial];const td=document.getElementById('td-'+serial);if(td)td.classList.remove('show')}
