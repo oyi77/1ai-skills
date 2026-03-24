@@ -53,6 +53,8 @@
   <span class="title">📱 {{SERIAL}}</span>
   <span class="status disconnected" id="ws-status">Connecting...</span>
   <div class="sep"></div>
+  <button class="btn yellow" onclick="wakeDevice()" title="Wake + Unlock screen" style="background:#fdcb6e;color:#333">💡 Wake</button>
+  <div class="sep"></div>
   <button class="btn" onclick="sendKey('home')" title="Home">🏠</button>
   <button class="btn" onclick="sendKey('back')" title="Back">◀️</button>
   <button class="btn" onclick="sendKey('recent')" title="Recent">⬜</button>
@@ -131,7 +133,8 @@
 
 <script>
 const SERIAL = "{{SERIAL}}";
-const WS_URL = "{{WS_URL}}";
+const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+const WS_URL = `${proto}//${location.host}/ws/${SERIAL}`;
 
 let ws = null;
 let canvas, ctx;
@@ -336,6 +339,11 @@ function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('hidden');
 }
 
+function wakeDevice(){
+  fetch(`/device/${SERIAL}/wake`,{method:'POST'}).then(()=>{
+    document.getElementById('ws-status').textContent='● Waking...';
+  });
+}
 // Start
 connect();
 </script>
