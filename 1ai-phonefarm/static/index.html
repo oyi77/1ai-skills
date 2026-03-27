@@ -477,7 +477,7 @@ function openAddDevice(){document.getElementById('add-modal').classList.add('sho
 function closeModal(id){document.getElementById(id).classList.remove('show');}
 
 // ── API calls ──
-async function api(path,opts){try{const r=await fetch(API+path,opts);return await r.json();}catch(e){return null;}}
+async function api(path,opts={}){try{const headers = opts.headers || {}; const token = localStorage.getItem('token'); if(token){headers['Authorization'] = `Bearer ${token}`; } opts.headers = headers; const r = await fetch(API+path, opts); return await r.json(); }catch(e){return null;}}
 
 // ── Stats ──
 async function loadStats() {
