@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "phone-farm",
+      "script": "/usr/bin/python3",
+      "args": "/home/openclaw/.openclaw/workspace/scripts/phone-farm/farm_daemon.py --mode monitor --workers 16 --port 8889",
+      "cwd": "/home/openclaw/.openclaw/workspace/scripts/phone-farm",
+      "interpreter": "none",
+      "restart_delay": 5000,
+      "max_restarts": 20,
+      "autorestart": true,
+      "watch": false,
+      "env": {
+        "HOME": "/home/openclaw",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/openclaw/.local/bin:/home/openclaw/.npm-global/bin"
+      },
+      "error_file": "/home/openclaw/.openclaw/workspace/logs/phone-farm/pm2-error.log",
+      "out_file": "/home/openclaw/.openclaw/workspace/logs/phone-farm/pm2-out.log",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss"
+    }
+  ]
+}
