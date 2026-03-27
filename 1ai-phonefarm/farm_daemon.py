@@ -353,8 +353,8 @@ class FarmDaemon:
 
         # ── Auth Setup ──
         # Simple in‑memory user (for demo). In production replace with DB.
-        USERS = {"admin": {"username": "admin", "hashed_pw": CryptContext(schemes=["bcrypt"], deprecated="auto").hash("admin")}}
-        pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+        USERS = {"admin": {"username": "admin", "hashed_pw": CryptContext(schemes=["sha256_crypt"], deprecated="auto").hash("admin")}}
+        pwd_context = CryptContext(schemes=["sha256_crypt"], deprecated="auto")
         oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
         SECRET_KEY = os.getenv("JWT_SECRET", "change_me_secret")
         ALGORITHM = "HS256"
@@ -387,14 +387,17 @@ class FarmDaemon:
 
         class AuthMiddleware(BaseHTTPMiddleware):
             async def dispatch(self, request: Request, call_next):
-                if request.url.path.startswith("/dashboard"):
-                    token = request.headers.get("Authorization")
-                    if not token or not token.startswith("Bearer "):
-                        return JSONResponse({"detail": "Not authenticated"}, status_code=401)
-                    try:
-                        jwt.decode(token.split()[1], SECRET_KEY, algorithms=[ALGORITHM])
-                    except JWTError:
-                        return JSONResponse({"detail": "Invalid token"}, status_code=401)
+                # Allow unauthenticated access to static dashboard UI
+                if request.url.path.startswith("/dashboard") or request.url.path.startswith("/api/login"):
+                    return await call_next(request)
+                # All other routes (API, device actions) require a JWT
+                token = request.headers.get("Authorization")
+                if not token or not token.startswith("Bearer "):
+                    return JSONResponse({"detail": "Not authenticated"}, status_code=401)
+                try:
+                    jwt.decode(token.split()[1], SECRET_KEY, algorithms=[ALGORITHM])
+                except JWTError:
+                    return JSONResponse({"detail": "Invalid token"}, status_code=401)
                 response = await call_next(request)
                 return response
 
