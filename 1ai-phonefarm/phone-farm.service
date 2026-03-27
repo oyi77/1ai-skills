@@ -1,0 +1,19 @@
+[Unit]
+Description=Phone Farm Daemon — Android device farm orchestrator
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/openclaw/.openclaw/workspace/scripts/phone-farm/farm_daemon.py --mode monitor --workers 16 --port 8889
+ExecStop=/bin/kill -SIGTERM $MAINPID
+Restart=on-failure
+RestartSec=30
+StandardOutput=append:/home/openclaw/.openclaw/workspace/logs/phone-farm/daemon.log
+StandardError=append:/home/openclaw/.openclaw/workspace/logs/phone-farm/daemon.log
+Environment=HOME=/home/openclaw
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/openclaw/.local/bin
+Environment=NOWPAYMENTS_API_KEY=YOUR_KEY_HERE
+Environment=NOWPAYMENTS_PUBLIC_KEY=YOUR_PUBLIC_KEY_HERE
+
+[Install]
+WantedBy=default.target
