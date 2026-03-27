@@ -452,10 +452,50 @@ class FarmDaemon:
             return {"status": "connected" if ok else "failed"}
 
         @app.post("/api/pay")
-        async def pay(plan: dict):
-            """Placeholder NowPayments integration – accept a plan name and return a dummy response."""
-            p = plan.get('plan') if isinstance(plan, dict) else None
-            return {"message": f"Payment request received for plan '{p}'. (NowPayments integration placeholder)"}
+        async def pay(payload: dict):
+            """NowPayments crypto invoice creation."""
+            import httpx, os, time
+            api_key = os.environ.get("NOWPAYMENTS_API_KEY", "")
+            plan = payload.get("plan", "starter")
+            price = payload.get("price", 9)
+            currency = payload.get("currency", "usdttrc20")
+            billing = payload.get("billing", "monthly")
+            descriptions = {
+                "starter": "PhoneFarm Starter — 1 Real Android Phone",
+                "growth":  "PhoneFarm Growth — 5 Real Android Phones",
+                "scale":   "PhoneFarm Scale — 20 Real Android Phones",
+            }
+            if not api_key:
+                return JSONResponse({"error": "payment_not_configured",
+                                     "message": "Payment not yet configured. Contact support@aitradepulse.com to purchase."}, status_code=503)
+            try:
+                async with httpx.AsyncClient(timeout=15) as client:
+                    r = await client.post(
+                        "https://api.nowpayments.io/v1/invoice",
+                        headers={"x-api-key": api_key, "Content-Type": "application/json"},
+                        json={
+                            "price_amount": float(price),
+                            "price_currency": "usd",
+                            "pay_currency": currency.lower(),
+                            "order_id": f"{plan}_{billing}_{int(time.time())}",
+                            "order_description": descriptions.get(plan, f"PhoneFarm {plan.title()} Plan"),
+                            "ipn_callback_url": "https://phonefarm.aitradepulse.com/api/webhook/nowpayments",
+                            "success_url": "https://phonefarm.aitradepulse.com/dashboard/",
+                            "cancel_url": "https://phonefarm.aitradepulse.com/dashboard/pricing.html",
+                        })
+                    data = r.json()
+                    if r.status_code == 200 and data.get("invoice_url"):
+                        return {"invoice_url": data["invoice_url"], "invoice_id": data.get("id")}
+                    return JSONResponse({"error": "nowpayments_error", "detail": data}, status_code=r.status_code)
+            except Exception as e:
+                return JSONResponse({"error": "request_failed", "message": str(e)}, status_code=500)
+
+        @app.post("/api/webhook/nowpayments")
+        async def nowpayments_webhook(payload: dict):
+            """NowPayments IPN callback — mark order as paid."""
+            log.info(f"NowPayments webhook: {payload}")
+            # TODO: verify IPN signature, provision device access
+            return {"status": "received"}
 
         # ── Static files (dashboard) ──
         if STATIC_DIR.exists():

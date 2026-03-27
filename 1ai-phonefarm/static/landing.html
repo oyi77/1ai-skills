@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhoneFarm — Real Android Phones in the Cloud</title>
+<link rel="icon" type="image/x-icon" href="/dashboard/favicon.ico">
+<style>
+:root{--bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;--accent:#6c5ce7;--accent2:#a29bfe;--green:#00b894;--red:#e17055;--yellow:#fdcb6e;--text:#dfe6e9;--muted:#636e72}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(15,17,23,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:24px;font-size:13px;color:var(--muted)}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;transition:.2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(108,92,231,.15),transparent)}
+.hero-badge{display:inline-block;background:rgba(108,92,231,.15);border:1px solid rgba(108,92,231,.3);color:var(--accent2);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:24px}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:20px;max-width:800px}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--accent),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:560px;margin:0 auto 36px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;transition:.2s;border:none;cursor:pointer}
+.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+.btn-secondary{background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px 32px;border-radius:10px;font-size:15px;font-weight:600;transition:.2s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:32px;justify-content:center;margin-top:56px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2rem;font-weight:800;color:var(--green)}
+.hero-stat .label{font-size:12px;color:var(--muted)}
+
+/* SECTIONS */
+section{padding:80px 24px;max-width:1100px;margin:0 auto}
+.section-badge{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:16px}
+.section-sub{font-size:1rem;color:var(--muted);max-width:560px;margin-bottom:48px}
+
+/* PROBLEM */
+.problem{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 24px}
+.problem-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.problem-left h2{color:var(--red)}
+.problem-list{list-style:none;margin-top:20px}
+.problem-list li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;display:flex;gap:10px;align-items:center}
+.problem-list li::before{content:"✗";color:var(--red);font-weight:700;font-size:16px}
+.solution-card{background:var(--bg);border:1px solid rgba(0,184,148,.3);border-radius:16px;padding:28px}
+.solution-card h3{color:var(--green);font-size:1.3rem;margin-bottom:16px}
+.solution-list{list-style:none}
+.solution-list li{padding:8px 0;font-size:14px;display:flex;gap:10px;align-items:center}
+.solution-list li::before{content:"✓";color:var(--green);font-weight:700}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.feature-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;transition:.2s}
+.feature-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.feature-icon{font-size:28px;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.feature-card p{font-size:13px;color:var(--muted)}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:48px}
+.step{text-align:center;padding:28px 20px}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;margin:0 auto 16px}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.step p{font-size:13px;color:var(--muted)}
+.step-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--border);padding-top:28px}
+
+/* PRICING */
+.pricing-section{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 24px;text-align:center}
+.pricing-inner{max-width:1100px;margin:0 auto}
+.pricing-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px;font-size:14px}
+.toggle-switch{width:44px;height:24px;background:var(--border);border-radius:12px;cursor:pointer;position:relative;transition:.2s}
+.toggle-switch.on{background:var(--accent)}
+.toggle-switch::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.2s}
+.toggle-switch.on::after{left:23px}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;text-align:left}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.price-card.popular{border-color:var(--accent);background:linear-gradient(135deg,rgba(108,92,231,.08),var(--bg))}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:3px 14px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.price-card .plan-name{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.price-card .price{font-size:2.8rem;font-weight:800;margin-bottom:4px}
+.price-card .price span{font-size:1rem;font-weight:400;color:var(--muted)}
+.price-card .price-sub{font-size:12px;color:var(--muted);margin-bottom:20px}
+.price-card .plan-cta{display:block;background:var(--accent);color:#fff;text-align:center;padding:12px;border-radius:8px;font-weight:700;font-size:14px;margin-bottom:20px;transition:.2s;cursor:pointer;border:none;width:100%}
+.price-card .plan-cta:hover{opacity:.85}
+.price-card .plan-cta.outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.price-card .plan-cta.outline:hover{border-color:var(--accent);color:var(--accent)}
+.price-features{list-style:none;font-size:13px}
+.price-features li{padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center}
+.price-features li::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0}
+.price-features li.no::before{content:"✗";color:var(--red)}
+.price-features li.no{color:var(--muted)}
+.guarantee{margin-top:32px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:8px}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.testi-card .stars{color:var(--yellow);margin-bottom:12px;font-size:14px}
+.testi-card p{font-size:14px;color:var(--muted);margin-bottom:16px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px}
+.testi-name{font-size:13px;font-weight:600}
+.testi-role{font-size:11px;color:var(--muted)}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{font-size:13px;color:var(--muted);margin-top:12px;display:none}
+.faq-a.open{display:block}
+
+/* FOOTER */
+footer{background:var(--card);border-top:1px solid var(--border);padding:40px 24px 24px;text-align:center}
+.footer-logo{font-size:20px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:24px}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--muted)}
+
+@media(max-width:768px){
+  .problem-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero h1{font-size:2rem}
+  .step-arrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">📱 PhoneFarm</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="/dashboard/">Dashboard</a>
+  </div>
+  <a href="#pricing" class="nav-cta">Get Started →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-badge">🔥 Real Hardware. Not Emulators.</div>
+    <h1>Real Android Phones<br>in the Cloud.<br><span class="highlight">Undetectable. Always On.</span></h1>
+    <p>Run TikTok, Instagram, WhatsApp, Shopee — 24/7 from your browser. Real physical phones = zero detection risk. No bans. No limits.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn-primary">Start for $9/mo →</a>
+      <a href="/dashboard/" class="btn-secondary">Live Demo</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">100%</div><div class="label">Real Hardware</div></div>
+      <div class="hero-stat"><div class="num">24/7</div><div class="label">Uptime Guaranteed</div></div>
+      <div class="hero-stat"><div class="num">0</div><div class="label">Detection Risk</div></div>
+      <div class="hero-stat"><div class="num">1000+</div><div class="label">Accounts Managed</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem">
+  <div class="problem-inner">
+    <div class="problem-left">
+      <div class="section-badge">The Problem</div>
+      <h2>Emulators Get You Banned</h2>
+      <p style="color:var(--muted);font-size:14px;margin:12px 0 4px">Cloud emulators are detected by every major platform:</p>
+      <ul class="problem-list">
+        <li>TikTok shadowbans emulator accounts within days</li>
+        <li>Instagram flags & disables emulated sessions</li>
+        <li>WhatsApp bans non-physical device fingerprints</li>
+        <li>Shopee/Lazada detects virtual environments</li>
+        <li>Crypto airdrop platforms verify device authenticity</li>
+      </ul>
+    </div>
+    <div class="solution-card">
+      <h3>✅ PhoneFarm Solution</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px">We give you real, physical Android phones running 24/7 in our data center. Platforms can't tell the difference from a real user.</p>
+      <ul class="solution-list">
+        <li>Real IMEI, real hardware fingerprint</li>
+        <li>Real SIM card slots (optional)</li>
+        <li>Control from browser — tap, swipe, type</li>
+        <li>No emulator signatures, ever</li>
+        <li>Works with every app on Play Store</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-badge">Features</div>
+  <h2>Everything You Need to Scale</h2>
+  <p class="section-sub">Built for social media managers, affiliate marketers, e-commerce sellers, and growth hackers.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🖥️</div>
+      <h3>Browser Remote Control</h3>
+      <p>Control your phone directly from any browser. Tap, swipe, type — just like scrcpy but cloud-based. No software install needed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Real Physical Hardware</h3>
+      <p>Actual Android devices, not VMs or emulators. Every phone has a unique IMEI, hardware ID, and fingerprint that passes all platform checks.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>24/7 Always-On</h3>
+      <p>Phones run around the clock — your accounts keep posting, engaging, and earning even while you sleep. True passive automation.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔀</div>
+      <h3>Multi-Account Management</h3>
+      <p>Run dozens of TikTok, Instagram, WhatsApp, or Shopee accounts simultaneously. One dashboard to rule them all.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>AFK Automation</h3>
+      <p>Schedule tasks, run bots, farm games — all on real hardware. Works with any automation tool: AutoTouch, Tasker, ADB scripts.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Live Screen Monitor</h3>
+      <p>See all your phones in a real-time grid. One click to screenshot any device. Monitor everything from a single dashboard.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Isolated Environments</h3>
+      <p>Each phone is completely isolated. No shared cookies, no cross-contamination. Accounts stay safe and independent.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💳</div>
+      <h3>Crypto Payments</h3>
+      <p>Pay with BTC, ETH, USDT, or 100+ cryptocurrencies via NowPayments. Anonymous and instant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="text-align:center">
+  <div class="section-badge">How It Works</div>
+  <h2>Up and Running in Minutes</h2>
+  <p class="section-sub" style="margin:0 auto 0">No technical knowledge required. We handle everything.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Choose Your Plan</h3>
+      <p>Select how many phones you need. From 1 phone for testing to 20+ for full-scale operations.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Setup Real Phones</h3>
+      <p>We configure real Android devices in our facility. Install your apps, create accounts — ready within 24 hours.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Control from Browser</h3>
+      <p>Login to your dashboard. See live screens. Tap, swipe, automate. Your phones are always on, always earning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<div class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-badge">Pricing</div>
+    <h2>Simple, Transparent Pricing</h2>
+    <p style="color:var(--muted);max-width:500px;margin:0 auto 32px">All plans include dashboard access, remote control, and 24/7 uptime. Pay with crypto.</p>
+    <div class="pricing-toggle">
+      <span>Monthly</span>
+      <div class="toggle-switch" id="billing-toggle" onclick="toggleBilling()"></div>
+      <span>Yearly <span style="color:var(--green);font-weight:700;font-size:11px">SAVE 20%</span></span>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan-name">Starter</div>
+        <div class="price" id="p-starter">$9<span>/mo</span></div>
+        <div class="price-sub" id="ps-starter">billed monthly</div>
+        <button class="plan-cta outline" onclick="pay('starter')">Get Started</button>
+        <ul class="price-features">
+          <li>1 Real Android Phone</li>
+          <li>Browser Remote Control</li>
+          <li>Live Screen Monitor</li>
+          <li>24/7 Uptime</li>
+          <li>ADB Access</li>
+          <li class="no">Multi-device Sync</li>
+          <li class="no">Priority Support</li>
+        </ul>
+      </div>
+      <div class="price-card popular">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="price" id="p-growth">$39<span>/mo</span></div>
+        <div class="price-sub" id="ps-growth">billed monthly</div>
+        <button class="plan-cta" onclick="pay('growth')">Get Started</button>
+        <ul class="price-features">
+          <li>5 Real Android Phones</li>
+          <li>Browser Remote Control</li>
+          <li>Live Screen Monitor Grid</li>
+          <li>24/7 Uptime</li>
+          <li>ADB Access</li>
+          <li>Multi-device Sync</li>
+          <li class="no">Priority Support</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="plan-name">Scale</div>
+        <div class="price" id="p-scale">$149<span>/mo</span></div>
+        <div class="price-sub" id="ps-scale">billed monthly</div>
+        <button class="plan-cta outline" onclick="pay('scale')">Get Started</button>
+        <ul class="price-features">
+          <li>20 Real Android Phones</li>
+          <li>Browser Remote Control</li>
+          <li>Live Screen Monitor Grid</li>
+          <li>24/7 Uptime</li>
+          <li>ADB Access</li>
+          <li>Multi-device Sync</li>
+          <li>Priority Support (24h)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guarantee">🛡️ 7-day money-back guarantee · Crypto payments via NowPayments · Cancel anytime</div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-badge">Testimonials</div>
+  <h2>Trusted by Growth Hackers</h2>
+  <p class="section-sub">Real results from real customers running real phones.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Switched from LDCloud after 3 Instagram bans. PhoneFarm's real phones haven't been flagged once in 4 months. ROI is insane."</p>
+      <div class="testi-author"><div class="testi-avatar">🚀</div><div><div class="testi-name">Rizky A.</div><div class="testi-role">Instagram Growth Agency, Jakarta</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Running 8 Shopee accounts 24/7. Orders keep coming even when I'm asleep. The browser control is smoother than I expected."</p>
+      <div class="testi-author"><div class="testi-avatar">🛒</div><div><div class="testi-name">Mei L.</div><div class="testi-role">Shopee Power Seller, Surabaya</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"For crypto airdrops, real device fingerprints are everything. PhoneFarm is the only service that actually works for serious farmers."</p>
+      <div class="testi-author"><div class="testi-avatar">💎</div><div><div class="testi-name">David K.</div><div class="testi-role">Crypto Airdrop Hunter</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="text-align:center">
+  <div class="section-badge">FAQ</div>
+  <h2>Frequently Asked Questions</h2>
+  <br>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What's the difference between PhoneFarm and cloud emulators? <span>+</span></div>
+      <div class="faq-a">Cloud emulators (LDCloud, Redfinger, etc.) run Android in a virtual machine. Platforms like TikTok and Instagram actively detect and ban emulated sessions. PhoneFarm uses actual physical Android smartphones — indistinguishable from a real user's device.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I control my phone? <span>+</span></div>
+      <div class="faq-a">Through your browser at phonefarm.aitradepulse.com/dashboard/. You see a live screen of your device and can tap, swipe, type, and run any app directly from the interface — no software install required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What Android apps are supported? <span>+</span></div>
+      <div class="faq-a">All apps available on Google Play Store. TikTok, Instagram, WhatsApp, Shopee, Tokopedia, Lazada, any crypto wallet, any game — if it runs on Android, it runs on PhoneFarm.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How fast is setup? <span>+</span></div>
+      <div class="faq-a">After payment, we configure your phone(s) within 24 hours. For Starter plans it's often under 4 hours. You'll receive login credentials via email once your device is ready.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I pay with cryptocurrency? <span>+</span></div>
+      <div class="faq-a">Yes. We accept BTC, ETH, USDT (TRC20/ERC20), SOL, and 100+ other cryptocurrencies via NowPayments. Payments are processed instantly and anonymously.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What's the money-back guarantee? <span>+</span></div>
+      <div class="faq-a">We offer a 7-day money-back guarantee. If PhoneFarm doesn't work for your use case within 7 days, we'll refund your payment — no questions asked.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div style="background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(0,184,148,.1));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 24px;text-align:center">
+  <h2 style="font-size:2rem;margin-bottom:12px">Ready to Scale Without Limits?</h2>
+  <p style="color:var(--muted);margin-bottom:28px">Start with 1 phone. Scale to hundreds. Real hardware. Zero detection.</p>
+  <a href="#pricing" class="btn-primary">Get Started for $9/mo →</a>
+</div>
+
+<footer>
+  <div class="footer-logo">📱 PhoneFarm</div>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="mailto:support@aitradepulse.com">Support</a>
+  </div>
+  <div class="footer-copy">© 2026 PhoneFarm by BerkahKarya. All rights reserved.</div>
+</footer>
+
+<script>
+let yearly=false;
+const prices={starter:[9,7],growth:[39,31],scale:[149,119]};
+function toggleBilling(){yearly=!yearly;document.getElementById('billing-toggle').classList.toggle('on');updatePrices();}
+function updatePrices(){
+  ['starter','growth','scale'].forEach(p=>{
+    const v=yearly?prices[p][1]:prices[p][0];
+    document.getElementById('p-'+p).innerHTML=`$${v}<span>/mo</span>`;
+    document.getElementById('ps-'+p).textContent=yearly?`$${v*12} billed yearly`:'billed monthly';
+  });
+}
+function pay(plan){
+  const price=yearly?prices[plan][1]:prices[plan][0];
+  fetch('/api/pay',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan,price,billing:yearly?'yearly':'monthly'})})
+    .then(r=>r.json()).then(d=>{
+      if(d.invoice_url){window.location.href=d.invoice_url;}
+      else{alert(d.message||'Contact support@aitradepulse.com to complete your purchase.');}
+    }).catch(()=>alert('Contact support@aitradepulse.com to get started.'));
+}
+function toggleFaq(el){
+  const a=el.nextElementSibling;const span=el.querySelector('span');
+  const open=a.classList.toggle('open');span.textContent=open?'−':'+';
+}
+</script>
+</body>
+</html>

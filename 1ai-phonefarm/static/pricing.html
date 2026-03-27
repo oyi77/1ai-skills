@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — PhoneFarm</title>
+<link rel="icon" type="image/x-icon" href="/dashboard/favicon.ico">
+<style>
+:root{--bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;--accent:#6c5ce7;--accent2:#a29bfe;--green:#00b894;--red:#e17055;--yellow:#fdcb6e;--text:#dfe6e9;--muted:#636e72}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}
+nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-back{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--text);text-decoration:none}
+a{color:inherit;text-decoration:none}
+
+.page{max-width:1000px;margin:0 auto;padding:60px 24px}
+.badge{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+h1{font-size:2.5rem;font-weight:800;margin-bottom:12px}
+.sub{font-size:1rem;color:var(--muted);margin-bottom:40px}
+
+.billing-toggle{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:40px;font-size:14px}
+.toggle{width:44px;height:24px;background:var(--border);border-radius:12px;cursor:pointer;position:relative;transition:.2s}
+.toggle.on{background:var(--accent)}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.2s}
+.toggle.on::after{left:23px}
+.save-badge{background:rgba(0,184,148,.15);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:32px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.card.pop{border-color:var(--accent);background:linear-gradient(160deg,rgba(108,92,231,.1),var(--card))}
+.pop-label{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:3px 14px;border-radius:20px;font-size:11px;font-weight:700}
+.plan{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.price-big{font-size:3rem;font-weight:800;line-height:1}
+.price-big span{font-size:1rem;font-weight:400;color:var(--muted)}
+.billing-note{font-size:11px;color:var(--muted);margin:6px 0 20px}
+button.cta{width:100%;padding:13px;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-bottom:20px}
+button.cta.solid{background:var(--accent);color:#fff}
+button.cta.solid:hover{opacity:.85}
+button.cta.outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+button.cta.outline:hover{border-color:var(--accent);color:var(--accent)}
+ul.feats{list-style:none;font-size:13px}
+ul.feats li{padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start}
+ul.feats li::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+ul.feats li.no{color:var(--muted)}
+ul.feats li.no::before{content:"✗";color:var(--red)}
+
+/* compare table */
+.compare{margin-top:60px}
+.compare h2{font-size:1.5rem;font-weight:800;text-align:center;margin-bottom:28px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:12px 16px;border-bottom:1px solid var(--border);text-align:center}
+th{background:var(--card);font-weight:700;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:1px}
+th:first-child,td:first-child{text-align:left;font-weight:500}
+td.pop-col{background:rgba(108,92,231,.05);border-left:1px solid rgba(108,92,231,.2);border-right:1px solid rgba(108,92,231,.2)}
+th.pop-col{background:rgba(108,92,231,.15);border-left:1px solid rgba(108,92,231,.2);border-right:1px solid rgba(108,92,231,.2);color:var(--accent2)}
+.check{color:var(--green);font-size:16px}
+.cross{color:var(--red);font-size:16px}
+
+/* Payment modal */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center}
+.modal.show{display:flex}
+.modal-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;max-width:420px;width:90%;text-align:center}
+.modal-box h3{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.modal-box p{font-size:13px;color:var(--muted);margin-bottom:24px}
+.modal-box .total{font-size:2rem;font-weight:800;margin-bottom:24px;color:var(--green)}
+.crypto-methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.crypto-btn{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;cursor:pointer;font-size:13px;transition:.2s}
+.crypto-btn:hover{border-color:var(--accent)}
+.modal-close{font-size:12px;color:var(--muted);cursor:pointer}
+.modal-close:hover{color:var(--text)}
+
+/* guarantee */
+.guarantee{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(0,184,148,.08);border:1px solid rgba(0,184,148,.2);border-radius:10px;padding:14px 20px;font-size:13px;margin-bottom:40px}
+
+@media(max-width:768px){h1{font-size:1.8rem}.price-big{font-size:2.2rem}table{font-size:11px}th,td{padding:8px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">📱 PhoneFarm</div>
+  <a href="/dashboard/landing.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page">
+  <div style="text-align:center">
+    <div class="badge">Pricing</div>
+    <h1>Simple, Transparent Plans</h1>
+    <p class="sub">Pay with crypto. Cancel anytime. Real Android phones delivered within 24 hours.</p>
+    
+    <div class="billing-toggle">
+      <span style="color:var(--text)">Monthly</span>
+      <div class="toggle" id="billing-toggle" onclick="toggleBilling()"></div>
+      <span style="color:var(--text)">Yearly <span class="save-badge">SAVE 20%</span></span>
+    </div>
+  </div>
+
+  <div class="guarantee">
+    🛡️ <strong>7-Day Money-Back Guarantee</strong> — If PhoneFarm doesn't work for you, we'll refund every cent.
+  </div>
+
+  <div class="grid">
+    <!-- Starter -->
+    <div class="card">
+      <div class="plan">Starter</div>
+      <div class="price-big" id="p-starter">$9<span>/mo</span></div>
+      <div class="billing-note" id="pn-starter">Billed monthly · $9.00 today</div>
+      <button class="cta outline" onclick="openPay('starter',9)">Get Started →</button>
+      <ul class="feats">
+        <li>1 Real Android Phone</li>
+        <li>Android 12 / 14</li>
+        <li>Browser Remote Control</li>
+        <li>Live Screen Monitor</li>
+        <li>24/7 Uptime SLA</li>
+        <li>ADB Shell Access</li>
+        <li>Email Support</li>
+        <li class="no">Multi-device Sync</li>
+        <li class="no">Priority Support</li>
+        <li class="no">Custom App Pre-install</li>
+      </ul>
+    </div>
+
+    <!-- Growth -->
+    <div class="card pop">
+      <div class="pop-label">⭐ Most Popular</div>
+      <div class="plan">Growth</div>
+      <div class="price-big" id="p-growth">$39<span>/mo</span></div>
+      <div class="billing-note" id="pn-growth">Billed monthly · $39.00 today</div>
+      <button class="cta solid" onclick="openPay('growth',39)">Get Started →</button>
+      <ul class="feats">
+        <li>5 Real Android Phones</li>
+        <li>Android 12 / 14</li>
+        <li>Browser Remote Control</li>
+        <li>Live Screen Monitor Grid</li>
+        <li>24/7 Uptime SLA</li>
+        <li>ADB Shell Access</li>
+        <li>Email Support</li>
+        <li>Multi-device Sync Commands</li>
+        <li class="no">Priority Support</li>
+        <li class="no">Custom App Pre-install</li>
+      </ul>
+    </div>
+
+    <!-- Scale -->
+    <div class="card">
+      <div class="plan">Scale</div>
+      <div class="price-big" id="p-scale">$149<span>/mo</span></div>
+      <div class="billing-note" id="pn-scale">Billed monthly · $149.00 today</div>
+      <button class="cta outline" onclick="openPay('scale',149)">Get Started →</button>
+      <ul class="feats">
+        <li>20 Real Android Phones</li>
+        <li>Android 12 / 14</li>
+        <li>Browser Remote Control</li>
+        <li>Live Screen Monitor Grid</li>
+        <li>24/7 Uptime SLA</li>
+        <li>ADB Shell Access</li>
+        <li>Priority Support (24h response)</li>
+        <li>Multi-device Sync Commands</li>
+        <li>Custom App Pre-install</li>
+        <li>Dedicated Account Manager</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Feature Comparison Table -->
+  <div class="compare">
+    <h2>Full Feature Comparison</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Starter</th>
+        <th class="pop-col">Growth</th>
+        <th>Scale</th>
+      </tr>
+      <tr><td>Real Android Phones</td><td>1</td><td class="pop-col"><strong>5</strong></td><td>20</td></tr>
+      <tr><td>Browser Remote Control</td><td><span class="check">✓</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Live Screen Monitor</td><td><span class="check">✓</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>ADB Shell Access</td><td><span class="check">✓</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>24/7 Uptime SLA</td><td><span class="check">✓</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Wake/Unlock Remote</td><td><span class="check">✓</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Multi-device Sync</td><td><span class="cross">✗</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Custom App Pre-install</td><td><span class="cross">✗</span></td><td class="pop-col"><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Priority Support</td><td><span class="cross">✗</span></td><td class="pop-col"><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Crypto Payment</td><td><span class="check">✓</span></td><td class="pop-col"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr>
+        <td></td>
+        <td><button class="cta outline" onclick="openPay('starter',9)" style="margin:0;padding:10px">Buy Starter</button></td>
+        <td class="pop-col"><button class="cta solid" onclick="openPay('growth',39)" style="margin:0;padding:10px">Buy Growth</button></td>
+        <td><button class="cta outline" onclick="openPay('scale',149)" style="margin:0;padding:10px">Buy Scale</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal" id="pay-modal">
+  <div class="modal-box">
+    <h3>Complete Your Order</h3>
+    <p id="modal-desc">Starter Plan — 1 Real Android Phone</p>
+    <div class="total" id="modal-total">$9.00</div>
+    <div class="crypto-methods">
+      <button class="crypto-btn" onclick="confirmPay('BTC')">₿ Bitcoin</button>
+      <button class="crypto-btn" onclick="confirmPay('ETH')">Ξ Ethereum</button>
+      <button class="crypto-btn" onclick="confirmPay('USDT')">💵 USDT</button>
+      <button class="crypto-btn" onclick="confirmPay('SOL')">◎ Solana</button>
+    </div>
+    <p id="pay-status" style="font-size:12px;color:var(--green);min-height:20px;margin-bottom:12px"></p>
+    <div class="modal-close" onclick="closeModal()">← Back</div>
+  </div>
+</div>
+
+<script>
+let yearly=false;
+const prices={starter:[9,7],growth:[39,31],scale:[149,119]};
+const descs={starter:'Starter Plan — 1 Real Android Phone',growth:'Growth Plan — 5 Real Android Phones',scale:'Scale Plan — 20 Real Android Phones'};
+let curPlan='',curPrice=0;
+
+function toggleBilling(){
+  yearly=!yearly;
+  document.getElementById('billing-toggle').classList.toggle('on');
+  ['starter','growth','scale'].forEach(p=>{
+    const v=yearly?prices[p][1]:prices[p][0];
+    document.getElementById('p-'+p).innerHTML=`$${v}<span>/mo</span>`;
+    document.getElementById('pn-'+p).textContent=yearly?`Billed yearly · $${v*12} today`:`Billed monthly · $${v}.00 today`;
+  });
+}
+
+function openPay(plan,price){
+  curPlan=plan;
+  curPrice=yearly?prices[plan][1]:prices[plan][0];
+  document.getElementById('modal-desc').textContent=descs[plan]+(yearly?' (Yearly)':' (Monthly)');
+  document.getElementById('modal-total').textContent=`$${curPrice}.00`;
+  document.getElementById('pay-status').textContent='';
+  document.getElementById('pay-modal').classList.add('show');
+}
+function closeModal(){document.getElementById('pay-modal').classList.remove('show');}
+
+function confirmPay(currency){
+  document.getElementById('pay-status').textContent='Creating invoice...';
+  fetch('/api/pay',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({plan:curPlan,price:curPrice,currency,billing:yearly?'yearly':'monthly'})
+  }).then(r=>r.json()).then(d=>{
+    if(d.invoice_url){
+      document.getElementById('pay-status').textContent='Redirecting to payment...';
+      setTimeout(()=>window.location.href=d.invoice_url,800);
+    } else {
+      document.getElementById('pay-status').textContent=d.message||'Contact support@aitradepulse.com';
+    }
+  }).catch(()=>{
+    document.getElementById('pay-status').textContent='Error. Contact support@aitradepulse.com';
+  });
+}
+// Close on backdrop click
+document.getElementById('pay-modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+</script>
+</body>
+</html>
