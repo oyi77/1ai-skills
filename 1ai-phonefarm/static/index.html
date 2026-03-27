@@ -181,7 +181,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="sys-stat"><span>Devices</span><span class="val" id="sb-devices">--</span></div>
     <div class="sys-stat"><span>Uptime</span><span class="val" id="sb-uptime">--</span></div>
     <div class="sys-stat"><span>Queue</span><span class="val" id="sb-queue">--</span></div>
-  </div>
+      <button class="btn sm ghost" onclick="logout()">🚪 Logout</button>
+</div>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -707,6 +708,11 @@ setInterval(async()=>{
 
 // ── Init ──
 async function refreshAll(){await loadStats();await loadDevices();await loadAlerts();}
+
+function logout(){
+  localStorage.removeItem('token');
+  window.location.href = '/';
+}
 (async()=>{await loadStats();await loadDevices();await loadAlerts();})();
 </script>
 </body>
