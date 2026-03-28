@@ -1,6 +1,6 @@
 ---
 name: cf-router
-description: Manage Cloudflare Tunnel routing, nginx reverse proxy, DNS records, and service ports via CF-Router. Use when adding/removing subdomains, checking routing status, listing mappings, deploying DNS to Cloudflare, registering portless services, managing nginx configs, health checks, backups, or scanning local ports. Domain routing is wildcard-based — all subdomains point to local nginx which routes by hostname.
+description: Manage Cloudflare Tunnel routing, nginx reverse proxy, DNS records, and service ports via CF-Router. Use when adding/removing subdomains, checking routing status, listing mappings, deploying DNS, discovering unmapped local services, using nginx templates, checking health, rollback, audit log, configuring notifications, or running interactive wizard. Domain routing is wildcard-based — all subdomains point to local nginx which routes by hostname.
 ---
 
 # CF-Router Skill
@@ -55,22 +55,58 @@ cloudflare-router port:list       # portless service registry
 
 ### Add / Remove Mappings
 ```bash
-# Add subdomain mapping (explicitly specify port)
-cloudflare-router add \
-  --subdomain myapp \
-  --port 5000 \
-  -d "My App Description"
+# Add subdomain mapping (account/zone auto-detected if only one configured)
+cloudflare-router add --subdomain myapp --port 5000 -d "My App"
 
-# Add with specific account/zone (needed if multi-account)
-cloudflare-router add \
-  --account <account-id-from-config> \
-  --zone <zone-id-from-config> \
-  --subdomain myapp \
-  --port 5000 \
-  -d "My App"
+# Add with template
+cloudflare-router add --subdomain myapp --port 3000 --template nextjs -d "Next.js App"
+cloudflare-router add --subdomain myapi --port 8000 --template api -d "REST API"
+
+# Add and immediately deploy
+cloudflare-router add --subdomain myapp --port 5000 --auto-deploy
 
 # Remove mapping
 cloudflare-router remove --subdomain myapp
+```
+
+### Templates
+```bash
+cloudflare-router templates    # list all available nginx templates
+# Available: default, nextjs, api, websocket, grpc, static, largefiles
+```
+
+### Service Discovery
+```bash
+# Interactive wizard: scan ports → pick unmapped → assign subdomain
+cloudflare-router discover
+
+# JSON output of all listening ports + mapping status
+cloudflare-router discover --json
+
+# Auto-deploy after assigning in discover
+cloudflare-router discover --auto-deploy
+```
+
+### Interactive Wizard (easiest way)
+```bash
+cloudflare-router wizard
+# Steps: scan ports → select port → subdomain → description → template → deploy?
+```
+
+### Rollback
+```bash
+cloudflare-router rollback              # interactive: pick from last 5 backups
+cloudflare-router rollback --last       # restore most recent auto-backup
+cloudflare-router rollback --file auto-2026-03-28-00-22-53.json  # specific file
+cloudflare-router rollback --list       # list all available backups
+```
+
+### Audit Log
+```bash
+cloudflare-router audit                 # last 20 entries
+cloudflare-router audit --limit 50      # last 50 entries
+cloudflare-router audit --action deploy # filter by action
+cloudflare-router audit --stats         # summary: total, today, by-action breakdown
 ```
 
 ### Generate & Deploy
@@ -383,11 +419,74 @@ curl -s -X POST http://localhost:7070/api/config/import \
   -d '{"config": {...}}'
 ```
 
-### Port Scanner
+### Port Scanner / Discovery
 ```bash
 # Scan for listening local ports
 curl -s -X POST http://localhost:7070/api/scan-ports \
   -H "Authorization: Bearer $CF_PASS"
+
+# Smart discovery: ports + mapping status + process names
+curl -s http://localhost:7070/api/discover \
+  -H "Authorization: Bearer $CF_PASS"
+# Returns: { ports: [{port, process, pid, mapped, subdomain}], total, unmapped }
+```
+
+### Templates
+```bash
+curl -s http://localhost:7070/api/templates -H "Authorization: Bearer $CF_PASS"
+# Returns: { templates: [{name, description}] }
+# Use template field in POST /api/mappings: { ..., "template": "nextjs" }
+```
+
+### Audit Log
+```bash
+# Recent entries
+curl -s "http://localhost:7070/api/audit?limit=50&action=deploy" \
+  -H "Authorization: Bearer $CF_PASS"
+
+# Stats summary
+curl -s http://localhost:7070/api/audit/stats \
+  -H "Authorization: Bearer $CF_PASS"
+```
+
+### Rollback
+```bash
+# List recent backups
+curl -s http://localhost:7070/api/backups/recent -H "Authorization: Bearer $CF_PASS"
+
+# Restore a backup
+curl -s -X POST http://localhost:7070/api/rollback \
+  -H "Authorization: Bearer $CF_PASS" \
+  -H "Content-Type: application/json" \
+  -d '{"file": "auto-2026-03-28-00-22-53.json"}'
+# file: null = most recent auto-backup
+```
+
+### Notifications
+```bash
+# Get config (token masked)
+curl -s http://localhost:7070/api/notifications/config \
+  -H "Authorization: Bearer $CF_PASS"
+
+# Configure Telegram notifications
+curl -s -X PUT http://localhost:7070/api/notifications/config \
+  -H "Authorization: Bearer $CF_PASS" \
+  -H "Content-Type: application/json" \
+  -d '{"telegram":{"enabled":true,"bot_token":"<token>","chat_id":"<id>"}}'
+# bot_token: read from env CFR_TELEGRAM_TOKEN if empty
+# chat_id: read from env CFR_TELEGRAM_CHAT_ID if empty
+
+# Test notification
+curl -s -X POST http://localhost:7070/api/notifications/test \
+  -H "Authorization: Bearer $CF_PASS"
+```
+
+### Health Status (all services)
+```bash
+# Ping all mapped ports and get up/down + latency
+curl -s http://localhost:7070/api/health-status \
+  -H "Authorization: Bearer $CF_PASS"
+# Returns: { services: [{subdomain, port, up, latency, domain}], checked_at }
 ```
 
 ### Webhooks
@@ -574,9 +673,56 @@ Validation errors return `400`:
 
 ---
 
+## MCP Tools (AI Integration)
+
+CF-Router exposes an MCP server for direct AI agent use. Start with `cloudflare-router mcp`.
+
+| Tool | Description |
+|------|-------------|
+| `cloudflare_router_list_mappings` | List all mappings |
+| `cloudflare_router_add_mapping` | Add subdomain mapping |
+| `cloudflare_router_remove_mapping` | Remove mapping |
+| `cloudflare_router_toggle_mapping` | Enable/disable mapping |
+| `cloudflare_router_generate` | Generate nginx configs |
+| `cloudflare_router_deploy` | Deploy DNS records |
+| `cloudflare_router_status` | System status |
+| `cloudflare_router_list_dns` | List DNS records |
+| `cloudflare_router_verify_token` | Verify Cloudflare API token |
+| `cloudflare_router_get_config` | Get full config |
+| `cloudflare_router_discover_ports` | Scan localhost ports + mapping status |
+| `cloudflare_router_rollback` | Restore from last backup |
+| `cloudflare_router_audit_log` | Get recent audit entries |
+| `cloudflare_router_health_status` | Ping all services — up/down + latency |
+| `cloudflare_router_watch_status` | Full snapshot: nginx + tunnel + all services |
+| `cloudflare_router_configure_notifications` | Set Telegram/webhook config |
+
+MCP server registered in mcporter at `config/mcporter.json` as `cf-router`.
+
+---
+
+## Notification Events
+
+When Telegram or webhook is configured, CF-Router sends alerts for:
+
+| Event | Trigger |
+|-------|---------|
+| `deploy_success` | DNS deploy completed |
+| `deploy_fail` | DNS deploy error |
+| `service_down` | Service health check failed (transition) |
+| `service_up` | Service recovered (transition) |
+| `ssl_expiry_warning` | Certificate expiring < 30 days |
+| `tunnel_disconnect` | cloudflared tunnel went offline |
+| `mapping_added` | New subdomain added |
+| `mapping_removed` | Subdomain removed |
+
+Set via `PUT /api/notifications/config` or `cloudflare_router_configure_notifications` MCP tool.  
+Env vars: `CFR_TELEGRAM_TOKEN`, `CFR_TELEGRAM_CHAT_ID`
+
+---
+
 ## Notes & Gotchas
 
-- **Always generate + deploy after mapping changes** — nginx and DNS are NOT auto-updated
+- **Always generate + deploy after mapping changes** — unless `auto_deploy: true` in config or `--auto-deploy` flag used
 - `apps.yaml` is preferred over `mappings.yml` for new services (richer options: health_check, no_tls_verify, host override)
 - Portless range is **4000-4999** — don't assign services outside this range if using portless mode
 - Dashboard password is stored in `config.yml` under `server.password` — never hardcode in scripts
