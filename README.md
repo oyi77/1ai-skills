@@ -145,3 +145,28 @@ These skills are open-source and maintained by BerkahKarya / [@oyi77](https://cl
 ---
 
 *Last updated: 2026-03-21 — All 21 skills now include tip.md badge.*
+
+## 📦 Missing Tools (Optional / macOS‑only)
+The following tools are listed as missing requirements in the OpenClaw skill registry. They are not required for the Linux environment but can be installed if needed:
+- apple-notes (macOS only)
+- apple‑reminders (macOS only)
+- bear-notes (macOS only)
+- blucli
+- bluebubbles
+- camsnap
+- discord (requires token)
+- eightctl
+- imsg (macOS only)
+- model-usage (macOS only)
+- openhue (available via pipx – already installed on Linux)
+- ordercli
+- peekaboo (macOS only)
+- sag
+- slack (requires token)
+- songsee
+- spotify-player
+- things‑mac (macOS only)
+- voice-call (plugin enabled)
+- gemini‑image‑generator (set GEMINI_BASE_URL env variable)
+
+You can install any of these on a macOS workstation when required.
