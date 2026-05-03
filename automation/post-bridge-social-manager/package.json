@@ -1,0 +1,24 @@
+{
+  "name": "post-bridge-social-manager",
+  "version": "1.0.0",
+  "description": "Post to multiple social media platforms via post-bridge.com API",
+  "main": "index.js",
+  "author": "jackfriks",
+  "license": "MIT",
+  "skills": {
+    "keywords": ["social-media", "twitter", "linkedin", "facebook", "instagram", "tiktok", "posting", "scheduling"],
+    "triggers": ["post to social media", "share on twitter", "share on linkedin", "post to multiple platforms", "schedule post"]
+  },
+  "config": {
+    "api_key": {
+      "type": "string",
+      "required": true,
+      "description": "Post Bridge API key"
+    },
+    "base_url": {
+      "type": "string",
+      "default": "https://post-bridge.com/api/v1",
+      "description": "API base URL"
+    }
+  }
+}

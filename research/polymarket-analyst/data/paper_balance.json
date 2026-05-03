@@ -1,0 +1,30 @@
+{
+  "total": 100.0,
+  "available": 80.0,
+  "locked": 20.0,
+  "trades": [
+    {
+      "id": "paper_1771058541018",
+      "market_id": "517311",
+      "market_title": "Will Trump deport 250,000-500,000 people?",
+      "side": "yes",
+      "amount": 10.0,
+      "entry_price": 0.887,
+      "current_price": 0.887,
+      "timestamp": "2026-02-14T15:42:21.018688",
+      "pnl": 0.0
+    },
+    {
+      "id": "paper_1771058541019",
+      "market_id": "517313",
+      "market_title": "Will Trump deport 500,000-750,000- people?",
+      "side": "no",
+      "amount": 10.0,
+      "entry_price": 0.946,
+      "current_price": 0.946,
+      "timestamp": "2026-02-14T15:42:21.019325",
+      "pnl": 0.0
+    }
+  ],
+  "trade_history": []
+}
