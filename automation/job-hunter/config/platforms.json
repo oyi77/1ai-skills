@@ -1,0 +1,70 @@
+{
+    "linkedin": {
+        "login": "https://www.linkedin.com/login",
+        "search": "https://www.linkedin.com/jobs/search/?keywords={query}&location={location}",
+        "domain": "linkedin.com",
+        "easy_apply": [
+            "Easy Apply"
+        ],
+        "selectors": {
+            "job_card": ".job-card-container",
+            "title": ".job-card-list__title",
+            "company": ".job-card-container__company-name",
+            "apply_btn": ".jobs-apply-button",
+            "easy_apply_modal": ".jobs-easy-apply-modal"
+        }
+    },
+    "kalibrr": {
+        "login": "https://www.kalibrr.com/login",
+        "search": "https://www.kalibrr.com/job-board/te/{query}/{location}",
+        "domain": "kalibrr.com",
+        "easy_apply": [
+            "Easy Apply"
+        ],
+        "selectors": {
+            "job_card": ".k-job-card",
+            "title": ".k-job-title",
+            "company": ".k-text-subdued",
+            "apply_btn": "#apply-button"
+        }
+    },
+    "indeed": {
+        "login": "https://secure.indeed.com/account/login",
+        "search": "https://www.indeed.com/jobs?q={query}&l={location}",
+        "domain": "indeed.com",
+        "easy_apply": [
+            "Apply now",
+            "Easily apply"
+        ],
+        "selectors": {
+            "job_card": ".job_seen_beacon",
+            "title": ".jobTitle",
+            "company": ".companyName",
+            "apply_btn": "#indeedApplyButton"
+        }
+    },
+    "jobseeker": {
+        "login": "https://www.jobseeker.com/en/login",
+        "search": "https://www.jobseeker.com/en/jobs?q={query}&l={location}",
+        "domain": "jobseeker.com",
+        "easy_apply": [],
+        "selectors": {
+            "job_card": "article",
+            "title": "h3",
+            "company": "h4"
+        }
+    },
+    "google_jobs": {
+        "login": "https://accounts.google.com",
+        "search": "https://www.google.com/search?q=jobs+{query}+{location}&ibp=htl;jobs",
+        "domain": "google.com",
+        "easy_apply": [
+            "Apply on ..."
+        ],
+        "selectors": {
+            "job_card": ".iFjolb",
+            "title": ".BjJfJf",
+            "company": ".vNEEBe"
+        }
+    }
+}

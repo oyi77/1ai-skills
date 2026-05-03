@@ -1,0 +1,373 @@
+# Content Generator — Production Config
+# Updated: 2026-02-27
+# Status: All provider endpoints verified and tested
+
+# ===========================================================================
+# CONTENT GENERATION SETTINGS
+# ===========================================================================
+content_generation:
+  strategy: "balanced"
+  default_platform: "tiktok"
+  default_template: "larry_viral"   # Default to Larry Playbook format
+  max_concurrent: 3
+  generation_timeout: 300
+
+# ===========================================================================
+# PROVIDER CONFIGURATIONS (VERIFIED ENDPOINTS)
+# ===========================================================================
+providers:
+
+  # NVIDIA NIM — Image Generation (FIXED 2026-02-27)
+  # Endpoint: ai.api.nvidia.com/v1/genai/{provider}/{model}
+  # Response: artifacts[0].base64 (JPEG)
+  nvidia:
+    api_key: "${NVIDIA_API_KEY}"
+    enabled: true
+    # CRITICAL: Use ai.api.nvidia.com, NOT integrate.api.nvidia.com for images
+    base_url: "https://ai.api.nvidia.com"
+    image_endpoint_pattern: "/v1/genai/{provider}/{model}"
+    llm_base_url: "https://integrate.api.nvidia.com/v1"
+    # Default image model (flux.1-dev)
+    model: "black-forest-labs/flux.1-dev"
+    llm_model: "meta/llama-3.3-70b-instruct"
+    # Payload: only send prompt (no num_images, no nulls — causes 422)
+    # Response format: {"artifacts": [{"finishReason": "SUCCESS", "base64": "..."}]}
+    supported_models:
+      - "black-forest-labs/flux.1-dev"
+      - "black-forest-labs/flux_1-schnell"
+      - "stabilityai/stable-diffusion-xl"
+      - "stabilityai/stable-diffusion-3-medium"
+    max_retries: 3
+    retry_delay: 2
+
+  # BytePlus ModelArk — Video Generation (FIXED 2026-02-27)
+  # Endpoint: ark.ap-southeast.bytepluses.com/api/v3
+  # API: Async task-based — POST /contents/generations/tasks → poll
+  # IMPORTANT: No "resolution" param for lite model — causes 400
+  byteplus:
+    api_key: "${BYTEPLUS_API_KEY}"
+    enabled: true
+    base_url: "https://ark.ap-southeast.bytepluses.com/api/v3"
+    # Endpoint paths
+    create_task_path: "/contents/generations/tasks"
+    get_task_path: "/contents/generations/tasks/{task_id}"
+    # Default model (lite = fast ~20s, pro = better quality ~60s)
+    # UPDATED 2026-02-27: switched to Pro for hyperrealistic output
+    model: "seedance-1-0-pro-250528"
+    # Content format: [{"type": "text", "text": "prompt..."}]
+    # For I2V add: {"type": "image_url", "image_url": {"url": "..."}, "role": "first_frame"}
+    # Default TikTok settings
+    default_ratio: "9:16"   # 9:16 for TikTok vertical
+    default_duration: 5     # seconds
+    # Supported models
+    supported_models:
+      - "seedance-1-0-lite-t2v-250428"    # Fast, ~20s, lite
+      - "seedance-1-0-pro-fast-251015"    # Pro fast
+      - "seedance-1-0-pro-250528"         # Pro, best quality
+      - "seedance-1-5-pro-251215"         # Latest pro
+    poll_interval: 5        # seconds between status checks
+    poll_timeout: 300       # max wait seconds
+    max_retries: 3
+    retry_delay: 5
+
+  # Groq — Fast LLM (for storyboard, hooks, captions)
+  groq:
+    api_key: "${GROQ_API_KEY}"
+    enabled: true
+    base_url: "https://api.groq.com/openai/v1"
+    model: "llama-3.3-70b-versatile"
+    fallback_model: "llama-3.1-8b-instant"
+    max_retries: 3
+    retry_delay: 1
+
+  # Ollama Cloud — LLM (UPDATED: cloud endpoint, not localhost)
+  ollama:
+    api_key: "${OLLAMA_API_KEY}"
+    enabled: true
+    # Updated: use cloud endpoint (not localhost)
+    base_url: "https://api.ollama.com"
+    model: "llama3.2"
+    fallback_model: "mistral"
+    temperature: 0.7
+    max_tokens: 2048
+    max_retries: 2
+    retry_delay: 1
+
+  # XAI — DISABLED (credits exhausted)
+  xai:
+    api_key: "${XAI_API_KEY}"
+    enabled: false
+    base_url: "https://api.x.ai/v1"
+    model: "grok-2-vision"
+    max_duration: 10
+    max_retries: 3
+    retry_delay: 2
+
+  # Runware — Unified video API (300K+ models, $0.14/clip Seedance Lite)
+  # Sign up: runware.ai | Docs: docs.runware.ai
+  runware:
+    api_key: "${RUNWARE_API_KEY}"
+    enabled: true
+    model: "runware:100@1"
+    timeout: 480
+    default_duration: 5.0
+    max_retries: 2
+    retry_delay: 10
+
+  # Vast.ai Serverless — ComfyUI T2V/I2V (YOUR GPU, pay-per-use)
+  # Set VASTAI_SERVERLESS_KEY and VASTAI_ENDPOINT_NAME env vars
+  # Deploy ComfyUI template on cloud.vast.ai → Serverless → Create Endpoint
+  vastai:
+    serverless_key: "${VASTAI_SERVERLESS_KEY}"
+    endpoint_name: "${VASTAI_ENDPOINT_NAME}"
+    enabled: true
+    comfyui_port: 8188
+    output_dir: "/tmp/vastai_videos"
+    poll_interval: 5
+    poll_timeout: 600
+    default_model: "cogvideo-x"
+    supported_workflows:
+      - "cogvideo-x/CogVideoX-5b-T2V"
+      - "cogvideo-x/CogVideoX-5b-I2V"
+      - "hunyuanvideo"
+      - "ltx-video"
+    max_retries: 2
+    retry_delay: 10
+
+  # HuggingFace — Image generation (backup)
+  huggingface:
+    api_key: "${HUGGINGFACE_API_KEY}"
+    enabled: false
+    base_url: "https://api-inference.huggingface.co"
+    model: "stabilityai/stable-diffusion-3.5-large"
+    width: 1024
+    height: 1024
+    max_retries: 3
+    retry_delay: 2
+
+  # Replicate — Image generation (backup)
+  replicate:
+    api_key: "${REPLICATE_API_KEY}"
+    enabled: false
+    base_url: "https://api.replicate.com/v1"
+    model: "sd35"
+    width: 1024
+    height: 1024
+    max_retries: 3
+    retry_delay: 5
+
+
+# ===========================================================================
+# PLATFORM SPECIFICATIONS (VERIFIED)
+# ===========================================================================
+platforms:
+  tiktok:
+    aspect_ratio: "9:16"
+    resolution: [1080, 1920]
+    # Seedance lite output: 704x1248 (approx 9:16) — acceptable
+    fps: 24                  # Seedance outputs 24fps
+    bitrate: "1200k"         # After CRF 28 compression ~1.2Mbps
+    max_duration: 180        # seconds
+    ideal_duration: 60       # 1 minute = sweet spot
+    clip_duration: 5         # Seedance single clip = 5s
+    loops_for_1min: 12       # 5s × 12 = 60s
+    format: "mp4"
+    codec: "h264"
+    max_file_size_mb: 72     # Android limit; iPhone 287MB
+    telegram_safe_mb: 16     # Telegram media limit
+    # Larry Playbook: 6-slide slideshow is also valid format
+    slideshow_slides: 6
+    slideshow_duration_per_slide: 2.5  # seconds
+
+  youtube:
+    aspect_ratio: "16:9"
+    resolution: [1920, 1080]
+    fps: 30
+    bitrate: "20000k"
+    max_duration: 43200
+    ideal_duration: 600
+    format: "mp4"
+    max_file_size_mb: 128000
+
+  instagram:
+    aspect_ratio: "9:16"
+    resolution: [1080, 1920]
+    fps: 30
+    bitrate: "3500k"
+    max_duration: 60
+    ideal_duration: 15
+    format: "mp4"
+    max_file_size_mb: 650
+
+  facebook:
+    aspect_ratio: "16:9"
+    resolution: [1920, 1080]
+    fps: 30
+    bitrate: "10000k"
+    max_duration: 14400
+    ideal_duration: 120
+    format: "mp4"
+    max_file_size_mb: 10240
+
+# ===========================================================================
+# LARRY PLAYBOOK — VIRAL PARAMETERS
+# Based on: Oliver Henry's proven formula (234K views single post)
+# ===========================================================================
+larry_playbook:
+  # Proven formula: [Third party's problem] + [Doubt] → AI Result → Mind changed
+  hook_formula: "[Person]'s problem + doubt → showed them AI result → reaction"
+
+  # Hook templates by performance
+  hook_types:
+    landlord_ai:
+      template: "My landlord said {constraint}, so I showed {them/her} what AI thinks {space} could look like"
+      avg_views: 234000
+      confidence: 0.9
+    parent_ai:
+      template: "My {parent} was skeptical about AI until I showed {them} {result} for our {room}"
+      avg_views: 80000
+      confidence: 0.75
+    roommate_ai:
+      template: "My flatmate thinks {X} is impossible, so I proved them wrong with AI {result}"
+      avg_views: 60000
+      confidence: 0.65
+
+  # Content format (proven: 6 slides)
+  slideshow:
+    slides: 6              # TikTok sweet spot — never 5 or 7
+    format: "portrait"     # 1024x1536 (4:6) or 1080x1920 (9:16)
+    same_room: true        # ALL slides = same room, different styles only
+    slide_1: "hook_text"   # Text overlay on first slide
+    slides_2_6: "styles"   # Same room, 6 different interior styles
+
+  # Video (Seedance-based)
+  video:
+    ratio: "9:16"
+    duration_clip: 5       # seconds per clip
+    duration_target: 60    # 1-minute loops
+    loop_count: 12         # 5s × 12 = 60s
+
+  # Caption formula (story style — no marketing language)
+  caption:
+    format: "story"
+    max_chars: 200
+    max_hashtags: 5
+    structure: |
+      [Hook context — 1 line]
+      My [relationship] [reaction] when I showed them [AI result]
+      [CTA: subtle, not pushy]
+      [max 5 hashtags]
+
+  # What to AVOID (kills virality)
+  avoid:
+    - "self_promotion"        # "I built an app..."
+    - "feature_focus"         # "See how X can..."
+    - "direct_cta"            # "Download now"
+    - "wrong_slide_count"     # not exactly 6 slides
+    - "different_rooms"       # must be same room
+
+  # Confidence thresholds
+  confidence:
+    high: 0.8     # Proven formula — use as default
+    medium: 0.6   # Tested, moderate data
+    low: 0.4      # Experimental
+
+# ===========================================================================
+# VIDEO PROCESSING (FFmpeg)
+# ===========================================================================
+video_processing:
+  engine: "ffmpeg"
+  ffmpeg_path: "/home/linuxbrew/.linuxbrew/bin/ffmpeg"
+  codec:
+    video: "libx264"
+    audio: "aac"
+    preset: "fast"
+    crf: 28              # CRF 28 = 44MB→8.6MB compression (tested)
+  framerate: 24          # Match Seedance output
+  output:
+    format: "mp4"
+    cleanup_temp: true
+  # Loop command: ffmpeg -stream_loop {N} -i input.mp4 -c copy -t 60 output.mp4
+  loop_strategy: "stream_loop"
+
+# ===========================================================================
+# FALLBACK CHAIN
+# ===========================================================================
+fallback:
+  enabled: true
+  image_providers:
+    - nvidia          # Primary (ai.api.nvidia.com)
+    - replicate       # Backup
+    - huggingface     # Last resort
+  video_providers:
+    - byteplus        # Primary (Seedance T2V)
+    - runware         # Runware unified API ($0.14/clip)
+    - vastai          # Vast.ai serverless (your GPU)
+  llm_providers:
+    - groq            # Primary (fastest)
+    - nvidia          # Backup (NVIDIA LLM)
+    - ollama          # Cheap backup (cloud)
+  max_attempts: 3
+  retry_delay: 2
+
+# ===========================================================================
+# COST MANAGEMENT
+# ===========================================================================
+cost_limits:
+  max_per_generation: 1.00
+  max_per_month: 100.00
+  alert_at_percent: 80
+  enabled: true
+  db_path: ".content_generator_costs.db"
+
+# Provider cost estimates (USD)
+cost_estimates:
+  nvidia_image: 0.004     # per image (flux.1-dev)
+  byteplus_video: 0.026   # per clip (~10K tokens @ $2.5/M)
+  groq_llm: 0.001         # per request
+  nvidia_llm: 0.002       # per request
+
+# ===========================================================================
+# CACHE & STATE
+# ===========================================================================
+cache:
+  enabled: true
+  type: "sqlite"
+  db_path: ".content_generator_cache.db"
+  ttl: 86400
+  max_size_mb: 1000
+
+state:
+  enabled: true
+  dir: ".content_generator_states"
+  auto_save_interval: 30
+  max_age_days: 30
+
+# ===========================================================================
+# OUTPUT
+# ===========================================================================
+output:
+  dir: "output/videos"
+  images_dir: "output/images"
+  metadata_file: "output/metadata.json"
+  cost_report: "output/cost_report.json"
+
+# ===========================================================================
+# UPLOAD
+# ===========================================================================
+upload:
+  imgbb:
+    api_key: "${IMGBB_API_KEY}"
+    enabled: false
+  timeout: 60
+  max_retries: 3
+
+# ===========================================================================
+# LOGGING
+# ===========================================================================
+logging:
+  level: "INFO"
+  file: ".content_generator.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  max_bytes: 10485760
+  backup_count: 5

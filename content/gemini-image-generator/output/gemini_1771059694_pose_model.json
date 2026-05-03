@@ -1,0 +1,11 @@
+{
+  "id": "gemini_1771059694_pose_model",
+  "timestamp": "2026-02-14T16:01:34.152459",
+  "category": "fashion",
+  "product": "Elegant Blouse Hijab Style",
+  "pose_image": "input\\pose_model.jpg",
+  "product_image": "input\\product_blouse.jpg",
+  "instruction": "REFINER PRODUKSI: clean studio background\nRasio: 9:16\nLighting: soft diffused\nIntruksi tambahan: Generate premium posed product photography featuring Elegant Blouse Hijab Style. Professional e-commerce quality, TikTok optimized vertical format (9:16). Integrate model pose naturally with product. Clean composition, high-end aesthetic.",
+  "status": "ready",
+  "output_folder": "C:\\Users\\USER\\.openclaw\\workspace\\skills\\gemini-image-generator\\output\\gemini_1771059694_pose_model"
+}
