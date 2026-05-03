@@ -1,0 +1,29 @@
+{
+  "name": "Beauty Queen ID",
+  "language": "id",
+  "niche": "beauty",
+  "style": {
+    "tone": "friendly, girly, enthusiastic",
+    "emoji_usage": "heavy",
+    "slang_level": "Gen-Z Indonesian",
+    "signature": "\u2728\ud83d\udc96"
+  },
+  "character": "avatar_beauty",
+  "posting_times": [
+    "10:00",
+    "14:00",
+    "20:00"
+  ],
+  "hashtags": [
+    "#skincare",
+    "#makeup",
+    "#cantik",
+    "#glowup"
+  ],
+  "accounts": {
+    "tiktok": "@beautyqueen_id",
+    "instagram": "@beautyqueen_id"
+  },
+  "id": "beauty_id",
+  "created_at": "2026-03-12T19:44:22.132364"
+}

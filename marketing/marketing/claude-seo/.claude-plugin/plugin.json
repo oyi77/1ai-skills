@@ -1,0 +1,37 @@
+{
+  "name": "claude-seo",
+  "version": "1.5.0",
+  "description": "Comprehensive SEO analysis skill for Claude Code. Covers technical SEO, content quality (E-E-A-T), schema markup, image optimization, sitemap architecture, AI search optimization (GEO), and strategic planning across all industries.",
+  "author": "AgriciDaniel",
+  "license": "MIT",
+  "homepage": "https://github.com/AgriciDaniel/claude-seo",
+  "entry_point": "seo/SKILL.md",
+  "skills": [
+    "seo/SKILL.md",
+    "skills/seo-audit/SKILL.md",
+    "skills/seo-page/SKILL.md",
+    "skills/seo-technical/SKILL.md",
+    "skills/seo-content/SKILL.md",
+    "skills/seo-schema/SKILL.md",
+    "skills/seo-sitemap/SKILL.md",
+    "skills/seo-images/SKILL.md",
+    "skills/seo-geo/SKILL.md",
+    "skills/seo-plan/SKILL.md",
+    "skills/seo-programmatic/SKILL.md",
+    "skills/seo-competitor-pages/SKILL.md",
+    "skills/seo-hreflang/SKILL.md",
+    "extensions/dataforseo/skills/seo-dataforseo/SKILL.md",
+    "extensions/banana/skills/seo-image-gen/SKILL.md"
+  ],
+  "agents": [
+    "agents/seo-technical.md",
+    "agents/seo-content.md",
+    "agents/seo-schema.md",
+    "agents/seo-sitemap.md",
+    "agents/seo-performance.md",
+    "agents/seo-visual.md",
+    "agents/seo-geo.md",
+    "extensions/dataforseo/agents/seo-dataforseo.md",
+    "extensions/banana/agents/seo-image-gen.md"
+  ]
+}

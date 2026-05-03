@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5MXPQQRT');</script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-V9C14XZ9SG');</script>
+
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','771021905629860');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=771021905629860&ev=PageView&noscript=1"/></noscript>
+
+<!-- TikTok Pixel -->
+<script>!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load('D6IA84RC77UCTB9KG9OG');ttq.page()}(window,document,'ttq');</script>
+  <link rel="icon" type="image/x-icon" href="/dashboard/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/dashboard/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dashboard/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dashboard/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/dashboard/favicon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📱 Phone Farm</title>
+<style>
+  :root{--bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;--accent:#6c5ce7;--green:#00b894;--red:#e17055;--yellow:#fdcb6e;--text:#dfe6e9;--muted:#636e72}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  .nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;height:50px;gap:16px}
+  .nav .logo{font-size:16px;font-weight:700}
+  .nav .tabs{display:flex;gap:4px}
+  .nav .tab{padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);transition:.2s}
+  .nav .tab:hover{background:var(--border);color:var(--text)}
+  .nav .tab.active{background:var(--accent);color:#fff}
+  .nav .right{margin-left:auto;display:flex;gap:12px;font-size:11px;color:var(--muted);align-items:center}
+  .dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:3px}
+  .dot.on{background:var(--green)}.dot.off{background:var(--red)}
+  .page{display:none;max-width:1600px;margin:0 auto;padding:20px}
+  .page.active{display:block}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:20px}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
+  .stat-card .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .stat-card .value{font-size:26px;font-weight:700}
+  .stat-card .value.green{color:var(--green)}.stat-card .value.red{color:var(--red)}
+  .section{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:20px;overflow:hidden}
+  .section-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .section-header h2{font-size:14px}
+  .btn{background:var(--accent);color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;transition:.2s}
+  .btn:hover{opacity:.85}.btn.sm{padding:3px 8px;font-size:10px}
+  .btn.green{background:var(--green)}.btn.red{background:var(--red)}.btn.yellow{background:var(--yellow);color:#333}
+  .badge{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600}
+  .badge.green{background:rgba(0,184,148,.15);color:var(--green)}
+  .badge.red{background:rgba(225,112,85,.15);color:var(--red)}
+  .skill-tag{background:rgba(108,92,231,.15);color:var(--accent);padding:1px 6px;border-radius:3px;font-size:9px;display:inline-block;margin:1px}
+
+  /* Monitor grid */
+  .monitor-controls{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;font-size:12px}
+  .monitor-controls select{background:var(--card);border:1px solid var(--border);color:var(--text);padding:3px 6px;border-radius:5px;font-size:11px}
+  .monitor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  
+  /* Phone frame with inline touch */
+  .phone{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .phone:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+  .phone .screen{width:100%;aspect-ratio:9/20;background:#000;position:relative;cursor:crosshair;touch-action:none;overflow:hidden}
+  .phone .screen img{width:100%;height:100%;object-fit:cover;pointer-events:none;display:none}
+  .phone .screen .ph{color:var(--muted);font-size:28px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+  .phone .screen .live{position:absolute;top:6px;right:6px;background:var(--red);color:#fff;font-size:8px;padding:1px 5px;border-radius:3px;font-weight:700;animation:pulse 2s infinite;z-index:2}
+  .phone .screen .touch-dot{position:absolute;width:30px;height:30px;border:2px solid var(--accent);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .2s;z-index:3}
+  .phone .screen .touch-dot.show{opacity:1}
+  .phone .bar{padding:8px 10px;border-top:1px solid var(--border)}
+  .phone .bar .name{font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .phone .bar .meta{font-size:10px;color:var(--muted);margin-top:2px;display:flex;gap:6px}
+  .phone .bar .btns{display:flex;gap:3px;margin-top:5px;flex-wrap:wrap}
+  .phone.offline{opacity:.4}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+  /* Device list */
+  .dev-row{padding:12px 16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+  .dev-row:last-child{border-bottom:none}
+  .dev-icon{width:40px;height:40px;background:var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .dev-info h3{font-size:13px;margin-bottom:2px}
+  .dev-info .meta{font-size:10px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+  .task-row{padding:7px 16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:70px 1fr 90px 50px 60px;gap:8px;font-size:11px;align-items:center}
+  .task-row .time{color:var(--muted)}
+  .alert-row{padding:8px 16px;border-bottom:1px solid var(--border);display:flex;gap:8px;font-size:11px;align-items:center}
+  .refresh-bar{text-align:center;padding:6px;font-size:10px;color:var(--muted)}
+  @media(max-width:768px){.monitor-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.nav{padding:0 10px;gap:8px}}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="logo">📱 Phone Farm</div>
+  <div class="tabs">
+    <div class="tab active" onclick="showPage('overview')">📊 Overview</div>
+    <div class="tab" onclick="showPage('monitor')">🖥️ Live Monitor</div>
+    <div class="tab" onclick="showPage('tasks')">📋 Tasks</div>
+    <div class="tab" onclick="showPage('alerts')">🚨 Alerts</div>
+  </div>
+  <div class="right">
+    <span id="daemon-status"><span class="dot off"></span> --</span>
+    <span id="uptime">⏱️ --</span>
+    <span id="dev-count">📱 --</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="page active" id="page-overview">
+  <div class="grid">
+    <div class="stat-card"><div class="label">Connected</div><div class="value green" id="s-conn">-</div></div>
+    <div class="stat-card"><div class="label">Tasks/hr</div><div class="value" id="s-tasks">-</div></div>
+    <div class="stat-card"><div class="label">Queue</div><div class="value" id="s-queue">-</div></div>
+    <div class="stat-card"><div class="label">Alerts</div><div class="value" id="s-alerts">-</div></div>
+  </div>
+  <div class="section">
+    <div class="section-header"><h2>📱 Devices</h2><button class="btn sm" onclick="loadDevices()">🔄</button></div>
+    <div id="dev-list"></div>
+  </div>
+</div>
+
+<!-- LIVE MONITOR — inline touch control -->
+<div class="page" id="page-monitor">
+  <div class="monitor-controls">
+    <span>Refresh:</span>
+    <select id="ref-int" onchange="refMs=parseInt(this.value)*1000;cd=parseInt(this.value)">
+      <option value="3">3s</option><option value="5" selected>5s</option><option value="10">10s</option>
+    </select>
+    <span>Size:</span>
+    <select onchange="document.querySelector('.monitor-grid').style.gridTemplateColumns='repeat(auto-fill,minmax('+this.value+'px,1fr))'">
+      <option value="200">S</option><option value="260" selected>M</option><option value="340">L</option><option value="420">XL</option>
+    </select>
+    <button class="btn sm green" onclick="refreshAllScreens()">📸 Refresh All</button>
+    <button class="btn sm" onclick="autoOn=!autoOn;this.textContent=autoOn?'⏸ Pause':'▶ Resume'">⏸ Pause</button>
+    <span id="nxt" style="color:var(--muted)">5s</span>
+  </div>
+  <div class="monitor-grid" id="mon-grid"></div>
+</div>
+
+<!-- TASKS -->
+<div class="page" id="page-tasks">
+  <div class="section">
+    <div class="section-header"><h2>📋 Recent Tasks</h2><button class="btn sm" onclick="loadTasks()">🔄</button></div>
+    <div class="task-row" style="font-weight:600;color:var(--muted)"><span>Time</span><span>Task</span><span>Device</span><span>OK</span><span>ms</span></div>
+    <div id="task-list"></div>
+  </div>
+</div>
+
+<!-- ALERTS -->
+<div class="page" id="page-alerts">
+  <div class="section">
+    <div class="section-header"><h2>🚨 Alerts</h2></div>
+    <div id="alert-list"></div>
+  </div>
+</div>
+
+<div class="refresh-bar">Auto-refresh <span id="auto-st">ON</span> · <span id="timer">5</span>s</div>
+
+<script>
+const API='';
+let devices=[],refMs=5000,autoOn=true,cd=5,screenCache={},wsConns={};
+
+function showPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+n).classList.add('active');
+  [...document.querySelectorAll('.tab')].find(t=>t.textContent.includes(
+    n==='overview'?'Overview':n==='monitor'?'Monitor':n==='tasks'?'Tasks':'Alerts'
+  )).classList.add('active');
+  if(n==='overview'){loadStats();loadDevices()}
+  if(n==='tasks')loadTasks();
+  if(n==='alerts')loadAlerts();
+  if(n==='monitor'&&devices.length)refreshAllScreens();
+}
+
+async function api(p){try{const r=await fetch(API+p);return await r.json()}catch(e){return null}}
+
+// ── Stats ──
+async function loadStats(){
+  const s=await api('/stats');if(!s)return;
+  const st=s.stats||{};
+  document.getElementById('s-conn').textContent=s.devices_connected||0;
+  document.getElementById('s-tasks').textContent=st.tasks_1h_ok||0;
+  document.getElementById('s-queue').textContent=s.queue_depth||0;
+  document.getElementById('s-alerts').textContent=st.unacked_alerts||0;
+  document.getElementById('s-alerts').className='value '+(st.unacked_alerts>0?'red':'green');
+  document.getElementById('daemon-status').innerHTML=`<span class="dot ${s.pid?'on':'off'}"></span> ${s.mode||'off'}`;
+  const u=s.uptime_seconds||0;
+  document.getElementById('uptime').textContent=`⏱️${Math.floor(u/3600)}h${Math.floor(u%3600/60)}m`;
+  document.getElementById('dev-count').textContent=`📱${s.devices_connected||0}/${s.devices_total||0}`;
+}
+
+// ── Devices ──
+async function loadDevices(){
+  devices=await api('/devices')||[];
+  // Overview list
+  document.getElementById('dev-list').innerHTML=devices.map(d=>{
+    const c=JSON.parse(d.config_json||'{}'),sk=c.assigned_skills||[],bat=d.battery>=0?d.battery:'?';
+    const bc=bat==='?'?'yellow':bat>20?'green':bat>10?'yellow':'red';
+    return`<div class="dev-row"><div class="dev-icon">${d.connected?'📱':'📵'}</div><div class="dev-info"><h3>${d.name||d.serial} <span class="badge ${d.connected?'green':'red'}">${d.connected?'ON':'OFF'}</span></h3><div class="meta"><span>🔋<span class="badge ${bc}">${bat}%</span></span><span>${d.model||''}</span><span>Android ${d.android_ver||'?'}</span>${d.current_app?`<span>📦${d.current_app.split('.').pop()}</span>`:''}</div><div>${sk.map(s=>`<span class="skill-tag">${s}</span>`).join('')}</div></div><div style="display:flex;gap:4px"><button class="btn sm yellow" onclick="wakeDevice('${d.serial}')">💡 Wake</button><a class="btn sm" href="/control/${d.serial}" target="_blank" style="text-decoration:none">🎮 Control</a><button class="btn sm green" onclick="captureOne('${d.serial}')">📸</button></div></div>`;
+  }).join('')||'<div style="padding:16px;color:var(--muted)">No devices</div>';
+  buildMonitor();
+}
+
+// ── Monitor with INLINE touch ──
+function buildMonitor(){
+  const g=document.getElementById('mon-grid');
+  g.innerHTML=devices.map(d=>{
+    const c=JSON.parse(d.config_json||'{}'),sk=c.assigned_skills||[],bat=d.battery>=0?d.battery:'?';
+    const bc=bat==='?'?'':bat>20?'green':bat>10?'yellow':'red';
+    return`<div class="phone ${d.connected?'':'offline'}" id="ph-${d.serial}">
+      <div class="screen" id="scr-${d.serial}">
+        ${d.connected?'<div class="live">● LIVE</div>':''}
+        <img id="img-${d.serial}" style="pointer-events:none"/>
+        <div class="ph" id="plh-${d.serial}">📱</div>
+        <div class="touch-dot" id="td-${d.serial}"></div>
+        <div class="touch-overlay" id="ov-${d.serial}"
+             onpointerdown="pDown(event,'${d.serial}')" 
+             onpointermove="pMove(event,'${d.serial}')"
+             onpointerup="pUp(event,'${d.serial}')" 
+             onpointercancel="pCancel('${d.serial}')"></div>
+      </div>
+      <div class="bar">
+        <div class="name">${d.name||d.serial} <span class="badge ${bc}">${bat}%</span></div>
+        <div class="meta"><span>${d.model||''}</span>${d.current_app?`<span>📦${d.current_app.split('.').pop()}</span>`:''}</div>
+        <div class="btns">
+          <button class="btn sm yellow" onclick="wakeDevice('${d.serial}')" title="Wake + Unlock">💡 Wake</button>
+          <button class="btn sm" onclick="sendKey('${d.serial}','home')">🏠</button>
+          <button class="btn sm" onclick="sendKey('${d.serial}','back')">◀</button>
+          <button class="btn sm" onclick="sendKey('${d.serial}','recent')">⬜</button>
+          <button class="btn sm green" onclick="captureOne('${d.serial}')">📸</button>
+          <a class="btn sm" href="/control/${d.serial}" target="_blank" style="text-decoration:none">🎮 Advanced</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  // Restore cached screens
+  devices.forEach(d=>{
+    if(screenCache[d.serial]){
+      const img=document.getElementById('img-'+d.serial);
+      if(img){img.src=screenCache[d.serial];img.style.display='block'}
+      const pl=document.getElementById('plh-'+d.serial);
+      if(pl)pl.style.display='none';
+    }
+  });
+}
+
+// ── Inline touch: tap & swipe directly on phone screen ──
+let pState={};
+function devRes(serial){
+  const img=document.getElementById('img-'+serial);
+  return {w:img&&img.naturalWidth>0?img.naturalWidth:720,
+          h:img&&img.naturalHeight>0?img.naturalHeight:1640};
+}
+function scr2dev(serial,cx,cy){
+  const scr=document.getElementById('scr-'+serial);
+  const rect=scr.getBoundingClientRect();
+  const {w,h}=devRes(serial);
+  return {x:Math.round((cx-rect.left)*(w/rect.width)),
+          y:Math.round((cy-rect.top)*(h/rect.height))};
+}
+function showDot(serial,cx,cy){
+  const scr=document.getElementById('scr-'+serial);
+  const rect=scr.getBoundingClientRect();
+  const td=document.getElementById('td-'+serial);
+  if(td){td.style.left=(cx-rect.left)+'px';td.style.top=(cy-rect.top)+'px';td.classList.add('show')}
+}
+function hideDot(serial){const td=document.getElementById('td-'+serial);if(td)td.classList.remove('show')}
+
+function pDown(e,serial){
+  e.preventDefault();
+  e.target.setPointerCapture(e.pointerId);
+  const dev=scr2dev(serial,e.clientX,e.clientY);
+  pState[serial]={sx:dev.x,sy:dev.y,cx:e.clientX,cy:e.clientY,t:Date.now()};
+  showDot(serial,e.clientX,e.clientY);
+}
+function pMove(e,serial){
+  if(!pState[serial])return;
+  showDot(serial,e.clientX,e.clientY);
+}
+function pUp(e,serial){
+  e.preventDefault();
+  const s=pState[serial];if(!s)return;
+  delete pState[serial];
+  hideDot(serial);
+  const dev=scr2dev(serial,e.clientX,e.clientY);
+  const px_dist=Math.sqrt((e.clientX-s.cx)**2+(e.clientY-s.cy)**2);
+  if(px_dist<12){
+    console.log('TAP',serial,s.sx,s.sy);
+    fetch(`/device/${serial}/tap/${s.sx}/${s.sy}`,{method:'POST'});
+    setTimeout(()=>captureOne(serial),600);
+  } else {
+    console.log('SWIPE',serial,s.sx,s.sy,'->',dev.x,dev.y,'px_dist='+px_dist.toFixed(0));
+    fetch(`/device/${serial}/swipe/${s.sx}/${s.sy}/${dev.x}/${dev.y}`,{method:'POST'});
+    setTimeout(()=>captureOne(serial),900);
+  }
+}
+function pCancel(serial){delete pState[serial];hideDot(serial)}
+
+function sendKey(serial,key){
+  fetch(`/device/${serial}/key/${key}`,{method:'POST'});
+  setTimeout(()=>captureOne(serial),500);
+}
+
+// ── Screenshots ──
+async function wakeDevice(serial){
+  const r=await fetch(`/device/${serial}/wake`,{method:'POST'});
+  if(r.ok){setTimeout(()=>captureOne(serial),1500)}
+}
+async function captureOne(serial){
+  const img=document.getElementById('img-'+serial);
+  const pl=document.getElementById('plh-'+serial);
+  if(!img)return;
+  try{
+    const r=await fetch(`/device/${serial}/screenshot?t=${Date.now()}`);
+    if(r.ok){const b=await r.blob();const u=URL.createObjectURL(b);screenCache[serial]=u;img.src=u;img.style.display='block';if(pl)pl.style.display='none'}
+  }catch(e){}
+}
+async function refreshAllScreens(){
+  // Wake all before capturing
+  const conn=devices.filter(d=>d.connected);
+  await Promise.allSettled(conn.map(d=>fetch(`/device/${d.serial}/wake`,{method:'POST'}).catch(()=>{})));
+  await new Promise(r=>setTimeout(r,1200));
+  await Promise.allSettled(conn.map(d=>captureOne(d.serial)));
+}
+
+// ── Tasks & Alerts ──
+async function loadTasks(){
+  const t=await api('/tasks?limit=30')||[];
+  document.getElementById('task-list').innerHTML=t.map(r=>{
+    const tm=r.ts_str?r.ts_str.slice(11,19):'--';
+    return`<div class="task-row"><span class="time">${tm}</span><span>${r.task_type}</span><span>${r.device_name||''}</span><span>${r.success?'✅':'❌'}</span><span>${r.duration_ms}ms</span></div>`;
+  }).join('')||'<div style="padding:14px;color:var(--muted)">No tasks</div>';
+}
+async function loadAlerts(){
+  const a=await api('/alerts')||[];
+  document.getElementById('alert-list').innerHTML=a.length?a.map(r=>{
+    const i=r.alert_type?.includes('critical')?'🔴':r.alert_type?.includes('reconnect')?'✅':'🟡';
+    return`<div class="alert-row"><span>${i}</span><span>${r.message}</span><span style="margin-left:auto;color:var(--muted)">${r.ts_str||''}</span></div>`;
+  }).join(''):'<div class="alert-row">✅ No alerts</div>';
+}
+
+// ── Tick ──
+setInterval(async()=>{
+  if(!autoOn)return;
+  cd--;
+  document.getElementById('timer').textContent=cd;
+  document.getElementById('nxt').textContent=cd+'s';
+  document.getElementById('auto-st').textContent=autoOn?'ON':'OFF';
+  if(cd<=0){
+    cd=refMs/1000;
+    await loadStats();
+    if(document.getElementById('page-monitor').classList.contains('active')){
+      await loadDevices();
+      await refreshAllScreens();
+    }
+  }
+},1000);
+
+// Init
+(async()=>{await loadStats();await loadDevices()})();
+</script>
+</body>
+</html>

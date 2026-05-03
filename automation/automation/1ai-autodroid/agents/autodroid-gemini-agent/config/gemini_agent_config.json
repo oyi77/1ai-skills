@@ -1,0 +1,9 @@
+{
+  "device_serial": "SGZTONV4OBL74TJZ",
+  "adb_port": 8775,
+  "screenshot_dir": "~/.openclaw/workspace/downloads",
+  "ai_intercept": true,
+  "max_retries": 3,
+  "timeout_seconds": 30,
+  "tap_delay_ms": 500
+}

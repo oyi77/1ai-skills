@@ -1,0 +1,14 @@
+{
+  "version": "1.3.0",
+  "lastUpdated": "2026-03-06T11:35:00+07:00",
+  "changelog": "Added multi-account support for Google Drive gog CLI. New --account flag to select specific Google account when using googledrive provider. Now supports multiple gog CLI accounts seamlessly. Ideal for users with multiple Google accounts for personal and business use.",
+  "metadata": {
+    "emoji": "📱",
+    "category": "tiktok",
+    "requires": {
+      "bins": ["ffmpeg", "python3", "gog"],
+      "env": ["PEXELS_API_KEY", "POST_BRIDGE_API_KEY"],
+      "python": ["requests", "pillow"]
+    }
+  }
+}

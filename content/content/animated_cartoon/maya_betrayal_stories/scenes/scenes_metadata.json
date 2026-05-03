@@ -1,0 +1,50 @@
+{
+  "total_scenes": 8,
+  "story": "The $50,000 Business Betrayal",
+  "duration": "60 seconds",
+  "aspect_ratio": "9:16",
+  "style": "2D minimalist cartoon with pastel palette",
+  "generated_at": "2026-03-10",
+  "scenes": [
+    {
+      "name": "01_hook_intro",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_01_hook_intro.png",
+      "timing": "0-3s"
+    },
+    {
+      "name": "02_partnership",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_02_partnership.png",
+      "timing": "3-20s"
+    },
+    {
+      "name": "03_success",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_03_success.png",
+      "timing": "20-25s"
+    },
+    {
+      "name": "04_betrayal",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_04_betrayal.png",
+      "timing": "25-35s"
+    },
+    {
+      "name": "05_transfer",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_05_transfer.png",
+      "timing": "35-40s"
+    },
+    {
+      "name": "06_lawsuit",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_06_lawsuit.png",
+      "timing": "40-45s"
+    },
+    {
+      "name": "07_lesson",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_07_lesson.png",
+      "timing": "45-55s"
+    },
+    {
+      "name": "08_cta",
+      "path": "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_08_cta.png",
+      "timing": "55-60s"
+    }
+  ]
+}

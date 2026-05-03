@@ -1,0 +1,1651 @@
+#!/usr/bin/env python3
+"""
+Phone Farm Daemon v3 — All-in-one: Dashboard + Live Monitor + Remote Control
+
+Single server on port 8889:
+  /                    → Dashboard (overview, live monitor, alerts, tasks)
+  /control/{serial}    → Remote control (web scrcpy)
+  /ws/{serial}         → WebSocket screen stream + input
+  /device/...          → REST API (health, screenshot, task, etc.)
+  /stats, /tasks, /alerts, /devices → API endpoints
+  /auth/...            → Authentication (JWT tokens, API keys)
+  /health/...          → Health check endpoints
+  /webhook             → Webhook endpoint for external events
+  /api/groups, /api/tags → Device grouping endpoints
+"""
+
+import asyncio
+import io
+import json
+import logging
+import os
+import signal
+import subprocess
+import sys
+import threading
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Optional
+
+sys.path.insert(0, str(Path(__file__).parent))
+from device_manager import DeviceManager
+from task_runner import TaskRunner, PRIORITY_HIGH, PRIORITY_NORMAL, PRIORITY_LOW
+import db
+import auth_user
+
+try:
+    from rate_limiter import RateLimitMiddleware
+
+    _RATE_LIMIT_AVAILABLE = True
+except ImportError:
+    _RATE_LIMIT_AVAILABLE = False
+
+try:
+    import usage_tracker
+
+    _USAGE_TRACKING_AVAILABLE = True
+except ImportError:
+    _USAGE_TRACKING_AVAILABLE = False
+
+# ── Logging Setup (with phonefarm_logging fallback) ──────────────────────────
+
+try:
+    from phonefarm_logging import setup_logger
+
+    log = setup_logger("farm_daemon")
+except ImportError:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(
+                Path(__file__).parent.parent.parent
+                / "logs"
+                / "phone-farm"
+                / "daemon.log",
+                mode="a",
+            ),
+        ],
+    )
+    log = logging.getLogger("farm_daemon")
+
+# ── Auth Module Integration (with fallback) ─────────────────────────────────
+
+try:
+    from auth import (
+        JWT,
+        APIKeyManager,
+        create_token,
+        verify_token,
+        get_api_keys,
+        require_auth,
+    )
+
+    _AUTH_AVAILABLE = True
+except ImportError:
+    _AUTH_AVAILABLE = False
+    # Placeholder for when auth.py is not available
+    JWT = None
+    APIKeyManager = None
+
+    def create_token(user_id: str, role: str = "operator") -> str:
+        return "placeholder-token"
+
+    def verify_token(token: str) -> Optional[dict]:
+        return None
+
+    def get_api_keys():
+        return None
+
+    def require_auth(role: str = "viewer"):
+        """Placeholder auth dependency."""
+
+        async def dependency(request):
+            return {"sub": "anonymous", "role": "viewer"}
+
+        return dependency
+
+
+PID_FILE = Path("/tmp/phone-farm-daemon.pid")
+STATE_FILE = (
+    Path(__file__).parent.parent.parent / "logs" / "phone-farm" / "daemon_state.json"
+)
+STATIC_DIR = Path(__file__).parent / "static"
+DASHBOARD_DIR = Path(__file__).parent / "dashboard"
+ADB = "adb"
+
+HEALTH_INTERVAL = 300
+SCREENSHOT_INTERVAL = 120
+ACTIVE_INTERVAL = 600
+WATCHDOG_INTERVAL = 60
+PRUNE_INTERVAL = 3600
+STATE_SAVE_INTERVAL = 30
+DISCONNECT_ALERT_SEC = 300
+
+
+# ── Screen Streamer ──────────────────────────────────────────────────────
+
+
+class DeviceStreamer:
+    """Streams screen frames via WebSocket + handles input."""
+
+    def __init__(
+        self, serial: str, fps: int = 8, quality: int = 35, scale: float = 0.4
+    ):
+        self.serial = serial
+        self.fps = fps
+        self.quality = quality
+        self.scale = scale
+        self.running = True
+        self.clients: set = set()
+        self.width = 720
+        self.height = 1640
+        self._detect_resolution()
+
+    def _detect_resolution(self):
+        try:
+            r = subprocess.run(
+                [ADB, "-s", self.serial, "shell", "wm", "size"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+            )
+            if "Physical size:" in r.stdout:
+                w, h = r.stdout.strip().split(":")[-1].strip().split("x")
+                self.width, self.height = int(w), int(h)
+        except Exception:
+            pass
+
+    def capture_frame(self) -> bytes:
+        try:
+            r = subprocess.run(
+                [ADB, "-s", self.serial, "exec-out", "screencap", "-p"],
+                capture_output=True,
+                timeout=5,
+            )
+            if r.returncode != 0 or len(r.stdout) < 100:
+                return b""
+            try:
+                from PIL import Image
+
+                img = Image.open(io.BytesIO(r.stdout))
+                if self.scale != 1.0:
+                    img = img.resize(
+                        (int(img.width * self.scale), int(img.height * self.scale)),
+                        Image.LANCZOS,
+                    )
+                buf = io.BytesIO()
+                img.save(buf, format="JPEG", quality=self.quality, optimize=True)
+                return buf.getvalue()
+            except ImportError:
+                return r.stdout
+        except Exception:
+            return b""
+
+    async def stream_loop(self):
+        while self.running:
+            if not self.clients:
+                await asyncio.sleep(0.5)
+                continue
+            frame = await asyncio.get_event_loop().run_in_executor(
+                None, self.capture_frame
+            )
+            if frame:
+                dead = set()
+                for ws in list(self.clients):
+                    try:
+                        await ws.send_bytes(frame)
+                    except Exception:
+                        dead.add(ws)
+                self.clients -= dead
+            await asyncio.sleep(1.0 / self.fps)
+
+    def tap(self, x, y):
+        rx, ry = int(x / self.scale), int(y / self.scale)
+        subprocess.Popen(
+            [ADB, "-s", self.serial, "shell", "input", "tap", str(rx), str(ry)],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
+    def swipe(self, x1, y1, x2, y2, dur=300):
+        s = self.scale
+        subprocess.Popen(
+            [
+                ADB,
+                "-s",
+                self.serial,
+                "shell",
+                "input",
+                "swipe",
+                str(int(x1 / s)),
+                str(int(y1 / s)),
+                str(int(x2 / s)),
+                str(int(y2 / s)),
+                str(dur),
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
+    def type_text(self, text):
+        escaped = text.replace(" ", "%s").replace("'", "\\'")
+        subprocess.Popen(
+            [ADB, "-s", self.serial, "shell", "input", "text", f"'{escaped}'"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
+    def key(self, keycode):
+        codes = {
+            "home": "3",
+            "back": "4",
+            "menu": "82",
+            "power": "26",
+            "enter": "66",
+            "delete": "67",
+            "tab": "61",
+            "up": "19",
+            "down": "20",
+            "left": "21",
+            "right": "22",
+            "volume_up": "24",
+            "volume_down": "25",
+            "recent": "187",
+            "notification": "83",
+        }
+        code = codes.get(keycode.lower(), keycode)
+        subprocess.Popen(
+            [ADB, "-s", self.serial, "shell", "input", "keyevent", str(code)],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
+    def long_press(self, x, y, dur=1000):
+        s = self.scale
+        rx, ry = int(x / s), int(y / s)
+        subprocess.Popen(
+            [
+                ADB,
+                "-s",
+                self.serial,
+                "shell",
+                "input",
+                "swipe",
+                str(rx),
+                str(ry),
+                str(rx),
+                str(ry),
+                str(dur),
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
+
+# ── Farm Daemon ──────────────────────────────────────────────────────────
+
+
+class FarmDaemon:
+    def __init__(self, mode="monitor", workers=16, port=8889):
+        self.mode = mode
+        self.workers = workers
+        self.port = port
+        self.dm = DeviceManager(workers=workers)
+        self.runner = TaskRunner(self.dm, workers=workers)
+        self.running = False
+        self.start_time = time.time()
+        self._lock = threading.Lock()
+        self._stats = {
+            "start_time": datetime.now().isoformat(),
+            "mode": mode,
+            "reconnects": 0,
+            "alerts_sent": 0,
+            "prune_runs": 0,
+        }
+        self.streamers: dict[str, DeviceStreamer] = {}
+
+    def start(self):
+        self.running = True
+        PID_FILE.write_text(str(os.getpid()))
+        log.info(
+            f"Farm daemon v3 — mode={self.mode}, workers={self.workers}, port={self.port}"
+        )
+        signal.signal(signal.SIGTERM, lambda *_: self.stop())
+        signal.signal(signal.SIGINT, lambda *_: self.stop())
+        db.init_db()
+
+        connected = self.dm.discover()
+        log.info(f"Discovery: {len(connected)} devices")
+
+        self.runner.start()
+
+        for fn, name in [
+            (self._scheduler_loop, "scheduler"),
+            (self._watchdog_loop, "watchdog"),
+            (self._state_save_loop, "state-saver"),
+            (self._prune_loop, "pruner"),
+        ]:
+            threading.Thread(target=fn, name=name, daemon=True).start()
+
+        if self.mode in ("monitor", "active"):
+            threading.Thread(
+                target=self._screenshot_loop, name="screenshotter", daemon=True
+            ).start()
+        if self.mode == "active":
+            threading.Thread(
+                target=self._active_task_loop, name="active", daemon=True
+            ).start()
+
+        self._run_server()
+
+    def get_streamer(self, serial: str) -> DeviceStreamer:
+        if serial not in self.streamers:
+            self.streamers[serial] = DeviceStreamer(serial)
+            asyncio.ensure_future(self.streamers[serial].stream_loop())
+        return self.streamers[serial]
+
+    # ── Background threads ───────────────────────────────────────────────
+
+    def _scheduler_loop(self):
+        last = 0
+        while self.running:
+            if time.time() - last >= HEALTH_INTERVAL:
+                serials = [
+                    d["serial"]
+                    for d in db.get_all_devices(connected_only=True)["items"]
+                ]
+                if serials:
+                    self.runner.submit_all(
+                        serials, "health_check", priority=PRIORITY_HIGH
+                    )
+                last = time.time()
+            time.sleep(10)
+
+    def _screenshot_loop(self):
+        last = 0
+        while self.running:
+            if time.time() - last >= SCREENSHOT_INTERVAL:
+                serials = [
+                    d["serial"]
+                    for d in db.get_all_devices(connected_only=True)["items"]
+                ]
+                if serials:
+                    self.runner.submit_all(serials, "screenshot", priority=PRIORITY_LOW)
+                last = time.time()
+            time.sleep(15)
+
+    def _active_task_loop(self):
+        last = 0
+        while self.running:
+            if time.time() - last >= ACTIVE_INTERVAL:
+                for dev in db.get_all_devices(connected_only=True)["items"]:
+                    config = json.loads(dev.get("config_json", "{}"))
+                    task_map = {
+                        "tiktok": "tiktok_inbox",
+                        "shopee": "shopee_orders",
+                        "whatsapp": "whatsapp_unread",
+                        "instagram": "instagram_dms",
+                    }
+                    for skill in config.get("assigned_skills", []):
+                        t = task_map.get(skill)
+                        if t:
+                            self.runner.submit(
+                                dev["serial"], t, priority=PRIORITY_NORMAL
+                            )
+                    self.runner.submit(dev["serial"], "go_home", priority=PRIORITY_LOW)
+                last = time.time()
+            time.sleep(30)
+
+    def _watchdog_loop(self):
+        while self.running:
+            try:
+                self.dm.pool.health_check_all_servers()
+                actual = set(self.dm.pool.list_devices())
+                for dev in db.get_all_devices()["items"]:
+                    serial = dev["serial"]
+                    was = bool(dev.get("connected"))
+                    now = serial in actual
+                    if was and not now:
+                        db.upsert_device(serial=serial, connected=0)
+                    elif not was and now:
+                        db.upsert_device(
+                            serial=serial, connected=1, last_seen=time.time()
+                        )
+                        with self._lock:
+                            self._stats["reconnects"] += 1
+                        if not db.is_alert_recent(serial, "reconnected"):
+                            db.insert_alert(
+                                serial,
+                                "reconnected",
+                                f"✅ {dev.get('name', serial)} reconnected",
+                            )
+                    if (
+                        not now
+                        and dev.get("last_seen")
+                        and time.time() - dev["last_seen"] > DISCONNECT_ALERT_SEC
+                    ):
+                        if not db.is_alert_recent(serial, "disconnect", 3600):
+                            db.insert_alert(
+                                serial,
+                                "disconnect",
+                                f"❌ {dev.get('name', serial)} offline {int((time.time() - dev['last_seen']) / 60)}min",
+                            )
+            except Exception as e:
+                log.error(f"Watchdog: {e}")
+            time.sleep(WATCHDOG_INTERVAL)
+
+    def _state_save_loop(self):
+        while self.running:
+            self._save_state()
+            time.sleep(STATE_SAVE_INTERVAL)
+
+    def _save_state(self):
+        state = {
+            "pid": os.getpid(),
+            "mode": self.mode,
+            "uptime_seconds": int(time.time() - self.start_time),
+            "last_updated": datetime.now().isoformat(),
+            "stats": {**self._stats, **db.get_stats()},
+            "queue_depth": self.runner.queue_depth(),
+            "devices_total": db.get_stats()["devices_total"],
+            "devices_connected": db.get_stats()["devices_connected"],
+            "adb_servers": self.dm.pool.get_server_status(),
+            "active_streams": {s: len(st.clients) for s, st in self.streamers.items()},
+        }
+        STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(STATE_FILE, "w") as f:
+            json.dump(state, f, indent=2)
+
+    def _prune_loop(self):
+        while self.running:
+            time.sleep(PRUNE_INTERVAL)
+            deleted = db.prune_old_tasks(days=7)
+            if deleted:
+                log.info(f"Pruned {deleted} old tasks")
+            with self._lock:
+                self._stats["prune_runs"] += 1
+
+    # ── Combined Server (FastAPI + WebSocket) ────────────────────────────
+
+    def _run_server(self):
+        try:
+            from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Body
+            from fastapi.responses import (
+                HTMLResponse,
+                RedirectResponse,
+                JSONResponse,
+                FileResponse,
+            )
+            from fastapi.staticfiles import StaticFiles
+            import uvicorn
+        except ImportError:
+            subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "pip",
+                    "install",
+                    "fastapi",
+                    "uvicorn",
+                    "websockets",
+                ],
+                check=True,
+            )
+            from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+            from fastapi.responses import (
+                HTMLResponse,
+                RedirectResponse,
+                JSONResponse,
+                FileResponse,
+            )
+            from fastapi.staticfiles import StaticFiles
+            import uvicorn
+
+        app = FastAPI(title="Phone Farm v3")
+
+        QueryParams = db.QueryParams
+
+        # ── Usage Tracking Middleware ─────────────────────────────────────
+        if _USAGE_TRACKING_AVAILABLE:
+
+            @app.middleware("http")
+            async def track_usage_middleware(request, call_next):
+                response = await call_next(request)
+                path = request.url.path
+                if (
+                    path.startswith("/health")
+                    or path.startswith("/dashboard")
+                    or path.startswith("/static")
+                    or path == "/"
+                    or path.startswith("/ws")
+                    or path.startswith("/control/")
+                ):
+                    return response
+                try:
+                    usage_tracker.track("default", path, request.method)
+                except Exception:
+                    pass
+                return response
+
+        # ── Audit Middleware ──────────────────────────────────────────────
+        @app.middleware("http")
+        async def audit_middleware(request, call_next):
+            t0 = time.time()
+            response = await call_next(request)
+            try:
+                path = request.url.path
+                if (
+                    not path.startswith("/health")
+                    and not path.startswith("/dashboard")
+                    and not path.startswith("/static")
+                    and not path.startswith("/ws")
+                    and not path.startswith("/control/")
+                ):
+                    uid = "anonymous"
+                    tid = "default"
+                    auth_header = request.headers.get("authorization", "")
+                    api_key = request.headers.get("x-api-key", "")
+                    if auth_header.startswith("Bearer "):
+                        try:
+                            payload = verify_token(auth_header[7:])
+                            if payload:
+                                uid = payload.get("sub", "unknown")
+                                tid = payload.get("tenant_id", "default")
+                        except Exception:
+                            pass
+                    elif api_key:
+                        uid = f"key:{api_key[:12]}"
+                        tid = (
+                            getattr(request.state, "tenant_id", "default")
+                            if hasattr(request.state, "tenant_id")
+                            else "default"
+                        )
+                    db.insert_audit(
+                        tenant_id=tid,
+                        user_id=uid,
+                        method=request.method,
+                        path=path,
+                        status_code=response.status_code,
+                        ip=request.client.host if request.client else "",
+                        user_agent=request.headers.get("user-agent", ""),
+                        duration_ms=int((time.time() - t0) * 1000),
+                    )
+            except Exception:
+                pass
+            return response
+
+        # ── Rate Limiting Middleware ──────────────────────────────────────
+        if _RATE_LIMIT_AVAILABLE:
+            app.add_middleware(RateLimitMiddleware)
+
+        # ── WebSocket: Screen stream + input ──
+
+        @app.websocket("/ws/{serial}")
+        async def ws_stream(websocket: WebSocket, serial: str):
+            await websocket.accept()
+            streamer = self.get_streamer(serial)
+            streamer.clients.add(websocket)
+            log.info(f"WS client connected to {serial} ({len(streamer.clients)} total)")
+            try:
+                while True:
+                    data = await websocket.receive_text()
+                    try:
+                        msg = json.loads(data)
+                        cmd = msg.get("cmd")
+                        if cmd == "tap":
+                            streamer.tap(msg["x"], msg["y"])
+                        elif cmd == "swipe":
+                            streamer.swipe(
+                                msg["x1"],
+                                msg["y1"],
+                                msg["x2"],
+                                msg["y2"],
+                                msg.get("duration", 300),
+                            )
+                        elif cmd == "type":
+                            streamer.type_text(msg["text"])
+                        elif cmd == "key":
+                            streamer.key(msg["key"])
+                        elif cmd == "longpress":
+                            streamer.long_press(
+                                msg["x"], msg["y"], msg.get("duration", 1000)
+                            )
+                        elif cmd == "fps":
+                            streamer.fps = max(1, min(20, int(msg.get("value", 8))))
+                        elif cmd == "quality":
+                            streamer.quality = max(
+                                10, min(90, int(msg.get("value", 35)))
+                            )
+                        elif cmd == "scale":
+                            streamer.scale = max(
+                                0.25, min(1.0, float(msg.get("value", 0.4)))
+                            )
+                    except Exception as e:
+                        await websocket.send_text(json.dumps({"error": str(e)}))
+            except WebSocketDisconnect:
+                pass
+            finally:
+                streamer.clients.discard(websocket)
+                log.info(f"WS client disconnected from {serial}")
+
+        # ── Pages ──
+
+        @app.get("/")
+        async def root():
+            return RedirectResponse("/dashboard/")
+
+        @app.get("/control/{serial}")
+        async def control_page(serial: str):
+            html_path = STATIC_DIR / "control.html"
+            if not html_path.exists():
+                return HTMLResponse("control.html not found", status_code=404)
+            text = html_path.read_text()
+            text = text.replace("{{SERIAL}}", serial)
+            text = text.replace("{{WS_URL}}", f"AUTO_DETECT")
+            return HTMLResponse(text)
+
+        # ── REST API ──
+
+        @app.get("/api")
+        async def api_root():
+            return FarmDaemon.get_status()
+
+        @app.get("/stats")
+        async def stats(user=require_auth("viewer")):
+            self._save_state()
+            return FarmDaemon.get_status()
+
+        @app.get("/devices")
+        async def devices(
+            connected: bool = False,
+            search: str = "",
+            sort: str = "name",
+            order: str = "asc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_all_devices(
+                connected_only=connected, tenant_id=_tid(user), qp=qp
+            )
+
+        @app.get("/tasks")
+        async def tasks(
+            serial: str = None,
+            task_type: str = None,
+            search: str = "",
+            sort: str = "ts",
+            order: str = "desc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_recent_tasks(
+                serial=serial, task_type=task_type, tenant_id=_tid(user), qp=qp
+            )
+
+        @app.get("/alerts")
+        async def alerts(
+            search: str = "",
+            sort: str = "ts",
+            order: str = "desc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_recent_alerts(tenant_id=_tid(user), qp=qp)
+
+        @app.get("/device/{serial}/screenshot")
+        async def screenshot(serial: str, user=require_auth("viewer")):
+            try:
+                path = self.dm.screenshot(serial)
+                try:
+                    db.insert_screenshot(serial=serial, path=path)
+                except Exception:
+                    pass
+                return FileResponse(path, media_type="image/png")
+            except Exception as e:
+                return JSONResponse({"error": str(e)}, status_code=500)
+
+        @app.post("/device/{serial}/task/{task_type}")
+        async def run_task(serial: str, task_type: str, user=require_auth("operator")):
+            result = self.runner.run_now(serial, task_type)
+            return result
+
+        @app.post("/device/{serial}/launch/{package}")
+        async def launch(serial: str, package: str, user=require_auth("operator")):
+            self.dm.launch_app(serial, package)
+            return {"status": "launched"}
+
+        @app.post("/device/{serial}/wake")
+        async def wake(serial: str, user=require_auth("operator")):
+            import subprocess as sp
+
+            adb = lambda *args: sp.run(
+                [ADB, "-s", serial, "shell"] + list(args),
+                capture_output=True,
+                timeout=5,
+            )
+            r = adb("dumpsys", "power")
+            awake = "mWakefulness=Awake" in r.stdout.decode()
+            if not awake:
+                adb("input", "keyevent", "26")
+                await asyncio.sleep(1)
+            adb("input", "keyevent", "82")
+            await asyncio.sleep(0.3)
+            adb("input", "swipe", "360", "900", "360", "300", "400")
+            await asyncio.sleep(0.3)
+            return {"status": "woken"}
+
+        @app.post("/device/{serial}/tap/{x}/{y}")
+        async def tap(serial: str, x: int, y: int, user=require_auth("operator")):
+            self.dm.tap(serial, x, y)
+            return {"status": "tapped"}
+
+        @app.post("/device/{serial}/swipe/{x1}/{y1}/{x2}/{y2}")
+        async def swipe(
+            serial: str,
+            x1: int,
+            y1: int,
+            x2: int,
+            y2: int,
+            dur: int = 300,
+            user=require_auth("operator"),
+        ):
+            self.dm.swipe(serial, x1, y1, x2, y2, dur)
+            return {"status": "swiped"}
+
+        @app.post("/device/{serial}/key/{key}")
+        async def press(serial: str, key: str, user=require_auth("operator")):
+            self.dm.press_key(serial, key)
+            return {"status": "pressed"}
+
+        @app.post("/device/add")
+        async def add_device(
+            serial: str,
+            name: str,
+            connection: str = "usb",
+            user=require_auth("operator"),
+        ):
+            self.dm.register_device(serial, name, connection=connection)
+            return {"status": "registered"}
+
+        @app.post("/wifi/connect")
+        async def wifi_connect(
+            ip: str, port: int = 5555, name: str = None, user=require_auth("operator")
+        ):
+            ok = self.dm.connect_wifi(ip, port, name)
+            return {"status": "connected" if ok else "failed"}
+
+        # ── Auth Endpoints ────────────────────────────────────────────────────
+
+        if _AUTH_AVAILABLE:
+
+            @app.post("/auth/token")
+            async def create_token_endpoint(
+                user_id: str, role: str = "operator", expires_in: int = 86400
+            ):
+                """Create a JWT token."""
+                token = create_token(user_id, role)
+                return {"token": token, "type": "Bearer", "expires_in": expires_in}
+
+            @app.get("/auth/keys")
+            async def list_keys(user=require_auth("admin")):
+                """List all API keys."""
+                keys = get_api_keys().list_keys()
+                return {"keys": keys}
+
+            @app.post("/auth/keys")
+            async def create_key(
+                name: str,
+                role: str = "operator",
+                expires_days: int = None,
+                user=require_auth("admin"),
+            ):
+                """Create a new API key."""
+                expires_in = expires_days * 86400 if expires_days else None
+                full_key, key_obj = get_api_keys().create_key(name, role, expires_in)
+                return {"api_key": full_key, "key_details": key_obj.to_dict()}
+
+            @app.delete("/auth/keys/{key_id}")
+            async def revoke_key(key_id: str, user=require_auth("admin")):
+                """Revoke an API key."""
+                success = get_api_keys().revoke_key(key_id)
+                return {"success": success, "key_id": key_id}
+
+            @app.post("/auth/register")
+            async def register_user(
+                email: str, password: str, name: str, role: str = "user"
+            ):
+                """Register a new user with email/password."""
+                import re
+
+                if not email or not password or not name:
+                    return {"error": "Email, password, and name are required"}, 422
+                if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+                    return {"error": "Invalid email format"}, 422
+                if len(password) < 8:
+                    return {"error": "Password must be at least 8 characters"}, 422
+                if role not in ("user", "consumer"):
+                    role = "user"
+
+                existing = db.get_user_by_email(email)
+                if existing:
+                    return {"error": "Email already registered"}, 409
+
+                password_hash = auth_user.hash_password(password)
+                user_id = db.create_user(email, name, password_hash, role)
+
+                token = auth_user.create_session_token()
+                token_hash = auth_user.hash_token(token)
+                import time
+
+                expires_at = time.time() + 86400 * 7
+                session_id = db.create_session(user_id, token_hash, expires_at)
+
+                return {
+                    "ok": True,
+                    "user": {"id": user_id, "email": email, "name": name, "role": role},
+                    "token": token,
+                }
+
+            @app.post("/auth/login")
+            async def login_user(email: str, password: str):
+                """Login with email/password."""
+                user = db.get_user_by_email(email)
+                if not user:
+                    return {"error": "Invalid credentials"}, 401
+                if user.get("banned"):
+                    return {"error": "Account is banned"}, 403
+                if not auth_user.verify_password(password, user["password_hash"]):
+                    return {"error": "Invalid credentials"}, 401
+
+                import time
+
+                db.update_user(user["id"], last_login=time.time())
+
+                token = auth_user.create_session_token()
+                token_hash = auth_user.hash_token(token)
+                expires_at = time.time() + 86400 * 7
+                session_id = db.create_session(user["id"], token_hash, expires_at)
+
+                return {
+                    "ok": True,
+                    "user": {
+                        "id": user["id"],
+                        "email": user["email"],
+                        "name": user["name"],
+                        "role": user["role"],
+                        "credits": user.get("credits", 0),
+                    },
+                    "token": token,
+                }
+
+            @app.post("/auth/logout")
+            async def logout_user(authorization: str = None):
+                """Logout - invalidate session token."""
+                if not authorization or not authorization.startswith("Bearer "):
+                    return {"error": "Missing token"}, 401
+                token = authorization[7:]
+                token_hash = auth_user.hash_token(token)
+                return {"ok": db.delete_session(token)}
+
+            @app.get("/auth/me")
+            async def get_me(authorization: str = None):
+                """Get current user info from session token."""
+                if not authorization or not authorization.startswith("Bearer "):
+                    return {"error": "Missing token"}, 401
+                token = authorization[7:]
+                token_hash = auth_user.hash_token(token)
+                session = db.get_session(token)
+                if not session:
+                    return {"error": "Invalid or expired token"}, 401
+                user = db.get_user_by_id(session["user_id"])
+                if not user:
+                    return {"error": "User not found"}, 404
+                return {
+                    "id": user["id"],
+                    "email": user["email"],
+                    "name": user["name"],
+                    "role": user["role"],
+                    "credits": user.get("credits", 0),
+                }
+
+        # ── Health Endpoints ─────────────────────────────────────────────────
+
+        @app.get("/health")
+        async def health():
+            serials = [
+                d["serial"] for d in db.get_all_devices(connected_only=True)["items"]
+            ]
+            states = self.dm.refresh_all(serials)
+            return [
+                {
+                    "serial": s,
+                    "battery": st.battery,
+                    "screen_on": st.screen_on,
+                    "current_app": st.current_app,
+                    "connected": st.connected,
+                }
+                for s, st in states.items()
+            ]
+
+        @app.get("/health/ready")
+        async def health_ready():
+            """Detailed health check - returns detailed status of all subsystems."""
+            health_status = {"status": "ready", "checks": {}}
+
+            # Check database
+            try:
+                db.get_stats()
+                health_status["checks"]["database"] = {"status": "ok"}
+            except Exception as e:
+                health_status["checks"]["database"] = {
+                    "status": "error",
+                    "message": str(e),
+                }
+                health_status["status"] = "degraded"
+
+            # Check ADB servers
+            try:
+                adb_status = self.dm.pool.get_server_status()
+                health_status["checks"]["adb_servers"] = {
+                    "status": "ok",
+                    "servers": adb_status,
+                }
+            except Exception as e:
+                health_status["checks"]["adb_servers"] = {
+                    "status": "error",
+                    "message": str(e),
+                }
+                health_status["status"] = "degraded"
+
+            # Check devices
+            try:
+                devices_result = db.get_all_devices()
+                devices = devices_result["items"]
+                connected = sum(1 for d in devices if d.get("connected"))
+                health_status["checks"]["devices"] = {
+                    "status": "ok",
+                    "total": devices_result["total"],
+                    "connected": connected,
+                }
+            except Exception as e:
+                health_status["checks"]["devices"] = {
+                    "status": "error",
+                    "message": str(e),
+                }
+                health_status["status"] = "degraded"
+
+            # Check task queue
+            try:
+                queue_depth = self.runner.queue_depth()
+                health_status["checks"]["task_queue"] = {
+                    "status": "ok" if queue_depth < 1000 else "degraded",
+                    "depth": queue_depth,
+                }
+            except Exception as e:
+                health_status["checks"]["task_queue"] = {
+                    "status": "error",
+                    "message": str(e),
+                }
+
+            return health_status
+
+        @app.get("/health/live")
+        async def health_live():
+            """Simple liveness check - always returns 200 if server is running."""
+            return {
+                "status": "alive",
+                "uptime_seconds": int(time.time() - self.start_time),
+            }
+
+        # ── Webhook Endpoints ────────────────────────────────────────────────
+
+        # In-memory webhook config (can be extended to file/DB later)
+        _webhook_config = {
+            "enabled": False,
+            "url": None,
+            "events": [],
+            "secret": None,
+        }
+
+        async def _send_webhook(event_type: str, data: dict):
+            """Send webhook notification asynchronously."""
+            if not _webhook_config.get("enabled") or not _webhook_config.get("url"):
+                return
+
+            payload = {
+                "event": event_type,
+                "timestamp": datetime.now().isoformat(),
+                "data": data,
+            }
+
+            try:
+                import aiohttp
+
+                async with aiohttp.ClientSession() as session:
+                    await session.post(
+                        _webhook_config["url"],
+                        json=payload,
+                        headers={"Content-Type": "application/json"},
+                    )
+            except ImportError:
+                # Fallback to requests if aiohttp not available
+                try:
+                    import requests
+
+                    requests.post(_webhook_config["url"], json=payload, timeout=5)
+                except Exception:
+                    pass
+            except Exception:
+                pass
+
+        @app.get("/webhook/config")
+        async def get_webhook_config(user=require_auth("admin")):
+            """Get webhook configuration."""
+            return {
+                "enabled": _webhook_config["enabled"],
+                "url": _webhook_config["url"],
+                "events": _webhook_config["events"],
+            }
+
+        @app.post("/webhook/config")
+        async def set_webhook_config(
+            enabled: bool = None,
+            url: str = None,
+            events: list = None,
+            user=require_auth("admin"),
+        ):
+            """Configure webhooks."""
+            if enabled is not None:
+                _webhook_config["enabled"] = enabled
+            if url is not None:
+                _webhook_config["url"] = url
+            if events is not None:
+                _webhook_config["events"] = events
+            return {"success": True, "config": _webhook_config}
+
+        @app.post("/webhook")
+        async def webhook_event(
+            event: str,
+            serial: str = None,
+            message: str = None,
+            data: dict = None,
+            user=require_auth("operator"),
+        ):
+            """Manually trigger a webhook event."""
+            valid_events = [
+                "task_complete",
+                "device_connected",
+                "device_disconnected",
+                "alert",
+            ]
+            if event not in valid_events:
+                return {"error": f"Invalid event. Valid events: {valid_events}"}, 400
+
+            event_data = {
+                "event": event,
+                "serial": serial,
+                "message": message,
+                "data": data or {},
+            }
+
+            asyncio.create_task(_send_webhook(event, event_data))
+            return {"success": True, "event": event}
+
+        # ── Billing Endpoints ──────────────────────────────────────────────
+
+        @app.get("/billing/subscription")
+        async def billing_subscription(user=require_auth("viewer")):
+            from billing import get_billing_info
+
+            tid = (
+                user.get("tenant_id", "default")
+                if isinstance(user, dict)
+                else getattr(user, "tenant_id", "default")
+            )
+            return get_billing_info(tid)
+
+        @app.get("/billing/usage")
+        async def billing_usage(user=require_auth("viewer")):
+            from usage_tracker import get_usage
+
+            tid = (
+                user.get("tenant_id", "default")
+                if isinstance(user, dict)
+                else getattr(user, "tenant_id", "default")
+            )
+            return {"tenant_id": tid, "usage": get_usage(tid)}
+
+        @app.get("/billing/invoices")
+        async def billing_invoices(user=require_auth("viewer")):
+            from billing import is_available
+
+            return {"invoices": [], "stripe_configured": is_available()}
+
+        @app.post("/billing/webhook")
+        async def billing_webhook(request):
+            from billing import handle_webhook
+
+            payload = await request.json()
+            sig = request.headers.get("stripe-signature", "")
+            return handle_webhook(payload, sig)
+
+        # ── Device Groups/Tags API (db.py backed) ─────────────────────────
+
+        def _tid(user):
+            return (
+                user.get("tenant_id", "default")
+                if isinstance(user, dict)
+                else getattr(user, "tenant_id", "default")
+            )
+
+        @app.get("/api/groups")
+        async def list_groups(
+            search: str = "",
+            sort: str = "name",
+            order: str = "asc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_groups(tenant_id=_tid(user), qp=qp)
+
+        @app.post("/api/groups")
+        async def create_group(
+            name: str, description: str = None, user=require_auth("operator")
+        ):
+            gid = db.create_group(name, description or "")
+            return {"success": True, "group_id": gid}
+
+        @app.delete("/api/groups/{group_id}")
+        async def delete_group(group_id: int, user=require_auth("operator")):
+            return {"success": db.delete_group(group_id), "group_id": group_id}
+
+        @app.post("/api/groups/{group_id}/devices/{serial}")
+        async def add_device_to_group(
+            group_id: int, serial: str, user=require_auth("operator")
+        ):
+            return {"success": db.add_device_to_group(serial, group_id)}
+
+        @app.delete("/api/groups/{group_id}/devices/{serial}")
+        async def remove_device_from_group(
+            group_id: int, serial: str, user=require_auth("operator")
+        ):
+            return {"success": db.remove_device_from_group(serial, group_id)}
+
+        @app.get("/api/groups/{group_id}/devices")
+        async def list_group_devices(group_id: int, user=require_auth("viewer")):
+            return {"devices": db.get_devices_by_group(group_id).get("items", [])}
+
+        @app.get("/api/tags")
+        async def list_tags(
+            search: str = "",
+            sort: str = "name",
+            order: str = "asc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_tags(qp=qp)
+
+        @app.post("/api/tags")
+        async def create_tag(
+            name: str, color: str = "#888888", user=require_auth("operator")
+        ):
+            tid = db.create_tag(name, color)
+            return {"success": True, "tag_id": tid}
+
+        @app.post("/api/devices/{serial}/tags")
+        async def add_tag_to_device(
+            serial: str, tag_id: int, user=require_auth("operator")
+        ):
+            return {"success": db.add_tag_to_device(serial, tag_id)}
+
+        @app.delete("/api/devices/{serial}/tags/{tag_id}")
+        async def remove_tag_from_device(
+            serial: str, tag_id: int, user=require_auth("operator")
+        ):
+            return {"success": db.remove_tag_from_device(serial, tag_id)}
+
+        @app.delete("/api/tags/{tag_id}")
+        async def delete_tag(tag_id: int, user=require_auth("operator")):
+            return {"success": db.delete_tag(tag_id), "tag_id": tag_id}
+
+        # ── Extended Device Management ──────────────────────────────────────
+
+        @app.post("/device/{serial}/install")
+        async def install_app(serial: str, package: str, user=require_auth("operator")):
+            result = self.dm.install_app(serial, package)
+            return result
+
+        @app.post("/device/{serial}/uninstall")
+        async def uninstall_app(
+            serial: str, package: str, user=require_auth("operator")
+        ):
+            result = self.dm.uninstall_app(serial, package)
+            return result
+
+        @app.get("/device/{serial}/apps")
+        async def list_apps(
+            serial: str,
+            search: str = "",
+            sort: str = "package",
+            order: str = "asc",
+            detailed: bool = False,
+            filter: str = None,
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            return self.dm.list_apps(
+                serial,
+                filter_pkg=filter,
+                search=search,
+                sort=sort,
+                order=order,
+                offset=offset,
+                limit=limit,
+                detailed=detailed,
+            )
+
+        @app.get("/device/{serial}/app/{package:path}")
+        async def get_app_info(serial: str, package: str, user=require_auth("viewer")):
+            return self.dm.get_app_info(serial, package)
+
+        @app.get("/device/{serial}/app-by-uid/{uid}")
+        async def get_app_by_uid(serial: str, uid: str, user=require_auth("viewer")):
+            return self.dm.get_app_by_uid(serial, uid)
+
+        @app.get("/device/{serial}/battery-temp")
+        async def battery_temp(serial: str, user=require_auth("viewer")):
+            return self.dm.get_battery_temp(serial)
+
+        @app.post("/device/{serial}/reboot")
+        async def reboot_device(serial: str, user=require_auth("operator")):
+            return self.dm.reboot(serial)
+
+        @app.get("/device/{serial}/clipboard")
+        async def get_clipboard(serial: str, user=require_auth("operator")):
+            return self.dm.get_clipboard(serial)
+
+        @app.post("/device/{serial}/clipboard")
+        async def set_clipboard(serial: str, text: str, user=require_auth("operator")):
+            return self.dm.set_clipboard(serial, text)
+
+        @app.get("/device/{serial}/logcat")
+        async def get_logcat(
+            serial: str,
+            filter_spec: str = "",
+            lines: int = 100,
+            user=require_auth("operator"),
+        ):
+            output = self.dm.logcat(serial, filter_spec=filter_spec, lines=lines)
+            return {"serial": serial, "logcat": output}
+
+        @app.post("/device/{serial}/push")
+        async def push_file(
+            serial: str,
+            local_path: str,
+            remote_path: str = "/sdcard/",
+            user=require_auth("operator"),
+        ):
+            return self.dm.push_file(serial, local_path, remote_path)
+
+        @app.post("/device/{serial}/pull")
+        async def pull_file(
+            serial: str,
+            remote_path: str,
+            local_dir: str = "/tmp/autodroid_pull/",
+            user=require_auth("operator"),
+        ):
+            return self.dm.pull_file(serial, remote_path, local_dir)
+
+        @app.post("/device/{serial}/shell")
+        async def adb_shell(
+            serial: str, command: str, timeout: int = 30, user=require_auth("operator")
+        ):
+            return self.dm.adb_shell(serial, command, timeout=timeout)
+
+        # ── Video Recording ─────────────────────────────────────────────────
+
+        _recording_procs = {}
+
+        @app.post("/device/{serial}/record/start")
+        async def start_recording(
+            serial: str, duration: int = 60, user=require_auth("operator")
+        ):
+            import subprocess as sp
+
+            remote_path = f"/sdcard/autodroid_recording_{int(time.time())}.mp4"
+            proc = sp.Popen(
+                [
+                    ADB,
+                    "-s",
+                    serial,
+                    "shell",
+                    "screenrecord",
+                    "--time-limit",
+                    str(min(duration, 180)),
+                    remote_path,
+                ],
+                stdout=sp.DEVNULL,
+                stderr=sp.DEVNULL,
+            )
+            _recording_procs[serial] = {
+                "proc": proc,
+                "remote_path": remote_path,
+                "started_at": time.time(),
+            }
+            return {
+                "success": True,
+                "serial": serial,
+                "remote_path": remote_path,
+                "duration_limit": min(duration, 180),
+            }
+
+        @app.post("/device/{serial}/record/stop")
+        async def stop_recording(serial: str, user=require_auth("operator")):
+            import subprocess as sp
+
+            info = _recording_procs.get(serial)
+            if not info:
+                return {"success": False, "error": "No active recording"}
+            info["proc"].terminate()
+            info["proc"].wait(timeout=10)
+            del _recording_procs[serial]
+            remote_path = info["remote_path"]
+            local_dir = "/tmp/autodroid_recordings/"
+            os.makedirs(local_dir, exist_ok=True)
+            fname = os.path.basename(remote_path)
+            local_path = os.path.join(local_dir, fname)
+            r = sp.run(
+                [ADB, "-s", serial, "pull", remote_path, local_path],
+                capture_output=True,
+                timeout=30,
+            )
+            sp.run(
+                [ADB, "-s", serial, "shell", "rm", remote_path],
+                capture_output=True,
+                timeout=5,
+            )
+            if r.returncode == 0 and os.path.exists(local_path):
+                return FileResponse(local_path, media_type="video/mp4", filename=fname)
+            return JSONResponse({"error": "Failed to pull recording"}, status_code=500)
+
+        # ── Batch Tasks & Query Endpoints ───────────────────────────────────
+
+        @app.post("/tasks/batch")
+        async def batch_tasks(
+            task_type: str,
+            serials: list = Body(..., embed=True),
+            user=require_auth("operator"),
+        ):
+            results = {}
+            for serial in serials:
+                try:
+                    result = self.runner.run_now(serial, task_type)
+                    results[serial] = result
+                except Exception as e:
+                    results[serial] = {"success": False, "error": str(e)}
+            return {"results": results, "total": len(serials)}
+
+        @app.get("/screenshots")
+        async def list_screenshots(
+            serial: str = None,
+            search: str = "",
+            sort: str = "ts",
+            order: str = "desc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_screenshots(serial=serial, tenant_id=_tid(user), qp=qp)
+
+        @app.get("/audit")
+        async def audit_log(
+            user_id: str = None,
+            search: str = "",
+            sort: str = "ts",
+            order: str = "desc",
+            offset: int = 0,
+            limit: int = 100,
+            user=require_auth("admin"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_audit_log(tenant_id=_tid(user), user_id=user_id, qp=qp)
+
+        # ── API Versioning ────────────────────────────────────────────────
+
+        @app.get("/api/versions")
+        async def api_versions():
+            return {"versions": ["v1"], "current": "v1", "base_path": "/v1"}
+
+        from fastapi import APIRouter
+
+        v1 = APIRouter(prefix="/v1")
+
+        @v1.get("/devices")
+        async def v1_devices(
+            connected: bool = False,
+            search: str = "",
+            sort: str = "name",
+            order: str = "asc",
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            qp = QueryParams(
+                search=search, sort=sort, order=order, offset=offset, limit=limit
+            )
+            return db.get_all_devices(
+                connected_only=connected, tenant_id=_tid(user), qp=qp
+            )
+
+        @v1.get("/tasks")
+        async def v1_tasks(
+            serial: str = None,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            return db.get_recent_tasks(serial=serial, limit=limit, tenant_id=_tid(user))
+
+        @v1.get("/alerts")
+        async def v1_alerts(user=require_auth("viewer")):
+            return db.get_recent_alerts(limit=50, tenant_id=_tid(user))
+
+        @v1.get("/stats")
+        async def v1_stats(user=require_auth("viewer")):
+            return db.get_stats()
+
+        @v1.get("/billing/subscription")
+        async def v1_billing_subscription(user=require_auth("viewer")):
+            from billing import get_billing_info
+
+            return get_billing_info(_tid(user))
+
+        @v1.get("/billing/usage")
+        async def v1_billing_usage(user=require_auth("viewer")):
+            from usage_tracker import get_usage
+
+            return {"tenant_id": _tid(user), "usage": get_usage(_tid(user))}
+
+        @v1.get("/billing/invoices")
+        async def v1_billing_invoices(user=require_auth("viewer")):
+            from billing import is_available
+
+            return {"invoices": [], "stripe_configured": is_available()}
+
+        @v1.get("/groups")
+        async def v1_list_groups(user=require_auth("viewer")):
+            return db.get_groups(tenant_id=_tid(user))
+
+        @v1.get("/tags")
+        async def v1_list_tags(user=require_auth("viewer")):
+            return db.get_tags()
+
+        @v1.get("/screenshots")
+        async def v1_screenshots(
+            serial: str = None,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            return db.get_screenshots(serial=serial, tenant_id=_tid(user))
+
+        @v1.get("/audit")
+        async def v1_audit_log(
+            user_id: str = None,
+            limit: int = 100,
+            user=require_auth("admin"),
+        ):
+            return db.get_audit_log(tenant_id=_tid(user), user_id=user_id)
+
+        @v1.get("/device/{serial}/apps")
+        async def v1_list_apps(
+            serial: str,
+            search: str = "",
+            sort: str = "package",
+            order: str = "asc",
+            filter: str = None,
+            offset: int = 0,
+            limit: int = 50,
+            user=require_auth("viewer"),
+        ):
+            return self.dm.list_apps(
+                serial,
+                filter_pkg=filter,
+                search=search,
+                sort=sort,
+                order=order,
+                offset=offset,
+                limit=limit,
+            )
+
+        @v1.get("/device/{serial}/logcat")
+        async def v1_get_logcat(
+            serial: str,
+            filter_spec: str = "",
+            lines: int = 100,
+            user=require_auth("operator"),
+        ):
+            output = self.dm.logcat(serial, filter_spec=filter_spec, lines=lines)
+            return {"serial": serial, "logcat": output}
+
+        @v1.post("/device/{serial}/shell")
+        async def v1_adb_shell(
+            serial: str, command: str, timeout: int = 30, user=require_auth("operator")
+        ):
+            return self.dm.adb_shell(serial, command, timeout=timeout)
+
+        app.include_router(v1)
+
+        # ── Static files (dashboard) ──
+        dashboard_path = DASHBOARD_DIR if DASHBOARD_DIR.exists() else STATIC_DIR
+        if dashboard_path.exists():
+            app.mount(
+                "/dashboard",
+                StaticFiles(directory=str(dashboard_path), html=True),
+                name="dashboard",
+            )
+
+        # ── WebSocket: Dashboard notifications ──
+        _ws_clients: set = set()
+
+        @app.websocket("/ws/notifications")
+        async def ws_notifications(websocket: WebSocket):
+            await websocket.accept()
+            _ws_clients.add(websocket)
+            try:
+                while True:
+                    await websocket.receive_text()
+            except WebSocketDisconnect:
+                pass
+            finally:
+                _ws_clients.discard(websocket)
+
+        def _broadcast_ws(event_type: str, message: str, data: dict = None):
+            for ws in list(_ws_clients):
+                try:
+                    loop = asyncio.get_event_loop()
+                    loop.create_task(
+                        ws.send_text(
+                            json.dumps(
+                                {
+                                    "type": event_type,
+                                    "message": message,
+                                    "data": data or {},
+                                }
+                            )
+                        )
+                    )
+                except Exception:
+                    _ws_clients.discard(ws)
+
+        log.info(f"Server on http://0.0.0.0:{self.port}")
+        uvicorn.run(app, host="0.0.0.0", port=self.port, log_level="warning")
+
+    def stop(self):
+        log.info("Stopping...")
+        self.running = False
+        for st in self.streamers.values():
+            st.running = False
+        self.runner.stop()
+        self._save_state()
+        self.dm.shutdown()
+        PID_FILE.unlink(missing_ok=True)
+        sys.exit(0)
+
+    @staticmethod
+    def get_status() -> dict:
+        if STATE_FILE.exists():
+            with open(STATE_FILE) as f:
+                return json.load(f)
+        return {"status": "not_running"}
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--mode", choices=["monitor", "active", "dashboard"], default="monitor"
+    )
+    parser.add_argument("--workers", type=int, default=16)
+    parser.add_argument("--port", type=int, default=8889)
+    parser.add_argument("--status", action="store_true")
+    parser.add_argument("--stop", action="store_true")
+    args = parser.parse_args()
+    if args.status:
+        print(json.dumps(FarmDaemon.get_status(), indent=2))
+        sys.exit(0)
+    if args.stop:
+        if PID_FILE.exists():
+            os.kill(int(PID_FILE.read_text().strip()), signal.SIGTERM)
+        sys.exit(0)
+    FarmDaemon(mode=args.mode, workers=args.workers, port=args.port).start()
+# PATCH applied separately — see below

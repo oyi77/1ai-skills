@@ -1,0 +1,16 @@
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_01_hook_intro.png'
+duration 3.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_02_partnership.png'
+duration 17.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_03_success.png'
+duration 5.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_04_betrayal.png'
+duration 10.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_05_transfer.png'
+duration 5.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_06_lawsuit.png'
+duration 5.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_07_lesson.png'
+duration 10.0
+file '/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/scenes/scene_08_cta.png'
+duration 5.0

@@ -1,0 +1,14 @@
+{
+  "device_serial": "SGZTONV4OBL74TJZ",
+  "adb_host": "localhost",
+  "adb_port": 8775,
+  "screenshot_dir": "~/.openclaw/workspace/downloads",
+  "ai_intercept": true,
+  "tap_delay_ms": 500,
+  "max_retries": 3,
+  "timeout_seconds": 30,
+  "server_port": 8773,
+  "package": "ai.x.grok",
+  "default_think": false,
+  "default_deepsearch": false
+}
