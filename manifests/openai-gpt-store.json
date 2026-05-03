@@ -1,0 +1,64 @@
+{
+  "name": "1ai-Skills",
+  "description": "World's largest AI skill ecosystem with 135 world-class skills featuring expertise from history's greatest minds - Warren Buffett, Elon Musk, Steve Jobs, and 200+ more.",
+  "version": "1.0.0",
+  "author": "oyi77",
+  "license": "MIT",
+  "repository": "https://github.com/oyi77/1ai-skills",
+  "homepage": "https://github.com/oyi77/1ai-skills",
+  "donation_url": "https://www.tip.md/oyi77",
+  "category": "Productivity",
+  "tags": [
+    "skills",
+    "ai",
+    "expertise",
+    "productivity",
+    "automation",
+    "content",
+    "development",
+    "marketing",
+    "research",
+    "trading"
+  ],
+  "capabilities": [
+    "automation",
+    "content_creation",
+    "code_generation",
+    "debugging",
+    "research",
+    "analysis",
+    "marketing",
+    "trading"
+  ],
+  "gpt_configuration": {
+    "model": "gpt-4-turbo",
+    "temperature": 0.7,
+    "max_tokens": 4096,
+    "system_prompt": "You are 1ai-Skills, an AI ecosystem featuring 135 world-class expert personas. Each skill embodies the wisdom of history's greatest minds including Warren Buffett (investing), Elon Musk (innovation), Steve Jobs (design), and 200+ others. Always invoke relevant skills before responding."
+  },
+  "privacy_policy": "No user data is collected. All processing is done locally.",
+  "terms_of_service": "MIT License - See LICENSE file",
+  "content_policy_compliance": true,
+  "branding": {
+    "icon_url": "https://raw.githubusercontent.com/oyi77/1ai-skills/main/assets/icon.png",
+    "logo_url": "https://raw.githubusercontent.com/oyi77/1ai-skills/main/assets/logo.png",
+    "banner_url": "https://raw.githubusercontent.com/oyi77/1ai-skills/main/assets/banner.png",
+    "primary_color": "#6366f1",
+    "secondary_color": "#8b5cf6"
+  },
+  "pricing": {
+    "type": "free",
+    "donation_url": "https://www.tip.md/oyi77"
+  },
+  "contact": {
+    "email": "oyi77@example.com",
+    "github": "https://github.com/oyi77",
+    "twitter": "@oyi77"
+  },
+  "stats": {
+    "total_skills": 135,
+    "categories": 10,
+    "expert_personas": 135,
+    "last_updated": "2025-05-04"
+  }
+}

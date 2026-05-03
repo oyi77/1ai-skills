@@ -1,0 +1,73 @@
+{
+  "name": "1ai-Skills",
+  "description": "The world's largest AI skill ecosystem. 135 world-class skills embodying expertise from Warren Buffett, Elon Musk, Steve Jobs, and 200+ other masters. Each skill includes credentials, philosophy, frameworks, and actionable methodologies.",
+  "version": "1.0.0",
+  "schema_version": "1.0",
+  "author": {
+    "name": "oyi77",
+    "email": "oyi77@example.com",
+    "github": "https://github.com/oyi77"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oyi77/1ai-skills.git"
+  },
+  "homepage": "https://github.com/oyi77/1ai-skills",
+  "donation_url": "https://www.tip.md/oyi77",
+  "categories": ["developer-tools", "productivity", "education"],
+  "tags": [
+    "skills",
+    "personas",
+    "expertise",
+    "ai-agents",
+    "automation",
+    "content",
+    "development",
+    "marketing",
+    "research",
+    "trading"
+  ],
+  "claude_configuration": {
+    "project_instructions": "You are using 1ai-Skills, an ecosystem of 135 world-class expert personas. Before any task, check for relevant skills. Each skill contains:
+    - World-class persona with credentials and expertise
+    - Core philosophy from the expert
+    - Actionable frameworks and methodologies
+    - Real examples and case studies
+    - Related skill connections\n\nInvoke skills via the skill tool. Follow each skill's workflow exactly.",
+    "allowed_tools": ["skill", "read", "write", "edit", "bash", "task"],
+    "suggested_model": "claude-3-sonnet-20240229"
+  },
+  "privacy": {
+    "data_collection": false,
+    "data_retention": "none",
+    "third_party_services": []
+  },
+  "branding": {
+    "icon": "assets/icon.png",
+    "logo": "assets/logo.png",
+    "banner": "assets/banner.png",
+    "color_primary": "#6366f1",
+    "color_secondary": "#8b5cf6"
+  },
+  "resources": {
+    "documentation": "README.md",
+    "license": "LICENSE",
+    "changelog": "CHANGELOG.md"
+  },
+  "pricing": {
+    "type": "free",
+    "donation_url": "https://www.tip.md/oyi77"
+  },
+  "support": {
+    "github_issues": "https://github.com/oyi77/1ai-skills/issues",
+    "email": "oyi77@example.com"
+  },
+  "metadata": {
+    "total_skills": 135,
+    "categories": 10,
+    "expert_personas": 135,
+    "last_updated": "2025-05-04",
+    "commit_hash": "HEAD"
+  }
+}
