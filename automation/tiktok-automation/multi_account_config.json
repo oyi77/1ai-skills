@@ -1,0 +1,116 @@
+{
+  "accounts": [
+    {
+      "name": "baimwongdiskon",
+      "username": "baimwongdiskon",
+      "password": "1Milyarberkah$",
+      "niche": "cashback & discount"
+    },
+    {
+      "name": "nugrohopratama5",
+      "username": "nugrohopratama5",
+      "password": "1Milyarberkah$",
+      "niche": "AI & technology"
+    },
+    {
+      "name": "massehatyuk",
+      "username": "massehatyuk",
+      "password": "1Milyarberkah$",
+      "niche": "health & wellness"
+    },
+    {
+      "name": "carasehatbahagiasugeh",
+      "username": "carasehatbahagiasugeh",
+      "password": "1Milyarberkah$",
+      "niche": "happy life & wellness"
+    },
+    {
+      "name": "DrLifeHacks1",
+      "username": "DrLifeHacks1",
+      "password": "1Milyarberkah$",
+      "niche": "life hacks & tips"
+    },
+    {
+      "name": "divasehatsetiaphari",
+      "username": "divasehatsetiaphari",
+      "password": "1Milyarberkah$",
+      "niche": "daily health tips"
+    },
+    {
+      "name": "clinicguru",
+      "username": "clinicguru",
+      "password": "1Milyarberkah$",
+      "niche": "clinic & education"
+    },
+    {
+      "name": "comabehtjcs",
+      "username": "comabehtjcs",
+      "password": "1Milyarberkah$",
+      "niche": "education & learning"
+    },
+    {
+      "name": "nauraaurrk9",
+      "username": "nauraaurrk9",
+      "password": "1Milyarberkah$",
+      "niche": "content creator"
+    },
+    {
+      "name": "wili7874",
+      "username": "wili7874",
+      "password": "1Milyarberkah$",
+      "niche": "business tips"
+    },
+    {
+      "name": "edisantoso988",
+      "username": "edisantoso988",
+      "password": "1Milyarberkah$",
+      "niche": "lifestyle"
+    },
+    {
+      "name": "nadiemandreas",
+      "username": "nadiemandreas",
+      "password": "hiu928ui",
+      "niche": "personal finance"
+    }
+  ],
+  "campaign": {
+    "products": [
+      {
+        "product_name": "Belanja Tetap Jalan Tapi Du Tetap Balik",
+        "affiliate_link": "https://ynk.id/jendralbot/kkjk0mv1vg7o",
+        "price": "FREE"
+      },
+      {
+        "product_name": "Guru Pintar Ai",
+        "affiliate_link": "https://ynk.id/jendralbot/6821op5e24kn",
+        "price": "IDR 75K"
+      },
+      {
+        "product_name": "Studio Marketplace Pro",
+        "affiliate_link": "https://ynk.id/jendralbot/emne05mm7v25",
+        "price": "IDR 75K"
+      },
+      {
+        "product_name": "Mesin Cetak Bisnis Kulinermu",
+        "affiliate_link": "https://ynk.id/jendralbot/x8g6m3p9q1r2",
+        "price": "IDR 75K"
+      },
+      {
+        "product_name": "AI Content Pro Seller 4K",
+        "affiliate_link": "https://ynk.id/jendralbot/y5h7j8k9l0m1",
+        "price": "IDR 89K"
+      },
+      {
+        "product_name": "Starter AI Content 4K",
+        "affiliate_link": "https://ynk.id/jendralbot/n2o3p4q5r6s7",
+        "price": "IDR 49K"
+      }
+    ],
+    "upload_schedule": {
+      "videos_per_account_per_day": 2,
+      "accounts_per_day": 12,
+      "total_posts_per_day": 24,
+      "posting_times": ["10:00", "15:00", "19:00"]
+    }
+  }
+}

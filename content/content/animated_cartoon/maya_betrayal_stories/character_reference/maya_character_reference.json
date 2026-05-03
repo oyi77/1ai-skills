@@ -1,0 +1,21 @@
+{
+  "character_name": "Maya",
+  "description": "Friendly female narrator for betrayal stories",
+  "visual_style": "2D minimalist cartoon with pastel palette",
+  "palette": [
+    "soft blue",
+    "green",
+    "cream"
+  ],
+  "expressions": [
+    "maya_neutral.png",
+    "maya_concerned.png",
+    "maya_dramatic.png"
+  ],
+  "generation_date": "2026-03-10",
+  "generated_images": [
+    "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/character_reference/maya_neutral.png",
+    "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/character_reference/maya_concerned.png",
+    "/home/openclaw/.openclaw/workspace/animated_cartoon/maya_betrayal_stories/character_reference/maya_dramatic.png"
+  ]
+}

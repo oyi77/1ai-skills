@@ -1,0 +1,16 @@
+{
+  "oneproxy": {
+    "api_url": "https://helpful-alignment-production-2ae5.up.railway.app",
+    "api_url_env": "ONEPROXY_API_URL",
+    "endpoints": {
+      "rotate": "/api/v1/proxies/rotate",
+      "list": "/api/v1/proxies",
+      "health": "/health"
+    },
+    "rotation_strategies": ["random", "round_robin", "quality", "least_used"],
+    "default_strategy": "quality",
+    "cold_start_retry": true,
+    "cold_start_timeout_ms": 30000,
+    "note": "Railway sleep mode = cold start ~15-30s on first request"
+  }
+}
