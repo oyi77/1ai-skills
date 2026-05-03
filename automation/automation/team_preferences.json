@@ -1,0 +1,124 @@
+{
+  "timestamp": "2026-02-28T03:40:28.490623",
+  "team_members": {
+    "paijo": {
+      "name": "Paijo",
+      "role": "Owner/Founder",
+      "email": "paijo@berkahkarya.com",
+      "telegram_id": "paijo_tg",
+      "whatsapp_number": "+62812345678",
+      "language": "id",
+      "channels": [
+        {
+          "name": "telegram",
+          "enabled": true,
+          "priority": 1
+        },
+        {
+          "name": "email",
+          "enabled": true,
+          "priority": 2
+        },
+        {
+          "name": "whatsapp",
+          "enabled": true,
+          "priority": 3
+        }
+      ],
+      "quiet_hours": {
+        "enabled": true,
+        "start_time": "23:00",
+        "end_time": "07:00",
+        "timezone": "Asia/Jakarta"
+      }
+    },
+    "veris": {
+      "name": "Veris",
+      "role": "Ads & Marketing Master",
+      "email": "veris@berkahkarya.com",
+      "telegram_id": "veris_tg",
+      "whatsapp_number": "+62812345679",
+      "language": "en",
+      "channels": [
+        {
+          "name": "telegram",
+          "enabled": true,
+          "priority": 1
+        },
+        {
+          "name": "email",
+          "enabled": false,
+          "priority": 2
+        }
+      ],
+      "quiet_hours": {
+        "enabled": true,
+        "start_time": "22:00",
+        "end_time": "08:00",
+        "timezone": "Asia/Jakarta"
+      }
+    },
+    "sony": {
+      "name": "Sony",
+      "role": "Operational Manager",
+      "email": "sony@berkahkarya.com",
+      "telegram_id": "sony_tg",
+      "whatsapp_number": "+62812345680",
+      "language": "id",
+      "channels": [
+        {
+          "name": "telegram",
+          "enabled": true,
+          "priority": 1
+        },
+        {
+          "name": "email",
+          "enabled": true,
+          "priority": 2
+        },
+        {
+          "name": "whatsapp",
+          "enabled": true,
+          "priority": 2
+        }
+      ],
+      "quiet_hours": {
+        "enabled": true,
+        "start_time": "21:00",
+        "end_time": "09:00",
+        "timezone": "Asia/Jakarta"
+      }
+    },
+    "nuno": {
+      "name": "Nuno",
+      "role": "Trading Master",
+      "email": "nuno@berkahkarya.com",
+      "telegram_id": "nuno_tg",
+      "whatsapp_number": "+62812345681",
+      "language": "en",
+      "channels": [
+        {
+          "name": "telegram",
+          "enabled": true,
+          "priority": 1
+        },
+        {
+          "name": "email",
+          "enabled": true,
+          "priority": 3
+        },
+        {
+          "name": "whatsapp",
+          "enabled": true,
+          "priority": 2
+        }
+      ],
+      "quiet_hours": {
+        "enabled": false,
+        "start_time": "00:00",
+        "end_time": "00:00",
+        "timezone": "Asia/Jakarta"
+      }
+    }
+  }
+}

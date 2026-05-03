@@ -1,0 +1,52 @@
+{
+  "agent": {
+    "name": "kling-agent",
+    "version": "2.0.0",
+    "description": "Kling AI Android Automation Agent"
+  },
+  "device": {
+    "serial": "SGZTONV4OBL74TJZ",
+    "model": "Redmi Note 12",
+    "android_version": "14",
+    "screen_width": 720,
+    "screen_height": 1640,
+    "login": "favstore649@gmail.com"
+  },
+  "app": {
+    "package": "kling.ai.video.chat",
+    "activity": "kling.ai.video.chat/com.yxcorp.gifshow.kling.KLingHomeActivity",
+    "activity_alt": "kling.ai.video.chat/.MainActivityPagerActivity",
+    "version": "3.0"
+  },
+  "generation": {
+    "default_duration": "5s",
+    "default_model": "3.0 Omni",
+    "timeout_seconds": 300,
+    "retry_count": 3,
+    "retry_base_delay": 2.0,
+    "credit_cost_i2v_5s": 144
+  },
+  "downloads": {
+    "directory": "~/.openclaw/workspace/downloads",
+    "prefix_t2v": "kling_t2v",
+    "prefix_i2v": "kling_i2v"
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8775
+  },
+  "ai_interceptor": {
+    "enabled": true,
+    "interceptor_path": "/mnt/data/berkahkarya/skills/1ai-skills/automation/ai-interceptor/scripts",
+    "fail_safe": true
+  },
+  "video_enhancer": {
+    "enabled": true,
+    "auto_remove_watermark": true,
+    "fail_safe": true
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s [%(levelname)s] %(message)s"
+  }
+}

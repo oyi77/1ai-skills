@@ -1,0 +1,22 @@
+services:
+  phonefarm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phonefarm
+    ports:
+      - "8889:8889"
+    volumes:
+      - ./logs:/app/logs/phone-farm
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PHONEFARM_MODE=dashboard
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8889/health/live')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

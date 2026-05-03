@@ -1,0 +1,34 @@
+{
+  "devices": {
+    "SGZTONV4OBL74TJZ": {
+      "name": "farm-hp1",
+      "model": "2409BRN2CY",
+      "android": "14",
+      "connection": "usb",
+      "assigned_skills": ["tiktok", "shopee", "instagram", "whatsapp"],
+      "installed_apps": {
+        "tiktok": "com.ss.android.ugc.trill",
+        "shopee": "com.shopee.id",
+        "whatsapp": "com.whatsapp",
+        "instagram": "com.instagram.android"
+      },
+      "auto_tasks": {
+        "screenshot_interval_sec": 60,
+        "health_check_interval_sec": 300,
+        "task_loop_interval_sec": 120
+      },
+      "enabled": true
+    }
+  },
+  "farm_settings": {
+    "adb_path": "adb",
+    "screenshots_dir": "/tmp/autodroid_screenshots",
+    "logs_dir": "/home/openclaw/.openclaw/workspace/logs/phone-farm",
+    "dashboard_port": 8888,
+    "manager_port": 8889,
+    "max_retries": 3,
+    "retry_delay_sec": 10,
+    "auto_unlock": false,
+    "unlock_pin": null
+  }
+}

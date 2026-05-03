@@ -1,0 +1,11 @@
+{
+  "locations": ["NYC", "Chicago", "Seattle", "Atlanta", "Dallas", "Miami", "Denver", "Phoenix", "Portland", "Minneapolis"],
+  "entry_threshold": 0.15,
+  "exit_threshold": 0.45,
+  "max_position_usd": 5.0,
+  "max_trades_per_run": 10,
+  "sizing_pct": 0.10,
+  "binary_only": false,
+  "slippage_max": 0.15,
+  "min_liquidity": 0
+}

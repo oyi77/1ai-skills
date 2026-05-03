@@ -1,0 +1,29 @@
+{
+  "name": "Motivator Indonesia",
+  "language": "id",
+  "niche": "motivation",
+  "style": {
+    "tone": "inspiring, warm, relatable",
+    "emoji_usage": "moderate",
+    "slang_level": "casual Indonesian",
+    "signature": "\ud83d\udcaa\ud83d\udd25"
+  },
+  "character": "avatar_motivator",
+  "posting_times": [
+    "07:00",
+    "12:00",
+    "19:00"
+  ],
+  "hashtags": [
+    "#motivasi",
+    "#sukses",
+    "#semangat",
+    "#inspirasi"
+  ],
+  "accounts": {
+    "tiktok": "@motivator_id",
+    "instagram": "@motivator_id"
+  },
+  "id": "motivator_id",
+  "created_at": "2026-03-12T19:44:22.131817"
+}
