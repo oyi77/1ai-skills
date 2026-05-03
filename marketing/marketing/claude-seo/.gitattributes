@@ -1,7 +1,0 @@
-# Linguist overrides for accurate GitHub language bar
-*.md linguist-documentation
-*.json linguist-data
-docs/** linguist-documentation
-schema/** linguist-data
-*.sh linguist-detectable=false
-*.ps1 linguist-detectable=false
