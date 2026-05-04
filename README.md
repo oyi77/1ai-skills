@@ -11,9 +11,11 @@
 
 ## World's Largest AI Skill Ecosystem
 
-**135 world-class skills** across **9 categories** featuring expertise from history's greatest minds.
+**139 world-class skills** across **9 categories** featuring expertise from history's greatest minds.
 
 > 🔥 **Clean, deduplicated, and ready for production** — 42% size reduction from removing redundant nested skills.
+> 
+> 🆕 **NEW:** Black Edge trading intelligence, AlphaEar multi-signal strategy, AI CFO capabilities, and Growth Engine experiments.
 
 ### Why 1ai-Skills?
 
@@ -48,12 +50,12 @@ git submodule add https://github.com/oyi77/1ai-skills.git skills
 | **content/** | 14 | Content creation, media production, viral formulas |
 | **core/** | 24 | Infrastructure, memory systems, AI orchestration |
 | **development/** | 17 | Coding, debugging, planning, TDD |
-| **marketing/** | 20 | Growth hacking, SEO, advertising |
-| **operations/** | 9 | Business operations, management, tools |
+| **marketing/** | 21 | Growth hacking, SEO, advertising |
+| **operations/** | 10 | Business operations, management, tools |
 | **productivity/** | 6 | Time management, efficiency, focus |
 | **research/** | 25 | Analysis, investigation, finance |
 | **sales/** | 6 | Closing, negotiation, outreach |
-| **trading/** | 5 | Markets, algorithms, execution |
+| **trading/** | 7 | Markets, algorithms, execution |
 
 ---
 
@@ -78,6 +80,12 @@ git submodule add https://github.com/oyi77/1ai-skills.git skills
 - **Torvalds Code Review** - Linux-quality standards
 - **Feynman Scientific Method** - Root cause analysis
 - **Kent Beck TDD** - Test-driven development
+
+### 🎯 Advanced Capabilities (New)
+- **Black Edge** - Hidden market intelligence & alternative data synthesis
+- **AlphaEar Strategy** - Multi-signal trading with news + sentiment + options flow
+- **AI CFO** - 30-minute cost audits & financial scenario modeling
+- **Growth Engine** - Automated A/B testing & statistical validation framework
 
 ---
 
