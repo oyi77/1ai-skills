@@ -1,153 +1,180 @@
-# 1ai-Skills Marketplace README
+# 1ai-Skills — 213 Open-Source AI Agent Skills (Self-Improving)
 
-## 🌟 Star and Fork Recommendation
+> The world's largest open-source AI skill ecosystem with **self-improving meta-skills** — agents that auto-evolve, auto-learn, and auto-improve.
 
-**If you find these skills valuable, please:**
-- ⭐ **Star** this repository to show your support
-- 🍴 **Fork** it to customize for your needs
-- 💝 **Donate** to support continued development: https://www.tip.md/oyi77
+[![Skills: 213](https://img.shields.io/badge/skills-213-blue)](https://github.com/oyi77/1ai-skills)
+[![Categories: 16](https://img.shields.io/badge/categories-16-green)](https://github.com/oyi77/1ai-skills)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
+[![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
 
----
-
-## World's Largest AI Skill Ecosystem
-
-**204 world-class skills** across **15 categories** featuring expertise from history's greatest minds.
-
-> 🔥 **Clean, deduplicated, and ready for production** — 42% size reduction from removing redundant nested skills.
-> 
-> 🆕 **NEW:** Black Edge trading intelligence, AlphaEar multi-signal strategy, AI CFO capabilities, and Growth Engine experiments.
-
-### Why 1ai-Skills?
-
-Unlike generic AI prompts, each skill is imbued with the wisdom of world-class experts:
-
-- **Warren Buffett** teaches value investing
-- **Elon Musk** explains first-principles thinking
-- **Steve Jobs** guides product design
-- **Paul Tudor Jones** reveals risk management
-- **Gary Vaynerchuk** shares viral marketing
-- **And 200+ more experts...**
+**Star** this repo if you find it useful. Support development: https://www.tip.md/oyi77
 
 ---
 
-## Installation
+## What Is This?
 
-```bash
-# Clone the skills repository
-git clone https://github.com/oyi77/1ai-skills.git
+1ai-Skills is a collection of **213 production-ready AI agent skills** organized across **16 categories**. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
-# Or add as submodule to your project
-git submodule add https://github.com/oyi77/1ai-skills.git skills
-```
-
----
-
-## Categories
-
-| Category | Skills | Description |
-|----------|--------|-------------|
-| **automation/** | 9 | Workflow automation, bots, integrations |
-| **content/** | 14 | Content creation, media production, viral formulas |
-| **core/** | 24 | Infrastructure, memory systems, AI orchestration |
-| **development/** | 17 | Coding, debugging, planning, TDD |
-| **marketing/** | 21 | Growth hacking, SEO, advertising |
-| **operations/** | 10 | Business operations, management, tools |
-| **productivity/** | 6 | Time management, efficiency, focus |
-| **research/** | 25 | Analysis, investigation, finance |
-| **sales/** | 6 | Closing, negotiation, outreach |
-| **trading/** | 7 | Markets, algorithms, execution |
-
----
-
-## Featured Skills
-
-### 💰 Wealth Building
-- **Rockefeller Wealth** - Monopoly building & vertical integration
-- **Buffett Value Investing** - Capital allocation mastery
-- **Rothschild Dynasty** - 250-year wealth preservation
-
-### 🚀 Innovation
-- **Musk First Principles** - Breakthrough problem-solving
-- **Bezos Customer Obsession** - Long-term thinking
-- **Jobs Product Design** - Simplicity & beauty
-
-### 📈 Growth
-- **GaryVee Viral Marketing** - Content volume strategy
-- **Zuckerberg Network Effects** - Platform growth
-- **Belfort High-Ticket Closing** - Persuasion mastery
-
-### 💻 Engineering
-- **Torvalds Code Review** - Linux-quality standards
-- **Feynman Scientific Method** - Root cause analysis
-- **Kent Beck TDD** - Test-driven development
-
-### 🎯 Advanced Capabilities (New)
-- **Black Edge** - Hidden market intelligence & alternative data synthesis
-- **AlphaEar Strategy** - Multi-signal trading with news + sentiment + options flow
-- **AI CFO** - 30-minute cost audits & financial scenario modeling
-- **Growth Engine** - Automated A/B testing & statistical validation framework
-
----
-
-## How Skills Work
-
-Each skill includes:
-
-1. **World-Class Persona** - Credentials, expertise, achievements
-2. **Core Philosophy** - Guiding principles from the expert
-3. **Actionable Frameworks** - Step-by-step methodologies
-4. **Real Examples** - Case studies and applications
-5. **Related Skills** - Ecosystem connections
+**New in v2.0:** 9 **meta-skills** that enable agents to monitor their own performance, collect feedback, recognize patterns, self-assess, generate improvements, learn autonomously, and evolve safely with version control.
 
 ---
 
 ## Quick Start
 
-```python
-# Example: Use the Rockefeller Wealth skill
-from skills.research.rockefeller_wealth import apply_framework
+```bash
+# Install all skills
+npx skills add oyi77/1ai-skills
 
-# Apply vertical integration thinking
-strategy = apply_framework(
-    business="Your Business",
-    verticals=["production", "distribution", "retail"]
-)
+# Clone directly
+git clone https://github.com/oyi77/1ai-skills.git
+
+# Add as submodule
+git submodule add https://github.com/oyi77/1ai-skills.git skills
 ```
+
+---
+
+## Self-Improving Agent System (New in v2.0)
+
+Nine meta-skills that create a **self-improving agent operating system**:
+
+| Meta-Skill | What It Does |
+|---|---|
+| `meta/performance-monitor` | Track latency, success rates, cost, satisfaction scores |
+| `meta/feedback-collector` | Aggregate feedback from explicit, implicit, and automated sources |
+| `meta/self-assessment` | Skills evaluate their own accuracy, completeness, and efficiency |
+| `meta/improvement-generator` | Create prioritized improvement plans from insights |
+| `meta/skill-evolution` | Version control skills with safe rollback capability |
+| `meta/auto-learner` | Autonomous learning from execution patterns |
+| `meta/pattern-recognition` | Identify success and failure patterns across all skills |
+| `meta/meta-orchestrator` | Coordinate the entire self-improvement loop |
+| `meta/data` | Centralized SQLite storage for metrics, feedback, and versions |
+
+**System Flow:** Execute → Monitor → Collect → Recognize → Assess → Generate → Learn → Evolve → Repeat
+
+---
+
+## All 213 Skills by Category
+
+| Category | Count | Highlights |
+|---|---|---|
+| **research/** | 25 | McKinsey analysis, deep research, Polymarket analyst, continuous learning |
+| **core/** | 24 | Self-improvement, memory systems, AI orchestration, session brain |
+| **content/** | 22 | Video generation, AI podcast, faceless YouTube, humanizer, Seedance |
+| **marketing/** | 21 | SEO optimizer, viral marketing, growth engine, Twitter automation |
+| **automation/** | 21 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers |
+| **development/** | 17 | TDD, systematic debugging, code review, PRD generator, git worktrees |
+| **agents/** | 14 | Research, review, planning, code, deploy, refactor, linter, security |
+| **integrations/** | 11 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs |
+| **operations/** | 10 | Finance ops, revenue team, project management, payment invoicing |
+| **mcp/** | 10 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear |
+| **meta/** | 9 | Performance monitor, auto-learner, skill evolution, pattern recognition |
+| **sales/** | 6 | High-ticket closing, lead generation, business development |
+| **devops/** | 6 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI |
+| **trading/** | 7 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot |
+| **productivity/** | 6 | Google Workspace, calendar, email automation, Notion |
+| **data/** | 4 | Data cleaning, anomaly detection, report generation, visualization |
+
+---
+
+## Featured Skills
+
+### Self-Improving AI
+- **Meta Orchestrator** — Coordinates the auto-improvement loop across all skills
+- **Auto Learner** — Agents learn from execution data autonomously
+- **Skill Evolution** — Version control for AI skills with safe rollback
+
+### Trading and Finance
+- **Black Edge** — Hidden market intelligence from satellite imagery, dark pools, options flow
+- **AlphaEar Strategy** — Multi-signal trading: news + sentiment + options
+- **Value Investing** — Warren Buffett's capital allocation framework
+- **Rothschild Dynasty** — 250-year wealth preservation methodology
+
+### Marketing and Growth
+- **SEO Optimizer** — Full-stack SEO with content attack briefs and GSC optimization
+- **Viral Marketing** — Gary Vaynerchuk's high-volume content machine
+- **Growth Engine** — Automated A/B testing with Bayesian statistical validation
+- **Twitter Automation** — AI-powered posting, engagement, and audience growth
+
+### Engineering
+- **Systematic Debugging** — Evidence-driven root cause analysis
+- **TDD** — Test-driven development with red-green-refactor loop
+- **Code Reviewer** — Production-quality review with severity ratings
+
+### Innovation Thinking
+- **Musk First Principles** — Breakthrough problem-solving
+- **Steve Jobs Product Design** — Technology meets liberal arts
+- **Feynman Scientific Method** — Explain complex things simply
+
+---
+
+## How Skills Work
+
+Each skill contains:
+
+1. **Expert Persona** — Credentials, expertise, and philosophy from world-class practitioners
+2. **Actionable Frameworks** — Step-by-step methodologies ready for AI execution
+3. **Usage Patterns** — Triggers, inputs, outputs, and integration points
+4. **Quality Metrics** — Self-assessment criteria and improvement triggers
+
+---
+
+## Architecture
+
+```
+1ai-skills/
+├── agents/        # Autonomous agent skills (14)
+├── automation/    # Workflow automation & bots (21)
+├── content/       # Content creation & media (22)
+├── core/          # Infrastructure & memory (24)
+├── data/          # Data analysis & visualization (4)
+├── development/   # Coding, debugging, TDD (17)
+├── devops/        # Docker, CI/CD, K8s (6)
+├── integrations/  # Slack, Discord, Notion, GitHub (11)
+├── marketing/     # SEO, growth, advertising (21)
+├── mcp/           # MCP server skills (10)
+├── meta/          # Self-improving agent system (9) ← NEW
+├── operations/    # Business operations (10)
+├── productivity/  # Google, calendar, email (6)
+├── research/      # Analysis, investigation (25)
+├── sales/         # Closing, outreach, CRM (6)
+└── trading/       # Markets, algorithms (7)
+```
+
+---
+
+## Use Cases
+
+- **AI Agent Developers** — Add expert-level capabilities to any LLM agent
+- **Automation Engineers** — Pre-built workflows for n8n, Slack, Discord, WhatsApp
+- **SEO Professionals** — Technical SEO, content optimization, GEO for AI Overviews
+- **Traders** — Black Edge intelligence, Polymarket analysis, crypto bots
+- **Startups** — Revenue playbook, growth engine, high-ticket closing
+- **DevOps Teams** — Docker, Kubernetes, CI/CD pipeline skills
+- **Content Creators** — AI podcast, faceless YouTube, video generation
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a skill: `category/skill-name/SKILL.md`
+3. Follow the existing SKILL.md format (persona, frameworks, usage)
+4. Submit a pull request
 
 ---
 
 ## Support Development
 
-**Your support helps maintain and expand this ecosystem:**
-
-- 💝 **Donate**: https://www.tip.md/oyi77
-- ⭐ **Star**: Show appreciation on GitHub
-- 🐛 **Report Issues**: Help improve quality
-- 📝 **Contribute**: Submit new skills or improvements
-
----
-
-## Marketplaces
-
-### Available On:
-- **GitHub**: https://github.com/oyi77/1ai-skills
-- **OpenCode**: (integrated)
-- **Paperclip**: (integrated)
-
-### Coming Soon:
-- OpenAI GPT Store
-- Claude App Store
-- LangChain Hub
-- Hugging Face
-
----
+- Star this repository
+- Donate: https://www.tip.md/oyi77
+- Report issues
+- Contribute new skills
 
 ## License
 
-MIT License - See LICENSE file for details.
+MIT License
 
 ---
 
-**Built with ❤️ by the 1ai team**
-
-*"Standing on the shoulders of giants"*
+**Built by [1ai](https://github.com/oyi77) — Standing on the shoulders of giants.**
