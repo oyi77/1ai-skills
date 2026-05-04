@@ -1,0 +1,52 @@
+name: Auto Release on Tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate Release Notes
+        id: notes
+        run: |
+          # Generate release notes from commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            NOTES=$(git log --pretty=format:"- %s" --no-merges)
+          else
+            NOTES=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s" --no-merges)
+          fi
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: |
+            ## Self-Improving Agent Operating System Update
+            
+            ### Changes
+            ${{ steps.notes.outputs.notes }}
+            
+            ### Installation
+            ```bash
+            npx skills add oyi77/1ai-skills@${{ github.ref_name }}
+            ```
+            
+            ### Stats
+            - Total Skills: Check repo
+            - Meta-Skills: 9 (auto-evolve, auto-improve, auto-learn)
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
