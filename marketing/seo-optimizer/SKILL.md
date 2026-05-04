@@ -230,4 +230,230 @@ Week 4: Optimize, publish, promote
 
 ---
 
-**Related Skills**: `marketing/content-creator`, `marketing/analytics-dashboard`, `research/web-scraper`
+## Advanced SEO Techniques (From Reference Libraries)
+
+### 1. Content Attack Briefs (Competitive Gap Analysis)
+
+**Strategy:** Find keywords your competitors rank for that you don't—then create superior content.
+
+```python
+def content_attack_brief(target_domain, competitors):
+    """
+    Generate content attack strategy
+    """
+    # Find keyword gaps
+    competitor_keywords = {}
+    for comp in competitors:
+        competitor_keywords[comp] = get_ranking_keywords(comp)
+    
+    my_keywords = get_ranking_keywords(target_domain)
+    
+    # Identify opportunities
+    gaps = {}
+    for comp, keywords in competitor_keywords.items():
+        for keyword, data in keywords.items():
+            if keyword not in my_keywords:
+                gaps[keyword] = {
+                    "competitor": comp,
+                    "their_position": data["position"],
+                    "search_volume": data["volume"],
+                    "difficulty": data["difficulty"],
+                    "opportunity_score": calculate_opportunity(data)
+                }
+    
+    # Prioritize by opportunity score
+    return sorted(gaps.items(), 
+                  key=lambda x: x[1]["opportunity_score"], 
+                  reverse=True)[:20]
+```
+
+**Opportunity Score Formula:**
+```
+Opportunity = (Search Volume × (11 - Competitor Position)) / Difficulty
+
+Higher = Better opportunity
+```
+
+### 2. Google Search Console (GSC) Optimizer
+
+**Strategy:** Mine your existing data for quick wins.
+
+```python
+def gsc_optimizer(gsc_data):
+    """
+    Find under-optimized opportunities in your own data
+    """
+    opportunities = []
+    
+    # Low CTR opportunities (impressions high, clicks low)
+    low_ctr = gsc_data[
+        (gsc_data.impressions > 1000) & 
+        (gsc_data.ctr < 0.03)
+    ]
+    
+    for query in low_ctr:
+        opportunities.append({
+            "type": "LOW_CTR",
+            "query": query.term,
+            "impressions": query.impressions,
+            "current_ctr": query.ctr,
+            "suggestion": f"Improve title/meta for '{query.term}'",
+            "potential_clicks": query.impressions * 0.05  # 5% target CTR
+        })
+    
+    # Position 11-20 opportunities (page 2)
+    page_2 = gsc_data[
+        (gsc_data.position >= 11) & 
+        (gsc_data.position <= 20) &
+        (gsc_data.impressions > 500)
+    ]
+    
+    for query in page_2:
+        opportunities.append({
+            "type": "PAGE_2",
+            "query": query.term,
+            "position": query.position,
+            "suggestion": "Add content depth, internal links to reach page 1"
+        })
+    
+    return opportunities
+```
+
+### 3. Trend Scout
+
+**Strategy:** Identify emerging keywords before competitors.
+
+```python
+def trend_scout(seed_keywords, timeframe="90d"):
+    """
+    Find trending keywords with low competition
+    """
+    trending = []
+    
+    for seed in seed_keywords:
+        # Get related queries
+        related = get_related_queries(seed)
+        
+        for query in related:
+            trend = get_trend_data(query, timeframe)
+            
+            # Rising trend + low competition
+            if trend.growth_rate > 0.50 and trend.competition < 0.30:
+                trending.append({
+                    "keyword": query,
+                    "growth_rate": trend.growth_rate,
+                    "current_volume": trend.volume,
+                    "projected_volume": trend.volume * (1 + trend.growth_rate),
+                    "competition": trend.competition
+                })
+    
+    return sorted(trending, key=lambda x: x["growth_rate"], reverse=True)
+```
+
+### 4. SEO Technical Audit Automation
+
+```python
+def technical_seo_audit(domain):
+    """
+    Comprehensive technical SEO audit
+    """
+    audit = {
+        "crawlability": check_crawlability(domain),
+        "indexability": check_indexability(domain),
+        "page_speed": check_page_speed(domain),
+        "mobile_friendly": check_mobile_friendly(domain),
+        "structured_data": check_structured_data(domain),
+        "internal_links": analyze_internal_links(domain),
+        "security": check_security(domain)
+    }
+    
+    # Priority scoring
+    critical_issues = []
+    warning_issues = []
+    
+    for category, results in audit.items():
+        if results["severity"] == "CRITICAL":
+            critical_issues.append(results)
+        elif results["severity"] == "WARNING":
+            warning_issues.append(results)
+    
+    return {
+        "overall_health": calculate_health_score(audit),
+        "critical_count": len(critical_issues),
+        "warning_count": len(warning_issues),
+        "action_items": prioritize_fixes(critical_issues + warning_issues)
+    }
+```
+
+### 5. AI Content Optimization (GEO)
+
+**Strategy:** Optimize for AI search (ChatGPT, Perplexity, Gemini)
+
+```python
+def geo_optimize(content, target_queries):
+    """
+    Generative Engine Optimization
+    """
+    optimizations = {
+        "passage_citability": {
+            "clear_headings": extract_key_sections(content),
+            "factual_statements": identify_claims(content),
+            "structured_data": add_schema_markup(content)
+        },
+        "brand_mentions": {
+            "authority_signals": add_author_bios(content),
+            "citations": add_external_links(content),
+            "trustworthiness": add_publication_dates(content)
+        },
+        "llms_txt": generate_llms_txt(content)
+    }
+    
+    return optimizations
+```
+
+## Content Operations Integration
+
+### Content Calendar with SEO Prioritization
+
+```python
+def seo_content_calendar(keyword_opportunities, resources):
+    """
+    Prioritize content based on SEO value
+    """
+    calendar = []
+    
+    for opp in keyword_opportunities:
+        priority_score = (
+            opp["search_volume"] * 0.3 +
+            opp["opportunity_score"] * 0.4 +
+            (100 - opp["difficulty"]) * 0.3
+        )
+        
+        calendar.append({
+            "keyword": opp["keyword"],
+            "priority": "HIGH" if priority_score > 70 else "MEDIUM" if priority_score > 40 else "LOW",
+            "estimated_traffic": opp["search_volume"] * 0.10,  # 10% CTR assumption
+            "effort": estimate_content_effort(opp),
+            "roi": priority_score / estimate_content_effort(opp)
+        })
+    
+    return sorted(calendar, key=lambda x: x["roi"], reverse=True)
+```
+
+## Integration Points
+
+**Cross-Skill Dependencies**
+- `marketing/growth-engine` - For experiment tracking on SEO changes
+- `marketing/content-creator` - For content production workflow
+- `research/trendradar` - For trending topic identification
+- `marketing/analytics-dashboard` - For ranking and traffic monitoring
+
+**Tool Integrations**
+- Google Search Console API - For query data
+- Ahrefs/SEMrush API - For competitor analysis
+- Screaming Frog - For technical audits
+- PageSpeed Insights API - For performance metrics
+
+---
+
+**Related Skills**: `marketing/content-creator`, `marketing/analytics-dashboard`, `research/web-scraper`, `marketing/content-ops`

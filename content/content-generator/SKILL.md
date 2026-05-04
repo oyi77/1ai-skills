@@ -279,9 +279,292 @@ content/content-generator/
 
 ---
 
+## Advanced Content Operations (From Reference Libraries)
+
+### 1. Content Quality Gate
+
+**Strategy:** Score content with expert panel before publishing
+
+```python
+def content_quality_gate(content, content_type):
+    """
+    Multi-dimensional content quality scoring
+    """
+    expert_panel = {
+        "clarity_expert": score_clarity(content),
+        "engagement_expert": score_engagement_potential(content),
+        "seo_expert": score_seo_optimization(content),
+        "brand_expert": score_brand_alignment(content),
+        "audience_expert": score_audience_fit(content)
+    }
+    
+    scores = {}
+    for expert, score in expert_panel.items():
+        scores[expert] = score
+    
+    composite_score = sum(scores.values()) / len(scores)
+    
+    return {
+        "composite_score": composite_score,
+        "dimension_scores": scores,
+        "status": "APPROVED" if composite_score >= 90 else "NEEDS_REVISION",
+        "feedback": generate_improvement_suggestions(scores)
+    }
+```
+
+**Quality Thresholds:**
+```
+90-100: EXCELLENT - Publish immediately
+80-89:  GOOD - Minor improvements suggested
+70-79:  ACCEPTABLE - Revision recommended
+<70:    POOR - Significant rework required
+```
+
+### 2. Autoresearch for Content
+
+**Strategy:** Karpathy-inspired optimization loops for conversion content
+
+```python
+def autoresearch_content(variants, target_metric):
+    """
+    Generate and test multiple content variants
+    """
+    # Generate 50+ variants
+    all_variants = []
+    for template in content_templates:
+        for hook in hook_library:
+            for cta in cta_library:
+                variant = generate_variant(template, hook, cta)
+                all_variants.append(variant)
+    
+    # Expert panel scoring
+    scored_variants = []
+    for variant in all_variants:
+        score = content_quality_gate(variant, "short_form")
+        scored_variants.append({
+            "variant": variant,
+            "score": score["composite_score"]
+        })
+    
+    # Select top performers for A/B test
+    top_variants = sorted(scored_variants, 
+                         key=lambda x: x["score"], 
+                         reverse=True)[:10]
+    
+    return top_variants
+```
+
+### 3. Multi-Platform Content Adaptation
+
+```python
+def adapt_content_for_platforms(base_content):
+    """
+    Repurpose one content piece for multiple platforms
+    """
+    adaptations = {
+        "tiktok": {
+            "format": "9:16_video",
+            "duration": 60,
+            "hook_style": "fast_paced_visual",
+            "caption_length": 200,
+            "hashtag_count": 5
+        },
+        "instagram_reels": {
+            "format": "9:16_video",
+            "duration": 60,
+            "hook_style": "trending_audio",
+            "caption_length": 150,
+            "hashtag_count": 10
+        },
+        "youtube_shorts": {
+            "format": "9:16_video",
+            "duration": 60,
+            "hook_style": "story_driven",
+            "title_length": 60,
+            "description_length": 300
+        },
+        "twitter": {
+            "format": "carousel",
+            "slides": 6,
+            "hook_style": "thread_hook",
+            "text_length": 280,
+            "alt_text": True
+        },
+        "linkedin": {
+            "format": "long_form_post",
+            "style": "professional_storytelling",
+            "length": 1300,
+            "cta": "comment_engagement"
+        }
+    }
+    
+    return adaptations
+```
+
+### 4. Content Performance Prediction
+
+```python
+def predict_content_performance(content, platform):
+    """
+    Predict viral potential before publishing
+    """
+    features = extract_content_features(content)
+    
+    prediction_model = {
+        "hook_strength": score_hook(features["hook"]),
+        "visual_quality": score_visuals(features["media"]),
+        "engagement_triggers": count_triggers(features["cta"]),
+        "timing_factor": score_posting_time(content.schedule),
+        "audience_match": calculate_audience_fit(content, platform)
+    }
+    
+    viral_probability = calculate_viral_score(prediction_model)
+    
+    return {
+        "viral_probability": viral_probability,
+        "estimated_reach": predict_reach(viral_probability, platform),
+        "estimated_engagement": predict_engagement(viral_probability),
+        "improvement_suggestions": suggest_optimizations(prediction_model)
+    }
+```
+
+### 5. Content Calendar Intelligence
+
+```python
+def intelligent_content_calendar(goals, resources):
+    """
+    AI-powered content calendar with strategic timing
+    """
+    calendar = []
+    
+    # Identify optimal posting windows
+    best_times = analyze_audience_activity(platform="all")
+    
+    # Map content to business goals
+    for goal in goals:
+        content_needed = calculate_content_requirements(goal)
+        
+        for week in range(52):
+            slots = find_optimal_slots(
+                week, 
+                goal.priority, 
+                best_times
+            )
+            
+            calendar.append({
+                "week": week,
+                "goal": goal.name,
+                "content_type": goal.content_type,
+                "platform": select_best_platform(goal),
+                "timing": slots,
+                "expected_impact": predict_impact(goal, slots)
+            })
+    
+    return optimize_calendar(calendar, resources)
+```
+
+## Content Analytics Integration
+
+### Attribution and ROI Tracking
+
+```python
+def track_content_roi(content_pieces, conversions):
+    """
+    Attribute conversions to content pieces
+    """
+    attribution = {}
+    
+    for content in content_pieces:
+        touchpoints = get_user_touchpoints(conversions)
+        
+        # Multi-touch attribution
+        content_conversions = calculate_attribution(
+            touchpoints, 
+            model="time_decay"
+        )
+        
+        attribution[content.id] = {
+            "content_id": content.id,
+            "conversions": content_conversions,
+            "revenue": content_conversions * avg_conversion_value,
+            "cost": content.production_cost,
+            "roi": (content_conversions * avg_conversion_value - content.production_cost) / content.production_cost
+        }
+    
+    return attribution
+```
+
+## Output Format
+
+```yaml
+content_operations_report:
+  content_id: "CNT-2025-089"
+  platform: "tiktok"
+  
+  quality_scores:
+    composite: 92
+    clarity: 95
+    engagement: 90
+    seo: 88
+    brand: 94
+    status: "EXCELLENT"
+    
+  viral_prediction:
+    probability: 0.78
+    estimated_reach: "500K-1M"
+    estimated_engagement: "45K-90K"
+    confidence: "HIGH"
+    
+  platform_adaptations:
+    tiktok:
+      format: "9:16_video"
+      duration: 60
+      hook: "Landlord constraint + AI solution"
+      
+    instagram:
+      format: "9:16_video"
+      trending_audio: "Recommended"
+      
+    youtube_shorts:
+      format: "9:16_video"
+      title: "I showed my landlord AI could do this"
+      
+  posting_strategy:
+    optimal_time: "Tuesday 7PM EST"
+    hashtags: ["#AITransformation", "#InteriorDesign", "#Tech", "#BeforeAndAfter", "#HomeDecor"]
+    caption: "My landlord didn't believe in AI..."
+    
+  performance_forecast:
+    week_1: "100K views"
+    week_2: "300K views"
+    month_1: "750K views"
+    
+  related_content:
+    - "Follow-up: Kitchen transformation"
+    - "Series: Room makeovers"
+    - "Behind the scenes: AI tools"
+```
+
+## Integration Points
+
+**Cross-Skill Dependencies**
+- `marketing/growth-engine` - For experiment tracking
+- `marketing/seo-optimizer` - For discoverability
+- `marketing/social-media-upload` - For distribution
+- `marketing/analytics-dashboard` - For performance tracking
+
+**Tool Integrations**
+- Content Management: Notion, Airtable
+- Scheduling: Buffer, Hootsuite, Later
+- Analytics: Native platform APIs
+- Creative: Canva, Adobe Creative Suite
+
+---
+
 ## See Also
 
 - `larry-playbook/SKILL.md` — Full viral formula + confidence system
 - `tiktok-automation/SKILL.md` — Browser-based TikTok posting
 - `social-media-upload/SKILL.md` — Multi-platform upload
 - `humanizer/SKILL.md` — Make captions sound natural
+- `marketing/content-ops` — Content operations workflows
