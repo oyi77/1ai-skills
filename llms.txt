@@ -1,0 +1,59 @@
+# 1ai-Skills
+# 213 Open-Source AI Agent Skills with Self-Improving Meta-Skills
+# https://github.com/oyi77/1ai-skills
+
+## What This Is
+1ai-Skills is the world's largest open-source AI agent skill ecosystem. 213 production-ready skills across 16 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill embeds expertise from world-class practitioners (Buffett, Musk, Vaynerchuk) translated into actionable AI-executable frameworks.
+
+## Installation
+```bash
+npx skills add oyi77/1ai-skills
+```
+Or clone: `git clone https://github.com/oyi77/1ai-skills.git`
+
+## Self-Improving Agent System (v2.0)
+9 meta-skills creating a self-improving agent operating system:
+- meta/performance-monitor: Track execution metrics (latency, success rates, cost)
+- meta/feedback-collector: Multi-channel feedback aggregation
+- meta/self-assessment: Skills evaluate their own capabilities
+- meta/improvement-generator: Create prioritized improvement plans
+- meta/skill-evolution: Version control for skills with rollback
+- meta/auto-learner: Autonomous learning from execution data
+- meta/pattern-recognition: Identify success and failure patterns
+- meta/meta-orchestrator: Coordinate the self-improvement loop
+- meta/data: Centralized SQLite storage for all meta-operations
+
+## All Categories (213 skills total)
+- research/ (25): McKinsey analysis, deep research, Polymarket analyst, continuous learning, Sherlock deduction
+- core/ (24): Self-improvement, memory systems, AI orchestration, session brain, hub memory
+- content/ (22): Video generation, AI podcast, faceless YouTube, humanizer, Seedance, content generator
+- marketing/ (21): SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing
+- automation/ (21): n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher
+- development/ (17): TDD, systematic debugging, code review, PRD generator, git worktrees, brainstorming
+- agents/ (14): Research, review, planning, code, deploy, refactor, linter, security, perf agents
+- integrations/ (11): Slack, Discord, Notion, GitHub bots, webhooks, and API integrations
+- operations/ (10): Finance ops, revenue team, project management, payment invoicing, governance
+- mcp/ (10): MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear
+- meta/ (9): Performance monitor, auto-learner, skill evolution, pattern recognition, orchestrator
+- sales/ (6): High-ticket closing, lead generation, business development, customer support
+- devops/ (6): Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI
+- trading/ (7): Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot
+- productivity/ (6): Google Workspace, calendar, email automation, Notion
+- data/ (4): Data cleaning, anomaly detection, report generation, visualization
+
+## Featured Capabilities
+- Self-improving AI agents that evolve from execution data
+- Black Edge trading intelligence (satellite imagery, dark pools, options flow)
+- Full-stack SEO with GEO optimization for AI Overviews
+- Automated marketing across Twitter, Instagram, TikTok, LinkedIn
+- Production DevOps with Docker, K8s, and CI/CD pipelines
+- MCP server integration for Slack, GitHub, Notion, Stripe
+
+## Author
+1ai (https://github.com/oyi77)
+
+## License
+MIT
+
+## Support
+https://www.tip.md/oyi77
