@@ -11,7 +11,7 @@
 
 ## World's Largest AI Skill Ecosystem
 
-**139 world-class skills** across **9 categories** featuring expertise from history's greatest minds.
+**204 world-class skills** across **15 categories** featuring expertise from history's greatest minds.
 
 > 🔥 **Clean, deduplicated, and ready for production** — 42% size reduction from removing redundant nested skills.
 > 
