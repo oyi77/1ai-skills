@@ -1,8 +1,8 @@
-# 1ai-Skills — 213 Open-Source AI Agent Skills (Self-Improving)
+# 1ai-Skills — 216 Open-Source AI Agent Skills (Self-Evolving)
 
-> The world's largest open-source AI skill ecosystem with **self-improving meta-skills** — agents that auto-evolve, auto-learn, and auto-improve.
+> The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 213](https://img.shields.io/badge/skills-213-blue)](https://github.com/oyi77/1ai-skills)
+[![Skills: 213](https://img.shields.io/badge/skills-216-blue)](https://github.com/oyi77/1ai-skills)
 [![Categories: 16](https://img.shields.io/badge/categories-16-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
@@ -13,9 +13,9 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **213 production-ready AI agent skills** organized across **16 categories**. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **216 production-ready AI agent skills** organized across **16 categories**. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
-**New in v2.0:** 9 **meta-skills** that enable agents to monitor their own performance, collect feedback, recognize patterns, self-assess, generate improvements, learn autonomously, and evolve safely with version control.
+**New in v3.0:** 12 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
 ---
 
@@ -34,9 +34,9 @@ git submodule add https://github.com/oyi77/1ai-skills.git skills
 
 ---
 
-## Self-Improving Agent System (New in v2.0)
+## Self-Evolving Agent System (v3.0)
 
-Nine meta-skills that create a **self-improving agent operating system**:
+12 meta-skills that create a **self-evolving agent operating system** — finds what's missing, creates what doesn't exist, and evolves forever:
 
 | Meta-Skill | What It Does |
 |---|---|
@@ -49,8 +49,11 @@ Nine meta-skills that create a **self-improving agent operating system**:
 | `meta/pattern-recognition` | Identify success and failure patterns across all skills |
 | `meta/meta-orchestrator` | Coordinate the entire self-improvement loop |
 | `meta/data` | Centralized SQLite storage for metrics, feedback, and versions |
+| `meta/find-skills` | **Discover** community skills when local skills don't cover a need (Ada Lovelace persona) |
+| `meta/create-skills` | **Generate** new skills when no existing solution exists (Grace Hopper persona) |
+| `meta/auto-evolve` | **Orchestrate** the full evolution loop: find → create → improve (Charles Darwin persona) |
 
-**System Flow:** Execute → Monitor → Collect → Recognize → Assess → Generate → Learn → Evolve → Repeat
+**System Flow:** Execute → Monitor → Collect → Recognize → Assess → **Find → Create** → Generate → Learn → Evolve → Repeat
 
 ---
 
@@ -68,7 +71,7 @@ Nine meta-skills that create a **self-improving agent operating system**:
 | **integrations/** | 11 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs |
 | **operations/** | 10 | Finance ops, revenue team, project management, payment invoicing |
 | **mcp/** | 10 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear |
-| **meta/** | 9 | Performance monitor, auto-learner, skill evolution, pattern recognition |
+| **meta/** | 12 | find-skills, create-skills, auto-evolve, performance monitor, auto-learner |
 | **sales/** | 6 | High-ticket closing, lead generation, business development |
 | **devops/** | 6 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI |
 | **trading/** | 7 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot |
