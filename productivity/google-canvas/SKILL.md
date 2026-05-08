@@ -496,3 +496,24 @@ async function generateMockup(productImagePath) {
 **Last Updated**: 2026-02-16  
 **Tested**: ✅ Gemini Canvas shared app (Affiliate GO Foto Studio)  
 **Features**: Login workflow, sidebar navigation, content generation, AI assistant
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

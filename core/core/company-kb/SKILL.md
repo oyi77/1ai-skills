@@ -83,3 +83,30 @@ python3 .../kb.py write resources/team.md "# Team\n\n- Paijo: CEO/Engineer\n- Nu
 - Local OpenClaw accesses files directly via this skill
 - Cloud OpenClaw will use Knowledge API (separate task, BER-52+)
 - ChromaDB re-indexing: Run BER-50 indexer after writing new files
+
+## When NOT to Use
+
+- [TODO: Add specific exclusion cases for this skill]
+- When the task is too trivial to warrant this skill
+- When a more appropriate skill exists
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+
