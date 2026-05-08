@@ -272,3 +272,30 @@ All trades are tagged with `source: "sdk:fastloop"`. This means:
 - Polymarket uses **USDC.e** (bridged USDC, contract `0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174`) — not native USDC
 - If you bridged USDC to Polygon recently, you likely received native USDC
 - Swap native USDC to USDC.e, then retry
+
+## When NOT to Use
+
+- [TODO: Add specific exclusion cases for this skill]
+- When the task is too trivial to warrant this skill
+- When a more appropriate skill exists
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

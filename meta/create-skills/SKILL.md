@@ -302,3 +302,27 @@ create-skills process:
 - Add more test scenarios
 - Check integration with related skills
 - Consider manual refinement
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After generating a new skill, confirm:
+
+- [ ] Frontmatter complete (name, description, persona)
+- [ ] All required sections present (Overview, When to Use, Process, Verification)
+- [ ] Quality score ≥ 85/100
+- [ ] Skill tested in sandbox mode
+- [ ] Successfully copied to category directory
+- [ ] Related skills cross-referenced
+- [ ] User notified of new capability

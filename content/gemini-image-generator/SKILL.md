@@ -184,3 +184,24 @@ Style: TikTok viral, 15-30 seconds, hook in first 3 seconds.
 ## License
 
 MIT - Free for personal and commercial use.
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

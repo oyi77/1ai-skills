@@ -149,3 +149,19 @@ For workflow skills that plan, execute, or verify implementation work (`writing-
 - Require Momus verdict `OKAY` before any implementation execution.
 - Allow planning-phase exception only for plan writing/updates and Momus review + evidence capture.
 - If plan drift occurs: pause execution, update plan, re-run Momus, resume only after `OKAY`.
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

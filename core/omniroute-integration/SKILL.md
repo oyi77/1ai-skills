@@ -112,11 +112,97 @@ OmniRoute implements Agent-to-Agent v0.3 protocol:
 
 ## Integration with Opencode
 
+### Configure as Default Model
+Add to `/home/openclaw/.opencode/config.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "omniroute": {
+      "type": "remote", 
+      "url": "http://localhost:20128/v1",
+      "enabled": true
+    }
+  },
+  "model": {
+    "provider": "omniroute",
+    "default": "auto/best-chat"
+  }
+}
+```
+
+### Agent Model Configuration
+For each agent type, configure the optimal combo:
+
+| Agent Type | Recommended Combo | Use Case |
+|------------|------------------|---------|
+| Default | `auto/best-chat` | General conversation |
+| Coding | `auto/best-coding` | Code generation, refactoring |
+| Fast | `auto/best-fast` | Quick lookups, small fixes |
+| Reasoning | `auto/best-reasoning` | Complex logic, debugging |
+| Vision | `auto/best-vision` | Image understanding |
+| Free | `auto/best-free` | Budget-constrained tasks |
+
+### Sub-Agent Configuration
+For sub-agents via task():
+```typescript
+task(
+  category="executor",
+  model="auto/best-coding",  // or any combo name
+  load_skills=[],
+  prompt="..."
+)
+```
+
 ### As an LLM Provider
 Configure Opencode to use OmniRoute as an OpenAI-compatible endpoint:
 - **Base URL**: `http://localhost:20128`
 - **API Key**: Not required (OmniRoute handles auth internally)
 - **Models**: Use any model available through OmniRoute's provider network
+
+### Available Combos
+OmniRoute provides these pre-configured combos for common use cases:
+
+**Auto-Combos** (intelligent routing):
+- `auto/best-chat` - Best general chat models
+- `auto/best-coding` - Best coding models  
+- `auto/best-fast` - Fastest low-latency models
+- `auto/best-reasoning` - Best reasoning/thinking models
+- `auto/best-vision` - Best vision multimodal models
+- `auto/best-free` - Best free tier models
+
+**Provider-Specific Combos**:
+- `provider/antigravity` - Antigravity models
+- `provider/kilocode` - KiloCode models
+- `provider/kiro` - Kiro models
+- `provider/github` - GitHub Copilot models
+- `provider/openai` - OpenAI models
+- `provider/ollamacloud` - Ollama Cloud models
+- `provider/nanobanana` - NanoBanana image models
+- `provider/xai` - xAI Grok models
+- `provider/kimi-coding` - Kimi Coding models
+- `provider/glm` - GLM models
+- `provider/zai` - ZAI models
+- `provider/nvidia` - NVIDIA models
+- `provider/openrouter` - OpenRouter models
+- `provider/siliconflow` - SiliconFlow models
+- `provider/opencode-zen` - OpenCode Zen models
+- `provider/opencode-go` - OpenCode Go models
+- `provider/cloudflare-ai` - Cloudflare AI models
+
+**Usage**:
+```bash
+# Use auto combo
+curl -X POST http://localhost:20128/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "auto/best-chat", "messages": [{"role": "user", "content": "Hello"}]}'
+
+# Use provider combo
+curl -X POST http://localhost:20128/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "provider/kilocode", "messages": [{"role": "user", "content": "Write code"}]}'
+```
 
 ### Using MCP Server in Opencode
 Opencode can connect to OmniRoute's MCP server for enhanced agent capabilities:
@@ -207,6 +293,25 @@ curl -s http://localhost:20128/.well-known/agent.json | jq .
 5. **Security**: Keep JWT_SECRET and provider credentials secure
 6. **Updates**: Regularly pull updates and run database migrations
 7. **Backups**: Monitor automatic backups in `/home/openclaw/.omniroute/db_backups/`
+
+
+## When NOT to Use
+
+- [TODO: Add specific exclusion cases for this skill]
+- When the task is too trivial to warrant this skill
+- When a more appropriate skill exists
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
 
 ## Related Skills
 - `using-superpowers` - Always invoke this first

@@ -42,6 +42,14 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 - Catch bugs early
 - Ensure best practices
 
+## When NOT to Use
+
+- Trivial changes (< 10 lines, obvious fix) - quick self-review is enough
+- Emergency hotfixes - review after deployment, not before
+- Auto-generated code (formatting, builds) - review the generator instead
+- WIP branches - wait until feature is complete
+- Personal experiment branches that won't be merged
+
 ---
 
 ## Review Process
@@ -163,6 +171,27 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 
 ---
 
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "This is a trivial change, skip review" | Even 1-line changes can break production - always review |
+| "I'll fix the small issues later" | Small issues accumulate - fix them now (Broken Windows Theory) |
+| "The tests pass, that's enough" | Tests passing doesn't mean code is readable or maintainable |
+| "I don't want to hurt their feelings" | Honest feedback makes better code - be kind but direct |
+| "This follows the pattern used elsewhere" | If the pattern is wrong, don't replicate it - suggest improvement |
+| "It's too late to change the architecture" | Better to fix it now than live with bad architecture longer |
+
+## Red Flags
+
+- Approving PRs without checking out the branch locally
+- Review comments that only say "LGTM" or "Looks good"
+- Skipping security review for auth/login changes
+- Not running tests before approving
+- Ignoring failing CI checks
+- Approving code you don't understand
+- Review time > 3 days for small PRs
+
 ## Best Practices
 
 ### Do's
@@ -179,6 +208,21 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ❌ Don't forget security  
 
 ---
+
+
+---
+
+## Verification
+
+After completing a code review, confirm:
+
+- [ ] Review covers all changed files (none skipped)
+- [ ] Each blocking issue (🔴) has clear fix suggestion with code example
+- [ ] Security-sensitive changes (auth, payments, API) verified explicitly
+- [ ] Tests exist for new functionality (or explicit note why not)
+- [ ] Linter passes on changed files (no type errors, no lint warnings)
+- [ ] Review verdict is clear: **Approve** / **Request Changes** / **Approve with Comments**
+- [ ] Author can act on feedback without needing clarification
 
 ## Version History
 

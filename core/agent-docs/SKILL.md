@@ -203,3 +203,24 @@ For detailed guidance on RAG optimization, multi-framework docs, and API templat
 - [ ] No external links without inline summary
 - [ ] Negative constraints explicit ("Do NOT...")
 - [ ] File paths and signatures, not full code
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

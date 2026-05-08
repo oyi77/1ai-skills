@@ -56,6 +56,35 @@ Complete SEO toolkit for organic growth. Research keywords, optimize content, tr
 - Fix technical SEO issues
 - Build backlinks strategy
 
+## When NOT to Use
+
+- Website is under active development (wait for stable release)
+- No access to Google Search Console / Analytics (can't measure results)
+- Purely paid advertising campaigns (use `marketing/ads-manager` instead)
+- One-page landing pages with no organic competition (SEO won't help)
+- Website has manual penalty from Google (fix penalty first)
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "Keywords don't matter anymore, just write good content" | Keywords still matter for search intent matching - research informs content strategy |
+| "I'll add meta tags later, focus on content first" | Meta tags are quick wins - skipping them loses organic traffic for no reason |
+| "Don't need technical SEO, content is king" | Technical issues (crawl errors, slow site) nullify great content |
+| "Backlinks are too hard, skip link building" | Without backlinks, content won't rank for competitive keywords |
+| "Page speed is fine, users don't care" | Core Web Vitals are ranking factors - slow sites lose rankings |
+| "AI Overviews killed SEO, why bother?" | SEO evolved, not dead - GEO (Generative Engine Optimization) is the new frontier |
+
+## Red Flags
+
+- Keyword stuffing (density > 2%) - triggers spam filters
+- Buying backlinks - manual penalty risk from Google
+- Duplicate content across pages - cannibalizes rankings
+- Hidden text or cloaking - black hat, will get penalized
+- Ignoring mobile optimization - 60%+ traffic is mobile
+- No conversion tracking - flying blind on SEO ROAS
+- Targeting keywords with zero search volume - wasted effort
+
 ## Core Features
 
 ### 1. Keyword Research
@@ -453,6 +482,21 @@ def seo_content_calendar(keyword_opportunities, resources):
 - Ahrefs/SEMrush API - For competitor analysis
 - Screaming Frog - For technical audits
 - PageSpeed Insights API - For performance metrics
+
+---
+
+## Verification
+
+After completing an SEO optimization task, confirm:
+
+- [ ] Target keywords identified with search volume > 100/month
+- [ ] On-page elements optimized (title < 60 chars, meta < 160 chars, H1 present)
+- [ ] Technical audit passed: no 4xx/5xx errors, sitemap accessible, robots.txt valid
+- [ ] Content is original, > 1500 words for competitive keywords
+- [ ] Backlink strategy documented with 5+ target domains
+- [ ] Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1
+- [ ] Analytics tracking verified: GA4 receiving data, conversions tracked
+- [ ] If targeting AI search: llms.txt present, content is passage-citable
 
 ---
 

@@ -520,3 +520,30 @@ This skill is part of the Citedy AI platform. The full suite includes:
 - **Autopilot** — fully automated content pipeline from keywords to published articles
 
 Learn more at [citedy.com](https://www.citedy.com) or explore the `citedy-seo-agent` skill for the complete toolkit.
+
+## When NOT to Use
+
+- [TODO: Add specific exclusion cases for this skill]
+- When the task is too trivial to warrant this skill
+- When a more appropriate skill exists
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

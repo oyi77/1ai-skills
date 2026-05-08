@@ -33,7 +33,7 @@ import httpx
 from typing import Optional, List, Dict, Any
 
 # Configuration
-HUB_URL = os.getenv("BERKAHKARYA_HUB_URL", "http://localhost:9099")
+HUB_URL = os.getenv("HUB_URL", "http://localhost:9099")
 DEFAULT_SERVICE = os.getenv("BERKAHKARYA_SERVICE", "openclaw")
 
 
@@ -44,7 +44,7 @@ def query_hub(
     method: str = "hybrid"
 ) -> List[Dict[str, Any]]:
     """
-    Query berkahkarya-hub BEFORE executing ANY task.
+    Query 1ai-hub BEFORE executing ANY task.
     
     This is the "IQ 145" pattern - DON'T GUESS, LOOK IT UP FIRST.
     

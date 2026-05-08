@@ -213,3 +213,26 @@ Default configuration can be overridden in config.json:
 - Review skill documentation for requirements
 - Report issue to skill author
 - Consider create-skills to generate a better alternative
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing a skill discovery task, confirm:
+
+- [ ] Search covered 3+ community sources
+- [ ] Credibility score calculated for top 5 results
+- [ ] Safety validation passed (no known vulnerabilities)
+- [ ] Local skills checked first (no duplicate installation)
+- [ ] Minimum score 70/100 to recommend installation
+- [ ] User confirmed before installing any skill

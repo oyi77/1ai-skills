@@ -195,3 +195,16 @@ From debugging session (2025-10-03):
 - Dispatch one agent per problem domain
 - Each agent needs: specific scope, clear goal, constraints, expected output
 - After return: Review summaries, check conflicts, run full suite
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
