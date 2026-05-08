@@ -207,6 +207,9 @@ if days_to_catalyst <= 7:
 
 ---
 
+
+Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
+
 ## Integration Points
 
 **Cross-Skill Dependencies**
