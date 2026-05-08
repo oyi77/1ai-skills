@@ -443,6 +443,8 @@ finance_ops_report:
 - [TODO: Add behavioral signs the skill is being violated]
 - Watch for shortcuts and skipped steps
 
+
+Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
 ## Verification
 
 After completing this skill, confirm:

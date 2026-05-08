@@ -195,6 +195,9 @@ if accumulation_score > 75 and price_near_support:
 
 ---
 
+
+Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
+
 ## Integration Points
 
 **Cross-Skill Dependencies**
