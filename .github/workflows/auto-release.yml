@@ -16,7 +16,6 @@ jobs:
       - name: Generate Release Notes
         id: notes
         run: |
-          # Generate release notes from commits since last tag
           LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
           if [ -z "$LAST_TAG" ]; then
             NOTES=$(git log --pretty=format:"- %s" --no-merges)
@@ -43,10 +42,29 @@ jobs:
             npx skills add oyi77/1ai-skills@${{ github.ref_name }}
             ```
             
+            ### npm install (alternative)
+            ```bash
+            npm install 1ai-skills@${{ github.ref_name }}
+            ```
+            
             ### Stats
             - Total Skills: Check repo
-            - Meta-Skills: 9 (auto-evolve, auto-improve, auto-learn)
+            - Meta-Skills: 12 (auto-evolve, auto-improve, auto-learn)
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.com'
+      
+      - name: Publish to npmjs.com
+        run: |
+          npm config set //registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
