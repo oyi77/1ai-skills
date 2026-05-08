@@ -239,3 +239,17 @@ Agent found new rationalization? Add explicit counter. Re-test until bulletproof
 - Find new rationalizations
 - Add explicit counters
 - Re-test until bulletproof
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

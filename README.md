@@ -57,6 +57,62 @@ git submodule add https://github.com/oyi77/1ai-skills.git skills
 
 ---
 
+## What's New in v3.1 — Anatomy & Structure Improvements
+
+Based on analysis of [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills), we've standardized all 216 skills with **complete anatomy**:
+
+### 📚 New `references/` Directory
+Shared checklists to reduce token usage (replaces duplicated content in skills):
+- `references/seo-checklist.md` — SEO audits (technical, on-page, Core Web Vitals, GEO)
+- `references/marketing-checklist.md` — Marketing campaigns (content, social, email, paid ads)
+- `references/code-review-checklist.md` — Code reviews (functionality, security, performance, accessibility)
+- `references/trading-checklist.md` — Trading (strategy, risk management, portfolio)
+
+### 📋 New `CONTRIBUTING.md`
+Complete contribution guide with:
+- SKILL.md anatomy requirements (frontmatter, sections, naming conventions)
+- Persona guidelines (expertise, credentials, philosophy, principles)
+- Pull request process with quality gates
+
+### 🔧 New `docs/` Setup Guides
+Platform-specific setup instructions:
+- `docs/opencode-setup.md` — OpenCode integration via AGENTS.md and skill tool
+- `docs/claude-setup.md` — Claude Code slash commands and plugin setup
+- `docs/cursor-setup.md` — Cursor rules and @references setup
+
+### 🪝 New `hooks/` System
+Session lifecycle hooks for automation:
+- `hooks/session-start.sh` — Auto-detect project type, suggest relevant skills
+- `hooks/pre-commit.sh` — Validate SKILL.md structure before commit
+- `hooks/post-task.sh` — Log skill performance after execution
+- `hooks/hooks.json` — Hook configuration
+
+### 📐 New `LIFECYCLE_INDEX.md`
+Maps all 216 skills to the software development lifecycle:
+- **DEFINE** → research skills (McKinsey, Feynman, Musk)
+- **PLAN** → planning skills (writing-plans, find-skills, create-skills)
+- **BUILD** → development skills (TDD, systematic-debugging, subagent-driven-development)
+- **VERIFY** → verification skills (analytics, performance-monitor)
+- **REVIEW** → review skills (code-reviewer, self-assessment)
+- **SHIP** → shipping skills (SEO optimizer, viral marketing, growth engine)
+
+### 🔧 Standardized Anatomy (ALL 216 Skills)
+Every SKILL.md now has complete sections:
+- ✅ **When NOT to Use** — Exclusion cases (prevents misuse)
+- ✅ **Common Rationalizations** — Excuse/reality tables (prevents skipping steps)
+- ✅ **Red Flags** — Behavioral signs of violations
+- ✅ **Verification** — Evidence-based checklists (proves completion)
+
+### 🔗 Cross-Skill References
+Skills now reference each other (not duplicate content):
+- "For SEO audits, also see `marketing/seo-optimizer`"
+- "After debugging, use `development/systematic-debugging`"
+- "Before creating skills, run `meta/find-skills`"
+
+---
+
+## Quick Start
+
 ## All 213 Skills by Category
 
 | Category | Count | Highlights |

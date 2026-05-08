@@ -53,3 +53,30 @@ Markets show: question, Yes/No prices (as percentages), 24h volume, total volume
 - `outcomePrices` are 0-1 representing probability
 - Price of 0.65 for "Yes" = market thinks 65% chance of Yes
 - Higher volume = more liquid, more reliable signal
+
+## When NOT to Use
+
+- [TODO: Add specific exclusion cases for this skill]
+- When the task is too trivial to warrant this skill
+- When a more appropriate skill exists
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I'll do this later" | Explain why this excuse is wrong for this skill |
+| "This is simple, skip steps" | Even simple tasks benefit from process |
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+

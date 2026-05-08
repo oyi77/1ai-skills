@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "session:start": {
+      "command": "bash .hooks/session-start.sh $PWD",
+      "description": "Detect project type and suggest relevant skills on session start"
+    },
+    "pre-commit": {
+      "command": "bash .hooks/pre-commit.sh",
+      "description": "Validate SKILL.md structure before committing"
+    },
+    "post-task": {
+      "command": "bash .hooks/post-task.sh",
+      "description": "Log skill performance after task completion"
+    }
+  },
+  "version": "1.0.0"
+}
