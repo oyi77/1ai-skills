@@ -7,13 +7,30 @@ Map financial skills to the workflows from [anthropics/financial-services](https
 | Skill | Category | Compared to anthropics/financial-services |
 |-------|----------|-----------------------------------------------|
 | `trading/black-edge` | trading | Alternative data synthesis (satellite, web scraping, credit cards) — similar to their data connectors but more "gray edge" |
-| `trading/alphaear-strategy` | trading | Multi-signal: news + sentiment + options flow — similar to `market-researcher` + `earnings-reviewer` |
-| `trading/trading/polymarket-api` | trading | Prediction market API — matches their `earnings-reviewer` (probability analysis) |
+| `trading/alphaear-strategy` | trading | Multi-signal: news + sentiment + options flow — similar to `market-researcher` + `earnings-viewer` |
+| `trading/trading/polymarket-api` | trading | Prediction market API — matches their `earnings-viewer` (probability analysis) |
 | `trading/trading/polymarket-weather-trader` | trading | Weather derivatives via prediction markets |
 | `trading/trading/tushare-finance` | trading | Python financial data library — similar to their S&P Capital IQ connector |
 | `operations/finance-ops` | operations | CFO dashboard, unit economics, cost intelligence — similar to `gl-reconciler` + `month-end-closer` |
 | `sales/high-ticket-closing` | sales | Investment committee pitch — matches their `pitch-agent` |
-| `marketing/stripe-revenue-bot` | marketing | Revenue tracking — similar to their `valuation-reviewer` |
+| `marketing/stripe-revenue-bot` | marketing | Revenue tracking — similar to their `valuation-viewer` |
+
+## ✅ New Skills Added (12 from anthropics/financial-services comparison)
+
+| New Skill | Category | Matches anthropics Plugin |
+|-----------|----------|----------------------------|
+| `financial/earnings-viewer` | financial | `earnings-viewer` (earnings + SEC filings → model update → note draft) |
+| `financial/model-builder` | financial | `model-builder` (DCF, LBO, 3-statement models) |
+| `financial/pitch-deck` | financial | `pitch-agent` (populate pitch deck templates) |
+| `financial/kyc-screener` | financial | `kyc-screener` (KYC document parsing + rules engine) |
+| `financial/gl-reconciler` | financial | `gl-reconciler` (find breaks, trace root cause) |
+| `financial/month-end-closer` | financial | `month-end-closer` (accruals, roll-forwards, variance) |
+| `financial/statement-auditor` | financial | `statement-auditor` (audit LP statements) |
+| `financial/valuation-reviewer` | financial | `valuation-viewer` (GP package, waterfall, LP reporting) |
+| `financial/meeting-prep` | financial | `meeting-prep-agent` (briefing pack, Q&A prep) |
+| `financial/portfolio-monitor` | financial | `portfolio-monitoring` (KPIs, returns IRR/MOIC) |
+| `financial/tax-loss-harvesting` | financial | *New* (identify TLH opportunities, wash sales) |
+| `financial/ai-readiness` | financial | *New* (assess portfolio company AI readiness) |
 
 ## 🔨 Investment Banking (Compare to `investment-banking` plugin)
 
