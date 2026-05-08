@@ -130,6 +130,8 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+
+Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
 ## Related Skills
 
 - `sales-strategy` - General sales
