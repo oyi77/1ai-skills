@@ -183,3 +183,17 @@ From debugging sessions:
 - Not documenting what you tried
 - Skipping the reproduction step
 - Accepting "works now" without understanding why
+
+## Red Flags
+
+- [TODO: Add behavioral signs the skill is being violated]
+- Watch for shortcuts and skipped steps
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All required outputs generated
+- [ ] Success criteria met
+
