@@ -2,7 +2,6 @@
  * Post Bridge Social Manager
  * Post to multiple social media platforms via post-bridge.com API
  * 
- * API Key: REDACTED_POSTBRIDGE_KEY
  * Base URL: https://api.post-bridge.com/v1
  */
 
