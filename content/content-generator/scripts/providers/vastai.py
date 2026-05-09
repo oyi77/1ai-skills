@@ -230,7 +230,7 @@ class VastAIProvider(AIProvider):
         except Exception:
             return "serverless", str(result)
 
-    def _poll_comfyui_history(self, worker_url: str, prompt_id: str) -> dict:
+    async def _poll_comfyui_history(self, worker_url: str, prompt_id: str) -> dict:
         deadline = time.time() + self.poll_timeout
         while time.time() < deadline:
             if worker_url == "serverless":
@@ -243,7 +243,7 @@ class VastAIProvider(AIProvider):
                     return history[prompt_id]
             except Exception:
                 pass
-            time.sleep(self.poll_interval)
+            await asyncio.sleep(self.poll_interval)
         raise TimeoutError(
             f"Polling timed out after {self.poll_timeout}s for prompt {prompt_id}"
         )
@@ -311,7 +311,7 @@ class VastAIProvider(AIProvider):
             worker_url, prompt_id = self._execute_via_vast_serverless(
                 comfyui_payload, cost=cost
             )
-            history = self._poll_comfyui_history(worker_url, prompt_id)
+            history = await self._poll_comfyui_history(worker_url, prompt_id)
             output = self._extract_video_from_history(history)
             if not output:
                 return GenerationResult(
