@@ -9,6 +9,7 @@ import json
 import requests
 import time
 import os
+import traceback
 from pathlib import Path
 
 def load_env():
@@ -233,9 +234,8 @@ def upload_to_postbridge_v3(product_key, hook_type, caption, hashtags, affiliate
                 "file": str(filepath)
             }
             
-    except Exception as e:
+    except (requests.RequestException, OSError, ValueError) as e:
         print(f"   ❌ ERROR: {str(e)}")
-        import traceback
         traceback.print_exc()
         
         return {
@@ -328,9 +328,9 @@ def main():
     
     try:
         batch_upload_via_postbridge_v3()
+    # Catch all exceptions at the top level to ensure any fatal error is reported before exit
     except Exception as e:
         print(f"\n❌ FATAL ERROR: {str(e)}")
-        import traceback
         traceback.print_exc()
 
 if __name__ == "__main__":
