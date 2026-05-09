@@ -6,6 +6,7 @@ Upload 18 hook frames ke TikTok menggunakan PostBridge API
 
 import json
 import time
+import traceback
 import requests
 from pathlib import Path
 from datetime import datetime
@@ -240,7 +241,7 @@ def upload_to_postbridge(product_key, hook_type, caption, hashtags, affiliate_li
                 "file": str(filepath)
             }
             
-    except Exception as e:
+    except (requests.RequestException, OSError, ValueError) as e:
         print(f"   ❌ ERROR: {str(e)}")
         
         return {
@@ -327,9 +328,9 @@ def main():
     
     try:
         batch_upload_via_postbridge()
+    # Catch all exceptions at the top level to ensure any fatal error is reported before exit
     except Exception as e:
         print(f"\n❌ FATAL ERROR: {str(e)}")
-        import traceback
         traceback.print_exc()
 
 if __name__ == "__main__":
