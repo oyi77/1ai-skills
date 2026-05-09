@@ -4,6 +4,7 @@ This module provides the ReplicateProvider class for generating images
 using Replicate's API with Flux and Stable Diffusion 3.5 models.
 """
 
+import asyncio
 import json
 import os
 import ssl
@@ -211,7 +212,7 @@ class ReplicateProvider(AIProvider):
         ) as response:
             return json.loads(response.read().decode("utf-8"))
 
-    def _wait_for_completion(
+    async def _wait_for_completion(
         self,
         prediction_id: str,
         timeout: int = 300,
@@ -232,8 +233,6 @@ class ReplicateProvider(AIProvider):
             urllib.error.HTTPError: On HTTP errors
             urllib.error.URLError: On network errors
         """
-        import time
-
         elapsed = 0
         while elapsed < timeout:
             prediction = self._get_prediction(prediction_id)
@@ -248,7 +247,7 @@ class ReplicateProvider(AIProvider):
             elif status == "canceled":
                 raise Exception("Prediction was canceled")
 
-            time.sleep(poll_interval)
+            await asyncio.sleep(poll_interval)
             elapsed += poll_interval
 
         raise TimeoutError(f"Prediction timed out after {timeout} seconds")
@@ -385,7 +384,7 @@ class ReplicateProvider(AIProvider):
                 output = prediction.get("output", [])
             else:
                 # Wait for the prediction to complete
-                completed_prediction = self._wait_for_completion(
+                completed_prediction = await self._wait_for_completion(
                     prediction_id, timeout=timeout
                 )
                 output = completed_prediction.get("output", [])
