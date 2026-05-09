@@ -10,6 +10,7 @@ API Endpoints:
 Base URL: https://ark.ap-southeast.bytepluses.com/api/v3
 """
 
+import asyncio
 import json
 import os
 import ssl
@@ -122,7 +123,7 @@ class BytePlusProvider(AIProvider):
             raise ValueError(f"No task_id returned: {result}")
         return task_id
 
-    def _poll_task(self, task_id: str, timeout: int = 300, interval: int = 5) -> dict:
+    async def _poll_task(self, task_id: str, timeout: int = 300, interval: int = 5) -> dict:
         """Poll task until completed or timeout (seconds). Returns task result."""
         deadline = time.time() + timeout
         while time.time() < deadline:
@@ -135,7 +136,7 @@ class BytePlusProvider(AIProvider):
                 error = result.get("error", {})
                 raise RuntimeError(f"Task {status}: {error.get('message', 'Unknown error')} (code: {error.get('code', 'N/A')})")
 
-            time.sleep(interval)
+            await asyncio.sleep(interval)
 
         raise TimeoutError(f"Task {task_id} timed out after {timeout}s")
 
@@ -183,7 +184,7 @@ class BytePlusProvider(AIProvider):
 
         try:
             task_id = self._create_task(model, content, **kwargs)
-            task_result = self._poll_task(task_id, timeout=poll_timeout)
+            task_result = await self._poll_task(task_id, timeout=poll_timeout)
 
             task_content = task_result.get("content", {})
             video_url = task_content.get("video_url", "")
