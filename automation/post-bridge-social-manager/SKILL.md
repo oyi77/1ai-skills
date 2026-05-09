@@ -35,7 +35,7 @@ Post to multiple social media platforms via post-bridge.com API.
 
 ## Setup
 
-**API Key:** `pb_live_LzxK4Q4428kb1b6KETgdue`
+**API Key:** `YOUR_POST_BRIDGE_API_KEY`
 
 **Base URL:** `https://api.post-bridge.com/v1`
 
@@ -92,7 +92,7 @@ const response = await fetch('https://post-bridge.com/api/v1/posts', {
 ## Environment Variables
 
 ```env
-POST_BRIDGE_API_KEY=pb_live_LzxK4Q4428kb1b6KETgdue
+POST_BRIDGE_API_KEY=YOUR_POST_BRIDGE_API_KEY
 POST_BRIDGE_BASE_URL=https://post-bridge.com/api/v1
 ```
 
