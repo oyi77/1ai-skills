@@ -6,6 +6,7 @@ Upload 18 hook frames ke social media (YouTube, Instagram, Twitter, Facebook) me
 
 import json
 import time
+import traceback
 import requests
 import os
 from pathlib import Path
@@ -319,7 +320,7 @@ def upload_hook_frame(product_key, hook_type, caption, hashtag_str, affiliate_li
             "file": str(filepath)
         }
         
-    except Exception as e:
+    except (requests.RequestException, OSError, ValueError) as e:
         print(f"   ❌ ERROR: {str(e)}")
         return {
             "success": False,
@@ -406,9 +407,9 @@ def main():
     
     try:
         batch_upload()
+    # Catch all exceptions at the top level to ensure any fatal error is reported before exit
     except Exception as e:
         print(f"\n❌ FATAL ERROR: {str(e)}")
-        import traceback
         traceback.print_exc()
 
 if __name__ == "__main__":
