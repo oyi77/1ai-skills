@@ -7,10 +7,24 @@ Upload 18 hook frames ke TikTok using PostBridge API dengan structure yang benar
 import json
 import requests
 import time
+import os
 from pathlib import Path
 
+def load_env():
+    """Simple .env loader"""
+    env_path = Path(__file__).parent.parent.parent / ".env"
+    if env_path.exists():
+        with open(env_path) as f:
+            for line in f:
+                if line.strip() and not line.startswith("#"):
+                    key, value = line.strip().split("=", 1)
+                    os.environ[key] = value
+
+# Load environment variables
+load_env()
+
 # Constants
-POSTBRIDGE_API_KEY = "pb_live_LzxK4Q4428kb1b6KETgdue"
+POSTBRIDGE_API_KEY = os.getenv("POSTBRIDGE_API_KEY")
 POSTBRIDGE_BASE_URL = "https://api.post-bridge.com/api/v1"
 
 # Asset paths
@@ -273,7 +287,7 @@ def batch_upload_via_postbridge_v2():
     print("="*80)
     print(f"📦 Total hook frames: {len(file_mapping)}")
     print(f"📱 Connected accounts: {len(social_accounts)}")
-    print(f"🔑 API Key: pb_live_LzxK4Q4428kb1b6KETgdue")
+    print(f"🔑 API Key: {'*' * 10 if POSTBRIDGE_API_KEY else 'NOT SET'}")
     print("="*80 + "\n")
     
     if not social_accounts:
