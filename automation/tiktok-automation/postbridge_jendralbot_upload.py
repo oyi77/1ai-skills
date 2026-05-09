@@ -8,11 +8,25 @@ import json
 import time
 import traceback
 import requests
+import os
 from pathlib import Path
 from datetime import datetime
 
+def load_env():
+    """Simple .env loader"""
+    env_path = Path(__file__).parent.parent.parent / ".env"
+    if env_path.exists():
+        with open(env_path) as f:
+            for line in f:
+                if line.strip() and not line.startswith("#"):
+                    key, value = line.strip().split("=", 1)
+                    os.environ[key] = value
+
+# Load environment variables
+load_env()
+
 # Constants
-POSTBRIDGE_API_KEY = "REDACTED_POSTBRIDGE_KEY"
+POSTBRIDGE_API_KEY = os.getenv("POSTBRIDGE_API_KEY")
 POSTBRIDGE_BASE_URL = "https://api.post-bridge.com/v1"
 
 # Asset paths
@@ -259,7 +273,7 @@ def batch_upload_via_postbridge():
     print("🚀 JENDRALBOT - POSTBRIDGE TIKTOK UPLOAD")
     print("="*80)
     print(f"📦 Total hook frames: {len(file_mapping)}")
-    print(f"🔑 API Key: REDACTED_POSTBRIDGE_KEY")
+    print(f"🔑 API Key: {'*' * 10 if POSTBRIDGE_API_KEY else 'NOT SET'}")
     print("="*80 + "\n")
     
     results = []
