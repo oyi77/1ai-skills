@@ -52,6 +52,9 @@ class Cache:
             conn.execute("""
                 CREATE INDEX IF NOT EXISTS idx_hash ON cache(hash)
             """)
+            conn.execute("""
+                CREATE INDEX IF NOT EXISTS idx_created_at ON cache(created_at)
+            """)
             conn.commit()
 
     def _get_connection(self) -> sqlite3.Connection:
@@ -195,19 +198,22 @@ class Cache:
 
             if total_size > max_bytes:
                 # Remove oldest entries until under limit
-                while total_size > max_bytes:
-                    cursor = conn.execute(
-                        """
-                        SELECT key, size FROM cache
-                        ORDER BY created_at ASC LIMIT 1
-                        """
-                    )
-                    row = cursor.fetchone()
-                    if not row:
-                        break
+                cursor = conn.execute(
+                    """
+                    SELECT key, size FROM cache
+                    ORDER BY created_at ASC
+                    """
+                )
 
-                    conn.execute("DELETE FROM cache WHERE key = ?", (row["key"],))
+                keys_to_delete = []
+                for row in cursor:
+                    if total_size <= max_bytes:
+                        break
+                    keys_to_delete.append((row["key"],))
                     total_size -= row["size"]
+
+                if keys_to_delete:
+                    conn.executemany("DELETE FROM cache WHERE key = ?", keys_to_delete)
                     conn.commit()
 
     def clear(self) -> int:
