@@ -66,3 +66,14 @@ Shared reference for all SEO-related skills. Load this when doing SEO work.
 - Paid links without nofollow/ sponsored tags
 - Auto-generated content without human review
 - Negative SEO: sudden spike in toxic backlinks
+
+## Related Skills
+
+For deeper optimization frameworks, use these companion skills:
+- **marketing/marketing-ops** — Complete AI-powered marketing & sales OS: customer research, SEO/GEO/SMO, paid ads, email, CRO, pricing, retention, analytics, global expansion, stage-based playbooks ($0→$100K MRR)
+- **marketing/seo-optimizer** — Brian Dean/Rand Fishkin persona: keyword research, on-page SEO, technical audits, rank tracking, backlink strategy
+- **marketing/content-creator** — Content strategy, blog posts, landing pages, video scripts
+- **content/writing/long-form** — Long-form article and pillar page creation
+- **marketing/analytics-dashboard** — KPI dashboards, attribution, GA4/GSC integration
+- **marketing/market-research** — Competitor analysis, SWOT, market sizing
+- **automation/content-publisher** — Automated content distribution across platforms

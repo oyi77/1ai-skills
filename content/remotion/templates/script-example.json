@@ -1,0 +1,42 @@
+{
+  "title": "Judul Video Saya",
+  "description": "Deskripsi singkat video ini",
+  "language": "id",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Pembukaan",
+      "narration": "Selamat datang! Hari ini kita akan membahas topik yang sangat penting untuk bisnis Anda.",
+      "background": "gradient-blue",
+      "notes": "Energik, antusias"
+    },
+    {
+      "id": "point1",
+      "title": "Poin Pertama",
+      "narration": "Pertama, kita perlu memahami dasar-dasar dari konsep ini. Ini adalah fondasi yang sangat penting.",
+      "background": "dark",
+      "notes": "Jelas, informatif"
+    },
+    {
+      "id": "point2",
+      "title": "Poin Kedua",
+      "narration": "Kedua, mari kita lihat bagaimana menerapkan konsep ini dalam praktik sehari-hari.",
+      "background": "dark",
+      "notes": ""
+    },
+    {
+      "id": "point3",
+      "title": "Poin Ketiga",
+      "narration": "Dan yang ketiga, jangan lupa untuk selalu mengukur hasil dari setiap langkah yang Anda ambil.",
+      "background": "dark",
+      "notes": ""
+    },
+    {
+      "id": "outro",
+      "title": "Penutup",
+      "narration": "Itulah tiga poin penting yang perlu Anda ingat. Terima kasih sudah menonton, dan sampai jumpa di video berikutnya!",
+      "background": "gradient-purple",
+      "notes": "Hangat, mengundang aksi"
+    }
+  ]
+}

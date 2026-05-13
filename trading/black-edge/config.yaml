@@ -1,0 +1,99 @@
+# Black Edge — Configuration
+# Alternative data synthesis & hidden market edge detection
+
+# ============================================
+# DATA SOURCES
+# ============================================
+data_sources:
+  satellite_imagery:
+    providers: ["planet_labs", "maxar", "airbus_defence"]
+    refresh_interval_hours: 24
+    targets:
+      - retail_parking_lot_occupancy
+      - port_container_volumes
+      - construction_progress
+      - energy_flare_patterns
+
+  web_scraping:
+    targets:
+      - job_postings_velocity
+      - product_pricing_changes
+      - customer_review_sentiment
+      - website_traffic_estimation
+    refresh_interval_hours: 6
+    respect_robots_txt: true
+
+  credit_card_aggregation:
+    providers: ["second_measure", "earnest_research"]
+    categories:
+      - consumer_spending_shifts
+      - geographic_concentration
+      - saas_recurring_revenue
+      - travel_booking_patterns
+
+  options_flow:
+    providers: ["unusual_whales", "cboe_livevol", "flowalgo"]
+    thresholds:
+      volume_ratio: 2.5             # x average daily volume
+      block_trade_min: 1000         # Minimum contracts
+      sweep_detection: true
+
+  dark_pool:
+    providers: ["fidessa", "bloomberg_dpip"]
+    signals:
+      - vwap_deviation
+      - ats_flow_concentration
+      - institutional_accumulation
+
+  social_sentiment:
+    platforms: ["reddit", "twitter_api", "stocktwits"]
+    models: ["finbert", "vader"]
+
+# ============================================
+# EVIDENCE STANDARDS
+# ============================================
+evidence:
+  t1_weight: 1.0                    # Primary source (satellite, on-chain, SEC)
+  t2_weight: 0.7                    # Factual secondary (Bloomberg, Reuters)
+  t3_weight: 0.3                    # Opinion/social (Twitter, Reddit)
+  no_t3_only_recommendations: true
+  min_t1_t2_percent: 0.50
+
+# ============================================
+# PRE-TRADE GATES
+# ============================================
+gates:
+  liquidity:
+    enabled: true
+    min_volume_ratio: 10
+    max_spread_percent: 0.5
+
+  correlation:
+    enabled: true
+    max_correlation: 0.7
+    max_sector_weight: 0.30
+
+  sentiment:
+    enabled: true
+    extreme_greed_threshold: 85
+    extreme_fear_threshold: 15
+
+  memory:
+    enabled: true
+    min_historical_samples: 3
+    behavioral_drift_skip: true
+
+  regulatory:
+    enabled: true
+    ofac_check: true
+    sec_unregistered_skip: true
+
+# ============================================
+# CROSS-REFERENCES
+# ============================================
+cross_references:
+  - financial/all-in-one-finance      # Full 16-module finance suite
+  - financial/wolf-finance             # Institutional-grade 22-module suite
+  - trading/alphaear-strategy          # Multi-signal trading
+  - trading/polymarket-analyst         # Prediction market overlay
+  - references/trading-checklist.md    # Shared trading checklist
