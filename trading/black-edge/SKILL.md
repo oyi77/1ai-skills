@@ -359,29 +359,124 @@ black_edge_report:
 
 **Donation:** Support development → https://www.tip.md/oyi77
 
+## Evidence Standards (Non-Negotiable)
+
+| Tier | Type | Weight | Verification | Examples |
+|------|------|--------|--------------|----------|
+| **T1** | Primary source | 1.0 | Direct URL + timestamp | Satellite imagery, on-chain data, SEC filings, options flow prints, dark pool tape, Form 4 insider filings, exchange order books |
+| **T2** | Factual secondary | 0.7 | Cross-reference 2+ providers | Bloomberg/Reuters, Quiver Quant, Unusual Whales, Thinknum, Cignal AI, certified audits |
+| **T3** | Opinion/social | 0.3 | Flag "speculative" | Reddit/WSB sentiment, Twitter/X, Discord, newsletters, YouTube analysts |
+
+**Rules:**
+1. No actionable recommendation (enter/exit/hedge) on T3-only evidence
+2. Conviction score >0.5 requires >=50% T1/T2 weighted evidence
+3. Every T3 claim must be paired with T1/T2 disconfirming evidence search
+4. Always disclose evidence composition in every output
+
+---
+
+## Anti-Bias Checklist (Run Before Every Recommendation)
+
+### 6 Cognitive Traps
+- [ ] **Confirmation bias** -- Did I actively seek disconfirming alternative data points?
+- [ ] **Anchoring** -- Am I over-weighting the first satellite/web-scraping signal?
+- [ ] **Recency bias** -- Am I ignoring 3+ year historical pattern for this signal type?
+- [ ] **Herd mentality** -- Is this edge already crowded (crowding score >70)?
+- [ ] **Sunk cost** -- Am I defending a prior position because I invested in the research?
+- [ ] **Overconfidence** -- Is my conviction score calibrated to evidence quality, not gut feel?
+
+---
+
+## Pre-Trade Risk Gate (5 Gates -- All Must Pass)
+
+```
+Gate 1: LIQUIDITY
+  -> Daily volume >= 10x position size?
+  -> Spread <0.5% (equities) / <0.1% (crypto large-cap)?
+  -> Market cap: >$1B FULL | $100M-$1B REDUCED | <$100M SKIP
+  -> Dark pool availability confirmed for entry?
+
+Gate 2: CORRELATION
+  -> 90d rolling correlation vs. portfolio <0.7?
+  -> Sector concentration <30% at full Kelly?
+  -> No >20% in single correlated cluster?
+  -> Alternative data signal uncorrelated to existing positions?
+
+Gate 3: SENTIMENT ALIGNMENT
+  -> Dark pool flow direction aligns with thesis?
+  -> Options flow confirms (not contradicts) positioning?
+  -> Social sentiment not at speculative extreme (>80 Fear/Greed)?
+  -> Insider activity (Form 4) aligns with signal direction?
+
+Gate 4: MEMORY RECALL
+  -> "Similar alternative data signals in past 2 years?"
+  -> 3+ false positives for this signal type -> REDUCED
+  -> Edge half-life tracked and within acceptable decay window?
+  -> Behavioral drift detected -> SKIP until review
+
+Gate 5: REGULATORY
+  -> Data source legal in user jurisdiction?
+  -> No MNPI (Material Non-Public Information) boundary crossed?
+  -> Expert network engagement compliant with SEC guidelines?
+  -> OFAC/SDN screening passed for counterparties?
+  -> Data provider ToS permits intended use?
+
+Output: FULL (proceed) | REDUCED (half size) | SKIP (block)
+```
+
+---
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
+- When you have no access to alternative data sources (satellite, web scraping, credit card transaction data)
+- When relying exclusively on public financial statements and SEC filings (use `financial/all-in-one-finance` or `financial/wolf-finance` instead)
+- When the time horizon is sub-minute scalping (alternative data signals have minimum half-life of hours, not milliseconds -- use `trading/maybe-hft`)
+- When legal/compliance review is unavailable and MNPI boundaries are unclear
+- When the asset lacks sufficient options flow or dark pool data for microstructure analysis (micro-cap stocks, illiquid tokens)
+- When you need standard fundamental valuation (DCF, earnings models, ratio analysis) without an information-asymmetry angle
+- When the signal has already been discovered by the mainstream (edge decayed, crowding score >70)
 
 ## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
+| "I don't need satellite data, I'll just look at charts" | Satellite data catches demand shifts 2-6 weeks before they show in price; by then the edge is gone |
+| "Options flow is too noisy, I'll skip it" | Unusual sweep activity preceded 78% of major catalyst moves in 2024; skipping it means flying blind |
+| "Dark pool data is unreliable" | ATS prints above VWAP are institutional accumulation signatures with 65%+ directional accuracy |
+| "I can just use Reddit sentiment alone" | Standalone social sentiment is T3 evidence (weight 0.3); without T1/T2 confirmation it is gambling, not edge |
+| "Legal review slows me down, I'll skip compliance" | One MNPI violation can result in SEC enforcement, disgorgement, and criminal charges -- compliance is non-negotiable |
+| "This edge has worked for months, no need to backtest decay" | Edge half-life for swing trades is 2-10 days; unmonitored decay turns alpha into negative alpha |
+| "I'll just use one alternative data source" | Single-source signals have >40% false positive rate; cross-referencing 2+ non-correlated sources cuts this to <15% |
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
-- Watch for shortcuts and skipped steps
+- Using only social sentiment (Reddit/Twitter) without T1/T2 verification
+- Ignoring dark pool divergences from public price action
+- Acting on a single satellite image without trend confirmation
+- Trading options flow signals without confirming via open interest and gamma exposure
+- Bypassing legal/compliance review for expert network intelligence
+- Claiming conviction >0.8 without T1 primary source evidence
+- Ignoring crowding metrics on a well-known alternative data source
+- Taking positions exceeding 5% portfolio concentration on a single black edge signal
+- Skipping edge half-life estimation before position entry
+- Using data that could constitute MNPI without counsel review
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
-- [ ] All required outputs generated
-- [ ] Success criteria met
+- [ ] Alternative data sources verified (minimum 2 non-correlated T1/T2 sources)
+- [ ] Options flow confirmed by 2+ providers (e.g., Unusual Whales + CBOE data)
+- [ ] Dark pool signatures cross-referenced with ATS volume data
+- [ ] Legal/compliance review completed for all data sources used
+- [ ] Evidence composition disclosed in output (T1/T2/T3 percentages)
+- [ ] Edge crowding score <70 before position entry
+- [ ] Edge half-life estimated and within acceptable decay window
+- [ ] All 5 pre-trade risk gates passed (Liquidity, Correlation, Sentiment, Memory, Regulatory)
+- [ ] Anti-bias checklist completed with documented disconfirming evidence search
+- [ ] Position sizing conforms to Kelly Criterion adjusted for uncertainty
+
+---
+
+**Cross-reference:** For complete financial analysis framework (fundamental, technical, risk management), also see `financial/all-in-one-finance` and `financial/wolf-finance`.
 

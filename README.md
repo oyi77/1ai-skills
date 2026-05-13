@@ -1,8 +1,8 @@
-# 1ai-Skills — 216 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 220 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 213](https://img.shields.io/badge/skills-216-blue)](https://github.com/oyi77/1ai-skills)
+[![Skills: 220](https://img.shields.io/badge/skills-220-blue)](https://github.com/oyi77/1ai-skills)
 [![Categories: 16](https://img.shields.io/badge/categories-16-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **216 production-ready AI agent skills** organized across **16 categories**. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **220 production-ready AI agent skills** organized across **16 categories**. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 12 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -59,7 +59,7 @@ git submodule add https://github.com/oyi77/1ai-skills.git skills
 
 ## What's New in v3.1 — Anatomy & Structure Improvements
 
-Based on analysis of [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills), we've standardized all 216 skills with **complete anatomy**:
+Based on analysis of [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills), we've standardized all 220 skills with **complete anatomy**:
 
 ### 📚 New `references/` Directory
 Shared checklists to reduce token usage (replaces duplicated content in skills):
@@ -96,7 +96,7 @@ Maps all 216 skills to the software development lifecycle:
 - **REVIEW** → review skills (code-reviewer, self-assessment)
 - **SHIP** → shipping skills (SEO optimizer, viral marketing, growth engine)
 
-### 🔧 Standardized Anatomy (ALL 216 Skills)
+### 🔧 Standardized Anatomy (ALL 220 Skills)
 Every SKILL.md now has complete sections:
 - ✅ **When NOT to Use** — Exclusion cases (prevents misuse)
 - ✅ **Common Rationalizations** — Excuse/reality tables (prevents skipping steps)
@@ -113,16 +113,17 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 213 Skills by Category
+## All 220 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
 | **research/** | 25 | McKinsey analysis, deep research, Polymarket analyst, continuous learning |
 | **core/** | 24 | Self-improvement, memory systems, AI orchestration, session brain |
-| **content/** | 22 | Video generation, AI podcast, faceless YouTube, humanizer, Seedance |
-| **marketing/** | 21 | SEO optimizer, viral marketing, growth engine, Twitter automation |
+| **content/** | 23 | Remotion video engine, video generation, AI podcast, faceless YouTube, humanizer, Seedance |
+| **marketing/** | 22 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation |
 | **automation/** | 21 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers |
 | **development/** | 17 | TDD, systematic debugging, code review, PRD generator, git worktrees |
+| **financial/** | 14 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck |
 | **agents/** | 14 | Research, review, planning, code, deploy, refactor, linter, security |
 | **integrations/** | 11 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs |
 | **operations/** | 10 | Finance ops, revenue team, project management, payment invoicing |
@@ -144,16 +145,25 @@ Skills now reference each other (not duplicate content):
 - **Skill Evolution** — Version control for AI skills with safe rollback
 
 ### Trading and Finance
+- **All-in-One Finance** — 16-module institutional suite: equities, crypto, forex, commodities, fixed income, derivatives with evidence tiers and risk gates
+- **Wolf Finance** — 22-module multi-asset intelligence: all above plus corporate finance, wealth management, quant strategies, compliance/KYC
 - **Black Edge** — Hidden market intelligence from satellite imagery, dark pools, options flow
 - **AlphaEar Strategy** — Multi-signal trading: news + sentiment + options
 - **Value Investing** — Warren Buffett's capital allocation framework
 - **Rothschild Dynasty** — 250-year wealth preservation methodology
 
 ### Marketing and Growth
+- **Marketing Ops** — Complete AI CMO for solo founders: research, content, SEO/GEO/SMO, ads, email, sales, CRO, pricing, retention, stage playbooks ($0→$100K MRR)
 - **SEO Optimizer** — Full-stack SEO with content attack briefs and GSC optimization
 - **Viral Marketing** — Gary Vaynerchuk's high-volume content machine
 - **Growth Engine** — Automated A/B testing with Bayesian statistical validation
 - **Twitter Automation** — AI-powered posting, engagement, and audience growth
+
+### Content & Media
+- **Remotion** — Programmatic video engine: React-based rendering, 16+ genres, TTS pipeline, post-processing (anime, cinematic, influencer, podcast, promo, docs)
+- **AI Podcast** — Joe Rogan/Malcolm Gladwell style podcast creation
+- **Faceless YouTube** — MrBeast-style automated YouTube content
+- **Seedance** — Cinematic AI video production
 
 ### Engineering
 - **Systematic Debugging** — Evidence-driven root cause analysis

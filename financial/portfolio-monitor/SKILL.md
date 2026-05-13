@@ -167,3 +167,6 @@ After completing portfolio review, confirm:
 - PitchBook MCP — For private market multiples!
 
 Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
+
+---
+**Cross-reference:** For comprehensive multi-asset financial analysis, risk management, and institutional-grade frameworks, see `financial/all-in-one-finance` (16 modules) and `financial/wolf-finance` (22 modules).

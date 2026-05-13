@@ -1,0 +1,83 @@
+# Email Marketing — Configuration
+# Customize before deployment
+
+# ============================================
+# EMAIL SETTINGS
+# ============================================
+email:
+  default_from_name: "Default Sender"
+  default_reply_to: "reply@example.com"
+  compliance:
+    can_spam: true                   # US: CAN-SPAM compliance
+    gdpr: true                       # EU: GDPR compliance
+    ccpa: false                      # US California: CCPA compliance
+    double_optin: true               # Require double opt-in
+
+  # Sequence templates
+  sequences:
+    welcome: true                    # 5-email welcome sequence
+    nurture: true                    # 7-email nurture sequence
+    launch: true                     # 5-email product launch
+    winback: true                    # 3-email re-engagement
+    abandoned_cart: true             # 3-email cart recovery
+    reengagement: true               # 2-email sunset flow
+
+  # Delivery settings
+  delivery:
+    max_emails_per_day: 500          # Daily sending limit
+    throttle_rate: 50                # Emails per minute
+    spam_score_max: 3                # Max SpamAssassin score
+    warmup_required: true            # Gradual IP warmup for new senders
+
+# ============================================
+# COPYWRITING
+# ============================================
+copywriting:
+  subject_line:
+    max_length: 60                   # Chars (mobile truncation)
+    personalization: true            # Include {first_name}
+    emoji_allowed: true              # But max 1-2 per subject
+    a_b_testing: true                # Split test subject lines
+  body:
+    min_length: 150                  # Min word count
+    max_length: 500                  # Max word count (attention span)
+    plain_text_fallback: true        # Always include text version
+    tracking_pixels: false           # Privacy-first default
+
+# ============================================
+# ANALYTICS
+# ============================================
+analytics:
+  track:
+    opens: true
+    clicks: true
+    unsubscribes: true
+    bounces: true
+    spam_complaints: true
+  benchmarks:
+    target_open_rate: 0.25           # 25% open rate target
+    target_click_rate: 0.03          # 3% CTR target
+    max_unsubscribe_rate: 0.005      # 0.5% max per campaign
+    max_bounce_rate: 0.02            # 2% max hard bounce rate
+
+# ============================================
+# A/B TESTING
+# ============================================
+ab_testing:
+  enabled: true
+  test_subject_lines: true
+  test_cta: true
+  test_timing: true                  # Day/time variations
+  sample_size_min: 1000              # Minimum sample for statistical significance
+  confidence_level: 0.95             # 95% confidence required
+
+# ============================================
+# CROSS-REFERENCES
+# ============================================
+cross_references:
+  - marketing/marketing-ops          # Full marketing & sales operating system
+  - marketing/content-creator        # Content strategy integration
+  - marketing/analytics-dashboard    # Analytics and tracking
+  - marketing/viral-marketing         # Viral growth integration
+  - content/writing/email-writer     # Email copywriting expertise
+  - references/marketing-checklist.md # Shared marketing checklist
