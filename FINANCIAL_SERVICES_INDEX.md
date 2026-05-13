@@ -32,6 +32,13 @@ Map financial skills to the workflows from [anthropics/financial-services](https
 | `financial/tax-loss-harvesting` | financial | *New* (identify TLH opportunities, wash sales) |
 | `financial/ai-readiness` | financial | *New* (assess portfolio company AI readiness) |
 
+## 🚀 New Comprehensive Finance Suites (v3.2)
+
+| New Skill | Category | Coverage |
+|-----------|----------|----------|
+| `financial/all-in-one-finance` | financial | 16-module suite: equities (fundamental + technical), crypto (onchain + forensic), macro liquidity, sentiment, forex, commodities, fixed income, options/derivatives, risk guardian, algo execution, memory protocol, report orchestrator, news aggregator, predictor/Kronos |
+| `financial/wolf-finance` | financial | 22-module institutional suite: all 16 all-in-one modules plus corporate finance (M&A/LBO/IPO), private markets (PE/VC/HF), wealth management, quant strategies, macro geopolitical, compliance/KYC |
+
 ## 🔨 Investment Banking (Compare to `investment-banking` plugin)
 
 | Skill | anthropics Equivalent | What's Missing |

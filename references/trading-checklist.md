@@ -80,3 +80,14 @@ Shared reference for trading-related skills. Load this when doing trading/financ
 - Ignoring correlation (all positions move same direction)
 - Trading with rent money (emotional decisions)
 - No journal/tracking (can't learn from mistakes)
+
+## Related Skills
+
+For deeper analysis frameworks, use these companion skills:
+- **financial/all-in-one-finance** — 16-module suite: equity fundamental/technical, crypto onchain/forensic, macro liquidity, sentiment, forex, commodities, fixed income, options, risk guardian, algo execution, report orchestrator
+- **financial/wolf-finance** — 22-module institutional suite: all 16 above plus corporate finance, private markets, wealth management, quant strategies, macro geopolitical, compliance/KYC
+- **trading/black-edge** — Alternative data synthesis, dark pool signatures, options flow anomalies
+- **trading/alphaear-strategy** — Multi-signal: news aggregation + sentiment + options flow + Kronos prediction
+- **trading/value-investing** — Warren Buffett capital allocation framework
+- **financial/model-builder** — DCF, LBO, 3-statement Excel models with live data connections
+- **financial/risk-guardian** — Position sizing, Kelly, VaR, drawdown limits, correlation checks

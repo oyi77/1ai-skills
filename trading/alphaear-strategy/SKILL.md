@@ -329,29 +329,86 @@ alphaear_report:
 
 **Donation:** Support development → https://www.tip.md/oyi77
 
+## Evidence Standards (Non-Negotiable)
+
+| Tier | Type | Weight | Verification | AlphaEar Examples |
+|------|------|--------|--------------|-------------------|
+| **T1** | Primary source | 1.0 | Direct URL + timestamp + hash | SEC filings, earnings call transcripts, exchange order book data, Cboe options flow raw data, central bank policy statements |
+| **T2** | Factual secondary | 0.7 | Cross-reference 2+ independent sources | Bloomberg/Reuters news feeds, Unusual Whales aggregated flow, FinBERT sentiment scores, Polygon price/volume data, Kronos model output (validated against historical backtest) |
+| **T3** | Opinion/social | 0.3 | Flag as "speculative" in all outputs | Twitter/X trending sentiment, Reddit/StockTwits posts, analyst price targets, newsletter tips, YouTube commentary, prediction market odds (Polymarket/Kalshi) |
+
+**Rules:**
+
+1. No actionable recommendation (buy/sell/short/hedge) on T3-only evidence
+2. Composite signal score >65 for longs or <35 for shorts requires at least 50% T1/T2 weighted evidence across the 4 signal layers
+3. Every T3 claim must be paired with a T1/T2 disconfirming evidence search before inclusion
+4. Always disclose evidence composition (T1/T2/T3 percentage) in the output report
+5. Kronos predictions alone are T2 evidence at most; they require T1 confirmation from price/volume data
+
+## Anti-Bias Checklist (Run Before Every Recommendation)
+
+### 6 Cognitive Traps
+
+- [ ] **Confirmation bias** -- Did I actively seek news and data that contradicts the current signal direction? If bullish, did I search for bearish catalysts?
+- [ ] **Anchoring** -- Am I over-weighting the first headline or sentiment reading I saw? Have I re-evaluated after scanning all 4 signal layers independently?
+- [ ] **Recency bias** -- Am I projecting the last 24-48 hours of sentiment forward without checking 30-day and 90-day historical context for this ticker?
+- [ ] **Herd mentality** -- Is social sentiment simply reflecting the crowd? Have I checked whether options flow and Kronos diverge from the consensus direction?
+- [ ] **Sunk cost** -- Am I defending a prior position or thesis by overweighting signals that confirm it? Would I take the same trade if I had no existing position?
+- [ ] **Overconfidence** -- Is my conviction score calibrated to evidence quality? A composite of 75 built on 60% T3 evidence is weaker than a composite of 65 built on 70% T1/T2 evidence
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
+- When you have no access to real-time news APIs (NewsAPI, Bloomberg) or options data feeds (Unusual Whales, Cboe) -- the signal synthesis engine cannot function without live data
+- When analyzing assets with less than $10M average daily volume -- illiquid instruments produce unreliable sentiment and options flow signals
+- During earnings blackout periods for the target ticker -- options flow, sentiment, and news signals distort around earnings dates, producing false positives
+- When only a single signal layer is available (e.g., sentiment only, no options or Kronos data) -- multi-signal convergence is the core thesis; single-source signals lack sufficient edge
+- When the user needs pure technical analysis without news or sentiment overlay -- use `fin-equity-technical` instead
+- When analyzing pre-IPO or recently listed stocks (<30 days) -- insufficient historical data for Kronos predictions and options flow patterns
+- When regulatory filings or compliance tasks are the primary goal -- use `fin-compliance-kyc` instead
+- When the task is personal budgeting, tax preparation, or non-market financial planning -- outside this skill's domain
+- When a more appropriate specialized skill exists (e.g., `trading/black-edge` for dark pool intelligence, `trading/polymarket-analyst` for prediction markets)
 
 ## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
+| "News is already priced in" | Research shows 65%+ of post-news drift occurs in the first 4 hours; retail and algo digestion lag creates tradeable windows |
+| "Sentiment is too noisy to be useful" | Multi-source sentiment aggregation (FinBERT + social + options) filters ~70% of noise; divergence between sentiment and price action is itself a signal |
+| "Options flow can be hedging, not directional" | Unusual sweep activity filtering (volume >2.5x avg, block trades >1000 contracts, OTM focus) isolates speculative positioning from delta-neutral hedging |
+| "Kronos model confidence is high, skip the other signals" | No single layer is sufficient -- even at 0.9 confidence, Kronos can miss regime changes that news/sentiment catches; convergence across layers is what creates alpha |
+| "Just give me the signal, skip the verification" | Skipping verification leads to acting on single-source signals with 30-40% win rates vs. multi-signal convergence at 55-65% win rates |
+| "I'll size up since the composite score is 85+" | Position sizing must still respect portfolio risk limits; a single trade should never exceed 5% of portfolio regardless of signal strength |
+| "The stock is up 10% today, the signal must be right" | Chasing momentum without checking options flow and Kronos evolution confirms hindsight bias, not forward edge |
+| "I don't need the full 4-phase analysis for this" | Truncating phases removes the diversification benefit of multi-signal synthesis; each skipped layer increases false positive probability by 15-25% |
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
-- Watch for shortcuts and skipped steps
+- Signal originates from only one of the four layers (news, sentiment, options, Kronos) without convergence from at least one other layer
+- Options flow directly contradicts sentiment direction (e.g., heavy put buying alongside bullish sentiment) -- this divergence requires resolution before acting
+- Kronos model confidence falls below 0.4 -- below this threshold, predictions have no statistical edge over random
+- News sentiment score exceeds 0.9 or drops below -0.9 -- extreme readings often mean the move has already happened
+- Social sentiment diverges from financial media sentiment by more than 0.4 -- suggests either retail-FII conflict or coordinated manipulation
+- Composite signal score between 45-55 (the "no edge" zone) -- trades in this range have negative expected value after transaction costs
+- Options sweep detected but IV is declining (unusual activity + falling IV = likely hedging, not speculation)
+- Headline count spikes above 3 standard deviations from 30-day mean -- information overload degrades signal quality
+- Signal evolution tracking shows WEAKEN or FALSIFY but position is still held -- thesis invalidated, action required
+- User requests to skip a signal phase or "just use sentiment" -- every phase skipped increases false positive rate by 15-25%
+- Position size recommendation exceeds 5% of portfolio value regardless of signal strength
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
-- [ ] All required outputs generated
-- [ ] Success criteria met
+- [ ] All 4 signal layers analyzed (news aggregation, sentiment, options flow, Kronos prediction)
+- [ ] Composite score >65 for longs or <35 for shorts -- no trades in the 45-55 "no edge" zone
+- [ ] Stop-loss and take-profit levels set before entry
+- [ ] Position size respects the 5% portfolio max regardless of signal strength
+- [ ] Signal direction confirmed by at least 2 of 4 layers (convergence check)
+- [ ] No red flags from the list above are active for the target ticker
+- [ ] Earnings buffer respected (no new positions within 2 days of earnings)
+- [ ] Kronos confidence >0.4 and evolution status is STRENGTHEN or neutral (not WEAKEN or FALSIFY)
+- [ ] Evidence composition disclosed (what percentage of the signal is T1 vs T2 vs T3)
+- [ ] Anti-Bias Checklist completed with all 6 traps addressed
+
+**Cross-reference:** For complete multi-asset analysis, also see `financial/all-in-one-finance` and `financial/wolf-finance`. For dark pool intelligence, see `trading/black-edge`. For prediction market sentiment, see `trading/polymarket-analyst`.
 

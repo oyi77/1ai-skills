@@ -2,7 +2,7 @@
 
 ## The World's Most Powerful AI Skill Ecosystem
 
-**106 skills** across **9 categories** featuring **20+ world-class personas**
+**220 skills** across **16 categories** featuring **20+ world-class personas**
 
 ---
 
@@ -29,7 +29,7 @@
 | polymarket-analyst | Prediction market experts | Probability analysis |
 | trendradar | Trend analysts | Trend detection |
 
-### 🎨 content/ (14 skills)
+### 🎨 content/ (15 skills)
 **Content Creation & Media**
 
 | Skill | Persona | Expertise |
@@ -46,8 +46,9 @@
 | video-editor | Professional editors | Post-production |
 | writing-skills | Neil Gaiman | Storytelling |
 | minimalist-design | Dieter Rams | Product design |
+| remotion | Remotion team (Jonny Burger) | Programmatic video |
 
-### 💼 marketing/ (18 skills)
+### 💼 marketing/ (19 skills)
 **Growth & Marketing**
 
 | Skill | Persona | Expertise |
@@ -67,6 +68,7 @@
 | stripe-revenue-bot | Indie hackers | Revenue sharing |
 | twitter-automation | Twitter growth hackers | X/Twitter growth |
 | viral-marketing | Gary Vaynerchuk | Content volume |
+| marketing-ops | AI CMO system | Full revenue lifecycle |
 
 ### 💻 development/ (13 skills)
 **Software Engineering**
