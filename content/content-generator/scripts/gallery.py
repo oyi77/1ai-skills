@@ -129,10 +129,21 @@ def get_stats(chat_id: str = None) -> dict:
     """Get gallery statistics"""
     where = f"WHERE chat_id = '{chat_id}'" if chat_id else ""
     with _conn() as conn:
-        total     = conn.execute(f"SELECT COUNT(*) FROM results {where}").fetchone()[0]
-        images    = conn.execute(f"SELECT COUNT(*) FROM results {where} {'AND' if where else 'WHERE'} type='image'").fetchone()[0] if total else 0
-        videos    = conn.execute(f"SELECT COUNT(*) FROM results {where} {'AND' if where else 'WHERE'} type='video'").fetchone()[0] if total else 0
-        total_cost = conn.execute(f"SELECT SUM(cost_usd) FROM results {where}").fetchone()[0] or 0
+        # ⚡ Bolt: Combined 4 aggregation queries into 1 to reduce redundant DB table scans and improve performance (~60% fewer queries).
+        row = conn.execute(f"""
+            SELECT
+                COUNT(*),
+                SUM(CASE WHEN type='image' THEN 1 ELSE 0 END),
+                SUM(CASE WHEN type='video' THEN 1 ELSE 0 END),
+                SUM(cost_usd)
+            FROM results {where}
+        """).fetchone()
+
+        total = row[0] if row and row[0] else 0
+        images = row[1] if row and row[1] else 0
+        videos = row[2] if row and row[2] else 0
+        total_cost = row[3] if row and row[3] else 0
+
         top_style = conn.execute(f"SELECT style, COUNT(*) as c FROM results {where} GROUP BY style ORDER BY c DESC LIMIT 1").fetchone()
     return {
         "total": total,
