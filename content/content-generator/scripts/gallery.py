@@ -127,13 +127,36 @@ def mark_posted(result_id: int, platform: str):
 
 def get_stats(chat_id: str = None) -> dict:
     """Get gallery statistics"""
-    where = f"WHERE chat_id = '{chat_id}'" if chat_id else ""
+    # Performance Optimization: Combine multiple count/sum queries into a single query
+    # using conditional aggregation to reduce database round-trips from 5 to 2.
+    query = """
+        SELECT
+            COUNT(*),
+            SUM(CASE WHEN type='image' THEN 1 ELSE 0 END),
+            SUM(CASE WHEN type='video' THEN 1 ELSE 0 END),
+            SUM(cost_usd)
+        FROM results
+    """
+    params = []
+    if chat_id:
+        query += " WHERE chat_id = ?"
+        params.append(str(chat_id))
+
     with _conn() as conn:
-        total     = conn.execute(f"SELECT COUNT(*) FROM results {where}").fetchone()[0]
-        images    = conn.execute(f"SELECT COUNT(*) FROM results {where} {'AND' if where else 'WHERE'} type='image'").fetchone()[0] if total else 0
-        videos    = conn.execute(f"SELECT COUNT(*) FROM results {where} {'AND' if where else 'WHERE'} type='video'").fetchone()[0] if total else 0
-        total_cost = conn.execute(f"SELECT SUM(cost_usd) FROM results {where}").fetchone()[0] or 0
-        top_style = conn.execute(f"SELECT style, COUNT(*) as c FROM results {where} GROUP BY style ORDER BY c DESC LIMIT 1").fetchone()
+        row = conn.execute(query, params).fetchone()
+
+        total = row[0] if row and row[0] is not None else 0
+        images = row[1] if row and row[1] is not None else 0
+        videos = row[2] if row and row[2] is not None else 0
+        total_cost = row[3] if row and row[3] is not None else 0
+
+        # Query top style separately since it requires GROUP BY and LIMIT
+        style_query = "SELECT style, COUNT(*) as c FROM results"
+        if chat_id:
+            style_query += " WHERE chat_id = ?"
+        style_query += " GROUP BY style ORDER BY c DESC LIMIT 1"
+        top_style = conn.execute(style_query, params).fetchone()
+
     return {
         "total": total,
         "images": images,
