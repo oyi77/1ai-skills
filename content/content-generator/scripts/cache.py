@@ -236,20 +236,22 @@ class Cache:
         with self._get_connection() as conn:
             now = time.time()
 
-            # Total entries
-            cursor = conn.execute("SELECT COUNT(*) as count FROM cache")
-            total = cursor.fetchone()["count"]
-
-            # Expired entries
             cursor = conn.execute(
-                "SELECT COUNT(*) as count FROM cache WHERE expires_at > 0 AND expires_at < ?",
-                (now,),
+                """
+                SELECT
+                    COUNT(*) as total,
+                    SUM(CASE WHEN expires_at > 0 AND expires_at < ? THEN 1 ELSE 0 END) as expired,
+                    SUM(size) as total_size
+                FROM cache
+                """,
+                (now,)
             )
-            expired = cursor.fetchone()["count"]
+            row = cursor.fetchone()
 
-            # Total size
-            cursor = conn.execute("SELECT SUM(size) as total FROM cache")
-            total_size = cursor.fetchone()["total"] or 0
+            # Use integer indices for compatibility per project guidelines
+            total = row[0] or 0
+            expired = row[1] or 0
+            total_size = row[2] or 0
 
             return {
                 "total_entries": total,
