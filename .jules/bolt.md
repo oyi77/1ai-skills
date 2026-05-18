@@ -5,3 +5,6 @@
 ## 2025-05-16 - [Optimize SQLite Aggregation Queries]
 **Learning:** Multiple sequential SQLite aggregation queries (e.g., counting types and summing costs) mapped directly to dictionary keys can severely bottleneck performance due to repeated database round-trips for the exact same filtered rows. Furthermore, f-strings were being used for SQL variables.
 **Action:** Always combine multiple aggregation queries into a single query using conditional aggregation (`SUM(CASE WHEN...)`) to reduce database round-trips. Always use parameterized queries (`?`) for variables instead of string interpolation.
+## 2026-05-18 - [Optimize SQLite Grouping and Aggregations]
+**Learning:** Functions like `get_session_cost` and `get_monthly_cost` fetched potentially large numbers of logs using `fetchall()` to memory just to compute counts, sums, and group statistics (like cost by day or cost by provider). This introduces massive Python loop overhead and database transfer costs. For datetime conversion, `datetime.fromtimestamp()` can be replaced by SQLite's native `date(created_at, 'unixepoch', 'localtime')`.
+**Action:** When calculating statistics across multiple rows, push aggregations (`SUM`, `COUNT`) and groupings (`GROUP BY`) into the SQLite database engine. Only retrieve the final aggregated result, preserving server memory and execution speed.

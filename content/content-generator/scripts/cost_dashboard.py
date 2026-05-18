@@ -65,22 +65,34 @@ def log_cost(provider: str, operation: str, chat_id: str = "system",
 
 def get_session_cost(chat_id: str, since_ts: int = None) -> dict:
     """Get cost for a chat session"""
-    query = "SELECT * FROM cost_log WHERE chat_id = ?"
+    # Performance Optimization: Replaced fetching all rows and manual aggregation
+    # with SQLite GROUP BY queries to reduce memory footprint and database roundtrips.
+    base_cond = "WHERE chat_id = ?"
     params = [str(chat_id)]
     if since_ts:
-        query += " AND created_at >= ?"
+        base_cond += " AND created_at >= ?"
         params.append(since_ts)
+
     with _conn() as conn:
-        rows = conn.execute(query, params).fetchall()
-    total = sum(r["total_cost"] for r in rows)
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = by_provider.get(r["provider"], 0) + r["total_cost"]
+        # Get total and count
+        total_query = f"SELECT SUM(total_cost), COUNT(*) FROM cost_log {base_cond}"
+        row = conn.execute(total_query, params).fetchone()
+
+        # Access by index as per project data access patterns
+        total = row[0] if row and row[0] is not None else 0.0
+        count = row[1] if row and row[1] is not None else 0
+
+        # Get by provider breakdown
+        prov_query = f"SELECT provider, SUM(total_cost) FROM cost_log {base_cond} GROUP BY provider"
+        prov_rows = conn.execute(prov_query, params).fetchall()
+
+        by_provider = {r[0]: r[1] for r in prov_rows if r[0] is not None}
+
     return {
         "total_usd": round(total, 4),
         "total_idr": round(total * IDR_RATE),
         "by_provider": {k: round(v, 4) for k, v in by_provider.items()},
-        "count": len(rows)
+        "count": count
     }
 
 
@@ -94,21 +106,34 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     next_mon  = 1 if month == 12 else month + 1
     end       = int(datetime(next_year, next_mon, 1).timestamp())
 
+    # Performance Optimization: Using SQLite aggregations rather than fetching all
+    # rows into memory and doing calculations in Python loops.
     with _conn() as conn:
-        rows = conn.execute(
-            "SELECT * FROM cost_log WHERE created_at >= ? AND created_at < ?",
-            (start, end)
-        ).fetchall()
+        # Get total and count
+        total_query = "SELECT SUM(total_cost), COUNT(*) FROM cost_log WHERE created_at >= ? AND created_at < ?"
+        row = conn.execute(total_query, (start, end)).fetchone()
+        total = row[0] if row and row[0] is not None else 0.0
+        transactions = row[1] if row and row[1] is not None else 0
 
-    total = sum(r["total_cost"] for r in rows)
-    by_day = {}
-    for r in rows:
-        day = datetime.fromtimestamp(r["created_at"]).strftime("%Y-%m-%d")
-        by_day[day] = round(by_day.get(day, 0) + r["total_cost"], 4)
+        # Get by day breakdown
+        day_query = """
+            SELECT date(created_at, 'unixepoch', 'localtime') as day, SUM(total_cost)
+            FROM cost_log
+            WHERE created_at >= ? AND created_at < ?
+            GROUP BY day
+        """
+        day_rows = conn.execute(day_query, (start, end)).fetchall()
+        by_day = {r[0]: round(r[1], 4) for r in day_rows if r[0] is not None}
 
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = round(by_provider.get(r["provider"], 0) + r["total_cost"], 4)
+        # Get by provider breakdown
+        prov_query = """
+            SELECT provider, SUM(total_cost)
+            FROM cost_log
+            WHERE created_at >= ? AND created_at < ?
+            GROUP BY provider
+        """
+        prov_rows = conn.execute(prov_query, (start, end)).fetchall()
+        by_provider = {r[0]: round(r[1], 4) for r in prov_rows if r[0] is not None}
 
     return {
         "period": f"{year}-{month:02d}",
@@ -116,7 +141,7 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
         "total_idr": round(total * IDR_RATE),
         "by_provider": by_provider,
         "by_day": dict(sorted(by_day.items())),
-        "transactions": len(rows),
+        "transactions": transactions,
         "budget_used_pct": round(total / 100 * 100, 1)  # Assuming $100 budget
     }
 
