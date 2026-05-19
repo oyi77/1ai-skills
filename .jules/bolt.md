@@ -5,3 +5,6 @@
 ## 2025-05-16 - [Optimize SQLite Aggregation Queries]
 **Learning:** Multiple sequential SQLite aggregation queries (e.g., counting types and summing costs) mapped directly to dictionary keys can severely bottleneck performance due to repeated database round-trips for the exact same filtered rows. Furthermore, f-strings were being used for SQL variables.
 **Action:** Always combine multiple aggregation queries into a single query using conditional aggregation (`SUM(CASE WHEN...)`) to reduce database round-trips. Always use parameterized queries (`?`) for variables instead of string interpolation.
+## 2026-05-19 - [Optimize SQLite Aggregation Queries with date function]
+**Learning:** When aggregating database records by day from a UNIX epoch timestamp, fetching all rows into Python and converting using `datetime.fromtimestamp()` in a loop introduces significant memory footprint overhead and slow execution.
+**Action:** Use SQLite's native `date(column, 'unixepoch', 'localtime')` function coupled with `GROUP BY` and `SUM/COUNT` aggregations to avoid fetching raw rows and drastically improve performance.
