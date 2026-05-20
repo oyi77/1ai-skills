@@ -1,3 +1,4 @@
+---
 name: trend-jacker
 description: Ride trending topics
 

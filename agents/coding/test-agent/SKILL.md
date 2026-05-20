@@ -1,3 +1,4 @@
+---
 name: test-agent
 description: Agent that writes comprehensive tests
 

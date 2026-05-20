@@ -1,3 +1,4 @@
+---
 name: code-agent
 description: Agent that writes and tests code
 

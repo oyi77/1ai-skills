@@ -1,3 +1,4 @@
+---
 name: gitlab-ci
 description: Create GitLab CI pipelines
 

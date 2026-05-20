@@ -1,3 +1,4 @@
+---
 name: meta-skill-datastore
 description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution history.
 persona:

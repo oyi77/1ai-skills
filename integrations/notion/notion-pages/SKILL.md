@@ -1,3 +1,4 @@
+---
 name: notion-pages
 description: Create and edit Notion pages
 

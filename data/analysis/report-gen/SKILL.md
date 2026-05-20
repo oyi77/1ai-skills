@@ -1,3 +1,4 @@
+---
 name: report-gen
 description: Generate automated reports
 

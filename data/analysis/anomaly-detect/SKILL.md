@@ -1,3 +1,4 @@
+---
 name: anomaly-detect
 description: Detect anomalies in data
 

@@ -1,3 +1,4 @@
+---
 name: planning-agent
 description: Agent that breaks tasks into plans
 

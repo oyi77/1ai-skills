@@ -1,3 +1,4 @@
+---
 name: self-assessment
 description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement.
 persona:
