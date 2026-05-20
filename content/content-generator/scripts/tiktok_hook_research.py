@@ -52,6 +52,7 @@ HOOK_PATTERNS = {
     },
 }
 
+
 # ── HTTP HELPERS ─────────────────────────────────────────────────────
 def post_json(url, payload, headers):
     data = json.dumps(payload).encode("utf-8")
@@ -141,7 +142,10 @@ def search_trending_videos(query: str, count: int = 20) -> List[Dict]:
     if query:
         query_lower = query.lower()
         for video in viral_videos:
-            if query_lower in video["caption"].lower() or query_lower in video["hashtags"].lower():
+            if (
+                query_lower in video["caption"].lower()
+                or query_lower in video["hashtags"].lower()
+            ):
                 simulated_results.append(video)
     else:
         simulated_results = viral_videos[:count]
@@ -162,11 +166,13 @@ def extract_hook_from_caption(caption: str) -> Dict:
     matches = []
     for pattern_name, pattern_data in HOOK_PATTERNS.items():
         if re.search(pattern_data["regex"], caption_clean, re.IGNORECASE):
-            matches.append({
-                "pattern_name": pattern_name,
-                "confidence": pattern_data["confidence"],
-                "template": pattern_data["template"],
-            })
+            matches.append(
+                {
+                    "pattern_name": pattern_name,
+                    "confidence": pattern_data["confidence"],
+                    "template": pattern_data["template"],
+                }
+            )
 
     if not matches:
         # Unknown pattern
@@ -192,7 +198,16 @@ def extract_hook_from_caption(caption: str) -> Dict:
 
 def extract_key_elements(text: str) -> Dict:
     """Extract key elements from text: relationship, constraint, action, result."""
-    relationships = ["landlord", "owner", "mum", "dad", "friend", "flatmate", "partner", "manager"]
+    relationships = [
+        "landlord",
+        "owner",
+        "mum",
+        "dad",
+        "friend",
+        "flatmate",
+        "partner",
+        "manager",
+    ]
     constraints = ["can't", "won't", "no", "refused", "denied", "rejected"]
     actions = ["showed", "proved", "demonstrated", "revealed", "displayed", "presented"]
     results = ["result", "outcome", "proof", "demonstration"]
@@ -225,15 +240,17 @@ def analyze_hook_patterns(videos: List[Dict]) -> Dict:
         htype = hook_data["hook_type"]
         if htype not in by_type:
             by_type[htype] = []
-        by_type[htype].append({
-            "video_id": videos[i]["video_id"],
-            "views": videos[i]["views"],
-            "likes": videos[i]["likes"],
-            "comments": videos[i]["comments"],
-            "shares": videos[i]["shares"],
-            "confidence": hook_data["confidence"],
-            "trending_score": hook_data["trending_score"],
-        })
+        by_type[htype].append(
+            {
+                "video_id": videos[i]["video_id"],
+                "views": videos[i]["views"],
+                "likes": videos[i]["likes"],
+                "comments": videos[i]["comments"],
+                "shares": videos[i]["shares"],
+                "confidence": hook_data["confidence"],
+                "trending_score": hook_data["trending_score"],
+            }
+        )
 
     # Calculate averages per type
     type_stats = {}
@@ -270,15 +287,21 @@ def analyze_hook_patterns(videos: List[Dict]) -> Dict:
     insights = []
     if top_types:
         top = top_types[0]
-        insights.append(f"Top performing hook: {top[0]} (avg {top[1]['avg_views']:,} views)")
+        insights.append(
+            f"Top performing hook: {top[0]} (avg {top[1]['avg_views']:,} views)"
+        )
 
         # Analyze top's characteristics
         if top[1]["count"] >= 3:
-            insights.append(f"High confidence - pattern proven across {top[1]['count']} videos")
+            insights.append(
+                f"High confidence - pattern proven across {top[1]['count']} videos"
+            )
 
         bottom = top_types[-1]
         if bottom[1]["count"] >= 3:
-            insights.append(f"Low performing hook: {bottom[0]} (avg {bottom[1]['avg_views']:,} views)")
+            insights.append(
+                f"Low performing hook: {bottom[0]} (avg {bottom[1]['avg_views']:,} views)"
+            )
 
     # Cross-reference with original patterns
     print(f"  ✅ Identified {len(type_stats)} hook types")
@@ -349,18 +372,26 @@ def generate_hook_templates(analysis: Dict) -> Dict:
 
 # ── MAIN ───────────────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(
-        description="TikTok Viral Hook Research System"
+    parser = argparse.ArgumentParser(description="TikTok Viral Hook Research System")
+    parser.add_argument(
+        "--mode",
+        required=True,
+        choices=["search", "extract", "analyze", "generate"],
+        help="Operation mode",
     )
-    parser.add_argument("--mode", required=True,
-                        choices=["search", "extract", "analyze", "generate"],
-                        help="Operation mode")
-    parser.add_argument("--query", default="interior design transformation",
-                        help="Search query (for search mode)")
-    parser.add_argument("--count", type=int, default=20,
-                        help="Number of videos to search (default: 20)")
-    parser.add_argument("--input", default=None,
-                        help="Input JSON file with video data (for extract/analyze modes)")
+    parser.add_argument(
+        "--query",
+        default="interior design transformation",
+        help="Search query (for search mode)",
+    )
+    parser.add_argument(
+        "--count", type=int, default=20, help="Number of videos to search (default: 20)"
+    )
+    parser.add_argument(
+        "--input",
+        default=None,
+        help="Input JSON file with video data (for extract/analyze modes)",
+    )
     args = parser.parse_args()
 
     print("=" * 70)
@@ -371,14 +402,20 @@ def main():
         videos = search_trending_videos(args.query, args.count)
 
         # Save search results
-        output_file = OUTPUT_DIR / f"search_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        output_file = (
+            OUTPUT_DIR / f"search_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(output_file, "w") as f:
-            json.dump({
-                "timestamp": datetime.now().isoformat(),
-                "query": args.query,
-                "count": args.count,
-                "videos": videos,
-            }, f, indent=2)
+            json.dump(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "query": args.query,
+                    "count": args.count,
+                    "videos": videos,
+                },
+                f,
+                indent=2,
+            )
 
         print(f"\n💾 Saved: {output_file}")
 
@@ -394,13 +431,19 @@ def main():
         hooks = [extract_hook_from_caption(v["caption"]) for v in videos]
 
         # Save extracted hooks
-        output_file = OUTPUT_DIR / f"hooks_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        output_file = (
+            OUTPUT_DIR / f"hooks_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(output_file, "w") as f:
-            json.dump({
-                "timestamp": datetime.now().isoformat(),
-                "source_file": args.input,
-                "hooks": hooks,
-            }, f, indent=2)
+            json.dump(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "source_file": args.input,
+                    "hooks": hooks,
+                },
+                f,
+                indent=2,
+            )
 
         print(f"\n💾 Saved: {output_file}")
 
@@ -416,13 +459,19 @@ def main():
         analysis = analyze_hook_patterns(videos)
 
         # Save analysis
-        output_file = OUTPUT_DIR / f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        output_file = (
+            OUTPUT_DIR / f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(output_file, "w") as f:
-            json.dump({
-                "timestamp": datetime.now().isoformat(),
-                "source_file": args.input,
-                "analysis": analysis,
-            }, f, indent=2)
+            json.dump(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "source_file": args.input,
+                    "analysis": analysis,
+                },
+                f,
+                indent=2,
+            )
 
         print(f"\n💾 Saved: {output_file}")
 
@@ -444,13 +493,19 @@ def main():
         templates = generate_hook_templates(analysis)
 
         # Save templates
-        output_file = OUTPUT_DIR / f"templates_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        output_file = (
+            OUTPUT_DIR / f"templates_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(output_file, "w") as f:
-            json.dump({
-                "timestamp": datetime.now().isoformat(),
-                "source_file": args.input,
-                "templates": templates,
-            }, f, indent=2)
+            json.dump(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "source_file": args.input,
+                    "templates": templates,
+                },
+                f,
+                indent=2,
+            )
 
         print(f"\n💾 Saved: {output_file}")
         print("\n📋 TEMPLATES READY FOR CONTENT GENERATION:")

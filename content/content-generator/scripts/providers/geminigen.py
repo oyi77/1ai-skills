@@ -45,7 +45,9 @@ class GeminiGenProvider(AIProvider):
         model = model or self.get_default_model()
         if not self.validate_api_key():
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": "No API key configured"},
             )
 
@@ -79,9 +81,13 @@ class GeminiGenProvider(AIProvider):
 
                 # If async task, poll for result
                 if data.get("task_id"):
-                    data = await self._wait_for_result(session, headers, data["task_id"])
+                    data = await self._wait_for_result(
+                        session, headers, data["task_id"]
+                    )
 
-                image_url = data.get("image_url") or data.get("url") or data.get("output")
+                image_url = (
+                    data.get("image_url") or data.get("url") or data.get("output")
+                )
                 return GenerationResult(
                     success=bool(image_url),
                     data=image_url,
@@ -95,13 +101,19 @@ class GeminiGenProvider(AIProvider):
             raise
         except Exception as e:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": str(e)},
             )
 
     async def _wait_for_result(
-        self, session: aiohttp.ClientSession, headers: dict, task_id: str,
-        max_polls: int = 30, interval: float = 2.0,
+        self,
+        session: aiohttp.ClientSession,
+        headers: dict,
+        task_id: str,
+        max_polls: int = 30,
+        interval: float = 2.0,
     ) -> dict:
         """Poll for async task completion."""
         for _ in range(max_polls):
@@ -141,9 +153,11 @@ class GeminiGenProvider(AIProvider):
 
 class RateLimitError(Exception):
     """Raised when a provider hits rate limits (HTTP 429)."""
+
     pass
 
 
 class APIError(Exception):
     """Raised when a provider API returns an error."""
+
     pass

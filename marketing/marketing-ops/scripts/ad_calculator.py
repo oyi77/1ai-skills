@@ -30,7 +30,7 @@ def calculate_ecommerce(budget, cpc, conv_rate, avg_order_value, margin_pct=50):
             "cost_per_click": f"${cpc:.2f}",
             "conversion_rate": f"{conv_rate}%",
             "avg_order_value": f"${avg_order_value:.2f}",
-            "profit_margin": f"{margin_pct}%"
+            "profit_margin": f"{margin_pct}%",
         },
         "projections": {
             "clicks": f"{clicks:,.0f}",
@@ -42,7 +42,7 @@ def calculate_ecommerce(budget, cpc, conv_rate, avg_order_value, margin_pct=50):
             "net_profit_after_ads": f"${net_profit:,.2f}",
         },
         "verdict": "PROFITABLE" if net_profit > 0 else "UNPROFITABLE",
-        "breakeven_roas": f"{1/(margin_pct/100):.1f}x" if margin_pct > 0 else "N/A"
+        "breakeven_roas": f"{1/(margin_pct/100):.1f}x" if margin_pct > 0 else "N/A",
     }
 
 
@@ -61,7 +61,7 @@ def calculate_leadgen(budget, cost_per_lead, close_rate, ltv):
             "monthly_budget": f"${budget:,.2f}",
             "cost_per_lead": f"${cost_per_lead:.2f}",
             "close_rate": f"{close_rate}%",
-            "customer_ltv": f"${ltv:,.2f}"
+            "customer_ltv": f"${ltv:,.2f}",
         },
         "projections": {
             "leads_generated": f"{leads:,.0f}",
@@ -69,15 +69,19 @@ def calculate_leadgen(budget, cost_per_lead, close_rate, ltv):
             "total_ltv_revenue": f"${total_revenue:,.2f}",
             "customer_acquisition_cost": f"${cac:.2f}",
             "ltv_to_cac_ratio": f"{ltv_cac_ratio:.1f}:1",
-            "roi": f"{roi_pct:.0f}%"
+            "roi": f"{roi_pct:.0f}%",
         },
-        "verdict": "HEALTHY" if ltv_cac_ratio >= 3 else ("MARGINAL" if ltv_cac_ratio >= 1 else "UNSUSTAINABLE"),
+        "verdict": (
+            "HEALTHY"
+            if ltv_cac_ratio >= 3
+            else ("MARGINAL" if ltv_cac_ratio >= 1 else "UNSUSTAINABLE")
+        ),
         "benchmark_notes": {
             "below_1_to_1": "Losing money on every customer. Fix urgently.",
             "1_to_2": "Unsustainable. Reduce CAC or increase LTV.",
             "3_to_1": "Healthy. Standard target.",
-            "5_plus": "Very efficient. Could spend more to grow faster."
-        }
+            "5_plus": "Very efficient. Could spend more to grow faster.",
+        },
     }
 
 
@@ -96,7 +100,7 @@ def calculate_funnel_math(target_revenue, avg_deal_size, close_rate, lead_rate, 
             "required_leads": f"{required_leads:,.0f} (at {close_rate}% close rate)",
             "required_clicks": f"{required_clicks:,.0f} (at {lead_rate}% lead capture rate)",
             "required_budget": f"${required_budget:,.2f}/month (at ${cpc:.2f} CPC)",
-        }
+        },
     }
 
 
@@ -108,33 +112,53 @@ def main():
     ecom = subparsers.add_parser("ecom", help="E-commerce ROAS calculation")
     ecom.add_argument("--budget", type=float, required=True, help="Monthly ad budget")
     ecom.add_argument("--cpc", type=float, required=True, help="Cost per click")
-    ecom.add_argument("--conv-rate", type=float, required=True, help="Conversion rate (%)")
-    ecom.add_argument("--avg-order", type=float, required=True, help="Average order value")
+    ecom.add_argument(
+        "--conv-rate", type=float, required=True, help="Conversion rate (%)"
+    )
+    ecom.add_argument(
+        "--avg-order", type=float, required=True, help="Average order value"
+    )
     ecom.add_argument("--margin", type=float, default=50, help="Profit margin (%)")
 
     # Lead gen mode
     lead = subparsers.add_parser("leadgen", help="Lead generation ROI calculation")
     lead.add_argument("--budget", type=float, required=True, help="Monthly ad budget")
     lead.add_argument("--cpl", type=float, required=True, help="Cost per lead")
-    lead.add_argument("--close-rate", type=float, required=True, help="Lead-to-customer rate (%)")
-    lead.add_argument("--ltv", type=float, required=True, help="Customer lifetime value")
+    lead.add_argument(
+        "--close-rate", type=float, required=True, help="Lead-to-customer rate (%)"
+    )
+    lead.add_argument(
+        "--ltv", type=float, required=True, help="Customer lifetime value"
+    )
 
     # Funnel math mode
     funnel = subparsers.add_parser("funnel", help="Reverse funnel calculation")
-    funnel.add_argument("--target", type=float, required=True, help="Target monthly revenue")
-    funnel.add_argument("--deal-size", type=float, required=True, help="Average deal size")
-    funnel.add_argument("--close-rate", type=float, required=True, help="Close rate (%)")
-    funnel.add_argument("--lead-rate", type=float, required=True, help="Click-to-lead rate (%)")
+    funnel.add_argument(
+        "--target", type=float, required=True, help="Target monthly revenue"
+    )
+    funnel.add_argument(
+        "--deal-size", type=float, required=True, help="Average deal size"
+    )
+    funnel.add_argument(
+        "--close-rate", type=float, required=True, help="Close rate (%)"
+    )
+    funnel.add_argument(
+        "--lead-rate", type=float, required=True, help="Click-to-lead rate (%)"
+    )
     funnel.add_argument("--cpc", type=float, required=True, help="Cost per click")
 
     args = parser.parse_args()
 
     if args.mode == "ecom":
-        result = calculate_ecommerce(args.budget, args.cpc, args.conv_rate, args.avg_order, args.margin)
+        result = calculate_ecommerce(
+            args.budget, args.cpc, args.conv_rate, args.avg_order, args.margin
+        )
     elif args.mode == "leadgen":
         result = calculate_leadgen(args.budget, args.cpl, args.close_rate, args.ltv)
     elif args.mode == "funnel":
-        result = calculate_funnel_math(args.target, args.deal_size, args.close_rate, args.lead_rate, args.cpc)
+        result = calculate_funnel_math(
+            args.target, args.deal_size, args.close_rate, args.lead_rate, args.cpc
+        )
     else:
         parser.print_help()
         sys.exit(1)

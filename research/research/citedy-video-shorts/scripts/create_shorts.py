@@ -27,13 +27,13 @@ DURATION_CONFIGS = {
 
 STYLE_PROMPTS = {
     "educational": "Create an informative, clear short video script. Use simple language, "
-                   "present one key insight per scene. End with a takeaway.",
+    "present one key insight per scene. End with a takeaway.",
     "entertaining": "Create a fun, engaging short video script. Use humor, surprise, "
-                    "or storytelling. Hook the viewer in the first 2 seconds.",
+    "or storytelling. Hook the viewer in the first 2 seconds.",
     "promotional": "Create a compelling product/brand short video script. Lead with the "
-                   "problem, show the solution, end with a clear call-to-action.",
+    "problem, show the solution, end with a clear call-to-action.",
     "storytelling": "Create a narrative-driven short video script. Use tension, "
-                    "character, and resolution. Make the viewer feel something.",
+    "character, and resolution. Make the viewer feel something.",
 }
 
 
@@ -118,7 +118,7 @@ def generate_script_template(topic, duration, style, use_llm=True):
         "duration_sec": duration,
         "style": style,
         "scenes": scenes,
-        "note": "Template generated — fill in bracketed placeholders or re-run with OmniRoute"
+        "note": "Template generated — fill in bracketed placeholders or re-run with OmniRoute",
     }
 
 
@@ -133,31 +133,46 @@ def to_postbridge_payload(script_data, topic):
             "duration_sec": script_data.get("duration_sec", 30),
             "scenes": script_data.get("scenes", []),
             "hashtags": [],
-            "style": script_data.get("style", "educational")
+            "style": script_data.get("style", "educational"),
         },
         "metadata": {
             "generated_at": datetime.now().isoformat(),
             "generator": "citedy-video-shorts",
-            "status": "draft"
-        }
+            "status": "draft",
+        },
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description="Generate short-form video scripts")
     parser.add_argument("--topic", required=True, help="Video topic")
-    parser.add_argument("--duration", type=int, choices=[15, 30, 60], default=30,
-                        help="Duration in seconds (default: 30)")
-    parser.add_argument("--style", choices=list(STYLE_PROMPTS.keys()),
-                        default="educational", help="Script style")
-    parser.add_argument("--output", choices=["json", "markdown", "postbridge"],
-                        default="markdown", help="Output format")
-    parser.add_argument("--no-llm", action="store_true",
-                        help="Skip LLM, output template only")
+    parser.add_argument(
+        "--duration",
+        type=int,
+        choices=[15, 30, 60],
+        default=30,
+        help="Duration in seconds (default: 30)",
+    )
+    parser.add_argument(
+        "--style",
+        choices=list(STYLE_PROMPTS.keys()),
+        default="educational",
+        help="Script style",
+    )
+    parser.add_argument(
+        "--output",
+        choices=["json", "markdown", "postbridge"],
+        default="markdown",
+        help="Output format",
+    )
+    parser.add_argument(
+        "--no-llm", action="store_true", help="Skip LLM, output template only"
+    )
     args = parser.parse_args()
 
-    script = generate_script_template(args.topic, args.duration, args.style,
-                                       use_llm=not args.no_llm)
+    script = generate_script_template(
+        args.topic, args.duration, args.style, use_llm=not args.no_llm
+    )
 
     if args.output == "json":
         print(json.dumps(script, ensure_ascii=False, indent=2))

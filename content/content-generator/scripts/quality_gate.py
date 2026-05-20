@@ -3,6 +3,7 @@ Quality Gate — Preview image before spending on I2V
 Shows generated image to user → confirm/regenerate/cancel
 Saves ~50% cost by catching bad images early.
 """
+
 import os, json, time
 
 GATE_FILE = "/home/openclaw/.openclaw/workspace/output/quality_gates.json"
@@ -16,7 +17,7 @@ def save_gate(chat_id: str, image_path: str, context: dict):
         "image_path": image_path,
         "context": context,
         "status": "pending",
-        "created_at": time.time()
+        "created_at": time.time(),
     }
     _save_all(gates)
 
@@ -66,8 +67,6 @@ def build_preview_message(image_path: str) -> tuple[str, list]:
             {"text": "🚀 Lanjut ke Video!", "callback_data": "gate:approve"},
             {"text": "🔄 Generate Ulang", "callback_data": "gate:retry"},
         ],
-        [
-            {"text": "❌ Batal", "callback_data": "gate:cancel"}
-        ]
+        [{"text": "❌ Batal", "callback_data": "gate:cancel"}],
     ]
     return text, buttons

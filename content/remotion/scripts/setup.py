@@ -33,7 +33,7 @@ import argparse
 # ── SCRIPT TEMPLATES ──────────────────────────────────────────
 
 SCRIPT_TEMPLATES = {
-    'narrated': {
+    "narrated": {
         "title": "Judul Video Saya",
         "description": "Deskripsi singkat tentang video ini.",
         "language": "id",
@@ -43,32 +43,32 @@ SCRIPT_TEMPLATES = {
                 "title": "Pembukaan",
                 "narration": "Selamat datang! Hari ini kita akan membahas topik yang sangat penting.",
                 "background": "gradient-blue",
-                "notes": "Antusias, energik"
+                "notes": "Antusias, energik",
             },
             {
                 "id": "point1",
                 "title": "Poin Pertama",
                 "narration": "Pertama, kita perlu memahami konsep dasar dari topik ini.",
                 "background": "dark",
-                "notes": "Jelas dan informatif"
+                "notes": "Jelas dan informatif",
             },
             {
                 "id": "point2",
                 "title": "Poin Kedua",
                 "narration": "Kedua, mari kita lihat bagaimana menerapkannya secara praktis.",
                 "background": "dark",
-                "notes": ""
+                "notes": "",
             },
             {
                 "id": "outro",
                 "title": "Penutup",
                 "narration": "Itulah yang perlu Anda ketahui. Terima kasih sudah menonton!",
                 "background": "gradient-purple",
-                "notes": "Hangat, mengundang aksi"
-            }
-        ]
+                "notes": "Hangat, mengundang aksi",
+            },
+        ],
     },
-    'product': {
+    "product": {
         "title": "Nama Produk Saya",
         "product_name": "ProMax X1",
         "tagline": "Rethink everything.",
@@ -81,39 +81,39 @@ SCRIPT_TEMPLATES = {
                 "title": "Cold Open",
                 "narration": "Apa yang akan kamu lakukan jika ada produk yang bisa mengubah hidupmu?",
                 "background": "dark",
-                "notes": "Misterius, penasaran"
+                "notes": "Misterius, penasaran",
             },
             {
                 "id": "problem",
                 "title": "Masalah",
                 "narration": "Selama ini kamu mungkin sudah mencoba berbagai solusi. Tapi tidak ada yang benar-benar berhasil.",
                 "background": "dark",
-                "notes": "Empati"
+                "notes": "Empati",
             },
             {
                 "id": "solution",
                 "title": "Solusi",
                 "narration": "Sekarang ada jawabannya.",
                 "background": "brand",
-                "notes": "Revelation moment"
+                "notes": "Revelation moment",
             },
             {
                 "id": "features",
                 "title": "Fitur Unggulan",
                 "narration": "Dirancang untuk performa maksimal, dengan kualitas premium yang terjangkau.",
                 "background": "dark",
-                "notes": ""
+                "notes": "",
             },
             {
                 "id": "cta",
                 "title": "Call to Action",
                 "narration": "Order sekarang dan dapatkan gratis ongkir untuk hari ini saja.",
                 "background": "brand",
-                "notes": "Urgensi"
-            }
-        ]
+                "notes": "Urgensi",
+            },
+        ],
     },
-    'shortform': {
+    "shortform": {
         "title": "Short-Form Video",
         "platform": "tiktok",
         "hook": "Kamu PASTI nggak tahu ini...",
@@ -124,32 +124,32 @@ SCRIPT_TEMPLATES = {
                 "title": "Hook",
                 "narration": "Kamu PASTI nggak tahu fakta mengejutkan ini tentang bisnis online.",
                 "background": "dark",
-                "notes": "HARUS dalam 3 detik pertama"
+                "notes": "HARUS dalam 3 detik pertama",
             },
             {
                 "id": "body",
                 "title": "Isi",
                 "narration": "Kebanyakan orang berpikir mereka butuh modal besar untuk mulai. Padahal tidak.",
                 "background": "dark",
-                "notes": ""
+                "notes": "",
             },
             {
                 "id": "reveal",
                 "title": "Reveal",
                 "narration": "Yang kamu butuhkan hanya ini: konsistensi 30 hari pertama.",
                 "background": "dark",
-                "notes": "Punchline"
+                "notes": "Punchline",
             },
             {
                 "id": "cta",
                 "title": "CTA",
                 "narration": "Follow untuk tips bisnis setiap hari.",
                 "background": "dark",
-                "notes": "Soft CTA"
-            }
-        ]
+                "notes": "Soft CTA",
+            },
+        ],
     },
-    'music': {
+    "music": {
         "title": "Music Video Project",
         "song_title": "Nama Lagu",
         "artist": "Nama Artis",
@@ -162,28 +162,28 @@ SCRIPT_TEMPLATES = {
                 "title": "Intro",
                 "start_beat": 0,
                 "end_beat": 8,
-                "notes": "Ambient visuals, no lyrics yet"
+                "notes": "Ambient visuals, no lyrics yet",
             },
             {
                 "id": "verse1",
                 "title": "Verse 1",
                 "start_beat": 8,
                 "end_beat": 24,
-                "notes": "Performance / lyric reveal"
+                "notes": "Performance / lyric reveal",
             },
             {
                 "id": "chorus",
                 "title": "Chorus",
                 "start_beat": 24,
                 "end_beat": 40,
-                "notes": "High energy, beat sync visuals"
-            }
+                "notes": "High energy, beat sync visuals",
+            },
         ],
         "lyrics": [
-            {"text": "Baris pertama lirik", "beat_start": 8,  "beat_end": 10},
-            {"text": "Sambung ke baris dua", "beat_start": 10, "beat_end": 12}
-        ]
-    }
+            {"text": "Baris pertama lirik", "beat_start": 8, "beat_end": 10},
+            {"text": "Sambung ke baris dua", "beat_start": 10, "beat_end": 12},
+        ],
+    },
 }
 
 GITIGNORE_CONTENT = """# Remotion
@@ -274,26 +274,22 @@ def write_file(path: str, content: str, skip_if_exists: bool = True) -> None:
     if skip_if_exists and os.path.exists(path):
         print(f"  ⏭  {path} (exists, skipped)")
         return
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(content)
     print(f"  📄 {path}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Set up a Remotion video project structure.'
+        description="Set up a Remotion video project structure."
     )
     parser.add_argument(
-        '--type',
-        choices=['narrated', 'product', 'shortform', 'music'],
-        default='narrated',
-        help='Type of video project to scaffold'
+        "--type",
+        choices=["narrated", "product", "shortform", "music"],
+        default="narrated",
+        help="Type of video project to scaffold",
     )
-    parser.add_argument(
-        '--force',
-        action='store_true',
-        help='Overwrite existing files'
-    )
+    parser.add_argument("--force", action="store_true", help="Overwrite existing files")
     args = parser.parse_args()
 
     skip_existing = not args.force
@@ -303,13 +299,13 @@ def main():
     # ── Create directories ────────────────────────────────────
     print("Creating folder structure...")
     for d in [
-        'public/audio',
-        'public/images',
-        'public/video',
-        'public/fonts',
-        'scripts',
-        'out',
-        'src/scenes',
+        "public/audio",
+        "public/images",
+        "public/video",
+        "public/fonts",
+        "scripts",
+        "out",
+        "src/scenes",
     ]:
         create_dir(d)
 
@@ -317,23 +313,28 @@ def main():
     print("\nCreating starter files...")
 
     # .gitkeep files so empty dirs are tracked
-    for d in ['public/audio', 'public/images', 'public/video', 'public/fonts', 'out']:
-        gitkeep = os.path.join(d, '.gitkeep')
+    for d in ["public/audio", "public/images", "public/video", "public/fonts", "out"]:
+        gitkeep = os.path.join(d, ".gitkeep")
         if not os.path.exists(gitkeep):
-            open(gitkeep, 'w').close()
+            open(gitkeep, "w").close()
 
     # script.json
-    script_data = SCRIPT_TEMPLATES.get(args.type, SCRIPT_TEMPLATES['narrated'])
-    write_file('public/script.json', json.dumps(script_data, indent=2, ensure_ascii=False), skip_existing)
+    script_data = SCRIPT_TEMPLATES.get(args.type, SCRIPT_TEMPLATES["narrated"])
+    write_file(
+        "public/script.json",
+        json.dumps(script_data, indent=2, ensure_ascii=False),
+        skip_existing,
+    )
 
     # .gitignore
-    write_file('.gitignore', GITIGNORE_CONTENT, skip_existing)
+    write_file(".gitignore", GITIGNORE_CONTENT, skip_existing)
 
     # README
-    write_file('README.md', README_CONTENT, skip_existing)
+    write_file("README.md", README_CONTENT, skip_existing)
 
     # ── Print next steps ──────────────────────────────────────
-    print(f"""
+    print(
+        f"""
 ✅ Project structure created!
 
 Next steps:
@@ -356,8 +357,9 @@ Free tools needed (no API key):
   pip install edge-tts openai-whisper librosa Pillow
   brew install ffmpeg   # macOS
   apt install ffmpeg    # Ubuntu/Debian
-""")
+"""
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

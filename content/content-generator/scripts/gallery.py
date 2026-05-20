@@ -2,10 +2,11 @@
 Result Gallery — Store & manage all generated content
 SQLite-based, with thumbnail support and tagging
 """
+
 import sqlite3, os, json, time, shutil
 from datetime import datetime
 
-DB_PATH     = "/home/openclaw/.openclaw/workspace/output/gallery.db"
+DB_PATH = "/home/openclaw/.openclaw/workspace/output/gallery.db"
 GALLERY_DIR = "/home/openclaw/.openclaw/workspace/output/gallery"
 os.makedirs(GALLERY_DIR, exist_ok=True)
 
@@ -18,7 +19,8 @@ def _conn():
 
 def init_db():
     with _conn() as conn:
-        conn.execute("""
+        conn.execute(
+            """
             CREATE TABLE IF NOT EXISTS results (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
                 chat_id     TEXT,
@@ -36,8 +38,10 @@ def init_db():
                 created_at  INTEGER,
                 project     TEXT DEFAULT ''
             )
-        """)
+        """
+        )
         conn.commit()
+
 
 init_db()
 
@@ -46,43 +50,54 @@ def save_result(chat_id: str, file_path: str, meta: dict) -> int:
     """Save a generated result to gallery"""
     # Copy file to gallery dir
     ext = os.path.splitext(file_path)[1]
-    ts  = int(time.time())
+    ts = int(time.time())
     gallery_path = os.path.join(GALLERY_DIR, f"{ts}_{meta.get('type','content')}{ext}")
     shutil.copy2(file_path, gallery_path)
 
     with _conn() as conn:
-        cursor = conn.execute("""
+        cursor = conn.execute(
+            """
             INSERT INTO results 
             (chat_id, type, category, style, format, file_path, prompt, cost_usd, tags, created_at, project)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
-            str(chat_id),
-            meta.get("type", "image"),
-            meta.get("category", ""),
-            meta.get("style", ""),
-            meta.get("format", ""),
-            gallery_path,
-            meta.get("prompt", "")[:500],
-            meta.get("cost_usd", 0),
-            json.dumps(meta.get("tags", [])),
-            ts,
-            meta.get("project", "")
-        ))
+        """,
+            (
+                str(chat_id),
+                meta.get("type", "image"),
+                meta.get("category", ""),
+                meta.get("style", ""),
+                meta.get("format", ""),
+                gallery_path,
+                meta.get("prompt", "")[:500],
+                meta.get("cost_usd", 0),
+                json.dumps(meta.get("tags", [])),
+                ts,
+                meta.get("project", ""),
+            ),
+        )
         conn.commit()
         return cursor.lastrowid
 
 
-def get_results(chat_id: str = None, limit: int = 20, offset: int = 0,
-                category: str = None, content_type: str = None) -> list:
+def get_results(
+    chat_id: str = None,
+    limit: int = 20,
+    offset: int = 0,
+    category: str = None,
+    content_type: str = None,
+) -> list:
     """Get gallery results with optional filters"""
     query = "SELECT * FROM results WHERE 1=1"
     params = []
     if chat_id:
-        query += " AND chat_id = ?"; params.append(str(chat_id))
+        query += " AND chat_id = ?"
+        params.append(str(chat_id))
     if category:
-        query += " AND category = ?"; params.append(category)
+        query += " AND category = ?"
+        params.append(category)
     if content_type:
-        query += " AND type = ?"; params.append(content_type)
+        query += " AND type = ?"
+        params.append(content_type)
     query += " ORDER BY created_at DESC LIMIT ? OFFSET ?"
     params += [limit, offset]
 
@@ -93,7 +108,9 @@ def get_results(chat_id: str = None, limit: int = 20, offset: int = 0,
 
 def get_result(result_id: int) -> dict:
     with _conn() as conn:
-        row = conn.execute("SELECT * FROM results WHERE id = ?", (result_id,)).fetchone()
+        row = conn.execute(
+            "SELECT * FROM results WHERE id = ?", (result_id,)
+        ).fetchone()
     return dict(row) if row else {}
 
 
@@ -120,8 +137,10 @@ def mark_posted(result_id: int, platform: str):
     if platform not in posted:
         posted.append(platform)
     with _conn() as conn:
-        conn.execute("UPDATE results SET posted_to = ? WHERE id = ?",
-                     (json.dumps(posted), result_id))
+        conn.execute(
+            "UPDATE results SET posted_to = ? WHERE id = ?",
+            (json.dumps(posted), result_id),
+        )
         conn.commit()
 
 
@@ -163,7 +182,7 @@ def get_stats(chat_id: str = None) -> dict:
         "videos": videos,
         "total_cost_usd": round(total_cost, 4),
         "total_cost_idr": round(total_cost * 16300, 0),
-        "top_style": top_style[0] if top_style else "N/A"
+        "top_style": top_style[0] if top_style else "N/A",
     }
 
 
@@ -184,15 +203,19 @@ def build_gallery_message(chat_id: str) -> tuple[str, list]:
     if results:
         text += "📋 *5 Terbaru:*\n"
         for r in results:
-            dt = datetime.fromtimestamp(r['created_at']).strftime("%d/%m %H:%M")
-            emoji = "🖼️" if r['type'] == 'image' else "🎬"
+            dt = datetime.fromtimestamp(r["created_at"]).strftime("%d/%m %H:%M")
+            emoji = "🖼️" if r["type"] == "image" else "🎬"
             text += f"{emoji} [{dt}] {r['category']} × {r['style']}\n"
 
     buttons = [
-        [{"text": "📋 Lihat Semua", "callback_data": "gallery:list:0"},
-         {"text": "🗑️ Bersihkan", "callback_data": "gallery:clean"}],
-        [{"text": "📊 Cost Report", "callback_data": "gallery:costs"},
-         {"text": "✖️ Tutup", "callback_data": "gallery:close"}],
+        [
+            {"text": "📋 Lihat Semua", "callback_data": "gallery:list:0"},
+            {"text": "🗑️ Bersihkan", "callback_data": "gallery:clean"},
+        ],
+        [
+            {"text": "📊 Cost Report", "callback_data": "gallery:costs"},
+            {"text": "✖️ Tutup", "callback_data": "gallery:close"},
+        ],
     ]
     return text, buttons
 

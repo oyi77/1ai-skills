@@ -46,25 +46,26 @@ from pathlib import Path
 # ── CONFIG ────────────────────────────────────────────────────
 
 FORMATS = {
-    '16:9': (1920, 1080),
-    '9:16': (1080, 1920),
-    '1:1':  (1080, 1080),
-    '4:3':  (1440, 1080),
-    '4K':   (3840, 2160),
+    "16:9": (1920, 1080),
+    "9:16": (1080, 1920),
+    "1:1": (1080, 1080),
+    "4:3": (1440, 1080),
+    "4K": (3840, 2160),
 }
 
-IMAGE_EXTS  = {'.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.heic', '.avif'}
-VIDEO_EXTS  = {'.mp4', '.mov', '.avi', '.mkv', '.webm', '.m4v', '.mxf'}
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tiff", ".heic", ".avif"}
+VIDEO_EXTS = {".mp4", ".mov", ".avi", ".mkv", ".webm", ".m4v", ".mxf"}
 
-DEFAULT_FORMAT = '16:9'
-DEFAULT_FPS    = 30
-DEFAULT_CRF    = 23        # video quality (lower = better, 18–28 range)
-DEFAULT_PRESET = 'fast'    # ffmpeg encode speed: ultrafast/fast/medium/slow
+DEFAULT_FORMAT = "16:9"
+DEFAULT_FPS = 30
+DEFAULT_CRF = 23  # video quality (lower = better, 18–28 range)
+DEFAULT_PRESET = "fast"  # ffmpeg encode speed: ultrafast/fast/medium/slow
 
 
 # ── HELPERS ───────────────────────────────────────────────────
 
-def run(cmd: list, label: str = '') -> bool:
+
+def run(cmd: list, label: str = "") -> bool:
     """Run a shell command, return True on success."""
     try:
         result = subprocess.run(
@@ -80,13 +81,15 @@ def run(cmd: list, label: str = '') -> bool:
         return False
     except FileNotFoundError:
         prog = cmd[0]
-        print(f"    ❌ {prog} not found. Install with: brew install {prog} OR apt install {prog}")
+        print(
+            f"    ❌ {prog} not found. Install with: brew install {prog} OR apt install {prog}"
+        )
         return False
 
 
 def has_ffmpeg() -> bool:
     try:
-        subprocess.run(['ffmpeg', '-version'], capture_output=True, check=True)
+        subprocess.run(["ffmpeg", "-version"], capture_output=True, check=True)
         return True
     except (FileNotFoundError, subprocess.CalledProcessError):
         return False
@@ -95,6 +98,7 @@ def has_ffmpeg() -> bool:
 def has_pillow() -> bool:
     try:
         import PIL
+
         return True
     except ImportError:
         return False
@@ -104,29 +108,41 @@ def get_video_info(path: str) -> dict:
     """Get video metadata using ffprobe."""
     try:
         result = subprocess.run(
-            ['ffprobe', '-v', 'error', '-show_streams', '-show_format',
-             '-of', 'json', path],
-            capture_output=True, text=True, check=True
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-show_streams",
+                "-show_format",
+                "-of",
+                "json",
+                path,
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
         )
         import json
-        data    = json.loads(result.stdout)
-        streams = data.get('streams', [])
-        video   = next((s for s in streams if s['codec_type'] == 'video'), {})
-        audio   = next((s for s in streams if s['codec_type'] == 'audio'), None)
-        fmt     = data.get('format', {})
+
+        data = json.loads(result.stdout)
+        streams = data.get("streams", [])
+        video = next((s for s in streams if s["codec_type"] == "video"), {})
+        audio = next((s for s in streams if s["codec_type"] == "audio"), None)
+        fmt = data.get("format", {})
         return {
-            'width':    int(video.get('width', 0)),
-            'height':   int(video.get('height', 0)),
-            'fps':      eval(video.get('r_frame_rate', '30/1')),
-            'codec':    video.get('codec_name', ''),
-            'duration': float(fmt.get('duration', 0)),
-            'has_audio': audio is not None,
+            "width": int(video.get("width", 0)),
+            "height": int(video.get("height", 0)),
+            "fps": eval(video.get("r_frame_rate", "30/1")),
+            "codec": video.get("codec_name", ""),
+            "duration": float(fmt.get("duration", 0)),
+            "has_audio": audio is not None,
         }
     except Exception:
         return {}
 
 
 # ── IMAGE PROCESSING ──────────────────────────────────────────
+
 
 def process_image(src: Path, out_dir: Path, width: int, height: int) -> bool:
     """
@@ -146,8 +162,8 @@ def process_image(src: Path, out_dir: Path, width: int, height: int) -> bool:
         img = ImageOps.exif_transpose(img)
 
         # Convert to RGB (handles RGBA, P, LA modes)
-        if img.mode not in ('RGB', 'RGBA'):
-            img = img.convert('RGBA' if 'transparency' in img.info else 'RGB')
+        if img.mode not in ("RGB", "RGBA"):
+            img = img.convert("RGBA" if "transparency" in img.info else "RGB")
 
         # Cover-fit resize: scale to fill, then centre-crop
         img_ratio = img.width / img.height
@@ -166,12 +182,12 @@ def process_image(src: Path, out_dir: Path, width: int, height: int) -> bool:
 
         # Centre crop
         left = (new_w - width) // 2
-        top  = (new_h - height) // 2
-        img  = img.crop((left, top, left + width, top + height))
+        top = (new_h - height) // 2
+        img = img.crop((left, top, left + width, top + height))
 
         # Save as PNG
-        out_path = out_dir / (src.stem + '.png')
-        img.save(out_path, 'PNG', optimize=True)
+        out_path = out_dir / (src.stem + ".png")
+        img.save(out_path, "PNG", optimize=True)
         size_kb = out_path.stat().st_size // 1024
         print(f"    ✓ {out_path.name} ({width}×{height}px, {size_kb}KB)")
         return True
@@ -183,18 +199,21 @@ def process_image(src: Path, out_dir: Path, width: int, height: int) -> bool:
 
 # ── VIDEO PROCESSING ──────────────────────────────────────────
 
-def process_video(src: Path, out_dir: Path,
-                  width: int, height: int,
-                  fps: int, crf: int, preset: str) -> bool:
+
+def process_video(
+    src: Path, out_dir: Path, width: int, height: int, fps: int, crf: int, preset: str
+) -> bool:
     """
     Convert video to H.264 MP4 at target resolution and framerate.
     Uses ffmpeg's scale filter with padding for letterbox/pillarbox.
     """
     if not has_ffmpeg():
-        print("    ❌ ffmpeg not found. Install: brew install ffmpeg OR apt install ffmpeg")
+        print(
+            "    ❌ ffmpeg not found. Install: brew install ffmpeg OR apt install ffmpeg"
+        )
         return False
 
-    out_path = out_dir / (src.stem + '.mp4')
+    out_path = out_dir / (src.stem + ".mp4")
 
     # Scale to fit within target, pad with black if aspect differs
     scale_filter = (
@@ -204,25 +223,38 @@ def process_video(src: Path, out_dir: Path,
     )
 
     cmd = [
-        'ffmpeg', '-y',
-        '-i', str(src),
-        '-vf', f"{scale_filter},fps={fps}",
-        '-c:v', 'libx264',
-        '-crf', str(crf),
-        '-preset', preset,
-        '-pix_fmt', 'yuv420p',   # required for broad compatibility
-        '-c:a', 'aac',
-        '-b:a', '128k',
-        '-movflags', '+faststart',  # web-optimised
-        '-map_metadata', '-1',       # strip metadata
+        "ffmpeg",
+        "-y",
+        "-i",
+        str(src),
+        "-vf",
+        f"{scale_filter},fps={fps}",
+        "-c:v",
+        "libx264",
+        "-crf",
+        str(crf),
+        "-preset",
+        preset,
+        "-pix_fmt",
+        "yuv420p",  # required for broad compatibility
+        "-c:a",
+        "aac",
+        "-b:a",
+        "128k",
+        "-movflags",
+        "+faststart",  # web-optimised
+        "-map_metadata",
+        "-1",  # strip metadata
         str(out_path),
     ]
 
     info = get_video_info(str(src))
-    src_info = f"{info.get('width', '?')}×{info.get('height', '?')} {info.get('codec', '?')}"
+    src_info = (
+        f"{info.get('width', '?')}×{info.get('height', '?')} {info.get('codec', '?')}"
+    )
     print(f"    Converting: {src_info} → {width}×{height} H.264 @{fps}fps")
 
-    ok = run(cmd, 'ffmpeg')
+    ok = run(cmd, "ffmpeg")
     if ok:
         size_mb = out_path.stat().st_size / 1_048_576
         print(f"    ✓ {out_path.name} ({size_mb:.1f}MB)")
@@ -231,23 +263,38 @@ def process_video(src: Path, out_dir: Path,
 
 # ── MAIN ──────────────────────────────────────────────────────
 
+
 def main():
     parser = argparse.ArgumentParser(
-        description='Prepare images and videos for Remotion projects'
+        description="Prepare images and videos for Remotion projects"
     )
-    parser.add_argument('path', nargs='?', default=None,
-                        help='Single file or directory to process (default: public/)')
-    parser.add_argument('--format', default=DEFAULT_FORMAT,
-                        choices=list(FORMATS.keys()),
-                        help=f'Target aspect ratio (default: {DEFAULT_FORMAT})')
-    parser.add_argument('--fps', type=int, default=DEFAULT_FPS,
-                        help=f'Target video FPS (default: {DEFAULT_FPS})')
-    parser.add_argument('--crf', type=int, default=DEFAULT_CRF,
-                        help=f'Video quality 0–51, lower=better (default: {DEFAULT_CRF})')
-    parser.add_argument('--images-only', action='store_true')
-    parser.add_argument('--video-only',  action='store_true')
-    parser.add_argument('--out-dir', default=None,
-                        help='Custom output directory')
+    parser.add_argument(
+        "path",
+        nargs="?",
+        default=None,
+        help="Single file or directory to process (default: public/)",
+    )
+    parser.add_argument(
+        "--format",
+        default=DEFAULT_FORMAT,
+        choices=list(FORMATS.keys()),
+        help=f"Target aspect ratio (default: {DEFAULT_FORMAT})",
+    )
+    parser.add_argument(
+        "--fps",
+        type=int,
+        default=DEFAULT_FPS,
+        help=f"Target video FPS (default: {DEFAULT_FPS})",
+    )
+    parser.add_argument(
+        "--crf",
+        type=int,
+        default=DEFAULT_CRF,
+        help=f"Video quality 0–51, lower=better (default: {DEFAULT_CRF})",
+    )
+    parser.add_argument("--images-only", action="store_true")
+    parser.add_argument("--video-only", action="store_true")
+    parser.add_argument("--out-dir", default=None, help="Custom output directory")
     args = parser.parse_args()
 
     width, height = FORMATS[args.format]
@@ -262,9 +309,9 @@ def main():
     else:
         search_dirs = []
         if not args.video_only:
-            search_dirs.append(Path('public/images'))
+            search_dirs.append(Path("public/images"))
         if not args.images_only:
-            search_dirs.append(Path('public/video'))
+            search_dirs.append(Path("public/video"))
 
         for d in search_dirs:
             if d.exists():
@@ -287,7 +334,7 @@ def main():
             if not has_pillow():
                 print("  ❌ Pillow required. Install: pip install Pillow")
                 break
-            out_dir = Path(args.out_dir) if args.out_dir else src.parent / 'ready'
+            out_dir = Path(args.out_dir) if args.out_dir else src.parent / "ready"
             out_dir.mkdir(parents=True, exist_ok=True)
             ok = process_image(src, out_dir, width, height)
 
@@ -295,9 +342,11 @@ def main():
             if not has_ffmpeg():
                 print("  ❌ ffmpeg required. Install: brew install ffmpeg")
                 break
-            out_dir = Path(args.out_dir) if args.out_dir else src.parent / 'ready'
+            out_dir = Path(args.out_dir) if args.out_dir else src.parent / "ready"
             out_dir.mkdir(parents=True, exist_ok=True)
-            ok = process_video(src, out_dir, width, height, args.fps, args.crf, DEFAULT_PRESET)
+            ok = process_video(
+                src, out_dir, width, height, args.fps, args.crf, DEFAULT_PRESET
+            )
 
         else:
             print(f"    ⏭  Skipped ({ext})")
@@ -308,12 +357,16 @@ def main():
         else:
             failed += 1
 
-    print(f"\n{'✅' if failed == 0 else '⚠️ '} Done: {processed} processed, {failed} failed")
+    print(
+        f"\n{'✅' if failed == 0 else '⚠️ '} Done: {processed} processed, {failed} failed"
+    )
     if processed > 0:
-        print(f"\nIn your Remotion composition, reference assets from the ready/ subfolder:")
+        print(
+            f"\nIn your Remotion composition, reference assets from the ready/ subfolder:"
+        )
         print(f"  <Img src={{staticFile('images/ready/your-image.png')}} />")
         print(f"  <OffthreadVideo src={{staticFile('video/ready/your-clip.mp4')}} />")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

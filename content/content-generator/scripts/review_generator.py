@@ -9,9 +9,9 @@ import urllib.request
 import subprocess
 from PIL import Image
 
-NVIDIA_KEY   = os.environ.get("NVIDIA_API_KEY")
+NVIDIA_KEY = os.environ.get("NVIDIA_API_KEY")
 BYTEPLUS_KEY = os.environ.get("BYTEPLUS_API_KEY")
-GROQ_KEY     = os.environ.get("GROQ_API_KEY")
+GROQ_KEY = os.environ.get("GROQ_API_KEY")
 BYTEPLUS_BASE = "https://ark.ap-southeast.bytepluses.com/api/v3"
 FFMPEG = "/home/linuxbrew/.linuxbrew/bin/ffmpeg"
 
@@ -144,17 +144,33 @@ LOCATIONS = {
 
 # ─── REVIEW STYLES ────────────────────────────────────────────────────
 REVIEW_STYLES = {
-    "jujur":     {"label": "😤 Review Jujur", "tone": "honest, direct, no sugarcoat, share pros AND cons"},
-    "excited":   {"label": "🔥 Excited / Hype", "tone": "very enthusiastic, amazed, can't stop talking about it"},
-    "santai":    {"label": "😎 Santai / Chill", "tone": "casual, low-key, like telling a friend, not salesy"},
-    "compare":   {"label": "⚖️ Banding Kompetitor", "tone": "compare with competitor, why this one wins"},
-    "cerita":    {"label": "📖 Cerita Pengalaman", "tone": "storytelling, personal experience, relatable journey"},
+    "jujur": {
+        "label": "😤 Review Jujur",
+        "tone": "honest, direct, no sugarcoat, share pros AND cons",
+    },
+    "excited": {
+        "label": "🔥 Excited / Hype",
+        "tone": "very enthusiastic, amazed, can't stop talking about it",
+    },
+    "santai": {
+        "label": "😎 Santai / Chill",
+        "tone": "casual, low-key, like telling a friend, not salesy",
+    },
+    "compare": {
+        "label": "⚖️ Banding Kompetitor",
+        "tone": "compare with competitor, why this one wins",
+    },
+    "cerita": {
+        "label": "📖 Cerita Pengalaman",
+        "tone": "storytelling, personal experience, relatable journey",
+    },
 }
 
 
 # ─── PROMPT BUILDER ───────────────────────────────────────────────────
-def build_review_image_prompt(product_desc: str, category: str,
-                               location_key: str, with_person: bool = True) -> str:
+def build_review_image_prompt(
+    product_desc: str, category: str, location_key: str, with_person: bool = True
+) -> str:
     loc = LOCATIONS[location_key]
     hr_suffix = (
         ", hyperrealistic photography, ultra detailed, 8K, "
@@ -168,16 +184,14 @@ def build_review_image_prompt(product_desc: str, category: str,
             f"{loc['scene_prompt']}, "
             f"{loc['lighting']}, "
             f"natural authentic review moment, not posed, "
-            f"product clearly visible in hand"
-            + hr_suffix
+            f"product clearly visible in hand" + hr_suffix
         )
     else:
         return (
             f"{product_desc} placed naturally in scene, "
             f"{loc['scene_prompt']}, "
             f"{loc['lighting']}, "
-            f"product in natural environment, lifestyle flat lay"
-            + hr_suffix
+            f"product in natural environment, lifestyle flat lay" + hr_suffix
         )
 
 
@@ -194,11 +208,15 @@ def build_review_anim_prompt(location_key: str, review_style: str) -> str:
 
 
 # ─── REVIEW SCRIPT GENERATOR ─────────────────────────────────────────
-def generate_review_script(product_desc: str, category: str,
-                             location_key: str, review_style: str,
-                             duration: int = 30) -> dict:
+def generate_review_script(
+    product_desc: str,
+    category: str,
+    location_key: str,
+    review_style: str,
+    duration: int = 30,
+) -> dict:
     """Generate natural Indonesian review VO script"""
-    loc   = LOCATIONS[location_key]
+    loc = LOCATIONS[location_key]
     style = REVIEW_STYLES.get(review_style, REVIEW_STYLES["santai"])
 
     word_count = int(duration * 2.5)  # ~2.5 kata/detik natural speech
@@ -242,17 +260,21 @@ Respond ONLY JSON:
         llm_model = "meta/llama-3.3-70b-instruct"
         llm_auth = f"Bearer {NVIDIA_KEY}"
 
-    payload = json.dumps({
-        "model": llm_model,
-        "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 800, "temperature": 0.8
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": llm_model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 800,
+            "temperature": 0.8,
+        }
+    ).encode()
 
     try:
         req = urllib.request.Request(
-            llm_url, data=payload,
+            llm_url,
+            data=payload,
             headers={"Authorization": llm_auth, "Content-Type": "application/json"},
-            method="POST"
+            method="POST",
         )
         with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read())
@@ -264,7 +286,7 @@ Respond ONLY JSON:
             "hook": f"Eh, lagi {loc['review_context']}, cobain nih {product_desc}!",
             "script": f"Jadi gue lagi {loc['review_context']}, terus nyobain {product_desc} ini. Jujur ya, kesan pertama gue lumayan impressed. {product_desc} ini emang worth it sih.",
             "key_points": ["Kualitas bagus", "Harga worth it", "Recommended"],
-            "cta": "Kalau penasaran cek aja di bio ya!"
+            "cta": "Kalau penasaran cek aja di bio ya!",
         }
 
 
@@ -277,10 +299,12 @@ async def generate_review_video(
     review_style: str = "santai",
     duration: int = 30,
     output_dir: str = "/home/openclaw/.openclaw/workspace/output/reviews",
-    chat_id: str = "review"
+    chat_id: str = "review",
 ) -> dict:
     """Full pipeline: image → animate → VO → compose"""
-    import sys; sys.path.insert(0, os.path.dirname(__file__))
+    import sys
+
+    sys.path.insert(0, os.path.dirname(__file__))
     from bgm_manager import download_bgm, mix_bgm, get_mood
 
     os.makedirs(output_dir, exist_ok=True)
@@ -295,11 +319,15 @@ async def generate_review_video(
     # Step 1: Generate review image
     print("\n🖼️  Step 1: Generating review scene image...")
     img_prompt = build_review_image_prompt(product_desc, category, location_key)
-    img_path   = os.path.join(output_dir, f"{project}_scene.jpg")
+    img_path = os.path.join(output_dir, f"{project}_scene.jpg")
 
     # Use SD3 for person scenes
     url = "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium"
-    headers = {"Authorization": f"Bearer {NVIDIA_KEY}", "Content-Type": "application/json", "Accept": "application/json"}
+    headers = {
+        "Authorization": f"Bearer {NVIDIA_KEY}",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
     payload = json.dumps({"prompt": img_prompt}).encode()
     req = urllib.request.Request(url, data=payload, headers=headers, method="POST")
     with urllib.request.urlopen(req, timeout=90) as resp:
@@ -311,15 +339,22 @@ async def generate_review_video(
 
     # Step 2: Generate review script
     print("\n✍️  Step 2: Writing review script...")
-    script = generate_review_script(product_desc, category, location_key, review_style, duration)
+    script = generate_review_script(
+        product_desc, category, location_key, review_style, duration
+    )
     print(f"   Hook: {script['hook'][:60]}...")
     print(f"   Script: {script['script'][:80]}...")
 
     # Step 3: Generate voiceover
     print("\n🎙️  Step 3: Generating voiceover...")
     import edge_tts
+
     vo_path = os.path.join(output_dir, f"{project}_vo.mp3")
-    voice   = "id-ID-ArdiNeural" if review_style in ("excited", "compare") else "id-ID-GadisNeural"
+    voice = (
+        "id-ID-ArdiNeural"
+        if review_style in ("excited", "compare")
+        else "id-ID-GadisNeural"
+    )
     communicate = edge_tts.Communicate(script["script"], voice, rate="+8%")
     await communicate.save(vo_path)
     print(f"   ✅ VO generated ({voice})")
@@ -341,19 +376,33 @@ async def generate_review_video(
     _cropped.save(_buf, format="JPEG", quality=95)
     img_b64 = base64.b64encode(_buf.getvalue()).decode()
 
-    i2v_payload = json.dumps({
-        "model": "seedance-1-0-lite-i2v-250428",
-        "content": [
-            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}, "role": "first_frame"},
-            {"type": "text", "text": anim_prompt}
-        ],
-        "duration": 5, "seed": -1
-        # ratio omitted — image already is 9:16
-    }).encode()
+    i2v_payload = json.dumps(
+        {
+            "model": "seedance-1-0-lite-i2v-250428",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"},
+                    "role": "first_frame",
+                },
+                {"type": "text", "text": anim_prompt},
+            ],
+            "duration": 5,
+            "seed": -1,
+            # ratio omitted — image already is 9:16
+        }
+    ).encode()
 
-    i2v_headers = {"Authorization": f"Bearer {BYTEPLUS_KEY}", "Content-Type": "application/json"}
-    req = urllib.request.Request(f"{BYTEPLUS_BASE}/contents/generations/tasks",
-                                  data=i2v_payload, headers=i2v_headers, method="POST")
+    i2v_headers = {
+        "Authorization": f"Bearer {BYTEPLUS_KEY}",
+        "Content-Type": "application/json",
+    }
+    req = urllib.request.Request(
+        f"{BYTEPLUS_BASE}/contents/generations/tasks",
+        data=i2v_payload,
+        headers=i2v_headers,
+        method="POST",
+    )
     with urllib.request.urlopen(req, timeout=30) as resp:
         task_id = json.loads(resp.read()).get("id")
     print(f"   Task: {task_id}")
@@ -362,8 +411,9 @@ async def generate_review_video(
     raw_video = None
     for i in range(60):
         time.sleep(5)
-        req = urllib.request.Request(f"{BYTEPLUS_BASE}/contents/generations/tasks/{task_id}",
-                                      headers=i2v_headers)
+        req = urllib.request.Request(
+            f"{BYTEPLUS_BASE}/contents/generations/tasks/{task_id}", headers=i2v_headers
+        )
         with urllib.request.urlopen(req, timeout=15) as resp:
             status_data = json.loads(resp.read())
         status = status_data.get("status")
@@ -385,26 +435,80 @@ async def generate_review_video(
     if raw_video:
         # Loop animated clip to match duration
         looped = os.path.join(output_dir, f"{project}_looped.mp4")
-        subprocess.run([FFMPEG, "-y", "-stream_loop", "-1", "-i", raw_video,
-                        "-t", str(duration), "-c", "copy", looped], capture_output=True)
+        subprocess.run(
+            [
+                FFMPEG,
+                "-y",
+                "-stream_loop",
+                "-1",
+                "-i",
+                raw_video,
+                "-t",
+                str(duration),
+                "-c",
+                "copy",
+                looped,
+            ],
+            capture_output=True,
+        )
         source_video = looped
     else:
         # Use static image as video
         source_video = os.path.join(output_dir, f"{project}_static.mp4")
-        subprocess.run([FFMPEG, "-y", "-loop", "1", "-i", img_path, "-t", str(duration),
-                        "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
-                        "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p", source_video],
-                       capture_output=True)
+        subprocess.run(
+            [
+                FFMPEG,
+                "-y",
+                "-loop",
+                "1",
+                "-i",
+                img_path,
+                "-t",
+                str(duration),
+                "-vf",
+                "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
+                "-c:v",
+                "libx264",
+                "-preset",
+                "fast",
+                "-pix_fmt",
+                "yuv420p",
+                source_video,
+            ],
+            capture_output=True,
+        )
 
     # Compose: video + VO
     composed = os.path.join(output_dir, f"{project}_composed.mp4")
-    subprocess.run([
-        FFMPEG, "-y", "-i", source_video, "-i", vo_path,
-        "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
-        "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-        "-c:a", "aac", "-b:a", "128k",
-        "-t", str(duration), "-shortest", "-pix_fmt", "yuv420p", composed
-    ], capture_output=True)
+    subprocess.run(
+        [
+            FFMPEG,
+            "-y",
+            "-i",
+            source_video,
+            "-i",
+            vo_path,
+            "-vf",
+            "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-crf",
+            "18",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "128k",
+            "-t",
+            str(duration),
+            "-shortest",
+            "-pix_fmt",
+            "yuv420p",
+            composed,
+        ],
+        capture_output=True,
+    )
 
     # Step 6: Add BGM
     print("\n🎵 Step 6: Adding background music...")
@@ -423,7 +527,7 @@ async def generate_review_video(
         "location": loc["label"],
         "review_style": review_style,
         "duration": duration,
-        "project": project
+        "project": project,
     }
 
 
@@ -438,30 +542,31 @@ def build_location_message() -> tuple[str, list]:
     items = list(LOCATIONS.items())
     for i in range(0, len(items), 2):
         row = []
-        for key, loc in items[i:i+2]:
+        for key, loc in items[i : i + 2]:
             row.append({"text": loc["label"], "callback_data": f"review:loc:{key}"})
         buttons.append(row)
     return text, buttons
 
 
 def build_style_message() -> tuple[str, list]:
-    text = (
-        "🎭 *Pilih gaya review-nya!*\n\n"
-        "Mau reviewnya kedengeran kayak gimana?"
-    )
+    text = "🎭 *Pilih gaya review-nya!*\n\n" "Mau reviewnya kedengeran kayak gimana?"
     buttons = []
     for key, style in REVIEW_STYLES.items():
-        buttons.append([{"text": style["label"], "callback_data": f"review:style:{key}"}])
+        buttons.append(
+            [{"text": style["label"], "callback_data": f"review:style:{key}"}]
+        )
     return text, buttons
 
 
 def build_duration_message() -> tuple[str, list]:
     text = "⏱️ *Durasi video?*"
-    buttons = [[
-        {"text": "📱 15 detik", "callback_data": "review:dur:15"},
-        {"text": "🎬 30 detik", "callback_data": "review:dur:30"},
-        {"text": "🎵 60 detik", "callback_data": "review:dur:60"},
-    ]]
+    buttons = [
+        [
+            {"text": "📱 15 detik", "callback_data": "review:dur:15"},
+            {"text": "🎬 30 detik", "callback_data": "review:dur:30"},
+            {"text": "🎵 60 detik", "callback_data": "review:dur:60"},
+        ]
+    ]
     return text, buttons
 
 

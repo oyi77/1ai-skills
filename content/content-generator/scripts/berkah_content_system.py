@@ -44,7 +44,9 @@ from typing import Dict, List, Optional
 
 # ── CONFIG ────────────────────────────────────────────────────────────
 RESEARCH_INTERVAL_HOURS = 1  # Research tiap 1 jam
-WORKSPACE = Path("/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-generator/scripts")
+WORKSPACE = Path(
+    "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-generator/scripts"
+)
 
 OUTPUT_DIR = Path("/tmp/berkah_content")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -63,9 +65,24 @@ MEMORY_FILE = MEMORY_DIR / "performance_memory.json"
 
 # Confidence scores per hook type (from Larry Playbook)
 HOOK_CONFIDENCE = {
-    "landlord_kitchen": {"confidence": 0.9, "avg_views": 234000, "count": 0, "avg_per_post": 0},
-    "parent_bedroom": {"confidence": 0.75, "avg_views": 80000, "count": 0, "avg_per_post": 0},
-    "roommate_living": {"confidence": 0.65, "avg_views": 60000, "count": 0, "avg_per_post": 0},
+    "landlord_kitchen": {
+        "confidence": 0.9,
+        "avg_views": 234000,
+        "count": 0,
+        "avg_per_post": 0,
+    },
+    "parent_bedroom": {
+        "confidence": 0.75,
+        "avg_views": 80000,
+        "count": 0,
+        "avg_per_post": 0,
+    },
+    "roommate_living": {
+        "confidence": 0.65,
+        "avg_views": 60000,
+        "count": 0,
+        "avg_per_post": 0,
+    },
 }
 
 
@@ -124,7 +141,9 @@ def run_research() -> bool:
 
     # Run research system (tiktok_hook_research.py)
     cmd = [str(WORKSPACE / "tiktok_hook_research.py"), "--mode", "search"]
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=120)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=120
+    )
 
     if result.returncode != 0:
         print(f"  ❌ Research failed: {result.stderr[-200:]}")
@@ -139,7 +158,9 @@ def run_multi_stage(room: str, hook: str) -> bool:
     print(f"\n🎬 Multi-Stage I2V: {room} + {hook}")
 
     cmd = [str(WORKSPACE / "multi_stage_i2v.py"), "--room", room, "--hook", hook]
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600
+    )
 
     if result.returncode != 0:
         print(f"  ❌ Generation failed: {result.stderr[-500:]}")
@@ -155,7 +176,9 @@ def run_larry_slideshow(room: str, hook: str) -> bool:
     print(f"\n🎞 Larry Slideshow: {room} + {hook}")
 
     cmd = [str(WORKSPACE / "larry_viral_generator.py"), "--room", room, "--hook", hook]
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600
+    )
 
     if result.returncode != 0:
         print(f"  ❌ Generation failed: {result.stderr[-500:]}")
@@ -170,7 +193,9 @@ def run_tiktok_1min(niche: str) -> bool:
     print(f"\n📱 TikTok 1-Minute: {niche}")
 
     cmd = [str(WORKSPACE / "generate_tiktok_viral.py"), "--niche", niche]
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600
+    )
 
     if result.returncode != 0:
         print(f"  ❌ Generation failed: {result.stderr[-500:]}")
@@ -185,8 +210,16 @@ def run_basic(prompt: str, duration: int) -> bool:
     """Run basic generator (custom duration)."""
     print(f"\n🎯 Basic: {prompt[:60]}... ({duration}s)")
 
-    cmd = [str(WORKSPACE / "generator.py"), "--prompt", prompt, "--duration", str(duration)]
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600)
+    cmd = [
+        str(WORKSPACE / "generator.py"),
+        "--prompt",
+        prompt,
+        "--duration",
+        str(duration),
+    ]
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, cwd=str(WORKSPACE), timeout=600
+    )
 
     if result.returncode != 0:
         print(f"  ❌ Generation failed: {result.stderr[-500:]}")
@@ -257,17 +290,24 @@ def log_performance(hook_type: str, views: int):
     change, new_conf = update_confidence(hook_type, views, memory)
     save_memory(memory)
 
-    print(f"  {change} confidence: {memory[hook_type]['confidence']:.2f} → {new_conf:.2f}")
+    print(
+        f"  {change} confidence: {memory[hook_type]['confidence']:.2f} → {new_conf:.2f}"
+    )
 
     # Log to history
     history_file = MEMORY_DIR / f"history_{datetime.now().strftime('%Y%m%d')}.jsonl"
     with open(history_file, "a") as f:
-        f.write(json.dumps({
-            "timestamp": datetime.now().isoformat(),
-            "hook_type": hook_type,
-            "views": views,
-            "confidence": new_conf,
-        }) + "\n")
+        f.write(
+            json.dumps(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "hook_type": hook_type,
+                    "views": views,
+                    "confidence": new_conf,
+                }
+            )
+            + "\n"
+        )
 
     print(f"  💾 Logged to: {history_file.name}")
     return memory
@@ -313,13 +353,21 @@ def auto_research_loop():
 
                 print(f"\n📊 Top hooks by confidence:")
                 for htype, data in top_hooks:
-                    print(f"  {htype}: {data['confidence']:.2f} ({data['count']} posts, {data['avg_per_post']:,} avg views)")
+                    print(
+                        f"  {htype}: {data['confidence']:.2f} ({data['count']} posts, {data['avg_per_post']:,} avg views)"
+                    )
 
                 print("\n💡 Ready for on-demand generation!")
                 print("Use:")
-                print("  python3 berkah_content_system.py --flow multi-stage --room kitchen_small --hook landlord_kitchen")
-                print("  python3 berkah_content_system.py --flow larry-slideshow --room bedroom_minimal --hook parent_bedroom")
-                print("  python3 berkah_content_system.py --flow tiktok-1min --niche motivation")
+                print(
+                    "  python3 berkah_content_system.py --flow multi-stage --room kitchen_small --hook landlord_kitchen"
+                )
+                print(
+                    "  python3 berkah_content_system.py --flow larry-slideshow --room bedroom_minimal --hook parent_bedroom"
+                )
+                print(
+                    "  python3 berkah_content_system.py --flow tiktok-1min --niche motivation"
+                )
                 print("  python3 berkah_content_system.py --mode analyze")
 
             else:
@@ -342,19 +390,25 @@ def auto_research_loop():
 
 # ── MAIN ───────────────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(
-        description="BerkahKarya Flexible Content System"
+    parser = argparse.ArgumentParser(description="BerkahKarya Flexible Content System")
+    parser.add_argument(
+        "--auto-research",
+        action="store_true",
+        help="Run hourly research loop (default: 1 hour interval)",
     )
-    parser.add_argument("--auto-research", action="store_true",
-                        help="Run hourly research loop (default: 1 hour interval)")
-    parser.add_argument("--flow", required=False,
-                        choices=["multi-stage", "larry-slideshow", "tiktok-1min", "basic"],
-                        help="Video generation flow")
+    parser.add_argument(
+        "--flow",
+        required=False,
+        choices=["multi-stage", "larry-slideshow", "tiktok-1min", "basic"],
+        help="Video generation flow",
+    )
     parser.add_argument("--room", help="Room type (for multi-stage, larry-slideshow)")
     parser.add_argument("--hook", help="Hook type (for multi-stage, larry-slideshow)")
     parser.add_argument("--niche", help="Niche (for tiktok-1min)")
     parser.add_argument("--prompt", help="Custom prompt (for basic)")
-    parser.add_argument("--duration", type=int, default=60, help="Duration in seconds (for basic)")
+    parser.add_argument(
+        "--duration", type=int, default=60, help="Duration in seconds (for basic)"
+    )
     parser.add_argument("--mode", choices=["analyze", "log"], help="Operation mode")
     parser.add_argument("--hook-type", help="Hook type for log mode")
     parser.add_argument("--views", type=int, help="Views count for log mode")

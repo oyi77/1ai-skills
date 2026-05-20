@@ -19,13 +19,16 @@ IMAGE_NEGATIVE = (
 # Best model for photorealistic
 # ⚠️ Flux.1-dev → CONTENT_FILTERED for human portrait scenes
 # Use SD3 Medium for scenes with people, Flux for objects/abstract
-IMAGE_MODEL_ABSTRACT = "black-forest-labs/flux.1-dev"          # Objects, abstract, no people
-IMAGE_MODEL_PORTRAIT  = "stabilityai/stable-diffusion-3-medium"  # Scenes with people/faces
+IMAGE_MODEL_ABSTRACT = "black-forest-labs/flux.1-dev"  # Objects, abstract, no people
+IMAGE_MODEL_PORTRAIT = (
+    "stabilityai/stable-diffusion-3-medium"  # Scenes with people/faces
+)
 IMAGE_MODEL = IMAGE_MODEL_PORTRAIT  # Default: SD3 (safer for human scenes)
 
 # API response format differs:
 # Flux → response["artifacts"][0]["base64"]
 # SD3  → response["image"]
+
 
 def enhance_image_prompt(prompt: str) -> str:
     """Append hyperrealistic suffix to any image prompt."""
@@ -34,7 +37,7 @@ def enhance_image_prompt(prompt: str) -> str:
 
 # ─── VIDEO GENERATION (BytePlus Seedance) ────────────────────────────
 # Pro model = significantly higher quality than Lite
-VIDEO_MODEL_T2V = "seedance-1-0-pro-250528"      # Text-to-Video Pro
+VIDEO_MODEL_T2V = "seedance-1-0-pro-250528"  # Text-to-Video Pro
 VIDEO_MODEL_I2V = "seedance-1-0-lite-i2v-250428"  # Image-to-Video Pro
 VIDEO_MODEL_I2V_FALLBACK = "seedance-1-0-lite-i2v-250428"  # Fallback if Pro unavailable
 
@@ -43,6 +46,7 @@ VIDEO_ANIM_SUFFIX = (
     "professional camera work, shallow depth of field, natural lighting"
 )
 
+
 def enhance_anim_prompt(prompt: str) -> str:
     """Append hyperrealistic animation suffix to I2V prompt."""
     return prompt.rstrip("., ") + VIDEO_ANIM_SUFFIX
@@ -50,16 +54,16 @@ def enhance_anim_prompt(prompt: str) -> str:
 
 # ─── VOICEOVER (Edge TTS) ────────────────────────────────────────────
 # Natural-sounding Indonesian voices
-VOICE_ID = "id-ID-GadisNeural"       # Female, warm (default)
-VOICE_MALE = "id-ID-ArdiNeural"      # Male alternative
-VOICE_RATE = "+5%"                    # Slightly faster = more natural
+VOICE_ID = "id-ID-GadisNeural"  # Female, warm (default)
+VOICE_MALE = "id-ID-ArdiNeural"  # Male alternative
+VOICE_RATE = "+5%"  # Slightly faster = more natural
 
 
 # ─── FFMPEG / POST-PROCESSING ────────────────────────────────────────
 # Higher quality encoding
-VIDEO_CRF = 18          # Lower = better quality (was 22)
-VIDEO_PRESET = "slow"   # Better compression quality (was "fast")
-VIDEO_BITRATE = "4M"    # Higher bitrate for detail retention
+VIDEO_CRF = 18  # Lower = better quality (was 22)
+VIDEO_PRESET = "slow"  # Better compression quality (was "fast")
+VIDEO_BITRATE = "4M"  # Higher bitrate for detail retention
 
 # Color grading preset (cinematic)
 COLOR_GRADE = "curves=vintage"

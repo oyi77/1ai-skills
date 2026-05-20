@@ -10,7 +10,9 @@ import re
 try:
     from playwright.sync_api import sync_playwright
 except ImportError:
-    print("[!] playwright not installed. Run: pip install playwright && playwright install chromium")
+    print(
+        "[!] playwright not installed. Run: pip install playwright && playwright install chromium"
+    )
     sys.exit(1)
 
 
@@ -42,9 +44,13 @@ def spy_lynk(username):
             page.wait_for_timeout(2000)
 
             # Scrape product/link items
-            items = page.query_selector_all('[class*="product"], [class*="link-item"], [class*="card"]')
+            items = page.query_selector_all(
+                '[class*="product"], [class*="link-item"], [class*="card"]'
+            )
             for item in items:
-                name_el = item.query_selector('[class*="title"], [class*="name"], h3, h4, p')
+                name_el = item.query_selector(
+                    '[class*="title"], [class*="name"], h3, h4, p'
+                )
                 price_el = item.query_selector('[class*="price"], [class*="amount"]')
 
                 name = name_el.inner_text().strip() if name_el else ""
@@ -55,24 +61,26 @@ def spy_lynk(username):
 
             # If no structured products found, try all links
             if not result["products"]:
-                links = page.query_selector_all('a[href]')
+                links = page.query_selector_all("a[href]")
                 for link in links:
                     text = link.inner_text().strip()
                     href = link.get_attribute("href") or ""
                     if text and len(text) > 2 and not href.startswith("javascript"):
-                        result["products"].append({"name": text, "price": "", "url": href})
+                        result["products"].append(
+                            {"name": text, "price": "", "url": href}
+                        )
 
             # Contact info
             page_text = page.content()
-            email_match = re.findall(r'[\w.+-]+@[\w-]+\.[\w.]+', page_text)
+            email_match = re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", page_text)
             if email_match:
                 result["contact"]["email"] = list(set(email_match))
 
-            phone_match = re.findall(r'(?:\+62|08)\d[\d\-\s]{7,14}', page_text)
+            phone_match = re.findall(r"(?:\+62|08)\d[\d\-\s]{7,14}", page_text)
             if phone_match:
                 result["contact"]["phone"] = list(set(phone_match))
 
-            wa_match = re.findall(r'wa\.me/(\d+)', page_text)
+            wa_match = re.findall(r"wa\.me/(\d+)", page_text)
             if wa_match:
                 result["contact"]["whatsapp"] = list(set(wa_match))
 
@@ -122,7 +130,9 @@ def spy_tiktok_profile(username):
                     result[key] = el.inner_text().strip()
 
             # Bio
-            bio_el = page.query_selector('[data-e2e="user-bio"], [class*="bio"], h2[class*="desc"]')
+            bio_el = page.query_selector(
+                '[data-e2e="user-bio"], [class*="bio"], h2[class*="desc"]'
+            )
             if bio_el:
                 result["bio"] = bio_el.inner_text().strip()
 
@@ -154,6 +164,7 @@ def spy_tiktok_profile(username):
 def spy_facebook_ads(search_term):
     """Scrape Facebook Ads Library for active ads."""
     import urllib.parse
+
     encoded = urllib.parse.quote(search_term)
     url = f"https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ID&q={encoded}"
     result = {
@@ -175,22 +186,34 @@ def spy_facebook_ads(search_term):
             page.wait_for_timeout(5000)
 
             # Try to get result count
-            count_el = page.query_selector('[class*="total"], [class*="count"], [class*="result"]')
+            count_el = page.query_selector(
+                '[class*="total"], [class*="count"], [class*="result"]'
+            )
             if count_el:
                 count_text = count_el.inner_text().strip()
-                nums = re.findall(r'[\d,]+', count_text)
+                nums = re.findall(r"[\d,]+", count_text)
                 if nums:
                     result["active_ads_count"] = int(nums[0].replace(",", ""))
 
             # Scrape ad cards
-            ad_cards = page.query_selector_all('[class*="ad-card"], [class*="_7jvw"], div[role="article"]')
+            ad_cards = page.query_selector_all(
+                '[class*="ad-card"], [class*="_7jvw"], div[role="article"]'
+            )
             if not ad_cards:
                 # Broader fallback
-                ad_cards = page.query_selector_all('div[class*="x1dr75xp"], div[class*="xrvj5dj"]')
+                ad_cards = page.query_selector_all(
+                    'div[class*="x1dr75xp"], div[class*="xrvj5dj"]'
+                )
 
             for card in ad_cards[:10]:  # Sample max 10
-                text_el = card.query_selector('[class*="text"], [class*="body"], p, span')
-                ad_text = text_el.inner_text().strip() if text_el else card.inner_text().strip()[:300]
+                text_el = card.query_selector(
+                    '[class*="text"], [class*="body"], p, span'
+                )
+                ad_text = (
+                    text_el.inner_text().strip()
+                    if text_el
+                    else card.inner_text().strip()[:300]
+                )
                 if ad_text:
                     result["sample_ads"].append(ad_text[:500])
 
@@ -200,9 +223,13 @@ def spy_facebook_ads(search_term):
             # Fallback count from page
             if not result["active_ads_count"]:
                 page_text = page.inner_text("body")
-                count_match = re.search(r'(\d[\d,]*)\s*(?:results?|ads?|iklan)', page_text, re.IGNORECASE)
+                count_match = re.search(
+                    r"(\d[\d,]*)\s*(?:results?|ads?|iklan)", page_text, re.IGNORECASE
+                )
                 if count_match:
-                    result["active_ads_count"] = int(count_match.group(1).replace(",", ""))
+                    result["active_ads_count"] = int(
+                        count_match.group(1).replace(",", "")
+                    )
 
             browser.close()
 
@@ -214,8 +241,11 @@ def spy_facebook_ads(search_term):
 
 def main():
     parser = argparse.ArgumentParser(description="Marketplace & social media spy tool")
-    parser.add_argument("--target", required=True,
-                        help='Target: "lynk:username", "tiktok:@user", "fbads:search term"')
+    parser.add_argument(
+        "--target",
+        required=True,
+        help='Target: "lynk:username", "tiktok:@user", "fbads:search term"',
+    )
     args = parser.parse_args()
 
     target = args.target

@@ -24,7 +24,6 @@ from cache import Cache
 from cost_tracker import CostTracker
 from state import StateManager
 
-
 PROVIDERS = {
     "ollama": OllamaProvider,
     "groq": GroqProvider,

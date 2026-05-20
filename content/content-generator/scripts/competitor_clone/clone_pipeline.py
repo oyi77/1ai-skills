@@ -10,15 +10,17 @@ Usage:
 import os, sys, json, base64, io, time, subprocess, asyncio
 import urllib.request, urllib.error
 from PIL import Image
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from scene_extractor import extract_scenes, extract_audio, get_video_info
 from scene_analyzer import analyze_scene, transcribe_audio, improve_script
+
 # Smart routing helpers (defined in this file below)
 
-NVIDIA_KEY   = os.environ.get("NVIDIA_API_KEY")
+NVIDIA_KEY = os.environ.get("NVIDIA_API_KEY")
 BYTEPLUS_KEY = os.environ.get("BYTEPLUS_API_KEY")
-GROQ_KEY     = os.environ.get("GROQ_API_KEY")
+GROQ_KEY = os.environ.get("GROQ_API_KEY")
 BYTEPLUS_BASE = "https://ark.ap-southeast.bytepluses.com/api/v3"
 FFMPEG = "/home/linuxbrew/.linuxbrew/bin/ffmpeg"
 
@@ -29,10 +31,7 @@ def download_video(url: str, output_dir: str) -> str:
     os.makedirs(output_dir, exist_ok=True)
     out_path = os.path.join(output_dir, "competitor_video.mp4")
     print(f"  📥 Downloading: {url[:60]}...")
-    cmd = [
-        "yt-dlp", "-f", "best[ext=mp4]/best",
-        "--no-playlist", "-o", out_path, url
-    ]
+    cmd = ["yt-dlp", "-f", "best[ext=mp4]/best", "--no-playlist", "-o", out_path, url]
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode == 0 and os.path.exists(out_path):
         size_mb = os.path.getsize(out_path) / 1024 / 1024
@@ -48,12 +47,14 @@ def detect_scene_type(analysis: dict) -> str:
     Returns: 'product_only' | 'model_only' | 'product_with_model' | 'other'
     """
     scene_type = analysis.get("scene_type", "")
-    has_person  = analysis.get("has_person", False)
+    has_person = analysis.get("has_person", False)
     has_product = analysis.get("has_product", True)
 
     if scene_type == "product_with_model" or (has_person and has_product):
         return "product_with_model"
-    elif scene_type in ("model_only", "talking_head") or (has_person and not has_product):
+    elif scene_type in ("model_only", "talking_head") or (
+        has_person and not has_product
+    ):
         return "model_only"
     elif scene_type == "product_only" or (has_product and not has_person):
         return "product_only"
@@ -62,8 +63,10 @@ def detect_scene_type(analysis: dict) -> str:
 
 def build_upgrade_prompt(analysis: dict, scene_type: str) -> str:
     """Build the best prompt based on scene type"""
-    base = analysis.get("upgrade_prompt", "hyperrealistic commercial product shot, 8K, cinematic")
-    mood  = analysis.get("mood", "professional")
+    base = analysis.get(
+        "upgrade_prompt", "hyperrealistic commercial product shot, 8K, cinematic"
+    )
+    mood = analysis.get("mood", "professional")
     style = analysis.get("visual_style", "dark_moody")
     palette = analysis.get("color_palette", "dark, dramatic")
 
@@ -101,8 +104,12 @@ def build_upgrade_prompt(analysis: dict, scene_type: str) -> str:
         return base + hr_suffix
 
 
-def generate_better_image(upgrade_prompt: str, scene_id: int, output_dir: str,
-                           scene_type: str = "product_only") -> str:
+def generate_better_image(
+    upgrade_prompt: str,
+    scene_id: int,
+    output_dir: str,
+    scene_type: str = "product_only",
+) -> str:
     """
     Generate hyperrealistic upgraded image for a scene.
     Smart model routing:
@@ -120,7 +127,11 @@ def generate_better_image(upgrade_prompt: str, scene_id: int, output_dir: str,
 
     def _call_flux(prompt):
         url = "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.1-dev"
-        headers = {"Authorization": f"Bearer {NVIDIA_KEY}", "Content-Type": "application/json", "Accept": "application/json"}
+        headers = {
+            "Authorization": f"Bearer {NVIDIA_KEY}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
         payload = json.dumps({"prompt": prompt}).encode()
         req = urllib.request.Request(url, data=payload, headers=headers, method="POST")
         with urllib.request.urlopen(req, timeout=90) as resp:
@@ -132,7 +143,11 @@ def generate_better_image(upgrade_prompt: str, scene_id: int, output_dir: str,
 
     def _call_sd3(prompt):
         url = "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium"
-        headers = {"Authorization": f"Bearer {NVIDIA_KEY}", "Content-Type": "application/json", "Accept": "application/json"}
+        headers = {
+            "Authorization": f"Bearer {NVIDIA_KEY}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
         payload = json.dumps({"prompt": prompt}).encode()
         req = urllib.request.Request(url, data=payload, headers=headers, method="POST")
         with urllib.request.urlopen(req, timeout=90) as resp:
@@ -188,21 +203,32 @@ def submit_i2v(image_path: str, anim_prompt: str, duration: int = 5) -> str:
     img_bytes = prepare_image_for_i2v(image_path)
     img_b64 = base64.b64encode(img_bytes).decode()
 
-    payload = json.dumps({
-        "model": "seedance-1-0-lite-i2v-250428",
-        "content": [
-            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}, "role": "first_frame"},
-            {"type": "text", "text": anim_prompt}
-        ],
-        "duration": min(duration, 10),
-        "seed": -1
-        # ratio omitted — image already is 9:16
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": "seedance-1-0-lite-i2v-250428",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"},
+                    "role": "first_frame",
+                },
+                {"type": "text", "text": anim_prompt},
+            ],
+            "duration": min(duration, 10),
+            "seed": -1,
+            # ratio omitted — image already is 9:16
+        }
+    ).encode()
 
-    headers = {"Authorization": f"Bearer {BYTEPLUS_KEY}", "Content-Type": "application/json"}
+    headers = {
+        "Authorization": f"Bearer {BYTEPLUS_KEY}",
+        "Content-Type": "application/json",
+    }
     req = urllib.request.Request(
         f"{BYTEPLUS_BASE}/contents/generations/tasks",
-        data=payload, headers=headers, method="POST"
+        data=payload,
+        headers=headers,
+        method="POST",
     )
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
@@ -223,20 +249,30 @@ def poll_i2v(task_id: str, scene_id: int, duration: float, output_dir: str) -> s
         time.sleep(5)
         try:
             req = urllib.request.Request(
-                f"{BYTEPLUS_BASE}/contents/generations/tasks/{task_id}",
-                headers=headers
+                f"{BYTEPLUS_BASE}/contents/generations/tasks/{task_id}", headers=headers
             )
             with urllib.request.urlopen(req, timeout=30) as resp:
                 data = json.loads(resp.read())
             status = data.get("status")
-            if (i+1) % 3 == 0:
+            if (i + 1) % 3 == 0:
                 print(f"    Scene {scene_id}: I2V [{(i+1)*5}s] {status}")
             if status == "succeeded":
                 video_url = data["content"]["video_url"]
                 urllib.request.urlretrieve(video_url, out_tmp)
                 # Loop to target duration
-                cmd = [FFMPEG, "-y", "-stream_loop", "-1", "-i", out_tmp,
-                       "-t", str(duration), "-c", "copy", out_path]
+                cmd = [
+                    FFMPEG,
+                    "-y",
+                    "-stream_loop",
+                    "-1",
+                    "-i",
+                    out_tmp,
+                    "-t",
+                    str(duration),
+                    "-c",
+                    "copy",
+                    out_path,
+                ]
                 subprocess.run(cmd, capture_output=True)
                 print(f"    Scene {scene_id}: Animated ✅")
                 return out_path
@@ -252,6 +288,7 @@ def poll_i2v(task_id: str, scene_id: int, duration: float, output_dir: str) -> s
 async def generate_voiceover(text: str, scene_id: int, output_dir: str) -> str:
     """Generate Indonesian voiceover with Edge TTS"""
     import edge_tts
+
     out_path = os.path.join(output_dir, f"vo_{scene_id:02d}.mp3")
     voice = "id-ID-GadisNeural"
     communicate = edge_tts.Communicate(text, voice, rate="+5%")
@@ -260,20 +297,36 @@ async def generate_voiceover(text: str, scene_id: int, output_dir: str) -> str:
 
 
 # ─── STEP 5: COMPOSE SCENE (video + VO) ──────────────────────────────
-def compose_scene(video_path: str, audio_path: str, duration: float,
-                  scene_id: int, output_dir: str) -> str:
+def compose_scene(
+    video_path: str, audio_path: str, duration: float, scene_id: int, output_dir: str
+) -> str:
     """Merge animated video with voiceover"""
     out_path = os.path.join(output_dir, f"scene_{scene_id:02d}_composed.mp4")
     cmd = [
-        FFMPEG, "-y",
-        "-i", video_path,
-        "-i", audio_path,
-        "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
-        "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-        "-c:a", "aac", "-b:a", "128k",
-        "-t", str(duration), "-shortest",
-        "-pix_fmt", "yuv420p",
-        out_path
+        FFMPEG,
+        "-y",
+        "-i",
+        video_path,
+        "-i",
+        audio_path,
+        "-vf",
+        "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-crf",
+        "18",
+        "-c:a",
+        "aac",
+        "-b:a",
+        "128k",
+        "-t",
+        str(duration),
+        "-shortest",
+        "-pix_fmt",
+        "yuv420p",
+        out_path,
     ]
     result = subprocess.run(cmd, capture_output=True)
     if result.returncode == 0:
@@ -292,12 +345,27 @@ def stitch_final(composed_paths: list, output_dir: str, project_name: str) -> st
 
     final = os.path.join(output_dir, f"{project_name}_FINAL.mp4")
     cmd = [
-        FFMPEG, "-y",
-        "-f", "concat", "-safe", "0", "-i", list_file,
-        "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-        "-c:a", "aac", "-b:a", "128k",
-        "-pix_fmt", "yuv420p",
-        final
+        FFMPEG,
+        "-y",
+        "-f",
+        "concat",
+        "-safe",
+        "0",
+        "-i",
+        list_file,
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-crf",
+        "18",
+        "-c:a",
+        "aac",
+        "-b:a",
+        "128k",
+        "-pix_fmt",
+        "yuv420p",
+        final,
     ]
     result = subprocess.run(cmd, capture_output=True)
     if result.returncode == 0:
@@ -315,7 +383,7 @@ async def run_pipeline(
     video_url: str = None,
     category: str = "minuman",
     project_name: str = "competitor_clone",
-    output_base: str = "/home/openclaw/.openclaw/workspace/output/competitor_clones"
+    output_base: str = "/home/openclaw/.openclaw/workspace/output/competitor_clones",
 ):
     print("=" * 60)
     print("🕵️  COMPETITOR CLONE PIPELINE")
@@ -354,7 +422,9 @@ async def run_pipeline(
         analysis = analyze_scene(scene, category)
         scene["analysis"] = analysis
         analyses.append((scene, analysis))
-        print(f"    Type: {analysis.get('scene_type')} | Style: {analysis.get('visual_style')} | Mood: {analysis.get('mood')}")
+        print(
+            f"    Type: {analysis.get('scene_type')} | Style: {analysis.get('visual_style')} | Mood: {analysis.get('mood')}"
+        )
 
     # ── Improve script ──
     print("\n✍️  Step 4: Rewriting VO script (better than competitor)...")
@@ -372,7 +442,9 @@ async def run_pipeline(
         upgrade_prompt = build_upgrade_prompt(analysis, stype)
         print(f"  Scene {sid} type: [{stype}]")
         img_path = generate_better_image(upgrade_prompt, sid, output_dir, stype)
-        image_paths[sid] = img_path or scene["keyframe"]  # Fallback to original keyframe
+        image_paths[sid] = (
+            img_path or scene["keyframe"]
+        )  # Fallback to original keyframe
 
     # ── Submit I2V tasks ──
     print(f"\n🎬 Step 6: Submitting I2V animation tasks...")
@@ -380,8 +452,13 @@ async def run_pipeline(
     for scene, analysis in analyses:
         sid = scene["id"]
         if image_paths.get(sid):
-            anim_prompt = analysis.get("upgrade_animation", "cinematic slow motion, professional camera movement")
-            task_id = submit_i2v(image_paths[sid], anim_prompt, min(int(scene["duration"]), 10))
+            anim_prompt = analysis.get(
+                "upgrade_animation",
+                "cinematic slow motion, professional camera movement",
+            )
+            task_id = submit_i2v(
+                image_paths[sid], anim_prompt, min(int(scene["duration"]), 10)
+            )
             if task_id:
                 i2v_tasks[sid] = (task_id, scene["duration"])
                 print(f"  Scene {sid}: Task submitted ✅ ({task_id})")
@@ -409,17 +486,31 @@ async def run_pipeline(
     for scene, _ in analyses:
         sid = scene["id"]
         vid = animated_paths.get(sid) or image_paths.get(sid)
-        vo  = vo_paths.get(sid)
+        vo = vo_paths.get(sid)
         if vid and vo:
             # If it's an image (not video), convert to short video first
             if vid.endswith(".jpg") or vid.endswith(".png"):
                 img_vid = os.path.join(output_dir, f"scene_{sid:02d}_static.mp4")
-                subprocess.run([
-                    FFMPEG, "-y", "-loop", "1", "-i", vid,
-                    "-t", str(scene["duration"]),
-                    "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p",
-                    img_vid
-                ], capture_output=True)
+                subprocess.run(
+                    [
+                        FFMPEG,
+                        "-y",
+                        "-loop",
+                        "1",
+                        "-i",
+                        vid,
+                        "-t",
+                        str(scene["duration"]),
+                        "-c:v",
+                        "libx264",
+                        "-preset",
+                        "fast",
+                        "-pix_fmt",
+                        "yuv420p",
+                        img_vid,
+                    ],
+                    capture_output=True,
+                )
                 vid = img_vid
 
             c = compose_scene(vid, vo, scene["duration"], sid, output_dir)
@@ -445,11 +536,11 @@ async def run_pipeline(
                 "original_keyframe": s["keyframe"],
                 "upgraded_image": image_paths.get(s["id"]),
                 "analysis": s["analysis"],
-                "vo": scripts.get(s["id"], "")
+                "vo": scripts.get(s["id"], ""),
             }
             for s, _ in analyses
         ],
-        "final_video": final
+        "final_video": final,
     }
     report_path = os.path.join(output_dir, "clone_report.json")
     with open(report_path, "w") as f:
@@ -461,12 +552,13 @@ async def run_pipeline(
         "scenes": analyses,
         "image_paths": image_paths,
         "report": report_path,
-        "output_dir": output_dir
+        "output_dir": output_dir,
     }
 
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--video", help="Path to local video file")
     parser.add_argument("--url", help="URL to download (TikTok/IG/YT)")
@@ -474,9 +566,11 @@ if __name__ == "__main__":
     parser.add_argument("--name", default="clone_project", help="Project name")
     args = parser.parse_args()
 
-    asyncio.run(run_pipeline(
-        video_path=args.video,
-        video_url=args.url,
-        category=args.category,
-        project_name=args.name
-    ))
+    asyncio.run(
+        run_pipeline(
+            video_path=args.video,
+            video_url=args.url,
+            category=args.category,
+            project_name=args.name,
+        )
+    )

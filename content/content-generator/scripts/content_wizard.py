@@ -26,6 +26,7 @@ def load_state(chat_id: str) -> dict:
         return all_states.get(str(chat_id), {})
     return {}
 
+
 def save_state(chat_id: str, state: dict):
     all_states = {}
     if os.path.exists(STATE_FILE):
@@ -34,6 +35,7 @@ def save_state(chat_id: str, state: dict):
     all_states[str(chat_id)] = {**state, "updated_at": time.time()}
     with open(STATE_FILE, "w") as f:
         json.dump(all_states, f, indent=2)
+
 
 def clear_state(chat_id: str):
     all_states = {}
@@ -49,7 +51,11 @@ def clear_state(chat_id: str):
 def build_category_message(detected: dict = None) -> tuple[str, list]:
     """Step 1: Pilih kategori produk"""
 
-    if detected and detected.get("confidence") in ("high", "medium") and detected.get("category"):
+    if (
+        detected
+        and detected.get("confidence") in ("high", "medium")
+        and detected.get("category")
+    ):
         cat = detected["category"]
         cat_label = CATEGORIES.get(cat, {}).get("label", cat)
         text = (
@@ -59,7 +65,9 @@ def build_category_message(detected: dict = None) -> tuple[str, list]:
         )
         buttons = []
         # First row: confirm detected
-        buttons.append([{"text": f"✅ Bener, {cat_label}!", "callback_data": f"wiz:cat:{cat}"}])
+        buttons.append(
+            [{"text": f"✅ Bener, {cat_label}!", "callback_data": f"wiz:cat:{cat}"}]
+        )
         # Other categories
         row = []
         for k, v in CATEGORIES.items():
@@ -128,9 +136,9 @@ def build_format_message(style: str) -> tuple[str, list]:
 
 def build_confirm_message(state: dict) -> tuple[str, list]:
     """Step 4: Konfirmasi sebelum generate"""
-    cat  = state.get("category")
-    sty  = state.get("style")
-    fmt  = state.get("format")
+    cat = state.get("category")
+    sty = state.get("style")
+    fmt = state.get("format")
     desc = state.get("product_desc", "produk kamu")
 
     cat_label = CATEGORIES.get(cat, {}).get("label", cat)
@@ -182,7 +190,7 @@ def handle_callback(callback_data: str, chat_id: str) -> dict:
         return {
             "action": "message",
             "text": "Oke, mulai dari awal ya! Kirim foto produk kamu 📸",
-            "buttons": None
+            "buttons": None,
         }
 
     elif step == "cat":
@@ -215,7 +223,7 @@ def handle_callback(callback_data: str, chat_id: str) -> dict:
         return {
             "action": "generate",
             "state": state,
-            "text": build_generating_message(state)
+            "text": build_generating_message(state),
         }
 
     return {"action": "ignore"}
@@ -229,7 +237,9 @@ def handle_image(image_path: str, chat_id: str, detected: dict = None) -> dict:
         "category": None,
         "style": None,
         "format": None,
-        "product_desc": detected.get("product_desc", "produk") if detected else "produk",
+        "product_desc": (
+            detected.get("product_desc", "produk") if detected else "produk"
+        ),
         "detected": detected or {},
     }
     save_state(chat_id, state)

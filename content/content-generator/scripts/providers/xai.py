@@ -13,7 +13,6 @@ from typing import Any, Optional
 
 from .base import AIProvider, ProviderType, GenerationResult
 
-
 # Default XAI API base URL
 DEFAULT_XAI_BASE_URL = "https://api.x.ai/v1"
 

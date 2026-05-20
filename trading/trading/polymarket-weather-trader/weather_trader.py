@@ -31,16 +31,20 @@ sys.stdout.reconfigure(line_buffering=True)
 # Optional: Trade Journal integration for tracking
 try:
     from tradejournal import log_trade
+
     JOURNAL_AVAILABLE = True
 except ImportError:
     try:
         # Try relative import within skills package
         from skills.tradejournal import log_trade
+
         JOURNAL_AVAILABLE = True
     except ImportError:
         JOURNAL_AVAILABLE = False
+
         def log_trade(*args, **kwargs):
             pass  # No-op if tradejournal not installed
+
 
 # =============================================================================
 # Configuration (config.json > env vars > defaults)
@@ -53,23 +57,51 @@ from simmer_sdk.skill import load_config, update_config, get_config_path
 # SIMMER_WEATHER_EXIT, SIMMER_WEATHER_MAX_POSITION, SIMMER_WEATHER_MAX_TRADES) are
 # resolved as fallbacks below for backwards compatibility.
 CONFIG_SCHEMA = {
-    "entry_threshold":   {"env": "SIMMER_WEATHER_ENTRY_THRESHOLD",   "default": 0.15,  "type": float},
-    "exit_threshold":    {"env": "SIMMER_WEATHER_EXIT_THRESHOLD",    "default": 0.45,  "type": float},
-    "max_position_usd":  {"env": "SIMMER_WEATHER_MAX_POSITION_USD",  "default": 2.00,  "type": float},
-    "sizing_pct":        {"env": "SIMMER_WEATHER_SIZING_PCT",        "default": 0.05,  "type": float},
-    "max_trades_per_run":{"env": "SIMMER_WEATHER_MAX_TRADES_PER_RUN","default": 5,     "type": int},
-    "locations":         {"env": "SIMMER_WEATHER_LOCATIONS",         "default": "NYC", "type": str},
-    "binary_only":       {"env": "SIMMER_WEATHER_BINARY_ONLY",       "default": False, "type": bool},
-    "slippage_max":      {"env": "SIMMER_WEATHER_SLIPPAGE_MAX",      "default": 0.15,  "type": float},
-    "min_liquidity":     {"env": "SIMMER_WEATHER_MIN_LIQUIDITY",     "default": 0.0,   "type": float},
+    "entry_threshold": {
+        "env": "SIMMER_WEATHER_ENTRY_THRESHOLD",
+        "default": 0.15,
+        "type": float,
+    },
+    "exit_threshold": {
+        "env": "SIMMER_WEATHER_EXIT_THRESHOLD",
+        "default": 0.45,
+        "type": float,
+    },
+    "max_position_usd": {
+        "env": "SIMMER_WEATHER_MAX_POSITION_USD",
+        "default": 2.00,
+        "type": float,
+    },
+    "sizing_pct": {"env": "SIMMER_WEATHER_SIZING_PCT", "default": 0.05, "type": float},
+    "max_trades_per_run": {
+        "env": "SIMMER_WEATHER_MAX_TRADES_PER_RUN",
+        "default": 5,
+        "type": int,
+    },
+    "locations": {"env": "SIMMER_WEATHER_LOCATIONS", "default": "NYC", "type": str},
+    "binary_only": {
+        "env": "SIMMER_WEATHER_BINARY_ONLY",
+        "default": False,
+        "type": bool,
+    },
+    "slippage_max": {
+        "env": "SIMMER_WEATHER_SLIPPAGE_MAX",
+        "default": 0.15,
+        "type": float,
+    },
+    "min_liquidity": {
+        "env": "SIMMER_WEATHER_MIN_LIQUIDITY",
+        "default": 0.0,
+        "type": float,
+    },
 }
 
 # Backwards-compatible env var aliases (old name -> new name)
 _LEGACY_ENV_ALIASES = {
-    "SIMMER_WEATHER_ENTRY":        "SIMMER_WEATHER_ENTRY_THRESHOLD",
-    "SIMMER_WEATHER_EXIT":         "SIMMER_WEATHER_EXIT_THRESHOLD",
+    "SIMMER_WEATHER_ENTRY": "SIMMER_WEATHER_ENTRY_THRESHOLD",
+    "SIMMER_WEATHER_EXIT": "SIMMER_WEATHER_EXIT_THRESHOLD",
     "SIMMER_WEATHER_MAX_POSITION": "SIMMER_WEATHER_MAX_POSITION_USD",
-    "SIMMER_WEATHER_MAX_TRADES":   "SIMMER_WEATHER_MAX_TRADES_PER_RUN",
+    "SIMMER_WEATHER_MAX_TRADES": "SIMMER_WEATHER_MAX_TRADES_PER_RUN",
 }
 for _old, _new in _LEGACY_ENV_ALIASES.items():
     if _old in os.environ and _new not in os.environ:
@@ -82,6 +114,7 @@ NOAA_API_BASE = "https://api.weather.gov"
 
 # SimmerClient singleton
 _client = None
+
 
 def get_client(live=True):
     """Lazy-init SimmerClient singleton."""
@@ -101,6 +134,7 @@ def get_client(live=True):
         _client = SimmerClient(api_key=api_key, venue=venue, live=live)
     return _client
 
+
 # Source tag for tracking
 TRADE_SOURCE = "sdk:weather"
 SKILL_SLUG = "polymarket-weather-trader"
@@ -108,7 +142,7 @@ _automaton_reported = False
 
 # Polymarket constraints
 MIN_SHARES_PER_ORDER = 5.0  # Polymarket requires minimum 5 shares
-MIN_TICK_SIZE = 0.01        # Minimum tradeable price
+MIN_TICK_SIZE = 0.01  # Minimum tradeable price
 
 # Strategy parameters - from config
 ENTRY_THRESHOLD = _config["entry_threshold"]
@@ -129,7 +163,9 @@ BINARY_ONLY = _config["binary_only"]
 
 # Context safeguard thresholds
 SLIPPAGE_MAX_PCT = _config["slippage_max"]  # Skip if slippage exceeds this (tunable)
-MIN_LIQUIDITY_USD = _config["min_liquidity"]  # Skip markets with liquidity below this (0 = disabled)
+MIN_LIQUIDITY_USD = _config[
+    "min_liquidity"
+]  # Skip markets with liquidity below this (0 = disabled)
 TIME_TO_RESOLUTION_MIN_HOURS = 2  # Skip if resolving in < 2 hours
 
 # Price trend detection
@@ -137,21 +173,54 @@ PRICE_DROP_THRESHOLD = 0.10  # 10% drop in last 24h = stronger signal
 
 # Supported locations (matching Polymarket resolution sources)
 LOCATIONS = {
-    "NYC": {"lat": 40.7769, "lon": -73.8740, "name": "New York City (LaGuardia)", "station": "KLGA"},
-    "Chicago": {"lat": 41.9742, "lon": -87.9073, "name": "Chicago (O'Hare)", "station": "KORD"},
-    "Seattle": {"lat": 47.4502, "lon": -122.3088, "name": "Seattle (Sea-Tac)", "station": "KSEA"},
-    "Atlanta": {"lat": 33.6407, "lon": -84.4277, "name": "Atlanta (Hartsfield)", "station": "KATL"},
-    "Dallas": {"lat": 32.8998, "lon": -97.0403, "name": "Dallas (DFW)", "station": "KDFW"},
-    "Miami": {"lat": 25.7959, "lon": -80.2870, "name": "Miami (MIA)", "station": "KMIA"},
+    "NYC": {
+        "lat": 40.7769,
+        "lon": -73.8740,
+        "name": "New York City (LaGuardia)",
+        "station": "KLGA",
+    },
+    "Chicago": {
+        "lat": 41.9742,
+        "lon": -87.9073,
+        "name": "Chicago (O'Hare)",
+        "station": "KORD",
+    },
+    "Seattle": {
+        "lat": 47.4502,
+        "lon": -122.3088,
+        "name": "Seattle (Sea-Tac)",
+        "station": "KSEA",
+    },
+    "Atlanta": {
+        "lat": 33.6407,
+        "lon": -84.4277,
+        "name": "Atlanta (Hartsfield)",
+        "station": "KATL",
+    },
+    "Dallas": {
+        "lat": 32.8998,
+        "lon": -97.0403,
+        "name": "Dallas (DFW)",
+        "station": "KDFW",
+    },
+    "Miami": {
+        "lat": 25.7959,
+        "lon": -80.2870,
+        "name": "Miami (MIA)",
+        "station": "KMIA",
+    },
 }
 
 # Active locations - from config
 _locations_str = _config["locations"]
-ACTIVE_LOCATIONS = [loc.strip().upper() for loc in _locations_str.split(",") if loc.strip()]
+ACTIVE_LOCATIONS = [
+    loc.strip().upper() for loc in _locations_str.split(",") if loc.strip()
+]
 
 # =============================================================================
 # NOAA Weather API
 # =============================================================================
+
 
 def fetch_json(url, headers=None):
     """Fetch JSON from URL with error handling."""
@@ -248,6 +317,7 @@ def get_noaa_forecast(location: str) -> dict:
 # Market Parsing
 # =============================================================================
 
+
 def parse_weather_event(event_name: str) -> dict:
     """Parse weather event name to extract location, date, metric."""
     if not event_name:
@@ -255,21 +325,29 @@ def parse_weather_event(event_name: str) -> dict:
 
     event_lower = event_name.lower()
 
-    if 'highest' in event_lower or 'high temp' in event_lower:
-        metric = 'high'
-    elif 'lowest' in event_lower or 'low temp' in event_lower:
-        metric = 'low'
+    if "highest" in event_lower or "high temp" in event_lower:
+        metric = "high"
+    elif "lowest" in event_lower or "low temp" in event_lower:
+        metric = "low"
     else:
-        metric = 'high'
+        metric = "high"
 
     location = None
     location_aliases = {
-        'nyc': 'NYC', 'new york': 'NYC', 'laguardia': 'NYC', 'la guardia': 'NYC',
-        'chicago': 'Chicago', "o'hare": 'Chicago', 'ohare': 'Chicago',
-        'seattle': 'Seattle', 'sea-tac': 'Seattle',
-        'atlanta': 'Atlanta', 'hartsfield': 'Atlanta',
-        'dallas': 'Dallas', 'dfw': 'Dallas',
-        'miami': 'Miami',
+        "nyc": "NYC",
+        "new york": "NYC",
+        "laguardia": "NYC",
+        "la guardia": "NYC",
+        "chicago": "Chicago",
+        "o'hare": "Chicago",
+        "ohare": "Chicago",
+        "seattle": "Seattle",
+        "sea-tac": "Seattle",
+        "atlanta": "Atlanta",
+        "hartsfield": "Atlanta",
+        "dallas": "Dallas",
+        "dfw": "Dallas",
+        "miami": "Miami",
     }
 
     for alias, loc in location_aliases.items():
@@ -280,7 +358,9 @@ def parse_weather_event(event_name: str) -> dict:
     if not location:
         return None
 
-    month_day_match = re.search(r'on\s+([a-zA-Z]+)\s+(\d{1,2})', event_name, re.IGNORECASE)
+    month_day_match = re.search(
+        r"on\s+([a-zA-Z]+)\s+(\d{1,2})", event_name, re.IGNORECASE
+    )
     if not month_day_match:
         return None
 
@@ -288,10 +368,29 @@ def parse_weather_event(event_name: str) -> dict:
     day = int(month_day_match.group(2))
 
     month_map = {
-        'january': 1, 'jan': 1, 'february': 2, 'feb': 2, 'march': 3, 'mar': 3,
-        'april': 4, 'apr': 4, 'may': 5, 'june': 6, 'jun': 6, 'july': 7, 'jul': 7,
-        'august': 8, 'aug': 8, 'september': 9, 'sep': 9, 'october': 10, 'oct': 10,
-        'november': 11, 'nov': 11, 'december': 12, 'dec': 12,
+        "january": 1,
+        "jan": 1,
+        "february": 2,
+        "feb": 2,
+        "march": 3,
+        "mar": 3,
+        "april": 4,
+        "apr": 4,
+        "may": 5,
+        "june": 6,
+        "jun": 6,
+        "july": 7,
+        "jul": 7,
+        "august": 8,
+        "aug": 8,
+        "september": 9,
+        "sep": 9,
+        "october": 10,
+        "oct": 10,
+        "november": 11,
+        "nov": 11,
+        "december": 12,
+        "dec": 12,
     }
 
     month = month_map.get(month_name)
@@ -316,15 +415,21 @@ def parse_temperature_bucket(outcome_name: str) -> tuple:
     if not outcome_name:
         return None
 
-    below_match = re.search(r'(\d+)\s*°?[fF]?\s*(or below|or less)', outcome_name, re.IGNORECASE)
+    below_match = re.search(
+        r"(\d+)\s*°?[fF]?\s*(or below|or less)", outcome_name, re.IGNORECASE
+    )
     if below_match:
         return (-999, int(below_match.group(1)))
 
-    above_match = re.search(r'(\d+)\s*°?[fF]?\s*(or higher|or above|or more)', outcome_name, re.IGNORECASE)
+    above_match = re.search(
+        r"(\d+)\s*°?[fF]?\s*(or higher|or above|or more)", outcome_name, re.IGNORECASE
+    )
     if above_match:
         return (int(above_match.group(1)), 999)
 
-    range_match = re.search(r'(\d+)\s*(?:°?\s*[fF])?\s*(?:-|–|to)\s*(\d+)', outcome_name)
+    range_match = re.search(
+        r"(\d+)\s*(?:°?\s*[fF])?\s*(?:-|–|to)\s*(\d+)", outcome_name
+    )
     if range_match:
         low, high = int(range_match.group(1)), int(range_match.group(2))
         return (min(low, high), max(low, high))
@@ -340,6 +445,7 @@ def parse_temperature_bucket(outcome_name: str) -> tuple:
 # Simmer API - Portfolio & Context
 # =============================================================================
 
+
 def get_portfolio() -> dict:
     """Get portfolio summary from SDK."""
     try:
@@ -353,8 +459,11 @@ def get_market_context(market_id: str, my_probability: float = None) -> dict:
     """Get market context with safeguards and optional edge analysis."""
     try:
         if my_probability is not None:
-            return get_client()._request("GET", f"/api/sdk/context/{market_id}",
-                                         params={"my_probability": my_probability})
+            return get_client()._request(
+                "GET",
+                f"/api/sdk/context/{market_id}",
+                params={"my_probability": my_probability},
+            )
         return get_client().get_market_context(market_id)
     except Exception:
         return None
@@ -371,7 +480,7 @@ def get_price_history(market_id: str) -> list:
 def check_context_safeguards(context: dict, use_edge: bool = True) -> tuple:
     """
     Check context for safeguards. Returns (should_trade, reasons).
-    
+
     Args:
         context: Context response from SDK
         use_edge: If True, respect edge recommendation (TRADE/HOLD/SKIP)
@@ -394,7 +503,9 @@ def check_context_safeguards(context: dict, use_edge: bool = True) -> tuple:
     # Check flip-flop warning
     warning_level = discipline.get("warning_level", "none")
     if warning_level == "severe":
-        return False, [f"Severe flip-flop warning: {discipline.get('flip_flop_warning', '')}"]
+        return False, [
+            f"Severe flip-flop warning: {discipline.get('flip_flop_warning', '')}"
+        ]
     elif warning_level == "mild":
         reasons.append("Mild flip-flop warning (proceed with caution)")
 
@@ -421,30 +532,38 @@ def check_context_safeguards(context: dict, use_edge: bool = True) -> tuple:
     if MIN_LIQUIDITY_USD > 0:
         liquidity = market.get("liquidity", 0) or 0
         if liquidity < MIN_LIQUIDITY_USD:
-            return False, [f"Liquidity too low: ${liquidity:.0f} < ${MIN_LIQUIDITY_USD:.0f} min"]
+            return False, [
+                f"Liquidity too low: ${liquidity:.0f} < ${MIN_LIQUIDITY_USD:.0f} min"
+            ]
 
     # Check slippage
     estimates = slippage.get("estimates", []) if slippage else []
     if estimates:
         slippage_pct = estimates[0].get("slippage_pct", 0)
         if slippage_pct > SLIPPAGE_MAX_PCT:
-            return False, [f"Slippage too high: {slippage_pct:.1%} (max {SLIPPAGE_MAX_PCT:.0%})"]
+            return False, [
+                f"Slippage too high: {slippage_pct:.1%} (max {SLIPPAGE_MAX_PCT:.0%})"
+            ]
 
     # Check edge recommendation (if available and use_edge=True)
     if use_edge and edge:
         recommendation = edge.get("recommendation")
         user_edge = edge.get("user_edge")
         threshold = edge.get("suggested_threshold", 0)
-        
+
         if recommendation == "SKIP":
             return False, ["Edge analysis: SKIP (market resolved or invalid)"]
         elif recommendation == "HOLD":
             if user_edge is not None and threshold:
-                reasons.append(f"Edge {user_edge:.1%} below threshold {threshold:.1%} - marginal opportunity")
+                reasons.append(
+                    f"Edge {user_edge:.1%} below threshold {threshold:.1%} - marginal opportunity"
+                )
             else:
                 reasons.append("Edge analysis recommends HOLD")
         elif recommendation == "TRADE":
-            reasons.append(f"Edge {user_edge:.1%} ≥ threshold {threshold:.1%} - good opportunity")
+            reasons.append(
+                f"Edge {user_edge:.1%} ≥ threshold {threshold:.1%} - good opportunity"
+            )
 
     return True, reasons
 
@@ -459,7 +578,7 @@ def detect_price_trend(history: list) -> dict:
 
     # Get recent and older prices
     recent_price = history[-1].get("price_yes", 0.5)
-    
+
     # Find price ~24h ago (assuming 15-min intervals, ~96 points)
     lookback = min(96, len(history) - 1)
     old_price = history[-lookback].get("price_yes", recent_price)
@@ -513,7 +632,9 @@ def discover_and_import_weather_markets(log=print):
     seen_urls = set()
 
     for location in ACTIVE_LOCATIONS:
-        search_terms = LOCATION_SEARCH_TERMS.get(location, [f"temperature {location.lower()}"])
+        search_terms = LOCATION_SEARCH_TERMS.get(
+            location, [f"temperature {location.lower()}"]
+        )
 
         for term in search_terms:
             try:
@@ -560,11 +681,15 @@ def discover_and_import_weather_markets(log=print):
 # Simmer API - Trading
 # =============================================================================
 
+
 def fetch_weather_markets():
     """Fetch weather-tagged markets from Simmer API."""
     try:
-        result = get_client()._request("GET", "/api/sdk/markets",
-                                       params={"tags": "weather", "status": "active", "limit": 100})
+        result = get_client()._request(
+            "GET",
+            "/api/sdk/markets",
+            params={"tags": "weather", "status": "active", "limit": 100},
+        )
         return result.get("markets", [])
     except Exception:
         print("  Failed to fetch markets from Simmer API")
@@ -575,12 +700,19 @@ def execute_trade(market_id: str, side: str, amount: float) -> dict:
     """Execute a buy trade via Simmer SDK with source tagging."""
     try:
         result = get_client().trade(
-            market_id=market_id, side=side, amount=amount, source=TRADE_SOURCE, skill_slug=SKILL_SLUG,
+            market_id=market_id,
+            side=side,
+            amount=amount,
+            source=TRADE_SOURCE,
+            skill_slug=SKILL_SLUG,
         )
         return {
-            "success": result.success, "trade_id": result.trade_id,
-            "shares_bought": result.shares_bought, "shares": result.shares_bought,
-            "error": result.error, "simulated": result.simulated,
+            "success": result.success,
+            "trade_id": result.trade_id,
+            "shares_bought": result.shares_bought,
+            "shares": result.shares_bought,
+            "error": result.error,
+            "simulated": result.simulated,
         }
     except Exception as e:
         return {"error": str(e)}
@@ -590,12 +722,18 @@ def execute_sell(market_id: str, shares: float) -> dict:
     """Execute a sell trade via Simmer SDK with source tagging."""
     try:
         result = get_client().trade(
-            market_id=market_id, side="yes", action="sell",
-            shares=shares, source=TRADE_SOURCE, skill_slug=SKILL_SLUG,
+            market_id=market_id,
+            side="yes",
+            action="sell",
+            shares=shares,
+            source=TRADE_SOURCE,
+            skill_slug=SKILL_SLUG,
         )
         return {
-            "success": result.success, "trade_id": result.trade_id,
-            "error": result.error, "simulated": result.simulated,
+            "success": result.success,
+            "trade_id": result.trade_id,
+            "error": result.error,
+            "simulated": result.simulated,
         }
     except Exception as e:
         return {"error": str(e)}
@@ -606,6 +744,7 @@ def get_positions() -> list:
     try:
         positions = get_client().get_positions()
         from dataclasses import asdict
+
         return [asdict(p) for p in positions]
     except Exception as e:
         print(f"  Error fetching positions: {e}")
@@ -631,7 +770,9 @@ def calculate_position_size(default_size: float, smart_sizing: bool) -> float:
     smart_size = min(smart_size, MAX_POSITION_USD)
     smart_size = max(smart_size, 1.0)
 
-    print(f"  💡 Smart sizing: ${smart_size:.2f} ({SMART_SIZING_PCT:.0%} of ${balance:.2f} balance)")
+    print(
+        f"  💡 Smart sizing: ${smart_size:.2f} ({SMART_SIZING_PCT:.0%} of ${balance:.2f} balance)"
+    )
     return smart_size
 
 
@@ -639,7 +780,10 @@ def calculate_position_size(default_size: float, smart_sizing: bool) -> float:
 # Exit Strategy
 # =============================================================================
 
-def check_exit_opportunities(dry_run: bool = False, use_safeguards: bool = True) -> tuple:
+
+def check_exit_opportunities(
+    dry_run: bool = False, use_safeguards: bool = True
+) -> tuple:
     """Check open positions for exit opportunities. Returns: (exits_found, exits_executed)"""
     positions = get_positions()
 
@@ -651,7 +795,10 @@ def check_exit_opportunities(dry_run: bool = False, use_safeguards: bool = True)
         question = pos.get("question", "").lower()
         sources = pos.get("sources", [])
         # Check if from weather skill OR has weather keywords
-        if TRADE_SOURCE in sources or any(kw in question for kw in ["temperature", "°f", "highest temp", "lowest temp"]):
+        if TRADE_SOURCE in sources or any(
+            kw in question
+            for kw in ["temperature", "°f", "highest temp", "lowest temp"]
+        ):
             weather_positions.append(pos)
 
     if not weather_positions:
@@ -674,7 +821,9 @@ def check_exit_opportunities(dry_run: bool = False, use_safeguards: bool = True)
         if current_price >= EXIT_THRESHOLD:
             exits_found += 1
             print(f"  📤 {question}...")
-            print(f"     Price ${current_price:.2f} >= exit threshold ${EXIT_THRESHOLD:.2f}")
+            print(
+                f"     Price ${current_price:.2f} >= exit threshold ${EXIT_THRESHOLD:.2f}"
+            )
 
             # Check safeguards before selling
             if use_safeguards:
@@ -693,13 +842,16 @@ def check_exit_opportunities(dry_run: bool = False, use_safeguards: bool = True)
             if result.get("success"):
                 exits_executed += 1
                 trade_id = result.get("trade_id")
-                print(f"     ✅ {'[PAPER] ' if result.get('simulated') else ''}Sold {shares:.1f} shares @ ${current_price:.2f}")
+                print(
+                    f"     ✅ {'[PAPER] ' if result.get('simulated') else ''}Sold {shares:.1f} shares @ ${current_price:.2f}"
+                )
 
                 # Log sell trade context for journal (skip for paper trades)
                 if trade_id and JOURNAL_AVAILABLE and not result.get("simulated"):
                     log_trade(
                         trade_id=trade_id,
-                        source=TRADE_SOURCE, skill_slug=SKILL_SLUG,
+                        source=TRADE_SOURCE,
+                        skill_slug=SKILL_SLUG,
                         thesis=f"Exit: price ${current_price:.2f} reached exit threshold ${EXIT_THRESHOLD:.2f}",
                         action="sell",
                     )
@@ -708,7 +860,9 @@ def check_exit_opportunities(dry_run: bool = False, use_safeguards: bool = True)
                 print(f"     ❌ Sell failed: {error}")
         else:
             print(f"  📊 {question}...")
-            print(f"     Price ${current_price:.2f} < exit threshold ${EXIT_THRESHOLD:.2f} - hold")
+            print(
+                f"     Price ${current_price:.2f} < exit threshold ${EXIT_THRESHOLD:.2f} - hold"
+            )
 
     return exits_found, exits_executed
 
@@ -717,11 +871,18 @@ def check_exit_opportunities(dry_run: bool = False, use_safeguards: bool = True)
 # Main Strategy Logic
 # =============================================================================
 
-def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
-                         show_config: bool = False, smart_sizing: bool = False,
-                         use_safeguards: bool = True, use_trends: bool = True,
-                         quiet: bool = False):
+
+def run_weather_strategy(
+    dry_run: bool = True,
+    positions_only: bool = False,
+    show_config: bool = False,
+    smart_sizing: bool = False,
+    use_safeguards: bool = True,
+    use_trends: bool = True,
+    quiet: bool = False,
+):
     """Run the weather trading strategy."""
+
     def log(msg, force=False):
         """Print unless quiet mode is on. force=True always prints."""
         if not quiet or force:
@@ -731,7 +892,9 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
     log("=" * 50)
 
     if dry_run:
-        log("\n  [PAPER MODE] Trades will be simulated with real prices. Use --live for real trades.")
+        log(
+            "\n  [PAPER MODE] Trades will be simulated with real prices. Use --live for real trades."
+        )
 
     log(f"\n⚙️  Configuration:")
     log(f"  Entry threshold: {ENTRY_THRESHOLD:.0%} (buy below this)")
@@ -749,7 +912,9 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
         log(f"  Config exists: {'Yes' if config_path.exists() else 'No'}")
         log("\n  To change settings, either:")
         log("  1. Create/edit config.json in skill directory:")
-        log('     {"entry_threshold": 0.20, "exit_threshold": 0.50, "locations": "NYC,Chicago"}')
+        log(
+            '     {"entry_threshold": 0.20, "exit_threshold": 0.50, "locations": "NYC,Chicago"}'
+        )
         log("  2. Or use --set flag:")
         log("     python weather_trader.py --set entry_threshold=0.20")
         log("  3. Or set environment variables (lowest priority):")
@@ -767,7 +932,7 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
             log(f"  Balance: ${portfolio.get('balance_usdc', 0):.2f}")
             log(f"  Exposure: ${portfolio.get('total_exposure', 0):.2f}")
             log(f"  Positions: {portfolio.get('positions_count', 0)}")
-            by_source = portfolio.get('by_source', {})
+            by_source = portfolio.get("by_source", {})
             if by_source:
                 log(f"  By source: {json.dumps(by_source, indent=4)}")
 
@@ -779,8 +944,10 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
         else:
             for pos in positions:
                 log(f"  • {pos.get('question', 'Unknown')[:50]}...")
-                sources = pos.get('sources', [])
-                log(f"    YES: {pos.get('shares_yes', 0):.1f} | NO: {pos.get('shares_no', 0):.1f} | P&L: ${pos.get('pnl', 0):.2f} | Sources: {sources}")
+                sources = pos.get("sources", [])
+                log(
+                    f"    YES: {pos.get('shares_yes', 0):.1f} | NO: {pos.get('shares_no', 0):.1f} | P&L: ${pos.get('pnl', 0):.2f} | Sources: {sources}"
+                )
         return
 
     log("\n🔍 Discovering new weather markets on Polymarket...")
@@ -804,7 +971,9 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
         event_key = market.get("event_id")
         if not event_key:
             # Fall back: parse question to derive (location, date) grouping key
-            info = parse_weather_event(market.get("event_name") or market.get("question", ""))
+            info = parse_weather_event(
+                market.get("event_name") or market.get("question", "")
+            )
             event_key = f"{info['location']}_{info['date']}" if info else "unknown"
         if event_key not in events:
             events[event_key] = []
@@ -821,7 +990,9 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
 
     for event_id, event_markets in events.items():
         # Use event_name from API if available, otherwise parse from question
-        event_name = event_markets[0].get("event_name") or event_markets[0].get("question", "")
+        event_name = event_markets[0].get("event_name") or event_markets[0].get(
+            "question", ""
+        )
         event_info = parse_weather_event(event_name)
 
         if not event_info:
@@ -836,7 +1007,9 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
 
         # Skip range-bucket events (multi-outcome) if binary_only is set
         if BINARY_ONLY and len(event_markets) > 2:
-            log(f"  ⏭️  Skipping range event ({len(event_markets)} outcomes) — binary_only=true")
+            log(
+                f"  ⏭️  Skipping range event ({len(event_markets)} outcomes) — binary_only=true"
+            )
             continue
 
         log(f"\n📍 {location} {date_str} ({metric} temp)")
@@ -875,11 +1048,15 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
         log(f"  Matching bucket: {outcome_name} @ ${price:.2f}")
 
         if price < MIN_TICK_SIZE:
-            log(f"  ⏸️  Price ${price:.4f} below min tick ${MIN_TICK_SIZE} - skip (market at extreme)")
+            log(
+                f"  ⏸️  Price ${price:.4f} below min tick ${MIN_TICK_SIZE} - skip (market at extreme)"
+            )
             skip_reasons.append("price at extreme")
             continue
         if price > (1 - MIN_TICK_SIZE):
-            log(f"  ⏸️  Price ${price:.4f} above max tradeable - skip (market at extreme)")
+            log(
+                f"  ⏸️  Price ${price:.4f} above max tradeable - skip (market at extreme)"
+            )
             skip_reasons.append("price at extreme")
             continue
 
@@ -911,16 +1088,22 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
 
             min_cost_for_shares = MIN_SHARES_PER_ORDER * price
             if min_cost_for_shares > position_size:
-                log(f"  ⚠️  Position size ${position_size:.2f} too small for {MIN_SHARES_PER_ORDER} shares at ${price:.2f}")
+                log(
+                    f"  ⚠️  Position size ${position_size:.2f} too small for {MIN_SHARES_PER_ORDER} shares at ${price:.2f}"
+                )
                 skip_reasons.append("position too small")
                 continue
 
             opportunities_found += 1
-            log(f"  ✅ Below threshold (${ENTRY_THRESHOLD:.2f}) - BUY opportunity!{trend_bonus}")
+            log(
+                f"  ✅ Below threshold (${ENTRY_THRESHOLD:.2f}) - BUY opportunity!{trend_bonus}"
+            )
 
             # Check rate limit
             if trades_executed >= MAX_TRADES_PER_RUN:
-                log(f"  ⏸️  Max trades per run ({MAX_TRADES_PER_RUN}) reached - skipping")
+                log(
+                    f"  ⏸️  Max trades per run ({MAX_TRADES_PER_RUN}) reached - skipping"
+                )
                 skip_reasons.append("max trades reached")
                 continue
 
@@ -933,20 +1116,26 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
                 total_usd_spent += position_size
                 shares = result.get("shares_bought") or result.get("shares") or 0
                 trade_id = result.get("trade_id")
-                log(f"  ✅ {'[PAPER] ' if result.get('simulated') else ''}Bought {shares:.1f} shares @ ${price:.2f}", force=True)
+                log(
+                    f"  ✅ {'[PAPER] ' if result.get('simulated') else ''}Bought {shares:.1f} shares @ ${price:.2f}",
+                    force=True,
+                )
 
                 # Log trade context for journal (skip for paper trades)
                 if trade_id and JOURNAL_AVAILABLE and not result.get("simulated"):
                     # Confidence based on price gap from threshold (guard against div by zero)
                     if ENTRY_THRESHOLD > 0:
-                        confidence = min(0.95, (ENTRY_THRESHOLD - price) / ENTRY_THRESHOLD + 0.5)
+                        confidence = min(
+                            0.95, (ENTRY_THRESHOLD - price) / ENTRY_THRESHOLD + 0.5
+                        )
                     else:
                         confidence = 0.7  # Default confidence if threshold is zero
                     log_trade(
                         trade_id=trade_id,
-                        source=TRADE_SOURCE, skill_slug=SKILL_SLUG,
+                        source=TRADE_SOURCE,
+                        skill_slug=SKILL_SLUG,
                         thesis=f"NOAA forecasts {forecast_temp}°F for {location} on {date_str}, "
-                               f"bucket '{outcome_name}' underpriced at ${price:.2f}",
+                        f"bucket '{outcome_name}' underpriced at ${price:.2f}",
                         confidence=round(confidence, 2),
                         location=location,
                         forecast_temp=forecast_temp,
@@ -959,7 +1148,9 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
                 log(f"  ❌ Trade failed: {error}", force=True)
                 execution_errors.append(error[:120])
         else:
-            log(f"  ⏸️  Price ${price:.2f} above threshold ${ENTRY_THRESHOLD:.2f} - skip")
+            log(
+                f"  ⏸️  Price ${price:.2f} above threshold ${ENTRY_THRESHOLD:.2f} - skip"
+            )
 
     exits_found, exits_executed = check_exit_opportunities(dry_run, use_safeguards)
 
@@ -976,8 +1167,17 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
     # Structured report for automaton
     if os.environ.get("AUTOMATON_MANAGED"):
         global _automaton_reported
-        report = {"signals": opportunities_found + exits_found, "trades_attempted": opportunities_found + exits_found, "trades_executed": total_trades, "amount_usd": round(total_usd_spent, 2)}
-        if (opportunities_found + exits_found) > 0 and total_trades == 0 and skip_reasons:
+        report = {
+            "signals": opportunities_found + exits_found,
+            "trades_attempted": opportunities_found + exits_found,
+            "trades_executed": total_trades,
+            "amount_usd": round(total_usd_spent, 2),
+        }
+        if (
+            (opportunities_found + exits_found) > 0
+            and total_trades == 0
+            and skip_reasons
+        ):
             report["skip_reason"] = ", ".join(dict.fromkeys(skip_reasons))
         if execution_errors:
             report["execution_errors"] = execution_errors
@@ -994,16 +1194,41 @@ def run_weather_strategy(dry_run: bool = True, positions_only: bool = False,
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simmer Weather Trading Skill")
-    parser.add_argument("--live", action="store_true", help="Execute real trades (default is dry-run)")
-    parser.add_argument("--dry-run", action="store_true", help="(Default) Show opportunities without trading")
-    parser.add_argument("--positions", action="store_true", help="Show current positions only")
+    parser.add_argument(
+        "--live", action="store_true", help="Execute real trades (default is dry-run)"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="(Default) Show opportunities without trading",
+    )
+    parser.add_argument(
+        "--positions", action="store_true", help="Show current positions only"
+    )
     parser.add_argument("--config", action="store_true", help="Show current config")
-    parser.add_argument("--set", action="append", metavar="KEY=VALUE",
-                        help="Set config value (e.g., --set entry_threshold=0.20)")
-    parser.add_argument("--smart-sizing", action="store_true", help="Use portfolio-based position sizing")
-    parser.add_argument("--no-safeguards", action="store_true", help="Disable context safeguards")
-    parser.add_argument("--no-trends", action="store_true", help="Disable price trend detection")
-    parser.add_argument("--quiet", "-q", action="store_true", help="Only output when trades execute or errors occur (ideal for high-frequency runs)")
+    parser.add_argument(
+        "--set",
+        action="append",
+        metavar="KEY=VALUE",
+        help="Set config value (e.g., --set entry_threshold=0.20)",
+    )
+    parser.add_argument(
+        "--smart-sizing",
+        action="store_true",
+        help="Use portfolio-based position sizing",
+    )
+    parser.add_argument(
+        "--no-safeguards", action="store_true", help="Disable context safeguards"
+    )
+    parser.add_argument(
+        "--no-trends", action="store_true", help="Disable price trend detection"
+    )
+    parser.add_argument(
+        "--quiet",
+        "-q",
+        action="store_true",
+        help="Only output when trades execute or errors occur (ideal for high-frequency runs)",
+    )
     args = parser.parse_args()
 
     # Handle --set config updates
@@ -1025,7 +1250,9 @@ if __name__ == "__main__":
             print(f"✅ Config updated: {updates}")
             print(f"   Saved to: {get_config_path(__file__)}")
             # Reload config
-            _config = load_config(CONFIG_SCHEMA, __file__, slug="polymarket-weather-trader")
+            _config = load_config(
+                CONFIG_SCHEMA, __file__, slug="polymarket-weather-trader"
+            )
             # Update module-level vars
             globals()["ENTRY_THRESHOLD"] = _config["entry_threshold"]
             globals()["EXIT_THRESHOLD"] = _config["exit_threshold"]
@@ -1034,7 +1261,9 @@ if __name__ == "__main__":
             globals()["MAX_TRADES_PER_RUN"] = _config["max_trades_per_run"]
             globals()["BINARY_ONLY"] = _config["binary_only"]
             _locations_str = _config["locations"]
-            globals()["ACTIVE_LOCATIONS"] = [loc.strip().upper() for loc in _locations_str.split(",") if loc.strip()]
+            globals()["ACTIVE_LOCATIONS"] = [
+                loc.strip().upper() for loc in _locations_str.split(",") if loc.strip()
+            ]
 
     # Default to dry-run unless --live is explicitly passed
     dry_run = not args.live
@@ -1051,4 +1280,15 @@ if __name__ == "__main__":
 
     # Fallback report for automaton if the strategy returned early (no signal)
     if os.environ.get("AUTOMATON_MANAGED") and not _automaton_reported:
-        print(json.dumps({"automaton": {"signals": 0, "trades_attempted": 0, "trades_executed": 0, "skip_reason": "no_signal"}}))
+        print(
+            json.dumps(
+                {
+                    "automaton": {
+                        "signals": 0,
+                        "trades_attempted": 0,
+                        "trades_executed": 0,
+                        "skip_reason": "no_signal",
+                    }
+                }
+            )
+        )

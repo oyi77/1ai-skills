@@ -23,16 +23,16 @@ import edge_tts
 # CONFIGURATION
 # ============================================================
 FPS = 30
-PADDING_BEFORE_SEC = 0.5   # silence before narration starts
-PADDING_AFTER_SEC = 0.3    # silence after narration ends
+PADDING_BEFORE_SEC = 0.5  # silence before narration starts
+PADDING_AFTER_SEC = 0.3  # silence after narration ends
 
 VOICES = {
-    'id': 'id-ID-ArdiNeural',        # Indonesian male
-    'id-f': 'id-ID-GadisNeural',     # Indonesian female
-    'en': 'en-US-JennyNeural',       # English female (default)
-    'en-m': 'en-US-GuyNeural',       # English male
-    'zh': 'zh-CN-XiaoxiaoNeural',    # Chinese female
-    'zh-m': 'zh-CN-YunxiNeural',     # Chinese male
+    "id": "id-ID-ArdiNeural",  # Indonesian male
+    "id-f": "id-ID-GadisNeural",  # Indonesian female
+    "en": "en-US-JennyNeural",  # English female (default)
+    "en-m": "en-US-GuyNeural",  # English male
+    "zh": "zh-CN-XiaoxiaoNeural",  # Chinese female
+    "zh-m": "zh-CN-YunxiNeural",  # Chinese male
 }
 # ============================================================
 
@@ -40,14 +40,23 @@ VOICES = {
 def get_audio_duration(filepath: str) -> float:
     """Get audio duration in seconds using ffprobe."""
     result = subprocess.run(
-        ['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
-         '-of', 'json', filepath],
-        capture_output=True, text=True
+        [
+            "ffprobe",
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "json",
+            filepath,
+        ],
+        capture_output=True,
+        text=True,
     )
     if result.returncode != 0:
         raise RuntimeError(f"ffprobe failed for {filepath}: {result.stderr}")
     data = json.loads(result.stdout)
-    return float(data['format']['duration'])
+    return float(data["format"]["duration"])
 
 
 async def generate_tts(text: str, output_path: str, voice: str) -> None:
@@ -57,25 +66,25 @@ async def generate_tts(text: str, output_path: str, voice: str) -> None:
 
 
 async def run_pipeline(script_path: str, voice_key: str):
-    voice = VOICES.get(voice_key, VOICES['en'])
+    voice = VOICES.get(voice_key, VOICES["en"])
     print(f"🎙️  Using voice: {voice}")
 
     # Load script
-    with open(script_path, encoding='utf-8') as f:
+    with open(script_path, encoding="utf-8") as f:
         script = json.load(f)
 
-    scenes = script.get('scenes', [])
+    scenes = script.get("scenes", [])
     if not scenes:
         print("❌ No scenes found in script.json")
         sys.exit(1)
 
-    os.makedirs('public/audio', exist_ok=True)
+    os.makedirs("public/audio", exist_ok=True)
 
     # Step 1: Generate TTS for each scene
     print(f"\n📢 Generating TTS for {len(scenes)} scenes...")
     for scene in scenes:
-        sid = scene['id']
-        text = scene.get('narration', '').strip()
+        sid = scene["id"]
+        text = scene.get("narration", "").strip()
         out_path = f"public/audio/{sid}.mp3"
 
         if not text:
@@ -91,14 +100,14 @@ async def run_pipeline(script_path: str, voice_key: str):
 
     # Step 2: Measure durations + build timing.json
     print(f"\n⏱️  Computing timing...")
-    timing = {'fps': FPS, 'scenes': [], 'totalFrames': 0, 'totalSeconds': 0}
+    timing = {"fps": FPS, "scenes": [], "totalFrames": 0, "totalSeconds": 0}
     cumulative_frame = 0
 
     for scene in scenes:
-        sid = scene['id']
+        sid = scene["id"]
         audio_path = f"public/audio/{sid}.mp3"
 
-        if os.path.exists(audio_path) and scene.get('narration', '').strip():
+        if os.path.exists(audio_path) and scene.get("narration", "").strip():
             narration_sec = get_audio_duration(audio_path)
         else:
             narration_sec = 3.0  # fallback duration
@@ -107,26 +116,28 @@ async def run_pipeline(script_path: str, voice_key: str):
         total_sec = PADDING_BEFORE_SEC + narration_sec + PADDING_AFTER_SEC
         duration_frames = round(total_sec * FPS)
 
-        timing['scenes'].append({
-            'id': sid,
-            'title': scene.get('title', sid),
-            'audioFile': f"{sid}.mp3",
-            'narrationSeconds': round(narration_sec, 3),
-            'totalSeconds': round(total_sec, 3),
-            'durationFrames': duration_frames,
-            'startFrame': cumulative_frame,
-            'endFrame': cumulative_frame + duration_frames,
-            'paddingBeforeFrames': round(PADDING_BEFORE_SEC * FPS),
-            'background': scene.get('background', 'dark'),
-        })
+        timing["scenes"].append(
+            {
+                "id": sid,
+                "title": scene.get("title", sid),
+                "audioFile": f"{sid}.mp3",
+                "narrationSeconds": round(narration_sec, 3),
+                "totalSeconds": round(total_sec, 3),
+                "durationFrames": duration_frames,
+                "startFrame": cumulative_frame,
+                "endFrame": cumulative_frame + duration_frames,
+                "paddingBeforeFrames": round(PADDING_BEFORE_SEC * FPS),
+                "background": scene.get("background", "dark"),
+            }
+        )
 
         print(f"  {sid}: {narration_sec:.1f}s narration → {duration_frames} frames")
         cumulative_frame += duration_frames
 
-    timing['totalFrames'] = cumulative_frame
-    timing['totalSeconds'] = round(cumulative_frame / FPS, 2)
+    timing["totalFrames"] = cumulative_frame
+    timing["totalSeconds"] = round(cumulative_frame / FPS, 2)
 
-    with open('public/timing.json', 'w', encoding='utf-8') as f:
+    with open("public/timing.json", "w", encoding="utf-8") as f:
         json.dump(timing, f, indent=2, ensure_ascii=False)
 
     print(f"\n✅ Pipeline complete!")
@@ -139,10 +150,16 @@ async def run_pipeline(script_path: str, voice_key: str):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Remotion TTS + Timing Pipeline')
-    parser.add_argument('--script', default='public/script.json', help='Path to script JSON')
-    parser.add_argument('--voice', default='en', choices=list(VOICES.keys()),
-                        help=f'Voice to use. Options: {list(VOICES.keys())}')
+    parser = argparse.ArgumentParser(description="Remotion TTS + Timing Pipeline")
+    parser.add_argument(
+        "--script", default="public/script.json", help="Path to script JSON"
+    )
+    parser.add_argument(
+        "--voice",
+        default="en",
+        choices=list(VOICES.keys()),
+        help=f"Voice to use. Options: {list(VOICES.keys())}",
+    )
     args = parser.parse_args()
 
     if not os.path.exists(args.script):
@@ -153,5 +170,5 @@ def main():
     asyncio.run(run_pipeline(args.script, args.voice))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

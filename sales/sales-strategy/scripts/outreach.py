@@ -51,12 +51,14 @@ import requests
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 BYTEPLUS_API_URL = "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"
-BYTEPLUS_API_KEY = os.environ.get("BYTEPLUS_API_KEY", "REDACTED_BYTEPLUS_API_KEY")
-BYTEPLUS_MODEL   = "seed-1-6-250915"
+BYTEPLUS_API_KEY = os.environ.get(
+    "BYTEPLUS_API_KEY", "REDACTED_BYTEPLUS_API_KEY"
+)
+BYTEPLUS_MODEL = "seed-1-6-250915"
 
-DATA_DIR     = Path(__file__).parent.parent / "data"
-LEADS_FILE   = DATA_DIR / "leads.json"
-LOG_FILE     = DATA_DIR / "outreach.log"
+DATA_DIR = Path(__file__).parent.parent / "data"
+LEADS_FILE = DATA_DIR / "leads.json"
+LOG_FILE = DATA_DIR / "outreach.log"
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -75,6 +77,7 @@ log = logging.getLogger("outreach")
 
 # ─── Lead Scoring ─────────────────────────────────────────────────────────────
 
+
 class LeadScorer:
     """
     Scores leads 0-100 based on engagement signals.
@@ -87,18 +90,18 @@ class LeadScorer:
     """
 
     SIGNAL_WEIGHTS = {
-        "followed_you":           25,  # They followed you — strong signal
-        "commented":              20,  # Commented on your posts
-        "saved_post":             15,  # Saved (Instagram)
-        "liked_posts_3plus":      15,  # Liked 3+ of your posts
-        "liked_posts_1":           5,  # Liked at least 1
-        "shared":                 15,  # Shared your content
-        "replied_to_story":       10,  # Replied to a story
-        "asked_question":         20,  # Asked a question in comments
-        "mentioned_price":        25,  # Mentioned pricing/cost
-        "mentioned_problem":      15,  # Mentioned a relevant problem
-        "dm_opened_before":       -10, # Already DMed — reduce (don't double)
-        "already_customer":      -100, # Skip existing customers
+        "followed_you": 25,  # They followed you — strong signal
+        "commented": 20,  # Commented on your posts
+        "saved_post": 15,  # Saved (Instagram)
+        "liked_posts_3plus": 15,  # Liked 3+ of your posts
+        "liked_posts_1": 5,  # Liked at least 1
+        "shared": 15,  # Shared your content
+        "replied_to_story": 10,  # Replied to a story
+        "asked_question": 20,  # Asked a question in comments
+        "mentioned_price": 25,  # Mentioned pricing/cost
+        "mentioned_problem": 15,  # Mentioned a relevant problem
+        "dm_opened_before": -10,  # Already DMed — reduce (don't double)
+        "already_customer": -100,  # Skip existing customers
     }
 
     @classmethod
@@ -140,7 +143,7 @@ class LeadScorer:
     @staticmethod
     def _recommended_action(tier: str) -> str:
         return {
-            "hot":  "DM immediately with intro + soft CTA",
+            "hot": "DM immediately with intro + soft CTA",
             "warm": "Queue intro DM within 24h",
             "cool": "Engage with their content 3-5x first, then DM",
             "cold": "Add to nurture list, engage organically",
@@ -152,22 +155,22 @@ class LeadScorer:
 # Platform-specific CTA templates
 PLATFORM_CTAS = {
     "tiktok": {
-        "soft":   "Drop a 🙋 in the comments if you want me to share more!",
+        "soft": "Drop a 🙋 in the comments if you want me to share more!",
         "medium": "Check the link in my bio — I put together a free guide on this.",
         "direct": "Want to hop on a quick 15-min call? My DMs are open 📲",
     },
     "instagram": {
-        "soft":   "Saved to share with someone who needs this? Let me know! 👇",
+        "soft": "Saved to share with someone who needs this? Let me know! 👇",
         "medium": "I made a free resource for exactly this — DM me 'GUIDE' and I'll send it over.",
         "direct": "If this resonates, I have a spot open for a free strategy call this week.",
     },
     "twitter": {
-        "soft":   "Retweet if you agree — would love to hear your take.",
+        "soft": "Retweet if you agree — would love to hear your take.",
         "medium": "I wrote a longer breakdown on this — want me to share the thread?",
         "direct": "Happy to do a quick 1:1 audit of your setup. Slide into my DMs.",
     },
     "linkedin": {
-        "soft":   "What's your experience with this? Would love to compare notes.",
+        "soft": "What's your experience with this? Would love to compare notes.",
         "medium": "I put together a case study on this — happy to share if useful.",
         "direct": "I have a few open slots for a complimentary 20-min strategy session this month.",
     },
@@ -276,6 +279,7 @@ If you've moved on, no worries at all — just let me know and I'll stop followi
 
 # ─── AI Personalizer ──────────────────────────────────────────────────────────
 
+
 class DMAIPersonalizer:
     """Use BytePlus AI to personalize DM templates."""
 
@@ -326,7 +330,9 @@ Suggested CTA: {cta}"""
         }
 
         try:
-            resp = requests.post(BYTEPLUS_API_URL, headers=self.headers, json=payload, timeout=30)
+            resp = requests.post(
+                BYTEPLUS_API_URL, headers=self.headers, json=payload, timeout=30
+            )
             resp.raise_for_status()
             return resp.json()["choices"][0]["message"]["content"].strip()
         except Exception as e:
@@ -335,6 +341,7 @@ Suggested CTA: {cta}"""
 
 
 # ─── Lead Database ────────────────────────────────────────────────────────────
+
 
 class LeadDatabase:
     """Simple JSON-backed lead tracking database."""
@@ -361,7 +368,7 @@ class LeadDatabase:
             lead.get("notes", ""),
         )
         lead["score"] = scoring["score"]
-        lead["tier"]  = scoring["tier"]
+        lead["tier"] = scoring["tier"]
         lead["recommended_action"] = scoring["action"]
         lead["added_at"] = lead.get("added_at", datetime.now().isoformat())
         lead["sequence_position"] = lead.get("sequence_position", 0)
@@ -382,17 +389,19 @@ class LeadDatabase:
             if lead.get("status") != "active":
                 continue
             seq_type = lead.get("sequence", "intro")
-            seq      = DM_SEQUENCES.get(seq_type, DM_SEQUENCES["intro"])
-            pos      = lead.get("sequence_position", 0)
+            seq = DM_SEQUENCES.get(seq_type, DM_SEQUENCES["intro"])
+            pos = lead.get("sequence_position", 0)
             if pos >= len(seq):
                 continue
             last_contacted = lead.get("last_contacted_at")
             if last_contacted is None:
                 due.append(lead)
                 continue
-            next_msg  = seq[pos]
+            next_msg = seq[pos]
             day_delta = next_msg.get("day_offset", 3)
-            due_date  = datetime.fromisoformat(last_contacted) + timedelta(days=day_delta)
+            due_date = datetime.fromisoformat(last_contacted) + timedelta(
+                days=day_delta
+            )
             if datetime.now() >= due_date:
                 due.append(lead)
         return due
@@ -402,12 +411,16 @@ class LeadDatabase:
         key = f"{lead['platform']}:{lead['handle']}"
         if key in self.data["leads"]:
             self.data["leads"][key]["last_contacted_at"] = datetime.now().isoformat()
-            self.data["leads"][key]["sequence_position"] = lead.get("sequence_position", 0) + 1
-        self.data["messages_sent"].append({
-            "lead": key,
-            "message": message,
-            "sent_at": datetime.now().isoformat(),
-        })
+            self.data["leads"][key]["sequence_position"] = (
+                lead.get("sequence_position", 0) + 1
+            )
+        self.data["messages_sent"].append(
+            {
+                "lead": key,
+                "message": message,
+                "sent_at": datetime.now().isoformat(),
+            }
+        )
         self._save()
 
     def pipeline_stats(self) -> dict:
@@ -435,6 +448,7 @@ class LeadDatabase:
 
 import sys as _sys
 from pathlib import Path as _Path
+
 _sys.path.insert(0, str(_Path(__file__).parent.parent.parent.parent / "marketing"))
 from post_bridge_client import PostBridgeClient as _PostBridgeClient
 
@@ -464,7 +478,9 @@ class PostBridgeDMClient:
             accounts = self._pb.get_accounts_by_platform(platform)
             ids = [a["id"] for a in accounts]
             if not ids:
-                log.warning(f"No {platform} accounts connected — falling back to all accounts")
+                log.warning(
+                    f"No {platform} accounts connected — falling back to all accounts"
+                )
                 ids = self._pb.get_all_account_ids()
             self._accounts_by_platform[platform] = ids
         return self._accounts_by_platform[platform]
@@ -495,8 +511,10 @@ class PostBridgeDMClient:
         # Prepend handle mention so the message is directed at the target
         caption = f"{handle} {message}" if not message.startswith(handle) else message
 
-        log.info(f"[PostBridge] 📨 Sending outreach to {handle} on {platform}"
-                 + (f" (scheduled: {scheduled_at})" if scheduled_at else ""))
+        log.info(
+            f"[PostBridge] 📨 Sending outreach to {handle} on {platform}"
+            + (f" (scheduled: {scheduled_at})" if scheduled_at else "")
+        )
 
         result = self._pb.create_post(
             caption=caption,
@@ -514,31 +532,37 @@ class PostBridgeDMClient:
 # Legacy alias for dry-run / backward compat
 class MockDMClient(PostBridgeDMClient):
     """Legacy alias — now backed by PostBridgeClient."""
+
     pass
 
 
 # ─── Outreach Engine ──────────────────────────────────────────────────────────
 
+
 class OutreachEngine:
     def __init__(self, sender_name: str = "Alex", dry_run: bool = False):
         self.sender_name = sender_name
-        self.dry_run     = dry_run
-        self.db          = LeadDatabase()
-        self.ai          = DMAIPersonalizer()
-        self.dm_client   = PostBridgeDMClient()
-        log.info(f"🚀 OutreachEngine initialized | sender={sender_name} | dry_run={dry_run}")
+        self.dry_run = dry_run
+        self.db = LeadDatabase()
+        self.ai = DMAIPersonalizer()
+        self.dm_client = PostBridgeDMClient()
+        log.info(
+            f"🚀 OutreachEngine initialized | sender={sender_name} | dry_run={dry_run}"
+        )
 
     def add_lead(self, lead: dict) -> dict:
         result = self.db.upsert_lead(lead)
-        log.info(f"✅ Lead added: {lead['handle']} [{result['tier'].upper()} {result['score']}/100]")
+        log.info(
+            f"✅ Lead added: {lead['handle']} [{result['tier'].upper()} {result['score']}/100]"
+        )
         log.info(f"   Action: {result['recommended_action']}")
         return result
 
     def send_next_message(self, lead: dict) -> bool:
         """Send the next message in the lead's sequence."""
         seq_type = lead.get("sequence", "intro")
-        seq      = DM_SEQUENCES.get(seq_type, DM_SEQUENCES["intro"])
-        pos      = lead.get("sequence_position", 0)
+        seq = DM_SEQUENCES.get(seq_type, DM_SEQUENCES["intro"])
+        pos = lead.get("sequence_position", 0)
 
         if pos >= len(seq):
             log.info(f"  ✅ {lead['handle']} sequence complete")
@@ -556,10 +580,14 @@ class OutreachEngine:
         )
 
         if not personalized:
-            log.warning(f"  ⚠️  Could not personalize message for {lead['handle']}, using template")
+            log.warning(
+                f"  ⚠️  Could not personalize message for {lead['handle']}, using template"
+            )
             personalized = template
 
-        log.info(f"📨 Sending DM #{pos + 1} to {lead['handle']} ({lead.get('platform', '?')})")
+        log.info(
+            f"📨 Sending DM #{pos + 1} to {lead['handle']} ({lead.get('platform', '?')})"
+        )
 
         if not self.dry_run:
             success = self.dm_client.send_dm(
@@ -609,9 +637,12 @@ class OutreachEngine:
 
 # ─── CLI ─────────────────────────────────────────────────────────────────────
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Outreach — Warm DM automation for sales")
-    sub    = parser.add_subparsers(dest="cmd")
+    parser = argparse.ArgumentParser(
+        description="Outreach — Warm DM automation for sales"
+    )
+    sub = parser.add_subparsers(dest="cmd")
 
     # Add lead
     p_add = sub.add_parser("add", help="Add a lead and send initial DM")
@@ -656,10 +687,10 @@ def main():
             "notes": args.notes,
             "sequence": args.sequence,
             "engagement_signals": {
-                "liked_posts_1":   args.likes >= 1,
+                "liked_posts_1": args.likes >= 1,
                 "liked_posts_3plus": args.likes >= 3,
-                "commented":       args.commented,
-                "followed_you":    args.followed_you,
+                "commented": args.commented,
+                "followed_you": args.followed_you,
             },
         }
         result = engine.add_lead(lead)

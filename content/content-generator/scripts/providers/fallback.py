@@ -72,12 +72,12 @@ class FallbackChain:
         self._image_chain: list[AIProvider] = []
         self._video_chain: list[AIProvider] = []
         self._llm_chain: list[AIProvider] = []
-        self._rate_limit_tracker: dict[
-            str, float
-        ] = {}  # provider_name → cooldown_until
-        self._failure_tracker: dict[
-            str, int
-        ] = {}  # provider_name → consecutive failures
+        self._rate_limit_tracker: dict[str, float] = (
+            {}
+        )  # provider_name → cooldown_until
+        self._failure_tracker: dict[str, int] = (
+            {}
+        )  # provider_name → consecutive failures
 
     # ── Chain Registration ──────────────────────────────────────────
 
