@@ -1,3 +1,4 @@
+---
 name: meta-orchestrator
 description: Coordinate all meta-skills into a cohesive self-improving system. The brain that connects performance monitoring, feedback, learning, and evolution.
 persona:

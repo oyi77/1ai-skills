@@ -1,3 +1,4 @@
+---
 name: k8s-deploy
 description: Generate K8s manifests
 

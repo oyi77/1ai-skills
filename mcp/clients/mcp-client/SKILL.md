@@ -1,3 +1,4 @@
+---
 name: mcp-client
 description: Generic MCP client implementation
 

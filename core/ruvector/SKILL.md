@@ -1,3 +1,4 @@
+---
 persona:
   name: "Edo Liberty"
   title: "The Vector Search Expert - Master of Similarity Search"

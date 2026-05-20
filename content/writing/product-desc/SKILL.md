@@ -1,3 +1,4 @@
+---
 name: product-desc
 description: Write product descriptions
 

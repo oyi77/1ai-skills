@@ -1,3 +1,4 @@
+---
 persona:
   name: "Domain Expert"
   title: "Master of N8N"

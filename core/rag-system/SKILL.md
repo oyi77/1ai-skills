@@ -1,3 +1,4 @@
+---
 persona:
   name: "Andrej Karpathy"
   title: "The LLM Architect - Master of Retrieval-Augmented Generation"

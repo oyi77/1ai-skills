@@ -1,3 +1,4 @@
+---
 name: pattern-recognition
 description: Identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns and apply learned solutions.
 persona:

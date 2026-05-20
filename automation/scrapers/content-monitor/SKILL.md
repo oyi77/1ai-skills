@@ -1,3 +1,4 @@
+---
 name: content-monitor
 description: Monitor content for changes
 

@@ -1,3 +1,4 @@
+---
 name: discord-webhooks
 description: Send Discord webhooks
 

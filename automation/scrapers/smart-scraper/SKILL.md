@@ -1,3 +1,4 @@
+---
 name: smart-scraper
 description: AI-powered web scraper
 

@@ -1,3 +1,4 @@
+---
 name: security-agent
 description: Agent that audits security
 

@@ -1,3 +1,4 @@
+---
 persona:
   name: "Michael Wooldridge"
   title: "The Multi-Agent Systems Expert - Master of Agent Coordination"

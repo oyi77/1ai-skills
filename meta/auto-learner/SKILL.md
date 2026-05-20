@@ -1,3 +1,4 @@
+---
 name: auto-learner
 description: Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed executions without human intervention.
 persona:

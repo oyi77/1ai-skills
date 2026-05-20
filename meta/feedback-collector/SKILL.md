@@ -1,3 +1,4 @@
+---
 name: feedback-collector
 description: Collect, analyze, and route feedback from users and systems. Turn feedback into actionable improvement signals.
 persona:

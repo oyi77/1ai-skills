@@ -1,3 +1,4 @@
+---
 name: supabase-mcp
 description: MCP server for Supabase databases
 

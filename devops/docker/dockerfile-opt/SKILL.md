@@ -1,3 +1,4 @@
+---
 name: dockerfile-opt
 description: Optimize Dockerfiles
 

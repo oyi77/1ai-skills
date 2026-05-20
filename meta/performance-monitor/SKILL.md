@@ -1,3 +1,4 @@
+---
 name: performance-monitor
 description: Track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for continuous improvement.
 persona:

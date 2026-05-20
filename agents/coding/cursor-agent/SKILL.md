@@ -1,3 +1,4 @@
+---
 name: cursor-agent
 description: Autonomous coding agent that works like Cursor AI. Plans, researches, writes code, runs tests, and iterates until tasks are complete.
 persona:

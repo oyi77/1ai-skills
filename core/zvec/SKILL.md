@@ -1,3 +1,4 @@
+---
 persona:
   name: "Mikolov et al."
   title: "The Word2Vec Pioneers - Masters of Vector Embeddings"

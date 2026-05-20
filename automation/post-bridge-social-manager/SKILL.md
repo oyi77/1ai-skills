@@ -1,3 +1,4 @@
+---
 persona:
   name: "Domain Expert"
   title: "Master of Post Bridge Social Manager"
