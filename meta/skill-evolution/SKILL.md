@@ -1,3 +1,4 @@
+---
 name: skill-evolution
 description: Manage skill versions, track changes, and enable safe evolution. Version control, dependency management, and rollback capabilities for skills.
 persona:

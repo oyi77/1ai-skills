@@ -1,3 +1,4 @@
+---
 name: linter-agent
 description: Agent that fixes linting issues
 

@@ -1,3 +1,4 @@
+---
 name: quote-cards
 description: Create quote graphics
 

@@ -1,3 +1,4 @@
+---
 name: viz-creator
 description: Create visualizations
 

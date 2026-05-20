@@ -1,3 +1,4 @@
+---
 name: market-research
 description: Agent that researches markets
 

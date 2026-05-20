@@ -1,3 +1,4 @@
+---
 name: web-research
 description: Agent that researches web sources
 

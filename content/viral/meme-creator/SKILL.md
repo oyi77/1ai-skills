@@ -1,3 +1,4 @@
+---
 name: meme-creator
 description: Auto-generate memes
 
