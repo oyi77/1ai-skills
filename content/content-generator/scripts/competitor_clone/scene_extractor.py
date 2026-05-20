@@ -13,24 +13,30 @@ FFPROBE = "/home/linuxbrew/.linuxbrew/bin/ffprobe"
 def get_video_info(video_path: str) -> dict:
     """Get video duration, fps, resolution"""
     cmd = [
-        FFPROBE, "-v", "quiet", "-print_format", "json",
-        "-show_streams", "-show_format", video_path
+        FFPROBE,
+        "-v",
+        "quiet",
+        "-print_format",
+        "json",
+        "-show_streams",
+        "-show_format",
+        video_path,
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
     data = json.loads(result.stdout)
-    
+
     video_stream = next((s for s in data["streams"] if s["codec_type"] == "video"), {})
     duration = float(data["format"].get("duration", 0))
     fps_str = video_stream.get("r_frame_rate", "30/1")
     fps_num, fps_den = fps_str.split("/")
     fps = float(fps_num) / float(fps_den)
-    
+
     return {
         "duration": duration,
         "fps": fps,
         "width": video_stream.get("width", 1080),
         "height": video_stream.get("height", 1920),
-        "has_audio": any(s["codec_type"] == "audio" for s in data["streams"])
+        "has_audio": any(s["codec_type"] == "audio" for s in data["streams"]),
     }
 
 
@@ -45,18 +51,26 @@ def extract_scenes(video_path: str, output_dir: str, threshold: float = 0.3) -> 
 
     info = get_video_info(video_path)
     duration = info["duration"]
-    print(f"  📹 Video: {duration:.1f}s, {info['width']}x{info['height']}, {info['fps']:.1f}fps")
+    print(
+        f"  📹 Video: {duration:.1f}s, {info['width']}x{info['height']}, {info['fps']:.1f}fps"
+    )
 
     # Step 1: Detect scene timestamps using FFmpeg scene filter
     print("  🔍 Detecting scene boundaries...")
     scene_cmd = [
-        FFMPEG, "-i", video_path,
-        "-vf", f"select='gt(scene,{threshold})',showinfo",
-        "-vsync", "vfr",
-        "-f", "null", "-"
+        FFMPEG,
+        "-i",
+        video_path,
+        "-vf",
+        f"select='gt(scene,{threshold})',showinfo",
+        "-vsync",
+        "vfr",
+        "-f",
+        "null",
+        "-",
     ]
     result = subprocess.run(scene_cmd, capture_output=True, text=True)
-    
+
     # Parse timestamps from stderr
     scene_times = [0.0]  # Always start with 0
     for line in result.stderr.split("\n"):
@@ -70,7 +84,9 @@ def extract_scenes(video_path: str, output_dir: str, threshold: float = 0.3) -> 
 
     # If very few scenes detected, add manual splits every N seconds
     if len(scene_times) < 3:
-        print(f"  ⚠️ Only {len(scene_times)} scenes detected. Adding time-based splits...")
+        print(
+            f"  ⚠️ Only {len(scene_times)} scenes detected. Adding time-based splits..."
+        )
         interval = min(5.0, duration / 4)
         t = interval
         while t < duration - 1:
@@ -95,30 +111,50 @@ def extract_scenes(video_path: str, output_dir: str, threshold: float = 0.3) -> 
         # Extract keyframe image
         frame_path = os.path.join(frames_dir, f"scene_{i+1:02d}.jpg")
         frame_cmd = [
-            FFMPEG, "-y", "-ss", str(mid), "-i", video_path,
-            "-vframes", "1", "-q:v", "2",
-            "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
-            frame_path
+            FFMPEG,
+            "-y",
+            "-ss",
+            str(mid),
+            "-i",
+            video_path,
+            "-vframes",
+            "1",
+            "-q:v",
+            "2",
+            "-vf",
+            "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black",
+            frame_path,
         ]
         subprocess.run(frame_cmd, capture_output=True)
 
         # Extract scene clip
         clip_path = os.path.join(output_dir, f"scene_{i+1:02d}_original.mp4")
         clip_cmd = [
-            FFMPEG, "-y", "-ss", str(start), "-i", video_path,
-            "-t", str(scene_dur), "-c", "copy", clip_path
+            FFMPEG,
+            "-y",
+            "-ss",
+            str(start),
+            "-i",
+            video_path,
+            "-t",
+            str(scene_dur),
+            "-c",
+            "copy",
+            clip_path,
         ]
         subprocess.run(clip_cmd, capture_output=True)
 
-        scenes.append({
-            "id": i + 1,
-            "start": start,
-            "end": end,
-            "duration": scene_dur,
-            "keyframe": frame_path,
-            "clip": clip_path,
-            "analysis": None,  # To be filled by analyzer
-        })
+        scenes.append(
+            {
+                "id": i + 1,
+                "start": start,
+                "end": end,
+                "duration": scene_dur,
+                "keyframe": frame_path,
+                "clip": clip_path,
+                "analysis": None,  # To be filled by analyzer
+            }
+        )
         print(f"    Scene {i+1}: {start:.1f}s → {end:.1f}s ({scene_dur:.1f}s) ✅")
 
     # Save scene manifest
@@ -133,9 +169,18 @@ def extract_audio(video_path: str, output_dir: str) -> str:
     """Extract audio track from competitor video"""
     audio_path = os.path.join(output_dir, "competitor_audio.mp3")
     cmd = [
-        FFMPEG, "-y", "-i", video_path,
-        "-vn", "-acodec", "mp3", "-ar", "16000", "-ac", "1",
-        audio_path
+        FFMPEG,
+        "-y",
+        "-i",
+        video_path,
+        "-vn",
+        "-acodec",
+        "mp3",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        audio_path,
     ]
     result = subprocess.run(cmd, capture_output=True)
     if result.returncode == 0 and os.path.exists(audio_path):
@@ -146,6 +191,7 @@ def extract_audio(video_path: str, output_dir: str) -> str:
 
 if __name__ == "__main__":
     import sys
+
     if len(sys.argv) > 1:
         video = sys.argv[1]
         out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/scenes_test"

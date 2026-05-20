@@ -21,7 +21,6 @@ from typing import Optional
 
 from .base import AIProvider, GenerationResult, ProviderType
 
-
 # Base URL for BytePlus ModelArk API
 DEFAULT_BASE_URL = "https://ark.ap-southeast.bytepluses.com/api/v3"
 
@@ -83,13 +82,17 @@ class BytePlusProvider(AIProvider):
         self.base_url = (base_url or DEFAULT_BASE_URL).rstrip("/")
 
         if not self.api_key:
-            self.api_key = os.environ.get("BYTEPLUS_API_KEY") or os.environ.get("ARK_API_KEY")
+            self.api_key = os.environ.get("BYTEPLUS_API_KEY") or os.environ.get(
+                "ARK_API_KEY"
+            )
 
     @property
     def supported_models(self) -> list[str]:
         return SUPPORTED_MODELS
 
-    def _make_request(self, method: str, path: str, body: Optional[dict] = None) -> dict:
+    def _make_request(
+        self, method: str, path: str, body: Optional[dict] = None
+    ) -> dict:
         """Make authenticated HTTP request to BytePlus API."""
         url = f"{self.base_url}{path}"
         headers = {
@@ -112,8 +115,15 @@ class BytePlusProvider(AIProvider):
         }
 
         # Optional parameters (NOTE: do NOT include "resolution" — causes 400 error on lite model)
-        for key in ["ratio", "duration", "seed", "watermark",
-                    "camera_fixed", "generate_audio", "return_last_frame"]:
+        for key in [
+            "ratio",
+            "duration",
+            "seed",
+            "watermark",
+            "camera_fixed",
+            "generate_audio",
+            "return_last_frame",
+        ]:
             if key in kwargs and kwargs[key] is not None:
                 body[key] = kwargs[key]
 
@@ -123,7 +133,9 @@ class BytePlusProvider(AIProvider):
             raise ValueError(f"No task_id returned: {result}")
         return task_id
 
-    async def _poll_task(self, task_id: str, timeout: int = 300, interval: int = 5) -> dict:
+    async def _poll_task(
+        self, task_id: str, timeout: int = 300, interval: int = 5
+    ) -> dict:
         """Poll task until completed or timeout (seconds). Returns task result."""
         deadline = time.time() + timeout
         while time.time() < deadline:
@@ -134,7 +146,9 @@ class BytePlusProvider(AIProvider):
                 return result
             elif status in (STATUS_FAILED, STATUS_CANCELLED):
                 error = result.get("error", {})
-                raise RuntimeError(f"Task {status}: {error.get('message', 'Unknown error')} (code: {error.get('code', 'N/A')})")
+                raise RuntimeError(
+                    f"Task {status}: {error.get('message', 'Unknown error')} (code: {error.get('code', 'N/A')})"
+                )
 
             await asyncio.sleep(interval)
 
@@ -176,11 +190,13 @@ class BytePlusProvider(AIProvider):
         # Add image for I2V if provided
         image_url = kwargs.pop("image_url", None)
         if image_url:
-            content.append({
-                "type": "image_url",
-                "image_url": {"url": image_url},
-                "role": "first_frame",
-            })
+            content.append(
+                {
+                    "type": "image_url",
+                    "image_url": {"url": image_url},
+                    "role": "first_frame",
+                }
+            )
 
         try:
             task_id = self._create_task(model, content, **kwargs)

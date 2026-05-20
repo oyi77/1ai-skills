@@ -28,7 +28,9 @@ from pathlib import Path
 # Paths
 VIRAL_SYSTEM_PATH = Path(__file__).parent / "viral_research_system.py"
 MULTI_STAGE_PATH = Path(__file__).parent / "muli_stage_i2v.py"
-WORKSPACE = Path("/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-generator/scripts")
+WORKSPACE = Path(
+    "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-generator/scripts"
+)
 
 OUTPUT_DIR = Path("/tmp/berkah_viral_automation")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -44,6 +46,7 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 BYTEPLUS_API_KEY = os.environ.get("BYTEPLUS_API_KEY", "")
 
+
 # ── LOGGING ──────────────────────────────────────────────────────────
 def log(message: str, level: str = "INFO"):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -53,6 +56,7 @@ def log(message: str, level: str = "INFO"):
     log_file = LOG_DIR / f"automation_{datetime.now().strftime('%Y%m%d')}.log"
     with open(log_file, "a") as f:
         f.write(log_line + "\n")
+
 
 def log_json(data: dict, filename: str):
     """Save JSON data to file."""
@@ -83,7 +87,10 @@ def run_research() -> dict:
 
     try:
         research_output = json.loads(result.stdout)
-        log(f"Research complete: {len(research_output.get('topics', []))} topics found", "INFO")
+        log(
+            f"Research complete: {len(research_output.get('topics', []))} topics found",
+            "INFO",
+        )
         return research_output
     except json.JSONDecodeError as e:
         log(f"Failed to parse research output: {e}", "ERROR")
@@ -99,8 +106,10 @@ def run_viral_generation(hook_type: str, room_type: str = "kitchen_small") -> di
     cmd = [
         "python3",
         str(MULTI_STAGE_PATH),
-        "--room", room_type,
-        "--hook", hook_type,
+        "--room",
+        room_type,
+        "--hook",
+        hook_type,
     ]
     result = subprocess.run(
         cmd,
@@ -182,7 +191,10 @@ def update_confidence(hook_type: str, views: int, memory: dict) -> dict:
         "avg_views": target_views,
     }
 
-    log(f"Confidence {hook_type}: {change} ({current['confidence']:.2f} → {new_conf:.2f})", "INFO")
+    log(
+        f"Confidence {hook_type}: {change} ({current['confidence']:.2f} → {new_conf:.2f})",
+        "INFO",
+    )
 
     # Save updated memory
     memory_file = Path("/tmp/viral_research/memory/performance_memory.json")
@@ -220,7 +232,9 @@ def auto_loop(interval_hours: int = 1, max_iterations: int = None):
     log()
 
     iteration = 0
-    last_research_time = datetime.now() - timedelta(hours=24)  # Force research on first run
+    last_research_time = datetime.now() - timedelta(
+        hours=24
+    )  # Force research on first run
 
     try:
         while True:
@@ -239,9 +253,14 @@ def auto_loop(interval_hours: int = 1, max_iterations: int = None):
                 log("Running research module...", "INFO")
                 research_data = run_research()
                 last_research_time = now
-                log_json(research_data, f"research_{now.strftime('%Y%m%d_%H%M%S')}.json")
+                log_json(
+                    research_data, f"research_{now.strftime('%Y%m%d_%H%M%S')}.json"
+                )
             else:
-                log(f"Skipping research (last run: {int(time_since_research/3600)}h ago)", "INFO")
+                log(
+                    f"Skipping research (last run: {int(time_since_research/3600)}h ago)",
+                    "INFO",
+                )
                 research_data = {}
 
             # STEP 2: Get top hooks for generation
@@ -268,13 +287,15 @@ def auto_loop(interval_hours: int = 1, max_iterations: int = None):
                     if video_path.exists():
                         size_mb = video_path.stat().st_size / (1024 * 1024)
                         log(f"  Video: {video_path.name} ({size_mb:.2f}MB)", "INFO")
-                        generated_videos.append({
-                            "hook_type": hook_type,
-                            "room_type": room_type,
-                            "video_path": str(video_path),
-                            "video_size_mb": size_mb,
-                            "timestamp": now.isoformat(),
-                        })
+                        generated_videos.append(
+                            {
+                                "hook_type": hook_type,
+                                "room_type": room_type,
+                                "video_path": str(video_path),
+                                "video_size_mb": size_mb,
+                                "timestamp": now.isoformat(),
+                            }
+                        )
                 else:
                     log(f"  Failed: video not found", "ERROR")
 
@@ -294,7 +315,10 @@ def auto_loop(interval_hours: int = 1, max_iterations: int = None):
             log()
             log("Iteration Summary:", "INFO")
             log(f"  Videos generated: {len(generated_videos)}", "INFO")
-            log(f"  Total size: {sum(v['video_size_mb'] for v in generated_videos):.2f}MB", "INFO")
+            log(
+                f"  Total size: {sum(v['video_size_mb'] for v in generated_videos):.2f}MB",
+                "INFO",
+            )
             log()
 
             # Check max iterations
@@ -323,16 +347,25 @@ def main():
     parser = argparse.ArgumentParser(
         description="BerkahKarya Viral TikTok Automation System"
     )
-    parser.add_argument("--auto", action="store_true",
-                        help="Run automatic loop")
-    parser.add_argument("--interval", type=int, default=1,
-                        help="Research interval in hours (default: 1)")
-    parser.add_argument("--max-iterations", type=int, default=None,
-                        help="Max number of iterations (default: unlimited)")
-    parser.add_argument("--research-only", action="store_true",
-                        help="Run research module only")
-    parser.add_argument("--generate-only", action="store_true",
-                        help="Run video generation only")
+    parser.add_argument("--auto", action="store_true", help="Run automatic loop")
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=1,
+        help="Research interval in hours (default: 1)",
+    )
+    parser.add_argument(
+        "--max-iterations",
+        type=int,
+        default=None,
+        help="Max number of iterations (default: unlimited)",
+    )
+    parser.add_argument(
+        "--research-only", action="store_true", help="Run research module only"
+    )
+    parser.add_argument(
+        "--generate-only", action="store_true", help="Run video generation only"
+    )
     args = parser.parse_args()
 
     log()
@@ -371,7 +404,9 @@ def main():
         auto_loop(interval_hours=args.interval, max_iterations=args.max_iterations)
 
     else:
-        log("No mode specified. Use --auto, --research-only, or --generate-only", "INFO")
+        log(
+            "No mode specified. Use --auto, --research-only, or --generate-only", "INFO"
+        )
         parser.print_help()
 
 

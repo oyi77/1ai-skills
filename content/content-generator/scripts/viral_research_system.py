@@ -52,7 +52,7 @@ HOOK_TEMPLATES = {
         "total_posts": 0,
         "avg_views_per_post": 0,
         "top_views": 0,
-        "bottom_views": float('inf'),
+        "bottom_views": float("inf"),
     },
     "parent_bedroom": {
         "template": "My {parent} was skeptical about AI until I showed them this {style} for our {room}",
@@ -62,7 +62,7 @@ HOOK_TEMPLATES = {
         "total_posts": 0,
         "avg_views_per_post": 0,
         "top_views": 0,
-        "bottom_views": float('inf'),
+        "bottom_views": float("inf"),
     },
     "roommate_living": {
         "template": "My flatmate thinks {style} is impossible, so I proved them wrong with this AI {result} for our {room}",
@@ -72,12 +72,13 @@ HOOK_TEMPLATES = {
         "total_posts": 0,
         "avg_views_per_post": 0,
         "top_views": 0,
-        "bottom_views": float('inf'),
+        "bottom_views": float("inf"),
     },
 }
 
 # ── MEMORY STRUCTURE ───────────────────────────────────────────────
 MEMORY_FILE = MEMORY_DIR / "performance_memory.json"
+
 
 def load_memory() -> Dict:
     """Load performance memory from disk."""
@@ -86,11 +87,13 @@ def load_memory() -> Dict:
             return json.load(f)
     return {k: v for k, v in HOOK_TEMPLATES.items()}
 
+
 def save_memory(memory: Dict):
     """Save performance memory to disk."""
     with open(MEMORY_FILE, "w") as f:
         json.dump(memory, f, indent=2)
     print(f"💾 Memory saved: {MEMORY_FILE}")
+
 
 def update_confidence(memory: Dict, hook_type: str, views: int):
     """
@@ -99,7 +102,9 @@ def update_confidence(memory: Dict, hook_type: str, views: int):
     - Failure (< target) → confidence DOWN
     """
     target_views = memory[hook_type]["avg_views"]
-    current_conf = memory[hook_type].get("confidence", memory[hook_type]["base_confidence"])
+    current_conf = memory[hook_type].get(
+        "confidence", memory[hook_type]["base_confidence"]
+    )
 
     if views >= target_views:
         # Success — increase confidence
@@ -118,13 +123,17 @@ def update_confidence(memory: Dict, hook_type: str, views: int):
 
     # Update stats
     total_posts = memory[hook_type]["total_posts"] + 1
-    avg_views = (memory[hook_type]["avg_views_per_post"] * memory[hook_type]["total_posts"] + views) / total_posts
+    avg_views = (
+        memory[hook_type]["avg_views_per_post"] * memory[hook_type]["total_posts"]
+        + views
+    ) / total_posts
     memory[hook_type]["total_posts"] = total_posts
     memory[hook_type]["avg_views_per_post"] = avg_views
     memory[hook_type]["top_views"] = max(memory[hook_type]["top_views"], views)
     memory[hook_type]["bottom_views"] = min(memory[hook_type]["bottom_views"], views)
 
     return change, new_conf
+
 
 # ── RESEARCH MODULE ───────────────────────────────────────────────
 def research_trending_topics() -> List[str]:
@@ -159,19 +168,26 @@ def research_trending_topics() -> List[str]:
     # For now, random selection
     selected = random.sample(topics, min(5, len(topics)))
 
-    research_file = RESEARCH_DIR / f"research_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    research_file = (
+        RESEARCH_DIR / f"research_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    )
     with open(research_file, "w") as f:
-        json.dump({
-            "timestamp": datetime.now().isoformat(),
-            "topics": selected,
-            "source": "simulated",  # TODO: "tiktok_api"
-            "total_topics": len(topics),
-        }, f, indent=2)
+        json.dump(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "topics": selected,
+                "source": "simulated",  # TODO: "tiktok_api"
+                "total_topics": len(topics),
+            },
+            f,
+            indent=2,
+        )
 
     print(f"  ✅ Found {len(selected)} trending topics")
     print(f"  💾 Saved: {research_file.name}")
 
     return selected
+
 
 def analyze_hook_performance() -> Dict:
     """Analyze hook performance from memory."""
@@ -222,6 +238,7 @@ def analyze_hook_performance() -> Dict:
 
     return analysis
 
+
 def generate_content_recommendations(analysis: Dict) -> List[Dict]:
     """
     Generate content recommendations based on top performers.
@@ -258,6 +275,7 @@ def generate_content_recommendations(analysis: Dict) -> List[Dict]:
 
     return recommendations
 
+
 # ── GENERATION MODULE ───────────────────────────────────────────────
 def log_post_performance(hook_type: str, views: int):
     """Log post performance to memory."""
@@ -272,16 +290,22 @@ def log_post_performance(hook_type: str, views: int):
     # Log to history
     history_file = MEMORY_DIR / f"history_{datetime.now().strftime('%Y%m%d')}.jsonl"
     with open(history_file, "a") as f:
-        f.write(json.dumps({
-            "timestamp": datetime.now().isoformat(),
-            "hook_type": hook_type,
-            "views": views,
-            "confidence": new_conf,
-        }) + "\n")
+        f.write(
+            json.dumps(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "hook_type": hook_type,
+                    "views": views,
+                    "confidence": new_conf,
+                }
+            )
+            + "\n"
+        )
 
     print(f"  💾 Logged to: {history_file.name}")
 
     return memory[hook_type]
+
 
 # ── LLM CONTENT GENERATOR ──────────────────────────────────────────
 def generate_viral_content(hook_type: str, topic: str) -> Dict:
@@ -321,15 +345,20 @@ Return ONLY valid JSON, no extra text."""
         payload = {
             "model": "llama-3.3-70b-versatile",
             "messages": [
-                {"role": "system", "content": "You are a viral TikTok content expert. Always respond with valid JSON only."},
-                {"role": "user", "content": user_prompt}
+                {
+                    "role": "system",
+                    "content": "You are a viral TikTok content expert. Always respond with valid JSON only.",
+                },
+                {"role": "user", "content": user_prompt},
             ],
             "temperature": 0.85,
             "max_tokens": 400,
         }
 
         data = json.dumps(payload).encode("utf-8")
-        req = urllib.request.Request(GROQ_URL, data=data, headers=headers, method="POST")
+        req = urllib.request.Request(
+            GROQ_URL, data=data, headers=headers, method="POST"
+        )
         ssl_ctx = ssl.create_default_context()
 
         with urllib.request.urlopen(req, context=ssl_ctx, timeout=60) as r:
@@ -355,16 +384,25 @@ Return ONLY valid JSON, no extra text."""
         "room": "kitchen_small",
     }
 
+
 # ── MAIN ───────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(description="Continuous Viral TikTok Research System")
-    parser.add_argument("--mode", required=True,
-                        choices=["research", "analyze", "generate", "log"],
-                        help="Operation mode")
+    parser = argparse.ArgumentParser(
+        description="Continuous Viral TikTok Research System"
+    )
+    parser.add_argument(
+        "--mode",
+        required=True,
+        choices=["research", "analyze", "generate", "log"],
+        help="Operation mode",
+    )
     parser.add_argument("--hook-type", help="Hook type (for log mode)")
     parser.add_argument("--views", type=int, help="Views (for log mode)")
-    parser.add_argument("--topic", default="AI interior design transformation",
-                        help="Topic (for generate mode)")
+    parser.add_argument(
+        "--topic",
+        default="AI interior design transformation",
+        help="Topic (for generate mode)",
+    )
     args = parser.parse_args()
 
     print("=" * 70)
@@ -387,7 +425,9 @@ def main():
         print(f"   Total hook types analyzed: {len(analysis)}")
 
         # Save analysis report
-        report_file = OUTPUT_DIR / f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        report_file = (
+            OUTPUT_DIR / f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(report_file, "w") as f:
             json.dump(analysis, f, indent=2)
         print(f"   Report: {report_file.name}")
@@ -395,17 +435,23 @@ def main():
     elif args.mode == "generate":
         # Generate content recommendations
         memory = load_memory()
-        analysis = {k: {
-            "confidence": v.get("confidence", v["base_confidence"]),
-            "avg_views": v.get("avg_views_per_post", v["avg_views"]),
-        } for k, v in memory.items()}
+        analysis = {
+            k: {
+                "confidence": v.get("confidence", v["base_confidence"]),
+                "avg_views": v.get("avg_views_per_post", v["avg_views"]),
+            }
+            for k, v in memory.items()
+        }
 
         recommendations = generate_content_recommendations(analysis)
 
         print(f"\n✅ Generated {len(recommendations)} recommendations")
 
         # Save recommendations
-        rec_file = CONTENT_DIR / f"recommendations_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        rec_file = (
+            CONTENT_DIR
+            / f"recommendations_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(rec_file, "w") as f:
             json.dump(recommendations, f, indent=2)
         print(f"   Saved: {rec_file.name}")
@@ -430,8 +476,11 @@ def main():
     print("\n📊 SYSTEM SUMMARY")
     print(f"   Total hook types tracked: {len(memory)}")
     print(f"   Total posts logged: {sum(v['total_posts'] for v in memory.values())}")
-    print(f"   Top performer: {max(memory.items(), key=lambda x: x[1]['avg_views_per_post'])[0][0]}")
+    print(
+        f"   Top performer: {max(memory.items(), key=lambda x: x[1]['avg_views_per_post'])[0][0]}"
+    )
     print("=" * 70)
+
 
 if __name__ == "__main__":
     main()

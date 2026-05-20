@@ -56,13 +56,17 @@ class FalAIProvider(AIProvider):
         model_config = self.MODELS.get(model)
         if not model_config:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": f"Unknown model: {model}"},
             )
 
         if not self.validate_api_key():
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": "No API key configured"},
             )
 
@@ -100,7 +104,9 @@ class FalAIProvider(AIProvider):
                 # Poll for result if queued
                 request_id = data.get("request_id")
                 if request_id:
-                    data = await self._poll_result(session, headers, endpoint, request_id)
+                    data = await self._poll_result(
+                        session, headers, endpoint, request_id
+                    )
 
                 images = data.get("images", [])
                 image_url = images[0].get("url") if images else data.get("url")
@@ -118,14 +124,20 @@ class FalAIProvider(AIProvider):
             raise
         except Exception as e:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": str(e)},
             )
 
     async def _poll_result(
-        self, session: aiohttp.ClientSession, headers: dict,
-        endpoint: str, request_id: str,
-        max_polls: int = 60, interval: float = 2.0,
+        self,
+        session: aiohttp.ClientSession,
+        headers: dict,
+        endpoint: str,
+        request_id: str,
+        max_polls: int = 60,
+        interval: float = 2.0,
     ) -> dict:
         """Poll queue for completed result."""
         status_url = f"{self.API_BASE}/{endpoint}/requests/{request_id}/status"

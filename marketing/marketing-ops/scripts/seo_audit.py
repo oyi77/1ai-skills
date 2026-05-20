@@ -18,6 +18,7 @@ def generate_audit_template(url: str, domain: str = None) -> str:
     """Generate a structured SEO audit report template."""
     if not domain:
         from urllib.parse import urlparse
+
         domain = urlparse(url).netloc or url
 
     date = datetime.now().strftime("%Y-%m-%d")
@@ -195,15 +196,19 @@ def main():
     domain = None
     try:
         from urllib.parse import urlparse
+
         domain = urlparse(args.url).netloc
     except Exception:
         domain = args.url
 
-    output_path = args.output or f"seo-audit-{domain.replace('.', '-')}-{datetime.now().strftime('%Y-%m-%d')}.md"
+    output_path = (
+        args.output
+        or f"seo-audit-{domain.replace('.', '-')}-{datetime.now().strftime('%Y-%m-%d')}.md"
+    )
 
     report = generate_audit_template(args.url, domain)
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(report)
 
     print(f"✅ SEO audit template generated: {output_path}")

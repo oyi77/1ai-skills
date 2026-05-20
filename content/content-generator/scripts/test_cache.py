@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from cache import Cache
 
+
 def test_cache_eviction():
     test_db_path = ".cache/test_cache.db"
     if os.path.exists(test_db_path):
@@ -27,7 +28,7 @@ def test_cache_eviction():
 
     print("Setting key1")
     cache.set("key1", large_val1)
-    time.sleep(0.1) # ensure order of created_at
+    time.sleep(0.1)  # ensure order of created_at
 
     print("Setting key2")
     cache.set("key2", large_val2)
@@ -52,6 +53,7 @@ def test_cache_eviction():
     # Clean up test artifact
     if os.path.exists(test_db_path):
         os.remove(test_db_path)
+
 
 if __name__ == "__main__":
     test_cache_eviction()

@@ -22,10 +22,13 @@ PARA_DIRS = ["projects", "areas", "resources", "archives"]
 def get_chroma_client():
     try:
         import chromadb
+
         client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
         return client
     except ImportError:
-        print("ERROR: chromadb not installed. Run: pip install chromadb", file=sys.stderr)
+        print(
+            "ERROR: chromadb not installed. Run: pip install chromadb", file=sys.stderr
+        )
         sys.exit(1)
 
 
@@ -39,14 +42,16 @@ def cmd_search(query: str, n_results: int = 5):
     try:
         collection = client.get_collection(COLLECTION_NAME)
     except Exception as e:
-        print(f"ERROR: Could not get collection '{COLLECTION_NAME}': {e}", file=sys.stderr)
+        print(
+            f"ERROR: Could not get collection '{COLLECTION_NAME}': {e}", file=sys.stderr
+        )
         sys.exit(1)
 
     count = collection.count()
     results = collection.query(
         query_texts=[query],
         n_results=min(n_results, count) if count > 0 else 1,
-        include=["documents", "metadatas", "distances"]
+        include=["documents", "metadatas", "distances"],
     )
 
     docs = results.get("documents", [[]])[0]
@@ -57,7 +62,7 @@ def cmd_search(query: str, n_results: int = 5):
         print(f"No results found for: {query}")
         return
 
-    print(f"Search: \"{query}\" — {len(docs)} result(s) from {count} chunks\n")
+    print(f'Search: "{query}" — {len(docs)} result(s) from {count} chunks\n')
     for i, (doc, meta, dist) in enumerate(zip(docs, metas, distances), 1):
         score = round(1 - dist, 4) if dist is not None else "?"
         source = meta.get("source", meta.get("file", meta.get("path", "unknown")))
@@ -76,7 +81,11 @@ def cmd_read(path: str):
         if not kb_path.exists():
             print(f"company-knowledge/ directory is empty or does not exist: {KB_DIR}")
             return
-        files = list(kb_path.rglob("*.md")) + list(kb_path.rglob("*.txt")) + list(kb_path.rglob("*.json"))
+        files = (
+            list(kb_path.rglob("*.md"))
+            + list(kb_path.rglob("*.txt"))
+            + list(kb_path.rglob("*.json"))
+        )
         if not files:
             print(f"No files found in {KB_DIR}")
             return

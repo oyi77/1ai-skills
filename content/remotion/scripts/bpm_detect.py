@@ -39,8 +39,8 @@ import json
 import argparse
 
 # ── CONFIG ────────────────────────────────────────────────────
-DEFAULT_FPS   = 30
-OUTPUT_FILE   = 'public/bpm.json'
+DEFAULT_FPS = 30
+OUTPUT_FILE = "public/bpm.json"
 
 
 def detect_bpm(audio_path: str, fps: int) -> dict:
@@ -73,7 +73,7 @@ def detect_bpm(audio_path: str, fps: int) -> dict:
     tempo, beat_frames_samples = librosa.beat.beat_track(y=y, sr=sr)
 
     # librosa may return an array — take first value
-    bpm = float(tempo[0] if hasattr(tempo, '__len__') else tempo)
+    bpm = float(tempo[0] if hasattr(tempo, "__len__") else tempo)
 
     # Convert beat sample positions to seconds
     beat_times_sec = librosa.frames_to_time(beat_frames_samples, sr=sr)
@@ -82,37 +82,38 @@ def detect_bpm(audio_path: str, fps: int) -> dict:
     beat_frames_remotion = [round(t * fps) for t in beat_times_sec]
 
     # Calculate derived values
-    frames_per_beat     = round((60 / bpm) * fps)
-    frames_per_bar      = frames_per_beat * 4
+    frames_per_beat = round((60 / bpm) * fps)
+    frames_per_bar = frames_per_beat * 4
     frames_per_half_bar = frames_per_beat * 2
-    frames_per_8_bars   = frames_per_beat * 32
+    frames_per_8_bars = frames_per_beat * 32
 
     total_frames = round(duration_sec * fps)
-    total_beats  = len(beat_times_sec)
+    total_beats = len(beat_times_sec)
 
     result = {
-        "bpm":               round(bpm, 2),
-        "fps":               fps,
-        "framesPerBeat":     frames_per_beat,
-        "framesPerBar":      frames_per_bar,
-        "framesPerHalfBar":  frames_per_half_bar,
-        "framesPerPhrase":   frames_per_8_bars,   # 8 bars = typical verse/chorus
-        "beatTimes":         [round(t, 3) for t in beat_times_sec.tolist()],
-        "beatFrames":        beat_frames_remotion,
-        "totalBeats":        total_beats,
-        "totalFrames":       total_frames,
-        "durationSeconds":   round(duration_sec, 2),
+        "bpm": round(bpm, 2),
+        "fps": fps,
+        "framesPerBeat": frames_per_beat,
+        "framesPerBar": frames_per_bar,
+        "framesPerHalfBar": frames_per_half_bar,
+        "framesPerPhrase": frames_per_8_bars,  # 8 bars = typical verse/chorus
+        "beatTimes": [round(t, 3) for t in beat_times_sec.tolist()],
+        "beatFrames": beat_frames_remotion,
+        "totalBeats": total_beats,
+        "totalFrames": total_frames,
+        "durationSeconds": round(duration_sec, 2),
     }
 
     return result
 
 
 def print_usage_examples(data: dict) -> None:
-    bpm = data['bpm']
-    fpb = data['framesPerBeat']
-    fps = data['fps']
+    bpm = data["bpm"]
+    fpb = data["framesPerBeat"]
+    fps = data["fps"]
 
-    print(f"""
+    print(
+        f"""
 ╔══════════════════════════════════════════════╗
 ║           BPM Detection Results              ║
 ╠══════════════════════════════════════════════╣
@@ -148,20 +149,27 @@ const currentBeat = Math.floor(frame / beat);
 
 // Check if frame is within N frames of any detected beat
 const nearBeat = bpmData.beatFrames.some(bf => Math.abs(frame - bf) < 3);
-""")
+"""
+    )
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Detect BPM of audio file for Remotion music video projects'
+        description="Detect BPM of audio file for Remotion music video projects"
     )
-    parser.add_argument('audio', help='Path to audio file (mp3, wav, m4a, flac, ogg)')
-    parser.add_argument('--fps', type=int, default=DEFAULT_FPS,
-                        help=f'Remotion FPS (default: {DEFAULT_FPS})')
-    parser.add_argument('--save', action='store_true',
-                        help=f'Save results to {OUTPUT_FILE}')
-    parser.add_argument('--out', default=OUTPUT_FILE,
-                        help=f'Output JSON path (default: {OUTPUT_FILE})')
+    parser.add_argument("audio", help="Path to audio file (mp3, wav, m4a, flac, ogg)")
+    parser.add_argument(
+        "--fps",
+        type=int,
+        default=DEFAULT_FPS,
+        help=f"Remotion FPS (default: {DEFAULT_FPS})",
+    )
+    parser.add_argument(
+        "--save", action="store_true", help=f"Save results to {OUTPUT_FILE}"
+    )
+    parser.add_argument(
+        "--out", default=OUTPUT_FILE, help=f"Output JSON path (default: {OUTPUT_FILE})"
+    )
     args = parser.parse_args()
 
     data = detect_bpm(args.audio, args.fps)
@@ -170,7 +178,7 @@ def main():
 
     if args.save:
         os.makedirs(os.path.dirname(args.out), exist_ok=True)
-        with open(args.out, 'w') as f:
+        with open(args.out, "w") as f:
             json.dump(data, f, indent=2)
         print(f"✅ Saved to: {args.out}")
         print(f"   Import: import bpmData from '../public/bpm.json'")
@@ -178,5 +186,5 @@ def main():
         print(f"ℹ  Add --save to write to {args.out}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

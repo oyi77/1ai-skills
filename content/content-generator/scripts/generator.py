@@ -158,9 +158,9 @@ Return ONLY valid JSON."""
         "Authorization": f"Bearer {api_key}",
     }
     payload = {
-        "model": "llama-3.3-70b-versatile"
-        if GROQ_API_KEY
-        else "meta/llama-3.3-70b-instruct",
+        "model": (
+            "llama-3.3-70b-versatile" if GROQ_API_KEY else "meta/llama-3.3-70b-instruct"
+        ),
         "messages": [
             {"role": "system", "content": LARRY_HOOK_FORMULA},
             {"role": "user", "content": user_prompt},

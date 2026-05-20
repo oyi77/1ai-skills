@@ -15,7 +15,6 @@ from typing import Optional
 
 from .base import AIProvider, ProviderType, GenerationResult
 
-
 REMOTION_ENGINE_DIR = Path(__file__).resolve().parents[4] / "remotion_engine"
 
 
@@ -91,7 +90,9 @@ class RemotionVideoProvider(AIProvider):
         try:
             props_json = json.dumps(props)
             cmd = [
-                "npx", "remotion", "render",
+                "npx",
+                "remotion",
+                "render",
                 composition,
                 str(output_path),
                 f"--props={props_json}",
@@ -133,12 +134,16 @@ class RemotionVideoProvider(AIProvider):
 
         except subprocess.TimeoutExpired:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=composition,
+                success=False,
+                provider=self.provider_name,
+                model=composition,
                 metadata={"error": "Remotion render timed out (5min)"},
             )
         except Exception as e:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=composition,
+                success=False,
+                provider=self.provider_name,
+                model=composition,
                 metadata={"error": str(e)},
             )
 
@@ -167,6 +172,7 @@ class RemotionVideoProvider(AIProvider):
         output_dir = REMOTION_ENGINE_DIR.parent / "output" / "remotion"
         output_dir.mkdir(parents=True, exist_ok=True)
         import time
+
         return str(output_dir / f"video_{int(time.time())}.mp4")
 
     async def is_available(self) -> bool:
@@ -175,7 +181,9 @@ class RemotionVideoProvider(AIProvider):
             result = subprocess.run(
                 ["npx", "remotion", "--version"],
                 cwd=str(self.engine_dir),
-                capture_output=True, text=True, timeout=15,
+                capture_output=True,
+                text=True,
+                timeout=15,
             )
             return result.returncode == 0
         except Exception:
@@ -215,7 +223,9 @@ class RemotionImageProvider(AIProvider):
             from PIL import Image, ImageDraw, ImageFont
         except ImportError:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model or "gradient-text",
+                success=False,
+                provider=self.provider_name,
+                model=model or "gradient-text",
                 metadata={"error": "PIL not installed"},
             )
 
@@ -227,6 +237,7 @@ class RemotionImageProvider(AIProvider):
             output_dir = REMOTION_ENGINE_DIR.parent / "output" / "static_images"
             output_dir.mkdir(parents=True, exist_ok=True)
             import time
+
             output_path = str(output_dir / f"img_{int(time.time())}.png")
 
         try:
@@ -243,7 +254,9 @@ class RemotionImageProvider(AIProvider):
             # Text overlay
             text = prompt[:120]
             try:
-                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 56)
+                font = ImageFont.truetype(
+                    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 56
+                )
             except OSError:
                 font = ImageFont.load_default()
 
@@ -285,18 +298,23 @@ class RemotionImageProvider(AIProvider):
 
         except Exception as e:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model or "gradient-text",
+                success=False,
+                provider=self.provider_name,
+                model=model or "gradient-text",
                 metadata={"error": str(e)},
             )
 
     async def is_available(self) -> bool:
         try:
             from PIL import Image
+
             return True
         except ImportError:
             return False
 
-    def get_cost_estimate(self, prompt: str, model: Optional[str] = None, **kwargs) -> float:
+    def get_cost_estimate(
+        self, prompt: str, model: Optional[str] = None, **kwargs
+    ) -> float:
         return 0.0
 
     def validate_api_key(self) -> bool:

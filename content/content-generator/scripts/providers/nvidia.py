@@ -14,7 +14,6 @@ from typing import Any, Optional
 
 from .base import AIProvider, ProviderType, GenerationResult
 
-
 # Default NVIDIA NIM API base URL for image generation (genai endpoint)
 DEFAULT_NIM_BASE_URL = "https://ai.api.nvidia.com"
 
@@ -189,7 +188,11 @@ class NVIDIAProvider(AIProvider):
             elif images:
                 # OpenAI-compat format
                 img = images[0] if isinstance(images, list) else images
-                image_base64 = img.get("b64_json") or img.get("base64") if isinstance(img, dict) else None
+                image_base64 = (
+                    img.get("b64_json") or img.get("base64")
+                    if isinstance(img, dict)
+                    else None
+                )
                 image_url = img.get("url") if isinstance(img, dict) else None
                 all_images = images
             else:
@@ -199,7 +202,9 @@ class NVIDIAProvider(AIProvider):
                     cost=self.get_cost_estimate(prompt, model),
                     provider=self.provider_name,
                     model=model,
-                    metadata={"error": f"No images returned from API. Response: {response_data}"},
+                    metadata={
+                        "error": f"No images returned from API. Response: {response_data}"
+                    },
                 )
 
             # Prepare result data

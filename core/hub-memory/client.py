@@ -10,20 +10,20 @@ IQ 145 Pattern:
 
 Usage:
     from centralized_memory_client import query_hub, inject_context, add_to_hub
-    
+
     # Step 1: Query BEFORE executing
     memories = query_hub("what do we know about project X?", service="openclaw")
-    
+
     # Step 2: Inject as context
     if memories:
         context = inject_context(memories)
         prompt = f"{context}\n\nNow: {user_request}"
     else:
         prompt = user_request
-    
+
     # Step 3: Execute WITH context
     response = model.generate(prompt)
-    
+
     # Step 4: Optionally commit result
     # add_to_hub(f"Result: {response}", service="openclaw")
 """
@@ -38,38 +38,31 @@ DEFAULT_SERVICE = os.getenv("BERKAHKARYA_SERVICE", "openclaw")
 
 
 def query_hub(
-    query: str,
-    service: Optional[str] = None,
-    limit: int = 5,
-    method: str = "hybrid"
+    query: str, service: Optional[str] = None, limit: int = 5, method: str = "hybrid"
 ) -> List[Dict[str, Any]]:
     """
     Query 1ai-hub BEFORE executing ANY task.
-    
+
     This is the "IQ 145" pattern - DON'T GUESS, LOOK IT UP FIRST.
-    
+
     Args:
         query: What to search for
         service: Filter by service (openclaw, omniroute, paperclip, opencode)
         limit: Max results
         method: Search method (hybrid, fts, vector, gbrain)
-    
+
     Returns:
         List of memory dicts with: id, content, source, score, service, metadata
-    
+
     Example:
         memories = query_hub("customer feedback about product", service="openclaw")
         for mem in memories:
             print(f"- {mem['content'][:200]}")
     """
-    params = {
-        "q": query,
-        "limit": limit,
-        "method": method
-    }
+    params = {"q": query, "limit": limit, "method": method}
     if service:
         params["service"] = service
-    
+
     try:
         response = httpx.get(f"{HUB_URL}/brain/search", params=params, timeout=10.0)
         if response.status_code == 200:
@@ -86,35 +79,35 @@ def query_hub(
 def inject_context(memories: List[Dict[str, Any]], max_items: int = 5) -> str:
     """
     Format retrieved memories as injectable context for AI.
-    
+
     Args:
         memories: Output from query_hub()
         max_items: Maximum memories to include
-    
+
     Returns:
         Formatted string ready to inject into prompt
-    
+
     Example:
         context = inject_context(memories)
         prompt = f"{context}\n\nUser: {message}"
     """
     if not memories:
         return ""
-    
+
     formatted_lines = ["📚 RELEVANT HISTORY:"]
-    
+
     for i, mem in enumerate(memories[:max_items], 1):
         # Get content, truncate if too long
         content = mem.get("content", "")
         if len(content) > 400:
             content = content[:400] + "..."
-        
+
         # Get source service
         service = mem.get("service", mem.get("source", "unknown"))
-        
+
         # Add to formatted output
         formatted_lines.append(f"\n{i}. [{service}] {content}")
-    
+
     return "\n".join(formatted_lines)
 
 
@@ -123,23 +116,23 @@ def add_to_hub(
     service: str = DEFAULT_SERVICE,
     wing: str = "general",
     room: str = "general",
-    tags: Optional[List[str]] = None
+    tags: Optional[List[str]] = None,
 ) -> Optional[Dict[str, Any]]:
     """
     Write result BACK to hub after task completes.
-    
+
     This enables the bidirectional flow - services can LEARN.
-    
+
     Args:
         content: What to store
         service: Source service name
         wing: Organization category (general, backend, frontend, etc.)
         room: Specific area
         tags: Optional tags
-    
+
     Returns:
         Response dict or None on failure
-    
+
     Example:
         # After completing a task:
         result = add_to_hub(
@@ -149,15 +142,10 @@ def add_to_hub(
             tags=["bugfix", "payment"]
         )
     """
-    data = {
-        "content": content,
-        "service": service,
-        "wing": wing,
-        "room": room
-    }
+    data = {"content": content, "service": service, "wing": wing, "room": room}
     if tags:
         data["tags"] = tags
-    
+
     try:
         response = httpx.post(f"{HUB_URL}/brain/add", json=data, timeout=10.0)
         if response.status_code == 200:
@@ -173,7 +161,7 @@ def add_to_hub(
 def get_hub_stats() -> Dict[str, Any]:
     """
     Get centralized hub statistics.
-    
+
     Returns:
         Dict with gbrain, mempalace, fts5 stats
     """
@@ -190,12 +178,12 @@ def get_hub_stats() -> Dict[str, Any]:
 def main():
     """CLI for quick testing"""
     import sys
-    
+
     query = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "test"
-    
+
     print(f"🔍 Querying hub: {query}")
     results = query_hub(query, limit=3)
-    
+
     if results:
         print(f"\n📚 Found {len(results)} memories:\n")
         for mem in results:

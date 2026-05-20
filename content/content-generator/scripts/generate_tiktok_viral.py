@@ -30,7 +30,9 @@ from pathlib import Path
 from typing import Optional
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-NVIDIA_API_KEY = "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"
+NVIDIA_API_KEY = (
+    "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"
+)
 BYTEPLUS_API_KEY = "cac5cfc1-e30f-47bb-b8b8-e861ffda28ea"
 
 NVIDIA_LLM_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
@@ -66,6 +68,7 @@ VIRAL_CONCEPTS = {
     },
 }
 
+
 # ── HELPERS ──────────────────────────────────────────────────────────────────
 def post_json(url, payload, headers):
     data = json.dumps(payload).encode("utf-8")
@@ -74,11 +77,13 @@ def post_json(url, payload, headers):
     with urllib.request.urlopen(req, context=ssl_ctx, timeout=120) as r:
         return json.loads(r.read())
 
+
 def get_json(url, headers):
     req = urllib.request.Request(url, headers=headers, method="GET")
     ssl_ctx = ssl.create_default_context()
     with urllib.request.urlopen(req, context=ssl_ctx, timeout=30) as r:
         return json.loads(r.read())
+
 
 def download_file(url, path, headers=None):
     req = urllib.request.Request(url, headers=headers or {})
@@ -86,6 +91,7 @@ def download_file(url, path, headers=None):
     with urllib.request.urlopen(req, context=ssl_ctx, timeout=120) as r:
         with open(path, "wb") as f:
             f.write(r.read())
+
 
 # ── STEP 1: NVIDIA LLM — Generate Viral Content ──────────────────────
 def generate_viral_content(niche: str) -> dict:
@@ -116,8 +122,11 @@ Return ONLY valid JSON, no extra text."""
     payload = {
         "model": "meta/llama-3.3-70b-instruct",
         "messages": [
-            {"role": "system", "content": "You are a viral TikTok content creator. Always respond with valid JSON only."},
-            {"role": "user", "content": prompt}
+            {
+                "role": "system",
+                "content": "You are a viral TikTok content creator. Always respond with valid JSON only.",
+            },
+            {"role": "user", "content": prompt},
         ],
         "temperature": 0.9,
         "max_tokens": 500,
@@ -228,7 +237,9 @@ def generate_video(prompt: str, ratio: str = "9:16") -> dict:
             }
         elif status in ("failed", "cancelled"):
             error = result.get("error", {})
-            print(f"  ❌ Task {status}: {error.get('message', 'unknown')} (code: {error.get('code', 'N/A')})")
+            print(
+                f"  ❌ Task {status}: {error.get('message', 'unknown')} (code: {error.get('code', 'N/A')})"
+            )
             return None
 
     print("  ❌ Timeout waiting for video")
@@ -243,8 +254,11 @@ def loop_to_minute(input_path: Path, output_path: Path) -> bool:
     # Get original duration
     cmd = [
         FFMPEG_BIN,
-        "-i", str(input_path),
-        "-f", "null", "-",
+        "-i",
+        str(input_path),
+        "-f",
+        "null",
+        "-",
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
     # Extract duration from stderr (FFmpeg outputs to stderr)
@@ -271,10 +285,14 @@ def loop_to_minute(input_path: Path, output_path: Path) -> bool:
     # Loop using FFmpeg stream loop
     cmd = [
         FFMPEG_BIN,
-        "-stream_loop", str(loops),
-        "-i", str(input_path),
-        "-c", "copy",
-        "-t", "60",  # Exactly 60 seconds
+        "-stream_loop",
+        str(loops),
+        "-i",
+        str(input_path),
+        "-c",
+        "copy",
+        "-t",
+        "60",  # Exactly 60 seconds
         "-y",  # Overwrite
         str(output_path),
     ]
@@ -325,13 +343,23 @@ def send_telegram(video_path: Path, content: dict) -> bool:
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(description="Generate TikTok viral video")
-    parser.add_argument("--niche", choices=list(VIRAL_CONCEPTS.keys()),
-                        default="motivation", help="Viral content niche")
-    parser.add_argument("--ratio", default="9:16", help="Video aspect ratio (default: 9:16)")
-    parser.add_argument("--skip-loop", action="store_true",
-                        help="Skip looping to 1 minute (use original duration)")
-    parser.add_argument("--skip-telegram", action="store_true",
-                        help="Skip sending to Telegram")
+    parser.add_argument(
+        "--niche",
+        choices=list(VIRAL_CONCEPTS.keys()),
+        default="motivation",
+        help="Viral content niche",
+    )
+    parser.add_argument(
+        "--ratio", default="9:16", help="Video aspect ratio (default: 9:16)"
+    )
+    parser.add_argument(
+        "--skip-loop",
+        action="store_true",
+        help="Skip looping to 1 minute (use original duration)",
+    )
+    parser.add_argument(
+        "--skip-telegram", action="store_true", help="Skip sending to Telegram"
+    )
     args = parser.parse_args()
 
     print("=" * 70)

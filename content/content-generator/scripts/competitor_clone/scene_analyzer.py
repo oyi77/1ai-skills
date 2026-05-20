@@ -9,11 +9,12 @@ Analyzes each keyframe to understand:
 
 import os, json, base64, urllib.request, urllib.error
 import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from prompt_library import STYLES
 
 NVIDIA_KEY = os.environ.get("NVIDIA_API_KEY")
-GROQ_KEY   = os.environ.get("GROQ_API_KEY")
+GROQ_KEY = os.environ.get("GROQ_API_KEY")
 
 
 def analyze_scene(scene: dict, product_category: str = "unknown") -> dict:
@@ -51,24 +52,29 @@ Analyze this scene image and respond ONLY in JSON:
 }}"""
 
     # Try NVIDIA vision model
-    payload = json.dumps({
-        "model": "meta/llama-3.2-11b-vision-instruct",
-        "messages": [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}},
-                    {"type": "text", "text": prompt}
-                ]
-            }
-        ],
-        "max_tokens": 800,
-        "temperature": 0.1
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": "meta/llama-3.2-11b-vision-instruct",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"},
+                        },
+                        {"type": "text", "text": prompt},
+                    ],
+                }
+            ],
+            "max_tokens": 800,
+            "temperature": 0.1,
+        }
+    ).encode()
 
     headers = {
         "Authorization": f"Bearer {NVIDIA_KEY}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
 
     url = "https://integrate.api.nvidia.com/v1/chat/completions"
@@ -100,7 +106,7 @@ def _fallback_analysis(scene: dict) -> dict:
             "dark moody background, ultra detailed, 8K, professional commercial quality, "
             "Sony A7III, shallow depth of field, film grain"
         ),
-        "upgrade_animation": "slow dramatic reveal with light sweep, cinematic slow motion"
+        "upgrade_animation": "slow dramatic reveal with light sweep, cinematic slow motion",
     }
 
 
@@ -110,6 +116,7 @@ def transcribe_audio(audio_path: str) -> str:
     """
     try:
         import whisper
+
         print("  🎙️ Transcribing audio with Whisper...")
         model = whisper.load_model("base")
         result = model.transcribe(audio_path, language="id")  # Indonesian
@@ -124,16 +131,20 @@ def transcribe_audio(audio_path: str) -> str:
         return ""
 
 
-def improve_script(original_script: str, scenes_analysis: list, product_category: str, groq_key: str) -> list:
+def improve_script(
+    original_script: str, scenes_analysis: list, product_category: str, groq_key: str
+) -> list:
     """
     Rewrite competitor VO script to be more compelling.
     Returns list of VO text per scene.
     """
     n_scenes = len(scenes_analysis)
-    scenes_context = "\n".join([
-        f"Scene {i+1} ({s.get('duration',5):.1f}s): {a.get('scene_type','product')} — {a.get('subject','product')}"
-        for i, (s, a) in enumerate(scenes_analysis)
-    ])
+    scenes_context = "\n".join(
+        [
+            f"Scene {i+1} ({s.get('duration',5):.1f}s): {a.get('scene_type','product')} — {a.get('subject','product')}"
+            for i, (s, a) in enumerate(scenes_analysis)
+        ]
+    )
 
     prompt = f"""You are an expert Indonesian copywriter and content strategist.
 
@@ -164,22 +175,26 @@ Respond ONLY in JSON:
   "overall_strategy": "what makes your version more compelling"
 }}"""
 
-    payload = json.dumps({
-        "model": "llama-3.3-70b-versatile",
-        "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 1500,
-        "temperature": 0.7
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": "llama-3.3-70b-versatile",
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 1500,
+            "temperature": 0.7,
+        }
+    ).encode()
 
     headers = {
         "Authorization": f"Bearer {groq_key}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
 
     try:
         req = urllib.request.Request(
             "https://api.groq.com/openai/v1/chat/completions",
-            data=payload, headers=headers, method="POST"
+            data=payload,
+            headers=headers,
+            method="POST",
         )
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read())
@@ -192,19 +207,23 @@ Respond ONLY in JSON:
         # Fallback: generic VO per scene
         return {
             "improved_script": [
-                {"scene": i+1, "vo": f"Produk terbaik untuk kebutuhan kamu. Scene {i+1}."}
+                {
+                    "scene": i + 1,
+                    "vo": f"Produk terbaik untuk kebutuhan kamu. Scene {i+1}.",
+                }
                 for i in range(n_scenes)
             ],
             "hook_analysis": "Generic fallback",
-            "overall_strategy": "Basic"
+            "overall_strategy": "Basic",
         }
 
 
 if __name__ == "__main__":
     # Test with dummy scene
     test_scene = {
-        "id": 1, "duration": 5.0,
+        "id": 1,
+        "duration": 5.0,
         "keyframe": "/tmp/test_frame.jpg",
-        "clip": "/tmp/test_clip.mp4"
+        "clip": "/tmp/test_clip.mp4",
     }
     print("Testing scene analyzer...")

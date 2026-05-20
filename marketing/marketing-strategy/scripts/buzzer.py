@@ -41,9 +41,11 @@ import requests
 # ─── Social Scraper (real web scraping, no API keys) ──────────────────────────
 import sys as _scraper_sys
 import os as _scraper_os
+
 _scraper_sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 try:
     from scrapers.social_scraper import SocialScraper as _SocialScraper
+
     _SCRAPER_AVAILABLE = True
 except ImportError:
     _SCRAPER_AVAILABLE = False
@@ -51,12 +53,14 @@ except ImportError:
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 BYTEPLUS_API_URL = "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"
-BYTEPLUS_API_KEY = os.environ.get("BYTEPLUS_API_KEY", "cac5cfc1-e30f-47bb-b8b8-e861ffda28ea")
-BYTEPLUS_MODEL   = "seed-1-6-250915"
+BYTEPLUS_API_KEY = os.environ.get(
+    "BYTEPLUS_API_KEY", "cac5cfc1-e30f-47bb-b8b8-e861ffda28ea"
+)
+BYTEPLUS_MODEL = "seed-1-6-250915"
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 HISTORY_FILE = DATA_DIR / "engagement_history.json"
-LOG_FILE     = DATA_DIR / "buzzer.log"
+LOG_FILE = DATA_DIR / "buzzer.log"
 
 # Delay range in seconds (5-30 minutes)
 MIN_DELAY_SEC = 5 * 60
@@ -79,6 +83,7 @@ log = logging.getLogger("buzzer")
 
 # ─── Engagement History ───────────────────────────────────────────────────────
 
+
 class EngagementHistory:
     """Tracks all engagement actions to avoid over-engaging with the same accounts/posts."""
 
@@ -91,10 +96,10 @@ class EngagementHistory:
             with open(self.path) as f:
                 return json.load(f)
         return {
-            "likes": {},        # post_id -> timestamp
-            "comments": {},     # post_id -> {"timestamp": ..., "text": ...}
-            "follows": {},      # user_id -> timestamp
-            "daily_counts": {}, # "YYYY-MM-DD" -> {"likes": n, "comments": n, "follows": n}
+            "likes": {},  # post_id -> timestamp
+            "comments": {},  # post_id -> {"timestamp": ..., "text": ...}
+            "follows": {},  # user_id -> timestamp
+            "daily_counts": {},  # "YYYY-MM-DD" -> {"likes": n, "comments": n, "follows": n}
         }
 
     def _save(self):
@@ -165,12 +170,13 @@ class EngagementHistory:
 
 # ─── AI Comment Generator ─────────────────────────────────────────────────────
 
+
 class AICommentGenerator:
     """Generates authentic, contextual comments via BytePlus AI."""
 
     def __init__(self, api_key: str = BYTEPLUS_API_KEY, model: str = BYTEPLUS_MODEL):
         self.api_key = api_key
-        self.model   = model
+        self.model = model
         self.headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
@@ -238,6 +244,7 @@ Rules:
 
 import sys as _sys
 import os as _os
+
 _sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from post_bridge_client import PostBridgeClient as _PostBridgeClient
 
@@ -261,11 +268,15 @@ class PostBridgePlatformClient:
         self._accounts = self._pb.get_accounts_by_platform(self.platform)
         self._account_ids = [a["id"] for a in self._accounts]
         if self._account_ids:
-            log.info(f"🔌 PostBridge: {len(self._account_ids)} {self.platform} account(s) connected: "
-                     f"{[a.get('username') for a in self._accounts]}")
+            log.info(
+                f"🔌 PostBridge: {len(self._account_ids)} {self.platform} account(s) connected: "
+                f"{[a.get('username') for a in self._accounts]}"
+            )
         else:
-            log.warning(f"⚠️  PostBridge: no connected {self.platform} accounts found. "
-                        f"Posts will broadcast to ALL connected accounts.")
+            log.warning(
+                f"⚠️  PostBridge: no connected {self.platform} accounts found. "
+                f"Posts will broadcast to ALL connected accounts."
+            )
             self._account_ids = self._pb.get_all_account_ids()
 
     def search_posts(self, keyword: str, limit: int = 20) -> list[dict]:
@@ -274,17 +285,25 @@ class PostBridgePlatformClient:
         Falls back to stub data if scraper is unavailable.
         """
         if _SCRAPER_AVAILABLE:
-            log.info(f"[PostBridge] Scraping {self.platform} for '{keyword}' (real data)...")
+            log.info(
+                f"[PostBridge] Scraping {self.platform} for '{keyword}' (real data)..."
+            )
             try:
                 scraper = _SocialScraper()
                 posts = scraper.search(keyword, platform=self.platform, limit=limit)
                 if posts:
-                    log.info(f"[PostBridge] Got {len(posts)} real posts for '{keyword}'")
+                    log.info(
+                        f"[PostBridge] Got {len(posts)} real posts for '{keyword}'"
+                    )
                     return posts
             except Exception as e:
-                log.warning(f"[PostBridge] SocialScraper failed: {e} — falling back to stub data")
+                log.warning(
+                    f"[PostBridge] SocialScraper failed: {e} — falling back to stub data"
+                )
 
-        log.info(f"[PostBridge] Searching {self.platform} for '{keyword}' — using stub data (scraper unavailable)")
+        log.info(
+            f"[PostBridge] Searching {self.platform} for '{keyword}' — using stub data (scraper unavailable)"
+        )
         return [
             {
                 "id": hashlib.md5(f"{keyword}-{i}".encode()).hexdigest()[:12],
@@ -293,7 +312,9 @@ class PostBridgePlatformClient:
                 "content": f"Post #{i} about {keyword}",
                 "likes": random.randint(5, 500),
                 "comments": random.randint(1, 50),
-                "created_at": (datetime.now() - timedelta(hours=random.randint(1, 24))).isoformat(),
+                "created_at": (
+                    datetime.now() - timedelta(hours=random.randint(1, 24))
+                ).isoformat(),
             }
             for i in range(limit)
         ]
@@ -306,8 +327,12 @@ class PostBridgePlatformClient:
         if _SCRAPER_AVAILABLE:
             try:
                 scraper = _SocialScraper()
-                posts = scraper.get_trending(platform=self.platform, category=category, limit=limit)
-                log.info(f"[PostBridge] Got {len(posts)} trending posts for {self.platform}/{category}")
+                posts = scraper.get_trending(
+                    platform=self.platform, category=category, limit=limit
+                )
+                log.info(
+                    f"[PostBridge] Got {len(posts)} trending posts for {self.platform}/{category}"
+                )
                 return posts
             except Exception as e:
                 log.warning(f"[PostBridge] get_trending scraper failed: {e}")
@@ -315,7 +340,9 @@ class PostBridgePlatformClient:
 
     def like_post(self, post_id: str) -> bool:
         """Like a post. Post Bridge doesn't support like actions; logged only."""
-        log.info(f"[PostBridge] ❤️  Like action not supported by Post Bridge API — post={post_id}")
+        log.info(
+            f"[PostBridge] ❤️  Like action not supported by Post Bridge API — post={post_id}"
+        )
         return True
 
     def comment_post(self, post_id: str, text: str) -> bool:
@@ -323,7 +350,9 @@ class PostBridgePlatformClient:
         Publish a comment as a new post via Post Bridge.
         Maps to POST /posts with the comment text as the caption.
         """
-        log.info(f"[PostBridge] 💬 Publishing comment as post on {self.platform}: '{text[:60]}...'")
+        log.info(
+            f"[PostBridge] 💬 Publishing comment as post on {self.platform}: '{text[:60]}...'"
+        )
         result = self._pb.create_post(
             caption=text,
             account_ids=self._account_ids,
@@ -332,17 +361,21 @@ class PostBridgePlatformClient:
 
     def follow_user(self, user_id: str) -> bool:
         """Follow a user. Post Bridge doesn't support follow actions; logged only."""
-        log.info(f"[PostBridge] 👤 Follow action not supported by Post Bridge API — user={user_id}")
+        log.info(
+            f"[PostBridge] 👤 Follow action not supported by Post Bridge API — user={user_id}"
+        )
         return True
 
 
 # Alias for backward compatibility / dry-run mode
 class MockPlatformClient(PostBridgePlatformClient):
     """Legacy alias — now backed by PostBridgeClient."""
+
     pass
 
 
 # ─── Buzzer Engine ────────────────────────────────────────────────────────────
+
 
 class Buzzer:
     """Main engagement engine."""
@@ -356,26 +389,28 @@ class Buzzer:
     ):
         self.keywords = keywords
         self.platform = platform
-        self.dry_run  = dry_run
-        self.config   = config or {}
+        self.dry_run = dry_run
+        self.config = config or {}
 
-        self.max_likes_day    = self.config.get("max_likes_per_day", 50)
+        self.max_likes_day = self.config.get("max_likes_per_day", 50)
         self.max_comments_day = self.config.get("max_comments_per_day", 15)
-        self.max_follows_day  = self.config.get("max_follows_per_day", 20)
-        self.brand_voice      = self.config.get("brand_voice", "friendly and knowledgeable")
-        self.niche            = self.config.get("niche", "general business")
+        self.max_follows_day = self.config.get("max_follows_per_day", 20)
+        self.brand_voice = self.config.get("brand_voice", "friendly and knowledgeable")
+        self.niche = self.config.get("niche", "general business")
 
-        self.history   = EngagementHistory()
-        self.ai        = AICommentGenerator()
-        self.client    = PostBridgePlatformClient(platform)
+        self.history = EngagementHistory()
+        self.ai = AICommentGenerator()
+        self.client = PostBridgePlatformClient(platform)
 
-        log.info(f"🚀 Buzzer initialized | platform={platform} | keywords={keywords} | dry_run={dry_run}")
+        log.info(
+            f"🚀 Buzzer initialized | platform={platform} | keywords={keywords} | dry_run={dry_run}"
+        )
 
     def _random_delay(self, label: str = "next action"):
         """Sleep a random human-like delay between actions."""
         delay = random.randint(MIN_DELAY_SEC, MAX_DELAY_SEC)
-        mins  = delay // 60
-        secs  = delay % 60
+        mins = delay // 60
+        secs = delay % 60
         log.info(f"⏳ Waiting {mins}m {secs}s before {label}...")
         if not self.dry_run:
             time.sleep(delay)
@@ -389,15 +424,21 @@ class Buzzer:
         # Engagement velocity score (more likes/comments = more interesting)
         score = post.get("likes", 0) + post.get("comments", 0) * 3
 
-        if not self.history.already_liked(post["id"]) and self.history.can_like(self.max_likes_day):
+        if not self.history.already_liked(post["id"]) and self.history.can_like(
+            self.max_likes_day
+        ):
             if score > 0:
                 engagement["like"] = True
 
-        if not self.history.already_commented(post["id"]) and self.history.can_comment(self.max_comments_day):
+        if not self.history.already_commented(post["id"]) and self.history.can_comment(
+            self.max_comments_day
+        ):
             if score > 20:  # Only comment on posts with decent engagement
                 engagement["comment"] = True
 
-        if not self.history.already_followed(post["author_id"]) and self.history.can_follow(self.max_follows_day):
+        if not self.history.already_followed(
+            post["author_id"]
+        ) and self.history.can_follow(self.max_follows_day):
             if score > 50:  # Follow higher-engagement accounts
                 engagement["follow"] = True
 
@@ -409,7 +450,9 @@ class Buzzer:
         engagement = self._should_engage(post)
 
         if not any(engagement.values()):
-            log.info(f"  ⏭️  Skipping post {post['id']} (already engaged or limits reached)")
+            log.info(
+                f"  ⏭️  Skipping post {post['id']} (already engaged or limits reached)"
+            )
             return
 
         # Like
@@ -471,7 +514,9 @@ class Buzzer:
         log.info(f"  Comments today: {stats_after['daily_comments']}")
         log.info(f"  Follows today:  {stats_after['daily_follows']}")
 
-    def run_continuous(self, cycle_interval_hours: float = 2.0, posts_per_keyword: int = 10):
+    def run_continuous(
+        self, cycle_interval_hours: float = 2.0, posts_per_keyword: int = 10
+    ):
         """Run continuous engagement cycles with hourly intervals."""
         log.info(f"🔁 Running continuous mode (cycle every {cycle_interval_hours}h)")
         while True:
@@ -483,22 +528,26 @@ class Buzzer:
 
 # ─── CLI Entry Point ──────────────────────────────────────────────────────────
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Buzzer — Strategic social media engagement bot"
     )
     parser.add_argument(
-        "--keywords", "-k",
+        "--keywords",
+        "-k",
         help="Comma-separated list of keywords/hashtags to monitor",
     )
     parser.add_argument(
-        "--platform", "-p",
+        "--platform",
+        "-p",
         default="twitter",
         choices=["twitter", "instagram", "tiktok", "linkedin"],
         help="Target platform (default: twitter)",
     )
     parser.add_argument(
-        "--config", "-c",
+        "--config",
+        "-c",
         help="Path to JSON config file",
     )
     parser.add_argument(
