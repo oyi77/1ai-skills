@@ -6,20 +6,22 @@ Modes:
   - format_sweep: same product+style, all 4 formats
   - custom: specific list of (category, style, format)
 """
+
 import os, json, asyncio, time, base64, io
 import urllib.request
 import subprocess
 from PIL import Image
 
-NVIDIA_KEY    = os.environ.get("NVIDIA_API_KEY")
-BYTEPLUS_KEY  = os.environ.get("BYTEPLUS_API_KEY")
+NVIDIA_KEY = os.environ.get("NVIDIA_API_KEY")
+BYTEPLUS_KEY = os.environ.get("BYTEPLUS_API_KEY")
 BYTEPLUS_BASE = "https://ark.ap-southeast.bytepluses.com/api/v3"
-FFMPEG        = "/home/linuxbrew/.linuxbrew/bin/ffmpeg"
+FFMPEG = "/home/linuxbrew/.linuxbrew/bin/ffmpeg"
 
 import sys
+
 sys.path.insert(0, os.path.dirname(__file__))
 from prompt_library import get_prompt, STYLES, FORMATS
-from cost_dashboard  import log_cost, estimate_generation_cost
+from cost_dashboard import log_cost, estimate_generation_cost
 
 
 def estimate_batch(image_path: str, variations: list) -> dict:
@@ -34,7 +36,7 @@ def estimate_batch(image_path: str, variations: list) -> dict:
         "count": len(variations),
         "total_usd": round(total_usd, 4),
         "total_idr": round(total_usd * 16300),
-        "breakdown": breakdown
+        "breakdown": breakdown,
     }
 
 
@@ -45,13 +47,17 @@ def generate_image_for_batch(prompt: str, model: str, idx: int, output_dir: str)
         return out_path
 
     if "sd3" in model or "stable-diffusion-3" in model:
-        url  = "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium"
-        key  = "image"
+        url = "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium"
+        key = "image"
     else:
-        url  = "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.1-dev"
-        key  = None
+        url = "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.1-dev"
+        key = None
 
-    headers = {"Authorization": f"Bearer {NVIDIA_KEY}", "Content-Type": "application/json", "Accept": "application/json"}
+    headers = {
+        "Authorization": f"Bearer {NVIDIA_KEY}",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
     payload = json.dumps({"prompt": prompt}).encode()
 
     try:
@@ -59,8 +65,8 @@ def generate_image_for_batch(prompt: str, model: str, idx: int, output_dir: str)
         with urllib.request.urlopen(req, timeout=90) as resp:
             data = json.loads(resp.read())
 
-        artifact   = data.get("artifacts", [{}])[0] if not key else {}
-        b64        = data.get("image") if key else artifact.get("base64", "")
+        artifact = data.get("artifacts", [{}])[0] if not key else {}
+        b64 = data.get("image") if key else artifact.get("base64", "")
         finish_rsn = artifact.get("finishReason", "")
 
         # Flux content-filter: returns 6KB black image + finishReason=CONTENT_FILTERED
@@ -74,7 +80,9 @@ def generate_image_for_batch(prompt: str, model: str, idx: int, output_dir: str)
         if is_filtered:
             print(f"    ⚠️  Flux filtered ({finish_rsn or 'tiny'}) → SD3 fallback")
             url2 = "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium"
-            req2 = urllib.request.Request(url2, data=payload, headers=headers, method="POST")
+            req2 = urllib.request.Request(
+                url2, data=payload, headers=headers, method="POST"
+            )
             with urllib.request.urlopen(req2, timeout=90) as resp2:
                 data2 = json.loads(resp2.read())
             b64 = data2.get("image", "")
@@ -120,20 +128,33 @@ def submit_i2v_batch(image_path: str, anim_prompt: str, duration: int = 5) -> st
     img_bytes = prepare_image_for_i2v(image_path)
     img_b64 = base64.b64encode(img_bytes).decode()
 
-    payload = json.dumps({
-        "model": "seedance-1-0-lite-i2v-250428",
-        "content": [
-            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}, "role": "first_frame"},
-            {"type": "text", "text": anim_prompt}
-        ],
-        "duration": min(duration, 10),
-        "seed": -1
-        # ratio removed — image already is 9:16
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": "seedance-1-0-lite-i2v-250428",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"},
+                    "role": "first_frame",
+                },
+                {"type": "text", "text": anim_prompt},
+            ],
+            "duration": min(duration, 10),
+            "seed": -1,
+            # ratio removed — image already is 9:16
+        }
+    ).encode()
 
-    headers = {"Authorization": f"Bearer {BYTEPLUS_KEY}", "Content-Type": "application/json"}
-    req = urllib.request.Request(f"{BYTEPLUS_BASE}/contents/generations/tasks",
-                                  data=payload, headers=headers, method="POST")
+    headers = {
+        "Authorization": f"Bearer {BYTEPLUS_KEY}",
+        "Content-Type": "application/json",
+    }
+    req = urllib.request.Request(
+        f"{BYTEPLUS_BASE}/contents/generations/tasks",
+        data=payload,
+        headers=headers,
+        method="POST",
+    )
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.loads(resp.read()).get("id")
@@ -148,10 +169,10 @@ def poll_all_tasks(task_map: dict, output_dir: str, timeout: int = 300) -> dict:
     task_map: {idx: (task_id, duration)}
     Returns: {idx: video_path}
     """
-    results    = {}
-    pending    = dict(task_map)
+    results = {}
+    pending = dict(task_map)
     start_time = time.time()
-    headers    = {"Authorization": f"Bearer {BYTEPLUS_KEY}"}
+    headers = {"Authorization": f"Bearer {BYTEPLUS_KEY}"}
 
     print(f"  ⏳ Polling {len(pending)} I2V tasks...")
     while pending and (time.time() - start_time) < timeout:
@@ -160,19 +181,34 @@ def poll_all_tasks(task_map: dict, output_dir: str, timeout: int = 300) -> dict:
         for idx, (task_id, duration) in pending.items():
             try:
                 req = urllib.request.Request(
-                    f"{BYTEPLUS_BASE}/contents/generations/tasks/{task_id}", headers=headers)
+                    f"{BYTEPLUS_BASE}/contents/generations/tasks/{task_id}",
+                    headers=headers,
+                )
                 with urllib.request.urlopen(req, timeout=15) as resp:
                     data = json.loads(resp.read())
                 status = data.get("status")
                 if status == "succeeded":
-                    vid_url  = data["content"]["video_url"]
+                    vid_url = data["content"]["video_url"]
                     tmp_path = os.path.join(output_dir, f"batch_{idx:02d}_raw.mp4")
                     out_path = os.path.join(output_dir, f"batch_{idx:02d}_video.mp4")
                     urllib.request.urlretrieve(vid_url, tmp_path)
                     # Loop to target duration
-                    subprocess.run([FFMPEG, "-y", "-stream_loop", "-1", "-i", tmp_path,
-                                    "-t", str(duration), "-c", "copy", out_path],
-                                   capture_output=True)
+                    subprocess.run(
+                        [
+                            FFMPEG,
+                            "-y",
+                            "-stream_loop",
+                            "-1",
+                            "-i",
+                            tmp_path,
+                            "-t",
+                            str(duration),
+                            "-c",
+                            "copy",
+                            out_path,
+                        ],
+                        capture_output=True,
+                    )
                     results[idx] = out_path
                     log_cost("byteplus_lite", f"batch_i2v_{idx}")
                     print(f"    Variation {idx} ✅")
@@ -195,10 +231,10 @@ async def run_batch(
     category: str,
     product_desc: str,
     output_dir: str,
-    mode: str = "style_sweep",          # style_sweep | format_sweep | custom
-    custom_variations: list = None,      # [(cat, style, fmt), ...]
+    mode: str = "style_sweep",  # style_sweep | format_sweep | custom
+    custom_variations: list = None,  # [(cat, style, fmt), ...]
     chat_id: str = "batch",
-    dry_run: bool = False
+    dry_run: bool = False,
 ) -> dict:
     """
     Main batch runner.
@@ -210,13 +246,19 @@ async def run_batch(
     if mode == "style_sweep":
         variations = [(category, style, "foto") for style in STYLES.keys()]
     elif mode == "format_sweep":
-        variations = [(category, "dark_moody", fmt) for fmt in FORMATS.keys() if fmt != "tiktok_60s"]
+        variations = [
+            (category, "dark_moody", fmt)
+            for fmt in FORMATS.keys()
+            if fmt != "tiktok_60s"
+        ]
     else:
         variations = custom_variations or []
 
     # Estimate
     estimate = estimate_batch(image_path, variations)
-    print(f"\n📦 Batch: {estimate['count']} variations | Est cost: ${estimate['total_usd']} (~Rp {estimate['total_idr']:,})")
+    print(
+        f"\n📦 Batch: {estimate['count']} variations | Est cost: ${estimate['total_usd']} (~Rp {estimate['total_idr']:,})"
+    )
 
     if dry_run:
         return {"estimate": estimate, "variations": variations}
@@ -229,7 +271,11 @@ async def run_batch(
         img_path = generate_image_for_batch(
             config["image_prompt"], config["image_model"], i, output_dir
         )
-        images[i] = {"image": img_path, "config": config, "variation": (cat, style, fmt)}
+        images[i] = {
+            "image": img_path,
+            "config": config,
+            "variation": (cat, style, fmt),
+        }
         print(f"  [{i+1}/{len(variations)}] {style} ✅")
 
     # Step 2: Submit all I2V tasks at once
@@ -249,14 +295,16 @@ async def run_batch(
     results = []
     for i, data in images.items():
         cat, style, fmt = data["variation"]
-        results.append({
-            "idx": i + 1,
-            "style": style,
-            "format": fmt,
-            "image": data["image"],
-            "video": video_results.get(i),
-            "status": "✅" if video_results.get(i) else "❌"
-        })
+        results.append(
+            {
+                "idx": i + 1,
+                "style": style,
+                "format": fmt,
+                "image": data["image"],
+                "video": video_results.get(i),
+                "status": "✅" if video_results.get(i) else "❌",
+            }
+        )
 
     success = sum(1 for r in results if r["video"])
     print(f"\n✅ Batch complete! {success}/{len(variations)} successful")
@@ -272,7 +320,7 @@ async def run_batch(
         "total": len(variations),
         "estimate": estimate,
         "manifest": manifest,
-        "output_dir": output_dir
+        "output_dir": output_dir,
     }
 
 
@@ -287,10 +335,16 @@ def build_batch_options_message(category: str) -> tuple[str, list]:
     )
     buttons = [
         [
-            {"text": "🎨 Style Sweep (5 variasi)", "callback_data": f"batch:style:{category}"},
-            {"text": "📐 Format Sweep (3 variasi)", "callback_data": f"batch:format:{category}"},
+            {
+                "text": "🎨 Style Sweep (5 variasi)",
+                "callback_data": f"batch:style:{category}",
+            },
+            {
+                "text": "📐 Format Sweep (3 variasi)",
+                "callback_data": f"batch:format:{category}",
+            },
         ],
-        [{"text": "❌ Batal", "callback_data": "batch:cancel"}]
+        [{"text": "❌ Batal", "callback_data": "batch:cancel"}],
     ]
     return text, buttons
 

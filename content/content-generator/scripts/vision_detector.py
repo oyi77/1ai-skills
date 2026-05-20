@@ -38,24 +38,29 @@ Respond ONLY with this JSON (no markdown, no explanation):
   "reason": "1 sentence why you chose this category"
 }}"""
 
-    payload = json.dumps({
-        "model": "meta/llama-3.2-11b-vision-instruct",
-        "messages": [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}},
-                    {"type": "text", "text": prompt}
-                ]
-            }
-        ],
-        "max_tokens": 400,
-        "temperature": 0.1
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": "meta/llama-3.2-11b-vision-instruct",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"},
+                        },
+                        {"type": "text", "text": prompt},
+                    ],
+                }
+            ],
+            "max_tokens": 400,
+            "temperature": 0.1,
+        }
+    ).encode()
 
     headers = {
         "Authorization": f"Bearer {NVIDIA_KEY}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
 
     url = "https://integrate.api.nvidia.com/v1/chat/completions"
@@ -77,12 +82,13 @@ Respond ONLY with this JSON (no markdown, no explanation):
             "product_desc": "product",
             "product_name": "Unknown product",
             "confidence": "low",
-            "reason": f"Could not analyze: {str(e)}"
+            "reason": f"Could not analyze: {str(e)}",
         }
 
 
 if __name__ == "__main__":
     import sys
+
     if len(sys.argv) > 1:
         result = detect_product(sys.argv[1])
         print(json.dumps(result, indent=2))

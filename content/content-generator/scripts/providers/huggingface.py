@@ -9,7 +9,6 @@ from typing import Any, Dict, Optional
 
 from .base import AIProvider, ProviderType, GenerationResult
 
-
 DEFAULT_HF_BASE_URL = "https://api-inference.huggingface.co"
 
 DEFAULT_IMAGE_MODEL = "black-forest-labs/FLUX.1-schnell"

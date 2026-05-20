@@ -58,7 +58,9 @@ class FFmpegSlideshowProvider(AIProvider):
 
         if not images:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": "No images provided for slideshow"},
             )
 
@@ -66,13 +68,17 @@ class FFmpegSlideshowProvider(AIProvider):
         valid_images = [img for img in images if os.path.isfile(img)]
         if not valid_images:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": "No valid image files found"},
             )
 
         output_path = kwargs.get("output_path")
         if not output_path:
-            output_dir = Path(__file__).resolve().parents[4] / "output" / "ffmpeg_slideshow"
+            output_dir = (
+                Path(__file__).resolve().parents[4] / "output" / "ffmpeg_slideshow"
+            )
             output_dir.mkdir(parents=True, exist_ok=True)
             output_path = str(output_dir / f"slideshow_{int(time.time())}.mp4")
 
@@ -85,24 +91,47 @@ class FFmpegSlideshowProvider(AIProvider):
         try:
             if model == "slideshow-kenburns":
                 cmd = self._build_kenburns_cmd(
-                    valid_images, output_path, duration_per, width, height, fps, audio_path
+                    valid_images,
+                    output_path,
+                    duration_per,
+                    width,
+                    height,
+                    fps,
+                    audio_path,
                 )
             elif model == "slideshow-crossfade":
                 cmd = self._build_crossfade_cmd(
-                    valid_images, output_path, duration_per, width, height, fps, audio_path
+                    valid_images,
+                    output_path,
+                    duration_per,
+                    width,
+                    height,
+                    fps,
+                    audio_path,
                 )
             else:
                 cmd = self._build_simple_cmd(
-                    valid_images, output_path, duration_per, width, height, fps, audio_path
+                    valid_images,
+                    output_path,
+                    duration_per,
+                    width,
+                    height,
+                    fps,
+                    audio_path,
                 )
 
             result = subprocess.run(
-                cmd, capture_output=True, text=True, timeout=300,
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=300,
             )
 
             if result.returncode != 0:
                 return GenerationResult(
-                    success=False, provider=self.provider_name, model=model,
+                    success=False,
+                    provider=self.provider_name,
+                    model=model,
                     metadata={"error": result.stderr[:500]},
                 )
 
@@ -121,18 +150,20 @@ class FFmpegSlideshowProvider(AIProvider):
 
         except subprocess.TimeoutExpired:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": "FFmpeg render timed out (5min)"},
             )
         except Exception as e:
             return GenerationResult(
-                success=False, provider=self.provider_name, model=model,
+                success=False,
+                provider=self.provider_name,
+                model=model,
                 metadata={"error": str(e)},
             )
 
-    def _build_kenburns_cmd(
-        self, images, output, dur, w, h, fps, audio
-    ) -> list[str]:
+    def _build_kenburns_cmd(self, images, output, dur, w, h, fps, audio) -> list[str]:
         """Ken Burns zoom/pan effect on each image."""
         # Create a concat file for input
         concat_file = self._write_concat_file(images, dur)
@@ -144,22 +175,33 @@ class FFmpegSlideshowProvider(AIProvider):
         )
 
         cmd = [
-            "ffmpeg", "-y",
-            "-f", "concat", "-safe", "0", "-i", concat_file,
-            "-filter_complex", filter_complex,
-            "-map", "[v]",
-            "-c:v", "libx264", "-preset", "fast",
-            "-pix_fmt", "yuv420p",
-            "-t", str(dur * len(images)),
+            "ffmpeg",
+            "-y",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            concat_file,
+            "-filter_complex",
+            filter_complex,
+            "-map",
+            "[v]",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-pix_fmt",
+            "yuv420p",
+            "-t",
+            str(dur * len(images)),
         ]
         if audio and os.path.isfile(audio):
             cmd.extend(["-i", audio, "-map", "1:a", "-c:a", "aac", "-shortest"])
         cmd.append(output)
         return cmd
 
-    def _build_crossfade_cmd(
-        self, images, output, dur, w, h, fps, audio
-    ) -> list[str]:
+    def _build_crossfade_cmd(self, images, output, dur, w, h, fps, audio) -> list[str]:
         """Simple crossfade transitions between images."""
         inputs = []
         for img in images:
@@ -172,43 +214,64 @@ class FFmpegSlideshowProvider(AIProvider):
         else:
             parts = []
             for i in range(n):
-                parts.append(f"[{i}:v]scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2,setsar=1[s{i}]")
+                parts.append(
+                    f"[{i}:v]scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2,setsar=1[s{i}]"
+                )
 
             xfade_parts = []
             prev = "s0"
             for i in range(1, n):
                 out = f"x{i}" if i < n - 1 else "v"
                 offset = i * dur - 1  # 1 second overlap
-                xfade_parts.append(f"[{prev}][s{i}]xfade=transition=fade:duration=1:offset={offset}[{out}]")
+                xfade_parts.append(
+                    f"[{prev}][s{i}]xfade=transition=fade:duration=1:offset={offset}[{out}]"
+                )
                 prev = out
 
             filter_str = ";".join(parts + xfade_parts)
 
         cmd = [
-            "ffmpeg", "-y",
+            "ffmpeg",
+            "-y",
             *inputs,
-            "-filter_complex", filter_str,
-            "-map", "[v]",
-            "-c:v", "libx264", "-preset", "fast",
-            "-pix_fmt", "yuv420p",
+            "-filter_complex",
+            filter_str,
+            "-map",
+            "[v]",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-pix_fmt",
+            "yuv420p",
         ]
         if audio and os.path.isfile(audio):
             cmd.extend(["-i", audio, "-map", f"{n}:a", "-c:a", "aac", "-shortest"])
         cmd.append(output)
         return cmd
 
-    def _build_simple_cmd(
-        self, images, output, dur, w, h, fps, audio
-    ) -> list[str]:
+    def _build_simple_cmd(self, images, output, dur, w, h, fps, audio) -> list[str]:
         """Simple concatenation with no transitions."""
         concat_file = self._write_concat_file(images, dur)
         cmd = [
-            "ffmpeg", "-y",
-            "-f", "concat", "-safe", "0", "-i", concat_file,
-            "-vf", f"scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2",
-            "-c:v", "libx264", "-preset", "fast",
-            "-pix_fmt", "yuv420p",
-            "-r", str(fps),
+            "ffmpeg",
+            "-y",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            concat_file,
+            "-vf",
+            f"scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-pix_fmt",
+            "yuv420p",
+            "-r",
+            str(fps),
         ]
         if audio and os.path.isfile(audio):
             cmd.extend(["-i", audio, "-c:a", "aac", "-shortest"])
@@ -229,13 +292,18 @@ class FFmpegSlideshowProvider(AIProvider):
     async def is_available(self) -> bool:
         try:
             result = subprocess.run(
-                ["ffmpeg", "-version"], capture_output=True, text=True, timeout=5,
+                ["ffmpeg", "-version"],
+                capture_output=True,
+                text=True,
+                timeout=5,
             )
             return result.returncode == 0
         except Exception:
             return False
 
-    def get_cost_estimate(self, prompt: str, model: Optional[str] = None, **kwargs) -> float:
+    def get_cost_estimate(
+        self, prompt: str, model: Optional[str] = None, **kwargs
+    ) -> float:
         return 0.0
 
     def validate_api_key(self) -> bool:

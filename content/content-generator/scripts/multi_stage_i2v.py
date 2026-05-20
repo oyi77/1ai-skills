@@ -55,6 +55,7 @@ HOOK_TEMPLATES = {
     "roommate_living": "My flatmate thinks this style is impossible, so I proved them wrong with this AI living room design",
 }
 
+
 # ── HTTP HELPERS ─────────────────────────────────────────────────────
 def post_json(url, payload, headers):
     data = json.dumps(payload).encode("utf-8")
@@ -63,11 +64,13 @@ def post_json(url, payload, headers):
     with urllib.request.urlopen(req, context=ssl_ctx, timeout=120) as r:
         return json.loads(r.read())
 
+
 def get_json(url, headers):
     req = urllib.request.Request(url, headers=headers, method="GET")
     ssl_ctx = ssl.create_default_context()
     with urllib.request.urlopen(req, context=ssl_ctx, timeout=30) as r:
         return json.loads(r.read())
+
 
 def download_file(url, path, headers=None):
     req = urllib.request.Request(url, headers=headers or {})
@@ -116,7 +119,9 @@ def generate_stage1_images(room_desc: str) -> List[Path]:
 
             artifacts = resp.get("artifacts", [])
             if not artifacts or artifacts[0].get("finishReason") != "SUCCESS":
-                print(f"    ❌ Failed: {artifacts[0].get('finishReason') if artifacts else 'No artifacts'}")
+                print(
+                    f"    ❌ Failed: {artifacts[0].get('finishReason') if artifacts else 'No artifacts'}"
+                )
                 continue
 
             b64 = artifacts[0].get("base64", "")
@@ -166,7 +171,7 @@ def generate_stage2_videos(images: List[Path]) -> List[Dict]:
                 upload_url,
                 data=upload_data,
                 method="POST",
-                headers={"Content-Type": "multipart/form-data"}
+                headers={"Content-Type": "multipart/form-data"},
             )
             with urllib.request.urlopen(upload_req, timeout=60) as r:
                 img_url = r.read().decode("utf-8").strip()
@@ -180,7 +185,10 @@ def generate_stage2_videos(images: List[Path]) -> List[Dict]:
         # Create task with image
         content = [
             {"type": "image_url", "image_url": {"url": img_url}, "role": "first_frame"},
-            {"type": "text", "text": "Cinematic room tour, smooth camera movement, professional lighting"},
+            {
+                "type": "text",
+                "text": "Cinematic room tour, smooth camera movement, professional lighting",
+            },
         ]
 
         payload = {
@@ -248,11 +256,13 @@ def generate_stage2_videos(images: List[Path]) -> List[Dict]:
             size_mb = vid_path.stat().st_size / (1024 * 1024)
             print(f"    ⬇️  Downloaded: {size_mb:.2f}MB")
 
-            videos.append({
-                "path": str(vid_path),
-                "duration": result.get("duration", 5),
-                "video_url": video_url,
-            })
+            videos.append(
+                {
+                    "path": str(vid_path),
+                    "duration": result.get("duration", 5),
+                    "video_url": video_url,
+                }
+            )
 
         except Exception as e:
             print(f"    ❌ Download error: {e}")
@@ -281,11 +291,16 @@ def extract_stage3_last_frames(videos: List[Dict]) -> List[Path]:
 
         cmd = [
             FFMPEG,
-            "-sseof", "+fast",
-            "-i", str(vid_path),
-            "-frames:v", "1",
-            "-q:v", "2",
-            "-update", "1",
+            "-sseof",
+            "+fast",
+            "-i",
+            str(vid_path),
+            "-frames:v",
+            "1",
+            "-q:v",
+            "2",
+            "-update",
+            "1",
             str(frame_path),
         ]
 
@@ -333,7 +348,7 @@ def generate_stage4_scenes(frames: List[Path]) -> List[Dict]:
                 upload_url,
                 data=upload_data,
                 method="POST",
-                headers={"Content-Type": "multipart/form-data"}
+                headers={"Content-Type": "multipart/form-data"},
             )
             with urllib.request.urlopen(upload_req, timeout=60) as r:
                 img_url = r.read().decode("utf-8").strip()
@@ -356,7 +371,10 @@ def generate_stage4_scenes(frames: List[Path]) -> List[Dict]:
 
         content = [
             {"type": "image_url", "image_url": {"url": img_url}, "role": "first_frame"},
-            {"type": "text", "text": f"Cinematic room tour. {scene_prompt}. Professional lighting, smooth transitions"},
+            {
+                "type": "text",
+                "text": f"Cinematic room tour. {scene_prompt}. Professional lighting, smooth transitions",
+            },
         ]
 
         payload = {
@@ -424,11 +442,13 @@ def generate_stage4_scenes(frames: List[Path]) -> List[Dict]:
             size_mb = scene_path.stat().st_size / (1024 * 1024)
             print(f"    ⬇️  Downloaded: {size_mb:.2f}MB")
 
-            scenes.append({
-                "path": str(scene_path),
-                "duration": result.get("duration", 5),
-                "video_url": video_url,
-            })
+            scenes.append(
+                {
+                    "path": str(scene_path),
+                    "duration": result.get("duration", 5),
+                    "video_url": video_url,
+                }
+            )
 
         except Exception as e:
             print(f"    ❌ Download error: {e}")
@@ -453,16 +473,26 @@ def stitch_stage5_final(videos: List[Dict], output_path: Path) -> bool:
 
     cmd = [
         FFMPEG,
-        "-f", "concat",
-        "-safe", "0",
-        "-i", str(concat_file),
-        "-c:v", "libx264",
-        "-c:a", "copy",
-        "-preset", "fast",
-        "-crf", "28",
-        "-t", str(target_duration),
-        "-pix_fmt", "yuv420p",
-        "-r", "24",
+        "-f",
+        "concat",
+        "-safe",
+        "0",
+        "-i",
+        str(concat_file),
+        "-c:v",
+        "libx264",
+        "-c:a",
+        "copy",
+        "-preset",
+        "fast",
+        "-crf",
+        "28",
+        "-t",
+        str(target_duration),
+        "-pix_fmt",
+        "yuv420p",
+        "-r",
+        "24",
         "-y",
         str(output_path),
     ]
@@ -480,8 +510,10 @@ def stitch_stage5_final(videos: List[Dict], output_path: Path) -> bool:
     # Verify duration
     cmd_verify = [
         FFMPEG,
-        "-i", str(output_path),
-        "-f", "null",
+        "-i",
+        str(output_path),
+        "-f",
+        "null",
         "-",
     ]
     verify = subprocess.run(cmd_verify, capture_output=True, text=True)
@@ -501,12 +533,24 @@ def main():
         description="Multi-Stage I2V Video Generator — Larry Playbook Advanced Pipeline"
     )
     parser.add_argument("--room", required=True, choices=list(ROOMS.keys()))
-    parser.add_argument("--hook", default="landlord_kitchen", choices=list(HOOK_TEMPLATES.keys()))
-    parser.add_argument("--skip-stage1", action="store_true", help="Skip image generation")
-    parser.add_argument("--skip-stage2", action="store_true", help="Skip I2V from images")
-    parser.add_argument("--skip-stage3", action="store_true", help="Skip last frame extraction")
-    parser.add_argument("--skip-stage4", action="store_true", help="Skip scene generation")
-    parser.add_argument("--skip-stage5", action="store_true", help="Skip final stitching")
+    parser.add_argument(
+        "--hook", default="landlord_kitchen", choices=list(HOOK_TEMPLATES.keys())
+    )
+    parser.add_argument(
+        "--skip-stage1", action="store_true", help="Skip image generation"
+    )
+    parser.add_argument(
+        "--skip-stage2", action="store_true", help="Skip I2V from images"
+    )
+    parser.add_argument(
+        "--skip-stage3", action="store_true", help="Skip last frame extraction"
+    )
+    parser.add_argument(
+        "--skip-stage4", action="store_true", help="Skip scene generation"
+    )
+    parser.add_argument(
+        "--skip-stage5", action="store_true", help="Skip final stitching"
+    )
     args = parser.parse_args()
 
     print("=" * 70)

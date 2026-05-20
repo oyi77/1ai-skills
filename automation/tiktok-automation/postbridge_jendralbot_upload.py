@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 from datetime import datetime
 
+
 def load_env():
     """Simple .env loader"""
     env_path = Path(__file__).parent.parent.parent / ".env"
@@ -21,6 +22,7 @@ def load_env():
                 if line.strip() and not line.startswith("#"):
                     key, value = line.strip().split("=", 1)
                     os.environ[key] = value
+
 
 # Load environment variables
 load_env()
@@ -44,17 +46,17 @@ PRODUCTS = {
         "hooks": {
             "hook1_shock": {
                 "caption": "GILA! BELANJA DU TETAP BALIK!",
-                "hashtags": "#cashback #belanja #duitbalik #gratis #affiliate #viral #tiktok #fyp"
+                "hashtags": "#cashback #belanja #duitbalik #gratis #affiliate #viral #tiktok #fyp",
             },
             "hook2_problem": {
                 "caption": "BELANJA PASTI HABIS DU?",
-                "hashtags": "#cashbackbelanja #duit #cashback #solusi #affiliate"
+                "hashtags": "#cashbackbelanja #duit #cashback #solusi #affiliate",
             },
             "hook3_solution": {
                 "caption": "Sistem Cashback Otomatis!",
-                "hashtags": "#cashback #affiliate #gratis #viral"
-            }
-        }
+                "hashtags": "#cashback #affiliate #gratis #viral",
+            },
+        },
     },
     "guru_pintar_ai": {
         "name": "Guru Pintar Ai",
@@ -63,17 +65,17 @@ PRODUCTS = {
         "hooks": {
             "hook1_shock": {
                 "caption": "RAHASIA AI UNTUK GURU MODERN! 🤫",
-                "hashtags": "#guru #pendidikan #ai #edukasi #guruai #panduan #teacher #viral"
+                "hashtags": "#guru #pendidikan #ai #edukasi #guruai #panduan #teacher #viral",
             },
             "hook2_problem": {
                 "caption": "GURU PINTER TAPI NGGAK KENA AI?",
-                "hashtags": "#guru #gurupintar #education #gurukai"
+                "hashtags": "#guru #gurupintar #education #gurukai",
             },
             "hook3_solution": {
                 "caption": "GURU PINTAR AI - 50+ template, auto-grading!",
-                "hashtags": "#guru #gurupintar #education #ai #edukasi"
-            }
-        }
+                "hashtags": "#guru #gurupintar #education #ai #edukasi",
+            },
+        },
     },
     "studio_marketplace_pro": {
         "name": "Studio Marketplace Pro",
@@ -82,17 +84,17 @@ PRODUCTS = {
         "hooks": {
             "hook1_shock": {
                 "caption": "BIKIN PRODUK AI SEHARI JADI! 🚀",
-                "hashtags": "#marketplace #produkai #jualan #jualan #bisnisonline #affiliate #dropship"
+                "hashtags": "#marketplace #produkai #jualan #jualan #bisnisonline #affiliate #dropship",
             },
             "hook2_problem": {
                 "caption": "PENGEN JUAL PRODUK AI TAPI?",
-                "hashtags": "#marketplace #jualan #bisnisonline"
+                "hashtags": "#marketplace #jualan #bisnisonline",
             },
             "hook3_solution": {
                 "caption": "STUDIO MARKETPLACE PRO - 100+ Template!",
-                "hashtags": "#marketplace #jualan"
-            }
-        }
+                "hashtags": "#marketplace #jualan",
+            },
+        },
     },
     "mesin_cetak_kuliner": {
         "name": "Mesin Cetak Bisnis Kulinermu",
@@ -101,17 +103,17 @@ PRODUCTS = {
         "hooks": {
             "hook1_shock": {
                 "caption": "BISNIS KULINER TANPA MODAL BESAR! 🔥",
-                "hashtags": "#kuliner #bisniskuliner #bisnis #jualan #makanan #kulinermu"
+                "hashtags": "#kuliner #bisniskuliner #bisnis #jualan #makanan #kulinermu",
             },
             "hook2_problem": {
                 "caption": "MAU BISNIS KULINER TAPI?",
-                "hashtags": "#kuliner #kuliner #bisnis #jualan #makanan"
+                "hashtags": "#kuliner #kuliner #bisnis #jualan #makanan",
             },
             "hook3_solution": {
                 "caption": "MESIN CETAK BISNIS KULINER!",
-                "hashtags": "#kuliner #bisniskuliner"
-            }
-        }
+                "hashtags": "#kuliner #bisniskuliner",
+            },
+        },
     },
     "ai_content_pro_seller": {
         "name": "AI Content Pro Seller 4K",
@@ -120,17 +122,17 @@ PRODUCTS = {
         "hooks": {
             "hook1_shock": {
                 "caption": "BLOK WRITING? 4000+ KONTEN SIAP PAKAI! 📱",
-                "hashtags": "#contentcreator #viral #tiktok #instagram #youtube #ai #affiliatemarketing"
+                "hashtags": "#contentcreator #viral #tiktok #instagram #youtube #ai #affiliatemarketing",
             },
             "hook2_problem": {
                 "caption": "CONTENT CREATOR SUSAH BUAT KONTEN?",
-                "hashtags": "#contentcreator #viral #tiktok #instagram"
+                "hashtags": "#contentcreator #viral #tiktok #instagram",
             },
             "hook3_solution": {
                 "caption": "AI CONTENT PRO SELLER 4K - 4000+ Template Viral!",
-                "hashtags": "#contentcreator #viral #tiktok #instagram"
-            }
-        }
+                "hashtags": "#contentcreator #viral #tiktok #instagram",
+            },
+        },
     },
     "starter_content_4k": {
         "name": "Starter AI Content 4K",
@@ -139,53 +141,57 @@ PRODUCTS = {
         "hooks": {
             "hook1_shock": {
                 "caption": "MAU KONTEN PAKE? MODAL 49K! 💰",
-                "hashtags": "#contentcreator #pemula #viral #tiktok #affiliatemarketing #beginner"
+                "hashtags": "#contentcreator #pemula #viral #tiktok #affiliatemarketing #beginner",
             },
             "hook2_problem": {
                 "caption": "PENGEN KONTEN TAPI BUDGET MEPEK?",
-                "hashtags": "#contentcreator #pemula #viral #tiktok"
+                "hashtags": "#contentcreator #pemula #viral #tiktok",
             },
             "hook3_solution": {
                 "caption": "STARTER AI CONTENT 4K - 4000+ Templates!",
-                "hashtags": "#contentcreator #pemula #viral #tiktok"
-            }
-        }
-    }
+                "hashtags": "#contentcreator #pemula #viral #tiktok",
+            },
+        },
+    },
 }
+
 
 def get_file_mapping():
     """Map hook frames ke products"""
     mapping = {}
-    
+
     for hook_file in HOOK_FRAMES:
         filename = hook_file.stem  # e.g., "belanja_duit_balik_hook1_shock"
-        
+
         # Parse filename
         parts = filename.split("_")
-        
+
         if len(parts) >= 3:
             product_key = "_".join(parts[:-2])  # Everything except last 2 parts
             hook_type = "_".join(parts[-2:])  # Last 2 parts (e.g., "hook1_shock")
-            
+
             mapping[filename] = {
                 "product": product_key,
                 "hook_type": hook_type,
-                "filepath": hook_file
+                "filepath": hook_file,
             }
-    
+
     return mapping
 
-def upload_to_postbridge(product_key, hook_type, caption, hashtags, affiliate_link, filepath):
+
+def upload_to_postbridge(
+    product_key, hook_type, caption, hashtags, affiliate_link, filepath
+):
     """Upload single hook frame ke PostBridge TikTok API"""
-    
+
     # Build full caption
     full_caption = f"{caption}\n\n{hashtags}\n\n🔗 {affiliate_link}"
-    
+
     print(f"\n📤 Uploading: {filepath.name}")
     print(f"   Product: {product_key}")
     print(f"   Caption: {caption}")
     print(f"   Hashtags: {hashtags}")
-    
+
     # Prepare payload untuk PostBridge API
     payload = {
         "platform": "tiktok",
@@ -193,114 +199,109 @@ def upload_to_postbridge(product_key, hook_type, caption, hashtags, affiliate_li
         "media": {
             "type": "image",
             "format": "vertical",  # HOOK FRAMES 9:16
-            "url": None  # Akan diupload sebagai file
+            "url": None,  # Akan diupload sebagai file
         },
         "metadata": {
             "campaign": "jendralbot_postbridge_upload",
             "product": product_key,
             "hook_type": hook_type,
-            "affiliate_link": affiliate_link
-        }
+            "affiliate_link": affiliate_link,
+        },
     }
-    
+
     # Prepare headers
     headers = {
         "Authorization": f"Bearer {POSTBRIDGE_API_KEY}",
-        "Content-Type": "multipart/form-data"  # Untuk file upload
+        "Content-Type": "multipart/form-data",  # Untuk file upload
     }
-    
+
     try:
         # Upload via PostBridge API
         # Note: Need file upload approach
         print(f"   ⏳ Uploading to PostBridge API...")
-        
+
         # Read file
         with open(filepath, "rb") as f:
-            files = {
-                "media": (filepath.name, f, "image/png")
-            }
-            
+            files = {"media": (filepath.name, f, "image/png")}
+
             data_payload = {
                 "platform": "tiktok",
                 "content": full_caption,
-                "type": "image"
+                "type": "image",
             }
-            
+
             response = requests.post(
                 f"{POSTBRIDGE_BASE_URL}/posts",
                 headers={"Authorization": f"Bearer {POSTBRIDGE_API_KEY}"},
                 data=data_payload,
                 files=files,
-                timeout=60
+                timeout=60,
             )
-        
+
         if response.status_code == 200 or response.status_code == 201:
             result = response.json()
             print(f"   ✅ UPLOAD SUKSES!")
             print(f"   Post ID: {result.get('id', 'N/A')}")
-            
+
             return {
                 "success": True,
-                "post_id": result.get('id', 'N/A'),
+                "post_id": result.get("id", "N/A"),
                 "platform": "tiktok",
-                "file": str(filepath)
+                "file": str(filepath),
             }
         else:
             print(f"   ❌ UPLOAD FAILED (Status: {response.status_code})")
             print(f"   Response: {response.text[:200]}")
-            
+
             return {
                 "success": False,
                 "error": f"HTTP {response.status_code}: {response.text[:200]}",
-                "file": str(filepath)
+                "file": str(filepath),
             }
-            
+
     except (requests.RequestException, OSError, ValueError) as e:
         print(f"   ❌ ERROR: {str(e)}")
-        
-        return {
-            "success": False,
-            "error": str(e),
-            "file": str(filepath)
-        }
+
+        return {"success": False, "error": str(e), "file": str(filepath)}
+
 
 def batch_upload_via_postbridge():
     """Upload semua hook frames ke TikTok menggunakan PostBridge API"""
-    
+
     file_mapping = get_file_mapping()
-    
-    print("\n" + "="*80)
+
+    print("\n" + "=" * 80)
     print("🚀 JENDRALBOT - POSTBRIDGE TIKTOK UPLOAD")
-    print("="*80)
+    print("=" * 80)
     print(f"📦 Total hook frames: {len(file_mapping)}")
     print(f"🔑 API Key: {'*' * 10 if POSTBRIDGE_API_KEY else 'NOT SET'}")
-    print("="*80 + "\n")
-    
+    print("=" * 80 + "\n")
+
     results = []
     success_count = 0
-    
+
     for filename, info in file_mapping.items():
         product_key = info["product"]
         hook_type = info["hook_type"]
         filepath = info["filepath"]
-        
+
         # Get product data
         product = PRODUCTS.get(product_key)
         if not product:
             print(f"   ⚠️ Product not found: {product_key}")
             continue
-        
+
         affiliate_link = product["affiliate_link"]
-        
+
         # Get hook data
         hook_data = product["hooks"].get(hook_type)
         if not hook_data:
             print(f"   ⚠️ Hook not found: {hook_type}")
             continue
-        
+
         caption = hook_data["caption"]
         hashtags = hook_data["hashtags"]
-        
+
         # Upload via PostBridge
         result = upload_to_postbridge(
             product_key=product_key,
@@ -308,44 +309,48 @@ def batch_upload_via_postbridge():
             caption=caption,
             hashtags=hashtags,
             affiliate_link=affiliate_link,
-            filepath=filepath
+            filepath=filepath,
         )
-        
+
         results.append(result)
         if result["success"]:
             success_count += 1
-        
+
         # Delay sebelum next upload
         print(f"   ⏳ Waiting 3 seconds...")
         time.sleep(3)
-    
+
     # Summary
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("📊 POSTBRIDGE UPLOAD SUMMARY")
-    print("="*80)
+    print("=" * 80)
     print(f"✅ Successful uploads: {success_count}/{len(results)}")
     print(f"❌ Failed uploads: {len(results) - success_count}/{len(results)}")
-    
+
     if len(results) - success_count > 0:
         print(f"\n⚠️ Failed uploads:")
         for result in results:
             if not result["success"]:
-                print(f"   - {Path(result['file']).name}: {result.get('error', 'Unknown')}")
-    
+                print(
+                    f"   - {Path(result['file']).name}: {result.get('error', 'Unknown')}"
+                )
+
     print("\n✅ POSTBRIDGE UPLOAD COMPLETE!")
     print(f"📱 {success_count} hook frames berhasil di-upload ke TikTok")
     print(f"💰 Siap untuk TRACKING: https://lynk.id/jendralbot\n")
 
+
 def main():
     print("🎯 POSTBRIDGE TIKTOK UPLOAD - JENDRALBOT CAMPAIGN")
     print("🚀 Uploading 18 hook frames ke TikTok using API")
-    
+
     try:
         batch_upload_via_postbridge()
     # Catch all exceptions at the top level to ensure any fatal error is reported before exit
     except Exception as e:
         print(f"\n❌ FATAL ERROR: {str(e)}")
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     main()

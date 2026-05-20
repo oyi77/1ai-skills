@@ -27,7 +27,7 @@ class TushareAPI:
         Args:
             token: Tushare Token，默认从环境变量 TUSHARE_TOKEN 读取
         """
-        self.token = token or os.getenv('TUSHARE_TOKEN')
+        self.token = token or os.getenv("TUSHARE_TOKEN")
         if not self.token:
             raise ValueError(
                 "未找到 Tushare Token。请设置环境变量 TUSHARE_TOKEN 或传入 token 参数。\n"
@@ -41,10 +41,7 @@ class TushareAPI:
     # ==================== 股票数据 ====================
 
     def get_stock_daily(
-        self,
-        ts_code: str,
-        start_date: str,
-        end_date: str
+        self, ts_code: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         """
         查询股票日线行情
@@ -63,11 +60,7 @@ class TushareAPI:
 
         logger.info(f"查询股票日线: {ts_code} ({start_date} ~ {end_date})")
 
-        df = self.pro.daily(
-            ts_code=ts_code,
-            start_date=start_date,
-            end_date=end_date
-        )
+        df = self.pro.daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
 
         if df.empty:
             logger.warning(f"未查询到数据: {ts_code}")
@@ -89,8 +82,7 @@ class TushareAPI:
         logger.info(f"查询股票信息: {ts_code}")
 
         df = self.pro.stock_basic(
-            ts_code=ts_code,
-            fields='ts_code,name,area,industry,market,list_date'
+            ts_code=ts_code, fields="ts_code,name,area,industry,market,list_date"
         )
 
         if df.empty:
@@ -119,10 +111,7 @@ class TushareAPI:
     # ==================== 财务数据 ====================
 
     def get_financial_indicator(
-        self,
-        ts_code: str,
-        start_date: str,
-        end_date: str
+        self, ts_code: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         """
         查询财务指标
@@ -141,18 +130,13 @@ class TushareAPI:
         logger.info(f"查询财务指标: {ts_code} ({start_date} ~ {end_date})")
 
         df = self.pro.fina_indicator(
-            ts_code=ts_code,
-            start_date=start_date,
-            end_date=end_date
+            ts_code=ts_code, start_date=start_date, end_date=end_date
         )
 
         return df
 
     def get_income_statement(
-        self,
-        ts_code: str,
-        start_date: str,
-        end_date: str
+        self, ts_code: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         """
         查询利润表
@@ -170,21 +154,14 @@ class TushareAPI:
 
         logger.info(f"查询利润表: {ts_code} ({start_date} ~ {end_date})")
 
-        df = self.pro.income(
-            ts_code=ts_code,
-            start_date=start_date,
-            end_date=end_date
-        )
+        df = self.pro.income(ts_code=ts_code, start_date=start_date, end_date=end_date)
 
         return df
 
     # ==================== 指数数据 ====================
 
     def get_index_daily(
-        self,
-        ts_code: str,
-        start_date: str,
-        end_date: str
+        self, ts_code: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         """
         查询指数日线行情
@@ -203,18 +180,12 @@ class TushareAPI:
         logger.info(f"查询指数日线: {ts_code} ({start_date} ~ {end_date})")
 
         df = self.pro.index_daily(
-            ts_code=ts_code,
-            start_date=start_date,
-            end_date=end_date
+            ts_code=ts_code, start_date=start_date, end_date=end_date
         )
 
         return df
 
-    def get_index_weight(
-        self,
-        index_code: str,
-        date: str
-    ) -> pd.DataFrame:
+    def get_index_weight(self, index_code: str, date: str) -> pd.DataFrame:
         """
         查询指数成分权重
 
@@ -229,20 +200,14 @@ class TushareAPI:
 
         logger.info(f"查询指数成分: {index_code} {date}")
 
-        df = self.pro.index_weight(
-            index_code=index_code,
-            trade_date=date
-        )
+        df = self.pro.index_weight(index_code=index_code, trade_date=date)
 
         return df
 
     # ==================== 批量查询 ====================
 
     def batch_query(
-        self,
-        ts_codes: List[str],
-        start_date: str,
-        end_date: str
+        self, ts_codes: List[str], start_date: str, end_date: str
     ) -> Dict[str, pd.DataFrame]:
         """
         批量查询多只股票
@@ -276,10 +241,7 @@ class TushareAPI:
     # ==================== 数据导出 ====================
 
     def export_data(
-        self,
-        df: pd.DataFrame,
-        output_file: str,
-        format: str = 'csv'
+        self, df: pd.DataFrame, output_file: str, format: str = "csv"
     ) -> bool:
         """
         导出数据到文件
@@ -293,11 +255,11 @@ class TushareAPI:
             bool: 是否导出成功
         """
         try:
-            if format == 'csv':
+            if format == "csv":
                 df.to_csv(output_file, index=False)
-            elif format == 'json':
-                df.to_json(output_file, orient='records', indent=2)
-            elif format == 'excel':
+            elif format == "json":
+                df.to_json(output_file, orient="records", indent=2)
+            elif format == "excel":
                 df.to_excel(output_file, index=False)
             else:
                 raise ValueError(f"不支持的格式: {format}")
@@ -322,8 +284,8 @@ class TushareAPI:
         Returns:
             str: YYYYMMDD 格式的日期
         """
-        if '-' in date_str:
-            return date_str.replace('-', '')
+        if "-" in date_str:
+            return date_str.replace("-", "")
         return date_str
 
 

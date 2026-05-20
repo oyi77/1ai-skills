@@ -35,14 +35,19 @@ def cmd_search(query: str, limit: int = 5) -> None:
     try:
         import chromadb
     except ImportError:
-        print("ERROR: chromadb not installed. Run: pip install chromadb", file=sys.stderr)
+        print(
+            "ERROR: chromadb not installed. Run: pip install chromadb", file=sys.stderr
+        )
         sys.exit(1)
 
     client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
     try:
         coll = client.get_collection(COLLECTION_NAME)
     except Exception as e:
-        print(f"ERROR: Could not open collection '{COLLECTION_NAME}': {e}", file=sys.stderr)
+        print(
+            f"ERROR: Could not open collection '{COLLECTION_NAME}': {e}",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     results = coll.query(
@@ -60,7 +65,7 @@ def cmd_search(query: str, limit: int = 5) -> None:
         print("No results found.")
         return
 
-    print(f"Search results for: \"{query}\"\n")
+    print(f'Search results for: "{query}"\n')
     for i, (doc_id, doc, meta, dist) in enumerate(zip(ids, docs, metas, dists), 1):
         score = round(1 - dist, 4)  # convert distance to similarity
         file_path = meta.get("file_path", "unknown")
@@ -90,7 +95,10 @@ def cmd_read(path: str) -> None:
         return
 
     if full_path.is_dir():
-        print(f"Error: '{path}' is a directory. Use 'kb list {path}' instead.", file=sys.stderr)
+        print(
+            f"Error: '{path}' is a directory. Use 'kb list {path}' instead.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     content = full_path.read_text(encoding="utf-8")
@@ -109,7 +117,10 @@ def _read_from_chroma(file_path: str) -> None:
     try:
         coll = client.get_collection(COLLECTION_NAME)
     except Exception as e:
-        print(f"ERROR: Could not open collection '{COLLECTION_NAME}': {e}", file=sys.stderr)
+        print(
+            f"ERROR: Could not open collection '{COLLECTION_NAME}': {e}",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     results = coll.get(
@@ -143,8 +154,12 @@ def cmd_write(path: str, content: str) -> None:
     para_roots = {"projects", "areas", "resources", "archives"}
     top_level = clean_path.split("/")[0]
     if top_level not in para_roots and clean_path != "README.md":
-        print(f"WARNING: Path '{clean_path}' is not under a PARA category (projects/areas/resources/archives).")
-        print("Consider placing files under: areas/<topic>/, resources/<topic>/, projects/<name>/")
+        print(
+            f"WARNING: Path '{clean_path}' is not under a PARA category (projects/areas/resources/archives)."
+        )
+        print(
+            "Consider placing files under: areas/<topic>/, resources/<topic>/, projects/<name>/"
+        )
         print()
 
     full_path = kb_dir / clean_path
@@ -221,14 +236,18 @@ def main():
     # kb search
     p_search = subparsers.add_parser("search", help="Semantic search via ChromaDB")
     p_search.add_argument("query", nargs="+", help="Search query")
-    p_search.add_argument("--limit", "-n", type=int, default=5, help="Max results (default: 5)")
+    p_search.add_argument(
+        "--limit", "-n", type=int, default=5, help="Max results (default: 5)"
+    )
 
     # kb read
     p_read = subparsers.add_parser("read", help="Read a file from company-knowledge/")
     p_read.add_argument("path", help="Relative path within company-knowledge/")
 
     # kb write
-    p_write = subparsers.add_parser("write", help="Write/update a file in company-knowledge/")
+    p_write = subparsers.add_parser(
+        "write", help="Write/update a file in company-knowledge/"
+    )
     p_write.add_argument("path", help="Relative path within company-knowledge/")
     p_write.add_argument("content", help="File content (use '-' to read from stdin)")
 

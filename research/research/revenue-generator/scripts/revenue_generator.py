@@ -440,9 +440,7 @@ def generate_playbook_md(categorized: dict, assets: dict) -> str:
             tools = opp.get("tools_needed", [])
             budget = opp.get("budget_needed_idr", 0)
 
-            lines.append(
-                f"{idx}. [{name}] -- Est: IDR {revenue:,.0f}/{period}"
-            )
+            lines.append(f"{idx}. [{name}] -- Est: IDR {revenue:,.0f}/{period}")
             lines.append(f"   Score: {score}")
             if budget > 0:
                 lines.append(f"   Budget needed: IDR {budget:,.0f}")
@@ -478,9 +476,7 @@ def generate_playbook_json(categorized: dict, assets: dict) -> dict:
             "short_term_count": len(categorized.get("short_term", [])),
             "medium_term_count": len(categorized.get("medium_term", [])),
             "skip_count": len(categorized.get("skip", [])),
-            "total_opportunities": sum(
-                len(v) for v in categorized.values()
-            ),
+            "total_opportunities": sum(len(v) for v in categorized.values()),
             "total_immediate_revenue_estimate_idr": sum(
                 o.get("revenue_estimate_idr", 0)
                 for o in categorized.get("immediate", [])
@@ -536,7 +532,9 @@ def main():
     print("[3/6] Scoring and ranking opportunities...")
     scored = score_opportunities(opportunities)
     if scored:
-        print(f"  Top opportunity: {scored[0].get('name', 'N/A')} (score: {scored[0].get('score', 0)})")
+        print(
+            f"  Top opportunity: {scored[0].get('name', 'N/A')} (score: {scored[0].get('score', 0)})"
+        )
     print()
 
     # 4. Categorize

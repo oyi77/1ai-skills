@@ -31,9 +31,11 @@ import requests
 
 # ─── Social Scraper (real web scraping, no API keys) ──────────────────────────
 import sys as _scraper_sys
+
 _scraper_sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 try:
     from scrapers.social_scraper import SocialScraper as _SocialScraper
+
     _SCRAPER_AVAILABLE = True
 except ImportError:
     _SCRAPER_AVAILABLE = False
@@ -41,17 +43,19 @@ except ImportError:
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 BYTEPLUS_API_URL = "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"
-BYTEPLUS_API_KEY = os.environ.get("BYTEPLUS_API_KEY", "REDACTED_BYTEPLUS_API_KEY")
-BYTEPLUS_MODEL   = "seed-1-6-250915"
+BYTEPLUS_API_KEY = os.environ.get(
+    "BYTEPLUS_API_KEY", "REDACTED_BYTEPLUS_API_KEY"
+)
+BYTEPLUS_MODEL = "seed-1-6-250915"
 
-DATA_DIR   = Path(__file__).parent.parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "data"
 QUEUE_FILE = DATA_DIR / "viral_queue.json"
-LOG_FILE   = DATA_DIR / "viral_amplifier.log"
+LOG_FILE = DATA_DIR / "viral_amplifier.log"
 
 # Viral detection thresholds
-VIRAL_VELOCITY_THRESHOLD = 5.0   # engagements per minute to be considered viral
-MIN_TOTAL_ENGAGEMENT     = 50    # minimum total engagements
-COMMENT_QUEUE_SPACING    = 8 * 60  # 8 minutes between queued comments (seconds)
+VIRAL_VELOCITY_THRESHOLD = 5.0  # engagements per minute to be considered viral
+MIN_TOTAL_ENGAGEMENT = 50  # minimum total engagements
+COMMENT_QUEUE_SPACING = 8 * 60  # 8 minutes between queued comments (seconds)
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -70,6 +74,7 @@ log = logging.getLogger("viral_amplifier")
 
 # ─── Viral Detection ──────────────────────────────────────────────────────────
 
+
 class ViralDetector:
     """
     Detects viral posts by measuring engagement velocity.
@@ -79,9 +84,9 @@ class ViralDetector:
     @staticmethod
     def compute_velocity(post: dict) -> float:
         """Compute engagement velocity score for a post."""
-        likes    = post.get("likes", 0)
+        likes = post.get("likes", 0)
         comments = post.get("comments", 0)
-        shares   = post.get("shares", post.get("retweets", 0))
+        shares = post.get("shares", post.get("retweets", 0))
 
         total_engagement = likes + (comments * 2) + (shares * 3)
 
@@ -93,7 +98,9 @@ class ViralDetector:
                     posted_time = datetime.fromisoformat(created_at)
                 else:
                     posted_time = datetime.fromtimestamp(created_at)
-                age_minutes = max(1.0, (datetime.now() - posted_time).total_seconds() / 60)
+                age_minutes = max(
+                    1.0, (datetime.now() - posted_time).total_seconds() / 60
+                )
             except Exception:
                 age_minutes = 60.0  # Default to 1 hour if parse fails
         else:
@@ -103,8 +110,11 @@ class ViralDetector:
         return round(velocity, 2)
 
     @staticmethod
-    def is_viral(post: dict, velocity_threshold: float = VIRAL_VELOCITY_THRESHOLD,
-                 min_engagement: int = MIN_TOTAL_ENGAGEMENT) -> bool:
+    def is_viral(
+        post: dict,
+        velocity_threshold: float = VIRAL_VELOCITY_THRESHOLD,
+        min_engagement: int = MIN_TOTAL_ENGAGEMENT,
+    ) -> bool:
         """Return True if post meets viral criteria."""
         total = post.get("likes", 0) + post.get("comments", 0)
         if total < min_engagement:
@@ -124,6 +134,7 @@ class ViralDetector:
 
 # ─── Comment Queue ────────────────────────────────────────────────────────────
 
+
 class CommentQueue:
     """
     Manages a persistent queue of comments to post on viral content.
@@ -139,7 +150,7 @@ class CommentQueue:
             with open(self.path) as f:
                 return json.load(f)
         return {
-            "queue": [],        # [{"post_id": ..., "comment": ..., "scheduled_at": ..., "posted": bool}]
+            "queue": [],  # [{"post_id": ..., "comment": ..., "scheduled_at": ..., "posted": bool}]
             "last_posted_at": None,
         }
 
@@ -166,9 +177,13 @@ class CommentQueue:
             "added_at": datetime.now().isoformat(),
         }
         self.data["queue"].append(entry)
-        self.data["queue"].sort(key=lambda x: (x["posted"], -x["priority"], x["scheduled_at"]))
+        self.data["queue"].sort(
+            key=lambda x: (x["posted"], -x["priority"], x["scheduled_at"])
+        )
         self._save()
-        log.info(f"📥 Queued comment for post {post_id} at {scheduled_at.strftime('%H:%M:%S')}")
+        log.info(
+            f"📥 Queued comment for post {post_id} at {scheduled_at.strftime('%H:%M:%S')}"
+        )
 
     def _next_available_slot(self) -> datetime:
         """Calculate when next comment can be posted."""
@@ -191,8 +206,10 @@ class CommentQueue:
         """Return comments that are due to be posted now."""
         now = datetime.now()
         return [
-            item for item in self.data["queue"]
-            if not item["posted"] and datetime.fromisoformat(item["scheduled_at"]) <= now
+            item
+            for item in self.data["queue"]
+            if not item["posted"]
+            and datetime.fromisoformat(item["scheduled_at"]) <= now
         ]
 
     def mark_posted(self, post_id: str):
@@ -206,9 +223,9 @@ class CommentQueue:
 
     def status(self) -> dict:
         """Return queue status summary."""
-        total   = len(self.data["queue"])
+        total = len(self.data["queue"])
         pending = sum(1 for i in self.data["queue"] if not i["posted"])
-        done    = total - pending
+        done = total - pending
         return {
             "total": total,
             "pending": pending,
@@ -221,8 +238,7 @@ class CommentQueue:
         cutoff = (datetime.now() - timedelta(days=days)).isoformat()
         before = len(self.data["queue"])
         self.data["queue"] = [
-            i for i in self.data["queue"]
-            if i["added_at"] > cutoff or not i["posted"]
+            i for i in self.data["queue"] if i["added_at"] > cutoff or not i["posted"]
         ]
         removed = before - len(self.data["queue"])
         if removed:
@@ -231,6 +247,7 @@ class CommentQueue:
 
 
 # ─── AI Commenter ─────────────────────────────────────────────────────────────
+
 
 def generate_viral_comment(
     post_content: str,
@@ -289,6 +306,7 @@ Return ONLY the comment text, no quotes or explanation."""
 
 # ─── Repost Logic ─────────────────────────────────────────────────────────────
 
+
 def generate_repost_caption(
     original_content: str,
     original_author: str,
@@ -340,6 +358,7 @@ Return ONLY the caption text."""
 
 import sys as _sys
 from pathlib import Path as _Path
+
 _sys.path.insert(0, str(_Path(__file__).parent.parent.parent))
 from post_bridge_client import PostBridgeClient as _PostBridgeClient
 
@@ -358,10 +377,14 @@ class PostBridgePlatformClient:
         self._accounts = self._pb.get_accounts_by_platform(self.platform)
         self._account_ids = [a["id"] for a in self._accounts]
         if self._account_ids:
-            log.info(f"🔌 PostBridge: {len(self._account_ids)} {self.platform} account(s) connected: "
-                     f"{[a.get('username') for a in self._accounts]}")
+            log.info(
+                f"🔌 PostBridge: {len(self._account_ids)} {self.platform} account(s) connected: "
+                f"{[a.get('username') for a in self._accounts]}"
+            )
         else:
-            log.warning(f"⚠️  PostBridge: no connected {self.platform} accounts — broadcasting to all")
+            log.warning(
+                f"⚠️  PostBridge: no connected {self.platform} accounts — broadcasting to all"
+            )
             self._account_ids = self._pb.get_all_account_ids()
 
     def search_trending(self, niche: str, limit: int = 30) -> list[dict]:
@@ -372,19 +395,27 @@ class PostBridgePlatformClient:
         Falls back to stub data if scraper is unavailable.
         """
         if _SCRAPER_AVAILABLE:
-            log.info(f"[PostBridge] Scraping trending {self.platform} posts in '{niche}' (real data)...")
+            log.info(
+                f"[PostBridge] Scraping trending {self.platform} posts in '{niche}' (real data)..."
+            )
             try:
                 scraper = _SocialScraper()
                 # First try get_trending for the niche category
                 category = niche.lower().replace(" ", "_")
-                posts = scraper.get_trending(platform=self.platform, category=category, limit=limit)
+                posts = scraper.get_trending(
+                    platform=self.platform, category=category, limit=limit
+                )
                 if not posts:
                     # Fall back to keyword search on the niche term itself
-                    log.info(f"[PostBridge] No trending results for category '{category}', trying keyword search...")
+                    log.info(
+                        f"[PostBridge] No trending results for category '{category}', trying keyword search..."
+                    )
                     posts = scraper.search(niche, platform=self.platform, limit=limit)
 
                 if posts:
-                    log.info(f"[PostBridge] Got {len(posts)} real trending posts for '{niche}'")
+                    log.info(
+                        f"[PostBridge] Got {len(posts)} real trending posts for '{niche}'"
+                    )
                     # Ensure created_at is present for velocity computation
                     for p in posts:
                         if "created_at" not in p or not p["created_at"]:
@@ -393,9 +424,13 @@ class PostBridgePlatformClient:
                             p["shares"] = p.get("retweets", 0)
                     return posts
             except Exception as e:
-                log.warning(f"[PostBridge] SocialScraper trending failed: {e} — falling back to stub data")
+                log.warning(
+                    f"[PostBridge] SocialScraper trending failed: {e} — falling back to stub data"
+                )
 
-        log.info(f"[PostBridge] Fetching trending {self.platform} posts in '{niche}' — using stub data (scraper unavailable)")
+        log.info(
+            f"[PostBridge] Fetching trending {self.platform} posts in '{niche}' — using stub data (scraper unavailable)"
+        )
         styles = [
             f"Just realized {niche} is going to change everything in 2025. Thread 🧵",
             f"Controversial take on {niche}: most people are doing it completely wrong.",
@@ -406,34 +441,42 @@ class PostBridgePlatformClient:
         for i in range(limit):
             age_minutes = random.uniform(1, 120)
             created_at = (datetime.now() - timedelta(minutes=age_minutes)).isoformat()
-            likes    = random.randint(10, 10000)
+            likes = random.randint(10, 10000)
             comments = random.randint(5, 1000)
-            shares   = random.randint(0, 500)
-            posts.append({
-                "id": hashlib.md5(f"{niche}-trend-{i}".encode()).hexdigest()[:12],
-                "author_id": f"influencer_{i}",
-                "author_handle": f"@trend_account_{i}",
-                "content": random.choice(styles),
-                "likes": likes,
-                "comments": comments,
-                "shares": shares,
-                "created_at": created_at,
-                "url": f"https://{self.platform}.com/post/{i}",
-            })
+            shares = random.randint(0, 500)
+            posts.append(
+                {
+                    "id": hashlib.md5(f"{niche}-trend-{i}".encode()).hexdigest()[:12],
+                    "author_id": f"influencer_{i}",
+                    "author_handle": f"@trend_account_{i}",
+                    "content": random.choice(styles),
+                    "likes": likes,
+                    "comments": comments,
+                    "shares": shares,
+                    "created_at": created_at,
+                    "url": f"https://{self.platform}.com/post/{i}",
+                }
+            )
         return posts
 
     def comment_post(self, post_id: str, text: str) -> bool:
         """Publish a comment as a new post via Post Bridge POST /posts."""
-        log.info(f"[PostBridge] 💬 Publishing comment on {self.platform}: '{text[:60]}...'")
+        log.info(
+            f"[PostBridge] 💬 Publishing comment on {self.platform}: '{text[:60]}...'"
+        )
         result = self._pb.create_post(
             caption=text,
             account_ids=self._account_ids,
         )
         return "error" not in result
 
-    def repost(self, post_id: str, caption: str = "", media_urls: Optional[list] = None) -> bool:
+    def repost(
+        self, post_id: str, caption: str = "", media_urls: Optional[list] = None
+    ) -> bool:
         """Repost/quote by publishing a new post with the given caption via Post Bridge."""
-        log.info(f"[PostBridge] 🔁 Publishing repost caption on {self.platform}: '{caption[:60]}...'")
+        log.info(
+            f"[PostBridge] 🔁 Publishing repost caption on {self.platform}: '{caption[:60]}...'"
+        )
         result = self._pb.create_post(
             caption=caption,
             account_ids=self._account_ids,
@@ -445,10 +488,12 @@ class PostBridgePlatformClient:
 # Legacy alias
 class MockPlatformClient(PostBridgePlatformClient):
     """Legacy alias — now backed by PostBridgeClient."""
+
     pass
 
 
 # ─── Viral Amplifier Engine ───────────────────────────────────────────────────
+
 
 class ViralAmplifier:
     """Main viral amplification engine."""
@@ -461,20 +506,22 @@ class ViralAmplifier:
         auto_repost: bool = False,
         velocity_threshold: float = VIRAL_VELOCITY_THRESHOLD,
     ):
-        self.niche              = niche
-        self.platform           = platform
-        self.dry_run            = dry_run
-        self.auto_repost        = auto_repost
+        self.niche = niche
+        self.platform = platform
+        self.dry_run = dry_run
+        self.auto_repost = auto_repost
         self.velocity_threshold = velocity_threshold
 
         self.detector = ViralDetector()
-        self.queue    = CommentQueue()
-        self.client   = PostBridgePlatformClient(platform)
+        self.queue = CommentQueue()
+        self.client = PostBridgePlatformClient(platform)
 
         # Cycle through comment styles
         self.comment_styles = deque(["insightful", "question", "agreement", "story"])
 
-        log.info(f"🚀 Viral Amplifier | niche={niche} | platform={platform} | threshold={velocity_threshold}")
+        log.info(
+            f"🚀 Viral Amplifier | niche={niche} | platform={platform} | threshold={velocity_threshold}"
+        )
 
     def _next_comment_style(self) -> str:
         style = self.comment_styles[0]
@@ -487,13 +534,19 @@ class ViralAmplifier:
         posts = self.client.search_trending(self.niche, limit=limit)
 
         ranked = self.detector.rank_posts(posts)
-        viral  = [p for p in ranked if self.detector.is_viral(p, self.velocity_threshold)]
+        viral = [
+            p for p in ranked if self.detector.is_viral(p, self.velocity_threshold)
+        ]
 
-        log.info(f"📊 Found {len(posts)} posts → {len(viral)} viral (velocity ≥ {self.velocity_threshold}/min)")
+        log.info(
+            f"📊 Found {len(posts)} posts → {len(viral)} viral (velocity ≥ {self.velocity_threshold}/min)"
+        )
 
         for post in viral:
             velocity = post["_velocity"]
-            log.info(f"  🔥 Viral: {post['id']} by {post['author_handle']} | velocity={velocity:.1f}/min | likes={post['likes']}")
+            log.info(
+                f"  🔥 Viral: {post['id']} by {post['author_handle']} | velocity={velocity:.1f}/min | likes={post['likes']}"
+            )
 
             # Generate and queue comment
             comment = generate_viral_comment(
@@ -523,10 +576,14 @@ class ViralAmplifier:
                     if not self.dry_run:
                         self.client.repost(post["id"], caption)
                     else:
-                        log.info(f"  [DRY RUN] Would repost {post['id']}: '{caption[:60]}...'")
+                        log.info(
+                            f"  [DRY RUN] Would repost {post['id']}: '{caption[:60]}...'"
+                        )
 
         status = self.queue.status()
-        log.info(f"📥 Queue: {status['pending']} pending | {status['posted']} posted | next slot: {status['next_slot']}")
+        log.info(
+            f"📥 Queue: {status['pending']} pending | {status['posted']} posted | next slot: {status['next_slot']}"
+        )
 
     def process_queue(self):
         """Post any comments that are due."""
@@ -537,7 +594,9 @@ class ViralAmplifier:
 
         log.info(f"📤 Processing {len(due)} due comments...")
         for item in due:
-            log.info(f"  💬 Posting comment on {item['post_id']}: '{item['comment'][:60]}...'")
+            log.info(
+                f"  💬 Posting comment on {item['post_id']}: '{item['comment'][:60]}...'"
+            )
             if not self.dry_run:
                 success = self.client.comment_post(item["post_id"], item["comment"])
                 if success:
@@ -563,20 +622,40 @@ class ViralAmplifier:
 
 # ─── CLI ─────────────────────────────────────────────────────────────────────
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Viral Amplifier — detect and ride viral waves")
+    parser = argparse.ArgumentParser(
+        description="Viral Amplifier — detect and ride viral waves"
+    )
     parser.add_argument("--niche", "-n", required=True, help="Your content niche")
     parser.add_argument(
-        "--platform", "-p",
+        "--platform",
+        "-p",
         default="twitter",
         choices=["twitter", "instagram", "tiktok", "linkedin"],
     )
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--watch", action="store_true", help="Continuously monitor for viral posts")
-    parser.add_argument("--auto-repost", action="store_true", help="Auto-repost extremely viral content")
-    parser.add_argument("--interval", type=float, default=30.0, help="Scan interval in minutes (watch mode)")
-    parser.add_argument("--threshold", type=float, default=VIRAL_VELOCITY_THRESHOLD, help="Viral velocity threshold")
-    parser.add_argument("--queue-status", action="store_true", help="Show queue status and exit")
+    parser.add_argument(
+        "--watch", action="store_true", help="Continuously monitor for viral posts"
+    )
+    parser.add_argument(
+        "--auto-repost", action="store_true", help="Auto-repost extremely viral content"
+    )
+    parser.add_argument(
+        "--interval",
+        type=float,
+        default=30.0,
+        help="Scan interval in minutes (watch mode)",
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        default=VIRAL_VELOCITY_THRESHOLD,
+        help="Viral velocity threshold",
+    )
+    parser.add_argument(
+        "--queue-status", action="store_true", help="Show queue status and exit"
+    )
     args = parser.parse_args()
 
     if args.queue_status:

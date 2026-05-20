@@ -9,7 +9,9 @@ import sys
 try:
     from playwright.sync_api import sync_playwright
 except ImportError:
-    print("[!] playwright not installed. Run: pip install playwright && playwright install chromium")
+    print(
+        "[!] playwright not installed. Run: pip install playwright && playwright install chromium"
+    )
     sys.exit(1)
 
 
@@ -72,15 +74,17 @@ def spy_traffic(domain):
 
             # --- Engagement metrics ---
             # Monthly visits
-            visits_el = page.query_selector('[data-test="total-visits"] .engagement-list__item-value, [class*="engagement-list"] .engagement-list__item-value')
+            visits_el = page.query_selector(
+                '[data-test="total-visits"] .engagement-list__item-value, [class*="engagement-list"] .engagement-list__item-value'
+            )
             if visits_el:
                 result["monthly_visits"] = _parse_number(visits_el.inner_text())
 
             # Try structured selectors for engagement metrics
-            engagement_items = page.query_selector_all('.engagement-list__item')
+            engagement_items = page.query_selector_all(".engagement-list__item")
             for item in engagement_items:
-                label_el = item.query_selector('.engagement-list__item-name')
-                value_el = item.query_selector('.engagement-list__item-value')
+                label_el = item.query_selector(".engagement-list__item-name")
+                value_el = item.query_selector(".engagement-list__item-value")
                 if not label_el or not value_el:
                     continue
                 label = label_el.inner_text().strip().lower()
@@ -126,7 +130,9 @@ def spy_traffic(domain):
             }
 
             # Try structured elements
-            source_items = page.query_selector_all('[class*="traffic-sources"] [class*="item"], [class*="channel-data"]')
+            source_items = page.query_selector_all(
+                '[class*="traffic-sources"] [class*="item"], [class*="channel-data"]'
+            )
             for item in source_items:
                 label_el = item.query_selector('[class*="name"], [class*="label"]')
                 value_el = item.query_selector('[class*="value"], [class*="percent"]')
@@ -149,10 +155,14 @@ def spy_traffic(domain):
                         result["traffic_sources"][key] = m.group(1)
 
             # --- Top countries ---
-            country_items = page.query_selector_all('[class*="countries"] [class*="item"], [data-test*="country"]')
+            country_items = page.query_selector_all(
+                '[class*="countries"] [class*="item"], [data-test*="country"]'
+            )
             for item in country_items[:10]:
                 name_el = item.query_selector('[class*="name"], [class*="country"]')
-                pct_el = item.query_selector('[class*="value"], [class*="percent"], [class*="traffic"]')
+                pct_el = item.query_selector(
+                    '[class*="value"], [class*="percent"], [class*="traffic"]'
+                )
                 if name_el:
                     country = {
                         "name": name_el.inner_text().strip(),
@@ -163,7 +173,10 @@ def spy_traffic(domain):
 
             # Fallback: try to get countries from JSON data in page
             if not result["top_countries"]:
-                country_matches = re.findall(r'"countryName":\s*"([^"]+)"[^}]*?"trafficShare":\s*"?([\d.]+)', content)
+                country_matches = re.findall(
+                    r'"countryName":\s*"([^"]+)"[^}]*?"trafficShare":\s*"?([\d.]+)',
+                    content,
+                )
                 for name, share in country_matches[:10]:
                     result["top_countries"].append({"name": name, "share": f"{share}%"})
 
@@ -177,7 +190,9 @@ def spy_traffic(domain):
 
 def main():
     parser = argparse.ArgumentParser(description="Similarweb traffic spy")
-    parser.add_argument("--domain", required=True, help="Domain to analyze (e.g. berkahkarya.org)")
+    parser.add_argument(
+        "--domain", required=True, help="Domain to analyze (e.g. berkahkarya.org)"
+    )
     args = parser.parse_args()
 
     data = spy_traffic(args.domain)

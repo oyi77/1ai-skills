@@ -14,7 +14,6 @@ from typing import Optional
 
 from .base import AIProvider, ProviderType, GenerationResult
 
-
 # Default Replicate API base URL
 DEFAULT_REPLICATE_BASE_URL = "https://api.replicate.com"
 

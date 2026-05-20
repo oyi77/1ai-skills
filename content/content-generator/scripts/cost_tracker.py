@@ -38,7 +38,9 @@ class CostTracker:
         """
         self.monthly_budget = monthly_budget
         self.provider_costs = provider_costs or self.DEFAULT_COSTS
-        self._usage: dict = {}  # {provider: {"prompt_tokens": int, "completion_tokens": int, "cost": float}}
+        self._usage: dict = (
+            {}
+        )  # {provider: {"prompt_tokens": int, "completion_tokens": int, "cost": float}}
         self._total_cost: float = 0.0
         self._current_month: str = datetime.now().strftime("%Y-%m")
 

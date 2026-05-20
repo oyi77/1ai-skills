@@ -36,7 +36,8 @@ class Cache:
     def _init_db(self) -> None:
         """Initialize the database schema."""
         with sqlite3.connect(self.db_path) as conn:
-            conn.execute("""
+            conn.execute(
+                """
                 CREATE TABLE IF NOT EXISTS cache (
                     key TEXT PRIMARY KEY,
                     value TEXT NOT NULL,
@@ -45,16 +46,23 @@ class Cache:
                     hash TEXT NOT NULL,
                     size INTEGER NOT NULL
                 )
-            """)
-            conn.execute("""
+            """
+            )
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_expires_at ON cache(expires_at)
-            """)
-            conn.execute("""
+            """
+            )
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_hash ON cache(hash)
-            """)
-            conn.execute("""
+            """
+            )
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_created_at ON cache(created_at)
-            """)
+            """
+            )
             conn.commit()
 
     def _get_connection(self) -> sqlite3.Connection:
@@ -244,7 +252,7 @@ class Cache:
                     SUM(size) as total_size
                 FROM cache
                 """,
-                (now,)
+                (now,),
             )
             row = cursor.fetchone()
 
