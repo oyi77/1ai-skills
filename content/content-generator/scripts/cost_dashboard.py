@@ -65,22 +65,29 @@ def log_cost(provider: str, operation: str, chat_id: str = "system",
 
 def get_session_cost(chat_id: str, since_ts: int = None) -> dict:
     """Get cost for a chat session"""
-    query = "SELECT * FROM cost_log WHERE chat_id = ?"
+    # ⚡ Bolt: Use SQL aggregation instead of Python loops
+    base_query = "FROM cost_log WHERE chat_id = ?"
     params = [str(chat_id)]
     if since_ts:
-        query += " AND created_at >= ?"
+        base_query += " AND created_at >= ?"
         params.append(since_ts)
+
     with _conn() as conn:
-        rows = conn.execute(query, params).fetchall()
-    total = sum(r["total_cost"] for r in rows)
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = by_provider.get(r["provider"], 0) + r["total_cost"]
+        summary = conn.execute(f"SELECT SUM(total_cost) as total, COUNT(*) as count {base_query}", params).fetchone()
+        total = summary["total"] or 0
+        count = summary["count"] or 0
+
+        provider_rows = conn.execute(
+            f"SELECT provider, SUM(total_cost) as prov_total {base_query} GROUP BY provider", params
+        ).fetchall()
+
+    by_provider = {r["provider"]: round(r["prov_total"], 4) for r in provider_rows}
+
     return {
         "total_usd": round(total, 4),
         "total_idr": round(total * IDR_RATE),
-        "by_provider": {k: round(v, 4) for k, v in by_provider.items()},
-        "count": len(rows)
+        "by_provider": by_provider,
+        "count": count
     }
 
 
@@ -94,21 +101,26 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     next_mon  = 1 if month == 12 else month + 1
     end       = int(datetime(next_year, next_mon, 1).timestamp())
 
+    # ⚡ Bolt: Use SQL conditional aggregation and SQLite native date() instead of fetching all rows
     with _conn() as conn:
-        rows = conn.execute(
-            "SELECT * FROM cost_log WHERE created_at >= ? AND created_at < ?",
+        summary = conn.execute(
+            "SELECT SUM(total_cost) as total, COUNT(*) as count FROM cost_log WHERE created_at >= ? AND created_at < ?",
+            (start, end)
+        ).fetchone()
+        total = summary["total"] or 0
+        transactions = summary["count"] or 0
+
+        day_rows = conn.execute(
+            "SELECT date(created_at, 'unixepoch', 'localtime') as day, SUM(total_cost) as day_total FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY day",
             (start, end)
         ).fetchall()
+        by_day = {r["day"]: round(r["day_total"], 4) for r in day_rows}
 
-    total = sum(r["total_cost"] for r in rows)
-    by_day = {}
-    for r in rows:
-        day = datetime.fromtimestamp(r["created_at"]).strftime("%Y-%m-%d")
-        by_day[day] = round(by_day.get(day, 0) + r["total_cost"], 4)
-
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = round(by_provider.get(r["provider"], 0) + r["total_cost"], 4)
+        provider_rows = conn.execute(
+            "SELECT provider, SUM(total_cost) as prov_total FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY provider",
+            (start, end)
+        ).fetchall()
+        by_provider = {r["provider"]: round(r["prov_total"], 4) for r in provider_rows}
 
     return {
         "period": f"{year}-{month:02d}",
@@ -116,7 +128,7 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
         "total_idr": round(total * IDR_RATE),
         "by_provider": by_provider,
         "by_day": dict(sorted(by_day.items())),
-        "transactions": len(rows),
+        "transactions": transactions,
         "budget_used_pct": round(total / 100 * 100, 1)  # Assuming $100 budget
     }
 
