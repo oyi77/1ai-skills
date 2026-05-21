@@ -1,17 +1,23 @@
 {
+  "hooks_version": "3.1.0",
   "hooks": {
     "session:start": {
-      "command": "bash .hooks/session-start.sh $PWD",
-      "description": "Detect project type and suggest relevant skills on session start"
+      "command": "bash hooks/session-start.sh $PWD",
+      "description": "Detect project type, suggest skills, check hooks health"
     },
     "pre-commit": {
-      "command": "bash .hooks/pre-commit.sh",
+      "command": "bash hooks/pre-commit.sh",
       "description": "Validate SKILL.md structure before committing"
     },
     "post-task": {
-      "command": "bash .hooks/post-task.sh",
+      "command": "bash hooks/post-task.sh",
       "description": "Log skill performance after task completion"
+    },
+    "auto-evolve": {
+      "tracker": { "type": "PostToolUse", "matcher": "Skill", "script": "hooks/auto-evolve/skill-tracker.js" },
+      "committer": { "type": "PostToolUse", "matcher": "Write|Edit", "script": "hooks/auto-evolve/skill-committer.js" },
+      "feedback": { "type": "UserPromptSubmit", "script": "hooks/auto-evolve/skill-feedback-capture.js" },
+      "evolver": { "type": "SessionEnd", "script": "hooks/auto-evolve/skill-evolver.js" }
     }
-  },
-  "version": "1.0.0"
+  }
 }
