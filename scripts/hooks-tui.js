@@ -259,7 +259,7 @@ async function interactiveSetup(rl) {
   config.auto_push = await confirm(rl, 'Auto-push evolved skills to GitHub?', config.auto_push);
 
   if (config.auto_push) {
-    config.target_repo = await ask(rl, 'Target repo (e.g. oyi77/1ai-skills):', config.target_repo || '');
+    config.target_repo = await ask(rl, 'Target repo (e.g. user/repo):', config.target_repo || '');
   }
 
   // Thresholds
@@ -335,6 +335,27 @@ async function main() {
       console.log(colorize(c.green, '  \u2713 Config saved.'));
       console.log();
       renderConfig(config);
+    }
+
+    // Star/fork prompt
+    const { execSync } = require('child_process');
+    let ghAvailable = false;
+    try { execSync('gh --version', { stdio: 'ignore' }); ghAvailable = true; } catch {}
+
+    console.log();
+    const doStar = await confirm(rl, 'Star & fork oyi77/1ai-skills on GitHub?', false);
+    if (doStar) {
+      if (ghAvailable) {
+        try {
+          execSync('gh repo star oyi77/1ai-skills', { stdio: 'inherit' });
+          execSync('gh repo fork oyi77/1ai-skills --clone=false', { stdio: 'inherit' });
+          console.log(colorize(c.green, '  ✓ Starred & forked!'));
+        } catch {
+          console.log(colorize(c.yellow, '  ! Could not run gh. Visit: github.com/oyi77/1ai-skills'));
+        }
+      } else {
+        console.log(colorize(c.dim, '  gh CLI not found. Visit: github.com/oyi77/1ai-skills'));
+      }
     }
 
     rl.close();

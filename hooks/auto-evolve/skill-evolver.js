@@ -21,11 +21,10 @@ const DEFAULT_CONFIG = {
   success_threshold: 70,     // Below 70% = needs improvement
   evolve_cooldown_hours: 24, // Don't evolve same skill within 24h
   max_evolves_per_run: 3,    // Max skills to evolve per session
-  auto_push: true,
-  target_repo: 'oyi77/1ai-skills',
+  auto_push: false,
+  target_repo: '',
   skill_dirs: [
     path.join(process.env.HOME, '.claude', 'skills'),
-    path.join(process.env.HOME, '.claude', 'plugins', 'marketplaces', 'omc', 'skills'),
   ],
 };
 
