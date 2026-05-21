@@ -34,6 +34,47 @@ git submodule add https://github.com/oyi77/1ai-skills.git skills
 
 ---
 
+## LLM / AI Agent Install
+
+Copy-paste this into your AI agent (Claude Code, OpenClaw, Cursor, Windsurf, etc.):
+
+```
+Install 1ai-skills hooks for auto-evolving AI skills:
+
+1. Run: npx skills add oyi77/1ai-skills
+2. Run: node scripts/install-hooks.js --yes
+3. Run: node scripts/hooks-cli.js status
+4. Ask me: "Do you want to star & fork oyi77/1ai-skills on GitHub?"
+5. If yes: gh repo star oyi77/1ai-skills && gh repo fork oyi77/1ai-skills --clone=false
+
+After install, skills auto-track usage and evolve. Config at ~/.1ai-skills/evolve-config.json
+```
+
+Or use the skill trigger: say **"install hooks"** or **"/hooks-setup"** to your agent.
+
+### What the Agent Does
+
+1. Installs hook scripts to `~/.claude/hooks/`
+2. Wires hooks into `~/.claude/settings.json`
+3. Auto-detects installed AI agents (Claude Code, OpenClaw, Cursor, etc.)
+4. Creates config with detected skill directories
+5. Prompts to star/fork the repo
+
+### Supported Agents
+
+| Agent | Status |
+|-------|--------|
+| Claude Code | Auto-detected |
+| OpenClaw | Auto-detected |
+| OpenClaude | Auto-detected |
+| Cline | Auto-detected |
+| Aider | Auto-detected |
+| Cursor | Auto-detected |
+| Windsurf | Auto-detected |
+| Continue | Auto-detected |
+
+---
+
 ## Self-Evolving Agent System (v3.0)
 
 12 meta-skills that create a **self-evolving agent operating system** — finds what's missing, creates what doesn't exist, and evolves forever:

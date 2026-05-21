@@ -12,6 +12,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const HOME = process.env.HOME || process.env.USERPROFILE;
 const PKG_ROOT = path.resolve(__dirname, '..');
@@ -78,6 +79,85 @@ function saveSettings(settings) {
   fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2) + '\n');
 }
 
+// --- Agent Detection ---
+
+const AI_AGENTS = [
+  {
+    name: 'Claude Code',
+    detect: () => fs.existsSync(path.join(HOME, '.claude')),
+    skillDirs: [path.join(HOME, '.claude', 'skills')],
+    configDir: path.join(HOME, '.claude'),
+  },
+  {
+    name: 'OpenClaw',
+    detect: () => fs.existsSync(path.join(HOME, '.openclaw')),
+    skillDirs: [path.join(HOME, '.openclaw', 'workspace', 'skills')],
+    configDir: path.join(HOME, '.openclaw'),
+  },
+  {
+    name: 'OpenClaude',
+    detect: () => fs.existsSync(path.join(HOME, '.openclaude')),
+    skillDirs: [path.join(HOME, '.openclaude', 'skills')],
+    configDir: path.join(HOME, '.openclaude'),
+  },
+  {
+    name: 'Cline',
+    detect: () => fs.existsSync(path.join(HOME, '.cline')),
+    skillDirs: [path.join(HOME, '.cline', 'skills')],
+    configDir: path.join(HOME, '.cline'),
+  },
+  {
+    name: 'Aider',
+    detect: () => {
+      const aiderPaths = [
+        path.join(HOME, '.aider.conf.yml'),
+        path.join(HOME, '.aider'),
+      ];
+      return aiderPaths.some(p => fs.existsSync(p));
+    },
+    skillDirs: [path.join(HOME, '.aider', 'skills')],
+    configDir: path.join(HOME, '.aider'),
+  },
+  {
+    name: 'Cursor',
+    detect: () => {
+      const cursorPaths = [
+        path.join(HOME, '.cursor'),
+        path.join(HOME, '.config', 'cursor'),
+      ];
+      return cursorPaths.some(p => fs.existsSync(p));
+    },
+    skillDirs: [
+      path.join(HOME, '.cursor', 'skills'),
+      path.join(HOME, '.config', 'cursor', 'skills'),
+    ],
+    configDir: path.join(HOME, '.cursor'),
+  },
+  {
+    name: 'Windsurf',
+    detect: () => fs.existsSync(path.join(HOME, '.windsurf')),
+    skillDirs: [path.join(HOME, '.windsurf', 'skills')],
+    configDir: path.join(HOME, '.windsurf'),
+  },
+  {
+    name: 'Continue',
+    detect: () => fs.existsSync(path.join(HOME, '.continue')),
+    skillDirs: [path.join(HOME, '.continue', 'skills')],
+    configDir: path.join(HOME, '.continue'),
+  },
+  {
+    name: 'Agents Skills',
+    detect: () => fs.existsSync(path.join(HOME, '.agents')),
+    skillDirs: [path.join(HOME, '.agents', 'skills')],
+    configDir: path.join(HOME, '.agents'),
+  },
+];
+
+function detectAgents() {
+  const found = AI_AGENTS.filter(a => a.detect());
+  return { agents: found, names: found.map(a => a.name) };
+}
+
 // --- Main ---
 
 function install() {
@@ -141,6 +221,12 @@ function install() {
   // 4. Create default evolve-config.json
   const configPath = path.join(METRICS_DIR, 'evolve-config.json');
   if (!fs.existsSync(configPath)) {
+    const detected = detectAgents();
+    const skillDirs = detected.agents.flatMap(a => a.skillDirs).filter(d => fs.existsSync(d));
+    // Always include .claude/skills even if not yet created
+    const claudeSkills = path.join(HOME, '.claude', 'skills');
+    if (!skillDirs.includes(claudeSkills)) skillDirs.push(claudeSkills);
+
     const config = {
       min_invocations: 5,
       success_threshold: 70,
@@ -148,14 +234,17 @@ function install() {
       max_evolves_per_run: 3,
       auto_push: false,
       target_repo: '',
-      skill_dirs: [path.join(HOME, '.claude', 'skills')],
+      skill_dirs: skillDirs,
       repo_dir: PKG_ROOT,
       commit_prefix: 'evolve',
       tracking_enabled: true,
       evolve_enabled: true
     };
     fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
-    console.log('[1ai-skills] Created evolve-config.json');
+    console.log(`[1ai-skills] Created evolve-config.json (detected ${detected.agents.length} agent(s))`);
+    for (const agent of detected.agents) {
+      console.log(`  ✓ ${agent.name} — ${agent.skillDirs.join(', ')}`);
+    }
   }
 
   // 5. Init metrics files
@@ -169,6 +258,68 @@ function install() {
   console.log(`[1ai-skills] Version stamp: ${HOOKS_VERSION}`);
 
   console.log('[1ai-skills] Hooks installed successfully');
+
+  // 7. Post-install recommendations
+  console.log('');
+  console.log('╔══════════════════════════════════════════════════╗');
+  console.log('║         Thanks for using 1ai-skills!             ║');
+  console.log('╠══════════════════════════════════════════════════╣');
+  console.log('║                                                  ║');
+  console.log('║  Commands:                                       ║');
+  console.log('║    npm run hooks status    — check status        ║');
+  console.log('║    npm run hooks setup     — interactive config  ║');
+  console.log('║    npm run hooks uninstall — remove hooks        ║');
+  console.log('╚══════════════════════════════════════════════════╝');
+
+  // 8. Star/fork prompt
+  const isCI = process.env.CI || process.env.GITHUB_ACTIONS;
+  const isYes = process.argv.includes('--yes') || process.argv.includes('-y');
+
+  // LLM banner (shown in --yes mode for agents)
+  if (isYes) {
+    console.log('');
+    console.log('[1ai-skills] === LLM INSTALL COMPLETE ===');
+    console.log('[1ai-skills] Hooks active. Skills auto-tracked on use.');
+    console.log('[1ai-skills] Config: ~/.1ai-skills/evolve-config.json');
+    console.log('[1ai-skills] Status: node scripts/hooks-cli.js status');
+    console.log('[1ai-skills] To star/fork: gh repo star oyi77/1ai-skills');
+    console.log('[1ai-skills] ================================');
+  }
+
+  if (!isCI && !isYes && process.stdin.isTTY) {
+    const readline = require('readline');
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    const ghAvailable = hasGhCli();
+
+    console.log('');
+    rl.question('\x1b[36m?\x1b[0m Star & fork oyi77/1ai-skills on GitHub? \x1b[2m[y/N]\x1b[0m ', (answer) => {
+      rl.close();
+      const yes = answer.trim().toLowerCase();
+      if (yes === 'y' || yes === 'yes') {
+        if (ghAvailable) {
+          try {
+            execSync('gh repo star oyi77/1ai-skills', { stdio: 'inherit' });
+            execSync('gh repo fork oyi77/1ai-skills --clone=false', { stdio: 'inherit' });
+            console.log('\x1b[32m✓ Starred & forked!\x1b[0m');
+          } catch {
+            console.log('\x1b[33m! Could not run gh commands. Visit: github.com/oyi77/1ai-skills\x1b[0m');
+          }
+        } else {
+          console.log('\x1b[2mgh CLI not found. Visit: github.com/oyi77/1ai-skills\x1b[0m');
+        }
+      } else {
+        console.log('\x1b[2mSkipped. Visit github.com/oyi77/1ai-skills anytime.\x1b[0m');
+      }
+    });
+  }
+}
+
+// Check if gh CLI available
+function hasGhCli() {
+  try {
+    execSync('gh --version', { stdio: 'ignore' });
+    return true;
+  } catch { return false; }
 }
 
 install();
