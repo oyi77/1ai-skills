@@ -11,10 +11,10 @@ const { execSync } = require('child_process');
 
 const CONFIG_FILE = path.join(process.env.HOME, '.1ai-skills', 'evolve-config.json');
 const DEFAULT_CONFIG = {
-  auto_push: true,
-  target_repo: 'oyi77/1ai-skills',
-  skill_dirs: [path.join(process.env.HOME, '.agents', 'skills')],
-  repo_dir: path.join(process.env.HOME, 'projects', '1ai-skills'),
+  auto_push: false,
+  target_repo: '',
+  skill_dirs: [path.join(process.env.HOME, '.claude', 'skills')],
+  repo_dir: '',
   commit_prefix: 'evolve',
 };
 
