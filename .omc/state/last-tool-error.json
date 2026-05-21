@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"ls ~/.agents/*.json 2>/dev/null\",\"description\":\"Check .agents config files\"}",
-  "error": "Exit code 1",
-  "timestamp": "2026-05-20T23:45:11.801Z",
-  "retry_count": 1
-}
