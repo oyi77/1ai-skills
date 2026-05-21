@@ -4,7 +4,12 @@
   "description": "216 production-ready AI agent skills with self-evolving meta-skills — addyosmani/agent-skills anatomy + anthropics/financial-services workflows",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests needed — skill definitions\""
+    "postinstall": "node scripts/install-hooks.js",
+    "test": "echo \"No tests needed — skill definitions\"",
+    "hooks": "node scripts/hooks-cli.js"
+  },
+  "bin": {
+    "1ai-skills-hooks": "scripts/hooks-cli.js"
   },
   "keywords": [
     "ai",
