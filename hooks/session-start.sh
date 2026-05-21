@@ -33,4 +33,9 @@ if curl -s http://localhost:9099/brain/status > /dev/null 2>&1; then
   echo "[hooks] bk-hub brain detected — loading session-brain skill"
 fi
 
+# Auto-detect hooks health
+if command -v node &> /dev/null; then
+  node "$(dirname "$0")/session-start-detect.js" 2>/dev/null || true
+fi
+
 echo "[hooks] Session start complete. Use /find-skills to discover more capabilities."
