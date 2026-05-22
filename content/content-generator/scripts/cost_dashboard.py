@@ -115,31 +115,42 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     next_mon = 1 if month == 12 else month + 1
     end = int(datetime(next_year, next_mon, 1).timestamp())
 
+    # ⚡ Bolt Optimization: Offloaded manual Python iterations and datatime conversions
+    # to native SQLite aggregations and grouping. This drastically reduces memory overhead
+    # and execution time, especially when fetching thousands of rows.
     with _conn() as conn:
-        rows = conn.execute(
-            "SELECT * FROM cost_log WHERE created_at >= ? AND created_at < ?",
+        # Get total cost and transactions
+        total_row = conn.execute(
+            "SELECT SUM(total_cost) as total, COUNT(*) as count FROM cost_log WHERE created_at >= ? AND created_at < ?",
+            (start, end),
+        ).fetchone()
+
+        total = total_row["total"] if total_row and total_row["total"] is not None else 0
+        transactions = total_row["count"] if total_row else 0
+
+        # Get cost grouped by day using database native functions
+        day_rows = conn.execute(
+            "SELECT date(created_at, 'unixepoch', 'localtime') as day, SUM(total_cost) as daily_total FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY day ORDER BY day ASC",
             (start, end),
         ).fetchall()
 
-    total = sum(r["total_cost"] for r in rows)
-    by_day = {}
-    for r in rows:
-        day = datetime.fromtimestamp(r["created_at"]).strftime("%Y-%m-%d")
-        by_day[day] = round(by_day.get(day, 0) + r["total_cost"], 4)
+        by_day = {r["day"]: round(r["daily_total"], 4) for r in day_rows}
 
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = round(
-            by_provider.get(r["provider"], 0) + r["total_cost"], 4
-        )
+        # Get cost grouped by provider
+        prov_rows = conn.execute(
+            "SELECT provider, SUM(total_cost) as prov_total FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY provider",
+            (start, end),
+        ).fetchall()
+
+        by_provider = {r["provider"]: round(r["prov_total"], 4) for r in prov_rows}
 
     return {
         "period": f"{year}-{month:02d}",
         "total_usd": round(total, 4),
         "total_idr": round(total * IDR_RATE),
         "by_provider": by_provider,
-        "by_day": dict(sorted(by_day.items())),
-        "transactions": len(rows),
+        "by_day": by_day,
+        "transactions": transactions,
         "budget_used_pct": round(total / 100 * 100, 1),  # Assuming $100 budget
     }
 
