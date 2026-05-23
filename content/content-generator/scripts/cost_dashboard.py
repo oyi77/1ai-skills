@@ -115,31 +115,39 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     next_mon = 1 if month == 12 else month + 1
     end = int(datetime(next_year, next_mon, 1).timestamp())
 
+    # Performance Optimization: Utilize database-level aggregations and
+    # date grouping instead of loading all rows into Python memory for processing.
+    # This significantly reduces memory footprint and improves speed.
     with _conn() as conn:
-        rows = conn.execute(
-            "SELECT * FROM cost_log WHERE created_at >= ? AND created_at < ?",
+        # 1. Get total cost and transaction count
+        stats = conn.execute(
+            "SELECT SUM(total_cost) as total, COUNT(*) as count FROM cost_log WHERE created_at >= ? AND created_at < ?",
+            (start, end),
+        ).fetchone()
+        total = stats["total"] or 0
+        transactions = stats["count"]
+
+        # 2. Get costs grouped by day using SQLite's native date function
+        day_rows = conn.execute(
+            "SELECT date(created_at, 'unixepoch', 'localtime') as day, SUM(total_cost) as cost FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY day ORDER BY day",
             (start, end),
         ).fetchall()
+        by_day = {r["day"]: round(r["cost"], 4) for r in day_rows}
 
-    total = sum(r["total_cost"] for r in rows)
-    by_day = {}
-    for r in rows:
-        day = datetime.fromtimestamp(r["created_at"]).strftime("%Y-%m-%d")
-        by_day[day] = round(by_day.get(day, 0) + r["total_cost"], 4)
-
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = round(
-            by_provider.get(r["provider"], 0) + r["total_cost"], 4
-        )
+        # 3. Get costs grouped by provider
+        prov_rows = conn.execute(
+            "SELECT provider, SUM(total_cost) as cost FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY provider",
+            (start, end),
+        ).fetchall()
+        by_provider = {r["provider"]: round(r["cost"], 4) for r in prov_rows}
 
     return {
         "period": f"{year}-{month:02d}",
         "total_usd": round(total, 4),
         "total_idr": round(total * IDR_RATE),
         "by_provider": by_provider,
-        "by_day": dict(sorted(by_day.items())),
-        "transactions": len(rows),
+        "by_day": by_day,
+        "transactions": transactions,
         "budget_used_pct": round(total / 100 * 100, 1),  # Assuming $100 budget
     }
 
