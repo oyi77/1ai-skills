@@ -1,6 +1,7 @@
 import sqlite3
 import os
 import sys
+from unittest import mock
 
 # Patch gallery script dependencies
 sys.path.insert(
@@ -9,13 +10,22 @@ sys.path.insert(
         os.path.join(os.path.dirname(__file__), "content/content-generator/scripts")
     ),
 )
-import gallery
 
-# Mock DB paths to a local temporary directory
 TEST_DIR = "/tmp/gallery_test_db"
 os.makedirs(TEST_DIR, exist_ok=True)
 TEST_DB_PATH = os.path.join(TEST_DIR, "gallery.db")
 
+orig_connect = sqlite3.connect
+def my_connect(path, *args, **kwargs):
+    if str(path).endswith("gallery.db"):
+        return orig_connect(TEST_DB_PATH, *args, **kwargs)
+    return orig_connect(path, *args, **kwargs)
+
+with mock.patch("os.makedirs"):
+    with mock.patch("sqlite3.connect", side_effect=my_connect):
+        import gallery
+
+# Mock DB paths to a local temporary directory
 gallery.DB_PATH = TEST_DB_PATH
 gallery.GALLERY_DIR = TEST_DIR
 
