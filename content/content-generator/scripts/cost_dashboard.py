@@ -86,22 +86,38 @@ def log_cost(
 
 def get_session_cost(chat_id: str, since_ts: int = None) -> dict:
     """Get cost for a chat session"""
-    query = "SELECT * FROM cost_log WHERE chat_id = ?"
+    # ⚡ Bolt Optimization: Replace Python-level iteration and summation with SQLite native aggregation
+    # Reduces Python memory footprint by not loading full objects, especially for large sessions
+    query = """
+        SELECT
+            COUNT(*),
+            SUM(total_cost)
+        FROM cost_log WHERE chat_id = ?
+    """
     params = [str(chat_id)]
     if since_ts:
         query += " AND created_at >= ?"
         params.append(since_ts)
+
     with _conn() as conn:
-        rows = conn.execute(query, params).fetchall()
-    total = sum(r["total_cost"] for r in rows)
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = by_provider.get(r["provider"], 0) + r["total_cost"]
+        total_row = conn.execute(query, params).fetchone()
+
+        provider_query = "SELECT provider, SUM(total_cost) FROM cost_log WHERE chat_id = ?"
+        if since_ts:
+            provider_query += " AND created_at >= ?"
+        provider_query += " GROUP BY provider"
+        provider_rows = conn.execute(provider_query, params).fetchall()
+
+    count = total_row[0] if total_row and total_row[0] is not None else 0
+    total = total_row[1] if total_row and total_row[1] is not None else 0
+
+    by_provider = {r[0]: round(r[1], 4) for r in provider_rows}
+
     return {
         "total_usd": round(total, 4),
         "total_idr": round(total * IDR_RATE),
-        "by_provider": {k: round(v, 4) for k, v in by_provider.items()},
-        "count": len(rows),
+        "by_provider": by_provider,
+        "count": count,
     }
 
 
@@ -115,23 +131,29 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     next_mon = 1 if month == 12 else month + 1
     end = int(datetime(next_year, next_mon, 1).timestamp())
 
+    # ⚡ Bolt Optimization: Offload date calculation and aggregation to SQLite
+    # Native `date(created_at, 'unixepoch', 'localtime')` bypasses expensive Python datetime creation in loops
     with _conn() as conn:
-        rows = conn.execute(
-            "SELECT * FROM cost_log WHERE created_at >= ? AND created_at < ?",
-            (start, end),
+        total_row = conn.execute(
+            "SELECT COUNT(*), SUM(total_cost) FROM cost_log WHERE created_at >= ? AND created_at < ?",
+            (start, end)
+        ).fetchone()
+
+        provider_rows = conn.execute(
+            "SELECT provider, SUM(total_cost) FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY provider",
+            (start, end)
         ).fetchall()
 
-    total = sum(r["total_cost"] for r in rows)
-    by_day = {}
-    for r in rows:
-        day = datetime.fromtimestamp(r["created_at"]).strftime("%Y-%m-%d")
-        by_day[day] = round(by_day.get(day, 0) + r["total_cost"], 4)
+        day_rows = conn.execute(
+            "SELECT date(created_at, 'unixepoch', 'localtime'), SUM(total_cost) FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY date(created_at, 'unixepoch', 'localtime')",
+            (start, end)
+        ).fetchall()
 
-    by_provider = {}
-    for r in rows:
-        by_provider[r["provider"]] = round(
-            by_provider.get(r["provider"], 0) + r["total_cost"], 4
-        )
+    transactions = total_row[0] if total_row and total_row[0] is not None else 0
+    total = total_row[1] if total_row and total_row[1] is not None else 0
+
+    by_provider = {r[0]: round(r[1], 4) for r in provider_rows}
+    by_day = {r[0]: round(r[1], 4) for r in day_rows}
 
     return {
         "period": f"{year}-{month:02d}",
@@ -139,7 +161,7 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
         "total_idr": round(total * IDR_RATE),
         "by_provider": by_provider,
         "by_day": dict(sorted(by_day.items())),
-        "transactions": len(rows),
+        "transactions": transactions,
         "budget_used_pct": round(total / 100 * 100, 1),  # Assuming $100 budget
     }
 
