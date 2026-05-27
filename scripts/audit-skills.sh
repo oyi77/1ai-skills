@@ -49,12 +49,13 @@ printf '%-15s %6s\n' "---------------" "------"
 printf '%-15s %6d\n' "TOTAL" "$total"
 printf '\nTooling dirs (no skills): %s\n' "${TOOLING_DIRS[*]}"
 
-# JSON output
+# JSON output. NOTE: deliberately deterministic — no timestamp — so CI
+# can verify SKILLS.json is current with `git diff --quiet`. If you need
+# a timestamp, generate one separately.
 if [[ $WRITE -eq 1 ]]; then
   out="$ROOT/SKILLS.json"
   {
     printf '{\n'
-    printf '  "generated_at": "%s",\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     printf '  "total_skills": %d,\n' "$total"
     printf '  "category_count": %d,\n' "${#SKILL_DIRS[@]}"
     printf '  "categories": {\n'
