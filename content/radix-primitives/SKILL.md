@@ -1,0 +1,105 @@
+---
+name: radix-primitives
+description: Radix UI headless primitives — accessible, unstyled React components for dialogs, dropdowns, tooltips
+---
+
+## Overview
+
+Radix UI provides unstyled, accessible React primitives (Dialog, Dropdown, Popover, Tooltip, etc.) that handle behavior, keyboard navigation, and ARIA attributes. Style them with Tailwind, CSS, or any CSS-in-JS.
+
+## Capabilities
+
+- Fully accessible out of the box (WAI-ARIA compliant)
+- Keyboard navigation and focus management
+- Unstyled — bring your own design system
+- Controlled and uncontrolled modes
+- Composable with Tailwind CSS
+- 30+ primitives: Dialog, DropdownMenu, Popover, Select, Tabs, etc.
+
+## When to Use
+
+- Building a custom design system from scratch
+- Need accessible components without Material/Chakra styling
+- Using shadcn/ui (built on Radix primitives)
+- Need fine-grained control over component behavior and appearance
+
+## Pseudo Code
+
+### Installation
+```bash
+npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-popover
+npm install @radix-ui/react-tooltip @radix-ui/react-tabs @radix-ui/react-accordion
+```
+
+### Dialog with Tailwind
+```tsx
+import * as Dialog from "@radix-ui/react-dialog"
+
+export function Modal({ children, trigger }) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-[90vw] max-w-md">
+          {children}
+          <Dialog.Close className="absolute top-4 right-4">✕</Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  )
+}
+```
+
+### DropdownMenu
+```tsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
+
+export function Menu({ items }) {
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger className="px-4 py-2 bg-gray-100 rounded">
+        Options
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content className="bg-white rounded-md shadow-lg p-1 min-w-[160px]">
+          {items.map((item) => (
+            <DropdownMenu.Item key={item.id} className="px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">
+              {item.label}
+            </DropdownMenu.Item>
+          ))}
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  )
+}
+```
+
+### Tooltip
+```tsx
+import * as Tooltip from "@radix-ui/react-tooltip"
+
+export function Tip({ children, content }) {
+  return (
+    <Tooltip.Provider delayDuration={200}>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
+        <Tooltip.Portal>
+          <Tooltip.Content className="bg-gray-900 text-white text-sm px-3 py-1.5 rounded" sideOffset={5}>
+            {content}
+            <Tooltip.Arrow className="fill-gray-900" />
+          </Tooltip.Content>
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  )
+}
+```
+
+## Common Patterns
+
+- **asChild**: `<Trigger asChild><Button>Open</Button></Trigger>` — composes without extra DOM
+- **Portal**: Always wrap Content in Portal for proper z-index layering
+- **Animation**: Use `data-[state=open]` and `data-[state=closed]` for CSS transitions
+- **Composition**: Combine primitives (Dialog + Form + Select) for complex UIs
+- **Focus trap**: Built-in — Dialog automatically traps focus, handles Escape key

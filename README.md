@@ -1,8 +1,8 @@
-# 1ai-Skills — 987 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 1215 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 987](https://img.shields.io/badge/skills-987-blue)](https://github.com/oyi77/1ai-skills)
+[![Skills: 1215](https://img.shields.io/badge/skills-1215-blue)](https://github.com/oyi77/1ai-skills)
 [![Categories: 18](https://img.shields.io/badge/categories-18-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **987 production-ready AI agent skills** organized across **18 categories** — including **754 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **1215 production-ready AI agent skills** organized across **18 categories** — including **754 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -154,28 +154,28 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 987 Skills by Category
+## All 1215 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
-| **cybersecurity/** | 754 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust |
-| **research/** | 25 | McKinsey analysis, deep research, Polymarket analyst, continuous learning |
-| **core/** | 24 | Self-improvement, memory systems, AI orchestration, session brain |
-| **content/** | 23 | Remotion video engine, video generation, AI podcast, faceless YouTube, humanizer, Seedance |
-| **marketing/** | 22 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation |
-| **automation/** | 21 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers |
-| **development/** | 17 | TDD, systematic debugging, code review, PRD generator, git worktrees |
-| **financial/** | 14 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck |
-| **agents/** | 14 | Research, review, planning, code, deploy, refactor, linter, security |
-| **integrations/** | 11 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs |
-| **operations/** | 10 | Finance ops, revenue team, project management, payment invoicing |
-| **mcp/** | 10 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear |
-| **meta/** | 13 | find-skills, create-skills, auto-evolve, performance monitor, auto-learner |
-| **sales/** | 6 | High-ticket closing, lead generation, business development |
-| **devops/** | 6 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI |
-| **trading/** | 7 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot |
-| **productivity/** | 6 | Google Workspace, calendar, email automation, Notion |
-| **data/** | 4 | Data cleaning, anomaly detection, report generation, visualization |
+| **cybersecurity/** | 779 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
+| **development/** | 78 | TDD, systematic debugging, code review, PRD generator, git worktrees, Kafka patterns, database ORMs, mobile development, testing, messaging infrastructure |
+| **content/** | 48 | Remotion video engine, video generation, AI podcast, faceless YouTube, humanizer, Seedance, design systems, UI frameworks, content creation |
+| **devops/** | 37 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, secrets management |
+| **automation/** | 27 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines, data pipelines |
+| **marketing/** | 39 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, affiliate management, ecommerce |
+| **core/** | 37 | Self-improvement, memory systems, AI orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, continuous learning |
+| **research/** | 28 | McKinsey analysis, deep research, Polymarket analyst, continuous learning, competitive intelligence, market research, trend analysis |
+| **integrations/** | 27 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs, Kalodata, OhMyOpenCode, team collaboration, integrations |
+| **financial/** | 16 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck, commodities, DeFi, crypto forensics |
+| **operations/** | 15 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation, team ops |
+| **agents/** | 16 | Research, review, planning, code, deploy, refactor, linter, security, autonomous trading agents, agent orchestration |
+| **meta/** | 14 | find-skills, create-skills, auto-evolve, performance monitor, auto-learner, skill datastore, continuous improvement |
+| **mcp/** | 12 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear, Resend, financial MCP, Kalodata MCP |
+| **trading/** | 18 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot, DeFi protocols, smart contracts, NFTs, commodities, algorithmic trading |
+| **data/** | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics |
+| **sales/** | 7 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
+| **productivity/** | 7 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation |
 
 ---
 

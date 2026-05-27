@@ -1,0 +1,131 @@
+---
+name: svelte-framework
+description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming
+---
+
+## Overview
+
+Build high-performance web apps with Svelte 5 (runes reactivity) and SvelteKit (SSR, routing, form actions, streaming).
+
+## Capabilities
+
+- Svelte 5 runes ($state, $derived, $effect)
+- Stores and reactive state
+- SvelteKit file-based routing
+- Server-side rendering and streaming
+- Form actions for mutations
+- Load functions for data fetching
+- Adapter-based deployment (Vercel, Node, Cloudflare)
+
+## When to Use
+
+- Building fast, lightweight web applications
+- SSR/SSG with minimal JavaScript
+- Form-heavy applications with progressive enhancement
+- Real-time apps with efficient reactivity
+- Edge-deployed applications
+
+## Pseudo Code
+
+### Svelte 5 Component with Runes
+
+```svelte
+<script>
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+
+  $effect(() => {
+    console.log(`Count changed to ${count}`)
+  })
+
+  function increment() {
+    count++
+  }
+</script>
+
+<button onclick={increment}>{count} (doubled: {doubled})</button>
+```
+
+### SvelteKit Load Function
+
+```typescript
+// src/routes/users/[id]/+page.server.ts
+import type { PageServerLoad } from './$types'
+
+export const load: PageServerLoad = async ({ params, fetch }) => {
+  const response = await fetch(`/api/users/${params.id}`)
+  const user = await response.json()
+  return { user }
+}
+```
+
+### SvelteKit Form Action
+
+```typescript
+// src/routes/todos/+page.server.ts
+import type { Actions } from './$types'
+
+export const actions: Actions = {
+  create: async ({ request, locals }) => {
+    const data = await request.formData()
+    const title = data.get('title') as string
+
+    await locals.db.todos.create({ data: { title, userId: locals.user.id } })
+    return { success: true }
+  },
+
+  delete: async ({ request, locals }) => {
+    const data = await request.formData()
+    await locals.db.todos.delete({ where: { id: data.get('id') } })
+  },
+}
+```
+
+```svelte
+<!-- src/routes/todos/+page.svelte -->
+<script>
+  let { data } = $props()
+</script>
+
+{#each data.todos as todo}
+  <form method="POST" action="?/delete">
+    <span>{todo.title}</span>
+    <input type="hidden" name="id" value={todo.id} />
+    <button>Delete</button>
+  </form>
+{/each}
+
+<form method="POST" action="?/create">
+  <input name="title" required />
+  <button>Add</button>
+</form>
+```
+
+### Streaming
+
+```typescript
+// Slow data streams to client as it resolves
+export const load = async ({ fetch }) => {
+  return {
+    streamed: {
+      analytics: fetch('/api/analytics').then(r => r.json()),
+    },
+  }
+}
+```
+
+```svelte
+{#await data.streamed.analytics}
+  <p>Loading analytics...</p>
+{:then analytics}
+  <Dashboard data={analytics} />
+{/await}
+```
+
+## Common Patterns
+
+- **Form actions**: Progressive enhancement, works without JS
+- **Streaming**: Stream slow data to avoid blocking page load
+- **Runes**: Fine-grained reactivity without virtual DOM overhead
+- **Adapter deployment**: Swap adapters for different hosts
+- **Layout groups**: Shared layouts with `(group)` directories

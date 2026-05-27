@@ -1,0 +1,252 @@
+---
+name: vite-config
+description: Vite build tool configuration — plugins, SSR, library mode, environment variables, dev server proxy
+---
+
+## Overview
+
+Vite is a next-generation frontend build tool that leverages native ES modules for instant dev server start and Rollup-based builds for production. This skill covers configuration patterns for React, Vue, Svelte, library mode, and SSR.
+
+## Capabilities
+
+- Instant dev server start with native ESM
+- Lightning-fast HMR (Hot Module Replacement)
+- Optimized production builds with Rollup
+- Plugin system compatible with Rollup plugins
+- Library mode for building npm packages
+- SSR support for frameworks like Next.js/Nuxt
+- Environment variables with `import.meta.env`
+- CSS preprocessing (Sass, Less, PostCSS, Tailwind)
+- Asset handling (images, fonts, JSON)
+- Dev server proxy for API requests
+
+## When to Use
+
+- Starting new frontend projects (React, Vue, Svelte, Solid)
+- Building npm libraries for distribution
+- Migrating from Webpack (faster builds)
+- Need fast dev server with HMR
+- Building SSR applications
+- Monorepo setups with shared config
+
+## Pseudo Code
+
+### Basic Configuration
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') },
+  },
+  server: {
+    port: 3000,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+        },
+      },
+    },
+  },
+});
+```
+
+### Environment Variables
+```bash
+# .env
+VITE_API_URL=https://api.example.com
+VITE_APP_TITLE=My App
+
+# .env.production
+VITE_API_URL=https://api.production.com
+
+# .env.local (gitignored)
+VITE_API_KEY=secret
+```
+
+```typescript
+// Usage in code
+const apiUrl = import.meta.env.VITE_API_URL;
+const title = import.meta.env.VITE_APP_TITLE;
+const isDev = import.meta.env.DEV;
+const isProd = import.meta.env.PROD;
+```
+
+### Library Mode
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
+
+export default defineConfig({
+  build: {
+    lib: {
+      entry: 'src/index.ts',
+      name: 'MyLib',
+      formats: ['es', 'cjs', 'umd'],
+      fileName: (format) => `my-lib.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: { globals: { react: 'React', 'react-dom': 'ReactDOM' } },
+    },
+  },
+  plugins: [dts()], // Generate .d.ts files
+});
+```
+
+### Tailwind CSS Integration
+```typescript
+// vite.config.ts
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [tailwindcss()],
+});
+
+// src/index.css
+@import "tailwindcss";
+```
+
+### SSR Configuration
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        client: 'src/entry-client.tsx',
+        server: 'src/entry-server.tsx',
+      },
+    },
+  },
+});
+
+// server.ts (Node.js SSR)
+import express from 'express';
+import { createServer as createViteServer } from 'vite';
+
+async function createServer() {
+  const app = express();
+  const vite = await createViteServer({ server: { middlewareMode: true } });
+  app.use(vite.middlewares);
+  
+  app.use('*', async (req, res) => {
+    const template = fs.readFileSync('index.html', 'utf-8');
+    const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
+    const html = await render(req.originalUrl);
+    res.status(200).set({ 'Content-Type': 'text/html' }).end(
+      template.replace('<!--app-html-->', html)
+    );
+  });
+  
+  app.listen(3000);
+}
+createServer();
+```
+
+### Plugin Configuration
+```typescript
+// vite.config.ts
+import react from '@vitejs/plugin-react';
+import legacy from '@vitejs/plugin-legacy';
+import { VitePWA } from 'vite-plugin-pwa';
+import checker from 'vite-plugin-checker';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    legacy({ targets: ['defaults', 'not IE 11'] }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: { globPatterns: ['**/*.{js,css,html,ico,png,svg}'] },
+    }),
+    checker({ typescript: true, eslint: { lintCommand: 'eslint src' } }),
+  ],
+});
+```
+
+## Error Handling
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `Pre-transform error` | Invalid import or syntax | Check import paths and syntax |
+| `CSS not loading` | Missing PostCSS/Sass | `npm install -D sass` or `postcss` |
+| `HMR not working` | File outside root | Move files into project root |
+| `Build failed: chunk size` | Large bundle | Use `manualChunks` or dynamic imports |
+| `env not defined` | Missing `VITE_` prefix | All env vars must start with `VITE_` |
+
+## Common Patterns
+
+### Multi-Page App
+```typescript
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        admin: 'admin/index.html',
+      },
+    },
+  },
+});
+```
+
+### CSS Modules
+```typescript
+// Component.module.css
+.button { background: blue; color: white; }
+
+// Component.tsx
+import styles from './Component.module.css';
+function Component() {
+  return <button className={styles.button}>Click</button>;
+}
+```
+
+### Global CSS Variables
+```css
+:root {
+  --color-primary: #3b82f6;
+  --color-surface: #ffffff;
+  --font-sans: 'Inter', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #1a1a1a;
+  }
+}
+```
+
+### Dev Server HTTPS
+```typescript
+import basicSsl from '@vitejs/plugin-basic-ssl';
+
+export default defineConfig({
+  plugins: [basicSsl()],
+  server: { https: true },
+});
+```
