@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **1215 production-ready AI agent skills** organized across **18 categories** — including **754 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **1215 production-ready AI agent skills** organized across **18 categories** — including **779 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -207,7 +207,7 @@ Skills now reference each other (not duplicate content):
 - **Faceless YouTube** — MrBeast-style automated YouTube content
 - **Seedance** — Cinematic AI video production
 
-### Cybersecurity (754 skills, 26 domains)
+### Cybersecurity (779 skills, 26 domains)
 - **Threat Hunting** — 55 skills: APT detection, MITRE ATT&CK mapping, Sigma rules, anomaly detection
 - **Cloud Security** — 60 skills: AWS/Azure/GCP hardening, CSPM, IAM, container security
 - **Digital Forensics** — 37 skills: memory forensics, disk imaging, malware reverse engineering
@@ -248,7 +248,7 @@ Each skill contains:
 ├── automation/    # Workflow automation & bots (21)
 ├── content/       # Content creation & media (22)
 ├── core/          # Infrastructure & memory (24)
-├── cybersecurity/ # Security skills — 26 domains (754) ← NEW
+├── cybersecurity/ # Security skills — 26 domains (779) ← NEW
 ├── data/          # Data analysis & visualization (4)
 ├── development/   # Coding, debugging, TDD (17)
 ├── devops/        # Docker, CI/CD, K8s (6)

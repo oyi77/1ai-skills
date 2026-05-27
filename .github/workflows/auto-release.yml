@@ -48,9 +48,10 @@ jobs:
             ```
             
             ### Stats
-            - Total Skills: 987 across 18 categories (see SKILLS.json)
-            - Cybersecurity: 754 skills across 26 subdomains
-            - Meta-Skills: 13 (auto-evolve, auto-improve, auto-learn)
+            - Total Skills: 1215 across 18 categories (see SKILLS.json)
+            - Cybersecurity: 779 skills across 26 subdomains
+            - Meta-Skills: 14 (auto-evolve, auto-improve, auto-learn)
+            - CI Protected: validate.yml enforces frontmatter, uniqueness, and doc sync
           draft: false
           prerelease: false
         env:
