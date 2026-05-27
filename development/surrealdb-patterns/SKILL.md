@@ -1,0 +1,105 @@
+---
+name: surrealdb-patterns
+description: SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode
+---
+
+## Overview
+
+SurrealDB is a multi-model database that combines document, graph, key-value, and relational models in one engine. It uses SurrealQL (SQL-like), supports realtime subscriptions, and can run embedded or as a server.
+
+## Capabilities
+
+- SurrealQL: SQL-like syntax with graph traversal
+- Record links (no foreign keys needed)
+- Graph traversal with -> and <- operators
+- LIVE SELECT for realtime subscriptions
+- Schemaful and schemaless tables
+- Authentication and permissions at table/record level
+- Embedded mode (Rust, JS, Go) or server mode
+- HTTP REST API and WebSocket connections
+
+## When to Use
+
+- Building applications needing both document and graph capabilities
+- Need realtime data subscriptions
+- Want a single database instead of polyglot persistence
+- Edge/embedded deployments
+
+## Pseudo Code
+
+### Connection
+```javascript
+import Surreal from 'surrealdb';
+
+const db = new Surreal();
+await db.connect('http://localhost:8000/rpc');
+await db.use({ namespace: 'test', database: 'test' });
+await db.signin({ username: 'root', password: 'root' });
+```
+
+### CRUD
+```javascript
+// Create
+const user = await db.create('user', {
+  name: 'Alice',
+  email: 'alice@example.com',
+  posts: [],
+});
+
+// Read
+const users = await db.select('user');
+const alice = await db.select(`user:${id}`);
+
+// Update
+await db.update(`user:${id}`, { name: 'Updated' });
+
+// Delete
+await db.delete(`user:${id}`);
+```
+
+### SurrealQL
+```sql
+-- Create with specific ID
+CREATE user:alice SET name = 'Alice', email = 'alice@example.com';
+
+-- Select with WHERE
+SELECT * FROM user WHERE email LIKE '%@example.com' ORDER BY name LIMIT 10;
+
+-- Graph relation (no foreign key)
+RELATE user:alice->wrote->post:hello SET timestamp = time::now();
+
+-- Graph traversal
+SELECT ->wrote->post.* FROM user:alice;
+
+-- Subquery
+SELECT *, (SELECT ->wrote->post.* FROM user) AS posts FROM user;
+```
+
+### LIVE SELECT (Realtime)
+```javascript
+// Subscribe to changes
+const stream = await db.live('user', (action, result) => {
+  if (action === 'CREATE') console.log('New user:', result);
+  if (action === 'UPDATE') console.log('Updated:', result);
+  if (action === 'DELETE') console.log('Deleted:', result);
+});
+
+// Kill subscription
+await db.kill(stream);
+```
+
+### Schema Definition
+```sql
+DEFINE TABLE user SCHEMAFULL;
+DEFINE FIELD name ON user TYPE string;
+DEFINE FIELD email ON user TYPE string ASSERT string::is::email($value);
+DEFINE FIELD posts ON user TYPE array;
+DEFINE INDEX email_index ON user FIELDS email UNIQUE;
+```
+
+## Common Patterns
+
+- **Embedded mode**: Use `surrealdb` npm package with `mem://` or `file://` protocol
+- **Auth**: `DEFINE SCOPE`, `DEFINE ACCESS`, JWT tokens
+- **Migrations**: Use `DEFINE TABLE` and `DEFINE FIELD` in `.surql` files
+- **Graph modeling**: Use RELATE for edges, traverse with `->` and `<-`

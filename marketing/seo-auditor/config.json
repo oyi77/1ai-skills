@@ -1,0 +1,42 @@
+{
+  "targets": [
+    {
+      "name": "Client Website",
+      "url": "https://example.com",
+      "keywords": ["keyword1", "keyword2", "keyword3"],
+      "competitors": ["https://competitor1.com", "https://competitor2.com"]
+    }
+  ],
+  "schedule": {
+    "fullAudit": "weekly",
+    "rankTracking": "daily",
+    "backlinkCheck": "weekly"
+  },
+  "reporting": {
+    "format": "pdf",
+    "email": "client@example.com",
+    "branding": {
+      "logo": "assets/logo.png",
+      "colors": {"primary": "#007bff"}
+    }
+  },
+  "apis": {
+    "googleSearchConsole": {
+      "enabled": false,
+      "credentialsFile": "credentials/gsc.json"
+    },
+    "pageSpeedInsights": {
+      "enabled": false,
+      "apiKey": "YOUR_API_KEY"
+    },
+    "googleAnalytics": {
+      "enabled": false,
+      "propertyId": "GA4_PROPERTY_ID"
+    }
+  },
+  "crawler": {
+    "maxPages": 100,
+    "delayMs": 1000,
+    "userAgent": "Mozilla/5.0 (compatible; SEOAuditorBot/1.0)"
+  }
+}

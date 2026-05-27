@@ -1,0 +1,14 @@
+{
+  "name": "kalodata-integrations",
+  "version": "1.0.0",
+  "description": "Multi-platform integrations for Kalodata research",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

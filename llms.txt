@@ -1,9 +1,9 @@
 # 1ai-Skills
-# 987 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
+# 1215 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
 # https://github.com/oyi77/1ai-skills
 
 ## What This Is
-1ai-Skills is the largest open-source AI agent skill library. 987 production-ready skills across 18 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
+1ai-Skills is the largest open-source AI agent skill library. 1215 production-ready skills across 18 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
 
 ## Installation
 ```bash
@@ -18,30 +18,30 @@ git clone https://github.com/oyi77/1ai-skills.git
 3. For `cybersecurity/` (754 skills), read `cybersecurity/AGENTS.md` for the subdomain map BEFORE loading individual skills.
 4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
 
-Do NOT walk all 987 skill dirs. Grep `SKILLS.json` first.
+Do NOT walk all 1215 skill dirs. Grep `SKILLS.json` first.
 
-## Categories (987 skills total, 18 categories)
+## Categories (1215 skills total, 18 categories)
 
 | Category | Skills | Focus |
 |---|---:|---|
-| cybersecurity/ | 754 | 26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, malware analysis, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
-| research/ | 25 | McKinsey-style analysis, deep research, Polymarket analyst, continuous learning, Sherlock deduction |
-| core/ | 24 | Self-improvement, memory systems, orchestration, session brain, hub memory, find-skills |
-| content/ | 23 | Remotion video, AI podcast, faceless YouTube, humanizer, Seedance, content generator |
-| marketing/ | 22 | Marketing Ops, SEO optimizer, viral marketing, Twitter automation, email marketing |
-| automation/ | 21 | n8n, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher |
-| development/ | 17 | TDD, systematic debugging, code review, PRD, git worktrees, brainstorming |
-| agents/ | 14 | Autonomous research/review/planning/code/deploy + coding (refactor/lint/security/perf) |
-| financial/ | 14 | All-in-One Finance, Wolf Finance, model builder, earnings viewer, pitch deck, TLH |
-| meta/ | 13 | auto-evolve, create-skills, find-skills, performance monitor, auto-learner, evolution |
-| integrations/ | 11 | GitHub, Discord, Notion, Slack (bots, webhooks, APIs) |
-| operations/ | 10 | Governance, KYC, statement audit, GL reconciliation, month-end |
-| mcp/ | 10 | MCP servers for GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase |
-| trading/ | 7 | Crypto trading bot, Polymarket fast loop, weather trader |
-| devops/ | 6 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab) |
-| sales/ | 6 | High-ticket closing, lead generation, business development |
-| productivity/ | 6 | Google Workspace, calendar, email automation |
-| data/ | 4 | Data cleaning, anomaly detection, viz, reporting |
+| cybersecurity/ | 779 | 26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, malware analysis, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
+| development/ | 78 | TDD, systematic debugging, code review, PRD, git worktrees, Kafka patterns, database ORMs, mobile development, testing, messaging infrastructure, CI/CD, DevOps |
+| content/ | 48 | Remotion video engine, video generation, AI podcast, faceless YouTube, humanizer, Seedance, design systems, UI frameworks, content creation, viral marketing |
+| devops/ | 37 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, secrets management, infrastructure as code |
+| automation/ | 27 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines, data pipelines, workflow automation |
+| marketing/ | 39 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, affiliate management, ecommerce, ad campaigns |
+| core/ | 37 | Self-improvement, memory systems, AI orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, continuous learning, self-evolving agents |
+| research/ | 28 | McKinsey analysis, deep research, Polymarket analyst, continuous learning, competitive intelligence, market research, trend analysis, web research |
+| integrations/ | 27 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs, Kalodata, OhMyOpenCode, team collaboration, integrations, messaging platforms |
+| financial/ | 16 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck, commodities, DeFi, crypto forensics, tax-loss harvesting |
+| operations/ | 15 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation, team ops, workflow management |
+| agents/ | 16 | Research, review, planning, code, deploy, refactor, linter, security, autonomous trading agents, agent orchestration, multi-agent systems |
+| meta/ | 14 | find-skills, create-skills, auto-evolve, performance monitor, auto-learner, skill datastore, continuous improvement, self-improving agent system |
+| mcp/ | 12 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear, Resend, financial MCP, Kalodata MCP, agent-to-agent orchestration |
+| trading/ | 18 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot, DeFi protocols, smart contracts, NFTs, commodities, algorithmic trading, quant strategies |
+| data/ | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics, data science |
+| sales/ | 7 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation, pipeline management |
+| productivity/ | 7 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation, productivity systems |
 
 ## Self-Evolving System (meta/)
 13 meta-skills form a self-improving agent operating system:

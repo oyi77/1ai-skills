@@ -1,0 +1,273 @@
+---
+name: esbuild-bundler
+description: esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification
+---
+
+## Overview
+
+esbuild is an extremely fast JavaScript/TypeScript bundler and minifier written in Go. It's 10-100x faster than Webpack/Rollup for most builds. This skill covers API usage, CLI configuration, plugin development, and integration patterns.
+
+## Capabilities
+
+- Bundle JS/TS/CSS in milliseconds (not seconds)
+- Tree shaking and dead code elimination
+- Minification (JS, CSS, HTML)
+- Source maps (inline, external, linked)
+- Code splitting with dynamic imports
+- Plugin system for custom transformations
+- Watch mode for development
+- JSX/TSX support (React, Vue, Svelte)
+- CSS bundling and minification
+- Library building (ESM, CJS, IIFE)
+
+## When to Use
+
+- Need fastest possible build times
+- Building npm libraries
+- CLI tools and Node.js applications
+- CI/CD pipelines where build speed matters
+- Custom bundler with plugin pipeline
+- Replacing Webpack for simple to medium projects
+- Building multiple entry points
+
+## Pseudo Code
+
+### API Usage
+```javascript
+// build.mjs
+import * as esbuild from 'esbuild';
+
+await esbuild.build({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  outdir: 'dist',
+  format: 'esm',
+  platform: 'node',
+  target: 'node20',
+  sourcemap: true,
+  minify: true,
+  splitting: true,
+  external: ['express', 'pg'], // Don't bundle these
+  define: {
+    'process.env.NODE_ENV': '"production"',
+  },
+});
+```
+
+### CLI Usage
+```bash
+# Basic bundle
+esbuild src/index.ts --bundle --outfile=dist/index.js
+
+# Watch mode
+esbuild src/index.ts --bundle --outfile=dist/index.js --watch
+
+# Minified with source maps
+esbuild src/index.ts --bundle --minify --sourcemap --outfile=dist/index.js
+
+# Multiple formats
+esbuild src/index.ts --bundle --format=esm --outdir=dist/esm
+esbuild src/index.ts --bundle --format=cjs --outdir=dist/cjs
+
+# CSS bundling
+esbuild src/styles.css --bundle --minify --outfile=dist/styles.css
+
+# Library mode
+esbuild src/lib.ts --bundle --format=esm --outfile=dist/lib.mjs --external:react
+```
+
+### Package.json Scripts
+```json
+{
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "build:lib": "esbuild src/index.ts --bundle --format=esm,cjs --outdir=dist --external:react --external:react-dom"
+  }
+}
+```
+
+### Plugins
+```javascript
+// Custom loader plugin
+const sassPlugin = {
+  name: 'sass',
+  setup(build) {
+    build.onLoad({ filter: /\.scss$/ }, async (args) => {
+      const { compile } = await import('sass');
+      const result = compile(args.path, { style: 'compressed' });
+      return { contents: result.css, loader: 'css' };
+    });
+  },
+};
+
+// Environment variable plugin
+const envPlugin = {
+  name: 'env',
+  setup(build) {
+    build.onResolve({ filter: /^env$/ }, (args) => ({
+      path: args.path,
+      namespace: 'env-ns',
+    }));
+    build.onLoad({ filter: /.*/, namespace: 'env-ns' }, () => ({
+      contents: JSON.stringify(process.env),
+      loader: 'json',
+    }));
+  },
+};
+
+await esbuild.build({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  outdir: 'dist',
+  plugins: [sassPlugin, envPlugin],
+});
+```
+
+### Dev Server
+```javascript
+import * as esbuild from 'esbuild';
+import http from 'http';
+
+const ctx = await esbuild.context({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  outdir: 'dist',
+  sourcemap: true,
+});
+
+// Watch for changes
+await ctx.watch();
+
+// Serve with esbuild
+const { host, port } = await ctx.serve({ servedir: 'dist' });
+
+console.log(`Dev server running at http://localhost:${port}`);
+```
+
+### Multi-Page App
+```javascript
+await esbuild.build({
+  entryPoints: {
+    main: 'src/pages/main.tsx',
+    admin: 'src/pages/admin.tsx',
+    login: 'src/pages/login.tsx',
+  },
+  bundle: true,
+  outdir: 'dist',
+  splitting: true,
+  format: 'esm',
+  metafile: true, // Generate build metadata
+});
+
+// Analyze bundle
+const result = await esbuild.build({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  metafile: true,
+  write: false,
+});
+console.log(await esbuild.analyzeMetafile(result.metafile));
+```
+
+### TypeScript Config
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "outDir": "dist",
+    "declaration": true
+  },
+  "include": ["src"]
+}
+```
+
+### CSS with PostCSS
+```javascript
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import tailwindcss from 'tailwindcss';
+
+const postcssPlugin = {
+  name: 'postcss',
+  setup(build) {
+    build.onLoad({ filter: /\.css$/ }, async (args) => {
+      const fs = await import('fs/promises');
+      const css = await fs.readFile(args.path, 'utf8');
+      const result = await postcss([tailwindcss, autoprefixer]).process(css, { from: args.path });
+      return { contents: result.css, loader: 'css' };
+    });
+  },
+};
+```
+
+## Error Handling
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `Could not resolve` | Missing import or typo | Check import paths, add to `external` if needed |
+| `No matching export` | Wrong import syntax | Use named imports or check package exports |
+| `Build failed` | Syntax error in source | Check error message for file and line |
+| `Out of memory` | Huge project | Split into multiple builds or increase memory |
+| `Plugin error` | Plugin bug | Check plugin return value format |
+
+## Common Patterns
+
+### Library with Types
+```javascript
+// build.mjs
+await esbuild.build({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  outdir: 'dist',
+  format: 'esm',
+  external: ['react'],
+});
+
+// Generate types separately
+// tsconfig.json
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true
+  }
+}
+```
+
+### Conditional Builds
+```javascript
+const isProd = process.env.NODE_ENV === 'production';
+
+await esbuild.build({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  outdir: 'dist',
+  minify: isProd,
+  sourcemap: !isProd,
+  define: {
+    'process.env.NODE_ENV': isProd ? '"production"' : '"development"',
+  },
+});
+```
+
+### HTML Entry
+```javascript
+import { htmlPlugin } from '@craftamap/esbuild-plugin-html';
+
+await esbuild.build({
+  entryPoints: ['src/index.tsx'],
+  bundle: true,
+  outdir: 'dist',
+  plugins: [
+    htmlPlugin({
+      files: [{ entryPoints: ['src/index.tsx'], filename: 'index.html' }],
+    }),
+  ],
+});
+```

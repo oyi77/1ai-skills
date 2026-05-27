@@ -1,0 +1,99 @@
+---
+name: cockroachdb-patterns
+description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region
+---
+
+## Overview
+
+CockroachDB is a distributed SQL database that's wire-compatible with PostgreSQL. It provides serializable isolation, automatic sharding, geo-partitioning, and multi-region deployment out of the box.
+
+## Capabilities
+
+- PostgreSQL wire protocol compatibility
+- Serializable isolation by default
+- Automatic data sharding and rebalancing
+- Geo-partitioning for data locality
+- Multi-region with zone configurations
+- Changefeeds for CDC (Change Data Capture)
+- Follower reads for low-latency reads
+- Online schema changes
+
+## When to Use
+
+- Need distributed SQL with PostgreSQL compatibility
+- Multi-region deployments with data locality requirements
+- Want serializable isolation without performance penalty
+- Migrating from PostgreSQL to distributed architecture
+
+## Pseudo Code
+
+### Connection
+```typescript
+import { Pool } from 'pg';
+
+const pool = new Pool({
+  connectionString: 'postgresql://root@localhost:26257/defaultdb?sslmode=disable',
+});
+```
+
+### Geo-Partitioning
+```sql
+-- Create partitioned table
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name STRING,
+  region STRING NOT NULL
+) PARTITION BY LIST (region);
+
+-- Create partitions
+ALTER TABLE users PARTITION BY LIST (region) (
+  PARTITION us VALUES IN ('us-east', 'us-west'),
+  PARTITION eu VALUES IN ('eu-west', 'eu-central'),
+  PARTITION apac VALUES IN ('ap-southeast', 'ap-northeast')
+);
+
+-- Configure zones
+ALTER PARTITION us OF TABLE users CONFIGURE ZONE USING
+  constraints = '[+region=us-east1]';
+```
+
+### Changefeeds
+```sql
+-- Create changefeed to cloud storage
+CREATE CHANGEFEED FOR users INTO 's3://bucket/changefeed'
+  WITH format = 'json', resolved = '10s';
+
+-- Create changefeed to Kafka
+CREATE CHANGEFEED FOR users INTO 'kafka://broker:9092'
+  WITH format = 'json', topic_name = 'users';
+```
+
+### Follower Reads
+```sql
+-- Read from nearest follower (slightly stale)
+SELECT * FROM users AS OF SYSTEM TIME follower_read_timestamp();
+
+-- Bounded staleness
+SELECT * FROM users AS OF SYSTEM TIME '-5s';
+```
+
+### Multi-Region Setup
+```sql
+-- Set regions
+ALTER DATABASE mydb SET PRIMARY REGION "us-east1";
+ALTER DATABASE mydb ADD REGION "eu-west1";
+ALTER DATABASE mydb ADD REGION "ap-southeast1";
+
+-- Global table (low-latency reads everywhere)
+ALTER TABLE config SET LOCALITY GLOBAL;
+
+-- Regional by row (data pinned to user's region)
+ALTER TABLE users SET LOCALITY REGIONAL BY ROW;
+```
+
+## Common Patterns
+
+- **Schema migrations**: Use `flyway` or `migrate` with CockroachDB dialect
+- **Connection pooling**: Use PgBouncer or built-in connection handling
+- **Serializable retries**: Wrap transactions in retry loops for serialization errors
+- **Performance**: Use `EXPLAIN ANALYZE` to optimize distributed queries

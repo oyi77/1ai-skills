@@ -1,0 +1,105 @@
+---
+name: sequelize-patterns
+description: Sequelize ORM patterns — models, associations, migrations, transactions, hooks, TypeScript support
+---
+
+## Overview
+
+Sequelize is a promise-based Node.js ORM for PostgreSQL, MySQL, MariaDB, SQLite, and Microsoft SQL Server. It features solid transaction support, relations, eager/lazy loading, read replication, and more.
+
+## Capabilities
+
+- Model definition with TypeScript decorators or define()
+- Associations: hasOne, hasMany, belongsTo, belongsToMany
+- Migrations with sequelize-cli
+- Transactions (managed and unmanaged)
+- Hooks (beforeCreate, afterUpdate, etc.)
+- Scopes for reusable query fragments
+- Eager/lazy loading with include
+- Read replication and connection pooling
+
+## When to Use
+
+- Node.js applications needing a mature, well-documented ORM
+- Multi-database support (PostgreSQL, MySQL, SQLite, MSSQL)
+- Need complex associations and eager loading
+- Existing JavaScript codebase (Sequelize has strong JS support)
+
+## Pseudo Code
+
+### Model Definition
+```typescript
+import { DataTypes, Model } from 'sequelize';
+import sequelize from './connection';
+
+class User extends Model {
+  declare id: number;
+  declare email: string;
+  declare name: string;
+}
+
+User.init({
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  email: { type: DataTypes.STRING, unique: true, allowNull: false },
+  name: { type: DataTypes.STRING },
+}, { sequelize, modelName: 'user' });
+```
+
+### Associations
+```typescript
+User.hasMany(Post, { foreignKey: 'authorId' });
+Post.belongsTo(User, { foreignKey: 'authorId' });
+User.belongsToMany(Role, { through: 'UserRoles' });
+Role.belongsToMany(User, { through: 'UserRoles' });
+```
+
+### Queries
+```typescript
+// Create
+const user = await User.create({ email: 'alice@example.com', name: 'Alice' });
+
+// Find with eager loading
+const users = await User.findAll({
+  where: { name: { [Op.like]: '%Alice%' } },
+  include: [{ model: Post, as: 'posts' }],
+  order: [['createdAt', 'DESC']],
+  limit: 10,
+});
+
+// Update
+await User.update({ name: 'Updated' }, { where: { id: 1 } });
+
+// Delete
+await User.destroy({ where: { id: 1 } });
+```
+
+### Transactions
+```typescript
+// Managed transaction
+await sequelize.transaction(async (t) => {
+  const user = await User.create({ email: 'bob@example.com' }, { transaction: t });
+  await Post.create({ title: 'Hello', authorId: user.id }, { transaction: t });
+});
+```
+
+### Hooks
+```typescript
+User.addHook('beforeCreate', async (user) => {
+  user.email = user.email.toLowerCase();
+});
+```
+
+### Scopes
+```typescript
+User.addScope('active', { where: { isActive: true } });
+User.addScope('withPosts', { include: [{ model: Post }] });
+
+const activeUsers = await User.scope('active').findAll();
+```
+
+## Common Patterns
+
+- **Migrations**: `npx sequelize-cli migration:generate --name create-users`
+- **Seeders**: `npx sequelize-cli seed:generate --name demo-users`
+- **TypeScript**: Use `declare` for model attributes, `init()` for schema
+- **Connection pooling**: Configure `pool` option in Sequelize constructor

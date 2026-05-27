@@ -1,0 +1,100 @@
+---
+name: chakra-ui
+description: Chakra UI React component library — theming, responsive styles, color mode, component composition
+---
+
+## Overview
+
+Chakra UI is a modular, accessible React component library with built-in dark mode, responsive styles, and a flexible theming system. Uses style props for inline styling with theme tokens.
+
+## Capabilities
+
+- Theme customization with color mode (light/dark)
+- Responsive style props with array syntax
+- Component composition with `as` prop and `chakra()` factory
+- Form components with built-in validation
+- Modal, Drawer, Toast, and other overlay components
+- CSS-in-JS with Emotion under the hood
+
+## When to Use
+
+- Building React apps with accessible components out of the box
+- Need responsive design without writing media queries
+- Want a consistent design system with theme tokens
+- Building dashboards, forms, and complex layouts
+
+## Pseudo Code
+
+### Installation
+```bash
+npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
+```
+
+### Theme Provider
+```tsx
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+
+const theme = extendTheme({
+  colors: {
+    brand: { 500: "#3182ce", 600: "#2b6cb0" },
+  },
+  fonts: { heading: "Inter, sans-serif", body: "Inter, sans-serif" },
+})
+
+function App() {
+  return <ChakraProvider theme={theme}><YourApp /></ChakraProvider>
+}
+```
+
+### Responsive Props
+```tsx
+import { Box, Stack, Text } from "@chakra-ui/react"
+
+export function Hero() {
+  return (
+    <Stack direction={["column", "row"]} spacing={8} p={[4, 8, 16]}>
+      <Box flex={1}>
+        <Text fontSize={["2xl", "3xl", "4xl"]} fontWeight="bold">
+          Welcome
+        </Text>
+      </Box>
+    </Stack>
+  )
+}
+```
+
+### Component Composition
+```tsx
+import { Button, Icon, Flex } from "@chakra-ui/react"
+import { FaRocket } from "react-icons/fa"
+
+export function ActionButton() {
+  return (
+    <Button colorScheme="blue" size="lg" leftIcon={<Icon as={FaRocket} />}>
+      Launch
+    </Button>
+  )
+}
+```
+
+### Dark Mode
+```tsx
+import { useColorMode, Button, Box } from "@chakra-ui/react"
+
+export function ThemedCard() {
+  const { colorMode, toggleColorMode } = useColorMode()
+  return (
+    <Box bg={colorMode === "light" ? "white" : "gray.800"} p={6} rounded="lg">
+      <Button onClick={toggleColorMode}>Toggle {colorMode}</Button>
+    </Box>
+  )
+}
+```
+
+## Common Patterns
+
+- **Style props**: `<Box bg="blue.500" p={4} rounded="md" />` — inline styling with theme tokens
+- **Array responsive**: `fontSize={["sm", "md", "lg"]}` — mobile-first breakpoints
+- **useColorModeValue**: `useColorModeValue("white", "gray.800")` — theme-aware values
+- **Component factory**: `const CustomBox = chakra("div", { baseStyle: { p: 4 } })`
+- **Portal overlays**: Modals and Drawers use Portal for proper z-index layering
