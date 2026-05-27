@@ -1,7 +1,7 @@
 {
   "name": "1ai-skills",
   "version": "3.1.0",
-  "description": "216 production-ready AI agent skills with self-evolving meta-skills — addyosmani/agent-skills anatomy + anthropics/financial-services workflows",
+  "description": "987 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
   "main": "index.js",
   "scripts": {
     "postinstall": "node scripts/install-hooks.js",
@@ -23,7 +23,12 @@
     "trading",
     "seo",
     "marketing",
-    "financial-services"
+    "financial-services",
+    "cybersecurity",
+    "security",
+    "penetration-testing",
+    "threat-hunting",
+    "forensics"
   ],
   "author": {
     "name": "1ai (oyi77)",
@@ -42,6 +47,7 @@
     "automation/",
     "content/",
     "core/",
+    "cybersecurity/",
     "data/",
     "development/",
     "devops/",
@@ -59,12 +65,12 @@
     "docs/",
     "hooks/",
     "scripts/",
+    "AGENTS.md",
     "README.md",
     "CONTRIBUTING.md",
-    "LIFECYCLE_INDEX.md",
-    "FINANCIAL_SERVICES_INDEX.md",
-    "IMPROVEMENTS_SUMMARY.md",
     "QUICK_START.md",
-    "llms.txt"
+    "SKILLS.json",
+    "llms.txt",
+    "manifests/"
   ]
 }

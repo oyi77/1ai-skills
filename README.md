@@ -1,9 +1,9 @@
-# 1ai-Skills — 220 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 987 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 220](https://img.shields.io/badge/skills-220-blue)](https://github.com/oyi77/1ai-skills)
-[![Categories: 16](https://img.shields.io/badge/categories-16-green)](https://github.com/oyi77/1ai-skills)
+[![Skills: 987](https://img.shields.io/badge/skills-987-blue)](https://github.com/oyi77/1ai-skills)
+[![Categories: 18](https://img.shields.io/badge/categories-18-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
 
@@ -13,9 +13,9 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **220 production-ready AI agent skills** organized across **16 categories**. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **987 production-ready AI agent skills** organized across **18 categories** — including **754 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
-**New in v3.0:** 12 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
+**New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
 ---
 
@@ -154,10 +154,11 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 220 Skills by Category
+## All 987 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
+| **cybersecurity/** | 754 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust |
 | **research/** | 25 | McKinsey analysis, deep research, Polymarket analyst, continuous learning |
 | **core/** | 24 | Self-improvement, memory systems, AI orchestration, session brain |
 | **content/** | 23 | Remotion video engine, video generation, AI podcast, faceless YouTube, humanizer, Seedance |
@@ -169,7 +170,7 @@ Skills now reference each other (not duplicate content):
 | **integrations/** | 11 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs |
 | **operations/** | 10 | Finance ops, revenue team, project management, payment invoicing |
 | **mcp/** | 10 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear |
-| **meta/** | 12 | find-skills, create-skills, auto-evolve, performance monitor, auto-learner |
+| **meta/** | 13 | find-skills, create-skills, auto-evolve, performance monitor, auto-learner |
 | **sales/** | 6 | High-ticket closing, lead generation, business development |
 | **devops/** | 6 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI |
 | **trading/** | 7 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot |
@@ -206,6 +207,16 @@ Skills now reference each other (not duplicate content):
 - **Faceless YouTube** — MrBeast-style automated YouTube content
 - **Seedance** — Cinematic AI video production
 
+### Cybersecurity (754 skills, 26 domains)
+- **Threat Hunting** — 55 skills: APT detection, MITRE ATT&CK mapping, Sigma rules, anomaly detection
+- **Cloud Security** — 60 skills: AWS/Azure/GCP hardening, CSPM, IAM, container security
+- **Digital Forensics** — 37 skills: memory forensics, disk imaging, malware reverse engineering
+- **Penetration Testing** — 23 skills: web app, network, API, mobile pen testing with OWASP/PTES
+- **Red Teaming** — 24 skills: Cobalt Strike, C2 frameworks, adversary emulation, evasion
+- **Incident Response** — 25 skills: triage, scoping, containment, eradication, lessons learned
+- **DevSecOps** — 17 skills: SAST/DAST, supply chain security, CI/CD hardening
+- **Compliance & Governance** — NIST CSF 2.0, MITRE ATT&CK v18, D3FEND, ATLAS, AI RMF mapping
+
 ### Engineering
 - **Systematic Debugging** — Evidence-driven root cause analysis
 - **TDD** — Test-driven development with red-green-refactor loop
@@ -237,13 +248,14 @@ Each skill contains:
 ├── automation/    # Workflow automation & bots (21)
 ├── content/       # Content creation & media (22)
 ├── core/          # Infrastructure & memory (24)
+├── cybersecurity/ # Security skills — 26 domains (754) ← NEW
 ├── data/          # Data analysis & visualization (4)
 ├── development/   # Coding, debugging, TDD (17)
 ├── devops/        # Docker, CI/CD, K8s (6)
 ├── integrations/  # Slack, Discord, Notion, GitHub (11)
 ├── marketing/     # SEO, growth, advertising (21)
 ├── mcp/           # MCP server skills (10)
-├── meta/          # Self-improving agent system (9) ← NEW
+├── meta/          # Self-improving agent system (9)
 ├── operations/    # Business operations (10)
 ├── productivity/  # Google, calendar, email (6)
 ├── research/      # Analysis, investigation (25)
@@ -256,6 +268,7 @@ Each skill contains:
 ## Use Cases
 
 - **AI Agent Developers** — Add expert-level capabilities to any LLM agent
+- **Security Teams** — 754 cybersecurity skills: threat hunting, forensics, pen testing, red teaming, SOC ops, cloud security, incident response
 - **Automation Engineers** — Pre-built workflows for n8n, Slack, Discord, WhatsApp
 - **SEO Professionals** — Technical SEO, content optimization, GEO for AI Overviews
 - **Traders** — Black Edge intelligence, Polymarket analysis, crypto bots
