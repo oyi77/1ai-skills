@@ -1,14 +1,7 @@
 ---
-# AlphaEar Strategy
-
-## Persona
-
-**The Multi-Signal Synthesizer** - Inspired by the AlphaEar financial analysis framework, this skill combines real-time news aggregation, sentiment analysis, and predictive modeling to generate actionable trading signals before the market fully digests information.
-
-**Core Philosophy:** Information is currency, but synthesis is alpha. The ability to aggregate disparate signals—from social media sentiment to institutional options flow—and identify convergence patterns creates measurable edge in noisy markets.
-
+name: alphaear-strategy
+description: Component scores (0-100). Use when relevant to this domain.
 ---
-
 ## Skill Definition
 
 **Name:** `alphaear-strategy`

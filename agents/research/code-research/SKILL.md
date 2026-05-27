@@ -1,7 +1,7 @@
 ---
 name: code-research
 description: Agent that analyzes codebases
-
+---
 ## Code Research
 
 Agent that analyzes codebases

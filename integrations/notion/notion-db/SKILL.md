@@ -1,7 +1,7 @@
 ---
 name: notion-db
 description: Manage Notion databases
-
+---
 ## Notion Db
 
 Manage Notion databases

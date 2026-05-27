@@ -1,5 +1,5 @@
 ---
-name: marketing
+name: marketing-strategy
 description: Use when doing social media automation, content scheduling, analytics tracking, and campaign management.
 ---
 persona:

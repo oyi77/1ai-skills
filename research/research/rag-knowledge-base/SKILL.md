@@ -1,6 +1,6 @@
 ---
 name: rag-knowledge-base
-description: Build RAG (Retrieval-Augmented Generation) knowledge bases for businesses — turn documents, SOPs, policies, product manuals into AI assistants that answer questions accurately. Use when: building internal AI chatbots, customer-facing AI support, document Q&A, custom trained assistant for a business. Revenue potential: $3,000–30,000/project + $1,000–5,000/month maintenance. Triggers on "RAG", "knowledge base", "AI on my documents", "train AI on data", "custom chatbot", "internal AI assistant".
+description: RAG Knowledge Base Builder. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

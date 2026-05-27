@@ -1,7 +1,7 @@
 ---
 name: research-agent
 description: Agent that gathers information
-
+---
 ## Research Agent
 
 Agent that gathers information
