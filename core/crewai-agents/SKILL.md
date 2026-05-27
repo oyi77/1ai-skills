@@ -1,0 +1,162 @@
+---
+name: crewai-agents
+description: CrewAI multi-agent orchestration — agents, tasks, crews, tools, memory, delegation
+---
+
+## Overview
+
+CrewAI is a framework for orchestrating role-playing AI agents that collaborate to complete complex tasks. Agents have roles, goals, and backstories, and work together in crews with configurable processes (sequential, hierarchical).
+
+## Capabilities
+
+- Define agents with roles, goals, and tools
+- Create tasks with expected outputs
+- Organize crews with sequential or hierarchical processes
+- Add custom tools for web search, file I/O, APIs
+- Enable memory for context across tasks
+- Use delegation for agent-to-agent communication
+
+## When to Use
+
+- Building multi-agent systems for research, writing, or analysis
+- Needing role-specialized agents collaborating on tasks
+- Wanting structured task delegation with accountability
+- Building autonomous workflows with human-in-the-loop options
+
+## Pseudo Code
+
+### Agent and Crew Definition
+
+```python
+from crewai import Agent, Task, Crew, Process
+from crewai_tools import SerperDevTool, FileReadTool
+
+# Tools
+search_tool = SerperDevTool()
+file_tool = FileReadTool()
+
+# Agents
+researcher = Agent(
+    role="Senior Research Analyst",
+    goal="Find comprehensive information on the given topic",
+    backstory="You are an experienced researcher with expertise in finding and synthesizing information from multiple sources.",
+    tools=[search_tool],
+    verbose=True,
+    allow_delegation=False,
+)
+
+writer = Agent(
+    role="Content Writer",
+    goal="Write engaging, well-structured content based on research",
+    backstory="You are a skilled writer who transforms research into compelling narratives.",
+    tools=[file_tool],
+    verbose=True,
+    allow_delegation=False,
+)
+
+reviewer = Agent(
+    role="Quality Reviewer",
+    goal="Ensure content is accurate, well-structured, and meets standards",
+    backstory="You are a meticulous editor with years of experience in content quality assurance.",
+    verbose=True,
+    allow_delegation=True,  # Can delegate back to writer
+)
+
+# Tasks
+research_task = Task(
+    description="Research the latest trends in AI agents for 2026",
+    expected_output="A comprehensive report with key findings, trends, and data points",
+    agent=researcher,
+)
+
+writing_task = Task(
+    description="Write a blog post based on the research findings",
+    expected_output="A 1500-word blog post with introduction, key sections, and conclusion",
+    agent=writer,
+    context=[research_task],  # Depends on research
+)
+
+review_task = Task(
+    description="Review the blog post for accuracy and quality",
+    expected_output="A quality assessment with specific improvement suggestions",
+    agent=reviewer,
+    context=[writing_task],
+)
+
+# Crew
+crew = Crew(
+    agents=[researcher, writer, reviewer],
+    tasks=[research_task, writing_task, review_task],
+    process=Process.sequential,  # Execute tasks in order
+    verbose=True,
+    memory=True,  # Enable shared memory
+)
+
+# Execute
+result = crew.kickoff()
+print(result)
+```
+
+### Custom Tools
+
+```python
+from crewai_tools import BaseTool
+from pydantic import BaseModel, Field
+
+class DatabaseQueryInput(BaseModel):
+    query: str = Field(description="SQL query to execute")
+
+class DatabaseQueryTool(BaseTool):
+    name: str = "database_query"
+    description: str = "Execute SQL queries against the analytics database"
+    args_schema: type[BaseModel] = DatabaseQueryInput
+
+    def _run(self, query: str) -> str:
+        import pandas as pd
+        df = pd.read_sql(query, con=engine)
+        return df.to_string()
+```
+
+### Hierarchical Process
+
+```python
+crew = Crew(
+    agents=[researcher, writer, reviewer],
+    tasks=[research_task, writing_task, review_task],
+    process=Process.hierarchical,  # Manager agent delegates
+    manager_llm="gpt-4o",
+    verbose=True,
+)
+```
+
+### Human Input
+
+```python
+task = Task(
+    description="Research and write about...",
+    expected_output="...",
+    agent=researcher,
+    human_input=True,  # Pause for human feedback before completing
+)
+```
+
+## Common Patterns
+
+| Pattern | When to Use |
+|---------|------------|
+| `Process.sequential` | Tasks have clear order |
+| `Process.hierarchical` | Need manager to delegate dynamically |
+| `allow_delegation=True` | Agent can ask other agents for help |
+| `memory=True` | Share context across tasks |
+| `human_input=True` | Need human approval at step |
+| `context=[task]` | Task dependency |
+| Custom `BaseTool` | Integrate external systems |
+
+## Error Handling
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| Agent loop (delegation cycle) | Agents delegating back and forth | Set `allow_delegation=False` on some agents |
+| Task timeout | Agent stuck reasoning | Add `max_iterations` to crew |
+| Tool error | External API failure | Add error handling in tool `_run` method |
+| Token limit exceeded | Long conversation history | Reduce context or use `memory=False` |

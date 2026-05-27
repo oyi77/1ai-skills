@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **987 skills across 18 categories**, including 754 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1215 skills across 18 categories**, including 779 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -12,25 +12,25 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 
 | Category | Skills | Focus |
 |----------|-------:|-------|
-| `cybersecurity/` | 754 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec |
-| `research/` | 25 | McKinsey-style analysis, deep research, Polymarket, Sherlock deduction |
-| `core/` | 24 | Self-improvement, memory, orchestration, session brain, hub memory |
-| `content/` | 23 | Video/podcast generation, humanizer, Seedance, Remotion, faceless YT |
-| `marketing/` | 22 | SEO, viral, Twitter automation, email, growth |
-| `automation/` | 21 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing |
-| `development/` | 17 | TDD, debugging, code review, PRD, git worktrees, brainstorming |
-| `agents/` | 14 | Research, review, planning, code, deploy, refactor, lint, security |
-| `financial/` | 14 | Wolf finance, value investing, tax-loss harvesting, model builder |
-| `meta/` | 13 | Self-improving meta-skills (auto-evolve, performance monitor, etc.) |
-| `integrations/` | 11 | GitHub, Discord, Notion, Slack |
-| `operations/` | 10 | Governance, KYC, statement audit, GL reconciliation |
-| `mcp/` | 10 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase) |
-| `trading/` | 7 | Crypto bot, Polymarket fast loop, weather trader |
-| `sales/` | 6 | High-ticket closing, lead gen, business development |
-| `productivity/` | 6 | Calendars, email, meetings, daily planner |
-| `devops/` | 6 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab) |
-| `data/` | 4 | Data cleaning, anomaly detection, viz, reporting |
-| **TOTAL** | **987** | |
+| `cybersecurity/` | 779 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec |
+| `development/` | 78 | TDD, debugging, code review, PRD, git worktrees, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
+| `content/` | 48 | Video/podcast generation, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks |
+| `devops/` | 37 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
+| `automation/` | 27 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing, Airflow pipelines |
+| `marketing/` | 39 | SEO, viral, Twitter automation, email, growth, ecommerce, affiliate management |
+| `core/` | 37 | Self-improvement, memory, orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML |
+| `research/` | 28 | McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence |
+| `integrations/` | 27 | GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, team collaboration |
+| `financial/` | 16 | Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi |
+| `operations/` | 15 | Governance, KYC, statement audit, GL reconciliation, team ops, project management |
+| `agents/` | 16 | Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents |
+| `meta/` | 14 | Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore |
+| `mcp/` | 12 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase) |
+| `trading/` | 18 | Crypto bot, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs, commodities |
+| `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
+| `sales/` | 7 | High-ticket closing, lead generation, business development, CRM automation |
+| `productivity/` | 7 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
+| **TOTAL** | **1215** | |
 
 ## Tooling Dirs (no skills, support infrastructure)
 
@@ -57,7 +57,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 ### Working In This Directory
 - Skills are atomic, self-contained, and namespaced by category dir.
 - **Discovery order**: read `SKILLS.json` (totals) → read category `AGENTS.md` (if present) → read individual `SKILL.md`.
-- Do NOT walk all 987 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
+- Do NOT walk all 1215 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
 - For the 754 cybersecurity skills, use `cybersecurity/AGENTS.md` for the subdomain map (avoids loading the whole tree into context).
 
 ### Adding a Skill

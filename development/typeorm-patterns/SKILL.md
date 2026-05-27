@@ -1,0 +1,124 @@
+---
+name: typeorm-patterns
+description: TypeORM patterns — entities, repositories, migrations, relations, query builder, active record vs data mapper
+---
+
+## Overview
+
+TypeORM is a TypeScript ORM for Node.js that supports Active Record and Data Mapper patterns. It works with PostgreSQL, MySQL, SQLite, MongoDB, and more.
+
+## Capabilities
+
+- Entity decorators for schema definition
+- Repository and Active Record patterns
+- Migration generation and execution
+- Query Builder for complex queries
+- Relations (one-to-one, one-to-many, many-to-many)
+- Subscribers and listeners for event-driven logic
+- Connection pooling and replication
+
+## When to Use
+
+- Building TypeScript/Node.js applications with SQL databases
+- Want both Active Record and Data Mapper patterns
+- Need complex query builder capabilities
+- Working with existing database schemas
+
+## Pseudo Code
+
+### Entity Definition
+```typescript
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, CreateDateColumn } from 'typeorm';
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ unique: true })
+  email: string;
+
+  @Column({ nullable: true })
+  name: string;
+
+  @OneToMany(() => Post, post => post.author)
+  posts: Post[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+}
+
+@Entity()
+export class Post {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  title: string;
+
+  @Column({ nullable: true })
+  content: string;
+
+  @ManyToOne(() => User, user => user.posts)
+  author: User;
+}
+```
+
+### Repository Pattern
+```typescript
+import { AppDataSource } from './data-source';
+import { User } from './entity/User';
+
+const userRepo = AppDataSource.getRepository(User);
+
+// CRUD
+const user = await userRepo.save({ email: 'alice@example.com', name: 'Alice' });
+const users = await userRepo.find({ where: { name: 'Alice' }, relations: ['posts'] });
+await userRepo.update({ id: 1 }, { name: 'Updated' });
+await userRepo.delete({ id: 1 });
+
+// Query Builder
+const result = await userRepo
+  .createQueryBuilder('user')
+  .leftJoinAndSelect('user.posts', 'post')
+  .where('user.email LIKE :email', { email: '%@example.com' })
+  .orderBy('user.createdAt', 'DESC')
+  .take(10)
+  .getMany();
+```
+
+### Data Source
+```typescript
+import { DataSource } from 'typeorm';
+
+export const AppDataSource = new DataSource({
+  type: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  username: 'user',
+  password: 'pass',
+  database: 'mydb',
+  entities: [User, Post],
+  migrations: ['./migration/*.ts'],
+  synchronize: false, // Use migrations in production
+});
+```
+
+### Migrations
+```bash
+# Generate migration
+npx typeorm migration:generate -d src/data-source.ts src/migration/CreateUser
+
+# Run migrations
+npx typeorm migration:run -d src/data-source.ts
+
+# Revert last migration
+npx typeorm migration:revert -d src/data-source.ts
+```
+
+## Common Patterns
+
+- **Active Record**: `User.find()`, `user.save()` — simpler, less testable
+- **Data Mapper**: `repo.find()`, `repo.save(user)` — more testable, more boilerplate
+- **Subscribers**: Listen to entity events (beforeInsert, afterUpdate, etc.)
+- **Transactions**: `AppDataSource.transaction(async (manager) => { ... })`
