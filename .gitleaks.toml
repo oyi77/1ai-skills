@@ -1,0 +1,60 @@
+# gitleaks config — https://github.com/gitleaks/gitleaks
+# Extends default rules and adds allowlists for known-safe documentation examples.
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Cybersecurity skill documentation - intentional examples (AKIA*, AIDA*, ghp_*, sk-*, JWTs)"
+paths = [
+    '''cybersecurity/.*''',
+]
+
+[[allowlists]]
+description = "Tushare-finance Chinese reference docs (no real secrets, just API hex token field schemas)"
+paths = [
+    '''trading/tushare-finance/reference/.*''',
+]
+
+[[allowlists]]
+description = "Code-review checklist mentions 'API keys' in prose, not actual secrets"
+paths = [
+    '''references/code-review-checklist\.md''',
+]
+
+[[allowlists]]
+description = "References to placeholder patterns in skill documentation"
+regexes = [
+    '''YOUR_[A-Z_]+''',
+    '''<[A-Z_]+>''',
+    '''\$\{[A-Z_]+\}''',
+    '''xxx[a-z]*-[a-z]+-token''',
+    '''AKIAIOSFODNN7EXAMPLE''',
+    '''AKIAI44QH8DHBEXAMPLE''',
+    '''AKIAEXPOSEDKEY123456''',
+    '''AKIAXXXXXXXXXXXXXXXX''',
+    '''wJalrXUtnFEMI/K7MDENG''',
+    '''xoxb-your-token''',
+    '''ghp_xxx''',
+    '''ghp_XXXXXXXXXXXX''',
+    '''sk-abcdef1234567890abcdef''',
+    '''sk-1234567890abcdef''',
+    '''pb_live_PLACEHOLDER''',
+]
+
+[[allowlists]]
+description = "Python max_seq_length=2048 / chain_id=self.chain_id false positives"
+regexes = [
+    '''max_seq_length=\d+''',
+    '''chain_id=self\.chain_id''',
+    '''ssl_verify=not''',
+]
+
+[[allowlists]]
+description = "Documentation auth-header placeholders"
+regexes = [
+    '''API_TOKEN''',
+    '''any-string''',
+    '''email@company\.com:''',
+    '''email:API_TOKEN''',
+]

@@ -16,15 +16,15 @@ Search and interact with Frank's Second Brain — a persistent knowledge base st
 ```bash
 # Search entries
 curl -s "https://second-brain-chi-umber.vercel.app/api/entries?q=SEARCH_TERM&limit=10" \
-  -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+  -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 # Search by tag
 curl -s "https://second-brain-chi-umber.vercel.app/api/entries?q=SEARCH_TERM&tag=research&limit=10" \
-  -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+  -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 # Store new entry
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/entries" \
-  -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+  -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Entry Title",
@@ -35,7 +35,7 @@ curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/entries" \
 
 # Create task
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/tasks" \
-  -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+  -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Task Title",
@@ -93,7 +93,7 @@ curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/tasks" \
 ## Critical Rules
 
 - **EXECUTE ALL CURL COMMANDS FOR REAL** - Never simulate or fabricate responses
-- **Always include API key** - Add `x-api-key: REDACTED_BRAIN_SEARCH_KEY` header
+- **Always include API key** - Add `x-api-key: ${BRAIN_SEARCH_API_KEY}` header
 - **Report actual responses** - Show real HTTP response, don't invent success
 - **Use job queue** - For multi-step tasks, create jobs instead of doing inline
 - **Log noteworthy activity** - Record events outside normal Telegram chat

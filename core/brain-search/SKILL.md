@@ -36,22 +36,22 @@ Search and interact with Frank's Second Brain — the persistent knowledge base 
 
 https://second-brain-chi-umber.vercel.app
 
-All requests require header: x-api-key: REDACTED_BRAIN_SEARCH_KEY
+All requests require header: x-api-key: ${BRAIN_SEARCH_API_KEY}
 
 Find past conversations, research, notes, and logged activity.
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/entries?q=SEARCH_TERM&limit=10" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/entries?q=SEARCH_TERM&tag=TAG_NAME&limit=10" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 Common tags: daily-journal, telegram, research, market-analysis, advisory-council
 
 Store a new knowledge entry (research results, analysis, etc.).
 
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/entries" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
  -H "Content-Type: application/json" \
  -d '{
  "title": "Entry Title",
@@ -63,7 +63,7 @@ curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/entries" \
 Record noteworthy events, decisions, or results.
 
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/log" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
  -H "Content-Type: application/json" \
  -d '{
  "action": "ACTION_TYPE",
@@ -73,7 +73,7 @@ curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/log" \
  }'
 
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/tasks" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
  -H "Content-Type: application/json" \
  -d '{
  "title": "Task Title",
@@ -88,18 +88,18 @@ Valid priorities: low, medium, high
 Note: project_id is validated — create projects first via POST /api/projects before referencing them.
 
 curl -s -X PATCH "https://second-brain-chi-umber.vercel.app/api/tasks/TASK_ID" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
  -H "Content-Type: application/json" \
  -d '{"status": "in_progress"}'
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/tasks?status=backlog&limit=20" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/activity" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/upload" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
  -F "file=@/path/to/file.jpg" \
  -F "title=My File" \
  -F "tags=upload,test"
@@ -107,18 +107,18 @@ curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/upload" \
 Optional fields: entry_id, title, tags, description. If no entry_id, auto-creates a file type entry.
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/files?limit=50" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 Filters: ?category=image|video|audio|document, ?stats=true
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/entries/ENTRY_ID/attachments" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 curl -s -X DELETE "https://second-brain-chi-umber.vercel.app/api/attachments/ATTACHMENT_ID" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 curl -s -X POST "https://second-brain-chi-umber.vercel.app/api/jobs" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY" \
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}" \
  -H "Content-Type: application/json" \
  -d '{
  "type": "JOB_TYPE",
@@ -146,14 +146,14 @@ MiniMax M2.5
 Research, analysis, batch ops (cheapest)
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/jobs/JOB_ID" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 curl -s "https://second-brain-chi-umber.vercel.app/api/jobs?status=running&stats=true" \
- -H "x-api-key: REDACTED_BRAIN_SEARCH_KEY"
+ -H "x-api-key: ${BRAIN_SEARCH_API_KEY}"
 
 - EXECUTE EVERY CURL COMMAND FOR REAL — use your shell/exec tool. Never simulate or fabricate API responses.
 
-- Always include x-api-key: REDACTED_BRAIN_SEARCH_KEY header
+- Always include x-api-key: ${BRAIN_SEARCH_API_KEY} header
 
 - Always report the actual HTTP response back to Boss Man
 
