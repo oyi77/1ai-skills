@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-05-27T17:12:09Z",
+  "total_skills": 987,
+  "category_count": 18,
+  "categories": {
+    "agents": 14,
+    "automation": 21,
+    "content": 23,
+    "core": 24,
+    "cybersecurity": 754,
+    "data": 4,
+    "development": 17,
+    "devops": 6,
+    "financial": 14,
+    "integrations": 11,
+    "marketing": 22,
+    "mcp": 10,
+    "meta": 13,
+    "operations": 10,
+    "productivity": 6,
+    "research": 25,
+    "sales": 6,
+    "trading": 7
+  },
+  "tooling_dirs": ["docs", "hooks", "manifests", "references", "scripts"]
+}
