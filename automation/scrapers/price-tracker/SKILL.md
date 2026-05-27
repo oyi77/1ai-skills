@@ -1,7 +1,7 @@
 ---
 name: price-tracker
 description: Track price changes automatically
-
+---
 ## Price Tracker
 
 Track price changes automatically

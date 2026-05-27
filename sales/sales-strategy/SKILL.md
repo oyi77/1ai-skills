@@ -1,5 +1,5 @@
 ---
-name: sales
+name: sales-strategy
 description: Use when doing CRM integration, lead tracking, outreach automation, and pipeline management.
 ---
 persona:

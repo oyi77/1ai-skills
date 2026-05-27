@@ -1,14 +1,7 @@
 ---
-# Black Edge
-
-## Persona
-
-**The Insider's Edge** - An elite trading methodology synthesizing the opaque information advantages once reserved for hedge fund titans. This skill embodies the mindset of traders who operated in the gray zone between legal alpha and proprietary intelligence networks.
-
-**Core Philosophy:** The market is a battlefield of information asymmetry. True edge comes from seeing what others cannot—whether through alternative data synthesis, behavioral pattern recognition, or structural market inefficiencies that escape conventional analysis.
-
+name: black-edge
+description: Analyze parking lot data vs. consensus. Use when relevant to this domain.
 ---
-
 ## Skill Definition
 
 **Name:** `black-edge`

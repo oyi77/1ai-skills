@@ -1,7 +1,7 @@
 ---
 name: content-monitor
 description: Monitor content for changes
-
+---
 ## Content Monitor
 
 Monitor content for changes

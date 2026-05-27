@@ -1,7 +1,7 @@
 ---
 name: smart-scraper
 description: AI-powered web scraper
-
+---
 ## Smart Scraper
 
 AI-powered web scraper

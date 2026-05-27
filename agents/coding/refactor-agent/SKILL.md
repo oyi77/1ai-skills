@@ -1,7 +1,7 @@
 ---
 name: refactor-agent
 description: Agent that refactors code
-
+---
 ## Refactor Agent
 
 Agent that refactors code

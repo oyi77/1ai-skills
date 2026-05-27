@@ -1,7 +1,7 @@
 ---
 name: argo-cd
 description: Create ArgoCD configs
-
+---
 ## Argo Cd
 
 Create ArgoCD configs

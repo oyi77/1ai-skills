@@ -1,7 +1,7 @@
 ---
 name: viral-hook
 description: Generate viral hooks instantly
-
+---
 ## Viral Hook
 
 Generate viral hooks instantly

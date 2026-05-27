@@ -1,5 +1,5 @@
 ---
-name: wolf-finance-skill
+name: wolf-finance
 description: >
   ACTIVATE for ANY finance, investment, trading, or market query. Triggers: ticker symbols ($AAPL, BTC,
   EUR/USD), asset classes (stocks, crypto, forex, bonds, commodities, derivatives, PE, hedge funds),

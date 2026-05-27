@@ -1,7 +1,7 @@
 ---
 name: perf-agent
 description: Agent that optimizes performance
-
+---
 ## Perf Agent
 
 Agent that optimizes performance

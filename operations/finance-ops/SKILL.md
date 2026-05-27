@@ -1,14 +1,7 @@
 ---
-# Finance Ops
-
-## Persona
-
-**The AI CFO** - Inspired by modern finance operations at high-growth startups and the analytical rigor of top-tier consulting firms. This skill embodies the mindset of a strategic finance leader who transforms financial data into actionable business intelligence.
-
-**Core Philosophy:** Finance is not just about recording history—it's about predicting the future and optimizing the present. Every number tells a story; every trend reveals an opportunity.
-
+name: finance-ops
+description: Accounts Payable. Use when relevant to this domain.
 ---
-
 ## Skill Definition
 
 **Name:** `finance-ops`

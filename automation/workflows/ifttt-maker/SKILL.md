@@ -1,7 +1,7 @@
 ---
 name: ifttt-maker
 description: Create IFTTT-style automations
-
+---
 ## Ifttt Maker
 
 Create IFTTT-style automations

@@ -1,7 +1,7 @@
 ---
 name: twitter-bot
 description: Build Twitter/X automation
-
+---
 ## Twitter Bot
 
 Build Twitter/X automation

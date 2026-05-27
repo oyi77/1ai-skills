@@ -1,7 +1,7 @@
 ---
 name: quote-cards
 description: Create quote graphics
-
+---
 ## Quote Cards
 
 Create quote graphics

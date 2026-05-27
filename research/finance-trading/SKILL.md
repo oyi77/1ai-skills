@@ -1,5 +1,5 @@
 ---
-name: maybe-hft
+name: finance-trading
 description: "Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker."
 persona:
   name: "Paul Tudor Jones"

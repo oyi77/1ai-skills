@@ -1,7 +1,7 @@
 ---
 name: github-mcp
 description: MCP server for GitHub automation
-
+---
 ## Github Mcp
 
 MCP server for GitHub automation

@@ -1,7 +1,7 @@
 ---
 name: docker-compose
 description: Generate docker-compose files
-
+---
 ## Docker Compose
 
 Generate docker-compose files

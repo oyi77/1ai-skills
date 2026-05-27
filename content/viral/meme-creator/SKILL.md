@@ -1,7 +1,7 @@
 ---
 name: meme-creator
 description: Auto-generate memes
-
+---
 ## Meme Creator
 
 Auto-generate memes

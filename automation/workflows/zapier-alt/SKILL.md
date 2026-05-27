@@ -1,7 +1,7 @@
 ---
 name: zapier-alt
 description: Self-hosted Zapier alternative
-
+---
 ## Zapier Alt
 
 Self-hosted Zapier alternative

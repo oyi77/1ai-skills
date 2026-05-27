@@ -1,7 +1,7 @@
 ---
 name: notion-pages
 description: Create and edit Notion pages
-
+---
 ## Notion Pages
 
 Create and edit Notion pages

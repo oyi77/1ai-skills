@@ -1,7 +1,7 @@
 ---
 name: github-issues
 description: Manage GitHub issues
-
+---
 ## Github Issues
 
 Manage GitHub issues
