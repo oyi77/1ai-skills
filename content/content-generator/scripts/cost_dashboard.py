@@ -47,6 +47,12 @@ def init_db():
             )
         """
         )
+
+        # ⚡ Bolt Optimization: Add indexes for frequently queried fields
+        # Accelerates get_session_cost() and get_monthly_cost() which filter by these columns
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_cost_log_chat_id ON cost_log(chat_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_cost_log_created_at ON cost_log(created_at)")
+
         conn.commit()
 
 
