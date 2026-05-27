@@ -4,64 +4,55 @@
 [extend]
 useDefault = true
 
-[[allowlists]]
-description = "Cybersecurity skill documentation - intentional examples (AKIA*, AIDA*, ghp_*, sk-*, JWTs)"
+[allowlist]
+description = "Global allowlist: docs, placeholders, REDACTED markers, false positives"
+
+# Paths to exclude entirely (documentation, examples)
 paths = [
     '''cybersecurity/.*''',
-]
-
-[[allowlists]]
-description = "Tushare-finance Chinese reference docs (no real secrets, just API hex token field schemas)"
-paths = [
     '''trading/tushare-finance/reference/.*''',
-]
-
-[[allowlists]]
-description = "Code-review checklist mentions 'API keys' in prose, not actual secrets"
-paths = [
     '''references/code-review-checklist\.md''',
+    '''\.gitleaks\.toml''',
 ]
 
-[[allowlists]]
-description = "References to placeholder patterns in skill documentation"
+# Regex patterns that are always allowed
 regexes = [
+    # Placeholder patterns
     '''YOUR_[A-Z_]+''',
     '''<[A-Z_]+>''',
     '''\$\{[A-Z_]+\}''',
     '''xxx[a-z]*-[a-z]+-token''',
+    # AWS documentation examples
     '''AKIAIOSFODNN7EXAMPLE''',
     '''AKIAI44QH8DHBEXAMPLE''',
     '''AKIAEXPOSEDKEY123456''',
     '''AKIAXXXXXXXXXXXXXXXX''',
     '''wJalrXUtnFEMI/K7MDENG''',
+    # Common doc placeholders
     '''xoxb-your-token''',
     '''ghp_xxx''',
     '''ghp_XXXXXXXXXXXX''',
     '''sk-abcdef1234567890abcdef''',
     '''sk-1234567890abcdef''',
     '''pb_live_PLACEHOLDER''',
+    # Our own redaction markers from history rewrite
     '''REDACTED_[A-Z_]+''',
-]
-
-[[allowlists]]
-description = "Python max_seq_length=2048 / chain_id=self.chain_id false positives"
-regexes = [
-    '''max_seq_length=\d+''',
-    '''chain_id=self\.chain_id''',
-    '''ssl_verify=not''',
-]
-
-[[allowlists]]
-description = "Documentation auth-header placeholders"
-regexes = [
-    '''API_TOKEN''',
-    '''any-string''',
+    # Documentation auth header placeholders
+    '''\bAPI_TOKEN\b''',
+    '''\bAPI_KEY\b''',
+    '''\bany-string\b''',
     '''email@company\.com:''',
     '''email:API_TOKEN''',
+    # Tenant/customer placeholders
     '''pf_tenant\w*''',
     '''pk_tenant\w*''',
     '''pb_live_\.\.\.''',
     '''0x_AB_CDEF_\d+_\.\.\.''',
+    # Python false positives
+    '''max_seq_length=\d+''',
+    '''chain_id=self\.chain_id''',
+    '''ssl_verify=not''',
+    # Base64 of innocuous JSON like {"page":1}
     '''eyJwYWdlIjox''',
     '''eyJwYWdlIjoy''',
 ]
