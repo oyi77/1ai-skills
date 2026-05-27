@@ -21,7 +21,7 @@ jobs:
       - name: Install PyYAML
         run: pip install pyyaml
 
-      - name: Validate skill frontmatter (all 987 skills)
+      - name: Validate skill frontmatter (all skills)
         run: python3 scripts/validate-skills.py --report validation-report.json
 
       - name: Audit skill counts
