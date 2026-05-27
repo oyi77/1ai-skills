@@ -40,6 +40,12 @@ def init_db():
             )
         """
         )
+
+        # ⚡ Bolt Optimization: Add indexes for frequently queried fields
+        # Drastically speeds up get_results() and get_stats() which filter/order by these columns
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_results_chat_id ON results(chat_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_results_created_at ON results(created_at)")
+
         conn.commit()
 
 
