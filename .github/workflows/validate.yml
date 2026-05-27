@@ -1,0 +1,57 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Validate skill frontmatter (all 987 skills)
+        run: python3 scripts/validate-skills.py --report validation-report.json
+
+      - name: Audit skill counts
+        run: bash scripts/audit-skills.sh --write
+
+      - name: Verify SKILLS.json is up to date
+        run: |
+          if ! git diff --quiet SKILLS.json; then
+            echo "::error::SKILLS.json is stale. Run 'bash scripts/audit-skills.sh --write' and commit."
+            git diff SKILLS.json
+            exit 1
+          fi
+
+      - name: Verify count consistency across docs
+        run: |
+          set -e
+          TOTAL=$(python3 -c "import json; print(json.load(open('SKILLS.json'))['total_skills'])")
+          CATS=$(python3 -c "import json; print(json.load(open('SKILLS.json'))['category_count'])")
+          echo "SKILLS.json says $TOTAL skills across $CATS categories"
+
+          # README must mention the correct totals.
+          grep -q "$TOTAL" README.md || { echo "::error::README.md does not mention $TOTAL skills"; exit 1; }
+          grep -q "$TOTAL" AGENTS.md || { echo "::error::AGENTS.md does not mention $TOTAL skills"; exit 1; }
+          grep -q "$TOTAL" llms.txt  || { echo "::error::llms.txt does not mention $TOTAL skills"; exit 1; }
+          grep -q "$TOTAL" package.json || { echo "::error::package.json does not mention $TOTAL skills"; exit 1; }
+          echo "✓ All docs reference $TOTAL skills"
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: validation-report.json
