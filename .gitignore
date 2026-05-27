@@ -4,3 +4,26 @@ __pycache__/
 
 # OMC runtime state
 .omc/
+.omo/
+.sisyphus/
+.openclaude/
+.jules/
+
+# Agent runtime artifacts (regenerated per run, not source)
+meta/auto-evolve/logs/
+meta/auto-evolve/reports/
+meta/auto-evolve/plans/
+meta/create-skills/generated/
+
+# Generated media output (not source)
+content/content-generator/output/
+content/content-generator/scripts/output/
+
+# Node
+node_modules/
+
+# Editor / OS
+.DS_Store
+*.swp
+.vscode/
+.idea/
