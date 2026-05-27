@@ -40,6 +40,7 @@ regexes = [
     '''sk-abcdef1234567890abcdef''',
     '''sk-1234567890abcdef''',
     '''pb_live_PLACEHOLDER''',
+    '''REDACTED_[A-Z_]+''',
 ]
 
 [[allowlists]]
@@ -57,4 +58,10 @@ regexes = [
     '''any-string''',
     '''email@company\.com:''',
     '''email:API_TOKEN''',
+    '''pf_tenant\w*''',
+    '''pk_tenant\w*''',
+    '''pb_live_\.\.\.''',
+    '''0x_AB_CDEF_\d+_\.\.\.''',
+    '''eyJwYWdlIjox''',
+    '''eyJwYWdlIjoy''',
 ]
