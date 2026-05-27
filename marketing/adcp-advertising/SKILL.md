@@ -274,7 +274,7 @@ await agent.updateMediaBuy({
 For development and testing, use the public test agent:
 
 **Agent URL:** https://test-agent.adcontextprotocol.org/mcp
-**Auth Token:** REDACTED_ADCP_TOKEN
+**Auth Token:** ${ADCP_AUTH_TOKEN}
 
 **Interactive testing:** https://testing.adcontextprotocol.org
 

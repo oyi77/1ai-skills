@@ -58,8 +58,8 @@ async def social_spy(target: str) -> dict:
     # Twitter search
     env = {
         **os.environ,
-        "TWITTER_AUTH_TOKEN": "REDACTED_TWITTER_AUTH_TOKEN",
-        "TWITTER_CT0": "REDACTED_TWITTER_CT0",
+        "TWITTER_AUTH_TOKEN": os.environ.get("TWITTER_AUTH_TOKEN", ""),
+        "TWITTER_CT0": os.environ.get("TWITTER_CT0", ""),
     }
 
     clean_target = target.lstrip("@").replace("_bot", "").replace("_", " ")

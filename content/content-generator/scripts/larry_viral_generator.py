@@ -29,7 +29,7 @@ from typing import Optional
 # ── CONFIG ────────────────────────────────────────────────────────────
 NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 NVIDIA_IMAGE_URL = "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.1-dev"
-POST_BRIDGE_KEY = os.environ.get("POST_BRIDGE_API_KEY", "REDACTED_POSTBRIDGE_KEY")
+POST_BRIDGE_KEY = os.environ.get("POST_BRIDGE_API_KEY", "")
 POST_BRIDGE_URL = "https://api.post-bridge.com/v1"
 
 FFMPEG = "/home/linuxbrew/.linuxbrew/bin/ffmpeg"

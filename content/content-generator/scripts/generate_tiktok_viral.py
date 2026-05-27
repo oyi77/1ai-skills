@@ -30,10 +30,10 @@ from pathlib import Path
 from typing import Optional
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-NVIDIA_API_KEY = (
-    "REDACTED_NVIDIA_API_KEY"
-)
-BYTEPLUS_API_KEY = "REDACTED_BYTEPLUS_API_KEY"
+NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
+BYTEPLUS_API_KEY = os.environ.get("BYTEPLUS_API_KEY", "")
+if not NVIDIA_API_KEY or not BYTEPLUS_API_KEY:
+    raise SystemExit("Set NVIDIA_API_KEY and BYTEPLUS_API_KEY in environment")
 
 NVIDIA_LLM_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 BYTEPLUS_BASE_URL = "https://ark.ap-southeast.bytepluses.com/api/v3"

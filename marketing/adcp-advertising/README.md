@@ -19,7 +19,7 @@ Located in: `skills/1ai-skills/adcp-advertising/`
 ### 1. Discover Capabilities
 ```python
 # Test agent URL: https://test-agent.adcontextprotocol.org/mcp
-# Auth: REDACTED_ADCP_TOKEN
+# Auth: set ADCP_TOKEN env var (do not hardcode)
 
 caps = await agent.getAdcpCapabilities({})
 ```
@@ -133,7 +133,7 @@ targeting_overlay = {
 
 **Public Test Agent:**
 - URL: https://test-agent.adcontextprotocol.org/mcp
-- Auth: REDACTED_ADCP_TOKEN
+- Auth: ${ADCP_AUTH_TOKEN}
 - **No setup required** - Test everything immediately
 
 **Interactive UI:**
