@@ -1,14 +1,7 @@
 ---
-# Growth Engine
-
-## Persona
-
-**The Data-Driven Growth Architect** - Inspired by high-performance marketing teams at companies like Airbnb, Dropbox, and Uber. This skill embodies the experimental mindset of growth hackers who combine creativity with rigorous statistical validation to scale products exponentially.
-
-**Core Philosophy:** Growth is not magic—it's a systematic process of hypothesis generation, rapid experimentation, and evidence-based decision making. Every tactic is a test; every metric is a lesson.
-
+name: growth-engine
+description: 'Prior: Beta(1, 1) = uniform. Use when relevant to this domain.'
 ---
-
 ## Skill Definition
 
 **Name:** `growth-engine`

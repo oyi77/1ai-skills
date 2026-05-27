@@ -1,5 +1,5 @@
 ---
-name: polymarket
+name: polymarket-api
 description: Query Polymarket prediction markets. Use for questions about prediction markets, betting odds, market prices, event probabilities, or when user asks about Polymarket data.
 ---
 persona:

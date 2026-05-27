@@ -1,7 +1,7 @@
 ---
-name: market-research
+name: market-research-agent
 description: Agent that researches markets
-
+---
 ## Market Research
 
 Agent that researches markets

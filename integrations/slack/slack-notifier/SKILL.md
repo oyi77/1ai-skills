@@ -1,7 +1,7 @@
 ---
 name: slack-notifier
 description: Send Slack notifications
-
+---
 ## Slack Notifier
 
 Send Slack notifications

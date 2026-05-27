@@ -1,5 +1,5 @@
 ---
-name: jobhunter
+name: job-hunter
 description: Autonomous job hunting agent with state tracking, tailored applications, and multi-platform job search
 allowed-tools:
   - Bash(browser-use:*)

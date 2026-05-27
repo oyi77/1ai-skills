@@ -1,7 +1,7 @@
 ---
 name: product-desc
 description: Write product descriptions
-
+---
 ## Product Desc
 
 Write product descriptions

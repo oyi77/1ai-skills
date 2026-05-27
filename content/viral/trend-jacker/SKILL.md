@@ -1,7 +1,7 @@
 ---
 name: trend-jacker
 description: Ride trending topics
-
+---
 ## Trend Jacker
 
 Ride trending topics

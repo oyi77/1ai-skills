@@ -1,5 +1,5 @@
 ---
-name: find-skills
+name: meta-find-skills
 description: Automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency
 ---
 persona:

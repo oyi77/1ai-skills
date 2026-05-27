@@ -2,6 +2,20 @@
 
 Thank you for contributing! This guide covers how to create, modify, and review skills.
 
+## Before You Submit (CI will fail if you skip these)
+
+```bash
+# 1. Validate every SKILL.md (frontmatter, fields, name-vs-dir match)
+python3 scripts/validate-skills.py
+
+# 2. Refresh the skill count catalog
+bash scripts/audit-skills.sh --write
+
+# 3. If you added/removed a category, update README.md, AGENTS.md, and llms.txt to mention the new total.
+```
+
+If validation finds issues, run `python3 scripts/validate-skills.py --fix` for auto-repair (missing closing `---`, missing name, missing description from H1).
+
 ## Skill Anatomy (Required)
 
 Every skill MUST follow this structure:

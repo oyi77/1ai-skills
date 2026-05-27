@@ -1,7 +1,7 @@
 ---
 name: github-pr
 description: Handle pull requests
-
+---
 ## Github Pr
 
 Handle pull requests

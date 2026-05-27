@@ -1,7 +1,7 @@
 ---
 name: slash-commands
 description: Create Slack slash commands
-
+---
 ## Slash Commands
 
 Create Slack slash commands
