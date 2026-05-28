@@ -1,8 +1,8 @@
-# 1ai-Skills — 1270 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 1282 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 1270](https://img.shields.io/badge/skills-1270-blue)](https://github.com/oyi77/1ai-skills)
+[![Skills: 1282](https://img.shields.io/badge/skills-1282-blue)](https://github.com/oyi77/1ai-skills)
 [![Categories: 18](https://img.shields.io/badge/categories-18-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **1270 production-ready AI agent skills** organized across **18 categories** — including **779 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **1282 production-ready AI agent skills** organized across **18 categories** — including **779 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -154,28 +154,28 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 1270 Skills by Category
+## All 1282 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
 | **cybersecurity/** | 779 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
-| **development/** | 81 | TDD, systematic debugging, code review, PRD generator, git worktrees, Kafka patterns, database ORMs, mobile development, testing, free developer resources |
-| **content/** | 60 | Remotion video engine, video generation, AI podcast, faceless YouTube, humanizer, Seedance, design systems, UI frameworks, content creation |
+| **development/** | 83 | TDD, systematic debugging, code review, cherry-picked agent skills, AI skill integration, free developer resources |
+| **content/** | 62 | Remotion video engine, video generation, UI/UX Pro Max (161 rules), anti-slop frontend (13 styles), design systems |
 | **devops/** | 38 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, free cloud infrastructure |
-| **automation/** | 30 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines, data pipelines |
-| **marketing/** | 47 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, affiliate management, ecommerce |
-| **core/** | 46 | Self-improvement, memory systems, AI orchestration, agent harness optimization, agent security scanner, continuous learning |
-| **research/** | 28 | McKinsey analysis, deep research, Polymarket analyst, continuous learning, competitive intelligence, market research, trend analysis |
+| **automation/** | 30 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines |
+| **marketing/** | 47 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, ecommerce |
+| **core/** | 48 | Self-improvement, memory systems, AI engineering curriculum (382 lessons), Karpathy coding principles, agent harness |
+| **research/** | 28 | McKinsey analysis, deep research, Polymarket analyst, competitive intelligence, market research, trend analysis |
 | **integrations/** | 32 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs, free SaaS toolkit, team collaboration, MCP servers |
-| **financial/** | 17 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck, commodities, DeFi |
-| **operations/** | 19 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation, team ops |
+| **financial/** | 17 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, commodities, DeFi |
+| **operations/** | 19 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation |
 | **agents/** | 17 | Research, review, planning, code, deploy, refactor, subagent orchestration, security, autonomous trading agents |
 | **meta/** | 15 | find-skills, create-skills, auto-evolve, skill evolution engine, auto-learner, skill datastore, continuous improvement |
 | **mcp/** | 12 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear, Resend, financial MCP, Kalodata MCP |
-| **trading/** | 19 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot, DeFi protocols, smart contracts, NFTs, commodities |
-| **data/** | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics |
+| **trading/** | 20 | Black Edge, AlphaEar, Polymarket, investing algorithm framework, crypto trading bot, DeFi protocols, smart contracts |
+| **data/** | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning |
 | **sales/** | 13 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
-| **productivity/** | 7 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation |
+| **productivity/** | 8 | Google Workspace, calendar, email automation, career-ops job search, daily planner, task management, meeting automation |
 
 ---
 
