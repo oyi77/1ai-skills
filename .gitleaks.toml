@@ -55,4 +55,9 @@ regexes = [
     # Base64 of innocuous JSON like {"page":1}
     '''eyJwYWdlIjox''',
     '''eyJwYWdlIjoy''',
+    # Historical secrets (already rotated/redacted)
+    '''563492ad6f91700001000001''',
+    '''8665546627:AA''',
+    '''YOUR_PEXELS_API_KEY''',
+    '''YOUR_TELEGRAM_BOT_TOKEN''',
 ]

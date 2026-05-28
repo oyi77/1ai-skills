@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1ai-Skills — 1263+ Open-Source AI Agent Skills</title>
+<meta name="description" content="The world's largest open-source AI skill ecosystem with self-evolving meta-skills. 1263+ skills across 18 categories for Claude Code, Cursor, and more.">
+<meta property="og:title" content="1ai-Skills — 1263+ Open-Source AI Agent Skills">
+<meta property="og:description" content="The world's largest open-source AI skill ecosystem with self-evolving meta-skills.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;
+  --text:#e0e0e8;--text2:#a0a0b8;--text3:#6a6a80;
+  --accent:#7c3aed;--accent2:#06b6d4;--accent3:#3b82f6;
+  --grad:linear-gradient(135deg,#7c3aed,#3b82f6,#06b6d4);
+  --card:#13131f;--card-hover:#1a1a2e;
+  --border:#1e1e30;
+  --radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent2);text-decoration:none;transition:color .2s}
+a:hover{color:#22d3ee}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-size:1.25rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+nav .links{display:flex;gap:28px;align-items:center}
+nav .links a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .2s}
+nav .links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;border:none;transition:all .25s}
+.btn-primary{background:var(--grad);color:#fff}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 20px rgba(124,58,237,.35)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:#fff}
+.btn-outline{background:transparent;color:var(--accent2);border:1px solid var(--accent2)}
+.btn-outline:hover{background:var(--accent2);color:#0a0a0f}
+
+/* HERO */
+.hero{padding:160px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 50% 0%,rgba(124,58,237,.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(6,182,212,.08) 0%,transparent 50%);pointer-events:none}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px;letter-spacing:-.02em}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .tagline{font-size:clamp(1rem,2vw,1.35rem);color:var(--text2);max-width:640px;margin:0 auto 36px;line-height:1.5}
+.hero .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* STATS */
+.stats{padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat .num{font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat .label{font-size:.85rem;color:var(--text2);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-title{font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px}
+.section-sub{color:var(--text2);text-align:center;max-width:600px;margin:0 auto 48px;font-size:1.05rem}
+
+/* CATEGORY GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .25s}
+.cat-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,58,237,.1)}
+.cat-card:hover::before{opacity:1}
+.cat-card .cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cat-card h3{font-size:1rem;font-weight:700}
+.cat-card .count{font-size:.8rem;font-weight:700;color:var(--accent2);background:rgba(6,182,212,.1);padding:3px 10px;border-radius:999px}
+.cat-card p{font-size:.85rem;color:var(--text2);line-height:1.55}
+
+/* SELF-EVOLVING */
+.evolve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-top:40px}
+.evolve-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .25s}
+.evolve-card:hover{border-color:var(--accent3);transform:translateY(-2px)}
+.evolve-card h4{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:#fff}
+.evolve-card p{font-size:.88rem;color:var(--text2);line-height:1.55}
+.evolve-card .icon{font-size:1.6rem;margin-bottom:12px;display:block}
+
+/* QUICK START */
+.quickstart{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);padding:40px;max-width:720px;margin:0 auto}
+.quickstart pre{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;overflow-x:auto;font-size:.9rem;margin:16px 0;font-family:'SF Mono','Fira Code',Consolas,monospace;color:var(--accent2)}
+.quickstart .step{margin-bottom:28px}
+.quickstart .step:last-child{margin-bottom:0}
+.quickstart .step-label{font-size:.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.quickstart h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+
+/* AGENTS */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;max-width:800px;margin:0 auto}
+.agent-chip{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 16px;text-align:center;font-weight:600;font-size:.95rem;transition:all .25s}
+.agent-chip:hover{border-color:var(--accent2);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{padding:48px 0;border-top:1px solid var(--border);text-align:center}
+footer .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer .copy{color:var(--text3);font-size:.85rem}
+footer .footer-links{display:flex;gap:20px;align-items:center}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav .links{gap:14px}
+  nav .links a:not(.btn){display:none}
+  .stats .container{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:1fr}
+  .evolve-grid{grid-template-columns:1fr}
+  .hero{padding:130px 0 60px}
+  footer .footer-inner{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .stats .container{grid-template-columns:1fr}
+  .agents-grid{grid-template-columns:repeat(2,1fr)}
+  .hero .actions{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="logo">1ai-Skills</a>
+    <div class="links">
+      <a href="#categories">Categories</a>
+      <a href="#evolving">Meta-Skills</a>
+      <a href="#quickstart">Install</a>
+      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1><span>1ai-Skills</span> &mdash; 1263+<br>Open-Source AI Agent Skills</h1>
+    <p class="tagline">The world's largest open-source AI skill ecosystem with self-evolving meta-skills. Drop-in skills for Claude Code, Cursor, Windsurf, and more.</p>
+    <div class="actions">
+      <a href="#quickstart" class="btn btn-primary">Get Started</a>
+      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank" rel="noopener">Star on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="num">1263+</div><div class="label">Skills</div></div>
+    <div class="stat"><div class="num">18</div><div class="label">Categories</div></div>
+    <div class="stat"><div class="num">779</div><div class="label">Cybersecurity Skills</div></div>
+    <div class="stat"><div class="num">Self-Evolving</div><div class="label">Meta-Skill Engine</div></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="container">
+    <h2 class="section-title">Skill Categories</h2>
+    <p class="section-sub">18 curated domains covering the full spectrum of AI agent capabilities, from offensive security to autonomous trading.</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-head"><h3>cybersecurity</h3><span class="count">779</span></div>
+        <p>Cloud security, threat hunting, forensics, pen testing, SOC ops, malware analysis, zero trust, red teaming</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>development</h3><span class="count">80</span></div>
+        <p>TDD, debugging, code review, API design, database patterns, Kafka, mobile dev, git worktrees</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>content</h3><span class="count">60</span></div>
+        <p>Video generation, AI podcast, Seedance, Remotion, faceless YouTube, design systems, content creation</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>marketing</h3><span class="count">47</span></div>
+        <p>SEO, viral marketing, Twitter automation, email campaigns, growth hacking, ecommerce, TikTok</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>core</h3><span class="count">44</span></div>
+        <p>Self-improvement, memory systems, orchestration, session brain, AI/ML infrastructure, autonomy engine</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>devops</h3><span class="count">37</span></div>
+        <p>Docker, Kubernetes, CI/CD (GitHub Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>integrations</h3><span class="count">31</span></div>
+        <p>GitHub, Discord, Notion, Slack, MCP servers, team collaboration, third-party connectors</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>automation</h3><span class="count">30</span></div>
+        <p>n8n, WhatsApp/Telegram bots, scrapers, publishing pipelines, Airflow, userbot frameworks</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>research</h3><span class="count">28</span></div>
+        <p>McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>operations</h3><span class="count">19</span></div>
+        <p>Governance, KYC, statement audit, GL reconciliation, project management, HR, legal, BI</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>trading</h3><span class="count">19</span></div>
+        <p>Crypto bots, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>financial</h3><span class="count">17</span></div>
+        <p>Wolf finance, value investing, tax-loss harvesting, commodities, DeFi strategies, finance tracker</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>agents</h3><span class="count">16</span></div>
+        <p>Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>meta</h3><span class="count">14</span></div>
+        <p>Self-improving meta-skills, auto-evolve, performance monitor, auto-learner, skill datastore</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>sales</h3><span class="count">13</span></div>
+        <p>High-ticket closing, lead generation, business development, B2B automation, CRM, influence</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>mcp</h3><span class="count">12</span></div>
+        <p>MCP server skills for Slack, GitHub, Linear, Notion, Resend, Stripe, Supabase</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>data</h3><span class="count">10</span></div>
+        <p>Data cleaning, anomaly detection, visualization, reporting, pipelines, DBT, lakeFS</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-head"><h3>productivity</h3><span class="count">7</span></div>
+        <p>Calendar management, email triage, meetings, daily planner, Notion workflows, Google Workspace</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELF-EVOLVING -->
+<section id="evolving" style="background:var(--bg2)">
+  <div class="container">
+    <h2 class="section-title">Self-Evolving System</h2>
+    <p class="section-sub">12 meta-skills that continuously improve the entire ecosystem. Skills learn from usage, adapt to new patterns, and optimize themselves over time.</p>
+    <div class="evolve-grid">
+      <div class="evolve-card">
+        <span class="icon">&#x1F9E0;</span>
+        <h4>Auto-Evolve Engine</h4>
+        <p>Automatically identifies skill improvement opportunities based on usage patterns, error rates, and user feedback. Proposes and validates upgrades.</p>
+      </div>
+      <div class="evolve-card">
+        <span class="icon">&#x1F4CA;</span>
+        <h4>Performance Monitor</h4>
+        <p>Tracks skill execution metrics, success rates, and latency. Flags underperforming skills for review and optimization.</p>
+      </div>
+      <div class="evolve-card">
+        <span class="icon">&#x1F9DA;</span>
+        <h4>Auto-Learner</h4>
+        <p>Extracts reusable patterns from successful skill executions and synthesizes new skill variants to fill coverage gaps.</p>
+      </div>
+      <div class="evolve-card">
+        <span class="icon">&#x1F4E6;</span>
+        <h4>Skill Datastore</h4>
+        <p>Central registry that versions, indexes, and distributes skills across agent environments. Supports hot-reload and rollback.</p>
+      </div>
+      <div class="evolve-card">
+        <span class="icon">&#x1F50D;</span>
+        <h4>Gap Analysis</h4>
+        <p>Scans the ecosystem for missing capabilities by comparing skill coverage against common agent task types and industry domains.</p>
+      </div>
+      <div class="evolve-card">
+        <span class="icon">&#x26A1;</span>
+        <h4>Conflict Resolver</h4>
+        <p>Detects and resolves skill conflicts when multiple skills match the same intent. Applies priority rules and context-aware selection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK START -->
+<section id="quickstart">
+  <div class="container">
+    <h2 class="section-title">Quick Start</h2>
+    <p class="section-sub">Install 1ai-skills in under a minute. Works with any AI agent harness that supports skill loading.</p>
+    <div class="quickstart">
+      <div class="step">
+        <div class="step-label">Step 1</div>
+        <h3>Install via npx</h3>
+        <pre>npx skills add oyi77/1ai-skills</pre>
+      </div>
+      <div class="step">
+        <div class="step-label">Step 2</div>
+        <h3>Or clone directly</h3>
+        <pre>git clone https://github.com/oyi77/1ai-skills.git
+cd 1ai-skills && npm install</pre>
+      </div>
+      <div class="step">
+        <div class="step-label">Step 3</div>
+        <h3>Browse the catalog</h3>
+        <pre>cat SKILLS.json | jq '.[] | .name'</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORTED AGENTS -->
+<section style="background:var(--bg2)">
+  <div class="container">
+    <h2 class="section-title">Supported Agents</h2>
+    <p class="section-sub">Works with every major AI coding assistant and agent harness.</p>
+    <div class="agents-grid">
+      <div class="agent-chip">Claude Code</div>
+      <div class="agent-chip">OpenClaw</div>
+      <div class="agent-chip">Cursor</div>
+      <div class="agent-chip">Windsurf</div>
+      <div class="agent-chip">Cline</div>
+      <div class="agent-chip">Aider</div>
+      <div class="agent-chip">Continue</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copy">&copy; 2026 1ai-Skills &mdash; MIT License</div>
+      <div class="footer-links">
+        <a href="https://github.com/oyi77/1ai-skills" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/oyi77/1ai-skills/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        <a href="https://github.com/oyi77/1ai-skills/stargazers" target="_blank" rel="noopener">Star</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
