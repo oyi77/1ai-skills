@@ -12,3 +12,7 @@
 ## 2025-05-27 - [SQLite Indexes for Frequent Queries]
 **Learning:** Found missing database indexes on `chat_id` and `created_at` fields in SQLite tables used for gallery browsing and cost aggregation. As the DB grows, filtering or sorting by these fields without an index causes O(N) full table scans, severely impacting query performance.
 **Action:** Consistently ensure fields used heavily in `WHERE` and `ORDER BY` clauses (especially foreign keys like `chat_id` and timestamps like `created_at`) have explicit database indexes created during `init_db()`.
+
+## 2024-05-18 - [Optimize Regex Compilation in Hot Paths]
+**Learning:** In the `core/model-router/router.py` file, the `detect_tier()` function was using `re.search()` to test strings against a list of regular expressions inside a loop, meaning the patterns were being compiled on every single call. For highly executed matching logic, compiling string patterns dynamically on every evaluation creates significant overhead, especially with a large dictionary of match conditions.
+**Action:** When a static set of regular expression string patterns must be evaluated repeatedly inside a function, always pre-compile the patterns at the module scope using `re.compile()` and then use `pattern.search()` within the function logic to bypass the compilation overhead entirely.

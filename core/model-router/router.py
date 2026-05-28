@@ -60,6 +60,12 @@ TASK_PATTERNS = {
     ]
 }
 
+# ⚡ Bolt Optimization: Pre-compile regex patterns to avoid recompilation on every call
+COMPILED_PATTERNS = {
+    tier: [re.compile(p, re.IGNORECASE) for p in patterns]
+    for tier, patterns in TASK_PATTERNS.items()
+}
+
 
 def detect_tier(task: str) -> str:
     """Detect the appropriate model tier based on task content."""
@@ -67,8 +73,8 @@ def detect_tier(task: str) -> str:
     
     # Check from most complex to simplest
     for tier in ["reasoning", "code", "advanced", "balanced", "fast"]:
-        for pattern in TASK_PATTERNS.get(tier, []):
-            if re.search(pattern, task_lower, re.IGNORECASE):
+        for pattern in COMPILED_PATTERNS.get(tier, []):
+            if pattern.search(task_lower):
                 return tier
     
     # Default to fast for simple queries
