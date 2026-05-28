@@ -1,14 +1,14 @@
 {
-  "total_skills": 1270,
+  "total_skills": 1282,
   "category_count": 18,
   "categories": {
     "agents": 17,
     "automation": 30,
-    "content": 60,
-    "core": 46,
-    "cybersecurity": 779,
+    "content": 62,
+    "core": 48,
+    "cybersecurity": 783,
     "data": 10,
-    "development": 81,
+    "development": 83,
     "devops": 38,
     "financial": 17,
     "integrations": 32,
@@ -16,10 +16,10 @@
     "mcp": 12,
     "meta": 15,
     "operations": 19,
-    "productivity": 7,
+    "productivity": 8,
     "research": 28,
     "sales": 13,
-    "trading": 19
+    "trading": 20
   },
   "tooling_dirs": ["docs", "hooks", "manifests", "references", "scripts"]
 }

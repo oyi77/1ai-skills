@@ -3,115 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1ai-Skills — 1270+ Open-Source AI Agent Skills</title>
-<meta name="description" content="The world's largest open-source AI skill ecosystem with self-evolving meta-skills. 1270+ skills across 18 categories for Claude Code, Cursor, and more.">
-<meta property="og:title" content="1ai-Skills — 1270+ Open-Source AI Agent Skills">
+<title>1ai-Skills — 1282+ Open-Source AI Agent Skills</title>
+<meta name="description" content="The world's largest open-source AI skill ecosystem with self-evolving meta-skills. 1282+ skills across 18 categories for Claude Code, Cursor, Windsurf, and more.">
+<meta property="og:title" content="1ai-Skills — 1282+ Open-Source AI Agent Skills">
 <meta property="og:description" content="The world's largest open-source AI skill ecosystem with self-evolving meta-skills.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;
-  --text:#e0e0e8;--text2:#a0a0b8;--text3:#6a6a80;
-  --accent:#7c3aed;--accent2:#06b6d4;--accent3:#3b82f6;
-  --grad:linear-gradient(135deg,#7c3aed,#3b82f6,#06b6d4);
-  --card:#13131f;--card-hover:#1a1a2e;
-  --border:#1e1e30;
-  --radius:12px;
+  --bg:#06060e;--bg2:#0c0c1a;--bg3:#111128;
+  --surface:rgba(255,255,255,.03);--surface2:rgba(255,255,255,.06);--surface3:rgba(255,255,255,.08);
+  --text:#e8e8f0;--text2:#9898b8;--text3:#5a5a78;
+  --accent:#8b5cf6;--accent2:#06d6a0;--accent3:#38bdf8;--accent4:#f472b6;--accent5:#fbbf24;
+  --grad:linear-gradient(135deg,#8b5cf6,#38bdf8,#06d6a0);
+  --grad2:linear-gradient(135deg,#f472b6,#8b5cf6,#38bdf8);
+  --glow:rgba(139,92,246,.15);
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
+  --glass:rgba(12,12,26,.6);--glass2:rgba(12,12,26,.8);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --shadow:0 8px 32px rgba(0,0,0,.4);
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:'SF Mono','Fira Code','Cascadia Code',Consolas,monospace;
 }
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-a{color:var(--accent2);text-decoration:none;transition:color .2s}
-a:hover{color:#22d3ee}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:var(--accent3);text-decoration:none;transition:color .2s}
+a:hover{color:#7dd3fc}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+img{max-width:100%;display:block}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}
-nav .container{display:flex;align-items:center;justify-content:space-between}
-nav .logo{font-size:1.25rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-nav .links{display:flex;gap:28px;align-items:center}
-nav .links a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .2s}
-nav .links a:hover{color:#fff}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;border:none;transition:all .25s}
+/* ---- NAV ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--glass2);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);transition:background .3s}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+nav .links{display:flex;gap:8px;align-items:center}
+nav .links a{color:var(--text2);font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s}
+nav .links a:not(.btn):hover{color:#fff;background:var(--surface2)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:var(--radius-sm);font-weight:600;font-size:.875rem;cursor:pointer;border:none;transition:all .25s;position:relative;overflow:hidden}
 .btn-primary{background:var(--grad);color:#fff}
-.btn-primary:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 20px rgba(124,58,237,.35)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-ghost:hover{border-color:var(--accent);color:#fff}
-.btn-outline{background:transparent;color:var(--accent2);border:1px solid var(--accent2)}
-.btn-outline:hover{background:var(--accent2);color:#0a0a0f}
+.btn-primary:hover{opacity:.92;transform:translateY(-1px);box-shadow:0 4px 24px rgba(139,92,246,.4)}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .25s}
+.btn-primary:hover::after{opacity:1}
+.btn-ghost{background:var(--surface);color:var(--text);border:1px solid var(--border2);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--accent);color:#fff;background:rgba(139,92,246,.08)}
+.btn-outline{background:transparent;color:var(--accent2);border:1px solid rgba(6,214,160,.3)}
+.btn-outline:hover{background:rgba(6,214,160,.1);border-color:var(--accent2)}
 
-/* HERO */
-.hero{padding:160px 0 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 50% 0%,rgba(124,58,237,.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(6,182,212,.08) 0%,transparent 50%);pointer-events:none}
-.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px;letter-spacing:-.02em}
-.hero h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero .tagline{font-size:clamp(1rem,2vw,1.35rem);color:var(--text2);max-width:640px;margin:0 auto 36px;line-height:1.5}
-.hero .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* ---- BURGER ---- */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all .3s}
 
-/* STATS */
-.stats{padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.stat .num{font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat .label{font-size:.85rem;color:var(--text2);margin-top:4px}
+/* ---- HERO ---- */
+.hero{padding:140px 0 80px;text-align:center;position:relative;overflow:hidden;min-height:85vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:orbFloat 20s ease-in-out infinite}
+.hero-bg .orb-1{width:500px;height:500px;background:var(--accent);top:-10%;left:10%;animation-delay:0s}
+.hero-bg .orb-2{width:400px;height:400px;background:var(--accent3);bottom:-5%;right:5%;animation-delay:-7s}
+.hero-bg .orb-3{width:300px;height:300px;background:var(--accent4);top:30%;right:25%;animation-delay:-13s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.05)}50%{transform:translate(-20px,20px) scale(.95)}75%{transform:translate(40px,10px) scale(1.02)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent)}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:var(--surface2);border:1px solid var(--border2);font-size:.8rem;color:var(--accent2);margin-bottom:28px;backdrop-filter:blur(8px)}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;line-height:1.08;margin-bottom:24px;letter-spacing:-.03em}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .tagline{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text2);max-width:680px;margin:0 auto 16px;line-height:1.6}
+.typing-wrap{display:inline-block;min-height:1.6em}
+.typing-cursor{display:inline-block;width:2px;height:1.1em;background:var(--accent2);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
 
-/* SECTIONS */
-section{padding:80px 0}
-.section-title{font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px}
-.section-sub{color:var(--text2);text-align:center;max-width:600px;margin:0 auto 48px;font-size:1.05rem}
+/* ---- STATS BAR ---- */
+.stats{padding:0;position:relative;z-index:1}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin-top:-40px;position:relative;box-shadow:var(--shadow)}
+.stat{background:var(--glass2);backdrop-filter:blur(20px);padding:32px 20px;text-align:center}
+.stat .num{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.stat .label{font-size:.8rem;color:var(--text2);margin-top:6px;text-transform:uppercase;letter-spacing:.08em;font-weight:500}
 
-/* CATEGORY GRID */
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;cursor:default;position:relative;overflow:hidden}
-.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .25s}
-.cat-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,58,237,.1)}
+/* ---- SECTIONS ---- */
+section{padding:100px 0}
+.section-header{text-align:center;margin-bottom:56px}
+.section-tag{display:inline-block;font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;background:rgba(139,92,246,.08);padding:5px 14px;border-radius:999px}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.section-sub{color:var(--text2);max-width:620px;margin:0 auto;font-size:1.05rem;line-height:1.6}
+
+/* ---- NEW SKILLS ---- */
+.new-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.new-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:all .3s}
+.new-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:.6}
+.new-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(139,92,246,.12)}
+.new-card .badge-new{position:absolute;top:16px;right:16px;background:rgba(244,114,182,.15);color:var(--accent4);font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em;animation:pulse 2s ease-in-out infinite}
+.new-card .new-icon{font-size:2rem;margin-bottom:14px;display:block}
+.new-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.new-card p{font-size:.88rem;color:var(--text2);line-height:1.6}
+.new-card .new-meta{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.new-card .new-meta span{font-size:.75rem;padding:3px 10px;border-radius:999px;background:var(--surface2);color:var(--text2)}
+
+/* ---- CATEGORY ---- */
+.search-wrap{max-width:480px;margin:0 auto 40px;position:relative}
+.search-wrap input{width:100%;padding:14px 20px 14px 48px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:.95rem;font-family:var(--font);outline:none;transition:border-color .2s,box-shadow .2s;backdrop-filter:blur(8px)}
+.search-wrap input::placeholder{color:var(--text3)}
+.search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,92,246,.15)}
+.search-wrap .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:1.1rem;pointer-events:none}
+.search-wrap .clear-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text3);cursor:pointer;font-size:1rem;padding:4px;display:none}
+.search-wrap .clear-btn.show{display:block}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s;cursor:default;position:relative;overflow:hidden}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .3s}
+.cat-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(139,92,246,.06),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.cat-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-3px);box-shadow:0 8px 32px rgba(139,92,246,.1)}
 .cat-card:hover::before{opacity:1}
+.cat-card:hover::after{opacity:1}
 .cat-card .cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .cat-card h3{font-size:1rem;font-weight:700}
-.cat-card .count{font-size:.8rem;font-weight:700;color:var(--accent2);background:rgba(6,182,212,.1);padding:3px 10px;border-radius:999px}
-.cat-card p{font-size:.85rem;color:var(--text2);line-height:1.55}
+.cat-card .count{font-size:.75rem;font-weight:700;color:var(--accent2);background:rgba(6,214,160,.1);padding:3px 10px;border-radius:999px;min-width:40px;text-align:center}
+.cat-card p{font-size:.85rem;color:var(--text2);line-height:1.6}
+.cat-card.hidden{display:none}
+.no-results{grid-column:1/-1;text-align:center;padding:48px 0;color:var(--text3);font-size:1rem}
 
-/* SELF-EVOLVING */
-.evolve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-top:40px}
-.evolve-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .25s}
-.evolve-card:hover{border-color:var(--accent3);transform:translateY(-2px)}
-.evolve-card h4{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:#fff}
-.evolve-card p{font-size:.88rem;color:var(--text2);line-height:1.55}
-.evolve-card .icon{font-size:1.6rem;margin-bottom:12px;display:block}
+/* ---- SELF-EVOLVING ---- */
+.evolve-section{background:var(--bg2);position:relative;overflow:hidden}
+.evolve-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);pointer-events:none}
+.evolve-loop{max-width:900px;margin:0 auto 56px;position:relative}
+.loop-diagram{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.loop-node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;text-align:center;min-width:140px;position:relative;transition:all .3s}
+.loop-node:hover{border-color:var(--accent);transform:scale(1.03)}
+.loop-node .node-icon{font-size:1.8rem;margin-bottom:8px;display:block}
+.loop-node h4{font-size:.85rem;font-weight:700;color:#fff}
+.loop-node p{font-size:.75rem;color:var(--text3);margin-top:4px}
+.loop-arrow{font-size:1.4rem;color:var(--accent);margin:0 8px;animation:arrowPulse 1.5s ease-in-out infinite}
+.loop-arrow.down{transform:rotate(90deg);margin:8px 0;display:block;text-align:center}
+@keyframes arrowPulse{0%,100%{opacity:.4}50%{opacity:1}}
+.evolve-features{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.evolve-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s;position:relative}
+.evolve-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.evolve-card .ev-icon{font-size:1.6rem;margin-bottom:14px;display:block}
+.evolve-card h4{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.evolve-card p{font-size:.87rem;color:var(--text2);line-height:1.6}
 
-/* QUICK START */
-.quickstart{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);padding:40px;max-width:720px;margin:0 auto}
-.quickstart pre{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;overflow-x:auto;font-size:.9rem;margin:16px 0;font-family:'SF Mono','Fira Code',Consolas,monospace;color:var(--accent2)}
-.quickstart .step{margin-bottom:28px}
-.quickstart .step:last-child{margin-bottom:0}
-.quickstart .step-label{font-size:.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-.quickstart h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+/* ---- QUICK START ---- */
+.install-section{position:relative}
+.install-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.install-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.install-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.install-card-header{padding:20px 24px 12px;display:flex;align-items:center;justify-content:space-between}
+.install-card-header h3{font-size:1rem;font-weight:700}
+.install-card-header .method{font-size:.7rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;background:rgba(139,92,246,.1);padding:3px 10px;border-radius:999px}
+.install-card-body{padding:0 24px 20px}
+.install-card-body .desc{font-size:.85rem;color:var(--text2);margin-bottom:14px;line-height:1.5}
+.code-block{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-xs);overflow:hidden}
+.code-block pre{padding:16px 52px 16px 18px;font-family:var(--mono);font-size:.85rem;color:var(--accent2);overflow-x:auto;line-height:1.7;white-space:pre-wrap;word-break:break-all}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--text2);padding:6px 10px;cursor:pointer;font-size:.75rem;font-family:var(--font);transition:all .2s;display:flex;align-items:center;gap:4px}
+.copy-btn:hover{background:var(--surface3);color:#fff;border-color:var(--border2)}
+.copy-btn.copied{color:var(--accent2);border-color:var(--accent2)}
 
-/* AGENTS */
-.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;max-width:800px;margin:0 auto}
-.agent-chip{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 16px;text-align:center;font-weight:600;font-size:.95rem;transition:all .25s}
-.agent-chip:hover{border-color:var(--accent2);transform:translateY(-2px)}
+/* ---- AGENTS ---- */
+.agents-section{background:var(--bg2)}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;max-width:860px;margin:0 auto}
+.agent-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 16px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.agent-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.agent-card .agent-icon{width:48px;height:48px;border-radius:12px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;background:var(--surface2);border:1px solid var(--border)}
+.agent-card h4{font-size:.9rem;font-weight:700;color:#fff}
+.agent-card p{font-size:.75rem;color:var(--text3);margin-top:4px}
 
-/* FOOTER */
-footer{padding:48px 0;border-top:1px solid var(--border);text-align:center}
-footer .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-footer .copy{color:var(--text3);font-size:.85rem}
-footer .footer-links{display:flex;gap:20px;align-items:center}
+/* ---- FOOTER ---- */
+footer{padding:48px 0;border-top:1px solid var(--border)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-left{display:flex;align-items:center;gap:16px}
+.footer-left .logo-sm{font-weight:800;font-size:1rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-left .copy{color:var(--text3);font-size:.82rem}
+.footer-links{display:flex;gap:8px;align-items:center}
+.footer-links a{color:var(--text2);font-size:.82rem;padding:6px 12px;border-radius:6px;transition:all .2s}
+.footer-links a:hover{color:#fff;background:var(--surface2)}
+.footer-stars{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--radius-xs);background:var(--surface);border:1px solid var(--border);font-size:.82rem;color:var(--text2);transition:all .2s}
+.footer-stars:hover{border-color:var(--accent5);color:var(--accent5)}
+.footer-stars svg{width:16px;height:16px}
 
-/* RESPONSIVE */
+/* ---- FADE IN ---- */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out,transform .6s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in-delay-1{transition-delay:.1s}
+.fade-in-delay-2{transition-delay:.2s}
+.fade-in-delay-3{transition-delay:.3s}
+.fade-in-delay-4{transition-delay:.4s}
+.fade-in-delay-5{transition-delay:.5s}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:900px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .loop-diagram{flex-direction:column}
+  .loop-arrow{transform:rotate(90deg);margin:4px 0}
+}
 @media(max-width:768px){
-  nav .links{gap:14px}
   nav .links a:not(.btn){display:none}
-  .stats .container{grid-template-columns:repeat(2,1fr)}
-  .cat-grid{grid-template-columns:1fr}
-  .evolve-grid{grid-template-columns:1fr}
-  .hero{padding:130px 0 60px}
+  .burger{display:flex}
+  nav .links.open{position:absolute;top:64px;left:0;right:0;background:var(--glass2);backdrop-filter:blur(20px);flex-direction:column;padding:16px;gap:4px;border-bottom:1px solid var(--border)}
+  nav .links.open a{display:block;padding:12px 20px}
+  .hero{min-height:auto;padding:120px 0 60px}
+  .hero h1{font-size:2.2rem}
+  .stats-inner{margin-top:-20px}
+  .stat{padding:20px 16px}
+  section{padding:72px 0}
+  .cat-grid,.new-grid,.evolve-features,.install-grid{grid-template-columns:1fr}
   footer .footer-inner{flex-direction:column;text-align:center}
+  .footer-left{flex-direction:column}
 }
 @media(max-width:480px){
-  .stats .container{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr}
   .agents-grid{grid-template-columns:repeat(2,1fr)}
   .hero .actions{flex-direction:column;align-items:center}
+  .hero .actions .btn{width:100%;justify-content:center}
 }
 </style>
 </head>
@@ -121,23 +224,47 @@ footer .footer-links{display:flex;gap:20px;align-items:center}
 <nav>
   <div class="container">
     <a href="#" class="logo">1ai-Skills</a>
-    <div class="links">
+    <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="links" id="navLinks">
+      <a href="#new">New Skills</a>
       <a href="#categories">Categories</a>
-      <a href="#evolving">Meta-Skills</a>
+      <a href="#evolving">Self-Evolving</a>
       <a href="#quickstart">Install</a>
-      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <h1><span>1ai-Skills</span> &mdash; 1270+<br>Open-Source AI Agent Skills</h1>
-    <p class="tagline">The world's largest open-source AI skill ecosystem with self-evolving meta-skills. Drop-in skills for Claude Code, Cursor, Windsurf, and more.</p>
-    <div class="actions">
-      <a href="#quickstart" class="btn btn-primary">Get Started</a>
-      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank" rel="noopener">Star on GitHub</a>
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-badge fade-in">
+      <span class="dot"></span>
+      1282 skills and growing
+    </div>
+    <h1 class="fade-in fade-in-delay-1">
+      The <span class="grad">Largest</span> Open-Source<br>AI Agent Skill Ecosystem
+    </h1>
+    <p class="tagline fade-in fade-in-delay-2">
+      <span class="typing-wrap" id="typingTarget"></span><span class="typing-cursor" id="typingCursor"></span>
+    </p>
+    <div class="actions fade-in fade-in-delay-3">
+      <a href="#quickstart" class="btn btn-primary">Get Started Free</a>
+      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        Star on GitHub
+      </a>
     </div>
   </div>
 </section>
@@ -145,128 +272,253 @@ footer .footer-links{display:flex;gap:20px;align-items:center}
 <!-- STATS -->
 <section class="stats">
   <div class="container">
-    <div class="stat"><div class="num">1270+</div><div class="label">Skills</div></div>
-    <div class="stat"><div class="num">18</div><div class="label">Categories</div></div>
-    <div class="stat"><div class="num">779</div><div class="label">Cybersecurity Skills</div></div>
-    <div class="stat"><div class="num">Self-Evolving</div><div class="label">Meta-Skill Engine</div></div>
+    <div class="stats-inner">
+      <div class="stat fade-in">
+        <div class="num" data-target="1282">0</div>
+        <div class="label">Total Skills</div>
+      </div>
+      <div class="stat fade-in fade-in-delay-1">
+        <div class="num" data-target="18">0</div>
+        <div class="label">Categories</div>
+      </div>
+      <div class="stat fade-in fade-in-delay-2">
+        <div class="num" data-target="779">0</div>
+        <div class="label">Cybersecurity</div>
+      </div>
+      <div class="stat fade-in fade-in-delay-3">
+        <div class="num" data-target="15">0</div>
+        <div class="label">Self-Evolving</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW SKILLS -->
+<section id="new">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag fade-in">Just Added</div>
+      <h2 class="section-title fade-in">New Skills</h2>
+      <p class="section-sub fade-in">Latest additions to the ecosystem -- free resources, advanced agents, and specialized curricula.</p>
+    </div>
+    <div class="new-grid">
+      <div class="new-card fade-in">
+        <span class="badge-new">New</span>
+        <span class="new-icon">&#x1F310;</span>
+        <h3>free-for-dev Resources</h3>
+        <p>Curated collection of free cloud tiers, SaaS tools, and developer services. Never pay for what you can get free.</p>
+        <div class="new-meta">
+          <span>Cloud</span><span>SaaS</span><span>Free Tiers</span>
+        </div>
+      </div>
+      <div class="new-card fade-in fade-in-delay-1">
+        <span class="badge-new">New</span>
+        <span class="new-icon">&#x1F916;</span>
+        <h3>ECC Agent Harness</h3>
+        <p>Optimization, orchestration, security, and evolution framework for autonomous agent pipelines. The backbone of self-improving agents.</p>
+        <div class="new-meta">
+          <span>Orchestration</span><span>Security</span><span>Evolution</span>
+        </div>
+      </div>
+      <div class="new-card fade-in fade-in-delay-2">
+        <span class="badge-new">New</span>
+        <span class="new-icon">&#x1F393;</span>
+        <h3>AI Engineering Curriculum</h3>
+        <p>382 structured lessons covering the full AI engineering stack -- from prompt engineering to production ML systems.</p>
+        <div class="new-meta">
+          <span>382 Lessons</span><span>Full Stack</span>
+        </div>
+      </div>
+      <div class="new-card fade-in fade-in-delay-3">
+        <span class="badge-new">New</span>
+        <span class="new-icon">&#x1F3A8;</span>
+        <h3>UI/UX Pro Max</h3>
+        <p>161 design rules distilled from top design systems. Typography, color theory, layout, accessibility, and motion design.</p>
+        <div class="new-meta">
+          <span>161 Rules</span><span>Design Systems</span>
+        </div>
+      </div>
+      <div class="new-card fade-in fade-in-delay-4">
+        <span class="badge-new">New</span>
+        <span class="new-icon">&#x1F6E1;&#xFE0F;</span>
+        <h3>Pentest Agent Orchestrator</h3>
+        <p>35 specialized agents coordinating reconnaissance, exploitation, reporting, and remediation across complex attack surfaces.</p>
+        <div class="new-meta">
+          <span>35 Agents</span><span>Red Team</span>
+        </div>
+      </div>
+      <div class="new-card fade-in fade-in-delay-5">
+        <span class="badge-new">New</span>
+        <span class="new-icon">&#x1F9F9;</span>
+        <h3>Anti-Slop Frontend</h3>
+        <p>13 design skills that eliminate generic AI-generated UI. Distinctive layouts, real typography, intentional color, meaningful motion.</p>
+        <div class="new-meta">
+          <span>13 Skills</span><span>Frontend</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CATEGORIES -->
-<section id="categories">
+<section id="categories" style="background:var(--bg2)">
   <div class="container">
-    <h2 class="section-title">Skill Categories</h2>
-    <p class="section-sub">18 curated domains covering the full spectrum of AI agent capabilities, from offensive security to autonomous trading.</p>
-    <div class="cat-grid">
-      <div class="cat-card">
-        <div class="cat-head"><h3>cybersecurity</h3><span class="count">779</span></div>
-        <p>Cloud security, threat hunting, forensics, pen testing, SOC ops, malware analysis, zero trust, red teaming</p>
+    <div class="section-header">
+      <div class="section-tag fade-in">Explore</div>
+      <h2 class="section-title fade-in">18 Skill Categories</h2>
+      <p class="section-sub fade-in">Curated domains covering the full spectrum of AI agent capabilities.</p>
+    </div>
+    <div class="search-wrap fade-in">
+      <span class="search-icon">&#x1F50D;</span>
+      <input type="text" id="catSearch" placeholder="Filter categories..." autocomplete="off">
+      <button class="clear-btn" id="clearSearch" aria-label="Clear">&times;</button>
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <div class="cat-card fade-in" data-cat="cybersecurity">
+        <div class="cat-head"><h3>Cybersecurity</h3><span class="count">779</span></div>
+        <p>Threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more across 26 subdomains.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>development</h3><span class="count">80</span></div>
-        <p>TDD, debugging, code review, API design, database patterns, Kafka, mobile dev, git worktrees</p>
+      <div class="cat-card fade-in" data-cat="development">
+        <div class="cat-head"><h3>Development</h3><span class="count">80</span></div>
+        <p>TDD, debugging, code review, API design, database ORMs, Kafka patterns, mobile dev, git worktrees, testing, messaging infrastructure.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>content</h3><span class="count">60</span></div>
-        <p>Video generation, AI podcast, Seedance, Remotion, faceless YouTube, design systems, content creation</p>
+      <div class="cat-card fade-in" data-cat="content">
+        <div class="cat-head"><h3>Content</h3><span class="count">60</span></div>
+        <p>Video/podcast generation, humanizer, Seedance, Remotion, faceless YouTube, design systems, UI frameworks, content kingdom.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>marketing</h3><span class="count">47</span></div>
-        <p>SEO, viral marketing, Twitter automation, email campaigns, growth hacking, ecommerce, TikTok</p>
+      <div class="cat-card fade-in" data-cat="marketing">
+        <div class="cat-head"><h3>Marketing</h3><span class="count">47</span></div>
+        <p>SEO, viral marketing, Twitter automation, email campaigns, growth hacking, ecommerce, affiliate management, buzzer engagement, TikTok.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>core</h3><span class="count">44</span></div>
-        <p>Self-improvement, memory systems, orchestration, session brain, AI/ML infrastructure, autonomy engine</p>
+      <div class="cat-card fade-in" data-cat="core">
+        <div class="cat-head"><h3>Core</h3><span class="count">44</span></div>
+        <p>Self-improvement, memory systems, orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, autonomy engine.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>devops</h3><span class="count">37</span></div>
-        <p>Docker, Kubernetes, CI/CD (GitHub Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps</p>
+      <div class="cat-card fade-in" data-cat="devops">
+        <div class="cat-head"><h3>DevOps</h3><span class="count">37</span></div>
+        <p>Docker, Kubernetes, CI/CD (GitHub Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>integrations</h3><span class="count">31</span></div>
-        <p>GitHub, Discord, Notion, Slack, MCP servers, team collaboration, third-party connectors</p>
+      <div class="cat-card fade-in" data-cat="integrations">
+        <div class="cat-head"><h3>Integrations</h3><span class="count">31</span></div>
+        <p>GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, MCP servers, team collaboration.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>automation</h3><span class="count">30</span></div>
-        <p>n8n, WhatsApp/Telegram bots, scrapers, publishing pipelines, Airflow, userbot frameworks</p>
+      <div class="cat-card fade-in" data-cat="automation">
+        <div class="cat-head"><h3>Automation</h3><span class="count">30</span></div>
+        <p>n8n, bots (WhatsApp, Telegram, Twitter), scrapers, publishing, Airflow pipelines, telegram-userbot.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>research</h3><span class="count">28</span></div>
-        <p>McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence</p>
+      <div class="cat-card fade-in" data-cat="research">
+        <div class="cat-head"><h3>Research</h3><span class="count">28</span></div>
+        <p>McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>operations</h3><span class="count">19</span></div>
-        <p>Governance, KYC, statement audit, GL reconciliation, project management, HR, legal, BI</p>
+      <div class="cat-card fade-in" data-cat="operations">
+        <div class="cat-head"><h3>Operations</h3><span class="count">19</span></div>
+        <p>Governance, KYC, statement audit, GL reconciliation, team ops, project management, BI, HR, legal.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>trading</h3><span class="count">19</span></div>
-        <p>Crypto bots, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs</p>
+      <div class="cat-card fade-in" data-cat="trading">
+        <div class="cat-head"><h3>Trading</h3><span class="count">19</span></div>
+        <p>Crypto bot, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs, portfolio manager.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>financial</h3><span class="count">17</span></div>
-        <p>Wolf finance, value investing, tax-loss harvesting, commodities, DeFi strategies, finance tracker</p>
+      <div class="cat-card fade-in" data-cat="financial">
+        <div class="cat-head"><h3>Financial</h3><span class="count">17</span></div>
+        <p>Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi, finance tracker.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>agents</h3><span class="count">16</span></div>
-        <p>Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents</p>
+      <div class="cat-card fade-in" data-cat="agents">
+        <div class="cat-head"><h3>Agents</h3><span class="count">16</span></div>
+        <p>Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>meta</h3><span class="count">14</span></div>
-        <p>Self-improving meta-skills, auto-evolve, performance monitor, auto-learner, skill datastore</p>
+      <div class="cat-card fade-in" data-cat="meta">
+        <div class="cat-head"><h3>Meta</h3><span class="count">14</span></div>
+        <p>Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>sales</h3><span class="count">13</span></div>
-        <p>High-ticket closing, lead generation, business development, B2B automation, CRM, influence</p>
+      <div class="cat-card fade-in" data-cat="sales">
+        <div class="cat-head"><h3>Sales</h3><span class="count">13</span></div>
+        <p>High-ticket closing, lead generation, business development, B2B automation, CRM, influence.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>mcp</h3><span class="count">12</span></div>
-        <p>MCP server skills for Slack, GitHub, Linear, Notion, Resend, Stripe, Supabase</p>
+      <div class="cat-card fade-in" data-cat="mcp">
+        <div class="cat-head"><h3>MCP</h3><span class="count">12</span></div>
+        <p>MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase).</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>data</h3><span class="count">10</span></div>
-        <p>Data cleaning, anomaly detection, visualization, reporting, pipelines, DBT, lakeFS</p>
+      <div class="cat-card fade-in" data-cat="data">
+        <div class="cat-head"><h3>Data</h3><span class="count">10</span></div>
+        <p>Data cleaning, anomaly detection, visualization, reporting, data pipelines, DBT, lakeFS.</p>
       </div>
-      <div class="cat-card">
-        <div class="cat-head"><h3>productivity</h3><span class="count">7</span></div>
-        <p>Calendar management, email triage, meetings, daily planner, Notion workflows, Google Workspace</p>
+      <div class="cat-card fade-in" data-cat="productivity">
+        <div class="cat-head"><h3>Productivity</h3><span class="count">7</span></div>
+        <p>Calendars, email, meetings, daily planner, Notion, Google Workspace.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SELF-EVOLVING -->
-<section id="evolving" style="background:var(--bg2)">
+<section id="evolving" class="evolve-section">
   <div class="container">
-    <h2 class="section-title">Self-Evolving System</h2>
-    <p class="section-sub">12 meta-skills that continuously improve the entire ecosystem. Skills learn from usage, adapt to new patterns, and optimize themselves over time.</p>
-    <div class="evolve-grid">
-      <div class="evolve-card">
-        <span class="icon">&#x1F9E0;</span>
+    <div class="section-header">
+      <div class="section-tag fade-in">Meta-Skills</div>
+      <h2 class="section-title fade-in">Self-Evolving System</h2>
+      <p class="section-sub fade-in">15 meta-skills that continuously improve the entire ecosystem. Skills learn from usage, adapt to new patterns, and optimize themselves over time.</p>
+    </div>
+    <div class="evolve-loop fade-in">
+      <div class="loop-diagram">
+        <div class="loop-node">
+          <span class="node-icon">&#x1F4CA;</span>
+          <h4>Monitor</h4>
+          <p>Track metrics</p>
+        </div>
+        <span class="loop-arrow">&#x27A1;</span>
+        <div class="loop-node">
+          <span class="node-icon">&#x1F50D;</span>
+          <h4>Analyze</h4>
+          <p>Find gaps</p>
+        </div>
+        <span class="loop-arrow">&#x27A1;</span>
+        <div class="loop-node">
+          <span class="node-icon">&#x1F9E0;</span>
+          <h4>Evolve</h4>
+          <p>Generate upgrades</p>
+        </div>
+        <span class="loop-arrow">&#x27A1;</span>
+        <div class="loop-node">
+          <span class="node-icon">&#x2705;</span>
+          <h4>Validate</h4>
+          <p>Test & deploy</p>
+        </div>
+        <span class="loop-arrow">&#x27A1;</span>
+        <div class="loop-node">
+          <span class="node-icon">&#x1F680;</span>
+          <h4>Deliver</h4>
+          <p>Ship improvements</p>
+        </div>
+      </div>
+    </div>
+    <div class="evolve-features">
+      <div class="evolve-card fade-in">
+        <span class="ev-icon">&#x1F9E0;</span>
         <h4>Auto-Evolve Engine</h4>
-        <p>Automatically identifies skill improvement opportunities based on usage patterns, error rates, and user feedback. Proposes and validates upgrades.</p>
+        <p>Identifies improvement opportunities from usage patterns, error rates, and feedback. Proposes and validates upgrades automatically.</p>
       </div>
-      <div class="evolve-card">
-        <span class="icon">&#x1F4CA;</span>
+      <div class="evolve-card fade-in fade-in-delay-1">
+        <span class="ev-icon">&#x1F4CA;</span>
         <h4>Performance Monitor</h4>
-        <p>Tracks skill execution metrics, success rates, and latency. Flags underperforming skills for review and optimization.</p>
+        <p>Tracks execution metrics, success rates, and latency. Flags underperforming skills for review and optimization.</p>
       </div>
-      <div class="evolve-card">
-        <span class="icon">&#x1F9DA;</span>
+      <div class="evolve-card fade-in fade-in-delay-2">
+        <span class="ev-icon">&#x1F9DA;</span>
         <h4>Auto-Learner</h4>
-        <p>Extracts reusable patterns from successful skill executions and synthesizes new skill variants to fill coverage gaps.</p>
+        <p>Extracts reusable patterns from successful executions and synthesizes new skill variants to fill coverage gaps.</p>
       </div>
-      <div class="evolve-card">
-        <span class="icon">&#x1F4E6;</span>
+      <div class="evolve-card fade-in fade-in-delay-3">
+        <span class="ev-icon">&#x1F4E6;</span>
         <h4>Skill Datastore</h4>
-        <p>Central registry that versions, indexes, and distributes skills across agent environments. Supports hot-reload and rollback.</p>
+        <p>Central registry that versions, indexes, and distributes skills across agent environments with hot-reload and rollback.</p>
       </div>
-      <div class="evolve-card">
-        <span class="icon">&#x1F50D;</span>
+      <div class="evolve-card fade-in fade-in-delay-4">
+        <span class="ev-icon">&#x1F50D;</span>
         <h4>Gap Analysis</h4>
         <p>Scans the ecosystem for missing capabilities by comparing skill coverage against common agent task types and industry domains.</p>
       </div>
-      <div class="evolve-card">
-        <span class="icon">&#x26A1;</span>
+      <div class="evolve-card fade-in fade-in-delay-5">
+        <span class="ev-icon">&#x26A1;</span>
         <h4>Conflict Resolver</h4>
         <p>Detects and resolves skill conflicts when multiple skills match the same intent. Applies priority rules and context-aware selection.</p>
       </div>
@@ -274,45 +526,103 @@ footer .footer-links{display:flex;gap:20px;align-items:center}
   </div>
 </section>
 
-<!-- QUICK START -->
-<section id="quickstart">
+<!-- QUICK START / INSTALL -->
+<section id="quickstart" class="install-section">
   <div class="container">
-    <h2 class="section-title">Quick Start</h2>
-    <p class="section-sub">Install 1ai-skills in under a minute. Works with any AI agent harness that supports skill loading.</p>
-    <div class="quickstart">
-      <div class="step">
-        <div class="step-label">Step 1</div>
-        <h3>Install via npx</h3>
-        <pre>npx skills add oyi77/1ai-skills</pre>
+    <div class="section-header">
+      <div class="section-tag fade-in">Get Started</div>
+      <h2 class="section-title fade-in">Quick Install</h2>
+      <p class="section-sub fade-in">Install 1ai-skills in under a minute. Works with any AI agent harness that supports skill loading.</p>
+    </div>
+    <div class="install-grid">
+      <div class="install-card fade-in">
+        <div class="install-card-header">
+          <h3>One-Command Install</h3>
+          <span class="method">Recommended</span>
+        </div>
+        <div class="install-card-body">
+          <p class="desc">Install via npx -- works with Claude Code, Cursor, and other agent harnesses.</p>
+          <div class="code-block">
+            <pre>npx skills add oyi77/1ai-skills</pre>
+            <button class="copy-btn" data-copy="npx skills add oyi77/1ai-skills">Copy</button>
+          </div>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-label">Step 2</div>
-        <h3>Or clone directly</h3>
-        <pre>git clone https://github.com/oyi77/1ai-skills.git
+      <div class="install-card fade-in fade-in-delay-1">
+        <div class="install-card-header">
+          <h3>Clone & Install</h3>
+          <span class="method">Manual</span>
+        </div>
+        <div class="install-card-body">
+          <p class="desc">Clone the repository and install locally for development or customization.</p>
+          <div class="code-block">
+            <pre>git clone https://github.com/oyi77/1ai-skills.git
 cd 1ai-skills && npm install</pre>
+            <button class="copy-btn" data-copy="git clone https://github.com/oyi77/1ai-skills.git&#10;cd 1ai-skills && npm install">Copy</button>
+          </div>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-label">Step 3</div>
-        <h3>Browse the catalog</h3>
-        <pre>cat SKILLS.json | jq '.[] | .name'</pre>
+      <div class="install-card fade-in fade-in-delay-2">
+        <div class="install-card-header">
+          <h3>Browse Catalog</h3>
+          <span class="method">Explore</span>
+        </div>
+        <div class="install-card-body">
+          <p class="desc">Query the machine-readable skill catalog to find exactly what you need.</p>
+          <div class="code-block">
+            <pre>cat SKILLS.json | jq '.[] | .name'</pre>
+            <button class="copy-btn" data-copy="cat SKILLS.json | jq '.[] | .name'">Copy</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SUPPORTED AGENTS -->
-<section style="background:var(--bg2)">
+<section class="agents-section">
   <div class="container">
-    <h2 class="section-title">Supported Agents</h2>
-    <p class="section-sub">Works with every major AI coding assistant and agent harness.</p>
+    <div class="section-header">
+      <div class="section-tag fade-in">Compatibility</div>
+      <h2 class="section-title fade-in">Supported Agents</h2>
+      <p class="section-sub fade-in">Works with every major AI coding assistant and agent harness.</p>
+    </div>
     <div class="agents-grid">
-      <div class="agent-chip">Claude Code</div>
-      <div class="agent-chip">OpenClaw</div>
-      <div class="agent-chip">Cursor</div>
-      <div class="agent-chip">Windsurf</div>
-      <div class="agent-chip">Cline</div>
-      <div class="agent-chip">Aider</div>
-      <div class="agent-chip">Continue</div>
+      <div class="agent-card fade-in">
+        <div class="agent-icon" style="color:#d97706">CC</div>
+        <h4>Claude Code</h4>
+        <p>Native</p>
+      </div>
+      <div class="agent-card fade-in fade-in-delay-1">
+        <div class="agent-icon" style="color:#8b5cf6">OC</div>
+        <h4>OpenClaw</h4>
+        <p>Native</p>
+      </div>
+      <div class="agent-card fade-in fade-in-delay-2">
+        <div class="agent-icon" style="color:#38bdf8">Cu</div>
+        <h4>Cursor</h4>
+        <p>IDE</p>
+      </div>
+      <div class="agent-card fade-in fade-in-delay-3">
+        <div class="agent-icon" style="color:#06d6a0">Ws</div>
+        <h4>Windsurf</h4>
+        <p>IDE</p>
+      </div>
+      <div class="agent-card fade-in fade-in-delay-4">
+        <div class="agent-icon" style="color:#f472b6">Cl</div>
+        <h4>Cline</h4>
+        <p>VS Code</p>
+      </div>
+      <div class="agent-card fade-in fade-in-delay-5">
+        <div class="agent-icon" style="color:#fbbf24">Ai</div>
+        <h4>Aider</h4>
+        <p>CLI</p>
+      </div>
+      <div class="agent-card fade-in fade-in-delay-5">
+        <div class="agent-icon" style="color:#a78bfa">Co</div>
+        <h4>Continue</h4>
+        <p>VS Code</p>
+      </div>
     </div>
   </div>
 </section>
@@ -321,15 +631,210 @@ cd 1ai-skills && npm install</pre>
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="copy">&copy; 2026 1ai-Skills &mdash; MIT License</div>
+      <div class="footer-left">
+        <span class="logo-sm">1ai-Skills</span>
+        <span class="copy">&copy; 2026 &mdash; MIT License</span>
+      </div>
       <div class="footer-links">
         <a href="https://github.com/oyi77/1ai-skills" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/oyi77/1ai-skills/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
-        <a href="https://github.com/oyi77/1ai-skills/stargazers" target="_blank" rel="noopener">Star</a>
+        <a href="https://github.com/oyi77/1ai-skills/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
+        <a class="footer-stars" href="https://github.com/oyi77/1ai-skills/stargazers" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+          Stars
+        </a>
       </div>
     </div>
   </div>
 </footer>
 
+<script>
+(function(){
+  "use strict";
+
+  /* ---- Typing Effect ---- */
+  var phrases = [
+    "Drop-in skills for Claude Code, Cursor, Windsurf, and every AI agent.",
+    "Cybersecurity, trading, marketing, devops -- 18 categories, 1282 skills.",
+    "Self-evolving meta-skills that improve themselves over time.",
+    "Open-source, MIT licensed, free forever."
+  ];
+  var typeEl = document.getElementById("typingTarget");
+  var cursorEl = document.getElementById("typingCursor");
+  var phraseIdx = 0, charIdx = 0, deleting = false, pauseTimer = null;
+
+  function typeLoop() {
+    var current = phrases[phraseIdx];
+    if (!deleting) {
+      typeEl.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        pauseTimer = setTimeout(typeLoop, 2200);
+        return;
+      }
+      setTimeout(typeLoop, 35 + Math.random() * 30);
+    } else {
+      typeEl.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        setTimeout(typeLoop, 400);
+        return;
+      }
+      setTimeout(typeLoop, 20);
+    }
+  }
+  setTimeout(typeLoop, 800);
+
+  /* ---- Animated Counters ---- */
+  var countersAnimated = false;
+  function animateCounters() {
+    if (countersAnimated) return;
+    var nums = document.querySelectorAll(".stat .num[data-target]");
+    if (!nums.length) return;
+    var rect = nums[0].getBoundingClientRect();
+    if (rect.top > window.innerHeight * 0.85) return;
+    countersAnimated = true;
+    nums.forEach(function(el) {
+      var target = parseInt(el.getAttribute("data-target"), 10);
+      var duration = 1600;
+      var start = performance.now();
+      function step(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target).toLocaleString();
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString();
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ---- Fade-In on Scroll ---- */
+  var fadeEls = document.querySelectorAll(".fade-in");
+  function checkFade() {
+    fadeEls.forEach(function(el) {
+      if (el.classList.contains("visible")) return;
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92) {
+        el.classList.add("visible");
+      }
+    });
+  }
+
+  /* ---- Scroll Handler ---- */
+  var ticking = false;
+  window.addEventListener("scroll", function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        checkFade();
+        animateCounters();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ---- Initial check ---- */
+  checkFade();
+  animateCounters();
+
+  /* ---- Category Search ---- */
+  var searchInput = document.getElementById("catSearch");
+  var clearBtn = document.getElementById("clearSearch");
+  var catCards = document.querySelectorAll(".cat-card");
+  var catGrid = document.getElementById("catGrid");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function() {
+      var q = this.value.toLowerCase().trim();
+      clearBtn.classList.toggle("show", q.length > 0);
+      var visible = 0;
+      catCards.forEach(function(card) {
+        var name = card.getAttribute("data-cat") || "";
+        var text = card.textContent.toLowerCase();
+        var match = !q || name.indexOf(q) !== -1 || text.indexOf(q) !== -1;
+        card.classList.toggle("hidden", !match);
+        if (match) visible++;
+      });
+      var noRes = catGrid.querySelector(".no-results");
+      if (visible === 0 && !noRes) {
+        var nr = document.createElement("div");
+        nr.className = "no-results";
+        nr.textContent = "No categories match \"" + this.value + "\"";
+        catGrid.appendChild(nr);
+      } else if (visible > 0 && noRes) {
+        noRes.remove();
+      }
+    });
+    clearBtn.addEventListener("click", function() {
+      searchInput.value = "";
+      searchInput.dispatchEvent(new Event("input"));
+      searchInput.focus();
+    });
+  }
+
+  /* ---- Copy to Clipboard ---- */
+  document.querySelectorAll(".copy-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var text = this.getAttribute("data-copy");
+      var button = this;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          button.textContent = "Copied!";
+          button.classList.add("copied");
+          setTimeout(function() {
+            button.textContent = "Copy";
+            button.classList.remove("copied");
+          }, 2000);
+        });
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        button.textContent = "Copied!";
+        button.classList.add("copied");
+        setTimeout(function() {
+          button.textContent = "Copy";
+          button.classList.remove("copied");
+        }, 2000);
+      }
+    });
+  });
+
+  /* ---- Burger Menu ---- */
+  var burger = document.getElementById("burger");
+  var navLinks = document.getElementById("navLinks");
+  if (burger && navLinks) {
+    burger.addEventListener("click", function() {
+      navLinks.classList.toggle("open");
+    });
+    navLinks.querySelectorAll("a").forEach(function(a) {
+      a.addEventListener("click", function() {
+        navLinks.classList.remove("open");
+      });
+    });
+  }
+
+  /* ---- Card Mouse Glow ---- */
+  document.querySelectorAll(".cat-card").forEach(function(card) {
+    card.addEventListener("mousemove", function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--mx", x + "%");
+      card.style.setProperty("--my", y + "%");
+    });
+  });
+
+})();
+</script>
 </body>
 </html>
