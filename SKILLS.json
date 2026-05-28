@@ -1,5 +1,5 @@
 {
-  "total_skills": 1282,
+  "total_skills": 1284,
   "category_count": 18,
   "categories": {
     "agents": 17,
@@ -16,7 +16,7 @@
     "mcp": 12,
     "meta": 15,
     "operations": 19,
-    "productivity": 8,
+    "productivity": 10,
     "research": 28,
     "sales": 13,
     "trading": 20

@@ -1,9 +1,9 @@
 # 1ai-Skills
-# 1282 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
+# 1284 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
 # https://github.com/oyi77/1ai-skills
 
 ## What This Is
-1ai-Skills is the largest open-source AI agent skill library. 1282 production-ready skills across 18 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
+1ai-Skills is the largest open-source AI agent skill library. 1284 production-ready skills across 18 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
 
 ## Installation
 ```bash
@@ -18,9 +18,9 @@ git clone https://github.com/oyi77/1ai-skills.git
 3. For `cybersecurity/` (754 skills), read `cybersecurity/AGENTS.md` for the subdomain map BEFORE loading individual skills.
 4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
 
-Do NOT walk all 1282 skill dirs. Grep `SKILLS.json` first.
+Do NOT walk all 1284 skill dirs. Grep `SKILLS.json` first.
 
-## Categories (1282 skills total, 18 categories)
+## Categories (1284 skills total, 18 categories)
 
 | Category | Skills | Focus |
 |---|---:|---|
