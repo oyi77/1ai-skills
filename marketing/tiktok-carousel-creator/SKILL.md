@@ -227,7 +227,7 @@ python3 tiktok_slideshow.py upload <project_id> --no-host
 
 ```bash
 # 1. Set your Pexels API key
-export PEXELS_API_KEY="563492ad6f91700001000001234567890"
+export PEXELS_API_KEY="YOUR_PEXELS_API_KEY"
 
 # 2. Create a slideshow
 python3 tiktok_slideshow.py create "fitness motivation" "Stop making this mistake" 5

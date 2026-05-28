@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1263 skills across 18 categories**, including 779 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1270 skills across 18 categories**, including 779 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -13,12 +13,12 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | Category | Skills | Focus |
 |----------|-------:|-------|
 | `cybersecurity/` | 779 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec |
-| `development/` | 80 | TDD, debugging, code review, PRD, git worktrees, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
+| `development/` | 81 | TDD, debugging, code review, PRD, git worktrees, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
 | `content/` | 60 | Video/podcast generation, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks, content kingdom |
 | `marketing/` | 47 | SEO, viral, Twitter automation, email, growth, ecommerce, affiliate management, buzzer engagement, TikTok |
 | `core/` | 44 | Self-improvement, memory, orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, autonomy engine |
-| `devops/` | 37 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
-| `integrations/` | 31 | GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, MCP servers, team collaboration |
+| `devops/` | 38 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
+| `integrations/` | 32 | GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, MCP servers, team collaboration |
 | `automation/` | 30 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing, Airflow pipelines, telegram-userbot |
 | `research/` | 28 | McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence |
 | `operations/` | 19 | Governance, KYC, statement audit, GL reconciliation, team ops, project management, BI, HR, legal |
@@ -30,7 +30,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | `mcp/` | 12 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase) |
 | `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 7 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
-| **TOTAL** | **1263** | |
+| **TOTAL** | **1270** | |
 
 ## Tooling Dirs (no skills, support infrastructure)
 
@@ -57,7 +57,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 ### Working In This Directory
 - Skills are atomic, self-contained, and namespaced by category dir.
 - **Discovery order**: read `SKILLS.json` (totals) → read category `AGENTS.md` (if present) → read individual `SKILL.md`.
-- Do NOT walk all 1263 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
+- Do NOT walk all 1270 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
 - For the 754 cybersecurity skills, use `cybersecurity/AGENTS.md` for the subdomain map (avoids loading the whole tree into context).
 
 ### Adding a Skill

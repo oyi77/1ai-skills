@@ -10,11 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # full history for accurate release notes
-      
+          fetch-depth: 0
+
+      # --- GITLEAKS GATE: block release if secrets found ---
+      - name: Install gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz \
+            | tar -xz -C /tmp gitleaks
+          sudo mv /tmp/gitleaks /usr/local/bin/
+
+      - name: Scan working tree for secrets
+        run: gitleaks detect --no-git --config .gitleaks.toml --verbose
+
+      - name: Scan full history for secrets
+        run: gitleaks detect --config .gitleaks.toml --verbose
+
+      # --- RELEASE ---
       - name: Generate Release Notes
         id: notes
         run: |
@@ -24,10 +39,12 @@ jobs:
           else
             NOTES=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s" --no-merges)
           fi
+          TOTAL=$(python3 -c "import json; print(json.load(open('SKILLS.json'))['total_skills'])")
           echo "notes<<EOF" >> $GITHUB_OUTPUT
           echo "$NOTES" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-      
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
@@ -35,40 +52,53 @@ jobs:
           name: ${{ github.ref_name }}
           body: |
             ## Self-Improving Agent Operating System Update
-            
+
             ### Changes
             ${{ steps.notes.outputs.notes }}
-            
+
             ### Installation
             ```bash
             npx skills add oyi77/1ai-skills@${{ github.ref_name }}
             ```
-            
+
             ### npm install (alternative)
             ```bash
             npm install 1ai-skills@${{ github.ref_name }}
             ```
-            
+
             ### Stats
-            - Total Skills: 1215 across 18 categories (see SKILLS.json)
+            - Total Skills: ${{ steps.notes.outputs.total }} across 18 categories (see SKILLS.json)
             - Cybersecurity: 779 skills across 26 subdomains
-            - Meta-Skills: 14 (auto-evolve, auto-improve, auto-learn)
-            - CI Protected: validate.yml enforces frontmatter, uniqueness, and doc sync
+            - Meta-Skills: 15 (auto-evolve, auto-improve, auto-learn)
+            - CI Protected: gitleaks + validate.yml enforces secrets, frontmatter, and doc sync
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
+      # --- PUBLISH ---
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.com'
-      
+
       - name: Publish to npmjs.com
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to GitHub Packages
         run: |
-          npm config set //registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm config set @oyi77:registry=https://npm.pkg.github.com
+          npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
+          # GitHub Packages requires scoped name — temporarily override
+          node -e "
+            const p = require('./package.json');
+            p.name = '@oyi77/1ai-skills';
+            require('fs').writeFileSync('package.json', JSON.stringify(p, null, 2));
+          "
           npm publish --access public
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
