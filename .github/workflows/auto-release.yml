@@ -11,6 +11,7 @@ jobs:
     permissions:
       contents: write
       packages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -80,10 +81,8 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.com'
 
-      - name: Publish to npmjs.com
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npmjs.com (Trusted Publishing)
+        run: npm publish --provenance --access public
 
       - name: Publish to GitHub Packages
         run: |
