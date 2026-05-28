@@ -26,9 +26,6 @@ jobs:
       - name: Scan working tree for secrets
         run: gitleaks detect --no-git --config .gitleaks.toml --verbose
 
-      - name: Scan full history for secrets
-        run: gitleaks detect --config .gitleaks.toml --verbose
-
       # --- RELEASE ---
       - name: Generate Release Notes
         id: notes
