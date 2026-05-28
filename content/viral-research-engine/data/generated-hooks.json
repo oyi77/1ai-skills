@@ -1,0 +1,416 @@
+{
+  "generated_at": "2026-03-13T00:45:36.385733",
+  "total_hooks": 50,
+  "niches": {
+    "ai_tools": [
+      {
+        "hook": "STOP abaikan AI tools sekarang sebelum kamu tau ini...",
+        "type": "warning_stop",
+        "format": "Controversy",
+        "virality_score": 9.7,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385763"
+      },
+      {
+        "hook": "Semua orang salah tentang prompt engineering — ini faktanya",
+        "type": "controversy",
+        "format": "Hot Take",
+        "virality_score": 9.5,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385808"
+      },
+      {
+        "hook": "Jujur, gue dulu gapake AI sama sekali. Sekarang semua otomatis pakai AI.",
+        "type": "confession",
+        "format": "Storytelling",
+        "virality_score": 9.4,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385758"
+      },
+      {
+        "hook": "Kalau kamu gak pelajari AI tools ini sekarang, kamu bakal rugi jutaan karena inefficient",
+        "type": "fomo",
+        "format": "Warning",
+        "virality_score": 9.3,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385797"
+      },
+      {
+        "hook": "3 tools produktivitas AI yang bisa buat konten 30 hari dalam 2 jam dalam 30 hari",
+        "type": "shocking_number",
+        "format": "Listicle",
+        "virality_score": 9.1,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385753"
+      },
+      {
+        "hook": "Ini hasil 2 minggu setelah gue ganti tools manual dengan AI — gak nyangka",
+        "type": "proof_first",
+        "format": "Social Proof",
+        "virality_score": 8.9,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385804"
+      },
+      {
+        "hook": "Kerja 12 jam sehari → Otomatis dengan AI dalam sebulan",
+        "type": "before_after",
+        "format": "Before/After",
+        "virality_score": 8.8,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385771"
+      },
+      {
+        "hook": "Rahasia freelancer berpenghasilan tinggi yang gak banyak orang tau di Indonesia",
+        "type": "secret",
+        "format": "Reveal",
+        "virality_score": 8.6,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385792"
+      },
+      {
+        "hook": "Kamu masih riset kompetitor manual? Coba AI tools gratis ini...",
+        "type": "old_vs_new",
+        "format": "Tutorial",
+        "virality_score": 8.2,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385744"
+      },
+      {
+        "hook": "Tau gak kamu bisa buat konten 30 hari dalam 2 jam cuma dengan 1 prompt ChatGPT?",
+        "type": "question",
+        "format": "Tutorial",
+        "virality_score": 7.5,
+        "niche": "ai_tools",
+        "generated_at": "2026-03-13T00:45:36.385787"
+      }
+    ],
+    "digital_marketing": [
+      {
+        "hook": "STOP ikutin trend tanpa angle unik sebelum kamu tau ini...",
+        "type": "warning_stop",
+        "format": "Controversy",
+        "virality_score": 9.7,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385838"
+      },
+      {
+        "hook": "Semua orang salah tentang hashtag di 2025 — ini faktanya",
+        "type": "controversy",
+        "format": "Hot Take",
+        "virality_score": 9.5,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385871"
+      },
+      {
+        "hook": "Jujur, gue dulu follower stuck di angka itu-itu. Sekarang 10K followers dalam sebulan.",
+        "type": "confession",
+        "format": "Storytelling",
+        "virality_score": 9.4,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385833"
+      },
+      {
+        "hook": "Kalau kamu gak ganti strategi kontenmu sekarang, kamu bakal shadow banned selamanya",
+        "type": "fomo",
+        "format": "Warning",
+        "virality_score": 9.3,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385861"
+      },
+      {
+        "hook": "7 teknik copywriting yang bisa dapat brand deal pertama dalam 2 minggu",
+        "type": "shocking_number",
+        "format": "Listicle",
+        "virality_score": 9.1,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385828"
+      },
+      {
+        "hook": "Ini hasil seminggu setelah gue konsisten dengan format ini — gak nyangka",
+        "type": "proof_first",
+        "format": "Social Proof",
+        "virality_score": 8.9,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385866"
+      },
+      {
+        "hook": "0 engagement per post → sistem konten yang jalan autopilot dalam 30 hari",
+        "type": "before_after",
+        "format": "Before/After",
+        "virality_score": 8.8,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385845"
+      },
+      {
+        "hook": "Rahasia brand yang tumbuh organik yang gak banyak orang tau di Indonesia",
+        "type": "secret",
+        "format": "Reveal",
+        "virality_score": 8.6,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385855"
+      },
+      {
+        "hook": "Kamu masih posting tanpa riset hashtag? Coba formula konten viral ini...",
+        "type": "old_vs_new",
+        "format": "Tutorial",
+        "virality_score": 8.2,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385820"
+      },
+      {
+        "hook": "Tau gak kamu bisa viral tanpa iklan cuma dengan 1 perubahan ini?",
+        "type": "question",
+        "format": "Tutorial",
+        "virality_score": 7.5,
+        "niche": "digital_marketing",
+        "generated_at": "2026-03-13T00:45:36.385851"
+      }
+    ],
+    "kuliner": [
+      {
+        "hook": "STOP abaikan review pelanggan sebelum kamu tau ini...",
+        "type": "warning_stop",
+        "format": "Controversy",
+        "virality_score": 9.7,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385899"
+      },
+      {
+        "hook": "Semua orang salah tentang menu yang laris — ini faktanya",
+        "type": "controversy",
+        "format": "Hot Take",
+        "virality_score": 9.5,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385931"
+      },
+      {
+        "hook": "Jujur, gue dulu struggle bayar modal warung. Sekarang omzet 30 juta/bulan.",
+        "type": "confession",
+        "format": "Storytelling",
+        "virality_score": 9.4,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385895"
+      },
+      {
+        "hook": "Kalau kamu gak mulai dokumentasi masakmu sekarang, kamu bakal kalah dari kompetitor yang lebih pintar marketing",
+        "type": "fomo",
+        "format": "Warning",
+        "virality_score": 9.3,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385921"
+      },
+      {
+        "hook": "3 strategi bisnis kuliner yang bisa lipat omzet 3x tanpa tambah modal dalam sebulan",
+        "type": "shocking_number",
+        "format": "Listicle",
+        "virality_score": 9.1,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385889"
+      },
+      {
+        "hook": "Ini hasil sebulan setelah gue terapkan food cost formula ini — gak nyangka",
+        "type": "proof_first",
+        "format": "Social Proof",
+        "virality_score": 8.9,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385927"
+      },
+      {
+        "hook": "Omzet Rp 1 juta/hari → Antrian sampai luar dalam 2 minggu",
+        "type": "before_after",
+        "format": "Before/After",
+        "virality_score": 8.8,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385906"
+      },
+      {
+        "hook": "Rahasia pemilik warung viral yang gak banyak orang tau di Indonesia",
+        "type": "secret",
+        "format": "Reveal",
+        "virality_score": 8.6,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385916"
+      },
+      {
+        "hook": "Kamu masih bikin resep coba-coba? Coba strategi marketing makanan viral...",
+        "type": "old_vs_new",
+        "format": "Tutorial",
+        "virality_score": 8.2,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385881"
+      },
+      {
+        "hook": "Tau gak kamu bisa viral di TikTok food tanpa bayar influencer cuma dengan caption food yang menarik?",
+        "type": "question",
+        "format": "Tutorial",
+        "virality_score": 7.5,
+        "niche": "kuliner",
+        "generated_at": "2026-03-13T00:45:36.385911"
+      }
+    ],
+    "side_hustle": [
+      {
+        "hook": "STOP coba semua side hustle sekaligus sebelum kamu tau ini...",
+        "type": "warning_stop",
+        "format": "Controversy",
+        "virality_score": 9.7,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385957"
+      },
+      {
+        "hook": "Semua orang salah tentang passive income — ini faktanya",
+        "type": "controversy",
+        "format": "Hot Take",
+        "virality_score": 9.5,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385989"
+      },
+      {
+        "hook": "Jujur, gue dulu coba bisnis tapi selalu gagal. Sekarang resign dari kantor dengan confidence.",
+        "type": "confession",
+        "format": "Storytelling",
+        "virality_score": 9.4,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385953"
+      },
+      {
+        "hook": "Kalau kamu gak validasi ide bisnismu dulu sekarang, kamu bakal inflasi makan tabunganmu habis",
+        "type": "fomo",
+        "format": "Warning",
+        "virality_score": 9.3,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385979"
+      },
+      {
+        "hook": "3 side hustle yang bisa dimulai sekarang yang bisa hasilin Rp 10 juta bulan pertama dalam 30 hari",
+        "type": "shocking_number",
+        "format": "Listicle",
+        "virality_score": 9.1,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385948"
+      },
+      {
+        "hook": "Ini hasil 30 hari setelah gue freelance dengan rate tinggi — gak nyangka",
+        "type": "proof_first",
+        "format": "Social Proof",
+        "virality_score": 8.9,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385985"
+      },
+      {
+        "hook": "0 penghasilan dari online → Kerja 4 jam, sisa waktu untuk keluarga dalam 30 hari",
+        "type": "before_after",
+        "format": "Before/After",
+        "virality_score": 8.8,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385964"
+      },
+      {
+        "hook": "Rahasia seller digital product yang gak banyak orang tau di Indonesia",
+        "type": "secret",
+        "format": "Reveal",
+        "virality_score": 8.6,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385974"
+      },
+      {
+        "hook": "Kamu masih kerja 9-5 berharap naik gaji? Coba bisnis digital dengan modal nol...",
+        "type": "old_vs_new",
+        "format": "Tutorial",
+        "virality_score": 8.2,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385940"
+      },
+      {
+        "hook": "Tau gak kamu bisa hasilin Rp 10 juta bulan pertama cuma dengan cara ini yang belum banyak orang tau?",
+        "type": "question",
+        "format": "Tutorial",
+        "virality_score": 7.5,
+        "niche": "side_hustle",
+        "generated_at": "2026-03-13T00:45:36.385970"
+      }
+    ],
+    "education": [
+      {
+        "hook": "STOP nunggu kondisi 'tepat' sebelum mulai sebelum kamu tau ini...",
+        "type": "warning_stop",
+        "format": "Controversy",
+        "virality_score": 9.7,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386015"
+      },
+      {
+        "hook": "Semua orang salah tentang kebiasaan produktif — ini faktanya",
+        "type": "controversy",
+        "format": "Hot Take",
+        "virality_score": 9.5,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386047"
+      },
+      {
+        "hook": "Jujur, gue dulu ngerasa stuck padahal udah kerja keras. Sekarang dapat side income dari skill baru.",
+        "type": "confession",
+        "format": "Storytelling",
+        "virality_score": 9.4,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386011"
+      },
+      {
+        "hook": "Kalau kamu gak investasi di dirimu sendiri sekarang, kamu bakal inflasi hancurkan nilai tabunganmu",
+        "type": "fomo",
+        "format": "Warning",
+        "virality_score": 9.3,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386037"
+      },
+      {
+        "hook": "5 skill yang wajib dikuasai yang bisa dapat tawaran kerja sebelum resign dalam 3 bulan",
+        "type": "shocking_number",
+        "format": "Listicle",
+        "virality_score": 9.1,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386006"
+      },
+      {
+        "hook": "Ini hasil 30 hari setelah gue sistem belajar 1 jam/hari ini — gak nyangka",
+        "type": "proof_first",
+        "format": "Social Proof",
+        "virality_score": 8.9,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386042"
+      },
+      {
+        "hook": "Penghasilan minimum → Skill yang dicari perusahaan dalam 3 bulan",
+        "type": "before_after",
+        "format": "Before/After",
+        "virality_score": 8.8,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386022"
+      },
+      {
+        "hook": "Rahasia orang yang sudah financial free di 30an yang gak banyak orang tau di Indonesia",
+        "type": "secret",
+        "format": "Reveal",
+        "virality_score": 8.6,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386031"
+      },
+      {
+        "hook": "Kamu masih belajar sistem sekolah konvensional? Coba metode yang bikin skill langsung applicable...",
+        "type": "old_vs_new",
+        "format": "Tutorial",
+        "virality_score": 8.2,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.385998"
+      },
+      {
+        "hook": "Tau gak kamu bisa dapat tawaran kerja sebelum resign cuma dengan metode belajar 20 menit/hari?",
+        "type": "question",
+        "format": "Tutorial",
+        "virality_score": 7.5,
+        "niche": "education",
+        "generated_at": "2026-03-13T00:45:36.386027"
+      }
+    ]
+  }
+}

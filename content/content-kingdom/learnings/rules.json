@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "category": "design",
+    "rule": "Dark background (#000000) for all content images",
+    "description": "Pure black creates high contrast, premium feel. 8/10 Veris samples use #000000.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 9,
+    "created": "2026-03-14T17:29:15.984698",
+    "updated": "2026-03-14T17:29:15.984704",
+    "active": true
+  },
+  {
+    "id": 2,
+    "category": "design",
+    "rule": "4:5 vertical format (1024x1280) as primary, 1:1 as secondary",
+    "description": "70% of Veris samples use 4:5. Better for IG portrait/story. More space for text.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 9,
+    "created": "2026-03-14T17:29:15.984887",
+    "updated": "2026-03-14T17:29:15.984893",
+    "active": true
+  },
+  {
+    "id": 3,
+    "category": "design",
+    "rule": "Three-section layout: Hook (top 20-30%) → Body (middle 40-50%) → CTA (bottom 20-30%)",
+    "description": "Consistent across all Veris samples. CTA in bordered box at bottom.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 8,
+    "created": "2026-03-14T17:29:15.985133",
+    "updated": "2026-03-14T17:29:15.985138",
+    "active": true
+  },
+  {
+    "id": 4,
+    "category": "design",
+    "rule": "No vibrant colors. Subtle accents only: blue #202040, red #200000, gray #606080",
+    "description": "Veris avoids overwhelming colors. Focus on content over decoration.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 8,
+    "created": "2026-03-14T17:29:15.985598",
+    "updated": "2026-03-14T17:29:15.985605",
+    "active": true
+  },
+  {
+    "id": 5,
+    "category": "design",
+    "rule": "White text on black background. Clean modern sans-serif. Readable at 320px mobile width",
+    "description": "Maximum readability. Bold for hooks, regular for body.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 8,
+    "created": "2026-03-14T17:29:15.985984",
+    "updated": "2026-03-14T17:29:15.985991",
+    "active": true
+  },
+  {
+    "id": 6,
+    "category": "platform",
+    "rule": "Instagram-first strategy. Not TikTok-first.",
+    "description": "Veris optimizes for IG conversion. TikTok is volume play, not primary.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 7,
+    "created": "2026-03-14T17:29:15.986376",
+    "updated": "2026-03-14T17:29:15.986383",
+    "active": true
+  },
+  {
+    "id": 7,
+    "category": "design",
+    "rule": "Minimalist premium aesthetic. No emoji in images. No complex patterns/gradients.",
+    "description": "Clean backgrounds, text as primary visual element.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 7,
+    "created": "2026-03-14T17:29:15.986684",
+    "updated": "2026-03-14T17:29:15.986690",
+    "active": true
+  },
+  {
+    "id": 8,
+    "category": "copy",
+    "rule": "Direct, premium tone. No fluff. Every word must earn its place.",
+    "description": "Veris copy is concise, authoritative, action-oriented.",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 7,
+    "created": "2026-03-14T17:29:15.987021",
+    "updated": "2026-03-14T17:29:15.987026",
+    "active": true
+  },
+  {
+    "id": 9,
+    "category": "design",
+    "rule": "selalu pakai dark background untuk image",
+    "description": "Auto-extracted from training feedback",
+    "sources": [
+      "trainer:Veris"
+    ],
+    "priority": 6,
+    "created": "2026-03-14T17:29:29.325173",
+    "updated": "2026-03-14T17:29:29.325181",
+    "active": true
+  }
+]

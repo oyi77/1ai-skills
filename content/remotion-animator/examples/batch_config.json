@@ -1,0 +1,46 @@
+{
+  "animations": [
+    {
+      "type": "kinetic_typo",
+      "template": "scale-in",
+      "text": "Viral Content Strategy",
+      "duration": 3,
+      "fontSize": 80,
+      "fontWeight": 800,
+      "colors": ["#FF6B6B", "#4ECDC4"]
+    },
+    {
+      "type": "kinetic_typo",
+      "template": "scale-in",
+      "text": "Reach 10,000 Views",
+      "duration": 3,
+      "fontSize": 80,
+      "fontWeight": 800,
+      "colors": ["#4ECDC4", "#FF6B6B"]
+    },
+    {
+      "type": "data_viz",
+      "animation": "counter",
+      "start": 0,
+      "end": 10000,
+      "duration": 5,
+      "format": "IDR #,###"
+    },
+    {
+      "type": "data_viz",
+      "animation": "counter",
+      "start": 212,
+      "end": 5000,
+      "duration": 4,
+      "format": "#,###"
+    },
+    {
+      "type": "data_viz",
+      "animation": "counter",
+      "start": 0,
+      "end": 847,
+      "duration": 3,
+      "format": "%#"
+    }
+  ]
+}

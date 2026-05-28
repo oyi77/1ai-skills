@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-03-14T17:29:29.324486",
+    "source": "user",
+    "type": "negative",
+    "content": "caption ini jelek, terlalu lebay emoji-nya",
+    "context": {
+      "content_type": "caption",
+      "user": "Paijo",
+      "role": "user"
+    },
+    "tags": [
+      "negative",
+      "caption"
+    ],
+    "applied": false,
+    "applied_count": 0
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-03-14T17:29:29.324835",
+    "source": "trainer:Veris",
+    "type": "training",
+    "content": "selalu pakai dark background untuk image",
+    "context": {
+      "content_type": "image",
+      "user": "Veris",
+      "role": "user"
+    },
+    "tags": [
+      "design",
+      "image"
+    ],
+    "applied": false,
+    "applied_count": 0
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-03-14T17:29:29.325549",
+    "source": "user",
+    "type": "positive",
+    "content": "oke bagus mantap, post ini keren!",
+    "context": {
+      "user": "Paijo",
+      "role": "user"
+    },
+    "tags": [
+      "positive"
+    ],
+    "applied": false,
+    "applied_count": 0
+  }
+]

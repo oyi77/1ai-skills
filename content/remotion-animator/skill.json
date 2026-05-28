@@ -1,0 +1,237 @@
+{
+  "name": "remotion-animator",
+  "version": "1.0.0",
+  "description": "Create stunning animations with Remotion (React-based) - superior to FFmpeg for dynamic, programmatic animations",
+  "author": "Vilona (BerkahKarya AI)",
+  "category": "video-creation",
+  "tags": ["animation", "video", "remotion", "react", "motion-graphics"],
+  
+  "capabilities": {
+    "animation_types": [
+      "Kinetic typography (text animation)",
+      "Motion graphics (shapes, gradients, transitions)",
+      "Logo animations (reveal, morph, rotate)",
+      "Product showcases (3D rotation, feature highlights)",
+      "Social media templates (TikTok, Reels, YouTube Shorts)",
+      "Data visualizations (charts, stats animations)",
+      "Character animations (if using React components)",
+      "Particle effects (backgrounds, transitions)"
+    ],
+    
+    "features": [
+      "Programmatic animation control (frames, timing, easing)",
+      "React component system (reusable, composable)",
+      "Export to multiple formats (MP4, GIF, WebM)",
+      "Automatic resolution scaling (720p, 1080p, 4K)",
+      "Frame rate control (30fps, 60fps, custom)",
+      "Alpha channel support (transparent backgrounds)",
+      "Custom fonts and typography",
+      "Color scheme support (light, dark, custom)",
+      "Audio sync (beat-based animation)",
+      "Composition sequencing (complex multi-scene)",
+      "SVG vector graphics (crisp at any resolution)",
+      "Framer Motion integration (if available)"
+    ]
+  },
+  
+  "dependencies": {
+    "node": ">=18.0.0",
+    "npm": {
+      "remotion": "^4.0.0",
+      "@remotion/cli": "^4.0.0",
+      "remotion.config.js": "built-in"
+    },
+    "optional": [
+      "ffmpeg (for final export)",
+      "framer-motion (for advanced transitions)"
+    ]
+  },
+  
+  "templates": {
+    "kinetic_typo": {
+      "name": "Kinetic Typography",
+      "description": "Animated text with multiple fonts, sizes, transitions",
+      "duration": "5-30 seconds",
+      "platforms": ["TikTok", "Reels", "YouTube Shorts"],
+      "features": [
+        "Word-by-word reveal",
+        "Text scaling/rotation",
+        "Gradient text effects",
+        "Background transitions",
+        "Beat sync capability"
+      ]
+    },
+    
+    "product_showcase": {
+      "name": "Product Showcase",
+      "description": "3D rotation, feature highlights, close-ups",
+      "duration": "15-60 seconds",
+      "platforms": ["All"],
+      "features": [
+        "360° product rotation",
+        "Feature callout animations",
+        "Price/offer reveal",
+        "Comparison splitscreen",
+        "Before/after transitions"
+      ]
+    },
+    
+    "data_viz": {
+      "name": "Data Visualization",
+      "description": "Animated charts, stats, infographics",
+      "duration": "10-45 seconds",
+      "platforms": ["TikTok", "Reels", "LinkedIn"],
+      "features": [
+        "Bar chart growth",
+        "Pie chart rotations",
+        "Counter animations (0 → target)",
+        "Progress bar fills",
+        "Stat card reveals"
+      ]
+    },
+    
+    "logo_reveal": {
+      "name": "Logo Animation",
+      "description": "Professional logo reveals for brands",
+      "duration": "3-10 seconds",
+      "platforms": ["All"],
+      "features": [
+        "Path drawing animation",
+        "Scale/fade reveals",
+        "3D rotation (CSS)",
+        "Glow/shadow effects",
+        "Gradient backgrounds"
+      ]
+    },
+    
+    "social_post": {
+      "name": "Social Media Template",
+      "description": "Optimized for TikTok/Reels aspect ratios",
+      "duration": "7-60 seconds",
+      "platforms": ["TikTok", "Reels"],
+      "features": [
+        "9:16 aspect ratio",
+        "Safe zones for text",
+        "Beat-synced transitions",
+        "Trending audio support",
+        "Caption integration"
+      ]
+    }
+  },
+  
+  "api_commands": {
+    "create": "Create animation from template or custom config",
+    "render": "Render to video (MP4, GIF, WebM)",
+    "preview": "Preview animation in browser (dev mode)",
+    "export": "Export to multiple formats/resolutions",
+    "optimize": "Optimize for file size (quality vs size tradeoff)",
+    "batch": "Render multiple animations in sequence",
+    "compose": "Combine multiple scenes into one video"
+  },
+  
+  "output_formats": {
+    "video": {
+      "mp4": "H.264 codec, widely supported",
+      "webm": "VP9 codec, web-optimized",
+      "mov": "ProRes, high quality for editing",
+      "gif": "Animated GIF (limited colors, loop)"
+    },
+    "resolutions": {
+      "720p": "1280x720 (Instagram, Facebook)",
+      "1080p": "1920x1080 (YouTube, TikTok)",
+      "1080x1920": "Vertical video (TikTok, Reels)",
+      "4k": "3840x2160 (high-end production)",
+      "custom": "Any dimension (for specific needs)"
+    },
+    "frame_rates": {
+      "24fps": "Cinematic",
+      "30fps": "Standard (most social media)",
+      "60fps": "Smooth (high-end platforms)"
+    }
+  },
+  
+  "examples": {
+    "simple_text": {
+      "config": {
+        "text": "Vilona AI",
+        "animation": "scale-in",
+        "duration": 3,
+        "fontSize": 120,
+        "fontWeight": 800
+      },
+      "result": "3-second text scale animation with gradient background"
+    },
+    
+    "counter": {
+      "config": {
+        "start": 0,
+        "end": 10000,
+        "duration": 5,
+        "format": "IDR #,###",
+        "animation": "count-up"
+      },
+      "result": "5-second counter animation from 0 to 10,000 IDR"
+    },
+    
+    "product_rotation": {
+      "config": {
+        "image": "product.png",
+        "animation": "3d-rotate",
+        "rotation_degrees": 360,
+        "duration": 8,
+        "caption": "AI Creative Tools - IDR 75K"
+      },
+      "result": "8-second 360° product rotation with caption"
+    }
+  },
+  
+  "installation": {
+    "steps": [
+      "Install Node.js 18+",
+      "npm install remotion @remotion/cli",
+      "Create Remotion project with `npx create-video`",
+      "Copy skill files to project root",
+      "Run: npm run dev (preview) or npm run build (render)"
+    ]
+  },
+  
+  "comparison": {
+    "remotion_vs_ffmpeg": {
+      "flexibility": "Remotion: 10/10 | FFmpeg: 3/10",
+      "ease_of_use": "Remotion: 8/10 | FFmpeg: 4/10",
+      "power": "Remotion: 9/10 | FFmpeg: 5/10",
+      "speed": "Remotion: 6/10 | FFmpeg: 8/10",
+      "quality": "Remotion: 10/10 | FFmpeg: 7/10",
+      "maintainability": "Remotion: 9/10 | FFmpeg: 4/10",
+      "ecosystem": "Remotion: 9/10 | FFmpeg: 8/10"
+    },
+    
+    "when_to_use_remotion": [
+      "Complex animations (multiple elements, layers)",
+      "Programmatic control (data-driven animations)",
+      "React-based workflows (if already using React)",
+      "Need for flexibility/change (templates, variations)",
+      "Typography-heavy content (text animations)",
+      "Brand consistency (reusable components)"
+    ],
+    
+    "when_to_use_ffmpeg": [
+      "Simple cuts/trims",
+      "Batch processing large files",
+      "Fast prototyping",
+      "Hardware acceleration needed",
+      "Very long videos (10+ minutes)"
+    ]
+  },
+  
+  "learning_resources": {
+    "official_docs": "https://www.remotion.dev/docs",
+    "examples": "https://www.remotion.dev/examples",
+    "community": "https://discord.gg/7dWjXQp",
+    "tutorials": [
+      "Remotion for React Developers (official)",
+      "Kinetic Typography Tutorial (YouTube)",
+      "Motion Graphics with Remotion (freeCodeCamp)"
+    ]
+  }
+}

@@ -1,0 +1,684 @@
+{
+  "runs": [
+    {
+      "run_id": "run_20260313_184252",
+      "date": "2026-03-13",
+      "started_at": "2026-03-13T11:42:52.926662+00:00",
+      "phases": {
+        "research": {
+          "phase": "research",
+          "status": "success",
+          "data": {
+            "sources": [
+              "research_agent",
+              "viral_research_system"
+            ],
+            "research_agent": {
+              "success": true,
+              "output_lines": 65
+            },
+            "viral_research": {
+              "success": true,
+              "output_lines": 19
+            },
+            "success": true
+          },
+          "duration_seconds": 0.24,
+          "timestamp": "2026-03-13T11:42:52.929479+00:00"
+        },
+        "plan": {
+          "phase": "plan",
+          "status": "success",
+          "data": {
+            "date": "2026-03-13",
+            "weekday": "friday",
+            "product_focus": "belanja_duit_balik",
+            "platforms": [
+              "tiktok",
+              "instagram",
+              "facebook"
+            ],
+            "posting_times": {
+              "tiktok": [
+                "07:00",
+                "12:00",
+                "18:00",
+                "21:00"
+              ],
+              "instagram": [
+                "08:00",
+                "13:00",
+                "19:00"
+              ],
+              "facebook": [
+                "09:00",
+                "15:00",
+                "20:00"
+              ],
+              "youtube": [
+                "10:00",
+                "16:00"
+              ],
+              "x": [
+                "08:30",
+                "14:00",
+                "20:30"
+              ]
+            },
+            "weekly_plan_found": true,
+            "content_count_target": 3
+          },
+          "duration_seconds": 0.0,
+          "timestamp": "2026-03-13T11:42:53.181471+00:00"
+        },
+        "script": {
+          "phase": "script",
+          "status": "success",
+          "data": {
+            "scripts_generated": 6,
+            "output_path": "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/output/scripts_2026-03-13.json",
+            "templates_used": [
+              "ad_short",
+              "product_showcase"
+            ]
+          },
+          "duration_seconds": 0.01,
+          "timestamp": "2026-03-13T11:42:53.191630+00:00"
+        },
+        "create": {
+          "phase": "create",
+          "status": "success",
+          "data": {
+            "images_generated": 0,
+            "total_attempted": 5,
+            "output_dir": "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/output/images/2026-03-13"
+          },
+          "duration_seconds": 0.2,
+          "timestamp": "2026-03-13T11:42:53.204785+00:00"
+        },
+        "review": {
+          "phase": "review",
+          "status": "failed",
+          "error": "module 'quality_gate' has no attribute '_load_all'",
+          "duration_seconds": 0.01,
+          "timestamp": "2026-03-13T11:42:53.415976+00:00"
+        },
+        "schedule": {
+          "phase": "schedule",
+          "status": "success",
+          "data": {
+            "success": true,
+            "output_lines": 150,
+            "queue_file": "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/postbridge_queue_jendralbot.json",
+            "error": null
+          },
+          "duration_seconds": 24.21,
+          "timestamp": "2026-03-13T11:42:53.430912+00:00"
+        },
+        "post": {
+          "phase": "post",
+          "status": "success",
+          "data": {
+            "total_checked": 50,
+            "successful": 0,
+            "failed": 0,
+            "retried": 0
+          },
+          "duration_seconds": 1.02,
+          "timestamp": "2026-03-13T11:43:17.651755+00:00"
+        },
+        "engage": {
+          "phase": "engage",
+          "status": "failed",
+          "error": "PostBridgeClient not found.\n  Tried: ['postbridge_interface', 'postbridge']\n  Install requests or check autopilot_affiliate_engine path.",
+          "duration_seconds": 0.04,
+          "timestamp": "2026-03-13T11:43:18.708042+00:00"
+        },
+        "analyze": {
+          "phase": "analyze",
+          "status": "success",
+          "data": {
+            "evening_report": {
+              "success": true,
+              "lines": 67
+            },
+            "revenue_tracker": {
+              "success": true,
+              "lines": 68
+            },
+            "analytics": {
+              "posts_fetched": 7,
+              "total_views": 0,
+              "total_likes": 0,
+              "total_comments": 0,
+              "total_shares": 0
+            },
+            "raw_posts": [
+              {
+                "id": "0e294f0b-da3d-4625-b119-3303d3a007ac",
+                "post_result_id": "4c060c36-8ae1-42ab-9a37-51e1b6bf2e70",
+                "platform": "tiktok",
+                "platform_post_id": "7616569622149500176",
+                "view_count": 100,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/b9c669234e0a43e5a9636701ee02d6c2~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=ef92ee1e&x-expires=1774695600&x-signature=6Qu6kCx2YB6NFx5z6hIhSVNm41s%3D&t=5897f7ec&ps=d5b8ac02&shp=d05b14bd&shcp=8aecc5ac&idc=my2&s=TIKTOK_FOR_DEVELOPER&biz_tag=tt_photomode&sc=cover",
+                "share_url": "https://www.tiktok.com/@drlifehacks1/video/7616569622149500176?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "\ud83c\udfc6 Warung makan kecil yang bisa kalahkan restoran besar \u2014 ini strateginya: Yang restoran besar punya: \u2713 Brand recognition \u2713 Budget marketing besar \u2713 Sistem yang established Yang warung kecil BISA punya (dengan Mesin Cetak Bisnis Kuliner): \u2713 Konten TikTok viral yang reach ribuan orang GRATIS \u2713 Menu yang dioptimasi berdasarkan margin terbaik \u2713 Customer loyalty program yang simpel tapi efektif \u2713 Kecepatan adaptasi yang restoran besar ga bisa \ud83d\udca1 David vs Goliath di kuliner: Yang kecil menang kalau pakai leverage yang tepat. \ud83c\udf81 Download Mesin Cetak Bisnis Kuliner - GRATIS \ud83d\udc49 https://lynk.id/jendralbot/kzryk28dxmpx #BisnisKuliner #WarungMakan #Wirausaha #UMKM #FYP",
+                "duration": 0,
+                "platform_created_at": "2026-03-13T03:01:04+00:00",
+                "last_synced_at": "2026-03-13T11:40:29.127+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "59ca3abc-05a6-49ce-8201-30d0edfecf48",
+                "post_result_id": "ced025e8-9f34-440e-9041-defd4ca28e3b",
+                "platform": "tiktok",
+                "platform_post_id": "7616569804308172050",
+                "view_count": 107,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/36cd026287854aea8dbe30966c7ffabe~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=717e99a1&x-expires=1774695600&x-signature=NC9jtx7YfBlClv8p3wDHYox%2F3O4%3D&t=5897f7ec&ps=d5b8ac02&shp=d05b14bd&shcp=8aecc5ac&idc=my2&s=TIKTOK_FOR_DEVELOPER&sc=cover&biz_tag=tt_photomode",
+                "share_url": "https://www.tiktok.com/@divasehatsetiaphari/video/7616569804308172050?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "\ud83c\udfc6 Warung makan kecil yang bisa kalahkan restoran besar \u2014 ini strateginya: Yang restoran besar punya: \u2713 Brand recognition \u2713 Budget marketing besar \u2713 Sistem yang established Yang warung kecil BISA punya (dengan Mesin Cetak Bisnis Kuliner): \u2713 Konten TikTok viral yang reach ribuan orang GRATIS \u2713 Menu yang dioptimasi berdasarkan margin terbaik \u2713 Customer loyalty program yang simpel tapi efektif \u2713 Kecepatan adaptasi yang restoran besar ga bisa \ud83d\udca1 David vs Goliath di kuliner: Yang kecil menang kalau pakai leverage yang tepat. \ud83c\udf81 Download Mesin Cetak Bisnis Kuliner - GRATIS \ud83d\udc49 https://lynk.id/jendralbot/kzryk28dxmpx #BisnisKuliner #WarungMakan #Wirausaha #UMKM #FYP",
+                "duration": 0,
+                "platform_created_at": "2026-03-13T03:00:56+00:00",
+                "last_synced_at": "2026-03-13T11:40:22.927+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "486700bf-51fb-4122-80a2-0a34a111ab9d",
+                "post_result_id": "40067b93-22a5-4a34-a689-11470afad285",
+                "platform": "tiktok",
+                "platform_post_id": "7616569039703280913",
+                "view_count": 124,
+                "like_count": 3,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/87bc2f7e4550434ca73291ee9bad99b9~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=3639744b&x-expires=1774695600&x-signature=MMREbbvx3oIgzaXCXc3Zum9kt4M%3D&biz_tag=tt_photomode&idc=my2&ps=d5b8ac02&s=TIKTOK_FOR_DEVELOPER&sc=cover&shcp=8aecc5ac&shp=d05b14bd&t=5897f7ec&tip=1",
+                "share_url": "https://www.tiktok.com/@riviewprodukfashionjujur/video/7616569039703280913?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "\ud83c\udfc6 Warung makan kecil yang bisa kalahkan restoran besar \u2014 ini strateginya: Yang restoran besar punya: \u2713 Brand recognition \u2713 Budget marketing besar \u2713 Sistem yang established Yang warung kecil BISA punya (dengan Mesin Cetak Bisnis Kuliner): \u2713 Konten TikTok viral yang reach ribuan orang GRATIS \u2713 Menu yang dioptimasi berdasarkan margin terbaik \u2713 Customer loyalty program yang simpel tapi efektif \u2713 Kecepatan adaptasi yang restoran besar ga bisa \ud83d\udca1 David vs Goliath di kuliner: Yang kecil menang kalau pakai leverage yang tepat. \ud83c\udf81 Download Mesin Cetak Bisnis Kuliner - GRATIS \ud83d\udc49 https://lynk.id/jendralbot/kzryk28dxmpx #BisnisKuliner #WarungMakan #Wirausaha #UMKM #FYP",
+                "duration": 0,
+                "platform_created_at": "2026-03-13T03:00:56+00:00",
+                "last_synced_at": "2026-03-13T11:40:17.791+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "db75caa7-e5ba-40ba-8104-aa9b34437583",
+                "post_result_id": "708a44fb-b013-48e9-bce5-67a341ff9473",
+                "platform": "youtube",
+                "platform_post_id": "mmhjPOLvxrQ",
+                "view_count": 0,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://i.ytimg.com/vi/mmhjPOLvxrQ/hqdefault.jpg",
+                "share_url": "https://www.youtube.com/watch?v=mmhjPOLvxrQ",
+                "video_description": "Dengan Belanja Tetap Jalan Tapi Duit Balik Lagi, kamu bisa profit! Link in bio! #twitter #viral #jen",
+                "duration": 9,
+                "platform_created_at": "2026-03-06T04:05:50+00:00",
+                "last_synced_at": "2026-03-13T11:40:15.533+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "e3170aa5-1b5d-49df-8e1b-46c6a6778589",
+                "post_result_id": "319f2785-ac63-4549-b47b-4df207a23f5c",
+                "platform": "youtube",
+                "platform_post_id": "Jm4M9FkVQH8",
+                "view_count": 99,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://i.ytimg.com/vi/Jm4M9FkVQH8/hqdefault.jpg",
+                "share_url": "https://www.youtube.com/watch?v=Jm4M9FkVQH8",
+                "video_description": "Dengan Belanja Tetap Jalan Tapi Duit Balik Lagi, kamu bisa profit! Link in bio! #twitter #viral #jen",
+                "duration": 6,
+                "platform_created_at": "2026-03-05T09:10:47+00:00",
+                "last_synced_at": "2026-03-13T11:40:15.566+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "937e6f62-4026-4b47-88dd-1c0a879eceee",
+                "post_result_id": "dd76c3f2-3490-4ec1-b690-c2889bf5d91a",
+                "platform": "tiktok",
+                "platform_post_id": "7613696341297941778",
+                "view_count": 229,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-4863-sg/oQY0kTb98SGeCcM9fQ5SDfgA1X7KpUyerkQQGQ~tplv-tiktokx-cropcenter-q:300:400:q72.webp?dr=14782&refresh_token=972b96aa&x-expires=1773486000&x-signature=XijI5VhhMAqxRpt%2F7EDJvxOBlTo%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=my2&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+                "share_url": "https://www.tiktok.com/@jasakontenai/video/7613696341297941778?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "Dengan Belanja Tetap Jalan Tapi Duit Balik Lagi, kamu bisa profit! Link in bio! #twitter #viral #jendralbot #viral #trending #fyp #jendralbot https://lynk.id/jendralbot/kkjk0mv1vg7o?utm_source=jendralbot_auto&utm_campaign=2026-03-05&utm_medium=twitter",
+                "duration": 5,
+                "platform_created_at": "2026-03-05T09:10:22+00:00",
+                "last_synced_at": "2026-03-13T11:40:38.764+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "5609e479-e5e8-4430-b9b4-766a3de9d81f",
+                "post_result_id": "64de8165-9d0f-486d-8e94-c41548a8a5b4",
+                "platform": "tiktok",
+                "platform_post_id": "7613417658423250192",
+                "view_count": 142,
+                "like_count": 3,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/b1df7076c49c4eae8c87429b6a5c33e5~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=7262668f&x-expires=1774695600&x-signature=72law%2BZtpuZrav39k5ShMrl%2FnFw%3D&t=5897f7ec&ps=d5b8ac02&shp=d05b14bd&shcp=8aecc5ac&idc=my2&s=TIKTOK_FOR_DEVELOPER&biz_tag=tt_photomode&sc=cover",
+                "share_url": "https://www.tiktok.com/@jasakontenai/video/7613417658423250192?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "Bun, aku baru tahu ternyata belanja itu bisa dapat uang kembali. Awalnya aku juga kaget. Kirain cuma promo biasa. Ternyata ada trik kecil yang banyak orang belum tahu. Dulu aku kalau belanja ya langsung checkout saja. Klik beli. Bayar. Selesai. Tapi uang ya keluar terus \ud83d\ude05 Ternyata ada cara biar belanja tetap jalan tapi kita dapat cashback. Banyak orang belum tahu\u2026 Link belanja itu sebenarnya bisa kasih cashback. Serius. Padahal caranya simpel banget. Cuma beda satu langkah kecil sebelum checkout. Sekarang setiap aku mau belanja aku lakukan ini dulu: Copy link produk Tempel di aplikasi MOVA Lalu lanjut checkout seperti biasa. Belanjanya tetap di marketplace, tapi kita dapat cashback. Sekarang setiap aku mau belanja aku lakukan ini dulu: Copy link produk Tempel di aplikasi MOVA Lalu lanjut checkout seperti biasa. Belanjanya tetap di marketplace, tapi kita dapat cashback. Makanya sekarang setiap belanja aku selalu lewat MOVA dulu. Lumayan Bun\u2026 Belanja tetap jalan Tapi dapat uang kembali \ud83d\udcb0 Emak-emak harus pintar cari trik hemat \ud83d\ude04 klik -->> https://lynk.id/jendralbot/kkjk0mv1vg7o",
+                "duration": 0,
+                "platform_created_at": "2026-03-04T15:10:58+00:00",
+                "last_synced_at": "2026-03-13T11:40:38.826+00:00",
+                "match_confidence": "exact"
+              }
+            ]
+          },
+          "duration_seconds": 2.47,
+          "timestamp": "2026-03-13T11:43:18.765308+00:00"
+        },
+        "optimize": {
+          "phase": "optimize",
+          "status": "success",
+          "data": {
+            "recommendations": 2,
+            "platforms_analyzed": 2,
+            "report_path": "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/output/optimize_2026-03-13.json"
+          },
+          "duration_seconds": 0.83,
+          "timestamp": "2026-03-13T11:43:21.241833+00:00"
+        },
+        "repurpose": {
+          "phase": "repurpose",
+          "status": "failed",
+          "error": "_phase_repurpose() got an unexpected keyword argument 'analyze_data'",
+          "duration_seconds": 0.0,
+          "timestamp": "2026-03-13T11:43:22.073841+00:00"
+        },
+        "scale": {
+          "phase": "scale",
+          "status": "failed",
+          "error": "'EngagementEngine' object has no attribute 'run'",
+          "duration_seconds": 0.0,
+          "timestamp": "2026-03-13T11:43:22.080531+00:00"
+        }
+      },
+      "paperclip_parent": "f6dc2e73-a0f6-42fb-94e8-bb9eca225534",
+      "finished_at": "2026-03-13T11:43:22.088146+00:00"
+    },
+    {
+      "run_id": "run_20260313_184820",
+      "date": "2026-03-13",
+      "started_at": "2026-03-13T11:48:20.607069+00:00",
+      "phases": {
+        "research": {
+          "phase": "research",
+          "status": "success",
+          "data": {
+            "sources": [
+              "research_agent",
+              "viral_research_system"
+            ],
+            "research_agent": {
+              "success": true,
+              "output_lines": 65
+            },
+            "viral_research": {
+              "success": true,
+              "output_lines": 19
+            },
+            "success": true
+          },
+          "duration_seconds": 0.27,
+          "timestamp": "2026-03-13T11:48:20.609188+00:00"
+        },
+        "plan": {
+          "phase": "plan",
+          "status": "success",
+          "data": {
+            "date": "2026-03-13",
+            "weekday": "friday",
+            "product_focus": "belanja_duit_balik",
+            "platforms": [
+              "tiktok",
+              "instagram",
+              "facebook"
+            ],
+            "posting_times": {
+              "tiktok": [
+                "07:00",
+                "12:00",
+                "18:00",
+                "21:00"
+              ],
+              "instagram": [
+                "08:00",
+                "13:00",
+                "19:00"
+              ],
+              "facebook": [
+                "09:00",
+                "15:00",
+                "20:00"
+              ],
+              "youtube": [
+                "10:00",
+                "16:00"
+              ],
+              "x": [
+                "08:30",
+                "14:00",
+                "20:30"
+              ]
+            },
+            "weekly_plan_found": true,
+            "content_count_target": 3
+          },
+          "duration_seconds": 0.0,
+          "timestamp": "2026-03-13T11:48:20.882877+00:00"
+        },
+        "script": {
+          "phase": "script",
+          "status": "success",
+          "data": {
+            "scripts_generated": 6,
+            "output_path": "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/output/scripts_2026-03-13.json",
+            "templates_used": [
+              "ad_short",
+              "product_showcase"
+            ]
+          },
+          "duration_seconds": 0.0,
+          "timestamp": "2026-03-13T11:48:20.891257+00:00"
+        },
+        "create": {
+          "phase": "create",
+          "status": "success",
+          "data": {
+            "images_generated": 0,
+            "total_attempted": 5,
+            "output_dir": "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/output/images/2026-03-13"
+          },
+          "duration_seconds": 0.26,
+          "timestamp": "2026-03-13T11:48:20.900157+00:00"
+        },
+        "review": {
+          "phase": "review",
+          "status": "success",
+          "data": {
+            "passed": 2,
+            "failed": 4,
+            "mode": "basic_caption_check"
+          },
+          "duration_seconds": 0.01,
+          "timestamp": "2026-03-13T11:48:21.168998+00:00"
+        },
+        "schedule": {
+          "phase": "schedule",
+          "status": "success",
+          "data": {
+            "success": true,
+            "output_lines": 150,
+            "queue_file": "/home/openclaw/.openclaw/workspace/autopilot_affiliate_engine/postbridge_queue_jendralbot.json",
+            "error": null
+          },
+          "duration_seconds": 24.23,
+          "timestamp": "2026-03-13T11:48:21.181004+00:00"
+        },
+        "post": {
+          "phase": "post",
+          "status": "success",
+          "data": {
+            "total_checked": 50,
+            "successful": 0,
+            "failed": 0,
+            "retried": 0
+          },
+          "duration_seconds": 0.58,
+          "timestamp": "2026-03-13T11:48:45.418187+00:00"
+        },
+        "engage": {
+          "phase": "engage",
+          "status": "success",
+          "data": {
+            "comments_found": 0,
+            "mode": "comment_manager"
+          },
+          "duration_seconds": 0.3,
+          "timestamp": "2026-03-13T11:48:46.021322+00:00"
+        },
+        "analyze": {
+          "phase": "analyze",
+          "status": "success",
+          "data": {
+            "evening_report": {
+              "success": true,
+              "lines": 67
+            },
+            "revenue_tracker": {
+              "success": true,
+              "lines": 68
+            },
+            "analytics": {
+              "posts_fetched": 7,
+              "total_views": 0,
+              "total_likes": 0,
+              "total_comments": 0,
+              "total_shares": 0
+            },
+            "raw_posts": [
+              {
+                "id": "0e294f0b-da3d-4625-b119-3303d3a007ac",
+                "post_result_id": "4c060c36-8ae1-42ab-9a37-51e1b6bf2e70",
+                "platform": "tiktok",
+                "platform_post_id": "7616569622149500176",
+                "view_count": 100,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/b9c669234e0a43e5a9636701ee02d6c2~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=ef92ee1e&x-expires=1774695600&x-signature=6Qu6kCx2YB6NFx5z6hIhSVNm41s%3D&t=5897f7ec&ps=d5b8ac02&shp=d05b14bd&shcp=8aecc5ac&idc=my2&s=TIKTOK_FOR_DEVELOPER&biz_tag=tt_photomode&sc=cover",
+                "share_url": "https://www.tiktok.com/@drlifehacks1/video/7616569622149500176?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "\ud83c\udfc6 Warung makan kecil yang bisa kalahkan restoran besar \u2014 ini strateginya: Yang restoran besar punya: \u2713 Brand recognition \u2713 Budget marketing besar \u2713 Sistem yang established Yang warung kecil BISA punya (dengan Mesin Cetak Bisnis Kuliner): \u2713 Konten TikTok viral yang reach ribuan orang GRATIS \u2713 Menu yang dioptimasi berdasarkan margin terbaik \u2713 Customer loyalty program yang simpel tapi efektif \u2713 Kecepatan adaptasi yang restoran besar ga bisa \ud83d\udca1 David vs Goliath di kuliner: Yang kecil menang kalau pakai leverage yang tepat. \ud83c\udf81 Download Mesin Cetak Bisnis Kuliner - GRATIS \ud83d\udc49 https://lynk.id/jendralbot/kzryk28dxmpx #BisnisKuliner #WarungMakan #Wirausaha #UMKM #FYP",
+                "duration": 0,
+                "platform_created_at": "2026-03-13T03:01:04+00:00",
+                "last_synced_at": "2026-03-13T11:40:29.127+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "59ca3abc-05a6-49ce-8201-30d0edfecf48",
+                "post_result_id": "ced025e8-9f34-440e-9041-defd4ca28e3b",
+                "platform": "tiktok",
+                "platform_post_id": "7616569804308172050",
+                "view_count": 107,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/36cd026287854aea8dbe30966c7ffabe~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=717e99a1&x-expires=1774695600&x-signature=NC9jtx7YfBlClv8p3wDHYox%2F3O4%3D&t=5897f7ec&ps=d5b8ac02&shp=d05b14bd&shcp=8aecc5ac&idc=my2&s=TIKTOK_FOR_DEVELOPER&sc=cover&biz_tag=tt_photomode",
+                "share_url": "https://www.tiktok.com/@divasehatsetiaphari/video/7616569804308172050?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "\ud83c\udfc6 Warung makan kecil yang bisa kalahkan restoran besar \u2014 ini strateginya: Yang restoran besar punya: \u2713 Brand recognition \u2713 Budget marketing besar \u2713 Sistem yang established Yang warung kecil BISA punya (dengan Mesin Cetak Bisnis Kuliner): \u2713 Konten TikTok viral yang reach ribuan orang GRATIS \u2713 Menu yang dioptimasi berdasarkan margin terbaik \u2713 Customer loyalty program yang simpel tapi efektif \u2713 Kecepatan adaptasi yang restoran besar ga bisa \ud83d\udca1 David vs Goliath di kuliner: Yang kecil menang kalau pakai leverage yang tepat. \ud83c\udf81 Download Mesin Cetak Bisnis Kuliner - GRATIS \ud83d\udc49 https://lynk.id/jendralbot/kzryk28dxmpx #BisnisKuliner #WarungMakan #Wirausaha #UMKM #FYP",
+                "duration": 0,
+                "platform_created_at": "2026-03-13T03:00:56+00:00",
+                "last_synced_at": "2026-03-13T11:40:22.927+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "486700bf-51fb-4122-80a2-0a34a111ab9d",
+                "post_result_id": "40067b93-22a5-4a34-a689-11470afad285",
+                "platform": "tiktok",
+                "platform_post_id": "7616569039703280913",
+                "view_count": 124,
+                "like_count": 3,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/87bc2f7e4550434ca73291ee9bad99b9~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=3639744b&x-expires=1774695600&x-signature=MMREbbvx3oIgzaXCXc3Zum9kt4M%3D&biz_tag=tt_photomode&idc=my2&ps=d5b8ac02&s=TIKTOK_FOR_DEVELOPER&sc=cover&shcp=8aecc5ac&shp=d05b14bd&t=5897f7ec&tip=1",
+                "share_url": "https://www.tiktok.com/@riviewprodukfashionjujur/video/7616569039703280913?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "\ud83c\udfc6 Warung makan kecil yang bisa kalahkan restoran besar \u2014 ini strateginya: Yang restoran besar punya: \u2713 Brand recognition \u2713 Budget marketing besar \u2713 Sistem yang established Yang warung kecil BISA punya (dengan Mesin Cetak Bisnis Kuliner): \u2713 Konten TikTok viral yang reach ribuan orang GRATIS \u2713 Menu yang dioptimasi berdasarkan margin terbaik \u2713 Customer loyalty program yang simpel tapi efektif \u2713 Kecepatan adaptasi yang restoran besar ga bisa \ud83d\udca1 David vs Goliath di kuliner: Yang kecil menang kalau pakai leverage yang tepat. \ud83c\udf81 Download Mesin Cetak Bisnis Kuliner - GRATIS \ud83d\udc49 https://lynk.id/jendralbot/kzryk28dxmpx #BisnisKuliner #WarungMakan #Wirausaha #UMKM #FYP",
+                "duration": 0,
+                "platform_created_at": "2026-03-13T03:00:56+00:00",
+                "last_synced_at": "2026-03-13T11:40:17.791+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "db75caa7-e5ba-40ba-8104-aa9b34437583",
+                "post_result_id": "708a44fb-b013-48e9-bce5-67a341ff9473",
+                "platform": "youtube",
+                "platform_post_id": "mmhjPOLvxrQ",
+                "view_count": 0,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://i.ytimg.com/vi/mmhjPOLvxrQ/hqdefault.jpg",
+                "share_url": "https://www.youtube.com/watch?v=mmhjPOLvxrQ",
+                "video_description": "Dengan Belanja Tetap Jalan Tapi Duit Balik Lagi, kamu bisa profit! Link in bio! #twitter #viral #jen",
+                "duration": 9,
+                "platform_created_at": "2026-03-06T04:05:50+00:00",
+                "last_synced_at": "2026-03-13T11:40:15.533+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "e3170aa5-1b5d-49df-8e1b-46c6a6778589",
+                "post_result_id": "319f2785-ac63-4549-b47b-4df207a23f5c",
+                "platform": "youtube",
+                "platform_post_id": "Jm4M9FkVQH8",
+                "view_count": 99,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://i.ytimg.com/vi/Jm4M9FkVQH8/hqdefault.jpg",
+                "share_url": "https://www.youtube.com/watch?v=Jm4M9FkVQH8",
+                "video_description": "Dengan Belanja Tetap Jalan Tapi Duit Balik Lagi, kamu bisa profit! Link in bio! #twitter #viral #jen",
+                "duration": 6,
+                "platform_created_at": "2026-03-05T09:10:47+00:00",
+                "last_synced_at": "2026-03-13T11:40:15.566+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "937e6f62-4026-4b47-88dd-1c0a879eceee",
+                "post_result_id": "dd76c3f2-3490-4ec1-b690-c2889bf5d91a",
+                "platform": "tiktok",
+                "platform_post_id": "7613696341297941778",
+                "view_count": 229,
+                "like_count": 0,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-4863-sg/oQY0kTb98SGeCcM9fQ5SDfgA1X7KpUyerkQQGQ~tplv-tiktokx-cropcenter-q:300:400:q72.webp?dr=14782&refresh_token=972b96aa&x-expires=1773486000&x-signature=XijI5VhhMAqxRpt%2F7EDJvxOBlTo%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=my2&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+                "share_url": "https://www.tiktok.com/@jasakontenai/video/7613696341297941778?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "Dengan Belanja Tetap Jalan Tapi Duit Balik Lagi, kamu bisa profit! Link in bio! #twitter #viral #jendralbot #viral #trending #fyp #jendralbot https://lynk.id/jendralbot/kkjk0mv1vg7o?utm_source=jendralbot_auto&utm_campaign=2026-03-05&utm_medium=twitter",
+                "duration": 5,
+                "platform_created_at": "2026-03-05T09:10:22+00:00",
+                "last_synced_at": "2026-03-13T11:40:38.764+00:00",
+                "match_confidence": "exact"
+              },
+              {
+                "id": "5609e479-e5e8-4430-b9b4-766a3de9d81f",
+                "post_result_id": "64de8165-9d0f-486d-8e94-c41548a8a5b4",
+                "platform": "tiktok",
+                "platform_post_id": "7613417658423250192",
+                "view_count": 142,
+                "like_count": 3,
+                "comment_count": 0,
+                "share_count": 0,
+                "cover_image_url": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-i-photomode-sg/b1df7076c49c4eae8c87429b6a5c33e5~tplv-photomode-image-cover:640:0:q70.webp?dr=17580&refresh_token=7262668f&x-expires=1774695600&x-signature=72law%2BZtpuZrav39k5ShMrl%2FnFw%3D&t=5897f7ec&ps=d5b8ac02&shp=d05b14bd&shcp=8aecc5ac&idc=my2&s=TIKTOK_FOR_DEVELOPER&biz_tag=tt_photomode&sc=cover",
+                "share_url": "https://www.tiktok.com/@jasakontenai/video/7613417658423250192?utm_campaign=tt4d_open_api&utm_source=aw75i85tzolnpqso",
+                "video_description": "Bun, aku baru tahu ternyata belanja itu bisa dapat uang kembali. Awalnya aku juga kaget. Kirain cuma promo biasa. Ternyata ada trik kecil yang banyak orang belum tahu. Dulu aku kalau belanja ya langsung checkout saja. Klik beli. Bayar. Selesai. Tapi uang ya keluar terus \ud83d\ude05 Ternyata ada cara biar belanja tetap jalan tapi kita dapat cashback. Banyak orang belum tahu\u2026 Link belanja itu sebenarnya bisa kasih cashback. Serius. Padahal caranya simpel banget. Cuma beda satu langkah kecil sebelum checkout. Sekarang setiap aku mau belanja aku lakukan ini dulu: Copy link produk Tempel di aplikasi MOVA Lalu lanjut checkout seperti biasa. Belanjanya tetap di marketplace, tapi kita dapat cashback. Sekarang setiap aku mau belanja aku lakukan ini dulu: Copy link produk Tempel di aplikasi MOVA Lalu lanjut checkout seperti biasa. Belanjanya tetap di marketplace, tapi kita dapat cashback. Makanya sekarang setiap belanja aku selalu lewat MOVA dulu. Lumayan Bun\u2026 Belanja tetap jalan Tapi dapat uang kembali \ud83d\udcb0 Emak-emak harus pintar cari trik hemat \ud83d\ude04 klik -->> https://lynk.id/jendralbot/kkjk0mv1vg7o",
+                "duration": 0,
+                "platform_created_at": "2026-03-04T15:10:58+00:00",
+                "last_synced_at": "2026-03-13T11:40:38.826+00:00",
+                "match_confidence": "exact"
+              }
+            ]
+          },
+          "duration_seconds": 2.29,
+          "timestamp": "2026-03-13T11:48:46.326688+00:00"
+        },
+        "optimize": {
+          "phase": "optimize",
+          "status": "success",
+          "data": {
+            "recommendations": 2,
+            "platforms_analyzed": 2,
+            "report_path": "/home/openclaw/.openclaw/workspace/skills/1ai-skills/content/content-kingdom/output/optimize_2026-03-13.json"
+          },
+          "duration_seconds": 0.79,
+          "timestamp": "2026-03-13T11:48:48.638098+00:00"
+        },
+        "repurpose": {
+          "phase": "repurpose",
+          "status": "success",
+          "data": {
+            "success": false,
+            "output_lines": 0,
+            "error": "usage: auto_clipper.py [-h] [--dry-run] [--force] [--output OUTPUT]\n                       {run,watch,status}\nauto_clipper.py: error: the following arguments are required: command\n"
+          },
+          "duration_seconds": 0.06,
+          "timestamp": "2026-03-13T11:48:49.441244+00:00"
+        },
+        "scale": {
+          "phase": "scale",
+          "status": "success",
+          "data": {
+            "boosted": 5,
+            "warmed": 0,
+            "posts_analyzed": 7
+          },
+          "duration_seconds": 0.0,
+          "timestamp": "2026-03-13T11:48:49.511048+00:00"
+        }
+      },
+      "paperclip_parent": "421be89a-7e01-4feb-a97c-381b37ebac53",
+      "finished_at": "2026-03-13T11:48:49.519521+00:00"
+    }
+  ],
+  "last_run": "run_20260313_184820",
+  "phases": {
+    "research": {
+      "last_run": "2026-03-13T11:48:20.609188+00:00",
+      "status": "success"
+    },
+    "plan": {
+      "last_run": "2026-03-13T11:48:20.882877+00:00",
+      "status": "success"
+    },
+    "script": {
+      "last_run": "2026-03-13T11:48:20.891257+00:00",
+      "status": "success"
+    },
+    "create": {
+      "last_run": "2026-03-13T11:48:20.900157+00:00",
+      "status": "success"
+    },
+    "review": {
+      "last_run": "2026-03-13T11:48:21.168998+00:00",
+      "status": "success"
+    },
+    "schedule": {
+      "last_run": "2026-03-13T11:48:21.181004+00:00",
+      "status": "success"
+    },
+    "post": {
+      "last_run": "2026-03-13T11:48:45.418187+00:00",
+      "status": "success"
+    },
+    "engage": {
+      "last_run": "2026-03-13T11:48:46.021322+00:00",
+      "status": "success"
+    },
+    "analyze": {
+      "last_run": "2026-03-13T11:48:46.326688+00:00",
+      "status": "success"
+    },
+    "optimize": {
+      "last_run": "2026-03-13T11:48:48.638098+00:00",
+      "status": "success"
+    },
+    "repurpose": {
+      "last_run": "2026-03-13T11:48:49.441244+00:00",
+      "status": "success"
+    },
+    "scale": {
+      "last_run": "2026-03-13T11:48:49.511048+00:00",
+      "status": "success"
+    }
+  }
+}
