@@ -72,5 +72,8 @@
     "SKILLS.json",
     "llms.txt",
     "manifests/"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
 }
