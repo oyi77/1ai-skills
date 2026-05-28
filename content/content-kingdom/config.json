@@ -1,0 +1,358 @@
+{
+  "version": "2.0.0",
+  "brand": "BerkahKarya / JENDRALBOT",
+  "geminigen": {
+    "_comment": "GeminiGen API — primary media provider (v2.0). Key loaded from workspace/config/geminigen_api.json",
+    "api_key_ref": "config/geminigen_api.json",
+    "base_url": "https://api.geminigen.ai",
+    "default_image_model": "nano-banana-pro",
+    "default_video_model": "grok-3",
+    "default_resolution": "1K",
+    "default_aspect_ratio": "3:4",
+    "default_style": "Photorealistic",
+    "poll_interval_seconds": 5,
+    "timeout_image_seconds": 120,
+    "timeout_video_seconds": 300
+  },
+  "grok_api": {
+    "_comment": "Grok-Api — free LLM via Grok web reverse-engineering. Repo: workspace/projects/grok-api/",
+    "server_url": "http://localhost:6969",
+    "proxy": "",
+    "default_model": "grok-3-fast",
+    "auto_start": true,
+    "port": 6969,
+    "workers": 1,
+    "models": [
+      "grok-3-auto",
+      "grok-3-fast",
+      "grok-4",
+      "grok-4-mini-thinking-tahoe"
+    ]
+  },
+  "veris_design": {
+    "_comment": "Veris Design System defaults — dark theme, minimalist, Instagram-first",
+    "theme": "dark",
+    "bg_color": "#000000",
+    "text_color": "#FFFFFF",
+    "layout": "three_zone_vertical",
+    "platform_priority": [
+      "instagram",
+      "facebook",
+      "threads",
+      "tiktok"
+    ],
+    "no_vibrant_colors": true,
+    "no_emoji_in_visuals": true,
+    "font_style": "clean modern sans-serif",
+    "aesthetic": "minimalist premium"
+  },
+  "timezone": "Asia/Jakarta",
+  "postbridge_api_key": "REDACTED_ROTATED_CREDENTIAL",
+  "postbridge_base_url": "https://api.post-bridge.com/v1",
+  "paperclip_api_url": "http://localhost:3100/api",
+  "paperclip_token": "pcp_0a284b0dd33364992dcbec9f46995cfaffc72fdedcf2621f",
+  "paperclip_company_id": "33e1e20e-d9f2-45f2-b907-0579ab795942",
+  "paperclip_project_id": "",
+  "products": [
+    {
+      "name": "Mesin Cetak Bisnis Kuliner",
+      "slug": "kzryk28dxmpx",
+      "price": 0,
+      "id": "kzryk28dxmpx"
+    },
+    {
+      "name": "Guru Pintar AI",
+      "slug": "6821op5e24kn",
+      "price": 49000,
+      "id": "6821op5e24kn"
+    },
+    {
+      "name": "AI Creative Tools",
+      "slug": "89d30qd3ddnj",
+      "price": 0,
+      "id": "89d30qd3ddnj"
+    },
+    {
+      "name": "SellPix AI",
+      "slug": "emne05mm7v25",
+      "price": 79000,
+      "id": "emne05mm7v25"
+    },
+    {
+      "name": "Belanja Duit Balik",
+      "slug": "kkjk0mv1vg7o",
+      "price": 59000,
+      "id": "kkjk0mv1vg7o"
+    },
+    {
+      "name": "JobMagnet AI",
+      "slug": "45r5yvze3vy4",
+      "price": 0,
+      "id": "45r5yvze3vy4"
+    },
+    {
+      "name": "Food Menu AI Studio",
+      "slug": "l4q49jj3z383",
+      "price": 0,
+      "id": "l4q49jj3z383"
+    },
+    {
+      "name": "AI Ad Engine",
+      "slug": "9r8rj1o38q59",
+      "price": 0,
+      "id": "9r8rj1o38q59"
+    },
+    {
+      "name": "Kelas Affiliate TikTok",
+      "slug": "regxdn7xkpz6",
+      "price": 0,
+      "id": "regxdn7xkpz6"
+    }
+  ],
+  "personas": [
+    {
+      "id": "jendralbot_main",
+      "name": "JENDRALBOT",
+      "voice": "commanding",
+      "tone": "authoritative, motivational, bold",
+      "style": "tactical, military metaphors, results-driven",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "youtube"
+      ],
+      "niche": "AI tools for Indonesian entrepreneurs",
+      "signature": "JENDRALBOT — Senjata Digital Para Jendral! ⚔️"
+    },
+    {
+      "id": "berkah_karya",
+      "name": "BerkahKarya",
+      "voice": "warm-expert",
+      "tone": "helpful, educational, trust-building",
+      "style": "practical tips, step-by-step, accessible",
+      "platforms": [
+        "facebook",
+        "instagram",
+        "youtube"
+      ],
+      "niche": "digital products, passive income, AI education",
+      "signature": "BerkahKarya — Berkah Dari Karya Digital 🌟"
+    },
+    {
+      "id": "tech_guru",
+      "name": "Tech Guru",
+      "voice": "authoritative",
+      "tone": "formal, data-driven, expert",
+      "vocabulary_style": "technical Indonesian, industry terms, English tech words, precise language",
+      "emoji_usage": "minimal",
+      "hashtag_style": "niche-specific, industry terms",
+      "platforms": [
+        "youtube",
+        "linkedin",
+        "facebook"
+      ],
+      "niche": "AI tools, technology education, digital transformation",
+      "signature": "Tech Guru — Karena Data Tidak Pernah Bohong 📊",
+      "sample_hooks": [
+        "Data menunjukkan 73% bisnis yang adopsi AI tumbuh 2x lebih cepat...",
+        "Ini bukan opini — ini fakta yang didukung 500+ case study:",
+        "Analisis mendalam: mengapa AI content tools mengalahkan cara manual?",
+        "Studi: ROI rata-rata penggunaan AI marketing tools adalah 312%",
+        "Laporan terbaru McKinsey: UMKM yang pakai AI tools tumbuh 3x lebih cepat"
+      ],
+      "caption_template": "{hook}\n\n📊 Berdasarkan data dan pengalaman langsung:\n\n{body}\n\n✅ Tools yang saya rekomendasikan: {product_name}\n→ {product_url}\n\n{hashtags}\n\n{signature}",
+      "account_mapping": []
+    },
+    {
+      "id": "casual_creator",
+      "name": "Casual Creator",
+      "voice": "friendly",
+      "tone": "fun, relatable, energetic, peer-to-peer",
+      "vocabulary_style": "Indonesian slang, gaul, anak muda, short sentences, bahasa campuran",
+      "emoji_usage": "heavy",
+      "hashtag_style": "trending, broad reach, viral potential",
+      "platforms": [
+        "tiktok",
+        "instagram"
+      ],
+      "niche": "daily life, tips & tricks, viral content, lifestyle",
+      "signature": "— stay chill, stay real 😎✨",
+      "sample_hooks": [
+        "Guys, ini serius game changer banget! 🤯",
+        "Beneran deh, nyesel banget kalau nggak tahu ini dari dulu 😭",
+        "POV: kamu akhirnya nemuin tools yang bikin hidup 10x lebih gampang ✨",
+        "Okay bestie, dengerin dulu — ini penting banget buat kamu!",
+        "Nggak nyangka sih, ternyata bisa segampang ini... 😮"
+      ],
+      "caption_template": "{hook}\n\n{body}\n\nLink-nya ada di bio yaa~ 👆\nAtau langsung: {product_url}\n\n{hashtags}\n\n{signature}",
+      "account_mapping": []
+    },
+    {
+      "id": "business_coach",
+      "name": "Business Coach",
+      "voice": "motivational",
+      "tone": "professional, success-oriented, inspiring, accountable",
+      "vocabulary_style": "business Indonesian, motivational language, success framing, action verbs",
+      "emoji_usage": "moderate",
+      "hashtag_style": "business-focused, aspirational, community-building",
+      "platforms": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "niche": "entrepreneurship, UMKM growth, digital income, mindset",
+      "signature": "— BerkahKarya, Berkah Dari Karya Digital 🌟",
+      "sample_hooks": [
+        "Penghasilan jutaan rupiah dari digital product bukan mimpi — ini ROADMAP-nya:",
+        "3 kesalahan fatal pengusaha UMKM yang menghambat pertumbuhan bisnis:",
+        "Dari 0 ke 7 digit: strategi yang benar-benar terbukti berhasil",
+        "Tahun depan bisnis kamu bisa 10x lebih besar — jika kamu ambil langkah ini:",
+        "Mindset yang memisahkan pengusaha sukses dari yang gagal:"
+      ],
+      "caption_template": "{hook}\n\n💡 Ini yang perlu kamu lakukan:\n\n{body}\n\n🚀 Mulai perjalanan kamu sekarang:\n👉 {product_name} — {product_price_label}\n🔗 {product_url}\n\n{hashtags}\n\n{signature}",
+      "account_mapping": []
+    },
+    {
+      "id": "street_smart",
+      "name": "Street Smart",
+      "voice": "raw",
+      "tone": "direct, blunt, no-BS, hustler mentality, street credibility",
+      "vocabulary_style": "very direct Indonesian, blunt statements, challenge assumptions, anti-establishment",
+      "emoji_usage": "selective, power emojis only",
+      "hashtag_style": "provocative, attention-grabbing",
+      "platforms": [
+        "tiktok",
+        "facebook"
+      ],
+      "niche": "direct selling, hustle culture, no-filter advice, money mindset",
+      "signature": "— JENDRALBOT ⚔️",
+      "sample_hooks": [
+        "Berhenti buang uang buat hal yang nggak menghasilkan. Titik.",
+        "Kalau kamu masih miskin, ini alasannya — jangan marah:",
+        "Orang kaya nggak kerja keras. Mereka kerja CERDAS. Ini bedanya:",
+        "Stop dengarkan motivator yang belum pernah sukses bisnis. Dengerin yang ini:",
+        "Fakta pahit: 90% orang gagal bukan karena kurang modal — tapi karena ini:"
+      ],
+      "caption_template": "{hook}\n\n{body}\n\n⚡ Action sekarang:\n{product_name} → {product_url}\n\n{hashtags}\n\n{signature}",
+      "account_mapping": []
+    }
+  ],
+  "platforms": {
+    "tiktok": {
+      "enabled": true,
+      "account_ids": [],
+      "content_types": [
+        "short_video",
+        "slideshow"
+      ],
+      "max_duration_seconds": 60,
+      "optimal_hashtag_count": 5,
+      "caption_max_chars": 2200
+    },
+    "instagram": {
+      "enabled": true,
+      "account_ids": [],
+      "content_types": [
+        "reel",
+        "carousel",
+        "post"
+      ],
+      "max_duration_seconds": 90,
+      "optimal_hashtag_count": 15,
+      "caption_max_chars": 2200
+    },
+    "facebook": {
+      "enabled": true,
+      "account_ids": [],
+      "content_types": [
+        "video",
+        "post",
+        "reel"
+      ],
+      "max_duration_seconds": 600,
+      "optimal_hashtag_count": 5,
+      "caption_max_chars": 63206
+    },
+    "youtube": {
+      "enabled": false,
+      "account_ids": [],
+      "content_types": [
+        "short",
+        "video"
+      ],
+      "max_duration_seconds": 60,
+      "optimal_hashtag_count": 3,
+      "caption_max_chars": 5000
+    },
+    "x": {
+      "enabled": false,
+      "account_ids": [],
+      "content_types": [
+        "post",
+        "thread"
+      ],
+      "max_duration_seconds": 140,
+      "optimal_hashtag_count": 2,
+      "caption_max_chars": 280
+    }
+  },
+  "schedule": {
+    "tiktok": [
+      "07:00",
+      "12:00",
+      "18:00",
+      "21:00"
+    ],
+    "instagram": [
+      "08:00",
+      "13:00",
+      "19:00"
+    ],
+    "facebook": [
+      "09:00",
+      "15:00",
+      "20:00"
+    ],
+    "youtube": [
+      "10:00",
+      "16:00"
+    ],
+    "x": [
+      "08:30",
+      "14:00",
+      "20:30"
+    ]
+  },
+  "cron": {
+    "morning_run": "0 8 * * *",
+    "evening_analysis": "0 20 * * *",
+    "engagement_check": "0 */2 * * *"
+  },
+  "quality_gates": {
+    "min_engagement_prediction_score": 6.0,
+    "max_brand_safety_risk": "low",
+    "required_call_to_action": true,
+    "required_hashtags": true,
+    "min_caption_length": 50
+  },
+  "paths": {
+    "workspace": "/home/openclaw/.openclaw/workspace",
+    "skills_dir": "/home/openclaw/.openclaw/workspace/skills/content-kingdom",
+    "output_dir": "/home/openclaw/.openclaw/workspace/skills/content-kingdom/output",
+    "logs_dir": "/home/openclaw/.openclaw/workspace/skills/content-kingdom/logs",
+    "templates_dir": "/home/openclaw/.openclaw/workspace/skills/content-kingdom/templates",
+    "state_file": "/home/openclaw/.openclaw/workspace/skills/content-kingdom/state.json"
+  },
+  "_self_improve": {
+    "last_run": "2026-03-20T00:30:17.143350",
+    "last_insights": {
+      "winning_products": [],
+      "losing_products": [],
+      "best_times": {},
+      "best_platforms": [],
+      "hook_patterns": [],
+      "recommendations": []
+    },
+    "total_runs": 8
+  }
+}

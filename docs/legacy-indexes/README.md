@@ -1,6 +1,6 @@
 # Legacy Indexes
 
-These files are **historical snapshots** kept for context. Their skill counts and category lists are **out of date** (some claim 106, 213, 220 skills — actual is 1215).
+These files are **historical snapshots** kept for context. Their skill counts and category lists are **out of date** (some claim 106, 213, 220 skills — actual is 1263).
 
 ## Current Source of Truth
 

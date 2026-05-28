@@ -1,0 +1,506 @@
+{
+  "generated_at": "2026-03-13T00:45:36.388443",
+  "market": "Indonesia",
+  "niches": {
+    "ai_tools": {
+      "niche_key": "ai_tools",
+      "niche_name": "AI Tools for Business",
+      "researched_at": "2026-03-13T00:45:36.388457",
+      "audience_profile": {
+        "age_range": "22-40",
+        "primary_gender": "Male 60%",
+        "income": "Middle-upper class",
+        "pain_points": [
+          "Wasting time on repetitive tasks",
+          "Can't afford to hire employees",
+          "Don't know which AI tools to use",
+          "Fear of being replaced by AI"
+        ],
+        "aspirations": [
+          "Automate business processes",
+          "Increase productivity 10x",
+          "Learn AI without coding",
+          "Save money on tools/team"
+        ]
+      },
+      "trending_topics": [
+        "ChatGPT prompts untuk bisnis",
+        "AI tools gratis terbaik 2025",
+        "Cara otomatisasi jualan online dengan AI",
+        "Vibe coding tanpa ngoding",
+        "AI untuk buat konten viral",
+        "Tools AI gantiin VA",
+        "Gemini vs ChatGPT mana lebih baik",
+        "NotionAI untuk manajemen bisnis",
+        "Canva AI untuk desain gratis",
+        "Perplexity vs Google untuk riset"
+      ],
+      "content_opportunities": [
+        "Tutorial step-by-step AI tools specific use cases",
+        "Comparison videos: AI tool A vs B",
+        "Hidden features dari tools populer",
+        "Real ROI case studies dari bisnis Indonesia"
+      ],
+      "competitor_weaknesses_to_exploit": [
+        "Terlalu teknikal, tidak relate ke bisnis Indonesia",
+        "Tidak ada bukti nyata ROI",
+        "Bahasa Inggris dominan — gap konten Bahasa Indonesia"
+      ],
+      "monetization_options": [
+        "Affiliate tool links",
+        "Digital products",
+        "Consulting",
+        "Courses"
+      ],
+      "7_day_content_calendar": [
+        {
+          "day": 1,
+          "topic": "ChatGPT prompts untuk bisnis",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        },
+        {
+          "day": 2,
+          "topic": "AI tools gratis terbaik 2025",
+          "suggested_format": "Controversy",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 3,
+          "topic": "Cara otomatisasi jualan online dengan AI",
+          "suggested_format": "Storytelling",
+          "platform": "TikTok"
+        },
+        {
+          "day": 4,
+          "topic": "Vibe coding tanpa ngoding",
+          "suggested_format": "Tutorial",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 5,
+          "topic": "AI untuk buat konten viral",
+          "suggested_format": "Controversy",
+          "platform": "TikTok"
+        },
+        {
+          "day": 6,
+          "topic": "Tools AI gantiin VA",
+          "suggested_format": "Storytelling",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 7,
+          "topic": "Gemini vs ChatGPT mana lebih baik",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        }
+      ],
+      "quick_wins": [
+        "Post about: ChatGPT prompts untuk bisnis",
+        "Format: Tutorial step-by-step AI tools specific use cases",
+        "Target audience pain: Wasting time on repetitive tasks"
+      ]
+    },
+    "digital_marketing": {
+      "niche_key": "digital_marketing",
+      "niche_name": "Digital Marketing Tips",
+      "researched_at": "2026-03-13T00:45:36.388469",
+      "audience_profile": {
+        "age_range": "20-35",
+        "primary_gender": "Mixed 50/50",
+        "income": "Middle class",
+        "pain_points": [
+          "Konten gak viral",
+          "Followers tidak bertumbuh",
+          "ROAS iklan jelek",
+          "Gak tau cara jualan lewat sosmed"
+        ],
+        "aspirations": [
+          "Jadi content creator populer",
+          "Bisnis online profitable",
+          "Brand awareness tinggi",
+          "Passive income dari konten"
+        ]
+      },
+      "trending_topics": [
+        "Algoritma TikTok 2025 cara terbaru",
+        "Hook formula yang bikin stop scroll",
+        "Cara dapat 1000 followers pertama cepat",
+        "Konten viral tanpa modal",
+        "Caption yang bikin orang beli",
+        "Strategi hashtag yang masih works",
+        "User Generated Content (UGC) strategy",
+        "Cara repurpose 1 konten jadi 10",
+        "Email marketing masih relevan?",
+        "Short form vs long form content 2025"
+      ],
+      "content_opportunities": [
+        "Case study konten viral Indonesia spesifik",
+        "Behind the numbers: real analytics screenshot",
+        "Debunking marketing myths",
+        "Platform comparison untuk niche tertentu"
+      ],
+      "competitor_weaknesses_to_exploit": [
+        "Generic tips, tidak ada spesifikasi niche",
+        "Kurang data/angka konkret Indonesia",
+        "Tidak ada series konten (episodik)"
+      ],
+      "monetization_options": [
+        "Digital products",
+        "Consulting",
+        "Brand deals",
+        "Affiliate"
+      ],
+      "7_day_content_calendar": [
+        {
+          "day": 1,
+          "topic": "Algoritma TikTok 2025 cara terbaru",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        },
+        {
+          "day": 2,
+          "topic": "Hook formula yang bikin stop scroll",
+          "suggested_format": "Controversy",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 3,
+          "topic": "Cara dapat 1000 followers pertama cepat",
+          "suggested_format": "Storytelling",
+          "platform": "TikTok"
+        },
+        {
+          "day": 4,
+          "topic": "Konten viral tanpa modal",
+          "suggested_format": "Tutorial",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 5,
+          "topic": "Caption yang bikin orang beli",
+          "suggested_format": "Controversy",
+          "platform": "TikTok"
+        },
+        {
+          "day": 6,
+          "topic": "Strategi hashtag yang masih works",
+          "suggested_format": "Storytelling",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 7,
+          "topic": "User Generated Content (UGC) strategy",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        }
+      ],
+      "quick_wins": [
+        "Post about: Algoritma TikTok 2025 cara terbaru",
+        "Format: Case study konten viral Indonesia spesifik",
+        "Target audience pain: Konten gak viral"
+      ]
+    },
+    "kuliner": {
+      "niche_key": "kuliner",
+      "niche_name": "Kuliner / Food Business",
+      "researched_at": "2026-03-13T00:45:36.388478",
+      "audience_profile": {
+        "age_range": "20-45",
+        "primary_gender": "Female 65%",
+        "income": "All classes",
+        "pain_points": [
+          "Bingung mau bisnis apa",
+          "Modal terbatas",
+          "Takut gak ada yang beli",
+          "Tidak tau cara marketing makanan"
+        ],
+        "aspirations": [
+          "Bisnis kuliner sendiri",
+          "Warung/resto yang ramai",
+          "Jual makanan online sukses",
+          "Resep khas yang viral"
+        ]
+      },
+      "trending_topics": [
+        "Korean street food viral di Indonesia",
+        "Makanan sehat yang tetap enak",
+        "Bisnis snack modal minim",
+        "Cloud kitchen / ghost kitchen",
+        "Frozen food bisnis dari rumah",
+        "Minuman kekinian yang laris 2025",
+        "Packaging makanan yang menarik",
+        "Cara jual makanan di GoFood/GrabFood",
+        "Resep viral TikTok food",
+        "Strategi harga untuk warung"
+      ],
+      "content_opportunities": [
+        "Recipe + business angle (cost, margin, pricing)",
+        "Day in the life bisnis kuliner",
+        "Before/after warung makeover",
+        "Sourcing bahan baku murah tips"
+      ],
+      "competitor_weaknesses_to_exploit": [
+        "Fokus resep, tidak bahas bisnis side",
+        "Video quality low, tidak ada audio yang baik",
+        "Tidak follow up ke episode berikutnya"
+      ],
+      "monetization_options": [
+        "Physical products (bumbu, frozen)",
+        "Courses",
+        "Consulting",
+        "Affiliate"
+      ],
+      "7_day_content_calendar": [
+        {
+          "day": 1,
+          "topic": "Korean street food viral di Indonesia",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        },
+        {
+          "day": 2,
+          "topic": "Makanan sehat yang tetap enak",
+          "suggested_format": "Controversy",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 3,
+          "topic": "Bisnis snack modal minim",
+          "suggested_format": "Storytelling",
+          "platform": "TikTok"
+        },
+        {
+          "day": 4,
+          "topic": "Cloud kitchen / ghost kitchen",
+          "suggested_format": "Tutorial",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 5,
+          "topic": "Frozen food bisnis dari rumah",
+          "suggested_format": "Controversy",
+          "platform": "TikTok"
+        },
+        {
+          "day": 6,
+          "topic": "Minuman kekinian yang laris 2025",
+          "suggested_format": "Storytelling",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 7,
+          "topic": "Packaging makanan yang menarik",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        }
+      ],
+      "quick_wins": [
+        "Post about: Korean street food viral di Indonesia",
+        "Format: Recipe + business angle (cost, margin, pricing)",
+        "Target audience pain: Bingung mau bisnis apa"
+      ]
+    },
+    "side_hustle": {
+      "niche_key": "side_hustle",
+      "niche_name": "Side Hustle / Passive Income",
+      "researched_at": "2026-03-13T00:45:36.388487",
+      "audience_profile": {
+        "age_range": "22-38",
+        "primary_gender": "Male 55%",
+        "income": "Lower-middle class",
+        "pain_points": [
+          "Gaji tidak cukup",
+          "Tidak ada modal untuk bisnis",
+          "Tidak punya waktu ekstra",
+          "Takut rugi / scam"
+        ],
+        "aspirations": [
+          "Penghasilan tambahan dari HP",
+          "Passive income yang jalan sendiri",
+          "Resign dari kerja kantoran",
+          "Financial freedom"
+        ]
+      },
+      "trending_topics": [
+        "Dropship tanpa modal 2025",
+        "Cara dapet duit dari TikTok",
+        "Affiliate marketing untuk pemula",
+        "Digital product yang laku dijual",
+        "Reseller produk digital",
+        "Freelance skill yang dibayar tinggi",
+        "Cara monetize skill tanpa portofolio",
+        "Platform kerja freelance terbaik",
+        "Bisnis dari HP modal nol rupiah",
+        "Passive income dari konten"
+      ],
+      "content_opportunities": [
+        "Income proof yang credible (screenshot real)",
+        "Step-by-step dari nol ke pertama kali dapat duit",
+        "Scam alert + legit alternatives",
+        "Niche side hustle yang belum ramai"
+      ],
+      "competitor_weaknesses_to_exploit": [
+        "Klaim tidak credible, tidak ada bukti",
+        "Promosi berlebihan produk sendiri",
+        "Tidak actionable — terlalu high level"
+      ],
+      "monetization_options": [
+        "Affiliate links",
+        "Digital products",
+        "Courses",
+        "Community"
+      ],
+      "7_day_content_calendar": [
+        {
+          "day": 1,
+          "topic": "Dropship tanpa modal 2025",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        },
+        {
+          "day": 2,
+          "topic": "Cara dapet duit dari TikTok",
+          "suggested_format": "Controversy",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 3,
+          "topic": "Affiliate marketing untuk pemula",
+          "suggested_format": "Storytelling",
+          "platform": "TikTok"
+        },
+        {
+          "day": 4,
+          "topic": "Digital product yang laku dijual",
+          "suggested_format": "Tutorial",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 5,
+          "topic": "Reseller produk digital",
+          "suggested_format": "Controversy",
+          "platform": "TikTok"
+        },
+        {
+          "day": 6,
+          "topic": "Freelance skill yang dibayar tinggi",
+          "suggested_format": "Storytelling",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 7,
+          "topic": "Cara monetize skill tanpa portofolio",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        }
+      ],
+      "quick_wins": [
+        "Post about: Dropship tanpa modal 2025",
+        "Format: Income proof yang credible (screenshot real)",
+        "Target audience pain: Gaji tidak cukup"
+      ]
+    },
+    "education": {
+      "niche_key": "education",
+      "niche_name": "Education / Self-Improvement",
+      "researched_at": "2026-03-13T00:45:36.388501",
+      "audience_profile": {
+        "age_range": "18-35",
+        "primary_gender": "Mixed",
+        "income": "Middle class",
+        "pain_points": [
+          "Tidak tau harus belajar apa",
+          "Merasa tertinggal dari peers",
+          "Kurang motivasi",
+          "Tidak punya uang untuk kursus"
+        ],
+        "aspirations": [
+          "Naik gaji / karir",
+          "Punya skill bernilai",
+          "Financial literacy",
+          "Jadi versi terbaik diri sendiri"
+        ]
+      },
+      "trending_topics": [
+        "Skill yang wajib dikuasai di era AI",
+        "Cara belajar cepat dan efektif",
+        "Investasi untuk pemula 2025",
+        "Cara keluar dari financial trap",
+        "Belajar bahasa Inggris gratis",
+        "Literasi keuangan dasar",
+        "Growth mindset vs fixed mindset",
+        "Cara membangun kebiasaan produktif",
+        "Second brain / PKM system",
+        "Belajar coding untuk non-IT"
+      ],
+      "content_opportunities": [
+        "Book summary dalam 60 detik",
+        "Mindset shifts yang mengubah hidup",
+        "Financial mistakes to avoid",
+        "Free learning resources yang underrated"
+      ],
+      "competitor_weaknesses_to_exploit": [
+        "Terlalu verbose, penonton drop off",
+        "Tidak ada visual / infographic yang menarik",
+        "CTA tidak specific"
+      ],
+      "monetization_options": [
+        "Courses",
+        "Books",
+        "Community",
+        "Consulting"
+      ],
+      "7_day_content_calendar": [
+        {
+          "day": 1,
+          "topic": "Skill yang wajib dikuasai di era AI",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        },
+        {
+          "day": 2,
+          "topic": "Cara belajar cepat dan efektif",
+          "suggested_format": "Controversy",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 3,
+          "topic": "Investasi untuk pemula 2025",
+          "suggested_format": "Storytelling",
+          "platform": "TikTok"
+        },
+        {
+          "day": 4,
+          "topic": "Cara keluar dari financial trap",
+          "suggested_format": "Tutorial",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 5,
+          "topic": "Belajar bahasa Inggris gratis",
+          "suggested_format": "Controversy",
+          "platform": "TikTok"
+        },
+        {
+          "day": 6,
+          "topic": "Literasi keuangan dasar",
+          "suggested_format": "Storytelling",
+          "platform": "Instagram Reels"
+        },
+        {
+          "day": 7,
+          "topic": "Growth mindset vs fixed mindset",
+          "suggested_format": "Tutorial",
+          "platform": "TikTok"
+        }
+      ],
+      "quick_wins": [
+        "Post about: Skill yang wajib dikuasai di era AI",
+        "Format: Book summary dalam 60 detik",
+        "Target audience pain: Tidak tau harus belajar apa"
+      ]
+    }
+  }
+}

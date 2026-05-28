@@ -1,0 +1,69 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-03-14T17:29:15.984436",
+    "trainer": "Veris",
+    "principles": [
+      {
+        "category": "design",
+        "principle": "Dark background (#000000) for all content images",
+        "description": "Pure black creates high contrast, premium feel. 8/10 Veris samples use #000000.",
+        "priority": 9
+      },
+      {
+        "category": "design",
+        "principle": "4:5 vertical format (1024x1280) as primary, 1:1 as secondary",
+        "description": "70% of Veris samples use 4:5. Better for IG portrait/story. More space for text.",
+        "priority": 9
+      },
+      {
+        "category": "design",
+        "principle": "Three-section layout: Hook (top 20-30%) → Body (middle 40-50%) → CTA (bottom 20-30%)",
+        "description": "Consistent across all Veris samples. CTA in bordered box at bottom.",
+        "priority": 8
+      },
+      {
+        "category": "design",
+        "principle": "No vibrant colors. Subtle accents only: blue #202040, red #200000, gray #606080",
+        "description": "Veris avoids overwhelming colors. Focus on content over decoration.",
+        "priority": 8
+      },
+      {
+        "category": "design",
+        "principle": "White text on black background. Clean modern sans-serif. Readable at 320px mobile width",
+        "description": "Maximum readability. Bold for hooks, regular for body.",
+        "priority": 8
+      },
+      {
+        "category": "platform",
+        "principle": "Instagram-first strategy. Not TikTok-first.",
+        "description": "Veris optimizes for IG conversion. TikTok is volume play, not primary.",
+        "priority": 7
+      },
+      {
+        "category": "design",
+        "principle": "Minimalist premium aesthetic. No emoji in images. No complex patterns/gradients.",
+        "description": "Clean backgrounds, text as primary visual element.",
+        "priority": 7
+      },
+      {
+        "category": "copy",
+        "principle": "Direct, premium tone. No fluff. Every word must earn its place.",
+        "description": "Veris copy is concise, authoritative, action-oriented.",
+        "priority": 7
+      }
+    ],
+    "examples": [
+      {
+        "description": "Background style",
+        "good_example": "Pure black #000000 with white text",
+        "bad_example": "Purple-pink gradient with colorful emoji"
+      },
+      {
+        "description": "Format choice",
+        "good_example": "4:5 vertical (1024x1280) for Instagram",
+        "bad_example": "9:16 for TikTok as default"
+      }
+    ]
+  }
+]

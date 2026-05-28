@@ -1,0 +1,293 @@
+---
+name: ai-consulting
+description: Offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.
+---
+
+# AI Consulting Skill
+
+## Overview
+
+Offer fractional AI engineering and consulting services to companies that need AI expertise but can't afford full-time staff. Act as their part-time AI executive, advisor, or technical lead. This is one of the fastest ways to monetize AI skills.
+
+**Market**: $5B+ in AI consulting  
+**Pricing**: $150-500/hour  
+**Revenue**: $3K-10K/month part-time
+
+---
+
+## When to Use
+
+- Companies need AI but no budget for full-time
+- Startup needs AI roadmap
+- Enterprise wants AI pilot
+- Non-tech companies need AI guidance
+
+---
+
+## When NOT to Use
+
+- You lack AI expertise
+- Client expects miracles
+- Company has full AI team
+- Regulated industry without certs
+
+---
+
+## Service Offerings
+
+### 1. AI Assessment (One-time)
+```
+Deliverable: AI readiness report
+Scope: 5-10 hours
+Price: $750-2,000
+Output: Opportunities, risks, roadmap
+```
+
+### 2. AI Strategy (2-4 weeks)
+```
+Deliverable: AI strategy document
+Scope: 20-40 hours
+Price: $3,000-10,000
+Output: Prioritized initiatives, ROI projections
+```
+
+### 3. Fractional AI Lead (Monthly)
+```
+Deliverable: Ongoing AI guidance
+Scope: 10-20 hours/month
+Price: $2,000-5,000/month
+Output: Leadership, roadmaps, vendor selection
+```
+
+### 4. AI Implementation (Project)
+```
+Deliverable: Working AI system
+Scope: 40-200 hours
+Price: $5,000-50,000
+Output: Deployed AI solution
+```
+
+### 5. AI Training (Workshop)
+```
+Deliverable: Team training sessions
+Scope: 4-8 hours
+Price: $2,000-8,000
+Output: Trained team, materials
+```
+
+---
+
+## Target Clients
+
+### By Size
+
+| Client | Need | Price |
+|--------|------|-------|
+| Startups | AI roadmap, MVP | $2K-10K |
+| SMBs | Automation, efficiency | $2K-5K/mo |
+| Enterprise | Pilots, integration | $10K-50K+ |
+| Agencies | AI services for clients | $3K-10K/mo |
+
+### By Industry
+
+| Industry | Opportunities | Competition |
+|----------|---------------|-------------|
+| Healthcare | Automation, compliance | Medium |
+| Finance | Fraud, analysis | High |
+| E-commerce | Personalization | Low |
+| Real Estate | Lead gen, chatbots | Low |
+| Manufacturing | Predictive maint | Medium |
+| Legal | Research, docs | Low |
+
+---
+
+## Sales Process
+
+### Stage 1: Discovery (30 min - Free)
+```
+Questions:
+- What are your business goals?
+- Where do you spend most time?
+- What's your budget?
+- Who makes tech decisions?
+
+Outcome: Qualify if budget > $2K
+```
+
+### Stage 2: Assessment (2-5 hours - $500)
+```
+Deliver:
+- Current state analysis
+- Quick wins identification
+- High-level roadmap
+- Investment range
+
+Close: Expand to full project
+```
+
+### Stage 3: Proposal (2-4 days)
+```
+Include:
+- Scope and objectives
+- Timeline and milestones
+- Investment and ROI
+- Case studies
+- Team and methodology
+```
+
+### Stage 4: Delivery (Ongoing)
+```
+Process:
+- Weekly updates
+- Deliverables
+- Knowledge transfer
+- Relationship building
+```
+
+---
+
+## Value Proposition Templates
+
+### For Startups
+```
+"I help startups integrate AI without the overhead of a full-time team. 
+As your fractional AI lead, I'll build your AI roadmap and implement 
+the highest-impact projects first - so you get results before you 
+need to hire."
+```
+
+### For SMBs
+```
+"I automate the repetitive tasks eating your team's time. From 
+customer service chatbots to data analysis, I'll identify where 
+AI can save 10+ hours/week and implement solutions that work 
+with your existing tools."
+```
+
+### For Enterprise
+```
+"I bridge the gap between business and AI. Whether you need 
+an AI pilot, vendor evaluation, or team training, I'll help 
+you cut through the AI hype and deliver real business value."
+```
+
+---
+
+## Tools & Resources
+
+### Client Management
+| Tool | Use | Price |
+|------|-----|-------|
+| Notion | Proposals, docs | $10/mo |
+| HubSpot CRM | Pipeline | Free/$50 |
+| Calendly | Scheduling | Free |
+| Zoom | Meetings | Free |
+
+### Delivery Tools
+| Tool | Use | Price |
+|------|-----|-------|
+| Claude/GPT | Analysis | $20/mo |
+| Zapier | Automation | $20/mo |
+| Make | Workflows | $9/mo |
+| GitHub | Code delivery | Free |
+
+### Learning/Research
+| Tool | Use | Price |
+|------|-----|-------|
+| Perplexity | Research | $20/mo |
+| LinkedIn Learning | Skills | $30/mo |
+| Substack | Trends | Free |
+
+---
+
+## Integration with 1ai-skills
+
+### Skill Synergies
+
+| Skill | Use Case |
+|-------|----------|
+| ai-agent-development | Build for clients |
+| voice-ai-agent | Add voice services |
+| ai-lead-generation | Find clients |
+| automation | Implement solutions |
+| marketing | Content marketing |
+
+### Revenue Model
+
+```
+Consulting → Build agent → Upsell maintenance → Referrals
+```
+
+---
+
+## Pricing Psychology
+
+### Anchor High
+```
+Original: $5,000
+Offered: $3,000
+Saved: $2,000 (40% off)
+Feels: Great deal
+```
+
+### Package Pricing
+```
+Basic: $2,000 (assessment)
+Professional: $5,000 (+ strategy)
+Enterprise: $10,000 (+ implementation)
+Most Popular: Professional
+```
+
+### Value-Based
+```
+Instead of: $150/hour
+Say: "$3,000 project that typically saves $50K/year"
+```
+
+---
+
+## Best Practices
+
+### Do's
+✅ Specialize in 1-2 industries  
+✅ Build case studies early  
+✅ Over-deliver on first projects  
+✅ Ask for referrals  
+✅ Create content consistently  
+✅ Network on LinkedIn  
+
+### Don'ts
+❌ Don't undersell yourself  
+❌ Don't overpromise results  
+❌ Don't skip contracts  
+❌ Don't ignore follow-ups  
+❌ Don't work without deposit  
+
+---
+
+## Metrics
+
+| Metric | Target |
+|--------|--------|
+| Hourly rate | $150-500 |
+| Utilization | 50%+ |
+| Client retention | 80%+ |
+| Referral rate | 30%+ |
+| Revenue/month | $3K-10K |
+
+---
+
+## Version History
+
+- **v1.0** (2026-02-27) - Initial creation
+  - Service offerings
+  - Sales process
+  - Pricing strategies
+
+---
+
+## Related Skills
+
+- [ai-agent-development](/skills/ai-agent-development) - Build for clients
+- [ai-lead-generation](/skills/ai-lead-generation) - Find clients
+- [automation](/skills/automation) - Implement solutions
