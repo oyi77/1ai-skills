@@ -1,6 +1,6 @@
 {
   "name": "1ai-skills",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "1270 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
   "main": "index.js",
   "scripts": {
