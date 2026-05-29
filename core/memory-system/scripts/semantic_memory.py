@@ -210,14 +210,20 @@ class SemanticMemory:
                 rows = conn.execute(
                     "SELECT id, importance, last_accessed FROM memories WHERE archived=0"
                 ).fetchall()
+
+                updates = []
                 for mid, imp, last_acc in rows:
                     days = (now - last_acc) / 86400.0
                     new_imp = imp * (config.DECAY_RATE ** days)
-                    conn.execute(
+                    # ⚡ Bolt Optimization: Batch N+1 UPDATE queries into a single executemany call
+                    updates.append((max(0.0, new_imp), mid))
+
+                if updates:
+                    conn.executemany(
                         "UPDATE memories SET importance=? WHERE id=?",
-                        (max(0.0, new_imp), mid),
+                        updates,
                     )
-                    updated += 1
+                    updated = len(updates)
         return updated
 
     def archive_low_importance(self) -> int:

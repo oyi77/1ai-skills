@@ -12,3 +12,7 @@
 ## 2025-05-27 - [SQLite Indexes for Frequent Queries]
 **Learning:** Found missing database indexes on `chat_id` and `created_at` fields in SQLite tables used for gallery browsing and cost aggregation. As the DB grows, filtering or sorting by these fields without an index causes O(N) full table scans, severely impacting query performance.
 **Action:** Consistently ensure fields used heavily in `WHERE` and `ORDER BY` clauses (especially foreign keys like `chat_id` and timestamps like `created_at`) have explicit database indexes created during `init_db()`.
+
+## 2024-05-29 - [Optimize SQLite Batch Updates]
+**Learning:** Found N+1 query patterns in memory decay calculations (`core/memory-system/scripts/episodic_memory.py` and `semantic_memory.py`) where SQLite `UPDATE` statements were executed individually inside a loop, causing significant database communication overhead.
+**Action:** When updating multiple rows iteratively, always collect the updated values in a list and use `conn.executemany()` to batch the `UPDATE` queries, significantly reducing database round-trips and transaction times.
