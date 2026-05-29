@@ -21,6 +21,12 @@ persona:
 Automate email workflows, create templates, and manage campaigns using Gmail and MCP integrations.
 
 ## Required Tools
+| Tool | Purpose | Required |
+|------|---------|----------|
+| CLI | Primary execution | Yes |
+| API client | External service calls | Conditional |
+| Validator | Output checking | Recommended |
+
 
 ### MCP Servers
 
@@ -67,6 +73,11 @@ Automate email workflows, create templates, and manage campaigns using Gmail and
 | `MCP(nineteen-blocks:*)` | Streak CRM, Sheets, Drive integration |
 
 ## Authentication
+1. Obtain API credentials from the service provider
+2. Set environment variables: `export API_KEY=<your-key>`
+3. Test authentication: invoke the skill with a read-only operation
+4. Store credentials securely; never commit to version control
+
 
 ### Setup Steps
 
@@ -98,6 +109,22 @@ Automate email workflows, create templates, and manage campaigns using Gmail and
    ```
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Example 1: Send Personalized Email
 
@@ -176,6 +203,11 @@ for (const recipient of recipients) {
 | `SEND_001` | Invalid recipient | Check email format |
 
 ## Common Patterns
+- Use structured input/output schemas for reliable automation
+- Add retry logic with exponential backoff for external calls
+- Validate inputs before processing to fail fast
+- Log execution steps for debugging and auditing
+
 
 ### Batch Send with Rate Limiting
 
@@ -213,7 +245,8 @@ gmail send --to test@example.com --subject "Test" --body "Test" --dry-run
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the productivity tool handles legally privileged communications
+- When the automation affects compliance-archived records or legal holds
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -226,14 +259,16 @@ gmail send --to test@example.com --subject "Test" --body "Test" --dry-run
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation creates duplicate entries across connected platforms
+- Agent does not handle timezone differences correctly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No duplicate entries are created across connected platforms
+- [ ] Timezone handling is correct for all scheduling operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -52,6 +52,11 @@ The General Data Protection Regulation (EU) 2016/679 (GDPR) is the EU's comprehe
 
 ## Core Concepts
 
+This section covers core concepts for implementing gdpr data protection controls.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Key GDPR Articles for Technical Controls
 
 | Article | Requirement |
@@ -89,6 +94,11 @@ The regulation requires organizations to implement measures appropriate to the r
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: Data Mapping and Assessment (Weeks 1-6)
 1. Create comprehensive data inventory:
    - What personal data is collected
@@ -182,6 +192,21 @@ The regulation requires organizations to implement measures appropriate to the r
 - Not testing 72-hour breach notification capability
 - Ignoring cross-border transfer requirements for cloud services
 - Over-reliance on consent as lawful basis when legitimate interest applies
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 - GDPR Official Text: https://gdpr-info.eu/

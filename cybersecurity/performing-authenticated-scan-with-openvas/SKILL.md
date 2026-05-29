@@ -47,6 +47,10 @@ OpenVAS (Open Vulnerability Assessment Scanner) is the scanner component of the 
 
 ## Installation
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Install GVM on Kali Linux / Debian
 ```bash
 # Install GVM package
@@ -83,6 +87,11 @@ docker compose -f docker-compose.yml -p greenbone-community-edition \
 
 ## Configuring Credentials
 
+This section covers configuring credentials for performing authenticated scan with openvas.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SSH Credentials for Linux Targets
 ```bash
 # Using gvm-cli to create SSH credential with key-based auth
@@ -159,6 +168,11 @@ gvm-cli socket --socketpath /run/gvmd/gvmd.sock --gmp-username admin --gmp-passw
 
 ## Scan Configuration
 
+This section covers scan configuration for performing authenticated scan with openvas.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Built-in Scan Configs
 | Config Name | OID | Use Case |
 |------------|-----|----------|
@@ -178,6 +192,11 @@ gvm-cli socket --socketpath /run/gvmd/gvmd.sock --gmp-username admin --gmp-passw
 
 ## Running the Scan
 
+This section covers running the scan for performing authenticated scan with openvas.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Create and Start Scan Task
 ```bash
 # Create scan task
@@ -256,6 +275,20 @@ with Gmp(connection=connection, transform=transform) as gmp:
 gvm-cli socket --socketpath /run/gvmd/gvmd.sock --gmp-username admin --gmp-password <password> --xml \
   '<get_results filter="name=SSH rows=10 sort-reverse=severity"/>'
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

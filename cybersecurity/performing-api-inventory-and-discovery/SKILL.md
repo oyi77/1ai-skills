@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Passive API Discovery from Traffic Analysis
 
 ```python
@@ -385,6 +390,11 @@ def detect_shadow_and_zombie_apis(discovered_endpoints, documented_endpoints):
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Api Inventory And Discovery assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Api Inventory And Discovery response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Enterprise API Attack Surface Assessment
 
 **Context**: A large enterprise has 200+ development teams using microservices. The security team suspects many undocumented APIs are exposed to the internet. A comprehensive API inventory is needed for a security audit.
@@ -404,6 +414,22 @@ def detect_shadow_and_zombie_apis(discovered_endpoints, documented_endpoints):
 - Missing APIs behind non-standard ports or subpaths
 - Not checking for multiple API versions where older versions may lack security controls
 - Assuming all APIs go through the API gateway when some may be directly exposed
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

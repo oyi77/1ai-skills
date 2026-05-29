@@ -7,6 +7,35 @@ description: >
 version: 1.0.0
 author: Vilona (BerkahKarya AI GM)
 tags: [finance, cashflow, pnl, revenue, alerts, berkahkarya]
+
+## When to Use
+
+- Real-time P&L tracking needed for multi-stream revenue business
+- Cashflow monitoring with automated revenue gap detection
+- Daily revenue vs burn rate comparison across 5 revenue lines
+- Telegram alert integration for revenue drought notifications
+- Runway calculation and emergency cash position monitoring
+
+## Red Flags
+
+- Revenue gap exceeds 12 hours without alert triggered
+- Bank balance below IDR 100,000 without emergency notification
+- Runway calculation showing less than 3 days remaining
+- Manual cashflow entries not updated within 24 hours
+- Cron jobs for revenue monitoring not running or failing silently
+- Telegram alerts failing to deliver without fallback mechanism
+
+## Verification
+
+After completing finance tracker setup, confirm:
+
+- [ ] All 5 revenue streams tracked with separate data sources
+- [ ] Daily P&L script calculates correct totals across streams
+- [ ] Cashflow dashboard displays real-time bank balance and runway
+- [ ] Revenue gap detection fires Telegram alerts at 4h/8h/12h thresholds
+- [ ] Cron jobs installed and running for periodic gap checks
+- [ ] Manual cashflow entry format documented and tested
+
 ---
 
 # Finance Tracker — BerkahKarya
@@ -53,6 +82,9 @@ BerkahKarya has **5 active revenue lines**. Track each separately.
 ---
 
 ## 3. Data Sources
+
+API endpoints and manual data sources for each revenue stream.
+
 
 ### 3.1 PostBridge API
 
@@ -111,6 +143,9 @@ Fields:   date, pair, direction, entry, exit, pnl_pips, pnl_usd, status
 
 ## 4. Key Metrics
 
+Definitions, alert thresholds, and revenue gap detection logic.
+
+
 ### 4.1 Definitions
 
 ```
@@ -149,6 +184,9 @@ Cashflow Balance  = Actual bank balance + receivables - payables
 ---
 
 ## 5. Scripts
+
+Python scripts for daily P&L calculation, cashflow dashboard, and revenue alerts.
+
 
 ### 5.1 `scripts/daily_pnl.py`
 
@@ -731,6 +769,9 @@ if __name__ == "__main__":
 
 ## 6. Cashflow Data Format
 
+File formats for manual bank entries and last-revenue tracking.
+
+
 ### Manual Bank Entry File
 
 **Path:** `cashflow/YYYY-MM-DD.md`
@@ -787,6 +828,9 @@ python3 scripts/revenue_alert.py --record "Trading (XAUUSD)"
 ---
 
 ## 7. Telegram Integration
+
+Alert delivery configuration, environment variables, and message format examples.
+
 
 ### Alert Delivery Method
 
@@ -885,6 +929,9 @@ EOF
 
 ## 9. Quick Reference
 
+Daily workflow commands and file location reference.
+
+
 ### Daily Workflow
 
 ```bash
@@ -967,6 +1014,33 @@ crontab -l  # verify
 # 7. Test Telegram alert
 python3 scripts/revenue_alert.py --daily-report morning
 ```
+
+
+## When to Use
+
+- Real-time P&L tracking needed for multi-stream revenue business
+- Cashflow monitoring with automated revenue gap detection
+- Daily revenue vs burn rate comparison across 5 revenue lines
+- Telegram alert integration for revenue drought notifications
+- Runway calculation and emergency cash position monitoring
+
+## Red Flags
+
+- Revenue gap exceeds 12 hours without alert triggered
+- Bank balance below IDR 100,000 without emergency notification
+- Runway calculation showing less than 3 days remaining
+- Manual cashflow entries not updated within 24 hours
+- Cron jobs for revenue monitoring not running or failing silently
+
+## Verification
+
+After completing finance tracker setup, confirm:
+
+- [ ] All 5 revenue streams tracked with separate data sources
+- [ ] Daily P&L script calculates correct totals across streams
+- [ ] Cashflow dashboard displays real-time bank balance and runway
+- [ ] Revenue gap detection fires Telegram alerts at 4h/8h/12h thresholds
+- [ ] Cron jobs installed and running for periodic gap checks
 
 ---
 

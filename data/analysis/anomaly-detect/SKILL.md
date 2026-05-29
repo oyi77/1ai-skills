@@ -2,6 +2,8 @@
 name: anomaly-detect
 description: Detect anomalies in data
 ---
+
+
 ## Anomaly Detect
 
 Detect anomalies in data
@@ -20,7 +22,8 @@ Detect anomalies in data
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When anomaly detection is used for fraud investigation requiring evidence-grade analysis
+- When false positives have severe financial or legal consequences
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Detect anomalies in data
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Anomaly detection threshold is too sensitive causing false positive flood
+- Agent does not distinguish between different types of anomalies
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Detection threshold is calibrated to balance sensitivity and specificity
+- [ ] Anomaly types are classified for appropriate response
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related data skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

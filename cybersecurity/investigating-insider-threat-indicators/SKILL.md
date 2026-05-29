@@ -48,6 +48,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Establish Investigation Scope and Legal Authorization
 
 Before any monitoring, ensure proper authorization:
@@ -276,6 +281,21 @@ with open(f"evidence_log_{evidence_log['case_id']}.json", "w") as f:
 - **Contractor Overreach**: External consultant accessing systems beyond contracted scope, downloading source code
 - **Account Misuse**: Employee sharing credentials with unauthorized third party for competitive intelligence
 - **Sabotage Indicator**: IT admin creating backdoor accounts and modifying system configurations before departure
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

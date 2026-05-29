@@ -45,6 +45,11 @@ Single Sign-On (SSO) for Google Workspace allows organizations to authenticate u
 
 ## Core Concepts
 
+This section covers core concepts for implementing google workspace sso configuration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SAML 2.0 SSO Flow
 
 ```
@@ -79,6 +84,11 @@ User navigates to Google Workspace app (Gmail, Drive, etc.)
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Prepare the Identity Provider
 
 **For Okta:**
@@ -171,6 +181,20 @@ This is useful for allowing direct Google login from corporate network while enf
 - [ ] SSO tested with multiple user types (admin, standard, contractor)
 - [ ] SAML response signature validated successfully
 - [ ] Error handling tested (expired cert, invalid user, clock skew)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

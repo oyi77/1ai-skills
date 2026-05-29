@@ -1,15 +1,16 @@
 ---
 name: auto-clipper
 description: AI-powered video clipper - Convert long videos into viral Shorts/TikToks/Reels automatically
-dependencies:
+dependencies: |
   - faster-whisper
-  - textblob
-  - vadersentiment
-  - moviepy
-  - opencv-python
-  - ffmpeg-python
-  - customtkinter
+    - textblob
+    - vadersentiment
+    - moviepy
+    - opencv-python
+    - ffmpeg-python
+    - customtkinter
 ---
+
 
 # Auto Clipper Indonesia 🎬
 
@@ -42,6 +43,13 @@ auto-clipper/
 
 ## 🔧 Installation
 
+- Configure auto, automatically, clipper, convert, into settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Install Dependencies
 ```bash
 pip install faster-whisper textblob vaderSentiment
@@ -63,6 +71,13 @@ brew install ffmpeg
 ```
 
 ## 📖 Usage
+
+- Configure auto, automatically, clipper, convert, into settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Basic Usage
 ```python
@@ -171,6 +186,13 @@ Results dalam format:
 
 ## 🛠️ Troubleshooting
 
+- Configure auto, automatically, clipper, convert, into settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Whisper Installation Failed?
 
 ```bash
@@ -251,3 +273,29 @@ Join our community:
 ---
 
 **BerkahKarya** ⚡ | Auto Clipper Indonesia
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

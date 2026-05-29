@@ -51,6 +51,11 @@ A full-scope red team engagement simulates real-world adversary behavior across 
 
 ## Engagement Phases
 
+This section covers engagement phases for conducting full scope red team engagement.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Phase 1: Planning and Threat Modeling
 
 Map the engagement to specific MITRE ATT&CK tactics and techniques based on the threat profile:
@@ -188,6 +193,22 @@ The report should include:
 - **Exploitation**: Metasploit, Impacket, CrackMapExec, Rubeus
 - **Post-Exploitation**: Mimikatz, SharpCollection, BOF.NET
 - **Reporting**: PlexTrac, Ghostwriter, Serpico
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

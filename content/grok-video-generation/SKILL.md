@@ -1,25 +1,28 @@
 ---
 name: grok-video-generation
 description: Generate AI videos using Grok Imagine powered by Aurora AI. Create short videos from text prompts or animate still images with synchronized audio. Requires Super Grok subscription.
-persona:
-  name: "Steven Spielberg"
-  title: "Master of Cinematic Wonder"
-  expertise: ["emotional storytelling", "visual spectacle", "audience empathy", "blockbuster pacing"]
-  philosophy: "The delicate balance of mentoring someone is not creating them in your own image, but giving them the opportunity to create themselves."
-  credentials:
-    - "Three-time Academy Award winner (Schindler's List, Saving Private Ryan)"
-    - "Directed Jaws, E.T., Jurassic Park, Indiana Jones franchise"
-    - "Highest-grossing director of all time with $10+ billion box office"
-    - "Co-founded DreamWorks Studios, revolutionized blockbuster filmmaking"
-  principles:
-    - "Emotion first - make the audience feel before they think"
-    - "Show wonder - capture the awe in characters' faces, let audience mirror it"
-    - "Pacing builds tension - know when to slow down, when to accelerate"
-    - "Visual storytelling - let images carry narrative weight"
-    - "Empathy is universal - find the human story in every spectacle"
-    - "Technical mastery serves story - effects enhance, never replace emotion"
-    - "Casting is 80% of directing - right actor makes everything easier"
+persona: |
+  |
+    name: "Steven Spielberg"
+      title: "Master of Cinematic Wonder"
+      expertise: ["emotional storytelling", "visual spectacle", "audience empathy", "blockbuster pacing"]
+      philosophy: "The delicate balance of mentoring someone is not creating them in your own image, but giving them the opportunity to create themselves."
+      credentials:
+        - "Three-time Academy Award winner (Schindler's List, Saving Private Ryan)"
+        - "Directed Jaws, E.T., Jurassic Park, Indiana Jones franchise"
+        - "Highest-grossing director of all time with $10+ billion box office"
+        - "Co-founded DreamWorks Studios, revolutionized blockbuster filmmaking"
+      principles:
+        - "Emotion first - make the audience feel before they think"
+        - "Show wonder - capture the awe in characters' faces, let audience mirror it"
+        - "Pacing builds tension - know when to slow down, when to accelerate"
+        - "Visual storytelling - let images carry narrative weight"
+        - "Empathy is universal - find the human story in every spectacle"
+        - "Technical mastery serves story - effects enhance, never replace emotion"
+        - "Casting is 80% of directing - right actor makes everything easier"
 ---
+
+
 
 # Grok Video Generation Skill
 
@@ -54,6 +57,12 @@ Grok Imagine is X.AI's video generation feature powered by the proprietary Auror
 
 ## Prerequisites
 
+- Python 3.10+ or Node.js 18+
+- API credentials configured in `.env`
+- Network access to target services
+- Understanding of animate, audio, aurora, create, from concepts
+
+
 ### Required Access
 
 1. **Super Grok Subscription** (paid tier)
@@ -73,6 +82,30 @@ Grok Imagine is X.AI's video generation feature powered by the proprietary Auror
 ---
 
 ## Complete Video Generation Workflow
+
+Step-by-step grok-video-generation execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the grok-video-generation workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the grok-video-generation workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### Method 1: Text-to-Video
 
@@ -205,6 +238,13 @@ Choose from available modes:
 
 ## Prompt Engineering Best Practices
 
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
+
 ### Effective Prompt Structure
 
 ```
@@ -281,6 +321,13 @@ Full Prompt: "A majestic eagle soaring through the sky above snow-capped mountai
 
 ## Key Features & Capabilities
 
+- Configure animate, audio, aurora, create, from settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Synchronized Audio Generation
 
 **Unique Advantage**: Unlike many AI video tools, Grok Imagine generates synchronized audio automatically.
@@ -346,6 +393,13 @@ Prompt: "...no audio, silent video"
 
 ## Creating Longer Videos
 
+- Configure animate, audio, aurora, create, from settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Limitation
 Grok Imagine generates 6-10 second clips. For longer videos, use stitching techniques.
 
@@ -396,6 +450,13 @@ ffmpeg -i grok-clip-1.mp4 -i grok-clip-2.mp4 \
 ---
 
 ## Integration with Other Skills
+
+- Configure animate, audio, aurora, create, from settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Send via Telegram
 ```javascript
@@ -459,6 +520,13 @@ Strategy: Use both tools for different purposes
 
 ## Troubleshooting
 
+- Configure animate, audio, aurora, create, from settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Common Issues
 
 **Issue**: "Super Grok subscription required"
@@ -493,6 +561,13 @@ Strategy: Use both tools for different purposes
 
 ## Best Practices
 
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
+
 ### 1. Prompt Optimization
 - Start simple, add details iteratively
 - Test different phrasings
@@ -526,6 +601,13 @@ Strategy: Use both tools for different purposes
 ---
 
 ## Use Cases
+
+- Configure animate, audio, aurora, create, from settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Marketing & Advertising
 ```
@@ -586,14 +668,16 @@ Strategy: Use both tools for different purposes
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Video output does not meet platform specifications for resolution or format
+- Agent skips quality review before final render
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets target platform specifications for resolution and format
+- [ ] Quality review is completed before final render
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

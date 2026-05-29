@@ -44,6 +44,10 @@ Calico is an open-source CNI plugin that provides fine-grained network policy en
 
 ## Installing Calico
 
+```bash
+# Install network monitoring tools
+sudo apt-get install -y zeek suricata wireshark tshark tcpdump
+```
 ### Operator-based Installation (Recommended)
 
 ```bash
@@ -76,6 +80,11 @@ kubectl exec -n calico-system calicoctl -- calicoctl get ippool -o wide
 
 ## Kubernetes NetworkPolicy
 
+This section covers kubernetes networkpolicy for implementing kubernetes network policy with calico.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Default Deny All Traffic
 
 ```yaml
@@ -171,6 +180,11 @@ spec:
 
 ## Calico-Specific Policies
 
+This section covers calico-specific policies for implementing kubernetes network policy with calico.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GlobalNetworkPolicy (Cluster-Wide)
 
 ```yaml
@@ -325,3 +339,17 @@ kubectl exec -n production frontend-pod -- wget -qO- --timeout=2 http://backend-
 6. **Test policies in staging** - Validate network connectivity after applying policies
 7. **Monitor denied traffic** - Enable Calico flow logs for visibility into blocked connections
 8. **Use tiers** - Organize policies into security, platform, and application tiers
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise

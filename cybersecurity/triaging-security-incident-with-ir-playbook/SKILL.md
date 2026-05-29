@@ -43,6 +43,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Receive and Acknowledge Alert
 ```bash
 # Query Splunk for new critical/high severity alerts
@@ -220,6 +225,22 @@ curl -X PATCH "https://thehive.local/api/v1/case/$CASE_ID" \
 3. **Suspicious Outbound Traffic**: Large data transfer to unknown external IP. Check if known cloud service, verify data classification, assign P1 if exfiltration confirmed.
 4. **Phishing Email Reported**: User reports suspicious email. Extract IOCs, check if others received it, assign P2 if credentials were entered.
 5. **Privilege Escalation**: User gained admin rights unexpectedly. Verify if authorized change, check for exploitation, assign P1 if unauthorized.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 - Triage decision document with severity justification

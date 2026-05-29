@@ -46,6 +46,11 @@ Ransomware groups operating under double-extortion models maintain data leak sit
 
 ## Key Concepts
 
+This section covers key concepts for analyzing ransomware leak site intelligence.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Double Extortion Model
 
 Modern ransomware groups encrypt victim data AND exfiltrate it before encryption. Leak sites serve as public pressure: victims are listed with a countdown timer, partial data samples, and file trees. If ransom is not paid, full data is published. Some groups have moved to triple extortion, adding DDoS threats or contacting victims' customers directly.
@@ -60,6 +65,11 @@ Never directly access DLS sites in a production environment. Use purpose-built m
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Ingest Ransomware Leak Site Data from Public Feeds
 
 ```python
@@ -327,6 +337,21 @@ generate_ransomware_intel_report(trends, risk, new_groups)
 - New and emerging groups identified with activity metrics
 - Intelligence report generated with actionable recommendations
 - All collection conducted through authorized public sources
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

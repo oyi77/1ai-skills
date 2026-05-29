@@ -68,6 +68,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Install and Configure Invoke-AtomicRedTeam
 
 Set up the execution framework and download the atomics library:
@@ -920,6 +925,11 @@ Detection Validation Loop Workflow:
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Validating Credential Access Detections After EDR Deployment
 
 **Context**: The organization deployed a new EDR agent and needs to verify it detects credential dumping techniques (LSASS access, NTDS extraction, SAM dump). The purple team must confirm detections are working before closing the deployment ticket.
@@ -958,6 +968,22 @@ Detection Validation Loop Workflow:
 - Not updating the atomics repository (new tests are added frequently)
 - Focusing only on technique count rather than detection quality (a noisy rule with 90% false positives is worse than no rule)
 - Not involving the SOC analysts who will triage the alerts in the validation process
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

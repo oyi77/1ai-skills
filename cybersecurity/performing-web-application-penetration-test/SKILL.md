@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Reconnaissance and Application Mapping
 
 Map the entire attack surface of the web application:
@@ -140,6 +145,11 @@ Compile all findings into a structured report:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Web Application Penetration Test assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Web Application Penetration Test response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: E-Commerce Application Pre-Launch Security Assessment
 
 **Context**: A retail company is launching a new e-commerce platform built on Node.js with a React frontend and PostgreSQL database. The application handles credit card payments through Stripe integration and stores customer PII. Testing scope includes the staging environment with full API access.
@@ -158,6 +168,22 @@ Compile all findings into a structured report:
 - Missing business logic flaws by relying solely on automated scanning without manual testing
 - Not testing the same functionality across different privilege levels to catch authorization issues
 - Overlooking client-side JavaScript for hardcoded API keys, debug endpoints, and internal URLs
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

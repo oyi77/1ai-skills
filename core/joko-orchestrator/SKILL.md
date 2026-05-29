@@ -82,6 +82,10 @@ This skill solves these through **specialization and delegation**.
 ---
 
 ## Activation
+This section covers activation for the joko-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Explicit Triggers
 - "use autonomous-skill-orchestrator"
@@ -96,6 +100,10 @@ The agent figures out the rest — parallel agents, background tasks, deep explo
 ---
 
 ## Phase 1: Planning (Prometheus Mode)
+This section covers phase 1: planning (prometheus mode) for the joko-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Step 1.1: Interview
 Before planning, gather clarity through brief interview:
@@ -119,6 +127,10 @@ After interview, generate structured plan:
 
 ```markdown
 ## Work Plan: [Title]
+This section covers work plan: [title] for the joko-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Objective
 [One sentence, frozen intent]
@@ -152,6 +164,12 @@ If any check fails, refine plan before proceeding.
 ---
 
 ## Phase 2: Orchestration (Atlas Mode)
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Conductor Rules
 The orchestrator:
@@ -220,6 +238,10 @@ After each task completion, extract and record:
 
 ```markdown
 ## Wisdom Log
+This section covers wisdom log for the joko-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Conventions Discovered
 - [Pattern found in codebase]
@@ -254,6 +276,10 @@ If verification fails:
 ---
 
 ## Phase 3: Completion
+This section covers phase 3: completion for the joko-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Step 3.1: Final Verification
 - All tasks marked complete
@@ -263,6 +289,12 @@ If verification fails:
 ### Step 3.2: Summary Report
 ```markdown
 ## Orchestration Complete
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Completed Tasks
 - [x] Task 1: {summary}
@@ -281,6 +313,10 @@ If verification fails:
 ---
 
 ## Safety Guardrails
+This section covers safety guardrails for the joko-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Halt Conditions (Immediate Stop)
 - User issues explicit stop command
@@ -317,6 +353,11 @@ On stop: immediately terminate all spawned sessions, output summary of completed
 ---
 
 ## Memory Integration
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### During Orchestration
 - Append to `memory/orchestrator-wisdom.md` for learnings
@@ -389,14 +430,16 @@ use autonomous-skill-orchestrator
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

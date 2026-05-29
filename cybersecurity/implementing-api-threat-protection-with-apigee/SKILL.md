@@ -49,6 +49,11 @@ Google Apigee is an enterprise API management platform that provides native secu
 
 ## Core Security Policies
 
+This section covers core security policies for implementing api threat protection with apigee.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. JSON Threat Protection
 
 Protects against JSON-based denial-of-service attacks by limiting structural depth, entry counts, and string lengths:
@@ -182,6 +187,11 @@ Prevents traffic spikes from overwhelming backend services:
 
 ## Proxy Bundle Configuration
 
+This section covers proxy bundle configuration for implementing api threat protection with apigee.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Complete Secure Proxy Flow
 
 ```xml
@@ -318,6 +328,22 @@ gcloud apigee apis list-deployments \
   --api=$API_NAME \
   --organization=$ORG_NAME
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

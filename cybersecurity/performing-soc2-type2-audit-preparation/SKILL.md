@@ -50,6 +50,11 @@ nist_csf:
 
 ## Instructions
 
+This section covers instructions for performing soc2 type2 audit preparation.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Understand the Trust Services Criteria
 
 SOC 2 is built on five Trust Services Categories defined by AICPA. Security (Common Criteria CC1-CC9) is mandatory; the others are selected based on business relevance:
@@ -231,6 +236,10 @@ evidence_package = {
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Automated Access Review for CC6.2
 
 ```python
@@ -299,3 +308,16 @@ ir_evidence = {
     ],
 }
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

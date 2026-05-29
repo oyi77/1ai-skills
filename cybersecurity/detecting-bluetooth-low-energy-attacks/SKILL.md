@@ -57,6 +57,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: BLE Environment Discovery and Device Scanning
 
 Scan the environment to identify BLE devices and their advertising data:
@@ -271,6 +276,22 @@ python agent.py --mode monitor --alert-on replay,spoofing,weak-pairing
 - **crackle requires Legacy Pairing**: crackle only works against BLE Legacy Pairing (Bluetooth 4.0/4.1). LE Secure Connections (4.2+) use ECDH and cannot be cracked with this approach.
 - **BLE address randomization**: Many modern BLE devices use random resolvable private addresses (RPA) that rotate periodically, making device tracking and connection following more difficult.
 - **Capture format matters**: Use PCAP with PPI headers (`-c` flag) for crackle compatibility. PcapNG (`-r` flag) is recommended for Wireshark analysis but not supported by crackle.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

@@ -41,6 +41,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 — Identify and Fingerprint the WAF
 ```bash
 # Detect WAF using wafw00f
@@ -222,6 +227,22 @@ curl "http://target.com/page?q=%253Cscript%253Ealert(1)%253C%252Fscript%253E"
 3. **Encoding Chain Bypass** — Apply multiple layers of encoding (URL + Unicode + HTML entity) to evade each decoding layer of the WAF
 4. **Chunked Transfer Bypass** — Split malicious payload across HTTP chunked transfer encoding segments to avoid pattern matching
 5. **Method Override** — Send attack payloads via PUT/PATCH methods or custom headers that WAF does not inspect
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

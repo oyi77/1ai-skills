@@ -3,6 +3,7 @@ name: ai-saas-builder
 description: Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database, API, and billing
 ---
 
+
 ## Overview
 
 An end-to-end pipeline for shipping micro-SaaS products as a solo operator. Takes a problem statement and produces a fully deployed, monetizable SaaS with landing page, authentication, payment integration, and billing. Designed for one-person companies to ship 2-4 products per month.
@@ -34,6 +35,26 @@ An end-to-end pipeline for shipping micro-SaaS products as a solo operator. Take
 - A client requests a custom SaaS solution
 
 ## Pseudo Code
+
+The ai-saas-builder workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# ai-saas-builder primary flow
+input = prepare(raw_data)
+result = process(input, config={auth, billing, builder, database, deployable})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Phase 1: Spec Generation
 
@@ -267,6 +288,14 @@ flyctl deploy
 
 ## Common Patterns
 
+Proven patterns for ai-saas-builder usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Freemium with Usage Limits
 ```typescript
 // Check usage before allowing action
@@ -293,3 +322,20 @@ if (!org.members.length) throw new TRPCError({ code: 'FORBIDDEN' });
 - Social proof (testimonials, logos)
 - CTA with email capture
 - FAQ section
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

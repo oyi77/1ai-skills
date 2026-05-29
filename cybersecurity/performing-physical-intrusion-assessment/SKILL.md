@@ -177,6 +177,11 @@ Search external waste containers and recycling bins for:
 
 ## Assessment Methodology
 
+This section covers assessment methodology for performing physical intrusion assessment.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Pre-Assessment Reconnaissance
 1. Perimeter walk - identify all entry points, cameras, guard posts
 2. Observe employee patterns - shift changes, break schedules
@@ -207,6 +212,22 @@ Search external waste containers and recycling bins for:
 4. **Never photograph individuals** without authorization
 5. **Document, don't exploit** - Take photos as evidence, don't steal actual data
 6. **Safety first** - Do not enter hazardous areas or bypass fire safety
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

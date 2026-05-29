@@ -44,6 +44,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Set Up the Attack Environment
 
 ```bash
@@ -240,6 +245,11 @@ sha256sum mitm_capture.flow mitm_evidence.pcapng >> mitm_report.txt
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Testing HTTPS Enforcement on an Internal Web Application
 
 **Context**: A development team claims their internal web application enforces HTTPS with HSTS and certificate pinning. The security team needs to verify these controls during an authorized assessment. The application runs on 10.10.20.50 and is accessed by workstations on the 10.10.1.0/24 VLAN.
@@ -258,6 +268,22 @@ sha256sum mitm_capture.flow mitm_evidence.pcapng >> mitm_report.txt
 - Testing SSL stripping on an application with HSTS preloaded in the browser and concluding HSTS works, when a fresh browser instance might be vulnerable
 - Not cleaning up ARP spoofing after testing, causing intermittent connectivity issues for the target
 - Running mitmproxy without the transparent mode flag, requiring manual proxy configuration that changes the test conditions
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

@@ -52,6 +52,11 @@ MITRE ATT&CK Navigator is a web-based tool for annotating and exploring ATT&CK m
 
 ## Key Concepts
 
+This section covers key concepts for analyzing apt group with mitre navigator.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### ATT&CK Navigator Layers
 
 Navigator layers are JSON files that annotate ATT&CK techniques with scores, colors, comments, and metadata. Each layer can represent a single APT group's technique usage, a detection capability map, or a combined overlay. Layer version 4.5 supports enterprise-attack, mobile-attack, and ics-attack domains with filtering by platform (Windows, Linux, macOS, Cloud, Azure AD, Office 365, SaaS).
@@ -66,6 +71,11 @@ The Navigator supports loading multiple layers simultaneously, allowing analysts
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Query ATT&CK Data for APT Group
 
 ```python
@@ -274,6 +284,21 @@ for tactic in tactic_order:
 - Detection gap analysis identifies unmonitored techniques with data source recommendations
 - Cross-group comparison reveals shared and unique TTPs
 - Output is actionable for detection engineering prioritization
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

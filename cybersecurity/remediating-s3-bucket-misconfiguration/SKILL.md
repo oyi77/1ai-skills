@@ -45,6 +45,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify All Public and Misconfigured Buckets
 
 Use multiple detection methods to identify S3 buckets with public access. Rely on AWS Config rules, S3 Access Analyzer, and Macie rather than manual inspection.
@@ -259,6 +264,11 @@ aws organizations create-policy \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Remediating S3 Bucket Misconfiguration assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Remediating S3 Bucket Misconfiguration response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Data Breach from Publicly Readable S3 Bucket Containing PII
 
 **Context**: A security researcher reports that an S3 bucket containing 273,000 bank transfer PDFs is publicly readable. The bucket was created by a developer who needed to share files with an external partner and set the ACL to public-read.
@@ -273,6 +283,20 @@ aws organizations create-policy \
 7. Create a pre-signed URL mechanism or S3 Access Point for the legitimate partner sharing use case
 
 **Pitfalls**: Enabling Block Public Access without notifying the team that set up the public access breaks their workflow. Not running access log analysis before remediation loses evidence of who accessed the exposed data.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

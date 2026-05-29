@@ -1,6 +1,6 @@
 ---
 name: telegram-bot
-description: Build Telegram bots
+description: Telegram bot patterns for message handling and webhook integrations
 ---
 ## Telegram Bot
 
@@ -20,7 +20,8 @@ Build Telegram bots
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the bot interacts with users in regulated industries requiring compliance review
+- When Telegram API rate limits would make the automation impractical
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Build Telegram bots
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Bot sends messages without rate limiting causing API throttling
+- Agent does not handle Telegram webhook failures or retries
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Rate limiting is implemented respecting Telegram API limits
+- [ ] Webhook failures trigger retry logic with exponential backoff
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

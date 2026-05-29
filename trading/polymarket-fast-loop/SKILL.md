@@ -275,7 +275,8 @@ All trades are tagged with `source: "sdk:fastloop"`. This means:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the prediction market requires manual order book analysis
+- When the trading bot would exceed platform rate limits
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -288,14 +289,16 @@ All trades are tagged with `source: "sdk:fastloop"`. This means:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Fast loop skips order book depth analysis before placing trades
+- Agent does not verify market resolution rules before position entry
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Order book depth is analyzed before placing trades
+- [ ] Market resolution rules are verified before position entry
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

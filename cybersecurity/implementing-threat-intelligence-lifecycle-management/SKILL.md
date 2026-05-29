@@ -46,6 +46,11 @@ The threat intelligence lifecycle is a structured, iterative process for transfo
 
 ## Key Concepts
 
+This section covers key concepts for implementing threat intelligence lifecycle management.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Intelligence Requirements (IR)
 
 Priority Intelligence Requirements (PIRs) define what the organization needs to know. Examples: Which threat actors target our sector? What vulnerabilities are being actively exploited? Are our brand or credentials being traded on dark web? PIRs drive collection planning and ensure intelligence production is relevant.
@@ -60,6 +65,11 @@ Strategic intelligence informs executive decision-making (threat landscape, risk
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Intelligence Requirements
 
 ```python
@@ -374,6 +384,21 @@ disseminator = IntelligenceDisseminator()
 - Analysis produces intelligence answering specific requirements
 - Dissemination reaches appropriate stakeholders through right channels
 - Feedback mechanism captures and incorporates stakeholder input
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

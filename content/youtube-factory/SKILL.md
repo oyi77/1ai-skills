@@ -8,6 +8,7 @@ tags: video, youtube, content-creation, tts, automation, faceless
 metadata: { "openclaw": { "requires": { "bins": ["ffmpeg", "edge-tts"], "env": ["PEXELS_API_KEY"] }, "primaryEnv": "PEXELS_API_KEY" } }
 ---
 
+
 # YouTube Factory
 
 Generate complete YouTube videos from a single prompt. Script, voiceover, stock footage, captions, thumbnail - all automated.
@@ -42,6 +43,13 @@ Make a faceless YouTube video:
 ```
 
 ## Commands
+
+- Configure captions, complete, contained, external, factory settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Generate Full Video
 ```
@@ -127,6 +135,13 @@ echo "PEXELS_API_KEY=your_key" >> ~/.openclaw-video-skills/config.env
 
 ## Examples
 
+- Configure captions, complete, contained, external, factory settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Faceless Finance Channel
 ```
 Create a 10-minute YouTube video about "The Psychology of Money"
@@ -162,3 +177,29 @@ Every coffee helps me build more free tools for the community.
 ---
 
 Built for OpenClaw | 100% Free Tools | [Support the Creator](https://buymeacoffee.com/mayank8290)
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

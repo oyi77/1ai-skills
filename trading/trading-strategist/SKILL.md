@@ -26,6 +26,9 @@ Build and optimize trading strategies with clear entry/exit rules and risk param
 
 ## The Process
 
+The strategy design pipeline defines entry/exit rules, runs scenario analysis, optimizes parameters, and documents strategies in Notion.
+
+
 ### 1. Define Entry Rules
 
 Create comprehensive entry rule sets:
@@ -150,6 +153,9 @@ console.table({
 - **Strategy parameters frequently need adjustment**: Market regime dependency too high; implement dynamic parameter adaptation
 
 ## Verification
+
+Verification covers strategy design clarity, backtest accuracy, optimization robustness, scenario coverage, and documentation completeness.
+
 
 ### Strategy Design Verification
 - [ ] Entry rules clearly defined and executable

@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enumerate Starting Permissions
 
 Establish the baseline permissions of the test principal before attempting escalation.
@@ -232,6 +237,11 @@ EOF
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Aws Privilege Escalation Assessment assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Aws Privilege Escalation Assessment response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Developer Role with iam:CreatePolicyVersion Leads to Admin Access
 
 **Context**: During an authorized assessment, a tester discovers that a developer role has the `iam:CreatePolicyVersion` permission, which allows creating a new version of any customer-managed policy with arbitrary permissions.
@@ -245,6 +255,22 @@ EOF
 6. Document the escalation chain and recommend removing `iam:CreatePolicyVersion` and implementing permission boundaries
 
 **Pitfalls**: AWS limits managed policies to 5 versions. If all 5 exist, you must delete a version before creating a new one. Always record the original default version to restore it during cleanup. Permission boundaries prevent this escalation if properly configured, so verify boundary policies before declaring a finding.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

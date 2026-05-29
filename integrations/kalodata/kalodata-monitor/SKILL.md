@@ -51,6 +51,10 @@ Enables scheduled research automation with intelligent new product detection and
 - Task is unrelated to TikTok Shop Indonesia market monitoring
 
 ## Quick Start
+This section covers quick start for the kalodata-monitor skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Basic Usage
 
@@ -95,6 +99,11 @@ node index.js run
 ```
 
 ## Core Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### 1. Monitor Profiles
 
@@ -149,6 +158,17 @@ Stores in `.kalodata-monitor/` directory:
 - `{profile-id}.json` - Previous run snapshots for comparison
 
 ## Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Environment Variables
 
@@ -184,6 +204,14 @@ Create monitors via CLI or programmatically:
 | `config` | Show full configuration |
 
 ## Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Daily Beauty Trends Monitor
 

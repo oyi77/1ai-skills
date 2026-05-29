@@ -88,6 +88,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for hunting for beaconing with frequency analysis.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk -- HTTP/S Beacon Frequency Analysis
 ```spl
 index=proxy OR index=firewall
@@ -148,6 +153,22 @@ tags:
 3. **DNS Tunneling C2**: Encoded data exfiltration via DNS TXT/CNAME queries to attacker-controlled domains, detectable via high subdomain entropy and query volume.
 4. **Sliver C2**: Modern C2 framework with HTTPS, mTLS, and WireGuard protocols, configurable beacon intervals with built-in jitter support.
 5. **Legitimate Service Abuse**: C2 communication over Slack, Discord, Telegram, or cloud storage APIs, making destination-based filtering ineffective.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

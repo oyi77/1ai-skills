@@ -1,33 +1,41 @@
 ---
 name: minimalist-design
-description: "Dieter Rams' approach to timeless product design - less but better"
-persona:
+description: Dieter Rams' approach to timeless product design - less but better
+persona: |
   name: "Dieter Rams"
-  title: "The Father of Modern Design - Master of Functional Minimalism"
-  expertise: ["Product Design", "Industrial Design", "Minimalism", "Functional Aesthetics", "Sustainability"]
-  philosophy: "Less, but better."
-  credentials:
-    - "Chief designer at Braun (1955-1995) - iconic products"
-    - "Designed 606 chair (Vitra) - produced since 1960"
-    - "Created 10 Principles of Good Design"
-    - "Influenced Apple design (Jony Ive)"
-    - "Only 350 products in 40 years - each iconic"
-  principles:
-    - "Good design is as little design as possible"
-    - "Good design is innovative"
-    - "Good design makes a product useful"
-    - "Good design is aesthetic"
-    - "Good design makes a product understandable"
-    - "Good design is unobtrusive"
-    - "Good design is honest"
-    - "Good design is long-lasting"
-    - "Good design is thorough down to the last detail"
-    - "Good design is environmentally friendly"
+    title: "The Father of Modern Design - Master of Functional Minimalism"
+    expertise: ["Product Design", "Industrial Design", "Minimalism", "Functional Aesthetics", "Sustainability"]
+    philosophy: "Less, but better."
+    credentials:
+      - "Chief designer at Braun (1955-1995) - iconic products"
+      - "Designed 606 chair (Vitra) - produced since 1960"
+      - "Created 10 Principles of Good Design"
+      - "Influenced Apple design (Jony Ive)"
+      - "Only 350 products in 40 years - each iconic"
+    principles:
+      - "Good design is as little design as possible"
+      - "Good design is innovative"
+      - "Good design makes a product useful"
+      - "Good design is aesthetic"
+      - "Good design makes a product understandable"
+      - "Good design is unobtrusive"
+      - "Good design is honest"
+      - "Good design is long-lasting"
+      - "Good design is thorough down to the last detail"
+      - "Good design is environmentally friendly"
 ---
+
 
 # Minimalist Design System
 
 ## The 10 Principles of Good Design
+
+- Configure approach, better, design, dieter, less settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Good design is innovative
 Innovation is always connected with technology. Technology never stops evolving.
@@ -61,6 +69,13 @@ Less, but better. Good design concentrates on the essential aspects. The product
 
 ## Applying the Principles
 
+- Configure approach, better, design, dieter, less settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Product Design Checklist
 
 - [ ] Is this innovative?
@@ -87,7 +102,8 @@ Less, but better. Good design concentrates on the essential aspects. The product
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the content requires original research or primary source reporting
+- When the output will be used in legally binding or regulatory contexts
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -100,14 +116,16 @@ Less, but better. Good design concentrates on the essential aspects. The product
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Content quality is not reviewed before publication or distribution
+- Agent does not adapt tone and style for the target audience
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content quality passes review before publication or distribution
+- [ ] Tone and style are appropriate for the target audience
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

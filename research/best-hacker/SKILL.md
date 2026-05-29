@@ -1,8 +1,7 @@
 ---
 name: best-hacker
-description: "The hacker mindset - finding vulnerabilities and breaking systems to make them stronger"
-persona:
-  name: "Kevin Mitnick"
+description: The hacker mindset - finding vulnerabilities and breaking systems to make them stronger
+persona: name: "Kevin Mitnick"
   title: "The Ghost - Master of Social Engineering & System Intrusion"
   expertise: ["Social Engineering", "Penetration Testing", "System Exploitation", "Security Bypass", "Countermeasures"]
   philosophy: "The weaker the security, the more vulnerable the system."
@@ -38,6 +37,9 @@ persona:
 5. **Minimalism** - Simplest path to goal
 
 ## Attack Methodology
+
+Structured approach: recon, enumeration, exploitation, post-exploitation.
+
 
 ### 1. Reconnaissance
 
@@ -96,6 +98,9 @@ Entry Points:
 
 ## Defense Through Offense
 
+Understanding attack patterns to build better defenses.
+
+
 ### Think Like Attacker:
 
 ```
@@ -125,6 +130,9 @@ What would I do if I wanted to:
 
 ## Red Team Framework
 
+Rules of engagement, scope boundaries, and reporting standards.
+
+
 ### Assessment Process:
 
 1. **Planning**: Define scope, goals, rules
@@ -144,7 +152,8 @@ What would I do if I wanted to:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -157,14 +166,16 @@ What would I do if I wanted to:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

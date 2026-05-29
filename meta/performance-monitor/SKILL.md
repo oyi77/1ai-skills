@@ -57,7 +57,8 @@ resource_metrics:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When monitoring collects data subject to employee privacy regulations
+- When performance metrics are used for compensation decisions
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -70,14 +71,16 @@ resource_metrics:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Monitoring collects metrics without actionable alerting thresholds
+- Agent does not distinguish between leading and lagging indicators
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Alerting thresholds are actionable, not just informational
+- [ ] Leading indicators are distinguished from lagging indicators
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

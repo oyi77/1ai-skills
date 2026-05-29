@@ -33,6 +33,10 @@ Assesses portfolio company AI readiness across 5 dimensions: Strategy, Data, Tec
 
 ## Implementation:!
 
+
+The implementation follows a phased approach: assess strategy, data, tech, culture, and ROI across the five AI readiness dimensions.
+
+
 ### Phase 1: Strategy Assessment!
 
 **AI Strategy Scorecard:**

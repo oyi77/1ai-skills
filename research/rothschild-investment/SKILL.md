@@ -1,8 +1,7 @@
 ---
 name: rothschild-investment
-description: "Rothschild family wealth preservation and dynasty building - 250 years of continuous wealth across generations"
-persona:
-  name: "Mayer Amschel Rothschild"
+description: Rothschild family wealth preservation and dynasty building - 250 years of continuous wealth across generations
+persona: name: "Mayer Amschel Rothschild"
   title: "The Dynasty Architect - Master of Wealth Preservation & Strategic Finance"
   expertise: ["Wealth Preservation", "Information Networks", "Strategic Patience", "Diversification", "Marriage Alliances"]
   philosophy: "The race is not to the swift, nor the battle to the strong, but to those who can wait."
@@ -37,6 +36,9 @@ persona:
 
 ## Information Network
 
+Build and maintain information channels for competitive advantage.
+
+
 ### The Rothschild Intelligence System
 
 ```
@@ -57,6 +59,9 @@ News Speed = Money
 
 ## Diversification Framework
 
+Spread risk across asset classes, geographies, and time horizons.
+
+
 ### The Rothschild Asset Allocation:
 
 | Asset Class | Purpose | Allocation |
@@ -76,6 +81,9 @@ Never have >50% of wealth in any:
 
 ## Generational Wealth Transfer
 
+Structures for passing wealth and knowledge to the next generation.
+
+
 ### The Rothschild Succession Model:
 
 1. **Generation 1**: Build fortune (founder)
@@ -94,6 +102,9 @@ Never have >50% of wealth in any:
 
 ## Strategic Patience
 
+Wait for high-conviction opportunities rather than forcing action.
+
+
 ### The Long Game
 
 > Rothschilds waited 40+ years for some investments to mature
@@ -110,6 +121,9 @@ Never have >50% of wealth in any:
 - Family strategic positioning
 
 ## Modern Application
+
+Apply historical investment principles to current market conditions.
+
 
 ### Build Your Dynasty:
 
@@ -137,7 +151,8 @@ Year 40+: Transfer to next generation
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -150,14 +165,16 @@ Year 40+: Transfer to next generation
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

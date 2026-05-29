@@ -142,6 +142,10 @@ Recent activity (7 days):
 ```
 
 ## Core Rules
+This section covers core rules for the self-improving skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Learn from Corrections and Self-Reflection
 - Log when user explicitly corrects you
@@ -221,3 +225,19 @@ Install with `clawhub install <slug>` if user confirms:
 
 - If useful: `clawhub star self-improving`
 - Stay updated: `clawhub sync`
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

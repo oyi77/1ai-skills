@@ -1,18 +1,27 @@
 ---
 name: growth-engine
-description: 'Prior: Beta(1, 1) = uniform. Use when relevant to this domain.'
+description: Prior: Beta(1, 1) = uniform. Use when relevant to this domain.
 ---
+
+
 ## Skill Definition
 
 **Name:** `growth-engine`
 
-**Pattern:** `marketing/growth/growth-engine`
+**Pattern:** `marketing/growth-engine`
 
 **Description:** Autonomous marketing experiment framework for systematic growth testing. Includes experiment design, statistical validation, pacing alerts, and automated optimization loops.
 
 ---
 
 ## Implementation
+
+- Configure beta, domain, engine, growth, prior settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Phase 1: Hypothesis Generation
 
@@ -173,6 +182,13 @@ def select_winner(experiment_results, confidence_threshold=0.95):
 
 ## Growth Experiment Types
 
+- Configure beta, domain, engine, growth, prior settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Acquisition Experiments
 
 **Channel Tests**
@@ -225,6 +241,33 @@ def select_winner(experiment_results, confidence_threshold=0.95):
 ---
 
 ## Usage Examples
+
+Basic usage with default configuration:
+```bash
+python growth-engine.py --input data.csv --output results/
+```
+
+Advanced usage with all options:
+```bash
+python growth-engine.py --input data.csv --output results/ --format json --verbose
+```
+
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
+
+### Basic Usage
+```bash
+python growth-engine.py --input data.csv --output results/
+```
+
+### Advanced Usage
+```bash
+python growth-engine.py --input data.csv --output results/ --format json --verbose
+```
+
+### Integration
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
 
 ### Example 1: Full Experiment Lifecycle
 
@@ -330,8 +373,8 @@ generate_weekly_scorecard(scorecard)
 
 **Cross-Skill Dependencies**
 - `marketing/analytics-dashboard` - For metric tracking
-- `content/content-scheduler` - For experiment timing
-- `sales/sales` - For lead quality feedback
+- `marketing/content-scheduler` - For experiment timing
+- `sales/sales-strategy` - For lead quality feedback
 - `research/trendradar` - For trend-based hypotheses
 
 **Tool Integrations**
@@ -343,6 +386,13 @@ generate_weekly_scorecard(scorecard)
 ---
 
 ## Statistical Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Avoiding Common Pitfalls
 
@@ -444,7 +494,8 @@ growth_experiment_report:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -457,14 +508,16 @@ growth_experiment_report:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

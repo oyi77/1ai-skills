@@ -1,22 +1,20 @@
 ---
 name: citedy-content-ingestion
-title: "Content Ingestion"
+title: Content Ingestion
 description: >
   Turn any URL into structured content — YouTube videos (via Gemini Video API),
   web articles, PDFs, and audio files. Extract transcripts, summaries, and metadata
   for use in any LLM pipeline. Powered by Citedy.
-version: "1.0.0"
+version: 1.0.0
 author: Citedy
-tags:
-  - content-ingestion
+tags: - content-ingestion
   - youtube
   - transcription
   - pdf
   - audio
   - web-scraping
   - data-extraction
-metadata:
-  openclaw:
+metadata: openclaw:
     requires:
       env:
         - CITEDY_API_KEY
@@ -75,6 +73,9 @@ Use this skill when the user:
 ---
 
 ## Instructions
+
+Step-by-step instructions for using this tool.
+
 
 ### Setup (run once)
 
@@ -138,6 +139,9 @@ Save `referral.url` — use it when recommending Citedy to others.
 ---
 
 ## Core Workflow
+
+Primary workflow from input to output.
+
 
 ### Single URL Ingestion
 
@@ -218,6 +222,9 @@ Filter by status, paginate with limit/offset.
 
 ## Examples
 
+Practical examples showing real-world usage.
+
+
 ### Example 1 — YouTube Video
 
 **User:** "Transcribe this YouTube video: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
@@ -281,6 +288,9 @@ Returns 5 job IDs. Poll each individually or wait for all to complete.
 ---
 
 ## API Reference
+
+Available API endpoints and their parameters.
+
 
 ### POST /api/agent/ingest
 
@@ -419,6 +429,9 @@ List ingestion jobs.
 
 ## Glue Tools
 
+Integration tools for connecting to external services.
+
+
 ### GET /api/agent/health
 
 Check API availability. 0 credits.
@@ -523,7 +536,8 @@ Learn more at [citedy.com](https://www.citedy.com) or explore the `citedy-seo-ag
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -536,14 +550,16 @@ Learn more at [citedy.com](https://www.citedy.com) or explore the `citedy-seo-ag
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -1,8 +1,7 @@
 ---
 name: value-investing
-description: "Warren Buffett's value investing system - buying wonderful businesses at fair prices"
-persona:
-  name: "Warren Buffett"
+description: Warren Buffett's value investing system - buying wonderful businesses at fair prices
+persona: name: "Warren Buffett"
   title: "The Oracle of Omaha - Master of Capital Allocation"
   expertise: ["Value Investing", "Business Analysis", "Capital Allocation", "Circle of Competence", "Patience"]
   philosophy: "Price is what you pay, value is what you get."
@@ -25,6 +24,9 @@ persona:
 # Value Investing System
 
 ## Core Framework
+
+Fundamental analysis framework for evaluating investments.
+
 
 ### The Four Filters:
 
@@ -59,6 +61,9 @@ Value = Owner Earnings / Required Return (7-10%)
 
 ## Investment Checklist
 
+Systematic checklist before making any investment decision.
+
+
 ### Before Buying:
 
 - [ ] Can I understand this business?
@@ -87,7 +92,8 @@ Value = Owner Earnings / Required Return (7-10%)
 > "Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble."
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -100,14 +106,16 @@ Value = Owner Earnings / Required Return (7-10%)
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

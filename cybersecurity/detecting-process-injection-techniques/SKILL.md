@@ -53,6 +53,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Identify Injection via Memory Forensics
 
 Use Volatility to detect injected code in process memory:
@@ -300,6 +305,11 @@ level: high
 
 ## Common Scenarios
 
+**Scenario 1: Analyzing a suspicious email attachment**
+Isolate the sample, compute hashes, check VirusTotal, perform static analysis for embedded URLs or shellcode, then execute in a sandbox to observe behavior.
+
+**Scenario 2: Reverse engineering a packed binary**
+Identify the packer, use automated unpacking tools, dump the payload from memory at the OEP, then analyze the unpacked code in IDA Pro or Ghidra.
 ### Scenario: Investigating a Hollowed svchost.exe Process
 
 **Context**: EDR alerts on svchost.exe making HTTPS connections to an external IP. Svchost.exe should only communicate with Microsoft services. Memory analysis is needed to confirm process hollowing.
@@ -318,6 +328,22 @@ level: high
 - Not checking the parent process (hollowed processes often have wrong parents)
 - Relying only on process name matching (attackers specifically target svchost.exe because multiple instances are expected)
 - Missing the injection source process that may have already terminated
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Output Format
 

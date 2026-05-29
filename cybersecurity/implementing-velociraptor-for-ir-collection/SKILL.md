@@ -57,6 +57,11 @@ Velociraptor is an advanced open-source endpoint monitoring, digital forensics, 
 
 ## Architecture
 
+This section covers architecture for implementing velociraptor for ir collection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Components
 - **Velociraptor Server**: Central management console with web UI and API
 - **Velociraptor Client (Agent)**: Lightweight agent deployed to endpoints
@@ -72,6 +77,11 @@ Velociraptor is an advanced open-source endpoint monitoring, digital forensics, 
 
 ## Deployment
 
+This section covers deployment for implementing velociraptor for ir collection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Server Installation
 ```bash
 # Download latest release
@@ -114,6 +124,11 @@ docker run --name velociraptor \
 
 ## Core IR Artifact Collection
 
+This section covers core ir artifact collection for implementing velociraptor for ir collection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Windows Forensic Artifacts
 
 ```sql
@@ -208,6 +223,11 @@ SELECT * FROM Artifact.Windows.KapeFiles.Targets(
 
 ## Hunt Operations
 
+This section covers hunt operations for implementing velociraptor for ir collection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Creating a Hunt
 ```
 1. Navigate to Hunt Manager in Velociraptor Web UI
@@ -262,6 +282,11 @@ SELECT * FROM watch_registry(key="HKLM/SOFTWARE/Microsoft/Windows/CurrentVersion
 
 ## Integration with SIEM/SOAR
 
+This section covers integration with siem/soar for implementing velociraptor for ir collection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk Integration
 ```
 Velociraptor Server --> Elastic/OpenSearch --> Splunk HEC
@@ -291,6 +316,22 @@ Monitoring:
 | T1003 - OS Credential Dumping | Windows.Detection.Yara.Process |
 | T1021 - Remote Services | Windows.EventLogs.EvtxHunter (4624 Type 3/10) |
 | T1070 - Indicator Removal | Windows.EventLogs.Cleared |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

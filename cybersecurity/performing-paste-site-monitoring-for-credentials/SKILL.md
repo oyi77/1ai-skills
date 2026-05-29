@@ -45,6 +45,11 @@ Paste sites (Pastebin, GitHub Gists, Ghostbin, Dpaste, Hastebin) are frequently 
 
 ## Key Concepts
 
+This section covers key concepts for performing paste site monitoring for credentials.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Paste Site Threat Landscape
 
 Over 300,000 user credentials are posted on Pastebin annually, averaging 1,000 username/password pairs per leak. Paste sites serve three primary threat intelligence purposes: early breach detection (credentials appear on paste sites before dark web), threat actor profiling (actors use paste sites for C2 configuration, data staging, tool sharing), and malware discovery (encoded payloads, configuration files, C2 addresses).
@@ -59,6 +64,11 @@ Effective monitoring uses regex patterns for email:password combinations, API ke
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Pastebin Scraping API Monitor
 
 ```python
@@ -330,6 +340,22 @@ def generate_credential_leak_alert(alert_data):
 - GitHub code search identifies exposed secrets
 - Alerts generated with severity classification
 - Integration with incident response workflow
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

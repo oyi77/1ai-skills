@@ -2,6 +2,7 @@
 name: using-git-worktrees
 description: Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Using Git Worktrees"
@@ -73,6 +74,13 @@ Which would you prefer?
 
 ## Safety Verification
 
+- Configure before, creates, current, directory, executing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### For Project-Local Directories (.worktrees or worktrees)
 
 **MUST verify directory is ignored before creating worktree:**
@@ -96,6 +104,13 @@ Per Jesse's rule "Fix broken things immediately":
 No .gitignore verification needed - outside project entirely.
 
 ## Creation Steps
+
+- Configure before, creates, current, directory, executing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Detect Project Name
 
@@ -177,6 +192,13 @@ Ready to implement <feature-name>
 | No package.json/Cargo.toml | Skip dependency install |
 
 ## Common Mistakes
+
+- Configure before, creates, current, directory, executing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Skipping ignore verification
 
@@ -266,7 +288,8 @@ Ready to implement auth feature
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Worktree branch is kept reasonably current with main
+- [ ] Abandoned worktrees are identified and cleaned up
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

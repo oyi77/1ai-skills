@@ -1,21 +1,19 @@
 ---
 name: citedy-video-shorts
-title: "AI Video Shorts"
+title: AI Video Shorts
 description: >
   Generate branded AI avatar lip-sync video shorts for TikTok, Reels, and YouTube Shorts.
   Create 15-second talking-head videos with custom avatars, auto-generated scripts, and burned-in subtitles for $1.85.
-version: "1.0.0"
+version: 1.0.0
 author: Citedy
-tags:
-  - video
+tags: - video
   - ai-avatar
   - shorts
   - tiktok
   - reels
   - content-creation
   - lip-sync
-metadata:
-  openclaw:
+metadata: openclaw:
     requires:
       env:
         - CITEDY_API_KEY
@@ -66,6 +64,9 @@ Activate this skill when the user says something like:
 ---
 
 ## Instructions
+
+Step-by-step instructions for using this tool.
+
 
 ### Setup (run once)
 
@@ -219,6 +220,9 @@ Returns: `{ "final_video_url": "https://download.citedy.com/shorts/final_..." }`
 ---
 
 ## Examples
+
+Practical examples showing real-world usage.
+
 
 ### Example 1 — Product Promo Video
 
@@ -544,7 +548,8 @@ Register and explore at: https://www.citedy.com
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -557,14 +562,16 @@ Register and explore at: https://www.citedy.com
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

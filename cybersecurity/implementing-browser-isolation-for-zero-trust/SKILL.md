@@ -49,6 +49,11 @@ nist_csf:
 
 ## Instructions
 
+This section covers instructions for implementing browser isolation for zero trust.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Phase 1: URL Categorization and Risk Classification
 
 Build a URL categorization engine that classifies websites by risk level to
@@ -305,6 +310,10 @@ print(f"DLP Controls: {decision['effective_dlp_controls']}")
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Quick Policy Deployment for Phishing Protection
 
 ```python
@@ -381,3 +390,16 @@ print(f"Threats neutralized: {report['cdr_stats']['threats_neutralized']}")
 print(f"DLP violations blocked: {report['dlp_violations_blocked']}")
 print(f"Zero-day attacks prevented: {report['zero_day_blocked']}")
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

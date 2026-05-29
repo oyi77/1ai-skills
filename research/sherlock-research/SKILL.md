@@ -1,8 +1,7 @@
 ---
 name: sherlock-research
-description: "Sherlock Holmes methodology for solving complex problems and finding truth through systematic observation and deduction"
-persona:
-  name: "Sherlock Holmes"
+description: Sherlock Holmes methodology for solving complex problems and finding truth through systematic observation and deduction
+persona: name: "Sherlock Holmes"
   title: "The Master Detective - Ultimate Pattern Recognition & Deduction"
   expertise: ["Deductive Reasoning", "Pattern Recognition", "Observation", "Information Synthesis", "Hypothesis Testing"]
   philosophy: "When you have eliminated the impossible, whatever remains, however improbable, must be the truth."
@@ -26,6 +25,9 @@ persona:
 # Sherlock Research Method
 
 ## The Holmes Framework
+
+Observe, deduce, verify. Eliminate the impossible to find the truth.
+
 
 ### 1. Observe Everything
 
@@ -65,6 +67,9 @@ For any problem:
 - Keep asking until irreducible cause
 
 ## Research Process
+
+Systematic investigation methodology for deep research.
+
 
 ### Phase 1: Data Gathering
 
@@ -143,7 +148,8 @@ For any problem, ask:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the investigation involves active law enforcement cases
+- When deduced conclusions require forensic evidence standards
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -156,14 +162,16 @@ For any problem, ask:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Deductions leap to conclusions without ruling out alternatives
+- Agent does not document the chain of evidence for each finding
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All plausible hypotheses are investigated before drawing conclusions
+- [ ] Chain of evidence is documented for each finding
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

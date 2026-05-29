@@ -48,6 +48,11 @@ Wireless penetration testing evaluates the security of an organization's WiFi in
 
 ## Phase 1 — Wireless Reconnaissance
 
+This section covers phase 1 — wireless reconnaissance for performing wireless network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Enable Monitor Mode
 
 ```bash
@@ -97,6 +102,11 @@ kismet -c wlan0mon
 
 ## Phase 2 — WPA2-PSK Attack
 
+This section covers phase 2 — wpa2-psk attack for performing wireless network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Capture 4-Way Handshake
 
 ```bash
@@ -199,6 +209,11 @@ aireplay-ng -0 0 -a AA:BB:CC:DD:EE:02 wlan0mon
 
 ## Phase 5 — Additional Tests
 
+This section covers phase 5 — additional tests for performing wireless network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Rogue AP Detection
 
 ```bash
@@ -248,6 +263,22 @@ reaver -i wlan0mon -b AA:BB:CC:DD:EE:03 -K 1 -vv
 | No client isolation on guest | High | 7.5 | Enable AP isolation and VLAN segmentation |
 | Corporate SSID broadcasts on rogue AP | High | 8.1 | Deploy WIDS/WIPS, implement 802.1X with cert validation |
 | EAP-MSCHAP without cert pinning | High | 7.5 | Enforce server certificate validation on all clients |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

@@ -47,6 +47,11 @@ Building a Threat Intelligence Platform (TIP) involves deploying and integrating
 
 ## Key Concepts
 
+This section covers key concepts for building threat intelligence platform.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### TIP Architecture Components
 1. **Collection Layer**: Feed ingestion from OSINT, commercial, and internal sources
 2. **Storage Layer**: Elasticsearch/OpenSearch for indexed CTI data with STIX 2.1 schema
@@ -63,6 +68,11 @@ Building a Threat Intelligence Platform (TIP) involves deploying and integrating
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy Platform with Docker Compose
 
 ```yaml
@@ -308,6 +318,21 @@ class TIPMetrics:
 - Cortex analyzers configured and returning enrichment results
 - Platform metrics dashboard showing real-time statistics
 - STIX/TAXII export functional for intelligence sharing
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

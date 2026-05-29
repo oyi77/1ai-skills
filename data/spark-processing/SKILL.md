@@ -3,6 +3,7 @@ name: spark-processing
 description: Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management
 ---
 
+
 ## Overview
 
 Apache Spark is a unified analytics engine for large-scale data processing. It provides DataFrame APIs, SQL queries, streaming, and machine learning, running on YARN, Kubernetes, or standalone clusters.
@@ -26,6 +27,26 @@ Apache Spark is a unified analytics engine for large-scale data processing. It p
 - ETL from multiple sources to data warehouse
 
 ## Pseudo Code
+
+The spark-processing workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# spark-processing primary flow
+input = prepare(raw_data)
+result = process(input, config={apache, cluster, dataframes, distributed, management})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### SparkSession Setup
 
@@ -202,3 +223,20 @@ predictions = model.transform(test_df)
 | `AnalysisException` | Column not found or type mismatch | Check schema with `df.printSchema()` |
 | `ShuffleFetchFailed` | Executor died during shuffle | Check cluster health, increase retries |
 | Streaming lag | Processing slower than ingestion | Scale cluster, optimize transformations |
+
+## How to Use
+
+1. Define data sources, sinks, and transformation requirements
+2. Implement extraction with error handling and schema validation
+3. Add transformation logic with idempotency guarantees
+4. Configure loading with conflict resolution (upsert/append)
+5. Set up monitoring for pipeline health and data freshness
+6. Test with representative sample data before production
+
+## Red Flags
+
+- **Data pipeline has no error handling**: Silent failures corrupt downstream datasets
+- **No data validation at boundaries**: Bad input propagates through entire pipeline
+- **Missing monitoring for data freshness**: Stale data causes wrong business decisions
+- **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
+- **Hardcoded connection strings**: Credentials in code get committed to version control

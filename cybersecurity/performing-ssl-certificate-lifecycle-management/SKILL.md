@@ -51,6 +51,11 @@ SSL/TLS certificate lifecycle management encompasses the full process of request
 
 ## Key Concepts
 
+This section covers key concepts for performing ssl certificate lifecycle management.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Certificate Lifecycle Stages
 
 1. **Request**: Generate key pair and CSR
@@ -87,3 +92,15 @@ SSL/TLS certificate lifecycle management encompasses the full process of request
 - [ ] Certificate chain validation verifies trust path
 - [ ] OCSP checking detects revoked certificates
 - [ ] Certificate inventory tracks all deployed certificates
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

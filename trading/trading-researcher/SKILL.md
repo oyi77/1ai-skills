@@ -27,6 +27,9 @@ Automated market research and data collection for trading strategies. The Resear
 
 ## The Process
 
+The research pipeline collects market data, calculates technical indicators, scans watchlists, and generates analysis reports.
+
+
 ### 1. Analyze Market Conditions
 
 Analyze current market conditions for a specific symbol:
@@ -128,6 +131,9 @@ const signals = await analyzeWithNews(data, research);
 - **No trading signals generated during volatile periods**: Strategy may require adjustment for high-volatility regimes; review parameter sensitivity
 
 ## Verification
+
+Verification covers data quality, indicator accuracy, scan consistency, and integration with data sources.
+
 
 ### Data Collection Verification
 - [ ] Historical data covers required date range without gaps

@@ -7,6 +7,10 @@ description: BerkahKarya Orchestrator. Use when relevant to this domain.
 Master task router and workflow coordinator for the BerkahKarya AI workforce.
 
 ## Skill Directory (150+ skills across 13 divisions)
+This section covers skill directory (150+ skills across 13 divisions) for the berkahkarya-orchestrator skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 🤖 AUTOMATION (`automation/`)
 | Skill | When to Use |
@@ -140,15 +144,21 @@ Master task router and workflow coordinator for the BerkahKarya AI workforce.
 |-------|-------------|
 | `strategy/xauusd_asia_7c_breakout` | XAUUSD 7-candle Asia session |
 | `EA/` | Expert Advisor automation |
-| `team/orchestrator` | Trading team coordination |
-| `team/researcher` | Market research for trading |
-| `team/strategist` | Strategy development |
-| `team/executor` | Trade execution |
+| orchestrator | Trading team coordination |
+| researcher | Market research for trading |
+| strategist | Strategy development |
+| executor | Trade execution |
 | `team/risk_manager` | Risk management |
 
 ---
 
 ## Orchestration Patterns
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Pattern 1: Single Task → Direct Skill
 ```
@@ -234,3 +244,25 @@ User Request
 | Quant Fund | trading/*, research/polymarket-analyst |
 | Software House | development/*, integrations/* |
 | Affiliate Marketing | marketing/affiliate-marketing, automation/post-bridge, content/* |
+
+## When to Use
+
+- When the task falls within this skill's domain expertise
+- When automated execution saves time over manual work
+- When the skill's tools and integrations are available
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

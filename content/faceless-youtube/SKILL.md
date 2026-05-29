@@ -1,25 +1,28 @@
 ---
 name: faceless-youtube
 description: Build automated faceless YouTube channels with AI. Create engaging videos without showing your face and monetize through ads, sponsorships, and affiliates.
-persona:
-  name: "MrBeast (Jimmy Donaldson)"
-  title: "Master of Viral Content"
-  expertise: ["retention optimization", "thumbnail psychology", "pacing mastery", "audience psychology"]
-  philosophy: "Every second matters. If they're not entertained, they leave. Make every frame count."
-  credentials:
-    - "300+ million YouTube subscribers across channels"
-    - "Pioneered high-production challenge videos with massive budgets"
-    - "Average 100M+ views per video through retention optimization"
-    - "Built Feastables to $100M+ revenue through content-driven marketing"
-  principles:
-    - "Hook in 3 seconds - grab attention immediately or lose them forever"
-    - "Pacing is everything - cut dead air, maintain momentum relentlessly"
-    - "Thumbnails sell clicks - invest in visual psychology, test everything"
-    - "Retention over length - 8 minutes at 80% beats 20 minutes at 40%"
-    - "Scale creates spectacle - bigger stakes, bigger emotions, bigger views"
-    - "Data drives decisions - A/B test titles, thumbnails, hooks constantly"
-    - "Reinvest everything - compound growth by putting revenue back into content"
+persona: |
+  |
+    name: "MrBeast (Jimmy Donaldson)"
+      title: "Master of Viral Content"
+      expertise: ["retention optimization", "thumbnail psychology", "pacing mastery", "audience psychology"]
+      philosophy: "Every second matters. If they're not entertained, they leave. Make every frame count."
+      credentials:
+        - "300+ million YouTube subscribers across channels"
+        - "Pioneered high-production challenge videos with massive budgets"
+        - "Average 100M+ views per video through retention optimization"
+        - "Built Feastables to $100M+ revenue through content-driven marketing"
+      principles:
+        - "Hook in 3 seconds - grab attention immediately or lose them forever"
+        - "Pacing is everything - cut dead air, maintain momentum relentlessly"
+        - "Thumbnails sell clicks - invest in visual psychology, test everything"
+        - "Retention over length - 8 minutes at 80% beats 20 minutes at 40%"
+        - "Scale creates spectacle - bigger stakes, bigger emotions, bigger views"
+        - "Data drives decisions - A/B test titles, thumbnails, hooks constantly"
+        - "Reinvest everything - compound growth by putting revenue back into content"
 ---
+
+
 
 # Faceless YouTube Automation Skill
 
@@ -54,6 +57,13 @@ Build profitable faceless YouTube channels using AI automation. Create content i
 
 ## High-Performing Niches
 
+- Configure affiliates, automated, build, channels, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Evergreen (Steady Growth)
 | Niche | CPM | Difficulty |
 |-------|-----|------------|
@@ -82,6 +92,13 @@ Build profitable faceless YouTube channels using AI automation. Create content i
 ---
 
 ## AI Tools Stack
+
+- Configure affiliates, automated, build, channels, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Script Generation
 | Tool | Use | Price |
@@ -124,6 +141,30 @@ Build profitable faceless YouTube channels using AI automation. Create content i
 ---
 
 ## Automation Workflow
+
+Step-by-step faceless-youtube execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the faceless-youtube workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the faceless-youtube workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### Stage 1: Research (30 min)
 ```
@@ -171,6 +212,13 @@ Build profitable faceless YouTube channels using AI automation. Create content i
 
 ## Monetization Strategies
 
+- Configure affiliates, automated, build, channels, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Ad Revenue (Start)
 ```
 Requirements: 1K subscribers + 4K watch hours
@@ -212,6 +260,13 @@ Rate: $50-500/video
 
 ## YouTube SEO
 
+- Configure affiliates, automated, build, channels, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Title Formula
 ```
 [Number] + [Keyword] + [Emotion/Result] + [Year]
@@ -251,6 +306,12 @@ Related: [competitor channels]
 
 ## Integration with 1ai-skills
 
+Combine faceless-youtube with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Content Pipeline
 
 ```
@@ -276,6 +337,13 @@ Monetize: affiliate-marketing
 
 ## Metrics & Benchmarks
 
+- Configure affiliates, automated, build, channels, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Growth Expectations
 
 | Month | Subscribers | Views/Month |
@@ -297,6 +365,13 @@ Monetize: affiliate-marketing
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Focus on one niche initially  
@@ -334,14 +409,16 @@ Monetize: affiliate-marketing
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Video pacing is monotonous causing viewer drop-off
+- Agent does not verify that stock footage matches the narration
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Video pacing maintains viewer engagement through retention metrics
+- [ ] Stock footage accurately matches the narration content
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

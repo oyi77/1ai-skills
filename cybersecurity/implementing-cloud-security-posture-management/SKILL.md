@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Deploy Cloud-Native CSPM Services
 
 Enable the built-in CSPM capabilities in each cloud provider for baseline posture assessment.
@@ -246,6 +251,11 @@ gcloud resource-manager org-policies set-policy policy.yaml --organization=ORG_I
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Cloud Security Posture Management assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Cloud Security Posture Management response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Establishing CSPM for a Multi-Cloud Enterprise
 
 **Context**: An enterprise runs production workloads across AWS (primary), Azure (identity and Microsoft services), and GCP (data analytics). The security team needs unified posture visibility.
@@ -260,6 +270,22 @@ gcloud resource-manager org-policies set-policy policy.yaml --organization=ORG_I
 7. Produce weekly compliance reports for executive stakeholders showing trend data
 
 **Pitfalls**: Running CSPM tools with overly broad permissions creates a high-value target. Use dedicated service accounts with read-only permissions and rotate credentials regularly. Different CSPM tools may report the same misconfiguration differently, so deduplication logic must account for varying resource ID formats and finding titles across tools.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

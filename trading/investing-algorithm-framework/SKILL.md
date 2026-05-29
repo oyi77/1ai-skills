@@ -3,6 +3,46 @@ name: investing-algorithm-framework
 description: Full quantitative trading workflow in Python — define strategies, vector-backtest thousands of variants, event-driven backtesting, Monte Carlo robustness checks, and live deployment to CCXT exchanges. Use when quant strategy development, backtesting, live trading deployment, parameter optimization.
 domain: trading
 tags: [quant, backtesting, python, ccxt, live-trading, monte-carlo, vectorized, strategy]
+
+## Red Flags
+
+- Backtest uses future data (lookahead bias in signal generation)
+- Strategy overfit to training data (Sharpe collapses out-of-sample)
+- Monte Carlo probability of ruin exceeds 5% threshold
+- Live trading not running dry-run paper trade first
+- Walk-forward analysis shows inconsistent performance across windows
+- Slippage and commission not modeled in backtest (overly optimistic results)
+
+## Verification
+
+After completing strategy development, confirm:
+
+- [ ] Strategy defined with clear entry/exit rules and position sizing
+- [ ] Backtest covers minimum 2 years of historical data
+- [ ] Walk-forward analysis shows consistent out-of-sample performance
+- [ ] Monte Carlo simulation run with 1000+ iterations
+- [ ] Live deployment starts with dry_run=True paper trading
+- [ ] Performance metrics include Sharpe ratio, max drawdown, and win rate
+
+
+## Red Flags
+
+- Backtest uses future data (lookahead bias in signal generation)
+- Strategy overfit to training data (Sharpe collapses out-of-sample)
+- Monte Carlo probability of ruin exceeds 5% threshold
+- Live trading not running dry-run paper trade first
+- Slippage and commission not modeled in backtest (overly optimistic results)
+
+## Verification
+
+After completing strategy development, confirm:
+
+- [ ] Strategy defined with clear entry/exit rules and position sizing
+- [ ] Backtest covers minimum 2 years of historical data
+- [ ] Walk-forward analysis shows consistent out-of-sample performance
+- [ ] Monte Carlo simulation run with 1000+ iterations
+- [ ] Live deployment starts with dry_run=True paper trading
+
 ---
 
 ## Overview
@@ -215,3 +255,21 @@ AI agents can query backtest results via the built-in MCP server. Enables agent-
 - Deploying strategies to live exchanges
 - Building cross-sectional ranking and selection systems
 - Generating professional backtest reports for review
+
+## Red Flags
+
+- Backtest uses future data (lookahead bias in signal generation)
+- Strategy overfit to training data (Sharpe collapses out-of-sample)
+- Monte Carlo probability of ruin exceeds 5% threshold
+- Live trading not running dry-run paper trade first
+- Slippage and commission not modeled in backtest (overly optimistic results)
+
+## Verification
+
+After completing strategy development, confirm:
+
+- [ ] Strategy defined with clear entry/exit rules and position sizing
+- [ ] Backtest covers minimum 2 years of historical data
+- [ ] Walk-forward analysis shows consistent out-of-sample performance
+- [ ] Monte Carlo simulation run with 1000+ iterations
+- [ ] Live deployment starts with dry_run=True paper trading

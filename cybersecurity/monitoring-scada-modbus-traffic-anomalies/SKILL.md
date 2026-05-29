@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Capture and Parse Modbus TCP Traffic
 
 Establish passive monitoring on the OT network segment and begin capturing Modbus TCP frames:
@@ -255,6 +260,11 @@ Identify anomalies in communication patterns that may indicate man-in-the-middle
 
 ## Common Scenarios
 
+**Scenario 1: Standard Monitoring Scada Modbus Traffic Anomalies assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Monitoring Scada Modbus Traffic Anomalies response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting Unauthorized Parameter Manipulation in a Water Treatment Plant
 
 **Context**: A water treatment facility uses Modbus TCP to communicate between the SCADA server (10.1.1.10) and six PLCs controlling chemical dosing pumps, filtration valves, and flow meters. The security team deploys passive Modbus traffic monitoring after an industry advisory about attacks targeting water utilities.
@@ -289,6 +299,22 @@ Identify anomalies in communication patterns that may indicate man-in-the-middle
 - Not flagging the engineering workstation because it is in the authorized masters list, missing that its communication pattern deviated drastically from its baseline profile
 - Not detecting sequential register scanning because each individual read request is a valid FC 03 operation; only the aggregate pattern reveals the reconnaissance
 - Blocking the workstation before capturing forensic evidence of the attack scope and exfiltrated data
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

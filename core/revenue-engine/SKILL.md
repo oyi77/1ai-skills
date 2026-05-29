@@ -7,6 +7,10 @@ description: Revenue Engine. Use when relevant to this domain.
 Vilona's revenue generation brain. Knows all income streams, their status, and exactly what to do when they underperform.
 
 ## Revenue Stream Map
+This section covers revenue stream map for the revenue-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Stream 1: Affiliate Marketing (LYNK + platforms)
 ```
@@ -116,6 +120,10 @@ Current:      0 talent signed
 ---
 
 ## Revenue Recovery Playbook
+This section covers revenue recovery playbook for the revenue-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### If zero revenue for 24h:
 ```
@@ -164,6 +172,10 @@ Launch same day.
 ---
 
 ## Automated Revenue Scripts
+This section covers automated revenue scripts for the revenue-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### scripts/revenue_monitor.py
 ```python
@@ -244,3 +256,25 @@ revenue-engine →  finance-tracker      (track & report)
               →  talent-crm            (talent revenue tracking)
               →  b2b-sales-automation  (software house revenue)
 ```
+
+## When to Use
+
+- When the task falls within this skill's domain expertise
+- When automated execution saves time over manual work
+- When the skill's tools and integrations are available
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

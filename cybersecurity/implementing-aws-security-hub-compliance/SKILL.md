@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enable Security Hub with Compliance Standards
 
 Enable Security Hub in the management account and select compliance standards to evaluate.
@@ -261,6 +266,11 @@ aws events put-targets \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Aws Security Hub Compliance assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Aws Security Hub Compliance response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Rolling Out Security Hub Across a 50-Account Organization
 
 **Context**: A security team needs to enable Security Hub with CIS and FSBP standards across all accounts in an AWS Organization, with centralized finding aggregation and automated alerting.
@@ -275,6 +285,22 @@ aws events put-targets \
 7. Schedule weekly compliance reports to stakeholders using Lambda and SES
 
 **Pitfalls**: Security Hub requires AWS Config to be enabled in every account and region. Failing to enable Config will result in controls showing as "No data" rather than PASSED or FAILED. Member accounts with Config disabled will silently produce incomplete compliance scores.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

@@ -43,6 +43,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure Network Interfaces and VLANs
 
 Access the pfSense WebConfigurator and define interfaces:
@@ -298,6 +303,11 @@ Enable automatic backups to Netgate cloud or local storage
 
 ## Common Scenarios
 
+**Scenario 1: Standard Configuring Pfsense Firewall Rules assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Configuring Pfsense Firewall Rules response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Segmenting a Small Business Network with pfSense
 
 **Context**: A medical practice needs to segment its network to meet HIPAA requirements. They have a single internet connection, an electronic health records (EHR) server, staff workstations, a guest WiFi network, and medical IoT devices (vitals monitors, imaging equipment). Budget constraints require an open-source solution.
@@ -316,6 +326,22 @@ Enable automatic backups to Netgate cloud or local storage
 - Forgetting the rule processing order -- placing a broad PASS rule above a specific BLOCK rule
 - Not enabling logging on critical rules, making incident investigation impossible
 - Allowing IoT devices unrestricted internet access, creating potential data exfiltration paths
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

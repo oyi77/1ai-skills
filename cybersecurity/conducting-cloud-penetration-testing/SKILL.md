@@ -60,6 +60,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Define Scope and Rules of Engagement
 
 Establish testing boundaries based on the shared responsibility model. The customer is responsible for testing configurations, IAM policies, application security, and data protection. The cloud provider manages physical infrastructure, hypervisor, and managed service internals.
@@ -238,6 +243,11 @@ Document all findings mapped to the MITRE ATT&CK Cloud matrix with severity, pro
 
 ## Common Scenarios
 
+**Scenario 1: Standard Conducting Cloud Penetration Testing assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Conducting Cloud Penetration Testing response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: SSRF in Web Application Leads to Full Account Compromise
 
 **Context**: A penetration tester discovers an SSRF vulnerability in a web application hosted on an EC2 instance running IMDSv1. The instance has an IAM role with broad S3 and Lambda permissions.
@@ -251,6 +261,22 @@ Document all findings mapped to the MITRE ATT&CK Cloud matrix with severity, pro
 6. Recommend: enforce IMDSv2, reduce IAM role scope, add VPC endpoint policies blocking IMDS from application tier
 
 **Pitfalls**: Not testing IMDSv2 enforcement separately from IMDSv1 gives incomplete results. Failing to clean up test artifacts (backdoor users, Lambda functions) leaves real vulnerabilities after the engagement.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

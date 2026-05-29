@@ -2,6 +2,8 @@
 name: affiliate-marketing
 description: AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Affiliate Marketing"
@@ -72,6 +74,12 @@ AI-powered affiliate marketing automation. Use AI agents to research products, g
 
 ## Prerequisites
 
+- Python 3.10+ or Node.js 18+
+- API credentials configured in `.env`
+- Network access to target services
+- Understanding of affiliate, automated, automation, build, campaigns concepts
+
+
 ### Required
 1. **Affiliate Accounts**: Amazon Associates, ShareASale, Impact, CJ Affiliate
 2. **Content Platform**: Blog, YouTube, Newsletter, or Social Media
@@ -85,6 +93,30 @@ AI-powered affiliate marketing automation. Use AI agents to research products, g
 ---
 
 ## The AI Affiliate Workflow
+
+Step-by-step affiliate-marketing execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the affiliate-marketing workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the affiliate-marketing workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### Stage 1: Research Agent
 
@@ -139,6 +171,13 @@ Task: Track and optimize performance
 
 ## High-Converting Content Types
 
+- Configure affiliate, automated, automation, build, campaigns settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Product Reviews (Highest Conversion)
 ```
 Title: [Product Name] Review - Is It Worth It in 2026?
@@ -191,6 +230,13 @@ Structure:
 
 ## Commission Structures
 
+- Configure affiliate, automated, automation, build, campaigns settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Common Affiliate Programs
 
 | Network | Avg Commission | Cookie | Payment |
@@ -215,6 +261,13 @@ Structure:
 ---
 
 ## AI Tools for Affiliate Marketing
+
+- Configure affiliate, automated, automation, build, campaigns settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Content Generation
 
@@ -245,6 +298,12 @@ Structure:
 
 ## Integration with 1ai-skills
 
+Combine affiliate-marketing with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Revenue Team Workflow
 
 ```
@@ -270,6 +329,42 @@ Stage 4: Promote  →  twitter-automation, build-in-public (drive traffic)
 ---
 
 ## Templates
+
+Reusable templates for affiliate-marketing.
+
+Standard config:
+```yaml
+name: affiliate-marketing_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: affiliate-marketing_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard affiliate-marketing
+```yaml
+name: affiliate-marketing_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: affiliate-marketing_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### Product Review Template
 
@@ -333,6 +428,13 @@ Stage 4: Promote  →  twitter-automation, build-in-public (drive traffic)
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Only promote products you've used  
@@ -400,14 +502,16 @@ Break-even: ~100 clicks/month @ 10% conversion @ $20 avg commission
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Affiliate links are placed without disclosure violating FTC guidelines
+- Agent does not verify affiliate partner legitimacy
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Affiliate links include required FTC disclosure
+- [ ] Partner legitimacy is verified before link placement
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

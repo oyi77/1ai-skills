@@ -53,6 +53,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Receive and Validate the Allegation
 
 Document the initial report and validate before proceeding:
@@ -191,6 +196,11 @@ Ensure all evidence meets legal admissibility standards:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Insider Threat Investigation assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Insider Threat Investigation response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Departing Engineer Exfiltrating Source Code
 
 **Context**: A senior software engineer with access to critical repositories submits a two-week resignation notice. The engineering manager reports that the engineer has been working unusual hours and downloading large amounts of code.
@@ -210,6 +220,22 @@ Ensure all evidence meets legal admissibility standards:
 - Not preserving the workstation before the employee's departure date
 - Assuming all after-hours access is malicious without comparing to the employee's historical baseline
 - Failing to check personal mobile devices that may have accessed corporate cloud services
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

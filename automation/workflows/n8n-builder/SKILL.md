@@ -20,7 +20,8 @@ Build n8n automation workflows
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the workflow requires real-time human approval gates
+- When the target system has no API and requires manual data entry
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Build n8n automation workflows
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Workflow has no error handling nodes for API failures
+- Credentials are stored in plaintext in the workflow definition
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Every API call has error handling and retry logic
+- [ ] Credentials are stored securely, not in workflow definitions
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

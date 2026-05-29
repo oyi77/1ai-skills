@@ -51,6 +51,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Architecture — Route All Privileged Access Through PSM
 
 Ensure no direct privileged access bypasses the recording proxy:
@@ -332,3 +337,9 @@ Example CEF Event:
 - [ ] Session metadata and alerts are forwarding to SIEM and correlating correctly
 - [ ] Auditors can search, review, and annotate sessions through the PVWA interface
 - [ ] Terminated sessions leave a complete recording up to the point of termination
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

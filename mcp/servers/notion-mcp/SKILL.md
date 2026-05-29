@@ -18,9 +18,34 @@ MCP server for Notion databases
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Create a Notion integration at notion.so/my-integrations
+2. Share target pages/databases with the integration
+3. Configure the MCP server with NOTION_API_KEY
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `query_database` | Query a database with filters and sorts |
+| `create_page` | Create a new page in a database |
+| `update_page` | Update page properties |
+| `get_page_content` | Read page blocks (content) |
+| `append_blocks` | Add content blocks to a page |
+| `search` | Full-text search across the workspace |
+
+## Common Patterns
+
+- Query databases with property filters for structured retrieval
+- Use page templates for consistent content creation
+- Append blocks in batches to minimize API calls
+- Use relation properties to link pages across databases
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When Notion stores regulated compliance documentation
+- When the workspace data has specific data residency requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +58,16 @@ MCP server for Notion databases
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- MCP server does not handle Notion block-based content model correctly
+- Agent does not preserve Notion page metadata during updates
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Block-based content model is handled correctly
+- [ ] Page metadata is preserved during update operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

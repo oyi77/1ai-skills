@@ -49,6 +49,11 @@ Suricata is a high-performance, open-source network threat detection engine deve
 
 ## Core Concepts
 
+This section covers core concepts for implementing network intrusion prevention with suricata.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Operating Modes
 
 | Mode | Function | Network Position |
@@ -79,6 +84,11 @@ action protocol src_ip src_port -> dst_ip dst_port (rule_options;)
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install Suricata
 
 ```bash
@@ -322,6 +332,11 @@ sudo suricatasc -c reload-rules
 
 ## Monitoring and Tuning
 
+This section covers monitoring and tuning for implementing network intrusion prevention with suricata.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Performance Metrics
 
 ```bash
@@ -360,6 +375,22 @@ echo "rate_filter gen_id 1, sig_id 2100366, track by_src, count 10, seconds 60, 
 - **Bypass for Trusted Traffic** - Use `pass` rules for known-good traffic to reduce processing load
 - **Regular Updates** - Run `suricata-update` daily via cron to keep signatures current
 - **Monitor Drops** - Track kernel packet drops and increase ring buffer size if needed
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

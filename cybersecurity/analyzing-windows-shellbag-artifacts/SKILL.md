@@ -49,6 +49,11 @@ Shellbags are Windows registry artifacts that track how users interact with fold
 
 ## Registry Locations
 
+This section covers registry locations for analyzing windows shellbag artifacts.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Windows 7/8/10/11
 
 | Hive | Key Path | Stores |
@@ -76,6 +81,10 @@ Each Shell Item contains:
 
 ## Analysis with EZ Tools
 
+| Tool | Purpose |
+|------|---------|
+| Platform-specific tools | See the workflow steps for recommended tools |
+| Standard utilities | sha256sum, grep, awk for data processing |
 ### SBECmd (Command Line)
 
 ```powershell
@@ -107,6 +116,11 @@ ShellBagsExplorer.exe
 
 ## Forensic Investigation Scenarios
 
+**Scenario 1: Standard Analyzing Windows Shellbag Artifacts assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Analyzing Windows Shellbag Artifacts response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Proving USB Device Browsing
 
 ```text
@@ -151,6 +165,21 @@ created and navigated to this folder.
 - Programmatic file access via APIs does not generate Shellbag entries
 - Timestamps may reflect view setting changes, not necessarily folder access
 - Windows may batch-update Shellbag entries during Explorer shutdown
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

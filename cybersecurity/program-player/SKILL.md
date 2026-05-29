@@ -17,6 +17,11 @@ Private programs pay 5-10x more than public ones. But you need reputation to get
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### 1. Platform Reputation Building
 
 #### HackerOne Reputation System

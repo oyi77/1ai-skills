@@ -48,6 +48,11 @@ ARP poisoning (ARP spoofing) is a Layer 2 attack where an adversary sends falsif
 
 ## Core Concepts
 
+This section covers core concepts for detecting arp poisoning in network traffic.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### ARP Protocol Fundamentals
 
 ARP maps IP addresses to MAC addresses on a local network segment. The protocol operates statelessly with no authentication:
@@ -78,6 +83,11 @@ ARP Poisoning Attack:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Deploy ARPWatch for Continuous Monitoring
 
 ```bash
@@ -381,6 +391,11 @@ if __name__ == '__main__':
 
 ## Prevention Measures
 
+This section covers prevention measures for detecting arp poisoning in network traffic.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Layer 2 Controls
 
 1. **Dynamic ARP Inspection (DAI)** - Validates ARP packets against DHCP snooping binding table
@@ -403,6 +418,22 @@ if __name__ == '__main__':
 - **Monitor Gratuitous ARP** - Pay special attention to unsolicited ARP replies
 - **Small Broadcast Domains** - Use VLANs to limit the scope of ARP-based attacks
 - **Regular Audits** - Periodically compare ARP tables across devices to identify anomalies
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

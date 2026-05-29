@@ -52,6 +52,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Assess Containment Scope
 
 Before taking containment actions, map the full scope of compromise to avoid partial containment that alerts the adversary:
@@ -168,6 +173,11 @@ Provide structured status updates to incident commander and stakeholders:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Containing Active Breach assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Containing Active Breach response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Ransomware Lateral Propagation via SMB
 
 **Context**: EDR alerts on three file servers showing rapid file encryption. The ransomware is spreading via SMB using a compromised domain service account.
@@ -184,6 +194,22 @@ Provide structured status updates to incident commander and stakeholders:
 - Shutting down servers immediately, destroying volatile memory evidence
 - Only disabling the known compromised account without checking for other persistence mechanisms
 - Restoring from backup before confirming the adversary's access has been fully revoked
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

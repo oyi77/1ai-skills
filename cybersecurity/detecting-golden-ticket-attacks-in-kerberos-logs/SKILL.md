@@ -50,6 +50,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for detecting golden ticket attacks in kerberos logs.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk -- RC4 Encryption in Kerberos TGS
 ```spl
 index=wineventlog EventCode=4769
@@ -85,6 +90,22 @@ SecurityEvent
 2. **RC4 Downgrade**: Golden Ticket forged with RC4 encryption in an AES-only environment, detectable by encryption type mismatch.
 3. **Cross-Domain Golden Ticket**: Forged inter-realm TGT used to pivot between AD domains/forests.
 4. **Persistence After Remediation**: Golden Tickets surviving password resets because KRBTGT was only rotated once (both current and previous hashes are valid).
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

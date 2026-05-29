@@ -31,6 +31,11 @@ Decepticon is an autonomous red team agent that executes full attack chains end-
 
 ## Kill Chain Phases
 
+This section covers kill chain phases for decepticon red team.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Orchestration
 Central planning engine that coordinates all phases. Determines attack strategy, allocates resources across domain specialists, and adapts the plan based on findings at each phase.
 
@@ -102,6 +107,11 @@ Deep-dive vulnerability discovery:
 
 ## Engagement Packages
 
+This section covers engagement packages for decepticon red team.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Rules of Engagement (RoE)
 Structured boundaries for the operation:
 - Authorized targets and IP ranges
@@ -134,6 +144,10 @@ Detailed execution plan with MITRE ATT&CK mapping:
 
 ## Installation
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Docker
 ```bash
 git clone https://github.com/PurpleAILAB/Decepticon.git
@@ -170,3 +184,10 @@ python main.py
 - Smart contract testing must use testnets unless authorized
 - Real credentials and data handling must follow engagement rules
 - Ensure kill switch / abort mechanism is available at all phases
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding

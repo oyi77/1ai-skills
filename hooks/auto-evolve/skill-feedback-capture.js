@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * skill-feedback-capture.js — PostToolUse hook (matcher: Skill)
+ * skill-feedback-capture.js — UserPromptSubmit hook
  * Detects when user gives feedback during/after skill use
  * Queues feedback for skill improvement
  *
  * How it works:
- * 1. Tracks which skill is currently active
- * 2. After skill invocation, watches for user messages containing feedback signals
- * 3. Logs feedback to skill's feedback.jsonl for the evolver to consume
+ * 1. Reads active skill state (set by skill-tracker.js via PostToolUse/Skill)
+ * 2. Watches for user messages containing feedback signals
+ * 3. Logs feedback to feedback.jsonl for the evolver to consume
  */
 
 const fs = require('fs');
@@ -43,10 +43,6 @@ function loadState() {
   catch (e) { return {}; }
 }
 
-function saveState(state) {
-  fs.writeFileSync(STATE_FILE, JSON.stringify(state));
-}
-
 function detectFeedback(message) {
   const lower = message.toLowerCase();
   const signals = FEEDBACK_SIGNALS.filter(s => lower.includes(s));
@@ -70,18 +66,8 @@ process.stdin.on('end', () => {
   try {
     const data = JSON.parse(input);
 
-    // Track skill invocations
-    if (data.tool_name === 'Skill') {
-      const skillName = data.tool_input?.skill || 'unknown';
-      saveState({
-        active_skill: skillName,
-        invoked_at: new Date().toISOString(),
-        user_message: data.user_message || '',
-      });
-      return;
-    }
-
     // Check if user message contains feedback about active skill
+    // Active skill state is set by skill-tracker.js (PostToolUse/Skill hook)
     const state = loadState();
     if (!state.active_skill) return;
 

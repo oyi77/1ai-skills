@@ -45,6 +45,11 @@ GitHub Advanced Security (GHAS) integrates CodeQL-powered static application sec
 
 ## Core Concepts
 
+This section covers core concepts for implementing github advanced security for code scanning.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### CodeQL Analysis Engine
 
 CodeQL compiles source code into a queryable database, then executes security-focused queries against that database. The query suites ship with hundreds of checks mapped to CWE identifiers and cover OWASP Top 10, SANS Top 25, and language-specific vulnerability patterns. Custom queries can be authored using the CodeQL query language (QL) to detect organization-specific anti-patterns.
@@ -61,6 +66,11 @@ For enterprises managing hundreds of repositories, GHAS supports configuring cod
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 --- Enable GHAS on the Organization
 
 1. Navigate to Organization Settings > Code security and analysis
@@ -166,6 +176,11 @@ Install organization-specific query packs by referencing them in the workflow:
 
 ## Integration with Security Workflows
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### SARIF Upload from Third-Party Tools
 
 GHAS accepts SARIF (Static Analysis Results Interchange Format) uploads from external tools:
@@ -199,6 +214,21 @@ The organization-level security overview provides:
 2. **Ignoring scheduled scans** --- Push/PR scanning misses vulnerabilities in dependencies; weekly scheduled scans catch newly disclosed CVEs in existing code
 3. **Over-alerting with security-and-quality** --- Start with `default` suite and expand gradually to avoid developer alert fatigue
 4. **Missing GHAS license seats** --- Only active committers to GHAS-enabled repositories consume license seats; plan capacity accordingly
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

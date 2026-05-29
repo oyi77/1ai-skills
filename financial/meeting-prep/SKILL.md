@@ -31,6 +31,10 @@ Prepares comprehensive briefing packs before client/investor meetings. Handles t
 
 ## Implementation:!
 
+
+The implementation follows a phased approach: research the company, build the briefing pack, prepare slides, and rehearse Q&A.
+
+
 ### Phase 1: Company Research!
 
 **Research Sources:**

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "node scripts/install-hooks.js",
-    "test": "echo \"No tests needed — skill definitions\"",
+    "test": "python3 scripts/test_quality.py",
     "hooks": "node scripts/hooks-cli.js"
   },
   "bin": {

@@ -3,6 +3,7 @@ name: jenkins-shared-libs
 description: Jenkins shared libraries — reusable pipeline code, Groovy vars, resources, global pipeline libraries
 ---
 
+
 ## Overview
 
 Jenkins shared libraries enable reusable pipeline code across multiple Jenkinsfiles. Libraries contain Groovy scripts (vars/), classes (src/), and resources that pipelines can import via `@Library`.
@@ -24,6 +25,26 @@ Jenkins shared libraries enable reusable pipeline code across multiple Jenkinsfi
 - Managing shared configuration across 10+ pipelines
 
 ## Pseudo Code
+
+The jenkins-shared-libs workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# jenkins-shared-libs primary flow
+input = prepare(raw_data)
+result = process(input, config={code, global, groovy, jenkins, libraries})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Library Structure
 ```
@@ -107,3 +128,20 @@ class PipelineConfig implements Serializable {
 - **Resource loading**: `libraryResource('templates/Dockerfile.template')`
 - **CPS transformation**: Add `@NonCPS` to methods that don't need serialization
 - **Test libraries**: Use Jenkins Pipeline Unit for shared lib testing
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

@@ -23,6 +23,12 @@ Installs and configures 1ai-skills auto-evolve hooks. Tracks skill usage, captur
 - User explicitly says "skip hooks" or "no hooks"
 
 ## Agent Workflow
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Step 1: Check Status
 
@@ -138,3 +144,19 @@ Agent can read/write this file directly to configure.
 **Config** (`~/.1ai-skills/evolve-config.json`):
 - Auto-detected agent skill dirs
 - Thresholds, cooldown, push settings
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

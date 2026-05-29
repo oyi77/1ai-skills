@@ -42,6 +42,10 @@ Enables querying and analyzing TikTok Shop products using Kalodata's product int
 - Trend analysis matches manual verification from Kalodata dashboard
 
 ## Do Not Use This Skill When
+This section covers do not use this skill when for the kalodata-product-research skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Category-Based Queries
 Query products by primary or secondary category ID:
@@ -114,6 +118,13 @@ interface ProcessedProduct {
 ```
 
 ## API Reference
+| Endpoint/Method | Description |
+|----------------|-------------|
+| `GET /status` | Check service health and availability |
+| `POST /execute` | Run the primary operation |
+| `GET /results` | Retrieve operation results |
+| `DELETE /cache` | Clear cached data |
+
 
 ### ProductResearcher Class
 
@@ -169,6 +180,10 @@ interface GoalQueryParams {
 ```
 
 ## Research Goal Patterns
+This section covers research goal patterns for the kalodata-product-research skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Finding Emerging Products
 ```

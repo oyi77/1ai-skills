@@ -65,3 +65,17 @@ Before and during ransomware execution, adversaries establish C2 channels, exfil
 - TOR exit node connection alerts
 - Data exfiltration flow analysis
 - Composite ransomware risk score with MITRE mapping (T1071, T1573, T1041)
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise

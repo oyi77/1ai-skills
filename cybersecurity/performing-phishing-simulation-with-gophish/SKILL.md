@@ -44,6 +44,11 @@ GoPhish is an open-source phishing simulation framework used by security teams t
 
 ## Key Concepts
 
+This section covers key concepts for performing phishing simulation with gophish.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GoPhish Architecture
 - **Admin Panel**: Web UI for campaign management (default port 3333)
 - **Phishing Server**: Serves landing pages and tracks clicks (default port 80/443)
@@ -59,6 +64,11 @@ GoPhish is an open-source phishing simulation framework used by security teams t
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy GoPhish
 ```bash
 # Docker deployment
@@ -98,6 +108,20 @@ chmod +x gophish
 
 ### Step 6: Analyze Results with process.py
 Use the automation script to pull campaign data via GoPhish API and generate detailed analytics reports.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Resources
 - **GoPhish**: https://getgophish.com/

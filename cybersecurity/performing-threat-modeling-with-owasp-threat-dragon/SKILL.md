@@ -55,6 +55,11 @@ OWASP Threat Dragon is an open-source threat modeling tool that enables security
 
 ## Threat Modeling Methodologies
 
+This section covers threat modeling methodologies for performing threat modeling with owasp threat dragon.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### STRIDE
 
 | Category | Threat Type | Description | Example |
@@ -80,6 +85,11 @@ OWASP Threat Dragon is an open-source threat modeling tool that enables security
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 --- Install Threat Dragon
 
 **Desktop Application:**
@@ -199,6 +209,22 @@ Threat Dragon participates in the CycloneDX Threat Model Bill of Materials (TMBO
 4. **Prioritize by risk**: Use severity ratings (Critical, High, Medium, Low) to prioritize mitigations
 5. **Living documents**: Treat threat models as living documents that evolve with the system
 6. **Automate where possible**: Use the rule engine for initial threat generation, then refine manually
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

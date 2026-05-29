@@ -2,6 +2,7 @@
 name: content-analytics-engine
 description: Content Analytics Engine. Use when relevant to this domain.
 ---
+
 # Content Analytics Engine
 
 **Category:** Marketing Analytics | Revenue Intelligence  
@@ -42,6 +43,13 @@ python3 test_analytics.py
 ---
 
 ## Scripts
+
+- Configure analytics, content, domain, engine, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### `analytics_collector.py`
 Fetches all data from PostBridge API with pagination support.
@@ -175,6 +183,13 @@ paths = generate_all_reports(dataset, date="2026-03-13")
 
 ## Reports Generated
 
+- Configure analytics, content, domain, engine, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Daily Performance Report
 Contains:
 - Executive summary (views, engagement, LYNK clicks, sales vs targets)
@@ -242,3 +257,28 @@ POSTBRIDGE_KEY = "REDACTED_ROTATED_CREDENTIAL"
 - `references/metrics-guide.md` — Full metrics definitions, benchmarks, diagnostics
 - PostBridge API docs: https://api.post-bridge.com/reference
 - LYNK Dashboard: https://lynk.id/jendralbot
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

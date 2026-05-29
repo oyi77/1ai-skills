@@ -2,6 +2,7 @@
 name: comment-reply-manager
 description: comment-reply-manager. Use when relevant to this domain.
 ---
+
 # comment-reply-manager
 
 **Purpose:** Convert comment engagement into LYNK affiliate sales. Detect, analyze, and reply to comments on TikTok/Instagram posts. Auto-DM high-intent commenters with LYNK product links.
@@ -125,6 +126,13 @@ Harganya [price] aja — lagi ada promo spesial hari ini! 🎁
 
 ## API Configuration
 
+- Configure comment, domain, manager, relevant, reply settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### PostBridge (for post discovery)
 ```bash
 export POSTBRIDGE_KEY="REDACTED_ROTATED_CREDENTIAL"
@@ -204,3 +212,29 @@ At 100 DMs/day: 5 sales/day = IDR 375,000/day
 ---
 
 *Production-ready. Revenue-critical. Execute immediately.* 🔥
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

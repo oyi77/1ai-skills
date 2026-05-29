@@ -52,6 +52,11 @@ This skill covers designing microsegmentation policies using workload identity, 
 
 ## Architecture
 
+This section covers architecture for configuring microsegmentation for zero trust.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Microsegmentation Models
 
 1. **Network-Based (VMware NSX, Cisco ACI)**: Distributed firewall rules enforced at the hypervisor or network fabric level
@@ -75,6 +80,11 @@ Traditional Segmentation        Microsegmentation
 
 ## Key Concepts
 
+This section covers key concepts for configuring microsegmentation for zero trust.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Application Dependency Mapping
 Before creating segmentation policies, discover actual communication flows between workloads using traffic telemetry. Tools like Illumio, Guardicore, and AppDynamics provide application dependency maps showing which workloads communicate, over which ports, and how frequently.
 
@@ -89,6 +99,11 @@ Isolate critical applications (PCI cardholder data environment, SWIFT financial 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: Discovery and Mapping
 
 1. **Deploy Visibility Agents**
@@ -161,6 +176,20 @@ Isolate critical applications (PCI cardholder data environment, SWIFT financial 
 - [ ] Alerting configured for policy violations
 - [ ] Break-glass procedure documented and tested
 - [ ] Compliance auditor sign-off for regulated environments
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

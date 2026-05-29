@@ -1,6 +1,35 @@
 ---
 name: portfolio-manager
 description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this domain.
+
+## When to Use
+
+- Managing capital allocation across multiple trading strategies
+- Tracking performance metrics (IRR, MOIC, Sharpe, win rate) for a quant fund
+- Implementing phase gates for progression from paper to live to scaled trading
+- Calculating position sizes with risk-based formulas
+- Generating investor reports for fund performance review
+
+## Red Flags
+
+- Position sizing exceeds 1% risk per trade without override justification
+- Drawdown exceeds daily 3% limit without automatic trading halt
+- Win rate below 55% after 30+ trades (strategy underperforming)
+- Moving from paper to live without meeting all phase gate criteria
+- No trade log maintained (missing audit trail for performance review)
+- Multiple strategies correlated >0.7 without diversification adjustment
+
+## Verification
+
+After completing portfolio management setup, confirm:
+
+- [ ] Position sizing formula tested with known account balances and risk percentages
+- [ ] Drawdown limits configured: daily 3%, weekly 7%, monthly 15%, account 25%
+- [ ] Trade log format captures all required fields (entry, SL, TP, P&L, strategy)
+- [ ] Phase gate criteria documented and measurable (30 trades, 55% WR, PF 1.5)
+- [ ] Monthly report template generates correct P&L, Sharpe, and drawdown stats
+- [ ] Risk rules enforced automatically (halt on drawdown breach)
+
 ---
 # Portfolio Manager — BerkahKarya Quant Fund
 
@@ -17,6 +46,9 @@ Target:  $528/month = 528% ROI (aggressive, paper verified first)
 ```
 
 ## Strategy Portfolio
+
+Active, planned, and future strategies ranked by readiness and expected return.
+
 
 ### Strategy 1: XAUUSD Asia 7-Candle Breakout (Active)
 ```
@@ -46,6 +78,9 @@ Status:     📋 Concept phase
 ---
 
 ## Risk Management Framework
+
+Position sizing formulas, maximum drawdown rules, and trade logging format for the quant fund.
+
 
 ### Position Sizing
 ```python
@@ -104,6 +139,9 @@ trade_entry = {
 ---
 
 ## Performance Analytics
+
+Monthly performance reports and phase gate criteria for progression from paper to live to scaled trading.
+
 
 ### Monthly Performance Report
 ```
@@ -169,6 +207,33 @@ When BerkahKarya Quant Fund accepts external capital:
 - Risk disclosure document
 - Track record (audited)
 - Monthly Sharpe ratio, drawdown stats
+
+
+## When to Use
+
+- Managing capital allocation across multiple trading strategies
+- Tracking performance metrics (IRR, MOIC, Sharpe, win rate) for a quant fund
+- Implementing phase gates for progression from paper to live to scaled trading
+- Calculating position sizes with risk-based formulas
+- Generating investor reports for fund performance review
+
+## Red Flags
+
+- Position sizing exceeds 1% risk per trade without override justification
+- Drawdown exceeds daily 3% limit without automatic trading halt
+- Win rate below 55% after 30+ trades (strategy underperforming)
+- Moving from paper to live without meeting all phase gate criteria
+- No trade log maintained (missing audit trail for performance review)
+
+## Verification
+
+After completing portfolio management setup, confirm:
+
+- [ ] Position sizing formula tested with known account balances and risk percentages
+- [ ] Drawdown limits configured: daily 3%, weekly 7%, monthly 15%, account 25%
+- [ ] Trade log format captures all required fields (entry, SL, TP, P&L, strategy)
+- [ ] Phase gate criteria documented and measurable (30 trades, 55% WR, PF 1.5)
+- [ ] Monthly report template generates correct P&L, Sharpe, and drawdown stats
 
 ---
 

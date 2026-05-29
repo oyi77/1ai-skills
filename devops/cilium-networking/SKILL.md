@@ -3,6 +3,7 @@ name: cilium-networking
 description: Cilium eBPF networking — Kubernetes CNI, network policies, load balancing, observability with Hubble
 ---
 
+
 ## Overview
 
 Cilium provides eBPF-based networking, security, and observability for Kubernetes. Replaces kube-proxy, enforces L3/L4/L7 network policies, and includes Hubble for network visibility.
@@ -25,6 +26,26 @@ Cilium provides eBPF-based networking, security, and observability for Kubernete
 - Replacing kube-proxy for performance
 
 ## Pseudo Code
+
+The cilium-networking workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# cilium-networking primary flow
+input = prepare(raw_data)
+result = process(input, config={balancing, cilium, ebpf, hubble, kubernetes})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -131,3 +152,20 @@ spec:
 - **Bandwidth manager**: EDT-based rate limiting
 - **Host firewall**: protect node endpoints
 - **Kube-proxy replacement**: eBPF-based service routing
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

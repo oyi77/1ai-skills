@@ -3,6 +3,7 @@ name: voice-ai-builder
 description: Build voice-based AI agents for phone calls, meetings, customer support, and sales qualification using Vapi, Bland, and Retell
 ---
 
+
 ## Overview
 
 Build and deploy AI voice agents that handle phone calls, meetings, customer support, and sales qualification. The voice AI market (Vapi, Bland, Retell) is exploding — solo operators sell voice agent services to local businesses for $500-$2000/month per agent. This skill covers the full lifecycle: platform selection, agent design, call flow scripting, deployment, monitoring, and cost management.
@@ -38,6 +39,26 @@ Build and deploy AI voice agents that handle phone calls, meetings, customer sup
 - Survey or feedback collection via voice
 
 ## Pseudo Code
+
+The voice-ai-builder workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# voice-ai-builder primary flow
+input = prepare(raw_data)
+result = process(input, config={agents, based, bland, build, builder})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Platform Selection
 
@@ -228,6 +249,14 @@ app.post("/webhook/vapi", (req, res) => {
 
 ## Common Patterns
 
+Proven patterns for voice-ai-builder usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Sales Qualification Flow
 1. Greet and establish rapport (5 seconds)
 2. Ask qualifying questions (budget, timeline, authority, need)
@@ -255,3 +284,20 @@ app.post("/webhook/vapi", (req, res) => {
 - Switch LLM system prompt to detected language
 - Use multilingual voice models (11labs supports 29 languages)
 - Maintain language-specific call flow templates
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

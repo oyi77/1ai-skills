@@ -73,6 +73,11 @@ Notable Events (enriched with TI context)
 
 ## Configuring Threat Intelligence Sources
 
+This section covers configuring threat intelligence sources for building threat intelligence enrichment in splunk.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### STIX/TAXII Feed Integration
 
 ```conf
@@ -166,6 +171,11 @@ if __name__ == "__main__":
 
 ## Building Enrichment Lookups
 
+This section covers building enrichment lookups for building threat intelligence enrichment in splunk.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### KV Store Collection Configuration
 
 ```conf
@@ -219,6 +229,11 @@ fields_list = file_hash, hash_type, malware_family, confidence, source
 
 ## Enrichment Correlation Searches
 
+This section covers enrichment correlation searches for building threat intelligence enrichment in splunk.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### IP-Based Threat Intelligence Correlation
 
 ```spl
@@ -283,6 +298,11 @@ index=firewall sourcetype=pan:traffic action=allowed
 
 ## Threat Intelligence Dashboards
 
+This section covers threat intelligence dashboards for building threat intelligence enrichment in splunk.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### IOC Coverage Statistics
 
 ```spl
@@ -300,6 +320,21 @@ index=firewall sourcetype=pan:traffic action=allowed
 | stats count avg(age_days) as avg_age_days max(age_days) as max_age_days by source
 | eval status=case(avg_age_days > 30, "STALE", avg_age_days > 7, "AGING", true(), "FRESH")
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

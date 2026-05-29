@@ -54,6 +54,10 @@ python scripts/agent.py --log-file /var/log/syslog --chain-file log_chain.json -
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Chain Entry Structure
 ```json
 {"index": 42, "timestamp": "2024-01-15T10:30:00Z", "content_hash": "a1b2c3...",
@@ -62,3 +66,16 @@ python scripts/agent.py --log-file /var/log/syslog --chain-file log_chain.json -
 
 ### Tamper Detection
 If entry 42 is modified, chain_hash[42] will not match SHA256(chain_hash[41] + ...), and all entries from 42 onward will be flagged as invalid.
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

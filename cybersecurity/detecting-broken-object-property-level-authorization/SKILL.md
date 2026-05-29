@@ -48,6 +48,10 @@ Broken Object Property Level Authorization (BOPLA), classified as API3:2023 in t
 
 ## Vulnerability Patterns
 
+- **Follow the principle of least privilege** — use the minimum permissions needed for each task
+- **Document everything** — maintain logs of all actions, configurations, and findings
+- **Verify before acting** — confirm assumptions about the environment before making changes
+- **Automate repetitive steps** — script common workflows to reduce human error
 ### Excessive Data Exposure
 
 The API returns object properties the client does not need:
@@ -395,6 +399,22 @@ def update_user(user_id, request_data, requesting_user):
     # Apply updates only with safe data
     User.objects.filter(id=user_id).update(**safe_data)
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

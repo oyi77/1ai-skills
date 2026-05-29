@@ -27,6 +27,9 @@ Zapier is the most popular no-code automation platform with 7000+ app integratio
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Zap Structure
 
 ```
@@ -178,3 +181,16 @@ curl -X POST "https://hooks.zapier.com/hooks/catch/123456/abcdef/" \
 | Rate limit | Too many tasks | Add delay step or use Paths |
 | Code error | Syntax or runtime error | Test code step individually |
 | App disconnected | OAuth token expired | Reconnect app |
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

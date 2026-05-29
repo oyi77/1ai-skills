@@ -2,6 +2,8 @@
 name: customer-support
 description: Use when handling customer support via browser - email responses, chat interactions, ticket management, and escalation workflows.
 ---
+
+
 persona:
   name: "Tony Hsieh"
   title: "The Customer Happiness Expert - Master of Service Excellence"
@@ -48,6 +50,30 @@ Automated customer support via browser — email triage, response generation, ti
 ---
 
 ## Browser Workflows
+
+Step-by-step customer-support execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the customer-support workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the customer-support workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### 1. Gmail Support Email Triage
 
@@ -230,14 +256,16 @@ Grade every response before sending:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Outreach messages are generic and not personalized to the recipient
+- Agent does not verify prospect qualification before engagement
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Outreach is personalized to each recipient's role and company
+- [ ] Prospect qualification is verified before engagement begins
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

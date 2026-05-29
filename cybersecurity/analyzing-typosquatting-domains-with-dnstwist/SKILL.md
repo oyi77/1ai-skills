@@ -49,6 +49,11 @@ DNSTwist is a domain name permutation engine that generates similar-looking doma
 
 ## Key Concepts
 
+This section covers key concepts for analyzing typosquatting domains with dnstwist.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Domain Permutation Techniques
 
 DNSTwist generates permutations using: addition (appending characters), bitsquatting (bit-flip errors), homoglyph (visually similar Unicode characters like rn vs m), hyphenation (adding hyphens), insertion (inserting characters), omission (removing characters), repetition (repeating characters), replacement (replacing with adjacent keyboard keys), subdomain (inserting dots), transposition (swapping adjacent characters), vowel-swap (swapping vowels), and dictionary-based (appending common words).
@@ -63,6 +68,11 @@ The typical workflow is: generate domain permutations -> resolve DNS records -> 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Basic Domain Permutation Scan
 
 ```python
@@ -312,6 +322,20 @@ generate_takedown_report(analysis["high"])
 - Risk scoring prioritizes domains by threat level
 - Continuous monitoring detects newly registered typosquats
 - Blocklist and takedown reports generated correctly
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

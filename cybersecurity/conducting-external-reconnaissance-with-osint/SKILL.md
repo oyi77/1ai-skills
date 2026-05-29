@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Domain and DNS Enumeration
 
 Enumerate all domains, subdomains, and DNS records associated with the target:
@@ -128,6 +133,11 @@ Identify the technologies, frameworks, and services used by the target:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Conducting External Reconnaissance With Osint assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Conducting External Reconnaissance With Osint response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Pre-Engagement Reconnaissance for a Red Team Exercise
 
 **Context**: A technology company has contracted a red team assessment. Before active testing begins, the team conducts passive OSINT to map the attack surface and identify potential entry points. The target is a SaaS company with 500 employees and a primary domain of techcorp.io.
@@ -147,11 +157,31 @@ Identify the technologies, frameworks, and services used by the target:
 - Not searching for credentials in public code repositories, which frequently yield immediate access
 - Conducting active scanning (port scans, vulnerability scans) during what should be a passive-only phase
 
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
+
 ## Output Format
 
 ```
 ## External Reconnaissance Report - TechCorp.io
 
+This section covers external reconnaissance report - techcorp.io for conducting external reconnaissance with osint.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Attack Surface Summary
 - **Domains discovered**: 3 (techcorp.io, techcorp.com, techcorpapp.com)
 - **Subdomains enumerated**: 147 unique subdomains across all domains

@@ -47,6 +47,11 @@ Threat actor profiling using OSINT systematically gathers and analyzes publicly 
 
 ## Key Concepts
 
+This section covers key concepts for building threat actor profile from osint.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### OSINT Sources for Threat Actor Profiling
 
 Primary intelligence sources include vendor threat reports (Mandiant, CrowdStrike, Recorded Future, Talos), government advisories (CISA, NSA, FBI joint advisories), academic research papers, malware repositories (VirusTotal, MalwareBazaar, Malpedia), paste sites (Pastebin, GitHub Gists), code repositories, social media accounts, dark web forums, and certificate transparency logs.
@@ -61,6 +66,11 @@ A complete threat actor profile includes: aliases and naming conventions across 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Collect Intelligence from Multiple Sources
 
 ```python
@@ -305,6 +315,15 @@ def generate_dossier(actor_name, profile_data, ttp_data, infrastructure_data):
     dossier = f"""# Threat Actor Dossier: {actor_name}
 ## Generated: {datetime.now().isoformat()}
 
+```
+Building Threat Actor Profile From Osint Output Summary
+========================================
+Status:       [COMPLETE / PARTIAL / BLOCKED]
+Findings:     [count] items
+Severity:     [Critical / High / Medium / Low / Info]
+Evidence:     [file paths or log references]
+Next Steps:   [recommended actions]
+```
 ## Executive Summary
 {profile_data.get('description', '')}
 
@@ -365,6 +384,21 @@ generate_dossier("APT29", {
 - Infrastructure indicators correlated across sources
 - Dossier includes attribution assessment with confidence levels
 - Profile is actionable for detection engineering and threat hunting
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

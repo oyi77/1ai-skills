@@ -12,6 +12,7 @@ const crypto = require('crypto');
 const METRICS_DIR = path.join(process.env.HOME, '.1ai-skills');
 const METRICS_FILE = path.join(METRICS_DIR, 'metrics.jsonl');
 const CONFIG_FILE = path.join(METRICS_DIR, 'evolve-config.json');
+const STATE_FILE = path.join(METRICS_DIR, '.active-skill.json');
 
 // Ensure dir exists
 if (!fs.existsSync(METRICS_DIR)) fs.mkdirSync(METRICS_DIR, { recursive: true });
@@ -63,6 +64,12 @@ process.stdin.on('end', () => {
     };
 
     fs.appendFileSync(METRICS_FILE, JSON.stringify(entry) + '\n');
+
+    // Write active skill state for feedback-capture.js to read
+    fs.writeFileSync(STATE_FILE, JSON.stringify({
+      active_skill: skillName,
+      invoked_at: entry.ts,
+    }));
 
     // Update aggregate stats
     updateStats(skillName, success, tokens, duration);

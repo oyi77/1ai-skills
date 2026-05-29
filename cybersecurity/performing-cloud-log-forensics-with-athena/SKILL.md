@@ -49,6 +49,11 @@ nist_csf:
 
 ## Instructions
 
+This section covers instructions for performing cloud log forensics with athena.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Phase 1: Create Athena Database and CloudTrail Table
 
 Create a dedicated forensics database and CloudTrail table using partition projection
@@ -496,3 +501,17 @@ python agent.py \
     --account-id 123456789012 \
     --regions us-east-1,us-west-2
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility

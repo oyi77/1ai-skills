@@ -3,6 +3,7 @@ name: helm-charts
 description: Helm chart development — templates, values, hooks, dependencies, chart testing, repository management
 ---
 
+
 ## Overview
 
 Helm is the Kubernetes package manager. Charts are templated Kubernetes manifests with configurable values. Supports dependencies, hooks, release management, and chart repositories.
@@ -25,6 +26,26 @@ Helm is the Kubernetes package manager. Charts are templated Kubernetes manifest
 - Sharing reusable K8s packages via repositories
 
 ## Pseudo Code
+
+The helm-charts workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# helm-charts primary flow
+input = prepare(raw_data)
+result = process(input, config={chart, charts, dependencies, development, helm})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Chart Structure
 ```
@@ -134,3 +155,20 @@ helm lint ./mychart
 - **Conditional sections**: `{{- if .Values.ingress.enabled }}`
 - **Range loops**: `{{- range .Values.env }}`
 - **Lookup**: `lookup` function to check existing resources
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

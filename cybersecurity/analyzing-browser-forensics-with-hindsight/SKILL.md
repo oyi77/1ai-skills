@@ -76,6 +76,11 @@ Hindsight is an open-source browser forensics tool designed to parse artifacts f
 
 ## Running Hindsight
 
+This section covers running hindsight for analyzing browser forensics with hindsight.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Command Line
 
 ```bash
@@ -105,6 +110,11 @@ hindsight_gui.exe
 
 ## Artifact Analysis Details
 
+This section covers artifact analysis details for analyzing browser forensics with hindsight.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### URL History and Visits
 
 ```sql
@@ -230,6 +240,22 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

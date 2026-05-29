@@ -3,6 +3,8 @@ name: styled-components
 description: styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR, performance
 ---
 
+
+
 ## Overview
 
 styled-components enables CSS-in-JS with tagged template literals. Components are styled directly in JavaScript with access to props, themes, and dynamic values. Supports SSR and tree-shaking.
@@ -25,6 +27,44 @@ styled-components enables CSS-in-JS with tagged template literals. Components ar
 - Theming with runtime color/mode switching
 
 ## Pseudo Code
+
+The styled-components workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# styled-components primary flow
+input = prepare(raw_data)
+result = process(input, config={animations, components, performance, props, styled})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# styled-components primary flow
+input = prepare(raw_data)
+result = process(input, config={animations, components, performance, props, styled})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Basic Usage
 ```tsx
@@ -104,3 +144,21 @@ const AnimatedDiv = styled.div`
 - **Global styles**: `createGlobalStyle` for CSS reset and global rules
 - **Composition**: `const StyledLink = styled(Link)` for React Router links
 - **Performance**: Use `.attrs()` for static values, memoize expensive computations
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

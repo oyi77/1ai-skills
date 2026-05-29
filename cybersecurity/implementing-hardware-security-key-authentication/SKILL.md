@@ -56,6 +56,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Relying Party Server Configuration
 
 Configure the WebAuthn relying party (RP) identity and server:
@@ -144,6 +149,11 @@ Plan and execute migration from passwords to passkeys:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Hardware Security Key Authentication assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Hardware Security Key Authentication response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Deploying FIDO2 MFA for a Development Team
 
 **Context**: A software company wants to replace TOTP-based MFA with hardware security keys for its 50-person development team. Developers have root access to production infrastructure and are high-value targets for phishing attacks. The company has standardized on YubiKey 5 NFC.
@@ -182,6 +192,22 @@ Plan and execute migration from passwords to passkeys:
 - Assuming all users have biometric-capable devices; some will need to fall back to PIN-based verification
 - Not implementing proper account recovery for users who lose access to all registered passkeys
 - Ignoring browser compatibility gaps, particularly in older Safari versions on iOS
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

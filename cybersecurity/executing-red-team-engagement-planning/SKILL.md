@@ -54,6 +54,11 @@ Red team engagement planning is the foundational phase that defines scope, objec
 
 ## Core Concepts
 
+This section covers core concepts for executing red team engagement planning.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Engagement Types
 
 | Type | Description | Scope |
@@ -85,6 +90,11 @@ Map organizational threats using MITRE ATT&CK Navigator to select relevant adver
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Phase 1: Pre-Engagement
 
 1. Conduct initial scoping meeting with stakeholders
@@ -116,6 +126,22 @@ Map organizational threats using MITRE ATT&CK Navigator to select relevant adver
 3. Obtain executive sponsor signature
 4. Brief red team operators on ROE and restrictions
 5. Distribute emergency contact cards
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Tools and Resources
 

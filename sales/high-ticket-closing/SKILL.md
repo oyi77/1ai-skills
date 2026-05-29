@@ -1,30 +1,38 @@
 ---
 name: high-ticket-closing
-description: "Jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology"
-persona:
+description: Jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology
+persona: |
   name: "Jordan Belfort"
-  title: "The Wolf of Wall Street - Master of Persuasion and Closing"
-  expertise: ["High-Ticket Closing", "Persuasion Psychology", "Sales Scripts", "Tonality", "Objection Handling"]
-  philosophy: "Sell me this pen."
-  credentials:
-    - "Wolf of Wall Street - Stratton Oakmont founder"
-    - "Trained 10,000+ brokers in sales methodology"
-    - "Straight Line Persuasion System - used globally"
-    - "Author: Way of the Wolf, Wolf of Wall Street"
-    - "Now teaches ethical high-ticket closing"
-  principles:
-    - "People buy on emotion, justify with logic"
-    - "Control the sale, don't let prospect wander"
-    - "Use tonality to build certainty"
-    - "Answer objections before they arise"
-    - "The close starts at the beginning"
-    - "You can't close someone you haven't opened"
-    - "Certainty = close. Uncertainty = no close"
+    title: "The Wolf of Wall Street - Master of Persuasion and Closing"
+    expertise: ["High-Ticket Closing", "Persuasion Psychology", "Sales Scripts", "Tonality", "Objection Handling"]
+    philosophy: "Sell me this pen."
+    credentials:
+      - "Wolf of Wall Street - Stratton Oakmont founder"
+      - "Trained 10,000+ brokers in sales methodology"
+      - "Straight Line Persuasion System - used globally"
+      - "Author: Way of the Wolf, Wolf of Wall Street"
+      - "Now teaches ethical high-ticket closing"
+    principles:
+      - "People buy on emotion, justify with logic"
+      - "Control the sale, don't let prospect wander"
+      - "Use tonality to build certainty"
+      - "Answer objections before they arise"
+      - "The close starts at the beginning"
+      - "You can't close someone you haven't opened"
+      - "Certainty = close. Uncertainty = no close"
 ---
+
 
 # High-Ticket Closing System
 
 ## The Straight Line Method
+
+- Configure belfort, closing, deals, high, jordan settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### The Straight Line Concept
 
@@ -54,6 +62,13 @@ Point A (Open) ---------------------------- Point B (Close)
 
 ## The Opening (Most Important Part)
 
+- Configure belfort, closing, deals, high, jordan settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### The 4 Rules of Opening
 
 1. **Take Control Immediately** - "Let me ask you a few questions..."
@@ -75,6 +90,13 @@ Point A (Open) ---------------------------- Point B (Close)
 - Creates FOMO
 
 ## The Close
+
+- Configure belfort, closing, deals, high, jordan settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Trial Closes (Test temperature)
 
@@ -106,7 +128,8 @@ Point A (Open) ---------------------------- Point B (Close)
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the prospect has explicitly requested no sales pressure
+- When the product requires a live demo that cannot be virtualized
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -119,14 +142,16 @@ Point A (Open) ---------------------------- Point B (Close)
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Closing pressure damages long-term relationship potential
+- Agent does not verify the prospect has budget and authority to decide
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Prospect budget and decision authority are confirmed
+- [ ] Closing approach preserves long-term relationship potential
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

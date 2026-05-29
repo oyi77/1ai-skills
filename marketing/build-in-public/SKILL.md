@@ -2,6 +2,8 @@
 name: build-in-public
 description: Document and share your startup journey, revenue, and learnings on social media. Build audience, attract customers, and find co-founders through transparent sharing.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Build In Public"
@@ -74,6 +76,13 @@ Build in Public (BIP) is a movement where founders share their startup journey t
 
 ## Core Strategies
 
+- Configure attract, audience, build, customers, document settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Revenue Transparency
 Share financial milestones openly:
 - First sale
@@ -127,6 +136,13 @@ Share your startup process:
 
 ## Automation Tools
 
+- Configure attract, audience, build, customers, document settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Connect Your Stack
 
 | Tool | Trigger | Auto-Post |
@@ -150,6 +166,12 @@ Weekly ritual:
 ---
 
 ## Integration with 1ai-skills
+
+Combine build-in-public with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
 
 ### Revenue Team Workflow
 
@@ -184,6 +206,42 @@ build-in-public is part of **revenue-team** for:
 ---
 
 ## Templates
+
+Reusable templates for build-in-public.
+
+Standard config:
+```yaml
+name: build-in-public_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: build-in-public_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard build-in-public
+```yaml
+name: build-in-public_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: build-in-public_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### Revenue Milestone
 
@@ -248,6 +306,13 @@ Early adopter pricing: [deal]
 
 ## Best Practices
 
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
+
 ### Do's
 ✅ Be authentic and vulnerable  
 ✅ Share both wins and failures  
@@ -311,14 +376,16 @@ Track these to measure BIP effectiveness:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

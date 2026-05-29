@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Detect Credential Compromise Indicators in AWS
 
 Monitor GuardDuty findings and CloudTrail anomalies that indicate credential abuse.
@@ -282,6 +287,11 @@ gcloud iam service-accounts keys delete KEY_ID --iam-account=COMPROMISED_SA_EMAI
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Compromised Cloud Credentials assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Compromised Cloud Credentials response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting an Access Key Compromised via Phishing
 
 **Context**: A developer receives a phishing email that harvests their AWS console credentials. The attacker logs in from a foreign IP, creates a new access key, and begins enumerating the account.
@@ -297,6 +307,22 @@ gcloud iam service-accounts keys delete KEY_ID --iam-account=COMPROMISED_SA_EMAI
 8. Remove any persistence artifacts and document the incident timeline
 
 **Pitfalls**: Simply changing the password does not invalidate existing access keys or active sessions. All access keys must be rotated and temporary credentials revoked by adding a deny-all policy for tokens issued before the compromise was detected. Attackers may create new IAM users or roles for persistence before the initial credential is revoked.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

@@ -45,6 +45,9 @@ POST AI is an AI-powered tool that turns 1 product image into dozens of TikTok F
 
 ## Commands
 
+Available commands and their usage.
+
+
 ### Generate Videos
 
 Generate multiple video variants from a single product image:
@@ -106,6 +109,9 @@ Kemeja Hijau,https://example.com/shirt2.jpg,200000,https://aff.link/shirt2,Fashi
 ```
 
 ## Workflow Examples
+
+End-to-end workflow examples showing how to combine commands.
+
 
 ### Quick Start (Single Product)
 
@@ -327,3 +333,22 @@ if i % 10 == 0:
 - Facebook: 4 accounts
 
 **Full PostBridge reference:** `~/.openclaw/workspace/skills/postbridge-social-manager/SKILL.md`
+
+## When to Use
+
+- When you need automated assistance with a specific technical task
+- When the task requires domain expertise this agent provides
+- When consistency and repeatability matter more than creative exploration
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

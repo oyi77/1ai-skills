@@ -24,6 +24,22 @@ AutoGen is a framework for building multi-agent conversation systems. Agents cha
 - Building research, coding, or analysis teams
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Basic Two-Agent Chat
 
@@ -151,3 +167,19 @@ nested_assistant.register_nested_conversation(
 | Code execution failure | Syntax error or missing package | Check `work_dir` logs |
 | Token limit | Long conversation | Reduce `max_round` or use summary |
 | Group chat deadlock | No valid next speaker | Use `speaker_selection_method="round_robin"` |
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

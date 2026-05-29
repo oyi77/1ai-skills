@@ -46,6 +46,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Access Incident Review and Prioritize Queue
 
 Open the Incident Review dashboard in Splunk ES. Sort notable events by urgency (calculated from severity x priority). Apply filters to focus on unassigned events:
@@ -194,6 +199,22 @@ Monitor triage performance over time:
 - **Data Exfiltration Alert**: Check outbound data volume from DLP and proxy logs against user baseline
 - **Privilege Escalation**: Correlate EventCode 4672 (special privileges assigned) with 4720 (account created) from non-admin users
 - **Lateral Movement**: Map EventCode 4648 (explicit credential logon) across multiple destinations from single source
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

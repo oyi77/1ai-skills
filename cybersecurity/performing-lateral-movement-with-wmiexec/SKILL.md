@@ -69,6 +69,11 @@ WMI (Windows Management Instrumentation) is a legitimate Windows administration 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: WMIExec with Impacket
 1. Execute a semi-interactive shell with credentials:
    ```bash
@@ -163,6 +168,22 @@ WMI (Windows Management Instrumentation) is a legitimate Windows administration 
    # Extract hashes from saved hives
    secretsdump.py -sam sam -system system LOCAL
    ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Tools and Resources
 

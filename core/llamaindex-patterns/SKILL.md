@@ -25,6 +25,22 @@ LlamaIndex is a data framework for connecting LLMs with external data. It provid
 - Implementing agentic RAG with tool use
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Document Ingestion
 
@@ -179,3 +195,19 @@ response = router.query("Summarize all quarterly reports")
 | `Response incomplete` | Too few source nodes | Increase `similarity_top_k` |
 | Embedding dimension mismatch | Wrong model | Use consistent embedding model |
 | Token limit during synthesis | Too many nodes retrieved | Reduce `similarity_top_k` or use `compact` mode |
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

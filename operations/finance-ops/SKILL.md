@@ -6,13 +6,16 @@ description: Accounts Payable. Use when relevant to this domain.
 
 **Name:** `finance-ops`
 
-**Pattern:** `operations/finance/finance-ops`
+**Pattern:** operations/finance/finance-ops
 
 **Description:** AI-powered CFO capabilities for cost analysis, financial modeling, scenario planning, and operational efficiency. Identifies hidden costs and optimization opportunities in 30 minutes.
 
 ---
 
 ## Implementation
+
+How to set up and configure this skill.
+
 
 ### Phase 1: CFO Briefing Generation
 
@@ -221,6 +224,9 @@ def analyze_headcount_efficiency(org_data):
 
 ## Usage Examples
 
+Practical examples showing real-world usage.
+
+
 ### Example 1: Monthly CFO Briefing
 
 ```python
@@ -421,7 +427,8 @@ finance_ops_report:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the operational process requires change advisory board approval
+- When the process involves legally mandated human review or sign-off
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -434,7 +441,8 @@ finance_ops_report:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Operational changes are made without stakeholder communication
+- Agent does not track compliance with established processes
 - Watch for shortcuts and skipped steps
 
 
@@ -443,7 +451,8 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Changes are communicated to stakeholders before implementation
+- [ ] Compliance with established processes is tracked and reported
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

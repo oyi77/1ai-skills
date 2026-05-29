@@ -171,7 +171,8 @@ Request code review to catch issues before they cascade. Dispatch superpowers:co
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Review includes substantive analysis of security and correctness
+- [ ] Every feedback item is specific and references code locations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

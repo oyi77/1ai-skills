@@ -25,6 +25,22 @@ Fine-tune pre-trained models for specific tasks. Covers LoRA/QLoRA for efficient
 - Building a product that needs a custom AI model
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Dataset Preparation (Hugging Face Format)
 ```python
@@ -172,6 +188,11 @@ ollama run my-legal-model
 ```
 
 ## Common Patterns
+- Use structured input/output schemas for reliable automation
+- Add retry logic with exponential backoff for external calls
+- Validate inputs before processing to fail fast
+- Log execution steps for debugging and auditing
+
 
 ### Training Data Quality Checklist
 ```
@@ -200,3 +221,19 @@ batch_size: As large as VRAM allows
 13B:  ~10GB VRAM → RTX 3080 10GB works
 70B:  ~36GB VRAM → A100 40GB or 2x RTX 4090
 ```
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

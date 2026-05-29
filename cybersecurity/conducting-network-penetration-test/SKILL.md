@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Pre-Engagement and Scope Validation
 
 Validate the scope by confirming IP ranges with the client. Verify that all IP addresses in scope are owned by the client using ARIN/RIPE WHOIS lookups. Confirm testing windows, escalation procedures, and any sensitivity constraints. Set up the testing environment with a dedicated VM, VPN connection, and logging enabled on all tools. Create a timestamped activity log that records every command executed, every scan launched, and every exploit attempted throughout the engagement.
@@ -144,6 +149,11 @@ Prepare the penetration test report with executive summary, methodology descript
 
 ## Common Scenarios
 
+**Scenario 1: Standard Conducting Network Penetration Test assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Conducting Network Penetration Test response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Internal Network Penetration Test for a Financial Institution
 
 **Context**: The client is a mid-size bank requiring PCI-DSS compliance. Scope includes the internal corporate network (10.10.0.0/16), excluding payment processing systems in a separate VLAN. Testing window is Monday-Friday 20:00-06:00 to minimize impact on operations.
@@ -162,6 +172,22 @@ Prepare the penetration test report with executive summary, methodology descript
 - Failing to verify that all target IPs are actually owned by the client before scanning
 - Not documenting exploitation attempts that failed, missing the opportunity to report on effective controls
 - Forgetting to clean up Meterpreter sessions and uploaded tools after testing
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

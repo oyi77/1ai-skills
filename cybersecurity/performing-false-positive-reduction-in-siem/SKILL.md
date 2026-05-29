@@ -51,6 +51,11 @@ False positive alerts are non-malicious events that trigger security rules, over
 
 ## False Positive Reduction Techniques
 
+This section covers false positive reduction techniques for performing false positive reduction in siem.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Identify the Noisiest Rules
 
 ```spl
@@ -170,6 +175,11 @@ index=firewall action=allowed direction=outbound
 
 ## Tuning Process Framework
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify (Weekly)
 - Pull top 10 rules by alert volume
 - Calculate FP rate for each
@@ -223,6 +233,20 @@ earliest=-24h
 | Mean Triage Time | Total triage time / Total alerts | < 8 minutes |
 | Rule Precision | TP / (TP + FP) | > 0.80 |
 | Analyst Satisfaction | Survey score | > 4/5 |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

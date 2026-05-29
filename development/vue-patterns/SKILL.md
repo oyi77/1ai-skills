@@ -3,6 +3,7 @@ name: vue-patterns
 description: Vue.js 3 development patterns — Composition API, Pinia state management, Vue Router, Nuxt.js, component architecture
 ---
 
+
 ## Overview
 
 Vue.js 3 patterns for building modern web applications. Covers Composition API, Pinia state management, Vue Router, Nuxt.js SSR/SSG, and component architecture best practices.
@@ -23,6 +24,26 @@ Vue.js 3 patterns for building modern web applications. Covers Composition API, 
 - Creating reusable composables and component libraries
 
 ## Pseudo Code
+
+The vue-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# vue-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={architecture, component, composition, development, management})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Composition API composable
 ```typescript
@@ -127,3 +148,20 @@ const HeavyComponent = defineAsyncComponent(() =>
 - **Template refs**: Access DOM elements with `ref()` in setup
 - **Suspense**: Handle async components with `<Suspense>` fallback
 - **Route middleware**: Auth guards via `defineNuxtRouteMiddleware`
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

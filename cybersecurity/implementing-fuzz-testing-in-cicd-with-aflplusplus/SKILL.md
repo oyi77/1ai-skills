@@ -54,6 +54,11 @@ AFL++ (American Fuzzy Lop Plus Plus) is a community-maintained fork of AFL that 
 
 ## Core Concepts
 
+This section covers core concepts for implementing fuzz testing in cicd with aflplusplus.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Coverage-Guided Fuzzing
 
 AFL++ instruments the target binary at compile time (or via QEMU/Frida for binary-only targets) to track which code paths each input exercises. When a mutated input triggers a new code path, it is saved to the corpus for further mutation. This feedback loop enables AFL++ to systematically explore program state space.
@@ -93,6 +98,11 @@ int main() {
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 --- Build the Fuzzing Harness
 
 Create a harness that feeds AFL++ input to the target function:
@@ -283,6 +293,22 @@ afl-whatsup findings/
 # - Exec speed (execs/sec)
 # - Cycles done (full corpus cycles completed)
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

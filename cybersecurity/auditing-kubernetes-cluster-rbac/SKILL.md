@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Enumerate ClusterRoles and Roles with Dangerous Permissions
 
 Identify roles with wildcard permissions, secret access, pod exec, or escalation capabilities.
@@ -270,6 +275,11 @@ kubeaudit all --kubeconfig ~/.kube/config -f json > kubeaudit-results.json
 
 ## Common Scenarios
 
+**Scenario 1: Standard Auditing Kubernetes Cluster Rbac assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Auditing Kubernetes Cluster Rbac response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Auditing an EKS Cluster Shared by Multiple Development Teams
 
 **Context**: A shared EKS cluster serves four development teams. RBAC was configured during initial setup but has not been reviewed in 12 months. Teams report being able to access other teams' namespaces.
@@ -284,6 +294,22 @@ kubeaudit all --kubeconfig ~/.kube/config -f json > kubeaudit-results.json
 7. Create a NetworkPolicy to isolate namespace traffic between teams
 
 **Pitfalls**: Removing ClusterRoleBindings can break CI/CD pipelines and operators that rely on cluster-wide access. Always audit which workloads use the bindings before removing them. EKS maps IAM roles to Kubernetes groups via aws-auth ConfigMap, so RBAC changes must be coordinated with IAM role mappings.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

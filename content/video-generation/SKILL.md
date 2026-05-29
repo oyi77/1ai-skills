@@ -3,6 +3,8 @@ name: video-generation
 description: AI video generation — Sora, Runway, Kling, Pika, Luma. Text-to-video, image-to-video, video editing with AI
 ---
 
+
+
 ## Overview
 
 Generate and edit videos using AI. Covers text-to-video, image-to-video, and AI-powered video editing workflows.
@@ -25,6 +27,44 @@ Generate and edit videos using AI. Covers text-to-video, image-to-video, and AI-
 - Prototyping video concepts before full production
 
 ## Pseudo Code
+
+The video-generation workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# video-generation primary flow
+input = prepare(raw_data)
+result = process(input, config={editing, generation, image, kling, luma})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# video-generation primary flow
+input = prepare(raw_data)
+result = process(input, config={editing, generation, image, kling, luma})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Runway Gen-3 API
 ```python
@@ -106,6 +146,12 @@ ffmpeg -i input.mp4 -vf "scale=3840:2160" -c:v libx264 output_4k.mp4
 
 ## Common Patterns
 
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Prompt Structure for Video
 ```
 [Camera movement] + [Subject] + [Action] + [Environment] + [Style/Mood]
@@ -141,3 +187,21 @@ Luma Dream Machine: Fast, decent quality, good for prototyping
 4. Add voiceover (voice-ai skill)
 5. Export for each platform (9:16, 16:9, 1:1)
 ```
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

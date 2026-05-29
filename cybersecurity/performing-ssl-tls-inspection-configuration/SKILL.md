@@ -47,6 +47,11 @@ SSL/TLS inspection (also called SSL decryption, HTTPS inspection, or TLS break-a
 
 ## Core Concepts
 
+This section covers core concepts for performing ssl tls inspection configuration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SSL/TLS Inspection Modes
 
 | Mode | Direction | Description |
@@ -89,6 +94,11 @@ Enterprise Root CA
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Generate Internal CA for SSL Inspection
 
 ```bash
@@ -276,6 +286,22 @@ show counter global filter category ssl
 - **TLS 1.2 Minimum** - Enforce TLS 1.2 as minimum version; block SSLv3 and TLS 1.0/1.1
 - **Key Protection** - Store inspection CA private key in HSM for production environments
 - **Regular CA Rotation** - Plan for CA certificate rotation before expiration
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

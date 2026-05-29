@@ -53,6 +53,12 @@ Eric Zimmerman's EZ Tools suite is a collection of open-source forensic utilitie
 
 ## Tool Suite Components
 
+| Tool | Purpose |
+|------|---------|
+| Autopsy | Open-source digital forensics platform for disk image analysis |
+| FTK Imager | Forensic imaging and evidence preview tool |
+| Volatility | Memory forensics framework for RAM analysis |
+| dcfldd | Enhanced dd with built-in hashing for forensic acquisition |
 ### KAPE (Kroll Artifact Parser and Extractor)
 
 KAPE is the primary orchestration tool that automates artifact collection (Targets) and processing (Modules). It uses configuration files (.tkape and .mkape) to define what artifacts to collect and which EZ Tools to run against them.
@@ -203,6 +209,11 @@ TimelineExplorer.exe "C:\Cases\Output\MFT_output.csv"
 
 ## Investigation Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Artifact Collection with KAPE
 
 ```powershell
@@ -253,6 +264,11 @@ kape.exe --msource C:\Cases\Case001\Collected --mdest C:\Cases\Case001\Processed
 
 ## Common Investigation Scenarios
 
+**Scenario 1: Full disk acquisition from a suspect workstation**
+Connect via hardware write-blocker, acquire with dcfldd including SHA-256, split into segments for storage. Hash verification confirms bit-for-bit match.
+
+**Scenario 2: Live memory capture during incident response**
+Use LiME or WinPMEM to capture volatile RAM while the system is running, preserving running processes, network connections, and encryption keys that would be lost on shutdown.
 ### Malware Execution Evidence
 1. Parse Prefetch with PECmd to identify executed binaries
 2. Cross-reference with MFT for file creation timestamps
@@ -270,6 +286,22 @@ kape.exe --msource C:\Cases\Case001\Collected --mdest C:\Cases\Case001\Processed
 2. Analyze RDP-related event logs (Microsoft-Windows-TerminalServices)
 3. Cross-reference with network share access from SMB logs
 4. Review scheduled tasks and services for persistence mechanisms
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format and Integration
 

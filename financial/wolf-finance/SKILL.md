@@ -78,6 +78,9 @@ This skill operates at the level of a **Goldman Sachs managing director**, a **R
 
 ## Anti-Bias Checklist (Run Before Every Recommendation)
 
+Six cognitive traps and ten financial red flags to check before every buy/sell/hedge recommendation.
+
+
 ### 6 Cognitive Traps
 - [ ] **Confirmation bias** — Did I actively seek disconfirming evidence?
 - [ ] **Anchoring** — Over-weighting first price/number seen?
@@ -150,6 +153,8 @@ Then load ONLY the relevant reference files.
 ---
 
 ## Composition Workflows (Step 2 — Select & Combine)
+
+Pre-composed module pipelines for equity deep dives, crypto positioning, macro trades, and wealth planning.
 
 ### Equity Deep Dive (Institutional)
 `fin-equity-fundamental` → `fin-equity-technical` → `fin-sentiment-engine` → `fin-risk-guardian` → `fin-report-orchestrator`
@@ -310,6 +315,35 @@ Compliance:            compliance-kyc.md
 ```
 
 ---
+
+
+## When to Use
+
+- Analyzing any financial asset (equities, crypto, forex, commodities, derivatives)
+- Building investment theses with evidence-tiered backing (T1/T2/T3)
+- Running pre-trade risk gates before position entry
+- Portfolio construction and risk management across asset classes
+- Institutional-grade reporting for investment committees
+
+## Red Flags
+
+- Recommendation with only T3 sources — BLOCKED
+- Skipping Pre-Trade Risk Gate for "quick trades" — BLOCKED
+- Conviction >0.8 without T1 evidence — BLOCKED
+- Ignoring 2+ items from Anti-Bias Checklist — STOP, re-run
+- Position size exceeding portfolio risk limits — BLOCKED
+- Correlation >0.7 with existing positions without reduction — BLOCKED
+
+## Verification
+
+After completing financial analysis, confirm:
+
+- [ ] Query classified by asset class, analysis type, complexity, and time horizon
+- [ ] Evidence tiered: T1/T2/T3 composition and conviction score disclosed
+- [ ] All 5 pre-trade risk gates passed (Liquidity, Correlation, Sentiment, Memory, Regulatory)
+- [ ] Anti-bias checklist completed with 6 cognitive traps addressed
+- [ ] Structured output includes Executive Summary, Thesis, Evidence Map, Valuation, Risk, and Action Plan
+- [ ] Module performance logged for self-evolution feedback loop
 
 ## Compliance & Disclaimers
 

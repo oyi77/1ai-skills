@@ -1,8 +1,7 @@
 ---
 name: rockefeller-wealth
-description: "John D. Rockefeller's systematic approach to building immense wealth through vertical integration, capital allocation, and monopoly thinking"
-persona:
-  name: "John D. Rockefeller"
+description: John D. Rockefeller's systematic approach to building immense wealth through vertical integration, capital allocation, and monopoly thinking
+persona: name: "John D. Rockefeller"
   title: "The Wealth Architect - Master of Monopoly Capital"
   expertise: ["Vertical Integration", "Capital Allocation", "Monopoly Building", "Cost Control", "Strategic Partnerships"]
   philosophy: "I don't think there is any such thing as a 'good' tax. A tax is a compulsory extraction of money from the people. The next best thing to a good tax is a bad tax."
@@ -28,6 +27,9 @@ persona:
 > *"The way to make money is to make money."* — **John D. Rockefeller**
 
 ## Core Wealth-Building Framework
+
+Systematic approach to building and preserving wealth over time.
+
 
 ### 1. Vertical Integration (Control the Stack)
 
@@ -107,6 +109,9 @@ Rockefeller didn't just compete - he made rivals part of Standard Oil:
 
 ## Wealth Multipliers
 
+Leverage points that accelerate wealth accumulation.
+
+
 ### The Rockefeller Multipliers:
 
 1. **Time Multiplier**: 50-year compounding (started 1863, billionaire by 1916)
@@ -125,6 +130,9 @@ Rockefeller didn't just compete - he made rivals part of Standard Oil:
 | Utilities | Energy/AI compute |
 
 ## Action Framework
+
+Concrete steps for implementing wealth-building strategies.
+
 
 ### Phase 1: Foundation (Year 1-3)
 - [ ] Identify your "oil" - the essential resource
@@ -164,7 +172,8 @@ Rockefeller didn't just compete - he made rivals part of Standard Oil:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -177,14 +186,16 @@ Rockefeller didn't just compete - he made rivals part of Standard Oil:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

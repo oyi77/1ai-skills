@@ -48,6 +48,11 @@ Cloudflare provides multi-layer DDoS protection across its global network of ove
 
 ## Core Concepts
 
+This section covers core concepts for implementing ddos mitigation with cloudflare.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### DDoS Attack Categories
 
 | Layer | Attack Type | Examples | Cloudflare Protection |
@@ -91,6 +96,11 @@ Internet Traffic
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Onboard Domain to Cloudflare
 
 ```bash
@@ -398,6 +408,11 @@ if __name__ == "__main__":
 
 ## Monitoring and Alerting
 
+This section covers monitoring and alerting for implementing ddos mitigation with cloudflare.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Cloudflare Dashboard Metrics
 
 - **Firewall Events** - View blocked requests, challenged requests, rate-limited requests
@@ -436,6 +451,22 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting
 - **Cache Strategy** - Maximize cache hit ratio to reduce origin load during attacks
 - **Waiting Room** - Configure Cloudflare Waiting Room for critical pages during traffic surges
 - **Authenticated Origin** - Enable Authenticated Origin Pulls to prevent direct-to-origin attacks
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

@@ -54,6 +54,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Collect and Parse DNS Query Logs
 
 Ingest DNS traffic from network sensors and parse into analyzable format:
@@ -1267,6 +1272,11 @@ alert dns any any -> any any (msg:"ET TROJAN DNS TXT Record Staged Payload Reque
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Command And Control Over Dns assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Command And Control Over Dns response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Investigating Suspected DNS Tunneling from an Internal Host
 
 **Context**: The SOC receives an alert from the DNS firewall showing a single internal host (10.1.5.42) making 15,000+ DNS queries to the domain `c8a3f1e2.tunnelsvc.example.com` in the past hour. All queries are TXT type with long, random-looking subdomains. Normal DNS volume for this host is ~200 queries/hour.
@@ -1307,6 +1317,20 @@ alert dns any any -> any any (msg:"ET TROJAN DNS TXT Record Staged Payload Reque
 - Setting the threshold too low, overwhelming the SOC with false positives
 - Not accounting for punycode/internationalized domain names in feature extraction
 - Deploying without a feedback loop for analysts to flag false positives for model retraining
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

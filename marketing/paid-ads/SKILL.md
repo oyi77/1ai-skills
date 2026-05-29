@@ -3,6 +3,8 @@ name: paid-ads
 description: Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting, budget optimization, conversion tracking. Use when setting up ad campaigns, optimizing ad spend, or designing ad creative.
 ---
 
+
+
 # Paid Ads
 
 Design and optimize paid advertising campaigns.
@@ -24,6 +26,44 @@ Design and optimize paid advertising campaigns.
 - Implementing conversion tracking
 
 ## Pseudo Code
+
+The paid-ads workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# paid-ads primary flow
+input = prepare(raw_data)
+result = process(input, config={ads, advertising, audience, budget, campaigns})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# paid-ads primary flow
+input = prepare(raw_data)
+result = process(input, config={ads, advertising, audience, budget, campaigns})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Google Search Ad
 
@@ -81,3 +121,20 @@ def allocate_budget(total_budget, campaigns):
 - **Retargeting**: 7-day window for hot leads, 30-day for warm
 - **Negative keywords**: Add 10-20 per week to reduce waste
 - **Landing page match**: Ad message must match landing page headline
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels

@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy App Connectors in Application Network
 
 App Connectors establish outbound-only tunnels to the ZPA cloud, providing access to internal applications.
@@ -256,6 +261,11 @@ index=zscaler_zpa sourcetype=zpa:useractivity
 
 ## Common Scenarios
 
+**Scenario 1: Standard Configuring Zscaler Private Access For Ztna assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Configuring Zscaler Private Access For Ztna response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Migrating 500-User Organization from Cisco AnyConnect VPN to ZPA
 
 **Context**: A financial services firm with 500 employees uses Cisco AnyConnect for remote access. VPN split-tunnel configuration creates security gaps, and full-tunnel mode causes performance issues. The firm needs application-level access control for SOX compliance.
@@ -271,6 +281,22 @@ index=zscaler_zpa sourcetype=zpa:useractivity
 8. Phase out VPN connections after validating all application access through ZPA
 
 **Pitfalls**: App Connector DNS must resolve all internal FQDNs used in application segments. Wildcard domain segments can cause performance issues if too broad. Browser Access does not support all web application frameworks (WebSocket-heavy apps may require Client Connector). CrowdStrike ZTA integration requires Falcon sensor deployment on all endpoints before enforcing posture policies.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

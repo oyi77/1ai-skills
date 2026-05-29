@@ -50,6 +50,11 @@ Ed25519 is a high-performance digital signature algorithm using the Edwards curv
 
 ## Key Concepts
 
+This section covers key concepts for implementing digital signatures with ed25519.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Ed25519 vs RSA vs ECDSA
 
 | Property | Ed25519 | RSA-3072 | ECDSA P-256 |
@@ -86,3 +91,15 @@ Ed25519 is a high-performance digital signature algorithm using the Edwards curv
 - [ ] Deterministic: same input produces same signature
 - [ ] File signing and verification works correctly
 - [ ] Performance meets or exceeds RSA-3072
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

@@ -2,6 +2,7 @@
 name: finishing-a-development-branch
 description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Finishing A Development Branch"
@@ -52,6 +53,13 @@ Guide completion of development work by presenting clear options and handling ch
 **Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
 
 ## The Process
+
+- Configure branch, cleanup, complete, completion, decide settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Step 1: Verify Tests
 
@@ -248,7 +256,8 @@ git worktree remove <worktree-path>
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

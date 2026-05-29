@@ -3,6 +3,7 @@ name: graphql-api
 description: GraphQL API development — schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization
 ---
 
+
 ## Overview
 
 GraphQL provides a flexible query language for APIs that lets clients request exactly the data they need. This skill covers schema design, resolver implementation, real-time subscriptions, and performance optimization patterns for production GraphQL APIs.
@@ -26,6 +27,26 @@ GraphQL provides a flexible query language for APIs that lets clients request ex
 - Replacing multiple REST endpoints with a single GraphQL endpoint
 
 ## Pseudo Code
+
+The graphql-api workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# graphql-api primary flow
+input = prepare(raw_data)
+result = process(input, config={api, apollo, design, development, federation})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Schema Design
 ```graphql
@@ -174,6 +195,14 @@ const server = new ApolloServer({
 
 ## Common Patterns
 
+Proven patterns for graphql-api usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Authorization Directive
 ```graphql
 directive @auth(requires: Role = USER) on FIELD_DEFINITION
@@ -221,3 +250,20 @@ type Query {
   users(first: Int, after: String): UserConnection!
 }
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

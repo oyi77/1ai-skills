@@ -48,6 +48,11 @@ Linux kernel rootkits operate at ring 0, modifying kernel data structures to hid
 
 ## Steps
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Acquire Memory Dump
 Capture Linux physical memory using LiME kernel module or AVML for cloud instances.
 
@@ -133,3 +138,17 @@ Summary:
   Modified Binaries:    3 (/usr/bin/ps, netstat, ls)
   Risk Level:           CRITICAL
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility

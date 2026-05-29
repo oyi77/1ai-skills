@@ -27,3 +27,50 @@ This skill equips Claude with deep expertise in prompt engineering, custom instr
 - Teaching prompt engineering best practices
 - Debugging prompt performance issues
 - Creating prompt templates for reusable workflows
+
+## When to Use
+
+- When the task falls within this skill's domain expertise
+- When automated execution saves time over manual work
+- When the skill's tools and integrations are available
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## How to Use
+
+1. Describe the prompt engineering task clearly (system prompt, few-shot, chain-of-thought)
+2. Provide the current prompt or target application context
+3. Specify the LLM model and constraints (token limits, output format)
+4. Review the optimized prompt and iterate based on test results
+
+## Core Techniques
+
+| Technique | Best For | Example |
+|-----------|----------|--------|
+| Chain-of-thought | Multi-step reasoning | "Let's think step by step" |
+| Few-shot examples | Format consistency | 3-5 input/output pairs |
+| XML tags | Structured sections | `<context>...</context>` |
+| Role prompting | Domain expertise | "You are a senior SRE" |
+| Negative constraints | Preventing errors | "Do NOT include" |
+
+## Prompt Debugging Checklist
+
+- Is the task clearly stated in the first sentence?
+- Are output format requirements explicit?
+- Are edge cases covered with examples?
+- Is the token budget sufficient for the response?
+- Are negative constraints preventing known failure modes?
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

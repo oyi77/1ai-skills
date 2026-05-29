@@ -88,6 +88,11 @@ AWS Verified Access is a Zero Trust Network Access (ZTNA) service that provides 
 
 ## Core Components
 
+This section covers core components for configuring aws verified access for ztna.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Verified Access Instance
 
 The regional entity that evaluates access requests against policies.
@@ -198,6 +203,11 @@ aws ec2 create-verified-access-endpoint \
 
 ## Cedar Policy Language
 
+This section covers cedar policy language for configuring aws verified access for ztna.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Policy Basics
 
 ```cedar
@@ -446,6 +456,22 @@ aws cloudwatch put-metric-alarm \
 6. **Test policies in non-production**: Validate Cedar policies before production deployment
 7. **Set high device trust thresholds**: Require overall score above 70 for production access
 8. **Monitor for policy drift**: Use AWS Config rules to detect unauthorized changes
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Establish Baseline Bandwidth Measurements
 
 ```bash
@@ -267,6 +272,11 @@ iperf3 -c 10.10.20.10 -t 10 -f m -p 5201
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Testing VoIP System Resilience to Bandwidth Degradation
 
 **Context**: A company relies on SIP-based VoIP for business communications. The security team needs to assess how VoIP quality degrades under various network attack conditions and at what point calls become unusable. The testing is authorized on a dedicated VoIP test VLAN.
@@ -285,6 +295,22 @@ iperf3 -c 10.10.20.10 -t 10 -f m -p 5201
 - Testing at rates too low, causing complete call failure instead of measurable degradation
 - Not accounting for VoIP codec differences -- G.711 requires more bandwidth than G.729
 - Running the test on a shared VLAN and affecting non-test traffic
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

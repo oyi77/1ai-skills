@@ -58,6 +58,11 @@ Windows LNK (shortcut) files and Jump Lists are critical forensic artifacts that
 
 ## LNK File Structure
 
+This section covers lnk file structure for analyzing lnk file and jump list artifacts.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Shell Link Header (76 bytes)
 
 | Offset | Size | Field |
@@ -84,6 +89,12 @@ Windows LNK (shortcut) files and Jump Lists are critical forensic artifacts that
 
 ## Analysis with EZ Tools
 
+| Tool | Purpose |
+|------|---------|
+| Autopsy | Open-source digital forensics platform for disk image analysis |
+| FTK Imager | Forensic imaging and evidence preview tool |
+| Volatility | Memory forensics framework for RAM analysis |
+| dcfldd | Enhanced dd with built-in hashing for forensic acquisition |
 ### LECmd - LNK File Parser
 
 ```powershell
@@ -112,6 +123,11 @@ JLECmd.exe -d "C:\Evidence\Users\suspect\AppData\Roaming\Microsoft\Windows\Recen
 
 ## Jump List Structure
 
+This section covers jump list structure for analyzing lnk file and jump list artifacts.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Automatic Destinations (automaticDestinations-ms)
 
 These are OLE Compound files (Structured Storage) identified by AppID hash in the filename:
@@ -184,6 +200,11 @@ def parse_lnk_header(lnk_path: str) -> dict:
 
 ## Investigation Use Cases
 
+This section covers investigation use cases for analyzing lnk file and jump list artifacts.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Evidence of File Access
 1. Parse LNK files from Recent folder to identify accessed documents
 2. Cross-reference with MFT timestamps and USN Journal entries
@@ -206,6 +227,22 @@ Recent research (IEEE 2025) shows that Windows 11 produces different LNK and Jum
 - Modified Jump List behavior for modern applications
 - UWP/MSIX applications may not generate traditional Jump Lists
 - Windows 11 Quick Access replaces some Recent functionality
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

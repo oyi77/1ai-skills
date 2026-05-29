@@ -3,6 +3,7 @@ name: nodejs-patterns
 description: Node.js patterns — Express, Fastify, streams, worker threads, clustering, performance optimization
 ---
 
+
 ## Overview
 
 Production Node.js patterns — framework selection (Express vs Fastify), streams for large data, worker threads for CPU tasks, clustering for multi-core, and performance optimization.
@@ -26,6 +27,26 @@ Production Node.js patterns — framework selection (Express vs Fastify), stream
 - Debugging memory leaks or performance issues
 
 ## Pseudo Code
+
+The nodejs-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# nodejs-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={clustering, express, fastify, node, nodejs})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Fastify Server
 
@@ -137,3 +158,20 @@ process.on('SIGTERM', async () => {
 - **Worker threads**: Offload CPU tasks (image resize, PDF gen)
 - **Clustering**: Use PM2 or native cluster for multi-core
 - **Health checks**: `/health` endpoint for load balancers
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

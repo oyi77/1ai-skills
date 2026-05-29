@@ -44,6 +44,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Inventory Current USB Usage
 
 ```powershell
@@ -133,6 +138,21 @@ Computer Configuration → Administrative Templates → System → Device Instal
 | **Device Instance ID** | Unique identifier for a specific physical USB device |
 | **Device Control** | EDR/endpoint feature restricting device access based on type, vendor, or serial number |
 | **USB Class** | USB device category (mass storage 08h, HID 03h, printer 07h) |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Systems
 

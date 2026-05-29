@@ -55,6 +55,11 @@ Amazon Macie is a fully managed data security and privacy service that uses mach
 
 ## Enable Macie
 
+This section covers enable macie for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Via AWS CLI
 
 ```bash
@@ -87,6 +92,11 @@ resource "aws_macie2_classification_export_configuration" "main" {
 
 ## Configure Discovery Jobs
 
+This section covers configure discovery jobs for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Create a classification job for specific buckets
 
 ```bash
@@ -137,6 +147,11 @@ aws macie2 create-classification-job \
 
 ## Custom Data Identifiers
 
+This section covers custom data identifiers for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Create a custom identifier for internal IDs
 
 ```bash
@@ -164,6 +179,11 @@ aws macie2 create-custom-data-identifier \
 
 ## Allow Lists
 
+This section covers allow lists for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Create an allow list to suppress false positives
 
 ```bash
@@ -189,6 +209,11 @@ Macie provides 300+ managed data identifiers covering:
 
 ## Findings Management
 
+This section covers findings management for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### List findings
 
 ```bash
@@ -285,6 +310,11 @@ def lambda_handler(event, context):
 
 ## Multi-Account Deployment
 
+This section covers multi-account deployment for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Designate Macie administrator account
 
 ```bash
@@ -303,6 +333,11 @@ aws macie2 create-member \
 
 ## Monitoring Macie Operations
 
+This section covers monitoring macie operations for implementing aws macie for data classification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Usage statistics
 
 ```bash
@@ -317,6 +352,22 @@ aws macie2 get-usage-statistics \
 aws macie2 list-classification-jobs \
   --filter-criteria '{"includes": [{"comparator": "EQ", "key": "jobStatus", "values": ["RUNNING"]}]}'
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

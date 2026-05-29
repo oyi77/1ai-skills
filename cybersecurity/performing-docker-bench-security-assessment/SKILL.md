@@ -41,6 +41,11 @@ Docker Bench for Security is an open-source script that checks dozens of common 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Run Docker Bench Security
 
 ```bash
@@ -136,6 +141,21 @@ docker run --rm docker/docker-bench-security 2>&1 | grep -c "PASS"
 docker run --rm docker/docker-bench-security 2>&1 | grep -c "FAIL"
 docker run --rm docker/docker-bench-security 2>&1 | grep -c "WARN"
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

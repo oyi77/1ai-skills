@@ -88,6 +88,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for detecting t1055 process injection with sysmon.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk -- Remote Thread Creation
 ```spl
 index=sysmon EventCode=8
@@ -153,6 +158,22 @@ tags:
 3. **APC Injection**: Malware queues an Asynchronous Procedure Call to threads of a target process using QueueUserAPC. Harder to detect, requires Event 10 monitoring.
 4. **Reflective DLL Injection**: DLL is loaded directly from memory without touching disk, bypassing ImageLoaded detection. Requires memory-level analysis.
 5. **Process Doppelganging**: Leverages NTFS transactions to replace a legitimate process image. Detected via process integrity checking.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

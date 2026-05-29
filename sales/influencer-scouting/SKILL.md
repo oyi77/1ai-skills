@@ -1,18 +1,23 @@
 ---
 name: influencer-scouting
-version: "1.0.0"
-description: >
-  Full influencer scouting, outreach, and performance tracking system for BerkahKarya.
-  Covers platform search across TikTok, Instagram, and YouTube for Indonesian creators,
-  scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement.
-  Integrates with Kalodata for TikTok analytics.
+version: 1.0.0
+description: |
+  |
+    >
+      Full influencer scouting, outreach, and performance tracking system for BerkahKarya.
+      Covers platform search across TikTok, Instagram, and YouTube for Indonesian creators,
+      scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement.
+      Integrates with Kalodata for TikTok analytics.
 author: Vilona / BerkahKarya
 language: id-ID / en
 tags: [influencer, marketing, tiktok, instagram, youtube, kol, affiliate, indonesia]
-scripts:
-  - scripts/ig_scout.py
-  - scripts/tiktok_scout.py
+scripts: |
+  |
+    - scripts/ig_scout.py
+      - scripts/tiktok_scout.py
 ---
+
+
 
 # Influencer Scouting Skill 🔍
 
@@ -21,6 +26,13 @@ Find, qualify, and close Indonesian creators for BerkahKarya campaigns.
 ---
 
 ## 1. Target Creator Profile (ICP)
+
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Sweet Spot Parameters
 
@@ -56,6 +68,13 @@ Find, qualify, and close Indonesian creators for BerkahKarya campaigns.
 ---
 
 ## 2. Platform Search Strategy
+
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 2A. TikTok Scouting
 
@@ -141,6 +160,13 @@ python3 scripts/ig_scout.py --search \
 
 ## 3. Scoring System
 
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Creator Score Formula
 
 ```python
@@ -202,6 +228,42 @@ RED_FLAGS = {
 ---
 
 ## 4. Outreach DM Templates (Bahasa Indonesia, Casual)
+
+Reusable templates for influencer-scouting.
+
+Standard config:
+```yaml
+name: influencer-scouting_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: influencer-scouting_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard influencer-scouting
+```yaml
+name: influencer-scouting_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: influencer-scouting_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### 4A. TikTok DM
 
@@ -276,6 +338,13 @@ Lagi available untuk ngobrol sebentar? 🙏
 
 ## 5. Negotiation Framework
 
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 5A. Rate Card Benchmarks Indonesia 2025
 
 | Tier | Platform | Followers | Rate per Post |
@@ -342,6 +411,13 @@ Boleh gue tau brief deliverable-nya dipake kapan?"
 ---
 
 ## 6. Performance Tracking
+
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Campaign Metrics per Creator
 
@@ -424,6 +500,13 @@ Pipeline:
 
 ## 7. Blacklist Criteria
 
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Auto-Blacklist (immediate DQ)
 
 ```python
@@ -471,6 +554,13 @@ BLACKLIST_CRITERIA = {
 ---
 
 ## 8. Database Schema
+
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Creator Profile
 
@@ -558,6 +648,13 @@ CREATE TABLE posts (
 
 ## 9. Scripts Reference
 
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 9A. `scripts/ig_scout.py`
 
 ```python
@@ -624,6 +721,13 @@ python3 scripts/tiktok_scout.py \
 
 ## 10. Tools & Integrations
 
+- Configure across, analytics, berkahkarya, covers, creators settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Kalodata (TikTok Analytics)
 ```bash
 # Already installed — see kalodata skill
@@ -682,3 +786,30 @@ DEAL TYPES:
 
 *Skill version 1.0 — BerkahKarya Influencer Engine 🔍*
 *Last updated: 2026-03-13*
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- Test email sequences with seed accounts before full send
+- Verify CRM data integrity (no duplicates, correct stages)
+- Check lead scoring model against actual conversion data
+- Confirm proposal/contract templates are current and branded
+- Validate payment links and checkout flow end-to-end

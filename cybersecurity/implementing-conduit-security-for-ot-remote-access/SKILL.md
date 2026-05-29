@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Design Conduit Architecture for Remote Access
 
 ```yaml
@@ -344,6 +349,20 @@ if __name__ == "__main__":
 | Approval-Based Access | Workflow requiring plant operations manager authorization before remote access credentials are activated |
 | Vendor Escort | Practice of having an internal OT engineer monitor vendor remote sessions in real time |
 | Break-Glass Access | Emergency access procedure bypassing normal approval workflow for critical situations |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

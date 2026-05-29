@@ -47,6 +47,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Map Authentication Endpoints
 
 Intercept mobile app traffic to identify authentication-related endpoints:
@@ -178,6 +183,22 @@ curl -X GET https://api.target.com/api/v1/users/me \
 | **PKCE** | Proof Key for Code Exchange - OAuth 2.0 extension preventing authorization code interception in mobile apps |
 | **Token Refresh** | Mechanism for obtaining new access tokens using long-lived refresh tokens without re-authentication |
 | **Session Fixation** | Attack where adversary sets a known session ID before victim authenticates, then hijacks the session |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Tools & Systems
 

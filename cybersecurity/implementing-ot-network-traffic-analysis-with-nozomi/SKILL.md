@@ -56,6 +56,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy Guardian Sensors for Passive Monitoring
 
 ```python
@@ -242,6 +247,22 @@ if __name__ == "__main__":
 | Smart Polling | Nozomi's active query feature using native protocols to safely extract additional device details |
 | Asset Intelligence | Nozomi's automatic identification and classification of OT/IoT assets from network traffic |
 | Threat Intelligence Feed | Nozomi Labs-maintained feed of OT-specific threat indicators, updated based on global honeypot data |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

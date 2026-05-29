@@ -3,6 +3,7 @@ name: fluxcd-gitops
 description: Flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications
 ---
 
+
 ## Overview
 
 Flux CD is a GitOps toolkit for Kubernetes using source, kustomize, helm, and notification controllers. Declarative CRDs manage the entire delivery pipeline.
@@ -24,6 +25,13 @@ Flux CD is a GitOps toolkit for Kubernetes using source, kustomize, helm, and no
 - Multi-tenant clusters with namespace isolation
 
 ## Pseudo Source
+
+- Configure automation, controllers, flux, fluxcd, gitops settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### GitRepository
 ```yaml
@@ -132,3 +140,20 @@ spec:
 - **Multi-tenancy**: namespace isolation with service account impersonation
 - **OCI sources**: store manifests as OCI artifacts
 - **SOPS secrets**: encrypted secrets in Git with Mozilla SOPS
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

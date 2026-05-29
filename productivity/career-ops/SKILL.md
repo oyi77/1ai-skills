@@ -78,3 +78,19 @@ Agent: Runs pdf command with role-specific keyword injection for ATS pass
 User: "Where am I in my job search?"
 Agent: Runs dashboard, shows application pipeline status and next actions
 ```
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

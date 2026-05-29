@@ -30,6 +30,11 @@ ISO/IEC 27001:2022 is the international standard for establishing, implementing,
 
 ## Core Concepts
 
+This section covers core concepts for implementing iso 27001 information security management.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### ISMS Clauses (4-10)
 The management system requirements define **what** must be done:
 - **Clause 4 - Context of the Organization**: Define scope, interested parties, and internal/external issues
@@ -66,6 +71,11 @@ The 2022 revision restructured 93 controls into four categories:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: Gap Analysis and Scoping (Weeks 1-4)
 1. Define ISMS scope boundaries (locations, business units, systems)
 2. Identify interested parties and their requirements
@@ -153,6 +163,21 @@ The 2022 revision restructured 93 controls into four categories:
 - **ISO 27701**: Privacy Information Management System (PIMS) extension
 - **NIST CSF 2.0**: Cross-mapping for dual compliance
 - **SOC 2**: Overlapping trust service criteria
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 - ISO/IEC 27001:2022 Information Security Management Systems

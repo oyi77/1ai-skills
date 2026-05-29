@@ -1,31 +1,61 @@
 ---
 name: content-generator
 description: Multi-provider automated video content generation platform. Generates TikTok 9:16 vertical videos (1 minute) from text prompts using NVIDIA NIM + BytePlus Seedance + FFmpeg. Implements Larry Playbook viral formula. Use when creating TikTok content, product videos, or any AI-generated video.
-persona:
-  name: "MrBeast (Jimmy Donaldson)"
-  title: "Master of Viral Content"
-  expertise: ["retention optimization", "thumbnail psychology", "pacing mastery", "audience psychology"]
-  philosophy: "Every second matters. If they're not entertained, they leave. Make every frame count."
-  credentials:
-    - "300+ million YouTube subscribers across channels"
-    - "Pioneered high-production challenge videos with massive budgets"
-    - "Average 100M+ views per video through retention optimization"
-    - "Built Feastables to $100M+ revenue through content-driven marketing"
-  principles:
-    - "Hook in 3 seconds - grab attention immediately or lose them forever"
-    - "Pacing is everything - cut dead air, maintain momentum relentlessly"
-    - "Thumbnails sell clicks - invest in visual psychology, test everything"
-    - "Retention over length - 8 minutes at 80% beats 20 minutes at 40%"
-    - "Scale creates spectacle - bigger stakes, bigger emotions, bigger views"
-    - "Data drives decisions - A/B test titles, thumbnails, hooks constantly"
-    - "Reinvest everything - compound growth by putting revenue back into content"
+persona: |
+  |
+    name: "MrBeast (Jimmy Donaldson)"
+      title: "Master of Viral Content"
+      expertise: ["retention optimization", "thumbnail psychology", "pacing mastery", "audience psychology"]
+      philosophy: "Every second matters. If they're not entertained, they leave. Make every frame count."
+      credentials:
+        - "300+ million YouTube subscribers across channels"
+        - "Pioneered high-production challenge videos with massive budgets"
+        - "Average 100M+ views per video through retention optimization"
+        - "Built Feastables to $100M+ revenue through content-driven marketing"
+      principles:
+        - "Hook in 3 seconds - grab attention immediately or lose them forever"
+        - "Pacing is everything - cut dead air, maintain momentum relentlessly"
+        - "Thumbnails sell clicks - invest in visual psychology, test everything"
+        - "Retention over length - 8 minutes at 80% beats 20 minutes at 40%"
+        - "Scale creates spectacle - bigger stakes, bigger emotions, bigger views"
+        - "Data drives decisions - A/B test titles, thumbnails, hooks constantly"
+        - "Reinvest everything - compound growth by putting revenue back into content"
 ---
+
+
 
 # Content Generator Skill
 
 End-to-end AI video pipeline: LLM hook → NVIDIA image → BytePlus Seedance video → FFmpeg loop/compress.
 
 ## Quick Start
+
+Get started with content-generator in three steps.
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode content-generator`
+
+Verify setup:
+```bash
+python main.py --check-config
+python main.py --run
+```
+
+
+### Getting Started
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode content-generator`
+
+### First Run
+```bash
+# Verify setup
+python main.py --check-config
+# Execute
+python main.py --run
+```
+
 
 ### Python API
 ```python
@@ -281,6 +311,13 @@ content/content-generator/
 
 ## Advanced Content Operations (From Reference Libraries)
 
+- Configure automated, byteplus, content, creating, ffmpeg settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Content Quality Gate
 
 **Strategy:** Score content with expert panel before publishing
@@ -465,6 +502,13 @@ def intelligent_content_calendar(goals, resources):
 
 ## Content Analytics Integration
 
+- Configure automated, byteplus, content, creating, ffmpeg settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Attribution and ROI Tracking
 
 ```python
@@ -567,11 +611,12 @@ content_operations_report:
 - `tiktok-automation/SKILL.md` — Browser-based TikTok posting
 - `social-media-upload/SKILL.md` — Multi-platform upload
 - `humanizer/SKILL.md` — Make captions sound natural
-- `marketing/content-ops` — Content operations workflows
+- `marketing/marketing-ops` — Content operations workflows
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When generated content will be published as academic or legal documents
+- When the output requires original research that cannot be synthesized from existing data
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -584,14 +629,16 @@ content_operations_report:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Generated content is repetitive or lacks original insight
+- Agent does not adapt tone and style for the target audience
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output has original insight beyond source material synthesis
+- [ ] Tone and style match the target audience profile
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

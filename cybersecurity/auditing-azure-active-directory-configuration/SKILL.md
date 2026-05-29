@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enumerate Tenant Configuration and Security Defaults
 
 Assess the tenant's baseline identity security settings including security defaults and legacy authentication status.
@@ -212,6 +217,11 @@ open ./scoutsuite-azure-report/azure-report.html
 
 ## Common Scenarios
 
+**Scenario 1: Standard Auditing Azure Active Directory Configuration assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Auditing Azure Active Directory Configuration response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Post-Acquisition Azure Tenant Security Assessment
 
 **Context**: After acquiring a company, the security team needs to assess the Azure tenant identity posture before integrating it with the corporate Entra ID.
@@ -226,6 +236,22 @@ open ./scoutsuite-azure-report/azure-report.html
 7. Produce a risk report with prioritized remediation steps before tenant integration
 
 **Pitfalls**: Azure AD Premium P2 is required for risky sign-in detections and PIM. If the acquired tenant uses a lower license tier, many identity protection features will be unavailable. Guest users from partner tenants may have implicit access through dynamic groups that are not visible in standard role assignment queries.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

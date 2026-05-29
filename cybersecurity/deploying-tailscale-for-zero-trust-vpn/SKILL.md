@@ -71,6 +71,10 @@ Tailscale is a zero trust mesh VPN built on WireGuard that creates encrypted pee
 
 ## Installation and Setup
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Linux Installation
 
 ```bash
@@ -243,6 +247,11 @@ Tailscale ACLs define who can access what within your tailnet using a declarativ
 
 ## Exit Nodes and Subnet Routing
 
+This section covers exit nodes and subnet routing for deploying tailscale for zero trust vpn.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Configure Exit Node
 
 ```bash
@@ -333,6 +342,11 @@ tailscale up --login-server https://headscale.example.com
 
 ## Security Hardening
 
+This section covers security hardening for deploying tailscale for zero trust vpn.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Key Expiry and Rotation
 
 ```bash
@@ -400,6 +414,10 @@ tailscale netcheck
 
 ## Integration Patterns
 
+- **Follow the principle of least privilege** — use the minimum permissions needed for each task
+- **Document everything** — maintain logs of all actions, configurations, and findings
+- **Verify before acting** — confirm assumptions about the environment before making changes
+- **Automate repetitive steps** — script common workflows to reduce human error
 ### Service Mesh Integration
 
 ```bash
@@ -421,6 +439,20 @@ tailscale up --authkey=$TS_AUTHKEY --hostname=ci-runner-$CI_JOB_ID
 # Access internal resources during build/deploy
 # Node automatically removed when container stops
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

@@ -3,6 +3,7 @@ name: svelte-patterns
 description: Svelte 5 and SvelteKit development patterns — runes, stores, server-side rendering, form actions, edge deployment
 ---
 
+
 ## Overview
 
 Svelte 5 introduces runes (`$state`, `$derived`, `$effect`) replacing the old reactive syntax. SvelteKit provides SSR/SSG with file-based routing, form actions, and server-side load functions.
@@ -23,6 +24,26 @@ Svelte 5 introduces runes (`$state`, `$derived`, `$effect`) replacing the old re
 - Deploying to edge runtimes
 
 ## Pseudo Code
+
+The svelte-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# svelte-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={actions, deployment, development, edge, form})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Svelte 5 runes
 ```svelte
@@ -105,3 +126,20 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 - **Layout groups**: `(app)` and `(auth)` route groups for different layouts
 - **Streaming**: Return promises from load functions for progressive loading
 - **Hooks**: `handle` for middleware, `handleError` for error reporting
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

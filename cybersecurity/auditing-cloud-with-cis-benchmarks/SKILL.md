@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Select Appropriate CIS Benchmark Version
 
 Choose the correct benchmark version for each cloud provider. Current versions as of 2025 include CIS AWS Foundations Benchmark v5.0, CIS Azure Foundations Benchmark v4.0, and CIS GCP Foundations Benchmark v4.0.
@@ -212,6 +217,11 @@ az policy assignment create \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Auditing Cloud With Cis Benchmarks assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Auditing Cloud With Cis Benchmarks response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Pre-Audit CIS Assessment for SOC 2 Certification
 
 **Context**: A SaaS company pursuing SOC 2 Type II certification needs to demonstrate cloud security controls aligned to CIS benchmarks. The auditor requires evidence of continuous compliance monitoring across 45 AWS accounts.
@@ -226,6 +236,22 @@ az policy assignment create \
 7. Document exceptions for controls intentionally not implemented with risk acceptance justification
 
 **Pitfalls**: Remediating controls without testing in a staging environment first can break production workloads. Ignoring Level 2 controls entirely weakens the audit narrative even if they are not strictly required.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

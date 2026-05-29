@@ -59,6 +59,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Obtain Current ATT&CK Data
 
 Download the latest ATT&CK STIX bundle for the relevant matrix (Enterprise, Mobile, ICS):
@@ -139,6 +144,22 @@ Summarize coverage by tactic category (Initial Access, Execution, Persistence, e
 | **Data Source** | ATT&CK v10+ component identifying telemetry required to detect a technique (e.g., Process Creation, Network Traffic) |
 | **Coverage Score** | Numeric (0–100) representing detection completeness for a technique: 0=blind, 50=logged only, 100=alerted |
 | **MITRE D3FEND** | Defensive countermeasure ontology complementing ATT&CK — maps defensive techniques to attack techniques they mitigate |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Tools & Systems
 

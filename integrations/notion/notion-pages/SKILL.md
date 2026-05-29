@@ -18,9 +18,44 @@ Create and edit Notion pages
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Retrieve page content as blocks (paragraphs, headings, lists, tables)
+2. Append new blocks to pages for structured content
+3. Update existing blocks in place
+4. Handle rich text formatting with Notion annotation system
+
+## Block Operations
+
+```python
+blocks = requests.get(
+    f"https://api.notion.com/v1/blocks/{page_id}/children",
+    headers=headers
+).json()["results"]
+
+requests.patch(
+    f"https://api.notion.com/v1/blocks/{page_id}/children",
+    headers=headers,
+    json={"children": [
+        {"object": "block", "type": "heading_2",
+         "heading_2": {"rich_text": [{"text": {"content": "Section Title"}}]}},
+        {"object": "block", "type": "paragraph",
+         "paragraph": {"rich_text": [{"text": {"content": "Body text here."}}]}}
+    ]}
+)
+```
+
+## Common Patterns
+
+- Use heading blocks for document structure
+- Bookmark blocks for external links with previews
+- Callout blocks for warnings and important notes
+- Synced blocks for reusable content across pages
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the integration requires admin-level permissions on the target platform
+- When the data exchange involves regulated information requiring encryption
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +68,16 @@ Create and edit Notion pages
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Integration does not handle API errors or service unavailability
+- Agent does not verify data consistency across connected systems
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] API errors and service outages are handled with appropriate retry logic
+- [ ] Data consistency is verified across all connected systems
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

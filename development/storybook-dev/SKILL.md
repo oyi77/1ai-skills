@@ -3,6 +3,7 @@ name: storybook-dev
 description: Storybook component development — stories, addons, controls, accessibility testing, visual regression
 ---
 
+
 ## Overview
 
 Storybook is a frontend workshop for building UI components in isolation. It provides an interactive environment to develop, test, and document components independently from your application. This skill covers story authoring, addon configuration, accessibility testing, and visual regression.
@@ -30,6 +31,26 @@ Storybook is a frontend workshop for building UI components in isolation. It pro
 - Onboarding new developers to the UI codebase
 
 ## Pseudo Code
+
+The storybook-dev workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# storybook-dev primary flow
+input = prepare(raw_data)
+result = process(input, config={accessibility, addons, component, controls, dev})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup
 ```bash
@@ -235,6 +256,14 @@ export const Tablet: Story = {
 
 ## Common Patterns
 
+Proven patterns for storybook-dev usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Documentation Page
 ```typescript
 // src/components/Card/Card.stories.tsx
@@ -294,3 +323,20 @@ npx chromatic --project-token=<token>
 # In CI
 npx chromatic --project-token=${{ secrets.CHROMATIC_TOKEN }}
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

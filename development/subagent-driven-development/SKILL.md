@@ -242,7 +242,8 @@ Done!
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

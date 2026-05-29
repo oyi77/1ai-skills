@@ -61,6 +61,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Assess Detection Coverage Gaps
 
 Map current detection rules to ATT&CK and identify gaps:
@@ -289,6 +294,21 @@ USE CASE LIFECYCLE
 - **Threat-Intel Driven**: New APT group targets your sector — build use cases for their documented TTPs
 - **Red Team Findings**: Purple team exercise identifies blind spots — convert findings into production detection rules
 - **SIEM Migration**: Migrating from QRadar to Splunk — convert and validate all existing use cases on new platform
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

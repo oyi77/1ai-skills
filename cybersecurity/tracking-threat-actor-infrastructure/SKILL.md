@@ -47,6 +47,11 @@ Threat actor infrastructure tracking involves monitoring and mapping adversary-c
 
 ## Key Concepts
 
+This section covers key concepts for tracking threat actor infrastructure.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Infrastructure Pivoting
 Pivoting is the technique of using one known indicator to discover related infrastructure. Starting from a known C2 IP address, analysts can pivot via: passive DNS (find domains), reverse WHOIS (find related registrations), SSL certificates (find shared certs), SSH key fingerprints, HTTP response fingerprints, JARM/JA3S hashes, and WHOIS registrant data.
 
@@ -64,6 +69,11 @@ Certificate Transparency (CT) logs publicly record all SSL/TLS certificates issu
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Shodan Infrastructure Discovery
 
 ```python
@@ -288,6 +298,21 @@ def build_infrastructure_timeline(indicators):
 - Infrastructure pivoting discovers new related indicators
 - Timeline shows infrastructure evolution over time
 - Results are exportable as STIX 2.1 Infrastructure objects
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

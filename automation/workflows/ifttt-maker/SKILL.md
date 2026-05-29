@@ -20,7 +20,8 @@ Create IFTTT-style automations
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the automation requires complex multi-step conditional logic
+- When the trigger event requires sub-second response times
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Create IFTTT-style automations
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Trigger conditions are too broad causing excessive executions
+- Agent does not implement conditional logic for error states
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Trigger conditions are specific enough to avoid excessive firing
+- [ ] Conditional logic handles error and edge-case states
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

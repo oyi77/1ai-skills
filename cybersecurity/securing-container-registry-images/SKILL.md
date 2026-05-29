@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Scan Images for Vulnerabilities with Trivy
 
 Run comprehensive vulnerability scans against container images before and after pushing to the registry.
@@ -254,6 +259,11 @@ jobs:
 
 ## Common Scenarios
 
+**Scenario 1: Full disk acquisition from a suspect workstation**
+Connect via hardware write-blocker, acquire with dcfldd including SHA-256, split into segments for storage. Hash verification confirms bit-for-bit match.
+
+**Scenario 2: Live memory capture during incident response**
+Use LiME or WinPMEM to capture volatile RAM while the system is running, preserving running processes, network connections, and encryption keys that would be lost on shutdown.
 ### Scenario: Implementing a Secure Image Promotion Pipeline
 
 **Context**: A development team pushes images to a dev registry without security controls. The security team needs to implement a promotion pipeline that scans, signs, and promotes only approved images to the production registry.
@@ -268,6 +278,22 @@ jobs:
 7. Implement lifecycle policies to clean up untagged and old images in both registries
 
 **Pitfalls**: Vulnerability databases are updated constantly. An image that passes scanning today may have new CRITICAL vulnerabilities discovered tomorrow. Implement continuous scanning of already-deployed images, not just at build time. Image signing keys must be securely stored in KMS or Vault, not in CI/CD environment variables.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

@@ -55,6 +55,11 @@ fileless and living-off-the-land attack techniques.
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Deploy a LOLBin-Focused Sysmon Configuration
 
 Create a Sysmon config that captures the process creation and network events needed for LOLBin detection:
@@ -517,3 +522,10 @@ foreach ($binary in $lolbins_to_restrict) {
 - Check that AppLocker or WDAC policies do not break legitimate administrative workflows before deploying to production
 - Validate false positive rates by running detection rules against 7 days of baseline telemetry from a clean environment
 - Cross-reference detections against the LOLBAS project database at https://lolbas-project.github.io/ for completeness
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing

@@ -3,6 +3,7 @@ name: airflow-pipelines
 description: Apache Airflow workflow orchestration — DAGs, operators, sensors, XComs, pools, scheduling
 ---
 
+
 ## Overview
 
 Apache Airflow is the industry standard for programmatically authoring, scheduling, and monitoring data pipelines. This skill covers DAG design, operator selection, sensor patterns, XCom data passing, and production-ready pipeline patterns.
@@ -26,6 +27,26 @@ Apache Airflow is the industry standard for programmatically authoring, scheduli
 - Managing backfills and historical data processing
 
 ## Pseudo Code
+
+The airflow-pipelines workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# airflow-pipelines primary flow
+input = prepare(raw_data)
+result = process(input, config={airflow, apache, dags, operators, orchestration})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### DAG Definition
 
@@ -200,3 +221,20 @@ with TaskGroup(group_id='validation') as validate:
 | DAG not appearing | Import error or syntax issue | Check `airflow dags test <dag_id>` |
 | Sensor timeout | Resource not available | Increase timeout or use `mode='reschedule'` |
 | Max active runs reached | Concurrent DAG limit | Set `max_active_runs=1` or increase |
+
+## How to Use
+
+1. Define data sources, sinks, and transformation requirements
+2. Implement extraction with error handling and schema validation
+3. Add transformation logic with idempotency guarantees
+4. Configure loading with conflict resolution (upsert/append)
+5. Set up monitoring for pipeline health and data freshness
+6. Test with representative sample data before production
+
+## Red Flags
+
+- **Data pipeline has no error handling**: Silent failures corrupt downstream datasets
+- **No data validation at boundaries**: Bad input propagates through entire pipeline
+- **Missing monitoring for data freshness**: Stale data causes wrong business decisions
+- **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
+- **Hardcoded connection strings**: Credentials in code get committed to version control

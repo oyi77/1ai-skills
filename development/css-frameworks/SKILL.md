@@ -3,6 +3,7 @@ name: css-frameworks
 description: CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS
 ---
 
+
 ## Overview
 
 CSS frameworks and methodologies provide structured approaches to styling web applications. This skill covers the most popular frameworks and patterns: Tailwind CSS (utility-first), Bootstrap (component-based), PostCSS (transformation), Sass (preprocessing), CSS Modules (scoped), and CSS-in-JS (styled-components, Emotion).
@@ -30,6 +31,26 @@ CSS frameworks and methodologies provide structured approaches to styling web ap
 - **CSS-in-JS**: Dynamic styles, runtime theming, component libraries
 
 ## Pseudo Code
+
+The css-frameworks workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# css-frameworks primary flow
+input = prepare(raw_data)
+result = process(input, config={bootstrap, css, framework, frameworks, modules})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Tailwind CSS
 ```html
@@ -285,6 +306,14 @@ function Card({ title, children, theme }) {
 
 ## Common Patterns
 
+Proven patterns for css-frameworks usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Dark Mode Toggle
 ```javascript
 // Toggle dark mode
@@ -320,3 +349,20 @@ h1 {
   to { opacity: 1; transform: translateY(0); }
 }
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

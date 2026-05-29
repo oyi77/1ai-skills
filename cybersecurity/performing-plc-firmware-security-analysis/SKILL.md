@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Acquire PLC Firmware for Analysis
 
 Extract or obtain PLC firmware through authorized methods. This can be done by downloading from the vendor, extracting from a lab device, or obtaining from a project backup.
@@ -473,6 +478,20 @@ if __name__ == "__main__":
 - **EMUX/FIRMADYNE**: Firmware emulation frameworks for dynamic analysis of embedded device firmware
 - **PLCinject**: Research tool for analyzing PLC logic injection vulnerabilities (use only in authorized lab settings)
 - **OpenPLC**: Open-source PLC platform useful as a test target for security research
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

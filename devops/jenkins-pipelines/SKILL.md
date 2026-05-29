@@ -3,6 +3,7 @@ name: jenkins-pipelines
 description: Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials
 ---
 
+
 ## Overview
 
 Jenkins pipelines define CI/CD workflows as code using Groovy-based DSL. Supports Declarative (structured) and Scripted (flexible) syntax with shared libraries for reuse across projects.
@@ -25,6 +26,26 @@ Jenkins pipelines define CI/CD workflows as code using Groovy-based DSL. Support
 - Enterprise environments with Jenkins + LDAP/RBAC
 
 ## Pseudo Code
+
+The jenkins-pipelines workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# jenkins-pipelines primary flow
+input = prepare(raw_data)
+result = process(input, config={agents, code, credentials, declarative, jenkins})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Declarative Pipeline
 ```groovy
@@ -97,3 +118,20 @@ stage('Deploy') {
 - **Parameters**: `parameters { string(name: 'VERSION', defaultValue: 'latest') }`
 - **Input gates**: `input message: 'Deploy to production?'`
 - **Matrix builds**: `matrix { axes { axis { name 'OS'; values 'linux', 'darwin' } } }`
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

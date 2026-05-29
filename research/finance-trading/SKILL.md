@@ -1,8 +1,7 @@
 ---
 name: finance-trading
-description: "Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker."
-persona:
-  name: "Paul Tudor Jones"
+description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker.
+persona: name: "Paul Tudor Jones"
   title: "Master of Risk Management & Macro Trading"
   expertise: ["Hedging", "Risk Control", "Macro Trading", "Trailing Stops"]
   philosophy: "I am always thinking about losing money as opposed to making money."
@@ -17,8 +16,7 @@ persona:
     - "Trail profits aggressively, cut losses quickly"
     - "Never average into losing positions"
     - "Size positions based on risk, not conviction"
-metadata:
-  {
+metadata: {
     "openclaw": { "emoji": "🛡️", "requires": { "python": true, "pyEnv": "trading-venv" } },
     "parameters": {
       "lots": { "type": "float", "default": 0.10, "desc": "Ukuran lot per transaksi" },
@@ -48,6 +46,9 @@ Expert Advisor cross-platform berbasis Python untuk trading hedging dengan siste
 - **Cross-Platform** — Jalan di Windows, Linux, Mac (pake mt5linux Docker atau simulated broker)
 
 ## Penggunaan
+
+Panduan penggunaan skill ini untuk analisis dan riset.
+
 
 ### Jalankan dari OpenClaw
 
@@ -162,6 +163,9 @@ PYTHONPATH=. ~/.trading-venv/bin/python EA/maybe_hft.py --config config.yaml
 
 ## Cara Kerja
 
+Alur kerja dan metodologi yang digunakan.
+
+
 ### 1. Open Main Order
 Pada awal (kalau tidak ada posisi), EA buka order utama sesuai `StartDirection`:
 - `StartDirection=0` → BUY dulu
@@ -231,7 +235,8 @@ Mas Imam - wa.me/6289679369219
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -244,14 +249,16 @@ Mas Imam - wa.me/6289679369219
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

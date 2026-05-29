@@ -3,6 +3,7 @@ name: android-jetpack
 description: Android Jetpack Compose — declarative UI, state management, Material Design, and Play Store deployment
 ---
 
+
 ## Overview
 
 Jetpack Compose for building native Android apps. Covers declarative UI, state management, Material Design 3, Room database, navigation, and Play Store submission.
@@ -23,6 +24,26 @@ Jetpack Compose for building native Android apps. Covers declarative UI, state m
 - Team has Kotlin experience
 
 ## Pseudo Code
+
+The android-jetpack workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# android-jetpack primary flow
+input = prepare(raw_data)
+result = process(input, config={android, compose, declarative, deployment, design})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Composable Function
 ```kotlin
@@ -63,3 +84,20 @@ class ItemViewModel : ViewModel() {
 - **Material 3**: Use MaterialTheme for consistent design
 - **Navigation Compose**: Type-safe navigation with routes
 - **Room + Flow**: Reactive queries with Flow return types
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

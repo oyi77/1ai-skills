@@ -1,25 +1,28 @@
 ---
 name: adcp-advertising
 description: AdCP Advertising Skill. Use when relevant to this domain.
-persona:
-  name: Gary Halbert
-  title: The Prince of Print - Master of Direct Response
-  expertise:
-  - Direct Response
-  - Copywriting
-  - Advertising
-  - Sales Letters
-  philosophy: If you want to be successful, find someone who has achieved the results you want and copy what they do.
-  credentials:
-  - Wrote most mailed letter in history
-  - Coached top copywriters
-  - Marketing legend
-  principles:
-  - AIDA always
-  - Test headlines
-  - Benefits over features
-  - Strong call to action
+persona: |
+  |
+    name: Gary Halbert
+      title: The Prince of Print - Master of Direct Response
+      expertise:
+      - Direct Response
+      - Copywriting
+      - Advertising
+      - Sales Letters
+      philosophy: If you want to be successful, find someone who has achieved the results you want and copy what they do.
+      credentials:
+      - Wrote most mailed letter in history
+      - Coached top copywriters
+      - Marketing legend
+      principles:
+      - AIDA always
+      - Test headlines
+      - Benefits over features
+      - Strong call to action
 ---
+
+
 # AdCP Advertising Skill
 
 ## Name
@@ -96,6 +99,33 @@ advertising, ads, marketing, campaigns, adcp, programmatic, media-buying, displa
 
 ## Quick Start
 
+Get started with adcp-advertising in three steps.
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode adcp-advertising`
+
+Verify setup:
+```bash
+python main.py --check-config
+python main.py --run
+```
+
+
+### Getting Started
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode adcp-advertising`
+
+### First Run
+```bash
+# Verify setup
+python main.py --check-config
+# Execute
+python main.py --run
+```
+
+
 ### No setup required. Use the included test agent to try everything:
 
 **Step 1: Discover what's available**
@@ -132,6 +162,33 @@ advertising, ads, marketing, campaigns, adcp, programmatic, media-buying, displa
 
 ## Usage Examples
 
+Basic usage with default configuration:
+```bash
+python adcp-advertising.py --input data.csv --output results/
+```
+
+Advanced usage with all options:
+```bash
+python adcp-advertising.py --input data.csv --output results/ --format json --verbose
+```
+
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
+
+### Basic Usage
+```bash
+python adcp-advertising.py --input data.csv --output results/
+```
+
+### Advanced Usage
+```bash
+python adcp-advertising.py --input data.csv --output results/ --format json --verbose
+```
+
+### Integration
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
+
 ### Quick campaign launch:
 ```
 User: "I need to run display ads for my SaaS product"
@@ -167,6 +224,30 @@ The skill understands:
 ---
 
 ## Workflow
+
+Step-by-step adcp-advertising execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the adcp-advertising workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the adcp-advertising workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### 1. Discovery Phase
 ```
@@ -301,7 +382,8 @@ For development and testing, use the public test agent:
 - **Complete API Index:** https://docs.adcontextprotocol.org/llms.txt
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -314,14 +396,16 @@ For development and testing, use the public test agent:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

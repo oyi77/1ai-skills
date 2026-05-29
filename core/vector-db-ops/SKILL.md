@@ -25,6 +25,22 @@ Vector database operations for AI applications. Covers embedding generation, ind
 - Implementing image/code similarity search
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Pinecone
 ```python
@@ -122,6 +138,11 @@ chunks = splitter.split_text(document)
 ```
 
 ## Common Patterns
+- Use structured input/output schemas for reliable automation
+- Add retry logic with exponential backoff for external calls
+- Validate inputs before processing to fail fast
+- Log execution steps for debugging and auditing
+
 
 ### Embedding Models
 - OpenAI `text-embedding-3-small` (1536 dim) — good balance
@@ -139,3 +160,19 @@ chunks = splitter.split_text(document)
 - Metadata filtering before vector search for efficiency
 - Monitor recall@k metrics
 - Implement re-ranking for precision
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

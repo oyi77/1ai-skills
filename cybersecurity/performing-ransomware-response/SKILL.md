@@ -53,6 +53,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Detect and Confirm Ransomware
 
 Validate that the incident is ransomware and determine the variant:
@@ -172,6 +177,11 @@ Implement controls to prevent recurrence:
 
 ## Common Scenarios
 
+**Scenario 1: Full disk acquisition from a suspect workstation**
+Connect via hardware write-blocker, acquire with dcfldd including SHA-256, split into segments for storage. Hash verification confirms bit-for-bit match.
+
+**Scenario 2: Live memory capture during incident response**
+Use LiME or WinPMEM to capture volatile RAM while the system is running, preserving running processes, network connections, and encryption keys that would be lost on shutdown.
 ### Scenario: LockBit 3.0 via Compromised VPN
 
 **Context**: Attackers compromised VPN credentials (no MFA), spent 12 days performing reconnaissance, disabled antivirus via GPO, exfiltrated 47GB of data, and deployed LockBit 3.0 across the domain via GPO at 2:00 AM on a Sunday.
@@ -189,6 +199,22 @@ Implement controls to prevent recurrence:
 - Paying the ransom without OFAC screening and legal counsel review
 - Reconnecting recovered systems to the production network before full password reset
 - Not checking for data exfiltration, leaving the organization exposed to the extortion threat
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

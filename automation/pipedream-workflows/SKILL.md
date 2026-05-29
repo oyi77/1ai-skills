@@ -27,6 +27,9 @@ Pipedream is a serverless integration and compute platform. It lets you build ev
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Workflow Structure
 
 ```
@@ -168,3 +171,16 @@ try {
 | npm package not found | Not in allowed list | Use built-in `$.http` instead |
 | Data Store limit exceeded | Too many keys | Clean up old entries |
 | Auth error | Expired token | Reconnect account |
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

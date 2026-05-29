@@ -51,6 +51,11 @@ Implement Just-In-Time (JIT) access provisioning to eliminate standing privilege
 
 ## Key Concepts
 
+This section covers key concepts for implementing just in time access provisioning.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### JIT Access Models
 1. **Broker and Remove**: Grant access through approval, auto-remove after time window
 2. **Elevation on Demand**: User has base access, elevates to privileged upon request
@@ -65,6 +70,11 @@ Implement Just-In-Time (JIT) access provisioning to eliminate standing privilege
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify Eligible Access Types
 - Privileged admin access (domain admin, root, DBA)
 - Production environment access
@@ -124,3 +134,9 @@ Implement Just-In-Time (JIT) access provisioning to eliminate standing privilege
 - [ ] All JIT events logged to SIEM
 - [ ] Standing privileges reduced by measurable percentage
 - [ ] Mean time to access meets business SLA
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

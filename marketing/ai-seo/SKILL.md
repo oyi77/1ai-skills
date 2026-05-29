@@ -3,6 +3,8 @@ name: ai-seo
 description: Optimize for AI search engines — Perplexity, ChatGPT Search, Google AI Overviews, answer engine optimization. Use when adapting SEO strategy for AI-powered search, optimizing for featured snippets, or building AI-friendly content.
 ---
 
+
+
 # AI SEO
 
 Optimize content for AI-powered search engines and answer engines.
@@ -24,6 +26,44 @@ Optimize content for AI-powered search engines and answer engines.
 - Implementing structured data markup
 
 ## Pseudo Code
+
+The ai-seo workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# ai-seo primary flow
+input = prepare(raw_data)
+result = process(input, config={adapting, answer, building, chatgpt, content})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# ai-seo primary flow
+input = prepare(raw_data)
+result = process(input, config={adapting, answer, building, chatgpt, content})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### AI-Friendly Content Structure
 
@@ -81,3 +121,20 @@ def optimize_for_entities(content, target_entities):
 - **Structured data**: FAQ, HowTo, Article schema on every page
 - **Source citations**: Link to authoritative sources AI engines trust
 - **Entity richness**: Mention related entities, not just keywords
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels

@@ -34,6 +34,12 @@ Automatically discover and integrate community skills when your local skills don
 - Youre in an air-gapped environment with no internet
 
 ## Skill Discovery Process
+1. Validate input and check prerequisites
+2. Initialize required connections and contexts
+3. Execute core operation with monitoring
+4. Validate output against expected format
+5. Deliver results and log execution summary
+
 
 ### Step 1: Check Local Skills First
 
@@ -99,6 +105,11 @@ If skill passes all checks:
 5. Log installation for meta/performance-monitor tracking
 
 ## Integration with Meta-Skills
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### With meta/create-skills
 
@@ -129,6 +140,14 @@ auto-learner records discovery patterns
 - Which skill types are most needed
 
 ## Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Example 1: Marketing Skill Discovery
 
@@ -192,6 +211,12 @@ Default configuration can be overridden in config.json:
 ```
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### No skills found
 - Broaden search terms
@@ -223,7 +248,8 @@ Default configuration can be overridden in config.json:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Meta-skill changes are applied without measuring performance impact
+- Agent does not verify that changes maintain backward compatibility
 - Watch for shortcuts and skipped steps
 
 ## Verification

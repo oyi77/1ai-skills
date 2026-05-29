@@ -33,6 +33,10 @@ Tracks portfolio company KPIs, monitors variances vs. underwriting, and calculat
 
 ## Implementation:!
 
+
+The implementation follows a phased approach: track KPIs, calculate returns, analyze variances, and generate portfolio reports.
+
+
 ### Phase 1: KPI Tracking!
 
 **Portfolio KPIs:**
@@ -108,6 +112,9 @@ variances = {
 | DPI | 0.8x | 0.7x | +0.1x ✅ |
 
 ## Company Highlights
+
+Top performers and watch-list companies ranked by IRR, MOIC, and variance.
+
 ### ✅ Top Performers
 1. **Co A** — IRR 28%, MOIC 4.0x (above plan)
 2. **Co D** — IRR 25%, MOIC 2.5x (on plan)

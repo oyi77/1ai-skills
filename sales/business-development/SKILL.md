@@ -1,11 +1,14 @@
 ---
 name: business-development
 description: Generate leads, research prospects, and manage outreach with HubSpot and Exa integration
-allowed-tools:
-  - MCP(hubspot:*)
-  - MCP(exa:*)
-  - MCP(slack:*)
+allowed-tools: |
+  |
+    - MCP(hubspot:*)
+      - MCP(exa:*)
+      - MCP(slack:*)
 ---
+
+
 persona:
   name: "Clayton Christensen"
   title: "The Innovator's Dilemma Expert - Master of Disruption"
@@ -58,6 +61,44 @@ Generate leads, research prospects, and manage outreach. Use HubSpot for CRM, Ex
 - Coordinate outreach via Slack
 
 ## Pseudo Code
+
+The business-development workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# business-development primary flow
+input = prepare(raw_data)
+result = process(input, config={business, development, generate, hubspot, integration})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# business-development primary flow
+input = prepare(raw_data)
+result = process(input, config={business, development, generate, hubspot, integration})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Generate Leads
 
@@ -168,7 +209,8 @@ await slack.chat_postMessage({
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the partnership requires legal contract negotiation
+- When the deal involves exclusivity clauses requiring executive approval
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -181,14 +223,16 @@ await slack.chat_postMessage({
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Partnership proposals do not include clear value propositions for both sides
+- Agent does not research the prospect company before outreach
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Proposals articulate clear value for both parties
+- [ ] Prospect company research is completed before outreach
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

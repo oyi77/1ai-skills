@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install OPA Gatekeeper
 
 ```bash
@@ -282,6 +287,11 @@ jobs:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Policy As Code With Open Policy Agent assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Policy As Code With Open Policy Agent response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Enforcing Container Security Standards Across Clusters
 
 **Context**: Multiple development teams deploy to shared Kubernetes clusters. Some teams run privileged containers and images without resource limits, causing security and stability issues.
@@ -295,6 +305,22 @@ jobs:
 6. Add `excludedNamespaces` for kube-system and monitoring namespaces
 
 **Pitfalls**: Deploying Gatekeeper with deny mode immediately can break existing workloads. Always start with warn mode. Overly restrictive policies without exemptions for system namespaces can prevent cluster components from functioning.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

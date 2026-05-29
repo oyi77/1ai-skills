@@ -45,6 +45,11 @@ Zero Standing Privileges (ZSP) is a security model where no user or identity ret
 
 ## Core Concepts
 
+This section covers core concepts for implementing zero standing privilege with cyberark.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### TEA Framework (Time, Entitlements, Approvals)
 
 | Component | Description | Configuration |
@@ -93,6 +98,11 @@ User requests access via CyberArk
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Integrate Cloud Providers
 
 **AWS Integration:**
@@ -234,6 +244,22 @@ Phase 4: GOVERNANCE (Ongoing)
 - [ ] Auto-approval rules configured for low-risk, repeat access
 - [ ] Organization-wide migration plan approved and scheduled
 - [ ] KPI tracking: reduction in standing privilege assignments
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

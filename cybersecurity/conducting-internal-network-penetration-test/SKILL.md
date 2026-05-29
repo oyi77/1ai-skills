@@ -55,6 +55,11 @@ An internal network penetration test simulates an attacker who has already gaine
 
 ## Phase 1 — Network Discovery and Enumeration
 
+This section covers phase 1 — network discovery and enumeration for conducting internal network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Initial Network Reconnaissance
 
 ```bash
@@ -131,6 +136,11 @@ impacket-mssqlclient 'corp.local/testuser:Password123@10.0.0.20' -windows-auth
 
 ## Phase 2 — Credential Attacks
 
+This section covers phase 2 — credential attacks for conducting internal network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Network Credential Capture
 
 ```bash
@@ -175,6 +185,11 @@ hashcat -m 18200 asrep_hashes.txt /usr/share/wordlists/rockyou.txt
 
 ## Phase 3 — Exploitation and Lateral Movement
 
+This section covers phase 3 — exploitation and lateral movement for conducting internal network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Lateral Movement Techniques
 
 ```bash
@@ -262,6 +277,11 @@ echo "PENTEST-PROOF-INTERNAL-$(date +%Y%m%d)" > /tmp/proof.txt
 
 ## Phase 5 — Reporting
 
+This section covers phase 5 — reporting for conducting internal network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Attack Path Documentation
 
 ```
@@ -298,6 +318,22 @@ Attack Path 1: Domain Compromise via LLMNR Poisoning
 | Hashcat | Password hash cracking |
 | Nmap | Network scanning and enumeration |
 | LinPEAS/WinPEAS | Privilege escalation enumeration |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

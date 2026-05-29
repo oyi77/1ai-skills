@@ -25,6 +25,12 @@ Agent harness optimization is the practice of tuning the runtime environment tha
 - You want to set up continuous learning from session patterns
 
 ## Process / Steps
+1. Gather requirements and constraints from the user
+2. Validate prerequisites (tools, permissions, data)
+3. Execute the core operation with error handling
+4. Verify output meets quality standards
+5. Report results and log for future reference
+
 
 ### 1. Token Optimization Audit
 

@@ -49,6 +49,11 @@ SOAP (Simple Object Access Protocol) web services remain widely deployed in ente
 
 ## Testing Methodology
 
+This section covers testing methodology for performing soap web service security testing.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Phase 1: WSDL Reconnaissance
 
 ```python
@@ -443,6 +448,22 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

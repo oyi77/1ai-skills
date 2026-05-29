@@ -46,6 +46,11 @@ Aqua Security provides Trivy, the world's most popular open-source universal sec
 
 ## Core Scanning Capabilities
 
+This section covers core scanning capabilities for implementing aqua security for container scanning.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Image Vulnerability Scanning
 
 Trivy scans container images layer by layer, identifying CVEs in OS packages and application dependencies. It supports scanning local images, remote registry images, and tar archives.
@@ -109,6 +114,11 @@ trivy config ./k8s-manifests/
 
 ## CI/CD Integration
 
+This section covers ci/cd integration for implementing aqua security for container scanning.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GitHub Actions
 
 ```yaml
@@ -195,6 +205,11 @@ pipeline {
 
 ## Policy Configuration
 
+This section covers policy configuration for implementing aqua security for container scanning.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Trivy Policy with OPA/Rego
 
 Create `.trivy/policy.rego` for custom policy enforcement:
@@ -249,6 +264,22 @@ trivy sbom sbom-cyclonedx.json
 | Mean time to patch | Average days from CVE publication to patched image | < 7 days |
 | SBOM coverage | Percentage of production images with generated SBOMs | 100% |
 | Scan duration | Average time per image scan | < 2 minutes |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

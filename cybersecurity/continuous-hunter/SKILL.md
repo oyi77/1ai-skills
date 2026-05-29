@@ -17,6 +17,11 @@ Runs an automated hunting pipeline that discovers, tests, validates, and reports
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### 1. Pipeline Architecture
 
 ```
@@ -131,6 +136,11 @@ After submission:
 
 ## Income Optimization
 
+This section covers income optimization for continuous hunter.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Volume Strategy
 - Run automated checks on 20+ targets simultaneously
 - Focus on high-frequency, moderate-payout vulns (IDOR, missing auth, CORS)

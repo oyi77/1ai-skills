@@ -3,6 +3,7 @@ name: websocket
 description: WebSocket development — real-time bidirectional communication, Socket.IO, native WebSocket API, scaling patterns
 ---
 
+
 ## Overview
 
 WebSocket enables persistent, full-duplex communication between client and server over a single TCP connection. This skill covers the native WebSocket API, Socket.IO for feature-rich real-time apps, and scaling patterns for production deployments.
@@ -28,6 +29,26 @@ WebSocket enables persistent, full-duplex communication between client and serve
 - Progress bars and live status updates
 
 ## Pseudo Code
+
+The websocket workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# websocket primary flow
+input = prepare(raw_data)
+result = process(input, config={bidirectional, communication, development, native, patterns})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Native WebSocket Server
 ```javascript
@@ -166,6 +187,14 @@ const socket = io('https://api.example.com', {
 
 ## Common Patterns
 
+Proven patterns for websocket usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Namespace Isolation
 ```javascript
 // Separate namespaces for different features
@@ -200,3 +229,20 @@ io.use((socket, next) => {
   next();
 });
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

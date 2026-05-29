@@ -55,6 +55,11 @@ Open Source Intelligence (OSINT) gathering is the first active phase of a red te
 
 ## Core Concepts
 
+This section covers core concepts for performing open source intelligence gathering.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### OSINT Categories
 
 | Category | Sources | Value |
@@ -80,6 +85,11 @@ Open Source Intelligence (OSINT) gathering is the first active phase of a red te
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Phase 1: Domain and Network Reconnaissance
 1. Perform WHOIS lookups for target domains
 2. Enumerate subdomains using Certificate Transparency logs, DNS brute-force, and web scraping
@@ -109,6 +119,22 @@ Open Source Intelligence (OSINT) gathering is the first active phase of a red te
 3. Check for exposed admin panels and development environments
 4. Identify VPN and remote access technologies
 5. Map cloud services and SaaS applications
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Tools and Resources
 

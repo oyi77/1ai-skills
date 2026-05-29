@@ -39,6 +39,9 @@ Automate legal and compliance tasks that solo entrepreneurs spend disproportiona
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Entity Setup & Management
 
 ```python
@@ -311,6 +314,9 @@ async function sendForSignature(document, recipients) {
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Privacy Policy Auto-Generation
 ```python
 privacy_policy = generate_privacy_policy({
@@ -342,3 +348,16 @@ privacy_policy = generate_privacy_policy({
 - July: Mid-year compliance audit, cookie scan
 - October: Pre-year-end entity review, regulatory update check
 - December: Year-end compliance report, renew expiring agreements
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

@@ -1,8 +1,7 @@
 ---
 name: clawild-moltbook
 description: Use when interacting with the CLAWILD autonomous crypto intelligence agent on Moltbook
-allowed-tools:
-  - Bash(apify:*)
+allowed-tools: - Bash(apify:*)
   - MCP(apify:*)
   - MCP(slack:*)
 ---
@@ -44,6 +43,9 @@ Autonomous OpenClaw-powered crypto intelligence agent for Moltbook interactions.
 5. **Transparent Operations**: All agent actions logged and auditable for trust
 
 ## Required Tools
+
+Tools and dependencies needed before using this skill.
+
 
 ### MCP Servers
 
@@ -88,6 +90,9 @@ Autonomous OpenClaw-powered crypto intelligence agent for Moltbook interactions.
 | `MCP(slack:*)` | Send alerts and notifications |
 
 ## Authentication
+
+Authentication setup required for external service access.
+
 
 ### Apify Setup
 
@@ -134,6 +139,9 @@ Autonomous OpenClaw-powered crypto intelligence agent for Moltbook interactions.
 **X:** https://x.com/clawildorigin
 
 ## Pseudo Code
+
+Implementation patterns for common use cases with this skill.
+
 
 ### Example 1: Crypto Narrative Detection
 
@@ -195,6 +203,9 @@ await slack.postMessage({
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Rate Limiting with Checkpoints
 
 ```typescript
@@ -237,14 +248,16 @@ async function processWithRateLimit(items, delayMs = 1000) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation runs without monitoring or alerting on failures
+- Agent does not handle rate limits or API throttling gracefully
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Automation completes successfully with monitoring confirming no failures
+- [ ] Rate limits and API constraints are respected throughout execution
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

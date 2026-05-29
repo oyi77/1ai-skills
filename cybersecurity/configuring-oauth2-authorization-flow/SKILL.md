@@ -52,6 +52,11 @@ Configure secure OAuth 2.0 authorization flows including Authorization Code with
 
 ## Key Concepts
 
+This section covers key concepts for configuring oauth2 authorization flow.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### OAuth 2.0 Grant Types
 1. **Authorization Code + PKCE**: Recommended for all client types (web, mobile, SPA). PKCE is mandatory in OAuth 2.1.
 2. **Client Credentials**: Machine-to-machine authentication without user context.
@@ -73,6 +78,11 @@ PKCE (RFC 7636) prevents authorization code interception attacks:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Authorization Code Flow with PKCE
 1. Generate cryptographically random code_verifier (min 43 chars)
 2. Compute code_challenge using S256 method
@@ -138,3 +148,9 @@ PKCE (RFC 7636) prevents authorization code interception attacks:
 - [ ] Token revocation invalidates both access and refresh tokens
 - [ ] Client Credentials flow works for service-to-service calls
 - [ ] Scopes correctly enforced at resource server
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

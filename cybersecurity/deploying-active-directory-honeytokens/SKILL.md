@@ -47,6 +47,11 @@ nist_csf:
 
 ## Background
 
+This section covers background for deploying active directory honeytokens.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Why AD Honeytokens
 
 Traditional signature-based detection misses novel attack techniques. Honeytokens
@@ -88,6 +93,11 @@ Per Trimarc Security research, effective honeytokens must appear legitimate:
 
 ## Instructions
 
+This section covers instructions for deploying active directory honeytokens.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Step 1: Deploy Fake Privileged Admin Account
 
 Create a honeytoken account that mimics a legacy privileged service account.
@@ -202,6 +212,10 @@ $validation | Format-Table Check, Status, Details -AutoSize
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Full Deployment Pipeline
 
 ```powershell
@@ -242,6 +256,20 @@ SecurityEvent
 | extend AlertType = "Honeytoken Kerberoast Detected"
 | project TimeGenerated, Computer, Account, ServiceName, IpAddress, TicketEncryptionType
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

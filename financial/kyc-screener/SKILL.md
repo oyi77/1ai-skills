@@ -31,6 +31,10 @@ Parses onboarding documents, runs compliance rules engine, and flags gaps. Handl
 
 ## Implementation:
 
+
+The implementation follows a phased approach: ingest onboarding documents, run compliance rules engine, flag risk ratings, and generate KYC reports.
+
+
 ### Phase 1: Document Ingestion
 
 **Supported Formats:**
@@ -94,6 +98,10 @@ risk_assessment = {
 # KYC Report: [Entity Name]
 
 ## Overall Risk Rating: 🔴 RED / 🟡 AMBER / ✅ GREEN
+
+
+Composite risk rating based on sanctions hits, UBO completeness, PEP status, and document freshness.
+
 
 ## Entity Details
 - Name: [Entity]

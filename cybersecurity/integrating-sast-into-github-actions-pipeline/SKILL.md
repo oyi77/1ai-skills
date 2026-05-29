@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure CodeQL Analysis Workflow
 
 Create a CodeQL workflow that runs on pull requests and on a weekly schedule to catch vulnerabilities in existing code.
@@ -272,6 +277,11 @@ gh api repos/{owner}/{repo}/code-scanning/alerts \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Integrating Sast Into Github Actions Pipeline assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Integrating Sast Into Github Actions Pipeline response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Monorepo with Multiple Languages Needs Unified SAST
 
 **Context**: A platform team manages a monorepo containing Python microservices, TypeScript frontends, and Go infrastructure tools. Security reviews happen manually every quarter, missing vulnerabilities between reviews.
@@ -298,6 +308,20 @@ gh api repos/{owner}/{repo}/code-scanning/alerts \
 5. Track false positive rate as a metric and target below 15% for developer trust
 
 **Pitfalls**: Over-suppressing rules to reduce noise can create blind spots. Always validate suppressions against the OWASP Top 10 and CWE Top 25 to ensure critical vulnerability classes remain covered.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

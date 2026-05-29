@@ -21,6 +21,17 @@ This skill provides detailed guidance on configuring oh-my-opencode, covering al
 - **Apply themes and keybinds** – Customize UI appearance and keyboard shortcuts
 
 ## Configuration Structure
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Config File Locations
 
@@ -44,6 +55,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Agent Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Sisyphus Configuration
 
@@ -150,6 +172,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Feature Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Parallel Agents
 
@@ -230,6 +263,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## MCP Server Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Built-in MCPs
 
@@ -290,6 +334,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Category Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Built-in Categories
 
@@ -337,6 +392,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Hook Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Available Hooks
 
@@ -395,6 +461,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## LSP Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Built-in LSP Tools
 
@@ -435,6 +512,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Permission Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Agent Permissions
 
@@ -481,6 +569,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Theme and UI Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Theme
 
@@ -513,6 +612,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Environment Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Environment Variables
 
@@ -551,6 +661,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Advanced Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Truncation
 
@@ -603,6 +724,17 @@ oh-my-opencode uses JSONC (JSON with Comments):
 ```
 
 ## Configuration Profiles
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Profile Structure
 
@@ -630,6 +762,10 @@ opencode --profile development
 ```
 
 ## Validation and Testing
+This section covers validation and testing for the oh-my-opencode-configuration skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Config Validation
 
@@ -658,6 +794,17 @@ opencode config test-hooks
 ```
 
 ## Troubleshooting Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Common Issues
 

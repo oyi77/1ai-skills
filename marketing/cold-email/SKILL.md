@@ -3,6 +3,8 @@ name: cold-email
 description: Outbound email with personalization, deliverability optimization, follow-up sequences, and compliance. Use when building cold email campaigns, improving email deliverability, or designing outreach sequences.
 ---
 
+
+
 # Cold Email
 
 High-deliverability cold email with personalization at scale.
@@ -24,6 +26,44 @@ High-deliverability cold email with personalization at scale.
 - A/B testing outreach copy
 
 ## Pseudo Code
+
+The cold-email workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# cold-email primary flow
+input = prepare(raw_data)
+result = process(input, config={building, campaigns, cold, compliance, deliverability})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# cold-email primary flow
+input = prepare(raw_data)
+result = process(input, config={building, campaigns, cold, compliance, deliverability})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Sequence Design
 
@@ -70,3 +110,20 @@ def personalize(template, lead):
 - **CTA**: One clear ask (reply, call, demo)
 - **Follow-up**: 3-5 touches, each adds new value
 - **Volume**: Max 150/day per inbox for deliverability
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels

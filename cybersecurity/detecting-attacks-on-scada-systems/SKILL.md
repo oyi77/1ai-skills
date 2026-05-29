@@ -57,6 +57,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Establish SCADA Communication Baselines
 
 Before detecting anomalies, establish what normal SCADA traffic looks like. Industrial protocols are highly deterministic - the same master polls the same slaves at the same intervals reading the same registers.
@@ -668,6 +673,11 @@ malware_families:
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Detecting TRITON-Style Attack on Safety Systems
 
 **Context**: An OT security monitoring system alerts on unusual TriStation protocol traffic to a Triconex safety controller from an IP address that is not the authorized SIS engineering workstation.
@@ -682,6 +692,22 @@ malware_families:
 7. Check all engineering workstations in the facility for TRITON indicators (trilog.exe, inject.bin)
 
 **Pitfalls**: Never assume SIS traffic anomalies are false positives - TRITON demonstrated that sophisticated attackers specifically target safety systems. Do not restart the SIS controller without first verifying firmware and logic integrity. Avoid alerting only the IT SOC; the process safety team must be immediately engaged for any SIS-related incident.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

@@ -54,6 +54,22 @@ Software supply chain attacks exploit trust in package registries through typosq
 4. **Vulnerability scanning** — audit installed packages against OSV and PyPA advisory databases
 5. **Metadata anomalies** — flag packages with suspicious author emails, missing homepages, or very recent first upload dates
 
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
+
 ## Output
 
 JSON report with risk scores per package, detected attack vectors, hash verification results, and CVE findings.

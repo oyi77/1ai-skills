@@ -70,6 +70,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for hunting for persistence via wmi subscriptions.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk -- WMI Subscription Creation via Sysmon
 ```spl
 index=sysmon (EventCode=19 OR EventCode=20 OR EventCode=21)
@@ -125,6 +130,21 @@ tags:
 2. **Turla WMI Backdoor**: Uses Win32_ProcessStartTrace filter combined with CommandLineEventConsumer for covert command execution.
 3. **FIN8 WMI Timer**: Interval-based __IntervalTimerEvent triggering encoded PowerShell downloads every 30 minutes.
 4. **MOF-Based Installation**: Adversary drops a .mof file and compiles it with `mofcomp.exe` to silently create persistent subscriptions.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

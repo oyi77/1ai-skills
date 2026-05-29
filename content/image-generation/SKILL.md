@@ -3,6 +3,8 @@ name: image-generation
 description: AI image generation — Stable Diffusion, Midjourney, DALL-E, Flux. Prompt engineering for visuals, inpainting, outpainting, style transfer
 ---
 
+
+
 ## Overview
 
 Generate images using AI models. Covers prompt crafting, API integration, inpainting/outpainting, and batch workflows for content production.
@@ -25,6 +27,44 @@ Generate images using AI models. Covers prompt crafting, API integration, inpain
 - Creating variations of existing designs for testing
 
 ## Pseudo Code
+
+The image-generation workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# image-generation primary flow
+input = prepare(raw_data)
+result = process(input, config={dall, diffusion, engineering, flux, generation})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# image-generation primary flow
+input = prepare(raw_data)
+result = process(input, config={dall, diffusion, engineering, flux, generation})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### DALL-E via OpenAI API
 ```python
@@ -104,6 +144,12 @@ for i, prompt in enumerate(prompts):
 
 ## Common Patterns
 
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Prompt Structure
 ```
 [Subject] + [Style] + [Details] + [Lighting] + [Quality]
@@ -133,3 +179,21 @@ Flux: Fast, high quality, good for batch production
 - Cache and reuse base images, only inpaint variations
 - Use smaller sizes for social media, larger for print
 ```
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

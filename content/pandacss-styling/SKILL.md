@@ -3,6 +3,8 @@ name: pandacss-styling
 description: Panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles
 ---
 
+
+
 ## Overview
 
 Panda CSS is a zero-runtime CSS-in-JS framework with a token system, patterns, recipes, and JSX style props. Generates static CSS at build time with full TypeScript support.
@@ -25,6 +27,44 @@ Panda CSS is a zero-runtime CSS-in-JS framework with a token system, patterns, r
 - Using JSX style props for rapid development
 
 ## Pseudo Code
+
+The pandacss-styling workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# pandacss-styling primary flow
+input = prepare(raw_data)
+result = process(input, config={conditions, panda, pandacss, patterns, recipes})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# pandacss-styling primary flow
+input = prepare(raw_data)
+result = process(input, config={conditions, panda, pandacss, patterns, recipes})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Configuration
 ```ts
@@ -128,3 +168,21 @@ import { Stack, HStack, Grid } from "styled-system/jsx"
 - **Pattern library**: Stack, HStack, VStack, Grid, Flex, Box, Container
 - **Recipe composition**: `cx(button({ variant: "primary" }), extraClass)`
 - **Static extraction**: Run `panda codegen` to generate styled-system types
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

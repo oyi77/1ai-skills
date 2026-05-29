@@ -72,6 +72,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for detecting t1003 credential dumping with edr.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk -- LSASS Access Detection
 ```spl
 index=sysmon EventCode=10
@@ -139,6 +144,22 @@ tags:
 4. **NTDS.dit Extraction**: Creating a Volume Shadow Copy and copying NTDS.dit + SYSTEM hive for offline domain hash extraction with secretsdump.
 5. **SAM Hive Export**: `reg save HKLM\SAM sam.save` followed by `reg save HKLM\SYSTEM system.save` for local account hash extraction.
 6. **Task Manager Dump**: Right-clicking LSASS in Task Manager to create a memory dump -- a legitimate tool abused for credential theft.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

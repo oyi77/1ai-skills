@@ -51,6 +51,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Extract and Analyze Email Headers
 
 Obtain the full email headers (`.eml` file) from the reported message:
@@ -268,6 +273,22 @@ Create incident report with full timeline, IOCs, impacted users, and remediation
 - **QR Code Phishing (Quishing)**: Email contains QR code linking to credential harvester — decode QR, submit URL to sandbox
 - **Thread Hijacking**: Attacker uses compromised mailbox to reply in existing threads — check for impossible travel or new inbox rules
 - **Voicemail Phishing**: Fake voicemail notification with HTML attachment — analyze attachment for redirect chains
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

@@ -3,6 +3,8 @@ name: digital-real-estate
 description: Build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling research, writing, SEO, and updates
 ---
 
+
+
 ## Overview
 
 Build, scale, and monetize a portfolio of niche content websites. Solo operators run 5-20 sites simultaneously with AI handling research, writing, internal linking, technical SEO, and content updates. Revenue comes from affiliate programs (Amazon Associates, ShareASale, Impact) and display ads (AdSense, Mediavine, AdThrive). Target: $1K-$10K/month per site after 6-12 months.
@@ -39,6 +41,44 @@ Build, scale, and monetize a portfolio of niche content websites. Solo operators
 - Creating assets that compound in value over time
 
 ## Pseudo Code
+
+The digital-real-estate workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# digital-real-estate primary flow
+input = prepare(raw_data)
+result = process(input, config={adsense, affiliate, build, content, digital})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# digital-real-estate primary flow
+input = prepare(raw_data)
+result = process(input, config={adsense, affiliate, build, content, digital})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Niche Research & Selection
 
@@ -249,6 +289,12 @@ done
 
 ## Common Patterns
 
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Revenue Stacking
 - Primary: Affiliate commissions (Amazon 1-10%, other programs 5-30%)
 - Secondary: Display ads (AdSense $5-15 RPM, Mediavine $20-40 RPM)
@@ -265,3 +311,21 @@ done
 - Sites sell for 30-40x monthly revenue on Flippia, Empire Flippers, Motion Invest
 - A site earning $3K/month = $90K-$120K sale price
 - Clean up content, document processes, transfer hosting before listing
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

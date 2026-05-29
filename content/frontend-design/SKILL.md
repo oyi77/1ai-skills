@@ -3,6 +3,8 @@ name: frontend-design
 description: Design system patterns — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts
 ---
 
+
+
 ## Overview
 
 Frontend design skill for building beautiful, consistent UIs. Covers design systems, Tailwind CSS, component patterns, spacing, typography, color theory, and responsive design.
@@ -23,6 +25,44 @@ Frontend design skill for building beautiful, consistent UIs. Covers design syst
 - Building component library for team reuse
 
 ## Pseudo Code
+
+The frontend-design workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# frontend-design primary flow
+input = prepare(raw_data)
+result = process(input, config={architecture, component, design, frontend, hierarchy})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# frontend-design primary flow
+input = prepare(raw_data)
+result = process(input, config={architecture, component, design, frontend, hierarchy})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Design Token System
 ```javascript
@@ -61,3 +101,21 @@ const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
 - **3 font sizes max**: Display, body, caption — don't exceed 3 sizes
 - **Color scale**: 50-900 scale for each color (50 = lightest, 900 = darkest)
 - **Mobile-first**: Write mobile styles by default, add breakpoints for larger screens
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

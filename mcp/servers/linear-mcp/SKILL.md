@@ -18,9 +18,33 @@ MCP server for Linear issues
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Generate a Linear API key at linear.app/settings/api
+2. Configure the MCP server with the LINEAR_API_KEY environment variable
+3. Use tools to manage issues, projects, and team workflows
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `list_issues` | Query issues by team, assignee, status |
+| `create_issue` | Create a new issue with priority and labels |
+| `update_issue` | Change status, assignee, priority, or labels |
+| `list_projects` | List active projects with progress |
+| `search_issues` | Full-text search across all issues |
+
+## Common Patterns
+
+- Use issue IDs (e.g., ENG-123) for precise references
+- Set priority levels (0=urgent, 1=high, 2=medium, 3=low)
+- Use cycles for sprint-based workflows
+- Link GitHub PRs to Linear issues via branch naming conventions
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When Linear is used to track compliance-mandated work items
+- When the MCP server handles client-confidential project data
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +57,16 @@ MCP server for Linear issues
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- MCP server does not handle Linear workspace permission boundaries
+- Agent creates issues without checking for existing duplicates
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Workspace permission boundaries are enforced
+- [ ] Duplicate detection prevents redundant issue creation
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

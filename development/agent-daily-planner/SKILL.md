@@ -128,7 +128,8 @@ Works alongside any other skills. Doesn't modify files it doesn't own. Reads fro
 productivity, planning, tasks, daily-log, accountability, workflow, organization
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the planner integrates with time-tracking systems used for billing
+- When the planning involves classified project schedules
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -141,14 +142,16 @@ productivity, planning, tasks, daily-log, accountability, workflow, organization
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Planner does not account for existing calendar commitments
+- Agent over-schedules without buffer time between tasks
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Planner accounts for existing calendar commitments
+- [ ] Buffer time is included between consecutive tasks
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

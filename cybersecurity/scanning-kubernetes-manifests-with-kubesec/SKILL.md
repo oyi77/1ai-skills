@@ -46,6 +46,11 @@ Kubesec is an open-source security risk analysis tool developed by ControlPlane 
 
 ## Core Concepts
 
+This section covers core concepts for scanning kubernetes manifests with kubesec.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Security Scoring System
 
 Kubesec assigns a score to each Kubernetes resource based on security checks:
@@ -64,6 +69,10 @@ Kubesec assigns a score to each Kubernetes resource based on security checks:
 
 ## Installation
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Binary Installation
 
 ```bash
@@ -93,6 +102,11 @@ kubectl kubesec-scan pod mypod -n default
 
 ## Practical Scanning
 
+This section covers practical scanning for scanning kubernetes manifests with kubesec.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Scanning a Single Manifest
 
 ```bash
@@ -186,6 +200,11 @@ curl -sSX POST --data-binary @deployment.yaml \
 
 ## CI/CD Integration
 
+This section covers ci/cd integration for scanning kubernetes manifests with kubesec.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GitHub Actions
 
 ```yaml
@@ -268,6 +287,11 @@ webhooks:
 
 ## Security Checks Reference
 
+| Reference | Description |
+|-----------|-------------|
+| NIST SP 800-86 | Guide to Integrating Forensic Techniques into Incident Response |
+| MITRE ATT&CK | Knowledge base of adversary tactics and techniques |
+| OWASP Testing Guide | Web application security testing methodology |
 ### Critical Checks (Negative Score)
 
 | Check | Selector | Risk |
@@ -290,6 +314,22 @@ webhooks:
 | ServiceAccountName | +3 | Explicit service account |
 | AppArmor annotation | +3 | Kernel-level MAC enforcement |
 | Seccomp profile | +4 | Syscall filtering |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

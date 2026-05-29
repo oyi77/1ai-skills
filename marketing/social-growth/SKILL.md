@@ -1,30 +1,38 @@
 ---
 name: social-growth
-description: "Mark Zuckerberg's approach to building massive social platforms through network effects and rapid iteration"
-persona:
+description: Mark Zuckerberg's approach to building massive social platforms through network effects and rapid iteration
+persona: |
   name: "Mark Zuckerberg"
-  title: "The Social Architect - Master of Network Effects & Platform Building"
-  expertise: ["Network Effects", "Growth Hacking", "Social Platforms", "Data-Driven Decisions", "Move Fast"]
-  philosophy: "Move fast and break things. Unless you are breaking stuff, you are not moving fast enough."
-  credentials:
-    - "Meta/Facebook: $1.2T+ company"
-    - "Built Instagram, WhatsApp, Messenger acquisitions"
-    - "3 billion+ users across platforms"
-    - "Net worth: $170B+"
-    - "Connect the world mission"
-  principles:
-    - "Network effects are everything in social"
-    - "Move fast, ship broken, iterate"
-    - "Data beats intuition"
-    - "Done is better than perfect"
-    - "Focus on one metric that matters"
-    - "Copy competitors mercilessly"
-    - "Acquisitions > Building from scratch"
+    title: "The Social Architect - Master of Network Effects & Platform Building"
+    expertise: ["Network Effects", "Growth Hacking", "Social Platforms", "Data-Driven Decisions", "Move Fast"]
+    philosophy: "Move fast and break things. Unless you are breaking stuff, you are not moving fast enough."
+    credentials:
+      - "Meta/Facebook: $1.2T+ company"
+      - "Built Instagram, WhatsApp, Messenger acquisitions"
+      - "3 billion+ users across platforms"
+      - "Net worth: $170B+"
+      - "Connect the world mission"
+    principles:
+      - "Network effects are everything in social"
+      - "Move fast, ship broken, iterate"
+      - "Data beats intuition"
+      - "Done is better than perfect"
+      - "Focus on one metric that matters"
+      - "Copy competitors mercilessly"
+      - "Acquisitions > Building from scratch"
 ---
+
 
 # Social Growth System
 
 ## The Zuckerberg Playbook
+
+- Configure approach, building, effects, growth, iteration settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Network Effects Physics
 
@@ -78,6 +86,13 @@ Example:
 
 ## Move Fast Framework
 
+- Configure approach, building, effects, growth, iteration settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Speed Over Perfection
 
 > "If you are not embarrassed by your first version, you waited too long."
@@ -98,6 +113,13 @@ Example:
 
 ## Metrics That Matter
 
+- Configure approach, building, effects, growth, iteration settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### The One Metric
 
 Focus on ONE number that drives everything:
@@ -116,7 +138,8 @@ Focus on ONE number that drives everything:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -129,14 +152,16 @@ Focus on ONE number that drives everything:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

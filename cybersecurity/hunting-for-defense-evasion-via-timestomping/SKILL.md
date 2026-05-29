@@ -55,6 +55,11 @@ discrepancies between $STANDARD_INFORMATION and $FILE_NAME attributes.
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Extract the $MFT from a Live System or Disk Image
 
 ```powershell
@@ -351,3 +356,10 @@ generate_report(stomped_files, "D:\\Evidence\\timestomping_report.json")
 - Verify ShimCache and Amcache timestamps provide independent corroboration of timeline inconsistencies
 - Test against known-clean system images to establish a false-positive baseline (some backup/imaging software legitimately resets timestamps)
 - Confirm the detection pipeline correctly handles deleted MFT entries (InUse=false) which may contain evidence of timestomped files that were later removed
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions

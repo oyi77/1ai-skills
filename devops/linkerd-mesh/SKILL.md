@@ -3,6 +3,7 @@ name: linkerd-mesh
 description: Linkerd service mesh — lightweight Kubernetes mesh, mTLS, traffic splitting, observability
 ---
 
+
 ## Overview
 
 Linkerd is a lightweight, security-first service mesh for Kubernetes. Adds automatic mTLS, observability, and traffic management with minimal resource overhead via Rust-based proxy.
@@ -25,6 +26,26 @@ Linkerd is a lightweight, security-first service mesh for Kubernetes. Adds autom
 - Multi-cluster setups
 
 ## Pseudo Code
+
+The linkerd-mesh workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# linkerd-mesh primary flow
+input = prepare(raw_data)
+result = process(input, config={kubernetes, lightweight, linkerd, mesh, mtls})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -110,3 +131,20 @@ linkerd viz edges deploy
 - **Gateway API**: HTTPRoute for advanced routing
 - **Multi-cluster**: linked clusters share trust domain
 - **Extensions**: jaeger, viz, multicluster
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

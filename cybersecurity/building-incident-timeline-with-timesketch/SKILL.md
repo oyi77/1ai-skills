@@ -55,6 +55,11 @@ Timesketch is an open-source collaborative forensic timeline analysis tool devel
 
 ## Architecture and Components
 
+This section covers architecture and components for building incident timeline with timesketch.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Core Components
 - **Timesketch Server**: Web application with REST API for timeline management
 - **OpenSearch/Elasticsearch**: Backend storage and search engine for timeline events
@@ -76,6 +81,11 @@ Evidence Sources --> Plaso/log2timeline --> Plaso storage file (.plaso)
 
 ## Deployment
 
+This section covers deployment for building incident timeline with timesketch.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Docker Deployment (Recommended)
 ```bash
 # Clone Timesketch repository
@@ -98,6 +108,11 @@ sudo docker compose up -d
 
 ## Data Ingestion Methods
 
+This section covers data ingestion methods for building incident timeline with timesketch.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Method 1: Plaso Integration (Comprehensive)
 ```bash
 # Process disk image with log2timeline
@@ -139,6 +154,11 @@ timesketch_importer --sigma-rules /path/to/sigma/rules/
 
 ## Analysis Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Create Investigation Sketch
 ```
 1. Log into Timesketch web interface
@@ -194,6 +214,11 @@ tag:"suspicious" OR tag:"lateral_movement"
 
 ## Advanced Features
 
+This section covers advanced features for building incident timeline with timesketch.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Collaborative Investigation
 - Multiple analysts work on the same sketch simultaneously
 - Comments and annotations persist on events
@@ -257,6 +282,22 @@ target-query -f timesketch://timesketch.local/case-001 \
 | Persistence (TA0003) | Registry modifications, scheduled tasks, services |
 | Lateral Movement (TA0008) | Remote logons, SMB connections, RDP sessions |
 | Exfiltration (TA0010) | Large data transfers, cloud storage uploads |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

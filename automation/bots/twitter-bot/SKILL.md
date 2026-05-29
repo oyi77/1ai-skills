@@ -20,7 +20,8 @@ Build Twitter/X automation
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When automated posting violates the platform terms of service
+- When the content requires real-time human editorial judgment
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Build Twitter/X automation
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Bot posts duplicate content across multiple tweets
+- Agent engages with bot accounts or spam profiles
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No duplicate content is posted across recent tweet history
+- [ ] Bot engagement targets are verified as genuine accounts
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

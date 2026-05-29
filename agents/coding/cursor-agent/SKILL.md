@@ -63,27 +63,45 @@ Autonomous coding that actually works.
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
+- When the task is a single-line fix (just fix it directly)
+- When the codebase is unknown and needs research first (use research-agent)
+- When the task is purely architectural planning (use planning-agent)
+- When security testing is the goal (use security-agent)
+- When the requirement is ambiguous and needs clarification (ask first, do not guess)
+- When the codebase has no tests and the change is risky (add characterization tests first)
 
 ## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
+| "I will just write the code and skip planning" | Skipping planning on multi-file changes produces wrong abstractions. 10 minutes of planning saves hours of rewriting. |
+| "Tests are optional for this feature" | Tests prove the code works. Without them, "it works" is just an unverified claim. |
+| "I can keep the whole codebase in my head" | Context windows are finite. Read the relevant files before writing. Assumptions about code you have not read are usually wrong. |
+| "Iterating is wasteful, get it right the first time" | First drafts have bugs. Iteration is how code improves. The cost of one iteration is far less than the cost of a production bug. |
+| "Research slows me down" | Research prevents wrong-direction coding. An hour of research prevents a day of rework. |
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
-- Watch for shortcuts and skipped steps
+- Writing code without reading the files it interacts with
+- Claiming "done" without running the code or tests
+- Implementing features without understanding the requirements fully
+- Skipping error handling to "save time"
+- No iteration after test failures (leaving broken tests)
+- Copy-pasting code from other files without understanding differences
+- Making architectural decisions without documenting the trade-offs
 
 ## Verification
 
-After completing this skill, confirm:
+After completing a coding task, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
-- [ ] All required outputs generated
-- [ ] Success criteria met
+- [ ] Code compiles/parses without errors (run type checker / linter)
+- [ ] All tests pass (run test suite with fresh output, not cached)
+- [ ] Error paths tested (invalid input, missing files, network failure)
+- [ ] Existing tests still pass (no regressions introduced)
+- [ ] Code follows codebase conventions (naming, imports, error handling)
+- [ ] No debug artifacts left behind (console.log, print, debugger, commented code)
+- [ ] New code has corresponding tests (happy path + error paths + edge cases)
+- [ ] Changes were shown as diffs before applying (transparency)
+- [ ] Integration verified (new code works with existing system)
+- [ ] No [TODO] or placeholder code in production paths
 

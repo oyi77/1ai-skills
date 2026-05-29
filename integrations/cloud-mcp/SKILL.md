@@ -26,6 +26,17 @@ MCP servers enabling AI agents to interact with major cloud providers (AWS, GCP,
 ---
 
 ## AWS MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -83,6 +94,17 @@ aws.cloudwatch.getMetricStatistics({
 ---
 
 ## GCP MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -130,6 +152,17 @@ gcp.functions.deploy({
 ---
 
 ## Azure MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -178,6 +211,10 @@ azure.web.listApps({
 ---
 
 ## Use Cases
+This section covers use cases for the cloud-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Auto-Scaling
 ```
@@ -229,6 +266,10 @@ Action:
 ---
 
 ## Infrastructure as Code
+This section covers infrastructure as code for the cloud-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Generate Terraform
 ```typescript
@@ -259,6 +300,11 @@ terraform.apply({
 ---
 
 ## Integration with 1ai-skills
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### With CI/CD
 ```
@@ -284,6 +330,10 @@ vulnerability-scanner → cloud-mcp → remediate
 ---
 
 ## Best Practices
+This section covers best practices for the cloud-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Do's
 ✅ Use IAM roles with minimal permissions  
@@ -310,3 +360,19 @@ vulnerability-scanner → cloud-mcp → remediate
 - [automation](/skills/automation) - Workflow automation
 - [deployment](/skills/deployment) - Deployment pipelines
 - [security](/skills/security) - Cloud security
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

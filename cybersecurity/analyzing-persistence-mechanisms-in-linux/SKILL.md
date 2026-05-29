@@ -70,3 +70,15 @@ Adversaries establish persistence on Linux systems through crontab jobs, systemd
 - Timeline of persistence installation from auditd correlation
 - MITRE ATT&CK technique mapping (T1053, T1543, T1574, T1546)
 - Remediation commands for each detected persistence mechanism
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

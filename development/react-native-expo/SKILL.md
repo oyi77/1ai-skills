@@ -3,6 +3,7 @@ name: react-native-expo
 description: React Native with Expo — managed workflow, native modules, navigation, and app store deployment
 ---
 
+
 ## Overview
 
 React Native development with Expo for cross-platform mobile apps. Covers managed vs bare workflow, navigation, native modules, EAS Build, OTA updates, and app store submission.
@@ -23,6 +24,26 @@ React Native development with Expo for cross-platform mobile apps. Covers manage
 - Team has React/web experience
 
 ## Pseudo Code
+
+The react-native-expo workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# react-native-expo primary flow
+input = prepare(raw_data)
+result = process(input, config={deployment, expo, managed, modules, native})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Navigation Setup
 ```typescript
@@ -64,3 +85,20 @@ eas update --channel production
 - **EAS Build**: Use EAS for cloud builds — faster than local Xcode/Gradle
 - **OTA updates**: Push JS bundle updates without app store review
 - **Platform-specific code**: Use Platform.OS for iOS/Android differences
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

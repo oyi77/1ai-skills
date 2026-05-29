@@ -18,6 +18,11 @@ Scanners find known bugs. Fuzzing finds unknown bugs. This skill covers advanced
 
 ## The Process
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### 1. Web Fuzzing
 
 #### Directory/Path Discovery

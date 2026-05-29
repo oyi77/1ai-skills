@@ -3,6 +3,7 @@ name: prefect-flows
 description: Prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries
 ---
 
+
 ## Overview
 
 Prefect is a modern workflow orchestration framework for Python. It uses decorators to define flows and tasks with built-in retries, caching, concurrency, and deployment management. Prefect Cloud/Server provides a UI for monitoring and managing workflows.
@@ -25,6 +26,26 @@ Prefect is a modern workflow orchestration framework for Python. It uses decorat
 - Scheduling and triggering workflows remotely
 
 ## Pseudo Code
+
+The prefect-flows workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# prefect-flows primary flow
+input = prepare(raw_data)
+result = process(input, config={deployments, flows, orchestration, pools, prefect})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Flow and Task Definition
 
@@ -167,3 +188,20 @@ def parent_flow():
 | Task stuck in `Pending` | No worker available | Start worker for the work pool |
 | `TimeoutError` | Task exceeded `timeout_seconds` | Increase timeout or optimize task |
 | Deployment not running | Missing schedule or worker | Check `prefect deployment ls` and worker status |
+
+## How to Use
+
+1. Define data sources, sinks, and transformation requirements
+2. Implement extraction with error handling and schema validation
+3. Add transformation logic with idempotency guarantees
+4. Configure loading with conflict resolution (upsert/append)
+5. Set up monitoring for pipeline health and data freshness
+6. Test with representative sample data before production
+
+## Red Flags
+
+- **Data pipeline has no error handling**: Silent failures corrupt downstream datasets
+- **No data validation at boundaries**: Bad input propagates through entire pipeline
+- **Missing monitoring for data freshness**: Stale data causes wrong business decisions
+- **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
+- **Hardcoded connection strings**: Credentials in code get committed to version control

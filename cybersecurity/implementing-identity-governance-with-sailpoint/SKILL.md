@@ -63,3 +63,10 @@ Deploy SailPoint IdentityNow or IdentityIQ for identity governance and administr
 - [ ] Audit logging enabled and forwarding to SIEM
 - [ ] Documentation and runbooks complete
 - [ ] Compliance evidence generated
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring

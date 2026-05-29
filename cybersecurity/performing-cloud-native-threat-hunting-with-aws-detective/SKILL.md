@@ -49,6 +49,11 @@ AWS Detective automatically collects and analyzes log data from AWS CloudTrail, 
 
 ## Steps
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: List Available Behavior Graphs
 
 ```bash
@@ -164,3 +169,23 @@ Indicators are retrieved separately via `list-indicators` and include types such
 3. Cross-reference Detective findings with raw CloudTrail logs for accuracy
 4. Verify finding group correlations match manual investigation conclusions
 5. Confirm automated alerts trigger for HIGH/CRITICAL severity investigations
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+## How to Use
+
+This skill guides you through hunt for threats in aws environments using detective behavior graphs, entity investigation timelines, guardduty.
+
+**Quick Start:**
+1. Read the prerequisites and ensure your environment meets all requirements
+2. Follow the workflow steps in order — each step builds on the previous one
+3. Verify results at each checkpoint before proceeding to the next step
+
+**Best Practices:**
+- Use a dedicated test account or project to avoid production impact
+- Set up billing alerts before running resource-intensive scans
+- Review and revert any IAM or security group changes after testing

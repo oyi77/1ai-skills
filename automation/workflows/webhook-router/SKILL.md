@@ -20,7 +20,8 @@ Route webhooks intelligently
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When webhook payloads contain unencrypted sensitive data
+- When the routing logic requires complex business rules beyond pattern matching
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Route webhooks intelligently
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Router does not validate webhook signatures allowing spoofed requests
+- Agent does not implement idempotency for duplicate deliveries
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Webhook signatures are validated before processing
+- [ ] Idempotency prevents duplicate processing of re-delivered webhooks
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

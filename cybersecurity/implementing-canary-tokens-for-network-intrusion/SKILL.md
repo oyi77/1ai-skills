@@ -46,6 +46,11 @@ nist_csf:
 
 ## Core Concepts
 
+This section covers core concepts for implementing canary tokens for network intrusion.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### What Are Canary Tokens?
 
 Canary tokens are digital tripwires -- resources that should never be accessed during normal
@@ -80,6 +85,11 @@ attackers by their behavior (accessing bait resources) rather than matching know
 
 ## Instructions
 
+This section covers instructions for implementing canary tokens for network intrusion.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Step 1: Generate DNS Canary Tokens
 
 DNS tokens are the most versatile -- they trigger on any DNS resolution, even from
@@ -276,6 +286,10 @@ for alert in alerts:
 
 ## Examples
 
+```bash
+# Capture and analyze network traffic
+tcpdump -i eth0 -w capture.pcap -c 10000
+```
 ### Full Deployment Script
 
 ```python
@@ -315,6 +329,22 @@ python scripts/agent.py --action inventory \
 - [ ] Tokens do not interfere with legitimate operations
 - [ ] Self-hosted Canarytokens instance (if used) is hardened and monitored
 - [ ] Token rotation schedule is established (quarterly recommended)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

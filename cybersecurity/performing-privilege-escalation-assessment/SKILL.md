@@ -52,6 +52,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: System Enumeration
 
 Gather comprehensive information about the target system:
@@ -157,6 +162,11 @@ Document the complete escalation path and business impact:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Privilege Escalation Assessment assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Privilege Escalation Assessment response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Privilege Escalation on a Linux Web Server
 
 **Context**: During a penetration test, the tester gained a low-privilege shell as `www-data` on an Ubuntu 22.04 web server through a PHP file upload vulnerability. The goal is to escalate to root to demonstrate full server compromise.
@@ -174,6 +184,20 @@ Document the complete escalation path and business impact:
 - Not checking for container environments where apparent root access may be limited to the container namespace
 - Ignoring cloud metadata endpoints accessible from the compromised host that may yield IAM credentials
 - Failing to enumerate capabilities and SUID binaries after checking sudo, missing alternative escalation paths
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

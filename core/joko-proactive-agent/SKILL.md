@@ -51,6 +51,22 @@ Proactive agent that monitors business signals, detects opportunities/issues, an
 - Log all detections in Notion for tracking
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Monitor Database Changes
 
@@ -142,7 +158,8 @@ function detectSignals(item: any): string[] {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the task requires domain expertise the agent has not been configured with
+- When human review is mandated by compliance or regulatory requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -155,14 +172,16 @@ function detectSignals(item: any): string[] {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Perform Zone Partitioning Based on Risk Assessment
 
 Partition the IACS into zones based on functional requirements, security requirements, criticality, and consequence of compromise. Each zone contains assets with common security requirements.
@@ -483,6 +488,11 @@ ping -c 3 10.30.1.100  # From DMZ to OT - should timeout
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Iec 62443 Security Zones assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Iec 62443 Security Zones response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Migrating Flat OT Network to Zone Architecture
 
 **Context**: A manufacturing plant operates all OT devices on a single VLAN (10.10.0.0/16) with no segmentation between PLCs, HMIs, historians, and the corporate network. An IEC 62443 gap assessment identified this as a critical finding requiring zone implementation.
@@ -498,6 +508,20 @@ ping -c 3 10.30.1.100  # From DMZ to OT - should timeout
 8. Implement data diode between operations and DMZ for historian replication
 
 **Pitfalls**: Implementing zone firewalls without a complete traffic baseline will break unknown but legitimate communication paths. Scheduling zone cutover during production instead of maintenance windows risks process disruptions. Placing SIS controllers in the same zone as BPCS violates IEC 62443 safety system isolation requirements.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

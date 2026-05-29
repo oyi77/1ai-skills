@@ -95,6 +95,10 @@ Three-layer architecture for optimal agent performance:
 **Root cause:** Meta-cognitive failure. Agents don't know what they don't know—they assume training data is sufficient. Inline docs bypass this entirely.
 
 ## Core Principles
+This section covers core principles for the agent-docs skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Compressed Index > Full Docs
 
@@ -172,6 +176,10 @@ Machine-readable doc index for agents:
 **Companion:** `/llms-full.txt` — full concatenated docs, HTML stripped
 
 ## Security Considerations
+This section covers security considerations for the agent-docs skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Inline = Trusted
 AGENTS.md is part of your codebase. Controlled, version-pinned.
@@ -213,14 +221,16 @@ For detailed guidance on RAG optimization, multi-framework docs, and API templat
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

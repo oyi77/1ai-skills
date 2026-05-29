@@ -58,6 +58,11 @@ Active Directory (AD) compromise investigation is a critical incident response c
 
 ## Key Investigation Areas
 
+This section covers key investigation areas for performing active directory compromise investigation.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. NTDS.dit Database Analysis
 
 The NTDS.dit file is the core Active Directory credential database containing all password hashes for domain accounts. Attackers commonly exfiltrate this file using tools like ntdsutil, secretsdump.py, or DCSync attacks via Mimikatz.
@@ -113,6 +118,11 @@ Track modifications to these critical groups:
 
 ## Investigation Methodology
 
+This section covers investigation methodology for performing active directory compromise investigation.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Phase 1: Scoping and Evidence Collection
 ```
 1. Identify potentially compromised domain controllers
@@ -200,6 +210,21 @@ Track modifications to these critical groups:
 | Group Policy Modification | T1484.001 | Persistence via GPO |
 | Account Manipulation | T1098 | Privileged group changes |
 | SID-History Injection | T1134.005 | Privilege escalation |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

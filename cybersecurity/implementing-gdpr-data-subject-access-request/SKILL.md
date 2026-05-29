@@ -45,6 +45,11 @@ nist_csf:
 
 ## Background
 
+This section covers background for implementing gdpr data subject access request.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GDPR Article 15 - Right of Access
 
 Under GDPR Article 15, data subjects have the right to obtain from the controller:
@@ -79,6 +84,11 @@ Under GDPR Article 15, data subjects have the right to obtain from the controlle
 
 ## Instructions
 
+This section covers instructions for implementing gdpr data subject access request.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Step 1: DSAR Intake and Verification
 
 Implement a request intake system that captures the request through any channel,
@@ -237,6 +247,10 @@ compliance_report = logger.generate_compliance_report(request["dsar_id"])
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Complete DSAR Processing Pipeline
 
 ```python
@@ -287,6 +301,21 @@ matches = matcher.scan_text(test_text)
 for m in matches:
     print(f"  [{m['type']}] '{m['value']}' (confidence: {m['confidence']})")
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

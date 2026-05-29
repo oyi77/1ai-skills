@@ -17,6 +17,11 @@ Finds the highest-value bug bounty programs and builds a prioritized target pipe
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### 1. Platform Aggregation
 
 Pull programs from all major platforms:

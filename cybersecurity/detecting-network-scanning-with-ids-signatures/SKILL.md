@@ -48,6 +48,11 @@ Network scanning is typically the first phase of an attack, where adversaries en
 
 ## Core Concepts
 
+This section covers core concepts for detecting network scanning with ids signatures.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Scanning Techniques and Detection Indicators
 
 | Scan Type | Nmap Flag | Packet Characteristics | Detection Method |
@@ -76,6 +81,11 @@ Network scanning is typically the first phase of an attack, where adversaries en
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy Suricata Scan Detection Rules
 
 Create `/var/lib/suricata/rules/scan-detection.rules`:
@@ -294,6 +304,22 @@ if __name__ == '__main__':
 - **Correlate with Other Alerts** - Combine scan detection with exploitation alerts for kill chain visibility
 - **Time-Based Analysis** - Scans at unusual hours (3 AM) warrant higher priority
 - **Rate Limit Alerts** - Prevent scan floods from overwhelming the SIEM with noise
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

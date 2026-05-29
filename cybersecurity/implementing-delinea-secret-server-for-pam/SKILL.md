@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy Secret Server Infrastructure
 
 Install and configure the Secret Server application server:
@@ -353,6 +358,11 @@ Write-Host "Orphaned Accounts:     $($reportResult.orphanedAccounts)"
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Delinea Secret Server For Pam assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Delinea Secret Server For Pam response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Migrating Shared Admin Credentials to Vault
 
 **Context**: An organization stores 500+ shared administrator credentials in Excel spreadsheets and password-protected documents. Auditors flagged this as a critical finding requiring remediation within 90 days.
@@ -373,6 +383,20 @@ Write-Host "Orphaned Accounts:     $($reportResult.orphanedAccounts)"
 - Enabling RPC for production accounts without testing in non-production first
 - Setting rotation intervals too short for service accounts that require coordinated restarts
 - Not configuring Distributed Engines for network segments separated by firewalls
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

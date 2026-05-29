@@ -63,6 +63,12 @@ Microsoft Outlook PST (Personal Storage Table) and OST (Offline Storage Table) f
 
 ## Analysis with Open-Source Tools
 
+| Tool | Purpose |
+|------|---------|
+| Autopsy | Open-source digital forensics platform for disk image analysis |
+| FTK Imager | Forensic imaging and evidence preview tool |
+| Volatility | Memory forensics framework for RAM analysis |
+| dcfldd | Enhanced dd with built-in hashing for forensic acquisition |
 ### libpff / pffexport
 
 ```bash
@@ -261,6 +267,22 @@ Key headers for forensic investigation:
 | DKIM-Signature | Domain authentication signature |
 | Authentication-Results | SPF, DKIM, DMARC verification results |
 | X-Mailer | Email client used |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

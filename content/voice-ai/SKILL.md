@@ -3,6 +3,8 @@ name: voice-ai
 description: Voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice agents
 ---
 
+
+
 ## Overview
 
 Voice AI covers TTS, STT, voice cloning, and real-time conversational agents. Integrates ElevenLabs, OpenAI TTS, Whisper, and Vapi/Bland/Retell.
@@ -23,6 +25,44 @@ Voice AI covers TTS, STT, voice cloning, and real-time conversational agents. In
 - Audiobook generation
 
 ## Pseudo Code
+
+The voice-ai workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# voice-ai primary flow
+input = prepare(raw_data)
+result = process(input, config={agents, cloning, elevenlabs, openai, real})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# voice-ai primary flow
+input = prepare(raw_data)
+result = process(input, config={agents, cloning, elevenlabs, openai, real})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### OpenAI TTS
 ```python
@@ -65,3 +105,21 @@ requests.post("https://api.vapi.ai/assistant",
 - Podcast: script → TTS per speaker → mix with intro/outro → export
 - Real-time: websocket stream → Deepgram/Whisper → live transcript
 - Clone: 3+ min samples → ElevenLabs clone → generate speech
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

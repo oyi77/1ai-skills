@@ -48,6 +48,11 @@ Enables getting videos associated with products, extracting downloadable video U
 - Need creator information (use Kalodata's creator endpoints)
 
 ## Core Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### 1. Get Videos for Products
 Uses `POST /product/enrich` endpoint to retrieve video IDs for products.
@@ -109,6 +114,13 @@ interface ProductVideoAnalysis {
 ```
 
 ## API Reference
+| Endpoint/Method | Description |
+|----------------|-------------|
+| `GET /status` | Check service health and availability |
+| `POST /execute` | Run the primary operation |
+| `GET /results` | Retrieve operation results |
+| `DELETE /cache` | Clear cached data |
+
 
 ### VideoAnalyzer Class
 

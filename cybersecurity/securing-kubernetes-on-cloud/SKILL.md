@@ -45,6 +45,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enforce Pod Security Standards
 
 Apply Pod Security Admission labels at the namespace level to enforce the Restricted profile in production namespaces. Pod Security Policies were removed in Kubernetes v1.25 and replaced with Pod Security Admission.
@@ -328,6 +333,11 @@ kubectl logs -l app=kube-bench
 
 ## Common Scenarios
 
+**Scenario 1: Standard Securing Kubernetes On Cloud assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Securing Kubernetes On Cloud response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Cryptominer Deployed via Compromised Container Image
 
 **Context**: GuardDuty Extended Threat Detection generates an AttackSequence:EKS/CompromisedCluster finding. A developer pulled a public Docker image containing an embedded XMRig cryptominer that executes at container startup.
@@ -341,6 +351,22 @@ kubectl logs -l app=kube-bench
 6. Deploy Falco with rules detecting crypto mining process signatures (/usr/bin/xmrig, stratum+tcp connections)
 
 **Pitfalls**: Deleting the pod before capturing the image digest and audit logs destroys forensic evidence. Blocking only the specific image tag allows the attacker to re-push with a different tag.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

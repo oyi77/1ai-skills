@@ -25,6 +25,11 @@ Automatically commit and push changes made by OpenClaw during operation. Enable 
 ---
 
 ## Core Functions
+- Primary operation execution with input validation
+- Error detection and automatic recovery
+- Output formatting and quality assurance
+- Integration hooks for downstream consumers
+
 
 ### 1. Change Detection
 ```
@@ -58,6 +63,12 @@ Options:
 ---
 
 ## Implementation
+1. Initialize the skill context with required configuration
+2. Load any dependencies or connected services
+3. Execute the primary operation
+4. Handle errors gracefully with fallback strategies
+5. Return structured results for consumption
+
 
 ### Change Detection
 ```typescript
@@ -135,6 +146,10 @@ async function batchCommit(options = {}) {
 ---
 
 ## Commit Types
+This section covers commit types for the auto-git-commiter skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Conventional Commits
 ```
@@ -180,6 +195,11 @@ const patterns = {
 ---
 
 ## Safety Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### Approval Modes
 ```typescript
@@ -228,6 +248,12 @@ function isProtected(file) {
 ---
 
 ## Workflow Integration
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### With Runtime-Self-Improvement
 ```
@@ -259,6 +285,14 @@ On performance improvement:
 ---
 
 ## Usage
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Basic Auto-Commit
 ```typescript
@@ -293,6 +327,10 @@ await autoCommit.commitNow('feat(skills): Added new AI consulting skill');
 ---
 
 ## Best Practices
+This section covers best practices for the auto-git-commiter skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Do's
 ✅ Always backup before changes  
@@ -318,7 +356,8 @@ await autoCommit.commitNow('feat(skills): Added new AI consulting skill');
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the task requires domain expertise the agent has not been configured with
+- When human review is mandated by compliance or regulatory requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -331,14 +370,16 @@ await autoCommit.commitNow('feat(skills): Added new AI consulting skill');
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

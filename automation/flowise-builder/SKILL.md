@@ -27,6 +27,9 @@ Flowise is an open-source visual tool for building LLM workflows. It provides a 
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Installation
 
 ```bash
@@ -104,3 +107,16 @@ curl -X POST http://localhost:3000/api/v1/prediction/{chatflow-id} \
 | Vector store empty | Documents not indexed | Re-upload and process documents |
 | Node connection error | Invalid node config | Check node settings in UI |
 | Streaming not working | Missing streaming flag | Add `streaming: true` in API call |
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

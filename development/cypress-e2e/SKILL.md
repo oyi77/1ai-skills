@@ -3,6 +3,7 @@ name: cypress-e2e
 description: Cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration
 ---
 
+
 ## Overview
 
 Cypress is a JavaScript end-to-end testing framework that runs in the browser. It provides real-time reloading, automatic waiting, time travel debugging, and built-in assertions. This skill covers E2E testing, component testing, API testing, and CI integration patterns.
@@ -30,6 +31,26 @@ Cypress is a JavaScript end-to-end testing framework that runs in the browser. I
 - CI/CD pipeline with automated testing
 
 ## Pseudo Code
+
+The cypress-e2e workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# cypress-e2e primary flow
+input = prepare(raw_data)
+result = process(input, config={commands, component, custom, cypress, e2e})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup
 ```bash
@@ -245,6 +266,14 @@ jobs:
 
 ## Common Patterns
 
+Proven patterns for cypress-e2e usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Testing Forms
 ```typescript
 cy.get('form').within(() => {
@@ -280,3 +309,20 @@ module.exports = defineConfig({
   },
 });
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

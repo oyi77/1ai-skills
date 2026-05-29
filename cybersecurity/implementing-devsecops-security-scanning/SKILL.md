@@ -48,13 +48,18 @@ nist_csf:
 - A staging environment URL for DAST scanning (DAST cannot test static code)
 - Repository access with permissions to modify CI/CD workflow files
 - Tool-specific requirements:
-  - Semgrep: free for open-source rulesets (`p/security-audit`, `p/owasp-top-ten`)
+  - Semgrep: free for open-source rulesets (p > security-audit, p > owasp-top-ten)
   - Trivy: free, no account required
   - OWASP ZAP: free, Docker image available
   - Gitleaks: free, no account required
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Add Secrets Detection with Gitleaks
 
 Secrets detection runs first because leaked credentials are the highest-priority finding. Add to `.github/workflows/security.yml`:
@@ -383,3 +388,9 @@ pre-commit run --all-files  # Test against existing codebase
 - [ ] Branch protection rules enforce required status checks before merge
 - [ ] Pre-commit hooks catch secrets and SAST findings locally before push
 - [ ] Developer documentation explains how to interpret scan results and fix common findings
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

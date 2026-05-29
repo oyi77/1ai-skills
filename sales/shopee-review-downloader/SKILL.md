@@ -2,6 +2,7 @@
 name: shopee-review-downloader
 description: Shopee Review Video Downloader. Use when relevant to this domain.
 ---
+
 # Shopee Review Video Downloader
 
 Download product review videos from Shopee pages with automated browser navigation and metadata extraction.
@@ -20,6 +21,13 @@ The Shopee Review Video Downloader skill automates the process of extracting rev
 - Preserves review timestamps and star ratings
 
 ## Usage
+
+- Configure domain, downloader, relevant, review, shopee settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Prerequisites
 
@@ -82,6 +90,13 @@ python3 scripts/download_reviews.py https://shopee.co.id/product-url --download-
 
 ## Dependencies
 
+- Configure domain, downloader, relevant, review, shopee settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Required
 
 - **Browser Tool** - For automated Shopee page navigation and interaction
@@ -95,6 +110,13 @@ pip3 install beautifulsoup4 requests lxml
 ```
 
 ## Examples
+
+- Configure domain, downloader, relevant, review, shopee settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Example 1: Basic Download
 
@@ -174,6 +196,13 @@ downloads/
 
 ## Metadata Files
 
+- Configure domain, downloader, relevant, review, shopee settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### product_info.json
 
 ```json
@@ -221,6 +250,13 @@ downloads/
 ```
 
 ## Technical Details
+
+- Configure domain, downloader, relevant, review, shopee settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Browser Automation
 
@@ -286,6 +322,13 @@ downloads/{product-id}/
 
 ## Troubleshooting
 
+- Configure domain, downloader, relevant, review, shopee settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Issue: No reviews found
 - **Solution**: Check if product has reviews with videos. Some products only have text reviews.
 
@@ -326,3 +369,30 @@ MIT License - Use freely, modify as needed, provide attribution.
 **Skill Type:** Web Scraping / Automation
 **Complexity:** Intermediate
 **Estimated Time per Product:** 2-5 minutes (depends on review count)
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- Test email sequences with seed accounts before full send
+- Verify CRM data integrity (no duplicates, correct stages)
+- Check lead scoring model against actual conversion data
+- Confirm proposal/contract templates are current and branded
+- Validate payment links and checkout flow end-to-end

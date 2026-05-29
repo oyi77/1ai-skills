@@ -3,6 +3,8 @@ name: multi-platform-distribution
 description: One piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post
 ---
 
+
+
 ## Overview
 
 Transform a single piece of content into platform-specific formats, schedule distribution across channels, and track performance. Saves 80% of content marketing time by automating the repurposing pipeline. One blog post becomes a Twitter thread, LinkedIn article, YouTube script, newsletter edition, TikTok script, podcast outline, Reddit post, and Hacker News submission — each optimized for its platform's audience and format.
@@ -40,6 +42,44 @@ Transform a single piece of content into platform-specific formats, schedule dis
 - "This newsletter issue should also go on LinkedIn and as a blog"
 
 ## Pseudo Code
+
+The multi-platform-distribution workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# multi-platform-distribution primary flow
+input = prepare(raw_data)
+result = process(input, config={article, becomes, blog, content, distribution})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# multi-platform-distribution primary flow
+input = prepare(raw_data)
+result = process(input, config={article, becomes, blog, content, distribution})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Content Parsing
 
@@ -340,3 +380,21 @@ def track_performance(content_id):
 - **A/B testing**: Generate 2 hooks for Twitter, post at different times, measure engagement
 - **Content library**: Store all generated versions in a structured folder for reuse
 - **Template reuse**: Save platform-specific templates, apply to new content automatically
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

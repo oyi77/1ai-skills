@@ -53,6 +53,11 @@ Alert triage in Elastic Security is the systematic process of reviewing, classif
 
 ## Alert Triage Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Initial Alert Assessment (2 minutes)
 
 When viewing an alert in Elastic Security, review the alert details panel:
@@ -155,6 +160,11 @@ For each triaged alert, document:
 
 ## Detection Rules for Triage
 
+This section covers detection rules for triage for performing alert triage with elastic siem.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Pre-Built Detection Rules
 
 Elastic Security includes 1000+ pre-built detection rules organized by:
@@ -201,6 +211,11 @@ Elastic Security includes 1000+ pre-built detection rules organized by:
 
 ## AI-Assisted Triage
 
+This section covers ai-assisted triage for performing alert triage with elastic siem.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Elastic AI Assistant Integration
 
 1. Open alert in Elastic Security
@@ -240,6 +255,22 @@ Elastic's Attack Discovery automatically:
 | Escalation Rate | 10-20% | Escalated alerts / total alerts |
 | Alert Coverage | > 80% | Triaged alerts / generated alerts per shift |
 | Reclassification Rate | < 5% | Changed classifications / total classified |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## References
 

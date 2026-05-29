@@ -44,6 +44,11 @@ Harbor is an open-source container registry that provides security features incl
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install Harbor with Security Configuration
 
 ```yaml
@@ -230,6 +235,22 @@ curl -k "https://harbor.example.com/api/v2.0/projects/production/repositories/my
 curl -k "https://harbor.example.com/api/v2.0/audit-logs?page=1&page_size=10" \
   -H "Authorization: Basic $(echo -n admin:Harbor12345 | base64)"
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

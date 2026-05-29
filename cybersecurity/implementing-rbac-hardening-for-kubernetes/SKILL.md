@@ -46,6 +46,11 @@ Kubernetes RBAC regulates access to cluster resources based on roles assigned to
 
 ## Core Hardening Principles
 
+This section covers core hardening principles for implementing rbac hardening for kubernetes.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Eliminate cluster-admin Sprawl
 
 Audit and remove unnecessary cluster-admin bindings:
@@ -173,6 +178,11 @@ spec:
 
 ## RBAC Audit Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Enumerate All Bindings
 
 ```bash
@@ -227,6 +237,10 @@ kubectl get pods --all-namespaces -o json | jq -r '
 
 ## Tooling
 
+| Tool | Purpose |
+|------|---------|
+| Platform-specific tools | See the workflow steps for recommended tools |
+| Standard utilities | sha256sum, grep, awk for data processing |
 ### rbac-lookup
 
 ```bash
@@ -252,6 +266,22 @@ kubectl access-matrix
 # Show access for a specific service account
 kubectl access-matrix --sa payments:payment-processor
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

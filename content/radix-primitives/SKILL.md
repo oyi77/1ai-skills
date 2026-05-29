@@ -3,6 +3,8 @@ name: radix-primitives
 description: Radix UI headless primitives — accessible, unstyled React components for dialogs, dropdowns, tooltips
 ---
 
+
+
 ## Overview
 
 Radix UI provides unstyled, accessible React primitives (Dialog, Dropdown, Popover, Tooltip, etc.) that handle behavior, keyboard navigation, and ARIA attributes. Style them with Tailwind, CSS, or any CSS-in-JS.
@@ -24,6 +26,44 @@ Radix UI provides unstyled, accessible React primitives (Dialog, Dropdown, Popov
 - Need fine-grained control over component behavior and appearance
 
 ## Pseudo Code
+
+The radix-primitives workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# radix-primitives primary flow
+input = prepare(raw_data)
+result = process(input, config={accessible, components, dialogs, dropdowns, headless})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# radix-primitives primary flow
+input = prepare(raw_data)
+result = process(input, config={accessible, components, dialogs, dropdowns, headless})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -103,3 +143,21 @@ export function Tip({ children, content }) {
 - **Animation**: Use `data-[state=open]` and `data-[state=closed]` for CSS transitions
 - **Composition**: Combine primitives (Dialog + Form + Select) for complex UIs
 - **Focus trap**: Built-in — Dialog automatically traps focus, handles Escape key
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

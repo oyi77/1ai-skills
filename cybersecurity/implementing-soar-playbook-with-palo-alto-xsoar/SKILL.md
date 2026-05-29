@@ -51,6 +51,11 @@ Cortex XSOAR (formerly Demisto) is Palo Alto Networks' Security Orchestration, A
 
 ## Playbook Architecture
 
+This section covers playbook architecture for implementing soar playbook with palo alto xsoar.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### XSOAR Component Hierarchy
 
 ```
@@ -90,6 +95,11 @@ Closing Report
 
 ## Building a Phishing Response Playbook
 
+This section covers building a phishing response playbook for implementing soar playbook with palo alto xsoar.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Step 1: Define Incident Type
 
 ```yaml
@@ -243,6 +253,11 @@ tasks:
 
 ## Common SOC Playbook Templates
 
+This section covers common soc playbook templates for implementing soar playbook with palo alto xsoar.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Malware Investigation Playbook
 
 ```
@@ -295,6 +310,11 @@ Steps:
 
 ## Custom XSOAR Scripts
 
+This section covers custom xsoar scripts for implementing soar playbook with palo alto xsoar.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Python Automation Script Example
 
 ```python
@@ -332,6 +352,22 @@ calculate_risk_score()
 | Account Compromise MTTR | 30 min | 4 min | 87% reduction |
 | Alerts Handled per Shift | 50 | 200+ | 300% increase |
 | False Positive Handling | 10 min | 30 sec | 95% reduction |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## References
 

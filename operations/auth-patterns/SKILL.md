@@ -27,6 +27,9 @@ Implement production authentication — OAuth 2.0 flows, JWT tokens, session sto
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### OAuth 2.0 Authorization Code Flow
 
 ```javascript
@@ -155,3 +158,16 @@ function apiKeyAuth(req, res, next) {
 - **Token rotation**: Rotate refresh tokens on each use
 - **Password hashing**: Use argon2id (preferred) or bcrypt with cost 12+
 - **API key prefix**: Show first 8 chars for identification, store only hash
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

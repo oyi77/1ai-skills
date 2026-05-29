@@ -98,6 +98,9 @@ digraph finance_trigger {
 
 ## Anti-Bias Checklist (Run Before Every Recommendation)
 
+Six cognitive traps and ten financial red flags to scan before every recommendation.
+
+
 ### 6 Cognitive Traps
 - [ ] **Confirmation bias** — Did I actively seek disconfirming evidence?
 - [ ] **Anchoring** — Am I over-weighting first price/number seen?
@@ -168,6 +171,9 @@ Then load only the relevant reference files identified.
 ---
 
 ## Composition Workflows (Step 2)
+
+Pre-composed module combinations for common analysis scenarios.
+
 
 ### Equity Deep Dive
 `fin-equity-fundamental` → `fin-equity-technical` → `fin-sentiment-engine` → `fin-risk-guardian`
@@ -247,6 +253,27 @@ Every response follows this structure (adapt depth to complexity):
 | "Spirit not letter" | Spirit violations ARE letter violations. Both forbidden. |
 
 ---
+
+
+## Red Flags
+
+- Recommendation with only T3 (opinion) sources — BLOCKED
+- Skipping Pre-Trade Risk Gate for "quick trades" — BLOCKED
+- Conviction >0.8 without T1 evidence — BLOCKED
+- Position size exceeding portfolio risk limits — BLOCKED
+- Backtesting with <30 samples then claiming edge — BLOCKED
+- Correlation >0.7 with existing positions but no reduction — BLOCKED
+
+## Verification
+
+After completing financial analysis, confirm:
+
+- [ ] Query classified by asset class, analysis type, and complexity
+- [ ] Evidence tiered: T1/T2/T3 composition disclosed in output
+- [ ] All 5 pre-trade risk gates passed (Liquidity, Correlation, Sentiment, Memory, Regulatory)
+- [ ] Anti-bias checklist completed with 6 cognitive traps checked
+- [ ] Position sizing uses Kelly Criterion or equivalent risk-adjusted method
+- [ ] Output follows structured format (Summary, Thesis, Evidence, Valuation, Risk, Action)
 
 ## Compliance & Disclaimers
 

@@ -44,6 +44,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 — Test Basic Host Header Injection
 ```bash
 # Supply arbitrary Host header
@@ -204,6 +209,22 @@ curl -H "Host: management.internal" http://target.com/
 3. **Internal Panel Access** — Enumerate and access internal admin panels through virtual host manipulation
 4. **SSRF to Cloud Metadata** — Use Host header to redirect server-side requests to cloud metadata endpoints
 5. **Routing Bypass** — Bypass access controls by manipulating Host to route requests to unprotected backend instances
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

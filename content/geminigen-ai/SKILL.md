@@ -2,6 +2,7 @@
 name: geminigen-ai
 description: GeminiGen AI - Multimedia AI Platform. Use when relevant to this domain.
 ---
+
 # GeminiGen AI - Multimedia AI Platform
 
 > ✅ **CANONICAL PROVIDER** — This is the single source of truth for all media generation in the 1ai-skills stack.
@@ -36,7 +37,7 @@ export GEMINIGEN_API_KEY="$(jq -r .api_key skills/1ai-skills/config/geminigen_ap
 | History | GET | `/uapi/v1/history/{uuid}` | Poll generation status |
 
 **Auth:** `x-api-key: $GEMINIGEN_API_KEY` header on all requests
-**Content-Type:** `multipart/form-data` (image/video), `application/json` (TTS)
+**Content-Type:** multipart/form-data (image/video), application/json (TTS)
 
 ## Quick Reference
 
@@ -241,3 +242,29 @@ For async notifications, configure webhook at:
 https://geminigen.ai/profile/integration/webhooks
 
 Webhook payload includes `uuid`, `status`, and `generate_result` when complete.
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

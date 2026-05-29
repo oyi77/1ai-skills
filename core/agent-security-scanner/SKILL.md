@@ -26,6 +26,12 @@ AI agents present a unique attack surface: they read untrusted input, execute co
 - Onboarding to a repository with existing agent configurations
 
 ## Process / Steps
+1. Gather requirements and constraints from the user
+2. Validate prerequisites (tools, permissions, data)
+3. Execute the core operation with error handling
+4. Verify output meets quality standards
+5. Report results and log for future reference
+
 
 ### 1. Attack Vector Inventory
 

@@ -51,6 +51,11 @@ Implement SAML 2.0 Single Sign-On (SSO) using Okta as the Identity Provider (IdP
 
 ## Key Concepts
 
+This section covers key concepts for implementing saml sso with okta.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SAML 2.0 Authentication Flow
 1. **SP-Initiated Flow**: User accesses Service Provider -> SP generates AuthnRequest -> Redirect to Okta IdP -> User authenticates -> Okta sends SAML Response -> SP validates assertion -> Access granted
 2. **IdP-Initiated Flow**: User authenticates at Okta -> Selects application -> Okta sends unsolicited SAML Response -> SP validates -> Access granted
@@ -71,6 +76,11 @@ Implement SAML 2.0 Single Sign-On (SSO) using Okta as the Identity Provider (IdP
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Create SAML Application in Okta
 1. Navigate to Applications > Create App Integration
 2. Select SAML 2.0 as the sign-on method
@@ -136,3 +146,9 @@ Implement SAML 2.0 Single Sign-On (SSO) using Okta as the Identity Provider (IdP
 - [ ] Session timeout forces re-authentication
 - [ ] SLO properly terminates sessions on both IdP and SP
 - [ ] Certificate rotation tested without service interruption
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

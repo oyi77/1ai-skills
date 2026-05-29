@@ -73,6 +73,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for hunting for dns tunneling with zeek.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Zeek Script -- DNS Tunnel Detection
 ```zeek
 @load base/protocols/dns
@@ -128,6 +133,22 @@ rita show-dns-tunneling dataset_name --csv > dns_tunnel_results.csv
 3. **Data Exfiltration via DNS**: Sensitive data encoded in subdomain labels (e.g., `aGVsbG8gd29ybGQ.exfil.attacker.com`), sent as A or TXT queries. Each query carries ~63 bytes of data.
 4. **DNS-over-HTTPS Tunneling**: Bypasses traditional DNS monitoring by sending DNS queries over HTTPS to public resolvers (8.8.8.8, 1.1.1.1), requiring TLS inspection for detection.
 5. **Cobalt Strike DNS Beacon**: Uses DNS A/TXT records for C2 communication with configurable subdomain encoding schemes.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

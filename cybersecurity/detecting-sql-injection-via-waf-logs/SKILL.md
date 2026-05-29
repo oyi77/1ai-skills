@@ -55,6 +55,10 @@ python scripts/agent.py --log-file /var/log/modsec_audit.log --format modsecurit
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### ModSecurity SQLi Detection
 ```
 Rule 942100 triggered: SQL Injection Attack Detected via libinjection
@@ -62,3 +66,17 @@ URI: /api/users?id=1' UNION SELECT username,password FROM users--
 Source IP: 203.0.113.42 (47 requests in 5 minutes)
 Classification: UNION-based SQLi campaign
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding

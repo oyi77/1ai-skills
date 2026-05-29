@@ -41,6 +41,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1 — Identify Storage and Trigger Points
 ```bash
 # Map the application to identify:
@@ -197,6 +202,22 @@ curl http://target.com/profile
 3. **Report Generation Attack** — Inject payload in stored data fields; triggering report generation uses stored data in aggregate queries
 4. **Cross-User Injection** — Inject payload in a shared data field (comments, reviews) that triggers when another user or admin processes the data
 5. **Export Function Exploit** — Inject payload in profile data that triggers during CSV/PDF export operations
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

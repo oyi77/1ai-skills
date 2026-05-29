@@ -47,6 +47,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify Relevant Threat Actors
 
 Cross-reference your organization's sector, geography, and technology stack against known adversary targeting patterns. Sources:
@@ -117,6 +122,21 @@ Classify TLP:AMBER for internal distribution; seek ISAC approval before external
 | **Attribution** | Process of associating an attack with a specific threat actor; requires multiple independent corroborating data points and carries inherent uncertainty |
 | **Cluster** | A group of related intrusion activity that may or may not be attributable to a single actor; used when attribution is uncertain |
 | **Intrusion Set** | STIX SDO type representing a grouped set of adversarial behaviors with common objectives, even if actor identity is unknown |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Systems
 

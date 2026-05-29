@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Establish Entropy Baselines
 
 Calculate normal entropy ranges for files in the environment:
@@ -197,6 +202,13 @@ Automated Response Actions:
 | **I/O Rate Anomaly** | Abnormally high rate of file read/write operations by a single process, characteristic of bulk encryption |
 | **Behavioral Scoring** | Combining multiple weak signals (entropy, I/O rate, file renames) into a composite confidence score |
 | **Entropy Evasion** | Techniques used by advanced ransomware to defeat entropy detection, such as Base64 encoding output or partial encryption |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
 
 ## Tools & Systems
 

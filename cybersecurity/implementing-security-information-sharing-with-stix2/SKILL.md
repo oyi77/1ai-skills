@@ -54,6 +54,11 @@ with the stix2 Python library and TAXII 2.1 transport protocol.
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install Dependencies
 
 ```bash
@@ -406,3 +411,10 @@ validate_stix_bundle("emotet_campaign_bundle.json")
 - Re-retrieve published objects from the TAXII server and confirm they round-trip without data loss
 - Check that consuming systems (SIEM, SOAR, TIP) can ingest the bundle and create corresponding detection rules or enrichment data
 - Run `stix2-validator` CLI tool against exported bundles: `stix2_validator emotet_campaign_bundle.json`
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions

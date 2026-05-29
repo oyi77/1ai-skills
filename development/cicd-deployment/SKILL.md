@@ -2,6 +2,7 @@
 name: cicd-deployment
 description: cicd-deployment. Use when relevant to this domain.
 ---
+
 # cicd-deployment
 
 **name:** cicd-deployment  
@@ -82,6 +83,13 @@ Store in repo Settings → Secrets and variables → Actions:
 ---
 
 ## GitHub Actions Template
+
+- Configure cicd, deployment, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### `.github/workflows/deploy.yml`
 
@@ -328,6 +336,13 @@ jobs:
 ---
 
 ## Deployment Scripts
+
+- Configure cicd, deployment, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### `scripts/deploy.sh`
 
@@ -577,6 +592,25 @@ log "=== HEALTH CHECK PASSED ==="
 
 ## Systemd User Service Templates
 
+Reusable templates for cicd-deployment.
+
+Standard config:
+```yaml
+name: cicd-deployment_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: cicd-deployment_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
 ### FastAPI Service (`~/.config/systemd/user/<service-name>.service`)
 
 ```ini
@@ -636,6 +670,25 @@ systemctl --user enable <service-name>-blue <service-name>-green
 ---
 
 ## Docker Templates
+
+Reusable templates for cicd-deployment.
+
+Standard config:
+```yaml
+name: cicd-deployment_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: cicd-deployment_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### `Dockerfile` — Python/FastAPI
 
@@ -741,6 +794,13 @@ networks:
 ---
 
 ## BerkahKarya Service Patterns
+
+- Configure cicd, deployment, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### FastAPI Service — Minimum Viable Structure
 
@@ -903,6 +963,13 @@ curl /health → 200?
 
 ## Rollback Strategy
 
+- Configure cicd, deployment, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Automatic (on deploy failure)
 
 ```bash
@@ -1043,3 +1110,28 @@ telegram_notify "🚨 *Deploy FAILED* — \`my-service\` — manual action requi
 
 *Skill maintained by Vilona — BerkahKarya AI GM | Software House Division*  
 *Stack: Python/Node.js | Server: kali-openclaw | Updated: 2026-03*
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- All tests pass after code changes (unit, integration, e2e as appropriate)
+- Error handling covers documented failure modes and edge cases
+- Configuration uses environment variables or config files, not hardcoded values
+- Security-sensitive code (auth, payments, API) has explicit review
+- Code follows project conventions (naming, patterns, structure)

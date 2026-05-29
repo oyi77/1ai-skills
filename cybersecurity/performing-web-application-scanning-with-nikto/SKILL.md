@@ -41,6 +41,11 @@ Nikto is an open-source web server and web application scanner that tests agains
 
 ## Core Concepts
 
+This section covers core concepts for performing web application scanning with nikto.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### What Nikto Detects
 - Server misconfigurations and dangerous default files
 - Outdated server software versions with known CVEs
@@ -63,6 +68,11 @@ Nikto is an open-source web server and web application scanner that tests agains
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Basic Scanning
 ```bash
 # Basic scan against a target
@@ -202,6 +212,15 @@ for item in tree.findall('.//item'):
 
 ## Interpreting Results
 
+```
+Performing Web Application Scanning With Nikto Output Summary
+========================================
+Status:       [COMPLETE / PARTIAL / BLOCKED]
+Findings:     [count] items
+Severity:     [Critical / High / Medium / Low / Info]
+Evidence:     [file paths or log references]
+Next Steps:   [recommended actions]
+```
 ### Severity Classification
 - **OSVDB/CVE References**: Cross-reference with NVD for CVSS scores
 - **Server Information Disclosure**: Version banners, technology stack
@@ -237,3 +256,17 @@ for item in tree.findall('.//item'):
 - scanning-infrastructure-with-nessus
 - scanning-apis-for-security-vulnerabilities
 - performing-network-vulnerability-assessment
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance

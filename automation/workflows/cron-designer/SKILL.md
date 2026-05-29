@@ -20,7 +20,8 @@ Design complex cron schedules
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the scheduled task affects production data and requires manual approval
+- When the cron job must coordinate across multiple distributed systems
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Design complex cron schedules
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Cron jobs run without health checks confirming successful completion
+- Agent schedules jobs during peak load periods degrading performance
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Each job has a health check confirming successful completion
+- [ ] Scheduling avoids peak load windows
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

@@ -28,9 +28,13 @@ Creates institutional-quality financial models: DCF (Discounted Cash Flow), LBO 
 
 - Simple back-of-envelope math (use `trading/alphaear-strategy`)
 - Earnings note drafting (use `financial/earnings-viewer`)
-- Portfolio tracking (use `trading/trading/polymarket-api`)
+- Portfolio tracking (use `trading/investing-algorithm-framework`)
 
 ## Implementation
+
+
+The implementation follows a phased approach: select model type, construct Excel workbook, and run sensitivity analysis.
+
 
 ### Phase 1: Model Selection & Setup
 

@@ -84,6 +84,11 @@ semgrep --config auto --severity ERROR .
 
 ## Writing Custom Rules
 
+This section covers writing custom rules for implementing semgrep for custom sast rules.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Basic Pattern Matching
 
 ```yaml
@@ -259,6 +264,11 @@ semgrep --config rules/sql-injection.yaml --test
 
 ## CI/CD Integration
 
+This section covers ci/cd integration for implementing semgrep for custom sast rules.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GitHub Actions
 
 ```yaml
@@ -325,3 +335,15 @@ vendor/
 6. **Exclude test files** to reduce false positives
 7. **Version control rules** in a shared repository
 8. **Run in CI as a blocking check** for ERROR severity findings
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

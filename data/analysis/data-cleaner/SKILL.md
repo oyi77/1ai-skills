@@ -1,7 +1,9 @@
 ---
 name: data-cleaner
-description: Clean messy datasets
+description: Data Cleaner skill for automated data workflows. Provides tools and templates for clean, cleaner, data operations, integration with AI pipelines, and performance optimization.
 ---
+
+
 ## Data Cleaner
 
 Clean messy datasets
@@ -20,7 +22,8 @@ Clean messy datasets
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the data contains regulated PII that must be handled under specific retention policies
+- When the cleaning process would destroy audit trails required for compliance
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Clean messy datasets
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Data cleaning silently drops records without logging what was removed
+- Agent does not validate data types after cleaning
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Removed records are logged with reason for removal
+- [ ] Data types are validated after all cleaning operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related data skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

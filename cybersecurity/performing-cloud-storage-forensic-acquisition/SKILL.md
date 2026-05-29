@@ -58,6 +58,11 @@ Cloud storage forensic acquisition involves collecting digital evidence from ser
 
 ## Acquisition Methods
 
+This section covers acquisition methods for performing cloud storage forensic acquisition.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Method 1: API-Based Remote Acquisition
 
 #### Google Drive API Acquisition
@@ -278,6 +283,22 @@ def analyze_onedrive_sync_engine(db_path: str) -> list:
 | Google Drive | metadata_sqlite_db | %LOCALAPPDATA%\Google\DriveFS\{account}\content_cache\ | %LOCALAPPDATA%\Google\DriveFS\Logs\ |
 | Dropbox | filecache.dbx (encrypted) | %APPDATA%\Dropbox\.dropbox.cache\ | %APPDATA%\Dropbox\logs\ |
 | Box | sync_db | %LOCALAPPDATA%\Box\Box\cache\ | %LOCALAPPDATA%\Box\Box\logs\ |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

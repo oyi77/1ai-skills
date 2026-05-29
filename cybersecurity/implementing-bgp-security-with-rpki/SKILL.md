@@ -48,6 +48,11 @@ Resource Public Key Infrastructure (RPKI) provides cryptographic validation of B
 
 ## Core Concepts
 
+This section covers core concepts for implementing bgp security with rpki.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### RPKI Architecture
 
 ```
@@ -100,6 +105,11 @@ A ROA is a signed object that states:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Create ROAs at Your RIR
 
 **ARIN (North America):**
@@ -319,6 +329,20 @@ if __name__ == "__main__":
 - **Monitor ROA Expiry** - Set alerts for ROA certificates approaching expiration
 - **Coordinate with Upstreams** - Notify transit providers about your RPKI deployment
 - **Test with Looking Glass** - Verify your ROAs are visible using public RPKI validators
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

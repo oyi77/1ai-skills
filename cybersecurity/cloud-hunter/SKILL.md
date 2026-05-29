@@ -18,6 +18,11 @@ Cloud misconfigs are low-hanging fruit that pay $500-$50,000. Exposed buckets, o
 
 ## The Process
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### 1. Cloud Asset Discovery
 
 ```

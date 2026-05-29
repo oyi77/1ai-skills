@@ -2,6 +2,7 @@
 name: ultra-realistic-media
 description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant to this domain.
 ---
+
 # ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL
 
 ## Overview
@@ -13,6 +14,13 @@ Train AI agents to generate ultra realistic images and videos using multiple sta
 ---
 
 ## 🎯 CORE CONCEPTS
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Ultra Realism Standards
 
@@ -27,6 +35,13 @@ Train AI agents to generate ultra realistic images and videos using multiple sta
 ---
 
 ## 🛠️ TOOLBOX: 4 PROVIDERS
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. NVIDIA Flux (Image) 🎨
 - **Best for:** Ultra realistic portraits, product photography
@@ -61,6 +76,13 @@ Train AI agents to generate ultra realistic images and videos using multiple sta
 ---
 
 ## 📚 PROVEN PROMPT FORMULAS
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Ultra Realistic Portrait Formula
 
@@ -126,6 +148,13 @@ Film grain overlay, lens flare from setting sun, cinematic quality
 ---
 
 ## 🏆 STEP-BY-STEP TRAINING PROGRAM
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Phase 1: Image Excellence (Days 1-3)
 
@@ -231,6 +260,13 @@ focus: dramatic lighting, camera movement, color grading
 
 ## 🎯 QUALITY CHECKLIST
 
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Image Realism Checklist
 
 - [ ] Skin pores visible (portraits)
@@ -260,6 +296,13 @@ focus: dramatic lighting, camera movement, color grading
 ---
 
 ## 📊 ADVANCED PROMPTING STRATEGIES
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Negative Prompting (What NOT To Generate)
 
@@ -318,6 +361,13 @@ final_prompt = f"{refined_prompt}, [final tweak]"
 ---
 
 ## 🚀 COMMERCIAL APPLICATIONS
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### E-Commerce Photography
 
@@ -414,6 +464,13 @@ brand_film = grok.generate(
 
 ## ⚡ PERFORMANCE TIPS
 
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Speed Optimization
 
 ```python
@@ -463,6 +520,13 @@ batch_flux = flux.generate_batch([
 
 ## 🧪 TESTING & VALIDATION
 
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### A/B Testing Framework
 
 ```python
@@ -501,6 +565,13 @@ def evaluate_realism(image):
 
 ## 📈 PROGRESS TRACKING
 
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Weekly Goals
 
 **Week 1:** Master Flux portraits (90% realistic)
@@ -524,6 +595,13 @@ def evaluate_realism(image):
 ---
 
 ## 🎯 FINAL ASSESSMENT
+
+- Configure domain, generation, media, realistic, relevant settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Ultra Realism Certification Criteria
 
@@ -565,3 +643,29 @@ def evaluate_realism(image):
 ---
 
 *For reference: See content-generator/SKILL.md (videos), gemini-image-generator/SKILL.md (products), grok-video-generation/SKILL.md (cinematics)*
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

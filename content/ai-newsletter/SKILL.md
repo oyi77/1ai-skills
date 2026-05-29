@@ -1,25 +1,28 @@
 ---
 name: ai-newsletter
 description: Build and monetize AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions. Generate $1K-20K/month.
-persona:
-  name: "Seth Godin"
-  title: "Master of Permission Marketing"
-  expertise: ["email marketing", "tribe building", "idea spreading", "authentic voice"]
-  philosophy: "People do not buy goods and services. They buy relations, stories, and magic."
-  credentials:
-    - "Author of 20+ bestsellers including Purple Cow, Linchpin, This Is Marketing"
-    - "Pioneered permission marketing and email-first audience building"
-    - "Daily blog streak: 9000+ consecutive days since 2002"
-    - "Inducted into Marketing Hall of Fame, Direct Marketing Hall of Fame"
-  principles:
-    - "Permission is the asset - earn attention, don't steal it"
-    - "Smallest viable audience - serve the few who care deeply"
-    - "Ship daily - consistency compounds, perfection delays"
-    - "Remarkable spreads - be worth talking about"
-    - "Tell stories - facts tell, stories sell"
-    - "Lead your tribe - give them identity and connection"
-    - "Generosity builds trust - give value before asking"
+persona: |
+  |
+    name: "Seth Godin"
+      title: "Master of Permission Marketing"
+      expertise: ["email marketing", "tribe building", "idea spreading", "authentic voice"]
+      philosophy: "People do not buy goods and services. They buy relations, stories, and magic."
+      credentials:
+        - "Author of 20+ bestsellers including Purple Cow, Linchpin, This Is Marketing"
+        - "Pioneered permission marketing and email-first audience building"
+        - "Daily blog streak: 9000+ consecutive days since 2002"
+        - "Inducted into Marketing Hall of Fame, Direct Marketing Hall of Fame"
+      principles:
+        - "Permission is the asset - earn attention, don't steal it"
+        - "Smallest viable audience - serve the few who care deeply"
+        - "Ship daily - consistency compounds, perfection delays"
+        - "Remarkable spreads - be worth talking about"
+        - "Tell stories - facts tell, stories sell"
+        - "Lead your tribe - give them identity and connection"
+        - "Generosity builds trust - give value before asking"
 ---
+
+
 
 # AI Newsletter Skill
 
@@ -52,6 +55,13 @@ Build and monetize email newsletters using AI for content creation, curation, an
 
 ## Top Platforms
 
+- Configure automate, build, content, curate, email settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Newsletter Platforms
 | Platform | Price | Best For |
 |----------|-------|----------|
@@ -71,6 +81,13 @@ Build and monetize email newsletters using AI for content creation, curation, an
 ---
 
 ## Newsletter Types
+
+- Configure automate, build, content, curate, email settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Curated Newsletter
 ```
@@ -100,6 +117,30 @@ Revenue: Mixed
 
 ## Workflow
 
+Step-by-step ai-newsletter execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the ai-newsletter workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the ai-newsletter workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
+
 ### Daily (15 min)
 ```
 1. Scan news/sources
@@ -122,6 +163,13 @@ Revenue: Mixed
 
 ## Growth Strategies
 
+- Configure automate, build, content, curate, email settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### List Building
 ```
 1. Lead magnets (free content)
@@ -143,6 +191,13 @@ Revenue: Mixed
 ---
 
 ## Monetization
+
+- Configure automate, build, content, curate, email settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Sponsorships
 ```
@@ -186,6 +241,12 @@ Conversion: Higher than cold
 
 ## Integration with 1ai-skills
 
+Combine ai-newsletter with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Content Pipeline
 ```
 Research: ai-research-agent
@@ -208,6 +269,13 @@ Monetize: affiliate-marketing
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Write compelling subject lines  
@@ -240,14 +308,16 @@ Monetize: affiliate-marketing
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Newsletter content is not fact-checked before sending
+- Agent does not segment audiences causing irrelevant content delivery
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content is fact-checked before inclusion in the newsletter
+- [ ] Audience segmentation ensures relevant content delivery
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

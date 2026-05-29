@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Kong Gateway Security Configuration
 
 ```yaml
@@ -410,6 +415,11 @@ cloudwatch.put_metric_alarm(
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Api Gateway Security Controls assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Api Gateway Security Controls response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Securing a Microservice API with Kong Gateway
 
 **Context**: A company is migrating from a monolithic API to microservices. Each microservice has its own REST API. The security team needs to implement centralized authentication, rate limiting, and request validation without modifying each service.
@@ -430,6 +440,22 @@ cloudwatch.put_metric_alarm(
 - Using verbose error responses from the gateway that reveal internal service architecture
 - Not testing the gateway configuration with security tools after deployment
 - Missing mutual TLS between the gateway and backend services, allowing direct backend access
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

@@ -25,6 +25,11 @@ Monitor skill performance in real-time. Track usage patterns, success rates, res
 ---
 
 ## Core Functions
+- Primary operation execution with input validation
+- Error detection and automatic recovery
+- Output formatting and quality assurance
+- Integration hooks for downstream consumers
+
 
 ### 1. Usage Tracking
 ```
@@ -65,6 +70,12 @@ Recommend:
 ---
 
 ## Implementation
+1. Initialize the skill context with required configuration
+2. Load any dependencies or connected services
+3. Execute the primary operation
+4. Handle errors gracefully with fallback strategies
+5. Return structured results for consumption
+
 
 ### Task Logger
 ```typescript
@@ -148,6 +159,10 @@ async function getRecommendations() {
 ---
 
 ## Metrics Dashboard
+This section covers metrics dashboard for the skill-performance-monitor skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Per-Skill Metrics
 | Metric | Good | Warning | Critical |
@@ -168,6 +183,10 @@ async function getRecommendations() {
 ---
 
 ## Analytics Views
+This section covers analytics views for the skill-performance-monitor skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Skill Leaderboard
 ```typescript
@@ -201,6 +220,10 @@ async function getTrends(days = 7) {
 ---
 
 ## Auto-Optimization
+This section covers auto-optimization for the skill-performance-monitor skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Triggered Actions
 ```typescript
@@ -249,6 +272,10 @@ async function improveFromFeedback(feedback) {
 ---
 
 ## Reporting
+This section covers reporting for the skill-performance-monitor skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Daily Report
 ```typescript
@@ -280,6 +307,11 @@ ${stats.recommendations.map(r => `- ${r}`).join('\n') || 'None'}
 ---
 
 ## Integration
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### With Runtime-Self-Improvement
 ```
@@ -313,6 +345,10 @@ Periodic checks:
 ---
 
 ## Best Practices
+This section covers best practices for the skill-performance-monitor skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Do's
 ✅ Track everything initially  
@@ -338,7 +374,8 @@ Periodic checks:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When monitoring collects data subject to employee privacy regulations
+- When performance metrics are used for compensation decisions
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -351,14 +388,16 @@ Periodic checks:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Monitoring collects metrics without actionable alerting thresholds
+- Agent does not distinguish between leading and lagging indicators
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Alerting thresholds are actionable, not just informational
+- [ ] Leading indicators are distinguished from lagging indicators
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

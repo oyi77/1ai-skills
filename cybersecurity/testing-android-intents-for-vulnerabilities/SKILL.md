@@ -46,6 +46,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Enumerate Exported Components
 
 ```bash
@@ -169,6 +174,22 @@ run app.service.send com.target.app com.target.app.MessengerService \
 | **Pending Intent** | Token wrapping an intent for future execution by another app; mutable PendingIntents can be modified by recipients |
 | **Content Provider** | Component for structured data sharing between apps; SQL injection target if query parameters are not sanitized |
 | **Broadcast Receiver** | Component receiving system or app broadcasts; exported receivers can be triggered by any app |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Tools & Systems
 

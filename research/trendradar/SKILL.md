@@ -37,6 +37,9 @@ AI-powered trending topic monitoring and analysis from 35+ platforms. Cut throug
 
 ## MCP Server Setup
 
+Configuration and connection setup for the MCP server.
+
+
 ### Installation
 ```json
 {
@@ -60,6 +63,9 @@ npx -y @trendradar/mcp-server
 ---
 
 ## Available Tools (13 MCP Tools)
+
+Complete list of available MCP tools and their parameters.
+
 
 ### 1. Search Trends
 ```typescript
@@ -162,6 +168,9 @@ crossPlatformAnalysis({
 
 ## Supported Platforms
 
+Platforms and services this skill integrates with.
+
+
 ### Social Media
 | Platform | Type | Key Metrics |
 |----------|------|-------------|
@@ -190,6 +199,9 @@ crossPlatformAnalysis({
 ---
 
 ## Use Cases
+
+Real-world scenarios where this skill provides value.
+
 
 ### 1. Content Research
 ```
@@ -236,6 +248,9 @@ Use: analytics + trendradar
 
 ## Integration with 1ai-skills
 
+How to connect this tool with the 1ai-skills ecosystem.
+
+
 ### Research Pipeline
 ```
 trendradar → ai-research-agent → content-creation → publishing
@@ -276,6 +291,9 @@ Configure alerts to:
 
 ## Best Practices
 
+Key aspects of trendradar relevant to this section.
+
+
 ### Do's
 ✅ Use specific keywords for targeted results  
 ✅ Set up daily monitoring for priorities  
@@ -313,7 +331,8 @@ Configure alerts to:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -326,14 +345,16 @@ Configure alerts to:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

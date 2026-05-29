@@ -1,10 +1,13 @@
 ---
 name: analytics-reporting
 description: Generate analytics reports, dashboards, and business metrics with Notion and Slack
-allowed-tools:
-  - MCP(notion:*)
-  - MCP(slack:*)
+allowed-tools: |
+  |
+    - MCP(notion:*)
+      - MCP(slack:*)
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Analytics Reporting"
@@ -68,6 +71,44 @@ Generate analytics reports, dashboards, and business metrics. Store reports in N
 - Schedule automated reports to Slack
 
 ## Pseudo Code
+
+The analytics-reporting workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# analytics-reporting primary flow
+input = prepare(raw_data)
+result = process(input, config={analytics, business, dashboards, generate, metrics})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# analytics-reporting primary flow
+input = prepare(raw_data)
+result = process(input, config={analytics, business, dashboards, generate, metrics})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Generate Weekly Report
 
@@ -187,7 +228,8 @@ const dashboard = await notion.pages.create({
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -200,14 +242,16 @@ const dashboard = await notion.pages.create({
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

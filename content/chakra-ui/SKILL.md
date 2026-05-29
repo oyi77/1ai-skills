@@ -3,6 +3,8 @@ name: chakra-ui
 description: Chakra UI React component library — theming, responsive styles, color mode, component composition
 ---
 
+
+
 ## Overview
 
 Chakra UI is a modular, accessible React component library with built-in dark mode, responsive styles, and a flexible theming system. Uses style props for inline styling with theme tokens.
@@ -24,6 +26,44 @@ Chakra UI is a modular, accessible React component library with built-in dark mo
 - Building dashboards, forms, and complex layouts
 
 ## Pseudo Code
+
+The chakra-ui workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# chakra-ui primary flow
+input = prepare(raw_data)
+result = process(input, config={chakra, color, component, composition, library})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# chakra-ui primary flow
+input = prepare(raw_data)
+result = process(input, config={chakra, color, component, composition, library})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -98,3 +138,21 @@ export function ThemedCard() {
 - **useColorModeValue**: `useColorModeValue("white", "gray.800")` — theme-aware values
 - **Component factory**: `const CustomBox = chakra("div", { baseStyle: { p: 4 } })`
 - **Portal overlays**: Modals and Drawers use Portal for proper z-index layering
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

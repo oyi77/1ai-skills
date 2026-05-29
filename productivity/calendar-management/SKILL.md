@@ -43,6 +43,12 @@ This skill channels the expertise of:
 - **Principles**: Track before optimizing, schedule priorities first, protect peak energy hours, batch meetings, build in buffer time
 
 ## Required Tools
+| Tool | Purpose | Required |
+|------|---------|----------|
+| CLI | Primary execution | Yes |
+| API client | External service calls | Conditional |
+| Validator | Output checking | Recommended |
+
 
 ### MCP Servers
 
@@ -88,6 +94,11 @@ This skill channels the expertise of:
 | `MCP(tldv:*)` | Meeting transcription, summaries |
 
 ## Authentication
+1. Obtain API credentials from the service provider
+2. Set environment variables: `export API_KEY=<your-key>`
+3. Test authentication: invoke the skill with a read-only operation
+4. Store credentials securely; never commit to version control
+
 
 ### Setup Steps
 
@@ -114,6 +125,22 @@ This skill channels the expertise of:
    ```
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Example 1: Schedule Meeting with Availability Check
 
@@ -265,6 +292,11 @@ console.log(`Total: ${stats.totalMeetings} meetings, ${stats.totalHours} hours`)
 | `PERM_001` | No access to calendar | Request access |
 
 ## Common Patterns
+- Use structured input/output schemas for reliable automation
+- Add retry logic with exponential backoff for external calls
+- Validate inputs before processing to fail fast
+- Log execution steps for debugging and auditing
+
 
 ### Find Next Available Slot
 
@@ -313,7 +345,8 @@ async function sendInvites(emails: string[], event: Event) {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When calendar automation involves executive scheduling requiring human discretion
+- When the calendar data contains meeting details subject to NDA
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -326,14 +359,16 @@ async function sendInvites(emails: string[], event: Event) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Calendar automation double-books time slots
+- Agent does not account for time zones when scheduling across regions
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No double-bookings exist in the scheduled time slots
+- [ ] Time zones are correctly handled for cross-region scheduling
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

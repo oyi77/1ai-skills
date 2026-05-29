@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Audit Current Historian Security Configuration
 
 Evaluate the current security posture of the historian server including network exposure, authentication, and access controls.
@@ -354,6 +359,21 @@ architecture:
 - **AVEVA Historian**: Time-series database for process data with SQL-like query interface
 - **Waterfall Security**: Hardware data diode for unidirectional historian replication
 - **PI Vision**: Web-based visualization tool for PI data, deployed in DMZ for enterprise access
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

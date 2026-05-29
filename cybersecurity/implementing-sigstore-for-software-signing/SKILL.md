@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install and Configure Cosign
 
 Install Cosign and verify it can reach the Sigstore infrastructure:
@@ -100,7 +105,7 @@ Search and verify entries in the Rekor transparency log to audit signing events:
 
 Embed signing and verification into build and deployment pipelines:
 
-- **GitHub Actions**: Use `sigstore/cosign-installer` action to install Cosign, then sign images using the GitHub OIDC token as the identity. The signing identity will be the workflow URL (e.g., `https://github.com/org/repo/.github/workflows/build.yml@refs/heads/main`).
+- **GitHub Actions**: Use sigstore > cosign-installer action to install Cosign, then sign images using the GitHub OIDC token as the identity. The signing identity will be the workflow URL (e.g., `https://github.com/org/repo/.github/workflows/build.yml@refs/heads/main`).
 - **Kubernetes admission enforcement**: Deploy Sigstore Policy Controller or Kyverno with Cosign verification policies to reject unsigned or incorrectly signed images at admission time
 - **Supply chain metadata**: Use `cosign attest` to attach in-toto attestations (SLSA provenance, SBOM, vulnerability scan results) to images, signed with the same keyless flow, enabling consumers to verify both the artifact and its build metadata
 
@@ -126,6 +131,11 @@ Embed signing and verification into build and deployment pipelines:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Sigstore For Software Signing assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Sigstore For Software Signing response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Securing a Container Image Build Pipeline with Keyless Signing
 
 **Context**: A DevOps team builds container images in GitHub Actions and deploys to a Kubernetes cluster. They need to ensure only images built by their CI pipeline can be deployed, preventing supply chain attacks from compromised registries or unauthorized pushes.
@@ -142,6 +152,20 @@ Embed signing and verification into build and deployment pipelines:
 - Not pinning the `--certificate-oidc-issuer` during verification allows signatures from any OIDC provider to pass, defeating the purpose of identity binding
 - Forgetting to set `id-token: write` permission in GitHub Actions results in OIDC token retrieval failure and signing errors
 - Using `--certificate-identity-regexp=.*` in production verification policies effectively disables identity verification
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

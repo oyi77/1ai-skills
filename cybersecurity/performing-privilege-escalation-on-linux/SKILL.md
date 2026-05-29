@@ -61,6 +61,11 @@ Linux privilege escalation involves elevating from a low-privilege user account 
 
 ## Key Escalation Vectors
 
+This section covers key escalation vectors for performing privilege escalation on linux.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SUID/SGID Binaries
 - Find SUID binaries: `find / -perm -4000 -type f 2>/dev/null`
 - Check GTFOBins for exploitation methods
@@ -92,6 +97,20 @@ Linux privilege escalation involves elevating from a low-privilege user account 
 - Systemd unit files with weak permissions
 - Init scripts writable by non-root users
 - Socket files in accessible locations
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools and Resources
 

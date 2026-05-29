@@ -65,6 +65,11 @@ Distributed Component Object Model (DCOM) enables remote execution of COM object
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Understand DCOM Lateral Movement Attack Vectors
 
 DCOM lateral movement exploits three primary COM objects. Each has distinct forensic artifacts.
@@ -613,6 +618,11 @@ Write-Host "[*] Default Launch Permission: $(if ($remoteLaunch) { 'Custom' } els
 
 ## Common Scenarios
 
+**Scenario 1: Standard Hunting For Dcom Lateral Movement assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Hunting For Dcom Lateral Movement response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario 1: MMC20.Application Lateral Movement to File Server
 
 **Context**: A SOC analyst receives an alert for mmc.exe spawning cmd.exe on a file server (10.10.20.50) at 03:22 UTC. No administrator activity is scheduled at this time.
@@ -646,6 +656,21 @@ Write-Host "[*] Default Launch Permission: $(if ($remoteLaunch) { 'Custom' } els
 - Missing the attack because ShellWindows does not create a separate COM server process -- requires monitoring explorer.exe child processes
 - Not having Sysmon Event ID 3 configured to capture network connections from explorer.exe
 - Filtering out explorer.exe as a legitimate parent process without considering the server context
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

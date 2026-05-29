@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Inventory All OAuth Grants and Consent Permissions
 
 Enumerate all OAuth application registrations and delegated permissions:
@@ -552,6 +557,11 @@ def execute_scope_reduction(auditor, grant_id, scopes_to_remove):
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Oauth Scope Minimization Review assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Oauth Scope Minimization Review response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Post-Breach OAuth Scope Audit
 
 **Context**: After a phishing attack compromised an admin account, investigation reveals the attacker registered a malicious OAuth application with Mail.ReadWrite and Files.ReadWrite.All scopes, exfiltrating 6 months of email. The organization needs a comprehensive OAuth scope review.
@@ -573,6 +583,20 @@ def execute_scope_reduction(auditor, grant_id, scopes_to_remove):
 - Not checking for application-level permissions (vs delegated) which are higher risk and often overlooked
 - Missing multi-tenant applications where the publisher tenant differs from the consuming tenant
 - Not implementing ongoing monitoring to detect new unauthorized OAuth grants after remediation
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

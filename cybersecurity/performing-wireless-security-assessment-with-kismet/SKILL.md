@@ -48,6 +48,11 @@ Kismet is an open-source wireless network detector, packet sniffer, and wireless
 
 ## Core Concepts
 
+This section covers core concepts for performing wireless security assessment with kismet.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Kismet Architecture
 
 Kismet uses a client-server architecture:
@@ -81,6 +86,11 @@ Kismet uses a client-server architecture:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Prepare Wireless Adapter
 
 ```bash
@@ -381,6 +391,22 @@ if __name__ == '__main__':
 - **Time Duration** - Capture for at least 30-60 minutes to observe intermittent devices
 - **GPS Mapping** - Use GPS to create heat maps for signal boundary analysis
 - **Baseline Comparison** - Maintain an authorized AP inventory and compare against each assessment
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

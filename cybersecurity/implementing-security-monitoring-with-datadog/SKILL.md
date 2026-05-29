@@ -62,6 +62,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Deploy and Configure the Datadog Agent for Security
 
 Install the Datadog Agent and enable security-related features in `datadog.yaml`:
@@ -414,3 +419,10 @@ with ApiClient(configuration) as api_client:
 - [ ] Notification workflows deliver alerts to Slack, PagerDuty, or Jira for critical and high signals
 - [ ] Suppression queries are configured to reduce false positives on noisy rules
 - [ ] Security Signals API returns results programmatically for automation integration
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts

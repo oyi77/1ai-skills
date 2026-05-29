@@ -40,6 +40,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Initial File Assessment and Metadata Analysis
 
 ```bash
@@ -310,6 +315,22 @@ Analyze images downloaded by malware for embedded commands, check for data appen
 
 **Scenario 4: Intellectual Property Theft via Audio Files**
 Analyze audio files for embedded documents in LSB, check spectrograms for visual patterns hidden in frequency domain, compare audio file sizes with expected sizes for bitrate and duration, extract and analyze any hidden data payloads.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

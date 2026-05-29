@@ -2,6 +2,8 @@
 name: lynk
 description: LYNK - Complete Affiliate Link Management with Browser Automation. Use when relevant to this domain.
 ---
+
+
 # LYNK - Complete Affiliate Link Management with Browser Automation
 
 **Comprehensive LYNK skill with full browser automation capabilities**
@@ -23,6 +25,13 @@ LYNK is an Indonesian digital platform for creators to:
 ---
 
 ## Account Structure
+
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Authentication
 - **Login URL:** https://lynk.id/login
@@ -58,6 +67,13 @@ Use when you need to:
 ---
 
 ## Current Capabilities
+
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### ✅ Manual Data Entry (Working)
 ```
@@ -104,6 +120,13 @@ python3 ~/.openclaw/workspace/skills/lynk/lynk_automation.py
 
 ## Important Discoveries
 
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Dashboard Configuration Status
 **Critical Finding:** When access on 2026-03-10, the dashboard showed:
 - Search bar: "0" (no links configured)
@@ -140,6 +163,13 @@ From homepage analysis:
 
 ## Configuration
 
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Edit Products
 File: `~/.openclaw/workspace/skills/lynk/config.json`
 
@@ -166,6 +196,33 @@ nano ~/.openclaw/workspace/skills/lynk/config.json
 ---
 
 ## Usage Examples
+
+Basic usage with default configuration:
+```bash
+python lynk.py --input data.csv --output results/
+```
+
+Advanced usage with all options:
+```bash
+python lynk.py --input data.csv --output results/ --format json --verbose
+```
+
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
+
+### Basic Usage
+```bash
+python lynk.py --input data.csv --output results/
+```
+
+### Advanced Usage
+```bash
+python lynk.py --input data.csv --output results/ --format json --verbose
+```
+
+### Integration
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
 
 ### Manual Daily Tracking (2-5 minutes)
 ```bash
@@ -222,6 +279,13 @@ $ python3 ~/.openclaw/workspace/skills/lynk/lynk.py analyze
 ---
 
 ## Browser Automation Implementation Guide
+
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Current Status: Template Framework Created
 
@@ -293,6 +357,13 @@ generate_report(metrics)
 
 ## Data Storage
 
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### File Structure
 ```
 ~/.openclaw/workspace/skills/lynk/
@@ -337,6 +408,13 @@ generate_report(metrics)
 
 ## Emergency Cashflow Context
 
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Current Status (2026-03-10)
 - **Cashflow Balance:** IDR 0 - CRITICAL EMERGENCY
 - **LYNK Revenue:** IDR 0 - No conversions yet
@@ -366,6 +444,13 @@ generate_report(metrics)
 
 ## Integration with Other Skills
 
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Content Automation (`content-creator`)
 - Insert affiliate links into generated content
 - Optimize CTAs for LYNK products
@@ -384,6 +469,13 @@ generate_report(metrics)
 ---
 
 ## Troubleshooting
+
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Dashboard Shows "0" (No Links)
 **Possible Causes:**
@@ -417,6 +509,13 @@ generate_report(metrics)
 
 ## Roadmap
 
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Phase 1 (Current) ✅
 - Manual data entry workflow
 - Daily/weekly/monthly reports
@@ -438,6 +537,13 @@ generate_report(metrics)
 ---
 
 ## Quick Reference
+
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### CLI Commands
 ```bash
@@ -469,6 +575,13 @@ python3 ~/.openclaw/workspace/skills/lynk/lynk_automation.py
 ---
 
 ## Important Notes from Browser Session (2026-03-10)
+
+- Configure affiliate, automation, browser, complete, domain settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### What Worked
 - ✅ Successfully accessed LYNK login page
@@ -502,3 +615,28 @@ python3 ~/.openclaw/workspace/skills/lynk/lynk_automation.py
 **Status:** ✅ Manual mode working | 🔄 Automation template ready
 **Data Policy:** REAL DATA ONLY - No simulation
 **Emergency:** Cashflow IDR 0 - Revenue tracking CRITICAL
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

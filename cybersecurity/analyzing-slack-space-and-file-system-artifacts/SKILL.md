@@ -41,6 +41,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify and Extract NTFS File System Artifacts
 
 ```bash
@@ -354,6 +359,20 @@ Parse MFT for inactive (deleted) entries, extract filenames, sizes, and timestam
 
 **Scenario 4: File Activity Reconstruction from USN Journal**
 Parse the USN Change Journal for the investigation period, identify file creation, modification, rename, and deletion events, reconstruct the sequence of file operations, detect evidence of data staging (create, copy, compress, delete pattern), identify anti-forensic file wiping.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

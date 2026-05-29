@@ -96,3 +96,25 @@ Vilona is now ready with:
 ## Integration
 
 This command can be called anytime in any session to activate Vilona persona without needing to restart session.
+
+## When to Use
+
+- When the task falls within this skill's domain expertise
+- When automated execution saves time over manual work
+- When the skill's tools and integrations are available
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

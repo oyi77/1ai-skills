@@ -70,7 +70,8 @@ Works with Claude Code, Cursor, and any MCP-compatible client.
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the MCP server handles authentication credentials
+- When the server processes data subject to regulatory retention requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -83,14 +84,16 @@ Works with Claude Code, Cursor, and any MCP-compatible client.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- MCP server does not validate input parameters causing runtime errors
+- Agent does not handle MCP server connection failures with retry logic
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Input parameters are validated before processing
+- [ ] Connection failures trigger retry with exponential backoff
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

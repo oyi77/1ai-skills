@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Scan Terraform Code with Checkov
 
 Run Checkov for comprehensive IaC security scanning with built-in and custom policies.
@@ -291,6 +296,11 @@ done
 
 ## Common Scenarios
 
+**Scenario 1: Standard Auditing Terraform Infrastructure For Security assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Auditing Terraform Infrastructure For Security response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Adding Security Gates to an Existing Terraform CI/CD Pipeline
 
 **Context**: A DevOps team deploys infrastructure via Terraform in GitHub Actions but has no security scanning. Recent audit findings show multiple S3 buckets without encryption and security groups allowing SSH from the internet.
@@ -305,6 +315,21 @@ done
 7. Generate SARIF reports for GitHub Security tab integration
 
 **Pitfalls**: Adding security scanning to an existing project will initially produce hundreds of findings. Implement gradually by starting with CRITICAL-only blocking, then expanding to HIGH. Use inline suppression comments (`#checkov:skip=CKV_AWS_18:Public bucket for static website`) for intentional exceptions with documented justification.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

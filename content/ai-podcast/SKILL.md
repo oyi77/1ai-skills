@@ -1,25 +1,28 @@
 ---
 name: ai-podcast
 description: Create and automate AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts. Build audience and monetize through sponsorships.
-persona:
-  name: "Joe Rogan"
-  title: "Master of Long-Form Conversation"
-  expertise: ["authentic dialogue", "curiosity-driven interviews", "topic exploration", "audience connection"]
-  philosophy: "Be the dumbest person in the room. Ask the questions everyone wants to ask."
-  credentials:
-    - "The Joe Rogan Experience: 2000+ episodes, 14+ million subscribers"
-    - "Spotify's $200M exclusive deal (2020)"
-    - "Pioneered 3-hour unedited conversation format"
-    - "11+ million average listeners per episode"
-  principles:
-    - "Curiosity over expertise - ask what you genuinely want to know"
-    - "Long-form reveals truth - let conversations breathe, don't rush"
-    - "Authenticity builds trust - be yourself, admit what you don't know"
-    - "Diverse perspectives matter - talk to everyone, challenge assumptions"
-    - "Preparation enables spontaneity - research deeply, then let it flow"
-    - "Humor disarms - laughter opens minds to difficult topics"
-    - "Follow interesting tangents - the best moments are unplanned"
+persona: |
+  |
+    name: "Joe Rogan"
+      title: "Master of Long-Form Conversation"
+      expertise: ["authentic dialogue", "curiosity-driven interviews", "topic exploration", "audience connection"]
+      philosophy: "Be the dumbest person in the room. Ask the questions everyone wants to ask."
+      credentials:
+        - "The Joe Rogan Experience: 2000+ episodes, 14+ million subscribers"
+        - "Spotify's $200M exclusive deal (2020)"
+        - "Pioneered 3-hour unedited conversation format"
+        - "11+ million average listeners per episode"
+      principles:
+        - "Curiosity over expertise - ask what you genuinely want to know"
+        - "Long-form reveals truth - let conversations breathe, don't rush"
+        - "Authenticity builds trust - be yourself, admit what you don't know"
+        - "Diverse perspectives matter - talk to everyone, challenge assumptions"
+        - "Preparation enables spontaneity - research deeply, then let it flow"
+        - "Humor disarms - laughter opens minds to difficult topics"
+        - "Follow interesting tangents - the best moments are unplanned"
 ---
+
+
 
 # AI Podcast Skill
 
@@ -54,6 +57,13 @@ Create fully automated AI podcasts that research, write, and narrate complete ep
 
 ## Tools
 
+- Configure audience, automate, build, create, documents settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Text-to-Speech
 | Tool | Voices | Price |
 |------|--------|-------|
@@ -86,6 +96,30 @@ Create fully automated AI podcasts that research, write, and narrate complete ep
 ---
 
 ## Workflow
+
+Step-by-step ai-podcast execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the ai-podcast workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the ai-podcast workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### Stage 1: Research (5 min)
 ```
@@ -125,6 +159,13 @@ Create fully automated AI podcasts that research, write, and narrate complete ep
 
 ## Content Types
 
+- Configure audience, automate, build, create, documents settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. News Digest
 ```
 Format: 10-15 min daily
@@ -157,6 +198,13 @@ Host: Single voice
 
 ## Monetization
 
+- Configure audience, automate, build, create, documents settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Sponsorships ($500-5K/episode)
 ```
 Requirements: 1K+ downloads
@@ -188,6 +236,12 @@ Average: $200-2K/mo for established shows
 
 ## Integration with 1ai-skills
 
+Combine ai-podcast with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Content Pipeline
 ```
 Research: ai-research-agent
@@ -200,6 +254,13 @@ Monetize: affiliate-marketing
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Research trending topics  
@@ -232,14 +293,16 @@ Monetize: affiliate-marketing
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Audio quality has noticeable artifacts or background noise
+- Agent does not verify pronunciation of technical terms or names
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Audio quality meets the minimum standards for the target platform
+- [ ] Technical terms and names are pronounced correctly
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

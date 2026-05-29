@@ -5,6 +5,7 @@ domain: content
 tags: [ui, ux, design, design-system, color-palette, typography, accessibility]
 ---
 
+
 ## Overview
 
 UI/UX Pro Max: comprehensive design intelligence for AI coding assistants. 161 industry-specific reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings, and 49 UI styles — all searchable and template-ready.
@@ -84,3 +85,21 @@ Agent: Applies healthcare industry rules, selects calm palette, pairs IBM Plex S
 User: "What colors for a fintech app?"
 Agent: Searches finance palettes, recommends trust-building blues with accent greens for positive metrics
 ```
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

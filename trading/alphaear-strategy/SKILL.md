@@ -6,13 +6,16 @@ description: Component scores (0-100). Use when relevant to this domain.
 
 **Name:** `alphaear-strategy`
 
-**Pattern:** `trading/research/alphaear-strategy`
+**Pattern:** `trading/alphaear-strategy`
 
 **Description:** Multi-signal trading strategy combining news aggregation, sentiment analysis, options flow, and predictive modeling. Generates entry/exit signals with confidence scoring.
 
 ---
 
 ## Implementation
+
+Four-phase signal synthesis engine combining news aggregation, sentiment layering, predictive modeling, and options flow analysis.
+
 
 ### Phase 1: Real-Time News Aggregation
 
@@ -95,6 +98,9 @@ options_signals = {
 
 ## Signal Generation Framework
 
+Composite signal scoring system that weights news, social, options, technical, and prediction layers into a single actionable score.
+
+
 ### Composite Signal Score
 
 ```python
@@ -139,6 +145,9 @@ def calculate_alpha_signal(ticker):
 ---
 
 ## Usage Examples
+
+Practical workflows for full analysis, signal monitoring, and event-driven setups.
+
 
 ### Example 1: Full Analysis Workflow
 
@@ -207,7 +216,7 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 ## Integration Points
 
 **Cross-Skill Dependencies**
-- `trading/polymarket-analyst` - Prediction market sentiment overlay
+- `trading/investing-algorithm-framework` - Prediction market sentiment overlay
 - `trading/black-edge` - Alternative data integration
 - `research/trendradar` - Trend detection correlation
 - `marketing/social-media-engagement` - Social sentiment analysis
@@ -221,6 +230,9 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 ---
 
 ## Risk Management
+
+Signal quality filters, position sizing algorithms, and risk-adjusted allocation rules.
+
 
 ### Signal Quality Filters
 
@@ -341,6 +353,8 @@ alphaear_report:
 
 ## Anti-Bias Checklist (Run Before Every Recommendation)
 
+Six cognitive traps to evaluate before every recommendation to ensure evidence-driven decisions.
+
 ### 6 Cognitive Traps
 
 - [ ] **Confirmation bias** -- Did I actively seek news and data that contradicts the current signal direction? If bullish, did I search for bearish catalysts?
@@ -360,7 +374,7 @@ alphaear_report:
 - When analyzing pre-IPO or recently listed stocks (<30 days) -- insufficient historical data for Kronos predictions and options flow patterns
 - When regulatory filings or compliance tasks are the primary goal -- use `fin-compliance-kyc` instead
 - When the task is personal budgeting, tax preparation, or non-market financial planning -- outside this skill's domain
-- When a more appropriate specialized skill exists (e.g., `trading/black-edge` for dark pool intelligence, `trading/polymarket-analyst` for prediction markets)
+- When a more appropriate specialized skill exists (e.g., `trading/black-edge` for dark pool intelligence, `trading/investing-algorithm-framework` for prediction markets)
 
 ## Common Rationalizations
 
@@ -404,5 +418,5 @@ After completing this skill, confirm:
 - [ ] Evidence composition disclosed (what percentage of the signal is T1 vs T2 vs T3)
 - [ ] Anti-Bias Checklist completed with all 6 traps addressed
 
-**Cross-reference:** For complete multi-asset analysis, also see `financial/all-in-one-finance` and `financial/wolf-finance`. For dark pool intelligence, see `trading/black-edge`. For prediction market sentiment, see `trading/polymarket-analyst`.
+**Cross-reference:** For complete multi-asset analysis, also see `financial/all-in-one-finance` and `financial/wolf-finance`. For dark pool intelligence, see `trading/black-edge`. For prediction market sentiment, see `trading/investing-algorithm-framework`.
 

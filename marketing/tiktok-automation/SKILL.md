@@ -1,9 +1,9 @@
 ---
 name: tiktok-automation
 description: TikTok content posting automation with session persistence, dynamic element detection, and selector learning. Use when automatically uploading TikTok videos with captions and hashtags, setting up persistent browser sessions for login-free posting, learning TikTok's UI to handle changing selectors, implementing fallback mechanisms for reliable uploads, tracking upload progress with real-time updates, or scheduling TikTok content posting.
-dependencies:
-  - playwright
+dependencies: - playwright
 ---
+
 
 # TikTok Automation Skill 🎵
 
@@ -25,6 +25,13 @@ TikTok Automation Skill provides production-ready automation for TikTok content 
 - **Bulk uploads**: Process multiple videos from a folder
 
 ## The Process
+
+- Configure automatically, automation, browser, captions, changing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Step 1: Session and Login
 

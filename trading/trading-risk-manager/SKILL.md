@@ -27,6 +27,9 @@ Calculate position sizes, validate trades against risk rules, and monitor portfo
 
 ## The Process
 
+The risk pipeline calculates position sizes, validates trades, monitors exposure, enforces drawdown limits, and generates risk reports.
+
+
 ### 1. Calculate Position Size
 
 Use standard risk-based position sizing formula:
@@ -143,6 +146,9 @@ await notion.createPage("Risk Report", dailyRiskReport);
 - **Multiple position types from same strategy**: Strategy concentration risk; implement strategy-level exposure limits
 
 ## Verification
+
+Verification covers position sizing accuracy, trade validation consistency, exposure tracking, drawdown controls, and notification delivery.
+
 
 ### Position Sizing Verification
 - [ ] Lot size calculated correctly using risk formula

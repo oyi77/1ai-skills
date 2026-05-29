@@ -6,13 +6,16 @@ description: Analyze parking lot data vs. consensus. Use when relevant to this d
 
 **Name:** `black-edge`
 
-**Pattern:** `trading/research/black-edge`
+**Pattern:** `trading/black-edge`
 
 **Description:** Reveals hidden market edges through alternative data synthesis, behavioral pattern analysis, and structural inefficiency detection. Combines quantitative signals with qualitative intelligence gathering.
 
 ---
 
 ## Implementation
+
+Four-phase alternative data synthesis: satellite/web/credit card data, behavioral patterns, structural inefficiencies, and gray information networks.
+
 
 ### Phase 1: Alternative Data Synthesis
 
@@ -98,6 +101,9 @@ description: Analyze parking lot data vs. consensus. Use when relevant to this d
 
 ## Black Edge Framework
 
+The edge hierarchy from public information to proprietary networks, built on three pillars: signal detection, position sizing, and information security.
+
+
 ### Edge Hierarchy
 
 ```
@@ -131,6 +137,9 @@ Level 5: Proprietary Networks (Maximum edge) ← Black Edge territory
 ---
 
 ## Usage Examples
+
+Practical scenarios: satellite retail analysis, options flow anomaly detection, and dark pool accumulation tracking.
+
 
 ### Example 1: Satellite Retail Analysis
 
@@ -195,8 +204,8 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 ## Integration Points
 
 **Cross-Skill Dependencies**
-- `trading/maybe-hft` - For microstructure analysis
-- `trading/polymarket-analyst` - For prediction market sentiment
+- `trading/crypto-trading-bot` - For microstructure analysis
+- `trading/investing-algorithm-framework` - For prediction market sentiment
 - `research/mckinsey-research` - For competitive intelligence frameworks
 - `research/value-investing` - For fundamental overlay
 
@@ -209,6 +218,9 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 ---
 
 ## Risk Framework
+
+Legal/regulatory risk, crowding risk, and operational risk with mitigation strategies and validation checklists.
+
 
 ### Black Edge Risks
 
@@ -246,6 +258,9 @@ edge_checks = {
 ---
 
 ## Advanced Techniques
+
+Information cascade modeling, counter-edge detection, and edge half-life tracking for sustained alpha generation.
+
 
 ### The "Information Cascade" Model
 
@@ -371,6 +386,8 @@ black_edge_report:
 
 ## Anti-Bias Checklist (Run Before Every Recommendation)
 
+Six cognitive traps to evaluate before every recommendation to ensure evidence-driven decisions.
+
 ### 6 Cognitive Traps
 - [ ] **Confirmation bias** -- Did I actively seek disconfirming alternative data points?
 - [ ] **Anchoring** -- Am I over-weighting the first satellite/web-scraping signal?
@@ -424,7 +441,7 @@ Output: FULL (proceed) | REDUCED (half size) | SKIP (block)
 
 - When you have no access to alternative data sources (satellite, web scraping, credit card transaction data)
 - When relying exclusively on public financial statements and SEC filings (use `financial/all-in-one-finance` or `financial/wolf-finance` instead)
-- When the time horizon is sub-minute scalping (alternative data signals have minimum half-life of hours, not milliseconds -- use `trading/maybe-hft`)
+- When the time horizon is sub-minute scalping (alternative data signals have minimum half-life of hours, not milliseconds -- use `trading/crypto-trading-bot`)
 - When legal/compliance review is unavailable and MNPI boundaries are unclear
 - When the asset lacks sufficient options flow or dark pool data for microstructure analysis (micro-cap stocks, illiquid tokens)
 - When you need standard fundamental valuation (DCF, earnings models, ratio analysis) without an information-asymmetry angle

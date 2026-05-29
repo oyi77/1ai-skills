@@ -43,6 +43,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Collect Security Headers from Target
 
 Retrieve and catalog all security-related response headers.
@@ -264,6 +269,11 @@ echo "Scan with Mozilla Observatory: https://observatory.mozilla.org/analyze/tar
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Security Headers Audit assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Security Headers Audit response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario 1: Complete Header Absence
 A legacy application returns no security headers at all. No HSTS, CSP, X-Frame-Options, or cookie security flags. Every page is vulnerable to clickjacking, XSS has no browser-level mitigation, and cookies are sent over HTTP.
 
@@ -275,6 +285,21 @@ The session cookie is set without the `Secure` flag. On mixed HTTP/HTTPS sites, 
 
 ### Scenario 4: Missing HSTS Enabling SSL Stripping
 No HSTS header is present. An attacker on the network can perform an SSL stripping attack, downgrading the victim's HTTPS connection to HTTP and intercepting all traffic.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

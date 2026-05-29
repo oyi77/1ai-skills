@@ -52,6 +52,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Capture or Acquire Network Traffic
 
 Obtain the relevant traffic data for the investigation:
@@ -206,6 +211,11 @@ Compile analysis into a structured report with evidence references:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Analyzing Network Traffic For Incidents assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Analyzing Network Traffic For Incidents response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Confirming C2 Beaconing and Quantifying Exfiltration
 
 **Context**: EDR detects a suspicious process on a workstation but cannot determine the volume of data exfiltrated. Network team provides PCAP from the full packet capture appliance covering the incident timeframe.
@@ -223,6 +233,22 @@ Compile analysis into a structured report with evidence references:
 - Missing DNS tunneling because the data volume per query is small (but total over time is significant)
 - Not correlating network timestamps with endpoint timestamps (timezone mismatches)
 - Overlooking legitimate cloud services abused for exfiltration (OneDrive, Google Drive, Dropbox)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

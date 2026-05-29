@@ -38,6 +38,9 @@ Automate the entire customer lifecycle from onboarding to retention. Monitor cus
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Automated Onboarding Sequence
 
 ```javascript
@@ -291,6 +294,9 @@ async function routeTicket(ticket) {
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Expansion Revenue Detection
 - Monitor usage approaching plan limits
 - Identify teams that need more seats
@@ -318,3 +324,16 @@ ORDER BY 1 DESC;
 4. Phone call scheduled (day 7)
 5. Executive outreach + concession offer (day 14)
 6. Win-back campaign if churned (day 30)
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

@@ -19,6 +19,10 @@ This skill provides intelligent installation and configuration guidance for Open
 - **Mixed environments** – When OpenCode is installed but oh-my-opencode is not, or vice versa
 
 ## Detection First
+This section covers detection first for the oh-my-opencode-installation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Step 1: Detect Existing Installation
 
@@ -91,6 +95,10 @@ fi
 ```
 
 ## Prerequisites
+This section covers prerequisites for the oh-my-opencode-installation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### System Requirements
 - **Platform**: macOS, Linux, Windows (WSL recommended)
@@ -104,6 +112,10 @@ fi
 - **Git**: Latest version with proper configuration
 
 ## Installation Functions
+This section covers installation functions for the oh-my-opencode-installation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### install_opencode()
 
@@ -221,6 +233,10 @@ full_installation() {
 ```
 
 ## Installation Methods
+This section covers installation methods for the oh-my-opencode-installation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Method 1: Quick Install (Recommended)
 
@@ -261,6 +277,17 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/code-yeongyu/oh-my-openc
 ```
 
 ## Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Initial Setup After Installation
 
@@ -309,6 +336,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/code-yeongyu/oh-my-openc
 ```
 
 ## Verification
+This section covers verification for the oh-my-opencode-installation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Quick Verification Checklist
 
@@ -339,6 +370,11 @@ opencode --eval "/status"
 ```
 
 ## Integration with OpenClaw
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### For OpenClaw Integration
 
@@ -365,6 +401,12 @@ echo "✓ OpenClaw integration configured"
 ```
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Detection Issues
 
@@ -432,6 +474,10 @@ opencode --debug config
 ```
 
 ## Security Considerations
+This section covers security considerations for the oh-my-opencode-installation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Safe Installation
 

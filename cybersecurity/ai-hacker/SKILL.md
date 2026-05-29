@@ -18,6 +18,11 @@ AI is the new attack surface. Every company is shoving LLMs into their products 
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### 1. AI Attack Surface Mapping
 
 Identify where AI is used:

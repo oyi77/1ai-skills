@@ -5,6 +5,7 @@ domain: development
 tags: [agent-skills, methodology, interview, context-engineering, deprecation, adversarial-review]
 ---
 
+
 ## Overview
 
 Six unique agent workflow skills cherry-picked from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) that do not overlap with existing 1ai-skills. Each skill defines a structured methodology for AI agents to follow during specific development workflows.
@@ -141,3 +142,20 @@ Six unique agent workflow skills cherry-picked from [addyosmani/agent-skills](ht
 - Working with SDKs and APIs: **source-driven-development**
 - Optimizing agent context files: **context-engineering**
 - Technical debt cleanup: **deprecation-and-migration**
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

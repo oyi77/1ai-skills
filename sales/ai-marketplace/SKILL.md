@@ -2,6 +2,7 @@
 name: ai-marketplace
 description: Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients and generate $2K-10K/month.
 ---
+
 persona:
   name: "Pat Flynn"
   title: "The Passive Income Expert - Master of Digital Products"
@@ -43,6 +44,13 @@ Offer AI-powered services on freelance marketplaces. Build automated service del
 
 ## Top Marketplaces
 
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Fiverr
 | Level | Requirements | Benefits |
 |-------|--------------|-----------|
@@ -67,6 +75,13 @@ Offer AI-powered services on freelance marketplaces. Build automated service del
 ---
 
 ## High-Demand Services
+
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### By Platform
 
@@ -94,6 +109,13 @@ Offer AI-powered services on freelance marketplaces. Build automated service del
 ---
 
 ## Service Stacking
+
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Stack 1: Content Bundle
 ```
@@ -147,6 +169,13 @@ Profit: $75-200/hour
 
 ## Profile Optimization
 
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Fiverr Profile
 ```
 1. Clear title: "AI Automation Expert | ChatGPT & Python"
@@ -168,6 +197,13 @@ Profit: $75-200/hour
 ---
 
 ## Client Communication
+
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Initial Response
 ```
@@ -197,6 +233,13 @@ Does this work for you?"
 
 ## Scaling Strategy
 
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Phase 1: Foundation
 ```
 Goal: Build reputation
@@ -224,6 +267,13 @@ Time: 12+ months
 ---
 
 ## Automation Systems
+
+- Configure automation, build, clients, content, development settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Inquiry Triage
 ```
@@ -253,6 +303,12 @@ Time: 12+ months
 
 ## Integration with 1ai-skills
 
+Combine ai-marketplace with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Service Pipeline
 ```
 Acquire: ai-marketplace
@@ -275,6 +331,13 @@ Upsell: ai-consulting, ai-lead-generation
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Deliver ahead of time  
@@ -308,14 +371,16 @@ Upsell: ai-consulting, ai-lead-generation
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Outreach messages are generic and not personalized to the recipient
+- Agent does not verify prospect qualification before engagement
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Outreach is personalized to each recipient's role and company
+- [ ] Prospect qualification is verified before engagement begins
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

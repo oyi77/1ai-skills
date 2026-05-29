@@ -62,6 +62,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Legal & Ethical Requirements
 
 - Obtain documented written authorization before any investigation
@@ -348,6 +353,13 @@ nist_csf:
 - **Attack Surface Mapping:** Link discovered subdomains, emails, and employee social accounts to understand an organization's full external exposure.
 - **Insider Threat Investigation:** Cross-reference an employee's known accounts with dark web marketplace activity and breach databases.
 - **Brand Impersonation Detection:** Identify accounts across platforms mimicking a target brand by correlating registration patterns, naming conventions, and temporal signals.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
 
 ## Output Format
 

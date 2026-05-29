@@ -67,6 +67,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install Guardrail Frameworks
 
 Install the required Python packages:
@@ -217,6 +222,14 @@ python agent.py --file interaction_logs.txt --mode full --output json > guardrai
 | **Content Policy** | A configuration file defining which topics, patterns, and content categories are allowed or blocked by the guardrail system |
 | **Self-Check Rail** | A NeMo Guardrails technique where the LLM itself evaluates whether its input or output violates defined policies |
 | **Hallucination Detection** | Output validation that checks whether the LLM response is grounded in the provided context, flagging fabricated claims |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
 
 ## Tools & Systems
 

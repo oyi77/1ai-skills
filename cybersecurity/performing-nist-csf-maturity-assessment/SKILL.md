@@ -35,6 +35,11 @@ The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides 
 
 ## Core Concepts
 
+This section covers core concepts for performing nist csf maturity assessment.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### CSF 2.0 Functions (6 Functions, 22 Categories)
 
 | Function | Code | Categories | Purpose |
@@ -64,6 +69,11 @@ The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: Scoping and Preparation (Weeks 1-2)
 1. Define assessment scope (enterprise-wide vs. business unit)
 2. Identify stakeholders and schedule interviews
@@ -123,6 +133,21 @@ The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides 
 - Treating assessment as one-time rather than continuous process
 - Ignoring the new Govern function in CSF 2.0
 - Not aligning CSF assessment with existing compliance requirements (ISO 27001, SOC 2)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 - NIST CSF 2.0: https://csf.tools/reference/nist-cybersecurity-framework/v2-0/

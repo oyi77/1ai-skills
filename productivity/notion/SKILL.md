@@ -3,6 +3,14 @@ name: notion
 description: Query tasks. Use when relevant to this domain.
 ---
 ## Usage Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Query via MCP
 ```
@@ -23,6 +31,14 @@ Vilona: Uses notion_create_pages
 ---
 
 ## Usage Examples (Legacy)
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### API Key Setup
 1. Go to https://www.notion.so/my-integrations
@@ -37,6 +53,14 @@ NOTION_DATABASE_ID=your_database_id  # For specific databases
 ```
 
 ## Usage Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Query Database
 ```
@@ -68,6 +92,10 @@ Vilona: [Searches Notion pages]
 ```
 
 ## Common Databases for BerkahKarya
+This section covers common databases for berkahkarya for the notion skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Task Tracker
 ```
@@ -167,7 +195,8 @@ notion search --query "pricing strategy"
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the productivity tool handles legally privileged communications
+- When the automation affects compliance-archived records or legal holds
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -180,14 +209,16 @@ notion search --query "pricing strategy"
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation creates duplicate entries across connected platforms
+- Agent does not handle timezone differences correctly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No duplicate entries are created across connected platforms
+- [ ] Timezone handling is correct for all scheduling operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

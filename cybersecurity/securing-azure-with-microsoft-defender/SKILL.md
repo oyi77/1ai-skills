@@ -53,6 +53,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enable Defender for Cloud Plans
 
 Activate Defender plans for each workload type: Servers, Containers, App Service, Storage, Databases, Key Vault, Resource Manager, and DNS. Each plan provides specialized threat detection and vulnerability assessment.
@@ -220,6 +225,11 @@ az graph query -q "
 
 ## Common Scenarios
 
+**Scenario 1: Standard Securing Azure With Microsoft Defender assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Securing Azure With Microsoft Defender response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Internet-Exposed SQL Server with Known Vulnerability
 
 **Context**: Defender for Cloud identifies an Azure SQL Server with a public endpoint, an unpatched critical CVE, and a service principal with database owner permissions that also has access to a Key Vault containing production encryption keys.
@@ -233,6 +243,22 @@ az graph query -q "
 6. Verify the attack path is resolved in Defender CSPM within 24 hours
 
 **Pitfalls**: Focusing on the SQL vulnerability alone misses the lateral movement path to Key Vault. Restricting the endpoint without updating application connection strings causes an outage.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

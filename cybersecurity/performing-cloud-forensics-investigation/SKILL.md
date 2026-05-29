@@ -41,6 +41,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Preserve Cloud Evidence and Establish Scope
 
 ```bash
@@ -312,6 +317,22 @@ Analyze S3 access logs and CloudTrail for GetObject/PutBucketPolicy events, iden
 
 **Scenario 4: Container Escape in EKS/AKS/GKE**
 Collect Kubernetes audit logs and cloud provider logs, analyze pod creation events for privilege escalation attempts, examine node-level logs for container escape evidence, check for unauthorized access to cloud metadata service (169.254.169.254), trace lateral movement to cloud APIs.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

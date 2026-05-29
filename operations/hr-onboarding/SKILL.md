@@ -1,6 +1,6 @@
 ---
 name: hr-onboarding
-version: "1.0.0"
+version: 1.0.0
 description: >
   End-to-end HR and onboarding system for BerkahKarya. Covers hiring workflow
   (JD → sourcing → screening → interview → offer → onboard), role-specific frameworks
@@ -10,8 +10,7 @@ description: >
 author: Vilona / BerkahKarya
 language: id-ID / en
 tags: [hr, hiring, onboarding, pkwt, indonesia, team, operations, offboarding]
-scripts:
-  - scripts/onboarding_checklist.py
+scripts: - scripts/onboarding_checklist.py
   - scripts/payroll_calc.py
 ---
 
@@ -41,6 +40,9 @@ Total time-to-hire target: 2–3 weeks
 ---
 
 ## 2. Role Types & Job Description Templates
+
+Ready-to-use templates for common scenarios.
+
 
 ### 2A. Content Creator
 
@@ -238,6 +240,9 @@ Data: Can use Yahoo Finance or any public XAUUSD data
 
 ## 4. Screening Framework
 
+Structured framework for approaching this domain.
+
+
 ### Resume/Portfolio Screening Checklist
 
 ```python
@@ -270,6 +275,9 @@ SCREENING_CRITERIA = {
 ---
 
 ## 5. Interview Frameworks
+
+Structured framework for approaching this domain.
+
 
 ### Round 1: Culture Fit (30 minutes, Telegram voice/Zoom)
 
@@ -320,6 +328,9 @@ Score: 0-10
 ---
 
 ## 6. Offer & Contract
+
+Key aspects of hr-onboarding relevant to this section.
+
 
 ### Freelancer vs Employee Decision Matrix
 
@@ -407,6 +418,9 @@ Pihak Pertama                    Pihak Kedua
 
 ## 7. Onboarding Checklist
 
+Systematic checklist for validation.
+
+
 ### Pre-Start (Before Day 1)
 
 ```
@@ -471,6 +485,9 @@ Pihak Pertama                    Pihak Kedua
 
 ## 8. Team Communication Structure (Telegram)
 
+Key aspects of hr-onboarding relevant to this section.
+
+
 ### Group Architecture
 
 ```
@@ -532,6 +549,9 @@ After hours (21:00–08:00): Only for genuine emergencies
 
 ## 9. Performance Reviews
 
+Key aspects of hr-onboarding relevant to this section.
+
+
 ### 30-Day Check-in
 
 ```markdown
@@ -550,6 +570,9 @@ After hours (21:00–08:00): Only for genuine emergencies
 - Problem-solving: [score] — [comment]
 
 ## Feedback from Team
+
+Key aspects of hr-onboarding relevant to this section.
+
 
 ## Decision
 [ ] Continue as planned
@@ -599,6 +622,9 @@ After hours (21:00–08:00): Only for genuine emergencies
 
 ## Cultural Alignment Score: [X]/10
 
+Key aspects of hr-onboarding relevant to this section.
+
+
 ## Long-term Fit Assessment
 - Do they live the BerkahKarya values?
 - Are they growing or plateauing?
@@ -619,6 +645,9 @@ Next review: [date]
 ---
 
 ## 10. Off-boarding Process
+
+Step-by-step workflow for this skill.
+
 
 ### Voluntary Resignation
 
@@ -700,6 +729,9 @@ ACCOUNTS_TO_REVOKE = [
 ---
 
 ## 11. Scripts Reference
+
+Quick reference for commonly needed information.
+
 
 ### 11A. `scripts/onboarding_checklist.py`
 
@@ -785,6 +817,9 @@ python3 scripts/payroll_calc.py --employee "Andi Wijaya" --month "2026-03"
 
 ## 12. Google Workspace Setup (Per New Hire)
 
+Key aspects of hr-onboarding relevant to this section.
+
+
 ### Account Creation Process
 
 ```bash
@@ -853,3 +888,22 @@ TELEGRAM GROUPS:
 
 *Skill version 1.0 — BerkahKarya HR Engine 🚀*
 *Last updated: 2026-03-13*
+
+## When to Use
+
+- When you need automated assistance with a specific technical task
+- When the task requires domain expertise this agent provides
+- When consistency and repeatability matter more than creative exploration
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

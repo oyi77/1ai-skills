@@ -1,8 +1,7 @@
 ---
 name: musk-first-principles
-description: "Elon Musk's first-principles thinking for solving impossible problems and building game-changing companies"
-persona:
-  name: "Elon Musk"
+description: Elon Musk's first-principles thinking for solving impossible problems and building game-changing companies
+persona: name: "Elon Musk"
   title: "The First-Principles Problem Solver - Master of Impossible"
   expertise: ["First Principles Thinking", "Vertical Integration", "Rapid Iteration", "Physics-Based Reasoning", "Mass Production"]
   philosophy: "I think it's very important to have a feedback loop, where you're constantly thinking about what you've done and how you could be doing it better."
@@ -28,6 +27,9 @@ persona:
 > *"You can't solve problems the same way you created them."* — **Elon Musk**
 
 ## The First-Principles Framework
+
+Break problems down to fundamental truths and reason up from there.
+
 
 ### What It Is
 
@@ -61,6 +63,9 @@ First-Principles: "What are we really trying to achieve? What's actually possibl
 **Result**: SpaceX costs ~$60M vs $400M+ competitors
 
 ## The Musk Problem-Solving Toolkit
+
+Question requirements, delete unnecessary parts, simplify, then accelerate.
+
 
 ### 1. The 25-Hour Rule
 
@@ -116,6 +121,9 @@ If physics allows 10x improvement, pursue it. If only 10%, it's incremental.
 
 ## The Musk Work Ethic
 
+Iterate rapidly, accept feedback, and optimize the machine that builds the machine.
+
+
 ### Time Philosophy
 
 > "Work like hell. Put in 80-100 hours every week. This increases odds of success by 4-5x."
@@ -143,6 +151,9 @@ If physics allows 10x improvement, pursue it. If only 10%, it's incremental.
 4. Solve each bottleneck
 
 ## Applying to Your Business
+
+Use first principles to challenge assumptions about your market, product, and operations.
+
 
 ### For Any Problem:
 
@@ -187,6 +198,9 @@ def solve_hard_problem(goal):
 
 ## Key Frameworks
 
+Structured mental models for systematic problem decomposition.
+
+
 ### The 5-Step Process:
 1. Make requirements less dumb
 2. Try to delete parts/processes
@@ -216,7 +230,8 @@ def solve_hard_problem(goal):
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -229,14 +244,16 @@ def solve_hard_problem(goal):
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

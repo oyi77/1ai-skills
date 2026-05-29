@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Domain Inventory and Baseline
 
 Build the initial certificate inventory for monitored domains:
@@ -122,6 +127,11 @@ Verify log integrity and produce compliance evidence:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Auditing Tls Certificate Transparency Logs assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Auditing Tls Certificate Transparency Logs response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting Unauthorized Certificate Issuance for a Financial Services Company
 
 **Context**: A bank monitors its primary domain (`bank.example.com`) and discovers via CT logs that a certificate has been issued by a CA they have never used, covering `secure-login.bank.example.com` -- a subdomain that does not exist in their DNS.
@@ -156,6 +166,21 @@ Verify log integrity and produce compliance evidence:
 - Assuming all CT-discovered subdomains are in scope without confirming with the asset owner
 - Not checking for wildcard DNS responses that make it appear subdomains exist when they resolve to a catch-all
 - Relying solely on CT data without cross-referencing with passive DNS databases for comprehensive coverage
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

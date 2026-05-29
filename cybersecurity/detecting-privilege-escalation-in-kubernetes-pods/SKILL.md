@@ -64,6 +64,11 @@ Privilege escalation in Kubernetes occurs when a pod or container gains elevated
 
 ## Detection with Admission Control
 
+This section covers detection with admission control for detecting privilege escalation in kubernetes pods.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Pod Security Admission (Built-in)
 
 ```yaml
@@ -255,3 +260,17 @@ kubectl get pods --all-namespaces -o json | \
 6. **Monitor with Falco** for runtime privilege escalation attempts
 7. **Audit RBAC changes** with Kubernetes audit logging
 8. **Use seccomp profiles** to restrict syscalls
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)

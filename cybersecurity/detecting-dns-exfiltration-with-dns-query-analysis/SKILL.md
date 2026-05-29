@@ -48,6 +48,11 @@ DNS exfiltration exploits the Domain Name System as a covert channel to extract 
 
 ## Core Concepts
 
+This section covers core concepts for detecting dns exfiltration with dns query analysis.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### DNS Tunneling Mechanics
 
 DNS exfiltration encodes data in different parts of DNS messages:
@@ -92,6 +97,11 @@ NULL records carry arbitrary binary data
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Capture DNS Traffic
 
 **Using Zeek:**
@@ -435,6 +445,20 @@ index=dns sourcetype=zeek:dns
 - **Baseline First** - Establish normal DNS query patterns before setting detection thresholds
 - **TXT Record Monitoring** - Pay special attention to TXT and NULL record queries
 - **Encrypted DNS Awareness** - Monitor for DoH/DoT usage that may bypass DNS inspection
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

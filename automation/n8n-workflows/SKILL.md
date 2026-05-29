@@ -27,6 +27,9 @@ n8n is a fair-code licensed workflow automation tool. It provides 400+ integrati
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Workflow Structure
 
 ```
@@ -176,3 +179,16 @@ return results
 | Expression error | Invalid expression syntax | Check expression in editor |
 | Credential expired | Token/key expired | Update credential |
 | Workflow timeout | Long-running node | Increase execution timeout in settings |
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

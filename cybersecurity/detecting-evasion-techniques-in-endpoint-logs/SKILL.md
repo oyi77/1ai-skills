@@ -52,6 +52,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Detect Log Tampering (T1070)
 
 **Windows Event Log clearing (T1070.001)**:
@@ -244,6 +249,20 @@ index=sysmon host=*
 | **Masquerading (T1036)** | Naming malicious files or processes to match legitimate system files to avoid detection |
 | **LOLBin** | Living Off the Land Binary; legitimate Windows tool repurposed by adversaries |
 | **Indicator Removal (T1070)** | Clearing logs, deleting files, or modifying artifacts to remove evidence of compromise |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Systems
 

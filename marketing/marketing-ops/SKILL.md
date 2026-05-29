@@ -1,20 +1,22 @@
 ---
 name: marketing-ops
-description: >
-  Complete AI-powered marketing & sales operating system for solo founders.
-  Covers the full revenue lifecycle: customer research, content creation,
-  SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement,
-  CRO, pricing, retention, analytics, automation, and global expansion.
-  Includes stage-based playbooks ($0→$100K MRR), AI agent orchestration,
-  PLG frameworks, Indonesia e-commerce, and decision-making infrastructure.
-  Use whenever the user mentions marketing, ads, SEO, content strategy,
-  campaigns, social media, email, copywriting, landing pages, conversions,
-  growth, funnels, brand voice, ad copy, ROAS, CPC, CTR, lead gen,
-  sales, pricing, churn, retention, partnerships, or any revenue task.
-  Triggers on: "write a blog post," "plan a campaign," "audit my landing page,"
-  "create email sequence," "keyword research," "ad copy," "content calendar,"
-  "help me get customers," "grow my business," "increase revenue."
+description: |
+  >
+    Complete AI-powered marketing & sales operating system for solo founders.
+    Covers the full revenue lifecycle: customer research, content creation,
+    SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement,
+    CRO, pricing, retention, analytics, automation, and global expansion.
+    Includes stage-based playbooks ($0→$100K MRR), AI agent orchestration,
+    PLG frameworks, Indonesia e-commerce, and decision-making infrastructure.
+    Use whenever the user mentions marketing, ads, SEO, content strategy,
+    campaigns, social media, email, copywriting, landing pages, conversions,
+    growth, funnels, brand voice, ad copy, ROAS, CPC, CTR, lead gen,
+    sales, pricing, churn, retention, partnerships, or any revenue task.
+    Triggers on: "write a blog post," "plan a campaign," "audit my landing page,"
+    "create email sequence," "keyword research," "ad copy," "content calendar,"
+    "help me get customers," "grow my business," "increase revenue."
 ---
+
 
 # Marketing Ops — AI CMO for Solo Founders
 
@@ -75,6 +77,13 @@ If unsure where to start, say `/marketing-ops help` for guided paths.
 ---
 
 ## Command Reference
+
+- Configure agent, analytics, audit, automation, based settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Layer 0 — Operating System
 | Command | Reference | Purpose |
@@ -155,6 +164,13 @@ If unsure where to start, say `/marketing-ops help` for guided paths.
 ---
 
 ## Orchestrator: Auto-Chaining
+
+- Configure agent, analytics, audit, automation, based settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### "Set up my revenue engine from scratch"
 ```
@@ -270,3 +286,27 @@ YOUR TIME: 3 minutes reading summary + demo calls.
 AI does: prospecting, researching, writing, reviewing, sending.
 ```
 
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

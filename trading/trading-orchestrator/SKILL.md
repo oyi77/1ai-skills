@@ -28,6 +28,9 @@ Orchestrate the full trading pipeline from research → strategy → risk → ex
 
 ## The Process
 
+The orchestration pipeline coordinates research, strategy, risk, and execution stages with state machine checkpoints and circuit breakers.
+
+
 ### 1. Full Pipeline Execution
 
 Orchestrate the complete trading pipeline for each opportunity:
@@ -182,6 +185,9 @@ async function handleIncident(error, state) {
 - **Orchestration loop runs without progress**: Implementation may have infinite loop or missing termination conditions; implement maximum iterations
 
 ## Verification
+
+Verification covers pipeline state transitions, circuit breaker triggers, notification delivery, and safety halt conditions.
+
 
 ### Pipeline Verification
 - [ ] All five team members (Researcher, Strategist, Risk Manager, Executor, Orchestrator) properly integrated

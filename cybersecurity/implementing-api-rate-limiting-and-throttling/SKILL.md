@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Rate Limiting Strategy Design
 
 Define rate limits per endpoint category and user tier:
@@ -426,6 +431,11 @@ class DistributedRateLimiter:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Api Rate Limiting And Throttling assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Api Rate Limiting And Throttling response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Implementing Rate Limiting for a Public API
 
 **Context**: A company launches a public API with free, premium, and enterprise tiers. The API must protect against abuse while providing fair access to paying customers. The API runs on 6 instances behind an AWS ALB.
@@ -446,6 +456,22 @@ class DistributedRateLimiter:
 - Using fixed windows that allow burst at window boundaries (2x the limit in a short period)
 - Not including rate limit headers on successful responses, giving clients no visibility into their quota
 - Trusting X-Forwarded-For for IP identification without validating it against the load balancer
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

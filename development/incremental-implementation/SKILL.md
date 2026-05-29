@@ -3,6 +3,7 @@ name: incremental-implementation
 description: Delivers changes incrementally. Use when implementing any feature or change that touches more than one file.
 ---
 
+
 # Incremental Implementation Skill
 
 ## Overview
@@ -58,3 +59,10 @@ Delivers working changes in small, verifiable slices using a vertical slice appr
 - **Acceptance criteria met** – The slice implements and tests the defined functionality
 - **No regressions introduced** – Existing tests continue to pass
 - **CI/checks pass** – All automated checks pass before committing
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for development workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

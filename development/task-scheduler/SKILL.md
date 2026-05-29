@@ -3,6 +3,7 @@ name: task-scheduler
 description: Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd timers. Recurring jobs, distributed scheduling
 ---
 
+
 ## Overview
 
 Task schedulers handle recurring jobs, delayed execution, and distributed work scheduling. This skill covers node-cron for simple scheduling, BullMQ for Redis-based job queues with delays and priorities, Celery for Python distributed task queues, and systemd timers for OS-level scheduling.
@@ -25,6 +26,26 @@ Task schedulers handle recurring jobs, delayed execution, and distributed work s
 - Need job persistence, retries, and monitoring
 
 ## Pseudo Code
+
+The task-scheduler workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# task-scheduler primary flow
+input = prepare(raw_data)
+result = process(input, config={bullmq, celery, cron, distributed, jobs})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Node-Cron
 ```javascript
@@ -200,3 +221,20 @@ run_with_lock('daily-report', generate_report)
 | **Exponential backoff** | Smart retry on failure |
 | **Job chaining** | Sequential pipeline |
 | **Dead letter queue** | Handle permanently failed jobs |
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

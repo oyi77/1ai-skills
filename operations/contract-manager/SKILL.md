@@ -89,6 +89,9 @@ Created   Internal   Counter-  Both    Running   Expired/
 
 ## Contract Types
 
+Classify contracts by purpose: service agreements, NDAs, SLAs, vendor contracts.
+
+
 ### 1. Talent Agreement (Perjanjian Talent)
 
 Used for: YouTubers, TikTokers, influencers, content creators under BerkahKarya management.
@@ -158,6 +161,9 @@ Used for: Tools, services, freelancers, suppliers.
 ---
 
 ## Template Library
+
+Reusable contract templates with standard clauses for common scenarios.
+
 
 ### Template 1: Service Agreement (PKS Jasa)
 
@@ -343,6 +349,9 @@ Lampiran dari PKS Nomor: {PKS_NUMBER}
 
 ## Key Clauses Library
 
+Essential clauses for liability, termination, IP, and dispute resolution.
+
+
 ### Payment Terms
 ```
 KLAUSUL PEMBAYARAN STANDAR:
@@ -424,6 +433,9 @@ Hukum yang berlaku: Hukum Republik Indonesia.
 
 ## Tracking System
 
+Track contract status, renewal dates, and obligation deadlines.
+
+
 ### Contract Registry (`contracts/registry.csv`)
 
 ```csv
@@ -451,6 +463,9 @@ EMP-001,EMPLOYMENT,Sony Ops,2026-03-01,2027-02-28,6000000,ACTIVE,2027-01-01,mont
 ---
 
 ## Scripts
+
+Automation scripts for contract generation, tracking, and alerts.
+
 
 ### `scripts/contract_tracker.py`
 
@@ -744,6 +759,9 @@ if __name__ == "__main__":
 
 ## E-Signature Options
 
+Key aspects of contract-manager relevant to this section.
+
+
 ### Free / Low-Cost Options (Recommended for Indonesia)
 
 | Tool | Cost | Legal in ID? | Use Case |
@@ -778,6 +796,9 @@ if __name__ == "__main__":
 ---
 
 ## Indonesian Law Compliance
+
+Key aspects of contract-manager relevant to this section.
+
 
 ### PKS Format Requirements
 
@@ -848,6 +869,9 @@ python3 scripts/renewal_alert.py
 
 ## Checklist: New Contract Workflow
 
+Step-by-step workflow for this skill.
+
+
 ### Drafting
 - [ ] Choose correct template (service/talent/NDA/SLA/employment)
 - [ ] Fill all `{PLACEHOLDERS}`
@@ -876,3 +900,22 @@ python3 scripts/renewal_alert.py
 
 *🔥 Vilona — BerkahKarya Contract Manager v1.0*
 *Every deal documented. Every deadline owned.*
+
+## When to Use
+
+- When you need automated assistance with a specific technical task
+- When the task requires domain expertise this agent provides
+- When consistency and repeatability matter more than creative exploration
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

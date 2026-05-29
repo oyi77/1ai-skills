@@ -56,6 +56,10 @@ python scripts/agent.py --flow-file captured_flows.json --output netflow_report.
 
 ## Examples
 
+```bash
+# Capture and analyze network traffic
+tcpdump -i eth0 -w capture.pcap -c 10000
+```
 ### Parse NetFlow v9 Packet
 ```python
 import netflow
@@ -63,3 +67,17 @@ data, _ = netflow.parse_packet(raw_bytes, templates={})
 for flow in data.flows:
     print(flow.IPV4_SRC_ADDR, flow.IPV4_DST_ADDR, flow.IN_BYTES)
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise

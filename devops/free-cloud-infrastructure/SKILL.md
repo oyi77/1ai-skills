@@ -5,6 +5,7 @@ domain: devops
 tags: [free-tier, cloud, infrastructure, cost-optimization, serverless, compute, storage]
 ---
 
+
 ## Overview
 
 Reference for free-tier cloud infrastructure across major providers. Focuses on always-free compute, storage, serverless functions, databases, and CDN/bandwidth with specific limits and constraints.
@@ -34,6 +35,14 @@ Reference for free-tier cloud infrastructure across major providers. Focuses on 
 5. **Provision with monitoring** -- Set up billing alerts even on free tiers to avoid surprise charges.
 
 ## Key Resources
+
+Curated resources for free-cloud-infrastructure.
+
+- Official documentation: Reference for API, CLI, and configuration
+- Community templates: Battle-tested patterns from production use
+- Monitoring dashboards: Grafana/Datadog templates for observability
+- CI/CD integration: GitHub Actions and GitLab CI starter workflows
+
 
 ### Always-Free Compute
 
@@ -130,3 +139,12 @@ Reference for free-tier cloud infrastructure across major providers. Focuses on 
 - [ ] Confirm instance types and specs have not changed
 - [ ] Check for outbound data transfer limits (often the hidden cost)
 - [ ] Review idle resource policies (some providers reclaim idle VMs)
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly

@@ -166,7 +166,8 @@ sessions_spawn(
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research topic is classified or under NDA restrictions
+- When real-time data feeds are needed and no API access exists
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -179,14 +180,16 @@ sessions_spawn(
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research depth is superficial despite the name suggesting thoroughness
+- Agent does not cross-reference findings across multiple sources
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Research methodology is documented and reproducible
+- [ ] Findings are cross-referenced across multiple independent sources
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -1,25 +1,26 @@
 ---
 name: linux-gui-control
 description: Linux GUI Control. Use when relevant to this domain.
-persona:
+persona: |
   name: Linus Torvalds
-  title: The Linux Creator - Master of System Control
-  expertise:
-  - Linux
-  - System Programming
-  - Git
-  - Operating Systems
-  philosophy: Talk is cheap. Show me the code.
-  credentials:
-  - Created Linux kernel
-  - Created Git
-  - Maintains largest open source project
-  principles:
-  - Control the system
-  - Script everything
-  - Prefer command line
-  - Automate workflows
+    title: The Linux Creator - Master of System Control
+    expertise:
+    - Linux
+    - System Programming
+    - Git
+    - Operating Systems
+    philosophy: Talk is cheap. Show me the code.
+    credentials:
+    - Created Linux kernel
+    - Created Git
+    - Maintains largest open source project
+    principles:
+    - Control the system
+    - Script everything
+    - Prefer command line
+    - Automate workflows
 ---
+
 name: linux-gui-control
 description: "Control the Linux desktop GUI using xdotool, wmctrl, and dogtail. Use when you need to interact with non-browser applications, simulate mouse/keyboard input, manage windows, or inspect the UI hierarchy of applications on X11/GNOME. Supports: (1) Clicking/typing in apps, (2) Resizing/moving windows, (3) Extracting text-based UI trees from apps (A11y), (4) Taking screenshots for visual analysis."
 ---
@@ -29,6 +30,19 @@ description: "Control the Linux desktop GUI using xdotool, wmctrl, and dogtail. 
 This skill provides tools and procedures for automating interactions with the Linux desktop environment.
 
 ## Quick Start
+
+Get started with linux-gui-control in three steps.
+
+1. Install dependencies: `pip install -r requirements.txt` or `npm install`
+2. Configure settings in `config.yaml` or `.env`
+3. Run: `python main.py --mode linux-gui-control` or `npm run dev`
+
+Verify setup:
+```bash
+python main.py --check-config
+python main.py --run
+```
+
 
 ### 1. Identify Target Window
 Use `wmctrl` to find the exact name of the window you want to control.
@@ -60,6 +74,17 @@ Use `xdotool` via the helper script for common actions.
 
 ## Workflows
 
+Step-by-step linux-gui-control execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the linux-gui-control workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
 ### Operating an App via Text UI
 1. List windows with `wmctrl -l`.
 2. Activate the target window.
@@ -82,7 +107,8 @@ nohup <app> --force-renderer-accessibility > /dev/null 2>&1 &
 - **scrot**: Lightweight screenshot tool.
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the code change is in a frozen release branch under change management
+- When the task requires access to production systems the agent cannot reach
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -95,14 +121,16 @@ nohup <app> --force-renderer-accessibility > /dev/null 2>&1 &
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Code changes are made without running the existing test suite
+- Agent does not handle error cases or edge conditions
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

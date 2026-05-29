@@ -26,6 +26,9 @@ Unified browser automation that works locally or in the cloud. Handles any web t
 
 ## Core Features
 
+Primary capabilities and how to access them.
+
+
 ### 1. Environment Selection (automatic)
 - **Cloud** - Browserbase (remote, scalable)
 - **Local** - Local Chrome/Chromium
@@ -60,6 +63,9 @@ Unified browser automation that works locally or in the cloud. Handles any web t
 ---
 
 ## Usage
+
+How to use this skill in practice.
+
 
 ### Quick Automation
 ```
@@ -100,7 +106,8 @@ browser profile connect --name=shopping
 v1.0.0 - Initial release
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -113,14 +120,16 @@ v1.0.0 - Initial release
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

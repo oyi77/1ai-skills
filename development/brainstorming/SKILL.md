@@ -2,6 +2,7 @@
 name: brainstorming
 description: Effective brainstorming skill for features and projects. Clarify intent, explore options, and guide design decisions to align with user goals.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Brainstorming"
@@ -48,6 +49,13 @@ Effective brainstorming skill to use before building features. Clarify intent, e
 ---
 
 ## Brainstorming Process
+
+- Configure align, brainstorming, clarify, decisions, design settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Clarify Intent
 ```
@@ -96,6 +104,13 @@ Recommended approach:
 
 ## Framework
 
+- Configure align, brainstorming, clarify, decisions, design settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### The 5 Whys
 ```
 Problem: [Describe issue]
@@ -124,6 +139,13 @@ Won't have: Out of scope
 ---
 
 ## Decision Framework
+
+- Configure align, brainstorming, clarify, decisions, design settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Build vs Buy vs Open Source
 ```
@@ -158,6 +180,13 @@ Open Source:
 
 ```
 ## Brainstorming Results
+
+- Configure align, brainstorming, clarify, decisions, design settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Problem Statement
 [Clear description]
@@ -196,6 +225,13 @@ Open Source:
 
 ## Integration
 
+- Configure align, brainstorming, clarify, decisions, design settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Before Building
 ```
 1. Run brainstorming skill
@@ -212,6 +248,15 @@ brainstorming → prd-generator → implementation
 ---
 
 ## Best Practices
+
+Recommended practices for brainstorming.
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Ask clarifying questions  
@@ -238,7 +283,8 @@ brainstorming → prd-generator → implementation
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the code change is in a frozen release branch under change management
+- When the task requires access to production systems the agent cannot reach
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -251,14 +297,16 @@ brainstorming → prd-generator → implementation
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Code changes are made without running the existing test suite
+- Agent does not handle error cases or edge conditions
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

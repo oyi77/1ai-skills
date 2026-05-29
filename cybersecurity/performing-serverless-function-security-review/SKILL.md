@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enumerate All Serverless Functions and Configurations
 
 List all functions across cloud providers with their runtime, memory, timeout, and network settings.
@@ -252,6 +257,11 @@ prowler aws \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Serverless Function Security Review assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Serverless Function Security Review response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Lambda Function with Admin Role Leaking Secrets via Environment Variables
 
 **Context**: A security review discovers a Lambda function with `AdministratorAccess` execution role and database credentials stored in plaintext environment variables visible in CloudWatch logs.
@@ -266,6 +276,22 @@ prowler aws \
 7. Rotate all exposed credentials and enable Lambda function encryption with KMS
 
 **Pitfalls**: Changing a function's execution role can break it if the new role is too restrictive. Test in a staging environment first. Environment variable changes trigger a new function version, so ensure aliases and triggers are updated. Secrets Manager calls add latency; cache secrets within the execution context to avoid per-invocation lookups.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

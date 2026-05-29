@@ -57,6 +57,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Dump SPI Flash Firmware
 
 Acquire the UEFI firmware from the SPI flash chip for offline analysis:
@@ -259,6 +264,11 @@ Report should include:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Analyzing Uefi Bootkit Persistence assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Analyzing Uefi Bootkit Persistence response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Investigating Persistent Compromise Surviving OS Reinstallation
 
 **Context**: An enterprise endpoint was reimaged after a confirmed breach, but identical C2 beaconing resumed within hours. The endpoint has UEFI firmware with Secure Boot enabled, and a TPM 2.0 chip. The security team suspects a UEFI-level implant similar to BlackLotus or LoJax.
@@ -280,6 +290,20 @@ Report should include:
 - Assuming Secure Boot prevents all bootkits (CVE-2022-21894 and other bypasses exist)
 - Not preserving the original firmware dump before remediation (critical forensic evidence)
 - Reflashing firmware without verifying the vendor image is authentic and unmodified
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

@@ -43,6 +43,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install and Configure Zeek
 
 ```bash
@@ -359,6 +364,11 @@ sudo zeekctl netstats
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Network Anomalies With Zeek assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Network Anomalies With Zeek response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting Command-and-Control Beaconing in Enterprise Traffic
 
 **Context**: A threat intelligence report indicates that a specific threat actor uses HTTPS beaconing with 60-second intervals to compromised hosts. The SOC team needs to analyze Zeek logs to identify any hosts exhibiting this pattern across the enterprise network carrying 2 Gbps of traffic.
@@ -376,6 +386,22 @@ sudo zeekctl netstats
 - Failing to exclude CDN and cloud service provider IP ranges that naturally receive many repeat connections
 - Running Zeek without sufficient CPU cores, causing packet drops on high-throughput links
 - Not enabling JSON log output, making SIEM integration unnecessarily complex with custom parsers
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

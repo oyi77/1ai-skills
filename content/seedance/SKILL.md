@@ -1,25 +1,28 @@
 ---
 name: seedance
 description: Generate cinematic AI videos using ByteDance's Seedance 2.0 (即梦) platform. Master prompt engineering for text-to-video, image-to-video, video extension, and multi-modal reference synthesis.
-persona:
-  name: "Quentin Tarantino"
-  title: "Master of Cinematic Storytelling"
-  expertise: ["non-linear narrative", "dialogue rhythm", "visual composition", "tension building"]
-  philosophy: "I steal from every single movie ever made. If people don't like that, then tough till, 'cause I steal from the best."
-  credentials:
-    - "Two-time Academy Award winner (Pulp Fiction, Django Unchained)"
-    - "Palme d'Or winner at Cannes Film Festival for Pulp Fiction"
-    - "Revolutionized independent cinema with Reservoir Dogs"
-    - "Created iconic visual language blending violence, humor, and pop culture"
-  principles:
-    - "Every frame is a painting - compose shots with visual intention"
-    - "Dialogue drives character - let people talk, reveal through conversation"
-    - "Violence has consequences - show impact, don't sanitize"
-    - "Music is narrative - soundtrack shapes emotional journey"
-    - "Non-linear storytelling creates mystery - play with time"
-    - "Close-ups reveal truth - get intimate with character emotion"
-    - "Homage is creation - reference what you love, make it yours"
+persona: |
+  |
+    name: "Quentin Tarantino"
+      title: "Master of Cinematic Storytelling"
+      expertise: ["non-linear narrative", "dialogue rhythm", "visual composition", "tension building"]
+      philosophy: "I steal from every single movie ever made. If people don't like that, then tough till, 'cause I steal from the best."
+      credentials:
+        - "Two-time Academy Award winner (Pulp Fiction, Django Unchained)"
+        - "Palme d'Or winner at Cannes Film Festival for Pulp Fiction"
+        - "Revolutionized independent cinema with Reservoir Dogs"
+        - "Created iconic visual language blending violence, humor, and pop culture"
+      principles:
+        - "Every frame is a painting - compose shots with visual intention"
+        - "Dialogue drives character - let people talk, reveal through conversation"
+        - "Violence has consequences - show impact, don't sanitize"
+        - "Music is narrative - soundtrack shapes emotional journey"
+        - "Non-linear storytelling creates mystery - play with time"
+        - "Close-ups reveal truth - get intimate with character emotion"
+        - "Homage is creation - reference what you love, make it yours"
 ---
+
+
 
 # Seedance 2.0 - AI Video Prompt Engineering Skill
 
@@ -55,6 +58,12 @@ Seedance 2.0 (即梦) is ByteDance's powerful AI video generation platform that 
 
 ## Prerequisites
 
+- Python 3.10+ or Node.js 18+
+- API credentials configured in `.env`
+- Network access to target services
+- Understanding of bytedance, cinematic, engineering, extension, generate concepts
+
+
 ### Required Access
 1. **Seedance 2.0 Account** - Sign up at jimeng.jianying.com
 2. **Reference Materials** (optional) - Images, videos, or audio for multi-modal generation
@@ -71,6 +80,13 @@ Seedance 2.0 (即梦) is ByteDance's powerful AI video generation platform that 
 ---
 
 ## Ten Core Capabilities
+
+- Configure bytedance, cinematic, engineering, extension, generate settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Pure Text Generation
 Generate videos purely from text descriptions without reference materials.
@@ -126,6 +142,13 @@ Synchronize visual rhythm precisely with music beats.
 
 ## Prompt Structure
 
+- Configure bytedance, cinematic, engineering, extension, generate settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Basic Formula
 
 ```
@@ -152,6 +175,13 @@ golden hour, wide shot, shallow depth of field, film grain
 
 ## Advanced Techniques
 
+- Configure bytedance, cinematic, engineering, extension, generate settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Technical Parameters
 - **Aspect Ratio**: 16:9 (horizontal), 9:16 (vertical), 1:1 (square)
 - **Frame Rate**: 24fps (cinematic), 30fps (smooth)
@@ -170,6 +200,13 @@ For videos >15 seconds, split into 15s segments with explicit continuity points.
 ---
 
 ## Multi-Modal Reference System
+
+- Configure bytedance, cinematic, engineering, extension, generate settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Image References (`@图片1` ~ `@图片9`)
 - Character appearance consistency
@@ -191,6 +228,42 @@ For videos >15 seconds, split into 15s segments with explicit continuity points.
 ---
 
 ## Scenario Templates
+
+Reusable templates for seedance.
+
+Standard config:
+```yaml
+name: seedance_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: seedance_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard seedance
+```yaml
+name: seedance_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: seedance_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### E-commerce / Advertising
 ```
@@ -216,6 +289,13 @@ For videos >15 seconds, split into 15s segments with explicit continuity points.
 ---
 
 ## Usage
+
+- Configure bytedance, cinematic, engineering, extension, generate settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Trigger Keywords
 - `Seedance`, `即梦`, `视频提示词`, `AI视频`
@@ -243,6 +323,12 @@ Step 3: You refine
 ---
 
 ## Integration with 1ai-skills
+
+Combine seedance with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
 
 ### Content Pipeline
 
@@ -310,6 +396,13 @@ seedance is part of the **digital-ops-team** for:
 ---
 
 ## Examples
+
+- Configure bytedance, cinematic, engineering, extension, generate settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Example 1: Cyberpunk City Night
 
@@ -392,14 +485,16 @@ seedance is part of the **digital-ops-team** for:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Animation frames have visible jitter or inconsistencies
+- Agent does not verify output matches the specified choreography style
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Animation frames are smooth without jitter or artifacts
+- [ ] Output matches the specified choreography style and genre
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

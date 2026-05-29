@@ -80,6 +80,10 @@ HashiCorp Boundary is an identity-aware proxy that provides secure, zero trust a
 
 ## Installation and Configuration
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Boundary Server Setup
 
 ```bash
@@ -179,6 +183,11 @@ kms "aead" {
 
 ## Terraform Configuration
 
+This section covers terraform configuration for implementing zero trust with hashicorp boundary.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Scope and Auth Configuration
 
 ```hcl
@@ -487,6 +496,20 @@ resource "boundary_host_set_plugin" "web_tier" {
 8. **Use credential injection** (SSH certificates) over brokering when possible
 9. **Implement least-privilege grants** -- avoid wildcard permissions
 10. **Review session recordings** regularly for compliance and incident response
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

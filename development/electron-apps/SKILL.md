@@ -3,6 +3,7 @@ name: electron-apps
 description: Electron desktop app development — main/renderer process, IPC, native menus, auto-update, packaging
 ---
 
+
 ## Overview
 
 Electron enables building cross-platform desktop applications using web technologies (HTML, CSS, JavaScript). It powers apps like VS Code, Slack, Discord, and Figma Desktop. The main process handles native APIs while the renderer process runs the web UI.
@@ -29,6 +30,26 @@ Electron enables building cross-platform desktop applications using web technolo
 - Need to support Windows, macOS, and Linux
 
 ## Pseudo Code
+
+The electron-apps workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# electron-apps primary flow
+input = prepare(raw_data)
+result = process(input, config={apps, auto, desktop, development, electron})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Project Setup
 ```bash
@@ -238,6 +259,14 @@ npx electron-builder --linux
 
 ## Common Patterns
 
+Proven patterns for electron-apps usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Store (Persistent Settings)
 ```typescript
 import Store from 'electron-store';
@@ -287,3 +316,20 @@ crashReporter.start({
   uploadToServer: true,
 });
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

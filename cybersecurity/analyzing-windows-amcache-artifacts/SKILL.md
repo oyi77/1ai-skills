@@ -51,6 +51,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Acquire the Amcache.hve File
 
 Extract the Amcache hive from a forensic image or live system:
@@ -245,3 +250,10 @@ Combine Amcache data with other artifacts for a comprehensive timeline:
 - [ ] LinkDate vs. FileKeyLastWriteTimestamp comparison has been performed to detect timestomping
 - [ ] Amcache findings are correlated with Prefetch and ShimCache for execution confirmation
 - [ ] Final timeline integrates Amcache data with other forensic artifacts
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis

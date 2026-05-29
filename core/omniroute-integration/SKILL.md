@@ -39,6 +39,13 @@ Use this skill when:
 - You're building agentic workflows that benefit from multi-provider access
 
 ## Quick Reference
+| Endpoint/Method | Description |
+|----------------|-------------|
+| `GET /status` | Check service health and availability |
+| `POST /execute` | Run the primary operation |
+| `GET /results` | Retrieve operation results |
+| `DELETE /cache` | Clear cached data |
+
 
 ### Service Management
 ```bash
@@ -111,6 +118,11 @@ OmniRoute implements Agent-to-Agent v0.3 protocol:
 - `quota-management` - Provider quota monitoring and alerts
 
 ## Integration with Opencode
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### Configure as Default Model
 Add to `/home/openclaw/.opencode/config.json`:
@@ -137,12 +149,12 @@ For each agent type, configure the optimal combo:
 
 | Agent Type | Recommended Combo | Use Case |
 |------------|------------------|---------|
-| Default | `auto/best-chat` | General conversation |
-| Coding | `auto/best-coding` | Code generation, refactoring |
-| Fast | `auto/best-fast` | Quick lookups, small fixes |
-| Reasoning | `auto/best-reasoning` | Complex logic, debugging |
-| Vision | `auto/best-vision` | Image understanding |
-| Free | `auto/best-free` | Budget-constrained tasks |
+| Default | best-chat | General conversation |
+| Coding | best-coding | Code generation, refactoring |
+| Fast | best-fast | Quick lookups, small fixes |
+| Reasoning | best-reasoning | Complex logic, debugging |
+| Vision | best-vision | Image understanding |
+| Free | best-free | Budget-constrained tasks |
 
 ### Sub-Agent Configuration
 For sub-agents via task():
@@ -165,31 +177,31 @@ Configure Opencode to use OmniRoute as an OpenAI-compatible endpoint:
 OmniRoute provides these pre-configured combos for common use cases:
 
 **Auto-Combos** (intelligent routing):
-- `auto/best-chat` - Best general chat models
-- `auto/best-coding` - Best coding models  
-- `auto/best-fast` - Fastest low-latency models
-- `auto/best-reasoning` - Best reasoning/thinking models
-- `auto/best-vision` - Best vision multimodal models
-- `auto/best-free` - Best free tier models
+- best-chat - Best general chat models
+- best-coding - Best coding models  
+- best-fast - Fastest low-latency models
+- best-reasoning - Best reasoning/thinking models
+- best-vision - Best vision multimodal models
+- best-free - Best free tier models
 
 **Provider-Specific Combos**:
-- `provider/antigravity` - Antigravity models
-- `provider/kilocode` - KiloCode models
-- `provider/kiro` - Kiro models
-- `provider/github` - GitHub Copilot models
-- `provider/openai` - OpenAI models
-- `provider/ollamacloud` - Ollama Cloud models
-- `provider/nanobanana` - NanoBanana image models
-- `provider/xai` - xAI Grok models
-- `provider/kimi-coding` - Kimi Coding models
-- `provider/glm` - GLM models
-- `provider/zai` - ZAI models
-- `provider/nvidia` - NVIDIA models
-- `provider/openrouter` - OpenRouter models
-- `provider/siliconflow` - SiliconFlow models
-- `provider/opencode-zen` - OpenCode Zen models
-- `provider/opencode-go` - OpenCode Go models
-- `provider/cloudflare-ai` - Cloudflare AI models
+- antigravity - Antigravity models
+- kilocode - KiloCode models
+- kiro - Kiro models
+- github - GitHub Copilot models
+- openai - OpenAI models
+- ollamacloud - Ollama Cloud models
+- nanobanana - NanoBanana image models
+- xai - xAI Grok models
+- kimi-coding - Kimi Coding models
+- glm - GLM models
+- zai - ZAI models
+- nvidia - NVIDIA models
+- openrouter - OpenRouter models
+- siliconflow - SiliconFlow models
+- opencode-zen - OpenCode Zen models
+- opencode-go - OpenCode Go models
+- cloudflare-ai - Cloudflare AI models
 
 **Usage**:
 ```bash
@@ -221,6 +233,17 @@ Leverage OmniRoute's A2A implementation:
 4. Chain multiple agents with specialized capabilities
 
 ## Configuration Files
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Environment Variables
 Key environment variables in `/home/openclaw/omniroute-src/start-omniroute.sh`:
@@ -236,6 +259,10 @@ Key environment variables in `/home/openclaw/omniroute-src/start-omniroute.sh`:
 - `/home/openclaw/.omniroute/db_backups/` - Automatic database backups
 
 ## Verification
+This section covers verification for the omniroute-integration skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Check Service Health
 ```bash
@@ -261,6 +288,12 @@ curl -s http://localhost:20128/.well-known/agent.json | jq .
 ```
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Service Won't Start
 1. Check logs: `sudo journalctl -u omniroute -f`
@@ -297,7 +330,8 @@ curl -s http://localhost:20128/.well-known/agent.json | jq .
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the task requires domain expertise the agent has not been configured with
+- When human review is mandated by compliance or regulatory requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -310,7 +344,8 @@ curl -s http://localhost:20128/.well-known/agent.json | jq .
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Related Skills

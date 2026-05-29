@@ -5,6 +5,7 @@ domain: content
 tags: [frontend, design, ui, anti-slop, taste, typography, motion, image-to-code]
 ---
 
+
 ## Overview
 
 Anti-slop frontend design framework based on [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill). Provides 13 specialized skills that enforce distinctive, production-grade visual design — countering the generic, soulless UIs that AI agents typically generate.
@@ -12,6 +13,13 @@ Anti-slop frontend design framework based on [Leonxlnx/taste-skill](https://gith
 The framework covers layout systems, typography hierarchies, motion design, spacing discipline, and image-to-code pipelines across three visual style variants.
 
 ## Implementation Skills
+
+- Configure agents, anti, better, boilerplate, building settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### taste-skill (v2)
 
@@ -70,6 +78,13 @@ Design taste layer for Stitch-based component generation — ensures consistent 
 
 ## Image Generation Skills
 
+- Configure agents, anti, better, boilerplate, building settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### imagegen-frontend-web
 
 Generate web-specific visual assets — hero images, section backgrounds, illustration sets — with consistent style matching the frontend design system.
@@ -83,6 +98,13 @@ Generate mobile-specific visual assets — splash screens, onboarding illustrati
 Generate cohesive brand identity kits — logo variants, color palettes, typography pairings, icon sets, pattern libraries.
 
 ## Visual Style Variants
+
+- Configure agents, anti, better, boilerplate, building settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Soft/Premium
 - Rounded corners, subtle gradients, soft shadows
@@ -116,3 +138,21 @@ npx skills add Leonxlnx/taste-skill
 - Running an image-to-code conversion pipeline
 - Redesigning existing projects with poor visual quality
 - Generating brand-consistent visual assets
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

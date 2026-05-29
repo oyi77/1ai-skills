@@ -44,6 +44,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Pin Actions to SHA Digests
 
 ```yaml
@@ -208,6 +213,11 @@ jobs:
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Preventing Supply Chain Attack via Compromised Third-Party Action
 
 **Context**: A widely-used GitHub Action is compromised and its v3 tag is updated to include credential-stealing code. Repositories using `@v3` automatically pull the malicious version.
@@ -221,6 +231,22 @@ jobs:
 6. Require CODEOWNERS approval for any changes to .github/workflows/
 
 **Pitfalls**: SHA pinning without Dependabot means missing legitimate security updates to actions. Overly restrictive permissions can break legitimate workflows. Using `pull_request_target` for label-based gating still exposes secrets if the workflow checks out PR code.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

@@ -44,6 +44,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 — Identify Redirect Parameters
 ```bash
 # Common redirect parameter names to test:
@@ -180,6 +185,22 @@ ffuf -w open-redirect-payloads.txt -u "http://target.com/redirect?url=FUZZ" -mr 
 3. **SSO Bypass** — Redirect SSO authentication responses to attacker-controlled servers to capture session tokens
 4. **XSS via Redirect** — Chain open redirect with javascript: protocol to achieve cross-site scripting
 5. **Referer Leakage** — Use open redirect to leak sensitive tokens in Referer headers when redirecting to external sites
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

@@ -18,6 +18,12 @@ Evidence-based focus and time management system combining deep work principles, 
 - Building sustainable productivity habits
 
 ## Process
+1. Validate input and check prerequisites
+2. Initialize required connections and contexts
+3. Execute core operation with monitoring
+4. Validate output against expected format
+5. Deliver results and log execution summary
+
 
 ### 1. Energy Audit
 
@@ -109,3 +115,10 @@ Every Friday:
 - [ ] Distraction management system in place
 - [ ] Weekly review conducted every Friday
 - [ ] Buffer time (20%) included in weekly schedule
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows

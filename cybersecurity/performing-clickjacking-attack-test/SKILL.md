@@ -51,6 +51,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Check Frame Embedding Protections
 
 Examine response headers for anti-clickjacking defenses.
@@ -383,6 +388,11 @@ python3 -m http.server 8888
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario 1: Account Deletion via Clickjacking
 The account deletion page at `/account/delete` has no X-Frame-Options header. An attacker creates a page with a "Win a prize" button positioned over the "Delete My Account" button in a transparent iframe.
 
@@ -394,6 +404,22 @@ Disabling two-factor authentication requires two clicks (settings link, then dis
 
 ### Scenario 4: OAuth Authorization Clickjack
 An OAuth consent screen allows framing. The attacker embeds the consent page and tricks the victim into clicking "Authorize", granting the attacker's application access to the victim's account.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

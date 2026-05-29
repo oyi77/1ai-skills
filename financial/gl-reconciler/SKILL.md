@@ -32,6 +32,10 @@ Finds breaks between GL accounts, traces root causes, and routes for sign-off. H
 
 ## Implementation:
 
+
+The implementation follows a phased approach: extract trial balance data, detect breaks, trace root causes, and route corrections for sign-off.
+
+
 ### Phase 1: Data Extraction
 
 **Source Systems:**

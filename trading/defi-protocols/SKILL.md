@@ -1,6 +1,46 @@
 ---
 name: defi-protocols
 description: DeFi protocol development — AMMs, lending, staking, yield farming. Uniswap, Aave patterns
+
+## Red Flags
+
+- Slippage tolerance set too high (excessive price impact accepted)
+- Flash loan repayment not verified before fund transfer
+- Oracle price feed manipulation not mitigated (TWAP recommended)
+- Reentrancy vulnerability in external calls to borrower contracts
+- Fee-on-transfer tokens not handled in swap calculations
+- Liquidity pool imbalance not checked before large swaps
+
+## Verification
+
+After completing DeFi protocol implementation, confirm:
+
+- [ ] AMM swap formula matches x*y=k with correct fee deduction
+- [ ] Flash loan repaid in full within same transaction
+- [ ] Slippage protection enforced (minAmountOut check)
+- [ ] Oracle integration uses TWAP, not spot price
+- [ ] ReentrancyGuard applied to all state-changing external calls
+- [ ] Test coverage includes edge cases (zero liquidity, max uint256)
+
+
+## Red Flags
+
+- Slippage tolerance set too high (excessive price impact accepted)
+- Flash loan repayment not verified before fund transfer
+- Oracle price feed manipulation not mitigated (TWAP recommended)
+- Reentrancy vulnerability in external calls to borrower contracts
+- Fee-on-transfer tokens not handled in swap calculations
+
+## Verification
+
+After completing DeFi protocol implementation, confirm:
+
+- [ ] AMM swap formula matches x*y=k with correct fee deduction
+- [ ] Flash loan repaid in full within same transaction
+- [ ] Slippage protection enforced (minAmountOut check)
+- [ ] Oracle integration uses TWAP, not spot price
+- [ ] ReentrancyGuard applied to all state-changing external calls
+
 ---
 
 ## Overview
@@ -24,6 +64,9 @@ DeFi protocol patterns for AMMs, lending, staking, and yield farming. Covers Uni
 - Staking/reward systems
 
 ## Pseudo Code
+
+Reference implementations for AMM swaps, flash loans, and liquidity pool management.
+
 
 ### AMM Swap (Uniswap V2 style)
 ```solidity
@@ -51,3 +94,21 @@ function flashLoan(uint amount, address token) external {
 - Deadline: require(block.timestamp <= deadline)
 - Fee: 0.3% (Uniswap), configurable
 - TWAP oracle for price feeds
+
+## Red Flags
+
+- Slippage tolerance set too high (excessive price impact accepted)
+- Flash loan repayment not verified before fund transfer
+- Oracle price feed manipulation not mitigated (TWAP recommended)
+- Reentrancy vulnerability in external calls to borrower contracts
+- Fee-on-transfer tokens not handled in swap calculations
+
+## Verification
+
+After completing DeFi protocol implementation, confirm:
+
+- [ ] AMM swap formula matches x*y=k with correct fee deduction
+- [ ] Flash loan repaid in full within same transaction
+- [ ] Slippage protection enforced (minAmountOut check)
+- [ ] Oracle integration uses TWAP, not spot price
+- [ ] ReentrancyGuard applied to all state-changing external calls

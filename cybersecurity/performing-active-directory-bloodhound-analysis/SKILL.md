@@ -65,6 +65,11 @@ BloodHound is an open-source Active Directory reconnaissance tool that uses grap
 
 ## Step 1: Data Collection with SharpHound
 
+This section covers step 1: data collection with sharphound for performing active directory bloodhound analysis.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SharpHound.exe (Preferred for OPSEC)
 
 ```powershell
@@ -109,6 +114,11 @@ Invoke-AzureHound
 
 ## Step 2: Import Data into BloodHound
 
+This section covers step 2: import data into bloodhound for performing active directory bloodhound analysis.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### BloodHound CE (v5+)
 
 ```bash
@@ -135,6 +145,11 @@ sudo neo4j start
 
 ## Step 3: Attack Path Analysis
 
+This section covers step 3: attack path analysis for performing active directory bloodhound analysis.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Pre-Built Queries (Most Critical)
 
 ```cypher
@@ -197,6 +212,11 @@ MATCH (u:User {hasspn:true})-[:AdminTo]->(c:Computer) RETURN u.name, c.name
 
 ## Step 4: Common Attack Paths
 
+This section covers step 4: common attack paths for performing active directory bloodhound analysis.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Path 1: Kerberoasting to DA
 ```
 User (owned) -> Kerberoastable SVC Account -> Crack Hash -> SVC is AdminTo Server ->
@@ -231,6 +251,22 @@ Code Execution as SYSTEM
 | Excessive ACL permissions | High | Audit and reduce GenericAll/WriteDACL |
 | Stale admin sessions | Medium | Implement session cleanup, restrict RDP |
 | Cross-domain trust abuse | High | Review trust direction and SID filtering |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

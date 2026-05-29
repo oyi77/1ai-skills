@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Cross-View Detection for Hidden Processes
 
 Compare process lists from different data sources to find discrepancies:
@@ -239,6 +244,11 @@ vol3 -f memory.dmp yarascan.YaraScan --yara-file rootkit_rules.yar
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Rootkit Activity assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Rootkit Activity response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Investigating a System Where Standard Tools Show No Compromise
 
 **Context**: An endpoint shows network beaconing to a known C2 IP in firewall logs, but the local EDR, Task Manager, and netstat show no suspicious processes or connections. A memory dump has been acquired for analysis.
@@ -257,6 +267,20 @@ vol3 -f memory.dmp yarascan.YaraScan --yara-file rootkit_rules.yar
 - Assuming kernel integrity because no SSDT hooks are found (rootkit may use DKOM or inline hooks instead)
 - Not checking for both user-mode and kernel-mode rootkit components (many rootkits have both)
 - Trusting the rootkit scanner results on a live system; always verify with offline memory forensics
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

@@ -24,6 +24,9 @@ Breakout strategy using 7-candle window (3 before + COA + 3 after) for XAUUSD du
 
 ## The Process
 
+The execution pipeline covers setup configuration, signal generation, historical backtesting, paper trading, and live execution with guardrails.
+
+
 ### 1. Setup Configuration
 
 Configure strategy parameters for your trading environment:
@@ -102,6 +105,9 @@ Guardrails include:
 - **Orders not cancelled at session end**: Check session end time configuration; implement proper order cleanup logic
 
 ## Verification
+
+Verification covers signal accuracy, backtest validity, live execution guardrails, and risk parameter compliance.
+
 
 ### Signal Verification
 - [ ] COA candle correctly identified at Asia session open time
