@@ -297,14 +297,20 @@ class EpisodicMemory:
                 rows = conn.execute(
                     "SELECT id, importance, last_accessed FROM episodes WHERE archived=0"
                 ).fetchall()
+
+                updates = []
                 for eid, imp, la in rows:
                     days = (now - la) / 86400.0
                     new_imp = imp * (config.DECAY_RATE ** days)
-                    conn.execute(
+                    # ⚡ Bolt Optimization: Batch N+1 UPDATE queries into a single executemany call
+                    updates.append((max(0.0, new_imp), eid))
+
+                if updates:
+                    conn.executemany(
                         "UPDATE episodes SET importance=? WHERE id=?",
-                        (max(0.0, new_imp), eid),
+                        updates,
                     )
-                    updated += 1
+                    updated = len(updates)
         return updated
 
     def _maybe_archive_old(self) -> None:
