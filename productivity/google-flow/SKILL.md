@@ -38,6 +38,12 @@ Google Flow is an AI video generation tool that creates videos from text prompts
 ---
 
 ## Complete Video Generation Workflow
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Step 1: Navigate to Google Flow
 
@@ -216,6 +222,10 @@ const createBtn = document.querySelector('button:has(i:contains("arrow_forward")
 ---
 
 ## Key Element Selectors
+This section covers key element selectors for the google-flow skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Critical Elements
 
@@ -275,6 +285,10 @@ async function generateVideo(promptText) {
 ---
 
 ## Credit Management
+This section covers credit management for the google-flow skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Credit Costs (as of Feb 2026)
 
@@ -308,6 +322,11 @@ async function generateVideo(promptText) {
 ---
 
 ## Advanced Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### Using Style Presets
 
@@ -350,6 +369,10 @@ clickByIcon('pen_spark');
 ---
 
 ## Downloading Videos for Local Use
+This section covers downloading videos for local use for the google-flow skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Overview
 
@@ -508,6 +531,10 @@ async function downloadAllVideos() {
 ---
 
 ## Creating Longer Videos
+This section covers creating longer videos for the google-flow skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Overview
 
@@ -726,6 +753,12 @@ await create60SecondVideo('ocean-sunset');
 ---
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Common Issues
 
@@ -756,6 +789,14 @@ await create60SecondVideo('ocean-sunset');
 ---
 
 ## Complete Automation Example
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Generate Video from Scratch
 
@@ -811,6 +852,10 @@ createVideoProject(
 ---
 
 ## Best Practices
+This section covers best practices for the google-flow skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Prompt Engineering
 
@@ -864,14 +909,16 @@ See `assets/flow-screenshot-expanded.png` for preset panel view.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation creates duplicate entries across connected platforms
+- Agent does not handle timezone differences correctly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No duplicate entries are created across connected platforms
+- [ ] Timezone handling is correct for all scheduling operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

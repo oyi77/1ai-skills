@@ -82,6 +82,20 @@ nist_csf:
 3. **Scenario 3**: Backup service lateral movement off-hours
 4. **Scenario 4**: Compromised svc with DA privileges used for DCSync
 
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
+
 ## Output Format
 
 ```

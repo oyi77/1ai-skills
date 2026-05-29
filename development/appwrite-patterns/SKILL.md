@@ -3,6 +3,7 @@ name: appwrite-patterns
 description: Appwrite backend-as-a-service — auth, database, storage, functions, realtime for web/mobile/desktop
 ---
 
+
 ## Overview
 
 Appwrite is an open-source backend-as-a-service platform providing auth, database, storage, functions, and messaging for web, mobile, and Flutter applications. It's self-hostable and has a cloud offering.
@@ -26,6 +27,26 @@ Appwrite is an open-source backend-as-a-service platform providing auth, databas
 - Multi-platform (web, iOS, Android, Flutter) applications
 
 ## Pseudo Code
+
+The appwrite-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# appwrite-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={appwrite, auth, backend, database, desktop})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup (Web SDK)
 ```typescript
@@ -121,3 +142,20 @@ console.log(result.stdout, result.stderr);
 - **Relationships**: Use relationship attributes for document linking
 - **Migrations**: Use Appwrite CLI (`appwrite push/pull`) for collection schemas
 - **Docker**: Self-host with `docker compose up -d`
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

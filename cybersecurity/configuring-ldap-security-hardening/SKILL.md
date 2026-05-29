@@ -62,3 +62,10 @@ Harden LDAP directory services against common attacks including credential harve
 - [ ] Audit logging enabled and forwarding to SIEM
 - [ ] Documentation and runbooks complete
 - [ ] Compliance evidence generated
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing

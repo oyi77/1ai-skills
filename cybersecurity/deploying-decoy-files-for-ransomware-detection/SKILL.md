@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Design Canary File Strategy
 
 Plan file placement for maximum detection coverage:
@@ -182,6 +187,14 @@ mv /path/to/canary/report.xlsx /path/to/canary/report.xlsx.locked
 | **File Integrity Monitoring** | Continuous monitoring of file attributes (hash, size, permissions, timestamps) to detect unauthorized changes |
 | **ReadDirectoryChangesW** | Windows API for monitoring file system changes in a directory; used by the watchdog library on Windows |
 | **inotify** | Linux kernel subsystem for monitoring file system events; provides near-instant notification of file changes |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
 
 ## Tools & Systems
 

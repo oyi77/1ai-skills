@@ -48,6 +48,11 @@ Network segmentation divides a flat network into isolated security zones with fi
 
 ## Core Concepts
 
+This section covers core concepts for implementing network segmentation with firewall zones.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Zone Architecture Tiers
 
 | Zone | Trust Level | Examples | Access Policy |
@@ -73,6 +78,11 @@ Network segmentation divides a flat network into isolated security zones with fi
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Map Traffic Flows and Define Zones
 
 Before implementing segmentation, capture baseline traffic:
@@ -331,6 +341,22 @@ if __name__ == "__main__":
 - **Regular Validation** - Test segmentation controls quarterly with automated tools
 - **Monitor Denied Traffic** - Log and review denied inter-zone traffic for policy refinement
 - **PCI Scope Reduction** - Use segmentation to minimize PCI DSS Cardholder Data Environment scope
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

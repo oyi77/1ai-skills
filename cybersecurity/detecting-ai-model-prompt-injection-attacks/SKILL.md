@@ -60,12 +60,17 @@ nist_csf:
 
 - Python 3.10+ with pip for installing detection dependencies
 - The `transformers` and `torch` libraries for running the DeBERTa-based classifier model
-- The `protectai/deberta-v3-base-prompt-injection-v2` model from Hugging Face (downloaded on first run, approximately 700 MB)
+- The protectai > deberta-v3-base-prompt-injection-v2 model from Hugging Face (downloaded on first run, approximately 700 MB)
 - Network access to Hugging Face Hub for initial model download (offline mode supported after first download)
 - Sample prompt injection payloads for testing (the script includes a built-in test suite)
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Install Detection Dependencies
 
 Install the required Python packages for all three detection layers:
@@ -162,6 +167,14 @@ Review the JSON output for any prompts flagged with `injection_detected: true` a
 | **DeBERTa Classifier** | A transformer-based sequence classification model fine-tuned on prompt injection datasets to distinguish adversarial from benign inputs |
 | **Canary Token** | A unique marker inserted into system prompts to detect if the LLM has been tricked into leaking its instructions |
 | **OWASP LLM01** | The top risk in the OWASP Top 10 for LLM Applications (2025), covering both direct and indirect prompt injection vulnerabilities |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
 
 ## Tools & Systems
 

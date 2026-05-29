@@ -43,6 +43,11 @@ Google Workspace provides advanced phishing and malware protection through the A
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Configure Advanced Phishing Protection
 - Navigate to Admin Console > Apps > Google Workspace > Gmail > Safety
 - Enable "Protect against domain spoofing based on similar domain names"
@@ -84,6 +89,22 @@ Google Workspace provides advanced phishing and malware protection through the A
 - Enable DKIM signing in Admin Console > Apps > Google Workspace > Gmail > Authenticate email
 - Configure DMARC with monitoring: `v=DMARC1; p=none; rua=mailto:dmarc@company.com`
 - Progress DMARC to enforcement per organizational readiness
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Tools & Resources
 - **Google Admin Console**: Central management for all security settings

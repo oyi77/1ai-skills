@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Certification Campaign Strategy
 
 Plan the certification scope and reviewer assignments:
@@ -397,6 +402,11 @@ System.out.println(auditReport.toString());
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Entitlement Review With Sailpoint Iiq assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Entitlement Review With Sailpoint Iiq response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: SOX Compliance Quarterly Access Review
 
 **Context**: A publicly traded company must demonstrate quarterly access reviews for all financial applications per SOX Section 404. The previous manual review process took 6 weeks and produced inconsistent results.
@@ -416,6 +426,20 @@ System.out.println(auditReport.toString());
 - Setting campaigns too short (under 21 days) results in rubber-stamping and low-quality reviews
 - Not validating that revocations are actually provisioned to target systems (approve on paper, still active in system)
 - Missing service accounts from review scope when they have access to financial systems
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

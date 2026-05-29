@@ -18,9 +18,48 @@ Automate GitHub Actions
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Create `.github/workflows/` directory in your repository
+2. Define workflow YAML files with trigger conditions (push, PR, schedule)
+3. Configure jobs with steps, using marketplace actions or custom scripts
+4. Set repository secrets for credentials and API keys
+5. Monitor workflow runs in the Actions tab
+
+## Workflow Template
+
+```yaml
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm test
+```
+
+## Common Patterns
+
+- Cache dependencies to speed up builds (actions/cache action)
+- Use matrix builds for multi-platform testing
+- Pin action versions to SHA for reproducibility
+- Use `concurrency` to cancel redundant workflow runs
+- Set `permissions` explicitly for security hardening
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the integration requires admin-level permissions on the target platform
+- When the data exchange involves regulated information requiring encryption
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +72,16 @@ Automate GitHub Actions
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Integration does not handle API errors or service unavailability
+- Agent does not verify data consistency across connected systems
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] API errors and service outages are handled with appropriate retry logic
+- [ ] Data consistency is verified across all connected systems
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

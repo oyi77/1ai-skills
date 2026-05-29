@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Create a WAF Web ACL with Managed Rule Groups
 
 Create a Web ACL with AWS Managed Rules for baseline protection against OWASP Top 10 attacks.
@@ -393,6 +398,11 @@ aws cloudwatch put-metric-alarm \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Securing Api Gateway With Aws Waf assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Securing Api Gateway With Aws Waf response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Protecting a Public API from Credential Stuffing and Bot Attacks
 
 **Context**: A public REST API experiences thousands of authentication attempts per hour from automated bots attempting credential stuffing against the `/api/auth/login` endpoint.
@@ -407,6 +417,22 @@ aws cloudwatch put-metric-alarm \
 7. Review sampled blocked requests weekly to tune rules and reduce false positives
 
 **Pitfalls**: Rate limiting by IP can block legitimate users behind shared NAT gateways or corporate proxies. Consider using API key or authenticated session-based rate limiting for more granular control. Bot Control rules in COMMON inspection level may block legitimate API clients; start in Count mode and review before switching to Block.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

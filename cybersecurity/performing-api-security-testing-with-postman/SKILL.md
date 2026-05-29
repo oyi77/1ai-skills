@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Environment and Collection Setup
 
 Create Postman environments for multi-role testing:
@@ -340,6 +345,11 @@ jobs:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Api Security Testing With Postman assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Api Security Testing With Postman response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: API Security Regression Suite for CI/CD
 
 **Context**: A development team releases API updates bi-weekly. They need an automated security test suite that runs on every pull request to catch authorization and authentication regressions before merge.
@@ -359,6 +369,22 @@ jobs:
 - Running security tests against production instead of staging environments
 - Not updating the collection when new endpoints are added, leaving gaps in coverage
 - Ignoring Newman exit codes in CI/CD, allowing failing security tests to pass silently
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

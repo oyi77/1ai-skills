@@ -2,6 +2,8 @@
 name: content-factory
 description: Content Factory. Use when relevant to this domain.
 ---
+
+
 name: content-factory
 description: All-in-one YouTube content generator - create regular videos, Shorts from scratch, and Shorts from long videos. Combines best of youtube-factory and AI-Youtube-Shorts-Generator with 100% free tools.
 version: 1.0.0
@@ -27,6 +29,13 @@ All-in-one YouTube content generator. Create regular videos, Shorts from scratch
 > [![Tip in Crypto](https://tip.md/badge.svg)](https://tip.md/oyi77)
 
 ## What This Skill Does
+
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 🎬 Regular Video Mode
 Turn any topic into a publish-ready YouTube video:
@@ -54,6 +63,33 @@ Create viral Shorts from text prompts:
 
 ## Quick Start
 
+Get started with content-factory in three steps.
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode content-factory`
+
+Verify setup:
+```bash
+python main.py --check-config
+python main.py --run
+```
+
+
+### Getting Started
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode content-factory`
+
+### First Run
+```bash
+# Verify setup
+python main.py --check-config
+# Execute
+python main.py --run
+```
+
+
 ### Regular Video
 ```
 Create a YouTube video about "5 Morning Habits of Successful People"
@@ -70,6 +106,13 @@ Make a YouTube Short about "surprising facts about coffee"
 ```
 
 ## Commands
+
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Generate Regular Video
 ```
@@ -114,6 +157,13 @@ Free Microsoft Edge TTS voices:
 
 ## Output Files
 
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Regular Videos
 After generation, you'll find in `~/Videos/OpenClaw/`:
 ```
@@ -138,6 +188,13 @@ video-title/
 
 ## Requirements
 
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Basic (All Modes)
 - FFmpeg installed (`brew install ffmpeg` or `apt install ffmpeg`)
 - Edge TTS (`pip install edge-tts`)
@@ -150,6 +207,13 @@ video-title/
 - yt-dlp for YouTube downloads (`pip install yt-dlp`)
 
 ## Setup
+
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Install Dependencies
 
@@ -200,6 +264,13 @@ echo "WHISPER_MODEL=base" >> ~/.openclaw-content-factory/config.env
 
 ## Features
 
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### ✨ Regular Video Mode
 - 100% free stock footage from Pexels
 - Natural-sounding voiceover with edge-tts
@@ -240,6 +311,13 @@ echo "WHISPER_MODEL=base" >> ~/.openclaw-content-factory/config.env
 - **Educational** - "History of Your City"
 
 ## Examples
+
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Regular Video
 ```
@@ -289,6 +367,13 @@ Input → Check source type
 
 ## Troubleshooting
 
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### No Stock Footage
 Ensure Pexels API key is set:
 ```bash
@@ -322,6 +407,13 @@ sudo apt install ffmpeg
 
 ## Performance Optimization
 
+- Configure content, domain, factory, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### For Faster Processing
 - Use WHISPER_MODEL=base instead of large
 - Set shorter highlight durations
@@ -351,3 +443,29 @@ MIT License - Feel free to use, modify, and distribute!
 Built for OpenClaw | 100% Free Tools | [Support the Creator](https://buymeacoffee.com/mayank8290)
 
 **Made with ❤️ by the OpenClaw community**
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

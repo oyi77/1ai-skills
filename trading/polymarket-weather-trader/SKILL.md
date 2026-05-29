@@ -254,7 +254,8 @@ All trades are tagged with `source: "sdk:weather"`. This means:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When weather derivatives require CFTC-regulated broker access
+- When the trading strategy has not been backtested on historical weather data
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -267,14 +268,16 @@ All trades are tagged with `source: "sdk:weather"`. This means:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Weather data source has known accuracy issues in the target region
+- Agent does not account for weather derivative contract settlement rules
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Weather data source accuracy is validated for the target region
+- [ ] Derivative contract settlement rules are accounted for in positions
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

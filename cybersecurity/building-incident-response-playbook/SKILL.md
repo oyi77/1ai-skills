@@ -51,6 +51,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Select and Scope the Incident Type
 
 Define the specific scenario the playbook will address:
@@ -210,6 +215,11 @@ Validate the playbook through exercises and maintain currency:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Building Incident Response Playbook assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Building Incident Response Playbook response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Building a Phishing Response Playbook from Scratch
 
 **Context**: An organization with a 5-person SOC has no documented phishing response procedure. Analysts handle phishing reports inconsistently.
@@ -227,6 +237,22 @@ Validate the playbook through exercises and maintain currency:
 - Not including the communication plan for notifying users who received the phishing email
 - Forgetting to define the criteria for when a phishing report becomes a full incident investigation
 - Not versioning the playbook or scheduling regular review cycles
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

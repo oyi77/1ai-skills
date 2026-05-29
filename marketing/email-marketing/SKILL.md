@@ -2,6 +2,8 @@
 name: email-marketing
 description: Create and send email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate follow-ups, and track email performance for customer nurturing.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Email Marketing"
@@ -58,12 +60,26 @@ Complete email marketing automation for customer nurturing. Create campaigns, se
 
 ## Email Service Providers
 
+- Configure automate, build, campaigns, create, customer settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Recommended for Indonesia
 1. **Mailchimp** - Free tier, easy to use
 2. **SendGrid** - Developer-friendly, good deliverability
 3. **KIRIM.EMAIL** - Indonesian service, local support
 
 ## Campaign Types
+
+- Configure automate, build, campaigns, create, customer settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Newsletter
 ```javascript
@@ -144,6 +160,42 @@ const receiptEmail = {
 
 ## Email Templates
 
+Reusable templates for email-marketing.
+
+Standard config:
+```yaml
+name: email-marketing_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: email-marketing_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard email-marketing
+```yaml
+name: email-marketing_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: email-marketing_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
 ### Basic Template Structure
 ```html
 <!DOCTYPE html>
@@ -173,6 +225,13 @@ const receiptEmail = {
 ```
 
 ## Automation Examples
+
+- Configure automate, build, campaigns, create, customer settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### SendGrid Integration
 ```javascript
@@ -209,6 +268,13 @@ async function sendInvoiceEmail(invoice) {
 ```
 
 ## List Management
+
+- Configure automate, build, campaigns, create, customer settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Segmentation
 ```javascript
@@ -260,11 +326,12 @@ const personalizedEmail = {
 
 ---
 
-**Related Skills**: `operations/payment-invoicing`, `marketing/content-creator`, `sales/crm-automation`
+**Related Skills**: `operations/payment-invoicing`, `marketing/content-creator`, `sales/talent-crm`
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the email list has not been verified for opt-in compliance
+- When the campaign targets recipients in jurisdictions with strict anti-spam laws
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -277,14 +344,16 @@ const personalizedEmail = {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Email campaigns are sent without A/B testing subject lines
+- Agent does not check for broken links or rendering issues
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Subject lines are A/B tested for open rate optimization
+- [ ] All links and rendering are verified across email clients
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

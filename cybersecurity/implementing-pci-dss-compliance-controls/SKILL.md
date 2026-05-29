@@ -30,6 +30,11 @@ PCI DSS 4.0.1 establishes 12 requirements across 6 control objectives for organi
 
 ## Core Concepts
 
+This section covers core concepts for implementing pci dss compliance controls.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 12 PCI DSS Requirements by Control Objective
 
 **Build and Maintain a Secure Network and Systems**
@@ -66,6 +71,11 @@ PCI DSS 4.0.1 establishes 12 requirements across 6 control objectives for organi
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: Scoping and Assessment (Weeks 1-4)
 1. Identify all cardholder data flows (card present, card not present, storage)
 2. Define Cardholder Data Environment (CDE) boundaries
@@ -123,6 +133,21 @@ PCI DSS 4.0.1 establishes 12 requirements across 6 control objectives for organi
 - Missing the March 2025 deadline for new mandatory requirements
 - Treating PCI DSS as annual compliance rather than continuous security
 - Not including cloud and container environments in CDE scope
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 - PCI DSS v4.0.1: https://www.pcisecuritystandards.org/document_library/

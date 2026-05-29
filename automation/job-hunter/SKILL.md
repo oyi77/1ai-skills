@@ -1,13 +1,12 @@
 ---
 name: job-hunter
 description: Autonomous job hunting agent with state tracking, tailored applications, and multi-platform job search
-allowed-tools:
-  - Bash(browser-use:*)
+allowed-tools: - Bash(browser-use:*)
   - Bash(linkedin:*)
   - Bash(indeed:*)
   - MCP(google-sheets:*)
   - MCP(gmail:*)
-cron: "0 9 * * 1-5"
+cron: 0 9 * * 1-5
 ---
 persona:
   name: "Domain Expert"
@@ -47,6 +46,9 @@ I am an advanced, state-aware job hunting agent. I don't just search; I remember
 5. **Persistent Follow-Up**: Automated sequences that keep you top-of-mind without being annoying
 
 ## Required Tools
+
+Tools and dependencies needed before using this skill.
+
 
 ### MCP Servers
 
@@ -92,6 +94,9 @@ I am an advanced, state-aware job hunting agent. I don't just search; I remember
 
 ## Authentication
 
+Authentication setup required for external service access.
+
+
 ### Setup Steps
 
 1. **Configure Credentials**
@@ -113,6 +118,9 @@ I am an advanced, state-aware job hunting agent. I don't just search; I remember
    ```
 
 ## Commands
+
+Available commands and their usage.
+
 
 ### `hunt [query] [location]`
 
@@ -240,7 +248,8 @@ report
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When applying to positions that require personalized cover letters reviewed by a human
+- When the job platform explicitly prohibits automated applications
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -253,14 +262,16 @@ report
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Applications are sent without customizing for the specific role
+- Agent applies to positions the user is clearly unqualified for
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Each application is customized for the specific role and company
+- [ ] Applications are tracked with status and follow-up dates
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

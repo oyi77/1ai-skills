@@ -1,6 +1,46 @@
 ---
 name: crypto-wallet
 description: Crypto wallet development — HD wallets, key management, transaction signing, multi-chain, WalletConnect
+
+## Red Flags
+
+- Private keys stored in plaintext or logged to console output
+- No mnemonic backup recovery flow implemented
+- Gas estimation missing for transaction signing
+- WalletConnect session not properly disconnected on app close
+- Nonce management collisions causing stuck transactions
+- Hardware wallet integration bypassing user confirmation prompts
+
+## Verification
+
+After completing wallet implementation, confirm:
+
+- [ ] HD wallet derivation produces correct addresses for m/44'/60'/0'/0/0 path
+- [ ] Transaction signing handles EIP-1559 gas parameters correctly
+- [ ] Multi-chain support tested on at least 2 EVM networks
+- [ ] WalletConnect v2 session lifecycle managed (connect, disconnect, restore)
+- [ ] Private keys never logged or stored in plaintext
+- [ ] Gas estimation returns reasonable values before transaction broadcast
+
+
+## Red Flags
+
+- Private keys stored in plaintext or logged to console output
+- No mnemonic backup recovery flow implemented
+- Gas estimation missing for transaction signing
+- WalletConnect session not properly disconnected on app close
+- Nonce management collisions causing stuck transactions
+
+## Verification
+
+After completing wallet implementation, confirm:
+
+- [ ] HD wallet derivation produces correct addresses for m/44'/60'/0'/0/0 path
+- [ ] Transaction signing handles EIP-1559 gas parameters correctly
+- [ ] Multi-chain support tested on at least 2 EVM networks
+- [ ] Private keys never logged or stored in plaintext
+- [ ] Gas estimation returns reasonable values before transaction broadcast
+
 ---
 
 ## Overview
@@ -24,6 +64,9 @@ Crypto wallet development covering HD wallet derivation (BIP-32/39/44), transact
 - Hardware wallet support
 
 ## Pseudo Code
+
+Reference implementations for HD wallet derivation, transaction signing, and multi-chain integration.
+
 
 ### HD Wallet (ethers.js)
 ```javascript
@@ -50,3 +93,21 @@ await tx.wait();
 - BIP-44 path: m/44'/60'/0'/0/0 (Ethereum)
 - Nonce management for sequential txs
 - EIP-1559: maxFeePerGas, maxPriorityFeePerGas
+
+## Red Flags
+
+- Private keys stored in plaintext or logged to console output
+- No mnemonic backup recovery flow implemented
+- Gas estimation missing for transaction signing
+- WalletConnect session not properly disconnected on app close
+- Nonce management collisions causing stuck transactions
+
+## Verification
+
+After completing wallet implementation, confirm:
+
+- [ ] HD wallet derivation produces correct addresses for m/44'/60'/0'/0/0 path
+- [ ] Transaction signing handles EIP-1559 gas parameters correctly
+- [ ] Multi-chain support tested on at least 2 EVM networks
+- [ ] Private keys never logged or stored in plaintext
+- [ ] Gas estimation returns reasonable values before transaction broadcast

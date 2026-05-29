@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure Log Collection for Lateral Movement Detection
 
 ```bash
@@ -392,6 +397,11 @@ sudo iptables -I FORWARD -s 10.10.5.23 -j DROP
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Lateral Movement In Network assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Lateral Movement In Network response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting a Ransomware Operator's Lateral Movement
 
 **Context**: The SOC receives an alert for PsExec service creation on a file server (10.10.20.15) at 2:00 AM. The alert triggers a lateral movement investigation. The organization has Zeek network monitoring and Windows Event Log forwarding to Splunk.
@@ -410,6 +420,22 @@ sudo iptables -I FORWARD -s 10.10.5.23 -j DROP
 - Not checking for persistence mechanisms on each compromised host before declaring containment
 - Relying solely on Windows Event Logs without correlating network flow data, missing lateral movement via tools that do not generate Windows events
 - Not establishing a baseline of normal internal authentication patterns, making anomaly detection impossible
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

@@ -2,6 +2,7 @@
 name: executing-plans
 description: Use when you have a completed, Momus-approved plan artifact ready for execution with checkpoint discipline
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Executing Plans"
@@ -77,6 +78,13 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 **Announce at start:** "I'm using the executing-plans skill to implement this plan."
 
 ## The Process
+
+- Configure approved, artifact, checkpoint, completed, discipline settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Step 1: Load and Review Plan
 1. Read plan file from `.sisyphus/plans/`
@@ -170,14 +178,16 @@ When drift is detected:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Code changes are made without running the existing test suite
+- Agent does not handle error cases or edge conditions
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

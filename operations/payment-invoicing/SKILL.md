@@ -81,6 +81,9 @@ Complete payment processing and invoicing solution for Indonesian businesses. In
 
 ## TriPay Integration
 
+Payment gateway integration with TriPay for Indonesian merchants.
+
+
 ### Overview
 TriPay offers Direct and Redirect integration with various Indonesian payment methods.
 
@@ -230,6 +233,9 @@ app.post('/webhook/tripay', express.json(), (req, res) => {
 
 ## LYNK.ID Integration
 
+Digital payment integration with LYNK.ID.
+
+
 ### Overview
 LYNK.ID is a "link in bio" platform with payment link functionality. Best for simple payment collection and digital product sales.
 
@@ -309,6 +315,9 @@ async function createLynkPaymentLink(productData) {
 ---
 
 ## Midtrans Integration
+
+Midtrans payment gateway integration for cards, bank transfers, and e-wallets.
+
 
 ### Overview
 Midtrans is Indonesia's most comprehensive payment gateway with full API support.
@@ -457,6 +466,9 @@ app.post('/webhook/midtrans', express.json(), (req, res) => {
 
 ## Invoice Generation
 
+Automated invoice creation with tax calculations and payment terms.
+
+
 ### Create Professional Invoice
 
 ```javascript
@@ -550,6 +562,9 @@ const invoice = generateInvoice({
 
 ## Complete Payment Workflow
 
+End-to-end payment flow from invoice creation to reconciliation.
+
+
 ### End-to-End Example
 
 ```javascript
@@ -606,6 +621,9 @@ async function processCustomerOrder(orderData) {
 
 ## Best Practices
 
+Key aspects of payment-invoicing relevant to this section.
+
+
 ### 1. Security
 - Never expose private keys in frontend
 - Verify webhook signatures
@@ -642,21 +660,23 @@ async function processCustomerOrder(orderData) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Operational changes are made without stakeholder communication
+- Agent does not track compliance with established processes
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Changes are communicated to stakeholders before implementation
+- [ ] Compliance with established processes is tracked and reported
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
 ## Related Skills
 
 - `marketing/email-marketing` - Send invoices and reminders
-- `sales/crm-automation` - Track customer payments
+- sales/crm-automation - Track customer payments
 - `marketing/analytics-dashboard` - Revenue analytics
 - `automation/workflow-builder` - Automate payment workflows
 

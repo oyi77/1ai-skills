@@ -124,6 +124,9 @@ requires: []
 
 ## IP Protection
 
+Strategies for protecting intellectual property: patents, trade secrets, copyrights.
+
+
 ### Copyright (Hak Cipta) — Indonesia
 
 **Auto-protection:** Copyright in Indonesia attaches automatically upon creation.
@@ -276,6 +279,9 @@ Effective: October 2024. Applies to ALL data controllers processing Indonesian p
 
 ## ToS & Privacy Policy Generator
 
+Templates for terms of service and privacy policies compliant with local regulations.
+
+
 ### Terms of Service — Prompt Template
 
 Use this prompt with Claude/GPT to generate a ToS draft:
@@ -342,6 +348,9 @@ Language: Indonesian + English
 ---
 
 ## Indonesian Business Compliance
+
+Indonesian regulatory requirements: OSS, KBLI, tax registration, BPJS.
+
 
 ### PT (Perseroan Terbatas) Requirements
 
@@ -424,6 +433,9 @@ Indonesian companies: Standard PKP rules apply
 ---
 
 ## Dispute Resolution Templates
+
+Templates for cease-and-desist, mediation requests, and settlement agreements.
+
 
 ### Step 1: Formal Demand Letter (Somasi)
 
@@ -616,6 +628,9 @@ For Indonesian platforms, cite:
 
 ## Software Licensing Guide
 
+Open source license compatibility, commercial licensing, and SaaS terms.
+
+
 ### Choose Your License
 
 | License | Commercial Use | Modification | Redistribute | Best For |
@@ -681,6 +696,9 @@ We may use aggregated, anonymized data for product improvement.
 ---
 
 ## Employment Law
+
+Key aspects of legal-assistant relevant to this section.
+
 
 ### PKWT vs PKWTT — Decision Matrix
 
@@ -852,6 +870,9 @@ Quick-scan list for any contract review:
 
 ## Resources & References
 
+Quick reference for commonly needed information.
+
+
 ### Indonesian Government Portals
 - **DJKI (IP):** https://dgip.go.id
 - **DJKI Trademark Search:** https://pdki-indonesia.dgip.go.id
@@ -881,3 +902,22 @@ Quick-scan list for any contract review:
 *🔥 Vilona — BerkahKarya Legal Assistant v1.0*
 *This is a knowledge framework, not legal advice. For high-stakes matters, consult a licensed Indonesian lawyer.*
 *Advocat referral: Look for PERADI-registered lawyers on hukumonline.com/klinik*
+
+## When to Use
+
+- When you need automated assistance with a specific technical task
+- When the task requires domain expertise this agent provides
+- When consistency and repeatability matter more than creative exploration
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

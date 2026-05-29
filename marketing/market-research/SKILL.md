@@ -1,11 +1,14 @@
 ---
 name: market-research
 description: Conduct market research, competitive analysis, and industry insights with Exa and Firecrawl
-allowed-tools:
-  - MCP(exa:*)
-  - MCP(firecrawl:*)
-  - MCP(notion:*)
+allowed-tools: |
+  |
+    - MCP(exa:*)
+      - MCP(firecrawl:*)
+      - MCP(notion:*)
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Market Research"
@@ -75,6 +78,44 @@ Conduct comprehensive market research, competitive analysis, and industry insigh
 - Store research in organized Notion databases
 
 ## Pseudo Code
+
+The market-research workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# market-research primary flow
+input = prepare(raw_data)
+result = process(input, config={analysis, competitive, conduct, firecrawl, industry})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# market-research primary flow
+input = prepare(raw_data)
+result = process(input, config={analysis, competitive, conduct, firecrawl, industry})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Competitor Analysis
 
@@ -202,7 +243,8 @@ await notion.pages.create({
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When real-time financial data feeds are needed and no API access exists
+- When the research requires primary interviews or surveys
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -215,14 +257,16 @@ await notion.pages.create({
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Market data is stale or sourced from unreliable outlets
+- Research conclusions are not supported by quantitative evidence
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Data sources are identified and cross-referenced
+- [ ] Quantitative evidence supports all major conclusions
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

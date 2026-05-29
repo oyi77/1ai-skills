@@ -53,6 +53,11 @@ Modern ransomware uses hybrid encryption combining symmetric algorithms (AES-256
 
 ## Key Concepts
 
+This section covers key concepts for reverse engineering ransomware encryption routine.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Hybrid Encryption Model
 
 Ransomware generates a unique AES key and IV for each file. The file content is encrypted with this symmetric key. The symmetric key is then encrypted with the attacker's RSA public key (embedded in the binary or fetched from C2). The encrypted key is appended or prepended to the encrypted file. Only the attacker holding the RSA private key can decrypt the per-file symmetric keys.
@@ -67,6 +72,11 @@ Decryption opportunities arise from: hardcoded encryption keys, weak PRNG for ke
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Identify Cryptographic Functions
 
 ```python
@@ -278,6 +288,22 @@ def calculate_entropy(data):
 - File targeting patterns and extension list extracted
 - Embedded public keys extracted for infrastructure correlation
 - Potential decryption opportunities assessed
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## References
 

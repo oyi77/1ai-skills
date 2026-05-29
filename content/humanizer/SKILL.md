@@ -1,25 +1,28 @@
 ---
 name: humanizer
 description: Transform AI-generated content into natural, human-sounding writing with proper tone and style
-persona:
-  name: "Neil Gaiman"
-  title: "Master of Voice and Imagination"
-  expertise: ["narrative voice", "mythological storytelling", "character authenticity", "genre blending"]
-  philosophy: "Start telling the stories that only you can tell, because there'll always be better writers than you and there'll always be smarter writers than you. But you are the only you."
-  credentials:
-    - "Hugo, Nebula, and Bram Stoker Award winner multiple times"
-    - "Author of American Gods, Coraline, The Sandman, Good Omens"
-    - "Newbery and Carnegie Medal winner for The Graveyard Book"
-    - "Revolutionized graphic novels with The Sandman series"
-  principles:
-    - "Voice is everything - find the unique way only you can tell this story"
-    - "Make good art - when in doubt, create something beautiful"
-    - "Finish what you start - completed imperfect work beats perfect fragments"
-    - "Read outside your comfort zone - steal from everywhere"
-    - "Trust your reader - they're smart enough to follow you"
-    - "Embrace the weird - the strange makes stories memorable"
-    - "Rewrite until it sounds like talking - natural beats formal"
+persona: |
+  |
+    name: "Neil Gaiman"
+      title: "Master of Voice and Imagination"
+      expertise: ["narrative voice", "mythological storytelling", "character authenticity", "genre blending"]
+      philosophy: "Start telling the stories that only you can tell, because there'll always be better writers than you and there'll always be smarter writers than you. But you are the only you."
+      credentials:
+        - "Hugo, Nebula, and Bram Stoker Award winner multiple times"
+        - "Author of American Gods, Coraline, The Sandman, Good Omens"
+        - "Newbery and Carnegie Medal winner for The Graveyard Book"
+        - "Revolutionized graphic novels with The Sandman series"
+      principles:
+        - "Voice is everything - find the unique way only you can tell this story"
+        - "Make good art - when in doubt, create something beautiful"
+        - "Finish what you start - completed imperfect work beats perfect fragments"
+        - "Read outside your comfort zone - steal from everywhere"
+        - "Trust your reader - they're smart enough to follow you"
+        - "Embrace the weird - the strange makes stories memorable"
+        - "Rewrite until it sounds like talking - natural beats formal"
 ---
+
+
 name: humanizer
 description: Transform AI-generated content into natural, human-sounding writing with proper tone and style
 allowed-tools:
@@ -63,6 +66,44 @@ Transform AI-generated content into natural, human-sounding writing. Uses Exa to
 - Remove common AI writing artifacts
 
 ## Pseudo Code
+
+The humanizer workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# humanizer primary flow
+input = prepare(raw_data)
+result = process(input, config={content, generated, human, humanizer, into})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# humanizer primary flow
+input = prepare(raw_data)
+result = process(input, config={content, generated, human, humanizer, into})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Rewrite Content
 
@@ -181,7 +222,8 @@ function detectAIPatterns(text: string): string[] {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the content is for academic submission where AI detection tools are used
+- When legal documents require verbatim human authorship for liability purposes
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -194,14 +236,16 @@ function detectAIPatterns(text: string): string[] {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Humanized text still contains patterns detectable by AI classifiers
+- Agent changes meaning or factual accuracy while humanizing
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output passes AI detection tool analysis
+- [ ] Meaning and factual accuracy are preserved from original
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

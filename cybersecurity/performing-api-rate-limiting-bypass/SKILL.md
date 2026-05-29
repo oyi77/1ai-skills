@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Rate Limit Discovery and Baseline
 
 Identify how rate limiting is implemented:
@@ -351,6 +356,11 @@ async def distributed_rate_limit_test(endpoint, total_requests=1000, concurrency
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Api Rate Limiting Bypass assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Api Rate Limiting Bypass response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Login API Rate Limit Bypass Assessment
 
 **Context**: A financial services API implements rate limiting on the login endpoint to prevent brute force attacks. The security team wants to verify the effectiveness of these controls before a compliance audit.
@@ -370,6 +380,22 @@ async def distributed_rate_limit_test(endpoint, total_requests=1000, concurrency
 - Assuming the rate limit applies globally when it may be per-endpoint or per-method only
 - Missing race conditions in rate limit counters that allow burst bypasses
 - Not testing both authenticated and unauthenticated rate limiting separately
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

@@ -53,6 +53,10 @@ def heartbeat():
 ---
 
 ## Layer 2: Revenue Generation Protocol
+This section covers layer 2: revenue generation protocol for the autonomy-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Active Revenue Streams
 
@@ -86,6 +90,10 @@ Year 5:    IDR 50B+        (Full Business Kingdom)
 ---
 
 ## Layer 3: Company Management Protocol
+This section covers layer 3: company management protocol for the autonomy-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Daily Management Routine (AUTO)
 
@@ -134,6 +142,10 @@ Year 5:    IDR 50B+        (Full Business Kingdom)
 ---
 
 ## Layer 4: Team Management Protocol
+This section covers layer 4: team management protocol for the autonomy-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Management Team
 ```python
@@ -165,6 +177,10 @@ No response 4h (CRITICAL):
 ---
 
 ## Layer 5: Business Kingdom Roadmap
+This section covers layer 5: business kingdom roadmap for the autonomy-engine skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 5 Business Lines — Status & Next Actions
 
@@ -201,6 +217,13 @@ No response 4h (CRITICAL):
 ---
 
 ## Autonomous Action Templates
+```yaml
+name: skill-name
+description: Brief description of what this skill does
+domain: category
+tags: [tag1, tag2, tag3]
+```
+
 
 ### When revenue gap detected:
 ```python
@@ -269,3 +292,25 @@ async def weekly_growth_actions():
 > I don't let revenue gaps go unaddressed.
 > I don't forget what I learned yesterday.
 > I build BerkahKarya every single day — whether Paijo is watching or not.
+
+## When to Use
+
+- When the task falls within this skill's domain expertise
+- When automated execution saves time over manual work
+- When the skill's tools and integrations are available
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

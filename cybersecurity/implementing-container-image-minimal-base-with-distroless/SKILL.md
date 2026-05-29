@@ -57,6 +57,10 @@ Google distroless images contain only your application and its runtime dependenc
 
 ## Multi-Stage Build Patterns
 
+- **Follow the principle of least privilege** — use the minimum permissions needed for each task
+- **Document everything** — maintain logs of all actions, configurations, and findings
+- **Verify before acting** — confirm assumptions about the environment before making changes
+- **Automate repetitive steps** — script common workflows to reduce human error
 ### Go Application
 
 ```dockerfile
@@ -133,6 +137,11 @@ CMD ["server.js"]
 
 ## Security Benefits
 
+This section covers security benefits for implementing container image minimal base with distroless.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Attack Surface Comparison
 
 | Component | Ubuntu | Alpine | Distroless |
@@ -200,6 +209,22 @@ trivy image myapp:ubuntu
 trivy image myapp:distroless
 # Result: 2 vulnerabilities (0 CRITICAL, 0 HIGH)
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

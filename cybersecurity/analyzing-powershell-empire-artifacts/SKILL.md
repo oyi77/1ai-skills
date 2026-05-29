@@ -62,6 +62,21 @@ PowerShell Empire is a post-exploitation framework consisting of listeners, stag
 4. **User agent strings** — default Empire user agents in HTTP listener configuration
 5. **Staging URLs** — `/login/process.php`, `/admin/get.php` and similar default URI patterns
 
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
+
 ## Output
 
 JSON report with matched IOCs, decoded Base64 payloads, timeline of suspicious events, MITRE ATT&CK technique mappings, and severity scores.

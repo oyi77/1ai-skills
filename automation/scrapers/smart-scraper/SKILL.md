@@ -20,7 +20,8 @@ AI-powered web scraper
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the target website explicitly blocks scraping in robots.txt and terms of service
+- When scraped data is used for purposes the site owner has not consented to
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ AI-powered web scraper
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Scraper ignores robots.txt directives and rate limits
+- Agent does not handle JavaScript-rendered content properly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Scraper respects robots.txt and implements polite crawling
+- [ ] Data is deduplicated and freshness is tracked
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

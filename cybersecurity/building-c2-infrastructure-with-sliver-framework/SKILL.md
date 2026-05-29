@@ -69,6 +69,11 @@ Sliver is an open-source, cross-platform adversary emulation framework developed
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: Team Server Deployment
 1. Provision a VPS (e.g., DigitalOcean, Linode, AWS EC2) for the team server
 2. Harden the OS: disable SSH password auth, configure UFW/iptables, install fail2ban
@@ -170,6 +175,20 @@ Sliver is an open-source, cross-platform adversary emulation framework developed
    armory install sa-ldapsearch  # Install from armory
    sa-ldapsearch -- "(objectClass=user)"  # Execute BOF
    ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools and Resources
 

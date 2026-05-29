@@ -3,6 +3,7 @@ name: kustomize-config
 description: Kustomize Kubernetes configuration — bases, overlays, patches, generators, transformers
 ---
 
+
 ## Overview
 
 Kustomize is a Kubernetes-native configuration management tool that uses overlays to customize base manifests without templating. Built into `kubectl apply -k`.
@@ -24,6 +25,26 @@ Kustomize is a Kubernetes-native configuration management tool that uses overlay
 - Integration with GitOps (ArgoCD, Flux)
 
 ## Pseudo Code
+
+The kustomize-config workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# kustomize-config primary flow
+input = prepare(raw_data)
+result = process(input, config={bases, config, configuration, generators, kubernetes})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Directory Structure
 ```
@@ -125,3 +146,20 @@ kustomize build overlays/production/
 - **Replacement transformer**: substitute values across resources
 - **Components**: reusable pieces mixed into overlays
 - **Generator options**: disable hash suffix for ConfigMaps
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

@@ -49,6 +49,11 @@ nist_csf:
 
 ## Core Concepts
 
+This section covers core concepts for implementing api security testing with 42crunch.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### API Audit (Static Analysis)
 
 API Audit performs static security analysis of OpenAPI definitions without requiring a running API. It evaluates the specification against 300+ security checks organized into categories:
@@ -347,6 +352,22 @@ When 42Crunch identifies issues, follow this remediation process:
 - **Data Exposure**: Verifies response schemas limit returned properties
 - **Security Misconfiguration**: Checks authentication schemes, transport security, CORS settings
 - **Mass Assignment**: Validates that request bodies use explicit property allowlists
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

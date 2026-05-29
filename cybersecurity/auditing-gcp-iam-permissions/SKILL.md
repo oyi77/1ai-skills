@@ -45,6 +45,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enumerate IAM Bindings Across the Organization
 
 List all IAM bindings at organization, folder, and project levels to understand the full access landscape.
@@ -262,6 +267,11 @@ gcloud iam service-accounts disable SA_EMAIL --project=PROJECT_ID
 
 ## Common Scenarios
 
+**Scenario 1: Standard Auditing Gcp Iam Permissions assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Auditing Gcp Iam Permissions response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Reducing Primitive Role Usage Across a GCP Organization
 
 **Context**: An audit reveals that 60% of IAM bindings across the organization use primitive roles (Owner/Editor). The security team needs to migrate to predefined roles without disrupting developer workflows.
@@ -276,6 +286,22 @@ gcloud iam service-accounts disable SA_EMAIL --project=PROJECT_ID
 7. Remove primitive roles after confirming no access issues over 2 weeks
 
 **Pitfalls**: Primitive roles include permissions across all GCP services, so replacing them requires multiple predefined roles. The Recommender may suggest overly restrictive roles if the observation period does not capture all use cases. Custom roles can fill gaps where no predefined role matches the exact permission set needed.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

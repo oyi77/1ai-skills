@@ -52,6 +52,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Scan for Secrets in Client-Side Code
 
 Search JavaScript files, HTML source, and other client-side resources for exposed secrets.
@@ -312,6 +317,11 @@ curl -s -X POST \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Testing For Sensitive Data Exposure assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Testing For Sensitive Data Exposure response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario 1: API Key in JavaScript Bundle
 The application's JavaScript bundle contains a hardcoded Google Maps API key and a Stripe publishable key. The Stripe key has overly broad permissions, allowing the attacker to create charges.
 
@@ -323,6 +333,22 @@ The user profile API endpoint returns full SSN and credit card numbers without m
 
 ### Scenario 4: Git Repository with Database Credentials
 The `.git` directory is accessible on the production server. Using git-dumper, the attacker downloads the repository history, finding database credentials committed in an early commit that were later "removed" but remain in git history.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

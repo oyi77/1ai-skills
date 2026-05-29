@@ -21,6 +21,11 @@ This skill provides a comprehensive reference of all features available in oh-my
 - **Quality verification** – When enforcing comment checks, TODO enforcement, and verification before completion
 
 ## Core Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### 1. Curated Agent System
 
@@ -218,6 +223,11 @@ This skill provides a comprehensive reference of all features available in oh-my
 - Progress reporting
 
 ## Productivity Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### 1. Ralph Loop
 
@@ -266,6 +276,12 @@ This skill provides a comprehensive reference of all features available in oh-my
 - Quality gate enforcement
 
 ## Workflow Enhancements
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### 1. Parallel Agent Dispatching
 
@@ -319,6 +335,12 @@ This skill provides a comprehensive reference of all features available in oh-my
 ```
 
 ## Tool Categories
+| Tool | Purpose | Required |
+|------|---------|----------|
+| CLI | Primary execution | Yes |
+| API client | External service calls | Conditional |
+| Validator | Output checking | Recommended |
+
 
 ### File Operations
 - **read**: Read file contents
@@ -355,6 +377,17 @@ This skill provides a comprehensive reference of all features available in oh-my
 - **look_at**: Analyze media files
 
 ## Configuration Categories
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Agent Configuration
 - Model selection per agent
@@ -381,6 +414,11 @@ This skill provides a comprehensive reference of all features available in oh-my
 - Display options
 
 ## Security Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### Permission System
 - File system access control
@@ -401,6 +439,11 @@ This skill provides a comprehensive reference of all features available in oh-my
 - Secret management
 
 ## Performance Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### Optimization
 - Intelligent context truncation
@@ -415,6 +458,10 @@ This skill provides a comprehensive reference of all features available in oh-my
 - Background task queuing
 
 ## Extensibility
+This section covers extensibility for the oh-my-opencode-features skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Custom Tools
 - Create custom tools

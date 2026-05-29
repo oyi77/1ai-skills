@@ -41,6 +41,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1 — Install and Configure Subfinder
 ```bash
 # Install subfinder
@@ -168,6 +173,20 @@ subfinder -d example.com -silent | httpx -silent | gowitness file -f - -P screen
 3. **Cloud Asset Discovery** — Identify subdomains pointing to cloud services (AWS, Azure, GCP) that may be vulnerable to subdomain takeover
 4. **CI/CD Integration** — Automate subdomain monitoring in pipelines to detect new subdomains and alert on changes to the attack surface
 5. **Merger & Acquisition Due Diligence** — Map the complete external footprint of an acquisition target during security assessment
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

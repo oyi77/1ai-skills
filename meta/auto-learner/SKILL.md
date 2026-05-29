@@ -62,7 +62,8 @@ learning_modes:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the learning source contains copyrighted material
+- When learned patterns could encode sensitive or biased information
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -75,14 +76,16 @@ learning_modes:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Learning source quality is not validated before integration
+- Agent does not test learned patterns before deploying them
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Source quality is validated before learning integration
+- [ ] Learned patterns are tested before deployment
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

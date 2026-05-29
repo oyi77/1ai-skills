@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Block Ransomware Execution Paths with AppLocker
 
 Configure AppLocker to prevent executables from running in common ransomware staging locations:
@@ -205,6 +210,14 @@ Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Act
 | **Attack Surface Reduction (ASR)** | Set of rules in Microsoft Defender Exploit Guard that block specific attack behaviors like Office macro child processes |
 | **Software Restriction Policies (SRP)** | Legacy Windows feature (deprecated in Win 11) for restricting executables; replaced by AppLocker and WDAC |
 | **WDAC** | Windows Defender Application Control; the successor to AppLocker with stronger enforcement using code integrity policies |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
 
 ## Tools & Systems
 

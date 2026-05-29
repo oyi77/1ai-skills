@@ -2,6 +2,8 @@
 name: content-creator
 description: Use when generating multi-platform content via browser automation - social media, blogs, articles, video scripts, and images.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Content Creator"
@@ -100,6 +102,13 @@ Output: Complete content package
 
 ## Browser Automation Patterns
 
+- Configure articles, automation, blogs, browser, content settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Generate LinkedIn Post via ChatGPT
 
 1. Navigate: https://chatgpt.com
@@ -141,6 +150,33 @@ Output: Complete content package
 | Brand voice | 20% | Consistent tone |
 
 ## Usage Examples
+
+Basic usage with default configuration:
+```bash
+python content-creator.py --input data.csv --output results/
+```
+
+Advanced usage with all options:
+```bash
+python content-creator.py --input data.csv --output results/ --format json --verbose
+```
+
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
+
+### Basic Usage
+```bash
+python content-creator.py --input data.csv --output results/
+```
+
+### Advanced Usage
+```bash
+python content-creator.py --input data.csv --output results/ --format json --verbose
+```
+
+### Integration
+Use this skill as part of a larger pipeline by calling it from your automation workflow.
+
 
 ### Create LinkedIn Post
 ```
@@ -194,7 +230,8 @@ The skill self-grades after each content generation:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -207,14 +244,16 @@ The skill self-grades after each content generation:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -3,6 +3,7 @@ name: postgres-queries
 description: PostgreSQL optimization — query tuning, schema design, indexing strategies, and performance analysis
 ---
 
+
 ## Overview
 
 PostgreSQL query optimization and schema design. Covers EXPLAIN ANALYZE, index types, query rewriting, partitioning, and connection pooling.
@@ -23,6 +24,26 @@ PostgreSQL query optimization and schema design. Covers EXPLAIN ANALYZE, index t
 - Planning partitioning strategy for large tables
 
 ## Pseudo Code
+
+The postgres-queries workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# postgres-queries primary flow
+input = prepare(raw_data)
+result = process(input, config={analysis, design, indexing, optimization, performance})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### EXPLAIN ANALYZE
 ```sql
@@ -52,3 +73,20 @@ CREATE INDEX idx_metadata ON products USING GIN(metadata);
 - **Composite indexes**: Column order matters — put equality columns first, range last
 - **Partial indexes**: Index only rows you query frequently
 - **Connection pooling**: Use PgBouncer for >100 concurrent connections
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

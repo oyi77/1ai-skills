@@ -46,6 +46,11 @@ Cobalt Strike is a commercial adversary simulation tool widely abused by threat 
 
 ## Key Concepts
 
+This section covers key concepts for analyzing cobalt strike beacon configuration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Beacon Configuration Structure
 
 Cobalt Strike beacons store their configuration as a blob of TLV (Type-Length-Value) entries within the .data section of the PE. Stageless beacons XOR the entire beacon code with a 4-byte key. The configuration blob itself uses a single-byte XOR key. Each TLV entry contains a 2-byte type identifier (e.g., 0x0001 for BeaconType, 0x0008 for C2Server), a 2-byte length, and variable-length data.
@@ -60,6 +65,11 @@ Each Cobalt Strike license embeds a unique watermark (4-byte integer) into gener
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Extract Configuration with CobaltStrikeParser
 
 ```python
@@ -371,6 +381,22 @@ def analyze_c2_profile(beacon_config):
 - Sleep time and jitter values match observed network beacon intervals
 - YARA rules detect beacon in both packed and unpacked samples
 - Network signatures generated from extracted C2 profile
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

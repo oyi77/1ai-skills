@@ -64,6 +64,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Audio Preprocessing
 
 Normalize and prepare audio samples for feature extraction:
@@ -217,6 +222,22 @@ file with chain of custody documentation for potential legal action.
 | **Vishing** | Voice phishing; social engineering attack conducted via phone calls, increasingly using AI-cloned voices |
 | **Formant** | Resonant frequencies of the vocal tract that define vowel sounds; transitions between formants are difficult for AI to replicate perfectly |
 
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
+
 ## Tools & Systems
 
 - **librosa**: Python library for audio analysis providing MFCC, spectral feature extraction, and spectrogram generation
@@ -228,6 +249,11 @@ file with chain of custody documentation for potential legal action.
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Executive Impersonation Wire Transfer Fraud
 
 **Context**: CFO receives a phone call appearing to be from the CEO requesting an urgent wire transfer of $2.3M. The call came from an unknown number but the voice sounded identical to the CEO. IT security was able to obtain a recording of the call from the phone system.

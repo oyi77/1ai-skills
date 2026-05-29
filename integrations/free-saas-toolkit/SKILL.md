@@ -35,6 +35,10 @@ Reference for free-tier SaaS tools across team collaboration, project management
 5. **Confirm permanence** -- Is this an always-free plan or a time-limited trial?
 
 ## Key Resources
+This section covers key resources for the free-saas-toolkit skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Collaboration & Communication
 
@@ -137,3 +141,10 @@ Reference for free-tier SaaS tools across team collaboration, project management
 - [ ] The plan is always-free, not a time-limited trial
 - [ ] Integrations with existing tools are confirmed
 - [ ] Privacy and compliance requirements are met (GDPR, SOC2)
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows

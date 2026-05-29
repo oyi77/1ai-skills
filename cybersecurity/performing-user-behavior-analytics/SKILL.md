@@ -47,6 +47,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Build User Authentication Baselines
 
 Create behavioral baselines from historical data:
@@ -230,6 +235,20 @@ Aggregate all UEBA signals into a composite risk score:
 - **Privilege Escalation Abuse**: Admin account used from unusual location accessing systems outside normal scope
 - **Shared Account Detection**: Service account logging in from multiple geographies simultaneously
 - **Dormant Account Reactivation**: Account with no activity for 90+ days suddenly performing privileged operations
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

@@ -1,8 +1,7 @@
 ---
 name: post-bridge-social-manager
 description: Post Bridge Social Manager. Use when relevant to this domain.
-persona:
-  name: Domain Expert
+persona: name: Domain Expert
   title: Master of Post Bridge Social Manager
   expertise:
   - Specialized Knowledge
@@ -61,6 +60,9 @@ Post to multiple social media platforms via post-bridge.com API.
 
 ## Usage
 
+How to use this skill in practice.
+
+
 ### Post to Social Media
 
 ```javascript
@@ -118,7 +120,8 @@ POST_BRIDGE_BASE_URL=https://post-bridge.com/api/v1
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the automation target has no API and requires manual interaction
+- When the automated action has irreversible consequences requiring human approval
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -131,14 +134,16 @@ POST_BRIDGE_BASE_URL=https://post-bridge.com/api/v1
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation runs without monitoring or alerting on failures
+- Agent does not handle rate limits or API throttling gracefully
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Automation completes successfully with monitoring confirming no failures
+- [ ] Rate limits and API constraints are respected throughout execution
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

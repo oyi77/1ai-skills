@@ -1,5 +1,5 @@
 {
-  "hooks_version": "3.1.0",
+  "hooks_version": "3.4.0",
   "hooks": {
     "session:start": {
       "command": "bash hooks/session-start.sh $PWD",

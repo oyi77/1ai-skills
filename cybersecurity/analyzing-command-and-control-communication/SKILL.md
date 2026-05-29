@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Identify the C2 Channel
 
 Determine the protocol and transport used for C2 communication:
@@ -330,6 +335,11 @@ EOF
 
 ## Common Scenarios
 
+**Scenario 1: Analyzing a suspicious email attachment**
+Isolate the sample, compute hashes, check VirusTotal, perform static analysis for embedded URLs or shellcode, then execute in a sandbox to observe behavior.
+
+**Scenario 2: Reverse engineering a packed binary**
+Identify the packer, use automated unpacking tools, dump the payload from memory at the OEP, then analyze the unpacked code in IDA Pro or Ghidra.
 ### Scenario: Reverse Engineering a Custom C2 Protocol
 
 **Context**: A malware sample communicates with its C2 server using an unknown binary protocol over TCP port 8443. The protocol needs to be decoded to understand the command set and build detection signatures.
@@ -348,6 +358,22 @@ EOF
 - Not capturing enough traffic to see all command types (some commands are rare)
 - Missing fallback C2 channels (DNS, ICMP) that activate when the primary channel fails
 - Confusing encrypted payload data with the protocol framing structure
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Output Format
 

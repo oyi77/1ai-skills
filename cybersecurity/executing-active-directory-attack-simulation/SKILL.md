@@ -53,6 +53,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Active Directory Reconnaissance
 
 Enumerate the AD environment from a low-privilege domain user position:
@@ -133,6 +138,11 @@ Chain discovered attack paths to escalate from low-privilege user to Domain Admi
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Domain Compromise Assessment for a Healthcare Organization
 
 **Context**: A hospital network with a single Active Directory forest containing 5,000 user accounts, 800 computer objects, and 15 domain controllers across 3 sites. The tester starts with a single low-privilege domain user account. The goal is to determine if an attacker with stolen employee credentials could escalate to Domain Admin.
@@ -151,6 +161,22 @@ Chain discovered attack paths to escalate from low-privilege user to Domain Admi
 - Password spraying without checking the domain lockout policy first, locking out hundreds of accounts
 - Forgetting to test for AD CS vulnerabilities which often provide the fastest path to Domain Admin
 - Not checking for stale computer accounts that may still have cached credentials or active sessions
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

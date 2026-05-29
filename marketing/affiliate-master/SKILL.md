@@ -290,7 +290,8 @@ For issues, feature requests, or questions:
 Generate revenue. Stay compliant. Automate everything.
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When affiliate relationships require legal contract review
+- When commission structures involve complex multi-tier calculations needing auditor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -303,14 +304,16 @@ Generate revenue. Stay compliant. Automate everything.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Affiliate links are placed without disclosure violating FTC guidelines
+- Agent does not verify affiliate partner legitimacy
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Affiliate links include required FTC disclosure
+- [ ] Partner legitimacy is verified before link placement
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

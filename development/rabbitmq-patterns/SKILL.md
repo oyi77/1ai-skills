@@ -3,6 +3,7 @@ name: rabbitmq-patterns
 description: RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority queues, clustering
 ---
 
+
 ## Overview
 
 Design and operate RabbitMQ — exchange types, queue bindings, dead letter handling, priority queues, publisher confirms, and clustering.
@@ -26,6 +27,26 @@ Design and operate RabbitMQ — exchange types, queue bindings, dead letter hand
 - Reliable message delivery
 
 ## Pseudo Code
+
+The rabbitmq-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# rabbitmq-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={clustering, dead, exchanges, letter, patterns})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup (Node.js with amqplib)
 
@@ -135,3 +156,20 @@ await ch.consume('dead-letters', async (msg) => {
 - **Dead letter queue**: Capture failed messages for analysis
 - **Priority queue**: Process urgent messages first
 - **Publisher confirms**: Ensure messages are persisted
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

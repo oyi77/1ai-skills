@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Enumerate the Target Network Segment
 
 ```bash
@@ -222,6 +227,11 @@ arp -a
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Testing Dynamic ARP Inspection Effectiveness on Enterprise Switches
 
 **Context**: A network team deployed Cisco DAI on all access-layer switches and needs to validate that ARP spoofing attempts are properly detected and blocked. The test is authorized on a dedicated VLAN (VLAN 100) with three test hosts and one attacker machine connected to the same switch.
@@ -240,6 +250,22 @@ arp -a
 - Forgetting to enable IP forwarding, causing a denial-of-service instead of transparent interception
 - Not restoring ARP tables after testing, leaving hosts with stale cache entries
 - Testing on a trunk port instead of an access port, potentially affecting multiple VLANs
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

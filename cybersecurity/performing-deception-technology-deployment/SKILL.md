@@ -47,6 +47,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Map Attack Surface for Deception Placement
 
 Identify high-value network segments where attackers would traverse:
@@ -274,6 +279,22 @@ Regularly update decoys to maintain believability:
 - **Cloud Key Compromise**: Stolen AWS canary token used from external IP — detects supply chain or insider compromise
 - **Ransomware Early Warning**: Ransomware encrypts canary files on honeypot shares — early detection before production systems affected
 - **Insider Threat Signal**: Employee accesses honeypot "salary database" — indicates unauthorized data exploration
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

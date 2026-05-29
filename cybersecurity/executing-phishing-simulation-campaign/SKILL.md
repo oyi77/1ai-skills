@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Campaign Planning and Pretext Development
 
 Design realistic phishing scenarios based on threats relevant to the target organization:
@@ -132,6 +137,11 @@ Analyze campaign results and produce the assessment report:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Executing Phishing Simulation Campaign assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Executing Phishing Simulation Campaign response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Enterprise Phishing Simulation for Security Awareness Baseline
 
 **Context**: A 2,000-employee company has never conducted a phishing simulation. The CISO wants to establish a baseline susceptibility rate before deploying a new security awareness training program. The campaign should test all employees using a realistic but not overly sophisticated pretext.
@@ -149,6 +159,20 @@ Analyze campaign results and produce the assessment report:
 - Not coordinating with HR and legal before launching the campaign, risking employee relations problems
 - Sending all emails simultaneously, overwhelming the email server or triggering bulk-send detection
 - Focusing only on click and submission rates while ignoring the critically low report rate (1.2%)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

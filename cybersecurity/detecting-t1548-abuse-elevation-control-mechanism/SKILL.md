@@ -69,6 +69,11 @@ nist_csf:
 
 ## Detection Queries
 
+This section covers detection queries for detecting t1548 abuse elevation control mechanism.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk -- UAC Bypass via Registry Modification
 ```spl
 index=sysmon (EventCode=12 OR EventCode=13)
@@ -120,6 +125,22 @@ tags:
 3. **sdclt.exe Bypass**: Leveraging the Windows Backup utility's auto-elevation to execute arbitrary commands.
 4. **CMSTP.exe INF Bypass**: Using Connection Manager Profile Installer with a malicious INF file to bypass UAC via `/s /ni` flags.
 5. **DLL Hijacking in Auto-Elevate**: Placing malicious DLLs in search paths of auto-elevating executables.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

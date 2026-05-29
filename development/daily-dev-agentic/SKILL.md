@@ -173,7 +173,8 @@ GET
 Rate limit: 60 req/min.
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the code change is in a frozen release branch under change management
+- When the task requires access to production systems the agent cannot reach
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -186,14 +187,16 @@ Rate limit: 60 req/min.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Code changes are made without running the existing test suite
+- Agent does not handle error cases or edge conditions
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

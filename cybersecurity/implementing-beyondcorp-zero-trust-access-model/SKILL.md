@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure Access Context Manager with Access Levels
 
 Define access levels that represent trust tiers based on device and user attributes.
@@ -268,6 +273,11 @@ gcloud alpha monitoring policies create \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Beyondcorp Zero Trust Access Model assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Beyondcorp Zero Trust Access Model response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Migrating 50+ Internal Applications from VPN to BeyondCorp
 
 **Context**: A technology company with 3,000 employees uses Cisco AnyConnect VPN for accessing internal applications. The VPN introduces latency, creates a single point of failure, and grants excessive network access after authentication.
@@ -284,6 +294,22 @@ gcloud alpha monitoring policies create \
 9. Decommission VPN after 30-day parallel operation period
 
 **Pitfalls**: Some legacy applications may not support HTTPS proxying and require TCP tunnel mode. Device enrollment takes time; plan a 2-week onboarding period before enforcing device posture requirements. Break-glass accounts with bypassed access levels must be created and tested for identity provider outages.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

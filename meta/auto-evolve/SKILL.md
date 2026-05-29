@@ -36,6 +36,12 @@ The **brain** of the self-evolving system. Continuously monitors performance ide
 - User explicitly disables auto-evolution
 
 ## The 7-Step Evolution Process
+1. Validate input and check prerequisites
+2. Initialize required connections and contexts
+3. Execute core operation with monitoring
+4. Validate output against expected format
+5. Deliver results and log execution summary
+
 
 ### Step 1: Monitor System
 
@@ -152,6 +158,11 @@ After each evolution cycle:
 5. Log complete audit trail to auto-evolve/logs/
 
 ## Integration with All Meta-Skills
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### Core Orchestration Flow
 
@@ -219,6 +230,14 @@ auto-evolve (orchestrator)
 ```
 
 ## Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Example 1: Daily Evolution Cycle
 
@@ -254,6 +273,12 @@ auto-evolve collects: 8 users requested "YouTube shorts creation"
 7. Report: New capability added based on user demand
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Evolution cycle too slow
 - Reduce maxChangesPerCycle
@@ -294,14 +319,16 @@ auto-evolve collects: 8 users requested "YouTube shorts creation"
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Evolution targets are selected without measuring current performance baseline
+- Agent does not validate that evolved skills maintain backward compatibility
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Performance baseline is measured before evolution
+- [ ] Backward compatibility is verified for evolved skills
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

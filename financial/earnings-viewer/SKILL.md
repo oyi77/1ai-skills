@@ -31,6 +31,10 @@ Automatically processes earnings calls and SEC filings to update financial model
 
 ## Implementation
 
+
+The implementation follows a phased approach: ingest earnings data, update financial models, and draft analyst-quality notes.
+
+
 ### Phase 1: Ingest & Parse
 
 **Supported Sources:**

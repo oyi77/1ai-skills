@@ -73,3 +73,16 @@ df["hour"] = df["timestamp"].dt.hour
 off_hours = df[(df["hour"] < 6) | (df["hour"] > 22)]
 suspicious = off_hours.groupby("user").size().sort_values(ascending=False)
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

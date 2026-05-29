@@ -109,7 +109,8 @@ Connects to:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the datastore contains classified or restricted skill definitions
+- When data retention policies require specific deletion capabilities
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -122,14 +123,16 @@ Connects to:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Datastore does not implement versioning for skill definitions
+- Agent does not verify skill integrity after storage operations
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Skill definitions are versioned with history
+- [ ] Skill integrity is verified after storage operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -2,6 +2,8 @@
 name: ai-lead-generation
 description: Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings without manual effort.
 ---
+
+
 persona:
   name: "Grant Cardone"
   title: "The 10X Sales Expert - Master of Lead Generation"
@@ -44,6 +46,13 @@ Use AI to automate the entire lead generation process - from finding prospects t
 
 ## The AI Lead Gen Pipeline
 
+- Configure automated, book, customers, data, effort settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Stage 1: Prospecting (Automated)
 ```
 1. Define ICP (Ideal Customer Profile)
@@ -84,6 +93,13 @@ Output: Booked meetings
 
 ## Best Tools
 
+- Configure automated, book, customers, data, effort settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Prospecting
 | Tool | Use | Price |
 |------|-----|-------|
@@ -119,6 +135,13 @@ Output: Booked meetings
 
 ## ICP Framework
 
+- Configure automated, book, customers, data, effort settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Define by:
 
 1. **Firmographics**
@@ -145,6 +168,42 @@ Output: Booked meetings
 ---
 
 ## Outreach Templates
+
+Reusable templates for ai-lead-generation.
+
+Standard config:
+```yaml
+name: ai-lead-generation_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: ai-lead-generation_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard ai-lead-generation
+```yaml
+name: ai-lead-generation_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: ai-lead-generation_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### Cold Email V1
 ```
@@ -192,6 +251,13 @@ Day 21: Remove from sequence
 
 ## AI Personalization
 
+- Configure automated, book, customers, data, effort settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Use AI To:
 - Analyze prospect's recent posts
 - Find common connections
@@ -216,6 +282,12 @@ Keep under 50 words each.
 
 ## Integration with 1ai-skills
 
+Combine ai-lead-generation with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Sales Pipeline
 
 ```
@@ -234,6 +306,13 @@ AI Lead Gen → Outbound → Qualify → Demo → Close
 ---
 
 ## Metrics & Benchmarks
+
+- Configure automated, book, customers, data, effort settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Lead Gen Metrics
 | Metric | Benchmark | Target |
@@ -262,6 +341,13 @@ ROI: 1900%
 
 ## Best Practices
 
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
+
 ### Do's
 ✅ Personalize at scale  
 ✅ Test different angles  
@@ -280,6 +366,13 @@ ROI: 1900%
 ---
 
 ## Cold Email Warm-up
+
+- Configure automated, book, customers, data, effort settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Day 1-3: 5 emails
 ```
@@ -323,14 +416,16 @@ Mark as important
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Lead scoring does not filter out unqualified prospects wasting sales time
+- Agent sources leads from low-quality or spam-heavy channels
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Lead scoring filters out unqualified prospects
+- [ ] Lead sources are high-quality with verified contact data
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

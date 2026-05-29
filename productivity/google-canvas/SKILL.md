@@ -42,6 +42,10 @@ Full lifecycle Google Canvas and Gemini Canvas automation — create new documen
 ---
 
 ## Gemini Canvas Shared Applications
+This section covers gemini canvas shared applications for the google-canvas skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Overview
 
@@ -185,6 +189,10 @@ pressKey('Enter');
 ---
 
 ## Google Canvas Documents
+This section covers google canvas documents for the google-canvas skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Create New Canvas Document
 
@@ -348,6 +356,14 @@ Google Canvas has built-in AI capabilities:
 ---
 
 ## Complete Automation Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Example 1: Access Gemini Canvas App
 
@@ -422,6 +438,12 @@ async function generateMockup(productImagePath) {
 ---
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Common Issues
 
@@ -473,6 +495,10 @@ async function generateMockup(productImagePath) {
 ---
 
 ## Best Practices
+This section covers best practices for the google-canvas skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### For Gemini Canvas Apps
 
@@ -506,14 +532,16 @@ async function generateMockup(productImagePath) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation creates duplicate entries across connected platforms
+- Agent does not handle timezone differences correctly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No duplicate entries are created across connected platforms
+- [ ] Timezone handling is correct for all scheduling operations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

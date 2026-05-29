@@ -3,6 +3,8 @@ name: vanilla-extract
 description: Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, themes
 ---
 
+
+
 ## Overview
 
 Vanilla Extract is a zero-runtime CSS-in-JS library. Styles are written in TypeScript and compiled to static CSS at build time — no runtime overhead, full type safety, and excellent performance.
@@ -24,6 +26,44 @@ Vanilla Extract is a zero-runtime CSS-in-JS library. Styles are written in TypeS
 - Migrating from styled-components to zero-runtime
 
 ## Pseudo Code
+
+The vanilla-extract workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# vanilla-extract primary flow
+input = prepare(raw_data)
+result = process(input, config={extract, recipes, runtime, safe, sprinkles})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# vanilla-extract primary flow
+input = prepare(raw_data)
+result = process(input, config={extract, recipes, runtime, safe, sprinkles})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Basic Styles
 ```ts
@@ -117,3 +157,21 @@ export const sprinkles = createSprinkles(responsiveProperties)
 - **Keyframes**: `const fadeIn = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } })`
 - **Theme vars**: Always use theme contract — type-safe, enforced consistency
 - **Recipes over variants**: Use `recipe()` for multi-variant components
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

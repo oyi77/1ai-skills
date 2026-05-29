@@ -3,6 +3,7 @@ name: temporal-workflows
 description: Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning
 ---
 
+
 ## Overview
 
 Temporal is a durable execution platform for building reliable, fault-tolerant workflows. Workflows survive process crashes, network failures, and deployments. Activities handle side effects with automatic retries.
@@ -26,6 +27,26 @@ Temporal is a durable execution platform for building reliable, fault-tolerant w
 - Handling human-in-the-loop workflows
 
 ## Pseudo Code
+
+The temporal-workflows workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# temporal-workflows primary flow
+input = prepare(raw_data)
+result = process(input, config={activity, definitions, durable, queries, retries})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Workflow Definition (Python)
 
@@ -199,3 +220,20 @@ async def main():
 | `WorkflowReplayError` | Non-deterministic code in workflow | Move side effects to activities |
 | `NonRetryableError` | Business logic error | Raise `ApplicationError(non_retryable=True)` |
 | History too large | Long-running workflow | Use `continue_as_new` |
+
+## How to Use
+
+1. Define data sources, sinks, and transformation requirements
+2. Implement extraction with error handling and schema validation
+3. Add transformation logic with idempotency guarantees
+4. Configure loading with conflict resolution (upsert/append)
+5. Set up monitoring for pipeline health and data freshness
+6. Test with representative sample data before production
+
+## Red Flags
+
+- **Data pipeline has no error handling**: Silent failures corrupt downstream datasets
+- **No data validation at boundaries**: Bad input propagates through entire pipeline
+- **Missing monitoring for data freshness**: Stale data causes wrong business decisions
+- **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
+- **Hardcoded connection strings**: Credentials in code get committed to version control

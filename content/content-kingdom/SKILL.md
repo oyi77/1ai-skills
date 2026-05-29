@@ -1,18 +1,20 @@
 ---
 name: content-kingdom
-description: >
-  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases
-  for BerkahKarya / JENDRALBOT. Sequences research → plan → script → create →
-  review → schedule → post → engage → analyze → optimize → repurpose → scale.
-  Thin coordinator: imports existing autopilot_affiliate_engine and content-generator
-  scripts; only builds truly new modules (comment_manager, engagement_engine).
-  v2.0: GeminiGen API as primary media provider + Veris Design System enforced.
-version: "2.0.0"
+description: |
+  >
+    Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases
+    for BerkahKarya / JENDRALBOT. Sequences research → plan → script → create →
+    review → schedule → post → engage → analyze → optimize → repurpose → scale.
+    Thin coordinator: imports existing autopilot_affiliate_engine and content-generator
+    scripts; only builds truly new modules (comment_manager, engagement_engine).
+    v2.0: GeminiGen API as primary media provider + Veris Design System enforced.
+version: 2.0.0
 author: Vilona / BerkahKarya AI
 tags: [content, automation, tiktok, instagram, postbridge, jendralbot, berkahkarya, geminigen, veris]
 skill_dir: skills/1ai-skills/content/content-kingdom
 symlink: skills/content-kingdom
 ---
+
 
 # Content Kingdom Orchestrator
 
@@ -371,3 +373,21 @@ pip install requests
   }
 }
 ```
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

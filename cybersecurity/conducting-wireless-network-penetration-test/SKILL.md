@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Wireless Reconnaissance
 
 Discover and map all wireless networks in the target environment:
@@ -125,6 +130,11 @@ After gaining wireless network access, assess network segmentation:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Conducting Wireless Network Penetration Test assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Conducting Wireless Network Penetration Test response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Wireless Security Assessment for a Corporate Office
 
 **Context**: A financial services company has 3 SSIDs: CorpWiFi (WPA2-Enterprise for employees), GuestWiFi (captive portal), and IoT-Net (WPA2-PSK for printers and conferencing systems). The tester is authorized to test all three networks from the lobby and conference rooms.
@@ -142,6 +152,22 @@ After gaining wireless network access, assess network segmentation:
 - Not testing WPA3 transition mode for downgrade vulnerabilities when the organization has begun WPA3 migration
 - Focusing only on password cracking and missing network segmentation issues that are often the higher-risk finding
 - Testing from a single location and missing rogue APs deployed in other areas of the facility
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

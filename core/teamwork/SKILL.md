@@ -25,6 +25,17 @@ Invoke this skill when:
 - Projects require structured workflow with quality assurance and iteration
 
 ## Initialization & Configuration Management
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Automatic Initialization
 
@@ -204,6 +215,10 @@ Before executing any team task, verify:
 If any checklist item fails, trigger interactive initialization.
 
 ## Core System Components
+This section covers core system components for the teamwork skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Model Performance Evaluation System
 
@@ -331,6 +346,12 @@ cost_score = (normalized_cost) * (usage_efficiency) * (availability_factor)
 ```
 
 ## Task Execution Workflow
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Phase 1: User Request & Requirement Analysis
 
@@ -591,6 +612,10 @@ Herald → Host Model (status reports)
 - Update model scores based on partial performance
 
 ## Best Practices
+This section covers best practices for the teamwork skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Model Selection
 - Match model capabilities to task requirements
@@ -627,7 +652,8 @@ Herald → Host Model (status reports)
   - Template-based reporting
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the task requires domain expertise the agent has not been configured with
+- When human review is mandated by compliance or regulatory requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -640,14 +666,16 @@ Herald → Host Model (status reports)
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

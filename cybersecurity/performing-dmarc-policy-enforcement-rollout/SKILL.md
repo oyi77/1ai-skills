@@ -44,6 +44,11 @@ Domain-based Message Authentication, Reporting and Conformance (DMARC) is the co
 
 ## Key Concepts
 
+This section covers key concepts for performing dmarc policy enforcement rollout.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### DMARC Policy Levels
 | Policy | Behavior | Use Case |
 |---|---|---|
@@ -72,6 +77,11 @@ v=DMARC1; p=quarantine; pct=25; rua=mailto:dmarc-agg@company.com; ruf=mailto:dma
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Inventory All Sending Sources (Week 1-2)
 - Audit all systems sending email as your domain (marketing, CRM, ticketing, transactional)
 - Document third-party services: Salesforce, Mailchimp, SendGrid, Zendesk, etc.
@@ -112,6 +122,21 @@ v=DMARC1; p=quarantine; pct=25; rua=mailto:dmarc-agg@company.com; ruf=mailto:dma
 - Review forensic reports for spoofing attempts
 - Maintain SPF record as sending infrastructure changes
 - Rotate DKIM keys annually
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Resources
 - **EasyDMARC**: DMARC monitoring dashboard with aggregate/forensic report analysis

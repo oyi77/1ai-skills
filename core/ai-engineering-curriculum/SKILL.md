@@ -55,6 +55,11 @@ Install: `npx skills add rohitg00/ai-engineering-from-scratch`
 | 19 | Capstone | End-to-end project combining all phases |
 
 ## Built-in Agents
+- Primary agent handles core task execution
+- Validator agent checks output quality
+- Reporter agent formats and delivers results
+- Each agent operates with clear input/output contracts
+
 
 ### /find-your-level
 Placement quiz that assesses current knowledge across phases and recommends a starting point.
@@ -74,3 +79,19 @@ Agent: Maps to Phase 3-4, recommends deep learning and computer vision modules
 User: "Quiz me on transformers"
 Agent: Runs /check-understanding for Phase 7
 ```
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

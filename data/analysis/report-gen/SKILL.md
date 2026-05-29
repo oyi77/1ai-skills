@@ -2,6 +2,8 @@
 name: report-gen
 description: Generate automated reports
 ---
+
+
 ## Report Gen
 
 Generate automated reports
@@ -20,7 +22,8 @@ Generate automated reports
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the report is for regulatory filing or legal proceedings
+- When the report data requires certified data source verification
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Generate automated reports
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Report contains outdated data that does not reflect current state
+- Agent does not verify calculations and aggregations in the report
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Report data reflects the current state at time of generation
+- [ ] All calculations and aggregations are verified for accuracy
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related data skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

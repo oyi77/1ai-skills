@@ -1,6 +1,6 @@
 ---
 name: discord-bot
-description: Build Discord bots
+description: "Skill for Build Discord bots. Provides automation and best practices."
 ---
 ## Discord Bot
 
@@ -18,9 +18,44 @@ Build Discord bots
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Create a Discord application at discord.com/developers/applications
+2. Generate a bot token and configure permissions
+3. Implement command handlers using discord.js or discord.py
+4. Set up event listeners for messages, reactions, and interactions
+5. Deploy to a persistent host and monitor rate limits
+
+## Bot Command Structure
+
+```python
+import discord
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+
+@bot.command(name='status')
+async def status(ctx):
+    embed = discord.Embed(title="System Status", color=0x00ff00)
+    embed.add_field(name="Uptime", value="99.9%")
+    await ctx.send(embed=embed)
+
+@bot.slash_command(name='deploy')
+async def deploy(ctx, service: str):
+    await ctx.respond(f"Deploying {service}...", ephemeral=True)
+```
+
+## Common Patterns
+
+- Use slash commands for new bots (prefix commands are deprecated)
+- Implement rate limit handling with exponential backoff
+- Store persistent state in a database, not in-memory
+- Use embeds for rich formatted responses
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the integration requires admin-level permissions on the target platform
+- When the data exchange involves regulated information requiring encryption
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +68,16 @@ Build Discord bots
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Integration does not handle API errors or service unavailability
+- Agent does not verify data consistency across connected systems
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] API errors and service outages are handled with appropriate retry logic
+- [ ] Data consistency is verified across all connected systems
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

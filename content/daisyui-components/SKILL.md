@@ -3,6 +3,8 @@ name: daisyui-components
 description: daisyUI component library for Tailwind — themed components, colors, responsive, dark mode
 ---
 
+
+
 ## Overview
 
 daisyUI adds component classes to Tailwind CSS — buttons, cards, modals, dropdowns, etc. — without JavaScript. Uses Tailwind's plugin system with theme customization via CSS variables.
@@ -24,6 +26,44 @@ daisyUI adds component classes to Tailwind CSS — buttons, cards, modals, dropd
 - Want consistent design without a full design system
 
 ## Pseudo Code
+
+The daisyui-components workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# daisyui-components primary flow
+input = prepare(raw_data)
+result = process(input, config={colors, component, components, daisyui, dark})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# daisyui-components primary flow
+input = prepare(raw_data)
+result = process(input, config={colors, component, components, daisyui, dark})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -87,3 +127,21 @@ module.exports = {
 - **State modifiers**: `btn-active`, `btn-disabled`, `loading`
 - **Responsive**: `btn md:btn-lg` — larger on medium screens
 - **Themes**: Apply per-section with `data-theme="dark"` attribute
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

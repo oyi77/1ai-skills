@@ -48,6 +48,11 @@ Shadow APIs are API endpoints operating within an organization's environment tha
 
 ## Detection Methods
 
+This section covers detection methods for detecting shadow api endpoints.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Traffic Analysis and Comparison
 
 Compare live API traffic against documented OpenAPI specifications to identify undocumented endpoints:
@@ -341,6 +346,11 @@ diff <(grep -roh "'/api/[^']*'" src/ | sort -u) \
 
 ## Prevention and Governance
 
+This section covers prevention and governance for detecting shadow api endpoints.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### API Registration Gateway Policy
 
 ```yaml
@@ -365,6 +375,22 @@ plugins:
             return kong.response.exit(404, {error = "Endpoint not registered"})
           end
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

@@ -76,6 +76,11 @@ NTLM relay attacks intercept NTLM authentication messages and forward them to a 
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Understand NTLM Relay Attack Flow
 
 The NTLM relay attack follows a three-phase pattern: coercion/poisoning, interception, and relay.
@@ -690,6 +695,11 @@ index=wineventlog EventCode=4624 LogonType=3 AuthenticationPackageName="NTLM"
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario 1: Responder Poisoning with NTLM Relay to File Server
 
 **Context**: A SOC analyst observes multiple Event 4624 LogonType 3 entries on a file server (10.10.20.100) where the WorkstationName field shows different workstation names but the IpAddress field consistently shows 10.10.5.50, a host not in the IT asset inventory.
@@ -725,6 +735,22 @@ index=wineventlog EventCode=4624 LogonType=3 AuthenticationPackageName="NTLM"
 - Not recognizing that machine account NTLM authentication from an unexpected IP is a critical indicator of coercion + relay
 - Failing to check AD CS for fraudulent certificate issuance, which represents the actual objective of the attack
 - Not auditing LDAP signing and EPA on AD CS servers, which would have prevented the relay
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

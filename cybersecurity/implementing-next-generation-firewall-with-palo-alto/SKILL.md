@@ -49,6 +49,11 @@ Palo Alto Networks Next-Generation Firewalls (NGFWs) move beyond traditional por
 
 ## Core Concepts
 
+This section covers core concepts for implementing next generation firewall with palo alto.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### App-ID Technology
 
 App-ID classifies network traffic by application regardless of port, protocol, or encryption. The classification engine uses multiple identification techniques in sequence:
@@ -84,6 +89,11 @@ Zones represent logical segments of the network. Security policies control traff
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Initial System Configuration
 
 Configure management interface, DNS, NTP, and system settings:
@@ -265,6 +275,22 @@ show system resources
 - **Signature Updates** - Enable automatic daily content updates for Applications and Threats
 - **HA Configuration** - Deploy in active/passive HA pair for production environments
 - **Commit Validation** - Always validate configuration before committing: `validate full`
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

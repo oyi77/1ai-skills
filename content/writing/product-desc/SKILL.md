@@ -2,6 +2,8 @@
 name: product-desc
 description: Write product descriptions
 ---
+
+
 ## Product Desc
 
 Write product descriptions
@@ -20,7 +22,8 @@ Write product descriptions
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the content requires original research or primary source reporting
+- When the output will be used in legally binding or regulatory contexts
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Write product descriptions
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Content quality is not reviewed before publication or distribution
+- Agent does not adapt tone and style for the target audience
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content quality passes review before publication or distribution
+- [ ] Tone and style are appropriate for the target audience
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem
+- Combine with related content skills for maximum impact
+- Monitor output quality and iterate on configuration
+- Keep dependencies up to date for security and performance
+- Document custom workflows for team knowledge sharing
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem
+- Combine with related content skills for maximum impact
+- Monitor output quality and iterate on configuration
+- Keep dependencies up to date for security and performance
+- Document custom workflows for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related content skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests

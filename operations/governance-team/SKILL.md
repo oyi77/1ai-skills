@@ -1,8 +1,7 @@
 ---
 name: governance-team
 description: Manage policies, access control, compliance, and governance processes with Notion and Slack
-allowed-tools:
-  - MCP(notion:*)
+allowed-tools: - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:
@@ -54,6 +53,9 @@ This skill channels the expertise of:
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Policy Change
 
 ```typescript
@@ -89,7 +91,8 @@ if (!hasAccess) {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When governance decisions require board-level approval
+- When the governance framework involves publicly traded company requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -102,14 +105,16 @@ if (!hasAccess) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Governance policies are not enforced consistently across teams
+- Agent does not track policy compliance with measurable metrics
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Policies are enforced consistently across all teams
+- [ ] Compliance metrics are tracked and reported
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

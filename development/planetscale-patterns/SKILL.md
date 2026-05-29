@@ -3,6 +3,7 @@ name: planetscale-patterns
 description: PlanetScale MySQL — branching, deploy requests, Vitess sharding, connection handling, schema management
 ---
 
+
 ## Overview
 
 PlanetScale is a MySQL-compatible serverless database platform built on Vitess. It provides database branching, non-blocking schema changes via deploy requests, and horizontal sharding.
@@ -27,6 +28,26 @@ PlanetScale is a MySQL-compatible serverless database platform built on Vitess. 
 - Existing MySQL workloads
 
 ## Pseudo Code
+
+The planetscale-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# planetscale-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={branching, connection, deploy, handling, management})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup (Serverless Driver)
 ```typescript
@@ -122,3 +143,20 @@ datasource db {
 - **Serverless driver**: Use `@planetscale/database` for edge/serverless functions
 - **Vitess limitations**: No `FOREIGN KEY` in schema by default (use Prisma relations)
 - **Connection pooling**: Built-in; use connection string directly
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

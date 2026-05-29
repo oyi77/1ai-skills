@@ -3,6 +3,7 @@ name: message-queue
 description: Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub, dead letter queues, retry logic
 ---
 
+
 ## Overview
 
 Message queues decouple producers from consumers, enabling async processing, load leveling, and reliable delivery. This skill covers RabbitMQ, Redis Streams, and AWS SQS patterns for task distribution, pub/sub, dead letter handling, and retry strategies.
@@ -25,6 +26,26 @@ Message queues decouple producers from consumers, enabling async processing, loa
 - Integrating systems with different throughput characteristics
 
 ## Pseudo Code
+
+The message-queue workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# message-queue primary flow
+input = prepare(raw_data)
+result = process(input, config={dead, letter, logic, message, patterns})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### RabbitMQ Task Queue
 ```python
@@ -182,3 +203,20 @@ def handle_message(msg):
 | **Delayed queue** | Schedule future processing |
 | **Idempotent consumer** | Handle duplicate delivery safely |
 | **Competing consumers** | Scale processing horizontally |
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

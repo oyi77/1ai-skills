@@ -18,9 +18,46 @@ Send Discord webhooks
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Create a webhook in Discord channel settings (Integrations > Webhooks)
+2. Copy the webhook URL for use in automation scripts
+3. Send messages via POST request with JSON payload
+4. Use embeds for rich formatting (colors, fields, images)
+
+## Webhook Payload Examples
+
+```bash
+# Simple message
+curl -X POST "$WEBHOOK_URL" -H "Content-Type: application/json" -d '{
+  "content": "Deployment complete: v2.3.1",
+  "username": "CI/CD Bot"
+}'
+
+# Rich embed
+curl -X POST "$WEBHOOK_URL" -H "Content-Type: application/json" -d '{
+  "embeds": [{
+    "title": "Build Status",
+    "color": 3066993,
+    "fields": [
+      {"name": "Branch", "value": "main", "inline": true},
+      {"name": "Status", "value": "Passed", "inline": true}
+    ]
+  }]'
+}
+```
+
+## Common Patterns
+
+- Use environment variables for webhook URLs (never hardcode)
+- Batch multiple messages to respect rate limits (5 per 2 seconds)
+- Use thread_id parameter to post in forum channels
+- Rotate webhook URLs periodically for security
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the integration requires admin-level permissions on the target platform
+- When the data exchange involves regulated information requiring encryption
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +70,16 @@ Send Discord webhooks
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Integration does not handle API errors or service unavailability
+- Agent does not verify data consistency across connected systems
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] API errors and service outages are handled with appropriate retry logic
+- [ ] Data consistency is verified across all connected systems
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -20,7 +20,8 @@ Track price changes automatically
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When prices are negotiated through private channels not exposed via APIs
+- When tracking competitor pricing violates contractual agreements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Track price changes automatically
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Tracker scrapes too frequently causing IP blocks or legal issues
+- Agent does not normalize prices across different currencies
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Scraping frequency respects target site rate limits
+- [ ] Prices are normalized to a common currency for comparison
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

@@ -1,8 +1,7 @@
 ---
 name: project-management
 description: Coordinate tasks, track deadlines, manage sprints, and maintain project documentation with Notion integration
-allowed-tools:
-  - MCP(notion:*)
+allowed-tools: - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:
@@ -43,6 +42,9 @@ This skill channels the expertise of:
 
 ## Required Tools
 
+Tools and dependencies needed before using this skill.
+
+
 ### MCP Servers
 
 ```json
@@ -70,6 +72,9 @@ This skill channels the expertise of:
 - **Status Reporting**: Generate project updates
 
 ## Pseudo Code
+
+Implementation patterns for common use cases with this skill.
+
 
 ### Example 1: Create Task
 
@@ -174,7 +179,8 @@ await slack.post("#project-updates", report);
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the project is subject to government procurement regulations
+- When the project involves safety-critical systems requiring formal certification
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -187,14 +193,16 @@ await slack.post("#project-updates", report);
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Project timelines do not account for dependencies and risk buffers
+- Agent does not track actual progress against the plan
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Timelines include dependency and risk buffers
+- [ ] Progress is tracked against the baseline plan
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

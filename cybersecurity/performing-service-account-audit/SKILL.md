@@ -50,6 +50,11 @@ Audit service accounts across enterprise infrastructure to identify orphaned, ov
 
 ## Key Concepts
 
+This section covers key concepts for performing service account audit.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Service Account Types
 1. **AD Service Accounts**: Windows services, scheduled tasks, IIS app pools
 2. **Managed Service Accounts (gMSA)**: AD-managed automatic password rotation
@@ -67,6 +72,11 @@ Audit service accounts across enterprise infrastructure to identify orphaned, ov
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Discovery - Active Directory
 1. Query AD for all service accounts (filter by description, OU, naming convention)
 2. Identify accounts with `ServicePrincipalName` set
@@ -123,3 +133,10 @@ Audit service accounts across enterprise infrastructure to identify orphaned, ov
 - [ ] Orphaned accounts flagged for remediation
 - [ ] gMSA migration candidates identified
 - [ ] Compliance report generated
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring

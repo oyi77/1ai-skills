@@ -44,6 +44,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install and Configure Fail2ban
 
 ```bash
@@ -319,6 +324,11 @@ sudo netfilter-persistent save
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Port Scanning With Fail2Ban assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Port Scanning With Fail2Ban response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Defending a Public-Facing Web Server Against Automated Scanning
 
 **Context**: A company runs a public web server that receives thousands of automated scan attempts daily from bots probing for vulnerable paths (/wp-admin, /phpmyadmin, /.env). The security team wants to automatically block scanners while allowing legitimate traffic. The server runs Nginx on Ubuntu 22.04.
@@ -337,6 +347,20 @@ sudo netfilter-persistent save
 - Not whitelisting monitoring systems (Nagios, UptimeRobot) that may trigger filters with their health checks
 - Forgetting to persist iptables rules, losing all bans after a reboot
 - Not testing filters with fail2ban-regex before deploying, resulting in no matches or excessive false positives
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

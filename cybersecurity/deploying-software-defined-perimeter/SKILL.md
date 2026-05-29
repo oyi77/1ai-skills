@@ -52,6 +52,11 @@ This skill covers deploying SDP using the CSA v2.0 specification, implementing S
 
 ## Architecture
 
+This section covers architecture for deploying software defined perimeter.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SDP Components (CSA Specification)
 
 ```
@@ -87,6 +92,11 @@ SPA = Single Packet Authorization
 
 ## Key Concepts
 
+This section covers key concepts for deploying software defined perimeter.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Single Packet Authorization (SPA)
 SPA is a network security mechanism where the SDP gateway drops all TCP/UDP packets by default. A cryptographically signed single packet must be sent before any connection is established. The gateway validates the SPA packet, and only then opens a temporary port for the authenticated session. This makes the gateway invisible to port scanners.
 
@@ -98,6 +108,11 @@ SDP connections are provisioned on-demand based on real-time policy evaluation. 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Phase 1: SDP Controller Deployment
 
 1. **Deploy SDP Controller**
@@ -176,6 +191,22 @@ SDP connections are provisioned on-demand based on real-time policy evaluation. 
 - [ ] Lateral movement between apps prevented
 - [ ] Logs streaming to SIEM with alerting configured
 - [ ] Certificate rotation and revocation procedures tested
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

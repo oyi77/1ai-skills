@@ -1,8 +1,7 @@
 ---
 name: product-team
 description: Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion
-allowed-tools:
-  - MCP(notion:*)
+allowed-tools: - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:
@@ -54,6 +53,9 @@ This skill channels the expertise of:
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### PRD Creation
 
 ```typescript
@@ -81,7 +83,8 @@ const byQuarter = groupBy(roadmap, "quarter");
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the operational process requires change advisory board approval
+- When the process involves legally mandated human review or sign-off
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -94,14 +97,16 @@ const byQuarter = groupBy(roadmap, "quarter");
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Operational changes are made without stakeholder communication
+- Agent does not track compliance with established processes
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Changes are communicated to stakeholders before implementation
+- [ ] Compliance with established processes is tracked and reported
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

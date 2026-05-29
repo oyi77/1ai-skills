@@ -38,6 +38,11 @@ Use this skill when you need:
 - **Autonomous AI agents** that learn from interactions
 
 ## Key Features
+- Automated workflow execution with error recovery
+- Configurable parameters for different use cases
+- Integration with existing tooling and pipelines
+- Detailed logging and status reporting
+
 
 ### 🧠 Self-Learning Index
 - GNN layers learn from every query
@@ -73,6 +78,11 @@ npx ruvector install gnn
 ```
 
 ## Usage Patterns
+- Invoke the skill when the matching domain keywords appear
+- Combine with related skills for end-to-end workflows
+- Use verification steps to confirm successful execution
+- Review output quality before finalizing results
+
 
 ### Basic Vector Storage
 ```javascript
@@ -130,7 +140,8 @@ RuVector integrates perfectly with:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the task requires domain expertise the agent has not been configured with
+- When human review is mandated by compliance or regulatory requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -143,14 +154,16 @@ RuVector integrates perfectly with:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

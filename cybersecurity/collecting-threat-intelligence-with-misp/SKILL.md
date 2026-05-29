@@ -46,6 +46,11 @@ MISP (Malware Information Sharing Platform) is an open-source threat intelligenc
 
 ## Key Concepts
 
+This section covers key concepts for collecting threat intelligence with misp.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### MISP Architecture
 
 MISP operates on an event-based model where threat intelligence is organized into events containing attributes (IOCs), objects (structured groupings of attributes), galaxies (threat actor/malware clusters linked to MITRE ATT&CK), and tags for classification. Synchronization between MISP instances uses a pull/push model over HTTPS with API key authentication.
@@ -63,6 +68,11 @@ PyMISP is the official Python library to access MISP platforms via their REST AP
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Deploy MISP with Docker
 
 ```bash
@@ -176,6 +186,22 @@ csv_output = misp.search(
 - Events contain properly tagged and categorized attributes
 - Export to STIX 2.1 produces valid STIX bundles
 - Automated feed fetch runs on schedule (cron or MISP scheduler)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## References
 

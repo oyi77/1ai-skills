@@ -31,6 +31,10 @@ Audits LP (Limited Partner) statements before distribution. Handles the full aud
 
 ## Implementation:
 
+
+The implementation follows a phased approach: ingest statements, reconcile capital accounts, verify waterfall distributions, and produce audit reports.
+
+
 ### Phase 1: Ingest Statements!
 
 **Statement Types:**
@@ -87,6 +91,10 @@ distribution = {
 # Audit Report: [LP Name] — [Period]
 
 ## Audit Status: ✅ APPROVED / 🔴 REJECTED
+
+
+Overall audit verdict based on reconciliation results and exception count.
+
 
 ## Statement Summary
 | Line Item | Statement | Audit | Variance |

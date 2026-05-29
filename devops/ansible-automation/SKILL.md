@@ -3,6 +3,7 @@ name: ansible-automation
 description: Ansible automation — playbooks, roles, inventory, variables, handlers, Galaxy, AWX
 ---
 
+
 ## Overview
 
 Ansible is an agentless automation tool using SSH for configuration management, application deployment, and orchestration. Uses YAML-based playbooks with Jinja2 templating.
@@ -25,6 +26,26 @@ Ansible is an agentless automation tool using SSH for configuration management, 
 - Multi-cloud orchestration
 
 ## Pseudo Code
+
+The ansible-automation workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# ansible-automation primary flow
+input = prepare(raw_data)
+result = process(input, config={ansible, automation, galaxy, handlers, inventory})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Playbook
 ```yaml
@@ -105,3 +126,20 @@ ansible-playbook site.yml --vault-password-file .vault_pass
 - **Loops**: `loop: "{{ users }}"` for iteration
 - **Conditionals**: `when: ansible_os_family == "Debian"`
 - **AWX/Tower**: web UI for playbook execution and RBAC
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

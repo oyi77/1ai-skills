@@ -95,6 +95,11 @@ The Docker daemon (`dockerd`) runs with root privileges and controls all contain
 
 ## Setting-by-Setting Explanation
 
+This section covers setting-by-setting explanation for hardening docker daemon configuration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Disable Inter-Container Communication (ICC)
 
 ```json
@@ -160,6 +165,11 @@ Uses iptables rules instead of docker-proxy for port forwarding, reducing attack
 
 ## TLS Configuration for Remote Docker API
 
+This section covers tls configuration for remote docker api for hardening docker daemon configuration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Generate CA and Server Certificates
 
 ```bash
@@ -323,3 +333,16 @@ docker run --rm --net host --pid host \
 8. **Audit Docker socket** - Monitor access to /var/run/docker.sock
 9. **Run Docker Bench regularly** - Automate CIS benchmark checks
 10. **Keep Docker updated** - Apply security patches promptly
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

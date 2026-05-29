@@ -86,6 +86,10 @@ Enables end-to-end competitive analysis automation that combines product researc
    ```
 
 ## Capabilities
+This section covers capabilities for the kalodata-research-automation skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Product Research Integration
 - Queries TikTok Shop Indonesia products by category
@@ -170,6 +174,13 @@ const report = research.generateReport(result);
 ```
 
 ## API Reference
+| Endpoint/Method | Description |
+|----------------|-------------|
+| `GET /status` | Check service health and availability |
+| `POST /execute` | Run the primary operation |
+| `GET /results` | Retrieve operation results |
+| `DELETE /cache` | Clear cached data |
+
 
 ### ResearchAutomation
 

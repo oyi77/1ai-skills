@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: RESTler Installation and Setup
 
 ```bash
@@ -307,6 +312,11 @@ EOF
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Api Fuzzing With Restler assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Api Fuzzing With Restler response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Microservice API Fuzzing Campaign
 
 **Context**: A fintech company has 12 microservice APIs with OpenAPI specifications. Before a major release, the security team runs RESTler fuzzing against each service in the staging environment to catch bugs.
@@ -327,6 +337,22 @@ EOF
 - Using the default dictionary without adding application-specific injection payloads
 - Not setting a time budget, allowing RESTler to run indefinitely
 - Ignoring the compilation warnings that indicate endpoints RESTler cannot reach due to dependency issues
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

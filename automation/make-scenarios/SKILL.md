@@ -27,6 +27,9 @@ Make.com (formerly Integromat) is a visual automation platform with 1500+ app in
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Scenario Architecture
 
 ```
@@ -162,3 +165,16 @@ Trigger Module → Iterator → Aggregator → Router → Filter → Action
 | Data size limit | Payload too large | Use pagination or split data |
 | Rate limit | Too many API calls | Add delay between operations |
 | Connection error | Auth expired | Re-authorize connection |
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

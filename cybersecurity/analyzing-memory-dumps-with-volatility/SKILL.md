@@ -52,6 +52,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify the Memory Dump Profile
 
 Determine the operating system and version from the memory dump:
@@ -247,6 +252,11 @@ vol3 -f memory.dmp windows.netscan --output csv > network.csv
 
 ## Common Scenarios
 
+**Scenario 1: Standard Analyzing Memory Dumps With Volatility assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Analyzing Memory Dumps With Volatility response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting Fileless Malware After EDR Alert
 
 **Context**: EDR detected suspicious PowerShell activity but the threat actor cleaned up disk artifacts. A memory dump was captured before the system was rebooted. The analysis needs to identify the malware, its persistence mechanism, and any lateral movement.
@@ -265,6 +275,22 @@ vol3 -f memory.dmp windows.netscan --output csv > network.csv
 - Not comparing `pslist` vs `psscan` output (missing rootkit-hidden processes)
 - Ignoring legitimate processes that have been injected into (focus on malfind results, not just process names)
 - Not extracting full process memory before concluding analysis (strings from process dump may reveal additional IOCs)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

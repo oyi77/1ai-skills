@@ -3,6 +3,7 @@ name: api-gateway
 description: API gateway design — rate limiting, authentication, routing, caching, request transformation. Kong, Traefik, custom gateways
 ---
 
+
 ## Overview
 
 An API gateway is a reverse proxy that sits between clients and backend services, handling cross-cutting concerns like authentication, rate limiting, routing, and caching. This skill covers designing and implementing gateways using Kong, Traefik, or custom Node.js/Go implementations.
@@ -26,6 +27,26 @@ An API gateway is a reverse proxy that sits between clients and backend services
 - Multi-tenant SaaS with per-tenant routing rules
 
 ## Pseudo Code
+
+The api-gateway workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# api-gateway primary flow
+input = prepare(raw_data)
+result = process(input, config={api, authentication, caching, custom, design})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Kong Gateway (Declarative)
 ```yaml
@@ -187,6 +208,14 @@ app.use('/api/users', authenticate, (req, res) => breaker.fire(req, res));
 
 ## Common Patterns
 
+Proven patterns for api-gateway usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### API Key Authentication
 ```javascript
 const apiKeys = new Map(); // Store in Redis in production
@@ -231,3 +260,20 @@ const cache = (ttl) => async (req, res, next) => {
 
 app.use('/api/products', cache(300), (req, res) => proxy.web(req, res, { target: services.products }));
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

@@ -3,6 +3,7 @@ name: security-headers
 description: Web security headers — CSP, CORS, HSTS, X-Frame-Options. Configure, audit, and harden HTTP security headers
 ---
 
+
 ## Overview
 
 HTTP security headers protect web applications from XSS, clickjacking, MIME sniffing, and other attacks. This skill covers configuring Content Security Policy (CSP), CORS, HSTS, and other headers, plus auditing tools to verify proper setup.
@@ -25,6 +26,13 @@ HTTP security headers protect web applications from XSS, clickjacking, MIME snif
 - Preventing XSS, clickjacking, or data leakage
 
 ## Pseudo Content
+
+- Configure audit, configure, cors, frame, harden settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Content Security Policy (CSP)
 ```javascript
@@ -157,3 +165,20 @@ server {
 | `X-Content-Type-Options` | MIME sniffing | `nosniff` |
 | `Referrer-Policy` | Data leakage | `strict-origin-when-cross-origin` |
 | `Permissions-Policy` | Feature abuse | `camera=(), microphone=()` |
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

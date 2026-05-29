@@ -62,6 +62,13 @@ print(results[0]["text"])  # "User prefers XAUUSD scalping H1+M5"
 ---
 
 ## Full API Reference
+| Endpoint/Method | Description |
+|----------------|-------------|
+| `GET /status` | Check service health and availability |
+| `POST /execute` | Run the primary operation |
+| `GET /results` | Retrieve operation results |
+| `DELETE /cache` | Clear cached data |
+
 
 ### `MemoryManager(db_path=None, mode="hybrid")`
 
@@ -262,3 +269,25 @@ cd ~/.openclaw/workspace/skills/1ai-skills/core
 python3 memory_system/scripts/test_memory.py
 # RESULTS: 57/57 passed | 0 failed | ~18s
 ```
+
+## When to Use
+
+- When the task falls within this skill's domain expertise
+- When automated execution saves time over manual work
+- When the skill's tools and integrations are available
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

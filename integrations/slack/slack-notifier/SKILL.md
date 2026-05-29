@@ -18,9 +18,48 @@ Send Slack notifications
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Set up an incoming webhook or bot token for your Slack workspace
+2. Configure notification rules (events, severity levels, channels)
+3. Format messages with Block Kit for readability
+4. Implement rate limiting to avoid notification fatigue
+
+## Notification Templates
+
+```python
+import requests
+
+def notify_deploy(service, version, status):
+    color = "#36a64f" if status == "success" else "#ff0000"
+    requests.post(WEBHOOK_URL, json={
+        "attachments": [{
+            "color": color,
+            "title": f"Deploy: {service} v{version}",
+            "fields": [
+                {"title": "Status", "value": status, "short": True},
+                {"title": "Environment", "value": "production", "short": True}
+            ]
+        }]
+    })
+
+def notify_alert(message, severity="warning"):
+    requests.post(WEBHOOK_URL, json={
+        "text": f"*{severity.upper()}*: {message}"
+    })
+```
+
+## Common Patterns
+
+- Use threads to group related notifications
+- Deduplicate alerts to prevent notification storms
+- Route different severity levels to different channels
+- Include actionable links in notification messages
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the integration requires admin-level permissions on the target platform
+- When the data exchange involves regulated information requiring encryption
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +72,16 @@ Send Slack notifications
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Integration does not handle API errors or service unavailability
+- Agent does not verify data consistency across connected systems
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] API errors and service outages are handled with appropriate retry logic
+- [ ] Data consistency is verified across all connected systems
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

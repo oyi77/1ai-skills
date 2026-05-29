@@ -47,6 +47,11 @@ API schema validation enforces that all data exchanged through APIs conforms to 
 
 ## Core Implementation
 
+This section covers core implementation for implementing api schema validation security.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### OpenAPI Schema with Security Constraints
 
 ```yaml
@@ -419,6 +424,22 @@ jobs:
 | `format: password` without TLS | Credential exposure | Enforce HTTPS-only server URLs |
 | Missing error response schemas | Information leakage | Define all 4xx/5xx response schemas |
 | `readOnly` fields in request body | Data manipulation | Enforce `readOnly` server-side |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

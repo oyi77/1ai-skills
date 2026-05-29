@@ -3,6 +3,7 @@ name: database-migration
 description: Safe database migrations — schema changes, data migrations, rollback strategies, and zero-downtime deploys
 ---
 
+
 ## Overview
 
 Safe database migration practices. Covers migration tools (Prisma, Knex, Flyway), forward-only migrations, rollback strategies, data backfill, and zero-downtime deployments.
@@ -23,6 +24,26 @@ Safe database migration practices. Covers migration tools (Prisma, Knex, Flyway)
 - Production migration needs rollback plan
 
 ## Pseudo Code
+
+The database-migration workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# database-migration primary flow
+input = prepare(raw_data)
+result = process(input, config={changes, data, database, deploys, downtime})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Safe Column Addition
 ```sql
@@ -51,3 +72,20 @@ npx prisma migrate deploy
 - **Batch backfill**: Update in batches of 1000 to avoid locking
 - **Shadow tables**: Create new table, migrate data, swap names
 - **Test with prod snapshot**: Always test migrations against prod data copy
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

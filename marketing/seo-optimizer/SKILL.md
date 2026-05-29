@@ -2,6 +2,7 @@
 name: seo-optimizer
 description: Optimize content for search engines. Perform keyword research, analyze on-page SEO, track rankings, audit technical SEO, and improve organic visibility for sustainable traffic growth.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Seo Optimizer"
@@ -87,6 +88,13 @@ Complete SEO toolkit for organic growth. Research keywords, optimize content, tr
 
 ## Core Features
 
+- Automated analyze, audit, content, engines, growth processing and optimization
+- Multi-platform support with unified configuration
+- Real-time monitoring and alerting
+- Batch operations for scale
+- Export to CSV, JSON, and PDF formats
+
+
 ### 1. Keyword Research
 ```javascript
 const keywordData = {
@@ -168,6 +176,13 @@ const rankingData = {
 
 ## SEO Tools Integration
 
+- Configure analyze, audit, content, engines, growth settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Google Search Console
 ```javascript
 // Track performance
@@ -202,6 +217,13 @@ const competitorData = {
 ```
 
 ## Content Strategy
+
+- Configure analyze, audit, content, engines, growth settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Topic Clusters
 ```
@@ -260,6 +282,13 @@ Week 4: Optimize, publish, promote
 ---
 
 ## Advanced SEO Techniques (From Reference Libraries)
+
+- Configure analyze, audit, content, engines, growth settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Content Attack Briefs (Competitive Gap Analysis)
 
@@ -442,6 +471,13 @@ def geo_optimize(content, target_queries):
 
 ## Content Operations Integration
 
+- Configure analyze, audit, content, engines, growth settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Content Calendar with SEO Prioritization
 
 ```python
@@ -500,4 +536,4 @@ After completing an SEO optimization task, confirm:
 
 ---
 
-**Related Skills**: `marketing/content-creator`, `marketing/analytics-dashboard`, `research/web-scraper`, `marketing/content-ops`
+**Related Skills**: `marketing/content-creator`, `marketing/analytics-dashboard`, `marketing/market-research`, `marketing/marketing-ops`

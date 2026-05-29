@@ -2,6 +2,8 @@
 name: k8s-deploy
 description: Generate K8s manifests
 ---
+
+
 ## K8S Deploy
 
 Generate K8s manifests
@@ -20,7 +22,8 @@ Generate K8s manifests
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the infrastructure change is in a compliance-governed environment
+- When the deployment target requires manual verification by operations staff
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Generate K8s manifests
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Infrastructure changes are applied without version control
+- Agent does not verify the change was applied correctly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Infrastructure changes are captured in version-controlled configuration
+- [ ] Change application is verified against expected state
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem for devops workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related devops skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for devops workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

@@ -39,6 +39,11 @@ Use this skill when hardening endpoints against memory-based exploits by configu
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure System-Level Mitigations
 
 ```powershell
@@ -89,6 +94,22 @@ GPO: Computer Configuration → Admin Templates → Windows Components
 | **ASLR** | Randomizes memory addresses of loaded modules to defeat hardcoded ROP gadgets |
 | **CFG** | Validates indirect call targets at runtime to prevent control flow hijacking |
 | **SEHOP** | Validates SEH chain integrity to prevent SEH-based exploitation |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Tools & Systems
 - **Windows Exploit Protection**: Built-in per-process mitigation management

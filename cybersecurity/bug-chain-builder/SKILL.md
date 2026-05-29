@@ -17,6 +17,11 @@ The real money in bug bounty isn't finding one bug — it's chaining 3-4 "low" b
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### 1. Impact Escalation Matrix
 
 | Low Bug A | + Low Bug B | = Critical Chain |

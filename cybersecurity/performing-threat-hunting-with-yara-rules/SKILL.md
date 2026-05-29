@@ -54,6 +54,11 @@ malware families, suspicious patterns, and IOC matches.
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Install YARA and Python Bindings
 
 ```bash
@@ -424,3 +429,10 @@ print("YARA hunting pipeline active. Monitoring /mnt/quarantine/ ...")
 - Check that community rule sets load without critical syntax errors after filtering
 - Confirm the continuous hunting pipeline generates alerts in JSONL format when test files are dropped
 - Cross-reference YARA matches against VirusTotal or sandbox results to validate detection accuracy
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)

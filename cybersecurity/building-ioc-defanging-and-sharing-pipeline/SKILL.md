@@ -46,6 +46,11 @@ IOC defanging modifies potentially malicious indicators (URLs, IP addresses, dom
 
 ## Key Concepts
 
+This section covers key concepts for building ioc defanging and sharing pipeline.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### IOC Defanging Standards
 
 Defanging replaces active protocol and domain components to prevent execution: `http://` becomes `hxxp://`, `https://` becomes `hxxps://`, dots in domains/IPs become `[.]`, `@` in emails becomes `[@]`. This is critical for sharing IOCs in reports, emails, Slack channels, and paste sites where auto-linking could trigger network connections to malicious infrastructure.
@@ -60,6 +65,11 @@ STIX patterns express IOCs in a standardized format: `[ipv4-addr:value = '203.0.
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Build IOC Extraction and Normalization
 
 ```python
@@ -361,6 +371,22 @@ distributor.push_to_misp(
 - IOCs distributed to MISP and TAXII successfully
 - Deduplication prevents duplicate indicators
 - Whitelisting prevents false positives on known-good domains
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

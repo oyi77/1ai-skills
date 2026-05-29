@@ -1,8 +1,7 @@
 ---
 name: workflow-builder
 description: Build and automate workflows for business operations with Notion and Slack integration
-allowed-tools:
-  - MCP(notion:*)
+allowed-tools: - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:
@@ -75,6 +74,9 @@ Build and automate workflows for business operations using Notion for task track
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Create Workflow Pipeline
 
 ```typescript
@@ -136,7 +138,8 @@ await slack.chat_postMessage({
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the workflow handles financial transactions requiring audit trails
+- When the workflow involves cross-border data transfer compliance
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -149,14 +152,16 @@ await slack.chat_postMessage({
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Workflows have circular dependencies causing infinite loops
+- Agent does not validate input data at each workflow step
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] No circular dependencies exist in the workflow graph
+- [ ] Input validation occurs at each workflow step
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

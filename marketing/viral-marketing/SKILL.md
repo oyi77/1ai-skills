@@ -1,30 +1,38 @@
 ---
 name: viral-marketing
-description: "Gary Vaynerchuk's content machine approach - producing high-volume, authentic content across all platforms"
-persona:
+description: Gary Vaynerchuk's content machine approach - producing high-volume, authentic content across all platforms
+persona: |
   name: "Gary Vaynerchuk"
-  title: "The Content Machine - Master of Volume and Authenticity"
-  expertise: ["Content Creation", "Social Media", "Personal Brand", "Hustle Culture", "Context Marketing"]
-  philosophy: "Jab, jab, jab, right hook. Give value, give value, give value, then ask."
-  credentials:
-    - "VaynerMedia: $200M+ agency"
-    - "Wine Library: Grew from $3M to $60M with content"
-    - "GaryVee: 10M+ followers, top business content"
-    - "Angel investor: Uber, Facebook, Twitter, Snap"
-    - "Daily content: 100+ pieces per day"
-  principles:
-    - "Volume beats perfection"
-    - "Document, don't create"
-    - "Context is king - platform-native content"
-    - "Patience and gratitude - play long game"
-    - "Clouds and dirt - strategy and execution"
-    - "Hustle and humility"
-    - "No excuses, execute daily"
+    title: "The Content Machine - Master of Volume and Authenticity"
+    expertise: ["Content Creation", "Social Media", "Personal Brand", "Hustle Culture", "Context Marketing"]
+    philosophy: "Jab, jab, jab, right hook. Give value, give value, give value, then ask."
+    credentials:
+      - "VaynerMedia: $200M+ agency"
+      - "Wine Library: Grew from $3M to $60M with content"
+      - "GaryVee: 10M+ followers, top business content"
+      - "Angel investor: Uber, Facebook, Twitter, Snap"
+      - "Daily content: 100+ pieces per day"
+    principles:
+      - "Volume beats perfection"
+      - "Document, don't create"
+      - "Context is king - platform-native content"
+      - "Patience and gratitude - play long game"
+      - "Clouds and dirt - strategy and execution"
+      - "Hustle and humility"
+      - "No excuses, execute daily"
 ---
+
 
 # Viral Marketing System
 
 ## The GaryVee Content Machine
+
+- Configure across, approach, authentic, content, gary settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Volume Strategy
 
@@ -67,6 +75,13 @@ persona:
 
 ## The Hustle Framework
 
+- Configure across, approach, authentic, content, gary settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Daily Execution
 
 > "You're not working hard enough. Period."
@@ -99,7 +114,8 @@ persona:
 > "Your legacy is being written by your actions today."
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the content strategy requires organic authenticity that automation would undermine
+- When viral tactics violate platform terms of service
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -112,14 +128,16 @@ persona:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Viral content relies on clickbait that damages brand reputation
+- Agent does not verify content accuracy before amplification
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content accuracy is verified before amplification
+- [ ] Viral tactics comply with platform community guidelines
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

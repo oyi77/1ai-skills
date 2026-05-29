@@ -46,6 +46,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Determine Report Type and Audience
 
 Select the appropriate intelligence product type:
@@ -131,6 +136,21 @@ Before dissemination, apply these checks:
 | **ICD 203** | Intelligence Community Directive 203 — US government standard for analytic standards including confidence language |
 | **Flash Report** | Urgent, time-sensitive intelligence notification for imminent threats; prioritizes speed over depth |
 | **Intelligence Gap** | Area where collection is insufficient to answer a PIR; should be explicitly documented in reports |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Systems
 

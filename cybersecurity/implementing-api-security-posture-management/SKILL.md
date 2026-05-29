@@ -48,6 +48,11 @@ API Security Posture Management (API-SPM) provides continuous visibility into an
 
 ## Core Components
 
+This section covers core components for implementing api security posture management.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. API Discovery and Inventory
 
 ```python
@@ -400,6 +405,22 @@ policies:
 | TLS Coverage | % of APIs using HTTPS | 100% |
 | Policy Compliance | % of APIs meeting all policies | > 90% |
 | Mean Time to Remediate | Average days to fix findings | < 7 days |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

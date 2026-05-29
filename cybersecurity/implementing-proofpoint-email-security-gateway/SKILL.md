@@ -44,6 +44,11 @@ Proofpoint Email Protection is a cloud-native secure email gateway (SEG) that ac
 
 ## Key Concepts
 
+This section covers key concepts for implementing proofpoint email security gateway.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Deployment Models
 1. **MX-Based Gateway (Traditional SEG)**: All mail routes through Proofpoint via MX record changes; intercepts threats before delivery
 2. **API-Based Integration**: Connects directly to Microsoft 365 or Google Workspace via API; no MX changes required; can be operational within 48 hours
@@ -68,6 +73,11 @@ Proofpoint Email Protection is a cloud-native secure email gateway (SEG) that ac
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Plan Mail Flow Architecture
 - Document current MX records and mail flow path
 - Identify all legitimate sending sources (marketing platforms, CRM, ticketing systems)
@@ -108,6 +118,22 @@ Proofpoint Email Protection is a cloud-native secure email gateway (SEG) that ac
 - Add approved senders and safe lists for legitimate bulk mail
 - Configure data loss prevention (DLP) rules for outbound sensitive content
 - Enable email warning banners for external sender identification
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Tools & Resources
 - **Proofpoint TAP Dashboard**: Real-time threat visibility and campaign tracking

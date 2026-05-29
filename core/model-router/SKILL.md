@@ -24,6 +24,12 @@ Model Router is an orchestration skill that intelligently selects the appropriat
 - **Scalable automation**: When building agent workflows with automatic model selection
 
 ## The Process
+1. Validate input and check prerequisites
+2. Initialize required connections and contexts
+3. Execute core operation with monitoring
+4. Validate output against expected format
+5. Deliver results and log execution summary
+
 
 ### Step 1: Task Complexity Assessment
 
@@ -124,6 +130,13 @@ interface SubagentResult {
 ```
 
 ## Commands
+| Command | Description |
+|---------|-------------|
+| `status` | Check current state and health |
+| `run` | Execute the primary operation |
+| `list` | Show available items or resources |
+| `help` | Display usage information |
+
 
 ### Route Task with Explicit Model
 
@@ -214,6 +227,14 @@ The router auto-detects task type:
 - Technical implementation
 
 ## Usage Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Trading Analysis
 

@@ -44,6 +44,11 @@ Helm is the Kubernetes package manager. Securing Helm deployments requires valid
 
 ## Chart Provenance and Integrity
 
+This section covers chart provenance and integrity for securing helm chart deployments.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Sign a Helm Chart
 
 ```bash
@@ -69,6 +74,11 @@ cat mychart-0.1.0.tgz.prov
 
 ## Template Security Scanning
 
+This section covers template security scanning for securing helm chart deployments.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Render and Scan Templates
 
 ```bash
@@ -164,6 +174,11 @@ spec:
 
 ## Secrets Management
 
+This section covers secrets management for securing helm chart deployments.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Use External Secrets (Not Helm Values)
 
 ```yaml
@@ -286,3 +301,15 @@ jobs:
 8. **Lint strictly** in CI with `--strict` flag
 9. **Review third-party charts** before deploying to production
 10. **Use Helm test hooks** to validate deployments post-install
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

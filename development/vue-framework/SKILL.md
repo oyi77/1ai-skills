@@ -3,6 +3,7 @@ name: vue-framework
 description: Vue.js 3 development — Composition API, Pinia, Vue Router, Nuxt, SSR/SSG patterns
 ---
 
+
 ## Overview
 
 Build modern web applications with Vue.js 3 — Composition API reactivity, Pinia state management, Vue Router, and Nuxt 3 for SSR/SSG.
@@ -26,6 +27,26 @@ Build modern web applications with Vue.js 3 — Composition API reactivity, Pini
 - Progressive web apps
 
 ## Pseudo Code
+
+The vue-framework workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# vue-framework primary flow
+input = prepare(raw_data)
+result = process(input, config={composition, development, framework, nuxt, patterns})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Composition API Component
 
@@ -117,3 +138,20 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 - **Dynamic imports**: Lazy-load routes with `() => import()`
 - **Provide/Inject**: Share data across component trees
 - **Suspense**: Handle async components with loading states
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

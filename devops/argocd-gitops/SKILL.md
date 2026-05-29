@@ -3,6 +3,7 @@ name: argocd-gitops
 description: ArgoCD GitOps — declarative continuous delivery, application sync, drift detection, multi-cluster
 ---
 
+
 ## Overview
 
 ArgoCD is a declarative GitOps continuous delivery tool for Kubernetes. Monitors Git repos for changes and automatically syncs desired state to clusters with drift detection.
@@ -25,6 +26,26 @@ ArgoCD is a declarative GitOps continuous delivery tool for Kubernetes. Monitors
 - Compliance requirements for audit trails
 
 ## Pseudo Code
+
+The argocd-gitops workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# argocd-gitops primary flow
+input = prepare(raw_data)
+result = process(input, config={application, argocd, cluster, continuous, declarative})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Application CRD
 ```yaml
@@ -128,3 +149,20 @@ argocd app history myapp
 - **Health checks**: custom health assessment for CRDs
 - **Notifications**: Slack/Email on sync status changes
 - **App of Apps**: single app manages other apps
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

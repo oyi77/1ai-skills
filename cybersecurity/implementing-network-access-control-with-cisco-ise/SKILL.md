@@ -49,6 +49,11 @@ Cisco Identity Services Engine (ISE) provides centralized network access control
 
 ## Core Concepts
 
+This section covers core concepts for implementing network access control with cisco ise.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 802.1X Architecture
 
 The 802.1X framework involves three components:
@@ -83,6 +88,11 @@ The 802.1X framework involves three components:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure ISE for Active Directory Integration
 
 Navigate to **Administration > Identity Management > External Identity Sources > Active Directory**:
@@ -332,6 +342,22 @@ test aaa server radius ISE-PRIMARY username testuser password testpass
 - **CoA Support** - Ensure Change of Authorization is configured for dynamic policy updates
 - **High Availability** - Deploy ISE in a Primary/Secondary node pair with PAN failover
 - **Certificate Infrastructure** - Use machine certificates for EAP-TLS for strongest authentication
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

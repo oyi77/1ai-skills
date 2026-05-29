@@ -57,6 +57,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Classify Assets and Define Recovery Objectives
 
 Map all systems into recovery tiers based on business impact:
@@ -235,6 +240,11 @@ Document restore test results and maintain a recovery runbook with step-by-step 
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Ransomware Backup Strategy assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Ransomware Backup Strategy response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Financial Services Firm Implementing Ransomware-Resilient Backup
 
 **Context**: A mid-size bank with 500 servers, 200TB of data, and regulatory requirements for 7-year retention must redesign backup after a peer institution was hit by ransomware. Current backups use a single Veeam repository on a Windows server joined to the production domain.
@@ -253,6 +263,20 @@ Document restore test results and maintain a recovery runbook with step-by-step 
 - Configuring immutable retention periods shorter than the dwell time of typical ransomware (average 21 days), allowing attackers to wait for immutability to expire
 - Testing only individual VM restores without testing full application stack recovery including dependencies
 - Forgetting to back up backup server configuration (Veeam config database, encryption keys) separately from the backup infrastructure itself
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

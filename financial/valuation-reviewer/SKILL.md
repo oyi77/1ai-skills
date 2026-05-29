@@ -31,6 +31,10 @@ Ingests GP (General Partner) packages, runs valuation templates, and stages LP r
 
 ## Implementation:!
 
+
+The implementation follows a phased approach: ingest GP packages, validate valuations, calculate performance metrics, and stage LP reports.
+
+
 ### Phase 1: Ingest GP Package!
 
 **Package Components:**

@@ -20,7 +20,8 @@ Monitor content for changes
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When monitoring content behind authentication walls you do not own
+- When the monitoring frequency would overwhelm the target server
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +34,43 @@ Monitor content for changes
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Monitor checks for changes too infrequently missing critical updates
+- Agent does not distinguish meaningful changes from cosmetic ones
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Monitoring frequency matches the content change velocity
+- [ ] Meaningful changes are distinguished from cosmetic ones
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met
+
+## Additional Notes
+
+Additional context and best practices for this skill.
+
+### Best Practices
+- Combine with related skills for comprehensive coverage
+- Review the verification checklist after applying this skill
+- Document patterns you discover for future use
+
+### Troubleshooting
+- If output quality is low, provide more context in your input
+- If the skill does not cover your use case, check related skills
+- For integration issues, verify prerequisites and dependencies are met

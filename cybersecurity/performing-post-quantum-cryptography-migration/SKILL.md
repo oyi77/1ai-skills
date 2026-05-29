@@ -51,6 +51,11 @@ nist_csf:
 
 ## Core Concepts
 
+This section covers core concepts for performing post quantum cryptography migration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### NIST Post-Quantum Cryptography Standards
 
 NIST published three finalized PQC standards on August 13, 2024:
@@ -116,6 +121,11 @@ Shared Secret = KDF(X25519_shared || MLKEM768_shared)
 
 ## Instructions
 
+This section covers instructions for performing post quantum cryptography migration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Phase 1: Cryptographic Inventory Scanning
 
 The first step in PQC migration is discovering all cryptographic algorithm usage
@@ -276,6 +286,10 @@ The roadmap prioritizes systems by:
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Full Assessment Pipeline
 
 ```bash
@@ -321,6 +335,22 @@ python scripts/agent.py --action scan_tls --target server.example.com:443
 - [ ] Performance impact of PQC algorithms benchmarked under production load
 - [ ] "Harvest now, decrypt later" risk assessed for sensitive data channels
 - [ ] Certificate Authority PQC readiness confirmed for certificate issuance
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

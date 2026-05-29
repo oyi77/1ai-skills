@@ -42,6 +42,11 @@ Email sandboxing detonates suspicious attachments and URLs in isolated environme
 
 ## Key Concepts
 
+This section covers key concepts for implementing email sandboxing with proofpoint.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Proofpoint TAP Capabilities
 1. **Attachment sandboxing**: Detonates files in virtual machines (Windows, macOS, Android)
 2. **URL Defense**: Rewrites URLs, detonates at time-of-click
@@ -60,6 +65,11 @@ Email sandboxing detonates suspicious attachments and URLs in isolated environme
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Configure TAP in Proofpoint
 - Enable TAP for inbound email policy
 - Configure sandbox profiles (attachment types to detonate)
@@ -92,6 +102,22 @@ Recommended attachment policy:
 - Configure syslog/API export to SIEM
 - Create correlation rules for TAP alerts
 - Set up automated response workflows
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Tools & Resources
 - **Proofpoint TAP**: https://www.proofpoint.com/us/products/advanced-threat-protection

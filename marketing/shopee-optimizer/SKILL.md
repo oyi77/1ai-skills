@@ -3,6 +3,7 @@ name: shopee-optimizer
 description: Shopee product management automation - listings, pricing, inventory, and order processing. Use when managing Shopee product listings, automating price adjustments based on competitors, syncing inventory across variants, processing orders with templates, tracking analytics, generating SEO-optimized content, or bulk uploading products from CSV files.
 ---
 
+
 # Shopee Optimizer Skill 🛍️
 
 **Production-ready** automation untuk Shopee product management & optimization.
@@ -23,6 +24,13 @@ Shopee Optimizer provides comprehensive automation for managing Shopee store ope
 - **Competitor tracking**: Following competitor pricing and stock levels
 
 ## The Process
+
+- Configure across, adjustments, analytics, automating, automation settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Step 1: Authentication Setup
 

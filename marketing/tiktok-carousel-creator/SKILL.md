@@ -1,20 +1,22 @@
 ---
 name: tiktok-carousel-creator
-description: >
-  Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge API.
-  Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,
-  post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation.
-  Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing or
-  video creation (this is for photo slideshows only), non-TikTok social media platforms, or any task unrelated
-  to creating visual slideshow content for TikTok.
-metadata:
+description: |
+  >
+    Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge API.
+    Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,
+    post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation.
+    Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing or
+    video creation (this is for photo slideshows only), non-TikTok social media platforms, or any task unrelated
+    to creating visual slideshow content for TikTok.
+metadata: |
   {
-    "openclaw": {
-      "emoji": "📱",
-      "requires": { "bins": ["ffmpeg", "curl"], "env": ["PEXELS_API_KEY"] }
+      "openclaw": {
+        "emoji": "📱",
+        "requires": { "bins": ["ffmpeg", "curl"], "env": ["PEXELS_API_KEY"] }
+      }
     }
-  }
 ---
+
 
 # TikTok Carousel Creator (Pexels + FFmpeg + PostBridge)
 
@@ -36,6 +38,12 @@ Topic Research → Pexels Image Search → FFmpeg Text Overlay → PostBridge Up
 ---
 
 ## Prerequisites
+
+- Python 3.10+ or Node.js 18+
+- API credentials configured in `.env`
+- Network access to target services
+- Understanding of account, analytics, carousel, carousels, collections concepts
+
 
 ### 1. Pexels API Key
 
@@ -146,6 +154,13 @@ Aspect ratio: 9:16 (native TikTok)
 ---
 
 ## Usage
+
+- Configure account, analytics, carousel, carousels, collections settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Create Slideshow
 
@@ -269,6 +284,13 @@ python3 tiktok_slideshow.py upload fitness_motivation_20260306_044512
 
 ## How It Works
 
+- Configure account, analytics, carousel, carousels, collections settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Step 1: Search Images with Pexels API
 
 ```bash
@@ -363,6 +385,13 @@ clawhub publish \
 ---
 
 ## Troubleshooting
+
+- Configure account, analytics, carousel, carousels, collections settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Pexels API Key Not Set
 
@@ -519,3 +548,28 @@ media_id = r.json()["media_id"]
 requests.put(r.json()["upload_url"], data=open(path,"rb"), headers={"Content-Type": "image/jpeg"})
 # Then use: "media": [media_id] in post creation
 ```
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

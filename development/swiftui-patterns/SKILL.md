@@ -3,6 +3,7 @@ name: swiftui-patterns
 description: SwiftUI native iOS/macOS development — declarative UI, Combine, Core Data, widgets, App Clips
 ---
 
+
 ## Overview
 
 SwiftUI is Apple's declarative UI framework for building apps across all Apple platforms (iOS, macOS, watchOS, tvOS, visionOS). It uses a syntax-driven approach where you describe what the UI should look like, and SwiftUI handles the rendering.
@@ -29,6 +30,26 @@ SwiftUI is Apple's declarative UI framework for building apps across all Apple p
 - Building apps for Apple Vision Pro
 
 ## Pseudo Code
+
+The swiftui-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# swiftui-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={clips, combine, core, data, declarative})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Views and Modifiers
 ```swift
@@ -271,6 +292,14 @@ class APIClient {
 
 ## Common Patterns
 
+Proven patterns for swiftui-patterns usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Form Validation
 ```swift
 struct FormView: View {
@@ -342,3 +371,20 @@ struct SettingsView: View {
     }
 }
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

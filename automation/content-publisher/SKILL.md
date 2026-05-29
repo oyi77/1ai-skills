@@ -1,8 +1,7 @@
 ---
 name: content-publisher
 description: Automates drafting and publishing articles to Substack and Medium with Apify and Notion integration
-allowed-tools:
-  - Bash(apify:*)
+allowed-tools: - Bash(apify:*)
   - MCP(apify:*)
   - MCP(notion:*)
   - MCP(slack:*)
@@ -46,6 +45,9 @@ Automates drafting and publishing articles to Substack and Medium with workflow 
 
 ## Required Tools
 
+Tools and dependencies needed before using this skill.
+
+
 ### MCP Servers
 
 #### Apify MCP (Publishing Automation)
@@ -83,6 +85,9 @@ Automates drafting and publishing articles to Substack and Medium with workflow 
 
 ## Authentication
 
+Authentication setup required for external service access.
+
+
 ### Setup
 
 1. **Apify Token**
@@ -108,6 +113,9 @@ Automates drafting and publishing articles to Substack and Medium with workflow 
 - **Editorial Calendar**: Track in Notion
 
 ## Pseudo Code
+
+Implementation patterns for common use cases with this skill.
+
 
 ### Example 1: Draft Article
 
@@ -206,6 +214,9 @@ await notion.updatePage(draftId, { status: "Published" });
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Pattern: Dry-Run Publishing
 
 ```typescript
@@ -235,7 +246,8 @@ async function publishWithDryRun(content, platform, dryRun = true) {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When publishing requires legal review or compliance sign-off
+- When the content platform does not support API-based publishing
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -248,14 +260,16 @@ async function publishWithDryRun(content, platform, dryRun = true) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Publisher pushes content without proofreading or QA review
+- Agent does not verify platform-specific formatting requirements
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content passes proofreading and QA before publishing
+- [ ] Platform-specific formatting is verified for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

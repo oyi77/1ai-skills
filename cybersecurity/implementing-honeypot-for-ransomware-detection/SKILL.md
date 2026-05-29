@@ -54,6 +54,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy Canary Files on File Shares
 
 Place canary files in strategic locations that ransomware will encounter during encryption:
@@ -321,6 +326,11 @@ def send_ransomware_alert(source_ip: str, canary_path: str, action: str):
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Honeypot For Ransomware Detection assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Honeypot For Ransomware Detection response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Early Detection of BlackByte Ransomware via Canary Files
 
 **Context**: A retail company deploys canary files across 200 file shares and 3 honeypot shares. At 3:00 AM on a Saturday, the canary monitoring system generates 47 alerts in rapid succession as canary files across 12 shares are modified within 90 seconds.
@@ -338,6 +348,21 @@ def send_ransomware_alert(source_ip: str, canary_path: str, action: str):
 - Using obvious canary names that sophisticated ransomware may recognize and avoid
 - Not testing canary alerting end-to-end, discovering during an actual incident that alerts are not reaching the SOC
 - Generating excessive canary alerts during legitimate file migrations or antivirus scans, causing alert fatigue
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

@@ -42,6 +42,11 @@ Covenant is a collaborative .NET C2 framework for red teamers that provides a Sw
 
 ## Steps
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Authenticate to Covenant API
 Obtain a JWT token by posting credentials to /api/users/login endpoint.
 
@@ -60,3 +65,17 @@ Generate an operations report documenting all actions, timestamps, and findings.
 ## Expected Output
 
 JSON report with listener configuration, active grunts, executed tasks, and task output for engagement documentation.
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding

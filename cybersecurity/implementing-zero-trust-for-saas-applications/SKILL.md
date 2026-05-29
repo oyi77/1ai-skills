@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Federate SaaS Authentication Through Identity Provider
 
 Centralize authentication for all SaaS applications through a single IdP.
@@ -261,6 +266,11 @@ curl -X GET "https://api.cloudappsecurity.com/api/v1/security_config/" \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Zero Trust For Saas Applications assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Zero Trust For Saas Applications response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Securing Microsoft 365 and Salesforce for 1,000-User Organization
 
 **Context**: A professional services firm with 1,000 users uses Microsoft 365, Salesforce, Slack, and 20+ other SaaS apps. Several data breaches in the industry drive a zero trust initiative for all SaaS access.
@@ -276,6 +286,20 @@ curl -X GET "https://api.cloudappsecurity.com/api/v1/security_config/" \
 8. Set up weekly automated posture reports for security leadership
 
 **Pitfalls**: Conditional access policies need break-glass exclusions. Some legacy SaaS apps may not support modern authentication. Session controls require proxy-based CASB which can impact performance. OAuth app revocation may break integrations; coordinate with app owners first.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

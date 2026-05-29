@@ -47,6 +47,11 @@ GitLab provides an integrated DevSecOps platform that embeds security testing di
 
 ## Core Security Scanning Stages
 
+This section covers core security scanning stages for building devsecops pipeline with gitlab ci.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Static Application Security Testing (SAST)
 
 SAST analyzes source code for vulnerabilities before compilation. GitLab supports 14+ languages using analyzers such as Semgrep, SpotBugs, Gosec, Bandit, and NodeJsScan. The simplest inclusion uses GitLab's managed templates.
@@ -69,6 +74,11 @@ Scans commits for accidentally committed credentials, API keys, tokens, and priv
 
 ## Implementation
 
+This section covers implementation for building devsecops pipeline with gitlab ci.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Complete Pipeline Configuration
 
 ```yaml
@@ -217,6 +227,11 @@ Create `.gitlab/sast-ruleset.toml` to customize analyzer behavior:
 
 ## Security Dashboard and Vulnerability Management
 
+This section covers security dashboard and vulnerability management for building devsecops pipeline with gitlab ci.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Vulnerability Report
 
 GitLab consolidates all scanner findings into a single Vulnerability Report accessible at Security & Compliance > Vulnerability Report. Each vulnerability includes:
@@ -248,6 +263,22 @@ Every merge request displays a security scanning widget showing:
 | Critical vulnerability MTTR | Time from detection to resolution for critical findings | < 48 hours |
 | False positive rate | Percentage of dismissed-as-false-positive findings | < 15% |
 | Secret detection block rate | Percentage of secret commits blocked by push rules | > 99% |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

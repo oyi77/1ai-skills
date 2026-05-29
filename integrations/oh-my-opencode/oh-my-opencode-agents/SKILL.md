@@ -18,6 +18,11 @@ Oh My OpenCode provides a curated suite of specialized agents, each optimized fo
 - **Explore**: When you need rapid codebase exploration, pattern discovery across modules, or quick file/symbol location
 
 ## The Agent Team
+- Primary agent handles core task execution
+- Validator agent checks output quality
+- Reporter agent formats and delivers results
+- Each agent operates with clear input/output contracts
+
 
 ### Sisyphus — Main Orchestrator Agent
 
@@ -181,6 +186,10 @@ For optimal performance, match agents to models:
 | Explore | Grok Code Fast 1 | Any fast model |
 
 ## Parallel Execution Patterns
+This section covers parallel execution patterns for the oh-my-opencode-agents skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Pattern 1: Multi-Agent Discovery
 ```
@@ -212,6 +221,11 @@ For optimal performance, match agents to models:
 ```
 
 ## Skill Integration
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### Required Workflow Skills
 - **superpowers:using-git-worktrees** — REQUIRED: Isolated workspace
@@ -235,6 +249,10 @@ All agents must follow:
 3. **Before Completion**: Verify 100% of requirements met
 
 ## Common Mistakes
+This section covers common mistakes for the oh-my-opencode-agents skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Sisyphus
 - Providing step-by-step instructions ( defeats autonomy)

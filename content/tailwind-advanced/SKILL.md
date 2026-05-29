@@ -3,6 +3,8 @@ name: tailwind-advanced
 description: Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems
 ---
 
+
+
 ## Overview
 
 Advanced Tailwind CSS patterns for production applications — custom plugins, container queries, complex animations, design system integration, and performance optimization beyond basic utility classes.
@@ -24,6 +26,44 @@ Advanced Tailwind CSS patterns for production applications — custom plugins, c
 - Custom utilities that repeat across the project
 
 ## Pseudo Code
+
+The tailwind-advanced workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# tailwind-advanced primary flow
+input = prepare(raw_data)
+result = process(input, config={advanced, animations, container, custom, dark})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# tailwind-advanced primary flow
+input = prepare(raw_data)
+result = process(input, config={advanced, animations, container, custom, dark})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Custom Plugin
 ```js
@@ -111,3 +151,21 @@ module.exports = {
 - **Variant stacking**: `dark:md:hover:bg-gray-800`
 - **@apply sparingly**: Only for repeated patterns in component CSS
 - **Content config**: `content: ["./src/**/*.{ts,tsx}"]` for proper purging
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

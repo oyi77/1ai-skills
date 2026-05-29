@@ -3,6 +3,7 @@ name: playwright-e2e
 description: End-to-end test automation with Playwright — cross-browser testing, page objects, and CI integration
 ---
 
+
 ## Overview
 
 Playwright-based E2E testing for reliable, fast, cross-browser test automation. Covers test design, page object patterns, fixtures, parallel execution, and CI integration.
@@ -23,6 +24,26 @@ Playwright-based E2E testing for reliable, fast, cross-browser test automation. 
 - CI pipeline needs fast, parallel test execution
 
 ## Pseudo Code
+
+The playwright-e2e workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# playwright-e2e primary flow
+input = prepare(raw_data)
+result = process(input, config={automation, browser, cross, e2e, integration})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Page Object Pattern
 ```typescript
@@ -67,3 +88,20 @@ const test = base.extend({
 - **Page objects**: Encapsulate page interactions in classes
 - **Auto-wait**: Playwright auto-waits — avoid manual `waitFor` when possible
 - **Trace on failure**: Enable trace recording for debugging CI failures
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

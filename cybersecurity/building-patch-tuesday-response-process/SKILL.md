@@ -44,6 +44,11 @@ Microsoft releases security updates on the second Tuesday of each month ("Patch 
 
 ## Core Concepts
 
+This section covers core concepts for building patch tuesday response process.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Patch Tuesday Timeline
 
 | Day | Activity | Owner |
@@ -84,6 +89,11 @@ Microsoft releases security updates on the second Tuesday of each month ("Patch 
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Pre-Patch Tuesday Preparation (Monday before)
 ```
 Preparation Checklist:
@@ -216,3 +226,17 @@ Post-Deployment Validation:
 - performing-cve-prioritization-with-kev-catalog
 - implementing-vulnerability-remediation-sla
 - implementing-patch-management-workflow
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items

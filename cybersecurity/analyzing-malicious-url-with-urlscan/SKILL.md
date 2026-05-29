@@ -44,6 +44,11 @@ URLScan.io is a free service for scanning and analyzing suspicious URLs. It capt
 
 ## Key Concepts
 
+This section covers key concepts for analyzing malicious url with urlscan.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### URLScan Capabilities
 1. **Safe browsing**: Renders URLs in isolated Chromium instance
 2. **Screenshot capture**: Visual snapshot of the rendered page
@@ -66,6 +71,11 @@ URLScan.io is a free service for scanning and analyzing suspicious URLs. It capt
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Submit URL to URLScan
 ```
 Web: Navigate to https://urlscan.io and submit the suspicious URL
@@ -89,6 +99,21 @@ API: POST https://urlscan.io/api/v1/scan/
 
 ### Step 4: Cross-Reference with Threat Intelligence
 Use the `scripts/process.py` to automate URL scanning, extract IOCs, and cross-reference with VirusTotal, PhishTank, and Google Safe Browsing.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Resources
 - **URLScan.io**: https://urlscan.io/

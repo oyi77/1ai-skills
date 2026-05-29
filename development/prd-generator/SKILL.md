@@ -2,6 +2,7 @@
 name: prd-generator
 description: Generate detailed Product Requirement Documents (PRDs) from feature descriptions. Create structured specifications ready for implementation.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Prd Generator"
@@ -49,6 +50,13 @@ Generate detailed Product Requirement Documents from feature descriptions. Creat
 
 ## PRD Structure
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Executive Summary
 ```
 ## Overview
@@ -83,6 +91,13 @@ Generate detailed Product Requirement Documents from feature descriptions. Creat
 ```
 ## User Stories
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Story 1: [Title]
 As a [user type],
 I want [feature],
@@ -99,6 +114,14 @@ So that [benefit].
 ```
 ## Requirements
 
+System requirements for prd-generator.
+
+- Runtime: Python 3.10+ or Node.js 18+
+- Memory: 512MB minimum, 2GB recommended
+- Disk: 100MB for dependencies, variable for output
+- Network: HTTPS outbound to configured APIs
+
+
 ### REQ-001: [Title]
 **Description**: [What]
 **Type**: [Feature/Enhancement/Bug Fix]
@@ -110,6 +133,13 @@ So that [benefit].
 ### 6. Technical Requirements
 ```
 ## Technical
+
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Architecture
 - [Component changes]
@@ -131,6 +161,13 @@ So that [benefit].
 ```
 ## Design
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Layout
 - [Screens]
 - [Navigation]
@@ -149,6 +186,13 @@ So that [benefit].
 ```
 ## Testing
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Unit Tests
 - [Test cases]
 
@@ -166,6 +210,13 @@ So that [benefit].
 ```
 ## Rollout
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Phased Release
 - Phase 1: [X]% - [Date]
 - Phase 2: [Y]% - [Date]
@@ -178,6 +229,13 @@ So that [benefit].
 ### 10. Metrics & Monitoring
 ```
 ## Analytics
+
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Key Metrics
 - [Metric 1]
@@ -213,6 +271,13 @@ Before generating PRD, ask:
 ```
 ## Feature: User Dashboard
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Problem
 Users need a central place to view their activity and metrics.
 
@@ -235,6 +300,13 @@ So that I can track my progress.
 
 ## Integration
 
+- Configure create, descriptions, detailed, documents, feature settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### With Brainstorming
 ```
 brainstorming → prd-generator → code-reviewer → implementation
@@ -243,6 +315,15 @@ brainstorming → prd-generator → code-reviewer → implementation
 ---
 
 ## Best Practices
+
+Recommended practices for prd-generator.
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Be specific and measurable  
@@ -269,7 +350,8 @@ brainstorming → prd-generator → code-reviewer → implementation
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the product requirements are already frozen by executive decision
+- When the PRD involves regulatory requirements that need legal drafting
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -282,14 +364,16 @@ brainstorming → prd-generator → code-reviewer → implementation
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- PRD lacks clear acceptance criteria making validation impossible
+- Agent does not identify technical feasibility constraints
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Acceptance criteria are specific, measurable, and testable
+- [ ] Technical feasibility is assessed for all requirements
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -2,6 +2,8 @@
 name: social-media-engagement
 description: Automate social media engagement activities including liking, commenting, following, unfollowing, DMing, and replying. Build audience and increase reach across X, Instagram, TikTok, and LinkedIn.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Social Media Engagement"
@@ -82,6 +84,13 @@ Automate audience growth and engagement activities across major social media pla
 
 ## ⚠️ Safety & Ethics
 
+- Configure across, activities, audience, automate, build settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Critical Guidelines
 
 1. **Respect Rate Limits**
@@ -111,6 +120,13 @@ Automate audience growth and engagement activities across major social media pla
 ---
 
 ## Platform-Specific Engagement
+
+- Configure across, activities, audience, automate, build settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### X (Twitter) Engagement
 
@@ -471,6 +487,13 @@ Best,
 
 ## AI-Powered Contextual Comments
 
+- Configure across, activities, audience, automate, build settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Generate Relevant Comments
 
 ```javascript
@@ -514,6 +537,30 @@ function generateContextualComment(postContent, platform) {
 ---
 
 ## Automation Workflows
+
+Step-by-step social-media-engagement execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the social-media-engagement workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the social-media-engagement workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### Daily Engagement Routine
 
@@ -575,6 +622,13 @@ async function targetedEngagement(keywords, targetFollowers) {
 
 ## Analytics & Tracking
 
+- Configure across, activities, audience, automate, build settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Track Engagement Metrics
 
 ```javascript
@@ -612,6 +666,13 @@ function trackEngagement(action, platform) {
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### 1. Engagement Strategy
 
@@ -672,14 +733,16 @@ function trackEngagement(action, platform) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

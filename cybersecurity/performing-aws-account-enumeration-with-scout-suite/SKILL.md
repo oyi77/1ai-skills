@@ -47,6 +47,10 @@ ScoutSuite is an open-source multi-cloud security auditing tool developed by NCC
 
 ## Installation and Setup
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Install ScoutSuite
 
 ```bash
@@ -135,6 +139,11 @@ Attach the AWS managed policy `SecurityAudit` and `ViewOnlyAccess` to the IAM us
 
 ## Running ScoutSuite
 
+This section covers running scoutsuite for performing aws account enumeration with scout suite.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Full AWS scan
 
 ```bash
@@ -193,6 +202,11 @@ ScoutSuite generates an interactive HTML report stored locally. The report inclu
 
 ## Interpreting Findings
 
+This section covers interpreting findings for performing aws account enumeration with scout suite.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Severity Levels
 
 - **Danger (Red)**: Critical security issues requiring immediate remediation (e.g., S3 buckets with public write access)
@@ -249,6 +263,22 @@ scout gcp --user-account
 # AWS with specific profile
 scout aws --profile production
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

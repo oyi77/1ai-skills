@@ -57,6 +57,10 @@ python scripts/agent.py --splunk-url https://localhost:8089 --username admin --p
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Detect RDP Lateral Movement Chain
 ```
 index=wineventlog (EventCode=4624 Logon_Type=10) OR (EventCode=7045)
@@ -82,3 +86,16 @@ detection:
   condition: pipe_created | near service_installed
 level: high
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

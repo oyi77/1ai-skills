@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install and Authenticate Snyk CLI
 
 ```bash
@@ -207,6 +212,11 @@ snyk test --json | jq '.licensesPolicy'
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Sca Dependency Scanning With Snyk assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Sca Dependency Scanning With Snyk response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Triaging a Critical Transitive Dependency Vulnerability
 
 **Context**: Snyk reports a critical RCE vulnerability in a transitive dependency (log4j in a Java application). The direct dependency has not released a patch.
@@ -221,6 +231,20 @@ snyk test --json | jq '.licensesPolicy'
 7. Monitor the direct dependency for a release that updates the transitive
 
 **Pitfalls**: Ignoring transitive vulnerabilities because "we don't use that function directly" is risky. Attackers can chain vulnerabilities across dependency boundaries. Version overrides can break API compatibility between the direct and transitive dependency.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

@@ -1,20 +1,25 @@
 ---
 name: tiktok-slideshow
-description: >
-  Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge API.
-  Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,
-  post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation.
-  Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing or
-  video creation (this is for photo slideshows only), non-TikTok social media platforms, or any task unrelated
-  to creating visual slideshow content for TikTok.
-metadata:
-  {
-    "openclaw": {
-      "emoji": "📱",
-      "requires": { "bins": ["ffmpeg", "curl"], "env": ["PEXELS_API_KEY"] }
-    }
-  }
+description: |
+  |
+    >
+      Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge API.
+      Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,
+      post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation.
+      Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing or
+      video creation (this is for photo slideshows only), non-TikTok social media platforms, or any task unrelated
+      to creating visual slideshow content for TikTok.
+metadata: |
+  |
+    {
+        "openclaw": {
+          "emoji": "📱",
+          "requires": { "bins": ["ffmpeg", "curl"], "env": ["PEXELS_API_KEY"] }
+        }
+      }
 ---
+
+
 
 # TikTok Slideshow (Pexels + FFmpeg + PostBridge)
 
@@ -36,6 +41,12 @@ Topic Research → Pexels Image Search → FFmpeg Text Overlay → PostBridge Up
 ---
 
 ## Prerequisites
+
+- Python 3.10+ or Node.js 18+
+- API credentials configured in `.env`
+- Network access to target services
+- Understanding of account, analytics, carousels, collections, content concepts
+
 
 ### 1. Pexels API Key
 
@@ -119,6 +130,30 @@ Aspect ratio: 9:16 (native TikTok)
 ---
 
 ## Complete Workflow
+
+Step-by-step tiktok-slideshow execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the tiktok-slideshow workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the tiktok-slideshow workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### Step 1: Search Images with Pexels API
 
@@ -584,3 +619,28 @@ media_id = r.json()["media_id"]
 requests.put(r.json()["upload_url"], data=open(path,"rb"))
 # Then use: "media": [media_id] in the post body
 ```
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

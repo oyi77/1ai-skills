@@ -67,7 +67,8 @@ feedback_summary:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the meta-skill would modify skills used by production systems
+- When the evolution or learning process cannot be rolled back if it fails
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -80,14 +81,16 @@ feedback_summary:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Meta-skill changes are applied without measuring performance impact
+- Agent does not verify that changes maintain backward compatibility
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Performance is measured before and after meta-skill changes
+- [ ] Backward compatibility is verified for all modifications
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

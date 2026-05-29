@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: API Endpoint Discovery and Object ID Mapping
 
 Enumerate all API endpoints and identify parameters that reference objects:
@@ -324,6 +329,11 @@ query {
 
 ## Common Scenarios
 
+**Scenario 1: Standard Testing Api For Broken Object Level Authorization assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Testing Api For Broken Object Level Authorization response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: E-Commerce API BOLA Assessment
 
 **Context**: An e-commerce platform exposes a REST API for its mobile app. The API uses sequential integer IDs for orders, users, and addresses. Two test accounts are provided: a regular customer (User A, ID 1001) and another customer (User B, ID 1002).
@@ -344,6 +354,22 @@ query {
 - Not testing nested resource paths where authorization may be checked on the parent but not the child resource
 - Missing BOLA in bulk/batch endpoints that accept arrays of object IDs
 - Not considering that different API versions (v1 vs v2) may have different authorization implementations
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

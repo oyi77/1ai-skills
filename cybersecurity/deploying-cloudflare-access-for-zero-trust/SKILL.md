@@ -55,6 +55,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Create a Cloudflare Tunnel to Internal Applications
 
 Install `cloudflared` and create a persistent tunnel to expose internal services.
@@ -344,6 +349,11 @@ curl -X POST "https://api.cloudflare.com/client/v4/graphql" \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Deploying Cloudflare Access For Zero Trust assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Deploying Cloudflare Access For Zero Trust response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Startup with 200 Employees Deploying Zero Trust from Scratch
 
 **Context**: A SaaS startup with 200 employees and no existing VPN wants to provide secure access to internal tools (Grafana, internal APIs, staging environments) running on AWS. Budget is limited, and the team has no dedicated security staff.
@@ -360,6 +370,22 @@ curl -X POST "https://api.cloudflare.com/client/v4/graphql" \
 9. Configure Logpush to send access logs to Datadog for monitoring
 
 **Pitfalls**: Cloudflare root certificate must be installed on all devices for TLS inspection to work; some applications may break with TLS interception. Tunnel failover requires running multiple `cloudflared` instances or using Cloudflare's replicas feature. Access policies should always include a default deny rule. WebSocket applications may require specific tunnel configuration.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

@@ -50,6 +50,11 @@ Enables extraction of AI-generated storyboards from viral TikTok Shop videos, in
 - Need creator/influencer analytics (use Kalodata creator endpoints)
 
 ## Core Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### 1. Storyboard Extraction
 Trigger AI analysis of any video and get complete scene breakdown:
@@ -121,6 +126,13 @@ result.contentIdeas.forEach((idea, i) => {
 ```
 
 ## API Reference
+| Endpoint/Method | Description |
+|----------------|-------------|
+| `GET /status` | Check service health and availability |
+| `POST /execute` | Run the primary operation |
+| `GET /results` | Retrieve operation results |
+| `DELETE /cache` | Clear cached data |
+
 
 ### StoryboardExtractor Class
 
@@ -208,6 +220,12 @@ interface ContentIdea {
 | **emotional** | Build connection, CTA at end | Engagement, conversions |
 
 ## Example Workflow
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Full Analysis Example
 ```typescript

@@ -54,6 +54,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Establish Keyword Monitoring via Commercial Services
 
 Configure dark web monitoring keywords in your CTI platform (e.g., Recorded Future Exposure module):
@@ -126,6 +131,22 @@ For each dark web finding:
 | **Operational Security (OPSEC)** | Protecting analyst identity and organizational affiliation during dark web investigation |
 | **Credential Stuffing** | Automated use of leaked username/password pairs against authentication systems |
 | **Stealer Logs** | Data packages exfiltrated by infostealer malware containing saved browser credentials, cookies, and session tokens |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Tools & Systems
 

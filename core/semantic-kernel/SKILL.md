@@ -25,6 +25,22 @@ Semantic Kernel is Microsoft's SDK for building AI agents and orchestrating AI p
 - Building RAG applications with enterprise data
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Kernel Setup
 
@@ -151,3 +167,19 @@ results = await memory.search(collection="docs", query="How to enable SSO?")
 | Planner loop | No valid function found | Improve function descriptions |
 | Token limit exceeded | Too many functions/context | Reduce plugins or summarize history |
 | Embedding dimension mismatch | Wrong embedding model | Ensure consistent embedding config |
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

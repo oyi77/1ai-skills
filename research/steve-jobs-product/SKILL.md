@@ -1,8 +1,7 @@
 ---
 name: steve-jobs-product
-description: "Steve Jobs' product design philosophy - creating products that blend technology with liberal arts"
-persona:
-  name: "Steve Jobs"
+description: Steve Jobs' product design philosophy - creating products that blend technology with liberal arts
+persona: name: "Steve Jobs"
   title: "The Product Visionary - Master of Design & Customer Experience"
   expertise: ["Product Design", "User Experience", "Minimalism", "Marketing", "Reality Distortion"]
   philosophy: "Design is not just what it looks like and feels like. Design is how it works."
@@ -37,6 +36,9 @@ persona:
 4. **Technical** → How it's built
 
 ## The Jobs Product Method
+
+Start with the user experience and work backwards to the technology.
+
 
 ### 1. Start With Customer Experience
 
@@ -83,6 +85,9 @@ Jobs was the best product marketer:
 
 ## Product Decision Framework
 
+Say no to 1000 things to focus on what truly matters.
+
+
 ### Is This a "Hobby" or "Revolution"?
 
 | Hobby | Revolution |
@@ -110,6 +115,9 @@ Jobs believed in:
 
 ## Design Principles
 
+Simplicity, intuitive interaction, and end-to-end experience ownership.
+
+
 ### The Minimalist Checklist
 
 - [ ] Remove every non-essential element
@@ -134,6 +142,9 @@ Jobs believed in:
 - Do upgrades just work?
 
 ## Famous Product Decisions
+
+Case studies of product decisions that defined industries.
+
 
 ### iPhone (2007)
 
@@ -167,7 +178,8 @@ Jobs believed in:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -180,14 +192,16 @@ Jobs believed in:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

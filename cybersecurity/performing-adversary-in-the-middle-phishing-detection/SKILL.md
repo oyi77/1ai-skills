@@ -44,6 +44,11 @@ Adversary-in-the-Middle (AiTM) phishing attacks use reverse-proxy infrastructure
 
 ## Key Concepts
 
+This section covers key concepts for performing adversary in the middle phishing detection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### How AiTM Works
 1. Victim receives phishing email with link to attacker-controlled domain
 2. Attacker domain runs reverse proxy that mirrors legitimate login page
@@ -71,6 +76,11 @@ Adversary-in-the-Middle (AiTM) phishing attacks use reverse-proxy infrastructure
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Deploy Phishing-Resistant MFA
 - Implement FIDO2 security keys or Windows Hello for Business for high-value accounts
 - Configure Conditional Access to require phishing-resistant MFA for admins
@@ -105,6 +115,22 @@ Adversary-in-the-Middle (AiTM) phishing attacks use reverse-proxy infrastructure
 - Monitor for email sending patterns indicating BEC follow-up
 - Alert on SharePoint/OneDrive mass download after session hijack
 - Track lateral movement from compromised account
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Tools & Resources
 - **Microsoft Entra ID Protection**: Risk-based Conditional Access

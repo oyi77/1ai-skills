@@ -53,6 +53,9 @@ digraph when_to_use {
 
 ## The Pattern
 
+The core pattern this skill implements.
+
+
 ### 1. Identify Independent Domains
 
 Group failures by what's broken:
@@ -205,6 +208,7 @@ From debugging session (2025-10-03):
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 

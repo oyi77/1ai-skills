@@ -51,6 +51,11 @@ Conduct systematic access reviews and certifications to ensure users have approp
 
 ## Key Concepts
 
+This section covers key concepts for performing access review and certification.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Access Review Types
 1. **User Access Review**: Manager certifies all entitlements for their direct reports
 2. **Entitlement Review**: Application owner certifies all users with specific entitlement
@@ -74,6 +79,11 @@ Conduct systematic access reviews and certifications to ensure users have approp
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Review Scope and Schedule
 - Identify in-scope applications and systems
 - Determine review frequency: quarterly (SOX), semi-annual, annual
@@ -138,3 +148,9 @@ Conduct systematic access reviews and certifications to ensure users have approp
 - [ ] Audit evidence package complete and archived
 - [ ] SOD violations identified and documented
 - [ ] Exceptions documented with business justification and expiry
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

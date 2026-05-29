@@ -1,11 +1,14 @@
 ---
 name: paperpod
 description: Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required.
-metadata:
-  author: PaperPod
-  version: "2.0.3"
-  homepage: https://paperpod.dev
+metadata: |
+  |
+    author: PaperPod
+      version: "2.0.3"
+      homepage: https://paperpod.dev
 ---
+
+
 persona:
   name: "Joe Rogan"
   title: "The Conversation Master - Master of Long-Form Content"
@@ -193,9 +196,34 @@ curl -X POST https://paperpod.dev/execute \
 ---
 
 ## Advanced: WebSocket (not recommended for normal workflows). For programmatic integrations or custom apps, connect via WebSocket. `GET https://paperpod.dev/docs` to learn more.
+
+Step-by-step paperpod execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the paperpod workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the paperpod workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the content requires original research or primary source reporting
+- When the output will be used in legally binding or regulatory contexts
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -208,14 +236,16 @@ curl -X POST https://paperpod.dev/execute \
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Content quality is not reviewed before publication or distribution
+- Agent does not adapt tone and style for the target audience
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content quality passes review before publication or distribution
+- [ ] Tone and style are appropriate for the target audience
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

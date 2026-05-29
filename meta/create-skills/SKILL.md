@@ -35,6 +35,12 @@ Autonomously generate new skills when gaps are identified. Works as the **creati
 - Safety validation fails for the generated content
 
 ## Skill Generation Process
+1. Validate input and check prerequisites
+2. Initialize required connections and contexts
+3. Execute core operation with monitoring
+4. Validate output against expected format
+5. Deliver results and log execution summary
+
 
 ### Step 1: Gap Analysis
 
@@ -108,6 +114,13 @@ Validate the generated skill passes all checks:
 7. Log generation for audit trail
 
 ## Templates
+```yaml
+name: skill-name
+description: Brief description of what this skill does
+domain: category
+tags: [tag1, tag2, tag3]
+```
+
 
 ### Basic Skill Template
 
@@ -136,10 +149,24 @@ description: Use when {trigger-conditions}
 3. {Step 3}
 
 ## Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 ### Example 1: {Title}
 {Example content}
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 ### {Problem 1}
 - {Solution}
 ```
@@ -179,6 +206,14 @@ persona:
 {Advanced features}
 
 ## Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 ### Example 1: {Title}
 ### Example 2: {Title}
 ### Example 3: {Title}
@@ -191,6 +226,11 @@ persona:
 ```
 
 ## Integration with Meta-Skills
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### With meta/find-skills
 
@@ -224,6 +264,14 @@ auto-learner records generation patterns:
 - Which domains need most new skills
 
 ## Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Example 1: Generate Marketing Skill
 
@@ -279,6 +327,12 @@ create-skills process:
 ```
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Generated skill quality too low
 - Review gap analysis for clarity
@@ -312,7 +366,8 @@ create-skills process:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Meta-skill changes are applied without measuring performance impact
+- Agent does not verify that changes maintain backward compatibility
 - Watch for shortcuts and skipped steps
 
 ## Verification

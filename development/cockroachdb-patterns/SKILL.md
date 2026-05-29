@@ -3,6 +3,7 @@ name: cockroachdb-patterns
 description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region
 ---
 
+
 ## Overview
 
 CockroachDB is a distributed SQL database that's wire-compatible with PostgreSQL. It provides serializable isolation, automatic sharding, geo-partitioning, and multi-region deployment out of the box.
@@ -26,6 +27,26 @@ CockroachDB is a distributed SQL database that's wire-compatible with PostgreSQL
 - Migrating from PostgreSQL to distributed architecture
 
 ## Pseudo Code
+
+The cockroachdb-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# cockroachdb-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={cockroachdb, compatible, distributed, isolation, multi})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Connection
 ```typescript
@@ -97,3 +118,20 @@ ALTER TABLE users SET LOCALITY REGIONAL BY ROW;
 - **Connection pooling**: Use PgBouncer or built-in connection handling
 - **Serializable retries**: Wrap transactions in retry loops for serialization errors
 - **Performance**: Use `EXPLAIN ANALYZE` to optimize distributed queries
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

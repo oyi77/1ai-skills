@@ -53,6 +53,10 @@ Splunk Search Processing Language (SPL) is the primary query language used in Sp
 
 ## Core SPL Detection Rule Patterns
 
+- **Follow the principle of least privilege** — use the minimum permissions needed for each task
+- **Document everything** — maintain logs of all actions, configurations, and findings
+- **Verify before acting** — confirm assumptions about the environment before making changes
+- **Automate repetitive steps** — script common workflows to reduce human error
 ### 1. Threshold-Based Detection
 
 Detects events exceeding a defined count within a time window.
@@ -140,6 +144,11 @@ index=wineventlog sourcetype=WinEventLog:Security EventCode=4104
 
 ## Building Correlation Searches in Splunk ES
 
+This section covers building correlation searches in splunk es for building detection rule with splunk spl.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Step-by-Step Process
 
 1. **Define the Use Case**: Map to MITRE ATT&CK technique and define what behavior to detect
@@ -184,6 +193,11 @@ index=wineventlog sourcetype=WinEventLog:Security EventCode=4104
 
 ## Performance Optimization
 
+This section covers performance optimization for building detection rule with splunk spl.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Use Data Models with tstats
 
 ```spl
@@ -210,6 +224,11 @@ index=wineventlog source="WinEventLog:Security" EventCode=4688
 
 ## Testing and Validation
 
+This section covers testing and validation for building detection rule with splunk spl.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Test Against Known Attack Patterns
 
 ```spl
@@ -245,6 +264,21 @@ index=notable
 | T1048 | Exfiltration Over C2 | bytes_out aggregation over time window |
 | T1053.005 | Scheduled Task | EventCode 4698 with suspicious command patterns |
 | T1003.001 | LSASS Memory | Process access to lsass.exe via Sysmon EventCode 10 |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

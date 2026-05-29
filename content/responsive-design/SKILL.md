@@ -3,6 +3,8 @@ name: responsive-design
 description: Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization
 ---
 
+
+
 ## Overview
 
 Responsive design that works across all devices. Covers mobile-first approach, breakpoint strategy, fluid typography, container queries, touch targets, and performance optimization.
@@ -23,6 +25,44 @@ Responsive design that works across all devices. Covers mobile-first approach, b
 - Need component-level responsive behavior
 
 ## Pseudo Code
+
+The responsive-design workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# responsive-design primary flow
+input = prepare(raw_data)
+result = process(input, config={breakpoints, container, design, first, fluid})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# responsive-design primary flow
+input = prepare(raw_data)
+result = process(input, config={breakpoints, container, design, first, fluid})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Mobile-First CSS
 ```css
@@ -60,3 +100,21 @@ body { font-size: clamp(1rem, 2vw, 1.125rem); }
 - **3 breakpoints**: Mobile (<768px), Tablet (768-1024px), Desktop (>1024px)
 - **44px touch targets**: All interactive elements minimum 44x44px on mobile
 - **Fluid everything**: Use `clamp()` for font-size, spacing, and widths
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

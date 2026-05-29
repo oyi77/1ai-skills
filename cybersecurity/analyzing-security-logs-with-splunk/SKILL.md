@@ -66,6 +66,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Scope the Investigation in Splunk
 
 Define search parameters based on incident triage data:
@@ -213,6 +218,11 @@ index=sysmon EventCode=1
 
 ## Common Scenarios
 
+**Scenario 1: Standard Analyzing Security Logs With Splunk assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Analyzing Security Logs With Splunk response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Investigating Credential Stuffing Leading to Account Takeover
 
 **Context**: Security operations receives an alert for multiple successful logins to a single account from geographically dispersed IP addresses within a 30-minute window.
@@ -229,6 +239,22 @@ index=sysmon EventCode=1
 - Searching only the last 24 hours when the credential stuffing may have occurred over weeks
 - Not checking for VPN logs that may show the same account authenticating from impossible travel distances
 - Failing to normalize timestamps across log sources in different time zones
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

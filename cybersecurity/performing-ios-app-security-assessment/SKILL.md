@@ -58,6 +58,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: IPA Static Analysis
 
 Extract and analyze the IPA binary before runtime testing:
@@ -246,6 +251,20 @@ ios hooking search classes Certificate
 - **App Transport Security enforcement**: ATS may block your proxy connections even after SSL pinning bypass. Verify the Info.plist ATS configuration allows your proxy's certificate chain.
 - **Code signing invalidation**: Patching an IPA with Frida Gadget invalidates the original code signature. You need a valid Apple Developer certificate to re-sign the patched IPA.
 - **Non-persistent modifications**: All Frida/Objection hooks are runtime-only and reset when the app restarts. Document findings and capture evidence immediately.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

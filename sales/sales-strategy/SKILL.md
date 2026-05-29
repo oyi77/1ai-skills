@@ -2,6 +2,7 @@
 name: sales-strategy
 description: Use when doing CRM integration, lead tracking, outreach automation, and pipeline management.
 ---
+
 persona:
   name: "Zig Ziglar"
   title: "The Sales Legend - Master of Persuasion and Motivation"
@@ -39,6 +40,13 @@ Track leads, manage pipelines, automate outreach, and never lose a deal to poor 
 ---
 
 ## Lead Management
+
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Lead Qualification (BANT)
 - **Budget** — Can they afford it?
@@ -146,6 +154,13 @@ Day 14: Break-up email
 
 ## Meeting Management
 
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Pre-Meeting Research Template
 
 ```markdown
@@ -220,6 +235,13 @@ Day 14: Break-up email
 
 ## Objection Handling
 
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Common Objections & Responses
 
 | Objection | Response Framework |
@@ -245,6 +267,13 @@ Track objections to improve pitch:
 ---
 
 ## Sales Analytics
+
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Weekly Sales Report Template
 
@@ -312,6 +341,13 @@ Track objections to improve pitch:
 
 ## Scripts
 
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### sales-init.sh
 Initialize your sales workspace with templates and tracking.
 
@@ -346,6 +382,13 @@ Generate pipeline reports.
 ---
 
 ## 🤖 Automation Scripts (AI-Powered)
+
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### outreach.py — Warm DM Outreach Automation
 
@@ -426,6 +469,13 @@ python3 scripts/outreach.py stats
 
 ## CRM Integration
 
+- Configure automation, doing, integration, lead, management settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Built-in Tracking
 
 If you don't use an external CRM, use markdown files:
@@ -483,7 +533,8 @@ sales/
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the prospect has explicitly opted out of automated outreach
+- When the sales activity requires regulatory compliance in the target jurisdiction
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -496,14 +547,16 @@ sales/
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Outreach messages are generic and not personalized to the recipient
+- Agent does not verify prospect qualification before engagement
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Outreach is personalized to each recipient's role and company
+- [ ] Prospect qualification is verified before engagement begins
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

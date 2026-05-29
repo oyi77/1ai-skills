@@ -2,6 +2,7 @@
 name: analytics-dashboard
 description: Track performance across all platforms. Monitor social media metrics, ad performance, website analytics, and revenue. Generate automated reports and identify trends for data-driven decisions.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Analytics Dashboard"
@@ -36,6 +37,13 @@ persona:
 Unified analytics dashboard for 1-man company. Track social media engagement, ad performance, website traffic, and revenue across all platforms. Generate automated reports and identify trends.
 
 ## Metrics Tracked
+
+- Configure across, analytics, automated, dashboard, data settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Social Media Analytics
 ```javascript
@@ -105,6 +113,13 @@ const revenueMetrics = {
 
 ## Automated Reports
 
+- Configure across, analytics, automated, dashboard, data settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Daily Report
 ```
 📊 Daily Report - Feb 17, 2026
@@ -145,6 +160,13 @@ Action Items:
 
 ## Integration
 
+- Configure across, analytics, automated, dashboard, data settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Data Sources
 - Social media platforms (X, Instagram, TikTok, LinkedIn)
 - Google Analytics (website)
@@ -175,7 +197,8 @@ const chartData = {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -188,14 +211,16 @@ const chartData = {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

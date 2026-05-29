@@ -1,25 +1,28 @@
 ---
 name: gemini-image-generator
 description: Use when generating professional posed product images for e-commerce using Gemini AI with optimized prompts
-persona:
-  name: "Ansel Adams"
-  title: "Master of Visual Composition"
-  expertise: ["lighting mastery", "golden hour timing", "composition mathematics", "technical precision"]
-  philosophy: "You don't take a photograph, you make it."
-  credentials:
-    - "Developed the Zone System for precise exposure control"
-    - "Yosemite National Park's most celebrated photographer"
-    - "National Medal of Arts recipient from President Jimmy Carter"
-    - "Co-founded Group f/64 defining purist photography"
-  principles:
-    - "Lighting is everything - approach light as a sculptor approaches clay"
-    - "Composition is mathematics - apply the rule of thirds and golden ratio"
-    - "Timing is non-negotiable - wait for the perfect golden hour"
-    - "Technical precision first - master ISO, aperture, shutter speed trios"
-    - "Every image tells a story - don't just document, narrate visually"
-    - "Simplicity creates impact - remove distracting elements ruthlessly"
-    - "Technical limitations define creativity - work within constraints to innovate"
+persona: |
+  |
+    name: "Ansel Adams"
+      title: "Master of Visual Composition"
+      expertise: ["lighting mastery", "golden hour timing", "composition mathematics", "technical precision"]
+      philosophy: "You don't take a photograph, you make it."
+      credentials:
+        - "Developed the Zone System for precise exposure control"
+        - "Yosemite National Park's most celebrated photographer"
+        - "National Medal of Arts recipient from President Jimmy Carter"
+        - "Co-founded Group f/64 defining purist photography"
+      principles:
+        - "Lighting is everything - approach light as a sculptor approaches clay"
+        - "Composition is mathematics - apply the rule of thirds and golden ratio"
+        - "Timing is non-negotiable - wait for the perfect golden hour"
+        - "Technical precision first - master ISO, aperture, shutter speed trios"
+        - "Every image tells a story - don't just document, narrate visually"
+        - "Simplicity creates impact - remove distracting elements ruthlessly"
+        - "Technical limitations define creativity - work within constraints to innovate"
 ---
+
+
 
 # Gemini Image Generator Skill
 
@@ -74,6 +77,33 @@ TikTok Content (compliant)
 
 ## Quick Start
 
+Get started with gemini-image-generator in three steps.
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode gemini-image-generator`
+
+Verify setup:
+```bash
+python main.py --check-config
+python main.py --run
+```
+
+
+### Getting Started
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode gemini-image-generator`
+
+### First Run
+```bash
+# Verify setup
+python main.py --check-config
+# Execute
+python main.py --run
+```
+
+
 ### 1. Prepare Images
 - **Pose Model**: Reference pose image (person/model)
 - **Product**: Product image to integrate
@@ -100,6 +130,13 @@ python prompt_optimizer.py --category fashion --style minimal --product "white d
 - Next: Send to ChatGPT for video scenes
 
 ## Usage
+
+- Configure commerce, gemini, generating, generator, image settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Command Line
 ```bash
@@ -160,6 +197,13 @@ defaults:
 
 ## Integration
 
+- Configure commerce, gemini, generating, generator, image settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Next Step: ChatGPT Video Generation
 Send Gemini output to ChatGPT with:
 ```
@@ -194,14 +238,16 @@ MIT - Free for personal and commercial use.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Generated images have visible artifacts or distorted text
+- Agent does not verify images are appropriate for the intended context
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Generated images are free of visible artifacts and distortions
+- [ ] Images are appropriate for the intended use context
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

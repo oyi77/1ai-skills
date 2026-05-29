@@ -46,6 +46,11 @@ Shodan is the world's first search engine for internet-connected devices, contin
 
 ## Key Concepts
 
+This section covers key concepts for performing ip reputation analysis with shodan.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Shodan Data Model
 
 Each IP record in Shodan contains: open ports and protocols, banner data (service responses), SSL/TLS certificate details, known CVE vulnerabilities, hostname(s) and reverse DNS, ASN and ISP information, geographic location, operating system fingerprint, and historical scan data showing changes over time.
@@ -60,6 +65,11 @@ IP reputation is assessed by combining: number and type of open ports (unusual p
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Basic IP Enrichment with Shodan API
 
 ```python
@@ -287,6 +297,22 @@ def correlate_infrastructure(enricher, ip_address):
 - Batch enrichment handles rate limiting correctly
 - Infrastructure correlation identifies related hosts
 - InternetDB free API used for high-volume lookups
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

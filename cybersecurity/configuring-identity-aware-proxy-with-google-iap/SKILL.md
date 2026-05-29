@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enable IAP on Backend Services
 
 Configure IAP for different GCP compute platforms.
@@ -334,6 +339,11 @@ gcloud logging read '
 
 ## Common Scenarios
 
+**Scenario 1: Standard Configuring Identity Aware Proxy With Google Iap assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Configuring Identity Aware Proxy With Google Iap response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Securing 15 Internal GCP Services with IAP
 
 **Context**: An e-commerce company runs 15 internal services on GKE and Cloud Run (admin dashboards, internal APIs, monitoring tools). Currently, these services are protected only by VPN and firewall rules, creating excessive network-level access.
@@ -349,6 +359,22 @@ gcloud logging read '
 8. Configure Cloud Audit Logs and create alerting for repeated denials
 
 **Pitfalls**: IAP adds 10-50ms latency per request; test application performance. WebSocket connections through IAP require specific backend service configuration. Service-to-service calls within GKE should bypass IAP using internal service mesh, not external IAP endpoints. Break-glass access should use a separate IAM binding without access level conditions.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

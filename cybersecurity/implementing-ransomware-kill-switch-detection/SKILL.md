@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Identify Kill Switch Mechanisms in Ransomware
 
 Analyze samples for common kill switch patterns:
@@ -208,6 +213,14 @@ During an active incident, scan endpoints for ransomware-associated mutexes:
 | **Mutex Vaccination** | Proactively creating named mutexes on endpoints that match known ransomware mutex names, preventing the ransomware from executing |
 | **Domain Sinkhole** | Registering or redirecting a malicious domain to a controlled server; used to activate domain-based kill switches |
 | **DGA (Domain Generation Algorithm)** | Algorithm used by malware to generate pseudo-random domain names for C2 communication, sometimes incorporating kill switch checks |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
 
 ## Tools & Systems
 

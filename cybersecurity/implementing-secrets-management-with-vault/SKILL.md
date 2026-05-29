@@ -45,6 +45,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Deploy Vault in High Availability Mode
 
 Deploy Vault using Integrated Storage (Raft) for HA without external dependencies. Configure TLS, audit logging, and auto-unseal using a cloud KMS.
@@ -287,6 +292,11 @@ vault audit list -detailed
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Secrets Management With Vault assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Secrets Management With Vault response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Eliminating Hardcoded Database Credentials from CI/CD Pipeline
 
 **Context**: A DevOps team stores PostgreSQL credentials in GitHub Actions secrets and Jenkins credential stores. The same credentials are shared across staging and production environments with no rotation for 18 months.
@@ -300,6 +310,22 @@ vault audit list -detailed
 6. Enable audit logging to track every credential request with pipeline job metadata
 
 **Pitfalls**: Failing to rotate the original static credentials after Vault migration leaves the old credentials valid. Setting TTLs too short causes credential expiry mid-deployment for long-running jobs.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

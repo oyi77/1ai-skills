@@ -3,6 +3,7 @@ name: dynamodb-patterns
 description: Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams, PartiQL, performance optimization
 ---
 
+
 ## Overview
 
 DynamoDB is a fully managed NoSQL key-value and document database by AWS. It delivers single-digit millisecond performance at any scale with built-in security, backup, and in-memory caching.
@@ -27,6 +28,26 @@ DynamoDB is a fully managed NoSQL key-value and document database by AWS. It del
 - Event-driven architectures with DynamoDB Streams
 
 ## Pseudo Code
+
+The dynamodb-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# dynamodb-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={amazon, design, dynamodb, optimization, partiql})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Single Table Design
 ```typescript
@@ -126,3 +147,20 @@ UPDATE "MyTable" SET "name" = 'Updated' WHERE "PK" = 'USER#123' AND "SK" = 'PROF
 - **Write sharding**: Add random suffix to hot partition keys for write distribution
 - **DAX caching**: Use DAX for read-heavy, latency-sensitive workloads
 - **Capacity modes**: On-demand for unpredictable, provisioned for steady-state
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

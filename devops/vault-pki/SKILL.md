@@ -3,6 +3,7 @@ name: vault-pki
 description: Vault PKI secrets engine — certificate authority, dynamic certificates, certificate rotation
 ---
 
+
 ## Overview
 
 HashiCorp Vault PKI secrets engine acts as a certificate authority (CA), issuing dynamic X.509 certificates on demand. Enables short-lived certificates with automatic rotation.
@@ -24,6 +25,26 @@ HashiCorp Vault PKI secrets engine acts as a certificate authority (CA), issuing
 - Replacing self-signed certificates with a proper CA
 
 ## Pseudo Code
+
+The vault-pki workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# vault-pki primary flow
+input = prepare(raw_data)
+result = process(input, config={authority, certificate, certificates, dynamic, engine})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Enable PKI Backend
 ```bash
@@ -78,3 +99,20 @@ systemctl reload nginx
 - **Consul Template**: Auto-rotate certs with `{{ with secret "pki/issue/..." }}`
 - **Vault Agent**: Sidecar that auto-fetches and rotates certs
 - **Role constraints**: `allowed_domains`, `allow_bare_domains`, `not_before_duration`
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

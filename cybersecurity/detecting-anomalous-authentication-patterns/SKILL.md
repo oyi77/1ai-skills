@@ -55,6 +55,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Collect and Normalize Authentication Logs
 
 Aggregate authentication events from all identity sources:
@@ -658,6 +663,11 @@ def calculate_auth_risk_score(user, alerts, baseline):
 
 ## Common Scenarios
 
+**Scenario 1: Standard Detecting Anomalous Authentication Patterns assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Detecting Anomalous Authentication Patterns response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Detecting Compromised Executive Account After Password Spray
 
 **Context**: SOC observes a spike in failed authentication attempts from a cloud VPS IP address targeting 200+ accounts. Two hours later, an executive account shows successful authentication from the same IP range followed by mailbox rule creation and data exfiltration.
@@ -676,6 +686,20 @@ def calculate_auth_risk_score(user, alerts, baseline):
 - Not correlating across identity providers when users have accounts in multiple IdPs
 - Static thresholds that do not account for legitimate VPN IP changes or travel
 - Ignoring successful authentications after the spray window closes (attackers may wait before using credentials)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

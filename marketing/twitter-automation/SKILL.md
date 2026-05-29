@@ -2,6 +2,7 @@
 name: twitter-automation
 description: Automate Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Twitter Automation"
@@ -74,6 +75,12 @@ Automate your Twitter/X presence with AI-powered tools for content posting, enga
 
 ## Prerequisites
 
+- Python 3.10+ or Node.js 18+
+- API credentials configured in `.env`
+- Network access to target services
+- Understanding of analytics, audience, auto, automate, automation concepts
+
+
 ### Required
 1. **X Account** - Professional or verified preferred
 2. **Automation Tool Access**:
@@ -91,6 +98,13 @@ Automate your Twitter/X presence with AI-powered tools for content posting, enga
 ---
 
 ## Core Capabilities
+
+- Configure analytics, audience, auto, automate, automation settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Content Scheduling
 - Queue tweets for optimal posting times
@@ -138,6 +152,12 @@ Automate your Twitter/X presence with AI-powered tools for content posting, enga
 
 ## Integration with 1ai-skills
 
+Combine twitter-automation with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Revenue Team Workflow
 
 ```
@@ -170,6 +190,13 @@ twitter-automation is part of **revenue-team** for:
 ---
 
 ## Setup Examples
+
+- Configure analytics, audience, auto, automate, automation settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### OpenTweet Configuration (Recommended for Devs)
 
@@ -213,6 +240,13 @@ Triggers:
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Post consistently (5-15 tweets/day for growth)  
@@ -272,14 +306,16 @@ Triggers:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automated replies are contextually inappropriate
+- Agent does not pause during breaking news or sensitive events
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Replies are contextually appropriate to the conversation
+- [ ] Automation pauses during sensitive events or breaking news
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

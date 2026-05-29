@@ -56,6 +56,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Core SOC Metrics Framework
 
 Establish the key metrics aligned to NIST CSF functions:
@@ -275,6 +280,20 @@ Analyst Training Program,2024-01-01,2024-06-30,In Progress,TP Rate,31%,41%
 - **Tool ROI Assessment**: Compare alert quality and response times before and after new tool deployment
 - **Compliance Evidence**: Provide documented SOC performance metrics for ISO 27001 or SOC 2 audits
 - **Vendor Comparison**: Benchmark SOC metrics against industry peers using surveys (SANS, Ponemon)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

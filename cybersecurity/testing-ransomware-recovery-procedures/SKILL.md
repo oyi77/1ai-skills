@@ -44,6 +44,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Recovery Test Scope
 
 Identify critical systems and their tiered recovery targets:
@@ -164,6 +169,21 @@ Recovery Test Report:
 - **Using production network for testing**: Recovery tests on production networks risk spreading simulated or real infections.
 - **Measuring RTO without WRT**: Restore completion is not recovery completion. Include validation and hardening time.
 - **No immutable backups**: If ransomware can encrypt or delete backups, recovery is impossible. Use air-gapped or immutable storage.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

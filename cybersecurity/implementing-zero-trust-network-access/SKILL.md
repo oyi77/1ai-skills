@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Deploy GCP Identity-Aware Proxy (IAP) for Application Access
 
 Configure IAP to provide authenticated access to web applications without VPN.
@@ -309,6 +314,11 @@ aws logs start-query \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Zero Trust Network Access assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Zero Trust Network Access response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Replacing Corporate VPN with Zero Trust Access for Cloud Applications
 
 **Context**: An organization with 2,000 employees accesses 30+ internal cloud applications through a traditional VPN concentrator. VPN performance issues and security concerns drive the decision to implement ZTNA.
@@ -323,6 +333,22 @@ aws logs start-query \
 7. Decommission VPN after all applications are accessible through ZTNA with full logging
 
 **Pitfalls**: Not all applications support identity-aware proxy integration. Legacy thick-client applications may require agent-based ZTNA solutions instead of proxy-based approaches. Device posture assessment requires an endpoint management solution deployed to all corporate devices. Break-glass access procedures must be documented for scenarios where the identity provider is unavailable.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## Output Format
 

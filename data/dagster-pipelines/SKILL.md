@@ -3,6 +3,7 @@ name: dagster-pipelines
 description: Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers
 ---
 
+
 ## Overview
 
 Dagster is a modern data orchestrator that treats data assets as first-class citizens. It uses software-defined assets to declare what data to produce, with built-in testing, type checking, and observability through the Dagit UI.
@@ -26,6 +27,26 @@ Dagster is a modern data orchestrator that treats data assets as first-class cit
 - Coordinating dbt models with Python transformations
 
 ## Pseudo Code
+
+The dagster-pipelines workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# dagster-pipelines primary flow
+input = prepare(raw_data)
+result = process(input, config={assets, dagster, data, defined, jobs})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Software-Defined Asset
 
@@ -173,3 +194,20 @@ def my_dbt_assets(context, dbt: DbtCliClient):
 | Asset materialization failed | Runtime error in asset function | Check Dagit run logs for traceback |
 | Partition missing | Partition not yet materialized | Run backfill or check partition mapping |
 | IO manager error | Storage connection issue | Verify credentials and bucket/path |
+
+## How to Use
+
+1. Define data sources, sinks, and transformation requirements
+2. Implement extraction with error handling and schema validation
+3. Add transformation logic with idempotency guarantees
+4. Configure loading with conflict resolution (upsert/append)
+5. Set up monitoring for pipeline health and data freshness
+6. Test with representative sample data before production
+
+## Red Flags
+
+- **Data pipeline has no error handling**: Silent failures corrupt downstream datasets
+- **No data validation at boundaries**: Bad input propagates through entire pipeline
+- **Missing monitoring for data freshness**: Stale data causes wrong business decisions
+- **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
+- **Hardcoded connection strings**: Credentials in code get committed to version control

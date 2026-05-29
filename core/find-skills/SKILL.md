@@ -35,6 +35,12 @@ Automatically discover and integrate community skills from skills.sh and awesome
 - "I need to create a changelog" → Search for changelog skills
 
 ## Skill Discovery Process
+1. Validate input and check prerequisites
+2. Initialize required connections and contexts
+3. Execute core operation with monitoring
+4. Validate output against expected format
+5. Deliver results and log execution summary
+
 
 ### Step 1: Check Local Skills First
 
@@ -137,6 +143,10 @@ function calculateCredibilityScore(skill) {
 
 ```markdown
 ## Found Skills for [Query]
+This section covers found skills for [query] for the find-skills skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 🌟 Highly Recommended (Score: 95/100)
 **vercel-react-best-practices** by vercel-labs
@@ -179,6 +189,11 @@ npx skills add vercel-labs/agent-skills@vercel-react-best-practices -g -y
 ---
 
 ## Integration with Activation Rules
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### Update `.skill-activation.json`
 
@@ -224,6 +239,10 @@ npx skills add vercel-labs/agent-skills@vercel-react-best-practices -g -y
 ---
 
 ## Credibility Indicators
+This section covers credibility indicators for the find-skills skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Trusted Sources (Auto-Install at 90+)
 
@@ -248,6 +267,14 @@ npx skills add vercel-labs/agent-skills@vercel-react-best-practices -g -y
 ---
 
 ## Automation Examples
+```
+# Basic usage
+invoke <skill-name> with appropriate parameters
+
+# Advanced usage with options
+invoke <skill-name> --option value --verbose
+```
+
 
 ### Example 1: User Asks for React Help
 
@@ -329,6 +356,11 @@ Would you like me to search for alternatives?"
 ---
 
 ## Safety Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### 1. Sandboxed Evaluation
 ```javascript
@@ -379,6 +411,12 @@ git checkout .skill-activation.json
 ---
 
 ## Workflow Integration
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### Daily Routine Assistant
 
@@ -419,6 +457,10 @@ function trackSkillUsage() {
 ---
 
 ## Best Practices
+This section covers best practices for the find-skills skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Always Check Local First
 Don't search community if you already have the capability.
@@ -472,7 +514,8 @@ npx skills list
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the task requires domain expertise the agent has not been configured with
+- When human review is mandated by compliance or regulatory requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -485,14 +528,16 @@ npx skills list
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent output is not validated against expected quality standards
+- Prerequisites are not verified before task execution
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

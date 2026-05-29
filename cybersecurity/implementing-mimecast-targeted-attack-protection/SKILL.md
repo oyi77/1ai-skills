@@ -43,6 +43,11 @@ Mimecast Targeted Threat Protection (TTP) is a suite of advanced email security 
 
 ## Key Concepts
 
+This section covers key concepts for implementing mimecast targeted attack protection.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### TTP Module Overview
 | Module | Function | Key Capability |
 |---|---|---|
@@ -63,6 +68,11 @@ Mimecast Targeted Threat Protection (TTP) is a suite of advanced email security 
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Configure URL Protect Policy
 - Navigate to Administration > Gateway > Policies > Targeted Threat Protection - URL Protect
 - Create URL Protect definition with rewriting enabled for inbound messages
@@ -107,6 +117,22 @@ Mimecast Targeted Threat Protection (TTP) is a suite of advanced email security 
 - Review and whitelist legitimate applications triggering false positives
 - Tune impersonation sensitivity based on false positive feedback
 - Configure exception policies for automated systems and mailing lists
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Tools & Resources
 - **Mimecast Administration Console**: Policy configuration and management

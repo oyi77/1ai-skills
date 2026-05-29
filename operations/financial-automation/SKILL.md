@@ -41,6 +41,9 @@ An AI-powered financial management system for solo entrepreneurs. Automates invo
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Phase 1: Bank Feed Connection
 
 ```python
@@ -324,6 +327,9 @@ def detect_anomalies(transactions_df, std_threshold=2.5):
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Multi-Account Consolidation
 ```python
 # Merge transactions from multiple bank accounts
@@ -354,3 +360,16 @@ def monthly_close(year, month):
     send_report_email(report)
     archive_month(year, month, txns)
 ```
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

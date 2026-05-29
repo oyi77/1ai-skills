@@ -3,6 +3,7 @@ name: kafka-patterns
 description: Apache Kafka patterns — producers, consumers, topics, consumer groups, exactly-once semantics, event sourcing
 ---
 
+
 ## Overview
 
 Apache Kafka is a distributed event streaming platform. This skill covers production-grade patterns for designing topics, building producers/consumers, managing consumer groups, implementing exactly-once semantics, and building event-sourced systems.
@@ -25,6 +26,26 @@ Apache Kafka is a distributed event streaming platform. This skill covers produc
 - Decoupling producers and consumers in distributed systems
 
 ## Pseudo Code
+
+The kafka-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# kafka-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={apache, consumer, consumers, event, exactly})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Topic Design
 ```python
@@ -171,3 +192,20 @@ serializer = AvroSerializer(schema_registry, order_schema)
 | **Compacted topics** | Latest value per key (changelog) |
 | **Fan-out** | Multiple consumers on same topic |
 | **Exactly-once** | Idempotent producer + read_committed consumer |
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

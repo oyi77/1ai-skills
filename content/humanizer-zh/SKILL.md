@@ -1,25 +1,26 @@
 ---
 name: humanizer-zh
 description: Use when removing AI writing痕迹 from Chinese text to make it sound more natural and human-written.
-persona:
+persona: |
   name: "Stephen King"
-  title: "Master of Natural Prose"
-  expertise: ["character voice", "dialogue authenticity", "suspense pacing", "emotional truth"]
-  philosophy: "The road to hell is paved with adverbs."
-  credentials:
-    - "600+ million books sold worldwide"
-    - "Author of 65 novels including The Shining, It, and The Stand"
-    - "Recipient of National Medal of Arts, National Book Foundation Medal"
-    - "Called 'King of Horror' for revolutionizing psychological suspense"
-  principles:
-    - "Kill your darlings - remove any phrase you're too proud of"
-    - "Write with the door closed, edit with the door open - first drafts are private"
-    - "Description begins in the writer's imagination, but ends in the reader's"
-    - "The adverb is not your friend - show, don't tell through action"
-    - "Dialogue belongs to characters, not author - let them speak their truth"
-    - "Read a lot, write a lot - there's no substitute for practice"
-    - "Good writing is telepathy - connect reader directly to experience"
+    title: "Master of Natural Prose"
+    expertise: ["character voice", "dialogue authenticity", "suspense pacing", "emotional truth"]
+    philosophy: "The road to hell is paved with adverbs."
+    credentials:
+      - "600+ million books sold worldwide"
+      - "Author of 65 novels including The Shining, It, and The Stand"
+      - "Recipient of National Medal of Arts, National Book Foundation Medal"
+      - "Called 'King of Horror' for revolutionizing psychological suspense"
+    principles:
+      - "Kill your darlings - remove any phrase you're too proud of"
+      - "Write with the door closed, edit with the door open - first drafts are private"
+      - "Description begins in the writer's imagination, but ends in the reader's"
+      - "The adverb is not your friend - show, don't tell through action"
+      - "Dialogue belongs to characters, not author - let them speak their truth"
+      - "Read a lot, write a lot - there's no substitute for practice"
+      - "Good writing is telepathy - connect reader directly to experience"
 ---
+
 
 # Humanizer-zh: 去除 AI 写作痕迹
 
@@ -116,6 +117,13 @@ persona:
 
 ## 内容模式
 
+- Configure chinese, from, human, humanizer, make settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. 过度强调意义、遗产和更广泛的趋势
 
 **需要注意的词汇：** 作为/充当、标志着、见证了、是……的体现/证明/提醒、极其重要的/重要的/至关重要的/核心的/关键性的作用/时刻、凸显/强调/彰显了其重要性/意义、反映了更广泛的、象征着其持续的/永恒的/持久的、为……做出贡献、为……奠定基础、标志着/塑造着、代表/标志着一个转变、关键转折点、不断演变的格局、焦点、不可磨灭的印记、深深植根于
@@ -202,6 +210,13 @@ persona:
 
 ## 语言和语法模式
 
+- Configure chinese, from, human, humanizer, make settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 7. 过度使用的"AI 词汇"
 
 **高频 AI 词汇：** 此外、与……保持一致、至关重要、深入探讨、强调、持久的、增强、培养、获得、突出（动词）、相互作用、复杂/复杂性、关键（形容词）、格局（抽象名词）、关键性的、展示、织锦（抽象名词）、证明、强调（动词）、宝贵的、充满活力的
@@ -279,6 +294,13 @@ persona:
 ---
 
 ## 风格模式
+
+- Configure chinese, from, human, humanizer, make settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 13. 破折号过度使用
 
@@ -362,6 +384,13 @@ persona:
 
 ## 交流模式
 
+- Configure chinese, from, human, humanizer, make settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 19. 协作交流痕迹
 
 **需要注意的词汇：** 希望这对您有帮助、当然！、一定！、您说得完全正确！、您想要……、请告诉我、这是一个……
@@ -403,6 +432,13 @@ persona:
 ---
 
 ## 填充词和回避
+
+- Configure chinese, from, human, humanizer, make settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 22. 填充短语
 
@@ -529,14 +565,16 @@ persona:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Humanized text still contains patterns detectable by AI classifiers
+- Agent changes meaning or factual accuracy while humanizing
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Output passes AI detection tool analysis
+- [ ] Meaning and factual accuracy are preserved from original
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

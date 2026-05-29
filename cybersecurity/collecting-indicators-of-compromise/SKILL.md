@@ -51,6 +51,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Identify IOC Categories
 
 Collect indicators across all categories from incident evidence:
@@ -210,6 +215,11 @@ Submit to MISP, ISAC portals, and TAXII servers per sharing agreements.
 
 ## Common Scenarios
 
+**Scenario 1: Standard Collecting Indicators Of Compromise assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Collecting Indicators Of Compromise response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Post-Incident IOC Package for ISAC Sharing
 
 **Context**: After responding to a Qakbot infection that led to Cobalt Strike deployment, the IR team must package all IOCs for sharing with the Financial Services ISAC (FS-ISAC).
@@ -227,6 +237,21 @@ Submit to MISP, ISAC portals, and TAXII servers per sharing agreements.
 - Sharing IOCs at TLP:WHITE that should be restricted to TLP:AMBER
 - Not defanging URLs and domains in human-readable reports
 - Sharing IP addresses of legitimate CDNs or cloud providers as malicious IOCs
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

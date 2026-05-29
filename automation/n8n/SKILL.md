@@ -4,6 +4,9 @@ description: Install n8n. Use when relevant to this domain.
 ---
 ## Setup (Legacy)
 
+Key aspects of n8n relevant to this section.
+
+
 ### Local n8n
 ```bash
 # Install n8n
@@ -22,6 +25,9 @@ n8n start
 ```
 
 ## Common Workflows for BerkahKarya
+
+Step-by-step workflow for this skill.
+
 
 ### 1. Task Reminder Workflow
 ```
@@ -58,6 +64,9 @@ Trigger: Scheduled (hourly)
 ```
 
 ## Usage Examples
+
+Practical examples showing real-world usage.
+
 
 ### Create Simple Workflow
 ```
@@ -141,7 +150,8 @@ After creating/modifying an n8n workflow, confirm:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the workflow requires real-time human approval gates
+- When the target system has no API and requires manual data entry
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 

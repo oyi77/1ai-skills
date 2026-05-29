@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Authentication Mechanism Identification
 
 ```python
@@ -392,6 +397,11 @@ if resp_valid.text != resp_invalid.text or resp_valid.status_code != resp_invali
 
 ## Common Scenarios
 
+**Scenario 1: Standard Testing Api Authentication Weaknesses assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Testing Api Authentication Weaknesses response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: SaaS Platform API Authentication Assessment
 
 **Context**: A SaaS platform uses JWT tokens for API authentication. The JWT is issued upon login and used for all subsequent API calls. A refresh token mechanism is also implemented.
@@ -411,6 +421,22 @@ if resp_valid.text != resp_invalid.text or resp_valid.status_code != resp_invali
 - Not checking if the JWT secret is the same across all environments (dev, staging, production)
 - Ignoring the token lifetime: a 7-day JWT with no revocation means a stolen token is valid for a week
 - Not testing for token leakage in server logs, URL parameters, or error messages
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## Output Format
 

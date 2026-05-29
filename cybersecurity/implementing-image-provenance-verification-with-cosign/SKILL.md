@@ -63,6 +63,11 @@ cosign version
 
 ## Key-Based Signing
 
+This section covers key-based signing for implementing image provenance verification with cosign.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Generate Key Pair
 
 ```bash
@@ -102,6 +107,11 @@ cosign verify --key cosign.pub \
 
 ## Keyless Signing (OIDC)
 
+This section covers keyless signing (oidc) for implementing image provenance verification with cosign.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Sign with Keyless (Interactive)
 
 ```bash
@@ -145,6 +155,11 @@ cosign verify ghcr.io/myorg/myapp:v1.0.0 \
 
 ## Attestations (SLSA Provenance)
 
+This section covers attestations (slsa provenance) for implementing image provenance verification with cosign.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Attach SBOM Attestation
 
 ```bash
@@ -193,6 +208,11 @@ cosign verify-attestation --key cosign.pub \
 
 ## CI/CD Integration
 
+This section covers ci/cd integration for implementing image provenance verification with cosign.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GitHub Actions
 
 ```yaml
@@ -244,6 +264,11 @@ jobs:
 
 ## Kubernetes Admission Enforcement
 
+This section covers kubernetes admission enforcement for implementing image provenance verification with cosign.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Policy Controller (Sigstore)
 
 ```bash
@@ -324,3 +349,17 @@ cosign verify ghcr.io/myorg/myapp:v1.0.0 \
 6. **Store keys in KMS** (AWS KMS, GCP KMS, HashiCorp Vault) for key-based signing
 7. **Verify the full chain**: signature + certificate + Rekor inclusion
 8. **Include build metadata** as annotations on signatures
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility

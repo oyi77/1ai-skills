@@ -3,6 +3,7 @@ name: buildkite-pipelines
 description: Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines
 ---
 
+
 ## Overview
 
 Buildkite is a CI/CD platform where pipelines are defined in YAML and executed by self-hosted agents. Known for speed, flexibility, and hybrid cloud/agent architecture.
@@ -24,6 +25,26 @@ Buildkite is a CI/CD platform where pipelines are defined in YAML and executed b
 - Complex pipelines with manual gates
 
 ## Pseudo Code
+
+The buildkite-pipelines workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# buildkite-pipelines primary flow
+input = prepare(raw_data)
+result = process(input, config={agents, artifacts, buildkite, dynamic, pipeline})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Pipeline Configuration
 ```yaml
@@ -93,3 +114,20 @@ steps:
 - **Hooks**: Agent-level hooks in `~/.buildkite-agent/hooks/`
 - **Plugins**: `plugins: [docker#v5.0.0: { image: "node:20" }]`
 - **Notify**: Slack/email notifications on failure via `notify` block
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

@@ -4,6 +4,8 @@ description: Research trending ads, analyze competitor strategies, and clone suc
 category: marketing
 tags: [advertising, competitive-analysis, marketing, mcp, google-ads, meta-ads, tiktok, linkedin]
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Ads Manager"
@@ -52,6 +54,13 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 
 ## Core Capabilities
 
+- Configure ads, analyze, clone, competitor, integrated settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Competitive Ad Research
 - Search and analyze competitor ads across platforms
 - Track ad spend and campaign duration
@@ -81,6 +90,13 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 - Generate creative briefs
 
 ## MCP Server Integrations
+
+- Configure ads, analyze, clone, competitor, integrated settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Ads MCP (Primary)
 **Platform**: Remote MCP Server  
@@ -160,6 +176,30 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 
 ## Workflow Examples
 
+Step-by-step ads-manager execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the ads-manager workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the ads-manager workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
+
 ### Example 1: Competitor Ad Research
 
 ```markdown
@@ -238,6 +278,13 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 
 ## Best Practices
 
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
+
 ### 1. Research Process
 - **Start Broad**: Begin with industry-wide research
 - **Narrow Down**: Focus on direct competitors
@@ -267,6 +314,42 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 - **Transparency**: Clearly label sponsored content
 
 ## Templates
+
+Reusable templates for ads-manager.
+
+Standard config:
+```yaml
+name: ads-manager_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: ads-manager_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard ads-manager
+```yaml
+name: ads-manager_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: ads-manager_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### Ad Copy Template
 ```
@@ -299,6 +382,13 @@ See `templates/campaign-brief.md` for full template.
 - **Quanti API Key**: For unified analytics dashboard
 
 ## Installation
+
+- Configure ads, analyze, clone, competitor, integrated settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Configure MCP Servers
 
@@ -342,6 +432,13 @@ curl https://ai.quanti.io/mcp/health
 
 ## Usage
 
+- Configure ads, analyze, clone, competitor, integrated settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Quick Start
 
 ```
@@ -372,6 +469,13 @@ Deliverables:
 
 ## Metrics to Track
 
+- Configure ads, analyze, clone, competitor, integrated settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Campaign Performance
 - Impressions and reach
 - Click-through rate (CTR)
@@ -390,7 +494,8 @@ Deliverables:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -403,14 +508,16 @@ Deliverables:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
@@ -419,7 +526,7 @@ After completing this skill, confirm:
 - `marketing/marketing-strategy` - Overall marketing strategy
 - `marketing/content-creator` - Ad creative development
 - `marketing/analytics-reporting` - Performance analytics
-- `research/market-research` - Market analysis
+- `marketing/market-research` - Market analysis
 - `sales/sales-strategy` - Sales funnel optimization
 
 ## Resources

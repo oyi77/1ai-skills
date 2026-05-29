@@ -3,6 +3,7 @@ name: code-simplification
 description: Simplifies code for clarity. Use when code is overly complex, has unnecessary abstractions, or when refactoring for readability.
 ---
 
+
 # Code Simplification Skill
 
 Simplifies code to improve clarity and maintainability. Prioritizes readability over cleverness.
@@ -61,3 +62,10 @@ This skill helps you refactor complex code into simpler, more understandable ver
   - Clearer naming and structure
   - Reduced nesting and fewer conditional branches
 - Code review feedback confirms improved readability
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for development workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

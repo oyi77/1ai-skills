@@ -18,9 +18,32 @@ MCP server for Resend email
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Get a Resend API key from resend.com/api-keys
+2. Configure the MCP server with RESEND_API_KEY
+3. Use tools to send transactional emails with templates
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `send_email` | Send an email to recipients |
+| `create_contact` | Add a contact to an audience |
+| `list_contacts` | List contacts with pagination |
+| `send_batch` | Send multiple emails in a single API call |
+
+## Common Patterns
+
+- Use HTML templates for consistent email formatting
+- Send batch emails to reduce API calls for bulk operations
+- Use audiences to segment contacts by purpose
+- Set reply-to addresses for two-way communication
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When email sending must comply with CAN-SPAM or GDPR requirements
+- When the email content is transactional and requires delivery guarantees
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +56,16 @@ MCP server for Resend email
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- MCP server does not validate email addresses before sending
+- Agent does not handle bounce and complaint webhooks from Resend
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Email addresses are validated before send operations
+- [ ] Bounce and complaint webhooks are processed and acted upon
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

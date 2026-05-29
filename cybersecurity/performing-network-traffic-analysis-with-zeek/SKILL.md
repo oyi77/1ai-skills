@@ -48,6 +48,11 @@ Zeek (formerly Bro) is an open-source network analysis framework that operates a
 
 ## Core Concepts
 
+This section covers core concepts for performing network traffic analysis with zeek.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Zeek Architecture
 
 Zeek operates in two main modes:
@@ -83,6 +88,11 @@ Zeek generates protocol-specific log files:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Install and Configure Zeek
 
 ```bash
@@ -372,6 +382,11 @@ setup.template.pattern: "zeek-*"
 
 ## Analysis Techniques
 
+This section covers analysis techniques for performing network traffic analysis with zeek.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Connection Analysis
 
 ```bash
@@ -407,6 +422,22 @@ cat ssl.log | zeek-cut server_name not_valid_after | awk -F'\t' '$2 < systime()'
 - **Intel Updates** - Automate threat intelligence feed updates at least daily
 - **Packet Loss Monitoring** - Monitor `capture_loss.log` for dropped packets
 - **Custom Scripts** - Develop organization-specific detections based on threat landscape
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

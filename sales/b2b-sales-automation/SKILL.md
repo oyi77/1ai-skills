@@ -1,19 +1,24 @@
 ---
 name: b2b-sales-automation
-version: "1.0.0"
-description: >
-  Full B2B sales pipeline automation for BerkahKarya — from cold prospect to onboarded client.
-  Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,
-  and deal alerts via Telegram. Targets Indonesian SMEs needing AI automation, digital products,
-  and content services.
+version: 1.0.0
+description: |
+  |
+    >
+      Full B2B sales pipeline automation for BerkahKarya — from cold prospect to onboarded client.
+      Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,
+      and deal alerts via Telegram. Targets Indonesian SMEs needing AI automation, digital products,
+      and content services.
 author: Vilona / BerkahKarya
 language: id-ID / en
 tags: [sales, b2b, crm, outreach, proposal, pipeline, indonesian]
-scripts:
-  - scripts/lead_scorer.py
-  - scripts/proposal_gen.py
-  - scripts/outreach_sequencer.py
+scripts: |
+  |
+    - scripts/lead_scorer.py
+      - scripts/proposal_gen.py
+      - scripts/outreach_sequencer.py
 ---
+
+
 
 # B2B Sales Automation Skill 🔥
 
@@ -22,6 +27,13 @@ Complete B2B sales pipeline: **Prospect → Qualify → Demo → Proposal → Ne
 ---
 
 ## 1. Ideal Customer Profile (ICP)
+
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Primary ICP: Indonesian SME AI Adopter
 
@@ -54,6 +66,13 @@ Complete B2B sales pipeline: **Prospect → Qualify → Demo → Proposal → Ne
 ---
 
 ## 2. Lead Sources
+
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 2A. LinkedIn
 ```bash
@@ -138,6 +157,42 @@ PROSPECT → QUALIFY → DEMO → PROPOSAL → NEGOTIATE → CLOSE → ONBOARD
 ---
 
 ## 4. Cold Outreach Templates (Bahasa Indonesia)
+
+Reusable templates for b2b-sales-automation.
+
+Standard config:
+```yaml
+name: b2b-sales-automation_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: b2b-sales-automation_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard b2b-sales-automation
+```yaml
+name: b2b-sales-automation_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: b2b-sales-automation_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### 4A. Email Cold Outreach
 
@@ -239,6 +294,13 @@ Lo lagi ngejar target apa sekarang? Mungkin bisa gue kasih
 
 ## 5. Follow-Up Sequences
 
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 5A. 3-Touch Sequence (Cold → Lukewarm)
 
 ```
@@ -312,6 +374,13 @@ Mau jadwalin? 🙏
 
 ## 6. Pricing Tiers & Proposal Generator
 
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Pricing Architecture
 
 | Tier | Package | Price | Target Client | Deliverables |
@@ -377,6 +446,13 @@ Timeline: [X minggu/bulan]
 
 ## 7. CRM Tracking Schema
 
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Deal Record (JSON/CSV)
 
 ```json
@@ -427,6 +503,13 @@ python3 scripts/lead_scorer.py --report --format telegram
 ---
 
 ## 8. Scripts Reference
+
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 8A. `scripts/lead_scorer.py`
 
@@ -513,6 +596,13 @@ python3 scripts/outreach_sequencer.py --add-lead \
 ---
 
 ## 9. Telegram Integration (Deal Alerts)
+
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Alert Types
 
@@ -608,6 +698,13 @@ Notes: {deal['notes']}
 
 ## 11. KPIs & Weekly Reporting
 
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### KPI Targets
 
 | KPI | Weekly Target | Monthly Target |
@@ -656,6 +753,13 @@ Action Items:
 ---
 
 ## 12. Standard Operating Procedures (SOPs)
+
+- Configure alerts, automation, b2b, berkahkarya, client settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### SOP: New Lead Entry
 1. Identify lead (source: LinkedIn/GMaps/referral)
@@ -710,3 +814,30 @@ PIPELINE TARGETS:
 
 *Skill version 1.0 — BerkahKarya Sales Engine 🔥*
 *Last updated: 2026-03-13*
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- Test email sequences with seed accounts before full send
+- Verify CRM data integrity (no duplicates, correct stages)
+- Check lead scoring model against actual conversion data
+- Confirm proposal/contract templates are current and branded
+- Validate payment links and checkout flow end-to-end

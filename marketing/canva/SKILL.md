@@ -6,6 +6,8 @@ homepage: https://github.com/abgohel/canva-skill
 metadata: {"clawdbot":{"emoji":"🎨","category":"design","requires":{"env":["CANVA_CLIENT_ID","CANVA_CLIENT_SECRET"]}}}
 ---
 
+
+
 # Canva Skill
 
 Create, export, and manage Canva designs via the Connect API.
@@ -50,6 +52,13 @@ ACCESS_TOKEN=$(cat ~/.canva/tokens.json | jq -r '.access_token')
 ```
 
 ## Core Operations
+
+- Configure canva, carousels, connect, create, designs settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### List Designs
 
@@ -126,6 +135,30 @@ curl -s "https://api.canva.com/rest/v1/brand-templates" \
 
 ## Common Workflows
 
+Step-by-step canva execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the canva workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the canva workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
+
 ### Create Instagram Post
 
 1. List brand templates: `GET /brand-templates`
@@ -183,3 +216,20 @@ Common errors:
 ---
 
 Built by **Meow 😼** for the Moltbook community 🦞
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels

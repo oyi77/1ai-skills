@@ -3,6 +3,7 @@ name: circleci-config
 description: CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config
 ---
 
+
 ## Overview
 
 CircleCI uses YAML-based `.circleci/config.yml` for CI/CD pipelines. Orbs provide reusable packages of jobs, commands, and executors. Workflows orchestrate jobs with dependency graphs.
@@ -24,6 +25,26 @@ CircleCI uses YAML-based `.circleci/config.yml` for CI/CD pipelines. Orbs provid
 - Teams wanting managed CI with minimal setup
 
 ## Pseudo Code
+
+The circleci-config workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# circleci-config primary flow
+input = prepare(raw_data)
+result = process(input, config={caching, circleci, config, configuration, contexts})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Basic Pipeline
 ```yaml
@@ -115,4 +136,21 @@ workflows:
 - **Caching**: `save_cache`/`restore_cache` with checksum keys
 - **Workspaces**: persist files between jobs with `persist_to_workspace`
 - **Contexts**: share environment variables across projects
-- **Orbs**: `circleci/node`, `circleci/docker`, `circleci/aws-cli`
+- **Orbs**: circleci/node, circleci/docker, circleci/aws-cli (install via `circleci orb pack`)
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

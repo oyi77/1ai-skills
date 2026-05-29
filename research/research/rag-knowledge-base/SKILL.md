@@ -41,6 +41,9 @@ Build enterprise AI assistants that answer questions from your own documents —
 
 ## Tech Stack Options
 
+Recommended technology stacks for different scale requirements.
+
+
 ### Option A: LlamaIndex (Recommended for custom builds)
 ```python
 # pip install llama-index llama-index-embeddings-openai
@@ -328,6 +331,9 @@ if __name__ == "__main__":
 
 ## Deployment Options
 
+Self-hosted, managed cloud, and hybrid deployment models.
+
+
 ### Option 1: WhatsApp Bot (via wa-business-automation)
 ```python
 # Add to wa_chatbot.py:
@@ -363,6 +369,9 @@ Deploy to Railway/Render ($5/month)
 
 ## Client Delivery Package
 
+Documentation and assets to deliver to clients.
+
+
 ### What to deliver:
 1. ✅ Indexed knowledge base (all their docs)
 2. ✅ Chat interface (web/WA/Telegram)
@@ -397,7 +406,8 @@ python3 skills/rag-knowledge-base/scripts/build_knowledge_base.py \
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -410,14 +420,16 @@ python3 skills/rag-knowledge-base/scripts/build_knowledge_base.py \
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

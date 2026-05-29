@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Initialize Pacu Session and Configure Credentials
 
 Set up a Pacu session with the test credentials and define the engagement scope.
@@ -233,6 +238,11 @@ aws iam delete-access-key --user-name pacu-test-user --access-key-id AKIA... 2>/
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Red Team Assessment Starting from Compromised Developer Credentials
 
 **Context**: A red team exercise simulates a scenario where an attacker obtains a developer's AWS access key from a leaked repository. The goal is to determine the maximum impact achievable from this starting point.
@@ -248,6 +258,22 @@ aws iam delete-access-key --user-name pacu-test-user --access-key-id AKIA... 2>/
 8. Clean up all test artifacts and document the complete attack chain
 
 **Pitfalls**: Pacu modules can be noisy and generate many API calls in a short time. GuardDuty may trigger `Recon:IAMUser/MaliciousIPCaller` findings from the tester's IP. Coordinate with the SOC team to whitelist the testing IP or establish a clear communication channel to distinguish testing from real attacks. Always clean up persistence artifacts after testing.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

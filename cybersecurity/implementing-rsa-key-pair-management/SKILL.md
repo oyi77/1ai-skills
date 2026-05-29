@@ -51,6 +51,11 @@ RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic
 
 ## Key Concepts
 
+This section covers key concepts for implementing rsa key pair management.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### RSA Key Sizes and Security Strength
 
 | Key Size (bits) | Security Strength (bits) | Recommended Until |
@@ -92,3 +97,15 @@ RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic
 - [ ] Tampered signature verification fails
 - [ ] Key fingerprint is computed correctly
 - [ ] Key rotation maintains old key access for verification
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

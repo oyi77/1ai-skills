@@ -3,6 +3,7 @@ name: terraform-iac
 description: Infrastructure as Code with Terraform — providers, modules, state management, workspaces, multi-cloud deployments
 ---
 
+
 ## Overview
 
 Terraform enables declarative infrastructure management across AWS, GCP, Azure, and 1000+ providers. Use when provisioning cloud resources, managing multi-cloud infrastructure, implementing GitOps workflows, or enforcing infrastructure standards.
@@ -25,6 +26,26 @@ Terraform enables declarative infrastructure management across AWS, GCP, Azure, 
 - Detecting configuration drift
 
 ## Pseudo Code
+
+The terraform-iac workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# terraform-iac primary flow
+input = prepare(raw_data)
+result = process(input, config={cloud, code, deployments, iac, infrastructure})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Basic resource provisioning
 ```hcl
@@ -119,6 +140,14 @@ resource "aws_instance" "web" {
 
 ## Common Patterns
 
+Proven patterns for terraform-iac usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### State management
 ```
 Remote backend (S3/GCS) + state locking (DynamoDB/Consul)
@@ -147,3 +176,20 @@ envs/
 - Use least-privilege IAM for Terraform execution
 - Review plan output before apply
 ```
+
+## How to Use
+
+1. Define infrastructure as code (Terraform, CloudFormation, Pulumi)
+2. Review changes through PR process before applying
+3. Configure monitoring and alerting for critical paths
+4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
+5. Document runbooks for deployment, rollback, and incident response
+6. Test disaster recovery procedures regularly
+
+## Red Flags
+
+- **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code
+- **No rollback strategy**: Every deployment needs a tested rollback plan before it runs
+- **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
+- **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
+- **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures

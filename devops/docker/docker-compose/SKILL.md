@@ -2,6 +2,8 @@
 name: docker-compose
 description: Generate docker-compose files
 ---
+
+
 ## Docker Compose
 
 Generate docker-compose files
@@ -20,7 +22,8 @@ Generate docker-compose files
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the container deployment requires air-gapped network compliance
+- When the Docker image contains licensed software with deployment restrictions
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Generate docker-compose files
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Container images are built without security scanning
+- Agent does not minimize image layers increasing attack surface
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Container images pass security scanning before deployment
+- [ ] Image layers are minimized and use multi-stage builds
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem for devops workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related devops skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for devops workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

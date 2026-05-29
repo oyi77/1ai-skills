@@ -1,7 +1,8 @@
 ---
 name: content-validation-workflow
-description: 'Content Workflow: Generate Sample → Human Review → Batch Production. Use when relevant to this domain.'
+description: Content Workflow: Generate Sample → Human Review → Batch Production. Use when relevant to this domain.
 ---
+
 # Content Workflow: Generate Sample → Human Review → Batch Production
 
 ## Apa Ini?
@@ -76,6 +77,13 @@ Sebelum approve konten, cek:
 ---
 
 ## Tool Functions
+
+- Configure batch, content, domain, generate, human settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. generate_sample(product, content_type, variant=1)
 
@@ -264,6 +272,13 @@ When reviewing samples, look for:
 
 ## Human Review Process
 
+- Configure batch, content, domain, generate, human settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### When receiving sample review request:
 
 1. **Review the content**
@@ -291,6 +306,13 @@ When reviewing samples, look for:
 ---
 
 ## Batch Production Strategy
+
+- Configure batch, content, domain, generate, human settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### For Month 1 (Foundation Phase):
 - Generate 3 samples per product (variations)
@@ -360,3 +382,28 @@ This validator integrates with:
 
 **Implementation Priority: HIGH**
 **Why:** Prevent wasted production time & effort
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- All tests pass after code changes (unit, integration, e2e as appropriate)
+- Error handling covers documented failure modes and edge cases
+- Configuration uses environment variables or config files, not hardcoded values
+- Security-sensitive code (auth, payments, API) has explicit review
+- Code follows project conventions (naming, patterns, structure)

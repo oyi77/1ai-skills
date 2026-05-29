@@ -2,6 +2,7 @@
 name: receiving-code-review
 description: Use when getting code feedback, before implementing suggestions.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Receiving Code Review"
@@ -80,6 +81,13 @@ You understand 1,2,3,6. Unclear on 4,5.
 ```
 
 ## Source-Specific Handling
+
+- Configure before, code, feedback, getting, implementing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### From your human partner
 - **Trusted** - implement after understanding
@@ -264,14 +272,16 @@ No performative agreement. Technical rigor always.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Review approval happens within seconds indicating no actual analysis
+- Agent does not check for security implications of changes
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Review includes substantive analysis of security and correctness
+- [ ] Every feedback item is specific and references code locations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

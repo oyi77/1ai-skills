@@ -3,6 +3,8 @@ name: shadcn-ui
 description: shadcn/ui component library — copy-paste React components, Tailwind CSS, Radix primitives, theming
 ---
 
+
+
 ## Overview
 
 shadcn/ui is a collection of reusable components built with Radix UI and Tailwind CSS. Components are copied into your project, not installed as dependencies — giving you full control over customization.
@@ -24,6 +26,44 @@ shadcn/ui is a collection of reusable components built with Radix UI and Tailwin
 - Building admin dashboards, SaaS apps, or marketing sites
 
 ## Pseudo Code
+
+The shadcn-ui workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# shadcn-ui primary flow
+input = prepare(raw_data)
+result = process(input, config={component, components, copy, library, paste})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# shadcn-ui primary flow
+input = prepare(raw_data)
+result = process(input, config={component, components, copy, library, paste})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -107,3 +147,21 @@ export function LoginForm() {
 - **Theming**: Override CSS variables for brand colors, spacing, radius
 - **Responsive**: Use Tailwind breakpoints directly in component className
 - **Data tables**: Pair with `@tanstack/react-table` for sortable, filterable tables
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

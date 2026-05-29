@@ -26,7 +26,7 @@ nist_csf:
 ## When to Use
 
 - During authorized penetration tests when the application processes XML input (SOAP APIs, file uploads, RSS feeds)
-- When testing APIs that accept `Content-Type: application/xml` or `text/xml`
+- When testing APIs that accept `Content-Type: application/xml` or text > xml
 - For assessing XML parsers in file upload functionality (DOCX, XLSX, SVG, PDF)
 - When evaluating SOAP-based web services for entity injection
 - During security assessments of enterprise applications using XML configuration
@@ -42,6 +42,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Identify XML Processing Points
 
 Find all application endpoints that accept or process XML data.
@@ -302,6 +307,11 @@ curl -s -X POST \
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario 1: SOAP API File Read
 A SOAP web service processes XML input without disabling external entities. Injecting a DTD with a SYSTEM entity in the SOAP body reads `/etc/passwd` and returns it in the SOAP response.
 
@@ -309,10 +319,26 @@ A SOAP web service processes XML input without disabling external entities. Inje
 An image upload feature accepts SVG files. The SVG is parsed server-side for thumbnail generation. Using a blind XXE payload in the SVG, server files are exfiltrated via out-of-band HTTP requests.
 
 ### Scenario 3: JSON to XML Content-Type Switch
-A REST API primarily uses JSON but the XML parser is also enabled. Switching `Content-Type` to `application/xml` and sending an XXE payload exposes server files through the API response.
+A REST API primarily uses JSON but the XML parser is also enabled. Switching `Content-Type` to application > xml and sending an XXE payload exposes server files through the API response.
 
 ### Scenario 4: DOCX Processing XXE
 A resume upload feature processes DOCX files. Injecting XXE into the `[Content_Types].xml` file within the DOCX archive triggers file read when the document is parsed server-side.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

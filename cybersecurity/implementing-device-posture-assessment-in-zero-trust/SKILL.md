@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Device Compliance Baselines
 
 Establish minimum security requirements for each device category.
@@ -398,6 +403,11 @@ def check_posture_drift(cs_token: str, intune_token: str):
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Device Posture Assessment In Zero Trust assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Device Posture Assessment In Zero Trust response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Enforcing Device Compliance for 2,000 Endpoints Across Windows and macOS
 
 **Context**: A healthcare company with 2,000 endpoints (70% Windows, 30% macOS) must enforce HIPAA-compliant device posture before allowing access to patient data systems. Devices are managed by Intune (Windows) and Jamf (macOS) with CrowdStrike Falcon deployed on all endpoints.
@@ -412,6 +422,20 @@ def check_posture_drift(cs_token: str, intune_token: str):
 7. Implement automated remediation via Intune: push BitLocker enablement, deploy pending patches
 
 **Pitfalls**: Grace periods must be long enough for IT to remediate but short enough to limit risk exposure. CrowdStrike ZTA scores can fluctuate with sensor updates; avoid setting thresholds too aggressively initially. BYOD devices may lack MDM enrollment; provide a separate Browser Access path with reduced functionality for unmanaged devices.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

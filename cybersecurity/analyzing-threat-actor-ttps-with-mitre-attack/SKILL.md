@@ -51,6 +51,11 @@ MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics, techn
 
 ## Key Concepts
 
+This section covers key concepts for analyzing threat actor ttps with mitre attack.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### ATT&CK Matrix Structure
 
 The ATT&CK Enterprise matrix organizes adversary behavior into 14 Tactics (the "why") containing Techniques (the "how") and Sub-techniques (specific implementations). Each technique has associated data sources, detections, mitigations, and real-world procedure examples from observed threat groups.
@@ -65,6 +70,11 @@ The ATT&CK Navigator is a web-based tool for creating custom ATT&CK matrix visua
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Query ATT&CK Data Programmatically
 
 ```python
@@ -272,6 +282,22 @@ for gname, techs in group_techniques.items():
 - Detection gap analysis identifies unmonitored techniques
 - Cross-group comparison reveals shared and unique TTPs
 - Output is actionable for detection engineering prioritization
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: GraphQL Endpoint Discovery
 
 ```python
@@ -460,6 +465,11 @@ for sq in sensitive_queries:
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: E-Commerce GraphQL API Security Assessment
 
 **Context**: An e-commerce platform migrated from REST to GraphQL. The GraphQL endpoint serves the web and mobile frontends. Introspection was left enabled during development and was not disabled for production.
@@ -480,6 +490,22 @@ for sq in sensitive_queries:
 - Missing subscription endpoints that may expose real-time data streams without authentication
 - Not testing query complexity limits with realistic payloads that trigger expensive database operations
 - Ignoring that GraphQL over WebSocket (subscriptions) may have different authentication requirements
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

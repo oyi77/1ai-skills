@@ -46,6 +46,11 @@ Active Directory (AD) penetration testing targets the central identity and acces
 
 ## Phase 1 — AD Enumeration
 
+This section covers phase 1 — ad enumeration for performing active directory penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Domain Information Gathering
 
 ```bash
@@ -121,6 +126,11 @@ ldapsearch -x -H ldap://10.0.0.5 -D "testuser@corp.local" -w "Password123" \
 
 ## Phase 2 — Kerberos Attacks
 
+This section covers phase 2 — kerberos attacks for performing active directory penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Kerberoasting
 
 ```bash
@@ -202,6 +212,11 @@ certipy relay -target 'http://ca.corp.local/certsrv/certfnsh.asp' \
 
 ## Phase 4 — Domain Privilege Escalation
 
+This section covers phase 4 — domain privilege escalation for performing active directory penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### DCSync Attack
 
 ```bash
@@ -270,6 +285,22 @@ mimikatz# misc::skeleton
 | LLMNR/NBT-NS enabled | 8.1 | Disable via GPO |
 | No LAPS deployed | 7.2 | Deploy Windows LAPS for local admin management |
 | Weak domain password policy | 6.5 | Enforce 14+ chars, implement fine-grained password policies |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

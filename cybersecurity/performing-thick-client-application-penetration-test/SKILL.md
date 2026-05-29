@@ -57,6 +57,15 @@ Thick client (fat client) penetration testing assesses the security of desktop a
 
 ## Phase 1 — Information Gathering
 
+```
+Performing Thick Client Application Penetration Test Output Summary
+========================================
+Status:       [COMPLETE / PARTIAL / BLOCKED]
+Findings:     [count] items
+Severity:     [Critical / High / Medium / Low / Info]
+Evidence:     [file paths or log references]
+Next Steps:   [recommended actions]
+```
 ### Static Analysis
 
 ```powershell
@@ -110,6 +119,11 @@ strings application.exe | findstr -i "cert\|pin\|ssl\|tls"
 
 ## Phase 2 — Dynamic Analysis
 
+This section covers phase 2 — dynamic analysis for performing thick client application penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Process Monitoring
 
 ```powershell
@@ -154,6 +168,11 @@ frida -l bypass_ssl_pinning.js -f application.exe
 
 ## Phase 3 — Vulnerability Testing
 
+This section covers phase 3 — vulnerability testing for performing thick client application penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Authentication Bypass
 
 ```
@@ -255,6 +274,22 @@ strings process_dump.dmp | findstr -i "password\|token\|session\|bearer"
 | No certificate pinning | Medium | 6.5 | Implement certificate pinning |
 | Local SQLite DB with cleartext passwords | Critical | 9.0 | Use bcrypt/Argon2 hashing |
 | Disabled SSL validation in code | High | 8.1 | Enable proper certificate validation |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

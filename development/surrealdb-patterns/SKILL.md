@@ -3,6 +3,7 @@ name: surrealdb-patterns
 description: SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode
 ---
 
+
 ## Overview
 
 SurrealDB is a multi-model database that combines document, graph, key-value, and relational models in one engine. It uses SurrealQL (SQL-like), supports realtime subscriptions, and can run embedded or as a server.
@@ -26,6 +27,26 @@ SurrealDB is a multi-model database that combines document, graph, key-value, an
 - Edge/embedded deployments
 
 ## Pseudo Code
+
+The surrealdb-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# surrealdb-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={database, document, embedded, graph, mode})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Connection
 ```javascript
@@ -103,3 +124,20 @@ DEFINE INDEX email_index ON user FIELDS email UNIQUE;
 - **Auth**: `DEFINE SCOPE`, `DEFINE ACCESS`, JWT tokens
 - **Migrations**: Use `DEFINE TABLE` and `DEFINE FIELD` in `.surql` files
 - **Graph modeling**: Use RELATE for edges, traverse with `->` and `<-`
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

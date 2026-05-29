@@ -28,6 +28,38 @@ Enables multi-platform integrations for Kalodata research automation, connecting
 3. **Implement integration** – Use the core integration patterns
 4. **Test and deploy** – Verify connection and automate workflows
 
+## How to Use
+
+1. Obtain Kalodata API credentials from the dashboard
+2. Configure authentication headers for API requests
+3. Use the product research endpoints to fetch trending data
+4. Export findings to your analytics pipeline
+
+## API Integration
+
+```python
+import requests
+
+KALODATA_API = "https://api.kalodata.com/v1"
+headers = {"Authorization": f"Bearer {KALODATA_TOKEN}"}
+
+resp = requests.get(f"{KALODATA_API}/products/trending", headers=headers)
+products = resp.json()["data"]
+
+import csv
+with open("trending.csv", "w", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=["name", "category", "revenue"])
+    writer.writeheader()
+    writer.writerows(products)
+```
+
+## Common Patterns
+
+- Cache API responses to reduce rate limit pressure
+- Use pagination for large result sets
+- Filter by category and date range for relevant results
+- Schedule regular data pulls for trend analysis
+
 ## Red Flags
 
 - Hardcoding API keys in source code (always use config files or environment variables)

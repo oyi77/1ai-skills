@@ -45,6 +45,11 @@ SCIM (System for Cross-domain Identity Management) is an open standard protocol 
 
 ## Core Concepts
 
+This section covers core concepts for implementing scim provisioning with okta.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SCIM 2.0 Protocol
 
 SCIM defines a standard schema for representing users and groups via JSON, with a RESTful API for CRUD operations:
@@ -80,6 +85,11 @@ Okta (IdP) ──SCIM 2.0 over HTTPS──> SCIM Server ──> Application Data
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Build SCIM 2.0 API Server
 
 Create a Flask-based SCIM server that implements the core endpoints. The server must handle:
@@ -212,6 +222,20 @@ Okta provides an automated SCIM test suite (via Runscope/BlazeMeter) that valida
 - [ ] Group push creates and manages group memberships
 - [ ] Okta SCIM validator test suite passes all tests
 - [ ] Error responses conform to SCIM error schema
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

@@ -1,21 +1,22 @@
 ---
 name: systematic-debugging
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
-persona:
+persona: |
   name: "Richard Feynman"
-  title: "The Great Explainer - Master of Root Cause Analysis"
-  expertise: ["Root Cause Analysis", "Scientific Method", "Problem Decomposition", "Hypothesis Testing"]
-  philosophy: "The first principle is that you must not fool yourself - and you are the easiest person to fool."
-  credentials:
-    - "Nobel Prize in Physics for work on quantum electrodynamics"
-    - "Investigated the Challenger disaster"
-    - "Famous for explaining complex ideas simply"
-  principles:
-    - "Write down what you know"
-    - "Write down what you think you know"
-    - "Test your assumptions"
-    - "The simplest explanation is usually the correct one"
+    title: "The Great Explainer - Master of Root Cause Analysis"
+    expertise: ["Root Cause Analysis", "Scientific Method", "Problem Decomposition", "Hypothesis Testing"]
+    philosophy: "The first principle is that you must not fool yourself - and you are the easiest person to fool."
+    credentials:
+      - "Nobel Prize in Physics for work on quantum electrodynamics"
+      - "Investigated the Challenger disaster"
+      - "Famous for explaining complex ideas simply"
+    principles:
+      - "Write down what you know"
+      - "Write down what you think you know"
+      - "Test your assumptions"
+      - "The simplest explanation is usually the correct one"
 ---
+
 
 # Systematic Debugging
 
@@ -46,6 +47,13 @@ If you haven't completed Phase 1, you cannot propose fixes.
 - Previous fix didn't work
 
 ## Four Phases
+
+- Configure before, behavior, debugging, encountering, failure settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Phase 1: Root Cause Investigation
 
@@ -186,14 +194,16 @@ From debugging sessions:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Agent applies fixes without understanding the root cause
+- Debug output is left in production code after the fix
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Root cause is identified and documented before applying fixes
+- [ ] Debug output is removed from production code
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -2,6 +2,7 @@
 name: ai-digital-products
 description: Create and sell AI-powered digital products. Build templates, prompt libraries, workflows, and Notion systems. Generate $500-5K/month passive income.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Ai Digital Products"
@@ -71,6 +72,13 @@ Create and sell digital products powered by AI - including prompt libraries, wor
 
 ## Product Types
 
+- Configure build, create, digital, generate, income settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Prompt Libraries
 | Type | Price | Examples |
 |------|-------|----------|
@@ -103,6 +111,13 @@ Create and sell digital products powered by AI - including prompt libraries, wor
 
 ## Best-Selling Categories
 
+- Configure build, create, digital, generate, income settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Productivity
 - Notion templates
 - Second brain systems
@@ -131,6 +146,13 @@ Create and sell digital products powered by AI - including prompt libraries, wor
 
 ## Platforms
 
+- Configure build, create, digital, generate, income settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Marketplaces
 | Platform | Fee | Audience |
 |----------|-----|----------|
@@ -149,6 +171,13 @@ Create and sell digital products powered by AI - including prompt libraries, wor
 ---
 
 ## Creation Process
+
+- Configure build, create, digital, generate, income settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Week 1: Research
 ```
@@ -186,6 +215,13 @@ Create and sell digital products powered by AI - including prompt libraries, wor
 
 ## Pricing Strategy
 
+- Configure build, create, digital, generate, income settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Entry ($19-49)
 ```
 Purpose: Build list
@@ -211,6 +247,13 @@ Bonus: Support calls
 
 ## Marketing
 
+- Configure build, create, digital, generate, income settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Content Marketing
 ```
 1. Blog posts about problem
@@ -230,6 +273,12 @@ Bonus: Support calls
 ---
 
 ## Integration with 1ai-skills
+
+Combine ai-digital-products with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
 
 ### Product Pipeline
 ```
@@ -253,6 +302,13 @@ Upsell: ai-consulting
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Solve specific problems  
@@ -285,14 +341,16 @@ Upsell: ai-consulting
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

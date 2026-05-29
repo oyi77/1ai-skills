@@ -47,6 +47,11 @@ API rate limiting is a critical security control that restricts the number of re
 
 ## Rate Limiting Algorithms
 
+This section covers rate limiting algorithms for implementing api abuse detection with rate limiting.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Token Bucket Algorithm
 
 The token bucket assigns each client a bucket with a fixed capacity of tokens. Tokens refill at a constant rate. Each request consumes one token. When the bucket is empty, requests are rejected. This allows controlled bursts while maintaining average limits.
@@ -380,6 +385,22 @@ Content-Type: application/json
 
 {"error": "rate_limit_exceeded", "retry_after": 30}
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Testing without rate limiting, potentially causing service degradation
+- Storing sensitive test data (credentials, tokens) in plain text logs
+- Using automated scanners blindly without reviewing results for false positives
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance
 
 ## References
 

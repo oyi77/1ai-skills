@@ -5,6 +5,7 @@ domain: development
 tags: [free-tier, saas, cost-optimization, developer-tools, cloud, side-project]
 ---
 
+
 ## Overview
 
 Comprehensive reference of free-tier SaaS, PaaS, and IaaS services for developers. Covers cloud providers, CI/CD, code quality, monitoring, auth, CMS, hosting, databases, email, CDN, testing, and security tools. Sourced from the free-for-dev list (https://github.com/ripienaar/free-for-dev).
@@ -36,6 +37,14 @@ Comprehensive reference of free-tier SaaS, PaaS, and IaaS services for developer
 5. **Verify current status** -- Free tiers change; confirm the service still offers what is documented.
 
 ## Key Resources
+
+Curated resources for free-dev-resources.
+
+- Official documentation: Reference for API, CLI, and configuration
+- Community templates: Battle-tested patterns from production use
+- Monitoring dashboards: Grafana/Datadog templates for observability
+- CI/CD integration: GitHub Actions and GitLab CI starter workflows
+
 
 ### Cloud Providers
 
@@ -202,3 +211,12 @@ Comprehensive reference of free-tier SaaS, PaaS, and IaaS services for developer
 - [ ] Migration path exists if the service is discontinued
 - [ ] Terms of service allow the intended use case
 - [ ] Service is not a time-limited trial when always-free is needed
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches

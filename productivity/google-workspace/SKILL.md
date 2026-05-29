@@ -23,6 +23,12 @@ persona:
 Comprehensive Google Workspace integration using MCP servers for Docs, Sheets, Drive, and Calendar.
 
 ## Required Tools
+| Tool | Purpose | Required |
+|------|---------|----------|
+| CLI | Primary execution | Yes |
+| API client | External service calls | Conditional |
+| Validator | Output checking | Recommended |
+
 
 ### MCP Servers
 
@@ -88,6 +94,11 @@ Comprehensive Google Workspace integration using MCP servers for Docs, Sheets, D
 | `MCP(google-docs:*)` | Create/edit docs |
 
 ## Authentication
+1. Obtain API credentials from the service provider
+2. Set environment variables: `export API_KEY=<your-key>`
+3. Test authentication: invoke the skill with a read-only operation
+4. Store credentials securely; never commit to version control
+
 
 ### Setup Steps
 
@@ -113,6 +124,22 @@ Comprehensive Google Workspace integration using MCP servers for Docs, Sheets, D
    ```
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Example 1: Create Document from Template
 
@@ -238,6 +265,11 @@ await calendar.sendNotifications(event.id);
 | `NOT_FOUND` | File not found | Check file ID |
 
 ## Common Patterns
+- Use structured input/output schemas for reliable automation
+- Add retry logic with exponential backoff for external calls
+- Validate inputs before processing to fail fast
+- Log execution steps for debugging and auditing
+
 
 ### Batch Upload
 
@@ -278,7 +310,8 @@ async function updateSheet(spreadsheetId: string, data: any[]) {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When Google Workspace automation handles data in regions with data residency requirements
+- When the automation modifies Drive files subject to legal hold
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -291,14 +324,16 @@ async function updateSheet(spreadsheetId: string, data: any[]) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Google Workspace automation exceeds API quota limits
+- Agent does not handle shared drive permission inheritance correctly
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] API quota limits are monitored and respected
+- [ ] Shared drive permissions inherit correctly
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

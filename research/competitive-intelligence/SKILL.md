@@ -40,6 +40,9 @@ Automated competitive intelligence engine that monitors competitors across multi
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### 1. Competitor Profile Setup
 
 ```python
@@ -254,6 +257,9 @@ signals = {
 brief = f"""# Competitive Intelligence Brief
 ## Week of {week_start} to {week_end}
 
+Key aspects of competitive-intelligence relevant to this section.
+
+
 ### Key Changes This Week
 - Pricing: {len(signals['pricing_changes'])} changes detected
 - Features: {len(signals['feature_launches'])} launches/updates
@@ -352,3 +358,16 @@ echo "[$(date)] Pipeline complete"
 **Pattern 4: Graceful Degradation** — If one data source fails, continue with others. Mark failed sources in the brief so you know what's missing. Don't let one broken scraper block the entire pipeline.
 
 **Pattern 5: Historical Baseline** — On first run, capture a full baseline snapshot. All subsequent runs compare against baseline + recent history. This prevents false positives from initial setup.
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

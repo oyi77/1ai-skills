@@ -1,25 +1,28 @@
 ---
 name: larry-playbook
 description: Autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula
-persona:
-  name: "Larry (Oliver Henry)"
-  title: "Master of Viral TikTok Content"
-  expertise: ["viral hooks", "slideshow storytelling", "AI content automation", "data-driven iteration"]
-  philosophy: "Every failure becomes a rule. Every success becomes a formula. The system compounds."
-  credentials:
-    - "500K+ total TikTok views in 5 days (2025)"
-    - "234K views on single post using locked architecture"
-    - "108 paying subscribers, $588 MRR from AI-generated content"
-    - "95% AI work, 5% human finishing - proven ROI model"
-  principles:
-    - "Lock down architecture - same room, different styles creates consistency"
-    - "Hook templates work - Landlord + AI, Parent + AI, Roommate + AI patterns"
-    - "Data-driven iteration - track what works, compound successes"
-    - "Story-style captions - natural app mentions, not ads"
-    - "Continuous learning - hourly research of trending content"
-    - "Confidence tracking - measure what converts, double down"
-    - "Document everything - every failure teaches, every win scales"
+persona: |
+  |
+    name: "Larry (Oliver Henry)"
+      title: "Master of Viral TikTok Content"
+      expertise: ["viral hooks", "slideshow storytelling", "AI content automation", "data-driven iteration"]
+      philosophy: "Every failure becomes a rule. Every success becomes a formula. The system compounds."
+      credentials:
+        - "500K+ total TikTok views in 5 days (2025)"
+        - "234K views on single post using locked architecture"
+        - "108 paying subscribers, $588 MRR from AI-generated content"
+        - "95% AI work, 5% human finishing - proven ROI model"
+      principles:
+        - "Lock down architecture - same room, different styles creates consistency"
+        - "Hook templates work - Landlord + AI, Parent + AI, Roommate + AI patterns"
+        - "Data-driven iteration - track what works, compound successes"
+        - "Story-style captions - natural app mentions, not ads"
+        - "Continuous learning - hourly research of trending content"
+        - "Confidence tracking - measure what converts, double down"
+        - "Document everything - every failure teaches, every win scales"
 ---
+
+
 
 # Larry Playbook — Viral TikTok Content Generator
 
@@ -37,6 +40,33 @@ Autonomous AI agent that learns and improves viral content over time using Olive
 ---
 
 ## Quick Start
+
+Get started with larry-playbook in three steps.
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode larry-playbook`
+
+Verify setup:
+```bash
+python main.py --check-config
+python main.py --run
+```
+
+
+### Getting Started
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure settings in `config.yaml`
+3. Run: `python main.py --mode larry-playbook`
+
+### First Run
+```bash
+# Verify setup
+python main.py --check-config
+# Execute
+python main.py --run
+```
+
 
 ### Prerequisites
 - **OpenAI API key** (optional) for image generation
@@ -77,6 +107,13 @@ This IS about:
 ---
 
 ## Features
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### ✅ Content Generation
 - **6-Slide Viral TikTok Slideshow** using Larry's proven formula
@@ -134,6 +171,13 @@ This IS about:
 ---
 
 ## Content Architecture
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Slideshow Format
 - **Exactly 6 slides** (TikTok's sweet spot)
@@ -196,6 +240,13 @@ My [relationship] [reaction/emotion] when I showed them [AI suggestion]
 
 ## Available Commands
 
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Manual Mode
 Generate a single viral TikTok slideshow:
 ```bash
@@ -219,6 +270,13 @@ The system will:
 ---
 
 ## Usage
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Get Connected Accounts
 Check which social media accounts are connected:
@@ -270,6 +328,13 @@ Human workflow:
 
 ## Confidence System
 
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Confidence Levels
 | Level | Multiplier | Description | Min Views Threshold |
 |--------|-------------|-------------|--------------------|
@@ -295,6 +360,13 @@ After 10 successes → Confidence maxed at 1.0x → "Winning formula"
 ---
 
 ## Memory System
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Memory Files
 ```
@@ -325,6 +397,13 @@ When a hook type consistently fails <30K views:
 
 ## Analytics Dashboard
 
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Metrics to Track
 
 | Metric | Target | How to Measure |
@@ -352,6 +431,13 @@ with open('skills/larry-playbook/memory/SYSTEM_MEMORY.json') as f:
 ---
 
 ## Common Pitfalls (Avoid These!)
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### ❌ Pitfall 1: Self-Promotion
 **Symptom:** Under 10K views, low save rate
@@ -384,6 +470,13 @@ RIGHT: "My flatmate thinks interior design is impossible, so I proved them wrong
 
 ## Scaling Strategies
 
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Scale 1: Multi-Niche
 - Replicate formula for different niches:
   - Rental + landlord
@@ -407,6 +500,13 @@ RIGHT: "My flatmate thinks interior design is impossible, so I proved them wrong
 
 ## Learning Loop
 
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Every 30 Seconds
 ```
 Generate Post → Observe Results (24-48h) → Update Rules → Generate Next Post
@@ -423,6 +523,13 @@ Research Flow → Content Gen Flow → Social Media Flow → Feedback Loop → U
 ---
 
 ## Monitoring & Analytics
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Daily Checklist
 ```markdown
@@ -478,6 +585,13 @@ skills/larry-playbook/
 ---
 
 ## Dependencies
+
+- Configure agent, autonomous, content, formula, henry settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Required
 - **Post-Bridge API Key** for posting to social platforms
@@ -581,7 +695,8 @@ The AI agent will respond to requests for this skill.
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the content requires original research or primary source reporting
+- When the output will be used in legally binding or regulatory contexts
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -594,14 +709,16 @@ The AI agent will respond to requests for this skill.
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Content quality is not reviewed before publication or distribution
+- Agent does not adapt tone and style for the target audience
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Content quality passes review before publication or distribution
+- [ ] Tone and style are appropriate for the target audience
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

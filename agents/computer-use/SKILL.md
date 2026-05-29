@@ -28,6 +28,9 @@ Computer use enables AI agents to interact with desktop applications through scr
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Screenshot + Vision Analysis
 ```python
 import pyautogui
@@ -180,6 +183,9 @@ for i, word in enumerate(data['text']):
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Safety Boundaries
 ```python
 # Define safe zones and dangerous actions
@@ -246,3 +252,49 @@ def screenshot_monitor(index):
     m = monitors[index]
     return pyautogui.screenshot(region=(m.x, m.y, m.width, m.height))
 ```
+
+## When NOT to Use
+
+- When the target application has a CLI or API (prefer structured interfaces over GUI)
+- When the task can be done with keyboard shortcuts alone (no screen reading needed)
+- When running in a headless environment without a display server (use Xvfb or skip)
+- When the GUI application has accessibility bindings (use AT-SPI, AX API instead of pixel clicking)
+- When the task requires sub-second precision (GUI automation has inherent latency)
+- When destructive actions (file deletion, system changes) lack a confirmation step
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "Clicking coordinates is reliable enough" | Screen resolution, DPI scaling, and window position change coordinates. Use image recognition or element identification instead of raw coordinates. |
+| "I do not need a safety failsafe" | PyAutoGUI's failsafe (mouse to corner) exists because GUI automation can type dangerous commands into any focused window. Always enable it. |
+| "OCR is good enough for reading the screen" | OCR struggles with small fonts, styled text, and overlapping elements. Vision models with screenshots are more reliable for complex UIs. |
+| "Recording and replaying is the same as automation" | Recorded workflows break on any UI change (window resize, theme change, dialog popup). Parameterized automation is more resilient. |
+| "I will handle multi-monitor later" | Multi-monitor setups change coordinate origins. Screeninfo detection must happen at runtime, not hardcoded. |
+| "AppleScript can do everything on macOS" | AppleScript is powerful for native apps but fails on Electron apps, web content, and cross-platform code. Combine with xdotool/PyAutoGUI for full coverage. |
+
+## Red Flags
+
+- Hardcoded screen coordinates (breaks across different resolutions/DPI)
+- No failsafe enabled (PyAutoGUI can type into any focused window)
+- No delay between actions (too fast for UI to respond)
+- Destructive commands without confirmation dialog (rm, delete, format)
+- OCR without verifying recognition accuracy (wrong characters, misread text)
+- No screenshot on failure (impossible to debug what went wrong)
+- Running on production servers without display isolation (Xvfb)
+- Sending keystrokes to the wrong window (focus not verified)
+
+## Verification
+
+After implementing computer use automation, confirm:
+
+- [ ] Failsafe enabled (PyAutoGUI.FAILSAFE = True or equivalent)
+- [ ] Delays between actions are appropriate for the target application
+- [ ] Element identification uses robust methods (not raw coordinates)
+- [ ] Destructive actions have explicit confirmation step before execution
+- [ ] Screenshots captured before and after critical actions (audit trail)
+- [ ] Multi-monitor setup detected at runtime (not hardcoded coordinates)
+- [ ] OCR results validated against expected text (not trusted blindly)
+- [ ] Error handling covers window-not-found, element-not-clickable, and timeout
+- [ ] Works in headless mode (Xvfb) if needed for CI/server environments
+- [ ] Cleanup releases all input handles and restores window state

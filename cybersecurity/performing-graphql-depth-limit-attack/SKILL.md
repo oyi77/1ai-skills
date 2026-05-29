@@ -50,6 +50,11 @@ GraphQL depth limit attacks exploit the recursive nature of GraphQL schemas to c
 
 ## Core Attack Techniques
 
+This section covers core attack techniques for performing graphql depth limit attack.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Recursive Depth Attack
 
 When a GraphQL schema has bidirectional relationships, queries can reference them recursively:
@@ -358,6 +363,11 @@ if __name__ == "__main__":
 
 ## Mitigation Strategies
 
+This section covers mitigation strategies for performing graphql depth limit attack.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Depth Limiting
 
 ```javascript
@@ -409,6 +419,22 @@ GRAPHQL_CONFIG = {
 - High memory or CPU usage on GraphQL server processes
 - Repeated requests with incrementally increasing query complexity
 - Large response payloads from single query requests
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

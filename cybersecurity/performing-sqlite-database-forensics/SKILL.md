@@ -50,6 +50,11 @@ SQLite is the most widely deployed database engine in the world, used by virtual
 
 ## SQLite Internal Structure
 
+This section covers sqlite internal structure for performing sqlite database forensics.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Database Header (First 100 Bytes)
 
 | Offset | Size | Description |
@@ -79,6 +84,11 @@ SQLite is the most widely deployed database engine in the world, used by virtual
 
 ## Deleted Record Recovery
 
+This section covers deleted record recovery for performing sqlite database forensics.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Method 1: Freelist Page Analysis
 
 When records are deleted, SQLite may place their pages on the freelist rather than overwriting them immediately.
@@ -282,6 +292,22 @@ def decode_mozilla_timestamp(moz_ts: int) -> datetime:
     """Convert Mozilla PRTime (microseconds since Unix epoch)."""
     return datetime.utcfromtimestamp(moz_ts / 1000000)
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## References
 

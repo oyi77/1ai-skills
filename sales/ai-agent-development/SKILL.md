@@ -3,6 +3,7 @@ name: ai-agent-development
 description: Build and sell custom AI agents as services or products. Create vertical-specific AI solutions for clients and generate $2K-$8K/month recurring revenue.
 ---
 
+
 # AI Agent Development Skill
 
 ## Overview
@@ -36,6 +37,13 @@ Build custom AI agents for businesses and sell them as services or products. Cre
 
 ## Business Models
 
+- Configure agent, agents, build, clients, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 1. Agent-as-a-Service (Recurring)
 ```
 Price: $199-799/month per client
@@ -63,6 +71,13 @@ Example: Legal agent, HR agent, etc.
 
 ## High-Demand Agent Types
 
+- Configure agent, agents, build, clients, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### By Industry
 
 | Industry | Agent Type | Price/mo |
@@ -89,6 +104,13 @@ Example: Legal agent, HR agent, etc.
 
 ## Development Stack
 
+- Configure agent, agents, build, clients, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Core Tools
 | Tool | Use | Price |
 |------|-----|-------|
@@ -104,6 +126,13 @@ Example: Legal agent, HR agent, etc.
 ---
 
 ## Development Process
+
+- Configure agent, agents, build, clients, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Phase 1: Discovery (1-2 days)
 ```
@@ -179,6 +208,13 @@ result = agent.invoke({
 
 ## Tools & Integrations
 
+- Configure agent, agents, build, clients, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Knowledge Base
 | Tool | Use | Price |
 |------|-----|-------|
@@ -199,6 +235,12 @@ result = agent.invoke({
 
 ## Integration with 1ai-skills
 
+Combine ai-agent-development with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Revenue Model
 
 ```
@@ -217,6 +259,13 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 ---
 
 ## Pricing Guide
+
+- Configure agent, agents, build, clients, create settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Starter Agent ($199/mo)
 - Single task automation
@@ -241,6 +290,13 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Start with simple agents  
@@ -282,3 +338,22 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 - [voice-ai-agent](/skills/voice-ai-agent) - Voice agent building
 - [ai-consulting](/skills/ai-consulting) - Client acquisition
 - [automation](/skills/automation) - Workflow building
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.

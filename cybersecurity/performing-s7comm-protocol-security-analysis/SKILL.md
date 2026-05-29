@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Analyze S7comm Traffic and Identify Vulnerabilities
 
 ```python
@@ -387,6 +392,11 @@ if __name__ == "__main__":
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing S7Comm Protocol Security Analysis assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing S7Comm Protocol Security Analysis response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Unauthorized PLC Program Modification
 
 **Context**: A Dragos sensor alerts on S7comm program download traffic from an IP address that is not the authorized TIA Portal engineering workstation.
@@ -401,6 +411,20 @@ if __name__ == "__main__":
 7. Implement S7comm access protection (know-how protection, access passwords) on all PLCs
 
 **Pitfalls**: S7-300/400 PLCs have no cryptographic integrity protection -- any device that can reach TCP port 102 can send commands. Do not rely solely on PLC passwords as they are transmitted in cleartext in S7comm (not S7CommPlus). Network segmentation is the primary defense.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

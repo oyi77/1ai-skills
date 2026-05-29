@@ -56,6 +56,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
+2. **Assess configurations** — check against security best practices and CIS benchmarks
+3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
+4. **Validate logging** — ensure audit trails are enabled and properly retained
+5. **Document and remediate** — report findings with specific configuration changes needed
 ### Step 1: Enable Security Command Center and Asset Inventory
 
 Enable SCC and set up Cloud Asset Inventory for comprehensive resource visibility.
@@ -239,6 +244,11 @@ gcloud scc findings list ORG_ID \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Gcp Security Assessment With Forseti assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Gcp Security Assessment With Forseti response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Assessing a Newly Acquired GCP Organization
 
 **Context**: After a company acquisition, the security team needs to assess the security posture of the acquired company's GCP organization with 30+ projects.
@@ -253,6 +263,22 @@ gcloud scc findings list ORG_ID \
 7. Generate a risk-prioritized remediation roadmap for the integration team
 
 **Pitfalls**: GCP IAM bindings are inherited from organization to folder to project. A permissive binding at the organization level affects all downstream projects. Always audit IAM at every level of the hierarchy, not just at the project level.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## Output Format
 

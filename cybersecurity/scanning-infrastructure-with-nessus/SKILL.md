@@ -42,6 +42,11 @@ Tenable Nessus is the industry-leading vulnerability scanner used to identify se
 
 ## Core Concepts
 
+This section covers core concepts for scanning infrastructure with nessus.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Nessus Architecture
 Nessus operates as a client-server application where the Nessus scanner engine runs as a service (nessusd) on the host system. It uses a plugin-based architecture with over 200,000 plugins updated weekly by Tenable's research team. Each plugin tests for a specific vulnerability, misconfiguration, or compliance check.
 
@@ -63,6 +68,11 @@ Nessus organizes plugins into families including:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Initial Configuration
 ```bash
 # Start Nessus service
@@ -172,3 +182,17 @@ curl -k -X POST "https://localhost:8834/scans/<SCAN_ID>/export" \
 - prioritizing-vulnerabilities-with-cvss-scoring
 - implementing-continuous-vulnerability-monitoring
 - performing-network-vulnerability-assessment
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise

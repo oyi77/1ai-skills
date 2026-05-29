@@ -3,6 +3,8 @@ name: ai-consulting
 description: Offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.
 ---
 
+
+
 # AI Consulting Skill
 
 ## Overview
@@ -34,6 +36,13 @@ Offer fractional AI engineering and consulting services to companies that need A
 ---
 
 ## Service Offerings
+
+- Configure afford, companies, consulting, engineering, executive settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. AI Assessment (One-time)
 ```
@@ -79,6 +88,13 @@ Output: Trained team, materials
 
 ## Target Clients
 
+- Configure afford, companies, consulting, engineering, executive settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### By Size
 
 | Client | Need | Price |
@@ -102,6 +118,13 @@ Output: Trained team, materials
 ---
 
 ## Sales Process
+
+- Configure afford, companies, consulting, engineering, executive settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Stage 1: Discovery (30 min - Free)
 ```
@@ -148,6 +171,42 @@ Process:
 
 ## Value Proposition Templates
 
+Reusable templates for ai-consulting.
+
+Standard config:
+```yaml
+name: ai-consulting_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: ai-consulting_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard ai-consulting
+```yaml
+name: ai-consulting_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: ai-consulting_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
 ### For Startups
 ```
 "I help startups integrate AI without the overhead of a full-time team. 
@@ -174,6 +233,13 @@ you cut through the AI hype and deliver real business value."
 ---
 
 ## Tools & Resources
+
+- Configure afford, companies, consulting, engineering, executive settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Client Management
 | Tool | Use | Price |
@@ -202,6 +268,12 @@ you cut through the AI hype and deliver real business value."
 
 ## Integration with 1ai-skills
 
+Combine ai-consulting with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Skill Synergies
 
 | Skill | Use Case |
@@ -221,6 +293,13 @@ Consulting → Build agent → Upsell maintenance → Referrals
 ---
 
 ## Pricing Psychology
+
+- Configure afford, companies, consulting, engineering, executive settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Anchor High
 ```
@@ -247,6 +326,13 @@ Say: "$3,000 project that typically saves $50K/year"
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Specialize in 1-2 industries  
@@ -291,3 +377,22 @@ Say: "$3,000 project that typically saves $50K/year"
 - [ai-agent-development](/skills/ai-agent-development) - Build for clients
 - [ai-lead-generation](/skills/ai-lead-generation) - Find clients
 - [automation](/skills/automation) - Implement solutions
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.

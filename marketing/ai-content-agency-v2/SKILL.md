@@ -2,6 +2,7 @@
 name: ai-content-agency-v2
 description: ULTIMATE MASTER BLUEPRINT v2.0. Use when relevant to this domain.
 ---
+
 # ULTIMATE MASTER BLUEPRINT v2.0
 ## AI Content Agency — 9 Workflows, 6 Phases
 
@@ -255,6 +256,13 @@ return { target_webhook: routes[workflowId] || routes["1"], workflow_id: workflo
 
 ## WF 6: FACELESS SPIRITUAL (NEW — DEEP SPEC)
 
+- Configure agency, blueprint, content, domain, master settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Node W6.2: LLM
 
 ```
@@ -327,6 +335,13 @@ Target: {{wf_trigger.body.target_audience}}
 ---
 
 ## WF 7: WHAT IF FUSION (NEW — DEEP SPEC)
+
+- Configure agency, blueprint, content, domain, master settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Node W7.2: LLM
 
@@ -416,6 +431,13 @@ Buat 2 variasi What If Fusion, masing-masing 4-scene carousel:
 
 ## WF 8: 3D MEDICAL — COMPLIANCE MODE (NEW — DEEP SPEC)
 
+- Configure agency, blueprint, content, domain, master settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Node W8.2: LLM
 
 ```
@@ -435,6 +457,13 @@ Kamu adalah Kreator Konten 3D CGI Chibi untuk produk kesehatan/herbal di TikTok.
 - Mixing: karakter chibi berinteraksi dengan produk realistis
 
 ## COMPLIANCE MODE: ANTI-BANNED TIKTOK (KRITIS)
+
+- Configure agency, blueprint, content, domain, master settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 ### KATA TERLARANG → PENGGANTI WAJIB:
 | JANGAN PERNAH GUNAKAN | GUNAKAN INI |
 |------------------------|-------------|
@@ -502,6 +531,13 @@ Target: {{wf_trigger.body.target_audience}}
 
 ## WF 9: CLAY VIDEO AI — STRICT MODE (NEW — DEEP SPEC)
 
+- Configure agency, blueprint, content, domain, master settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Node W9.2: LLM
 
 ```
@@ -515,6 +551,13 @@ Format: json_object
 Kamu adalah Art Director spesialis Clay Art / Claymation / Plasticine Animation untuk konten TikTok.
 
 ## CLAY MASTER FORMULA (WAJIB SETIAP SCENE)
+
+- Configure agency, blueprint, content, domain, master settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### TEKSTUR SIDIK JARI (Fingerprint Texture)
 Setiap elemen clay HARUS memiliki visible fingerprint impressions — ini yang membedakan clay art dari 3D render biasa.
@@ -802,3 +845,28 @@ PHASE 5 → OUTPUT:
 
 **Documentation:** Full workflows above ready to use
 **Status:** Ready to integrate with 9 specialized workflows for TikTok/YouTube automation
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

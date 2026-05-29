@@ -1,10 +1,13 @@
 ---
 name: content-scheduler
 description: Schedule and manage content publishing across platforms with Notion calendar
-allowed-tools:
-  - MCP(notion:*)
-  - MCP(slack:*)
+allowed-tools: |
+  |
+    - MCP(notion:*)
+      - MCP(slack:*)
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Content Scheduler"
@@ -79,6 +82,44 @@ Schedule and manage content publishing across platforms. Use Notion as a calenda
 - Send alerts when content is ready to publish
 
 ## Pseudo Code
+
+The content-scheduler workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# content-scheduler primary flow
+input = prepare(raw_data)
+result = process(input, config={across, calendar, content, manage, notion})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# content-scheduler primary flow
+input = prepare(raw_data)
+result = process(input, config={across, calendar, content, manage, notion})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Schedule Content
 
@@ -181,7 +222,8 @@ await slack.chat_postMessage({
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -194,14 +236,16 @@ await slack.chat_postMessage({
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

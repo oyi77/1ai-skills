@@ -63,3 +63,10 @@ Configure Microsoft Entra ID (Azure AD) Conditional Access policies for zero tru
 - [ ] Audit logging enabled and forwarding to SIEM
 - [ ] Documentation and runbooks complete
 - [ ] Compliance evidence generated
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts

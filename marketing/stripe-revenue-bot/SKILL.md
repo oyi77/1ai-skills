@@ -2,6 +2,7 @@
 name: stripe-revenue-bot
 description: Automate posting your Stripe revenue milestones to Twitter/X. Build trust through transparency, attract customers, and join the "build in public" movement.
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Stripe Revenue Bot"
@@ -80,6 +81,13 @@ Automate posting your Stripe revenue milestones to Twitter/X. Connect your Strip
 
 ## Tools & Integration
 
+- Configure attract, automate, bot, build, customers settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### OpenTweet (Recommended)
 
 ```bash
@@ -129,6 +137,13 @@ def stripe_webhook():
 
 ## Event Types to Post
 
+- Configure attract, automate, bot, build, customers settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### High-Impact Events (Recommended)
 
 | Event | Tweet Template |
@@ -156,6 +171,13 @@ def stripe_webhook():
 ---
 
 ## Customization Options
+
+- Configure attract, automate, bot, build, customers settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Tone Variations
 
@@ -204,6 +226,12 @@ if event['livemode'] == False:
 
 ## Integration with 1ai-skills
 
+Combine stripe-revenue-bot with related skills in the 1ai-skills ecosystem:
+- Chain with content/marketing automation skills
+- Feed results into analytics and reporting pipelines
+- Use with orchestration skills for multi-step workflows
+
+
 ### Revenue Team Workflow
 
 ```
@@ -228,6 +256,13 @@ Stage 4: Document  →  build-in-public (share journey)
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Do's
 ✅ Celebrate every sale (momentum matters)  
@@ -257,6 +292,13 @@ Stage 4: Document  →  build-in-public (share journey)
 ---
 
 ## Troubleshooting
+
+- Configure attract, automate, bot, build, customers settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Common Issues
 
@@ -295,14 +337,16 @@ Stage 4: Document  →  build-in-public (share journey)
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

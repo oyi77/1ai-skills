@@ -20,6 +20,9 @@ persona:
 
 ## 核心功能
 
+Core capabilities spanning signal reception, CEX/DEX automation, arbitrage detection, and smart stop-loss management.
+
+
 ### 1. TradingView Pine Script 信号 Bot
 - 接收TradingView webhook信號
 - 自動執行買賣指令
@@ -70,7 +73,8 @@ persona:
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the exchange or platform does not support API-based operations
+- When the trading activity involves regulated instruments requiring compliance approval
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -83,14 +87,16 @@ persona:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Trades execute without verifying market conditions and order book state
+- Agent does not implement stop-loss or risk management controls
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Market conditions and order book state are verified before trade execution
+- [ ] Stop-loss and risk management controls are in place for all positions
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

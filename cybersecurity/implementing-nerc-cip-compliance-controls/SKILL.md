@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Categorize BES Cyber Systems (CIP-002-5.1a)
 
 Identify and categorize all BES cyber systems based on their impact to the reliable operation of the Bulk Electric System.
@@ -403,6 +408,21 @@ cip_007_controls:
 - **Splunk with CIP Content Pack**: SIEM with pre-built CIP-007 security event monitoring dashboards and alerts
 - **Carbon Black App Control**: Application allowlisting for HMI stations and BES cyber assets (CIP-007 R3)
 - **Trellix/McAfee ePO**: Endpoint protection with OT-optimized scanning policies for BES cyber assets
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

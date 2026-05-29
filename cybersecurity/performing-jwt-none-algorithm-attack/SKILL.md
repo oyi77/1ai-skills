@@ -62,6 +62,11 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c  # Signature
 
 ## Attack Methodology
 
+This section covers attack methodology for performing jwt none algorithm attack.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Step 1: Capture a Valid JWT
 
 Intercept a legitimate JWT from the target application using Burp Suite or browser developer tools:
@@ -329,6 +334,22 @@ def verify_token_secure(token: str, secret_key: str) -> dict:
 - Sudden change in algorithm field from normal patterns
 - Tokens with modified claims (role escalation) from the same session
 - Authorization header containing tokens with only two Base64 segments
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

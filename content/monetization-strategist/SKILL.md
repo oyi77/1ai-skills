@@ -3,6 +3,8 @@ name: monetization-strategist
 description: Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building
 ---
 
+
+
 ## Overview
 
 Monetization orchestration layer that turns content creation skills into revenue-generating businesses. Covers newsletter businesses (Beehiiv/Substack), YouTube automation channels, affiliate content sites, digital product creation, and full funnel design. The content skills handle creation — this skill handles the money.
@@ -36,6 +38,44 @@ Monetization orchestration layer that turns content creation skills into revenue
 - Scaling from hobby content to content business
 
 ## Pseudo Code
+
+The monetization-strategist workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# monetization-strategist primary flow
+input = prepare(raw_data)
+result = process(input, config={affiliate, audience, automation, building, businesses})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# monetization-strategist primary flow
+input = prepare(raw_data)
+result = process(input, config={affiliate, audience, automation, building, businesses})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Niche Selection & Validation
 
@@ -364,6 +404,12 @@ PY
 
 ## Common Patterns
 
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Content-to-Revenue Pipeline
 
 ```bash
@@ -419,3 +465,21 @@ revenue_streams:
     integration: content_links + dedicated_reviews
     tracking: utm_parameters
 ```
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

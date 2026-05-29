@@ -33,6 +33,10 @@ Identifies tax-loss harvesting opportunities, manages wash sale constraints, and
 
 ## Implementation:!
 
+
+The implementation follows a phased approach: scan for loss opportunities, check wash sale rules, execute tax-alpha trades, and document for IRS reporting.
+
+
 ### Phase 1: Opportunity Scan!
 
 **TLH Scan:**

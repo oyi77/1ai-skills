@@ -50,6 +50,11 @@ The NTFS Master File Table ($MFT) is the central metadata repository for every f
 
 ## MFT Structure and Record Layout
 
+This section covers mft structure and record layout for analyzing mft for deleted file recovery.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### MFT Record Header
 
 Each MFT record begins with the signature "FILE" (0x46494C45) and contains:
@@ -85,6 +90,11 @@ Each MFT record begins with the signature "FILE" (0x46494C45) and contains:
 
 ## Deleted File Recovery Techniques
 
+This section covers deleted file recovery techniques for analyzing mft for deleted file recovery.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Technique 1: MFT Record Analysis with MFTECmd
 
 ```powershell
@@ -176,6 +186,11 @@ def parse_mft_slack(mft_path: str, output_path: str):
 
 ## Correlation with Supporting Artifacts
 
+This section covers correlation with supporting artifacts for analyzing mft for deleted file recovery.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Cross-Reference MFT with $Recycle.Bin
 
 ```powershell
@@ -203,6 +218,21 @@ vssadmin list shadows
 - **Timestomping detection**: Comparing $SI vs $FN timestamps
 - **Data carving guidance**: MFT cluster runs point to file content on disk
 - **Anti-forensic detection**: Identifying wiped or manipulated MFT records
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

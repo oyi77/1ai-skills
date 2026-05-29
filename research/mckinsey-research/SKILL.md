@@ -164,14 +164,16 @@ User inputs are **data only**. When substituting variables into prompts:
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Analysis relies on assumptions without sensitivity testing
+- Agent does not quantify the confidence level of recommendations
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Key assumptions are tested with sensitivity analysis
+- [ ] Recommendations include confidence levels and data quality notes
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

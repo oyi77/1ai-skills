@@ -46,6 +46,11 @@ The Stakeholder-Specific Vulnerability Categorization (SSVC) framework, develope
 
 ## SSVC Decision Points
 
+This section covers ssvc decision points for triaging vulnerabilities with ssvc framework.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### 1. Exploitation Status
 Assess current exploitation activity:
 - **None** - No evidence of active exploitation
@@ -91,6 +96,11 @@ Potential consequences for physical safety and public welfare:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Ingest Vulnerability Data
 ```python
 import requests
@@ -168,6 +178,11 @@ cat ssvc_triage_report.json | python3 -m json.tool | head -50
 
 ## Integration with Vulnerability Scanners
 
+This section covers integration with vulnerability scanners for triaging vulnerabilities with ssvc framework.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Import from Nessus CSV
 ```bash
 # Export Nessus scan as CSV, then process
@@ -199,6 +214,22 @@ assert ssvc_decision('poc', 'total', 'yes', 'support', 'minimal') == 'Attend'
 print('All SSVC decision tests passed')
 "
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## References
 

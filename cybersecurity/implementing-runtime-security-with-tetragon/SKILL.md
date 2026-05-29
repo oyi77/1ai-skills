@@ -55,6 +55,11 @@ Tetragon is a CNCF project under Cilium that provides flexible Kubernetes-aware 
 
 ## Core Concepts
 
+This section covers core concepts for implementing runtime security with tetragon.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### eBPF-Based Security
 
 Tetragon attaches eBPF programs directly to kernel functions, enabling:
@@ -106,6 +111,10 @@ Tetragon can take three types of actions directly in the kernel:
 
 ## Installation and Configuration
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Step 1: Install Tetragon with Helm
 
 ```bash
@@ -139,6 +148,11 @@ tetra status
 
 ## Practical Implementation
 
+This section covers practical implementation for implementing runtime security with tetragon.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Detecting Container Escape Attempts
 
 Create a TracingPolicy to detect processes attempting to escape container namespaces:
@@ -242,6 +256,11 @@ kubectl exec -n kube-system ds/tetragon -c tetragon -- \
 
 ## Integration with SIEM and Alerting
 
+This section covers integration with siem and alerting for implementing runtime security with tetragon.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Export to Elasticsearch
 
 ```yaml
@@ -285,6 +304,22 @@ spec:
 | `tetragon_policy_events_total` | Events matching TracingPolicies | Any Sigkill action |
 | `tetragon_process_exec_total` | Process executions tracked | Anomalous new binaries |
 | `tetragon_missed_events_total` | Dropped events due to buffer overflow | > 0 sustained |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

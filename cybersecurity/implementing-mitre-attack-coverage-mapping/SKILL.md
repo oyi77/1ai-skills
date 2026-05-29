@@ -59,6 +59,11 @@ MITRE ATT&CK coverage mapping gives SOC teams a structured, adversary-centric le
 
 ## Coverage Mapping Process
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Export Current Detection Rules
 
 ```spl
@@ -235,6 +240,11 @@ Quarter 4: Excellence (Score 75-100)
 
 ## Automated Coverage Assessment
 
+This section covers automated coverage assessment for implementing mitre attack coverage mapping.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Data Source to Technique Mapping
 
 ```python
@@ -267,6 +277,11 @@ DATA_SOURCE_TECHNIQUE_MAP = {
 
 ## Reporting Dashboard Queries
 
+This section covers reporting dashboard queries for implementing mitre attack coverage mapping.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Coverage Summary by Tactic
 
 ```spl
@@ -280,6 +295,22 @@ DATA_SOURCE_TECHNIQUE_MAP = {
 | eval coverage_pct=round((total - no_coverage) / total * 100, 1)
 | sort -coverage_pct
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

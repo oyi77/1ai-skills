@@ -3,6 +3,7 @@ name: ionic-capacitor
 description: Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, App Store deployment
 ---
 
+
 ## Overview
 
 Ionic Framework combined with Capacitor enables building cross-platform mobile apps using web technologies (Angular, React, or Vue). Capacitor provides access to native device APIs while Ionic handles UI components that look and feel native on every platform.
@@ -27,6 +28,26 @@ Ionic Framework combined with Capacitor enables building cross-platform mobile a
 - Migrating existing web app to mobile
 
 ## Pseudo Code
+
+The ionic-capacitor workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# ionic-capacitor primary flow
+input = prepare(raw_data)
+result = process(input, config={angular, apps, capacitor, deployment, hybrid})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Project Setup
 ```bash
@@ -180,6 +201,14 @@ ionic cap run android --livereload --external
 
 ## Common Patterns
 
+Proven patterns for ionic-capacitor usage.
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Route Guard (React)
 ```tsx
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -222,3 +251,20 @@ App.addListener('backButton', ({ canGoBack }) => {
   else window.history.back();
 });
 ```
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

@@ -49,6 +49,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Verify Audit Daemon Status and Configuration
 
 Confirm the audit system is running and check the current rule set:
@@ -266,3 +271,10 @@ transport = tcp
 - [ ] Critical file watches trigger alerts on test modifications (`touch /etc/shadow` generates an event)
 - [ ] Logs are forwarding to central SIEM (verify with a test event and confirm receipt)
 - [ ] Audit rules persist across reboot (rules in `/etc/audit/rules.d/`, not only via `auditctl`)
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring

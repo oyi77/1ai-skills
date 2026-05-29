@@ -59,6 +59,11 @@ kubectl apply -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/
 
 ## Running Benchmarks
 
+This section covers running benchmarks for performing kubernetes cis benchmark with kube bench.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Full Benchmark
 
 ```bash
@@ -137,6 +142,22 @@ kube-bench run --group 1.2
 | 5.3 | Policies - Network | Network policies per namespace |
 | 5.7 | Policies - General | Secrets, security context |
 
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
+
 ## Output Example
 
 ```
@@ -156,6 +177,11 @@ kube-bench run --group 1.2
 
 ## CI/CD Integration
 
+This section covers ci/cd integration for performing kubernetes cis benchmark with kube bench.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### GitHub Actions
 
 ```yaml
@@ -194,6 +220,10 @@ jobs:
 
 ## Remediation Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### 1.2.1 - Ensure --anonymous-auth is set to false
 ```yaml
 # /etc/kubernetes/manifests/kube-apiserver.yaml

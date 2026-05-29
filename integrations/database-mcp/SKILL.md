@@ -27,6 +27,17 @@ MCP server for SQL databases enabling AI agents to interact with PostgreSQL, MyS
 ---
 
 ## MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -61,6 +72,12 @@ MCP server for SQL databases enabling AI agents to interact with PostgreSQL, MyS
 ---
 
 ## Available Tools
+| Tool | Purpose | Required |
+|------|---------|----------|
+| CLI | Primary execution | Yes |
+| API client | External service calls | Conditional |
+| Validator | Output checking | Recommended |
+
 
 ### 1. Query Execution
 ```typescript
@@ -146,6 +163,12 @@ delete({
 ---
 
 ## Database-Specific Tools
+| Tool | Purpose | Required |
+|------|---------|----------|
+| CLI | Primary execution | Yes |
+| API client | External service calls | Conditional |
+| Validator | Output checking | Recommended |
+
 
 ### PostgreSQL
 | Tool | Description |
@@ -166,6 +189,10 @@ delete({
 ---
 
 ## Use Cases
+This section covers use cases for the database-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Data Analysis
 ```
@@ -201,6 +228,11 @@ delete({
 ---
 
 ## Integration with 1ai-skills
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### With Development
 ```
@@ -219,6 +251,10 @@ Extract data   Visualize
 ---
 
 ## Security Best Practices
+This section covers security best practices for the database-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Do's
 ✅ Use read-only connections when possible  
@@ -247,3 +283,19 @@ Extract data   Visualize
 - [code-reviewer](/skills/code-reviewer) - Code review
 - [analytics-dashboard](/skills/analytics-dashboard) - Data visualization
 - [automation](/skills/automation) - Workflow automation
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

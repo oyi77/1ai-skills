@@ -51,6 +51,11 @@ A sector-specific threat landscape assessment analyzes the cyber threat environm
 
 ## Key Concepts
 
+This section covers key concepts for performing threat landscape assessment for sector.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Sector Targeting Analysis
 
 Different sectors face different threat profiles. Financial services face sophisticated nation-state actors (Lazarus Group) and cybercriminal groups focused on financial fraud. Healthcare faces ransomware groups exploiting urgency and legacy systems. Energy and critical infrastructure face nation-state groups (TEMP.Veles, Sandworm) with destructive capabilities. Government faces espionage-focused APTs (APT29, APT28, Turla).
@@ -65,6 +70,11 @@ Sector-specific intelligence comes from ISACs (Information Sharing and Analysis 
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Identify Threat Actors Targeting the Sector
 
 ```python
@@ -252,6 +262,11 @@ and recommended defensive priorities.
     vectors = data.get("attack_vectors", {})
     report += f"""
 ## Attack Vectors
+This section covers attack vectors for performing threat landscape assessment for sector.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Primary Vectors
 """
     for v in vectors.get("primary", []):
@@ -283,6 +298,22 @@ generate_sector_report(assessment)
 - Emerging threats identified based on recent intelligence
 - Comprehensive sector threat report generated
 - Recommendations actionable for security investment decisions
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

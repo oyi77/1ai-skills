@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Design the Sensitivity Label Taxonomy
 
 Define the classification hierarchy that maps to organizational data handling requirements:
@@ -491,6 +496,11 @@ Use Activity Explorer and the DLP alerts dashboard to monitor policy effectivene
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Data Loss Prevention With Microsoft Purview assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Data Loss Prevention With Microsoft Purview response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Protecting Financial Data Across a Multinational Organization
 
 **Context**: A financial services company with 15,000 users across 12 countries needs to prevent credit card numbers, bank account details, and financial statements from being shared externally through email, Teams, SharePoint, and endpoint file operations. The company must comply with PCI-DSS and GDPR.
@@ -527,6 +537,20 @@ Use Activity Explorer and the DLP alerts dashboard to monitor policy effectivene
 - Setting MinCount too low (1) for the project code SIT without keyword corroboration, matching isolated instances in general business correspondence that happen to follow the same format
 - Not testing the custom SIT against a representative sample corpus before deploying the DLP policy, missing edge cases in the regex pattern
 - Scoping the policy too broadly (entire organization) instead of targeting the research department, causing alerts on legitimate references to project codes in executive summaries
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

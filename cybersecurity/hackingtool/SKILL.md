@@ -48,6 +48,12 @@ docker-compose up -d
 
 ## Tool Categories (20)
 
+| Tool | Purpose |
+|------|---------|
+| Burp Suite | Web application security testing proxy |
+| Metasploit | Exploitation framework for penetration testing |
+| Nmap | Network discovery and security auditing |
+| Impacket | Python library for network protocol interaction |
 ### 1. Anonymously Hiding (2 tools)
 AnonSurf, Multitor — traffic anonymization and multi-Tor routing
 
@@ -110,6 +116,11 @@ Sherlock, SocialMapper, Hash Buster, Gospider, Photon, Holehe
 
 ## Pseudo Code
 
+This section covers pseudo code for hackingtool.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Launch the toolkit
 ```bash
 cd hackingtool
@@ -167,6 +178,10 @@ python3 hackingtool.py                    # Launch toolkit
 
 ## Common Patterns
 
+- **Follow the principle of least privilege** — use the minimum permissions needed for each task
+- **Document everything** — maintain logs of all actions, configurations, and findings
+- **Verify before acting** — confirm assumptions about the environment before making changes
+- **Automate repetitive steps** — script common workflows to reduce human error
 ### Pentest Setup Workflow
 ```
 1. Install hackingtool (one-liner or Docker)
@@ -195,3 +210,17 @@ python3 hackingtool.py                    # Launch toolkit
 3. hackingtool → Payload Creation → MSFvenom
 4. hackingtool → Active Directory → BloodHound/Impacket
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding

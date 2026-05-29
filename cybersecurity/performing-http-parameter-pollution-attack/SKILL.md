@@ -43,6 +43,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1 — Identify Parameter Handling Behavior
 ```bash
 # Test how the server handles duplicate parameters
@@ -171,6 +176,22 @@ python3 hpp_tester.py --url http://target.com/api/action \
 3. **OAuth Redirect Hijacking** — Inject a duplicate redirect_uri parameter to redirect authorization codes to an attacker-controlled server
 4. **Access Control Bypass** — Override role or permission parameters in requests to elevate privileges or access restricted resources
 5. **Input Validation Bypass** — Circumvent client-side or server-side validation by injecting unexpected duplicate parameters
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

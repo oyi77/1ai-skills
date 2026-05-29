@@ -3,6 +3,8 @@ name: material-ui
 description: Material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons
 ---
 
+
+
 ## Overview
 
 Material UI (MUI) is a comprehensive React component library implementing Google's Material Design. Includes components, icons, date pickers, data grid, and a powerful theming system with styled-engine.
@@ -24,6 +26,44 @@ Material UI (MUI) is a comprehensive React component library implementing Google
 - Building admin panels, dashboards, data-heavy apps
 
 ## Pseudo Code
+
+The material-ui workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# material-ui primary flow
+input = prepare(raw_data)
+result = process(input, config={components, data, date, engine, grid})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# material-ui primary flow
+input = prepare(raw_data)
+result = process(input, config={components, data, date, engine, grid})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Installation
 ```bash
@@ -104,3 +144,21 @@ export function DataTable({ rows }) {
 - **Styled API**: `const StyledBox = styled(Box)(({ theme }) => ({ padding: theme.spacing(2) }))`
 - **Breakpoints**: `theme.breakpoints.up("sm")` for responsive queries
 - **Component override**: `components: { MuiButton: { styleOverrides: { root: { textTransform: "none" } } } }`
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing

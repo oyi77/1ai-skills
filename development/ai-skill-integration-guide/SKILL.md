@@ -5,6 +5,7 @@ domain: development
 tags: [meta, integration, skills, github, bulk-import, format-conversion, quality-gates]
 ---
 
+
 ## Overview
 
 Meta-skill that teaches agents how to integrate external skill repositories into the 1ai-skills library. Covers the full pipeline from discovery through validation, ensuring new skills are unique, properly formatted, correctly categorized, and quality-gated before merge.
@@ -150,3 +151,20 @@ Every imported skill must pass these gates before merge:
 - Converting non-standard skill formats to 1ai-skills format
 - Auditing an external repo for importable content
 - Validating skill quality before merge
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

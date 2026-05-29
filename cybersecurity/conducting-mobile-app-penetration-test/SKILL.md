@@ -57,6 +57,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Static Analysis
 
 Analyze the application binary without executing it:
@@ -156,6 +161,11 @@ Test the application's resistance to runtime attacks:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Conducting Mobile App Penetration Test assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Conducting Mobile App Penetration Test response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Mobile Banking Application Security Assessment
 
 **Context**: A bank is launching a new mobile banking app for iOS and Android. The app handles account viewing, fund transfers, bill payment, and check deposit. OWASP MASVS L2 compliance is required due to the financial data handled.
@@ -173,6 +183,22 @@ Test the application's resistance to runtime attacks:
 - Not testing both iOS and Android versions, as they may have different implementations and different vulnerabilities
 - Ignoring the backend API security because it was "tested separately" when the mobile app may call API endpoints differently than the web app
 - Failing to test certificate pinning bypass, resulting in an incomplete network analysis
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

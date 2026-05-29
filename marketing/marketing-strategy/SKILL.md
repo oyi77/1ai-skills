@@ -2,6 +2,8 @@
 name: marketing-strategy
 description: Use when doing social media automation, content scheduling, analytics tracking, and campaign management.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Marketing Strategy"
@@ -81,6 +83,13 @@ Handle social media, content scheduling, analytics, and campaign management acro
 
 ## Content Strategy Framework
 
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### The AIDA Model for Posts
 
 | Stage | Purpose | Example Hook |
@@ -111,6 +120,13 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ---
 
 ## Content Calendar Management
+
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Monthly Planning Template
 
@@ -153,6 +169,13 @@ Handle social media, content scheduling, analytics, and campaign management acro
 
 ## Analytics & KPIs
 
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Key Metrics to Track
 
 | Metric | What It Tells You | Target Growth |
@@ -176,6 +199,13 @@ Handle social media, content scheduling, analytics, and campaign management acro
 
 ## Platform Breakdown
 
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Twitter
 - Impressions: [X]
 - Engagement rate: [X]%
@@ -197,6 +227,13 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ---
 
 ## Campaign Management
+
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Campaign Planning Template
 
@@ -238,6 +275,13 @@ Handle social media, content scheduling, analytics, and campaign management acro
 
 ## Content Generation Prompts
 
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### For Twitter Threads
 ```
 Create a Twitter thread on [TOPIC]:
@@ -273,6 +317,30 @@ Draft newsletter on [TOPIC]:
 
 ## Automation Workflows
 
+Step-by-step marketing-strategy execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the marketing-strategy workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the marketing-strategy workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
+
 ### Daily Marketing Routine
 
 ```markdown
@@ -306,6 +374,13 @@ Draft newsletter on [TOPIC]:
 ---
 
 ## Brand Voice Guidelines
+
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Voice Definition Template
 
@@ -341,6 +416,13 @@ Reserved ----[X]---- Enthusiastic
 
 ## Scripts
 
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### content-calendar.sh
 Manage your content calendar from the command line.
 
@@ -372,6 +454,13 @@ Generate weekly analytics summaries.
 ---
 
 ## 🤖 Automation Scripts (AI-Powered)
+
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### buzzer.py — Strategic Engagement Buzzer
 
@@ -479,6 +568,13 @@ python3 scripts/analytics.py demo
 
 ## Integration Tips
 
+- Configure analytics, automation, campaign, content, doing settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### With Other Skills
 
 | Skill | Integration |
@@ -540,7 +636,8 @@ Use data-analyst skill to visualize marketing performance and identify optimizat
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the marketing activity requires regulatory compliance review
+- When the campaign involves sensitive demographics or regulated industries
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -553,14 +650,16 @@ Use data-analyst skill to visualize marketing performance and identify optimizat
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

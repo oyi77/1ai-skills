@@ -23,6 +23,22 @@ Prompt engineering is the foundational skill for all AI work. This covers advanc
 - Optimizing prompts for cost (fewer tokens) or accuracy
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Chain-of-Thought
 ```python
@@ -63,3 +79,19 @@ def self_consistent_answer(question, n=5):
 - **XML tags for structure**: Use `<context>`, `<instructions>`, `<output>` tags for clarity
 - **Negative examples**: Show what NOT to do, not just what to do
 - **Temperature tuning**: 0 for factual, 0.7 for creative, 1.0 for diverse
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

@@ -45,6 +45,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Identify the Caching Layer and Behavior
 
 Determine what caching infrastructure is in use and how the cache key is constructed.
@@ -270,6 +275,11 @@ curl -s -X PURGE "https://target.example.com/"
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario 1: X-Forwarded-Host Script Injection
 The application reflects the `X-Forwarded-Host` header in script src URLs. This header is not part of the cache key. Sending a request with `X-Forwarded-Host: evil.com` poisons the cache to load JavaScript from the attacker's server for all subsequent visitors.
 
@@ -281,6 +291,22 @@ UTM tracking parameters are excluded from the cache key but rendered in the page
 
 ### Scenario 4: CDN Cache Poisoning via Host Header
 Multiple applications are behind the same CDN. Manipulating the Host header causes the CDN to cache a response from one application under another application's cache key.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

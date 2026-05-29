@@ -3,6 +3,7 @@ name: visual-regression
 description: Visual regression testing — screenshot comparison, baseline management, and UI change detection
 ---
 
+
 ## Overview
 
 Detect unintended visual changes by comparing screenshots against baselines. Uses Playwright, Percy, or Chromatic for automated visual regression testing.
@@ -23,6 +24,26 @@ Detect unintended visual changes by comparing screenshots against baselines. Use
 - Design system component library testing
 
 ## Pseudo Code
+
+The visual-regression workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# visual-regression primary flow
+input = prepare(raw_data)
+result = process(input, config={baseline, change, comparison, detection, management})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Playwright Visual Test
 ```typescript
@@ -58,3 +79,20 @@ for (const vp of viewports) {
 - **Ignore regions**: Mask dynamic content (ads, timestamps, animations)
 - **Threshold tuning**: 0.01% max diff for strict, 1% for lenient
 - **Full-page screenshots**: Capture full scrollable area, not just viewport
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

@@ -51,6 +51,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Understand the Token Theft Attack Surface
 
 Identify which token types are at risk and how they are stolen:
@@ -275,3 +280,10 @@ Policy: "Alert on mass file download (exfiltration via stolen token)"
 - [ ] Device code flow is restricted via conditional access (block or require compliant device)
 - [ ] Incident response runbook includes token revocation, password reset, and OAuth consent review steps
 - [ ] Mail forwarding rules and OAuth app grants are audited for compromised accounts
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing

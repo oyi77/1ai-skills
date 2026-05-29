@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Establish OT Patch Management Program
 
 Define the patch management lifecycle adapted for OT environments where availability and safety take priority over immediate vulnerability remediation.
@@ -322,6 +327,20 @@ patch_testing:
 - **Siemens ProductCERT**: Siemens security advisory service for industrial products
 - **Claroty xDome**: OT vulnerability management with patch availability tracking and risk scoring
 - **Tripwire Enterprise**: Configuration monitoring detecting unauthorized changes and tracking patch status
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

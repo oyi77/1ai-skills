@@ -3,6 +3,7 @@ name: dbt-transform
 description: dbt data transformation — models, tests, macros, sources, snapshots, documentation, packages
 ---
 
+
 ## Overview
 
 dbt (data build tool) enables analytics engineers to transform data in the warehouse using SQL SELECT statements. It handles dependency management, testing, documentation, and incremental materializations.
@@ -26,6 +27,26 @@ dbt (data build tool) enables analytics engineers to transform data in the wareh
 - Reusing transformation logic across projects
 
 ## Pseudo Code
+
+The dbt-transform workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# dbt-transform primary flow
+input = prepare(raw_data)
+result = process(input, config={data, dbt, documentation, macros, models})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Model Definition
 
@@ -227,3 +248,20 @@ dbt deps
 | `Schema Change Detected` | Upstream column change | Use `on_schema_change='sync_all_columns'` |
 | `Duplicate key` | Incremental strategy mismatch | Check `unique_key` and `incremental_strategy` |
 | `Source not found` | Missing sources.yml | Add source definition |
+
+## How to Use
+
+1. Define data sources, sinks, and transformation requirements
+2. Implement extraction with error handling and schema validation
+3. Add transformation logic with idempotency guarantees
+4. Configure loading with conflict resolution (upsert/append)
+5. Set up monitoring for pipeline health and data freshness
+6. Test with representative sample data before production
+
+## Red Flags
+
+- **Data pipeline has no error handling**: Silent failures corrupt downstream datasets
+- **No data validation at boundaries**: Bad input propagates through entire pipeline
+- **Missing monitoring for data freshness**: Stale data causes wrong business decisions
+- **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
+- **Hardcoded connection strings**: Credentials in code get committed to version control

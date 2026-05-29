@@ -2,6 +2,7 @@
 name: tiktok-terintegrasi
 description: 1. Upload media. Use when relevant to this domain.
 ---
+
 TikTok Content Suite skill suite with 9 specialized workflows integrated.
 
 ---
@@ -154,3 +155,28 @@ results = requests.get(f"{BASE_URL}/post-results", headers=HEADERS).json()
 ```
 
 **Full reference:** `~/.openclaw/workspace/skills/postbridge-social-manager/SKILL.md`
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- Run A/B test with control group before full rollout
+- Verify tracking pixels fire correctly on all conversion pages
+- Check UTM parameters parse correctly in analytics dashboard
+- Confirm email deliverability via seed list test
+- Validate landing page speed (target < 3s load time)

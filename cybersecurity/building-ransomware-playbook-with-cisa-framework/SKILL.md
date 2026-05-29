@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Preparation Phase (CISA Part 1 - Prevention)
 
 Establish ransomware-specific defenses before an incident:
@@ -170,6 +175,14 @@ Post-Incident Report Template:
 | **Double Extortion** | Ransomware tactic where attackers both encrypt data and threaten to publish stolen data unless paid |
 | **Patient Zero** | The first system compromised in an incident; identifying it reveals the initial access vector |
 | **Tabletop Exercise** | Simulated incident scenario walked through by the response team to validate the playbook without live systems |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
 
 ## Tools & Systems
 

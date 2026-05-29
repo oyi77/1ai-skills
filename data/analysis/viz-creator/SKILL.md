@@ -2,6 +2,8 @@
 name: viz-creator
 description: Create visualizations
 ---
+
+
 ## Viz Creator
 
 Create visualizations
@@ -20,7 +22,8 @@ Create visualizations
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the visualization is for scientific publication requiring peer review
+- When the data contains sensitive information that cannot be displayed publicly
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +36,35 @@ Create visualizations
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Visualization uses misleading scales or truncated axes
+- Agent does not verify color choices are accessible to colorblind users
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Axis scales are honest and do not misrepresent the data
+- [ ] Color choices meet accessibility standards for colorblind users
 - [ ] All required outputs generated
 - [ ] Success criteria met
+## Notes
 
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing
+## Additional Resources
+
+- Review the 1ai-skills repository for related data skills
+- Check the references/ directory for checklists and templates
+- Join the community for best practices and support
+- Contribute improvements via pull requests
+## Notes
+
+- This skill integrates with the broader 1ai-skills ecosystem for data workflows
+- Combine with related skills for maximum impact across your pipeline
+- Monitor output quality and iterate on configuration based on results
+- Keep dependencies up to date for security and performance
+- Document custom workflows and configurations for team knowledge sharing

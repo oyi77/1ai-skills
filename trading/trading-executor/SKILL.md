@@ -27,6 +27,9 @@ Execute trades on broker with proper slippage checks and safe abort procedures. 
 
 ## The Process
 
+The execution pipeline follows five stages: dry-run validation, order placement, market condition checks, partial fill handling, and safe abort procedures.
+
+
 ### 1. Dry-Run Order Placement (Recommended)
 
 Always run a dry-run first to validate order parameters and check slippage:
@@ -126,6 +129,9 @@ if (abnormalConditionsDetected) {
 - **Fill quality worse than backtested expectations**: Environment differences (real vs simulated); review and adjust execution parameters
 
 ## Verification
+
+Verification covers pre-execution checks, order fill confirmation, post-execution logging, and error handling completeness.
+
 
 ### Pre-Execution Verification
 - [ ] Dry-run completed successfully with acceptable slippage (<2 pips)

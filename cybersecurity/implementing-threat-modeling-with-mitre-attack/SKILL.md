@@ -61,6 +61,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Identify Relevant Threat Actors
 
 Research adversary groups targeting your sector using MITRE ATT&CK Groups:
@@ -352,6 +357,22 @@ Document emulation results to validate threat model accuracy.
 - **M&A Security Assessment**: Threat model the acquired company's environment against relevant threat actors
 - **Budget Justification**: Use gap analysis to demonstrate detection blind spots requiring tool investment
 - **Purple Team Planning**: Select adversary emulation scenarios based on highest-priority gaps from threat model
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

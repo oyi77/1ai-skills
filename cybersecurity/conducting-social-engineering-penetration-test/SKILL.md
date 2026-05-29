@@ -55,6 +55,11 @@ Social engineering penetration testing assesses an organization's human attack s
 
 ## Phase 1 — OSINT and Target Profiling
 
+This section covers phase 1 — osint and target profiling for conducting social engineering penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Employee Reconnaissance
 
 ```bash
@@ -97,6 +102,11 @@ dig targetcorp.com TXT +short
 
 ## Phase 2 — Phishing Campaign
 
+This section covers phase 2 — phishing campaign for conducting social engineering penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Infrastructure Setup
 
 ```bash
@@ -190,6 +200,11 @@ Accounts Payable
 
 ## Phase 3 — Vishing Campaign
 
+This section covers phase 3 — vishing campaign for conducting social engineering penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Call Script Template
 
 ```
@@ -231,6 +246,11 @@ If you notice any further issues, please call the help desk at [real number]."
 
 ## Phase 4 — Physical Social Engineering
 
+This section covers phase 4 — physical social engineering for conducting social engineering penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Physical Pretexting Scenarios
 
 ```
@@ -261,6 +281,11 @@ Evidence Collection:
 
 ## Phase 5 — Metrics and Analysis
 
+This section covers phase 5 — metrics and analysis for conducting social engineering penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Campaign Results Dashboard
 
 ```
@@ -301,6 +326,11 @@ Physical Assessment:
 
 ## Phase 6 — Reporting and Recommendations
 
+This section covers phase 6 — reporting and recommendations for conducting social engineering penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Remediation Priorities
 
 | Priority | Recommendation | Timeline |
@@ -324,6 +354,22 @@ Physical Assessment:
 | theHarvester | Email and domain OSINT |
 | King Phisher | Phishing campaign tool |
 | Modlishka | Reverse proxy for credential interception |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

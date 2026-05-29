@@ -48,6 +48,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### Step 1: Extract and Analyze the Binary
 
 ```bash
@@ -234,6 +239,22 @@ if (ObjC.available) {
 | **FairPlay DRM** | Apple's encryption applied to App Store binaries; must be decrypted before static analysis |
 | **class-dump** | Tool extracting Objective-C class declarations from Mach-O binaries for header-level analysis |
 | **CommonCrypto** | Apple's C-level cryptographic library; primary target for encryption key extraction via Frida hooks |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented
 
 ## Tools & Systems
 

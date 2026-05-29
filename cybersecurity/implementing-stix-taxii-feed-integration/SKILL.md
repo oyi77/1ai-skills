@@ -46,6 +46,11 @@ STIX (Structured Threat Information eXpression) and TAXII (Trusted Automated eXc
 
 ## Key Concepts
 
+This section covers key concepts for implementing stix taxii feed integration.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### TAXII 2.1 Architecture
 
 TAXII defines a RESTful API with three service types:
@@ -67,6 +72,11 @@ A Bundle is a collection of STIX objects transmitted together. Bundles have a un
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: TAXII Server Discovery
 
 ```python
@@ -299,6 +309,21 @@ def push_to_taxii(server_url, collection_id, stix_bundle, user, password):
 - Pagination handled correctly for large collections
 - Consumer tracks polling state for incremental updates
 - Local TAXII server accepts and serves STIX bundles
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

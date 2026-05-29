@@ -62,6 +62,10 @@ python scripts/agent.py --misp-url https://misp.local --api-key YOUR_KEY --days 
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Threat Landscape Summary
 ```
 Period: Last 90 days
@@ -71,3 +75,17 @@ Top attribute type: ip-dst (31%), domain (22%), sha256 (18%)
 Top MITRE technique: T1566 Phishing (89 events)
 Top threat actor: APT28 (34 events)
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Analyzing malware on a machine connected to the production network
+- Failing to isolate the analysis environment from the internet
+- Executing samples without proper containment (VM, sandbox)
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
+- Analysis environment confirmed isolated from production network
+- Indicators of compromise (IOCs) extracted and documented

@@ -56,6 +56,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Configure Passive Network Monitoring
 
 Deploy Claroty sensors on SPAN ports to passively observe all OT network traffic without impacting operations.
@@ -468,6 +473,11 @@ if __name__ == "__main__":
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Ics Asset Discovery With Claroty assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Ics Asset Discovery With Claroty response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Brownfield Factory Asset Discovery
 
 **Context**: A manufacturing plant with 20 years of equipment additions needs a complete OT asset inventory for an IEC 62443 risk assessment. No accurate asset records exist.
@@ -482,6 +492,20 @@ if __name__ == "__main__":
 7. Feed validated inventory into IEC 62443 zone and conduit risk assessment
 
 **Pitfalls**: Do not rush active discovery before passive monitoring has captured baseline traffic patterns. Never use IT vulnerability scanners (Nessus active scans) directly against PLCs or RTUs -- this can crash legacy controllers. Always exclude Safety Instrumented Systems (SIS) from active queries.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

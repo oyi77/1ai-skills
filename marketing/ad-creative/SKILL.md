@@ -3,6 +3,8 @@ name: ad-creative
 description: Ad creative production — visual briefs, copy variations, and A/B testing frameworks for performance advertising.
 ---
 
+
+
 # Ad Creative
 
 ## Overview
@@ -27,6 +29,44 @@ Creative is the #1 driver of ad performance. In 2026, 70% of ad auction outcomes
 - Competitor ads are outperforming yours
 
 ## Pseudo Code
+
+The ad-creative workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# ad-creative primary flow
+input = prepare(raw_data)
+result = process(input, config={advertising, briefs, copy, creative, frameworks})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# ad-creative primary flow
+input = prepare(raw_data)
+result = process(input, config={advertising, briefs, copy, creative, frameworks})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Ad Copy Frameworks
 ```python
@@ -133,3 +173,20 @@ def build_creative_test_matrix(product):
 3. **One variable per test** — Changing multiple things = unclear results
 4. **UGC outperforms polished** — User-generated content feels more authentic
 5. **Mobile-first design** — 80%+ of ad views are on mobile
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels

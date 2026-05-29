@@ -50,6 +50,10 @@ Falco is a CNCF-graduated runtime security tool that monitors Linux syscalls to 
 
 ## Installing Falco
 
+```bash
+# Install required dependencies
+sudo apt-get update && sudo apt-get install -y <tool-name>
+```
 ### Kubernetes Deployment with Helm
 
 ```bash
@@ -91,6 +95,11 @@ sudo systemctl start falco
 
 ## Container Escape Detection Rules
 
+This section covers container escape detection rules for detecting container escape with falco rules.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Rule 1: Detect Host Mount from Container
 
 ```yaml
@@ -296,6 +305,11 @@ grpc_output:
 
 ## Alert Integration
 
+This section covers alert integration for detecting container escape with falco rules.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Forward to Slack via Falcosidekick
 
 ```yaml
@@ -334,3 +348,17 @@ kubectl logs -n falco -l app.kubernetes.io/name=falco --tail=50 | grep -i escape
 6. **Test rules** in permissive mode before enforcing
 7. **Tune false positives** by adding exception lists for known good processes
 8. **Monitor Falco health** with Prometheus metrics endpoint
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)

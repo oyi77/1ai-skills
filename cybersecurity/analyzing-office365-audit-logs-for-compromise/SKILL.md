@@ -57,3 +57,17 @@ Business Email Compromise (BEC) attacks often leave traces in Office 365 audit l
 
 - JSON report listing forwarding rules, delegation changes, OAuth grants, and suspicious audit events with risk scores
 - Timeline of compromise indicators with affected mailboxes
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Vulnerabilities reproduced with proof-of-concept and impact analysis
+- False positives filtered out through manual verification
+- Fix recommendations include code-level remediation guidance

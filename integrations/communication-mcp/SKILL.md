@@ -25,6 +25,17 @@ MCP servers enabling AI agents to interact with Slack, Discord, and Telegram. Se
 ---
 
 ## Slack MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -73,6 +84,17 @@ slack.chat.postMessage({
 ---
 
 ## Discord MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -122,6 +144,17 @@ discord.addReaction({
 ---
 
 ## Telegram MCP Setup
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Installation
 ```json
@@ -171,6 +204,10 @@ telegram.sendPhoto({
 ---
 
 ## Use Cases
+This section covers use cases for the communication-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### 1. Monitoring Alerts
 ```
@@ -208,6 +245,13 @@ Action:
 ---
 
 ## Message Templates
+```yaml
+name: skill-name
+description: Brief description of what this skill does
+domain: category
+tags: [tag1, tag2, tag3]
+```
+
 
 ### Deployment Alert
 ```typescript
@@ -249,6 +293,11 @@ Action:
 ---
 
 ## Integration with 1ai-skills
+- Connects with existing toolchain via standard interfaces
+- Supports webhook-based event notifications
+- Compatible with CI/CD pipelines for automated workflows
+- Provides structured output for downstream consumption
+
 
 ### With Monitoring
 ```
@@ -274,6 +323,10 @@ ai-research-agent → communication-mcp → share findings
 ---
 
 ## Best Practices
+This section covers best practices for the communication-mcp skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Do's
 ✅ Use threads for related messages  
@@ -300,3 +353,19 @@ ai-research-agent → communication-mcp → share findings
 - [skill-performance-monitor](/skills/skill-performance-monitor) - Monitoring
 - [automation](/skills/automation) - Workflow automation
 - [alerting](/skills/alerting) - Alert management
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

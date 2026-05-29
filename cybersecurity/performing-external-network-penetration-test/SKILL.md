@@ -48,6 +48,11 @@ An external network penetration test simulates a real-world attacker targeting a
 
 ## Phase 1 — Pre-Engagement and Scoping
 
+This section covers phase 1 — pre-engagement and scoping for performing external network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Define Rules of Engagement
 
 ```
@@ -73,6 +78,15 @@ Scope:
 
 ## Phase 2 — Reconnaissance (Information Gathering)
 
+```
+Performing External Network Penetration Test Output Summary
+========================================
+Status:       [COMPLETE / PARTIAL / BLOCKED]
+Findings:     [count] items
+Severity:     [Critical / High / Medium / Low / Info]
+Evidence:     [file paths or log references]
+Next Steps:   [recommended actions]
+```
 ### Passive Reconnaissance
 
 ```bash
@@ -140,6 +154,11 @@ wappalyzer https://target.com
 
 ## Phase 3 — Vulnerability Analysis
 
+This section covers phase 3 — vulnerability analysis for performing external network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Automated Scanning
 
 ```bash
@@ -195,6 +214,11 @@ smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/Names/names.txt -t 203.0
 
 ## Phase 4 — Exploitation
 
+This section covers phase 4 — exploitation for performing external network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Network Service Exploitation
 
 ```bash
@@ -278,6 +302,11 @@ meterpreter> keyscan_start
 
 ## Phase 6 — Reporting
 
+This section covers phase 6 — reporting for performing external network penetration test.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Finding Classification (CVSS v3.1)
 
 | Severity | CVSS Range | Count | Example |
@@ -341,6 +370,22 @@ meterpreter> keyscan_start
 | Gobuster | Directory brute-forcing | Apache 2.0 |
 | Hashcat | Password cracking | MIT |
 | theHarvester | OSINT email/domain harvesting | GPLv2 |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise
 
 ## References
 

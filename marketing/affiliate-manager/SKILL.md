@@ -3,6 +3,8 @@ name: affiliate-manager
 description: Automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach, commission tracking, and placement optimization
 ---
 
+
+
 ## Overview
 
 End-to-end affiliate and partnership management system for a one-person company. Discovers relevant affiliate programs, automates outreach, tracks commissions across multiple programs, optimizes placements through A/B testing, and generates revenue reports. Turns content properties into passive income streams by systematically connecting them with the right affiliate offers.
@@ -38,6 +40,44 @@ End-to-end affiliate and partnership management system for a one-person company.
 - Preparing revenue reports for tax purposes or investor updates
 
 ## Pseudo Code
+
+The affiliate-manager workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# affiliate-manager primary flow
+input = prepare(raw_data)
+result = process(input, config={affiliate, automated, commission, cross, deals})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# affiliate-manager primary flow
+input = prepare(raw_data)
+result = process(input, config={affiliate, automated, commission, cross, deals})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### 1. Program Discovery
 
@@ -335,6 +375,13 @@ report = f"""# Affiliate Revenue Report — {month_start} to {datetime.now().str
 
 ## Total Revenue: ${total:,.2f}
 
+- Configure affiliate, automated, commission, cross, deals settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ## By Program
 | Program | Sales | Revenue |
 |---------|-------|---------|
@@ -418,3 +465,20 @@ def check_anomalies(program_id, days=7):
 **Pattern 4: Commission Tiers** — After hitting initial volume, negotiate higher commission rates. Most programs have unpublished tiers. Track your volume per program and trigger renegotiation emails at milestones (100 sales, 500 sales, etc.).
 
 **Pattern 5: Seasonal Optimization** — Affiliate conversion rates spike during Black Friday, product launches, and tax season. Pre-schedule content updates and email placements to capitalize on these windows.
+
+## How to Use
+
+1. Define campaign objective and target KPIs
+2. Set up tracking and attribution (UTMs, pixels, events)
+3. Create campaign assets (copy, creatives, landing pages)
+4. Launch with small budget for testing
+5. Monitor metrics daily, optimize underperformers
+6. Scale winners, pause losers, document learnings
+
+## Red Flags
+
+- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
+- **Ad spend with zero conversions**: Pause and review targeting/creative
+- **Email open rates below 15%**: Subject lines or sender reputation issue
+- **Bounce rate above 70%**: Landing page mismatch or slow load times
+- **Attribution gaps**: Missing UTM parameters or broken tracking pixels

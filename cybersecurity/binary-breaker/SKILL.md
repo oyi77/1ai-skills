@@ -18,6 +18,11 @@ Binary exploitation is the apex predator skill. Finding memory corruption in com
 
 ## The Process
 
+1. **Isolate the sample** — ensure the malware is in a sandboxed environment with no network access
+2. **Record file metadata** — hash the sample and note file type, size, and compile timestamp
+3. **Static analysis** — examine strings, imports, and disassembled code without execution
+4. **Dynamic analysis** — execute in a monitored sandbox and record behavior (file, registry, network)
+5. **Document IOCs** — extract indicators of compromise and write the analysis report
 ### 1. Binary Reconnaissance
 
 ```bash

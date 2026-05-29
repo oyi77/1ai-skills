@@ -18,9 +18,39 @@ Generic MCP client implementation
 - Error handling
 - Result validation
 
+## How to Use
+
+1. Configure the MCP server connection in your client settings
+2. Initialize the client with the server endpoint and authentication
+3. List available tools, resources, and prompts from the server
+4. Call tools with structured arguments and handle responses
+
+## Client Configuration
+
+```json
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "npx",
+      "args": ["-y", "@my-org/mcp-server"],
+      "env": { "API_KEY": "${MY_API_KEY}" }
+    }
+  }
+}
+```
+
+## Common Patterns
+
+- Use SSE transport for remote MCP servers
+- Implement tool discovery before calling tools
+- Handle server restarts with automatic reconnection
+- Cache tool schemas to reduce initialization overhead
+- Validate tool arguments against the server JSON schema
+
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the MCP server handles credentials or authentication tokens
+- When the server processes data subject to regulatory retention requirements
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -33,14 +63,16 @@ Generic MCP client implementation
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- MCP server does not validate inputs causing downstream errors
+- Agent does not handle server connection failures with retry logic
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Input parameters are validated before server-side processing
+- [ ] Connection failures trigger automatic retry with backoff
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

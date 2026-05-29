@@ -50,6 +50,11 @@ Deploy CyberArk Privileged Access Management to discover, vault, rotate, and mon
 
 ## Key Concepts
 
+This section covers key concepts for implementing privileged access management with cyberark.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### CyberArk Architecture Components
 1. **Digital Vault**: Encrypted credential storage with FIPS 140-2 validated encryption
 2. **Central Policy Manager (CPM)**: Automated password rotation and verification
@@ -74,6 +79,11 @@ Deploy CyberArk Privileged Access Management to discover, vault, rotate, and mon
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Vault Architecture Design
 1. Deploy primary vault server in secured network segment
 2. Configure vault high availability with DR vault
@@ -142,3 +152,9 @@ Deploy CyberArk Privileged Access Management to discover, vault, rotate, and mon
 - [ ] SIEM receives CyberArk audit events
 - [ ] Break-glass procedure tested and documented
 - [ ] DR vault failover tested successfully
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

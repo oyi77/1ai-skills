@@ -53,6 +53,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Define Identity Lifecycle States and Transitions
 
 Map the identity lifecycle from hire to termination:
@@ -623,6 +628,11 @@ class OrphanedAccountDetector:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Building Identity Governance Lifecycle Process assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Building Identity Governance Lifecycle Process response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Building JML Process for 10,000-Employee Organization
 
 **Context**: Rapidly growing company has no automated identity lifecycle. IT manually creates accounts, taking 3-5 days for new hires. Terminated employees retain access for weeks. Audit found 2,300 orphaned accounts across 45 applications.
@@ -642,6 +652,21 @@ class OrphanedAccountDetector:
 - Mining roles without business validation creates technical roles that do not align with organizational structure
 - Automating termination without grace period for knowledge transfer frustrates business managers
 - Not handling contractor and vendor identities that exist outside the HR system
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

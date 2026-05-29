@@ -17,6 +17,11 @@ Smart contract security auditing targeting the highest-paying bounties in the in
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### 1. Target Reconnaissance
 
 Before diving into code:
@@ -253,6 +258,14 @@ Reentrancy / Access Control / Oracle Manipulation / etc.
 | Block explorer | Etherscan, Blockscout |
 | DeFi data | DeFiLlama, Dune Analytics |
 | MEV analysis | Flashbots Protect, MEV Blocker |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Treating compliance checklists as security guarantees rather than minimum baselines
+- Failing to document exceptions and risk acceptance decisions
+- Relying on point-in-time audits instead of continuous monitoring
 
 ## References
 

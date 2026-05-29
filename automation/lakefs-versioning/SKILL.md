@@ -27,6 +27,9 @@ LakeFS brings Git-like version control to data lakes. It enables branching, comm
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Installation
 
 ```bash
@@ -178,3 +181,16 @@ branches:
 | Branch not found | Typo or deleted branch | Check `lakectl branch list` |
 | Storage error | S3/GCS credentials | Verify storage config |
 | Hook rejected | Pre-commit/merge check failed | Fix data or hook logic |
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

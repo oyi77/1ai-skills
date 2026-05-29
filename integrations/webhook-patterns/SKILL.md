@@ -25,6 +25,22 @@ Design, implement, and consume webhooks — secure signature verification, idemp
 - Building notification and alerting systems
 
 ## Pseudo Code
+```python
+# Example workflow for this skill
+def execute(input_data):
+    # Step 1: Validate input
+    if not input_data:
+        raise ValueError("Input data is required")
+
+    # Step 2: Process core logic
+    result = process(input_data)
+
+    # Step 3: Validate output
+    validate_output(result)
+
+    return result
+```
+
 
 ### Express Webhook Endpoint
 
@@ -133,3 +149,19 @@ ngrok http 3000
 - **Dead Letter Queue**: Store failed events for manual review
 - **Event Routing**: Route by event type to dedicated handlers
 - **Webhook Testing**: Use ngrok/webhook.site for local development
+
+## How to Use
+
+1. Invoke the skill when relevant domain keywords appear in the request
+2. Provide required inputs as specified in the skill definition
+3. Review the output for correctness before delivering to the user
+4. Combine with related skills for complex multi-step workflows
+
+## Verification
+
+After completing this skill, confirm:
+
+- [ ] Output meets the defined quality and completeness requirements
+- [ ] All prerequisites are verified and documented
+- [ ] Error handling covers edge cases
+- [ ] Results are accurate and actionable

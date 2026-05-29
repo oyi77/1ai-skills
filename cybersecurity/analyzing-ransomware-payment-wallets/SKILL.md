@@ -48,6 +48,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Extract Wallet Address from Ransom Note
 
 Parse the ransom note to identify the payment address(es):
@@ -162,6 +167,13 @@ CLUSTER ANALYSIS:
 | **Peel Chain** | A laundering pattern where funds are sent through many sequential transactions, each peeling off a small amount to a new address |
 | **CoinJoin/Mixer** | Privacy techniques that combine multiple users' transactions to obscure the link between sender and receiver |
 | **Common Input Ownership** | Heuristic that assumes all inputs to a single transaction are controlled by the same entity |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
 
 ## Tools & Systems
 

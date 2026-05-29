@@ -2,6 +2,8 @@
 name: viral-content-creator
 description: Viral Content Creator. Use when relevant to this domain.
 ---
+
+
 # Viral Content Creator
 
 **Advanced Multi-Platform Content Generation & Automation System**
@@ -25,6 +27,13 @@ Generate viral social media content at scale - 1 input, 50+ outputs, fully autom
 ---
 
 ## Core Features
+
+- Automated content, creator, domain, relevant, this processing and optimization
+- Multi-platform support with unified configuration
+- Real-time monitoring and alerting
+- Batch operations for scale
+- Export to CSV, JSON, and PDF formats
+
 
 ### 1. Mass Video Generation
 **Input:** 1 product image
@@ -206,6 +215,13 @@ FACT: {Truth + solution}
 
 ## Commands Reference
 
+- Configure content, creator, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Generate Videos from Product Image
 
 **Basic:**
@@ -376,6 +392,30 @@ python scripts/analytics.py \
 
 ## Workflow Examples
 
+Step-by-step viral-content-creator execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the viral-content-creator workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the viral-content-creator workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
+
 ### Example 1: Launch New Product (Full Campaign)
 
 ```bash
@@ -479,6 +519,13 @@ python scripts/postbridge_uploader.py \
 
 ## Performance Optimization
 
+- Configure content, creator, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Generation Speed
 **Fast Mode:** ~5-10 minutes for 50 videos
 **Quality Mode:** ~15-20 minutes for 50 videos
@@ -500,6 +547,13 @@ Based on internal testing:
 ---
 
 ## Use Cases
+
+- Configure content, creator, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### ✅ E-commerce Sellers
 - 55 videos from 1 product photo
@@ -602,6 +656,13 @@ python scripts/postbridge_uploader.py --batch-size 10
 
 ## Integration with Other Skills
 
+- Configure content, creator, domain, relevant, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### PostAI Automation
 This is the **UPGRADED** version of postai-automation with:
 - 5x more content per image (50 vs 10)
@@ -624,6 +685,13 @@ Integrate for comprehensive marketing automation:
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Before Generating
 1. Use high-quality product images (1000px+)
@@ -815,3 +883,29 @@ if i % 10 == 0:
 - Facebook: 4 accounts
 
 **Full PostBridge reference:** `~/.openclaw/workspace/skills/postbridge-social-manager/SKILL.md`
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

@@ -54,6 +54,10 @@ python scripts/agent.py --server-ip 10.0.0.1 --clients 10.0.0.10,10.0.0.11 --ca-
 
 ## Examples
 
+```bash
+# Basic usage example
+# Replace with domain-specific commands from the workflow above
+```
 ### Server Configuration (TLS)
 ```
 module(load="imtcp" StreamDriver.Name="gtls" StreamDriver.Mode="1"
@@ -72,3 +76,15 @@ action(type="omfwd" target="10.0.0.1" port="6514" protocol="tcp"
        queue.maxdiskspace="1g" queue.saveonshutdown="on"
        action.resumeRetryCount="-1")
 ```
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings

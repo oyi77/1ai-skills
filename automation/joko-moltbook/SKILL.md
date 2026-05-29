@@ -1,8 +1,7 @@
 ---
 name: joko-moltbook
 description: Queue-driven Moltbook posting agent with deduplication and monitoring
-allowed-tools:
-  - Bash(apify:*)
+allowed-tools: - Bash(apify:*)
   - MCP(apify:*)
   - MCP(notion:*)
   - MCP(slack:*)
@@ -46,6 +45,9 @@ Queue-driven Moltbook posting agent with deduplication, idempotency, and monitor
 
 ## Required Tools
 
+Tools and dependencies needed before using this skill.
+
+
 ### MCP Servers
 
 ```json
@@ -72,6 +74,9 @@ Queue-driven Moltbook posting agent with deduplication, idempotency, and monitor
 
 ## Authentication
 
+Authentication setup required for external service access.
+
+
 ### Setup
 
 1. **Apify Token**
@@ -88,6 +93,9 @@ Queue-driven Moltbook posting agent with deduplication, idempotency, and monitor
    ```
 
 ## Pseudo Code
+
+Implementation patterns for common use cases with this skill.
+
 
 ### Example 1: Queue-Driven Posting
 
@@ -179,6 +187,9 @@ await slack.notify("#daily-reports", `
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Idempotency Key Generation
 
 ```typescript
@@ -208,7 +219,8 @@ async function withBackoff(fn, maxRetries = 5) {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the automation target has no API and requires manual interaction
+- When the automated action has irreversible consequences requiring human approval
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -221,14 +233,16 @@ async function withBackoff(fn, maxRetries = 5) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Automation runs without monitoring or alerting on failures
+- Agent does not handle rate limits or API throttling gracefully
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Automation completes successfully with monitoring confirming no failures
+- [ ] Rate limits and API constraints are respected throughout execution
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

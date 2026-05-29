@@ -63,3 +63,9 @@ Deploy privileged access management for database systems including Oracle, SQL S
 - [ ] Audit logging enabled and forwarding to SIEM
 - [ ] Documentation and runbooks complete
 - [ ] Compliance evidence generated
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting

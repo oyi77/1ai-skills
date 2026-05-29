@@ -511,3 +511,22 @@ pip install telethon edge-tts --break-system-packages
 | UserPrivacyRestrictedError | Skip — user blocked DMs from strangers |
 | Session expired | Re-run otp_login.py |
 | Ban risk | Max 50 DMs/day to strangers, 30s+ delay |
+
+## When to Use
+
+- When you need automated assistance with a specific technical task
+- When the task requires domain expertise this agent provides
+- When consistency and repeatability matter more than creative exploration
+
+## Red Flags
+
+- Claiming completion without running verification
+- Skipping the analysis phase and jumping to implementation
+- Ignoring existing codebase patterns and conventions
+
+## Verification
+
+- [ ] Output matches the original requirements
+- [ ] All code or content runs without errors
+- [ ] Edge cases have been considered and handled
+- [ ] No placeholder content or TODOs remain

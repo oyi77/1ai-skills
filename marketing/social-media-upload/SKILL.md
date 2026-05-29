@@ -2,6 +2,8 @@
 name: social-media-upload
 description: Distribute content across multiple social media platforms (X, Instagram, TikTok, LinkedIn, Facebook, YouTube). Upload images, videos, and text with platform-specific optimization.
 ---
+
+
 persona:
   name: "Domain Expert"
   title: "Master of Social Media Upload"
@@ -73,6 +75,30 @@ Automate content distribution across major social media platforms from a single 
 ---
 
 ## Platform-Specific Workflows
+
+Step-by-step social-media-upload execution process.
+
+**Step 1: Configure** — Set up targets and parameters in config file.
+
+**Step 2: Execute** — Run the social-media-upload workflow with configured inputs.
+
+**Step 3: Review** — Analyze outputs and iterate on configuration.
+
+**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
+
+
+### Step 1: Configure
+Set up targets and parameters in config file.
+
+### Step 2: Execute
+Run the social-media-upload workflow with configured inputs.
+
+### Step 3: Review
+Analyze outputs and iterate on configuration.
+
+### Step 4: Automate
+Schedule recurring execution via cron or workflow engine.
+
 
 ### X (Twitter) Upload
 
@@ -352,6 +378,13 @@ const mediaButton = document.querySelector('[data-control-name="media"]');
 
 ## Multi-Platform Distribution
 
+- Configure across, content, distribute, facebook, images settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Workflow: Post to All Platforms
 
 ```javascript
@@ -426,6 +459,13 @@ function optimizeCaption(baseCaption, platform) {
 
 ## Integration with Video Generation Skills
 
+- Configure across, content, distribute, facebook, images settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### From Google Flow to Social Media
 
 ```javascript
@@ -475,6 +515,13 @@ async function grokToSocial(grokVideoPath, platforms) {
 ---
 
 ## Best Practices
+
+- Always test with a small dataset before full-scale runs
+- Monitor resource usage (memory, API quotas) during execution
+- Keep configuration in version control
+- Document custom parameters and their effects
+- Set up alerts for failure conditions
+
 
 ### Content Optimization
 
@@ -552,14 +599,16 @@ async function grokToSocial(grokVideoPath, platforms) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Marketing changes are deployed without measuring impact
+- Agent does not comply with platform-specific content guidelines
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Marketing changes have measurable impact metrics before and after
+- [ ] Platform content guidelines are followed for each target
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

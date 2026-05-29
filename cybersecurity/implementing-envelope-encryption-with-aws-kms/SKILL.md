@@ -52,6 +52,11 @@ Envelope encryption is a strategy where data is encrypted with a data encryption
 
 ## Key Concepts
 
+This section covers key concepts for implementing envelope encryption with aws kms.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Envelope Encryption Flow
 
 1. Call `kms:GenerateDataKey` to get plaintext DEK + encrypted DEK
@@ -71,7 +76,7 @@ Envelope encryption is a strategy where data is encrypted with a data encryption
 
 ### KMS Key Types
 
-- **AWS Managed**: AWS creates and manages (`aws/s3`, `aws/ebs`)
+- **AWS Managed**: AWS creates and manages (aws > s3, aws > ebs)
 - **Customer Managed**: You create and manage policies
 - **Custom Key Store**: Backed by CloudHSM cluster
 
@@ -93,3 +98,17 @@ Envelope encryption is a strategy where data is encrypted with a data encryption
 - [ ] Plaintext DEK is wiped from memory after use
 - [ ] Encryption context is validated during decryption
 - [ ] Key rotation re-encrypts DEKs with new master key
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)

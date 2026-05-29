@@ -3,6 +3,8 @@ name: lead-generation-engine
 description: AI-powered lead generation that scrapes intent signals, scores leads, generates personalized multi-channel outreach, and manages the full CRM pipeline
 ---
 
+
+
 ## Overview
 
 Automated lead generation pipeline that detects buying intent signals from multiple sources, scores leads using AI, generates personalized outreach sequences across email/LinkedIn/Twitter, and manages the full sales pipeline. Replaces manual prospecting with a continuous, data-driven engine.
@@ -34,6 +36,44 @@ Automated lead generation pipeline that detects buying intent signals from multi
 - Running multi-channel outreach campaigns at scale
 
 ## Pseudo Code
+
+The lead-generation-engine workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# lead-generation-engine primary flow
+input = prepare(raw_data)
+result = process(input, config={channel, engine, full, generates, generation})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
+
+### Core Workflow
+```
+# lead-generation-engine primary flow
+input = prepare(raw_data)
+result = process(input, config={channel, engine, full, generates, generation})
+validate(result)
+deliver(result)
+```
+
+### Error Handling
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Intent Signal Detection
 
@@ -204,6 +244,12 @@ def ab_test_subject_lines(lead_group_a, lead_group_b, subject_a, subject_b):
 
 ## Common Patterns
 
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
+
 ### Daily Signal Scan → Score → Outreach Pipeline
 
 ```bash
@@ -245,3 +291,22 @@ python3 pipeline_report.py --period daily | mail -s "Daily Lead Gen Report" you@
   }
 }
 ```
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.

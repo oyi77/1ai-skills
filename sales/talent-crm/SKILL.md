@@ -2,6 +2,8 @@
 name: talent-crm
 description: talent-crm. Use when relevant to this domain.
 ---
+
+
 # talent-crm
 
 ---
@@ -31,6 +33,13 @@ scout → onboard → contract → activate → track → pay → scale.
 ---
 
 ## 1. Talent Database
+
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Scouting Criteria (Minimum Bar)
 
@@ -89,6 +98,13 @@ PROSPECT → CONTACTED → NEGOTIATING → SIGNED → ACTIVE → RENEWAL / EXPIR
 
 ## 2. Client Database
 
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Client Profile Fields
 
 ```yaml
@@ -130,6 +146,13 @@ PROSPECTING → PROPOSAL SENT → NEGOTIATING → CLOSED (WON/LOST) → ACTIVE �
 ---
 
 ## 3. Talent Scouting
+
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Search Process
 
@@ -194,6 +217,13 @@ Search: `"affiliate shopee Indonesia"`, `"jualan digital Indonesia"`,
 
 ## 4. Contract Lifecycle
 
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Stages & Actions
 
 #### `DRAFT`
@@ -242,6 +272,13 @@ Early Termination:   30-day notice required
 ---
 
 ## 5. Commission Tracking
+
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Commission Structure
 
@@ -296,6 +333,13 @@ Payout statuses: `pending | approved | paid | disputed`
 ---
 
 ## 6. Performance Analytics
+
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Talent KPIs
 
@@ -363,6 +407,42 @@ Avg Deal Size:       Total GMV / deals count
 ---
 
 ## 7. Outreach Templates
+
+Reusable templates for talent-crm.
+
+Standard config:
+```yaml
+name: talent-crm_standard
+mode: production
+output: results/
+format: json
+```
+
+Test config:
+```yaml
+name: talent-crm_test
+mode: development
+dry_run: true
+verbose: true
+```
+
+
+### Template 1: Standard talent-crm
+```yaml
+name: talent-crm_standard
+mode: production
+output: results/
+format: json
+```
+
+### Template 2: Quick Test
+```yaml
+name: talent-crm_test
+mode: development
+dry_run: true
+verbose: true
+```
+
 
 ### 7.1 Initial DM to Creator (TikTok/IG)
 
@@ -485,6 +565,13 @@ Vilona | AI GM, BerkahKarya Talent Agency
 
 ## 8. Integration
 
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### 8.1 Telegram Notifications (telegram-userbot)
 
 Configure alerts for:
@@ -557,6 +644,13 @@ Sheet 4: KPI Dashboard (auto-calculated)
 ---
 
 ## 9. Scripts
+
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### `scripts/talent_scout.py`
 
@@ -898,6 +992,13 @@ if __name__ == "__main__":
 
 ## 10. KPIs
 
+- Configure crm, domain, relevant, talent, this settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Primary KPIs (Monthly)
 
 | KPI | Formula | Target (Month 1) | Target (Month 6) |
@@ -966,3 +1067,30 @@ skills/1ai-skills/sales/talent-crm/
 
 *BerkahKarya Talent Agency — rebuild, scale, dominate. 🔥*
 *Last updated: 2026-03-13 | AI GM: Vilona*
+
+## How to Use
+
+1. Define ideal customer profile (ICP) and buyer personas
+2. Build lead list from qualified sources
+3. Craft personalized outreach sequences
+4. Track engagement and follow up on signals
+5. Qualify leads through discovery calls
+6. Present solution tailored to pain points
+7. Handle objections with value reframing
+8. Close and hand off to onboarding
+
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- Test email sequences with seed accounts before full send
+- Verify CRM data integrity (no duplicates, correct stages)
+- Check lead scoring model against actual conversion data
+- Confirm proposal/contract templates are current and branded
+- Validate payment links and checkout flow end-to-end

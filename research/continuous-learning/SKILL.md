@@ -101,6 +101,9 @@ Use learnings in:
 
 ## Confidence Weighting
 
+Weight findings by source tier and cross-reference count.
+
+
 ### Levels
 ```
 HIGH (0.8-1.0): Repeated success, verified approach
@@ -131,6 +134,9 @@ Exploratory:
 ---
 
 ## Insight Types
+
+Categorize insights as factual, analytical, or speculative.
+
 
 ### 1. Prompt Insights
 ```
@@ -184,6 +190,9 @@ How to prevent:
 
 ## Implementation
 
+How to set up and configure this skill.
+
+
 ### Session Analysis
 ```typescript
 async function analyzeSession(session) {
@@ -223,6 +232,9 @@ async function generateSkill(insight) {
 
 ## Learning Storage
 
+Persist insights for future retrieval and reuse.
+
+
 ### Structure
 ```
 learning/
@@ -245,6 +257,9 @@ learning/
 ---
 
 ## Integration
+
+Connect learning outputs to downstream workflows.
+
 
 ### With Runtime-Self-Improvement
 ```
@@ -277,6 +292,9 @@ learning/
 
 ## Best Practices
 
+Key aspects of continuous-learning relevant to this section.
+
+
 ### Do's
 ✅ Capture every session  
 ✅ Be specific about what worked  
@@ -302,7 +320,8 @@ learning/
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -315,14 +334,16 @@ learning/
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

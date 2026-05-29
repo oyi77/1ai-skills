@@ -2,6 +2,7 @@
 name: test-driven-development
 description: Use when implementing any feature or bugfix, before writing implementation code
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Test Driven Development"
@@ -48,6 +49,13 @@ NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
 Write code before test? Delete it. Start over.
 
 ## Red-Green-Refactor
+
+- Configure before, bugfix, code, development, driven settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### RED: Write Failing Test
 Write minimal test showing expected behavior.
@@ -269,14 +277,16 @@ Otherwise → not TDD
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Code changes are made without running the existing test suite
+- Agent does not handle error cases or edge conditions
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] All existing tests pass after code changes are applied
+- [ ] Error handling covers documented failure modes and edge cases
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -43,6 +43,11 @@ SPF, DKIM, and DMARC form the three pillars of email authentication. Together th
 
 ## Key Concepts
 
+This section covers key concepts for implementing dmarc dkim spf email security.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SPF (Sender Policy Framework)
 Publishes a DNS TXT record listing authorized IP addresses and mail servers that can send email on behalf of your domain. Receiving servers check the envelope sender's IP against this list.
 
@@ -54,6 +59,11 @@ Builds on SPF and DKIM by specifying a policy (none/quarantine/reject) for messa
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Audit Current State
 ```bash
 # Check existing SPF record
@@ -110,6 +120,20 @@ v=DMARC1; p=reject; rua=mailto:dmarc-aggregate@example.com; pct=100
 
 ### Step 5: Monitor and Analyze DMARC Reports
 Use the `scripts/process.py` to parse DMARC aggregate XML reports and identify authentication failures, unauthorized senders, and spoofing attempts.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Resources
 - **MXToolbox**: https://mxtoolbox.com/SuperTool.aspx

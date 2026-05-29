@@ -1,8 +1,7 @@
 ---
 name: grok-browser
 description: Grok Browser Skill. Use when relevant to this domain.
-persona:
-  name: Elon Musk
+persona: name: Elon Musk
   title: The First Principles Thinker - Master of Understanding
   expertise:
   - First Principles
@@ -65,6 +64,9 @@ browser action=act profile=chrome targetId=<id> request={"kind":"press","key":"E
 ```
 
 ## Complete Workflow
+
+End-to-end workflow from initial query to final output.
+
 
 ### 1. Open Grok & Attach Relay
 
@@ -154,6 +156,9 @@ browser action=act profile=chrome targetId=<id> request={"kind":"click","ref":"<
 
 ## Troubleshooting
 
+Common issues and their resolutions.
+
+
 ### Tab Not Found
 Re-run attach script:
 ```bash
@@ -212,7 +217,8 @@ exec: pbpaste
 ```
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the research requires access to proprietary databases or paywalled sources
+- When findings will be used for financial decisions requiring licensed advisor review
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -225,14 +231,16 @@ exec: pbpaste
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Research relies on a single unverified source
+- Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Findings are verified across multiple independent sources
+- [ ] Research methodology is documented and reproducible
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

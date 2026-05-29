@@ -46,6 +46,11 @@ TAXII (Trusted Automated eXchange of Intelligence Information) is an OASIS stand
 
 ## Key Concepts
 
+This section covers key concepts for implementing taxii server with opentaxii.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### TAXII 2.1 Architecture
 
 TAXII 2.1 defines three services: Discovery (find available API roots), API Root (entry point for collections), and Collections (repositories of CTI objects). Collections support two access models: the Collection endpoint allows consumers to poll for objects, and the Status endpoint tracks the result of add operations. TAXII uses HTTP content negotiation with `application/taxii+json;version=2.1`.
@@ -60,6 +65,11 @@ TAXII transports STIX 2.1 bundles containing Structured Threat Information objec
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy TAXII 2.1 Server with Medallion
 
 ```python
@@ -359,6 +369,21 @@ def push_to_elasticsearch(iocs, es_url, index="threat-intel"):
 - Consumer can poll and retrieve objects with filtering
 - IOCs extracted and forwarded to SIEM platform
 - Authentication and authorization enforced correctly
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Acting on threat intelligence without validating source reliability
+- Sharing classified or sensitive indicators without proper handling procedures
+- Alerting threat actors to detection capabilities through visible response actions
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## References
 

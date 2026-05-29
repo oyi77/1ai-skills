@@ -33,6 +33,10 @@ Creates institutional-quality pitch decks for fundraising, M&A, and strategic in
 
 ## Implementation
 
+
+The implementation follows a phased approach: define content strategy, populate data, apply visual design, and generate PowerPoint.
+
+
 ### Phase 1: Content Strategy
 
 **Standard Pitch Structure (10-12 Slides):**

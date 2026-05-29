@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Deploy Guardicore Agents on Workloads
 
 Install agents to collect process-level network communication data.
@@ -293,6 +298,11 @@ curl -X POST "https://management.guardicore.com/api/v3.0/integrations/syslog" \
 
 ## Common Scenarios
 
+**Scenario 1: Standard Implementing Microsegmentation With Guardicore assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Implementing Microsegmentation With Guardicore response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: PCI DSS Microsegmentation for E-Commerce Platform
 
 **Context**: An e-commerce company must isolate its Cardholder Data Environment (CDE) from the rest of the corporate network for PCI DSS compliance. The CDE spans 200 servers across on-prem and AWS.
@@ -308,6 +318,20 @@ curl -X POST "https://management.guardicore.com/api/v3.0/integrations/syslog" \
 8. Generate PCI DSS segmentation validation report showing enforced controls
 
 **Pitfalls**: Agent deployment on legacy systems (Windows Server 2012) may require manual installation. Ring-fence policies must account for management traffic (monitoring, patching, backup). Start with broad allow rules and progressively tighten. Application owners must validate dependency maps before enforcement.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Output Format
 

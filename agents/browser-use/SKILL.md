@@ -28,6 +28,9 @@ Browser automation enables AI agents to interact with web pages like humans — 
 
 ## Pseudo Code
 
+Implementation patterns for common use cases with this skill.
+
+
 ### Playwright — Basic Navigation + Extraction
 ```javascript
 const { chromium } = require('playwright');
@@ -138,6 +141,9 @@ print(result)
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### Wait for Dynamic Content
 ```javascript
 // Wait for specific element
@@ -200,3 +206,49 @@ const results = await Promise.all(
   pages.map(page => page.textContent('h1'))
 );
 ```
+
+## When NOT to Use
+
+- When the target site has a public API (always prefer API over scraping)
+- When scraping at scale violates the site's terms of service or robots.txt
+- When the task is purely data transformation (no web interaction needed)
+- When the site is behind a login wall you are not authorized to access
+- When simple HTTP requests can get the data (no JavaScript rendering needed)
+- When rate limits or CAPTCHAs make automation impractical
+
+## Common Rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "I will just scrape everything" | Scraping without respecting robots.txt and rate limits gets your IP banned and may violate ToS. Check for an API first. |
+| "Playwright is too heavy, curl is enough" | Modern SPAs render content with JavaScript. If the page returns empty HTML with curl, you need a browser engine. |
+| "Anti-bot detection is easy to bypass" | Sophisticated bot detection (Cloudflare, Akamai) uses behavioral analysis, TLS fingerprinting, and canvas fingerprinting. Simple stealth patches fail. |
+| "I do not need error handling for a quick scrape" | Pages change structure, elements load async, and networks timeout. Every browser automation needs explicit waits and error handling. |
+| "Screenshots are not needed, I will just parse HTML" | Vision models can understand page layouts that HTML parsers cannot. Screenshots are invaluable for debugging and AI analysis. |
+| "I will handle authentication later" | Login flows involve CSRF tokens, session cookies, and multi-step redirects. Handle them in the initial implementation, not as an afterthought. |
+
+## Red Flags
+
+- Not setting a user agent (defaults reveal you are a headless browser)
+- No timeout on navigation or element waits (hangs indefinitely)
+- Hardcoded selectors that break when the site changes (use data-testid or ARIA roles)
+- No retry logic for transient failures (network blips, slow page loads)
+- Ignoring robots.txt and rate limits (ethical and legal risk)
+- Storing credentials in plain text (use environment variables)
+- Not closing browser contexts (memory leaks in long-running scripts)
+- Running without headless mode in CI/production (wastes resources)
+
+## Verification
+
+After implementing browser automation, confirm:
+
+- [ ] Browser launches and navigates to target URL successfully
+- [ ] Dynamic content is fully loaded before extraction (explicit waits, not sleep)
+- [ ] Extraction produces expected data structure (validate against schema)
+- [ ] Anti-detection measures applied if targeting protected sites
+- [ ] Error handling covers timeouts, missing elements, and navigation failures
+- [ ] Browser is properly closed in finally/cleanup blocks (no leaked contexts)
+- [ ] Credentials stored securely (environment variables, not hardcoded)
+- [ ] Rate limiting respected (delays between requests, concurrency limits)
+- [ ] Screenshots captured on failure for debugging
+- [ ] Works in headless mode (CI/production compatible)

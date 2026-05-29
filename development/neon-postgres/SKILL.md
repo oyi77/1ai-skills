@@ -3,6 +3,7 @@ name: neon-postgres
 description: Neon serverless Postgres — branching, autoscaling, connection pooling, edge-compatible Postgres
 ---
 
+
 ## Overview
 
 Neon is a serverless Postgres platform that separates storage and compute. It offers database branching for dev workflows, autoscaling to zero for cost savings, and edge-compatible serverless drivers.
@@ -25,6 +26,26 @@ Neon is a serverless Postgres platform that separates storage and compute. It of
 - Modern Postgres with serverless characteristics
 
 ## Pseudo Code
+
+The neon-postgres workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# neon-postgres primary flow
+input = prepare(raw_data)
+result = process(input, config={autoscaling, branching, compatible, connection, edge})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup
 ```typescript
@@ -106,3 +127,20 @@ const users = await db.select().from(usersTable);
 - **Connection pooling**: Use pooled connection string for traditional clients
 - **Migrations**: Use Drizzle Kit or Prisma with Neon connection string
 - **Monitoring**: Use Neon dashboard for query stats and autoscaling metrics
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

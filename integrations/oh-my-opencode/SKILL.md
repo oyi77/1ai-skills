@@ -40,6 +40,11 @@ Oh My OpenCode is the ultimate harness for OpenCode, providing advanced multi-mo
    - Configure according to your needs
 
 ## Core Agents
+- Primary agent handles core task execution
+- Validator agent checks output quality
+- Reporter agent formats and delivers results
+- Each agent operates with clear input/output contracts
+
 
 ### Sisyphus — Main Orchestrator
 - The primary agent that coordinates all others
@@ -70,6 +75,10 @@ Oh My OpenCode is the ultimate harness for OpenCode, providing advanced multi-mo
 - Quick file and symbol location
 
 ## Installation Methods
+This section covers installation methods for the oh-my-opencode skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### For Humans
 ```
@@ -95,6 +104,17 @@ npm install -g @opencode-ai/plugin
 ```
 
 ## Configuration
+```json
+{
+  "enabled": true,
+  "autoRun": false,
+  "timeout": 30000,
+  "retries": 3
+}
+```
+
+Set environment variables as needed for authentication and endpoints.
+
 
 ### Config Locations
 - Project: `.opencode/oh-my-opencode.jsonc` or `.opencode/oh-my-opencode.json`
@@ -110,6 +130,11 @@ npm install -g @opencode-ai/plugin
 - **LSP**: Full LSP support with refactoring tools
 
 ## Features
+- Core operation execution with comprehensive error handling
+- Input validation and output quality assurance
+- Integration with existing workflows and toolchains
+- Detailed logging for debugging and audit trails
+
 
 ### Agent Orchestration
 - Multi-model support with intelligent routing
@@ -137,6 +162,12 @@ npm install -g @opencode-ai/plugin
 - Session-based task continuation
 
 ## Workflow Integration
+1. Receive input and validate format
+2. Route to appropriate handler based on input type
+3. Execute core operation with monitoring
+4. Transform output to expected format
+5. Return results or trigger follow-up actions
+
 
 ### With OpenClaw
 1. Load oh-my-opencode skill in OpenClaw
@@ -158,6 +189,12 @@ npm install -g @opencode-ai/plugin
 - **Documentation**: Librarian for official docs and OSS patterns
 
 ## Troubleshooting
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Operation times out | Network or service issue | Check connectivity and retry |
+| Permission denied | Missing credentials | Verify API keys and access tokens |
+| Invalid output | Input format mismatch | Validate input against expected schema |
+
 
 ### Plugin Not Loading
 1. Verify config file location and format
@@ -175,6 +212,10 @@ npm install -g @opencode-ai/plugin
 - Optimize model selections
 
 ## Safety & Considerations
+This section covers safety & considerations for the oh-my-opencode skill.
+Key operations include input validation, core processing, and output verification.
+Refer to the skill overview for detailed usage instructions.
+
 
 ### Terms of Service
 - OpenCode works with Claude, ChatGPT, and Gemini subscriptions

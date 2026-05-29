@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Device Reconnaissance and Hardware Analysis
 
 Examine the physical device and identify attack surfaces:
@@ -135,6 +140,11 @@ Exploit identified vulnerabilities to demonstrate impact:
 
 ## Common Scenarios
 
+**Scenario 1: Standard Performing Iot Security Assessment assessment**
+Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
+
+**Scenario 2: Emergency Performing Iot Security Assessment response**
+Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
 ### Scenario: Enterprise IP Camera Security Assessment
 
 **Context**: A company plans to deploy 200 IP cameras from a single vendor across its offices. Before deployment, the security team requests a penetration test of the camera to identify vulnerabilities that could be exploited to gain access to the corporate network.
@@ -153,6 +163,22 @@ Exploit identified vulnerabilities to demonstrate impact:
 - Not analyzing the firmware for hardcoded credentials that may be shared across all devices of the same model
 - Testing the device in isolation and missing network-level risks from deploying vulnerable devices on the corporate network
 - Overlooking the cloud connectivity and mobile app components that may expose additional attack surfaces
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## Output Format
 

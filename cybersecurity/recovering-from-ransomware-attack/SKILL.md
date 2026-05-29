@@ -47,6 +47,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Establish Clean Recovery Environment
 
 Build recovery infrastructure isolated from the compromised network:
@@ -260,6 +265,11 @@ Throughout: SOC monitoring on high alert
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Manufacturing Company Full Recovery After LockBit Attack
 
 **Context**: A manufacturer with 300 servers has 80% of infrastructure encrypted by LockBit. Immutable backups from 48 hours ago are verified clean. Production lines are down, costing $500K/day.
@@ -280,6 +290,22 @@ Throughout: SOC monitoring on high alert
 - Restoring from the most recent backup without verifying it predates the compromise (attacker may have poisoned recent backups)
 - Not resetting the krbtgt password twice, allowing attackers to maintain Golden Ticket access
 - Restoring systems in the wrong order (application servers before their database dependencies)
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

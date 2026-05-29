@@ -50,6 +50,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Scope and authorize** — confirm written authorization and define target boundaries
+2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
+3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
+4. **Post-exploitation** — document access level, lateral movement, and data exposure
+5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
 ### Step 1: Enumerate the Serverless Attack Surface
 
 Map all Lambda functions and their event source triggers to understand injection entry points:
@@ -419,6 +424,11 @@ Deploy runtime protection controls to prevent injection at execution time:
 
 ## Common Scenarios
 
+**Scenario 1: External network penetration test**
+Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
+
+**Scenario 2: Web application security assessment**
+Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
 ### Scenario: Detecting and Responding to a Lambda-Based Privilege Escalation Attack
 
 **Context**: A SOC analyst receives a GuardDuty alert for `UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS` on an IAM role used by multiple Lambda functions. Investigation reveals that an attacker compromised a developer's AWS credentials with `lambda:UpdateFunctionCode` permissions and modified a payment processing function to exfiltrate the execution role's temporary credentials.
@@ -444,6 +454,22 @@ Deploy runtime protection controls to prevent injection at execution time:
 - Failing to check if the attacker created new IAM users, access keys, or roles during the window the credentials were valid
 - Restoring the function without first preserving the malicious code as forensic evidence
 - Not implementing preventive controls (SCP, EventBridge alerting) after remediation, leaving the same attack path open
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## Output Format
 

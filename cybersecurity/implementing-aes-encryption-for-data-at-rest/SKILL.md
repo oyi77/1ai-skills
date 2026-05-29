@@ -50,6 +50,11 @@ AES (Advanced Encryption Standard) is a symmetric block cipher standardized by N
 
 ## Key Concepts
 
+This section covers key concepts for implementing aes encryption for data at rest.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### AES Modes of Operation
 
 | Mode | Authentication | Parallelizable | Use Case |
@@ -105,3 +110,17 @@ Never use raw passwords as encryption keys. Always derive keys using:
 - [ ] Nonces are never reused for the same key
 - [ ] Large files (>1GB) can be processed via streaming
 - [ ] Encrypted file format includes all necessary metadata
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Capturing traffic on networks without authorization or privacy considerations
+- Leaving packet captures containing sensitive data unencrypted on disk
+- Deploying inline blocking rules without testing for false positives first
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Captures verified as complete with no dropped packets
+- Detection rules tested against known-benign traffic for false positive rate
+- Alert thresholds validated and tuned to reduce noise

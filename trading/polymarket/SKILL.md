@@ -49,7 +49,8 @@ Markets show: question, Yes/No prices (as percentages), 24h volume, total volume
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the prediction market analysis is used for financial advice requiring licensing
+- When the markets involve prohibited categories in the user's jurisdiction
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -62,14 +63,16 @@ Markets show: question, Yes/No prices (as percentages), 24h volume, total volume
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Probability estimates are not calibrated against historical outcomes
+- Agent does not account for liquidity and market maker spreads
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Probability estimates are calibrated against historical resolution data
+- [ ] Liquidity and spread costs are factored into expected value calculations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

@@ -1,8 +1,7 @@
 ---
 name: polymarket-analyst
 description: Analyze Polymarket predictions, calculate EV, and monitor markets for trading opportunities
-allowed-tools:
-  - Bash(firecrawl:*)
+allowed-tools: - Bash(firecrawl:*)
   - MCP(firecrawl:*)
   - MCP(exa:*)
   - MCP(slack:*)
@@ -22,6 +21,9 @@ persona:
 Analyze Polymarket predictions, calculate expected value, and identify trading opportunities.
 
 ## Required Tools
+
+Tools and dependencies needed before using this skill.
+
 
 ### MCP Servers
 
@@ -49,6 +51,9 @@ Analyze Polymarket predictions, calculate expected value, and identify trading o
 
 ## Authentication
 
+Authentication setup required for external service access.
+
+
 ### Setup
 
 1. **Firecrawl** (Web Scraping)
@@ -67,6 +72,9 @@ Analyze Polymarket predictions, calculate expected value, and identify trading o
    ```
 
 ## Pseudo Code
+
+Implementation patterns for common use cases with this skill.
+
 
 ### Example 1: Market Discovery and Filtering
 
@@ -155,6 +163,9 @@ for (const market of watchlist) {
 
 ## Common Patterns
 
+Reusable patterns that appear frequently when applying this skill.
+
+
 ### EV Calculation with Fees
 
 ```typescript
@@ -183,7 +194,8 @@ function calculatePositionSize(bankroll, ev, kellyFraction = 0.25) {
 
 ## When NOT to Use
 
-- [TODO: Add specific exclusion cases for this skill]
+- When the prediction market analysis is used for financial advice requiring licensing
+- When the markets involve prohibited categories in the user's jurisdiction
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
@@ -196,14 +208,16 @@ function calculatePositionSize(bankroll, ev, kellyFraction = 0.25) {
 
 ## Red Flags
 
-- [TODO: Add behavioral signs the skill is being violated]
+- Probability estimates are not calibrated against historical outcomes
+- Agent does not account for liquidity and market maker spreads
 - Watch for shortcuts and skipped steps
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] [TODO: Add specific evidence-based checklist items]
+- [ ] Probability estimates are calibrated against historical resolution data
+- [ ] Liquidity and spread costs are factored into expected value calculations
 - [ ] All required outputs generated
 - [ ] Success criteria met
 

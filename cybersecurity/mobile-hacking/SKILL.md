@@ -21,6 +21,11 @@ Android/mobile security testing workflow covering emulator setup, device rooting
 
 ## The Process
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Environment Setup
 
 Choose between emulator or physical device based on your target:
@@ -35,7 +40,7 @@ sdkmanager "cmdline-tools;latest" "platform-tools" "platforms;android-34" "syste
 avdmanager create avd -n test_device -k "system-images;android-34;google_apis;x86_64"
 emulator -avd test_device -writable-system
 ```
-Export `ANDROID_HOME` and add `platform-tools` and `cmdline-tools/bin` to `PATH`.
+Export `ANDROID_HOME` and add `platform-tools` and cmdline-tools > bin to `PATH`.
 
 **Physical Device** — Google Pixel recommended. Easy bootloader unlock, excellent Magisk support, most realistic testing environment.
 

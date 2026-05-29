@@ -3,6 +3,7 @@ name: seo-auditor
 description: SEO analysis and optimization automation for websites. Use when conducting technical SEO audits, tracking keyword rankings, analyzing competitor SEO, monitoring backlink profiles, optimizing existing content, improving local SEO visibility, generating SEO reports for clients, or automating website health checks.
 ---
 
+
 # SEO Auditor Skill 🔍
 
 **Production-ready** automation untuk website SEO analysis & optimization.
@@ -23,6 +24,13 @@ SEO Auditor provides comprehensive website optimization capabilities including t
 - **Scheduled audits**: Automated regular website health checks
 
 ## The Process
+
+- Configure analysis, analyzing, auditor, audits, automating settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Step 1: Target Configuration
 

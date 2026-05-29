@@ -47,6 +47,10 @@ API enumeration attacks occur when attackers systematically probe API endpoints 
 
 ## Attack Patterns to Detect
 
+- **Follow the principle of least privilege** — use the minimum permissions needed for each task
+- **Document everything** — maintain logs of all actions, configurations, and findings
+- **Verify before acting** — confirm assumptions about the environment before making changes
+- **Automate repetitive steps** — script common workflows to reduce human error
 ### 1. Sequential ID Enumeration
 
 Attackers iterate through numeric or predictable identifiers:
@@ -90,6 +94,11 @@ GET /api/v1/orders?user_id=103
 
 ## Detection Rules
 
+This section covers detection rules for detecting api enumeration attacks.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Splunk Detection Queries
 
 ```spl
@@ -379,6 +388,11 @@ if __name__ == "__main__":
 
 ## Prevention Controls
 
+This section covers prevention controls for detecting api enumeration attacks.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Server-Side Authorization Enforcement
 
 ```python
@@ -411,6 +425,22 @@ plugins:
       policy: redis
       limit_by: credential
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Exceeding the authorized scope of the engagement
+- Leaving persistent access mechanisms without explicit approval
+- Causing denial-of-service on production systems during testing
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- All exploited vulnerabilities documented with reproduction steps
+- Scope boundaries confirmed — only authorized targets were tested
+- Remediation recommendations included for every finding
 
 ## References
 

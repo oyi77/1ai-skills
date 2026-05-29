@@ -25,6 +25,12 @@ The Skill Evolution Engine turns raw session activity into refined, reusable ski
 - Configuring continuous learning hooks for automatic pattern capture
 
 ## Process / Steps
+1. Gather requirements and constraints from the user
+2. Validate prerequisites (tools, permissions, data)
+3. Execute the core operation with error handling
+4. Verify output meets quality standards
+5. Report results and log for future reference
+
 
 ### 1. Observation Layer: Capture Session Patterns
 

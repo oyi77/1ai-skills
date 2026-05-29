@@ -3,6 +3,7 @@ name: pocketbase-patterns
 description: PocketBase — single-file backend with SQLite, realtime subscriptions, auth, file storage, custom JS extensions
 ---
 
+
 ## Overview
 
 PocketBase is an open-source backend consisting of an embedded SQLite database with realtime subscriptions, auth, file storage, and a REST API — all in a single Go binary. It supports custom JS/TS extensions via the built-in JS VM.
@@ -27,6 +28,26 @@ PocketBase is an open-source backend consisting of an embedded SQLite database w
 - Want to avoid complex infrastructure
 
 ## Pseudo Code
+
+The pocketbase-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# pocketbase-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={auth, backend, custom, extensions, file})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Setup
 ```bash
@@ -109,3 +130,20 @@ routerAdd('GET', '/api/stats', (c) => {
 - **Backups**: `./pocketbase backup` creates zip of DB + files
 - **Docker**: Use official PocketBase Docker image
 - **S3 storage**: Configure in admin dashboard for production file storage
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

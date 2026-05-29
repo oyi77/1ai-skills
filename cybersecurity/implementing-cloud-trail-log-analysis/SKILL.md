@@ -46,6 +46,11 @@ nist_csf:
 
 ## Workflow
 
+1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
+2. **Document the source** — record device serial, model, and pre-acquisition hash
+3. **Acquire the image** — use the appropriate tool with hash verification enabled
+4. **Verify integrity** — compare source and image hashes; document any discrepancies
+5. **Analyze and report** — perform the analysis and document findings with chain of custody
 ### Step 1: Configure CloudTrail for Comprehensive Logging
 
 Ensure CloudTrail captures all relevant event types across the organization.
@@ -292,6 +297,11 @@ aws logs put-metric-filter \
 
 ## Common Scenarios
 
+**Scenario 1: Full disk acquisition from a suspect workstation**
+Connect via hardware write-blocker, acquire with dcfldd including SHA-256, split into segments for storage. Hash verification confirms bit-for-bit match.
+
+**Scenario 2: Live memory capture during incident response**
+Use LiME or WinPMEM to capture volatile RAM while the system is running, preserving running processes, network connections, and encryption keys that would be lost on shutdown.
 ### Scenario: Investigating an IAM Credential Compromise Through CloudTrail
 
 **Context**: GuardDuty alerts on `UnauthorizedAccess:IAMUser/MaliciousIPCaller` for a developer's access key. The security team needs to trace all actions taken by the compromised credential.
@@ -306,6 +316,22 @@ aws logs put-metric-filter \
 7. Document the full attack chain and scope of impact for the incident response report
 
 **Pitfalls**: CloudTrail events can take up to 15 minutes to appear in S3 and CloudWatch Logs. For real-time visibility during active incidents, use CloudTrail Lake or CloudWatch Logs Insights rather than Athena queries against S3. Cross-region attacks require querying multiple region partitions in Athena.
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Failing to use write-blockers when acquiring forensic evidence
+- Not verifying hash integrity before and after imaging
+- Modifying original evidence during analysis
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Hash values computed and verified match between source and image
+- Chain of custody log complete with timestamps and examiner names
+- Analysis tools and versions documented for reproducibility
 
 ## Output Format
 

@@ -56,6 +56,11 @@ Use this skill when:
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Prepare the Testing Environment
 
 **For jailbroken devices:**
@@ -187,6 +192,20 @@ ios hooking search classes UITextField
 | **Keychain** | iOS secure credential storage system; Objection can dump items accessible to the target app's keychain access group |
 | **SSL Pinning Bypass** | Runtime modification of certificate validation logic to allow proxy interception of HTTPS traffic |
 | **Method Hooking** | Intercepting Objective-C/Swift method calls at runtime to observe arguments, return values, and modify behavior |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Sharing sensitive findings or credentials in unencrypted communications
+- Failing to properly scope and contain the assessment before starting
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Results validated against known-good baselines or reference implementations
+- Documentation complete enough for another analyst to reproduce findings
 
 ## Tools & Systems
 

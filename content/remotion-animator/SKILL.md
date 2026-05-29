@@ -2,6 +2,7 @@
 name: remotion-animator
 description: Remotion Animator - SKILL.md. Use when relevant to this domain.
 ---
+
 # Remotion Animator - SKILL.md
 
 > Powerful animation creation using Remotion (React-based)
@@ -65,6 +66,13 @@ npm run dev
 
 ## Usage
 
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Quick Start (3 Commands)
 
 ```bash
@@ -102,6 +110,13 @@ python3 optimize_video.py --input video.mp4 --output video_optimized.mp4
 ---
 
 ## Animation Types
+
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### 1. Kinetic Typography
 **Description:** Animated text with multiple fonts, sizes, transitions
@@ -260,6 +275,13 @@ python3 optimize_video.py --input video.mp4 --output video_optimized.mp4
 
 ## Advanced Features
 
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Composition Sequencing
 
 **Description:** Combine multiple animations into one video
@@ -325,6 +347,13 @@ python3 optimize_video.py --input video.mp4 --output video_optimized.mp4
 
 ## Output Formats
 
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Video Formats
 | Format | Codec | Quality | File Size | Best For |
 |--------|-------|---------|-----------|---------|
@@ -380,6 +409,13 @@ python3 optimize_video.py --input video.mp4 --output video_optimized.mp4
 ---
 
 ## Script Reference
+
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### create_animation.py
 ```bash
@@ -475,6 +511,13 @@ skills/remotion-animator/
 
 ## Examples
 
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Example 1: Kinetic Typography
 
 **Config:**
@@ -532,6 +575,13 @@ skills/remotion-animator/
 
 ## Learning Resources
 
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
+
 ### Official Documentation
 - Remotion Docs: https://www.remotion.dev/docs
 - Remotion Examples: https://www.remotion.dev/examples
@@ -552,6 +602,13 @@ skills/remotion-animator/
 ---
 
 ## Troubleshooting
+
+- Configure animator, domain, relevant, remotion, skill settings before first use
+- Review output quality and adjust parameters
+- Monitor performance metrics during execution
+- Document custom configurations for team reference
+- Schedule regular runs for consistent results
+
 
 ### Common Issues
 
@@ -592,3 +649,29 @@ skills/remotion-animator/
 ---
 
 *Ready to create stunning animations with Remotion!* 🚀
+
+## How to Use
+
+1. Define content goal (traffic, engagement, conversion, brand awareness)
+2. Research target audience pain points and search intent
+3. Generate content using appropriate AI tools
+4. Edit and humanize output for authenticity
+5. Optimize for target platform (SEO, hashtags, format)
+6. Schedule and distribute across channels
+7. Measure performance and iterate
+
+## Red Flags
+
+- **AI-generated content sounds robotic**: Always run through humanizer before publishing
+- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
+- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
+- **No content calendar**: Sporadic posting kills audience retention
+- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- Check readability score (target grade 8 or below for general audiences)
+- Verify all images have alt text and proper dimensions per platform
+- Confirm links work and point to correct destinations
+- Test video/audio quality before publishing
+- Validate content renders correctly on mobile devices

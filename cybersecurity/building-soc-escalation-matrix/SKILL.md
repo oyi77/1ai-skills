@@ -45,6 +45,11 @@ A SOC escalation matrix defines how security incidents move through the organiza
 
 ## SOC Tier Structure
 
+This section covers soc tier structure for building soc escalation matrix.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Tier 1 - Alert Triage Analyst
 - Monitors SIEM dashboards and alert queues
 - Performs initial alert classification (true/false positive)
@@ -74,6 +79,11 @@ A SOC escalation matrix defines how security incidents move through the organiza
 
 ## Severity Classification
 
+This section covers severity classification for building soc escalation matrix.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### P1 - Critical
 
 | Attribute | Value |
@@ -137,6 +147,11 @@ Severity  Low      P4         P4          P3          P3
 
 ## Context-Driven Escalation Triggers
 
+This section covers context-driven escalation triggers for building soc escalation matrix.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### Automatic Escalation (no analyst decision needed)
 
 | Trigger | Action |
@@ -159,6 +174,11 @@ Severity  Low      P4         P4          P3          P3
 
 ## Communication Templates
 
+This section covers communication templates for building soc escalation matrix.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### P1 Initial Notification
 
 ```
@@ -186,6 +206,11 @@ Bridge Line: {conference_details}
 
 ## Escalation Matrix Implementation
 
+This section covers escalation matrix implementation for building soc escalation matrix.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### SOAR Integration
 
 ```yaml
@@ -207,6 +232,22 @@ auto_escalation_rules:
       - notify: soc_manager
       - add_comment: "Auto-escalated due to SLA breach"
 ```
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Destroying potential evidence during the containment phase
+- Failing to document the chain of custody for all collected artifacts
+- Communicating incident details over unencrypted or monitored channels
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Timeline of events reconstructed with corroborating evidence
+- Root cause identified and documented with contributing factors
+- Post-incident review completed with lessons learned and action items
 
 ## References
 

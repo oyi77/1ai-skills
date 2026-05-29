@@ -3,6 +3,7 @@ name: app-store-optimization
 description: App Store and Play Store optimization — keywords, screenshots, reviews, and conversion rate optimization
 ---
 
+
 ## Overview
 
 Optimize App Store and Play Store listings for maximum downloads. Covers keyword research, title optimization, screenshot design, A/B testing, review management, and conversion tracking.
@@ -23,6 +24,26 @@ Optimize App Store and Play Store listings for maximum downloads. Covers keyword
 - Competing for keywords in your category
 
 ## Pseudo Code
+
+The app-store-optimization workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# app-store-optimization primary flow
+input = prepare(raw_data)
+result = process(input, config={app, conversion, keywords, optimization, play})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Keyword Research
 ```python
@@ -57,3 +78,20 @@ def research_keywords(category, competitors):
 - **Screenshot story**: Screenshots tell a story, not just show features
 - **Review prompts**: In-app review prompts after positive actions
 - **A/B test everything**: Icon, screenshots, description — test each element
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit

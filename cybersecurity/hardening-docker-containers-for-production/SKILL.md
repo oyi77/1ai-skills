@@ -45,6 +45,11 @@ Hardening Docker containers for production involves applying security best pract
 
 ## Core Concepts
 
+This section covers core concepts for hardening docker containers for production.
+
+- Ensure all prerequisites are met before proceeding
+- Follow the documented workflow steps in sequence
+- Record results and any anomalies encountered during this phase
 ### CIS Docker Benchmark Sections
 
 1. **Host Configuration** - Audit Docker daemon files, restrict access to /var/run/docker.sock
@@ -64,6 +69,11 @@ Hardening Docker containers for production involves applying security best pract
 
 ## Workflow
 
+1. **Scope the task** — define objectives, boundaries, and success criteria
+2. **Gather information** — collect all necessary data and context before proceeding
+3. **Execute the core workflow** — follow the domain-specific steps methodically
+4. **Validate results** — verify outputs against expected outcomes or baselines
+5. **Document findings** — record results, anomalies, and recommendations
 ### Step 1: Harden the Dockerfile
 
 ```dockerfile
@@ -222,6 +232,22 @@ docker ps -q | xargs docker inspect --format '{{.Id}}: User={{.Config.User}}'
 | Content trust | DOCKER_CONTENT_TRUST=1 | 4.5 |
 | TLS for daemon | daemon.json TLS config | 2.6 |
 | Audit logging | auditd rules | 1.1 |
+
+## Red Flags
+
+- Performing actions without explicit written authorization from the asset owner
+- Testing against production systems without a defined scope and rules of engagement
+- Modifying cloud IAM policies or security groups without approval
+- Exposing cloud credentials or secrets in logs or reports
+- Running scans that generate excessive API calls and trigger billing alerts
+
+## Verification
+
+- All steps executed successfully against a test environment before production use
+- Output documented with screenshots or logs demonstrating expected behavior
+- Cloud resource changes reverted or documented as intentional
+- IAM policies reviewed for least-privilege compliance after testing
+- No residual test resources left running (cost and security check)
 
 ## References
 

@@ -3,6 +3,7 @@ name: typeorm-patterns
 description: TypeORM patterns — entities, repositories, migrations, relations, query builder, active record vs data mapper
 ---
 
+
 ## Overview
 
 TypeORM is a TypeScript ORM for Node.js that supports Active Record and Data Mapper patterns. It works with PostgreSQL, MySQL, SQLite, MongoDB, and more.
@@ -25,6 +26,26 @@ TypeORM is a TypeScript ORM for Node.js that supports Active Record and Data Map
 - Working with existing database schemas
 
 ## Pseudo Code
+
+The typeorm-patterns workflow follows a standard pipeline pattern.
+
+Core flow:
+```
+# typeorm-patterns primary flow
+input = prepare(raw_data)
+result = process(input, config={active, builder, data, entities, mapper})
+validate(result)
+deliver(result)
+```
+
+Error handling:
+```
+on error:
+  log(error_details)
+  retry_with_backoff(max=3)
+  if still_failing: alert_and_escalate()
+```
+
 
 ### Entity Definition
 ```typescript
@@ -122,3 +143,20 @@ npx typeorm migration:revert -d src/data-source.ts
 - **Data Mapper**: `repo.find()`, `repo.save(user)` — more testable, more boilerplate
 - **Subscribers**: Listen to entity events (beforeInsert, afterUpdate, etc.)
 - **Transactions**: `AppDataSource.transaction(async (manager) => { ... })`
+
+## How to Use
+
+1. Understand the requirement and existing codebase patterns
+2. Design the solution with error handling and testability in mind
+3. Implement incrementally with tests for each change
+4. Verify against expected outcomes (manual and automated)
+5. Document usage, edge cases, and integration points
+6. Review with team before merging to shared branches
+
+## Red Flags
+
+- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
+- **No error handling in production code**: Unhandled errors crash services and lose user data
+- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
+- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
+- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
