@@ -372,13 +372,16 @@ def monthly_close(year, month):
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Not reconciling financial data
+- Ignoring tax compliance requirements
+- Missing audit trails
+- Not backing up financial data
+- Ignoring financial regulations
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Financial data is reconciled
+- [ ] Tax compliance is maintained
+- [ ] Audit trails are in place
+- [ ] Financial data is backed up
+- [ ] Financial regulations are followed

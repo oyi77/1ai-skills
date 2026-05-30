@@ -119,13 +119,16 @@ curl -X POST http://localhost:3000/api/v1/prediction/{chatflow-id} \
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Not testing flows before deployment
+- Ignoring error handling in flows
+- Missing logging and monitoring
+- Not documenting flow logic
+- Ignoring rate limits and quotas
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Flows are tested end-to-end
+- [ ] Error handling is in place
+- [ ] Logging and monitoring are configured
+- [ ] Flow logic is documented
+- [ ] Rate limits are respected

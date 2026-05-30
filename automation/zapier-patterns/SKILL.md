@@ -193,13 +193,16 @@ curl -X POST "https://hooks.zapier.com/hooks/catch/123456/abcdef/" \
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Not testing Zaps before enabling
+- Ignoring error handling in Zaps
+- Missing logging and monitoring
+- Not documenting Zap logic
+- Ignoring rate limits and quotas
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Zaps are tested end-to-end
+- [ ] Error handling is in place
+- [ ] Logging and monitoring are configured
+- [ ] Zap logic is documented
+- [ ] Rate limits are respected

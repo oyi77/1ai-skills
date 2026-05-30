@@ -903,9 +903,11 @@ Step-by-step workflow for this skill.
 
 ## When to Use
 
-- When you need automated assistance with a specific technical task
-- When the task requires domain expertise this agent provides
-- When consistency and repeatability matter more than creative exploration
+- Managing contract lifecycle (creation, review, signing, renewal)
+- Tracking contract deadlines and milestones
+- Automating contract document generation
+- Managing contract templates and versions
+- Tracking contract obligations and compliance
 
 ## When NOT to Use
 
@@ -918,13 +920,17 @@ Step-by-step workflow for this skill.
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Missing contract deadlines
+- Not tracking contract versions
+- Ignoring contract obligations
+- Not backing up contract documents
+- Missing approval workflows
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
+- [ ] Contracts are stored securely
+- [ ] Deadlines are tracked and alerted
+- [ ] Versions are managed properly
+- [ ] Approval workflows are in place
+- [ ] Compliance is tracked
 - [ ] No placeholder content or TODOs remain

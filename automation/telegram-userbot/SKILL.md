@@ -514,9 +514,11 @@ pip install telethon edge-tts --break-system-packages
 
 ## When to Use
 
-- When you need automated assistance with a specific technical task
-- When the task requires domain expertise this agent provides
-- When consistency and repeatability matter more than creative exploration
+- Automating Telegram messaging (DMs, group messages)
+- Scraping Telegram group/channel members
+- Running Telegram-based lead generation
+- Automating Telegram account activities
+- Building Telegram automation workflows
 
 ## When NOT to Use
 
@@ -529,13 +531,18 @@ pip install telethon edge-tts --break-system-packages
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Sending too many DMs (risk of ban)
+- Not respecting rate limits (FloodWaitError)
+- Using for spam or unsolicited messages
+- Not handling privacy restrictions properly
+- Ignoring Telegram Terms of Service
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
+- [ ] Account is not banned or restricted
+- [ ] Rate limits are respected (30s+ between DMs)
+- [ ] Messages are personalized (not generic spam)
+- [ ] Privacy settings are checked before sending
+- [ ] Error handling is in place for common errors
 - [ ] Edge cases have been considered and handled
 - [ ] No placeholder content or TODOs remain

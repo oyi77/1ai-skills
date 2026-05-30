@@ -183,13 +183,16 @@ try {
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Not testing workflows before deployment
+- Ignoring error handling in workflows
+- Missing logging and monitoring
+- Not documenting workflow logic
+- Ignoring rate limits and quotas
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Workflows are tested end-to-end
+- [ ] Error handling is in place
+- [ ] Logging and monitoring are configured
+- [ ] Workflow logic is documented
+- [ ] Rate limits are respected

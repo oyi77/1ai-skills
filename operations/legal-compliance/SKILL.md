@@ -360,13 +360,16 @@ privacy_policy = generate_privacy_policy({
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Ignoring jurisdiction-specific requirements
+- Not keeping up with regulatory changes
+- Missing required disclosures
+- Not protecting sensitive data
+- Ignoring compliance deadlines
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Jurisdiction requirements are met
+- [ ] Regulatory changes are tracked
+- [ ] Required disclosures are included
+- [ ] Sensitive data is protected
+- [ ] Compliance deadlines are met

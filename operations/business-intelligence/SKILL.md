@@ -200,9 +200,11 @@ Key questions:
 
 ## When to Use
 
-- When you need automated assistance with a specific technical task
-- When the task requires domain expertise this agent provides
-- When consistency and repeatability matter more than creative exploration
+- Generating business reports and dashboards
+- Analyzing business metrics and KPIs
+- Tracking business performance over time
+- Creating data visualizations
+- Automating reporting workflows
 
 ## When NOT to Use
 
@@ -215,13 +217,16 @@ Key questions:
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Reporting without understanding the data
+- Not validating data accuracy
+- Ignoring data quality issues
+- Not explaining methodology
+- Missing data visualization best practices
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Data is accurate and validated
+- [ ] Reports are clear and actionable
+- [ ] Visualizations follow best practices
+- [ ] Methodology is documented
+- [ ] Data sources are reliable

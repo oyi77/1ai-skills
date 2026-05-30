@@ -254,13 +254,16 @@ crontab -e
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Not testing pipelines before deployment
+- Ignoring data quality issues
+- Missing error handling in pipelines
+- Not documenting pipeline logic
+- Ignoring data privacy regulations
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Pipelines are tested end-to-end
+- [ ] Data quality is validated
+- [ ] Error handling is in place
+- [ ] Pipeline logic is documented
+- [ ] Data privacy is maintained

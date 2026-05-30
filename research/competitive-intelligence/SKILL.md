@@ -371,13 +371,16 @@ echo "[$(date)] Pipeline complete"
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Using outdated or unreliable sources
+- Not verifying competitive intelligence
+- Ignoring ethical considerations
+- Not protecting confidential information
+- Missing source documentation
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Sources are reliable and current
+- [ ] Intelligence is verified
+- [ ] Ethical guidelines are followed
+- [ ] Confidential information is protected
+- [ ] Sources are documented
