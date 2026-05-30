@@ -269,6 +269,16 @@ Map the application, test authentication and authorization, check for injection 
 - Not cleaning up ARP spoofing after testing, causing intermittent connectivity issues for the target
 - Running mitmproxy without the transparent mode flag, requiring manual proxy configuration that changes the test conditions
 
+## When NOT to Use
+
+- You don't have authorization for the assessment
+- Task is about implementing findings (use implementing-* skills)
+- You need to analyze results (use analyzing-* skills)
+- Task is about building assessment tools (use building-* skills)
+- Target is out of scope
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

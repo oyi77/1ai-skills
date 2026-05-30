@@ -35,6 +35,16 @@ Design, build, and manage business process automations using no-code/low-code pl
 - "Build a content approval workflow for our team"
 - Client says: "We do this manually every day, it takes 2 hours"
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 ```python
 # Example workflow for this skill

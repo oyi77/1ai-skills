@@ -35,7 +35,29 @@ Before diving into code:
 
 ### 2. Vulnerability Classes (Ranked by Payout)
 
+> **2025-2026 UPDATE**: Rounding/precision errors have surpassed reentrancy as the #1 attack vector. The three largest exploits of 2025 (Balancer $128M, Cetus $223M, yETH $9M) all used rounding errors. **Test batch operations and state reset patterns first.**
+
 #### Critical ($100k-$10M)
+
+**Rounding/Precision Errors (2025 #1 Vector)**
+```solidity
+// VULNERABLE: Precision loss in scaling functions (Balancer-style)
+// When amount is small (8-9 wei) and scalingFactor is large,
+// mulDown truncates to 0 due to integer division
+// ATTACK: 65+ micro-swaps compound rounding errors
+
+// VULNERABLE: Cached state not cleared when pool emptied (yETH-style)
+// "supply == 0" does NOT mean "pristine state"
+// ATTACK: 16 wei deposit → mints 235 septillion LP tokens
+
+// VULNERABLE: Library bug propagation (Cetus-style)
+// Bug in integer-mate library's checked_shlw caused $223M loss
+// ATTACK: Silent overflow in Move language
+
+// FIX: mulUp for critical operations, invariant checks after batch
+// FIX: Explicitly clear ALL cached state when supply hits zero
+// FIX: Audit ALL third-party dependencies
+```
 
 **Reentrancy**
 ```solidity
@@ -258,6 +280,16 @@ Reentrancy / Access Control / Oracle Manipulation / etc.
 | Block explorer | Etherscan, Blockscout |
 | DeFi data | DeFiLlama, Dune Analytics |
 | MEV analysis | Flashbots Protect, MEV Blocker |
+
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
 
 ## Red Flags
 

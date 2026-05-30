@@ -862,6 +862,16 @@ opencode logs --mcp
 6. **Verify activation** – Check config is loaded via `opencode config get` commands
 7. **Test agent behavior** – Each configured agent should respond according to settings
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **Edit conflicts** – Modifying config while OpenCode session is running (changes may not apply until restart)

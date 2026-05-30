@@ -232,6 +232,16 @@ Map the application, test authentication and authorization, check for injection 
 
 **Pitfalls**: SHA pinning without Dependabot means missing legitimate security updates to actions. Overly restrictive permissions can break legitimate workflows. Using `pull_request_target` for label-based gating still exposes secrets if the workflow checks out PR code.
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

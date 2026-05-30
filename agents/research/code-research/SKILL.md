@@ -23,6 +23,18 @@ Autonomous codebase analysis agent that produces structured understanding of unf
 - Mapping the architecture of a monolith or microservice
 - Preparing a technical design document that references existing code
 
+## When NOT to Use
+
+- Implementing new features (use `code-agent`)
+- Reviewing code quality (use `review-agent`)
+- Refactoring code (use `refactor-agent`)
+- Writing tests (use `test-agent`)
+- Researching external documentation (use `web-research`)
+- Analyzing market or competitors (use `market-research-agent`)
+- Code is trivially simple (single file, obvious structure)
+- You already know where everything is
+- Real-time debugging (use `systematic-debugging`)
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

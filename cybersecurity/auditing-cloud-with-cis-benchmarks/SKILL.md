@@ -237,6 +237,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Remediating controls without testing in a staging environment first can break production workloads. Ignoring Level 2 controls entirely weakens the audit narrative even if they are not strictly required.
 
+## When NOT to Use
+
+- You need to perform security testing (use performing-* skills)
+- Task is about analyzing audit findings (use analyzing-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about building audit tools (use building-* skills)
+- You don't have access to audit scope
+- Task requires legal/compliance expertise (consult professionals)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -270,6 +270,16 @@ Parse Uninstall keys for all installed applications, compare against approved so
 **Scenario 4: USB Data Exfiltration Investigation**
 Extract USBSTOR entries from SYSTEM hive for connected devices, correlate device serial numbers with MountedDevices, check NTUSER.DAT MountPoints2 for user access to removable media, examine SetupAPI logs for first-connection timestamps.
 
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

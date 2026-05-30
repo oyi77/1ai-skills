@@ -23,6 +23,16 @@ Subagent orchestration solves the fundamental challenge of multi-agent systems: 
 - Running checkpoint or continuous evaluations on agent output
 - Coordinating multi-service workflows with PM2
 
+## When NOT to Use
+
+- Task can be done by a single agent without context issues
+- Task is trivially simple (single file, obvious fix)
+- You don't have git worktrees set up for parallelization
+- Task requires real-time coordination (use message queues)
+- You're building a custom agent framework (use development tools)
+- Task is about agent training, not orchestration
+- You don't need context management (task is self-contained)
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

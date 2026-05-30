@@ -295,6 +295,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Relying solely on WAF rules without fixing the underlying code vulnerability allows attackers to bypass with encoding tricks. Using ORM methods incorrectly (raw queries) still allows injection.
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

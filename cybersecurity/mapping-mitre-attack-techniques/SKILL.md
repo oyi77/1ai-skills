@@ -145,6 +145,16 @@ Summarize coverage by tactic category (Initial Access, Execution, Persistence, e
 | **Coverage Score** | Numeric (0–100) representing detection completeness for a technique: 0=blind, 50=logged only, 100=alerted |
 | **MITRE D3FEND** | Defensive countermeasure ontology complementing ATT&CK — maps defensive techniques to attack techniques they mitigate |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

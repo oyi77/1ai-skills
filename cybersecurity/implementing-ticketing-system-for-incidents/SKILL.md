@@ -400,6 +400,16 @@ index=servicenow sourcetype="snow:incident" category="Security" state="Resolved"
 - **On-Call Alerting**: Page on-call analyst via PagerDuty when critical ticket created after hours
 - **Post-Incident Review**: Query closed tickets to identify recurring incident types and systemic gaps
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

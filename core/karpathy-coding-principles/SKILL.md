@@ -5,6 +5,16 @@ domain: core
 tags: [coding-principles, code-quality, best-practices, karpathy, simplicity, clean-code]
 ---
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Overview
 
 Andrej Karpathy's 4 coding principles distilled into actionable rules for AI agents and developers. Focuses on reducing overengineering, maintaining simplicity, making minimal changes, and verifying outcomes. Originally from [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills).

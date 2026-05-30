@@ -340,6 +340,15 @@ if i % 10 == 0:
 - When the task requires domain expertise this agent provides
 - When consistency and repeatability matter more than creative exploration
 
+## When NOT to Use
+
+- Task is about social media posting, not automation
+- You need to build a custom social media tool (use development)
+- Task requires real-time engagement (use social media tools)
+- You don't have PostAI account
+- Task is about content creation (use content tools)
+- You need analytics (use analytics tools)
+
 ## Red Flags
 
 - Claiming completion without running verification

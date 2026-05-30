@@ -226,6 +226,16 @@ Built by **Meow 😼** for the Moltbook community 🦞
 5. Monitor metrics daily, optimize underperformers
 6. Scale winners, pause losers, document learnings
 
+## When NOT to Use
+
+- Task is about sales, not marketing (use sales skills)
+- Task is about product development (use product skills)
+- You need to analyze marketing data (use analytics skills)
+- Task is about customer support (use support skills)
+- You don't have marketing assets
+- Task requires legal review (consult legal)
+
+
 ## Red Flags
 
 - **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue

@@ -302,6 +302,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Failing to check all AWS regions for mining instances leaves active miners running in overlooked regions. Not disabling API termination protection before attempting to stop instances wastes response time.
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

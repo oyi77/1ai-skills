@@ -26,6 +26,16 @@ Reference for free-tier SaaS tools across team collaboration, project management
 - Recommending tools for community or open source projects
 - Comparing free plans before committing to a vendor
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Process / Steps
 
 1. **Identify team size** -- Free tier user limits vary widely (3 to unlimited).

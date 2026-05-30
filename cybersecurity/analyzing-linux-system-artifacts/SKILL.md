@@ -303,6 +303,16 @@ Analyze the suspect user's bash_history for database dump commands, check for la
 **Scenario 4: Crypto-Miner on Cloud Instance**
 Check for high-CPU processes in /proc (live) or systemd service files, examine crontab entries for miner restart scripts, check /tmp for mining binaries, analyze network connections for mining pool communications, review authorized_keys for attacker access.
 
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

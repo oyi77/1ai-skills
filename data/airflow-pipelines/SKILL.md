@@ -26,6 +26,16 @@ Apache Airflow is the industry standard for programmatically authoring, scheduli
 - Coordinating tasks across databases, APIs, cloud services
 - Managing backfills and historical data processing
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The airflow-pipelines workflow follows a standard pipeline pattern.

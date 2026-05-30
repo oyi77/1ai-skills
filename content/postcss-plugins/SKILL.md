@@ -26,6 +26,16 @@ PostCSS is a CSS transformation tool with a rich plugin ecosystem. Autoprefixer 
 - Building custom CSS transformation tools
 - Using modern CSS features with fallbacks
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The postcss-plugins workflow follows a standard pipeline pattern.

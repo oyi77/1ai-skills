@@ -316,6 +316,17 @@ Analyze images downloaded by malware for embedded commands, check for data appen
 **Scenario 4: Intellectual Property Theft via Audio Files**
 Analyze audio files for embedded documents in LSB, check spectrograms for visual patterns hidden in frequency domain, compare audio file sizes with expected sizes for bitrate and duration, extract and analyze any hidden data payloads.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -298,6 +298,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Scanning only the final stage misses vulnerable packages that were present in build stages and may have influenced the build. Run `trivy fs` on the build context separately. Caching the Trivy DB too aggressively (weekly) means newly published CVEs take days to appear in scans.
 
+## When NOT to Use
+
+- You need to perform manual testing (use performing-* skills)
+- Task is about analyzing scan results (use analyzing-* skills)
+- You need to implement scanning tools (use implementing-* skills)
+- Task is about building scanning infrastructure (use building-* skills)
+- You don't have network access to targets
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

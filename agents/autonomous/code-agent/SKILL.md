@@ -23,6 +23,18 @@ Autonomous coding agent that writes production-quality code: reads requirements,
 - Creating CLI tools or scripts
 - Writing configuration or infrastructure code
 
+## When NOT to Use
+
+- Exploring or understanding existing code (use `research-agent` or `code-research`)
+- Reviewing code for bugs or security issues (use `review-agent` or `security-agent`)
+- Planning architecture before implementation (use `planning-agent`)
+- Deploying code to production (use `deploy-agent`)
+- Refactoring existing code without changing behavior (use `refactor-agent`)
+- Running or writing tests only (use `test-agent`)
+- Optimizing performance of existing code (use `perf-agent`)
+- Task is trivially simple (a single command or one-line fix)
+- Requirements are unclear or ambiguous (clarify first)
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

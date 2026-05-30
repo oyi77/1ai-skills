@@ -316,6 +316,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Adding security scanning to an existing project will initially produce hundreds of findings. Implement gradually by starting with CRITICAL-only blocking, then expanding to HIGH. Use inline suppression comments (`#checkov:skip=CKV_AWS_18:Public bucket for static website`) for intentional exceptions with documented justification.
 
+## When NOT to Use
+
+- You need to perform security testing (use performing-* skills)
+- Task is about analyzing audit findings (use analyzing-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about building audit tools (use building-* skills)
+- You don't have access to audit scope
+- Task requires legal/compliance expertise (consult professionals)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

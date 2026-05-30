@@ -25,6 +25,15 @@ Pipedream is a serverless integration and compute platform. It lets you build ev
 - Building webhook receivers and API endpoints
 - Replacing custom scripts with managed workflows
 
+## When NOT to Use
+
+- Task is simple enough for Zapier (use Zapier for no-code)
+- You need complex workflow orchestration (use n8n)
+- Task is about data storage, not workflow automation
+- You don't have API access to the services being integrated
+- Task requires real-time processing (use streaming tools)
+- You need to build a custom application (use development tools)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

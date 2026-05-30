@@ -264,6 +264,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Testing only individual VM restores without testing full application stack recovery including dependencies
 - Forgetting to back up backup server configuration (Veeam config database, encryption keys) separately from the backup infrastructure itself
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

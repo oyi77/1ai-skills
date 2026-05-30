@@ -34,6 +34,16 @@ An end-to-end pipeline for shipping micro-SaaS products as a solo operator. Take
 - You want to build a portfolio of micro-SaaS products for passive income
 - A client requests a custom SaaS solution
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The ai-saas-builder workflow follows a standard pipeline pattern.

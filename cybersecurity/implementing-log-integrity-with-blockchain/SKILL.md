@@ -66,6 +66,16 @@ python scripts/agent.py --log-file /var/log/syslog --chain-file log_chain.json -
 
 ### Tamper Detection
 If entry 42 is modified, chain_hash[42] will not match SHA256(chain_hash[41] + ...), and all entries from 42 onward will be flagged as invalid.
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

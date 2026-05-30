@@ -189,6 +189,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Forgetting to scan UDP ports, missing critical services like SNMP (161), DNS (53), and TFTP (69)
 - Not saving output in XML format (`-oX` or `-oA`), losing structured data for downstream tool integration
 
+## When NOT to Use
+
+- You need to perform manual testing (use performing-* skills)
+- Task is about analyzing scan results (use analyzing-* skills)
+- You need to implement scanning tools (use implementing-* skills)
+- Task is about building scanning infrastructure (use building-* skills)
+- You don't have network access to targets
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

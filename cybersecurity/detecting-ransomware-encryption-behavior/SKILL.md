@@ -203,6 +203,16 @@ Automated Response Actions:
 | **Behavioral Scoring** | Combining multiple weak signals (entropy, I/O rate, file renames) into a composite confidence score |
 | **Entropy Evasion** | Techniques used by advanced ransomware to defeat entropy detection, such as Base64 encoding output or partial encryption |
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

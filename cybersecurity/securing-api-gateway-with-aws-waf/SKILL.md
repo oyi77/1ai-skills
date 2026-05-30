@@ -418,6 +418,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Rate limiting by IP can block legitimate users behind shared NAT gateways or corporate proxies. Consider using API key or authenticated session-based rate limiting for more granular control. Bot Control rules in COMMON inspection level may block legitimate API clients; start in Count mode and review before switching to Block.
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

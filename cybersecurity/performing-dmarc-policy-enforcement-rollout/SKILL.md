@@ -123,6 +123,17 @@ v=DMARC1; p=quarantine; pct=25; rua=mailto:dmarc-agg@company.com; ruf=mailto:dma
 - Maintain SPF record as sending infrastructure changes
 - Rotate DKIM keys annually
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

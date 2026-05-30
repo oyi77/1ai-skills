@@ -36,6 +36,16 @@ Orchestration layer that packages the existing 23 security skills (bug-hunting, 
 - You want to offer tiered security packages (basic, standard, premium)
 - Building a security consulting or audit business
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 This section covers pseudo code for saas orchestrator.

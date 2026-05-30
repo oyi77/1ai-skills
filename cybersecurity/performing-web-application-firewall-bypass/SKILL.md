@@ -228,6 +228,17 @@ curl "http://target.com/page?q=%253Cscript%253Ealert(1)%253C%252Fscript%253E"
 4. **Chunked Transfer Bypass** — Split malicious payload across HTTP chunked transfer encoding segments to avoid pattern matching
 5. **Method Override** — Send attack payloads via PUT/PATCH methods or custom headers that WAF does not inspect
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

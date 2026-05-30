@@ -38,6 +38,16 @@ Automated competitive intelligence engine that monitors competitors across multi
 - Investor/board meeting prep requiring competitive landscape overview
 - Detecting new market entrants or competitor pivots early
 
+## When NOT to Use
+
+- Task is about implementation, not research (use implementation skills)
+- Task is about analysis of existing data (use analysis skills)
+- You need to build research tools (use development skills)
+- Task is about testing hypotheses (use test skills)
+- You don't have access to research sources
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

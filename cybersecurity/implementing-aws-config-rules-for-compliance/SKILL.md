@@ -317,6 +317,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Config recording incurs costs per configuration item recorded. In accounts with many resources, costs can be significant. Use targeted recording groups to focus on compliance-relevant resource types rather than recording all resources. Auto-remediation of network rules (security groups) can disrupt applications if the rule was intentionally permissive.
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

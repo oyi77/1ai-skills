@@ -282,6 +282,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: ZTNA Connector requires minimum 4 vCPU and 8GB RAM; under-provisioning causes latency. GlobalProtect pre-logon requires machine certificates for authentication before user login. HIP check intervals should be 60 seconds minimum to avoid performance impact. Plan for a 4-6 week pilot before full deployment.
 
+## When NOT to Use
+
+- You need to test the deployment (use performing-* skills)
+- Task is about configuring deployed tools (use configuring-* skills)
+- You need to analyze deployment output (use analyzing-* skills)
+- Task is about building deployment automation (use building-* skills)
+- You don't have deployment access
+- Task requires change management (follow change process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

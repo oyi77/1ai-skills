@@ -39,6 +39,15 @@ An AI-powered financial management system for solo entrepreneurs. Automates invo
 - Quarterly tax prep and estimated tax calculations
 - Multi-currency transactions need consolidation
 
+## When NOT to Use
+
+- Task is about financial analysis, not automation
+- You need tax advice (consult a CPA)
+- Task requires complex accounting (use accounting software)
+- You're building financial software (use development skills)
+- Task is about investment decisions (use financial skills)
+- You don't have access to financial data sources
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

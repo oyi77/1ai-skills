@@ -207,6 +207,16 @@ curl -X POST http://target.com/api/send-email \
 4. **Email Content Override** — Inject MIME Content-Type headers to replace legitimate email body with malicious phishing content
 5. **Internal Email Abuse** — Use header injection to send emails to internal addresses not normally accessible through the application
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

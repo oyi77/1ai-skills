@@ -170,6 +170,16 @@ Recovery Test Report:
 - **Measuring RTO without WRT**: Restore completion is not recovery completion. Include validation and hardening time.
 - **No immutable backups**: If ransomware can encrypt or delete backups, recovery is impossible. Use air-gapped or immutable storage.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

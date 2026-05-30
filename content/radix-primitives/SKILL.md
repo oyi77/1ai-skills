@@ -25,6 +25,16 @@ Radix UI provides unstyled, accessible React primitives (Dialog, Dropdown, Popov
 - Using shadcn/ui (built on Radix primitives)
 - Need fine-grained control over component behavior and appearance
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The radix-primitives workflow follows a standard pipeline pattern.

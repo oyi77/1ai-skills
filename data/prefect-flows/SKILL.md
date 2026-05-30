@@ -25,6 +25,16 @@ Prefect is a modern workflow orchestration framework for Python. It uses decorat
 - Managing retries and error handling for unreliable tasks
 - Scheduling and triggering workflows remotely
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The prefect-flows workflow follows a standard pipeline pattern.

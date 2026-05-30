@@ -63,6 +63,16 @@ Crypto wallet development covering HD wallet derivation (BIP-32/39/44), transact
 - DeFi dashboard integrations
 - Hardware wallet support
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Pseudo Code
 
 Reference implementations for HD wallet derivation, transaction signing, and multi-chain integration.

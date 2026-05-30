@@ -25,6 +25,16 @@ Integrate with Atlassian Jira for project management automation — create/updat
 - Automating sprint ceremonies (standup reports, burndown)
 - Bulk operations on issues (migration, cleanup)
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 ```python
 # Example workflow for this skill

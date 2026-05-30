@@ -177,6 +177,16 @@ python agent.py --entropy-scan /restore-test
 - **No alerting on validation failures**: Backup validation must be monitored with alerts, not just logged silently.
 - **Using MD5 for integrity**: MD5 is cryptographically broken. Use SHA-256 or SHA-3 for integrity verification.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

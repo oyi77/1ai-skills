@@ -63,6 +63,16 @@ NFT marketplace development with ERC-721/1155, lazy minting, auction logic, roya
 - Creator royalty systems
 - Auction platforms
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Pseudo Code
 
 Reference implementations for lazy minting, marketplace escrow, and EIP-2981 royalty enforcement.

@@ -280,6 +280,16 @@ Policy: "Alert on mass file download (exfiltration via stolen token)"
 - [ ] Device code flow is restricted via conditional access (block or require compliant device)
 - [ ] Incident response runbook includes token revocation, password reset, and OAuth consent review steps
 - [ ] Mail forwarding rules and OAuth app grants are audited for compromised accounts
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

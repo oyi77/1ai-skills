@@ -291,6 +291,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Defender for Servers P2 costs per server per hour. For environments with many VMs, costs can escalate quickly. Use Defender for Servers P1 for development subscriptions and P2 only for production. Auto-provisioning of agents may conflict with existing agent deployments managed by SCCM or other tools.
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

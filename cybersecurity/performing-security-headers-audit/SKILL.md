@@ -286,6 +286,17 @@ The session cookie is set without the `Secure` flag. On mixed HTTP/HTTPS sites, 
 ### Scenario 4: Missing HSTS Enabling SSL Stripping
 No HSTS header is present. An attacker on the network can perform an SSL stripping attack, downgrading the victim's HTTPS connection to HTTP and intercepting all traffic.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -184,6 +184,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Ignoring the backend API security because it was "tested separately" when the mobile app may call API endpoints differently than the web app
 - Failing to test certificate pinning bypass, resulting in an incomplete network analysis
 
+## When NOT to Use
+
+- You don't have authorization for the assessment
+- Task is about implementing findings (use implementing-* skills)
+- You need to analyze results (use analyzing-* skills)
+- Task is about building assessment tools (use building-* skills)
+- Target is out of scope
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

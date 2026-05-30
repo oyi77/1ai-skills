@@ -222,6 +222,16 @@ file with chain of custody documentation for potential legal action.
 | **Vishing** | Voice phishing; social engineering attack conducted via phone calls, increasingly using AI-cloned voices |
 | **Formant** | Resonant frequencies of the vocal tract that define vowel sounds; transitions between formants are difficult for AI to replicate perfectly |
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

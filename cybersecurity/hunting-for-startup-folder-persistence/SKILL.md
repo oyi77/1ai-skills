@@ -62,6 +62,16 @@ Attackers use Windows startup folders for persistence (MITRE ATT&CK T1547.001 â€
 
 - JSON report listing all startup folder contents with risk scores, file metadata, and suspicious indicators
 - Real-time monitoring alerts for new file creation in startup directories
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

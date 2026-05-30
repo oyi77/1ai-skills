@@ -24,6 +24,16 @@ Consul Connect provides service-to-service authorization and encryption via mutu
 - Cross-datacenter service mesh deployment
 - Need service discovery with health checking
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The consul-connect workflow follows a standard pipeline pattern.

@@ -23,6 +23,17 @@ Autonomous code review agent that reads changes with adversarial intent -- looki
 - Pre-deploy safety checks
 - Post-mortem analysis of production incidents
 
+## When NOT to Use
+
+- Writing or implementing new code (use `code-agent`)
+- Researching unfamiliar codebase (use `research-agent` or `code-research`)
+- Planning architecture changes (use `planning-agent`)
+- Deploying reviewed code (use `deploy-agent`)
+- Fixing the issues found (use `code-agent` or `refactor-agent`)
+- Running automated tests only (use `test-agent`)
+- Review is for learning, not actionable feedback
+- Code is trivially simple (single line or obvious fix)
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

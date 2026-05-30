@@ -175,6 +175,16 @@ run app.service.send com.target.app com.target.app.MessengerService \
 | **Content Provider** | Component for structured data sharing between apps; SQL injection target if query parameters are not sanitized |
 | **Broadcast Receiver** | Component receiving system or app broadcasts; exported receivers can be triggered by any app |
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

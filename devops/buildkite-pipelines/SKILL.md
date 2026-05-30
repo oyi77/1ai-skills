@@ -24,6 +24,16 @@ Buildkite is a CI/CD platform where pipelines are defined in YAML and executed b
 - Need hybrid cloud CI (agents anywhere)
 - Complex pipelines with manual gates
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The buildkite-pipelines workflow follows a standard pipeline pattern.

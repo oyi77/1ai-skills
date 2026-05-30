@@ -24,6 +24,16 @@ Drizzle ORM is a lightweight TypeScript ORM that feels like writing SQL. It prov
 - Want SQL-like syntax instead of Active Record patterns
 - Working with edge databases (D1, Turso, Neon)
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The drizzle-orm workflow follows a standard pipeline pattern.

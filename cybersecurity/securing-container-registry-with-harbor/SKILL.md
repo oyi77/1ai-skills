@@ -236,6 +236,16 @@ curl -k "https://harbor.example.com/api/v2.0/audit-logs?page=1&page_size=10" \
   -H "Authorization: Basic $(echo -n admin:Harbor12345 | base64)"
 ```
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -26,6 +26,16 @@ styled-components enables CSS-in-JS with tagged template literals. Components ar
 - Server-side rendered React apps (Next.js)
 - Theming with runtime color/mode switching
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The styled-components workflow follows a standard pipeline pattern.

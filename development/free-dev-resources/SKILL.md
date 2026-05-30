@@ -28,6 +28,16 @@ Comprehensive reference of free-tier SaaS, PaaS, and IaaS services for developer
 - Setting up dev/staging environments without paid plans
 - Building a developer toolkit from scratch
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Process / Steps
 
 1. **Identify requirements** -- What category of service is needed (compute, database, auth, etc.)?

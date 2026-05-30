@@ -538,6 +538,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not testing the custom SIT against a representative sample corpus before deploying the DLP policy, missing edge cases in the regex pattern
 - Scoping the policy too broadly (entire organization) instead of targeting the research department, causing alerts on legitimate references to project codes in executive summaries
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

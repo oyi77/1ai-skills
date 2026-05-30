@@ -70,6 +70,16 @@ Correlate DNS anomalies with threat intelligence feeds, check resolution targets
 ## Expected Output
 
 JSON report listing DNS anomalies with record type, historical changes, risk severity, and remediation recommendations for each finding.
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

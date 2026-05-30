@@ -25,6 +25,15 @@ Integrate payment gateways for SaaS billing — Stripe, Paddle, Lemon Squeezy. H
 - Handling international tax (VAT, GST)
 - Recovering failed payments (dunning)
 
+## When NOT to Use
+
+- Task is about payment processing, not gateway integration
+- You need to handle disputes or chargebacks (use dispute tools)
+- Task requires PCI DSS compliance (use compliance tools)
+- You're building a payment processor, not integrating one
+- Task is about accounting, not payment collection
+- You need to handle crypto payments (use crypto tools)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

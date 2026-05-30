@@ -121,6 +121,16 @@ const research = await exa.search({
 const signals = await analyzeWithNews(data, research);
 ```
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - **Data quality issues detected**: Missing bars, sudden price jumps, or inconsistent volumes may indicate data provider issues; verify source and interval settings

@@ -308,6 +308,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Simply changing the password does not invalidate existing access keys or active sessions. All access keys must be rotated and temporary credentials revoked by adding a deny-all policy for tokens issued before the compromise was detected. Attackers may create new IAM users or roles for persistence before the initial credential is revoked.
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -63,6 +63,16 @@ DeFi protocol patterns for AMMs, lending, staking, and yield farming. Covers Uni
 - Yield aggregation strategies
 - Staking/reward systems
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Pseudo Code
 
 Reference implementations for AMM swaps, flash loans, and liquidity pool management.

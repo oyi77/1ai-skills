@@ -237,6 +237,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Azure AD Premium P2 is required for risky sign-in detections and PIM. If the acquired tenant uses a lower license tier, many identity protection features will be unavailable. Guest users from partner tenants may have implicit access through dynamic groups that are not visible in standard role assignment queries.
 
+## When NOT to Use
+
+- You need to perform security testing (use performing-* skills)
+- Task is about analyzing audit findings (use analyzing-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about building audit tools (use building-* skills)
+- You don't have access to audit scope
+- Task requires legal/compliance expertise (consult professionals)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

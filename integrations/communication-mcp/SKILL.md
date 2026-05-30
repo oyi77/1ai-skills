@@ -5,6 +5,16 @@ description: MCP servers for team communication. Connect AI agents to Slack, Dis
 
 # Communication MCP Skill
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Overview
 
 MCP servers enabling AI agents to interact with Slack, Discord, and Telegram. Send notifications, manage messages, and automate communication workflows across platforms.

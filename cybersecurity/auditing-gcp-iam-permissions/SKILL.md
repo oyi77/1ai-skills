@@ -287,6 +287,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Primitive roles include permissions across all GCP services, so replacing them requires multiple predefined roles. The Recommender may suggest overly restrictive roles if the observation period does not capture all use cases. Custom roles can fill gaps where no predefined role matches the exact permission set needed.
 
+## When NOT to Use
+
+- You need to perform security testing (use performing-* skills)
+- Task is about analyzing audit findings (use analyzing-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about building audit tools (use building-* skills)
+- You don't have access to audit scope
+- Task requires legal/compliance expertise (consult professionals)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

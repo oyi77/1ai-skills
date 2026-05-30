@@ -291,6 +291,16 @@ Map the application, test authentication and authorization, check for injection 
 - Not resetting the krbtgt password twice, allowing attackers to maintain Golden Ticket access
 - Restoring systems in the wrong order (application servers before their database dependencies)
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

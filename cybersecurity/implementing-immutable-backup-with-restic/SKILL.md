@@ -93,6 +93,16 @@ Periodically restore random files from backup snapshots to a temporary location 
 - **AWS S3 Object Lock**: WORM storage for tamper-proof backup retention
 - **MinIO**: Self-hosted S3-compatible storage with Object Lock support
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

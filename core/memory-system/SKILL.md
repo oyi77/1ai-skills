@@ -10,6 +10,16 @@ Use this skill when any agent needs to store, retrieve, or reason over informati
 
 ---
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## What It Does
 
 4 memory layers with a single unified API:

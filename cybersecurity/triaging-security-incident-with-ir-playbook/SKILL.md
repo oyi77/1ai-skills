@@ -226,6 +226,16 @@ curl -X PATCH "https://thehive.local/api/v1/case/$CASE_ID" \
 4. **Phishing Email Reported**: User reports suspicious email. Extract IOCs, check if others received it, assign P2 if credentials were entered.
 5. **Privilege Escalation**: User gained admin rights unexpectedly. Verify if authorized change, check for exploitation, assign P1 if unauthorized.
 
+## When NOT to Use
+
+- You need to investigate the incident deeply (use IR skills)
+- Task is about analyzing triaged data (use analyzing-* skills)
+- You need to implement triage tools (use implementing-* skills)
+- Task is about building triage infrastructure (use building-* skills)
+- You don't have access to incident data
+- Task requires escalation (follow escalation process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

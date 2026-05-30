@@ -324,6 +324,16 @@ A REST API primarily uses JSON but the XML parser is also enabled. Switching `Co
 ### Scenario 4: DOCX Processing XXE
 A resume upload feature processes DOCX files. Injecting XXE into the `[Content_Types].xml` file within the DOCX archive triggers file read when the document is parsed server-side.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

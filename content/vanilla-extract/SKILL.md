@@ -25,6 +25,16 @@ Vanilla Extract is a zero-runtime CSS-in-JS library. Styles are written in TypeS
 - Building design systems with variant-heavy components
 - Migrating from styled-components to zero-runtime
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The vanilla-extract workflow follows a standard pipeline pattern.

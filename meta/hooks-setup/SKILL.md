@@ -5,6 +5,16 @@ description: Use when user says "install hooks", "setup hooks", "hooks setup", "
 
 # Hooks Setup — AI Agent Installation Guide
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Overview
 
 Installs and configures 1ai-skills auto-evolve hooks. Tracks skill usage, captures feedback, auto-commits improvements, evolves underperforming skills.

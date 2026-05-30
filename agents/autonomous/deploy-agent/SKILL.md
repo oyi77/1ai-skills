@@ -23,6 +23,17 @@ Autonomous deployment agent that ships code to production through a controlled, 
 - Managing feature flags for staged rollouts
 - Post-incident recovery and hotfix deployment
 
+## When NOT to Use
+
+- Writing or implementing code (use `code-agent`)
+- Reviewing code quality (use `review-agent`)
+- Planning deployment strategy (use `planning-agent`)
+- Researching deployment tools (use `research-agent`)
+- Local development setup only (use Docker/dev tools)
+- Deploying to personal/sandbox environment (just push)
+- Task requires infrastructure changes without code deployment
+- Rollback requires code fix first (use `code-agent` then deploy)
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

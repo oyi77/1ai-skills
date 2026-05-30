@@ -25,6 +25,16 @@ Task schedulers handle recurring jobs, delayed execution, and distributed work s
 - Scheduling at OS level without application dependency
 - Need job persistence, retries, and monitoring
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The task-scheduler workflow follows a standard pipeline pattern.

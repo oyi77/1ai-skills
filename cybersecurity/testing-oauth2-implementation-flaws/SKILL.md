@@ -369,6 +369,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not testing the state parameter validation on the client side (server may include it but client may not check it)
 - Assuming PKCE is enforced because the authorization server supports it (client must also send it)
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

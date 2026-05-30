@@ -37,6 +37,15 @@ Automate legal and compliance tasks that solo entrepreneurs spend disproportiona
 - Annual entity filings and compliance renewals
 - Adding new data collection that requires privacy review
 
+## When NOT to Use
+
+- You need legal advice (consult a lawyer, not an AI)
+- Task requires jurisdiction-specific legal expertise
+- Contract dispute or litigation (use legal counsel)
+- You're unsure about legal requirements (get professional review)
+- Task is about legal research, not document creation
+- Compliance is for a regulated industry (finance, healthcare) with specific requirements
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

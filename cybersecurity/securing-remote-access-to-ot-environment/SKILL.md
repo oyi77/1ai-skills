@@ -369,6 +369,16 @@ if __name__ == "__main__":
 - **Claroty Secure Remote Access (SRA)**: OT-specific remote access solution with protocol-aware session controls
 - **Duo Security**: MFA provider supporting push notifications, hardware tokens, and biometrics for OT access verification
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

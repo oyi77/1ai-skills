@@ -1079,6 +1079,16 @@ skills/1ai-skills/sales/talent-crm/
 7. Handle objections with value reframing
 8. Close and hand off to onboarding
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.

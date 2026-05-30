@@ -237,6 +237,16 @@ Refer to the skill overview for detailed usage instructions.
 6. **Execute tasks** – Use agents with appropriate task categories for domain-specific work
 7. **Monitor and iterate** – Watch agent output, adjust configuration as needed
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **Trying to use without OpenCode** – Oh My OpenCode is a harness on top of OpenCode, not a standalone tool

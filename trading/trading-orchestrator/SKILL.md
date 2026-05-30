@@ -174,6 +174,16 @@ async function handleIncident(error, state) {
 }
 ```
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - **Pipeline state machine enters HALTED state**: Anomaly detected; investigate cause and review log for error details before resuming

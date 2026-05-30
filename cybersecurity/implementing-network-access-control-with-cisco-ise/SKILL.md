@@ -343,6 +343,16 @@ test aaa server radius ISE-PRIMARY username testuser password testpass
 - **High Availability** - Deploy ISE in a Primary/Secondary node pair with PAN failover
 - **Certificate Infrastructure** - Use machine certificates for EAP-TLS for strongest authentication
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

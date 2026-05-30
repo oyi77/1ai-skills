@@ -119,6 +119,16 @@ if (abnormalConditionsDetected) {
 }
 ```
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - **Excessive slippage detected (>2 pips)**: Broker is offering poor execution quality; abort trade and consider switching brokers or waiting for better conditions

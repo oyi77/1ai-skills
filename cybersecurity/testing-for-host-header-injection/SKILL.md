@@ -210,6 +210,16 @@ curl -H "Host: management.internal" http://target.com/
 4. **SSRF to Cloud Metadata** — Use Host header to redirect server-side requests to cloud metadata endpoints
 5. **Routing Bypass** — Bypass access controls by manipulating Host to route requests to unprotected backend instances
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -24,6 +24,16 @@ Responsive design that works across all devices. Covers mobile-first approach, b
 - Mobile traffic is >50% but mobile experience is poor
 - Need component-level responsive behavior
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The responsive-design workflow follows a standard pipeline pattern.

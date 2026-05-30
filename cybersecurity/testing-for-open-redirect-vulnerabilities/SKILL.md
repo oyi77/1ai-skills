@@ -186,6 +186,16 @@ ffuf -w open-redirect-payloads.txt -u "http://target.com/redirect?url=FUZZ" -mr 
 4. **XSS via Redirect** — Chain open redirect with javascript: protocol to achieve cross-site scripting
 5. **Referer Leakage** — Use open redirect to leak sensitive tokens in Referer headers when redirecting to external sites
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -312,6 +312,16 @@ Analyze pre-encryption memory dump for Mimikatz execution evidence, extract all 
 **Scenario 4: Cloud Credential Theft from Endpoint**
 Search endpoint memory for AWS access keys, Azure tokens, and GCP service account keys stored by CLI tools and browsers, identify exposed cloud permissions, immediately rotate discovered credentials, audit cloud audit logs for unauthorized access.
 
+## When NOT to Use
+
+- You need to analyze extracted data (use analyzing-* skills)
+- Task is about detecting extraction (use detecting-* skills)
+- You need to implement extraction tools (use implementing-* skills)
+- Task is about building extraction infrastructure (use building-* skills)
+- You don't have access to forensic images
+- Task requires chain of custody (follow forensic process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

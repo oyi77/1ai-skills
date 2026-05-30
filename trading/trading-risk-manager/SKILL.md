@@ -135,6 +135,16 @@ const dailyRiskReport = {
 await notion.createPage("Risk Report", dailyRiskReport);
 ```
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - **Position size exceeds risk parameters**: Risk manager failed or parameters incorrect; reject trade and investigate why parameters allowed excessive sizing

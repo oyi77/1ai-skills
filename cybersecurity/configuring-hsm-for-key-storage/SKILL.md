@@ -107,6 +107,16 @@ Application --> PKCS#11 API --> HSM Provider --> Hardware HSM
 - [ ] Signing/verification uses HSM-resident keys
 - [ ] Keys cannot be exported (non-extractable)
 - [ ] Key listing shows all HSM-stored objects
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

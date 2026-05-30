@@ -91,6 +91,16 @@ SecurityEvent
 4. **COM Handler Abuse**: Task uses COM handler rather than direct executable path, making action inspection more complex.
 5. **Lateral Movement via Tasks**: Remote scheduled task creation using `schtasks /create /s REMOTE_HOST` for execution on other systems.
 
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

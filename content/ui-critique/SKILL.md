@@ -24,6 +24,16 @@ Structured framework for reviewing UI designs. Evaluates visual hierarchy, consi
 - User complaints about usability or confusion
 - Pre-launch design review checklist
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The ui-critique workflow follows a standard pipeline pattern.

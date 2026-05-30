@@ -274,6 +274,16 @@ index=dns src_ip="192.168.1.105" query="*.evil-tunnel.com" earliest=-24h
 - **DNS-over-HTTPS Bypass**: Employee using DoH to bypass corporate DNS filtering and monitoring
 - **Slow Drip Exfiltration**: Low-volume DNS tunneling staying below threshold alerts (requires baseline comparison)
 
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

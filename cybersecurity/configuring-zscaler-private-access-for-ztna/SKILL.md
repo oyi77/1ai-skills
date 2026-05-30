@@ -282,6 +282,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: App Connector DNS must resolve all internal FQDNs used in application segments. Wildcard domain segments can cause performance issues if too broad. Browser Access does not support all web application frameworks (WebSocket-heavy apps may require Client Connector). CrowdStrike ZTA integration requires Falcon sensor deployment on all endpoints before enforcing posture policies.
 
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

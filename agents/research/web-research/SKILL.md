@@ -23,6 +23,17 @@ Autonomous web research agent that gathers information from online sources, vali
 - Fact-checking claims about performance, features, or pricing
 - Finding migration guides or upgrade paths
 
+## When NOT to Use
+
+- Researching internal codebase (use `code-research`)
+- Analyzing market conditions (use `market-research-agent`)
+- Implementing solutions (use `code-agent`)
+- Reviewing code (use `review-agent`)
+- Information is in official documentation (just read it)
+- Task requires real-time data (use monitoring tools)
+- Research would take longer than trying a solution
+- You need expert opinion, not web search results
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

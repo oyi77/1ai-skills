@@ -328,6 +328,16 @@ The `/api/v2/users` endpoint has proper rate limiting, but `/api/v1/users` (stil
 ### Scenario 4: GraphQL Introspection Data Leak
 GraphQL introspection is enabled in production, exposing the entire schema including internal queries, mutations, and sensitive field names that are not used in the frontend.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

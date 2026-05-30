@@ -198,6 +198,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Failing to check for lateral spread to other recipients of the same phishing email
 - Remediating the endpoint before capturing volatile memory evidence
 
+## When NOT to Use
+
+- You need to investigate the incident deeply (use IR skills)
+- Task is about analyzing triaged data (use analyzing-* skills)
+- You need to implement triage tools (use implementing-* skills)
+- Task is about building triage infrastructure (use building-* skills)
+- You don't have access to incident data
+- Task requires escalation (follow escalation process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

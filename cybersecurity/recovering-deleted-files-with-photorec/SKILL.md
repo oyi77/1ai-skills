@@ -227,6 +227,16 @@ Recover deleted video files (AVI, MP4, MOV) from the memory card image, use targ
 **Scenario 4: Corrupted File System on Evidence Drive**
 When file system metadata is destroyed, PhotoRec bypasses the file system entirely and carves from raw sectors, recover maximum possible data, accept that file names and directory structure will be lost, rename files based on content during review.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

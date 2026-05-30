@@ -423,6 +423,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Grace periods must be long enough for IT to remediate but short enough to limit risk exposure. CrowdStrike ZTA scores can fluctuate with sensor updates; avoid setting thresholds too aggressively initially. BYOD devices may lack MDM enrollment; provide a separate Browser Access path with reduced functionality for unmanaged devices.
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

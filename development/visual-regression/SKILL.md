@@ -23,6 +23,16 @@ Detect unintended visual changes by comparing screenshots against baselines. Use
 - Cross-browser visual consistency checks
 - Design system component library testing
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The visual-regression workflow follows a standard pipeline pattern.

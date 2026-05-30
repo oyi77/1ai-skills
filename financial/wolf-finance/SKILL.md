@@ -325,6 +325,16 @@ Compliance:            compliance-kyc.md
 - Portfolio construction and risk management across asset classes
 - Institutional-grade reporting for investment committees
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Recommendation with only T3 sources — BLOCKED

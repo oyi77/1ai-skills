@@ -25,6 +25,15 @@ Make.com (formerly Integromat) is a visual automation platform with 1500+ app in
 - Managing data synchronization between systems
 - Replacing manual processes with automated scenarios
 
+## When NOT to Use
+
+- Task requires custom code (use Pipedream or n8n)
+- You need complex data transformations (use ETL tools)
+- Task is about data storage, not workflow automation
+- You don't have access to the SaaS apps being connected
+- Task requires real-time processing (use streaming tools)
+- You need to build a custom API (use development tools)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

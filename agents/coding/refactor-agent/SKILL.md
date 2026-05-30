@@ -24,6 +24,18 @@ Autonomous refactoring agent that restructures code to improve readability, main
 - Preparing code for new features (make the change easy first)
 - Improving testability (dependency injection, pure functions)
 
+## When NOT to Use
+
+- Adding new features or functionality (use `code-agent`)
+- Writing tests for existing code (use `test-agent`)
+- Fixing bugs (use `code-agent` with bug description)
+- Reviewing code quality (use `review-agent`)
+- Optimizing performance (use `perf-agent`)
+- Linting or formatting code (use `linter-agent`)
+- Refactoring changes behavior (that's a rewrite, use `code-agent`)
+- Code is already clean and well-structured
+- No tests exist to verify refactoring safety
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

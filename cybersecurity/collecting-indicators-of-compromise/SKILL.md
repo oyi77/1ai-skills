@@ -238,6 +238,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not defanging URLs and domains in human-readable reports
 - Sharing IP addresses of legitimate CDNs or cloud providers as malicious IOCs
 
+## When NOT to Use
+
+- You need to analyze collected intelligence (use analyzing-* skills)
+- Task is about detecting collection activity (use detecting-* skills)
+- You need to implement collection tools (use implementing-* skills)
+- Task is about building collection infrastructure (use building-* skills)
+- You don't have access to intelligence sources
+- Task requires classified access (follow clearance process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

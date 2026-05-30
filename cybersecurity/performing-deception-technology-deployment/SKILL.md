@@ -280,6 +280,17 @@ Regularly update decoys to maintain believability:
 - **Ransomware Early Warning**: Ransomware encrypts canary files on honeypot shares — early detection before production systems affected
 - **Insider Threat Signal**: Employee accesses honeypot "salary database" — indicates unauthorized data exploration
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

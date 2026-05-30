@@ -5,6 +5,16 @@ domain: productivity
 tags: [career, job-search, cv, resume, interview, ats, hiring, job-tracker]
 ---
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Overview
 
 Career Ops: a local AI-powered job search system for AI coding CLIs. 15 commands covering the full job search pipeline from evaluation through offer negotiation. Generates ATS-optimized CVs, scans job portals, tracks applications, and prepares interview responses.

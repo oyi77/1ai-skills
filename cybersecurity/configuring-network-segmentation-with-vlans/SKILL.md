@@ -393,6 +393,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not restricting trunk allowed VLANs, carrying all VLANs including CDE to non-essential switches
 - Creating ACLs that allow "any" source to reach CDE servers instead of specific POS terminal IPs
 
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

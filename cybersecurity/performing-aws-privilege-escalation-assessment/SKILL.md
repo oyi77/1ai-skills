@@ -256,6 +256,17 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: AWS limits managed policies to 5 versions. If all 5 exist, you must delete a version before creating a new one. Always record the original default version to restore it during cleanup. Permission boundaries prevent this escalation if properly configured, so verify boundary policies before declaring a finding.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

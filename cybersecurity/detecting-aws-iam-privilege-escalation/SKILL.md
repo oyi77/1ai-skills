@@ -57,6 +57,16 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 - List of dangerous permission combinations per principal
 - Wildcard resource policy audit results
 - Remediation recommendations for each finding
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

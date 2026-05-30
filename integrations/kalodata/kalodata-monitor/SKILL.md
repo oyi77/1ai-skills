@@ -29,6 +29,16 @@ Enables scheduled research automation with intelligent new product detection and
 4. **Review alerts** – Check Slack for notifications and new product findings
 5. **Take action** – Investigate new products and make business decisions
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Expecting real-time monitoring (this skill runs on scheduled intervals, not streaming)

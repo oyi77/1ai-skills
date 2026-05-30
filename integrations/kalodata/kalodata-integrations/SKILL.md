@@ -60,6 +60,16 @@ with open("trending.csv", "w", newline="") as f:
 - Filter by category and date range for relevant results
 - Schedule regular data pulls for trend analysis
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Hardcoding API keys in source code (always use config files or environment variables)

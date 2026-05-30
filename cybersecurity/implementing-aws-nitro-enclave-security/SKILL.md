@@ -430,6 +430,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not implementing vsock message framing, causing large records to be truncated at the 64KB socket buffer boundary
 - Forgetting that PCR0 changes with every code rebuild, requiring a KMS policy update for each deployment; use PCR8 (signing certificate) for production to decouple builds from policy updates
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

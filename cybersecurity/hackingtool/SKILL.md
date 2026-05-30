@@ -114,6 +114,16 @@ MobSF, Frida, Objection
 ### 20. Other Tools (24 tools)
 Sherlock, SocialMapper, Hash Buster, Gospider, Photon, Holehe
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 This section covers pseudo code for hackingtool.

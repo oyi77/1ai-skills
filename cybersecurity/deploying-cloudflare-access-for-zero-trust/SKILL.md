@@ -371,6 +371,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Cloudflare root certificate must be installed on all devices for TLS inspection to work; some applications may break with TLS interception. Tunnel failover requires running multiple `cloudflared` instances or using Cloudflare's replicas feature. Access policies should always include a default deny rule. WebSocket applications may require specific tunnel configuration.
 
+## When NOT to Use
+
+- You need to test the deployment (use performing-* skills)
+- Task is about configuring deployed tools (use configuring-* skills)
+- You need to analyze deployment output (use analyzing-* skills)
+- Task is about building deployment automation (use building-* skills)
+- You don't have deployment access
+- Task requires change management (follow change process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

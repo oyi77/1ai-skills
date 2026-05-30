@@ -311,6 +311,16 @@ The CORS policy allows `*.target.example.com`. An attacker finds XSS on `forum.t
 ### Scenario 4: Regex Bypass on Origin Validation
 The server uses regex `target\.example\.com` to validate origins, but fails to anchor the regex. `attackertarget.example.com` matches and is allowed access.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

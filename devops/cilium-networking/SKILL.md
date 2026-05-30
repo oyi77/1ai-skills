@@ -25,6 +25,16 @@ Cilium provides eBPF-based networking, security, and observability for Kubernete
 - Deep network observability
 - Replacing kube-proxy for performance
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The cilium-networking workflow follows a standard pipeline pattern.

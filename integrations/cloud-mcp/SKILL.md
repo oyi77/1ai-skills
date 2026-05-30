@@ -5,6 +5,16 @@ description: MCP servers for cloud infrastructure. Connect AI agents to AWS, GCP
 
 # Cloud MCP Skill
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Overview
 
 MCP servers enabling AI agents to interact with major cloud providers (AWS, GCP, Azure) for deployment, infrastructure management, and cloud operations.

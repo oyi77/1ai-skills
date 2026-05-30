@@ -149,6 +149,16 @@ collection.add_objects(stix2.Bundle(new_indicator))
 | **Marking Definition** | STIX object encoding TLP or statement restrictions on intelligence sharing |
 | **added_after** | TAXII 2.1 filter parameter (RFC 3339 timestamp) for incremental polling of new objects |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

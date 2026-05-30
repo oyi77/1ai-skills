@@ -182,6 +182,16 @@ curl -k -X POST "https://localhost:8834/scans/<SCAN_ID>/export" \
 - prioritizing-vulnerabilities-with-cvss-scoring
 - implementing-continuous-vulnerability-monitoring
 - performing-network-vulnerability-assessment
+## When NOT to Use
+
+- You need to perform manual testing (use performing-* skills)
+- Task is about analyzing scan results (use analyzing-* skills)
+- You need to implement scanning tools (use implementing-* skills)
+- Task is about building scanning infrastructure (use building-* skills)
+- You don't have network access to targets
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

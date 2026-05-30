@@ -162,6 +162,16 @@ Map the application, test authentication and authorization, check for injection 
 - Forgetting to test for AD CS vulnerabilities which often provide the fastest path to Domain Admin
 - Not checking for stale computer accounts that may still have cached credentials or active sessions
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

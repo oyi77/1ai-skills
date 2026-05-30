@@ -25,6 +25,16 @@ Vault secures, stores, and controls access to tokens, passwords, certificates, A
 - Compliance requirements for secret rotation
 - Multi-cloud secret access
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The vault-secrets workflow follows a standard pipeline pattern.

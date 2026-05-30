@@ -260,6 +260,16 @@ kubectl get pods --all-namespaces -o json | \
 6. **Monitor with Falco** for runtime privilege escalation attempts
 7. **Audit RBAC changes** with Kubernetes audit logging
 8. **Use seccomp profiles** to restrict syscalls
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -522,6 +522,16 @@ foreach ($binary in $lolbins_to_restrict) {
 - Check that AppLocker or WDAC policies do not break legitimate administrative workflows before deploying to production
 - Validate false positive rates by running detection rules against 7 days of baseline telemetry from a clean environment
 - Cross-reference detections against the LOLBAS project database at https://lolbas-project.github.io/ for completeness
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

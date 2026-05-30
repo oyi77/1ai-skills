@@ -288,6 +288,17 @@ Process disk images from all affected systems into a single Plaso storage file, 
 **Scenario 4: Insider Threat After-Hours Activity**
 Filter timeline to non-business hours only, identify file access patterns outside normal working times, correlate with authentication events (badge access, VPN logon), search for data access to sensitive directories during these periods, build evidence package for HR/legal.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

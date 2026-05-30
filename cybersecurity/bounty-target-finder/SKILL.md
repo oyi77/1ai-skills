@@ -101,6 +101,16 @@ These consistently pay well with moderate skill:
 7. **Web3 reentrancy** — Smart contract bugs = $10,000-$100,000+
 8. **GraphQL introspection** — Information disclosure → chain to IDOR = $500-$3000
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Testing programs you haven't verified are active

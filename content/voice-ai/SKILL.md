@@ -24,6 +24,16 @@ Voice AI covers TTS, STT, voice cloning, and real-time conversational agents. In
 - Transcribing meetings/interviews
 - Audiobook generation
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The voice-ai workflow follows a standard pipeline pattern.

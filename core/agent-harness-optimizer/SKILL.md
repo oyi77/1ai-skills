@@ -24,6 +24,16 @@ Agent harness optimization is the practice of tuning the runtime environment tha
 - Background processes are eating into the main context window
 - You want to set up continuous learning from session patterns
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Process / Steps
 1. Gather requirements and constraints from the user
 2. Validate prerequisites (tools, permissions, data)

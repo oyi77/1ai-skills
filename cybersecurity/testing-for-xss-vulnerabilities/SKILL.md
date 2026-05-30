@@ -168,6 +168,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Ignoring DOM-based XSS in single-page applications where the server-side code is secure but client-side rendering is vulnerable
 - Not checking for XSS in HTTP headers (Referer, User-Agent) that may be logged and rendered in admin dashboards
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

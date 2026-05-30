@@ -355,6 +355,16 @@ This section covers phase 6 — reporting and recommendations for conducting soc
 | King Phisher | Phishing campaign tool |
 | Modlishka | Reverse proxy for credential interception |
 
+## When NOT to Use
+
+- You don't have authorization for the assessment
+- Task is about implementing findings (use implementing-* skills)
+- You need to analyze results (use analyzing-* skills)
+- Task is about building assessment tools (use building-* skills)
+- Target is out of scope
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

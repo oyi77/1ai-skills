@@ -27,6 +27,16 @@ PocketBase is an open-source backend consisting of an embedded SQLite database w
 - Self-hosted backend-as-a-service alternative
 - Want to avoid complex infrastructure
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The pocketbase-patterns workflow follows a standard pipeline pattern.

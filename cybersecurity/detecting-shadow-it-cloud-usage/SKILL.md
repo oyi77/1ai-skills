@@ -57,6 +57,16 @@ Shadow IT refers to unauthorized SaaS applications and cloud services used witho
 
 - JSON report listing discovered cloud services with traffic volumes, user counts, risk scores, and approval status
 - Top unauthorized services ranked by data exfiltration risk
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

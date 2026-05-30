@@ -280,6 +280,16 @@ Router: [aggregates all results]
 4. Subagent performs work in background
 5. Router presents results when complete
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **❌ All tasks routed to fast model**: Complexity detection not working - check task descriptions

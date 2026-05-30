@@ -186,6 +186,16 @@ SEO Auditor provides comprehensive website optimization capabilities including t
 ./script.sh --target "Client Website" --quick
 ```
 
+## When NOT to Use
+
+- Task is about sales, not marketing (use sales skills)
+- Task is about product development (use product skills)
+- You need to analyze marketing data (use analytics skills)
+- Task is about customer support (use support skills)
+- You don't have marketing assets
+- Task requires legal review (consult legal)
+
+
 ## Red Flags
 
 - **❌ API quota exceeded**: Google Search Console or PageSpeed API limits hit - implement rate limiting

@@ -385,6 +385,16 @@ generate_dossier("APT29", {
 - Dossier includes attribution assessment with confidence levels
 - Profile is actionable for detection engineering and threat hunting
 
+## When NOT to Use
+
+- You need to test what you built (use performing-* skills)
+- Task is about configuring existing systems (use configuring-* skills)
+- You need to analyze the output (use analyzing-* skills)
+- Task is about implementing vendor solutions (use implementing-* skills)
+- You don't have infrastructure access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

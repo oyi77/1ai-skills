@@ -131,6 +131,16 @@ tags:
 3. **FIN8 WMI Timer**: Interval-based __IntervalTimerEvent triggering encoded PowerShell downloads every 30 minutes.
 4. **MOF-Based Installation**: Adversary drops a .mof file and compiles it with `mofcomp.exe` to silently create persistent subscriptions.
 
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

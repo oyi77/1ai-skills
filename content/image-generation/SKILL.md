@@ -26,6 +26,16 @@ Generate images using AI models. Covers prompt crafting, API integration, inpain
 - Building content pipelines that need automated image creation
 - Creating variations of existing designs for testing
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The image-generation workflow follows a standard pipeline pattern.
