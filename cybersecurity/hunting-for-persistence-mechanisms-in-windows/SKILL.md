@@ -93,6 +93,16 @@ nist_csf:
 4. **COM Object Hijack**: Legitimate COM CLSID InprocServer32 path replaced with malicious DLL.
 5. **IFEO Debugger Injection**: Image File Execution Options key set with debugger pointing to implant for common utilities.
 
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -558,6 +558,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not configuring proper revocation statements leaves orphaned database users after lease expiration
 - Running Vault without HA causes single point of failure for all application authentication
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

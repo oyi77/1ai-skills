@@ -275,6 +275,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Setting detection thresholds too high to avoid false positives, missing low-and-slow reconnaissance
 - Ignoring encrypted traffic analysis (JA3/JA4 fingerprinting) that can identify Cobalt Strike even in TLS tunnels
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

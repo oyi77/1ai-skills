@@ -24,6 +24,17 @@ Autonomous performance optimization agent that measures before optimizing, targe
 - Optimizing build times or CI pipeline duration
 - Investigating high CPU usage
 
+## When NOT to Use
+
+- Fixing functional bugs (use `code-agent`)
+- Writing performance tests (use `test-agent`)
+- Refactoring for code quality (use `refactor-agent`)
+- Reviewing code (use `review-agent`)
+- Linting or formatting (use `linter-agent`)
+- Performance issue is in infrastructure, not code (use DevOps)
+- No measurable performance problem exists
+- Optimization would make code unreadable without significant gain
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

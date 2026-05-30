@@ -1,12 +1,12 @@
 {
-  "total_skills": 1284,
+  "total_skills": 1286,
   "category_count": 18,
   "categories": {
     "agents": 17,
     "automation": 30,
     "content": 62,
     "core": 48,
-    "cybersecurity": 783,
+    "cybersecurity": 785,
     "data": 10,
     "development": 83,
     "devops": 38,

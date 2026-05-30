@@ -234,6 +234,17 @@ memory search "api_key" --string
 | **Dalvik/ART Runtime** | Android runtime environments; Frida hooks at the ART level for Java/Kotlin methods |
 | **Heap Inspection** | Examining live objects in the application's memory heap to extract runtime data |
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -208,6 +208,16 @@ if ($vol.ProtectionStatus -eq "On" -and $vol.VolumeStatus -eq "FullyEncrypted") 
 | **Used Space Only Encryption** | Encrypts only sectors containing data; faster initial encryption but may leave remnant data in free space |
 | **Full Disk Encryption** | Encrypts entire volume including free space; slower but more secure for drives that previously contained data |
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

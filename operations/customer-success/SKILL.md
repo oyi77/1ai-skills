@@ -36,6 +36,15 @@ Automate the entire customer lifecycle from onboarding to retention. Monitor cus
 - Need to identify at-risk customers before they leave
 - Want to scale customer success without hiring
 
+## When NOT to Use
+
+- Product has no recurring revenue model
+- Customer base is too small (<10 customers) for automation
+- Issue is product quality, not customer success process
+- You need sales automation (use sales tools)
+- Task is about customer support tickets only (use support tools)
+- You don't have customer data to work with
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

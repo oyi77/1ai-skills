@@ -69,6 +69,16 @@ auth_failures = df[df["status_code"] == 401]
 scanner_ips = auth_failures.groupby("source_ip").size()
 scanners = scanner_ips[scanner_ips > 100]
 ```
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -76,6 +76,16 @@ Forward RASP alerts to the SIEM for correlation with WAF, IDS, and authenticatio
 ## Expected Output
 
 JSON report containing RASP policy audit results, detected attack attempts with stack traces, blocked requests summary, and coverage assessment against OWASP Top 10.
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

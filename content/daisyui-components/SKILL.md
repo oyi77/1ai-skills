@@ -25,6 +25,16 @@ daisyUI adds component classes to Tailwind CSS — buttons, cards, modals, dropd
 - Building prototypes or MVPs quickly
 - Want consistent design without a full design system
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The daisyui-components workflow follows a standard pipeline pattern.

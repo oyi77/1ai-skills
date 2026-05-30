@@ -255,6 +255,16 @@ reg query "HKLM\SYSTEM\CrowdStrike\{9b03c1d9-3138-44ed-9fae-d9f4c034b88d}\{16e04
 | **RTR (Real-Time Response)** | Remote shell capability for incident responders to interact with endpoints through Falcon |
 | **IOA (Indicators of Attack)** | Behavioral detections based on adversary techniques rather than static signatures |
 
+## When NOT to Use
+
+- You need to test the deployment (use performing-* skills)
+- Task is about configuring deployed tools (use configuring-* skills)
+- You need to analyze deployment output (use analyzing-* skills)
+- Task is about building deployment automation (use building-* skills)
+- You don't have deployment access
+- Task requires change management (follow change process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

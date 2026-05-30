@@ -230,6 +230,16 @@ Use dd piped through netcat or ssh for remote acquisition: `ssh root@remote "dd 
 **Scenario 4: Acquiring from a Failing Drive**
 Use `ddrescue` first to recover readable sectors, then use dd with `conv=noerror,sync` to fill gaps with zeros, document which sectors were unreadable in the error log.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

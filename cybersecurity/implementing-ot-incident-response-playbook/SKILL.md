@@ -365,6 +365,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Do not shut down PLCs to "protect" them from ransomware -- PLCs run firmware, not Windows, and are typically unaffected by ransomware. Shutting down PLCs disrupts the physical process. Never reconnect IT-OT conduit until the IT side is fully remediated.
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -25,6 +25,16 @@ Nomad is a flexible workload orchestrator for deploying containers, VMs, and sta
 - Batch job scheduling
 - Integration with HashiCorp stack (Consul, Vault)
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The nomad-scheduler workflow follows a standard pipeline pattern.

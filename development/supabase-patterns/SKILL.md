@@ -23,6 +23,16 @@ Supabase-specific patterns for building secure, real-time applications. Covers R
 - Serverless backend with Edge Functions
 - File storage and CDN for user uploads
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The supabase-patterns workflow follows a standard pipeline pattern.

@@ -114,6 +114,16 @@ Track metrics quarterly: PIR coverage rate, IOC true positive rate, time-to-diss
 | **Tactical Intelligence** | Specific IOCs and TTPs for immediate detection and blocking; time horizon hours to days |
 | **FIRST CTI-SIG** | Forum of Incident Response and Security Teams — CTI Special Interest Group maturity model |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

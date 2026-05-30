@@ -317,6 +317,16 @@ Use LiME or WinPMEM to capture volatile RAM while the system is running, preserv
 
 **Pitfalls**: CloudTrail events can take up to 15 minutes to appear in S3 and CloudWatch Logs. For real-time visibility during active incidents, use CloudTrail Lake or CloudWatch Logs Insights rather than Athena queries against S3. Cross-region attacks require querying multiple region partitions in Athena.
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

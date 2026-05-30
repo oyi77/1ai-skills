@@ -25,6 +25,16 @@ AI agents present a unique attack surface: they read untrusted input, execute co
 - Before committing agent configuration changes to production
 - Onboarding to a repository with existing agent configurations
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Process / Steps
 1. Gather requirements and constraints from the user
 2. Validate prerequisites (tools, permissions, data)

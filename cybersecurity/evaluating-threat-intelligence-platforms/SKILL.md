@@ -150,6 +150,16 @@ Plan 90-day implementation:
 | **Multi-tenancy** | TIP capability to serve multiple organizational units or customers with isolated data environments |
 | **Deduplication** | Process of identifying and merging duplicate indicators within a TIP to reduce analyst noise |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

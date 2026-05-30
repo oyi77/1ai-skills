@@ -311,6 +311,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: CloudTrail S3 data events can generate massive log volume. Use Athena with partitioned tables rather than CloudWatch Logs Insights for queries spanning more than 24 hours. GuardDuty baseline learning requires 7-14 days, so new accounts may generate false positives for normal access patterns.
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

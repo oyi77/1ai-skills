@@ -25,6 +25,15 @@ Flowise is an open-source visual tool for building LLM workflows. It provides a 
 - Deploying AI chatbots as APIs or website widgets
 - Self-hosting AI infrastructure
 
+## When NOT to Use
+
+- Task requires custom AI model training (use ML tools)
+- You need complex AI agent logic (use LangChain directly)
+- Task is about data processing, not AI app building
+- You don't have Flowise instance running
+- Task requires real-time AI inference (use dedicated AI services)
+- You need to build a custom AI application (use development tools)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

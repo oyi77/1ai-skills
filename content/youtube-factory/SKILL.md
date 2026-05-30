@@ -188,6 +188,16 @@ Built for OpenClaw | 100% Free Tools | [Support the Creator](https://buymeacoffe
 6. Schedule and distribute across channels
 7. Measure performance and iterate
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Red Flags
 
 - **AI-generated content sounds robotic**: Always run through humanizer before publishing

@@ -26,6 +26,16 @@ Generate and edit videos using AI. Covers text-to-video, image-to-video, and AI-
 - Creating short-form video for TikTok, Reels, YouTube Shorts
 - Prototyping video concepts before full production
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The video-generation workflow follows a standard pipeline pattern.

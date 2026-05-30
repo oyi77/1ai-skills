@@ -25,6 +25,16 @@ High-deliverability cold email with personalization at scale.
 - Designing multi-touch sequences
 - A/B testing outreach copy
 
+## When NOT to Use
+
+- Task is about sales, not marketing (use sales skills)
+- Task is about product development (use product skills)
+- You need to analyze marketing data (use analytics skills)
+- Task is about customer support (use support skills)
+- You don't have marketing assets
+- Task requires legal review (consult legal)
+
+
 ## Pseudo Code
 
 The cold-email workflow follows a standard pipeline pattern.

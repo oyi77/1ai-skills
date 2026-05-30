@@ -130,6 +130,16 @@ python sf.py -s evil-domain.com -m sfp_shodan,sfp_virustotal,sfp_passivetotal \
 | **ASN** | Autonomous System Number — block of IP addresses under a single routing policy; useful for clustering threat actor infrastructure |
 | **Co-hosted Domains** | Multiple domains resolving to the same IP, potentially indicating shared attacker infrastructure |
 
+## When NOT to Use
+
+- You need to analyze collected intelligence (use analyzing-* skills)
+- Task is about detecting collection activity (use detecting-* skills)
+- You need to implement collection tools (use implementing-* skills)
+- Task is about building collection infrastructure (use building-* skills)
+- You don't have access to intelligence sources
+- Task requires classified access (follow clearance process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

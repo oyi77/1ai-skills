@@ -317,6 +317,16 @@ index=threat_intel sourcetype="threat_intel_manager"
 - **Feed Quality Audit**: Compare detection match rates across feeds to identify highest-value sources
 - **Incident IOC Sharing**: Package investigation IOCs as STIX bundle and share with ISACs via TAXII
 
+## When NOT to Use
+
+- You need to test what you built (use performing-* skills)
+- Task is about configuring existing systems (use configuring-* skills)
+- You need to analyze the output (use analyzing-* skills)
+- Task is about implementing vendor solutions (use implementing-* skills)
+- You don't have infrastructure access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

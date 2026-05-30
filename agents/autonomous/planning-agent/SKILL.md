@@ -23,6 +23,17 @@ Autonomous planning agent that decomposes complex tasks into executable, ordered
 - When migrating systems, databases, or APIs
 - When the task has ambiguous requirements that need decomposition
 
+## When NOT to Use
+
+- Implementing the plan (use `code-agent` after planning)
+- Reviewing existing code (use `review-agent`)
+- Researching unknowns (use `research-agent`)
+- Deploying the result (use `deploy-agent`)
+- Task is trivially simple (single file, obvious fix)
+- User has already provided a detailed spec (proceed to implementation)
+- Real-time debugging session (use `systematic-debugging`)
+- The "plan" is just a single command to run
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

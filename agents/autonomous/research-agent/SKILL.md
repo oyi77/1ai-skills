@@ -23,6 +23,17 @@ Autonomous research agent that investigates topics deeply, cross-references mult
 - Researching API capabilities, rate limits, and edge cases
 - Investigating security vulnerabilities or incidents
 
+## When NOT to Use
+
+- Implementing code or features (use `code-agent`)
+- Reviewing existing code for quality issues (use `review-agent`)
+- Planning implementation steps (use `planning-agent`)
+- Deploying or releasing code (use `deploy-agent`)
+- The question has a known, documented answer (just look it up)
+- Task requires real-time data (use monitoring tools)
+- Research would take longer than trying a solution directly
+- Requirements are already clear and specific (proceed to implementation)
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

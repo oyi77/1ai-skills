@@ -469,6 +469,16 @@ if __name__ == "__main__":
 - **Nozomi Guardian**: OT monitoring with PLC program change detection capabilities
 - **Siemens SINEMA Remote Connect**: Secure remote access with PLC project version tracking
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

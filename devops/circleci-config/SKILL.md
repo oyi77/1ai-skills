@@ -24,6 +24,16 @@ CircleCI uses YAML-based `.circleci/config.yml` for CI/CD pipelines. Orbs provid
 - Need matrix builds across multiple environments
 - Teams wanting managed CI with minimal setup
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The circleci-config workflow follows a standard pipeline pattern.

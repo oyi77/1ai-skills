@@ -277,6 +277,16 @@ python agent.py --mode monitor --alert-on replay,spoofing,weak-pairing
 - **BLE address randomization**: Many modern BLE devices use random resolvable private addresses (RPA) that rotate periodically, making device tracking and connection following more difficult.
 - **Capture format matters**: Use PCAP with PPI headers (`-c` flag) for crackle compatibility. PcapNG (`-r` flag) is recommended for Wireshark analysis but not supported by crackle.
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

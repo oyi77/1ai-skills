@@ -195,6 +195,16 @@ Weekend: Writeup cleanup, learning, tool development (4h)
 # Responsible disclosure rewards (non-bounty programs)
 ```
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Submitting low-quality reports for reputation farming

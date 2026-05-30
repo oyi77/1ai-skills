@@ -57,6 +57,16 @@ This skill covers advanced Git operations that require deeper understanding of G
 **"Bisecting is too time-consuming"**
 - Bisect is often faster than manual debugging when the bug could be in many commits. The binary search nature makes it efficient.
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Red Flags
 
 | Situation | Risk |

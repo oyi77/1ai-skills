@@ -132,6 +132,16 @@ For each dark web finding:
 | **Credential Stuffing** | Automated use of leaked username/password pairs against authentication systems |
 | **Stealer Logs** | Data packages exfiltrated by infostealer malware containing saved browser credentials, cookies, and session tokens |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

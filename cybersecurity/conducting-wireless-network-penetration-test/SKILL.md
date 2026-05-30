@@ -153,6 +153,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Focusing only on password cracking and missing network segmentation issues that are often the higher-risk finding
 - Testing from a single location and missing rogue APs deployed in other areas of the facility
 
+## When NOT to Use
+
+- You don't have authorization for the assessment
+- Task is about implementing findings (use implementing-* skills)
+- You need to analyze results (use analyzing-* skills)
+- Task is about building assessment tools (use building-* skills)
+- Target is out of scope
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

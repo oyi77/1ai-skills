@@ -191,6 +191,16 @@ Feed results into SIEM for drift detection and dashboard reporting.
 | **Build Kit** | Pre-configured GPO templates provided by CIS that implement benchmark recommendations |
 | **Scoring** | CIS recommendations are either Scored (compliance-measurable) or Not Scored (best-practice guidance) |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

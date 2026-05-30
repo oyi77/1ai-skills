@@ -30,6 +30,16 @@ Cypress is a JavaScript end-to-end testing framework that runs in the browser. I
 - API endpoint testing
 - CI/CD pipeline with automated testing
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The cypress-e2e workflow follows a standard pipeline pattern.

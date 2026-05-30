@@ -63,6 +63,16 @@ Attackers frequently install malicious Windows services for persistence and priv
 
 - JSON report listing all new service installations with risk scores, suspicious indicators, and remediation recommendations
 - Timeline of service installation events with binary path analysis
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

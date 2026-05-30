@@ -25,6 +25,15 @@ Zapier is the most popular no-code automation platform with 7000+ app integratio
 - Needing the largest app integration ecosystem
 - Non-technical users building automations
 
+## When NOT to Use
+
+- Task requires custom code (use Pipedream or n8n)
+- You need complex branching logic (use Make)
+- Task is about data processing, not automation
+- You don't have Zapier account or app connections
+- Task requires real-time processing (use streaming tools)
+- You need to build a custom API (use development tools)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

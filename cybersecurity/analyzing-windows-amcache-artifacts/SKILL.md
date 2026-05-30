@@ -250,6 +250,16 @@ Combine Amcache data with other artifacts for a comprehensive timeline:
 - [ ] LinkDate vs. FileKeyLastWriteTimestamp comparison has been performed to detect timestomping
 - [ ] Amcache findings are correlated with Prefetch and ShimCache for execution confirmation
 - [ ] Final timeline integrates Amcache data with other forensic artifacts
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

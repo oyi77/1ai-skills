@@ -202,6 +202,16 @@ curl "http://target.com/search?query=' or substring(//user[1]/password,1,1)='a' 
 4. **SAML XXE** — Inject XXE payloads into SAML assertions during single sign-on authentication flows
 5. **SVG File Upload XXE** — Upload malicious SVG files containing XXE payloads to trigger server-side XML parsing
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

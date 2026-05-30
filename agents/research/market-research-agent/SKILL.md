@@ -23,6 +23,17 @@ Autonomous market research agent that analyzes markets, competitors, user segmen
 - Due diligence for investment or acquisition decisions
 - Go-to-market planning for new features or products
 
+## When NOT to Use
+
+- Implementing market research tools (use `code-agent`)
+- Researching technical documentation (use `web-research`)
+- Analyzing internal codebase (use `code-research`)
+- Reviewing code quality (use `review-agent`)
+- Market data is already available (use existing reports)
+- Task requires proprietary data you don't have access to
+- Decision is purely technical, not market-driven
+- Research would take longer than acting on current knowledge
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

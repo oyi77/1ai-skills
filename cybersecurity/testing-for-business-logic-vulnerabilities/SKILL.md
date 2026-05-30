@@ -324,6 +324,16 @@ The checkout flow sends the total amount in the POST body. Intercepting and chan
 ### Scenario 4: Password Reset Token Reuse
 The password reset flow generates a one-time token but does not invalidate it after use. The same token can be used repeatedly to reset the password.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -419,6 +419,16 @@ with ApiClient(configuration) as api_client:
 - [ ] Notification workflows deliver alerts to Slack, PagerDuty, or Jira for critical and high signals
 - [ ] Suppression queries are configured to reduce false positives on noisy rules
 - [ ] Security Signals API returns results programmatically for automation integration
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

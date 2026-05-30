@@ -26,6 +26,16 @@ AI video generation creates video content from text prompts or images using diff
 - Creating product demos and explainer animations
 - Building faceless YouTube channels
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The video-gen workflow follows a standard pipeline pattern.

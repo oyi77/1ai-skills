@@ -517,6 +517,16 @@ Refer to the skill overview for detailed usage instructions.
 6. **Monitor execution** – Watch feature behavior, adjust configs, debug issues
 7. **Verify output** – Run lsp_diagnostics, build, tests to confirm feature completed correctly
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **Feature conflicts** – Enabling multiple conflicting features (e.g., multiple LSP tools fighting over same file)

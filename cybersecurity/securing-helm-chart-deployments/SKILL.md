@@ -301,6 +301,16 @@ jobs:
 8. **Lint strictly** in CI with `--strict` flag
 9. **Review third-party charts** before deploying to production
 10. **Use Helm test hooks** to validate deployments post-install
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

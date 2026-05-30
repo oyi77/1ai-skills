@@ -351,6 +351,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Some Lambda functions may have infrequent code paths that only trigger monthly (batch jobs, error handlers). A 30-day observation window may miss rare API calls. Review the function code alongside CloudTrail data to identify all potential API calls. Use Access Analyzer's policy validation rather than relying solely on generated policies.
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

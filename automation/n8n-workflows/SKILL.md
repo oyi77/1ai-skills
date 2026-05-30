@@ -25,6 +25,15 @@ n8n is a fair-code licensed workflow automation tool. It provides 400+ integrati
 - Complex workflows with branching, loops, error handling
 - Replacing Zapier/Make with more flexibility
 
+## When NOT to Use
+
+- Task is simple enough for Zapier (use Zapier for no-code)
+- You need complex code execution (use Pipedream)
+- Task is about data storage, not workflow automation
+- You don't have n8n instance running
+- Task requires real-time processing (use streaming tools)
+- You need to build a custom application (use development tools)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

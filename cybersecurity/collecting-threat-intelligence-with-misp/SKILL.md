@@ -187,6 +187,16 @@ csv_output = misp.search(
 - Export to STIX 2.1 produces valid STIX bundles
 - Automated feed fetch runs on schedule (cron or MISP scheduler)
 
+## When NOT to Use
+
+- You need to analyze collected intelligence (use analyzing-* skills)
+- Task is about detecting collection activity (use detecting-* skills)
+- You need to implement collection tools (use implementing-* skills)
+- Task is about building collection infrastructure (use building-* skills)
+- You don't have access to intelligence sources
+- Task requires classified access (follow clearance process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

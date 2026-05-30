@@ -25,6 +25,15 @@ Implement production authentication — OAuth 2.0 flows, JWT tokens, session sto
 - Adding multi-factor authentication
 - Implementing role-based permissions
 
+## When NOT to Use
+
+- Implementing authorization logic (auth patterns are about authentication)
+- Building user registration flows (use user management patterns)
+- Implementing OAuth provider (that's server-side OAuth, not client)
+- Task is about session management only (use session patterns)
+- You need to audit existing auth (use security review)
+- Auth is handled by a third-party service (just integrate)
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

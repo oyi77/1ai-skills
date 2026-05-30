@@ -342,6 +342,16 @@ if __name__ == "__main__":
 | DNP3 Secure Authentication | Optional DNP3 extension (SA v5) adding HMAC-based authentication to prevent command spoofing |
 | PIPEDREAM | ICS attack framework with DNP3 capabilities for manipulating outstations and performing firmware updates |
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

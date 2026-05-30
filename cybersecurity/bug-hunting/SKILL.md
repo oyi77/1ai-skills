@@ -119,6 +119,16 @@ Control the level of human oversight:
 - **--normal** — Run autonomously through recon and hunting. Pause at the Validation Gate for human approval before reporting.
 - **--yolo** — Full autonomous execution with safety checkpoints only. Fastest throughput, least oversight. Use only on low-risk targets with explicit authorization.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Testing out-of-scope assets (immediate disqualification from programs)

@@ -300,6 +300,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not detecting sequential register scanning because each individual read request is a valid FC 03 operation; only the aggregate pattern reveals the reconnaissance
 - Blocking the workstation before capturing forensic evidence of the attack scope and exfiltrated data
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

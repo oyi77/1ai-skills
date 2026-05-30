@@ -10,6 +10,16 @@ description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to 
 - Calculating position sizes with risk-based formulas
 - Generating investor reports for fund performance review
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - Position sizing exceeds 1% risk per trade without override justification

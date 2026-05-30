@@ -146,6 +146,16 @@ If any answer is "no" or "unclear", do not submit. Fix the gap first.
 
 **Bugcrowd**: Description (vuln + location) -> Steps to Reproduce (numbered) -> Impact (attacker capability) -> Remediation (fix with code)
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Vague impact claims without evidence

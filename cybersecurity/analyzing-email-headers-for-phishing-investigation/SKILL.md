@@ -300,6 +300,16 @@ Email with an Office document attachment containing macros, the sender domain pa
 **Scenario 4: Spear Phishing with Legitimate Service**
 Attacker uses a legitimate email marketing service to send phishing, SPF and DKIM pass because the service is authorized, the phishing is in the content not the infrastructure, requires URL and content analysis rather than header authentication checks.
 
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

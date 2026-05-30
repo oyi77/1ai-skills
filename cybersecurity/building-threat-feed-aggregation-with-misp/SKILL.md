@@ -340,6 +340,16 @@ exporter.export_ioc_list("blocklist_ips.txt", ioc_types=["ip-dst"], days=7)
 - IOCs exported to SIEM (Splunk/Elasticsearch) successfully
 - Blocklists generated for firewall/proxy integration
 
+## When NOT to Use
+
+- You need to test what you built (use performing-* skills)
+- Task is about configuring existing systems (use configuring-* skills)
+- You need to analyze the output (use analyzing-* skills)
+- Task is about implementing vendor solutions (use implementing-* skills)
+- You don't have infrastructure access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

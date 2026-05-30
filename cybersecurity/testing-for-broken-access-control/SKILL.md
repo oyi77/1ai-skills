@@ -330,6 +330,16 @@ A SaaS application uses `tenant_id` in API request headers. Changing the `X-Tena
 ### Scenario 4: Mass Assignment Role Escalation
 The user profile update endpoint at `PUT /api/users/{id}` accepts a `role` field in the JSON body. Submitting `"role":"admin"` alongside a profile update elevates the user to administrator.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -82,6 +82,16 @@ psscan_pids = set(p.pid for p in s.plugins.psscan())
 hidden = psscan_pids - pslist_pids
 print(f"Hidden PIDs: {hidden}")
 ```
+## When NOT to Use
+
+- You need to analyze extracted data (use analyzing-* skills)
+- Task is about detecting extraction (use detecting-* skills)
+- You need to implement extraction tools (use implementing-* skills)
+- Task is about building extraction infrastructure (use building-* skills)
+- You don't have access to forensic images
+- Task requires chain of custody (follow forensic process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

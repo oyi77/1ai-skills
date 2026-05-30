@@ -348,6 +348,16 @@ kubectl logs -n falco -l app.kubernetes.io/name=falco --tail=50 | grep -i escape
 6. **Test rules** in permissive mode before enforcing
 7. **Tune false positives** by adding exception lists for known good processes
 8. **Monitor Falco health** with Prometheus metrics endpoint
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

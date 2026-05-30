@@ -417,6 +417,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not testing reconnection behavior (does the server re-validate authentication on reconnect?)
 - Ignoring that WebSocket connections may bypass HTTP-level rate limiting and WAF rules
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -330,6 +330,17 @@ A JSON API endpoint does not require a custom header. Using `enctype="text/plain
 ### Scenario 4: SameSite=Lax Bypass on GET State Change
 A settings page changes state via GET request (`/settings?disable_2fa=true`). Since `SameSite=Lax` allows cookies on top-level GET navigations, linking the victim to this URL disables their 2FA.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

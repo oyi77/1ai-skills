@@ -295,6 +295,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Removing ClusterRoleBindings can break CI/CD pipelines and operators that rely on cluster-wide access. Always audit which workloads use the bindings before removing them. EKS maps IAM roles to Kubernetes groups via aws-auth ConfigMap, so RBAC changes must be coordinated with IAM role mappings.
 
+## When NOT to Use
+
+- You need to perform security testing (use performing-* skills)
+- Task is about analyzing audit findings (use analyzing-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about building audit tools (use building-* skills)
+- You don't have access to audit scope
+- Task requires legal/compliance expertise (consult professionals)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

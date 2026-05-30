@@ -895,6 +895,15 @@ TELEGRAM GROUPS:
 - When the task requires domain expertise this agent provides
 - When consistency and repeatability matter more than creative exploration
 
+## When NOT to Use
+
+- Task requires HR expertise (consult HR professional)
+- Task is about recruitment, not onboarding
+- You need legal compliance review (use legal tools)
+- Task is about payroll processing (use payroll tools)
+- You don't have employee data to work with
+- Task requires employee relations expertise
+
 ## Red Flags
 
 - Claiming completion without running verification

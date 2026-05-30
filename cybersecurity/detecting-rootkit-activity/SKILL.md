@@ -268,6 +268,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not checking for both user-mode and kernel-mode rootkit components (many rootkits have both)
 - Trusting the rootkit scanner results on a live system; always verify with offline memory forensics
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -30,6 +30,16 @@ CSS frameworks and methodologies provide structured approaches to styling web ap
 - **CSS Modules**: Component-scoped styles, avoiding naming conflicts
 - **CSS-in-JS**: Dynamic styles, runtime theming, component libraries
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The css-frameworks workflow follows a standard pipeline pattern.

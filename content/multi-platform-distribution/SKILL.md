@@ -41,6 +41,16 @@ Transform a single piece of content into platform-specific formats, schedule dis
 - "Create a content calendar from our existing content library"
 - "This newsletter issue should also go on LinkedIn and as a blog"
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The multi-platform-distribution workflow follows a standard pipeline pattern.

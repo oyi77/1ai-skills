@@ -329,6 +329,16 @@ if __name__ == "__main__":
 | Loadable Security Module (LSM) | Tofino plugin module providing protocol-specific DPI for Modbus, EtherNet/IP, OPC, or other protocols |
 | Central Management Platform (CMP) | Tofino centralized management server for deploying and managing policies across multiple Tofino appliances |
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

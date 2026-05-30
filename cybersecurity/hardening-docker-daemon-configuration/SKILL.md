@@ -333,6 +333,16 @@ docker run --rm --net host --pid host \
 8. **Audit Docker socket** - Monitor access to /var/run/docker.sock
 9. **Run Docker Bench regularly** - Automate CIS benchmark checks
 10. **Keep Docker updated** - Apply security patches promptly
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

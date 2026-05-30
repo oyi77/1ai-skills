@@ -214,6 +214,16 @@ During an active incident, scan endpoints for ransomware-associated mutexes:
 | **Domain Sinkhole** | Registering or redirecting a malicious domain to a controlled server; used to activate domain-based kill switches |
 | **DGA (Domain Generation Algorithm)** | Algorithm used by malware to generate pseudo-random domain names for C2 communication, sometimes incorporating kill switch checks |
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

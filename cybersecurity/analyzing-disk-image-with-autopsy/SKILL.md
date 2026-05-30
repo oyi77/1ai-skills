@@ -242,6 +242,16 @@ Import image with PhotoDNA and Project VIC hash sets enabled, run Picture Analyz
 **Scenario 4: Intellectual Property Dispute**
 Import multiple employee disk images as separate data sources in one case, perform keyword searches for proprietary terms and project names, compare file hashes between sources, build timeline showing file access and transfer patterns, export evidence for legal review.
 
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

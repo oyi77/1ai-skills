@@ -279,6 +279,16 @@ Use LiME or WinPMEM to capture volatile RAM while the system is running, preserv
 
 **Pitfalls**: Vulnerability databases are updated constantly. An image that passes scanning today may have new CRITICAL vulnerabilities discovered tomorrow. Implement continuous scanning of already-deployed images, not just at build time. Image signing keys must be securely stored in KMS or Vault, not in CI/CD environment variables.
 
+## When NOT to Use
+
+- You need to test security controls (use performing-* skills)
+- Task is about detecting bypasses (use detecting-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building security tools (use building-* skills)
+- You don't have admin access to the system
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

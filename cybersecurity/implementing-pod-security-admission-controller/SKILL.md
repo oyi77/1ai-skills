@@ -337,6 +337,16 @@ kubectl get namespaces -L pod-security.kubernetes.io/enforce
 6. **Combine with Gatekeeper** for additional custom policies beyond PSA
 7. **Use restricted profile** for all production workloads
 8. **Document exemptions** with clear justification
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -334,6 +334,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 
 **Pitfalls**: Not all applications support identity-aware proxy integration. Legacy thick-client applications may require agent-based ZTNA solutions instead of proxy-based approaches. Device posture assessment requires an endpoint management solution deployed to all corporate devices. Break-glass access procedures must be documented for scenarios where the identity provider is unavailable.
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

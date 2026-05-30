@@ -273,6 +273,16 @@ Dashboard monitoring:
 | **BAFS (Block at First Sight)** | Cloud-based zero-day protection that holds suspicious files for cloud analysis before allowing execution |
 | **Tamper Protection** | Prevents unauthorized changes to Defender security settings, even by local administrators |
 
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

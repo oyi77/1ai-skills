@@ -25,6 +25,15 @@ LakeFS brings Git-like version control to data lakes. It enables branching, comm
 - Rolling back failed data updates
 - Supporting multi-tenant data isolation
 
+## When NOT to Use
+
+- Task is about data processing, not versioning
+- You need real-time data streaming (use streaming tools)
+- Task is about data storage, not version control
+- You don't have data pipeline infrastructure
+- Task is about database migrations (use migration tools)
+- You need data warehousing, not versioning
+
 ## Pseudo Code
 
 Implementation patterns for common use cases with this skill.

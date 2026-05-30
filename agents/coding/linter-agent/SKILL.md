@@ -23,6 +23,17 @@ Autonomous linting agent that detects and fixes code style violations, enforces 
 - Setting up linting for a project that has none
 - Migrating to a new linter or new configuration
 
+## When NOT to Use
+
+- Fixing logic bugs (use `code-agent`)
+- Refactoring code structure (use `refactor-agent`)
+- Writing new code (use `code-agent`)
+- Reviewing code for security issues (use `security-agent`)
+- Optimizing performance (use `perf-agent`)
+- Project has no established linting rules (establish rules first)
+- Linting would break existing working code
+- Task requires understanding business logic
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

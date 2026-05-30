@@ -156,6 +156,16 @@ This section covers key concepts for configuring multi factor authentication wit
 - [ ] Authentication logs forwarded to SIEM
 - [ ] Bypass/emergency access procedures tested
 - [ ] MFA fatigue detection alerts configured
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

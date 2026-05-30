@@ -23,6 +23,17 @@ Autonomous test writing agent that creates comprehensive test suites covering ha
 - Improving test coverage metrics (meaningfully, not just line counting)
 - Setting up test infrastructure for a new project
 
+## When NOT to Use
+
+- Implementing the code being tested (use `code-agent`)
+- Refactoring existing code (use `refactor-agent`)
+- Reviewing test quality (use `review-agent`)
+- Optimizing test execution speed (use `perf-agent`)
+- Linting test files (use `linter-agent`)
+- Tests require complex infrastructure setup (use DevOps)
+- Code is trivially simple (no test value)
+- No clear expected behavior to test against
+
 ## Process / Steps
 
 Follow these steps in order. Each step builds on the previous one.

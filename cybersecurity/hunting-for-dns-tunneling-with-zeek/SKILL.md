@@ -134,6 +134,16 @@ rita show-dns-tunneling dataset_name --csv > dns_tunnel_results.csv
 4. **DNS-over-HTTPS Tunneling**: Bypasses traditional DNS monitoring by sending DNS queries over HTTPS to public resolvers (8.8.8.8, 1.1.1.1), requiring TLS inspection for detection.
 5. **Cobalt Strike DNS Beacon**: Uses DNS A/TXT records for C2 communication with configurable subdomain encoding schemes.
 
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

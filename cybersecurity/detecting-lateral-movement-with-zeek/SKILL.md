@@ -210,6 +210,16 @@ python3 agent.py /opt/zeek/logs/2026-03-18/  # Analyze a specific date
 - Validate NTLM log parsing by performing a test authentication and confirming username, domain, and success fields are captured; verify the NTLM Account Spray Zeek script generates a `notice.log` entry when the spray threshold is exceeded
 - Cross-reference Zeek alerts with Sysmon Event ID 1 (Process Creation) on the target host to confirm end-to-end detection
 - Verify the agent correctly handles both TSV and JSON Zeek log formats
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

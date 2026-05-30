@@ -25,6 +25,16 @@ Material UI (MUI) is a comprehensive React component library implementing Google
 - Want a mature, well-documented component ecosystem
 - Building admin panels, dashboards, data-heavy apps
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The material-ui workflow follows a standard pipeline pattern.

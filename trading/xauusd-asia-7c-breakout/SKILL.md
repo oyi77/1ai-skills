@@ -95,6 +95,16 @@ Guardrails include:
 - Session time validation
 - Account balance checks
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - **No signal generated**: Check that Asia session start time is correct for your broker timezone; verify data quality for the target date

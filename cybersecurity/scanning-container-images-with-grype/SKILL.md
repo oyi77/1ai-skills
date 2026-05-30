@@ -232,6 +232,16 @@ grype db list
 5. **Scan all layers** - Use `--scope all-layers` to catch vulnerabilities in intermediate layers
 6. **Automate database updates** - Keep the vulnerability database current in CI runners
 7. **Compare scans** - Track vulnerability count over time for regression detection
+## When NOT to Use
+
+- You need to perform manual testing (use performing-* skills)
+- Task is about analyzing scan results (use analyzing-* skills)
+- You need to implement scanning tools (use implementing-* skills)
+- Task is about building scanning infrastructure (use building-* skills)
+- You don't have network access to targets
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

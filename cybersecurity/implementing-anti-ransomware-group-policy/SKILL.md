@@ -211,6 +211,16 @@ Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Act
 | **Software Restriction Policies (SRP)** | Legacy Windows feature (deprecated in Win 11) for restricting executables; replaced by AppLocker and WDAC |
 | **WDAC** | Windows Defender Application Control; the successor to AppLocker with stronger enforcement using code integrity policies |
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

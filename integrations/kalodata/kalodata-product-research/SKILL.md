@@ -27,6 +27,16 @@ Enables querying and analyzing TikTok Shop products using Kalodata's product int
 4. **Analyze results** – Review metrics, trends, and competitive patterns
 5. **Take action** – Make business decisions based on insights
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Trying to query real-time data (this skill works with historical research data)

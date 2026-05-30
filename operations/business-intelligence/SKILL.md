@@ -204,6 +204,15 @@ Key questions:
 - When the task requires domain expertise this agent provides
 - When consistency and repeatability matter more than creative exploration
 
+## When NOT to Use
+
+- Task requires creative problem-solving or novel approaches
+- You need to understand the data deeply, not just report it
+- Task is about data engineering, not analysis
+- You don't have access to the data sources
+- Task requires real-time monitoring (use monitoring tools)
+- Analysis is for a one-time decision, not ongoing BI
+
 ## Red Flags
 
 - Claiming completion without running verification

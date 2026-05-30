@@ -37,6 +37,16 @@ Dockerfile optimization — multi-stage builds, layer caching, security hardenin
 5. Document runbooks for deployment, rollback, and incident response
 6. Test disaster recovery procedures regularly
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **Infrastructure changes without review**: Unreviewed changes cause outages — use PRs for infra code

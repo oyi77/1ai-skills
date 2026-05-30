@@ -907,6 +907,15 @@ Step-by-step workflow for this skill.
 - When the task requires domain expertise this agent provides
 - When consistency and repeatability matter more than creative exploration
 
+## When NOT to Use
+
+- Task requires creative problem-solving or novel approaches
+- You need to understand the contract deeply, not just manage it
+- Legal review is required (consult a lawyer)
+- Contract is for a one-time, simple agreement
+- You don't have the contract template or source document
+- Task requires negotiation, not just document management
+
 ## Red Flags
 
 - Claiming completion without running verification

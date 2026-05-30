@@ -355,6 +355,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Missing BOLA in bulk/batch endpoints that accept arrays of object IDs
 - Not considering that different API versions (v1 vs v2) may have different authorization implementations
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

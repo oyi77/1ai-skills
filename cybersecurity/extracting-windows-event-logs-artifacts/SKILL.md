@@ -307,6 +307,16 @@ Analyze PowerShell Operational log for Script Block Logging (Event 4104), search
 **Scenario 4: Ransomware Incident Reconstruction**
 Build timeline starting from initial access (4624 from external IP), trace privilege escalation through group membership changes, identify service installations for persistence, find process creation events for encryption executable, detect volume shadow copy deletion in System log.
 
+## When NOT to Use
+
+- You need to analyze extracted data (use analyzing-* skills)
+- Task is about detecting extraction (use detecting-* skills)
+- You need to implement extraction tools (use implementing-* skills)
+- Task is about building extraction infrastructure (use building-* skills)
+- You don't have access to forensic images
+- Task requires chain of custody (follow forensic process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

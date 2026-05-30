@@ -315,6 +315,17 @@ Extract location data from Google Location History, parse GPS data from photos, 
 **Scenario 4: Child Exploitation Investigation**
 Physical extraction preserving all data including deleted content, hash all images against NCMEC/ICSE databases, extract communication records, recover deleted media from unallocated space, document chain of custody meticulously for prosecution.
 
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -6,6 +6,16 @@ description: Revenue Engine. Use when relevant to this domain.
 
 Vilona's revenue generation brain. Knows all income streams, their status, and exactly what to do when they underperform.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Revenue Stream Map
 This section covers revenue stream map for the revenue-engine skill.
 Key operations include input validation, core processing, and output verification.

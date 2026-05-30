@@ -27,6 +27,16 @@ AI image generation creates images from text prompts using diffusion models. Thi
 - Editing photos (remove backgrounds, change styles)
 - Creating consistent character/brand imagery
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The image-gen workflow follows a standard pipeline pattern.

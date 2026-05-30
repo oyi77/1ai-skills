@@ -547,6 +547,16 @@ Use built-in MCPs for web search, documentation, and code search.
 8. **Verify output** – Run lsp_diagnostics, build, and tests on agent-generated code
 9. **Continue or exit** – Save session with `/share` or exit with `/quit`
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - **Not initializing project** – Skipping `/init` for new projects causes AGENTS.md absence, poor agent behavior

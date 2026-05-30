@@ -246,6 +246,16 @@ EOF
 4. **Compromised Web Server**: Web shell detected. Memory may contain additional backdoors not yet written to disk.
 5. **Lateral Movement in Progress**: Attacker moving between systems. Authentication tokens and network sessions in memory reveal scope.
 
+## When NOT to Use
+
+- You need to analyze collected intelligence (use analyzing-* skills)
+- Task is about detecting collection activity (use detecting-* skills)
+- You need to implement collection tools (use implementing-* skills)
+- Task is about building collection infrastructure (use building-* skills)
+- You don't have access to intelligence sources
+- Task requires classified access (follow clearance process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

@@ -63,6 +63,16 @@ Implement Microsoft's Enhanced Security Admin Environment (ESAE) tiered administ
 - [ ] Audit logging enabled and forwarding to SIEM
 - [ ] Documentation and runbooks complete
 - [ ] Compliance evidence generated
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

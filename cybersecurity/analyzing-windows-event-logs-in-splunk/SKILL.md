@@ -275,6 +275,16 @@ EventCode,Description,ATT_CK_Technique,Severity
 - **Pass-the-Hash (T1550.002)**: Detect EventCode 4624 Logon_Type 3 with NTLM authentication from unexpected sources
 - **DLL Side-Loading (T1574.002)**: Sysmon EventCode 7 showing unsigned DLLs loaded by legitimate processes
 
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

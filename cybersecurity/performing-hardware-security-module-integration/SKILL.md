@@ -65,6 +65,17 @@ Hardware Security Modules (HSMs) provide tamper-resistant cryptographic key stor
 
 - JSON report listing HSM slots, tokens, stored keys, supported mechanisms, and compliance status
 - Signing test results with key metadata and algorithm details
+## When NOT to Use
+
+- You don't have explicit written authorization to test
+- Task is about defense/detection, not offense (use detection skills)
+- You need to implement security controls (use implementing-* skills)
+- Task requires compliance auditing (use auditing-* skills)
+- You're investigating an incident (use incident response skills)
+- Target is out of scope for your engagement
+- Task is about vulnerability scanning only (use scanning tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

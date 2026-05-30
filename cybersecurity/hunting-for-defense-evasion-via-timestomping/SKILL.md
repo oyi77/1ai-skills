@@ -356,6 +356,16 @@ generate_report(stomped_files, "D:\\Evidence\\timestomping_report.json")
 - Verify ShimCache and Amcache timestamps provide independent corroboration of timeline inconsistencies
 - Test against known-clean system images to establish a false-positive baseline (some backup/imaging software legitimately resets timestamps)
 - Confirm the detection pipeline correctly handles deleted MFT entries (InUse=false) which may contain evidence of timestomped files that were later removed
+## When NOT to Use
+
+- You're responding to a known incident (use IR skills)
+- Task is about analyzing confirmed malware (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about vulnerability scanning (use scanning tools)
+- You don't have access to endpoint/network data
+- Task requires compliance auditing (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

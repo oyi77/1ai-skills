@@ -189,6 +189,16 @@ This section covers phase 5: reporting for conducting social engineering pretext
 6. **Never publicly identify** specific employees who failed
 7. **Comply with telecommunications laws** in your jurisdiction
 
+## When NOT to Use
+
+- You don't have authorization for the assessment
+- Task is about implementing findings (use implementing-* skills)
+- You need to analyze results (use analyzing-* skills)
+- Task is about building assessment tools (use building-* skills)
+- Target is out of scope
+- Task requires compliance certification (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

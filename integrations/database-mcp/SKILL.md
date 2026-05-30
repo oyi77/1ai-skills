@@ -5,6 +5,16 @@ description: MCP server for SQL databases. Connect AI agents to PostgreSQL, MySQ
 
 # Database MCP Skill
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Overview
 
 MCP server for SQL databases enabling AI agents to interact with PostgreSQL, MySQL, MariaDB, and SQLite through natural language. Provides 12+ MCP tools for query execution, schema inspection, and database management.

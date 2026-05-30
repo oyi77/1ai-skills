@@ -251,6 +251,16 @@ For Azure Kubernetes environments, Microsoft Defender provides built-in binary d
 5. **Evict**: Delete the drifted pod (ReplicaSet will recreate from clean image)
 6. **Remediate**: Fix the root cause (patch vulnerability, update image, tighten RBAC)
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

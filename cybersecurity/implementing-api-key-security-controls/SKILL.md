@@ -390,6 +390,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Allowing API keys in URL query parameters where they leak in logs, browser history, and Referer headers
 - Not implementing rate limiting per key, allowing a single compromised key to abuse the entire API
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

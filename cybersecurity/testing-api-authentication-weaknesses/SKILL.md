@@ -422,6 +422,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Ignoring the token lifetime: a 7-day JWT with no revocation means a stolen token is valid for a week
 - Not testing for token leakage in server logs, URL parameters, or error messages
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

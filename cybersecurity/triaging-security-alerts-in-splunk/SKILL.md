@@ -200,6 +200,16 @@ Monitor triage performance over time:
 - **Privilege Escalation**: Correlate EventCode 4672 (special privileges assigned) with 4720 (account created) from non-admin users
 - **Lateral Movement**: Map EventCode 4648 (explicit credential logon) across multiple destinations from single source
 
+## When NOT to Use
+
+- You need to investigate the incident deeply (use IR skills)
+- Task is about analyzing triaged data (use analyzing-* skills)
+- You need to implement triage tools (use implementing-* skills)
+- Task is about building triage infrastructure (use building-* skills)
+- You don't have access to incident data
+- Task requires escalation (follow escalation process)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

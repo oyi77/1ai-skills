@@ -388,6 +388,16 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Not sizing the sensor hardware for peak traffic, leading to packet drops during high-volume periods
 - Relying solely on community rules without custom rules for organization-specific threats and compliance requirements
 
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

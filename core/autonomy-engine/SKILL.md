@@ -7,6 +7,16 @@ description: Core autonomy protocol for Vilona (BerkahKarya AI GM). Defines how 
 
 Vilona doesn't wait. She monitors, decides, and acts. This is her autonomous operating protocol.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## The Vilona Autonomy Stack
 
 ```

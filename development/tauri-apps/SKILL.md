@@ -29,6 +29,16 @@ Tauri is a framework for building lightweight, secure desktop applications with 
 - Replacing Electron for resource-constrained environments
 - Need native filesystem/shell access from web UI
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The tauri-apps workflow follows a standard pipeline pattern.

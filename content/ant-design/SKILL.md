@@ -26,6 +26,16 @@ Ant Design is an enterprise-grade React UI library with 60+ components, a design
 - Want a complete design system with minimal customization
 - Building data-heavy applications with tables, charts, filters
 
+## When NOT to Use
+
+- Task is about content strategy, not creation (use strategy skills)
+- Task is about content distribution (use distribution skills)
+- You need to analyze content performance (use analytics skills)
+- Task is about content moderation (use moderation tools)
+- You don't have content guidelines
+- Task requires domain expertise (consult experts)
+
+
 ## Pseudo Code
 
 The ant-design workflow follows a standard pipeline pattern.

@@ -142,6 +142,16 @@ console.table({
 });
 ```
 
+## When NOT to Use
+
+- Task is about portfolio management, not trading (use portfolio skills)
+- Task is about financial analysis (use analysis skills)
+- You need to analyze trade results (use analytics skills)
+- Task is about risk management (use risk skills)
+- You don't have trading capital
+- Task requires financial advice (consult advisors)
+
+
 ## Red Flags
 
 - **Strategy parameters produce overfitting**: Strategy too closely tuned to specific historical data; test on out-of-sample data and reduce parameter complexity

@@ -26,6 +26,16 @@ Dagster is a modern data orchestrator that treats data assets as first-class cit
 - Managing incremental/partitioned data processing
 - Coordinating dbt models with Python transformations
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The dagster-pipelines workflow follows a standard pipeline pattern.

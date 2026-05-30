@@ -7,6 +7,16 @@ description: Advanced expert in prompt engineering, custom instructions design, 
 
 This skill equips Claude with deep expertise in prompt engineering, custom instructions design, and prompt optimization. It provides comprehensive guidance on crafting effective AI prompts, designing agent instructions, and iteratively improving prompt performance.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Capabilities
 
 - **Prompt Writing Best Practices**: Expert guidance on clear, direct prompts with proper structure and formatting

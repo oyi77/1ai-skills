@@ -6,6 +6,16 @@ description: BerkahKarya Orchestrator. Use when relevant to this domain.
 
 Master task router and workflow coordinator for the BerkahKarya AI workforce.
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Skill Directory (150+ skills across 13 divisions)
 This section covers skill directory (150+ skills across 13 divisions) for the berkahkarya-orchestrator skill.
 Key operations include input validation, core processing, and output verification.

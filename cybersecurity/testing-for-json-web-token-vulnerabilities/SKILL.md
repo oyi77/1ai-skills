@@ -216,6 +216,16 @@ python3 jwt_tool.py <JWT_TOKEN> -S hs256 -p "discovered_secret" \
 4. **Weak Secret Cracking** — Brute-force HMAC-SHA256 secrets using hashcat to forge arbitrary JWTs for any user
 5. **JKU Server Spoofing** — Point JKU header to attacker-controlled JWKS endpoint to sign tokens with attacker's private key
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

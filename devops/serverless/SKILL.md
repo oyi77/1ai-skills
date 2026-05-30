@@ -25,6 +25,16 @@ Serverless architecture patterns using AWS Lambda, Cloudflare Workers, and Verce
 - Scheduled tasks (cron)
 - Microservices at low cost
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The serverless workflow follows a standard pipeline pattern.

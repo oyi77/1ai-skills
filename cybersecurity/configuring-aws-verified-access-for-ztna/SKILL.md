@@ -457,6 +457,16 @@ aws cloudwatch put-metric-alarm \
 7. **Set high device trust thresholds**: Require overall score above 70 for production access
 8. **Monitor for policy drift**: Use AWS Config rules to detect unauthorized changes
 
+## When NOT to Use
+
+- You need to implement from scratch (use implementing-* skills)
+- Task is about testing the configuration (use performing-* skills)
+- You need to analyze misconfigurations (use analyzing-* skills)
+- Task is about building automation (use building-* skills)
+- You don't have admin access to the system
+- Task requires vendor professional services
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

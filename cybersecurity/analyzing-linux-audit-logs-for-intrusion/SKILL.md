@@ -271,6 +271,16 @@ transport = tcp
 - [ ] Critical file watches trigger alerts on test modifications (`touch /etc/shadow` generates an event)
 - [ ] Logs are forwarding to central SIEM (verify with a test event and confirm receipt)
 - [ ] Audit rules persist across reboot (rules in `/etc/audit/rules.d/`, not only via `auditctl`)
+## When NOT to Use
+
+- You need to perform the attack, not analyze it (use performing-* skills)
+- Task is about detection, not analysis (use detecting-* skills)
+- You need to implement controls (use implementing-* skills)
+- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
+- You don't have access to the artifacts/logs to analyze
+- Task requires real-time monitoring (use SOC tools)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

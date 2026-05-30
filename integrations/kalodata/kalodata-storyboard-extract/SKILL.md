@@ -28,6 +28,16 @@ Enables extraction of AI-generated storyboards from viral TikTok Shop videos, in
 4. **Generate content ideas** – Use auto-generated angles for your content
 5. **Replicate or adapt** – Apply insights to your own video strategy
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Trying to extract storyboards without API credentials (need valid Kalodata cookies)

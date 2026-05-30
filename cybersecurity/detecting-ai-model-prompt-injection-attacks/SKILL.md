@@ -168,6 +168,16 @@ Review the JSON output for any prompts flagged with `injection_detected: true` a
 | **Canary Token** | A unique marker inserted into system prompts to detect if the LLM has been tricked into leaking its instructions |
 | **OWASP LLM01** | The top risk in the OWASP Top 10 for LLM Applications (2025), covering both direct and indirect prompt injection vulnerabilities |
 
+## When NOT to Use
+
+- You need to perform the attack to test detection (use performing-* skills)
+- Task is about analyzing past incidents (use analyzing-* skills)
+- You need to implement detection rules (use implementing-* skills)
+- Task is about threat hunting proactively (use hunting-* skills)
+- You don't have access to logs or monitoring data
+- Task requires incident response (use IR skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

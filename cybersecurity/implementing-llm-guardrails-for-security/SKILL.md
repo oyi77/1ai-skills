@@ -223,6 +223,16 @@ python agent.py --file interaction_logs.txt --mode full --output json > guardrai
 | **Self-Check Rail** | A NeMo Guardrails technique where the LLM itself evaluates whether its input or output violates defined policies |
 | **Hallucination Detection** | Output validation that checks whether the LLM response is grounded in the provided context, flagging fabricated claims |
 
+## When NOT to Use
+
+- You need to test the implementation (use performing-* skills)
+- Task is about configuring existing tools (use configuring-* skills)
+- You need to analyze security events (use analyzing-* skills)
+- Task is about building detection rules (use building-* skills)
+- You don't have access to the target environment
+- Task requires vendor-specific expertise (consult vendor docs)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

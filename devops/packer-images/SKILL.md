@@ -25,6 +25,16 @@ Packer automates machine image creation for multiple platforms from a single sou
 - Standardized base images across teams
 - Compliance-hardened images
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Pseudo Code
 
 The packer-images workflow follows a standard pipeline pattern.

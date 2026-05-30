@@ -909,6 +909,15 @@ Quick reference for commonly needed information.
 - When the task requires domain expertise this agent provides
 - When consistency and repeatability matter more than creative exploration
 
+## When NOT to Use
+
+- Task requires legal advice (consult a lawyer)
+- Task is about litigation or disputes
+- You need jurisdiction-specific legal expertise
+- Task is about legal research, not document management
+- You're unsure about legal requirements (get professional review)
+- Task is about compliance auditing (use compliance tools)
+
 ## Red Flags
 
 - Claiming completion without running verification

@@ -150,6 +150,16 @@ Structure the campaign report:
 | **Clustering** | Machine learning or manual grouping of incidents based on feature similarity to identify campaign boundaries |
 | **False Correlation** | Incorrect linking of unrelated incidents due to shared infrastructure (CDNs, shared hosting) or common tools |
 
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
+- Task requires compliance expertise (consult professionals)
+- Task is about defense, not offense (use defensive skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

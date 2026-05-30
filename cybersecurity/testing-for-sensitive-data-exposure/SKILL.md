@@ -334,6 +334,16 @@ The user profile API endpoint returns full SSN and credit card numbers without m
 ### Scenario 4: Git Repository with Database Credentials
 The `.git` directory is accessible on the production server. Using git-dumper, the attacker downloads the repository history, finding database credentials committed in an early commit that were later "removed" but remain in git history.
 
+## When NOT to Use
+
+- You need to perform real attacks, not test (use performing-* skills)
+- Task is about analyzing test results (use analyzing-* skills)
+- You need to implement test infrastructure (use implementing-* skills)
+- Task is about building test tools (use building-* skills)
+- You don't have test environment access
+- Task requires compliance validation (use auditing-* skills)
+
+
 ## Red Flags
 
 - Performing actions without explicit written authorization from the asset owner

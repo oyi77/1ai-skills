@@ -28,6 +28,16 @@ WebSocket enables persistent, full-duplex communication between client and serve
 - IoT device communication
 - Progress bars and live status updates
 
+## When NOT to Use
+
+- Task is about deployment, not development (use deploy skills)
+- Task is about code review, not writing (use review skills)
+- You need to understand existing code first (use research skills)
+- Task is about testing only (use test skills)
+- Requirements are unclear (clarify first)
+- Task is trivially simple (single line fix)
+
+
 ## Pseudo Code
 
 The websocket workflow follows a standard pipeline pattern.

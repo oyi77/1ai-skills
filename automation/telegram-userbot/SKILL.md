@@ -518,6 +518,15 @@ pip install telethon edge-tts --break-system-packages
 - When the task requires domain expertise this agent provides
 - When consistency and repeatability matter more than creative exploration
 
+## When NOT to Use
+
+- Task is about Telegram Bot API, not userbot
+- You need to build a Telegram bot (use bot framework)
+- Task requires user interaction (use bot commands)
+- You don't have Telegram account for userbot
+- Task is about Telegram channel management (use channel tools)
+- You need to handle payments (use payment tools)
+
 ## Red Flags
 
 - Claiming completion without running verification
