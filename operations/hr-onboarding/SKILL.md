@@ -891,9 +891,11 @@ TELEGRAM GROUPS:
 
 ## When to Use
 
-- When you need automated assistance with a specific technical task
-- When the task requires domain expertise this agent provides
-- When consistency and repeatability matter more than creative exploration
+- Automating employee onboarding workflows
+- Managing employee documentation
+- Tracking onboarding progress
+- Generating onboarding checklists
+- Managing employee data and records
 
 ## When NOT to Use
 
@@ -906,13 +908,16 @@ TELEGRAM GROUPS:
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Handling sensitive employee data improperly
+- Not following data privacy regulations
+- Missing onboarding steps
+- Not tracking onboarding completion
+- Ignoring compliance requirements
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Onboarding workflows are complete
+- [ ] Employee data is handled securely
+- [ ] Compliance requirements are met
+- [ ] Onboarding progress is tracked
+- [ ] Documentation is properly managed

@@ -401,9 +401,11 @@ curl -H "Authorization: Bearer $POSTBRIDGE_API_KEY" \
 
 ## When to Use
 
-- When you need automated assistance with a specific technical task
-- When the task requires domain expertise this agent provides
-- When consistency and repeatability matter more than creative exploration
+- Managing social media accounts across platforms
+- Scheduling and publishing content
+- Engaging with followers automatically
+- Monitoring social media mentions
+- Building social media presence
 
 ## When NOT to Use
 
@@ -416,13 +418,16 @@ curl -H "Authorization: Bearer $POSTBRIDGE_API_KEY" \
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Posting too frequently (risk of account suspension)
+- Not customizing content per platform
+- Ignoring platform-specific content guidelines
+- Not testing posts before scheduling
+- Missing error handling for failed posts
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Posts are scheduled correctly
+- [ ] Content is customized per platform
+- [ ] Rate limits are respected
+- [ ] Error handling is in place
+- [ ] Posts can be cancelled if needed

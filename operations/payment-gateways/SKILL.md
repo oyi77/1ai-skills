@@ -152,13 +152,16 @@ case 'invoice.payment_failed':
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Storing payment card data directly
+- Not using PCI-compliant processors
+- Missing fraud detection
+- Not handling payment failures properly
+- Ignoring payment security best practices
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Payment card data is not stored
+- [ ] PCI-compliant processors are used
+- [ ] Fraud detection is in place
+- [ ] Payment failures are handled
+- [ ] Security best practices are followed

@@ -905,9 +905,11 @@ Quick reference for commonly needed information.
 
 ## When to Use
 
-- When you need automated assistance with a specific technical task
-- When the task requires domain expertise this agent provides
-- When consistency and repeatability matter more than creative exploration
+- Drafting legal documents (contracts, NDAs, agreements)
+- Managing legal document templates
+- Tracking legal compliance requirements
+- Organizing legal document versions
+- Automating legal document workflows
 
 ## When NOT to Use
 
@@ -920,13 +922,19 @@ Quick reference for commonly needed information.
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Providing legal advice (not allowed)
+- Not disclaiming legal expertise
+- Ignoring jurisdiction differences
+- Not recommending professional review for high-stakes matters
+- Missing document version control
 
 ## Verification
 
-- [ ] Output matches the original requirements
+- [ ] Documents are properly formatted
+- [ ] Templates are jurisdiction-appropriate
+- [ ] Disclaimers are included
+- [ ] Version control is maintained
+- [ ] Professional review is recommended for high-stakes
 - [ ] All code or content runs without errors
 - [ ] Edge cases have been considered and handled
 - [ ] No placeholder content or TODOs remain

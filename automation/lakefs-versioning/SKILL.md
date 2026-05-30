@@ -193,13 +193,16 @@ branches:
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Not testing data versions before committing
+- Ignoring data quality issues
+- Not backing up data before versioning
+- Missing rollback procedures
+- Not documenting data changes
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Data versions are created correctly
+- [ ] Rollback procedures are tested
+- [ ] Data quality is maintained
+- [ ] Changes are documented
+- [ ] Backup procedures are in place

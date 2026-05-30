@@ -336,13 +336,16 @@ ORDER BY 1 DESC;
 
 ## Red Flags
 
-- Claiming completion without running verification
-- Skipping the analysis phase and jumping to implementation
-- Ignoring existing codebase patterns and conventions
+- Ignoring customer feedback
+- Not tracking customer health scores
+- Missing follow-up on issues
+- Not personalizing customer interactions
+- Ignoring churn indicators
 
 ## Verification
 
-- [ ] Output matches the original requirements
-- [ ] All code or content runs without errors
-- [ ] Edge cases have been considered and handled
-- [ ] No placeholder content or TODOs remain
+- [ ] Customer feedback is collected
+- [ ] Customer health is tracked
+- [ ] Issues are followed up
+- [ ] Interactions are personalized
+- [ ] Churn indicators are monitored
