@@ -189,13 +189,22 @@ def store_certificates(conn: sqlite3.Connection, certs: list[dict], monitored_do
     """Store certificates in database, return list of newly discovered ones."""
     new_certs = []
     cursor = conn.cursor()
+
+    # Pre-fetch existing crtsh_ids to avoid N+1 SELECT queries
+    crtsh_ids = [cert.get("id") for cert in certs if cert.get("id")]
+    if not crtsh_ids:
+        return []
+
+    placeholders = ",".join(["?"] * len(crtsh_ids))
+    cursor.execute(f"SELECT crtsh_id FROM certificates WHERE crtsh_id IN ({placeholders})", crtsh_ids)
+    existing_ids = {row[0] for row in cursor.fetchall()}
+
+    params_list = []
     for cert in certs:
         crtsh_id = cert.get("id")
-        if not crtsh_id:
+        if not crtsh_id or crtsh_id in existing_ids:
             continue
-        cursor.execute("SELECT 1 FROM certificates WHERE crtsh_id = ?", (crtsh_id,))
-        if cursor.fetchone():
-            continue
+
         name_value = cert.get("name_value", "")
         issuer_name = cert.get("issuer_name", "")
         entry_ts = cert.get("entry_timestamp", "")
@@ -207,18 +216,24 @@ def store_certificates(conn: sqlite3.Connection, certs: list[dict], monitored_do
 
         is_precert = 1 if (entry_ts and "precert" in entry_ts.lower()) else 0
 
-        cursor.execute(
+        params_list.append(
+            (crtsh_id, monitored_domain, common_name, name_value,
+             issuer_name, issuer_ca_id, not_before, not_after, serial,
+             entry_ts, is_precert)
+        )
+        new_certs.append(cert)
+
+    if params_list:
+        cursor.executemany(
             """INSERT OR IGNORE INTO certificates
                (crtsh_id, domain, common_name, name_value, issuer_name,
                 issuer_ca_id, not_before, not_after, serial_number,
                 entry_timestamp, is_precert)
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-            (crtsh_id, monitored_domain, common_name, name_value,
-             issuer_name, issuer_ca_id, not_before, not_after, serial,
-             entry_ts, is_precert),
+            params_list
         )
-        new_certs.append(cert)
-    conn.commit()
+        conn.commit()
+
     return new_certs
 
 
@@ -227,25 +242,50 @@ def discover_subdomains(conn: sqlite3.Connection, certs: list[dict], parent_doma
     new_subdomains = []
     cursor = conn.cursor()
     now = datetime.now(timezone.utc).isoformat()
+
+    # Collect all unique subdomains to process
+    subdomains_to_process = set()
     for cert in certs:
         names = extract_subdomains_from_names(cert.get("name_value", ""))
         for name in names:
-            if not name.endswith(parent_domain):
-                continue
-            cursor.execute("SELECT 1 FROM subdomains WHERE subdomain = ?", (name,))
-            if cursor.fetchone():
-                cursor.execute(
-                    "UPDATE subdomains SET last_seen = ? WHERE subdomain = ?",
-                    (now, name),
-                )
-            else:
-                cursor.execute(
-                    """INSERT INTO subdomains (subdomain, parent_domain, first_seen, last_seen)
-                       VALUES (?, ?, ?, ?)""",
-                    (name, parent_domain, now, now),
-                )
-                new_subdomains.append(name)
-    conn.commit()
+            if name.endswith(parent_domain):
+                subdomains_to_process.add(name)
+
+    if not subdomains_to_process:
+        return []
+
+    # Check which subdomains already exist
+    placeholders = ",".join(["?"] * len(subdomains_to_process))
+    cursor.execute(f"SELECT subdomain FROM subdomains WHERE subdomain IN ({placeholders})", list(subdomains_to_process))
+    existing_subdomains = {row[0] for row in cursor.fetchall()}
+
+    # Prepare data for insertion (new) and updating (existing)
+    insert_params = []
+    update_params = []
+
+    for name in subdomains_to_process:
+        if name in existing_subdomains:
+            update_params.append((now, name))
+        else:
+            insert_params.append((name, parent_domain, now, now))
+            new_subdomains.append(name)
+
+    if insert_params:
+        cursor.executemany(
+            """INSERT INTO subdomains (subdomain, parent_domain, first_seen, last_seen)
+               VALUES (?, ?, ?, ?)""",
+            insert_params
+        )
+
+    if update_params:
+        cursor.executemany(
+            "UPDATE subdomains SET last_seen = ? WHERE subdomain = ?",
+            update_params
+        )
+
+    if insert_params or update_params:
+        conn.commit()
+
     return new_subdomains
 
 
@@ -295,19 +335,26 @@ def resolve_all_subdomains(conn: sqlite3.Connection, parent_domain: str) -> list
     )
     rows = cursor.fetchall()
     results = []
+    update_params = []
     for (subdomain,) in rows:
         dns_result = resolve_subdomain(subdomain)
         results.append(dns_result)
-        cursor.execute(
-            """UPDATE subdomains SET dns_resolved = 1, resolved_ip = ?, cname_target = ?
-               WHERE subdomain = ?""",
+        update_params.append(
             (
                 ",".join(dns_result["ips"]) if dns_result["ips"] else None,
                 dns_result["cname"],
                 subdomain,
-            ),
+            )
         )
-    conn.commit()
+
+    if update_params:
+        cursor.executemany(
+            """UPDATE subdomains SET dns_resolved = 1, resolved_ip = ?, cname_target = ?
+               WHERE subdomain = ?""",
+            update_params
+        )
+        conn.commit()
+
     logger.info("Resolved %d subdomains for %s", len(results), parent_domain)
     return results
 
@@ -327,6 +374,7 @@ def check_unauthorized_ca(conn: sqlite3.Connection, new_certs: list[dict]) -> li
         return []
 
     alerts = []
+    insert_params = []
     for cert in new_certs:
         ca_id = cert.get("issuer_ca_id")
         if ca_id and ca_id not in authorized:
@@ -345,18 +393,24 @@ def check_unauthorized_ca(conn: sqlite3.Connection, new_certs: list[dict]) -> li
                 }),
                 "certificate_id": cert.get("id"),
             }
-            cursor.execute(
-                """INSERT INTO alerts (alert_type, severity, domain, details, certificate_id)
-                   VALUES (?, ?, ?, ?, ?)""",
+            insert_params.append(
                 (alert["alert_type"], alert["severity"], alert["domain"],
-                 alert["details"], alert["certificate_id"]),
+                 alert["details"], alert["certificate_id"])
             )
             alerts.append(alert)
             logger.warning(
                 "ALERT: Unauthorized CA '%s' issued cert for %s",
                 cert.get("issuer_name"), cert.get("common_name"),
             )
-    conn.commit()
+
+    if insert_params:
+        cursor.executemany(
+            """INSERT INTO alerts (alert_type, severity, domain, details, certificate_id)
+               VALUES (?, ?, ?, ?, ?)""",
+            insert_params
+        )
+        conn.commit()
+
     return alerts
 
 
@@ -364,6 +418,7 @@ def check_new_subdomain_alerts(conn: sqlite3.Connection, new_subdomains: list[st
     """Generate alerts for newly discovered subdomains."""
     alerts = []
     cursor = conn.cursor()
+    insert_params = []
     for sub in new_subdomains:
         alert = {
             "alert_type": "new_subdomain",
@@ -375,14 +430,20 @@ def check_new_subdomain_alerts(conn: sqlite3.Connection, new_subdomains: list[st
                 "discovered_via": "certificate_transparency",
             }),
         }
-        cursor.execute(
-            """INSERT INTO alerts (alert_type, severity, domain, details)
-               VALUES (?, ?, ?, ?)""",
-            (alert["alert_type"], alert["severity"], alert["domain"], alert["details"]),
+        insert_params.append(
+            (alert["alert_type"], alert["severity"], alert["domain"], alert["details"])
         )
         alerts.append(alert)
         logger.info("ALERT: New subdomain discovered: %s", sub)
-    conn.commit()
+
+    if insert_params:
+        cursor.executemany(
+            """INSERT INTO alerts (alert_type, severity, domain, details)
+               VALUES (?, ?, ?, ?)""",
+            insert_params
+        )
+        conn.commit()
+
     return alerts
 
 
@@ -390,6 +451,7 @@ def check_wildcard_certs(conn: sqlite3.Connection, new_certs: list[dict]) -> lis
     """Alert on new wildcard certificate issuances."""
     alerts = []
     cursor = conn.cursor()
+    insert_params = []
     for cert in new_certs:
         cn = cert.get("common_name", "")
         nv = cert.get("name_value", "")
@@ -407,15 +469,21 @@ def check_wildcard_certs(conn: sqlite3.Connection, new_certs: list[dict]) -> lis
                 }),
                 "certificate_id": cert.get("id"),
             }
-            cursor.execute(
-                """INSERT INTO alerts (alert_type, severity, domain, details, certificate_id)
-                   VALUES (?, ?, ?, ?, ?)""",
+            insert_params.append(
                 (alert["alert_type"], alert["severity"], alert["domain"],
-                 alert["details"], alert["certificate_id"]),
+                 alert["details"], alert["certificate_id"])
             )
             alerts.append(alert)
             logger.warning("ALERT: Wildcard certificate issued for %s", cn)
-    conn.commit()
+
+    if insert_params:
+        cursor.executemany(
+            """INSERT INTO alerts (alert_type, severity, domain, details, certificate_id)
+               VALUES (?, ?, ?, ?, ?)""",
+            insert_params
+        )
+        conn.commit()
+
     return alerts
 
 
@@ -423,6 +491,7 @@ def check_short_lived_certs(conn: sqlite3.Connection, new_certs: list[dict], thr
     """Alert on certificates with unusually short validity periods."""
     alerts = []
     cursor = conn.cursor()
+    insert_params = []
     for cert in new_certs:
         not_before = cert.get("not_before", "")
         not_after = cert.get("not_after", "")
@@ -447,11 +516,9 @@ def check_short_lived_certs(conn: sqlite3.Connection, new_certs: list[dict], thr
                     }),
                     "certificate_id": cert.get("id"),
                 }
-                cursor.execute(
-                    """INSERT INTO alerts (alert_type, severity, domain, details, certificate_id)
-                       VALUES (?, ?, ?, ?, ?)""",
+                insert_params.append(
                     (alert["alert_type"], alert["severity"], alert["domain"],
-                     alert["details"], alert["certificate_id"]),
+                     alert["details"], alert["certificate_id"])
                 )
                 alerts.append(alert)
                 logger.warning(
@@ -460,7 +527,15 @@ def check_short_lived_certs(conn: sqlite3.Connection, new_certs: list[dict], thr
                 )
         except (ValueError, TypeError):
             continue
-    conn.commit()
+
+    if insert_params:
+        cursor.executemany(
+            """INSERT INTO alerts (alert_type, severity, domain, details, certificate_id)
+               VALUES (?, ?, ?, ?, ?)""",
+            insert_params
+        )
+        conn.commit()
+
     return alerts
 
 
