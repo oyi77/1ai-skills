@@ -12,3 +12,7 @@
 ## 2025-05-27 - [SQLite Indexes for Frequent Queries]
 **Learning:** Found missing database indexes on `chat_id` and `created_at` fields in SQLite tables used for gallery browsing and cost aggregation. As the DB grows, filtering or sorting by these fields without an index causes O(N) full table scans, severely impacting query performance.
 **Action:** Consistently ensure fields used heavily in `WHERE` and `ORDER BY` clauses (especially foreign keys like `chat_id` and timestamps like `created_at`) have explicit database indexes created during `init_db()`.
+
+## 2026-06-01 - [Resolve N+1 Queries in Log Ingestion]
+**Learning:** Found N+1 query vulnerability when iterating through arrays of records (e.g. log files or network responses) to check existence (`SELECT 1 WHERE id = ?`), insert new records (`INSERT`), and update tracking (`UPDATE`) for each element independently. The constant context switching to SQLite scales poorly on large iterations.
+**Action:** Pre-fetch existing record IDs via an `IN (?, ...)` clause, construct insertion/update datasets locally into python lists, and execute them as a single batched `executemany(...)` instead of looping `.execute(...)`.
