@@ -290,6 +290,9 @@ class EpisodicMemory:
         return [self._row_to_dict(r) for r in rows]
 
     def apply_decay(self) -> int:
+        # ⚡ Bolt Optimization: Batch database updates using executemany
+        # This resolves an N+1 query issue where an UPDATE was executed individually
+        # in a loop, reducing database round-trips and locking overhead.
         now = time.time()
         updated = 0
         with self._lock:
@@ -297,17 +300,25 @@ class EpisodicMemory:
                 rows = conn.execute(
                     "SELECT id, importance, last_accessed FROM episodes WHERE archived=0"
                 ).fetchall()
+
+                updates = []
                 for eid, imp, la in rows:
                     days = (now - la) / 86400.0
                     new_imp = imp * (config.DECAY_RATE ** days)
-                    conn.execute(
+                    updates.append((max(0.0, new_imp), eid))
+
+                if updates:
+                    conn.executemany(
                         "UPDATE episodes SET importance=? WHERE id=?",
-                        (max(0.0, new_imp), eid),
+                        updates
                     )
-                    updated += 1
+                    updated = len(updates)
         return updated
 
     def _maybe_archive_old(self) -> None:
+        # ⚡ Bolt Optimization: Batch database updates using executemany
+        # This replaces an individual UPDATE in a loop with a single executemany call,
+        # which is significantly faster for SQLite batch updates.
         with self._conn() as conn:
             total = conn.execute(
                 "SELECT COUNT(*) FROM episodes WHERE archived=0"
@@ -318,8 +329,10 @@ class EpisodicMemory:
                     "SELECT id FROM episodes WHERE archived=0 ORDER BY importance ASC, timestamp ASC LIMIT ?",
                     (over,),
                 ).fetchall()
-                for (eid,) in rows:
-                    conn.execute("UPDATE episodes SET archived=1 WHERE id=?", (eid,))
+
+                if rows:
+                    # rows is a list of tuples like [(id1,), (id2,)] which matches executemany param shape
+                    conn.executemany("UPDATE episodes SET archived=1 WHERE id=?", rows)
 
     def rebuild_index(self) -> None:
         self._rebuild_hnsw_from_db()
