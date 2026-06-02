@@ -13,8 +13,5 @@
 **Learning:** Found missing database indexes on `chat_id` and `created_at` fields in SQLite tables used for gallery browsing and cost aggregation. As the DB grows, filtering or sorting by these fields without an index causes O(N) full table scans, severely impacting query performance.
 **Action:** Consistently ensure fields used heavily in `WHERE` and `ORDER BY` clauses (especially foreign keys like `chat_id` and timestamps like `created_at`) have explicit database indexes created during `init_db()`.
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
-**Learning:** In the memory system, looping over database SELECT results to run a single  query per row creates massive N+1 query bottlenecks and slows down  exponentially as the memory table grows.
-**Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list () and process them in a single batch operation using  to minimize I/O overhead and database locking.
-## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
