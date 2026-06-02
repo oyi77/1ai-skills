@@ -203,6 +203,9 @@ class SemanticMemory:
 
     def apply_decay(self) -> int:
         """Apply daily decay to all non-archived memories. Returns count updated."""
+        # ⚡ Bolt Optimization: Batch database updates using executemany
+        # This replaces an individual UPDATE in a loop with a single executemany call
+        # preventing N+1 DB query issues when decaying memories.
         now = _now()
         updated = 0
         with self._lock:
@@ -210,14 +213,19 @@ class SemanticMemory:
                 rows = conn.execute(
                     "SELECT id, importance, last_accessed FROM memories WHERE archived=0"
                 ).fetchall()
+
+                updates = []
                 for mid, imp, last_acc in rows:
                     days = (now - last_acc) / 86400.0
                     new_imp = imp * (config.DECAY_RATE ** days)
-                    conn.execute(
+                    updates.append((max(0.0, new_imp), mid))
+
+                if updates:
+                    conn.executemany(
                         "UPDATE memories SET importance=? WHERE id=?",
-                        (max(0.0, new_imp), mid),
+                        updates
                     )
-                    updated += 1
+                    updated = len(updates)
         return updated
 
     def archive_low_importance(self) -> int:
