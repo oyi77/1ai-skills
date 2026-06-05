@@ -340,17 +340,28 @@ class MemoryManager:
 
             # Archive originals
             self._archive.archive(cluster_mems)
-            for m in cluster_mems:
-                with self._semantic._conn() as conn:
-                    conn.execute(
-                        "UPDATE memories SET archived=1 WHERE id=?", (m["id"],)
-                    )
+
+            # ⚡ Bolt Optimization: Batch database updates using executemany
+            # Resolves N+1 query issue during memory compaction
+            params = [(m["id"],) for m in cluster_mems]
+            with self._semantic._conn() as conn:
+                conn.executemany(
+                    "UPDATE memories SET archived=1 WHERE id=?", params
+                )
             # Link originals → compacted
-            for m in cluster_mems:
-                try:
-                    self._graph.add_edge(m["id"], new_id, edge_type="refers_to", weight=0.8)
-                except Exception:
-                    pass
+            # ⚡ Bolt Optimization: Batch graph edge insertion
+            edges_to_add = [(m["id"], new_id, "refers_to", 0.8) for m in cluster_mems]
+            try:
+                self._graph.add_edges(edges_to_add)
+            except AttributeError:
+                # Fallback if add_edges isn't implemented
+                for m in cluster_mems:
+                    try:
+                        self._graph.add_edge(m["id"], new_id, edge_type="refers_to", weight=0.8)
+                    except Exception:
+                        pass
+            except Exception:
+                pass
             compacted += len(cluster_mems)
 
         logger.info(

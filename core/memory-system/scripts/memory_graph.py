@@ -95,6 +95,29 @@ class MemoryGraph:
             if self._graph is not None:
                 self._graph.add_edge(from_id, to_id, edge_type=edge_type, weight=weight)
 
+    def add_edges(self, edges: List[Tuple[str, str, str, float]]) -> None:
+        """Batch insert multiple edges.
+        edges: list of (from_id, to_id, edge_type, weight)
+        """
+        now = time.time()
+        params = []
+        for from_id, to_id, edge_type, weight in edges:
+            if edge_type not in VALID_EDGE_TYPES:
+                raise ValueError(f"Invalid edge_type '{edge_type}'. Valid: {VALID_EDGE_TYPES}")
+            params.append((from_id, to_id, edge_type, weight, now))
+
+        with self._lock:
+            with self._conn() as conn:
+                conn.executemany(
+                    """INSERT OR REPLACE INTO memory_edges
+                       (from_id, to_id, edge_type, weight, created_at)
+                       VALUES (?,?,?,?,?)""",
+                    params
+                )
+            if self._graph is not None:
+                for from_id, to_id, edge_type, weight in edges:
+                    self._graph.add_edge(from_id, to_id, edge_type=edge_type, weight=weight)
+
     def remove_edge(self, from_id: str, to_id: str, edge_type: Optional[str] = None) -> None:
         with self._lock:
             with self._conn() as conn:

@@ -18,3 +18,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2026-03-12 - Memory Compaction Optimization
+**Learning:** In highly clustered memory graphs, iterating N+1 queries during compaction scales quadratically and generates heavy database lock contention.
+**Action:** When updating memory sets or adding batch graph edges, use `sqlite3.executemany` directly instead of iterating singular `UPDATE` or `INSERT OR REPLACE` calls to eliminate loop locking and cut execution time drastically.
