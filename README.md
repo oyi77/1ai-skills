@@ -1,8 +1,8 @@
-# 1ai-Skills — 1284 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 1286 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 1284](https://img.shields.io/badge/skills-1284-blue)](https://github.com/oyi77/1ai-skills)
+[![Skills: 1286](https://img.shields.io/badge/skills-1286-blue)](https://github.com/oyi77/1ai-skills)
 [![Categories: 18](https://img.shields.io/badge/categories-18-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **1284 production-ready AI agent skills** organized across **18 categories** — including **779 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **1286 production-ready AI agent skills** organized across **18 categories** — including **779 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -100,7 +100,7 @@ Or use the skill trigger: say **"install hooks"** or **"/hooks-setup"** to your 
 
 ## What's New in v3.1 — Anatomy & Structure Improvements
 
-Based on analysis of [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills), we've standardized all 220 skills with **complete anatomy**:
+Based on analysis of [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills), we've standardized all 1286 skills with **complete anatomy**:
 
 ### 📚 New `references/` Directory
 Shared checklists to reduce token usage (replaces duplicated content in skills):
@@ -129,7 +129,7 @@ Session lifecycle hooks for automation:
 - `hooks/hooks.json` — Hook configuration
 
 ### 📐 New `LIFECYCLE_INDEX.md`
-Maps all 216 skills to the software development lifecycle:
+Maps all 1286 skills to the software development lifecycle:
 - **DEFINE** → research skills (McKinsey, Feynman, Musk)
 - **PLAN** → planning skills (writing-plans, find-skills, create-skills)
 - **BUILD** → development skills (TDD, systematic-debugging, subagent-driven-development)
@@ -154,7 +154,7 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 1284 Skills by Category
+## All 1286 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
@@ -207,14 +207,14 @@ Skills now reference each other (not duplicate content):
 - **Faceless YouTube** — MrBeast-style automated YouTube content
 - **Seedance** — Cinematic AI video production
 
-### Cybersecurity (779 skills, 26 domains)
-- **Threat Hunting** — 55 skills: APT detection, MITRE ATT&CK mapping, Sigma rules, anomaly detection
-- **Cloud Security** — 60 skills: AWS/Azure/GCP hardening, CSPM, IAM, container security
-- **Digital Forensics** — 37 skills: memory forensics, disk imaging, malware reverse engineering
-- **Penetration Testing** — 23 skills: web app, network, API, mobile pen testing with OWASP/PTES
-- **Red Teaming** — 24 skills: Cobalt Strike, C2 frameworks, adversary emulation, evasion
-- **Incident Response** — 25 skills: triage, scoping, containment, eradication, lessons learned
-- **DevSecOps** — 17 skills: SAST/DAST, supply chain security, CI/CD hardening
+### Cybersecurity (1286 skills, 26 domains)
+- **Threat Hunting** — 1286 skills: APT detection, MITRE ATT&CK mapping, Sigma rules, anomaly detection
+- **Cloud Security** — 1286 skills: AWS/Azure/GCP hardening, CSPM, IAM, container security
+- **Digital Forensics** — 1286 skills: memory forensics, disk imaging, malware reverse engineering
+- **Penetration Testing** — 1286 skills: web app, network, API, mobile pen testing with OWASP/PTES
+- **Red Teaming** — 1286 skills: Cobalt Strike, C2 frameworks, adversary emulation, evasion
+- **Incident Response** — 1286 skills: triage, scoping, containment, eradication, lessons learned
+- **DevSecOps** — 1286 skills: SAST/DAST, supply chain security, CI/CD hardening
 - **Compliance & Governance** — NIST CSF 2.0, MITRE ATT&CK v18, D3FEND, ATLAS, AI RMF mapping
 
 ### Engineering
