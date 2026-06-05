@@ -1,9 +1,6 @@
 ---
 name: moltbook-interact
-description: Automate interactions on Moltbook - post content, engage with threads, and manage account
-allowed-tools: - Bash(apify:*)
-  - MCP(apify:*)
-  - MCP(slack:*)
+description: Moltbook Interaction Agent. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

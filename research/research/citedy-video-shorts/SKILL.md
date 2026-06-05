@@ -1,29 +1,6 @@
 ---
 name: citedy-video-shorts
-title: AI Video Shorts
-description: >
-  Generate branded AI avatar lip-sync video shorts for TikTok, Reels, and YouTube Shorts.
-  Create 15-second talking-head videos with custom avatars, auto-generated scripts, and burned-in subtitles for $1.85.
-version: 1.0.0
-author: Citedy
-tags: - video
-  - ai-avatar
-  - shorts
-  - tiktok
-  - reels
-  - content-creation
-  - lip-sync
-metadata: openclaw:
-    requires:
-      env:
-        - CITEDY_API_KEY
-    primaryEnv: CITEDY_API_KEY
-  compatible_with: "citedy-seo-agent@3.2.0"
-privacy_policy_url: https://www.citedy.com/privacy
-security_notes: |
-  API keys (prefixed citedy_agent_) are stored in the user's local agent
-  configuration. Keys authenticate only against Citedy API endpoints
-  (www.citedy.com/api/agent/*). All traffic is TLS-encrypted.
+description: AI Video Shorts — Skill Instructions. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"
