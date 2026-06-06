@@ -18,3 +18,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2025-06-11 - [Optimize SQLite Aggregation & Expiration queries]
+**Learning:** In the vulnerability tracking system, checking for expired exceptions required pulling full result sets via `SELECT *` without an index on `(status, expires_at)` (causing full table scans) and then iterating via a Python loop to execute sequential N+1 `UPDATE` and `INSERT` queries for each expired record, which severely degraded performance as the exceptions table grew.
+**Action:** When performing status updates on groups of filtered rows in SQLite, always add compound indexes (e.g., `(status, expires_at)`) to optimize the filter operation. Furthermore, gather row IDs into a list and apply the state changes in a single batch query utilizing `sqlite3.Connection.executemany()` instead of individual `execute()` calls within a loop.
