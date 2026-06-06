@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1284 skills across 18 categories**, including 779 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1286 skills across 18 categories**, including 779 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -30,7 +30,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | `mcp/` | 12 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase) |
 | `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 7 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
-| **TOTAL** | **1284** | |
+| **TOTAL** | **1286** | |
 
 ## Tooling Dirs (no skills, support infrastructure)
 
@@ -57,7 +57,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 ### Working In This Directory
 - Skills are atomic, self-contained, and namespaced by category dir.
 - **Discovery order**: read `SKILLS.json` (totals) → read category `AGENTS.md` (if present) → read individual `SKILL.md`.
-- Do NOT walk all 1284 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
+- Do NOT walk all 1286 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
 - For the 754 cybersecurity skills, use `cybersecurity/AGENTS.md` for the subdomain map (avoids loading the whole tree into context).
 
 ### Adding a Skill
