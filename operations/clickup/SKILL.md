@@ -1,6 +1,7 @@
 ---
 name: clickup
-description: Skill: clickup. See SKILL.md body for details. Use when this domain is relevant.
+description: >
+  Skill: clickup. See SKILL.md body for details. Use when this domain is relevant.
 ---
 *Use ClickUp for flexible task management. Tasks, docs, time - all in one.*
 

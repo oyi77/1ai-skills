@@ -1,7 +1,9 @@
 ---
 name: workflow-builder
-description: Build and automate workflows for business operations with Notion and Slack integration
-allowed-tools: - MCP(notion:*)
+description: >
+  Build and automate workflows for business operations with Notion and Slack integration
+allowed-tools:
+  - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:

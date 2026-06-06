@@ -1,7 +1,9 @@
 ---
 name: joko-moltbook
-description: Queue-driven Moltbook posting agent with deduplication and monitoring
-allowed-tools: - Bash(apify:*)
+description: >
+  Queue-driven Moltbook posting agent with deduplication and monitoring
+allowed-tools:
+  - Bash(apify:*)
   - MCP(apify:*)
   - MCP(notion:*)
   - MCP(slack:*)

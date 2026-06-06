@@ -2,6 +2,7 @@
 name: smart-contract-dev
 description: Smart contract development — Solidity, Hardhat, Foundry. DeFi, NFTs, upgradeable contracts, security patterns
 
+---
 ## Red Flags
 
 - Missing ReentrancyGuard on external state-changing functions

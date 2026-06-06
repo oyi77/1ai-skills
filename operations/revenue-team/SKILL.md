@@ -1,7 +1,9 @@
 ---
 name: revenue-team
-description: Manage sales pipeline, forecast revenue, track deals with HubSpot and Notion
-allowed-tools: - MCP(hubspot:*)
+description: >
+  Manage sales pipeline, forecast revenue, track deals with HubSpot and Notion
+allowed-tools:
+  - MCP(hubspot:*)
   - MCP(notion:*)
   - MCP(slack:*)
 ---

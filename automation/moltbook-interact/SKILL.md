@@ -1,7 +1,9 @@
 ---
 name: moltbook-interact
-description: Automate interactions on Moltbook - post content, engage with threads, and manage account
-allowed-tools: - Bash(apify:*)
+description: >
+  Automate interactions on Moltbook - post content, engage with threads, and manage account
+allowed-tools:
+  - Bash(apify:*)
   - MCP(apify:*)
   - MCP(slack:*)
 ---

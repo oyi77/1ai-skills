@@ -2,6 +2,7 @@
 name: defi-protocols
 description: DeFi protocol development — AMMs, lending, staking, yield farming. Uniswap, Aave patterns
 
+---
 ## Red Flags
 
 - Slippage tolerance set too high (excessive price impact accepted)

@@ -1,7 +1,9 @@
 ---
 name: product-team
-description: Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion
-allowed-tools: - MCP(notion:*)
+description: >
+  Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion
+allowed-tools:
+  - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:

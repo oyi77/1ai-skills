@@ -2,6 +2,7 @@
 name: nft-marketplace
 description: NFT marketplace — ERC-721/1155, minting, auctions, royalties, metadata on IPFS
 
+---
 ## Red Flags
 
 - Metadata stored on HTTP URLs instead of IPFS/Arweave (mutable)

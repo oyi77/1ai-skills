@@ -2,6 +2,7 @@
 name: portfolio-manager
 description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this domain.
 
+---
 ## When to Use
 
 - Managing capital allocation across multiple trading strategies

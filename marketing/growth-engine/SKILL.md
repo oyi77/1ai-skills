@@ -1,6 +1,7 @@
 ---
 name: growth-engine
-description: Prior: Beta(1, 1) = uniform. Use when relevant to this domain.
+description: >
+  Prior: Beta(1, 1) = uniform. Use when relevant to this domain.
 ---
 
 

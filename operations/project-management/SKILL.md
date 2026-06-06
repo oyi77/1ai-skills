@@ -1,7 +1,9 @@
 ---
 name: project-management
-description: Coordinate tasks, track deadlines, manage sprints, and maintain project documentation with Notion integration
-allowed-tools: - MCP(notion:*)
+description: >
+  Coordinate tasks, track deadlines, manage sprints, and maintain project documentation with Notion integration
+allowed-tools:
+  - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:

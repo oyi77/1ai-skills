@@ -6,14 +6,16 @@ description: >
   Create 15-second talking-head videos with custom avatars, auto-generated scripts, and burned-in subtitles for $1.85.
 version: 1.0.0
 author: Citedy
-tags: - video
+tags:
+  - video
   - ai-avatar
   - shorts
   - tiktok
   - reels
   - content-creation
   - lip-sync
-metadata: openclaw:
+metadata:
+  openclaw:
     requires:
       env:
         - CITEDY_API_KEY

@@ -1,6 +1,7 @@
 ---
 name: remotion
-description: Create, render, and manage programmatic videos using Remotion (React-based video framework). Use this skill whenever the user wants to make a video with code — including anime, music videos, movie/cinematic trailers, influencer/TikTok/Reels content, product showcases, brand promos, podcast videos, data visualizations, explainers, or any promotional/production video. Also trigger when using Remotion as a fallback for AI video generation (Kling, Sora, HeyGen, etc.). Trigger for vague requests like 'make me a video about X', 'animate this', 'create a video ad', or any Remotion-specific concepts: compositions, useCurrentFrame, interpolate, spring, AbsoluteFill, staticFile, calculateMetadata, renderMedia.
+description: >
+  Create, render, and manage programmatic videos using Remotion (React-based video framework). Use this skill whenever the user wants to make a video with code — including anime, music videos, movie/cinematic trailers, influencer/TikTok/Reels content, product showcases, brand promos, podcast videos, data visualizations, explainers, or any promotional/production video. Also trigger when using Remotion as a fallback for AI video generation (Kling, Sora, HeyGen, etc.). Trigger for vague requests like 'make me a video about X', 'animate this', 'create a video ad', or any Remotion-specific concepts: compositions, useCurrentFrame, interpolate, spring, AbsoluteFill, staticFile, calculateMetadata, renderMedia.
 ---
 
 

@@ -1,7 +1,9 @@
 ---
 name: governance-team
-description: Manage policies, access control, compliance, and governance processes with Notion and Slack
-allowed-tools: - MCP(notion:*)
+description: >
+  Manage policies, access control, compliance, and governance processes with Notion and Slack
+allowed-tools:
+  - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:

@@ -1,7 +1,9 @@
 ---
 name: content-publisher
-description: Automates drafting and publishing articles to Substack and Medium with Apify and Notion integration
-allowed-tools: - Bash(apify:*)
+description: >
+  Automates drafting and publishing articles to Substack and Medium with Apify and Notion integration
+allowed-tools:
+  - Bash(apify:*)
   - MCP(apify:*)
   - MCP(notion:*)
   - MCP(slack:*)

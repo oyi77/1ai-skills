@@ -10,7 +10,8 @@ description: >
 author: Vilona / BerkahKarya
 language: id-ID / en
 tags: [hr, hiring, onboarding, pkwt, indonesia, team, operations, offboarding]
-scripts: - scripts/onboarding_checklist.py
+scripts:
+  - scripts/onboarding_checklist.py
   - scripts/payroll_calc.py
 ---
 

@@ -2,6 +2,7 @@
 name: crypto-wallet
 description: Crypto wallet development — HD wallets, key management, transaction signing, multi-chain, WalletConnect
 
+---
 ## Red Flags
 
 - Private keys stored in plaintext or logged to console output

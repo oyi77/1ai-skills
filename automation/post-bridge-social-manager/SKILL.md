@@ -1,7 +1,9 @@
 ---
 name: post-bridge-social-manager
-description: Post Bridge Social Manager. Use when relevant to this domain.
-persona: name: Domain Expert
+description: >
+  Post Bridge Social Manager. Use when relevant to this domain.
+persona:
+  name: Domain Expert
   title: Master of Post Bridge Social Manager
   expertise:
   - Specialized Knowledge

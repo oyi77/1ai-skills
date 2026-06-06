@@ -7,14 +7,16 @@ description: >
   for use in any LLM pipeline. Powered by Citedy.
 version: 1.0.0
 author: Citedy
-tags: - content-ingestion
+tags:
+  - content-ingestion
   - youtube
   - transcription
   - pdf
   - audio
   - web-scraping
   - data-extraction
-metadata: openclaw:
+metadata:
+  openclaw:
     requires:
       env:
         - CITEDY_API_KEY

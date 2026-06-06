@@ -8,6 +8,7 @@ version: 1.0.0
 author: Vilona (BerkahKarya AI GM)
 tags: [finance, cashflow, pnl, revenue, alerts, berkahkarya]
 
+---
 ## When to Use
 
 - Real-time P&L tracking needed for multi-stream revenue business

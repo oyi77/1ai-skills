@@ -1,7 +1,9 @@
 ---
 name: operations-team
-description: Execute SOPs, handle on-call triage, manage SLA breaches with Notion and Slack
-allowed-tools: - MCP(notion:*)
+description: >
+  Execute SOPs, handle on-call triage, manage SLA breaches with Notion and Slack
+allowed-tools:
+  - MCP(notion:*)
   - MCP(slack:*)
 ---
 persona:

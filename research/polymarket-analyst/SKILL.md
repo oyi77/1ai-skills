@@ -1,7 +1,9 @@
 ---
 name: polymarket-analyst
-description: Analyze Polymarket predictions, calculate EV, and monitor markets for trading opportunities
-allowed-tools: - Bash(firecrawl:*)
+description: >
+  Analyze Polymarket predictions, calculate EV, and monitor markets for trading opportunities
+allowed-tools:
+  - Bash(firecrawl:*)
   - MCP(firecrawl:*)
   - MCP(exa:*)
   - MCP(slack:*)

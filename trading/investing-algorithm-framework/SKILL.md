@@ -4,6 +4,7 @@ description: Full quantitative trading workflow in Python — define strategies,
 domain: trading
 tags: [quant, backtesting, python, ccxt, live-trading, monte-carlo, vectorized, strategy]
 
+---
 ## When NOT to Use
 
 - Task is about portfolio management, not trading (use portfolio skills)
