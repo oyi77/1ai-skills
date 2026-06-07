@@ -1,29 +1,6 @@
 ---
 name: citedy-content-ingestion
-title: Content Ingestion
-description: >
-  Turn any URL into structured content — YouTube videos (via Gemini Video API),
-  web articles, PDFs, and audio files. Extract transcripts, summaries, and metadata
-  for use in any LLM pipeline. Powered by Citedy.
-version: 1.0.0
-author: Citedy
-tags: - content-ingestion
-  - youtube
-  - transcription
-  - pdf
-  - audio
-  - web-scraping
-  - data-extraction
-metadata: openclaw:
-    requires:
-      env:
-        - CITEDY_API_KEY
-    primaryEnv: CITEDY_API_KEY
-  compatible_with: "citedy-seo-agent@3.2.0"
-privacy_policy_url: https://www.citedy.com/privacy
-security_notes: |
-  API keys (prefixed citedy_agent_) authenticate against Citedy API endpoints only.
-  All traffic is TLS-encrypted. Keys can be revoked from dashboard.
+description: Content Ingestion — Skill Instructions. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

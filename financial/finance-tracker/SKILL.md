@@ -1,53 +1,7 @@
 ---
 name: finance-tracker
-description: >
-  Real-time P&L tracking, cashflow monitoring, and revenue gap detection for BerkahKarya.
-  Use when you need to check financial health, calculate runway, detect revenue droughts,
-  run daily P&L reports, or send cashflow alerts to Telegram.
-version: 1.0.0
-author: Vilona (BerkahKarya AI GM)
-tags: [finance, cashflow, pnl, revenue, alerts, berkahkarya]
-
-## When to Use
-
-- Real-time P&L tracking needed for multi-stream revenue business
-- Cashflow monitoring with automated revenue gap detection
-- Daily revenue vs burn rate comparison across 5 revenue lines
-- Telegram alert integration for revenue drought notifications
-- Runway calculation and emergency cash position monitoring
-
-## When NOT to Use
-
-- Task is outside your authorization scope
-- You need to implement controls (use implementing-* skills)
-- Task is about analysis, not action (use analyzing-* skills)
-- You don't have access to target systems
-- Task requires compliance expertise (consult professionals)
-- Task is about defense, not offense (use defensive skills)
-
-
-## Red Flags
-
-- Revenue gap exceeds 12 hours without alert triggered
-- Bank balance below IDR 100,000 without emergency notification
-- Runway calculation showing less than 3 days remaining
-- Manual cashflow entries not updated within 24 hours
-- Cron jobs for revenue monitoring not running or failing silently
-- Telegram alerts failing to deliver without fallback mechanism
-
-## Verification
-
-After completing finance tracker setup, confirm:
-
-- [ ] All 5 revenue streams tracked with separate data sources
-- [ ] Daily P&L script calculates correct totals across streams
-- [ ] Cashflow dashboard displays real-time bank balance and runway
-- [ ] Revenue gap detection fires Telegram alerts at 4h/8h/12h thresholds
-- [ ] Cron jobs installed and running for periodic gap checks
-- [ ] Manual cashflow entry format documented and tested
-
+description: Finance Tracker — BerkahKarya. Use when relevant to this domain.
 ---
-
 # Finance Tracker — BerkahKarya
 
 > **Mission:** Zero dead hours. Every IDR tracked. Every gap detected.

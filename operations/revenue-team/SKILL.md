@@ -1,9 +1,6 @@
 ---
 name: revenue-team
-description: Manage sales pipeline, forecast revenue, track deals with HubSpot and Notion
-allowed-tools: - MCP(hubspot:*)
-  - MCP(notion:*)
-  - MCP(slack:*)
+description: Revenue Team. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"
