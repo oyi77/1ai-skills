@@ -36,11 +36,13 @@ def extract_received_chain(msg):
     ip_pattern = re.compile(r"\[?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]?")
     for i, header in enumerate(reversed(received_headers)):
         ips = ip_pattern.findall(header)
-        hops.append({
-            "hop": i + 1,
-            "header": header.strip()[:200],
-            "ips": ips,
-        })
+        hops.append(
+            {
+                "hop": i + 1,
+                "header": header.strip()[:200],
+                "ips": ips,
+            }
+        )
     return hops
 
 
@@ -110,10 +112,12 @@ def detect_url_mismatch(msg):
             if display_urls:
                 for display_url in display_urls:
                     if display_url.rstrip("/") != href.rstrip("/"):
-                        mismatches.append({
-                            "display_url": display_url,
-                            "actual_url": href,
-                        })
+                        mismatches.append(
+                            {
+                                "display_url": display_url,
+                                "actual_url": href,
+                            }
+                        )
     return mismatches
 
 
@@ -146,10 +150,16 @@ def extract_attachments(msg, output_dir=None):
 
 def dns_lookup(domain, record_type="TXT"):
     """Perform DNS lookup for SPF/DKIM/DMARC records."""
-    stdout, _, rc = subprocess.run(
-        ["dig", record_type, domain, "+short"],
-        capture_output=True, text=True, timeout=10
-    ).stdout, "", 0
+    stdout, _, rc = (
+        subprocess.run(
+            ["dig", record_type, domain, "+short"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        ).stdout,
+        "",
+        0,
+    )
     return stdout.strip() if stdout else ""
 
 
@@ -178,8 +188,20 @@ def generate_phishing_indicators(headers, auth, hops, url_mismatches, attachment
     if url_mismatches:
         indicators.append(f"{len(url_mismatches)} URL display/href mismatches detected")
     for att in attachments:
-        if any(att["filename"].endswith(ext) for ext in [".exe", ".scr", ".vbs", ".js",
-               ".docm", ".xlsm", ".bat", ".ps1", ".hta"]):
+        if any(
+            att["filename"].endswith(ext)
+            for ext in [
+                ".exe",
+                ".scr",
+                ".vbs",
+                ".js",
+                ".docm",
+                ".xlsm",
+                ".bat",
+                ".ps1",
+                ".hta",
+            ]
+        ):
             indicators.append(f"Suspicious attachment: {att['filename']}")
     return indicators
 
@@ -206,20 +228,28 @@ if __name__ == "__main__":
             print(f"  Hop {hop['hop']}: IPs={hop['ips']}")
 
         auth = extract_authentication_results(msg)
-        print(f"\n[*] Authentication: SPF={auth['spf']} DKIM={auth['dkim']} DMARC={auth['dmarc']}")
+        print(
+            f"\n[*] Authentication: SPF={auth['spf']} DKIM={auth['dkim']} DMARC={auth['dmarc']}"
+        )
 
         urls = extract_urls(msg)
         print(f"\n[*] URLs found: {len(urls)}")
         url_mismatches = detect_url_mismatch(msg)
         for m in url_mismatches:
-            print(f"  [!] MISMATCH: Display='{m['display_url']}' Actual='{m['actual_url']}'")
+            print(
+                f"  [!] MISMATCH: Display='{m['display_url']}' Actual='{m['actual_url']}'"
+            )
 
         attachments = extract_attachments(msg)
         print(f"\n[*] Attachments: {len(attachments)}")
         for att in attachments:
-            print(f"  {att['filename']} ({att['size']} bytes) SHA256={att['sha256'][:16]}...")
+            print(
+                f"  {att['filename']} ({att['size']} bytes) SHA256={att['sha256'][:16]}..."
+            )
 
-        indicators = generate_phishing_indicators(headers, auth, hops, url_mismatches, attachments)
+        indicators = generate_phishing_indicators(
+            headers, auth, hops, url_mismatches, attachments
+        )
         if indicators:
             print(f"\n[!] PHISHING INDICATORS:")
             for ind in indicators:

@@ -30,21 +30,41 @@ except ImportError:
 # ── Industrial Protocol Definitions ──────────────────────────────────
 
 OT_PROTOCOLS = {
-    502:   {"name": "Modbus/TCP", "vendor": "Open", "risk": "high", "auth": False},
-    102:   {"name": "S7comm", "vendor": "Siemens", "risk": "high", "auth": False},
-    44818: {"name": "EtherNet/IP", "vendor": "ODVA/Rockwell", "risk": "high", "auth": False},
-    2222:  {"name": "EtherNet/IP Implicit", "vendor": "ODVA", "risk": "medium", "auth": False},
-    4840:  {"name": "OPC UA", "vendor": "OPC Foundation", "risk": "low", "auth": True},
+    502: {"name": "Modbus/TCP", "vendor": "Open", "risk": "high", "auth": False},
+    102: {"name": "S7comm", "vendor": "Siemens", "risk": "high", "auth": False},
+    44818: {
+        "name": "EtherNet/IP",
+        "vendor": "ODVA/Rockwell",
+        "risk": "high",
+        "auth": False,
+    },
+    2222: {
+        "name": "EtherNet/IP Implicit",
+        "vendor": "ODVA",
+        "risk": "medium",
+        "auth": False,
+    },
+    4840: {"name": "OPC UA", "vendor": "OPC Foundation", "risk": "low", "auth": True},
     20000: {"name": "DNP3", "vendor": "IEEE", "risk": "high", "auth": False},
     47808: {"name": "BACnet/IP", "vendor": "ASHRAE", "risk": "high", "auth": False},
-    1911:  {"name": "Niagara Fox", "vendor": "Tridium", "risk": "high", "auth": False},
-    2404:  {"name": "IEC 60870-5-104", "vendor": "IEC", "risk": "high", "auth": False},
+    1911: {"name": "Niagara Fox", "vendor": "Tridium", "risk": "high", "auth": False},
+    2404: {"name": "IEC 60870-5-104", "vendor": "IEC", "risk": "high", "auth": False},
     18245: {"name": "GE SRTP", "vendor": "GE", "risk": "high", "auth": False},
-    5094:  {"name": "HART-IP", "vendor": "FieldComm", "risk": "medium", "auth": False},
-    789:   {"name": "Crimson v3", "vendor": "Red Lion", "risk": "high", "auth": False},
-    1089:  {"name": "FF HSE", "vendor": "Fieldbus Foundation", "risk": "medium", "auth": False},
-    9600:  {"name": "OMRON FINS", "vendor": "OMRON", "risk": "high", "auth": False},
-    5007:  {"name": "Mitsubishi MELSEC", "vendor": "Mitsubishi", "risk": "high", "auth": False},
+    5094: {"name": "HART-IP", "vendor": "FieldComm", "risk": "medium", "auth": False},
+    789: {"name": "Crimson v3", "vendor": "Red Lion", "risk": "high", "auth": False},
+    1089: {
+        "name": "FF HSE",
+        "vendor": "Fieldbus Foundation",
+        "risk": "medium",
+        "auth": False,
+    },
+    9600: {"name": "OMRON FINS", "vendor": "OMRON", "risk": "high", "auth": False},
+    5007: {
+        "name": "Mitsubishi MELSEC",
+        "vendor": "Mitsubishi",
+        "risk": "high",
+        "auth": False,
+    },
 }
 
 # Modbus function codes with write capability
@@ -54,9 +74,11 @@ MODBUS_DIAGNOSTIC_FUNCS = {8, 17, 43}
 
 # ── Purdue Level Classification ─────────────────────────────────────
 
+
 @dataclass
 class PurdueConfig:
     """Configuration for Purdue level subnet mappings."""
+
     level_0_1: list = field(default_factory=lambda: ["10.10.0.0/16", "192.168.10.0/24"])
     level_2: list = field(default_factory=lambda: ["10.20.0.0/16", "192.168.20.0/24"])
     level_3: list = field(default_factory=lambda: ["10.30.0.0/16", "192.168.30.0/24"])
@@ -91,6 +113,7 @@ def classify_purdue_level(ip_str, config=None):
 
 # ── Asset and Finding Models ─────────────────────────────────────────
 
+
 @dataclass
 class OTAsset:
     ip: str
@@ -118,16 +141,22 @@ class Finding:
 
 # ── Passive Discovery Engine ─────────────────────────────────────────
 
+
 class OTNetworkDiscovery:
     """Passive OT network discovery and analysis engine."""
 
     def __init__(self, purdue_config=None):
         self.config = purdue_config or PurdueConfig()
         self.assets = {}
-        self.connections = defaultdict(lambda: {
-            "count": 0, "protocols": set(), "ports": set(),
-            "first_seen": None, "last_seen": None
-        })
+        self.connections = defaultdict(
+            lambda: {
+                "count": 0,
+                "protocols": set(),
+                "ports": set(),
+                "first_seen": None,
+                "last_seen": None,
+            }
+        )
         self.protocol_stats = defaultdict(int)
         self.findings = []
         self.modbus_writes = []
@@ -197,12 +226,14 @@ class OTNetworkDiscovery:
             if len(payload) > 7:
                 func_code = payload[7]
                 if func_code in MODBUS_WRITE_FUNCS:
-                    self.modbus_writes.append({
-                        "timestamp": timestamp,
-                        "src": src_ip,
-                        "dst": dst_ip,
-                        "function_code": func_code,
-                    })
+                    self.modbus_writes.append(
+                        {
+                            "timestamp": timestamp,
+                            "src": src_ip,
+                            "dst": dst_ip,
+                            "function_code": func_code,
+                        }
+                    )
 
         # Track connections
         conn_key = f"{src_ip}->{dst_ip}"
@@ -220,13 +251,19 @@ class OTNetworkDiscovery:
         src_level = self.assets[src_ip].purdue_level
         dst_level = self.assets[dst_ip].purdue_level
         if src_level != dst_level and "Unknown" not in (src_level, dst_level):
-            self.cross_zone_flows.append({
-                "src": src_ip, "src_level": src_level,
-                "dst": dst_ip, "dst_level": dst_level,
-                "port": dst_port,
-                "protocol": OT_PROTOCOLS.get(dst_port, {}).get("name", f"port/{dst_port}"),
-                "timestamp": timestamp,
-            })
+            self.cross_zone_flows.append(
+                {
+                    "src": src_ip,
+                    "src_level": src_level,
+                    "dst": dst_ip,
+                    "dst_level": dst_level,
+                    "port": dst_port,
+                    "protocol": OT_PROTOCOLS.get(dst_port, {}).get(
+                        "name", f"port/{dst_port}"
+                    ),
+                    "timestamp": timestamp,
+                }
+            )
 
     def analyze_pcap(self, pcap_file):
         """Analyze a pcap file for OT network discovery."""
@@ -250,83 +287,90 @@ class OTNetworkDiscovery:
         # Finding: Direct enterprise-to-field communication
         for flow in self.cross_zone_flows:
             if "Level 4" in flow["src_level"] and "Level 0-1" in flow["dst_level"]:
-                self.findings.append(Finding(
-                    finding_id=f"OT-{finding_counter:03d}",
-                    severity="critical",
-                    title="Direct Enterprise-to-Field Device Communication",
-                    description=(
-                        f"Traffic observed from {flow['src']} ({flow['src_level']}) "
-                        f"to {flow['dst']} ({flow['dst_level']}) via {flow['protocol']}. "
-                        "This bypasses all intermediate security zones."
-                    ),
-                    affected_assets=[flow["src"], flow["dst"]],
-                    iec_62443_ref="IEC 62443-3-3 SR 5.1 - Network Segmentation",
-                    nist_800_82_ref="NIST SP 800-82r3 Section 5.3 - Network Architecture",
-                    remediation="Block direct L4-to-L0/1 traffic. Route through DMZ and OT firewall.",
-                ))
+                self.findings.append(
+                    Finding(
+                        finding_id=f"OT-{finding_counter:03d}",
+                        severity="critical",
+                        title="Direct Enterprise-to-Field Device Communication",
+                        description=(
+                            f"Traffic observed from {flow['src']} ({flow['src_level']}) "
+                            f"to {flow['dst']} ({flow['dst_level']}) via {flow['protocol']}. "
+                            "This bypasses all intermediate security zones."
+                        ),
+                        affected_assets=[flow["src"], flow["dst"]],
+                        iec_62443_ref="IEC 62443-3-3 SR 5.1 - Network Segmentation",
+                        nist_800_82_ref="NIST SP 800-82r3 Section 5.3 - Network Architecture",
+                        remediation="Block direct L4-to-L0/1 traffic. Route through DMZ and OT firewall.",
+                    )
+                )
                 finding_counter += 1
 
         # Finding: Enterprise bypassing DMZ to reach control
         for flow in self.cross_zone_flows:
             if "Level 4" in flow["src_level"] and "Level 2" in flow["dst_level"]:
-                self.findings.append(Finding(
-                    finding_id=f"OT-{finding_counter:03d}",
-                    severity="critical",
-                    title="Enterprise-to-Control Bypass of DMZ",
-                    description=(
-                        f"Traffic from {flow['src']} ({flow['src_level']}) reaches "
-                        f"{flow['dst']} ({flow['dst_level']}) without traversing DMZ."
-                    ),
-                    affected_assets=[flow["src"], flow["dst"]],
-                    iec_62443_ref="IEC 62443-3-3 SR 5.2 - Zone Boundary Protection",
-                    nist_800_82_ref="NIST SP 800-82r3 Section 5.4 - DMZ Architecture",
-                    remediation="Deploy DMZ between enterprise and control zones with bidirectional firewall.",
-                ))
+                self.findings.append(
+                    Finding(
+                        finding_id=f"OT-{finding_counter:03d}",
+                        severity="critical",
+                        title="Enterprise-to-Control Bypass of DMZ",
+                        description=(
+                            f"Traffic from {flow['src']} ({flow['src_level']}) reaches "
+                            f"{flow['dst']} ({flow['dst_level']}) without traversing DMZ."
+                        ),
+                        affected_assets=[flow["src"], flow["dst"]],
+                        iec_62443_ref="IEC 62443-3-3 SR 5.2 - Zone Boundary Protection",
+                        nist_800_82_ref="NIST SP 800-82r3 Section 5.4 - DMZ Architecture",
+                        remediation="Deploy DMZ between enterprise and control zones with bidirectional firewall.",
+                    )
+                )
                 finding_counter += 1
 
         # Finding: Unauthenticated Modbus write operations
         if self.modbus_writes:
             unique_targets = set(w["dst"] for w in self.modbus_writes)
-            self.findings.append(Finding(
-                finding_id=f"OT-{finding_counter:03d}",
-                severity="critical",
-                title="Unauthenticated Modbus/TCP Write Commands Detected",
-                description=(
-                    f"{len(self.modbus_writes)} Modbus write operations observed "
-                    f"targeting {len(unique_targets)} devices. Modbus/TCP has no "
-                    "native authentication; any network-connected device can modify registers."
-                ),
-                affected_assets=list(unique_targets),
-                iec_62443_ref="IEC 62443-3-3 SR 1.1 - Human User Identification and Authentication",
-                nist_800_82_ref="NIST SP 800-82r3 Section 6.2 - Access Control",
-                remediation=(
-                    "Deploy Modbus-aware firewall (e.g., Tofino, Claroty Edge) to restrict "
-                    "write-capable source addresses. Implement allowlisting for Modbus function codes."
-                ),
-            ))
+            self.findings.append(
+                Finding(
+                    finding_id=f"OT-{finding_counter:03d}",
+                    severity="critical",
+                    title="Unauthenticated Modbus/TCP Write Commands Detected",
+                    description=(
+                        f"{len(self.modbus_writes)} Modbus write operations observed "
+                        f"targeting {len(unique_targets)} devices. Modbus/TCP has no "
+                        "native authentication; any network-connected device can modify registers."
+                    ),
+                    affected_assets=list(unique_targets),
+                    iec_62443_ref="IEC 62443-3-3 SR 1.1 - Human User Identification and Authentication",
+                    nist_800_82_ref="NIST SP 800-82r3 Section 6.2 - Access Control",
+                    remediation=(
+                        "Deploy Modbus-aware firewall (e.g., Tofino, Claroty Edge) to restrict "
+                        "write-capable source addresses. Implement allowlisting for Modbus function codes."
+                    ),
+                )
+            )
             finding_counter += 1
 
         # Finding: Unauthenticated industrial protocols
         for port, info in OT_PROTOCOLS.items():
             if not info["auth"] and info["name"] in self.protocol_stats:
                 exposed_assets = [
-                    ip for ip, asset in self.assets.items()
-                    if port in asset.ports_open
+                    ip for ip, asset in self.assets.items() if port in asset.ports_open
                 ]
                 if exposed_assets:
-                    self.findings.append(Finding(
-                        finding_id=f"OT-{finding_counter:03d}",
-                        severity="high",
-                        title=f"Unauthenticated {info['name']} Protocol in Use",
-                        description=(
-                            f"{len(exposed_assets)} devices expose {info['name']} (port {port}) "
-                            f"which lacks native authentication. Vendor: {info['vendor']}."
-                        ),
-                        affected_assets=exposed_assets,
-                        iec_62443_ref="IEC 62443-3-3 SR 1.2 - Software Process Identification",
-                        nist_800_82_ref="NIST SP 800-82r3 Section 6.2.1 - Protocol Security",
-                        remediation=f"Deploy protocol-aware firewall for {info['name']} traffic inspection.",
-                    ))
+                    self.findings.append(
+                        Finding(
+                            finding_id=f"OT-{finding_counter:03d}",
+                            severity="high",
+                            title=f"Unauthenticated {info['name']} Protocol in Use",
+                            description=(
+                                f"{len(exposed_assets)} devices expose {info['name']} (port {port}) "
+                                f"which lacks native authentication. Vendor: {info['vendor']}."
+                            ),
+                            affected_assets=exposed_assets,
+                            iec_62443_ref="IEC 62443-3-3 SR 1.2 - Software Process Identification",
+                            nist_800_82_ref="NIST SP 800-82r3 Section 6.2.1 - Protocol Security",
+                            remediation=f"Deploy protocol-aware firewall for {info['name']} traffic inspection.",
+                        )
+                    )
                     finding_counter += 1
 
         return self.findings
@@ -341,9 +385,13 @@ class OTNetworkDiscovery:
                 "protocols_detected": dict(self.protocol_stats),
                 "cross_zone_flows": len(self.cross_zone_flows),
                 "modbus_write_operations": len(self.modbus_writes),
-                "findings_critical": sum(1 for f in self.findings if f.severity == "critical"),
+                "findings_critical": sum(
+                    1 for f in self.findings if f.severity == "critical"
+                ),
                 "findings_high": sum(1 for f in self.findings if f.severity == "high"),
-                "findings_medium": sum(1 for f in self.findings if f.severity == "medium"),
+                "findings_medium": sum(
+                    1 for f in self.findings if f.severity == "medium"
+                ),
                 "findings_low": sum(1 for f in self.findings if f.severity == "low"),
             },
             "assets": {ip: asdict(asset) for ip, asset in self.assets.items()},
@@ -392,10 +440,16 @@ class OTNetworkDiscovery:
 def main():
     parser = argparse.ArgumentParser(description="OT Network Security Assessment Tool")
     parser.add_argument("--pcap", help="Path to pcap file for analysis")
-    parser.add_argument("--live-capture", action="store_true", help="Perform live capture")
+    parser.add_argument(
+        "--live-capture", action="store_true", help="Perform live capture"
+    )
     parser.add_argument("--interface", help="Network interface for live capture")
-    parser.add_argument("--duration", type=int, default=300, help="Capture duration in seconds")
-    parser.add_argument("--output", default="ot_assessment_report.json", help="Output report file")
+    parser.add_argument(
+        "--duration", type=int, default=300, help="Capture duration in seconds"
+    )
+    parser.add_argument(
+        "--output", default="ot_assessment_report.json", help="Output report file"
+    )
     args = parser.parse_args()
 
     discovery = OTNetworkDiscovery()

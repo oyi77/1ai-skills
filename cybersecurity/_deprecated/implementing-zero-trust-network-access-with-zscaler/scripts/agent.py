@@ -47,7 +47,9 @@ def list_server_groups(headers, customer_id):
     print(f"\n[*] Server Groups: {len(groups)}")
     for g in groups:
         connectors = g.get("connectors", [])
-        print(f"  {g['name']} - {len(connectors)} connectors, enabled={g.get('enabled')}")
+        print(
+            f"  {g['name']} - {len(connectors)} connectors, enabled={g.get('enabled')}"
+        )
     return groups
 
 
@@ -63,8 +65,13 @@ def list_access_policies(headers, customer_id):
         action = r.get("action", "")
         conditions = r.get("conditions", [])
         if action == "ALLOW" and not conditions:
-            findings.append({"rule": r.get("name"), "issue": "ALLOW with no conditions",
-                             "severity": "CRITICAL"})
+            findings.append(
+                {
+                    "rule": r.get("name"),
+                    "issue": "ALLOW with no conditions",
+                    "severity": "CRITICAL",
+                }
+            )
             print(f"  [!] {r.get('name')}: ALLOW without conditions")
         else:
             print(f"  {r.get('name')}: action={action}, conditions={len(conditions)}")
@@ -82,7 +89,9 @@ def check_connector_health(headers, customer_id):
         status = c.get("currentVersion", "unknown")
         enabled = c.get("enabled", False)
         if not enabled:
-            issues.append({"connector": c.get("name"), "issue": "disabled", "severity": "MEDIUM"})
+            issues.append(
+                {"connector": c.get("name"), "issue": "disabled", "severity": "MEDIUM"}
+            )
         print(f"  {c.get('name')}: enabled={enabled}, version={status}")
     print(f"[*] Connectors: {len(connectors)} total, {len(issues)} disabled")
     return connectors, issues
@@ -92,10 +101,14 @@ def generate_report(apps, app_findings, policy_findings, connector_issues, outpu
     """Generate ZPA audit report."""
     report = {
         "audit_date": datetime.now(timezone.utc).isoformat(),
-        "summary": {"app_segments": len(apps), "bypass_findings": len(app_findings),
-                     "policy_findings": len(policy_findings),
-                     "connector_issues": len(connector_issues)},
-        "bypass_findings": app_findings, "policy_findings": policy_findings,
+        "summary": {
+            "app_segments": len(apps),
+            "bypass_findings": len(app_findings),
+            "policy_findings": len(policy_findings),
+            "connector_issues": len(connector_issues),
+        },
+        "bypass_findings": app_findings,
+        "policy_findings": policy_findings,
         "connector_issues": connector_issues,
     }
     with open(output_path, "w") as f:
@@ -105,7 +118,9 @@ def generate_report(apps, app_findings, policy_findings, connector_issues, outpu
 
 def main():
     parser = argparse.ArgumentParser(description="Zscaler ZPA Zero Trust Audit Agent")
-    parser.add_argument("action", choices=["apps", "servers", "policies", "connectors", "full-audit"])
+    parser.add_argument(
+        "action", choices=["apps", "servers", "policies", "connectors", "full-audit"]
+    )
     parser.add_argument("--client-id", required=True)
     parser.add_argument("--client-secret", required=True)
     parser.add_argument("--customer-id", required=True)

@@ -22,8 +22,7 @@ class TailscaleClient:
         self.headers = {"Authorization": f"Bearer {api_key}"}
 
     def _get(self, path):
-        resp = requests.get(f"{self.base_url}{path}",
-                            headers=self.headers, timeout=15)
+        resp = requests.get(f"{self.base_url}{path}", headers=self.headers, timeout=15)
         resp.raise_for_status()
         return resp.json()
 
@@ -50,24 +49,32 @@ def audit_devices(devices):
     for dev in devices:
         hostname = dev.get("hostname", "unknown")
         if dev.get("keyExpiryDisabled", False):
-            findings.append({
-                "device": hostname,
-                "issue": "Key expiry disabled — device never requires re-authentication",
-                "severity": "HIGH",
-            })
-        if not dev.get("updateAvailable", False) is False and dev.get("updateAvailable"):
-            findings.append({
-                "device": hostname,
-                "issue": "Tailscale update available but not installed",
-                "severity": "MEDIUM",
-            })
+            findings.append(
+                {
+                    "device": hostname,
+                    "issue": "Key expiry disabled — device never requires re-authentication",
+                    "severity": "HIGH",
+                }
+            )
+        if not dev.get("updateAvailable", False) is False and dev.get(
+            "updateAvailable"
+        ):
+            findings.append(
+                {
+                    "device": hostname,
+                    "issue": "Tailscale update available but not installed",
+                    "severity": "MEDIUM",
+                }
+            )
         os_name = dev.get("os", "")
         if dev.get("blocksIncomingConnections", False):
-            findings.append({
-                "device": hostname,
-                "issue": "Device blocks incoming connections (shields up mode)",
-                "severity": "INFO",
-            })
+            findings.append(
+                {
+                    "device": hostname,
+                    "issue": "Device blocks incoming connections (shields up mode)",
+                    "severity": "INFO",
+                }
+            )
     return findings
 
 
@@ -79,19 +86,23 @@ def audit_acl(acl_data):
         src = rule.get("src", [])
         dst = rule.get("dst", [])
         if "*" in src and any("*:*" in d for d in dst):
-            findings.append({
-                "rule_index": i,
-                "issue": "Allow-all rule: src=* dst=*:* — no zero trust segmentation",
-                "severity": "CRITICAL",
-            })
+            findings.append(
+                {
+                    "rule_index": i,
+                    "issue": "Allow-all rule: src=* dst=*:* — no zero trust segmentation",
+                    "severity": "CRITICAL",
+                }
+            )
     ssh_rules = acl_data.get("ssh", []) if isinstance(acl_data, dict) else []
     for rule in ssh_rules:
         if rule.get("action") == "accept" and "*" in rule.get("src", []):
-            findings.append({
-                "rule": "SSH",
-                "issue": "SSH access allowed from all users",
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "rule": "SSH",
+                    "issue": "SSH access allowed from all users",
+                    "severity": "HIGH",
+                }
+            )
     return findings
 
 
@@ -109,8 +120,10 @@ def run_audit(api_key, tailnet):
     report["total_devices"] = len(devices)
     print(f"--- DEVICES ({len(devices)}) ---")
     for d in devices[:15]:
-        print(f"  {d.get('hostname','')}: {d.get('os','')}/{d.get('clientVersion','')} "
-              f"({'online' if d.get('online') else 'offline'})")
+        print(
+            f"  {d.get('hostname','')}: {d.get('os','')}/{d.get('clientVersion','')} "
+            f"({'online' if d.get('online') else 'offline'})"
+        )
 
     dev_findings = audit_devices(devices)
     report["device_findings"] = dev_findings
@@ -137,7 +150,9 @@ def run_audit(api_key, tailnet):
 def main():
     parser = argparse.ArgumentParser(description="Tailscale Zero Trust Audit")
     parser.add_argument("--api-key", required=True, help="Tailscale API key")
-    parser.add_argument("--tailnet", default="-", help="Tailnet name (default: current)")
+    parser.add_argument(
+        "--tailnet", default="-", help="Tailnet name (default: current)"
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

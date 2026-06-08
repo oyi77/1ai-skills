@@ -11,6 +11,7 @@ Usage:
 
 Exit code 0 = all pass, 1 = failures found.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -30,15 +31,32 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 SKILL_DIRS = [
-    "agents", "automation", "content", "core", "cybersecurity", "data",
-    "development", "devops", "financial", "integrations", "marketing",
-    "mcp", "meta", "operations", "productivity", "research", "sales",
+    "agents",
+    "automation",
+    "content",
+    "core",
+    "cybersecurity",
+    "data",
+    "development",
+    "devops",
+    "financial",
+    "integrations",
+    "marketing",
+    "mcp",
+    "meta",
+    "operations",
+    "productivity",
+    "research",
+    "sales",
     "trading",
 ]
 
 # Sections that count toward the "at least 3 of these" requirement
 QUALITY_SECTIONS = {
-    "When to Use", "Red Flags", "Verification", "How to Use",
+    "When to Use",
+    "Red Flags",
+    "Verification",
+    "How to Use",
     "Common Rationalizations",
 }
 
@@ -51,6 +69,7 @@ CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def find_all_skill_paths() -> list[Path]:
     """Walk SKILL_DIRS and collect every SKILL.md path."""
@@ -84,7 +103,7 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
         return None, "missing closing ---", text
 
     fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1:])
+    body = "\n".join(lines[close_idx + 1 :])
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
@@ -153,6 +172,7 @@ def find_cross_refs(body: str) -> list[str]:
 # Validation (runs per-file, designed for parallelism)
 # ---------------------------------------------------------------------------
 
+
 def validate_skill(path: str) -> dict:
     """Validate a single SKILL.md. Returns result dict."""
     p = Path(path)
@@ -163,7 +183,12 @@ def validate_skill(path: str) -> dict:
     try:
         text = p.read_text(encoding="utf-8", errors="replace")
     except Exception as e:
-        return {"path": rel, "status": "fail", "errors": [f"unreadable: {e}"], "warnings": []}
+        return {
+            "path": rel,
+            "status": "fail",
+            "errors": [f"unreadable: {e}"],
+            "warnings": [],
+        }
 
     # --- Structural checks ---
     meta, fm_err, body = parse_frontmatter(text)
@@ -186,12 +211,16 @@ def validate_skill(path: str) -> dict:
         # Name must match directory name
         dir_name = p.parent.name
         if name.strip() != dir_name:
-            errors.append(f"name mismatch: frontmatter='{name.strip()}' vs dir='{dir_name}'")
+            errors.append(
+                f"name mismatch: frontmatter='{name.strip()}' vs dir='{dir_name}'"
+            )
 
     if not desc or not isinstance(desc, str) or not desc.strip():
         errors.append("missing 'description' field in frontmatter")
     elif len(desc.strip()) <= MIN_DESC_LEN:
-        errors.append(f"description too short ({len(desc.strip())} chars, need >{MIN_DESC_LEN})")
+        errors.append(
+            f"description too short ({len(desc.strip())} chars, need >{MIN_DESC_LEN})"
+        )
 
     # Minimum line count
     line_count = count_lines(text)
@@ -216,7 +245,11 @@ def validate_skill(path: str) -> dict:
 
     # --- Content quality checks ---
     # Ignore [TODO] when inside checklist items (e.g., "- [ ] No [TODO] or placeholder")
-    todo_lines = [line for line in text.splitlines() if "[TODO]" in line and not re.match(r'^\s*-\s*\[', line)]
+    todo_lines = [
+        line
+        for line in text.splitlines()
+        if "[TODO]" in line and not re.match(r"^\s*-\s*\[", line)
+    ]
     if todo_lines:
         errors.append(f"contains {len(todo_lines)} [TODO] marker(s)")
 
@@ -228,19 +261,39 @@ def validate_skill(path: str) -> dict:
     cross_refs = find_cross_refs(body)
 
     if errors:
-        return {"path": rel, "status": "fail", "errors": errors, "warnings": warnings, "cross_refs": cross_refs}
+        return {
+            "path": rel,
+            "status": "fail",
+            "errors": errors,
+            "warnings": warnings,
+            "cross_refs": cross_refs,
+        }
 
-    return {"path": rel, "status": "pass", "errors": [], "warnings": warnings, "cross_refs": cross_refs}
+    return {
+        "path": rel,
+        "status": "pass",
+        "errors": [],
+        "warnings": warnings,
+        "cross_refs": cross_refs,
+    }
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Quality test suite for SKILL.md files")
+    parser = argparse.ArgumentParser(
+        description="Quality test suite for SKILL.md files"
+    )
     parser.add_argument("--json", action="store_true", help="Output JSON report")
-    parser.add_argument("--workers", type=int, default=None, help="Parallel workers (default: cpu count)")
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=None,
+        help="Parallel workers (default: cpu count)",
+    )
     args = parser.parse_args()
 
     t0 = time.monotonic()
@@ -310,7 +363,8 @@ def main() -> int:
             "error_summary": dict(error_counts.most_common()),
             "failures": [
                 {"path": r["path"], "errors": r["errors"]}
-                for r in results if r["status"] == "fail"
+                for r in results
+                if r["status"] == "fail"
             ],
         }
         print(json.dumps(report, indent=2))

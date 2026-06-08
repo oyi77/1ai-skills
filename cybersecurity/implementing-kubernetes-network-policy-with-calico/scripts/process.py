@@ -28,7 +28,13 @@ def get_namespaces() -> list:
     """Get all non-system namespaces."""
     output = run_kubectl(["get", "namespaces", "-o", "json"])
     ns_data = json.loads(output)
-    system_ns = {"kube-system", "kube-public", "kube-node-lease", "calico-system", "tigera-operator"}
+    system_ns = {
+        "kube-system",
+        "kube-public",
+        "kube-node-lease",
+        "calico-system",
+        "tigera-operator",
+    }
     return [
         ns["metadata"]["name"]
         for ns in ns_data["items"]
@@ -165,7 +171,9 @@ def generate_allow_policy(
 def print_audit_report(results: list):
     """Print formatted audit report."""
     print("\n=== Kubernetes Network Policy Audit Report ===\n")
-    print(f"{'Namespace':<30} {'Deny Ingress':<15} {'Deny Egress':<15} {'Policies':<10} {'Status'}")
+    print(
+        f"{'Namespace':<30} {'Deny Ingress':<15} {'Deny Egress':<15} {'Policies':<10} {'Status'}"
+    )
     print("-" * 85)
 
     compliant = 0
@@ -174,10 +182,16 @@ def print_audit_report(results: list):
     for r in results:
         ingress = "YES" if r["default_deny_ingress"] else "NO"
         egress = "YES" if r["default_deny_egress"] else "NO"
-        status = "COMPLIANT" if r["default_deny_ingress"] and r["default_deny_egress"] else "NON-COMPLIANT"
+        status = (
+            "COMPLIANT"
+            if r["default_deny_ingress"] and r["default_deny_egress"]
+            else "NON-COMPLIANT"
+        )
         if status == "COMPLIANT":
             compliant += 1
-        print(f"{r['namespace']:<30} {ingress:<15} {egress:<15} {r['policy_count']:<10} {status}")
+        print(
+            f"{r['namespace']:<30} {ingress:<15} {egress:<15} {r['policy_count']:<10} {status}"
+        )
 
     print(f"\n{compliant}/{total} namespaces compliant with default-deny policy")
 
@@ -187,12 +201,18 @@ def main():
     subparsers = parser.add_subparsers(dest="command")
 
     # Audit command
-    subparsers.add_parser("audit", help="Audit all namespaces for network policy coverage")
+    subparsers.add_parser(
+        "audit", help="Audit all namespaces for network policy coverage"
+    )
 
     # Generate deny command
-    gen_deny = subparsers.add_parser("generate-deny", help="Generate default deny policies")
+    gen_deny = subparsers.add_parser(
+        "generate-deny", help="Generate default deny policies"
+    )
     gen_deny.add_argument("--namespace", "-n", required=True, help="Target namespace")
-    gen_deny.add_argument("--apply", action="store_true", help="Apply policies directly")
+    gen_deny.add_argument(
+        "--apply", action="store_true", help="Apply policies directly"
+    )
 
     # Generate allow command
     gen_allow = subparsers.add_parser("generate-allow", help="Generate allow policy")

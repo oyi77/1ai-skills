@@ -15,33 +15,101 @@ import re
 from typing import Optional
 from . import learning_engine as le
 
-
 # Keywords that indicate content-related feedback
 CONTENT_SIGNALS = {
     "positive": [
-        "bagus", "mantap", "keren", "suka", "nice", "good", "perfect",
-        "oke", "ok", "bener", "betul", "setuju", "approve", "yes",
-        "viral", "rame", "engage", "laku", "convert", "sold",
+        "bagus",
+        "mantap",
+        "keren",
+        "suka",
+        "nice",
+        "good",
+        "perfect",
+        "oke",
+        "ok",
+        "bener",
+        "betul",
+        "setuju",
+        "approve",
+        "yes",
+        "viral",
+        "rame",
+        "engage",
+        "laku",
+        "convert",
+        "sold",
     ],
     "negative": [
-        "jelek", "buruk", "ganti", "ubah", "salah", "wrong", "bad",
-        "spam", "sampah", "jangan", "stop", "hapus", "delete",
-        "ga cocok", "ga match", "ga suka", "norak", "lebay",
+        "jelek",
+        "buruk",
+        "ganti",
+        "ubah",
+        "salah",
+        "wrong",
+        "bad",
+        "spam",
+        "sampah",
+        "jangan",
+        "stop",
+        "hapus",
+        "delete",
+        "ga cocok",
+        "ga match",
+        "ga suka",
+        "norak",
+        "lebay",
     ],
     "instruction": [
-        "harus", "wajib", "selalu", "jangan pernah", "rules", "rule",
-        "pakai", "gunakan", "format", "template", "style",
-        "mulai sekarang", "dari sekarang", "ingat", "remember",
+        "harus",
+        "wajib",
+        "selalu",
+        "jangan pernah",
+        "rules",
+        "rule",
+        "pakai",
+        "gunakan",
+        "format",
+        "template",
+        "style",
+        "mulai sekarang",
+        "dari sekarang",
+        "ingat",
+        "remember",
     ],
     "design": [
-        "warna", "color", "background", "font", "layout", "gambar",
-        "image", "foto", "dark", "light", "size", "resolusi",
-        "vertical", "horizontal", "ratio", "format",
+        "warna",
+        "color",
+        "background",
+        "font",
+        "layout",
+        "gambar",
+        "image",
+        "foto",
+        "dark",
+        "light",
+        "size",
+        "resolusi",
+        "vertical",
+        "horizontal",
+        "ratio",
+        "format",
     ],
     "copy": [
-        "caption", "hook", "teks", "text", "copy", "headline",
-        "cta", "judul", "title", "deskripsi", "description",
-        "bahasa", "tone", "gaya", "emoji",
+        "caption",
+        "hook",
+        "teks",
+        "text",
+        "copy",
+        "headline",
+        "cta",
+        "judul",
+        "title",
+        "deskripsi",
+        "description",
+        "bahasa",
+        "tone",
+        "gaya",
+        "emoji",
     ],
 }
 
@@ -49,16 +117,16 @@ CONTENT_SIGNALS = {
 def detect_feedback_type(message: str) -> Optional[str]:
     """Detect what kind of content feedback this message contains."""
     msg_lower = message.lower()
-    
+
     scores = {}
     for ftype, keywords in CONTENT_SIGNALS.items():
         score = sum(1 for kw in keywords if kw in msg_lower)
         if score > 0:
             scores[ftype] = score
-    
+
     if not scores:
         return None
-    
+
     return max(scores, key=scores.get)
 
 
@@ -66,7 +134,7 @@ def extract_content_context(message: str) -> dict:
     """Extract context about what content element is being discussed."""
     msg_lower = message.lower()
     context = {}
-    
+
     # Detect platform references
     platforms = {
         "tiktok": ["tiktok", "tt", "fyp"],
@@ -79,7 +147,7 @@ def extract_content_context(message: str) -> dict:
         if any(kw in msg_lower for kw in keywords):
             context["platform"] = platform
             break
-    
+
     # Detect content type references
     content_types = {
         "image": ["gambar", "image", "foto", "photo", "visual"],
@@ -91,7 +159,7 @@ def extract_content_context(message: str) -> dict:
         if any(kw in msg_lower for kw in keywords):
             context["content_type"] = ctype
             break
-    
+
     # Detect product references
     products = {
         "sellpix": ["sellpix", "marketplace"],
@@ -105,7 +173,7 @@ def extract_content_context(message: str) -> dict:
         if any(kw in msg_lower for kw in keywords):
             context["product"] = product
             break
-    
+
     return context
 
 
@@ -116,32 +184,32 @@ def process_user_feedback(
 ) -> Optional[dict]:
     """
     Process a user message for content-related learnings.
-    
+
     Call this from the main agent on EVERY user message.
     Returns the stored learning entry, or None if message
     has no content-related feedback.
-    
+
     Args:
         message: Raw user message text
         user_name: Name of the user (for attribution)
         user_role: "user", "trainer", "admin"
     """
     feedback_type = detect_feedback_type(message)
-    
+
     if not feedback_type:
         return None  # Not content-related
-    
+
     context = extract_content_context(message)
     context["user"] = user_name
     context["role"] = user_role
-    
+
     # Determine source based on known trainers
     source = "user"
     if user_name.lower() in ("veris", "andik veris", "alwayscuanbos"):
         source = "trainer:Veris"
         if feedback_type in ("positive", "negative"):
             feedback_type = "training"  # Veris feedback is always training-grade
-    
+
     # Map feedback types
     type_map = {
         "positive": "positive",
@@ -150,15 +218,15 @@ def process_user_feedback(
         "design": "training",
         "copy": "training",
     }
-    
+
     stored_type = type_map.get(feedback_type, feedback_type)
-    
+
     tags = [feedback_type]
     if context.get("platform"):
         tags.append(context["platform"])
     if context.get("content_type"):
         tags.append(context["content_type"])
-    
+
     return le.capture_feedback(
         source=source,
         feedback_type=stored_type,
@@ -176,7 +244,7 @@ def process_trainer_input(
     """
     Process input from a known trainer (like Veris).
     Trainers get elevated priority in the learning system.
-    
+
     This should be called when we detect messages from
     known trainer Telegram accounts.
     """
@@ -184,7 +252,7 @@ def process_trainer_input(
     context["trainer"] = trainer_name
     if media_urls:
         context["media_urls"] = media_urls
-    
+
     return le.capture_feedback(
         source=f"trainer:{trainer_name}",
         feedback_type="training",

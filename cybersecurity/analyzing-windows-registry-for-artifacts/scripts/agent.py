@@ -26,12 +26,14 @@ def extract_autorun_entries(software_hive_path):
         try:
             key = reg.get_key(path)
             for val in key.iter_values():
-                entries.append({
-                    "path": path,
-                    "name": val.name,
-                    "value": str(val.value),
-                    "last_modified": str(key.header.last_modified),
-                })
+                entries.append(
+                    {
+                        "path": path,
+                        "name": val.name,
+                        "value": str(val.value),
+                        "last_modified": str(key.header.last_modified),
+                    }
+                )
         except Exception:
             pass
     return entries
@@ -49,12 +51,14 @@ def extract_user_autorun(ntuser_path):
         try:
             key = reg.get_key(path)
             for val in key.iter_values():
-                entries.append({
-                    "path": path,
-                    "name": val.name,
-                    "value": str(val.value),
-                    "last_modified": str(key.header.last_modified),
-                })
+                entries.append(
+                    {
+                        "path": path,
+                        "name": val.name,
+                        "value": str(val.value),
+                        "last_modified": str(key.header.last_modified),
+                    }
+                )
         except Exception:
             pass
     return entries
@@ -86,11 +90,13 @@ def extract_userassist(ntuser_path):
                 if timestamp > 0:
                     ts = datetime(1601, 1, 1) + timedelta(microseconds=timestamp // 10)
                     last_run = ts.strftime("%Y-%m-%d %H:%M:%S")
-                programs.append({
-                    "program": decoded_name,
-                    "run_count": run_count,
-                    "last_run": last_run,
-                })
+                programs.append(
+                    {
+                        "program": decoded_name,
+                        "run_count": run_count,
+                        "last_run": last_run,
+                    }
+                )
     return programs
 
 
@@ -104,7 +110,9 @@ def extract_recent_docs(ntuser_path):
         for val in key.iter_values():
             if val.name != "MRUListEx" and isinstance(val.value, bytes):
                 try:
-                    name = val.value.split(b"\x00\x00")[0].decode("utf-16-le", errors="ignore")
+                    name = val.value.split(b"\x00\x00")[0].decode(
+                        "utf-16-le", errors="ignore"
+                    )
                     docs.append({"index": val.name, "filename": name})
                 except Exception:
                     pass
@@ -143,7 +151,12 @@ def extract_installed_software(software_hive_path):
         for subkey in key.iter_subkeys():
             entry = {"key": subkey.name}
             for val in subkey.iter_values():
-                if val.name in ("DisplayName", "DisplayVersion", "Publisher", "InstallDate"):
+                if val.name in (
+                    "DisplayName",
+                    "DisplayVersion",
+                    "Publisher",
+                    "InstallDate",
+                ):
                     entry[val.name] = str(val.value)
             if "DisplayName" in entry:
                 software.append(entry)
@@ -155,7 +168,14 @@ def extract_installed_software(software_hive_path):
 def flag_suspicious_autorun(entries):
     """Flag autorun entries with suspicious characteristics."""
     suspicious = []
-    suspect_paths = ["\\temp\\", "\\appdata\\", "\\programdata\\", "\\public\\", "powershell", "cmd"]
+    suspect_paths = [
+        "\\temp\\",
+        "\\appdata\\",
+        "\\programdata\\",
+        "\\public\\",
+        "powershell",
+        "cmd",
+    ]
     for entry in entries:
         val_lower = entry.get("value", "").lower()
         if any(s in val_lower for s in suspect_paths):
@@ -166,15 +186,25 @@ def flag_suspicious_autorun(entries):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Windows Registry Forensic Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="Windows Registry Forensic Analysis Agent"
+    )
     parser.add_argument("--system-hive", help="Path to SYSTEM hive")
     parser.add_argument("--software-hive", help="Path to SOFTWARE hive")
     parser.add_argument("--ntuser", help="Path to NTUSER.DAT hive")
     parser.add_argument("--output-dir", default="./registry_analysis")
-    parser.add_argument("--action", choices=[
-        "autorun", "userassist", "recent_docs", "system_info",
-        "installed_software", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "autorun",
+            "userassist",
+            "recent_docs",
+            "system_info",
+            "installed_software",
+            "full_analysis",
+        ],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -189,7 +219,9 @@ def main():
         suspicious = flag_suspicious_autorun(autorun)
         report["autorun_software"] = autorun
         report["suspicious_autorun"] = suspicious
-        print(f"[+] Autorun entries (SOFTWARE): {len(autorun)}, suspicious: {len(suspicious)}")
+        print(
+            f"[+] Autorun entries (SOFTWARE): {len(autorun)}, suspicious: {len(suspicious)}"
+        )
 
     if args.ntuser and args.action in ("autorun", "full_analysis"):
         user_autorun = extract_user_autorun(args.ntuser)

@@ -8,7 +8,9 @@ import logging
 import argparse
 from datetime import datetime, timedelta
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 MFT_ENTRY_SIZE = 1024
@@ -29,7 +31,7 @@ def parse_mft_entry(data, offset=0):
     """Parse a single MFT entry."""
     if len(data) < offset + 48:
         return None
-    signature = data[offset:offset + 4]
+    signature = data[offset : offset + 4]
     if signature != b"FILE":
         return None
 
@@ -56,26 +58,51 @@ def parse_mft_entry(data, offset=0):
 
         if attr_type == 0x10:  # $STANDARD_INFORMATION
             if attr_offset + 24 + 32 <= len(data):
-                si_offset = attr_offset + struct.unpack_from("<H", data, attr_offset + 20)[0]
+                si_offset = (
+                    attr_offset + struct.unpack_from("<H", data, attr_offset + 20)[0]
+                )
                 if si_offset + 32 <= len(data):
-                    entry["created"] = str(filetime_to_dt(struct.unpack_from("<Q", data, si_offset)[0]))
-                    entry["modified"] = str(filetime_to_dt(struct.unpack_from("<Q", data, si_offset + 8)[0]))
-                    entry["mft_modified"] = str(filetime_to_dt(struct.unpack_from("<Q", data, si_offset + 16)[0]))
-                    entry["accessed"] = str(filetime_to_dt(struct.unpack_from("<Q", data, si_offset + 24)[0]))
+                    entry["created"] = str(
+                        filetime_to_dt(struct.unpack_from("<Q", data, si_offset)[0])
+                    )
+                    entry["modified"] = str(
+                        filetime_to_dt(struct.unpack_from("<Q", data, si_offset + 8)[0])
+                    )
+                    entry["mft_modified"] = str(
+                        filetime_to_dt(
+                            struct.unpack_from("<Q", data, si_offset + 16)[0]
+                        )
+                    )
+                    entry["accessed"] = str(
+                        filetime_to_dt(
+                            struct.unpack_from("<Q", data, si_offset + 24)[0]
+                        )
+                    )
 
         elif attr_type == 0x30:  # $FILE_NAME
             non_res = struct.unpack_from("<B", data, attr_offset + 8)[0]
             if non_res == 0:
-                fn_offset = attr_offset + struct.unpack_from("<H", data, attr_offset + 20)[0]
+                fn_offset = (
+                    attr_offset + struct.unpack_from("<H", data, attr_offset + 20)[0]
+                )
                 if fn_offset + 66 <= len(data):
-                    parent_ref = struct.unpack_from("<Q", data, fn_offset)[0] & 0xFFFFFFFFFFFF
+                    parent_ref = (
+                        struct.unpack_from("<Q", data, fn_offset)[0] & 0xFFFFFFFFFFFF
+                    )
                     name_len = data[fn_offset + 64] if fn_offset + 64 < len(data) else 0
                     name_ns = data[fn_offset + 65] if fn_offset + 65 < len(data) else 0
                     if fn_offset + 66 + name_len * 2 <= len(data):
-                        filename = data[fn_offset + 66:fn_offset + 66 + name_len * 2].decode("utf-16-le", errors="ignore")
+                        filename = data[
+                            fn_offset + 66 : fn_offset + 66 + name_len * 2
+                        ].decode("utf-16-le", errors="ignore")
                         entry["filename"] = filename
                         entry["parent_ref"] = parent_ref
-                        entry["name_type"] = {0: "POSIX", 1: "Win32", 2: "DOS", 3: "Win32+DOS"}.get(name_ns, "Unknown")
+                        entry["name_type"] = {
+                            0: "POSIX",
+                            1: "Win32",
+                            2: "DOS",
+                            3: "Win32+DOS",
+                        }.get(name_ns, "Unknown")
 
         attr_offset += attr_length
 
@@ -110,18 +137,30 @@ def find_deleted_files(entries):
 def analyze_deleted_files(deleted):
     """Analyze deleted files for forensic significance."""
     findings = []
-    suspicious_extensions = {".exe", ".dll", ".ps1", ".bat", ".cmd", ".vbs", ".js", ".hta", ".scr"}
+    suspicious_extensions = {
+        ".exe",
+        ".dll",
+        ".ps1",
+        ".bat",
+        ".cmd",
+        ".vbs",
+        ".js",
+        ".hta",
+        ".scr",
+    }
     for entry in deleted:
         fname = entry.get("filename", "").lower()
         ext = os.path.splitext(fname)[1]
         if ext in suspicious_extensions:
-            findings.append({
-                "record": entry["record_number"],
-                "filename": entry.get("filename"),
-                "type": "Deleted executable/script",
-                "severity": "high",
-                "modified": entry.get("modified"),
-            })
+            findings.append(
+                {
+                    "record": entry["record_number"],
+                    "filename": entry.get("filename"),
+                    "type": "Deleted executable/script",
+                    "severity": "high",
+                    "modified": entry.get("modified"),
+                }
+            )
     return findings
 
 
@@ -134,9 +173,18 @@ def generate_report(entries, deleted, findings):
         "deleted_entries": len(deleted),
         "suspicious_deleted": len(findings),
         "findings": findings[:100],
-        "deleted_files": [{"record": d["record_number"], "filename": d.get("filename"), "modified": d.get("modified")} for d in deleted[:200]],
+        "deleted_files": [
+            {
+                "record": d["record_number"],
+                "filename": d.get("filename"),
+                "modified": d.get("modified"),
+            }
+            for d in deleted[:200]
+        ],
     }
-    print(f"MFT REPORT: {len(entries)} entries, {len(deleted)} deleted, {len(findings)} suspicious")
+    print(
+        f"MFT REPORT: {len(entries)} entries, {len(deleted)} deleted, {len(findings)} suspicious"
+    )
     return report
 
 

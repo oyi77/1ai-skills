@@ -63,7 +63,7 @@ def main():
 
     print(json.dumps(report, indent=2, default=str))
     if args.output:
-        with open(args.output, 'w') as f:
+        with open(args.output, "w") as f:
             json.dump(report, f, indent=2, default=str)
 
 

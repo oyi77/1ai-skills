@@ -5,6 +5,7 @@ Detects WMI-based lateral movement by parsing Windows Event ID
 4688 and Sysmon Event 1 for WmiPrvSE.exe child process patterns,
 suspicious command lines, and WMI event subscription persistence.
 """
+
 # For authorized threat hunting and blue team use only
 
 import argparse
@@ -24,8 +25,16 @@ except ImportError:
 NS = "{http://schemas.microsoft.com/win/2004/08/events/event}"
 
 WMI_PARENT_NAMES = {"wmiprvse.exe", "wmiprvse"}
-SUSPICIOUS_CHILDREN = {"cmd.exe", "powershell.exe", "pwsh.exe", "mshta.exe",
-                       "cscript.exe", "wscript.exe", "regsvr32.exe", "rundll32.exe"}
+SUSPICIOUS_CHILDREN = {
+    "cmd.exe",
+    "powershell.exe",
+    "pwsh.exe",
+    "mshta.exe",
+    "cscript.exe",
+    "wscript.exe",
+    "regsvr32.exe",
+    "rundll32.exe",
+}
 WMI_CMD_PATTERNS = [
     re.compile(r"cmd\.exe\s+/[qQ]\s+/[cC]", re.IGNORECASE),
     re.compile(r"\\\\127\.0\.0\.1\\admin\$\\__\d+", re.IGNORECASE),
@@ -101,21 +110,25 @@ class WMILateralMovementHunter:
             }
             self.wmi_processes.append(entry)
             severity = "high" if entry["suspicious"] else "medium"
-            self.findings.append({
-                "severity": severity,
-                "type": "WMI Process Spawn",
-                "detail": f"WmiPrvSE spawned {child_base}: {cmdline[:100]}",
-                "mitre": "T1047",
-            })
+            self.findings.append(
+                {
+                    "severity": severity,
+                    "type": "WMI Process Spawn",
+                    "detail": f"WmiPrvSE spawned {child_base}: {cmdline[:100]}",
+                    "mitre": "T1047",
+                }
+            )
 
             for pattern in WMI_CMD_PATTERNS:
                 if pattern.search(cmdline):
-                    self.findings.append({
-                        "severity": "critical",
-                        "type": "WMI Lateral Movement Command",
-                        "detail": f"Pattern match in: {cmdline[:150]}",
-                        "mitre": "T1047",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": "WMI Lateral Movement Command",
+                            "detail": f"Pattern match in: {cmdline[:150]}",
+                            "mitre": "T1047",
+                        }
+                    )
                     break
 
     def _check_sysmon1(self, ts, data):
@@ -140,12 +153,14 @@ class WMILateralMovementHunter:
             }
             self.wmi_processes.append(entry)
             if entry["suspicious"]:
-                self.findings.append({
-                    "severity": "high",
-                    "type": "Sysmon WMI Process Spawn",
-                    "detail": f"WmiPrvSE -> {child_base} by {entry['user']}",
-                    "mitre": "T1047",
-                })
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Sysmon WMI Process Spawn",
+                        "detail": f"WmiPrvSE -> {child_base} by {entry['user']}",
+                        "mitre": "T1047",
+                    }
+                )
 
     def _check_wmi_activity(self, event_id, ts, data):
         """Check WMI-Activity/Operational events for persistence."""
@@ -158,12 +173,14 @@ class WMILateralMovementHunter:
         }
         self.wmi_subscriptions.append(entry)
         if event_id in ("5860", "5861"):
-            self.findings.append({
-                "severity": "high",
-                "type": "WMI Event Subscription",
-                "detail": f"Event consumer created/modified: {entry['consumer'][:100]}",
-                "mitre": "T1546.003",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "WMI Event Subscription",
+                    "detail": f"Event consumer created/modified: {entry['consumer'][:100]}",
+                    "mitre": "T1546.003",
+                }
+            )
 
     def generate_report(self, evtx_files):
         for path in evtx_files:
@@ -195,8 +212,11 @@ def main():
     parser = argparse.ArgumentParser(
         description="Hunt for WMI-based lateral movement in Windows Event Logs"
     )
-    parser.add_argument("evtx_files", nargs="+",
-                        help="Path(s) to EVTX files (Security, Sysmon, WMI-Activity)")
+    parser.add_argument(
+        "evtx_files",
+        nargs="+",
+        help="Path(s) to EVTX files (Security, Sysmon, WMI-Activity)",
+    )
     parser.add_argument("--output-dir", default="./wmi_lateral_hunt")
     args = parser.parse_args()
 

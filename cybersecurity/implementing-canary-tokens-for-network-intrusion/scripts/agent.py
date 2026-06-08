@@ -152,6 +152,7 @@ def create_web_image_token(email, memo, webhook_url=None):
 # Thinkst Canary Enterprise API integration
 # ---------------------------------------------------------------------------
 
+
 def thinkst_create_token(console_domain, auth_token, kind, memo, flock_id=None):
     """
     Create a canary token via Thinkst Canary enterprise console API.
@@ -201,8 +202,10 @@ def thinkst_get_alerts(console_domain, auth_token):
 # Token deployment helpers
 # ---------------------------------------------------------------------------
 
-def deploy_aws_credentials_file(target_path, access_key_id, secret_access_key,
-                                profile="default", region="us-east-1"):
+
+def deploy_aws_credentials_file(
+    target_path, access_key_id, secret_access_key, profile="default", region="us-east-1"
+):
     """
     Deploy a fake AWS credentials file as a canary token.
 
@@ -227,8 +230,12 @@ def deploy_aws_credentials_file(target_path, access_key_id, secret_access_key,
     }
 
 
-def deploy_dns_token_in_config(config_path, dns_hostname, key_name="backup_server",
-                               comment="Backup replication endpoint"):
+def deploy_dns_token_in_config(
+    config_path,
+    dns_hostname,
+    key_name="backup_server",
+    comment="Backup replication endpoint",
+):
     """
     Embed a DNS canary token hostname in a configuration file.
 
@@ -282,8 +289,7 @@ def deploy_http_token_in_html(html_path, http_token_url, page_title="IT Admin Po
     }
 
 
-def deploy_ssh_config_token(ssh_config_path, dns_hostname,
-                            host_alias="backup-gateway"):
+def deploy_ssh_config_token(ssh_config_path, dns_hostname, host_alias="backup-gateway"):
     """
     Plant a DNS canary token in an SSH config file.
 
@@ -315,8 +321,9 @@ def deploy_ssh_config_token(ssh_config_path, dns_hostname,
     }
 
 
-def deploy_env_file_token(env_path, access_key_id, secret_access_key,
-                          additional_vars=None):
+def deploy_env_file_token(
+    env_path, access_key_id, secret_access_key, additional_vars=None
+):
     """
     Deploy a fake .env file containing canary AWS credentials and optional extras.
 
@@ -349,6 +356,7 @@ def deploy_env_file_token(env_path, access_key_id, secret_access_key,
 # Webhook alert processing and forwarding
 # ---------------------------------------------------------------------------
 
+
 def send_slack_alert(webhook_url, alert_data):
     """
     Forward a canary token alert to a Slack channel via incoming webhook.
@@ -375,17 +383,23 @@ def send_slack_alert(webhook_url, alert_data):
                     },
                     {
                         "title": "Token Type",
-                        "value": alert_data.get("channel", alert_data.get("token_type", "Unknown")),
+                        "value": alert_data.get(
+                            "channel", alert_data.get("token_type", "Unknown")
+                        ),
                         "short": True,
                     },
                     {
                         "title": "Triggered At",
-                        "value": alert_data.get("time", datetime.now(timezone.utc).isoformat()),
+                        "value": alert_data.get(
+                            "time", datetime.now(timezone.utc).isoformat()
+                        ),
                         "short": True,
                     },
                     {
                         "title": "User Agent",
-                        "value": alert_data.get("additional_data", {}).get("useragent", "N/A"),
+                        "value": alert_data.get("additional_data", {}).get(
+                            "useragent", "N/A"
+                        ),
                         "short": False,
                     },
                     {
@@ -444,7 +458,9 @@ def send_email_alert(smtp_config, alert_data):
         alert_data: Dict with alert details
     """
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"[CANARY ALERT] Token Triggered: {alert_data.get('memo', 'Unknown')}"
+    msg["Subject"] = (
+        f"[CANARY ALERT] Token Triggered: {alert_data.get('memo', 'Unknown')}"
+    )
     msg["From"] = smtp_config["from_addr"]
     msg["To"] = smtp_config["to_addr"]
 
@@ -480,7 +496,11 @@ def send_email_alert(smtp_config, alert_data):
         server.starttls()
         server.login(smtp_config["username"], smtp_config["password"])
         server.send_message(msg)
-    logger.info("Email alert sent to %s for: %s", smtp_config["to_addr"], alert_data.get("memo", ""))
+    logger.info(
+        "Email alert sent to %s for: %s",
+        smtp_config["to_addr"],
+        alert_data.get("memo", ""),
+    )
 
 
 def forward_to_siem(siem_url, alert_data, api_key=None):
@@ -521,6 +541,7 @@ def forward_to_siem(siem_url, alert_data, api_key=None):
 # Token inventory and monitoring
 # ---------------------------------------------------------------------------
 
+
 def create_deployment_plan(environment, zones=None):
     """
     Generate a comprehensive canary token deployment plan for an environment.
@@ -534,42 +555,72 @@ def create_deployment_plan(environment, zones=None):
     """
     default_zones = {
         "dmz": [
-            {"type": "http", "location": "/var/www/admin/index.html",
-             "memo": f"DMZ admin panel -- {environment}",
-             "description": "Hidden image beacon in web server admin page"},
-            {"type": "dns", "location": "/etc/nginx/conf.d/upstream.conf",
-             "memo": f"DMZ nginx upstream -- {environment}",
-             "description": "DNS canary in nginx upstream config"},
+            {
+                "type": "http",
+                "location": "/var/www/admin/index.html",
+                "memo": f"DMZ admin panel -- {environment}",
+                "description": "Hidden image beacon in web server admin page",
+            },
+            {
+                "type": "dns",
+                "location": "/etc/nginx/conf.d/upstream.conf",
+                "memo": f"DMZ nginx upstream -- {environment}",
+                "description": "DNS canary in nginx upstream config",
+            },
         ],
         "internal": [
-            {"type": "aws_keys", "location": "/home/deploy/.aws/credentials",
-             "memo": f"Internal deploy creds -- {environment}",
-             "description": "Fake AWS credentials on deployment server"},
-            {"type": "dns", "location": "/etc/app/database.yml",
-             "memo": f"Internal DB config -- {environment}",
-             "description": "DNS canary in database configuration"},
-            {"type": "http", "location": "/opt/wiki/pages/emergency-passwords.html",
-             "memo": f"Internal wiki passwords page -- {environment}",
-             "description": "HTTP beacon in internal wiki sensitive page"},
+            {
+                "type": "aws_keys",
+                "location": "/home/deploy/.aws/credentials",
+                "memo": f"Internal deploy creds -- {environment}",
+                "description": "Fake AWS credentials on deployment server",
+            },
+            {
+                "type": "dns",
+                "location": "/etc/app/database.yml",
+                "memo": f"Internal DB config -- {environment}",
+                "description": "DNS canary in database configuration",
+            },
+            {
+                "type": "http",
+                "location": "/opt/wiki/pages/emergency-passwords.html",
+                "memo": f"Internal wiki passwords page -- {environment}",
+                "description": "HTTP beacon in internal wiki sensitive page",
+            },
         ],
         "production": [
-            {"type": "aws_keys", "location": "/opt/app/.env",
-             "memo": f"Production .env file -- {environment}",
-             "description": "Canary AWS keys in production env file"},
-            {"type": "dns", "location": "/etc/ssh/ssh_config",
-             "memo": f"Production SSH config -- {environment}",
-             "description": "DNS canary in SSH configuration"},
-            {"type": "dns", "location": "/opt/backup/config.ini",
-             "memo": f"Production backup config -- {environment}",
-             "description": "DNS canary in backup server config"},
+            {
+                "type": "aws_keys",
+                "location": "/opt/app/.env",
+                "memo": f"Production .env file -- {environment}",
+                "description": "Canary AWS keys in production env file",
+            },
+            {
+                "type": "dns",
+                "location": "/etc/ssh/ssh_config",
+                "memo": f"Production SSH config -- {environment}",
+                "description": "DNS canary in SSH configuration",
+            },
+            {
+                "type": "dns",
+                "location": "/opt/backup/config.ini",
+                "memo": f"Production backup config -- {environment}",
+                "description": "DNS canary in backup server config",
+            },
         ],
         "cloud": [
-            {"type": "aws_keys", "location": "s3://config-bucket/.env.backup",
-             "memo": f"Cloud S3 env backup -- {environment}",
-             "description": "Canary AWS keys in S3 configuration bucket"},
-            {"type": "dns", "location": "terraform/modules/networking/vars.tf",
-             "memo": f"Cloud Terraform vars -- {environment}",
-             "description": "DNS canary in Terraform variable definitions"},
+            {
+                "type": "aws_keys",
+                "location": "s3://config-bucket/.env.backup",
+                "memo": f"Cloud S3 env backup -- {environment}",
+                "description": "Canary AWS keys in S3 configuration bucket",
+            },
+            {
+                "type": "dns",
+                "location": "terraform/modules/networking/vars.tf",
+                "memo": f"Cloud Terraform vars -- {environment}",
+                "description": "DNS canary in Terraform variable definitions",
+            },
         ],
     }
 
@@ -619,9 +670,7 @@ def build_token_inventory(report_dir):
         if "deployment_plan" in report:
             for token_spec in report["deployment_plan"].get("tokens", []):
                 zone = token_spec.get("zone", "unknown")
-                inventory["by_zone"][zone] = (
-                    inventory["by_zone"].get(zone, 0) + 1
-                )
+                inventory["by_zone"][zone] = inventory["by_zone"].get(zone, 0) + 1
 
     inventory["total"] = len(inventory["tokens"])
     inventory["generated_at"] = datetime.now(timezone.utc).isoformat()
@@ -655,15 +704,19 @@ def check_token_alerts(webhook_log_path):
                 continue
 
             if entry.get("event_type") == "canarytoken_triggered":
-                alerts.append({
-                    "token_memo": entry.get("memo", ""),
-                    "token_type": entry.get("token_type", ""),
-                    "source_ip": entry.get("src_ip", ""),
-                    "triggered_at": entry.get("time", ""),
-                    "user_agent": entry.get("additional_data", {}).get("useragent", ""),
-                    "manage_url": entry.get("manage_url", ""),
-                    "severity": "high",
-                })
+                alerts.append(
+                    {
+                        "token_memo": entry.get("memo", ""),
+                        "token_type": entry.get("token_type", ""),
+                        "source_ip": entry.get("src_ip", ""),
+                        "triggered_at": entry.get("time", ""),
+                        "user_agent": entry.get("additional_data", {}).get(
+                            "useragent", ""
+                        ),
+                        "manage_url": entry.get("manage_url", ""),
+                        "severity": "high",
+                    }
+                )
 
     logger.info("Found %d triggered alerts in %s", len(alerts), webhook_log_path)
     return alerts
@@ -719,6 +772,7 @@ def test_token_connectivity(token_hostname=None, token_url=None):
 # Main CLI
 # ---------------------------------------------------------------------------
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Canary Token Network Intrusion Detection Agent",
@@ -742,34 +796,76 @@ Examples:
   python agent.py --action monitor --webhook-log /var/log/canary_alerts.json
         """,
     )
-    parser.add_argument("--action", required=True, choices=[
-        "create_dns", "create_http", "create_aws", "create_web_img",
-        "plan", "full_deploy", "monitor", "inventory", "test",
-    ])
-    parser.add_argument("--email", default=os.getenv("CANARY_EMAIL", "soc@company.com"),
-                        help="Notification email for token alerts")
-    parser.add_argument("--webhook", default=os.getenv("CANARY_WEBHOOK"),
-                        help="Webhook URL for real-time alerts (Slack/Teams/generic)")
-    parser.add_argument("--memo", default=None,
-                        help="Human-readable description for the token")
-    parser.add_argument("--environment", default="production",
-                        help="Target environment for deployment plan")
-    parser.add_argument("--zones", nargs="*", default=None,
-                        help="Network zones to include in deployment plan")
-    parser.add_argument("--output", default="canary_token_report.json",
-                        help="Output file path for report")
-    parser.add_argument("--webhook-log", default="/var/log/canary_alerts.json",
-                        help="Path to webhook alert log for monitoring")
-    parser.add_argument("--report-dir", default="./reports",
-                        help="Directory containing deployment reports for inventory")
-    parser.add_argument("--console-domain", default=os.getenv("THINKST_DOMAIN"),
-                        help="Thinkst Canary console domain (enterprise)")
-    parser.add_argument("--api-key", default=os.getenv("THINKST_API_KEY"),
-                        help="Thinkst Canary API auth token (enterprise)")
-    parser.add_argument("--test-hostname", default=None,
-                        help="DNS hostname to test connectivity")
-    parser.add_argument("--test-url", default=None,
-                        help="HTTP URL to test connectivity")
+    parser.add_argument(
+        "--action",
+        required=True,
+        choices=[
+            "create_dns",
+            "create_http",
+            "create_aws",
+            "create_web_img",
+            "plan",
+            "full_deploy",
+            "monitor",
+            "inventory",
+            "test",
+        ],
+    )
+    parser.add_argument(
+        "--email",
+        default=os.getenv("CANARY_EMAIL", "soc@company.com"),
+        help="Notification email for token alerts",
+    )
+    parser.add_argument(
+        "--webhook",
+        default=os.getenv("CANARY_WEBHOOK"),
+        help="Webhook URL for real-time alerts (Slack/Teams/generic)",
+    )
+    parser.add_argument(
+        "--memo", default=None, help="Human-readable description for the token"
+    )
+    parser.add_argument(
+        "--environment",
+        default="production",
+        help="Target environment for deployment plan",
+    )
+    parser.add_argument(
+        "--zones",
+        nargs="*",
+        default=None,
+        help="Network zones to include in deployment plan",
+    )
+    parser.add_argument(
+        "--output",
+        default="canary_token_report.json",
+        help="Output file path for report",
+    )
+    parser.add_argument(
+        "--webhook-log",
+        default="/var/log/canary_alerts.json",
+        help="Path to webhook alert log for monitoring",
+    )
+    parser.add_argument(
+        "--report-dir",
+        default="./reports",
+        help="Directory containing deployment reports for inventory",
+    )
+    parser.add_argument(
+        "--console-domain",
+        default=os.getenv("THINKST_DOMAIN"),
+        help="Thinkst Canary console domain (enterprise)",
+    )
+    parser.add_argument(
+        "--api-key",
+        default=os.getenv("THINKST_API_KEY"),
+        help="Thinkst Canary API auth token (enterprise)",
+    )
+    parser.add_argument(
+        "--test-hostname", default=None, help="DNS hostname to test connectivity"
+    )
+    parser.add_argument(
+        "--test-url", default=None, help="HTTP URL to test connectivity"
+    )
     args = parser.parse_args()
 
     report = {
@@ -783,8 +879,10 @@ Examples:
     if args.action == "plan":
         plan = create_deployment_plan(args.environment, args.zones)
         report["deployment_plan"] = plan
-        print(f"[+] Deployment plan generated: {plan['total_tokens']} tokens across "
-              f"{len(plan['zones'])} zones")
+        print(
+            f"[+] Deployment plan generated: {plan['total_tokens']} tokens across "
+            f"{len(plan['zones'])} zones"
+        )
         for token in plan["tokens"]:
             print(f"    [{token['zone']}] {token['type']:10s} -> {token['location']}")
 
@@ -835,9 +933,11 @@ Examples:
             report["webhook_alerts"] = alerts
             print(f"[+] Webhook log: {len(alerts)} triggered alerts found")
             for alert in alerts:
-                print(f"    [ALERT] {alert.get('token_memo', 'Unknown')} "
-                      f"from {alert.get('source_ip', 'Unknown')} "
-                      f"at {alert.get('triggered_at', 'Unknown')}")
+                print(
+                    f"    [ALERT] {alert.get('token_memo', 'Unknown')} "
+                    f"from {alert.get('source_ip', 'Unknown')} "
+                    f"at {alert.get('triggered_at', 'Unknown')}"
+                )
 
     # --- Inventory ---
     if args.action == "inventory":

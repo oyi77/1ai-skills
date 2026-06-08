@@ -33,7 +33,7 @@ def analyze_users(data: dict) -> dict:
         "dcsync_capable": [],
         "admin_count_set": [],
         "password_not_required": [],
-        "unconstrained_delegation": []
+        "unconstrained_delegation": [],
     }
 
     users = data.get("data", data.get("users", []))
@@ -71,7 +71,7 @@ def analyze_computers(data: dict) -> dict:
         "laps_enabled": [],
         "laps_disabled": [],
         "unsupported_os": [],
-        "domain_controllers": []
+        "domain_controllers": [],
     }
 
     computers = data.get("data", data.get("computers", []))
@@ -85,10 +85,9 @@ def analyze_computers(data: dict) -> dict:
                 analysis["unconstrained_delegation"].append(name)
 
             if props.get("allowedtodelegate", []):
-                analysis["constrained_delegation"].append({
-                    "name": name,
-                    "delegates_to": props.get("allowedtodelegate", [])
-                })
+                analysis["constrained_delegation"].append(
+                    {"name": name, "delegates_to": props.get("allowedtodelegate", [])}
+                )
 
             if props.get("haslaps", False):
                 analysis["laps_enabled"].append(name)
@@ -98,10 +97,9 @@ def analyze_computers(data: dict) -> dict:
             os_name = props.get("operatingsystem", "").lower()
             unsupported = ["2003", "2008", "xp", "vista", "windows 7"]
             if any(ver in os_name for ver in unsupported):
-                analysis["unsupported_os"].append({
-                    "name": name,
-                    "os": props.get("operatingsystem", "Unknown")
-                })
+                analysis["unsupported_os"].append(
+                    {"name": name, "os": props.get("operatingsystem", "Unknown")}
+                )
 
             if props.get("isdc", False):
                 analysis["domain_controllers"].append(name)
@@ -124,7 +122,7 @@ def generate_report(user_analysis: dict, computer_analysis: dict) -> str:
         f"  AS-REP Roastable: {len(user_analysis['asreproastable'])}",
         f"  AdminCount Set: {len(user_analysis['admin_count_set'])}",
         f"  Password Not Required: {len(user_analysis['password_not_required'])}",
-        ""
+        "",
     ]
 
     if user_analysis["kerberoastable"]:
@@ -137,18 +135,20 @@ def generate_report(user_analysis: dict, computer_analysis: dict) -> str:
         for acct in user_analysis["asreproastable"][:20]:
             report.append(f"    - {acct}")
 
-    report.extend([
-        "",
-        "[Computer Analysis]",
-        f"  Total Computers: {computer_analysis['total_computers']}",
-        f"  Domain Controllers: {len(computer_analysis['domain_controllers'])}",
-        f"  Unconstrained Delegation: {len(computer_analysis['unconstrained_delegation'])}",
-        f"  Constrained Delegation: {len(computer_analysis['constrained_delegation'])}",
-        f"  LAPS Enabled: {len(computer_analysis['laps_enabled'])}",
-        f"  LAPS Disabled: {len(computer_analysis['laps_disabled'])}",
-        f"  Unsupported OS: {len(computer_analysis['unsupported_os'])}",
-        ""
-    ])
+    report.extend(
+        [
+            "",
+            "[Computer Analysis]",
+            f"  Total Computers: {computer_analysis['total_computers']}",
+            f"  Domain Controllers: {len(computer_analysis['domain_controllers'])}",
+            f"  Unconstrained Delegation: {len(computer_analysis['unconstrained_delegation'])}",
+            f"  Constrained Delegation: {len(computer_analysis['constrained_delegation'])}",
+            f"  LAPS Enabled: {len(computer_analysis['laps_enabled'])}",
+            f"  LAPS Disabled: {len(computer_analysis['laps_disabled'])}",
+            f"  Unsupported OS: {len(computer_analysis['unsupported_os'])}",
+            "",
+        ]
+    )
 
     if computer_analysis["unconstrained_delegation"]:
         report.append("  Unconstrained Delegation Computers:")
@@ -160,18 +160,20 @@ def generate_report(user_analysis: dict, computer_analysis: dict) -> str:
         for comp in computer_analysis["unsupported_os"]:
             report.append(f"    - {comp['name']}: {comp['os']}")
 
-    report.extend([
-        "",
-        "[Priority Attack Vectors]",
-        "  1. Kerberoastable accounts with path to DA (crack SPN passwords)",
-        "  2. AS-REP Roastable accounts (offline password cracking)",
-        "  3. Unconstrained delegation abuse (TGT theft via coercion)",
-        "  4. ACL-based paths (GenericAll, WriteDACL, ForceChangePassword)",
-        "  5. GPO modification paths (code execution on privileged OUs)",
-        "  6. Unsupported OS exploitation (unpatched vulnerabilities)",
-        "",
-        "=" * 70
-    ])
+    report.extend(
+        [
+            "",
+            "[Priority Attack Vectors]",
+            "  1. Kerberoastable accounts with path to DA (crack SPN passwords)",
+            "  2. AS-REP Roastable accounts (offline password cracking)",
+            "  3. Unconstrained delegation abuse (TGT theft via coercion)",
+            "  4. ACL-based paths (GenericAll, WriteDACL, ForceChangePassword)",
+            "  5. GPO modification paths (code execution on privileged OUs)",
+            "  6. Unsupported OS exploitation (unpatched vulnerabilities)",
+            "",
+            "=" * 70,
+        ]
+    )
 
     return "\n".join(report)
 
@@ -179,7 +181,9 @@ def generate_report(user_analysis: dict, computer_analysis: dict) -> str:
 def main():
     """Main entry point."""
     if len(sys.argv) < 2:
-        print("Usage: python process.py <bloodhound_users.json> [bloodhound_computers.json]")
+        print(
+            "Usage: python process.py <bloodhound_users.json> [bloodhound_computers.json]"
+        )
         return
 
     users_file = sys.argv[1]
@@ -189,9 +193,13 @@ def main():
     user_analysis = analyze_users(user_data)
 
     computer_analysis = {
-        "total_computers": 0, "unconstrained_delegation": [],
-        "constrained_delegation": [], "laps_enabled": [], "laps_disabled": [],
-        "unsupported_os": [], "domain_controllers": []
+        "total_computers": 0,
+        "unconstrained_delegation": [],
+        "constrained_delegation": [],
+        "laps_enabled": [],
+        "laps_disabled": [],
+        "unsupported_os": [],
+        "domain_controllers": [],
     }
 
     if computers_file:

@@ -14,8 +14,12 @@ except ImportError:
 def get_tap_threats(base_url, principal, secret, time_range="PT1H"):
     """Query Proofpoint TAP SIEM API for threats."""
     url = f"{base_url}/v2/siem/all"
-    resp = requests.get(url, auth=(principal, secret),
-                        params={"sinceSeconds": 3600, "format": "json"}, timeout=60)
+    resp = requests.get(
+        url,
+        auth=(principal, secret),
+        params={"sinceSeconds": 3600, "format": "json"},
+        timeout=60,
+    )
     resp.raise_for_status()
     data = resp.json()
     return {
@@ -36,17 +40,19 @@ def analyze_sandbox_results(results_path):
         verdict = result.get("verdict", result.get("classification", ""))
         score = result.get("score", result.get("threat_score", 0))
         if verdict.lower() in ("malicious", "phish", "spam") or int(score) > 70:
-            findings.append({
-                "message_id": result.get("message_id", ""),
-                "sender": result.get("sender", result.get("from", "")),
-                "subject": result.get("subject", ""),
-                "verdict": verdict,
-                "score": score,
-                "threats_found": result.get("threats", []),
-                "attachment": result.get("attachment_name", ""),
-                "url_detonated": result.get("url", ""),
-                "severity": "CRITICAL" if int(score) > 90 else "HIGH",
-            })
+            findings.append(
+                {
+                    "message_id": result.get("message_id", ""),
+                    "sender": result.get("sender", result.get("from", "")),
+                    "subject": result.get("subject", ""),
+                    "verdict": verdict,
+                    "score": score,
+                    "threats_found": result.get("threats", []),
+                    "attachment": result.get("attachment_name", ""),
+                    "url_detonated": result.get("url", ""),
+                    "severity": "CRITICAL" if int(score) > 90 else "HIGH",
+                }
+            )
     return findings
 
 
@@ -71,7 +77,9 @@ def calculate_email_metrics(log_path):
             cat = entry.get("category", entry.get("threat_type", "clean"))
             by_category[cat] = by_category.get(cat, 0) + 1
     return {
-        "total_messages": total, "blocked": blocked, "delivered": delivered,
+        "total_messages": total,
+        "blocked": blocked,
+        "delivered": delivered,
         "block_rate": round(blocked / total * 100, 1) if total else 0,
         "by_category": by_category,
     }
@@ -90,8 +98,19 @@ def generate_url_defense_config():
         "attachment_defense": {
             "enabled": True,
             "sandbox_analysis": True,
-            "supported_types": ["exe", "dll", "doc", "docx", "xls", "xlsx",
-                               "pdf", "zip", "rar", "iso", "lnk"],
+            "supported_types": [
+                "exe",
+                "dll",
+                "doc",
+                "docx",
+                "xls",
+                "xlsx",
+                "pdf",
+                "zip",
+                "rar",
+                "iso",
+                "lnk",
+            ],
             "action_on_malicious": "quarantine",
         },
     }
@@ -105,8 +124,11 @@ def main():
     parser.add_argument("--results", help="Sandbox results JSON")
     parser.add_argument("--log", help="Email log (JSON lines)")
     parser.add_argument("--output", default="proofpoint_sandbox_report.json")
-    parser.add_argument("--action", choices=["tap", "analyze", "metrics", "config", "full"],
-                        default="full")
+    parser.add_argument(
+        "--action",
+        choices=["tap", "analyze", "metrics", "config", "full"],
+        default="full",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}
@@ -114,7 +136,9 @@ def main():
     if args.action in ("tap", "full") and args.principal and args.secret:
         data = get_tap_threats(args.tap_url, args.principal, args.secret)
         report["findings"]["tap_threats"] = data
-        print(f"[+] Blocked: {data['messages_blocked']}, Delivered: {data['messages_delivered']}")
+        print(
+            f"[+] Blocked: {data['messages_blocked']}, Delivered: {data['messages_delivered']}"
+        )
 
     if args.action in ("analyze", "full") and args.results:
         findings = analyze_sandbox_results(args.results)

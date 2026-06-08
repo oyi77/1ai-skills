@@ -16,7 +16,6 @@ from datetime import datetime, timezone
 
 import requests
 
-
 VT_API_KEY = ""  # Set via environment or config
 URLSCAN_API_KEY = ""  # Set via environment or config
 
@@ -110,8 +109,12 @@ def check_url_virustotal(url: str, api_key: str) -> dict:
         )
         if result.status_code == 200:
             stats = result.json().get("data", {}).get("attributes", {}).get("stats", {})
-            return {"malicious": stats.get("malicious", 0), "suspicious": stats.get("suspicious", 0),
-                    "harmless": stats.get("harmless", 0), "undetected": stats.get("undetected", 0)}
+            return {
+                "malicious": stats.get("malicious", 0),
+                "suspicious": stats.get("suspicious", 0),
+                "harmless": stats.get("harmless", 0),
+                "undetected": stats.get("undetected", 0),
+            }
     return {"error": f"VT returned {resp.status_code}"}
 
 
@@ -141,7 +144,9 @@ def check_hash_virustotal(file_hash: str, api_key: str) -> dict:
         attrs = resp.json().get("data", {}).get("attributes", {})
         stats = attrs.get("last_analysis_stats", {})
         return {
-            "detection_name": attrs.get("popular_threat_classification", {}).get("suggested_threat_label", "unknown"),
+            "detection_name": attrs.get("popular_threat_classification", {}).get(
+                "suggested_threat_label", "unknown"
+            ),
             "malicious": stats.get("malicious", 0),
             "total_engines": sum(stats.values()),
         }
@@ -184,14 +189,20 @@ def generate_report(headers: dict, urls: list[str], iocs: dict) -> str:
     ]
     for u in urls[:10]:
         lines.append(f"  - {u}")
-    lines.extend(["", f"IOC Domains: {', '.join(iocs['domains'])}",
-                   f"IOC IPs: {', '.join(iocs['ips'])}",
-                   f"IOC Hashes: {len(iocs['hashes'])}"])
+    lines.extend(
+        [
+            "",
+            f"IOC Domains: {', '.join(iocs['domains'])}",
+            f"IOC IPs: {', '.join(iocs['ips'])}",
+            f"IOC Hashes: {len(iocs['hashes'])}",
+        ]
+    )
     return "\n".join(lines)
 
 
 if __name__ == "__main__":
     import os
+
     VT_API_KEY = os.getenv("VT_API_KEY", VT_API_KEY)
     URLSCAN_API_KEY = os.getenv("URLSCAN_API_KEY", URLSCAN_API_KEY)
 
@@ -211,7 +222,9 @@ if __name__ == "__main__":
     report = generate_report(headers, urls, iocs)
     print(report)
 
-    output = f"phishing_report_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
+    output = (
+        f"phishing_report_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
+    )
     with open(output, "w") as f:
         json.dump({"headers": headers, "urls": urls, "iocs": iocs}, f, indent=2)
     print(f"\n[*] Results saved to {output}")

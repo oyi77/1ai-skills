@@ -6,7 +6,6 @@ import json
 import argparse
 from datetime import datetime, timezone
 
-
 NIST_CATEGORIES = {
     "unauthorized_access": "Unauthorized Access",
     "dos": "Denial of Service",
@@ -17,14 +16,30 @@ NIST_CATEGORIES = {
 }
 
 SEVERITY_MATRIX = {
-    "P1": {"label": "Critical", "ack_sla": "15 min", "contain_sla": "1 hour",
-            "criteria": "Crown jewel compromise, active exfiltration, ransomware spreading"},
-    "P2": {"label": "High", "ack_sla": "30 min", "contain_sla": "4 hours",
-            "criteria": "Production compromise, confirmed malware, privileged account takeover"},
-    "P3": {"label": "Medium", "ack_sla": "2 hours", "contain_sla": "24 hours",
-            "criteria": "Non-production compromise, failed exploitation, single endpoint malware"},
-    "P4": {"label": "Low", "ack_sla": "8 hours", "contain_sla": "72 hours",
-            "criteria": "Reconnaissance, policy violation, benign true positive"},
+    "P1": {
+        "label": "Critical",
+        "ack_sla": "15 min",
+        "contain_sla": "1 hour",
+        "criteria": "Crown jewel compromise, active exfiltration, ransomware spreading",
+    },
+    "P2": {
+        "label": "High",
+        "ack_sla": "30 min",
+        "contain_sla": "4 hours",
+        "criteria": "Production compromise, confirmed malware, privileged account takeover",
+    },
+    "P3": {
+        "label": "Medium",
+        "ack_sla": "2 hours",
+        "contain_sla": "24 hours",
+        "criteria": "Non-production compromise, failed exploitation, single endpoint malware",
+    },
+    "P4": {
+        "label": "Low",
+        "ack_sla": "8 hours",
+        "contain_sla": "72 hours",
+        "criteria": "Reconnaissance, policy violation, benign true positive",
+    },
 }
 
 
@@ -35,9 +50,13 @@ def classify_incident(alert_data):
     process = alert_data.get("process", "").lower()
     event_code = alert_data.get("event_code", "")
 
-    if any(kw in alert_name for kw in ["malware", "ransomware", "trojan", "cryptominer"]):
+    if any(
+        kw in alert_name for kw in ["malware", "ransomware", "trojan", "cryptominer"]
+    ):
         category = "malicious_code"
-    elif any(kw in alert_name for kw in ["brute force", "credential", "password spray"]):
+    elif any(
+        kw in alert_name for kw in ["brute force", "credential", "password spray"]
+    ):
         category = "unauthorized_access"
     elif any(kw in alert_name for kw in ["dos", "flood", "resource exhaustion"]):
         category = "dos"
@@ -89,7 +108,9 @@ def assess_severity(alert_data, asset_criticality="medium"):
 
     sev_info = SEVERITY_MATRIX[priority]
     print(f"  [+] Priority: {priority} - {sev_info['label']}")
-    print(f"  [+] ACK SLA: {sev_info['ack_sla']} | Containment SLA: {sev_info['contain_sla']}")
+    print(
+        f"  [+] ACK SLA: {sev_info['ack_sla']} | Containment SLA: {sev_info['contain_sla']}"
+    )
     return priority, sev_info
 
 
@@ -112,7 +133,9 @@ def check_virustotal(api_key, indicator, indicator_type="ip"):
             if indicator_type in ("ip", "domain"):
                 malicious = data.get("last_analysis_stats", {}).get("malicious", 0)
                 total = sum(data.get("last_analysis_stats", {}).values())
-                print(f"  [+] VT Result: {malicious}/{total} vendors flagged as malicious")
+                print(
+                    f"  [+] VT Result: {malicious}/{total} vendors flagged as malicious"
+                )
                 return {"malicious": malicious, "total": total}
             elif indicator_type == "hash":
                 malicious = data.get("last_analysis_stats", {}).get("malicious", 0)
@@ -155,8 +178,9 @@ def build_mitre_mapping(category, process_info=""):
     return techniques
 
 
-def generate_triage_record(alert_data, classification, priority, sev_info,
-                            ti_results, mitre, output_path):
+def generate_triage_record(
+    alert_data, classification, priority, sev_info, ti_results, mitre, output_path
+):
     """Generate a structured incident triage report."""
     triage_time = datetime.now(timezone.utc)
     alert_time = alert_data.get("timestamp", triage_time.isoformat())
@@ -211,25 +235,36 @@ def generate_triage_record(alert_data, classification, priority, sev_info,
     with open(output_path, "w") as f:
         json.dump(record, f, indent=2)
     print(f"\n[*] Triage record saved to {output_path}")
-    print(f"[*] Ticket: {record['ticket_id']} | Priority: {priority} ({sev_info['label']})")
+    print(
+        f"[*] Ticket: {record['ticket_id']} | Priority: {priority} ({sev_info['label']})"
+    )
     return record
 
 
 def main():
     parser = argparse.ArgumentParser(description="Security Incident Triage Agent")
-    parser.add_argument("--alert-name", required=True, help="Name of the triggering alert")
+    parser.add_argument(
+        "--alert-name", required=True, help="Name of the triggering alert"
+    )
     parser.add_argument("--source", default="SIEM", help="Alert source system")
     parser.add_argument("--severity", default="high", help="Alert severity")
-    parser.add_argument("--confidence", type=int, default=75, help="Alert confidence (0-100)")
+    parser.add_argument(
+        "--confidence", type=int, default=75, help="Alert confidence (0-100)"
+    )
     parser.add_argument("--host", help="Affected hostname")
     parser.add_argument("--src-ip", help="Source IP address")
     parser.add_argument("--user", help="Affected username")
     parser.add_argument("--process", default="", help="Suspicious process name")
-    parser.add_argument("--asset-criticality", default="medium",
-                        choices=["critical", "high", "medium", "low"])
+    parser.add_argument(
+        "--asset-criticality",
+        default="medium",
+        choices=["critical", "high", "medium", "low"],
+    )
     parser.add_argument("--vt-key", help="VirusTotal API key for threat intel")
     parser.add_argument("--indicator", help="IOC to check (IP, hash, or domain)")
-    parser.add_argument("--indicator-type", default="ip", choices=["ip", "hash", "domain"])
+    parser.add_argument(
+        "--indicator-type", default="ip", choices=["ip", "hash", "domain"]
+    )
     parser.add_argument("-o", "--output", default="triage_record.json")
     args = parser.parse_args()
 
@@ -254,8 +289,9 @@ def main():
     if args.vt_key and args.indicator:
         ti_results = check_virustotal(args.vt_key, args.indicator, args.indicator_type)
 
-    generate_triage_record(alert_data, classification, priority, sev_info,
-                           ti_results, mitre, args.output)
+    generate_triage_record(
+        alert_data, classification, priority, sev_info, ti_results, mitre, args.output
+    )
 
 
 if __name__ == "__main__":

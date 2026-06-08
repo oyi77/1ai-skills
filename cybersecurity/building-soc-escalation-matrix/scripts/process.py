@@ -9,7 +9,6 @@ and tracks SLA compliance for SOC operations.
 import json
 from datetime import datetime, timedelta
 
-
 SEVERITY_CONFIG = {
     "P1": {
         "name": "Critical",
@@ -87,8 +86,14 @@ AUTO_ESCALATION_TRIGGERS = {
 class Incident:
     """Represents a security incident with escalation tracking."""
 
-    def __init__(self, incident_id: str, title: str, severity_score: str,
-                 asset_criticality: str, incident_type: str):
+    def __init__(
+        self,
+        incident_id: str,
+        title: str,
+        severity_score: str,
+        asset_criticality: str,
+        incident_type: str,
+    ):
         self.incident_id = incident_id
         self.title = title
         self.incident_type = incident_type
@@ -112,7 +117,9 @@ class Incident:
         now = datetime.utcnow()
         elapsed_min = (now - self.created).total_seconds() / 60
 
-        response_sla_met = elapsed_min <= self.config["initial_response_min"] or self.status != "open"
+        response_sla_met = (
+            elapsed_min <= self.config["initial_response_min"] or self.status != "open"
+        )
         resolution_target_min = self.config["resolution_target_hours"] * 60
 
         if self.resolved_at:
@@ -133,12 +140,14 @@ class Incident:
         }
 
     def escalate(self, to_tier: int, reason: str):
-        self.escalation_history.append({
-            "from_tier": self.current_tier,
-            "to_tier": to_tier,
-            "reason": reason,
-            "timestamp": datetime.utcnow().isoformat(),
-        })
+        self.escalation_history.append(
+            {
+                "from_tier": self.current_tier,
+                "to_tier": to_tier,
+                "reason": reason,
+                "timestamp": datetime.utcnow().isoformat(),
+            }
+        )
         self.current_tier = to_tier
 
     def resolve(self):
@@ -152,9 +161,17 @@ class EscalationMatrix:
     def __init__(self):
         self.incidents = []
 
-    def create_incident(self, incident_id: str, title: str, severity: str,
-                        asset_criticality: str, incident_type: str) -> Incident:
-        incident = Incident(incident_id, title, severity, asset_criticality, incident_type)
+    def create_incident(
+        self,
+        incident_id: str,
+        title: str,
+        severity: str,
+        asset_criticality: str,
+        incident_type: str,
+    ) -> Incident:
+        incident = Incident(
+            incident_id, title, severity, asset_criticality, incident_type
+        )
         self.incidents.append(incident)
         return incident
 
@@ -162,10 +179,16 @@ class EscalationMatrix:
         report = {"total": len(self.incidents), "by_priority": {}, "sla_breaches": 0}
         for priority in ["P1", "P2", "P3", "P4"]:
             priority_incidents = [i for i in self.incidents if i.priority == priority]
-            breaches = sum(1 for i in priority_incidents if not i.check_sla_compliance()["resolution_sla_met"])
+            breaches = sum(
+                1
+                for i in priority_incidents
+                if not i.check_sla_compliance()["resolution_sla_met"]
+            )
             report["by_priority"][priority] = {
                 "count": len(priority_incidents),
-                "resolved": sum(1 for i in priority_incidents if i.status == "resolved"),
+                "resolved": sum(
+                    1 for i in priority_incidents if i.status == "resolved"
+                ),
                 "open": sum(1 for i in priority_incidents if i.status == "open"),
                 "sla_breaches": breaches,
             }
@@ -188,11 +211,33 @@ class EscalationMatrix:
 if __name__ == "__main__":
     matrix = EscalationMatrix()
 
-    inc1 = matrix.create_incident("INC-001", "Ransomware on Finance Server", "critical", "critical", "ransomware_detected")
-    inc2 = matrix.create_incident("INC-002", "Failed Brute Force on VPN", "medium", "high", "brute_force_attempt")
-    inc3 = matrix.create_incident("INC-003", "Suspicious PowerShell on Workstation", "high", "medium", "suspicious_execution")
-    inc4 = matrix.create_incident("INC-004", "Expired SSL Certificate", "low", "low", "certificate_expiry")
-    inc5 = matrix.create_incident("INC-005", "Executive Email Compromise Attempt", "high", "critical", "executive_account_anomaly")
+    inc1 = matrix.create_incident(
+        "INC-001",
+        "Ransomware on Finance Server",
+        "critical",
+        "critical",
+        "ransomware_detected",
+    )
+    inc2 = matrix.create_incident(
+        "INC-002", "Failed Brute Force on VPN", "medium", "high", "brute_force_attempt"
+    )
+    inc3 = matrix.create_incident(
+        "INC-003",
+        "Suspicious PowerShell on Workstation",
+        "high",
+        "medium",
+        "suspicious_execution",
+    )
+    inc4 = matrix.create_incident(
+        "INC-004", "Expired SSL Certificate", "low", "low", "certificate_expiry"
+    )
+    inc5 = matrix.create_incident(
+        "INC-005",
+        "Executive Email Compromise Attempt",
+        "high",
+        "critical",
+        "executive_account_anomaly",
+    )
 
     # Simulate escalations
     inc1.escalate(3, "Ransomware auto-escalation to Tier 3")
@@ -206,9 +251,15 @@ if __name__ == "__main__":
     for inc in matrix.incidents:
         sla = inc.check_sla_compliance()
         print(f"\n[{inc.priority}] {inc.incident_id}: {inc.title}")
-        print(f"  Status: {inc.status} | Tier: {inc.current_tier} | Type: {inc.incident_type}")
-        print(f"  Response SLA: {'MET' if sla['response_sla_met'] else 'BREACHED'} ({sla['response_sla_min']}min)")
-        print(f"  Resolution SLA: {'MET' if sla['resolution_sla_met'] else 'AT RISK'} ({sla['resolution_sla_min']}min)")
+        print(
+            f"  Status: {inc.status} | Tier: {inc.current_tier} | Type: {inc.incident_type}"
+        )
+        print(
+            f"  Response SLA: {'MET' if sla['response_sla_met'] else 'BREACHED'} ({sla['response_sla_min']}min)"
+        )
+        print(
+            f"  Resolution SLA: {'MET' if sla['resolution_sla_met'] else 'AT RISK'} ({sla['resolution_sla_min']}min)"
+        )
         if inc.escalation_history:
             print(f"  Escalations: {len(inc.escalation_history)}")
 
@@ -218,4 +269,6 @@ if __name__ == "__main__":
     report = matrix.get_sla_report()
     for priority, data in report["by_priority"].items():
         if data["count"] > 0:
-            print(f"  {priority}: {data['count']} incidents, {data['resolved']} resolved, {data['sla_breaches']} SLA breaches")
+            print(
+                f"  {priority}: {data['count']} incidents, {data['resolved']} resolved, {data['sla_breaches']} SLA breaches"
+            )

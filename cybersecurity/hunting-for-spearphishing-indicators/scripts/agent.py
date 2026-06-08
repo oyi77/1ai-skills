@@ -6,25 +6,45 @@ import argparse
 import re
 from datetime import datetime
 
-
 SUSPICIOUS_EXTENSIONS = [
-    ".exe", ".scr", ".bat", ".cmd", ".ps1", ".vbs", ".js", ".hta",
-    ".iso", ".img", ".lnk", ".dll", ".msi", ".wsf",
+    ".exe",
+    ".scr",
+    ".bat",
+    ".cmd",
+    ".ps1",
+    ".vbs",
+    ".js",
+    ".hta",
+    ".iso",
+    ".img",
+    ".lnk",
+    ".dll",
+    ".msi",
+    ".wsf",
 ]
 
 MACRO_EXTENSIONS = [".xlsm", ".docm", ".pptm", ".xlsb"]
 
 PHISHING_URL_PATTERNS = [
-    r"https?://bit\.ly/", r"https?://tinyurl\.com/",
-    r"https?://[^/]*login[^/]*\.", r"https?://[^/]*signin[^/]*\.",
+    r"https?://bit\.ly/",
+    r"https?://tinyurl\.com/",
+    r"https?://[^/]*login[^/]*\.",
+    r"https?://[^/]*signin[^/]*\.",
     r"https?://[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}",
-    r"https?://[^/]*\.top/", r"https?://[^/]*\.xyz/",
+    r"https?://[^/]*\.top/",
+    r"https?://[^/]*\.xyz/",
 ]
 
 URGENCY_KEYWORDS = [
-    "urgent", "immediate action", "account suspended", "verify your",
-    "password expired", "click here immediately", "security alert",
-    "unauthorized access", "confirm your identity",
+    "urgent",
+    "immediate action",
+    "account suspended",
+    "verify your",
+    "password expired",
+    "click here immediately",
+    "security alert",
+    "unauthorized access",
+    "confirm your identity",
 ]
 
 
@@ -63,15 +83,17 @@ def detect_suspicious_attachments(emails):
             name = att if isinstance(att, str) else att.get("filename", "")
             risk = check_attachment_risk(name)
             if risk in ("CRITICAL", "HIGH"):
-                findings.append({
-                    "subject": email.get("subject", ""),
-                    "sender": email.get("from", email.get("sender", "")),
-                    "recipient": email.get("to", email.get("recipient", "")),
-                    "timestamp": email.get("timestamp", email.get("date", "")),
-                    "attachment": name,
-                    "risk": risk,
-                    "category": "suspicious_attachment",
-                })
+                findings.append(
+                    {
+                        "subject": email.get("subject", ""),
+                        "sender": email.get("from", email.get("sender", "")),
+                        "recipient": email.get("to", email.get("recipient", "")),
+                        "timestamp": email.get("timestamp", email.get("date", "")),
+                        "attachment": name,
+                        "risk": risk,
+                        "category": "suspicious_attachment",
+                    }
+                )
     return findings
 
 
@@ -85,15 +107,17 @@ def detect_phishing_urls(emails):
         for pattern in PHISHING_URL_PATTERNS:
             matches = re.findall(pattern, text, re.IGNORECASE)
             for url in matches:
-                findings.append({
-                    "subject": email.get("subject", ""),
-                    "sender": email.get("from", email.get("sender", "")),
-                    "recipient": email.get("to", email.get("recipient", "")),
-                    "url": url[:200],
-                    "pattern": pattern,
-                    "severity": "HIGH",
-                    "category": "phishing_url",
-                })
+                findings.append(
+                    {
+                        "subject": email.get("subject", ""),
+                        "sender": email.get("from", email.get("sender", "")),
+                        "recipient": email.get("to", email.get("recipient", "")),
+                        "url": url[:200],
+                        "pattern": pattern,
+                        "severity": "HIGH",
+                        "category": "phishing_url",
+                    }
+                )
     return findings
 
 
@@ -106,14 +130,16 @@ def detect_urgency_lures(emails):
         text = (subject + " " + body).lower()
         matched = [kw for kw in URGENCY_KEYWORDS if kw in text]
         if len(matched) >= 2:
-            findings.append({
-                "subject": email.get("subject", ""),
-                "sender": email.get("from", email.get("sender", "")),
-                "recipient": email.get("to", email.get("recipient", "")),
-                "keywords_matched": matched,
-                "severity": "MEDIUM",
-                "category": "urgency_lure",
-            })
+            findings.append(
+                {
+                    "subject": email.get("subject", ""),
+                    "sender": email.get("from", email.get("sender", "")),
+                    "recipient": email.get("to", email.get("recipient", "")),
+                    "keywords_matched": matched,
+                    "severity": "MEDIUM",
+                    "category": "urgency_lure",
+                }
+            )
     return findings
 
 
@@ -128,14 +154,16 @@ def detect_sender_spoofing(emails):
             envelope_domain = re.search(r"@([\w.-]+)", envelope)
             if display_domain and envelope_domain:
                 if display_domain.group(1).lower() != envelope_domain.group(1).lower():
-                    findings.append({
-                        "display_from": display_from,
-                        "envelope_from": envelope,
-                        "recipient": email.get("to", email.get("recipient", "")),
-                        "subject": email.get("subject", ""),
-                        "severity": "HIGH",
-                        "category": "sender_spoofing",
-                    })
+                    findings.append(
+                        {
+                            "display_from": display_from,
+                            "envelope_from": envelope,
+                            "recipient": email.get("to", email.get("recipient", "")),
+                            "subject": email.get("subject", ""),
+                            "severity": "HIGH",
+                            "category": "sender_spoofing",
+                        }
+                    )
     return findings
 
 
@@ -143,14 +171,19 @@ def main():
     parser = argparse.ArgumentParser(description="Spearphishing Indicator Hunter")
     parser.add_argument("--email-log", required=True, help="JSON lines email log")
     parser.add_argument("--output", default="spearphishing_hunt_report.json")
-    parser.add_argument("--action", choices=[
-        "attachments", "urls", "urgency", "spoofing", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=["attachments", "urls", "urgency", "spoofing", "full_analysis"],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     emails = load_email_logs(args.email_log)
-    report = {"generated_at": datetime.utcnow().isoformat(), "total_emails": len(emails),
-              "findings": {}}
+    report = {
+        "generated_at": datetime.utcnow().isoformat(),
+        "total_emails": len(emails),
+        "findings": {},
+    }
     print(f"[+] Loaded {len(emails)} email entries")
 
     if args.action in ("attachments", "full_analysis"):

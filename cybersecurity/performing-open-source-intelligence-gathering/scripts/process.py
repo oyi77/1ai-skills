@@ -46,9 +46,7 @@ except ImportError:
 console = Console()
 SESSION = requests.Session()
 SESSION.headers.update(
-    {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-    }
+    {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 )
 
 
@@ -61,7 +59,11 @@ def resolve_dns_records(domain: str) -> dict:
         try:
             answers = dns.resolver.resolve(domain, rtype)
             records[rtype] = [str(rdata) for rdata in answers]
-        except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
+        except (
+            dns.resolver.NoAnswer,
+            dns.resolver.NXDOMAIN,
+            dns.resolver.NoNameservers,
+        ):
             pass
         except Exception:
             pass
@@ -91,12 +93,45 @@ def enumerate_subdomains_ct(domain: str) -> list[str]:
 
     # Also try common subdomain prefixes
     common_prefixes = [
-        "www", "mail", "ftp", "smtp", "pop", "imap", "webmail",
-        "vpn", "remote", "portal", "admin", "dev", "staging",
-        "test", "api", "app", "blog", "shop", "store", "cdn",
-        "ns1", "ns2", "dns", "mx", "exchange", "owa", "autodiscover",
-        "sso", "login", "auth", "git", "gitlab", "jenkins",
-        "jira", "confluence", "wiki", "docs", "support", "help",
+        "www",
+        "mail",
+        "ftp",
+        "smtp",
+        "pop",
+        "imap",
+        "webmail",
+        "vpn",
+        "remote",
+        "portal",
+        "admin",
+        "dev",
+        "staging",
+        "test",
+        "api",
+        "app",
+        "blog",
+        "shop",
+        "store",
+        "cdn",
+        "ns1",
+        "ns2",
+        "dns",
+        "mx",
+        "exchange",
+        "owa",
+        "autodiscover",
+        "sso",
+        "login",
+        "auth",
+        "git",
+        "gitlab",
+        "jenkins",
+        "jira",
+        "confluence",
+        "wiki",
+        "docs",
+        "support",
+        "help",
     ]
 
     for prefix in common_prefixes:
@@ -114,6 +149,7 @@ def perform_whois_lookup(domain: str) -> dict:
     """Perform WHOIS lookup for a domain."""
     try:
         import whois as python_whois
+
         w = python_whois.whois(domain)
         result = {
             "domain_name": str(w.domain_name) if w.domain_name else "N/A",
@@ -156,8 +192,7 @@ def discover_email_format(domain: str) -> dict:
         if response.status_code == 200:
             # Extract emails from page content
             email_pattern = re.compile(
-                rf"[a-zA-Z0-9._%+-]+@{re.escape(domain)}",
-                re.IGNORECASE
+                rf"[a-zA-Z0-9._%+-]+@{re.escape(domain)}", re.IGNORECASE
             )
             emails = email_pattern.findall(response.text)
             result["discovered_emails"] = list(set(emails))
@@ -171,8 +206,7 @@ def discover_email_format(domain: str) -> dict:
             response = SESSION.get(f"https://{domain}{page}", timeout=10)
             if response.status_code == 200:
                 email_pattern = re.compile(
-                    rf"[a-zA-Z0-9._%+-]+@{re.escape(domain)}",
-                    re.IGNORECASE
+                    rf"[a-zA-Z0-9._%+-]+@{re.escape(domain)}", re.IGNORECASE
                 )
                 emails = email_pattern.findall(response.text)
                 result["discovered_emails"].extend(emails)
@@ -279,25 +313,25 @@ def generate_google_dorks(domain: str) -> list[str]:
     """Generate Google dorking queries for the target domain."""
     dorks = [
         # Sensitive files
-        f'site:{domain} filetype:pdf',
-        f'site:{domain} filetype:xlsx',
-        f'site:{domain} filetype:docx',
-        f'site:{domain} filetype:csv',
-        f'site:{domain} filetype:sql',
-        f'site:{domain} filetype:log',
-        f'site:{domain} filetype:bak',
-        f'site:{domain} filetype:conf',
-        f'site:{domain} filetype:env',
-        f'site:{domain} filetype:xml',
+        f"site:{domain} filetype:pdf",
+        f"site:{domain} filetype:xlsx",
+        f"site:{domain} filetype:docx",
+        f"site:{domain} filetype:csv",
+        f"site:{domain} filetype:sql",
+        f"site:{domain} filetype:log",
+        f"site:{domain} filetype:bak",
+        f"site:{domain} filetype:conf",
+        f"site:{domain} filetype:env",
+        f"site:{domain} filetype:xml",
         # Configuration and credentials
-        f'site:{domain} inurl:admin',
-        f'site:{domain} inurl:login',
-        f'site:{domain} inurl:wp-admin',
-        f'site:{domain} inurl:wp-login',
+        f"site:{domain} inurl:admin",
+        f"site:{domain} inurl:login",
+        f"site:{domain} inurl:wp-admin",
+        f"site:{domain} inurl:wp-login",
         f'site:{domain} intitle:"index of"',
         f'site:{domain} intitle:"dashboard"',
-        f'site:{domain} inurl:config',
-        f'site:{domain} inurl:setup',
+        f"site:{domain} inurl:config",
+        f"site:{domain} inurl:setup",
         # Error messages
         f'site:{domain} "error" "sql syntax"',
         f'site:{domain} "php error" "on line"',
@@ -311,11 +345,11 @@ def generate_google_dorks(domain: str) -> list[str]:
         f'site:{domain} "password" filetype:txt',
         f'site:{domain} "api_key" OR "apikey" OR "api-key"',
         # Infrastructure
-        f'site:{domain} inurl:vpn',
-        f'site:{domain} inurl:remote',
-        f'site:{domain} inurl:portal',
-        f'site:{domain} inurl:citrix',
-        f'site:{domain} inurl:owa',
+        f"site:{domain} inurl:vpn",
+        f"site:{domain} inurl:remote",
+        f"site:{domain} inurl:portal",
+        f"site:{domain} inurl:citrix",
+        f"site:{domain} inurl:owa",
         # GitHub leaks
         f'"{domain}" password site:github.com',
         f'"{domain}" api_key site:github.com',
@@ -496,13 +530,9 @@ def generate_report(domain: str, results: dict, output_dir: Path):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="OSINT Gathering Automation Tool"
-    )
+    parser = argparse.ArgumentParser(description="OSINT Gathering Automation Tool")
     parser.add_argument("--domain", required=True, help="Target domain")
-    parser.add_argument(
-        "--output", default="./osint_output", help="Output directory"
-    )
+    parser.add_argument("--output", default="./osint_output", help="Output directory")
     parser.add_argument(
         "--modules",
         default="all",
@@ -513,9 +543,20 @@ def main():
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    modules = args.modules.split(",") if args.modules != "all" else [
-        "dns", "subdomains", "whois", "emails", "tech", "dorks", "security_txt", "robots_txt"
-    ]
+    modules = (
+        args.modules.split(",")
+        if args.modules != "all"
+        else [
+            "dns",
+            "subdomains",
+            "whois",
+            "emails",
+            "tech",
+            "dorks",
+            "security_txt",
+            "robots_txt",
+        ]
+    )
 
     console.print(
         Panel(
@@ -538,7 +579,9 @@ def main():
         if "dns" in modules:
             task = progress.add_task("[cyan]Collecting DNS records...", total=None)
             results["dns"] = resolve_dns_records(args.domain)
-            progress.update(task, completed=True, description="[green]DNS records collected")
+            progress.update(
+                task, completed=True, description="[green]DNS records collected"
+            )
 
         if "subdomains" in modules:
             task = progress.add_task("[cyan]Enumerating subdomains...", total=None)
@@ -552,17 +595,25 @@ def main():
         if "whois" in modules:
             task = progress.add_task("[cyan]Performing WHOIS lookup...", total=None)
             results["whois"] = perform_whois_lookup(args.domain)
-            progress.update(task, completed=True, description="[green]WHOIS data collected")
+            progress.update(
+                task, completed=True, description="[green]WHOIS data collected"
+            )
 
         if "emails" in modules:
             task = progress.add_task("[cyan]Discovering email formats...", total=None)
             results["emails"] = discover_email_format(args.domain)
-            progress.update(task, completed=True, description="[green]Email discovery complete")
+            progress.update(
+                task, completed=True, description="[green]Email discovery complete"
+            )
 
         if "tech" in modules:
             task = progress.add_task("[cyan]Fingerprinting technologies...", total=None)
             results["technology"] = fingerprint_web_technologies(args.domain)
-            progress.update(task, completed=True, description="[green]Technology fingerprint complete")
+            progress.update(
+                task,
+                completed=True,
+                description="[green]Technology fingerprint complete",
+            )
 
         if "dorks" in modules:
             task = progress.add_task("[cyan]Generating Google dorks...", total=None)
@@ -576,12 +627,16 @@ def main():
         if "security_txt" in modules:
             task = progress.add_task("[cyan]Checking security.txt...", total=None)
             results["security_txt"] = check_security_txt(args.domain)
-            progress.update(task, completed=True, description="[green]security.txt check complete")
+            progress.update(
+                task, completed=True, description="[green]security.txt check complete"
+            )
 
         if "robots_txt" in modules:
             task = progress.add_task("[cyan]Checking robots.txt...", total=None)
             results["robots_txt"] = check_robots_txt(args.domain)
-            progress.update(task, completed=True, description="[green]robots.txt check complete")
+            progress.update(
+                task, completed=True, description="[green]robots.txt check complete"
+            )
 
     generate_report(args.domain, results, output_dir)
 
@@ -592,9 +647,14 @@ def main():
 
     table.add_row("DNS Record Types", str(len(results.get("dns", {}))))
     table.add_row("Subdomains Found", str(len(results.get("subdomains", []))))
-    table.add_row("Emails Discovered", str(len(results.get("emails", {}).get("discovered_emails", []))))
+    table.add_row(
+        "Emails Discovered",
+        str(len(results.get("emails", {}).get("discovered_emails", []))),
+    )
     table.add_row("Google Dorks Generated", str(len(results.get("dorks", []))))
-    table.add_row("security.txt", "Found" if results.get("security_txt") else "Not Found")
+    table.add_row(
+        "security.txt", "Found" if results.get("security_txt") else "Not Found"
+    )
     table.add_row("robots.txt", "Found" if results.get("robots_txt") else "Not Found")
 
     console.print(table)

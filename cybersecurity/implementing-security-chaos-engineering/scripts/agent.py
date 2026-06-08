@@ -52,7 +52,10 @@ def experiment_open_security_group(session, sg_id, check_interval=30, timeout=30
 
     def setup():
         ec2.authorize_security_group_ingress(
-            GroupId=sg_id, IpProtocol="tcp", FromPort=22, ToPort=22,
+            GroupId=sg_id,
+            IpProtocol="tcp",
+            FromPort=22,
+            ToPort=22,
             CidrIp="0.0.0.0/0",
         )
         print(f"  [!] Opened SG {sg_id} port 22 to 0.0.0.0/0")
@@ -67,8 +70,11 @@ def experiment_open_security_group(session, sg_id, check_interval=30, timeout=30
             )
             items = results.get("EvaluationResults", [])
             for item in items:
-                resource_id = item.get("EvaluationResultIdentifier", {}).get(
-                    "EvaluationResultQualifier", {}).get("ResourceId", "")
+                resource_id = (
+                    item.get("EvaluationResultIdentifier", {})
+                    .get("EvaluationResultQualifier", {})
+                    .get("ResourceId", "")
+                )
                 if resource_id == sg_id:
                     return {"detected": True, "detection_time_sec": elapsed}
         return {"detected": False, "timeout": timeout_sec}
@@ -76,15 +82,19 @@ def experiment_open_security_group(session, sg_id, check_interval=30, timeout=30
     def rollback():
         try:
             ec2.revoke_security_group_ingress(
-                GroupId=sg_id, IpProtocol="tcp", FromPort=22, ToPort=22,
+                GroupId=sg_id,
+                IpProtocol="tcp",
+                FromPort=22,
+                ToPort=22,
                 CidrIp="0.0.0.0/0",
             )
             print(f"  [+] Rolled back SG {sg_id}")
         except ClientError:
             pass
 
-    exp = ChaosExperiment("open_security_group",
-                          "Verify detection of unrestricted SSH access")
+    exp = ChaosExperiment(
+        "open_security_group", "Verify detection of unrestricted SSH access"
+    )
     return exp.run(setup, verify, rollback, timeout)
 
 
@@ -110,9 +120,11 @@ def experiment_create_admin_user(session, username="chaos-test-admin", timeout=3
             for det_id in detectors:
                 findings = gd.list_findings(
                     DetectorId=det_id,
-                    FindingCriteria={"Criterion": {
-                        "type": {"Eq": ["Recon:IAMUser/UserPermissions"]},
-                    }},
+                    FindingCriteria={
+                        "Criterion": {
+                            "type": {"Eq": ["Recon:IAMUser/UserPermissions"]},
+                        }
+                    },
                 )
                 if findings.get("FindingIds"):
                     return {"detected": True, "detection_time_sec": elapsed}
@@ -129,8 +141,9 @@ def experiment_create_admin_user(session, username="chaos-test-admin", timeout=3
         except ClientError:
             pass
 
-    exp = ChaosExperiment("create_admin_user",
-                          "Verify detection of unauthorized admin user creation")
+    exp = ChaosExperiment(
+        "create_admin_user", "Verify detection of unauthorized admin user creation"
+    )
     return exp.run(setup, verify, rollback, timeout)
 
 
@@ -151,8 +164,11 @@ def experiment_stop_cloudtrail(session, trail_name, timeout=300):
             alarms = cw.describe_alarms(AlarmNamePrefix="CloudTrail")
             for alarm in alarms.get("MetricAlarms", []):
                 if alarm["StateValue"] == "ALARM":
-                    return {"detected": True, "detection_time_sec": elapsed,
-                            "alarm": alarm["AlarmName"]}
+                    return {
+                        "detected": True,
+                        "detection_time_sec": elapsed,
+                        "alarm": alarm["AlarmName"],
+                    }
         return {"detected": False, "timeout": timeout_sec}
 
     def rollback():
@@ -162,34 +178,48 @@ def experiment_stop_cloudtrail(session, trail_name, timeout=300):
         except ClientError:
             pass
 
-    exp = ChaosExperiment("stop_cloudtrail",
-                          "Verify detection of CloudTrail logging disabled")
+    exp = ChaosExperiment(
+        "stop_cloudtrail", "Verify detection of CloudTrail logging disabled"
+    )
     return exp.run(setup, verify, rollback, timeout)
 
 
 def dry_run_experiments():
     """List available experiments without executing them."""
     return [
-        {"name": "open_security_group", "severity": "HIGH",
-         "description": "Open SG port 22 to 0.0.0.0/0, verify Config Rule alert"},
-        {"name": "create_admin_user", "severity": "CRITICAL",
-         "description": "Create IAM admin user, verify GuardDuty detection"},
-        {"name": "stop_cloudtrail", "severity": "CRITICAL",
-         "description": "Stop CloudTrail logging, verify CloudWatch alarm"},
+        {
+            "name": "open_security_group",
+            "severity": "HIGH",
+            "description": "Open SG port 22 to 0.0.0.0/0, verify Config Rule alert",
+        },
+        {
+            "name": "create_admin_user",
+            "severity": "CRITICAL",
+            "description": "Create IAM admin user, verify GuardDuty detection",
+        },
+        {
+            "name": "stop_cloudtrail",
+            "severity": "CRITICAL",
+            "description": "Stop CloudTrail logging, verify CloudWatch alarm",
+        },
     ]
 
 
 def main():
     parser = argparse.ArgumentParser(description="Security Chaos Engineering Agent")
     parser.add_argument("--profile", default=os.getenv("AWS_PROFILE"))
-    parser.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION", "us-east-1"))
+    parser.add_argument(
+        "--region", default=os.getenv("AWS_DEFAULT_REGION", "us-east-1")
+    )
     parser.add_argument("--sg-id", help="Security Group ID for SG experiment")
     parser.add_argument("--trail-name", help="CloudTrail name for trail experiment")
     parser.add_argument("--timeout", type=int, default=300)
     parser.add_argument("--output", default="chaos_report.json")
-    parser.add_argument("--action", choices=[
-        "dry_run", "open_sg", "admin_user", "stop_trail", "full_suite"
-    ], default="dry_run")
+    parser.add_argument(
+        "--action",
+        choices=["dry_run", "open_sg", "admin_user", "stop_trail", "full_suite"],
+        default="dry_run",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "experiments": []}
@@ -202,7 +232,9 @@ def main():
     else:
         session = boto3.Session(profile_name=args.profile, region_name=args.region)
         if args.action in ("open_sg", "full_suite") and args.sg_id:
-            result = experiment_open_security_group(session, args.sg_id, timeout=args.timeout)
+            result = experiment_open_security_group(
+                session, args.sg_id, timeout=args.timeout
+            )
             report["experiments"].append(result)
 
         if args.action in ("admin_user", "full_suite"):
@@ -210,7 +242,9 @@ def main():
             report["experiments"].append(result)
 
         if args.action in ("stop_trail", "full_suite") and args.trail_name:
-            result = experiment_stop_cloudtrail(session, args.trail_name, timeout=args.timeout)
+            result = experiment_stop_cloudtrail(
+                session, args.trail_name, timeout=args.timeout
+            )
             report["experiments"].append(result)
 
     with open(args.output, "w") as f:

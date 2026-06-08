@@ -20,7 +20,9 @@ def query_ad_service_accounts():
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip().startswith(("[", "{")) else []
         return data if isinstance(data, list) else [data]
@@ -43,7 +45,9 @@ def check_interactive_logons(days=7):
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip() else []
         return data if isinstance(data, list) else [data]
@@ -63,12 +67,14 @@ def analyze_logon_patterns(events):
     for acct, sources in account_sources.items():
         unique = set(sources)
         if len(unique) > 3:
-            anomalies.append({
-                "account": acct,
-                "issue": "Service account logged in from multiple sources",
-                "source_count": len(unique),
-                "sources": list(unique)[:10],
-            })
+            anomalies.append(
+                {
+                    "account": acct,
+                    "issue": "Service account logged in from multiple sources",
+                    "source_count": len(unique),
+                    "sources": list(unique)[:10],
+                }
+            )
     return anomalies
 
 
@@ -102,7 +108,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="Detect service account abuse in AD environments"
     )
-    parser.add_argument("--days", type=int, default=7, help="Lookback days for logon events")
+    parser.add_argument(
+        "--days", type=int, default=7, help="Lookback days for logon events"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report path")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
@@ -125,7 +133,11 @@ def main():
     print(f"[*] Logon anomalies: {len(anomalies)}")
 
     total_issues = len(risks) + len(anomalies)
-    report["risk_level"] = "CRITICAL" if total_issues >= 5 else "HIGH" if total_issues >= 3 else "MEDIUM" if total_issues > 0 else "LOW"
+    report["risk_level"] = (
+        "CRITICAL"
+        if total_issues >= 5
+        else "HIGH" if total_issues >= 3 else "MEDIUM" if total_issues > 0 else "LOW"
+    )
 
     if args.output:
         with open(args.output, "w") as f:

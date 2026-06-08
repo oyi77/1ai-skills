@@ -58,7 +58,9 @@ class SQLiteForensicAnalyzer:
         """Extract complete database schema."""
         conn = sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True)
         cursor = conn.cursor()
-        cursor.execute("SELECT type, name, tbl_name, sql FROM sqlite_master ORDER BY type, name")
+        cursor.execute(
+            "SELECT type, name, tbl_name, sql FROM sqlite_master ORDER BY type, name"
+        )
         schema = [
             {"type": row[0], "name": row[1], "table_name": row[2], "sql": row[3]}
             for row in cursor.fetchall()
@@ -80,7 +82,12 @@ class SQLiteForensicAnalyzer:
                 count = cursor.fetchone()[0]
                 cursor.execute(f'PRAGMA table_info("{table}")')
                 columns = [
-                    {"name": col[1], "type": col[2], "notnull": bool(col[3]), "pk": bool(col[5])}
+                    {
+                        "name": col[1],
+                        "type": col[2],
+                        "notnull": bool(col[3]),
+                        "pk": bool(col[5]),
+                    }
                     for col in cursor.fetchall()
                 ]
                 stats[table] = {"row_count": count, "columns": columns}
@@ -111,20 +118,18 @@ class SQLiteForensicAnalyzer:
                 leaf_count = struct.unpack(">I", data[4:8])[0]
                 leaves = []
                 for i in range(min(leaf_count, (page_size - 8) // 4)):
-                    leaf = struct.unpack(">I", data[8 + i * 4:12 + i * 4])[0]
+                    leaf = struct.unpack(">I", data[8 + i * 4 : 12 + i * 4])[0]
                     leaves.append(leaf)
-                freelist_pages.append({
-                    "trunk_page": trunk,
-                    "leaf_count": leaf_count,
-                    "leaves": leaves
-                })
+                freelist_pages.append(
+                    {"trunk_page": trunk, "leaf_count": leaf_count, "leaves": leaves}
+                )
                 trunk = next_trunk
 
         return {
             "total_freelist_pages": total_freelist,
             "trunk_pages": len(freelist_pages),
             "details": freelist_pages,
-            "recoverable": total_freelist > 0
+            "recoverable": total_freelist > 0,
         }
 
     def check_wal(self) -> dict:
@@ -147,11 +152,11 @@ class SQLiteForensicAnalyzer:
 
         return {
             "exists": True,
-            "valid": magic in (0x377f0682, 0x377f0683),
+            "valid": magic in (0x377F0682, 0x377F0683),
             "size_bytes": wal_size,
             "page_size": page_size,
             "checkpoint_sequence": checkpoint,
-            "estimated_frames": frame_count
+            "estimated_frames": frame_count,
         }
 
     def generate_report(self) -> str:
@@ -174,7 +179,9 @@ class SQLiteForensicAnalyzer:
         print(f"[*] Database: {self.db_path}")
         print(f"[*] Page size: {report['header'].get('page_size', 'N/A')}")
         print(f"[*] Tables: {len(report['table_stats'])}")
-        print(f"[*] Freelist pages: {report['freelist'].get('total_freelist_pages', 0)}")
+        print(
+            f"[*] Freelist pages: {report['freelist'].get('total_freelist_pages', 0)}"
+        )
         print(f"[*] WAL present: {report['wal'].get('exists', False)}")
         print(f"[*] Report: {report_path}")
         return report_path

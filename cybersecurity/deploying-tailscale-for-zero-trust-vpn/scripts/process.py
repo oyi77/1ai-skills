@@ -67,12 +67,14 @@ class TailscaleACLGenerator:
         self.acls.append({"action": action, "src": src, "dst": dst})
 
     def add_ssh_rule(self, src: list, dst: list, users: list, action: str = "check"):
-        self.ssh_rules.append({
-            "action": action,
-            "src": src,
-            "dst": dst,
-            "users": users,
-        })
+        self.ssh_rules.append(
+            {
+                "action": action,
+                "src": src,
+                "dst": dst,
+                "users": users,
+            }
+        )
 
     def add_auto_approver_route(self, cidr: str, approvers: list):
         self.auto_approvers["routes"][cidr] = approvers
@@ -130,12 +132,16 @@ class TailscaleACLGenerator:
         for tag, owners in self.tag_owners.items():
             for owner in owners:
                 if owner.startswith("group:") and owner not in self.groups:
-                    issues.append(f"ERROR: Tag {tag} references undefined group {owner}")
+                    issues.append(
+                        f"ERROR: Tag {tag} references undefined group {owner}"
+                    )
 
         # Check SSH rules
         for i, rule in enumerate(self.ssh_rules):
             if "root" in rule.get("users", []) and rule.get("action") != "check":
-                issues.append(f"WARNING: SSH rule {i} allows root access without re-auth check")
+                issues.append(
+                    f"WARNING: SSH rule {i} allows root access without re-auth check"
+                )
 
         return issues
 
@@ -151,7 +157,9 @@ class TailscaleMonitor:
         try:
             result = subprocess.run(
                 ["tailscale", "status", "--json"],
-                capture_output=True, text=True, timeout=10
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             if result.returncode == 0:
                 return json.loads(result.stdout)
@@ -166,8 +174,16 @@ class TailscaleMonitor:
         for peer_id, peer_data in peers.items():
             node = TailscaleNode(
                 hostname=peer_data.get("HostName", "unknown"),
-                ip4=peer_data.get("TailscaleIPs", [""])[0] if peer_data.get("TailscaleIPs") else "",
-                ip6=peer_data.get("TailscaleIPs", ["", ""])[1] if len(peer_data.get("TailscaleIPs", [])) > 1 else "",
+                ip4=(
+                    peer_data.get("TailscaleIPs", [""])[0]
+                    if peer_data.get("TailscaleIPs")
+                    else ""
+                ),
+                ip6=(
+                    peer_data.get("TailscaleIPs", ["", ""])[1]
+                    if len(peer_data.get("TailscaleIPs", [])) > 1
+                    else ""
+                ),
                 os=peer_data.get("OS", ""),
                 online=peer_data.get("Online", False),
                 tags=peer_data.get("Tags", []),
@@ -195,13 +211,19 @@ class TailscaleMonitor:
             # Check for expiring keys
             if node.key_expiry:
                 try:
-                    expiry = datetime.datetime.fromisoformat(node.key_expiry.replace("Z", "+00:00"))
-                    days_until = (expiry - datetime.datetime.now(datetime.timezone.utc)).days
+                    expiry = datetime.datetime.fromisoformat(
+                        node.key_expiry.replace("Z", "+00:00")
+                    )
+                    days_until = (
+                        expiry - datetime.datetime.now(datetime.timezone.utc)
+                    ).days
                     if days_until < 30:
-                        report["expiring_keys"].append({
-                            "hostname": node.hostname,
-                            "expires_in_days": days_until,
-                        })
+                        report["expiring_keys"].append(
+                            {
+                                "hostname": node.hostname,
+                                "expires_in_days": days_until,
+                            }
+                        )
                 except (ValueError, TypeError):
                     pass
 
@@ -215,9 +237,7 @@ class TailscaleMonitor:
 
         # Generate issues
         if report["offline_nodes"] > 0:
-            report["issues"].append(
-                f"{report['offline_nodes']} nodes offline"
-            )
+            report["issues"].append(f"{report['offline_nodes']} nodes offline")
         if report["expiring_keys"]:
             report["issues"].append(
                 f"{len(report['expiring_keys'])} nodes with keys expiring within 30 days"
@@ -247,9 +267,11 @@ class TailscaleMonitor:
                     "detail": "ACL policy review required - validate minimum necessary access",
                 },
                 "continuous_verification": {
-                    "status": "PASS" if not any(
-                        n.key_expiry == "" for n in self.nodes
-                    ) else "WARNING",
+                    "status": (
+                        "PASS"
+                        if not any(n.key_expiry == "" for n in self.nodes)
+                        else "WARNING"
+                    ),
                     "detail": "Key expiry should be enabled for all non-server nodes",
                 },
                 "device_trust": {
@@ -281,20 +303,17 @@ def generate_example_policy():
 
     # ACL rules - zero trust, least privilege
     gen.add_acl_rule(
-        src=["group:engineering"],
-        dst=["tag:development:*", "tag:staging:443,8080"]
+        src=["group:engineering"], dst=["tag:development:*", "tag:staging:443,8080"]
     )
     gen.add_acl_rule(
         src=["group:sre"],
-        dst=["tag:production:22,443,8080", "tag:staging:*", "tag:database:5432,3306"]
+        dst=["tag:production:22,443,8080", "tag:staging:*", "tag:database:5432,3306"],
     )
     gen.add_acl_rule(
-        src=["group:security"],
-        dst=["tag:monitoring:443,9090", "tag:production:443"]
+        src=["group:security"], dst=["tag:monitoring:443,9090", "tag:production:443"]
     )
     gen.add_acl_rule(
-        src=["tag:ci-runner"],
-        dst=["tag:staging:443,8080", "tag:production:443"]
+        src=["tag:ci-runner"], dst=["tag:staging:443,8080", "tag:production:443"]
     )
 
     # SSH rules with re-authentication
@@ -302,13 +321,13 @@ def generate_example_policy():
         src=["group:sre"],
         dst=["tag:production"],
         users=["admin"],
-        action="check"  # Requires re-auth, records session
+        action="check",  # Requires re-auth, records session
     )
     gen.add_ssh_rule(
         src=["group:engineering"],
         dst=["tag:development"],
         users=["autogroup:nonroot"],
-        action="accept"
+        action="accept",
     )
 
     # Auto-approvers for subnet routes

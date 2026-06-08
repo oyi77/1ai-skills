@@ -20,7 +20,9 @@ from collections import Counter
 from datetime import datetime, timezone
 from typing import Optional
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger("lessons_learned")
 
 
@@ -51,18 +53,32 @@ class IncidentMetrics:
 
         metrics = {}
         if compromise and detection:
-            metrics["dwell_time_hours"] = round((detection - compromise).total_seconds() / 3600, 2)
+            metrics["dwell_time_hours"] = round(
+                (detection - compromise).total_seconds() / 3600, 2
+            )
         if detection and triage:
-            metrics["mttd_minutes"] = round((triage - detection).total_seconds() / 60, 2)
+            metrics["mttd_minutes"] = round(
+                (triage - detection).total_seconds() / 60, 2
+            )
         if detection and containment:
-            metrics["mttc_hours"] = round((containment - detection).total_seconds() / 3600, 2)
+            metrics["mttc_hours"] = round(
+                (containment - detection).total_seconds() / 3600, 2
+            )
         if eradication and recovery:
-            metrics["mttr_hours"] = round((recovery - eradication).total_seconds() / 3600, 2)
+            metrics["mttr_hours"] = round(
+                (recovery - eradication).total_seconds() / 3600, 2
+            )
         if containment and eradication:
-            metrics["eradication_hours"] = round((eradication - containment).total_seconds() / 3600, 2)
+            metrics["eradication_hours"] = round(
+                (eradication - containment).total_seconds() / 3600, 2
+            )
         if detection and closure:
-            metrics["total_duration_hours"] = round((closure - detection).total_seconds() / 3600, 2)
-            metrics["total_duration_days"] = round(metrics["total_duration_hours"] / 24, 1)
+            metrics["total_duration_hours"] = round(
+                (closure - detection).total_seconds() / 3600, 2
+            )
+            metrics["total_duration_days"] = round(
+                metrics["total_duration_hours"] / 24, 1
+            )
 
         return metrics
 
@@ -74,7 +90,9 @@ class RootCauseAnalyzer:
         self.whys = []
 
     def add_why(self, question: str, answer: str):
-        self.whys.append({"level": len(self.whys) + 1, "question": question, "answer": answer})
+        self.whys.append(
+            {"level": len(self.whys) + 1, "question": question, "answer": answer}
+        )
 
     def get_root_cause(self) -> str:
         if self.whys:
@@ -125,26 +143,33 @@ class LessonsLearnedReport:
     def set_root_cause(self, rca: RootCauseAnalyzer):
         self.report["root_cause_analysis"] = rca.to_dict()
 
-    def add_action_item(self, title: str, owner: str, priority: str,
-                        deadline: str, category: str):
-        self.report["action_items"].append({
-            "title": title,
-            "owner": owner,
-            "priority": priority,
-            "deadline": deadline,
-            "category": category,
-            "status": "open",
-        })
+    def add_action_item(
+        self, title: str, owner: str, priority: str, deadline: str, category: str
+    ):
+        self.report["action_items"].append(
+            {
+                "title": title,
+                "owner": owner,
+                "priority": priority,
+                "deadline": deadline,
+                "category": category,
+                "status": "open",
+            }
+        )
 
     def add_playbook_update(self, playbook: str, change: str):
         self.report["playbook_updates"].append({"playbook": playbook, "change": change})
 
-    def add_detection_improvement(self, rule_name: str, description: str, technique: str):
-        self.report["detection_improvements"].append({
-            "rule_name": rule_name,
-            "description": description,
-            "mitre_technique": technique,
-        })
+    def add_detection_improvement(
+        self, rule_name: str, description: str, technique: str
+    ):
+        self.report["detection_improvements"].append(
+            {
+                "rule_name": rule_name,
+                "description": description,
+                "mitre_technique": technique,
+            }
+        )
 
     def generate_markdown(self) -> str:
         m = self.report["metrics"]
@@ -210,23 +235,37 @@ class IncidentTrendAnalyzer:
 
         types = Counter(i.get("type", "unknown") for i in self.incidents)
         severities = Counter(i.get("severity", "unknown") for i in self.incidents)
-        root_causes = Counter(i.get("root_cause_category", "unknown") for i in self.incidents)
+        root_causes = Counter(
+            i.get("root_cause_category", "unknown") for i in self.incidents
+        )
 
-        dwell_times = [i.get("dwell_time_hours", 0) for i in self.incidents if i.get("dwell_time_hours")]
-        mttc_values = [i.get("mttc_hours", 0) for i in self.incidents if i.get("mttc_hours")]
+        dwell_times = [
+            i.get("dwell_time_hours", 0)
+            for i in self.incidents
+            if i.get("dwell_time_hours")
+        ]
+        mttc_values = [
+            i.get("mttc_hours", 0) for i in self.incidents if i.get("mttc_hours")
+        ]
 
         return {
             "total_incidents": len(self.incidents),
             "by_type": dict(types),
             "by_severity": dict(severities),
             "by_root_cause": dict(root_causes),
-            "avg_dwell_time_hours": round(sum(dwell_times) / len(dwell_times), 2) if dwell_times else None,
-            "avg_mttc_hours": round(sum(mttc_values) / len(mttc_values), 2) if mttc_values else None,
+            "avg_dwell_time_hours": (
+                round(sum(dwell_times) / len(dwell_times), 2) if dwell_times else None
+            ),
+            "avg_mttc_hours": (
+                round(sum(mttc_values) / len(mttc_values), 2) if mttc_values else None
+            ),
         }
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Post-Incident Lessons Learned Generator")
+    parser = argparse.ArgumentParser(
+        description="Post-Incident Lessons Learned Generator"
+    )
     parser.add_argument("--incident-id", required=True, help="Incident ID")
     parser.add_argument("--summary", default="", help="Incident summary")
     parser.add_argument("--timeline-file", help="JSON file with incident timeline")
@@ -242,9 +281,11 @@ def main():
             timeline = json.load(f)
         report.set_timeline(timeline)
     else:
-        logger.info("No timeline file provided. Create a JSON with keys: "
-                     "compromise_time, detection_time, triage_time, containment_time, "
-                     "eradication_time, recovery_time, closure_time")
+        logger.info(
+            "No timeline file provided. Create a JSON with keys: "
+            "compromise_time, detection_time, triage_time, containment_time, "
+            "eradication_time, recovery_time, closure_time"
+        )
 
     report.save(args.output_dir)
     print(f"Lessons learned report generated in: {args.output_dir}")

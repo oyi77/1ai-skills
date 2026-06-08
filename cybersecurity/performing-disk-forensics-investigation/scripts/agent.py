@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 
 try:
     import pytsk3
+
     HAS_PYTSK3 = True
 except ImportError:
     HAS_PYTSK3 = False
@@ -89,16 +90,34 @@ def list_files_pytsk3(image_path: str, directory: str = "/") -> list[dict]:
 
         meta = entry.info.meta
         if meta:
-            files.append({
-                "name": name,
-                "type": "directory" if meta.type == pytsk3.TSK_FS_META_TYPE_DIR else "file",
-                "size": meta.size,
-                "created": datetime.fromtimestamp(meta.crtime, tz=timezone.utc).isoformat() if meta.crtime else "",
-                "modified": datetime.fromtimestamp(meta.mtime, tz=timezone.utc).isoformat() if meta.mtime else "",
-                "accessed": datetime.fromtimestamp(meta.atime, tz=timezone.utc).isoformat() if meta.atime else "",
-                "inode": meta.addr,
-                "flags": str(meta.flags),
-            })
+            files.append(
+                {
+                    "name": name,
+                    "type": (
+                        "directory"
+                        if meta.type == pytsk3.TSK_FS_META_TYPE_DIR
+                        else "file"
+                    ),
+                    "size": meta.size,
+                    "created": (
+                        datetime.fromtimestamp(meta.crtime, tz=timezone.utc).isoformat()
+                        if meta.crtime
+                        else ""
+                    ),
+                    "modified": (
+                        datetime.fromtimestamp(meta.mtime, tz=timezone.utc).isoformat()
+                        if meta.mtime
+                        else ""
+                    ),
+                    "accessed": (
+                        datetime.fromtimestamp(meta.atime, tz=timezone.utc).isoformat()
+                        if meta.atime
+                        else ""
+                    ),
+                    "inode": meta.addr,
+                    "flags": str(meta.flags),
+                }
+            )
 
     return files
 
@@ -124,16 +143,22 @@ def find_deleted_files(image_path: str) -> list[dict]:
 
             meta = entry.info.meta
             if meta and meta.flags & pytsk3.TSK_FS_META_FLAG_UNALLOC:
-                deleted.append({
-                    "name": name,
-                    "path": f"{path}{name}",
-                    "size": meta.size,
-                    "deleted_approx": datetime.fromtimestamp(
-                        meta.mtime, tz=timezone.utc
-                    ).isoformat() if meta.mtime else "",
-                    "inode": meta.addr,
-                    "recoverable": meta.size > 0,
-                })
+                deleted.append(
+                    {
+                        "name": name,
+                        "path": f"{path}{name}",
+                        "size": meta.size,
+                        "deleted_approx": (
+                            datetime.fromtimestamp(
+                                meta.mtime, tz=timezone.utc
+                            ).isoformat()
+                            if meta.mtime
+                            else ""
+                        ),
+                        "inode": meta.addr,
+                        "recoverable": meta.size > 0,
+                    }
+                )
 
             if meta and meta.type == pytsk3.TSK_FS_META_TYPE_DIR:
                 try:
@@ -170,12 +195,14 @@ def parse_mft_entries(mft_path: str) -> list[dict]:
                 is_deleted = not (flags & 0x01)
                 is_directory = bool(flags & 0x02)
 
-                entries.append({
-                    "entry_number": entry_num,
-                    "is_deleted": is_deleted,
-                    "is_directory": is_directory,
-                    "flags": flags,
-                })
+                entries.append(
+                    {
+                        "entry_number": entry_num,
+                        "is_deleted": is_deleted,
+                        "is_directory": is_directory,
+                        "flags": flags,
+                    }
+                )
 
             entry_num += 1
             if entry_num >= 10000:
@@ -194,11 +221,29 @@ def build_timeline(files: list[dict]) -> list[dict]:
     for f in files:
         if isinstance(f, dict) and "error" not in f:
             if f.get("created"):
-                events.append({"timestamp": f["created"], "event": "created", "path": f.get("name", "")})
+                events.append(
+                    {
+                        "timestamp": f["created"],
+                        "event": "created",
+                        "path": f.get("name", ""),
+                    }
+                )
             if f.get("modified"):
-                events.append({"timestamp": f["modified"], "event": "modified", "path": f.get("name", "")})
+                events.append(
+                    {
+                        "timestamp": f["modified"],
+                        "event": "modified",
+                        "path": f.get("name", ""),
+                    }
+                )
             if f.get("accessed"):
-                events.append({"timestamp": f["accessed"], "event": "accessed", "path": f.get("name", "")})
+                events.append(
+                    {
+                        "timestamp": f["accessed"],
+                        "event": "accessed",
+                        "path": f.get("name", ""),
+                    }
+                )
 
     events.sort(key=lambda x: x.get("timestamp", ""))
     return events
@@ -265,6 +310,14 @@ if __name__ == "__main__":
 
     output = f"disk_forensics_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
     with open(output, "w") as f:
-        json.dump({"integrity": integrity, "fs_info": fs_info, "deleted_files": deleted,
-                    "timeline": timeline[:100]}, f, indent=2)
+        json.dump(
+            {
+                "integrity": integrity,
+                "fs_info": fs_info,
+                "deleted_files": deleted,
+                "timeline": timeline[:100],
+            },
+            f,
+            indent=2,
+        )
     print(f"\n[*] Results saved to {output}")

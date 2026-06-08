@@ -67,18 +67,20 @@ def detect_impossible_travel(events, max_speed_kmh=900):
                 continue
             speed = dist / hours
             if speed > max_speed_kmh:
-                alerts.append({
-                    "type": "IMPOSSIBLE_TRAVEL",
-                    "severity": "HIGH",
-                    "user": user,
-                    "from": f"{prev.get('city', '?')}, {prev.get('country', '?')}",
-                    "to": f"{curr.get('city', '?')}, {curr.get('country', '?')}",
-                    "distance_km": round(dist, 1),
-                    "time_hours": round(hours, 2),
-                    "speed_kmh": round(speed, 1),
-                    "ip_from": prev.get("source_ip"),
-                    "ip_to": curr.get("source_ip"),
-                })
+                alerts.append(
+                    {
+                        "type": "IMPOSSIBLE_TRAVEL",
+                        "severity": "HIGH",
+                        "user": user,
+                        "from": f"{prev.get('city', '?')}, {prev.get('country', '?')}",
+                        "to": f"{curr.get('city', '?')}, {curr.get('country', '?')}",
+                        "distance_km": round(dist, 1),
+                        "time_hours": round(hours, 2),
+                        "speed_kmh": round(speed, 1),
+                        "ip_from": prev.get("source_ip"),
+                        "ip_to": curr.get("source_ip"),
+                    }
+                )
     return alerts
 
 
@@ -97,25 +99,32 @@ def detect_brute_force(events, threshold=10, window_min=10):
         fails.sort(key=lambda x: x.get("timestamp", ""))
         for i, event in enumerate(fails):
             try:
-                t_start = datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
+                t_start = datetime.fromisoformat(
+                    event["timestamp"].replace("Z", "+00:00")
+                )
                 t_end = t_start + timedelta(minutes=window_min)
             except Exception:
                 continue
             window = [
-                f for f in fails
-                if t_start <= datetime.fromisoformat(f["timestamp"].replace("Z", "+00:00")) <= t_end
+                f
+                for f in fails
+                if t_start
+                <= datetime.fromisoformat(f["timestamp"].replace("Z", "+00:00"))
+                <= t_end
             ]
             if len(window) >= threshold:
                 ips = list(set(w.get("source_ip", "") for w in window))
-                alerts.append({
-                    "type": "BRUTE_FORCE",
-                    "severity": "HIGH",
-                    "user": user,
-                    "failures": len(window),
-                    "window_minutes": window_min,
-                    "source_ips": ips,
-                    "distributed": len(ips) > 1,
-                })
+                alerts.append(
+                    {
+                        "type": "BRUTE_FORCE",
+                        "severity": "HIGH",
+                        "user": user,
+                        "failures": len(window),
+                        "window_minutes": window_min,
+                        "source_ips": ips,
+                        "distributed": len(ips) > 1,
+                    }
+                )
                 break
     return alerts
 
@@ -135,26 +144,33 @@ def detect_password_spray(events, user_threshold=10, window_min=30):
         fails.sort(key=lambda x: x.get("timestamp", ""))
         for event in fails:
             try:
-                t_start = datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
+                t_start = datetime.fromisoformat(
+                    event["timestamp"].replace("Z", "+00:00")
+                )
                 t_end = t_start + timedelta(minutes=window_min)
             except Exception:
                 continue
             window = [
-                f for f in fails
-                if t_start <= datetime.fromisoformat(f["timestamp"].replace("Z", "+00:00")) <= t_end
+                f
+                for f in fails
+                if t_start
+                <= datetime.fromisoformat(f["timestamp"].replace("Z", "+00:00"))
+                <= t_end
             ]
             users = set(w.get("user", "") for w in window)
             if len(users) >= user_threshold:
                 avg_per_user = len(window) / len(users)
                 if avg_per_user <= 3:
-                    alerts.append({
-                        "type": "PASSWORD_SPRAY",
-                        "severity": "CRITICAL",
-                        "source_ip": ip,
-                        "targeted_users": len(users),
-                        "total_attempts": len(window),
-                        "avg_per_user": round(avg_per_user, 1),
-                    })
+                    alerts.append(
+                        {
+                            "type": "PASSWORD_SPRAY",
+                            "severity": "CRITICAL",
+                            "source_ip": ip,
+                            "targeted_users": len(users),
+                            "total_attempts": len(window),
+                            "avg_per_user": round(avg_per_user, 1),
+                        }
+                    )
                     break
     return alerts
 
@@ -191,7 +207,9 @@ def build_user_baseline(events, user):
         "top_apps": apps.most_common(10),
         "top_devices": devices.most_common(5),
         "failure_rate": round(
-            sum(1 for e in user_events if e.get("result") == "failure") / len(user_events), 3
+            sum(1 for e in user_events if e.get("result") == "failure")
+            / len(user_events),
+            3,
         ),
     }
 

@@ -13,7 +13,8 @@ PostBridge endpoints:
 """
 
 import sys
-sys.path.insert(0, '/home/openclaw/.openclaw/workspace')
+
+sys.path.insert(0, "/home/openclaw/.openclaw/workspace")
 
 import json
 from datetime import datetime, timedelta, timezone
@@ -36,10 +37,12 @@ class AnalyticsEngine(BaseModule):
     def __init__(self, config: dict):
         super().__init__(config)
         self._session = requests.Session()
-        self._session.headers.update({
-            "Authorization": f"Bearer {POSTBRIDGE_API_KEY}",
-            "Content-Type": "application/json",
-        })
+        self._session.headers.update(
+            {
+                "Authorization": f"Bearer {POSTBRIDGE_API_KEY}",
+                "Content-Type": "application/json",
+            }
+        )
         self._base = POSTBRIDGE_BASE_URL.rstrip("/")
 
     # ── Data fetching ─────────────────────────────────────────────────────
@@ -67,7 +70,10 @@ class AnalyticsEngine(BaseModule):
         for post in posts:
             ts = post.get("scheduled_at") or post.get("created_at", "")
             try:
-                if datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(WIB) < cutoff:
+                if (
+                    datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(WIB)
+                    < cutoff
+                ):
                     continue
             except (ValueError, AttributeError):
                 pass
@@ -78,9 +84,9 @@ class AnalyticsEngine(BaseModule):
 
     def generate_daily_report(self) -> str:
         """Formatted markdown report for today's posts."""
-        posts  = self.get_post_performance(days=1)
+        posts = self.get_post_performance(days=1)
         totals = self._agg(posts)
-        today  = datetime.now(WIB).strftime("%Y-%m-%d")
+        today = datetime.now(WIB).strftime("%Y-%m-%d")
 
         lines = [
             f"# Daily Analytics — {today}",
@@ -100,33 +106,37 @@ class AnalyticsEngine(BaseModule):
 
     def generate_weekly_report(self) -> str:
         """Formatted markdown weekly summary with platform breakdown."""
-        posts  = self.get_post_performance(days=7)
+        posts = self.get_post_performance(days=7)
         totals = self._agg(posts)
-        end    = datetime.now(WIB).strftime("%Y-%m-%d")
-        start  = (datetime.now(WIB) - timedelta(days=7)).strftime("%Y-%m-%d")
+        end = datetime.now(WIB).strftime("%Y-%m-%d")
+        start = (datetime.now(WIB) - timedelta(days=7)).strftime("%Y-%m-%d")
 
         by_plat: dict[str, dict] = {}
         for p in posts:
             pl = p.get("platform", "unknown")
-            d  = by_plat.setdefault(pl, {"posts": 0, "views": 0})
+            d = by_plat.setdefault(pl, {"posts": 0, "views": 0})
             d["posts"] += 1
             d["views"] += p.get("views") or p.get("view_count") or 0
 
-        lines = [
-            f"# Weekly Analytics — {start} → {end}",
-            f"Total posts: **{len(posts)}**",
-            "",
-            "## Totals",
-            f"- Views: **{totals['views']:,}**",
-            f"- Likes: **{totals['likes']:,}**",
-            f"- Comments: **{totals['comments']:,}**",
-            f"- Shares: **{totals['shares']:,}**",
-            "",
-            "## By Platform",
-        ] + [
-            f"- **{pl}**: {d['posts']} posts · {d['views']:,} views"
-            for pl, d in sorted(by_plat.items())
-        ] + [""]
+        lines = (
+            [
+                f"# Weekly Analytics — {start} → {end}",
+                f"Total posts: **{len(posts)}**",
+                "",
+                "## Totals",
+                f"- Views: **{totals['views']:,}**",
+                f"- Likes: **{totals['likes']:,}**",
+                f"- Comments: **{totals['comments']:,}**",
+                f"- Shares: **{totals['shares']:,}**",
+                "",
+                "## By Platform",
+            ]
+            + [
+                f"- **{pl}**: {d['posts']} posts · {d['views']:,} views"
+                for pl, d in sorted(by_plat.items())
+            ]
+            + [""]
+        )
 
         lines += self.recommend_actions()
         return "\n".join(lines)
@@ -159,11 +169,19 @@ class AnalyticsEngine(BaseModule):
         totals = self._agg(posts)
         recs = ["## Recommendations"]
 
-        eng_rate = (totals["likes"] + totals["comments"] + totals["shares"]) / max(totals["views"], 1) * 100
+        eng_rate = (
+            (totals["likes"] + totals["comments"] + totals["shares"])
+            / max(totals["views"], 1)
+            * 100
+        )
         if eng_rate < 3:
-            recs.append(f"- 🔴 Engagement rate {eng_rate:.1f}% LOW — add stronger CTAs and questions.")
+            recs.append(
+                f"- 🔴 Engagement rate {eng_rate:.1f}% LOW — add stronger CTAs and questions."
+            )
         elif eng_rate > 8:
-            recs.append(f"- 🟢 Engagement rate {eng_rate:.1f}% STRONG — double down on this style.")
+            recs.append(
+                f"- 🟢 Engagement rate {eng_rate:.1f}% STRONG — double down on this style."
+            )
 
         by_plat: dict[str, int] = {}
         for p in posts:
@@ -179,31 +197,35 @@ class AnalyticsEngine(BaseModule):
 
     def get_funnel_metrics(self) -> dict:
         """Views → Clicks → Sales funnel. Clicks from post-results; sales placeholder."""
-        posts   = self.get_post_performance(days=7)
+        posts = self.get_post_performance(days=7)
         results = self._fetch("post-results")
 
-        views  = sum(p.get("views") or p.get("view_count") or 0 for p in posts)
+        views = sum(p.get("views") or p.get("view_count") or 0 for p in posts)
         clicks = sum(r.get("clicks") or 0 for r in results)
-        sales  = 0  # hook up LYNK API separately
+        sales = 0  # hook up LYNK API separately
 
         return {
-            "views":   views,
-            "clicks":  clicks,
-            "sales":   sales,
+            "views": views,
+            "clicks": clicks,
+            "sales": sales,
             "ctr_pct": round(clicks / max(views, 1) * 100, 2),
-            "cvr_pct": round(sales  / max(clicks, 1) * 100, 2),
+            "cvr_pct": round(sales / max(clicks, 1) * 100, 2),
         }
 
     def export_report(self, fmt: str = "markdown") -> str:
         """Export weekly report as markdown or json."""
         if fmt == "json":
             posts = self.get_post_performance(days=7)
-            return json.dumps({
-                "generated_at": datetime.now(WIB).isoformat(),
-                "totals": self._agg(posts),
-                "funnel": self.get_funnel_metrics(),
-                "posts": posts,
-            }, ensure_ascii=False, indent=2)
+            return json.dumps(
+                {
+                    "generated_at": datetime.now(WIB).isoformat(),
+                    "totals": self._agg(posts),
+                    "funnel": self.get_funnel_metrics(),
+                    "posts": posts,
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
         return self.generate_weekly_report()
 
     # ── Private ───────────────────────────────────────────────────────────
@@ -220,10 +242,12 @@ class AnalyticsEngine(BaseModule):
 
     def _agg(self, posts: list[dict]) -> dict:
         return {
-            "views":    sum(p.get("views")    or p.get("view_count")    or 0 for p in posts),
-            "likes":    sum(p.get("likes")    or p.get("like_count")    or 0 for p in posts),
-            "comments": sum(p.get("comments") or p.get("comment_count") or 0 for p in posts),
-            "shares":   sum(p.get("shares")   or p.get("share_count")   or 0 for p in posts),
+            "views": sum(p.get("views") or p.get("view_count") or 0 for p in posts),
+            "likes": sum(p.get("likes") or p.get("like_count") or 0 for p in posts),
+            "comments": sum(
+                p.get("comments") or p.get("comment_count") or 0 for p in posts
+            ),
+            "shares": sum(p.get("shares") or p.get("share_count") or 0 for p in posts),
         }
 
 

@@ -41,25 +41,29 @@ def list_findings(session, detector_id, severity_min=4.0, max_results=50):
     if not finding_ids:
         return []
 
-    details = gd.get_findings(
-        DetectorId=detector_id, FindingIds=finding_ids
-    )["Findings"]
+    details = gd.get_findings(DetectorId=detector_id, FindingIds=finding_ids)[
+        "Findings"
+    ]
 
     results = []
     for f in details:
-        results.append({
-            "id": f.get("Id", ""),
-            "type": f.get("Type", ""),
-            "severity": f.get("Severity", 0),
-            "title": f.get("Title", ""),
-            "description": f.get("Description", "")[:200],
-            "resource_type": f.get("Resource", {}).get("ResourceType", ""),
-            "region": f.get("Region", ""),
-            "first_seen": f.get("Service", {}).get("EventFirstSeen", ""),
-            "last_seen": f.get("Service", {}).get("EventLastSeen", ""),
-            "count": f.get("Service", {}).get("Count", 0),
-            "action_type": f.get("Service", {}).get("Action", {}).get("ActionType", ""),
-        })
+        results.append(
+            {
+                "id": f.get("Id", ""),
+                "type": f.get("Type", ""),
+                "severity": f.get("Severity", 0),
+                "title": f.get("Title", ""),
+                "description": f.get("Description", "")[:200],
+                "resource_type": f.get("Resource", {}).get("ResourceType", ""),
+                "region": f.get("Region", ""),
+                "first_seen": f.get("Service", {}).get("EventFirstSeen", ""),
+                "last_seen": f.get("Service", {}).get("EventLastSeen", ""),
+                "count": f.get("Service", {}).get("Count", 0),
+                "action_type": f.get("Service", {})
+                .get("Action", {})
+                .get("ActionType", ""),
+            }
+        )
     return results
 
 
@@ -81,17 +85,23 @@ def check_detector_configuration(session, detector_id):
     detector = gd.get_detector(DetectorId=detector_id)
     status = detector.get("Status", "")
     if status != "ENABLED":
-        findings.append({
-            "check": "Detector status",
-            "status": status,
-            "severity": "CRITICAL",
-            "issue": "GuardDuty detector is not enabled",
-        })
+        findings.append(
+            {
+                "check": "Detector status",
+                "status": status,
+                "severity": "CRITICAL",
+                "issue": "GuardDuty detector is not enabled",
+            }
+        )
 
     features = detector.get("Features", [])
     expected_features = {
-        "S3_DATA_EVENTS", "EKS_AUDIT_LOGS", "EBS_MALWARE_PROTECTION",
-        "RDS_LOGIN_EVENTS", "LAMBDA_NETWORK_LOGS", "RUNTIME_MONITORING",
+        "S3_DATA_EVENTS",
+        "EKS_AUDIT_LOGS",
+        "EBS_MALWARE_PROTECTION",
+        "RDS_LOGIN_EVENTS",
+        "LAMBDA_NETWORK_LOGS",
+        "RUNTIME_MONITORING",
     }
     enabled_features = set()
     for feat in features:
@@ -100,12 +110,14 @@ def check_detector_configuration(session, detector_id):
 
     missing = expected_features - enabled_features
     for m in missing:
-        findings.append({
-            "check": f"Feature: {m}",
-            "status": "DISABLED",
-            "severity": "HIGH",
-            "issue": f"GuardDuty feature {m} not enabled — reduced detection coverage",
-        })
+        findings.append(
+            {
+                "check": f"Feature: {m}",
+                "status": "DISABLED",
+                "severity": "HIGH",
+                "issue": f"GuardDuty feature {m} not enabled — reduced detection coverage",
+            }
+        )
 
     return findings
 
@@ -113,19 +125,21 @@ def check_detector_configuration(session, detector_id):
 def check_member_accounts(session, detector_id):
     """Check GuardDuty member account enrollment in multi-account setup."""
     gd = session.client("guardduty")
-    members = gd.list_members(
-        DetectorId=detector_id, OnlyAssociated="true"
-    ).get("Members", [])
+    members = gd.list_members(DetectorId=detector_id, OnlyAssociated="true").get(
+        "Members", []
+    )
 
     results = []
     for m in members:
         status = m.get("RelationshipStatus", "")
-        results.append({
-            "account_id": m.get("AccountId", ""),
-            "email": m.get("Email", ""),
-            "status": status,
-            "detector_id": m.get("DetectorId", ""),
-        })
+        results.append(
+            {
+                "account_id": m.get("AccountId", ""),
+                "email": m.get("Email", ""),
+                "status": status,
+                "detector_id": m.get("DetectorId", ""),
+            }
+        )
         if status != "Enabled":
             results[-1]["finding"] = f"Member account not fully enabled: {status}"
             results[-1]["severity"] = "HIGH"
@@ -178,7 +192,9 @@ def run_audit(args):
 
     findings = list_findings(session, detector_id, args.min_severity)
     report["active_findings"] = len(findings)
-    print(f"\n--- ACTIVE FINDINGS ({len(findings)}, severity >= {args.min_severity}) ---")
+    print(
+        f"\n--- ACTIVE FINDINGS ({len(findings)}, severity >= {args.min_severity}) ---"
+    )
     for f in findings[:15]:
         print(f"  [{f['severity']:.1f}] {f['type']}")
         print(f"         {f['title'][:80]}")
@@ -197,8 +213,12 @@ def main():
     parser = argparse.ArgumentParser(description="GuardDuty Findings Automation Agent")
     parser.add_argument("--profile", default=None, help="AWS profile name")
     parser.add_argument("--region", default="us-east-1", help="AWS region")
-    parser.add_argument("--min-severity", type=float, default=4.0,
-                        help="Minimum severity threshold (default: 4.0)")
+    parser.add_argument(
+        "--min-severity",
+        type=float,
+        default=4.0,
+        help="Minimum severity threshold (default: 4.0)",
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

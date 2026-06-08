@@ -32,8 +32,7 @@ def _conn():
 
 def init_db():
     with _conn() as conn:
-        conn.execute(
-            """
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS cost_log (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
                 chat_id     TEXT,
@@ -45,13 +44,16 @@ def init_db():
                 project     TEXT DEFAULT '',
                 created_at  INTEGER
             )
-        """
-        )
+        """)
 
         # ⚡ Bolt Optimization: Add indexes for frequently queried fields
         # Accelerates get_session_cost() and get_monthly_cost() which filter by these columns
-        conn.execute("CREATE INDEX IF NOT EXISTS idx_cost_log_chat_id ON cost_log(chat_id)")
-        conn.execute("CREATE INDEX IF NOT EXISTS idx_cost_log_created_at ON cost_log(created_at)")
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_cost_log_chat_id ON cost_log(chat_id)"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_cost_log_created_at ON cost_log(created_at)"
+        )
 
         conn.commit()
 
@@ -108,7 +110,9 @@ def get_session_cost(chat_id: str, since_ts: int = None) -> dict:
     with _conn() as conn:
         total_row = conn.execute(query, params).fetchone()
 
-        provider_query = "SELECT provider, SUM(total_cost) FROM cost_log WHERE chat_id = ?"
+        provider_query = (
+            "SELECT provider, SUM(total_cost) FROM cost_log WHERE chat_id = ?"
+        )
         if since_ts:
             provider_query += " AND created_at >= ?"
         provider_query += " GROUP BY provider"
@@ -142,17 +146,17 @@ def get_monthly_cost(year: int = None, month: int = None) -> dict:
     with _conn() as conn:
         total_row = conn.execute(
             "SELECT COUNT(*), SUM(total_cost) FROM cost_log WHERE created_at >= ? AND created_at < ?",
-            (start, end)
+            (start, end),
         ).fetchone()
 
         provider_rows = conn.execute(
             "SELECT provider, SUM(total_cost) FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY provider",
-            (start, end)
+            (start, end),
         ).fetchall()
 
         day_rows = conn.execute(
             "SELECT date(created_at, 'unixepoch', 'localtime'), SUM(total_cost) FROM cost_log WHERE created_at >= ? AND created_at < ? GROUP BY date(created_at, 'unixepoch', 'localtime')",
-            (start, end)
+            (start, end),
         ).fetchall()
 
     transactions = total_row[0] if total_row and total_row[0] is not None else 0

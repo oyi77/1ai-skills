@@ -20,36 +20,50 @@ def analyze_auth_log(log_file):
         if "Failed password" in line or "authentication failure" in line:
             ip_match = re.search(r"from (\d+\.\d+\.\d+\.\d+)", line)
             user_match = re.search(r"for (?:invalid user )?(\S+)", line)
-            failed_logins.append({
-                "user": user_match.group(1) if user_match else "",
-                "source_ip": ip_match.group(1) if ip_match else "",
-                "line": line.strip()[:200],
-            })
+            failed_logins.append(
+                {
+                    "user": user_match.group(1) if user_match else "",
+                    "source_ip": ip_match.group(1) if ip_match else "",
+                    "line": line.strip()[:200],
+                }
+            )
         elif "Accepted" in line:
             ip_match = re.search(r"from (\d+\.\d+\.\d+\.\d+)", line)
             user_match = re.search(r"for (\S+)", line)
-            successful_logins.append({
-                "user": user_match.group(1) if user_match else "",
-                "source_ip": ip_match.group(1) if ip_match else "",
-            })
+            successful_logins.append(
+                {
+                    "user": user_match.group(1) if user_match else "",
+                    "source_ip": ip_match.group(1) if ip_match else "",
+                }
+            )
         elif "sudo:" in line and "COMMAND=" in line:
             cmd_match = re.search(r"COMMAND=(.*)", line)
             user_match = re.search(r"sudo:\s+(\S+)", line)
-            sudo_events.append({
-                "user": user_match.group(1) if user_match else "",
-                "command": cmd_match.group(1)[:200] if cmd_match else "",
-            })
+            sudo_events.append(
+                {
+                    "user": user_match.group(1) if user_match else "",
+                    "command": cmd_match.group(1)[:200] if cmd_match else "",
+                }
+            )
         elif "sshd" in line:
             ssh_events.append(line.strip()[:200])
-    brute_force_ips = Counter(f.get("source_ip") for f in failed_logins if f.get("source_ip"))
-    bf_suspects = [{"ip": ip, "attempts": count} for ip, count in brute_force_ips.most_common(10) if count >= 5]
+    brute_force_ips = Counter(
+        f.get("source_ip") for f in failed_logins if f.get("source_ip")
+    )
+    bf_suspects = [
+        {"ip": ip, "attempts": count}
+        for ip, count in brute_force_ips.most_common(10)
+        if count >= 5
+    ]
     return {
         "log_file": log_file,
         "failed_logins": len(failed_logins),
         "successful_logins": len(successful_logins),
         "sudo_commands": len(sudo_events),
         "brute_force_suspects": bf_suspects,
-        "failed_users": dict(Counter(f.get("user") for f in failed_logins).most_common(10)),
+        "failed_users": dict(
+            Counter(f.get("user") for f in failed_logins).most_common(10)
+        ),
         "sudo_events": sudo_events[:20],
         "successful_logins_detail": successful_logins[:20],
     }
@@ -66,7 +80,10 @@ def analyze_syslog(log_file):
         if "error" in lower or "fail" in lower or "critical" in lower:
             errors.append(line.strip()[:200])
         if "kernel:" in lower:
-            if any(kw in lower for kw in ["segfault", "oom", "killed", "panic", "bug", "usb"]):
+            if any(
+                kw in lower
+                for kw in ["segfault", "oom", "killed", "panic", "bug", "usb"]
+            ):
                 kernel_events.append(line.strip()[:200])
         if "cron" in lower:
             cron_events.append(line.strip()[:200])
@@ -131,7 +148,13 @@ def timeline_analysis(log_files, start_time=None, end_time=None):
                     ts = m.group(1)
                     break
             if ts:
-                events.append({"timestamp": ts, "source": Path(log_file).name, "event": line.strip()[:200]})
+                events.append(
+                    {
+                        "timestamp": ts,
+                        "source": Path(log_file).name,
+                        "event": line.strip()[:200],
+                    }
+                )
     events.sort(key=lambda x: x["timestamp"])
     return {
         "sources": log_files,
@@ -150,7 +173,9 @@ def _read_log(filepath):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Linux Log Forensics Investigation Agent")
+    parser = argparse.ArgumentParser(
+        description="Linux Log Forensics Investigation Agent"
+    )
     sub = parser.add_subparsers(dest="command")
     a = sub.add_parser("auth", help="Analyze auth.log")
     a.add_argument("--file", required=True)

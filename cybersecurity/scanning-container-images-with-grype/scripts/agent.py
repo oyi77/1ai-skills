@@ -32,7 +32,9 @@ class GrypeScanAgent:
                 return {"error": result.stderr.strip()}
             return json.loads(result.stdout) if result.stdout.strip() else {}
         except FileNotFoundError:
-            return {"error": "grype not found. Install: curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh"}
+            return {
+                "error": "grype not found. Install: curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh"
+            }
         except subprocess.TimeoutExpired:
             return {"error": "Scan timed out after 300 seconds"}
         except json.JSONDecodeError:
@@ -52,14 +54,16 @@ class GrypeScanAgent:
         for m in matches:
             vuln = m.get("vulnerability", {})
             artifact = m.get("artifact", {})
-            vulns.append({
-                "id": vuln.get("id", ""),
-                "severity": vuln.get("severity", "Unknown"),
-                "package": artifact.get("name", ""),
-                "version": artifact.get("version", ""),
-                "fixed_in": vuln.get("fix", {}).get("versions", []),
-                "type": artifact.get("type", ""),
-            })
+            vulns.append(
+                {
+                    "id": vuln.get("id", ""),
+                    "severity": vuln.get("severity", "Unknown"),
+                    "package": artifact.get("name", ""),
+                    "version": artifact.get("version", ""),
+                    "fixed_in": vuln.get("fix", {}).get("versions", []),
+                    "type": artifact.get("type", ""),
+                }
+            )
 
         summary = self._summarize(vulns)
         scan_result = {
@@ -73,7 +77,7 @@ class GrypeScanAgent:
         if fail_on:
             sev_order = ["Critical", "High", "Medium", "Low", "Negligible"]
             threshold_idx = sev_order.index(fail_on) if fail_on in sev_order else -1
-            for sev in sev_order[:threshold_idx + 1]:
+            for sev in sev_order[: threshold_idx + 1]:
                 if summary.get(sev, 0) > 0:
                     scan_result["gate_status"] = "FAILED"
                     break

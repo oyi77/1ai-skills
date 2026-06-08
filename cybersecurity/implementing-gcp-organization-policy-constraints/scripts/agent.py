@@ -6,16 +6,30 @@ import argparse
 import subprocess
 from datetime import datetime
 
-
 BASELINE_BOOLEAN_CONSTRAINTS = {
     "constraints/compute.vmExternalIpAccess": {"type": "list", "expected": "DENY_ALL"},
     "constraints/compute.requireOsLogin": {"type": "boolean", "expected": True},
-    "constraints/compute.disableSerialPortAccess": {"type": "boolean", "expected": True},
-    "constraints/compute.disableNestedVirtualization": {"type": "boolean", "expected": True},
-    "constraints/storage.uniformBucketLevelAccess": {"type": "boolean", "expected": True},
+    "constraints/compute.disableSerialPortAccess": {
+        "type": "boolean",
+        "expected": True,
+    },
+    "constraints/compute.disableNestedVirtualization": {
+        "type": "boolean",
+        "expected": True,
+    },
+    "constraints/storage.uniformBucketLevelAccess": {
+        "type": "boolean",
+        "expected": True,
+    },
     "constraints/sql.restrictPublicIp": {"type": "boolean", "expected": True},
-    "constraints/iam.disableServiceAccountKeyCreation": {"type": "boolean", "expected": True},
-    "constraints/iam.automaticIamGrantsForDefaultServiceAccounts": {"type": "boolean", "expected": True},
+    "constraints/iam.disableServiceAccountKeyCreation": {
+        "type": "boolean",
+        "expected": True,
+    },
+    "constraints/iam.automaticIamGrantsForDefaultServiceAccounts": {
+        "type": "boolean",
+        "expected": True,
+    },
 }
 
 
@@ -38,8 +52,9 @@ def list_org_policies(org_id):
 
 def describe_policy(org_id, constraint):
     """Get details of a specific org policy constraint."""
-    return run_gcloud(["org-policies", "describe", constraint,
-                       f"--organization={org_id}"])
+    return run_gcloud(
+        ["org-policies", "describe", constraint, f"--organization={org_id}"]
+    )
 
 
 def audit_baseline_compliance(org_id):
@@ -48,33 +63,41 @@ def audit_baseline_compliance(org_id):
     for constraint, expected in BASELINE_BOOLEAN_CONSTRAINTS.items():
         policy = describe_policy(org_id, constraint)
         if isinstance(policy, dict) and "error" in policy:
-            findings.append({
-                "constraint": constraint,
-                "status": "NOT_SET",
-                "severity": "HIGH",
-                "recommendation": f"Enable {constraint}",
-            })
+            findings.append(
+                {
+                    "constraint": constraint,
+                    "status": "NOT_SET",
+                    "severity": "HIGH",
+                    "recommendation": f"Enable {constraint}",
+                }
+            )
             continue
         if expected["type"] == "boolean":
             enforced = False
             if isinstance(policy, dict):
                 bp = policy.get("booleanPolicy", {})
                 enforced = bp.get("enforced", False)
-            findings.append({
-                "constraint": constraint,
-                "status": "COMPLIANT" if enforced else "NON_COMPLIANT",
-                "severity": "INFO" if enforced else "HIGH",
-                "current": enforced,
-                "expected": expected["expected"],
-            })
+            findings.append(
+                {
+                    "constraint": constraint,
+                    "status": "COMPLIANT" if enforced else "NON_COMPLIANT",
+                    "severity": "INFO" if enforced else "HIGH",
+                    "current": enforced,
+                    "expected": expected["expected"],
+                }
+            )
         elif expected["type"] == "list":
             lp = policy.get("listPolicy", {}) if isinstance(policy, dict) else {}
-            all_denied = lp.get("allValues") == "DENY" or lp.get("deniedValues") == ["*"]
-            findings.append({
-                "constraint": constraint,
-                "status": "COMPLIANT" if all_denied else "NON_COMPLIANT",
-                "severity": "INFO" if all_denied else "HIGH",
-            })
+            all_denied = lp.get("allValues") == "DENY" or lp.get("deniedValues") == [
+                "*"
+            ]
+            findings.append(
+                {
+                    "constraint": constraint,
+                    "status": "COMPLIANT" if all_denied else "NON_COMPLIANT",
+                    "severity": "INFO" if all_denied else "HIGH",
+                }
+            )
     return findings
 
 
@@ -94,8 +117,11 @@ def check_resource_location_constraint(org_id):
         allowed = lp.get("allowedValues", [])
         if allowed:
             return {"status": "CONFIGURED", "allowed_locations": allowed}
-    return {"status": "NOT_CONFIGURED", "severity": "MEDIUM",
-            "recommendation": "Restrict resource locations to approved regions"}
+    return {
+        "status": "NOT_CONFIGURED",
+        "severity": "MEDIUM",
+        "recommendation": "Restrict resource locations to approved regions",
+    }
 
 
 def generate_terraform_policies(org_id, constraints=None):
@@ -103,18 +129,23 @@ def generate_terraform_policies(org_id, constraints=None):
     constraints = constraints or list(BASELINE_BOOLEAN_CONSTRAINTS.keys())
     tf_blocks = []
     for c in constraints:
-        info = BASELINE_BOOLEAN_CONSTRAINTS.get(c, {"type": "boolean", "expected": True})
+        info = BASELINE_BOOLEAN_CONSTRAINTS.get(
+            c, {"type": "boolean", "expected": True}
+        )
         resource_name = c.split("/")[1].replace(".", "_")
         if info["type"] == "boolean":
-            tf_blocks.append(f'''resource "google_organization_policy" "{resource_name}" {{
+            tf_blocks.append(
+                f"""resource "google_organization_policy" "{resource_name}" {{
   org_id     = "{org_id}"
   constraint = "{c}"
   boolean_policy {{
     enforced = true
   }}
-}}''')
+}}"""
+            )
         elif info["type"] == "list":
-            tf_blocks.append(f'''resource "google_organization_policy" "{resource_name}" {{
+            tf_blocks.append(
+                f"""resource "google_organization_policy" "{resource_name}" {{
   org_id     = "{org_id}"
   constraint = "{c}"
   list_policy {{
@@ -122,7 +153,8 @@ def generate_terraform_policies(org_id, constraints=None):
       all = true
     }}
   }}
-}}''')
+}}"""
+            )
     return "\n\n".join(tf_blocks)
 
 
@@ -146,8 +178,9 @@ def main():
     parser = argparse.ArgumentParser(description="GCP Organization Policy Agent")
     parser.add_argument("--org-id", help="GCP organization ID")
     parser.add_argument("--project", help="GCP project ID for project-level audit")
-    parser.add_argument("--action", choices=["audit", "list", "terraform", "locations"],
-                        default="audit")
+    parser.add_argument(
+        "--action", choices=["audit", "list", "terraform", "locations"], default="audit"
+    )
     parser.add_argument("--output", default="gcp_orgpolicy_report.json")
     args = parser.parse_args()
 
@@ -158,8 +191,10 @@ def main():
         summary = generate_compliance_report(findings)
         report["results"]["findings"] = findings
         report["results"]["summary"] = summary
-        print(f"[+] Compliance: {summary['compliance_percentage']}%"
-              f" ({summary['compliant']}/{summary['total_constraints']})")
+        print(
+            f"[+] Compliance: {summary['compliance_percentage']}%"
+            f" ({summary['compliant']}/{summary['total_constraints']})"
+        )
 
     elif args.action == "list" and args.org_id:
         policies = list_org_policies(args.org_id)

@@ -14,6 +14,7 @@ import datetime
 
 try:
     import yara
+
     HAS_YARA = True
 except ImportError:
     HAS_YARA = False
@@ -93,7 +94,11 @@ def scan_file(rules, filepath):
                 "rule": m.rule,
                 "meta": m.meta,
                 "strings": [
-                    {"offset": s[0], "identifier": s[1], "data": s[2].decode("utf-8", errors="replace")[:64]}
+                    {
+                        "offset": s[0],
+                        "identifier": s[1],
+                        "data": s[2].decode("utf-8", errors="replace")[:64],
+                    }
                     for s in m.strings
                 ],
                 "tags": list(m.tags),
@@ -117,7 +122,9 @@ def scan_directory(rules, directory, max_size_mb=50):
                 matches = scan_file(rules, fpath)
                 if matches and not any("error" in m for m in matches):
                     sha256 = hashlib.sha256(open(fpath, "rb").read()).hexdigest()
-                    results.append({"file": fpath, "sha256": sha256, "matches": matches})
+                    results.append(
+                        {"file": fpath, "sha256": sha256, "matches": matches}
+                    )
             except (PermissionError, OSError):
                 continue
     return results
@@ -126,8 +133,12 @@ def scan_directory(rules, directory, max_size_mb=50):
 def main():
     parser = argparse.ArgumentParser(description="YARA-based threat hunting scanner")
     parser.add_argument("target", nargs="?", help="File or directory to scan")
-    parser.add_argument("--rules-dir", help="Directory containing .yar/.yara rule files")
-    parser.add_argument("--max-size", type=int, default=50, help="Max file size in MB (default: 50)")
+    parser.add_argument(
+        "--rules-dir", help="Directory containing .yar/.yara rule files"
+    )
+    parser.add_argument(
+        "--max-size", type=int, default=50, help="Max file size in MB (default: 50)"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report path")
     args = parser.parse_args()
 
@@ -166,7 +177,11 @@ def main():
             json.dump(report, f, indent=2)
         print(f"[*] Report saved to {args.output}")
     else:
-        print(json.dumps({"files_matched": total, "rules_loaded": len(BUILTIN_RULES)}, indent=2))
+        print(
+            json.dumps(
+                {"files_matched": total, "rules_loaded": len(BUILTIN_RULES)}, indent=2
+            )
+        )
 
 
 if __name__ == "__main__":

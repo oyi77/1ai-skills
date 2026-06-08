@@ -6,6 +6,7 @@ breach databases (Have I Been Pwned API), paste sites, and public
 threat intelligence feeds for leaked credentials, exposed data, and
 mentions of organizational domains.
 """
+
 import argparse
 import hashlib
 import json
@@ -31,24 +32,31 @@ def check_hibp_breaches(domain, api_key=None):
     try:
         resp = requests.get(
             f"https://haveibeenpwned.com/api/v3/breaches",
-            headers=headers, timeout=15,
+            headers=headers,
+            timeout=15,
         )
         resp.raise_for_status()
         breaches = resp.json()
-        domain_breaches = [b for b in breaches if domain.lower() in b.get("Domain", "").lower()]
+        domain_breaches = [
+            b for b in breaches if domain.lower() in b.get("Domain", "").lower()
+        ]
         for breach in domain_breaches:
-            findings.append({
-                "type": "breach",
-                "source": "HIBP",
-                "name": breach.get("Name", ""),
-                "domain": breach.get("Domain", ""),
-                "breach_date": breach.get("BreachDate", ""),
-                "added_date": breach.get("AddedDate", ""),
-                "pwn_count": breach.get("PwnCount", 0),
-                "data_classes": breach.get("DataClasses", []),
-                "is_verified": breach.get("IsVerified", False),
-                "severity": "CRITICAL" if breach.get("PwnCount", 0) > 10000 else "HIGH",
-            })
+            findings.append(
+                {
+                    "type": "breach",
+                    "source": "HIBP",
+                    "name": breach.get("Name", ""),
+                    "domain": breach.get("Domain", ""),
+                    "breach_date": breach.get("BreachDate", ""),
+                    "added_date": breach.get("AddedDate", ""),
+                    "pwn_count": breach.get("PwnCount", 0),
+                    "data_classes": breach.get("DataClasses", []),
+                    "is_verified": breach.get("IsVerified", False),
+                    "severity": (
+                        "CRITICAL" if breach.get("PwnCount", 0) > 10000 else "HIGH"
+                    ),
+                }
+            )
         print(f"[+] Found {len(domain_breaches)} breaches for {domain}")
     except requests.RequestException as e:
         print(f"[!] HIBP API error: {e}")
@@ -64,19 +72,23 @@ def check_hibp_email(email, api_key):
     try:
         resp = requests.get(
             f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}",
-            headers=headers, params={"truncateResponse": "false"}, timeout=15,
+            headers=headers,
+            params={"truncateResponse": "false"},
+            timeout=15,
         )
         if resp.status_code == 200:
             breaches = resp.json()
             for breach in breaches:
-                findings.append({
-                    "type": "email_breach",
-                    "email": email,
-                    "breach": breach.get("Name", ""),
-                    "breach_date": breach.get("BreachDate", ""),
-                    "data_classes": breach.get("DataClasses", []),
-                    "severity": "HIGH",
-                })
+                findings.append(
+                    {
+                        "type": "email_breach",
+                        "email": email,
+                        "breach": breach.get("Name", ""),
+                        "breach_date": breach.get("BreachDate", ""),
+                        "data_classes": breach.get("DataClasses", []),
+                        "severity": "HIGH",
+                    }
+                )
         elif resp.status_code == 404:
             pass  # Not found in any breaches
         time.sleep(1.5)  # HIBP rate limit
@@ -124,22 +136,25 @@ def search_threat_intel_feeds(domain):
     try:
         resp = requests.post(
             "https://urlhaus-api.abuse.ch/v1/host/",
-            data={"host": domain}, timeout=15,
+            data={"host": domain},
+            timeout=15,
         )
         if resp.status_code == 200:
             data = resp.json()
             if data.get("query_status") == "ok":
                 urls = data.get("urls", [])
                 if urls:
-                    findings.append({
-                        "type": "malicious_urls",
-                        "source": "URLhaus",
-                        "domain": domain,
-                        "count": len(urls),
-                        "severity": "HIGH",
-                        "detail": f"{len(urls)} malicious URLs associated with domain",
-                        "samples": [u.get("url", "")[:80] for u in urls[:5]],
-                    })
+                    findings.append(
+                        {
+                            "type": "malicious_urls",
+                            "source": "URLhaus",
+                            "domain": domain,
+                            "count": len(urls),
+                            "severity": "HIGH",
+                            "detail": f"{len(urls)} malicious URLs associated with domain",
+                            "samples": [u.get("url", "")[:80] for u in urls[:5]],
+                        }
+                    )
     except requests.RequestException:
         pass
 
@@ -150,7 +165,8 @@ def search_threat_intel_feeds(domain):
             resp = requests.get(
                 "https://api.abuseipdb.com/api/v2/check-block",
                 headers={"Key": abuse_key, "Accept": "application/json"},
-                params={"network": domain}, timeout=15,
+                params={"network": domain},
+                timeout=15,
             )
         except requests.RequestException:
             pass
@@ -180,8 +196,10 @@ def format_summary(all_findings, domain):
     if breaches:
         print(f"\n  Known Breaches ({len(breaches)}):")
         for b in breaches:
-            print(f"    [{b['severity']:8s}] {b['name']:25s} | "
-                  f"Date: {b['breach_date']} | Records: {b.get('pwn_count', 'N/A')}")
+            print(
+                f"    [{b['severity']:8s}] {b['name']:25s} | "
+                f"Date: {b['breach_date']} | Records: {b.get('pwn_count', 'N/A')}"
+            )
             if b.get("data_classes"):
                 print(f"             Data: {', '.join(b['data_classes'][:5])}")
 
@@ -194,10 +212,14 @@ def format_summary(all_findings, domain):
 
 def main():
     parser = argparse.ArgumentParser(description="Dark web threat monitoring agent")
-    parser.add_argument("--domain", required=True, help="Organization domain to monitor")
+    parser.add_argument(
+        "--domain", required=True, help="Organization domain to monitor"
+    )
     parser.add_argument("--emails", nargs="+", help="Specific emails to check")
     parser.add_argument("--hibp-key", help="HIBP API key (or HIBP_API_KEY env)")
-    parser.add_argument("--check-passwords", nargs="+", help="Check passwords against breach DB")
+    parser.add_argument(
+        "--check-passwords", nargs="+", help="Check passwords against breach DB"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
@@ -215,11 +237,13 @@ def main():
         for pwd in args.check_passwords:
             result = check_hibp_password(pwd)
             if result.get("compromised"):
-                all_findings.append({
-                    "type": "compromised_password",
-                    "severity": "CRITICAL",
-                    "detail": f"Password found in {result['count']} breaches",
-                })
+                all_findings.append(
+                    {
+                        "type": "compromised_password",
+                        "severity": "CRITICAL",
+                        "detail": f"Password found in {result['count']} breaches",
+                    }
+                )
 
     all_findings.extend(search_threat_intel_feeds(args.domain))
     severity_counts = format_summary(all_findings, args.domain)
@@ -231,9 +255,13 @@ def main():
         "findings": all_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if all_findings else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if all_findings else "LOW"
+            )
         ),
     }
 

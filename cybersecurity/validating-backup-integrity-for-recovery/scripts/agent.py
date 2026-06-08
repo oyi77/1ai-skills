@@ -15,19 +15,39 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-
 RANSOMWARE_EXTENSIONS = {
-    ".encrypted", ".locked", ".crypt", ".ransom", ".pay",
-    ".wncry", ".wcry", ".cerber", ".locky", ".zepto",
-    ".osiris", ".aesir", ".thor", ".odin", ".crypz",
-    ".crypted", ".enc", ".crypto", ".lockbit",
+    ".encrypted",
+    ".locked",
+    ".crypt",
+    ".ransom",
+    ".pay",
+    ".wncry",
+    ".wcry",
+    ".cerber",
+    ".locky",
+    ".zepto",
+    ".osiris",
+    ".aesir",
+    ".thor",
+    ".odin",
+    ".crypz",
+    ".crypted",
+    ".enc",
+    ".crypto",
+    ".lockbit",
 }
 
 RANSOM_NOTE_PATTERNS = [
-    "README_TO_DECRYPT", "HOW_TO_RECOVER", "DECRYPT_INSTRUCTIONS",
-    "HELP_DECRYPT", "RECOVERY_INSTRUCTIONS", "RESTORE_FILES",
-    "READ_ME_TO_DECRYPT", "YOUR_FILES_ARE_ENCRYPTED",
-    "!README!", "DECRYPT_YOUR_FILES",
+    "README_TO_DECRYPT",
+    "HOW_TO_RECOVER",
+    "DECRYPT_INSTRUCTIONS",
+    "HELP_DECRYPT",
+    "RECOVERY_INSTRUCTIONS",
+    "RESTORE_FILES",
+    "READ_ME_TO_DECRYPT",
+    "YOUR_FILES_ARE_ENCRYPTED",
+    "!README!",
+    "DECRYPT_YOUR_FILES",
 ]
 
 
@@ -89,8 +109,9 @@ def compare_manifests(baseline_path, restored_path):
         if fname not in rest_hashes:
             missing.append(fname)
         elif rest_hashes[fname] != base_hash:
-            modified.append({"file": fname, "baseline": base_hash,
-                             "restored": rest_hashes[fname]})
+            modified.append(
+                {"file": fname, "baseline": base_hash, "restored": rest_hashes[fname]}
+            )
 
     for fname in rest_hashes:
         if fname not in base_hashes:
@@ -145,11 +166,13 @@ def entropy_scan(directory, threshold=7.9):
         scanned += 1
         ent = calculate_entropy(str(fpath))
         if ent is not None and ent >= threshold:
-            suspicious.append({
-                "file": str(fpath.relative_to(dir_path)),
-                "entropy": ent,
-                "size_bytes": fpath.stat().st_size,
-            })
+            suspicious.append(
+                {
+                    "file": str(fpath.relative_to(dir_path)),
+                    "entropy": ent,
+                    "size_bytes": fpath.stat().st_size,
+                }
+            )
 
     return {
         "directory": str(directory),
@@ -175,15 +198,11 @@ def scan_ransomware_artifacts(directory):
         findings["total_scanned"] += 1
 
         if fpath.suffix.lower() in RANSOMWARE_EXTENSIONS:
-            findings["ransomware_extensions"].append(
-                str(fpath.relative_to(dir_path))
-            )
+            findings["ransomware_extensions"].append(str(fpath.relative_to(dir_path)))
 
         for pattern in RANSOM_NOTE_PATTERNS:
             if pattern.lower() in fpath.name.lower():
-                findings["ransom_notes"].append(
-                    str(fpath.relative_to(dir_path))
-                )
+                findings["ransom_notes"].append(str(fpath.relative_to(dir_path)))
                 break
 
     findings["clean"] = (
@@ -193,8 +212,13 @@ def scan_ransomware_artifacts(directory):
     return findings
 
 
-def validate_backup(directory, baseline_manifest=None, check_ransomware=True,
-                    check_entropy=True, entropy_threshold=7.9):
+def validate_backup(
+    directory,
+    baseline_manifest=None,
+    check_ransomware=True,
+    check_entropy=True,
+    entropy_threshold=7.9,
+):
     """Run full backup validation suite."""
     results = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -226,8 +250,10 @@ def validate_backup(directory, baseline_manifest=None, check_ransomware=True,
         results["checks"]["integrity"] = comparison
         os.remove(current_path)
     else:
-        results["checks"]["integrity"] = {"skipped": True,
-                                           "reason": "No baseline manifest provided"}
+        results["checks"]["integrity"] = {
+            "skipped": True,
+            "reason": "No baseline manifest provided",
+        }
 
     # Ransomware artifact scan
     if check_ransomware:
@@ -250,23 +276,34 @@ def validate_backup(directory, baseline_manifest=None, check_ransomware=True,
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Backup Integrity Validation Agent"
+    parser = argparse.ArgumentParser(description="Backup Integrity Validation Agent")
+    parser.add_argument(
+        "--generate-manifest", help="Generate hash manifest for a directory"
     )
-    parser.add_argument("--generate-manifest",
-                        help="Generate hash manifest for a directory")
-    parser.add_argument("--compare", nargs=2, metavar=("BASELINE", "RESTORED"),
-                        help="Compare two manifest JSON files")
+    parser.add_argument(
+        "--compare",
+        nargs=2,
+        metavar=("BASELINE", "RESTORED"),
+        help="Compare two manifest JSON files",
+    )
     parser.add_argument("--validate", help="Run full validation on a backup directory")
     parser.add_argument("--baseline", help="Baseline manifest for comparison")
     parser.add_argument("--entropy-scan", help="Scan directory for high-entropy files")
-    parser.add_argument("--entropy-threshold", type=float, default=7.9,
-                        help="Entropy threshold (default: 7.9)")
-    parser.add_argument("--ransomware-scan",
-                        help="Scan directory for ransomware artifacts")
-    parser.add_argument("--algorithm", default="sha256",
-                        choices=["sha256", "sha512", "sha3_256", "blake2b"],
-                        help="Hash algorithm (default: sha256)")
+    parser.add_argument(
+        "--entropy-threshold",
+        type=float,
+        default=7.9,
+        help="Entropy threshold (default: 7.9)",
+    )
+    parser.add_argument(
+        "--ransomware-scan", help="Scan directory for ransomware artifacts"
+    )
+    parser.add_argument(
+        "--algorithm",
+        default="sha256",
+        choices=["sha256", "sha512", "sha3_256", "blake2b"],
+        help="Hash algorithm (default: sha256)",
+    )
     parser.add_argument("--output", "-o", help="Output file path")
     args = parser.parse_args()
 
@@ -297,8 +334,10 @@ def main():
 
     elif args.entropy_scan:
         result = entropy_scan(args.entropy_scan, args.entropy_threshold)
-        print(f"[*] Scanned {result['files_scanned']} files, "
-              f"{result['suspicious_count']} suspicious")
+        print(
+            f"[*] Scanned {result['files_scanned']} files, "
+            f"{result['suspicious_count']} suspicious"
+        )
 
     elif args.ransomware_scan:
         result = scan_ransomware_artifacts(args.ransomware_scan)

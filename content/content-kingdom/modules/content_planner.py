@@ -9,7 +9,8 @@ Times: Indonesian audience research (WIB = UTC+7)
 """
 
 import sys
-sys.path.insert(0, '/home/openclaw/.openclaw/workspace')
+
+sys.path.insert(0, "/home/openclaw/.openclaw/workspace")
 
 import random
 from datetime import date, timedelta
@@ -17,6 +18,7 @@ from dataclasses import dataclass, field
 
 try:
     from content.content_generator.scripts.scheduler import Scheduler, Schedule
+
     _SCHEDULER_AVAILABLE = True
 except ImportError:
     _SCHEDULER_AVAILABLE = False
@@ -40,33 +42,33 @@ CONTENT_PILLARS = [
 
 # Indonesian audience optimal times (WIB 24h, sourced from platform analytics)
 OPTIMAL_TIMES: dict[str, list[str]] = {
-    "tiktok":    ["11:00", "12:00", "19:00", "20:00", "21:00"],
+    "tiktok": ["11:00", "12:00", "19:00", "20:00", "21:00"],
     "instagram": ["08:00", "09:00", "12:00", "13:00", "18:00", "19:00", "20:00"],
-    "facebook":  ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00"],
-    "youtube":   ["14:00", "15:00", "16:00", "17:00", "20:00", "21:00", "22:00"],
-    "x":         ["08:30", "12:00", "14:00", "17:00", "20:30"],
+    "facebook": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00"],
+    "youtube": ["14:00", "15:00", "16:00", "17:00", "20:00", "21:00", "22:00"],
+    "x": ["08:30", "12:00", "14:00", "17:00", "20:30"],
 }
 
 INDONESIAN_EVENTS: list[dict] = [
-    {"name": "Ramadan",         "month": 3,  "day": 1,  "type": "religious"},
-    {"name": "Lebaran / Eid",   "month": 4,  "day": 1,  "type": "religious"},
-    {"name": "Hari Pancasila",  "month": 6,  "day": 1,  "type": "national"},
-    {"name": "Harbolnas 6.6",   "month": 6,  "day": 6,  "type": "ecommerce"},
-    {"name": "Harbolnas 7.7",   "month": 7,  "day": 7,  "type": "ecommerce"},
-    {"name": "Harbolnas 8.8",   "month": 8,  "day": 8,  "type": "ecommerce"},
-    {"name": "Kemerdekaan RI",  "month": 8,  "day": 17, "type": "national"},
-    {"name": "Harbolnas 9.9",   "month": 9,  "day": 9,  "type": "ecommerce"},
+    {"name": "Ramadan", "month": 3, "day": 1, "type": "religious"},
+    {"name": "Lebaran / Eid", "month": 4, "day": 1, "type": "religious"},
+    {"name": "Hari Pancasila", "month": 6, "day": 1, "type": "national"},
+    {"name": "Harbolnas 6.6", "month": 6, "day": 6, "type": "ecommerce"},
+    {"name": "Harbolnas 7.7", "month": 7, "day": 7, "type": "ecommerce"},
+    {"name": "Harbolnas 8.8", "month": 8, "day": 8, "type": "ecommerce"},
+    {"name": "Kemerdekaan RI", "month": 8, "day": 17, "type": "national"},
+    {"name": "Harbolnas 9.9", "month": 9, "day": 9, "type": "ecommerce"},
     {"name": "Harbolnas 10.10", "month": 10, "day": 10, "type": "ecommerce"},
     {"name": "Harbolnas 11.11", "month": 11, "day": 11, "type": "ecommerce"},
     {"name": "Harbolnas 12.12", "month": 12, "day": 12, "type": "ecommerce"},
-    {"name": "Tahun Baru",      "month": 1,  "day": 1,  "type": "general"},
+    {"name": "Tahun Baru", "month": 1, "day": 1, "type": "general"},
 ]
 
 
 @dataclass
 class ContentSlot:
     date: str
-    time: str          # HH:MM WIB
+    time: str  # HH:MM WIB
     platform: str
     pillar: str
     persona_id: str
@@ -129,11 +131,10 @@ class ContentPlanner(BaseModule):
         platforms: list[str] | None = None,
     ) -> list[ContentSlot]:
         """Generate 2 posting slots per platform for the given day."""
-        products  = products  or self.config.get("products", [])
-        personas  = personas  or self.config.get("personas", [])
+        products = products or self.config.get("products", [])
+        personas = personas or self.config.get("personas", [])
         platforms = platforms or [
-            k for k, v in self.config.get("platforms", {}).items()
-            if v.get("enabled")
+            k for k, v in self.config.get("platforms", {}).items() if v.get("enabled")
         ]
 
         slots: list[ContentSlot] = []
@@ -142,23 +143,27 @@ class ContentPlanner(BaseModule):
             for t in times[:2]:
                 persona = self._pick_persona(personas, platform)
                 product = self._pick_product(products)
-                slots.append(ContentSlot(
-                    date=day.isoformat(),
-                    time=t,
-                    platform=platform,
-                    pillar=self.rotate_pillars([]),
-                    persona_id=persona["id"] if persona else "jendralbot_main",
-                    product_id=product["id"] if product else None,
-                ))
+                slots.append(
+                    ContentSlot(
+                        date=day.isoformat(),
+                        time=t,
+                        platform=platform,
+                        pillar=self.rotate_pillars([]),
+                        persona_id=persona["id"] if persona else "jendralbot_main",
+                        product_id=product["id"] if product else None,
+                    )
+                )
         return slots
 
     def get_optimal_times(self, platform: str) -> list[str]:
         """Return optimal WIB posting times. Config overrides constants."""
-        return self.config.get("schedule", {}).get(platform) or OPTIMAL_TIMES.get(platform, ["09:00", "19:00"])
+        return self.config.get("schedule", {}).get(platform) or OPTIMAL_TIMES.get(
+            platform, ["09:00", "19:00"]
+        )
 
     def rotate_pillars(self, history: list[str]) -> str:
         """Return next pillar, avoiding immediate repeats."""
-        recent = set(history[-(len(CONTENT_PILLARS) - 1):])
+        recent = set(history[-(len(CONTENT_PILLARS) - 1) :])
         candidates = [p for p in CONTENT_PILLARS if p not in recent] or CONTENT_PILLARS
         pillar = candidates[self._pillar_idx % len(candidates)]
         self._pillar_idx += 1
@@ -186,7 +191,9 @@ class ContentPlanner(BaseModule):
         if weights_cfg and products:
             pool = [p for p in products if p["id"] in weights_cfg]
             if pool:
-                return random.choices(pool, weights=[weights_cfg[p["id"]] for p in pool], k=1)[0]
+                return random.choices(
+                    pool, weights=[weights_cfg[p["id"]] for p in pool], k=1
+                )[0]
         return random.choice(products) if products else None
 
 

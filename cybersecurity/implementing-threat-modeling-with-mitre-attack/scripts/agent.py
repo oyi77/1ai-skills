@@ -38,30 +38,42 @@ def get_group_techniques(group_name):
     if not target:
         return None
     techniques = client.get_techniques_used_by_group(target)
-    return [{"id": t["external_references"][0]["external_id"],
-             "name": t["name"],
-             "tactics": [p["phase_name"] for p in t.get("kill_chain_phases", [])]}
-            for t in techniques]
+    return [
+        {
+            "id": t["external_references"][0]["external_id"],
+            "name": t["name"],
+            "tactics": [p["phase_name"] for p in t.get("kill_chain_phases", [])],
+        }
+        for t in techniques
+    ]
 
 
 def build_threat_profile(industry):
     """Build a threat profile for an industry based on relevant threat actors."""
     actors = INDUSTRY_THREAT_ACTORS.get(industry.lower(), [])
     if not actors:
-        print(f"[!] Industry '{industry}' not found. Available: {list(INDUSTRY_THREAT_ACTORS.keys())}")
+        print(
+            f"[!] Industry '{industry}' not found. Available: {list(INDUSTRY_THREAT_ACTORS.keys())}"
+        )
         return None
 
-    profile = {"industry": industry, "threat_actors": [], "all_techniques": [],
-               "tactic_coverage": Counter()}
+    profile = {
+        "industry": industry,
+        "threat_actors": [],
+        "all_techniques": [],
+        "tactic_coverage": Counter(),
+    }
 
     for actor_name in actors:
         techniques = get_group_techniques(actor_name)
         if techniques:
-            profile["threat_actors"].append({
-                "name": actor_name,
-                "technique_count": len(techniques),
-                "techniques": techniques,
-            })
+            profile["threat_actors"].append(
+                {
+                    "name": actor_name,
+                    "technique_count": len(techniques),
+                    "techniques": techniques,
+                }
+            )
             for t in techniques:
                 profile["all_techniques"].append(t["id"])
                 for tac in t["tactics"]:
@@ -79,8 +91,12 @@ def assess_detection_coverage(profile, existing_detections=None):
     unique_techniques = set(profile.get("unique_techniques", []))
     covered = set(existing_detections)
     gaps = unique_techniques - covered
-    coverage_pct = round(len(covered.intersection(unique_techniques)) /
-                         max(len(unique_techniques), 1) * 100, 1)
+    coverage_pct = round(
+        len(covered.intersection(unique_techniques))
+        / max(len(unique_techniques), 1)
+        * 100,
+        1,
+    )
     return {
         "total_threat_techniques": len(unique_techniques),
         "detected": len(covered.intersection(unique_techniques)),
@@ -96,20 +112,26 @@ def generate_navigator_layer(profile, layer_name="Threat Model"):
     techniques = []
     for tech_id, count in technique_counts.items():
         color_map = {1: "#fcf3cf", 2: "#f9e79f", 3: "#f4d03f"}
-        techniques.append({
-            "techniqueID": tech_id,
-            "score": count,
-            "color": color_map.get(min(count, 3), "#f4d03f"),
-            "comment": f"Used by {count} threat actor(s)",
-            "enabled": True,
-        })
+        techniques.append(
+            {
+                "techniqueID": tech_id,
+                "score": count,
+                "color": color_map.get(min(count, 3), "#f4d03f"),
+                "comment": f"Used by {count} threat actor(s)",
+                "enabled": True,
+            }
+        )
     layer = {
         "name": layer_name,
         "versions": {"attack": "14", "navigator": "4.9.1", "layer": "4.5"},
         "domain": "enterprise-attack",
         "description": f"Threat model for {profile.get('industry', 'unknown')} industry",
         "techniques": techniques,
-        "gradient": {"colors": ["#ffffff", "#f4d03f", "#e74c3c"], "minValue": 0, "maxValue": 3},
+        "gradient": {
+            "colors": ["#ffffff", "#f4d03f", "#e74c3c"],
+            "minValue": 0,
+            "maxValue": 3,
+        },
         "legendItems": [
             {"label": "1 actor", "color": "#fcf3cf"},
             {"label": "2 actors", "color": "#f9e79f"},
@@ -125,20 +147,28 @@ def prioritize_defenses(profile):
     top_techniques = technique_counts.most_common(15)
 
     client = attack_client()
-    all_techniques = {t["external_references"][0]["external_id"]: t
-                      for t in client.get_techniques()
-                      if t.get("external_references")}
+    all_techniques = {
+        t["external_references"][0]["external_id"]: t
+        for t in client.get_techniques()
+        if t.get("external_references")
+    }
 
     priorities = []
     for tech_id, count in top_techniques:
         tech_data = all_techniques.get(tech_id, {})
-        priorities.append({
-            "technique": tech_id,
-            "name": tech_data.get("name", "Unknown"),
-            "actor_count": count,
-            "tactics": [p["phase_name"] for p in tech_data.get("kill_chain_phases", [])],
-            "priority": "CRITICAL" if count >= 3 else "HIGH" if count >= 2 else "MEDIUM",
-        })
+        priorities.append(
+            {
+                "technique": tech_id,
+                "name": tech_data.get("name", "Unknown"),
+                "actor_count": count,
+                "tactics": [
+                    p["phase_name"] for p in tech_data.get("kill_chain_phases", [])
+                ],
+                "priority": (
+                    "CRITICAL" if count >= 3 else "HIGH" if count >= 2 else "MEDIUM"
+                ),
+            }
+        )
     return priorities
 
 
@@ -177,25 +207,38 @@ def run_threat_model(industry, existing_detections=None):
     priorities = prioritize_defenses(profile)
     print(f"\n--- DEFENSE PRIORITIES ---")
     for p in priorities[:10]:
-        print(f"  [{p['priority']}] {p['technique']} {p['name']} (used by {p['actor_count']} actors)")
+        print(
+            f"  [{p['priority']}] {p['technique']} {p['name']} (used by {p['actor_count']} actors)"
+        )
 
     print(f"\n{'='*60}\n")
     return {"profile": profile, "coverage": coverage, "priorities": priorities}
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Threat Modeling with MITRE ATT&CK Agent")
-    parser.add_argument("--industry", required=True,
-                        choices=list(INDUSTRY_THREAT_ACTORS.keys()),
-                        help="Industry for threat profile")
-    parser.add_argument("--detections", nargs="*", help="List of detected technique IDs")
-    parser.add_argument("--navigator", help="Export ATT&CK Navigator layer to JSON file")
+    parser = argparse.ArgumentParser(
+        description="Threat Modeling with MITRE ATT&CK Agent"
+    )
+    parser.add_argument(
+        "--industry",
+        required=True,
+        choices=list(INDUSTRY_THREAT_ACTORS.keys()),
+        help="Industry for threat profile",
+    )
+    parser.add_argument(
+        "--detections", nargs="*", help="List of detected technique IDs"
+    )
+    parser.add_argument(
+        "--navigator", help="Export ATT&CK Navigator layer to JSON file"
+    )
     parser.add_argument("--output", help="Save full report to JSON")
     args = parser.parse_args()
 
     result = run_threat_model(args.industry, args.detections)
     if result and args.navigator:
-        layer = generate_navigator_layer(result["profile"], f"{args.industry} Threat Model")
+        layer = generate_navigator_layer(
+            result["profile"], f"{args.industry} Threat Model"
+        )
         with open(args.navigator, "w") as f:
             json.dump(layer, f, indent=2)
         print(f"[+] Navigator layer saved to {args.navigator}")

@@ -12,11 +12,15 @@ from email.parser import BytesParser
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 SUSPICIOUS_PATTERNS = [
-    re.compile(r"urgent|immediate action|verify your account|click here now", re.IGNORECASE),
+    re.compile(
+        r"urgent|immediate action|verify your account|click here now", re.IGNORECASE
+    ),
     re.compile(r"password.*expir|account.*suspend|unusual.*activity", re.IGNORECASE),
     re.compile(r"wire transfer|bitcoin|gift card|western union", re.IGNORECASE),
     re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", re.IGNORECASE),
@@ -55,9 +59,18 @@ def parse_reported_email(eml_path):
         fn = part.get_filename()
         if fn:
             content = part.get_payload(decode=True)
-            attachments.append({"filename": fn, "size": len(content) if content else 0,
-                                "sha256": hashlib.sha256(content).hexdigest() if content else ""})
-    logger.info("Parsed email: subject='%s', %d attachments", headers["subject"], len(attachments))
+            attachments.append(
+                {
+                    "filename": fn,
+                    "size": len(content) if content else 0,
+                    "sha256": hashlib.sha256(content).hexdigest() if content else "",
+                }
+            )
+    logger.info(
+        "Parsed email: subject='%s', %d attachments",
+        headers["subject"],
+        len(attachments),
+    )
     return {"headers": headers, "body": body[:5000], "attachments": attachments}
 
 
@@ -70,31 +83,95 @@ def analyze_email(parsed):
     from_addr = headers.get("from", "")
     reply_to = headers.get("reply_to", "")
     if reply_to and reply_to != from_addr:
-        findings.append({"indicator": "Reply-To mismatch", "detail": f"From: {from_addr}, Reply-To: {reply_to}", "weight": 20})
+        findings.append(
+            {
+                "indicator": "Reply-To mismatch",
+                "detail": f"From: {from_addr}, Reply-To: {reply_to}",
+                "weight": 20,
+            }
+        )
         score += 20
     auth_results = headers.get("authentication_results", "")
     if "spf=fail" in auth_results.lower() or "dkim=fail" in auth_results.lower():
-        findings.append({"indicator": "Email authentication failure", "detail": auth_results[:200], "weight": 25})
+        findings.append(
+            {
+                "indicator": "Email authentication failure",
+                "detail": auth_results[:200],
+                "weight": 25,
+            }
+        )
         score += 25
     for pat in SUSPICIOUS_PATTERNS:
         matches = pat.findall(body)
         if matches:
-            findings.append({"indicator": "Suspicious language", "detail": matches[0][:100], "weight": 10})
+            findings.append(
+                {
+                    "indicator": "Suspicious language",
+                    "detail": matches[0][:100],
+                    "weight": 10,
+                }
+            )
             score += 10
     urls = URL_PATTERN.findall(body)
-    suspicious_urls = [u for u in urls if any(kw in u.lower() for kw in [".tk", ".ml", ".ga", "bit.ly",
-                       "tinyurl", "redirect", "login", "verify", "secure-"])]
+    suspicious_urls = [
+        u
+        for u in urls
+        if any(
+            kw in u.lower()
+            for kw in [
+                ".tk",
+                ".ml",
+                ".ga",
+                "bit.ly",
+                "tinyurl",
+                "redirect",
+                "login",
+                "verify",
+                "secure-",
+            ]
+        )
+    ]
     if suspicious_urls:
-        findings.append({"indicator": "Suspicious URLs", "detail": suspicious_urls[:5], "weight": 15})
+        findings.append(
+            {
+                "indicator": "Suspicious URLs",
+                "detail": suspicious_urls[:5],
+                "weight": 15,
+            }
+        )
         score += 15 * len(suspicious_urls[:3])
     for att in parsed.get("attachments", []):
         fn = att["filename"].lower()
-        if any(fn.endswith(ext) for ext in [".exe", ".scr", ".js", ".vbs", ".bat", ".ps1", ".hta", ".iso", ".img"]):
-            findings.append({"indicator": "Dangerous attachment", "detail": att["filename"], "weight": 30})
+        if any(
+            fn.endswith(ext)
+            for ext in [
+                ".exe",
+                ".scr",
+                ".js",
+                ".vbs",
+                ".bat",
+                ".ps1",
+                ".hta",
+                ".iso",
+                ".img",
+            ]
+        ):
+            findings.append(
+                {
+                    "indicator": "Dangerous attachment",
+                    "detail": att["filename"],
+                    "weight": 30,
+                }
+            )
             score += 30
     verdict = "phishing" if score >= 50 else "suspicious" if score >= 25 else "benign"
-    return {"score": min(score, 100), "verdict": verdict, "findings": findings, "url_count": len(urls),
-            "attachment_count": len(parsed.get("attachments", []))}
+    return {
+        "score": min(score, 100),
+        "verdict": verdict,
+        "findings": findings,
+        "url_count": len(urls),
+        "attachment_count": len(parsed.get("attachments", [])),
+    }
 
 
 def check_urls_virustotal(urls, api_key):
@@ -103,11 +180,25 @@ def check_urls_virustotal(urls, api_key):
     for url in urls[:5]:
         try:
             url_id = hashlib.sha256(url.encode()).hexdigest()
-            resp = requests.get(f"https://www.virustotal.com/api/v3/urls/{url_id}",
-                                headers={"x-apikey": api_key}, timeout=10)
+            resp = requests.get(
+                f"https://www.virustotal.com/api/v3/urls/{url_id}",
+                headers={"x-apikey": api_key},
+                timeout=10,
+            )
             if resp.status_code == 200:
-                stats = resp.json().get("data", {}).get("attributes", {}).get("last_analysis_stats", {})
-                results.append({"url": url, "malicious": stats.get("malicious", 0), "suspicious": stats.get("suspicious", 0)})
+                stats = (
+                    resp.json()
+                    .get("data", {})
+                    .get("attributes", {})
+                    .get("last_analysis_stats", {})
+                )
+                results.append(
+                    {
+                        "url": url,
+                        "malicious": stats.get("malicious", 0),
+                        "suspicious": stats.get("suspicious", 0),
+                    }
+                )
         except requests.RequestException:
             results.append({"url": url, "error": "lookup_failed"})
     return results
@@ -117,7 +208,11 @@ def create_ticket(analysis, parsed, ticketing_url=None, api_key=None):
     """Create incident ticket from analysis results."""
     ticket = {
         "title": f"Phishing Report: {parsed['headers'].get('subject', 'No Subject')[:80]}",
-        "severity": "high" if analysis["verdict"] == "phishing" else "medium" if analysis["verdict"] == "suspicious" else "low",
+        "severity": (
+            "high"
+            if analysis["verdict"] == "phishing"
+            else "medium" if analysis["verdict"] == "suspicious" else "low"
+        ),
         "description": f"User-reported phishing email. Verdict: {analysis['verdict']} (score: {analysis['score']})",
         "indicators": [f["indicator"] for f in analysis["findings"]],
         "reported_from": parsed["headers"].get("to", ""),
@@ -125,8 +220,12 @@ def create_ticket(analysis, parsed, ticketing_url=None, api_key=None):
     }
     if ticketing_url and api_key:
         try:
-            resp = requests.post(f"{ticketing_url}/api/v2/tickets",
-                                 headers={"Authorization": f"Bearer {api_key}"}, json=ticket, timeout=10)
+            resp = requests.post(
+                f"{ticketing_url}/api/v2/tickets",
+                headers={"Authorization": f"Bearer {api_key}"},
+                json=ticket,
+                timeout=10,
+            )
             ticket["ticket_id"] = resp.json().get("id")
         except requests.RequestException:
             ticket["ticket_id"] = "creation_failed"
@@ -142,13 +241,17 @@ def generate_report(parsed, analysis, ticket):
         "analysis": analysis,
         "ticket": ticket,
     }
-    print(f"PHISHING REPORT: {analysis['verdict'].upper()} (score={analysis['score']}), "
-          f"{len(analysis['findings'])} indicators")
+    print(
+        f"PHISHING REPORT: {analysis['verdict'].upper()} (score={analysis['score']}), "
+        f"{len(analysis['findings'])} indicators"
+    )
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Phishing Reporting Button Workflow Agent")
+    parser = argparse.ArgumentParser(
+        description="Phishing Reporting Button Workflow Agent"
+    )
     parser.add_argument("--eml-file", required=True, help="Path to reported .eml file")
     parser.add_argument("--vt-key", help="VirusTotal API key for URL checks")
     parser.add_argument("--output", default="phishing_report.json")

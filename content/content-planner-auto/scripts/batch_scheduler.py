@@ -35,14 +35,18 @@ PLATFORM_MAP = {
 
 def get_social_accounts() -> List[Dict]:
     """Fetch connected social accounts from PostBridge."""
-    resp = requests.get(f"{POSTBRIDGE_BASE}/social-accounts", headers=HEADERS, timeout=15)
+    resp = requests.get(
+        f"{POSTBRIDGE_BASE}/social-accounts", headers=HEADERS, timeout=15
+    )
     resp.raise_for_status()
     data = resp.json()
     accounts = data.get("data", data) if isinstance(data, dict) else data
     return accounts if isinstance(accounts, list) else []
 
 
-def format_scheduled_at(post_date: str, post_time: str, timezone: str = "Asia/Jakarta") -> str:
+def format_scheduled_at(
+    post_date: str, post_time: str, timezone: str = "Asia/Jakarta"
+) -> str:
     """Format scheduled_at for PostBridge API (ISO 8601 with timezone)."""
     # PostBridge expects ISO 8601 datetime
     # WIB = UTC+7
@@ -61,30 +65,30 @@ def create_post(
 ) -> Dict:
     """
     Create a scheduled post via PostBridge API.
-    
+
     Returns:
         {"success": bool, "post_id": str, "error": str}
     """
     # Build full caption with hashtags
     hashtag_str = " ".join(hashtags)
     full_caption = f"{caption}\n\n{hashtag_str}".strip()
-    
+
     payload = {
         "caption": full_caption,
         "scheduled_at": scheduled_at,
         "social_accounts": [account_id],
     }
-    
+
     if media_ids:
         payload["media"] = media_ids
-    
+
     if dry_run:
         print(f"    [DRY RUN] Would POST to {POSTBRIDGE_BASE}/posts:")
         print(f"    Account: {account_id}, Platform: {platform}")
         print(f"    Scheduled: {scheduled_at}")
         print(f"    Caption: {full_caption[:100]}...")
         return {"success": True, "post_id": "dry_run_id", "dry_run": True}
-    
+
     try:
         resp = requests.post(
             f"{POSTBRIDGE_BASE}/posts",
@@ -92,7 +96,7 @@ def create_post(
             json=payload,
             timeout=30,
         )
-        
+
         if resp.status_code in [200, 201]:
             data = resp.json()
             post_id = data.get("id") or data.get("data", {}).get("id", "unknown")
@@ -110,11 +114,11 @@ def create_post(
 def upload_media(file_path: str, content_type: str = "video/mp4") -> Optional[str]:
     """
     Upload media to PostBridge and return media_id.
-    
+
     Args:
         file_path: Local path to the media file
         content_type: MIME type of the media
-    
+
     Returns:
         media_id or None if failed
     """
@@ -128,14 +132,14 @@ def upload_media(file_path: str, content_type: str = "video/mp4") -> Optional[st
         )
         resp.raise_for_status()
         upload_data = resp.json()
-        
+
         upload_url = upload_data.get("upload_url")
         media_id = upload_data.get("id") or upload_data.get("media_id")
-        
+
         if not upload_url:
             print(f"    ❌ No upload_url in response: {upload_data}")
             return None
-        
+
         # Step 2: Upload file to S3/CDN
         with open(file_path, "rb") as f:
             upload_resp = requests.put(
@@ -144,13 +148,13 @@ def upload_media(file_path: str, content_type: str = "video/mp4") -> Optional[st
                 headers={"Content-Type": content_type},
                 timeout=120,
             )
-        
+
         if upload_resp.status_code in [200, 201, 204]:
             return media_id
         else:
             print(f"    ❌ Upload failed: HTTP {upload_resp.status_code}")
             return None
-            
+
     except Exception as e:
         print(f"    ❌ Upload error: {e}")
         return None
@@ -164,7 +168,7 @@ def schedule_day(
 ) -> Dict:
     """
     Schedule all posts for a single day to PostBridge.
-    
+
     Returns:
         {"date": str, "scheduled": int, "failed": int, "skipped": int, "results": list}
     """
@@ -172,23 +176,25 @@ def schedule_day(
     scheduled = 0
     failed = 0
     skipped = 0
-    
+
     print(f"\n📅 Scheduling {day['date']} ({day['day_name']})...")
-    
+
     for post in day["posts"]:
-        print(f"  ⏰ {post['time']} | {post['platform']} | {post['pillar']} | {post['product']}")
-        
+        print(
+            f"  ⏰ {post['time']} | {post['platform']} | {post['pillar']} | {post['product']}"
+        )
+
         # Check if media is needed and available
         media_needed = post.get("media_needed")
         media_ids = []
-        
+
         if media_needed and media_needed != "None":
             if media_dir:
                 # Look for media file
                 media_path = Path(media_dir) / f"{media_needed}.mp4"
                 if not media_path.exists():
                     media_path = Path(media_dir) / f"{media_needed}.jpg"
-                
+
                 if media_path.exists():
                     print(f"    📁 Uploading: {media_path.name}")
                     media_id = upload_media(str(media_path))
@@ -197,33 +203,44 @@ def schedule_day(
                     else:
                         print(f"    ⚠️  Upload failed for {media_path.name}")
                 else:
-                    if skip_missing_media and post["platform"] in ["tiktok", "youtube_shorts"]:
-                        print(f"    ⏭️  Skipping (media required but not found: {media_needed})")
+                    if skip_missing_media and post["platform"] in [
+                        "tiktok",
+                        "youtube_shorts",
+                    ]:
+                        print(
+                            f"    ⏭️  Skipping (media required but not found: {media_needed})"
+                        )
                         skipped += 1
-                        results.append({
-                            "post": post,
-                            "status": "skipped",
-                            "reason": f"media not found: {media_needed}",
-                        })
+                        results.append(
+                            {
+                                "post": post,
+                                "status": "skipped",
+                                "reason": f"media not found: {media_needed}",
+                            }
+                        )
                         time.sleep(RATE_LIMIT_DELAY)
                         continue
             else:
                 # No media dir, post text only if platform allows
                 if PLATFORM_MAP.get(post["platform"]) in ["tiktok", "youtube"]:
                     if not dry_run:
-                        print(f"    ⏭️  Skipping {post['platform']} (requires media, none available)")
+                        print(
+                            f"    ⏭️  Skipping {post['platform']} (requires media, none available)"
+                        )
                         skipped += 1
-                        results.append({
-                            "post": post,
-                            "status": "skipped",
-                            "reason": "media required",
-                        })
+                        results.append(
+                            {
+                                "post": post,
+                                "status": "skipped",
+                                "reason": "media required",
+                            }
+                        )
                         time.sleep(RATE_LIMIT_DELAY)
                         continue
-        
+
         # Format scheduled_at
         scheduled_at = format_scheduled_at(day["date"], post["time"])
-        
+
         # Create post
         result = create_post(
             account_id=post["account_id"],
@@ -234,24 +251,26 @@ def schedule_day(
             media_ids=media_ids if media_ids else None,
             dry_run=dry_run,
         )
-        
+
         if result["success"]:
             scheduled += 1
             print(f"    ✅ Scheduled! Post ID: {result.get('post_id', 'N/A')}")
         else:
             failed += 1
             print(f"    ❌ Failed: {result.get('error', 'Unknown error')}")
-        
-        results.append({
-            "post": post,
-            "status": "scheduled" if result["success"] else "failed",
-            "post_id": result.get("post_id"),
-            "error": result.get("error"),
-        })
-        
+
+        results.append(
+            {
+                "post": post,
+                "status": "scheduled" if result["success"] else "failed",
+                "post_id": result.get("post_id"),
+                "error": result.get("error"),
+            }
+        )
+
         # Rate limiting
         time.sleep(RATE_LIMIT_DELAY)
-    
+
     return {
         "date": day["date"],
         "scheduled": scheduled,
@@ -271,7 +290,7 @@ def schedule_calendar(
 ) -> Dict:
     """
     Schedule an entire calendar to PostBridge.
-    
+
     Args:
         calendar: Calendar dict from generate_calendar()
         dry_run: If True, don't actually post
@@ -279,29 +298,29 @@ def schedule_calendar(
         media_dir: Directory containing media files
         max_days: Limit number of days to schedule
         start_from_date: Only schedule from this date onwards (YYYY-MM-DD)
-    
+
     Returns:
         Scheduling report
     """
     print(f"\n🚀 Starting batch scheduling to PostBridge...")
     if dry_run:
         print("   [DRY RUN MODE - no actual posts]")
-    
+
     total_scheduled = 0
     total_failed = 0
     total_skipped = 0
     day_reports = []
-    
+
     days = calendar.get("days", [])
-    
+
     # Filter by start_from_date
     if start_from_date:
         days = [d for d in days if d["date"] >= start_from_date]
-    
+
     # Limit days
     if max_days:
         days = days[:max_days]
-    
+
     for day in days:
         day_result = schedule_day(
             day,
@@ -309,28 +328,32 @@ def schedule_calendar(
             skip_missing_media=skip_missing_media,
             media_dir=media_dir,
         )
-        
+
         total_scheduled += day_result["scheduled"]
         total_failed += day_result["failed"]
         total_skipped += day_result["skipped"]
         day_reports.append(day_result)
-    
+
     report = {
         "total_scheduled": total_scheduled,
         "total_failed": total_failed,
         "total_skipped": total_skipped,
         "total_processed": total_scheduled + total_failed + total_skipped,
-        "success_rate": f"{round(total_scheduled/(total_scheduled+total_failed)*100, 1)}%" if (total_scheduled+total_failed) > 0 else "N/A",
+        "success_rate": (
+            f"{round(total_scheduled/(total_scheduled+total_failed)*100, 1)}%"
+            if (total_scheduled + total_failed) > 0
+            else "N/A"
+        ),
         "dry_run": dry_run,
         "day_reports": day_reports,
     }
-    
+
     print(f"\n📊 SCHEDULING COMPLETE:")
     print(f"   ✅ Scheduled: {total_scheduled}")
     print(f"   ❌ Failed: {total_failed}")
     print(f"   ⏭️  Skipped: {total_skipped}")
     print(f"   📈 Success rate: {report['success_rate']}")
-    
+
     return report
 
 
@@ -341,12 +364,12 @@ def load_and_schedule(
 ) -> Dict:
     """
     Load calendar from JSON file and schedule it.
-    
+
     Convenience function for CLI usage.
     """
     with open(calendar_path, "r", encoding="utf-8") as f:
         calendar = json.load(f)
-    
+
     return schedule_calendar(
         calendar,
         dry_run=dry_run,
@@ -356,19 +379,21 @@ def load_and_schedule(
 
 if __name__ == "__main__":
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Schedule calendar to PostBridge")
     parser.add_argument("calendar_file", help="Path to calendar JSON file")
     parser.add_argument("--dry-run", action="store_true", help="Dry run (don't post)")
     parser.add_argument("--media-dir", type=str, help="Directory with media files")
     parser.add_argument("--max-days", type=int, help="Max days to schedule")
-    parser.add_argument("--from-date", type=str, help="Schedule from this date (YYYY-MM-DD)")
-    
+    parser.add_argument(
+        "--from-date", type=str, help="Schedule from this date (YYYY-MM-DD)"
+    )
+
     args = parser.parse_args()
-    
+
     with open(args.calendar_file, "r", encoding="utf-8") as f:
         calendar = json.load(f)
-    
+
     report = schedule_calendar(
         calendar,
         dry_run=args.dry_run,
@@ -376,7 +401,7 @@ if __name__ == "__main__":
         max_days=args.max_days,
         start_from_date=args.from_date,
     )
-    
+
     # Save report
     report_path = args.calendar_file.replace(".json", "_schedule_report.json")
     with open(report_path, "w", encoding="utf-8") as f:

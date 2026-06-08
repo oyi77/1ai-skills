@@ -13,18 +13,32 @@ from collections import Counter
 
 try:
     from attackcti import attack_client
+
     HAS_ATTACKCTI = True
 except ImportError:
     HAS_ATTACKCTI = False
 
 
 SECTOR_GROUPS = {
-    "financial": ["FIN7", "FIN8", "FIN11", "Carbanak", "Lazarus Group",
-                  "Cobalt Group", "TA505"],
+    "financial": [
+        "FIN7",
+        "FIN8",
+        "FIN11",
+        "Carbanak",
+        "Lazarus Group",
+        "Cobalt Group",
+        "TA505",
+    ],
     "healthcare": ["FIN12", "Wizard Spider", "Vice Society", "Conti"],
     "energy": ["Sandworm Team", "Dragonfly", "TEMP.Veles", "XENOTIME"],
-    "government": ["APT29", "APT28", "Turla", "Gamaredon Group",
-                   "Mustang Panda", "APT41"],
+    "government": [
+        "APT29",
+        "APT28",
+        "Turla",
+        "Gamaredon Group",
+        "Mustang Panda",
+        "APT41",
+    ],
     "manufacturing": ["APT41", "TEMP.Veles", "Dragonfly", "HEXANE"],
     "technology": ["APT41", "Lazarus Group", "APT10", "Winnti Group"],
     "retail": ["FIN7", "FIN8", "Carbanak", "Magecart"],
@@ -32,21 +46,34 @@ SECTOR_GROUPS = {
 
 SECTOR_VECTORS = {
     "financial": {
-        "primary": ["Spearphishing (T1566)", "Exploit Public-Facing App (T1190)",
-                     "Valid Accounts (T1078)", "Supply Chain (T1195)"],
+        "primary": [
+            "Spearphishing (T1566)",
+            "Exploit Public-Facing App (T1190)",
+            "Valid Accounts (T1078)",
+            "Supply Chain (T1195)",
+        ],
         "emerging": ["MFA Fatigue", "QR Phishing", "BEC", "API Key Theft"],
     },
     "healthcare": {
-        "primary": ["Spearphishing (T1566)", "Exploit Public-Facing App (T1190)",
-                     "External Remote Services (T1133)", "Valid Accounts (T1078)"],
-        "emerging": ["IoMT Exploitation", "Telehealth Attacks",
-                     "EHR Supply Chain"],
+        "primary": [
+            "Spearphishing (T1566)",
+            "Exploit Public-Facing App (T1190)",
+            "External Remote Services (T1133)",
+            "Valid Accounts (T1078)",
+        ],
+        "emerging": ["IoMT Exploitation", "Telehealth Attacks", "EHR Supply Chain"],
     },
     "energy": {
-        "primary": ["Spearphishing (T1566)", "Supply Chain (T1195)",
-                     "External Remote Services (T1133)"],
-        "emerging": ["OT/ICS Protocol Exploitation", "SCADA Remote Access",
-                     "Vendor VPN Exploitation"],
+        "primary": [
+            "Spearphishing (T1566)",
+            "Supply Chain (T1195)",
+            "External Remote Services (T1133)",
+        ],
+        "emerging": [
+            "OT/ICS Protocol Exploitation",
+            "SCADA Remote Access",
+            "Vendor VPN Exploitation",
+        ],
     },
 }
 
@@ -69,11 +96,14 @@ class ThreatLandscapeAgent:
         all_groups = self.client.get_groups()
         for group_name in target_names:
             group = next(
-                (g for g in all_groups
-                 if g.get("name", "").lower() == group_name.lower()
-                 or group_name.lower() in
-                 [a.lower() for a in g.get("aliases", [])]),
-                None)
+                (
+                    g
+                    for g in all_groups
+                    if g.get("name", "").lower() == group_name.lower()
+                    or group_name.lower() in [a.lower() for a in g.get("aliases", [])]
+                ),
+                None,
+            )
             if not group:
                 self.actor_profiles.append({"name": group_name, "found": False})
                 continue
@@ -90,20 +120,24 @@ class ThreatLandscapeAgent:
                 for t in techs:
                     for ref in t.get("external_references", []):
                         if ref.get("source_name") == "mitre-attack":
-                            techniques.append({
-                                "id": ref.get("external_id", ""),
-                                "name": t.get("name", ""),
-                            })
+                            techniques.append(
+                                {
+                                    "id": ref.get("external_id", ""),
+                                    "name": t.get("name", ""),
+                                }
+                            )
                             break
 
-            self.actor_profiles.append({
-                "name": group.get("name", ""),
-                "attack_id": attack_id,
-                "aliases": group.get("aliases", [])[:5],
-                "description": (group.get("description", "") or "")[:300],
-                "technique_count": len(techniques),
-                "techniques": techniques[:25],
-            })
+            self.actor_profiles.append(
+                {
+                    "name": group.get("name", ""),
+                    "attack_id": attack_id,
+                    "aliases": group.get("aliases", [])[:5],
+                    "description": (group.get("description", "") or "")[:300],
+                    "technique_count": len(techniques),
+                    "techniques": techniques[:25],
+                }
+            )
         return self.actor_profiles
 
     def rank_techniques(self):
@@ -115,23 +149,32 @@ class ThreatLandscapeAgent:
                 counter[key] += 1
 
         self.technique_ranking = [
-            {"technique_id": k.split("|")[0],
-             "name": k.split("|")[1] if "|" in k else "",
-             "actor_count": count,
-             "actors": [a["name"] for a in self.actor_profiles
-                        if any(t["id"] == k.split("|")[0]
-                               for t in a.get("techniques", []))]}
+            {
+                "technique_id": k.split("|")[0],
+                "name": k.split("|")[1] if "|" in k else "",
+                "actor_count": count,
+                "actors": [
+                    a["name"]
+                    for a in self.actor_profiles
+                    if any(t["id"] == k.split("|")[0] for t in a.get("techniques", []))
+                ],
+            }
             for k, count in counter.most_common(20)
         ]
         return self.technique_ranking
 
     def get_attack_vectors(self):
         """Return known attack vectors for this sector."""
-        return SECTOR_VECTORS.get(self.sector, {
-            "primary": ["Spearphishing (T1566)",
-                         "Exploit Public-Facing App (T1190)"],
-            "emerging": ["Supply Chain Compromise"],
-        })
+        return SECTOR_VECTORS.get(
+            self.sector,
+            {
+                "primary": [
+                    "Spearphishing (T1566)",
+                    "Exploit Public-Facing App (T1190)",
+                ],
+                "emerging": ["Supply Chain Compromise"],
+            },
+        )
 
     def generate_report(self):
         """Generate sector threat landscape report."""

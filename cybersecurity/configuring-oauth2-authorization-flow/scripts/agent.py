@@ -29,7 +29,9 @@ def discover_oauth_endpoints(issuer_url):
             "supported_grant_types": config.get("grant_types_supported", []),
             "supported_scopes": config.get("scopes_supported", []),
             "supported_response_types": config.get("response_types_supported", []),
-            "token_endpoint_auth_methods": config.get("token_endpoint_auth_methods_supported", []),
+            "token_endpoint_auth_methods": config.get(
+                "token_endpoint_auth_methods_supported", []
+            ),
         }
     except Exception as e:
         return {"error": str(e)}
@@ -39,42 +41,56 @@ def audit_oauth_security(config):
     """Audit OAuth configuration for security issues."""
     findings = []
     if "implicit" in config.get("supported_grant_types", []):
-        findings.append({
-            "issue": "Implicit grant type supported",
-            "severity": "HIGH",
-            "recommendation": "Disable implicit flow; use authorization code + PKCE",
-        })
+        findings.append(
+            {
+                "issue": "Implicit grant type supported",
+                "severity": "HIGH",
+                "recommendation": "Disable implicit flow; use authorization code + PKCE",
+            }
+        )
     if "password" in config.get("supported_grant_types", []):
-        findings.append({
-            "issue": "Resource owner password grant supported",
-            "severity": "MEDIUM",
-            "recommendation": "Disable ROPC grant; use authorization code flow",
-        })
+        findings.append(
+            {
+                "issue": "Resource owner password grant supported",
+                "severity": "MEDIUM",
+                "recommendation": "Disable ROPC grant; use authorization code flow",
+            }
+        )
     auth_methods = config.get("token_endpoint_auth_methods", [])
     if "none" in auth_methods:
-        findings.append({
-            "issue": "Token endpoint allows unauthenticated clients",
-            "severity": "MEDIUM",
-            "recommendation": "Require client_secret_basic or private_key_jwt",
-        })
+        findings.append(
+            {
+                "issue": "Token endpoint allows unauthenticated clients",
+                "severity": "MEDIUM",
+                "recommendation": "Require client_secret_basic or private_key_jwt",
+            }
+        )
     if "code" in config.get("supported_response_types", []):
         if "code id_token" not in config.get("supported_response_types", []):
-            findings.append({
-                "issue": "Authorization code flow available",
-                "severity": "INFO",
-                "note": "Ensure PKCE is enforced for public clients",
-            })
+            findings.append(
+                {
+                    "issue": "Authorization code flow available",
+                    "severity": "INFO",
+                    "note": "Ensure PKCE is enforced for public clients",
+                }
+            )
     return findings
 
 
-def test_token_endpoint(token_url, client_id, client_secret, grant_type="client_credentials"):
+def test_token_endpoint(
+    token_url, client_id, client_secret, grant_type="client_credentials"
+):
     """Test token endpoint with client credentials."""
     try:
-        resp = requests.post(token_url, data={
-            "grant_type": grant_type,
-            "client_id": client_id,
-            "client_secret": client_secret,
-        }, timeout=10)
+        resp = requests.post(
+            token_url,
+            data={
+                "grant_type": grant_type,
+                "client_id": client_id,
+                "client_secret": client_secret,
+            },
+            timeout=10,
+        )
         if resp.status_code == 200:
             token_data = resp.json()
             return {
@@ -114,7 +130,9 @@ def run_audit(issuer_url, client_id=None, client_secret=None):
 
     token_test = {}
     if client_id and client_secret and config.get("token_endpoint"):
-        token_test = test_token_endpoint(config["token_endpoint"], client_id, client_secret)
+        token_test = test_token_endpoint(
+            config["token_endpoint"], client_id, client_secret
+        )
         print(f"\n--- TOKEN ENDPOINT TEST ---")
         print(f"  Status: {token_test.get('status', 'N/A')}")
 

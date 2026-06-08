@@ -7,7 +7,6 @@ import argparse
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-
 LSASS_GRANTED_ACCESS_SUSPICIOUS = {
     "0x1010": "PROCESS_VM_READ | PROCESS_QUERY_LIMITED_INFORMATION (Mimikatz-style)",
     "0x1410": "PROCESS_VM_READ | PROCESS_QUERY_INFORMATION (procdump-style)",
@@ -17,8 +16,15 @@ LSASS_GRANTED_ACCESS_SUSPICIOUS = {
 }
 
 SUSPICIOUS_CALLERS = [
-    "mimikatz", "procdump", "rundll32.exe", "taskmgr.exe",
-    "powershell.exe", "cmd.exe", "wmic.exe", "cscript.exe", "wscript.exe",
+    "mimikatz",
+    "procdump",
+    "rundll32.exe",
+    "taskmgr.exe",
+    "powershell.exe",
+    "cmd.exe",
+    "wmic.exe",
+    "cscript.exe",
+    "wscript.exe",
 ]
 
 SAM_EXPORT_PATTERNS = [
@@ -72,27 +78,31 @@ def detect_lsass_access(events):
         severity = "medium"
         reasons = []
         if granted in LSASS_GRANTED_ACCESS_SUSPICIOUS:
-            reasons.append(f"Suspicious GrantedAccess {granted}: {LSASS_GRANTED_ACCESS_SUSPICIOUS[granted]}")
+            reasons.append(
+                f"Suspicious GrantedAccess {granted}: {LSASS_GRANTED_ACCESS_SUSPICIOUS[granted]}"
+            )
             severity = "critical" if granted == "0x1FFFFF" else "high"
         if any(s in source_name for s in SUSPICIOUS_CALLERS):
             reasons.append(f"Suspicious calling process: {source_name}")
             severity = "critical"
         if not reasons:
             continue
-        alerts.append({
-            "detection": "LSASS Memory Access",
-            "mitre_technique": "T1003.001",
-            "timestamp": ev["timestamp"],
-            "source_process": ev.get("SourceImage", ""),
-            "source_pid": ev.get("SourceProcessId", ""),
-            "target_process": ev.get("TargetImage", ""),
-            "granted_access": granted,
-            "call_trace": ev.get("CallTrace", "")[:200],
-            "severity": severity,
-            "reasons": reasons,
-            "user": ev.get("SourceUser", ev.get("User", "")),
-            "host": ev.get("Computer", ""),
-        })
+        alerts.append(
+            {
+                "detection": "LSASS Memory Access",
+                "mitre_technique": "T1003.001",
+                "timestamp": ev["timestamp"],
+                "source_process": ev.get("SourceImage", ""),
+                "source_pid": ev.get("SourceProcessId", ""),
+                "target_process": ev.get("TargetImage", ""),
+                "granted_access": granted,
+                "call_trace": ev.get("CallTrace", "")[:200],
+                "severity": severity,
+                "reasons": reasons,
+                "user": ev.get("SourceUser", ev.get("User", "")),
+                "host": ev.get("Computer", ""),
+            }
+        )
     return alerts
 
 
@@ -107,28 +117,40 @@ def detect_credential_commands(events):
             continue
         for pattern in SAM_EXPORT_PATTERNS:
             if re.search(pattern, cmdline, re.IGNORECASE):
-                technique = "T1003.002" if "sam" in cmdline or "security" in cmdline else "T1003.003"
-                alerts.append({
-                    "detection": "Registry Hive / NTDS.dit Export",
-                    "mitre_technique": technique,
-                    "timestamp": ev["timestamp"],
-                    "command_line": ev.get("CommandLine", ev.get("ProcessCommandLine", "")),
-                    "process": ev.get("Image", ev.get("NewProcessName", "")),
-                    "user": ev.get("User", ev.get("SubjectUserName", "")),
-                    "severity": "critical",
-                })
+                technique = (
+                    "T1003.002"
+                    if "sam" in cmdline or "security" in cmdline
+                    else "T1003.003"
+                )
+                alerts.append(
+                    {
+                        "detection": "Registry Hive / NTDS.dit Export",
+                        "mitre_technique": technique,
+                        "timestamp": ev["timestamp"],
+                        "command_line": ev.get(
+                            "CommandLine", ev.get("ProcessCommandLine", "")
+                        ),
+                        "process": ev.get("Image", ev.get("NewProcessName", "")),
+                        "user": ev.get("User", ev.get("SubjectUserName", "")),
+                        "severity": "critical",
+                    }
+                )
                 break
         for pattern in COMSVCS_PATTERNS:
             if re.search(pattern, cmdline, re.IGNORECASE):
-                alerts.append({
-                    "detection": "LSASS Dump via comsvcs.dll",
-                    "mitre_technique": "T1003.001",
-                    "timestamp": ev["timestamp"],
-                    "command_line": ev.get("CommandLine", ev.get("ProcessCommandLine", "")),
-                    "process": ev.get("Image", ev.get("NewProcessName", "")),
-                    "user": ev.get("User", ev.get("SubjectUserName", "")),
-                    "severity": "critical",
-                })
+                alerts.append(
+                    {
+                        "detection": "LSASS Dump via comsvcs.dll",
+                        "mitre_technique": "T1003.001",
+                        "timestamp": ev["timestamp"],
+                        "command_line": ev.get(
+                            "CommandLine", ev.get("ProcessCommandLine", "")
+                        ),
+                        "process": ev.get("Image", ev.get("NewProcessName", "")),
+                        "user": ev.get("User", ev.get("SubjectUserName", "")),
+                        "severity": "critical",
+                    }
+                )
                 break
     return alerts
 
@@ -143,14 +165,16 @@ def detect_ntdll_access(events):
         if "ntdll.dll" in call_trace.lower() and "UNKNOWN" in call_trace:
             target = ev.get("TargetImage", "").lower()
             if "lsass.exe" in target:
-                alerts.append({
-                    "detection": "NTDLL Suspicious CallTrace (Mimikatz Signature)",
-                    "mitre_technique": "T1003.001",
-                    "timestamp": ev["timestamp"],
-                    "source_process": ev.get("SourceImage", ""),
-                    "call_trace_snippet": call_trace[:300],
-                    "severity": "critical",
-                })
+                alerts.append(
+                    {
+                        "detection": "NTDLL Suspicious CallTrace (Mimikatz Signature)",
+                        "mitre_technique": "T1003.001",
+                        "timestamp": ev["timestamp"],
+                        "source_process": ev.get("SourceImage", ""),
+                        "call_trace_snippet": call_trace[:300],
+                        "severity": "critical",
+                    }
+                )
     return alerts
 
 
@@ -160,7 +184,7 @@ def generate_splunk_queries():
         "lsass_access": (
             'index=sysmon EventCode=10 TargetImage="*\\\\lsass.exe" '
             'GrantedAccess IN ("0x1010","0x1FFFFF","0x1410","0x1438") '
-            '| stats count by SourceImage, GrantedAccess, Computer'
+            "| stats count by SourceImage, GrantedAccess, Computer"
         ),
         "comsvcs_dump": (
             'index=sysmon EventCode=1 CommandLine="*comsvcs*MiniDump*" '
@@ -169,12 +193,12 @@ def generate_splunk_queries():
         "sam_export": (
             'index=sysmon EventCode=1 (CommandLine="*reg*save*hklm\\\\sam*" '
             'OR CommandLine="*reg*save*hklm\\\\security*") '
-            '| table _time, Computer, User, CommandLine'
+            "| table _time, Computer, User, CommandLine"
         ),
         "ntds_extraction": (
             'index=sysmon EventCode=1 (CommandLine="*ntdsutil*" '
             'OR CommandLine="*vssadmin*create*shadow*") '
-            '| table _time, Computer, User, CommandLine'
+            "| table _time, Computer, User, CommandLine"
         ),
     }
 
@@ -182,8 +206,12 @@ def generate_splunk_queries():
 def main():
     parser = argparse.ArgumentParser(description="Credential Dumping Detection Agent")
     parser.add_argument("--sysmon-xml", help="Path to Sysmon event log XML export")
-    parser.add_argument("--output", default="credential_dump_report.json", help="Output report path")
-    parser.add_argument("--show-splunk", action="store_true", help="Print Splunk detection queries")
+    parser.add_argument(
+        "--output", default="credential_dump_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--show-splunk", action="store_true", help="Print Splunk detection queries"
+    )
     args = parser.parse_args()
 
     if args.show_splunk:
@@ -192,7 +220,9 @@ def main():
         return
 
     if not args.sysmon_xml:
-        print("[!] Provide --sysmon-xml path or use --show-splunk for detection queries")
+        print(
+            "[!] Provide --sysmon-xml path or use --show-splunk for detection queries"
+        )
         return
 
     events = parse_sysmon_xml(args.sysmon_xml)

@@ -41,9 +41,10 @@ class AttackPathAnalyzer:
                 self.graph.add_node(src["id"], **src)
                 self.graph.add_node(dst["id"], **dst)
                 self.graph.add_edge(
-                    src["id"], dst["id"],
+                    src["id"],
+                    dst["id"],
                     technique=path.get("technique", "unknown"),
-                    path_id=path.get("path_id", "")
+                    path_id=path.get("path_id", ""),
                 )
 
         for asset in data.get("critical_assets", []):
@@ -52,8 +53,10 @@ class AttackPathAnalyzer:
                 self.graph.nodes[asset["id"]]["is_critical"] = True
                 self.graph.nodes[asset["id"]]["tier"] = asset.get("tier", 3)
 
-        print(f"[+] Loaded {self.graph.number_of_nodes()} nodes, "
-              f"{self.graph.number_of_edges()} edges")
+        print(
+            f"[+] Loaded {self.graph.number_of_nodes()} nodes, "
+            f"{self.graph.number_of_edges()} edges"
+        )
         print(f"    Critical assets: {len(self.critical_assets)}")
 
     def find_choke_points(self):
@@ -87,23 +90,26 @@ class AttackPathAnalyzer:
                 continue
 
             node_data = self.graph.nodes.get(node_id, {})
-            self.choke_points.append({
-                "entity_id": node_id,
-                "entity_name": node_data.get("name", node_id),
-                "entity_type": node_data.get("type", "unknown"),
-                "exposure_category": node_data.get("exposure_category", "unknown"),
-                "paths_through": counts["paths"],
-                "critical_assets_at_risk": len(counts["assets"]),
-                "assets_list": list(counts["assets"]),
-                "betweenness_centrality": round(betweenness.get(node_id, 0), 4),
-                "risk_score": round(
-                    counts["paths"] * len(counts["assets"]) *
-                    (1 + betweenness.get(node_id, 0)),
-                    2
-                ),
-                "remediation": node_data.get("remediation", "Review and fix"),
-                "fix_complexity": node_data.get("fix_complexity", "medium"),
-            })
+            self.choke_points.append(
+                {
+                    "entity_id": node_id,
+                    "entity_name": node_data.get("name", node_id),
+                    "entity_type": node_data.get("type", "unknown"),
+                    "exposure_category": node_data.get("exposure_category", "unknown"),
+                    "paths_through": counts["paths"],
+                    "critical_assets_at_risk": len(counts["assets"]),
+                    "assets_list": list(counts["assets"]),
+                    "betweenness_centrality": round(betweenness.get(node_id, 0), 4),
+                    "risk_score": round(
+                        counts["paths"]
+                        * len(counts["assets"])
+                        * (1 + betweenness.get(node_id, 0)),
+                        2,
+                    ),
+                    "remediation": node_data.get("remediation", "Review and fix"),
+                    "fix_complexity": node_data.get("fix_complexity", "medium"),
+                }
+            )
 
         self.choke_points.sort(key=lambda x: x["risk_score"], reverse=True)
         print(f"[+] Identified {len(self.choke_points)} choke points")
@@ -129,19 +135,21 @@ class AttackPathAnalyzer:
                 priority = "P4-Medium"
                 sla = "30 days"
 
-            plan.append({
-                "rank": i,
-                "entity": cp["entity_name"],
-                "type": cp["entity_type"],
-                "category": cp["exposure_category"],
-                "paths_eliminated": cp["paths_through"],
-                "assets_protected": cp["critical_assets_at_risk"],
-                "risk_score": cp["risk_score"],
-                "priority": priority,
-                "sla": sla,
-                "complexity": cp["fix_complexity"],
-                "remediation": cp["remediation"],
-            })
+            plan.append(
+                {
+                    "rank": i,
+                    "entity": cp["entity_name"],
+                    "type": cp["entity_type"],
+                    "category": cp["exposure_category"],
+                    "paths_eliminated": cp["paths_through"],
+                    "assets_protected": cp["critical_assets_at_risk"],
+                    "risk_score": cp["risk_score"],
+                    "priority": priority,
+                    "sla": sla,
+                    "complexity": cp["fix_complexity"],
+                    "remediation": cp["remediation"],
+                }
+            )
 
         return pd.DataFrame(plan)
 
@@ -167,18 +175,23 @@ class AttackPathAnalyzer:
             print(f"\nTop 10 Choke Points:")
             for i, cp in enumerate(self.choke_points[:10], 1):
                 print(f"  {i}. {cp['entity_name']}")
-                print(f"     Type: {cp['entity_type']} | "
-                      f"Category: {cp['exposure_category']}")
-                print(f"     Paths: {cp['paths_through']} | "
-                      f"Assets at risk: {cp['critical_assets_at_risk']} | "
-                      f"Risk: {cp['risk_score']}")
+                print(
+                    f"     Type: {cp['entity_type']} | "
+                    f"Category: {cp['exposure_category']}"
+                )
+                print(
+                    f"     Paths: {cp['paths_through']} | "
+                    f"Assets at risk: {cp['critical_assets_at_risk']} | "
+                    f"Risk: {cp['risk_score']}"
+                )
 
             categories = defaultdict(int)
             for cp in self.choke_points:
                 categories[cp["exposure_category"]] += 1
             print(f"\nChoke Points by Category:")
-            for cat, count in sorted(categories.items(),
-                                     key=lambda x: x[1], reverse=True):
+            for cat, count in sorted(
+                categories.items(), key=lambda x: x[1], reverse=True
+            ):
                 print(f"  {cat}: {count}")
 
 

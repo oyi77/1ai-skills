@@ -4,6 +4,7 @@ archive_memory.py — Compressed JSONL archival storage.
 One gzipped JSONL file per day: archive/YYYY-MM-DD.jsonl.gz
 NOT used in normal retrieval. Only accessed on explicit request.
 """
+
 import gzip
 import json
 import logging
@@ -57,7 +58,9 @@ class ArchiveMemory:
                     line = json.dumps(record, default=str) + "\n"
                     f.write(line.encode("utf-8"))
 
-        logger.info("ArchiveMemory: archived %d records to %s", len(serialised), path.name)
+        logger.info(
+            "ArchiveMemory: archived %d records to %s", len(serialised), path.name
+        )
         return len(serialised)
 
     def archive_one(self, memory: Dict, date_str: Optional[str] = None) -> None:

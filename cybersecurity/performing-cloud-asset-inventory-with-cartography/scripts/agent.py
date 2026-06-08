@@ -6,6 +6,7 @@ across AWS accounts, then queries the resulting Neo4j graph database
 to identify security-relevant relationships, exposed resources, and
 misconfigured assets.
 """
+
 import argparse
 import json
 import os
@@ -15,18 +16,30 @@ from datetime import datetime, timezone
 
 try:
     from neo4j import GraphDatabase
+
     HAS_NEO4J = True
 except ImportError:
     HAS_NEO4J = False
 
 
-def run_cartography(profile=None, neo4j_uri="bolt://localhost:7687",
-                    neo4j_user="neo4j", neo4j_password="neo4j"):
+def run_cartography(
+    profile=None,
+    neo4j_uri="bolt://localhost:7687",
+    neo4j_user="neo4j",
+    neo4j_password="neo4j",
+):
     """Execute Cartography to populate the Neo4j graph."""
-    cmd = [sys.executable, "-m", "cartography",
-           "--neo4j-uri", neo4j_uri,
-           "--neo4j-user", neo4j_user,
-           "--neo4j-password-env-var", "NEO4J_PASSWORD"]
+    cmd = [
+        sys.executable,
+        "-m",
+        "cartography",
+        "--neo4j-uri",
+        neo4j_uri,
+        "--neo4j-user",
+        neo4j_user,
+        "--neo4j-password-env-var",
+        "NEO4J_PASSWORD",
+    ]
     if profile:
         cmd.extend(["--aws-requested-syncs", "ec2,iam,s3,rds,lambda,ecs"])
     env = dict(os.environ)
@@ -88,12 +101,14 @@ def find_public_resources(driver):
            i.publicipaddress AS public_ip, rule.fromport AS port
     """
     for r in query_neo4j(driver, query):
-        findings.append({
-            "type": "public_ec2",
-            "resource": r["resource_id"],
-            "severity": "HIGH",
-            "detail": f"Public IP {r.get('public_ip', 'N/A')} open on port {r.get('port', 'all')}",
-        })
+        findings.append(
+            {
+                "type": "public_ec2",
+                "resource": r["resource_id"],
+                "severity": "HIGH",
+                "detail": f"Public IP {r.get('public_ip', 'N/A')} open on port {r.get('port', 'all')}",
+            }
+        )
 
     # Public S3 buckets
     query = """
@@ -101,12 +116,14 @@ def find_public_resources(driver):
     RETURN b.name AS bucket_name
     """
     for r in query_neo4j(driver, query):
-        findings.append({
-            "type": "public_s3",
-            "resource": r["bucket_name"],
-            "severity": "CRITICAL",
-            "detail": "S3 bucket allows anonymous access",
-        })
+        findings.append(
+            {
+                "type": "public_s3",
+                "resource": r["bucket_name"],
+                "severity": "CRITICAL",
+                "detail": "S3 bucket allows anonymous access",
+            }
+        )
 
     # IAM users without MFA
     query = """
@@ -114,12 +131,14 @@ def find_public_resources(driver):
     RETURN u.name AS username, u.arn AS arn
     """
     for r in query_neo4j(driver, query):
-        findings.append({
-            "type": "iam_no_mfa",
-            "resource": r["username"],
-            "severity": "HIGH",
-            "detail": f"IAM user {r['username']} has console access without MFA",
-        })
+        findings.append(
+            {
+                "type": "iam_no_mfa",
+                "resource": r["username"],
+                "severity": "HIGH",
+                "detail": f"IAM user {r['username']} has console access without MFA",
+            }
+        )
 
     return findings
 
@@ -132,12 +151,14 @@ def find_unencrypted_resources(driver):
     RETURN v.id AS volume_id, v.size AS size_gb, v.state AS state
     """
     for r in query_neo4j(driver, query):
-        findings.append({
-            "type": "unencrypted_ebs",
-            "resource": r["volume_id"],
-            "severity": "HIGH",
-            "detail": f"Unencrypted EBS volume ({r.get('size_gb', '?')} GB)",
-        })
+        findings.append(
+            {
+                "type": "unencrypted_ebs",
+                "resource": r["volume_id"],
+                "severity": "HIGH",
+                "detail": f"Unencrypted EBS volume ({r.get('size_gb', '?')} GB)",
+            }
+        )
 
     query = """
     MATCH (b:S3Bucket)
@@ -145,12 +166,14 @@ def find_unencrypted_resources(driver):
     RETURN b.name AS bucket_name
     """
     for r in query_neo4j(driver, query):
-        findings.append({
-            "type": "unencrypted_s3",
-            "resource": r["bucket_name"],
-            "severity": "MEDIUM",
-            "detail": "S3 bucket without default encryption",
-        })
+        findings.append(
+            {
+                "type": "unencrypted_s3",
+                "resource": r["bucket_name"],
+                "severity": "MEDIUM",
+                "detail": "S3 bucket without default encryption",
+            }
+        )
 
     return findings
 
@@ -179,17 +202,29 @@ def format_summary(ec2_instances, s3_buckets, security_findings):
             if count:
                 print(f"    {sev:10s}: {count}")
         for f in security_findings[:15]:
-            print(f"    [{f['severity']:8s}] {f['type']:20s} | {f['resource']}: {f['detail'][:40]}")
+            print(
+                f"    [{f['severity']:8s}] {f['type']:20s} | {f['resource']}: {f['detail'][:40]}"
+            )
 
-    return {s: severity_counts.get(s, 0) for s in ["CRITICAL", "HIGH", "MEDIUM"]} if security_findings else {}
+    return (
+        {s: severity_counts.get(s, 0) for s in ["CRITICAL", "HIGH", "MEDIUM"]}
+        if security_findings
+        else {}
+    )
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Cartography cloud asset inventory agent")
+    parser = argparse.ArgumentParser(
+        description="Cartography cloud asset inventory agent"
+    )
     parser.add_argument("--neo4j-uri", default="bolt://localhost:7687")
     parser.add_argument("--neo4j-user", default="neo4j")
-    parser.add_argument("--neo4j-password", default=os.environ.get("NEO4J_PASSWORD", "neo4j"))
-    parser.add_argument("--sync", action="store_true", help="Run Cartography sync before query")
+    parser.add_argument(
+        "--neo4j-password", default=os.environ.get("NEO4J_PASSWORD", "neo4j")
+    )
+    parser.add_argument(
+        "--sync", action="store_true", help="Run Cartography sync before query"
+    )
     parser.add_argument("--profile", help="AWS CLI profile for sync")
     parser.add_argument("--output", "-o", help="Output JSON report")
     parser.add_argument("--verbose", "-v", action="store_true")
@@ -200,9 +235,13 @@ def main():
         sys.exit(1)
 
     if args.sync:
-        run_cartography(args.profile, args.neo4j_uri, args.neo4j_user, args.neo4j_password)
+        run_cartography(
+            args.profile, args.neo4j_uri, args.neo4j_user, args.neo4j_password
+        )
 
-    driver = GraphDatabase.driver(args.neo4j_uri, auth=(args.neo4j_user, args.neo4j_password))
+    driver = GraphDatabase.driver(
+        args.neo4j_uri, auth=(args.neo4j_user, args.neo4j_password)
+    )
 
     ec2_instances = inventory_ec2_instances(driver)
     s3_buckets = inventory_s3_buckets(driver)
@@ -221,9 +260,13 @@ def main():
         "security_findings": all_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if all_findings else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if all_findings else "LOW"
+            )
         ),
     }
 

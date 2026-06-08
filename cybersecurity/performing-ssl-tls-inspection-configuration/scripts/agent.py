@@ -27,15 +27,17 @@ class TLSInspectionAgent:
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
-            with ctx.wrap_socket(socket.socket(),
-                                 server_hostname=hostname) as s:
+            with ctx.wrap_socket(socket.socket(), server_hostname=hostname) as s:
                 s.settimeout(10)
                 s.connect((hostname, port))
                 cert = s.getpeercert(binary_form=False)
                 if not cert:
                     der = s.getpeercert(binary_form=True)
-                    return {"hostname": hostname, "inspection": "unknown",
-                            "note": "Could not parse certificate"}
+                    return {
+                        "hostname": hostname,
+                        "inspection": "unknown",
+                        "note": "Could not parse certificate",
+                    }
 
             issuer = dict(x[0] for x in cert.get("issuer", ()))
             issuer_cn = issuer.get("commonName", "")
@@ -45,7 +47,8 @@ class TLSInspectionAgent:
             is_inspected = self.internal_ca_cn.lower() in issuer_cn.lower()
 
             result = {
-                "hostname": hostname, "port": port,
+                "hostname": hostname,
+                "port": port,
                 "subject_cn": subject.get("commonName", ""),
                 "issuer_cn": issuer_cn,
                 "issuer_org": issuer_org,
@@ -63,10 +66,19 @@ class TLSInspectionAgent:
     def check_tls_version(self, hostname, port=443):
         """Check minimum TLS version supported by the inspecting proxy."""
         versions_to_test = [
-            ("TLSv1.0", ssl.TLSVersion.TLSv1 if hasattr(ssl.TLSVersion, "TLSv1") else None),
-            ("TLSv1.1", ssl.TLSVersion.TLSv1_1 if hasattr(ssl.TLSVersion, "TLSv1_1") else None),
+            (
+                "TLSv1.0",
+                ssl.TLSVersion.TLSv1 if hasattr(ssl.TLSVersion, "TLSv1") else None,
+            ),
+            (
+                "TLSv1.1",
+                ssl.TLSVersion.TLSv1_1 if hasattr(ssl.TLSVersion, "TLSv1_1") else None,
+            ),
             ("TLSv1.2", ssl.TLSVersion.TLSv1_2),
-            ("TLSv1.3", ssl.TLSVersion.TLSv1_3 if hasattr(ssl.TLSVersion, "TLSv1_3") else None),
+            (
+                "TLSv1.3",
+                ssl.TLSVersion.TLSv1_3 if hasattr(ssl.TLSVersion, "TLSv1_3") else None,
+            ),
         ]
         results = []
         for name, ver in versions_to_test:
@@ -79,8 +91,7 @@ class TLSInspectionAgent:
                 ctx.verify_mode = ssl.CERT_NONE
                 ctx.minimum_version = ver
                 ctx.maximum_version = ver
-                with ctx.wrap_socket(socket.socket(),
-                                     server_hostname=hostname) as s:
+                with ctx.wrap_socket(socket.socket(), server_hostname=hostname) as s:
                     s.settimeout(5)
                     s.connect((hostname, port))
                     results.append({"version": name, "status": "accepted"})
@@ -92,11 +103,17 @@ class TLSInspectionAgent:
         """Check if the inspection CA certificate is in the local trust store."""
         try:
             result = subprocess.run(
-                ["powershell", "-NoProfile", "-Command",
-                 f'Get-ChildItem Cert:\\LocalMachine\\Root | '
-                 f'Where-Object {{$_.Subject -like "*{self.internal_ca_cn}*"}} | '
-                 f'Select-Object Subject,NotAfter,Thumbprint | ConvertTo-Json'],
-                capture_output=True, text=True, timeout=30
+                [
+                    "powershell",
+                    "-NoProfile",
+                    "-Command",
+                    f"Get-ChildItem Cert:\\LocalMachine\\Root | "
+                    f'Where-Object {{$_.Subject -like "*{self.internal_ca_cn}*"}} | '
+                    f"Select-Object Subject,NotAfter,Thumbprint | ConvertTo-Json",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
             if result.returncode == 0 and result.stdout.strip():
                 data = json.loads(result.stdout)
@@ -112,11 +129,13 @@ class TLSInspectionAgent:
         results = []
         for domain in exempt_domains:
             info = self.check_inspection_active(domain)
-            results.append({
-                "domain": domain,
-                "correctly_exempted": not info.get("inspection_active", True),
-                "issuer": info.get("issuer_cn", ""),
-            })
+            results.append(
+                {
+                    "domain": domain,
+                    "correctly_exempted": not info.get("inspection_active", True),
+                    "issuer": info.get("issuer_cn", ""),
+                }
+            )
         return results
 
     def scan_multiple(self, hostnames):
@@ -128,8 +147,9 @@ class TLSInspectionAgent:
     def generate_report(self):
         """Generate inspection validation report."""
         inspected = sum(1 for r in self.results if r.get("inspection_active"))
-        not_inspected = sum(1 for r in self.results
-                           if r.get("inspection_active") is False)
+        not_inspected = sum(
+            1 for r in self.results if r.get("inspection_active") is False
+        )
         errors = sum(1 for r in self.results if "error" in r)
 
         report = {
@@ -147,8 +167,11 @@ class TLSInspectionAgent:
 
 def main():
     ca_cn = sys.argv[1] if len(sys.argv) > 1 else "SSL Inspection CA"
-    hosts = sys.argv[2:] if len(sys.argv) > 2 else [
-        "www.google.com", "github.com", "www.example.com"]
+    hosts = (
+        sys.argv[2:]
+        if len(sys.argv) > 2
+        else ["www.google.com", "github.com", "www.example.com"]
+    )
     agent = TLSInspectionAgent(internal_ca_cn=ca_cn)
     agent.scan_multiple(hosts)
     agent.generate_report()

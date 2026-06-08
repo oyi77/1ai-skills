@@ -16,7 +16,6 @@ import re
 from datetime import datetime, timedelta
 from copy import deepcopy
 
-
 # ---------------------------------------------------------------------------
 # URL categorization database
 # ---------------------------------------------------------------------------
@@ -25,33 +24,54 @@ URL_CATEGORIES = {
     "cloud_productivity": {
         "risk_weight": 1,
         "domains": [
-            "docs.google.com", "drive.google.com", "sheets.google.com",
-            "office365.com", "office.com", "sharepoint.com",
-            "onedrive.live.com", "dropbox.com", "box.com",
+            "docs.google.com",
+            "drive.google.com",
+            "sheets.google.com",
+            "office365.com",
+            "office.com",
+            "sharepoint.com",
+            "onedrive.live.com",
+            "dropbox.com",
+            "box.com",
         ],
         "patterns": [r".*\.google\.com/.*doc", r".*\.office\.com/.*"],
     },
     "business_saas": {
         "risk_weight": 1,
         "domains": [
-            "salesforce.com", "slack.com", "github.com", "gitlab.com",
-            "atlassian.net", "jira.atlassian.com", "notion.so",
-            "figma.com", "linear.app", "asana.com",
+            "salesforce.com",
+            "slack.com",
+            "github.com",
+            "gitlab.com",
+            "atlassian.net",
+            "jira.atlassian.com",
+            "notion.so",
+            "figma.com",
+            "linear.app",
+            "asana.com",
         ],
         "patterns": [],
     },
     "developer_tools": {
         "risk_weight": 2,
         "domains": [
-            "stackoverflow.com", "npmjs.com", "pypi.org", "crates.io",
-            "hub.docker.com", "registry.npmjs.org", "maven.org",
+            "stackoverflow.com",
+            "npmjs.com",
+            "pypi.org",
+            "crates.io",
+            "hub.docker.com",
+            "registry.npmjs.org",
+            "maven.org",
         ],
         "patterns": [],
     },
     "search_engines": {
         "risk_weight": 1,
         "domains": [
-            "google.com", "bing.com", "duckduckgo.com", "yahoo.com",
+            "google.com",
+            "bing.com",
+            "duckduckgo.com",
+            "yahoo.com",
         ],
         "patterns": [r".*\.google\.[a-z]{2,3}/search.*"],
     },
@@ -59,32 +79,48 @@ URL_CATEGORIES = {
     "social_media": {
         "risk_weight": 3,
         "domains": [
-            "facebook.com", "twitter.com", "x.com", "linkedin.com",
-            "instagram.com", "reddit.com", "tiktok.com", "youtube.com",
+            "facebook.com",
+            "twitter.com",
+            "x.com",
+            "linkedin.com",
+            "instagram.com",
+            "reddit.com",
+            "tiktok.com",
+            "youtube.com",
         ],
         "patterns": [],
     },
     "webmail": {
         "risk_weight": 3,
         "domains": [
-            "mail.google.com", "outlook.live.com", "mail.yahoo.com",
-            "protonmail.com", "zoho.com",
+            "mail.google.com",
+            "outlook.live.com",
+            "mail.yahoo.com",
+            "protonmail.com",
+            "zoho.com",
         ],
         "patterns": [],
     },
     "news_media": {
         "risk_weight": 2,
         "domains": [
-            "cnn.com", "bbc.com", "reuters.com", "nytimes.com",
-            "washingtonpost.com", "theguardian.com",
+            "cnn.com",
+            "bbc.com",
+            "reuters.com",
+            "nytimes.com",
+            "washingtonpost.com",
+            "theguardian.com",
         ],
         "patterns": [],
     },
     "file_sharing": {
         "risk_weight": 4,
         "domains": [
-            "wetransfer.com", "sendspace.com", "mediafire.com",
-            "mega.nz", "zippyshare.com",
+            "wetransfer.com",
+            "sendspace.com",
+            "mediafire.com",
+            "mega.nz",
+            "zippyshare.com",
         ],
         "patterns": [],
     },
@@ -92,16 +128,21 @@ URL_CATEGORIES = {
     "admin_console": {
         "risk_weight": 4,
         "domains": [
-            "console.aws.amazon.com", "portal.azure.com",
-            "console.cloud.google.com", "admin.google.com",
+            "console.aws.amazon.com",
+            "portal.azure.com",
+            "console.cloud.google.com",
+            "admin.google.com",
         ],
         "patterns": [r".*admin\..*/.*", r".*console\..*/.*"],
     },
     "ai_tools": {
         "risk_weight": 3,
         "domains": [
-            "chat.openai.com", "claude.ai", "bard.google.com",
-            "copilot.microsoft.com", "perplexity.ai",
+            "chat.openai.com",
+            "claude.ai",
+            "bard.google.com",
+            "copilot.microsoft.com",
+            "perplexity.ai",
         ],
         "patterns": [],
     },
@@ -155,8 +196,16 @@ CDR_THREAT_TYPES = {
         "description": "VBA/Office macro with potentially malicious code",
         "file_types": ["docx", "xlsx", "pptx", "doc", "xls", "ppt", "docm", "xlsm"],
         "severity": "high",
-        "indicators": ["AutoOpen", "AutoExec", "Document_Open", "Workbook_Open",
-                       "Shell", "WScript", "CreateObject", "PowerShell"],
+        "indicators": [
+            "AutoOpen",
+            "AutoExec",
+            "Document_Open",
+            "Workbook_Open",
+            "Shell",
+            "WScript",
+            "CreateObject",
+            "PowerShell",
+        ],
     },
     "embedded_ole": {
         "description": "Embedded OLE object (may contain executable payload)",
@@ -168,8 +217,15 @@ CDR_THREAT_TYPES = {
         "description": "JavaScript embedded in PDF document",
         "file_types": ["pdf"],
         "severity": "high",
-        "indicators": ["/JavaScript", "/JS", "/Launch", "/SubmitForm",
-                       "/OpenAction", "/AA", "/URI"],
+        "indicators": [
+            "/JavaScript",
+            "/JS",
+            "/Launch",
+            "/SubmitForm",
+            "/OpenAction",
+            "/AA",
+            "/URI",
+        ],
     },
     "external_link": {
         "description": "External template or resource reference",
@@ -206,9 +262,18 @@ CDR_THREAT_TYPES = {
 # File extension to MIME type mapping
 FILE_EXTENSIONS = {
     "pdf": {"mime": "application/pdf", "cdr_supported": True},
-    "docx": {"mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "cdr_supported": True},
-    "xlsx": {"mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "cdr_supported": True},
-    "pptx": {"mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation", "cdr_supported": True},
+    "docx": {
+        "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "cdr_supported": True,
+    },
+    "xlsx": {
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "cdr_supported": True,
+    },
+    "pptx": {
+        "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "cdr_supported": True,
+    },
     "doc": {"mime": "application/msword", "cdr_supported": True},
     "xls": {"mime": "application/vnd.ms-excel", "cdr_supported": True},
     "ppt": {"mime": "application/vnd.ms-powerpoint", "cdr_supported": True},
@@ -358,7 +423,12 @@ class BrowserIsolationPolicyEngine:
 
         # Check against category databases
         for cat_name, cat_def in URL_CATEGORIES.items():
-            if cat_name in ("phishing", "uncategorized", "malware_hosting", "newly_registered"):
+            if cat_name in (
+                "phishing",
+                "uncategorized",
+                "malware_hosting",
+                "newly_registered",
+            ):
                 continue
 
             # Domain match
@@ -412,13 +482,22 @@ class BrowserIsolationPolicyEngine:
     # ------------------------------------------------------------------
     # Policy Management
     # ------------------------------------------------------------------
-    def add_isolation_policy(self, name, description="", match_criteria=None,
-                              isolation_mode="full_isolation", dlp_controls=None,
-                              cdr_config=None, priority=None):
+    def add_isolation_policy(
+        self,
+        name,
+        description="",
+        match_criteria=None,
+        isolation_mode="full_isolation",
+        dlp_controls=None,
+        cdr_config=None,
+        priority=None,
+    ):
         """Add an isolation policy."""
         if isolation_mode not in ISOLATION_MODES:
-            raise ValueError(f"Invalid isolation mode: {isolation_mode}. "
-                             f"Valid modes: {list(ISOLATION_MODES.keys())}")
+            raise ValueError(
+                f"Invalid isolation mode: {isolation_mode}. "
+                f"Valid modes: {list(ISOLATION_MODES.keys())}"
+            )
 
         if priority is None:
             priority = len(self.policies) + 1
@@ -458,8 +537,9 @@ class BrowserIsolationPolicyEngine:
             for p in self.policies
         ]
 
-    def _match_policy(self, url, category, risk_level, user_groups=None,
-                       referrer=None, file_type=None):
+    def _match_policy(
+        self, url, category, risk_level, user_groups=None, referrer=None, file_type=None
+    ):
         """Find the first matching policy for a request."""
         domain = _extract_domain(url)
 
@@ -506,12 +586,17 @@ class BrowserIsolationPolicyEngine:
                     matched = False
                 elif not file_type and "file_types" in criteria:
                     # Policy is file-type specific, skip for non-file requests
-                    if not any(k in criteria for k in ["url_categories", "domains", "risk_levels"]):
+                    if not any(
+                        k in criteria
+                        for k in ["url_categories", "domains", "risk_levels"]
+                    ):
                         matched = False
 
             # Check user groups
             if matched and "user_groups" in criteria:
-                if not user_groups or not set(user_groups) & set(criteria["user_groups"]):
+                if not user_groups or not set(user_groups) & set(
+                    criteria["user_groups"]
+                ):
                     matched = False
 
             if matched:
@@ -527,7 +612,9 @@ class BrowserIsolationPolicyEngine:
         filename = os.path.basename(file_path)
         ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
 
-        file_info = FILE_EXTENSIONS.get(ext, {"mime": "application/octet-stream", "cdr_supported": False})
+        file_info = FILE_EXTENSIONS.get(
+            ext, {"mime": "application/octet-stream", "cdr_supported": False}
+        )
 
         if not file_info["cdr_supported"]:
             return {
@@ -550,40 +637,52 @@ class BrowserIsolationPolicyEngine:
                 # Simulate threat detection based on profile strictness
                 if cdr_profile == "strict":
                     # Strict mode flags all potential threat types for this file format
-                    threats_found.append({
-                        "type": threat_type,
-                        "description": threat_def["description"],
-                        "severity": threat_def["severity"],
-                        "action": "STRIPPED",
-                        "indicators_checked": threat_def["indicators"],
-                    })
+                    threats_found.append(
+                        {
+                            "type": threat_type,
+                            "description": threat_def["description"],
+                            "severity": threat_def["severity"],
+                            "action": "STRIPPED",
+                            "indicators_checked": threat_def["indicators"],
+                        }
+                    )
                 elif cdr_profile == "standard":
                     # Standard mode only flags high/critical severity
                     if threat_def["severity"] in ("high", "critical"):
-                        threats_found.append({
-                            "type": threat_type,
-                            "description": threat_def["description"],
-                            "severity": threat_def["severity"],
-                            "action": "STRIPPED",
-                            "indicators_checked": threat_def["indicators"][:3],
-                        })
+                        threats_found.append(
+                            {
+                                "type": threat_type,
+                                "description": threat_def["description"],
+                                "severity": threat_def["severity"],
+                                "action": "STRIPPED",
+                                "indicators_checked": threat_def["indicators"][:3],
+                            }
+                        )
                 elif cdr_profile == "permissive":
                     # Permissive mode only flags critical severity
                     if threat_def["severity"] == "critical":
-                        threats_found.append({
-                            "type": threat_type,
-                            "description": threat_def["description"],
-                            "severity": threat_def["severity"],
-                            "action": "STRIPPED",
-                            "indicators_checked": threat_def["indicators"][:2],
-                        })
+                        threats_found.append(
+                            {
+                                "type": threat_type,
+                                "description": threat_def["description"],
+                                "severity": threat_def["severity"],
+                                "action": "STRIPPED",
+                                "indicators_checked": threat_def["indicators"][:2],
+                            }
+                        )
 
         # Calculate reconstructed file size (stripped content reduces size)
         size_reduction = len(threats_found) * 0.05  # ~5% per threat stripped
-        reconstructed_size = max(int(file_size * (1 - size_reduction)), int(file_size * 0.7))
+        reconstructed_size = max(
+            int(file_size * (1 - size_reduction)), int(file_size * 0.7)
+        )
 
         clean_filename = filename.rsplit(".", 1)
-        clean_filename = f"{clean_filename[0]}_clean.{clean_filename[1]}" if len(clean_filename) > 1 else f"{filename}_clean"
+        clean_filename = (
+            f"{clean_filename[0]}_clean.{clean_filename[1]}"
+            if len(clean_filename) > 1
+            else f"{filename}_clean"
+        )
 
         result = {
             "status": "processed",
@@ -612,7 +711,9 @@ class BrowserIsolationPolicyEngine:
         self.cdr_results[filename] = result
         return result
 
-    def batch_cdr_process(self, files, cdr_profile="standard", quarantine_on_threat=True):
+    def batch_cdr_process(
+        self, files, cdr_profile="standard", quarantine_on_threat=True
+    ):
         """Process multiple files through CDR pipeline."""
         results = []
         threats_neutralized = 0
@@ -624,13 +725,15 @@ class BrowserIsolationPolicyEngine:
                 file_path=file_path,
                 cdr_profile=cdr_profile,
             )
-            results.append({
-                "filename": os.path.basename(file_path),
-                "status": result["status"],
-                "threats_found": result.get("threats_found", 0),
-                "clean": result.get("threats_found", 0) == 0,
-                "quarantined": result.get("quarantined", False),
-            })
+            results.append(
+                {
+                    "filename": os.path.basename(file_path),
+                    "status": result["status"],
+                    "threats_found": result.get("threats_found", 0),
+                    "clean": result.get("threats_found", 0) == 0,
+                    "quarantined": result.get("quarantined", False),
+                }
+            )
 
             if result.get("quarantined"):
                 quarantined += 1
@@ -652,9 +755,14 @@ class BrowserIsolationPolicyEngine:
     # ------------------------------------------------------------------
     # Session Management
     # ------------------------------------------------------------------
-    def create_isolation_session(self, user_id, target_url,
-                                  user_groups=None, device_posture=None,
-                                  user_risk_level="low"):
+    def create_isolation_session(
+        self,
+        user_id,
+        target_url,
+        user_groups=None,
+        device_posture=None,
+        user_risk_level="low",
+    ):
         """Create an isolated browsing session."""
         session_id = f"SES-{uuid.uuid4().hex[:12].upper()}"
 
@@ -677,7 +785,10 @@ class BrowserIsolationPolicyEngine:
                 rule_matched = True
 
                 if "device_managed" in condition:
-                    if device_posture and device_posture.get("managed") != condition["device_managed"]:
+                    if (
+                        device_posture
+                        and device_posture.get("managed") != condition["device_managed"]
+                    ):
                         rule_matched = False
                     elif not device_posture:
                         rule_matched = False
@@ -739,12 +850,14 @@ class BrowserIsolationPolicyEngine:
         self.sessions[session_id] = session
 
         # Record session start event
-        self.session_events.setdefault(session_id, []).append({
-            "timestamp": datetime.utcnow().isoformat(),
-            "event_type": "session_start",
-            "details": f"Isolation session started for {target_url} "
-                       f"(mode: {isolation_mode}, policy: {applied_policy})",
-        })
+        self.session_events.setdefault(session_id, []).append(
+            {
+                "timestamp": datetime.utcnow().isoformat(),
+                "event_type": "session_start",
+                "details": f"Isolation session started for {target_url} "
+                f"(mode: {isolation_mode}, policy: {applied_policy})",
+            }
+        )
 
         return session
 
@@ -761,11 +874,13 @@ class BrowserIsolationPolicyEngine:
         session["status"] = "ended"
         session["ended_at"] = datetime.utcnow().isoformat()
 
-        self.session_events.setdefault(session_id, []).append({
-            "timestamp": datetime.utcnow().isoformat(),
-            "event_type": "session_end",
-            "details": "Isolation session terminated",
-        })
+        self.session_events.setdefault(session_id, []).append(
+            {
+                "timestamp": datetime.utcnow().isoformat(),
+                "event_type": "session_end",
+                "details": "Isolation session terminated",
+            }
+        )
 
         return session
 
@@ -779,8 +894,10 @@ class BrowserIsolationPolicyEngine:
         isolated = sum(1 for s in sessions if s["isolation_mode"] != "allow_direct")
         cdr_files = len(self.cdr_results)
         dlp_violations = sum(
-            1 for events in self.session_events.values()
-            for e in events if e["event_type"] == "dlp_violation"
+            1
+            for events in self.session_events.values()
+            for e in events
+            if e["event_type"] == "dlp_violation"
         )
 
         return {
@@ -798,9 +915,9 @@ class BrowserIsolationPolicyEngine:
     # ------------------------------------------------------------------
     # Zero Trust Integration
     # ------------------------------------------------------------------
-    def create_zero_trust_integration(self, identity_provider="",
-                                       conditional_access_rules=None,
-                                       swg_integration=None):
+    def create_zero_trust_integration(
+        self, identity_provider="", conditional_access_rules=None, swg_integration=None
+    ):
         """Configure Zero Trust platform integration."""
         self.zt_integration = {
             "identity_provider": identity_provider,
@@ -810,9 +927,15 @@ class BrowserIsolationPolicyEngine:
         }
         return self.zt_integration
 
-    def evaluate_access_request(self, user_id, target_url, user_groups=None,
-                                 device_posture=None, user_risk_level="low",
-                                 referrer=None):
+    def evaluate_access_request(
+        self,
+        user_id,
+        target_url,
+        user_groups=None,
+        device_posture=None,
+        user_risk_level="low",
+        referrer=None,
+    ):
         """Evaluate an access request against all policies and ZT rules."""
         # Create a session (which evaluates all policies)
         session = self.create_isolation_session(
@@ -825,11 +948,19 @@ class BrowserIsolationPolicyEngine:
 
         matched_rules = []
         if session.get("zt_overrides", {}).get("matched_rule"):
-            matched_rules.append({"name": session["zt_overrides"]["matched_rule"],
-                                   "source": "zero_trust"})
-        if session.get("applied_policy") and session["applied_policy"] != "Default Classification":
-            matched_rules.append({"name": session["applied_policy"],
-                                   "source": "isolation_policy"})
+            matched_rules.append(
+                {
+                    "name": session["zt_overrides"]["matched_rule"],
+                    "source": "zero_trust",
+                }
+            )
+        if (
+            session.get("applied_policy")
+            and session["applied_policy"] != "Default Classification"
+        ):
+            matched_rules.append(
+                {"name": session["applied_policy"], "source": "isolation_policy"}
+            )
 
         return {
             "session_id": session["session_id"],
@@ -847,18 +978,26 @@ class BrowserIsolationPolicyEngine:
     def generate_compliance_report(self, date_range=None, include_metrics=True):
         """Generate a compliance report for browser isolation deployment."""
         total_sessions = len(self.sessions)
-        isolated = sum(1 for s in self.sessions.values()
-                       if s["isolation_mode"] not in ("allow_direct",))
-        blocked = sum(1 for s in self.sessions.values()
-                      if s["isolation_mode"] == "block")
+        isolated = sum(
+            1
+            for s in self.sessions.values()
+            if s["isolation_mode"] not in ("allow_direct",)
+        )
+        blocked = sum(
+            1 for s in self.sessions.values() if s["isolation_mode"] == "block"
+        )
 
         cdr_total = len(self.cdr_results)
         cdr_threats = sum(r.get("threats_found", 0) for r in self.cdr_results.values())
-        cdr_quarantined = sum(1 for r in self.cdr_results.values() if r.get("quarantined"))
+        cdr_quarantined = sum(
+            1 for r in self.cdr_results.values() if r.get("quarantined")
+        )
 
         dlp_violations = sum(
-            1 for events in self.session_events.values()
-            for e in events if e["event_type"] == "dlp_violation"
+            1
+            for events in self.session_events.values()
+            for e in events
+            if e["event_type"] == "dlp_violation"
         )
 
         report = {
@@ -869,7 +1008,9 @@ class BrowserIsolationPolicyEngine:
             "isolated_requests": isolated,
             "blocked_requests": blocked,
             "direct_requests": total_sessions - isolated - blocked,
-            "isolation_rate": round((isolated / total_sessions * 100), 1) if total_sessions else 0,
+            "isolation_rate": (
+                round((isolated / total_sessions * 100), 1) if total_sessions else 0
+            ),
             "policies_configured": len(self.policies),
             "policies_enabled": sum(1 for p in self.policies if p["enabled"]),
             "cdr_stats": {
@@ -891,12 +1032,26 @@ def main():
         description="Browser Isolation for Zero Trust - Policy Engine"
     )
     parser.add_argument("--org", default="", help="Organization name")
-    parser.add_argument("--output", default="rbi_report.json", help="Output report path")
-    parser.add_argument("--action", choices=[
-        "classify", "demo", "cdr_test", "policy_report",
-    ], default="demo", help="Action to perform")
-    parser.add_argument("--url", default="", help="URL to classify (for classify action)")
-    parser.add_argument("--file", default="", help="File to process (for cdr_test action)")
+    parser.add_argument(
+        "--output", default="rbi_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--action",
+        choices=[
+            "classify",
+            "demo",
+            "cdr_test",
+            "policy_report",
+        ],
+        default="demo",
+        help="Action to perform",
+    )
+    parser.add_argument(
+        "--url", default="", help="URL to classify (for classify action)"
+    )
+    parser.add_argument(
+        "--file", default="", help="File to process (for cdr_test action)"
+    )
     args = parser.parse_args()
 
     engine = BrowserIsolationPolicyEngine(
@@ -919,7 +1074,9 @@ def main():
         if result["status"] == "processed":
             print(f"Threats found: {result['threats_found']}")
             for t in result["threats_detail"]:
-                print(f"  [{t['severity'].upper()}] {t['type']}: {t['description']} -> {t['action']}")
+                print(
+                    f"  [{t['severity'].upper()}] {t['type']}: {t['description']} -> {t['action']}"
+                )
             print(f"Clean file: {result['reconstructed']['filename']}")
 
     elif args.action == "demo":
@@ -928,18 +1085,25 @@ def main():
         # Add policies
         engine.add_isolation_policy(
             name="Block Phishing and Malware",
-            match_criteria={"url_categories": ["phishing", "malware_hosting"],
-                            "risk_levels": ["critical"]},
+            match_criteria={
+                "url_categories": ["phishing", "malware_hosting"],
+                "risk_levels": ["critical"],
+            },
             isolation_mode="block",
             priority=1,
         )
         engine.add_isolation_policy(
             name="Isolate Uncategorized Sites",
-            match_criteria={"url_categories": ["uncategorized", "newly_registered"],
-                            "risk_levels": ["high", "critical"]},
+            match_criteria={
+                "url_categories": ["uncategorized", "newly_registered"],
+                "risk_levels": ["high", "critical"],
+            },
             isolation_mode="full_isolation",
-            dlp_controls={"disable_download": True, "disable_upload": True,
-                          "watermark_session": True},
+            dlp_controls={
+                "disable_download": True,
+                "disable_upload": True,
+                "watermark_session": True,
+            },
             priority=2,
         )
         engine.add_isolation_policy(
@@ -958,8 +1122,10 @@ def main():
         )
         engine.add_isolation_policy(
             name="Allow Trusted SaaS",
-            match_criteria={"url_categories": ["cloud_productivity", "business_saas"],
-                            "risk_levels": ["low"]},
+            match_criteria={
+                "url_categories": ["cloud_productivity", "business_saas"],
+                "risk_levels": ["low"],
+            },
             isolation_mode="allow_direct",
             priority=10,
         )
@@ -969,14 +1135,21 @@ def main():
         engine.create_zero_trust_integration(
             identity_provider="Azure AD",
             conditional_access_rules=[
-                {"name": "Unmanaged Device Isolation",
-                 "condition": {"device_managed": False},
-                 "action": "full_isolation",
-                 "dlp_override": {"disable_download": True}},
-                {"name": "Contractor Restricted",
-                 "condition": {"user_group": "contractors"},
-                 "action": "read_only_isolation",
-                 "dlp_override": {"disable_download": True, "disable_printing": True}},
+                {
+                    "name": "Unmanaged Device Isolation",
+                    "condition": {"device_managed": False},
+                    "action": "full_isolation",
+                    "dlp_override": {"disable_download": True},
+                },
+                {
+                    "name": "Contractor Restricted",
+                    "condition": {"user_group": "contractors"},
+                    "action": "read_only_isolation",
+                    "dlp_override": {
+                        "disable_download": True,
+                        "disable_printing": True,
+                    },
+                },
             ],
         )
         print("[+] Zero Trust integration configured\n")
@@ -996,7 +1169,9 @@ def main():
         for url in test_urls:
             result = engine.classify_url(url)
             print(f"  {url}")
-            print(f"    Category: {result['category']} | Risk: {result['risk_level']} | Action: {result['action']}")
+            print(
+                f"    Category: {result['category']} | Risk: {result['risk_level']} | Action: {result['action']}"
+            )
         print()
 
         # Create isolation sessions
@@ -1033,13 +1208,19 @@ def main():
             "/tmp/downloads/invoice.pdf",
             "/tmp/downloads/malware.exe",
         ]
-        batch = engine.batch_cdr_process(test_files, cdr_profile="strict", quarantine_on_threat=True)
+        batch = engine.batch_cdr_process(
+            test_files, cdr_profile="strict", quarantine_on_threat=True
+        )
         print(f"  Processed: {batch['total_processed']}")
         print(f"  Clean: {batch['clean_count']}")
         print(f"  Threats neutralized: {batch['threats_neutralized']}")
         print(f"  Quarantined: {batch['quarantined_count']}")
         for r in batch["results"]:
-            status = "QUARANTINED" if r["quarantined"] else ("CLEAN" if r["clean"] else "SANITIZED")
+            status = (
+                "QUARANTINED"
+                if r["quarantined"]
+                else ("CLEAN" if r["clean"] else "SANITIZED")
+            )
             print(f"    [{status}] {r['filename']}: {r['threats_found']} threats")
         print()
 
@@ -1049,7 +1230,9 @@ def main():
         )
         print("--- Compliance Report ---")
         print(f"  Total requests: {report['total_requests']}")
-        print(f"  Isolated: {report['isolated_requests']} ({report['isolation_rate']}%)")
+        print(
+            f"  Isolated: {report['isolated_requests']} ({report['isolation_rate']}%)"
+        )
         print(f"  Blocked: {report['blocked_requests']}")
         print(f"  CDR files: {report['cdr_stats']['total_files']}")
         print(f"  Threats neutralized: {report['cdr_stats']['threats_neutralized']}")

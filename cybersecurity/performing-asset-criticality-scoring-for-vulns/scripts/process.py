@@ -18,7 +18,6 @@ import sys
 
 import pandas as pd
 
-
 WEIGHTS = {
     "business_function": 0.25,
     "data_sensitivity": 0.25,
@@ -44,8 +43,7 @@ def score_assets(df):
     scores = []
     for _, row in df.iterrows():
         weighted = sum(
-            row.get(factor, 3) * weight
-            for factor, weight in WEIGHTS.items()
+            row.get(factor, 3) * weight for factor, weight in WEIGHTS.items()
         )
         score = round(weighted, 2)
 
@@ -55,13 +53,15 @@ def score_assets(df):
                 tier, label, sla_mod = t, l, s
                 break
 
-        scores.append({
-            **row.to_dict(),
-            "criticality_score": score,
-            "tier": tier,
-            "tier_label": label,
-            "sla_modifier": sla_mod,
-        })
+        scores.append(
+            {
+                **row.to_dict(),
+                "criticality_score": score,
+                "tier": tier,
+                "tier_label": label,
+                "sla_modifier": sla_mod,
+            }
+        )
 
     return pd.DataFrame(scores).sort_values("criticality_score", ascending=False)
 
@@ -79,18 +79,22 @@ def apply_to_vulns(assets_df, vulns_df):
     results = []
     for _, vuln in vulns_df.iterrows():
         asset_id = vuln.get("asset_id", "")
-        asset = asset_map.get(asset_id, {"tier": 3, "label": "Standard", "sla_modifier": 0})
+        asset = asset_map.get(
+            asset_id, {"tier": 3, "label": "Standard", "sla_modifier": 0}
+        )
         severity = vuln.get("severity", "Medium")
         base_sla = BASE_SLA.get(severity, 60)
         adjusted_sla = max(1, int(base_sla * (1 + asset["sla_modifier"])))
 
-        results.append({
-            **vuln.to_dict(),
-            "asset_tier": asset["tier"],
-            "asset_label": asset["label"],
-            "base_sla_days": base_sla,
-            "adjusted_sla_days": adjusted_sla,
-        })
+        results.append(
+            {
+                **vuln.to_dict(),
+                "asset_tier": asset["tier"],
+                "asset_label": asset["label"],
+                "base_sla_days": base_sla,
+                "adjusted_sla_days": adjusted_sla,
+            }
+        )
 
     return pd.DataFrame(results)
 

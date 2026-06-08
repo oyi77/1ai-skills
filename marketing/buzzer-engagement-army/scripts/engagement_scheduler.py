@@ -7,6 +7,7 @@ Rules:
 - Never all accounts engage at exact same second
 - Different accounts pick random delay slots
 """
+
 import random
 import time
 from datetime import datetime, timedelta
@@ -29,7 +30,7 @@ def generate_engagement_schedule(
     actions: List[str] = None,
     start_time: datetime = None,
     min_gap_sec: int = 120,
-    max_gap_sec: int = 300
+    max_gap_sec: int = 300,
 ) -> List[Dict]:
     """
     Generate a staggered engagement schedule for multiple accounts.
@@ -62,12 +63,16 @@ def generate_engagement_schedule(
                 intra_gap = random.uniform(30, 90)  # 30-90 seconds between actions
                 account_start += timedelta(seconds=intra_gap)
 
-            schedule.append({
-                "account_id": acc_id,
-                "action": action,
-                "scheduled_at": account_start,
-                "delay_from_start_sec": (account_start - start_time).total_seconds()
-            })
+            schedule.append(
+                {
+                    "account_id": acc_id,
+                    "action": action,
+                    "scheduled_at": account_start,
+                    "delay_from_start_sec": (
+                        account_start - start_time
+                    ).total_seconds(),
+                }
+            )
 
         # Inter-account gap: 2-5 minutes
         inter_gap = jitter(random.uniform(min_gap_sec, max_gap_sec))
@@ -80,7 +85,7 @@ def execute_schedule(
     schedule: List[Dict],
     action_fn: Callable[[int, str], bool],
     dry_run: bool = False,
-    verbose: bool = True
+    verbose: bool = True,
 ) -> List[Dict]:
     """
     Execute a schedule by sleeping between actions and calling action_fn.
@@ -95,8 +100,10 @@ def execute_schedule(
         wait_sec = max(0, (item["scheduled_at"] - datetime.now()).total_seconds())
 
         if verbose:
-            print(f"[{i+1}/{len(schedule)}] Account {item['account_id']} → {item['action']} "
-                  f"at {item['scheduled_at'].strftime('%H:%M:%S')} (wait {wait_sec:.0f}s)")
+            print(
+                f"[{i+1}/{len(schedule)}] Account {item['account_id']} → {item['action']} "
+                f"at {item['scheduled_at'].strftime('%H:%M:%S')} (wait {wait_sec:.0f}s)"
+            )
 
         if not dry_run:
             if wait_sec > 0:
@@ -108,7 +115,11 @@ def execute_schedule(
                 success = False
                 print(f"  ❌ Error: {e}")
 
-            result = {**item, "success": success, "executed_at": datetime.now().isoformat()}
+            result = {
+                **item,
+                "success": success,
+                "executed_at": datetime.now().isoformat(),
+            }
             results.append(result)
 
             if verbose:
@@ -126,26 +137,30 @@ def print_schedule(schedule: List[Dict]):
         t = item["scheduled_at"].strftime("%H:%M:%S")
         d = item["delay_from_start_sec"]
         print(f"  T+{d:6.0f}s [{t}] Account {item['account_id']:5d} → {item['action']}")
-    
+
     if schedule:
-        total_duration = (schedule[-1]["scheduled_at"] - schedule[0]["scheduled_at"]).total_seconds()
-        print(f"\n  Total duration: {total_duration/60:.1f} minutes for {len(schedule)} actions")
+        total_duration = (
+            schedule[-1]["scheduled_at"] - schedule[0]["scheduled_at"]
+        ).total_seconds()
+        print(
+            f"\n  Total duration: {total_duration/60:.1f} minutes for {len(schedule)} actions"
+        )
 
 
 if __name__ == "__main__":
     # Demo with TikTok accounts
     tiktok_ids = [48374, 48373, 48372, 48338, 48337, 48336, 48335]
-    
+
     print("=== Engagement Scheduler Demo ===")
     schedule = generate_engagement_schedule(
-        account_ids=tiktok_ids,
-        actions=["like", "comment"],
-        start_time=datetime.now()
+        account_ids=tiktok_ids, actions=["like", "comment"], start_time=datetime.now()
     )
-    
+
     print_schedule(schedule)
 
     # Show first 5 actions
     print("\n=== First 5 scheduled actions ===")
     for item in schedule[:5]:
-        print(f"  Account {item['account_id']} → {item['action']} at T+{item['delay_from_start_sec']:.0f}s")
+        print(
+            f"  Account {item['account_id']} → {item['action']} at T+{item['delay_from_start_sec']:.0f}s"
+        )

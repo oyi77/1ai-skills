@@ -28,11 +28,14 @@ class PolicyViolation:
     severity: str = "HIGH"
 
 
-def run_conftest(manifests_dir: str, policies_dir: str,
-                 parser: str = "yaml") -> dict:
+def run_conftest(manifests_dir: str, policies_dir: str, parser: str = "yaml") -> dict:
     """Run conftest and return JSON results."""
     files = []
-    extensions = {"yaml": [".yaml", ".yml"], "hcl2": [".tf"], "dockerfile": ["Dockerfile"]}
+    extensions = {
+        "yaml": [".yaml", ".yml"],
+        "hcl2": [".tf"],
+        "dockerfile": ["Dockerfile"],
+    }
     for ext in extensions.get(parser, [".yaml", ".yml"]):
         files.extend(str(p) for p in Path(manifests_dir).rglob(f"*{ext}"))
 
@@ -40,10 +43,14 @@ def run_conftest(manifests_dir: str, policies_dir: str,
         return {"results": [], "error": f"No {parser} files found in {manifests_dir}"}
 
     cmd = [
-        "conftest", "test",
-        "--policy", policies_dir,
-        "--output", "json",
-        "--parser", parser
+        "conftest",
+        "test",
+        "--policy",
+        policies_dir,
+        "--output",
+        "json",
+        "--parser",
+        parser,
     ] + files
 
     try:
@@ -65,19 +72,23 @@ def parse_conftest_results(results: list) -> list:
     for result in results:
         filename = result.get("filename", "unknown")
         for failure in result.get("failures", []):
-            violations.append(PolicyViolation(
-                file=filename,
-                rule=failure.get("metadata", {}).get("rule", "unknown"),
-                message=failure.get("msg", ""),
-                severity="HIGH"
-            ))
+            violations.append(
+                PolicyViolation(
+                    file=filename,
+                    rule=failure.get("metadata", {}).get("rule", "unknown"),
+                    message=failure.get("msg", ""),
+                    severity="HIGH",
+                )
+            )
         for warning in result.get("warnings", []):
-            violations.append(PolicyViolation(
-                file=filename,
-                rule=warning.get("metadata", {}).get("rule", "unknown"),
-                message=warning.get("msg", ""),
-                severity="MEDIUM"
-            ))
+            violations.append(
+                PolicyViolation(
+                    file=filename,
+                    rule=warning.get("metadata", {}).get("rule", "unknown"),
+                    message=warning.get("msg", ""),
+                    severity="MEDIUM",
+                )
+            )
     return violations
 
 
@@ -97,12 +108,18 @@ def check_gatekeeper_violations(namespace: str = "") -> list:
         for item in data.get("items", []):
             status = item.get("status", {})
             for v in status.get("violations", []):
-                violations.append(PolicyViolation(
-                    file=f"{v.get('kind', '')}/{v.get('name', '')}",
-                    rule=item.get("kind", ""),
-                    message=v.get("message", ""),
-                    severity="HIGH" if item.get("spec", {}).get("enforcementAction") == "deny" else "MEDIUM"
-                ))
+                violations.append(
+                    PolicyViolation(
+                        file=f"{v.get('kind', '')}/{v.get('name', '')}",
+                        rule=item.get("kind", ""),
+                        message=v.get("message", ""),
+                        severity=(
+                            "HIGH"
+                            if item.get("spec", {}).get("enforcementAction") == "deny"
+                            else "MEDIUM"
+                        ),
+                    )
+                )
         return violations
     except (subprocess.TimeoutExpired, FileNotFoundError, json.JSONDecodeError):
         return []
@@ -112,18 +129,28 @@ def main():
     parser = argparse.ArgumentParser(description="OPA Policy Evaluation Pipeline")
     parser.add_argument("--manifests-dir", required=True)
     parser.add_argument("--policies-dir", required=True)
-    parser.add_argument("--parser", default="yaml", choices=["yaml", "hcl2", "dockerfile"])
+    parser.add_argument(
+        "--parser", default="yaml", choices=["yaml", "hcl2", "dockerfile"]
+    )
     parser.add_argument("--output", default="policy-report.json")
     parser.add_argument("--fail-on-violations", action="store_true")
-    parser.add_argument("--check-cluster", action="store_true",
-                        help="Also check Gatekeeper violations in cluster")
+    parser.add_argument(
+        "--check-cluster",
+        action="store_true",
+        help="Also check Gatekeeper violations in cluster",
+    )
     args = parser.parse_args()
 
     violations = []
 
-    print(f"[*] Evaluating policies from {args.policies_dir} against {args.manifests_dir}")
-    result = run_conftest(os.path.abspath(args.manifests_dir),
-                          os.path.abspath(args.policies_dir), args.parser)
+    print(
+        f"[*] Evaluating policies from {args.policies_dir} against {args.manifests_dir}"
+    )
+    result = run_conftest(
+        os.path.abspath(args.manifests_dir),
+        os.path.abspath(args.policies_dir),
+        args.parser,
+    )
 
     if result.get("error"):
         print(f"[WARN] {result['error']}")
@@ -141,12 +168,17 @@ def main():
         "summary": {
             "total_violations": len(violations),
             "high": sum(1 for v in violations if v.severity == "HIGH"),
-            "medium": sum(1 for v in violations if v.severity == "MEDIUM")
+            "medium": sum(1 for v in violations if v.severity == "MEDIUM"),
         },
         "violations": [
-            {"file": v.file, "rule": v.rule, "message": v.message, "severity": v.severity}
+            {
+                "file": v.file,
+                "rule": v.rule,
+                "message": v.message,
+                "severity": v.severity,
+            }
             for v in violations
-        ]
+        ],
     }
 
     output_path = os.path.abspath(args.output)
@@ -155,7 +187,9 @@ def main():
     print(f"[*] Report: {output_path}")
 
     passed = len(violations) == 0
-    print(f"\n[{'PASS' if passed else 'FAIL'}] {len(violations)} policy violations found")
+    print(
+        f"\n[{'PASS' if passed else 'FAIL'}] {len(violations)} policy violations found"
+    )
     for v in violations[:10]:
         print(f"  [{v.severity}] {v.file}: {v.message[:100]}")
 

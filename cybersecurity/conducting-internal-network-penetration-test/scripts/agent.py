@@ -61,17 +61,34 @@ def enumerate_ad_info(dc_ip, domain, username, password):
     """Enumerate Active Directory information via LDAP."""
     try:
         import ldap3
+
         server = ldap3.Server(dc_ip, get_info=ldap3.ALL)
-        conn = ldap3.Connection(server, user=f"{domain}\\{username}",
-                                password=password, authentication=ldap3.NTLM, auto_bind=True)
+        conn = ldap3.Connection(
+            server,
+            user=f"{domain}\\{username}",
+            password=password,
+            authentication=ldap3.NTLM,
+            auto_bind=True,
+        )
         base_dn = ",".join([f"DC={p}" for p in domain.split(".")])
-        conn.search(base_dn, "(objectClass=computer)", attributes=["cn", "operatingSystem"])
-        computers = [{"name": str(e.cn), "os": str(e.operatingSystem)} for e in conn.entries]
-        conn.search(base_dn, "(&(objectClass=user)(adminCount=1))",
-                     attributes=["sAMAccountName"])
+        conn.search(
+            base_dn, "(objectClass=computer)", attributes=["cn", "operatingSystem"]
+        )
+        computers = [
+            {"name": str(e.cn), "os": str(e.operatingSystem)} for e in conn.entries
+        ]
+        conn.search(
+            base_dn,
+            "(&(objectClass=user)(adminCount=1))",
+            attributes=["sAMAccountName"],
+        )
         admins = [str(e.sAMAccountName) for e in conn.entries]
         conn.unbind()
-        return {"computers": computers[:20], "admin_accounts": admins, "total_hosts": len(computers)}
+        return {
+            "computers": computers[:20],
+            "admin_accounts": admins,
+            "total_hosts": len(computers),
+        }
     except Exception as e:
         return {"error": str(e)}
 
@@ -79,8 +96,15 @@ def enumerate_ad_info(dc_ip, domain, username, password):
 def check_common_vulns(target):
     """Check for common internal network vulnerabilities."""
     checks = []
-    for port, service in [(21, "FTP"), (23, "Telnet"), (80, "HTTP"), (3389, "RDP"),
-                          (5900, "VNC"), (1433, "MSSQL"), (3306, "MySQL")]:
+    for port, service in [
+        (21, "FTP"),
+        (23, "Telnet"),
+        (80, "HTTP"),
+        (3389, "RDP"),
+        (5900, "VNC"),
+        (1433, "MSSQL"),
+        (3306, "MySQL"),
+    ]:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(2)
         try:
@@ -136,7 +160,9 @@ def main():
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 
-    report = run_pentest(args.target, args.dc_ip, args.domain, args.username, args.password)
+    report = run_pentest(
+        args.target, args.dc_ip, args.domain, args.username, args.password
+    )
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2, default=str)

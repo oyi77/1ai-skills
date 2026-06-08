@@ -18,6 +18,7 @@ import numpy as np
 
 try:
     import librosa
+
     HAS_LIBROSA = True
 except ImportError:
     HAS_LIBROSA = False
@@ -26,6 +27,7 @@ try:
     from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
     from sklearn.preprocessing import StandardScaler
     from sklearn.model_selection import cross_val_score
+
     HAS_SKLEARN = True
 except ImportError:
     HAS_SKLEARN = False
@@ -43,12 +45,12 @@ MIN_DURATION_SEC = 1.0
 # Thresholds derived from research on deepfake vs genuine speech characteristics
 # Based on findings from IEEE paper "Deepfake Audio Detection via MFCC Features Using ML"
 DEEPFAKE_THRESHOLDS = {
-    "mfcc_high_order_var_ratio": 0.5,     # deepfakes have <50% variance of genuine in MFCC 13-20
-    "spectral_contrast_4_8khz": 0.30,     # genuine speech typically >0.35 in this band
-    "pitch_jitter_hz": 1.5,              # genuine speech jitter typically >2.0 Hz
-    "zcr_std_threshold": 0.006,          # genuine ZCR std typically >0.008
-    "spectral_centroid_cv": 0.15,        # coefficient of variation; deepfakes show less variation
-    "spectral_rolloff_std": 200,         # genuine rolloff std typically >300 Hz
+    "mfcc_high_order_var_ratio": 0.5,  # deepfakes have <50% variance of genuine in MFCC 13-20
+    "spectral_contrast_4_8khz": 0.30,  # genuine speech typically >0.35 in this band
+    "pitch_jitter_hz": 1.5,  # genuine speech jitter typically >2.0 Hz
+    "zcr_std_threshold": 0.006,  # genuine ZCR std typically >0.008
+    "spectral_centroid_cv": 0.15,  # coefficient of variation; deepfakes show less variation
+    "spectral_rolloff_std": 200,  # genuine rolloff std typically >300 Hz
 }
 
 
@@ -60,7 +62,9 @@ def load_and_preprocess(audio_path, sr=DEFAULT_SR):
     y, orig_sr = librosa.load(audio_path, sr=sr, mono=True)
 
     if len(y) / sr < MIN_DURATION_SEC:
-        raise ValueError(f"Audio too short ({len(y)/sr:.1f}s). Minimum {MIN_DURATION_SEC}s required.")
+        raise ValueError(
+            f"Audio too short ({len(y)/sr:.1f}s). Minimum {MIN_DURATION_SEC}s required."
+        )
 
     y_trimmed, trim_indices = librosa.effects.trim(y, top_db=TRIM_TOP_DB)
 
@@ -78,8 +82,9 @@ def load_and_preprocess(audio_path, sr=DEFAULT_SR):
 
 def extract_mfcc_features(y, sr, n_mfcc=DEFAULT_N_MFCC):
     """Extract MFCC, delta, and delta-delta features with statistical aggregation."""
-    mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=n_mfcc,
-                                  hop_length=DEFAULT_HOP_LENGTH, n_fft=DEFAULT_N_FFT)
+    mfccs = librosa.feature.mfcc(
+        y=y, sr=sr, n_mfcc=n_mfcc, hop_length=DEFAULT_HOP_LENGTH, n_fft=DEFAULT_N_FFT
+    )
     mfcc_delta = librosa.feature.delta(mfccs)
     mfcc_delta2 = librosa.feature.delta(mfccs, order=2)
 
@@ -108,31 +113,41 @@ def extract_spectral_features(y, sr):
     """Extract spectral centroid, bandwidth, contrast, rolloff, and ZCR."""
     features = {}
 
-    spectral_centroid = librosa.feature.spectral_centroid(y=y, sr=sr,
-                                                          hop_length=DEFAULT_HOP_LENGTH)
+    spectral_centroid = librosa.feature.spectral_centroid(
+        y=y, sr=sr, hop_length=DEFAULT_HOP_LENGTH
+    )
     features["spectral_centroid_mean"] = float(np.mean(spectral_centroid))
     features["spectral_centroid_std"] = float(np.std(spectral_centroid))
     centroid_mean = features["spectral_centroid_mean"]
     features["spectral_centroid_cv"] = (
-        float(features["spectral_centroid_std"] / centroid_mean) if centroid_mean > 0 else 0.0
+        float(features["spectral_centroid_std"] / centroid_mean)
+        if centroid_mean > 0
+        else 0.0
     )
 
-    spectral_bw = librosa.feature.spectral_bandwidth(y=y, sr=sr, hop_length=DEFAULT_HOP_LENGTH)
+    spectral_bw = librosa.feature.spectral_bandwidth(
+        y=y, sr=sr, hop_length=DEFAULT_HOP_LENGTH
+    )
     features["spectral_bandwidth_mean"] = float(np.mean(spectral_bw))
     features["spectral_bandwidth_std"] = float(np.std(spectral_bw))
 
-    spectral_contrast = librosa.feature.spectral_contrast(y=y, sr=sr,
-                                                           hop_length=DEFAULT_HOP_LENGTH)
+    spectral_contrast = librosa.feature.spectral_contrast(
+        y=y, sr=sr, hop_length=DEFAULT_HOP_LENGTH
+    )
     for i, band in enumerate(spectral_contrast):
         features[f"spectral_contrast_band_{i}_mean"] = float(np.mean(band))
         features[f"spectral_contrast_band_{i}_std"] = float(np.std(band))
 
     # Aggregate contrast in 4-8 kHz range (bands 4-5 at 16kHz SR)
-    high_band_indices = [4, 5] if spectral_contrast.shape[0] > 5 else [spectral_contrast.shape[0] - 1]
+    high_band_indices = (
+        [4, 5] if spectral_contrast.shape[0] > 5 else [spectral_contrast.shape[0] - 1]
+    )
     high_contrast_vals = [np.mean(spectral_contrast[i]) for i in high_band_indices]
     features["spectral_contrast_4_8khz"] = float(np.mean(high_contrast_vals))
 
-    spectral_rolloff = librosa.feature.spectral_rolloff(y=y, sr=sr, hop_length=DEFAULT_HOP_LENGTH)
+    spectral_rolloff = librosa.feature.spectral_rolloff(
+        y=y, sr=sr, hop_length=DEFAULT_HOP_LENGTH
+    )
     features["spectral_rolloff_mean"] = float(np.mean(spectral_rolloff))
     features["spectral_rolloff_std"] = float(np.std(spectral_rolloff))
 
@@ -140,7 +155,9 @@ def extract_spectral_features(y, sr):
     features["zcr_mean"] = float(np.mean(zcr))
     features["zcr_std"] = float(np.std(zcr))
 
-    spectral_flatness = librosa.feature.spectral_flatness(y=y, hop_length=DEFAULT_HOP_LENGTH)
+    spectral_flatness = librosa.feature.spectral_flatness(
+        y=y, hop_length=DEFAULT_HOP_LENGTH
+    )
     features["spectral_flatness_mean"] = float(np.mean(spectral_flatness))
     features["spectral_flatness_std"] = float(np.std(spectral_flatness))
 
@@ -151,8 +168,9 @@ def extract_pitch_features(y, sr):
     """Extract fundamental frequency (F0), jitter, and shimmer-like features."""
     features = {}
 
-    f0, voiced_flag, voiced_probs = librosa.pyin(y, fmin=50, fmax=500, sr=sr,
-                                                  hop_length=DEFAULT_HOP_LENGTH)
+    f0, voiced_flag, voiced_probs = librosa.pyin(
+        y, fmin=50, fmax=500, sr=sr, hop_length=DEFAULT_HOP_LENGTH
+    )
     f0_clean = f0[~np.isnan(f0)]
 
     if len(f0_clean) > 1:
@@ -169,7 +187,9 @@ def extract_pitch_features(y, sr):
 
         # Shimmer approximation via amplitude envelope variation at pitch periods
         features["voiced_ratio"] = float(np.sum(~np.isnan(f0)) / len(f0))
-        features["voiced_prob_mean"] = float(np.mean(voiced_probs[~np.isnan(voiced_probs)]))
+        features["voiced_prob_mean"] = float(
+            np.mean(voiced_probs[~np.isnan(voiced_probs)])
+        )
     else:
         features["pitch_mean"] = 0.0
         features["pitch_std"] = 0.0
@@ -194,8 +214,9 @@ def extract_temporal_features(y, sr):
     features["onset_strength_mean"] = float(np.mean(onset_env))
     features["onset_strength_std"] = float(np.std(onset_env))
 
-    tempo = librosa.feature.tempo(onset_envelope=onset_env, sr=sr,
-                                   hop_length=DEFAULT_HOP_LENGTH)
+    tempo = librosa.feature.tempo(
+        onset_envelope=onset_env, sr=sr, hop_length=DEFAULT_HOP_LENGTH
+    )
     features["tempo"] = float(tempo[0]) if len(tempo) > 0 else 0.0
 
     return features
@@ -237,11 +258,15 @@ def heuristic_deepfake_score(features):
     low_mfcc_stds = [features.get(f"mfcc_{i}_std", 1.0) for i in range(1, 7)]
     if np.mean(low_mfcc_stds) > 0:
         ratio = np.mean(high_mfcc_stds) / np.mean(low_mfcc_stds)
-        indicators.append(1.0 if ratio < DEEPFAKE_THRESHOLDS["mfcc_high_order_var_ratio"] else 0.0)
+        indicators.append(
+            1.0 if ratio < DEEPFAKE_THRESHOLDS["mfcc_high_order_var_ratio"] else 0.0
+        )
 
     # 2. Spectral contrast in 4-8 kHz
     sc_4_8 = features.get("spectral_contrast_4_8khz", 0.5)
-    indicators.append(1.0 if sc_4_8 < DEEPFAKE_THRESHOLDS["spectral_contrast_4_8khz"] else 0.0)
+    indicators.append(
+        1.0 if sc_4_8 < DEEPFAKE_THRESHOLDS["spectral_contrast_4_8khz"] else 0.0
+    )
 
     # 3. Pitch jitter (lower in deepfakes)
     jitter = features.get("pitch_jitter_hz", 3.0)
@@ -249,22 +274,28 @@ def heuristic_deepfake_score(features):
 
     # 4. Zero-crossing rate standard deviation
     zcr_std = features.get("zcr_std", 0.01)
-    indicators.append(1.0 if zcr_std < DEEPFAKE_THRESHOLDS["zcr_std_threshold"] else 0.0)
+    indicators.append(
+        1.0 if zcr_std < DEEPFAKE_THRESHOLDS["zcr_std_threshold"] else 0.0
+    )
 
     # 5. Spectral centroid coefficient of variation
     centroid_cv = features.get("spectral_centroid_cv", 0.3)
-    indicators.append(1.0 if centroid_cv < DEEPFAKE_THRESHOLDS["spectral_centroid_cv"] else 0.0)
+    indicators.append(
+        1.0 if centroid_cv < DEEPFAKE_THRESHOLDS["spectral_centroid_cv"] else 0.0
+    )
 
     # 6. Spectral rolloff stability
     rolloff_std = features.get("spectral_rolloff_std", 500)
-    indicators.append(1.0 if rolloff_std < DEEPFAKE_THRESHOLDS["spectral_rolloff_std"] else 0.0)
+    indicators.append(
+        1.0 if rolloff_std < DEEPFAKE_THRESHOLDS["spectral_rolloff_std"] else 0.0
+    )
 
     if not indicators:
         return 0.5
 
     # Weighted average: MFCC and pitch jitter are stronger signals
     weights = [1.5, 1.0, 1.5, 0.8, 1.0, 0.8]
-    weights = weights[:len(indicators)]
+    weights = weights[: len(indicators)]
     score = np.average(indicators, weights=weights)
     return float(np.clip(score, 0.0, 1.0))
 
@@ -278,6 +309,7 @@ def classify_with_ensemble(feature_vector, model_path=None):
     if model_path and os.path.isfile(model_path):
         try:
             import joblib
+
             model_data = joblib.load(model_path)
             scaler = model_data["scaler"]
             rf_model = model_data["random_forest"]
@@ -293,10 +325,14 @@ def classify_with_ensemble(feature_vector, model_path=None):
                 "random_forest_score": float(rf_prob),
                 "gradient_boosting_score": float(gbt_prob),
                 "ensemble_score": float(ensemble_prob),
-                "verdict": "LIKELY DEEPFAKE" if ensemble_prob > 0.5 else "LIKELY GENUINE",
+                "verdict": (
+                    "LIKELY DEEPFAKE" if ensemble_prob > 0.5 else "LIKELY GENUINE"
+                ),
             }
         except Exception as e:
-            print(f"[WARN] Failed to load model from {model_path}: {e}", file=sys.stderr)
+            print(
+                f"[WARN] Failed to load model from {model_path}: {e}", file=sys.stderr
+            )
 
     return None
 
@@ -311,15 +347,19 @@ def train_model(genuine_dir, deepfake_dir, output_path):
     Saves trained model (scaler + RF + GBT) to output_path via joblib.
     """
     if not HAS_SKLEARN:
-        print("[ERROR] scikit-learn required for training. Install with: pip install scikit-learn",
-              file=sys.stderr)
+        print(
+            "[ERROR] scikit-learn required for training. Install with: pip install scikit-learn",
+            file=sys.stderr,
+        )
         return None
 
     try:
         import joblib
     except ImportError:
-        print("[ERROR] joblib required for model serialization. Install with: pip install joblib",
-              file=sys.stderr)
+        print(
+            "[ERROR] joblib required for model serialization. Install with: pip install joblib",
+            file=sys.stderr,
+        )
         return None
 
     X, y_labels = [], []
@@ -336,13 +376,17 @@ def train_model(genuine_dir, deepfake_dir, output_path):
                     _, fv, _, _, _ = build_full_feature_vector(fpath)
                     X.append(fv)
                     y_labels.append(label)
-                    print(f"  Processed: {fname} (label={'deepfake' if label else 'genuine'})")
+                    print(
+                        f"  Processed: {fname} (label={'deepfake' if label else 'genuine'})"
+                    )
                 except Exception as e:
                     print(f"  [WARN] Skipping {fname}: {e}", file=sys.stderr)
 
     if len(X) < 10:
-        print(f"[ERROR] Need at least 10 samples, got {len(X)}. Add more audio files.",
-              file=sys.stderr)
+        print(
+            f"[ERROR] Need at least 10 samples, got {len(X)}. Add more audio files.",
+            file=sys.stderr,
+        )
         return None
 
     X = np.array(X)
@@ -351,17 +395,28 @@ def train_model(genuine_dir, deepfake_dir, output_path):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    rf = RandomForestClassifier(n_estimators=200, max_depth=15, random_state=42, n_jobs=-1)
-    gbt = GradientBoostingClassifier(n_estimators=150, max_depth=5, learning_rate=0.1,
-                                      random_state=42)
+    rf = RandomForestClassifier(
+        n_estimators=200, max_depth=15, random_state=42, n_jobs=-1
+    )
+    gbt = GradientBoostingClassifier(
+        n_estimators=150, max_depth=5, learning_rate=0.1, random_state=42
+    )
 
     print("\n[INFO] Training Random Forest...")
-    rf_scores = cross_val_score(rf, X_scaled, y_labels, cv=min(5, len(X) // 2), scoring="accuracy")
-    print(f"  RF Cross-val accuracy: {np.mean(rf_scores):.3f} (+/- {np.std(rf_scores):.3f})")
+    rf_scores = cross_val_score(
+        rf, X_scaled, y_labels, cv=min(5, len(X) // 2), scoring="accuracy"
+    )
+    print(
+        f"  RF Cross-val accuracy: {np.mean(rf_scores):.3f} (+/- {np.std(rf_scores):.3f})"
+    )
 
     print("[INFO] Training Gradient Boosting...")
-    gbt_scores = cross_val_score(gbt, X_scaled, y_labels, cv=min(5, len(X) // 2), scoring="accuracy")
-    print(f"  GBT Cross-val accuracy: {np.mean(gbt_scores):.3f} (+/- {np.std(gbt_scores):.3f})")
+    gbt_scores = cross_val_score(
+        gbt, X_scaled, y_labels, cv=min(5, len(X) // 2), scoring="accuracy"
+    )
+    print(
+        f"  GBT Cross-val accuracy: {np.mean(gbt_scores):.3f} (+/- {np.std(gbt_scores):.3f})"
+    )
 
     rf.fit(X_scaled, y_labels)
     gbt.fit(X_scaled, y_labels)
@@ -387,7 +442,9 @@ def analyze_audio(audio_path, model_path=None, output_json=None):
     print(f"File:           {audio_path}")
     print(f"Analysis Date:  {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}")
 
-    features, feature_vector, feature_names, y, sr = build_full_feature_vector(audio_path)
+    features, feature_vector, feature_names, y, sr = build_full_feature_vector(
+        audio_path
+    )
     duration = len(y) / sr
     print(f"Duration:       {duration:.1f} seconds")
     print(f"Sample Rate:    {sr} Hz")
@@ -457,12 +514,18 @@ def analyze_audio(audio_path, model_path=None, output_json=None):
             "confidence_pct": round(max(final_score, 1 - final_score) * 100, 1),
         },
         "anomalies": anomalies,
-        "features": {k: round(v, 6) if isinstance(v, float) else v for k, v in features.items()},
+        "features": {
+            k: round(v, 6) if isinstance(v, float) else v for k, v in features.items()
+        },
     }
 
     if ml_result:
-        result["classification"]["random_forest_score"] = ml_result["random_forest_score"]
-        result["classification"]["gradient_boosting_score"] = ml_result["gradient_boosting_score"]
+        result["classification"]["random_forest_score"] = ml_result[
+            "random_forest_score"
+        ]
+        result["classification"]["gradient_boosting_score"] = ml_result[
+            "gradient_boosting_score"
+        ]
 
     if output_json:
         with open(output_json, "w") as f:
@@ -481,8 +544,9 @@ def batch_analyze(audio_dir, model_path=None, output_json=None):
         print(f"[ERROR] Directory not found: {audio_dir}", file=sys.stderr)
         return results
 
-    audio_files = [f for f in os.listdir(audio_dir)
-                   if Path(f).suffix.lower() in audio_extensions]
+    audio_files = [
+        f for f in os.listdir(audio_dir) if Path(f).suffix.lower() in audio_extensions
+    ]
 
     if not audio_files:
         print(f"[WARN] No audio files found in {audio_dir}", file=sys.stderr)
@@ -499,8 +563,16 @@ def batch_analyze(audio_dir, model_path=None, output_json=None):
             results.append({"file": fpath, "error": str(e)})
 
     # Summary
-    deepfakes = sum(1 for r in results if r.get("classification", {}).get("verdict") == "LIKELY DEEPFAKE")
-    genuine = sum(1 for r in results if r.get("classification", {}).get("verdict") == "LIKELY GENUINE")
+    deepfakes = sum(
+        1
+        for r in results
+        if r.get("classification", {}).get("verdict") == "LIKELY DEEPFAKE"
+    )
+    genuine = sum(
+        1
+        for r in results
+        if r.get("classification", {}).get("verdict") == "LIKELY GENUINE"
+    )
     errors = sum(1 for r in results if "error" in r)
 
     print(f"\n{'='*60}")
@@ -550,33 +622,52 @@ def main():
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
     # Analyze single file
-    analyze_parser = subparsers.add_parser("analyze", help="Analyze a single audio file")
-    analyze_parser.add_argument("audio_path", help="Path to audio file (WAV, MP3, FLAC)")
+    analyze_parser = subparsers.add_parser(
+        "analyze", help="Analyze a single audio file"
+    )
+    analyze_parser.add_argument(
+        "audio_path", help="Path to audio file (WAV, MP3, FLAC)"
+    )
     analyze_parser.add_argument("--model", help="Path to trained model (.joblib)")
     analyze_parser.add_argument("--output", "-o", help="Save results to JSON file")
 
     # Batch analyze directory
-    batch_parser = subparsers.add_parser("batch", help="Analyze all audio files in a directory")
+    batch_parser = subparsers.add_parser(
+        "batch", help="Analyze all audio files in a directory"
+    )
     batch_parser.add_argument("audio_dir", help="Directory containing audio files")
     batch_parser.add_argument("--model", help="Path to trained model (.joblib)")
     batch_parser.add_argument("--output", "-o", help="Save batch results to JSON file")
 
     # Train model
     train_parser = subparsers.add_parser("train", help="Train deepfake detection model")
-    train_parser.add_argument("--genuine", required=True, help="Directory of genuine audio samples")
-    train_parser.add_argument("--deepfake", required=True, help="Directory of deepfake audio samples")
-    train_parser.add_argument("--output", "-o", default="deepfake_model.joblib",
-                              help="Output model path (default: deepfake_model.joblib)")
+    train_parser.add_argument(
+        "--genuine", required=True, help="Directory of genuine audio samples"
+    )
+    train_parser.add_argument(
+        "--deepfake", required=True, help="Directory of deepfake audio samples"
+    )
+    train_parser.add_argument(
+        "--output",
+        "-o",
+        default="deepfake_model.joblib",
+        help="Output model path (default: deepfake_model.joblib)",
+    )
 
     # Extract features only
-    features_parser = subparsers.add_parser("features", help="Extract features and print as JSON")
+    features_parser = subparsers.add_parser(
+        "features", help="Extract features and print as JSON"
+    )
     features_parser.add_argument("audio_path", help="Path to audio file")
     features_parser.add_argument("--output", "-o", help="Save features to JSON file")
 
     args = parser.parse_args()
 
     if not HAS_LIBROSA:
-        print("[ERROR] librosa is required. Install with: pip install librosa", file=sys.stderr)
+        print(
+            "[ERROR] librosa is required. Install with: pip install librosa",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     if args.command == "analyze":
@@ -587,14 +678,20 @@ def main():
 
     elif args.command == "train":
         if not HAS_SKLEARN:
-            print("[ERROR] scikit-learn required. Install with: pip install scikit-learn",
-                  file=sys.stderr)
+            print(
+                "[ERROR] scikit-learn required. Install with: pip install scikit-learn",
+                file=sys.stderr,
+            )
             sys.exit(1)
         train_model(args.genuine, args.deepfake, args.output)
 
     elif args.command == "features":
         features, fv, names, _, _ = build_full_feature_vector(args.audio_path)
-        output = {"file": args.audio_path, "feature_count": len(names), "features": features}
+        output = {
+            "file": args.audio_path,
+            "feature_count": len(names),
+            "features": features,
+        }
         if args.output:
             with open(args.output, "w") as f:
                 json.dump(output, f, indent=2)

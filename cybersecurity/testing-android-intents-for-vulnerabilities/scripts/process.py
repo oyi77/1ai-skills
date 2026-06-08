@@ -30,8 +30,12 @@ def parse_manifest(manifest_path: str) -> dict:
 
     components = {"activities": [], "services": [], "receivers": [], "providers": []}
 
-    for comp_type, tag in [("activities", "activity"), ("services", "service"),
-                            ("receivers", "receiver"), ("providers", "provider")]:
+    for comp_type, tag in [
+        ("activities", "activity"),
+        ("services", "service"),
+        ("receivers", "receiver"),
+        ("providers", "provider"),
+    ]:
         for elem in root.findall(f".//{tag}"):
             name = elem.get(f"{{{ns['android']}}}name", "")
             exported = elem.get(f"{{{ns['android']}}}exported", "")
@@ -64,9 +68,15 @@ def parse_manifest(manifest_path: str) -> dict:
 
                 # Provider-specific attributes
                 if tag == "provider":
-                    component["authorities"] = elem.get(f"{{{ns['android']}}}authorities", "")
-                    component["read_permission"] = elem.get(f"{{{ns['android']}}}readPermission", "")
-                    component["write_permission"] = elem.get(f"{{{ns['android']}}}writePermission", "")
+                    component["authorities"] = elem.get(
+                        f"{{{ns['android']}}}authorities", ""
+                    )
+                    component["read_permission"] = elem.get(
+                        f"{{{ns['android']}}}readPermission", ""
+                    )
+                    component["write_permission"] = elem.get(
+                        f"{{{ns['android']}}}writePermission", ""
+                    )
 
                 components[comp_type].append(component)
 
@@ -79,41 +89,51 @@ def generate_test_commands(parsed: dict) -> list:
     pkg = parsed["package"]
 
     for activity in parsed["components"]["activities"]:
-        commands.append({
-            "component": activity["name"],
-            "type": "activity",
-            "tool": "drozer",
-            "command": f'run app.activity.start --component {pkg} {activity["name"]}',
-            "risk": "HIGH" if not activity["protected"] else "LOW",
-        })
+        commands.append(
+            {
+                "component": activity["name"],
+                "type": "activity",
+                "tool": "drozer",
+                "command": f'run app.activity.start --component {pkg} {activity["name"]}',
+                "risk": "HIGH" if not activity["protected"] else "LOW",
+            }
+        )
 
     for receiver in parsed["components"]["receivers"]:
         for action in receiver.get("actions", []):
-            commands.append({
-                "component": receiver["name"],
-                "type": "receiver",
-                "tool": "adb",
-                "command": f'adb shell am broadcast -a {action} -n {pkg}/{receiver["name"]}',
-                "risk": "HIGH" if not receiver["protected"] else "LOW",
-            })
+            commands.append(
+                {
+                    "component": receiver["name"],
+                    "type": "receiver",
+                    "tool": "adb",
+                    "command": f'adb shell am broadcast -a {action} -n {pkg}/{receiver["name"]}',
+                    "risk": "HIGH" if not receiver["protected"] else "LOW",
+                }
+            )
 
     for provider in parsed["components"]["providers"]:
         auth = provider.get("authorities", "")
         if auth:
-            commands.append({
-                "component": provider["name"],
-                "type": "provider_query",
-                "tool": "drozer",
-                "command": f'run app.provider.query content://{auth}/',
-                "risk": "CRITICAL" if not provider.get("read_permission") else "MEDIUM",
-            })
-            commands.append({
-                "component": provider["name"],
-                "type": "provider_injection",
-                "tool": "drozer",
-                "command": f'run scanner.provider.injection -a {pkg}',
-                "risk": "CRITICAL",
-            })
+            commands.append(
+                {
+                    "component": provider["name"],
+                    "type": "provider_query",
+                    "tool": "drozer",
+                    "command": f"run app.provider.query content://{auth}/",
+                    "risk": (
+                        "CRITICAL" if not provider.get("read_permission") else "MEDIUM"
+                    ),
+                }
+            )
+            commands.append(
+                {
+                    "component": provider["name"],
+                    "type": "provider_injection",
+                    "tool": "drozer",
+                    "command": f"run scanner.provider.injection -a {pkg}",
+                    "risk": "CRITICAL",
+                }
+            )
 
     return commands
 
@@ -126,29 +146,47 @@ def assess_findings(parsed: dict) -> list:
     for comp_type, items in components.items():
         for item in items:
             if not item.get("protected"):
-                findings.append({
-                    "component": item["name"],
-                    "type": comp_type,
-                    "issue": f"Exported {comp_type[:-1]} without permission protection",
-                    "severity": "HIGH" if comp_type in ("providers", "receivers") else "MEDIUM",
-                    "owasp_mobile": "M8",
-                    "cwe": "CWE-926",
-                })
+                findings.append(
+                    {
+                        "component": item["name"],
+                        "type": comp_type,
+                        "issue": f"Exported {comp_type[:-1]} without permission protection",
+                        "severity": (
+                            "HIGH"
+                            if comp_type in ("providers", "receivers")
+                            else "MEDIUM"
+                        ),
+                        "owasp_mobile": "M8",
+                        "cwe": "CWE-926",
+                    }
+                )
 
     # Check for sensitive-looking unprotected components
-    sensitive_keywords = ["admin", "debug", "internal", "settings", "config", "payment", "auth"]
+    sensitive_keywords = [
+        "admin",
+        "debug",
+        "internal",
+        "settings",
+        "config",
+        "payment",
+        "auth",
+    ]
     for comp_type, items in components.items():
         for item in items:
             name_lower = item["name"].lower()
-            if any(kw in name_lower for kw in sensitive_keywords) and not item.get("protected"):
-                findings.append({
-                    "component": item["name"],
-                    "type": comp_type,
-                    "issue": f"Sensitive component '{item['name']}' exported without protection",
-                    "severity": "CRITICAL",
-                    "owasp_mobile": "M8",
-                    "cwe": "CWE-926",
-                })
+            if any(kw in name_lower for kw in sensitive_keywords) and not item.get(
+                "protected"
+            ):
+                findings.append(
+                    {
+                        "component": item["name"],
+                        "type": comp_type,
+                        "issue": f"Sensitive component '{item['name']}' exported without protection",
+                        "severity": "CRITICAL",
+                        "owasp_mobile": "M8",
+                        "cwe": "CWE-926",
+                    }
+                )
 
     return findings
 
@@ -170,8 +208,12 @@ def main():
     total_exported = sum(len(v) for v in parsed["components"].values())
 
     report = {
-        "scan": {"manifest": args.manifest, "package": parsed["package"],
-                 "target_sdk": parsed["target_sdk"], "date": datetime.now().isoformat()},
+        "scan": {
+            "manifest": args.manifest,
+            "package": parsed["package"],
+            "target_sdk": parsed["target_sdk"],
+            "date": datetime.now().isoformat(),
+        },
         "attack_surface": {
             "total_exported": total_exported,
             "activities": len(parsed["components"]["activities"]),

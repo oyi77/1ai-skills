@@ -9,7 +9,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 URLSCAN_API = "https://urlscan.io/api/v1"
@@ -19,7 +21,9 @@ def submit_url(url, api_key, visibility="private"):
     """Submit a URL to urlscan.io for scanning."""
     headers = {"API-Key": api_key, "Content-Type": "application/json"}
     payload = {"url": url, "visibility": visibility}
-    resp = requests.post(f"{URLSCAN_API}/scan/", headers=headers, json=payload, timeout=30)
+    resp = requests.post(
+        f"{URLSCAN_API}/scan/", headers=headers, json=payload, timeout=30
+    )
     resp.raise_for_status()
     data = resp.json()
     logger.info("Submitted URL: %s -> scan UUID: %s", url, data.get("uuid"))
@@ -31,7 +35,9 @@ def get_scan_result(uuid, api_key, max_wait=120):
     headers = {"API-Key": api_key}
     for _ in range(max_wait // 5):
         try:
-            resp = requests.get(f"{URLSCAN_API}/result/{uuid}/", headers=headers, timeout=30)
+            resp = requests.get(
+                f"{URLSCAN_API}/result/{uuid}/", headers=headers, timeout=30
+            )
             if resp.status_code == 200:
                 return resp.json()
         except requests.RequestException:
@@ -44,7 +50,9 @@ def search_urlscan(query, api_key, size=100):
     """Search urlscan.io for existing scans."""
     headers = {"API-Key": api_key}
     params = {"q": query, "size": size}
-    resp = requests.get(f"{URLSCAN_API}/search/", headers=headers, params=params, timeout=30)
+    resp = requests.get(
+        f"{URLSCAN_API}/search/", headers=headers, params=params, timeout=30
+    )
     resp.raise_for_status()
     return resp.json().get("results", [])
 
@@ -58,11 +66,30 @@ def analyze_result(result):
     community = verdicts.get("community", {})
 
     if overall.get("malicious"):
-        findings.append({"type": "Malicious verdict", "severity": "critical", "source": "overall", "score": overall.get("score", 0)})
+        findings.append(
+            {
+                "type": "Malicious verdict",
+                "severity": "critical",
+                "source": "overall",
+                "score": overall.get("score", 0),
+            }
+        )
     if urlscan_verdict.get("malicious"):
-        findings.append({"type": "URLScan malicious", "severity": "critical", "score": urlscan_verdict.get("score", 0)})
+        findings.append(
+            {
+                "type": "URLScan malicious",
+                "severity": "critical",
+                "score": urlscan_verdict.get("score", 0),
+            }
+        )
     if community.get("score", 0) < 0:
-        findings.append({"type": "Negative community score", "severity": "high", "score": community.get("score")})
+        findings.append(
+            {
+                "type": "Negative community score",
+                "severity": "high",
+                "score": community.get("score"),
+            }
+        )
 
     page = result.get("page", {})
     lists = result.get("lists", {})
@@ -71,24 +98,52 @@ def analyze_result(result):
     if lists.get("ips", []):
         for ip in lists["ips"]:
             if ip.get("malicious"):
-                findings.append({"type": "Malicious IP contacted", "severity": "high", "ip": ip.get("ip"), "asn": ip.get("asn")})
+                findings.append(
+                    {
+                        "type": "Malicious IP contacted",
+                        "severity": "high",
+                        "ip": ip.get("ip"),
+                        "asn": ip.get("asn"),
+                    }
+                )
 
     for cert in lists.get("certificates", []):
         if cert.get("validTo"):
             try:
                 exp = datetime.fromisoformat(cert["validTo"].replace("Z", "+00:00"))
                 if exp < datetime.now(exp.tzinfo):
-                    findings.append({"type": "Expired TLS certificate", "severity": "medium", "subject": cert.get("subjectName")})
+                    findings.append(
+                        {
+                            "type": "Expired TLS certificate",
+                            "severity": "medium",
+                            "subject": cert.get("subjectName"),
+                        }
+                    )
             except (ValueError, TypeError):
                 pass
 
-    js_count = len([r for r in stats.get("resourceStats", []) if "javascript" in r.get("type", "").lower()])
+    js_count = len(
+        [
+            r
+            for r in stats.get("resourceStats", [])
+            if "javascript" in r.get("type", "").lower()
+        ]
+    )
     if js_count > 20:
-        findings.append({"type": "High JavaScript resource count", "severity": "medium", "count": js_count})
+        findings.append(
+            {
+                "type": "High JavaScript resource count",
+                "severity": "medium",
+                "count": js_count,
+            }
+        )
 
     redirects = stats.get("uniqCountries", 0)
     if result.get("data", {}).get("requests"):
-        redirect_chain = [r.get("request", {}).get("redirectHasExtraInfo") for r in result["data"]["requests"][:5]]
+        redirect_chain = [
+            r.get("request", {}).get("redirectHasExtraInfo")
+            for r in result["data"]["requests"][:5]
+        ]
 
     return {
         "url": page.get("url", ""),
@@ -139,7 +194,9 @@ def generate_report(analyses):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="URLScan.io Malicious URL Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="URLScan.io Malicious URL Analysis Agent"
+    )
     parser.add_argument("--api-key", required=True, help="urlscan.io API key")
     parser.add_argument("--url", help="Single URL to scan")
     parser.add_argument("--url-file", help="File with URLs (one per line)")

@@ -16,10 +16,14 @@ from collections import defaultdict
 
 def run_trivy_scan(image: str, output_file: str) -> dict:
     cmd = [
-        "trivy", "image",
-        "--format", "json",
-        "--output", output_file,
-        "--severity", "CRITICAL,HIGH,MEDIUM,LOW",
+        "trivy",
+        "image",
+        "--format",
+        "json",
+        "--output",
+        output_file,
+        "--severity",
+        "CRITICAL,HIGH,MEDIUM,LOW",
         image,
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -93,18 +97,22 @@ def generate_fleet_report(images: list) -> dict:
         for vuln in parsed["vulnerabilities"]:
             report["top_cves"][vuln["id"]] += 1
 
-        report["image_reports"].append({
-            "image": image,
-            "total_vulnerabilities": vuln_count,
-            "severity_counts": parsed["severity_counts"],
-            "fixable": parsed["fixable_count"],
-            "critical_vulns": [
-                v for v in parsed["vulnerabilities"] if v["severity"] == "CRITICAL"
-            ],
-        })
+        report["image_reports"].append(
+            {
+                "image": image,
+                "total_vulnerabilities": vuln_count,
+                "severity_counts": parsed["severity_counts"],
+                "fixable": parsed["fixable_count"],
+                "critical_vulns": [
+                    v for v in parsed["vulnerabilities"] if v["severity"] == "CRITICAL"
+                ],
+            }
+        )
 
     report["severity_summary"] = dict(report["severity_summary"])
-    top_sorted = sorted(report["top_cves"].items(), key=lambda x: x[1], reverse=True)[:20]
+    top_sorted = sorted(report["top_cves"].items(), key=lambda x: x[1], reverse=True)[
+        :20
+    ]
     report["top_cves"] = dict(top_sorted)
     return report
 
@@ -130,7 +138,9 @@ def print_fleet_report(report: dict) -> None:
         reverse=True,
     ):
         crits = img["severity_counts"].get("CRITICAL", 0)
-        print(f"  {img['image']:50s} | Critical: {crits} | Total: {img['total_vulnerabilities']}")
+        print(
+            f"  {img['image']:50s} | Critical: {crits} | Total: {img['total_vulnerabilities']}"
+        )
 
 
 def main():

@@ -8,6 +8,7 @@ import datetime
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -77,7 +78,8 @@ def query_virustotal_hash(sha256, api_key):
             "total": sum(stats.values()),
             "type_description": data.get("type_description", ""),
             "popular_threat_name": data.get("popular_threat_classification", {}).get(
-                "suggested_threat_label", ""),
+                "suggested_threat_label", ""
+            ),
             "tags": data.get("tags", []),
         }
     return None
@@ -104,8 +106,12 @@ def query_virustotal_domain(domain, api_key):
 def query_abuseipdb(ip, api_key, max_age_days=90):
     """Query AbuseIPDB for IP reputation."""
     url = "https://api.abuseipdb.com/api/v2/check"
-    resp = requests.get(url, headers={"Key": api_key, "Accept": "application/json"},
-                        params={"ipAddress": ip, "maxAgeInDays": max_age_days}, timeout=30)
+    resp = requests.get(
+        url,
+        headers={"Key": api_key, "Accept": "application/json"},
+        params={"ipAddress": ip, "maxAgeInDays": max_age_days},
+        timeout=30,
+    )
     if resp.status_code == 200:
         data = resp.json().get("data", {})
         return {
@@ -243,9 +249,13 @@ if __name__ == "__main__":
         for ioc in demo_iocs:
             result = enrich_ioc(ioc, vt_key, abuse_key)
             print(f"\n  {result['ioc']} ({result['type']})")
-            print(f"    Disposition: {result.get('disposition', 'N/A')} "
-                  f"(score: {result.get('score', 0)})")
+            print(
+                f"    Disposition: {result.get('disposition', 'N/A')} "
+                f"(score: {result.get('score', 0)})"
+            )
             for reason in result.get("reasons", []):
                 print(f"    - {reason}")
     else:
-        print("\n[*] Set VT_API_KEY and/or ABUSEIPDB_API_KEY environment variables for live enrichment.")
+        print(
+            "\n[*] Set VT_API_KEY and/or ABUSEIPDB_API_KEY environment variables for live enrichment."
+        )

@@ -45,13 +45,15 @@ class PermissionBoundaryAuditor:
                     if role["Path"].startswith("/aws-service-role/"):
                         continue
 
-                    roles_without_boundary.append({
-                        "RoleName": role_name,
-                        "Arn": role["Arn"],
-                        "CreateDate": role["CreateDate"].isoformat(),
-                        "Path": role["Path"],
-                        "HasBoundary": False,
-                    })
+                    roles_without_boundary.append(
+                        {
+                            "RoleName": role_name,
+                            "Arn": role["Arn"],
+                            "CreateDate": role["CreateDate"].isoformat(),
+                            "Path": role["Path"],
+                            "HasBoundary": False,
+                        }
+                    )
 
         return roles_without_boundary
 
@@ -64,12 +66,14 @@ class PermissionBoundaryAuditor:
             for role in page["Roles"]:
                 boundary = role.get("PermissionsBoundary")
                 if boundary:
-                    roles_with_boundary.append({
-                        "RoleName": role["RoleName"],
-                        "Arn": role["Arn"],
-                        "BoundaryArn": boundary["PermissionsBoundaryArn"],
-                        "BoundaryType": boundary["PermissionsBoundaryType"],
-                    })
+                    roles_with_boundary.append(
+                        {
+                            "RoleName": role["RoleName"],
+                            "Arn": role["Arn"],
+                            "BoundaryArn": boundary["PermissionsBoundaryArn"],
+                            "BoundaryType": boundary["PermissionsBoundaryType"],
+                        }
+                    )
 
         return roles_with_boundary
 
@@ -115,8 +119,7 @@ class PermissionBoundaryAuditor:
         """Attach a permission boundary to an existing IAM role."""
         try:
             self.iam.put_role_permissions_boundary(
-                RoleName=role_name,
-                PermissionsBoundary=boundary_policy_arn
+                RoleName=role_name, PermissionsBoundary=boundary_policy_arn
             )
             return {"success": True, "role": role_name, "boundary": boundary_policy_arn}
         except ClientError as e:
@@ -142,7 +145,8 @@ class PermissionBoundaryAuditor:
                 "total_roles_without_boundary": len(roles_without),
                 "unique_boundaries": len(boundary_arns),
                 "boundaries_with_escalation_protection": sum(
-                    1 for v in boundary_checks.values()
+                    1
+                    for v in boundary_checks.values()
                     if v.get("has_escalation_protection")
                 ),
             },
@@ -153,8 +157,9 @@ class PermissionBoundaryAuditor:
         return report
 
 
-def generate_boundary_policy(allowed_services, role_prefix="app-",
-                              boundary_name="DeveloperBoundary"):
+def generate_boundary_policy(
+    allowed_services, role_prefix="app-", boundary_name="DeveloperBoundary"
+):
     """Generate a permission boundary policy JSON for given allowed services."""
     service_action_map = {
         "s3": "s3:*",
@@ -192,7 +197,7 @@ def generate_boundary_policy(allowed_services, role_prefix="app-",
                 "Sid": "AllowedServices",
                 "Effect": "Allow",
                 "Action": actions,
-                "Resource": "*"
+                "Resource": "*",
             },
             {
                 "Sid": "AllowPassRole",
@@ -204,10 +209,10 @@ def generate_boundary_policy(allowed_services, role_prefix="app-",
                         "iam:PassedToService": [
                             "lambda.amazonaws.com",
                             "ecs-tasks.amazonaws.com",
-                            "states.amazonaws.com"
+                            "states.amazonaws.com",
                         ]
                     }
-                }
+                },
             },
             {
                 "Sid": "DenyBoundaryModification",
@@ -216,20 +221,20 @@ def generate_boundary_policy(allowed_services, role_prefix="app-",
                     "iam:DeletePolicy",
                     "iam:DeletePolicyVersion",
                     "iam:CreatePolicyVersion",
-                    "iam:SetDefaultPolicyVersion"
+                    "iam:SetDefaultPolicyVersion",
                 ],
-                "Resource": f"arn:aws:iam::*:policy/{boundary_name}"
+                "Resource": f"arn:aws:iam::*:policy/{boundary_name}",
             },
             {
                 "Sid": "DenyBoundaryRemoval",
                 "Effect": "Deny",
                 "Action": [
                     "iam:DeleteUserPermissionsBoundary",
-                    "iam:DeleteRolePermissionsBoundary"
+                    "iam:DeleteRolePermissionsBoundary",
                 ],
-                "Resource": "*"
-            }
-        ]
+                "Resource": "*",
+            },
+        ],
     }
 
     return json.dumps(policy, indent=2)

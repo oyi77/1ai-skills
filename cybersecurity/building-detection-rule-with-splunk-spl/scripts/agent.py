@@ -9,18 +9,20 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 DETECTION_TEMPLATES = {
     "brute_force": {
-        "spl": 'index=main sourcetype=WinEventLog:Security EventCode=4625 | stats count by src_ip, user | where count > {threshold}',
+        "spl": "index=main sourcetype=WinEventLog:Security EventCode=4625 | stats count by src_ip, user | where count > {threshold}",
         "description": "Detect brute force login attempts",
         "mitre": "T1110",
         "severity": "high",
     },
     "lateral_movement_rdp": {
-        "spl": 'index=main sourcetype=WinEventLog:Security EventCode=4624 Logon_Type=10 | stats count by src_ip, dest, user | where count > 1',
+        "spl": "index=main sourcetype=WinEventLog:Security EventCode=4624 Logon_Type=10 | stats count by src_ip, dest, user | where count > 1",
         "description": "Detect RDP lateral movement",
         "mitre": "T1021.001",
         "severity": "high",
@@ -38,7 +40,7 @@ DETECTION_TEMPLATES = {
         "severity": "high",
     },
     "scheduled_task_creation": {
-        "spl": 'index=main sourcetype=WinEventLog:Security EventCode=4698 | table _time, SubjectUserName, TaskName, TaskContent',
+        "spl": "index=main sourcetype=WinEventLog:Security EventCode=4698 | table _time, SubjectUserName, TaskName, TaskContent",
         "description": "Detect new scheduled task creation",
         "mitre": "T1053.005",
         "severity": "medium",
@@ -50,7 +52,7 @@ DETECTION_TEMPLATES = {
         "severity": "critical",
     },
     "data_exfiltration": {
-        "spl": 'index=main sourcetype=proxy | stats sum(bytes_out) as total_bytes by src_ip, dest | where total_bytes > {threshold_bytes} | eval MB=round(total_bytes/1024/1024,2)',
+        "spl": "index=main sourcetype=proxy | stats sum(bytes_out) as total_bytes by src_ip, dest | where total_bytes > {threshold_bytes} | eval MB=round(total_bytes/1024/1024,2)",
         "description": "Detect large data transfers (exfiltration)",
         "mitre": "T1048",
         "severity": "high",
@@ -86,14 +88,26 @@ def deploy_saved_search(splunk_url, token, rule_name, spl, severity="high"):
         "cron_schedule": "*/5 * * * *",
         "dispatch.earliest_time": "-5m",
         "dispatch.latest_time": "now",
-        "alert.severity": {"info": 1, "low": 2, "medium": 3, "high": 4, "critical": 5}.get(severity, 4),
+        "alert.severity": {
+            "info": 1,
+            "low": 2,
+            "medium": 3,
+            "high": 4,
+            "critical": 5,
+        }.get(severity, 4),
         "alert_type": "number of events",
         "alert_comparator": "greater than",
         "alert_threshold": "0",
         "actions": "email",
     }
     try:
-        resp = requests.post(f"{splunk_url}/servicesNS/admin/search/saved/searches", headers=headers, data=data, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=30)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.post(
+            f"{splunk_url}/servicesNS/admin/search/saved/searches",
+            headers=headers,
+            data=data,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=30,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         return {"status": resp.status_code, "deployed": resp.status_code in (200, 201)}
     except requests.RequestException as e:
         return {"error": str(e)}
@@ -112,8 +126,15 @@ def generate_report(rules, deployment_results=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Splunk SPL Detection Rule Builder Agent")
-    parser.add_argument("--templates", nargs="*", choices=list(DETECTION_TEMPLATES.keys()), default=list(DETECTION_TEMPLATES.keys()))
+    parser = argparse.ArgumentParser(
+        description="Splunk SPL Detection Rule Builder Agent"
+    )
+    parser.add_argument(
+        "--templates",
+        nargs="*",
+        choices=list(DETECTION_TEMPLATES.keys()),
+        default=list(DETECTION_TEMPLATES.keys()),
+    )
     parser.add_argument("--threshold", type=int, default=10)
     parser.add_argument("--threshold-bytes", type=int, default=104857600)
     parser.add_argument("--splunk-url", help="Splunk URL for deployment")
@@ -123,13 +144,22 @@ def main():
 
     rules = []
     for template in args.templates:
-        rule = generate_spl_rule(template, {"threshold": args.threshold, "threshold_bytes": args.threshold_bytes})
+        rule = generate_spl_rule(
+            template,
+            {"threshold": args.threshold, "threshold_bytes": args.threshold_bytes},
+        )
         rules.append(rule)
 
     deployments = []
     if args.splunk_url and args.splunk_token:
         for rule in rules:
-            result = deploy_saved_search(args.splunk_url, args.splunk_token, rule["name"], rule["spl"], rule["severity"])
+            result = deploy_saved_search(
+                args.splunk_url,
+                args.splunk_token,
+                rule["name"],
+                rule["spl"],
+                rule["severity"],
+            )
             deployments.append({"rule": rule["name"], "result": result})
 
     report = generate_report(rules, deployments)

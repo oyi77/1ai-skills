@@ -11,7 +11,6 @@ import argparse
 import re
 from pathlib import Path
 
-
 SECURITY_CHECKS = [
     {
         "id": "HELM-001",
@@ -86,7 +85,9 @@ SECURITY_CHECKS = [
 ]
 
 
-def render_chart(chart_path: str, values_file: str = None, release_name: str = "scan") -> str:
+def render_chart(
+    chart_path: str, values_file: str = None, release_name: str = "scan"
+) -> str:
     """Render Helm chart templates."""
     cmd = ["helm", "template", release_name, chart_path]
     if values_file:
@@ -105,14 +106,16 @@ def scan_rendered(content: str) -> list:
     for check in SECURITY_CHECKS:
         for i, line in enumerate(lines, 1):
             if re.search(check["pattern"], line):
-                findings.append({
-                    "id": check["id"],
-                    "name": check["name"],
-                    "severity": check["severity"],
-                    "line": i,
-                    "content": line.strip(),
-                    "remediation": check["remediation"],
-                })
+                findings.append(
+                    {
+                        "id": check["id"],
+                        "name": check["name"],
+                        "severity": check["severity"],
+                        "line": i,
+                        "content": line.strip(),
+                        "remediation": check["remediation"],
+                    }
+                )
     return findings
 
 
@@ -120,7 +123,8 @@ def lint_chart(chart_path: str) -> dict:
     """Run helm lint on chart."""
     result = subprocess.run(
         ["helm", "lint", chart_path, "--strict"],
-        capture_output=True, text=True,
+        capture_output=True,
+        text=True,
     )
     return {
         "passed": result.returncode == 0,
@@ -153,7 +157,10 @@ def generate_report(findings: list, chart_path: str) -> str:
 | ID | Severity | Finding | Line | Remediation |
 |----|----------|---------|------|-------------|
 """
-    for f in sorted(findings, key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}[x["severity"]]):
+    for f in sorted(
+        findings,
+        key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}[x["severity"]],
+    ):
         report += f"| {f['id']} | {f['severity']} | {f['name']} | {f['line']} | {f['remediation']} |\n"
 
     return report
@@ -165,8 +172,12 @@ def main():
     parser.add_argument("--values", "-f", help="Values file path")
     parser.add_argument("--report", "-r", help="Output report file")
     parser.add_argument("--lint", action="store_true", help="Run helm lint")
-    parser.add_argument("--fail-on", choices=["critical", "high", "medium"],
-                       default="high", help="Fail threshold")
+    parser.add_argument(
+        "--fail-on",
+        choices=["critical", "high", "medium"],
+        default="high",
+        help="Fail threshold",
+    )
 
     args = parser.parse_args()
 
@@ -187,8 +198,11 @@ def main():
     else:
         print(report)
 
-    threshold = {"critical": ["CRITICAL"], "high": ["CRITICAL", "HIGH"],
-                 "medium": ["CRITICAL", "HIGH", "MEDIUM"]}
+    threshold = {
+        "critical": ["CRITICAL"],
+        "high": ["CRITICAL", "HIGH"],
+        "medium": ["CRITICAL", "HIGH", "MEDIUM"],
+    }
     blocking = [f for f in findings if f["severity"] in threshold[args.fail_on]]
     if blocking:
         print(f"\nFAILED: {len(blocking)} findings at or above {args.fail_on} severity")

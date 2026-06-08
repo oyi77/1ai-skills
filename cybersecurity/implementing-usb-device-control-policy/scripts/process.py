@@ -15,17 +15,20 @@ def parse_usb_events(csv_path: str) -> list:
     with open(csv_path, "r", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            events.append({
-                "timestamp": row.get("Timestamp", row.get("Date and Time", "")),
-                "host": row.get("Computer", row.get("DeviceName", "")),
-                "user": row.get("User", row.get("AccountName", "")),
-                "action": row.get("Action", row.get("ActionType", "")),
-                "device_name": row.get("DeviceName", row.get("FriendlyName", "")),
-                "device_id": row.get("DeviceId", row.get("HardwareId", "")),
-                "vid_pid": row.get("VID_PID", ""),
-                "serial": row.get("SerialNumber", ""),
-                "blocked": row.get("Blocked", row.get("ActionType", "")).lower() in ("blocked", "deny", "prevented"),
-            })
+            events.append(
+                {
+                    "timestamp": row.get("Timestamp", row.get("Date and Time", "")),
+                    "host": row.get("Computer", row.get("DeviceName", "")),
+                    "user": row.get("User", row.get("AccountName", "")),
+                    "action": row.get("Action", row.get("ActionType", "")),
+                    "device_name": row.get("DeviceName", row.get("FriendlyName", "")),
+                    "device_id": row.get("DeviceId", row.get("HardwareId", "")),
+                    "vid_pid": row.get("VID_PID", ""),
+                    "serial": row.get("SerialNumber", ""),
+                    "blocked": row.get("Blocked", row.get("ActionType", "")).lower()
+                    in ("blocked", "deny", "prevented"),
+                }
+            )
     return events
 
 
@@ -47,11 +50,17 @@ def analyze_usb_activity(events: list) -> dict:
         if event["user"]:
             analysis["top_users"][event["user"]] += 1
         if event["blocked"]:
-            analysis["blocked_devices"][event.get("device_name", event["device_id"])] += 1
+            analysis["blocked_devices"][
+                event.get("device_name", event["device_id"])
+            ] += 1
         else:
-            analysis["allowed_devices"][event.get("device_name", event["device_id"])] += 1
+            analysis["allowed_devices"][
+                event.get("device_name", event["device_id"])
+            ] += 1
 
-    analysis["devices_by_host"] = {k: len(v) for k, v in analysis["devices_by_host"].items()}
+    analysis["devices_by_host"] = {
+        k: len(v) for k, v in analysis["devices_by_host"].items()
+    }
     return analysis
 
 
@@ -66,8 +75,9 @@ def generate_report(analysis: dict, output_path: str) -> None:
         },
         "top_users": dict(analysis["top_users"].most_common(20)),
         "top_blocked_devices": dict(analysis["blocked_devices"].most_common(20)),
-        "hosts_with_most_devices": dict(sorted(
-            analysis["devices_by_host"].items(), key=lambda x: -x[1])[:20]),
+        "hosts_with_most_devices": dict(
+            sorted(analysis["devices_by_host"].items(), key=lambda x: -x[1])[:20]
+        ),
     }
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
@@ -85,4 +95,6 @@ if __name__ == "__main__":
     out = os.path.join(os.path.dirname(csv_path) or ".", "usb_audit_report.json")
     generate_report(analysis, out)
     print(f"Report: {out}")
-    print(f"Total events: {analysis['total_events']}, Blocked: {analysis['blocked_events']}")
+    print(
+        f"Total events: {analysis['total_events']}, Blocked: {analysis['blocked_events']}"
+    )

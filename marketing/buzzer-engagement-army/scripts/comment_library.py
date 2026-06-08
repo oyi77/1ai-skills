@@ -2,6 +2,7 @@
 Comment Library — 200+ natural Indonesian comments per niche.
 Used by comment_bot.py to pick contextually appropriate comments.
 """
+
 import random
 
 COMMENTS = {
@@ -45,9 +46,8 @@ COMMENTS = {
         "Tips yang berguna banget ini!",
         "Udah follow, kontennya selalu bermanfaat",
         "Wah aku perlu banget ini, makasih!",
-        "Kak ada video lengkapnya ga?"
+        "Kak ada video lengkapnya ga?",
     ],
-
     "lifestyle": [
         "Aesthetic banget vibes-nya! 😍",
         "Aku mau coba juga nih lifestyle-nya",
@@ -73,9 +73,8 @@ COMMENTS = {
         "Ini jadi reminder buat aku 💡",
         "Keren banget, terus konsisten ya!",
         "Aku udah coba seminggu, emang beda rasanya",
-        "Bisa jadi panduan hidup nih 😊"
+        "Bisa jadi panduan hidup nih 😊",
     ],
-
     "tech": [
         "Canggih banget ini! 🤯",
         "Tutorial lengkapnya dong kak",
@@ -101,9 +100,8 @@ COMMENTS = {
         "Beneran free? Gasss lah",
         "Aku udah pake 3 hari, worth it banget",
         "Mau nyoba setelah nonton ini 🚀",
-        "Ini tool wajib buat semua orang sih"
+        "Ini tool wajib buat semua orang sih",
     ],
-
     "food": [
         "Looks yummy! 🤤",
         "Resepnya share dong kak",
@@ -129,9 +127,8 @@ COMMENTS = {
         "Bisa request video resenya ga kak?",
         "Ini cocok buat bekal kerja juga",
         "Bikin ngiler tengah malam 😭🔥",
-        "Auto ngiler liat ini, mau cobain!"
+        "Auto ngiler liat ini, mau cobain!",
     ],
-
     "fashion": [
         "Outfit of the day goals banget! 😍",
         "Beli dimana kak bajunya?",
@@ -157,9 +154,8 @@ COMMENTS = {
         "Berapa hari pengirimannya?",
         "Boleh COD ga kak?",
         "Rating produknya berapa?",
-        "Kak bisa review jujur soal kualitasnya?"
+        "Kak bisa review jujur soal kualitasnya?",
     ],
-
     "business": [
         "Ini yang aku butuhin buat skala bisnisku!",
         "Bisa konsultasi ga kak?",
@@ -185,9 +181,8 @@ COMMENTS = {
         "Udah coba strateginya, works!",
         "Tipsnya actionable banget, langsung bisa dipraktekin",
         "Konten kayak gini yang bikin maju",
-        "Aku subscribe dulu, butuh ilmu ini!"
+        "Aku subscribe dulu, butuh ilmu ini!",
     ],
-
     "general": [
         "💯🔥",
         "This! ✅",
@@ -218,19 +213,84 @@ COMMENTS = {
         "Konten yang jarang ada di platform ini",
         "Langsung follow supaya ga ketinggalan!",
         "Ini konten yang dicari-cari orang",
-        "Real talk, ga ada bull**it di sini 👊"
-    ]
+        "Real talk, ga ada bull**it di sini 👊",
+    ],
 }
 
 # Alias mapping for flexible niche detection
 NICHE_ALIASES = {
-    "health": ["health", "sehat", "kesehatan", "dokter", "medis", "wellness", "herbal", "diet", "fitnes", "fitness"],
-    "lifestyle": ["lifestyle", "hidup", "motivasi", "habit", "rutinitas", "mindset", "self improvement", "productif", "produktif"],
-    "tech": ["tech", "ai", "teknologi", "software", "app", "digital", "coding", "programming", "gadget", "tools"],
-    "food": ["food", "kuliner", "masak", "resep", "makanan", "minuman", "recipe", "cooking", "jajan", "street food"],
-    "fashion": ["fashion", "style", "baju", "outfit", "pakaian", "ootd", "thrift", "brand", "hijab", "busana"],
-    "business": ["bisnis", "business", "entrepreneur", "usaha", "dagang", "jualan", "marketing", "revenue", "profit", "startup"],
-    "general": []  # fallback
+    "health": [
+        "health",
+        "sehat",
+        "kesehatan",
+        "dokter",
+        "medis",
+        "wellness",
+        "herbal",
+        "diet",
+        "fitnes",
+        "fitness",
+    ],
+    "lifestyle": [
+        "lifestyle",
+        "hidup",
+        "motivasi",
+        "habit",
+        "rutinitas",
+        "mindset",
+        "self improvement",
+        "productif",
+        "produktif",
+    ],
+    "tech": [
+        "tech",
+        "ai",
+        "teknologi",
+        "software",
+        "app",
+        "digital",
+        "coding",
+        "programming",
+        "gadget",
+        "tools",
+    ],
+    "food": [
+        "food",
+        "kuliner",
+        "masak",
+        "resep",
+        "makanan",
+        "minuman",
+        "recipe",
+        "cooking",
+        "jajan",
+        "street food",
+    ],
+    "fashion": [
+        "fashion",
+        "style",
+        "baju",
+        "outfit",
+        "pakaian",
+        "ootd",
+        "thrift",
+        "brand",
+        "hijab",
+        "busana",
+    ],
+    "business": [
+        "bisnis",
+        "business",
+        "entrepreneur",
+        "usaha",
+        "dagang",
+        "jualan",
+        "marketing",
+        "revenue",
+        "profit",
+        "startup",
+    ],
+    "general": [],  # fallback
 }
 
 
@@ -255,7 +315,9 @@ def get_comment(niche: str = "general", exclude: list = None) -> str:
     return random.choice(available)
 
 
-def get_comments_for_post(post_caption: str, count: int = 1, exclude: list = None) -> list:
+def get_comments_for_post(
+    post_caption: str, count: int = 1, exclude: list = None
+) -> list:
     """Get multiple unique comments for a post based on its caption/niche."""
     niche = detect_niche(post_caption)
     exclude = exclude or []
@@ -290,7 +352,7 @@ if __name__ == "__main__":
         "Resep nasi goreng simpel",
         "OOTD casual outfit hari ini",
         "Cara scale bisnis online",
-        "Random content hari ini"
+        "Random content hari ini",
     ]
     for t in tests:
         print(f"  '{t[:40]}...' → {detect_niche(t)}")

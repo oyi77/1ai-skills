@@ -43,13 +43,17 @@ class ThreatInfraTracker:
         """Query Shodan for host information and services."""
         if not self.shodan_key:
             return {"error": "No Shodan API key"}
-        resp = self._get(f"https://api.shodan.io/shodan/host/{ip}",
-                         params={"key": self.shodan_key})
+        resp = self._get(
+            f"https://api.shodan.io/shodan/host/{ip}", params={"key": self.shodan_key}
+        )
         if resp and resp.status_code == 200:
             data = resp.json()
             result = {
-                "ip": ip, "org": data.get("org"), "asn": data.get("asn"),
-                "os": data.get("os"), "ports": data.get("ports", []),
+                "ip": ip,
+                "org": data.get("org"),
+                "asn": data.get("asn"),
+                "os": data.get("os"),
+                "ports": data.get("ports", []),
                 "hostnames": data.get("hostnames", []),
                 "vulns": data.get("vulns", []),
                 "country": data.get("country_code"),
@@ -64,27 +68,37 @@ class ThreatInfraTracker:
             return {"error": "No VT API key"}
         type_map = {"ip": "ip-addresses", "domain": "domains", "hash": "files"}
         endpoint = type_map.get(indicator_type, "ip-addresses")
-        resp = self._get(f"https://www.virustotal.com/api/v3/{endpoint}/{indicator}",
-                         headers={"x-apikey": self.vt_key})
+        resp = self._get(
+            f"https://www.virustotal.com/api/v3/{endpoint}/{indicator}",
+            headers={"x-apikey": self.vt_key},
+        )
         if resp and resp.status_code == 200:
             data = resp.json().get("data", {}).get("attributes", {})
             stats = data.get("last_analysis_stats", {})
             result = {
-                "indicator": indicator, "type": indicator_type,
+                "indicator": indicator,
+                "type": indicator_type,
                 "malicious": stats.get("malicious", 0),
                 "suspicious": stats.get("suspicious", 0),
                 "reputation": data.get("reputation", 0),
             }
             if stats.get("malicious", 0) > 3:
-                self.findings.append({"severity": "high", "type": "Malicious Infrastructure",
-                                      "detail": f"{indicator} flagged by {stats['malicious']} engines"})
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Malicious Infrastructure",
+                        "detail": f"{indicator} flagged by {stats['malicious']} engines",
+                    }
+                )
             return result
         return None
 
     def passive_dns_lookup(self, indicator):
         """Query passive DNS via SecurityTrails-style API."""
-        resp = self._get(f"https://api.securitytrails.com/v1/domain/{indicator}/subdomains",
-                         headers={"APIKEY": "demo"})
+        resp = self._get(
+            f"https://api.securitytrails.com/v1/domain/{indicator}/subdomains",
+            headers={"APIKEY": "demo"},
+        )
         if resp and resp.status_code == 200:
             return resp.json().get("subdomains", [])
         try:
@@ -106,9 +120,18 @@ class ThreatInfraTracker:
                 cert_hash = hashlib.sha256(cert).hexdigest()
                 der_info = s.getpeercert()
                 return {
-                    "host": host, "sha256": cert_hash,
-                    "subject": dict(x[0] for x in der_info.get("subject", [])) if der_info else {},
-                    "issuer": dict(x[0] for x in der_info.get("issuer", [])) if der_info else {},
+                    "host": host,
+                    "sha256": cert_hash,
+                    "subject": (
+                        dict(x[0] for x in der_info.get("subject", []))
+                        if der_info
+                        else {}
+                    ),
+                    "issuer": (
+                        dict(x[0] for x in der_info.get("issuer", []))
+                        if der_info
+                        else {}
+                    ),
                     "serial": der_info.get("serialNumber") if der_info else None,
                     "not_after": der_info.get("notAfter") if der_info else None,
                 }
@@ -125,9 +148,12 @@ class ThreatInfraTracker:
                 if "registrar" in entity.get("roles", []):
                     registrar = entity.get("handle")
             return {
-                "domain": domain, "status": data.get("status", []),
+                "domain": domain,
+                "status": data.get("status", []),
                 "registrar": registrar,
-                "nameservers": [ns.get("ldhName") for ns in data.get("nameservers", [])],
+                "nameservers": [
+                    ns.get("ldhName") for ns in data.get("nameservers", [])
+                ],
             }
         return None
 
@@ -139,11 +165,18 @@ class ThreatInfraTracker:
         headers = dict(resp.headers)
         body_hash = hashlib.sha256(resp.content).hexdigest()
         return {
-            "ip": ip, "port": port, "status": resp.status_code,
-            "server": headers.get("Server"), "content_type": headers.get("Content-Type"),
-            "body_hash": body_hash, "body_length": len(resp.content),
-            "headers_of_interest": {k: v for k, v in headers.items()
-                                    if k.lower() not in ("date", "content-length", "connection")},
+            "ip": ip,
+            "port": port,
+            "status": resp.status_code,
+            "server": headers.get("Server"),
+            "content_type": headers.get("Content-Type"),
+            "body_hash": body_hash,
+            "body_length": len(resp.content),
+            "headers_of_interest": {
+                k: v
+                for k, v in headers.items()
+                if k.lower() not in ("date", "content-length", "connection")
+            },
         }
 
     def pivot_from_ip(self, ip):

@@ -14,7 +14,9 @@ try:
 except ImportError:
     sys.exit("requests required: pip install requests")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 RIPESTAT_BASE = "https://stat.ripe.net/data"
@@ -23,8 +25,11 @@ CLOUDFLARE_RPKI = "https://rpki.cloudflare.com/api/v1"
 
 def validate_prefix_rpki(prefix: str) -> dict:
     """Validate a prefix against RPKI using RIPEstat."""
-    resp = requests.get(f"{RIPESTAT_BASE}/rpki-validation/data.json",
-                        params={"resource": prefix}, timeout=15)
+    resp = requests.get(
+        f"{RIPESTAT_BASE}/rpki-validation/data.json",
+        params={"resource": prefix},
+        timeout=15,
+    )
     if resp.status_code == 200:
         data = resp.json().get("data", {})
         return {
@@ -45,8 +50,11 @@ def get_roas_for_asn(asn: str) -> List[dict]:
 
 def get_prefix_overview(prefix: str) -> dict:
     """Get prefix routing overview from RIPEstat."""
-    resp = requests.get(f"{RIPESTAT_BASE}/prefix-overview/data.json",
-                        params={"resource": prefix}, timeout=15)
+    resp = requests.get(
+        f"{RIPESTAT_BASE}/prefix-overview/data.json",
+        params={"resource": prefix},
+        timeout=15,
+    )
     if resp.status_code == 200:
         return resp.json().get("data", {})
     return {}
@@ -55,15 +63,20 @@ def get_prefix_overview(prefix: str) -> dict:
 def check_rpki_adoption(asn: str) -> dict:
     """Check RPKI adoption status for an ASN."""
     roas = get_roas_for_asn(asn)
-    resp = requests.get(f"{RIPESTAT_BASE}/announced-prefixes/data.json",
-                        params={"resource": asn}, timeout=15)
+    resp = requests.get(
+        f"{RIPESTAT_BASE}/announced-prefixes/data.json",
+        params={"resource": asn},
+        timeout=15,
+    )
     announced = []
     if resp.status_code == 200:
         announced = resp.json().get("data", {}).get("prefixes", [])
     roa_prefixes = {r.get("prefix") for r in roas}
     announced_prefixes = {p.get("prefix") for p in announced}
     covered = announced_prefixes & roa_prefixes
-    coverage_pct = (len(covered) / len(announced_prefixes) * 100) if announced_prefixes else 0
+    coverage_pct = (
+        (len(covered) / len(announced_prefixes) * 100) if announced_prefixes else 0
+    )
     return {
         "asn": asn,
         "announced_prefixes": len(announced_prefixes),
@@ -94,16 +107,21 @@ def generate_report(asn: str, prefixes: List[str]) -> dict:
     report["recommendations"] = []
     if report["adoption"]["coverage_pct"] < 100:
         report["recommendations"].append(
-            f"Create ROAs for {report['adoption']['uncovered']} uncovered prefixes")
+            f"Create ROAs for {report['adoption']['uncovered']} uncovered prefixes"
+        )
     if invalid:
-        report["recommendations"].append(f"Investigate {len(invalid)} RPKI-invalid prefixes")
+        report["recommendations"].append(
+            f"Investigate {len(invalid)} RPKI-invalid prefixes"
+        )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="BGP RPKI Validation Agent")
     parser.add_argument("--asn", required=True, help="AS number (e.g., AS13335)")
-    parser.add_argument("--prefixes", nargs="*", default=[], help="Prefixes to validate")
+    parser.add_argument(
+        "--prefixes", nargs="*", default=[], help="Prefixes to validate"
+    )
     parser.add_argument("--output-dir", default=".")
     parser.add_argument("--output", default="rpki_report.json")
     args = parser.parse_args()

@@ -22,15 +22,23 @@ class ZPAClient:
         self.token = self._authenticate(client_id, client_secret)
 
     def _authenticate(self, client_id, client_secret):
-        resp = requests.post(f"{self.base_url}/signin", json={
-            "client_id": client_id, "client_secret": client_secret,
-        }, timeout=30)
+        resp = requests.post(
+            f"{self.base_url}/signin",
+            json={
+                "client_id": client_id,
+                "client_secret": client_secret,
+            },
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json()["token"]
 
     def _get(self, endpoint):
-        resp = requests.get(f"{self.base_url}/mgmtconfig/v1/admin/customers/{self.customer_id}/{endpoint}",
-                            headers={"Authorization": f"Bearer {self.token}"}, timeout=30)
+        resp = requests.get(
+            f"{self.base_url}/mgmtconfig/v1/admin/customers/{self.customer_id}/{endpoint}",
+            headers={"Authorization": f"Bearer {self.token}"},
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -56,27 +64,33 @@ def audit_zpa_config(client):
     apps = client.list_app_segments()
     for app in apps.get("list", []):
         if not app.get("enabled"):
-            findings.append({
-                "type": "disabled_app_segment",
-                "name": app.get("name", ""),
-                "severity": "LOW",
-            })
+            findings.append(
+                {
+                    "type": "disabled_app_segment",
+                    "name": app.get("name", ""),
+                    "severity": "LOW",
+                }
+            )
         if app.get("bypassType") == "ALWAYS":
-            findings.append({
-                "type": "bypass_enabled",
-                "name": app.get("name", ""),
-                "severity": "HIGH",
-                "recommendation": "Remove bypass to enforce ZPA inspection",
-            })
+            findings.append(
+                {
+                    "type": "bypass_enabled",
+                    "name": app.get("name", ""),
+                    "severity": "HIGH",
+                    "recommendation": "Remove bypass to enforce ZPA inspection",
+                }
+            )
     connectors = client.list_app_connectors()
     for conn in connectors.get("list", []):
         if conn.get("runtimeStatus") != "running":
-            findings.append({
-                "type": "connector_down",
-                "name": conn.get("name", ""),
-                "status": conn.get("runtimeStatus", ""),
-                "severity": "CRITICAL",
-            })
+            findings.append(
+                {
+                    "type": "connector_down",
+                    "name": conn.get("name", ""),
+                    "status": conn.get("runtimeStatus", ""),
+                    "severity": "CRITICAL",
+                }
+            )
     return findings
 
 
@@ -92,7 +106,9 @@ def run_audit(client_id, client_secret, customer_id):
     app_list = apps.get("list", [])
     print(f"--- APPLICATION SEGMENTS ({len(app_list)}) ---")
     for a in app_list[:10]:
-        print(f"  {a.get('name', '')}: enabled={a.get('enabled', '')} bypass={a.get('bypassType', '')}")
+        print(
+            f"  {a.get('name', '')}: enabled={a.get('enabled', '')} bypass={a.get('bypassType', '')}"
+        )
 
     connectors = client.list_app_connectors()
     conn_list = connectors.get("list", [])

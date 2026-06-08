@@ -41,23 +41,29 @@ async def audit_users(client: OktaClient) -> dict:
         elif status == "DEPROVISIONED":
             deprovisioned += 1
 
-        factors, _, _ = await client.list_factors(user.id)  # okta.client.list_factors(userId)
+        factors, _, _ = await client.list_factors(
+            user.id
+        )  # okta.client.list_factors(userId)
         if not factors:
-            no_mfa.append({
-                "user_id": user.id,
-                "login": user.profile.login,
-                "status": status,
-            })
+            no_mfa.append(
+                {
+                    "user_id": user.id,
+                    "login": user.profile.login,
+                    "status": status,
+                }
+            )
 
         if user.last_login:
             last = datetime.fromisoformat(user.last_login.replace("Z", "+00:00"))
             days_inactive = (datetime.now(timezone.utc) - last).days
             if days_inactive > 90:
-                stale_users.append({
-                    "login": user.profile.login,
-                    "days_inactive": days_inactive,
-                    "status": status,
-                })
+                stale_users.append(
+                    {
+                        "login": user.profile.login,
+                        "days_inactive": days_inactive,
+                        "status": status,
+                    }
+                )
 
     return {
         "total_users": total,
@@ -76,13 +82,15 @@ async def audit_applications(client: OktaClient) -> dict:
 
     for app in apps:
         sign_on = getattr(app, "signOnMode", "unknown")
-        app_details.append({
-            "id": app.id,
-            "label": app.label,
-            "status": app.status,
-            "sign_on_mode": sign_on,
-            "created": str(getattr(app, "created", "")),
-        })
+        app_details.append(
+            {
+                "id": app.id,
+                "label": app.label,
+                "status": app.status,
+                "sign_on_mode": sign_on,
+                "created": str(getattr(app, "created", "")),
+            }
+        )
 
     saml_apps = [a for a in app_details if "SAML" in a["sign_on_mode"].upper()]
     oidc_apps = [a for a in app_details if "OPENID" in a["sign_on_mode"].upper()]
@@ -106,28 +114,34 @@ async def audit_policies(client: OktaClient) -> dict:
         rules, _, _ = await client.list_policy_rules(policy.id)
         rule_details = []
         for rule in rules:
-            rule_details.append({
-                "name": rule.name,
-                "status": rule.status,
-                "type": getattr(rule, "type", "unknown"),
-            })
+            rule_details.append(
+                {
+                    "name": rule.name,
+                    "status": rule.status,
+                    "type": getattr(rule, "type", "unknown"),
+                }
+            )
 
-        policy_details.append({
-            "id": policy.id,
-            "name": policy.name,
-            "status": policy.status,
-            "rules_count": len(rules),
-            "rules": rule_details,
-        })
+        policy_details.append(
+            {
+                "id": policy.id,
+                "name": policy.name,
+                "status": policy.status,
+                "rules_count": len(rules),
+                "rules": rule_details,
+            }
+        )
 
     mfa_policies, _, _ = await client.list_policies({"type": "MFA_ENROLL"})
     mfa_details = []
     for policy in mfa_policies:
-        mfa_details.append({
-            "id": policy.id,
-            "name": policy.name,
-            "status": policy.status,
-        })
+        mfa_details.append(
+            {
+                "id": policy.id,
+                "name": policy.name,
+                "status": policy.status,
+            }
+        )
 
     return {
         "sign_on_policies": policy_details,
@@ -142,12 +156,14 @@ async def audit_groups(client: OktaClient) -> dict:
 
     for group in groups:
         members, _, _ = await client.list_group_users(group.id)
-        group_details.append({
-            "id": group.id,
-            "name": group.profile.name,
-            "type": group.type,
-            "member_count": len(members),
-        })
+        group_details.append(
+            {
+                "id": group.id,
+                "name": group.profile.name,
+                "type": group.type,
+                "member_count": len(members),
+            }
+        )
 
     return {
         "total_groups": len(group_details),
@@ -185,11 +201,17 @@ def generate_report(users: dict, apps: dict, policies: dict, groups: dict) -> st
 
     issues = []
     if users["users_without_mfa"]:
-        issues.append(f"[HIGH] {len(users['users_without_mfa'])} users have no MFA enrolled")
+        issues.append(
+            f"[HIGH] {len(users['users_without_mfa'])} users have no MFA enrolled"
+        )
     if users["stale_users_90d"]:
-        issues.append(f"[MEDIUM] {len(users['stale_users_90d'])} users inactive for 90+ days")
+        issues.append(
+            f"[MEDIUM] {len(users['stale_users_90d'])} users inactive for 90+ days"
+        )
     if apps["inactive_apps"]:
-        issues.append(f"[LOW] {apps['inactive_apps']} inactive application integrations")
+        issues.append(
+            f"[LOW] {apps['inactive_apps']} inactive application integrations"
+        )
 
     for issue in issues:
         lines.append(f"  {issue}")
@@ -218,10 +240,16 @@ async def main():
 
     output = f"okta_audit_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
     with open(output, "w") as f:
-        json.dump({"users": users, "apps": apps, "policies": policies, "groups": groups}, f, indent=2, default=str)
+        json.dump(
+            {"users": users, "apps": apps, "policies": policies, "groups": groups},
+            f,
+            indent=2,
+            default=str,
+        )
     print(f"\n[*] Results saved to {output}")
 
 
 if __name__ == "__main__":
     import asyncio
+
     asyncio.run(main())

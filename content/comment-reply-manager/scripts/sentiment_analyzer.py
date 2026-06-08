@@ -7,49 +7,152 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
+
 @dataclass
 class SentimentResult:
-    category: str           # positive | negative | question | interest | price_ask | spam | neutral
-    confidence: float       # 0.0 – 1.0
-    is_dm_trigger: bool     # Should we DM this person?
-    reason: str             # Human-readable reason
+    category: (
+        str  # positive | negative | question | interest | price_ask | spam | neutral
+    )
+    confidence: float  # 0.0 – 1.0
+    is_dm_trigger: bool  # Should we DM this person?
+    reason: str  # Human-readable reason
     keywords_matched: list  # Which keywords fired
+
 
 # ─── KEYWORD LISTS ─────────────────────────────────────────────────────────────
 
 POSITIVE_KEYWORDS = [
-    "bagus", "keren", "mantap", "mantul", "josss", "jos", "top", "oke", "ok", "sip",
-    "nice", "good", "great", "amazing", "wow", "waw", "luar biasa", "kece",
-    "makasih infonya", "thanks", "terima kasih", "helpful", "berguna", "bermanfaat",
-    "love", "suka", "sukak", "sukaaaak", "❤️", "🔥", "👍", "💪", "😍",
+    "bagus",
+    "keren",
+    "mantap",
+    "mantul",
+    "josss",
+    "jos",
+    "top",
+    "oke",
+    "ok",
+    "sip",
+    "nice",
+    "good",
+    "great",
+    "amazing",
+    "wow",
+    "waw",
+    "luar biasa",
+    "kece",
+    "makasih infonya",
+    "thanks",
+    "terima kasih",
+    "helpful",
+    "berguna",
+    "bermanfaat",
+    "love",
+    "suka",
+    "sukak",
+    "sukaaaak",
+    "❤️",
+    "🔥",
+    "👍",
+    "💪",
+    "😍",
 ]
 
 NEGATIVE_KEYWORDS = [
-    "jelek", "buruk", "gagal", "gak berguna", "tidak berguna", "sampah", "scam",
-    "penipuan", "tipu", "bohong", "palsu", "fake", "rugi", "kecewa", "zonk",
-    "gak worth", "tidak worth", "mahal banget", "kemahalan", "gak mutu",
-    "gak jelas", "tidak jelas", "buang uang",
+    "jelek",
+    "buruk",
+    "gagal",
+    "gak berguna",
+    "tidak berguna",
+    "sampah",
+    "scam",
+    "penipuan",
+    "tipu",
+    "bohong",
+    "palsu",
+    "fake",
+    "rugi",
+    "kecewa",
+    "zonk",
+    "gak worth",
+    "tidak worth",
+    "mahal banget",
+    "kemahalan",
+    "gak mutu",
+    "gak jelas",
+    "tidak jelas",
+    "buang uang",
 ]
 
 QUESTION_KEYWORDS = [
-    "apa itu", "apaan", "gimana", "bagaimana", "cara", "tutorial", "bisa",
-    "fungsi", "fitur", "keunggulan", "kelebihan", "buat apa", "untuk apa",
-    "bedanya apa", "perbedaan", "cocok buat", "untuk siapa", "gimana caranya",
-    "bagaimana cara", "apa manfaat", "apa kegunaannya", "?",
+    "apa itu",
+    "apaan",
+    "gimana",
+    "bagaimana",
+    "cara",
+    "tutorial",
+    "bisa",
+    "fungsi",
+    "fitur",
+    "keunggulan",
+    "kelebihan",
+    "buat apa",
+    "untuk apa",
+    "bedanya apa",
+    "perbedaan",
+    "cocok buat",
+    "untuk siapa",
+    "gimana caranya",
+    "bagaimana cara",
+    "apa manfaat",
+    "apa kegunaannya",
+    "?",
 ]
 
 INTEREST_KEYWORDS = [
-    "tertarik", "mau", "mau dong", "mau beli", "mau coba", "pengen", "pengin",
-    "ingin", "minat", "mau info", "info dong", "info lebih", "detail",
-    "daftar gimana", "cara daftar", "cara beli", "order gimana", "beli dimana",
-    "link dong", "linknya", "dimana beli", "ada di mana", "jual dimana",
-    "mau pesan", "pesan gimana",
+    "tertarik",
+    "mau",
+    "mau dong",
+    "mau beli",
+    "mau coba",
+    "pengen",
+    "pengin",
+    "ingin",
+    "minat",
+    "mau info",
+    "info dong",
+    "info lebih",
+    "detail",
+    "daftar gimana",
+    "cara daftar",
+    "cara beli",
+    "order gimana",
+    "beli dimana",
+    "link dong",
+    "linknya",
+    "dimana beli",
+    "ada di mana",
+    "jual dimana",
+    "mau pesan",
+    "pesan gimana",
 ]
 
 PRICE_KEYWORDS = [
-    "harga", "berapa", "berapa harga", "price", "cost", "bayar berapa",
-    "harganya", "mahal gak", "murah gak", "worth it gak", "worth ga",
-    "bayarnya", "biayanya", "gratis gak", "free gak", "berbayar",
+    "harga",
+    "berapa",
+    "berapa harga",
+    "price",
+    "cost",
+    "bayar berapa",
+    "harganya",
+    "mahal gak",
+    "murah gak",
+    "worth it gak",
+    "worth ga",
+    "bayarnya",
+    "biayanya",
+    "gratis gak",
+    "free gak",
+    "berbayar",
 ]
 
 SPAM_PATTERNS = [
@@ -65,8 +168,17 @@ SPAM_PATTERNS = [
 ]
 
 NEUTRAL_GREETINGS = [
-    "halo", "hai", "hi", "hello", "hei", "permisi", "selamat",
-    "pagi", "siang", "malam", "sore",
+    "halo",
+    "hai",
+    "hi",
+    "hello",
+    "hei",
+    "permisi",
+    "selamat",
+    "pagi",
+    "siang",
+    "malam",
+    "sore",
 ]
 
 
@@ -184,4 +296,6 @@ if __name__ == "__main__":
     ]
     for t in tests:
         result = analyze_sentiment(t)
-        print(f"[{result.category:12s}] {result.confidence:.2f} dm={result.is_dm_trigger} | '{t}'")
+        print(
+            f"[{result.category:12s}] {result.confidence:.2f} dm={result.is_dm_trigger} | '{t}'"
+        )

@@ -25,6 +25,7 @@ from collections import defaultdict
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -42,10 +43,9 @@ class GoPhishClient:
         self.api_key = api_key
         self.verify_ssl = verify_ssl
         self.session = requests.Session()
-        self.session.headers.update({
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
-        })
+        self.session.headers.update(
+            {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+        )
         self.session.verify = verify_ssl
 
     def _get(self, endpoint: str) -> dict:
@@ -64,16 +64,22 @@ class GoPhishClient:
         return resp.status_code == 200
 
     # Sending Profiles
-    def create_sending_profile(self, name: str, host: str, from_address: str,
-                                username: str = "", password: str = "",
-                                ignore_cert: bool = False) -> dict:
+    def create_sending_profile(
+        self,
+        name: str,
+        host: str,
+        from_address: str,
+        username: str = "",
+        password: str = "",
+        ignore_cert: bool = False,
+    ) -> dict:
         data = {
             "name": name,
             "host": host,
             "from_address": from_address,
             "username": username,
             "password": password,
-            "ignore_cert_errors": ignore_cert
+            "ignore_cert_errors": ignore_cert,
         }
         return self._post("/api/smtp/", data)
 
@@ -81,36 +87,45 @@ class GoPhishClient:
         return self._get("/api/smtp/")
 
     # Email Templates
-    def create_template(self, name: str, subject: str, html: str,
-                        text: str = "", attachments: list = None) -> dict:
+    def create_template(
+        self,
+        name: str,
+        subject: str,
+        html: str,
+        text: str = "",
+        attachments: list = None,
+    ) -> dict:
         data = {
             "name": name,
             "subject": subject,
             "html": html,
             "text": text,
-            "attachments": attachments or []
+            "attachments": attachments or [],
         }
         return self._post("/api/templates/", data)
 
     def import_email(self, raw_email: str, convert_links: bool = True) -> dict:
-        data = {
-            "content": raw_email,
-            "convert_links": convert_links
-        }
+        data = {"content": raw_email, "convert_links": convert_links}
         return self._post("/api/import/email", data)
 
     def list_templates(self) -> list:
         return self._get("/api/templates/")
 
     # Landing Pages
-    def create_page(self, name: str, html: str, capture_credentials: bool = True,
-                    capture_passwords: bool = False, redirect_url: str = "") -> dict:
+    def create_page(
+        self,
+        name: str,
+        html: str,
+        capture_credentials: bool = True,
+        capture_passwords: bool = False,
+        redirect_url: str = "",
+    ) -> dict:
         data = {
             "name": name,
             "html": html,
             "capture_credentials": capture_credentials,
             "capture_passwords": capture_passwords,
-            "redirect_url": redirect_url
+            "redirect_url": redirect_url,
         }
         return self._post("/api/pages/", data)
 
@@ -123,10 +138,7 @@ class GoPhishClient:
 
     # User Groups
     def create_group(self, name: str, targets: list) -> dict:
-        data = {
-            "name": name,
-            "targets": targets
-        }
+        data = {"name": name, "targets": targets}
         return self._post("/api/groups/", data)
 
     def import_group_csv(self, name: str, csv_path: str) -> dict:
@@ -138,7 +150,7 @@ class GoPhishClient:
                     "first_name": row.get("First Name", row.get("first_name", "")),
                     "last_name": row.get("Last Name", row.get("last_name", "")),
                     "email": row.get("Email", row.get("email", "")),
-                    "position": row.get("Position", row.get("position", ""))
+                    "position": row.get("Position", row.get("position", "")),
                 }
                 if target["email"]:
                     targets.append(target)
@@ -148,9 +160,17 @@ class GoPhishClient:
         return self._get("/api/groups/")
 
     # Campaigns
-    def create_campaign(self, name: str, template_name: str, page_name: str,
-                        smtp_name: str, group_names: list, url: str,
-                        launch_date: str = "", send_by_date: str = "") -> dict:
+    def create_campaign(
+        self,
+        name: str,
+        template_name: str,
+        page_name: str,
+        smtp_name: str,
+        group_names: list,
+        url: str,
+        launch_date: str = "",
+        send_by_date: str = "",
+    ) -> dict:
         templates = self.list_templates()
         template = next((t for t in templates if t["name"] == template_name), None)
 
@@ -181,7 +201,7 @@ class GoPhishClient:
             "page": {"name": page_name},
             "smtp": {"name": smtp_name},
             "groups": [{"name": g["name"]} for g in groups],
-            "url": url
+            "url": url,
         }
         if launch_date:
             data["launch_date"] = launch_date
@@ -249,7 +269,9 @@ def calculate_campaign_metrics(results: dict) -> dict:
     }
 
     # Department breakdown
-    dept_stats = defaultdict(lambda: {"sent": 0, "opened": 0, "clicked": 0, "submitted": 0})
+    dept_stats = defaultdict(
+        lambda: {"sent": 0, "opened": 0, "clicked": 0, "submitted": 0}
+    )
     for result in results.get("results", []):
         dept = result.get("position", "Unknown")
         email = result.get("email", "")
@@ -372,11 +394,11 @@ tr:hover {{ background: #f8f9fa; }}
 <h2>Recommendations</h2>
 <ul>"""
 
-    if metrics['click_rate'] > 20:
+    if metrics["click_rate"] > 20:
         html += "<li><strong>High Priority:</strong> Click rate exceeds 20%. Implement mandatory phishing awareness training for all employees.</li>"
-    if metrics['submit_rate'] > 10:
+    if metrics["submit_rate"] > 10:
         html += "<li><strong>Critical:</strong> Submit rate exceeds 10%. Deploy MFA across all applications to mitigate credential harvesting risk.</li>"
-    if metrics['report_rate'] < 20:
+    if metrics["report_rate"] < 20:
         html += "<li><strong>Improve Reporting:</strong> Report rate is low. Deploy phishing report button in email client and incentivize reporting.</li>"
 
     html += """
@@ -406,16 +428,26 @@ def generate_text_report(campaign: dict, metrics: dict) -> str:
     lines.append("")
     lines.append("[METRICS]")
     lines.append(f"  Emails Sent:     {metrics['emails_sent']}")
-    lines.append(f"  Emails Opened:   {metrics['emails_opened']} ({metrics['open_rate']}%)")
-    lines.append(f"  Links Clicked:   {metrics['links_clicked']} ({metrics['click_rate']}%)")
-    lines.append(f"  Data Submitted:  {metrics['data_submitted']} ({metrics['submit_rate']}%)")
-    lines.append(f"  Emails Reported: {metrics['emails_reported']} ({metrics['report_rate']}%)")
+    lines.append(
+        f"  Emails Opened:   {metrics['emails_opened']} ({metrics['open_rate']}%)"
+    )
+    lines.append(
+        f"  Links Clicked:   {metrics['links_clicked']} ({metrics['click_rate']}%)"
+    )
+    lines.append(
+        f"  Data Submitted:  {metrics['data_submitted']} ({metrics['submit_rate']}%)"
+    )
+    lines.append(
+        f"  Emails Reported: {metrics['emails_reported']} ({metrics['report_rate']}%)"
+    )
     lines.append(f"  Resilience:      {metrics['resilience_score']}%")
     lines.append("")
     lines.append("[DEPARTMENT BREAKDOWN]")
     for dept, stats in sorted(metrics.get("department_breakdown", {}).items()):
         rate = round(stats["clicked"] / max(stats["sent"], 1) * 100, 1)
-        lines.append(f"  {dept}: {stats['sent']} sent, {stats['clicked']} clicked ({rate}%)")
+        lines.append(
+            f"  {dept}: {stats['sent']} sent, {stats['clicked']} clicked ({rate}%)"
+        )
     lines.append("=" * 60)
     return "\n".join(lines)
 
@@ -426,7 +458,9 @@ def main():
 
     # Create campaign from config
     create_parser = subparsers.add_parser("create", help="Create campaign from config")
-    create_parser.add_argument("--config", required=True, help="Campaign config JSON file")
+    create_parser.add_argument(
+        "--config", required=True, help="Campaign config JSON file"
+    )
 
     # Campaign status
     status_parser = subparsers.add_parser("status", help="Get campaign status")
@@ -436,13 +470,17 @@ def main():
     report_parser = subparsers.add_parser("report", help="Generate campaign report")
     report_parser.add_argument("--campaign-id", type=int, required=True)
     report_parser.add_argument("--output", "-o", help="Output file path")
-    report_parser.add_argument("--format", choices=["html", "text", "json"], default="text")
+    report_parser.add_argument(
+        "--format", choices=["html", "text", "json"], default="text"
+    )
 
     # List campaigns
     subparsers.add_parser("list", help="List all campaigns")
 
     # Import users
-    import_parser = subparsers.add_parser("import-users", help="Import user group from CSV")
+    import_parser = subparsers.add_parser(
+        "import-users", help="Import user group from CSV"
+    )
     import_parser.add_argument("--csv", required=True, help="CSV file path")
     import_parser.add_argument("--group-name", required=True, help="Group name")
 
@@ -453,16 +491,20 @@ def main():
     args = parser.parse_args()
 
     if not HAS_REQUESTS:
-        print("Error: 'requests' library required. Install with: pip install requests",
-              file=sys.stderr)
+        print(
+            "Error: 'requests' library required. Install with: pip install requests",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     api_url = args.api_url
     api_key = args.api_key
 
     if not api_key:
-        print("Error: GoPhish API key required. Set GOPHISH_API_KEY env var or use --api-key",
-              file=sys.stderr)
+        print(
+            "Error: GoPhish API key required. Set GOPHISH_API_KEY env var or use --api-key",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     client = GoPhishClient(api_url, api_key, verify_ssl=not args.no_verify_ssl)
@@ -485,7 +527,9 @@ def main():
         if args.format == "html":
             output = generate_html_report(campaign, metrics)
         elif args.format == "json":
-            output = json.dumps({"campaign": campaign, "metrics": metrics}, indent=2, default=str)
+            output = json.dumps(
+                {"campaign": campaign, "metrics": metrics}, indent=2, default=str
+            )
         else:
             output = generate_text_report(campaign, metrics)
 
@@ -499,8 +543,10 @@ def main():
     elif args.command == "list":
         campaigns = client.list_campaigns()
         for c in campaigns:
-            print(f"  ID: {c['id']} | Name: {c['name']} | Status: {c['status']} | "
-                  f"Created: {c.get('created_date', '')}")
+            print(
+                f"  ID: {c['id']} | Name: {c['name']} | Status: {c['status']} | "
+                f"Created: {c.get('created_date', '')}"
+            )
 
     elif args.command == "import-users":
         result = client.import_group_csv(args.group_name, args.csv)

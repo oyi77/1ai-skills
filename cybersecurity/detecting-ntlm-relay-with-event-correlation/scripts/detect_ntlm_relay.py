@@ -142,30 +142,33 @@ def detect_ip_hostname_mismatch(events, inventory):
         if workstation in inventory:
             expected_ip = inventory[workstation]
             if source_ip != expected_ip:
-                findings.append({
-                    "timestamp": timestamp,
-                    "detection_type": "IP-Hostname Mismatch (NTLM Relay Indicator)",
-                    "severity": "CRITICAL",
-                    "mitre": "T1557.001",
-                    "target_host": computer,
-                    "target_user": target_user,
-                    "workstation_name": workstation,
-                    "actual_source_ip": source_ip,
-                    "expected_source_ip": expected_ip,
-                    "lm_package": lm_package,
-                    "explanation": (
-                        f"Event 4624 shows {target_user} authenticating from "
-                        f"workstation '{workstation}' but source IP is {source_ip} "
-                        f"(expected {expected_ip}). This IP mismatch is a primary "
-                        f"indicator of NTLM relay."
-                    ),
-                })
+                findings.append(
+                    {
+                        "timestamp": timestamp,
+                        "detection_type": "IP-Hostname Mismatch (NTLM Relay Indicator)",
+                        "severity": "CRITICAL",
+                        "mitre": "T1557.001",
+                        "target_host": computer,
+                        "target_user": target_user,
+                        "workstation_name": workstation,
+                        "actual_source_ip": source_ip,
+                        "expected_source_ip": expected_ip,
+                        "lm_package": lm_package,
+                        "explanation": (
+                            f"Event 4624 shows {target_user} authenticating from "
+                            f"workstation '{workstation}' but source IP is {source_ip} "
+                            f"(expected {expected_ip}). This IP mismatch is a primary "
+                            f"indicator of NTLM relay."
+                        ),
+                    }
+                )
 
     return findings
 
 
-def detect_rapid_multi_host_auth(events, window_seconds=RAPID_AUTH_WINDOW,
-                                  threshold=RAPID_AUTH_THRESHOLD):
+def detect_rapid_multi_host_auth(
+    events, window_seconds=RAPID_AUTH_WINDOW, threshold=RAPID_AUTH_THRESHOLD
+):
     """
     Detect rapid NTLM authentication to multiple targets from the same source,
     indicating relay spraying or credential relay.
@@ -197,11 +200,13 @@ def detect_rapid_multi_host_auth(events, window_seconds=RAPID_AUTH_WINDOW,
             continue
 
         key = (source_ip, target_user)
-        auth_by_source[key].append({
-            "timestamp": ts,
-            "target_host": event.get("Computer", ""),
-            "workstation": event.get("WorkstationName", ""),
-        })
+        auth_by_source[key].append(
+            {
+                "timestamp": ts,
+                "target_host": event.get("Computer", ""),
+                "workstation": event.get("WorkstationName", ""),
+            }
+        )
 
     # Analyze each source for rapid multi-host authentication
     for (source_ip, target_user), auth_list in auth_by_source.items():
@@ -223,23 +228,25 @@ def detect_rapid_multi_host_auth(events, window_seconds=RAPID_AUTH_WINDOW,
                     break
 
             if len(targets_in_window) >= threshold:
-                findings.append({
-                    "timestamp": window_start.isoformat(),
-                    "detection_type": "Rapid Multi-Host NTLM Authentication (Relay Spraying)",
-                    "severity": "HIGH",
-                    "mitre": "T1557.001",
-                    "source_ip": source_ip,
-                    "target_user": target_user,
-                    "unique_targets": len(targets_in_window),
-                    "target_hosts": sorted(targets_in_window),
-                    "event_count": len(events_in_window),
-                    "window_seconds": window_seconds,
-                    "explanation": (
-                        f"User '{target_user}' authenticated via NTLM from {source_ip} "
-                        f"to {len(targets_in_window)} unique targets in {window_seconds}s. "
-                        f"Rapid multi-host authentication is consistent with ntlmrelayx spraying."
-                    ),
-                })
+                findings.append(
+                    {
+                        "timestamp": window_start.isoformat(),
+                        "detection_type": "Rapid Multi-Host NTLM Authentication (Relay Spraying)",
+                        "severity": "HIGH",
+                        "mitre": "T1557.001",
+                        "source_ip": source_ip,
+                        "target_user": target_user,
+                        "unique_targets": len(targets_in_window),
+                        "target_hosts": sorted(targets_in_window),
+                        "event_count": len(events_in_window),
+                        "window_seconds": window_seconds,
+                        "explanation": (
+                            f"User '{target_user}' authenticated via NTLM from {source_ip} "
+                            f"to {len(targets_in_window)} unique targets in {window_seconds}s. "
+                            f"Rapid multi-host authentication is consistent with ntlmrelayx spraying."
+                        ),
+                    }
+                )
                 break  # One finding per source/user pair
 
     return findings
@@ -267,31 +274,35 @@ def detect_ntlmv1_downgrade(events):
         if target_user.endswith("$") or target_user in ("ANONYMOUS LOGON", "-", ""):
             continue
 
-        ntlmv1_by_user[target_user].append({
-            "timestamp": event.get("TimeCreated", ""),
-            "computer": event.get("Computer", ""),
-            "source_ip": event.get("IpAddress", ""),
-            "workstation": event.get("WorkstationName", ""),
-        })
+        ntlmv1_by_user[target_user].append(
+            {
+                "timestamp": event.get("TimeCreated", ""),
+                "computer": event.get("Computer", ""),
+                "source_ip": event.get("IpAddress", ""),
+                "workstation": event.get("WorkstationName", ""),
+            }
+        )
 
     for user, auth_list in ntlmv1_by_user.items():
         targets = set(a["computer"] for a in auth_list)
         source_ips = set(a["source_ip"] for a in auth_list)
-        findings.append({
-            "timestamp": auth_list[0]["timestamp"],
-            "detection_type": "NTLMv1 Authentication Detected (Downgrade Attack Indicator)",
-            "severity": "HIGH",
-            "mitre": "T1557.001",
-            "target_user": user,
-            "ntlmv1_event_count": len(auth_list),
-            "source_ips": sorted(source_ips),
-            "target_hosts": sorted(targets),
-            "explanation": (
-                f"User '{user}' authenticated {len(auth_list)} times using NTLMv1. "
-                f"NTLMv1 is deprecated and should not be in use. This may indicate "
-                f"a downgrade attack or misconfigured LmCompatibilityLevel."
-            ),
-        })
+        findings.append(
+            {
+                "timestamp": auth_list[0]["timestamp"],
+                "detection_type": "NTLMv1 Authentication Detected (Downgrade Attack Indicator)",
+                "severity": "HIGH",
+                "mitre": "T1557.001",
+                "target_user": user,
+                "ntlmv1_event_count": len(auth_list),
+                "source_ips": sorted(source_ips),
+                "target_hosts": sorted(targets),
+                "explanation": (
+                    f"User '{user}' authenticated {len(auth_list)} times using NTLMv1. "
+                    f"NTLMv1 is deprecated and should not be in use. This may indicate "
+                    f"a downgrade attack or misconfigured LmCompatibilityLevel."
+                ),
+            }
+        )
 
     return findings
 
@@ -321,13 +332,15 @@ def detect_machine_account_relay(events):
         if source_ip in ("-", "::1", "127.0.0.1", ""):
             continue
 
-        machine_auths[target_user].append({
-            "timestamp": event.get("TimeCreated", ""),
-            "target_host": event.get("Computer", ""),
-            "source_ip": source_ip,
-            "workstation": event.get("WorkstationName", ""),
-            "lm_package": event.get("LmPackageName", ""),
-        })
+        machine_auths[target_user].append(
+            {
+                "timestamp": event.get("TimeCreated", ""),
+                "target_host": event.get("Computer", ""),
+                "source_ip": source_ip,
+                "workstation": event.get("WorkstationName", ""),
+                "lm_package": event.get("LmPackageName", ""),
+            }
+        )
 
     for machine_account, auth_list in machine_auths.items():
         source_ips = set(a["source_ip"] for a in auth_list)
@@ -336,23 +349,25 @@ def detect_machine_account_relay(events):
         # Flag if machine account authenticates from multiple source IPs
         # or if source IP does not match expected machine IP
         if len(source_ips) > 1:
-            findings.append({
-                "timestamp": auth_list[0]["timestamp"],
-                "detection_type": "Machine Account NTLM Auth from Multiple Sources (Coercion + Relay)",
-                "severity": "CRITICAL",
-                "mitre": "T1557.001",
-                "machine_account": machine_account,
-                "source_ips": sorted(source_ips),
-                "target_hosts": sorted(target_hosts),
-                "auth_count": len(auth_list),
-                "explanation": (
-                    f"Machine account '{machine_account}' authenticated via NTLM from "
-                    f"{len(source_ips)} different source IPs: {', '.join(sorted(source_ips))}. "
-                    f"This indicates the machine's NTLM authentication was coerced "
-                    f"(PetitPotam/DFSCoerce/PrinterBug) and relayed to "
-                    f"{', '.join(sorted(target_hosts))}."
-                ),
-            })
+            findings.append(
+                {
+                    "timestamp": auth_list[0]["timestamp"],
+                    "detection_type": "Machine Account NTLM Auth from Multiple Sources (Coercion + Relay)",
+                    "severity": "CRITICAL",
+                    "mitre": "T1557.001",
+                    "machine_account": machine_account,
+                    "source_ips": sorted(source_ips),
+                    "target_hosts": sorted(target_hosts),
+                    "auth_count": len(auth_list),
+                    "explanation": (
+                        f"Machine account '{machine_account}' authenticated via NTLM from "
+                        f"{len(source_ips)} different source IPs: {', '.join(sorted(source_ips))}. "
+                        f"This indicates the machine's NTLM authentication was coerced "
+                        f"(PetitPotam/DFSCoerce/PrinterBug) and relayed to "
+                        f"{', '.join(sorted(target_hosts))}."
+                    ),
+                }
+            )
 
     return findings
 
@@ -381,28 +396,32 @@ def detect_anonymous_ntlm_logons(events):
         if source_ip in ("-", "::1", "127.0.0.1", ""):
             continue
 
-        anon_by_ip[source_ip].append({
-            "timestamp": event.get("TimeCreated", ""),
-            "target_host": event.get("Computer", ""),
-        })
+        anon_by_ip[source_ip].append(
+            {
+                "timestamp": event.get("TimeCreated", ""),
+                "target_host": event.get("Computer", ""),
+            }
+        )
 
     for source_ip, auth_list in anon_by_ip.items():
         targets = set(a["target_host"] for a in auth_list)
         if len(auth_list) >= 3:
-            findings.append({
-                "timestamp": auth_list[0]["timestamp"],
-                "detection_type": "Excessive ANONYMOUS NTLM Logons (Responder/Relay Probe)",
-                "severity": "MEDIUM",
-                "mitre": "T1557.001",
-                "source_ip": source_ip,
-                "anonymous_logon_count": len(auth_list),
-                "target_hosts": sorted(targets),
-                "explanation": (
-                    f"Source IP {source_ip} performed {len(auth_list)} anonymous NTLM "
-                    f"logons to {len(targets)} hosts. Excessive anonymous NTLM "
-                    f"authentication may indicate Responder probing or null session relay."
-                ),
-            })
+            findings.append(
+                {
+                    "timestamp": auth_list[0]["timestamp"],
+                    "detection_type": "Excessive ANONYMOUS NTLM Logons (Responder/Relay Probe)",
+                    "severity": "MEDIUM",
+                    "mitre": "T1557.001",
+                    "source_ip": source_ip,
+                    "anonymous_logon_count": len(auth_list),
+                    "target_hosts": sorted(targets),
+                    "explanation": (
+                        f"Source IP {source_ip} performed {len(auth_list)} anonymous NTLM "
+                        f"logons to {len(targets)} hosts. Excessive anonymous NTLM "
+                        f"authentication may indicate Responder probing or null session relay."
+                    ),
+                }
+            )
 
     return findings
 
@@ -455,7 +474,9 @@ def print_findings(findings, title):
             print(f"      Source IP: {finding['source_ip']}")
         if "actual_source_ip" in finding:
             print(f"      Actual Source IP: {finding['actual_source_ip']}")
-            print(f"      Expected Source IP: {finding.get('expected_source_ip', 'N/A')}")
+            print(
+                f"      Expected Source IP: {finding.get('expected_source_ip', 'N/A')}"
+            )
         if "workstation_name" in finding:
             print(f"      Workstation: {finding['workstation_name']}")
         if "target_hosts" in finding:
@@ -463,7 +484,9 @@ def print_findings(findings, title):
             if len(hosts) <= 5:
                 print(f"      Targets: {', '.join(hosts)}")
             else:
-                print(f"      Targets: {', '.join(hosts[:5])} ... (+{len(hosts)-5} more)")
+                print(
+                    f"      Targets: {', '.join(hosts[:5])} ... (+{len(hosts)-5} more)"
+                )
         if "source_ips" in finding:
             print(f"      Source IPs: {', '.join(finding['source_ips'])}")
 
@@ -475,28 +498,27 @@ def main():
         description="Detect NTLM relay attacks via Windows Security event log correlation"
     )
     parser.add_argument(
-        "--evtx", required=True,
-        help="Path to Windows Security .evtx log file"
+        "--evtx", required=True, help="Path to Windows Security .evtx log file"
     )
     parser.add_argument(
         "--inventory",
-        help="Path to CSV file with hostname,ip_address columns for mismatch detection"
+        help="Path to CSV file with hostname,ip_address columns for mismatch detection",
     )
     parser.add_argument(
-        "--json", action="store_true",
-        help="Output results in JSON format"
+        "--json", action="store_true", help="Output results in JSON format"
+    )
+    parser.add_argument("--output", "-o", help="Output file path (default: stdout)")
+    parser.add_argument(
+        "--rapid-window",
+        type=int,
+        default=RAPID_AUTH_WINDOW,
+        help=f"Time window for rapid auth detection in seconds (default: {RAPID_AUTH_WINDOW})",
     )
     parser.add_argument(
-        "--output", "-o",
-        help="Output file path (default: stdout)"
-    )
-    parser.add_argument(
-        "--rapid-window", type=int, default=RAPID_AUTH_WINDOW,
-        help=f"Time window for rapid auth detection in seconds (default: {RAPID_AUTH_WINDOW})"
-    )
-    parser.add_argument(
-        "--rapid-threshold", type=int, default=RAPID_AUTH_THRESHOLD,
-        help=f"Min unique targets for rapid auth alert (default: {RAPID_AUTH_THRESHOLD})"
+        "--rapid-threshold",
+        type=int,
+        default=RAPID_AUTH_THRESHOLD,
+        help=f"Min unique targets for rapid auth alert (default: {RAPID_AUTH_THRESHOLD})",
     )
     args = parser.parse_args()
 
@@ -517,14 +539,19 @@ def main():
     events = parse_evtx_file(args.evtx)
     print(f"[*] Parsed {len(events)} relevant Security events (4624, 4625, 4648, 4776)")
 
-    ntlm_4624 = [e for e in events if e.get("EventID") == 4624
-                  and e.get("AuthenticationPackageName") == "NTLM"]
+    ntlm_4624 = [
+        e
+        for e in events
+        if e.get("EventID") == 4624 and e.get("AuthenticationPackageName") == "NTLM"
+    ]
     print(f"[*] Found {len(ntlm_4624)} NTLM LogonType 3 events for analysis")
 
     print("[*] Running NTLM relay detection modules...")
 
     # Run all detection modules
-    mismatch_findings = detect_ip_hostname_mismatch(events, inventory) if inventory else []
+    mismatch_findings = (
+        detect_ip_hostname_mismatch(events, inventory) if inventory else []
+    )
     rapid_auth_findings = detect_rapid_multi_host_auth(
         events, args.rapid_window, args.rapid_threshold
     )
@@ -533,8 +560,11 @@ def main():
     anon_findings = detect_anonymous_ntlm_logons(events)
 
     all_findings = (
-        mismatch_findings + rapid_auth_findings + ntlmv1_findings
-        + machine_relay_findings + anon_findings
+        mismatch_findings
+        + rapid_auth_findings
+        + ntlmv1_findings
+        + machine_relay_findings
+        + anon_findings
     )
 
     all_results = {
@@ -575,7 +605,9 @@ def main():
         },
         "summary": {
             "total_findings": len(all_findings),
-            "critical": len([f for f in all_findings if f.get("severity") == "CRITICAL"]),
+            "critical": len(
+                [f for f in all_findings if f.get("severity") == "CRITICAL"]
+            ),
             "high": len([f for f in all_findings if f.get("severity") == "HIGH"]),
             "medium": len([f for f in all_findings if f.get("severity") == "MEDIUM"]),
             "low": len([f for f in all_findings if f.get("severity") == "LOW"]),
@@ -599,7 +631,9 @@ def main():
         if not inventory:
             print("\n[!] WARNING: No host inventory provided (--inventory).")
             print("    IP-hostname mismatch detection is DISABLED.")
-            print("    Provide a CSV with hostname,ip_address columns for full detection.")
+            print(
+                "    Provide a CSV with hostname,ip_address columns for full detection."
+            )
 
         print_findings(mismatch_findings, "IP-Hostname Mismatch Detection")
         print_findings(rapid_auth_findings, "Rapid Multi-Host Authentication")
@@ -618,8 +652,12 @@ def main():
         print(f"  Low:             {s['low']}")
 
         if s["critical"] > 0:
-            print(f"\n  [!!!] CRITICAL findings detected -- NTLM relay attack likely in progress!")
-            print(f"        Recommended: Isolate source IPs, reset affected credentials,")
+            print(
+                f"\n  [!!!] CRITICAL findings detected -- NTLM relay attack likely in progress!"
+            )
+            print(
+                f"        Recommended: Isolate source IPs, reset affected credentials,"
+            )
             print(f"        enforce SMB/LDAP signing, disable LLMNR/NBT-NS.")
 
         if args.output:

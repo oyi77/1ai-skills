@@ -11,7 +11,9 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 EVTX_NS = "http://schemas.microsoft.com/win/2004/08/events/event"
@@ -45,7 +47,9 @@ def parse_security_evtx(evtx_path):
                 for elem in root.findall(".//evt:EventData/evt:Data", ns):
                     data[elem.get("Name", "")] = elem.text or ""
                 time_elem = root.find(".//evt:System/evt:TimeCreated", ns)
-                data["TimeCreated"] = time_elem.get("SystemTime", "") if time_elem is not None else ""
+                data["TimeCreated"] = (
+                    time_elem.get("SystemTime", "") if time_elem is not None else ""
+                )
                 comp_elem = root.find(".//evt:System/evt:Computer", ns)
                 data["Computer"] = comp_elem.text if comp_elem is not None else ""
                 data["EventID"] = eid_elem.text
@@ -91,23 +95,27 @@ def detect_ip_hostname_mismatch(events, inventory):
         if workstation in inventory:
             expected = inventory[workstation]
             if source_ip != expected:
-                findings.append({
-                    "detection": "IP-Hostname Mismatch (NTLM Relay Indicator)",
-                    "severity": "CRITICAL",
-                    "mitre": "T1557.001",
-                    "timestamp": ev.get("TimeCreated"),
-                    "target_host": ev.get("Computer"),
-                    "target_user": user,
-                    "workstation": workstation,
-                    "actual_ip": source_ip,
-                    "expected_ip": expected,
-                    "lm_package": ev.get("LmPackageName"),
-                })
+                findings.append(
+                    {
+                        "detection": "IP-Hostname Mismatch (NTLM Relay Indicator)",
+                        "severity": "CRITICAL",
+                        "mitre": "T1557.001",
+                        "timestamp": ev.get("TimeCreated"),
+                        "target_host": ev.get("Computer"),
+                        "target_user": user,
+                        "workstation": workstation,
+                        "actual_ip": source_ip,
+                        "expected_ip": expected,
+                        "lm_package": ev.get("LmPackageName"),
+                    }
+                )
     logger.info("IP-hostname mismatch findings: %d", len(findings))
     return findings
 
 
-def detect_rapid_auth(events, window=RAPID_AUTH_WINDOW_DEFAULT, threshold=RAPID_AUTH_THRESHOLD_DEFAULT):
+def detect_rapid_auth(
+    events, window=RAPID_AUTH_WINDOW_DEFAULT, threshold=RAPID_AUTH_THRESHOLD_DEFAULT
+):
     """Detect rapid NTLM authentication to multiple targets (relay spraying)."""
     findings = []
     auth_groups = defaultdict(list)
@@ -140,17 +148,19 @@ def detect_rapid_auth(events, window=RAPID_AUTH_WINDOW_DEFAULT, threshold=RAPID_
                 else:
                     break
             if len(targets) >= threshold:
-                findings.append({
-                    "detection": "Rapid Multi-Host NTLM Auth (Relay Spraying)",
-                    "severity": "HIGH",
-                    "mitre": "T1557.001",
-                    "timestamp": start.isoformat(),
-                    "source_ip": ip,
-                    "target_user": user,
-                    "unique_targets": len(targets),
-                    "targets": sorted(targets),
-                    "window_seconds": window,
-                })
+                findings.append(
+                    {
+                        "detection": "Rapid Multi-Host NTLM Auth (Relay Spraying)",
+                        "severity": "HIGH",
+                        "mitre": "T1557.001",
+                        "timestamp": start.isoformat(),
+                        "source_ip": ip,
+                        "target_user": user,
+                        "unique_targets": len(targets),
+                        "targets": sorted(targets),
+                        "window_seconds": window,
+                    }
+                )
                 break
     logger.info("Rapid auth findings: %d", len(findings))
     return findings
@@ -169,23 +179,27 @@ def detect_ntlmv1_downgrade(events):
         user = ev.get("TargetUserName", "")
         if user.endswith("$") or user in ("ANONYMOUS LOGON", "-", ""):
             continue
-        v1_by_user[user].append({
-            "ts": ev.get("TimeCreated"),
-            "target": ev.get("Computer"),
-            "ip": ev.get("IpAddress"),
-        })
+        v1_by_user[user].append(
+            {
+                "ts": ev.get("TimeCreated"),
+                "target": ev.get("Computer"),
+                "ip": ev.get("IpAddress"),
+            }
+        )
 
     for user, auths in v1_by_user.items():
-        findings.append({
-            "detection": "NTLMv1 Downgrade Detected",
-            "severity": "HIGH",
-            "mitre": "T1557.001",
-            "timestamp": auths[0]["ts"],
-            "target_user": user,
-            "ntlmv1_count": len(auths),
-            "source_ips": sorted(set(a["ip"] for a in auths)),
-            "targets": sorted(set(a["target"] for a in auths)),
-        })
+        findings.append(
+            {
+                "detection": "NTLMv1 Downgrade Detected",
+                "severity": "HIGH",
+                "mitre": "T1557.001",
+                "timestamp": auths[0]["ts"],
+                "target_user": user,
+                "ntlmv1_count": len(auths),
+                "source_ips": sorted(set(a["ip"] for a in auths)),
+                "targets": sorted(set(a["target"] for a in auths)),
+            }
+        )
     logger.info("NTLMv1 downgrade findings: %d", len(findings))
     return findings
 
@@ -205,25 +219,29 @@ def detect_machine_relay(events):
         ip = ev.get("IpAddress", "")
         if ip in ("-", "::1", "127.0.0.1", ""):
             continue
-        machine_auths[user].append({
-            "ts": ev.get("TimeCreated"),
-            "target": ev.get("Computer"),
-            "ip": ip,
-        })
+        machine_auths[user].append(
+            {
+                "ts": ev.get("TimeCreated"),
+                "target": ev.get("Computer"),
+                "ip": ip,
+            }
+        )
 
     for machine, auths in machine_auths.items():
         ips = set(a["ip"] for a in auths)
         if len(ips) > 1:
-            findings.append({
-                "detection": "Machine Account Relay (Coercion + NTLM Relay)",
-                "severity": "CRITICAL",
-                "mitre": "T1557.001",
-                "timestamp": auths[0]["ts"],
-                "machine_account": machine,
-                "source_ips": sorted(ips),
-                "targets": sorted(set(a["target"] for a in auths)),
-                "auth_count": len(auths),
-            })
+            findings.append(
+                {
+                    "detection": "Machine Account Relay (Coercion + NTLM Relay)",
+                    "severity": "CRITICAL",
+                    "mitre": "T1557.001",
+                    "timestamp": auths[0]["ts"],
+                    "machine_account": machine,
+                    "source_ips": sorted(ips),
+                    "targets": sorted(set(a["target"] for a in auths)),
+                    "auth_count": len(auths),
+                }
+            )
     logger.info("Machine account relay findings: %d", len(findings))
     return findings
 
@@ -238,19 +256,19 @@ def audit_smb_signing_local():
     checks = {
         "SMB_Server_RequireSign": (
             r"HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters",
-            "RequireSecuritySignature"
+            "RequireSecuritySignature",
         ),
         "SMB_Client_RequireSign": (
             r"HKLM\SYSTEM\CurrentControlSet\Services\LanManWorkstation\Parameters",
-            "RequireSecuritySignature"
+            "RequireSecuritySignature",
         ),
         "LmCompatibilityLevel": (
             r"HKLM\SYSTEM\CurrentControlSet\Control\Lsa",
-            "LmCompatibilityLevel"
+            "LmCompatibilityLevel",
         ),
         "LLMNR_Disabled": (
             r"HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient",
-            "EnableMulticast"
+            "EnableMulticast",
         ),
     }
 
@@ -258,7 +276,9 @@ def audit_smb_signing_local():
         try:
             result = subprocess.run(
                 ["reg", "query", key, "/v", value_name],
-                capture_output=True, text=True, timeout=SUBPROCESS_TIMEOUT
+                capture_output=True,
+                text=True,
+                timeout=SUBPROCESS_TIMEOUT,
             )
             if result.returncode == 0:
                 for line in result.stdout.splitlines():
@@ -297,7 +317,9 @@ def generate_report(all_findings, smb_audit, output_path):
         "mitre_technique": "T1557.001",
         "summary": {
             "total_findings": len(all_findings),
-            "critical": len([f for f in all_findings if f.get("severity") == "CRITICAL"]),
+            "critical": len(
+                [f for f in all_findings if f.get("severity") == "CRITICAL"]
+            ),
             "high": len([f for f in all_findings if f.get("severity") == "HIGH"]),
             "medium": len([f for f in all_findings if f.get("severity") == "MEDIUM"]),
         },
@@ -314,7 +336,9 @@ def generate_report(all_findings, smb_audit, output_path):
     print(f"  Total findings: {s['total_findings']}")
     print(f"  Critical: {s['critical']}, High: {s['high']}, Medium: {s['medium']}")
     if s["critical"] > 0:
-        print("  [!!!] CRITICAL: IP-hostname mismatch or machine account relay detected")
+        print(
+            "  [!!!] CRITICAL: IP-hostname mismatch or machine account relay detected"
+        )
     if smb_audit.get("SMB_Relay_Vulnerable") == "YES":
         print("  [!] WARNING: SMB signing NOT enforced on this host")
     if smb_audit.get("Responder_Vulnerable") == "YES":
@@ -326,17 +350,39 @@ def main():
     parser = argparse.ArgumentParser(
         description="NTLM Relay Detection Agent (T1557.001)"
     )
-    parser.add_argument("--evtx", required=True, help="Path to Windows Security .evtx file")
-    parser.add_argument("--inventory", help="CSV file with hostname,ip_address columns for mismatch detection")
-    parser.add_argument("--output", "-o", default="ntlm_relay_report.json",
-                        help="Output JSON report path (default: ntlm_relay_report.json)")
-    parser.add_argument("--rapid-window", type=int, default=RAPID_AUTH_WINDOW_DEFAULT,
-                        help=f"Rapid auth detection window in seconds (default: {RAPID_AUTH_WINDOW_DEFAULT})")
-    parser.add_argument("--rapid-threshold", type=int, default=RAPID_AUTH_THRESHOLD_DEFAULT,
-                        help=f"Min unique targets for rapid auth alert (default: {RAPID_AUTH_THRESHOLD_DEFAULT})")
-    parser.add_argument("--audit-signing", action="store_true",
-                        help="Audit local SMB/NTLM signing configuration (Windows only)")
-    parser.add_argument("--verbose", "-v", action="store_true", help="Enable debug logging")
+    parser.add_argument(
+        "--evtx", required=True, help="Path to Windows Security .evtx file"
+    )
+    parser.add_argument(
+        "--inventory",
+        help="CSV file with hostname,ip_address columns for mismatch detection",
+    )
+    parser.add_argument(
+        "--output",
+        "-o",
+        default="ntlm_relay_report.json",
+        help="Output JSON report path (default: ntlm_relay_report.json)",
+    )
+    parser.add_argument(
+        "--rapid-window",
+        type=int,
+        default=RAPID_AUTH_WINDOW_DEFAULT,
+        help=f"Rapid auth detection window in seconds (default: {RAPID_AUTH_WINDOW_DEFAULT})",
+    )
+    parser.add_argument(
+        "--rapid-threshold",
+        type=int,
+        default=RAPID_AUTH_THRESHOLD_DEFAULT,
+        help=f"Min unique targets for rapid auth alert (default: {RAPID_AUTH_THRESHOLD_DEFAULT})",
+    )
+    parser.add_argument(
+        "--audit-signing",
+        action="store_true",
+        help="Audit local SMB/NTLM signing configuration (Windows only)",
+    )
+    parser.add_argument(
+        "--verbose", "-v", action="store_true", help="Enable debug logging"
+    )
     args = parser.parse_args()
 
     if args.verbose:
@@ -362,11 +408,16 @@ def main():
     machine = detect_machine_relay(events)
 
     if not inventory:
-        logger.warning("No inventory provided (--inventory). IP-hostname mismatch detection disabled.")
+        logger.warning(
+            "No inventory provided (--inventory). IP-hostname mismatch detection disabled."
+        )
 
     all_findings = mismatch + machine + rapid + downgrade
-    all_findings.sort(key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}.get(
-        x.get("severity", "LOW"), 4))
+    all_findings.sort(
+        key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}.get(
+            x.get("severity", "LOW"), 4
+        )
+    )
 
     smb_audit = audit_smb_signing_local() if args.audit_signing else {}
 

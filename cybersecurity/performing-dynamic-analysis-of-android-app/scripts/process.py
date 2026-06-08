@@ -33,7 +33,9 @@ class AndroidDynamicAnalyzer:
             full_cmd.extend(["-s", self.device_id])
         full_cmd.extend(["shell"] + cmd.split())
         try:
-            result = subprocess.run(full_cmd, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(
+                full_cmd, capture_output=True, text=True, timeout=timeout
+            )
             return result.stdout.strip()
         except (subprocess.TimeoutExpired, FileNotFoundError):
             return ""
@@ -42,7 +44,9 @@ class AndroidDynamicAnalyzer:
         """Run Objection command."""
         full_cmd = ["objection", "--gadget", self.package, "run", cmd]
         try:
-            result = subprocess.run(full_cmd, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(
+                full_cmd, capture_output=True, text=True, timeout=timeout
+            )
             return result.stdout + result.stderr
         except (subprocess.TimeoutExpired, FileNotFoundError):
             return ""
@@ -53,7 +57,9 @@ class AndroidDynamicAnalyzer:
         if self.device_id:
             cmd.extend(["-D", self.device_id])
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=timeout
+            )
             return result.stdout
         except (subprocess.TimeoutExpired, FileNotFoundError):
             return ""
@@ -63,7 +69,9 @@ class AndroidDynamicAnalyzer:
         try:
             result = subprocess.run(
                 ["frida-ps", "-U"] + (["-D", self.device_id] if self.device_id else []),
-                capture_output=True, text=True, timeout=10
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             return result.returncode == 0
         except (subprocess.TimeoutExpired, FileNotFoundError):
@@ -76,19 +84,33 @@ class AndroidDynamicAnalyzer:
         receivers = self._objection("android hooking list receivers")
 
         components = {
-            "activities": [l.strip() for l in activities.split("\n") if l.strip() and not l.startswith("[")],
-            "services": [l.strip() for l in services.split("\n") if l.strip() and not l.startswith("[")],
-            "receivers": [l.strip() for l in receivers.split("\n") if l.strip() and not l.startswith("[")],
+            "activities": [
+                l.strip()
+                for l in activities.split("\n")
+                if l.strip() and not l.startswith("[")
+            ],
+            "services": [
+                l.strip()
+                for l in services.split("\n")
+                if l.strip() and not l.startswith("[")
+            ],
+            "receivers": [
+                l.strip()
+                for l in receivers.split("\n")
+                if l.strip() and not l.startswith("[")
+            ],
         }
 
-        self.findings.append({
-            "check": "component_enumeration",
-            "category": "MASVS-PLATFORM",
-            "total_activities": len(components["activities"]),
-            "total_services": len(components["services"]),
-            "total_receivers": len(components["receivers"]),
-            "severity": "INFO",
-        })
+        self.findings.append(
+            {
+                "check": "component_enumeration",
+                "category": "MASVS-PLATFORM",
+                "total_activities": len(components["activities"]),
+                "total_services": len(components["services"]),
+                "total_receivers": len(components["receivers"]),
+                "severity": "INFO",
+            }
+        )
         return components
 
     def test_root_detection(self) -> dict:
@@ -103,7 +125,8 @@ class AndroidDynamicAnalyzer:
             "detection_present": detection_found,
             "bypass_successful": detection_found,
             "severity": "MEDIUM" if not detection_found else "INFO",
-            "description": "Root detection " + ("found and bypassed" if detection_found else "not implemented"),
+            "description": "Root detection "
+            + ("found and bypassed" if detection_found else "not implemented"),
         }
         self.findings.append(finding)
         return finding
@@ -119,7 +142,8 @@ class AndroidDynamicAnalyzer:
             "owasp_mobile": "M5",
             "pinning_present": pinning_found,
             "severity": "MEDIUM" if not pinning_found else "INFO",
-            "description": "SSL pinning " + ("detected" if pinning_found else "not detected"),
+            "description": "SSL pinning "
+            + ("detected" if pinning_found else "not detected"),
         }
         self.findings.append(finding)
         return finding
@@ -162,7 +186,9 @@ class AndroidDynamicAnalyzer:
             "run_as_works": debuggable,
             "flag_debuggable": flag_debuggable,
             "severity": "HIGH" if flag_debuggable else "PASS",
-            "description": "App " + ("IS" if flag_debuggable else "is NOT") + " flagged as debuggable",
+            "description": "App "
+            + ("IS" if flag_debuggable else "is NOT")
+            + " flagged as debuggable",
         }
         self.findings.append(finding)
         return finding
@@ -207,7 +233,9 @@ def main():
     parser = argparse.ArgumentParser(description="Android Dynamic Analysis Automation")
     parser.add_argument("--package", required=True, help="Target package name")
     parser.add_argument("--device-id", help="ADB device serial")
-    parser.add_argument("--output", default="dynamic_analysis.json", help="Output report")
+    parser.add_argument(
+        "--output", default="dynamic_analysis.json", help="Output report"
+    )
     args = parser.parse_args()
 
     analyzer = AndroidDynamicAnalyzer(args.package, args.device_id)

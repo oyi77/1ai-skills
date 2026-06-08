@@ -19,21 +19,47 @@ def test_price_manipulation(base_url, token, cart_endpoint="/api/cart/add"):
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     url = urljoin(base_url, cart_endpoint)
     test_cases = [
-        {"name": "negative_quantity", "payload": {"product_id": 1, "quantity": -1}, "severity": "CRITICAL"},
-        {"name": "zero_price", "payload": {"product_id": 1, "quantity": 1, "price": 0}, "severity": "CRITICAL"},
-        {"name": "float_quantity", "payload": {"product_id": 1, "quantity": 0.001}, "severity": "HIGH"},
-        {"name": "huge_quantity", "payload": {"product_id": 1, "quantity": 999999999}, "severity": "HIGH"},
-        {"name": "negative_price", "payload": {"product_id": 1, "quantity": 1, "price": -99.99}, "severity": "CRITICAL"},
+        {
+            "name": "negative_quantity",
+            "payload": {"product_id": 1, "quantity": -1},
+            "severity": "CRITICAL",
+        },
+        {
+            "name": "zero_price",
+            "payload": {"product_id": 1, "quantity": 1, "price": 0},
+            "severity": "CRITICAL",
+        },
+        {
+            "name": "float_quantity",
+            "payload": {"product_id": 1, "quantity": 0.001},
+            "severity": "HIGH",
+        },
+        {
+            "name": "huge_quantity",
+            "payload": {"product_id": 1, "quantity": 999999999},
+            "severity": "HIGH",
+        },
+        {
+            "name": "negative_price",
+            "payload": {"product_id": 1, "quantity": 1, "price": -99.99},
+            "severity": "CRITICAL",
+        },
     ]
     for tc in test_cases:
         try:
-            resp = requests.post(url, headers=headers, json=tc["payload"], timeout=10, verify=False)
+            resp = requests.post(
+                url, headers=headers, json=tc["payload"], timeout=10, verify=False
+            )
             if resp.status_code in (200, 201):
-                findings.append({
-                    "type": "PRICE_MANIPULATION", "test": tc["name"],
-                    "payload": tc["payload"], "status": resp.status_code,
-                    "severity": tc["severity"],
-                })
+                findings.append(
+                    {
+                        "type": "PRICE_MANIPULATION",
+                        "test": tc["name"],
+                        "payload": tc["payload"],
+                        "status": resp.status_code,
+                        "severity": tc["severity"],
+                    }
+                )
                 print(f"  [!] {tc['name']}: Accepted (status {resp.status_code})")
             else:
                 print(f"  [+] {tc['name']}: Rejected (status {resp.status_code})")
@@ -55,19 +81,29 @@ def test_checkout_total_override(base_url, token, checkout_endpoint="/api/checko
     ]
     for payload in payloads:
         try:
-            resp = requests.post(url, headers=headers, json=payload, timeout=10, verify=False)
+            resp = requests.post(
+                url, headers=headers, json=payload, timeout=10, verify=False
+            )
             if resp.status_code in (200, 201):
-                findings.append({
-                    "type": "TOTAL_OVERRIDE", "payload": payload,
-                    "status": resp.status_code, "severity": "CRITICAL",
-                })
-                print(f"  [!] Checkout accepted with total={payload.get('total', payload.get('amount'))}")
+                findings.append(
+                    {
+                        "type": "TOTAL_OVERRIDE",
+                        "payload": payload,
+                        "status": resp.status_code,
+                        "severity": "CRITICAL",
+                    }
+                )
+                print(
+                    f"  [!] Checkout accepted with total={payload.get('total', payload.get('amount'))}"
+                )
         except requests.RequestException:
             continue
     return findings
 
 
-def test_coupon_reuse(base_url, token, coupon_endpoint="/api/cart/apply-coupon", code="DISCOUNT50"):
+def test_coupon_reuse(
+    base_url, token, coupon_endpoint="/api/cart/apply-coupon", code="DISCOUNT50"
+):
     """Test if a coupon can be applied multiple times."""
     print(f"\n[*] Testing coupon reuse ({code})...")
     findings = []
@@ -76,17 +112,26 @@ def test_coupon_reuse(base_url, token, coupon_endpoint="/api/cart/apply-coupon",
     success_count = 0
     for i in range(5):
         try:
-            resp = requests.post(url, headers=headers, json={"coupon_code": code},
-                                 timeout=10, verify=False)
+            resp = requests.post(
+                url,
+                headers=headers,
+                json={"coupon_code": code},
+                timeout=10,
+                verify=False,
+            )
             if resp.status_code in (200, 201):
                 success_count += 1
         except requests.RequestException:
             break
     if success_count > 1:
-        findings.append({
-            "type": "COUPON_REUSE", "code": code, "times_applied": success_count,
-            "severity": "HIGH",
-        })
+        findings.append(
+            {
+                "type": "COUPON_REUSE",
+                "code": code,
+                "times_applied": success_count,
+                "severity": "HIGH",
+            }
+        )
         print(f"  [!] Coupon applied {success_count} times!")
     else:
         print(f"  [+] Coupon properly limited")
@@ -101,17 +146,31 @@ def test_workflow_bypass(base_url, token, steps):
     for step in steps:
         url = urljoin(base_url, step["endpoint"])
         try:
-            resp = requests.request(step.get("method", "POST"), url, headers=headers,
-                                    json=step.get("payload", {}), timeout=10, verify=False)
+            resp = requests.request(
+                step.get("method", "POST"),
+                url,
+                headers=headers,
+                json=step.get("payload", {}),
+                timeout=10,
+                verify=False,
+            )
             if resp.status_code in (200, 201):
-                findings.append({
-                    "type": "WORKFLOW_BYPASS", "step": step["name"],
-                    "endpoint": step["endpoint"], "status": resp.status_code,
-                    "severity": "HIGH",
-                })
-                print(f"  [!] Step '{step['name']}' bypassed (status {resp.status_code})")
+                findings.append(
+                    {
+                        "type": "WORKFLOW_BYPASS",
+                        "step": step["name"],
+                        "endpoint": step["endpoint"],
+                        "status": resp.status_code,
+                        "severity": "HIGH",
+                    }
+                )
+                print(
+                    f"  [!] Step '{step['name']}' bypassed (status {resp.status_code})"
+                )
             else:
-                print(f"  [+] Step '{step['name']}' enforced (status {resp.status_code})")
+                print(
+                    f"  [+] Step '{step['name']}' enforced (status {resp.status_code})"
+                )
         except requests.RequestException:
             continue
     return findings
@@ -119,7 +178,9 @@ def test_workflow_bypass(base_url, token, steps):
 
 def test_race_condition(base_url, token, endpoint, payload, concurrent=10):
     """Test for race conditions by sending concurrent requests."""
-    print(f"\n[*] Testing race condition on {endpoint} ({concurrent} concurrent requests)...")
+    print(
+        f"\n[*] Testing race condition on {endpoint} ({concurrent} concurrent requests)..."
+    )
     findings = []
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     url = urljoin(base_url, endpoint)
@@ -127,7 +188,9 @@ def test_race_condition(base_url, token, endpoint, payload, concurrent=10):
 
     def send_request():
         try:
-            resp = requests.post(url, headers=headers, json=payload, timeout=10, verify=False)
+            resp = requests.post(
+                url, headers=headers, json=payload, timeout=10, verify=False
+            )
             results.append({"status": resp.status_code, "body": resp.text[:200]})
         except requests.RequestException:
             results.append({"status": 0, "body": "error"})
@@ -140,24 +203,38 @@ def test_race_condition(base_url, token, endpoint, payload, concurrent=10):
 
     successes = sum(1 for r in results if r["status"] in (200, 201))
     if successes > 1:
-        findings.append({
-            "type": "RACE_CONDITION", "endpoint": endpoint,
-            "concurrent": concurrent, "successes": successes, "severity": "CRITICAL",
-        })
-        print(f"  [!] {successes}/{concurrent} requests succeeded (potential race condition)")
+        findings.append(
+            {
+                "type": "RACE_CONDITION",
+                "endpoint": endpoint,
+                "concurrent": concurrent,
+                "successes": successes,
+                "severity": "CRITICAL",
+            }
+        )
+        print(
+            f"  [!] {successes}/{concurrent} requests succeeded (potential race condition)"
+        )
     else:
         print(f"  [+] {successes}/{concurrent} succeeded (properly serialized)")
     return findings
 
 
-def test_self_referral(base_url, token, referral_endpoint="/api/referrals/invite", email="self@test.com"):
+def test_self_referral(
+    base_url, token, referral_endpoint="/api/referrals/invite", email="self@test.com"
+):
     """Test if self-referral is possible."""
     print("\n[*] Testing self-referral...")
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     url = urljoin(base_url, referral_endpoint)
     try:
-        resp = requests.post(url, headers=headers, json={"referral_email": email},
-                             timeout=10, verify=False)
+        resp = requests.post(
+            url,
+            headers=headers,
+            json={"referral_email": email},
+            timeout=10,
+            verify=False,
+        )
         if resp.status_code in (200, 201):
             print(f"  [!] Self-referral accepted")
             return [{"type": "SELF_REFERRAL", "severity": "MEDIUM"}]
@@ -185,9 +262,13 @@ def generate_report(findings, output_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Business Logic Vulnerability Testing Agent")
+    parser = argparse.ArgumentParser(
+        description="Business Logic Vulnerability Testing Agent"
+    )
     parser.add_argument("base_url", help="Base URL of the target application")
-    parser.add_argument("--token", required=True, help="Bearer token for authentication")
+    parser.add_argument(
+        "--token", required=True, help="Bearer token for authentication"
+    )
     parser.add_argument("--cart-endpoint", default="/api/cart/add")
     parser.add_argument("--checkout-endpoint", default="/api/checkout")
     parser.add_argument("--coupon-code", default="DISCOUNT50")
@@ -196,11 +277,21 @@ def main():
 
     print(f"[*] Business Logic Vulnerability Assessment: {args.base_url}")
     findings = []
-    findings.extend(test_price_manipulation(args.base_url, args.token, args.cart_endpoint))
-    findings.extend(test_checkout_total_override(args.base_url, args.token, args.checkout_endpoint))
+    findings.extend(
+        test_price_manipulation(args.base_url, args.token, args.cart_endpoint)
+    )
+    findings.extend(
+        test_checkout_total_override(args.base_url, args.token, args.checkout_endpoint)
+    )
     findings.extend(test_coupon_reuse(args.base_url, args.token, code=args.coupon_code))
-    findings.extend(test_race_condition(args.base_url, args.token,
-                                        args.cart_endpoint, {"coupon_code": args.coupon_code}))
+    findings.extend(
+        test_race_condition(
+            args.base_url,
+            args.token,
+            args.cart_endpoint,
+            {"coupon_code": args.coupon_code},
+        )
+    )
     findings.extend(test_self_referral(args.base_url, args.token))
     generate_report(findings, args.output)
 

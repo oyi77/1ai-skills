@@ -15,28 +15,77 @@ import shlex
 import platform
 import hashlib
 
-
 VOLATILITY_ORDER = [
-    {"priority": 1, "source": "memory", "description": "Physical memory (RAM) dump",
-     "tool_linux": "avml", "tool_windows": "winpmem_mini_x64.exe"},
-    {"priority": 2, "source": "network_connections", "description": "Active network connections",
-     "tool_linux": "ss -tunap", "tool_windows": "netstat -anob"},
-    {"priority": 3, "source": "running_processes", "description": "Running process list with details",
-     "tool_linux": "ps auxwwf", "tool_windows": "tasklist /V /FO CSV"},
-    {"priority": 4, "source": "open_files", "description": "Open file handles",
-     "tool_linux": "lsof -nP", "tool_windows": "handle64.exe -a"},
-    {"priority": 5, "source": "network_config", "description": "Network interface configuration",
-     "tool_linux": "ip addr show", "tool_windows": "ipconfig /all"},
-    {"priority": 6, "source": "routing_table", "description": "Network routing table",
-     "tool_linux": "ip route show", "tool_windows": "route print"},
-    {"priority": 7, "source": "arp_cache", "description": "ARP cache entries",
-     "tool_linux": "ip neigh show", "tool_windows": "arp -a"},
-    {"priority": 8, "source": "dns_cache", "description": "DNS resolver cache",
-     "tool_linux": "cat /etc/resolv.conf", "tool_windows": "ipconfig /displaydns"},
-    {"priority": 9, "source": "logged_users", "description": "Currently logged-in users",
-     "tool_linux": "w", "tool_windows": "query user"},
-    {"priority": 10, "source": "scheduled_tasks", "description": "Scheduled tasks and cron jobs",
-     "tool_linux": ["crontab -l", "ls /etc/cron.d/"], "tool_windows": "schtasks /query /FO CSV /V"},
+    {
+        "priority": 1,
+        "source": "memory",
+        "description": "Physical memory (RAM) dump",
+        "tool_linux": "avml",
+        "tool_windows": "winpmem_mini_x64.exe",
+    },
+    {
+        "priority": 2,
+        "source": "network_connections",
+        "description": "Active network connections",
+        "tool_linux": "ss -tunap",
+        "tool_windows": "netstat -anob",
+    },
+    {
+        "priority": 3,
+        "source": "running_processes",
+        "description": "Running process list with details",
+        "tool_linux": "ps auxwwf",
+        "tool_windows": "tasklist /V /FO CSV",
+    },
+    {
+        "priority": 4,
+        "source": "open_files",
+        "description": "Open file handles",
+        "tool_linux": "lsof -nP",
+        "tool_windows": "handle64.exe -a",
+    },
+    {
+        "priority": 5,
+        "source": "network_config",
+        "description": "Network interface configuration",
+        "tool_linux": "ip addr show",
+        "tool_windows": "ipconfig /all",
+    },
+    {
+        "priority": 6,
+        "source": "routing_table",
+        "description": "Network routing table",
+        "tool_linux": "ip route show",
+        "tool_windows": "route print",
+    },
+    {
+        "priority": 7,
+        "source": "arp_cache",
+        "description": "ARP cache entries",
+        "tool_linux": "ip neigh show",
+        "tool_windows": "arp -a",
+    },
+    {
+        "priority": 8,
+        "source": "dns_cache",
+        "description": "DNS resolver cache",
+        "tool_linux": "cat /etc/resolv.conf",
+        "tool_windows": "ipconfig /displaydns",
+    },
+    {
+        "priority": 9,
+        "source": "logged_users",
+        "description": "Currently logged-in users",
+        "tool_linux": "w",
+        "tool_windows": "query user",
+    },
+    {
+        "priority": 10,
+        "source": "scheduled_tasks",
+        "description": "Scheduled tasks and cron jobs",
+        "tool_linux": ["crontab -l", "ls /etc/cron.d/"],
+        "tool_windows": "schtasks /query /FO CSV /V",
+    },
 ]
 
 
@@ -73,11 +122,15 @@ def collect_artifact(source_config, output_dir):
                 combined_stdout += sub_proc.stdout
                 combined_stderr += sub_proc.stderr
                 last_rc = sub_proc.returncode
-            proc = type("CombinedResult", (), {
-                "stdout": combined_stdout,
-                "stderr": combined_stderr,
-                "returncode": last_rc,
-            })()
+            proc = type(
+                "CombinedResult",
+                (),
+                {
+                    "stdout": combined_stdout,
+                    "stderr": combined_stderr,
+                    "returncode": last_rc,
+                },
+            )()
         else:
             proc = _run_single_cmd(cmd, timeout=60)
         result["status"] = "collected"
@@ -120,19 +173,23 @@ def run_collection(output_dir, sources=None):
 
     for source_config in sorted(sources, key=lambda x: x["priority"]):
         if source_config["source"] == "memory":
-            manifest["artifacts"].append({
-                "source": "memory",
-                "priority": 1,
-                "status": "skipped",
-                "note": "Memory dump requires elevated privileges and dedicated tool",
-            })
+            manifest["artifacts"].append(
+                {
+                    "source": "memory",
+                    "priority": 1,
+                    "status": "skipped",
+                    "note": "Memory dump requires elevated privileges and dedicated tool",
+                }
+            )
             continue
 
         result = collect_artifact(source_config, output_dir)
         manifest["artifacts"].append(result)
 
     manifest["collection_end"] = datetime.datetime.utcnow().isoformat() + "Z"
-    manifest["total_collected"] = sum(1 for a in manifest["artifacts"] if a["status"] == "collected")
+    manifest["total_collected"] = sum(
+        1 for a in manifest["artifacts"] if a["status"] == "collected"
+    )
 
     manifest_path = os.path.join(output_dir, "collection_manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as f:
@@ -150,8 +207,13 @@ if __name__ == "__main__":
     print("  Platform: {}".format(platform.system()))
     print("  Hostname: {}".format(platform.node()))
 
-    output_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
-        os.path.expanduser("~"), "volatile_evidence_" + datetime.datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    output_dir = (
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else os.path.join(
+            os.path.expanduser("~"),
+            "volatile_evidence_" + datetime.datetime.utcnow().strftime("%Y%m%d_%H%M%S"),
+        )
     )
 
     print("\n--- RFC 3227 Volatility Order ---")
@@ -165,11 +227,20 @@ if __name__ == "__main__":
     print("\n--- Collection Results ---")
     for a in manifest["artifacts"]:
         status_marker = "+" if a["status"] == "collected" else "-"
-        print("  [{}] P{}: {} -> {}".format(
-            status_marker, a["priority"], a["source"], a["status"]))
+        print(
+            "  [{}] P{}: {} -> {}".format(
+                status_marker, a["priority"], a["source"], a["status"]
+            )
+        )
 
-    print("\nTotal collected: {}/{}".format(
-        manifest["total_collected"], len(manifest["artifacts"])))
+    print(
+        "\nTotal collected: {}/{}".format(
+            manifest["total_collected"], len(manifest["artifacts"])
+        )
+    )
     print("Manifest: {}".format(manifest.get("manifest_file", "")))
 
-    print("\n" + json.dumps({"artifacts_collected": manifest["total_collected"]}, indent=2))
+    print(
+        "\n"
+        + json.dumps({"artifacts_collected": manifest["total_collected"]}, indent=2)
+    )

@@ -13,7 +13,17 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/45r5yvze3vy4",
         "benefit": "bantu kamu dapet kerja lebih cepet dengan AI",
-        "keywords": ["kerja", "job", "karir", "cv", "resume", "lamaran", "interview", "hiring", "loker"],
+        "keywords": [
+            "kerja",
+            "job",
+            "karir",
+            "cv",
+            "resume",
+            "lamaran",
+            "interview",
+            "hiring",
+            "loker",
+        ],
     },
     "ai_creative_ad_engine": {
         "name": "AI Creative Ad Engine",
@@ -21,7 +31,16 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/9r8rj1o38q59",
         "benefit": "bikin iklan yang convert pakai AI",
-        "keywords": ["iklan", "ads", "fb ads", "meta ads", "copywriting", "marketing", "creative", "konten iklan"],
+        "keywords": [
+            "iklan",
+            "ads",
+            "fb ads",
+            "meta ads",
+            "copywriting",
+            "marketing",
+            "creative",
+            "konten iklan",
+        ],
     },
     "food_menu_ai_studio": {
         "name": "Food Menu AI Studio",
@@ -29,7 +48,16 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/l4q49jj3z383",
         "benefit": "desain menu makanan profesional pakai AI",
-        "keywords": ["menu", "makanan", "restoran", "cafe", "kuliner", "food", "warung", "masakan"],
+        "keywords": [
+            "menu",
+            "makanan",
+            "restoran",
+            "cafe",
+            "kuliner",
+            "food",
+            "warung",
+            "masakan",
+        ],
     },
     "studio_marketplace_pro": {
         "name": "Studio Marketplace Pro",
@@ -37,7 +65,15 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/emne05mm7v25",
         "benefit": "boost penjualan marketplace kamu pakai AI",
-        "keywords": ["shopee", "tokopedia", "marketplace", "jualan", "toko online", "seller", "olshop"],
+        "keywords": [
+            "shopee",
+            "tokopedia",
+            "marketplace",
+            "jualan",
+            "toko online",
+            "seller",
+            "olshop",
+        ],
     },
     "ai_creative_tools": {
         "name": "AI Creative Tools",
@@ -45,7 +81,15 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/89d30qd3ddnj",
         "benefit": "lengkap tools AI buat content creator",
-        "keywords": ["tools", "ai tools", "content creator", "desain", "grafis", "edit foto", "thumbnail"],
+        "keywords": [
+            "tools",
+            "ai tools",
+            "content creator",
+            "desain",
+            "grafis",
+            "edit foto",
+            "thumbnail",
+        ],
     },
     "guru_pintar_ai": {
         "name": "Guru Pintar AI",
@@ -53,7 +97,16 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/6821op5e24kn",
         "benefit": "jadi guru/pengajar lebih efektif dengan AI",
-        "keywords": ["guru", "mengajar", "pendidikan", "les", "bimbel", "edukasi", "murid", "kelas"],
+        "keywords": [
+            "guru",
+            "mengajar",
+            "pendidikan",
+            "les",
+            "bimbel",
+            "edukasi",
+            "murid",
+            "kelas",
+        ],
     },
     "mesin_cetak_bisnis_kuliner": {
         "name": "Mesin Cetak Bisnis Kuliner",
@@ -61,7 +114,14 @@ PRODUCTS = {
         "price_str": "75rb",
         "url": "https://lynk.id/jendralbot/kzryk28dxmpx",
         "benefit": "scale bisnis kuliner kamu dengan sistem AI",
-        "keywords": ["bisnis kuliner", "usaha makanan", "fnb", "franchise", "catering", "snack"],
+        "keywords": [
+            "bisnis kuliner",
+            "usaha makanan",
+            "fnb",
+            "franchise",
+            "catering",
+            "snack",
+        ],
     },
     "belanja_duit_balik": {
         "name": "Belanja Duit Balik",
@@ -77,7 +137,15 @@ PRODUCTS = {
         "price_str": "1jt",
         "url": "https://lynk.id/jendralbot/regxdn7xkpz6",
         "benefit": "hasilin uang dari TikTok Affiliate",
-        "keywords": ["tiktok", "affiliate", "penghasilan", "income", "cuan", "passive income", "commission"],
+        "keywords": [
+            "tiktok",
+            "affiliate",
+            "penghasilan",
+            "income",
+            "cuan",
+            "passive income",
+            "commission",
+        ],
     },
 }
 
@@ -155,8 +223,10 @@ Kalau ada pertanyaan, tanya aja ya 🔥"""
 
 # ─── TEMPLATE GETTERS ──────────────────────────────────────────────────────────
 
+
 def get_positive_reply() -> str:
     return random.choice(POSITIVE_REPLIES)
+
 
 def get_question_reply(product: dict) -> str:
     tpl = random.choice(QUESTION_REPLIES)
@@ -166,11 +236,14 @@ def get_question_reply(product: dict) -> str:
         price=f"IDR {product['price_str']}" if product["price"] > 0 else "GRATIS",
     )
 
+
 def get_interest_reply() -> str:
     return random.choice(INTEREST_REPLIES)
 
+
 def get_negative_reply() -> str:
     return random.choice(NEGATIVE_REPLIES)
+
 
 def get_price_reply(product: dict) -> str:
     tpl = random.choice(PRICE_REPLIES)
@@ -179,8 +252,10 @@ def get_price_reply(product: dict) -> str:
         price=f"IDR {product['price_str']}" if product["price"] > 0 else "GRATIS",
     )
 
+
 def get_dm_public_reply() -> str:
     return random.choice(DM_PUBLIC_REPLY)
+
 
 def get_dm_message(product: dict) -> str:
     if product["price"] == 0:
@@ -195,6 +270,7 @@ def get_dm_message(product: dict) -> str:
         benefit=product["benefit"],
         price=f"IDR {product['price_str']}",
     )
+
 
 def get_generic_reply() -> str:
     return random.choice(GENERIC_ENGAGEMENT)

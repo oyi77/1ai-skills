@@ -79,15 +79,17 @@ def test_anonymous_access(report: PentestReport):
     for cmd, description in test_commands:
         rc, out, err = run_kubectl(["--as=system:anonymous"] + cmd)
         if rc == 0 and "Forbidden" not in err:
-            report.findings.append(PentestFinding(
-                category="Authentication",
-                title=f"Anonymous access allowed: {description}",
-                severity="CRITICAL",
-                details=f"Anonymous user can: {description}",
-                impact="Unauthenticated users can access cluster resources",
-                remediation="Disable anonymous authentication: --anonymous-auth=false",
-                mitre_id="T1078"
-            ))
+            report.findings.append(
+                PentestFinding(
+                    category="Authentication",
+                    title=f"Anonymous access allowed: {description}",
+                    severity="CRITICAL",
+                    details=f"Anonymous user can: {description}",
+                    impact="Unauthenticated users can access cluster resources",
+                    remediation="Disable anonymous authentication: --anonymous-auth=false",
+                    mitre_id="T1078",
+                )
+            )
 
 
 def test_rbac_misconfigurations(report: PentestReport):
@@ -113,16 +115,22 @@ def test_rbac_misconfigurations(report: PentestReport):
                     "system:authenticated",
                 ]
 
-                if subject_name in dangerous_subjects and role_ref in ("cluster-admin", "admin", "edit"):
-                    report.findings.append(PentestFinding(
-                        category="RBAC",
-                        title=f"Dangerous ClusterRoleBinding: {name}",
-                        severity="CRITICAL",
-                        details=f"Subject '{subject_name}' bound to role '{role_ref}'",
-                        impact="Broad access granted to anonymous or all authenticated users",
-                        remediation=f"Remove or restrict ClusterRoleBinding '{name}'",
-                        mitre_id="T1078.004"
-                    ))
+                if subject_name in dangerous_subjects and role_ref in (
+                    "cluster-admin",
+                    "admin",
+                    "edit",
+                ):
+                    report.findings.append(
+                        PentestFinding(
+                            category="RBAC",
+                            title=f"Dangerous ClusterRoleBinding: {name}",
+                            severity="CRITICAL",
+                            details=f"Subject '{subject_name}' bound to role '{role_ref}'",
+                            impact="Broad access granted to anonymous or all authenticated users",
+                            remediation=f"Remove or restrict ClusterRoleBinding '{name}'",
+                            mitre_id="T1078.004",
+                        )
+                    )
 
     # Check for wildcard permissions in ClusterRoles
     cluster_roles = run_kubectl_json(["get", "clusterroles"])
@@ -138,15 +146,17 @@ def test_rbac_misconfigurations(report: PentestReport):
                 api_groups = rule.get("apiGroups", [])
 
                 if "*" in verbs and "*" in resources:
-                    report.findings.append(PentestFinding(
-                        category="RBAC",
-                        title=f"Wildcard ClusterRole: {name}",
-                        severity="HIGH",
-                        details=f"Role grants all verbs on all resources (apiGroups: {api_groups})",
-                        impact="Effectively cluster-admin level access",
-                        remediation="Apply least privilege - specify exact verbs and resources",
-                        mitre_id="T1078.004"
-                    ))
+                    report.findings.append(
+                        PentestFinding(
+                            category="RBAC",
+                            title=f"Wildcard ClusterRole: {name}",
+                            severity="HIGH",
+                            details=f"Role grants all verbs on all resources (apiGroups: {api_groups})",
+                            impact="Effectively cluster-admin level access",
+                            remediation="Apply least privilege - specify exact verbs and resources",
+                            mitre_id="T1078.004",
+                        )
+                    )
 
 
 def test_secret_exposure(report: PentestReport):
@@ -181,17 +191,29 @@ def test_secret_exposure(report: PentestReport):
                     name_env = env.get("name", "").upper()
 
                     # Check for hardcoded sensitive values
-                    sensitive_names = ["PASSWORD", "SECRET", "API_KEY", "TOKEN", "PRIVATE_KEY"]
-                    if any(s in name_env for s in sensitive_names) and value and not env.get("valueFrom"):
-                        report.findings.append(PentestFinding(
-                            category="Secrets",
-                            title=f"Hardcoded secret in pod env: {pod_ns}/{pod_name}",
-                            severity="HIGH",
-                            details=f"Container '{container.get('name')}' has hardcoded '{name_env}'",
-                            impact="Secrets visible in pod spec, accessible via API",
-                            remediation="Use Kubernetes Secrets or external secret store",
-                            mitre_id="T1552.007"
-                        ))
+                    sensitive_names = [
+                        "PASSWORD",
+                        "SECRET",
+                        "API_KEY",
+                        "TOKEN",
+                        "PRIVATE_KEY",
+                    ]
+                    if (
+                        any(s in name_env for s in sensitive_names)
+                        and value
+                        and not env.get("valueFrom")
+                    ):
+                        report.findings.append(
+                            PentestFinding(
+                                category="Secrets",
+                                title=f"Hardcoded secret in pod env: {pod_ns}/{pod_name}",
+                                severity="HIGH",
+                                details=f"Container '{container.get('name')}' has hardcoded '{name_env}'",
+                                impact="Secrets visible in pod spec, accessible via API",
+                                remediation="Use Kubernetes Secrets or external secret store",
+                                mitre_id="T1552.007",
+                            )
+                        )
 
 
 def test_network_policies(report: PentestReport):
@@ -209,15 +231,17 @@ def test_network_policies(report: PentestReport):
 
         netpols = run_kubectl_json(["get", "networkpolicies", "-n", ns_name])
         if not netpols or not netpols.get("items"):
-            report.findings.append(PentestFinding(
-                category="Network",
-                title=f"No NetworkPolicies in namespace: {ns_name}",
-                severity="MEDIUM",
-                details=f"Namespace '{ns_name}' has no network policies",
-                impact="All pod-to-pod traffic is allowed (flat network)",
-                remediation=f"Create default-deny NetworkPolicy in namespace '{ns_name}'",
-                mitre_id="T1046"
-            ))
+            report.findings.append(
+                PentestFinding(
+                    category="Network",
+                    title=f"No NetworkPolicies in namespace: {ns_name}",
+                    severity="MEDIUM",
+                    details=f"Namespace '{ns_name}' has no network policies",
+                    impact="All pod-to-pod traffic is allowed (flat network)",
+                    remediation=f"Create default-deny NetworkPolicy in namespace '{ns_name}'",
+                    mitre_id="T1046",
+                )
+            )
 
 
 def test_pod_security(report: PentestReport):
@@ -239,55 +263,63 @@ def test_pod_security(report: PentestReport):
 
         # Check hostPID, hostNetwork, hostIPC
         if spec.get("hostPID"):
-            report.findings.append(PentestFinding(
-                category="Pod Security",
-                title=f"hostPID enabled: {pod_ns}/{pod_name}",
-                severity="CRITICAL",
-                details="Pod shares host PID namespace",
-                impact="Can see and potentially interact with host processes",
-                remediation="Set hostPID: false",
-                mitre_id="T1611"
-            ))
+            report.findings.append(
+                PentestFinding(
+                    category="Pod Security",
+                    title=f"hostPID enabled: {pod_ns}/{pod_name}",
+                    severity="CRITICAL",
+                    details="Pod shares host PID namespace",
+                    impact="Can see and potentially interact with host processes",
+                    remediation="Set hostPID: false",
+                    mitre_id="T1611",
+                )
+            )
 
         if spec.get("hostNetwork"):
-            report.findings.append(PentestFinding(
-                category="Pod Security",
-                title=f"hostNetwork enabled: {pod_ns}/{pod_name}",
-                severity="HIGH",
-                details="Pod shares host network namespace",
-                impact="Can access host network interfaces and services",
-                remediation="Set hostNetwork: false",
-                mitre_id="T1611"
-            ))
+            report.findings.append(
+                PentestFinding(
+                    category="Pod Security",
+                    title=f"hostNetwork enabled: {pod_ns}/{pod_name}",
+                    severity="HIGH",
+                    details="Pod shares host network namespace",
+                    impact="Can access host network interfaces and services",
+                    remediation="Set hostNetwork: false",
+                    mitre_id="T1611",
+                )
+            )
 
         for container in spec.get("containers", []):
             sc = container.get("securityContext", {})
             c_name = container.get("name", "")
 
             if sc.get("privileged"):
-                report.findings.append(PentestFinding(
-                    category="Pod Security",
-                    title=f"Privileged container: {pod_ns}/{pod_name}/{c_name}",
-                    severity="CRITICAL",
-                    details="Container runs with full host privileges",
-                    impact="Trivial container escape to host",
-                    remediation="Set privileged: false, use specific capabilities",
-                    mitre_id="T1611"
-                ))
+                report.findings.append(
+                    PentestFinding(
+                        category="Pod Security",
+                        title=f"Privileged container: {pod_ns}/{pod_name}/{c_name}",
+                        severity="CRITICAL",
+                        details="Container runs with full host privileges",
+                        impact="Trivial container escape to host",
+                        remediation="Set privileged: false, use specific capabilities",
+                        mitre_id="T1611",
+                    )
+                )
 
         # Check automountServiceAccountToken
         if spec.get("automountServiceAccountToken", True):
             sa = spec.get("serviceAccountName", "default")
             if sa == "default":
-                report.findings.append(PentestFinding(
-                    category="Pod Security",
-                    title=f"Default SA token mounted: {pod_ns}/{pod_name}",
-                    severity="LOW",
-                    details="Default service account token auto-mounted",
-                    impact="Token accessible at /var/run/secrets/kubernetes.io/serviceaccount/token",
-                    remediation="Set automountServiceAccountToken: false",
-                    mitre_id="T1552.007"
-                ))
+                report.findings.append(
+                    PentestFinding(
+                        category="Pod Security",
+                        title=f"Default SA token mounted: {pod_ns}/{pod_name}",
+                        severity="LOW",
+                        details="Default service account token auto-mounted",
+                        impact="Token accessible at /var/run/secrets/kubernetes.io/serviceaccount/token",
+                        remediation="Set automountServiceAccountToken: false",
+                        mitre_id="T1552.007",
+                    )
+                )
 
 
 def test_pss_enforcement(report: PentestReport):
@@ -307,23 +339,27 @@ def test_pss_enforcement(report: PentestReport):
 
         enforce = labels.get("pod-security.kubernetes.io/enforce")
         if not enforce:
-            report.findings.append(PentestFinding(
-                category="PSS",
-                title=f"No PSS enforcement on namespace: {ns_name}",
-                severity="MEDIUM",
-                details=f"Namespace '{ns_name}' lacks PSA enforce label",
-                impact="No built-in restrictions on pod security contexts",
-                remediation=f"Label namespace with pod-security.kubernetes.io/enforce=baseline or restricted"
-            ))
+            report.findings.append(
+                PentestFinding(
+                    category="PSS",
+                    title=f"No PSS enforcement on namespace: {ns_name}",
+                    severity="MEDIUM",
+                    details=f"Namespace '{ns_name}' lacks PSA enforce label",
+                    impact="No built-in restrictions on pod security contexts",
+                    remediation=f"Label namespace with pod-security.kubernetes.io/enforce=baseline or restricted",
+                )
+            )
         elif enforce == "privileged":
-            report.findings.append(PentestFinding(
-                category="PSS",
-                title=f"Privileged PSS on non-system namespace: {ns_name}",
-                severity="HIGH",
-                details=f"Namespace '{ns_name}' allows privileged pods",
-                impact="No restrictions on pod configurations",
-                remediation="Change PSS enforce level to baseline or restricted"
-            ))
+            report.findings.append(
+                PentestFinding(
+                    category="PSS",
+                    title=f"Privileged PSS on non-system namespace: {ns_name}",
+                    severity="HIGH",
+                    details=f"Namespace '{ns_name}' allows privileged pods",
+                    impact="No restrictions on pod configurations",
+                    remediation="Change PSS enforce level to baseline or restricted",
+                )
+            )
 
 
 def print_report(report: PentestReport):

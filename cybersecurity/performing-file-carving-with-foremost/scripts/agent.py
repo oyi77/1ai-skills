@@ -67,7 +67,8 @@ class FileCarvingAgent:
 
                 result = subprocess.run(
                     ["file", "--brief", str(filepath)],
-                    capture_output=True, text=True,
+                    capture_output=True,
+                    text=True,
                     timeout=120,
                 )
                 file_type = result.stdout.strip().lower()
@@ -90,13 +91,15 @@ class FileCarvingAgent:
                 if not filepath.is_file() or filepath.stat().st_size == 0:
                     continue
                 sha256 = hashlib.sha256(filepath.read_bytes()).hexdigest()
-                hashes.append({
-                    "filename": filepath.name,
-                    "type": subdir.name,
-                    "size": filepath.stat().st_size,
-                    "sha256": sha256,
-                    "path": str(filepath),
-                })
+                hashes.append(
+                    {
+                        "filename": filepath.name,
+                        "type": subdir.name,
+                        "size": filepath.stat().st_size,
+                        "sha256": sha256,
+                        "path": str(filepath),
+                    }
+                )
         return hashes
 
     def build_evidence_catalog(self, carved_dir):
@@ -147,12 +150,16 @@ class FileCarvingAgent:
 
         print("FILE CARVING SUMMARY REPORT")
         print("=" * 50)
-        print(f"{'Type':<10} {'Total':<8} {'Valid':<8} {'Invalid':<10} {'Size (MB)':<12}")
+        print(
+            f"{'Type':<10} {'Total':<8} {'Valid':<8} {'Invalid':<10} {'Size (MB)':<12}"
+        )
         print("-" * 50)
         for ext in sorted(validation.keys()):
             s = validation[ext]
             size_mb = s["size"] / (1024 * 1024)
-            print(f"{ext:<10} {s['total']:<8} {s['valid']:<8} {s['invalid']:<10} {size_mb:>8.1f}")
+            print(
+                f"{ext:<10} {s['total']:<8} {s['valid']:<8} {s['invalid']:<10} {size_mb:>8.1f}"
+            )
 
         total = sum(s["total"] for s in validation.values())
         valid = sum(s["valid"] for s in validation.values())

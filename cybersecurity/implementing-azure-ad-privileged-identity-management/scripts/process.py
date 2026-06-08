@@ -74,13 +74,17 @@ class EntraPIMAuditor:
         )
         assignments = []
         for item in result.get("value", []):
-            assignments.append({
-                "roleDefinitionId": item["roleDefinitionId"],
-                "principalId": item["principalId"],
-                "directoryScopeId": item.get("directoryScopeId", "/"),
-                "principalDisplayName": item.get("principal", {}).get("displayName", ""),
-                "principalType": item.get("principal", {}).get("@odata.type", ""),
-            })
+            assignments.append(
+                {
+                    "roleDefinitionId": item["roleDefinitionId"],
+                    "principalId": item["principalId"],
+                    "directoryScopeId": item.get("directoryScopeId", "/"),
+                    "principalDisplayName": item.get("principal", {}).get(
+                        "displayName", ""
+                    ),
+                    "principalType": item.get("principal", {}).get("@odata.type", ""),
+                }
+            )
         return assignments
 
     def get_eligible_assignments(self):
@@ -90,13 +94,15 @@ class EntraPIMAuditor:
         )
         eligible = []
         for item in result.get("value", []):
-            eligible.append({
-                "roleDefinitionId": item["roleDefinitionId"],
-                "principalId": item["principalId"],
-                "directoryScopeId": item.get("directoryScopeId", "/"),
-                "startDateTime": item.get("startDateTime"),
-                "endDateTime": item.get("endDateTime"),
-            })
+            eligible.append(
+                {
+                    "roleDefinitionId": item["roleDefinitionId"],
+                    "principalId": item["principalId"],
+                    "directoryScopeId": item.get("directoryScopeId", "/"),
+                    "startDateTime": item.get("startDateTime"),
+                    "endDateTime": item.get("endDateTime"),
+                }
+            )
         return eligible
 
     def get_pim_activation_history(self, days=30):
@@ -109,15 +115,20 @@ class EntraPIMAuditor:
         )
         activations = []
         for event in result.get("value", []):
-            activations.append({
-                "activityDateTime": event.get("activityDateTime"),
-                "activityDisplayName": event.get("activityDisplayName"),
-                "initiatedBy": event.get("initiatedBy", {}).get("user", {}).get("displayName", ""),
-                "targetResources": [
-                    t.get("displayName", "") for t in event.get("targetResources", [])
-                ],
-                "result": event.get("result"),
-            })
+            activations.append(
+                {
+                    "activityDateTime": event.get("activityDateTime"),
+                    "activityDisplayName": event.get("activityDisplayName"),
+                    "initiatedBy": event.get("initiatedBy", {})
+                    .get("user", {})
+                    .get("displayName", ""),
+                    "targetResources": [
+                        t.get("displayName", "")
+                        for t in event.get("targetResources", [])
+                    ],
+                    "result": event.get("result"),
+                }
+            )
         return activations
 
     def identify_permanent_admins(self):
@@ -127,8 +138,10 @@ class EntraPIMAuditor:
         eligible = self.get_eligible_assignments()
 
         critical_roles = {
-            rid: info for rid, info in roles.items()
-            if info["displayName"] in [
+            rid: info
+            for rid, info in roles.items()
+            if info["displayName"]
+            in [
                 "Global Administrator",
                 "Privileged Role Administrator",
                 "Security Administrator",
@@ -150,14 +163,23 @@ class EntraPIMAuditor:
         for assignment in active:
             role_id = assignment["roleDefinitionId"]
             if role_id in critical_roles:
-                is_also_eligible = (role_id, assignment["principalId"]) in eligible_principals
-                findings.append({
-                    "role": critical_roles[role_id]["displayName"],
-                    "principal": assignment["principalDisplayName"],
-                    "principalType": assignment["principalType"],
-                    "hasEligibleAssignment": is_also_eligible,
-                    "recommendation": "Convert to PIM eligible" if not is_also_eligible else "Review - has both active and eligible",
-                })
+                is_also_eligible = (
+                    role_id,
+                    assignment["principalId"],
+                ) in eligible_principals
+                findings.append(
+                    {
+                        "role": critical_roles[role_id]["displayName"],
+                        "principal": assignment["principalDisplayName"],
+                        "principalType": assignment["principalType"],
+                        "hasEligibleAssignment": is_also_eligible,
+                        "recommendation": (
+                            "Convert to PIM eligible"
+                            if not is_also_eligible
+                            else "Review - has both active and eligible"
+                        ),
+                    }
+                )
 
         return findings
 
@@ -183,22 +205,25 @@ class EntraPIMAuditor:
         }
 
         if len(permanent_findings) > 0:
-            report["recommendations"].append({
-                "priority": "Critical",
-                "finding": f"{len(permanent_findings)} permanent privileged role assignments found",
-                "action": "Convert to PIM eligible assignments with MFA and approval requirements"
-            })
+            report["recommendations"].append(
+                {
+                    "priority": "Critical",
+                    "finding": f"{len(permanent_findings)} permanent privileged role assignments found",
+                    "action": "Convert to PIM eligible assignments with MFA and approval requirements",
+                }
+            )
 
         active_global_admins = sum(
-            1 for f in permanent_findings
-            if f["role"] == "Global Administrator"
+            1 for f in permanent_findings if f["role"] == "Global Administrator"
         )
         if active_global_admins > 2:
-            report["recommendations"].append({
-                "priority": "High",
-                "finding": f"{active_global_admins} permanent Global Administrators (should be max 2 break-glass)",
-                "action": "Reduce to 2 break-glass accounts, convert rest to PIM eligible"
-            })
+            report["recommendations"].append(
+                {
+                    "priority": "High",
+                    "finding": f"{active_global_admins} permanent Global Administrators (should be max 2 break-glass)",
+                    "action": "Reduce to 2 break-glass accounts, convert rest to PIM eligible",
+                }
+            )
 
         return report
 

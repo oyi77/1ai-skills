@@ -16,6 +16,7 @@ from pathlib import Path
 
 try:
     import yara
+
     HAS_YARA = True
 except ImportError:
     HAS_YARA = False
@@ -34,23 +35,35 @@ class YaraRuleDeveloper:
         with open(sample_path, "rb") as f:
             data = f.read()
 
-        ascii_strings = re.findall(rb'[\x20-\x7E]{%d,}' % min_length, data)
-        wide_strings = re.findall(
-            rb'(?:[\x20-\x7E]\x00){%d,}' % min_length, data)
+        ascii_strings = re.findall(rb"[\x20-\x7E]{%d,}" % min_length, data)
+        wide_strings = re.findall(rb"(?:[\x20-\x7E]\x00){%d,}" % min_length, data)
 
-        unique_ascii = list(set(s.decode("ascii", errors="ignore")
-                                for s in ascii_strings))
-        unique_wide = list(set(s.decode("utf-16-le", errors="ignore")
-                               for s in wide_strings))
+        unique_ascii = list(
+            set(s.decode("ascii", errors="ignore") for s in ascii_strings)
+        )
+        unique_wide = list(
+            set(s.decode("utf-16-le", errors="ignore") for s in wide_strings)
+        )
 
         scored = []
-        generic_terms = {"http", "https", "www", "com", "dll", "exe",
-                         "the", "this", "that", "error", "warning"}
+        generic_terms = {
+            "http",
+            "https",
+            "www",
+            "com",
+            "dll",
+            "exe",
+            "the",
+            "this",
+            "that",
+            "error",
+            "warning",
+        }
         for s in unique_ascii:
             score = len(s)
             if any(g in s.lower() for g in generic_terms):
                 score -= 5
-            if re.search(r'[A-Z][a-z]+[A-Z]', s):
+            if re.search(r"[A-Z][a-z]+[A-Z]", s):
                 score += 3
             if "/" in s or "\\" in s:
                 score += 2
@@ -62,8 +75,9 @@ class YaraRuleDeveloper:
         scored.sort(key=lambda x: x["score"], reverse=True)
         return scored[:max_strings]
 
-    def generate_rule(self, rule_name, sample_path, description="",
-                      tags=None, author="auto"):
+    def generate_rule(
+        self, rule_name, sample_path, description="", tags=None, author="auto"
+    ):
         """Generate a YARA rule from a malware sample."""
         strings = self.extract_strings(sample_path)
         sha256 = hashlib.sha256(Path(sample_path).read_bytes()).hexdigest()
@@ -93,10 +107,19 @@ class YaraRuleDeveloper:
 """
         rule_path = self.output_dir / f"{rule_name}.yar"
         rule_path.write_text(rule_text)
-        self.rules.append({"name": rule_name, "path": str(rule_path),
-                           "strings_count": len(rule_strings)})
-        return {"rule_name": rule_name, "path": str(rule_path),
-                "strings": len(rule_strings), "hash": sha256}
+        self.rules.append(
+            {
+                "name": rule_name,
+                "path": str(rule_path),
+                "strings_count": len(rule_strings),
+            }
+        )
+        return {
+            "rule_name": rule_name,
+            "path": str(rule_path),
+            "strings": len(rule_strings),
+            "hash": sha256,
+        }
 
     def validate_rule(self, rule_path):
         """Compile and validate a YARA rule for syntax and performance."""
@@ -124,8 +147,9 @@ class YaraRuleDeveloper:
                 try:
                     matches = compiled.match(fpath, timeout=30)
                     if matches:
-                        results["matches"].append({
-                            "file": fpath, "rules": [m.rule for m in matches]})
+                        results["matches"].append(
+                            {"file": fpath, "rules": [m.rule for m in matches]}
+                        )
                     else:
                         results["no_match"].append(fpath)
                 except yara.Error as exc:

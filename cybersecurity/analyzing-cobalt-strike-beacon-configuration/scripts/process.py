@@ -41,20 +41,20 @@ TLV_FIELDS = {
     0x0006: ("MaxDNS", "short"),
     0x0008: ("C2Server", "str"),
     0x0009: ("UserAgent", "str"),
-    0x000a: ("PostURI", "str"),
-    0x000b: ("Malleable_C2_Instructions", "blob"),
-    0x000d: ("SpawnTo_x86", "str"),
-    0x000e: ("SpawnTo_x64", "str"),
-    0x000f: ("CryptoScheme", "short"),
-    0x001a: ("Watermark", "int"),
-    0x001d: ("HostHeader", "str"),
+    0x000A: ("PostURI", "str"),
+    0x000B: ("Malleable_C2_Instructions", "blob"),
+    0x000D: ("SpawnTo_x86", "str"),
+    0x000E: ("SpawnTo_x64", "str"),
+    0x000F: ("CryptoScheme", "short"),
+    0x001A: ("Watermark", "int"),
+    0x001D: ("HostHeader", "str"),
     0x0024: ("PipeName", "str"),
     0x0025: ("Year", "short"),
     0x0026: ("Month", "short"),
     0x0027: ("Day", "short"),
-    0x002c: ("ProxyHostname", "str"),
-    0x002d: ("ProxyUsername", "str"),
-    0x002e: ("ProxyPassword", "str"),
+    0x002C: ("ProxyHostname", "str"),
+    0x002D: ("ProxyUsername", "str"),
+    0x002E: ("ProxyPassword", "str"),
 }
 
 BEACON_TYPES = {
@@ -133,10 +133,11 @@ class BeaconAnalyzer:
             print(f"  [!] Read failed: {e}")
             return None
 
-        for xor_key in [0x2e, 0x69]:
+        for xor_key in [0x2E, 0x69]:
             # Search for XOR'd config start marker
-            magic = bytes([0x00 ^ xor_key, 0x01 ^ xor_key,
-                           0x00 ^ xor_key, 0x02 ^ xor_key])
+            magic = bytes(
+                [0x00 ^ xor_key, 0x01 ^ xor_key, 0x00 ^ xor_key, 0x02 ^ xor_key]
+            )
 
             offset = data.find(magic)
             if offset == -1:
@@ -144,7 +145,7 @@ class BeaconAnalyzer:
 
             print(f"  [+] Config found at 0x{offset:x} (XOR key: 0x{xor_key:02x})")
 
-            config_blob = data[offset:offset + 4096]
+            config_blob = data[offset : offset + 4096]
             decrypted = bytes([b ^ xor_key for b in config_blob])
 
             entries = self._parse_tlv(decrypted)
@@ -166,16 +167,16 @@ class BeaconAnalyzer:
 
         while offset + 6 <= len(data):
             try:
-                entry_type = struct.unpack(">H", data[offset:offset+2])[0]
-                data_type = struct.unpack(">H", data[offset+2:offset+4])[0]
-                entry_len = struct.unpack(">H", data[offset+4:offset+6])[0]
+                entry_type = struct.unpack(">H", data[offset : offset + 2])[0]
+                data_type = struct.unpack(">H", data[offset + 2 : offset + 4])[0]
+                entry_len = struct.unpack(">H", data[offset + 4 : offset + 6])[0]
             except struct.error:
                 break
 
             if entry_type == 0 or entry_len > 4096:
                 break
 
-            value_data = data[offset+6:offset+6+entry_len]
+            value_data = data[offset + 6 : offset + 6 + entry_len]
             field_info = TLV_FIELDS.get(entry_type)
 
             if field_info:
@@ -189,7 +190,7 @@ class BeaconAnalyzer:
             elif data_type == 2 and len(value_data) >= 4:
                 value = struct.unpack(">I", value_data[:4])[0]
             elif data_type == 3:
-                value = value_data.rstrip(b'\x00').decode('utf-8', errors='replace')
+                value = value_data.rstrip(b"\x00").decode("utf-8", errors="replace")
             else:
                 value = value_data.hex()
 
@@ -282,11 +283,13 @@ class BeaconAnalyzer:
             "analysis_date": datetime.now().isoformat(),
             "total_beacons": len(self.results),
             "watermark_clusters": self.cluster_by_watermark(),
-            "all_c2_servers": list(set(
-                server
-                for r in self.results
-                for server in r.get("indicators", {}).get("c2_servers", [])
-            )),
+            "all_c2_servers": list(
+                set(
+                    server
+                    for r in self.results
+                    for server in r.get("indicators", {}).get("c2_servers", [])
+                )
+            ),
             "results": self.results,
         }
 
@@ -304,12 +307,13 @@ def main():
     )
     parser.add_argument("--file", help="Single file to analyze")
     parser.add_argument("--directory", help="Directory for batch analysis")
-    parser.add_argument("--output", default="beacon_report.json",
-                        help="Output report path")
-    parser.add_argument("--scan-memory", action="store_true",
-                        help="Treat input as raw memory dump")
-    parser.add_argument("--batch", action="store_true",
-                        help="Batch analyze directory")
+    parser.add_argument(
+        "--output", default="beacon_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--scan-memory", action="store_true", help="Treat input as raw memory dump"
+    )
+    parser.add_argument("--batch", action="store_true", help="Batch analyze directory")
 
     args = parser.parse_args()
     analyzer = BeaconAnalyzer()

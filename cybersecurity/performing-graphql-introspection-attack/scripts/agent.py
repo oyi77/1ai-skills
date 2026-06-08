@@ -34,12 +34,22 @@ def run_introspection(url, headers=None):
     hdrs = {"Content-Type": "application/json"}
     if headers:
         hdrs.update(headers)
-    resp = requests.post(url, json={"query": INTROSPECTION_QUERY}, headers=hdrs, timeout=30)
+    resp = requests.post(
+        url, json={"query": INTROSPECTION_QUERY}, headers=hdrs, timeout=30
+    )
     if resp.status_code != 200:
-        return {"url": url, "introspection_enabled": False, "status_code": resp.status_code}
+        return {
+            "url": url,
+            "introspection_enabled": False,
+            "status_code": resp.status_code,
+        }
     data = resp.json()
     if "errors" in data and not data.get("data"):
-        return {"url": url, "introspection_enabled": False, "errors": data["errors"][:3]}
+        return {
+            "url": url,
+            "introspection_enabled": False,
+            "errors": data["errors"][:3],
+        }
     schema = data.get("data", {}).get("__schema", {})
     types = schema.get("types", [])
     user_types = [t for t in types if not t["name"].startswith("__")]
@@ -50,7 +60,15 @@ def run_introspection(url, headers=None):
             queries = [f["name"] for f in t.get("fields", [])]
         if t["name"] == (schema.get("mutationType") or {}).get("name"):
             mutations = [f["name"] for f in t.get("fields", [])]
-    sensitive_patterns = ["password", "token", "secret", "credential", "ssn", "credit_card", "api_key"]
+    sensitive_patterns = [
+        "password",
+        "token",
+        "secret",
+        "credential",
+        "ssn",
+        "credit_card",
+        "api_key",
+    ]
     sensitive_fields = []
     for t in user_types:
         for f in t.get("fields", []):
@@ -63,8 +81,19 @@ def run_introspection(url, headers=None):
         "queries": queries,
         "mutations": mutations,
         "sensitive_fields": sensitive_fields,
-        "finding": "CRITICAL: Introspection enabled — full schema exposed" if user_types else "Schema empty",
-        "types": [{"name": t["name"], "kind": t["kind"], "field_count": len(t.get("fields", []) or [])} for t in user_types][:50],
+        "finding": (
+            "CRITICAL: Introspection enabled — full schema exposed"
+            if user_types
+            else "Schema empty"
+        ),
+        "types": [
+            {
+                "name": t["name"],
+                "kind": t["kind"],
+                "field_count": len(t.get("fields", []) or []),
+            }
+            for t in user_types
+        ][:50],
     }
 
 
@@ -79,12 +108,25 @@ def test_depth_limit(url, max_depth=10, headers=None):
         query = f"query {{ __schema {nested} }}"
         try:
             resp = requests.post(url, json={"query": query}, headers=hdrs, timeout=10)
-            results.append({"depth": depth, "status": resp.status_code, "has_errors": "errors" in resp.json()})
+            results.append(
+                {
+                    "depth": depth,
+                    "status": resp.status_code,
+                    "has_errors": "errors" in resp.json(),
+                }
+            )
         except Exception as e:
             results.append({"depth": depth, "error": str(e)})
             break
-    max_allowed = max((r["depth"] for r in results if r.get("status") == 200), default=0)
-    return {"url": url, "max_depth_tested": max_depth, "max_allowed_depth": max_allowed, "results": results}
+    max_allowed = max(
+        (r["depth"] for r in results if r.get("status") == 200), default=0
+    )
+    return {
+        "url": url,
+        "max_depth_tested": max_depth,
+        "max_allowed_depth": max_allowed,
+        "results": results,
+    }
 
 
 def main():
@@ -100,7 +142,11 @@ def main():
     d.add_argument("--url", required=True)
     d.add_argument("--max-depth", type=int, default=10)
     args = parser.parse_args()
-    headers = {"Authorization": args.auth_header} if hasattr(args, "auth_header") and args.auth_header else None
+    headers = (
+        {"Authorization": args.auth_header}
+        if hasattr(args, "auth_header") and args.auth_header
+        else None
+    )
     if args.command == "introspect":
         result = run_introspection(args.url, headers)
     elif args.command == "depth":

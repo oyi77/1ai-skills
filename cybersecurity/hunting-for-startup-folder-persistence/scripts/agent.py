@@ -17,16 +17,33 @@ except ImportError:
     FileSystemEventHandler = object
 
 SUSPICIOUS_EXTENSIONS = {
-    ".exe": 30, ".bat": 35, ".cmd": 35, ".vbs": 40, ".vbe": 40,
-    ".js": 40, ".jse": 40, ".wsf": 40, ".wsh": 35, ".ps1": 45,
-    ".pif": 45, ".scr": 40, ".hta": 45, ".lnk": 15, ".url": 20,
+    ".exe": 30,
+    ".bat": 35,
+    ".cmd": 35,
+    ".vbs": 40,
+    ".vbe": 40,
+    ".js": 40,
+    ".jse": 40,
+    ".wsf": 40,
+    ".wsh": 35,
+    ".ps1": 45,
+    ".pif": 45,
+    ".scr": 40,
+    ".hta": 45,
+    ".lnk": 15,
+    ".url": 20,
 }
 
 LEGITIMATE_ENTRIES = [
-    "desktop.ini", "Send to OneNote.lnk", "OneNote 2016.lnk",
-    "Microsoft Teams.lnk", "Outlook.lnk", "OneDrive.lnk",
+    "desktop.ini",
+    "Send to OneNote.lnk",
+    "OneNote 2016.lnk",
+    "Microsoft Teams.lnk",
+    "Outlook.lnk",
+    "OneDrive.lnk",
     "Cisco AnyConnect Secure Mobility Client.lnk",
-    "Skype for Business.lnk", "Zoom.lnk",
+    "Skype for Business.lnk",
+    "Zoom.lnk",
 ]
 
 
@@ -35,13 +52,21 @@ def get_startup_paths():
     paths = []
     user_startup = os.path.join(
         os.environ.get("APPDATA", ""),
-        "Microsoft", "Windows", "Start Menu", "Programs", "Startup"
+        "Microsoft",
+        "Windows",
+        "Start Menu",
+        "Programs",
+        "Startup",
     )
     if os.path.isdir(user_startup):
         paths.append({"path": user_startup, "scope": "current_user"})
     all_users_startup = os.path.join(
         os.environ.get("PROGRAMDATA", r"C:\ProgramData"),
-        "Microsoft", "Windows", "Start Menu", "Programs", "Startup"
+        "Microsoft",
+        "Windows",
+        "Start Menu",
+        "Programs",
+        "Startup",
     )
     if os.path.isdir(all_users_startup):
         paths.append({"path": all_users_startup, "scope": "all_users"})
@@ -115,7 +140,11 @@ def analyze_file(filepath, scope="unknown"):
         "is_legitimate_baseline": is_legitimate,
         "suspicious_indicators": indicators,
         "risk_score": risk,
-        "risk_level": "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 25 else "LOW",
+        "risk_level": (
+            "CRITICAL"
+            if risk >= 70
+            else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 25 else "LOW"
+        ),
     }
 
 
@@ -141,6 +170,7 @@ def scan_startup_folders():
 def check_registry_run_keys():
     """Check Registry Run keys for autostart entries."""
     import subprocess
+
     run_keys = [
         r"HKCU\Software\Microsoft\Windows\CurrentVersion\Run",
         r"HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce",
@@ -151,24 +181,38 @@ def check_registry_run_keys():
     for key in run_keys:
         try:
             result = subprocess.run(
-                ["reg", "query", key],
-                capture_output=True, text=True, timeout=10
+                ["reg", "query", key], capture_output=True, text=True, timeout=10
             )
             if result.returncode == 0:
                 for line in result.stdout.strip().split("\n"):
                     line = line.strip()
                     if line and not line.startswith("HK") and "REG_" in line:
-                        parts = line.split("REG_SZ", 1) if "REG_SZ" in line else line.split("REG_EXPAND_SZ", 1)
+                        parts = (
+                            line.split("REG_SZ", 1)
+                            if "REG_SZ" in line
+                            else line.split("REG_EXPAND_SZ", 1)
+                        )
                         name = parts[0].strip() if parts else line
                         value = parts[1].strip() if len(parts) > 1 else ""
-                        entries.append({
-                            "registry_key": key,
-                            "name": name,
-                            "value": value,
-                            "suspicious": any(p in value.lower() for p in
-                                             ["powershell", "cmd.exe", "\\temp\\", "\\appdata\\",
-                                              "mshta", "-enc", "downloadstring"]),
-                        })
+                        entries.append(
+                            {
+                                "registry_key": key,
+                                "name": name,
+                                "value": value,
+                                "suspicious": any(
+                                    p in value.lower()
+                                    for p in [
+                                        "powershell",
+                                        "cmd.exe",
+                                        "\\temp\\",
+                                        "\\appdata\\",
+                                        "mshta",
+                                        "-enc",
+                                        "downloadstring",
+                                    ]
+                                ),
+                            }
+                        )
         except Exception:
             pass
     return entries
@@ -257,18 +301,25 @@ def full_hunt():
             "name": "Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder",
             "tactic": "Persistence, Privilege Escalation",
         },
-        "recommendation": "Investigate CRITICAL and HIGH files. Verify hashes against known-good baselines."
-            if suspicious_files else "No suspicious startup entries detected.",
+        "recommendation": (
+            "Investigate CRITICAL and HIGH files. Verify hashes against known-good baselines."
+            if suspicious_files
+            else "No suspicious startup entries detected."
+        ),
     }
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Startup Folder Persistence Hunting Agent (T1547.001)")
+    parser = argparse.ArgumentParser(
+        description="Startup Folder Persistence Hunting Agent (T1547.001)"
+    )
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("scan", help="Scan startup folders for suspicious files")
     sub.add_parser("registry", help="Check Registry Run keys")
     p_mon = sub.add_parser("monitor", help="Monitor startup folders in real-time")
-    p_mon.add_argument("--duration", type=int, default=60, help="Monitor duration in seconds")
+    p_mon.add_argument(
+        "--duration", type=int, default=60, help="Monitor duration in seconds"
+    )
     sub.add_parser("full", help="Full persistence threat hunt")
     args = parser.parse_args()
 

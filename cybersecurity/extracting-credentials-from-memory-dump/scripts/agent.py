@@ -11,7 +11,9 @@ import subprocess
 from datetime import datetime
 from typing import List, Optional
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 CLOUD_KEY_PATTERNS = [
@@ -39,7 +41,9 @@ def verify_dump(dump_path: str) -> dict:
     return {"valid": True, "size_bytes": size, "sha256_1mb": sha256}
 
 
-def run_vol3(dump_path: str, plugin: str, extra_args: Optional[List[str]] = None) -> str:
+def run_vol3(
+    dump_path: str, plugin: str, extra_args: Optional[List[str]] = None
+) -> str:
     """Run a volatility3 plugin and return stdout."""
     cmd = ["vol", "-f", dump_path, plugin]
     if extra_args:
@@ -88,10 +92,14 @@ def extract_hashdump(dump_path: str) -> List[dict]:
     for line in output.splitlines():
         parts = line.split()
         if len(parts) >= 4 and parts[1].isdigit():
-            results.append({
-                "user": parts[0], "rid": int(parts[1]),
-                "lm_hash": parts[2], "ntlm_hash": parts[3],
-            })
+            results.append(
+                {
+                    "user": parts[0],
+                    "rid": int(parts[1]),
+                    "lm_hash": parts[2],
+                    "ntlm_hash": parts[3],
+                }
+            )
     logger.info("Extracted %d SAM hashes", len(results))
     return results
 
@@ -115,7 +123,13 @@ def extract_cachedump(dump_path: str) -> List[dict]:
     for line in output.splitlines():
         parts = line.split()
         if len(parts) >= 3 and parts[0] not in ("User", "---"):
-            results.append({"user": parts[0], "domain": parts[1], "dcc2_hash": parts[2] if len(parts) > 2 else ""})
+            results.append(
+                {
+                    "user": parts[0],
+                    "domain": parts[1],
+                    "dcc2_hash": parts[2] if len(parts) > 2 else "",
+                }
+            )
     logger.info("Extracted %d cached domain credentials", len(results))
     return results
 
@@ -145,24 +159,37 @@ def parse_pypykatz_creds(pypykatz_data: dict) -> List[dict]:
         domain = session.get("domainname", "")
         if not username or username == "(null)":
             continue
-        entry = {"user": f"{domain}\\{username}", "sid": session.get("sid", ""),
-                 "logon_server": session.get("logon_server", ""),
-                 "logon_time": session.get("logon_time", ""), "cred_types": []}
+        entry = {
+            "user": f"{domain}\\{username}",
+            "sid": session.get("sid", ""),
+            "logon_server": session.get("logon_server", ""),
+            "logon_time": session.get("logon_time", ""),
+            "cred_types": [],
+        }
         for msv in session.get("msv_creds", []):
             if msv.get("NThash"):
                 entry["cred_types"].append({"type": "NTLM", "hash": msv["NThash"]})
         for kerb in session.get("kerberos_creds", []):
             if kerb.get("password"):
-                entry["cred_types"].append({"type": "Kerberos_password", "value": kerb["password"]})
+                entry["cred_types"].append(
+                    {"type": "Kerberos_password", "value": kerb["password"]}
+                )
             for ticket in kerb.get("tickets", []):
-                entry["cred_types"].append({"type": "Kerberos_ticket",
-                                            "server": ticket.get("server", ""), "enc_type": ticket.get("enc_type", "")})
+                entry["cred_types"].append(
+                    {
+                        "type": "Kerberos_ticket",
+                        "server": ticket.get("server", ""),
+                        "enc_type": ticket.get("enc_type", ""),
+                    }
+                )
         for wd in session.get("wdigest_creds", []):
             if wd.get("password"):
                 entry["cred_types"].append({"type": "WDigest", "value": wd["password"]})
         for dpapi in session.get("dpapi_creds", []):
             if dpapi.get("masterkey"):
-                entry["cred_types"].append({"type": "DPAPI_masterkey", "key": dpapi["masterkey"][:40]})
+                entry["cred_types"].append(
+                    {"type": "DPAPI_masterkey", "key": dpapi["masterkey"][:40]}
+                )
         if entry["cred_types"]:
             creds.append(entry)
     return creds
@@ -211,18 +238,26 @@ def generate_report(dump_path: str, output_dir: str) -> dict:
     report["summary"] = summary
     report["actions"] = []
     if summary["sam_hashes"] > 0:
-        report["actions"].append("Reset passwords for all local accounts with extracted NTLM hashes")
+        report["actions"].append(
+            "Reset passwords for all local accounts with extracted NTLM hashes"
+        )
     if summary["lsass_creds"] > 0:
-        report["actions"].append("Reset domain account passwords and perform double krbtgt rotation")
+        report["actions"].append(
+            "Reset domain account passwords and perform double krbtgt rotation"
+        )
     if summary["cloud_keys"] > 0:
-        report["actions"].append("Rotate all discovered cloud access keys and revoke active sessions")
+        report["actions"].append(
+            "Rotate all discovered cloud access keys and revoke active sessions"
+        )
 
     logger.info("Report complete: %s", json.dumps(summary))
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Memory Dump Credential Extraction Agent")
+    parser = argparse.ArgumentParser(
+        description="Memory Dump Credential Extraction Agent"
+    )
     parser.add_argument("--dump", required=True, help="Path to memory dump file")
     parser.add_argument("--output-dir", default=".", help="Output directory")
     parser.add_argument("--output", default="credential_report.json")

@@ -17,6 +17,7 @@ from dataclasses import dataclass, field, asdict
 @dataclass
 class VishingCall:
     """Represents a single vishing call attempt."""
+
     call_id: str
     timestamp: str
     target_name: str
@@ -60,10 +61,15 @@ class VishingCampaignTracker:
         reported = [c for c in answered if c.reported_to_security]
 
         # Per-department breakdown
-        dept_stats = defaultdict(lambda: {
-            "total": 0, "cred_disclosed": 0, "info_disclosed": 0,
-            "verified": 0, "reported": 0,
-        })
+        dept_stats = defaultdict(
+            lambda: {
+                "total": 0,
+                "cred_disclosed": 0,
+                "info_disclosed": 0,
+                "verified": 0,
+                "reported": 0,
+            }
+        )
         for call in answered:
             dept = call.target_department
             dept_stats[dept]["total"] += 1
@@ -84,7 +90,9 @@ class VishingCampaignTracker:
                 pretext_stats[call.pretext_used]["success"] += 1
 
         avg_duration = sum(c.call_duration_seconds for c in answered) / total_answered
-        avg_susceptibility = sum(c.susceptibility_score for c in answered) / total_answered
+        avg_susceptibility = (
+            sum(c.susceptibility_score for c in answered) / total_answered
+        )
 
         return {
             "campaign_id": self.campaign_id,
@@ -92,7 +100,9 @@ class VishingCampaignTracker:
             "calls_answered": total_answered,
             "answer_rate": total_answered / len(self.calls) * 100,
             "credential_disclosure_rate": len(cred_disclosed) / total_answered * 100,
-            "sensitive_info_disclosure_rate": len(info_disclosed) / total_answered * 100,
+            "sensitive_info_disclosure_rate": len(info_disclosed)
+            / total_answered
+            * 100,
             "verification_rate": len(verified) / total_answered * 100,
             "security_reporting_rate": len(reported) / total_answered * 100,
             "avg_call_duration_seconds": avg_duration,
@@ -119,16 +129,32 @@ class VishingCampaignTracker:
         lines.append(f"  Total Calls Made:           {metrics['total_calls']}")
         lines.append(f"  Calls Answered:              {metrics['calls_answered']}")
         lines.append(f"  Answer Rate:                 {metrics['answer_rate']:.1f}%")
-        lines.append(f"  Credential Disclosure Rate:  {metrics['credential_disclosure_rate']:.1f}%")
-        lines.append(f"  Info Disclosure Rate:         {metrics['sensitive_info_disclosure_rate']:.1f}%")
-        lines.append(f"  Verification Rate:           {metrics['verification_rate']:.1f}%")
-        lines.append(f"  Security Reporting Rate:     {metrics['security_reporting_rate']:.1f}%")
-        lines.append(f"  Avg Call Duration:           {metrics['avg_call_duration_seconds']:.0f}s")
-        lines.append(f"  Avg Susceptibility (1-5):    {metrics['avg_susceptibility_score']:.1f}")
+        lines.append(
+            f"  Credential Disclosure Rate:  {metrics['credential_disclosure_rate']:.1f}%"
+        )
+        lines.append(
+            f"  Info Disclosure Rate:         {metrics['sensitive_info_disclosure_rate']:.1f}%"
+        )
+        lines.append(
+            f"  Verification Rate:           {metrics['verification_rate']:.1f}%"
+        )
+        lines.append(
+            f"  Security Reporting Rate:     {metrics['security_reporting_rate']:.1f}%"
+        )
+        lines.append(
+            f"  Avg Call Duration:           {metrics['avg_call_duration_seconds']:.0f}s"
+        )
+        lines.append(
+            f"  Avg Susceptibility (1-5):    {metrics['avg_susceptibility_score']:.1f}"
+        )
 
         # Risk assessment
-        cred_rate = metrics['credential_disclosure_rate']
-        risk = "CRITICAL" if cred_rate > 30 else "HIGH" if cred_rate > 15 else "MEDIUM" if cred_rate > 5 else "LOW"
+        cred_rate = metrics["credential_disclosure_rate"]
+        risk = (
+            "CRITICAL"
+            if cred_rate > 30
+            else "HIGH" if cred_rate > 15 else "MEDIUM" if cred_rate > 5 else "LOW"
+        )
         lines.append(f"\n  OVERALL RISK RATING: {risk}")
 
         # Department breakdown
@@ -148,20 +174,30 @@ class VishingCampaignTracker:
         lines.append(f"\nPRETEXT EFFECTIVENESS:")
         lines.append("-" * 70)
         for pretext, stats in metrics["pretext_effectiveness"].items():
-            success_rate = stats["success"] / stats["total"] * 100 if stats["total"] else 0
-            lines.append(f"  {pretext:<30} Success: {success_rate:.1f}% ({stats['success']}/{stats['total']})")
+            success_rate = (
+                stats["success"] / stats["total"] * 100 if stats["total"] else 0
+            )
+            lines.append(
+                f"  {pretext:<30} Success: {success_rate:.1f}% ({stats['success']}/{stats['total']})"
+            )
 
         # Recommendations
         lines.append(f"\nRECOMMENDATIONS:")
         lines.append("-" * 70)
         if metrics["credential_disclosure_rate"] > 10:
-            lines.append("  [CRITICAL] Implement mandatory caller verification procedures")
+            lines.append(
+                "  [CRITICAL] Implement mandatory caller verification procedures"
+            )
         if metrics["verification_rate"] < 50:
             lines.append("  [HIGH] Enhance security awareness training on verification")
         if metrics["security_reporting_rate"] < 30:
-            lines.append("  [HIGH] Establish easy-to-use suspicious call reporting process")
+            lines.append(
+                "  [HIGH] Establish easy-to-use suspicious call reporting process"
+            )
         lines.append("  [MEDIUM] Conduct quarterly vishing simulations")
-        lines.append("  [MEDIUM] Implement callback verification for sensitive requests")
+        lines.append(
+            "  [MEDIUM] Implement callback verification for sensitive requests"
+        )
 
         return "\n".join(lines)
 
@@ -169,20 +205,41 @@ class VishingCampaignTracker:
         """Export results to CSV."""
         with open(output_path, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "Call ID", "Timestamp", "Target", "Department", "Role",
-                "Pretext", "Duration(s)", "Answered", "Cred Disclosed",
-                "Info Disclosed", "Verified", "Reported", "Score",
-            ])
+            writer.writerow(
+                [
+                    "Call ID",
+                    "Timestamp",
+                    "Target",
+                    "Department",
+                    "Role",
+                    "Pretext",
+                    "Duration(s)",
+                    "Answered",
+                    "Cred Disclosed",
+                    "Info Disclosed",
+                    "Verified",
+                    "Reported",
+                    "Score",
+                ]
+            )
             for call in self.calls:
-                writer.writerow([
-                    call.call_id, call.timestamp, call.target_name,
-                    call.target_department, call.target_role, call.pretext_used,
-                    call.call_duration_seconds, call.call_answered,
-                    call.credential_disclosed, call.sensitive_info_disclosed,
-                    call.verification_attempted, call.reported_to_security,
-                    call.susceptibility_score,
-                ])
+                writer.writerow(
+                    [
+                        call.call_id,
+                        call.timestamp,
+                        call.target_name,
+                        call.target_department,
+                        call.target_role,
+                        call.pretext_used,
+                        call.call_duration_seconds,
+                        call.call_answered,
+                        call.credential_disclosed,
+                        call.sensitive_info_disclosed,
+                        call.verification_attempted,
+                        call.reported_to_security,
+                        call.susceptibility_score,
+                    ]
+                )
 
 
 def main():
@@ -190,30 +247,134 @@ def main():
     tracker = VishingCampaignTracker("VISH-2025-001", "Example Corp")
 
     sample_calls = [
-        VishingCall("V001", "2025-02-01T09:00:00", "Alice Johnson", "Finance",
-                    "Accountant", "IT Helpdesk - VPN Update", 180, True, True,
-                    True, "password", False, False, 5),
-        VishingCall("V002", "2025-02-01T09:30:00", "Bob Smith", "IT",
-                    "Sysadmin", "Vendor Support Call", 45, True, False,
-                    False, "", True, True, 1),
-        VishingCall("V003", "2025-02-01T10:00:00", "Carol Davis", "HR",
-                    "HR Manager", "Benefits Verification", 120, True, False,
-                    True, "employee_id", False, False, 3),
-        VishingCall("V004", "2025-02-01T10:30:00", "Dan Wilson", "Finance",
-                    "Controller", "Wire Transfer Request", 60, True, False,
-                    False, "", True, True, 1),
-        VishingCall("V005", "2025-02-01T11:00:00", "Eve Brown", "Marketing",
-                    "Manager", "IT Helpdesk - Password Reset", 150, True, True,
-                    True, "password", False, False, 4),
-        VishingCall("V006", "2025-02-01T11:30:00", "Frank Lee", "Engineering",
-                    "Developer", "IT Helpdesk - VPN Update", 30, True, False,
-                    False, "", True, False, 2),
-        VishingCall("V007", "2025-02-01T13:00:00", "Grace Kim", "Reception",
-                    "Front Desk", "Delivery Confirmation", 90, True, False,
-                    True, "employee_directory", False, False, 3),
-        VishingCall("V008", "2025-02-01T13:30:00", "Henry Chen", "IT",
-                    "Help Desk", "New Employee Onboarding", 20, True, False,
-                    False, "", True, True, 1),
+        VishingCall(
+            "V001",
+            "2025-02-01T09:00:00",
+            "Alice Johnson",
+            "Finance",
+            "Accountant",
+            "IT Helpdesk - VPN Update",
+            180,
+            True,
+            True,
+            True,
+            "password",
+            False,
+            False,
+            5,
+        ),
+        VishingCall(
+            "V002",
+            "2025-02-01T09:30:00",
+            "Bob Smith",
+            "IT",
+            "Sysadmin",
+            "Vendor Support Call",
+            45,
+            True,
+            False,
+            False,
+            "",
+            True,
+            True,
+            1,
+        ),
+        VishingCall(
+            "V003",
+            "2025-02-01T10:00:00",
+            "Carol Davis",
+            "HR",
+            "HR Manager",
+            "Benefits Verification",
+            120,
+            True,
+            False,
+            True,
+            "employee_id",
+            False,
+            False,
+            3,
+        ),
+        VishingCall(
+            "V004",
+            "2025-02-01T10:30:00",
+            "Dan Wilson",
+            "Finance",
+            "Controller",
+            "Wire Transfer Request",
+            60,
+            True,
+            False,
+            False,
+            "",
+            True,
+            True,
+            1,
+        ),
+        VishingCall(
+            "V005",
+            "2025-02-01T11:00:00",
+            "Eve Brown",
+            "Marketing",
+            "Manager",
+            "IT Helpdesk - Password Reset",
+            150,
+            True,
+            True,
+            True,
+            "password",
+            False,
+            False,
+            4,
+        ),
+        VishingCall(
+            "V006",
+            "2025-02-01T11:30:00",
+            "Frank Lee",
+            "Engineering",
+            "Developer",
+            "IT Helpdesk - VPN Update",
+            30,
+            True,
+            False,
+            False,
+            "",
+            True,
+            False,
+            2,
+        ),
+        VishingCall(
+            "V007",
+            "2025-02-01T13:00:00",
+            "Grace Kim",
+            "Reception",
+            "Front Desk",
+            "Delivery Confirmation",
+            90,
+            True,
+            False,
+            True,
+            "employee_directory",
+            False,
+            False,
+            3,
+        ),
+        VishingCall(
+            "V008",
+            "2025-02-01T13:30:00",
+            "Henry Chen",
+            "IT",
+            "Help Desk",
+            "New Employee Onboarding",
+            20,
+            True,
+            False,
+            False,
+            "",
+            True,
+            True,
+            1,
+        ),
     ]
 
     for call in sample_calls:

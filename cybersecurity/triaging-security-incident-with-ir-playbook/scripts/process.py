@@ -38,11 +38,17 @@ PLAYBOOK_MAP = {
     "malware": {"playbook": "malware_ir_v2", "team": "malware_analysis"},
     "ransomware": {"playbook": "ransomware_ir_v3", "team": "ransomware_response"},
     "phishing": {"playbook": "phishing_ir_v2", "team": "email_security"},
-    "unauthorized_access": {"playbook": "access_compromise_v2", "team": "identity_response"},
+    "unauthorized_access": {
+        "playbook": "access_compromise_v2",
+        "team": "identity_response",
+    },
     "data_exfiltration": {"playbook": "data_breach_v2", "team": "data_protection"},
     "ddos": {"playbook": "ddos_response_v1", "team": "network_operations"},
     "insider_threat": {"playbook": "insider_threat_v2", "team": "insider_risk"},
-    "account_compromise": {"playbook": "account_compromise_v2", "team": "identity_response"},
+    "account_compromise": {
+        "playbook": "account_compromise_v2",
+        "team": "identity_response",
+    },
     "web_attack": {"playbook": "web_attack_v2", "team": "application_security"},
     "privilege_escalation": {"playbook": "privesc_ir_v1", "team": "identity_response"},
     "lateral_movement": {"playbook": "lateral_movement_v1", "team": "network_defense"},
@@ -88,7 +94,9 @@ class IOCEnricher:
                         "country": data.get("country", "unknown"),
                         "as_owner": data.get("as_owner", "unknown"),
                     }
-                    logger.info(f"VT enrichment for {ip_address}: {stats.get('malicious', 0)} malicious")
+                    logger.info(
+                        f"VT enrichment for {ip_address}: {stats.get('malicious', 0)} malicious"
+                    )
             except Exception as e:
                 logger.warning(f"VT enrichment failed for {ip_address}: {e}")
 
@@ -110,19 +118,28 @@ class IOCEnricher:
                         "isp": data.get("isp", ""),
                         "is_tor": data.get("isTor", False),
                     }
-                    logger.info(f"AbuseIPDB for {ip_address}: confidence={data.get('abuseConfidenceScore', 0)}%")
+                    logger.info(
+                        f"AbuseIPDB for {ip_address}: confidence={data.get('abuseConfidenceScore', 0)}%"
+                    )
             except Exception as e:
                 logger.warning(f"AbuseIPDB enrichment failed for {ip_address}: {e}")
 
         # Calculate overall threat score
-        vt_malicious = result.get("sources", {}).get("virustotal", {}).get("malicious", 0)
-        abuse_score = result.get("sources", {}).get("abuseipdb", {}).get("abuse_confidence", 0)
+        vt_malicious = (
+            result.get("sources", {}).get("virustotal", {}).get("malicious", 0)
+        )
+        abuse_score = (
+            result.get("sources", {}).get("abuseipdb", {}).get("abuse_confidence", 0)
+        )
         result["threat_score"] = min(100, (vt_malicious * 5) + abuse_score)
         result["threat_level"] = (
-            "critical" if result["threat_score"] >= 80
-            else "high" if result["threat_score"] >= 50
-            else "medium" if result["threat_score"] >= 20
-            else "low"
+            "critical"
+            if result["threat_score"] >= 80
+            else (
+                "high"
+                if result["threat_score"] >= 50
+                else "medium" if result["threat_score"] >= 20 else "low"
+            )
         )
         return result
 
@@ -142,7 +159,10 @@ class IOCEnricher:
                         "malicious": stats.get("malicious", 0),
                         "suspicious": stats.get("suspicious", 0),
                         "detection_names": list(
-                            name for eng, det in data.get("last_analysis_results", {}).items()
+                            name
+                            for eng, det in data.get(
+                                "last_analysis_results", {}
+                            ).items()
                             if det.get("category") == "malicious"
                             for name in [det.get("result", "")]
                         )[:10],
@@ -181,8 +201,9 @@ class SeverityCalculator:
     """Calculate incident severity based on multiple factors."""
 
     @staticmethod
-    def calculate(asset_criticality: str, data_sensitivity: str,
-                  threat_status: str, scope: str) -> dict:
+    def calculate(
+        asset_criticality: str, data_sensitivity: str, threat_status: str, scope: str
+    ) -> dict:
         score = (
             SEVERITY_WEIGHTS["asset_criticality"].get(asset_criticality, 1)
             + SEVERITY_WEIGHTS["data_sensitivity"].get(data_sensitivity, 1)
@@ -236,10 +257,19 @@ class TheHiveClient:
         self.api_key = api_key
 
     def _headers(self):
-        return {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+        return {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
 
-    def create_case(self, title: str, description: str, severity: int,
-                    tags: list, custom_fields: dict = None) -> dict:
+    def create_case(
+        self,
+        title: str,
+        description: str,
+        severity: int,
+        tags: list,
+        custom_fields: dict = None,
+    ) -> dict:
         payload = {
             "title": title,
             "description": description,
@@ -264,8 +294,9 @@ class TheHiveClient:
             return {"error": str(e)}
 
 
-def generate_triage_report(alert_data: dict, enrichment: dict,
-                           severity: dict, playbook: dict, output_path: str):
+def generate_triage_report(
+    alert_data: dict, enrichment: dict, severity: dict, playbook: dict, output_path: str
+):
     """Generate a triage assessment report."""
     report = {
         "triage_report": {
@@ -275,7 +306,9 @@ def generate_triage_report(alert_data: dict, enrichment: dict,
             "enrichment_results": enrichment,
             "severity_assessment": severity,
             "playbook_assignment": playbook,
-            "decision": "escalate" if severity["priority"] in ("P1", "P2") else "investigate",
+            "decision": (
+                "escalate" if severity["priority"] in ("P1", "P2") else "investigate"
+            ),
         }
     }
     with open(output_path, "w") as f:
@@ -286,23 +319,40 @@ def generate_triage_report(alert_data: dict, enrichment: dict,
 
 def main():
     parser = argparse.ArgumentParser(description="Security Incident Triage Automation")
-    parser.add_argument("--alert-source", required=True, help="Source of the alert (e.g., SIEM, EDR)")
+    parser.add_argument(
+        "--alert-source", required=True, help="Source of the alert (e.g., SIEM, EDR)"
+    )
     parser.add_argument("--alert-name", required=True, help="Alert rule name or title")
-    parser.add_argument("--incident-type", required=True,
-                        choices=list(PLAYBOOK_MAP.keys()),
-                        help="Classified incident type")
+    parser.add_argument(
+        "--incident-type",
+        required=True,
+        choices=list(PLAYBOOK_MAP.keys()),
+        help="Classified incident type",
+    )
     parser.add_argument("--src-ip", help="Source IP address to enrich")
     parser.add_argument("--dest-ip", help="Destination IP address")
     parser.add_argument("--file-hash", help="File hash (SHA256) to enrich")
     parser.add_argument("--domain", help="Domain to enrich")
-    parser.add_argument("--asset-criticality", default="medium",
-                        choices=["critical", "high", "medium", "low"])
-    parser.add_argument("--data-sensitivity", default="confidential",
-                        choices=["pii_phi", "pci", "confidential", "public"])
-    parser.add_argument("--threat-status", default="confirmed",
-                        choices=["active", "confirmed", "attempted", "recon"])
-    parser.add_argument("--scope", default="single_system",
-                        choices=["enterprise", "department", "single_system", "single_user"])
+    parser.add_argument(
+        "--asset-criticality",
+        default="medium",
+        choices=["critical", "high", "medium", "low"],
+    )
+    parser.add_argument(
+        "--data-sensitivity",
+        default="confidential",
+        choices=["pii_phi", "pci", "confidential", "public"],
+    )
+    parser.add_argument(
+        "--threat-status",
+        default="confirmed",
+        choices=["active", "confirmed", "attempted", "recon"],
+    )
+    parser.add_argument(
+        "--scope",
+        default="single_system",
+        choices=["enterprise", "department", "single_system", "single_user"],
+    )
     parser.add_argument("--output-dir", default="./triage_output")
     parser.add_argument("--thehive-url", default=os.getenv("THEHIVE_URL", ""))
     parser.add_argument("--thehive-key", default=os.getenv("THEHIVE_API_KEY", ""))
@@ -322,10 +372,14 @@ def main():
 
     # Calculate severity
     severity = SeverityCalculator.calculate(
-        args.asset_criticality, args.data_sensitivity,
-        args.threat_status, args.scope,
+        args.asset_criticality,
+        args.data_sensitivity,
+        args.threat_status,
+        args.scope,
     )
-    logger.info(f"Severity: {severity['severity']} ({severity['priority']}) - Score: {severity['score']}/{severity['max_score']}")
+    logger.info(
+        f"Severity: {severity['severity']} ({severity['priority']}) - Score: {severity['score']}/{severity['max_score']}"
+    )
 
     # Select playbook
     playbook = PlaybookSelector.select(args.incident_type)
@@ -352,7 +406,10 @@ def main():
         "src_ip": args.src_ip,
         "dest_ip": args.dest_ip,
     }
-    report_path = os.path.join(args.output_dir, f"triage_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+    report_path = os.path.join(
+        args.output_dir,
+        f"triage_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+    )
     generate_triage_report(alert_data, enrichment, severity, playbook, report_path)
 
     print(f"\nTriage Complete")

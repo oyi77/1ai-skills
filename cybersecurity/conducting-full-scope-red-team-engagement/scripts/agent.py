@@ -24,16 +24,25 @@ def get_attack_techniques(tactics=None):
             kill_chain = tech.get("kill_chain_phases", [])
             for phase in kill_chain:
                 if phase.get("phase_name", "").lower() in tactic_set:
-                    filtered.append({
-                        "id": tech.get("external_references", [{}])[0].get("external_id", ""),
-                        "name": tech.get("name", ""),
-                        "tactic": phase.get("phase_name", ""),
-                        "platforms": tech.get("x_mitre_platforms", []),
-                    })
+                    filtered.append(
+                        {
+                            "id": tech.get("external_references", [{}])[0].get(
+                                "external_id", ""
+                            ),
+                            "name": tech.get("name", ""),
+                            "tactic": phase.get("phase_name", ""),
+                            "platforms": tech.get("x_mitre_platforms", []),
+                        }
+                    )
                     break
         return filtered
-    return [{"id": t.get("external_references", [{}])[0].get("external_id", ""),
-             "name": t.get("name", "")} for t in techniques[:50]]
+    return [
+        {
+            "id": t.get("external_references", [{}])[0].get("external_id", ""),
+            "name": t.get("name", ""),
+        }
+        for t in techniques[:50]
+    ]
 
 
 def generate_engagement_plan(scope, objectives):
@@ -105,7 +114,10 @@ def generate_c2_checklist():
             {"item": "Domain registration (categorized, aged)", "status": "pending"},
             {"item": "SSL certificates via Let's Encrypt", "status": "pending"},
             {"item": "Redirector servers (Apache mod_rewrite)", "status": "pending"},
-            {"item": "C2 server (Cobalt Strike / Sliver / Mythic)", "status": "pending"},
+            {
+                "item": "C2 server (Cobalt Strike / Sliver / Mythic)",
+                "status": "pending",
+            },
             {"item": "Phishing server (GoPhish)", "status": "pending"},
             {"item": "Payload hosting (S3 / Azure Blob)", "status": "pending"},
         ],
@@ -150,7 +162,9 @@ def run_planning(scope, objectives):
 def main():
     parser = argparse.ArgumentParser(description="Red Team Engagement Agent")
     parser.add_argument("--scope", required=True, help="Engagement scope description")
-    parser.add_argument("--objectives", nargs="+", required=True, help="Engagement objectives")
+    parser.add_argument(
+        "--objectives", nargs="+", required=True, help="Engagement objectives"
+    )
     parser.add_argument("--output", help="Save plan to JSON file")
     args = parser.parse_args()
 

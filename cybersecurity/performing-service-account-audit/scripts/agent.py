@@ -16,9 +16,14 @@ from collections import defaultdict
 class ServiceAccountAuditor:
     """Audits service accounts across enterprise infrastructure."""
 
-    RISK_WEIGHTS = {"Domain Admins": 30, "Enterprise Admins": 30,
-                    "Schema Admins": 25, "Administrators": 20,
-                    "Account Operators": 15, "Backup Operators": 10}
+    RISK_WEIGHTS = {
+        "Domain Admins": 30,
+        "Enterprise Admins": 30,
+        "Schema Admins": 25,
+        "Administrators": 20,
+        "Account Operators": 15,
+        "Backup Operators": 10,
+    }
 
     def __init__(self, domain=None, max_password_age_days=90):
         self.domain = domain
@@ -41,7 +46,9 @@ class ServiceAccountAuditor:
         try:
             result = subprocess.run(
                 ["powershell", "-NoProfile", "-Command", ps_cmd],
-                capture_output=True, text=True, timeout=120
+                capture_output=True,
+                text=True,
+                timeout=120,
             )
             if result.returncode == 0 and result.stdout.strip():
                 data = json.loads(result.stdout)
@@ -51,7 +58,11 @@ class ServiceAccountAuditor:
                     acct["source"] = "ActiveDirectory"
                 self.accounts.extend(data)
                 return data
-        except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as exc:
+        except (
+            subprocess.TimeoutExpired,
+            json.JSONDecodeError,
+            FileNotFoundError,
+        ) as exc:
             return {"error": str(exc)}
         return []
 
@@ -60,31 +71,50 @@ class ServiceAccountAuditor:
         try:
             result = subprocess.run(
                 ["aws", "iam", "list-users", "--output", "json"],
-                capture_output=True, text=True, timeout=60
+                capture_output=True,
+                text=True,
+                timeout=60,
             )
             if result.returncode == 0:
                 users = json.loads(result.stdout).get("Users", [])
                 svc_users = []
                 for u in users:
                     name = u.get("UserName", "")
-                    if any(p in name.lower() for p in ["svc", "service", "bot", "automation"]):
+                    if any(
+                        p in name.lower()
+                        for p in ["svc", "service", "bot", "automation"]
+                    ):
                         keys_result = subprocess.run(
-                            ["aws", "iam", "list-access-keys",
-                             "--user-name", name, "--output", "json"],
-                            capture_output=True, text=True, timeout=30
+                            [
+                                "aws",
+                                "iam",
+                                "list-access-keys",
+                                "--user-name",
+                                name,
+                                "--output",
+                                "json",
+                            ],
+                            capture_output=True,
+                            text=True,
+                            timeout=30,
                         )
                         keys = []
                         if keys_result.returncode == 0:
-                            keys = json.loads(keys_result.stdout).get("AccessKeyMetadata", [])
-                        svc_users.append({
-                            "Name": name, "source": "AWS_IAM",
-                            "CreateDate": u.get("CreateDate", ""),
-                            "PasswordLastUsed": u.get("PasswordLastUsed", ""),
-                            "AccessKeys": len(keys),
-                            "OldestKeyDate": min(
-                                (k.get("CreateDate", "") for k in keys), default=""
-                            ),
-                        })
+                            keys = json.loads(keys_result.stdout).get(
+                                "AccessKeyMetadata", []
+                            )
+                        svc_users.append(
+                            {
+                                "Name": name,
+                                "source": "AWS_IAM",
+                                "CreateDate": u.get("CreateDate", ""),
+                                "PasswordLastUsed": u.get("PasswordLastUsed", ""),
+                                "AccessKeys": len(keys),
+                                "OldestKeyDate": min(
+                                    (k.get("CreateDate", "") for k in keys), default=""
+                                ),
+                            }
+                        )
                 self.accounts.extend(svc_users)
                 return svc_users
         except (FileNotFoundError, json.JSONDecodeError):
@@ -109,13 +139,20 @@ class ServiceAccountAuditor:
         pwd_set = account.get("PasswordLastSet")
         if pwd_set:
             try:
-                pwd_date = datetime.fromisoformat(pwd_set.replace("/Date(", "").rstrip(")/"))
+                pwd_date = datetime.fromisoformat(
+                    pwd_set.replace("/Date(", "").rstrip(")/")
+                )
             except (ValueError, AttributeError):
                 pwd_date = None
-            if pwd_date and (datetime.utcnow() - pwd_date).days > self.max_password_age_days:
+            if (
+                pwd_date
+                and (datetime.utcnow() - pwd_date).days > self.max_password_age_days
+            ):
                 age_days = (datetime.utcnow() - pwd_date).days
                 score += 10
-                issues.append(f"Password age {age_days} days (>{self.max_password_age_days})")
+                issues.append(
+                    f"Password age {age_days} days (>{self.max_password_age_days})"
+                )
 
         last_logon = account.get("LastLogonDate")
         if not last_logon:
@@ -148,11 +185,13 @@ class ServiceAccountAuditor:
             assessment = self.assess_risk(acct)
             report["by_source"][acct.get("source", "unknown")] += 1
             report["by_risk"][assessment["risk_level"]] += 1
-            report["accounts"].append({
-                "name": acct.get("Name") or acct.get("SamAccountName", ""),
-                "source": acct.get("source", ""),
-                **assessment,
-            })
+            report["accounts"].append(
+                {
+                    "name": acct.get("Name") or acct.get("SamAccountName", ""),
+                    "source": acct.get("source", ""),
+                    **assessment,
+                }
+            )
 
         report["by_source"] = dict(report["by_source"])
         report["by_risk"] = dict(report["by_risk"])

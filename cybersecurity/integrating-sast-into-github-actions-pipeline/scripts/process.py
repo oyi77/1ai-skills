@@ -49,18 +49,23 @@ class ScanResult:
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3, "note": 4, "none": 5}
 
 
-def run_semgrep(repo_path: str, config: str = "auto", extra_configs: Optional[list] = None) -> ScanResult:
+def run_semgrep(
+    repo_path: str, config: str = "auto", extra_configs: Optional[list] = None
+) -> ScanResult:
     """Run Semgrep scan and return structured results."""
     result = ScanResult(tool="semgrep")
     sarif_output = os.path.join(repo_path, "semgrep-results.sarif")
 
     cmd = [
-        "semgrep", "ci",
-        "--config", config,
+        "semgrep",
+        "ci",
+        "--config",
+        config,
         "--sarif",
-        "--output", sarif_output,
+        "--output",
+        sarif_output,
         "--json",
-        "--quiet"
+        "--quiet",
     ]
 
     if extra_configs:
@@ -71,11 +76,7 @@ def run_semgrep(repo_path: str, config: str = "auto", extra_configs: Optional[li
 
     try:
         proc = subprocess.run(
-            cmd,
-            cwd=repo_path,
-            capture_output=True,
-            text=True,
-            timeout=600
+            cmd, cwd=repo_path, capture_output=True, text=True, timeout=600
         )
         result.exit_code = proc.returncode
 
@@ -88,18 +89,24 @@ def run_semgrep(repo_path: str, config: str = "auto", extra_configs: Optional[li
         result.exit_code = -1
         return result
     except FileNotFoundError:
-        result.error_message = "semgrep binary not found. Install with: pip install semgrep"
+        result.error_message = (
+            "semgrep binary not found. Install with: pip install semgrep"
+        )
         result.exit_code = -1
         return result
 
-    result.scan_duration_seconds = (datetime.now(timezone.utc) - start_time).total_seconds()
+    result.scan_duration_seconds = (
+        datetime.now(timezone.utc) - start_time
+    ).total_seconds()
 
     if os.path.exists(sarif_output):
         result.findings = parse_sarif(sarif_output, "semgrep")
         with open(sarif_output, "r") as f:
             sarif_data = json.load(f)
             for run in sarif_data.get("runs", []):
-                result.rules_evaluated = len(run.get("tool", {}).get("driver", {}).get("rules", []))
+                result.rules_evaluated = len(
+                    run.get("tool", {}).get("driver", {}).get("rules", [])
+                )
 
     return result
 
@@ -110,23 +117,21 @@ def run_codeql_query(repo_path: str, language: str, database_path: str) -> ScanR
     sarif_output = os.path.join(repo_path, f"codeql-{language}-results.sarif")
 
     cmd = [
-        "codeql", "database", "analyze",
+        "codeql",
+        "database",
+        "analyze",
         database_path,
         f"codeql/{language}-queries:codeql-suites/{language}-security-extended.qls",
         "--format=sarifv2.1.0",
         f"--output={sarif_output}",
-        "--threads=0"
+        "--threads=0",
     ]
 
     start_time = datetime.now(timezone.utc)
 
     try:
         proc = subprocess.run(
-            cmd,
-            cwd=repo_path,
-            capture_output=True,
-            text=True,
-            timeout=1200
+            cmd, cwd=repo_path, capture_output=True, text=True, timeout=1200
         )
         result.exit_code = proc.returncode
 
@@ -142,14 +147,18 @@ def run_codeql_query(repo_path: str, language: str, database_path: str) -> ScanR
         result.exit_code = -1
         return result
 
-    result.scan_duration_seconds = (datetime.now(timezone.utc) - start_time).total_seconds()
+    result.scan_duration_seconds = (
+        datetime.now(timezone.utc) - start_time
+    ).total_seconds()
 
     if os.path.exists(sarif_output):
         result.findings = parse_sarif(sarif_output, f"codeql-{language}")
         with open(sarif_output, "r") as f:
             sarif_data = json.load(f)
             for run in sarif_data.get("runs", []):
-                result.rules_evaluated = len(run.get("tool", {}).get("driver", {}).get("rules", []))
+                result.rules_evaluated = len(
+                    run.get("tool", {}).get("driver", {}).get("rules", [])
+                )
 
     return result
 
@@ -171,7 +180,9 @@ def parse_sarif(sarif_path: str, tool_name: str) -> list:
             rules_map[rule_id] = {
                 "cwe": cwe_tags[0] if cwe_tags else "",
                 "owasp": owasp_tags[0] if owasp_tags else "",
-                "severity": rule.get("defaultConfiguration", {}).get("level", "warning")
+                "severity": rule.get("defaultConfiguration", {}).get(
+                    "level", "warning"
+                ),
             }
 
         for result in run.get("results", []):
@@ -179,13 +190,20 @@ def parse_sarif(sarif_path: str, tool_name: str) -> list:
             rule_info = rules_map.get(rule_id, {})
 
             level = result.get("level", rule_info.get("severity", "warning"))
-            severity_map = {"error": "high", "warning": "medium", "note": "low", "none": "none"}
+            severity_map = {
+                "error": "high",
+                "warning": "medium",
+                "note": "low",
+                "none": "none",
+            }
             severity = severity_map.get(level, "medium")
 
             security_severity = None
             for rule in run.get("tool", {}).get("driver", {}).get("rules", []):
                 if rule.get("id") == rule_id:
-                    security_severity = rule.get("properties", {}).get("security-severity")
+                    security_severity = rule.get("properties", {}).get(
+                        "security-severity"
+                    )
                     break
 
             if security_severity:
@@ -204,18 +222,24 @@ def parse_sarif(sarif_path: str, tool_name: str) -> list:
             artifact = physical.get("artifactLocation", {})
             region = physical.get("region", {})
 
-            findings.append(ScanFinding(
-                rule_id=rule_id,
-                severity=severity,
-                message=result.get("message", {}).get("text", ""),
-                file_path=artifact.get("uri", "unknown"),
-                start_line=region.get("startLine", 0),
-                end_line=region.get("endLine", region.get("startLine", 0)),
-                tool=tool_name,
-                cwe=rule_info.get("cwe", ""),
-                owasp=rule_info.get("owasp", ""),
-                fingerprint=str(result.get("fingerprints", {}).get("primaryLocationLineHash", ""))
-            ))
+            findings.append(
+                ScanFinding(
+                    rule_id=rule_id,
+                    severity=severity,
+                    message=result.get("message", {}).get("text", ""),
+                    file_path=artifact.get("uri", "unknown"),
+                    start_line=region.get("startLine", 0),
+                    end_line=region.get("endLine", region.get("startLine", 0)),
+                    tool=tool_name,
+                    cwe=rule_info.get("cwe", ""),
+                    owasp=rule_info.get("owasp", ""),
+                    fingerprint=str(
+                        result.get("fingerprints", {}).get(
+                            "primaryLocationLineHash", ""
+                        )
+                    ),
+                )
+            )
 
     return findings
 
@@ -225,7 +249,8 @@ def evaluate_quality_gate(findings: list, severity_threshold: str) -> dict:
     threshold_level = SEVERITY_ORDER.get(severity_threshold.lower(), 1)
 
     blocking_findings = [
-        f for f in findings
+        f
+        for f in findings
         if SEVERITY_ORDER.get(f.severity.lower(), 5) <= threshold_level
     ]
 
@@ -247,10 +272,10 @@ def evaluate_quality_gate(findings: list, severity_threshold: str) -> dict:
                 "file": f.file_path,
                 "line": f.start_line,
                 "tool": f.tool,
-                "message": f.message[:200]
+                "message": f.message[:200],
             }
             for f in blocking_findings
-        ]
+        ],
     }
 
 
@@ -269,7 +294,7 @@ def generate_report(scan_results: list, quality_gate: dict, repo_path: str) -> d
         "report_metadata": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "repository": repo_path,
-            "report_version": "1.0.0"
+            "report_version": "1.0.0",
         },
         "scan_summary": [
             {
@@ -278,7 +303,7 @@ def generate_report(scan_results: list, quality_gate: dict, repo_path: str) -> d
                 "rules_evaluated": sr.rules_evaluated,
                 "duration_seconds": sr.scan_duration_seconds,
                 "status": "success" if sr.exit_code in (0, 1) else "error",
-                "error": sr.error_message
+                "error": sr.error_message,
             }
             for sr in scan_results
         ],
@@ -293,10 +318,12 @@ def generate_report(scan_results: list, quality_gate: dict, repo_path: str) -> d
                 "line": f.start_line,
                 "cwe": f.cwe,
                 "owasp": f.owasp,
-                "message": f.message[:300]
+                "message": f.message[:300],
             }
-            for f in sorted(all_findings, key=lambda x: SEVERITY_ORDER.get(x.severity.lower(), 5))
-        ]
+            for f in sorted(
+                all_findings, key=lambda x: SEVERITY_ORDER.get(x.severity.lower(), 5)
+            )
+        ],
     }
 
     return report
@@ -304,23 +331,42 @@ def generate_report(scan_results: list, quality_gate: dict, repo_path: str) -> d
 
 def main():
     parser = argparse.ArgumentParser(description="SAST Pipeline Orchestration")
-    parser.add_argument("--repo-path", required=True, help="Path to the repository to scan")
-    parser.add_argument("--output", default="sast-report.json", help="Output report file path")
-    parser.add_argument("--severity-threshold", default="high",
-                        choices=["critical", "high", "medium", "low"],
-                        help="Minimum severity to block pipeline")
-    parser.add_argument("--fail-on-findings", action="store_true",
-                        help="Exit with non-zero code if quality gate fails")
-    parser.add_argument("--semgrep-config", default="auto",
-                        help="Semgrep configuration (default: auto)")
-    parser.add_argument("--semgrep-extra-configs", nargs="*",
-                        help="Additional Semgrep config paths")
+    parser.add_argument(
+        "--repo-path", required=True, help="Path to the repository to scan"
+    )
+    parser.add_argument(
+        "--output", default="sast-report.json", help="Output report file path"
+    )
+    parser.add_argument(
+        "--severity-threshold",
+        default="high",
+        choices=["critical", "high", "medium", "low"],
+        help="Minimum severity to block pipeline",
+    )
+    parser.add_argument(
+        "--fail-on-findings",
+        action="store_true",
+        help="Exit with non-zero code if quality gate fails",
+    )
+    parser.add_argument(
+        "--semgrep-config", default="auto", help="Semgrep configuration (default: auto)"
+    )
+    parser.add_argument(
+        "--semgrep-extra-configs", nargs="*", help="Additional Semgrep config paths"
+    )
     parser.add_argument("--skip-semgrep", action="store_true", help="Skip Semgrep scan")
     parser.add_argument("--skip-codeql", action="store_true", help="Skip CodeQL scan")
-    parser.add_argument("--codeql-language", default=None, help="Language for CodeQL analysis")
-    parser.add_argument("--codeql-db-path", default=None, help="Path to CodeQL database")
-    parser.add_argument("--sarif-only", nargs="*",
-                        help="Only parse existing SARIF files instead of running scans")
+    parser.add_argument(
+        "--codeql-language", default=None, help="Language for CodeQL analysis"
+    )
+    parser.add_argument(
+        "--codeql-db-path", default=None, help="Path to CodeQL database"
+    )
+    parser.add_argument(
+        "--sarif-only",
+        nargs="*",
+        help="Only parse existing SARIF files instead of running scans",
+    )
     args = parser.parse_args()
 
     repo_path = os.path.abspath(args.repo_path)
@@ -338,19 +384,25 @@ def main():
             semgrep_result = run_semgrep(
                 repo_path,
                 config=args.semgrep_config,
-                extra_configs=args.semgrep_extra_configs
+                extra_configs=args.semgrep_extra_configs,
             )
             scan_results.append(semgrep_result)
-            print(f"    Found {len(semgrep_result.findings)} findings in {semgrep_result.scan_duration_seconds:.1f}s")
+            print(
+                f"    Found {len(semgrep_result.findings)} findings in {semgrep_result.scan_duration_seconds:.1f}s"
+            )
 
             if semgrep_result.error_message:
                 print(f"    Warning: {semgrep_result.error_message}")
 
         if not args.skip_codeql and args.codeql_language and args.codeql_db_path:
             print(f"[*] Running CodeQL analysis for {args.codeql_language}...")
-            codeql_result = run_codeql_query(repo_path, args.codeql_language, args.codeql_db_path)
+            codeql_result = run_codeql_query(
+                repo_path, args.codeql_language, args.codeql_db_path
+            )
             scan_results.append(codeql_result)
-            print(f"    Found {len(codeql_result.findings)} findings in {codeql_result.scan_duration_seconds:.1f}s")
+            print(
+                f"    Found {len(codeql_result.findings)} findings in {codeql_result.scan_duration_seconds:.1f}s"
+            )
 
     all_findings = []
     for sr in scan_results:
@@ -366,11 +418,17 @@ def main():
     print(f"\n[*] Report written to {output_path}")
 
     if quality_gate["passed"]:
-        print(f"[PASS] Quality gate passed. {quality_gate['total_findings']} findings, none blocking.")
+        print(
+            f"[PASS] Quality gate passed. {quality_gate['total_findings']} findings, none blocking."
+        )
     else:
-        print(f"[FAIL] Quality gate failed. {quality_gate['blocking_findings']} blocking findings:")
+        print(
+            f"[FAIL] Quality gate failed. {quality_gate['blocking_findings']} blocking findings:"
+        )
         for detail in quality_gate["blocking_details"]:
-            print(f"  - [{detail['severity'].upper()}] {detail['rule_id']} in {detail['file']}:{detail['line']}")
+            print(
+                f"  - [{detail['severity'].upper()}] {detail['rule_id']} in {detail['file']}:{detail['line']}"
+            )
 
     if args.fail_on_findings and not quality_gate["passed"]:
         sys.exit(1)

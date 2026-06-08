@@ -54,19 +54,39 @@ def generate_sarif(findings, output_path):
     for f in findings:
         rid = f["rule_id"]
         if rid not in seen_rules:
-            rules.append({"id": rid, "shortDescription": {"text": f["message"][:200]},
-                           "defaultConfiguration": {"level": "warning"}})
+            rules.append(
+                {
+                    "id": rid,
+                    "shortDescription": {"text": f["message"][:200]},
+                    "defaultConfiguration": {"level": "warning"},
+                }
+            )
             seen_rules.add(rid)
-        results.append({
-            "ruleId": rid, "message": {"text": f["message"][:500]},
-            "level": "error" if f["severity"] == "ERROR" else "warning",
-            "locations": [{"physicalLocation": {
-                "artifactLocation": {"uri": f["file"]},
-                "region": {"startLine": f["line"]}}}],
-        })
-    sarif = {"$schema": "https://json.schemastore.org/sarif-2.1.0.json", "version": "2.1.0",
-             "runs": [{"tool": {"driver": {"name": "Semgrep", "rules": rules}},
-                        "results": results}]}
+        results.append(
+            {
+                "ruleId": rid,
+                "message": {"text": f["message"][:500]},
+                "level": "error" if f["severity"] == "ERROR" else "warning",
+                "locations": [
+                    {
+                        "physicalLocation": {
+                            "artifactLocation": {"uri": f["file"]},
+                            "region": {"startLine": f["line"]},
+                        }
+                    }
+                ],
+            }
+        )
+    sarif = {
+        "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+        "version": "2.1.0",
+        "runs": [
+            {
+                "tool": {"driver": {"name": "Semgrep", "rules": rules}},
+                "results": results,
+            }
+        ],
+    }
     with open(output_path, "w") as f:
         json.dump(sarif, f, indent=2)
     print(f"[*] SARIF report: {output_path}")
@@ -76,7 +96,9 @@ def apply_quality_gate(findings, fail_on="ERROR"):
     """Apply quality gate based on severity threshold."""
     severity_order = {"INFO": 0, "WARNING": 1, "ERROR": 2}
     threshold = severity_order.get(fail_on, 2)
-    blocking = [f for f in findings if severity_order.get(f["severity"], 0) >= threshold]
+    blocking = [
+        f for f in findings if severity_order.get(f["severity"], 0) >= threshold
+    ]
     if blocking:
         print(f"\n[!] QUALITY GATE FAILED: {len(blocking)} findings at {fail_on}+")
         for b in blocking[:5]:
@@ -115,11 +137,17 @@ jobs:
 
 def main():
     parser = argparse.ArgumentParser(description="SAST GitHub Actions Pipeline Agent")
-    parser.add_argument("action", choices=["scan", "parse", "sarif", "gate", "gen-workflow"])
+    parser.add_argument(
+        "action", choices=["scan", "parse", "sarif", "gate", "gen-workflow"]
+    )
     parser.add_argument("--target", default=".", help="Directory to scan")
-    parser.add_argument("--config", default="auto", help="Semgrep config (auto, p/ci, p/owasp)")
+    parser.add_argument(
+        "--config", default="auto", help="Semgrep config (auto, p/ci, p/owasp)"
+    )
     parser.add_argument("--report", help="Existing Semgrep JSON report")
-    parser.add_argument("--fail-on", default="ERROR", choices=["INFO", "WARNING", "ERROR"])
+    parser.add_argument(
+        "--fail-on", default="ERROR", choices=["INFO", "WARNING", "ERROR"]
+    )
     parser.add_argument("-o", "--output", default=".")
     args = parser.parse_args()
 

@@ -15,21 +15,31 @@ def load_alert_data(filepath):
     with open(filepath, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            alerts.append({
-                "rule_name": row.get("rule_name", row.get("search_name", "")),
-                "timestamp": row.get("timestamp", row.get("_time", "")),
-                "disposition": row.get("disposition", row.get("status", "unknown")),
-                "source": row.get("source", row.get("src", "")),
-                "user": row.get("user", row.get("dest_user", "")),
-                "severity": row.get("severity", "medium"),
-            })
+            alerts.append(
+                {
+                    "rule_name": row.get("rule_name", row.get("search_name", "")),
+                    "timestamp": row.get("timestamp", row.get("_time", "")),
+                    "disposition": row.get("disposition", row.get("status", "unknown")),
+                    "source": row.get("source", row.get("src", "")),
+                    "user": row.get("user", row.get("dest_user", "")),
+                    "severity": row.get("severity", "medium"),
+                }
+            )
     return alerts
 
 
 def calculate_rule_metrics(alerts):
     """Calculate per-rule alert volume, FP rate, and disposition breakdown."""
-    rule_stats = defaultdict(lambda: {"total": 0, "true_positive": 0, "false_positive": 0,
-                                       "pending": 0, "sources": set(), "users": set()})
+    rule_stats = defaultdict(
+        lambda: {
+            "total": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "pending": 0,
+            "sources": set(),
+            "users": set(),
+        }
+    )
     for alert in alerts:
         rule = alert["rule_name"]
         rule_stats[rule]["total"] += 1
@@ -50,18 +60,20 @@ def calculate_rule_metrics(alerts):
         reviewed = stats["true_positive"] + stats["false_positive"]
         fp_rate = stats["false_positive"] / reviewed if reviewed > 0 else 0.0
         precision = stats["true_positive"] / reviewed if reviewed > 0 else 0.0
-        metrics.append({
-            "rule_name": rule,
-            "total_alerts": stats["total"],
-            "true_positives": stats["true_positive"],
-            "false_positives": stats["false_positive"],
-            "pending": stats["pending"],
-            "fp_rate": round(fp_rate, 4),
-            "precision": round(precision, 4),
-            "unique_sources": len(stats["sources"]),
-            "unique_users": len(stats["users"]),
-            "top_sources": list(stats["sources"])[:10],
-        })
+        metrics.append(
+            {
+                "rule_name": rule,
+                "total_alerts": stats["total"],
+                "true_positives": stats["true_positive"],
+                "false_positives": stats["false_positive"],
+                "pending": stats["pending"],
+                "fp_rate": round(fp_rate, 4),
+                "precision": round(precision, 4),
+                "unique_sources": len(stats["sources"]),
+                "unique_users": len(stats["users"]),
+                "top_sources": list(stats["sources"])[:10],
+            }
+        )
     return sorted(metrics, key=lambda x: x["fp_rate"], reverse=True)
 
 
@@ -83,14 +95,20 @@ def identify_whitelist_candidates(alerts, fp_threshold=0.8):
         for source, counts in sources.items():
             total = counts["tp"] + counts["fp"]
             if total >= 3 and counts["fp"] / total >= fp_threshold:
-                candidates.append({
-                    "rule_name": rule,
-                    "entity": source,
-                    "fp_count": counts["fp"],
-                    "tp_count": counts["tp"],
-                    "fp_ratio": round(counts["fp"] / total, 4),
-                    "recommendation": "Add to whitelist" if counts["tp"] == 0 else "Review before whitelisting",
-                })
+                candidates.append(
+                    {
+                        "rule_name": rule,
+                        "entity": source,
+                        "fp_count": counts["fp"],
+                        "tp_count": counts["tp"],
+                        "fp_ratio": round(counts["fp"] / total, 4),
+                        "recommendation": (
+                            "Add to whitelist"
+                            if counts["tp"] == 0
+                            else "Review before whitelisting"
+                        ),
+                    }
+                )
     return sorted(candidates, key=lambda x: x["fp_count"], reverse=True)
 
 
@@ -145,19 +163,44 @@ def generate_tuning_report(metrics, whitelist, thresholds):
         "whitelist_recommendations": whitelist[:20],
         "threshold_recommendations": thresholds,
         "actions": [
-            {"priority": "high", "action": f"Disable or rewrite {len(high_fp_rules)} rules with FP rate > 70%"},
-            {"priority": "medium", "action": f"Add {len(whitelist)} whitelist entries to reduce {projected_reduction} FP alerts"},
-            {"priority": "low", "action": f"Review {len(medium_fp_rules)} rules with FP rate 30-70%"},
+            {
+                "priority": "high",
+                "action": f"Disable or rewrite {len(high_fp_rules)} rules with FP rate > 70%",
+            },
+            {
+                "priority": "medium",
+                "action": f"Add {len(whitelist)} whitelist entries to reduce {projected_reduction} FP alerts",
+            },
+            {
+                "priority": "low",
+                "action": f"Review {len(medium_fp_rules)} rules with FP rate 30-70%",
+            },
         ],
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description="SIEM Use Case Tuning Agent")
-    parser.add_argument("--alert-csv", required=True, help="CSV export of SIEM alerts with disposition data")
-    parser.add_argument("--fp-threshold", type=float, default=0.8, help="FP ratio threshold for whitelist candidates")
-    parser.add_argument("--top-rules", type=int, default=5, help="Number of top rules to compute thresholds for")
-    parser.add_argument("--output", default="tuning_report.json", help="Output report path")
+    parser.add_argument(
+        "--alert-csv",
+        required=True,
+        help="CSV export of SIEM alerts with disposition data",
+    )
+    parser.add_argument(
+        "--fp-threshold",
+        type=float,
+        default=0.8,
+        help="FP ratio threshold for whitelist candidates",
+    )
+    parser.add_argument(
+        "--top-rules",
+        type=int,
+        default=5,
+        help="Number of top rules to compute thresholds for",
+    )
+    parser.add_argument(
+        "--output", default="tuning_report.json", help="Output report path"
+    )
     args = parser.parse_args()
 
     alerts = load_alert_data(args.alert_csv)
@@ -167,10 +210,12 @@ def main():
     print(f"[+] Analyzed {len(metrics)} unique detection rules")
 
     whitelist = identify_whitelist_candidates(alerts, args.fp_threshold)
-    print(f"[+] Found {len(whitelist)} whitelist candidates (FP ratio >= {args.fp_threshold})")
+    print(
+        f"[+] Found {len(whitelist)} whitelist candidates (FP ratio >= {args.fp_threshold})"
+    )
 
     thresholds = []
-    for m in metrics[:args.top_rules]:
+    for m in metrics[: args.top_rules]:
         t = compute_threshold_recommendation(alerts, m["rule_name"])
         if t:
             thresholds.append(t)
@@ -180,7 +225,9 @@ def main():
         json.dump(report, f, indent=2)
     print(f"[+] Tuning report saved to {args.output}")
     print(f"[+] Overall FP rate: {report['summary']['overall_fp_rate']:.1%}")
-    print(f"[+] Projected alert reduction from whitelisting: {report['summary']['projected_alert_reduction']}")
+    print(
+        f"[+] Projected alert reduction from whitelisting: {report['summary']['projected_alert_reduction']}"
+    )
 
 
 if __name__ == "__main__":

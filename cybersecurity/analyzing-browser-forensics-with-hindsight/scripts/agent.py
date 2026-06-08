@@ -31,9 +31,21 @@ def find_browser_profiles(base_path=None):
     profiles = []
     home = os.path.expanduser("~")
     candidates = [
-        os.path.join(home, "AppData", "Local", "Google", "Chrome", "User Data", "Default"),
-        os.path.join(home, "AppData", "Local", "Microsoft", "Edge", "User Data", "Default"),
-        os.path.join(home, "AppData", "Local", "BraveSoftware", "Brave-Browser", "User Data", "Default"),
+        os.path.join(
+            home, "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+        ),
+        os.path.join(
+            home, "AppData", "Local", "Microsoft", "Edge", "User Data", "Default"
+        ),
+        os.path.join(
+            home,
+            "AppData",
+            "Local",
+            "BraveSoftware",
+            "Brave-Browser",
+            "User Data",
+            "Default",
+        ),
         os.path.join(home, ".config", "google-chrome", "Default"),
         os.path.join(home, ".config", "chromium", "Default"),
         os.path.join(home, ".config", "microsoft-edge", "Default"),
@@ -59,12 +71,15 @@ def parse_history(profile_path):
             ORDER BY v.visit_time DESC LIMIT 5000
         """)
         for url, title, visit_time, transition, count in cursor.fetchall():
-            entries.append({
-                "url": url, "title": title or "",
-                "visit_time": chrome_time_to_datetime(visit_time),
-                "transition": transition & 0xFF,
-                "visit_count": count,
-            })
+            entries.append(
+                {
+                    "url": url,
+                    "title": title or "",
+                    "visit_time": chrome_time_to_datetime(visit_time),
+                    "transition": transition & 0xFF,
+                    "visit_count": count,
+                }
+            )
         conn.close()
     except sqlite3.Error as e:
         entries.append({"error": str(e)})
@@ -86,14 +101,18 @@ def parse_downloads(profile_path):
             FROM downloads ORDER BY start_time DESC LIMIT 1000
         """)
         for row in cursor.fetchall():
-            downloads.append({
-                "target_path": row[0], "source_url": row[1],
-                "total_bytes": row[2],
-                "start_time": chrome_time_to_datetime(row[3]),
-                "end_time": chrome_time_to_datetime(row[4]),
-                "danger_type": row[5], "interrupt_reason": row[6],
-                "mime_type": row[7],
-            })
+            downloads.append(
+                {
+                    "target_path": row[0],
+                    "source_url": row[1],
+                    "total_bytes": row[2],
+                    "start_time": chrome_time_to_datetime(row[3]),
+                    "end_time": chrome_time_to_datetime(row[4]),
+                    "danger_type": row[5],
+                    "interrupt_reason": row[6],
+                    "mime_type": row[7],
+                }
+            )
         conn.close()
     except sqlite3.Error as e:
         downloads.append({"error": str(e)})
@@ -117,13 +136,18 @@ def parse_cookies(profile_path):
             FROM cookies ORDER BY creation_utc DESC LIMIT 2000
         """)
         for row in cursor.fetchall():
-            cookies.append({
-                "host": row[0], "name": row[1], "path": row[2],
-                "created": chrome_time_to_datetime(row[3]),
-                "expires": chrome_time_to_datetime(row[4]),
-                "secure": bool(row[5]), "httponly": bool(row[6]),
-                "samesite": row[7],
-            })
+            cookies.append(
+                {
+                    "host": row[0],
+                    "name": row[1],
+                    "path": row[2],
+                    "created": chrome_time_to_datetime(row[3]),
+                    "expires": chrome_time_to_datetime(row[4]),
+                    "secure": bool(row[5]),
+                    "httponly": bool(row[6]),
+                    "samesite": row[7],
+                }
+            )
         conn.close()
     except sqlite3.Error as e:
         cookies.append({"error": str(e)})
@@ -144,12 +168,19 @@ def parse_autofill(profile_path):
             FROM autofill ORDER BY date_last_used DESC LIMIT 500
         """)
         for row in cursor.fetchall():
-            entries.append({
-                "field_name": row[0], "value": row[1][:50] + "..." if len(row[1]) > 50 else row[1],
-                "usage_count": row[2],
-                "created": chrome_time_to_datetime(row[3] * 1000000 if row[3] else 0),
-                "last_used": chrome_time_to_datetime(row[4] * 1000000 if row[4] else 0),
-            })
+            entries.append(
+                {
+                    "field_name": row[0],
+                    "value": row[1][:50] + "..." if len(row[1]) > 50 else row[1],
+                    "usage_count": row[2],
+                    "created": chrome_time_to_datetime(
+                        row[3] * 1000000 if row[3] else 0
+                    ),
+                    "last_used": chrome_time_to_datetime(
+                        row[4] * 1000000 if row[4] else 0
+                    ),
+                }
+            )
         conn.close()
     except sqlite3.Error as e:
         entries.append({"error": str(e)})
@@ -166,49 +197,80 @@ def parse_extensions(profile_path):
         ext_path = os.path.join(ext_dir, ext_id)
         if os.path.isdir(ext_path):
             versions = sorted(os.listdir(ext_path))
-            manifest_path = os.path.join(ext_path, versions[-1], "manifest.json") if versions else None
+            manifest_path = (
+                os.path.join(ext_path, versions[-1], "manifest.json")
+                if versions
+                else None
+            )
             name = ext_id
             if manifest_path and os.path.exists(manifest_path):
                 try:
                     with open(manifest_path, "r", encoding="utf-8") as f:
                         manifest = json.load(f)
                     name = manifest.get("name", ext_id)
-                    extensions.append({
-                        "id": ext_id, "name": name,
-                        "version": manifest.get("version", "?"),
-                        "permissions": manifest.get("permissions", [])[:10],
-                    })
+                    extensions.append(
+                        {
+                            "id": ext_id,
+                            "name": name,
+                            "version": manifest.get("version", "?"),
+                            "permissions": manifest.get("permissions", [])[:10],
+                        }
+                    )
                 except (json.JSONDecodeError, IOError):
-                    extensions.append({"id": ext_id, "name": name, "version": "unknown"})
+                    extensions.append(
+                        {"id": ext_id, "name": name, "version": "unknown"}
+                    )
     return extensions
 
 
 def detect_suspicious_activity(history, downloads):
     """Flag suspicious browsing and download patterns."""
     findings = []
-    suspicious_domains = ["pastebin.com", "ngrok.io", "raw.githubusercontent.com",
-                          "transfer.sh", "file.io", "temp.sh", "anonfiles.com"]
+    suspicious_domains = [
+        "pastebin.com",
+        "ngrok.io",
+        "raw.githubusercontent.com",
+        "transfer.sh",
+        "file.io",
+        "temp.sh",
+        "anonfiles.com",
+    ]
     for entry in history:
         url = entry.get("url", "").lower()
         for domain in suspicious_domains:
             if domain in url:
-                findings.append({
-                    "type": "suspicious_url", "url": entry["url"],
-                    "domain": domain, "time": entry.get("visit_time"),
-                })
-    dangerous_mimes = ["application/x-msdownload", "application/x-msdos-program",
-                       "application/x-executable", "application/vnd.ms-excel.sheet.macroEnabled"]
+                findings.append(
+                    {
+                        "type": "suspicious_url",
+                        "url": entry["url"],
+                        "domain": domain,
+                        "time": entry.get("visit_time"),
+                    }
+                )
+    dangerous_mimes = [
+        "application/x-msdownload",
+        "application/x-msdos-program",
+        "application/x-executable",
+        "application/vnd.ms-excel.sheet.macroEnabled",
+    ]
     for dl in downloads:
         if dl.get("danger_type", 0) > 0:
-            findings.append({
-                "type": "dangerous_download", "path": dl.get("target_path"),
-                "source": dl.get("source_url"), "danger_type": dl.get("danger_type"),
-            })
+            findings.append(
+                {
+                    "type": "dangerous_download",
+                    "path": dl.get("target_path"),
+                    "source": dl.get("source_url"),
+                    "danger_type": dl.get("danger_type"),
+                }
+            )
         if dl.get("mime_type", "") in dangerous_mimes:
-            findings.append({
-                "type": "suspicious_mime", "mime": dl.get("mime_type"),
-                "path": dl.get("target_path"),
-            })
+            findings.append(
+                {
+                    "type": "suspicious_mime",
+                    "mime": dl.get("mime_type"),
+                    "path": dl.get("target_path"),
+                }
+            )
     return findings
 
 
@@ -224,7 +286,9 @@ if __name__ == "__main__":
     if not profiles:
         print("\n[!] No browser profiles found.")
         print("[DEMO] Usage: python agent.py <profile_path>")
-        print("  e.g. python agent.py ~/AppData/Local/Google/Chrome/User\\ Data/Default")
+        print(
+            "  e.g. python agent.py ~/AppData/Local/Google/Chrome/User\\ Data/Default"
+        )
         sys.exit(0)
 
     for profile in profiles:
@@ -233,12 +297,16 @@ if __name__ == "__main__":
         history = parse_history(profile)
         print(f"  History entries: {len(history)}")
         for h in history[:5]:
-            print(f"    {h.get('visit_time', '?')} | {h.get('title', '')[:50]} | {h.get('url', '')[:60]}")
+            print(
+                f"    {h.get('visit_time', '?')} | {h.get('title', '')[:50]} | {h.get('url', '')[:60]}"
+            )
 
         downloads = parse_downloads(profile)
         print(f"  Downloads: {len(downloads)}")
         for d in downloads[:5]:
-            print(f"    {d.get('start_time', '?')} | {d.get('mime_type', '?')} | {os.path.basename(d.get('target_path', ''))}")
+            print(
+                f"    {d.get('start_time', '?')} | {d.get('mime_type', '?')} | {os.path.basename(d.get('target_path', ''))}"
+            )
 
         cookies = parse_cookies(profile)
         print(f"  Cookies: {len(cookies)}")
@@ -246,7 +314,9 @@ if __name__ == "__main__":
         extensions = parse_extensions(profile)
         print(f"  Extensions: {len(extensions)}")
         for ext in extensions[:5]:
-            print(f"    {ext.get('name', '?')} v{ext.get('version', '?')} [{ext.get('id', '')[:20]}]")
+            print(
+                f"    {ext.get('name', '?')} v{ext.get('version', '?')} [{ext.get('id', '')[:20]}]"
+            )
 
         findings = detect_suspicious_activity(history, downloads)
         print(f"\n  --- Suspicious Activity: {len(findings)} findings ---")

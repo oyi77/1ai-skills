@@ -30,7 +30,9 @@ class HelmSecurityAgent:
 
     def _run(self, cmd, timeout=60):
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=timeout
+            )
             return result.stdout, result.stderr, result.returncode
         except (FileNotFoundError, subprocess.TimeoutExpired) as e:
             return "", str(e), -1
@@ -42,11 +44,13 @@ class HelmSecurityAgent:
             cmd.extend(["--values", values_file])
         stdout, stderr, rc = self._run(cmd)
         if rc != 0:
-            self.findings.append({
-                "severity": "medium",
-                "type": "Lint Failure",
-                "detail": stderr.strip() or stdout.strip(),
-            })
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Lint Failure",
+                    "detail": stderr.strip() or stdout.strip(),
+                }
+            )
         return {"returncode": rc, "output": stdout.strip(), "errors": stderr.strip()}
 
     def render_templates(self, values_file=None, release_name="audit"):
@@ -70,7 +74,11 @@ class HelmSecurityAgent:
             (r"privileged:\s*true", "high", "Privileged container detected"),
             (r"hostNetwork:\s*true", "high", "Host network access enabled"),
             (r"hostPID:\s*true", "high", "Host PID namespace shared"),
-            (r"allowPrivilegeEscalation:\s*true", "medium", "Privilege escalation allowed"),
+            (
+                r"allowPrivilegeEscalation:\s*true",
+                "medium",
+                "Privilege escalation allowed",
+            ),
             (r"runAsUser:\s*0\b", "medium", "Running as root (UID 0)"),
         ]
 
@@ -83,16 +91,30 @@ class HelmSecurityAgent:
         for pattern, severity, msg in checks:
             if re.search(pattern, content):
                 issues.append({"severity": severity, "issue": msg})
-                self.findings.append({"severity": severity, "type": "Security Context", "detail": msg})
+                self.findings.append(
+                    {"severity": severity, "type": "Security Context", "detail": msg}
+                )
 
         for pattern, name in positive_checks:
             if not re.search(pattern, content):
                 issues.append({"severity": "medium", "issue": f"Missing: {name}"})
-                self.findings.append({"severity": "medium", "type": "Missing Hardening", "detail": f"Missing: {name}"})
+                self.findings.append(
+                    {
+                        "severity": "medium",
+                        "type": "Missing Hardening",
+                        "detail": f"Missing: {name}",
+                    }
+                )
 
         if "resources:" not in content:
             issues.append({"severity": "medium", "issue": "No resource limits defined"})
-            self.findings.append({"severity": "medium", "type": "Missing Resources", "detail": "No CPU/memory limits"})
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Missing Resources",
+                    "detail": "No CPU/memory limits",
+                }
+            )
 
         return issues
 
@@ -106,7 +128,13 @@ class HelmSecurityAgent:
             cmd.extend(["--keyring", keyring])
         stdout, stderr, rc = self._run(cmd)
         if rc != 0:
-            self.findings.append({"severity": "medium", "type": "Unsigned Chart", "detail": "Chart signature not verified"})
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Unsigned Chart",
+                    "detail": "Chart signature not verified",
+                }
+            )
         return {"verified": rc == 0, "output": stdout.strip() or stderr.strip()}
 
     def check_image_references(self, rendered_path):
@@ -117,7 +145,13 @@ class HelmSecurityAgent:
             image = m.group(1)
             if ":latest" in image:
                 issues.append({"image": image, "issue": "Uses :latest tag"})
-                self.findings.append({"severity": "medium", "type": "Image Tag", "detail": f"latest tag: {image}"})
+                self.findings.append(
+                    {
+                        "severity": "medium",
+                        "type": "Image Tag",
+                        "detail": f"latest tag: {image}",
+                    }
+                )
             elif "@sha256:" not in image and ":" not in image:
                 issues.append({"image": image, "issue": "No tag or digest specified"})
         return issues

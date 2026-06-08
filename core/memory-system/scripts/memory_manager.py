@@ -14,6 +14,7 @@ Usage:
     stats = mm.get_stats()
     report = mm.health_check()
 """
+
 import json
 import logging
 import threading
@@ -56,11 +57,11 @@ class MemoryManager:
         self._lock = threading.RLock()
 
         # Layer init
-        self._working  = WorkingMemory()
+        self._working = WorkingMemory()
         self._episodic = EpisodicMemory(db_path=db)
         self._semantic = SemanticMemory(db_path=db)
-        self._archive  = ArchiveMemory()
-        self._graph    = MemoryGraph(db_path=db)
+        self._archive = ArchiveMemory()
+        self._graph = MemoryGraph(db_path=db)
 
         # Embedding + pipeline
         self._emb = EmbeddingEngine(db_path=db, mode=mode)
@@ -128,11 +129,13 @@ class MemoryManager:
     def add_message(self, role: str, content: str) -> None:
         """Buffer a raw conversation message. Auto-summarises every N messages."""
         with self._msg_buffer_lock:
-            self._msg_buffer.append({
-                "role": role,
-                "content": content,
-                "timestamp": time.time(),
-            })
+            self._msg_buffer.append(
+                {
+                    "role": role,
+                    "content": content,
+                    "timestamp": time.time(),
+                }
+            )
             if len(self._msg_buffer) >= config.EPISODIC_SUMMARY_EVERY:
                 self._flush_messages()
 
@@ -148,7 +151,9 @@ class MemoryManager:
             importance=importance,
             message_count=len(messages),
         )
-        self._pipeline.enqueue_embed(memory_id=eid, text=summary, memory_type="episodic")
+        self._pipeline.enqueue_embed(
+            memory_id=eid, text=summary, memory_type="episodic"
+        )
         return eid
 
     def flush_messages(self) -> Optional[str]:
@@ -237,7 +242,12 @@ class MemoryManager:
         for item in raw:
             mem = self.get_memory(item["memory_id"])
             if mem:
-                item.update({"text": mem.get("text", ""), "importance": mem.get("importance", 0.5)})
+                item.update(
+                    {
+                        "text": mem.get("text", ""),
+                        "importance": mem.get("importance", 0.5),
+                    }
+                )
             enriched.append(item)
         return enriched
 
@@ -263,7 +273,7 @@ class MemoryManager:
         """Apply importance decay to all non-archived memories."""
         sem_count = self._semantic.apply_decay()
         epi_count = self._episodic.apply_decay()
-        archived  = self._semantic.archive_low_importance()
+        archived = self._semantic.archive_low_importance()
         return {
             "semantic_decayed": sem_count,
             "episodic_decayed": epi_count,
@@ -285,12 +295,20 @@ class MemoryManager:
         all_mems = self._semantic.get_all_with_embeddings()
 
         if len(all_mems) < config.COMPACT_MIN_CLUSTER_SIZE:
-            return {"clusters_found": 0, "memories_compacted": 0, "new_memories_created": 0}
+            return {
+                "clusters_found": 0,
+                "memories_compacted": 0,
+                "new_memories_created": 0,
+            }
 
         # Build embedding matrix
         valid = [m for m in all_mems if m["embedding"] is not None]
         if len(valid) < config.COMPACT_MIN_CLUSTER_SIZE:
-            return {"clusters_found": 0, "memories_compacted": 0, "new_memories_created": 0}
+            return {
+                "clusters_found": 0,
+                "memories_compacted": 0,
+                "new_memories_created": 0,
+            }
 
         matrix = np.stack([m["embedding"] for m in valid]).astype(np.float32)
         # Normalise
@@ -317,7 +335,11 @@ class MemoryManager:
             used.add(i)
 
         if not clusters:
-            return {"clusters_found": 0, "memories_compacted": 0, "new_memories_created": 0}
+            return {
+                "clusters_found": 0,
+                "memories_compacted": 0,
+                "new_memories_created": 0,
+            }
 
         compacted = 0
         created = 0
@@ -348,14 +370,18 @@ class MemoryManager:
             # Link originals → compacted
             for m in cluster_mems:
                 try:
-                    self._graph.add_edge(m["id"], new_id, edge_type="refers_to", weight=0.8)
+                    self._graph.add_edge(
+                        m["id"], new_id, edge_type="refers_to", weight=0.8
+                    )
                 except Exception:
                     pass
             compacted += len(cluster_mems)
 
         logger.info(
             "MemoryManager.compact: found %d clusters, compacted %d → %d new memories",
-            len(clusters), compacted, created,
+            len(clusters),
+            compacted,
+            created,
         )
         return {
             "clusters_found": len(clusters),
@@ -391,16 +417,24 @@ class MemoryManager:
         missing_epi = self._episodic.get_without_embeddings()
 
         if missing_sem:
-            report["issues"].append(f"{len(missing_sem)} semantic memories missing embeddings")
+            report["issues"].append(
+                f"{len(missing_sem)} semantic memories missing embeddings"
+            )
             for m in missing_sem:
                 self._pipeline.enqueue_embed(m["id"], m["text"], "semantic", priority=1)
-            report["fixes"].append(f"Re-queued {len(missing_sem)} semantic embedding jobs")
+            report["fixes"].append(
+                f"Re-queued {len(missing_sem)} semantic embedding jobs"
+            )
 
         if missing_epi:
             report["issues"].append(f"{len(missing_epi)} episodes missing embeddings")
             for ep in missing_epi:
-                self._pipeline.enqueue_embed(ep["id"], ep["text"], "episodic", priority=1)
-            report["fixes"].append(f"Re-queued {len(missing_epi)} episodic embedding jobs")
+                self._pipeline.enqueue_embed(
+                    ep["id"], ep["text"], "episodic", priority=1
+                )
+            report["fixes"].append(
+                f"Re-queued {len(missing_epi)} episodic embedding jobs"
+            )
 
         # 2. HNSW index vs DB count
         db_epi_count = self._episodic.count()
@@ -450,9 +484,7 @@ class MemoryManager:
     def get_stats(self) -> Dict:
         return {
             "total_memories": (
-                self._semantic.count()
-                + self._episodic.count()
-                + self._working.size()
+                self._semantic.count() + self._episodic.count() + self._working.size()
             ),
             "working": self._working.size(),
             "episodic": self._episodic.count(),
@@ -483,7 +515,9 @@ class MemoryManager:
     # INTERNAL HELPERS
     # ══════════════════════════════════════════════════════════════════════════
 
-    def _pipeline_store(self, job_id: str, memory_id: str, memory_type: str, embedding) -> None:
+    def _pipeline_store(
+        self, job_id: str, memory_id: str, memory_type: str, embedding
+    ) -> None:
         """Callback from ingestion pipeline to store completed embedding."""
         if memory_type == "semantic":
             self._semantic.update_embedding(memory_id, embedding)

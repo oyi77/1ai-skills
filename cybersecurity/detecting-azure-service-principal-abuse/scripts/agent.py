@@ -41,8 +41,12 @@ class AzureGraphClient:
         return resp.json()["access_token"]
 
     def _get(self, endpoint, params=None):
-        resp = requests.get(f"https://graph.microsoft.com/v1.0{endpoint}",
-                            headers=self.headers, params=params, timeout=15)
+        resp = requests.get(
+            f"https://graph.microsoft.com/v1.0{endpoint}",
+            headers=self.headers,
+            params=params,
+            timeout=15,
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -53,14 +57,21 @@ class AzureGraphClient:
         return self._get(f"/servicePrincipals/{sp_id}").get("passwordCredentials", [])
 
     def get_sp_app_roles(self, sp_id):
-        return self._get(f"/servicePrincipals/{sp_id}/appRoleAssignments").get("value", [])
+        return self._get(f"/servicePrincipals/{sp_id}/appRoleAssignments").get(
+            "value", []
+        )
 
     def get_sign_in_logs(self, sp_id, days=7):
-        since = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
-        return self._get("/auditLogs/signIns", params={
-            "$filter": f"appId eq '{sp_id}' and createdDateTime ge {since}",
-            "$top": 100,
-        }).get("value", [])
+        since = (datetime.utcnow() - timedelta(days=days)).strftime(
+            "%Y-%m-%dT%H:%M:%SZ"
+        )
+        return self._get(
+            "/auditLogs/signIns",
+            params={
+                "$filter": f"appId eq '{sp_id}' and createdDateTime ge {since}",
+                "$top": 100,
+            },
+        ).get("value", [])
 
     def get_directory_roles(self):
         return self._get("/directoryRoles").get("value", [])
@@ -89,25 +100,35 @@ def audit_credential_expiry(client, principals):
                 continue
 
             if end < now:
-                findings.append({
-                    "sp_name": display, "sp_id": sp_id,
-                    "credential_id": cred.get("keyId", ""),
-                    "issue": "Credential expired but not removed",
-                    "severity": "MEDIUM", "expired": end_str,
-                })
+                findings.append(
+                    {
+                        "sp_name": display,
+                        "sp_id": sp_id,
+                        "credential_id": cred.get("keyId", ""),
+                        "issue": "Credential expired but not removed",
+                        "severity": "MEDIUM",
+                        "expired": end_str,
+                    }
+                )
             elif end < now + timedelta(days=30):
-                findings.append({
-                    "sp_name": display, "sp_id": sp_id,
-                    "issue": f"Credential expires within 30 days ({end_str})",
-                    "severity": "LOW",
-                })
+                findings.append(
+                    {
+                        "sp_name": display,
+                        "sp_id": sp_id,
+                        "issue": f"Credential expires within 30 days ({end_str})",
+                        "severity": "LOW",
+                    }
+                )
 
         if len(creds) > 2:
-            findings.append({
-                "sp_name": display, "sp_id": sp_id,
-                "issue": f"Multiple password credentials ({len(creds)}) — possible backdoor",
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "sp_name": display,
+                    "sp_id": sp_id,
+                    "issue": f"Multiple password credentials ({len(creds)}) — possible backdoor",
+                    "severity": "HIGH",
+                }
+            )
 
     return findings
 
@@ -116,8 +137,10 @@ def audit_privileged_sp_roles(client):
     """Find service principals with high-privilege directory roles."""
     findings = []
     high_priv_roles = {
-        "Global Administrator", "Application Administrator",
-        "Cloud Application Administrator", "Privileged Role Administrator",
+        "Global Administrator",
+        "Application Administrator",
+        "Cloud Application Administrator",
+        "Privileged Role Administrator",
     }
     roles = client.get_directory_roles()
     for role in roles:
@@ -127,13 +150,15 @@ def audit_privileged_sp_roles(client):
         members = client.get_role_members(role["id"])
         for m in members:
             if m.get("@odata.type") == "#microsoft.graph.servicePrincipal":
-                findings.append({
-                    "sp_name": m.get("displayName", ""),
-                    "sp_id": m.get("id", ""),
-                    "role": role_name,
-                    "issue": f"Service principal has {role_name} role",
-                    "severity": "CRITICAL",
-                })
+                findings.append(
+                    {
+                        "sp_name": m.get("displayName", ""),
+                        "sp_id": m.get("id", ""),
+                        "role": role_name,
+                        "issue": f"Service principal has {role_name} role",
+                        "severity": "CRITICAL",
+                    }
+                )
     return findings
 
 
@@ -172,7 +197,9 @@ def main():
     parser = argparse.ArgumentParser(description="Azure SP Abuse Detection Agent")
     parser.add_argument("--tenant-id", required=True, help="Azure AD tenant ID")
     parser.add_argument("--client-id", required=True, help="App registration client ID")
-    parser.add_argument("--client-secret", required=True, help="App registration secret")
+    parser.add_argument(
+        "--client-secret", required=True, help="App registration secret"
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

@@ -9,44 +9,94 @@ from datetime import datetime
 
 WMI_CLASSES = {
     "EventFilter": {
-        "wmic_cmd": ["wmic", "/namespace:\\\\root\\subscription", "path", "__EventFilter", "get", "/format:list"],
+        "wmic_cmd": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "__EventFilter",
+            "get",
+            "/format:list",
+        ],
         "description": "WMI event filters that trigger on system events",
     },
     "EventConsumer": {
-        "wmic_cmd": ["wmic", "/namespace:\\\\root\\subscription", "path", "CommandLineEventConsumer", "get", "/format:list"],
+        "wmic_cmd": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "CommandLineEventConsumer",
+            "get",
+            "/format:list",
+        ],
         "description": "Command-line consumers that execute when filters trigger",
     },
     "ActiveScriptEventConsumer": {
-        "wmic_cmd": ["wmic", "/namespace:\\\\root\\subscription", "path", "ActiveScriptEventConsumer", "get", "/format:list"],
+        "wmic_cmd": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "ActiveScriptEventConsumer",
+            "get",
+            "/format:list",
+        ],
         "description": "Script-based consumers (VBScript/JScript) for WMI persistence",
     },
     "FilterToConsumerBinding": {
-        "wmic_cmd": ["wmic", "/namespace:\\\\root\\subscription", "path", "__FilterToConsumerBinding", "get", "/format:list"],
+        "wmic_cmd": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "__FilterToConsumerBinding",
+            "get",
+            "/format:list",
+        ],
         "description": "Bindings linking event filters to consumers",
     },
 }
 
 SUSPICIOUS_WMI_PATTERNS = [
-    r"powershell", r"cmd\.exe", r"mshta", r"rundll32",
-    r"certutil", r"bitsadmin", r"regsvr32",
-    r"base64", r"IEX", r"DownloadString", r"Net\.WebClient",
-    r"invoke-expression", r"new-object.*net\.webclient",
-    r"\\temp\\", r"\\appdata\\", r"\\users\\public\\",
-    r"wscript", r"cscript", r"javascript:", r"vbscript:",
+    r"powershell",
+    r"cmd\.exe",
+    r"mshta",
+    r"rundll32",
+    r"certutil",
+    r"bitsadmin",
+    r"regsvr32",
+    r"base64",
+    r"IEX",
+    r"DownloadString",
+    r"Net\.WebClient",
+    r"invoke-expression",
+    r"new-object.*net\.webclient",
+    r"\\temp\\",
+    r"\\appdata\\",
+    r"\\users\\public\\",
+    r"wscript",
+    r"cscript",
+    r"javascript:",
+    r"vbscript:",
 ]
 
 
 def enumerate_wmi_subscriptions():
     """Enumerate all WMI event subscriptions on the local system."""
-    results = {"timestamp": datetime.utcnow().isoformat(), "classes": {}, "suspicious": []}
+    results = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "classes": {},
+        "suspicious": [],
+    }
     for class_name, info in WMI_CLASSES.items():
         try:
-            proc = subprocess.run(info["wmic_cmd"], capture_output=True, text=True, timeout=15)
+            proc = subprocess.run(
+                info["wmic_cmd"], capture_output=True, text=True, timeout=15
+            )
             entries = parse_wmic_list(proc.stdout)
             suspicious_entries = []
             for entry in entries:
                 entry_text = json.dumps(entry).lower()
-                matched = [p for p in SUSPICIOUS_WMI_PATTERNS if re.search(p, entry_text, re.I)]
+                matched = [
+                    p for p in SUSPICIOUS_WMI_PATTERNS if re.search(p, entry_text, re.I)
+                ]
                 if matched:
                     entry["matched_patterns"] = matched
                     suspicious_entries.append(entry)
@@ -55,7 +105,9 @@ def enumerate_wmi_subscriptions():
                 "total_entries": len(entries),
                 "entries": entries,
             }
-            results["suspicious"].extend([{**e, "class": class_name} for e in suspicious_entries])
+            results["suspicious"].extend(
+                [{**e, "class": class_name} for e in suspicious_entries]
+            )
         except (subprocess.TimeoutExpired, FileNotFoundError):
             results["classes"][class_name] = {"error": "command failed"}
     results["total_suspicious"] = len(results["suspicious"])
@@ -94,16 +146,22 @@ def scan_sysmon_wmi_events(evtx_file):
             xml = record.xml()
             for eid in wmi_event_ids:
                 if f"<EventID>{eid}</EventID>" in xml:
-                    suspicious = any(re.search(p, xml, re.I) for p in SUSPICIOUS_WMI_PATTERNS)
-                    findings.append({
-                        "record_id": record.record_num(),
-                        "event_id": int(eid),
-                        "event_type": {
-                            "19": "WmiEventFilter", "20": "WmiEventConsumer", "21": "WmiEventBinding"
-                        }[eid],
-                        "suspicious": suspicious,
-                        "xml_snippet": xml[:800],
-                    })
+                    suspicious = any(
+                        re.search(p, xml, re.I) for p in SUSPICIOUS_WMI_PATTERNS
+                    )
+                    findings.append(
+                        {
+                            "record_id": record.record_num(),
+                            "event_id": int(eid),
+                            "event_type": {
+                                "19": "WmiEventFilter",
+                                "20": "WmiEventConsumer",
+                                "21": "WmiEventBinding",
+                            }[eid],
+                            "suspicious": suspicious,
+                            "xml_snippet": xml[:800],
+                        }
+                    )
                     break
     return {
         "file": evtx_file,
@@ -124,7 +182,9 @@ def query_powershell_wmi():
     try:
         result = subprocess.run(
             ["powershell", "-NoProfile", "-Command", ps_script],
-            capture_output=True, text=True, timeout=30
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         if result.returncode == 0 and result.stdout.strip():
             return json.loads(result.stdout)
@@ -134,7 +194,9 @@ def query_powershell_wmi():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Hunt for WMI event subscription persistence")
+    parser = argparse.ArgumentParser(
+        description="Hunt for WMI event subscription persistence"
+    )
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("enumerate", help="Enumerate WMI subscriptions via WMIC")
     sub.add_parser("powershell", help="Enumerate via PowerShell Get-WMIObject")

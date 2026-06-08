@@ -18,7 +18,10 @@ class CloudflareAccessClient:
 
     def __init__(self, api_token, account_id):
         self.base = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/access"
-        self.headers = {"Authorization": f"Bearer {api_token}", "Content-Type": "application/json"}
+        self.headers = {
+            "Authorization": f"Bearer {api_token}",
+            "Content-Type": "application/json",
+        }
 
     def _get(self, endpoint):
         resp = requests.get(f"{self.base}/{endpoint}", headers=self.headers, timeout=30)
@@ -47,21 +50,25 @@ def audit_access_config(client):
     apps = client.list_applications()
     for app in apps.get("result", []):
         if not app.get("session_duration"):
-            findings.append({
-                "type": "no_session_timeout",
-                "app": app.get("name", ""),
-                "severity": "MEDIUM",
-            })
+            findings.append(
+                {
+                    "type": "no_session_timeout",
+                    "app": app.get("name", ""),
+                    "severity": "MEDIUM",
+                }
+            )
     tokens = client.list_service_tokens()
     for token in tokens.get("result", []):
         if token.get("expires_at"):
             expiry = datetime.fromisoformat(token["expires_at"].replace("Z", "+00:00"))
             if expiry.replace(tzinfo=None) < datetime.utcnow():
-                findings.append({
-                    "type": "expired_service_token",
-                    "token_name": token.get("name", ""),
-                    "severity": "HIGH",
-                })
+                findings.append(
+                    {
+                        "type": "expired_service_token",
+                        "token_name": token.get("name", ""),
+                        "severity": "HIGH",
+                    }
+                )
     return findings
 
 
@@ -77,7 +84,9 @@ def run_audit(api_token, account_id):
     app_list = apps.get("result", [])
     print(f"--- APPLICATIONS ({len(app_list)}) ---")
     for a in app_list[:10]:
-        print(f"  {a.get('name', '')}: domain={a.get('domain', '')} type={a.get('type', '')}")
+        print(
+            f"  {a.get('name', '')}: domain={a.get('domain', '')} type={a.get('type', '')}"
+        )
 
     idps = client.list_identity_providers()
     idp_list = idps.get("result", [])
@@ -88,7 +97,9 @@ def run_audit(api_token, account_id):
     findings = audit_access_config(client)
     print(f"\n--- FINDINGS ({len(findings)}) ---")
     for f in findings:
-        print(f"  [{f['severity']}] {f['type']}: {f.get('app', f.get('token_name', ''))}")
+        print(
+            f"  [{f['severity']}] {f['type']}: {f.get('app', f.get('token_name', ''))}"
+        )
 
     return {"apps": len(app_list), "idps": len(idp_list), "findings": findings}
 

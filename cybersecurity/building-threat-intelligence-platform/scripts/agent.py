@@ -10,7 +10,6 @@ import datetime
 import re
 import uuid
 
-
 STIX_INDICATOR_TYPES = {
     "ipv4-addr": "[ipv4-addr:value = '{}']",
     "domain-name": "[domain-name:value = '{}']",
@@ -86,7 +85,9 @@ def tlp_to_marking_ref(tlp):
     return tlp_refs.get(tlp, tlp_refs["TLP:AMBER"])
 
 
-def calculate_indicator_score(sources_count, age_days, confirmed_sightings, false_positives):
+def calculate_indicator_score(
+    sources_count, age_days, confirmed_sightings, false_positives
+):
     """Calculate indicator confidence score (0-100)."""
     source_score = min(sources_count * 15, 40)
     age_penalty = min(age_days * 0.5, 30)
@@ -110,7 +111,11 @@ def generate_tip_report(indicators, platform_name="Internal TIP"):
     """Generate TIP status report."""
     type_counts = {}
     for ind in indicators:
-        itype = ind.get("name", "").split(":")[0] if ":" in ind.get("name", "") else "unknown"
+        itype = (
+            ind.get("name", "").split(":")[0]
+            if ":" in ind.get("name", "")
+            else "unknown"
+        )
         type_counts[itype] = type_counts.get(itype, 0) + 1
 
     return {
@@ -152,7 +157,9 @@ if __name__ == "__main__":
     bundle = build_stix_bundle(indicators)
     print("\nSTIX Bundle: {} ({} objects)".format(bundle["id"], len(bundle["objects"])))
 
-    score = calculate_indicator_score(sources_count=3, age_days=5, confirmed_sightings=2, false_positives=0)
+    score = calculate_indicator_score(
+        sources_count=3, age_days=5, confirmed_sightings=2, false_positives=0
+    )
     print("\nSample score calculation: {}".format(score))
 
     report = generate_tip_report(indicators)

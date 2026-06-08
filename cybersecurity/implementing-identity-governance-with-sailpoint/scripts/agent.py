@@ -15,16 +15,18 @@ except ImportError:
 def sailpoint_api(base_url, token, endpoint, method="GET", params=None):
     """Call SailPoint IdentityNow API."""
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
-    resp = requests.request(method, f"{base_url}{endpoint}",
-                            headers=headers, params=params, timeout=60)
+    resp = requests.request(
+        method, f"{base_url}{endpoint}", headers=headers, params=params, timeout=60
+    )
     resp.raise_for_status()
     return resp.json()
 
 
 def list_identities(base_url, token, limit=250):
     """List identities from SailPoint."""
-    return sailpoint_api(base_url, token, "/v3/search/identities",
-                         params={"limit": limit})
+    return sailpoint_api(
+        base_url, token, "/v3/search/identities", params={"limit": limit}
+    )
 
 
 def list_access_profiles(base_url, token):
@@ -39,33 +41,41 @@ def list_certifications(base_url, token):
 
 def audit_certification_campaigns(campaigns_data):
     """Audit certification campaign completion and compliance."""
-    campaigns = campaigns_data if isinstance(campaigns_data, list) else \
-        campaigns_data.get("campaigns", campaigns_data.get("items", []))
+    campaigns = (
+        campaigns_data
+        if isinstance(campaigns_data, list)
+        else campaigns_data.get("campaigns", campaigns_data.get("items", []))
+    )
     findings = []
     for campaign in campaigns:
         status = campaign.get("status", "").lower()
         completion = campaign.get("completionPercentage", campaign.get("completion", 0))
         deadline = campaign.get("deadline", campaign.get("due_date", ""))
         if status == "active" and completion < 50:
-            findings.append({
-                "campaign": campaign.get("name", ""),
-                "issue": f"Low completion: {completion}%",
-                "severity": "HIGH",
-                "deadline": deadline,
-            })
+            findings.append(
+                {
+                    "campaign": campaign.get("name", ""),
+                    "issue": f"Low completion: {completion}%",
+                    "severity": "HIGH",
+                    "deadline": deadline,
+                }
+            )
         if status == "overdue":
-            findings.append({
-                "campaign": campaign.get("name", ""),
-                "issue": "Campaign overdue",
-                "severity": "CRITICAL",
-            })
+            findings.append(
+                {
+                    "campaign": campaign.get("name", ""),
+                    "issue": "Campaign overdue",
+                    "severity": "CRITICAL",
+                }
+            )
     return findings
 
 
 def audit_sod_violations(sod_data):
     """Audit Separation of Duties policy violations."""
-    violations = sod_data if isinstance(sod_data, list) else \
-        sod_data.get("violations", [])
+    violations = (
+        sod_data if isinstance(sod_data, list) else sod_data.get("violations", [])
+    )
     by_policy = Counter(v.get("policy_name", "unknown") for v in violations)
     by_identity = Counter(v.get("identity", "unknown") for v in violations)
     critical = [v for v in violations if v.get("severity", "").lower() == "critical"]
@@ -80,18 +90,23 @@ def audit_sod_violations(sod_data):
 
 def audit_orphan_accounts(accounts_data):
     """Find orphan accounts (no identity correlation)."""
-    accounts = accounts_data if isinstance(accounts_data, list) else \
-        accounts_data.get("accounts", [])
+    accounts = (
+        accounts_data
+        if isinstance(accounts_data, list)
+        else accounts_data.get("accounts", [])
+    )
     orphans = []
     for acct in accounts:
         if not acct.get("identityId") and not acct.get("identity"):
-            orphans.append({
-                "account": acct.get("name", acct.get("nativeIdentity", "")),
-                "source": acct.get("sourceName", acct.get("source", "")),
-                "created": acct.get("created", ""),
-                "last_login": acct.get("lastLogin", acct.get("last_login", "")),
-                "severity": "HIGH",
-            })
+            orphans.append(
+                {
+                    "account": acct.get("name", acct.get("nativeIdentity", "")),
+                    "source": acct.get("sourceName", acct.get("source", "")),
+                    "created": acct.get("created", ""),
+                    "last_login": acct.get("lastLogin", acct.get("last_login", "")),
+                    "severity": "HIGH",
+                }
+            )
     return {
         "total_accounts": len(accounts),
         "orphan_count": len(orphans),
@@ -107,15 +122,20 @@ def audit_access_reviews(reviews_path):
     over_provisioned = []
     for review in items:
         entitlements = review.get("entitlements", review.get("access", []))
-        unused = [e for e in entitlements if not e.get("used_last_90_days",
-                  e.get("last_used", "") != "")]
+        unused = [
+            e
+            for e in entitlements
+            if not e.get("used_last_90_days", e.get("last_used", "") != "")
+        ]
         if len(unused) > 3:
-            over_provisioned.append({
-                "identity": review.get("identity", review.get("user", "")),
-                "total_entitlements": len(entitlements),
-                "unused_entitlements": len(unused),
-                "severity": "HIGH" if len(unused) > 10 else "MEDIUM",
-            })
+            over_provisioned.append(
+                {
+                    "identity": review.get("identity", review.get("user", "")),
+                    "total_entitlements": len(entitlements),
+                    "unused_entitlements": len(unused),
+                    "severity": "HIGH" if len(unused) > 10 else "MEDIUM",
+                }
+            )
     return {
         "total_reviewed": len(items),
         "over_provisioned": len(over_provisioned),
@@ -128,21 +148,33 @@ def generate_lifecycle_policy():
     return {
         "joiner": {
             "trigger": "HR system new hire event",
-            "actions": ["Create identity", "Provision birthright access",
-                        "Assign department role", "Send welcome notification"],
+            "actions": [
+                "Create identity",
+                "Provision birthright access",
+                "Assign department role",
+                "Send welcome notification",
+            ],
             "sla": "Within 24 hours of start date",
         },
         "mover": {
             "trigger": "Department or role change in HR system",
-            "actions": ["Recalculate role entitlements", "Revoke old department access",
-                        "Provision new role access", "Trigger manager certification"],
+            "actions": [
+                "Recalculate role entitlements",
+                "Revoke old department access",
+                "Provision new role access",
+                "Trigger manager certification",
+            ],
             "sla": "Within 48 hours of change",
         },
         "leaver": {
             "trigger": "Termination event from HR system",
-            "actions": ["Disable all accounts immediately", "Revoke all access",
-                        "Transfer ownership of shared resources",
-                        "Archive mailbox", "Remove from all groups"],
+            "actions": [
+                "Disable all accounts immediately",
+                "Revoke all access",
+                "Transfer ownership of shared resources",
+                "Archive mailbox",
+                "Remove from all groups",
+            ],
             "sla": "Within 1 hour of termination (immediate for involuntary)",
         },
     }
@@ -154,8 +186,11 @@ def main():
     parser.add_argument("--sod", help="SOD violations JSON")
     parser.add_argument("--accounts", help="Accounts data JSON for orphan detection")
     parser.add_argument("--reviews", help="Access reviews JSON")
-    parser.add_argument("--action", choices=["campaigns", "sod", "orphans", "reviews",
-                                              "lifecycle", "full"], default="full")
+    parser.add_argument(
+        "--action",
+        choices=["campaigns", "sod", "orphans", "reviews", "lifecycle", "full"],
+        default="full",
+    )
     parser.add_argument("--output", default="sailpoint_governance_report.json")
     args = parser.parse_args()
 

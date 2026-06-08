@@ -51,14 +51,21 @@ class DiamondModelAnalyzer:
             self.events.append(DiamondEvent(**e))
 
     def find_pivots(self):
-        pivots = {"infrastructure": defaultdict(list), "capability": defaultdict(list),
-                  "adversary": defaultdict(list), "victim": defaultdict(list)}
+        pivots = {
+            "infrastructure": defaultdict(list),
+            "capability": defaultdict(list),
+            "adversary": defaultdict(list),
+            "victim": defaultdict(list),
+        }
         for e in self.events:
             for feature in pivots:
                 val = getattr(e, feature, "")
                 if val:
                     pivots[feature][val].append(e.event_id)
-        return {k: {pk: pv for pk, pv in v.items() if len(pv) > 1} for k, v in pivots.items()}
+        return {
+            k: {pk: pv for pk, pv in v.items() if len(pv) > 1}
+            for k, v in pivots.items()
+        }
 
     def build_activity_threads(self):
         threads = defaultdict(list)
@@ -70,9 +77,13 @@ class DiamondModelAnalyzer:
     def generate_report(self):
         return {
             "total_events": len(self.events),
-            "unique_adversaries": len(set(e.adversary for e in self.events if e.adversary)),
+            "unique_adversaries": len(
+                set(e.adversary for e in self.events if e.adversary)
+            ),
             "unique_victims": len(set(e.victim for e in self.events if e.victim)),
-            "unique_infrastructure": len(set(e.infrastructure for e in self.events if e.infrastructure)),
+            "unique_infrastructure": len(
+                set(e.infrastructure for e in self.events if e.infrastructure)
+            ),
             "pivots": self.find_pivots(),
             "activity_threads": self.build_activity_threads(),
             "events": [e.to_dict() for e in self.events],
@@ -81,21 +92,42 @@ class DiamondModelAnalyzer:
 
 def run_demo():
     analyzer = DiamondModelAnalyzer()
-    analyzer.add_event(DiamondEvent(
-        adversary="APT29", capability="Cobalt Strike", infrastructure="198.51.100.1",
-        victim="Gov Agency A", timestamp="2025-06-01T10:00:00Z", phase="initial-access",
-        mitre_techniques=["T1566.001"], confidence=80,
-    ))
-    analyzer.add_event(DiamondEvent(
-        adversary="APT29", capability="Custom Backdoor", infrastructure="198.51.100.1",
-        victim="Gov Agency A", timestamp="2025-06-01T12:00:00Z", phase="persistence",
-        mitre_techniques=["T1547.001"], confidence=85,
-    ))
-    analyzer.add_event(DiamondEvent(
-        adversary="APT29", capability="Mimikatz", infrastructure="198.51.100.2",
-        victim="Gov Agency A", timestamp="2025-06-02T09:00:00Z", phase="credential-access",
-        mitre_techniques=["T1003.001"], confidence=90,
-    ))
+    analyzer.add_event(
+        DiamondEvent(
+            adversary="APT29",
+            capability="Cobalt Strike",
+            infrastructure="198.51.100.1",
+            victim="Gov Agency A",
+            timestamp="2025-06-01T10:00:00Z",
+            phase="initial-access",
+            mitre_techniques=["T1566.001"],
+            confidence=80,
+        )
+    )
+    analyzer.add_event(
+        DiamondEvent(
+            adversary="APT29",
+            capability="Custom Backdoor",
+            infrastructure="198.51.100.1",
+            victim="Gov Agency A",
+            timestamp="2025-06-01T12:00:00Z",
+            phase="persistence",
+            mitre_techniques=["T1547.001"],
+            confidence=85,
+        )
+    )
+    analyzer.add_event(
+        DiamondEvent(
+            adversary="APT29",
+            capability="Mimikatz",
+            infrastructure="198.51.100.2",
+            victim="Gov Agency A",
+            timestamp="2025-06-02T09:00:00Z",
+            phase="credential-access",
+            mitre_techniques=["T1003.001"],
+            confidence=90,
+        )
+    )
     return analyzer.generate_report()
 
 

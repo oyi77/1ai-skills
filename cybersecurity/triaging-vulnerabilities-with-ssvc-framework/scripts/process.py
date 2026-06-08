@@ -107,7 +107,9 @@ def evaluate_automatability(cvss_vector):
     return "no"
 
 
-def ssvc_decision(exploitation, tech_impact, automatability, mission_prevalence, public_wellbeing):
+def ssvc_decision(
+    exploitation, tech_impact, automatability, mission_prevalence, public_wellbeing
+):
     """Apply CISA SSVC decision tree to produce triage outcome.
 
     Returns one of: Act, Attend, Track*, Track
@@ -220,7 +222,9 @@ def parse_generic_csv(filepath):
     return vulns
 
 
-def run_triage(vulns, kev_set, epss_scores, default_mission="support", default_wellbeing="minimal"):
+def run_triage(
+    vulns, kev_set, epss_scores, default_mission="support", default_wellbeing="minimal"
+):
     """Run SSVC triage on a list of vulnerability records."""
     results = []
     for vuln in vulns:
@@ -231,7 +235,9 @@ def run_triage(vulns, kev_set, epss_scores, default_mission="support", default_w
         mission = vuln.get("mission_prevalence", default_mission)
         wellbeing = vuln.get("public_wellbeing", default_wellbeing)
 
-        outcome = ssvc_decision(exploitation, tech_impact, automatability, mission, wellbeing)
+        outcome = ssvc_decision(
+            exploitation, tech_impact, automatability, mission, wellbeing
+        )
         epss_data = epss_scores.get(cve_id, {})
 
         results.append(
@@ -254,7 +260,9 @@ def run_triage(vulns, kev_set, epss_scores, default_mission="support", default_w
         )
 
     outcome_order = {"Act": 0, "Attend": 1, "Track*": 2, "Track": 3}
-    results.sort(key=lambda r: (outcome_order.get(r["ssvc_outcome"], 4), -r["epss_score"]))
+    results.sort(
+        key=lambda r: (outcome_order.get(r["ssvc_outcome"], 4), -r["epss_score"])
+    )
     return results
 
 
@@ -268,7 +276,9 @@ def generate_report(results, output_path, report_format="json"):
     }
     for r in results:
         outcome = r["ssvc_outcome"]
-        summary["outcome_counts"][outcome] = summary["outcome_counts"].get(outcome, 0) + 1
+        summary["outcome_counts"][outcome] = (
+            summary["outcome_counts"].get(outcome, 0) + 1
+        )
 
     if report_format == "csv":
         if results:
@@ -285,8 +295,12 @@ def generate_report(results, output_path, report_format="json"):
 
 def main():
     parser = argparse.ArgumentParser(description="SSVC Vulnerability Triage Processor")
-    parser.add_argument("--input", required=True, help="Path to vulnerability scan results")
-    parser.add_argument("--output", default="ssvc_triage_report.json", help="Output report path")
+    parser.add_argument(
+        "--input", required=True, help="Path to vulnerability scan results"
+    )
+    parser.add_argument(
+        "--output", default="ssvc_triage_report.json", help="Output report path"
+    )
     parser.add_argument(
         "--format",
         choices=["nessus", "openvas", "generic"],

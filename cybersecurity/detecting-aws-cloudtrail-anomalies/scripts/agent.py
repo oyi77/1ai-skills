@@ -19,12 +19,26 @@ except ImportError:
     boto3 = None
 
 SENSITIVE_EVENTS = {
-    "CreateUser", "CreateAccessKey", "AttachUserPolicy", "AttachRolePolicy",
-    "PutUserPolicy", "PutRolePolicy", "CreateRole", "AssumeRole",
-    "ConsoleLogin", "PutBucketPolicy", "PutBucketAcl",
-    "CreateKeyPair", "RunInstances", "StopLogging", "DeleteTrail",
-    "DisableKey", "ScheduleKeyDeletion", "CreateGrante",
-    "AuthorizeSecurityGroupIngress", "ModifyInstanceAttribute",
+    "CreateUser",
+    "CreateAccessKey",
+    "AttachUserPolicy",
+    "AttachRolePolicy",
+    "PutUserPolicy",
+    "PutRolePolicy",
+    "CreateRole",
+    "AssumeRole",
+    "ConsoleLogin",
+    "PutBucketPolicy",
+    "PutBucketAcl",
+    "CreateKeyPair",
+    "RunInstances",
+    "StopLogging",
+    "DeleteTrail",
+    "DisableKey",
+    "ScheduleKeyDeletion",
+    "CreateGrante",
+    "AuthorizeSecurityGroupIngress",
+    "ModifyInstanceAttribute",
 }
 
 ERROR_INDICATORS = {"AccessDenied", "UnauthorizedAccess", "Client.UnauthorizedAccess"}
@@ -33,15 +47,22 @@ ERROR_INDICATORS = {"AccessDenied", "UnauthorizedAccess", "Client.UnauthorizedAc
 class CloudTrailAnomalyDetector:
     """Detects anomalies in AWS CloudTrail API activity."""
 
-    def __init__(self, profile=None, region=None, lookback_hours=24,
-                 output_dir="./cloudtrail_anomalies"):
+    def __init__(
+        self,
+        profile=None,
+        region=None,
+        lookback_hours=24,
+        output_dir="./cloudtrail_anomalies",
+    ):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.lookback_hours = lookback_hours
         self.findings = []
         self.client = None
         if boto3:
-            session = boto3.Session(profile_name=profile, region_name=region or "us-east-1")
+            session = boto3.Session(
+                profile_name=profile, region_name=region or "us-east-1"
+            )
             self.client = session.client("cloudtrail")
 
     def fetch_events(self, max_results=1000):
@@ -59,20 +80,24 @@ class CloudTrailAnomalyDetector:
         for page in page_iter:
             for event in page.get("Events", []):
                 ct_event = json.loads(event.get("CloudTrailEvent", "{}"))
-                events.append({
-                    "event_name": event.get("EventName", ""),
-                    "event_source": event.get("EventSource", ""),
-                    "event_time": event.get("EventTime", "").isoformat()
-                        if hasattr(event.get("EventTime", ""), "isoformat")
-                        else str(event.get("EventTime", "")),
-                    "username": event.get("Username", ""),
-                    "source_ip": ct_event.get("sourceIPAddress", ""),
-                    "user_agent": ct_event.get("userAgent", ""),
-                    "error_code": ct_event.get("errorCode", ""),
-                    "error_message": ct_event.get("errorMessage", ""),
-                    "aws_region": ct_event.get("awsRegion", ""),
-                    "read_only": event.get("ReadOnly", ""),
-                })
+                events.append(
+                    {
+                        "event_name": event.get("EventName", ""),
+                        "event_source": event.get("EventSource", ""),
+                        "event_time": (
+                            event.get("EventTime", "").isoformat()
+                            if hasattr(event.get("EventTime", ""), "isoformat")
+                            else str(event.get("EventTime", ""))
+                        ),
+                        "username": event.get("Username", ""),
+                        "source_ip": ct_event.get("sourceIPAddress", ""),
+                        "user_agent": ct_event.get("userAgent", ""),
+                        "error_code": ct_event.get("errorCode", ""),
+                        "error_message": ct_event.get("errorMessage", ""),
+                        "aws_region": ct_event.get("awsRegion", ""),
+                        "read_only": event.get("ReadOnly", ""),
+                    }
+                )
         return events
 
     def build_baseline(self, events):
@@ -99,35 +124,50 @@ class CloudTrailAnomalyDetector:
 
         sensitive_calls = [e for e in events if e["event_name"] in SENSITIVE_EVENTS]
         for e in sensitive_calls:
-            self.findings.append({
-                "severity": "high", "type": "Sensitive API Call",
-                "detail": f"{e['username']} called {e['event_name']} from {e['source_ip']}",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Sensitive API Call",
+                    "detail": f"{e['username']} called {e['event_name']} from {e['source_ip']}",
+                }
+            )
 
         error_events = [e for e in events if e["error_code"] in ERROR_INDICATORS]
         error_by_user = Counter(e["username"] for e in error_events)
         for user, count in error_by_user.items():
             if count >= 5:
-                self.findings.append({
-                    "severity": "high", "type": "High Access Denied Rate",
-                    "detail": f"{user} received {count} AccessDenied errors",
-                })
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "High Access Denied Rate",
+                        "detail": f"{user} received {count} AccessDenied errors",
+                    }
+                )
 
         for user, evts in user_events.items():
             ips = {e["source_ip"] for e in evts}
             if len(ips) >= 5:
-                self.findings.append({
-                    "severity": "medium", "type": "Multiple Source IPs",
-                    "detail": f"{user} accessed from {len(ips)} distinct IPs",
-                })
+                self.findings.append(
+                    {
+                        "severity": "medium",
+                        "type": "Multiple Source IPs",
+                        "detail": f"{user} accessed from {len(ips)} distinct IPs",
+                    }
+                )
 
-        trail_tampering = [e for e in events
-                           if e["event_name"] in ("StopLogging", "DeleteTrail", "UpdateTrail")]
+        trail_tampering = [
+            e
+            for e in events
+            if e["event_name"] in ("StopLogging", "DeleteTrail", "UpdateTrail")
+        ]
         for e in trail_tampering:
-            self.findings.append({
-                "severity": "critical", "type": "CloudTrail Tampering",
-                "detail": f"{e['username']} called {e['event_name']}",
-            })
+            self.findings.append(
+                {
+                    "severity": "critical",
+                    "type": "CloudTrail Tampering",
+                    "detail": f"{e['username']} called {e['event_name']}",
+                }
+            )
 
         return {
             "sensitive_api_calls": len(sensitive_calls),
@@ -167,14 +207,18 @@ def main():
     )
     parser.add_argument("--profile", default=None, help="AWS CLI profile name")
     parser.add_argument("--region", default="us-east-1", help="AWS region")
-    parser.add_argument("--hours", type=int, default=24, help="Lookback window in hours")
+    parser.add_argument(
+        "--hours", type=int, default=24, help="Lookback window in hours"
+    )
     parser.add_argument("--output-dir", default="./cloudtrail_anomalies")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
     detector = CloudTrailAnomalyDetector(
-        profile=args.profile, region=args.region,
-        lookback_hours=args.hours, output_dir=args.output_dir,
+        profile=args.profile,
+        region=args.region,
+        lookback_hours=args.hours,
+        output_dir=args.output_dir,
     )
     detector.generate_report()
 

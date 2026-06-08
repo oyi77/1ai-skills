@@ -8,19 +8,30 @@ import base64
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-
 SUSPICIOUS_PATHS = [
-    r"\\users\\public\\", r"\\programdata\\", r"\\windows\\temp\\",
-    r"\\appdata\\local\\temp\\", r"\\downloads\\", r"\\desktop\\",
-    r"c:\\temp\\", r"\\recycle",
+    r"\\users\\public\\",
+    r"\\programdata\\",
+    r"\\windows\\temp\\",
+    r"\\appdata\\local\\temp\\",
+    r"\\downloads\\",
+    r"\\desktop\\",
+    r"c:\\temp\\",
+    r"\\recycle",
 ]
 
 SUSPICIOUS_COMMANDS = [
-    r"powershell.*-enc", r"powershell.*-e\s+", r"powershell.*downloadstring",
-    r"powershell.*iex", r"powershell.*invoke-expression",
-    r"cmd.*/c\s+", r"mshta\s+", r"certutil.*-urlcache",
-    r"bitsadmin.*/transfer", r"regsvr32.*/s.*/u",
-    r"rundll32.*javascript", r"wscript.*\.vbs",
+    r"powershell.*-enc",
+    r"powershell.*-e\s+",
+    r"powershell.*downloadstring",
+    r"powershell.*iex",
+    r"powershell.*invoke-expression",
+    r"cmd.*/c\s+",
+    r"mshta\s+",
+    r"certutil.*-urlcache",
+    r"bitsadmin.*/transfer",
+    r"regsvr32.*/s.*/u",
+    r"rundll32.*javascript",
+    r"wscript.*\.vbs",
 ]
 
 
@@ -42,13 +53,19 @@ def parse_evtx_xml(xml_path):
                 for d in event_data.findall("e:Data", ns):
                     name = d.get("Name", "")
                     data[name] = d.text or ""
-            events.append({
-                "event_id": event_id,
-                "timestamp": system.findtext("e:TimeCreated/@SystemTime", "", ns)
-                             or system.find("e:TimeCreated", ns).get("SystemTime", "") if system.find("e:TimeCreated", ns) is not None else "",
-                "computer": system.findtext("e:Computer", "", ns),
-                "data": data,
-            })
+            events.append(
+                {
+                    "event_id": event_id,
+                    "timestamp": (
+                        system.findtext("e:TimeCreated/@SystemTime", "", ns)
+                        or system.find("e:TimeCreated", ns).get("SystemTime", "")
+                        if system.find("e:TimeCreated", ns) is not None
+                        else ""
+                    ),
+                    "computer": system.findtext("e:Computer", "", ns),
+                    "data": data,
+                }
+            )
     except ET.ParseError as e:
         return [{"error": f"XML parse error: {e}"}]
     return events
@@ -87,10 +104,12 @@ def detect_schtasks_creation(events):
             reasons.append("Remote task creation detected (lateral movement)")
 
         if "-enc" in cmdline.lower() or "-e " in cmdline.lower():
-            encoded = re.search(r'-[eE](?:nc)?\s+([A-Za-z0-9+/=]{20,})', cmdline)
+            encoded = re.search(r"-[eE](?:nc)?\s+([A-Za-z0-9+/=]{20,})", cmdline)
             if encoded:
                 try:
-                    decoded = base64.b64decode(encoded.group(1)).decode("utf-16-le", errors="replace")
+                    decoded = base64.b64decode(encoded.group(1)).decode(
+                        "utf-16-le", errors="replace"
+                    )
                     reasons.append(f"Decoded command: {decoded[:150]}")
                 except Exception:
                     pass
@@ -98,17 +117,19 @@ def detect_schtasks_creation(events):
         if not reasons:
             reasons.append("Scheduled task creation detected")
 
-        findings.append({
-            "timestamp": evt["timestamp"],
-            "computer": evt["computer"],
-            "image": image,
-            "command_line": cmdline[:300],
-            "parent_process": parent,
-            "user": evt["data"].get("User", ""),
-            "severity": severity,
-            "reasons": reasons,
-            "mitre": "T1053.005",
-        })
+        findings.append(
+            {
+                "timestamp": evt["timestamp"],
+                "computer": evt["computer"],
+                "image": image,
+                "command_line": cmdline[:300],
+                "parent_process": parent,
+                "user": evt["data"].get("User", ""),
+                "severity": severity,
+                "reasons": reasons,
+                "mitre": "T1053.005",
+            }
+        )
     return findings
 
 
@@ -122,13 +143,15 @@ def detect_task_file_creation(events):
         if "\\windows\\system32\\tasks\\" not in target.lower():
             continue
         process = evt["data"].get("Image", "")
-        findings.append({
-            "timestamp": evt["timestamp"],
-            "task_file": target,
-            "created_by": process,
-            "severity": "MEDIUM",
-            "detail": "New scheduled task XML file created",
-        })
+        findings.append(
+            {
+                "timestamp": evt["timestamp"],
+                "task_file": target,
+                "created_by": process,
+                "severity": "MEDIUM",
+                "detail": "New scheduled task XML file created",
+            }
+        )
     return findings
 
 
@@ -149,14 +172,16 @@ def detect_event_4698(events):
                 severity = "CRITICAL"
                 reasons.append(f"Task content contains: {pattern}")
 
-        findings.append({
-            "timestamp": evt["timestamp"],
-            "task_name": task_name,
-            "registered_by": user,
-            "severity": severity,
-            "reasons": reasons or ["New task registered"],
-            "task_content_preview": task_content[:200],
-        })
+        findings.append(
+            {
+                "timestamp": evt["timestamp"],
+                "task_name": task_name,
+                "registered_by": user,
+                "severity": severity,
+                "reasons": reasons or ["New task registered"],
+                "task_content_preview": task_content[:200],
+            }
+        )
     return findings
 
 
@@ -184,13 +209,17 @@ def run_audit(args):
 
         file_findings = detect_task_file_creation(events)
         report["task_file_findings"] = file_findings
-        print(f"\n--- TASK FILE CREATION (Event 11) — {len(file_findings)} findings ---")
+        print(
+            f"\n--- TASK FILE CREATION (Event 11) — {len(file_findings)} findings ---"
+        )
         for f in file_findings[:10]:
             print(f"  [{f['severity']}] {f['task_file']}")
 
         reg_findings = detect_event_4698(events)
         report["event_4698_findings"] = reg_findings
-        print(f"\n--- TASK REGISTRATION (Event 4698) — {len(reg_findings)} findings ---")
+        print(
+            f"\n--- TASK REGISTRATION (Event 4698) — {len(reg_findings)} findings ---"
+        )
         for f in reg_findings[:10]:
             print(f"  [{f['severity']}] {f['task_name']} by {f['registered_by']}")
 
@@ -198,9 +227,12 @@ def run_audit(args):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Sysmon Scheduled Task Detection Agent")
-    parser.add_argument("--evtx-xml", required=True,
-                        help="Exported event log XML file to analyze")
+    parser = argparse.ArgumentParser(
+        description="Sysmon Scheduled Task Detection Agent"
+    )
+    parser.add_argument(
+        "--evtx-xml", required=True, help="Exported event log XML file to analyze"
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

@@ -9,7 +9,6 @@ import re
 from collections import Counter
 from pathlib import Path
 
-
 HASH_PATTERNS = {
     "MD5": (r"^[a-f0-9]{32}$", 0),
     "SHA1": (r"^[a-f0-9]{40}$", 100),
@@ -32,12 +31,20 @@ def identify_hash(hash_string):
     for name, (pattern, mode) in HASH_PATTERNS.items():
         if re.match(pattern, hash_string.strip(), re.IGNORECASE):
             candidates.append({"type": name, "hashcat_mode": mode})
-    return {"hash": hash_string[:40] + "..." if len(hash_string) > 40 else hash_string, "candidates": candidates}
+    return {
+        "hash": hash_string[:40] + "..." if len(hash_string) > 40 else hash_string,
+        "candidates": candidates,
+    }
 
 
 def identify_hashes_file(hash_file):
     """Identify hash types from a file of hashes."""
-    hashes = Path(hash_file).read_text(encoding="utf-8", errors="replace").strip().splitlines()
+    hashes = (
+        Path(hash_file)
+        .read_text(encoding="utf-8", errors="replace")
+        .strip()
+        .splitlines()
+    )
     results = []
     for h in hashes[:100]:
         h = h.strip()
@@ -47,12 +54,26 @@ def identify_hashes_file(hash_file):
     for r in results:
         for c in r["candidates"]:
             types[c["type"]] = types.get(c["type"], 0) + 1
-    return {"total_hashes": len(results), "type_distribution": types, "samples": results[:5]}
+    return {
+        "total_hashes": len(results),
+        "type_distribution": types,
+        "samples": results[:5],
+    }
 
 
-def run_hashcat(hash_file, mode, attack="dictionary", wordlist=None, rules=None, mask=None):
+def run_hashcat(
+    hash_file, mode, attack="dictionary", wordlist=None, rules=None, mask=None
+):
     """Execute hashcat with specified attack mode."""
-    cmd = ["hashcat", "-m", str(mode), "--quiet", "--potfile-disable", "-o", "/tmp/hashcat_out.txt"]
+    cmd = [
+        "hashcat",
+        "-m",
+        str(mode),
+        "--quiet",
+        "--potfile-disable",
+        "-o",
+        "/tmp/hashcat_out.txt",
+    ]
     if attack == "dictionary":
         if not wordlist:
             return {"error": "wordlist required for dictionary attack"}
@@ -81,8 +102,11 @@ def run_hashcat(hash_file, mode, attack="dictionary", wordlist=None, rules=None,
                 if len(parts) == 2:
                     cracked.append({"hash": parts[0][:30] + "...", "plain": parts[1]})
         return {
-            "attack": attack, "mode": mode, "cracked_count": len(cracked),
-            "cracked": cracked[:50], "return_code": result.returncode,
+            "attack": attack,
+            "mode": mode,
+            "cracked_count": len(cracked),
+            "cracked": cracked[:50],
+            "return_code": result.returncode,
             "stderr_snippet": result.stderr[:300] if result.stderr else "",
         }
     except FileNotFoundError:
@@ -95,7 +119,12 @@ def parse_hashcat_status(potfile):
     """Parse hashcat potfile for cracked results."""
     cracked = []
     try:
-        for line in Path(potfile).read_text(encoding="utf-8", errors="replace").strip().splitlines():
+        for line in (
+            Path(potfile)
+            .read_text(encoding="utf-8", errors="replace")
+            .strip()
+            .splitlines()
+        ):
             parts = line.split(":", 1)
             if len(parts) == 2:
                 cracked.append({"hash": parts[0], "plain": parts[1]})
@@ -107,7 +136,12 @@ def parse_hashcat_status(potfile):
         l = len(p)
         bucket = f"{l}" if l <= 8 else "9-12" if l <= 12 else "13+"
         length_dist[bucket] = length_dist.get(bucket, 0) + 1
-    charset = {"lowercase_only": 0, "uppercase_mixed": 0, "with_digits": 0, "with_special": 0}
+    charset = {
+        "lowercase_only": 0,
+        "uppercase_mixed": 0,
+        "with_digits": 0,
+        "with_special": 0,
+    }
     for p in passwords:
         if re.match(r"^[a-z]+$", p):
             charset["lowercase_only"] += 1
@@ -127,7 +161,12 @@ def parse_hashcat_status(potfile):
 
 def generate_hash(plaintext, algorithm="sha256"):
     """Generate hash of a plaintext string for testing."""
-    algos = {"md5": hashlib.md5, "sha1": hashlib.sha1, "sha256": hashlib.sha256, "sha512": hashlib.sha512}
+    algos = {
+        "md5": hashlib.md5,
+        "sha1": hashlib.sha1,
+        "sha256": hashlib.sha256,
+        "sha512": hashlib.sha512,
+    }
     if algorithm not in algos:
         return {"error": f"Unsupported: {algorithm}. Use: {list(algos.keys())}"}
     h = algos[algorithm](plaintext.encode()).hexdigest()
@@ -143,8 +182,12 @@ def main():
     c = sub.add_parser("crack", help="Run hashcat")
     c.add_argument("--hash-file", required=True)
     c.add_argument("--mode", type=int, required=True, help="Hashcat mode number")
-    c.add_argument("--attack", default="dictionary", choices=["dictionary", "brute", "combinator"])
-    c.add_argument("--wordlist", help="Wordlist path (or two comma-separated for combinator)")
+    c.add_argument(
+        "--attack", default="dictionary", choices=["dictionary", "brute", "combinator"]
+    )
+    c.add_argument(
+        "--wordlist", help="Wordlist path (or two comma-separated for combinator)"
+    )
     c.add_argument("--rules", help="Hashcat rules file")
     c.add_argument("--mask", help="Brute force mask")
     p = sub.add_parser("parse", help="Parse potfile results")
@@ -154,9 +197,19 @@ def main():
     g.add_argument("--algo", default="sha256")
     args = parser.parse_args()
     if args.command == "identify":
-        result = identify_hashes_file(args.file) if args.file else identify_hash(args.hash) if args.hash else {"error": "provide --hash or --file"}
+        result = (
+            identify_hashes_file(args.file)
+            if args.file
+            else (
+                identify_hash(args.hash)
+                if args.hash
+                else {"error": "provide --hash or --file"}
+            )
+        )
     elif args.command == "crack":
-        result = run_hashcat(args.hash_file, args.mode, args.attack, args.wordlist, args.rules, args.mask)
+        result = run_hashcat(
+            args.hash_file, args.mode, args.attack, args.wordlist, args.rules, args.mask
+        )
     elif args.command == "parse":
         result = parse_hashcat_status(args.potfile)
     elif args.command == "gen":

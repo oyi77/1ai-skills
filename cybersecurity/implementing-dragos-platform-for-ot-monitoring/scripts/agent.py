@@ -40,7 +40,11 @@ def get_threat_detections(base_url, api_key):
     for det in detections:
         sev = det.get("severity", "unknown")
         by_severity[sev] = by_severity.get(sev, 0) + 1
-    return {"total": len(detections), "by_severity": by_severity, "detections": detections[:50]}
+    return {
+        "total": len(detections),
+        "by_severity": by_severity,
+        "detections": detections[:50],
+    }
 
 
 def get_vulnerabilities(base_url, api_key):
@@ -48,7 +52,11 @@ def get_vulnerabilities(base_url, api_key):
     data = query_dragos_api(base_url, api_key, "vulnerabilities")
     vulns = data.get("data", data.get("vulnerabilities", []))
     critical = [v for v in vulns if v.get("severity", "").lower() == "critical"]
-    return {"total": len(vulns), "critical_count": len(critical), "critical": critical[:20]}
+    return {
+        "total": len(vulns),
+        "critical_count": len(critical),
+        "critical": critical[:20],
+    }
 
 
 def analyze_ot_protocols(log_path):
@@ -64,13 +72,15 @@ def analyze_ot_protocols(log_path):
             proto = entry.get("protocol", entry.get("service", ""))
             protocol_counts[proto] = protocol_counts.get(proto, 0) + 1
             if entry.get("anomaly") or entry.get("alert"):
-                anomalies.append({
-                    "timestamp": entry.get("timestamp", ""),
-                    "protocol": proto,
-                    "src": entry.get("src_ip", ""),
-                    "dst": entry.get("dst_ip", ""),
-                    "description": entry.get("description", entry.get("alert", "")),
-                })
+                anomalies.append(
+                    {
+                        "timestamp": entry.get("timestamp", ""),
+                        "protocol": proto,
+                        "src": entry.get("src_ip", ""),
+                        "dst": entry.get("dst_ip", ""),
+                        "description": entry.get("description", entry.get("alert", "")),
+                    }
+                )
     return {"protocols": protocol_counts, "anomalies": anomalies[:100]}
 
 
@@ -79,7 +89,11 @@ def generate_monitoring_config():
     return {
         "monitored_protocols": [
             {"name": "Modbus/TCP", "port": 502, "monitoring": "deep_packet_inspection"},
-            {"name": "EtherNet/IP", "port": 44818, "monitoring": "deep_packet_inspection"},
+            {
+                "name": "EtherNet/IP",
+                "port": 44818,
+                "monitoring": "deep_packet_inspection",
+            },
             {"name": "DNP3", "port": 20000, "monitoring": "deep_packet_inspection"},
             {"name": "OPC UA", "port": 4840, "monitoring": "deep_packet_inspection"},
             {"name": "IEC 61850 MMS", "port": 102, "monitoring": "protocol_aware"},
@@ -102,8 +116,11 @@ def main():
     parser.add_argument("--api-key", help="Dragos API key")
     parser.add_argument("--log", help="OT protocol log (JSON lines)")
     parser.add_argument("--output", default="dragos_monitoring_report.json")
-    parser.add_argument("--action", choices=["assets", "threats", "vulns", "protocols",
-                                              "config", "full"], default="full")
+    parser.add_argument(
+        "--action",
+        choices=["assets", "threats", "vulns", "protocols", "config", "full"],
+        default="full",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

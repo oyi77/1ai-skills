@@ -12,7 +12,6 @@ import urllib.parse
 from datetime import datetime
 from pathlib import Path
 
-
 # Known competitors per niche (Indonesian market)
 COMPETITORS = {
     "ai_tools": [
@@ -21,9 +20,17 @@ COMPETITORS = {
         {"handle": "@teknologi.ai", "platform": "instagram", "niche": "AI Tools"},
     ],
     "digital_marketing": [
-        {"handle": "@digitalmarketing.id", "platform": "tiktok", "niche": "Digital Marketing"},
+        {
+            "handle": "@digitalmarketing.id",
+            "platform": "tiktok",
+            "niche": "Digital Marketing",
+        },
         {"handle": "@konten.viral", "platform": "tiktok", "niche": "Digital Marketing"},
-        {"handle": "@marketingindo", "platform": "instagram", "niche": "Digital Marketing"},
+        {
+            "handle": "@marketingindo",
+            "platform": "instagram",
+            "niche": "Digital Marketing",
+        },
     ],
     "kuliner": [
         {"handle": "@kulinerviral.id", "platform": "tiktok", "niche": "Kuliner"},

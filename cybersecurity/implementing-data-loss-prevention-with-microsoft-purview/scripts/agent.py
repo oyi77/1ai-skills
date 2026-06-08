@@ -11,7 +11,9 @@ from pathlib import Path
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
@@ -29,23 +31,35 @@ class PurviewAuthClient:
         self.token_expiry = None
 
     def get_token(self):
-        if self.access_token and self.token_expiry and datetime.now(timezone.utc) < self.token_expiry:
+        if (
+            self.access_token
+            and self.token_expiry
+            and datetime.now(timezone.utc) < self.token_expiry
+        ):
             return self.access_token
-        token_url = f"https://login.microsoftonline.com/{self.tenant_id}/oauth2/v2.0/token"
-        response = requests.post(token_url, data={
-            "client_id": self.client_id,
-            "client_secret": self.client_secret,
-            "scope": "https://graph.microsoft.com/.default",
-            "grant_type": "client_credentials",
-        }, timeout=30)
+        token_url = (
+            f"https://login.microsoftonline.com/{self.tenant_id}/oauth2/v2.0/token"
+        )
+        response = requests.post(
+            token_url,
+            data={
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
+                "scope": "https://graph.microsoft.com/.default",
+                "grant_type": "client_credentials",
+            },
+            timeout=30,
+        )
         response.raise_for_status()
         token_data = response.json()
         self.access_token = token_data["access_token"]
         self.token_expiry = datetime.now(timezone.utc) + timedelta(
             seconds=token_data.get("expires_in", 3600) - 300
         )
-        logger.info("Obtained Graph API access token (expires in %d seconds)",
-                     token_data.get("expires_in", 3600))
+        logger.info(
+            "Obtained Graph API access token (expires in %d seconds)",
+            token_data.get("expires_in", 3600),
+        )
         return self.access_token
 
     def headers(self):
@@ -72,7 +86,9 @@ def get_dlp_alerts(auth_client, days_back=7, severity=None, top=50):
         "$top": top,
         "$orderby": "createdDateTime desc",
     }
-    response = requests.get(url, headers=auth_client.headers(), params=params, timeout=60)
+    response = requests.get(
+        url, headers=auth_client.headers(), params=params, timeout=60
+    )
     response.raise_for_status()
     alerts = response.json().get("value", [])
     logger.info("Retrieved %d DLP alerts from last %d days", len(alerts), days_back)
@@ -99,10 +115,14 @@ def evaluate_dlp_protection_scope(auth_client, user_id):
             "format": "default",
         }
     }
-    response = requests.post(url, headers=auth_client.headers(), json=payload, timeout=30)
+    response = requests.post(
+        url, headers=auth_client.headers(), json=payload, timeout=30
+    )
     if response.status_code == 200:
         return response.json()
-    logger.warning("DLP evaluation for user %s returned status %d", user_id, response.status_code)
+    logger.warning(
+        "DLP evaluation for user %s returned status %d", user_id, response.status_code
+    )
     return None
 
 
@@ -151,7 +171,9 @@ def generate_label_report(labels):
             "color": label.get("color", ""),
             "sensitivity": label.get("sensitivity", 0),
             "is_active": label.get("isActive", False),
-            "parent_id": label.get("parent", {}).get("id") if label.get("parent") else None,
+            "parent_id": (
+                label.get("parent", {}).get("id") if label.get("parent") else None
+            ),
             "content_formats": label.get("contentFormats", []),
             "has_protection": bool(label.get("protectionEnabled")),
         }
@@ -165,14 +187,16 @@ def check_policy_health(alerts, threshold_high=10, threshold_override_pct=20.0):
 
     high_severity = [a for a in alerts if a.get("severity", "").lower() == "high"]
     if len(high_severity) > threshold_high:
-        findings.append({
-            "finding": "HIGH_ALERT_VOLUME",
-            "severity": "WARNING",
-            "detail": f"{len(high_severity)} high-severity DLP alerts in the analysis period. "
-                      f"Threshold: {threshold_high}. Investigate for data exfiltration patterns.",
-            "recommendation": "Review top-triggered policies and affected users. Check for "
-                              "compromised accounts or policy misconfiguration.",
-        })
+        findings.append(
+            {
+                "finding": "HIGH_ALERT_VOLUME",
+                "severity": "WARNING",
+                "detail": f"{len(high_severity)} high-severity DLP alerts in the analysis period. "
+                f"Threshold: {threshold_high}. Investigate for data exfiltration patterns.",
+                "recommendation": "Review top-triggered policies and affected users. Check for "
+                "compromised accounts or policy misconfiguration.",
+            }
+        )
 
     policy_alert_counts = {}
     for alert in alerts:
@@ -181,32 +205,38 @@ def check_policy_health(alerts, threshold_high=10, threshold_override_pct=20.0):
 
     for policy, count in policy_alert_counts.items():
         if count > 100:
-            findings.append({
-                "finding": "NOISY_POLICY",
-                "severity": "INFO",
-                "detail": f"Policy '{policy}' generated {count} alerts. May indicate "
-                          f"false positive issues or overly broad matching rules.",
-                "recommendation": "Review SIT confidence thresholds and policy conditions. "
-                                  "Consider increasing MinConfidence or adding exclusions.",
-            })
+            findings.append(
+                {
+                    "finding": "NOISY_POLICY",
+                    "severity": "INFO",
+                    "detail": f"Policy '{policy}' generated {count} alerts. May indicate "
+                    f"false positive issues or overly broad matching rules.",
+                    "recommendation": "Review SIT confidence thresholds and policy conditions. "
+                    "Consider increasing MinConfidence or adding exclusions.",
+                }
+            )
 
     unresolved = [a for a in alerts if a.get("status") == "new"]
     if len(unresolved) > 50:
-        findings.append({
-            "finding": "UNRESOLVED_ALERT_BACKLOG",
-            "severity": "WARNING",
-            "detail": f"{len(unresolved)} DLP alerts in 'new' status. Alert fatigue risk.",
-            "recommendation": "Assign alerts to compliance analysts. Configure auto-resolution "
-                              "for low-severity informational alerts. Implement alert triage SOP.",
-        })
+        findings.append(
+            {
+                "finding": "UNRESOLVED_ALERT_BACKLOG",
+                "severity": "WARNING",
+                "detail": f"{len(unresolved)} DLP alerts in 'new' status. Alert fatigue risk.",
+                "recommendation": "Assign alerts to compliance analysts. Configure auto-resolution "
+                "for low-severity informational alerts. Implement alert triage SOP.",
+            }
+        )
 
     if not findings:
-        findings.append({
-            "finding": "HEALTHY",
-            "severity": "INFO",
-            "detail": "DLP policy health checks passed. No anomalies detected.",
-            "recommendation": "Continue regular monitoring. Schedule quarterly policy review.",
-        })
+        findings.append(
+            {
+                "finding": "HEALTHY",
+                "severity": "INFO",
+                "detail": "DLP policy health checks passed. No anomalies detected.",
+                "recommendation": "Continue regular monitoring. Schedule quarterly policy review.",
+            }
+        )
 
     return findings
 
@@ -214,25 +244,35 @@ def check_policy_health(alerts, threshold_high=10, threshold_override_pct=20.0):
 def export_alerts_csv(alerts, output_path):
     """Export DLP alerts to CSV for compliance reporting."""
     fieldnames = [
-        "id", "title", "severity", "status", "createdDateTime",
-        "user", "description", "category",
+        "id",
+        "title",
+        "severity",
+        "status",
+        "createdDateTime",
+        "user",
+        "description",
+        "category",
     ]
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for alert in alerts:
             user_states = alert.get("userStates", [])
-            upn = user_states[0].get("userPrincipalName", "N/A") if user_states else "N/A"
-            writer.writerow({
-                "id": alert.get("id", ""),
-                "title": alert.get("title", ""),
-                "severity": alert.get("severity", ""),
-                "status": alert.get("status", ""),
-                "createdDateTime": alert.get("createdDateTime", ""),
-                "user": upn,
-                "description": alert.get("description", ""),
-                "category": alert.get("category", ""),
-            })
+            upn = (
+                user_states[0].get("userPrincipalName", "N/A") if user_states else "N/A"
+            )
+            writer.writerow(
+                {
+                    "id": alert.get("id", ""),
+                    "title": alert.get("title", ""),
+                    "severity": alert.get("severity", ""),
+                    "status": alert.get("status", ""),
+                    "createdDateTime": alert.get("createdDateTime", ""),
+                    "user": upn,
+                    "description": alert.get("description", ""),
+                    "category": alert.get("category", ""),
+                }
+            )
     logger.info("Exported %d alerts to %s", len(alerts), output_path)
 
 
@@ -271,9 +311,11 @@ def generate_compliance_report(auth_client, days_back=30, output_dir="."):
     print("=" * 70)
     print(f"Report Period: Last {days_back} days")
     print(f"Total Alerts: {alert_summary['total_alerts']}")
-    print(f"Severity: High={alert_summary['severity_breakdown']['high']}, "
-          f"Medium={alert_summary['severity_breakdown']['medium']}, "
-          f"Low={alert_summary['severity_breakdown']['low']}")
+    print(
+        f"Severity: High={alert_summary['severity_breakdown']['high']}, "
+        f"Medium={alert_summary['severity_breakdown']['medium']}, "
+        f"Low={alert_summary['severity_breakdown']['low']}"
+    )
     print(f"Sensitivity Labels Configured: {len(label_report)}")
     print(f"\nPolicy Health Findings: {len(health_findings)}")
     for finding in health_findings:
@@ -297,24 +339,40 @@ def main():
     )
     parser.add_argument("--tenant-id", required=True, help="Azure AD tenant ID")
     parser.add_argument("--client-id", required=True, help="App registration client ID")
-    parser.add_argument("--client-secret", required=True,
-                        help="App registration client secret")
-    parser.add_argument("--action", required=True,
-                        choices=["alerts", "labels", "health", "report"],
-                        help="Action to perform")
-    parser.add_argument("--days", type=int, default=7,
-                        help="Number of days to look back for alerts (default: 7)")
-    parser.add_argument("--severity", choices=["high", "medium", "low", "informational"],
-                        help="Filter alerts by severity")
-    parser.add_argument("--output-dir", default=".",
-                        help="Directory for output files (default: current directory)")
+    parser.add_argument(
+        "--client-secret", required=True, help="App registration client secret"
+    )
+    parser.add_argument(
+        "--action",
+        required=True,
+        choices=["alerts", "labels", "health", "report"],
+        help="Action to perform",
+    )
+    parser.add_argument(
+        "--days",
+        type=int,
+        default=7,
+        help="Number of days to look back for alerts (default: 7)",
+    )
+    parser.add_argument(
+        "--severity",
+        choices=["high", "medium", "low", "informational"],
+        help="Filter alerts by severity",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=".",
+        help="Directory for output files (default: current directory)",
+    )
     parser.add_argument("--output", help="Output file path (overrides default naming)")
     args = parser.parse_args()
 
     auth_client = PurviewAuthClient(args.tenant_id, args.client_id, args.client_secret)
 
     if args.action == "alerts":
-        alerts = get_dlp_alerts(auth_client, days_back=args.days, severity=args.severity)
+        alerts = get_dlp_alerts(
+            auth_client, days_back=args.days, severity=args.severity
+        )
         summary = generate_alert_summary(alerts)
         output = {"summary": summary, "alerts": alerts}
         out_path = args.output or Path(args.output_dir) / "dlp_alerts.json"
@@ -335,12 +393,21 @@ def main():
         Path(out_path).write_text(json.dumps(findings, indent=2, default=str))
         logger.info("Health report saved to %s (%d findings)", out_path, len(findings))
         for finding in findings:
-            level = logging.WARNING if finding["severity"] == "WARNING" else logging.INFO
-            logger.log(level, "[%s] %s: %s", finding["severity"], finding["finding"],
-                       finding["detail"])
+            level = (
+                logging.WARNING if finding["severity"] == "WARNING" else logging.INFO
+            )
+            logger.log(
+                level,
+                "[%s] %s: %s",
+                finding["severity"],
+                finding["finding"],
+                finding["detail"],
+            )
 
     elif args.action == "report":
-        generate_compliance_report(auth_client, days_back=args.days, output_dir=args.output_dir)
+        generate_compliance_report(
+            auth_client, days_back=args.days, output_dir=args.output_dir
+        )
 
 
 if __name__ == "__main__":

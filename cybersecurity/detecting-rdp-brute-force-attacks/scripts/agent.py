@@ -5,6 +5,7 @@ Parses EVTX files for Event ID 4625 (failed logon) and 4624
 (successful logon) to identify brute force patterns, source IP
 frequency, username spraying, and post-compromise indicators.
 """
+
 # For authorized security monitoring and blue team use only
 
 import argparse
@@ -54,8 +55,13 @@ def _extract_event_data(xml_str):
 class RDPBruteForceDetector:
     """Detects RDP brute force attacks from Windows Security EVTX logs."""
 
-    def __init__(self, evtx_path, threshold=10, time_window_minutes=15,
-                 output_dir="./rdp_brute_force_report"):
+    def __init__(
+        self,
+        evtx_path,
+        threshold=10,
+        time_window_minutes=15,
+        output_dir="./rdp_brute_force_report",
+    ):
         self.evtx_path = evtx_path
         self.threshold = threshold
         self.time_window = time_window_minutes
@@ -77,21 +83,25 @@ class RDPBruteForceDetector:
                 event_id, ts, data = _extract_event_data(xml_str)
                 logon_type = data.get("LogonType", "")
                 if event_id == "4625" and logon_type in RDP_LOGON_TYPES:
-                    self.failed_logons.append({
-                        "timestamp": ts,
-                        "source_ip": data.get("IpAddress", "-"),
-                        "target_user": data.get("TargetUserName", ""),
-                        "target_domain": data.get("TargetDomainName", ""),
-                        "sub_status": data.get("SubStatus", "").lower(),
-                        "logon_type": logon_type,
-                    })
+                    self.failed_logons.append(
+                        {
+                            "timestamp": ts,
+                            "source_ip": data.get("IpAddress", "-"),
+                            "target_user": data.get("TargetUserName", ""),
+                            "target_domain": data.get("TargetDomainName", ""),
+                            "sub_status": data.get("SubStatus", "").lower(),
+                            "logon_type": logon_type,
+                        }
+                    )
                 elif event_id == "4624" and logon_type in RDP_LOGON_TYPES:
-                    self.successful_logons.append({
-                        "timestamp": ts,
-                        "source_ip": data.get("IpAddress", "-"),
-                        "target_user": data.get("TargetUserName", ""),
-                        "logon_type": logon_type,
-                    })
+                    self.successful_logons.append(
+                        {
+                            "timestamp": ts,
+                            "source_ip": data.get("IpAddress", "-"),
+                            "target_user": data.get("TargetUserName", ""),
+                            "logon_type": logon_type,
+                        }
+                    )
 
     def analyze(self):
         """Analyze parsed events for brute force patterns."""
@@ -102,23 +112,35 @@ class RDPBruteForceDetector:
             for e in self.failed_logons
         )
 
-        brute_force_ips = {ip: cnt for ip, cnt in ip_counter.items()
-                          if cnt >= self.threshold and ip != "-"}
+        brute_force_ips = {
+            ip: cnt
+            for ip, cnt in ip_counter.items()
+            if cnt >= self.threshold and ip != "-"
+        }
 
         success_ips = {e["source_ip"] for e in self.successful_logons}
         compromised = []
         for ip in brute_force_ips:
             if ip in success_ips:
-                user_list = [e["target_user"] for e in self.successful_logons
-                             if e["source_ip"] == ip]
-                compromised.append({"ip": ip, "users": list(set(user_list)),
-                                    "failed_attempts": brute_force_ips[ip]})
+                user_list = [
+                    e["target_user"]
+                    for e in self.successful_logons
+                    if e["source_ip"] == ip
+                ]
+                compromised.append(
+                    {
+                        "ip": ip,
+                        "users": list(set(user_list)),
+                        "failed_attempts": brute_force_ips[ip],
+                    }
+                )
 
         users_per_ip = defaultdict(set)
         for e in self.failed_logons:
             users_per_ip[e["source_ip"]].add(e["target_user"])
-        spray_ips = {ip: len(users) for ip, users in users_per_ip.items()
-                     if len(users) >= 5}
+        spray_ips = {
+            ip: len(users) for ip, users in users_per_ip.items() if len(users) >= 5
+        }
 
         return {
             "total_failed_logons": len(self.failed_logons),
@@ -155,15 +177,23 @@ def main():
         description="Detect RDP brute force attacks from Windows Security EVTX logs"
     )
     parser.add_argument("evtx_file", help="Path to Security.evtx log file")
-    parser.add_argument("--threshold", type=int, default=10,
-                        help="Min failed logons per IP to flag as brute force (default: 10)")
-    parser.add_argument("--output-dir", default="./rdp_brute_force_report",
-                        help="Output directory for report")
+    parser.add_argument(
+        "--threshold",
+        type=int,
+        default=10,
+        help="Min failed logons per IP to flag as brute force (default: 10)",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="./rdp_brute_force_report",
+        help="Output directory for report",
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
-    detector = RDPBruteForceDetector(args.evtx_file, args.threshold,
-                                     output_dir=args.output_dir)
+    detector = RDPBruteForceDetector(
+        args.evtx_file, args.threshold, output_dir=args.output_dir
+    )
     detector.generate_report()
 
 

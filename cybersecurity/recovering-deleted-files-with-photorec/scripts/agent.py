@@ -14,7 +14,9 @@ from datetime import datetime
 def verify_photorec():
     """Check that PhotoRec is installed and available."""
     result = subprocess.run(
-        ["photorec", "--version"], capture_output=True, text=True,
+        ["photorec", "--version"],
+        capture_output=True,
+        text=True,
         timeout=120,
     )
     if result.returncode == 0:
@@ -25,14 +27,16 @@ def verify_photorec():
 def get_image_info(image_path):
     """Get forensic image information."""
     file_result = subprocess.run(
-        ["file", image_path], capture_output=True, text=True,
+        ["file", image_path],
+        capture_output=True,
+        text=True,
         timeout=120,
     )
     size = os.path.getsize(image_path) if os.path.exists(image_path) else 0
     return {
         "path": image_path,
         "size_bytes": size,
-        "size_gb": round(size / (1024 ** 3), 2),
+        "size_gb": round(size / (1024**3), 2),
         "type": file_result.stdout.strip(),
     }
 
@@ -49,9 +53,7 @@ def run_photorec(image_path, output_dir, file_types=None, partition=None):
         options.append(f"fileopt,everything,disable,{enable_list},enable")
     options.append("search")
     cmd.append(",".join(options) if options else "search")
-    result = subprocess.run(
-        cmd, capture_output=True, text=True, timeout=14400
-    )
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=14400)
     return {
         "command": " ".join(cmd),
         "returncode": result.returncode,
@@ -107,11 +109,13 @@ def hash_recovered_files(output_dir, extensions=None):
             try:
                 with open(filepath, "rb") as f:
                     sha256 = hashlib.sha256(f.read()).hexdigest()
-                hashes.append({
-                    "file": filepath,
-                    "sha256": sha256,
-                    "size": os.path.getsize(filepath),
-                })
+                hashes.append(
+                    {
+                        "file": filepath,
+                        "sha256": sha256,
+                        "size": os.path.getsize(filepath),
+                    }
+                )
             except (OSError, PermissionError):
                 pass
     return hashes
@@ -120,8 +124,20 @@ def hash_recovered_files(output_dir, extensions=None):
 def sort_recovered_files(output_dir, sorted_dir):
     """Sort recovered files into categorized directories."""
     categories = {
-        "documents": [".doc", ".docx", ".pdf", ".xls", ".xlsx", ".ppt", ".pptx",
-                      ".odt", ".ods", ".txt", ".rtf", ".csv"],
+        "documents": [
+            ".doc",
+            ".docx",
+            ".pdf",
+            ".xls",
+            ".xlsx",
+            ".ppt",
+            ".pptx",
+            ".odt",
+            ".ods",
+            ".txt",
+            ".rtf",
+            ".csv",
+        ],
         "images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".svg", ".webp"],
         "databases": [".db", ".sqlite", ".mdb", ".accdb", ".sql"],
         "archives": [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2"],
@@ -149,7 +165,9 @@ def sort_recovered_files(output_dir, sorted_dir):
             counter = 1
             while os.path.exists(dst):
                 name, extension = os.path.splitext(filename)
-                dst = os.path.join(sorted_dir, target_cat, f"{name}_{counter}{extension}")
+                dst = os.path.join(
+                    sorted_dir, target_cat, f"{name}_{counter}{extension}"
+                )
                 counter += 1
             try:
                 os.rename(src, dst)
@@ -179,10 +197,14 @@ def print_report(results):
     img = results.get("image_info", {})
     print(f"Image: {img.get('path', 'N/A')} ({img.get('size_gb', 0)} GB)")
     cat = results.get("catalog", {})
-    print(f"\nRecovered: {cat.get('total_files', 0)} files ({cat.get('total_mb', 0)} MB)")
+    print(
+        f"\nRecovered: {cat.get('total_files', 0)} files ({cat.get('total_mb', 0)} MB)"
+    )
     print("\nBy Extension:")
     for ext, info in list(cat.get("by_extension", {}).items())[:15]:
-        print(f"  {ext:8s}: {info['count']:>5} files ({info['total_bytes'] // 1024:>8} KB)")
+        print(
+            f"  {ext:8s}: {info['count']:>5} files ({info['total_bytes'] // 1024:>8} KB)"
+        )
     sorting = results.get("sorting", {})
     if sorting:
         print("\nSorted Categories:")

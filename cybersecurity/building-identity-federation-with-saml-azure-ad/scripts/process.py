@@ -56,21 +56,21 @@ class FederationAuditor:
         result = self._graph_get("/domains")
         domains = []
         for domain in result.get("value", []):
-            domains.append({
-                "id": domain["id"],
-                "isVerified": domain.get("isVerified", False),
-                "authenticationType": domain.get("authenticationType", "Unknown"),
-                "isDefault": domain.get("isDefault", False),
-                "isRoot": domain.get("isRoot", False),
-            })
+            domains.append(
+                {
+                    "id": domain["id"],
+                    "isVerified": domain.get("isVerified", False),
+                    "authenticationType": domain.get("authenticationType", "Unknown"),
+                    "isDefault": domain.get("isDefault", False),
+                    "isRoot": domain.get("isRoot", False),
+                }
+            )
         return domains
 
     def get_federation_config(self, domain_id):
         """Get federation configuration for a specific domain."""
         try:
-            result = self._graph_get(
-                f"/domains/{domain_id}/federationConfiguration"
-            )
+            result = self._graph_get(f"/domains/{domain_id}/federationConfiguration")
             configs = result.get("value", [])
             return configs[0] if configs else None
         except requests.HTTPError as e:
@@ -85,6 +85,7 @@ class FederationAuditor:
             resp.raise_for_status()
 
             from lxml import etree
+
             root = etree.fromstring(resp.content)
             ns = {"md": "urn:oasis:names:tc:SAML:2.0:metadata"}
 
@@ -110,6 +111,7 @@ class FederationAuditor:
         """Check federation signing certificate expiration."""
         try:
             import base64
+
             cert_der = base64.b64decode(cert_base64)
             cert = x509.load_der_x509_certificate(cert_der)
             now = datetime.now(timezone.utc)
@@ -135,15 +137,19 @@ class FederationAuditor:
             )
             logs = []
             for log in result.get("value", []):
-                logs.append({
-                    "user": log.get("userPrincipalName"),
-                    "createdDateTime": log.get("createdDateTime"),
-                    "status": log.get("status", {}).get("errorCode", 0),
-                    "statusDetail": log.get("status", {}).get("failureReason", "Success"),
-                    "appDisplayName": log.get("appDisplayName"),
-                    "authenticationProtocol": log.get("authenticationProtocol"),
-                    "ipAddress": log.get("ipAddress"),
-                })
+                logs.append(
+                    {
+                        "user": log.get("userPrincipalName"),
+                        "createdDateTime": log.get("createdDateTime"),
+                        "status": log.get("status", {}).get("errorCode", 0),
+                        "statusDetail": log.get("status", {}).get(
+                            "failureReason", "Success"
+                        ),
+                        "appDisplayName": log.get("appDisplayName"),
+                        "authenticationProtocol": log.get("authenticationProtocol"),
+                        "ipAddress": log.get("ipAddress"),
+                    }
+                )
             return logs
         except requests.HTTPError:
             return []
@@ -151,7 +157,9 @@ class FederationAuditor:
     def generate_federation_audit_report(self):
         """Generate comprehensive federation health report."""
         domains = self.get_domains()
-        federated_domains = [d for d in domains if d["authenticationType"] == "Federated"]
+        federated_domains = [
+            d for d in domains if d["authenticationType"] == "Federated"
+        ]
 
         report = {
             "report_title": "Azure AD Federation Audit Report",
@@ -185,19 +193,23 @@ class FederationAuditor:
                     domain_detail["certificate_health"] = cert_health
 
                     if cert_health.get("is_expired"):
-                        report["findings"].append({
-                            "severity": "Critical",
-                            "domain": domain_id,
-                            "finding": "Federation signing certificate is EXPIRED",
-                            "action": "Immediately rotate certificate in AD FS and update Azure AD",
-                        })
+                        report["findings"].append(
+                            {
+                                "severity": "Critical",
+                                "domain": domain_id,
+                                "finding": "Federation signing certificate is EXPIRED",
+                                "action": "Immediately rotate certificate in AD FS and update Azure AD",
+                            }
+                        )
                     elif cert_health.get("needs_renewal"):
-                        report["findings"].append({
-                            "severity": "High",
-                            "domain": domain_id,
-                            "finding": f"Federation certificate expires in {cert_health['days_until_expiry']} days",
-                            "action": "Schedule certificate rotation before expiry",
-                        })
+                        report["findings"].append(
+                            {
+                                "severity": "High",
+                                "domain": domain_id,
+                                "finding": f"Federation certificate expires in {cert_health['days_until_expiry']} days",
+                                "action": "Schedule certificate rotation before expiry",
+                            }
+                        )
 
             report["domain_details"].append(domain_detail)
 

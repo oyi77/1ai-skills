@@ -16,7 +16,9 @@ import boto3
 from botocore.exceptions import ClientError
 
 
-def run_pacu_module(module_name: str, session_name: str = "pentest", args: str = "") -> dict:
+def run_pacu_module(
+    module_name: str, session_name: str = "pentest", args: str = ""
+) -> dict:
     """Execute a Pacu module via subprocess."""
     cmd = ["pacu", "--session", session_name, "--module-name", module_name]
     if args:
@@ -31,9 +33,17 @@ def run_pacu_module(module_name: str, session_name: str = "pentest", args: str =
             "error": result.stderr[-500:] if result.stderr else "",
         }
     except subprocess.TimeoutExpired:
-        return {"module": module_name, "success": False, "error": "Module timed out (300s)"}
+        return {
+            "module": module_name,
+            "success": False,
+            "error": "Module timed out (300s)",
+        }
     except FileNotFoundError:
-        return {"module": module_name, "success": False, "error": "Pacu not installed. Install with: pip install pacu"}
+        return {
+            "module": module_name,
+            "success": False,
+            "error": "Pacu not installed. Install with: pip install pacu",
+        }
 
 
 def enumerate_iam_with_boto(profile: str = None) -> dict:
@@ -57,22 +67,28 @@ def enumerate_iam_with_boto(profile: str = None) -> dict:
         for page in iam.get_paginator("list_users").paginate():
             for user in page["Users"]:
                 attached = iam.list_attached_user_policies(UserName=user["UserName"])
-                result["users"].append({
-                    "username": user["UserName"],
-                    "arn": user["Arn"],
-                    "policies": [p["PolicyArn"] for p in attached["AttachedPolicies"]],
-                })
+                result["users"].append(
+                    {
+                        "username": user["UserName"],
+                        "arn": user["Arn"],
+                        "policies": [
+                            p["PolicyArn"] for p in attached["AttachedPolicies"]
+                        ],
+                    }
+                )
     except ClientError as e:
         result["users_error"] = str(e)
 
     try:
         for page in iam.get_paginator("list_roles").paginate():
             for role in page["Roles"]:
-                result["roles"].append({
-                    "name": role["RoleName"],
-                    "arn": role["Arn"],
-                    "trust_policy": role.get("AssumeRolePolicyDocument", {}),
-                })
+                result["roles"].append(
+                    {
+                        "name": role["RoleName"],
+                        "arn": role["Arn"],
+                        "trust_policy": role.get("AssumeRolePolicyDocument", {}),
+                    }
+                )
     except ClientError as e:
         result["roles_error"] = str(e)
 
@@ -83,12 +99,18 @@ def scan_privilege_escalation(iam_data: dict) -> list[dict]:
     """Identify privilege escalation paths from IAM enumeration data."""
     escalation_vectors = []
     dangerous_actions = {
-        "iam:CreatePolicyVersion", "iam:SetDefaultPolicyVersion",
-        "iam:AttachUserPolicy", "iam:AttachRolePolicy",
-        "iam:PutUserPolicy", "iam:PutRolePolicy",
-        "iam:AddUserToGroup", "iam:UpdateAssumeRolePolicy",
-        "iam:PassRole", "iam:CreateLoginProfile",
-        "lambda:CreateFunction", "lambda:UpdateFunctionCode",
+        "iam:CreatePolicyVersion",
+        "iam:SetDefaultPolicyVersion",
+        "iam:AttachUserPolicy",
+        "iam:AttachRolePolicy",
+        "iam:PutUserPolicy",
+        "iam:PutRolePolicy",
+        "iam:AddUserToGroup",
+        "iam:UpdateAssumeRolePolicy",
+        "iam:PassRole",
+        "iam:CreateLoginProfile",
+        "lambda:CreateFunction",
+        "lambda:UpdateFunctionCode",
     }
 
     iam_client = boto3.client("iam")
@@ -111,17 +133,25 @@ def scan_privilege_escalation(iam_data: dict) -> list[dict]:
                         actions = [actions]
                     for action in actions:
                         if action == "*" or action in dangerous_actions:
-                            user_dangerous.append({"action": action, "policy": policy_arn})
+                            user_dangerous.append(
+                                {"action": action, "policy": policy_arn}
+                            )
             except ClientError:
                 continue
 
         if user_dangerous:
-            escalation_vectors.append({
-                "principal": user["username"],
-                "type": "user",
-                "vectors": user_dangerous,
-                "risk": "CRITICAL" if any(v["action"] == "*" for v in user_dangerous) else "HIGH",
-            })
+            escalation_vectors.append(
+                {
+                    "principal": user["username"],
+                    "type": "user",
+                    "vectors": user_dangerous,
+                    "risk": (
+                        "CRITICAL"
+                        if any(v["action"] == "*" for v in user_dangerous)
+                        else "HIGH"
+                    ),
+                }
+            )
 
     return escalation_vectors
 
@@ -147,7 +177,11 @@ def test_credential_access(region: str = "us-east-1") -> dict:
             getattr(client, method)(**kwargs)
             accessible.append(service)
         except ClientError as e:
-            if e.response["Error"]["Code"] in ("AccessDenied", "AccessDeniedException", "UnauthorizedAccess"):
+            if e.response["Error"]["Code"] in (
+                "AccessDenied",
+                "AccessDeniedException",
+                "UnauthorizedAccess",
+            ):
                 denied.append(service)
             else:
                 accessible.append(service)
@@ -157,7 +191,9 @@ def test_credential_access(region: str = "us-east-1") -> dict:
     return {"accessible_services": accessible, "denied_services": denied}
 
 
-def generate_report(iam_data: dict, escalation: list, access: dict, pacu_results: list) -> str:
+def generate_report(
+    iam_data: dict, escalation: list, access: dict, pacu_results: list
+) -> str:
     """Generate Pacu penetration testing report."""
     lines = [
         "AWS PENETRATION TESTING (PACU) REPORT — AUTHORIZED TESTING ONLY",
@@ -225,6 +261,15 @@ if __name__ == "__main__":
 
     output = f"pacu_pentest_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
     with open(output, "w") as f:
-        json.dump({"iam": iam_data, "escalation": escalation, "access": access,
-                    "pacu_results": pacu_results}, f, indent=2, default=str)
+        json.dump(
+            {
+                "iam": iam_data,
+                "escalation": escalation,
+                "access": access,
+                "pacu_results": pacu_results,
+            },
+            f,
+            indent=2,
+            default=str,
+        )
     print(f"\n[*] Results saved to {output}")

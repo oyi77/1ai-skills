@@ -34,15 +34,15 @@ except ImportError:
 # --------------------------------------------------------------------------- #
 PORT_RISK_WEIGHTS = {
     # Management / remote access (highest risk)
-    22: 8.0,    # SSH
-    23: 9.5,    # Telnet (unencrypted)
+    22: 8.0,  # SSH
+    23: 9.5,  # Telnet (unencrypted)
     3389: 8.5,  # RDP
     5900: 8.0,  # VNC
     5985: 7.5,  # WinRM HTTP
     5986: 7.0,  # WinRM HTTPS
     # Web services
-    80: 3.0,    # HTTP
-    443: 2.5,   # HTTPS
+    80: 3.0,  # HTTP
+    443: 2.5,  # HTTPS
     8080: 5.0,  # Alt HTTP (often dev/admin)
     8443: 4.5,  # Alt HTTPS
     8888: 6.0,  # Often dev panels
@@ -51,7 +51,7 @@ PORT_RISK_WEIGHTS = {
     5432: 9.0,  # PostgreSQL
     1433: 9.0,  # MSSQL
     1521: 9.0,  # Oracle
-    27017: 9.5, # MongoDB
+    27017: 9.5,  # MongoDB
     6379: 9.5,  # Redis
     9200: 8.5,  # Elasticsearch
     5601: 8.0,  # Kibana
@@ -59,25 +59,35 @@ PORT_RISK_WEIGHTS = {
     5672: 7.5,  # RabbitMQ
     9092: 7.5,  # Kafka
     # File sharing
-    21: 8.0,    # FTP
-    445: 9.0,   # SMB
-    139: 8.5,   # NetBIOS
+    21: 8.0,  # FTP
+    445: 9.0,  # SMB
+    139: 8.5,  # NetBIOS
     # Email
-    25: 6.0,    # SMTP
-    110: 6.5,   # POP3
-    143: 6.0,   # IMAP
+    25: 6.0,  # SMTP
+    110: 6.5,  # POP3
+    143: 6.0,  # IMAP
     # DNS
-    53: 5.0,    # DNS
+    53: 5.0,  # DNS
     # SNMP
-    161: 8.0,   # SNMP
-    162: 7.5,   # SNMP Trap
+    161: 8.0,  # SNMP
+    162: 7.5,  # SNMP Trap
 }
 
 # Services that indicate sensitive data handling
 SENSITIVE_SERVICE_INDICATORS = {
-    "mysql", "postgresql", "mongodb", "redis", "elasticsearch",
-    "oracle", "mssql", "couchdb", "cassandra", "memcached",
-    "rabbitmq", "kafka", "activemq",
+    "mysql",
+    "postgresql",
+    "mongodb",
+    "redis",
+    "elasticsearch",
+    "oracle",
+    "mssql",
+    "couchdb",
+    "cassandra",
+    "memcached",
+    "rabbitmq",
+    "kafka",
+    "activemq",
 }
 
 # Technologies known to have frequent vulnerabilities
@@ -117,13 +127,21 @@ class SubdomainEnumerator:
         try:
             result = subprocess.run(
                 ["subfinder", "-d", self.domain, "-all", "-silent"],
-                capture_output=True, text=True, timeout=300,
+                capture_output=True,
+                text=True,
+                timeout=300,
             )
-            found = set(result.stdout.strip().split("\n")) if result.stdout.strip() else set()
+            found = (
+                set(result.stdout.strip().split("\n"))
+                if result.stdout.strip()
+                else set()
+            )
             self.subdomains.update(found)
             print(f"[+] subfinder found {len(found)} subdomains")
         except FileNotFoundError:
-            print("[-] subfinder not installed. Install: go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest")
+            print(
+                "[-] subfinder not installed. Install: go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+            )
         except subprocess.TimeoutExpired:
             print("[-] subfinder timed out after 300s")
         return self.subdomains
@@ -134,13 +152,21 @@ class SubdomainEnumerator:
         try:
             result = subprocess.run(
                 ["amass", "enum", "-d", self.domain, "-passive"],
-                capture_output=True, text=True, timeout=600,
+                capture_output=True,
+                text=True,
+                timeout=600,
             )
-            found = set(result.stdout.strip().split("\n")) if result.stdout.strip() else set()
+            found = (
+                set(result.stdout.strip().split("\n"))
+                if result.stdout.strip()
+                else set()
+            )
             self.subdomains.update(found)
             print(f"[+] amass found {len(found)} subdomains")
         except FileNotFoundError:
-            print("[-] amass not installed. Install: go install -v github.com/owasp-amass/amass/v4/...@master")
+            print(
+                "[-] amass not installed. Install: go install -v github.com/owasp-amass/amass/v4/...@master"
+            )
         except subprocess.TimeoutExpired:
             print("[-] amass timed out after 600s")
         return self.subdomains
@@ -172,12 +198,23 @@ class ServiceFingerprinter:
         try:
             result = subprocess.run(
                 [
-                    "httpx", "-sc", "-cl", "-ct", "-title", "-tech-detect",
-                    "-favicon", "-cdn", "-cname", "-follow-redirects",
-                    "-json", "-silent",
+                    "httpx",
+                    "-sc",
+                    "-cl",
+                    "-ct",
+                    "-title",
+                    "-tech-detect",
+                    "-favicon",
+                    "-cdn",
+                    "-cname",
+                    "-follow-redirects",
+                    "-json",
+                    "-silent",
                 ],
                 input=input_data,
-                capture_output=True, text=True, timeout=600,
+                capture_output=True,
+                text=True,
+                timeout=600,
             )
             for line in result.stdout.strip().split("\n"):
                 if line.strip():
@@ -187,7 +224,9 @@ class ServiceFingerprinter:
                         continue
             print(f"[+] httpx found {len(self.results)} live hosts")
         except FileNotFoundError:
-            print("[-] httpx not installed. Install: go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest")
+            print(
+                "[-] httpx not installed. Install: go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"
+            )
         except subprocess.TimeoutExpired:
             print("[-] httpx timed out after 600s")
         return self.results
@@ -275,13 +314,15 @@ class CensysScanner:
             count = 0
             for page in self.hosts_api.search(query, per_page=100, pages=max_pages):
                 for host in page:
-                    self.results.append({
-                        "ip": host.get("ip"),
-                        "services": host.get("services", []),
-                        "location": host.get("location", {}),
-                        "autonomous_system": host.get("autonomous_system", {}),
-                        "source": "censys",
-                    })
+                    self.results.append(
+                        {
+                            "ip": host.get("ip"),
+                            "services": host.get("services", []),
+                            "location": host.get("location", {}),
+                            "autonomous_system": host.get("autonomous_system", {}),
+                            "source": "censys",
+                        }
+                    )
                     count += 1
             print(f"[+] Censys returned {count} hosts")
         except Exception as e:
@@ -328,35 +369,46 @@ class VulnerabilityScanner:
 
         try:
             result = subprocess.run(
-                cmd, input=input_data,
-                capture_output=True, text=True, timeout=1800,
+                cmd,
+                input=input_data,
+                capture_output=True,
+                text=True,
+                timeout=1800,
             )
             for line in result.stdout.strip().split("\n"):
                 if line.strip():
                     try:
                         finding = json.loads(line)
-                        self.findings.append({
-                            "template_id": finding.get("template-id", ""),
-                            "name": finding.get("info", {}).get("name", ""),
-                            "severity": finding.get("info", {}).get("severity", ""),
-                            "host": finding.get("host", ""),
-                            "matched_at": finding.get("matched-at", ""),
-                            "type": finding.get("type", ""),
-                            "description": finding.get("info", {}).get("description", ""),
-                            "tags": finding.get("info", {}).get("tags", []),
-                            "reference": finding.get("info", {}).get("reference", []),
-                            "cvss_score": finding.get("info", {}).get(
-                                "classification", {}
-                            ).get("cvss-score", 0),
-                            "cve_id": finding.get("info", {}).get(
-                                "classification", {}
-                            ).get("cve-id", ""),
-                        })
+                        self.findings.append(
+                            {
+                                "template_id": finding.get("template-id", ""),
+                                "name": finding.get("info", {}).get("name", ""),
+                                "severity": finding.get("info", {}).get("severity", ""),
+                                "host": finding.get("host", ""),
+                                "matched_at": finding.get("matched-at", ""),
+                                "type": finding.get("type", ""),
+                                "description": finding.get("info", {}).get(
+                                    "description", ""
+                                ),
+                                "tags": finding.get("info", {}).get("tags", []),
+                                "reference": finding.get("info", {}).get(
+                                    "reference", []
+                                ),
+                                "cvss_score": finding.get("info", {})
+                                .get("classification", {})
+                                .get("cvss-score", 0),
+                                "cve_id": finding.get("info", {})
+                                .get("classification", {})
+                                .get("cve-id", ""),
+                            }
+                        )
                     except json.JSONDecodeError:
                         continue
             print(f"[+] nuclei found {len(self.findings)} vulnerabilities")
         except FileNotFoundError:
-            print("[-] nuclei not installed. Install: go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest")
+            print(
+                "[-] nuclei not installed. Install: go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest"
+            )
         except subprocess.TimeoutExpired:
             print("[-] nuclei timed out after 1800s")
         return self.findings
@@ -398,7 +450,9 @@ class ExposureScorer:
 
         # Normalize: more ports = higher risk, but with diminishing returns
         # Using log scale to prevent linear explosion with many ports
-        normalized = min(100.0, (total_risk / len(ports)) * 10 * math.log2(len(ports) + 1))
+        normalized = min(
+            100.0, (total_risk / len(ports)) * 10 * math.log2(len(ports) + 1)
+        )
         return round(normalized, 2)
 
     def score_vulnerabilities(self, vulns):
@@ -477,7 +531,9 @@ class ExposureScorer:
 
         # Default/login pages increase risk
         title = (asset.get("title") or "").lower()
-        if any(kw in title for kw in ["login", "admin", "dashboard", "panel", "console"]):
+        if any(
+            kw in title for kw in ["login", "admin", "dashboard", "panel", "console"]
+        ):
             score += 20.0
 
         return round(max(0.0, min(100.0, score)), 2)
@@ -489,7 +545,7 @@ class ExposureScorer:
         """
         score = 0.0
         service_set = set()
-        for svc in (services or []):
+        for svc in services or []:
             service_set.add(svc.lower() if isinstance(svc, str) else "")
 
         # Check for sensitive service indicators
@@ -528,8 +584,7 @@ class ExposureScorer:
         }
 
         weighted_total = sum(
-            component_scores[key] * self.weights[key]
-            for key in self.weights
+            component_scores[key] * self.weights[key] for key in self.weights
         )
 
         return {
@@ -641,18 +696,20 @@ class ASMPipeline:
 
     def _build_asset_inventory(self):
         """Merge all data sources into a unified asset inventory."""
-        asset_map = defaultdict(lambda: {
-            "host": "",
-            "ip": "",
-            "ports": [],
-            "services": [],
-            "technologies": [],
-            "vulnerabilities": [],
-            "status_code": 200,
-            "title": "",
-            "cdn": False,
-            "scheme": "https",
-        })
+        asset_map = defaultdict(
+            lambda: {
+                "host": "",
+                "ip": "",
+                "ports": [],
+                "services": [],
+                "technologies": [],
+                "vulnerabilities": [],
+                "status_code": 200,
+                "title": "",
+                "cdn": False,
+                "scheme": "https",
+            }
+        )
 
         # Merge httpx results
         for host in self.live_hosts:
@@ -685,13 +742,17 @@ class ASMPipeline:
             if product and product not in asset["services"]:
                 asset["services"].append(product)
             for cve in result.get("vulns", []):
-                asset["vulnerabilities"].append({
-                    "cve_id": cve,
-                    "cvss_score": result.get("vulns", {}).get(cve, {}).get(
-                        "cvss", 5.0
-                    ) if isinstance(result.get("vulns"), dict) else 5.0,
-                    "source": "shodan",
-                })
+                asset["vulnerabilities"].append(
+                    {
+                        "cve_id": cve,
+                        "cvss_score": (
+                            result.get("vulns", {}).get(cve, {}).get("cvss", 5.0)
+                            if isinstance(result.get("vulns"), dict)
+                            else 5.0
+                        ),
+                        "source": "shodan",
+                    }
+                )
 
         # Merge Censys results
         for result in self.censys_results:
@@ -719,14 +780,16 @@ class ASMPipeline:
                     break
             if matched_key is None:
                 matched_key = host
-            asset_map[matched_key]["vulnerabilities"].append({
-                "cve_id": finding.get("cve_id", ""),
-                "name": finding.get("name", ""),
-                "severity": finding.get("severity", ""),
-                "cvss_score": finding.get("cvss_score", 5.0),
-                "template_id": finding.get("template_id", ""),
-                "source": "nuclei",
-            })
+            asset_map[matched_key]["vulnerabilities"].append(
+                {
+                    "cve_id": finding.get("cve_id", ""),
+                    "name": finding.get("name", ""),
+                    "severity": finding.get("severity", ""),
+                    "cvss_score": finding.get("cvss_score", 5.0),
+                    "template_id": finding.get("template_id", ""),
+                    "source": "nuclei",
+                }
+            )
 
         # Deduplicate technologies and ports
         for asset in asset_map.values():
@@ -798,10 +861,14 @@ class ASMPipeline:
                     1 for a in scored_assets if a["risk_level"] == "MEDIUM"
                 ),
                 "low_risk_assets": sum(
-                    1 for a in scored_assets if a["risk_level"] in ("LOW", "INFORMATIONAL")
+                    1
+                    for a in scored_assets
+                    if a["risk_level"] in ("LOW", "INFORMATIONAL")
                 ),
                 "average_score": round(
-                    sum(a["total_score"] for a in scored_assets) / max(len(scored_assets), 1), 2
+                    sum(a["total_score"] for a in scored_assets)
+                    / max(len(scored_assets), 1),
+                    2,
                 ),
             },
             "scored_assets": scored_assets,
@@ -818,15 +885,21 @@ class ASMPipeline:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Attack Surface Management Agent"
-    )
+    parser = argparse.ArgumentParser(description="Attack Surface Management Agent")
     parser.add_argument("--domain", help="Target domain")
     parser.add_argument("--domain-list", help="File with list of target domains")
     parser.add_argument(
         "--action",
         required=True,
-        choices=["enumerate", "fingerprint", "shodan", "censys", "vuln_scan", "score", "full_scan"],
+        choices=[
+            "enumerate",
+            "fingerprint",
+            "shodan",
+            "censys",
+            "vuln_scan",
+            "score",
+            "full_scan",
+        ],
     )
     parser.add_argument("--shodan-key", help="Shodan API key")
     parser.add_argument("--censys-id", help="Censys API ID")
@@ -867,15 +940,27 @@ def main():
             report = {"domain": domain, "live_hosts": hosts, "count": len(hosts)}
         elif args.action == "shodan":
             results = pipeline.discover_shodan()
-            report = {"domain": domain, "shodan_results": results, "count": len(results)}
+            report = {
+                "domain": domain,
+                "shodan_results": results,
+                "count": len(results),
+            }
         elif args.action == "censys":
             results = pipeline.discover_censys()
-            report = {"domain": domain, "censys_results": results, "count": len(results)}
+            report = {
+                "domain": domain,
+                "censys_results": results,
+                "count": len(results),
+            }
         elif args.action == "vuln_scan":
             pipeline.enumerate_subdomains()
             pipeline.fingerprint_services()
             findings = pipeline.scan_vulnerabilities()
-            report = {"domain": domain, "vulnerabilities": findings, "count": len(findings)}
+            report = {
+                "domain": domain,
+                "vulnerabilities": findings,
+                "count": len(findings),
+            }
         elif args.action == "score":
             if args.input:
                 with open(args.input) as f:

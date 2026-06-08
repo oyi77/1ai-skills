@@ -18,11 +18,17 @@ except ImportError:
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
 
 SUSPICIOUS_OPERATIONS = [
-    "New-InboxRule", "Set-InboxRule", "Set-Mailbox",
-    "Add-MailboxPermission", "Set-MailboxJunkEmailConfiguration",
-    "Set-OwaMailboxPolicy", "New-TransportRule",
-    "Add-RecipientPermission", "Set-TransportRule",
-    "UpdateInboxRules", "Set-MailboxAutoReplyConfiguration",
+    "New-InboxRule",
+    "Set-InboxRule",
+    "Set-Mailbox",
+    "Add-MailboxPermission",
+    "Set-MailboxJunkEmailConfiguration",
+    "Set-OwaMailboxPolicy",
+    "New-TransportRule",
+    "Add-RecipientPermission",
+    "Set-TransportRule",
+    "UpdateInboxRules",
+    "Set-MailboxAutoReplyConfiguration",
 ]
 
 
@@ -34,10 +40,14 @@ def get_access_token(tenant_id, client_id, client_secret):
     app = msal.ConfidentialClientApplication(
         client_id, authority=authority, client_credential=client_secret
     )
-    result = app.acquire_token_for_client(scopes=["https://graph.microsoft.com/.default"])
+    result = app.acquire_token_for_client(
+        scopes=["https://graph.microsoft.com/.default"]
+    )
     if "access_token" in result:
         return result["access_token"]
-    raise RuntimeError(f"Auth failed: {result.get('error_description', result.get('error'))}")
+    raise RuntimeError(
+        f"Auth failed: {result.get('error_description', result.get('error'))}"
+    )
 
 
 def graph_get(token, endpoint, params=None):
@@ -61,23 +71,29 @@ def query_audit_logs(token, days=7):
     events = []
     for operation in SUSPICIOUS_OPERATIONS:
         filter_str = (
-            f"activityDisplayName eq '{operation}' "
-            f"and activityDateTime ge {since}"
+            f"activityDisplayName eq '{operation}' " f"and activityDateTime ge {since}"
         )
         try:
-            logs = graph_get(token, "/auditLogs/directoryAudits",
-                             params={"$filter": filter_str, "$top": "100"})
+            logs = graph_get(
+                token,
+                "/auditLogs/directoryAudits",
+                params={"$filter": filter_str, "$top": "100"},
+            )
             for log in logs:
                 initiated = log.get("initiatedBy", {}).get("user", {})
-                events.append({
-                    "operation": operation,
-                    "timestamp": log.get("activityDateTime"),
-                    "result": log.get("result"),
-                    "user": initiated.get("userPrincipalName"),
-                    "ip_address": initiated.get("ipAddress"),
-                    "target": [t.get("displayName") for t in log.get("targetResources", [])],
-                    "details": log.get("additionalDetails"),
-                })
+                events.append(
+                    {
+                        "operation": operation,
+                        "timestamp": log.get("activityDateTime"),
+                        "result": log.get("result"),
+                        "user": initiated.get("userPrincipalName"),
+                        "ip_address": initiated.get("ipAddress"),
+                        "target": [
+                            t.get("displayName") for t in log.get("targetResources", [])
+                        ],
+                        "details": log.get("additionalDetails"),
+                    }
+                )
         except Exception:
             pass
     events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
@@ -94,16 +110,22 @@ def check_inbox_rules(token, user_id):
         actions = rule.get("actions", {})
         if actions.get("forwardTo"):
             is_forwarding = True
-            forward_to = [r.get("emailAddress", {}).get("address", "")
-                          for r in actions["forwardTo"]]
+            forward_to = [
+                r.get("emailAddress", {}).get("address", "")
+                for r in actions["forwardTo"]
+            ]
         if actions.get("forwardAsAttachmentTo"):
             is_forwarding = True
-            forward_to += [r.get("emailAddress", {}).get("address", "")
-                           for r in actions["forwardAsAttachmentTo"]]
+            forward_to += [
+                r.get("emailAddress", {}).get("address", "")
+                for r in actions["forwardAsAttachmentTo"]
+            ]
         if actions.get("redirectTo"):
             is_forwarding = True
-            forward_to += [r.get("emailAddress", {}).get("address", "")
-                           for r in actions["redirectTo"]]
+            forward_to += [
+                r.get("emailAddress", {}).get("address", "")
+                for r in actions["redirectTo"]
+            ]
         delete_after = actions.get("delete", False)
         mark_read = actions.get("markAsRead", False)
 
@@ -114,23 +136,31 @@ def check_inbox_rules(token, user_id):
             risk += 25
         if mark_read and is_forwarding:
             risk += 15
-        external = [f for f in forward_to if f and not f.endswith(user_id.split("@")[-1])]
+        external = [
+            f for f in forward_to if f and not f.endswith(user_id.split("@")[-1])
+        ]
         if external:
             risk += 20
 
-        findings.append({
-            "rule_id": rule.get("id"),
-            "display_name": rule.get("displayName"),
-            "enabled": rule.get("isEnabled"),
-            "is_forwarding": is_forwarding,
-            "forward_to": forward_to,
-            "external_forwards": external,
-            "delete_after_forward": delete_after,
-            "mark_as_read": mark_read,
-            "conditions": rule.get("conditions"),
-            "risk_score": min(risk, 100),
-            "risk_level": "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 25 else "LOW",
-        })
+        findings.append(
+            {
+                "rule_id": rule.get("id"),
+                "display_name": rule.get("displayName"),
+                "enabled": rule.get("isEnabled"),
+                "is_forwarding": is_forwarding,
+                "forward_to": forward_to,
+                "external_forwards": external,
+                "delete_after_forward": delete_after,
+                "mark_as_read": mark_read,
+                "conditions": rule.get("conditions"),
+                "risk_score": min(risk, 100),
+                "risk_level": (
+                    "CRITICAL"
+                    if risk >= 70
+                    else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 25 else "LOW"
+                ),
+            }
+        )
     return findings
 
 
@@ -139,8 +169,7 @@ def check_mailbox_forwarding(token, user_id):
     try:
         headers = {"Authorization": f"Bearer {token}"}
         resp = requests.get(
-            f"{GRAPH_BASE}/users/{user_id}/mailboxSettings",
-            headers=headers, timeout=30
+            f"{GRAPH_BASE}/users/{user_id}/mailboxSettings", headers=headers, timeout=30
         )
         resp.raise_for_status()
         settings = resp.json()
@@ -159,21 +188,28 @@ def check_mailbox_forwarding(token, user_id):
 def check_oauth_grants(token):
     """Check for suspicious OAuth application consent grants."""
     grants = graph_get(token, "/oauth2PermissionGrants")
-    high_risk_scopes = {"Mail.Read", "Mail.ReadWrite", "Mail.Send",
-                        "Files.ReadWrite.All", "MailboxSettings.ReadWrite"}
+    high_risk_scopes = {
+        "Mail.Read",
+        "Mail.ReadWrite",
+        "Mail.Send",
+        "Files.ReadWrite.All",
+        "MailboxSettings.ReadWrite",
+    }
     suspicious = []
     for g in grants:
         scopes = g.get("scope", "").split()
         risky = [s for s in scopes if s in high_risk_scopes]
         if risky:
-            suspicious.append({
-                "client_id": g.get("clientId"),
-                "consent_type": g.get("consentType"),
-                "principal_id": g.get("principalId"),
-                "high_risk_scopes": risky,
-                "all_scopes": scopes,
-                "risk_score": min(len(risky) * 20, 100),
-            })
+            suspicious.append(
+                {
+                    "client_id": g.get("clientId"),
+                    "consent_type": g.get("consentType"),
+                    "principal_id": g.get("principalId"),
+                    "high_risk_scopes": risky,
+                    "all_scopes": scopes,
+                    "risk_score": min(len(risky) * 20, 100),
+                }
+            )
     suspicious.sort(key=lambda x: x["risk_score"], reverse=True)
     return suspicious
 
@@ -214,7 +250,9 @@ def full_audit(token, users=None, days=7):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Office 365 Audit Log Compromise Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="Office 365 Audit Log Compromise Analysis Agent"
+    )
     parser.add_argument("--tenant-id", required=True, help="Azure AD tenant ID")
     parser.add_argument("--client-id", required=True, help="App registration client ID")
     parser.add_argument("--client-secret", required=True, help="App client secret")
@@ -242,7 +280,9 @@ def main():
     elif args.command == "oauth":
         result = check_oauth_grants(token)
     elif args.command == "full" or args.command is None:
-        result = full_audit(token, getattr(args, "users", None), getattr(args, "days", 7))
+        result = full_audit(
+            token, getattr(args, "users", None), getattr(args, "days", 7)
+        )
     else:
         parser.print_help()
         return

@@ -14,24 +14,61 @@ try:
 except ImportError:
     sys.exit("requests required: pip install requests")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 ATTACK_TECHNIQUES = [
-    {"id": "T1566.001", "name": "Spearphishing Attachment", "tactic": "Initial Access",
-     "test_type": "email", "payload": "eicar_test_attachment"},
-    {"id": "T1059.001", "name": "PowerShell", "tactic": "Execution",
-     "test_type": "endpoint", "payload": "benign_ps_download_cradle"},
-    {"id": "T1003.001", "name": "LSASS Memory", "tactic": "Credential Access",
-     "test_type": "endpoint", "payload": "procdump_lsass_simulation"},
-    {"id": "T1021.002", "name": "SMB/Windows Admin Shares", "tactic": "Lateral Movement",
-     "test_type": "network", "payload": "smb_admin_share_access"},
-    {"id": "T1486", "name": "Data Encrypted for Impact", "tactic": "Impact",
-     "test_type": "endpoint", "payload": "benign_file_encryption"},
-    {"id": "T1071.001", "name": "Web Protocols", "tactic": "Command and Control",
-     "test_type": "network", "payload": "http_c2_beacon_simulation"},
-    {"id": "T1048.003", "name": "Exfiltration Over Unencrypted Protocol", "tactic": "Exfiltration",
-     "test_type": "network", "payload": "dns_exfil_simulation"},
+    {
+        "id": "T1566.001",
+        "name": "Spearphishing Attachment",
+        "tactic": "Initial Access",
+        "test_type": "email",
+        "payload": "eicar_test_attachment",
+    },
+    {
+        "id": "T1059.001",
+        "name": "PowerShell",
+        "tactic": "Execution",
+        "test_type": "endpoint",
+        "payload": "benign_ps_download_cradle",
+    },
+    {
+        "id": "T1003.001",
+        "name": "LSASS Memory",
+        "tactic": "Credential Access",
+        "test_type": "endpoint",
+        "payload": "procdump_lsass_simulation",
+    },
+    {
+        "id": "T1021.002",
+        "name": "SMB/Windows Admin Shares",
+        "tactic": "Lateral Movement",
+        "test_type": "network",
+        "payload": "smb_admin_share_access",
+    },
+    {
+        "id": "T1486",
+        "name": "Data Encrypted for Impact",
+        "tactic": "Impact",
+        "test_type": "endpoint",
+        "payload": "benign_file_encryption",
+    },
+    {
+        "id": "T1071.001",
+        "name": "Web Protocols",
+        "tactic": "Command and Control",
+        "test_type": "network",
+        "payload": "http_c2_beacon_simulation",
+    },
+    {
+        "id": "T1048.003",
+        "name": "Exfiltration Over Unencrypted Protocol",
+        "tactic": "Exfiltration",
+        "test_type": "network",
+        "payload": "dns_exfil_simulation",
+    },
 ]
 
 
@@ -64,15 +101,17 @@ def simulate_technique(technique: dict, target: str) -> dict:
     }
 
 
-def check_siem_detection(siem_url: str, api_key: str, technique_id: str,
-                          time_window_minutes: int = 15) -> dict:
+def check_siem_detection(
+    siem_url: str, api_key: str, technique_id: str, time_window_minutes: int = 15
+) -> dict:
     """Check if SIEM generated an alert for the simulated technique."""
     try:
         resp = requests.get(
             f"{siem_url}/api/alerts",
             headers={"Authorization": f"Bearer {api_key}"},
             params={"technique": technique_id, "minutes": time_window_minutes},
-            timeout=15)
+            timeout=15,
+        )
         if resp.status_code == 200:
             alerts = resp.json().get("alerts", [])
             return {"detected": len(alerts) > 0, "alert_count": len(alerts)}
@@ -106,7 +145,11 @@ def compute_detection_coverage(results: List[dict]) -> dict:
 
 def generate_report(target: str, siem_url: str = "", siem_key: str = "") -> dict:
     """Run BAS simulation campaign and generate detection gap report."""
-    report = {"analysis_date": datetime.utcnow().isoformat(), "target": target, "results": []}
+    report = {
+        "analysis_date": datetime.utcnow().isoformat(),
+        "target": target,
+        "results": [],
+    }
     for technique in ATTACK_TECHNIQUES:
         result = simulate_technique(technique, target)
         if siem_url and siem_key:
@@ -120,14 +163,17 @@ def generate_report(target: str, siem_url: str = "", siem_key: str = "") -> dict
     report["recommendations"] = []
     for gap in report["gaps"]:
         report["recommendations"].append(
-            f"Create detection rule for {gap['technique_id']} ({gap['technique_name']})")
+            f"Create detection rule for {gap['technique_id']} ({gap['technique_name']})"
+        )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="Breach and Attack Simulation Agent")
     parser.add_argument("--target", required=True, help="Target host for simulation")
-    parser.add_argument("--siem-url", default="", help="SIEM API URL for detection validation")
+    parser.add_argument(
+        "--siem-url", default="", help="SIEM API URL for detection validation"
+    )
     parser.add_argument("--siem-key", default="", help="SIEM API key")
     parser.add_argument("--output-dir", default=".")
     parser.add_argument("--output", default="bas_report.json")

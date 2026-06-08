@@ -44,20 +44,36 @@ def check_non_root_user(config: dict) -> HardeningCheck:
     """Check if image runs as non-root user."""
     user = config.get("Config", {}).get("User", "")
     if user and user != "0" and user != "root":
-        return HardeningCheck("CIS-4.1", "Non-root user configured", True,
-                              f"User: {user}", "HIGH")
-    return HardeningCheck("CIS-4.1", "Non-root user configured", False,
-                          "Image runs as root. Add USER instruction.", "HIGH")
+        return HardeningCheck(
+            "CIS-4.1", "Non-root user configured", True, f"User: {user}", "HIGH"
+        )
+    return HardeningCheck(
+        "CIS-4.1",
+        "Non-root user configured",
+        False,
+        "Image runs as root. Add USER instruction.",
+        "HIGH",
+    )
 
 
 def check_healthcheck(config: dict) -> HardeningCheck:
     """Check if HEALTHCHECK is defined."""
     healthcheck = config.get("Config", {}).get("Healthcheck")
     if healthcheck and healthcheck.get("Test"):
-        return HardeningCheck("CIS-4.6", "HEALTHCHECK defined", True,
-                              f"Test: {healthcheck['Test']}", "MEDIUM")
-    return HardeningCheck("CIS-4.6", "HEALTHCHECK defined", False,
-                          "No HEALTHCHECK instruction found.", "MEDIUM")
+        return HardeningCheck(
+            "CIS-4.6",
+            "HEALTHCHECK defined",
+            True,
+            f"Test: {healthcheck['Test']}",
+            "MEDIUM",
+        )
+    return HardeningCheck(
+        "CIS-4.6",
+        "HEALTHCHECK defined",
+        False,
+        "No HEALTHCHECK instruction found.",
+        "MEDIUM",
+    )
 
 
 def check_exposed_ports(config: dict) -> HardeningCheck:
@@ -65,10 +81,16 @@ def check_exposed_ports(config: dict) -> HardeningCheck:
     ports = config.get("Config", {}).get("ExposedPorts", {})
     port_list = list(ports.keys()) if ports else []
     if len(port_list) <= 2:
-        return HardeningCheck("HARD-1", "Minimal ports exposed", True,
-                              f"Ports: {port_list}", "LOW")
-    return HardeningCheck("HARD-1", "Minimal ports exposed", False,
-                          f"Many ports exposed: {port_list}. Minimize exposed ports.", "LOW")
+        return HardeningCheck(
+            "HARD-1", "Minimal ports exposed", True, f"Ports: {port_list}", "LOW"
+        )
+    return HardeningCheck(
+        "HARD-1",
+        "Minimal ports exposed",
+        False,
+        f"Many ports exposed: {port_list}. Minimize exposed ports.",
+        "LOW",
+    )
 
 
 def check_image_size(image: str) -> HardeningCheck:
@@ -79,17 +101,37 @@ def check_image_size(image: str) -> HardeningCheck:
         size_bytes = int(proc.stdout.strip())
         size_mb = size_bytes / (1024 * 1024)
         if size_mb < 200:
-            return HardeningCheck("HARD-2", "Image size within limits", True,
-                                  f"Size: {size_mb:.0f} MB (< 200 MB)", "MEDIUM")
+            return HardeningCheck(
+                "HARD-2",
+                "Image size within limits",
+                True,
+                f"Size: {size_mb:.0f} MB (< 200 MB)",
+                "MEDIUM",
+            )
         elif size_mb < 500:
-            return HardeningCheck("HARD-2", "Image size within limits", False,
-                                  f"Size: {size_mb:.0f} MB (> 200 MB, consider optimizing)", "MEDIUM")
+            return HardeningCheck(
+                "HARD-2",
+                "Image size within limits",
+                False,
+                f"Size: {size_mb:.0f} MB (> 200 MB, consider optimizing)",
+                "MEDIUM",
+            )
         else:
-            return HardeningCheck("HARD-2", "Image size within limits", False,
-                                  f"Size: {size_mb:.0f} MB (> 500 MB, use multi-stage build)", "HIGH")
+            return HardeningCheck(
+                "HARD-2",
+                "Image size within limits",
+                False,
+                f"Size: {size_mb:.0f} MB (> 500 MB, use multi-stage build)",
+                "HIGH",
+            )
     except (subprocess.TimeoutExpired, ValueError):
-        return HardeningCheck("HARD-2", "Image size within limits", False,
-                              "Could not determine image size", "LOW")
+        return HardeningCheck(
+            "HARD-2",
+            "Image size within limits",
+            False,
+            "Could not determine image size",
+            "LOW",
+        )
 
 
 def check_env_secrets(config: dict) -> HardeningCheck:
@@ -102,25 +144,60 @@ def check_env_secrets(config: dict) -> HardeningCheck:
         if any(kw in name for kw in secret_keywords):
             suspicious.append(env.split("=")[0])
     if not suspicious:
-        return HardeningCheck("CIS-4.10", "No secrets in ENV", True,
-                              "No suspicious environment variables found", "HIGH")
-    return HardeningCheck("CIS-4.10", "No secrets in ENV", False,
-                          f"Suspicious ENV vars: {suspicious}. Use secrets manager.", "HIGH")
+        return HardeningCheck(
+            "CIS-4.10",
+            "No secrets in ENV",
+            True,
+            "No suspicious environment variables found",
+            "HIGH",
+        )
+    return HardeningCheck(
+        "CIS-4.10",
+        "No secrets in ENV",
+        False,
+        f"Suspicious ENV vars: {suspicious}. Use secrets manager.",
+        "HIGH",
+    )
 
 
 def check_shell_available(image: str) -> HardeningCheck:
     """Check if shell is available in the image."""
-    cmd = ["docker", "run", "--rm", "--entrypoint", "", image, "sh", "-c", "echo shell_available"]
+    cmd = [
+        "docker",
+        "run",
+        "--rm",
+        "--entrypoint",
+        "",
+        image,
+        "sh",
+        "-c",
+        "echo shell_available",
+    ]
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
         if "shell_available" in proc.stdout:
-            return HardeningCheck("HARD-3", "Shell removed from image", False,
-                                  "Shell (/bin/sh) is available. Consider removing for production.", "LOW")
-        return HardeningCheck("HARD-3", "Shell removed from image", True,
-                              "No shell available in image", "LOW")
+            return HardeningCheck(
+                "HARD-3",
+                "Shell removed from image",
+                False,
+                "Shell (/bin/sh) is available. Consider removing for production.",
+                "LOW",
+            )
+        return HardeningCheck(
+            "HARD-3",
+            "Shell removed from image",
+            True,
+            "No shell available in image",
+            "LOW",
+        )
     except (subprocess.TimeoutExpired, FileNotFoundError):
-        return HardeningCheck("HARD-3", "Shell removed from image", True,
-                              "Could not test shell access (likely unavailable)", "LOW")
+        return HardeningCheck(
+            "HARD-3",
+            "Shell removed from image",
+            True,
+            "Could not test shell access (likely unavailable)",
+            "LOW",
+        )
 
 
 def main():
@@ -150,13 +227,21 @@ def main():
     failed = sum(1 for c in checks if not c.passed)
 
     report = {
-        "metadata": {"image": args.image, "date": datetime.now(timezone.utc).isoformat()},
+        "metadata": {
+            "image": args.image,
+            "date": datetime.now(timezone.utc).isoformat(),
+        },
         "summary": {"total": len(checks), "passed": passed, "failed": failed},
         "checks": [
-            {"id": c.check_id, "name": c.name, "passed": c.passed,
-             "details": c.details, "severity": c.severity}
+            {
+                "id": c.check_id,
+                "name": c.name,
+                "passed": c.passed,
+                "details": c.details,
+                "severity": c.severity,
+            }
             for c in checks
-        ]
+        ],
     }
 
     output_path = os.path.abspath(args.output)

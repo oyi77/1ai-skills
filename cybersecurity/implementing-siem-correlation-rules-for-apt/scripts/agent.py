@@ -11,7 +11,9 @@ from datetime import datetime
 import yaml
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 LATERAL_MOVEMENT_RULES = [
@@ -19,10 +21,10 @@ LATERAL_MOVEMENT_RULES = [
         "name": "RDP Lateral Movement Chain",
         "description": "RDP logon followed by service installation on same host within 15 minutes",
         "spl": (
-            'index=wineventlog (EventCode=4624 Logon_Type=10) OR (EventCode=7045) '
-            '| transaction Computer maxspan=15m startswith=(EventCode=4624) endswith=(EventCode=7045) '
-            '| where eventcount >= 2 '
-            '| table _time Computer Account_Name ServiceName'
+            "index=wineventlog (EventCode=4624 Logon_Type=10) OR (EventCode=7045) "
+            "| transaction Computer maxspan=15m startswith=(EventCode=4624) endswith=(EventCode=7045) "
+            "| where eventcount >= 2 "
+            "| table _time Computer Account_Name ServiceName"
         ),
         "severity": "high",
         "mitre": "T1021.001",
@@ -33,9 +35,9 @@ LATERAL_MOVEMENT_RULES = [
         "spl": (
             'index=sysmon (EventCode=17 PipeName="\\\\PSEXESVC*") OR '
             '(index=wineventlog EventCode=7045 ServiceFileName="*PSEXESVC*") '
-            '| transaction Computer maxspan=5m '
-            '| where eventcount >= 2 '
-            '| table _time Computer User Image ServiceName'
+            "| transaction Computer maxspan=5m "
+            "| where eventcount >= 2 "
+            "| table _time Computer User Image ServiceName"
         ),
         "severity": "high",
         "mitre": "T1021.002",
@@ -44,11 +46,11 @@ LATERAL_MOVEMENT_RULES = [
         "name": "NTLM Pass-the-Hash Followed by Admin Tool",
         "description": "NTLM network logon followed by admin tool execution within 10 minutes",
         "spl": (
-            'index=wineventlog EventCode=4624 Logon_Type=3 Authentication_Package=NTLM '
-            '| join Computer maxspan=10m [search index=sysmon EventCode=1 '
+            "index=wineventlog EventCode=4624 Logon_Type=3 Authentication_Package=NTLM "
+            "| join Computer maxspan=10m [search index=sysmon EventCode=1 "
             '(Image="*\\\\net.exe" OR Image="*\\\\net1.exe" OR Image="*\\\\wmic.exe" '
             'OR Image="*\\\\psexec.exe" OR Image="*\\\\powershell.exe")] '
-            '| table _time Computer Account_Name Image CommandLine'
+            "| table _time Computer Account_Name Image CommandLine"
         ),
         "severity": "critical",
         "mitre": "T1550.002",
@@ -58,10 +60,10 @@ LATERAL_MOVEMENT_RULES = [
         "description": "WMI process creation on remote host correlated with network logon",
         "spl": (
             'index=sysmon EventCode=1 ParentImage="*\\\\WmiPrvSE.exe" '
-            '| join Computer [search index=wineventlog EventCode=4624 Logon_Type=3] '
+            "| join Computer [search index=wineventlog EventCode=4624 Logon_Type=3] "
             '| where Account_Name!="-" '
-            '| stats count by Computer, Account_Name, Image, CommandLine '
-            '| where count > 0'
+            "| stats count by Computer, Account_Name, Image, CommandLine "
+            "| where count > 0"
         ),
         "severity": "high",
         "mitre": "T1047",
@@ -70,10 +72,10 @@ LATERAL_MOVEMENT_RULES = [
         "name": "Credential Dumping After Lateral Move",
         "description": "Network logon followed by LSASS access within 30 minutes",
         "spl": (
-            'index=wineventlog EventCode=4624 Logon_Type=3 '
-            '| join Computer maxspan=30m [search index=sysmon EventCode=10 '
+            "index=wineventlog EventCode=4624 Logon_Type=3 "
+            "| join Computer maxspan=30m [search index=sysmon EventCode=10 "
             'TargetImage="*\\\\lsass.exe" GrantedAccess=0x1010] '
-            '| table _time Computer Account_Name SourceImage GrantedAccess'
+            "| table _time Computer Account_Name SourceImage GrantedAccess"
         ),
         "severity": "critical",
         "mitre": "T1003.001",
@@ -86,7 +88,8 @@ def authenticate_splunk(base_url, username, password):
     resp = requests.post(
         f"{base_url}/services/auth/login",
         data={"username": username, "password": password},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     resp.raise_for_status()
@@ -115,13 +118,16 @@ def deploy_correlation_search(base_url, headers, rule):
         f"{base_url}/services/saved/searches",
         headers=headers,
         data=search_payload,
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     if resp.status_code in (200, 201):
         logger.info("Deployed correlation search: %s", rule["name"])
         return True
-    logger.warning("Deploy failed for %s: %d %s", rule["name"], resp.status_code, resp.text[:100])
+    logger.warning(
+        "Deploy failed for %s: %d %s", rule["name"], resp.status_code, resp.text[:100]
+    )
     return False
 
 
@@ -150,7 +156,8 @@ def audit_existing_searches(base_url, headers):
         f"{base_url}/services/saved/searches",
         headers=headers,
         params={"output_mode": "json", "count": 0},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     if resp.status_code != 200:
@@ -165,7 +172,11 @@ def audit_existing_searches(base_url, headers):
                 mitre_covered.add(technique)
     lateral_techniques = {"t1021", "t1047", "t1053", "t1550", "t1003", "t1059", "t1570"}
     gaps = lateral_techniques - mitre_covered
-    logger.info("Coverage: %d/%d lateral movement techniques covered", len(mitre_covered), len(lateral_techniques))
+    logger.info(
+        "Coverage: %d/%d lateral movement techniques covered",
+        len(mitre_covered),
+        len(lateral_techniques),
+    )
     return list(gaps)
 
 
@@ -174,8 +185,13 @@ def run_test_search(base_url, headers, spl, earliest="-24h"):
     resp = requests.post(
         f"{base_url}/services/search/jobs",
         headers=headers,
-        data={"search": f"search {spl}", "earliest_time": earliest, "output_mode": "json"},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        data={
+            "search": f"search {spl}",
+            "earliest_time": earliest,
+            "output_mode": "json",
+        },
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     resp.raise_for_status()
@@ -183,8 +199,10 @@ def run_test_search(base_url, headers, spl, earliest="-24h"):
     for _ in range(60):
         status = requests.get(
             f"{base_url}/services/search/jobs/{sid}",
-            headers=headers, params={"output_mode": "json"},
-            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            headers=headers,
+            params={"output_mode": "json"},
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+            == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             timeout=30,
         ).json()
         if status["entry"][0]["content"]["isDone"]:
@@ -192,8 +210,10 @@ def run_test_search(base_url, headers, spl, earliest="-24h"):
         time.sleep(2)
     results = requests.get(
         f"{base_url}/services/search/jobs/{sid}/results",
-        headers=headers, params={"output_mode": "json", "count": 50},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        headers=headers,
+        params={"output_mode": "json", "count": 50},
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     ).json()
     return results.get("results", [])
@@ -205,7 +225,9 @@ def generate_report(deployed, gaps, test_results):
         "timestamp": datetime.utcnow().isoformat(),
         "rules_deployed": deployed,
         "coverage_gaps": gaps,
-        "test_results_summary": {r["name"]: len(r.get("hits", [])) for r in test_results},
+        "test_results_summary": {
+            r["name"]: len(r.get("hits", [])) for r in test_results
+        },
     }
     print(f"CORRELATION RULES REPORT: {len(deployed)} deployed, {len(gaps)} gaps")
     return report
@@ -213,12 +235,18 @@ def generate_report(deployed, gaps, test_results):
 
 def main():
     parser = argparse.ArgumentParser(description="SIEM Correlation Rules Agent")
-    parser.add_argument("--splunk-url", default=os.environ.get("SPLUNK_URL", "https://localhost:8089"))
+    parser.add_argument(
+        "--splunk-url", default=os.environ.get("SPLUNK_URL", "https://localhost:8089")
+    )
     parser.add_argument("--username", default="admin")
     parser.add_argument("--password", required=True)
     parser.add_argument("--deploy", action="store_true", help="Deploy rules to Splunk")
-    parser.add_argument("--test", action="store_true", help="Test rules against recent data")
-    parser.add_argument("--sigma-export", help="Export rules as Sigma YAML to directory")
+    parser.add_argument(
+        "--test", action="store_true", help="Test rules against recent data"
+    )
+    parser.add_argument(
+        "--sigma-export", help="Export rules as Sigma YAML to directory"
+    )
     parser.add_argument("--output", default="correlation_report.json")
     args = parser.parse_args()
 
@@ -239,6 +267,7 @@ def main():
 
     if args.sigma_export:
         import os
+
         os.makedirs(args.sigma_export, exist_ok=True)
         for rule in LATERAL_MOVEMENT_RULES:
             sigma_yaml = generate_sigma_rule(rule)

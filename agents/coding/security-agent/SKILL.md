@@ -110,14 +110,14 @@ with sync_playwright() as p:
 "
 ```
 
-### When NOT to Use
+## When NOT to Use
 
 - When target is out of scope
 - When you don't have authorization
 - When the task is too trivial (single curl check)
 - When a more appropriate tool exists (nuclei for CVE scanning)
 
-### Common Rationalizations
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -127,7 +127,7 @@ with sync_playwright() as p:
 | "Subagents can handle this" | Subagents refuse security testing, run directly |
 | "Popular programs have vulns" | All hardened, need auth testing |
 
-### Red Flags
+## Red Flags
 
 - Submitting P4/P5 findings as P3
 - Claiming CORS wildcard is exploitable
@@ -135,7 +135,7 @@ with sync_playwright() as p:
 - Using subagents for security testing (they refuse)
 - Spending >30 min on a program without P3+ leads
 
-### Verification
+## Verification
 
 After completing this skill, confirm:
 

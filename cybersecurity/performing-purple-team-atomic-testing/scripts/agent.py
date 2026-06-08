@@ -28,6 +28,7 @@ from pathlib import Path
 
 try:
     import yaml
+
     HAS_YAML = True
 except ImportError:
     HAS_YAML = False
@@ -74,51 +75,116 @@ TACTIC_ID_MAP = {
 # Top ATT&CK techniques by prevalence mapped to their primary tactic
 TOP_TECHNIQUES_BY_TACTIC = {
     "execution": [
-        "T1059.001", "T1059.003", "T1059.004", "T1059.005",
-        "T1059.006", "T1059.007", "T1047", "T1053.005",
-        "T1129", "T1203", "T1569.002",
+        "T1059.001",
+        "T1059.003",
+        "T1059.004",
+        "T1059.005",
+        "T1059.006",
+        "T1059.007",
+        "T1047",
+        "T1053.005",
+        "T1129",
+        "T1203",
+        "T1569.002",
     ],
     "persistence": [
-        "T1547.001", "T1547.004", "T1547.009", "T1053.005",
-        "T1136.001", "T1543.003", "T1546.001", "T1546.003",
-        "T1574.001", "T1574.002", "T1197", "T1505.003",
+        "T1547.001",
+        "T1547.004",
+        "T1547.009",
+        "T1053.005",
+        "T1136.001",
+        "T1543.003",
+        "T1546.001",
+        "T1546.003",
+        "T1574.001",
+        "T1574.002",
+        "T1197",
+        "T1505.003",
     ],
     "privilege-escalation": [
-        "T1548.002", "T1134.001", "T1068", "T1055.001",
-        "T1055.003", "T1055.012",
+        "T1548.002",
+        "T1134.001",
+        "T1068",
+        "T1055.001",
+        "T1055.003",
+        "T1055.012",
     ],
     "defense-evasion": [
-        "T1070.001", "T1070.004", "T1218.001", "T1218.003",
-        "T1218.005", "T1218.010", "T1218.011", "T1027",
-        "T1140", "T1562.001", "T1036.005", "T1112",
+        "T1070.001",
+        "T1070.004",
+        "T1218.001",
+        "T1218.003",
+        "T1218.005",
+        "T1218.010",
+        "T1218.011",
+        "T1027",
+        "T1140",
+        "T1562.001",
+        "T1036.005",
+        "T1112",
     ],
     "credential-access": [
-        "T1003.001", "T1003.002", "T1003.003", "T1003.004",
-        "T1003.005", "T1003.006", "T1110.001", "T1110.003",
-        "T1555.003", "T1552.001", "T1558.003",
+        "T1003.001",
+        "T1003.002",
+        "T1003.003",
+        "T1003.004",
+        "T1003.005",
+        "T1003.006",
+        "T1110.001",
+        "T1110.003",
+        "T1555.003",
+        "T1552.001",
+        "T1558.003",
     ],
     "discovery": [
-        "T1082", "T1083", "T1087.001", "T1087.002",
-        "T1016", "T1049", "T1057", "T1069.001",
-        "T1069.002", "T1518.001", "T1033",
+        "T1082",
+        "T1083",
+        "T1087.001",
+        "T1087.002",
+        "T1016",
+        "T1049",
+        "T1057",
+        "T1069.001",
+        "T1069.002",
+        "T1518.001",
+        "T1033",
     ],
     "lateral-movement": [
-        "T1021.001", "T1021.002", "T1021.003",
-        "T1021.004", "T1021.006", "T1570",
+        "T1021.001",
+        "T1021.002",
+        "T1021.003",
+        "T1021.004",
+        "T1021.006",
+        "T1570",
     ],
     "collection": [
-        "T1005", "T1039", "T1074.001", "T1113",
-        "T1115", "T1560.001",
+        "T1005",
+        "T1039",
+        "T1074.001",
+        "T1113",
+        "T1115",
+        "T1560.001",
     ],
     "command-and-control": [
-        "T1071.001", "T1071.004", "T1105", "T1132.001",
-        "T1573.001", "T1219", "T1090.001",
+        "T1071.001",
+        "T1071.004",
+        "T1105",
+        "T1132.001",
+        "T1573.001",
+        "T1219",
+        "T1090.001",
     ],
     "exfiltration": [
-        "T1041", "T1048.003", "T1567.002",
+        "T1041",
+        "T1048.003",
+        "T1567.002",
     ],
     "impact": [
-        "T1485", "T1486", "T1489", "T1490", "T1491.002",
+        "T1485",
+        "T1486",
+        "T1489",
+        "T1490",
+        "T1491.002",
     ],
 }
 
@@ -126,6 +192,7 @@ TOP_TECHNIQUES_BY_TACTIC = {
 # ---------------------------------------------------------------------------
 # Atomics Parsing
 # ---------------------------------------------------------------------------
+
 
 def load_atomics_inventory(atomics_path):
     """Parse all Atomic Red Team YAML files into a technique inventory."""
@@ -166,16 +233,18 @@ def load_atomics_inventory(atomics_path):
                 all_platforms.update(platforms)
                 all_executors.add(executor_name)
 
-                parsed_tests.append({
-                    "name": t.get("name", "Unnamed"),
-                    "description": t.get("description", ""),
-                    "platforms": platforms,
-                    "executor": executor_name,
-                    "elevation_required": t.get("executor", {}).get(
-                        "elevation_required", False
-                    ),
-                    "has_cleanup": "cleanup_command" in executor,
-                })
+                parsed_tests.append(
+                    {
+                        "name": t.get("name", "Unnamed"),
+                        "description": t.get("description", ""),
+                        "platforms": platforms,
+                        "executor": executor_name,
+                        "elevation_required": t.get("executor", {}).get(
+                            "elevation_required", False
+                        ),
+                        "has_cleanup": "cleanup_command" in executor,
+                    }
+                )
 
             inventory[tech_id] = {
                 "name": data.get("display_name", tech_id),
@@ -222,14 +291,16 @@ def load_execution_logs(log_dir):
             successes = sum(1 for r in results if r.get("status") == "executed")
             failures = sum(1 for r in results if r.get("status") == "failed")
 
-            executed[tech_id]["executions"].append({
-                "timestamp": data.get("start_time", ""),
-                "hostname": data.get("hostname", "unknown"),
-                "username": data.get("username", "unknown"),
-                "test_count": len(results),
-                "successes": successes,
-                "failures": failures,
-            })
+            executed[tech_id]["executions"].append(
+                {
+                    "timestamp": data.get("start_time", ""),
+                    "hostname": data.get("hostname", "unknown"),
+                    "username": data.get("username", "unknown"),
+                    "test_count": len(results),
+                    "successes": successes,
+                    "failures": failures,
+                }
+            )
             executed[tech_id]["total_runs"] += len(results)
             executed[tech_id]["success_count"] += successes
             executed[tech_id]["failure_count"] += failures
@@ -281,6 +352,7 @@ def load_detection_results(detection_file):
 # Coverage Analysis
 # ---------------------------------------------------------------------------
 
+
 def compute_coverage_report(inventory, execution_logs, detection_results):
     """Generate a comprehensive coverage gap analysis report."""
     report = {
@@ -288,20 +360,19 @@ def compute_coverage_report(inventory, execution_logs, detection_results):
         "summary": {},
         "tactics": {},
         "gaps": {
-            "blind_spots": [],       # Executed but not detected
-            "not_tested": [],        # Available but not executed
-            "low_confidence": [],    # Detected but low confidence
+            "blind_spots": [],  # Executed but not detected
+            "not_tested": [],  # Available but not executed
+            "low_confidence": [],  # Detected but low confidence
         },
         "recommendations": [],
     }
 
     total_available = len(inventory)
     total_executed = len(execution_logs)
-    total_detected = sum(
-        1 for d in detection_results.values() if d.get("detected")
-    )
+    total_detected = sum(1 for d in detection_results.values() if d.get("detected"))
     high_confidence = sum(
-        1 for d in detection_results.values()
+        1
+        for d in detection_results.values()
         if d.get("detected") and d.get("confidence") in ("high", "medium")
     )
 
@@ -392,39 +463,52 @@ def compute_coverage_report(inventory, execution_logs, detection_results):
     # Recommendations
     blind_count = len(report["gaps"]["blind_spots"])
     if blind_count > 0:
-        report["recommendations"].append({
-            "priority": "CRITICAL",
-            "action": f"Create detection rules for {blind_count} blind spot techniques",
-            "techniques": [g["technique_id"] for g in report["gaps"]["blind_spots"]],
-            "detail": "These techniques were executed but no SIEM/EDR alert was generated",
-        })
+        report["recommendations"].append(
+            {
+                "priority": "CRITICAL",
+                "action": f"Create detection rules for {blind_count} blind spot techniques",
+                "techniques": [
+                    g["technique_id"] for g in report["gaps"]["blind_spots"]
+                ],
+                "detail": "These techniques were executed but no SIEM/EDR alert was generated",
+            }
+        )
 
     low_tactics = [
-        t for t, d in report["tactics"].items()
+        t
+        for t, d in report["tactics"].items()
         if d["detection_coverage_pct"] < 30 and d["techniques_executed"] > 0
     ]
     if low_tactics:
-        report["recommendations"].append({
-            "priority": "HIGH",
-            "action": f"Improve detection coverage in: {', '.join(low_tactics)}",
-            "detail": "These tactics have less than 30% detection rate among tested techniques",
-        })
+        report["recommendations"].append(
+            {
+                "priority": "HIGH",
+                "action": f"Improve detection coverage in: {', '.join(low_tactics)}",
+                "detail": "These tactics have less than 30% detection rate among tested techniques",
+            }
+        )
 
     untested_count = len(report["gaps"]["not_tested"])
     if untested_count > 10:
-        report["recommendations"].append({
-            "priority": "MEDIUM",
-            "action": f"Expand test execution to {untested_count} untested techniques",
-            "detail": "Atomic tests exist but have not been executed yet",
-        })
+        report["recommendations"].append(
+            {
+                "priority": "MEDIUM",
+                "action": f"Expand test execution to {untested_count} untested techniques",
+                "detail": "Atomic tests exist but have not been executed yet",
+            }
+        )
 
     lc_count = len(report["gaps"]["low_confidence"])
     if lc_count > 0:
-        report["recommendations"].append({
-            "priority": "MEDIUM",
-            "action": f"Tune {lc_count} low-confidence detection rules to reduce false positives",
-            "techniques": [g["technique_id"] for g in report["gaps"]["low_confidence"]],
-        })
+        report["recommendations"].append(
+            {
+                "priority": "MEDIUM",
+                "action": f"Tune {lc_count} low-confidence detection rules to reduce false positives",
+                "techniques": [
+                    g["technique_id"] for g in report["gaps"]["low_confidence"]
+                ],
+            }
+        )
 
     return report
 
@@ -433,8 +517,10 @@ def compute_coverage_report(inventory, execution_logs, detection_results):
 # ATT&CK Navigator Layer Generation
 # ---------------------------------------------------------------------------
 
-def generate_navigator_layer(inventory, execution_logs, detection_results,
-                             layer_name="Purple Team Coverage"):
+
+def generate_navigator_layer(
+    inventory, execution_logs, detection_results, layer_name="Purple Team Coverage"
+):
     """Produce an ATT&CK Navigator v4.5 layer JSON."""
     layer = {
         "name": layer_name,
@@ -521,14 +607,18 @@ def generate_navigator_layer(inventory, execution_logs, detection_results,
 
         if was_executed:
             log = execution_logs[tech_id]
-            entry["metadata"].append({
-                "name": "last_executed",
-                "value": log.get("last_executed", "unknown"),
-            })
-            entry["metadata"].append({
-                "name": "total_runs",
-                "value": str(log.get("total_runs", 0)),
-            })
+            entry["metadata"].append(
+                {
+                    "name": "last_executed",
+                    "value": log.get("last_executed", "unknown"),
+                }
+            )
+            entry["metadata"].append(
+                {
+                    "name": "total_runs",
+                    "value": str(log.get("total_runs", 0)),
+                }
+            )
 
         layer["techniques"].append(entry)
 
@@ -630,23 +720,27 @@ def suggest_sigma_rules(blind_spots):
                     template["target_pattern"]
                 )
 
-            suggestions.append({
-                "technique_id": tech_id,
-                "technique_name": gap["technique_name"],
-                "sigma_rule": sigma_stub,
-            })
+            suggestions.append(
+                {
+                    "technique_id": tech_id,
+                    "technique_name": gap["technique_name"],
+                    "sigma_rule": sigma_stub,
+                }
+            )
         else:
-            suggestions.append({
-                "technique_id": tech_id,
-                "technique_name": gap["technique_name"],
-                "sigma_rule": None,
-                "note": (
-                    f"No template available for {tech_id}. "
-                    f"Manual rule creation required. "
-                    f"Reference: https://attack.mitre.org/techniques/"
-                    f"{tech_id.replace('.', '/')}/"
-                ),
-            })
+            suggestions.append(
+                {
+                    "technique_id": tech_id,
+                    "technique_name": gap["technique_name"],
+                    "sigma_rule": None,
+                    "note": (
+                        f"No template available for {tech_id}. "
+                        f"Manual rule creation required. "
+                        f"Reference: https://attack.mitre.org/techniques/"
+                        f"{tech_id.replace('.', '/')}/"
+                    ),
+                }
+            )
 
     return suggestions
 
@@ -654,6 +748,7 @@ def suggest_sigma_rules(blind_spots):
 # ---------------------------------------------------------------------------
 # Reporting
 # ---------------------------------------------------------------------------
+
 
 def print_coverage_report(report):
     """Print formatted coverage report to stdout."""
@@ -677,7 +772,9 @@ def print_coverage_report(report):
 
     print("  PER-TACTIC DETECTION COVERAGE")
     print("  " + "-" * 72)
-    header = f"  {'Tactic':<24} {'Scope':>6} {'Avail':>6} {'Exec':>6} {'Det':>6} {'Cov%':>7}"
+    header = (
+        f"  {'Tactic':<24} {'Scope':>6} {'Avail':>6} {'Exec':>6} {'Det':>6} {'Cov%':>7}"
+    )
     print(header)
     print("  " + "-" * 72)
 
@@ -724,7 +821,11 @@ def print_coverage_report(report):
             print(f"    [{rec['priority']}] {rec['action']}")
             if "techniques" in rec:
                 techs = rec["techniques"][:8]
-                suffix = f" (+{len(rec['techniques']) - 8} more)" if len(rec["techniques"]) > 8 else ""
+                suffix = (
+                    f" (+{len(rec['techniques']) - 8} more)"
+                    if len(rec["techniques"]) > 8
+                    else ""
+                )
                 print(f"           Techniques: {', '.join(techs)}{suffix}")
             if "detail" in rec:
                 print(f"           {rec['detail']}")
@@ -750,40 +851,46 @@ def generate_powershell_test_script(blind_spots, output_path):
     for gap in blind_spots:
         tech_id = gap["technique_id"]
         tech_name = gap["technique_name"]
-        lines.extend([
-            f'# --- {tech_id}: {tech_name} ---',
-            f'Write-Host "[*] Testing {tech_id} - {tech_name}" -ForegroundColor Cyan',
-            f'try {{',
-            f'    Invoke-AtomicTest {tech_id} -TestNumbers 1 -CheckPrereqs',
-            f'    Invoke-AtomicTest {tech_id} -TestNumbers 1 -GetPrereqs',
-            f'    Invoke-AtomicTest {tech_id} -TestNumbers 1 -Confirm:$false',
-            f'    $Results += [PSCustomObject]@{{ TechniqueId="{tech_id}"; Status="EXECUTED" }}',
-            f'    Write-Host "    [+] Success" -ForegroundColor Green',
-            f'}} catch {{',
-            f'    $Results += [PSCustomObject]@{{ TechniqueId="{tech_id}"; Status="FAILED"; Error=$_.Exception.Message }}',
-            f'    Write-Host "    [-] Failed: $($_.Exception.Message)" -ForegroundColor Red',
-            f'}}',
-            f'Start-Sleep -Seconds 30  # Allow SIEM ingestion',
-            f'',
-        ])
+        lines.extend(
+            [
+                f"# --- {tech_id}: {tech_name} ---",
+                f'Write-Host "[*] Testing {tech_id} - {tech_name}" -ForegroundColor Cyan',
+                f"try {{",
+                f"    Invoke-AtomicTest {tech_id} -TestNumbers 1 -CheckPrereqs",
+                f"    Invoke-AtomicTest {tech_id} -TestNumbers 1 -GetPrereqs",
+                f"    Invoke-AtomicTest {tech_id} -TestNumbers 1 -Confirm:$false",
+                f'    $Results += [PSCustomObject]@{{ TechniqueId="{tech_id}"; Status="EXECUTED" }}',
+                f'    Write-Host "    [+] Success" -ForegroundColor Green',
+                f"}} catch {{",
+                f'    $Results += [PSCustomObject]@{{ TechniqueId="{tech_id}"; Status="FAILED"; Error=$_.Exception.Message }}',
+                f'    Write-Host "    [-] Failed: $($_.Exception.Message)" -ForegroundColor Red',
+                f"}}",
+                f"Start-Sleep -Seconds 30  # Allow SIEM ingestion",
+                f"",
+            ]
+        )
 
-    lines.extend([
-        "# Cleanup all tests",
-        'Write-Host "`n[*] Running cleanup..." -ForegroundColor Yellow',
-    ])
+    lines.extend(
+        [
+            "# Cleanup all tests",
+            'Write-Host "`n[*] Running cleanup..." -ForegroundColor Yellow',
+        ]
+    )
     for gap in blind_spots:
         tech_id = gap["technique_id"]
         lines.append(
-            f'try {{ Invoke-AtomicTest {tech_id} -TestNumbers 1 -Cleanup 2>&1 | Out-Null }} '
+            f"try {{ Invoke-AtomicTest {tech_id} -TestNumbers 1 -Cleanup 2>&1 | Out-Null }} "
             f'catch {{ Write-Host "    Cleanup failed for {tech_id}" -ForegroundColor DarkYellow }}'
         )
 
-    lines.extend([
-        "",
-        "# Summary",
-        '$Results | Format-Table -AutoSize',
-        f'$Results | Export-Csv "retest_results_$(Get-Date -Format yyyyMMdd_HHmmss).csv" -NoTypeInformation',
-    ])
+    lines.extend(
+        [
+            "",
+            "# Summary",
+            "$Results | Format-Table -AutoSize",
+            f'$Results | Export-Csv "retest_results_$(Get-Date -Format yyyyMMdd_HHmmss).csv" -NoTypeInformation',
+        ]
+    )
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
@@ -794,6 +901,7 @@ def generate_powershell_test_script(blind_spots, output_path):
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -820,16 +928,31 @@ def main():
         default="all",
         help="Output mode: report, navigator layer, sigma suggestions, retest script, or all",
     )
-    parser.add_argument("--output-layer", default="navigator_layer.json",
-                        help="Output path for ATT&CK Navigator layer")
-    parser.add_argument("--output-report", default="coverage_report.json",
-                        help="Output path for coverage report JSON")
-    parser.add_argument("--output-sigma", default="sigma_suggestions.json",
-                        help="Output path for Sigma rule suggestions")
-    parser.add_argument("--output-retest", default="retest_blind_spots.ps1",
-                        help="Output path for PowerShell retest script")
-    parser.add_argument("--layer-name", default="Purple Team Coverage",
-                        help="Name for the ATT&CK Navigator layer")
+    parser.add_argument(
+        "--output-layer",
+        default="navigator_layer.json",
+        help="Output path for ATT&CK Navigator layer",
+    )
+    parser.add_argument(
+        "--output-report",
+        default="coverage_report.json",
+        help="Output path for coverage report JSON",
+    )
+    parser.add_argument(
+        "--output-sigma",
+        default="sigma_suggestions.json",
+        help="Output path for Sigma rule suggestions",
+    )
+    parser.add_argument(
+        "--output-retest",
+        default="retest_blind_spots.ps1",
+        help="Output path for PowerShell retest script",
+    )
+    parser.add_argument(
+        "--layer-name",
+        default="Purple Team Coverage",
+        help="Name for the ATT&CK Navigator layer",
+    )
 
     args = parser.parse_args()
 
@@ -876,8 +999,10 @@ def main():
             with open(args.output_sigma, "w", encoding="utf-8") as f:
                 json.dump(suggestions, f, indent=2)
             print(f"[+] Sigma suggestions saved: {args.output_sigma}")
-            print(f"    {len([s for s in suggestions if s['sigma_rule']])} rules generated, "
-                  f"{len([s for s in suggestions if not s['sigma_rule']])} need manual creation")
+            print(
+                f"    {len([s for s in suggestions if s['sigma_rule']])} rules generated, "
+                f"{len([s for s in suggestions if not s['sigma_rule']])} need manual creation"
+            )
         else:
             print("[*] No blind spots found -- no Sigma suggestions needed")
 

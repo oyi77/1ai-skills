@@ -110,13 +110,21 @@ def detect_peel_chain(transactions, address):
             for inp in tx.get("inputs", [])
         )
         if is_outgoing:
-            outputs = [o.get("value", 0) / 1e8 for o in tx.get("out", []) if o.get("addr") != address]
+            outputs = [
+                o.get("value", 0) / 1e8
+                for o in tx.get("out", [])
+                if o.get("addr") != address
+            ]
             outgoing_values.extend(outputs)
 
     if len(outgoing_values) < 3:
         return {"peel_chain_detected": False, "reason": "Insufficient transactions"}
 
-    decreasing = sum(1 for i in range(1, len(outgoing_values)) if outgoing_values[i] < outgoing_values[i - 1])
+    decreasing = sum(
+        1
+        for i in range(1, len(outgoing_values))
+        if outgoing_values[i] < outgoing_values[i - 1]
+    )
     ratio = decreasing / (len(outgoing_values) - 1) if len(outgoing_values) > 1 else 0
     return {
         "peel_chain_detected": ratio > 0.6,

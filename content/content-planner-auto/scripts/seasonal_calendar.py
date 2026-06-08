@@ -13,12 +13,10 @@ SEASONAL_EVENTS_2026 = {
     "ramadan_end": date(2026, 3, 17),
     "lebaran": date(2026, 3, 20),  # Idul Fitri 1447H
     "lebaran_period": (date(2026, 3, 18), date(2026, 3, 27)),  # Lebaran week
-    
     # National holidays
     "independence_day": date(2026, 8, 17),
     "new_year": date(2026, 1, 1),
     "chinese_new_year": date(2026, 2, 17),
-    
     # Shopping events (Harbolnas = Hari Belanja Online Nasional)
     "harbolnas_1212": date(2026, 12, 12),
     "harbolnas_1111": date(2026, 11, 11),
@@ -26,7 +24,6 @@ SEASONAL_EVENTS_2026 = {
     "harbolnas_1001": date(2026, 10, 1),
     "shopee_anniversary": date(2026, 9, 15),
     "tokopedia_anniversary": date(2026, 8, 17),
-    
     # Other important dates
     "valentine": date(2026, 2, 14),
     "womens_day": date(2026, 3, 8),
@@ -44,7 +41,13 @@ SEASONAL_CONTENT_MODS = {
             "instagram": ["18:00", "19:00", "21:00"],
             "facebook": ["18:00", "19:00"],
         },
-        "hashtag_additions": ["#ramadan2026", "#ramadankareem", "#sahur", "#buka", "#puasa"],
+        "hashtag_additions": [
+            "#ramadan2026",
+            "#ramadankareem",
+            "#sahur",
+            "#buka",
+            "#puasa",
+        ],
         "theme": "Produktif di bulan Ramadan dengan AI",
         "hook_prefix": "Ramadan lebih produktif dengan AI! 🌙",
         "avoid_content": ["food_content_during_day"],
@@ -52,7 +55,12 @@ SEASONAL_CONTENT_MODS = {
     },
     "lebaran": {
         "best_times_override": None,
-        "hashtag_additions": ["#lebaran2026", "#idulfitri", "#lebaran", "#taqabbalallah"],
+        "hashtag_additions": [
+            "#lebaran2026",
+            "#idulfitri",
+            "#lebaran",
+            "#taqabbalallah",
+        ],
         "theme": "Lebaran special content - AI untuk usaha baru",
         "hook_prefix": "Selamat Lebaran! 🎉 THR-mu bisa diinvestasikan untuk...",
         "avoid_content": [],
@@ -64,7 +72,13 @@ SEASONAL_CONTENT_MODS = {
             "instagram": ["10:00", "11:00", "20:00"],
             "facebook": ["10:00", "11:00"],
         },
-        "hashtag_additions": ["#harbolnas", "#harbolnas2026", "#shoppingday", "#sale", "#diskon"],
+        "hashtag_additions": [
+            "#harbolnas",
+            "#harbolnas2026",
+            "#shoppingday",
+            "#sale",
+            "#diskon",
+        ],
         "theme": "Harbolnas - AI tools sale",
         "hook_prefix": "HARBOLNAS! Diskon spesial untuk AI tools 🛒",
         "avoid_content": [],
@@ -72,7 +86,12 @@ SEASONAL_CONTENT_MODS = {
     },
     "independence_day": {
         "best_times_override": None,
-        "hashtag_additions": ["#hut80ri", "#dirgahayuri", "#indonesiamaju", "#merahputih"],
+        "hashtag_additions": [
+            "#hut80ri",
+            "#dirgahayuri",
+            "#indonesiamaju",
+            "#merahputih",
+        ],
         "theme": "HUT RI - AI untuk kemajuan Indonesia",
         "hook_prefix": "Dirgahayu Indonesia ke-80! 🇮🇩 AI buatan anak bangsa",
         "avoid_content": [],
@@ -106,45 +125,51 @@ SEASONAL_CONTENT_MODS = {
 def get_event_for_date(check_date: date) -> Optional[Tuple[str, Dict]]:
     """Check if a date falls within a seasonal event."""
     events = SEASONAL_EVENTS_2026
-    
+
     # Check Ramadan
     if events["ramadan_start"] <= check_date <= events["ramadan_end"]:
         days_in = (check_date - events["ramadan_start"]).days + 1
-        return ("ramadan", {
-            **SEASONAL_CONTENT_MODS["ramadan"],
-            "days_in": days_in,
-            "special_note": f"Ramadan Day {days_in}",
-        })
-    
+        return (
+            "ramadan",
+            {
+                **SEASONAL_CONTENT_MODS["ramadan"],
+                "days_in": days_in,
+                "special_note": f"Ramadan Day {days_in}",
+            },
+        )
+
     # Check Lebaran period
     lebaran_start, lebaran_end = events["lebaran_period"]
     if lebaran_start <= check_date <= lebaran_end:
         return ("lebaran", SEASONAL_CONTENT_MODS["lebaran"])
-    
+
     # Check Harbolnas 11.11 (3 days around it)
     harbolnas_11 = events["harbolnas_1111"]
     if abs((check_date - harbolnas_11).days) <= 3:
         return ("11_11", SEASONAL_CONTENT_MODS["11_11"])
-    
+
     # Check Harbolnas 12.12 (3 days around it)
     harbolnas_12 = events["harbolnas_1212"]
     if abs((check_date - harbolnas_12).days) <= 3:
         return ("12_12", SEASONAL_CONTENT_MODS["12_12"])
-    
+
     # Check Independence Day (3 days around)
     independence = events["independence_day"]
     if abs((check_date - independence).days) <= 3:
         return ("independence_day", SEASONAL_CONTENT_MODS["independence_day"])
-    
+
     # Check other Harbolnas events (1 day)
     for key in ["harbolnas_1010", "harbolnas_1001"]:
         harbolnas_date = events[key]
         if abs((check_date - harbolnas_date).days) <= 1:
-            return ("harbolnas", {
-                **SEASONAL_CONTENT_MODS["harbolnas"],
-                "special_note": f"Harbolnas {harbolnas_date.strftime('%m/%d')}",
-            })
-    
+            return (
+                "harbolnas",
+                {
+                    **SEASONAL_CONTENT_MODS["harbolnas"],
+                    "special_note": f"Harbolnas {harbolnas_date.strftime('%m/%d')}",
+                },
+            )
+
     return None
 
 
@@ -156,12 +181,14 @@ def get_upcoming_events(start_date: date, days: int = 30) -> List[Dict]:
         event = get_event_for_date(check)
         if event:
             event_type, event_data = event
-            upcoming.append({
-                "date": check.isoformat(),
-                "event_type": event_type,
-                "theme": event_data.get("theme", ""),
-                "special_note": event_data.get("special_note", ""),
-            })
+            upcoming.append(
+                {
+                    "date": check.isoformat(),
+                    "event_type": event_type,
+                    "theme": event_data.get("theme", ""),
+                    "special_note": event_data.get("special_note", ""),
+                }
+            )
     return upcoming
 
 

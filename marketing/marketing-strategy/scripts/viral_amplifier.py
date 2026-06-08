@@ -43,9 +43,7 @@ except ImportError:
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 BYTEPLUS_API_URL = "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"
-BYTEPLUS_API_KEY = os.environ.get(
-    "BYTEPLUS_API_KEY", ""
-)
+BYTEPLUS_API_KEY = os.environ.get("BYTEPLUS_API_KEY", "")
 BYTEPLUS_MODEL = "seed-1-6-250915"
 
 DATA_DIR = Path(__file__).parent.parent / "data"

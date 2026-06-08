@@ -76,8 +76,9 @@ class MISPCollector:
 
         return {"enabled_feeds": enabled, "count": len(enabled)}
 
-    def add_custom_feed(self, name: str, url: str, provider: str,
-                        source_format: str = "csv") -> dict:
+    def add_custom_feed(
+        self, name: str, url: str, provider: str, source_format: str = "csv"
+    ) -> dict:
         """Add a custom threat intelligence feed."""
         feed_config = {
             "name": name,
@@ -96,13 +97,21 @@ class MISPCollector:
         print(f"[+] Added custom feed: {name} from {provider}")
         return result
 
-    def collect_recent_iocs(self, days: int = 7,
-                            ioc_types: Optional[list] = None) -> list:
+    def collect_recent_iocs(
+        self, days: int = 7, ioc_types: Optional[list] = None
+    ) -> list:
         """Collect IOCs from recent events."""
         if ioc_types is None:
             ioc_types = [
-                "ip-dst", "ip-src", "domain", "hostname",
-                "url", "md5", "sha1", "sha256", "email-src",
+                "ip-dst",
+                "ip-src",
+                "domain",
+                "hostname",
+                "url",
+                "md5",
+                "sha1",
+                "sha256",
+                "email-src",
             ]
 
         date_from = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
@@ -161,12 +170,14 @@ class MISPCollector:
             }
 
             for attr in event.attributes:
-                event_data["attributes"].append({
-                    "type": attr.type,
-                    "value": attr.value,
-                    "category": attr.category,
-                    "to_ids": attr.to_ids,
-                })
+                event_data["attributes"].append(
+                    {
+                        "type": attr.type,
+                        "value": attr.value,
+                        "category": attr.category,
+                        "to_ids": attr.to_ids,
+                    }
+                )
 
             collected.append(event_data)
             self.stats["events_processed"] += 1
@@ -187,11 +198,14 @@ class MISPCollector:
                 self.stats["warninglist_filtered"] += 1
                 print(f"[!] Filtered (warninglist): {ioc['value']}")
 
-        print(f"[+] Filtered {self.stats['warninglist_filtered']} IOCs via warninglists")
+        print(
+            f"[+] Filtered {self.stats['warninglist_filtered']} IOCs via warninglists"
+        )
         return filtered
 
-    def export_stix2(self, event_ids: Optional[list] = None,
-                     tags: Optional[list] = None) -> dict:
+    def export_stix2(
+        self, event_ids: Optional[list] = None, tags: Optional[list] = None
+    ) -> dict:
         """Export events as STIX 2.1 bundles."""
         search_params = {
             "controller": "events",
@@ -217,8 +231,15 @@ class MISPCollector:
             print("[-] No IOCs to export")
             return ""
 
-        fieldnames = ["type", "value", "category", "event_id", "timestamp",
-                      "to_ids", "comment"]
+        fieldnames = [
+            "type",
+            "value",
+            "category",
+            "event_id",
+            "timestamp",
+            "to_ids",
+            "comment",
+        ]
 
         with open(output_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -279,7 +300,9 @@ def main():
     )
     parser.add_argument("--url", required=True, help="MISP instance URL")
     parser.add_argument("--key", required=True, help="MISP API key")
-    parser.add_argument("--no-ssl", action="store_true", help="Disable SSL verification")
+    parser.add_argument(
+        "--no-ssl", action="store_true", help="Disable SSL verification"
+    )
     parser.add_argument(
         "--action",
         choices=["collect", "export", "feeds", "correlate"],
@@ -293,7 +316,9 @@ def main():
         default="csv",
         help="Export format",
     )
-    parser.add_argument("--output", default="misp_iocs_export.csv", help="Output file path")
+    parser.add_argument(
+        "--output", default="misp_iocs_export.csv", help="Output file path"
+    )
     parser.add_argument("--tags", nargs="+", help="Filter by tags")
     parser.add_argument(
         "--enable-defaults",

@@ -40,15 +40,22 @@ class PostBridgeClient:
             "Content-Type": "application/json",
         }
 
-    def _request(self, method: str, path: str, data: dict | None = None,
-                 params: dict | None = None) -> dict | list:
+    def _request(
+        self,
+        method: str,
+        path: str,
+        data: dict | None = None,
+        params: dict | None = None,
+    ) -> dict | list:
         url = f"{API_BASE}{path}"
         if params:
             qs = "&".join(f"{k}={v}" for k, v in params.items())
             url = f"{url}?{qs}"
 
         body = json.dumps(data).encode() if data else None
-        req = urllib.request.Request(url, data=body, method=method, headers=self._headers)
+        req = urllib.request.Request(
+            url, data=body, method=method, headers=self._headers
+        )
 
         for attempt in range(self.max_retries):
             try:
@@ -72,8 +79,13 @@ class PostBridgeClient:
             return resp.get("data", [])
         return resp
 
-    def create_post(self, caption: str, social_account_ids: list,
-                    media_ids: list | None = None, scheduled_at: str | None = None) -> dict:
+    def create_post(
+        self,
+        caption: str,
+        social_account_ids: list,
+        media_ids: list | None = None,
+        scheduled_at: str | None = None,
+    ) -> dict:
         payload = {"caption": caption, "social_accounts": social_account_ids}
         if media_ids:
             payload["media"] = media_ids
@@ -102,26 +114,36 @@ class PostBridgeClient:
         name = os.path.basename(file_path)
         size = os.path.getsize(file_path)
         ext = name.rsplit(".", 1)[-1].lower()
-        mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg",
-                "mp4": "video/mp4", "gif": "image/gif"}.get(ext, "application/octet-stream")
+        mime = {
+            "png": "image/png",
+            "jpg": "image/jpeg",
+            "jpeg": "image/jpeg",
+            "mp4": "video/mp4",
+            "gif": "image/gif",
+        }.get(ext, "application/octet-stream")
 
-        resp = self._request("POST", "/media/create-upload-url",
-                             data={"name": name, "mime_type": mime, "size_bytes": size})
+        resp = self._request(
+            "POST",
+            "/media/create-upload-url",
+            data={"name": name, "mime_type": mime, "size_bytes": size},
+        )
         upload_url = resp.get("upload_url", "")
         media_id = resp.get("media_id", "")
         if not upload_url:
             raise ValueError(f"No upload_url in response: {resp}")
 
         with open(file_path, "rb") as f:
-            put_req = urllib.request.Request(upload_url, data=f.read(), method="PUT",
-                                            headers={"Content-Type": mime})
+            put_req = urllib.request.Request(
+                upload_url, data=f.read(), method="PUT", headers={"Content-Type": mime}
+            )
             urllib.request.urlopen(put_req, timeout=60, context=self._ctx)
 
         return media_id
 
     def get_analytics(self, start_date: str, end_date: str) -> dict:
-        resp = self._request("GET", "/analytics",
-                             params={"start_date": start_date, "end_date": end_date})
+        resp = self._request(
+            "GET", "/analytics", params={"start_date": start_date, "end_date": end_date}
+        )
         return resp if isinstance(resp, dict) else {}
 
     def sync_analytics(self) -> dict:
@@ -153,12 +175,19 @@ class PostBridgePublisher(BaseModule):
     def upload_media(self, file_path: str, mime_type: Optional[str] = None) -> str:
         return self._client.upload_media(file_path)
 
-    def create_post(self, caption: str, media_ids: Optional[List[str]] = None,
-                    account_ids: Optional[List[str]] = None,
-                    scheduled_at: Optional[str] = None) -> dict:
+    def create_post(
+        self,
+        caption: str,
+        media_ids: Optional[List[str]] = None,
+        account_ids: Optional[List[str]] = None,
+        scheduled_at: Optional[str] = None,
+    ) -> dict:
         return self._client.create_post(
-            caption=caption, social_account_ids=account_ids or [],
-            media_ids=media_ids or [], scheduled_at=scheduled_at)
+            caption=caption,
+            social_account_ids=account_ids or [],
+            media_ids=media_ids or [],
+            scheduled_at=scheduled_at,
+        )
 
     def get_scheduled_posts(self, limit: int = 50) -> list:
         return self._client.get_posts(status="scheduled", limit=limit)
@@ -173,7 +202,8 @@ class PostBridgePublisher(BaseModule):
         end = datetime.now(timezone.utc)
         start = end - timedelta(days=days)
         return self._client.get_analytics(
-            start_date=start.strftime("%Y-%m-%d"), end_date=end.strftime("%Y-%m-%d"))
+            start_date=start.strftime("%Y-%m-%d"), end_date=end.strftime("%Y-%m-%d")
+        )
 
     def sync_analytics(self) -> dict:
         return self._client.sync_analytics()
@@ -184,12 +214,20 @@ class PostBridgePublisher(BaseModule):
             accounts = self.get_accounts()
             ms = round((time.monotonic() - t0) * 1000, 1)
             n = len(accounts) if isinstance(accounts, list) else 0
-            return {"status": "ok", "latency_ms": ms, "accounts_count": n,
-                    "message": f"{n} account(s) connected"}
+            return {
+                "status": "ok",
+                "latency_ms": ms,
+                "accounts_count": n,
+                "message": f"{n} account(s) connected",
+            }
         except Exception as e:
             ms = round((time.monotonic() - t0) * 1000, 1)
-            return {"status": "error", "latency_ms": ms, "accounts_count": 0,
-                    "message": str(e)}
+            return {
+                "status": "error",
+                "latency_ms": ms,
+                "accounts_count": 0,
+                "message": str(e),
+            }
 
     def retry_failed_posts(self, hours: int = 24) -> dict:
         cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
@@ -203,18 +241,34 @@ class PostBridgePublisher(BaseModule):
             found += 1
             post = r.get("post") or {}
             caption = post.get("caption", "")
-            media_ids = [m.get("media_id") or m.get("id") for m in post.get("media", [])]
+            media_ids = [
+                m.get("media_id") or m.get("id") for m in post.get("media", [])
+            ]
             account_ids = [a.get("id") for a in post.get("social_accounts", [])]
             if not caption or not account_ids:
-                details.append({"id": r.get("id"), "status": "skipped", "reason": "missing data"})
+                details.append(
+                    {"id": r.get("id"), "status": "skipped", "reason": "missing data"}
+                )
                 continue
             try:
-                new = self.create_post(caption=caption, media_ids=media_ids or None,
-                                       account_ids=account_ids)
+                new = self.create_post(
+                    caption=caption,
+                    media_ids=media_ids or None,
+                    account_ids=account_ids,
+                )
                 retried += 1
-                details.append({"id": r.get("id"), "new_id": new.get("id"), "status": "retried"})
+                details.append(
+                    {"id": r.get("id"), "new_id": new.get("id"), "status": "retried"}
+                )
             except Exception as e:
                 failed += 1
-                details.append({"id": r.get("id"), "status": "retry_failed", "error": str(e)})
+                details.append(
+                    {"id": r.get("id"), "status": "retry_failed", "error": str(e)}
+                )
 
-        return {"found": found, "retried": retried, "failed": failed, "details": details}
+        return {
+            "found": found,
+            "retried": retried,
+            "failed": failed,
+            "details": details,
+        }

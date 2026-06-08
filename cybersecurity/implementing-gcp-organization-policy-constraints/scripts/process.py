@@ -11,49 +11,48 @@ import subprocess
 import sys
 from datetime import datetime
 
-
 SECURITY_CONSTRAINTS = {
     "compute.vmExternalIpAccess": {
         "type": "list",
         "action": "deny_all",
-        "description": "Deny external IP addresses on VMs"
+        "description": "Deny external IP addresses on VMs",
     },
     "compute.requireOsLogin": {
         "type": "boolean",
         "enforced": True,
-        "description": "Require OS Login for SSH access"
+        "description": "Require OS Login for SSH access",
     },
     "compute.disableSerialPortAccess": {
         "type": "boolean",
         "enforced": True,
-        "description": "Disable serial port access on VMs"
+        "description": "Disable serial port access on VMs",
     },
     "iam.disableServiceAccountKeyCreation": {
         "type": "boolean",
         "enforced": True,
-        "description": "Disable service account key creation"
+        "description": "Disable service account key creation",
     },
     "storage.uniformBucketLevelAccess": {
         "type": "boolean",
         "enforced": True,
-        "description": "Enforce uniform bucket-level access"
+        "description": "Enforce uniform bucket-level access",
     },
     "sql.restrictPublicIp": {
         "type": "boolean",
         "enforced": True,
-        "description": "Restrict public IP on Cloud SQL"
+        "description": "Restrict public IP on Cloud SQL",
     },
     "gcp.resourceLocations": {
         "type": "list",
         "action": "allow",
         "values": ["in:us-locations", "in:eu-locations"],
-        "description": "Restrict resource locations to US and EU"
+        "description": "Restrict resource locations to US and EU",
     },
     "compute.disableNestedVirtualization": {
         "type": "boolean",
         "enforced": True,
-        "description": "Disable nested virtualization"
-    }
+        "description": "Disable nested virtualization",
+    },
 }
 
 
@@ -73,10 +72,7 @@ def audit_org_policies(org_id):
     """Audit current organization policies and identify gaps."""
     print(f"[*] Auditing organization policies for org: {org_id}")
 
-    results, err = run_gcloud([
-        "org-policies", "list",
-        f"--organization={org_id}"
-    ])
+    results, err = run_gcloud(["org-policies", "list", f"--organization={org_id}"])
 
     if err:
         print(f"[!] Error listing policies: {err}")
@@ -96,16 +92,20 @@ def audit_org_policies(org_id):
     for constraint in SECURITY_CONSTRAINTS:
         if constraint in active_constraints:
             present.append(constraint)
-            print(f"  [OK] {constraint}: {SECURITY_CONSTRAINTS[constraint]['description']}")
+            print(
+                f"  [OK] {constraint}: {SECURITY_CONSTRAINTS[constraint]['description']}"
+            )
         else:
             missing.append(constraint)
-            print(f"  [MISSING] {constraint}: {SECURITY_CONSTRAINTS[constraint]['description']}")
+            print(
+                f"  [MISSING] {constraint}: {SECURITY_CONSTRAINTS[constraint]['description']}"
+            )
 
     return {
         "active": list(active_constraints),
         "baseline_present": present,
         "baseline_missing": missing,
-        "compliance_score": len(present) / len(SECURITY_CONSTRAINTS) * 100
+        "compliance_score": len(present) / len(SECURITY_CONSTRAINTS) * 100,
     }
 
 
@@ -140,6 +140,7 @@ def deploy_baseline_policies(org_id, dry_run=True):
 
         # Generate policy file
         import tempfile
+
         policy_yaml = generate_policy_yaml(constraint, config, dry_run)
 
         with tempfile.NamedTemporaryFile(
@@ -149,11 +150,9 @@ def deploy_baseline_policies(org_id, dry_run=True):
             policy_file = f.name
 
         # Apply policy
-        _, err = run_gcloud([
-            "org-policies", "set-policy",
-            f"--organization={org_id}",
-            policy_file
-        ])
+        _, err = run_gcloud(
+            ["org-policies", "set-policy", f"--organization={org_id}", policy_file]
+        )
 
         if err:
             print(f"  [FAIL] Error applying {constraint}: {err}")
@@ -165,11 +164,14 @@ def check_policy_violations(org_id, constraint_name):
     """Check for resources violating a specific policy."""
     print(f"\n[*] Checking violations for: {constraint_name}")
 
-    results, err = run_gcloud([
-        "asset", "search-all-resources",
-        f"--scope=organizations/{org_id}",
-        f"--query=policy:constraints/{constraint_name}"
-    ])
+    results, err = run_gcloud(
+        [
+            "asset",
+            "search-all-resources",
+            f"--scope=organizations/{org_id}",
+            f"--query=policy:constraints/{constraint_name}",
+        ]
+    )
 
     if err:
         print(f"[!] Error checking violations: {err}")
@@ -199,11 +201,13 @@ Compliance Score: {audit_results['compliance_score']:.1f}%
 
 Baseline Policies Present ({len(audit_results['baseline_present'])}):
 """
-    for p in audit_results['baseline_present']:
+    for p in audit_results["baseline_present"]:
         report += f"  [PASS] {p}\n"
 
-    report += f"\nBaseline Policies Missing ({len(audit_results['baseline_missing'])}):\n"
-    for m in audit_results['baseline_missing']:
+    report += (
+        f"\nBaseline Policies Missing ({len(audit_results['baseline_missing'])}):\n"
+    )
+    for m in audit_results["baseline_missing"]:
         report += f"  [FAIL] {m} - {SECURITY_CONSTRAINTS[m]['description']}\n"
 
     report += f"\nTotal Active Policies: {len(audit_results['active'])}\n"
@@ -218,10 +222,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="GCP Organization Policy Management")
     parser.add_argument("--org-id", required=True, help="GCP Organization ID")
     parser.add_argument("--audit", action="store_true", help="Audit existing policies")
-    parser.add_argument("--deploy", action="store_true", help="Deploy baseline policies")
-    parser.add_argument("--dry-run", action="store_true", default=True, help="Deploy in dry-run mode")
-    parser.add_argument("--enforce", action="store_true", help="Deploy in enforced mode")
-    parser.add_argument("--check-violations", type=str, help="Check violations for a constraint")
+    parser.add_argument(
+        "--deploy", action="store_true", help="Deploy baseline policies"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", default=True, help="Deploy in dry-run mode"
+    )
+    parser.add_argument(
+        "--enforce", action="store_true", help="Deploy in enforced mode"
+    )
+    parser.add_argument(
+        "--check-violations", type=str, help="Check violations for a constraint"
+    )
 
     args = parser.parse_args()
 

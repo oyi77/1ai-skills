@@ -17,6 +17,7 @@ from dataclasses import dataclass, field, asdict
 
 try:
     import dns.resolver
+
     HAS_DNS = True
 except ImportError:
     HAS_DNS = False
@@ -25,6 +26,7 @@ except ImportError:
 @dataclass
 class GWSSecurityAudit:
     """Google Workspace security configuration audit."""
+
     domain: str = ""
     spoofing_protection: bool = False
     employee_name_spoofing: bool = False
@@ -105,7 +107,9 @@ def audit_gws_config(config: dict) -> GWSSecurityAudit:
     if audit.security_sandbox:
         audit.score += 10
     else:
-        audit.findings.append("Gmail Security Sandbox not enabled (requires Enterprise license)")
+        audit.findings.append(
+            "Gmail Security Sandbox not enabled (requires Enterprise license)"
+        )
 
     # Advanced Protection Program
     audit.app_enrolled_users = config.get("app_enrolled_users", 0)
@@ -139,7 +143,13 @@ def audit_gws_config(config: dict) -> GWSSecurityAudit:
 
 def check_google_auth(domain: str) -> dict:
     """Check SPF, DKIM, DMARC for Google Workspace domain."""
-    result = {"domain": domain, "spf": False, "dkim": False, "dmarc": False, "issues": []}
+    result = {
+        "domain": domain,
+        "spf": False,
+        "dkim": False,
+        "dmarc": False,
+        "issues": [],
+    }
 
     if not HAS_DNS:
         result["issues"].append("dnspython not installed")
@@ -147,10 +157,10 @@ def check_google_auth(domain: str) -> dict:
 
     # SPF
     try:
-        answers = dns.resolver.resolve(domain, 'TXT')
+        answers = dns.resolver.resolve(domain, "TXT")
         for rdata in answers:
             txt = str(rdata).strip('"')
-            if 'v=spf1' in txt and '_spf.google.com' in txt:
+            if "v=spf1" in txt and "_spf.google.com" in txt:
                 result["spf"] = True
                 break
         if not result["spf"]:
@@ -160,20 +170,21 @@ def check_google_auth(domain: str) -> dict:
 
     # DKIM (Google default selector)
     try:
-        dns.resolver.resolve(f"google._domainkey.{domain}", 'TXT')
+        dns.resolver.resolve(f"google._domainkey.{domain}", "TXT")
         result["dkim"] = True
     except Exception:
         result["issues"].append("DKIM not configured for 'google' selector")
 
     # DMARC
     try:
-        answers = dns.resolver.resolve(f"_dmarc.{domain}", 'TXT')
+        answers = dns.resolver.resolve(f"_dmarc.{domain}", "TXT")
         for rdata in answers:
             txt = str(rdata).strip('"')
-            if 'v=DMARC1' in txt:
+            if "v=DMARC1" in txt:
                 result["dmarc"] = True
                 import re
-                policy = re.search(r'p=(\w+)', txt)
+
+                policy = re.search(r"p=(\w+)", txt)
                 result["dmarc_policy"] = policy.group(1) if policy else "unknown"
                 break
     except Exception:
@@ -183,7 +194,9 @@ def check_google_auth(domain: str) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Google Workspace Phishing Protection Auditor")
+    parser = argparse.ArgumentParser(
+        description="Google Workspace Phishing Protection Auditor"
+    )
     subparsers = parser.add_subparsers(dest="command")
 
     audit_parser = subparsers.add_parser("audit", help="Audit GWS security config")

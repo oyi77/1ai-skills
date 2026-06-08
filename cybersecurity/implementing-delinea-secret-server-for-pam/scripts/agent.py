@@ -41,22 +41,32 @@ class SecretServerClient:
             params["filter.folderId"] = folder_id
         if secret_template_id:
             params["filter.secretTemplateId"] = secret_template_id
-        resp = self.session.get(f"{self.base_url}/api/v1/secrets", params=params, timeout=30)
+        resp = self.session.get(
+            f"{self.base_url}/api/v1/secrets", params=params, timeout=30
+        )
         resp.raise_for_status()
         return resp.json().get("records", [])
 
     def get_secret(self, secret_id):
         """Retrieve a secret by ID."""
-        resp = self.session.get(f"{self.base_url}/api/v1/secrets/{secret_id}", timeout=30)
+        resp = self.session.get(
+            f"{self.base_url}/api/v1/secrets/{secret_id}", timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
     def create_secret(self, name, template_id, folder_id, fields):
         """Create a new secret in the vault."""
         items = [{"fieldId": fid, "itemValue": val} for fid, val in fields.items()]
-        data = {"name": name, "secretTemplateId": template_id,
-                "folderId": folder_id, "items": items}
-        resp = self.session.post(f"{self.base_url}/api/v1/secrets", json=data, timeout=30)
+        data = {
+            "name": name,
+            "secretTemplateId": template_id,
+            "folderId": folder_id,
+            "items": items,
+        }
+        resp = self.session.post(
+            f"{self.base_url}/api/v1/secrets", json=data, timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -71,34 +81,41 @@ class SecretServerClient:
         params = {}
         if parent_id:
             params["filter.parentFolderId"] = parent_id
-        resp = self.session.get(f"{self.base_url}/api/v1/folders", params=params, timeout=30)
+        resp = self.session.get(
+            f"{self.base_url}/api/v1/folders", params=params, timeout=30
+        )
         resp.raise_for_status()
         return resp.json().get("records", [])
 
     def rotate_secret_password(self, secret_id):
         """Trigger password rotation for a secret (Remote Password Changing)."""
         resp = self.session.post(
-            f"{self.base_url}/api/v1/secrets/{secret_id}/change-password", timeout=30)
+            f"{self.base_url}/api/v1/secrets/{secret_id}/change-password", timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
     def get_secret_audit(self, secret_id):
         """Get audit trail for a specific secret."""
-        resp = self.session.get(f"{self.base_url}/api/v1/secrets/{secret_id}/audits", timeout=30)
+        resp = self.session.get(
+            f"{self.base_url}/api/v1/secrets/{secret_id}/audits", timeout=30
+        )
         resp.raise_for_status()
         return resp.json().get("records", [])
 
     def checkout_secret(self, secret_id):
         """Check out a secret for exclusive access."""
         resp = self.session.post(
-            f"{self.base_url}/api/v1/secrets/{secret_id}/check-out", timeout=30)
+            f"{self.base_url}/api/v1/secrets/{secret_id}/check-out", timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
     def checkin_secret(self, secret_id):
         """Check in a previously checked-out secret."""
         resp = self.session.post(
-            f"{self.base_url}/api/v1/secrets/{secret_id}/check-in", timeout=30)
+            f"{self.base_url}/api/v1/secrets/{secret_id}/check-in", timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -135,12 +152,16 @@ def run_pam_audit(client):
     secrets = client.search_secrets()
     print(f"\n--- SECRETS ({len(secrets)}) ---")
     for s in secrets[:10]:
-        print(f"  [{s['id']}] {s['name']} (Template: {s.get('secretTemplateName', 'N/A')})")
+        print(
+            f"  [{s['id']}] {s['name']} (Template: {s.get('secretTemplateName', 'N/A')})"
+        )
 
     users = client.get_users()
     print(f"\n--- USERS ({len(users)}) ---")
     for u in users[:10]:
-        print(f"  [{u['id']}] {u.get('userName', 'N/A')} - Enabled: {u.get('isDisabled', True)}")
+        print(
+            f"  [{u['id']}] {u.get('userName', 'N/A')} - Enabled: {u.get('isDisabled', True)}"
+        )
 
     roles = client.get_roles()
     print(f"\n--- ROLES ({len(roles)}) ---")
@@ -148,8 +169,13 @@ def run_pam_audit(client):
         print(f"  [{r['id']}] {r['name']}")
 
     print(f"\n{'='*60}\n")
-    return {"templates": len(templates), "folders": len(folders),
-            "secrets": len(secrets), "users": len(users), "roles": len(roles)}
+    return {
+        "templates": len(templates),
+        "folders": len(folders),
+        "secrets": len(secrets),
+        "users": len(users),
+        "roles": len(roles),
+    }
 
 
 def main():

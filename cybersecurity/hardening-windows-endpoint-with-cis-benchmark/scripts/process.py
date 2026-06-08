@@ -156,9 +156,9 @@ def generate_compliance_report(results: dict, output_path: str) -> None:
             "errors": results["error"],
         },
         "failed_controls": results["findings"],
-        "compliance_status": "COMPLIANT"
-        if results["score"] >= 95.0
-        else "NON-COMPLIANT",
+        "compliance_status": (
+            "COMPLIANT" if results["score"] >= 95.0 else "NON-COMPLIANT"
+        ),
     }
 
     with open(output_path, "w", encoding="utf-8") as f:
@@ -203,7 +203,9 @@ if __name__ == "__main__":
         print()
         print("Arguments:")
         print("  ciscat-results.xml      Current CIS-CAT assessment results")
-        print("  previous-results.xml    (Optional) Previous results for drift detection")
+        print(
+            "  previous-results.xml    (Optional) Previous results for drift detection"
+        )
         sys.exit(1)
 
     xml_path = sys.argv[1]
@@ -226,7 +228,9 @@ if __name__ == "__main__":
 
     print(f"\nCompliance Score: {results['score']}%")
     print(f"Status: {'COMPLIANT' if results['score'] >= 95.0 else 'NON-COMPLIANT'}")
-    print(f"Passed: {results['passed']} | Failed: {results['failed']} | N/A: {results['not_applicable']}")
+    print(
+        f"Passed: {results['passed']} | Failed: {results['failed']} | N/A: {results['not_applicable']}"
+    )
 
     if len(sys.argv) >= 3:
         prev_path = sys.argv[2]

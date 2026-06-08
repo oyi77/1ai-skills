@@ -6,15 +6,20 @@ import argparse
 import subprocess
 from datetime import datetime
 
-
 CRITICAL_AUDIT_POLICIES = {
     "Logon/Logoff": {"Logon": "Success,Failure", "Logoff": "Success"},
-    "Account Logon": {"Credential Validation": "Success,Failure", "Kerberos Authentication Service": "Success,Failure"},
+    "Account Logon": {
+        "Credential Validation": "Success,Failure",
+        "Kerberos Authentication Service": "Success,Failure",
+    },
     "Object Access": {"File System": "Success,Failure", "Registry": "Success,Failure"},
     "Privilege Use": {"Sensitive Privilege Use": "Success,Failure"},
     "Process Tracking": {"Process Creation": "Success"},
     "DS Access": {"Directory Service Access": "Success,Failure"},
-    "Policy Change": {"Audit Policy Change": "Success,Failure", "Authentication Policy Change": "Success"},
+    "Policy Change": {
+        "Audit Policy Change": "Success,Failure",
+        "Authentication Policy Change": "Success",
+    },
 }
 
 
@@ -51,31 +56,47 @@ def check_sysmon_installed():
             service = json.loads(result.stdout)
             if isinstance(service, list):
                 service = service[0]
-            return {"installed": True, "status": service.get("Status", ""),
-                    "name": service.get("Name", "")}
-        return {"installed": False, "severity": "HIGH",
-                "recommendation": "Install Sysmon with SwiftOnSecurity config"}
+            return {
+                "installed": True,
+                "status": service.get("Status", ""),
+                "name": service.get("Name", ""),
+            }
+        return {
+            "installed": False,
+            "severity": "HIGH",
+            "recommendation": "Install Sysmon with SwiftOnSecurity config",
+        }
     except (FileNotFoundError, json.JSONDecodeError):
         return {"installed": False}
 
 
 def check_log_sizes():
     """Check event log maximum sizes."""
-    logs = ["Security", "System", "Application", "Microsoft-Windows-Sysmon/Operational",
-            "Microsoft-Windows-PowerShell/Operational"]
+    logs = [
+        "Security",
+        "System",
+        "Application",
+        "Microsoft-Windows-Sysmon/Operational",
+        "Microsoft-Windows-PowerShell/Operational",
+    ]
     results = []
     for log_name in logs:
-        cmd = ["powershell", "-Command",
-               f"(Get-WinEvent -ListLog '{log_name}' -ErrorAction SilentlyContinue).MaximumSizeInBytes"]
+        cmd = [
+            "powershell",
+            "-Command",
+            f"(Get-WinEvent -ListLog '{log_name}' -ErrorAction SilentlyContinue).MaximumSizeInBytes",
+        ]
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
             size_bytes = int(result.stdout.strip()) if result.stdout.strip() else 0
             size_mb = round(size_bytes / (1024 * 1024), 1)
-            results.append({
-                "log": log_name,
-                "max_size_mb": size_mb,
-                "severity": "MEDIUM" if size_mb < 100 else "INFO",
-            })
+            results.append(
+                {
+                    "log": log_name,
+                    "max_size_mb": size_mb,
+                    "severity": "MEDIUM" if size_mb < 100 else "INFO",
+                }
+            )
         except (ValueError, subprocess.TimeoutExpired):
             results.append({"log": log_name, "error": "Cannot query"})
     return results
@@ -85,13 +106,27 @@ def check_powershell_logging():
     """Check PowerShell script block logging and transcription."""
     checks = {}
     for name, path in [
-        ("ScriptBlockLogging", r"HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"),
-        ("Transcription", r"HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription"),
+        (
+            "ScriptBlockLogging",
+            r"HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging",
+        ),
+        (
+            "Transcription",
+            r"HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription",
+        ),
     ]:
-        cmd = ["powershell", "-Command", f"Get-ItemProperty -Path '{path}' -ErrorAction SilentlyContinue | ConvertTo-Json"]
+        cmd = [
+            "powershell",
+            "-Command",
+            f"Get-ItemProperty -Path '{path}' -ErrorAction SilentlyContinue | ConvertTo-Json",
+        ]
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
-            checks[name] = json.loads(result.stdout) if result.stdout.strip() else {"enabled": False}
+            checks[name] = (
+                json.loads(result.stdout)
+                if result.stdout.strip()
+                else {"enabled": False}
+            )
         except (json.JSONDecodeError, subprocess.TimeoutExpired):
             checks[name] = {"enabled": False}
     return checks
@@ -118,7 +153,9 @@ def run_audit():
     ps_logging = check_powershell_logging()
     print(f"\n--- POWERSHELL LOGGING ---")
     for name, config in ps_logging.items():
-        enabled = config.get("EnableScriptBlockLogging", config.get("EnableTranscripting", False))
+        enabled = config.get(
+            "EnableScriptBlockLogging", config.get("EnableTranscripting", False)
+        )
         print(f"  {name}: {'Enabled' if enabled else 'Disabled'}")
 
     return {"sysmon": sysmon, "log_sizes": logs, "powershell": ps_logging}

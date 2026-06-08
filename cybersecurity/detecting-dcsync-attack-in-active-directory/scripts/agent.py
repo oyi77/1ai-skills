@@ -66,15 +66,17 @@ def parse_4662_events(filepath, dc_accounts):
             logon_id = re.search(r'<Data Name="SubjectLogonId">([^<]+)', xml)
             object_name = re.search(r'<Data Name="ObjectName">([^<]+)', xml)
             time_created = re.search(r'SystemTime="([^"]+)"', xml)
-            computer = re.search(r'<Computer>([^<]+)', xml)
+            computer = re.search(r"<Computer>([^<]+)", xml)
 
             subject_name = subject.group(1) if subject else ""
             domain_name = domain.group(1) if domain else ""
             full_account = f"{domain_name}\\{subject_name}".upper()
 
             if subject_name.endswith("$"):
-                if subject_name.upper().rstrip("$") in dc_accounts or \
-                   full_account.rstrip("$") in dc_accounts:
+                if (
+                    subject_name.upper().rstrip("$") in dc_accounts
+                    or full_account.rstrip("$") in dc_accounts
+                ):
                     continue
 
             if subject_name.upper() in dc_accounts or full_account in dc_accounts:
@@ -83,20 +85,22 @@ def parse_4662_events(filepath, dc_accounts):
             is_machine = subject_name.endswith("$")
             severity = "HIGH" if is_machine else "CRITICAL"
 
-            findings.append({
-                "event_id": 4662,
-                "timestamp": time_created.group(1) if time_created else "",
-                "subject_user": subject_name,
-                "subject_domain": domain_name,
-                "logon_id": logon_id.group(1) if logon_id else "",
-                "computer": computer.group(1) if computer else "",
-                "object_name": object_name.group(1) if object_name else "",
-                "replication_rights": matched_rights,
-                "is_machine_account": is_machine,
-                "severity": severity,
-                "mitre": "T1003.006",
-                "description": "Non-DC account requesting directory replication",
-            })
+            findings.append(
+                {
+                    "event_id": 4662,
+                    "timestamp": time_created.group(1) if time_created else "",
+                    "subject_user": subject_name,
+                    "subject_domain": domain_name,
+                    "logon_id": logon_id.group(1) if logon_id else "",
+                    "computer": computer.group(1) if computer else "",
+                    "object_name": object_name.group(1) if object_name else "",
+                    "replication_rights": matched_rights,
+                    "is_machine_account": is_machine,
+                    "severity": severity,
+                    "mitre": "T1003.006",
+                    "description": "Non-DC account requesting directory replication",
+                }
+            )
 
     return {"total_4662_events": total_4662, "dcsync_detections": findings}
 
@@ -116,8 +120,10 @@ $acl.Access | Where-Object {
 } | Select-Object IdentityReference, ObjectType, AccessControlType |
   ConvertTo-Json
 """
-    return {"powershell_query": query.strip(),
-            "note": "Run on a domain controller with RSAT tools"}
+    return {
+        "powershell_query": query.strip(),
+        "note": "Run on a domain controller with RSAT tools",
+    }
 
 
 def generate_sigma_rule():
@@ -131,10 +137,10 @@ def generate_sigma_rule():
                 "Properties|contains": [
                     "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",
                     "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
-                ]
+                ],
             },
             "filter_dc": {"SubjectUserName|endswith": "$"},
-            "condition": "selection and not filter_dc"
+            "condition": "selection and not filter_dc",
         },
         "level": "critical",
         "tags": ["attack.credential_access", "attack.t1003.006"],
@@ -144,10 +150,17 @@ def generate_sigma_rule():
 def main():
     parser = argparse.ArgumentParser(description="DCSync Attack Detector")
     parser.add_argument("--security-log", help="Windows Security EVTX file")
-    parser.add_argument("--dc-accounts", help="File with known DC account names (one per line)")
-    parser.add_argument("--generate-sigma", action="store_true", help="Output Sigma detection rule")
-    parser.add_argument("--check-perms", action="store_true",
-                        help="Show PowerShell query for replication permissions")
+    parser.add_argument(
+        "--dc-accounts", help="File with known DC account names (one per line)"
+    )
+    parser.add_argument(
+        "--generate-sigma", action="store_true", help="Output Sigma detection rule"
+    )
+    parser.add_argument(
+        "--check-perms",
+        action="store_true",
+        help="Show PowerShell query for replication permissions",
+    )
     args = parser.parse_args()
 
     results = {"timestamp": datetime.utcnow().isoformat() + "Z"}

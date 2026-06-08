@@ -55,11 +55,13 @@ def parse_evtx_file(evtx_path):
                     for d in data_elements:
                         name = d.get("Name", "")
                         event_data[name] = d.text or ""
-                    events.append({
-                        "event_id": event_id,
-                        "timestamp": record.timestamp().isoformat(),
-                        "data": event_data,
-                    })
+                    events.append(
+                        {
+                            "event_id": event_id,
+                            "timestamp": record.timestamp().isoformat(),
+                            "data": event_data,
+                        }
+                    )
             except ET.ParseError:
                 continue
     return events
@@ -70,10 +72,18 @@ def scan_command_line(cmd_line):
     findings = []
     for pattern in SHADOW_PATTERNS:
         if re.search(pattern, cmd_line, re.IGNORECASE):
-            findings.append({"pattern": pattern, "severity": "CRITICAL", "category": "shadow_copy_deletion"})
+            findings.append(
+                {
+                    "pattern": pattern,
+                    "severity": "CRITICAL",
+                    "category": "shadow_copy_deletion",
+                }
+            )
     for pattern in RECOVERY_DISABLE_PATTERNS:
         if re.search(pattern, cmd_line, re.IGNORECASE):
-            findings.append({"pattern": pattern, "severity": "HIGH", "category": "recovery_disable"})
+            findings.append(
+                {"pattern": pattern, "severity": "HIGH", "category": "recovery_disable"}
+            )
     return findings
 
 
@@ -82,19 +92,25 @@ def hunt_evtx(evtx_path):
     events = parse_evtx_file(evtx_path)
     results = []
     for event in events:
-        cmd = event["data"].get("CommandLine", "") or event["data"].get("TaskContent", "")
+        cmd = event["data"].get("CommandLine", "") or event["data"].get(
+            "TaskContent", ""
+        )
         if not cmd:
             cmd = " ".join(event["data"].values())
         matches = scan_command_line(cmd)
         if matches:
-            results.append({
-                "timestamp": event["timestamp"],
-                "event_id": event["event_id"],
-                "command_line": cmd[:500],
-                "user": event["data"].get("SubjectUserName", event["data"].get("User", "")),
-                "computer": event["data"].get("Computer", ""),
-                "findings": matches,
-            })
+            results.append(
+                {
+                    "timestamp": event["timestamp"],
+                    "event_id": event["event_id"],
+                    "command_line": cmd[:500],
+                    "user": event["data"].get(
+                        "SubjectUserName", event["data"].get("User", "")
+                    ),
+                    "computer": event["data"].get("Computer", ""),
+                    "findings": matches,
+                }
+            )
     return results
 
 
@@ -111,15 +127,17 @@ def scan_sysmon_json(log_path):
             image = entry.get("Image", entry.get("process_name", ""))
             matches = scan_command_line(cmd)
             if matches:
-                results.append({
-                    "timestamp": entry.get("UtcTime", entry.get("timestamp", "")),
-                    "image": image,
-                    "command_line": cmd[:500],
-                    "parent_image": entry.get("ParentImage", ""),
-                    "user": entry.get("User", ""),
-                    "hostname": entry.get("Computer", entry.get("hostname", "")),
-                    "findings": matches,
-                })
+                results.append(
+                    {
+                        "timestamp": entry.get("UtcTime", entry.get("timestamp", "")),
+                        "image": image,
+                        "command_line": cmd[:500],
+                        "parent_image": entry.get("ParentImage", ""),
+                        "user": entry.get("User", ""),
+                        "hostname": entry.get("Computer", entry.get("hostname", "")),
+                        "findings": matches,
+                    }
+                )
     return results
 
 
@@ -155,8 +173,9 @@ def main():
     parser.add_argument("--evtx", help="Path to EVTX log file")
     parser.add_argument("--json-log", help="Path to JSON Sysmon log")
     parser.add_argument("--output", default="shadow_copy_hunt_report.json")
-    parser.add_argument("--action", choices=["hunt_evtx", "hunt_json", "sigma", "full"],
-                        default="full")
+    parser.add_argument(
+        "--action", choices=["hunt_evtx", "hunt_json", "sigma", "full"], default="full"
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

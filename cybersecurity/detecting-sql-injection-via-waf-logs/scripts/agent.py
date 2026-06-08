@@ -8,7 +8,9 @@ import argparse
 from datetime import datetime
 from collections import defaultdict
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 SQLI_PATTERNS = [
@@ -134,13 +136,26 @@ def analyze_modsecurity_entries(entries):
         sqli_rules = [rid for rid in rule_ids if rid in MODSEC_RULE_MAP]
         if sqli_rules:
             sqli_classes = classify_sqli(request_uri)
-            findings.append({
-                "source_ip": source_ip,
-                "request_uri": request_uri[:500],
-                "rules_triggered": [{"id": r, "desc": MODSEC_RULE_MAP.get(r, "Unknown")} for r in sqli_rules],
-                "sqli_classification": sqli_classes if sqli_classes else [{"type": "WAF rule match", "severity": "high"}],
-                "severity": "critical" if any(c["severity"] == "critical" for c in sqli_classes) else "high",
-            })
+            findings.append(
+                {
+                    "source_ip": source_ip,
+                    "request_uri": request_uri[:500],
+                    "rules_triggered": [
+                        {"id": r, "desc": MODSEC_RULE_MAP.get(r, "Unknown")}
+                        for r in sqli_rules
+                    ],
+                    "sqli_classification": (
+                        sqli_classes
+                        if sqli_classes
+                        else [{"type": "WAF rule match", "severity": "high"}]
+                    ),
+                    "severity": (
+                        "critical"
+                        if any(c["severity"] == "critical" for c in sqli_classes)
+                        else "high"
+                    ),
+                }
+            )
     return findings
 
 
@@ -148,22 +163,33 @@ def analyze_json_waf_entries(entries):
     """Analyze JSON WAF log entries for SQLi patterns."""
     findings = []
     for entry in entries:
-        uri = entry.get("httpRequest", {}).get("uri", "") or entry.get("ClientRequestURI", "")
-        args = entry.get("httpRequest", {}).get("args", "") or entry.get("queryString", "")
-        source_ip = entry.get("httpRequest", {}).get("clientIp", "") or entry.get("ClientIP", "")
+        uri = entry.get("httpRequest", {}).get("uri", "") or entry.get(
+            "ClientRequestURI", ""
+        )
+        args = entry.get("httpRequest", {}).get("args", "") or entry.get(
+            "queryString", ""
+        )
+        source_ip = entry.get("httpRequest", {}).get("clientIp", "") or entry.get(
+            "ClientIP", ""
+        )
         action = entry.get("action", "") or entry.get("Action", "")
 
         payload = f"{uri}?{args}" if args else uri
         sqli_classes = classify_sqli(payload)
 
         if sqli_classes:
-            findings.append({
-                "source_ip": source_ip,
-                "request_uri": payload[:500],
-                "action": action,
-                "sqli_classification": sqli_classes,
-                "severity": max((c["severity"] for c in sqli_classes), key=lambda s: {"critical": 3, "high": 2, "medium": 1}.get(s, 0)),
-            })
+            findings.append(
+                {
+                    "source_ip": source_ip,
+                    "request_uri": payload[:500],
+                    "action": action,
+                    "sqli_classification": sqli_classes,
+                    "severity": max(
+                        (c["severity"] for c in sqli_classes),
+                        key=lambda s: {"critical": 3, "high": 2, "medium": 1}.get(s, 0),
+                    ),
+                }
+            )
     return findings
 
 
@@ -180,14 +206,21 @@ def correlate_campaigns(findings, time_window_sec=300, min_requests=5):
             for f in group:
                 for c in f.get("sqli_classification", []):
                     attack_types.add(c["type"])
-            campaigns.append({
-                "source_ip": ip,
-                "request_count": len(group),
-                "attack_types": list(attack_types),
-                "severity": "critical" if len(attack_types) > 2 else "high",
-                "classification": "automated" if len(group) > 20 else "manual",
-            })
-            logger.warning("SQLi campaign: %s (%d requests, %d attack types)", ip, len(group), len(attack_types))
+            campaigns.append(
+                {
+                    "source_ip": ip,
+                    "request_count": len(group),
+                    "attack_types": list(attack_types),
+                    "severity": "critical" if len(attack_types) > 2 else "high",
+                    "classification": "automated" if len(group) > 20 else "manual",
+                }
+            )
+            logger.warning(
+                "SQLi campaign: %s (%d requests, %d attack types)",
+                ip,
+                len(group),
+                len(attack_types),
+            )
     return campaigns
 
 
@@ -198,19 +231,25 @@ def generate_report(findings, campaigns):
         "timestamp": datetime.utcnow().isoformat(),
         "total_sqli_events": len(findings),
         "critical_events": len(critical),
-        "unique_sources": len(set(f["source_ip"] for f in findings if f.get("source_ip"))),
+        "unique_sources": len(
+            set(f["source_ip"] for f in findings if f.get("source_ip"))
+        ),
         "campaigns_detected": len(campaigns),
         "campaigns": campaigns,
         "top_findings": findings[:100],
     }
-    print(f"SQLI REPORT: {len(findings)} events, {len(campaigns)} campaigns, {len(critical)} critical")
+    print(
+        f"SQLI REPORT: {len(findings)} events, {len(campaigns)} campaigns, {len(critical)} critical"
+    )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="SQL Injection WAF Log Analysis Agent")
     parser.add_argument("--log-file", required=True, help="WAF log file path")
-    parser.add_argument("--format", choices=["modsecurity", "json"], default="modsecurity")
+    parser.add_argument(
+        "--format", choices=["modsecurity", "json"], default="modsecurity"
+    )
     parser.add_argument("--output", default="sqli_report.json")
     args = parser.parse_args()
 

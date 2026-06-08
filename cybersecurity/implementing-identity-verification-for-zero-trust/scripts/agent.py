@@ -6,7 +6,6 @@ import argparse
 from datetime import datetime
 from collections import Counter
 
-
 CISA_ZT_IDENTITY_LEVELS = {
     "traditional": {
         "description": "Password-based auth, static policies",
@@ -40,22 +39,39 @@ def assess_authentication_methods(auth_config):
         sso = methods.get("sso_enabled", False)
 
         if not mfa_enabled:
-            findings.append({"control": "MFA", "status": "MISSING",
-                             "severity": "CRITICAL"})
+            findings.append(
+                {"control": "MFA", "status": "MISSING", "severity": "CRITICAL"}
+            )
         elif not phishing_resistant:
-            findings.append({"control": "Phishing-resistant MFA", "status": "MISSING",
-                             "severity": "HIGH",
-                             "recommendation": "Deploy FIDO2 or certificate-based auth"})
+            findings.append(
+                {
+                    "control": "Phishing-resistant MFA",
+                    "status": "MISSING",
+                    "severity": "HIGH",
+                    "recommendation": "Deploy FIDO2 or certificate-based auth",
+                }
+            )
 
         if not fido2:
-            findings.append({"control": "FIDO2/WebAuthn", "status": "NOT_DEPLOYED",
-                             "severity": "MEDIUM"})
+            findings.append(
+                {
+                    "control": "FIDO2/WebAuthn",
+                    "status": "NOT_DEPLOYED",
+                    "severity": "MEDIUM",
+                }
+            )
         if not passwordless:
-            findings.append({"control": "Passwordless authentication",
-                             "status": "NOT_DEPLOYED", "severity": "MEDIUM"})
+            findings.append(
+                {
+                    "control": "Passwordless authentication",
+                    "status": "NOT_DEPLOYED",
+                    "severity": "MEDIUM",
+                }
+            )
         if not sso:
-            findings.append({"control": "SSO", "status": "NOT_DEPLOYED",
-                             "severity": "HIGH"})
+            findings.append(
+                {"control": "SSO", "status": "NOT_DEPLOYED", "severity": "HIGH"}
+            )
     return findings
 
 
@@ -65,8 +81,13 @@ def assess_conditional_access(policies_path):
         policies = json.load(f)
     items = policies if isinstance(policies, list) else policies.get("policies", [])
     findings = []
-    required_signals = ["device_compliance", "location", "risk_level",
-                        "application", "user_group"]
+    required_signals = [
+        "device_compliance",
+        "location",
+        "risk_level",
+        "application",
+        "user_group",
+    ]
     covered_signals = set()
 
     for policy in items:
@@ -75,27 +96,36 @@ def assess_conditional_access(policies_path):
             if conditions.get(signal) or signal in str(conditions):
                 covered_signals.add(signal)
         if policy.get("grant_controls", {}).get("operator") == "OR":
-            findings.append({
-                "policy": policy.get("name", ""),
-                "issue": "Grant controls use OR (should be AND)",
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "policy": policy.get("name", ""),
+                    "issue": "Grant controls use OR (should be AND)",
+                    "severity": "HIGH",
+                }
+            )
         if not policy.get("state", "").lower() in ("enabled", "on"):
-            findings.append({
-                "policy": policy.get("name", ""),
-                "issue": "Policy not enabled",
-                "severity": "MEDIUM",
-            })
+            findings.append(
+                {
+                    "policy": policy.get("name", ""),
+                    "issue": "Policy not enabled",
+                    "severity": "MEDIUM",
+                }
+            )
 
     missing = set(required_signals) - covered_signals
     for signal in missing:
-        findings.append({
-            "control": f"Conditional access signal: {signal}",
-            "status": "NOT_COVERED",
-            "severity": "HIGH",
-        })
-    return {"findings": findings, "covered_signals": list(covered_signals),
-            "missing_signals": list(missing)}
+        findings.append(
+            {
+                "control": f"Conditional access signal: {signal}",
+                "status": "NOT_COVERED",
+                "severity": "HIGH",
+            }
+        )
+    return {
+        "findings": findings,
+        "covered_signals": list(covered_signals),
+        "missing_signals": list(missing),
+    }
 
 
 def assess_identity_maturity(config):
@@ -103,26 +133,43 @@ def assess_identity_maturity(config):
     scores = {}
     categories = {
         "authentication": {
-            "checks": ["mfa_enforced", "phishing_resistant_mfa", "passwordless",
-                        "continuous_auth"],
+            "checks": [
+                "mfa_enforced",
+                "phishing_resistant_mfa",
+                "passwordless",
+                "continuous_auth",
+            ],
         },
         "identity_stores": {
-            "checks": ["centralized_idp", "cloud_identity", "directory_sync",
-                        "identity_federation"],
+            "checks": [
+                "centralized_idp",
+                "cloud_identity",
+                "directory_sync",
+                "identity_federation",
+            ],
         },
         "risk_assessment": {
-            "checks": ["risk_based_access", "behavioral_analytics",
-                        "impossible_travel_detection", "session_risk_scoring"],
+            "checks": [
+                "risk_based_access",
+                "behavioral_analytics",
+                "impossible_travel_detection",
+                "session_risk_scoring",
+            ],
         },
         "visibility": {
-            "checks": ["identity_audit_logging", "real_time_monitoring",
-                        "identity_analytics_dashboard", "automated_anomaly_detection"],
+            "checks": [
+                "identity_audit_logging",
+                "real_time_monitoring",
+                "identity_analytics_dashboard",
+                "automated_anomaly_detection",
+            ],
         },
     }
 
     for category, info in categories.items():
-        implemented = sum(1 for check in info["checks"]
-                          if config.get(category, {}).get(check, False))
+        implemented = sum(
+            1 for check in info["checks"] if config.get(category, {}).get(check, False)
+        )
         total = len(info["checks"])
         ratio = implemented / total if total else 0
         if ratio >= 0.9:
@@ -149,8 +196,11 @@ def assess_identity_maturity(config):
     else:
         overall_level = "traditional"
 
-    return {"categories": scores, "overall_score": round(avg_score, 1),
-            "overall_level": overall_level}
+    return {
+        "categories": scores,
+        "overall_score": round(avg_score, 1),
+        "overall_level": overall_level,
+    }
 
 
 def analyze_auth_events(events_path):
@@ -161,7 +211,9 @@ def analyze_auth_events(events_path):
 
     by_method = Counter(e.get("auth_method", "unknown") for e in items)
     by_result = Counter(e.get("result", "unknown") for e in items)
-    risky = [e for e in items if e.get("risk_level", "").lower() in ("high", "critical")]
+    risky = [
+        e for e in items if e.get("risk_level", "").lower() in ("high", "critical")
+    ]
     mfa_bypassed = [e for e in items if e.get("mfa_bypassed", False)]
 
     return {
@@ -170,19 +222,27 @@ def analyze_auth_events(events_path):
         "by_result": dict(by_result),
         "high_risk_events": len(risky),
         "mfa_bypass_events": len(mfa_bypassed),
-        "password_only_rate": round(
-            by_method.get("password", 0) / len(items) * 100, 1) if items else 0,
+        "password_only_rate": (
+            round(by_method.get("password", 0) / len(items) * 100, 1) if items else 0
+        ),
     }
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Zero Trust Identity Verification Agent")
+    parser = argparse.ArgumentParser(
+        description="Zero Trust Identity Verification Agent"
+    )
     parser.add_argument("--auth-config", help="Authentication config JSON")
     parser.add_argument("--policies", help="Conditional access policies JSON")
-    parser.add_argument("--maturity-config", help="Identity maturity assessment config JSON")
+    parser.add_argument(
+        "--maturity-config", help="Identity maturity assessment config JSON"
+    )
     parser.add_argument("--auth-events", help="Authentication events log JSON")
-    parser.add_argument("--action", choices=["auth", "policies", "maturity", "events", "full"],
-                        default="full")
+    parser.add_argument(
+        "--action",
+        choices=["auth", "policies", "maturity", "events", "full"],
+        default="full",
+    )
     parser.add_argument("--output", default="zt_identity_report.json")
     args = parser.parse_args()
 
@@ -206,12 +266,16 @@ def main():
             config = json.load(f)
         result = assess_identity_maturity(config)
         report["results"]["maturity"] = result
-        print(f"[+] Identity maturity: {result['overall_level']} (score: {result['overall_score']})")
+        print(
+            f"[+] Identity maturity: {result['overall_level']} (score: {result['overall_score']})"
+        )
 
     if args.action in ("events", "full") and args.auth_events:
         result = analyze_auth_events(args.auth_events)
         report["results"]["events"] = result
-        print(f"[+] Auth events: {result['total_events']}, password-only: {result['password_only_rate']}%")
+        print(
+            f"[+] Auth events: {result['total_events']}, password-only: {result['password_only_rate']}%"
+        )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)

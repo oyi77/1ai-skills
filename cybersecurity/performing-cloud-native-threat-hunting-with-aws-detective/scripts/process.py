@@ -19,17 +19,17 @@ def _collect_all_pages(client_method, result_key, **kwargs):
     while True:
         response = client_method(**kwargs)
         all_items.extend(response.get(result_key, []))
-        next_token = response.get('NextToken')
+        next_token = response.get("NextToken")
         if not next_token:
             break
-        kwargs['NextToken'] = next_token
+        kwargs["NextToken"] = next_token
     return all_items
 
 
 def list_behavior_graphs(session):
     """List all Detective behavior graphs in the account."""
-    client = session.client('detective')
-    graphs = _collect_all_pages(client.list_graphs, 'GraphList')
+    client = session.client("detective")
+    graphs = _collect_all_pages(client.list_graphs, "GraphList")
 
     if not graphs:
         print("[!] No behavior graphs found. Enable Detective first.")
@@ -38,7 +38,7 @@ def list_behavior_graphs(session):
     print(f"[+] Found {len(graphs)} behavior graph(s)\n")
     for graph in graphs:
         print(f"  ARN: {graph['Arn']}")
-        created = graph.get('CreatedTime', 'N/A')
+        created = graph.get("CreatedTime", "N/A")
         print(f"  Created: {created}")
         print()
 
@@ -47,21 +47,21 @@ def list_behavior_graphs(session):
 
 def list_investigations(session, graph_arn, severity=None, max_results=20):
     """List investigations filtered by severity."""
-    client = session.client('detective')
+    client = session.client("detective")
 
     filter_criteria = {}
     if severity:
-        filter_criteria['Severity'] = {'Value': severity}
+        filter_criteria["Severity"] = {"Value": severity}
 
     kwargs = {
-        'GraphArn': graph_arn,
-        'MaxResults': max_results,
+        "GraphArn": graph_arn,
+        "MaxResults": max_results,
     }
     if filter_criteria:
-        kwargs['FilterCriteria'] = filter_criteria
+        kwargs["FilterCriteria"] = filter_criteria
 
     investigations = _collect_all_pages(
-        client.list_investigations, 'InvestigationDetails', **kwargs
+        client.list_investigations, "InvestigationDetails", **kwargs
     )
 
     if not investigations:
@@ -70,11 +70,11 @@ def list_investigations(session, graph_arn, severity=None, max_results=20):
 
     print(f"[+] Found {len(investigations)} investigation(s)\n")
     for inv in investigations:
-        inv_id = inv.get('InvestigationId', 'N/A')
-        severity = inv.get('Severity', 'N/A')
-        status = inv.get('Status', 'N/A')
-        entity = inv.get('EntityArn', 'N/A')
-        created = inv.get('CreatedTime', 'N/A')
+        inv_id = inv.get("InvestigationId", "N/A")
+        severity = inv.get("Severity", "N/A")
+        status = inv.get("Status", "N/A")
+        entity = inv.get("EntityArn", "N/A")
+        created = inv.get("CreatedTime", "N/A")
         print(f"  Investigation: {inv_id}")
         print(f"    Severity: {severity} | Status: {status}")
         print(f"    Entity: {entity}")
@@ -86,7 +86,7 @@ def list_investigations(session, graph_arn, severity=None, max_results=20):
 
 def get_investigation_detail(session, graph_arn, investigation_id):
     """Get detailed information about a specific investigation."""
-    client = session.client('detective')
+    client = session.client("detective")
 
     response = client.get_investigation(
         GraphArn=graph_arn,
@@ -107,10 +107,11 @@ def get_investigation_detail(session, graph_arn, investigation_id):
 
 def list_indicators(session, graph_arn, investigation_id, max_results=50):
     """List indicators for a specific investigation."""
-    client = session.client('detective')
+    client = session.client("detective")
 
     indicators = _collect_all_pages(
-        client.list_indicators, 'Indicators',
+        client.list_indicators,
+        "Indicators",
         GraphArn=graph_arn,
         InvestigationId=investigation_id,
         MaxResults=max_results,
@@ -121,8 +122,8 @@ def list_indicators(session, graph_arn, investigation_id, max_results=50):
 
     print(f"[+] Found {len(indicators)} indicator(s)\n")
     for ind in indicators:
-        ind_type = ind.get('IndicatorType', 'N/A')
-        detail = ind.get('IndicatorDetail', {})
+        ind_type = ind.get("IndicatorType", "N/A")
+        detail = ind.get("IndicatorDetail", {})
         print(f"  Type: {ind_type}")
         if detail:
             print(f"    Detail: {json.dumps(detail, default=str)[:200]}")
@@ -144,12 +145,8 @@ def export_results(data, output_dir):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="AWS Detective Threat Hunting Tool"
-    )
-    parser.add_argument(
-        "--graphs", action="store_true", help="List behavior graphs"
-    )
+    parser = argparse.ArgumentParser(description="AWS Detective Threat Hunting Tool")
+    parser.add_argument("--graphs", action="store_true", help="List behavior graphs")
     parser.add_argument(
         "--investigations", action="store_true", help="List investigations"
     )
@@ -157,9 +154,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--investigation-id", type=str, help="Investigation ID for detail view"
     )
-    parser.add_argument(
-        "--indicators", action="store_true", help="List indicators"
-    )
+    parser.add_argument("--indicators", action="store_true", help="List indicators")
     parser.add_argument(
         "--severity",
         type=str,
@@ -167,13 +162,12 @@ if __name__ == "__main__":
         choices=["INFORMATIONAL", "LOW", "MEDIUM", "HIGH", "CRITICAL"],
         help="Severity filter (e.g. HIGH)",
     )
-    parser.add_argument("--max-results", type=int, default=20,
-                        help="Max results per API call (1-100)")
+    parser.add_argument(
+        "--max-results", type=int, default=20, help="Max results per API call (1-100)"
+    )
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("--profile", type=str, help="AWS profile name")
-    parser.add_argument(
-        "--output", type=str, help="Output directory for JSON export"
-    )
+    parser.add_argument("--output", type=str, help="Output directory for JSON export")
     args = parser.parse_args()
 
     if args.max_results < 1 or args.max_results > 100:

@@ -16,14 +16,17 @@ import argparse
 import datetime
 from pathlib import Path
 
-
 SENSITIVE_PATTERNS = {
     "password": re.compile(r'(?i)(password|passwd|pwd)\s*[=:]\s*["\']?([^\s"\']+)'),
     "api_key": re.compile(r'(?i)(api[_-]?key|apikey)\s*[=:]\s*["\']?([^\s"\']+)'),
-    "connection_string": re.compile(r'(?i)(connection[_-]?string|jdbc:)\s*[=:]\s*["\']?([^\s"\']+)'),
+    "connection_string": re.compile(
+        r'(?i)(connection[_-]?string|jdbc:)\s*[=:]\s*["\']?([^\s"\']+)'
+    ),
     "secret": re.compile(r'(?i)(secret|token)\s*[=:]\s*["\']?([^\s"\']+)'),
-    "url_with_creds": re.compile(r'https?://[^:]+:[^@]+@[\w.]+'),
-    "hardcoded_ip": re.compile(r'\b(?:10|172\.(?:1[6-9]|2\d|3[01])|192\.168)\.\d{1,3}\.\d{1,3}\b'),
+    "url_with_creds": re.compile(r"https?://[^:]+:[^@]+@[\w.]+"),
+    "hardcoded_ip": re.compile(
+        r"\b(?:10|172\.(?:1[6-9]|2\d|3[01])|192\.168)\.\d{1,3}\.\d{1,3}\b"
+    ),
 }
 
 
@@ -56,18 +59,33 @@ def scan_for_secrets(strings: list[str]) -> list[dict]:
         for name, pattern in SENSITIVE_PATTERNS.items():
             match = pattern.search(s)
             if match:
-                findings.append({
-                    "type": name,
-                    "match": s[:200],
-                    "severity": "High" if name in ("password", "connection_string", "secret") else "Medium"
-                })
+                findings.append(
+                    {
+                        "type": name,
+                        "match": s[:200],
+                        "severity": (
+                            "High"
+                            if name in ("password", "connection_string", "secret")
+                            else "Medium"
+                        ),
+                    }
+                )
                 break
     return findings
 
 
 def scan_config_files(app_dir: str) -> list[dict]:
     """Scan configuration files for sensitive data."""
-    config_extensions = {".config", ".xml", ".json", ".ini", ".properties", ".yaml", ".yml", ".cfg"}
+    config_extensions = {
+        ".config",
+        ".xml",
+        ".json",
+        ".ini",
+        ".properties",
+        ".yaml",
+        ".yml",
+        ".cfg",
+    }
     findings = []
 
     for root, dirs, files in os.walk(app_dir):
@@ -81,12 +99,14 @@ def scan_config_files(app_dir: str) -> list[dict]:
                     for name, pattern in SENSITIVE_PATTERNS.items():
                         matches = pattern.findall(content)
                         for match in matches:
-                            findings.append({
-                                "file": filepath,
-                                "type": name,
-                                "match": str(match)[:200],
-                                "severity": "High"
-                            })
+                            findings.append(
+                                {
+                                    "file": filepath,
+                                    "type": name,
+                                    "match": str(match)[:200],
+                                    "severity": "High",
+                                }
+                            )
                 except (PermissionError, OSError):
                     continue
     return findings
@@ -99,23 +119,31 @@ def analyze_dlls(app_dir: str) -> list[dict]:
         for filename in files:
             if filename.lower().endswith(".dll"):
                 filepath = os.path.join(root, filename)
-                dlls.append({
-                    "name": filename,
-                    "path": filepath,
-                    "writable": os.access(filepath, os.W_OK),
-                    "size": os.path.getsize(filepath)
-                })
+                dlls.append(
+                    {
+                        "name": filename,
+                        "path": filepath,
+                        "writable": os.access(filepath, os.W_OK),
+                        "size": os.path.getsize(filepath),
+                    }
+                )
 
     writable = [d for d in dlls if d["writable"]]
     return dlls, writable
 
 
-def generate_report(app_dir: str, string_findings: list[dict],
-                     config_findings: list[dict], dll_info: tuple,
-                     output_dir: Path) -> str:
+def generate_report(
+    app_dir: str,
+    string_findings: list[dict],
+    config_findings: list[dict],
+    dll_info: tuple,
+    output_dir: Path,
+) -> str:
     """Generate thick client analysis report."""
     report_file = output_dir / "thick_client_report.md"
-    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime(
+        "%Y-%m-%d %H:%M UTC"
+    )
     all_dlls, writable_dlls = dll_info
 
     with open(report_file, "w") as f:
@@ -125,19 +153,27 @@ def generate_report(app_dir: str, string_findings: list[dict],
 
         f.write("## Binary String Analysis\n\n")
         if string_findings:
-            f.write(f"Found **{len(string_findings)}** potentially sensitive strings:\n\n")
+            f.write(
+                f"Found **{len(string_findings)}** potentially sensitive strings:\n\n"
+            )
             f.write("| Type | Match | Severity |\n|------|-------|----------|\n")
             for finding in string_findings[:50]:
-                f.write(f"| {finding['type']} | `{finding['match'][:80]}` | {finding['severity']} |\n")
+                f.write(
+                    f"| {finding['type']} | `{finding['match'][:80]}` | {finding['severity']} |\n"
+                )
         else:
             f.write("No sensitive strings detected in binaries.\n")
         f.write("\n")
 
         f.write("## Configuration File Analysis\n\n")
         if config_findings:
-            f.write(f"Found **{len(config_findings)}** sensitive entries in configs:\n\n")
+            f.write(
+                f"Found **{len(config_findings)}** sensitive entries in configs:\n\n"
+            )
             for finding in config_findings[:20]:
-                f.write(f"- **{finding['type']}** in `{finding['file']}`: `{finding['match'][:80]}`\n")
+                f.write(
+                    f"- **{finding['type']}** in `{finding['file']}`: `{finding['match'][:80]}`\n"
+                )
         else:
             f.write("No sensitive data found in configuration files.\n")
         f.write("\n")
@@ -157,7 +193,9 @@ def generate_report(app_dir: str, string_findings: list[dict],
 
 def main():
     parser = argparse.ArgumentParser(description="Thick Client Static Analysis")
-    parser.add_argument("--app-dir", required=True, help="Application installation directory")
+    parser.add_argument(
+        "--app-dir", required=True, help="Application installation directory"
+    )
     parser.add_argument("--output", default="./results")
     args = parser.parse_args()
 

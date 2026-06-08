@@ -10,18 +10,35 @@ from io import StringIO
 from datetime import datetime
 
 SUSPICIOUS_TASK_PATTERNS = [
-    r"powershell.*-enc", r"powershell.*downloadstring", r"powershell.*iex",
-    r"cmd\.exe\s+/c", r"mshta\.exe", r"rundll32\.exe", r"regsvr32\.exe",
-    r"certutil.*-decode", r"bitsadmin.*transfer",
-    r"wscript\.exe", r"cscript\.exe",
-    r"\\temp\\", r"\\tmp\\", r"\\appdata\\local\\temp",
-    r"\\users\\public\\", r"\\programdata\\",
-    r"base64", r"http://", r"https://.*\.exe",
+    r"powershell.*-enc",
+    r"powershell.*downloadstring",
+    r"powershell.*iex",
+    r"cmd\.exe\s+/c",
+    r"mshta\.exe",
+    r"rundll32\.exe",
+    r"regsvr32\.exe",
+    r"certutil.*-decode",
+    r"bitsadmin.*transfer",
+    r"wscript\.exe",
+    r"cscript\.exe",
+    r"\\temp\\",
+    r"\\tmp\\",
+    r"\\appdata\\local\\temp",
+    r"\\users\\public\\",
+    r"\\programdata\\",
+    r"base64",
+    r"http://",
+    r"https://.*\.exe",
 ]
 
 LEGITIMATE_TASK_PREFIXES = [
-    r"\\Microsoft\\", r"\\Adobe\\", r"\\Google\\", r"\\Apple\\",
-    r"\\Mozilla\\", r"\\Intel\\", r"\\NVIDIA\\",
+    r"\\Microsoft\\",
+    r"\\Adobe\\",
+    r"\\Google\\",
+    r"\\Apple\\",
+    r"\\Mozilla\\",
+    r"\\Intel\\",
+    r"\\NVIDIA\\",
 ]
 
 
@@ -30,7 +47,9 @@ def enumerate_tasks():
     try:
         proc = subprocess.run(
             ["schtasks", "/query", "/fo", "CSV", "/v"],
-            capture_output=True, text=True, timeout=60
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
     except (subprocess.TimeoutExpired, FileNotFoundError) as e:
         return {"error": str(e)}
@@ -43,20 +62,24 @@ def enumerate_tasks():
         schedule = row.get("Schedule Type", "")
         status = row.get("Status", "")
         is_legit = any(re.search(p, task_name, re.I) for p in LEGITIMATE_TASK_PREFIXES)
-        is_suspicious = any(re.search(p, action, re.I) for p in SUSPICIOUS_TASK_PATTERNS)
+        is_suspicious = any(
+            re.search(p, action, re.I) for p in SUSPICIOUS_TASK_PATTERNS
+        )
         risk = "high" if is_suspicious else ("low" if is_legit else "medium")
-        findings.append({
-            "task_name": task_name,
-            "action": action[:500],
-            "author": author,
-            "schedule": schedule,
-            "status": status,
-            "last_run": row.get("Last Run Time", ""),
-            "next_run": row.get("Next Run Time", ""),
-            "run_as_user": row.get("Run As User", ""),
-            "risk": risk,
-            "suspicious_match": is_suspicious,
-        })
+        findings.append(
+            {
+                "task_name": task_name,
+                "action": action[:500],
+                "author": author,
+                "schedule": schedule,
+                "status": status,
+                "last_run": row.get("Last Run Time", ""),
+                "next_run": row.get("Next Run Time", ""),
+                "run_as_user": row.get("Run As User", ""),
+                "risk": risk,
+                "suspicious_match": is_suspicious,
+            }
+        )
     suspicious = [f for f in findings if f["risk"] in ("high", "medium")]
     return {
         "timestamp": datetime.utcnow().isoformat(),
@@ -81,11 +104,13 @@ def scan_event_log_4698(evtx_file):
             if "<EventID>4698</EventID>" not in xml:
                 continue
             suspicious = any(re.search(p, xml, re.I) for p in SUSPICIOUS_TASK_PATTERNS)
-            findings.append({
-                "record_id": record.record_num(),
-                "suspicious": suspicious,
-                "xml_snippet": xml[:1000],
-            })
+            findings.append(
+                {
+                    "record_id": record.record_num(),
+                    "suspicious": suspicious,
+                    "xml_snippet": xml[:1000],
+                }
+            )
     return {
         "file": evtx_file,
         "task_creation_events": len(findings),
@@ -99,7 +124,9 @@ def export_task_xml(task_name):
     try:
         proc = subprocess.run(
             ["schtasks", "/query", "/tn", task_name, "/xml"],
-            capture_output=True, text=True, timeout=10
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         if proc.returncode == 0:
             return {"task_name": task_name, "xml": proc.stdout}

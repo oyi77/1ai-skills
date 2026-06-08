@@ -6,14 +6,28 @@ import json
 import sys
 import re
 
+
 def run_docker_bench():
     """Run Docker Bench Security and parse results."""
     cmd = [
-        "docker", "run", "--rm", "--net", "host", "--pid", "host",
-        "--userns", "host", "--cap-add", "audit_control",
-        "-v", "/etc:/etc:ro", "-v", "/var/lib:/var/lib:ro",
-        "-v", "/var/run/docker.sock:/var/run/docker.sock:ro",
-        "docker/docker-bench-security"
+        "docker",
+        "run",
+        "--rm",
+        "--net",
+        "host",
+        "--pid",
+        "host",
+        "--userns",
+        "host",
+        "--cap-add",
+        "audit_control",
+        "-v",
+        "/etc:/etc:ro",
+        "-v",
+        "/var/lib:/var/lib:ro",
+        "-v",
+        "/var/run/docker.sock:/var/run/docker.sock:ro",
+        "docker/docker-bench-security",
     ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
@@ -38,9 +52,9 @@ def run_docker_bench():
     print(f"WARN: {len(results['WARN'])}")
     print(f"INFO: {len(results['INFO'])}")
 
-    total = len(results['PASS']) + len(results['FAIL'])
+    total = len(results["PASS"]) + len(results["FAIL"])
     if total > 0:
-        score = (len(results['PASS']) / total) * 100
+        score = (len(results["PASS"]) / total) * 100
         print(f"Score: {score:.1f}%")
 
     if results["FAIL"]:
@@ -51,6 +65,7 @@ def run_docker_bench():
     with open("docker_bench_results.json", "w") as fh:
         json.dump(results, fh, indent=2)
     print(f"\n[*] Results saved to docker_bench_results.json")
+
 
 if __name__ == "__main__":
     run_docker_bench()

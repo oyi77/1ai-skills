@@ -30,6 +30,7 @@ MAX_DM_PER_HOUR = 20
 
 # ─── DM CONTENT BUILDER ────────────────────────────────────────────────────────
 
+
 def build_dm_content(username: str, comment_text: str, post_caption: str = "") -> dict:
     """Build DM content for a specific user based on their comment."""
     combined = f"{comment_text} {post_caption}"
@@ -46,6 +47,7 @@ def build_dm_content(username: str, comment_text: str, post_caption: str = "") -
 
 
 # ─── COOLDOWN MANAGEMENT ───────────────────────────────────────────────────────
+
 
 def load_dm_cooldowns() -> dict:
     """Load dict of {username: last_dm_timestamp}."""
@@ -77,6 +79,7 @@ def mark_dm_sent(username: str, cooldowns: dict) -> dict:
 
 # ─── DM LOGGING ────────────────────────────────────────────────────────────────
 
+
 def log_dm_sent(username: str, platform: str, message: str, product: str, status: str):
     os.makedirs(os.path.dirname(DM_LOG_FILE), exist_ok=True)
     entry = {
@@ -91,7 +94,9 @@ def log_dm_sent(username: str, platform: str, message: str, product: str, status
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
-def queue_dm(username: str, platform: str, message: str, product_url: str, post_url: str = ""):
+def queue_dm(
+    username: str, platform: str, message: str, product_url: str, post_url: str = ""
+):
     """Queue a DM for manual/future sending."""
     os.makedirs(os.path.dirname(DM_QUEUE_FILE), exist_ok=True)
     entry = {
@@ -109,6 +114,7 @@ def queue_dm(username: str, platform: str, message: str, product_url: str, post_
 
 
 # ─── PLATFORM DM DISPATCHERS ───────────────────────────────────────────────────
+
 
 def send_tiktok_dm(username: str, message: str) -> bool:
     """
@@ -128,6 +134,7 @@ def send_instagram_dm(username: str, message: str) -> bool:
     Requires: Instagram Business account + approved IG API token.
     """
     import os
+
     ig_token = os.environ.get("INSTAGRAM_ACCESS_TOKEN")
     ig_account_id = os.environ.get("INSTAGRAM_ACCOUNT_ID")
 
@@ -136,6 +143,7 @@ def send_instagram_dm(username: str, message: str) -> bool:
         return False
 
     import requests
+
     try:
         # Find recipient's IG user ID first
         url = f"https://graph.instagram.com/v18.0/{ig_account_id}/messages"
@@ -169,6 +177,7 @@ def send_dm(username: str, platform: str, message: str) -> bool:
 
 
 # ─── MAIN FUNNEL PROCESSOR ─────────────────────────────────────────────────────
+
 
 def process_dm_funnel(dm_candidates: list, dry_run: bool = True) -> dict:
     """

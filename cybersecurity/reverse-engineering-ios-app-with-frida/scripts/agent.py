@@ -29,10 +29,14 @@ class FridaIOSAgent:
             cmd.extend(["-D", self.device_id])
         cmd.extend(["-n", self.target_app, "-q", "-e", script_code])
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True,
-                                    timeout=timeout)
-            return {"stdout": result.stdout, "stderr": result.stderr,
-                    "returncode": result.returncode}
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=timeout
+            )
+            return {
+                "stdout": result.stdout,
+                "stderr": result.stderr,
+                "returncode": result.returncode,
+            }
         except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
             return {"error": str(exc)}
 
@@ -67,9 +71,13 @@ try {
 """
         result = self._frida_cmd(script)
         if "SSL pinning bypassed" in result.get("stdout", ""):
-            self.findings.append({"type": "SSL Pinning Bypass",
-                                  "severity": "Medium",
-                                  "details": "SSL pinning can be bypassed with Frida"})
+            self.findings.append(
+                {
+                    "type": "SSL Pinning Bypass",
+                    "severity": "Medium",
+                    "details": "SSL pinning can be bypassed with Frida",
+                }
+            )
         return result
 
     def dump_keychain(self):
@@ -130,8 +138,9 @@ console.log('[+] Jailbreak detection hooks installed');
 """
         result = self._frida_cmd(script, timeout=15)
         if "Jailbreak check" in result.get("stdout", ""):
-            self.findings.append({"type": "Jailbreak Detection Present",
-                                  "severity": "Info"})
+            self.findings.append(
+                {"type": "Jailbreak Detection Present", "severity": "Info"}
+            )
         return result
 
     def generate_report(self):

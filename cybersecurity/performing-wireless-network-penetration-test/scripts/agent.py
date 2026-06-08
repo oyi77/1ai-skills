@@ -28,7 +28,10 @@ class WirelessPentestAgent:
         """Put wireless interface into monitor mode using airmon-ng."""
         result = subprocess.run(
             ["airmon-ng", "start", self.interface],
-            capture_output=True, text=True, timeout=30)
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
         mon_iface = f"{self.interface}mon"
         match = re.search(r"monitor mode.*enabled on (\w+)", result.stdout)
         if match:
@@ -41,9 +44,20 @@ class WirelessPentestAgent:
         csv_prefix = str(self.output_dir / "scan")
         try:
             subprocess.run(
-                ["airodump-ng", self.interface, "-w", csv_prefix,
-                 "--output-format", "csv", "--write-interval", "1"],
-                capture_output=True, text=True, timeout=duration)
+                [
+                    "airodump-ng",
+                    self.interface,
+                    "-w",
+                    csv_prefix,
+                    "--output-format",
+                    "csv",
+                    "--write-interval",
+                    "1",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=duration,
+            )
         except subprocess.TimeoutExpired:
             pass
 
@@ -68,18 +82,27 @@ class WirelessPentestAgent:
                     parts = [p.strip() for p in line.split(",")]
                     if len(parts) >= 14:
                         enc = parts[5].strip()
-                        networks.append({
-                            "bssid": parts[0], "channel": parts[3],
-                            "encryption": enc, "essid": parts[13],
-                            "power": parts[8],
-                        })
+                        networks.append(
+                            {
+                                "bssid": parts[0],
+                                "channel": parts[3],
+                                "encryption": enc,
+                                "essid": parts[13],
+                                "power": parts[8],
+                            }
+                        )
                         if enc in ("OPN", "WEP", ""):
-                            self.findings.append({
-                                "type": "Weak Encryption",
-                                "severity": "Critical" if enc in ("OPN", "") else "High",
-                                "bssid": parts[0], "essid": parts[13],
-                                "encryption": enc or "Open",
-                            })
+                            self.findings.append(
+                                {
+                                    "type": "Weak Encryption",
+                                    "severity": (
+                                        "Critical" if enc in ("OPN", "") else "High"
+                                    ),
+                                    "bssid": parts[0],
+                                    "essid": parts[13],
+                                    "encryption": enc or "Open",
+                                }
+                            )
         except (IndexError, UnicodeDecodeError):
             pass
         return networks
@@ -89,9 +112,19 @@ class WirelessPentestAgent:
         cap_prefix = str(self.output_dir / "handshake")
         try:
             subprocess.run(
-                ["airodump-ng", self.interface, "--bssid", bssid,
-                 "-c", str(channel), "-w", cap_prefix],
-                capture_output=True, timeout=duration)
+                [
+                    "airodump-ng",
+                    self.interface,
+                    "--bssid",
+                    bssid,
+                    "-c",
+                    str(channel),
+                    "-w",
+                    cap_prefix,
+                ],
+                capture_output=True,
+                timeout=duration,
+            )
         except subprocess.TimeoutExpired:
             pass
         cap_file = Path(f"{cap_prefix}-01.cap")
@@ -101,24 +134,29 @@ class WirelessPentestAgent:
         """Attempt to crack WPA handshake with aircrack-ng."""
         result = subprocess.run(
             ["aircrack-ng", cap_file, "-w", wordlist],
-            capture_output=True, text=True, timeout=600)
+            capture_output=True,
+            text=True,
+            timeout=600,
+        )
         if "KEY FOUND" in result.stdout:
             match = re.search(r"KEY FOUND! \[ (.+?) \]", result.stdout)
             key = match.group(1) if match else "unknown"
-            self.findings.append({"type": "WPA Key Cracked",
-                                  "severity": "Critical", "key": key})
+            self.findings.append(
+                {"type": "WPA Key Cracked", "severity": "Critical", "key": key}
+            )
             return {"cracked": True, "key": key}
         return {"cracked": False}
 
     def test_wps(self, bssid):
         """Test WPS PIN vulnerability using reaver/wash."""
         result = subprocess.run(
-            ["wash", "-i", self.interface], capture_output=True,
-            text=True, timeout=30)
+            ["wash", "-i", self.interface], capture_output=True, text=True, timeout=30
+        )
         wps_enabled = bssid in result.stdout
         if wps_enabled:
-            self.findings.append({"type": "WPS Enabled", "severity": "High",
-                                  "bssid": bssid})
+            self.findings.append(
+                {"type": "WPS Enabled", "severity": "High", "bssid": bssid}
+            )
         return {"wps_enabled": wps_enabled}
 
     def generate_report(self):

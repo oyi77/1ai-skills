@@ -8,12 +8,16 @@ import argparse
 from datetime import datetime
 from collections import Counter, defaultdict
 
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 TECHNIQUE_PATTERNS = {
-    "T1566.001": [r"spearphish(?:ing)?\s+attach", r"malicious\s+(?:email\s+)?attachment"],
+    "T1566.001": [
+        r"spearphish(?:ing)?\s+attach",
+        r"malicious\s+(?:email\s+)?attachment",
+    ],
     "T1566.002": [r"spearphish(?:ing)?\s+link", r"phishing\s+(?:url|link)"],
     "T1059.001": [r"powershell", r"invoke-(?:expression|command|webrequest)"],
     "T1059.003": [r"cmd\.exe", r"command\s+(?:prompt|shell|line)"],
@@ -25,7 +29,10 @@ TECHNIQUE_PATTERNS = {
     "T1071.001": [r"http\s+c2", r"web\s+(?:beacon|c2)", r"https?\s+callback"],
     "T1486": [r"encrypt(?:ion|ed)\s+(?:file|data)", r"ransomware\s+encrypt"],
     "T1048": [r"exfiltrat(?:e|ion)", r"data\s+(?:theft|steal|upload)"],
-    "T1105": [r"download(?:ed)?\s+(?:payload|malware|tool)", r"ingress\s+tool\s+transfer"],
+    "T1105": [
+        r"download(?:ed)?\s+(?:payload|malware|tool)",
+        r"ingress\s+tool\s+transfer",
+    ],
     "T1027": [r"obfuscat(?:e|ion|ed)", r"encoded\s+(?:payload|script)"],
     "T1562.001": [r"disable\s+(?:antivirus|defender|security)", r"tamper\s+protection"],
 }
@@ -43,7 +50,10 @@ def extract_techniques_from_text(text):
     explicit = re.findall(r"T\d{4}(?:\.\d{3})?", text)
     for tid in explicit:
         if tid not in matched:
-            matched[tid] = {"pattern_matched": "explicit_reference", "technique_id": tid}
+            matched[tid] = {
+                "pattern_matched": "explicit_reference",
+                "technique_id": tid,
+            }
     return matched
 
 
@@ -51,7 +61,14 @@ def extract_iocs_from_text(text):
     """Extract IOCs from report text."""
     iocs = {
         "ips": list(set(re.findall(r"\b(?:\d{1,3}\.){3}\d{1,3}\b", text))),
-        "domains": list(set(re.findall(r"\b(?:[a-zA-Z0-9-]+\.)+(?:com|net|org|io|xyz|top|info|ru|cn)\b", text))),
+        "domains": list(
+            set(
+                re.findall(
+                    r"\b(?:[a-zA-Z0-9-]+\.)+(?:com|net|org|io|xyz|top|info|ru|cn)\b",
+                    text,
+                )
+            )
+        ),
         "hashes_md5": list(set(re.findall(r"\b[a-fA-F0-9]{32}\b", text))),
         "hashes_sha256": list(set(re.findall(r"\b[a-fA-F0-9]{64}\b", text))),
         "urls": list(set(re.findall(r"hxxps?://[^\s<>\"]+", text))),
@@ -97,13 +114,17 @@ def generate_report(processed_reports, library):
         "library": library,
         "report_details": processed_reports,
     }
-    print(f"PATTERN LIBRARY: {library['total_unique_techniques']} techniques from {library['total_reports_processed']} reports")
+    print(
+        f"PATTERN LIBRARY: {library['total_unique_techniques']} techniques from {library['total_reports_processed']} reports"
+    )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="Attack Pattern Library Builder Agent")
-    parser.add_argument("--report-files", nargs="+", required=True, help="CTI report text files")
+    parser.add_argument(
+        "--report-files", nargs="+", required=True, help="CTI report text files"
+    )
     parser.add_argument("--output", default="pattern_library.json")
     args = parser.parse_args()
 

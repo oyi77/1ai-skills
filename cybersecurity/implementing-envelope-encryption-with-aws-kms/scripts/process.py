@@ -34,7 +34,9 @@ import boto3
 from botocore.exceptions import ClientError
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 NONCE_LENGTH = 12
@@ -134,7 +136,9 @@ def envelope_encrypt(
         encrypted_key (variable) || context_len (4 bytes) || context_json (variable) ||
         nonce (12 bytes) || ciphertext+tag (variable)
     """
-    plaintext_key, encrypted_key = generate_data_key(kms_client, key_id, encryption_context)
+    plaintext_key, encrypted_key = generate_data_key(
+        kms_client, key_id, encryption_context
+    )
 
     try:
         nonce = os.urandom(NONCE_LENGTH)
@@ -336,7 +340,11 @@ def main():
         data = Path(args.input).read_bytes()
         result = envelope_re_encrypt(data, kms_client, args.key_id)
         Path(args.output).write_bytes(result)
-        print(json.dumps({"input": args.input, "output": args.output, "new_key_id": args.key_id}))
+        print(
+            json.dumps(
+                {"input": args.input, "output": args.output, "new_key_id": args.key_id}
+            )
+        )
     else:
         parser.print_help()
 

@@ -13,6 +13,7 @@ Features:
   • Weighted edges (0.0–1.0)
   • Thread-safe
 """
+
 import logging
 import sqlite3
 import threading
@@ -27,10 +28,13 @@ VALID_EDGE_TYPES = {"refers_to", "related_topic", "learned_from", "contradicts"}
 
 try:
     import networkx as nx
+
     _HAS_NX = True
 except ImportError:
     _HAS_NX = False
-    logger.warning("memory_graph: networkx not available — in-memory graph disabled, using SQL only")
+    logger.warning(
+        "memory_graph: networkx not available — in-memory graph disabled, using SQL only"
+    )
 
 
 class MemoryGraph:
@@ -55,9 +59,13 @@ class MemoryGraph:
                     PRIMARY KEY (from_id, to_id, edge_type)
                 )
             """)
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_me_from ON memory_edges(from_id)")
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_me_from ON memory_edges(from_id)"
+            )
             conn.execute("CREATE INDEX IF NOT EXISTS idx_me_to ON memory_edges(to_id)")
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_me_type ON memory_edges(edge_type)")
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_me_type ON memory_edges(edge_type)"
+            )
 
     def _load_from_db(self) -> None:
         """Populate networkx graph from DB on startup."""
@@ -82,7 +90,9 @@ class MemoryGraph:
         weight: float = 1.0,
     ) -> None:
         if edge_type not in VALID_EDGE_TYPES:
-            raise ValueError(f"Invalid edge_type '{edge_type}'. Valid: {VALID_EDGE_TYPES}")
+            raise ValueError(
+                f"Invalid edge_type '{edge_type}'. Valid: {VALID_EDGE_TYPES}"
+            )
         now = time.time()
         with self._lock:
             with self._conn() as conn:
@@ -95,7 +105,9 @@ class MemoryGraph:
             if self._graph is not None:
                 self._graph.add_edge(from_id, to_id, edge_type=edge_type, weight=weight)
 
-    def remove_edge(self, from_id: str, to_id: str, edge_type: Optional[str] = None) -> None:
+    def remove_edge(
+        self, from_id: str, to_id: str, edge_type: Optional[str] = None
+    ) -> None:
         with self._lock:
             with self._conn() as conn:
                 if edge_type:
@@ -162,10 +174,16 @@ class MemoryGraph:
 
                 # Determine neighbours
                 if direction in ("forward", "both"):
-                    for nbr, edge_data in self._graph[node].items() if node in self._graph else []:
+                    for nbr, edge_data in (
+                        self._graph[node].items() if node in self._graph else []
+                    ):
                         etype = edge_data.get("edge_type", "related_topic")
                         weight = edge_data.get("weight", 1.0)
-                        if etype in edge_types and nbr not in visited and nbr != start_id:
+                        if (
+                            etype in edge_types
+                            and nbr not in visited
+                            and nbr != start_id
+                        ):
                             visited[nbr] = {
                                 "memory_id": nbr,
                                 "hop_distance": hop + 1,
@@ -180,7 +198,11 @@ class MemoryGraph:
                         edge_data = self._graph[pred][node]
                         etype = edge_data.get("edge_type", "related_topic")
                         weight = edge_data.get("weight", 1.0)
-                        if etype in edge_types and pred not in visited and pred != start_id:
+                        if (
+                            etype in edge_types
+                            and pred not in visited
+                            and pred != start_id
+                        ):
                             visited[pred] = {
                                 "memory_id": pred,
                                 "hop_distance": hop + 1,
@@ -217,7 +239,13 @@ class MemoryGraph:
                     ).fetchall()
                     for fr, to, etype, w in rows:
                         if to not in visited and to != start_id:
-                            visited[to] = {"memory_id": to, "hop_distance": hop, "path": [], "edge_type": etype, "weight": w}
+                            visited[to] = {
+                                "memory_id": to,
+                                "hop_distance": hop,
+                                "path": [],
+                                "edge_type": etype,
+                                "weight": w,
+                            }
 
                 if direction in ("backward", "both"):
                     rows = conn.execute(
@@ -229,9 +257,17 @@ class MemoryGraph:
                     ).fetchall()
                     for fr, to, etype, w in rows:
                         if fr not in visited and fr != start_id:
-                            visited[fr] = {"memory_id": fr, "hop_distance": hop, "path": [], "edge_type": etype, "weight": w}
+                            visited[fr] = {
+                                "memory_id": fr,
+                                "hop_distance": hop,
+                                "path": [],
+                                "edge_type": etype,
+                                "weight": w,
+                            }
 
-            frontier = [v["memory_id"] for v in visited.values() if v["hop_distance"] == hop]
+            frontier = [
+                v["memory_id"] for v in visited.values() if v["hop_distance"] == hop
+            ]
 
         results = list(visited.values())
         results.sort(key=lambda x: (x["hop_distance"], -x["weight"]))
@@ -239,11 +275,15 @@ class MemoryGraph:
 
     # ── Query ────────────────────────────────────────────────────────────────
 
-    def neighbors(self, memory_id: str, edge_types: Optional[List[str]] = None) -> List[Dict]:
+    def neighbors(
+        self, memory_id: str, edge_types: Optional[List[str]] = None
+    ) -> List[Dict]:
         """Direct 1-hop neighbors."""
         return self.traverse(memory_id, max_hops=1, edge_types=edge_types)
 
-    def find_path(self, start_id: str, end_id: str, max_hops: int = 4) -> Optional[List[str]]:
+    def find_path(
+        self, start_id: str, end_id: str, max_hops: int = 4
+    ) -> Optional[List[str]]:
         """Find shortest path between two memories (networkx only)."""
         if self._graph is None:
             return None

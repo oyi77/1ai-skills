@@ -25,8 +25,10 @@ class CredentialRotationAgent:
     def _log(self, platform, account, action, status, details=None):
         entry = {
             "timestamp": datetime.utcnow().isoformat(),
-            "platform": platform, "account": account,
-            "action": action, "status": status,
+            "platform": platform,
+            "account": account,
+            "action": action,
+            "status": status,
         }
         if details:
             entry["details"] = details
@@ -36,9 +38,18 @@ class CredentialRotationAgent:
         """Rotate an AWS IAM user's access key using the AWS CLI."""
         try:
             create = subprocess.run(
-                ["aws", "iam", "create-access-key",
-                 "--user-name", username, "--output", "json"],
-                capture_output=True, text=True, timeout=30
+                [
+                    "aws",
+                    "iam",
+                    "create-access-key",
+                    "--user-name",
+                    username,
+                    "--output",
+                    "json",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
             if create.returncode != 0:
                 self._log("AWS", username, "create-key", "failed", create.stderr)
@@ -48,26 +59,50 @@ class CredentialRotationAgent:
             new_key_id = new_key["AccessKeyId"]
 
             list_result = subprocess.run(
-                ["aws", "iam", "list-access-keys",
-                 "--user-name", username, "--output", "json"],
-                capture_output=True, text=True, timeout=30
+                [
+                    "aws",
+                    "iam",
+                    "list-access-keys",
+                    "--user-name",
+                    username,
+                    "--output",
+                    "json",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
             if list_result.returncode == 0:
                 keys = json.loads(list_result.stdout).get("AccessKeyMetadata", [])
                 for key in keys:
                     if key["AccessKeyId"] != new_key_id and key["Status"] == "Active":
                         subprocess.run(
-                            ["aws", "iam", "update-access-key",
-                             "--user-name", username,
-                             "--access-key-id", key["AccessKeyId"],
-                             "--status", "Inactive"],
-                            capture_output=True, text=True, timeout=30
+                            [
+                                "aws",
+                                "iam",
+                                "update-access-key",
+                                "--user-name",
+                                username,
+                                "--access-key-id",
+                                key["AccessKeyId"],
+                                "--status",
+                                "Inactive",
+                            ],
+                            capture_output=True,
+                            text=True,
+                            timeout=30,
                         )
-                        self._log("AWS", username, "deactivate-old-key", "success",
-                                  {"old_key_id": key["AccessKeyId"]})
+                        self._log(
+                            "AWS",
+                            username,
+                            "deactivate-old-key",
+                            "success",
+                            {"old_key_id": key["AccessKeyId"]},
+                        )
 
-            self._log("AWS", username, "rotate-key", "success",
-                      {"new_key_id": new_key_id})
+            self._log(
+                "AWS", username, "rotate-key", "success", {"new_key_id": new_key_id}
+            )
             return {"new_key_id": new_key_id, "secret_key": new_key["SecretAccessKey"]}
 
         except (subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
@@ -78,16 +113,33 @@ class CredentialRotationAgent:
         """Rotate an Azure AD service principal client secret via az CLI."""
         try:
             result = subprocess.run(
-                ["az", "ad", "app", "credential", "reset",
-                 "--id", app_id, "--display-name", display_name,
-                 "--years", "1", "--output", "json"],
-                capture_output=True, text=True, timeout=60
+                [
+                    "az",
+                    "ad",
+                    "app",
+                    "credential",
+                    "reset",
+                    "--id",
+                    app_id,
+                    "--display-name",
+                    display_name,
+                    "--years",
+                    "1",
+                    "--output",
+                    "json",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=60,
             )
             if result.returncode == 0:
                 cred = json.loads(result.stdout)
                 self._log("Azure", app_id, "rotate-secret", "success")
-                return {"app_id": cred.get("appId"), "password": cred.get("password"),
-                        "tenant": cred.get("tenant")}
+                return {
+                    "app_id": cred.get("appId"),
+                    "password": cred.get("password"),
+                    "tenant": cred.get("tenant"),
+                }
             self._log("Azure", app_id, "rotate-secret", "failed", result.stderr)
             return {"error": result.stderr}
         except (subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
@@ -101,17 +153,30 @@ class CredentialRotationAgent:
         try:
             resp = requests.get(
                 f"{self.vault_url}/v1/database/creds/{role_name}",
-                headers={"X-Vault-Token": self.vault_token}, timeout=15
+                headers={"X-Vault-Token": self.vault_token},
+                timeout=15,
             )
             if resp.status_code == 200:
                 data = resp.json().get("data", {})
-                self._log("Vault", role_name, "generate-creds", "success",
-                          {"username": data.get("username")})
-                return {"username": data.get("username"),
-                        "password": data.get("password"),
-                        "lease_duration": resp.json().get("lease_duration")}
-            self._log("Vault", role_name, "generate-creds", "failed",
-                      {"status": resp.status_code})
+                self._log(
+                    "Vault",
+                    role_name,
+                    "generate-creds",
+                    "success",
+                    {"username": data.get("username")},
+                )
+                return {
+                    "username": data.get("username"),
+                    "password": data.get("password"),
+                    "lease_duration": resp.json().get("lease_duration"),
+                }
+            self._log(
+                "Vault",
+                role_name,
+                "generate-creds",
+                "failed",
+                {"status": resp.status_code},
+            )
             return {"error": resp.text}
         except requests.RequestException as exc:
             self._log("Vault", role_name, "generate-creds", "error", str(exc))
@@ -123,16 +188,29 @@ class CredentialRotationAgent:
         for ep in endpoints:
             for attempt in range(3):
                 try:
-                    resp = requests.get(ep["url"], timeout=10,
-                                        headers=ep.get("headers", {}))
+                    resp = requests.get(
+                        ep["url"], timeout=10, headers=ep.get("headers", {})
+                    )
                     healthy = resp.status_code == 200
-                    results.append({"service": ep["name"], "healthy": healthy,
-                                    "status_code": resp.status_code, "attempt": attempt + 1})
+                    results.append(
+                        {
+                            "service": ep["name"],
+                            "healthy": healthy,
+                            "status_code": resp.status_code,
+                            "attempt": attempt + 1,
+                        }
+                    )
                     if healthy:
                         break
                 except requests.RequestException as exc:
-                    results.append({"service": ep["name"], "healthy": False,
-                                    "error": str(exc), "attempt": attempt + 1})
+                    results.append(
+                        {
+                            "service": ep["name"],
+                            "healthy": False,
+                            "error": str(exc),
+                            "attempt": attempt + 1,
+                        }
+                    )
                 time.sleep(5)
         return results
 

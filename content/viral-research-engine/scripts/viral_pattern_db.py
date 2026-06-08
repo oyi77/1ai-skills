@@ -10,7 +10,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-
 DB_PATH = Path(__file__).parent.parent / "data" / "viral-patterns-db.json"
 
 
@@ -166,13 +165,41 @@ VIRAL_PATTERNS_DB = {
         },
     ],
     "format_performance": {
-        "Tutorial": {"avg_engagement": 0.062, "avg_completion": 0.71, "best_niche": ["ai_tools", "kuliner"]},
-        "Before/After": {"avg_engagement": 0.074, "avg_completion": 0.74, "best_niche": ["side_hustle", "kuliner"]},
-        "Storytelling": {"avg_engagement": 0.088, "avg_completion": 0.79, "best_niche": ["kuliner", "education"]},
-        "Controversy": {"avg_engagement": 0.102, "avg_completion": 0.82, "best_niche": ["digital_marketing", "side_hustle"]},
-        "Listicle": {"avg_engagement": 0.071, "avg_completion": 0.68, "best_niche": ["ai_tools", "education"]},
-        "Case Study": {"avg_engagement": 0.085, "avg_completion": 0.77, "best_niche": ["digital_marketing", "side_hustle"]},
-        "Behind the Scenes": {"avg_engagement": 0.079, "avg_completion": 0.80, "best_niche": ["kuliner", "education"]},
+        "Tutorial": {
+            "avg_engagement": 0.062,
+            "avg_completion": 0.71,
+            "best_niche": ["ai_tools", "kuliner"],
+        },
+        "Before/After": {
+            "avg_engagement": 0.074,
+            "avg_completion": 0.74,
+            "best_niche": ["side_hustle", "kuliner"],
+        },
+        "Storytelling": {
+            "avg_engagement": 0.088,
+            "avg_completion": 0.79,
+            "best_niche": ["kuliner", "education"],
+        },
+        "Controversy": {
+            "avg_engagement": 0.102,
+            "avg_completion": 0.82,
+            "best_niche": ["digital_marketing", "side_hustle"],
+        },
+        "Listicle": {
+            "avg_engagement": 0.071,
+            "avg_completion": 0.68,
+            "best_niche": ["ai_tools", "education"],
+        },
+        "Case Study": {
+            "avg_engagement": 0.085,
+            "avg_completion": 0.77,
+            "best_niche": ["digital_marketing", "side_hustle"],
+        },
+        "Behind the Scenes": {
+            "avg_engagement": 0.079,
+            "avg_completion": 0.80,
+            "best_niche": ["kuliner", "education"],
+        },
     },
     "best_posting_times": {
         "tiktok": {
@@ -235,7 +262,11 @@ def get_best_format(niche: str) -> dict:
             score = fmt_data["avg_engagement"] * 0.6 + fmt_data["avg_completion"] * 0.4
             if score > best_score:
                 best_score = score
-                best = {"format": fmt_name, **fmt_data, "combined_score": round(score, 4)}
+                best = {
+                    "format": fmt_name,
+                    **fmt_data,
+                    "combined_score": round(score, 4),
+                }
 
     return best or {"format": "Tutorial", "note": "Default format — niche not found"}
 
@@ -249,17 +280,17 @@ def get_posting_schedule(platform: str = "tiktok") -> dict:
 def add_pattern(pattern: dict) -> str:
     """Add a new viral pattern to the database."""
     db = load_db()
-    
+
     # Generate ID
     existing_ids = [p["id"] for p in db["patterns"]]
     next_num = len(existing_ids) + 1
     pattern["id"] = f"hook_{next_num:03d}"
     pattern["added_at"] = datetime.now().isoformat()
-    
+
     db["patterns"].append(pattern)
     db["last_updated"] = datetime.now().isoformat()
     save_db(db)
-    
+
     return pattern["id"]
 
 
@@ -274,17 +305,19 @@ def initialize_db() -> str:
 if __name__ == "__main__":
     # Initialize and test
     initialize_db()
-    
+
     print("\n🔥 TOP VIRAL PATTERNS:")
     top = get_top_patterns(limit=5)
     for p in top:
         print(f"  [{p['virality_score']}] {p['name']}: {p['hook_template'][:60]}...")
-    
+
     print("\n📊 BEST FORMATS BY NICHE:")
     for niche in ["ai_tools", "kuliner", "side_hustle"]:
         fmt = get_best_format(niche)
-        print(f"  {niche}: {fmt['format']} (engagement: {fmt.get('avg_engagement', 0)*100:.1f}%)")
-    
+        print(
+            f"  {niche}: {fmt['format']} (engagement: {fmt.get('avg_engagement', 0)*100:.1f}%)"
+        )
+
     print("\n⏰ TIKTOK BEST TIMES:")
     schedule = get_posting_schedule("tiktok")
     print(f"  Weekday peaks: {', '.join(schedule.get('weekday', []))}")

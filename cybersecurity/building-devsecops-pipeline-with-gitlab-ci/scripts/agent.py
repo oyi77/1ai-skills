@@ -8,7 +8,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 SECURITY_STAGES = {
@@ -66,7 +68,9 @@ def generate_gitlab_ci(stages, project_type="python", registry="$CI_REGISTRY"):
             ci_config["include"].append({"template": stage["template"]})
 
     if "container_scanning" in stages:
-        ci_config["variables"]["CS_IMAGE"] = f"{registry}/$CI_PROJECT_PATH:$CI_COMMIT_SHA"
+        ci_config["variables"][
+            "CS_IMAGE"
+        ] = f"{registry}/$CI_PROJECT_PATH:$CI_COMMIT_SHA"
 
     if project_type == "python":
         ci_config["variables"]["SAST_DEFAULT_ANALYZERS"] = "semgrep,bandit"
@@ -81,7 +85,12 @@ def validate_pipeline(gitlab_url, token, project_id, ci_content):
     headers = {"PRIVATE-TOKEN": token, "Content-Type": "application/json"}
     data = {"content": json.dumps(ci_content)}
     try:
-        resp = requests.post(f"{gitlab_url}/api/v4/projects/{project_id}/ci/lint", headers=headers, json=data, timeout=15)
+        resp = requests.post(
+            f"{gitlab_url}/api/v4/projects/{project_id}/ci/lint",
+            headers=headers,
+            json=data,
+            timeout=15,
+        )
         return resp.json()
     except requests.RequestException as e:
         return {"error": str(e)}
@@ -109,14 +118,25 @@ def generate_report(ci_config, coverage, stages):
         "security_coverage": coverage,
         "gitlab_ci_config": ci_config,
     }
-    print(f"DEVSECOPS REPORT: {len(stages)} stages, {coverage['coverage_percent']}% coverage")
+    print(
+        f"DEVSECOPS REPORT: {len(stages)} stages, {coverage['coverage_percent']}% coverage"
+    )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="DevSecOps Pipeline Builder Agent")
-    parser.add_argument("--stages", nargs="*", choices=list(SECURITY_STAGES.keys()), default=list(SECURITY_STAGES.keys()))
-    parser.add_argument("--project-type", choices=["python", "javascript", "java", "go"], default="python")
+    parser.add_argument(
+        "--stages",
+        nargs="*",
+        choices=list(SECURITY_STAGES.keys()),
+        default=list(SECURITY_STAGES.keys()),
+    )
+    parser.add_argument(
+        "--project-type",
+        choices=["python", "javascript", "java", "go"],
+        default="python",
+    )
     parser.add_argument("--gitlab-url", help="GitLab URL for validation")
     parser.add_argument("--token", help="GitLab private token")
     parser.add_argument("--project-id", help="GitLab project ID")

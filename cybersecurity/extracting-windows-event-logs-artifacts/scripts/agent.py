@@ -11,7 +11,9 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from typing import Dict, List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 try:
@@ -38,15 +40,30 @@ CRITICAL_EVENT_IDS = {
 }
 
 LOGON_TYPES = {
-    "2": "Interactive", "3": "Network", "4": "Batch", "5": "Service",
-    "7": "Unlock", "8": "NetworkCleartext", "9": "NewCredentials",
-    "10": "RemoteInteractive (RDP)", "11": "CachedInteractive",
+    "2": "Interactive",
+    "3": "Network",
+    "4": "Batch",
+    "5": "Service",
+    "7": "Unlock",
+    "8": "NetworkCleartext",
+    "9": "NewCredentials",
+    "10": "RemoteInteractive (RDP)",
+    "11": "CachedInteractive",
 }
 
 SUSPICIOUS_PROCESSES = [
-    "mimikatz", "psexec", "procdump", "lazagne", "sharphound",
-    "rubeus", "certutil", "powershell -enc", "bitsadmin",
-    "wmic shadowcopy delete", "vssadmin delete", "bcdedit /set",
+    "mimikatz",
+    "psexec",
+    "procdump",
+    "lazagne",
+    "sharphound",
+    "rubeus",
+    "certutil",
+    "powershell -enc",
+    "bitsadmin",
+    "wmic shadowcopy delete",
+    "vssadmin delete",
+    "bcdedit /set",
 ]
 
 
@@ -66,14 +83,23 @@ def parse_evtx_file(evtx_path: str) -> List[dict]:
                 event_id = str(system.get("EventID", ""))
                 if isinstance(system.get("EventID"), dict):
                     event_id = str(system["EventID"].get("#text", ""))
-                timestamp = system.get("TimeCreated", {}).get("#attributes", {}).get("SystemTime", "")
+                timestamp = (
+                    system.get("TimeCreated", {})
+                    .get("#attributes", {})
+                    .get("SystemTime", "")
+                )
                 event_data = event.get("EventData", {})
-                records.append({
-                    "event_id": event_id, "timestamp": timestamp,
-                    "channel": system.get("Channel", ""),
-                    "computer": system.get("Computer", ""),
-                    "event_data": event_data if isinstance(event_data, dict) else {},
-                })
+                records.append(
+                    {
+                        "event_id": event_id,
+                        "timestamp": timestamp,
+                        "channel": system.get("Channel", ""),
+                        "computer": system.get("Computer", ""),
+                        "event_data": (
+                            event_data if isinstance(event_data, dict) else {}
+                        ),
+                    }
+                )
             except (json.JSONDecodeError, KeyError):
                 continue
     except Exception as exc:
@@ -104,12 +130,17 @@ def detect_lateral_movement(records: List[dict]) -> List[dict]:
         src_ip = ed.get("IpAddress", "-")
         user = ed.get("TargetUserName", "")
         if logon_type in ("3", "10") and src_ip not in ("-", "::1", "127.0.0.1"):
-            findings.append({
-                "timestamp": r["timestamp"], "type": "lateral_movement",
-                "logon_type": LOGON_TYPES.get(logon_type, logon_type),
-                "user": user, "source_ip": src_ip, "auth_package": auth_pkg,
-                "pth_indicator": logon_type == "9" and "NTLM" in auth_pkg,
-            })
+            findings.append(
+                {
+                    "timestamp": r["timestamp"],
+                    "type": "lateral_movement",
+                    "logon_type": LOGON_TYPES.get(logon_type, logon_type),
+                    "user": user,
+                    "source_ip": src_ip,
+                    "auth_package": auth_pkg,
+                    "pth_indicator": logon_type == "9" and "NTLM" in auth_pkg,
+                }
+            )
     return findings
 
 
@@ -121,12 +152,16 @@ def detect_privilege_escalation(records: List[dict]) -> List[dict]:
         if r["event_id"] not in escalation_ids:
             continue
         ed = r["event_data"]
-        findings.append({
-            "timestamp": r["timestamp"], "type": "privilege_escalation",
-            "event_id": r["event_id"], "description": CRITICAL_EVENT_IDS.get(r["event_id"], ""),
-            "user": ed.get("TargetUserName", ed.get("SubjectUserName", "")),
-            "group": ed.get("TargetDomainName", ""),
-        })
+        findings.append(
+            {
+                "timestamp": r["timestamp"],
+                "type": "privilege_escalation",
+                "event_id": r["event_id"],
+                "description": CRITICAL_EVENT_IDS.get(r["event_id"], ""),
+                "user": ed.get("TargetUserName", ed.get("SubjectUserName", "")),
+                "group": ed.get("TargetDomainName", ""),
+            }
+        )
     return findings
 
 
@@ -141,14 +176,17 @@ def detect_suspicious_processes(records: List[dict]) -> List[dict]:
         process_name = str(ed.get("NewProcessName", "")).lower()
         for pattern in SUSPICIOUS_PROCESSES:
             if pattern in cmd or pattern in process_name:
-                findings.append({
-                    "timestamp": r["timestamp"], "type": "suspicious_process",
-                    "matched_pattern": pattern,
-                    "process": ed.get("NewProcessName", ""),
-                    "command_line": str(ed.get("CommandLine", ""))[:300],
-                    "user": ed.get("SubjectUserName", ""),
-                    "parent": ed.get("ParentProcessName", ""),
-                })
+                findings.append(
+                    {
+                        "timestamp": r["timestamp"],
+                        "type": "suspicious_process",
+                        "matched_pattern": pattern,
+                        "process": ed.get("NewProcessName", ""),
+                        "command_line": str(ed.get("CommandLine", ""))[:300],
+                        "user": ed.get("SubjectUserName", ""),
+                        "parent": ed.get("ParentProcessName", ""),
+                    }
+                )
                 break
     return findings
 
@@ -158,11 +196,15 @@ def detect_log_clearing(records: List[dict]) -> List[dict]:
     findings = []
     for r in records:
         if r["event_id"] in ("1102", "104"):
-            findings.append({
-                "timestamp": r["timestamp"], "type": "log_cleared",
-                "event_id": r["event_id"], "channel": r.get("channel", ""),
-                "user": r["event_data"].get("SubjectUserName", "SYSTEM"),
-            })
+            findings.append(
+                {
+                    "timestamp": r["timestamp"],
+                    "type": "log_cleared",
+                    "event_id": r["event_id"],
+                    "channel": r.get("channel", ""),
+                    "user": r["event_data"].get("SubjectUserName", "SYSTEM"),
+                }
+            )
     return findings
 
 
@@ -172,28 +214,36 @@ def detect_persistence(records: List[dict]) -> List[dict]:
     for r in records:
         if r["event_id"] in ("4697", "7045"):
             ed = r["event_data"]
-            findings.append({
-                "timestamp": r["timestamp"], "type": "service_install",
-                "service_name": ed.get("ServiceName", ""),
-                "image_path": ed.get("ImagePath", ed.get("ServiceFileName", "")),
-                "start_type": ed.get("StartType", ""),
-                "user": ed.get("AccountName", ed.get("SubjectUserName", "")),
-            })
+            findings.append(
+                {
+                    "timestamp": r["timestamp"],
+                    "type": "service_install",
+                    "service_name": ed.get("ServiceName", ""),
+                    "image_path": ed.get("ImagePath", ed.get("ServiceFileName", "")),
+                    "start_type": ed.get("StartType", ""),
+                    "user": ed.get("AccountName", ed.get("SubjectUserName", "")),
+                }
+            )
         elif r["event_id"] == "4698":
             ed = r["event_data"]
-            findings.append({
-                "timestamp": r["timestamp"], "type": "scheduled_task",
-                "task_name": ed.get("TaskName", ""),
-                "user": ed.get("SubjectUserName", ""),
-            })
+            findings.append(
+                {
+                    "timestamp": r["timestamp"],
+                    "type": "scheduled_task",
+                    "task_name": ed.get("TaskName", ""),
+                    "user": ed.get("SubjectUserName", ""),
+                }
+            )
     return findings
 
 
 def generate_summary(records: List[dict], findings: dict) -> dict:
     """Generate analysis summary statistics."""
     event_counts = Counter(r["event_id"] for r in records)
-    top_events = [(eid, count, CRITICAL_EVENT_IDS.get(eid, "Other"))
-                  for eid, count in event_counts.most_common(15)]
+    top_events = [
+        (eid, count, CRITICAL_EVENT_IDS.get(eid, "Other"))
+        for eid, count in event_counts.most_common(15)
+    ]
     return {
         "total_records": len(records),
         "unique_event_ids": len(event_counts),
@@ -216,7 +266,9 @@ def export_timeline_csv(records: List[dict], output_path: str) -> None:
         for r in critical:
             desc = CRITICAL_EVENT_IDS.get(r["event_id"], "")
             details = json.dumps(r["event_data"], default=str)[:300]
-            writer.writerow([r["timestamp"], r["event_id"], desc, r["computer"], details])
+            writer.writerow(
+                [r["timestamp"], r["event_id"], desc, r["computer"], details]
+            )
     logger.info("Timeline exported: %d events to %s", len(critical), output_path)
 
 
@@ -248,9 +300,15 @@ def analyze_evtx(evtx_paths: List[str], output_dir: str) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Windows Event Log Artifact Extraction Agent")
-    parser.add_argument("--evtx-dir", default="", help="Directory containing EVTX files")
-    parser.add_argument("--evtx-files", nargs="*", default=[], help="Specific EVTX files to parse")
+    parser = argparse.ArgumentParser(
+        description="Windows Event Log Artifact Extraction Agent"
+    )
+    parser.add_argument(
+        "--evtx-dir", default="", help="Directory containing EVTX files"
+    )
+    parser.add_argument(
+        "--evtx-files", nargs="*", default=[], help="Specific EVTX files to parse"
+    )
     parser.add_argument("--output-dir", default=".", help="Output directory")
     parser.add_argument("--output", default="evtx_report.json")
     args = parser.parse_args()

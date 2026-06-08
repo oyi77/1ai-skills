@@ -17,6 +17,7 @@ import glob as glob_mod
 
 try:
     import LnkParse3
+
     HAS_LNKPARSE = True
 except ImportError:
     HAS_LNKPARSE = False
@@ -105,7 +106,9 @@ def parse_lnk_header_raw(filepath):
         "write_time": write_time,
         "target_file_size": file_size,
         "icon_index": icon_index,
-        "show_command": {1: "Normal", 3: "Maximized", 7: "Minimized"}.get(show_command, str(show_command)),
+        "show_command": {1: "Normal", 3: "Maximized", 7: "Minimized"}.get(
+            show_command, str(show_command)
+        ),
         "flags_decoded": decode_link_flags(link_flags),
     }
     return result
@@ -189,15 +192,18 @@ def scan_jump_lists(jump_list_dir):
         app_id = basename.split(".")[0]
         jl_type = "automatic" if "automatic" in basename else "custom"
         app_name = JUMP_LIST_APP_IDS.get(app_id, "Unknown Application")
-        results.append({
-            "file": basename,
-            "app_id": app_id,
-            "app_name": app_name,
-            "type": jl_type,
-            "size": os.path.getsize(jl_file),
-            "modified": datetime.datetime.fromtimestamp(
-                os.path.getmtime(jl_file)).isoformat(),
-        })
+        results.append(
+            {
+                "file": basename,
+                "app_id": app_id,
+                "app_name": app_name,
+                "type": jl_type,
+                "size": os.path.getsize(jl_file),
+                "modified": datetime.datetime.fromtimestamp(
+                    os.path.getmtime(jl_file)
+                ).isoformat(),
+            }
+        )
     return results
 
 
@@ -205,7 +211,9 @@ def detect_suspicious_lnk(parsed_lnk):
     """Detect suspicious characteristics in LNK files."""
     findings = []
     args = parsed_lnk.get("arguments", "")
-    target = parsed_lnk.get("target_path", "") + " " + parsed_lnk.get("local_base_path", "")
+    target = (
+        parsed_lnk.get("target_path", "") + " " + parsed_lnk.get("local_base_path", "")
+    )
 
     suspicious_patterns = [
         (r"powershell", "PowerShell execution via LNK"),
@@ -225,7 +233,9 @@ def detect_suspicious_lnk(parsed_lnk):
             findings.append({"indicator": description, "pattern": pattern})
 
     if parsed_lnk.get("drive_type") == "DRIVE_REMOTE":
-        findings.append({"indicator": "Target on network drive", "pattern": "DRIVE_REMOTE"})
+        findings.append(
+            {"indicator": "Target on network drive", "pattern": "DRIVE_REMOTE"}
+        )
 
     return findings
 
@@ -234,14 +244,20 @@ def scan_lnk_directory(directory):
     """Scan directory for LNK files and analyze each."""
     results = []
     for lnk_file in sorted(glob_mod.glob(os.path.join(directory, "*.lnk"))):
-        parsed = parse_lnk_with_lnkparse3(lnk_file) if HAS_LNKPARSE else parse_lnk_header_raw(lnk_file)
+        parsed = (
+            parse_lnk_with_lnkparse3(lnk_file)
+            if HAS_LNKPARSE
+            else parse_lnk_header_raw(lnk_file)
+        )
         suspicious = detect_suspicious_lnk(parsed)
-        results.append({
-            "file": os.path.basename(lnk_file),
-            "sha256": compute_hash(lnk_file),
-            "parsed": parsed,
-            "suspicious": suspicious,
-        })
+        results.append(
+            {
+                "file": os.path.basename(lnk_file),
+                "sha256": compute_hash(lnk_file),
+                "parsed": parsed,
+                "suspicious": suspicious,
+            }
+        )
     return results
 
 
@@ -280,7 +296,9 @@ if __name__ == "__main__":
         lnk_results = scan_lnk_directory(target)
         print(f"[*] Found {len(lnk_results)} LNK files")
         for r in lnk_results[:20]:
-            print(f"  {r['file']}: {r['parsed'].get('target_path', r['parsed'].get('local_base_path', '?'))}")
+            print(
+                f"  {r['file']}: {r['parsed'].get('target_path', r['parsed'].get('local_base_path', '?'))}"
+            )
             for s in r.get("suspicious", []):
                 print(f"    [!] {s['indicator']}")
 
@@ -293,4 +311,6 @@ if __name__ == "__main__":
             for jl in jl_results:
                 print(f"  {jl['app_name']:30s} [{jl['type']}] {jl['app_id']}")
 
-    print(f"\n{json.dumps({'lnk_count': len(lnk_results) if os.path.isdir(target) else 1}, indent=2)}")
+    print(
+        f"\n{json.dumps({'lnk_count': len(lnk_results) if os.path.isdir(target) else 1}, indent=2)}"
+    )

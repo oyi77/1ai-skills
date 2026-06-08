@@ -50,7 +50,9 @@ def get_namespace_pss_labels(ns_data: dict) -> dict:
         "enforce": labels.get("pod-security.kubernetes.io/enforce", "not-set"),
         "audit": labels.get("pod-security.kubernetes.io/audit", "not-set"),
         "warn": labels.get("pod-security.kubernetes.io/warn", "not-set"),
-        "enforce-version": labels.get("pod-security.kubernetes.io/enforce-version", "not-set"),
+        "enforce-version": labels.get(
+            "pod-security.kubernetes.io/enforce-version", "not-set"
+        ),
     }
 
 
@@ -71,26 +73,30 @@ def check_restricted_compliance(pod_spec: dict, pod_name: str, namespace: str) -
     # Check hostNetwork, hostPID, hostIPC
     for host_ns in ["hostNetwork", "hostPID", "hostIPC"]:
         if pod_spec.get(host_ns, False):
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=pod_name,
-                level="baseline",
-                violation=f"{host_ns} is enabled",
-                severity="CRITICAL",
-                remediation=f"Set {host_ns}: false in pod spec"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=pod_name,
+                    level="baseline",
+                    violation=f"{host_ns} is enabled",
+                    severity="CRITICAL",
+                    remediation=f"Set {host_ns}: false in pod spec",
+                )
+            )
 
     # Check hostPath volumes
     for vol in pod_spec.get("volumes", []):
         if "hostPath" in vol:
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=pod_name,
-                level="baseline",
-                violation=f"hostPath volume '{vol.get('name')}' detected",
-                severity="HIGH",
-                remediation="Replace hostPath with emptyDir, PVC, or configMap"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=pod_name,
+                    level="baseline",
+                    violation=f"hostPath volume '{vol.get('name')}' detected",
+                    severity="HIGH",
+                    remediation="Replace hostPath with emptyDir, PVC, or configMap",
+                )
+            )
 
     for container in containers:
         c_name = container.get("name", "unknown")
@@ -98,39 +104,47 @@ def check_restricted_compliance(pod_spec: dict, pod_name: str, namespace: str) -
 
         # Check privileged
         if sc.get("privileged", False):
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=f"{pod_name}/{c_name}",
-                level="baseline",
-                violation="Container runs in privileged mode",
-                severity="CRITICAL",
-                remediation="Set privileged: false and use specific capabilities"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=f"{pod_name}/{c_name}",
+                    level="baseline",
+                    violation="Container runs in privileged mode",
+                    severity="CRITICAL",
+                    remediation="Set privileged: false and use specific capabilities",
+                )
+            )
 
         # Check allowPrivilegeEscalation
         if sc.get("allowPrivilegeEscalation", True):
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=f"{pod_name}/{c_name}",
-                level="restricted",
-                violation="allowPrivilegeEscalation is not explicitly false",
-                severity="HIGH",
-                remediation="Set allowPrivilegeEscalation: false"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=f"{pod_name}/{c_name}",
+                    level="restricted",
+                    violation="allowPrivilegeEscalation is not explicitly false",
+                    severity="HIGH",
+                    remediation="Set allowPrivilegeEscalation: false",
+                )
+            )
 
         # Check runAsNonRoot
         c_run_as_non_root = sc.get("runAsNonRoot")
         c_run_as_user = sc.get("runAsUser")
         if not (c_run_as_non_root or pod_run_as_non_root):
-            if not (c_run_as_user and c_run_as_user > 0) and not (pod_run_as_user and pod_run_as_user > 0):
-                findings.append(PSSFinding(
-                    namespace=namespace,
-                    resource=f"{pod_name}/{c_name}",
-                    level="restricted",
-                    violation="Container may run as root (runAsNonRoot not set)",
-                    severity="HIGH",
-                    remediation="Set runAsNonRoot: true and runAsUser to non-zero value"
-                ))
+            if not (c_run_as_user and c_run_as_user > 0) and not (
+                pod_run_as_user and pod_run_as_user > 0
+            ):
+                findings.append(
+                    PSSFinding(
+                        namespace=namespace,
+                        resource=f"{pod_name}/{c_name}",
+                        level="restricted",
+                        violation="Container may run as root (runAsNonRoot not set)",
+                        severity="HIGH",
+                        remediation="Set runAsNonRoot: true and runAsUser to non-zero value",
+                    )
+                )
 
         # Check capabilities
         caps = sc.get("capabilities", {})
@@ -138,50 +152,58 @@ def check_restricted_compliance(pod_spec: dict, pod_name: str, namespace: str) -
         add_caps = [c.upper() for c in (caps.get("add") or [])]
 
         if "ALL" not in drop_caps:
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=f"{pod_name}/{c_name}",
-                level="restricted",
-                violation="Capabilities not dropped (missing drop: ALL)",
-                severity="HIGH",
-                remediation="Add capabilities: drop: ['ALL'] to security context"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=f"{pod_name}/{c_name}",
+                    level="restricted",
+                    violation="Capabilities not dropped (missing drop: ALL)",
+                    severity="HIGH",
+                    remediation="Add capabilities: drop: ['ALL'] to security context",
+                )
+            )
 
         allowed_add = {"NET_BIND_SERVICE"}
         extra_caps = set(add_caps) - allowed_add
         if extra_caps:
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=f"{pod_name}/{c_name}",
-                level="restricted",
-                violation=f"Disallowed capabilities added: {extra_caps}",
-                severity="HIGH",
-                remediation="Only NET_BIND_SERVICE may be added in restricted profile"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=f"{pod_name}/{c_name}",
+                    level="restricted",
+                    violation=f"Disallowed capabilities added: {extra_caps}",
+                    severity="HIGH",
+                    remediation="Only NET_BIND_SERVICE may be added in restricted profile",
+                )
+            )
 
         # Check seccomp
         c_seccomp = sc.get("seccompProfile", {})
         c_seccomp_type = c_seccomp.get("type", pod_seccomp_type)
         if c_seccomp_type not in ("RuntimeDefault", "Localhost"):
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=f"{pod_name}/{c_name}",
-                level="restricted",
-                violation=f"Seccomp profile not set or is '{c_seccomp_type}'",
-                severity="MEDIUM",
-                remediation="Set seccompProfile.type to RuntimeDefault or Localhost"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=f"{pod_name}/{c_name}",
+                    level="restricted",
+                    violation=f"Seccomp profile not set or is '{c_seccomp_type}'",
+                    severity="MEDIUM",
+                    remediation="Set seccompProfile.type to RuntimeDefault or Localhost",
+                )
+            )
 
         # Check readOnlyRootFilesystem (recommended, not required by PSS)
         if not sc.get("readOnlyRootFilesystem", False):
-            findings.append(PSSFinding(
-                namespace=namespace,
-                resource=f"{pod_name}/{c_name}",
-                level="restricted",
-                violation="Root filesystem is not read-only (recommended)",
-                severity="MEDIUM",
-                remediation="Set readOnlyRootFilesystem: true and use emptyDir for writable paths"
-            ))
+            findings.append(
+                PSSFinding(
+                    namespace=namespace,
+                    resource=f"{pod_name}/{c_name}",
+                    level="restricted",
+                    violation="Root filesystem is not read-only (recommended)",
+                    severity="MEDIUM",
+                    remediation="Set readOnlyRootFilesystem: true and use emptyDir for writable paths",
+                )
+            )
 
     return findings
 
@@ -207,14 +229,21 @@ def audit_cluster(report: PSSReport):
 
         # Flag namespaces without PSS enforcement
         if enforce_level == "not-set":
-            report.findings.append(PSSFinding(
-                namespace=ns_name,
-                resource="namespace",
-                level="baseline",
-                violation="No PSS enforcement label set",
-                severity="HIGH" if ns_name not in ("kube-system", "kube-public", "kube-node-lease") else "MEDIUM",
-                remediation=f"kubectl label namespace {ns_name} pod-security.kubernetes.io/enforce=baseline"
-            ))
+            report.findings.append(
+                PSSFinding(
+                    namespace=ns_name,
+                    resource="namespace",
+                    level="baseline",
+                    violation="No PSS enforcement label set",
+                    severity=(
+                        "HIGH"
+                        if ns_name
+                        not in ("kube-system", "kube-public", "kube-node-lease")
+                        else "MEDIUM"
+                    ),
+                    remediation=f"kubectl label namespace {ns_name} pod-security.kubernetes.io/enforce=baseline",
+                )
+            )
 
         # Get pods in namespace
         pods_data, err = run_kubectl(["get", "pods", "-n", ns_name])

@@ -19,13 +19,17 @@ def list_iap_tunnels(project_id):
     parent = f"projects/{project_id}"
     tunnels = []
     try:
-        request = iap_v1.ListTunnelDestGroupsRequest(parent=f"{parent}/iap_tunnel/locations/-")
+        request = iap_v1.ListTunnelDestGroupsRequest(
+            parent=f"{parent}/iap_tunnel/locations/-"
+        )
         for group in client.list_tunnel_dest_groups(request=request):
-            tunnels.append({
-                "name": group.name,
-                "cidrs": list(group.cidrs),
-                "fqdns": list(group.fqdns),
-            })
+            tunnels.append(
+                {
+                    "name": group.name,
+                    "cidrs": list(group.cidrs),
+                    "fqdns": list(group.fqdns),
+                }
+            )
     except Exception as e:
         tunnels.append({"error": str(e)})
     return tunnels
@@ -41,7 +45,11 @@ def get_iap_settings(project_id, resource_type="web"):
         return {
             "name": settings.name,
             "access_settings": {
-                "cors_settings": str(settings.access_settings.cors_settings) if settings.access_settings else "",
+                "cors_settings": (
+                    str(settings.access_settings.cors_settings)
+                    if settings.access_settings
+                    else ""
+                ),
             },
         }
     except Exception as e:
@@ -56,11 +64,13 @@ def audit_iap_iam_policy(project_id):
         policy = client.get_iam_policy(request={"resource": resource})
         bindings = []
         for binding in policy.bindings:
-            bindings.append({
-                "role": binding.role,
-                "members": list(binding.members),
-                "condition": str(binding.condition) if binding.condition else None,
-            })
+            bindings.append(
+                {
+                    "role": binding.role,
+                    "members": list(binding.members),
+                    "condition": str(binding.condition) if binding.condition else None,
+                }
+            )
         return bindings
     except Exception as e:
         return [{"error": str(e)}]
@@ -110,7 +120,12 @@ def run_audit(project_id):
     for req in consent["requirements"]:
         print(f"  - {req}")
 
-    return {"settings": settings, "bindings": bindings, "tunnels": tunnels, "consent": consent}
+    return {
+        "settings": settings,
+        "bindings": bindings,
+        "tunnels": tunnels,
+        "consent": consent,
+    }
 
 
 def main():

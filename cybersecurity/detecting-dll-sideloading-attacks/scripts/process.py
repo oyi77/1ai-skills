@@ -36,8 +36,12 @@ LEGITIMATE_DLL_PATHS = [
 ]
 
 SUSPICIOUS_DLL_PATHS = [
-    r"\\Temp\\", r"\\tmp\\", r"\\AppData\\Local\\Temp\\",
-    r"\\Users\\Public\\", r"\\Downloads\\", r"\\Desktop\\",
+    r"\\Temp\\",
+    r"\\tmp\\",
+    r"\\AppData\\Local\\Temp\\",
+    r"\\Users\\Public\\",
+    r"\\Downloads\\",
+    r"\\Desktop\\",
     r"\\ProgramData\\(?!Microsoft)",
 ]
 
@@ -93,7 +97,9 @@ def detect_sideloading(event: dict) -> dict | None:
     # Check if DLL is a known sideloading target
     if dll_name in KNOWN_SIDELOAD_TARGETS:
         # Check if loaded from non-standard path
-        is_legit_path = any(re.search(p, dll_path, re.IGNORECASE) for p in LEGITIMATE_DLL_PATHS)
+        is_legit_path = any(
+            re.search(p, dll_path, re.IGNORECASE) for p in LEGITIMATE_DLL_PATHS
+        )
         if not is_legit_path:
             risk += 40
             indicators.append(f"Known sideload target DLL: {dll_name}")
@@ -111,7 +117,9 @@ def detect_sideloading(event: dict) -> dict | None:
             break
 
     # Check for app running from unusual location
-    app_in_standard = any(re.search(p, image_path, re.IGNORECASE) for p in LEGITIMATE_DLL_PATHS)
+    app_in_standard = any(
+        re.search(p, image_path, re.IGNORECASE) for p in LEGITIMATE_DLL_PATHS
+    )
     if not app_in_standard and app_name:
         for pattern in SUSPICIOUS_DLL_PATHS:
             if re.search(pattern, image_path, re.IGNORECASE):
@@ -122,7 +130,11 @@ def detect_sideloading(event: dict) -> dict | None:
     if not indicators:
         return None
 
-    risk_level = "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 30 else "LOW"
+    risk_level = (
+        "CRITICAL"
+        if risk >= 70
+        else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 30 else "LOW"
+    )
 
     return {
         "detection_type": "DLL_SIDELOADING",
@@ -151,11 +163,17 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     with open(output_path / "sideload_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-SIDELOAD-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "findings": sorted(findings, key=lambda x: x["risk_score"], reverse=True),
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-SIDELOAD-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "findings": sorted(
+                    findings, key=lambda x: x["risk_score"], reverse=True
+                ),
+            },
+            f,
+            indent=2,
+        )
 
     print(f"[+] {len(findings)} findings written to {output_dir}")
 
@@ -172,7 +190,9 @@ def main():
         run_hunt(args.input, args.output)
     elif args.command == "queries":
         print("=== Sysmon DLL Load Queries ===")
-        print('index=sysmon EventCode=7 Signed=false\n| stats count by Image ImageLoaded Computer\n| sort -count')
+        print(
+            "index=sysmon EventCode=7 Signed=false\n| stats count by Image ImageLoaded Computer\n| sort -count"
+        )
     else:
         parser.print_help()
 

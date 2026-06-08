@@ -16,6 +16,7 @@ Features:
   • Rate-limit guard: HTTP 429 → immediate local fallback
   • Graceful shutdown
 """
+
 import hashlib
 import json
 import logging
@@ -29,9 +30,9 @@ from . import config
 
 logger = logging.getLogger(__name__)
 
-_JOB_STATUS_PENDING  = "pending"
-_JOB_STATUS_DONE     = "done"
-_JOB_STATUS_FAILED   = "failed"
+_JOB_STATUS_PENDING = "pending"
+_JOB_STATUS_DONE = "done"
+_JOB_STATUS_FAILED = "failed"
 
 
 def _sha256(text: str) -> str:
@@ -95,8 +96,17 @@ class IngestionPipeline:
                 """INSERT INTO ingest_queue
                    (id, memory_id, text, text_hash, memory_type, status, retries, priority, created_at, next_try_at)
                    VALUES (?,?,?,?,?,?,0,?,?,?)""",
-                (job_id, memory_id, text, text_hash, memory_type, _JOB_STATUS_PENDING,
-                 priority, now, now),
+                (
+                    job_id,
+                    memory_id,
+                    text,
+                    text_hash,
+                    memory_type,
+                    _JOB_STATUS_PENDING,
+                    priority,
+                    now,
+                    now,
+                ),
             )
         return job_id
 
@@ -152,8 +162,12 @@ class IngestionPipeline:
                     error TEXT
                 )
             """)
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_iq_status ON ingest_queue(status, next_try_at)")
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_iq_mem ON ingest_queue(memory_id)")
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_iq_status ON ingest_queue(status, next_try_at)"
+            )
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_iq_mem ON ingest_queue(memory_id)"
+            )
 
     # ── Worker ───────────────────────────────────────────────────────────────
 
@@ -241,17 +255,21 @@ class IngestionPipeline:
                     "UPDATE ingest_queue SET status=?, error=? WHERE id=?",
                     (_JOB_STATUS_FAILED, error[:500], job_id),
                 )
-            logger.warning("IngestionPipeline: job %s permanently failed: %s", job_id, error)
+            logger.warning(
+                "IngestionPipeline: job %s permanently failed: %s", job_id, error
+            )
             return
         # Exponential backoff
-        delay = min(config.WORKER_RETRY_BASE * (2 ** retries), config.WORKER_RETRY_MAX)
+        delay = min(config.WORKER_RETRY_BASE * (2**retries), config.WORKER_RETRY_MAX)
         next_try = time.time() + delay
         with self._conn() as conn:
             conn.execute(
                 "UPDATE ingest_queue SET retries=?, next_try_at=?, error=? WHERE id=?",
                 (new_retries, next_try, error[:500], job_id),
             )
-        logger.debug("IngestionPipeline: job %s retry %d in %.1fs", job_id, new_retries, delay)
+        logger.debug(
+            "IngestionPipeline: job %s retry %d in %.1fs", job_id, new_retries, delay
+        )
 
     def _conn(self) -> sqlite3.Connection:
         conn = sqlite3.connect(self._db_path, check_same_thread=False)

@@ -21,7 +21,10 @@ VALID_PARENT_CHILD = {
     "winlogon.exe": {"parents": ["smss.exe"], "user": "NT AUTHORITY\\SYSTEM"},
     "services.exe": {"parents": ["wininit.exe"], "user": "NT AUTHORITY\\SYSTEM"},
     "lsass.exe": {"parents": ["wininit.exe"], "user": "NT AUTHORITY\\SYSTEM"},
-    "svchost.exe": {"parents": ["services.exe", "MsMpEng.exe"], "user": "NT AUTHORITY\\*"},
+    "svchost.exe": {
+        "parents": ["services.exe", "MsMpEng.exe"],
+        "user": "NT AUTHORITY\\*",
+    },
     "taskhost.exe": {"parents": ["svchost.exe"], "user": "*"},
     "taskhostw.exe": {"parents": ["svchost.exe"], "user": "*"},
     "userinit.exe": {"parents": ["winlogon.exe"], "user": "*"},
@@ -35,10 +38,21 @@ VALID_PARENT_CHILD = {
 
 # Common hollowing target processes
 HOLLOWING_TARGETS = {
-    "svchost.exe", "explorer.exe", "rundll32.exe", "dllhost.exe",
-    "conhost.exe", "taskhost.exe", "taskhostw.exe", "RuntimeBroker.exe",
-    "RegAsm.exe", "MSBuild.exe", "RegSvcs.exe", "vbc.exe",
-    "AppLaunch.exe", "InstallUtil.exe", "aspnet_compiler.exe",
+    "svchost.exe",
+    "explorer.exe",
+    "rundll32.exe",
+    "dllhost.exe",
+    "conhost.exe",
+    "taskhost.exe",
+    "taskhostw.exe",
+    "RuntimeBroker.exe",
+    "RegAsm.exe",
+    "MSBuild.exe",
+    "RegSvcs.exe",
+    "vbc.exe",
+    "AppLaunch.exe",
+    "InstallUtil.exe",
+    "aspnet_compiler.exe",
 }
 
 # Process behavior indicators that suggest hollowing
@@ -80,7 +94,11 @@ def normalize_event(event: dict) -> dict:
         "image": ["Image", "FileName", "image", "process.executable"],
         "command_line": ["CommandLine", "ProcessCommandLine", "command_line"],
         "parent_image": ["ParentImage", "InitiatingProcessFileName", "parent_image"],
-        "parent_cmd": ["ParentCommandLine", "InitiatingProcessCommandLine", "parent_command_line"],
+        "parent_cmd": [
+            "ParentCommandLine",
+            "InitiatingProcessCommandLine",
+            "parent_command_line",
+        ],
         "user": ["User", "AccountName", "user.name"],
         "hostname": ["Computer", "DeviceName", "host.name"],
         "timestamp": ["UtcTime", "Timestamp", "@timestamp"],
@@ -158,7 +176,9 @@ def check_process_tampering(event: dict) -> dict | None:
         "timestamp": event.get("timestamp", "unknown"),
         "risk_score": 90,
         "risk_level": "CRITICAL",
-        "indicators": ["Sysmon ProcessTampering event detected - image replaced in memory"],
+        "indicators": [
+            "Sysmon ProcessTampering event detected - image replaced in memory"
+        ],
     }
 
 
@@ -218,10 +238,23 @@ def check_hollowing_target_network(event: dict) -> dict | None:
     dest_port = event.get("dest_port", "")
 
     # Check for external connections from commonly hollowed processes
-    if dest_ip and not re.match(r"^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.|127\.)", dest_ip):
-        suspicious_ports = {"4444", "5555", "6666", "8888", "9090", "1234", "31337", "50050"}
+    if dest_ip and not re.match(
+        r"^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.|127\.)", dest_ip
+    ):
+        suspicious_ports = {
+            "4444",
+            "5555",
+            "6666",
+            "8888",
+            "9090",
+            "1234",
+            "31337",
+            "50050",
+        }
         risk = 40
-        indicators = [f"Hollowing target {image} connecting externally to {dest_ip}:{dest_port}"]
+        indicators = [
+            f"Hollowing target {image} connecting externally to {dest_ip}:{dest_port}"
+        ]
 
         if dest_port in suspicious_ports:
             risk += 20
@@ -271,19 +304,27 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     with open(output_path / "hollowing_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-HOLLOW-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "total_findings": len(findings),
-            "statistics": dict(stats),
-            "findings": sorted(findings, key=lambda x: x["risk_score"], reverse=True),
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-HOLLOW-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "total_findings": len(findings),
+                "statistics": dict(stats),
+                "findings": sorted(
+                    findings, key=lambda x: x["risk_score"], reverse=True
+                ),
+            },
+            f,
+            indent=2,
+        )
 
     with open(output_path / "hunt_report.md", "w", encoding="utf-8") as f:
         f.write(f"# Process Hollowing Hunt Report\n\n")
         f.write(f"**Date**: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"**Findings**: {len(findings)}\n\n")
-        for finding in sorted(findings, key=lambda x: x["risk_score"], reverse=True)[:20]:
+        for finding in sorted(findings, key=lambda x: x["risk_score"], reverse=True)[
+            :20
+        ]:
             f.write(f"### [{finding['risk_level']}] {finding['detection_type']}\n")
             f.write(f"- **Process**: {finding.get('process', '')}\n")
             f.write(f"- **Host**: {finding['hostname']}\n")
@@ -309,9 +350,11 @@ def main():
     elif args.command == "queries":
         print("=== Sysmon Queries ===")
         print("--- Process Tampering ---")
-        print('index=sysmon EventCode=25\n| table _time Computer User Image Type')
+        print("index=sysmon EventCode=25\n| table _time Computer User Image Type")
         print("\n--- Invalid Parent-Child ---")
-        print('index=sysmon EventCode=1 Image="*\\\\svchost.exe"\n| where NOT match(ParentImage, "(?i)services\\.exe")\n| table _time Computer Image ParentImage CommandLine')
+        print(
+            'index=sysmon EventCode=1 Image="*\\\\svchost.exe"\n| where NOT match(ParentImage, "(?i)services\\.exe")\n| table _time Computer Image ParentImage CommandLine'
+        )
     else:
         parser.print_help()
 

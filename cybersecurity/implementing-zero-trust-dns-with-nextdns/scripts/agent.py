@@ -12,7 +12,9 @@ NEXTDNS_API = "https://api.nextdns.io"
 def get_profile(api_key, profile_id):
     """Retrieve NextDNS profile configuration."""
     headers = {"X-Api-Key": api_key}
-    resp = requests.get(f"{NEXTDNS_API}/profiles/{profile_id}", headers=headers, timeout=15)
+    resp = requests.get(
+        f"{NEXTDNS_API}/profiles/{profile_id}", headers=headers, timeout=15
+    )
     resp.raise_for_status()
     profile = resp.json()
     print(f"[*] Profile: {profile.get('name', profile_id)}")
@@ -23,7 +25,9 @@ def get_profile(api_key, profile_id):
 def audit_security_settings(api_key, profile_id):
     """Audit security features enabled on a NextDNS profile."""
     headers = {"X-Api-Key": api_key}
-    resp = requests.get(f"{NEXTDNS_API}/profiles/{profile_id}/security", headers=headers, timeout=15)
+    resp = requests.get(
+        f"{NEXTDNS_API}/profiles/{profile_id}/security", headers=headers, timeout=15
+    )
     resp.raise_for_status()
     security = resp.json()
     findings = []
@@ -54,14 +58,20 @@ def get_query_logs(api_key, profile_id, limit=100):
     """Retrieve recent DNS query logs for analysis."""
     headers = {"X-Api-Key": api_key}
     params = {"limit": limit}
-    resp = requests.get(f"{NEXTDNS_API}/profiles/{profile_id}/logs",
-                        headers=headers, params=params, timeout=15)
+    resp = requests.get(
+        f"{NEXTDNS_API}/profiles/{profile_id}/logs",
+        headers=headers,
+        params=params,
+        timeout=15,
+    )
     resp.raise_for_status()
     logs = resp.json().get("data", [])
     blocked = [l for l in logs if l.get("status") == "blocked"]
     print(f"[*] Query logs: {len(logs)} total, {len(blocked)} blocked")
     for entry in blocked[:10]:
-        print(f"  [BLOCKED] {entry.get('domain')} - reason: {entry.get('reasons', ['?'])[0]}")
+        print(
+            f"  [BLOCKED] {entry.get('domain')} - reason: {entry.get('reasons', ['?'])[0]}"
+        )
     return logs
 
 
@@ -75,24 +85,33 @@ def get_analytics(api_key, profile_id, period="last30d"):
     }
     analytics = {}
     for name, path in endpoints.items():
-        resp = requests.get(f"{NEXTDNS_API}{path}", headers=headers,
-                            params={"from": f"-{period}"}, timeout=15)
+        resp = requests.get(
+            f"{NEXTDNS_API}{path}",
+            headers=headers,
+            params={"from": f"-{period}"},
+            timeout=15,
+        )
         if resp.status_code == 200:
             analytics[name] = resp.json()
     if "queries" in analytics:
         data = analytics["queries"].get("data", [])
         total = sum(d.get("queries", 0) for d in data)
         blocked = sum(d.get("blockedQueries", 0) for d in data)
-        print(f"[*] Analytics ({period}): {total} queries, {blocked} blocked "
-              f"({blocked/total*100:.1f}%)" if total else "[*] No query data")
+        print(
+            f"[*] Analytics ({period}): {total} queries, {blocked} blocked "
+            f"({blocked/total*100:.1f}%)"
+            if total
+            else "[*] No query data"
+        )
     return analytics
 
 
 def check_denylist(api_key, profile_id):
     """Check configured denylists and custom blocked domains."""
     headers = {"X-Api-Key": api_key}
-    resp = requests.get(f"{NEXTDNS_API}/profiles/{profile_id}/denylist",
-                        headers=headers, timeout=15)
+    resp = requests.get(
+        f"{NEXTDNS_API}/profiles/{profile_id}/denylist", headers=headers, timeout=15
+    )
     resp.raise_for_status()
     denylist = resp.json()
     entries = denylist.get("data", [])
@@ -108,7 +127,9 @@ def generate_report(profile, findings, logs, analytics, output_path):
         "audit_date": datetime.now(timezone.utc).isoformat(),
         "profile": profile.get("name", "unknown"),
         "security_findings": findings,
-        "blocked_queries_sample": [l for l in logs if l.get("status") == "blocked"][:20],
+        "blocked_queries_sample": [l for l in logs if l.get("status") == "blocked"][
+            :20
+        ],
         "analytics_summary": analytics,
     }
     with open(output_path, "w") as f:
@@ -118,7 +139,9 @@ def generate_report(profile, findings, logs, analytics, output_path):
 
 def main():
     parser = argparse.ArgumentParser(description="NextDNS Zero Trust DNS Audit Agent")
-    parser.add_argument("action", choices=["audit", "logs", "analytics", "denylist", "full-audit"])
+    parser.add_argument(
+        "action", choices=["audit", "logs", "analytics", "denylist", "full-audit"]
+    )
     parser.add_argument("--api-key", required=True, help="NextDNS API key")
     parser.add_argument("--profile", required=True, help="NextDNS profile ID")
     parser.add_argument("-o", "--output", default="nextdns_audit.json")

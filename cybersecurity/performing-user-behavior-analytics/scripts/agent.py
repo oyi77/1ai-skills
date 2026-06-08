@@ -29,7 +29,10 @@ def haversine(lat1, lon1, lat2, lon2):
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
     dlat = lat2 - lat1
     dlon = lon2 - lon1
-    a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+    a = (
+        math.sin(dlat / 2) ** 2
+        + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+    )
     return EARTH_RADIUS_KM * 2 * math.asin(math.sqrt(a))
 
 
@@ -50,12 +53,19 @@ def build_user_baselines(es, index="logs-auth-*", days=30):
                 "terms": {"field": "user.name", "size": 5000},
                 "aggs": {
                     "unique_ips": {"cardinality": {"field": "source.ip"}},
-                    "unique_countries": {"cardinality": {"field": "source.geo.country_name"}},
-                    "login_hours": {"stats": {"script": "doc['@timestamp'].value.getHour()"}},
-                    "daily_count": {
-                        "date_histogram": {"field": "@timestamp", "calendar_interval": "day"},
+                    "unique_countries": {
+                        "cardinality": {"field": "source.geo.country_name"}
                     },
-                }
+                    "login_hours": {
+                        "stats": {"script": "doc['@timestamp'].value.getHour()"}
+                    },
+                    "daily_count": {
+                        "date_histogram": {
+                            "field": "@timestamp",
+                            "calendar_interval": "day",
+                        },
+                    },
+                },
             }
         },
     }
@@ -98,19 +108,29 @@ def detect_impossible_travel(es, index="logs-auth-*", hours=24):
         user = src.get("user", {}).get("name")
         if not user:
             continue
-        events_by_user.setdefault(user, []).append({
-            "timestamp": src.get("@timestamp"),
-            "ip": src.get("source", {}).get("ip"),
-            "lat": src.get("source", {}).get("geo", {}).get("location", {}).get("lat"),
-            "lon": src.get("source", {}).get("geo", {}).get("location", {}).get("lon"),
-            "city": src.get("source", {}).get("geo", {}).get("city_name"),
-            "country": src.get("source", {}).get("geo", {}).get("country_name"),
-        })
+        events_by_user.setdefault(user, []).append(
+            {
+                "timestamp": src.get("@timestamp"),
+                "ip": src.get("source", {}).get("ip"),
+                "lat": src.get("source", {})
+                .get("geo", {})
+                .get("location", {})
+                .get("lat"),
+                "lon": src.get("source", {})
+                .get("geo", {})
+                .get("location", {})
+                .get("lon"),
+                "city": src.get("source", {}).get("geo", {}).get("city_name"),
+                "country": src.get("source", {}).get("geo", {}).get("country_name"),
+            }
+        )
     alerts = []
     for user, events in events_by_user.items():
         for i in range(1, len(events)):
             prev, curr = events[i - 1], events[i]
-            if not all([prev.get("lat"), prev.get("lon"), curr.get("lat"), curr.get("lon")]):
+            if not all(
+                [prev.get("lat"), prev.get("lon"), curr.get("lat"), curr.get("lon")]
+            ):
                 continue
             dist = haversine(prev["lat"], prev["lon"], curr["lat"], curr["lon"])
             try:
@@ -123,16 +143,18 @@ def detect_impossible_travel(es, index="logs-auth-*", hours=24):
                 continue
             speed = dist / hours_diff
             if speed > 900 and dist > 500:
-                alerts.append({
-                    "user": user,
-                    "from": f"{prev.get('city', '?')}, {prev.get('country', '?')}",
-                    "to": f"{curr.get('city', '?')}, {curr.get('country', '?')}",
-                    "distance_km": round(dist),
-                    "time_hours": round(hours_diff, 2),
-                    "speed_kmh": round(speed),
-                    "prev_time": prev["timestamp"],
-                    "curr_time": curr["timestamp"],
-                })
+                alerts.append(
+                    {
+                        "user": user,
+                        "from": f"{prev.get('city', '?')}, {prev.get('country', '?')}",
+                        "to": f"{curr.get('city', '?')}, {curr.get('country', '?')}",
+                        "distance_km": round(dist),
+                        "time_hours": round(hours_diff, 2),
+                        "speed_kmh": round(speed),
+                        "prev_time": prev["timestamp"],
+                        "curr_time": curr["timestamp"],
+                    }
+                )
     return alerts
 
 
@@ -168,14 +190,16 @@ def detect_off_hours_access(es, baselines, index="logs-auth-*", hours=168):
         if avg_hour and stdev:
             if hour < (avg_hour - 2 * stdev) or hour > (avg_hour + 2 * stdev):
                 if hour < 6 or hour > 22 or dt.weekday() >= 5:
-                    alerts.append({
-                        "user": user,
-                        "timestamp": ts,
-                        "login_hour": hour,
-                        "baseline_avg": round(avg_hour, 1),
-                        "weekend": dt.weekday() >= 5,
-                        "ip": src.get("source", {}).get("ip"),
-                    })
+                    alerts.append(
+                        {
+                            "user": user,
+                            "timestamp": ts,
+                            "login_hour": hour,
+                            "baseline_avg": round(avg_hour, 1),
+                            "weekend": dt.weekday() >= 5,
+                            "ip": src.get("source", {}).get("ip"),
+                        }
+                    )
     return alerts
 
 
@@ -186,7 +210,9 @@ def calculate_risk_scores(impossible_travel, off_hours, baselines):
         user = alert["user"]
         scores.setdefault(user, {"risk": 0, "anomalies": []})
         scores[user]["risk"] += 40
-        scores[user]["anomalies"].append(f"Impossible travel: {alert['from']} -> {alert['to']}")
+        scores[user]["anomalies"].append(
+            f"Impossible travel: {alert['from']} -> {alert['to']}"
+        )
     for alert in off_hours:
         user = alert["user"]
         scores.setdefault(user, {"risk": 0, "anomalies": []})
@@ -210,7 +236,11 @@ def print_report(travel_alerts, offhours_alerts, risk_scores):
 
 
 if __name__ == "__main__":
-    host = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("ES_HOSTS", "https://localhost:9200")
+    host = (
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else os.environ.get("ES_HOSTS", "https://localhost:9200")
+    )
     es = get_es_client(host)
     baselines = build_user_baselines(es)
     travel = detect_impossible_travel(es)

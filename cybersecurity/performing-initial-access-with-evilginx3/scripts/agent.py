@@ -25,8 +25,17 @@ def parse_phishlet(phishlet_path):
         "name": config.get("name", ""),
         "author": config.get("author", ""),
         "target_domain": proxy_hosts[0].get("domain", "") if proxy_hosts else "",
-        "proxy_hosts": [{"phish_sub": h.get("phish_sub"), "orig_sub": h.get("orig_sub"), "domain": h.get("domain")} for h in proxy_hosts],
-        "auth_tokens": [{"domain": t.get("domain"), "keys": t.get("keys", [])} for t in auth_tokens],
+        "proxy_hosts": [
+            {
+                "phish_sub": h.get("phish_sub"),
+                "orig_sub": h.get("orig_sub"),
+                "domain": h.get("domain"),
+            }
+            for h in proxy_hosts
+        ],
+        "auth_tokens": [
+            {"domain": t.get("domain"), "keys": t.get("keys", [])} for t in auth_tokens
+        ],
         "credential_fields": cred_fields,
         "sub_filters_count": len(sub_filters),
         "analysis": {
@@ -49,7 +58,11 @@ def analyze_session_log(log_file):
             current = {"start": line.strip(), "tokens": [], "credentials": []}
         elif "token" in line.lower() or "cookie" in line.lower():
             current.setdefault("tokens", []).append(line.strip()[:200])
-        elif "username" in line.lower() or "password" in line.lower() or "credential" in line.lower():
+        elif (
+            "username" in line.lower()
+            or "password" in line.lower()
+            or "credential" in line.lower()
+        ):
             current.setdefault("credentials", []).append(line.strip()[:200])
         elif "landing_url" in line.lower() or "remote_addr" in line.lower():
             ip_match = re.search(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", line)
@@ -69,7 +82,9 @@ def analyze_session_log(log_file):
 def check_evilginx_installation():
     """Check if Evilginx3 is installed and get version."""
     try:
-        result = subprocess.run(["evilginx", "--version"], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["evilginx", "--version"], capture_output=True, text=True, timeout=10
+        )
         version = result.stdout.strip() or result.stderr.strip()
         return {"installed": True, "version": version}
     except FileNotFoundError:
@@ -101,26 +116,36 @@ def generate_detection_rules(phishlet_path):
     for host in proxy_hosts:
         domain = host.get("domain", "")
         phish_sub = host.get("phish_sub", "")
-        rules.append({
-            "type": "dns_monitor",
-            "description": f"Monitor for DNS queries to subdomains impersonating {domain}",
-            "pattern": f"*.{domain}",
-            "indicator": f"Phishing subdomain: {phish_sub}.{domain}",
-        })
+        rules.append(
+            {
+                "type": "dns_monitor",
+                "description": f"Monitor for DNS queries to subdomains impersonating {domain}",
+                "pattern": f"*.{domain}",
+                "indicator": f"Phishing subdomain: {phish_sub}.{domain}",
+            }
+        )
     auth_tokens = config.get("auth_tokens", [])
     for token in auth_tokens:
         for key in token.get("keys", []):
-            rules.append({
-                "type": "cookie_monitor",
-                "description": f"Monitor for session token relay of {key}",
-                "cookie_name": key,
-                "domain": token.get("domain", ""),
-            })
-    rules.append({
-        "type": "network_signature",
-        "description": "Detect reverse proxy header anomalies",
-        "indicators": ["X-Forwarded-For mismatch", "Origin header discrepancy", "TLS certificate mismatch"],
-    })
+            rules.append(
+                {
+                    "type": "cookie_monitor",
+                    "description": f"Monitor for session token relay of {key}",
+                    "cookie_name": key,
+                    "domain": token.get("domain", ""),
+                }
+            )
+    rules.append(
+        {
+            "type": "network_signature",
+            "description": "Detect reverse proxy header anomalies",
+            "indicators": [
+                "X-Forwarded-For mismatch",
+                "Origin header discrepancy",
+                "TLS certificate mismatch",
+            ],
+        }
+    )
     return {
         "phishlet": phishlet_path,
         "detection_rules": rules,
@@ -134,7 +159,9 @@ def generate_detection_rules(phishlet_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Evilginx3 Phishlet Analysis Agent (Authorized Testing Only)")
+    parser = argparse.ArgumentParser(
+        description="Evilginx3 Phishlet Analysis Agent (Authorized Testing Only)"
+    )
     sub = parser.add_subparsers(dest="command")
     p = sub.add_parser("parse", help="Parse phishlet YAML")
     p.add_argument("--phishlet", required=True)

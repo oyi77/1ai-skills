@@ -43,7 +43,14 @@ BEACON_CONFIG_FIELDS = {
     54: ("PipeName", "str"),
 }
 
-BEACON_TYPES = {0: "HTTP", 1: "Hybrid HTTP/DNS", 2: "SMB", 4: "TCP", 8: "HTTPS", 16: "DNS over HTTPS"}
+BEACON_TYPES = {
+    0: "HTTP",
+    1: "Hybrid HTTP/DNS",
+    2: "SMB",
+    4: "TCP",
+    8: "HTTPS",
+    16: "DNS over HTTPS",
+}
 
 XOR_KEY_V3 = 0x69
 XOR_KEY_V4 = 0x2E
@@ -63,13 +70,15 @@ def find_config_offset(data):
     # Look for XOR-encoded config patterns
     for xor_key in [XOR_KEY_V3, XOR_KEY_V4]:
         # Config starts with 0x0001 (BeaconType field ID) XOR-encoded
-        encoded_marker = bytes([0x00 ^ xor_key, 0x01 ^ xor_key, 0x00 ^ xor_key, 0x01 ^ xor_key])
+        encoded_marker = bytes(
+            [0x00 ^ xor_key, 0x01 ^ xor_key, 0x00 ^ xor_key, 0x01 ^ xor_key]
+        )
         offset = data.find(encoded_marker)
         if offset != -1:
             return offset, xor_key
     # Try unencoded
     for offset in range(len(data) - 100):
-        if data[offset:offset+4] == b"\x00\x01\x00\x01":
+        if data[offset : offset + 4] == b"\x00\x01\x00\x01":
             return offset, None
     return -1, None
 
@@ -97,7 +106,7 @@ def parse_config_field(data, offset):
         length = struct.unpack_from(">H", data, offset + 4)[0]
         if offset + 6 + length > len(data):
             return None, None, None, offset
-        value = data[offset + 6:offset + 6 + length]
+        value = data[offset + 6 : offset + 6 + length]
         return field_id, "str", value, offset + 6 + length
     return None, None, None, offset + 2
 
@@ -111,19 +120,25 @@ def extract_beacon_config(filepath):
     if config_offset == -1:
         return {"error": "No beacon configuration found", "file": filepath}
 
-    config_data = xor_decode(data[config_offset:config_offset + 4096], xor_key)
+    config_data = xor_decode(data[config_offset : config_offset + 4096], xor_key)
     config = OrderedDict()
     config["_meta"] = {
         "config_offset": f"0x{config_offset:08X}",
         "xor_key": f"0x{xor_key:02X}" if xor_key else "none",
-        "version_guess": "4.x" if xor_key == XOR_KEY_V4 else "3.x" if xor_key == XOR_KEY_V3 else "unknown",
+        "version_guess": (
+            "4.x"
+            if xor_key == XOR_KEY_V4
+            else "3.x" if xor_key == XOR_KEY_V3 else "unknown"
+        ),
     }
 
     offset = 0
     max_fields = 100
     parsed = 0
     while offset < len(config_data) - 4 and parsed < max_fields:
-        field_id, field_type, value, new_offset = parse_config_field(config_data, offset)
+        field_id, field_type, value, new_offset = parse_config_field(
+            config_data, offset
+        )
         if field_id is None or new_offset == offset:
             break
         offset = new_offset
@@ -148,8 +163,14 @@ def extract_beacon_config(filepath):
 
 def extract_c2_indicators(config):
     """Extract C2 indicators from parsed config for threat intelligence."""
-    indicators = {"c2_servers": [], "user_agents": [], "uris": [],
-                  "pipes": [], "watermark": None, "dns": []}
+    indicators = {
+        "c2_servers": [],
+        "user_agents": [],
+        "uris": [],
+        "pipes": [],
+        "watermark": None,
+        "dns": [],
+    }
     c2 = config.get("C2Server", "")
     if c2:
         for server in c2.split(","):
@@ -178,18 +199,40 @@ def assess_operator_opsec(config):
     sleep = config.get("SleepTime", 0)
     jitter = config.get("Jitter", 0)
     if sleep < 30000:
-        findings.append({"level": "INFO", "detail": f"Low sleep time: {sleep}ms - high beacon frequency"})
+        findings.append(
+            {
+                "level": "INFO",
+                "detail": f"Low sleep time: {sleep}ms - high beacon frequency",
+            }
+        )
     if jitter == 0:
-        findings.append({"level": "WARN", "detail": "No jitter configured - predictable beacon interval"})
+        findings.append(
+            {
+                "level": "WARN",
+                "detail": "No jitter configured - predictable beacon interval",
+            }
+        )
     ua = config.get("UserAgent", "")
     if "Mozilla" not in ua and ua:
-        findings.append({"level": "WARN", "detail": f"Non-standard User-Agent: {ua[:60]}"})
+        findings.append(
+            {"level": "WARN", "detail": f"Non-standard User-Agent: {ua[:60]}"}
+        )
     spawn86 = config.get("SpawnToX86", config.get("Spawnto_x86", ""))
     if "rundll32" in spawn86.lower():
-        findings.append({"level": "INFO", "detail": "Default spawn-to process (rundll32) - easy to detect"})
+        findings.append(
+            {
+                "level": "INFO",
+                "detail": "Default spawn-to process (rundll32) - easy to detect",
+            }
+        )
     cleanup = config.get("StageCleanup", 0)
     if cleanup == 0:
-        findings.append({"level": "INFO", "detail": "Stage cleanup disabled - beacon stub remains in memory"})
+        findings.append(
+            {
+                "level": "INFO",
+                "detail": "Stage cleanup disabled - beacon stub remains in memory",
+            }
+        )
     return findings
 
 

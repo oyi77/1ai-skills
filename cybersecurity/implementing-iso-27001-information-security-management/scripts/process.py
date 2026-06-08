@@ -48,16 +48,38 @@ class RiskTreatment(Enum):
 
 # Full Annex A control catalog for ISO 27001:2022
 ANNEX_A_CONTROLS = {
-    "A.5.1": {"title": "Policies for information security", "category": "Organizational"},
-    "A.5.2": {"title": "Information security roles and responsibilities", "category": "Organizational"},
+    "A.5.1": {
+        "title": "Policies for information security",
+        "category": "Organizational",
+    },
+    "A.5.2": {
+        "title": "Information security roles and responsibilities",
+        "category": "Organizational",
+    },
     "A.5.3": {"title": "Segregation of duties", "category": "Organizational"},
     "A.5.4": {"title": "Management responsibilities", "category": "Organizational"},
     "A.5.5": {"title": "Contact with authorities", "category": "Organizational"},
-    "A.5.6": {"title": "Contact with special interest groups", "category": "Organizational"},
-    "A.5.7": {"title": "Threat intelligence", "category": "Organizational", "new": True},
-    "A.5.8": {"title": "Information security in project management", "category": "Organizational"},
-    "A.5.9": {"title": "Inventory of information and other associated assets", "category": "Organizational"},
-    "A.5.10": {"title": "Acceptable use of information and other associated assets", "category": "Organizational"},
+    "A.5.6": {
+        "title": "Contact with special interest groups",
+        "category": "Organizational",
+    },
+    "A.5.7": {
+        "title": "Threat intelligence",
+        "category": "Organizational",
+        "new": True,
+    },
+    "A.5.8": {
+        "title": "Information security in project management",
+        "category": "Organizational",
+    },
+    "A.5.9": {
+        "title": "Inventory of information and other associated assets",
+        "category": "Organizational",
+    },
+    "A.5.10": {
+        "title": "Acceptable use of information and other associated assets",
+        "category": "Organizational",
+    },
     "A.5.11": {"title": "Return of assets", "category": "Organizational"},
     "A.5.12": {"title": "Classification of information", "category": "Organizational"},
     "A.5.13": {"title": "Labelling of information", "category": "Organizational"},
@@ -66,38 +88,104 @@ ANNEX_A_CONTROLS = {
     "A.5.16": {"title": "Identity management", "category": "Organizational"},
     "A.5.17": {"title": "Authentication information", "category": "Organizational"},
     "A.5.18": {"title": "Access rights", "category": "Organizational"},
-    "A.5.19": {"title": "Information security in supplier relationships", "category": "Organizational"},
-    "A.5.20": {"title": "Addressing information security within supplier agreements", "category": "Organizational"},
-    "A.5.21": {"title": "Managing information security in the ICT supply chain", "category": "Organizational"},
-    "A.5.22": {"title": "Monitoring, review and change management of supplier services", "category": "Organizational"},
-    "A.5.23": {"title": "Information security for use of cloud services", "category": "Organizational", "new": True},
-    "A.5.24": {"title": "Information security incident management planning and preparation", "category": "Organizational"},
-    "A.5.25": {"title": "Assessment and decision on information security events", "category": "Organizational"},
-    "A.5.26": {"title": "Response to information security incidents", "category": "Organizational"},
-    "A.5.27": {"title": "Learning from information security incidents", "category": "Organizational"},
+    "A.5.19": {
+        "title": "Information security in supplier relationships",
+        "category": "Organizational",
+    },
+    "A.5.20": {
+        "title": "Addressing information security within supplier agreements",
+        "category": "Organizational",
+    },
+    "A.5.21": {
+        "title": "Managing information security in the ICT supply chain",
+        "category": "Organizational",
+    },
+    "A.5.22": {
+        "title": "Monitoring, review and change management of supplier services",
+        "category": "Organizational",
+    },
+    "A.5.23": {
+        "title": "Information security for use of cloud services",
+        "category": "Organizational",
+        "new": True,
+    },
+    "A.5.24": {
+        "title": "Information security incident management planning and preparation",
+        "category": "Organizational",
+    },
+    "A.5.25": {
+        "title": "Assessment and decision on information security events",
+        "category": "Organizational",
+    },
+    "A.5.26": {
+        "title": "Response to information security incidents",
+        "category": "Organizational",
+    },
+    "A.5.27": {
+        "title": "Learning from information security incidents",
+        "category": "Organizational",
+    },
     "A.5.28": {"title": "Collection of evidence", "category": "Organizational"},
-    "A.5.29": {"title": "Information security during disruption", "category": "Organizational"},
-    "A.5.30": {"title": "ICT readiness for business continuity", "category": "Organizational", "new": True},
-    "A.5.31": {"title": "Legal, statutory, regulatory and contractual requirements", "category": "Organizational"},
+    "A.5.29": {
+        "title": "Information security during disruption",
+        "category": "Organizational",
+    },
+    "A.5.30": {
+        "title": "ICT readiness for business continuity",
+        "category": "Organizational",
+        "new": True,
+    },
+    "A.5.31": {
+        "title": "Legal, statutory, regulatory and contractual requirements",
+        "category": "Organizational",
+    },
     "A.5.32": {"title": "Intellectual property rights", "category": "Organizational"},
     "A.5.33": {"title": "Protection of records", "category": "Organizational"},
     "A.5.34": {"title": "Privacy and protection of PII", "category": "Organizational"},
-    "A.5.35": {"title": "Independent review of information security", "category": "Organizational"},
-    "A.5.36": {"title": "Compliance with policies, rules and standards", "category": "Organizational"},
-    "A.5.37": {"title": "Documented operating procedures", "category": "Organizational"},
+    "A.5.35": {
+        "title": "Independent review of information security",
+        "category": "Organizational",
+    },
+    "A.5.36": {
+        "title": "Compliance with policies, rules and standards",
+        "category": "Organizational",
+    },
+    "A.5.37": {
+        "title": "Documented operating procedures",
+        "category": "Organizational",
+    },
     "A.6.1": {"title": "Screening", "category": "People"},
     "A.6.2": {"title": "Terms and conditions of employment", "category": "People"},
-    "A.6.3": {"title": "Information security awareness, education and training", "category": "People"},
+    "A.6.3": {
+        "title": "Information security awareness, education and training",
+        "category": "People",
+    },
     "A.6.4": {"title": "Disciplinary process", "category": "People"},
-    "A.6.5": {"title": "Responsibilities after termination or change of employment", "category": "People"},
-    "A.6.6": {"title": "Confidentiality or non-disclosure agreements", "category": "People"},
+    "A.6.5": {
+        "title": "Responsibilities after termination or change of employment",
+        "category": "People",
+    },
+    "A.6.6": {
+        "title": "Confidentiality or non-disclosure agreements",
+        "category": "People",
+    },
     "A.6.7": {"title": "Remote working", "category": "People"},
     "A.6.8": {"title": "Information security event reporting", "category": "People"},
     "A.7.1": {"title": "Physical security perimeters", "category": "Physical"},
     "A.7.2": {"title": "Physical entry", "category": "Physical"},
-    "A.7.3": {"title": "Securing offices, rooms and facilities", "category": "Physical"},
-    "A.7.4": {"title": "Physical security monitoring", "category": "Physical", "new": True},
-    "A.7.5": {"title": "Protecting against physical and environmental threats", "category": "Physical"},
+    "A.7.3": {
+        "title": "Securing offices, rooms and facilities",
+        "category": "Physical",
+    },
+    "A.7.4": {
+        "title": "Physical security monitoring",
+        "category": "Physical",
+        "new": True,
+    },
+    "A.7.5": {
+        "title": "Protecting against physical and environmental threats",
+        "category": "Physical",
+    },
     "A.7.6": {"title": "Working in secure areas", "category": "Physical"},
     "A.7.7": {"title": "Clear desk and clear screen", "category": "Physical"},
     "A.7.8": {"title": "Equipment siting and protection", "category": "Physical"},
@@ -106,7 +194,10 @@ ANNEX_A_CONTROLS = {
     "A.7.11": {"title": "Supporting utilities", "category": "Physical"},
     "A.7.12": {"title": "Cabling security", "category": "Physical"},
     "A.7.13": {"title": "Equipment maintenance", "category": "Physical"},
-    "A.7.14": {"title": "Secure disposal or re-use of equipment", "category": "Physical"},
+    "A.7.14": {
+        "title": "Secure disposal or re-use of equipment",
+        "category": "Physical",
+    },
     "A.8.1": {"title": "User endpoint devices", "category": "Technological"},
     "A.8.2": {"title": "Privileged access rights", "category": "Technological"},
     "A.8.3": {"title": "Information access restriction", "category": "Technological"},
@@ -114,33 +205,76 @@ ANNEX_A_CONTROLS = {
     "A.8.5": {"title": "Secure authentication", "category": "Technological"},
     "A.8.6": {"title": "Capacity management", "category": "Technological"},
     "A.8.7": {"title": "Protection against malware", "category": "Technological"},
-    "A.8.8": {"title": "Management of technical vulnerabilities", "category": "Technological"},
-    "A.8.9": {"title": "Configuration management", "category": "Technological", "new": True},
-    "A.8.10": {"title": "Information deletion", "category": "Technological", "new": True},
+    "A.8.8": {
+        "title": "Management of technical vulnerabilities",
+        "category": "Technological",
+    },
+    "A.8.9": {
+        "title": "Configuration management",
+        "category": "Technological",
+        "new": True,
+    },
+    "A.8.10": {
+        "title": "Information deletion",
+        "category": "Technological",
+        "new": True,
+    },
     "A.8.11": {"title": "Data masking", "category": "Technological", "new": True},
-    "A.8.12": {"title": "Data leakage prevention", "category": "Technological", "new": True},
+    "A.8.12": {
+        "title": "Data leakage prevention",
+        "category": "Technological",
+        "new": True,
+    },
     "A.8.13": {"title": "Information backup", "category": "Technological"},
-    "A.8.14": {"title": "Redundancy of information processing facilities", "category": "Technological"},
+    "A.8.14": {
+        "title": "Redundancy of information processing facilities",
+        "category": "Technological",
+    },
     "A.8.15": {"title": "Logging", "category": "Technological"},
-    "A.8.16": {"title": "Monitoring activities", "category": "Technological", "new": True},
+    "A.8.16": {
+        "title": "Monitoring activities",
+        "category": "Technological",
+        "new": True,
+    },
     "A.8.17": {"title": "Clock synchronization", "category": "Technological"},
-    "A.8.18": {"title": "Use of privileged utility programs", "category": "Technological"},
-    "A.8.19": {"title": "Installation of software on operational systems", "category": "Technological"},
+    "A.8.18": {
+        "title": "Use of privileged utility programs",
+        "category": "Technological",
+    },
+    "A.8.19": {
+        "title": "Installation of software on operational systems",
+        "category": "Technological",
+    },
     "A.8.20": {"title": "Networks security", "category": "Technological"},
     "A.8.21": {"title": "Security of network services", "category": "Technological"},
     "A.8.22": {"title": "Segregation of networks", "category": "Technological"},
     "A.8.23": {"title": "Web filtering", "category": "Technological", "new": True},
     "A.8.24": {"title": "Use of cryptography", "category": "Technological"},
     "A.8.25": {"title": "Secure development life cycle", "category": "Technological"},
-    "A.8.26": {"title": "Application security requirements", "category": "Technological"},
-    "A.8.27": {"title": "Secure system architecture and engineering principles", "category": "Technological"},
+    "A.8.26": {
+        "title": "Application security requirements",
+        "category": "Technological",
+    },
+    "A.8.27": {
+        "title": "Secure system architecture and engineering principles",
+        "category": "Technological",
+    },
     "A.8.28": {"title": "Secure coding", "category": "Technological", "new": True},
-    "A.8.29": {"title": "Security testing in development and acceptance", "category": "Technological"},
+    "A.8.29": {
+        "title": "Security testing in development and acceptance",
+        "category": "Technological",
+    },
     "A.8.30": {"title": "Outsourced development", "category": "Technological"},
-    "A.8.31": {"title": "Separation of development, test and production environments", "category": "Technological"},
+    "A.8.31": {
+        "title": "Separation of development, test and production environments",
+        "category": "Technological",
+    },
     "A.8.32": {"title": "Change management", "category": "Technological"},
     "A.8.33": {"title": "Test information", "category": "Technological"},
-    "A.8.34": {"title": "Protection of information systems during audit testing", "category": "Technological"},
+    "A.8.34": {
+        "title": "Protection of information systems during audit testing",
+        "category": "Technological",
+    },
 }
 
 
@@ -151,7 +285,7 @@ class RiskEntry:
     threat: str
     vulnerability: str
     likelihood: int  # 1-5
-    impact: int      # 1-5
+    impact: int  # 1-5
     existing_controls: list = field(default_factory=list)
     risk_level: str = ""
     treatment: str = ""
@@ -222,7 +356,7 @@ class ISO27001ComplianceManager:
             "total_controls": len(ANNEX_A_CONTROLS),
             "categories": {},
             "controls": {},
-            "summary": {}
+            "summary": {},
         }
 
         status_counts = {s.value: 0 for s in ControlStatus}
@@ -255,7 +389,9 @@ class ISO27001ComplianceManager:
 
         results["summary"] = {
             "compliance_percentage": 0.0,
-            "controls_needing_implementation": status_counts[ControlStatus.NOT_IMPLEMENTED.value],
+            "controls_needing_implementation": status_counts[
+                ControlStatus.NOT_IMPLEMENTED.value
+            ],
             "new_2022_controls": sum(
                 1 for c in ANNEX_A_CONTROLS.values() if c.get("new", False)
             ),
@@ -288,7 +424,9 @@ class ISO27001ComplianceManager:
             print(f"\n  [{entry.risk_id}] {entry.asset}")
             print(f"    Threat: {entry.threat}")
             print(f"    Vulnerability: {entry.vulnerability}")
-            print(f"    Score: {entry.likelihood} x {entry.impact} = {entry.likelihood * entry.impact}")
+            print(
+                f"    Score: {entry.likelihood} x {entry.impact} = {entry.likelihood * entry.impact}"
+            )
             print(f"    Risk Level: {entry.risk_level}")
             print(f"    Treatment: {entry.treatment}")
 
@@ -310,7 +448,9 @@ class ISO27001ComplianceManager:
 
         return self.risk_register
 
-    def generate_soa(self, control_assessments: Optional[dict] = None) -> list[SoAEntry]:
+    def generate_soa(
+        self, control_assessments: Optional[dict] = None
+    ) -> list[SoAEntry]:
         """Generate Statement of Applicability for all 93 controls."""
         print("\n" + "=" * 70)
         print("STATEMENT OF APPLICABILITY (SoA)")
@@ -325,8 +465,12 @@ class ISO27001ComplianceManager:
                 control_id=control_id,
                 control_title=control_info["title"],
                 applicable=assessment.get("applicable", True),
-                justification=assessment.get("justification", "Required by risk assessment"),
-                implementation_status=assessment.get("status", ControlStatus.NOT_IMPLEMENTED.value),
+                justification=assessment.get(
+                    "justification", "Required by risk assessment"
+                ),
+                implementation_status=assessment.get(
+                    "status", ControlStatus.NOT_IMPLEMENTED.value
+                ),
                 control_owner=assessment.get("owner", ""),
                 linked_risks=assessment.get("linked_risks", []),
                 evidence_reference=assessment.get("evidence", ""),
@@ -336,12 +480,16 @@ class ISO27001ComplianceManager:
         # Calculate SoA statistics
         applicable_count = sum(1 for e in self.soa_entries if e.applicable)
         implemented_count = sum(
-            1 for e in self.soa_entries
-            if e.applicable and e.implementation_status == ControlStatus.FULLY_IMPLEMENTED.value
+            1
+            for e in self.soa_entries
+            if e.applicable
+            and e.implementation_status == ControlStatus.FULLY_IMPLEMENTED.value
         )
         partial_count = sum(
-            1 for e in self.soa_entries
-            if e.applicable and e.implementation_status == ControlStatus.PARTIALLY_IMPLEMENTED.value
+            1
+            for e in self.soa_entries
+            if e.applicable
+            and e.implementation_status == ControlStatus.PARTIALLY_IMPLEMENTED.value
         )
         not_applicable_count = sum(1 for e in self.soa_entries if not e.applicable)
 
@@ -365,25 +513,36 @@ class ISO27001ComplianceManager:
         csv_path = self.output_dir / "soa_report.csv"
         with open(csv_path, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "Control ID", "Title", "Category", "Applicable",
-                "Justification", "Implementation Status", "Owner",
-                "Linked Risks", "Evidence Reference", "New in 2022"
-            ])
+            writer.writerow(
+                [
+                    "Control ID",
+                    "Title",
+                    "Category",
+                    "Applicable",
+                    "Justification",
+                    "Implementation Status",
+                    "Owner",
+                    "Linked Risks",
+                    "Evidence Reference",
+                    "New in 2022",
+                ]
+            )
             for entry in self.soa_entries:
                 control_info = ANNEX_A_CONTROLS.get(entry.control_id, {})
-                writer.writerow([
-                    entry.control_id,
-                    entry.control_title,
-                    control_info.get("category", ""),
-                    "Yes" if entry.applicable else "No",
-                    entry.justification,
-                    entry.implementation_status,
-                    entry.control_owner,
-                    "; ".join(entry.linked_risks),
-                    entry.evidence_reference,
-                    "Yes" if control_info.get("new", False) else "No",
-                ])
+                writer.writerow(
+                    [
+                        entry.control_id,
+                        entry.control_title,
+                        control_info.get("category", ""),
+                        "Yes" if entry.applicable else "No",
+                        entry.justification,
+                        entry.implementation_status,
+                        entry.control_owner,
+                        "; ".join(entry.linked_risks),
+                        entry.evidence_reference,
+                        "Yes" if control_info.get("new", False) else "No",
+                    ]
+                )
 
         print(f"  SoA saved to: {soa_path}")
         print(f"  SoA CSV saved to: {csv_path}")
@@ -431,11 +590,15 @@ class ISO27001ComplianceManager:
 
         # Auto-check based on existing data
         if self.soa_entries:
-            checks["mandatory_documents"]["Statement of Applicability (Clause 6.1.3)"] = True
+            checks["mandatory_documents"][
+                "Statement of Applicability (Clause 6.1.3)"
+            ] = True
 
         if self.risk_register:
             checks["mandatory_documents"]["Risk Assessment Report (Clause 8.2)"] = True
-            checks["process_checks"]["Risk assessment completed within last 12 months"] = True
+            checks["process_checks"][
+                "Risk assessment completed within last 12 months"
+            ] = True
 
         total_checks = sum(len(v) for v in checks.values())
         passed_checks = sum(
@@ -443,7 +606,9 @@ class ISO27001ComplianceManager:
         )
         readiness_pct = (passed_checks / total_checks * 100) if total_checks > 0 else 0
 
-        print(f"\n  Readiness Score: {passed_checks}/{total_checks} ({readiness_pct:.1f}%)")
+        print(
+            f"\n  Readiness Score: {passed_checks}/{total_checks} ({readiness_pct:.1f}%)"
+        )
 
         for section, items in checks.items():
             print(f"\n  {section.replace('_', ' ').title()}:")
@@ -452,7 +617,9 @@ class ISO27001ComplianceManager:
                 print(f"    {icon} {item}")
 
         if readiness_pct < 80:
-            print(f"\n  WARNING: Readiness below 80%. Address gaps before scheduling Stage 1 audit.")
+            print(
+                f"\n  WARNING: Readiness below 80%. Address gaps before scheduling Stage 1 audit."
+            )
         elif readiness_pct < 100:
             print(f"\n  NOTICE: Some items pending. Complete before Stage 2 audit.")
         else:
@@ -526,23 +693,34 @@ class ISO27001ComplianceManager:
                 "total_controls": len(ANNEX_A_CONTROLS),
                 "applicable": sum(1 for e in self.soa_entries if e.applicable),
                 "fully_implemented": sum(
-                    1 for e in self.soa_entries
-                    if e.applicable and e.implementation_status == ControlStatus.FULLY_IMPLEMENTED.value
+                    1
+                    for e in self.soa_entries
+                    if e.applicable
+                    and e.implementation_status == ControlStatus.FULLY_IMPLEMENTED.value
                 ),
                 "partially_implemented": sum(
-                    1 for e in self.soa_entries
-                    if e.applicable and e.implementation_status == ControlStatus.PARTIALLY_IMPLEMENTED.value
+                    1
+                    for e in self.soa_entries
+                    if e.applicable
+                    and e.implementation_status
+                    == ControlStatus.PARTIALLY_IMPLEMENTED.value
                 ),
                 "not_implemented": sum(
-                    1 for e in self.soa_entries
-                    if e.applicable and e.implementation_status == ControlStatus.NOT_IMPLEMENTED.value
+                    1
+                    for e in self.soa_entries
+                    if e.applicable
+                    and e.implementation_status == ControlStatus.NOT_IMPLEMENTED.value
                 ),
             },
             "audit_findings": {
                 "total": len(self.audit_findings),
                 "open": sum(1 for f in self.audit_findings if f.status == "Open"),
-                "major_ncrs": sum(1 for f in self.audit_findings if f.finding_type == "Major NCR"),
-                "minor_ncrs": sum(1 for f in self.audit_findings if f.finding_type == "Minor NCR"),
+                "major_ncrs": sum(
+                    1 for f in self.audit_findings if f.finding_type == "Major NCR"
+                ),
+                "minor_ncrs": sum(
+                    1 for f in self.audit_findings if f.finding_type == "Minor NCR"
+                ),
             },
         }
 

@@ -34,13 +34,18 @@ class DuoAdminClient:
         sig = hmac.new(self.skey.encode(), canon_str.encode(), hashlib.sha1).hexdigest()
         auth = f"{self.ikey}:{sig}"
         import base64
-        return {"Date": now, "Authorization": f"Basic {base64.b64encode(auth.encode()).decode()}"}
+
+        return {
+            "Date": now,
+            "Authorization": f"Basic {base64.b64encode(auth.encode()).decode()}",
+        }
 
     def _get(self, endpoint, params=None):
         params = params or {}
         headers = self._sign("GET", endpoint, params)
-        resp = requests.get(f"https://{self.host}{endpoint}",
-                            headers=headers, params=params, timeout=30)
+        resp = requests.get(
+            f"https://{self.host}{endpoint}", headers=headers, params=params, timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -67,7 +72,11 @@ def audit_mfa_coverage(users_data):
     enrolled = sum(1 for u in users if u.get("status") == "active" and u.get("phones"))
     bypass = sum(1 for u in users if u.get("status") == "bypass")
     disabled = sum(1 for u in users if u.get("status") == "disabled")
-    no_device = [u["username"] for u in users if not u.get("phones") and u.get("status") == "active"]
+    no_device = [
+        u["username"]
+        for u in users
+        if not u.get("phones") and u.get("status") == "active"
+    ]
     return {
         "total_users": total,
         "enrolled": enrolled,
@@ -76,8 +85,19 @@ def audit_mfa_coverage(users_data):
         "no_device": no_device[:20],
         "enrollment_rate": round(enrolled / max(total, 1) * 100, 1),
         "findings": [
-            {"severity": "HIGH", "issue": f"{bypass} users in bypass mode"} if bypass else None,
-            {"severity": "MEDIUM", "issue": f"{len(no_device)} users without MFA device"} if no_device else None,
+            (
+                {"severity": "HIGH", "issue": f"{bypass} users in bypass mode"}
+                if bypass
+                else None
+            ),
+            (
+                {
+                    "severity": "MEDIUM",
+                    "issue": f"{len(no_device)} users without MFA device",
+                }
+                if no_device
+                else None
+            ),
         ],
     }
 
@@ -91,7 +111,9 @@ def analyze_auth_logs(logs_data):
         "total_authentications": len(logs),
         "denied": len(denied),
         "fraud_reported": len(fraud),
-        "top_denied_users": list(set(l.get("user", {}).get("name", "") for l in denied[:10])),
+        "top_denied_users": list(
+            set(l.get("user", {}).get("name", "") for l in denied[:10])
+        ),
     }
 
 

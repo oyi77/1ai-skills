@@ -10,7 +10,9 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 REPLICATION_GUIDS = {
@@ -24,8 +26,11 @@ DCSYNC_ACCESS_MASK = "0x100"
 
 def get_domain_controllers():
     """Get list of legitimate domain controller machine accounts."""
-    cmd = ["powershell", "-Command",
-           "Get-ADDomainController -Filter * | Select-Object Name, IPv4Address | ConvertTo-Json"]
+    cmd = [
+        "powershell",
+        "-Command",
+        "Get-ADDomainController -Filter * | Select-Object Name, IPv4Address | ConvertTo-Json",
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     dcs = []
     try:
@@ -33,11 +38,13 @@ def get_domain_controllers():
         if isinstance(data, dict):
             data = [data]
         for dc in data:
-            dcs.append({
-                "name": dc.get("Name", ""),
-                "ip": dc.get("IPv4Address", ""),
-                "machine_account": dc.get("Name", "") + "$",
-            })
+            dcs.append(
+                {
+                    "name": dc.get("Name", ""),
+                    "ip": dc.get("IPv4Address", ""),
+                    "machine_account": dc.get("Name", "") + "$",
+                }
+            )
     except json.JSONDecodeError:
         pass
     return dcs
@@ -47,11 +54,24 @@ def query_event_4662(evtx_path=None, max_events=5000):
     """Query Windows Event ID 4662 for directory service access events."""
     events = []
     if evtx_path:
-        cmd = ["wevtutil", "qe", evtx_path, "/lf:true",
-               "/q:*[System[EventID=4662]]", "/f:xml", f"/c:{max_events}"]
+        cmd = [
+            "wevtutil",
+            "qe",
+            evtx_path,
+            "/lf:true",
+            "/q:*[System[EventID=4662]]",
+            "/f:xml",
+            f"/c:{max_events}",
+        ]
     else:
-        cmd = ["wevtutil", "qe", "Security",
-               "/q:*[System[EventID=4662]]", "/f:xml", f"/c:{max_events}"]
+        cmd = [
+            "wevtutil",
+            "qe",
+            "Security",
+            "/q:*[System[EventID=4662]]",
+            "/f:xml",
+            f"/c:{max_events}",
+        ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     for event_xml in re.findall(r"<Event.*?</Event>", result.stdout, re.DOTALL):
         try:
@@ -61,19 +81,23 @@ def query_event_4662(evtx_path=None, max_events=5000):
             for el in root.findall(".//s:Data", ns):
                 data[el.get("Name", "")] = el.text or ""
             time_created = root.find(".//s:TimeCreated", ns)
-            timestamp = time_created.get("SystemTime", "") if time_created is not None else ""
-            events.append({
-                "timestamp": timestamp,
-                "computer": root.findtext(".//s:Computer", "", ns),
-                "subject_user_name": data.get("SubjectUserName", ""),
-                "subject_domain_name": data.get("SubjectDomainName", ""),
-                "subject_logon_id": data.get("SubjectLogonId", ""),
-                "object_server": data.get("ObjectServer", ""),
-                "object_type": data.get("ObjectType", ""),
-                "object_name": data.get("ObjectName", ""),
-                "access_mask": data.get("AccessMask", ""),
-                "properties": data.get("Properties", ""),
-            })
+            timestamp = (
+                time_created.get("SystemTime", "") if time_created is not None else ""
+            )
+            events.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": root.findtext(".//s:Computer", "", ns),
+                    "subject_user_name": data.get("SubjectUserName", ""),
+                    "subject_domain_name": data.get("SubjectDomainName", ""),
+                    "subject_logon_id": data.get("SubjectLogonId", ""),
+                    "object_server": data.get("ObjectServer", ""),
+                    "object_type": data.get("ObjectType", ""),
+                    "object_name": data.get("ObjectName", ""),
+                    "access_mask": data.get("AccessMask", ""),
+                    "properties": data.get("Properties", ""),
+                }
+            )
         except ET.ParseError:
             continue
     logger.info("Parsed %d Event 4662 entries", len(events))
@@ -88,11 +112,13 @@ def filter_replication_events(events):
         access_mask = event.get("access_mask", "")
         for guid, name in REPLICATION_GUIDS.items():
             if guid.lower() in properties and access_mask == DCSYNC_ACCESS_MASK:
-                replication_events.append({
-                    **event,
-                    "replication_right": name,
-                    "guid": guid,
-                })
+                replication_events.append(
+                    {
+                        **event,
+                        "replication_right": name,
+                        "guid": guid,
+                    }
+                )
     return replication_events
 
 
@@ -124,7 +150,9 @@ def identify_dcsync_suspects(replication_events, dc_accounts):
 
 def analyze_suspect_patterns(suspects):
     """Analyze patterns in suspected DCSync activity."""
-    by_account = defaultdict(lambda: {"count": 0, "computers": set(), "guids": set(), "timestamps": []})
+    by_account = defaultdict(
+        lambda: {"count": 0, "computers": set(), "guids": set(), "timestamps": []}
+    )
     for event in suspects:
         account = f"{event['subject_domain_name']}\\{event['subject_user_name']}"
         by_account[account]["count"] += 1
@@ -133,33 +161,47 @@ def analyze_suspect_patterns(suspects):
         by_account[account]["timestamps"].append(event["timestamp"])
     patterns = []
     for account, data in by_account.items():
-        has_both = "DS-Replication-Get-Changes" in data["guids"] and "DS-Replication-Get-Changes-All" in data["guids"]
-        patterns.append({
-            "account": account,
-            "replication_requests": data["count"],
-            "source_computers": list(data["computers"]),
-            "replication_rights": list(data["guids"]),
-            "has_full_dcsync_rights": has_both,
-            "severity": "critical" if has_both else "high",
-            "first_seen": min(data["timestamps"]) if data["timestamps"] else "",
-            "last_seen": max(data["timestamps"]) if data["timestamps"] else "",
-        })
+        has_both = (
+            "DS-Replication-Get-Changes" in data["guids"]
+            and "DS-Replication-Get-Changes-All" in data["guids"]
+        )
+        patterns.append(
+            {
+                "account": account,
+                "replication_requests": data["count"],
+                "source_computers": list(data["computers"]),
+                "replication_rights": list(data["guids"]),
+                "has_full_dcsync_rights": has_both,
+                "severity": "critical" if has_both else "high",
+                "first_seen": min(data["timestamps"]) if data["timestamps"] else "",
+                "last_seen": max(data["timestamps"]) if data["timestamps"] else "",
+            }
+        )
     return sorted(patterns, key=lambda x: x["replication_requests"], reverse=True)
 
 
 def check_replication_acls():
     """Check which accounts have replication rights on the domain object."""
-    cmd = ["powershell", "-Command",
-           "(Get-Acl 'AD:\\DC=domain,DC=local').Access | "
-           "Where-Object {$_.ObjectType -eq '1131f6ad-9c07-11d1-f79f-00c04fc2dcd2' -or "
-           "$_.ObjectType -eq '1131f6aa-9c07-11d1-f79f-00c04fc2dcd2'} | "
-           "Select-Object IdentityReference, ActiveDirectoryRights | ConvertTo-Json"]
+    cmd = [
+        "powershell",
+        "-Command",
+        "(Get-Acl 'AD:\\DC=domain,DC=local').Access | "
+        "Where-Object {$_.ObjectType -eq '1131f6ad-9c07-11d1-f79f-00c04fc2dcd2' -or "
+        "$_.ObjectType -eq '1131f6aa-9c07-11d1-f79f-00c04fc2dcd2'} | "
+        "Select-Object IdentityReference, ActiveDirectoryRights | ConvertTo-Json",
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     try:
         acls = json.loads(result.stdout) if result.stdout else []
         if isinstance(acls, dict):
             acls = [acls]
-        return [{"identity": a.get("IdentityReference", ""), "rights": a.get("ActiveDirectoryRights", "")} for a in acls]
+        return [
+            {
+                "identity": a.get("IdentityReference", ""),
+                "rights": a.get("ActiveDirectoryRights", ""),
+            }
+            for a in acls
+        ]
     except json.JSONDecodeError:
         return []
 
@@ -177,13 +219,17 @@ def generate_report(events, replication_events, suspects, legitimate, patterns, 
         "suspect_patterns": patterns,
         "accounts_with_replication_rights": acls,
         "suspicious_events_detail": suspects[:20],
-        "recommendations": [
-            "Disable compromised accounts immediately",
-            "Reset krbtgt password twice (with 12-hour interval)",
-            "Audit all accounts with DS-Replication-Get-Changes rights",
-            "Investigate source hosts for additional compromise indicators",
-            "Review lateral movement from suspect accounts",
-        ] if suspects else ["No DCSync activity detected - continue monitoring"],
+        "recommendations": (
+            [
+                "Disable compromised accounts immediately",
+                "Reset krbtgt password twice (with 12-hour interval)",
+                "Audit all accounts with DS-Replication-Get-Changes rights",
+                "Investigate source hosts for additional compromise indicators",
+                "Review lateral movement from suspect accounts",
+            ]
+            if suspects
+            else ["No DCSync activity detected - continue monitoring"]
+        ),
     }
     return report
 
@@ -191,8 +237,15 @@ def generate_report(events, replication_events, suspects, legitimate, patterns, 
 def main():
     parser = argparse.ArgumentParser(description="DCSync Attack Detection Agent")
     parser.add_argument("--evtx", help="Path to exported Security .evtx file")
-    parser.add_argument("--max-events", type=int, default=5000, help="Max events to parse (default: 5000)")
-    parser.add_argument("--skip-acl-check", action="store_true", help="Skip replication ACL enumeration")
+    parser.add_argument(
+        "--max-events",
+        type=int,
+        default=5000,
+        help="Max events to parse (default: 5000)",
+    )
+    parser.add_argument(
+        "--skip-acl-check", action="store_true", help="Skip replication ACL enumeration"
+    )
     parser.add_argument("--known-dcs", help="JSON file with known DC hostnames")
     parser.add_argument("--output", default="dcsync_hunt_report.json")
     args = parser.parse_args()
@@ -213,15 +266,23 @@ def main():
     if not args.skip_acl_check:
         acls = check_replication_acls()
 
-    report = generate_report(events, replication_events, suspects, legitimate, patterns, acls)
+    report = generate_report(
+        events, replication_events, suspects, legitimate, patterns, acls
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
 
     if suspects:
-        logger.warning("ALERT: %d suspected DCSync events from %d accounts",
-                        len(suspects), len(patterns))
+        logger.warning(
+            "ALERT: %d suspected DCSync events from %d accounts",
+            len(suspects),
+            len(patterns),
+        )
     else:
-        logger.info("No DCSync suspects found (%d legitimate replication events)", len(legitimate))
+        logger.info(
+            "No DCSync suspects found (%d legitimate replication events)",
+            len(legitimate),
+        )
     print(json.dumps(report, indent=2, default=str))
 
 

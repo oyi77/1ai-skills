@@ -132,8 +132,13 @@ RESPONSE_PHASES = {
 
 def assess_readiness(current_controls):
     """Assess ransomware readiness against CISA checklist."""
-    results = {"total_controls": len(CISA_PREPARATION_CHECKLIST), "implemented": 0,
-               "gaps": [], "score": 0.0, "details": []}
+    results = {
+        "total_controls": len(CISA_PREPARATION_CHECKLIST),
+        "implemented": 0,
+        "gaps": [],
+        "score": 0.0,
+        "details": [],
+    }
 
     for ctrl_id, ctrl in CISA_PREPARATION_CHECKLIST.items():
         status = current_controls.get(ctrl_id, "not_implemented")
@@ -141,18 +146,22 @@ def assess_readiness(current_controls):
         if is_implemented:
             results["implemented"] += 1
         else:
-            results["gaps"].append({
+            results["gaps"].append(
+                {
+                    "id": ctrl_id,
+                    "control": ctrl["control"],
+                    "priority": ctrl["priority"],
+                    "cisa_ref": ctrl["cisa_ref"],
+                }
+            )
+        results["details"].append(
+            {
                 "id": ctrl_id,
                 "control": ctrl["control"],
+                "status": status,
                 "priority": ctrl["priority"],
-                "cisa_ref": ctrl["cisa_ref"],
-            })
-        results["details"].append({
-            "id": ctrl_id,
-            "control": ctrl["control"],
-            "status": status,
-            "priority": ctrl["priority"],
-        })
+            }
+        )
 
     results["score"] = round(
         (results["implemented"] / results["total_controls"]) * 100, 1
@@ -172,7 +181,14 @@ def generate_playbook(org_name="Organization"):
         "escalation_matrix": {
             "severity_1_critical": {
                 "criteria": "Encryption active, spreading across network, critical systems affected",
-                "notify": ["CISO", "CEO", "Legal Counsel", "External IR Firm", "CISA", "FBI"],
+                "notify": [
+                    "CISO",
+                    "CEO",
+                    "Legal Counsel",
+                    "External IR Firm",
+                    "CISA",
+                    "FBI",
+                ],
                 "response_time": "Immediate",
             },
             "severity_2_high": {
@@ -198,14 +214,22 @@ def generate_playbook(org_name="Organization"):
 
 def generate_markdown_playbook(playbook):
     """Render playbook as Markdown document."""
-    lines = [f"# {playbook['title']}", "", f"**Framework:** {playbook['framework']}",
-             f"**Version:** {playbook['version']}", f"**Generated:** {playbook['generated']}", ""]
+    lines = [
+        f"# {playbook['title']}",
+        "",
+        f"**Framework:** {playbook['framework']}",
+        f"**Version:** {playbook['version']}",
+        f"**Generated:** {playbook['generated']}",
+        "",
+    ]
 
     lines.append("## Preparation Checklist (CISA Part 1)")
     lines.append("")
     for ctrl_id, ctrl in playbook["preparation"].items():
-        lines.append(f"- [ ] **{ctrl_id}**: {ctrl['control']} - {ctrl['description']} "
-                      f"[{ctrl['priority']}]")
+        lines.append(
+            f"- [ ] **{ctrl_id}**: {ctrl['control']} - {ctrl['description']} "
+            f"[{ctrl['priority']}]"
+        )
     lines.append("")
 
     lines.append("## Response Phases (CISA Part 2)")
@@ -259,13 +283,17 @@ if __name__ == "__main__":
     elif command == "assess":
         if len(sys.argv) < 3:
             print("[!] Provide a JSON file with current control statuses")
-            print('    Format: {"PREP-01": "implemented", "PREP-02": "not_implemented", ...}')
+            print(
+                '    Format: {"PREP-01": "implemented", "PREP-02": "not_implemented", ...}'
+            )
             sys.exit(1)
         with open(sys.argv[2]) as f:
             controls = json.load(f)
         results = assess_readiness(controls)
         print(f"\n--- Ransomware Readiness Assessment ---")
-        print(f"  Score: {results['score']}% ({results['implemented']}/{results['total_controls']})")
+        print(
+            f"  Score: {results['score']}% ({results['implemented']}/{results['total_controls']})"
+        )
         if results["gaps"]:
             print(f"\n  Critical Gaps:")
             for gap in results["gaps"]:

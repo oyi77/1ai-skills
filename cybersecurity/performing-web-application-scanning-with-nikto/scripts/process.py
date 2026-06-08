@@ -36,8 +36,13 @@ class NiktoScanner:
         self.timeout = timeout
         self.results = []
 
-    def scan_target(self, target: str, tuning: str = "123456789abc",
-                    pause: int = 1, ssl: bool = False) -> dict:
+    def scan_target(
+        self,
+        target: str,
+        tuning: str = "123456789abc",
+        pause: int = 1,
+        ssl: bool = False,
+    ) -> dict:
         """Run Nikto scan against a single target."""
         parsed = urlparse(target if "://" in target else f"http://{target}")
         safe_name = parsed.netloc.replace(":", "_").replace("/", "_")
@@ -46,13 +51,19 @@ class NiktoScanner:
 
         cmd = [
             "nikto",
-            "-h", target,
-            "-Tuning", tuning,
-            "-Pause", str(pause),
-            "-timeout", "10",
+            "-h",
+            target,
+            "-Tuning",
+            tuning,
+            "-Pause",
+            str(pause),
+            "-timeout",
+            "10",
             "-nointeractive",
-            "-output", str(xml_output),
-            "-Format", "xml",
+            "-output",
+            str(xml_output),
+            "-Format",
+            "xml",
         ]
 
         if ssl or parsed.scheme == "https":
@@ -149,11 +160,29 @@ class NiktoScanner:
 
                     # Classify severity based on description keywords
                     desc_lower = finding["description"].lower()
-                    if any(w in desc_lower for w in ["remote code", "command execution", "backdoor", "rce"]):
+                    if any(
+                        w in desc_lower
+                        for w in ["remote code", "command execution", "backdoor", "rce"]
+                    ):
                         finding["severity"] = "Critical"
-                    elif any(w in desc_lower for w in ["sql injection", "xss", "cross-site", "file inclusion"]):
+                    elif any(
+                        w in desc_lower
+                        for w in [
+                            "sql injection",
+                            "xss",
+                            "cross-site",
+                            "file inclusion",
+                        ]
+                    ):
                         finding["severity"] = "High"
-                    elif any(w in desc_lower for w in ["directory listing", "information disclosure", "version"]):
+                    elif any(
+                        w in desc_lower
+                        for w in [
+                            "directory listing",
+                            "information disclosure",
+                            "version",
+                        ]
+                    ):
                         finding["severity"] = "Medium"
                     elif any(w in desc_lower for w in ["header", "cookie", "x-frame"]):
                         finding["severity"] = "Low"
@@ -186,11 +215,15 @@ class NiktoScanner:
         sev_counts = df["severity"].value_counts().to_dict()
 
         # Target summary
-        target_summary = (df.groupby(["scan_target", "target_port"])
-                          .agg(findings=("nikto_id", "count"),
-                               critical=("severity", lambda x: (x == "Critical").sum()),
-                               high=("severity", lambda x: (x == "High").sum()))
-                          .reset_index())
+        target_summary = (
+            df.groupby(["scan_target", "target_port"])
+            .agg(
+                findings=("nikto_id", "count"),
+                critical=("severity", lambda x: (x == "Critical").sum()),
+                high=("severity", lambda x: (x == "High").sum()),
+            )
+            .reset_index()
+        )
 
         html = f"""<!DOCTYPE html>
 <html>
@@ -259,18 +292,23 @@ def main():
     scan_p.add_argument("--pause", type=int, default=1, help="Pause between requests")
 
     parse_p = subparsers.add_parser("parse", help="Parse existing Nikto XML results")
-    parse_p.add_argument("--xml-dir", required=True, help="Directory with Nikto XML files")
+    parse_p.add_argument(
+        "--xml-dir", required=True, help="Directory with Nikto XML files"
+    )
     parse_p.add_argument("--report", required=True, help="HTML report output path")
 
     args = parser.parse_args()
 
     if args.command == "scan":
         with open(args.targets) as f:
-            targets = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+            targets = [
+                line.strip() for line in f if line.strip() and not line.startswith("#")
+            ]
 
         scanner = NiktoScanner(args.output_dir, args.timeout)
-        scanner.scan_targets(targets, max_parallel=args.parallel,
-                             tuning=args.tuning, pause=args.pause)
+        scanner.scan_targets(
+            targets, max_parallel=args.parallel, tuning=args.tuning, pause=args.pause
+        )
 
         report_path = args.report or os.path.join(args.output_dir, "nikto_report.html")
         scanner.generate_report(report_path)
@@ -281,11 +319,13 @@ def main():
 
         for xml_file in xml_dir.glob("*.xml"):
             findings = scanner.parse_xml(str(xml_file))
-            scanner.results.append({
-                "target": xml_file.stem,
-                "status": "parsed",
-                "findings": findings,
-            })
+            scanner.results.append(
+                {
+                    "target": xml_file.stem,
+                    "status": "parsed",
+                    "findings": findings,
+                }
+            )
 
         scanner.generate_report(args.report)
 

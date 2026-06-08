@@ -6,7 +6,6 @@ import argparse
 import subprocess
 from datetime import datetime
 
-
 SECURITY_QUERIES = {
     "listening_ports": "SELECT p.pid, p.name, l.port, l.protocol, l.address FROM listening_ports l JOIN processes p ON l.pid = p.pid WHERE l.port != 0",
     "suid_binaries": "SELECT path, username, permissions FROM suid_bin",
@@ -30,7 +29,11 @@ def run_osquery(query, output_format="json"):
             return json.loads(result.stdout)
         return [{"raw": result.stdout[:1000]}]
     except FileNotFoundError:
-        return [{"error": "osquery not installed. Install from https://osquery.io/downloads/"}]
+        return [
+            {
+                "error": "osquery not installed. Install from https://osquery.io/downloads/"
+            }
+        ]
     except (json.JSONDecodeError, subprocess.TimeoutExpired) as e:
         return [{"error": str(e)}]
 
@@ -38,18 +41,24 @@ def run_osquery(query, output_format="json"):
 def check_fleet_status(fleet_url, api_token):
     """Check Fleet server host enrollment status."""
     import requests
+
     headers = {"Authorization": f"Bearer {api_token}"}
     try:
-        resp = requests.get(f"{fleet_url}/api/v1/fleet/hosts", headers=headers, timeout=10)
+        resp = requests.get(
+            f"{fleet_url}/api/v1/fleet/hosts", headers=headers, timeout=10
+        )
         resp.raise_for_status()
         hosts = resp.json().get("hosts", [])
-        return [{
-            "hostname": h.get("hostname", ""),
-            "platform": h.get("platform", ""),
-            "osquery_version": h.get("osquery_version", ""),
-            "status": h.get("status", ""),
-            "last_seen": h.get("seen_time", ""),
-        } for h in hosts]
+        return [
+            {
+                "hostname": h.get("hostname", ""),
+                "platform": h.get("platform", ""),
+                "osquery_version": h.get("osquery_version", ""),
+                "status": h.get("status", ""),
+                "last_seen": h.get("seen_time", ""),
+            }
+            for h in hosts
+        ]
     except Exception as e:
         return [{"error": str(e)}]
 
@@ -86,8 +95,12 @@ def run_audit(queries=None, fleet_url=None, api_token=None):
 
 def main():
     parser = argparse.ArgumentParser(description="osquery Monitoring Agent")
-    parser.add_argument("--queries", nargs="+", choices=list(SECURITY_QUERIES.keys()),
-                        help="Specific queries to run")
+    parser.add_argument(
+        "--queries",
+        nargs="+",
+        choices=list(SECURITY_QUERIES.keys()),
+        help="Specific queries to run",
+    )
     parser.add_argument("--fleet-url", help="Fleet server URL")
     parser.add_argument("--api-token", help="Fleet API token")
     parser.add_argument("--output", help="Save report to JSON file")

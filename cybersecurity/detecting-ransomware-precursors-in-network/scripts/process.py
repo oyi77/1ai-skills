@@ -47,13 +47,22 @@ class BeaconDetector:
         self.beacon_score_threshold = beacon_score_threshold
         self.connections = defaultdict(list)
 
-    def add_connection(self, src_ip: str, dst_ip: str, timestamp: float, orig_bytes: int, resp_bytes: int):
+    def add_connection(
+        self,
+        src_ip: str,
+        dst_ip: str,
+        timestamp: float,
+        orig_bytes: int,
+        resp_bytes: int,
+    ):
         key = (src_ip, dst_ip)
-        self.connections[key].append({
-            "ts": timestamp,
-            "orig_bytes": orig_bytes,
-            "resp_bytes": resp_bytes,
-        })
+        self.connections[key].append(
+            {
+                "ts": timestamp,
+                "orig_bytes": orig_bytes,
+                "resp_bytes": resp_bytes,
+            }
+        )
 
     def calculate_beacon_score(self, timestamps: list) -> dict:
         """Calculate beacon score based on connection interval regularity."""
@@ -112,7 +121,9 @@ class BeaconDetector:
                 size_consistency = 0.0
                 if len(orig_sizes) >= 5:
                     try:
-                        size_cv = statistics.stdev(orig_sizes) / statistics.mean(orig_sizes)
+                        size_cv = statistics.stdev(orig_sizes) / statistics.mean(
+                            orig_sizes
+                        )
                         size_consistency = max(0, 1.0 - size_cv)
                     except (statistics.StatisticsError, ZeroDivisionError):
                         pass
@@ -156,11 +167,13 @@ class ScanDetector:
         self.connections = defaultdict(list)
 
     def add_connection(self, src_ip: str, dst_ip: str, dst_port: int, timestamp: float):
-        self.connections[src_ip].append({
-            "dst_ip": dst_ip,
-            "dst_port": dst_port,
-            "ts": timestamp,
-        })
+        self.connections[src_ip].append(
+            {
+                "dst_ip": dst_ip,
+                "dst_port": dst_port,
+                "ts": timestamp,
+            }
+        )
 
     def detect(self) -> list:
         alerts = []
@@ -170,21 +183,29 @@ class ScanDetector:
             # Sliding window analysis
             window_start = 0
             for window_end in range(len(sorted_conns)):
-                while (sorted_conns[window_end]["ts"] - sorted_conns[window_start]["ts"]) > self.window:
+                while (
+                    sorted_conns[window_end]["ts"] - sorted_conns[window_start]["ts"]
+                ) > self.window:
                     window_start += 1
 
-                window_conns = sorted_conns[window_start:window_end + 1]
+                window_conns = sorted_conns[window_start : window_end + 1]
                 unique_dests = set(c["dst_ip"] for c in window_conns)
                 unique_ports = set(c["dst_port"] for c in window_conns)
 
                 if len(unique_dests) >= self.threshold:
                     alert = PrecursorAlert(
                         alert_id=f"SCAN-{src_ip}-{int(sorted_conns[window_start]['ts'])}",
-                        timestamp=datetime.fromtimestamp(sorted_conns[window_end]["ts"]).isoformat(),
+                        timestamp=datetime.fromtimestamp(
+                            sorted_conns[window_end]["ts"]
+                        ).isoformat(),
                         source_ip=src_ip,
                         dest_ip="Multiple",
                         category="Internal Reconnaissance",
-                        confidence="High" if len(unique_dests) >= self.threshold * 2 else "Medium",
+                        confidence=(
+                            "High"
+                            if len(unique_dests) >= self.threshold * 2
+                            else "Medium"
+                        ),
                         kill_chain_phase="Discovery",
                         description=(
                             f"Internal scan: {len(unique_dests)} unique destinations on "
@@ -212,12 +233,16 @@ class CredentialHarvestDetector:
         self.tgs_requests = defaultdict(list)
         self.smb_failures = defaultdict(int)
 
-    def add_kerberos_event(self, src_ip: str, service_name: str, encryption_type: str, timestamp: float):
-        self.tgs_requests[src_ip].append({
-            "service": service_name,
-            "enc_type": encryption_type,
-            "ts": timestamp,
-        })
+    def add_kerberos_event(
+        self, src_ip: str, service_name: str, encryption_type: str, timestamp: float
+    ):
+        self.tgs_requests[src_ip].append(
+            {
+                "service": service_name,
+                "enc_type": encryption_type,
+                "ts": timestamp,
+            }
+        )
 
     def add_smb_failure(self, src_ip: str, dst_ip: str):
         self.smb_failures[src_ip] += 1
@@ -227,14 +252,20 @@ class CredentialHarvestDetector:
 
         # Kerberoasting: multiple TGS requests for unique services with RC4 encryption
         for src_ip, requests in self.tgs_requests.items():
-            rc4_requests = [r for r in requests if "rc4" in r.get("enc_type", "").lower()
-                          or "23" in str(r.get("enc_type", ""))]
+            rc4_requests = [
+                r
+                for r in requests
+                if "rc4" in r.get("enc_type", "").lower()
+                or "23" in str(r.get("enc_type", ""))
+            ]
             unique_services = set(r["service"] for r in rc4_requests)
 
             if len(unique_services) >= self.threshold:
                 alert = PrecursorAlert(
                     alert_id=f"KERB-{src_ip}",
-                    timestamp=datetime.fromtimestamp(max(r["ts"] for r in rc4_requests)).isoformat(),
+                    timestamp=datetime.fromtimestamp(
+                        max(r["ts"] for r in rc4_requests)
+                    ).isoformat(),
                     source_ip=src_ip,
                     dest_ip="Domain Controller",
                     category="Kerberoasting",
@@ -280,7 +311,9 @@ class AdminShareDetector:
         self.threshold = threshold
         self.share_access = defaultdict(lambda: defaultdict(set))
 
-    def add_share_access(self, src_ip: str, dst_ip: str, share_name: str, timestamp: float):
+    def add_share_access(
+        self, src_ip: str, dst_ip: str, share_name: str, timestamp: float
+    ):
         admin_shares = {"ADMIN$", "C$", "IPC$", "D$", "E$"}
         normalized_share = share_name.split("\\")[-1].upper()
         if normalized_share in admin_shares:
@@ -300,7 +333,9 @@ class AdminShareDetector:
                     source_ip=src_ip,
                     dest_ip="Multiple",
                     category="Admin Share Enumeration",
-                    confidence="High" if len(total_targets) >= self.threshold * 2 else "Medium",
+                    confidence=(
+                        "High" if len(total_targets) >= self.threshold * 2 else "Medium"
+                    ),
                     kill_chain_phase="Lateral Movement",
                     description=(
                         f"Admin share access to {len(total_targets)} hosts: "
@@ -348,7 +383,9 @@ class RansomwarePrecursorEngine:
 
                     # Feed to beacon detector (external destinations)
                     if not self._is_internal(dst_ip):
-                        self.beacon_detector.add_connection(src_ip, dst_ip, ts, orig_bytes, resp_bytes)
+                        self.beacon_detector.add_connection(
+                            src_ip, dst_ip, ts, orig_bytes, resp_bytes
+                        )
 
                     # Feed to scan detector (internal destinations)
                     if self._is_internal(src_ip) and self._is_internal(dst_ip):
@@ -452,29 +489,37 @@ def main():
         for i in range(40):
             jitter = (i % 3) * 2  # Small jitter
             engine.beacon_detector.add_connection(
-                "10.1.5.42", "185.220.101.42",
+                "10.1.5.42",
+                "185.220.101.42",
                 base_time + (i * 60) + jitter,
-                orig_bytes=48, resp_bytes=128,
+                orig_bytes=48,
+                resp_bytes=128,
             )
 
         # Simulate internal port scan
         for i in range(50):
             engine.scan_detector.add_connection(
-                "10.1.5.42", f"10.1.5.{100 + i}", 445,
+                "10.1.5.42",
+                f"10.1.5.{100 + i}",
+                445,
                 base_time + 1800 + (i * 2),
             )
 
         # Simulate Kerberoasting
         for i in range(8):
             engine.cred_detector.add_kerberos_event(
-                "10.1.5.42", f"MSSQLSvc/sql{i}.corp.local:1433",
-                "rc4-hmac", base_time + 2000 + (i * 5),
+                "10.1.5.42",
+                f"MSSQLSvc/sql{i}.corp.local:1433",
+                "rc4-hmac",
+                base_time + 2000 + (i * 5),
             )
 
         # Simulate admin share access
         for i in range(12):
             engine.share_detector.add_share_access(
-                "10.1.5.42", f"10.1.5.{200 + i}", "ADMIN$",
+                "10.1.5.42",
+                f"10.1.5.{200 + i}",
+                "ADMIN$",
                 base_time + 2500 + (i * 10),
             )
 

@@ -16,10 +16,13 @@ os.makedirs(TEST_DIR, exist_ok=True)
 TEST_DB_PATH = os.path.join(TEST_DIR, "gallery.db")
 
 orig_connect = sqlite3.connect
+
+
 def my_connect(path, *args, **kwargs):
     if str(path).endswith("gallery.db"):
         return orig_connect(TEST_DB_PATH, *args, **kwargs)
     return orig_connect(path, *args, **kwargs)
+
 
 with mock.patch("os.makedirs"):
     with mock.patch("sqlite3.connect", side_effect=my_connect):
@@ -39,8 +42,7 @@ gallery.init_db()
 # Insert dummy data
 def insert_dummy_data():
     with gallery._conn() as conn:
-        conn.execute(
-            """
+        conn.execute("""
             INSERT INTO results (chat_id, type, cost_usd, style) VALUES
             ('user_1', 'image', 0.5, 'anime'),
             ('user_1', 'image', 0.5, 'realistic'),
@@ -48,8 +50,7 @@ def insert_dummy_data():
             ('user_1', 'video', 1.0, '3d'),
             ('user_1', 'image', 0.5, 'anime'),
             ('user_2', 'image', 1.0, 'realistic')
-        """
-        )
+        """)
         conn.commit()
 
 

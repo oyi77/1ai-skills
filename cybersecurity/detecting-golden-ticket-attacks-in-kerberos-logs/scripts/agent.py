@@ -16,22 +16,40 @@ except ImportError:
     evtx = None
 
 ENCRYPTION_TYPES = {
-    "0x1": "DES-CBC-CRC", "0x3": "DES-CBC-MD5",
-    "0x11": "AES128-CTS", "0x12": "AES256-CTS",
-    "0x17": "RC4-HMAC", "0x18": "RC4-HMAC-EXP",
+    "0x1": "DES-CBC-CRC",
+    "0x3": "DES-CBC-MD5",
+    "0x11": "AES128-CTS",
+    "0x12": "AES256-CTS",
+    "0x17": "RC4-HMAC",
+    "0x18": "RC4-HMAC-EXP",
 }
 
 GOLDEN_TICKET_INDICATORS = {
-    "rc4_encryption": {"desc": "RC4 encryption used (0x17) instead of AES",
-                        "severity": "HIGH", "mitre": "T1558.001"},
-    "impossible_lifetime": {"desc": "TGT lifetime exceeds policy maximum",
-                             "severity": "CRITICAL", "mitre": "T1558.001"},
-    "non_existent_account": {"desc": "TGS request for non-existent account",
-                              "severity": "CRITICAL", "mitre": "T1558.001"},
-    "no_tgt_request": {"desc": "TGS (4769) without prior TGT (4768)",
-                        "severity": "HIGH", "mitre": "T1558.001"},
-    "domain_field_mismatch": {"desc": "Domain field differs from environment",
-                               "severity": "HIGH", "mitre": "T1558.001"},
+    "rc4_encryption": {
+        "desc": "RC4 encryption used (0x17) instead of AES",
+        "severity": "HIGH",
+        "mitre": "T1558.001",
+    },
+    "impossible_lifetime": {
+        "desc": "TGT lifetime exceeds policy maximum",
+        "severity": "CRITICAL",
+        "mitre": "T1558.001",
+    },
+    "non_existent_account": {
+        "desc": "TGS request for non-existent account",
+        "severity": "CRITICAL",
+        "mitre": "T1558.001",
+    },
+    "no_tgt_request": {
+        "desc": "TGS (4769) without prior TGT (4768)",
+        "severity": "HIGH",
+        "mitre": "T1558.001",
+    },
+    "domain_field_mismatch": {
+        "desc": "Domain field differs from environment",
+        "severity": "HIGH",
+        "mitre": "T1558.001",
+    },
 }
 
 MAX_TGT_LIFETIME_HOURS = 10
@@ -49,7 +67,7 @@ def parse_kerberos_events(filepath):
     with evtx.Evtx(filepath) as log:
         for record in log.records():
             xml = record.xml()
-            event_id_match = re.search(r'<EventID[^>]*>(\d+)</EventID>', xml)
+            event_id_match = re.search(r"<EventID[^>]*>(\d+)</EventID>", xml)
             if not event_id_match:
                 continue
             event_id = int(event_id_match.group(1))
@@ -59,7 +77,9 @@ def parse_kerberos_events(filepath):
             if event_id == 4768:
                 user = re.search(r'<Data Name="TargetUserName">([^<]+)', xml)
                 domain = re.search(r'<Data Name="TargetDomainName">([^<]+)', xml)
-                ticket_enc = re.search(r'<Data Name="TicketEncryptionType">([^<]+)', xml)
+                ticket_enc = re.search(
+                    r'<Data Name="TicketEncryptionType">([^<]+)', xml
+                )
                 client_addr = re.search(r'<Data Name="IpAddress">([^<]+)', xml)
                 status = re.search(r'<Data Name="Status">([^<]+)', xml)
 
@@ -70,44 +90,65 @@ def parse_kerberos_events(filepath):
                     tgt_requests[username.lower()] = timestamp
 
                 if enc_type.lower() in ("0x17", "0x18"):
-                    findings.append({
-                        "event_id": 4768, "timestamp": timestamp,
-                        "user": username,
-                        "encryption_type": ENCRYPTION_TYPES.get(enc_type.lower(), enc_type),
-                        "indicator": "rc4_encryption",
-                        **GOLDEN_TICKET_INDICATORS["rc4_encryption"],
-                    })
+                    findings.append(
+                        {
+                            "event_id": 4768,
+                            "timestamp": timestamp,
+                            "user": username,
+                            "encryption_type": ENCRYPTION_TYPES.get(
+                                enc_type.lower(), enc_type
+                            ),
+                            "indicator": "rc4_encryption",
+                            **GOLDEN_TICKET_INDICATORS["rc4_encryption"],
+                        }
+                    )
 
             elif event_id == 4769:
                 user = re.search(r'<Data Name="TargetUserName">([^<]+)', xml)
                 service = re.search(r'<Data Name="ServiceName">([^<]+)', xml)
-                ticket_enc = re.search(r'<Data Name="TicketEncryptionType">([^<]+)', xml)
+                ticket_enc = re.search(
+                    r'<Data Name="TicketEncryptionType">([^<]+)', xml
+                )
                 client_addr = re.search(r'<Data Name="IpAddress">([^<]+)', xml)
 
                 username = user.group(1) if user else ""
-                base_user = username.split("@")[0].lower() if "@" in username else username.lower()
+                base_user = (
+                    username.split("@")[0].lower()
+                    if "@" in username
+                    else username.lower()
+                )
 
-                if base_user and base_user not in tgt_requests and not base_user.endswith("$"):
-                    findings.append({
-                        "event_id": 4769, "timestamp": timestamp,
-                        "user": username,
-                        "service": service.group(1) if service else "",
-                        "indicator": "no_tgt_request",
-                        **GOLDEN_TICKET_INDICATORS["no_tgt_request"],
-                    })
+                if (
+                    base_user
+                    and base_user not in tgt_requests
+                    and not base_user.endswith("$")
+                ):
+                    findings.append(
+                        {
+                            "event_id": 4769,
+                            "timestamp": timestamp,
+                            "user": username,
+                            "service": service.group(1) if service else "",
+                            "indicator": "no_tgt_request",
+                            **GOLDEN_TICKET_INDICATORS["no_tgt_request"],
+                        }
+                    )
 
             elif event_id == 4771:
                 user = re.search(r'<Data Name="TargetUserName">([^<]+)', xml)
                 failure = re.search(r'<Data Name="Status">([^<]+)', xml)
                 status_code = failure.group(1) if failure else ""
                 if status_code == "0x6":
-                    findings.append({
-                        "event_id": 4771, "timestamp": timestamp,
-                        "user": user.group(1) if user else "",
-                        "status": "KDC_ERR_C_PRINCIPAL_UNKNOWN",
-                        "indicator": "non_existent_account",
-                        **GOLDEN_TICKET_INDICATORS["non_existent_account"],
-                    })
+                    findings.append(
+                        {
+                            "event_id": 4771,
+                            "timestamp": timestamp,
+                            "user": user.group(1) if user else "",
+                            "status": "KDC_ERR_C_PRINCIPAL_UNKNOWN",
+                            "indicator": "non_existent_account",
+                            **GOLDEN_TICKET_INDICATORS["non_existent_account"],
+                        }
+                    )
 
     return {"tgt_requests": len(tgt_requests), "findings": findings}
 

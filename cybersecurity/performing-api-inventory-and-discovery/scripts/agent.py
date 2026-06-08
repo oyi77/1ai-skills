@@ -17,13 +17,30 @@ except ImportError:
 
 
 COMMON_API_PATHS = [
-    "/api", "/api/v1", "/api/v2", "/api/v3",
-    "/graphql", "/graphiql", "/playground",
-    "/swagger.json", "/swagger/v1/swagger.json",
-    "/openapi.json", "/api-docs", "/docs",
-    "/health", "/healthz", "/status", "/metrics",
-    "/admin/api", "/internal/api", "/.well-known/openid-configuration",
-    "/v1", "/v2", "/rest", "/ws", "/rpc",
+    "/api",
+    "/api/v1",
+    "/api/v2",
+    "/api/v3",
+    "/graphql",
+    "/graphiql",
+    "/playground",
+    "/swagger.json",
+    "/swagger/v1/swagger.json",
+    "/openapi.json",
+    "/api-docs",
+    "/docs",
+    "/health",
+    "/healthz",
+    "/status",
+    "/metrics",
+    "/admin/api",
+    "/internal/api",
+    "/.well-known/openid-configuration",
+    "/v1",
+    "/v2",
+    "/rest",
+    "/ws",
+    "/rpc",
 ]
 
 
@@ -35,8 +52,13 @@ def discover_api_endpoints(base_url, paths=None, timeout=5):
     for path in paths:
         url = f"{base_url.rstrip('/')}{path}"
         try:
-            resp = requests.get(url, timeout=timeout, allow_redirects=False,
-                                verify=True, headers={"User-Agent": "API-Inventory-Agent/1.0"})
+            resp = requests.get(
+                url,
+                timeout=timeout,
+                allow_redirects=False,
+                verify=True,
+                headers={"User-Agent": "API-Inventory-Agent/1.0"},
+            )
             if resp.status_code < 500:
                 entry = {
                     "url": url,
@@ -76,15 +98,27 @@ def parse_swagger_spec(spec_url):
     endpoints = []
     for path, methods in paths.items():
         for method in methods:
-            if method.upper() in ("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"):
+            if method.upper() in (
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "OPTIONS",
+                "HEAD",
+            ):
                 op = methods[method]
-                endpoints.append({
-                    "method": method.upper(),
-                    "path": path,
-                    "summary": op.get("summary", ""),
-                    "deprecated": op.get("deprecated", False),
-                    "auth_required": bool(op.get("security", spec.get("security", []))),
-                })
+                endpoints.append(
+                    {
+                        "method": method.upper(),
+                        "path": path,
+                        "summary": op.get("summary", ""),
+                        "deprecated": op.get("deprecated", False),
+                        "auth_required": bool(
+                            op.get("security", spec.get("security", []))
+                        ),
+                    }
+                )
     deprecated = [e for e in endpoints if e["deprecated"]]
     return {
         "spec_version": version,
@@ -118,16 +152,34 @@ def scan_javascript_for_apis(js_url):
             if len(match) > 3 and not match.endswith((".js", ".css", ".png", ".jpg")):
                 found_apis.add(match)
 
-    return {"source": js_url, "discovered_apis": sorted(found_apis), "count": len(found_apis)}
+    return {
+        "source": js_url,
+        "discovered_apis": sorted(found_apis),
+        "count": len(found_apis),
+    }
 
 
 def enumerate_subdomains_for_apis(domain):
     """Use DNS enumeration to find API subdomains."""
     api_prefixes = [
-        "api", "api-v1", "api-v2", "api-gateway", "api-internal",
-        "gateway", "graphql", "rest", "ws", "webhook",
-        "staging-api", "dev-api", "sandbox-api", "beta-api",
-        "admin-api", "partner-api", "public-api", "mobile-api",
+        "api",
+        "api-v1",
+        "api-v2",
+        "api-gateway",
+        "api-internal",
+        "gateway",
+        "graphql",
+        "rest",
+        "ws",
+        "webhook",
+        "staging-api",
+        "dev-api",
+        "sandbox-api",
+        "beta-api",
+        "admin-api",
+        "partner-api",
+        "public-api",
+        "mobile-api",
     ]
     found = []
     for prefix in api_prefixes:
@@ -136,12 +188,21 @@ def enumerate_subdomains_for_apis(domain):
             result = subprocess.run(
                 ["nslookup", subdomain], capture_output=True, text=True, timeout=5
             )
-            if "Non-authoritative answer" in result.stdout or "Address:" in result.stdout:
-                found.append({
-                    "subdomain": subdomain,
-                    "status": "resolved",
-                    "severity": "MEDIUM" if "internal" in prefix or "staging" in prefix else "INFO",
-                })
+            if (
+                "Non-authoritative answer" in result.stdout
+                or "Address:" in result.stdout
+            ):
+                found.append(
+                    {
+                        "subdomain": subdomain,
+                        "status": "resolved",
+                        "severity": (
+                            "MEDIUM"
+                            if "internal" in prefix or "staging" in prefix
+                            else "INFO"
+                        ),
+                    }
+                )
         except (subprocess.TimeoutExpired, FileNotFoundError):
             pass
     return found
@@ -185,7 +246,9 @@ def run_audit(args):
         report["discovered_endpoints"] = classified
         print(f"--- ENDPOINT DISCOVERY ({len(classified)} found) ---")
         for ep in classified:
-            print(f"  [{ep['risk']}] {ep['url']} ({ep.get('status','')}): {ep['reason']}")
+            print(
+                f"  [{ep['risk']}] {ep['url']} ({ep.get('status','')}): {ep['reason']}"
+            )
 
     if args.swagger_url:
         spec = parse_swagger_spec(args.swagger_url)

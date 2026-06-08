@@ -25,9 +25,12 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 class NessusScanAgent:
     """Manages Nessus vulnerability scans via REST API."""
 
-    def __init__(self, host=None, username="admin",
-                 password="", output_dir="./nessus_scan"):
-        self.base_url = (host or os.environ.get("NESSUS_URL", "https://localhost:8834")).rstrip("/")
+    def __init__(
+        self, host=None, username="admin", password="", output_dir="./nessus_scan"
+    ):
+        self.base_url = (
+            host or os.environ.get("NESSUS_URL", "https://localhost:8834")
+        ).rstrip("/")
         self.username = username
         self.password = password
         self.token = None
@@ -42,8 +45,14 @@ class NessusScanAgent:
         if self.token:
             headers["X-Cookie"] = f"token={self.token}"
         url = f"{self.base_url}{path}"
-        resp = requests.request(method, url, json=data, headers=headers,
-                                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=30)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.request(
+            method,
+            url,
+            json=data,
+            headers=headers,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=30,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         try:
             return resp.json()
         except (json.JSONDecodeError, ValueError):
@@ -51,8 +60,9 @@ class NessusScanAgent:
 
     def authenticate(self):
         """Authenticate and obtain session token."""
-        result = self._req("POST", "/session",
-                           {"username": self.username, "password": self.password})
+        result = self._req(
+            "POST", "/session", {"username": self.username, "password": self.password}
+        )
         self.token = result.get("token")
         return bool(self.token)
 
@@ -61,12 +71,14 @@ class NessusScanAgent:
         result = self._req("GET", "/scans")
         scans = []
         for s in result.get("scans", []):
-            scans.append({
-                "id": s.get("id"),
-                "name": s.get("name"),
-                "status": s.get("status"),
-                "last_modification_date": s.get("last_modification_date"),
-            })
+            scans.append(
+                {
+                    "id": s.get("id"),
+                    "name": s.get("name"),
+                    "status": s.get("status"),
+                    "last_modification_date": s.get("last_modification_date"),
+                }
+            )
         return scans
 
     def create_scan(self, name, targets, template_uuid=None):
@@ -101,30 +113,36 @@ class NessusScanAgent:
         result = self._req("GET", f"/scans/{scan_id}")
         hosts = []
         for h in result.get("hosts", []):
-            hosts.append({
-                "hostname": h.get("hostname"),
-                "host_id": h.get("host_id"),
-                "critical": h.get("critical", 0),
-                "high": h.get("high", 0),
-                "medium": h.get("medium", 0),
-                "low": h.get("low", 0),
-                "info": h.get("info", 0),
-            })
+            hosts.append(
+                {
+                    "hostname": h.get("hostname"),
+                    "host_id": h.get("host_id"),
+                    "critical": h.get("critical", 0),
+                    "high": h.get("high", 0),
+                    "medium": h.get("medium", 0),
+                    "low": h.get("low", 0),
+                    "info": h.get("info", 0),
+                }
+            )
 
         vulns = []
         for v in result.get("vulnerabilities", []):
-            vulns.append({
-                "plugin_id": v.get("plugin_id"),
-                "plugin_name": v.get("plugin_name"),
-                "severity": v.get("severity"),
-                "count": v.get("count", 0),
-                "family": v.get("plugin_family"),
-            })
+            vulns.append(
+                {
+                    "plugin_id": v.get("plugin_id"),
+                    "plugin_name": v.get("plugin_name"),
+                    "severity": v.get("severity"),
+                    "count": v.get("count", 0),
+                    "family": v.get("plugin_family"),
+                }
+            )
 
         return {
             "scan_id": scan_id,
             "hosts": hosts,
-            "vulnerabilities": sorted(vulns, key=lambda x: x.get("severity", 0), reverse=True),
+            "vulnerabilities": sorted(
+                vulns, key=lambda x: x.get("severity", 0), reverse=True
+            ),
             "total_vulns": len(vulns),
         }
 

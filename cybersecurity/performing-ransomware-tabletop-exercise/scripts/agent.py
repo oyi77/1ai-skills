@@ -9,7 +9,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-
 SCENARIO_PHASES = [
     {
         "phase": "detection",
@@ -20,25 +19,45 @@ SCENARIO_PHASES = [
     {
         "phase": "containment",
         "inject": "Ransomware has spread to 3 file servers. Active encryption observed on \\fs01\shared. Lateral movement detected via PsExec.",
-        "expected_actions": ["network_segmentation", "disable_compromised_accounts", "block_c2_domains", "preserve_shadow_copies"],
+        "expected_actions": [
+            "network_segmentation",
+            "disable_compromised_accounts",
+            "block_c2_domains",
+            "preserve_shadow_copies",
+        ],
         "time_pressure_minutes": 30,
     },
     {
         "phase": "escalation",
         "inject": "Threat actor sends ransom demand via email: 50 BTC within 48 hours. They claim to have exfiltrated 200GB of customer PII data.",
-        "expected_actions": ["notify_executive_team", "engage_legal_counsel", "contact_law_enforcement", "activate_crisis_comms"],
+        "expected_actions": [
+            "notify_executive_team",
+            "engage_legal_counsel",
+            "contact_law_enforcement",
+            "activate_crisis_comms",
+        ],
         "time_pressure_minutes": 60,
     },
     {
         "phase": "eradication",
         "inject": "IR team identifies initial access via phishing email with macro-enabled document. Persistence mechanisms found in scheduled tasks and registry run keys.",
-        "expected_actions": ["remove_persistence", "reset_all_credentials", "rebuild_compromised_hosts", "reset_krbtgt_twice"],
+        "expected_actions": [
+            "remove_persistence",
+            "reset_all_credentials",
+            "rebuild_compromised_hosts",
+            "reset_krbtgt_twice",
+        ],
         "time_pressure_minutes": 120,
     },
     {
         "phase": "recovery",
         "inject": "Backups verified clean. Recovery point is 6 hours old. Business requests fastest path to resume operations.",
-        "expected_actions": ["restore_from_backup", "validate_restored_systems", "monitor_for_reinfection", "staged_network_reconnection"],
+        "expected_actions": [
+            "restore_from_backup",
+            "validate_restored_systems",
+            "monitor_for_reinfection",
+            "staged_network_reconnection",
+        ],
         "time_pressure_minutes": 240,
     },
 ]
@@ -75,11 +94,23 @@ def evaluate_exercise(scenario: list[dict], all_responses: list[list[str]]) -> d
     phase_scores = []
     for phase, actions in zip(scenario, all_responses):
         phase_scores.append(score_response(phase, actions))
-    overall = sum(s["score_pct"] for s in phase_scores) / len(phase_scores) if phase_scores else 0
+    overall = (
+        sum(s["score_pct"] for s in phase_scores) / len(phase_scores)
+        if phase_scores
+        else 0
+    )
     return {
         "phase_scores": phase_scores,
         "overall_score_pct": round(overall, 1),
-        "rating": "excellent" if overall >= 90 else "good" if overall >= 70 else "needs_improvement" if overall >= 50 else "critical_gaps",
+        "rating": (
+            "excellent"
+            if overall >= 90
+            else (
+                "good"
+                if overall >= 70
+                else "needs_improvement" if overall >= 50 else "critical_gaps"
+            )
+        ),
     }
 
 
@@ -88,11 +119,13 @@ def generate_aar(scenario: list[dict], evaluation: dict) -> dict:
     recommendations = []
     for ps in evaluation["phase_scores"]:
         if ps["missed_actions"]:
-            recommendations.append({
-                "phase": ps["phase"],
-                "gap": f"Missed actions: {', '.join(ps['missed_actions'])}",
-                "recommendation": f"Add {ps['phase']} procedures to IR playbook and train responders",
-            })
+            recommendations.append(
+                {
+                    "phase": ps["phase"],
+                    "gap": f"Missed actions: {', '.join(ps['missed_actions'])}",
+                    "recommendation": f"Add {ps['phase']} procedures to IR playbook and train responders",
+                }
+            )
     return {
         "report": "ransomware_tabletop_aar",
         "generated_at": datetime.utcnow().isoformat() + "Z",
@@ -109,9 +142,19 @@ def run_demo() -> dict:
     simulated_responses = [
         ["isolate_host", "notify_ir_lead"],
         ["network_segmentation", "disable_compromised_accounts", "block_c2_domains"],
-        ["notify_executive_team", "engage_legal_counsel", "contact_law_enforcement", "activate_crisis_comms"],
+        [
+            "notify_executive_team",
+            "engage_legal_counsel",
+            "contact_law_enforcement",
+            "activate_crisis_comms",
+        ],
         ["remove_persistence", "reset_all_credentials", "rebuild_compromised_hosts"],
-        ["restore_from_backup", "validate_restored_systems", "monitor_for_reinfection", "staged_network_reconnection"],
+        [
+            "restore_from_backup",
+            "validate_restored_systems",
+            "monitor_for_reinfection",
+            "staged_network_reconnection",
+        ],
     ]
     evaluation = evaluate_exercise(scenario, simulated_responses)
     return generate_aar(scenario, evaluation)
@@ -119,10 +162,18 @@ def run_demo() -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Ransomware Tabletop Exercise Agent")
-    parser.add_argument("--mode", choices=["generate", "score", "demo"], default="demo",
-                        help="Mode: generate scenario, score responses, or run demo")
-    parser.add_argument("--variant", choices=["standard", "accelerated"], default="standard")
-    parser.add_argument("--responses-file", help="JSON file with participant responses for scoring")
+    parser.add_argument(
+        "--mode",
+        choices=["generate", "score", "demo"],
+        default="demo",
+        help="Mode: generate scenario, score responses, or run demo",
+    )
+    parser.add_argument(
+        "--variant", choices=["standard", "accelerated"], default="standard"
+    )
+    parser.add_argument(
+        "--responses-file", help="JSON file with participant responses for scoring"
+    )
     parser.add_argument("--output", help="Output JSON file path")
     args = parser.parse_args()
 

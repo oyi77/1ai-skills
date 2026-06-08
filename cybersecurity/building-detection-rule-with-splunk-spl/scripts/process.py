@@ -13,7 +13,6 @@ import hashlib
 from datetime import datetime
 from typing import Optional
 
-
 MITRE_TECHNIQUES = {
     "T1110.001": {"name": "Password Guessing", "tactic": "Credential Access"},
     "T1110.003": {"name": "Password Spraying", "tactic": "Credential Access"},
@@ -22,7 +21,10 @@ MITRE_TECHNIQUES = {
     "T1021.002": {"name": "SMB/Windows Admin Shares", "tactic": "Lateral Movement"},
     "T1021.001": {"name": "Remote Desktop Protocol", "tactic": "Lateral Movement"},
     "T1048": {"name": "Exfiltration Over C2 Channel", "tactic": "Exfiltration"},
-    "T1048.003": {"name": "Exfiltration Over Unencrypted Protocol", "tactic": "Exfiltration"},
+    "T1048.003": {
+        "name": "Exfiltration Over Unencrypted Protocol",
+        "tactic": "Exfiltration",
+    },
     "T1053.005": {"name": "Scheduled Task", "tactic": "Persistence"},
     "T1003.001": {"name": "LSASS Memory", "tactic": "Credential Access"},
     "T1078": {"name": "Valid Accounts", "tactic": "Defense Evasion"},
@@ -76,20 +78,33 @@ class SplunkDetectionRule:
 
         # Check for missing time constraint
         if "earliest=" not in self.spl_query and "span=" not in self.spl_query:
-            issues.append("WARNING: No time constraint in query - may scan too much data")
+            issues.append(
+                "WARNING: No time constraint in query - may scan too much data"
+            )
             score -= 10
 
         # Check for wildcard-heavy searches
         wildcard_count = self.spl_query.count("*")
         if wildcard_count > 5:
-            issues.append(f"WARNING: {wildcard_count} wildcards detected - may impact performance")
+            issues.append(
+                f"WARNING: {wildcard_count} wildcards detected - may impact performance"
+            )
             score -= 5 * min(wildcard_count - 5, 4)
 
         # Check for aggregation
-        agg_commands = ["stats", "eventstats", "streamstats", "tstats", "chart", "timechart"]
+        agg_commands = [
+            "stats",
+            "eventstats",
+            "streamstats",
+            "tstats",
+            "chart",
+            "timechart",
+        ]
         has_aggregation = any(cmd in self.spl_query.lower() for cmd in agg_commands)
         if not has_aggregation:
-            issues.append("WARNING: No aggregation command - rule may generate excessive alerts")
+            issues.append(
+                "WARNING: No aggregation command - rule may generate excessive alerts"
+            )
             score -= 15
 
         # Check for threshold
@@ -99,7 +114,9 @@ class SplunkDetectionRule:
 
         # Check for enrichment
         if "lookup" not in self.spl_query.lower():
-            issues.append("INFO: No lookup enrichment - consider adding asset/identity context")
+            issues.append(
+                "INFO: No lookup enrichment - consider adding asset/identity context"
+            )
             score -= 5
 
         # Check MITRE mapping
@@ -115,12 +132,19 @@ class SplunkDetectionRule:
         # Check severity is valid
         valid_severities = ["informational", "low", "medium", "high", "critical"]
         if self.severity not in valid_severities:
-            issues.append(f"ERROR: Invalid severity '{self.severity}' - must be one of {valid_severities}")
+            issues.append(
+                f"ERROR: Invalid severity '{self.severity}' - must be one of {valid_severities}"
+            )
             score -= 20
 
         # Check for eval description
-        if "eval description" not in self.spl_query.lower() and "eval rule_description" not in self.spl_query.lower():
-            issues.append("INFO: No description field in output - analysts will lack context")
+        if (
+            "eval description" not in self.spl_query.lower()
+            and "eval rule_description" not in self.spl_query.lower()
+        ):
+            issues.append(
+                "INFO: No description field in output - analysts will lack context"
+            )
             score -= 5
 
         # Check for CIM data model usage
@@ -195,7 +219,12 @@ class DetectionRuleLibrary:
         self.rules.append(rule)
 
     def validate_all(self) -> dict:
-        results = {"total_rules": len(self.rules), "valid_rules": 0, "invalid_rules": 0, "details": []}
+        results = {
+            "total_rules": len(self.rules),
+            "valid_rules": 0,
+            "invalid_rules": 0,
+            "details": [],
+        }
         for rule in self.rules:
             validation = rule.validate()
             results["details"].append(validation)
@@ -211,15 +240,21 @@ class DetectionRuleLibrary:
             for tech_id in rule.mitre_techniques:
                 if tech_id not in coverage:
                     coverage[tech_id] = {
-                        "technique": MITRE_TECHNIQUES.get(tech_id, {}).get("name", "Unknown"),
-                        "tactic": MITRE_TECHNIQUES.get(tech_id, {}).get("tactic", "Unknown"),
+                        "technique": MITRE_TECHNIQUES.get(tech_id, {}).get(
+                            "name", "Unknown"
+                        ),
+                        "tactic": MITRE_TECHNIQUES.get(tech_id, {}).get(
+                            "tactic", "Unknown"
+                        ),
                         "rules": [],
                     }
                 coverage[tech_id]["rules"].append(rule.name)
         return {
             "techniques_covered": len(coverage),
             "total_known_techniques": len(MITRE_TECHNIQUES),
-            "coverage_percentage": round(len(coverage) / len(MITRE_TECHNIQUES) * 100, 1),
+            "coverage_percentage": round(
+                len(coverage) / len(MITRE_TECHNIQUES) * 100, 1
+            ),
             "coverage_map": coverage,
         }
 
@@ -241,12 +276,12 @@ def build_sample_detection_library() -> DetectionRuleLibrary:
             name="Brute Force - Multiple Failed Logins",
             description="Detects brute force attacks with multiple failed login attempts from a single source",
             spl_query=(
-                '| tstats summariesonly=true count from datamodel=Authentication '
-                'where Authentication.action=failure by Authentication.src, Authentication.user, _time span=5m '
+                "| tstats summariesonly=true count from datamodel=Authentication "
+                "where Authentication.action=failure by Authentication.src, Authentication.user, _time span=5m "
                 '| rename "Authentication.*" as * '
-                '| stats count as total_failures dc(user) as unique_users values(user) as targeted_users by src '
-                '| where total_failures > 20 AND unique_users > 3 '
-                '| lookup asset_lookup ip as src OUTPUT priority as asset_priority '
+                "| stats count as total_failures dc(user) as unique_users values(user) as targeted_users by src "
+                "| where total_failures > 20 AND unique_users > 3 "
+                "| lookup asset_lookup ip as src OUTPUT priority as asset_priority "
                 '| eval severity=case(unique_users > 10, "critical", unique_users > 5, "high", true(), "medium") '
                 '| eval description="Brute force detected from ".src." targeting ".unique_users." accounts"'
             ),
@@ -255,7 +290,10 @@ def build_sample_detection_library() -> DetectionRuleLibrary:
             schedule_cron="*/5 * * * *",
             time_window="-10m",
             data_sources=["Windows Security Event Log", "Linux Auth Log"],
-            false_positive_notes=["Service accounts with expired passwords", "Misconfigured applications"],
+            false_positive_notes=[
+                "Service accounts with expired passwords",
+                "Misconfigured applications",
+            ],
         )
     )
 
@@ -264,18 +302,21 @@ def build_sample_detection_library() -> DetectionRuleLibrary:
             name="Suspicious PowerShell Execution",
             description="Detects encoded or obfuscated PowerShell commands indicating potential malicious activity",
             spl_query=(
-                'index=wineventlog sourcetype=WinEventLog:Security EventCode=4104 '
+                "index=wineventlog sourcetype=WinEventLog:Security EventCode=4104 "
                 '| where match(ScriptBlockText, "(?i)(encodedcommand|invoke-expression|iex|downloadstring|frombase64string|net\\.webclient|invoke-mimikatz)") '
-                '| stats count values(ScriptBlockText) as commands by Computer, UserName '
-                '| where count > 0 '
-                '| lookup identity_lookup identity as UserName OUTPUT department, manager '
+                "| stats count values(ScriptBlockText) as commands by Computer, UserName "
+                "| where count > 0 "
+                "| lookup identity_lookup identity as UserName OUTPUT department, manager "
                 '| eval severity="high" '
                 '| eval description="Suspicious PowerShell on ".Computer." by ".UserName'
             ),
             mitre_techniques=["T1059.001", "T1027"],
             severity="high",
             data_sources=["Windows PowerShell Script Block Logging"],
-            false_positive_notes=["IT automation scripts using encoded commands", "SCCM deployment scripts"],
+            false_positive_notes=[
+                "IT automation scripts using encoded commands",
+                "SCCM deployment scripts",
+            ],
         )
     )
 
@@ -284,19 +325,23 @@ def build_sample_detection_library() -> DetectionRuleLibrary:
             name="Lateral Movement - Multiple Host Access",
             description="Detects a user or source IP accessing an unusual number of hosts via network logon",
             spl_query=(
-                '| tstats summariesonly=true dc(Authentication.dest) as unique_hosts '
-                'from datamodel=Authentication where Authentication.action=success Authentication.Logon_Type=3 '
-                'by Authentication.src, Authentication.user, _time span=1h '
+                "| tstats summariesonly=true dc(Authentication.dest) as unique_hosts "
+                "from datamodel=Authentication where Authentication.action=success Authentication.Logon_Type=3 "
+                "by Authentication.src, Authentication.user, _time span=1h "
                 '| rename "Authentication.*" as * '
-                '| where unique_hosts > 5 '
-                '| lookup asset_lookup ip as src OUTPUT asset_name, asset_category '
+                "| where unique_hosts > 5 "
+                "| lookup asset_lookup ip as src OUTPUT asset_name, asset_category "
                 '| eval severity=case(unique_hosts > 20, "critical", unique_hosts > 10, "high", true(), "medium") '
                 '| eval description=user." accessed ".unique_hosts." hosts from ".src." in 1 hour"'
             ),
             mitre_techniques=["T1021.002", "T1078.002"],
             severity="high",
             data_sources=["Windows Security Event Log"],
-            false_positive_notes=["Vulnerability scanners", "IT management tools", "Software deployment systems"],
+            false_positive_notes=[
+                "Vulnerability scanners",
+                "IT management tools",
+                "Software deployment systems",
+            ],
         )
     )
 
@@ -326,7 +371,9 @@ if __name__ == "__main__":
 
     # MITRE coverage
     coverage = library.get_mitre_coverage()
-    print(f"\nMITRE ATT&CK Coverage: {coverage['techniques_covered']}/{coverage['total_known_techniques']} ({coverage['coverage_percentage']}%)")
+    print(
+        f"\nMITRE ATT&CK Coverage: {coverage['techniques_covered']}/{coverage['total_known_techniques']} ({coverage['coverage_percentage']}%)"
+    )
     for tech_id, info in coverage["coverage_map"].items():
         print(f"  {tech_id} ({info['technique']}): {', '.join(info['rules'])}")
 

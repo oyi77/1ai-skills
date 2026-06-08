@@ -24,13 +24,15 @@ class PurpleTeamAgent:
 
     def add_technique(self, attack_id, name, tool, expected_detection):
         """Add a technique to the test plan."""
-        self.test_plan.append({
-            "attack_id": attack_id,
-            "name": name,
-            "tool": tool,
-            "expected_detection": expected_detection,
-            "status": "pending",
-        })
+        self.test_plan.append(
+            {
+                "attack_id": attack_id,
+                "name": name,
+                "tool": tool,
+                "expected_detection": expected_detection,
+                "status": "pending",
+            }
+        )
 
     def load_test_plan(self, plan_path):
         """Load test plan from a JSON file."""
@@ -41,14 +43,34 @@ class PurpleTeamAgent:
     def build_default_test_plan(self):
         """Build a default FIN7-style purple team test plan."""
         techniques = [
-            ("T1059.001", "PowerShell Execution", "Atomic Red Team", "PowerShell alert"),
+            (
+                "T1059.001",
+                "PowerShell Execution",
+                "Atomic Red Team",
+                "PowerShell alert",
+            ),
             ("T1053.005", "Scheduled Task", "Atomic Red Team", "Task creation alert"),
-            ("T1547.001", "Registry Run Keys", "Atomic Red Team", "Registry modification alert"),
-            ("T1003.001", "LSASS Memory Access", "Mimikatz", "Credential dumping alert"),
+            (
+                "T1547.001",
+                "Registry Run Keys",
+                "Atomic Red Team",
+                "Registry modification alert",
+            ),
+            (
+                "T1003.001",
+                "LSASS Memory Access",
+                "Mimikatz",
+                "Credential dumping alert",
+            ),
             ("T1550.002", "Pass-the-Hash", "Mimikatz", "NTLM anomaly detection"),
             ("T1021.002", "PsExec", "PsExec.exe", "PsExec service creation alert"),
             ("T1047", "WMI Execution", "wmic", "WMI remote execution alert"),
-            ("T1021.001", "RDP Lateral Movement", "xfreerdp", "RDP lateral movement alert"),
+            (
+                "T1021.001",
+                "RDP Lateral Movement",
+                "xfreerdp",
+                "RDP lateral movement alert",
+            ),
             ("T1071.001", "Web C2 Channel", "C2 framework", "C2 beacon detection"),
             ("T1041", "Exfiltration over C2", "rclone", "Data exfiltration alert"),
             ("T1490", "Inhibit Recovery", "vssadmin", "Shadow copy deletion alert"),
@@ -67,8 +89,9 @@ class PurpleTeamAgent:
                 technique["status"] = "executed"
                 break
 
-    def record_detection(self, attack_id, detected, alert_name=None,
-                         detection_time=None, notes=""):
+    def record_detection(
+        self, attack_id, detected, alert_name=None, detection_time=None, notes=""
+    ):
         """Record blue team detection result for a technique."""
         if detection_time is None and detected:
             detection_time = datetime.utcnow().isoformat()
@@ -109,8 +132,11 @@ class PurpleTeamAgent:
         total = len(self.results)
         detected = sum(1 for r in self.results if r["detected"])
         gaps = total - detected
-        latencies = [r["latency_seconds"] for r in self.results
-                     if r["latency_seconds"] is not None]
+        latencies = [
+            r["latency_seconds"]
+            for r in self.results
+            if r["latency_seconds"] is not None
+        ]
         avg_latency = sum(latencies) / len(latencies) if latencies else 0
 
         return {
@@ -132,7 +158,8 @@ class PurpleTeamAgent:
                 "notes": r["notes"],
                 "remediation": f"Create detection rule for {r['name']}",
             }
-            for r in self.results if not r["detected"]
+            for r in self.results
+            if not r["detected"]
         ]
 
     def generate_report(self):
@@ -156,7 +183,9 @@ class PurpleTeamAgent:
         print(f"PURPLE TEAM EXERCISE REPORT - {self.exercise_id}")
         print("=" * 50)
         print(f"Techniques Tested:     {metrics.get('total_techniques', 0)}")
-        print(f"Detected:              {metrics.get('detected', 0)} ({metrics.get('coverage_pct', 0)}%)")
+        print(
+            f"Detected:              {metrics.get('detected', 0)} ({metrics.get('coverage_pct', 0)}%)"
+        )
         print(f"Gaps:                  {metrics.get('gaps', 0)}")
         print(f"Avg Detection Latency: {metrics.get('avg_latency_seconds', 0)}s")
         print(f"\nDetailed Results:")

@@ -117,8 +117,11 @@ def perform_gap_assessment(controls_status):
     results = {
         "assessment_date": datetime.now(timezone.utc).isoformat(),
         "summary": {
-            "total_controls": 0, "implemented": 0, "partial": 0,
-            "not_implemented": 0, "not_assessed": 0,
+            "total_controls": 0,
+            "implemented": 0,
+            "partial": 0,
+            "not_implemented": 0,
+            "not_assessed": 0,
         },
         "gaps": [],
         "criteria_status": {},
@@ -144,20 +147,26 @@ def perform_gap_assessment(controls_status):
                 results["summary"]["implemented"] += 1
             elif status == "partial":
                 results["summary"]["partial"] += 1
-                results["gaps"].append({
-                    "control": ctrl_id, "criteria": cc_id,
-                    "description": ctrl_desc,
-                    "gap": status_info.get("gap", ""),
-                    "severity": "medium",
-                })
+                results["gaps"].append(
+                    {
+                        "control": ctrl_id,
+                        "criteria": cc_id,
+                        "description": ctrl_desc,
+                        "gap": status_info.get("gap", ""),
+                        "severity": "medium",
+                    }
+                )
             elif status == "not_implemented":
                 results["summary"]["not_implemented"] += 1
-                results["gaps"].append({
-                    "control": ctrl_id, "criteria": cc_id,
-                    "description": ctrl_desc,
-                    "gap": status_info.get("gap", ""),
-                    "severity": "high",
-                })
+                results["gaps"].append(
+                    {
+                        "control": ctrl_id,
+                        "criteria": cc_id,
+                        "description": ctrl_desc,
+                        "gap": status_info.get("gap", ""),
+                        "severity": "high",
+                    }
+                )
             else:
                 results["summary"]["not_assessed"] += 1
 
@@ -250,15 +259,17 @@ def collect_aws_cloudtrail_evidence():
         trail_details = []
         for trail in trails:
             status = ct.get_trail_status(Name=trail["TrailARN"])
-            trail_details.append({
-                "name": trail["Name"],
-                "arn": trail["TrailARN"],
-                "is_logging": status["IsLogging"],
-                "multi_region": trail.get("IsMultiRegionTrail", False),
-                "log_validation": trail.get("LogFileValidationEnabled", False),
-                "s3_bucket": trail.get("S3BucketName", ""),
-                "kms_key": trail.get("KmsKeyId", "none"),
-            })
+            trail_details.append(
+                {
+                    "name": trail["Name"],
+                    "arn": trail["TrailARN"],
+                    "is_logging": status["IsLogging"],
+                    "multi_region": trail.get("IsMultiRegionTrail", False),
+                    "log_validation": trail.get("LogFileValidationEnabled", False),
+                    "s3_bucket": trail.get("S3BucketName", ""),
+                    "kms_key": trail.get("KmsKeyId", "none"),
+                }
+            )
         evidence["trails"] = trail_details
         evidence["all_logging"] = all(t["is_logging"] for t in trail_details)
         evidence["all_multi_region"] = all(t["multi_region"] for t in trail_details)
@@ -290,33 +301,36 @@ def collect_aws_s3_public_access_evidence():
             try:
                 pab = s3.get_public_access_block(Bucket=name)
                 cfg = pab["PublicAccessBlockConfiguration"]
-                is_public_blocked = all([
-                    cfg.get("BlockPublicAcls", False),
-                    cfg.get("IgnorePublicAcls", False),
-                    cfg.get("BlockPublicPolicy", False),
-                    cfg.get("RestrictPublicBuckets", False),
-                ])
+                is_public_blocked = all(
+                    [
+                        cfg.get("BlockPublicAcls", False),
+                        cfg.get("IgnorePublicAcls", False),
+                        cfg.get("BlockPublicPolicy", False),
+                        cfg.get("RestrictPublicBuckets", False),
+                    ]
+                )
             except Exception:
                 is_public_blocked = False
 
             try:
                 encryption = s3.get_bucket_encryption(Bucket=name)
                 has_encryption = True
-                enc_algorithm = (
-                    encryption["ServerSideEncryptionConfiguration"]["Rules"][0]
-                    ["ApplyServerSideEncryptionByDefault"]["SSEAlgorithm"]
-                )
+                enc_algorithm = encryption["ServerSideEncryptionConfiguration"][
+                    "Rules"
+                ][0]["ApplyServerSideEncryptionByDefault"]["SSEAlgorithm"]
             except Exception:
                 has_encryption = False
                 enc_algorithm = "none"
 
-            bucket_details.append({
-                "name": name,
-                "created": bucket["CreationDate"].isoformat(),
-                "public_access_blocked": is_public_blocked,
-                "encrypted": has_encryption,
-                "encryption_algorithm": enc_algorithm,
-            })
+            bucket_details.append(
+                {
+                    "name": name,
+                    "created": bucket["CreationDate"].isoformat(),
+                    "public_access_blocked": is_public_blocked,
+                    "encrypted": has_encryption,
+                    "encryption_algorithm": enc_algorithm,
+                }
+            )
             if not is_public_blocked:
                 public_buckets.append(name)
 
@@ -356,11 +370,15 @@ def collect_github_change_management_evidence(org, repo, token, since=None):
             resp = requests.get(
                 "https://api.github.com/repos/" + org + "/" + repo + "/pulls",
                 params={
-                    "state": "closed", "base": "main",
-                    "per_page": 100, "page": page,
-                    "sort": "updated", "direction": "desc",
+                    "state": "closed",
+                    "base": "main",
+                    "per_page": 100,
+                    "page": page,
+                    "sort": "updated",
+                    "direction": "desc",
                 },
-                headers=headers, timeout=30,
+                headers=headers,
+                timeout=30,
             )
             resp.raise_for_status()
             prs = resp.json()
@@ -375,22 +393,26 @@ def collect_github_change_management_evidence(org, repo, token, since=None):
         prs_without_approval = []
         for pr in all_prs:
             reviews_resp = requests.get(
-                pr["url"] + "/reviews", headers=headers, timeout=15,
+                pr["url"] + "/reviews",
+                headers=headers,
+                timeout=15,
             )
             reviews = reviews_resp.json() if reviews_resp.ok else []
             approved = any(r["state"] == "APPROVED" for r in reviews)
             reviewers = list({r["user"]["login"] for r in reviews if "user" in r})
 
-            pr_details.append({
-                "number": pr["number"],
-                "title": pr["title"],
-                "author": pr["user"]["login"],
-                "merged_at": pr["merged_at"],
-                "approved": approved,
-                "reviewers": reviewers,
-                "additions": pr.get("additions", 0),
-                "deletions": pr.get("deletions", 0),
-            })
+            pr_details.append(
+                {
+                    "number": pr["number"],
+                    "title": pr["title"],
+                    "author": pr["user"]["login"],
+                    "merged_at": pr["merged_at"],
+                    "approved": approved,
+                    "reviewers": reviewers,
+                    "additions": pr.get("additions", 0),
+                    "deletions": pr.get("deletions", 0),
+                }
+            )
             if not approved:
                 prs_without_approval.append(pr["number"])
 
@@ -424,19 +446,32 @@ def collect_branch_protection_evidence(org, repo, token):
 
     try:
         resp = requests.get(
-            "https://api.github.com/repos/" + org + "/" + repo + "/branches/main/protection",
-            headers=headers, timeout=15,
+            "https://api.github.com/repos/"
+            + org
+            + "/"
+            + repo
+            + "/branches/main/protection",
+            headers=headers,
+            timeout=15,
         )
         if resp.status_code == 200:
             protection = resp.json()
             pr_reviews = protection.get("required_pull_request_reviews", {})
             evidence["main_branch"] = {
                 "protected": True,
-                "required_reviews": pr_reviews.get("required_approving_review_count", 0),
+                "required_reviews": pr_reviews.get(
+                    "required_approving_review_count", 0
+                ),
                 "dismiss_stale_reviews": pr_reviews.get("dismiss_stale_reviews", False),
-                "require_code_owner_reviews": pr_reviews.get("require_code_owner_reviews", False),
-                "status_checks_required": protection.get("required_status_checks", {}).get("strict", False),
-                "enforce_admins": protection.get("enforce_admins", {}).get("enabled", False),
+                "require_code_owner_reviews": pr_reviews.get(
+                    "require_code_owner_reviews", False
+                ),
+                "status_checks_required": protection.get(
+                    "required_status_checks", {}
+                ).get("strict", False),
+                "enforce_admins": protection.get("enforce_admins", {}).get(
+                    "enabled", False
+                ),
             }
         elif resp.status_code == 404:
             evidence["main_branch"] = {
@@ -455,7 +490,10 @@ def run_continuous_compliance_checks(aws_enabled=True):
     """Run a suite of continuous compliance checks and return findings."""
     findings = {
         "check_time": datetime.now(timezone.utc).isoformat(),
-        "checks": [], "passing": 0, "failing": 0, "errors": 0,
+        "checks": [],
+        "passing": 0,
+        "failing": 0,
+        "errors": 0,
     }
     checks = []
 
@@ -469,18 +507,26 @@ def run_continuous_compliance_checks(aws_enabled=True):
                 mfa_devices = iam.list_mfa_devices(UserName=user["UserName"])
                 if not mfa_devices["MFADevices"]:
                     users_without_mfa.append(user["UserName"])
-            checks.append({
-                "control": "CC6.1",
-                "check": "All IAM users have MFA enabled",
-                "passing": len(users_without_mfa) == 0,
-                "details": {"total_users": len(users), "without_mfa": users_without_mfa},
-            })
+            checks.append(
+                {
+                    "control": "CC6.1",
+                    "check": "All IAM users have MFA enabled",
+                    "passing": len(users_without_mfa) == 0,
+                    "details": {
+                        "total_users": len(users),
+                        "without_mfa": users_without_mfa,
+                    },
+                }
+            )
         except Exception as e:
-            checks.append({
-                "control": "CC6.1",
-                "check": "All IAM users have MFA enabled",
-                "passing": None, "error": str(e),
-            })
+            checks.append(
+                {
+                    "control": "CC6.1",
+                    "check": "All IAM users have MFA enabled",
+                    "passing": None,
+                    "error": str(e),
+                }
+            )
 
         # CC6.6: No public S3 buckets
         try:
@@ -491,27 +537,34 @@ def run_continuous_compliance_checks(aws_enabled=True):
                 try:
                     pab = s3.get_public_access_block(Bucket=bucket["Name"])
                     cfg = pab["PublicAccessBlockConfiguration"]
-                    if not all([
-                        cfg.get("BlockPublicAcls", False),
-                        cfg.get("IgnorePublicAcls", False),
-                        cfg.get("BlockPublicPolicy", False),
-                        cfg.get("RestrictPublicBuckets", False),
-                    ]):
+                    if not all(
+                        [
+                            cfg.get("BlockPublicAcls", False),
+                            cfg.get("IgnorePublicAcls", False),
+                            cfg.get("BlockPublicPolicy", False),
+                            cfg.get("RestrictPublicBuckets", False),
+                        ]
+                    ):
                         public_buckets.append(bucket["Name"])
                 except Exception:
                     public_buckets.append(bucket["Name"])
-            checks.append({
-                "control": "CC6.6",
-                "check": "No public S3 buckets",
-                "passing": len(public_buckets) == 0,
-                "details": {"public_buckets": public_buckets},
-            })
+            checks.append(
+                {
+                    "control": "CC6.6",
+                    "check": "No public S3 buckets",
+                    "passing": len(public_buckets) == 0,
+                    "details": {"public_buckets": public_buckets},
+                }
+            )
         except Exception as e:
-            checks.append({
-                "control": "CC6.6",
-                "check": "No public S3 buckets",
-                "passing": None, "error": str(e),
-            })
+            checks.append(
+                {
+                    "control": "CC6.6",
+                    "check": "No public S3 buckets",
+                    "passing": None,
+                    "error": str(e),
+                }
+            )
 
         # CC7.1: CloudTrail logging enabled
         try:
@@ -522,18 +575,23 @@ def run_continuous_compliance_checks(aws_enabled=True):
                 status = ct.get_trail_status(Name=trail["TrailARN"])
                 if not status["IsLogging"]:
                     inactive_trails.append(trail["Name"])
-            checks.append({
-                "control": "CC7.1",
-                "check": "CloudTrail logging enabled on all trails",
-                "passing": len(inactive_trails) == 0,
-                "details": {"inactive_trails": inactive_trails},
-            })
+            checks.append(
+                {
+                    "control": "CC7.1",
+                    "check": "CloudTrail logging enabled on all trails",
+                    "passing": len(inactive_trails) == 0,
+                    "details": {"inactive_trails": inactive_trails},
+                }
+            )
         except Exception as e:
-            checks.append({
-                "control": "CC7.1",
-                "check": "CloudTrail logging enabled on all trails",
-                "passing": None, "error": str(e),
-            })
+            checks.append(
+                {
+                    "control": "CC7.1",
+                    "check": "CloudTrail logging enabled on all trails",
+                    "passing": None,
+                    "error": str(e),
+                }
+            )
 
     findings["checks"] = checks
     for check in checks:
@@ -545,9 +603,7 @@ def run_continuous_compliance_checks(aws_enabled=True):
             findings["errors"] += 1
 
     total = findings["passing"] + findings["failing"]
-    findings["compliance_score"] = round(
-        (findings["passing"] / max(total, 1)) * 100, 1
-    )
+    findings["compliance_score"] = round((findings["passing"] / max(total, 1)) * 100, 1)
     return findings
 
 
@@ -566,15 +622,84 @@ def generate_remediation_plan(gap_assessment):
     )
 
     remediation_map = {
-        "CC1": (["Draft information security policy", "Establish security committee charter", "Create security awareness training", "Document org structure"], "2-4 weeks"),
-        "CC2": (["Publish security policy to all staff", "Document system boundaries", "Establish external communication procedures"], "2-4 weeks"),
-        "CC3": (["Conduct formal risk assessment", "Create risk register with owners", "Document fraud risk analysis", "Assess change impacts"], "4-8 weeks"),
-        "CC4": (["Implement continuous control monitoring", "Establish internal audit program", "Create deficiency tracking process"], "3-6 weeks"),
-        "CC5": (["Map policies to procedures", "Deploy technology controls", "Create control activities documentation"], "3-6 weeks"),
-        "CC6": (["Enforce MFA across all accounts", "Automate access provisioning/deprovisioning", "Establish quarterly access reviews", "Deploy encryption at rest and in transit"], "2-4 weeks"),
-        "CC7": (["Enable CloudTrail/audit logging everywhere", "Deploy SIEM with anomaly alerting", "Implement weekly vulnerability scanning", "Document and test IR procedures"], "3-6 weeks"),
-        "CC8": (["Enforce branch protection with required reviews", "Implement CI/CD with automated testing", "Create change advisory board process", "Document emergency change procedures"], "1-3 weeks"),
-        "CC9": (["Implement vendor risk management program", "Create BCP and DR plans", "Conduct annual DR testing", "Collect vendor SOC 2 reports"], "4-8 weeks"),
+        "CC1": (
+            [
+                "Draft information security policy",
+                "Establish security committee charter",
+                "Create security awareness training",
+                "Document org structure",
+            ],
+            "2-4 weeks",
+        ),
+        "CC2": (
+            [
+                "Publish security policy to all staff",
+                "Document system boundaries",
+                "Establish external communication procedures",
+            ],
+            "2-4 weeks",
+        ),
+        "CC3": (
+            [
+                "Conduct formal risk assessment",
+                "Create risk register with owners",
+                "Document fraud risk analysis",
+                "Assess change impacts",
+            ],
+            "4-8 weeks",
+        ),
+        "CC4": (
+            [
+                "Implement continuous control monitoring",
+                "Establish internal audit program",
+                "Create deficiency tracking process",
+            ],
+            "3-6 weeks",
+        ),
+        "CC5": (
+            [
+                "Map policies to procedures",
+                "Deploy technology controls",
+                "Create control activities documentation",
+            ],
+            "3-6 weeks",
+        ),
+        "CC6": (
+            [
+                "Enforce MFA across all accounts",
+                "Automate access provisioning/deprovisioning",
+                "Establish quarterly access reviews",
+                "Deploy encryption at rest and in transit",
+            ],
+            "2-4 weeks",
+        ),
+        "CC7": (
+            [
+                "Enable CloudTrail/audit logging everywhere",
+                "Deploy SIEM with anomaly alerting",
+                "Implement weekly vulnerability scanning",
+                "Document and test IR procedures",
+            ],
+            "3-6 weeks",
+        ),
+        "CC8": (
+            [
+                "Enforce branch protection with required reviews",
+                "Implement CI/CD with automated testing",
+                "Create change advisory board process",
+                "Document emergency change procedures",
+            ],
+            "1-3 weeks",
+        ),
+        "CC9": (
+            [
+                "Implement vendor risk management program",
+                "Create BCP and DR plans",
+                "Conduct annual DR testing",
+                "Collect vendor SOC 2 reports",
+            ],
+            "4-8 weeks",
+        ),
     }
 
     for i, gap in enumerate(sorted_gaps, 1):
@@ -582,15 +707,17 @@ def generate_remediation_plan(gap_assessment):
             gap["criteria"],
             (["Review and implement appropriate controls"], "2-4 weeks"),
         )
-        plan["remediation_items"].append({
-            "priority": i,
-            "control": gap["control"],
-            "criteria": gap["criteria"],
-            "description": gap["description"],
-            "severity": gap.get("severity", "medium"),
-            "recommended_actions": actions,
-            "estimated_effort": effort,
-        })
+        plan["remediation_items"].append(
+            {
+                "priority": i,
+                "control": gap["control"],
+                "criteria": gap["criteria"],
+                "description": gap["description"],
+                "severity": gap.get("severity", "medium"),
+                "recommended_actions": actions,
+                "estimated_effort": effort,
+            }
+        )
 
     return plan
 
@@ -605,53 +732,169 @@ def generate_evidence_manifest(audit_start, audit_end):
 
     evidence_map = {
         "CC1": [
-            {"name": "Code of Conduct Acknowledgments", "source": "HR system", "frequency": "annual"},
-            {"name": "Board Meeting Minutes", "source": "Board secretary", "frequency": "quarterly"},
-            {"name": "Organizational Chart", "source": "HR system", "frequency": "annual"},
-            {"name": "Background Check Policy", "source": "HR system", "frequency": "annual"},
-            {"name": "Security Training Completion Records", "source": "LMS", "frequency": "annual"},
+            {
+                "name": "Code of Conduct Acknowledgments",
+                "source": "HR system",
+                "frequency": "annual",
+            },
+            {
+                "name": "Board Meeting Minutes",
+                "source": "Board secretary",
+                "frequency": "quarterly",
+            },
+            {
+                "name": "Organizational Chart",
+                "source": "HR system",
+                "frequency": "annual",
+            },
+            {
+                "name": "Background Check Policy",
+                "source": "HR system",
+                "frequency": "annual",
+            },
+            {
+                "name": "Security Training Completion Records",
+                "source": "LMS",
+                "frequency": "annual",
+            },
         ],
         "CC2": [
-            {"name": "Information Security Policy", "source": "Policy repo", "frequency": "annual"},
-            {"name": "System Description Document", "source": "Engineering", "frequency": "annual"},
+            {
+                "name": "Information Security Policy",
+                "source": "Policy repo",
+                "frequency": "annual",
+            },
+            {
+                "name": "System Description Document",
+                "source": "Engineering",
+                "frequency": "annual",
+            },
         ],
         "CC3": [
-            {"name": "Risk Assessment Report", "source": "GRC platform", "frequency": "annual"},
-            {"name": "Risk Register", "source": "GRC platform", "frequency": "quarterly"},
+            {
+                "name": "Risk Assessment Report",
+                "source": "GRC platform",
+                "frequency": "annual",
+            },
+            {
+                "name": "Risk Register",
+                "source": "GRC platform",
+                "frequency": "quarterly",
+            },
         ],
         "CC4": [
-            {"name": "Control Monitoring Dashboard", "source": "Compliance platform", "frequency": "monthly"},
-            {"name": "Internal Audit Reports", "source": "Internal audit", "frequency": "annual"},
+            {
+                "name": "Control Monitoring Dashboard",
+                "source": "Compliance platform",
+                "frequency": "monthly",
+            },
+            {
+                "name": "Internal Audit Reports",
+                "source": "Internal audit",
+                "frequency": "annual",
+            },
         ],
         "CC5": [
-            {"name": "IT General Controls Matrix", "source": "GRC platform", "frequency": "annual"},
+            {
+                "name": "IT General Controls Matrix",
+                "source": "GRC platform",
+                "frequency": "annual",
+            },
         ],
         "CC6": [
-            {"name": "IAM User MFA Status", "source": "AWS IAM / Okta", "frequency": "daily"},
-            {"name": "Access Provisioning Tickets", "source": "Jira/ServiceNow", "frequency": "continuous"},
-            {"name": "Quarterly Access Reviews", "source": "IAM system", "frequency": "quarterly"},
-            {"name": "Terminated User Access Removal", "source": "HR + IAM", "frequency": "continuous"},
-            {"name": "S3 Public Access Report", "source": "AWS S3", "frequency": "daily"},
-            {"name": "Encryption Configuration", "source": "AWS KMS", "frequency": "daily"},
-            {"name": "Password Policy Config", "source": "AWS IAM / Okta", "frequency": "monthly"},
+            {
+                "name": "IAM User MFA Status",
+                "source": "AWS IAM / Okta",
+                "frequency": "daily",
+            },
+            {
+                "name": "Access Provisioning Tickets",
+                "source": "Jira/ServiceNow",
+                "frequency": "continuous",
+            },
+            {
+                "name": "Quarterly Access Reviews",
+                "source": "IAM system",
+                "frequency": "quarterly",
+            },
+            {
+                "name": "Terminated User Access Removal",
+                "source": "HR + IAM",
+                "frequency": "continuous",
+            },
+            {
+                "name": "S3 Public Access Report",
+                "source": "AWS S3",
+                "frequency": "daily",
+            },
+            {
+                "name": "Encryption Configuration",
+                "source": "AWS KMS",
+                "frequency": "daily",
+            },
+            {
+                "name": "Password Policy Config",
+                "source": "AWS IAM / Okta",
+                "frequency": "monthly",
+            },
         ],
         "CC7": [
-            {"name": "CloudTrail Logging Status", "source": "AWS CloudTrail", "frequency": "daily"},
+            {
+                "name": "CloudTrail Logging Status",
+                "source": "AWS CloudTrail",
+                "frequency": "daily",
+            },
             {"name": "SIEM Alert Summaries", "source": "SIEM", "frequency": "monthly"},
-            {"name": "Vulnerability Scan Reports", "source": "Scanner", "frequency": "weekly"},
-            {"name": "Incident Response Reports", "source": "IR team", "frequency": "per-incident"},
-            {"name": "GuardDuty Findings", "source": "AWS GuardDuty", "frequency": "daily"},
+            {
+                "name": "Vulnerability Scan Reports",
+                "source": "Scanner",
+                "frequency": "weekly",
+            },
+            {
+                "name": "Incident Response Reports",
+                "source": "IR team",
+                "frequency": "per-incident",
+            },
+            {
+                "name": "GuardDuty Findings",
+                "source": "AWS GuardDuty",
+                "frequency": "daily",
+            },
         ],
         "CC8": [
-            {"name": "PR Approval Records", "source": "GitHub", "frequency": "continuous"},
-            {"name": "Branch Protection Config", "source": "GitHub", "frequency": "monthly"},
-            {"name": "CI/CD Pipeline Config", "source": "GitHub Actions", "frequency": "monthly"},
+            {
+                "name": "PR Approval Records",
+                "source": "GitHub",
+                "frequency": "continuous",
+            },
+            {
+                "name": "Branch Protection Config",
+                "source": "GitHub",
+                "frequency": "monthly",
+            },
+            {
+                "name": "CI/CD Pipeline Config",
+                "source": "GitHub Actions",
+                "frequency": "monthly",
+            },
         ],
         "CC9": [
-            {"name": "Vendor Risk Assessments", "source": "GRC platform", "frequency": "annual"},
-            {"name": "Business Continuity Plan", "source": "BCP team", "frequency": "annual"},
+            {
+                "name": "Vendor Risk Assessments",
+                "source": "GRC platform",
+                "frequency": "annual",
+            },
+            {
+                "name": "Business Continuity Plan",
+                "source": "BCP team",
+                "frequency": "annual",
+            },
             {"name": "DR Test Results", "source": "Engineering", "frequency": "annual"},
-            {"name": "Vendor SOC 2 Reports", "source": "Vendors", "frequency": "annual"},
+            {
+                "name": "Vendor SOC 2 Reports",
+                "source": "Vendors",
+                "frequency": "annual",
+            },
         ],
     }
 
@@ -725,10 +968,18 @@ def main():
     parser.add_argument(
         "--action",
         choices=[
-            "gap-assessment", "collect-aws-iam", "collect-aws-cloudtrail",
-            "collect-aws-s3", "collect-github-changes", "collect-branch-protection",
-            "compliance-checks", "remediation-plan", "evidence-manifest",
-            "readiness-report", "list-criteria", "full-assessment",
+            "gap-assessment",
+            "collect-aws-iam",
+            "collect-aws-cloudtrail",
+            "collect-aws-s3",
+            "collect-github-changes",
+            "collect-branch-protection",
+            "compliance-checks",
+            "remediation-plan",
+            "evidence-manifest",
+            "readiness-report",
+            "list-criteria",
+            "full-assessment",
         ],
         default="list-criteria",
     )
@@ -742,7 +993,10 @@ def main():
     parser.add_argument("--aws", action="store_true")
     args = parser.parse_args()
 
-    report = {"generated_at": datetime.now(timezone.utc).isoformat(), "action": args.action}
+    report = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "action": args.action,
+    }
 
     if args.action == "list-criteria":
         print("[*] AICPA Trust Services Criteria - Common Criteria (CC1-CC9):\n")
@@ -764,7 +1018,9 @@ def main():
         report["gap_assessment"] = result
         s = result["summary"]
         print("[+] Readiness Score: " + str(s["readiness_score"]) + "%")
-        print("[+] Implemented: " + str(s["implemented"]) + "/" + str(s["total_controls"]))
+        print(
+            "[+] Implemented: " + str(s["implemented"]) + "/" + str(s["total_controls"])
+        )
         print("[+] Gaps: " + str(len(result["gaps"])))
 
     elif args.action == "collect-aws-iam":
@@ -788,7 +1044,9 @@ def main():
             sys.exit(1)
         print("[+] Collecting GitHub change evidence...")
         result = collect_github_change_management_evidence(
-            args.github_org, args.github_repo, args.github_token,
+            args.github_org,
+            args.github_repo,
+            args.github_token,
             since=args.audit_start,
         )
         report["github_change_evidence"] = result
@@ -798,7 +1056,9 @@ def main():
             print("[-] --github-org, --github-repo, and --github-token required")
             sys.exit(1)
         result = collect_branch_protection_evidence(
-            args.github_org, args.github_repo, args.github_token,
+            args.github_org,
+            args.github_repo,
+            args.github_token,
         )
         report["branch_protection_evidence"] = result
 
@@ -822,14 +1082,31 @@ def main():
         report["remediation_plan"] = plan
         print("[+] Remediation plan: " + str(plan["total_gaps"]) + " items")
         for item in plan["remediation_items"]:
-            print("    " + str(item["priority"]) + ". [" + item["severity"].upper() + "] " + item["control"])
+            print(
+                "    "
+                + str(item["priority"])
+                + ". ["
+                + item["severity"].upper()
+                + "] "
+                + item["control"]
+            )
 
     elif args.action == "evidence-manifest":
         manifest = generate_evidence_manifest(args.audit_start, args.audit_end)
         report["evidence_manifest"] = manifest
-        print("[+] Evidence manifest: " + str(manifest["total_evidence_items"]) + " items")
+        print(
+            "[+] Evidence manifest: " + str(manifest["total_evidence_items"]) + " items"
+        )
         for cc_id, pkg in manifest["evidence_packages"].items():
-            print("    " + cc_id + " (" + pkg["criteria_name"] + "): " + str(pkg["item_count"]) + " items")
+            print(
+                "    "
+                + cc_id
+                + " ("
+                + pkg["criteria_name"]
+                + "): "
+                + str(pkg["item_count"])
+                + " items"
+            )
 
     elif args.action == "readiness-report":
         controls_status = {}
@@ -838,7 +1115,9 @@ def main():
                 controls_status = json.load(f)
         gap = perform_gap_assessment(controls_status)
         compliance = run_continuous_compliance_checks(aws_enabled=args.aws)
-        readiness = generate_readiness_report(gap_assessment=gap, compliance_checks=compliance)
+        readiness = generate_readiness_report(
+            gap_assessment=gap, compliance_checks=compliance
+        )
         report["readiness_report"] = readiness
         print("[+] Overall Readiness: " + readiness["overall_readiness"].upper())
 
@@ -850,11 +1129,17 @@ def main():
                 controls_status = json.load(f)
         gap = perform_gap_assessment(controls_status)
         report["gap_assessment"] = gap
-        print("[+] Gap Assessment - Readiness: " + str(gap["summary"]["readiness_score"]) + "%")
+        print(
+            "[+] Gap Assessment - Readiness: "
+            + str(gap["summary"]["readiness_score"])
+            + "%"
+        )
 
         manifest = generate_evidence_manifest(args.audit_start, args.audit_end)
         report["evidence_manifest"] = manifest
-        print("[+] Evidence Manifest: " + str(manifest["total_evidence_items"]) + " items")
+        print(
+            "[+] Evidence Manifest: " + str(manifest["total_evidence_items"]) + " items"
+        )
 
         compliance = run_continuous_compliance_checks(aws_enabled=args.aws)
         report["compliance_checks"] = compliance
@@ -864,7 +1149,9 @@ def main():
         report["remediation_plan"] = plan
         print("[+] Remediation Items: " + str(plan["total_gaps"]))
 
-        readiness = generate_readiness_report(gap_assessment=gap, compliance_checks=compliance)
+        readiness = generate_readiness_report(
+            gap_assessment=gap, compliance_checks=compliance
+        )
         report["readiness_report"] = readiness
         print("\n[+] OVERALL READINESS: " + readiness["overall_readiness"].upper())
         if "overall_score" in readiness:

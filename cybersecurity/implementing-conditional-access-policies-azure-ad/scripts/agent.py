@@ -14,7 +14,9 @@ try:
 except ImportError:
     sys.exit("requests required: pip install requests")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
@@ -30,23 +32,34 @@ class ConditionalAccessClient:
     def _auth(self, tenant_id, client_id, client_secret) -> str:
         resp = requests.post(
             f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token",
-            data={"grant_type": "client_credentials", "client_id": client_id,
-                  "client_secret": client_secret,
-                  "scope": "https://graph.microsoft.com/.default"}, timeout=15)
+            data={
+                "grant_type": "client_credentials",
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "scope": "https://graph.microsoft.com/.default",
+            },
+            timeout=15,
+        )
         resp.raise_for_status()
         return resp.json()["access_token"]
 
     def list_policies(self) -> List[dict]:
         """List all conditional access policies."""
-        resp = requests.get(f"{GRAPH_BASE}/identity/conditionalAccess/policies",
-                            headers=self.headers, timeout=30)
+        resp = requests.get(
+            f"{GRAPH_BASE}/identity/conditionalAccess/policies",
+            headers=self.headers,
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json().get("value", [])
 
     def list_named_locations(self) -> List[dict]:
         """List named locations used in policies."""
-        resp = requests.get(f"{GRAPH_BASE}/identity/conditionalAccess/namedLocations",
-                            headers=self.headers, timeout=30)
+        resp = requests.get(
+            f"{GRAPH_BASE}/identity/conditionalAccess/namedLocations",
+            headers=self.headers,
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json().get("value", [])
 
@@ -80,15 +93,30 @@ def audit_policy(policy: dict) -> dict:
 def check_baseline_policies(policies: List[dict]) -> List[dict]:
     """Check for essential baseline conditional access policies."""
     baselines = [
-        {"name": "Require MFA for admins", "check": lambda p: "mfa" in str(p.get("grantControls", {})).lower() and "admin" in str(p.get("conditions", {}).get("users", {})).lower()},
-        {"name": "Block legacy authentication", "check": lambda p: "block" in str(p.get("grantControls", {})).lower()},
-        {"name": "Require compliant devices", "check": lambda p: "compliantDevice" in str(p.get("grantControls", {}))},
+        {
+            "name": "Require MFA for admins",
+            "check": lambda p: "mfa" in str(p.get("grantControls", {})).lower()
+            and "admin" in str(p.get("conditions", {}).get("users", {})).lower(),
+        },
+        {
+            "name": "Block legacy authentication",
+            "check": lambda p: "block" in str(p.get("grantControls", {})).lower(),
+        },
+        {
+            "name": "Require compliant devices",
+            "check": lambda p: "compliantDevice" in str(p.get("grantControls", {})),
+        },
     ]
     results = []
     for baseline in baselines:
         found = any(baseline["check"](p) for p in policies)
-        results.append({"baseline": baseline["name"], "implemented": found,
-                        "priority": "CRITICAL" if not found else "OK"})
+        results.append(
+            {
+                "baseline": baseline["name"],
+                "implemented": found,
+                "priority": "CRITICAL" if not found else "OK",
+            }
+        )
     return results
 
 
@@ -115,7 +143,9 @@ def generate_report(client: ConditionalAccessClient) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Azure AD Conditional Access Audit Agent")
+    parser = argparse.ArgumentParser(
+        description="Azure AD Conditional Access Audit Agent"
+    )
     parser.add_argument("--tenant-id", required=True)
     parser.add_argument("--client-id", required=True)
     parser.add_argument("--client-secret", required=True)

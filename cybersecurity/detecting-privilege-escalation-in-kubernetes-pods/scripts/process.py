@@ -9,9 +9,16 @@ import subprocess
 import sys
 import argparse
 
-
-DANGEROUS_CAPS = {"SYS_ADMIN", "SYS_PTRACE", "SYS_MODULE", "DAC_OVERRIDE",
-                  "NET_ADMIN", "NET_RAW", "SYS_RAWIO", "SYS_BOOT"}
+DANGEROUS_CAPS = {
+    "SYS_ADMIN",
+    "SYS_PTRACE",
+    "SYS_MODULE",
+    "DAC_OVERRIDE",
+    "NET_ADMIN",
+    "NET_RAW",
+    "SYS_RAWIO",
+    "SYS_BOOT",
+}
 
 
 def get_pods(namespace: str = None) -> list:
@@ -37,21 +44,49 @@ def check_pod_privesc(pod: dict) -> list:
 
     # Host-level checks
     if spec.get("hostPID"):
-        findings.append({"pod": name, "namespace": ns, "severity": "CRITICAL",
-                        "finding": "hostPID enabled", "vector": "host-pid"})
+        findings.append(
+            {
+                "pod": name,
+                "namespace": ns,
+                "severity": "CRITICAL",
+                "finding": "hostPID enabled",
+                "vector": "host-pid",
+            }
+        )
     if spec.get("hostNetwork"):
-        findings.append({"pod": name, "namespace": ns, "severity": "HIGH",
-                        "finding": "hostNetwork enabled", "vector": "host-network"})
+        findings.append(
+            {
+                "pod": name,
+                "namespace": ns,
+                "severity": "HIGH",
+                "finding": "hostNetwork enabled",
+                "vector": "host-network",
+            }
+        )
     if spec.get("hostIPC"):
-        findings.append({"pod": name, "namespace": ns, "severity": "HIGH",
-                        "finding": "hostIPC enabled", "vector": "host-ipc"})
+        findings.append(
+            {
+                "pod": name,
+                "namespace": ns,
+                "severity": "HIGH",
+                "finding": "hostIPC enabled",
+                "vector": "host-ipc",
+            }
+        )
 
     # Volume checks
     for vol in spec.get("volumes", []):
         if vol.get("hostPath"):
             path = vol["hostPath"].get("path", "")
-            findings.append({"pod": name, "namespace": ns, "severity": "HIGH",
-                           "finding": f"hostPath volume: {path}", "vector": "host-path"})
+            findings.append(
+                {
+                    "pod": name,
+                    "namespace": ns,
+                    "severity": "HIGH",
+                    "finding": f"hostPath volume: {path}",
+                    "vector": "host-path",
+                }
+            )
 
     # Container checks
     for container in spec.get("containers", []) + spec.get("initContainers", []):
@@ -59,25 +94,50 @@ def check_pod_privesc(pod: dict) -> list:
         sc = container.get("securityContext", {})
 
         if sc.get("privileged"):
-            findings.append({"pod": name, "namespace": ns, "severity": "CRITICAL",
-                           "finding": f"Container '{cname}' is privileged", "vector": "privileged"})
+            findings.append(
+                {
+                    "pod": name,
+                    "namespace": ns,
+                    "severity": "CRITICAL",
+                    "finding": f"Container '{cname}' is privileged",
+                    "vector": "privileged",
+                }
+            )
 
         if sc.get("allowPrivilegeEscalation", True):
-            findings.append({"pod": name, "namespace": ns, "severity": "MEDIUM",
-                           "finding": f"Container '{cname}' allows privilege escalation",
-                           "vector": "allow-privesc"})
+            findings.append(
+                {
+                    "pod": name,
+                    "namespace": ns,
+                    "severity": "MEDIUM",
+                    "finding": f"Container '{cname}' allows privilege escalation",
+                    "vector": "allow-privesc",
+                }
+            )
 
         if sc.get("runAsUser") == 0:
-            findings.append({"pod": name, "namespace": ns, "severity": "HIGH",
-                           "finding": f"Container '{cname}' runs as root (UID 0)",
-                           "vector": "run-as-root"})
+            findings.append(
+                {
+                    "pod": name,
+                    "namespace": ns,
+                    "severity": "HIGH",
+                    "finding": f"Container '{cname}' runs as root (UID 0)",
+                    "vector": "run-as-root",
+                }
+            )
 
         caps = sc.get("capabilities", {})
         for cap in caps.get("add", []):
             if cap in DANGEROUS_CAPS or cap == "ALL":
-                findings.append({"pod": name, "namespace": ns, "severity": "CRITICAL",
-                               "finding": f"Container '{cname}' has dangerous cap: {cap}",
-                               "vector": "dangerous-capability"})
+                findings.append(
+                    {
+                        "pod": name,
+                        "namespace": ns,
+                        "severity": "CRITICAL",
+                        "finding": f"Container '{cname}' has dangerous cap: {cap}",
+                        "vector": "dangerous-capability",
+                    }
+                )
 
     return findings
 
@@ -111,17 +171,25 @@ def print_report(findings: list):
 
     # Summary
     from collections import Counter
+
     by_sev = Counter(f["severity"] for f in findings)
-    print(f"\nSummary: CRITICAL={by_sev.get('CRITICAL',0)} HIGH={by_sev.get('HIGH',0)} "
-          f"MEDIUM={by_sev.get('MEDIUM',0)} LOW={by_sev.get('LOW',0)}")
+    print(
+        f"\nSummary: CRITICAL={by_sev.get('CRITICAL',0)} HIGH={by_sev.get('HIGH',0)} "
+        f"MEDIUM={by_sev.get('MEDIUM',0)} LOW={by_sev.get('LOW',0)}"
+    )
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kubernetes Privilege Escalation Scanner")
+    parser = argparse.ArgumentParser(
+        description="Kubernetes Privilege Escalation Scanner"
+    )
     parser.add_argument("--namespace", "-n", help="Scan specific namespace")
     parser.add_argument("--json", action="store_true", help="JSON output")
-    parser.add_argument("--fail-on", choices=["critical", "high", "medium"],
-                       help="Exit non-zero if findings at threshold")
+    parser.add_argument(
+        "--fail-on",
+        choices=["critical", "high", "medium"],
+        help="Exit non-zero if findings at threshold",
+    )
 
     args = parser.parse_args()
     findings = scan_cluster(args.namespace)
@@ -132,8 +200,11 @@ def main():
         print_report(findings)
 
     if args.fail_on:
-        threshold = {"critical": ["CRITICAL"], "high": ["CRITICAL", "HIGH"],
-                    "medium": ["CRITICAL", "HIGH", "MEDIUM"]}
+        threshold = {
+            "critical": ["CRITICAL"],
+            "high": ["CRITICAL", "HIGH"],
+            "medium": ["CRITICAL", "HIGH", "MEDIUM"],
+        }
         blocking = [f for f in findings if f["severity"] in threshold[args.fail_on]]
         sys.exit(1 if blocking else 0)
 

@@ -50,24 +50,25 @@ class EZToolsProcessor:
         """Execute an EZ Tool with given arguments."""
         tool_path = self.tools.get(tool_name)
         if not tool_path or not tool_path.exists():
-            return {"status": "error", "message": f"{tool_name} not found at {tool_path}"}
+            return {
+                "status": "error",
+                "message": f"{tool_name} not found at {tool_path}",
+            }
 
         cmd = [str(tool_path)] + args
         try:
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=300
-            )
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             return {
                 "status": "success" if result.returncode == 0 else "error",
                 "stdout": result.stdout,
                 "stderr": result.stderr,
-                "returncode": result.returncode
+                "returncode": result.returncode,
             }
         except subprocess.TimeoutExpired:
-            return {"status": "error", "message": f"{tool_name} timed out after 300 seconds"}
+            return {
+                "status": "error",
+                "message": f"{tool_name} timed out after 300 seconds",
+            }
         except Exception as e:
             return {"status": "error", "message": str(e)}
 
@@ -95,7 +96,14 @@ class EZToolsProcessor:
             journal_path = str(j_candidates[0])
 
         output_file = "USNJournal_output.csv"
-        args = ["-f", journal_path, "--csv", str(self.output_path), "--csvf", output_file]
+        args = [
+            "-f",
+            journal_path,
+            "--csv",
+            str(self.output_path),
+            "--csvf",
+            output_file,
+        ]
         result = self.run_tool("MFTECmd", args)
         result["output_file"] = str(self.output_path / output_file)
         self.results["USNJournal"] = result
@@ -110,7 +118,14 @@ class EZToolsProcessor:
             prefetch_dir = str(pf_candidates[0])
 
         output_file = "Prefetch_output.csv"
-        args = ["-d", prefetch_dir, "--csv", str(self.output_path), "--csvf", output_file]
+        args = [
+            "-d",
+            prefetch_dir,
+            "--csv",
+            str(self.output_path),
+            "--csvf",
+            output_file,
+        ]
         result = self.run_tool("PECmd", args)
         result["output_file"] = str(self.output_path / output_file)
         self.results["Prefetch"] = result
@@ -136,7 +151,10 @@ class EZToolsProcessor:
         if jl_dir is None:
             auto_dest = list(self.evidence_path.rglob("AutomaticDestinations"))
             if not auto_dest:
-                return {"status": "skipped", "message": "AutomaticDestinations not found"}
+                return {
+                    "status": "skipped",
+                    "message": "AutomaticDestinations not found",
+                }
             jl_dir = str(auto_dest[0])
 
         output_file = "JumpLists_output.csv"
@@ -171,7 +189,14 @@ class EZToolsProcessor:
             registry_dir = str(self.evidence_path)
 
         output_file = "Shellbags_output.csv"
-        args = ["-d", registry_dir, "--csv", str(self.output_path), "--csvf", output_file]
+        args = [
+            "-d",
+            registry_dir,
+            "--csv",
+            str(self.output_path),
+            "--csvf",
+            output_file,
+        ]
         result = self.run_tool("SBECmd", args)
         result["output_file"] = str(self.output_path / output_file)
         self.results["Shellbags"] = result
@@ -186,7 +211,14 @@ class EZToolsProcessor:
             recycle_dir = str(rb_candidates[0])
 
         output_file = "RecycleBin_output.csv"
-        args = ["-d", recycle_dir, "--csv", str(self.output_path), "--csvf", output_file]
+        args = [
+            "-d",
+            recycle_dir,
+            "--csv",
+            str(self.output_path),
+            "--csvf",
+            output_file,
+        ]
         result = self.run_tool("RBCmd", args)
         result["output_file"] = str(self.output_path / output_file)
         self.results["RecycleBin"] = result
@@ -203,16 +235,22 @@ class EZToolsProcessor:
                     fn_created = row.get("Created0x30", "")
                     if si_created and fn_created:
                         try:
-                            si_dt = datetime.fromisoformat(si_created.replace("Z", "+00:00"))
-                            fn_dt = datetime.fromisoformat(fn_created.replace("Z", "+00:00"))
+                            si_dt = datetime.fromisoformat(
+                                si_created.replace("Z", "+00:00")
+                            )
+                            fn_dt = datetime.fromisoformat(
+                                fn_created.replace("Z", "+00:00")
+                            )
                             if si_dt < fn_dt:
-                                timestomped.append({
-                                    "file": row.get("FileName", "Unknown"),
-                                    "entry_number": row.get("EntryNumber", ""),
-                                    "si_created": si_created,
-                                    "fn_created": fn_created,
-                                    "indicator": "$SI Created before $FN Created"
-                                })
+                                timestomped.append(
+                                    {
+                                        "file": row.get("FileName", "Unknown"),
+                                        "entry_number": row.get("EntryNumber", ""),
+                                        "si_created": si_created,
+                                        "fn_created": fn_created,
+                                        "indicator": "$SI Created before $FN Created",
+                                    }
+                                )
                         except (ValueError, TypeError):
                             continue
         except FileNotFoundError:
@@ -226,7 +264,9 @@ class EZToolsProcessor:
         print(f"[*] Output path: {self.output_path}")
 
         available = self.verify_tools()
-        print(f"[*] Available tools: {sum(v for v in available.values())}/{len(available)}")
+        print(
+            f"[*] Available tools: {sum(v for v in available.values())}/{len(available)}"
+        )
 
         processors = [
             ("MFT", self.process_mft),
@@ -253,7 +293,7 @@ class EZToolsProcessor:
             "timestamp": datetime.now().isoformat(),
             "evidence_path": str(self.evidence_path),
             "output_path": str(self.output_path),
-            "results": {}
+            "results": {},
         }
 
         for artifact, result in self.results.items():
@@ -266,7 +306,9 @@ class EZToolsProcessor:
                 file_size = os.path.getsize(output_file)
                 report["results"][artifact]["output_size_bytes"] = file_size
                 with open(output_file, "rb") as f:
-                    report["results"][artifact]["sha256"] = hashlib.sha256(f.read()).hexdigest()
+                    report["results"][artifact]["sha256"] = hashlib.sha256(
+                        f.read()
+                    ).hexdigest()
 
         report_path = self.output_path / "processing_report.json"
         with open(report_path, "w") as f:
@@ -279,7 +321,9 @@ class EZToolsProcessor:
 def main():
     if len(sys.argv) < 4:
         print("Usage: python process.py <ez_tools_path> <evidence_path> <output_path>")
-        print("Example: python process.py C:\\Tools\\EZTools C:\\Cases\\Evidence C:\\Cases\\Output")
+        print(
+            "Example: python process.py C:\\Tools\\EZTools C:\\Cases\\Evidence C:\\Cases\\Output"
+        )
         sys.exit(1)
 
     ez_tools_path = sys.argv[1]

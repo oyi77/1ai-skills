@@ -11,7 +11,8 @@ Brand safety terms configurable via config["quality_gates"]["blocked_terms"].
 """
 
 import sys
-sys.path.insert(0, '/home/openclaw/.openclaw/workspace')
+
+sys.path.insert(0, "/home/openclaw/.openclaw/workspace")
 
 import re
 from dataclasses import dataclass, field
@@ -25,40 +26,74 @@ except ImportError:
 @dataclass
 class QualityReport:
     approved: bool
-    score: float              # 0–100 engagement potential
-    reasons: list[str] = field(default_factory=list)   # blocking failures
+    score: float  # 0–100 engagement potential
+    reasons: list[str] = field(default_factory=list)  # blocking failures
     warnings: list[str] = field(default_factory=list)  # non-blocking notices
     checks: dict = field(default_factory=dict)
 
 
 _DEFAULT_BLOCKED: list[str] = [
     # Politically sensitive (Indonesian context)
-    "PKI", "komunis", "radikal", "jihad",
+    "PKI",
+    "komunis",
+    "radikal",
+    "jihad",
     # Adult / offensive
-    "porn", "bokep", "sex", "ngentot", "kontol", "memek",
+    "porn",
+    "bokep",
+    "sex",
+    "ngentot",
+    "kontol",
+    "memek",
     # Scam signals
-    "MLM", "money game", "skema ponzi",
+    "MLM",
+    "money game",
+    "skema ponzi",
 ]
 
 _SCORE_WEIGHTS: dict[str, int] = {
     "hook_strength": 25,
     "emoji_presence": 15,
-    "question":       15,
-    "cta_clarity":    20,
-    "urgency":        15,
-    "social_proof":   10,
+    "question": 15,
+    "cta_clarity": 20,
+    "urgency": 15,
+    "social_proof": 10,
 }
 
-_HOOK_WORDS = ["GRATIS", "FREE", "RAHASIA", "TERBUKTI", "VIRAL",
-               "STOP", "JANGAN", "FAKTA", "PENTING", "BOCORAN"]
+_HOOK_WORDS = [
+    "GRATIS",
+    "FREE",
+    "RAHASIA",
+    "TERBUKTI",
+    "VIRAL",
+    "STOP",
+    "JANGAN",
+    "FAKTA",
+    "PENTING",
+    "BOCORAN",
+]
 
-_URGENCY_TERMS = ["sekarang", "hari ini", "terbatas", "habis", "last",
-                  "deadline", "segera", "jangan sampai", "buruan"]
+_URGENCY_TERMS = [
+    "sekarang",
+    "hari ini",
+    "terbatas",
+    "habis",
+    "last",
+    "deadline",
+    "segera",
+    "jangan sampai",
+    "buruan",
+]
 
 _CTA_PATTERNS = [
-    r"link (di bio|bio)", r"klik (link|di bio|sekarang)",
+    r"link (di bio|bio)",
+    r"klik (link|di bio|sekarang)",
     r"(daftar|beli|coba|download|grab|ambil) (sekarang|gratis|disini|di sini)",
-    r"👉", r"🔗", r"lynk\.id", r"bit\.ly", r"https?://",
+    r"👉",
+    r"🔗",
+    r"lynk\.id",
+    r"bit\.ly",
+    r"https?://",
 ]
 
 
@@ -69,7 +104,9 @@ class QualityGate(BaseModule):
         super().__init__(config)
         gate_cfg = config.get("quality_gates", {})
         # min_engagement stored as 0–10 in config; we work 0–100 internally
-        self._min_score: float = gate_cfg.get("min_engagement_prediction_score", 6.0) * 10
+        self._min_score: float = (
+            gate_cfg.get("min_engagement_prediction_score", 6.0) * 10
+        )
         self._require_cta: bool = gate_cfg.get("required_call_to_action", True)
         self._require_hashtags: bool = gate_cfg.get("required_hashtags", True)
         self._min_len: int = gate_cfg.get("min_caption_length", 50)
@@ -79,16 +116,17 @@ class QualityGate(BaseModule):
 
     def check_content(self, text: str, platform: str = "tiktok") -> QualityReport:
         """Run all checks. Returns QualityReport with approve/reject verdict."""
-        reasons:  list[str] = []
+        reasons: list[str] = []
         warnings: list[str] = []
-        checks:   dict = {}
+        checks: dict = {}
 
         # Hard block: brand safety (instant reject, no score)
         safe, hits = self.check_brand_safety(text)
         checks["brand_safety"] = {"pass": safe, "hits": hits}
         if not safe:
             return QualityReport(
-                approved=False, score=0.0,
+                approved=False,
+                score=0.0,
                 reasons=[f"Brand safety violation: {', '.join(hits)}"],
                 checks=checks,
             )
@@ -121,7 +159,9 @@ class QualityGate(BaseModule):
         score = self.score_engagement_potential(text)
         checks["engagement_score"] = score
         if score < self._min_score:
-            reasons.append(f"Engagement score {score:.0f}/100 below threshold ({self._min_score:.0f})")
+            reasons.append(
+                f"Engagement score {score:.0f}/100 below threshold ({self._min_score:.0f})"
+            )
 
         return QualityReport(
             approved=len(reasons) == 0,
@@ -186,10 +226,16 @@ class QualityGate(BaseModule):
         # Hook: power word or emoji in first line
         has_hook_word = any(w.upper() in first.upper() for w in _HOOK_WORDS)
         has_hook_emoji = bool(re.search(r"[^\w\s,.]", first))
-        total += min(1.0, (has_hook_word + 0.5 * has_hook_emoji)) * _SCORE_WEIGHTS["hook_strength"]
+        total += (
+            min(1.0, (has_hook_word + 0.5 * has_hook_emoji))
+            * _SCORE_WEIGHTS["hook_strength"]
+        )
 
         # Emoji density
-        total += min(1.0, len(re.findall(r"[^\w\s,.]", text)) / 5) * _SCORE_WEIGHTS["emoji_presence"]
+        total += (
+            min(1.0, len(re.findall(r"[^\w\s,.]", text)) / 5)
+            * _SCORE_WEIGHTS["emoji_presence"]
+        )
 
         # Question
         total += _SCORE_WEIGHTS["question"] if "?" in text else 0
@@ -198,10 +244,18 @@ class QualityGate(BaseModule):
         total += _SCORE_WEIGHTS["cta_clarity"] if self.check_cta(text)[0] else 0
 
         # Urgency
-        total += _SCORE_WEIGHTS["urgency"] if any(t in text.lower() for t in _URGENCY_TERMS) else 0
+        total += (
+            _SCORE_WEIGHTS["urgency"]
+            if any(t in text.lower() for t in _URGENCY_TERMS)
+            else 0
+        )
 
         # Social proof: number + unit
-        total += _SCORE_WEIGHTS["social_proof"] if re.search(r"\d+(K|rb|juta|%|\+)", text, re.I) else 0
+        total += (
+            _SCORE_WEIGHTS["social_proof"]
+            if re.search(r"\d+(K|rb|juta|%|\+)", text, re.I)
+            else 0
+        )
 
         return round(total, 1)
 
@@ -227,13 +281,15 @@ if __name__ == "__main__":
     )
     BAD_SAFE = "Ini terbukti scam MLM terbaik! #AI #Bisnis"
     BAD_SHORT = "tes"
-    BAD_NOCTA = "Konten bagus nih semoga viral ya guys #AI #Indonesia #Bisnis #Tips #UMKM"
+    BAD_NOCTA = (
+        "Konten bagus nih semoga viral ya guys #AI #Indonesia #Bisnis #Tips #UMKM"
+    )
 
     tests = [
-        ("GOOD caption",       GOOD,      "tiktok"),
-        ("BAD: brand safety",  BAD_SAFE,  "tiktok"),
-        ("BAD: too short",     BAD_SHORT, "tiktok"),
-        ("BAD: no CTA",        BAD_NOCTA, "instagram"),
+        ("GOOD caption", GOOD, "tiktok"),
+        ("BAD: brand safety", BAD_SAFE, "tiktok"),
+        ("BAD: too short", BAD_SHORT, "tiktok"),
+        ("BAD: no CTA", BAD_NOCTA, "instagram"),
     ]
 
     for label, text, platform in tests:

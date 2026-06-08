@@ -9,11 +9,20 @@ import subprocess
 from datetime import datetime
 
 from scapy.all import (
-    Dot11, Dot11Beacon, Dot11Elt, Dot11ProbeReq, Dot11Auth,
-    sniff, RadioTap, sendp, conf,
+    Dot11,
+    Dot11Beacon,
+    Dot11Elt,
+    Dot11ProbeReq,
+    Dot11Auth,
+    sniff,
+    RadioTap,
+    sendp,
+    conf,
 )
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -32,7 +41,9 @@ def scan_access_points(interface, duration=30):
                     "bssid": bssid,
                     "channel": stats.get("channel", 0),
                     "crypto": list(stats.get("crypto", set())),
-                    "signal": pkt.dBm_AntSignal if hasattr(pkt, "dBm_AntSignal") else None,
+                    "signal": (
+                        pkt.dBm_AntSignal if hasattr(pkt, "dBm_AntSignal") else None
+                    ),
                 }
 
     logger.info("Scanning for access points on %s for %ds", interface, duration)
@@ -48,7 +59,9 @@ def detect_rogue_aps(discovered_aps, known_ssids, known_bssids):
         if ap["ssid"] in known_ssids and ap["bssid"] not in known_bssids:
             ap["rogue_reason"] = "Known SSID with unknown BSSID (potential evil twin)"
             rogues.append(ap)
-            logger.warning("ROGUE AP detected: SSID=%s BSSID=%s", ap["ssid"], ap["bssid"])
+            logger.warning(
+                "ROGUE AP detected: SSID=%s BSSID=%s", ap["ssid"], ap["bssid"]
+            )
     return rogues
 
 
@@ -76,8 +89,15 @@ def capture_handshake(interface, target_bssid, channel, output_file, duration=60
     subprocess.run(set_channel_cmd, capture_output=True, timeout=120)
 
     cmd = [
-        "airodump-ng", "--bssid", target_bssid, "--channel", str(channel),
-        "--write", output_file, "--output-format", "pcap",
+        "airodump-ng",
+        "--bssid",
+        target_bssid,
+        "--channel",
+        str(channel),
+        "--write",
+        output_file,
+        "--output-format",
+        "pcap",
         interface,
     ]
     logger.info("Capturing handshake for %s on channel %d", target_bssid, channel)
@@ -93,7 +113,9 @@ def send_deauth(interface, target_bssid, client_mac="FF:FF:FF:FF:FF:FF", count=5
     dot11 = Dot11(addr1=client_mac, addr2=target_bssid, addr3=target_bssid)
     frame = RadioTap() / dot11 / Dot11Auth(algo=0, seqnum=1, status=0)
     sendp(frame, iface=interface, count=count, inter=0.1, verbose=False)
-    logger.info("Sent %d deauth frames to %s (client: %s)", count, target_bssid, client_mac)
+    logger.info(
+        "Sent %d deauth frames to %s (client: %s)", count, target_bssid, client_mac
+    )
 
 
 def crack_handshake(cap_file, wordlist):
@@ -114,16 +136,24 @@ def detect_client_probes(interface, duration=30):
 
     def probe_handler(pkt):
         if pkt.haslayer(Dot11ProbeReq):
-            ssid = pkt[Dot11Elt].info.decode("utf-8", errors="ignore") if pkt.haslayer(Dot11Elt) else ""
+            ssid = (
+                pkt[Dot11Elt].info.decode("utf-8", errors="ignore")
+                if pkt.haslayer(Dot11Elt)
+                else ""
+            )
             if ssid:
-                probes.append({
-                    "client_mac": pkt[Dot11].addr2,
-                    "probed_ssid": ssid,
-                })
+                probes.append(
+                    {
+                        "client_mac": pkt[Dot11].addr2,
+                        "probed_ssid": ssid,
+                    }
+                )
 
     sniff(iface=interface, prn=probe_handler, timeout=duration, store=False)
     unique_clients = len(set(p["client_mac"] for p in probes))
-    logger.info("Captured %d probe requests from %d clients", len(probes), unique_clients)
+    logger.info(
+        "Captured %d probe requests from %d clients", len(probes), unique_clients
+    )
     return probes
 
 
@@ -133,7 +163,9 @@ def check_wps_enabled(interface, target_bssid):
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         if target_bssid.upper() in result.stdout.upper():
-            logger.warning("WPS enabled on %s - vulnerable to Reaver attack", target_bssid)
+            logger.warning(
+                "WPS enabled on %s - vulnerable to Reaver attack", target_bssid
+            )
             return True
     except (subprocess.TimeoutExpired, FileNotFoundError):
         pass
@@ -155,16 +187,28 @@ def generate_report(access_points, rogues, weak_crypto, client_probes):
             "clients_probing": len(set(p["client_mac"] for p in client_probes)),
         },
     }
-    print(f"WIRELESS PENTEST REPORT: {len(access_points)} APs, {len(rogues)} rogues, {len(weak_crypto)} weak")
+    print(
+        f"WIRELESS PENTEST REPORT: {len(access_points)} APs, {len(rogues)} rogues, {len(weak_crypto)} weak"
+    )
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Wireless Network Penetration Testing Agent")
-    parser.add_argument("--interface", required=True, help="Wireless interface in monitor mode")
-    parser.add_argument("--duration", type=int, default=30, help="Scan duration in seconds")
-    parser.add_argument("--known-ssids", nargs="*", default=[], help="Known legitimate SSIDs")
-    parser.add_argument("--known-bssids", nargs="*", default=[], help="Known legitimate BSSIDs")
+    parser = argparse.ArgumentParser(
+        description="Wireless Network Penetration Testing Agent"
+    )
+    parser.add_argument(
+        "--interface", required=True, help="Wireless interface in monitor mode"
+    )
+    parser.add_argument(
+        "--duration", type=int, default=30, help="Scan duration in seconds"
+    )
+    parser.add_argument(
+        "--known-ssids", nargs="*", default=[], help="Known legitimate SSIDs"
+    )
+    parser.add_argument(
+        "--known-bssids", nargs="*", default=[], help="Known legitimate BSSIDs"
+    )
     parser.add_argument("--output", default="wireless_pentest_report.json")
     args = parser.parse_args()
 

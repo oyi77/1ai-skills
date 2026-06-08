@@ -9,7 +9,6 @@ import time
 
 from bleak import BleakClient, BleakScanner
 
-
 SENSITIVE_SERVICE_UUIDS = {
     "0000180d-0000-1000-8000-00805f9b34fb": "Heart Rate",
     "00001810-0000-1000-8000-00805f9b34fb": "Blood Pressure",
@@ -34,8 +33,16 @@ SENSITIVE_CHAR_UUIDS = {
 }
 
 VULNERABLE_DEVICE_PATTERNS = [
-    "ITAG", "SmartLock", "BLE_Door", "FitBand", "iTag",
-    "CC2541", "HM-10", "JDY-08", "AT-09", "MLT-BT05",
+    "ITAG",
+    "SmartLock",
+    "BLE_Door",
+    "FitBand",
+    "iTag",
+    "CC2541",
+    "HM-10",
+    "JDY-08",
+    "AT-09",
+    "MLT-BT05",
 ]
 
 
@@ -49,14 +56,19 @@ async def scan_devices(scan_time: float) -> list:
             if pattern.lower() in name.lower():
                 vuln_match = pattern
                 break
-        results.append({
-            "address": str(addr),
-            "name": name,
-            "rssi": adv_data.rssi,
-            "service_uuids": [str(u) for u in (adv_data.service_uuids or [])],
-            "manufacturer_data": {str(k): v.hex() for k, v in (adv_data.manufacturer_data or {}).items()},
-            "known_vulnerable_pattern": vuln_match,
-        })
+        results.append(
+            {
+                "address": str(addr),
+                "name": name,
+                "rssi": adv_data.rssi,
+                "service_uuids": [str(u) for u in (adv_data.service_uuids or [])],
+                "manufacturer_data": {
+                    str(k): v.hex()
+                    for k, v in (adv_data.manufacturer_data or {}).items()
+                },
+                "known_vulnerable_pattern": vuln_match,
+            }
+        )
     results.sort(key=lambda d: d["rssi"], reverse=True)
     return results
 
@@ -70,14 +82,18 @@ async def enumerate_gatt(device_address: str) -> dict:
             return {"error": f"Failed to connect to {device_address}"}
         for service in client.services:
             svc_uuid = str(service.uuid)
-            svc_name = SENSITIVE_SERVICE_UUIDS.get(svc_uuid, service.description or "Unknown")
+            svc_name = SENSITIVE_SERVICE_UUIDS.get(
+                svc_uuid, service.description or "Unknown"
+            )
             is_sensitive_svc = svc_uuid in SENSITIVE_SERVICE_UUIDS
             chars_info = []
             for char in service.characteristics:
                 total_chars += 1
                 char_uuid = str(char.uuid)
                 props = char.properties
-                char_name = SENSITIVE_CHAR_UUIDS.get(char_uuid, char.description or "Unknown")
+                char_name = SENSITIVE_CHAR_UUIDS.get(
+                    char_uuid, char.description or "Unknown"
+                )
                 is_sensitive_char = char_uuid in SENSITIVE_CHAR_UUIDS
                 char_entry = {
                     "uuid": char_uuid,
@@ -86,39 +102,47 @@ async def enumerate_gatt(device_address: str) -> dict:
                     "handle": char.handle,
                 }
                 if is_sensitive_char and ("read" in props):
-                    findings.append({
-                        "severity": "high",
-                        "finding": f"{char_name} readable without encryption",
-                        "uuid": char_uuid,
-                        "service": svc_name,
-                        "properties": list(props),
-                        "remediation": "Enable encryption requirement on characteristic",
-                    })
+                    findings.append(
+                        {
+                            "severity": "high",
+                            "finding": f"{char_name} readable without encryption",
+                            "uuid": char_uuid,
+                            "service": svc_name,
+                            "properties": list(props),
+                            "remediation": "Enable encryption requirement on characteristic",
+                        }
+                    )
                 if "write-without-response" in props and is_sensitive_svc:
-                    findings.append({
-                        "severity": "critical",
-                        "finding": f"{char_name} writable without response in sensitive service",
-                        "uuid": char_uuid,
-                        "service": svc_name,
-                        "properties": list(props),
-                        "remediation": "Remove write-without-response or require authenticated pairing",
-                    })
+                    findings.append(
+                        {
+                            "severity": "critical",
+                            "finding": f"{char_name} writable without response in sensitive service",
+                            "uuid": char_uuid,
+                            "service": svc_name,
+                            "properties": list(props),
+                            "remediation": "Remove write-without-response or require authenticated pairing",
+                        }
+                    )
                 if "write" in props and not is_sensitive_svc:
-                    findings.append({
-                        "severity": "medium",
-                        "finding": f"{char_name} writable without known authentication",
-                        "uuid": char_uuid,
-                        "service": svc_name,
-                        "properties": list(props),
-                        "remediation": "Verify write access requires bonded connection",
-                    })
+                    findings.append(
+                        {
+                            "severity": "medium",
+                            "finding": f"{char_name} writable without known authentication",
+                            "uuid": char_uuid,
+                            "service": svc_name,
+                            "properties": list(props),
+                            "remediation": "Verify write access requires bonded connection",
+                        }
+                    )
                 chars_info.append(char_entry)
-            services_info.append({
-                "uuid": svc_uuid,
-                "name": svc_name,
-                "sensitive": is_sensitive_svc,
-                "characteristics": chars_info,
-            })
+            services_info.append(
+                {
+                    "uuid": svc_uuid,
+                    "name": svc_name,
+                    "sensitive": is_sensitive_svc,
+                    "characteristics": chars_info,
+                }
+            )
     severity_weights = {"critical": 10, "high": 7, "medium": 4, "low": 1}
     risk_total = sum(severity_weights.get(f["severity"], 0) for f in findings)
     risk_score = min(10.0, round(risk_total / max(len(findings), 1), 1))
@@ -139,7 +163,10 @@ async def run_audit(device_address: str, scan_time: float) -> dict:
             target = dev
             break
     if not target:
-        return {"error": f"Device {device_address} not found in scan", "scanned_devices": len(scan_results)}
+        return {
+            "error": f"Device {device_address} not found in scan",
+            "scanned_devices": len(scan_results),
+        }
     gatt_result = await enumerate_gatt(device_address)
     return {
         "assessment_type": "ble_security_audit",
@@ -150,14 +177,24 @@ async def run_audit(device_address: str, scan_time: float) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="BLE Security Assessment Tool")
-    parser.add_argument("--action", choices=["scan", "enumerate", "audit"],
-                        required=True, help="Action to perform")
-    parser.add_argument("--scan-time", type=float, default=10.0,
-                        help="BLE scan duration in seconds")
-    parser.add_argument("--device-address", type=str, default=None,
-                        help="Target BLE device address (MAC or UUID)")
-    parser.add_argument("--output", type=str, default=None,
-                        help="Output JSON file path")
+    parser.add_argument(
+        "--action",
+        choices=["scan", "enumerate", "audit"],
+        required=True,
+        help="Action to perform",
+    )
+    parser.add_argument(
+        "--scan-time", type=float, default=10.0, help="BLE scan duration in seconds"
+    )
+    parser.add_argument(
+        "--device-address",
+        type=str,
+        default=None,
+        help="Target BLE device address (MAC or UUID)",
+    )
+    parser.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path"
+    )
     args = parser.parse_args()
 
     if args.action in ("enumerate", "audit") and not args.device_address:

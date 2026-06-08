@@ -10,7 +10,9 @@ from datetime import datetime
 from Evtx.Evtx import FileHeader
 from lxml import etree
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 NS = {"evt": "http://schemas.microsoft.com/win/2004/08/events/event"}
@@ -35,17 +37,21 @@ def parse_tgs_events(evtx_path):
                 for elem in root.findall(".//evt:EventData/evt:Data", NS):
                     data[elem.get("Name", "")] = elem.text or ""
                 time_elem = root.find(".//evt:System/evt:TimeCreated", NS)
-                timestamp = time_elem.get("SystemTime", "") if time_elem is not None else ""
-                tgs_events.append({
-                    "timestamp": timestamp,
-                    "target_name": data.get("TargetUserName", ""),
-                    "service_name": data.get("ServiceName", ""),
-                    "client_address": data.get("IpAddress", ""),
-                    "ticket_encryption": data.get("TicketEncryptionType", ""),
-                    "ticket_options": data.get("TicketOptions", ""),
-                    "status": data.get("Status", ""),
-                    "logon_guid": data.get("LogonGuid", ""),
-                })
+                timestamp = (
+                    time_elem.get("SystemTime", "") if time_elem is not None else ""
+                )
+                tgs_events.append(
+                    {
+                        "timestamp": timestamp,
+                        "target_name": data.get("TargetUserName", ""),
+                        "service_name": data.get("ServiceName", ""),
+                        "client_address": data.get("IpAddress", ""),
+                        "ticket_encryption": data.get("TicketEncryptionType", ""),
+                        "ticket_options": data.get("TicketOptions", ""),
+                        "status": data.get("Status", ""),
+                        "logon_guid": data.get("LogonGuid", ""),
+                    }
+                )
             except Exception:
                 continue
     logger.info("Parsed %d TGS-REQ events from %s", len(tgs_events), evtx_path)
@@ -59,7 +65,11 @@ def detect_rc4_tgs_requests(tgs_events):
         enc_type = event["ticket_encryption"]
         if enc_type in WEAK_ENCRYPTION_TYPES:
             service = event["service_name"]
-            if service and not service.endswith("$") and "krbtgt" not in service.lower():
+            if (
+                service
+                and not service.endswith("$")
+                and "krbtgt" not in service.lower()
+            ):
                 event["encryption_name"] = WEAK_ENCRYPTION_TYPES[enc_type]
                 event["indicator"] = "RC4 TGS for service account (non-machine)"
                 rc4_requests.append(event)
@@ -79,15 +89,17 @@ def detect_high_volume_tgs(tgs_events, threshold=10, window_minutes=5):
         for event in events:
             unique_services.add(event["service_name"])
         if len(unique_services) >= threshold:
-            alerts.append({
-                "source_ip": source,
-                "unique_services_requested": len(unique_services),
-                "total_requests": len(events),
-                "services": list(unique_services)[:20],
-                "first_seen": events[0]["timestamp"],
-                "last_seen": events[-1]["timestamp"],
-                "indicator": "High-volume TGS spray (Kerberoasting)",
-            })
+            alerts.append(
+                {
+                    "source_ip": source,
+                    "unique_services_requested": len(unique_services),
+                    "total_requests": len(events),
+                    "services": list(unique_services)[:20],
+                    "first_seen": events[0]["timestamp"],
+                    "last_seen": events[-1]["timestamp"],
+                    "indicator": "High-volume TGS spray (Kerberoasting)",
+                }
+            )
     logger.info("Found %d high-volume TGS sources", len(alerts))
     return alerts
 
@@ -138,7 +150,9 @@ def correlate_with_logon_events(evtx_path, suspicious_sources):
     return logon_map
 
 
-def generate_report(tgs_events, rc4_findings, spray_findings, spn_findings, logon_correlation):
+def generate_report(
+    tgs_events, rc4_findings, spray_findings, spn_findings, logon_correlation
+):
     """Generate Kerberoasting detection report."""
     report = {
         "timestamp": datetime.utcnow().isoformat(),
@@ -169,7 +183,9 @@ def main():
     spn_findings = detect_anomalous_spn_requests(tgs_events)
     logon_map = correlate_with_logon_events(args.evtx_file, spray_findings)
 
-    report = generate_report(tgs_events, rc4_findings, spray_findings, spn_findings, logon_map)
+    report = generate_report(
+        tgs_events, rc4_findings, spray_findings, spn_findings, logon_map
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)
     logger.info("Report saved to %s", args.output)

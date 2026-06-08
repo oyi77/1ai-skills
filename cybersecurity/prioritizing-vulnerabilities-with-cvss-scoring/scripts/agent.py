@@ -14,8 +14,11 @@ from collections import defaultdict
 CVSS_WEIGHTS = {
     "AV": {"N": 0.85, "A": 0.62, "L": 0.55, "P": 0.20},
     "AC": {"L": 0.77, "H": 0.44},
-    "PR": {"N": {"U": 0.85, "C": 0.85}, "L": {"U": 0.62, "C": 0.68},
-            "H": {"U": 0.27, "C": 0.50}},
+    "PR": {
+        "N": {"U": 0.85, "C": 0.85},
+        "L": {"U": 0.62, "C": 0.68},
+        "H": {"U": 0.27, "C": 0.50},
+    },
     "UI": {"N": 0.85, "R": 0.62},
     "S": {"U": "unchanged", "C": "changed"},
     "C": {"H": 0.56, "L": 0.22, "N": 0.0},
@@ -45,9 +48,9 @@ class CVSSPrioritizationAgent:
         scope_changed = m.get("S") == "C"
 
         isc_base = 1 - (
-            (1 - CVSS_WEIGHTS["C"][m["C"]]) *
-            (1 - CVSS_WEIGHTS["I"][m["I"]]) *
-            (1 - CVSS_WEIGHTS["A"][m["A"]])
+            (1 - CVSS_WEIGHTS["C"][m["C"]])
+            * (1 - CVSS_WEIGHTS["I"][m["I"]])
+            * (1 - CVSS_WEIGHTS["A"][m["A"]])
         )
 
         if scope_changed:
@@ -60,9 +63,13 @@ class CVSSPrioritizationAgent:
 
         scope_key = "C" if scope_changed else "U"
         pr_val = CVSS_WEIGHTS["PR"][m["PR"]][scope_key]
-        exploitability = (8.22 * CVSS_WEIGHTS["AV"][m["AV"]] *
-                          CVSS_WEIGHTS["AC"][m["AC"]] * pr_val *
-                          CVSS_WEIGHTS["UI"][m["UI"]])
+        exploitability = (
+            8.22
+            * CVSS_WEIGHTS["AV"][m["AV"]]
+            * CVSS_WEIGHTS["AC"][m["AC"]]
+            * pr_val
+            * CVSS_WEIGHTS["UI"][m["UI"]]
+        )
 
         if scope_changed:
             score = min(1.08 * (impact + exploitability), 10.0)
@@ -70,6 +77,7 @@ class CVSSPrioritizationAgent:
             score = min(impact + exploitability, 10.0)
 
         import math
+
         return math.ceil(score * 10) / 10
 
     def severity_rating(self, score):
@@ -89,7 +97,8 @@ class CVSSPrioritizationAgent:
         try:
             cves = ",".join(cve_ids[:100])
             resp = requests.get(
-                f"https://api.first.org/data/v1/epss?cve={cves}", timeout=15)
+                f"https://api.first.org/data/v1/epss?cve={cves}", timeout=15
+            )
             if resp.status_code == 200:
                 for entry in resp.json().get("data", []):
                     scores[entry["cve"]] = {
@@ -105,21 +114,26 @@ class CVSSPrioritizationAgent:
         try:
             resp = requests.get(
                 "https://www.cisa.gov/sites/default/files/feeds/"
-                "known_exploited_vulnerabilities.json", timeout=15)
+                "known_exploited_vulnerabilities.json",
+                timeout=15,
+            )
             if resp.status_code == 200:
-                return {v["cveID"] for v in
-                        resp.json().get("vulnerabilities", [])}
+                return {v["cveID"] for v in resp.json().get("vulnerabilities", [])}
         except requests.RequestException:
             pass
         return set()
 
     def add_vulnerability(self, cve_id, vector, description=""):
         score = self.calculate_base_score(vector)
-        self.vulnerabilities.append({
-            "cve_id": cve_id, "vector": vector, "cvss_score": score,
-            "severity": self.severity_rating(score),
-            "description": description,
-        })
+        self.vulnerabilities.append(
+            {
+                "cve_id": cve_id,
+                "vector": vector,
+                "cvss_score": score,
+                "severity": self.severity_rating(score),
+                "description": description,
+            }
+        )
 
     def prioritize(self):
         """Enrich and prioritize all vulnerabilities."""
@@ -165,9 +179,15 @@ class CVSSPrioritizationAgent:
 
 def main():
     agent = CVSSPrioritizationAgent()
-    agent.add_vulnerability("CVE-2024-3400", "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H")
-    agent.add_vulnerability("CVE-2024-21887", "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H")
-    agent.add_vulnerability("CVE-2023-44487", "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H")
+    agent.add_vulnerability(
+        "CVE-2024-3400", "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    )
+    agent.add_vulnerability(
+        "CVE-2024-21887", "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    )
+    agent.add_vulnerability(
+        "CVE-2023-44487", "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    )
     agent.generate_report()
 
 

@@ -81,7 +81,9 @@ class XSOARPlaybook:
             for label, next_ids in task.next_tasks.items():
                 for next_id in next_ids:
                     if next_id not in self.tasks:
-                        issues.append(f"ERROR: Task {task_id} references non-existent task {next_id}")
+                        issues.append(
+                            f"ERROR: Task {task_id} references non-existent task {next_id}"
+                        )
 
         # Check for orphaned tasks (not reachable from start)
         reachable = set()
@@ -97,17 +99,30 @@ class XSOARPlaybook:
 
         orphaned = set(self.tasks.keys()) - reachable
         for orphan in orphaned:
-            issues.append(f"WARNING: Task {orphan} ({self.tasks[orphan].name}) is not reachable")
+            issues.append(
+                f"WARNING: Task {orphan} ({self.tasks[orphan].name}) is not reachable"
+            )
 
         # Check conditional tasks have conditions
         for task_id, task in self.tasks.items():
             if task.task_type == "condition" and not task.conditions:
-                issues.append(f"WARNING: Conditional task {task_id} has no conditions defined")
+                issues.append(
+                    f"WARNING: Conditional task {task_id} has no conditions defined"
+                )
 
         # Check for manual review gates before destructive actions
-        destructive_keywords = ["isolate", "block", "delete", "disable", "purge", "quarantine"]
+        destructive_keywords = [
+            "isolate",
+            "block",
+            "delete",
+            "disable",
+            "purge",
+            "quarantine",
+        ]
         for task_id, task in self.tasks.items():
-            if task.script and any(kw in task.script.lower() for kw in destructive_keywords):
+            if task.script and any(
+                kw in task.script.lower() for kw in destructive_keywords
+            ):
                 # Check if preceding task is manual
                 has_manual_gate = False
                 for other_id, other_task in self.tasks.items():
@@ -157,16 +172,18 @@ class SOARMetrics:
         tasks_manual: int,
         success: bool,
     ):
-        self.executions.append({
-            "playbook_name": playbook_name,
-            "incident_type": incident_type,
-            "duration_seconds": duration_seconds,
-            "manual_duration_seconds": manual_duration_seconds,
-            "tasks_automated": tasks_automated,
-            "tasks_manual": tasks_manual,
-            "success": success,
-            "timestamp": datetime.utcnow().isoformat(),
-        })
+        self.executions.append(
+            {
+                "playbook_name": playbook_name,
+                "incident_type": incident_type,
+                "duration_seconds": duration_seconds,
+                "manual_duration_seconds": manual_duration_seconds,
+                "tasks_automated": tasks_automated,
+                "tasks_manual": tasks_manual,
+                "success": success,
+                "timestamp": datetime.utcnow().isoformat(),
+            }
+        )
 
     def calculate_roi(self, analyst_hourly_rate: float = 75.0) -> dict:
         total_manual_time = sum(e["manual_duration_seconds"] for e in self.executions)
@@ -182,11 +199,21 @@ class SOARMetrics:
             "cost_savings": round(saved_hours * analyst_hourly_rate, 2),
             "automation_rate": round(
                 sum(e["tasks_automated"] for e in self.executions)
-                / max(1, sum(e["tasks_automated"] + e["tasks_manual"] for e in self.executions))
-                * 100, 1
+                / max(
+                    1,
+                    sum(
+                        e["tasks_automated"] + e["tasks_manual"]
+                        for e in self.executions
+                    ),
+                )
+                * 100,
+                1,
             ),
             "success_rate": round(
-                sum(1 for e in self.executions if e["success"]) / max(1, len(self.executions)) * 100, 1
+                sum(1 for e in self.executions if e["success"])
+                / max(1, len(self.executions))
+                * 100,
+                1,
             ),
         }
 
@@ -200,23 +227,82 @@ def build_phishing_playbook() -> XSOARPlaybook:
     )
 
     pb.add_task(PlaybookTask("0", "Start", "start", next_tasks={"#none#": ["1"]}))
-    pb.add_task(PlaybookTask("1", "Extract Indicators from Email", "regular",
-                             script="ParseEmailFiles", next_tasks={"#none#": ["2", "3", "4"]}))
-    pb.add_task(PlaybookTask("2", "URL Enrichment", "playbook",
-                             playbook_name="URL Enrichment - Generic v2", next_tasks={"#none#": ["5"]}))
-    pb.add_task(PlaybookTask("3", "File Enrichment", "playbook",
-                             playbook_name="File Enrichment - Generic v2", next_tasks={"#none#": ["5"]}))
-    pb.add_task(PlaybookTask("4", "IP Enrichment", "playbook",
-                             playbook_name="IP Enrichment - Generic v2", next_tasks={"#none#": ["5"]}))
-    pb.add_task(PlaybookTask("5", "Is Email Malicious?", "condition",
-                             conditions=[{"label": "yes", "operator": "isEqualString", "left": "DBotScore.Score", "right": "3"}],
-                             next_tasks={"yes": ["6"], "no": ["9"]}))
-    pb.add_task(PlaybookTask("6", "Approve Containment", "manual", next_tasks={"#none#": ["7"]}))
-    pb.add_task(PlaybookTask("7", "Block Sender and Purge Emails", "regular",
-                             script="o365-mail-block-sender", next_tasks={"#none#": ["8"]}))
-    pb.add_task(PlaybookTask("8", "Notify User", "regular",
-                             script="send-mail", next_tasks={"#none#": ["9"]}))
-    pb.add_task(PlaybookTask("9", "Close Incident", "regular", script="closeInvestigation"))
+    pb.add_task(
+        PlaybookTask(
+            "1",
+            "Extract Indicators from Email",
+            "regular",
+            script="ParseEmailFiles",
+            next_tasks={"#none#": ["2", "3", "4"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask(
+            "2",
+            "URL Enrichment",
+            "playbook",
+            playbook_name="URL Enrichment - Generic v2",
+            next_tasks={"#none#": ["5"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask(
+            "3",
+            "File Enrichment",
+            "playbook",
+            playbook_name="File Enrichment - Generic v2",
+            next_tasks={"#none#": ["5"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask(
+            "4",
+            "IP Enrichment",
+            "playbook",
+            playbook_name="IP Enrichment - Generic v2",
+            next_tasks={"#none#": ["5"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask(
+            "5",
+            "Is Email Malicious?",
+            "condition",
+            conditions=[
+                {
+                    "label": "yes",
+                    "operator": "isEqualString",
+                    "left": "DBotScore.Score",
+                    "right": "3",
+                }
+            ],
+            next_tasks={"yes": ["6"], "no": ["9"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask("6", "Approve Containment", "manual", next_tasks={"#none#": ["7"]})
+    )
+    pb.add_task(
+        PlaybookTask(
+            "7",
+            "Block Sender and Purge Emails",
+            "regular",
+            script="o365-mail-block-sender",
+            next_tasks={"#none#": ["8"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask(
+            "8",
+            "Notify User",
+            "regular",
+            script="send-mail",
+            next_tasks={"#none#": ["9"]},
+        )
+    )
+    pb.add_task(
+        PlaybookTask("9", "Close Incident", "regular", script="closeInvestigation")
+    )
 
     return pb
 

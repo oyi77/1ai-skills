@@ -12,6 +12,7 @@ Features:
   • HTTP 429 → immediate switch to local
   • Thread-safe; can be called from multiple agents concurrently
 """
+
 import hashlib
 import json
 import logging
@@ -35,10 +36,10 @@ class EmbeddingEngine:
     def __init__(self, db_path=config.DB_PATH, mode: str = "hybrid"):
         self._db_path = str(db_path)
         self._lock = threading.Lock()
-        self._mode = mode          # "hybrid" | "local_only" | "api_only"
+        self._mode = mode  # "hybrid" | "local_only" | "api_only"
         self._local_model = None
         self._local_model_lock = threading.Lock()
-        self._use_api = True       # flipped to False on 429 until reset
+        self._use_api = True  # flipped to False on 429 until reset
         self._api_cooldown_until = 0.0
         self._init_cache_table()
 
@@ -130,10 +131,12 @@ class EmbeddingEngine:
         import urllib.error
 
         url = f"{config.OPENAI_API_BASE}/embeddings"
-        payload = json.dumps({
-            "model": config.OPENAI_EMBED_MODEL,
-            "input": texts,
-        }).encode("utf-8")
+        payload = json.dumps(
+            {
+                "model": config.OPENAI_EMBED_MODEL,
+                "input": texts,
+            }
+        ).encode("utf-8")
         headers = {
             "Authorization": f"Bearer {config.OPENAI_API_KEY}",
             "Content-Type": "application/json",
@@ -149,7 +152,9 @@ class EmbeddingEngine:
                 return embeddings
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                logger.warning("EmbeddingEngine: API rate-limited (429), switching to local")
+                logger.warning(
+                    "EmbeddingEngine: API rate-limited (429), switching to local"
+                )
                 self._use_api = False
                 self._api_cooldown_until = time.time() + 60.0  # 1 minute cooldown
             else:
@@ -163,10 +168,14 @@ class EmbeddingEngine:
         """Use sentence-transformers. Lazy-loads model on first call."""
         model = self._get_local_model()
         if model is None:
-            logger.warning("EmbeddingEngine: local model unavailable, returning zero-vectors")
+            logger.warning(
+                "EmbeddingEngine: local model unavailable, returning zero-vectors"
+            )
             return [None] * len(texts)
         try:
-            embeddings = model.encode(texts, normalize_embeddings=True, show_progress_bar=False)
+            embeddings = model.encode(
+                texts, normalize_embeddings=True, show_progress_bar=False
+            )
             # Update dim based on actual output
             actual_dim = embeddings.shape[1]
             if actual_dim != config.EMBED_DIM:
@@ -185,7 +194,10 @@ class EmbeddingEngine:
                 return self._local_model
             try:
                 from sentence_transformers import SentenceTransformer
-                logger.info("EmbeddingEngine: loading local model %s", config.LOCAL_EMBED_MODEL)
+
+                logger.info(
+                    "EmbeddingEngine: loading local model %s", config.LOCAL_EMBED_MODEL
+                )
                 self._local_model = SentenceTransformer(config.LOCAL_EMBED_MODEL)
                 logger.info("EmbeddingEngine: local model loaded")
                 return self._local_model
@@ -204,7 +216,9 @@ class EmbeddingEngine:
                     created_at REAL NOT NULL
                 )
             """)
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_embed_cache_ts ON embed_cache(created_at)")
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_embed_cache_ts ON embed_cache(created_at)"
+            )
 
     def _cache_get(self, text: str) -> Optional[np.ndarray]:
         h = _sha256(text)

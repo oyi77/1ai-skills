@@ -12,7 +12,6 @@ from dataclasses import dataclass, field
 import requests
 from stix2 import Indicator, Bundle
 
-
 RATE_LIMIT_DELAY = 0.25
 
 
@@ -151,7 +150,9 @@ def enrich_ioc(value, ioc_type, vt_key, abuse_key=None):
     result.vt_malicious = vt_data.get("malicious", 0)
     result.vt_total = vt_data.get("total", 0)
     result.vt_threat_label = vt_data.get("threat_label", "")
-    abuse_dict = {"abuse_confidence": result.abuse_confidence} if ioc_type == "ip" else None
+    abuse_dict = (
+        {"abuse_confidence": result.abuse_confidence} if ioc_type == "ip" else None
+    )
     result.confidence_score = compute_confidence(vt_data, abuse_dict)
     return result
 
@@ -185,8 +186,12 @@ def export_stix_indicators(results, output_path):
 
 def main():
     parser = argparse.ArgumentParser(description="IOC Enrichment Automation Agent")
-    parser.add_argument("--vt-key", default=os.getenv("VT_API_KEY"), help="VirusTotal API key")
-    parser.add_argument("--abuse-key", default=os.getenv("ABUSEIPDB_KEY"), help="AbuseIPDB API key")
+    parser.add_argument(
+        "--vt-key", default=os.getenv("VT_API_KEY"), help="VirusTotal API key"
+    )
+    parser.add_argument(
+        "--abuse-key", default=os.getenv("ABUSEIPDB_KEY"), help="AbuseIPDB API key"
+    )
     parser.add_argument("--ioc-file", help="File with IOCs (one per line)")
     parser.add_argument("--ioc", help="Single IOC to enrich")
     parser.add_argument("--output", default="enrichment_results.json")
@@ -198,7 +203,9 @@ def main():
         iocs.append(args.ioc)
     if args.ioc_file:
         with open(args.ioc_file) as f:
-            iocs.extend(line.strip() for line in f if line.strip() and not line.startswith("#"))
+            iocs.extend(
+                line.strip() for line in f if line.strip() and not line.startswith("#")
+            )
 
     results = []
     for ioc_val in iocs:
@@ -206,8 +213,14 @@ def main():
         print(f"  Enriching {ioc_type}: {ioc_val}...")
         result = enrich_ioc(ioc_val, ioc_type, args.vt_key, args.abuse_key)
         results.append(result)
-        verdict = "MALICIOUS" if result.confidence_score >= 70 else "SUSPICIOUS" if result.confidence_score >= 40 else "CLEAN"
-        print(f"    VT: {result.vt_malicious}/{result.vt_total} | Confidence: {result.confidence_score} | {verdict}")
+        verdict = (
+            "MALICIOUS"
+            if result.confidence_score >= 70
+            else "SUSPICIOUS" if result.confidence_score >= 40 else "CLEAN"
+        )
+        print(
+            f"    VT: {result.vt_malicious}/{result.vt_total} | Confidence: {result.confidence_score} | {verdict}"
+        )
 
     report = {
         "enriched_at": datetime.utcnow().isoformat(),

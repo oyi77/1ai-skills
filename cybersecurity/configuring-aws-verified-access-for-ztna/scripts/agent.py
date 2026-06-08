@@ -19,13 +19,17 @@ def list_verified_access_instances(session):
     response = ec2.describe_verified_access_instances()
     instances = []
     for inst in response.get("VerifiedAccessInstances", []):
-        instances.append({
-            "id": inst["VerifiedAccessInstanceId"],
-            "description": inst.get("Description", ""),
-            "creation_time": str(inst.get("CreationTime", "")),
-            "trust_providers": [tp["VerifiedAccessTrustProviderId"]
-                                for tp in inst.get("VerifiedAccessTrustProviders", [])],
-        })
+        instances.append(
+            {
+                "id": inst["VerifiedAccessInstanceId"],
+                "description": inst.get("Description", ""),
+                "creation_time": str(inst.get("CreationTime", "")),
+                "trust_providers": [
+                    tp["VerifiedAccessTrustProviderId"]
+                    for tp in inst.get("VerifiedAccessTrustProviders", [])
+                ],
+            }
+        )
     return instances
 
 
@@ -35,13 +39,15 @@ def list_verified_access_groups(session):
     response = ec2.describe_verified_access_groups()
     groups = []
     for grp in response.get("VerifiedAccessGroups", []):
-        groups.append({
-            "id": grp["VerifiedAccessGroupId"],
-            "instance_id": grp.get("VerifiedAccessInstanceId", ""),
-            "description": grp.get("Description", ""),
-            "policy_enabled": grp.get("PolicyEnabled", False),
-            "policy_document": grp.get("PolicyDocument", ""),
-        })
+        groups.append(
+            {
+                "id": grp["VerifiedAccessGroupId"],
+                "instance_id": grp.get("VerifiedAccessInstanceId", ""),
+                "description": grp.get("Description", ""),
+                "policy_enabled": grp.get("PolicyEnabled", False),
+                "policy_document": grp.get("PolicyDocument", ""),
+            }
+        )
     return groups
 
 
@@ -51,14 +57,16 @@ def list_verified_access_endpoints(session):
     response = ec2.describe_verified_access_endpoints()
     endpoints = []
     for ep in response.get("VerifiedAccessEndpoints", []):
-        endpoints.append({
-            "id": ep["VerifiedAccessEndpointId"],
-            "group_id": ep.get("VerifiedAccessGroupId", ""),
-            "type": ep.get("EndpointType", ""),
-            "domain": ep.get("DomainCertificateArn", ""),
-            "status": ep.get("Status", {}).get("Code", ""),
-            "application_domain": ep.get("ApplicationDomain", ""),
-        })
+        endpoints.append(
+            {
+                "id": ep["VerifiedAccessEndpointId"],
+                "group_id": ep.get("VerifiedAccessGroupId", ""),
+                "type": ep.get("EndpointType", ""),
+                "domain": ep.get("DomainCertificateArn", ""),
+                "status": ep.get("Status", {}).get("Code", ""),
+                "application_domain": ep.get("ApplicationDomain", ""),
+            }
+        )
     return endpoints
 
 
@@ -68,13 +76,15 @@ def audit_trust_providers(session):
     response = ec2.describe_verified_access_trust_providers()
     providers = []
     for tp in response.get("VerifiedAccessTrustProviders", []):
-        providers.append({
-            "id": tp["VerifiedAccessTrustProviderId"],
-            "type": tp.get("TrustProviderType", ""),
-            "user_trust_type": tp.get("UserTrustProviderType", ""),
-            "device_trust_type": tp.get("DeviceTrustProviderType", ""),
-            "policy_reference": tp.get("PolicyReferenceName", ""),
-        })
+        providers.append(
+            {
+                "id": tp["VerifiedAccessTrustProviderId"],
+                "type": tp.get("TrustProviderType", ""),
+                "user_trust_type": tp.get("UserTrustProviderType", ""),
+                "device_trust_type": tp.get("DeviceTrustProviderType", ""),
+                "policy_reference": tp.get("PolicyReferenceName", ""),
+            }
+        )
     return providers
 
 
@@ -90,12 +100,16 @@ def run_audit(profile=None, region="us-east-1"):
     instances = list_verified_access_instances(session)
     print(f"--- INSTANCES ({len(instances)}) ---")
     for i in instances:
-        print(f"  {i['id']}: {i['description']} (providers: {len(i['trust_providers'])})")
+        print(
+            f"  {i['id']}: {i['description']} (providers: {len(i['trust_providers'])})"
+        )
 
     providers = audit_trust_providers(session)
     print(f"\n--- TRUST PROVIDERS ({len(providers)}) ---")
     for p in providers:
-        print(f"  {p['id']}: type={p['type']} user={p['user_trust_type']} device={p['device_trust_type']}")
+        print(
+            f"  {p['id']}: type={p['type']} user={p['user_trust_type']} device={p['device_trust_type']}"
+        )
 
     groups = list_verified_access_groups(session)
     print(f"\n--- GROUPS ({len(groups)}) ---")
@@ -108,7 +122,12 @@ def run_audit(profile=None, region="us-east-1"):
     for e in endpoints:
         print(f"  {e['id']}: {e['application_domain']} ({e['status']})")
 
-    return {"instances": instances, "providers": providers, "groups": groups, "endpoints": endpoints}
+    return {
+        "instances": instances,
+        "providers": providers,
+        "groups": groups,
+        "endpoints": endpoints,
+    }
 
 
 def main():

@@ -47,14 +47,25 @@ class ScanResult:
     error: str = ""
 
 
-def run_gitleaks(repo_path: str, scan_type: str = "detect",
-                 baseline_path: Optional[str] = None,
-                 commit_range: Optional[str] = None,
-                 staged: bool = False,
-                 config_path: Optional[str] = None) -> dict:
+def run_gitleaks(
+    repo_path: str,
+    scan_type: str = "detect",
+    baseline_path: Optional[str] = None,
+    commit_range: Optional[str] = None,
+    staged: bool = False,
+    config_path: Optional[str] = None,
+) -> dict:
     """Execute Gitleaks and return JSON results."""
-    cmd = ["gitleaks", scan_type, "--source", repo_path,
-           "--report-format", "json", "--report-path", "/dev/stdout"]
+    cmd = [
+        "gitleaks",
+        scan_type,
+        "--source",
+        repo_path,
+        "--report-format",
+        "json",
+        "--report-path",
+        "/dev/stdout",
+    ]
 
     if baseline_path and os.path.exists(baseline_path):
         cmd.extend(["--baseline-path", baseline_path])
@@ -71,12 +82,7 @@ def run_gitleaks(repo_path: str, scan_type: str = "detect",
     cmd.append("--verbose")
 
     try:
-        proc = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=300
-        )
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
 
         findings = []
         if proc.stdout.strip():
@@ -88,14 +94,17 @@ def run_gitleaks(repo_path: str, scan_type: str = "detect",
         return {
             "findings": findings if isinstance(findings, list) else [],
             "exit_code": proc.returncode,
-            "stderr": proc.stderr
+            "stderr": proc.stderr,
         }
 
     except subprocess.TimeoutExpired:
         return {"findings": [], "exit_code": -1, "stderr": "Scan timed out after 300s"}
     except FileNotFoundError:
-        return {"findings": [], "exit_code": -1,
-                "stderr": "gitleaks not found. Install from https://github.com/gitleaks/gitleaks"}
+        return {
+            "findings": [],
+            "exit_code": -1,
+            "stderr": "gitleaks not found. Install from https://github.com/gitleaks/gitleaks",
+        }
 
 
 def parse_findings(raw_findings: list) -> list:
@@ -103,19 +112,21 @@ def parse_findings(raw_findings: list) -> list:
     findings = []
     for f in raw_findings:
         redacted_secret = redact_secret(f.get("Secret", ""))
-        findings.append(SecretFinding(
-            rule_id=f.get("RuleID", "unknown"),
-            description=f.get("Description", ""),
-            file=f.get("File", ""),
-            line=f.get("StartLine", 0),
-            commit=f.get("Commit", "")[:8],
-            author=f.get("Author", ""),
-            date=f.get("Date", ""),
-            secret=redacted_secret,
-            entropy=f.get("Entropy", 0.0),
-            match=f.get("Match", "")[:100],
-            tags=f.get("Tags", [])
-        ))
+        findings.append(
+            SecretFinding(
+                rule_id=f.get("RuleID", "unknown"),
+                description=f.get("Description", ""),
+                file=f.get("File", ""),
+                line=f.get("StartLine", 0),
+                commit=f.get("Commit", "")[:8],
+                author=f.get("Author", ""),
+                date=f.get("Date", ""),
+                secret=redacted_secret,
+                entropy=f.get("Entropy", 0.0),
+                match=f.get("Match", "")[:100],
+                tags=f.get("Tags", []),
+            )
+        )
     return findings
 
 
@@ -177,7 +188,7 @@ def generate_report(scan_result: ScanResult, repo_path: str) -> dict:
             "repository": repo_path,
             "scan_date": datetime.now(timezone.utc).isoformat(),
             "duration_seconds": scan_result.scan_duration,
-            "commits_scanned": scan_result.commits_scanned
+            "commits_scanned": scan_result.commits_scanned,
         },
         "summary": {
             "total_findings": len(scan_result.findings),
@@ -185,11 +196,11 @@ def generate_report(scan_result: ScanResult, repo_path: str) -> dict:
             "baseline_findings": len(scan_result.baseline_findings),
             "unique_rules_triggered": len(rule_summary),
             "rules_breakdown": rule_summary,
-            "authors_with_new_findings": author_summary
+            "authors_with_new_findings": author_summary,
         },
         "quality_gate": {
             "passed": len(scan_result.new_findings) == 0,
-            "blocking_count": len(scan_result.new_findings)
+            "blocking_count": len(scan_result.new_findings),
         },
         "new_findings": [
             {
@@ -201,33 +212,47 @@ def generate_report(scan_result: ScanResult, repo_path: str) -> dict:
                 "author": f.author,
                 "date": f.date,
                 "secret_preview": f.secret,
-                "entropy": f.entropy
+                "entropy": f.entropy,
             }
             for f in scan_result.new_findings
         ],
         "remediation_steps": [
             f"1. Rotate the {f.rule_id} credential found in {f.file}"
             for f in scan_result.new_findings
-        ]
+        ],
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description="Gitleaks Secret Scanning Pipeline")
     parser.add_argument("--repo-path", required=True, help="Path to git repository")
-    parser.add_argument("--scan-type", default="detect", choices=["detect", "protect"],
-                        help="Scan type: detect (history) or protect (staged/pre-commit)")
+    parser.add_argument(
+        "--scan-type",
+        default="detect",
+        choices=["detect", "protect"],
+        help="Scan type: detect (history) or protect (staged/pre-commit)",
+    )
     parser.add_argument("--baseline", default=None, help="Path to baseline JSON file")
-    parser.add_argument("--commit-range", default=None,
-                        help="Git log range (e.g., HEAD~10..HEAD)")
-    parser.add_argument("--staged", action="store_true",
-                        help="Scan only staged changes (for pre-commit)")
+    parser.add_argument(
+        "--commit-range", default=None, help="Git log range (e.g., HEAD~10..HEAD)"
+    )
+    parser.add_argument(
+        "--staged",
+        action="store_true",
+        help="Scan only staged changes (for pre-commit)",
+    )
     parser.add_argument("--config", default=None, help="Path to .gitleaks.toml config")
-    parser.add_argument("--output", default="gitleaks-report.json", help="Output report path")
-    parser.add_argument("--fail-on-findings", action="store_true",
-                        help="Exit non-zero on new findings")
-    parser.add_argument("--create-baseline", action="store_true",
-                        help="Generate baseline from current findings")
+    parser.add_argument(
+        "--output", default="gitleaks-report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--fail-on-findings", action="store_true", help="Exit non-zero on new findings"
+    )
+    parser.add_argument(
+        "--create-baseline",
+        action="store_true",
+        help="Generate baseline from current findings",
+    )
     args = parser.parse_args()
 
     repo_path = os.path.abspath(args.repo_path)
@@ -241,7 +266,7 @@ def main():
         baseline_path=args.baseline,
         commit_range=args.commit_range,
         staged=args.staged,
-        config_path=args.config
+        config_path=args.config,
     )
 
     if raw_result["exit_code"] == -1:
@@ -250,7 +275,9 @@ def main():
 
     scan_result = ScanResult()
     scan_result.findings = parse_findings(raw_result["findings"])
-    scan_result.scan_duration = (datetime.now(timezone.utc) - start_time).total_seconds()
+    scan_result.scan_duration = (
+        datetime.now(timezone.utc) - start_time
+    ).total_seconds()
 
     if args.baseline:
         baseline_fps = load_baseline(args.baseline)
@@ -276,20 +303,26 @@ def main():
         json.dump(report, f, indent=2)
     print(f"[*] Report: {output_path}")
 
-    print(f"\n[*] Total: {len(scan_result.findings)} | "
-          f"New: {len(scan_result.new_findings)} | "
-          f"Baseline: {len(scan_result.baseline_findings)}")
+    print(
+        f"\n[*] Total: {len(scan_result.findings)} | "
+        f"New: {len(scan_result.new_findings)} | "
+        f"Baseline: {len(scan_result.baseline_findings)}"
+    )
 
     if scan_result.new_findings:
         print("\n[!] New secrets detected:")
         for f in scan_result.new_findings:
-            print(f"  [{f.rule_id}] {f.file}:{f.line} (commit: {f.commit}, author: {f.author})")
+            print(
+                f"  [{f.rule_id}] {f.file}:{f.line} (commit: {f.commit}, author: {f.author})"
+            )
             print(f"    Secret: {f.secret}")
 
     if report["quality_gate"]["passed"]:
         print("\n[PASS] No new secrets detected.")
     else:
-        print(f"\n[FAIL] {len(scan_result.new_findings)} new secrets found. Rotate immediately.")
+        print(
+            f"\n[FAIL] {len(scan_result.new_findings)} new secrets found. Rotate immediately."
+        )
 
     if args.fail_on_findings and not report["quality_gate"]["passed"]:
         sys.exit(1)

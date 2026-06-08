@@ -35,12 +35,14 @@ def list_processes(memory_dump):
         for line in stdout.splitlines()[2:]:
             parts = line.split()
             if len(parts) >= 6 and parts[0].isdigit():
-                processes.append({
-                    "pid": int(parts[0]),
-                    "ppid": int(parts[1]),
-                    "name": parts[4] if len(parts) > 4 else "",
-                    "offset": parts[0] if not parts[0].isdigit() else "",
-                })
+                processes.append(
+                    {
+                        "pid": int(parts[0]),
+                        "ppid": int(parts[1]),
+                        "name": parts[4] if len(parts) > 4 else "",
+                        "offset": parts[0] if not parts[0].isdigit() else "",
+                    }
+                )
     return processes
 
 
@@ -52,12 +54,14 @@ def scan_hidden_processes(memory_dump):
         for line in stdout.splitlines()[2:]:
             parts = line.split()
             if len(parts) >= 5 and parts[1].isdigit():
-                processes.append({
-                    "offset": parts[0],
-                    "pid": int(parts[1]),
-                    "ppid": int(parts[2]) if parts[2].isdigit() else 0,
-                    "name": parts[4] if len(parts) > 4 else "",
-                })
+                processes.append(
+                    {
+                        "offset": parts[0],
+                        "pid": int(parts[1]),
+                        "ppid": int(parts[2]) if parts[2].isdigit() else 0,
+                        "name": parts[4] if len(parts) > 4 else "",
+                    }
+                )
     return processes
 
 
@@ -89,7 +93,9 @@ def detect_code_injection(memory_dump, pid=None):
                     "protection": parts[3] if len(parts) > 3 else "",
                 }
             elif current and line.strip():
-                current["data_preview"] = current.get("data_preview", "") + line.strip() + " "
+                current["data_preview"] = (
+                    current.get("data_preview", "") + line.strip() + " "
+                )
         if current:
             injections.append(current)
     return injections
@@ -103,16 +109,18 @@ def get_network_connections(memory_dump):
         for line in stdout.splitlines()[2:]:
             parts = line.split()
             if len(parts) >= 7:
-                connections.append({
-                    "protocol": parts[1] if len(parts) > 1 else "",
-                    "local_addr": parts[2] if len(parts) > 2 else "",
-                    "local_port": parts[3] if len(parts) > 3 else "",
-                    "foreign_addr": parts[4] if len(parts) > 4 else "",
-                    "foreign_port": parts[5] if len(parts) > 5 else "",
-                    "state": parts[6] if len(parts) > 6 else "",
-                    "pid": parts[7] if len(parts) > 7 else "",
-                    "owner": parts[8] if len(parts) > 8 else "",
-                })
+                connections.append(
+                    {
+                        "protocol": parts[1] if len(parts) > 1 else "",
+                        "local_addr": parts[2] if len(parts) > 2 else "",
+                        "local_port": parts[3] if len(parts) > 3 else "",
+                        "foreign_addr": parts[4] if len(parts) > 4 else "",
+                        "foreign_port": parts[5] if len(parts) > 5 else "",
+                        "state": parts[6] if len(parts) > 6 else "",
+                        "pid": parts[7] if len(parts) > 7 else "",
+                        "owner": parts[8] if len(parts) > 8 else "",
+                    }
+                )
     return connections
 
 
@@ -124,11 +132,13 @@ def get_command_lines(memory_dump):
         for line in stdout.splitlines()[2:]:
             parts = line.split(None, 2)
             if len(parts) >= 3 and parts[0].isdigit():
-                cmdlines.append({
-                    "pid": int(parts[0]),
-                    "process": parts[1],
-                    "cmdline": parts[2],
-                })
+                cmdlines.append(
+                    {
+                        "pid": int(parts[0]),
+                        "process": parts[1],
+                        "cmdline": parts[2],
+                    }
+                )
     return cmdlines
 
 
@@ -175,20 +185,25 @@ def check_suspicious_processes(pslist_procs):
         name_counts[name] = name_counts.get(name, 0) + 1
 
     if name_counts.get("lsass.exe", 0) > 1:
-        findings.append({"severity": "CRITICAL",
-                         "finding": "Multiple lsass.exe instances detected"})
+        findings.append(
+            {"severity": "CRITICAL", "finding": "Multiple lsass.exe instances detected"}
+        )
 
     misspellings = {
-        "scvhost.exe": "svchost.exe", "svch0st.exe": "svchost.exe",
-        "lssas.exe": "lsass.exe", "csrs.exe": "csrss.exe",
+        "scvhost.exe": "svchost.exe",
+        "svch0st.exe": "svchost.exe",
+        "lssas.exe": "lsass.exe",
+        "csrs.exe": "csrss.exe",
     }
     for p in pslist_procs:
         if p["name"].lower() in misspellings:
-            findings.append({
-                "severity": "HIGH",
-                "finding": f"Misspelled process: {p['name']} (PID {p['pid']}) "
-                           f"mimicking {misspellings[p['name'].lower()]}",
-            })
+            findings.append(
+                {
+                    "severity": "HIGH",
+                    "finding": f"Misspelled process: {p['name']} (PID {p['pid']}) "
+                    f"mimicking {misspellings[p['name'].lower()]}",
+                }
+            )
     return findings
 
 
@@ -228,16 +243,20 @@ if __name__ == "__main__":
         injections = detect_code_injection(dump_file)
         print(f"  Injected regions: {len(injections)}")
         for inj in injections[:5]:
-            print(f"  [!] PID {inj['pid']} ({inj.get('process', '')}): {inj.get('protection', '')}")
+            print(
+                f"  [!] PID {inj['pid']} ({inj.get('process', '')}): {inj.get('protection', '')}"
+            )
 
         print("\n--- Network Connections ---")
         conns = get_network_connections(dump_file)
         established = [c for c in conns if "ESTABLISHED" in c.get("state", "")]
         print(f"  Total: {len(conns)}, Established: {len(established)}")
         for c in established[:10]:
-            print(f"  {c.get('owner', '?')} (PID {c.get('pid', '?')}): "
-                  f"{c['local_addr']}:{c['local_port']} -> "
-                  f"{c['foreign_addr']}:{c['foreign_port']}")
+            print(
+                f"  {c.get('owner', '?')} (PID {c.get('pid', '?')}): "
+                f"{c['local_addr']}:{c['local_port']} -> "
+                f"{c['foreign_addr']}:{c['foreign_port']}"
+            )
     else:
         print(f"\n[DEMO] Usage: python agent.py <memory.dmp>")
         print("[*] Provide a memory dump for forensic analysis.")

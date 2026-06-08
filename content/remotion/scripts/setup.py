@@ -333,8 +333,7 @@ def main():
     write_file("README.md", README_CONTENT, skip_existing)
 
     # ── Print next steps ──────────────────────────────────────
-    print(
-        f"""
+    print(f"""
 ✅ Project structure created!
 
 Next steps:
@@ -357,8 +356,7 @@ Free tools needed (no API key):
   pip install edge-tts openai-whisper librosa Pillow
   brew install ffmpeg   # macOS
   apt install ffmpeg    # Ubuntu/Debian
-"""
-    )
+""")
 
 
 if __name__ == "__main__":

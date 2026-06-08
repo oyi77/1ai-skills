@@ -10,7 +10,9 @@ from datetime import datetime
 import requests
 import shodan
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -20,17 +22,19 @@ def search_shodan(api_key, query, max_results=100):
     results = api.search(query, limit=max_results)
     hosts = []
     for match in results["matches"]:
-        hosts.append({
-            "ip": match["ip_str"],
-            "port": match["port"],
-            "org": match.get("org", ""),
-            "os": match.get("os", ""),
-            "hostnames": match.get("hostnames", []),
-            "product": match.get("product", ""),
-            "version": match.get("version", ""),
-            "country": match.get("location", {}).get("country_name", ""),
-            "ssl_subject": match.get("ssl", {}).get("cert", {}).get("subject", {}),
-        })
+        hosts.append(
+            {
+                "ip": match["ip_str"],
+                "port": match["port"],
+                "org": match.get("org", ""),
+                "os": match.get("os", ""),
+                "hostnames": match.get("hostnames", []),
+                "product": match.get("product", ""),
+                "version": match.get("version", ""),
+                "country": match.get("location", {}).get("country_name", ""),
+                "ssl_subject": match.get("ssl", {}).get("cert", {}).get("subject", {}),
+            }
+        )
     logger.info("Shodan returned %d results for query: %s", len(hosts), query)
     return hosts
 
@@ -80,7 +84,9 @@ def whois_lookup(domain):
         return {
             "domain": domain,
             "status": data.get("status", []),
-            "nameservers": [ns.get("ldhName", "") for ns in data.get("nameservers", [])],
+            "nameservers": [
+                ns.get("ldhName", "") for ns in data.get("nameservers", [])
+            ],
             "events": [
                 {"action": e["eventAction"], "date": e["eventDate"]}
                 for e in data.get("events", [])
@@ -111,22 +117,28 @@ def search_github_exposure(query, github_token=None):
     if github_token:
         headers["Authorization"] = f"token {github_token}"
     url = "https://api.github.com/search/code"
-    resp = requests.get(url, headers=headers, params={"q": query, "per_page": 20}, timeout=30)
+    resp = requests.get(
+        url, headers=headers, params={"q": query, "per_page": 20}, timeout=30
+    )
     if resp.status_code == 200:
         items = resp.json().get("items", [])
         results = []
         for item in items:
-            results.append({
-                "repo": item["repository"]["full_name"],
-                "path": item["path"],
-                "url": item["html_url"],
-            })
+            results.append(
+                {
+                    "repo": item["repository"]["full_name"],
+                    "path": item["path"],
+                    "url": item["html_url"],
+                }
+            )
         logger.info("GitHub search found %d results for: %s", len(results), query)
         return results
     return []
 
 
-def generate_osint_report(domain, subdomains, shodan_results, whois_data, github_results):
+def generate_osint_report(
+    domain, subdomains, shodan_results, whois_data, github_results
+):
     """Generate a consolidated OSINT report."""
     report = {
         "target": domain,

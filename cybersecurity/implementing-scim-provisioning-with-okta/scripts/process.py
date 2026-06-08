@@ -16,7 +16,15 @@ from datetime import datetime, timezone
 from functools import wraps
 
 from flask import Flask, request, jsonify, g
-from sqlalchemy import create_engine, Column, String, Boolean, DateTime, Table, ForeignKey
+from sqlalchemy import (
+    create_engine,
+    Column,
+    String,
+    Boolean,
+    DateTime,
+    Table,
+    ForeignKey,
+)
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 app = Flask(__name__)
@@ -31,7 +39,8 @@ Base = declarative_base()
 
 # Association table for user-group membership
 user_group = Table(
-    "user_group", Base.metadata,
+    "user_group",
+    Base.metadata,
     Column("user_id", String, ForeignKey("users.id"), primary_key=True),
     Column("group_id", String, ForeignKey("groups.id"), primary_key=True),
 )
@@ -50,23 +59,33 @@ class User(Base):
     department = Column(String, default="")
     title = Column(String, default="")
     created = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    lastModified = Column(DateTime, default=lambda: datetime.now(timezone.utc),
-                          onupdate=lambda: datetime.now(timezone.utc))
+    lastModified = Column(
+        DateTime,
+        default=lambda: datetime.now(timezone.utc),
+        onupdate=lambda: datetime.now(timezone.utc),
+    )
     groups = relationship("Group", secondary=user_group, back_populates="members")
 
     def to_scim(self):
         return {
-            "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-                        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
+            "schemas": [
+                "urn:ietf:params:scim:schemas:core:2.0:User",
+                "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+            ],
             "id": self.id,
             "userName": self.userName,
             "name": {
                 "givenName": self.givenName or "",
                 "familyName": self.familyName or "",
-                "formatted": f"{self.givenName or ''} {self.familyName or ''}".strip()
+                "formatted": f"{self.givenName or ''} {self.familyName or ''}".strip(),
             },
-            "displayName": self.displayName or f"{self.givenName or ''} {self.familyName or ''}".strip(),
-            "emails": [{"value": self.email, "type": "work", "primary": True}] if self.email else [],
+            "displayName": self.displayName
+            or f"{self.givenName or ''} {self.familyName or ''}".strip(),
+            "emails": (
+                [{"value": self.email, "type": "work", "primary": True}]
+                if self.email
+                else []
+            ),
             "active": self.active,
             "title": self.title or "",
             "groups": [{"value": g.id, "display": g.displayName} for g in self.groups],
@@ -76,9 +95,11 @@ class User(Base):
             "meta": {
                 "resourceType": "User",
                 "created": self.created.isoformat() + "Z" if self.created else "",
-                "lastModified": self.lastModified.isoformat() + "Z" if self.lastModified else "",
-                "location": f"{SCIM_BASE_URL}/Users/{self.id}"
-            }
+                "lastModified": (
+                    self.lastModified.isoformat() + "Z" if self.lastModified else ""
+                ),
+                "location": f"{SCIM_BASE_URL}/Users/{self.id}",
+            },
         }
 
 
@@ -88,8 +109,11 @@ class Group(Base):
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     displayName = Column(String, unique=True, nullable=False)
     created = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    lastModified = Column(DateTime, default=lambda: datetime.now(timezone.utc),
-                          onupdate=lambda: datetime.now(timezone.utc))
+    lastModified = Column(
+        DateTime,
+        default=lambda: datetime.now(timezone.utc),
+        onupdate=lambda: datetime.now(timezone.utc),
+    )
     members = relationship("User", secondary=user_group, back_populates="groups")
 
     def to_scim(self):
@@ -97,13 +121,18 @@ class Group(Base):
             "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
             "id": self.id,
             "displayName": self.displayName,
-            "members": [{"value": m.id, "display": m.displayName or m.userName} for m in self.members],
+            "members": [
+                {"value": m.id, "display": m.displayName or m.userName}
+                for m in self.members
+            ],
             "meta": {
                 "resourceType": "Group",
                 "created": self.created.isoformat() + "Z" if self.created else "",
-                "lastModified": self.lastModified.isoformat() + "Z" if self.lastModified else "",
-                "location": f"{SCIM_BASE_URL}/Groups/{self.id}"
-            }
+                "lastModified": (
+                    self.lastModified.isoformat() + "Z" if self.lastModified else ""
+                ),
+                "location": f"{SCIM_BASE_URL}/Groups/{self.id}",
+            },
         }
 
 
@@ -127,7 +156,7 @@ def scim_error(detail, status, scim_type=None):
     body = {
         "schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],
         "detail": detail,
-        "status": str(status)
+        "status": str(status),
     }
     if scim_type:
         body["scimType"] = scim_type
@@ -141,6 +170,7 @@ def require_auth(f):
         if not auth.startswith("Bearer ") or auth[7:] != SCIM_BEARER_TOKEN:
             return scim_error("Authentication required", 401)
         return f(*args, **kwargs)
+
     return wrapper
 
 
@@ -155,16 +185,19 @@ def parse_scim_filter(filter_str):
 
 
 def list_response(resources, total, start_index, count):
-    return jsonify({
-        "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-        "totalResults": total,
-        "startIndex": start_index,
-        "itemsPerPage": count,
-        "Resources": resources
-    })
+    return jsonify(
+        {
+            "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+            "totalResults": total,
+            "startIndex": start_index,
+            "itemsPerPage": count,
+            "Resources": resources,
+        }
+    )
 
 
 # ---- User Endpoints ----
+
 
 @app.route("/scim/v2/Users", methods=["POST"])
 @require_auth
@@ -178,11 +211,15 @@ def create_user():
 
     existing = db.query(User).filter(User.userName == username).first()
     if existing:
-        return scim_error(f"User with userName '{username}' already exists", 409, "uniqueness")
+        return scim_error(
+            f"User with userName '{username}' already exists", 409, "uniqueness"
+        )
 
     name = data.get("name", {})
     emails = data.get("emails", [])
-    enterprise = data.get("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User", {})
+    enterprise = data.get(
+        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User", {}
+    )
 
     user = User(
         userName=username,
@@ -245,7 +282,9 @@ def replace_user(user_id):
     data = request.json
     name = data.get("name", {})
     emails = data.get("emails", [])
-    enterprise = data.get("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User", {})
+    enterprise = data.get(
+        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User", {}
+    )
 
     user.userName = data.get("userName", user.userName)
     user.givenName = name.get("givenName", user.givenName)
@@ -311,6 +350,7 @@ def delete_user(user_id):
 
 
 # ---- Group Endpoints ----
+
 
 @app.route("/scim/v2/Groups", methods=["POST"])
 @require_auth
@@ -387,7 +427,9 @@ def patch_group(group_id):
         if operation == "add" and "members" in path:
             members_to_add = value if isinstance(value, list) else [value]
             for member_data in members_to_add:
-                user = db.query(User).filter(User.id == member_data.get("value")).first()
+                user = (
+                    db.query(User).filter(User.id == member_data.get("value")).first()
+                )
                 if user and user not in group.members:
                     group.members.append(user)
 
@@ -422,48 +464,55 @@ def delete_group(group_id):
 
 # ---- Service Provider Config ----
 
+
 @app.route("/scim/v2/ServiceProviderConfig", methods=["GET"])
 def service_provider_config():
-    return jsonify({
-        "schemas": ["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"],
-        "documentationUri": "https://developer.okta.com/docs/concepts/scim/",
-        "patch": {"supported": True},
-        "bulk": {"supported": False, "maxOperations": 0, "maxPayloadSize": 0},
-        "filter": {"supported": True, "maxResults": 200},
-        "changePassword": {"supported": False},
-        "sort": {"supported": False},
-        "etag": {"supported": False},
-        "authenticationSchemes": [{
-            "type": "oauthbearertoken",
-            "name": "OAuth Bearer Token",
-            "description": "Authentication scheme using the OAuth Bearer Token Standard",
-            "specUri": "https://www.rfc-editor.org/info/rfc6750"
-        }]
-    })
+    return jsonify(
+        {
+            "schemas": ["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"],
+            "documentationUri": "https://developer.okta.com/docs/concepts/scim/",
+            "patch": {"supported": True},
+            "bulk": {"supported": False, "maxOperations": 0, "maxPayloadSize": 0},
+            "filter": {"supported": True, "maxResults": 200},
+            "changePassword": {"supported": False},
+            "sort": {"supported": False},
+            "etag": {"supported": False},
+            "authenticationSchemes": [
+                {
+                    "type": "oauthbearertoken",
+                    "name": "OAuth Bearer Token",
+                    "description": "Authentication scheme using the OAuth Bearer Token Standard",
+                    "specUri": "https://www.rfc-editor.org/info/rfc6750",
+                }
+            ],
+        }
+    )
 
 
 @app.route("/scim/v2/ResourceTypes", methods=["GET"])
 def resource_types():
-    return jsonify({
-        "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-        "totalResults": 2,
-        "Resources": [
-            {
-                "schemas": ["urn:ietf:params:scim:schemas:core:2.0:ResourceType"],
-                "id": "User",
-                "name": "User",
-                "endpoint": "/Users",
-                "schema": "urn:ietf:params:scim:schemas:core:2.0:User"
-            },
-            {
-                "schemas": ["urn:ietf:params:scim:schemas:core:2.0:ResourceType"],
-                "id": "Group",
-                "name": "Group",
-                "endpoint": "/Groups",
-                "schema": "urn:ietf:params:scim:schemas:core:2.0:Group"
-            }
-        ]
-    })
+    return jsonify(
+        {
+            "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+            "totalResults": 2,
+            "Resources": [
+                {
+                    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:ResourceType"],
+                    "id": "User",
+                    "name": "User",
+                    "endpoint": "/Users",
+                    "schema": "urn:ietf:params:scim:schemas:core:2.0:User",
+                },
+                {
+                    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:ResourceType"],
+                    "id": "Group",
+                    "name": "Group",
+                    "endpoint": "/Groups",
+                    "schema": "urn:ietf:params:scim:schemas:core:2.0:Group",
+                },
+            ],
+        }
+    )
 
 
 if __name__ == "__main__":

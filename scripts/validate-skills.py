@@ -20,6 +20,7 @@ Usage:
         good content.
 --report PATH  Write JSON report of all issues.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -32,14 +33,30 @@ from pathlib import Path
 try:
     import yaml
 except ImportError:
-    print("ERROR: PyYAML not installed. Install with: pip install pyyaml", file=sys.stderr)
+    print(
+        "ERROR: PyYAML not installed. Install with: pip install pyyaml", file=sys.stderr
+    )
     sys.exit(2)
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_DIRS = [
-    "agents", "automation", "content", "core", "cybersecurity", "data",
-    "development", "devops", "financial", "integrations", "marketing",
-    "mcp", "meta", "operations", "productivity", "research", "sales",
+    "agents",
+    "automation",
+    "content",
+    "core",
+    "cybersecurity",
+    "data",
+    "development",
+    "devops",
+    "financial",
+    "integrations",
+    "marketing",
+    "mcp",
+    "meta",
+    "operations",
+    "productivity",
+    "research",
+    "sales",
     "trading",
 ]
 
@@ -63,7 +80,7 @@ def split_frontmatter(text: str) -> tuple[str | None, str, int | None]:
     for i, line in enumerate(lines[1:], start=1):
         if line.rstrip() == "---":
             fm = "".join(lines[1:i])
-            body = "".join(lines[i + 1:])
+            body = "".join(lines[i + 1 :])
             return fm, body, i
     return None, text, None  # no closing
 
@@ -191,8 +208,14 @@ def fix_one(path: Path) -> list[str]:
             ordered[key] = meta.pop(key)
     ordered.update(meta)
 
-    new_fm = yaml.safe_dump(ordered, sort_keys=False, allow_unicode=True, width=120).rstrip()
-    new_text = f"---\n{new_fm}\n---\n{body}" if not body.startswith("\n") else f"---\n{new_fm}\n---{body}"
+    new_fm = yaml.safe_dump(
+        ordered, sort_keys=False, allow_unicode=True, width=120
+    ).rstrip()
+    new_text = (
+        f"---\n{new_fm}\n---\n{body}"
+        if not body.startswith("\n")
+        else f"---\n{new_fm}\n---{body}"
+    )
     path.write_text(new_text, encoding="utf-8")
     return fixes
 
@@ -244,7 +267,10 @@ def main() -> int:
             for e in errs:
                 print(f"    - {e}", file=sys.stderr)
         if len(issues) > 25:
-            print(f"  ... and {len(issues) - 25} more (use --report for full)", file=sys.stderr)
+            print(
+                f"  ... and {len(issues) - 25} more (use --report for full)",
+                file=sys.stderr,
+            )
         return min(len(issues), 255)
 
     print(f"\nOK: All {len(skills)} skills valid.", file=sys.stderr)

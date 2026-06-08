@@ -8,7 +8,6 @@ import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 
-
 ENTROPY_THRESHOLD = 3.5
 MIN_QUERIES_PER_DOMAIN = 20
 MAX_NORMAL_SUBDOMAIN_LEN = 30
@@ -23,7 +22,7 @@ def shannon_entropy(data):
     for c in data:
         freq[c] += 1
     n = len(data)
-    return -sum((cnt/n) * math.log2(cnt/n) for cnt in freq.values())
+    return -sum((cnt / n) * math.log2(cnt / n) for cnt in freq.values())
 
 
 def load_dns_log(filepath):
@@ -36,17 +35,19 @@ def load_dns_log(filepath):
                     continue
                 parts = line.strip().split("\t")
                 if len(parts) >= 10:
-                    entries.append({
-                        "ts": parts[0],
-                        "uid": parts[1],
-                        "src": parts[2],
-                        "src_port": parts[3],
-                        "dst": parts[4],
-                        "dst_port": parts[5],
-                        "query": parts[9] if len(parts) > 9 else "",
-                        "qtype": parts[13] if len(parts) > 13 else "",
-                        "answers": parts[21] if len(parts) > 21 else "",
-                    })
+                    entries.append(
+                        {
+                            "ts": parts[0],
+                            "uid": parts[1],
+                            "src": parts[2],
+                            "src_port": parts[3],
+                            "dst": parts[4],
+                            "dst_port": parts[5],
+                            "query": parts[9] if len(parts) > 9 else "",
+                            "qtype": parts[13] if len(parts) > 13 else "",
+                            "answers": parts[21] if len(parts) > 21 else "",
+                        }
+                    )
     except (OSError, IndexError) as e:
         print(f"[!] Error loading DNS log: {e}")
     return entries
@@ -54,10 +55,15 @@ def load_dns_log(filepath):
 
 def analyze_domain_statistics(entries):
     """Compute per-domain statistics for tunneling detection."""
-    domain_data = defaultdict(lambda: {
-        "queries": [], "subdomains": [], "qtypes": defaultdict(int),
-        "sources": set(), "total_subdomain_len": 0,
-    })
+    domain_data = defaultdict(
+        lambda: {
+            "queries": [],
+            "subdomains": [],
+            "qtypes": defaultdict(int),
+            "sources": set(),
+            "total_subdomain_len": 0,
+        }
+    )
 
     for entry in entries:
         query = entry.get("query", "")
@@ -90,9 +96,7 @@ def detect_tunneling(domain_data):
         all_subdomain_text = "".join(data["subdomains"])
         entropy = shannon_entropy(all_subdomain_text)
 
-        tunnel_qtype_count = sum(
-            data["qtypes"].get(qt, 0) for qt in TUNNEL_QUERY_TYPES
-        )
+        tunnel_qtype_count = sum(data["qtypes"].get(qt, 0) for qt in TUNNEL_QUERY_TYPES)
         tunnel_qtype_ratio = tunnel_qtype_count / query_count if query_count else 0
 
         score = 0
@@ -106,16 +110,22 @@ def detect_tunneling(domain_data):
             score += 10
 
         if score >= 40:
-            findings.append({
-                "domain": domain,
-                "query_count": query_count,
-                "avg_subdomain_length": round(avg_subdomain_len, 1),
-                "entropy": round(entropy, 3),
-                "tunnel_qtype_ratio": round(tunnel_qtype_ratio, 3),
-                "unique_sources": len(data["sources"]),
-                "tunnel_score": score,
-                "severity": "CRITICAL" if score >= 70 else "HIGH" if score >= 50 else "MEDIUM",
-            })
+            findings.append(
+                {
+                    "domain": domain,
+                    "query_count": query_count,
+                    "avg_subdomain_length": round(avg_subdomain_len, 1),
+                    "entropy": round(entropy, 3),
+                    "tunnel_qtype_ratio": round(tunnel_qtype_ratio, 3),
+                    "unique_sources": len(data["sources"]),
+                    "tunnel_score": score,
+                    "severity": (
+                        "CRITICAL"
+                        if score >= 70
+                        else "HIGH" if score >= 50 else "MEDIUM"
+                    ),
+                }
+            )
 
     findings.sort(key=lambda f: f["tunnel_score"], reverse=True)
     return findings
@@ -154,7 +164,8 @@ def main():
     findings = detect_tunneling(domain_data)
     report["findings"] = findings
     report["risk_level"] = (
-        "CRITICAL" if any(f["severity"] == "CRITICAL" for f in findings)
+        "CRITICAL"
+        if any(f["severity"] == "CRITICAL" for f in findings)
         else "HIGH" if findings else "LOW"
     )
 

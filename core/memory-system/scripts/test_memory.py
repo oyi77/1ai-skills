@@ -15,6 +15,7 @@ Tests:
 
 Target: completes in <30 seconds (embedding load may take a few sec first run)
 """
+
 import sys
 import time
 import tempfile
@@ -24,17 +25,18 @@ from pathlib import Path
 # This file lives in:  skills/1ai-skills/core/memory-system/scripts/
 # We need to add      skills/1ai-skills/core/   to sys.path so that
 # `import memory_system.scripts.xxx` works.
-_HERE = Path(__file__).resolve().parent          # .../scripts/
-_PKG_ROOT = _HERE.parent.parent                  # .../core/
+_HERE = Path(__file__).resolve().parent  # .../scripts/
+_PKG_ROOT = _HERE.parent.parent  # .../core/
 sys.path.insert(0, str(_PKG_ROOT))
 
 # ── Patch config to use a temp directory (no pollution) ─────────────────────
 import memory_system.scripts.config as _cfg
+
 _TMP = Path(tempfile.mkdtemp(prefix="mem_test_"))
-_cfg.BASE_DIR         = _TMP
-_cfg.DB_PATH          = _TMP / "memory.db"
-_cfg.ARCHIVE_DIR      = _TMP / "archive"
-_cfg.HNSW_INDEX_PATH  = _TMP / "hnsw.bin"
+_cfg.BASE_DIR = _TMP
+_cfg.DB_PATH = _TMP / "memory.db"
+_cfg.ARCHIVE_DIR = _TMP / "archive"
+_cfg.HNSW_INDEX_PATH = _TMP / "hnsw.bin"
 _cfg.HNSW_LABELS_PATH = _TMP / "hnsw_labels.npy"
 _cfg.BASE_DIR.mkdir(parents=True, exist_ok=True)
 _cfg.ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
@@ -72,7 +74,9 @@ def test_working_memory(mm):
     check("set/get basic value", mm.get_working("key1") == "hello")
 
     mm.set_working("task", {"symbol": "XAUUSD", "sl": 20})
-    check("set/get dict value", mm.get_working("task") == {"symbol": "XAUUSD", "sl": 20})
+    check(
+        "set/get dict value", mm.get_working("task") == {"symbol": "XAUUSD", "sl": 20}
+    )
 
     check("default on miss", mm.get_working("nonexistent", "def") == "def")
 
@@ -100,20 +104,31 @@ def test_working_memory(mm):
 def test_semantic_memory(mm):
     section("TEST 2: Semantic Memory (FTS5 + embeddings)")
 
-    id1 = mm.store("XAUUSD scalping strategy using H1 timeframe",
-                   importance=0.9, tags=["trading", "strategy"])
-    id2 = mm.store("User prefers aggressive risk management 2% max",
-                   importance=0.8, tags=["trading", "risk"])
-    id3 = mm.store("BerkahKarya revenue target IDR 150K per week",
-                   importance=0.7, tags=["business", "revenue"])
+    id1 = mm.store(
+        "XAUUSD scalping strategy using H1 timeframe",
+        importance=0.9,
+        tags=["trading", "strategy"],
+    )
+    id2 = mm.store(
+        "User prefers aggressive risk management 2% max",
+        importance=0.8,
+        tags=["trading", "risk"],
+    )
+    id3 = mm.store(
+        "BerkahKarya revenue target IDR 150K per week",
+        importance=0.7,
+        tags=["business", "revenue"],
+    )
 
     check("store returns id", len(id1) > 0)
     check("3 memories stored", mm._semantic.count() >= 3)
 
     results = mm._semantic.fts_search("XAUUSD", top_k=5)
-    check("FTS5 finds trading memory",
-          any("XAUUSD" in r["text"] for r in results),
-          f"{len(results)} results")
+    check(
+        "FTS5 finds trading memory",
+        any("XAUUSD" in r["text"] for r in results),
+        f"{len(results)} results",
+    )
 
     results2 = mm._semantic.fts_search("revenue", top_k=5)
     check("FTS5 finds revenue memory", len(results2) > 0)
@@ -127,7 +142,10 @@ def test_episodic_memory(mm):
 
     messages = [
         {"role": "user", "content": "How is XAUUSD looking today?"},
-        {"role": "assistant", "content": "XAUUSD shows bullish breakout above 2950, TP 2975"},
+        {
+            "role": "assistant",
+            "content": "XAUUSD shows bullish breakout above 2950, TP 2975",
+        },
         {"role": "user", "content": "What's the stop loss?"},
         {"role": "assistant", "content": "SL at 2935, risk 15 pips"},
     ]
@@ -137,8 +155,10 @@ def test_episodic_memory(mm):
 
     # Buffer auto-flush
     for i in range(_cfg.EPISODIC_SUMMARY_EVERY + 1):
-        mm.add_message("user" if i % 2 == 0 else "assistant",
-                       f"Message {i}: analysis for XAUUSD trade")
+        mm.add_message(
+            "user" if i % 2 == 0 else "assistant",
+            f"Message {i}: analysis for XAUUSD trade",
+        )
     check("episodic grows after buffer flush", mm._episodic.count() >= 2)
 
     kw = mm._episodic.keyword_search("XAUUSD", top_k=5)
@@ -152,16 +172,28 @@ def test_archive_memory(mm):
     section("TEST 4: Archive Memory (gzipped JSONL)")
 
     test_mems = [
-        {"id": "arc1", "text": "Old trading log March 2025", "importance": 0.05, "timestamp": time.time()},
-        {"id": "arc2", "text": "Expired task from January", "importance": 0.03, "timestamp": time.time()},
+        {
+            "id": "arc1",
+            "text": "Old trading log March 2025",
+            "importance": 0.05,
+            "timestamp": time.time(),
+        },
+        {
+            "id": "arc2",
+            "text": "Expired task from January",
+            "importance": 0.03,
+            "timestamp": time.time(),
+        },
     ]
     count = mm._archive.archive(test_mems, date_str="2026-03-12")
     check("archive writes records", count == 2)
 
     recalled = mm.recall_archive("2026-03-12")
     check("recall returns records", len(recalled) >= 2)
-    check("recalled content correct",
-          any("trading log" in r.get("text", "") for r in recalled))
+    check(
+        "recalled content correct",
+        any("trading log" in r.get("text", "") for r in recalled),
+    )
 
     dates = mm._archive.list_dates()
     check("list_dates shows archived date", "2026-03-12" in dates)
@@ -174,8 +206,10 @@ def test_async_pipeline(mm):
     section("TEST 5: Async Pipeline (non-blocking)")
 
     t0 = time.perf_counter()
-    ids = [mm.store(f"Async test memory {i}: XAUUSD trade note", importance=0.5)
-           for i in range(20)]
+    ids = [
+        mm.store(f"Async test memory {i}: XAUUSD trade note", importance=0.5)
+        for i in range(20)
+    ]
     elapsed = time.perf_counter() - t0
 
     check("20 stores in <2s (non-blocking)", elapsed < 2.0, f"{elapsed:.2f}s")
@@ -202,12 +236,18 @@ def test_hybrid_search(mm):
 
     results = mm.search("XAUUSD trading", top_k=5)
     check("search returns results", len(results) > 0, f"{len(results)}")
-    check("results have required fields",
-          all("text" in r and "score" in r and "source" in r for r in results))
-    check("results sorted desc",
-          all(results[i]["score"] >= results[i+1]["score"]
-              for i in range(len(results)-1)),
-          str([round(r["score"], 3) for r in results]))
+    check(
+        "results have required fields",
+        all("text" in r and "score" in r and "source" in r for r in results),
+    )
+    check(
+        "results sorted desc",
+        all(
+            results[i]["score"] >= results[i + 1]["score"]
+            for i in range(len(results) - 1)
+        ),
+        str([round(r["score"], 3) for r in results]),
+    )
 
     kw = mm.search("BerkahKarya cashflow", top_k=3)
     check("keyword search works", len(kw) > 0)
@@ -261,29 +301,34 @@ def test_memory_graph(mm):
 
     # 1-hop
     hop1 = mm._graph.traverse(id_a, max_hops=1, edge_types=["refers_to"])
-    check("1-hop finds direct neighbor",
-          any(n["memory_id"] == id_b for n in hop1),
-          f"{len(hop1)} neighbors")
+    check(
+        "1-hop finds direct neighbor",
+        any(n["memory_id"] == id_b for n in hop1),
+        f"{len(hop1)} neighbors",
+    )
 
     # 2-hop A→B→C
     hop2 = mm._graph.traverse(id_a, max_hops=2, edge_types=["refers_to"])
     found_ids = {n["memory_id"] for n in hop2}
-    check("2-hop finds B and C", id_b in found_ids and id_c in found_ids,
-          str(found_ids))
+    check(
+        "2-hop finds B and C", id_b in found_ids and id_c in found_ids, str(found_ids)
+    )
 
     # 3-hop via manager (with text enrichment)
     enriched = mm.traverse(id_a, max_hops=3)
-    check("traverse() enriches with text",
-          all("text" in n for n in enriched))
+    check("traverse() enriches with text", all("text" in n for n in enriched))
 
     # Edge count
     check("graph has ≥3 edges", mm._graph.edge_count() >= 3)
 
     # Find path
     path = mm._graph.find_path(id_a, id_c)
-    check("find_path returns valid path",
-          path is None or (isinstance(path, list) and id_a == path[0] and id_c == path[-1]),
-          str(path))
+    check(
+        "find_path returns valid path",
+        path is None
+        or (isinstance(path, list) and id_a == path[0] and id_c == path[-1]),
+        str(path),
+    )
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -302,23 +347,27 @@ def test_decay(mm):
 
     result = mm.decay_all()
     check("decay_all runs", "semantic_decayed" in result)
-    check("memories decayed", result["semantic_decayed"] > 0,
-          str(result))
+    check("memories decayed", result["semantic_decayed"] > 0, str(result))
 
     mem = mm._semantic.get(mid, update_access=False)
     if mem:
-        expected = 0.8 * (0.95 ** 10)
+        expected = 0.8 * (0.95**10)
         diff = abs(mem["importance"] - expected)
-        check("importance decayed ~5%/day", diff < 0.05,
-              f"got {mem['importance']:.3f} expected ~{expected:.3f}")
+        check(
+            "importance decayed ~5%/day",
+            diff < 0.05,
+            f"got {mem['importance']:.3f} expected ~{expected:.3f}",
+        )
 
     # Access boost
     mm._semantic._boost_importance(mid)
     mem2 = mm._semantic.get(mid, update_access=False)
     if mem and mem2:
-        check("access boosts importance",
-              mem2["importance"] >= mem["importance"],
-              f"{mem['importance']:.3f}→{mem2['importance']:.3f}")
+        check(
+            "access boosts importance",
+            mem2["importance"] >= mem["importance"],
+            f"{mem['importance']:.3f}→{mem2['importance']:.3f}",
+        )
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -332,9 +381,11 @@ def test_health_check(mm):
     check("has status", "status" in report)
     check("has issues list", isinstance(report.get("issues"), list))
     check("has fixes list", isinstance(report.get("fixes"), list))
-    check("status valid",
-          report["status"] in ("healthy", "repaired", "degraded"),
-          report["status"])
+    check(
+        "status valid",
+        report["status"] in ("healthy", "repaired", "degraded"),
+        report["status"],
+    )
     print(f"    issues: {report['issues']}")
     print(f"    fixes:  {report['fixes']}")
 
@@ -347,8 +398,15 @@ def test_stats(mm):
 
     stats = mm.get_stats()
     check("returns dict", isinstance(stats, dict))
-    for key in ["total_memories", "working", "episodic", "semantic",
-                "archived", "pending_embeddings", "mode"]:
+    for key in [
+        "total_memories",
+        "working",
+        "episodic",
+        "semantic",
+        "archived",
+        "pending_embeddings",
+        "mode",
+    ]:
         check(f"has '{key}'", key in stats, str(stats.get(key, "MISSING")))
     print(f"    {stats}")
 
@@ -371,9 +429,13 @@ def test_compaction(mm):
 
     result = mm.compact(similarity_threshold=0.7)
     check("compact returns dict", isinstance(result, dict))
-    check("compact has required fields",
-          all(k in result for k in
-              ["clusters_found", "memories_compacted", "new_memories_created"]))
+    check(
+        "compact has required fields",
+        all(
+            k in result
+            for k in ["clusters_found", "memories_compacted", "new_memories_created"]
+        ),
+    )
     check("compact runs without crash", True)
     print(f"    Compact result: {result}")
 
@@ -382,9 +444,9 @@ def test_compaction(mm):
 # MAIN
 # ─────────────────────────────────────────────────────────────────
 def main():
-    print("\n" + "═"*62)
+    print("\n" + "═" * 62)
     print("  MEMORY SYSTEM — FULL TEST SUITE")
-    print("═"*62)
+    print("═" * 62)
     print(f"  Temp DB: {_TMP}")
     t_start = time.time()
 
@@ -407,7 +469,9 @@ def main():
     failed = sum(1 for _, ok in _results if not ok)
 
     print(f"\n{'═'*62}")
-    print(f"  RESULTS: {passed}/{len(_results)} passed  |  {failed} failed  |  {elapsed:.1f}s")
+    print(
+        f"  RESULTS: {passed}/{len(_results)} passed  |  {failed} failed  |  {elapsed:.1f}s"
+    )
     print(f"{'═'*62}\n")
 
     if failed:
@@ -418,6 +482,7 @@ def main():
         print()
 
     import shutil
+
     shutil.rmtree(_TMP, ignore_errors=True)
     return 0 if failed == 0 else 1
 

@@ -52,22 +52,24 @@ def extract_http_requests(pcap_path):
     stdout, _, _ = run_tshark(
         pcap_path,
         '-Y "http.request" -T fields -e frame.time -e ip.src -e ip.dst '
-        '-e http.request.method -e http.host -e http.request.uri -e http.user_agent '
-        '-E separator="|"'
+        "-e http.request.method -e http.host -e http.request.uri -e http.user_agent "
+        '-E separator="|"',
     )
     requests = []
     for line in stdout.splitlines():
         parts = line.split("|")
         if len(parts) >= 6:
-            requests.append({
-                "time": parts[0],
-                "src": parts[1],
-                "dst": parts[2],
-                "method": parts[3],
-                "host": parts[4],
-                "uri": parts[5],
-                "user_agent": parts[6] if len(parts) > 6 else "",
-            })
+            requests.append(
+                {
+                    "time": parts[0],
+                    "src": parts[1],
+                    "dst": parts[2],
+                    "method": parts[3],
+                    "host": parts[4],
+                    "uri": parts[5],
+                    "user_agent": parts[6] if len(parts) > 6 else "",
+                }
+            )
     return requests
 
 
@@ -76,21 +78,23 @@ def extract_dns_queries(pcap_path):
     stdout, _, _ = run_tshark(
         pcap_path,
         '-Y "dns" -T fields -e frame.time -e ip.src -e ip.dst '
-        '-e dns.qry.name -e dns.qry.type -e dns.flags.response '
-        '-E separator="|"'
+        "-e dns.qry.name -e dns.qry.type -e dns.flags.response "
+        '-E separator="|"',
     )
     queries = []
     for line in stdout.splitlines():
         parts = line.split("|")
         if len(parts) >= 5:
-            queries.append({
-                "time": parts[0],
-                "src": parts[1],
-                "dst": parts[2],
-                "query": parts[3],
-                "type": parts[4],
-                "is_response": parts[5] if len(parts) > 5 else "0",
-            })
+            queries.append(
+                {
+                    "time": parts[0],
+                    "src": parts[1],
+                    "dst": parts[2],
+                    "query": parts[3],
+                    "type": parts[4],
+                    "is_response": parts[5] if len(parts) > 5 else "0",
+                }
+            )
     return queries
 
 
@@ -99,19 +103,21 @@ def extract_tls_info(pcap_path):
     stdout, _, _ = run_tshark(
         pcap_path,
         '-Y "tls.handshake.type==1" -T fields -e ip.src -e ip.dst '
-        '-e tls.handshake.extensions_server_name -e tls.handshake.ja3 '
-        '-E separator="|"'
+        "-e tls.handshake.extensions_server_name -e tls.handshake.ja3 "
+        '-E separator="|"',
     )
     tls_sessions = []
     for line in stdout.splitlines():
         parts = line.split("|")
         if len(parts) >= 3:
-            tls_sessions.append({
-                "client": parts[0],
-                "server": parts[1],
-                "sni": parts[2],
-                "ja3": parts[3] if len(parts) > 3 else "",
-            })
+            tls_sessions.append(
+                {
+                    "client": parts[0],
+                    "server": parts[1],
+                    "sni": parts[2],
+                    "ja3": parts[3] if len(parts) > 3 else "",
+                }
+            )
     return tls_sessions
 
 
@@ -120,35 +126,46 @@ def detect_suspicious_traffic(pcap_path):
     findings = []
 
     # Large ICMP packets (possible data exfiltration)
-    stdout, _, rc = run_tshark(pcap_path, '-Y "icmp && frame.len > 100" -T fields -e ip.src -e ip.dst -e frame.len')
+    stdout, _, rc = run_tshark(
+        pcap_path,
+        '-Y "icmp && frame.len > 100" -T fields -e ip.src -e ip.dst -e frame.len',
+    )
     if stdout:
-        findings.append({
-            "type": "Large ICMP",
-            "description": "ICMP packets with large payloads detected",
-            "count": len(stdout.splitlines()),
-        })
+        findings.append(
+            {
+                "type": "Large ICMP",
+                "description": "ICMP packets with large payloads detected",
+                "count": len(stdout.splitlines()),
+            }
+        )
 
     # DNS TXT queries (possible tunneling)
-    stdout, _, rc = run_tshark(pcap_path, '-Y "dns.qry.type==16" -T fields -e ip.src -e dns.qry.name')
+    stdout, _, rc = run_tshark(
+        pcap_path, '-Y "dns.qry.type==16" -T fields -e ip.src -e dns.qry.name'
+    )
     if stdout:
-        findings.append({
-            "type": "DNS TXT Queries",
-            "description": "DNS TXT record queries detected",
-            "count": len(stdout.splitlines()),
-        })
+        findings.append(
+            {
+                "type": "DNS TXT Queries",
+                "description": "DNS TXT record queries detected",
+                "count": len(stdout.splitlines()),
+            }
+        )
 
     # Non-standard HTTP ports
     stdout, _, rc = run_tshark(
         pcap_path,
         '-Y "http && tcp.port != 80 && tcp.port != 443 && tcp.port != 8080" '
-        '-T fields -e ip.src -e ip.dst -e tcp.dstport'
+        "-T fields -e ip.src -e ip.dst -e tcp.dstport",
     )
     if stdout:
-        findings.append({
-            "type": "HTTP on non-standard port",
-            "description": "HTTP traffic on unusual ports",
-            "count": len(stdout.splitlines()),
-        })
+        findings.append(
+            {
+                "type": "HTTP on non-standard port",
+                "description": "HTTP traffic on unusual ports",
+                "count": len(stdout.splitlines()),
+            }
+        )
 
     return findings
 
@@ -209,8 +226,11 @@ if __name__ == "__main__":
         print("\n--- TLS Sessions ---")
         tls = extract_tls_info(pcap)
         for t in tls[:10]:
-            print(f"  {t['client']} -> {t['sni']} (JA3={t['ja3'][:16]}...)" if t['ja3'] else
-                  f"  {t['client']} -> {t['sni']}")
+            print(
+                f"  {t['client']} -> {t['sni']} (JA3={t['ja3'][:16]}...)"
+                if t["ja3"]
+                else f"  {t['client']} -> {t['sni']}"
+            )
 
         print("\n--- Suspicious Traffic ---")
         suspicious = detect_suspicious_traffic(pcap)

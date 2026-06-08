@@ -10,7 +10,6 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-
 SQL_INJECTION_PATTERNS = [
     r"(?i)(\bunion\b\s+\bselect\b)",
     r"(?i)(\bor\b\s+1\s*=\s*1)",
@@ -43,17 +42,19 @@ def scan_database_values(db_dump_path: str) -> list[dict]:
                 for pattern in SQL_INJECTION_PATTERNS:
                     match = re.search(pattern, value)
                     if match:
-                        findings.append({
-                            "type": "stored_sqli_payload",
-                            "severity": "critical",
-                            "table": table_name,
-                            "column": col_name,
-                            "row_index": row_idx,
-                            "matched_pattern": pattern,
-                            "matched_text": match.group(0),
-                            "value_preview": value[:200],
-                            "detail": f"SQL injection payload in {table_name}.{col_name} row {row_idx}",
-                        })
+                        findings.append(
+                            {
+                                "type": "stored_sqli_payload",
+                                "severity": "critical",
+                                "table": table_name,
+                                "column": col_name,
+                                "row_index": row_idx,
+                                "matched_pattern": pattern,
+                                "matched_text": match.group(0),
+                                "value_preview": value[:200],
+                                "detail": f"SQL injection payload in {table_name}.{col_name} row {row_idx}",
+                            }
+                        )
                         break
     return findings
 
@@ -65,7 +66,7 @@ def scan_source_code(source_dir: str) -> list[dict]:
         (r"(?i)cursor\.execute\s*\(\s*f[\"']", "python_fstring"),
         (r'(?i)query\s*=\s*["\'].*\+\s*\w+', "string_concatenation"),
         (r"(?i)\.format\s*\(.*\)\s*\)", "python_format"),
-        (r'(?i)\$\{.*\}\s*(?:FROM|WHERE|INSERT|UPDATE|DELETE)', "template_literal"),
+        (r"(?i)\$\{.*\}\s*(?:FROM|WHERE|INSERT|UPDATE|DELETE)", "template_literal"),
         (r'(?i)sprintf\s*\(\s*["\'].*(?:SELECT|INSERT|UPDATE|DELETE)', "sprintf_query"),
     ]
     findings = []
@@ -77,15 +78,17 @@ def scan_source_code(source_dir: str) -> list[dict]:
                 for line_no, line in enumerate(content.splitlines(), 1):
                     for pattern, pattern_name in dangerous_patterns:
                         if re.search(pattern, line):
-                            findings.append({
-                                "type": "second_order_sqli_sink",
-                                "severity": "high",
-                                "file": str(fpath),
-                                "line": line_no,
-                                "pattern": pattern_name,
-                                "code_snippet": line.strip()[:200],
-                                "detail": f"Potential second-order SQLi sink at {fpath.name}:{line_no}",
-                            })
+                            findings.append(
+                                {
+                                    "type": "second_order_sqli_sink",
+                                    "severity": "high",
+                                    "file": str(fpath),
+                                    "line": line_no,
+                                    "pattern": pattern_name,
+                                    "code_snippet": line.strip()[:200],
+                                    "detail": f"Potential second-order SQLi sink at {fpath.name}:{line_no}",
+                                }
+                            )
                             break
             except OSError:
                 continue
@@ -101,13 +104,15 @@ def trace_data_flow(db_findings: list[dict], code_findings: list[dict]) -> list[
         for code_f in code_findings:
             snippet = code_f.get("code_snippet", "").lower()
             if table.lower() in snippet or column.lower() in snippet:
-                attack_paths.append({
-                    "type": "confirmed_attack_path",
-                    "severity": "critical",
-                    "source": f"{table}.{column}",
-                    "sink": f"{code_f['file']}:{code_f['line']}",
-                    "detail": f"Stored payload in {table}.{column} flows to query at {code_f['file']}:{code_f['line']}",
-                })
+                attack_paths.append(
+                    {
+                        "type": "confirmed_attack_path",
+                        "severity": "critical",
+                        "source": f"{table}.{column}",
+                        "sink": f"{code_f['file']}:{code_f['line']}",
+                        "detail": f"Stored payload in {table}.{column} flows to query at {code_f['file']}:{code_f['line']}",
+                    }
+                )
     return attack_paths
 
 
@@ -135,15 +140,21 @@ def generate_report(db_dump_path: str = None, source_dir: str = None) -> dict:
         "severity_summary": dict(severity_counts),
         "stored_payloads": len(db_findings),
         "code_sinks": len(code_findings),
-        "confirmed_attack_paths": len([f for f in findings if f["type"] == "confirmed_attack_path"]),
+        "confirmed_attack_paths": len(
+            [f for f in findings if f["type"] == "confirmed_attack_path"]
+        ),
         "findings": findings,
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description="Second-Order SQL Injection Agent")
-    parser.add_argument("--db-dump", help="JSON database dump file to scan for stored payloads")
-    parser.add_argument("--source", help="Source code directory to scan for injection sinks")
+    parser.add_argument(
+        "--db-dump", help="JSON database dump file to scan for stored payloads"
+    )
+    parser.add_argument(
+        "--source", help="Source code directory to scan for injection sinks"
+    )
     parser.add_argument("--output", help="Output JSON file path")
     args = parser.parse_args()
 

@@ -15,7 +15,12 @@ def check_root_access_keys(session):
     iam = session.client("iam")
     summary = iam.get_account_summary()["SummaryMap"]
     root_keys = summary.get("AccountAccessKeysPresent", 0)
-    return {"control": "1.4", "description": "Root access keys", "status": "FAIL" if root_keys > 0 else "PASS", "detail": f"{root_keys} keys"}
+    return {
+        "control": "1.4",
+        "description": "Root access keys",
+        "status": "FAIL" if root_keys > 0 else "PASS",
+        "detail": f"{root_keys} keys",
+    }
 
 
 def check_root_mfa(session):
@@ -23,7 +28,11 @@ def check_root_mfa(session):
     iam = session.client("iam")
     summary = iam.get_account_summary()["SummaryMap"]
     mfa = summary.get("AccountMFAEnabled", 0)
-    return {"control": "1.5", "description": "Root MFA", "status": "PASS" if mfa else "FAIL"}
+    return {
+        "control": "1.5",
+        "description": "Root MFA",
+        "status": "PASS" if mfa else "FAIL",
+    }
 
 
 def check_password_policy(session):
@@ -42,9 +51,19 @@ def check_password_policy(session):
             issues.append("No numbers required")
         if not policy.get("RequireSymbols"):
             issues.append("No symbols required")
-        return {"control": "1.8-1.11", "description": "Password policy", "status": "FAIL" if issues else "PASS", "detail": issues}
+        return {
+            "control": "1.8-1.11",
+            "description": "Password policy",
+            "status": "FAIL" if issues else "PASS",
+            "detail": issues,
+        }
     except ClientError:
-        return {"control": "1.8", "description": "Password policy", "status": "FAIL", "detail": "No policy set"}
+        return {
+            "control": "1.8",
+            "description": "Password policy",
+            "status": "FAIL",
+            "detail": "No policy set",
+        }
 
 
 def check_cloudtrail_multiregion(session):
@@ -52,7 +71,12 @@ def check_cloudtrail_multiregion(session):
     ct = session.client("cloudtrail")
     trails = ct.describe_trails()["trailList"]
     multiregion = [t for t in trails if t.get("IsMultiRegionTrail")]
-    return {"control": "3.1", "description": "CloudTrail multi-region", "status": "PASS" if multiregion else "FAIL", "detail": f"{len(multiregion)} multi-region trails"}
+    return {
+        "control": "3.1",
+        "description": "CloudTrail multi-region",
+        "status": "PASS" if multiregion else "FAIL",
+        "detail": f"{len(multiregion)} multi-region trails",
+    }
 
 
 def check_cloudtrail_log_validation(session):
@@ -60,7 +84,12 @@ def check_cloudtrail_log_validation(session):
     ct = session.client("cloudtrail")
     trails = ct.describe_trails()["trailList"]
     no_validation = [t["Name"] for t in trails if not t.get("LogFileValidationEnabled")]
-    return {"control": "3.2", "description": "Log file validation", "status": "FAIL" if no_validation else "PASS", "detail": no_validation}
+    return {
+        "control": "3.2",
+        "description": "Log file validation",
+        "status": "FAIL" if no_validation else "PASS",
+        "detail": no_validation,
+    }
 
 
 def check_s3_encryption(session):
@@ -73,7 +102,12 @@ def check_s3_encryption(session):
             s3.get_bucket_encryption(Bucket=b["Name"])
         except ClientError:
             unencrypted.append(b["Name"])
-    return {"control": "2.1.1", "description": "S3 default encryption", "status": "FAIL" if unencrypted else "PASS", "detail": unencrypted}
+    return {
+        "control": "2.1.1",
+        "description": "S3 default encryption",
+        "status": "FAIL" if unencrypted else "PASS",
+        "detail": unencrypted,
+    }
 
 
 def check_vpc_flow_logs(session):
@@ -83,13 +117,20 @@ def check_vpc_flow_logs(session):
     flow_logs = ec2.describe_flow_logs()["FlowLogs"]
     logged_vpcs = {fl["ResourceId"] for fl in flow_logs}
     missing = [v["VpcId"] for v in vpcs if v["VpcId"] not in logged_vpcs]
-    return {"control": "5.1", "description": "VPC flow logs", "status": "FAIL" if missing else "PASS", "detail": missing}
+    return {
+        "control": "5.1",
+        "description": "VPC flow logs",
+        "status": "FAIL" if missing else "PASS",
+        "detail": missing,
+    }
 
 
 def check_default_sg_restrictions(session):
     """CIS 5.4 - Ensure default security group restricts all traffic."""
     ec2 = session.client("ec2")
-    sgs = ec2.describe_security_groups(Filters=[{"Name": "group-name", "Values": ["default"]}])["SecurityGroups"]
+    sgs = ec2.describe_security_groups(
+        Filters=[{"Name": "group-name", "Values": ["default"]}]
+    )["SecurityGroups"]
     open_default = []
     for sg in sgs:
         if sg.get("IpPermissions") or sg.get("IpPermissionsEgress"):
@@ -97,15 +138,25 @@ def check_default_sg_restrictions(session):
                 for ip_range in rule.get("IpRanges", []):
                     if ip_range.get("CidrIp") == "0.0.0.0/0":
                         open_default.append(sg["GroupId"])
-    return {"control": "5.4", "description": "Default SG restrictions", "status": "FAIL" if open_default else "PASS", "detail": open_default}
+    return {
+        "control": "5.4",
+        "description": "Default SG restrictions",
+        "status": "FAIL" if open_default else "PASS",
+        "detail": open_default,
+    }
 
 
 def run_full_audit(session):
     """Execute all CIS benchmark checks."""
     checks = [
-        check_root_access_keys, check_root_mfa, check_password_policy,
-        check_cloudtrail_multiregion, check_cloudtrail_log_validation,
-        check_s3_encryption, check_vpc_flow_logs, check_default_sg_restrictions,
+        check_root_access_keys,
+        check_root_mfa,
+        check_password_policy,
+        check_cloudtrail_multiregion,
+        check_cloudtrail_log_validation,
+        check_s3_encryption,
+        check_vpc_flow_logs,
+        check_default_sg_restrictions,
     ]
     results = []
     for check_fn in checks:
@@ -119,7 +170,9 @@ def run_full_audit(session):
 def main():
     parser = argparse.ArgumentParser(description="CIS Benchmark Cloud Audit Agent")
     parser.add_argument("--profile", default=os.getenv("AWS_PROFILE"))
-    parser.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION", "us-east-1"))
+    parser.add_argument(
+        "--region", default=os.getenv("AWS_DEFAULT_REGION", "us-east-1")
+    )
     parser.add_argument("--output", default="cis_audit_report.json")
     args = parser.parse_args()
 

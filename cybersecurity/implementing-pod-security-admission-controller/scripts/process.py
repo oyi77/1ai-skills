@@ -9,7 +9,6 @@ import subprocess
 import sys
 import argparse
 
-
 PSA_LABELS = {
     "enforce": "pod-security.kubernetes.io/enforce",
     "enforce-version": "pod-security.kubernetes.io/enforce-version",
@@ -20,8 +19,13 @@ PSA_LABELS = {
 }
 
 SYSTEM_NAMESPACES = {
-    "kube-system", "kube-public", "kube-node-lease",
-    "calico-system", "tigera-operator", "gatekeeper-system", "falco",
+    "kube-system",
+    "kube-public",
+    "kube-node-lease",
+    "calico-system",
+    "tigera-operator",
+    "gatekeeper-system",
+    "falco",
 }
 
 
@@ -53,10 +57,16 @@ def get_namespace_psa_labels() -> list:
 
 def dry_run_enforcement(namespace: str, level: str) -> dict:
     """Test what would happen if PSA enforcement was applied."""
-    stdout, stderr, rc = run_kubectl([
-        "label", "--dry-run=server", "--overwrite", "namespace", namespace,
-        f"pod-security.kubernetes.io/enforce={level}"
-    ])
+    stdout, stderr, rc = run_kubectl(
+        [
+            "label",
+            "--dry-run=server",
+            "--overwrite",
+            "namespace",
+            namespace,
+            f"pod-security.kubernetes.io/enforce={level}",
+        ]
+    )
     violations = []
     if "Warning" in stderr or "Warning" in stdout:
         for line in (stderr + stdout).split("\n"):
@@ -97,7 +107,9 @@ def audit_all_namespaces() -> list:
             total += 1
 
         system = "Yes" if ns["is_system"] else "No"
-        print(f"{ns['namespace']:<30} {ns['enforce']:<12} {ns['audit']:<12} {ns['warn']:<12} {system}")
+        print(
+            f"{ns['namespace']:<30} {ns['enforce']:<12} {ns['audit']:<12} {ns['warn']:<12} {system}"
+        )
 
     print(f"\n{compliant}/{total} non-system namespaces at restricted level")
     return ns_info
@@ -129,11 +141,15 @@ def main():
 
     test_cmd = subparsers.add_parser("test", help="Dry-run PSA enforcement")
     test_cmd.add_argument("--namespace", "-n", required=True)
-    test_cmd.add_argument("--level", default="restricted", choices=["baseline", "restricted"])
+    test_cmd.add_argument(
+        "--level", default="restricted", choices=["baseline", "restricted"]
+    )
 
     apply_cmd = subparsers.add_parser("apply", help="Apply PSA labels")
     apply_cmd.add_argument("--namespace", "-n", required=True)
-    apply_cmd.add_argument("--level", required=True, choices=["privileged", "baseline", "restricted"])
+    apply_cmd.add_argument(
+        "--level", required=True, choices=["privileged", "baseline", "restricted"]
+    )
     apply_cmd.add_argument("--version", default="latest")
 
     args = parser.parse_args()

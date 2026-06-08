@@ -25,24 +25,32 @@ def detect_credential_stuffing(df, ip_threshold=20, time_window="1h"):
         return []
     failed = failed.sort_values("timestamp")
     findings = []
-    ip_account = failed.groupby("source_ip").agg(
-        unique_accounts=("username", "nunique"),
-        total_attempts=("username", "count"),
-        first_seen=("timestamp", "min"),
-        last_seen=("timestamp", "max"),
-    ).reset_index()
+    ip_account = (
+        failed.groupby("source_ip")
+        .agg(
+            unique_accounts=("username", "nunique"),
+            total_attempts=("username", "count"),
+            first_seen=("timestamp", "min"),
+            last_seen=("timestamp", "max"),
+        )
+        .reset_index()
+    )
     stuffing_ips = ip_account[ip_account["unique_accounts"] >= ip_threshold]
     for _, row in stuffing_ips.iterrows():
         duration = (row["last_seen"] - row["first_seen"]).total_seconds()
-        findings.append({
-            "source_ip": row["source_ip"],
-            "unique_accounts_targeted": int(row["unique_accounts"]),
-            "total_attempts": int(row["total_attempts"]),
-            "duration_seconds": int(duration),
-            "attempts_per_minute": round(row["total_attempts"] / max(duration / 60, 1), 1),
-            "type": "credential_stuffing",
-            "severity": "CRITICAL" if row["unique_accounts"] > 100 else "HIGH",
-        })
+        findings.append(
+            {
+                "source_ip": row["source_ip"],
+                "unique_accounts_targeted": int(row["unique_accounts"]),
+                "total_attempts": int(row["total_attempts"]),
+                "duration_seconds": int(duration),
+                "attempts_per_minute": round(
+                    row["total_attempts"] / max(duration / 60, 1), 1
+                ),
+                "type": "credential_stuffing",
+                "severity": "CRITICAL" if row["unique_accounts"] > 100 else "HIGH",
+            }
+        )
     return sorted(findings, key=lambda x: x["unique_accounts_targeted"], reverse=True)
 
 
@@ -52,24 +60,30 @@ def detect_password_spray(df, account_threshold=10):
     if failed.empty:
         return []
     findings = []
-    ip_groups = failed.groupby("source_ip").agg(
-        unique_accounts=("username", "nunique"),
-        total_attempts=("username", "count"),
-    ).reset_index()
+    ip_groups = (
+        failed.groupby("source_ip")
+        .agg(
+            unique_accounts=("username", "nunique"),
+            total_attempts=("username", "count"),
+        )
+        .reset_index()
+    )
     spray_candidates = ip_groups[
-        (ip_groups["unique_accounts"] >= account_threshold) &
-        (ip_groups["total_attempts"] <= ip_groups["unique_accounts"] * 3)
+        (ip_groups["unique_accounts"] >= account_threshold)
+        & (ip_groups["total_attempts"] <= ip_groups["unique_accounts"] * 3)
     ]
     for _, row in spray_candidates.iterrows():
         ratio = row["total_attempts"] / row["unique_accounts"]
-        findings.append({
-            "source_ip": row["source_ip"],
-            "unique_accounts": int(row["unique_accounts"]),
-            "total_attempts": int(row["total_attempts"]),
-            "attempts_per_account": round(ratio, 1),
-            "type": "password_spray",
-            "severity": "HIGH",
-        })
+        findings.append(
+            {
+                "source_ip": row["source_ip"],
+                "unique_accounts": int(row["unique_accounts"]),
+                "total_attempts": int(row["total_attempts"]),
+                "attempts_per_account": round(ratio, 1),
+                "type": "password_spray",
+                "severity": "HIGH",
+            }
+        )
     return findings
 
 
@@ -78,20 +92,26 @@ def detect_distributed_attack(df, account_ip_threshold=5):
     failed = df[df["status"] == "failed"]
     if failed.empty:
         return []
-    account_ips = failed.groupby("username").agg(
-        unique_ips=("source_ip", "nunique"),
-        total_failures=("source_ip", "count"),
-    ).reset_index()
+    account_ips = (
+        failed.groupby("username")
+        .agg(
+            unique_ips=("source_ip", "nunique"),
+            total_failures=("source_ip", "count"),
+        )
+        .reset_index()
+    )
     distributed = account_ips[account_ips["unique_ips"] >= account_ip_threshold]
     findings = []
     for _, row in distributed.iterrows():
-        findings.append({
-            "username": row["username"],
-            "unique_source_ips": int(row["unique_ips"]),
-            "total_failures": int(row["total_failures"]),
-            "type": "distributed_attack",
-            "severity": "HIGH",
-        })
+        findings.append(
+            {
+                "username": row["username"],
+                "unique_source_ips": int(row["unique_ips"]),
+                "total_failures": int(row["total_failures"]),
+                "type": "distributed_attack",
+                "severity": "HIGH",
+            }
+        )
     return sorted(findings, key=lambda x: x["unique_source_ips"], reverse=True)
 
 
@@ -105,13 +125,15 @@ def analyze_success_after_failures(df, min_failures=5):
             if row["status"] == "failed":
                 failures += 1
             elif row["status"] == "success" and failures >= min_failures:
-                compromised.append({
-                    "username": username,
-                    "failures_before_success": failures,
-                    "success_ip": row.get("source_ip", ""),
-                    "success_time": str(row["timestamp"]),
-                    "severity": "CRITICAL",
-                })
+                compromised.append(
+                    {
+                        "username": username,
+                        "failures_before_success": failures,
+                        "success_ip": row.get("source_ip", ""),
+                        "success_time": str(row["timestamp"]),
+                        "severity": "CRITICAL",
+                    }
+                )
                 break
     return compromised
 
@@ -127,12 +149,14 @@ def analyze_user_agent_patterns(df):
     for ua, count in ua_counts.items():
         pct = count / total * 100
         if pct > 30 and count > 50:
-            suspicious.append({
-                "user_agent": str(ua)[:200],
-                "count": int(count),
-                "percentage": round(pct, 1),
-                "likely_automated": True,
-            })
+            suspicious.append(
+                {
+                    "user_agent": str(ua)[:200],
+                    "count": int(count),
+                    "percentage": round(pct, 1),
+                    "likely_automated": True,
+                }
+            )
     return suspicious
 
 
@@ -156,14 +180,19 @@ def main():
     parser = argparse.ArgumentParser(description="Credential Stuffing Detection Agent")
     parser.add_argument("--log-file", required=True, help="Authentication log file")
     parser.add_argument("--output", default="credential_stuffing_report.json")
-    parser.add_argument("--action", choices=[
-        "stuffing", "spray", "distributed", "compromised", "full_hunt"
-    ], default="full_hunt")
+    parser.add_argument(
+        "--action",
+        choices=["stuffing", "spray", "distributed", "compromised", "full_hunt"],
+        default="full_hunt",
+    )
     args = parser.parse_args()
 
     df = load_auth_logs(args.log_file)
-    report = {"generated_at": datetime.utcnow().isoformat(),
-              "metrics": calculate_attack_metrics(df), "findings": {}}
+    report = {
+        "generated_at": datetime.utcnow().isoformat(),
+        "metrics": calculate_attack_metrics(df),
+        "findings": {},
+    }
     print(f"[+] Loaded {len(df)} auth events")
 
     if args.action in ("stuffing", "full_hunt"):

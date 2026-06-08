@@ -44,6 +44,7 @@ def run(name: str, fn):
 print("\n[0] Config")
 try:
     from modules.base import load_config
+
     CFG = load_config()
     ok("config: load_config()")
     assert CFG.get("postbridge_api_key"), "postbridge_api_key missing"
@@ -65,19 +66,32 @@ print("\n[1] Import tests")
 
 def _import_all():
     from modules import (
-        BaseModule, load_config,
-        PersonaManager, ContentPlanner, QualityGate,
-        AnalyticsEngine, CommentManager, EngagementEngine,
-        ContentRepurposer, TrendScanner, PostBridgePublisher,
+        BaseModule,
+        load_config,
+        PersonaManager,
+        ContentPlanner,
+        QualityGate,
+        AnalyticsEngine,
+        CommentManager,
+        EngagementEngine,
+        ContentRepurposer,
+        TrendScanner,
+        PostBridgePublisher,
         Orchestrator,
     )
+
     # Just verify they're classes/callables
     for name, obj in [
-        ("BaseModule", BaseModule), ("PersonaManager", PersonaManager),
-        ("ContentPlanner", ContentPlanner), ("QualityGate", QualityGate),
-        ("AnalyticsEngine", AnalyticsEngine), ("CommentManager", CommentManager),
-        ("EngagementEngine", EngagementEngine), ("ContentRepurposer", ContentRepurposer),
-        ("TrendScanner", TrendScanner), ("PostBridgePublisher", PostBridgePublisher),
+        ("BaseModule", BaseModule),
+        ("PersonaManager", PersonaManager),
+        ("ContentPlanner", ContentPlanner),
+        ("QualityGate", QualityGate),
+        ("AnalyticsEngine", AnalyticsEngine),
+        ("CommentManager", CommentManager),
+        ("EngagementEngine", EngagementEngine),
+        ("ContentRepurposer", ContentRepurposer),
+        ("TrendScanner", TrendScanner),
+        ("PostBridgePublisher", PostBridgePublisher),
         ("Orchestrator", Orchestrator),
     ]:
         assert callable(obj), f"{name} is not callable"
@@ -157,7 +171,11 @@ def _cp_optimal_times():
 
 
 def _cp_weekly_calendar():
-    slots = cp.generate_weekly_calendar(products=CFG.get("products",[]), personas=CFG.get("personas",[]), platforms=["tiktok","instagram","facebook"])
+    slots = cp.generate_weekly_calendar(
+        products=CFG.get("products", []),
+        personas=CFG.get("personas", []),
+        platforms=["tiktok", "instagram", "facebook"],
+    )
     # WeeklyCalendar may be a dataclass or dict - check it has content
     assert slots is not None
 
@@ -217,7 +235,11 @@ ae = AnalyticsEngine(CFG)
 
 def _ae_report_mock():
     # Check analytics engine has expected methods
-    assert hasattr(ae, "sync_analytics") or hasattr(ae, "generate_report") or hasattr(ae, "get_post_performance")
+    assert (
+        hasattr(ae, "sync_analytics")
+        or hasattr(ae, "generate_report")
+        or hasattr(ae, "get_post_performance")
+    )
 
 
 def _ae_top_performing():
@@ -372,6 +394,7 @@ try:
     from modules.postbridge_publisher import PostBridgePublisher, PostBridgeClient
 except ImportError:
     from modules.postbridge_publisher import PostBridgePublisher
+
     PostBridgeClient = None
 
 
@@ -388,7 +411,9 @@ def _pb_instantiate():
 
 
 run("PostBridgePublisher: PostBridgeClient imported from source", _pb_import)
-run("PostBridgePublisher: instantiates with config + has added methods", _pb_instantiate)
+run(
+    "PostBridgePublisher: instantiates with config + has added methods", _pb_instantiate
+)
 
 
 def _pb_health_live():
@@ -400,7 +425,9 @@ def _pb_health_live():
     assert result["status"] in ("ok", "error"), f"Unexpected status: {result['status']}"
     if result["status"] == "ok":
         assert result["accounts_count"] >= 0
-    print(f"     → {result['status']} | {result['latency_ms']}ms | {result['accounts_count']} accounts")
+    print(
+        f"     → {result['status']} | {result['latency_ms']}ms | {result['accounts_count']} accounts"
+    )
 
 
 def _pb_accounts_live():

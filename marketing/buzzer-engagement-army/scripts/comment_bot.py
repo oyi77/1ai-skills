@@ -4,6 +4,7 @@ Comment Bot — post natural-sounding comments from multiple accounts.
 Uses comment_library.py for contextual Indonesian comments.
 Staggers comments to avoid platform detection.
 """
+
 import os
 import json
 import random
@@ -14,7 +15,10 @@ from pathlib import Path
 
 POSTBRIDGE_BASE = "https://api.post-bridge.com/v1"
 POSTBRIDGE_KEY = os.environ.get("POSTBRIDGE_KEY", "REDACTED_ROTATED_CREDENTIAL")
-HEADERS = {"Authorization": f"Bearer {POSTBRIDGE_KEY}", "Content-Type": "application/json"}
+HEADERS = {
+    "Authorization": f"Bearer {POSTBRIDGE_KEY}",
+    "Content-Type": "application/json",
+}
 
 LOG_DIR = Path(__file__).parent.parent / "logs"
 LOG_FILE = LOG_DIR / "comment_bot.log"
@@ -50,22 +54,24 @@ def post_comment_via_api(
     post_id: str,
     platform: str,
     comment_text: str,
-    dry_run: bool = False
+    dry_run: bool = False,
 ) -> bool:
     """
     Post a comment via platform API.
-    
+
     Note: PostBridge is a scheduling tool, not a commenting API.
     Real commenting requires platform-specific APIs:
       - TikTok: Research API / unofficial methods
       - Instagram: Graph API (comment on media)
       - Facebook: Graph API (comment on post)
-    
+
     This function logs the intent and simulates the action.
     For production: integrate platform-specific commenting API here.
     """
-    _log(f"COMMENT | account:{account_id} | platform:{platform} | post:{post_id} | text:'{comment_text[:50]}...'")
-    
+    _log(
+        f"COMMENT | account:{account_id} | platform:{platform} | post:{post_id} | text:'{comment_text[:50]}...'"
+    )
+
     if dry_run:
         _log(f"  [DRY RUN] Would comment: '{comment_text}'")
         return True
@@ -92,18 +98,20 @@ def run_comment_campaign(
     platform: str = "tiktok",
     delay_range: tuple = (120, 300),
     comments_per_account: int = 1,
-    dry_run: bool = False
+    dry_run: bool = False,
 ) -> dict:
     """
     Run a comment campaign across multiple accounts.
-    
+
     Each account posts a different, niche-appropriate comment.
     Comments are staggered with 2-5 minute gaps.
     """
     from account_manager import can_act, record_action
     from comment_library import get_comments_for_post
 
-    _log(f"=== Comment Campaign START | post:{post_id} | accounts:{len(account_ids)} | dry_run:{dry_run} ===")
+    _log(
+        f"=== Comment Campaign START | post:{post_id} | accounts:{len(account_ids)} | dry_run:{dry_run} ==="
+    )
 
     # Load used comments to avoid duplication on same post
     used_data = _load_used_comments()
@@ -124,7 +132,9 @@ def run_comment_campaign(
             continue
 
         # Get unique comment(s) for this account
-        comments = get_comments_for_post(post_caption, count=comments_per_account, exclude=already_used)
+        comments = get_comments_for_post(
+            post_caption, count=comments_per_account, exclude=already_used
+        )
 
         for comment_text in comments:
             success = post_comment_via_api(
@@ -132,7 +142,7 @@ def run_comment_campaign(
                 post_id=post_id,
                 platform=platform,
                 comment_text=comment_text,
-                dry_run=dry_run
+                dry_run=dry_run,
             )
 
             if success:
@@ -140,11 +150,9 @@ def run_comment_campaign(
                     record_action(acc_id)
                     already_used.append(comment_text)
                 results["success"] += 1
-                results["comments"].append({
-                    "account_id": acc_id,
-                    "comment": comment_text,
-                    "status": "success"
-                })
+                results["comments"].append(
+                    {"account_id": acc_id, "comment": comment_text, "status": "success"}
+                )
             else:
                 results["failed"] += 1
 
@@ -159,7 +167,9 @@ def run_comment_campaign(
     used_data[post_key] = already_used
     _save_used_comments(used_data)
 
-    _log(f"=== Comment Campaign DONE | success:{results['success']} failed:{results['failed']} skipped:{results['skipped']} ===")
+    _log(
+        f"=== Comment Campaign DONE | success:{results['success']} failed:{results['failed']} skipped:{results['skipped']} ==="
+    )
     return results
 
 
@@ -167,21 +177,28 @@ def get_recent_post_ids(limit: int = 5, platform: str = None) -> list:
     """Fetch recent post IDs from PostBridge for commenting."""
     try:
         params = {"limit": limit}
-        resp = requests.get(f"{POSTBRIDGE_BASE}/post-results", headers=HEADERS, params=params, timeout=15)
+        resp = requests.get(
+            f"{POSTBRIDGE_BASE}/post-results",
+            headers=HEADERS,
+            params=params,
+            timeout=15,
+        )
         resp.raise_for_status()
         data = resp.json()
         results = data if isinstance(data, list) else data.get("data", [])
-        
+
         posts = []
         for r in results:
             if platform and r.get("platform", "").lower() != platform.lower():
                 continue
-            posts.append({
-                "post_id": r.get("platform_post_id", r.get("id", "")),
-                "platform": r.get("platform", ""),
-                "url": r.get("url", ""),
-                "caption": r.get("caption", "")
-            })
+            posts.append(
+                {
+                    "post_id": r.get("platform_post_id", r.get("id", "")),
+                    "platform": r.get("platform", ""),
+                    "url": r.get("url", ""),
+                    "caption": r.get("caption", ""),
+                }
+            )
         return posts
     except Exception as e:
         _log(f"ERROR get_recent_post_ids: {e}")
@@ -190,15 +207,15 @@ def get_recent_post_ids(limit: int = 5, platform: str = None) -> list:
 
 if __name__ == "__main__":
     print("=== Comment Bot Test ===")
-    
+
     # Test comment library
     from comment_library import get_comments_for_post, detect_niche
-    
+
     test_caption = "Tips kesehatan harian supaya badan tetap fit dan bugar"
     niche = detect_niche(test_caption)
     print(f"\nTest caption: '{test_caption}'")
     print(f"Detected niche: {niche}")
-    
+
     # Get 7 unique comments (one per TikTok account)
     comments = get_comments_for_post(test_caption, count=7)
     print(f"\nGenerated {len(comments)} unique comments:")
@@ -208,17 +225,19 @@ if __name__ == "__main__":
     # Test comment campaign (dry run)
     test_accounts = [48374, 48373, 48372]
     print(f"\nRunning comment campaign (DRY RUN) on {len(test_accounts)} accounts...")
-    
+
     results = run_comment_campaign(
         account_ids=test_accounts,
         post_id="test_post_001",
         post_caption=test_caption,
         platform="tiktok",
         delay_range=(3, 8),  # Short delays for testing
-        dry_run=True
+        dry_run=True,
     )
-    
-    print(f"\nResults: {results['success']} success, {results['failed']} failed, {results['skipped']} skipped")
+
+    print(
+        f"\nResults: {results['success']} success, {results['failed']} failed, {results['skipped']} skipped"
+    )
     print("\nComments posted:")
     for c in results["comments"]:
         print(f"  Account {c['account_id']}: {c['comment']}")

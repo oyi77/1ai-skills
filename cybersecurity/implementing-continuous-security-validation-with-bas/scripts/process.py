@@ -22,13 +22,26 @@ from pathlib import Path
 
 import pandas as pd
 
-
 CONTROL_TECHNIQUE_MAP = {
     "email_gateway": ["T1566.001", "T1566.002", "T1566.003"],
-    "edr": ["T1059.001", "T1059.003", "T1003.001", "T1055", "T1547.001",
-            "T1053.005", "T1027", "T1140"],
-    "ngfw_proxy": ["T1071.001", "T1071.004", "T1048.001", "T1048.003",
-                   "T1572", "T1090"],
+    "edr": [
+        "T1059.001",
+        "T1059.003",
+        "T1003.001",
+        "T1055",
+        "T1547.001",
+        "T1053.005",
+        "T1027",
+        "T1140",
+    ],
+    "ngfw_proxy": [
+        "T1071.001",
+        "T1071.004",
+        "T1048.001",
+        "T1048.003",
+        "T1572",
+        "T1090",
+    ],
     "siem": ["T1087", "T1018", "T1069", "T1021.002", "T1021.001"],
     "dlp": ["T1048", "T1567", "T1041", "T1560"],
     "ndr": ["T1071", "T1021", "T1040", "T1046"],
@@ -51,17 +64,19 @@ def analyze_control_effectiveness(df):
         detected = len(relevant[relevant["result"] == "detected"])
         missed = len(relevant[relevant["result"] == "missed"])
 
-        scores.append({
-            "control": control,
-            "total_tests": total,
-            "prevented": prevented,
-            "detected": detected,
-            "missed": missed,
-            "prevention_rate": round(prevented / total * 100, 1),
-            "detection_rate": round(detected / total * 100, 1),
-            "effectiveness": round((prevented + detected) / total * 100, 1),
-            "gap_rate": round(missed / total * 100, 1),
-        })
+        scores.append(
+            {
+                "control": control,
+                "total_tests": total,
+                "prevented": prevented,
+                "detected": detected,
+                "missed": missed,
+                "prevention_rate": round(prevented / total * 100, 1),
+                "detection_rate": round(detected / total * 100, 1),
+                "effectiveness": round((prevented + detected) / total * 100, 1),
+                "gap_rate": round(missed / total * 100, 1),
+            }
+        )
 
     return pd.DataFrame(scores).sort_values("effectiveness", ascending=True)
 
@@ -73,10 +88,15 @@ def identify_gaps(df):
         print("[+] No gaps found - all attacks were prevented or detected!")
         return pd.DataFrame()
 
-    gaps = missed.groupby(["technique_id", "technique_name"]).agg(
-        miss_count=("result", "count"),
-        targets=("target", lambda x: ", ".join(x.unique())),
-    ).reset_index().sort_values("miss_count", ascending=False)
+    gaps = (
+        missed.groupby(["technique_id", "technique_name"])
+        .agg(
+            miss_count=("result", "count"),
+            targets=("target", lambda x: ", ".join(x.unique())),
+        )
+        .reset_index()
+        .sort_values("miss_count", ascending=False)
+    )
 
     return gaps
 
@@ -89,18 +109,26 @@ def print_summary(scores_df, gaps_df):
 
     print(f"\nControl Scores:")
     for _, row in scores_df.iterrows():
-        status = "PASS" if row["effectiveness"] >= 80 else "WARN" if row["effectiveness"] >= 60 else "FAIL"
-        print(f"  [{status}] {row['control']:<15} "
-              f"Effectiveness: {row['effectiveness']}% "
-              f"(Prevent: {row['prevention_rate']}% | "
-              f"Detect: {row['detection_rate']}% | "
-              f"Miss: {row['gap_rate']}%)")
+        status = (
+            "PASS"
+            if row["effectiveness"] >= 80
+            else "WARN" if row["effectiveness"] >= 60 else "FAIL"
+        )
+        print(
+            f"  [{status}] {row['control']:<15} "
+            f"Effectiveness: {row['effectiveness']}% "
+            f"(Prevent: {row['prevention_rate']}% | "
+            f"Detect: {row['detection_rate']}% | "
+            f"Miss: {row['gap_rate']}%)"
+        )
 
     if len(gaps_df) > 0:
         print(f"\nTop Security Gaps (attacks that bypass controls):")
         for _, row in gaps_df.head(10).iterrows():
-            print(f"  {row['technique_id']}: {row['technique_name']} "
-                  f"({row['miss_count']} misses)")
+            print(
+                f"  {row['technique_id']}: {row['technique_name']} "
+                f"({row['miss_count']} misses)"
+            )
 
 
 def main():

@@ -27,7 +27,7 @@ def parse_evilginx_session(session_data: str) -> dict:
         "create_time": "",
         "update_time": "",
         "tokens": [],
-        "custom": {}
+        "custom": {},
     }
 
     lines = session_data.strip().split("\n")
@@ -63,7 +63,7 @@ def extract_cookies_from_tokens(token_data: str) -> list:
         r'value:\s*"?([^"\n]+)"?\s*.*?'
         r'domain:\s*"?([^"\n]+)"?\s*.*?'
         r'path:\s*"?([^"\n]+)"?',
-        re.DOTALL
+        re.DOTALL,
     )
 
     for match in cookie_pattern.finditer(token_data):
@@ -74,7 +74,7 @@ def extract_cookies_from_tokens(token_data: str) -> list:
             "path": match.group(4).strip(),
             "secure": True,
             "httpOnly": True,
-            "sameSite": "None"
+            "sameSite": "None",
         }
         cookies.append(cookie)
 
@@ -87,16 +87,18 @@ def export_cookies_for_browser(cookies: list, output_format: str = "json") -> st
         # Cookie-Editor compatible JSON format
         browser_cookies = []
         for cookie in cookies:
-            browser_cookies.append({
-                "name": cookie["name"],
-                "value": cookie["value"],
-                "domain": cookie["domain"],
-                "path": cookie.get("path", "/"),
-                "secure": cookie.get("secure", True),
-                "httpOnly": cookie.get("httpOnly", True),
-                "sameSite": cookie.get("sameSite", "None"),
-                "expirationDate": None
-            })
+            browser_cookies.append(
+                {
+                    "name": cookie["name"],
+                    "value": cookie["value"],
+                    "domain": cookie["domain"],
+                    "path": cookie.get("path", "/"),
+                    "secure": cookie.get("secure", True),
+                    "httpOnly": cookie.get("httpOnly", True),
+                    "sameSite": cookie.get("sameSite", "None"),
+                    "expirationDate": None,
+                }
+            )
         return json.dumps(browser_cookies, indent=2)
 
     elif output_format == "netscape":

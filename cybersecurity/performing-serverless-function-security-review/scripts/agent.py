@@ -25,9 +25,17 @@ def list_all_functions(client):
 
 def check_deprecated_runtime(runtime):
     deprecated = [
-        "python2.7", "python3.6", "python3.7", "nodejs10.x",
-        "nodejs12.x", "nodejs14.x", "dotnetcore2.1", "dotnetcore3.1",
-        "ruby2.5", "java8", "go1.x",
+        "python2.7",
+        "python3.6",
+        "python3.7",
+        "nodejs10.x",
+        "nodejs12.x",
+        "nodejs14.x",
+        "dotnetcore2.1",
+        "dotnetcore3.1",
+        "ruby2.5",
+        "java8",
+        "go1.x",
     ]
     return runtime in deprecated
 
@@ -40,7 +48,9 @@ def audit_execution_role(iam, role_arn):
         for policy in attached["AttachedPolicies"]:
             if policy["PolicyName"] == "AdministratorAccess":
                 findings.append(f"CRITICAL: Role {role_name} has AdministratorAccess")
-            version_id = iam.get_policy(PolicyArn=policy["PolicyArn"])["Policy"]["DefaultVersionId"]
+            version_id = iam.get_policy(PolicyArn=policy["PolicyArn"])["Policy"][
+                "DefaultVersionId"
+            ]
             doc = iam.get_policy_version(
                 PolicyArn=policy["PolicyArn"], VersionId=version_id
             )["PolicyVersion"]["Document"]

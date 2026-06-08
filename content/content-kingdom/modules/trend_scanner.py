@@ -12,12 +12,29 @@ from .base import BaseModule
 
 # Seeded evergreen niches for offline/mock mode
 _EVERGREEN = {
-    "tiktok":    ["AI tools", "cara cepat kaya", "bisnis modal minim", "passive income",
-                  "affiliate marketing", "jualan online", "tips produktif"],
-    "instagram": ["motivasi bisnis", "tips UMKM", "desain konten", "branding personal",
-                  "digital marketing Indonesia"],
-    "youtube":   ["tutorial AI", "review tools digital", "strategi konten viral",
-                  "cara dapat uang online", "bisnis dari rumah"],
+    "tiktok": [
+        "AI tools",
+        "cara cepat kaya",
+        "bisnis modal minim",
+        "passive income",
+        "affiliate marketing",
+        "jualan online",
+        "tips produktif",
+    ],
+    "instagram": [
+        "motivasi bisnis",
+        "tips UMKM",
+        "desain konten",
+        "branding personal",
+        "digital marketing Indonesia",
+    ],
+    "youtube": [
+        "tutorial AI",
+        "review tools digital",
+        "strategi konten viral",
+        "cara dapat uang online",
+        "bisnis dari rumah",
+    ],
 }
 
 
@@ -49,14 +66,16 @@ class TrendScanner(BaseModule):
         topics = random.sample(pool, min(limit, len(pool)))
         results = []
         for i, topic in enumerate(topics, start=1):
-            results.append({
-                "rank": i,
-                "topic": topic,
-                "hook_angle": self._make_hook(topic),
-                "estimated_reach": random.randint(10_000, 500_000),
-                "source": "mock" if mock else "evergreen_seed",
-                "scanned_at": datetime.now(timezone.utc).isoformat(),
-            })
+            results.append(
+                {
+                    "rank": i,
+                    "topic": topic,
+                    "hook_angle": self._make_hook(topic),
+                    "estimated_reach": random.randint(10_000, 500_000),
+                    "source": "mock" if mock else "evergreen_seed",
+                    "scanned_at": datetime.now(timezone.utc).isoformat(),
+                }
+            )
         return results
 
     def _make_hook(self, topic: str) -> str:
@@ -70,11 +89,17 @@ class TrendScanner(BaseModule):
 
     def get_trending_hashtags(self, platform: str = "tiktok") -> List[str]:
         """Return a curated trending hashtag list for the platform."""
-        base = ["#AI", "#BisnisDaring", "#JENDRALBOT", "#Indonesia", "#DigitalMarketing"]
+        base = [
+            "#AI",
+            "#BisnisDaring",
+            "#JENDRALBOT",
+            "#Indonesia",
+            "#DigitalMarketing",
+        ]
         platform_tags = {
-            "tiktok":    ["#TikTokIndonesia", "#FYP", "#TikTokViral", "#ContentCreator"],
+            "tiktok": ["#TikTokIndonesia", "#FYP", "#TikTokViral", "#ContentCreator"],
             "instagram": ["#InstagramIndonesia", "#ReelsIndonesia", "#UMKM"],
-            "youtube":   ["#YouTubeIndonesia", "#Shorts", "#Tutorial"],
-            "facebook":  ["#FacebookIndonesia", "#BisnisFacebook"],
+            "youtube": ["#YouTubeIndonesia", "#Shorts", "#Tutorial"],
+            "facebook": ["#FacebookIndonesia", "#BisnisFacebook"],
         }
         return base + platform_tags.get(platform, [])

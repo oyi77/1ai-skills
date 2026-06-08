@@ -38,7 +38,14 @@ def test_depth_limit(url, max_depth=20, headers=None):
             has_errors = "errors" in data
             has_data = bool(data.get("data"))
             blocked = has_errors and not has_data
-            results.append({"depth": depth, "status": resp.status_code, "blocked": blocked, "response_time_ms": resp.elapsed.total_seconds() * 1000})
+            results.append(
+                {
+                    "depth": depth,
+                    "status": resp.status_code,
+                    "blocked": blocked,
+                    "response_time_ms": resp.elapsed.total_seconds() * 1000,
+                }
+            )
             if not blocked:
                 last_success = depth
             if blocked:
@@ -46,11 +53,21 @@ def test_depth_limit(url, max_depth=20, headers=None):
         except Exception as e:
             results.append({"depth": depth, "error": str(e)})
             break
-    finding = "NO_DEPTH_LIMIT" if last_success >= max_depth else f"DEPTH_LIMIT_AT_{last_success + 1}"
-    severity = "HIGH" if last_success >= 15 else "MEDIUM" if last_success >= 8 else "LOW"
+    finding = (
+        "NO_DEPTH_LIMIT"
+        if last_success >= max_depth
+        else f"DEPTH_LIMIT_AT_{last_success + 1}"
+    )
+    severity = (
+        "HIGH" if last_success >= 15 else "MEDIUM" if last_success >= 8 else "LOW"
+    )
     return {
-        "url": url, "max_depth_tested": max_depth, "max_allowed_depth": last_success,
-        "finding": finding, "severity": severity, "details": results,
+        "url": url,
+        "max_depth_tested": max_depth,
+        "max_allowed_depth": last_success,
+        "finding": finding,
+        "severity": severity,
+        "details": results,
         "timestamp": datetime.utcnow().isoformat(),
     }
 
@@ -63,7 +80,11 @@ def test_circular_query(url, type_a, field_a, type_b, field_b, depth=10, headers
     fragment = ""
     for i in range(depth):
         if i % 2 == 0:
-            fragment = f"{field_a} {{ {fragment} }}" if fragment else f"{field_a} {{ __typename }}"
+            fragment = (
+                f"{field_a} {{ {fragment} }}"
+                if fragment
+                else f"{field_a} {{ __typename }}"
+            )
         else:
             fragment = f"{field_b} {{ {fragment} }}"
     query = f"query {{ {fragment} }}"
@@ -71,7 +92,8 @@ def test_circular_query(url, type_a, field_a, type_b, field_b, depth=10, headers
         resp = requests.post(url, json={"query": query}, headers=hdrs, timeout=30)
         data = resp.json()
         return {
-            "url": url, "circular_depth": depth,
+            "url": url,
+            "circular_depth": depth,
             "type_pair": f"{type_a}.{field_a} <-> {type_b}.{field_b}",
             "status": resp.status_code,
             "blocked": "errors" in data and not data.get("data"),
@@ -92,10 +114,14 @@ def test_batch_query(url, count=50, headers=None):
         data = resp.json()
         accepted = isinstance(data, list)
         return {
-            "url": url, "batch_size": count, "batch_accepted": accepted,
+            "url": url,
+            "batch_size": count,
+            "batch_accepted": accepted,
             "responses": len(data) if accepted else 0,
             "finding": f"BATCH_ALLOWED_{count}" if accepted else "BATCH_REJECTED",
-            "severity": "HIGH" if accepted and count >= 20 else "MEDIUM" if accepted else "INFO",
+            "severity": (
+                "HIGH" if accepted and count >= 20 else "MEDIUM" if accepted else "INFO"
+            ),
         }
     except Exception as e:
         return {"error": str(e)}
@@ -116,8 +142,11 @@ def test_resource_exhaustion(url, width=50, depth=5, headers=None):
         resp = requests.post(url, json={"query": query}, headers=hdrs, timeout=30)
         elapsed = (time.time() - start) * 1000
         return {
-            "url": url, "width": width, "depth": depth,
-            "total_fields": width * depth, "status": resp.status_code,
+            "url": url,
+            "width": width,
+            "depth": depth,
+            "total_fields": width * depth,
+            "status": resp.status_code,
             "response_time_ms": round(elapsed, 1),
             "finding": "SLOW_RESPONSE" if elapsed > 5000 else "NORMAL",
         }
@@ -156,11 +185,21 @@ def main():
     if args.command == "depth":
         result = test_depth_limit(args.url, args.max_depth, headers or None)
     elif args.command == "circular":
-        result = test_circular_query(args.url, args.type_a, args.field_a, args.type_b, args.field_b, args.depth, headers or None)
+        result = test_circular_query(
+            args.url,
+            args.type_a,
+            args.field_a,
+            args.type_b,
+            args.field_b,
+            args.depth,
+            headers or None,
+        )
     elif args.command == "batch":
         result = test_batch_query(args.url, args.count, headers or None)
     elif args.command == "width":
-        result = test_resource_exhaustion(args.url, args.width, args.depth, headers or None)
+        result = test_resource_exhaustion(
+            args.url, args.width, args.depth, headers or None
+        )
     else:
         parser.print_help()
         return

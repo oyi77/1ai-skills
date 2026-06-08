@@ -27,7 +27,9 @@ class QRadarClient:
     def _request(self, method, endpoint, data=None):
         url = f"{self.base_url}/{endpoint}"
         body = json.dumps(data).encode() if data else None
-        req = urllib.request.Request(url, data=body, headers=self.headers, method=method)
+        req = urllib.request.Request(
+            url, data=body, headers=self.headers, method=method
+        )
         try:
             with urllib.request.urlopen(req, context=self.ctx, timeout=60) as resp:
                 return json.loads(resp.read().decode())
@@ -46,6 +48,7 @@ class QRadarClient:
         if not search_id:
             return result
         import time
+
         for _ in range(30):
             status = self._request("GET", f"ariel/searches/{search_id}")
             if status.get("status") == "COMPLETED":
@@ -83,7 +86,9 @@ class QRadarClient:
     def add_to_reference_set(self, name, value):
         """Add a value to a reference set."""
         encoded = urllib.parse.quote(name)
-        return self._request("POST", f"reference_data/sets/{encoded}?value={urllib.parse.quote(value)}")
+        return self._request(
+            "POST", f"reference_data/sets/{encoded}?value={urllib.parse.quote(value)}"
+        )
 
     def create_reference_set(self, name, element_type="IP", ttl="30 days"):
         """Create a new reference set."""
@@ -148,6 +153,7 @@ def generate_report(client):
 
 if __name__ == "__main__":
     import os
+
     host = os.environ.get("QRADAR_HOST", "qradar.example.com")
     token = os.environ.get("QRADAR_TOKEN", "")
     if not token:
@@ -170,4 +176,6 @@ if __name__ == "__main__":
     elif action == "aql" and len(sys.argv) > 2:
         print(json.dumps(client.search_aql(" ".join(sys.argv[2:])), indent=2))
     else:
-        print("Usage: agent.py [report|offenses|offense <id>|brute-force|lateral-movement|aql <query>]")
+        print(
+            "Usage: agent.py [report|offenses|offense <id>|brute-force|lateral-movement|aql <query>]"
+        )

@@ -9,18 +9,26 @@ so both the Orchestrator facade (passes dict) and the root pipeline
 
 import random
 from typing import Optional
+
 try:
     from .base import BaseModule, load_config
 except ImportError:
     import sys, os
+
     sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
     from base_module import BaseModule
-    def load_config(p): import json; return json.load(open(p))
+
+    def load_config(p):
+        import json
+
+        return json.load(open(p))
 
 
 class PersonaManager(BaseModule):
 
-    def __init__(self, config: Optional[dict] = None, config_path: Optional[str] = None):
+    def __init__(
+        self, config: Optional[dict] = None, config_path: Optional[str] = None
+    ):
         if config is None:
             config = load_config(config_path) if config_path else load_config()
         super().__init__(config)
@@ -66,9 +74,9 @@ class PersonaManager(BaseModule):
         label = product.get("price_label", "FREE")
 
         templates = {
-            "hook":        f"{hook}\n\n✅ {product['name']} — {label}\n🔗 {url}\n\n{tags}\n\n{sig}",
-            "story":       f"Dulu aku juga pernah {pain}...\n\nSampai ketemu {product['name']} 🔥\n\n👉 {label} — {url}\n\n{tags}\n\n{sig}",
-            "cta":         f"⚡ JANGAN SKIP!\n\n{product['name']} — {label}\n\n{hook}\n\n🔥 {url}\n\n{tags}\n\n{sig}",
+            "hook": f"{hook}\n\n✅ {product['name']} — {label}\n🔗 {url}\n\n{tags}\n\n{sig}",
+            "story": f"Dulu aku juga pernah {pain}...\n\nSampai ketemu {product['name']} 🔥\n\n👉 {label} — {url}\n\n{tags}\n\n{sig}",
+            "cta": f"⚡ JANGAN SKIP!\n\n{product['name']} — {label}\n\n{hook}\n\n🔥 {url}\n\n{tags}\n\n{sig}",
             "educational": f"{hook}\n\n💡 {product['name']} ({label})\n🔗 {url}\n\n{tags}\n\n{sig}",
         }
         return templates.get(style, templates["hook"])
@@ -80,8 +88,12 @@ class PersonaManager(BaseModule):
         """
         persona = self.personas.get(persona_id)
         if not persona:
-            return {"score": 0, "issues": [f"Unknown persona: {persona_id}"],
-                    "suggestions": [], "consistent": False}
+            return {
+                "score": 0,
+                "issues": [f"Unknown persona: {persona_id}"],
+                "suggestions": [],
+                "consistent": False,
+            }
 
         issues, suggestions = [], []
         score = 10.0

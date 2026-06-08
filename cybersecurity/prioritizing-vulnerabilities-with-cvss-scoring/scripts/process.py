@@ -55,7 +55,9 @@ class CVSSv4Calculator:
     def parse_vector(vector_string: str) -> dict:
         """Parse a CVSS v4.0 vector string into metric components."""
         metrics = {}
-        parts = vector_string.replace("CVSS:4.0/", "").replace("CVSS:3.1/", "").split("/")
+        parts = (
+            vector_string.replace("CVSS:4.0/", "").replace("CVSS:3.1/", "").split("/")
+        )
         for part in parts:
             if ":" in part:
                 key, value = part.split(":", 1)
@@ -159,8 +161,7 @@ class VulnerabilityEnricher:
 
                     descriptions = cve_data.get("descriptions", [])
                     desc = next(
-                        (d["value"] for d in descriptions if d["lang"] == "en"),
-                        ""
+                        (d["value"] for d in descriptions if d["lang"] == "en"), ""
                     )
 
                     return {
@@ -200,9 +201,7 @@ class VulnerabilityEnricher:
             response = self.session.get(self.CISA_KEV_URL, timeout=30)
             if response.status_code == 200:
                 data = response.json()
-                self.kev_cache = {
-                    v["cveID"] for v in data.get("vulnerabilities", [])
-                }
+                self.kev_cache = {v["cveID"] for v in data.get("vulnerabilities", [])}
                 print(f"[+] Loaded {len(self.kev_cache)} CVEs from CISA KEV catalog")
                 return self.kev_cache
         except Exception as e:
@@ -221,14 +220,16 @@ class VulnerabilityEnricher:
 
         nvd = self.get_nvd_data(cve_id)
         if nvd:
-            result.update({
-                "description": nvd.get("description", ""),
-                "published": nvd.get("published", ""),
-                "cvss_version": nvd.get("cvss", {}).get("version", ""),
-                "cvss_vector": nvd.get("cvss", {}).get("vector", ""),
-                "cvss_base_score": nvd.get("cvss", {}).get("base_score", 0),
-                "cvss_severity": nvd.get("cvss", {}).get("severity", ""),
-            })
+            result.update(
+                {
+                    "description": nvd.get("description", ""),
+                    "published": nvd.get("published", ""),
+                    "cvss_version": nvd.get("cvss", {}).get("version", ""),
+                    "cvss_vector": nvd.get("cvss", {}).get("vector", ""),
+                    "cvss_base_score": nvd.get("cvss", {}).get("base_score", 0),
+                    "cvss_severity": nvd.get("cvss", {}).get("severity", ""),
+                }
+            )
 
         epss = self.get_epss_score(cve_id)
         result.update(epss)
@@ -259,17 +260,18 @@ class VulnerabilityPrioritizer:
         exposure = float(vuln.get("exposure_score", 3)) / 5.0
 
         priority = (
-            cvss_score * self.weights["cvss"] +
-            epss_score * self.weights["epss"] +
-            asset_crit * self.weights["asset_criticality"] +
-            kev_score * self.weights["kev"] +
-            exposure * self.weights["exposure"]
+            cvss_score * self.weights["cvss"]
+            + epss_score * self.weights["epss"]
+            + asset_crit * self.weights["asset_criticality"]
+            + kev_score * self.weights["kev"]
+            + exposure * self.weights["exposure"]
         )
 
         return round(priority * 10, 2)
 
-    def assign_sla(self, priority_score: float, cvss_score: float,
-                   in_kev: bool = False) -> dict:
+    def assign_sla(
+        self, priority_score: float, cvss_score: float, in_kev: bool = False
+    ) -> dict:
         """Assign remediation SLA based on priority score."""
         if in_kev or priority_score >= 8.0:
             return {"level": "P1-Emergency", "sla_days": 2, "sla": "48 hours"}
@@ -290,16 +292,18 @@ class VulnerabilityPrioritizer:
             sla = self.assign_sla(
                 score,
                 float(vuln.get("cvss_base_score", 0)),
-                vuln.get("in_cisa_kev", False)
+                vuln.get("in_cisa_kev", False),
             )
 
-            results.append({
-                **vuln,
-                "priority_score": score,
-                "priority_level": sla["level"],
-                "sla_days": sla["sla_days"],
-                "remediation_sla": sla["sla"],
-            })
+            results.append(
+                {
+                    **vuln,
+                    "priority_score": score,
+                    "priority_level": sla["level"],
+                    "sla_days": sla["sla_days"],
+                    "remediation_sla": sla["sla"],
+                }
+            )
 
         df = pd.DataFrame(results)
         df = df.sort_values("priority_score", ascending=False)
@@ -307,21 +311,33 @@ class VulnerabilityPrioritizer:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="CVSS Vulnerability Prioritization Engine")
+    parser = argparse.ArgumentParser(
+        description="CVSS Vulnerability Prioritization Engine"
+    )
     subparsers = parser.add_subparsers(dest="command")
 
     # Score a single CVE
     score_parser = subparsers.add_parser("score", help="Score and enrich a single CVE")
-    score_parser.add_argument("--cve", required=True, help="CVE identifier (e.g., CVE-2024-3094)")
+    score_parser.add_argument(
+        "--cve", required=True, help="CVE identifier (e.g., CVE-2024-3094)"
+    )
 
     # Prioritize a CSV of vulnerabilities
-    pri_parser = subparsers.add_parser("prioritize", help="Prioritize vulnerabilities from CSV")
+    pri_parser = subparsers.add_parser(
+        "prioritize", help="Prioritize vulnerabilities from CSV"
+    )
     pri_parser.add_argument("--csv", required=True, help="Input CSV with cve_id column")
-    pri_parser.add_argument("--output", required=True, help="Output CSV with priorities")
+    pri_parser.add_argument(
+        "--output", required=True, help="Output CSV with priorities"
+    )
 
     # Enrich a CSV with EPSS/KEV data
-    enrich_parser = subparsers.add_parser("enrich", help="Enrich CVE list with EPSS and KEV")
-    enrich_parser.add_argument("--csv", required=True, help="Input CSV with cve_id column")
+    enrich_parser = subparsers.add_parser(
+        "enrich", help="Enrich CVE list with EPSS and KEV"
+    )
+    enrich_parser.add_argument(
+        "--csv", required=True, help="Input CSV with cve_id column"
+    )
     enrich_parser.add_argument("--output", default=None, help="Output enriched CSV")
 
     args = parser.parse_args()
@@ -339,14 +355,17 @@ def main():
         print(f"CVSS Vector:     {result.get('cvss_vector', 'N/A')}")
         print(f"CVSS Base Score: {result.get('cvss_base_score', 'N/A')}")
         print(f"CVSS Severity:   {result.get('cvss_severity', 'N/A')}")
-        print(f"EPSS Score:      {result.get('epss_score', 0):.4f} ({result.get('epss_percentile', 0)*100:.1f}th percentile)")
+        print(
+            f"EPSS Score:      {result.get('epss_score', 0):.4f} ({result.get('epss_percentile', 0)*100:.1f}th percentile)"
+        )
         print(f"In CISA KEV:     {'Yes' if result.get('in_cisa_kev') else 'No'}")
 
         prioritizer = VulnerabilityPrioritizer()
         priority = prioritizer.calculate_priority_score(result)
         sla = prioritizer.assign_sla(
-            priority, float(result.get("cvss_base_score", 0)),
-            result.get("in_cisa_kev", False)
+            priority,
+            float(result.get("cvss_base_score", 0)),
+            result.get("in_cisa_kev", False),
         )
         print(f"\nPriority Score:  {priority}")
         print(f"Priority Level:  {sla['level']}")

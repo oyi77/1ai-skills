@@ -14,6 +14,7 @@ import collections
 
 try:
     import subprocess
+
     HAS_SUBPROCESS = True
 except ImportError:
     HAS_SUBPROCESS = False
@@ -26,14 +27,27 @@ SESSION_POLICIES = {
     "record_session": True,
     "allowed_hours": {"start": 6, "end": 22},
     "restricted_commands": [
-        r"rm\s+-rf\s+/", r"dd\s+if=", r"mkfs\.", r"shutdown", r"reboot",
-        r"passwd\s+root", r"visudo", r"chmod\s+777", r"iptables\s+-F",
+        r"rm\s+-rf\s+/",
+        r"dd\s+if=",
+        r"mkfs\.",
+        r"shutdown",
+        r"reboot",
+        r"passwd\s+root",
+        r"visudo",
+        r"chmod\s+777",
+        r"iptables\s+-F",
     ],
 }
 
 PRIVILEGED_ACCOUNTS = [
-    "root", "administrator", "admin", "dba", "sa",
-    "sysadmin", "service_account", "deploy",
+    "root",
+    "administrator",
+    "admin",
+    "dba",
+    "sa",
+    "sysadmin",
+    "service_account",
+    "deploy",
 ]
 
 
@@ -51,17 +65,19 @@ def parse_ssh_auth_log(log_path, max_lines=10000):
                     break
                 m = pattern.search(line)
                 if m:
-                    sessions.append({
-                        "timestamp": m.group(1),
-                        "hostname": m.group(2),
-                        "pid": m.group(3),
-                        "status": m.group(4).lower(),
-                        "auth_method": m.group(5),
-                        "username": m.group(6),
-                        "source_ip": m.group(7),
-                        "source_port": int(m.group(8)),
-                        "privileged": m.group(6).lower() in PRIVILEGED_ACCOUNTS,
-                    })
+                    sessions.append(
+                        {
+                            "timestamp": m.group(1),
+                            "hostname": m.group(2),
+                            "pid": m.group(3),
+                            "status": m.group(4).lower(),
+                            "auth_method": m.group(5),
+                            "username": m.group(6),
+                            "source_ip": m.group(7),
+                            "source_port": int(m.group(8)),
+                            "privileged": m.group(6).lower() in PRIVILEGED_ACCOUNTS,
+                        }
+                    )
     except FileNotFoundError:
         return {"error": f"Log file not found: {log_path}"}
     return sessions
@@ -80,7 +96,9 @@ def parse_rdp_events_windows():
     try:
         result = subprocess.run(
             ["powershell", "-NoProfile", "-Command", cmd],
-            capture_output=True, text=True, timeout=30
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         if result.stdout.strip():
             data = json.loads(result.stdout)
@@ -107,11 +125,13 @@ def check_command_policy(command):
     violations = []
     for pattern in SESSION_POLICIES["restricted_commands"]:
         if re.search(pattern, command, re.IGNORECASE):
-            violations.append({
-                "pattern": pattern,
-                "command": command[:100],
-                "action": "alert_and_log",
-            })
+            violations.append(
+                {
+                    "pattern": pattern,
+                    "command": command[:100],
+                    "action": "alert_and_log",
+                }
+            )
     return violations
 
 
@@ -123,32 +143,38 @@ def detect_session_anomalies(sessions):
 
     for ip, count in ip_counts.items():
         if count > 20:
-            anomalies.append({
-                "type": "brute_force_candidate",
-                "source_ip": ip,
-                "attempt_count": count,
-                "severity": "HIGH",
-            })
+            anomalies.append(
+                {
+                    "type": "brute_force_candidate",
+                    "source_ip": ip,
+                    "attempt_count": count,
+                    "severity": "HIGH",
+                }
+            )
 
     failed = [s for s in sessions if s.get("status") == "failed"]
     failed_by_user = collections.Counter(s.get("username") for s in failed)
     for user, count in failed_by_user.items():
         if count >= 5:
-            anomalies.append({
-                "type": "failed_auth_spike",
-                "username": user,
-                "failed_count": count,
-                "severity": "HIGH" if user in PRIVILEGED_ACCOUNTS else "MEDIUM",
-            })
+            anomalies.append(
+                {
+                    "type": "failed_auth_spike",
+                    "username": user,
+                    "failed_count": count,
+                    "severity": "HIGH" if user in PRIVILEGED_ACCOUNTS else "MEDIUM",
+                }
+            )
 
     priv_sessions = [s for s in sessions if s.get("privileged")]
     for ps in priv_sessions:
-        anomalies.append({
-            "type": "privileged_session",
-            "username": ps.get("username"),
-            "source_ip": ps.get("source_ip"),
-            "severity": "MEDIUM",
-        })
+        anomalies.append(
+            {
+                "type": "privileged_session",
+                "username": ps.get("username"),
+                "source_ip": ps.get("source_ip"),
+                "severity": "MEDIUM",
+            }
+        )
 
     return anomalies
 
@@ -208,7 +234,10 @@ def main():
                 print(f"    Pattern: {v['pattern']}")
         else:
             print("[*] Command passes policy check")
-        report["command_check"] = {"command": args.check_command, "violations": violations}
+        report["command_check"] = {
+            "command": args.check_command,
+            "violations": violations,
+        }
 
     if sessions:
         anomalies = detect_session_anomalies(sessions)
@@ -225,8 +254,12 @@ def main():
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2)
 
-    print(json.dumps({"sessions": len(sessions),
-                       "anomalies": len(report.get("anomalies", []))}, indent=2))
+    print(
+        json.dumps(
+            {"sessions": len(sessions), "anomalies": len(report.get("anomalies", []))},
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

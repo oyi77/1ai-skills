@@ -17,8 +17,14 @@ except ImportError:
 TIER_DEFINITIONS = {
     "Tier 0": {
         "description": "Domain controllers, AD admin accounts, PKI, ADFS",
-        "groups": ["Domain Admins", "Enterprise Admins", "Schema Admins",
-                   "Administrators", "Account Operators", "Backup Operators"],
+        "groups": [
+            "Domain Admins",
+            "Enterprise Admins",
+            "Schema Admins",
+            "Administrators",
+            "Account Operators",
+            "Backup Operators",
+        ],
     },
     "Tier 1": {
         "description": "Member servers, server admin accounts, applications",
@@ -35,66 +41,95 @@ def audit_tier0_accounts(conn, base_dn):
     """Audit Tier 0 privileged accounts."""
     findings = []
     for group_name in TIER_DEFINITIONS["Tier 0"]["groups"]:
-        conn.search(base_dn, f"(&(objectClass=group)(cn={group_name}))",
-                     attributes=["member"])
+        conn.search(
+            base_dn, f"(&(objectClass=group)(cn={group_name}))", attributes=["member"]
+        )
         for entry in conn.entries:
-            members = entry.member.values if hasattr(entry.member, 'values') else []
+            members = entry.member.values if hasattr(entry.member, "values") else []
             for member_dn in members:
-                conn.search(member_dn, "(objectClass=*)",
-                            attributes=["sAMAccountName", "lastLogonTimestamp",
-                                        "userAccountControl", "adminCount"])
+                conn.search(
+                    member_dn,
+                    "(objectClass=*)",
+                    attributes=[
+                        "sAMAccountName",
+                        "lastLogonTimestamp",
+                        "userAccountControl",
+                        "adminCount",
+                    ],
+                )
                 for user in conn.entries:
-                    uac = int(str(user.userAccountControl)) if hasattr(user, 'userAccountControl') else 0
-                    findings.append({
-                        "account": str(user.sAMAccountName),
-                        "group": group_name,
-                        "tier": "Tier 0",
-                        "password_never_expires": bool(uac & 0x10000),
-                        "account_disabled": bool(uac & 0x2),
-                        "admin_count": True,
-                    })
+                    uac = (
+                        int(str(user.userAccountControl))
+                        if hasattr(user, "userAccountControl")
+                        else 0
+                    )
+                    findings.append(
+                        {
+                            "account": str(user.sAMAccountName),
+                            "group": group_name,
+                            "tier": "Tier 0",
+                            "password_never_expires": bool(uac & 0x10000),
+                            "account_disabled": bool(uac & 0x2),
+                            "admin_count": True,
+                        }
+                    )
     return findings
 
 
 def check_tier_violations(conn, base_dn):
     """Check for cross-tier privilege violations."""
     violations = []
-    conn.search(base_dn,
-                "(&(objectClass=user)(adminCount=1)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))",
-                attributes=["sAMAccountName", "memberOf", "lastLogon"])
+    conn.search(
+        base_dn,
+        "(&(objectClass=user)(adminCount=1)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))",
+        attributes=["sAMAccountName", "memberOf", "lastLogon"],
+    )
     for entry in conn.entries:
-        groups = entry.memberOf.values if hasattr(entry.memberOf, 'values') else []
-        tier0 = any("Domain Admins" in str(g) or "Enterprise Admins" in str(g) for g in groups)
+        groups = entry.memberOf.values if hasattr(entry.memberOf, "values") else []
+        tier0 = any(
+            "Domain Admins" in str(g) or "Enterprise Admins" in str(g) for g in groups
+        )
         tier1 = any("Server" in str(g) for g in groups)
         if tier0 and tier1:
-            violations.append({
-                "account": str(entry.sAMAccountName),
-                "violation": "Account spans Tier 0 and Tier 1",
-                "severity": "CRITICAL",
-                "recommendation": "Create separate accounts per tier",
-            })
+            violations.append(
+                {
+                    "account": str(entry.sAMAccountName),
+                    "violation": "Account spans Tier 0 and Tier 1",
+                    "severity": "CRITICAL",
+                    "recommendation": "Create separate accounts per tier",
+                }
+            )
     return violations
 
 
 def check_paw_compliance(conn, base_dn):
     """Check for Privileged Access Workstation (PAW) deployment indicators."""
-    conn.search(base_dn,
-                "(&(objectClass=computer)(cn=PAW*))",
-                attributes=["cn", "operatingSystem", "lastLogonTimestamp"])
+    conn.search(
+        base_dn,
+        "(&(objectClass=computer)(cn=PAW*))",
+        attributes=["cn", "operatingSystem", "lastLogonTimestamp"],
+    )
     paws = [{"name": str(e.cn), "os": str(e.operatingSystem)} for e in conn.entries]
     return {
         "paw_count": len(paws),
         "paws": paws,
         "compliant": len(paws) > 0,
-        "recommendation": "Deploy PAWs for all Tier 0 admin accounts" if not paws else "PAWs detected",
+        "recommendation": (
+            "Deploy PAWs for all Tier 0 admin accounts" if not paws else "PAWs detected"
+        ),
     }
 
 
 def run_audit(server_ip, domain, username, password):
     """Execute AD tiered model audit."""
     server = Server(server_ip, get_info=ALL)
-    conn = Connection(server, user=f"{domain}\\{username}", password=password,
-                      authentication=NTLM, auto_bind=True)
+    conn = Connection(
+        server,
+        user=f"{domain}\\{username}",
+        password=password,
+        authentication=NTLM,
+        auto_bind=True,
+    )
     base_dn = ",".join([f"DC={p}" for p in domain.split(".")])
 
     print(f"\n{'='*60}")

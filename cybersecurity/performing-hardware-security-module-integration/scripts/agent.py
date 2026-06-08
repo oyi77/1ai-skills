@@ -25,17 +25,24 @@ def enumerate_slots(lib):
     for slot in lib.get_slots(token_present=True):
         token = slot.get_token()
         mechs = slot.get_mechanisms()
-        slots.append({
-            "slot_id": slot.slot_id,
-            "slot_description": slot.slot_description.strip() if hasattr(slot, 'slot_description') else str(slot),
-            "token_label": token.label.strip(),
-            "token_manufacturer": token.manufacturer_id.strip(),
-            "token_model": token.model.strip(),
-            "token_serial": token.serial.strip(),
-            "token_initialized": token.flags & pkcs11.TokenFlag.TOKEN_INITIALIZED != 0,
-            "mechanism_count": len(list(mechs)),
-            "supported_mechanisms": sorted([m.name for m in mechs])[:30],
-        })
+        slots.append(
+            {
+                "slot_id": slot.slot_id,
+                "slot_description": (
+                    slot.slot_description.strip()
+                    if hasattr(slot, "slot_description")
+                    else str(slot)
+                ),
+                "token_label": token.label.strip(),
+                "token_manufacturer": token.manufacturer_id.strip(),
+                "token_model": token.model.strip(),
+                "token_serial": token.serial.strip(),
+                "token_initialized": token.flags & pkcs11.TokenFlag.TOKEN_INITIALIZED
+                != 0,
+                "mechanism_count": len(list(mechs)),
+                "supported_mechanisms": sorted([m.name for m in mechs])[:30],
+            }
+        )
     return slots
 
 
@@ -46,15 +53,25 @@ def list_objects(lib, token_label, pin):
         objects = []
         for obj in session.get_objects():
             obj_info = {
-                "object_class": obj.object_class.name if hasattr(obj.object_class, 'name') else str(obj.object_class),
-                "label": getattr(obj, 'label', 'N/A'),
+                "object_class": (
+                    obj.object_class.name
+                    if hasattr(obj.object_class, "name")
+                    else str(obj.object_class)
+                ),
+                "label": getattr(obj, "label", "N/A"),
             }
-            if hasattr(obj, 'key_type'):
-                obj_info["key_type"] = obj.key_type.name if hasattr(obj.key_type, 'name') else str(obj.key_type)
-            if hasattr(obj, 'key_length'):
+            if hasattr(obj, "key_type"):
+                obj_info["key_type"] = (
+                    obj.key_type.name
+                    if hasattr(obj.key_type, "name")
+                    else str(obj.key_type)
+                )
+            if hasattr(obj, "key_length"):
                 obj_info["key_length"] = obj.key_length
-            if hasattr(obj, 'id'):
-                obj_info["id"] = obj.id.hex() if isinstance(obj.id, bytes) else str(obj.id)
+            if hasattr(obj, "id"):
+                obj_info["id"] = (
+                    obj.id.hex() if isinstance(obj.id, bytes) else str(obj.id)
+                )
             objects.append(obj_info)
         return objects
 
@@ -64,7 +81,8 @@ def generate_rsa_keypair(lib, token_label, pin, key_label="agent-rsa-2048", bits
     token = lib.get_token(token_label=token_label)
     with token.open(rw=True, user_pin=pin) as session:
         pub, priv = session.generate_keypair(
-            KeyType.RSA, bits,
+            KeyType.RSA,
+            bits,
             store=True,
             label=key_label,
         )
@@ -84,7 +102,11 @@ def generate_ec_keypair(lib, token_label, pin, key_label="agent-ec-p256"):
     with token.open(rw=True, user_pin=pin) as session:
         ecparams = session.create_domain_parameters(
             KeyType.EC,
-            {pkcs11.Attribute.EC_PARAMS: pkcs11.util.ec.encode_named_curve_parameters("secp256r1")},
+            {
+                pkcs11.Attribute.EC_PARAMS: pkcs11.util.ec.encode_named_curve_parameters(
+                    "secp256r1"
+                )
+            },
             local=True,
         )
         pub, priv = ecparams.generate_keypair(store=True, label=key_label)
@@ -102,19 +124,27 @@ def sign_and_verify(lib, token_label, pin, key_label, data=b"HSM test message"):
     """Sign data with an RSA private key and verify with the public key."""
     token = lib.get_token(token_label=token_label)
     with token.open(user_pin=pin) as session:
-        priv_keys = list(session.get_objects({
-            pkcs11.Attribute.CLASS: ObjectClass.PRIVATE_KEY,
-            pkcs11.Attribute.LABEL: key_label,
-        }))
+        priv_keys = list(
+            session.get_objects(
+                {
+                    pkcs11.Attribute.CLASS: ObjectClass.PRIVATE_KEY,
+                    pkcs11.Attribute.LABEL: key_label,
+                }
+            )
+        )
         if not priv_keys:
             return {"error": f"Private key '{key_label}' not found"}
         priv = priv_keys[0]
         signature = priv.sign(data, mechanism=Mechanism.SHA256_RSA_PKCS)
 
-        pub_keys = list(session.get_objects({
-            pkcs11.Attribute.CLASS: ObjectClass.PUBLIC_KEY,
-            pkcs11.Attribute.LABEL: key_label,
-        }))
+        pub_keys = list(
+            session.get_objects(
+                {
+                    pkcs11.Attribute.CLASS: ObjectClass.PUBLIC_KEY,
+                    pkcs11.Attribute.LABEL: key_label,
+                }
+            )
+        )
         if not pub_keys:
             return {"error": f"Public key '{key_label}' not found"}
         pub = pub_keys[0]
@@ -142,11 +172,17 @@ def query_mechanisms(lib, token_label):
     mechs = []
     for m in slot.get_mechanisms():
         info = slot.get_mechanism_info(m)
-        mechs.append({
-            "mechanism": m.name,
-            "min_key_size": info.min_key_size if hasattr(info, 'min_key_size') else None,
-            "max_key_size": info.max_key_size if hasattr(info, 'max_key_size') else None,
-        })
+        mechs.append(
+            {
+                "mechanism": m.name,
+                "min_key_size": (
+                    info.min_key_size if hasattr(info, "min_key_size") else None
+                ),
+                "max_key_size": (
+                    info.max_key_size if hasattr(info, "max_key_size") else None
+                ),
+            }
+        )
     return mechs
 
 
@@ -157,9 +193,24 @@ def full_audit(lib, token_label, pin):
     mechanisms = query_mechanisms(lib, token_label)
     rsa_keys = [o for o in objects if o.get("key_type") == "RSA"]
     ec_keys = [o for o in objects if o.get("key_type") == "EC"]
-    weak_keys = [o for o in objects if o.get("key_type") == "RSA" and (o.get("key_length") or 2048) < 2048]
-    fips_mechs = {"RSA_PKCS", "SHA256_RSA_PKCS", "SHA384_RSA_PKCS", "SHA512_RSA_PKCS",
-                  "ECDSA", "ECDSA_SHA256", "AES_CBC", "AES_GCM", "SHA256", "SHA384", "SHA512"}
+    weak_keys = [
+        o
+        for o in objects
+        if o.get("key_type") == "RSA" and (o.get("key_length") or 2048) < 2048
+    ]
+    fips_mechs = {
+        "RSA_PKCS",
+        "SHA256_RSA_PKCS",
+        "SHA384_RSA_PKCS",
+        "SHA512_RSA_PKCS",
+        "ECDSA",
+        "ECDSA_SHA256",
+        "AES_CBC",
+        "AES_GCM",
+        "SHA256",
+        "SHA384",
+        "SHA512",
+    }
     supported_names = {m["mechanism"] for m in mechanisms}
     fips_coverage = len(fips_mechs & supported_names)
     return {

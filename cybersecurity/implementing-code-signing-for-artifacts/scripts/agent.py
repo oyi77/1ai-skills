@@ -18,7 +18,9 @@ try:
 except ImportError:
     sys.exit("cryptography required: pip install cryptography")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -89,9 +91,13 @@ def verify_cosign_signature(image: str) -> dict:
     """Verify container image signature using cosign CLI."""
     try:
         result = subprocess.run(
-            ["cosign", "verify", image], capture_output=True, text=True, timeout=30)
-        return {"image": image, "verified": result.returncode == 0,
-                "output": result.stdout[:500]}
+            ["cosign", "verify", image], capture_output=True, text=True, timeout=30
+        )
+        return {
+            "image": image,
+            "verified": result.returncode == 0,
+            "output": result.stdout[:500],
+        }
     except FileNotFoundError:
         return {"image": image, "error": "cosign not installed"}
 
@@ -113,7 +119,11 @@ def generate_report(artifacts: List[str], public_key_path: str) -> dict:
         if os.path.isfile(sig_path):
             result = verify_signature(art_path, sig_path, public_key_path)
         else:
-            result = {"file": art_path, "valid": False, "error": "No signature file found"}
+            result = {
+                "file": art_path,
+                "valid": False,
+                "error": "No signature file found",
+            }
         result["hash_sha256"] = compute_file_hash(art_path)
         report["verifications"].append(result)
     valid = sum(1 for v in report["verifications"] if v.get("valid"))
@@ -129,7 +139,9 @@ def main():
     parser = argparse.ArgumentParser(description="Code Signing Verification Agent")
     parser.add_argument("--artifacts", nargs="+", help="Files to verify")
     parser.add_argument("--public-key", help="Path to public key PEM")
-    parser.add_argument("--generate-keys", action="store_true", help="Generate new keypair")
+    parser.add_argument(
+        "--generate-keys", action="store_true", help="Generate new keypair"
+    )
     parser.add_argument("--sign", help="File to sign (requires --private-key)")
     parser.add_argument("--private-key", help="Path to private key PEM")
     parser.add_argument("--output-dir", default=".")

@@ -55,27 +55,36 @@ def _env(key: str, fallback: str = "") -> str:
 
 def _get_falai_key() -> str:
     """Fal.ai key — try multiple common env var names."""
-    return (os.environ.get("FALAI_API_KEY")
-            or os.environ.get("FAL_KEY")
-            or os.environ.get("FAL_API_KEY")
-            or "")
+    return (
+        os.environ.get("FALAI_API_KEY")
+        or os.environ.get("FAL_KEY")
+        or os.environ.get("FAL_API_KEY")
+        or ""
+    )
 
 
 def _get_siliconflow_key() -> str:
-    return (os.environ.get("SILICONFLOW_API_KEY")
-            or os.environ.get("SILICON_API_KEY")
-            or "")
+    return (
+        os.environ.get("SILICONFLOW_API_KEY") or os.environ.get("SILICON_API_KEY") or ""
+    )
 
 
 def _get_replicate_key() -> str:
-    return (os.environ.get("REPLICATE_API_TOKEN")
-            or os.environ.get("REPLICATE_API_KEY")
-            or "")
+    return (
+        os.environ.get("REPLICATE_API_TOKEN")
+        or os.environ.get("REPLICATE_API_KEY")
+        or ""
+    )
 
 
 # ── Helper: HTTP GET/POST ────────────────────────────────────────────────────
-def _http(url: str, method: str = "GET", data: bytes | None = None,
-          headers: dict | None = None, timeout: int = 30) -> dict | None:
+def _http(
+    url: str,
+    method: str = "GET",
+    data: bytes | None = None,
+    headers: dict | None = None,
+    timeout: int = 30,
+) -> dict | None:
     req = urllib.request.Request(url, data=data, method=method)
     for k, v in (headers or {}).items():
         req.add_header(k, v)
@@ -115,6 +124,7 @@ def _poll_geminigen(uuid: str, api_key: str, max_wait: int = 120) -> str | None:
 # IMAGE PROVIDERS
 # ════════════════════════════════════════════════════════════════════════════
 
+
 def _img_geminigen(prompt: str, aspect: str = "9:16") -> str | None:
     """GeminiGen nano-banana-pro image."""
     key = _load_geminigen_key()
@@ -122,9 +132,11 @@ def _img_geminigen(prompt: str, aspect: str = "9:16") -> str | None:
         log.info("Image: geminigen skipped — no API key")
         return None
     import sys
+
     sys.path.insert(0, str(_SKILL_DIR))
     try:
         from modules.geminigen_client import GeminiGenClient
+
         client = GeminiGenClient(api_key=key)
         url = client.generate_image_sync(
             prompt=prompt,
@@ -149,14 +161,22 @@ def _img_nvidia(prompt: str) -> str | None:
         return None
     try:
         url = "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux-dev"
-        payload = json.dumps({"prompt": prompt, "width": 1024, "height": 1024,
-                               "num_inference_steps": 30, "guidance": 3.5,
-                               "seed": 42}).encode()
+        payload = json.dumps(
+            {
+                "prompt": prompt,
+                "width": 1024,
+                "height": 1024,
+                "num_inference_steps": 30,
+                "guidance": 3.5,
+                "seed": 42,
+            }
+        ).encode()
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
         r = _http(url, "POST", payload, headers, timeout=60)
         if r and r.get("artifacts"):
             # Returns base64 — save to temp file
             import base64
+
             tmp = tempfile.mktemp(suffix=".jpg")
             with open(tmp, "wb") as f:
                 f.write(base64.b64decode(r["artifacts"][0]["base64"]))
@@ -174,10 +194,16 @@ def _img_replicate(prompt: str) -> str | None:
         log.info("Image: replicate skipped — no API key")
         return None
     try:
-        payload = json.dumps({"version": "stability-ai/sdxl:39ed52f2319f9ee64ad4ccf29f5cbfc61c49b3f35a5a74bfc4accd46567b2a15",
-                               "input": {"prompt": prompt}}).encode()
+        payload = json.dumps(
+            {
+                "version": "stability-ai/sdxl:39ed52f2319f9ee64ad4ccf29f5cbfc61c49b3f35a5a74bfc4accd46567b2a15",
+                "input": {"prompt": prompt},
+            }
+        ).encode()
         headers = {"Authorization": f"Token {key}", "Content-Type": "application/json"}
-        r = _http("https://api.replicate.com/v1/predictions", "POST", payload, headers, 30)
+        r = _http(
+            "https://api.replicate.com/v1/predictions", "POST", payload, headers, 30
+        )
         if r and r.get("urls", {}).get("get"):
             # Poll
             get_url = r["urls"]["get"]
@@ -185,7 +211,11 @@ def _img_replicate(prompt: str) -> str | None:
                 time.sleep(5)
                 res = _http(get_url, headers={"Authorization": f"Token {key}"})
                 if res and res.get("status") == "succeeded" and res.get("output"):
-                    url = res["output"][0] if isinstance(res["output"], list) else res["output"]
+                    url = (
+                        res["output"][0]
+                        if isinstance(res["output"], list)
+                        else res["output"]
+                    )
                     log.info("Image: replicate ✅ %s", url[:60])
                     return url
     except Exception as e:
@@ -201,17 +231,25 @@ def _img_pexels(prompt: str) -> str | None:
         return None
     try:
         # Extract 2-3 keywords from prompt for search
-        words = [w for w in prompt.lower().split() if len(w) > 4
-                 and w not in ("dark","theme","black","background","premium","minimalist")][:3]
+        words = [
+            w
+            for w in prompt.lower().split()
+            if len(w) > 4
+            and w
+            not in ("dark", "theme", "black", "background", "premium", "minimalist")
+        ][:3]
         query = "+".join(words) if words else "business+finance"
         url = f"https://api.pexels.com/v1/search?query={query}&per_page=3&orientation=portrait"
         headers = {"Authorization": key}
         r = _http(url, headers=headers, timeout=10)
         if r and r.get("photos"):
             photo = r["photos"][0]
-            photo_url = photo.get("src", {}).get("large2x") or photo.get("src", {}).get("original")
+            photo_url = photo.get("src", {}).get("large2x") or photo.get("src", {}).get(
+                "original"
+            )
             if photo_url:
                 import urllib.request as _ur
+
                 tmp = tempfile.mktemp(suffix=".jpg")
                 _ur.urlretrieve(photo_url, tmp)
                 log.info("Image: pexels ✅ %s → %s", query, tmp)
@@ -228,8 +266,13 @@ def _vid_pexels(prompt: str) -> str | None:
         log.info("Video: pexels skipped — no PEXELS_API_KEY")
         return None
     try:
-        words = [w for w in prompt.lower().split() if len(w) > 4
-                 and w not in ("dark","theme","black","background","premium","cinematic")][:3]
+        words = [
+            w
+            for w in prompt.lower().split()
+            if len(w) > 4
+            and w
+            not in ("dark", "theme", "black", "background", "premium", "cinematic")
+        ][:3]
         query = "+".join(words) if words else "business+technology"
         url = f"https://api.pexels.com/videos/search?query={query}&per_page=3&orientation=portrait&size=medium"
         headers = {"Authorization": key}
@@ -237,12 +280,18 @@ def _vid_pexels(prompt: str) -> str | None:
         if r and r.get("videos"):
             video = r["videos"][0]
             # Get best portrait file
-            files = sorted(video.get("video_files", []),
-                           key=lambda f: f.get("height", 0), reverse=True)
-            portrait = next((f for f in files if f.get("width", 999) < f.get("height", 0)), None)
+            files = sorted(
+                video.get("video_files", []),
+                key=lambda f: f.get("height", 0),
+                reverse=True,
+            )
+            portrait = next(
+                (f for f in files if f.get("width", 999) < f.get("height", 0)), None
+            )
             vid_url = (portrait or files[0]).get("link") if files else None
             if vid_url:
                 import urllib.request as _ur
+
                 tmp = tempfile.mktemp(suffix=".mp4")
                 _ur.urlretrieve(vid_url, tmp)
                 log.info("Video: pexels ✅ %s → %s", query, tmp)
@@ -260,14 +309,21 @@ def _img_falai(prompt: str) -> str | None:
         return None
     try:
         payload = json.dumps({"prompt": prompt, "image_size": "portrait_4_3"}).encode()
-        headers = {"Authorization": f"Key {key}", "Content-Type": "application/json"}  # noqa
-        r = _http("https://queue.fal.run/fal-ai/fast-sdxl", "POST", payload, headers, 30)
+        headers = {
+            "Authorization": f"Key {key}",
+            "Content-Type": "application/json",
+        }  # noqa
+        r = _http(
+            "https://queue.fal.run/fal-ai/fast-sdxl", "POST", payload, headers, 30
+        )
         if r and r.get("request_id"):
             req_id = r["request_id"]
             for _ in range(24):
                 time.sleep(5)
-                res = _http(f"https://queue.fal.run/fal-ai/fast-sdxl/requests/{req_id}",
-                            headers={"Authorization": f"Key {key}"})
+                res = _http(
+                    f"https://queue.fal.run/fal-ai/fast-sdxl/requests/{req_id}",
+                    headers={"Authorization": f"Key {key}"},
+                )
                 if res and res.get("images"):
                     url = res["images"][0]["url"]
                     log.info("Image: falai ✅ %s", url[:60])
@@ -281,6 +337,7 @@ def _img_pil_placeholder(prompt: str) -> str:
     """PIL placeholder — always works."""
     try:
         from PIL import Image, ImageDraw, ImageFont
+
         img = Image.new("RGB", (1080, 1920), (0, 0, 0))
         draw = ImageDraw.Draw(img)
         # Wrap text
@@ -313,6 +370,7 @@ def _img_pil_placeholder(prompt: str) -> str:
 # VIDEO PROVIDERS
 # ════════════════════════════════════════════════════════════════════════════
 
+
 def _vid_byteplus(prompt: str) -> str | None:
     """BytePlus Seedance T2V."""
     key = _env("BYTEPLUS_API_KEY")
@@ -321,25 +379,40 @@ def _vid_byteplus(prompt: str) -> str | None:
         return None
     try:
         base = "https://ark.ap-southeast.bytepluses.com/api/v3"
-        models = ["seedance-1-0-lite-t2v-250428", "seedance-1-0-pro-250528",
-                  "seedance-1-5-pro-251215"]
+        models = [
+            "seedance-1-0-lite-t2v-250428",
+            "seedance-1-0-pro-250528",
+            "seedance-1-5-pro-251215",
+        ]
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
         for model in models:
-            payload = json.dumps({"model": model, "content": [{"type": "text", "text": prompt}],
-                                   "aspect_ratio": "9:16", "duration": 6}).encode()
-            r = _http(f"{base}/contents/generations/tasks", "POST", payload, headers, 30)
+            payload = json.dumps(
+                {
+                    "model": model,
+                    "content": [{"type": "text", "text": prompt}],
+                    "aspect_ratio": "9:16",
+                    "duration": 6,
+                }
+            ).encode()
+            r = _http(
+                f"{base}/contents/generations/tasks", "POST", payload, headers, 30
+            )
             if r and (r.get("id") or r.get("task_id")):
                 task_id = r.get("id") or r.get("task_id")
                 # Poll
                 for _ in range(36):  # 3 min max
                     time.sleep(5)
-                    res = _http(f"{base}/contents/generations/tasks/{task_id}", headers=headers)
+                    res = _http(
+                        f"{base}/contents/generations/tasks/{task_id}", headers=headers
+                    )
                     if res:
                         status = res.get("status", "")
                         if status == "succeeded":
-                            url = (res.get("content", {}).get("video_url")
-                                   or res.get("video_url")
-                                   or res.get("output", {}).get("url"))
+                            url = (
+                                res.get("content", {}).get("video_url")
+                                or res.get("video_url")
+                                or res.get("output", {}).get("url")
+                            )
                             if url:
                                 log.info("Video: byteplus ✅ %s", url[:60])
                                 return url
@@ -359,8 +432,10 @@ def _vid_xai_geminigen(prompt: str) -> str | None:
         return None
     try:
         import sys
+
         sys.path.insert(0, str(_SKILL_DIR))
         from modules.geminigen_client import GeminiGenClient
+
         client = GeminiGenClient(api_key=key)
         r = client.generate_video_grok(
             prompt=prompt,
@@ -386,19 +461,23 @@ def _vid_siliconflow(prompt: str) -> str | None:
         log.info("Video: siliconflow skipped — no API key")
         return None
     try:
-        payload = json.dumps({"model": "Wan2.1-T2V-14B",
-                               "prompt": prompt,
-                               "image_size": "832x480"}).encode()
+        payload = json.dumps(
+            {"model": "Wan2.1-T2V-14B", "prompt": prompt, "image_size": "832x480"}
+        ).encode()
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-        r = _http("https://api.siliconflow.cn/v1/video/submit", "POST", payload, headers, 30)
+        r = _http(
+            "https://api.siliconflow.cn/v1/video/submit", "POST", payload, headers, 30
+        )
         if r and r.get("requestId"):
             req_id = r["requestId"]
             for _ in range(36):
                 time.sleep(5)
-                res = _http(f"https://api.siliconflow.cn/v1/video/status",
-                            "POST",
-                            json.dumps({"requestId": req_id}).encode(),
-                            headers)
+                res = _http(
+                    f"https://api.siliconflow.cn/v1/video/status",
+                    "POST",
+                    json.dumps({"requestId": req_id}).encode(),
+                    headers,
+                )
                 if res and res.get("status") == "Succeed":
                     url = res.get("results", {}).get("videos", [{}])[0].get("url")
                     if url:
@@ -420,13 +499,21 @@ def _vid_falai(prompt: str) -> str | None:
     try:
         payload = json.dumps({"prompt": prompt, "num_frames": 24}).encode()
         headers = {"Authorization": f"Key {key}", "Content-Type": "application/json"}
-        r = _http("https://queue.fal.run/fal-ai/fast-animatediff", "POST", payload, headers, 30)
+        r = _http(
+            "https://queue.fal.run/fal-ai/fast-animatediff",
+            "POST",
+            payload,
+            headers,
+            30,
+        )
         if r and r.get("request_id"):
             req_id = r["request_id"]
             for _ in range(24):
                 time.sleep(5)
-                res = _http(f"https://queue.fal.run/fal-ai/fast-animatediff/requests/{req_id}",
-                            headers={"Authorization": f"Key {key}"})
+                res = _http(
+                    f"https://queue.fal.run/fal-ai/fast-animatediff/requests/{req_id}",
+                    headers={"Authorization": f"Key {key}"},
+                )
                 if res and res.get("video", {}).get("url"):
                     url = res["video"]["url"]
                     log.info("Video: falai ✅ %s", url[:60])
@@ -442,9 +529,21 @@ def _vid_placeholder_ffmpeg(prompt: str) -> str | None:
         img_path = _img_pil_placeholder(prompt)
         out = tempfile.mktemp(suffix=".mp4")
         cmd = [
-            "ffmpeg", "-y", "-loop", "1", "-i", img_path,
-            "-t", "6", "-vf", "scale=1080:1920",
-            "-c:v", "libx264", "-pix_fmt", "yuv420p", out
+            "ffmpeg",
+            "-y",
+            "-loop",
+            "1",
+            "-i",
+            img_path,
+            "-t",
+            "6",
+            "-vf",
+            "scale=1080:1920",
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            out,
         ]
         result = subprocess.run(cmd, capture_output=True, timeout=30)
         if result.returncode == 0 and Path(out).exists():
@@ -458,6 +557,7 @@ def _vid_placeholder_ffmpeg(prompt: str) -> str | None:
 # ════════════════════════════════════════════════════════════════════════════
 # PUBLIC API
 # ════════════════════════════════════════════════════════════════════════════
+
 
 def try_image_providers(prompt: str, aspect: str = "9:16") -> dict:
     """
@@ -475,11 +575,11 @@ def try_image_providers(prompt: str, aspect: str = "9:16") -> dict:
     """
     chain = [
         ("geminigen", lambda: _img_geminigen(prompt, aspect)),
-        ("nvidia",    lambda: _img_nvidia(prompt)),
+        ("nvidia", lambda: _img_nvidia(prompt)),
         ("replicate", lambda: _img_replicate(prompt)),
-        ("falai",     lambda: _img_falai(prompt)),
-        ("pexels",    lambda: _img_pexels(prompt)),
-        ("pil",       lambda: _img_pil_placeholder(prompt)),
+        ("falai", lambda: _img_falai(prompt)),
+        ("pexels", lambda: _img_pexels(prompt)),
+        ("pil", lambda: _img_pil_placeholder(prompt)),
     ]
     for name, fn in chain:
         log.info("Image: trying %s...", name)
@@ -500,16 +600,21 @@ def _vid_laozhang(prompt: str) -> str | None:
         return None
     try:
         # LaoZhang uses OpenAI-compatible API format
-        payload = json.dumps({"model": "sora", "prompt": prompt,
-                               "size": "1080x1920", "duration": 6}).encode()
+        payload = json.dumps(
+            {"model": "sora", "prompt": prompt, "size": "1080x1920", "duration": 6}
+        ).encode()
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-        r = _http("https://api.laozhang.ai/v1/video/generate", "POST", payload, headers, 30)
+        r = _http(
+            "https://api.laozhang.ai/v1/video/generate", "POST", payload, headers, 30
+        )
         if r and (r.get("data", {}).get("id") or r.get("id")):
             task_id = r.get("data", {}).get("id") or r.get("id")
             for _ in range(36):
                 time.sleep(5)
-                res = _http(f"https://api.laozhang.ai/v1/video/task/{task_id}",
-                            headers={"Authorization": f"Bearer {key}"})
+                res = _http(
+                    f"https://api.laozhang.ai/v1/video/task/{task_id}",
+                    headers={"Authorization": f"Bearer {key}"},
+                )
                 if res and res.get("data", {}).get("status") == "completed":
                     url = res["data"].get("video_url")
                     if url:
@@ -527,16 +632,21 @@ def _vid_evolink(prompt: str) -> str | None:
         log.info("Video: evolink skipped — no API key")
         return None
     try:
-        payload = json.dumps({"prompt": prompt, "duration": 6,
-                               "aspect_ratio": "9:16"}).encode()
+        payload = json.dumps(
+            {"prompt": prompt, "duration": 6, "aspect_ratio": "9:16"}
+        ).encode()
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-        r = _http("https://api.evolink.ai/v1/video/create", "POST", payload, headers, 30)
+        r = _http(
+            "https://api.evolink.ai/v1/video/create", "POST", payload, headers, 30
+        )
         if r and r.get("task_id"):
             tid = r["task_id"]
             for _ in range(36):
                 time.sleep(5)
-                res = _http(f"https://api.evolink.ai/v1/video/status/{tid}",
-                            headers={"Authorization": f"Bearer {key}"})
+                res = _http(
+                    f"https://api.evolink.ai/v1/video/status/{tid}",
+                    headers={"Authorization": f"Bearer {key}"},
+                )
                 if res and res.get("status") == "completed":
                     url = res.get("url")
                     if url:
@@ -554,16 +664,19 @@ def _vid_hypereal(prompt: str) -> str | None:
         log.info("Video: hypereal skipped — no API key")
         return None
     try:
-        payload = json.dumps({"prompt": prompt, "resolution": "1080x1920",
-                               "duration": 6}).encode()
+        payload = json.dumps(
+            {"prompt": prompt, "resolution": "1080x1920", "duration": 6}
+        ).encode()
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
         r = _http("https://api.hypereal.ai/v1/generate", "POST", payload, headers, 30)
         if r and r.get("id"):
             tid = r["id"]
             for _ in range(36):
                 time.sleep(5)
-                res = _http(f"https://api.hypereal.ai/v1/status/{tid}",
-                            headers={"Authorization": f"Bearer {key}"})
+                res = _http(
+                    f"https://api.hypereal.ai/v1/status/{tid}",
+                    headers={"Authorization": f"Bearer {key}"},
+                )
                 if res and res.get("state") == "done":
                     url = res.get("video_url")
                     if url:
@@ -581,16 +694,19 @@ def _vid_kie(prompt: str) -> str | None:
         log.info("Video: kie skipped — no API key")
         return None
     try:
-        payload = json.dumps({"prompt": prompt, "aspect": "9:16",
-                               "duration": 5}).encode()
+        payload = json.dumps(
+            {"prompt": prompt, "aspect": "9:16", "duration": 5}
+        ).encode()
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
         r = _http("https://api.kie.ai/v1/video", "POST", payload, headers, 30)
         if r and r.get("uuid"):
             uuid = r["uuid"]
             for _ in range(36):
                 time.sleep(5)
-                res = _http(f"https://api.kie.ai/v1/video/{uuid}",
-                            headers={"Authorization": f"Bearer {key}"})
+                res = _http(
+                    f"https://api.kie.ai/v1/video/{uuid}",
+                    headers={"Authorization": f"Bearer {key}"},
+                )
                 if res and res.get("status") == "done":
                     url = res.get("url")
                     if url:
@@ -620,15 +736,15 @@ def try_video_providers(prompt: str) -> dict:
      10. FFmpeg placeholder — absolutely last resort (no API needed)
     """
     chain = [
-        ("byteplus",    lambda: _vid_byteplus(prompt)),
-        ("xai",         lambda: _vid_xai_geminigen(prompt)),
-        ("laozhang",    lambda: _vid_laozhang(prompt)),
-        ("evolink",     lambda: _vid_evolink(prompt)),
-        ("hypereal",    lambda: _vid_hypereal(prompt)),
+        ("byteplus", lambda: _vid_byteplus(prompt)),
+        ("xai", lambda: _vid_xai_geminigen(prompt)),
+        ("laozhang", lambda: _vid_laozhang(prompt)),
+        ("evolink", lambda: _vid_evolink(prompt)),
+        ("hypereal", lambda: _vid_hypereal(prompt)),
         ("siliconflow", lambda: _vid_siliconflow(prompt)),
-        ("falai",       lambda: _vid_falai(prompt)),
-        ("kie",         lambda: _vid_kie(prompt)),
-        ("pexels",      lambda: _vid_pexels(prompt)),
+        ("falai", lambda: _vid_falai(prompt)),
+        ("kie", lambda: _vid_kie(prompt)),
+        ("pexels", lambda: _vid_pexels(prompt)),
         ("ffmpeg_placeholder", lambda: _vid_placeholder_ffmpeg(prompt)),
     ]
     for name, fn in chain:

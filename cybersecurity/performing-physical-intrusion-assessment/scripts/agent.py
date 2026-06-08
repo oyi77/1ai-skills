@@ -6,48 +6,131 @@ import argparse
 import csv
 from datetime import datetime
 
-
 ASSESSMENT_CATEGORIES = {
     "perimeter": {
         "name": "Perimeter Security",
         "checks": [
-            {"id": "P01", "check": "Perimeter fencing intact and adequate height (>=7ft)", "severity": "HIGH"},
-            {"id": "P02", "check": "CCTV cameras covering all entry points", "severity": "HIGH"},
-            {"id": "P03", "check": "Adequate exterior lighting at night", "severity": "MEDIUM"},
-            {"id": "P04", "check": "Vehicle barriers at building entrances", "severity": "MEDIUM"},
-            {"id": "P05", "check": "Signage prohibiting unauthorized access", "severity": "LOW"},
+            {
+                "id": "P01",
+                "check": "Perimeter fencing intact and adequate height (>=7ft)",
+                "severity": "HIGH",
+            },
+            {
+                "id": "P02",
+                "check": "CCTV cameras covering all entry points",
+                "severity": "HIGH",
+            },
+            {
+                "id": "P03",
+                "check": "Adequate exterior lighting at night",
+                "severity": "MEDIUM",
+            },
+            {
+                "id": "P04",
+                "check": "Vehicle barriers at building entrances",
+                "severity": "MEDIUM",
+            },
+            {
+                "id": "P05",
+                "check": "Signage prohibiting unauthorized access",
+                "severity": "LOW",
+            },
         ],
     },
     "access_control": {
         "name": "Access Control",
         "checks": [
-            {"id": "A01", "check": "Badge/card access on all entry doors", "severity": "CRITICAL"},
-            {"id": "A02", "check": "Tailgating prevention mechanisms (mantrap, turnstile)", "severity": "HIGH"},
-            {"id": "A03", "check": "Visitor sign-in and escort policy enforced", "severity": "HIGH"},
-            {"id": "A04", "check": "Badge visible at all times policy", "severity": "MEDIUM"},
-            {"id": "A05", "check": "After-hours access controls and logging", "severity": "HIGH"},
-            {"id": "A06", "check": "Terminated employee badge deactivation process", "severity": "CRITICAL"},
+            {
+                "id": "A01",
+                "check": "Badge/card access on all entry doors",
+                "severity": "CRITICAL",
+            },
+            {
+                "id": "A02",
+                "check": "Tailgating prevention mechanisms (mantrap, turnstile)",
+                "severity": "HIGH",
+            },
+            {
+                "id": "A03",
+                "check": "Visitor sign-in and escort policy enforced",
+                "severity": "HIGH",
+            },
+            {
+                "id": "A04",
+                "check": "Badge visible at all times policy",
+                "severity": "MEDIUM",
+            },
+            {
+                "id": "A05",
+                "check": "After-hours access controls and logging",
+                "severity": "HIGH",
+            },
+            {
+                "id": "A06",
+                "check": "Terminated employee badge deactivation process",
+                "severity": "CRITICAL",
+            },
         ],
     },
     "server_room": {
         "name": "Server Room / Data Center",
         "checks": [
-            {"id": "S01", "check": "MFA or biometric access to server room", "severity": "CRITICAL"},
-            {"id": "S02", "check": "CCTV monitoring inside server room", "severity": "HIGH"},
-            {"id": "S03", "check": "Environmental controls (temp, humidity sensors)", "severity": "MEDIUM"},
-            {"id": "S04", "check": "Fire suppression system present", "severity": "HIGH"},
-            {"id": "S05", "check": "Access logs reviewed regularly", "severity": "MEDIUM"},
-            {"id": "S06", "check": "No unlocked network ports in common areas", "severity": "HIGH"},
+            {
+                "id": "S01",
+                "check": "MFA or biometric access to server room",
+                "severity": "CRITICAL",
+            },
+            {
+                "id": "S02",
+                "check": "CCTV monitoring inside server room",
+                "severity": "HIGH",
+            },
+            {
+                "id": "S03",
+                "check": "Environmental controls (temp, humidity sensors)",
+                "severity": "MEDIUM",
+            },
+            {
+                "id": "S04",
+                "check": "Fire suppression system present",
+                "severity": "HIGH",
+            },
+            {
+                "id": "S05",
+                "check": "Access logs reviewed regularly",
+                "severity": "MEDIUM",
+            },
+            {
+                "id": "S06",
+                "check": "No unlocked network ports in common areas",
+                "severity": "HIGH",
+            },
         ],
     },
     "social_engineering": {
         "name": "Social Engineering Resistance",
         "checks": [
-            {"id": "E01", "check": "Employees challenge unknown visitors", "severity": "HIGH"},
+            {
+                "id": "E01",
+                "check": "Employees challenge unknown visitors",
+                "severity": "HIGH",
+            },
             {"id": "E02", "check": "Clean desk policy enforced", "severity": "MEDIUM"},
-            {"id": "E03", "check": "Sensitive documents shredded", "severity": "MEDIUM"},
-            {"id": "E04", "check": "USB drives not left unattended", "severity": "HIGH"},
-            {"id": "E05", "check": "Dumpster diving countermeasures", "severity": "MEDIUM"},
+            {
+                "id": "E03",
+                "check": "Sensitive documents shredded",
+                "severity": "MEDIUM",
+            },
+            {
+                "id": "E04",
+                "check": "USB drives not left unattended",
+                "severity": "HIGH",
+            },
+            {
+                "id": "E05",
+                "check": "Dumpster diving countermeasures",
+                "severity": "MEDIUM",
+            },
         ],
     },
 }
@@ -61,17 +144,39 @@ def generate_checklist(categories=None, output_file=None):
         if cat in ASSESSMENT_CATEGORIES:
             data = ASSESSMENT_CATEGORIES[cat]
             for check in data["checks"]:
-                checklist.append({
-                    "category": data["name"], "id": check["id"],
-                    "check": check["check"], "severity": check["severity"],
-                    "status": "NOT_TESTED", "finding": "", "evidence": "",
-                })
+                checklist.append(
+                    {
+                        "category": data["name"],
+                        "id": check["id"],
+                        "check": check["check"],
+                        "severity": check["severity"],
+                        "status": "NOT_TESTED",
+                        "finding": "",
+                        "evidence": "",
+                    }
+                )
     if output_file:
         with open(output_file, "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=["category", "id", "check", "severity", "status", "finding", "evidence"])
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "category",
+                    "id",
+                    "check",
+                    "severity",
+                    "status",
+                    "finding",
+                    "evidence",
+                ],
+            )
             writer.writeheader()
             writer.writerows(checklist)
-    return {"total_checks": len(checklist), "categories": cats, "checklist": checklist, "output": output_file}
+    return {
+        "total_checks": len(checklist),
+        "categories": cats,
+        "checklist": checklist,
+        "output": output_file,
+    }
 
 
 def score_assessment(results_csv):
@@ -79,8 +184,14 @@ def score_assessment(results_csv):
     with open(results_csv, "r", encoding="utf-8", errors="replace") as f:
         reader = csv.DictReader(f)
         results = list(reader)
-    passed = sum(1 for r in results if r.get("status", "").lower() in ("pass", "compliant", "ok"))
-    failed = sum(1 for r in results if r.get("status", "").lower() in ("fail", "non-compliant", "nc"))
+    passed = sum(
+        1 for r in results if r.get("status", "").lower() in ("pass", "compliant", "ok")
+    )
+    failed = sum(
+        1
+        for r in results
+        if r.get("status", "").lower() in ("fail", "non-compliant", "nc")
+    )
     total = len(results)
     by_category = {}
     by_severity = {}
@@ -96,10 +207,18 @@ def score_assessment(results_csv):
         elif r.get("status", "").lower() in ("fail", "non-compliant", "nc"):
             by_category[cat]["fail"] += 1
             by_severity[sev]["fail"] += 1
-            failures.append({"id": r.get("id"), "check": r.get("check"), "severity": sev,
-                             "finding": r.get("finding", "")[:200]})
+            failures.append(
+                {
+                    "id": r.get("id"),
+                    "check": r.get("check"),
+                    "severity": sev,
+                    "finding": r.get("finding", "")[:200],
+                }
+            )
     return {
-        "total_checks": total, "passed": passed, "failed": failed,
+        "total_checks": total,
+        "passed": passed,
+        "failed": failed,
         "compliance_pct": round(passed / max(total, 1) * 100, 1),
         "by_category": by_category,
         "by_severity": by_severity,
@@ -111,15 +230,27 @@ def score_assessment(results_csv):
 def generate_report(results_csv):
     """Generate executive physical security assessment report."""
     scores = score_assessment(results_csv)
-    risk = "CRITICAL" if scores.get("critical_failures") else "HIGH" if scores["failed"] > 5 else "MEDIUM" if scores["failed"] > 0 else "LOW"
+    risk = (
+        "CRITICAL"
+        if scores.get("critical_failures")
+        else (
+            "HIGH"
+            if scores["failed"] > 5
+            else "MEDIUM" if scores["failed"] > 0 else "LOW"
+        )
+    )
     return {
         "generated": datetime.utcnow().isoformat(),
         "overall_risk": risk,
         "compliance_score": scores["compliance_pct"],
         **scores,
-        "recommendations": [
-            f"CRITICAL: Address {len(scores['critical_failures'])} critical findings immediately"
-        ] if scores["critical_failures"] else ["All critical controls passed"],
+        "recommendations": (
+            [
+                f"CRITICAL: Address {len(scores['critical_failures'])} critical findings immediately"
+            ]
+            if scores["critical_failures"]
+            else ["All critical controls passed"]
+        ),
     }
 
 
@@ -127,7 +258,9 @@ def main():
     parser = argparse.ArgumentParser(description="Physical Intrusion Assessment Agent")
     sub = parser.add_subparsers(dest="command")
     c = sub.add_parser("checklist", help="Generate assessment checklist")
-    c.add_argument("--categories", nargs="*", choices=list(ASSESSMENT_CATEGORIES.keys()))
+    c.add_argument(
+        "--categories", nargs="*", choices=list(ASSESSMENT_CATEGORIES.keys())
+    )
     c.add_argument("--output", help="Output CSV file")
     s = sub.add_parser("score", help="Score completed assessment")
     s.add_argument("--csv", required=True)

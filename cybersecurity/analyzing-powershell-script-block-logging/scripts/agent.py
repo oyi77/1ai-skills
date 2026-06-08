@@ -13,7 +13,9 @@ from datetime import datetime
 from Evtx.Evtx import FileHeader
 from lxml import etree
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 NS = {"evt": "http://schemas.microsoft.com/win/2004/08/events/event"}
@@ -21,16 +23,66 @@ NS = {"evt": "http://schemas.microsoft.com/win/2004/08/events/event"}
 SUSPICIOUS_PATTERNS = [
     (r"(?i)\-[Ee]ncoded[Cc]ommand", "Encoded command parameter", "T1059.001", "high"),
     (r"(?i)FromBase64String", "Base64 decoding", "T1140", "high"),
-    (r"(?i)(Invoke-Expression|iex)\s*\(", "Invoke-Expression execution", "T1059.001", "high"),
-    (r"(?i)(DownloadString|DownloadFile|Invoke-WebRequest|wget|curl)", "Download cradle", "T1105", "critical"),
-    (r"(?i)(Net\.WebClient|WebRequest\.Create)", "Network client instantiation", "T1071.001", "high"),
-    (r"(?i)(AmsiUtils|amsiInitFailed|AmsiScanBuffer)", "AMSI bypass attempt", "T1562.001", "critical"),
-    (r"(?i)(Invoke-Mimikatz|Invoke-Kerberoast|Invoke-TokenManipulation)", "Offensive PowerShell tool", "T1003", "critical"),
-    (r"(?i)(Add-MpPreference\s*-ExclusionPath)", "Defender exclusion", "T1562.001", "high"),
-    (r"(?i)(Set-MpPreference\s*-DisableRealtimeMonitoring)", "Defender disable", "T1562.001", "critical"),
-    (r"(?i)(New-Object\s+System\.Net\.Sockets\.TCPClient)", "Reverse shell pattern", "T1059.001", "critical"),
-    (r"(?i)(Get-Process\s+lsass|MiniDump)", "LSASS dump attempt", "T1003.001", "critical"),
-    (r"(?i)(ConvertTo-SecureString|PSCredential)", "Credential handling", "T1078", "medium"),
+    (
+        r"(?i)(Invoke-Expression|iex)\s*\(",
+        "Invoke-Expression execution",
+        "T1059.001",
+        "high",
+    ),
+    (
+        r"(?i)(DownloadString|DownloadFile|Invoke-WebRequest|wget|curl)",
+        "Download cradle",
+        "T1105",
+        "critical",
+    ),
+    (
+        r"(?i)(Net\.WebClient|WebRequest\.Create)",
+        "Network client instantiation",
+        "T1071.001",
+        "high",
+    ),
+    (
+        r"(?i)(AmsiUtils|amsiInitFailed|AmsiScanBuffer)",
+        "AMSI bypass attempt",
+        "T1562.001",
+        "critical",
+    ),
+    (
+        r"(?i)(Invoke-Mimikatz|Invoke-Kerberoast|Invoke-TokenManipulation)",
+        "Offensive PowerShell tool",
+        "T1003",
+        "critical",
+    ),
+    (
+        r"(?i)(Add-MpPreference\s*-ExclusionPath)",
+        "Defender exclusion",
+        "T1562.001",
+        "high",
+    ),
+    (
+        r"(?i)(Set-MpPreference\s*-DisableRealtimeMonitoring)",
+        "Defender disable",
+        "T1562.001",
+        "critical",
+    ),
+    (
+        r"(?i)(New-Object\s+System\.Net\.Sockets\.TCPClient)",
+        "Reverse shell pattern",
+        "T1059.001",
+        "critical",
+    ),
+    (
+        r"(?i)(Get-Process\s+lsass|MiniDump)",
+        "LSASS dump attempt",
+        "T1003.001",
+        "critical",
+    ),
+    (
+        r"(?i)(ConvertTo-SecureString|PSCredential)",
+        "Credential handling",
+        "T1078",
+        "medium",
+    ),
 ]
 
 
@@ -66,7 +118,9 @@ def parse_evtx_4104(evtx_path):
                 message_total = int(event_data.get("MessageTotal", "1"))
                 script_text = event_data.get("ScriptBlockText", "")
                 time_elem = root.find(".//evt:System/evt:TimeCreated", NS)
-                timestamp = time_elem.get("SystemTime", "") if time_elem is not None else ""
+                timestamp = (
+                    time_elem.get("SystemTime", "") if time_elem is not None else ""
+                )
                 if script_block_id not in script_blocks:
                     script_blocks[script_block_id] = {
                         "parts": {},
@@ -89,14 +143,16 @@ def reconstruct_scripts(script_blocks):
         total = block_data["total"]
         ordered = [parts.get(i, "") for i in range(1, total + 1)]
         full_script = "".join(ordered)
-        reconstructed.append({
-            "script_block_id": block_id,
-            "timestamp": block_data["timestamp"],
-            "path": block_data["path"],
-            "part_count": total,
-            "script_text": full_script,
-            "length": len(full_script),
-        })
+        reconstructed.append(
+            {
+                "script_block_id": block_id,
+                "timestamp": block_data["timestamp"],
+                "path": block_data["path"],
+                "part_count": total,
+                "script_text": full_script,
+                "length": len(full_script),
+            }
+        )
     logger.info("Reconstructed %d complete scripts", len(reconstructed))
     return reconstructed
 
@@ -107,9 +163,13 @@ def decode_base64_commands(script_text):
     b64_pattern = re.compile(r"[A-Za-z0-9+/=]{40,}")
     for match in b64_pattern.finditer(script_text):
         try:
-            decoded = base64.b64decode(match.group()).decode("utf-16-le", errors="ignore")
+            decoded = base64.b64decode(match.group()).decode(
+                "utf-16-le", errors="ignore"
+            )
             if any(c.isalpha() for c in decoded[:20]):
-                decoded_commands.append({"encoded": match.group()[:60], "decoded": decoded[:500]})
+                decoded_commands.append(
+                    {"encoded": match.group()[:60], "decoded": decoded[:500]}
+                )
         except Exception:
             continue
     return decoded_commands
@@ -122,36 +182,46 @@ def analyze_script(script_entry):
     for pattern, description, mitre, severity in SUSPICIOUS_PATTERNS:
         matches = re.findall(pattern, text)
         if matches:
-            findings.append({
-                "pattern": description,
-                "mitre_technique": mitre,
-                "severity": severity,
-                "match_count": len(matches),
-                "sample": matches[0][:100] if matches else "",
-            })
+            findings.append(
+                {
+                    "pattern": description,
+                    "mitre_technique": mitre,
+                    "severity": severity,
+                    "match_count": len(matches),
+                    "sample": matches[0][:100] if matches else "",
+                }
+            )
     entropy = calculate_entropy(text)
     if entropy > 5.5 and len(text) > 200:
-        findings.append({
-            "pattern": "High entropy (possible obfuscation)",
-            "mitre_technique": "T1027",
-            "severity": "medium",
-            "entropy": round(entropy, 2),
-        })
+        findings.append(
+            {
+                "pattern": "High entropy (possible obfuscation)",
+                "mitre_technique": "T1027",
+                "severity": "medium",
+                "entropy": round(entropy, 2),
+            }
+        )
     decoded = decode_base64_commands(text)
     if decoded:
-        findings.append({
-            "pattern": "Base64-encoded content decoded",
-            "mitre_technique": "T1140",
-            "severity": "high",
-            "decoded_count": len(decoded),
-            "samples": decoded[:3],
-        })
+        findings.append(
+            {
+                "pattern": "Base64-encoded content decoded",
+                "mitre_technique": "T1140",
+                "severity": "high",
+                "decoded_count": len(decoded),
+                "samples": decoded[:3],
+            }
+        )
     return findings
 
 
 def generate_report(scripts, all_findings):
     """Generate PowerShell script block analysis report."""
-    critical = sum(1 for f in all_findings if any(ff["severity"] == "critical" for ff in f["findings"]))
+    critical = sum(
+        1
+        for f in all_findings
+        if any(ff["severity"] == "critical" for ff in f["findings"])
+    )
     report = {
         "timestamp": datetime.utcnow().isoformat(),
         "total_scripts": len(scripts),
@@ -164,8 +234,12 @@ def generate_report(scripts, all_findings):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="PowerShell Script Block Logging Analyzer")
-    parser.add_argument("--evtx-file", required=True, help="Path to PowerShell Operational EVTX")
+    parser = argparse.ArgumentParser(
+        description="PowerShell Script Block Logging Analyzer"
+    )
+    parser.add_argument(
+        "--evtx-file", required=True, help="Path to PowerShell Operational EVTX"
+    )
     parser.add_argument("--output", default="ps_analysis.json")
     args = parser.parse_args()
 
@@ -176,14 +250,16 @@ def main():
     for script in scripts:
         findings = analyze_script(script)
         if findings:
-            all_findings.append({
-                "script_block_id": script["script_block_id"],
-                "timestamp": script["timestamp"],
-                "path": script["path"],
-                "length": script["length"],
-                "findings": findings,
-                "script_preview": script["script_text"][:300],
-            })
+            all_findings.append(
+                {
+                    "script_block_id": script["script_block_id"],
+                    "timestamp": script["timestamp"],
+                    "path": script["path"],
+                    "length": script["length"],
+                    "findings": findings,
+                    "script_preview": script["script_text"][:300],
+                }
+            )
 
     report = generate_report(scripts, all_findings)
     with open(args.output, "w") as f:

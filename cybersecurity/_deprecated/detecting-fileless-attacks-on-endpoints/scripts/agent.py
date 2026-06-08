@@ -18,15 +18,31 @@ except ImportError:
 SUSPICIOUS_PS_PATTERNS = {
     r"Invoke-Expression|IEX\s*\(": ("T1059.001", "HIGH", "Dynamic code execution"),
     r"Invoke-Mimikatz|Invoke-Kerberoast": ("T1003", "CRITICAL", "Credential tool"),
-    r"System\.Reflection\.Assembly.*Load": ("T1620", "HIGH", "Reflective assembly load"),
+    r"System\.Reflection\.Assembly.*Load": (
+        "T1620",
+        "HIGH",
+        "Reflective assembly load",
+    ),
     r"Net\.WebClient.*Download(String|Data|File)": ("T1105", "HIGH", "Remote download"),
     r"FromBase64String|Convert.*Base64": ("T1140", "MEDIUM", "Base64 decode"),
-    r"VirtualAlloc|VirtualProtect|CreateThread": ("T1055", "CRITICAL", "Memory injection APIs"),
+    r"VirtualAlloc|VirtualProtect|CreateThread": (
+        "T1055",
+        "CRITICAL",
+        "Memory injection APIs",
+    ),
     r"New-Object.*IO\.MemoryStream": ("T1620", "HIGH", "In-memory stream"),
     r"-enc\s|-encodedcommand\s": ("T1027", "HIGH", "Encoded PowerShell"),
-    r"Invoke-Shellcode|Invoke-ReflectivePEInjection": ("T1055", "CRITICAL", "Injection framework"),
+    r"Invoke-Shellcode|Invoke-ReflectivePEInjection": (
+        "T1055",
+        "CRITICAL",
+        "Injection framework",
+    ),
     r"Win32_Process.*Create|WMI.*Process": ("T1047", "HIGH", "WMI process creation"),
-    r"Register-WMI|__EventFilter|__EventConsumer": ("T1546.003", "CRITICAL", "WMI persistence"),
+    r"Register-WMI|__EventFilter|__EventConsumer": (
+        "T1546.003",
+        "CRITICAL",
+        "WMI persistence",
+    ),
     r"HKCU:\\.*\\Run|HKLM:\\.*\\Run": ("T1547.001", "HIGH", "Registry run key"),
     r"Add-MpPreference.*ExclusionPath": ("T1562.001", "HIGH", "Defender exclusion"),
 }
@@ -55,14 +71,16 @@ def parse_powershell_scriptblock(filepath):
 
             for pattern, (mitre, severity, desc) in SUSPICIOUS_PS_PATTERNS.items():
                 if re.search(pattern, script, re.IGNORECASE):
-                    findings.append({
-                        "event_id": 4104,
-                        "timestamp": time_match.group(1) if time_match else "",
-                        "pattern": desc,
-                        "mitre": mitre,
-                        "severity": severity,
-                        "script_excerpt": script[:300],
-                    })
+                    findings.append(
+                        {
+                            "event_id": 4104,
+                            "timestamp": time_match.group(1) if time_match else "",
+                            "pattern": desc,
+                            "mitre": mitre,
+                            "severity": severity,
+                            "script_excerpt": script[:300],
+                        }
+                    )
     return findings
 
 
@@ -73,7 +91,7 @@ def parse_sysmon_wmi_persistence(filepath):
     with evtx.Evtx(filepath) as log:
         for record in log.records():
             xml = record.xml()
-            event_id_match = re.search(r'<EventID[^>]*>(\d+)</EventID>', xml)
+            event_id_match = re.search(r"<EventID[^>]*>(\d+)</EventID>", xml)
             if not event_id_match:
                 continue
             event_id = int(event_id_match.group(1))
@@ -85,17 +103,19 @@ def parse_sysmon_wmi_persistence(filepath):
             consumer = re.search(r'<Data Name="Destination">([^<]+)', xml)
             user = re.search(r'<Data Name="User">([^<]+)', xml)
 
-            findings.append({
-                "event_id": event_id,
-                "type": WMI_PERSISTENCE_EVENTS[event_id],
-                "timestamp": time_match.group(1) if time_match else "",
-                "name": name.group(1) if name else "",
-                "operation": operation.group(1) if operation else "",
-                "destination": consumer.group(1) if consumer else "",
-                "user": user.group(1) if user else "",
-                "severity": "CRITICAL",
-                "mitre": "T1546.003",
-            })
+            findings.append(
+                {
+                    "event_id": event_id,
+                    "type": WMI_PERSISTENCE_EVENTS[event_id],
+                    "timestamp": time_match.group(1) if time_match else "",
+                    "name": name.group(1) if name else "",
+                    "operation": operation.group(1) if operation else "",
+                    "destination": consumer.group(1) if consumer else "",
+                    "user": user.group(1) if user else "",
+                    "severity": "CRITICAL",
+                    "mitre": "T1546.003",
+                }
+            )
     return findings
 
 
@@ -112,15 +132,17 @@ def parse_sysmon_injection(filepath):
             target = re.search(r'<Data Name="TargetImage">([^<]+)', xml)
             time_match = re.search(r'SystemTime="([^"]+)"', xml)
 
-            findings.append({
-                "event_id": 8,
-                "timestamp": time_match.group(1) if time_match else "",
-                "source_image": source.group(1) if source else "",
-                "target_image": target.group(1) if target else "",
-                "severity": "HIGH",
-                "mitre": "T1055",
-                "description": "CreateRemoteThread - possible reflective injection",
-            })
+            findings.append(
+                {
+                    "event_id": 8,
+                    "timestamp": time_match.group(1) if time_match else "",
+                    "source_image": source.group(1) if source else "",
+                    "target_image": target.group(1) if target else "",
+                    "severity": "HIGH",
+                    "mitre": "T1055",
+                    "description": "CreateRemoteThread - possible reflective injection",
+                }
+            )
     return findings
 
 
@@ -128,8 +150,12 @@ def main():
     parser = argparse.ArgumentParser(description="Fileless Attack Detector")
     parser.add_argument("--ps-log", help="PowerShell EVTX file (Event 4104)")
     parser.add_argument("--sysmon-log", help="Sysmon EVTX file")
-    parser.add_argument("--check-wmi", action="store_true", help="Check WMI persistence")
-    parser.add_argument("--check-injection", action="store_true", help="Check injection")
+    parser.add_argument(
+        "--check-wmi", action="store_true", help="Check WMI persistence"
+    )
+    parser.add_argument(
+        "--check-injection", action="store_true", help="Check injection"
+    )
     args = parser.parse_args()
 
     results = {"timestamp": datetime.utcnow().isoformat() + "Z", "findings": []}

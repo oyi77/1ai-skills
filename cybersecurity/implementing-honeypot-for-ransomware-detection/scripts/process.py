@@ -21,7 +21,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger("ransomware_honeypot")
 
 
@@ -49,24 +51,60 @@ class CanaryAlert:
 
 CANARY_TEMPLATES = {
     "finance": [
-        ("!_Budget_FY2026_FINAL.xlsx", "FY2026 Budget Summary\nTotal Revenue: $142.3M\nTotal Expenses: $98.7M\nNet Income: $43.6M"),
-        ("000_Quarterly_Earnings.docx", "Q4 2025 Earnings Report\nRevenue: $38.2M\nGross Margin: 67%\nEBITDA: $12.1M"),
-        ("_Executive_Compensation.pdf", "Executive Compensation Committee Report\nCEO Total Comp: $2.1M\nCFO Total Comp: $1.4M"),
+        (
+            "!_Budget_FY2026_FINAL.xlsx",
+            "FY2026 Budget Summary\nTotal Revenue: $142.3M\nTotal Expenses: $98.7M\nNet Income: $43.6M",
+        ),
+        (
+            "000_Quarterly_Earnings.docx",
+            "Q4 2025 Earnings Report\nRevenue: $38.2M\nGross Margin: 67%\nEBITDA: $12.1M",
+        ),
+        (
+            "_Executive_Compensation.pdf",
+            "Executive Compensation Committee Report\nCEO Total Comp: $2.1M\nCFO Total Comp: $1.4M",
+        ),
     ],
     "hr": [
-        ("!_Employee_SSN_List.xlsx", "Employee ID | Name | SSN\n10001 | Smith, John | XXX-XX-1234\n10002 | Johnson, Mary | XXX-XX-5678"),
-        ("000_Salary_Database_2026.csv", "Employee,Department,Base Salary,Bonus\nSmith J,Engineering,$145000,$29000"),
-        ("_Termination_List_Q1.docx", "Planned Workforce Reduction Q1 2026\nDepartment: Operations\nHeadcount Impact: 45 positions"),
+        (
+            "!_Employee_SSN_List.xlsx",
+            "Employee ID | Name | SSN\n10001 | Smith, John | XXX-XX-1234\n10002 | Johnson, Mary | XXX-XX-5678",
+        ),
+        (
+            "000_Salary_Database_2026.csv",
+            "Employee,Department,Base Salary,Bonus\nSmith J,Engineering,$145000,$29000",
+        ),
+        (
+            "_Termination_List_Q1.docx",
+            "Planned Workforce Reduction Q1 2026\nDepartment: Operations\nHeadcount Impact: 45 positions",
+        ),
     ],
     "engineering": [
-        ("!_Product_Roadmap_Confidential.docx", "Product Roadmap 2026-2028\nProject Phoenix: AI-powered analytics\nProject Titan: Next-gen platform"),
-        ("000_Source_Code_Access_Keys.txt", "Repository Access Tokens\nGitHub Enterprise: ghp_XXXXXXXXXXXX\nAWS CodeCommit: AKIAIOSFODNN7EXAMPLE"),
-        ("_Patent_Application_Draft.pdf", "US Patent Application\nTitle: Method for Distributed Computing\nInventor: Dr. Jane Smith"),
+        (
+            "!_Product_Roadmap_Confidential.docx",
+            "Product Roadmap 2026-2028\nProject Phoenix: AI-powered analytics\nProject Titan: Next-gen platform",
+        ),
+        (
+            "000_Source_Code_Access_Keys.txt",
+            "Repository Access Tokens\nGitHub Enterprise: ghp_XXXXXXXXXXXX\nAWS CodeCommit: AKIAIOSFODNN7EXAMPLE",
+        ),
+        (
+            "_Patent_Application_Draft.pdf",
+            "US Patent Application\nTitle: Method for Distributed Computing\nInventor: Dr. Jane Smith",
+        ),
     ],
     "executive": [
-        ("!_Board_Meeting_Minutes.docx", "Board of Directors Meeting Minutes\nDate: January 15, 2026\nAttendees: Full board present"),
-        ("000_MA_Target_Analysis.xlsx", "M&A Target Analysis\nTarget: AcmeTech Inc\nValuation: $450M\nSynergies: $80M annual"),
-        ("_Strategic_Plan_2026.pdf", "Strategic Plan 2026-2030\nVision: Market leader in three verticals\nCapEx Budget: $200M"),
+        (
+            "!_Board_Meeting_Minutes.docx",
+            "Board of Directors Meeting Minutes\nDate: January 15, 2026\nAttendees: Full board present",
+        ),
+        (
+            "000_MA_Target_Analysis.xlsx",
+            "M&A Target Analysis\nTarget: AcmeTech Inc\nValuation: $450M\nSynergies: $80M annual",
+        ),
+        (
+            "_Strategic_Plan_2026.pdf",
+            "Strategic Plan 2026-2030\nVision: Market leader in three verticals\nCapEx Budget: $200M",
+        ),
     ],
 }
 
@@ -87,8 +125,14 @@ class CanaryDeployer:
 
     def _save_state(self):
         with open(self.state_file, "w") as f:
-            json.dump({"canaries": [asdict(c) for c in self.canaries],
-                       "last_updated": datetime.now().isoformat()}, f, indent=2)
+            json.dump(
+                {
+                    "canaries": [asdict(c) for c in self.canaries],
+                    "last_updated": datetime.now().isoformat(),
+                },
+                f,
+                indent=2,
+            )
 
     def _compute_hash(self, filepath: str) -> str:
         if not os.path.exists(filepath):
@@ -221,7 +265,9 @@ class CanaryDeployer:
 
     def continuous_monitor(self, interval_seconds: int = 10):
         """Run continuous monitoring loop."""
-        logger.info(f"Starting continuous canary monitoring (interval: {interval_seconds}s)")
+        logger.info(
+            f"Starting continuous canary monitoring (interval: {interval_seconds}s)"
+        )
         logger.info(f"Monitoring {len(self.canaries)} canary files")
 
         try:
@@ -256,7 +302,9 @@ def main():
             if alerts:
                 print(f"\n!!! {len(alerts)} ALERTS !!!")
                 for alert in alerts:
-                    print(f"  [{alert.severity}] {alert.change_type}: {alert.canary_path}")
+                    print(
+                        f"  [{alert.severity}] {alert.change_type}: {alert.canary_path}"
+                    )
             else:
                 print("All canaries intact - no alerts")
 
@@ -269,10 +317,16 @@ def main():
 
         else:
             print("Usage:")
-            print("  python process.py deploy <path> <type>  - Deploy canaries (finance/hr/engineering/executive)")
-            print("  python process.py check                 - Check all canaries for modifications")
+            print(
+                "  python process.py deploy <path> <type>  - Deploy canaries (finance/hr/engineering/executive)"
+            )
+            print(
+                "  python process.py check                 - Check all canaries for modifications"
+            )
             print("  python process.py monitor [interval]    - Continuous monitoring")
-            print("  python process.py report                - Generate deployment report")
+            print(
+                "  python process.py report                - Generate deployment report"
+            )
     else:
         # Demo mode
         print("Ransomware Honeypot - Demo Mode")

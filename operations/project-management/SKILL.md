@@ -1,8 +1,6 @@
 ---
 name: project-management
-description: Coordinate tasks, track deadlines, manage sprints, and maintain project documentation with Notion integration
-allowed-tools: - MCP(notion:*)
-  - MCP(slack:*)
+description: Project Management. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

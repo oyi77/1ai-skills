@@ -51,8 +51,14 @@ class SSLTLSAssessmentAgent:
 
     def _process_result(self, result, hostname, port):
         """Process sslyze ServerScanResult into structured findings."""
-        report = {"hostname": hostname, "port": port, "protocols": {},
-                  "cipher_suites": {}, "certificate": {}, "vulnerabilities": {}}
+        report = {
+            "hostname": hostname,
+            "port": port,
+            "protocols": {},
+            "cipher_suites": {},
+            "certificate": {},
+            "vulnerabilities": {},
+        }
 
         protocol_checks = [
             ("ssl_2_0_cipher_suites", "SSLv2"),
@@ -74,26 +80,38 @@ class SSLTLSAssessmentAgent:
 
                 if proto_name in ("SSLv2", "SSLv3"):
                     if accepted:
-                        self.findings.append({
-                            "severity": "critical", "type": "Deprecated Protocol",
-                            "detail": f"{proto_name} enabled with {len(accepted)} cipher suites",
-                        })
+                        self.findings.append(
+                            {
+                                "severity": "critical",
+                                "type": "Deprecated Protocol",
+                                "detail": f"{proto_name} enabled with {len(accepted)} cipher suites",
+                            }
+                        )
                 elif proto_name in ("TLS 1.0", "TLS 1.1"):
                     if accepted:
-                        self.findings.append({
-                            "severity": "high", "type": "Legacy Protocol",
-                            "detail": f"{proto_name} still enabled",
-                        })
+                        self.findings.append(
+                            {
+                                "severity": "high",
+                                "type": "Legacy Protocol",
+                                "detail": f"{proto_name} still enabled",
+                            }
+                        )
 
                 for cipher_name in accepted:
                     if any(weak in cipher_name for weak in WEAK_CIPHERS_KEYWORDS):
-                        self.findings.append({
-                            "severity": "high", "type": "Weak Cipher Suite",
-                            "detail": f"{cipher_name} accepted on {proto_name}",
-                        })
+                        self.findings.append(
+                            {
+                                "severity": "high",
+                                "type": "Weak Cipher Suite",
+                                "detail": f"{cipher_name} accepted on {proto_name}",
+                            }
+                        )
 
         cert_attempt = getattr(scan, "certificate_info", None)
-        if cert_attempt and cert_attempt.status == ScanCommandAttemptStatusEnum.COMPLETED:
+        if (
+            cert_attempt
+            and cert_attempt.status == ScanCommandAttemptStatusEnum.COMPLETED
+        ):
             cert_result = cert_attempt.result
             for deployment in cert_result.certificate_deployments:
                 leaf = deployment.received_certificate_chain[0]
@@ -103,25 +121,41 @@ class SSLTLSAssessmentAgent:
                     "not_before": leaf.not_valid_before_utc.isoformat(),
                     "not_after": leaf.not_valid_after_utc.isoformat(),
                     "serial": str(leaf.serial_number),
-                    "signature_algorithm": leaf.signature_hash_algorithm.name
-                        if leaf.signature_hash_algorithm else "unknown",
+                    "signature_algorithm": (
+                        leaf.signature_hash_algorithm.name
+                        if leaf.signature_hash_algorithm
+                        else "unknown"
+                    ),
                     "chain_valid": deployment.verified_certificate_chain is not None,
                     "ocsp_stapling": deployment.ocsp_response is not None,
                 }
                 if leaf.not_valid_after_utc < datetime.utcnow():
-                    self.findings.append({
-                        "severity": "critical", "type": "Expired Certificate",
-                        "detail": f"Certificate expired on {leaf.not_valid_after_utc}",
-                    })
-                if leaf.signature_hash_algorithm and leaf.signature_hash_algorithm.name == "sha1":
-                    self.findings.append({
-                        "severity": "high", "type": "SHA-1 Certificate",
-                        "detail": "Certificate uses SHA-1 signature",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": "Expired Certificate",
+                            "detail": f"Certificate expired on {leaf.not_valid_after_utc}",
+                        }
+                    )
+                if (
+                    leaf.signature_hash_algorithm
+                    and leaf.signature_hash_algorithm.name == "sha1"
+                ):
+                    self.findings.append(
+                        {
+                            "severity": "high",
+                            "type": "SHA-1 Certificate",
+                            "detail": "Certificate uses SHA-1 signature",
+                        }
+                    )
 
         vuln_checks = [
             ("heartbleed", "Heartbleed", "is_vulnerable_to_heartbleed"),
-            ("openssl_ccs_injection", "CCS Injection", "is_vulnerable_to_ccs_injection"),
+            (
+                "openssl_ccs_injection",
+                "CCS Injection",
+                "is_vulnerable_to_ccs_injection",
+            ),
         ]
         for attr, name, field in vuln_checks:
             attempt = getattr(scan, attr, None)
@@ -129,21 +163,30 @@ class SSLTLSAssessmentAgent:
                 vulnerable = getattr(attempt.result, field, False)
                 report["vulnerabilities"][name] = vulnerable
                 if vulnerable:
-                    self.findings.append({
-                        "severity": "critical", "type": f"{name} Vulnerable",
-                        "detail": f"Server is vulnerable to {name}",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": f"{name} Vulnerable",
+                            "detail": f"Server is vulnerable to {name}",
+                        }
+                    )
 
         robot_attempt = getattr(scan, "robot", None)
-        if robot_attempt and robot_attempt.status == ScanCommandAttemptStatusEnum.COMPLETED:
+        if (
+            robot_attempt
+            and robot_attempt.status == ScanCommandAttemptStatusEnum.COMPLETED
+        ):
             robot_result = robot_attempt.result
             is_vuln = "VULNERABLE" in str(robot_result.robot_result)
             report["vulnerabilities"]["ROBOT"] = is_vuln
             if is_vuln:
-                self.findings.append({
-                    "severity": "critical", "type": "ROBOT Vulnerable",
-                    "detail": "Server is vulnerable to ROBOT attack",
-                })
+                self.findings.append(
+                    {
+                        "severity": "critical",
+                        "type": "ROBOT Vulnerable",
+                        "detail": "Server is vulnerable to ROBOT attack",
+                    }
+                )
 
         return report
 
@@ -174,7 +217,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="Assess SSL/TLS server configurations using sslyze"
     )
-    parser.add_argument("targets", nargs="+", help="Target host:port (e.g. example.com:443)")
+    parser.add_argument(
+        "targets", nargs="+", help="Target host:port (e.g. example.com:443)"
+    )
     parser.add_argument("--output-dir", default="./ssl_tls_assessment")
     args = parser.parse_args()
 

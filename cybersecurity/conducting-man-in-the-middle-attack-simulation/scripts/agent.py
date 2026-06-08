@@ -10,7 +10,9 @@ from datetime import datetime
 
 from scapy.all import ARP, Ether, srp, send, sniff, IP, TCP
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -45,14 +47,23 @@ def arp_spoof(target_ip, spoof_ip, target_mac):
 
 def arp_restore(target_ip, gateway_ip, target_mac, gateway_mac):
     """Restore original ARP tables after test."""
-    packet = ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=gateway_ip, hwsrc=gateway_mac)
+    packet = ARP(
+        op=2, pdst=target_ip, hwdst=target_mac, psrc=gateway_ip, hwsrc=gateway_mac
+    )
     send(packet, count=5, verbose=False)
     logger.info("ARP tables restored for %s", target_ip)
 
 
 def detect_cleartext_protocols(interface, duration=30):
     """Sniff traffic for cleartext protocol usage (HTTP, FTP, Telnet, SMTP)."""
-    cleartext_ports = {80: "HTTP", 21: "FTP", 23: "Telnet", 25: "SMTP", 110: "POP3", 143: "IMAP"}
+    cleartext_ports = {
+        80: "HTTP",
+        21: "FTP",
+        23: "Telnet",
+        25: "SMTP",
+        110: "POP3",
+        143: "IMAP",
+    }
     findings = []
 
     def packet_callback(pkt):
@@ -61,12 +72,14 @@ def detect_cleartext_protocols(interface, duration=30):
             sport = pkt[TCP].sport
             for port, proto in cleartext_ports.items():
                 if dport == port or sport == port:
-                    findings.append({
-                        "protocol": proto,
-                        "src": pkt[IP].src,
-                        "dst": pkt[IP].dst,
-                        "port": port,
-                    })
+                    findings.append(
+                        {
+                            "protocol": proto,
+                            "src": pkt[IP].src,
+                            "dst": pkt[IP].dst,
+                            "port": port,
+                        }
+                    )
 
     logger.info("Sniffing for cleartext protocols on %s for %ds", interface, duration)
     sniff(iface=interface, prn=packet_callback, timeout=duration, store=False)
@@ -78,6 +91,7 @@ def detect_cleartext_protocols(interface, duration=30):
 def check_hsts_enforcement(target_url):
     """Check if a target enforces HSTS headers."""
     import requests
+
     try:
         resp = requests.get(target_url, timeout=10, verify=False)
         hsts = resp.headers.get("Strict-Transport-Security", "")
@@ -94,6 +108,7 @@ def check_hsts_enforcement(target_url):
 def test_ssl_stripping_potential(target_ip, gateway_ip):
     """Evaluate if SSL stripping is feasible by checking HSTS preload status."""
     import requests
+
     try:
         resp = requests.get(
             f"https://hstspreload.org/api/v2/status?domain={target_ip}",
@@ -153,11 +168,15 @@ def generate_report(hosts, cleartext, hsts_results, simulation):
 
 def main():
     parser = argparse.ArgumentParser(description="MITM Attack Simulation Agent")
-    parser.add_argument("--network", help="Network CIDR for host discovery (e.g., 192.168.1.0/24)")
+    parser.add_argument(
+        "--network", help="Network CIDR for host discovery (e.g., 192.168.1.0/24)"
+    )
     parser.add_argument("--target", help="Target IP for MITM simulation")
     parser.add_argument("--gateway", help="Gateway IP")
     parser.add_argument("--interface", default="eth0", help="Network interface")
-    parser.add_argument("--duration", type=int, default=30, help="Sniff duration in seconds")
+    parser.add_argument(
+        "--duration", type=int, default=30, help="Sniff duration in seconds"
+    )
     parser.add_argument("--output", default="mitm_report.json")
     args = parser.parse_args()
 
@@ -168,7 +187,9 @@ def main():
     simulation = None
 
     if args.target and args.gateway:
-        simulation = run_mitm_simulation(args.target, args.gateway, args.interface, args.duration)
+        simulation = run_mitm_simulation(
+            args.target, args.gateway, args.interface, args.duration
+        )
 
     report = generate_report(hosts, cleartext, hsts_results, simulation)
     with open(args.output, "w") as f:

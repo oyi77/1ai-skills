@@ -17,27 +17,29 @@ from datetime import datetime
 class KismetAssessmentAgent:
     """Uses Kismet REST API for wireless security assessment."""
 
-    def __init__(self, kismet_url=None,
-                 api_key=None, username="kismet", password="kismet"):
+    def __init__(
+        self, kismet_url=None, api_key=None, username="kismet", password="kismet"
+    ):
         kismet_url = kismet_url or os.environ.get("KISMET_URL", "http://localhost:2501")
         self.base_url = kismet_url.rstrip("/")
         self.session = requests.Session()
         if api_key:
             self.session.cookies.set("KISMET", api_key)
         else:
-            self.session.post(f"{self.base_url}/session/check_login",
-                              json={"username": username, "password": password}, timeout=30)
+            self.session.post(
+                f"{self.base_url}/session/check_login",
+                json={"username": username, "password": password},
+                timeout=30,
+            )
         self.findings = []
 
     def _get(self, endpoint, params=None):
-        resp = self.session.get(f"{self.base_url}{endpoint}",
-                                params=params, timeout=30)
+        resp = self.session.get(f"{self.base_url}{endpoint}", params=params, timeout=30)
         resp.raise_for_status()
         return resp.json()
 
     def _post(self, endpoint, data=None):
-        resp = self.session.post(f"{self.base_url}{endpoint}",
-                                 json=data, timeout=30)
+        resp = self.session.post(f"{self.base_url}{endpoint}", json=data, timeout=30)
         resp.raise_for_status()
         return resp.json()
 
@@ -47,19 +49,24 @@ class KismetAssessmentAgent:
 
     def get_all_devices(self, limit=500):
         """Retrieve all detected wireless devices."""
-        return self._post("/devices/summary/devices.json",
-                          data={"fields": [
-                              "kismet.device.base.macaddr",
-                              "kismet.device.base.name",
-                              "kismet.device.base.type",
-                              "kismet.device.base.manuf",
-                              "kismet.device.base.channel",
-                              "kismet.device.base.frequency",
-                              "kismet.device.base.signal/kismet.common.signal.last_signal",
-                              "kismet.device.base.crypt",
-                              "kismet.device.base.first_time",
-                              "kismet.device.base.last_time",
-                          ], "limit": limit})
+        return self._post(
+            "/devices/summary/devices.json",
+            data={
+                "fields": [
+                    "kismet.device.base.macaddr",
+                    "kismet.device.base.name",
+                    "kismet.device.base.type",
+                    "kismet.device.base.manuf",
+                    "kismet.device.base.channel",
+                    "kismet.device.base.frequency",
+                    "kismet.device.base.signal/kismet.common.signal.last_signal",
+                    "kismet.device.base.crypt",
+                    "kismet.device.base.first_time",
+                    "kismet.device.base.last_time",
+                ],
+                "limit": limit,
+            },
+        )
 
     def get_access_points(self):
         """Get all detected access points (802.11 AP type)."""
@@ -80,15 +87,26 @@ class KismetAssessmentAgent:
 
             if authorized_bssids and bssid not in authorized_bssids:
                 rogues.append({"bssid": bssid, "ssid": ssid, "reason": "Unknown BSSID"})
-            elif authorized_ssids and ssid in authorized_ssids and bssid not in authorized_bssids:
-                rogues.append({"bssid": bssid, "ssid": ssid,
-                               "reason": "Known SSID from unauthorized BSSID (Evil Twin)"})
+            elif (
+                authorized_ssids
+                and ssid in authorized_ssids
+                and bssid not in authorized_bssids
+            ):
+                rogues.append(
+                    {
+                        "bssid": bssid,
+                        "ssid": ssid,
+                        "reason": "Known SSID from unauthorized BSSID (Evil Twin)",
+                    }
+                )
 
         if rogues:
-            self.findings.extend([
-                {"type": "Rogue AP Detected", "severity": "Critical", **r}
-                for r in rogues
-            ])
+            self.findings.extend(
+                [
+                    {"type": "Rogue AP Detected", "severity": "Critical", **r}
+                    for r in rogues
+                ]
+            )
         return rogues
 
     def analyze_encryption(self):
@@ -101,16 +119,21 @@ class KismetAssessmentAgent:
             crypt = ap.get("kismet.device.base.crypt", "unknown")
             encryption_stats[crypt] += 1
             if crypt in ("None", "WEP", ""):
-                weak_aps.append({
-                    "bssid": ap.get("kismet.device.base.macaddr", ""),
-                    "ssid": ap.get("kismet.device.base.name", ""),
-                    "encryption": crypt or "Open",
-                })
-                self.findings.append({
-                    "type": "Weak Encryption", "severity": "High",
-                    "bssid": ap.get("kismet.device.base.macaddr", ""),
-                    "encryption": crypt or "Open",
-                })
+                weak_aps.append(
+                    {
+                        "bssid": ap.get("kismet.device.base.macaddr", ""),
+                        "ssid": ap.get("kismet.device.base.name", ""),
+                        "encryption": crypt or "Open",
+                    }
+                )
+                self.findings.append(
+                    {
+                        "type": "Weak Encryption",
+                        "severity": "High",
+                        "bssid": ap.get("kismet.device.base.macaddr", ""),
+                        "encryption": crypt or "Open",
+                    }
+                )
         return {"stats": dict(encryption_stats), "weak_aps": weak_aps}
 
     def analyze_channels(self):
@@ -137,7 +160,11 @@ class KismetAssessmentAgent:
 
 
 def main():
-    url = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("KISMET_URL", "http://localhost:2501")
+    url = (
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else os.environ.get("KISMET_URL", "http://localhost:2501")
+    )
     api_key = sys.argv[2] if len(sys.argv) > 2 else None
     agent = KismetAssessmentAgent(url, api_key=api_key)
     agent.generate_report()

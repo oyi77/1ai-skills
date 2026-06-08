@@ -23,26 +23,56 @@ logger = logging.getLogger("canary_agent")
 CANARY_EXTENSIONS = [".docx", ".xlsx", ".pdf", ".csv", ".sql", ".txt", ".pptx"]
 
 CANARY_NAMES_FIRST = [
-    "_AAAA_budget_2024", "_AAAA_financial_report", "_AAAA_payroll_data",
-    "_AAA_employee_records", "_AAA_client_contracts",
+    "_AAAA_budget_2024",
+    "_AAAA_financial_report",
+    "_AAAA_payroll_data",
+    "_AAA_employee_records",
+    "_AAA_client_contracts",
 ]
 
 CANARY_NAMES_LAST = [
-    "~zzzz_annual_review", "~zzzz_backup_config", "~zzzz_tax_returns",
-    "~zzz_insurance_claims", "~zzz_merger_docs",
+    "~zzzz_annual_review",
+    "~zzzz_backup_config",
+    "~zzzz_tax_returns",
+    "~zzz_insurance_claims",
+    "~zzz_merger_docs",
 ]
 
 RANSOMWARE_EXTENSIONS = {
-    ".locked", ".encrypted", ".crypt", ".locky", ".cerber", ".wncry",
-    ".dharma", ".basta", ".blackcat", ".hive", ".royal", ".akira",
-    ".lockbit", ".conti", ".ryuk", ".maze", ".revil", ".phobos",
-    ".makop", ".stop", ".djvu", ".rhysida",
+    ".locked",
+    ".encrypted",
+    ".crypt",
+    ".locky",
+    ".cerber",
+    ".wncry",
+    ".dharma",
+    ".basta",
+    ".blackcat",
+    ".hive",
+    ".royal",
+    ".akira",
+    ".lockbit",
+    ".conti",
+    ".ryuk",
+    ".maze",
+    ".revil",
+    ".phobos",
+    ".makop",
+    ".stop",
+    ".djvu",
+    ".rhysida",
 }
 
 RANSOM_NOTE_NAMES = {
-    "readme.txt", "readme.html", "decrypt.txt", "decrypt.html",
-    "how_to_decrypt.txt", "restore_files.txt", "read_me.txt",
-    "how_to_recover.txt", "ransom_note.txt",
+    "readme.txt",
+    "readme.html",
+    "decrypt.txt",
+    "decrypt.html",
+    "how_to_decrypt.txt",
+    "restore_files.txt",
+    "read_me.txt",
+    "how_to_recover.txt",
+    "ransom_note.txt",
 }
 
 
@@ -85,7 +115,10 @@ def generate_canary_content(canary_type, name):
 def deploy_canaries(target_dirs, canaries_per_dir=4):
     """Deploy canary files to target directories."""
     deployed = []
-    names = CANARY_NAMES_FIRST[:canaries_per_dir // 2] + CANARY_NAMES_LAST[:canaries_per_dir // 2]
+    names = (
+        CANARY_NAMES_FIRST[: canaries_per_dir // 2]
+        + CANARY_NAMES_LAST[: canaries_per_dir // 2]
+    )
 
     for target_dir in target_dirs:
         if not os.path.isdir(target_dir):
@@ -129,47 +162,57 @@ def check_canary_integrity(canary_records):
             renamed = False
             if os.path.isdir(parent_dir):
                 for f in os.listdir(parent_dir):
-                    if f.startswith(basename) and any(f.endswith(ext) for ext in RANSOMWARE_EXTENSIONS):
-                        alerts.append({
-                            "type": "RANSOMWARE_RENAME",
-                            "severity": "CRITICAL",
-                            "original": filepath,
-                            "renamed_to": os.path.join(parent_dir, f),
-                            "timestamp": datetime.now().isoformat(),
-                        })
+                    if f.startswith(basename) and any(
+                        f.endswith(ext) for ext in RANSOMWARE_EXTENSIONS
+                    ):
+                        alerts.append(
+                            {
+                                "type": "RANSOMWARE_RENAME",
+                                "severity": "CRITICAL",
+                                "original": filepath,
+                                "renamed_to": os.path.join(parent_dir, f),
+                                "timestamp": datetime.now().isoformat(),
+                            }
+                        )
                         renamed = True
                         break
 
             if not renamed:
-                alerts.append({
-                    "type": "CANARY_DELETED",
-                    "severity": "HIGH",
-                    "path": filepath,
-                    "timestamp": datetime.now().isoformat(),
-                })
+                alerts.append(
+                    {
+                        "type": "CANARY_DELETED",
+                        "severity": "HIGH",
+                        "path": filepath,
+                        "timestamp": datetime.now().isoformat(),
+                    }
+                )
             continue
 
         current_hash = compute_file_hash(filepath)
         if current_hash != record["hash"]:
-            alerts.append({
-                "type": "CANARY_MODIFIED",
-                "severity": "CRITICAL",
-                "path": filepath,
-                "original_hash": record["hash"],
-                "current_hash": current_hash,
-                "timestamp": datetime.now().isoformat(),
-            })
+            alerts.append(
+                {
+                    "type": "CANARY_MODIFIED",
+                    "severity": "CRITICAL",
+                    "path": filepath,
+                    "original_hash": record["hash"],
+                    "current_hash": current_hash,
+                    "timestamp": datetime.now().isoformat(),
+                }
+            )
 
         current_size = os.path.getsize(filepath)
         if abs(current_size - record["size"]) > record["size"] * 0.5:
-            alerts.append({
-                "type": "SIGNIFICANT_SIZE_CHANGE",
-                "severity": "HIGH",
-                "path": filepath,
-                "original_size": record["size"],
-                "current_size": current_size,
-                "timestamp": datetime.now().isoformat(),
-            })
+            alerts.append(
+                {
+                    "type": "SIGNIFICANT_SIZE_CHANGE",
+                    "severity": "HIGH",
+                    "path": filepath,
+                    "original_size": record["size"],
+                    "current_size": current_size,
+                    "timestamp": datetime.now().isoformat(),
+                }
+            )
 
     # Check for ransom notes in canary directories
     checked_dirs = set()
@@ -180,12 +223,14 @@ def check_canary_integrity(canary_records):
         checked_dirs.add(parent_dir)
         for f in os.listdir(parent_dir):
             if f.lower() in RANSOM_NOTE_NAMES:
-                alerts.append({
-                    "type": "RANSOM_NOTE_DETECTED",
-                    "severity": "CRITICAL",
-                    "path": os.path.join(parent_dir, f),
-                    "timestamp": datetime.now().isoformat(),
-                })
+                alerts.append(
+                    {
+                        "type": "RANSOM_NOTE_DETECTED",
+                        "severity": "CRITICAL",
+                        "path": os.path.join(parent_dir, f),
+                        "timestamp": datetime.now().isoformat(),
+                    }
+                )
 
     return alerts
 
@@ -230,7 +275,9 @@ if __name__ == "__main__":
         registry_file = "canary_registry.json"
         with open(registry_file, "w") as f:
             json.dump(records, f, indent=2)
-        print(f"\n[+] Deployed {len(records)} canary files across {len(dirs)} directories")
+        print(
+            f"\n[+] Deployed {len(records)} canary files across {len(dirs)} directories"
+        )
         print(f"[+] Registry saved to: {registry_file}")
 
     elif command == "check":
@@ -243,7 +290,9 @@ if __name__ == "__main__":
         if alerts:
             print(f"\n[!] {len(alerts)} ALERTS DETECTED:")
             for a in alerts:
-                print(f"  [{a['severity']}] {a['type']}: {a.get('path', a.get('original'))}")
+                print(
+                    f"  [{a['severity']}] {a['type']}: {a.get('path', a.get('original'))}"
+                )
         else:
             print(f"\n[+] All {len(records)} canary files intact. No alerts.")
 

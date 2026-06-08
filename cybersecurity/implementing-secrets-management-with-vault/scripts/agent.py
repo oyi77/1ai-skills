@@ -5,6 +5,7 @@ Manages secrets lifecycle using the HashiCorp Vault KV v2 secrets engine
 via the hvac Python library. Supports reading, writing, listing, deleting
 secrets, and auditing secret access patterns.
 """
+
 import argparse
 import json
 import os
@@ -40,7 +41,9 @@ def write_secret(client, path, data, mount_point="secret"):
     """Write or update a secret in KV v2."""
     print(f"[*] Writing secret to {mount_point}/{path}")
     response = client.secrets.kv.v2.create_or_update_secret(
-        path=path, secret=data, mount_point=mount_point,
+        path=path,
+        secret=data,
+        mount_point=mount_point,
     )
     version = response.get("data", {}).get("version", "unknown")
     print(f"[+] Secret written (version: {version})")
@@ -56,10 +59,14 @@ def read_secret(client, path, mount_point="secret", version=None):
     response = client.secrets.kv.v2.read_secret_version(**kwargs)
     secret_data = response.get("data", {}).get("data", {})
     metadata = response.get("data", {}).get("metadata", {})
-    print(f"[+] Secret read (version: {metadata.get('version', '?')}, "
-          f"created: {metadata.get('created_time', 'unknown')})")
-    masked = {k: v[:3] + "***" if isinstance(v, str) and len(v) > 3 else "***"
-              for k, v in secret_data.items()}
+    print(
+        f"[+] Secret read (version: {metadata.get('version', '?')}, "
+        f"created: {metadata.get('created_time', 'unknown')})"
+    )
+    masked = {
+        k: v[:3] + "***" if isinstance(v, str) and len(v) > 3 else "***"
+        for k, v in secret_data.items()
+    }
     return {
         "path": path,
         "keys": list(secret_data.keys()),
@@ -75,9 +82,7 @@ def list_secrets(client, path="", mount_point="secret"):
     """List secret paths under a given prefix."""
     print(f"[*] Listing secrets under {mount_point}/{path}")
     try:
-        response = client.secrets.kv.v2.list_secrets(
-            path=path, mount_point=mount_point
-        )
+        response = client.secrets.kv.v2.list_secrets(path=path, mount_point=mount_point)
         keys = response.get("data", {}).get("keys", [])
         print(f"[+] Found {len(keys)} entries")
         for key in keys:
@@ -122,15 +127,19 @@ def read_metadata(client, path, mount_point="secret"):
     )
     meta = response.get("data", {})
     versions = meta.get("versions", {})
-    print(f"[+] {len(versions)} version(s), max_versions: {meta.get('max_versions', 0)}")
+    print(
+        f"[+] {len(versions)} version(s), max_versions: {meta.get('max_versions', 0)}"
+    )
     version_info = []
     for ver_num, ver_data in sorted(versions.items(), key=lambda x: int(x[0])):
-        version_info.append({
-            "version": int(ver_num),
-            "created_time": ver_data.get("created_time"),
-            "deletion_time": ver_data.get("deletion_time"),
-            "destroyed": ver_data.get("destroyed", False),
-        })
+        version_info.append(
+            {
+                "version": int(ver_num),
+                "created_time": ver_data.get("created_time"),
+                "deletion_time": ver_data.get("deletion_time"),
+                "destroyed": ver_data.get("destroyed", False),
+            }
+        )
     return {
         "path": path,
         "current_version": meta.get("current_version"),
@@ -165,13 +174,15 @@ def audit_secrets(client, mount_point="secret", path_prefix=""):
                         path=full_path, mount_point=mount_point
                     )
                     meta = meta_resp.get("data", {})
-                    audit_results.append({
-                        "path": full_path,
-                        "current_version": meta.get("current_version"),
-                        "created_time": meta.get("created_time"),
-                        "updated_time": meta.get("updated_time"),
-                        "version_count": len(meta.get("versions", {})),
-                    })
+                    audit_results.append(
+                        {
+                            "path": full_path,
+                            "current_version": meta.get("current_version"),
+                            "created_time": meta.get("created_time"),
+                            "updated_time": meta.get("updated_time"),
+                            "version_count": len(meta.get("versions", {})),
+                        }
+                    )
                 except Exception as e:
                     audit_results.append({"path": full_path, "error": str(e)})
 
@@ -181,8 +192,10 @@ def audit_secrets(client, mount_point="secret", path_prefix=""):
         if "error" in item:
             print(f"    [ERR] {item['path']}: {item['error']}")
         else:
-            print(f"    {item['path']:40s} v{item['current_version']} "
-                  f"(updated: {str(item.get('updated_time', 'N/A'))[:19]})")
+            print(
+                f"    {item['path']:40s} v{item['current_version']} "
+                f"(updated: {str(item.get('updated_time', 'N/A'))[:19]})"
+            )
     return audit_results
 
 
@@ -194,7 +207,7 @@ def main():
 
     p_write = sub.add_parser("write", help="Write a secret")
     p_write.add_argument("--path", required=True, help="Secret path")
-    p_write.add_argument("--data", required=True, help='JSON data')
+    p_write.add_argument("--data", required=True, help="JSON data")
     p_write.add_argument("--mount", default="secret", help="KV mount point")
 
     p_read = sub.add_parser("read", help="Read a secret")
@@ -237,14 +250,19 @@ def main():
         secret_data = json.loads(args.data)
         result = write_secret(client, args.path, secret_data, args.mount)
     elif args.command == "read":
-        result = read_secret(client, args.path, args.mount,
-                             getattr(args, "version", None))
+        result = read_secret(
+            client, args.path, args.mount, getattr(args, "version", None)
+        )
     elif args.command == "list":
         result = list_secrets(client, args.path, args.mount)
     elif args.command == "delete":
-        result = delete_secret(client, args.path, args.mount,
-                               getattr(args, "versions", None),
-                               getattr(args, "destroy", False))
+        result = delete_secret(
+            client,
+            args.path,
+            args.mount,
+            getattr(args, "versions", None),
+            getattr(args, "destroy", False),
+        )
     elif args.command == "metadata":
         result = read_metadata(client, args.path, args.mount)
     elif args.command == "audit":

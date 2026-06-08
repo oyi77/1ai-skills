@@ -15,7 +15,9 @@ try:
 except ImportError:
     sys.exit("requests required: pip install requests")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -23,7 +25,11 @@ def get_gcloud_token() -> str:
     """Get access token from gcloud CLI."""
     try:
         result = subprocess.run(
-            ["gcloud", "auth", "print-access-token"], capture_output=True, text=True, timeout=10)
+            ["gcloud", "auth", "print-access-token"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
         return result.stdout.strip()
     except FileNotFoundError:
         return ""
@@ -59,8 +65,9 @@ def list_access_levels(org_id: str, policy_name: str, token: str) -> List[dict]:
 def audit_iap_bindings(project_id: str, token: str) -> List[dict]:
     """Audit IAM policy bindings for IAP-secured resources."""
     url = f"https://cloudresourcemanager.googleapis.com/v1/projects/{project_id}:getIamPolicy"
-    resp = requests.post(url, headers={"Authorization": f"Bearer {token}"},
-                         json={}, timeout=30)
+    resp = requests.post(
+        url, headers={"Authorization": f"Bearer {token}"}, json={}, timeout=30
+    )
     if resp.status_code != 200:
         return []
     bindings = resp.json().get("bindings", [])
@@ -74,12 +81,18 @@ def assess_zero_trust_posture(project_id: str, token: str) -> dict:
     iap_bindings = audit_iap_bindings(project_id, token)
     findings = []
     if not iap_resources:
-        findings.append({"severity": "HIGH", "finding": "No IAP-protected resources found"})
+        findings.append(
+            {"severity": "HIGH", "finding": "No IAP-protected resources found"}
+        )
     if not iap_bindings:
-        findings.append({"severity": "HIGH", "finding": "No IAP IAM bindings configured"})
+        findings.append(
+            {"severity": "HIGH", "finding": "No IAP IAM bindings configured"}
+        )
     allUsers = any("allUsers" in str(b.get("members", [])) for b in iap_bindings)
     if allUsers:
-        findings.append({"severity": "CRITICAL", "finding": "IAP binding includes allUsers"})
+        findings.append(
+            {"severity": "CRITICAL", "finding": "IAP binding includes allUsers"}
+        )
     return {
         "iap_resources": len(iap_resources),
         "iap_bindings": len(iap_bindings),
@@ -105,7 +118,9 @@ def generate_report(project_id: str, token: str) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="BeyondCorp Zero Trust Assessment Agent")
+    parser = argparse.ArgumentParser(
+        description="BeyondCorp Zero Trust Assessment Agent"
+    )
     parser.add_argument("--project", required=True, help="GCP project ID")
     parser.add_argument("--token", default="", help="Access token (or uses gcloud)")
     parser.add_argument("--output-dir", default=".")

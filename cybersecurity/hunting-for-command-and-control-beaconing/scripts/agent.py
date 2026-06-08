@@ -7,16 +7,19 @@ import re
 from collections import defaultdict
 from datetime import datetime, timezone
 
-
 C2_INDICATORS = {
     "known_ports": {443, 8443, 8080, 4444, 5555, 8888, 9090, 1337},
     "suspicious_user_agents": [
-        "mozilla/4.0", "python-requests", "curl/", "wget/",
-        "java/", "go-http-client",
+        "mozilla/4.0",
+        "python-requests",
+        "curl/",
+        "wget/",
+        "java/",
+        "go-http-client",
     ],
     "dns_c2_patterns": [
-        r'^[a-z0-9]{30,}\.',  # Long random subdomain (DNS tunneling)
-        r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$',  # Direct IP
+        r"^[a-z0-9]{30,}\.",  # Long random subdomain (DNS tunneling)
+        r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",  # Direct IP
     ],
 }
 
@@ -37,22 +40,26 @@ def analyze_dns_queries(dns_log_path):
                 domain_counts[query] += 1
                 for pattern in C2_INDICATORS["dns_c2_patterns"]:
                     if re.match(pattern, query):
-                        findings.append({
-                            "type": "suspicious_dns",
-                            "query": query,
-                            "pattern": pattern,
-                        })
+                        findings.append(
+                            {
+                                "type": "suspicious_dns",
+                                "query": query,
+                                "pattern": pattern,
+                            }
+                        )
     except FileNotFoundError:
         pass
 
     high_freq = sorted(domain_counts.items(), key=lambda x: x[1], reverse=True)[:20]
     for domain, count in high_freq:
         if count > 100 and len(domain) > 20:
-            findings.append({
-                "type": "high_frequency_dns",
-                "domain": domain,
-                "query_count": count,
-            })
+            findings.append(
+                {
+                    "type": "high_frequency_dns",
+                    "domain": domain,
+                    "query_count": count,
+                }
+            )
     return findings
 
 
@@ -72,20 +79,24 @@ def analyze_http_logs(http_log_path):
                 user_agent = fields[12] if len(fields) > 12 else ""
                 for ua in C2_INDICATORS["suspicious_user_agents"]:
                     if ua in user_agent.lower():
-                        findings.append({
-                            "type": "suspicious_user_agent",
-                            "host": host,
-                            "uri": uri[:100],
-                            "user_agent": user_agent[:100],
-                        })
+                        findings.append(
+                            {
+                                "type": "suspicious_user_agent",
+                                "host": host,
+                                "uri": uri[:100],
+                                "user_agent": user_agent[:100],
+                            }
+                        )
                         break
-                if re.match(r'^/[a-zA-Z0-9]{4,8}$', uri):
-                    findings.append({
-                        "type": "c2_uri_pattern",
-                        "host": host,
-                        "uri": uri,
-                        "note": "Short random URI typical of C2 frameworks",
-                    })
+                if re.match(r"^/[a-zA-Z0-9]{4,8}$", uri):
+                    findings.append(
+                        {
+                            "type": "c2_uri_pattern",
+                            "host": host,
+                            "uri": uri,
+                            "note": "Short random URI typical of C2 frameworks",
+                        }
+                    )
     except FileNotFoundError:
         pass
     return findings
@@ -117,12 +128,16 @@ def analyze_connection_patterns(conn_log_path):
                 if dur > 3600 and ob > 0 and rb > 0:
                     ratio = ob / rb if rb > 0 else 999
                     if 0.8 < ratio < 1.2:
-                        findings.append({
-                            "type": "persistent_symmetric",
-                            "src": src, "dst": dst, "port": dst_port,
-                            "duration_hours": round(dur / 3600, 1),
-                            "data_ratio": round(ratio, 2),
-                        })
+                        findings.append(
+                            {
+                                "type": "persistent_symmetric",
+                                "src": src,
+                                "dst": dst,
+                                "port": dst_port,
+                                "duration_hours": round(dur / 3600, 1),
+                                "data_ratio": round(ratio, 2),
+                            }
+                        )
     except FileNotFoundError:
         pass
     return findings
@@ -157,7 +172,11 @@ def main():
         print(f"[*] Connection findings: {len(conn)}")
 
     total = sum(len(v) for v in report["findings"].values())
-    report["risk_level"] = "CRITICAL" if total >= 10 else "HIGH" if total >= 5 else "MEDIUM" if total > 0 else "LOW"
+    report["risk_level"] = (
+        "CRITICAL"
+        if total >= 10
+        else "HIGH" if total >= 5 else "MEDIUM" if total > 0 else "LOW"
+    )
 
     if args.output:
         with open(args.output, "w") as f:

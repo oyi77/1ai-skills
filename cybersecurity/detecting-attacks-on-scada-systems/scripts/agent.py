@@ -40,11 +40,16 @@ def scan_scada_services(host):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(3)
             if sock.connect_ex((host, port)) == 0:
-                results.append({
-                    "host": host, "port": port, "protocol": proto,
-                    "accessible": True, "severity": severity,
-                    "finding": f"{proto} service exposed on port {port}",
-                })
+                results.append(
+                    {
+                        "host": host,
+                        "port": port,
+                        "protocol": proto,
+                        "accessible": True,
+                        "severity": severity,
+                        "finding": f"{proto} service exposed on port {port}",
+                    }
+                )
             sock.close()
         except socket.error:
             pass
@@ -64,31 +69,37 @@ def detect_modbus_anomalies(host, port=502, unit_id=1):
 
         rr = client.read_holding_registers(0, count=10, slave=unit_id)
         if not rr.isError():
-            findings.append({
-                "check": "Read holding registers",
-                "status": "accessible",
-                "severity": "HIGH" if unit_id == 0 else "MEDIUM",
-                "detail": f"Registers 0-9 readable: {rr.registers}",
-            })
+            findings.append(
+                {
+                    "check": "Read holding registers",
+                    "status": "accessible",
+                    "severity": "HIGH" if unit_id == 0 else "MEDIUM",
+                    "detail": f"Registers 0-9 readable: {rr.registers}",
+                }
+            )
 
         for test_unit in [0, 255]:
             rr = client.read_holding_registers(0, count=1, slave=test_unit)
             if not rr.isError():
-                findings.append({
-                    "check": f"Broadcast unit ID {test_unit}",
-                    "status": "accessible",
-                    "severity": "CRITICAL",
-                    "detail": f"Unit ID {test_unit} responds — broadcast address accessible",
-                })
+                findings.append(
+                    {
+                        "check": f"Broadcast unit ID {test_unit}",
+                        "status": "accessible",
+                        "severity": "CRITICAL",
+                        "detail": f"Unit ID {test_unit} responds — broadcast address accessible",
+                    }
+                )
 
         rr = client.read_coils(0, count=100, slave=unit_id)
         if not rr.isError():
-            findings.append({
-                "check": "Bulk coil read",
-                "status": "accessible",
-                "severity": "MEDIUM",
-                "detail": f"100 coils readable from address 0",
-            })
+            findings.append(
+                {
+                    "check": "Bulk coil read",
+                    "status": "accessible",
+                    "severity": "MEDIUM",
+                    "detail": f"100 coils readable from address 0",
+                }
+            )
 
     except Exception as e:
         findings.append({"check": "error", "detail": str(e)})
@@ -105,14 +116,32 @@ def detect_s7comm_access(host, port=102):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(5)
         sock.connect((host, port))
-        cotp_cr = bytes([
-            0x03, 0x00, 0x00, 0x16,
-            0x11, 0xe0, 0x00, 0x00,
-            0x00, 0x01, 0x00, 0xc0,
-            0x01, 0x0a, 0xc1, 0x02,
-            0x01, 0x00, 0xc2, 0x02,
-            0x01, 0x02,
-        ])
+        cotp_cr = bytes(
+            [
+                0x03,
+                0x00,
+                0x00,
+                0x16,
+                0x11,
+                0xE0,
+                0x00,
+                0x00,
+                0x00,
+                0x01,
+                0x00,
+                0xC0,
+                0x01,
+                0x0A,
+                0xC1,
+                0x02,
+                0x01,
+                0x00,
+                0xC2,
+                0x02,
+                0x01,
+                0x02,
+            ]
+        )
         sock.send(cotp_cr)
         resp = sock.recv(1024)
         sock.close()
@@ -132,20 +161,26 @@ def query_scada_siem(siem_url, api_key, hours=24):
     """Query SIEM for SCADA-related security events."""
     headers = {"Authorization": f"Bearer {api_key}"}
     try:
-        resp = requests.get(f"{siem_url}/api/v1/events", headers=headers,
-                            params={"category": "scada", "hours": hours}, timeout=15)
+        resp = requests.get(
+            f"{siem_url}/api/v1/events",
+            headers=headers,
+            params={"category": "scada", "hours": hours},
+            timeout=15,
+        )
         resp.raise_for_status()
         events = resp.json().get("events", [])
         findings = []
         for evt in events:
             if evt.get("severity", 0) >= 7:
-                findings.append({
-                    "event_id": evt.get("id", ""),
-                    "source": evt.get("source_ip", ""),
-                    "target": evt.get("dest_ip", ""),
-                    "description": evt.get("description", ""),
-                    "severity": "CRITICAL" if evt["severity"] >= 9 else "HIGH",
-                })
+                findings.append(
+                    {
+                        "event_id": evt.get("id", ""),
+                        "source": evt.get("source_ip", ""),
+                        "target": evt.get("dest_ip", ""),
+                        "description": evt.get("description", ""),
+                        "severity": "CRITICAL" if evt["severity"] >= 9 else "HIGH",
+                    }
+                )
         return findings
     except Exception as e:
         return [{"error": str(e)}]

@@ -57,14 +57,18 @@ class TimesketchTimelineBuilder:
         self.timelines = []
         self.events = []
 
-    def process_evidence_with_plaso(self, evidence_path, output_plaso, parser_set="quick_triage"):
+    def process_evidence_with_plaso(
+        self, evidence_path, output_plaso, parser_set="quick_triage"
+    ):
         """Run log2timeline (Plaso) to process evidence into timeline format."""
         parsers = self.PLASO_PARSER_SETS.get(parser_set, parser_set)
 
         cmd = [
             "log2timeline.py",
-            "--parsers", parsers,
-            "--storage-file", str(output_plaso),
+            "--parsers",
+            parsers,
+            "--storage-file",
+            str(output_plaso),
             str(evidence_path),
         ]
 
@@ -97,7 +101,14 @@ class TimesketchTimelineBuilder:
             # Placeholder for EVTX parsing logic
 
         # Write CSV in Timesketch format
-        fieldnames = ["message", "datetime", "timestamp_desc", "source_short", "hostname", "tag"]
+        fieldnames = [
+            "message",
+            "datetime",
+            "timestamp_desc",
+            "source_short",
+            "hostname",
+            "tag",
+        ]
 
         with open(output_csv, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -113,8 +124,12 @@ class TimesketchTimelineBuilder:
         output_file = self.output_dir / f"{timeline_name}.csv"
 
         fieldnames = [
-            "message", "datetime", "timestamp_desc",
-            "source_short", "hostname", "tag",
+            "message",
+            "datetime",
+            "timestamp_desc",
+            "source_short",
+            "hostname",
+            "tag",
         ]
 
         with open(output_file, "w", newline="", encoding="utf-8") as f:
@@ -164,8 +179,10 @@ class TimesketchTimelineBuilder:
         """Import timeline file into Timesketch using the CLI importer."""
         cmd = [
             "timesketch_importer",
-            "-s", sketch_name,
-            "-t", timeline_name,
+            "-s",
+            sketch_name,
+            "-t",
+            timeline_name,
             str(timeline_file),
         ]
 
@@ -180,7 +197,9 @@ class TimesketchTimelineBuilder:
                 print(f"[!] Import error: {result.stderr[:500]}")
                 return False
         except FileNotFoundError:
-            print("[!] timesketch_importer not found. Install: pip install timesketch-import-client")
+            print(
+                "[!] timesketch_importer not found. Install: pip install timesketch-import-client"
+            )
             return False
 
     def generate_search_queries(self, iocs=None):
@@ -272,10 +291,14 @@ class TimesketchTimelineBuilder:
         for phase in attack_phases:
             phase_findings = [f for f in findings if f.get("mitre_tactic") == phase]
             if phase_findings:
-                narrative["phases"].append({
-                    "tactic": phase,
-                    "events": sorted(phase_findings, key=lambda x: x.get("datetime", "")),
-                })
+                narrative["phases"].append(
+                    {
+                        "tactic": phase,
+                        "events": sorted(
+                            phase_findings, key=lambda x: x.get("datetime", "")
+                        ),
+                    }
+                )
 
         narrative_file = self.output_dir / "attack_narrative.json"
         with open(narrative_file, "w") as f:
@@ -310,22 +333,26 @@ def main():
         description="Timesketch Timeline Builder - Forensic Timeline Creation Tool"
     )
     parser.add_argument(
-        "--evidence", "-e",
+        "--evidence",
+        "-e",
         help="Path to evidence directory or disk image",
     )
     parser.add_argument(
-        "--parsers", "-p",
+        "--parsers",
+        "-p",
         default="quick_triage",
         choices=["quick_triage", "windows_full", "linux_full", "network_focused"],
         help="Plaso parser set to use",
     )
     parser.add_argument(
-        "--sketch", "-s",
+        "--sketch",
+        "-s",
         default="Investigation",
         help="Timesketch sketch name",
     )
     parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         default="timeline_output",
         help="Output directory",
     )

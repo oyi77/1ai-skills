@@ -23,6 +23,7 @@ from collections import defaultdict
 @dataclass
 class BECIndicator:
     """A BEC detection indicator."""
+
     category: str = ""
     description: str = ""
     severity: str = "medium"
@@ -33,6 +34,7 @@ class BECIndicator:
 @dataclass
 class BECAnalysis:
     """Complete BEC analysis result."""
+
     from_address: str = ""
     from_display_name: str = ""
     to_address: str = ""
@@ -46,32 +48,59 @@ class BECAnalysis:
 
 # Financial keywords
 FINANCIAL_KEYWORDS = [
-    r'\bwire\s+transfer\b', r'\bbank\s+transfer\b', r'\bpayment\b',
-    r'\binvoice\b', r'\bpurchase\s+order\b', r'\baccount\s+number\b',
-    r'\brouting\s+number\b', r'\biban\b', r'\bswift\b', r'\back\b',
-    r'\bgift\s+card\b', r'\bbitcoin\b', r'\bcrypto\b', r'\bvenmo\b',
-    r'\bzelle\b', r'\bpaypal\b', r'\bw-2\b', r'\btax\s+form\b',
+    r"\bwire\s+transfer\b",
+    r"\bbank\s+transfer\b",
+    r"\bpayment\b",
+    r"\binvoice\b",
+    r"\bpurchase\s+order\b",
+    r"\baccount\s+number\b",
+    r"\brouting\s+number\b",
+    r"\biban\b",
+    r"\bswift\b",
+    r"\back\b",
+    r"\bgift\s+card\b",
+    r"\bbitcoin\b",
+    r"\bcrypto\b",
+    r"\bvenmo\b",
+    r"\bzelle\b",
+    r"\bpaypal\b",
+    r"\bw-2\b",
+    r"\btax\s+form\b",
 ]
 
 # Urgency keywords
 URGENCY_KEYWORDS = [
-    r'\burgent\b', r'\bimmediately\b', r'\basap\b', r'\btoday\b',
-    r'\bright\s+now\b', r'\btime\s+sensitive\b', r'\bdo\s+not\s+(share|tell|discuss)\b',
-    r'\bconfidential\b', r'\bkeep\s+this\s+between\b', r'\bquietly\b',
-    r'\bbefore\s+end\s+of\s+day\b', r'\bcritical\b', r'\boverdue\b',
+    r"\burgent\b",
+    r"\bimmediately\b",
+    r"\basap\b",
+    r"\btoday\b",
+    r"\bright\s+now\b",
+    r"\btime\s+sensitive\b",
+    r"\bdo\s+not\s+(share|tell|discuss)\b",
+    r"\bconfidential\b",
+    r"\bkeep\s+this\s+between\b",
+    r"\bquietly\b",
+    r"\bbefore\s+end\s+of\s+day\b",
+    r"\bcritical\b",
+    r"\boverdue\b",
 ]
 
 # Authority/impersonation keywords
 AUTHORITY_KEYWORDS = [
-    r'\bi\s+need\s+you\s+to\b', r'\bplease\s+handle\b',
-    r'\bi\'m\s+in\s+a\s+meeting\b', r'\bi\'m\s+traveling\b',
-    r'\bdon\'t\s+call\s+me\b', r'\bemail\s+me\s+back\b',
-    r'\bcan\s+you\s+take\s+care\s+of\b', r'\bapproved\s+by\b',
+    r"\bi\s+need\s+you\s+to\b",
+    r"\bplease\s+handle\b",
+    r"\bi\'m\s+in\s+a\s+meeting\b",
+    r"\bi\'m\s+traveling\b",
+    r"\bdon\'t\s+call\s+me\b",
+    r"\bemail\s+me\s+back\b",
+    r"\bcan\s+you\s+take\s+care\s+of\b",
+    r"\bapproved\s+by\b",
 ]
 
 
-def detect_bec(headers: dict, body: str = "", vip_list: list = None,
-               internal_domains: list = None) -> BECAnalysis:
+def detect_bec(
+    headers: dict, body: str = "", vip_list: list = None, internal_domains: list = None
+) -> BECAnalysis:
     """Analyze email for BEC indicators."""
     analysis = BECAnalysis()
     analysis.from_address = headers.get("from", "")
@@ -80,7 +109,7 @@ def detect_bec(headers: dict, body: str = "", vip_list: list = None,
     analysis.subject = headers.get("subject", "")
 
     from_domain = ""
-    match = re.search(r'@([\w.-]+)', analysis.from_address)
+    match = re.search(r"@([\w.-]+)", analysis.from_address)
     if match:
         from_domain = match.group(1).lower()
 
@@ -98,14 +127,16 @@ def detect_bec(headers: dict, body: str = "", vip_list: list = None,
             vip_domain = vip.get("domain", "").lower()
             if vip_name and vip_name in name_lower:
                 if from_domain and vip_domain and from_domain != vip_domain:
-                    analysis.indicators.append(BECIndicator(
-                        category="vip_impersonation",
-                        description=f"Display name '{analysis.from_display_name}' matches VIP "
-                                    f"'{vip.get('name')}' but email is from external domain '{from_domain}'",
-                        severity="critical",
-                        confidence=0.9,
-                        bec_type="ceo_fraud"
-                    ))
+                    analysis.indicators.append(
+                        BECIndicator(
+                            category="vip_impersonation",
+                            description=f"Display name '{analysis.from_display_name}' matches VIP "
+                            f"'{vip.get('name')}' but email is from external domain '{from_domain}'",
+                            severity="critical",
+                            confidence=0.9,
+                            bec_type="ceo_fraud",
+                        )
+                    )
                     score += 35
 
     # Check 2: Financial keywords
@@ -115,13 +146,15 @@ def detect_bec(headers: dict, body: str = "", vip_list: list = None,
             financial_matches.append(pattern)
 
     if financial_matches:
-        analysis.indicators.append(BECIndicator(
-            category="financial_language",
-            description=f"Found {len(financial_matches)} financial keyword(s)",
-            severity="medium",
-            confidence=min(len(financial_matches) * 0.2, 0.8),
-            bec_type="payment_fraud"
-        ))
+        analysis.indicators.append(
+            BECIndicator(
+                category="financial_language",
+                description=f"Found {len(financial_matches)} financial keyword(s)",
+                severity="medium",
+                confidence=min(len(financial_matches) * 0.2, 0.8),
+                bec_type="payment_fraud",
+            )
+        )
         score += min(len(financial_matches) * 5, 20)
 
     # Check 3: Urgency keywords
@@ -131,24 +164,28 @@ def detect_bec(headers: dict, body: str = "", vip_list: list = None,
             urgency_matches.append(pattern)
 
     if urgency_matches:
-        analysis.indicators.append(BECIndicator(
-            category="urgency_language",
-            description=f"Found {len(urgency_matches)} urgency/secrecy keyword(s)",
-            severity="medium",
-            confidence=min(len(urgency_matches) * 0.2, 0.8),
-            bec_type="social_engineering"
-        ))
+        analysis.indicators.append(
+            BECIndicator(
+                category="urgency_language",
+                description=f"Found {len(urgency_matches)} urgency/secrecy keyword(s)",
+                severity="medium",
+                confidence=min(len(urgency_matches) * 0.2, 0.8),
+                bec_type="social_engineering",
+            )
+        )
         score += min(len(urgency_matches) * 5, 15)
 
     # Check 4: Combined financial + urgency = higher risk
     if financial_matches and urgency_matches:
-        analysis.indicators.append(BECIndicator(
-            category="combined_financial_urgency",
-            description="Financial request combined with urgency/secrecy language - strong BEC signal",
-            severity="high",
-            confidence=0.8,
-            bec_type="ceo_fraud"
-        ))
+        analysis.indicators.append(
+            BECIndicator(
+                category="combined_financial_urgency",
+                description="Financial request combined with urgency/secrecy language - strong BEC signal",
+                severity="high",
+                confidence=0.8,
+                bec_type="ceo_fraud",
+            )
+        )
         score += 20
 
     # Check 5: Authority language
@@ -158,43 +195,52 @@ def detect_bec(headers: dict, body: str = "", vip_list: list = None,
             authority_matches.append(pattern)
 
     if authority_matches and (financial_matches or urgency_matches):
-        analysis.indicators.append(BECIndicator(
-            category="authority_language",
-            description="Authority/directive language combined with financial or urgency content",
-            severity="high",
-            confidence=0.7,
-            bec_type="ceo_fraud"
-        ))
+        analysis.indicators.append(
+            BECIndicator(
+                category="authority_language",
+                description="Authority/directive language combined with financial or urgency content",
+                severity="high",
+                confidence=0.7,
+                bec_type="ceo_fraud",
+            )
+        )
         score += 15
 
     # Check 6: Reply-to mismatch
     reply_to = headers.get("reply_to", "")
     if reply_to:
         reply_domain = ""
-        match = re.search(r'@([\w.-]+)', reply_to)
+        match = re.search(r"@([\w.-]+)", reply_to)
         if match:
             reply_domain = match.group(1).lower()
         if reply_domain and from_domain and reply_domain != from_domain:
-            analysis.indicators.append(BECIndicator(
-                category="reply_to_mismatch",
-                description=f"Reply-To ({reply_domain}) differs from From ({from_domain})",
-                severity="high",
-                confidence=0.85,
-                bec_type="account_compromise"
-            ))
+            analysis.indicators.append(
+                BECIndicator(
+                    category="reply_to_mismatch",
+                    description=f"Reply-To ({reply_domain}) differs from From ({from_domain})",
+                    severity="high",
+                    confidence=0.85,
+                    bec_type="account_compromise",
+                )
+            )
             score += 20
 
     # Check 7: External sender to finance/HR (if role info available)
     to_role = headers.get("to_role", "").lower()
     if from_domain and internal_domains and from_domain not in internal_domains:
-        if any(r in to_role for r in ["finance", "accounting", "payroll", "hr", "human resources"]):
-            analysis.indicators.append(BECIndicator(
-                category="external_to_finance",
-                description=f"External sender to {to_role} staff",
-                severity="medium",
-                confidence=0.5,
-                bec_type="vendor_fraud"
-            ))
+        if any(
+            r in to_role
+            for r in ["finance", "accounting", "payroll", "hr", "human resources"]
+        ):
+            analysis.indicators.append(
+                BECIndicator(
+                    category="external_to_finance",
+                    description=f"External sender to {to_role} staff",
+                    severity="medium",
+                    confidence=0.5,
+                    bec_type="vendor_fraud",
+                )
+            )
             score += 10
 
     # Calculate final verdict
@@ -240,7 +286,9 @@ def format_bec_report(analysis: BECAnalysis) -> str:
         lines.append(f"[INDICATORS] ({len(analysis.indicators)})")
         for i, ind in enumerate(analysis.indicators, 1):
             lines.append(f"  {i}. [{ind.severity.upper()}] {ind.description}")
-            lines.append(f"     Category: {ind.category} | Confidence: {ind.confidence:.0%}")
+            lines.append(
+                f"     Category: {ind.category} | Confidence: {ind.confidence:.0%}"
+            )
     lines.append("=" * 60)
     return "\n".join(lines)
 
@@ -289,8 +337,9 @@ def main():
             }
             body = args.body
 
-        analysis = detect_bec(headers, body, vip_list,
-                              getattr(args, "internal_domains", []))
+        analysis = detect_bec(
+            headers, body, vip_list, getattr(args, "internal_domains", [])
+        )
         if args.json:
             print(json.dumps(asdict(analysis), indent=2, default=str))
         else:
@@ -306,7 +355,7 @@ def main():
                 entry.get("headers", entry),
                 entry.get("body", ""),
                 vip_list,
-                getattr(args, "internal_domains", [])
+                getattr(args, "internal_domains", []),
             )
             if analysis.is_bec:
                 bec_count += 1

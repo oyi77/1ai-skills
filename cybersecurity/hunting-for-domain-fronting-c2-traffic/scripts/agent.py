@@ -11,6 +11,7 @@ from datetime import datetime
 
 try:
     from OpenSSL import crypto
+
     HAS_PYOPENSSL = True
 except ImportError:
     HAS_PYOPENSSL = False
@@ -33,18 +34,22 @@ def load_proxy_logs(filepath):
     with open(filepath, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            records.append({
-                "timestamp": row.get("timestamp", ""),
-                "src_ip": row.get("src_ip", row.get("c-ip", "")),
-                "sni": row.get("sni", row.get("cs-ssl-sni", "")).lower().strip(),
-                "host_header": row.get("host_header", row.get("cs-host", "")).lower().strip(),
-                "dst_ip": row.get("dst_ip", row.get("s-ip", "")),
-                "dst_port": int(row.get("dst_port", row.get("s-port", "443"))),
-                "method": row.get("method", row.get("cs-method", "")),
-                "url": row.get("url", row.get("cs-uri-stem", "")),
-                "status": row.get("status", row.get("sc-status", "")),
-                "bytes": int(row.get("bytes", row.get("sc-bytes", "0"))),
-            })
+            records.append(
+                {
+                    "timestamp": row.get("timestamp", ""),
+                    "src_ip": row.get("src_ip", row.get("c-ip", "")),
+                    "sni": row.get("sni", row.get("cs-ssl-sni", "")).lower().strip(),
+                    "host_header": row.get("host_header", row.get("cs-host", ""))
+                    .lower()
+                    .strip(),
+                    "dst_ip": row.get("dst_ip", row.get("s-ip", "")),
+                    "dst_port": int(row.get("dst_port", row.get("s-port", "443"))),
+                    "method": row.get("method", row.get("cs-method", "")),
+                    "url": row.get("url", row.get("cs-uri-stem", "")),
+                    "status": row.get("status", row.get("sc-status", "")),
+                    "bytes": int(row.get("bytes", row.get("sc-bytes", "0"))),
+                }
+            )
     return records
 
 
@@ -75,21 +80,23 @@ def detect_sni_host_mismatch(records):
         if sni_root != host_root:
             cdn = identify_cdn_provider(sni) or identify_cdn_provider(host)
             confidence = "high" if cdn else "medium"
-            alerts.append({
-                "detection": "SNI/Host Header Mismatch",
-                "mitre_technique": "T1090.004",
-                "timestamp": rec["timestamp"],
-                "src_ip": rec["src_ip"],
-                "sni": sni,
-                "host_header": host,
-                "sni_root": sni_root,
-                "host_root": host_root,
-                "cdn_provider": cdn,
-                "dst_ip": rec["dst_ip"],
-                "confidence": confidence,
-                "severity": "critical" if cdn else "high",
-                "description": f"Domain fronting: SNI={sni} but Host={host}",
-            })
+            alerts.append(
+                {
+                    "detection": "SNI/Host Header Mismatch",
+                    "mitre_technique": "T1090.004",
+                    "timestamp": rec["timestamp"],
+                    "src_ip": rec["src_ip"],
+                    "sni": sni,
+                    "host_header": host,
+                    "sni_root": sni_root,
+                    "host_root": host_root,
+                    "cdn_provider": cdn,
+                    "dst_ip": rec["dst_ip"],
+                    "confidence": confidence,
+                    "severity": "critical" if cdn else "high",
+                    "description": f"Domain fronting: SNI={sni} but Host={host}",
+                }
+            )
     return alerts
 
 
@@ -135,9 +142,19 @@ def analyze_fronting_pairs(alerts):
 
 def main():
     parser = argparse.ArgumentParser(description="Domain Fronting C2 Traffic Hunter")
-    parser.add_argument("--proxy-log", required=True, help="CSV proxy log with SNI and Host header fields")
-    parser.add_argument("--check-certs", action="store_true", help="Fetch TLS certs for top fronting domains")
-    parser.add_argument("--output", default="domain_fronting_report.json", help="Output report path")
+    parser.add_argument(
+        "--proxy-log",
+        required=True,
+        help="CSV proxy log with SNI and Host header fields",
+    )
+    parser.add_argument(
+        "--check-certs",
+        action="store_true",
+        help="Fetch TLS certs for top fronting domains",
+    )
+    parser.add_argument(
+        "--output", default="domain_fronting_report.json", help="Output report path"
+    )
     args = parser.parse_args()
 
     records = load_proxy_logs(args.proxy_log)
@@ -160,7 +177,9 @@ def main():
         "fronting_pairs_ranked": fronting_pairs,
         "certificate_analysis": cert_info,
         "mitre_technique": "T1090.004",
-        "cdn_involved": list({a["cdn_provider"] for a in alerts if a.get("cdn_provider")}),
+        "cdn_involved": list(
+            {a["cdn_provider"] for a in alerts if a.get("cdn_provider")}
+        ),
     }
 
     with open(args.output, "w") as f:

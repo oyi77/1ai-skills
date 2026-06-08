@@ -125,7 +125,9 @@ def check_service_health(service_name):
         try:
             result = subprocess.run(
                 ["sc", "query", service_name],
-                capture_output=True, text=True, timeout=10
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             running = "RUNNING" in result.stdout
             return {"service": service_name, "running": running, "platform": "windows"}
@@ -135,7 +137,9 @@ def check_service_health(service_name):
         try:
             result = subprocess.run(
                 ["systemctl", "is-active", service_name],
-                capture_output=True, text=True, timeout=10
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             active = result.stdout.strip() == "active"
             return {"service": service_name, "running": active, "platform": "linux"}
@@ -149,6 +153,7 @@ def check_database_connectivity(db_type, host="localhost", port=None):
     port = port or ports.get(db_type, 5432)
 
     import socket
+
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(5)
     try:
@@ -160,8 +165,13 @@ def check_database_connectivity(db_type, host="localhost", port=None):
             "reachable": result == 0,
         }
     except socket.error as e:
-        return {"database": db_type, "host": host, "port": port, "reachable": False,
-                "error": str(e)}
+        return {
+            "database": db_type,
+            "host": host,
+            "port": port,
+            "reachable": False,
+            "error": str(e),
+        }
     finally:
         sock.close()
 
@@ -191,8 +201,11 @@ def run_recovery_drill(config):
             test.mark("restore_initiated")
             hashes = compute_file_hashes(restore_dir)
             file_count = len([v for v in hashes.values() if v != "PERMISSION_DENIED"])
-            test.validate("file_count", file_count > 0,
-                          f"{file_count} files found in restored directory")
+            test.validate(
+                "file_count",
+                file_count > 0,
+                f"{file_count} files found in restored directory",
+            )
             test.mark("restore_completed")
 
             # Compare with manifest if provided
@@ -201,17 +214,22 @@ def run_recovery_drill(config):
                 with open(manifest_path, "r") as f:
                     original_manifest = json.load(f)
                 comparison = compare_manifests(original_manifest, hashes)
-                test.validate("integrity_check", comparison["integrity_pass"],
-                              json.dumps(comparison, indent=2))
+                test.validate(
+                    "integrity_check",
+                    comparison["integrity_pass"],
+                    json.dumps(comparison, indent=2),
+                )
         else:
-            test.validate("restore_directory", False,
-                          f"Directory not found: {restore_dir}")
+            test.validate(
+                "restore_directory", False, f"Directory not found: {restore_dir}"
+            )
 
         # Phase: Check services
         for svc in system.get("services", []):
             health = check_service_health(svc)
-            test.validate(f"service_{svc}", health.get("running", False),
-                          json.dumps(health))
+            test.validate(
+                f"service_{svc}", health.get("running", False), json.dumps(health)
+            )
 
         # Phase: Check database
         db = system.get("database")
@@ -221,8 +239,9 @@ def run_recovery_drill(config):
                 db.get("host", "localhost"),
                 db.get("port"),
             )
-            test.validate("database_connectivity", db_check["reachable"],
-                          json.dumps(db_check))
+            test.validate(
+                "database_connectivity", db_check["reachable"], json.dumps(db_check)
+            )
 
         test.mark("service_restored")
         results.append(test.to_dict(backup_ts))
@@ -240,7 +259,8 @@ def generate_report(results, output_path=None):
         "systems_meeting_rto": sum(1 for r in results if r.get("rto_met")),
         "systems_meeting_rpo": sum(1 for r in results if r.get("rpo_met")),
         "overall_pass": all(
-            r.get("rto_met") and r.get("rpo_met") for r in results
+            r.get("rto_met") and r.get("rpo_met")
+            for r in results
             if r.get("rto_met") is not None
         ),
         "results": results,
@@ -260,10 +280,16 @@ def main():
     )
     parser.add_argument("--config", help="JSON config file for recovery drill")
     parser.add_argument("--hash-dir", help="Compute file hashes for a directory")
-    parser.add_argument("--compare", nargs=2, metavar=("ORIGINAL", "RESTORED"),
-                        help="Compare two hash manifest JSON files")
+    parser.add_argument(
+        "--compare",
+        nargs=2,
+        metavar=("ORIGINAL", "RESTORED"),
+        help="Compare two hash manifest JSON files",
+    )
     parser.add_argument("--check-service", help="Check if a system service is running")
-    parser.add_argument("--check-db", help="Check database connectivity (type:host:port)")
+    parser.add_argument(
+        "--check-db", help="Check database connectivity (type:host:port)"
+    )
     parser.add_argument("--output", "-o", help="Output report file path")
     args = parser.parse_args()
 

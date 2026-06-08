@@ -47,9 +47,11 @@ class LateralMovementDetector:
         ntlm_logons = defaultdict(lambda: {"targets": set(), "count": 0, "events": []})
 
         for event in self.auth_events:
-            if (event.get("EventCode") == "4624" and
-                event.get("Logon_Type") == "3" and
-                event.get("AuthenticationPackageName", "").upper() == "NTLM"):
+            if (
+                event.get("EventCode") == "4624"
+                and event.get("Logon_Type") == "3"
+                and event.get("AuthenticationPackageName", "").upper() == "NTLM"
+            ):
                 user = event.get("TargetUserName", "")
                 src = event.get("src_ip", event.get("IpAddress", ""))
                 target = event.get("ComputerName", "")
@@ -63,15 +65,17 @@ class LateralMovementDetector:
         for key, data in ntlm_logons.items():
             if len(data["targets"]) > 3:
                 src_ip, user = key.split("|", 1)
-                findings.append({
-                    "technique": "T1550.002",
-                    "name": "Pass-the-Hash",
-                    "src_ip": src_ip,
-                    "user": user,
-                    "unique_targets": len(data["targets"]),
-                    "total_logons": data["count"],
-                    "targets": sorted(data["targets"]),
-                })
+                findings.append(
+                    {
+                        "technique": "T1550.002",
+                        "name": "Pass-the-Hash",
+                        "src_ip": src_ip,
+                        "user": user,
+                        "unique_targets": len(data["targets"]),
+                        "total_logons": data["count"],
+                        "targets": sorted(data["targets"]),
+                    }
+                )
         return findings
 
     def detect_psexec(self):
@@ -81,16 +85,18 @@ class LateralMovementDetector:
             image = event.get("Image", "").lower()
             parent = event.get("ParentImage", "").lower()
             if "psexec" in image or "psexesvc" in image or "psexesvc" in parent:
-                findings.append({
-                    "technique": "T1021.002",
-                    "name": "PsExec Execution",
-                    "computer": event.get("Computer", ""),
-                    "user": event.get("User", ""),
-                    "image": event.get("Image", ""),
-                    "parent": event.get("ParentImage", ""),
-                    "cmdline": event.get("CommandLine", ""),
-                    "timestamp": event.get("timestamp", event.get("UtcTime", "")),
-                })
+                findings.append(
+                    {
+                        "technique": "T1021.002",
+                        "name": "PsExec Execution",
+                        "computer": event.get("Computer", ""),
+                        "user": event.get("User", ""),
+                        "image": event.get("Image", ""),
+                        "parent": event.get("ParentImage", ""),
+                        "cmdline": event.get("CommandLine", ""),
+                        "timestamp": event.get("timestamp", event.get("UtcTime", "")),
+                    }
+                )
         return findings
 
     def detect_wmi_execution(self):
@@ -100,15 +106,17 @@ class LateralMovementDetector:
             parent = event.get("ParentImage", "").lower()
             image = event.get("Image", "").lower()
             if "wmiprvse" in parent and ("cmd.exe" in image or "powershell" in image):
-                findings.append({
-                    "technique": "T1047",
-                    "name": "WMI Remote Execution",
-                    "computer": event.get("Computer", ""),
-                    "user": event.get("User", ""),
-                    "image": event.get("Image", ""),
-                    "cmdline": event.get("CommandLine", ""),
-                    "timestamp": event.get("timestamp", ""),
-                })
+                findings.append(
+                    {
+                        "technique": "T1047",
+                        "name": "WMI Remote Execution",
+                        "computer": event.get("Computer", ""),
+                        "user": event.get("User", ""),
+                        "image": event.get("Image", ""),
+                        "cmdline": event.get("CommandLine", ""),
+                        "timestamp": event.get("timestamp", ""),
+                    }
+                )
         return findings
 
     def detect_rdp_lateral(self):
@@ -127,14 +135,16 @@ class LateralMovementDetector:
         for key, data in rdp_sessions.items():
             if len(data["targets"]) > 2:
                 src_ip, user = key.split("|", 1)
-                findings.append({
-                    "technique": "T1021.001",
-                    "name": "RDP Lateral Movement",
-                    "src_ip": src_ip,
-                    "user": user,
-                    "unique_targets": len(data["targets"]),
-                    "targets": sorted(data["targets"]),
-                })
+                findings.append(
+                    {
+                        "technique": "T1021.001",
+                        "name": "RDP Lateral Movement",
+                        "src_ip": src_ip,
+                        "user": user,
+                        "unique_targets": len(data["targets"]),
+                        "targets": sorted(data["targets"]),
+                    }
+                )
         return findings
 
     def detect_smb_scanning(self):
@@ -150,21 +160,26 @@ class LateralMovementDetector:
         findings = []
         for src, data in smb_sources.items():
             if len(data["targets"]) > 10:
-                findings.append({
-                    "technique": "T1021.002",
-                    "name": "SMB Mass Connection",
-                    "src_ip": src,
-                    "unique_targets": len(data["targets"]),
-                    "total_bytes": data["bytes"],
-                    "severity": "CRITICAL" if len(data["targets"]) > 50 else "HIGH",
-                })
+                findings.append(
+                    {
+                        "technique": "T1021.002",
+                        "name": "SMB Mass Connection",
+                        "src_ip": src,
+                        "unique_targets": len(data["targets"]),
+                        "total_bytes": data["bytes"],
+                        "severity": "CRITICAL" if len(data["targets"]) > 50 else "HIGH",
+                    }
+                )
         return findings
 
     def build_movement_graph(self):
         """Build a source->destination graph of lateral movement."""
         edges = defaultdict(int)
         for event in self.auth_events:
-            if event.get("EventCode") == "4624" and event.get("Logon_Type") in ("3", "10"):
+            if event.get("EventCode") == "4624" and event.get("Logon_Type") in (
+                "3",
+                "10",
+            ):
                 src = event.get("src_ip", event.get("IpAddress", ""))
                 dst = event.get("ComputerName", "")
                 user = event.get("TargetUserName", "")
@@ -201,7 +216,9 @@ class LateralMovementDetector:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: agent.py <auth_events_csv> <output_dir> [process_csv] [flows_csv]")
+        print(
+            "Usage: agent.py <auth_events_csv> <output_dir> [process_csv] [flows_csv]"
+        )
         sys.exit(1)
 
     auth_csv = sys.argv[1]

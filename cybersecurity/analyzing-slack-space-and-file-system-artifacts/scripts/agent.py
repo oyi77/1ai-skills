@@ -39,12 +39,14 @@ def search_slack_keywords(slack_path, keywords=None):
             idx = data.find(kw_bytes, start)
             if idx == -1:
                 break
-            context = data[max(0, idx - 20):idx + len(kw_bytes) + 20]
-            hits.append({
-                "keyword": kw,
-                "offset": idx,
-                "context": context.decode("utf-8", errors="replace"),
-            })
+            context = data[max(0, idx - 20) : idx + len(kw_bytes) + 20]
+            hits.append(
+                {
+                    "keyword": kw,
+                    "offset": idx,
+                    "context": context.decode("utf-8", errors="replace"),
+                }
+            )
             start = idx + 1
     return hits
 
@@ -52,10 +54,16 @@ def search_slack_keywords(slack_path, keywords=None):
 def parse_usn_journal(usn_path):
     """Parse NTFS USN Change Journal ($UsnJrnl:$J) records."""
     REASON_FLAGS = {
-        0x01: "DATA_OVERWRITE", 0x02: "DATA_EXTEND", 0x04: "DATA_TRUNCATION",
-        0x100: "FILE_CREATE", 0x200: "FILE_DELETE", 0x400: "EA_CHANGE",
-        0x800: "SECURITY_CHANGE", 0x1000: "RENAME_OLD_NAME",
-        0x2000: "RENAME_NEW_NAME", 0x80000000: "CLOSE",
+        0x01: "DATA_OVERWRITE",
+        0x02: "DATA_EXTEND",
+        0x04: "DATA_TRUNCATION",
+        0x100: "FILE_CREATE",
+        0x200: "FILE_DELETE",
+        0x400: "EA_CHANGE",
+        0x800: "SECURITY_CHANGE",
+        0x1000: "RENAME_OLD_NAME",
+        0x2000: "RENAME_NEW_NAME",
+        0x80000000: "CLOSE",
     }
     records = []
     with open(usn_path, "rb") as f:
@@ -75,15 +83,19 @@ def parse_usn_journal(usn_path):
         reason = struct.unpack_from("<I", data, offset + 40)[0]
         fn_len = struct.unpack_from("<H", data, offset + 56)[0]
         fn_off = struct.unpack_from("<H", data, offset + 58)[0]
-        name = data[offset + fn_off:offset + fn_off + fn_len].decode("utf-16-le", errors="ignore")
+        name = data[offset + fn_off : offset + fn_off + fn_len].decode(
+            "utf-16-le", errors="ignore"
+        )
         ts = datetime(1601, 1, 1) + timedelta(microseconds=timestamp // 10)
         reasons = [desc for flag, desc in REASON_FLAGS.items() if reason & flag]
-        records.append({
-            "timestamp": ts.strftime("%Y-%m-%d %H:%M:%S"),
-            "filename": name,
-            "mft_entry": mft_ref,
-            "reasons": "|".join(reasons),
-        })
+        records.append(
+            {
+                "timestamp": ts.strftime("%Y-%m-%d %H:%M:%S"),
+                "filename": name,
+                "mft_entry": mft_ref,
+                "reasons": "|".join(reasons),
+            }
+        )
         offset += rec_len
     return records
 
@@ -99,6 +111,7 @@ def find_ads_in_image(image_path, offset):
 def detect_timestomping(mft_csv_path):
     """Detect timestomping by comparing $SI and $FN timestamps in MFT CSV output."""
     import csv
+
     suspicious = []
     with open(mft_csv_path, "r", errors="ignore") as f:
         reader = csv.DictReader(f)
@@ -106,11 +119,13 @@ def detect_timestomping(mft_csv_path):
             si_mod = row.get("SI_Modified", "")
             fn_mod = row.get("FN_Modified", "")
             if si_mod and fn_mod and si_mod != fn_mod:
-                suspicious.append({
-                    "filename": row.get("Filename", ""),
-                    "si_modified": si_mod,
-                    "fn_modified": fn_mod,
-                })
+                suspicious.append(
+                    {
+                        "filename": row.get("Filename", ""),
+                        "si_modified": si_mod,
+                        "fn_modified": fn_mod,
+                    }
+                )
     return suspicious
 
 
@@ -126,15 +141,28 @@ def generate_report(results_data, case_id):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="NTFS File System Artifact Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="NTFS File System Artifact Analysis Agent"
+    )
     parser.add_argument("--image", required=True, help="Path to forensic disk image")
-    parser.add_argument("--offset", type=int, default=2048, help="Partition offset in sectors")
+    parser.add_argument(
+        "--offset", type=int, default=2048, help="Partition offset in sectors"
+    )
     parser.add_argument("--case-id", default="CASE-001", help="Case identifier")
     parser.add_argument("--output-dir", default="./analysis", help="Output directory")
-    parser.add_argument("--action", choices=[
-        "extract_slack", "parse_usn", "find_ads", "search_slack",
-        "parse_mft", "detect_timestomping", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "extract_slack",
+            "parse_usn",
+            "find_ads",
+            "search_slack",
+            "parse_mft",
+            "detect_timestomping",
+            "full_analysis",
+        ],
+        default="full_analysis",
+    )
     parser.add_argument("--mft-path", help="Path to extracted $MFT file")
     parser.add_argument("--usn-path", help="Path to extracted $UsnJrnl:$J file")
     args = parser.parse_args()

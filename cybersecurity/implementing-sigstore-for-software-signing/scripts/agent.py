@@ -14,7 +14,9 @@ from pathlib import Path
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 REKOR_PUBLIC_URL = "https://rekor.sigstore.dev"
@@ -112,7 +114,9 @@ def verify_blob_keyless(filepath, bundle_path, cert_identity, cert_oidc_issuer):
         "file": str(filepath),
         "certificate_identity": cert_identity,
         "certificate_oidc_issuer": cert_oidc_issuer,
-        "output": result.stdout.strip() if result.returncode == 0 else result.stderr.strip(),
+        "output": (
+            result.stdout.strip() if result.returncode == 0 else result.stderr.strip()
+        ),
     }
 
 
@@ -128,7 +132,9 @@ def sign_container_keyless(image_uri):
     return {
         "signed": result.returncode == 0,
         "image": image_uri,
-        "output": result.stdout.strip() if result.returncode == 0 else result.stderr.strip(),
+        "output": (
+            result.stdout.strip() if result.returncode == 0 else result.stderr.strip()
+        ),
     }
 
 
@@ -173,7 +179,9 @@ def search_rekor_by_hash(artifact_hash, rekor_url=None):
         resp = requests.post(url, json=payload, timeout=30)
         resp.raise_for_status()
         uuids = resp.json()
-        logger.info("Found %d Rekor entries for hash %s", len(uuids), artifact_hash[:16])
+        logger.info(
+            "Found %d Rekor entries for hash %s", len(uuids), artifact_hash[:16]
+        )
         return {"hash": artifact_hash, "entry_uuids": uuids, "count": len(uuids)}
     except requests.RequestException as e:
         logger.error("Rekor search failed: %s", e)
@@ -217,7 +225,9 @@ def get_rekor_entry(uuid, rekor_url=None):
                 ).isoformat()
             verification = entry_body.get("verification", {})
             parsed["has_inclusion_proof"] = "inclusionProof" in verification
-            parsed["has_signed_entry_timestamp"] = "signedEntryTimestamp" in verification
+            parsed["has_signed_entry_timestamp"] = (
+                "signedEntryTimestamp" in verification
+            )
             break
 
         return parsed
@@ -230,15 +240,26 @@ def verify_rekor_entry(uuid, rekor_url=None):
     """Verify a Rekor entry's inclusion proof using the rekor-cli."""
     result = run_cosign(["env"])  # Check if rekor-cli is better
     rekor_result = subprocess.run(
-        ["rekor-cli", "verify", "--rekor_server", rekor_url or REKOR_PUBLIC_URL,
-         "--entry-uuid", uuid],
-        capture_output=True, text=True, timeout=60,
+        [
+            "rekor-cli",
+            "verify",
+            "--rekor_server",
+            rekor_url or REKOR_PUBLIC_URL,
+            "--entry-uuid",
+            uuid,
+        ],
+        capture_output=True,
+        text=True,
+        timeout=60,
     )
     return {
         "uuid": uuid,
         "inclusion_verified": rekor_result.returncode == 0,
-        "output": rekor_result.stdout.strip() if rekor_result.returncode == 0
-        else rekor_result.stderr.strip(),
+        "output": (
+            rekor_result.stdout.strip()
+            if rekor_result.returncode == 0
+            else rekor_result.stderr.strip()
+        ),
     }
 
 
@@ -262,8 +283,13 @@ def get_rekor_log_info(rekor_url=None):
         return {"error": str(e)}
 
 
-def audit_signing_event(filepath=None, image_uri=None, cert_identity=None,
-                        cert_oidc_issuer=None, rekor_url=None):
+def audit_signing_event(
+    filepath=None,
+    image_uri=None,
+    cert_identity=None,
+    cert_oidc_issuer=None,
+    rekor_url=None,
+):
     """Perform a complete audit of a signing event: verify the artifact and
     cross-reference against the Rekor transparency log."""
     report = {
@@ -283,24 +309,30 @@ def audit_signing_event(filepath=None, image_uri=None, cert_identity=None,
         # Search Rekor for this artifact
         rekor_search = search_rekor_by_hash(artifact_hash, rekor_url)
         report["rekor_entries"] = rekor_search
-        report["checks"].append({
-            "check": "rekor_entry_exists",
-            "passed": rekor_search.get("count", 0) > 0,
-            "detail": f"Found {rekor_search.get('count', 0)} Rekor entries",
-        })
+        report["checks"].append(
+            {
+                "check": "rekor_entry_exists",
+                "passed": rekor_search.get("count", 0) > 0,
+                "detail": f"Found {rekor_search.get('count', 0)} Rekor entries",
+            }
+        )
 
         # Retrieve entry details if found
         if rekor_search.get("entry_uuids"):
             first_uuid = rekor_search["entry_uuids"][0]
             entry_detail = get_rekor_entry(first_uuid, rekor_url)
             report["rekor_entry_detail"] = entry_detail
-            report["checks"].append({
-                "check": "inclusion_proof_present",
-                "passed": entry_detail.get("has_inclusion_proof", False),
-                "detail": "Inclusion proof found in Rekor entry"
-                if entry_detail.get("has_inclusion_proof")
-                else "No inclusion proof in Rekor entry",
-            })
+            report["checks"].append(
+                {
+                    "check": "inclusion_proof_present",
+                    "passed": entry_detail.get("has_inclusion_proof", False),
+                    "detail": (
+                        "Inclusion proof found in Rekor entry"
+                        if entry_detail.get("has_inclusion_proof")
+                        else "No inclusion proof in Rekor entry"
+                    ),
+                }
+            )
 
         # Verify blob if bundle and identity provided
         bundle_path = str(filepath) + ".sigstore.json"
@@ -309,26 +341,34 @@ def audit_signing_event(filepath=None, image_uri=None, cert_identity=None,
                 filepath, bundle_path, cert_identity, cert_oidc_issuer
             )
             report["verification"] = verify_result
-            report["checks"].append({
-                "check": "signature_verification",
-                "passed": verify_result.get("verified", False),
-                "detail": "Signature verified against identity and issuer"
-                if verify_result.get("verified")
-                else verify_result.get("output", "Verification failed"),
-            })
+            report["checks"].append(
+                {
+                    "check": "signature_verification",
+                    "passed": verify_result.get("verified", False),
+                    "detail": (
+                        "Signature verified against identity and issuer"
+                        if verify_result.get("verified")
+                        else verify_result.get("output", "Verification failed")
+                    ),
+                }
+            )
 
     elif image_uri and cert_identity and cert_oidc_issuer:
         verify_result = verify_container_keyless(
             image_uri, cert_identity, cert_oidc_issuer
         )
         report["verification"] = verify_result
-        report["checks"].append({
-            "check": "container_signature_verification",
-            "passed": verify_result.get("verified", False),
-            "detail": f"Found {len(verify_result.get('signatures', []))} valid signatures"
-            if verify_result.get("verified")
-            else "Container signature verification failed",
-        })
+        report["checks"].append(
+            {
+                "check": "container_signature_verification",
+                "passed": verify_result.get("verified", False),
+                "detail": (
+                    f"Found {len(verify_result.get('signatures', []))} valid signatures"
+                    if verify_result.get("verified")
+                    else "Container signature verification failed"
+                ),
+            }
+        )
 
     # Summary
     passed = sum(1 for c in report["checks"] if c["passed"])
@@ -357,26 +397,42 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
 
     # sign-blob
-    sign_blob_p = sub.add_parser("sign-blob", help="Sign a file blob with keyless signing")
+    sign_blob_p = sub.add_parser(
+        "sign-blob", help="Sign a file blob with keyless signing"
+    )
     sign_blob_p.add_argument("file", help="Path to file to sign")
-    sign_blob_p.add_argument("--bundle", help="Output bundle path (default: <file>.sigstore.json)")
+    sign_blob_p.add_argument(
+        "--bundle", help="Output bundle path (default: <file>.sigstore.json)"
+    )
 
     # verify-blob
     verify_blob_p = sub.add_parser("verify-blob", help="Verify a signed blob")
     verify_blob_p.add_argument("file", help="Path to signed file")
-    verify_blob_p.add_argument("--bundle", required=True, help="Path to sigstore bundle")
-    verify_blob_p.add_argument("--cert-identity", required=True, help="Expected certificate identity")
-    verify_blob_p.add_argument("--cert-oidc-issuer", required=True, help="Expected OIDC issuer URL")
+    verify_blob_p.add_argument(
+        "--bundle", required=True, help="Path to sigstore bundle"
+    )
+    verify_blob_p.add_argument(
+        "--cert-identity", required=True, help="Expected certificate identity"
+    )
+    verify_blob_p.add_argument(
+        "--cert-oidc-issuer", required=True, help="Expected OIDC issuer URL"
+    )
 
     # sign-container
     sign_cont_p = sub.add_parser("sign-container", help="Sign a container image")
     sign_cont_p.add_argument("image", help="Container image URI (use digest, not tag)")
 
     # verify-container
-    verify_cont_p = sub.add_parser("verify-container", help="Verify a container image signature")
+    verify_cont_p = sub.add_parser(
+        "verify-container", help="Verify a container image signature"
+    )
     verify_cont_p.add_argument("image", help="Container image URI")
-    verify_cont_p.add_argument("--cert-identity", required=True, help="Expected certificate identity")
-    verify_cont_p.add_argument("--cert-oidc-issuer", required=True, help="Expected OIDC issuer URL")
+    verify_cont_p.add_argument(
+        "--cert-identity", required=True, help="Expected certificate identity"
+    )
+    verify_cont_p.add_argument(
+        "--cert-oidc-issuer", required=True, help="Expected OIDC issuer URL"
+    )
 
     # search-rekor
     search_p = sub.add_parser("search-rekor", help="Search Rekor transparency log")
@@ -407,7 +463,9 @@ def main():
     # check
     sub.add_parser("check", help="Verify cosign is installed and reachable")
 
-    parser.add_argument("--output", default="sigstore_report.json", help="Output report path")
+    parser.add_argument(
+        "--output", default="sigstore_report.json", help="Output report path"
+    )
     args = parser.parse_args()
 
     result = {}

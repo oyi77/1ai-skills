@@ -23,6 +23,7 @@ from urllib.error import URLError, HTTPError
 @dataclass
 class InfraComponent:
     """Represents an infrastructure component."""
+
     name: str
     host: str
     port: int
@@ -35,6 +36,7 @@ class InfraComponent:
 @dataclass
 class HealthCheck:
     """Result of a health check."""
+
     component: str
     host: str
     port: int
@@ -68,7 +70,9 @@ class HavocInfraMonitor:
         """Add an infrastructure component to monitor."""
         self.components.append(component)
 
-    def check_tcp_port(self, host: str, port: int, timeout: float = 5.0) -> tuple[bool, float]:
+    def check_tcp_port(
+        self, host: str, port: int, timeout: float = 5.0
+    ) -> tuple[bool, float]:
         """Check if a TCP port is open and measure latency."""
         start = time.time()
         try:
@@ -102,15 +106,22 @@ class HavocInfraMonitor:
                         "days_remaining": days_remaining,
                         "subject_cn": subject.get("commonName", ""),
                         "issuer_cn": issuer.get("commonName", ""),
-                        "self_signed": subject.get("commonName") == issuer.get("commonName"),
+                        "self_signed": subject.get("commonName")
+                        == issuer.get("commonName"),
                     }
         except ssl.SSLCertVerificationError as e:
             return {"valid": False, "error": str(e), "self_signed": True}
         except Exception as e:
             return {"valid": False, "error": str(e)}
 
-    def check_http_response(self, host: str, port: int, path: str = "/",
-                            ssl_enabled: bool = True, expected_status: int = 200) -> dict:
+    def check_http_response(
+        self,
+        host: str,
+        port: int,
+        path: str = "/",
+        ssl_enabled: bool = True,
+        expected_status: int = 200,
+    ) -> dict:
         """Check HTTP/HTTPS endpoint response."""
         scheme = "https" if ssl_enabled else "http"
         url = f"{scheme}://{host}:{port}{path}"
@@ -119,9 +130,12 @@ class HavocInfraMonitor:
             context.check_hostname = False
             context.verify_mode = ssl.CERT_NONE
 
-            req = Request(url, headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-            })
+            req = Request(
+                url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+                },
+            )
             start = time.time()
             resp = urlopen(req, timeout=10, context=context)
             latency = (time.time() - start) * 1000
@@ -166,7 +180,9 @@ class HavocInfraMonitor:
             )
 
             if not is_up:
-                self.alerts.append(f"CRITICAL: {comp.name} ({comp.host}:{comp.port}) is DOWN")
+                self.alerts.append(
+                    f"CRITICAL: {comp.name} ({comp.host}:{comp.port}) is DOWN"
+                )
                 check.details = "TCP connection failed"
                 self.check_results.append(check)
                 continue
@@ -225,25 +241,31 @@ class HavocInfraMonitor:
         results["resolved_ips"] = dns.get("ips", [])
 
         # Check if domain is too new (WHOIS-based heuristic)
-        results["checks"].append({
-            "check": "DNS Resolution",
-            "status": "PASS" if dns.get("resolved") else "FAIL",
-        })
+        results["checks"].append(
+            {
+                "check": "DNS Resolution",
+                "status": "PASS" if dns.get("resolved") else "FAIL",
+            }
+        )
 
         # SSL certificate check
         ssl_info = self.check_ssl_certificate(domain)
-        results["checks"].append({
-            "check": "Valid SSL Certificate",
-            "status": "PASS" if ssl_info.get("valid") else "FAIL",
-            "details": ssl_info,
-        })
+        results["checks"].append(
+            {
+                "check": "Valid SSL Certificate",
+                "status": "PASS" if ssl_info.get("valid") else "FAIL",
+                "details": ssl_info,
+            }
+        )
 
         if ssl_info.get("self_signed"):
-            results["checks"].append({
-                "check": "Not Self-Signed",
-                "status": "FAIL",
-                "details": "Self-signed certificates are an OPSEC failure",
-            })
+            results["checks"].append(
+                {
+                    "check": "Not Self-Signed",
+                    "status": "FAIL",
+                    "details": "Self-signed certificates are an OPSEC failure",
+                }
+            )
 
         return results
 
@@ -315,29 +337,35 @@ def main():
     monitor = HavocInfraMonitor()
 
     # Configure infrastructure components
-    monitor.add_component(InfraComponent(
-        name="Havoc Teamserver",
-        host="127.0.0.1",
-        port=40056,
-        component_type="teamserver",
-        protocol="tcp",
-    ))
+    monitor.add_component(
+        InfraComponent(
+            name="Havoc Teamserver",
+            host="127.0.0.1",
+            port=40056,
+            component_type="teamserver",
+            protocol="tcp",
+        )
+    )
 
-    monitor.add_component(InfraComponent(
-        name="HTTPS Redirector",
-        host="127.0.0.1",
-        port=443,
-        component_type="redirector",
-        ssl_enabled=True,
-    ))
+    monitor.add_component(
+        InfraComponent(
+            name="HTTPS Redirector",
+            host="127.0.0.1",
+            port=443,
+            component_type="redirector",
+            ssl_enabled=True,
+        )
+    )
 
-    monitor.add_component(InfraComponent(
-        name="HTTPS Listener",
-        host="127.0.0.1",
-        port=443,
-        component_type="listener",
-        ssl_enabled=True,
-    ))
+    monitor.add_component(
+        InfraComponent(
+            name="HTTPS Listener",
+            host="127.0.0.1",
+            port=443,
+            component_type="listener",
+            ssl_enabled=True,
+        )
+    )
 
     # Run health checks
     print("[*] Running infrastructure health checks...\n")

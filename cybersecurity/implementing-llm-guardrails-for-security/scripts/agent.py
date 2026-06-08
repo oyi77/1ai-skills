@@ -31,7 +31,13 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 DEFAULT_POLICY = {
     "allowed_topics": [],
-    "blocked_topics": ["violence", "illegal_activities", "weapons", "drugs", "exploitation"],
+    "blocked_topics": [
+        "violence",
+        "illegal_activities",
+        "weapons",
+        "drugs",
+        "exploitation",
+    ],
     "blocked_patterns": [
         r"(?i)\b(how\s+to\s+(hack|crack|break\s+into|exploit|bypass))\b",
         r"(?i)\b(create|write|generate)\b.{0,20}\b(malware|virus|trojan|ransomware|keylogger|rootkit)\b",
@@ -70,6 +76,7 @@ DEFAULT_POLICY = {
 @dataclass
 class ValidationResult:
     """Result from a guardrail validation pass."""
+
     safe: bool = True
     blocked_reason: str = ""
     violations: list[dict] = field(default_factory=list)
@@ -99,7 +106,9 @@ class ContentPolicyGuard:
     """Guard that enforces content policy rules on text."""
 
     def __init__(self, blocked_patterns: list[str], blocked_topics: list[str]) -> None:
-        self._blocked_compiled = [(i, re.compile(p)) for i, p in enumerate(blocked_patterns)]
+        self._blocked_compiled = [
+            (i, re.compile(p)) for i, p in enumerate(blocked_patterns)
+        ]
         self._blocked_topics = blocked_topics
         self._topic_patterns = self._build_topic_patterns()
 
@@ -160,12 +169,14 @@ class PIIGuard:
         findings: list[dict] = []
         for name, pattern in self._compiled.items():
             for match in pattern.finditer(text):
-                findings.append({
-                    "type": name,
-                    "value": match.group(),
-                    "start": match.start(),
-                    "end": match.end(),
-                })
+                findings.append(
+                    {
+                        "type": name,
+                        "value": match.group(),
+                        "start": match.start(),
+                        "end": match.end(),
+                    }
+                )
         return findings
 
     def redact(self, text: str) -> tuple[str, list[dict]]:
@@ -178,7 +189,9 @@ class PIIGuard:
         redacted = text
         for finding in findings_sorted:
             replacement = self.REDACTION_MAP.get(finding["type"], "[REDACTED]")
-            redacted = redacted[:finding["start"]] + replacement + redacted[finding["end"]:]
+            redacted = (
+                redacted[: finding["start"]] + replacement + redacted[finding["end"] :]
+            )
 
         return redacted, findings
 
@@ -195,7 +208,9 @@ class OutputGuard:
 
         # Check length
         if len(response) > self._max_length:
-            violations.append(f"output_too_long: {len(response)} chars exceeds {self._max_length} limit")
+            violations.append(
+                f"output_too_long: {len(response)} chars exceeds {self._max_length} limit"
+            )
 
         # Check blocked output patterns
         for idx, pattern in self._blocked:
@@ -210,7 +225,9 @@ class OutputGuard:
         ]
         for indicator_pat in system_prompt_indicators:
             if re.search(indicator_pat, response):
-                violations.append(f"potential_system_prompt_leak: matched indicator pattern")
+                violations.append(
+                    f"potential_system_prompt_leak: matched indicator pattern"
+                )
                 break
 
         # Check for PII in output
@@ -230,14 +247,18 @@ class LengthGuard:
 
     def check(self, text: str) -> tuple[bool, list[str]]:
         if len(text) > self._max_length:
-            return False, [f"input_too_long: {len(text)} chars exceeds {self._max_length} limit"]
+            return False, [
+                f"input_too_long: {len(text)} chars exceeds {self._max_length} limit"
+            ]
         return True, []
 
 
 class GuardrailsPipeline:
     """Complete input/output validation pipeline combining all guardrail layers."""
 
-    def __init__(self, policy: Optional[dict] = None, policy_path: Optional[str] = None) -> None:
+    def __init__(
+        self, policy: Optional[dict] = None, policy_path: Optional[str] = None
+    ) -> None:
         if policy_path:
             with open(policy_path, "r", encoding="utf-8") as fh:
                 self.policy = json.load(fh)
@@ -271,21 +292,30 @@ class GuardrailsPipeline:
 
         # Layer 1: Length check
         length_safe, length_issues = self.length_guard.check(text)
-        result.layer_results["length_guard"] = {"safe": length_safe, "issues": length_issues}
+        result.layer_results["length_guard"] = {
+            "safe": length_safe,
+            "issues": length_issues,
+        }
         if not length_safe:
             for issue in length_issues:
                 all_violations.append({"guard": "length", "detail": issue})
 
         # Layer 2: Injection detection
         injection_safe, injection_issues = self.injection_guard.check(text)
-        result.layer_results["injection_guard"] = {"safe": injection_safe, "issues": injection_issues}
+        result.layer_results["injection_guard"] = {
+            "safe": injection_safe,
+            "issues": injection_issues,
+        }
         if not injection_safe:
             for issue in injection_issues:
                 all_violations.append({"guard": "injection", "detail": issue})
 
         # Layer 3: Content policy
         content_safe, content_issues = self.content_guard.check(text)
-        result.layer_results["content_policy_guard"] = {"safe": content_safe, "issues": content_issues}
+        result.layer_results["content_policy_guard"] = {
+            "safe": content_safe,
+            "issues": content_issues,
+        }
         if not content_safe:
             for issue in content_issues:
                 all_violations.append({"guard": "content_policy", "detail": issue})
@@ -300,22 +330,32 @@ class GuardrailsPipeline:
         }
         if pii_findings:
             for finding in pii_findings:
-                all_violations.append({
-                    "guard": "pii",
-                    "detail": f"detected {finding['type']}",
-                    "severity": "warning",
-                })
+                all_violations.append(
+                    {
+                        "guard": "pii",
+                        "detail": f"detected {finding['type']}",
+                        "severity": "warning",
+                    }
+                )
 
         # Compute risk score
-        critical_violations = sum(1 for v in all_violations if v.get("severity") != "warning")
-        warning_violations = sum(1 for v in all_violations if v.get("severity") == "warning")
-        result.risk_score = min(1.0, critical_violations * 0.35 + warning_violations * 0.1)
+        critical_violations = sum(
+            1 for v in all_violations if v.get("severity") != "warning"
+        )
+        warning_violations = sum(
+            1 for v in all_violations if v.get("severity") == "warning"
+        )
+        result.risk_score = min(
+            1.0, critical_violations * 0.35 + warning_violations * 0.1
+        )
 
         # Final verdict: block on critical violations, warn on PII-only
         result.violations = all_violations
         if critical_violations > 0:
             result.safe = False
-            reasons = [v["detail"] for v in all_violations if v.get("severity") != "warning"]
+            reasons = [
+                v["detail"] for v in all_violations if v.get("severity") != "warning"
+            ]
             result.blocked_reason = "; ".join(reasons[:3])
         else:
             result.safe = True
@@ -323,14 +363,19 @@ class GuardrailsPipeline:
         result.validation_time_ms = round((time.perf_counter() - start) * 1000, 2)
         return result
 
-    def validate_output(self, response: str, original_input: str = "") -> ValidationResult:
+    def validate_output(
+        self, response: str, original_input: str = ""
+    ) -> ValidationResult:
         start = time.perf_counter()
         result = ValidationResult(sanitized_text=response)
         all_violations: list[dict] = []
 
         # Check output safety
         output_safe, output_issues = self.output_guard.check(response, original_input)
-        result.layer_results["output_guard"] = {"safe": output_safe, "issues": output_issues}
+        result.layer_results["output_guard"] = {
+            "safe": output_safe,
+            "issues": output_issues,
+        }
         if not output_safe:
             for issue in output_issues:
                 all_violations.append({"guard": "output", "detail": issue})
@@ -341,7 +386,9 @@ class GuardrailsPipeline:
         result.sanitized_text = redacted_output
 
         result.violations = all_violations
-        critical = sum(1 for v in all_violations if "pii_in_output" not in v.get("detail", ""))
+        critical = sum(
+            1 for v in all_violations if "pii_in_output" not in v.get("detail", "")
+        )
         result.risk_score = min(1.0, critical * 0.35 + len(pii_findings) * 0.1)
 
         if critical > 0:
@@ -365,7 +412,10 @@ class GuardrailsPipeline:
         if pii_findings:
             types_found = list(set(f["type"] for f in pii_findings))
             result.blocked_reason = f"PII detected: {', '.join(types_found)}"
-            result.violations = [{"guard": "pii", "detail": f"detected {f['type']}"} for f in pii_findings]
+            result.violations = [
+                {"guard": "pii", "detail": f"detected {f['type']}"}
+                for f in pii_findings
+            ]
             result.risk_score = min(1.0, len(pii_findings) * 0.15)
 
         result.validation_time_ms = round((time.perf_counter() - start) * 1000, 2)
@@ -421,17 +471,28 @@ Examples:
         """,
     )
     parser.add_argument("--input", "-i", type=str, help="User input to validate")
-    parser.add_argument("--response", "-r", type=str, help="LLM response to validate (for output-only mode)")
-    parser.add_argument("--file", "-f", type=str, help="File with one prompt per line to scan")
     parser.add_argument(
-        "--mode", "-m",
+        "--response",
+        "-r",
+        type=str,
+        help="LLM response to validate (for output-only mode)",
+    )
+    parser.add_argument(
+        "--file", "-f", type=str, help="File with one prompt per line to scan"
+    )
+    parser.add_argument(
+        "--mode",
+        "-m",
         choices=["full", "input-only", "output-only", "pii"],
         default="full",
         help="Validation mode. Default: full",
     )
-    parser.add_argument("--policy", "-p", type=str, help="Path to JSON content policy file")
     parser.add_argument(
-        "--output", "-o",
+        "--policy", "-p", type=str, help="Path to JSON content policy file"
+    )
+    parser.add_argument(
+        "--output",
+        "-o",
         choices=["text", "json"],
         default="text",
         help="Output format. Default: text",
@@ -495,7 +556,9 @@ Examples:
 
             # If a response is provided, also validate output
             if args.response:
-                output_result = pipeline.validate_output(args.response, original_input=user_input)
+                output_result = pipeline.validate_output(
+                    args.response, original_input=user_input
+                )
                 if args.output == "text":
                     print(format_result_text(output_result, label="OUTPUT"))
                 else:

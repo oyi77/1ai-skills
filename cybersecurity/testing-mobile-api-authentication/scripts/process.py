@@ -20,6 +20,7 @@ from pathlib import Path
 
 try:
     import requests
+
     requests.packages.urllib3.disable_warnings()
 except ImportError:
     print("ERROR: 'requests' required. Install: pip install requests")
@@ -34,11 +35,15 @@ class MobileAPIAuthTester:
         self.token = token
         self.findings = []
         self.session = requests.Session()
-        self.session.verify = not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true"  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
-        self.session.headers.update({
-            "Authorization": f"Bearer {token}",
-            "User-Agent": "MobileSecurityTester/1.0",
-        })
+        self.session.verify = (
+            not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true"
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        self.session.headers.update(
+            {
+                "Authorization": f"Bearer {token}",
+                "User-Agent": "MobileSecurityTester/1.0",
+            }
+        )
 
     def analyze_jwt(self) -> dict:
         """Analyze JWT token structure and identify vulnerabilities."""
@@ -62,7 +67,12 @@ class MobileAPIAuthTester:
             if alg.lower() == "none":
                 issues.append({"issue": "none_algorithm", "severity": "CRITICAL"})
             elif alg.lower() in ("hs256", "hs384", "hs512"):
-                issues.append({"issue": "hmac_algorithm_key_brute_forceable", "severity": "MEDIUM"})
+                issues.append(
+                    {
+                        "issue": "hmac_algorithm_key_brute_forceable",
+                        "severity": "MEDIUM",
+                    }
+                )
 
             # Check expiration
             exp = payload.get("exp")
@@ -71,14 +81,21 @@ class MobileAPIAuthTester:
             elif exp < time.time():
                 issues.append({"issue": "token_already_expired", "severity": "INFO"})
             elif exp - time.time() > 86400 * 7:
-                issues.append({"issue": "excessive_token_lifetime", "severity": "MEDIUM",
-                               "details": f"Expires in {(exp - time.time()) / 86400:.0f} days"})
+                issues.append(
+                    {
+                        "issue": "excessive_token_lifetime",
+                        "severity": "MEDIUM",
+                        "details": f"Expires in {(exp - time.time()) / 86400:.0f} days",
+                    }
+                )
 
             # Check for sensitive data in payload
             sensitive_keys = ["password", "secret", "ssn", "credit_card"]
             for key in payload:
                 if any(s in key.lower() for s in sensitive_keys):
-                    issues.append({"issue": f"sensitive_data_in_jwt: {key}", "severity": "HIGH"})
+                    issues.append(
+                        {"issue": f"sensitive_data_in_jwt: {key}", "severity": "HIGH"}
+                    )
 
             # Check missing claims
             if "iss" not in payload:
@@ -92,7 +109,11 @@ class MobileAPIAuthTester:
                 "algorithm": alg,
                 "claims": list(payload.keys()),
                 "issues": issues,
-                "severity": "HIGH" if any(i["severity"] in ("CRITICAL", "HIGH") for i in issues) else "MEDIUM",
+                "severity": (
+                    "HIGH"
+                    if any(i["severity"] in ("CRITICAL", "HIGH") for i in issues)
+                    else "MEDIUM"
+                ),
             }
             self.findings.append(finding)
             return finding
@@ -106,8 +127,12 @@ class MobileAPIAuthTester:
         for endpoint in endpoints:
             url = f"{self.base_url}{endpoint}"
             try:
-                resp = requests.get(url, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=10,  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
-                                    headers={"User-Agent": "MobileSecurityTester/1.0"})
+                resp = requests.get(
+                    url,
+                    verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+                    timeout=10,  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+                    headers={"User-Agent": "MobileSecurityTester/1.0"},
+                )
                 if resp.status_code != 401 and resp.status_code != 403:
                     result = {
                         "endpoint": endpoint,
@@ -121,14 +146,16 @@ class MobileAPIAuthTester:
             time.sleep(0.5)  # Rate limiting
 
         if results:
-            self.findings.append({
-                "check": "missing_authentication",
-                "owasp_api": "API2",
-                "endpoints_tested": len(endpoints),
-                "unprotected": len(results),
-                "details": results,
-                "severity": "CRITICAL",
-            })
+            self.findings.append(
+                {
+                    "check": "missing_authentication",
+                    "owasp_api": "API2",
+                    "endpoints_tested": len(endpoints),
+                    "unprotected": len(results),
+                    "details": results,
+                    "severity": "CRITICAL",
+                }
+            )
         return results
 
     def test_expired_token(self) -> dict:
@@ -158,7 +185,11 @@ class MobileAPIAuthTester:
         except Exception:
             pass
 
-        return {"check": "expired_token", "skipped": True, "reason": "token_not_expired"}
+        return {
+            "check": "expired_token",
+            "skipped": True,
+            "reason": "token_not_expired",
+        }
 
     def test_idor(self, endpoint_template: str, valid_id: str, other_ids: list) -> list:
         """Test for IDOR by substituting object IDs."""
@@ -168,25 +199,29 @@ class MobileAPIAuthTester:
             try:
                 resp = self.session.get(url, timeout=10)
                 if resp.status_code == 200:
-                    results.append({
-                        "endpoint": url,
-                        "original_id": valid_id,
-                        "tested_id": other_id,
-                        "accessible": True,
-                        "severity": "CRITICAL",
-                    })
+                    results.append(
+                        {
+                            "endpoint": url,
+                            "original_id": valid_id,
+                            "tested_id": other_id,
+                            "accessible": True,
+                            "severity": "CRITICAL",
+                        }
+                    )
             except requests.RequestException:
                 pass
             time.sleep(0.5)
 
         if results:
-            self.findings.append({
-                "check": "idor",
-                "owasp_api": "API1",
-                "vulnerable_endpoints": len(results),
-                "details": results,
-                "severity": "CRITICAL",
-            })
+            self.findings.append(
+                {
+                    "check": "idor",
+                    "owasp_api": "API1",
+                    "vulnerable_endpoints": len(results),
+                    "details": results,
+                    "severity": "CRITICAL",
+                }
+            )
         return results
 
     def generate_report(self) -> dict:
@@ -215,9 +250,16 @@ def main():
     parser.add_argument("--base-url", required=True, help="API base URL")
     parser.add_argument("--token", required=True, help="Bearer token (JWT or opaque)")
     parser.add_argument("--output", default="auth_test.json", help="Output report")
-    parser.add_argument("--endpoints", nargs="*", default=[
-        "/api/v1/users/me", "/api/v1/users", "/api/v1/admin",
-    ], help="Endpoints to test")
+    parser.add_argument(
+        "--endpoints",
+        nargs="*",
+        default=[
+            "/api/v1/users/me",
+            "/api/v1/users",
+            "/api/v1/admin",
+        ],
+        help="Endpoints to test",
+    )
     args = parser.parse_args()
 
     tester = MobileAPIAuthTester(args.base_url, args.token)

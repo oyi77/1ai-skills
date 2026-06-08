@@ -45,11 +45,11 @@ from pathlib import Path
 from typing import Optional
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-SKILL_DIR   = Path(__file__).parent
-WORKSPACE   = Path("/home/openclaw/.openclaw/workspace")
-ENGINE_DIR  = WORKSPACE / "autopilot_affiliate_engine"
-CGEN_DIR    = WORKSPACE / "content/content-generator/scripts"
-NANO_DIR    = WORKSPACE / "skills/nano-banana-pro/scripts"
+SKILL_DIR = Path(__file__).parent
+WORKSPACE = Path("/home/openclaw/.openclaw/workspace")
+ENGINE_DIR = WORKSPACE / "autopilot_affiliate_engine"
+CGEN_DIR = WORKSPACE / "content/content-generator/scripts"
+NANO_DIR = WORKSPACE / "skills/nano-banana-pro/scripts"
 CLIPPER_DIR = WORKSPACE / "skills/auto-clipper/scripts"
 
 # Add local modules to path
@@ -65,7 +65,9 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler(LOG_DIR / f"orchestrator_{datetime.now().strftime('%Y%m%d')}.log"),
+        logging.FileHandler(
+            LOG_DIR / f"orchestrator_{datetime.now().strftime('%Y%m%d')}.log"
+        ),
     ],
 )
 log = logging.getLogger("ContentKingdom")
@@ -91,7 +93,11 @@ def load_config() -> dict:
             cfg.setdefault("post_limits", ns.get("POST_LIMITS", {}))
             # Merge LYNK product URLs if not already in config
             engine_products = ns.get("LYNK_PRODUCTS", {})
-            for cname, p in cfg.get("products", {}).items() if isinstance(cfg.get("products"), dict) else []:
+            for cname, p in (
+                cfg.get("products", {}).items()
+                if isinstance(cfg.get("products"), dict)
+                else []
+            ):
                 if cname in engine_products and "url" not in p:
                     p["url"] = engine_products[cname].get("link", "")
         except Exception as e:
@@ -114,6 +120,7 @@ class PaperclipClient:
         }
         try:
             import requests as _req
+
             self._req = _req
         except ImportError:
             self._req = None
@@ -145,7 +152,9 @@ class PaperclipClient:
             log.warning("Paperclip PATCH %s failed: %s", path, exc)
             return {}
 
-    def create_issue(self, title: str, description: str = "", parent_id: str | None = None) -> dict:
+    def create_issue(
+        self, title: str, description: str = "", parent_id: str | None = None
+    ) -> dict:
         payload: dict = {
             "title": title,
             "description": description,
@@ -167,7 +176,10 @@ class PaperclipClient:
             return {}
         try:
             r = self._req.get(
-                f"{self.base}{path}", headers=self.headers, params=params or {}, timeout=15
+                f"{self.base}{path}",
+                headers=self.headers,
+                params=params or {},
+                timeout=15,
             )
             r.raise_for_status()
             return r.json()
@@ -219,8 +231,12 @@ def save_state(state: dict) -> None:
 
 
 # ── subprocess helper (KISS: existing scripts → subprocess, no reimplementation) ──
-def run_script(script_path: Path | str, args: list[str] | None = None,
-               timeout: int = 300, env: dict | None = None) -> tuple[bool, str, str]:
+def run_script(
+    script_path: Path | str,
+    args: list[str] | None = None,
+    timeout: int = 300,
+    env: dict | None = None,
+) -> tuple[bool, str, str]:
     """
     Run an existing Python script as subprocess.
     Returns (success, stdout, stderr).
@@ -238,7 +254,12 @@ def run_script(script_path: Path | str, args: list[str] | None = None,
         )
         ok = result.returncode == 0
         if not ok:
-            log.warning("Script %s exited %d:\n%s", script_path, result.returncode, result.stderr[:500])
+            log.warning(
+                "Script %s exited %d:\n%s",
+                script_path,
+                result.returncode,
+                result.stderr[:500],
+            )
         return ok, result.stdout, result.stderr
     except subprocess.TimeoutExpired:
         return False, "", f"Timeout after {timeout}s"
@@ -248,6 +269,7 @@ def run_script(script_path: Path | str, args: list[str] | None = None,
 
 # ── Phase implementations ──────────────────────────────────────────────────────
 # Each _phase_*() is a standalone function: single responsibility, testable alone.
+
 
 def _phase_research(cfg: dict) -> dict:
     """
@@ -309,7 +331,9 @@ def _phase_plan(cfg: dict, research_data: dict | None = None) -> dict:
         "date": today,
         "weekday": weekday,
         "product_focus": selected.get("id") if isinstance(selected, dict) else selected,
-        "platforms": [p for p, v in cfg.get("platforms", {}).items() if v.get("enabled")],
+        "platforms": [
+            p for p, v in cfg.get("platforms", {}).items() if v.get("enabled")
+        ],
         "posting_times": cfg.get("schedule", {}),
         "weekly_plan_found": bool(weekly_plan),
         "content_count_target": 3,  # posts per platform per day
@@ -335,6 +359,7 @@ def _phase_script(cfg: dict, plan: dict | None = None) -> dict:
     # Import storyboard templates (already proper importable module)
     try:
         import storyboard  # via sys.path from CGEN_DIR
+
         templates_available = storyboard.list_templates()
         log.info("Storyboard templates available: %s", templates_available)
     except ImportError:
@@ -345,6 +370,7 @@ def _phase_script(cfg: dict, plan: dict | None = None) -> dict:
     try:
         sys.path.insert(0, str(SKILL_DIR / "modules"))
         from persona_manager import PersonaManager  # noqa: PLC0415
+
         pm = PersonaManager(config_path=str(CONFIG_PATH))
         persona_ids = pm.list_personas()
     except Exception as exc:
@@ -410,7 +436,11 @@ def _phase_script(cfg: dict, plan: dict | None = None) -> dict:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps({"date": today, "scripts": scripts}, indent=2))
 
-    return {"scripts_generated": len(scripts), "output_path": str(out_path), "templates_used": templates_available[:2]}
+    return {
+        "scripts_generated": len(scripts),
+        "output_path": str(out_path),
+        "templates_used": templates_available[:2],
+    }
 
 
 def _fallback_caption(product: dict, platform: str) -> str:
@@ -452,8 +482,12 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
         return mod
 
     veris = _load_mod("veris_design", SKILL_DIR / "modules" / "veris_design.py")
-    gg_mod = _load_mod("geminigen_client", SKILL_DIR / "modules" / "geminigen_client.py")
-    media_gen = _load_mod("media_generator", SKILL_DIR / "modules" / "media_generator.py")
+    gg_mod = _load_mod(
+        "geminigen_client", SKILL_DIR / "modules" / "geminigen_client.py"
+    )
+    media_gen = _load_mod(
+        "media_generator", SKILL_DIR / "modules" / "media_generator.py"
+    )
 
     gg_cfg = cfg.get("geminigen", {})
     gg_client = gg_mod.GeminiGenClient(api_key=gg_cfg.get("api_key", ""))
@@ -476,7 +510,9 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
 
         # Build Veris-flavoured hook from caption or scenes
         caption = script.get("caption", "")
-        hook_text = caption.split("\n")[0][:80] if caption else f"Coba {product_name} Sekarang!"
+        hook_text = (
+            caption.split("\n")[0][:80] if caption else f"Coba {product_name} Sekarang!"
+        )
 
         if media_type == "image":
             # ── PRIMARY: GeminiGen + Veris design ─────────────────────────────
@@ -506,6 +542,7 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
                         if img_url:
                             # Download to local path
                             import urllib.request as _ur
+
                             _ur.urlretrieve(img_url, out_path)
                             success = Path(out_path).exists()
                             provider = "geminigen"
@@ -516,20 +553,25 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
             # Fallback: full provider chain (5 providers, always ends with PIL)
             if not success:
                 raw_prompt = (
-                    scenes[0]["visual_prompt"] if scenes
+                    scenes[0]["visual_prompt"]
+                    if scenes
                     else f"Dark themed marketing image for {product_name}, minimalist, premium, black background"
                 )
                 try:
-                    pc = _load_mod("provider_chain", SKILL_DIR / "modules" / "provider_chain.py")
+                    pc = _load_mod(
+                        "provider_chain", SKILL_DIR / "modules" / "provider_chain.py"
+                    )
                     res = pc.try_image_providers(raw_prompt, aspect="9:16")
                     result_url = res.get("url")
                     if result_url:
                         # If it's a URL, download; if it's a path, copy
                         if result_url.startswith("http"):
                             import urllib.request as _ur
+
                             _ur.urlretrieve(result_url, out_path)
                         else:
                             import shutil as _sh
+
                             _sh.copy(result_url, out_path)
                         success = Path(out_path).exists()
                         provider = res.get("provider", "provider_chain")
@@ -564,6 +606,7 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
                         vid_url = gg_client.get_video_url(completed)
                         if vid_url:
                             import urllib.request as _ur
+
                             _ur.urlretrieve(vid_url, out_path)
                             success = Path(out_path).exists()
                             provider = "geminigen_grok"
@@ -574,19 +617,24 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
             # Fallback: full video provider chain (BytePlus → XAI → SiliconFlow → Fal.ai → FFmpeg)
             if not success:
                 raw_prompt = (
-                    scenes[0]["visual_prompt"] if scenes
+                    scenes[0]["visual_prompt"]
+                    if scenes
                     else f"Product showcase for {product_name}, dark premium aesthetic, TikTok vertical"
                 )
                 try:
-                    pc = _load_mod("provider_chain", SKILL_DIR / "modules" / "provider_chain.py")
+                    pc = _load_mod(
+                        "provider_chain", SKILL_DIR / "modules" / "provider_chain.py"
+                    )
                     res = pc.try_video_providers(raw_prompt)
                     result_url = res.get("url")
                     if result_url:
                         if result_url.startswith("http"):
                             import urllib.request as _ur
+
                             _ur.urlretrieve(result_url, out_path)
                         else:
                             import shutil as _sh
+
                             _sh.copy(result_url, out_path)
                         success = Path(out_path).exists()
                         provider = res.get("provider", "provider_chain_video")
@@ -595,15 +643,17 @@ def _phase_create(cfg: dict, scripts_path: str | None = None) -> dict:
                     log.warning("Provider chain video failed: %s", pc_exc)
                     provider = "provider_chain_failed"
 
-        generated.append({
-            "index": i,
-            "platform": platform,
-            "media_type": media_type,
-            "output": out_path if success else None,
-            "success": success,
-            "provider": provider,
-            "product_name": product_name,
-        })
+        generated.append(
+            {
+                "index": i,
+                "platform": platform,
+                "media_type": media_type,
+                "output": out_path if success else None,
+                "success": success,
+                "provider": provider,
+                "product_name": product_name,
+            }
+        )
 
     images_ok = sum(1 for g in generated if g["success"] and g["media_type"] == "image")
     videos_ok = sum(1 for g in generated if g["success"] and g["media_type"] == "video")
@@ -629,18 +679,26 @@ def _create_pil_placeholder(out_path: str, product_name: str, hook_text: str) ->
     except ImportError:
         # PIL not available — write a tiny black PNG via raw bytes
         import struct, zlib  # noqa: E401
+
         def _png(w: int, h: int) -> bytes:
             raw = b"\x00" + b"\x00\x00\x00" * w
             scanlines = raw * h
             compressed = zlib.compress(scanlines)
+
             def chunk(name: bytes, data: bytes) -> bytes:
                 c = name + data
-                return struct.pack(">I", len(data)) + c + struct.pack(">I", zlib.crc32(c) & 0xFFFFFFFF)
+                return (
+                    struct.pack(">I", len(data))
+                    + c
+                    + struct.pack(">I", zlib.crc32(c) & 0xFFFFFFFF)
+                )
+
             sig = b"\x89PNG\r\n\x1a\n"
             ihdr = chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 2, 0, 0, 0))
             idat = chunk(b"IDAT", compressed)
             iend = chunk(b"IEND", b"")
             return sig + ihdr + idat + iend
+
         Path(out_path).parent.mkdir(parents=True, exist_ok=True)
         Path(out_path).write_bytes(_png(800, 1000))
         return
@@ -651,8 +709,12 @@ def _create_pil_placeholder(out_path: str, product_name: str, hook_text: str) ->
 
     # White text — Veris palette
     try:
-        font_lg = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 36)
-        font_sm = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
+        font_lg = ImageFont.truetype(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 36
+        )
+        font_sm = ImageFont.truetype(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24
+        )
     except OSError:
         font_lg = font_sm = ImageFont.load_default()
 
@@ -679,6 +741,7 @@ def _phase_review(cfg: dict, scripts_path: str | None = None) -> dict:
     try:
         # Try using our modules.quality_gate (QualityGate class) first
         from modules.quality_gate import QualityGate  # noqa: PLC0415
+
         qg = QualityGate(cfg)
         today = datetime.now().strftime("%Y-%m-%d")
         sp = scripts_path or str(SKILL_DIR / "output" / f"scripts_{today}.json")
@@ -695,13 +758,20 @@ def _phase_review(cfg: dict, scripts_path: str | None = None) -> dict:
                     failed += 1
         except Exception:
             pass
-        return {"passed": passed, "failed": failed, "mode": "quality_gate_module", "min_score": min_score}
+        return {
+            "passed": passed,
+            "failed": failed,
+            "mode": "quality_gate_module",
+            "min_score": min_score,
+        }
     except Exception as qg_exc:
         log.info("QualityGate module: %s — falling back to basic check", qg_exc)
         return _basic_caption_review(cfg, scripts_path, min_score)
 
 
-def _basic_caption_review(cfg: dict, scripts_path: str | None, min_score: float) -> dict:
+def _basic_caption_review(
+    cfg: dict, scripts_path: str | None, min_score: float
+) -> dict:
     """Fallback: check captions have required elements."""
     today = datetime.now().strftime("%Y-%m-%d")
     scripts_path = scripts_path or str(SKILL_DIR / "output" / f"scripts_{today}.json")
@@ -713,7 +783,11 @@ def _basic_caption_review(cfg: dict, scripts_path: str | None, min_score: float)
         for script in scripts_data.get("scripts", []):
             caption = script.get("caption", "")
             issues = []
-            if gates_config.get("required_call_to_action") and "link" not in caption.lower() and "bio" not in caption.lower():
+            if (
+                gates_config.get("required_call_to_action")
+                and "link" not in caption.lower()
+                and "bio" not in caption.lower()
+            ):
                 issues.append("missing CTA")
             if gates_config.get("required_hashtags") and "#" not in caption:
                 issues.append("missing hashtags")
@@ -737,7 +811,11 @@ def _phase_schedule(cfg: dict, paperclip: PaperclipClient | None = None) -> dict
     """
     queue_file = ENGINE_DIR / "postbridge_queue_jendralbot.json"
     if not queue_file.exists():
-        return {"skipped": True, "reason": "No queue file found", "queue_path": str(queue_file)}
+        return {
+            "skipped": True,
+            "reason": "No queue file found",
+            "queue_path": str(queue_file),
+        }
 
     ok, out, err = run_script(ENGINE_DIR / "auto_postbridge_robust_v2.py", timeout=300)
 
@@ -762,7 +840,9 @@ def _phase_post(cfg: dict) -> dict:
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
     try:
-        resp = req.get(f"{base_url}/post-results?page=1&limit=50", headers=headers, timeout=20)
+        resp = req.get(
+            f"{base_url}/post-results?page=1&limit=50", headers=headers, timeout=20
+        )
         resp.raise_for_status()
         data = resp.json()
         results = data if isinstance(data, list) else data.get("data", [])
@@ -772,8 +852,12 @@ def _phase_post(cfg: dict) -> dict:
 
         retry_count = 0
         if failures:
-            log.info("Found %d failed posts — triggering retry via robust_v2", len(failures))
-            ok, _, _ = run_script(ENGINE_DIR / "auto_postbridge_robust_v2.py", timeout=300)
+            log.info(
+                "Found %d failed posts — triggering retry via robust_v2", len(failures)
+            )
+            ok, _, _ = run_script(
+                ENGINE_DIR / "auto_postbridge_robust_v2.py", timeout=300
+            )
             if ok:
                 retry_count = len(failures)
 
@@ -797,14 +881,18 @@ def _phase_engage(cfg: dict, prev_comment_counts: dict | None = None) -> dict:
     try:
         # Direct import to avoid modules/__init__.py triggering PostBridgeClient
         import importlib.util
+
         spec = importlib.util.spec_from_file_location(
-            "comment_manager",
-            str(SKILL_DIR / "modules" / "comment_manager.py"))
+            "comment_manager", str(SKILL_DIR / "modules" / "comment_manager.py")
+        )
         cm_mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cm_mod)
         module = cm_mod.CommentManager(cfg)
         result = module.monitor_comments(hours=24)
-        return {"comments_found": len(result) if isinstance(result, list) else 0, "mode": "comment_manager"}
+        return {
+            "comments_found": len(result) if isinstance(result, list) else 0,
+            "mode": "comment_manager",
+        }
     except Exception as exc:
         log.warning("CommentManager: %s — skipping engage", exc)
         return {"skipped": True, "reason": str(exc)}
@@ -829,12 +917,15 @@ def _phase_analyze(cfg: dict) -> dict:
 
     # Pull raw analytics from PostBridge API
     import requests as req
+
     api_key = cfg.get("postbridge_api_key", "")
     base_url = cfg.get("postbridge_base_url", "https://api.post-bridge.com/v1")
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
     try:
-        resp = req.get(f"{base_url}/analytics?page=1&limit=100", headers=headers, timeout=20)
+        resp = req.get(
+            f"{base_url}/analytics?page=1&limit=100", headers=headers, timeout=20
+        )
         resp.raise_for_status()
         data = resp.json()
         posts = data if isinstance(data, list) else data.get("data", [])
@@ -879,9 +970,13 @@ def _phase_optimize(cfg: dict, analyze_data: dict | None = None) -> dict:
         count = stats["count"] or 1
         avg_views = views / count
         if avg_views < 100:
-            recommendations.append(f"{platform}: avg views low ({avg_views:.0f}) — test new hooks")
+            recommendations.append(
+                f"{platform}: avg views low ({avg_views:.0f}) — test new hooks"
+            )
         elif avg_views > 1000:
-            recommendations.append(f"{platform}: strong performer ({avg_views:.0f} avg views) — increase volume")
+            recommendations.append(
+                f"{platform}: strong performer ({avg_views:.0f} avg views) — increase volume"
+            )
 
     # Run revenue tracker for correlation
     ok, _, _ = run_script(ENGINE_DIR / "revenue_tracker_REAL.py", timeout=60)
@@ -897,7 +992,11 @@ def _phase_optimize(cfg: dict, analyze_data: dict | None = None) -> dict:
     }
     opt_path.write_text(json.dumps(report, indent=2))
 
-    return {"recommendations": len(recommendations), "platforms_analyzed": len(by_platform), "report_path": str(opt_path)}
+    return {
+        "recommendations": len(recommendations),
+        "platforms_analyzed": len(by_platform),
+        "report_path": str(opt_path),
+    }
 
 
 def _phase_repurpose(cfg: dict, **kwargs) -> dict:
@@ -925,14 +1024,15 @@ def _phase_scale(cfg: dict, analyze_data: dict | None = None) -> dict:
     """
     try:
         import importlib.util
+
         spec = importlib.util.spec_from_file_location(
-            "engagement_engine",
-            str(SKILL_DIR / "modules" / "engagement_engine.py"))
+            "engagement_engine", str(SKILL_DIR / "modules" / "engagement_engine.py")
+        )
         ee_mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(ee_mod)
         raw_posts = (analyze_data or {}).get("raw_posts", [])
         module = ee_mod.EngagementEngine(cfg)
-        
+
         # Use available methods: warm up accounts + boost recent posts
         warmed = 0
         boosted = 0
@@ -944,7 +1044,7 @@ def _phase_scale(cfg: dict, analyze_data: dict | None = None) -> dict:
                     boosted += 1
                 except Exception:
                     pass
-        
+
         return {"boosted": boosted, "warmed": warmed, "posts_analyzed": len(raw_posts)}
     except Exception as exc:
         log.warning("EngagementEngine: %s — skipping scale", exc)
@@ -953,18 +1053,30 @@ def _phase_scale(cfg: dict, analyze_data: dict | None = None) -> dict:
 
 # ── Phase registry — Open/Closed: add new phase here, no other changes needed ─
 PHASES: dict[str, dict] = {
-    "research":  {"fn": _phase_research,  "label": "Phase 1: RESEARCH",  "deps": []},
-    "plan":      {"fn": _phase_plan,      "label": "Phase 2: PLAN",      "deps": ["research"]},
-    "script":    {"fn": _phase_script,    "label": "Phase 3: SCRIPT",    "deps": ["plan"]},
-    "create":    {"fn": _phase_create,    "label": "Phase 4: CREATE",    "deps": ["script"]},
-    "review":    {"fn": _phase_review,    "label": "Phase 5: REVIEW",    "deps": ["script"]},
-    "schedule":  {"fn": _phase_schedule,  "label": "Phase 6: SCHEDULE",  "deps": ["review"]},
-    "post":      {"fn": _phase_post,      "label": "Phase 7: POST",      "deps": ["schedule"]},
-    "engage":    {"fn": _phase_engage,    "label": "Phase 8: ENGAGE",    "deps": ["post"]},
-    "analyze":   {"fn": _phase_analyze,   "label": "Phase 9: ANALYZE",   "deps": ["post"]},
-    "optimize":  {"fn": _phase_optimize,  "label": "Phase 10: OPTIMIZE", "deps": ["analyze"]},
-    "repurpose": {"fn": _phase_repurpose, "label": "Phase 11: REPURPOSE","deps": ["analyze"]},
-    "scale":     {"fn": _phase_scale,     "label": "Phase 12: SCALE",    "deps": ["analyze"]},
+    "research": {"fn": _phase_research, "label": "Phase 1: RESEARCH", "deps": []},
+    "plan": {"fn": _phase_plan, "label": "Phase 2: PLAN", "deps": ["research"]},
+    "script": {"fn": _phase_script, "label": "Phase 3: SCRIPT", "deps": ["plan"]},
+    "create": {"fn": _phase_create, "label": "Phase 4: CREATE", "deps": ["script"]},
+    "review": {"fn": _phase_review, "label": "Phase 5: REVIEW", "deps": ["script"]},
+    "schedule": {
+        "fn": _phase_schedule,
+        "label": "Phase 6: SCHEDULE",
+        "deps": ["review"],
+    },
+    "post": {"fn": _phase_post, "label": "Phase 7: POST", "deps": ["schedule"]},
+    "engage": {"fn": _phase_engage, "label": "Phase 8: ENGAGE", "deps": ["post"]},
+    "analyze": {"fn": _phase_analyze, "label": "Phase 9: ANALYZE", "deps": ["post"]},
+    "optimize": {
+        "fn": _phase_optimize,
+        "label": "Phase 10: OPTIMIZE",
+        "deps": ["analyze"],
+    },
+    "repurpose": {
+        "fn": _phase_repurpose,
+        "label": "Phase 11: REPURPOSE",
+        "deps": ["analyze"],
+    },
+    "scale": {"fn": _phase_scale, "label": "Phase 12: SCALE", "deps": ["analyze"]},
 }
 
 
@@ -1071,13 +1183,23 @@ class ContentKingdomOrchestrator:
         try:
             data = phase_meta["fn"](self.cfg, **kwargs)
             elapsed = time.monotonic() - start
-            result = {"phase": phase_name, "status": "success", "data": data,
-                      "duration_seconds": round(elapsed, 2), "timestamp": ts}
+            result = {
+                "phase": phase_name,
+                "status": "success",
+                "data": data,
+                "duration_seconds": round(elapsed, 2),
+                "timestamp": ts,
+            }
         except Exception as exc:
             elapsed = time.monotonic() - start
             log.error("Phase [%s] raised: %s", phase_name, exc, exc_info=True)
-            result = {"phase": phase_name, "status": "failed", "error": str(exc),
-                      "duration_seconds": round(elapsed, 2), "timestamp": ts}
+            result = {
+                "phase": phase_name,
+                "status": "failed",
+                "error": str(exc),
+                "duration_seconds": round(elapsed, 2),
+                "timestamp": ts,
+            }
 
         # Persist phase state
         self.state.setdefault("phases", {})[phase_name] = {
@@ -1117,7 +1239,8 @@ class ContentKingdomOrchestrator:
             log.info("📋 Paperclip: reusing existing issue %s", parent_id)
             # Update description with new run
             self.paperclip.update_issue(
-                parent_id, "todo",
+                parent_id,
+                "todo",
                 f"Daily content pipeline run (rerun). ID: {run_label}\n\n12 phases: {', '.join(PHASES)}",
             )
             return parent_id
@@ -1173,10 +1296,20 @@ Cron:
   0 */2 * * * cd /path/to/content-kingdom && python3 orchestrator.py --phase engage
         """,
     )
-    parser.add_argument("--pipeline", action="store_true", help="Run full daily pipeline")
-    parser.add_argument("--phase", metavar="PHASE", help=f"Run single phase: {list(PHASES)}")
-    parser.add_argument("--status", action="store_true", help="Print current status JSON")
-    parser.add_argument("--paperclip-issues", action="store_true", help="Create Paperclip issues for today")
+    parser.add_argument(
+        "--pipeline", action="store_true", help="Run full daily pipeline"
+    )
+    parser.add_argument(
+        "--phase", metavar="PHASE", help=f"Run single phase: {list(PHASES)}"
+    )
+    parser.add_argument(
+        "--status", action="store_true", help="Print current status JSON"
+    )
+    parser.add_argument(
+        "--paperclip-issues",
+        action="store_true",
+        help="Create Paperclip issues for today",
+    )
     parser.add_argument("--config", metavar="PATH", help="Custom config.json path")
     args = parser.parse_args()
 
@@ -1196,7 +1329,11 @@ Cron:
 
     elif args.pipeline:
         record = orch.run_daily_pipeline()
-        failed = [p for p, v in record.get("phases", {}).items() if v.get("status") == "failed"]
+        failed = [
+            p
+            for p, v in record.get("phases", {}).items()
+            if v.get("status") == "failed"
+        ]
         if failed:
             log.warning("Pipeline finished with failures: %s", failed)
             sys.exit(1)

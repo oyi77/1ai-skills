@@ -68,13 +68,15 @@ class STIXTAXIIIntegrator:
             }
 
             for collection in api_root.collections:
-                root_info["collections"].append({
-                    "id": collection.id,
-                    "title": collection.title,
-                    "description": getattr(collection, "description", ""),
-                    "can_read": collection.can_read,
-                    "can_write": collection.can_write,
-                })
+                root_info["collections"].append(
+                    {
+                        "id": collection.id,
+                        "title": collection.title,
+                        "description": getattr(collection, "description", ""),
+                        "can_read": collection.can_read,
+                        "can_write": collection.can_write,
+                    }
+                )
                 self.stats["collections"] += 1
 
             discovery["api_roots"].append(root_info)
@@ -82,13 +84,14 @@ class STIXTAXIIIntegrator:
         self.stats["api_roots"] = len(discovery["api_roots"])
         return discovery
 
-    def poll_collection(self, collection_url: str,
-                        added_after: Optional[str] = None,
-                        max_objects: int = 1000) -> list:
+    def poll_collection(
+        self,
+        collection_url: str,
+        added_after: Optional[str] = None,
+        max_objects: int = 1000,
+    ) -> list:
         """Poll a TAXII collection for STIX objects."""
-        collection = Collection(
-            collection_url, user=self.user, password=self.password
-        )
+        collection = Collection(collection_url, user=self.user, password=self.password)
 
         all_objects = []
         kwargs = {}
@@ -96,9 +99,7 @@ class STIXTAXIIIntegrator:
             kwargs["added_after"] = added_after
 
         try:
-            for envelope in as_pages(
-                collection.get_objects, per_request=100, **kwargs
-            ):
+            for envelope in as_pages(collection.get_objects, per_request=100, **kwargs):
                 objects = envelope.get("objects", [])
                 all_objects.extend(objects)
                 self.stats["objects_fetched"] += len(objects)
@@ -153,21 +154,11 @@ class STIXTAXIIIntegrator:
         observables = []
 
         # Match common STIX patterns
-        ip_pattern = re.compile(
-            r"ipv[46]-addr:value\s*=\s*'([^']+)'"
-        )
-        domain_pattern = re.compile(
-            r"domain-name:value\s*=\s*'([^']+)'"
-        )
-        url_pattern = re.compile(
-            r"url:value\s*=\s*'([^']+)'"
-        )
-        hash_pattern = re.compile(
-            r"file:hashes\.'([^']+)'\s*=\s*'([^']+)'"
-        )
-        email_pattern = re.compile(
-            r"email-addr:value\s*=\s*'([^']+)'"
-        )
+        ip_pattern = re.compile(r"ipv[46]-addr:value\s*=\s*'([^']+)'")
+        domain_pattern = re.compile(r"domain-name:value\s*=\s*'([^']+)'")
+        url_pattern = re.compile(r"url:value\s*=\s*'([^']+)'")
+        hash_pattern = re.compile(r"file:hashes\.'([^']+)'\s*=\s*'([^']+)'")
+        email_pattern = re.compile(r"email-addr:value\s*=\s*'([^']+)'")
 
         for match in ip_pattern.finditer(pattern):
             observables.append({"type": "ip", "value": match.group(1)})
@@ -179,10 +170,12 @@ class STIXTAXIIIntegrator:
             observables.append({"type": "url", "value": match.group(1)})
 
         for match in hash_pattern.finditer(pattern):
-            observables.append({
-                "type": f"hash-{match.group(1).lower()}",
-                "value": match.group(2),
-            })
+            observables.append(
+                {
+                    "type": f"hash-{match.group(1).lower()}",
+                    "value": match.group(2),
+                }
+            )
 
         for match in email_pattern.finditer(pattern):
             observables.append({"type": "email", "value": match.group(1)})
@@ -204,11 +197,13 @@ class STIXTAXIIIntegrator:
                 }
 
         for rel in relationships:
-            graph["edges"].append({
-                "source": rel.get("source_ref"),
-                "target": rel.get("target_ref"),
-                "type": rel.get("relationship_type"),
-            })
+            graph["edges"].append(
+                {
+                    "source": rel.get("source_ref"),
+                    "target": rel.get("target_ref"),
+                    "type": rel.get("relationship_type"),
+                }
+            )
             self.stats["relationships"] += 1
 
         return graph
@@ -218,15 +213,17 @@ class STIXTAXIIIntegrator:
         rows = []
         for ind in indicators:
             for obs in ind.get("parsed_observables", []):
-                rows.append({
-                    "indicator_id": ind["id"],
-                    "indicator_name": ind["name"],
-                    "observable_type": obs["type"],
-                    "observable_value": obs["value"],
-                    "confidence": ind["confidence"],
-                    "valid_from": ind["valid_from"],
-                    "valid_until": ind["valid_until"],
-                })
+                rows.append(
+                    {
+                        "indicator_id": ind["id"],
+                        "indicator_name": ind["name"],
+                        "observable_type": obs["type"],
+                        "observable_value": obs["value"],
+                        "confidence": ind["confidence"],
+                        "valid_from": ind["valid_from"],
+                        "valid_until": ind["valid_until"],
+                    }
+                )
 
         if rows:
             with open(output_path, "w", newline="", encoding="utf-8") as f:
@@ -246,9 +243,7 @@ class STIXTAXIIIntegrator:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="STIX/TAXII 2.1 Feed Integration Tool"
-    )
+    parser = argparse.ArgumentParser(description="STIX/TAXII 2.1 Feed Integration Tool")
     parser.add_argument("--server", required=True, help="TAXII server URL")
     parser.add_argument("--user", default="", help="TAXII username")
     parser.add_argument("--password", default="", help="TAXII password")

@@ -30,17 +30,19 @@ def extract_checks(data: dict) -> list:
         for group in control.get("tests", []):
             group_id = group.get("section", "")
             for result in group.get("results", []):
-                checks.append({
-                    "section": section,
-                    "section_text": section_text,
-                    "group": group_id,
-                    "id": result.get("test_number", ""),
-                    "description": result.get("test_desc", ""),
-                    "status": result.get("status", ""),
-                    "scored": result.get("scored", False),
-                    "remediation": result.get("remediation", ""),
-                    "reason": result.get("reason", ""),
-                })
+                checks.append(
+                    {
+                        "section": section,
+                        "section_text": section_text,
+                        "group": group_id,
+                        "id": result.get("test_number", ""),
+                        "description": result.get("test_desc", ""),
+                        "status": result.get("status", ""),
+                        "scored": result.get("scored", False),
+                        "remediation": result.get("remediation", ""),
+                        "reason": result.get("reason", ""),
+                    }
+                )
     return checks
 
 
@@ -51,7 +53,13 @@ def generate_summary(checks: list) -> dict:
     for c in checks:
         sec = c["section"]
         if sec not in section_counts:
-            section_counts[sec] = {"section_text": c["section_text"], "PASS": 0, "FAIL": 0, "WARN": 0, "INFO": 0}
+            section_counts[sec] = {
+                "section_text": c["section_text"],
+                "PASS": 0,
+                "FAIL": 0,
+                "WARN": 0,
+                "INFO": 0,
+            }
         status = c["status"]
         if status in section_counts[sec]:
             section_counts[sec][status] += 1
@@ -107,7 +115,7 @@ def generate_report(data: dict, output_path: str = None) -> str:
             report += f"### {c['id']} - {c['description']}\n"
             report += f"- **Status:** FAIL\n"
             report += f"- **Scored:** {c['scored']}\n"
-            if c['remediation']:
+            if c["remediation"]:
                 report += f"- **Remediation:** {c['remediation']}\n"
             report += "\n"
 
@@ -137,14 +145,18 @@ def compare_scans(current_file: str, previous_file: str):
         sign = "+" if change > 0 else ""
         print(f"{metric.upper():<20} {prev_val:<12} {curr_val:<12} {sign}{change}")
 
-    print(f"{'SCORE':<20} {prev_summary['score_percent']}%{'':<7} {curr_summary['score_percent']}%")
+    print(
+        f"{'SCORE':<20} {prev_summary['score_percent']}%{'':<7} {curr_summary['score_percent']}%"
+    )
 
 
 def main():
     parser = argparse.ArgumentParser(description="kube-bench CIS Benchmark Reporter")
     subparsers = parser.add_subparsers(dest="command")
 
-    report_cmd = subparsers.add_parser("report", help="Generate report from kube-bench JSON")
+    report_cmd = subparsers.add_parser(
+        "report", help="Generate report from kube-bench JSON"
+    )
     report_cmd.add_argument("input", help="kube-bench JSON output file")
     report_cmd.add_argument("--output", "-o", help="Output markdown report path")
 

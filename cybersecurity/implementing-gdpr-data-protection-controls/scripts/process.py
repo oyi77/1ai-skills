@@ -51,10 +51,21 @@ class TransferMechanism(Enum):
 
 
 ADEQUATE_COUNTRIES = [
-    "Andorra", "Argentina", "Canada", "Faroe Islands", "Guernsey",
-    "Israel", "Isle of Man", "Japan", "Jersey", "New Zealand",
-    "Republic of Korea", "Switzerland", "United Kingdom", "Uruguay",
-    "United States (Data Privacy Framework participants)"
+    "Andorra",
+    "Argentina",
+    "Canada",
+    "Faroe Islands",
+    "Guernsey",
+    "Israel",
+    "Isle of Man",
+    "Japan",
+    "Jersey",
+    "New Zealand",
+    "Republic of Korea",
+    "Switzerland",
+    "United Kingdom",
+    "Uruguay",
+    "United States (Data Privacy Framework participants)",
 ]
 
 
@@ -119,7 +130,9 @@ class BreachRecord:
     def __post_init__(self):
         if not self.notification_deadline and self.detected_date:
             detected = datetime.strptime(self.detected_date, "%Y-%m-%d")
-            self.notification_deadline = (detected + timedelta(hours=72)).strftime("%Y-%m-%d %H:%M")
+            self.notification_deadline = (detected + timedelta(hours=72)).strftime(
+                "%Y-%m-%d %H:%M"
+            )
 
 
 @dataclass
@@ -162,14 +175,20 @@ class GDPRComplianceManager:
             print(f"    Purpose: {activity.purpose}")
             print(f"    Lawful Basis: {activity.lawful_basis}")
             print(f"    Data Subjects: {', '.join(activity.data_subjects)}")
-            print(f"    Special Categories: {'Yes' if activity.special_categories else 'No'}")
-            print(f"    International Transfers: {'Yes' if activity.international_transfers else 'No'}")
+            print(
+                f"    Special Categories: {'Yes' if activity.special_categories else 'No'}"
+            )
+            print(
+                f"    International Transfers: {'Yes' if activity.international_transfers else 'No'}"
+            )
             print(f"    DPIA Required: {'Yes' if activity.dpia_required else 'No'}")
 
         # Summary statistics
         total = len(self.processing_activities)
         special = sum(1 for a in self.processing_activities if a.special_categories)
-        transfers = sum(1 for a in self.processing_activities if a.international_transfers)
+        transfers = sum(
+            1 for a in self.processing_activities if a.international_transfers
+        )
         dpia_needed = sum(1 for a in self.processing_activities if a.dpia_required)
 
         print(f"\n  ROPA Summary:")
@@ -195,21 +214,41 @@ class GDPRComplianceManager:
         csv_path = self.output_dir / "ropa.csv"
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "Activity ID", "Name", "Purpose", "Lawful Basis",
-                "Data Subjects", "Personal Data Categories", "Special Categories",
-                "Recipients", "International Transfers", "Retention Period",
-                "Systems", "Security Measures", "DPIA Required"
-            ])
+            writer.writerow(
+                [
+                    "Activity ID",
+                    "Name",
+                    "Purpose",
+                    "Lawful Basis",
+                    "Data Subjects",
+                    "Personal Data Categories",
+                    "Special Categories",
+                    "Recipients",
+                    "International Transfers",
+                    "Retention Period",
+                    "Systems",
+                    "Security Measures",
+                    "DPIA Required",
+                ]
+            )
             for a in self.processing_activities:
-                writer.writerow([
-                    a.activity_id, a.name, a.purpose, a.lawful_basis,
-                    "; ".join(a.data_subjects), "; ".join(a.personal_data_categories),
-                    "Yes" if a.special_categories else "No",
-                    "; ".join(a.recipients), "; ".join(a.international_transfers),
-                    a.retention_period, "; ".join(a.systems),
-                    "; ".join(a.security_measures), "Yes" if a.dpia_required else "No"
-                ])
+                writer.writerow(
+                    [
+                        a.activity_id,
+                        a.name,
+                        a.purpose,
+                        a.lawful_basis,
+                        "; ".join(a.data_subjects),
+                        "; ".join(a.personal_data_categories),
+                        "Yes" if a.special_categories else "No",
+                        "; ".join(a.recipients),
+                        "; ".join(a.international_transfers),
+                        a.retention_period,
+                        "; ".join(a.systems),
+                        "; ".join(a.security_measures),
+                        "Yes" if a.dpia_required else "No",
+                    ]
+                )
 
         print(f"\n  ROPA saved to: {ropa_path}")
         return self.processing_activities
@@ -232,7 +271,9 @@ class GDPRComplianceManager:
 
         # Overdue check
         today = datetime.now().strftime("%Y-%m-%d")
-        overdue = [d for d in self.dsr_log if d.deadline < today and d.status != "Completed"]
+        overdue = [
+            d for d in self.dsr_log if d.deadline < today and d.status != "Completed"
+        ]
         if overdue:
             print(f"\n  ALERT: {len(overdue)} overdue DSRs!")
             for d in overdue:
@@ -255,7 +296,11 @@ class GDPRComplianceManager:
             json.dump([asdict(d) for d in self.dsr_log], f, indent=2)
 
         print(f"\n  DSR Log saved to: {dsr_path}")
-        return {"total": len(self.dsr_log), "overdue": len(overdue), "by_type": type_counts}
+        return {
+            "total": len(self.dsr_log),
+            "overdue": len(overdue),
+            "by_type": type_counts,
+        }
 
     def manage_breach(self, breaches: list[dict]) -> list[BreachRecord]:
         """Manage breach register and notification tracking."""
@@ -271,9 +316,13 @@ class GDPRComplianceManager:
             print(f"    Severity: {breach.severity}")
             print(f"    Subjects Affected: {breach.subjects_affected}")
             print(f"    Notification Deadline: {breach.notification_deadline}")
-            print(f"    Authority Notified: {'Yes' if breach.authority_notified else 'No'}")
+            print(
+                f"    Authority Notified: {'Yes' if breach.authority_notified else 'No'}"
+            )
             if breach.severity == BreachSeverity.HIGH_RISK.value:
-                print(f"    Subjects Notified: {'Yes' if breach.subjects_notified else 'No'}")
+                print(
+                    f"    Subjects Notified: {'Yes' if breach.subjects_notified else 'No'}"
+                )
             print(f"    Status: {breach.status}")
 
         breach_path = self.output_dir / "breach_register.json"
@@ -315,12 +364,18 @@ class GDPRComplianceManager:
 
         checks = {
             "Article 5 - Principles": {
-                "All processing has documented lawful basis": bool(self.processing_activities),
+                "All processing has documented lawful basis": bool(
+                    self.processing_activities
+                ),
                 "Purpose limitation documented for each activity": False,
                 "Data minimization assessed": False,
                 "Accuracy procedures in place": False,
-                "Retention periods defined": any(a.retention_period for a in self.processing_activities),
-                "Security measures documented": any(a.security_measures for a in self.processing_activities),
+                "Retention periods defined": any(
+                    a.retention_period for a in self.processing_activities
+                ),
+                "Security measures documented": any(
+                    a.security_measures for a in self.processing_activities
+                ),
             },
             "Article 25 - Privacy by Design": {
                 "Development processes include privacy reviews": False,
@@ -329,8 +384,11 @@ class GDPRComplianceManager:
             },
             "Article 30 - ROPA": {
                 "Records of processing maintained": bool(self.processing_activities),
-                "Controller details documented": any(a.controller_name for a in self.processing_activities),
-                "All processing activities captured": len(self.processing_activities) > 0,
+                "Controller details documented": any(
+                    a.controller_name for a in self.processing_activities
+                ),
+                "All processing activities captured": len(self.processing_activities)
+                > 0,
             },
             "Article 32 - Security Measures": {
                 "Encryption implemented for personal data": False,
@@ -347,17 +405,23 @@ class GDPRComplianceManager:
             "Article 35 - DPIA": {
                 "DPIA criteria documented": False,
                 "DPIAs conducted for high-risk processing": bool(self.dpia_register),
-                "DPO consulted on DPIAs": any(d.dpo_consultation for d in self.dpia_register),
+                "DPO consulted on DPIAs": any(
+                    d.dpo_consultation for d in self.dpia_register
+                ),
             },
             "Articles 12-22 - Data Subject Rights": {
                 "DSR handling process documented": False,
                 "30-day response capability": bool(self.dsr_log),
-                "Identity verification process": any(d.identity_verified for d in self.dsr_log),
+                "Identity verification process": any(
+                    d.identity_verified for d in self.dsr_log
+                ),
                 "Erasure capability across systems": False,
                 "Portability export capability": False,
             },
             "Articles 44-49 - International Transfers": {
-                "Cross-border transfers mapped": any(a.international_transfers for a in self.processing_activities),
+                "Cross-border transfers mapped": any(
+                    a.international_transfers for a in self.processing_activities
+                ),
                 "Transfer mechanisms in place (SCCs/BCRs)": False,
                 "Transfer impact assessments conducted": False,
             },
@@ -407,12 +471,23 @@ def main():
             "purpose": "Managing customer accounts and providing services",
             "lawful_basis": LawfulBasis.CONTRACT.value,
             "data_subjects": ["Customers"],
-            "personal_data_categories": ["Name", "Email", "Phone", "Address", "Payment details"],
+            "personal_data_categories": [
+                "Name",
+                "Email",
+                "Phone",
+                "Address",
+                "Payment details",
+            ],
             "recipients": ["Payment processor", "CRM provider"],
             "international_transfers": ["US (Payment processor - SCCs)"],
             "retention_period": "Duration of contract + 6 years",
             "systems": ["CRM", "Payment gateway", "Database"],
-            "security_measures": ["Encryption at rest", "TLS in transit", "RBAC", "MFA"],
+            "security_measures": [
+                "Encryption at rest",
+                "TLS in transit",
+                "RBAC",
+                "MFA",
+            ],
             "controller_name": "Example Corp Ltd",
         },
         {
@@ -421,7 +496,14 @@ def main():
             "purpose": "Employment administration, payroll, benefits",
             "lawful_basis": LawfulBasis.CONTRACT.value,
             "data_subjects": ["Employees", "Job applicants"],
-            "personal_data_categories": ["Name", "Address", "DOB", "NI number", "Bank details", "Health data"],
+            "personal_data_categories": [
+                "Name",
+                "Address",
+                "DOB",
+                "NI number",
+                "Bank details",
+                "Health data",
+            ],
             "special_categories": True,
             "recipients": ["Payroll provider", "Pension provider", "HMRC"],
             "retention_period": "Employment + 7 years",
@@ -436,12 +518,20 @@ def main():
             "purpose": "Analyzing website usage to improve user experience",
             "lawful_basis": LawfulBasis.CONSENT.value,
             "data_subjects": ["Website visitors"],
-            "personal_data_categories": ["IP address", "Cookie identifiers", "Browsing behavior"],
+            "personal_data_categories": [
+                "IP address",
+                "Cookie identifiers",
+                "Browsing behavior",
+            ],
             "recipients": ["Analytics provider"],
             "international_transfers": ["US (Analytics provider - EU-US DPF)"],
             "retention_period": "26 months",
             "systems": ["Website", "Analytics platform"],
-            "security_measures": ["IP anonymization", "Cookie consent", "Data pseudonymization"],
+            "security_measures": [
+                "IP anonymization",
+                "Cookie consent",
+                "Data pseudonymization",
+            ],
             "controller_name": "Example Corp Ltd",
         },
     ]

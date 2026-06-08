@@ -45,7 +45,9 @@ def detect_beaconing(connections, min_connections=10, max_jitter_percent=15):
         if len(timestamps) < min_connections:
             continue
         timestamps.sort()
-        intervals = [timestamps[i+1] - timestamps[i] for i in range(len(timestamps)-1)]
+        intervals = [
+            timestamps[i + 1] - timestamps[i] for i in range(len(timestamps) - 1)
+        ]
         if not intervals:
             continue
         mean_interval = sum(intervals) / len(intervals)
@@ -58,15 +60,17 @@ def detect_beaconing(connections, min_connections=10, max_jitter_percent=15):
             parts = key.split("->")
             src = parts[0]
             dst_port = parts[1] if len(parts) > 1 else ""
-            beacons.append({
-                "flow": key,
-                "connection_count": len(timestamps),
-                "mean_interval_seconds": round(mean_interval, 2),
-                "jitter_seconds": round(jitter, 2),
-                "jitter_percent": round(jitter_percent, 2),
-                "duration_hours": round((timestamps[-1] - timestamps[0]) / 3600, 2),
-                "confidence": "HIGH" if jitter_percent < 5 else "MEDIUM",
-            })
+            beacons.append(
+                {
+                    "flow": key,
+                    "connection_count": len(timestamps),
+                    "mean_interval_seconds": round(mean_interval, 2),
+                    "jitter_seconds": round(jitter, 2),
+                    "jitter_percent": round(jitter_percent, 2),
+                    "duration_hours": round((timestamps[-1] - timestamps[0]) / 3600, 2),
+                    "confidence": "HIGH" if jitter_percent < 5 else "MEDIUM",
+                }
+            )
     return sorted(beacons, key=lambda x: x["jitter_percent"])
 
 
@@ -75,6 +79,7 @@ def parse_csv_log(csv_path):
     connections = defaultdict(list)
     try:
         import csv
+
         with open(csv_path, "r") as f:
             reader = csv.DictReader(f)
             for row in reader:
@@ -87,8 +92,11 @@ def parse_csv_log(csv_path):
                         ts_float = float(ts)
                     except ValueError:
                         from datetime import datetime as dt
+
                         try:
-                            ts_float = dt.fromisoformat(ts.replace("Z", "+00:00")).timestamp()
+                            ts_float = dt.fromisoformat(
+                                ts.replace("Z", "+00:00")
+                            ).timestamp()
                         except ValueError:
                             continue
                     connections[f"{src}->{dst}:{port}"].append(ts_float)
@@ -104,7 +112,9 @@ def main():
     parser.add_argument("--conn-log", help="Zeek conn.log path")
     parser.add_argument("--csv", help="CSV log with timestamp, src, dst columns")
     parser.add_argument("--min-connections", type=int, default=10)
-    parser.add_argument("--max-jitter", type=float, default=15, help="Max jitter percent")
+    parser.add_argument(
+        "--max-jitter", type=float, default=15, help="Max jitter percent"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report")
     args = parser.parse_args()
 

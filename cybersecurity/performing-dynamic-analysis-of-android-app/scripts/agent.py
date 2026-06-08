@@ -7,6 +7,7 @@ import subprocess
 
 try:
     import frida
+
     HAS_FRIDA = True
 except ImportError:
     HAS_FRIDA = False
@@ -14,18 +15,43 @@ except ImportError:
 
 def list_packages(device_id=None):
     """List installed packages on Android device/emulator."""
-    cmd = ["adb"] + (["-s", device_id] if device_id else []) + ["shell", "pm", "list", "packages", "-3"]
+    cmd = (
+        ["adb"]
+        + (["-s", device_id] if device_id else [])
+        + ["shell", "pm", "list", "packages", "-3"]
+    )
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
-    packages = [l.replace("package:", "").strip() for l in result.stdout.strip().split("\n") if l.strip()]
+    packages = [
+        l.replace("package:", "").strip()
+        for l in result.stdout.strip().split("\n")
+        if l.strip()
+    ]
     return {"total": len(packages), "packages": packages}
 
 
 def capture_network_traffic(device_id=None, duration=30, output="capture.pcap"):
     """Capture network traffic from Android device using tcpdump."""
     adb = ["adb"] + (["-s", device_id] if device_id else [])
-    subprocess.run(adb + ["shell", "tcpdump", "-i", "any", "-w", f"/sdcard/{output}", "-G", str(duration), "-W", "1"],
-                   timeout=duration + 10, capture_output=True)
-    subprocess.run(adb + ["pull", f"/sdcard/{output}", output], capture_output=True, timeout=15)
+    subprocess.run(
+        adb
+        + [
+            "shell",
+            "tcpdump",
+            "-i",
+            "any",
+            "-w",
+            f"/sdcard/{output}",
+            "-G",
+            str(duration),
+            "-W",
+            "1",
+        ],
+        timeout=duration + 10,
+        capture_output=True,
+    )
+    subprocess.run(
+        adb + ["pull", f"/sdcard/{output}", output], capture_output=True, timeout=15
+    )
     return {"output": output, "duration": duration}
 
 
@@ -59,14 +85,17 @@ def check_ssl_pinning(package_name, device_id=None):
     });
     """)
     results = {}
+
     def on_message(msg, data):
         nonlocal results
         if msg["type"] == "send":
             results = msg["payload"]
+
     script.on("message", on_message)
     script.load()
     device.resume(pid)
     import time
+
     time.sleep(8)
     session.detach()
     return {"package": package_name, "ssl_pinning": results}
@@ -77,7 +106,9 @@ def analyze_exported_components(package_name, device_id=None):
     adb = ["adb"] + (["-s", device_id] if device_id else [])
     result = subprocess.run(
         adb + ["shell", "dumpsys", "package", package_name],
-        capture_output=True, text=True, timeout=15
+        capture_output=True,
+        text=True,
+        timeout=15,
     )
     output = result.stdout
     components = {"activities": [], "services": [], "receivers": [], "providers": []}
@@ -104,18 +135,28 @@ def check_data_storage(package_name, device_id=None):
     # Check shared preferences for sensitive data
     sp_result = subprocess.run(
         adb + ["shell", "run-as", package_name, "ls", "shared_prefs/"],
-        capture_output=True, text=True, timeout=10
+        capture_output=True,
+        text=True,
+        timeout=10,
     )
     if sp_result.returncode == 0:
         prefs = [f.strip() for f in sp_result.stdout.split("\n") if f.strip()]
         findings.append({"type": "shared_prefs", "files": prefs})
     # Check for world-readable files
     wr_result = subprocess.run(
-        adb + ["shell", "run-as", package_name, "find", ".", "-perm", "-o+r", "-type", "f"],
-        capture_output=True, text=True, timeout=10
+        adb
+        + ["shell", "run-as", package_name, "find", ".", "-perm", "-o+r", "-type", "f"],
+        capture_output=True,
+        text=True,
+        timeout=10,
     )
     if wr_result.stdout.strip():
-        findings.append({"type": "world_readable", "files": wr_result.stdout.strip().split("\n")[:20]})
+        findings.append(
+            {
+                "type": "world_readable",
+                "files": wr_result.stdout.strip().split("\n")[:20],
+            }
+        )
     return {"package": package_name, "findings": findings}
 
 

@@ -11,7 +11,9 @@ from urllib.parse import urlparse
 
 def parse_access_log(log_path, api_prefix="/api"):
     """Parse web server access logs to extract API endpoint calls."""
-    endpoints = defaultdict(lambda: {"count": 0, "methods": set(), "status_codes": set()})
+    endpoints = defaultdict(
+        lambda: {"count": 0, "methods": set(), "status_codes": set()}
+    )
     # Combined log format: IP - - [date] "METHOD path HTTP/ver" status size
     pattern = re.compile(
         r'(\S+)\s+\S+\s+\S+\s+\[([^\]]+)\]\s+"(\S+)\s+(\S+)\s+\S+"\s+(\d+)\s+(\d+)'
@@ -24,11 +26,12 @@ def parse_access_log(log_path, api_prefix="/api"):
                     continue
                 method, path, status = m.group(3), m.group(4), m.group(5)
                 parsed = urlparse(path)
-                clean_path = re.sub(r'/\d+', '/{id}', parsed.path)
-                clean_path = re.sub(r'/[0-9a-f]{24,}', '/{id}', clean_path)
+                clean_path = re.sub(r"/\d+", "/{id}", parsed.path)
+                clean_path = re.sub(r"/[0-9a-f]{24,}", "/{id}", clean_path)
                 clean_path = re.sub(
-                    r'/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',
-                    '/{uuid}', clean_path
+                    r"/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+                    "/{uuid}",
+                    clean_path,
                 )
                 if api_prefix and not clean_path.startswith(api_prefix):
                     continue
@@ -49,9 +52,17 @@ def load_openapi_spec(spec_path):
             spec = json.load(f)
         paths = spec.get("paths", {})
         for path, methods in paths.items():
-            normalized = re.sub(r'\{[^}]+\}', '{id}', path)
+            normalized = re.sub(r"\{[^}]+\}", "{id}", path)
             for method in methods:
-                if method.upper() in ("GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"):
+                if method.upper() in (
+                    "GET",
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "PATCH",
+                    "HEAD",
+                    "OPTIONS",
+                ):
                     documented.add(f"{method.upper()} {normalized}")
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"[!] Error loading spec: {e}")
@@ -63,20 +74,29 @@ def find_shadow_endpoints(observed, documented):
     shadow = []
     for endpoint, data in observed.items():
         if endpoint not in documented:
-            shadow.append({
-                "endpoint": endpoint,
-                "call_count": data["count"],
-                "status_codes": sorted(data["status_codes"]),
-                "risk": "HIGH" if any(s.startswith("2") for s in data["status_codes"]) else "MEDIUM",
-            })
+            shadow.append(
+                {
+                    "endpoint": endpoint,
+                    "call_count": data["count"],
+                    "status_codes": sorted(data["status_codes"]),
+                    "risk": (
+                        "HIGH"
+                        if any(s.startswith("2") for s in data["status_codes"])
+                        else "MEDIUM"
+                    ),
+                }
+            )
     return sorted(shadow, key=lambda x: x["call_count"], reverse=True)
 
 
 def classify_risk(shadow_endpoints):
     """Classify shadow endpoints by risk category."""
     categories = {
-        "debug": [], "admin": [], "internal": [],
-        "deprecated": [], "unknown": [],
+        "debug": [],
+        "admin": [],
+        "internal": [],
+        "deprecated": [],
+        "unknown": [],
     }
     for ep in shadow_endpoints:
         path = ep["endpoint"].lower()
@@ -101,7 +121,9 @@ def main():
     parser.add_argument("--openapi-spec", help="Path to OpenAPI/Swagger JSON spec")
     parser.add_argument("--api-prefix", default="/api", help="API path prefix filter")
     parser.add_argument("--output", "-o", help="Output JSON report path")
-    parser.add_argument("--min-calls", type=int, default=1, help="Minimum call count threshold")
+    parser.add_argument(
+        "--min-calls", type=int, default=1, help="Minimum call count threshold"
+    )
     args = parser.parse_args()
 
     print("[*] Shadow API Endpoint Detection Agent")
@@ -127,7 +149,11 @@ def main():
     }
 
     high_risk = sum(1 for s in shadow if s["risk"] == "HIGH")
-    report["risk_level"] = "CRITICAL" if high_risk >= 5 else "HIGH" if high_risk >= 2 else "MEDIUM" if shadow else "LOW"
+    report["risk_level"] = (
+        "CRITICAL"
+        if high_risk >= 5
+        else "HIGH" if high_risk >= 2 else "MEDIUM" if shadow else "LOW"
+    )
 
     print(f"[*] Shadow endpoints: {len(shadow)} (HIGH risk: {high_risk})")
 

@@ -8,13 +8,17 @@ import subprocess
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
 def pan_api_request(firewall_ip, api_key, cmd_type, cmd):
     url = f"https://{firewall_ip}/api/?type={cmd_type}&cmd={cmd}&key={api_key}"
-    result = subprocess.run(["curl", "-s", "-k", url], capture_output=True, text=True, timeout=120)
+    result = subprocess.run(
+        ["curl", "-s", "-k", url], capture_output=True, text=True, timeout=120
+    )
     return result.stdout
 
 
@@ -27,9 +31,11 @@ def get_security_rules(fw_ip, api_key):
         for entry in root.iter("entry"):
             rule = {
                 "name": entry.get("name", ""),
-                "source_zone": [z.text for z in entry.findall(".//from/member")] or ["any"],
+                "source_zone": [z.text for z in entry.findall(".//from/member")]
+                or ["any"],
                 "dest_zone": [z.text for z in entry.findall(".//to/member")] or ["any"],
-                "application": [a.text for a in entry.findall(".//application/member")] or ["any"],
+                "application": [a.text for a in entry.findall(".//application/member")]
+                or ["any"],
                 "action": entry.findtext(".//action", ""),
                 "log_end": entry.findtext(".//log-end", "no"),
                 "profile_group": entry.findtext(".//profile-setting/group/member", ""),
@@ -45,21 +51,48 @@ def audit_security_rules(rules):
     for rule in rules:
         name = rule["name"]
         if "any" in rule["application"]:
-            findings.append({"rule": name, "issue": "Uses any application instead of App-ID", "severity": "high"})
+            findings.append(
+                {
+                    "rule": name,
+                    "issue": "Uses any application instead of App-ID",
+                    "severity": "high",
+                }
+            )
         if not rule.get("profile_group"):
-            findings.append({"rule": name, "issue": "No security profile group attached", "severity": "high"})
+            findings.append(
+                {
+                    "rule": name,
+                    "issue": "No security profile group attached",
+                    "severity": "high",
+                }
+            )
         if rule["log_end"] != "yes":
-            findings.append({"rule": name, "issue": "End logging not enabled", "severity": "medium"})
-        if rule["action"] == "allow" and "any" in rule["source_zone"] and "any" in rule["dest_zone"]:
-            findings.append({"rule": name, "issue": "Allow any-to-any zones", "severity": "critical"})
+            findings.append(
+                {"rule": name, "issue": "End logging not enabled", "severity": "medium"}
+            )
+        if (
+            rule["action"] == "allow"
+            and "any" in rule["source_zone"]
+            and "any" in rule["dest_zone"]
+        ):
+            findings.append(
+                {
+                    "rule": name,
+                    "issue": "Allow any-to-any zones",
+                    "severity": "critical",
+                }
+            )
     return findings
 
 
 def calculate_appid_coverage(rules):
     total = len(rules)
     appid_rules = sum(1 for r in rules if "any" not in r["application"])
-    return {"total_rules": total, "appid_enabled": appid_rules,
-            "coverage_percent": round(appid_rules / max(total, 1) * 100, 1)}
+    return {
+        "total_rules": total,
+        "appid_enabled": appid_rules,
+        "coverage_percent": round(appid_rules / max(total, 1) * 100, 1),
+    }
 
 
 def check_system_health(fw_ip, api_key):
@@ -86,7 +119,9 @@ def generate_report(rules, findings, appid, health):
         "appid_coverage": appid,
         "security_findings": findings,
         "total_findings": len(findings),
-        "critical_findings": sum(1 for f in findings if f.get("severity") == "critical"),
+        "critical_findings": sum(
+            1 for f in findings if f.get("severity") == "critical"
+        ),
     }
 
 
@@ -104,8 +139,12 @@ def main():
     report = generate_report(rules, findings, appid, health)
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("PAN-OS: %d rules, App-ID %.1f%%, %d findings",
-                len(rules), appid["coverage_percent"], len(findings))
+    logger.info(
+        "PAN-OS: %d rules, App-ID %.1f%%, %d findings",
+        len(rules),
+        appid["coverage_percent"],
+        len(findings),
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

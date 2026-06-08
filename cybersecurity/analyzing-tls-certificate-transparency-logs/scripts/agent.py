@@ -15,8 +15,12 @@ def search_certificates(domain, include_expired=False):
     certs = c.search(domain)
     if not include_expired:
         now = datetime.utcnow()
-        certs = [cert for cert in certs if cert.get("not_after")
-                 and datetime.strptime(str(cert["not_after"]), "%Y-%m-%dT%H:%M:%S") > now]
+        certs = [
+            cert
+            for cert in certs
+            if cert.get("not_after")
+            and datetime.strptime(str(cert["not_after"]), "%Y-%m-%dT%H:%M:%S") > now
+        ]
     return certs
 
 
@@ -67,13 +71,15 @@ def detect_typosquatting(target_domain, ct_records, max_distance=3):
             continue
         dist = levenshtein_distance(base, candidate_base)
         if 0 < dist <= max_distance:
-            suspicious.append({
-                "domain": domain,
-                "distance": dist,
-                "issuer": record.get("issuer_name", ""),
-                "not_before": record.get("not_before", ""),
-                "not_after": record.get("not_after", ""),
-            })
+            suspicious.append(
+                {
+                    "domain": domain,
+                    "distance": dist,
+                    "issuer": record.get("issuer_name", ""),
+                    "not_before": record.get("not_before", ""),
+                    "not_after": record.get("not_after", ""),
+                }
+            )
     return sorted(suspicious, key=lambda x: x["distance"])
 
 
@@ -83,12 +89,14 @@ def detect_unauthorized_cas(ct_records, allowed_cas):
     for record in ct_records:
         issuer = record.get("issuer_name", "")
         if issuer and not any(ca.lower() in issuer.lower() for ca in allowed_cas):
-            unauthorized.append({
-                "domain": record.get("common_name", ""),
-                "issuer": issuer,
-                "not_before": record.get("not_before", ""),
-                "cert_id": record.get("id"),
-            })
+            unauthorized.append(
+                {
+                    "domain": record.get("common_name", ""),
+                    "issuer": issuer,
+                    "not_before": record.get("not_before", ""),
+                    "cert_id": record.get("id"),
+                }
+            )
     return unauthorized
 
 
@@ -103,12 +111,14 @@ def monitor_new_certificates(domain, hours_back=24):
             try:
                 cert_time = datetime.strptime(not_before, "%Y-%m-%dT%H:%M:%S")
                 if cert_time.timestamp() > cutoff:
-                    recent.append({
-                        "domain": r.get("common_name", ""),
-                        "issuer": r.get("issuer_name", ""),
-                        "not_before": not_before,
-                        "name_value": r.get("name_value", ""),
-                    })
+                    recent.append(
+                        {
+                            "domain": r.get("common_name", ""),
+                            "issuer": r.get("issuer_name", ""),
+                            "not_before": not_before,
+                            "name_value": r.get("name_value", ""),
+                        }
+                    )
             except ValueError:
                 continue
     return recent
@@ -120,28 +130,46 @@ def find_wildcard_certificates(ct_records):
     for r in ct_records:
         name = r.get("common_name", "") or r.get("name_value", "")
         if name.startswith("*."):
-            wildcards.append({
-                "domain": name,
-                "issuer": r.get("issuer_name", ""),
-                "not_before": r.get("not_before", ""),
-                "not_after": r.get("not_after", ""),
-            })
+            wildcards.append(
+                {
+                    "domain": name,
+                    "issuer": r.get("issuer_name", ""),
+                    "not_before": r.get("not_before", ""),
+                    "not_after": r.get("not_after", ""),
+                }
+            )
     return wildcards
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Certificate Transparency Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="Certificate Transparency Analysis Agent"
+    )
     parser.add_argument("--domain", required=True, help="Target domain to monitor")
-    parser.add_argument("--allowed-cas", nargs="*", default=["Let's Encrypt", "DigiCert",
-                        "Sectigo", "Amazon", "Google Trust Services"])
+    parser.add_argument(
+        "--allowed-cas",
+        nargs="*",
+        default=[
+            "Let's Encrypt",
+            "DigiCert",
+            "Sectigo",
+            "Amazon",
+            "Google Trust Services",
+        ],
+    )
     parser.add_argument("--output", default="ct_report.json")
-    parser.add_argument("--action", choices=[
-        "search", "typosquat", "unauthorized_ca", "monitor", "full_scan"
-    ], default="full_scan")
+    parser.add_argument(
+        "--action",
+        choices=["search", "typosquat", "unauthorized_ca", "monitor", "full_scan"],
+        default="full_scan",
+    )
     args = parser.parse_args()
 
-    report = {"domain": args.domain, "generated_at": datetime.utcnow().isoformat(),
-              "findings": {}}
+    report = {
+        "domain": args.domain,
+        "generated_at": datetime.utcnow().isoformat(),
+        "findings": {},
+    }
 
     ct_records = search_crtsh_api(f"%.{args.domain}")
     report["findings"]["total_certificates"] = len(ct_records)

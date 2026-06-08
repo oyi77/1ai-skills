@@ -16,14 +16,22 @@ except ImportError:
     evtx = None
 
 COMMONLY_HOLLOWED = {
-    "svchost.exe", "explorer.exe", "notepad.exe", "calc.exe",
-    "dllhost.exe", "regsvr32.exe", "RuntimeBroker.exe",
+    "svchost.exe",
+    "explorer.exe",
+    "notepad.exe",
+    "calc.exe",
+    "dllhost.exe",
+    "regsvr32.exe",
+    "RuntimeBroker.exe",
 }
 
 SUSPICIOUS_PARENT_CHILD = [
-    ("cmd.exe", "svchost.exe"), ("powershell.exe", "svchost.exe"),
-    ("wscript.exe", "svchost.exe"), ("mshta.exe", "svchost.exe"),
-    ("winword.exe", "svchost.exe"), ("excel.exe", "svchost.exe"),
+    ("cmd.exe", "svchost.exe"),
+    ("powershell.exe", "svchost.exe"),
+    ("wscript.exe", "svchost.exe"),
+    ("mshta.exe", "svchost.exe"),
+    ("winword.exe", "svchost.exe"),
+    ("excel.exe", "svchost.exe"),
 ]
 
 
@@ -34,7 +42,7 @@ def detect_hollowing_sysmon(filepath):
     with evtx.Evtx(filepath) as log:
         for record in log.records():
             xml = record.xml()
-            eid_match = re.search(r'<EventID[^>]*>(\d+)</EventID>', xml)
+            eid_match = re.search(r"<EventID[^>]*>(\d+)</EventID>", xml)
             if not eid_match:
                 continue
             eid = int(eid_match.group(1))
@@ -50,13 +58,20 @@ def detect_hollowing_sysmon(filepath):
                     par = parent.group(1).rsplit("\\", 1)[-1].lower()
                     for sp, sc in SUSPICIOUS_PARENT_CHILD:
                         if par == sp.lower() and img == sc.lower():
-                            findings.append({
-                                "event_id": 1, "timestamp": ts,
-                                "type": "suspicious_parent_child",
-                                "parent": parent.group(1), "image": image.group(1),
-                                "cmdline": cmdline.group(1)[:200] if cmdline else "",
-                                "severity": "HIGH", "mitre": "T1055.012",
-                            })
+                            findings.append(
+                                {
+                                    "event_id": 1,
+                                    "timestamp": ts,
+                                    "type": "suspicious_parent_child",
+                                    "parent": parent.group(1),
+                                    "image": image.group(1),
+                                    "cmdline": (
+                                        cmdline.group(1)[:200] if cmdline else ""
+                                    ),
+                                    "severity": "HIGH",
+                                    "mitre": "T1055.012",
+                                }
+                            )
 
             if eid == 8:
                 source = re.search(r'<Data Name="SourceImage">([^<]+)', xml)
@@ -64,13 +79,17 @@ def detect_hollowing_sysmon(filepath):
                 if target:
                     tgt = target.group(1).rsplit("\\", 1)[-1].lower()
                     if tgt in COMMONLY_HOLLOWED:
-                        findings.append({
-                            "event_id": 8, "timestamp": ts,
-                            "type": "remote_thread_hollowed_target",
-                            "source": source.group(1) if source else "",
-                            "target": target.group(1),
-                            "severity": "CRITICAL", "mitre": "T1055.012",
-                        })
+                        findings.append(
+                            {
+                                "event_id": 8,
+                                "timestamp": ts,
+                                "type": "remote_thread_hollowed_target",
+                                "source": source.group(1) if source else "",
+                                "target": target.group(1),
+                                "severity": "CRITICAL",
+                                "mitre": "T1055.012",
+                            }
+                        )
 
             if eid == 10:
                 source = re.search(r'<Data Name="SourceImage">([^<]+)', xml)
@@ -80,13 +99,18 @@ def detect_hollowing_sysmon(filepath):
                     tgt = target.group(1).rsplit("\\", 1)[-1].lower()
                     mask = access.group(1).lower()
                     if tgt in COMMONLY_HOLLOWED and mask in ("0x1fffff", "0x1f3fff"):
-                        findings.append({
-                            "event_id": 10, "timestamp": ts,
-                            "type": "full_access_hollowed_target",
-                            "source": source.group(1) if source else "",
-                            "target": target.group(1), "access": mask,
-                            "severity": "CRITICAL", "mitre": "T1055.012",
-                        })
+                        findings.append(
+                            {
+                                "event_id": 10,
+                                "timestamp": ts,
+                                "type": "full_access_hollowed_target",
+                                "source": source.group(1) if source else "",
+                                "target": target.group(1),
+                                "access": mask,
+                                "severity": "CRITICAL",
+                                "mitre": "T1055.012",
+                            }
+                        )
     return findings
 
 
@@ -100,7 +124,8 @@ def main():
     else:
         results = {
             "timestamp": datetime.utcnow().isoformat() + "Z",
-            "findings": findings, "total_findings": len(findings),
+            "findings": findings,
+            "total_findings": len(findings),
         }
     print(json.dumps(results, indent=2))
 

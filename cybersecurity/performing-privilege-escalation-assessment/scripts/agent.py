@@ -30,7 +30,10 @@ class PrivescAssessmentAgent:
             needs_shell = any(op in clean_cmd for op in ("|", ";", "&&", "||"))
             result = subprocess.run(
                 clean_cmd if needs_shell else shlex.split(clean_cmd),
-                shell=needs_shell, capture_output=True, text=True, timeout=timeout
+                shell=needs_shell,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
             )
             return result.stdout.strip()
         except (subprocess.TimeoutExpired, FileNotFoundError, ValueError):
@@ -54,10 +57,33 @@ class PrivescAssessmentAgent:
         findings = []
 
         gtfobins_dangerous = [
-            "vim", "vi", "nano", "less", "more", "find", "nmap", "python",
-            "python3", "perl", "ruby", "awk", "gawk", "env", "ftp",
-            "man", "mount", "strace", "ltrace", "zip", "tar",
-            "bash", "sh", "dash", "ash", "zsh", "tclsh",
+            "vim",
+            "vi",
+            "nano",
+            "less",
+            "more",
+            "find",
+            "nmap",
+            "python",
+            "python3",
+            "perl",
+            "ruby",
+            "awk",
+            "gawk",
+            "env",
+            "ftp",
+            "man",
+            "mount",
+            "strace",
+            "ltrace",
+            "zip",
+            "tar",
+            "bash",
+            "sh",
+            "dash",
+            "ash",
+            "zsh",
+            "tclsh",
         ]
 
         if "NOPASSWD" in sudo_l:
@@ -83,9 +109,23 @@ class PrivescAssessmentAgent:
         binaries = suid_output.splitlines()
 
         gtfobins_suid = [
-            "nmap", "vim", "find", "bash", "more", "less", "nano",
-            "cp", "mv", "python", "perl", "ruby", "env",
-            "pkexec", "at", "strace", "taskset",
+            "nmap",
+            "vim",
+            "find",
+            "bash",
+            "more",
+            "less",
+            "nano",
+            "cp",
+            "mv",
+            "python",
+            "perl",
+            "ruby",
+            "env",
+            "pkexec",
+            "at",
+            "strace",
+            "taskset",
         ]
 
         findings = []
@@ -104,14 +144,23 @@ class PrivescAssessmentAgent:
                 findings.append(finding)
                 self.findings.append(finding)
 
-        return {"total_suid": len(binaries), "exploitable": findings, "all_suid": binaries}
+        return {
+            "total_suid": len(binaries),
+            "exploitable": findings,
+            "all_suid": binaries,
+        }
 
     def check_capabilities(self):
         """Find binaries with elevated Linux capabilities."""
         cap_output = self._run("getcap -r / 2>/dev/null")
         findings = []
-        dangerous_caps = ["cap_setuid", "cap_dac_override", "cap_sys_admin",
-                         "cap_sys_ptrace", "cap_net_raw"]
+        dangerous_caps = [
+            "cap_setuid",
+            "cap_dac_override",
+            "cap_sys_admin",
+            "cap_sys_ptrace",
+            "cap_net_raw",
+        ]
 
         for line in cap_output.splitlines():
             for cap in dangerous_caps:
@@ -132,8 +181,12 @@ class PrivescAssessmentAgent:
         """Check for writable cron jobs or scripts."""
         findings = []
         cron_paths = [
-            "/etc/crontab", "/etc/cron.d", "/etc/cron.daily",
-            "/etc/cron.hourly", "/etc/cron.weekly", "/etc/cron.monthly",
+            "/etc/crontab",
+            "/etc/cron.d",
+            "/etc/cron.daily",
+            "/etc/cron.hourly",
+            "/etc/cron.weekly",
+            "/etc/cron.monthly",
             "/var/spool/cron/crontabs",
         ]
 
@@ -157,7 +210,9 @@ class PrivescAssessmentAgent:
                                 parts = line.split()
                                 if len(parts) >= 6:
                                     script = parts[5]
-                                    if Path(script).exists() and os.access(script, os.W_OK):
+                                    if Path(script).exists() and os.access(
+                                        script, os.W_OK
+                                    ):
                                         finding = {
                                             "type": "writable_cron_script",
                                             "severity": "Critical",
@@ -173,6 +228,7 @@ class PrivescAssessmentAgent:
         """Check if /etc/passwd or /etc/shadow is writable."""
         findings = []
         import os
+
         for path in ["/etc/passwd", "/etc/shadow"]:
             if os.path.exists(path) and os.access(path, os.W_OK):
                 finding = {
@@ -205,18 +261,21 @@ class PrivescAssessmentAgent:
             return exploits
 
         for min_ver, max_ver, cve, name in known_vulns:
-            exploits.append({
-                "cve": cve,
-                "name": name,
-                "affected_range": f"{min_ver} - {max_ver}",
-                "kernel": kernel,
-                "note": "Verify applicability before testing",
-            })
+            exploits.append(
+                {
+                    "cve": cve,
+                    "name": name,
+                    "affected_range": f"{min_ver} - {max_ver}",
+                    "kernel": kernel,
+                    "note": "Verify applicability before testing",
+                }
+            )
         return exploits
 
     def generate_report(self):
         """Run all enumeration checks and generate report."""
         import os
+
         report = {
             "report_date": datetime.utcnow().isoformat(),
             "system_info": self.get_system_info(),
@@ -227,8 +286,12 @@ class PrivescAssessmentAgent:
             "writable_auth": self.check_writable_passwd(),
             "kernel_exploits": self.check_kernel_exploits(),
             "total_findings": len(self.findings),
-            "critical_findings": len([f for f in self.findings if f.get("severity") == "Critical"]),
-            "high_findings": len([f for f in self.findings if f.get("severity") == "High"]),
+            "critical_findings": len(
+                [f for f in self.findings if f.get("severity") == "Critical"]
+            ),
+            "high_findings": len(
+                [f for f in self.findings if f.get("severity") == "High"]
+            ),
         }
 
         report_path = self.output_dir / "privesc_assessment.json"

@@ -8,7 +8,14 @@ from collections import defaultdict
 
 LOLBIN_SIGNATURES = {
     "certutil.exe": {
-        "suspicious_args": ["-urlcache", "-split", "-decode", "-encode", "-f http", "-verifyctl"],
+        "suspicious_args": [
+            "-urlcache",
+            "-split",
+            "-decode",
+            "-encode",
+            "-f http",
+            "-verifyctl",
+        ],
         "mitre": "T1140",
         "description": "Certificate utility abused for download/decode",
     },
@@ -23,7 +30,12 @@ LOLBIN_SIGNATURES = {
         "description": "COM scriptlet execution via regsvr32 (Squiblydoo)",
     },
     "rundll32.exe": {
-        "suspicious_args": ["javascript:", "http://", "shell32.dll,ShellExec_RunDLL", "comsvcs.dll,MiniDump"],
+        "suspicious_args": [
+            "javascript:",
+            "http://",
+            "shell32.dll,ShellExec_RunDLL",
+            "comsvcs.dll,MiniDump",
+        ],
         "mitre": "T1218.011",
         "description": "Rundll32 proxy execution or credential dumping",
     },
@@ -50,8 +62,14 @@ LOLBIN_SIGNATURES = {
 }
 
 SUSPICIOUS_PARENTS = {
-    "winword.exe", "excel.exe", "powerpnt.exe", "outlook.exe",
-    "wmiprvse.exe", "svchost.exe", "taskeng.exe", "cmd.exe",
+    "winword.exe",
+    "excel.exe",
+    "powerpnt.exe",
+    "outlook.exe",
+    "wmiprvse.exe",
+    "svchost.exe",
+    "taskeng.exe",
+    "cmd.exe",
 }
 
 
@@ -78,7 +96,9 @@ def detect_lolbin_abuse(events):
         image = event.get("Image", event.get("NewProcessName", "")).lower()
         cmdline = event.get("CommandLine", event.get("ProcessCommandLine", "")).lower()
         parent = event.get("ParentImage", event.get("ParentProcessName", "")).lower()
-        binary_name = image.rsplit("\\", 1)[-1] if "\\" in image else image.rsplit("/", 1)[-1]
+        binary_name = (
+            image.rsplit("\\", 1)[-1] if "\\" in image else image.rsplit("/", 1)[-1]
+        )
 
         if binary_name not in LOLBIN_SIGNATURES:
             continue
@@ -88,26 +108,34 @@ def detect_lolbin_abuse(events):
         if not matched_args:
             continue
 
-        parent_name = parent.rsplit("\\", 1)[-1] if "\\" in parent else parent.rsplit("/", 1)[-1]
+        parent_name = (
+            parent.rsplit("\\", 1)[-1] if "\\" in parent else parent.rsplit("/", 1)[-1]
+        )
         parent_suspicious = parent_name in SUSPICIOUS_PARENTS
 
         severity = "high" if parent_suspicious else "medium"
         if len(matched_args) > 1:
             severity = "critical"
 
-        detections.append({
-            "timestamp": event.get("UtcTime", event.get("TimeCreated", datetime.utcnow().isoformat())),
-            "binary": binary_name,
-            "command_line": event.get("CommandLine", event.get("ProcessCommandLine", "")),
-            "parent_process": parent,
-            "parent_suspicious": parent_suspicious,
-            "matched_signatures": matched_args,
-            "mitre_technique": sig["mitre"],
-            "description": sig["description"],
-            "severity": severity,
-            "user": event.get("User", event.get("SubjectUserName", "unknown")),
-            "pid": event.get("ProcessId", event.get("NewProcessId", "")),
-        })
+        detections.append(
+            {
+                "timestamp": event.get(
+                    "UtcTime", event.get("TimeCreated", datetime.utcnow().isoformat())
+                ),
+                "binary": binary_name,
+                "command_line": event.get(
+                    "CommandLine", event.get("ProcessCommandLine", "")
+                ),
+                "parent_process": parent,
+                "parent_suspicious": parent_suspicious,
+                "matched_signatures": matched_args,
+                "mitre_technique": sig["mitre"],
+                "description": sig["description"],
+                "severity": severity,
+                "user": event.get("User", event.get("SubjectUserName", "unknown")),
+                "pid": event.get("ProcessId", event.get("NewProcessId", "")),
+            }
+        )
     return detections
 
 
@@ -125,9 +153,7 @@ def generate_sigma_rule(binary_name):
         "logsource": {"category": "process_creation", "product": "windows"},
         "detection": {
             "selection": {"Image|endswith": f"\\{binary_name}"},
-            "condition_args": {
-                "CommandLine|contains": sig["suspicious_args"]
-            },
+            "condition_args": {"CommandLine|contains": sig["suspicious_args"]},
             "condition": "selection and condition_args",
         },
         "falsepositives": ["Legitimate administrative use"],
@@ -160,9 +186,17 @@ def build_report(detections, log_path):
 
 def main():
     parser = argparse.ArgumentParser(description="LOLBAS Abuse Detection Agent")
-    parser.add_argument("--log-file", required=True, help="JSON log file with process creation events")
-    parser.add_argument("--output", default="lolbas_detections.json", help="Output report path")
-    parser.add_argument("--generate-sigma", action="store_true", help="Generate Sigma rules for all LOLBins")
+    parser.add_argument(
+        "--log-file", required=True, help="JSON log file with process creation events"
+    )
+    parser.add_argument(
+        "--output", default="lolbas_detections.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--generate-sigma",
+        action="store_true",
+        help="Generate Sigma rules for all LOLBins",
+    )
     args = parser.parse_args()
 
     events = parse_process_events(args.log_file)
@@ -176,7 +210,9 @@ def main():
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    print(f"[+] Analyzed {len(events)} events, found {len(detections)} LOLBin abuse detections")
+    print(
+        f"[+] Analyzed {len(events)} events, found {len(detections)} LOLBin abuse detections"
+    )
     print(f"[+] Report saved to {args.output}")
 
 

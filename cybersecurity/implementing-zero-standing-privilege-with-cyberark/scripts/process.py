@@ -15,7 +15,9 @@ import logging
 import sys
 from datetime import datetime, timedelta, timezone
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger("zsp_audit")
 
 
@@ -67,21 +69,24 @@ class StandingPrivilegeDiscovery:
                 if has_admin:
                     access_keys = iam.list_access_keys(UserName=username)
                     active_keys = [
-                        k for k in access_keys["AccessKeyMetadata"]
+                        k
+                        for k in access_keys["AccessKeyMetadata"]
                         if k["Status"] == "Active"
                     ]
 
-                    standing.append({
-                        "cloud": "AWS",
-                        "identity_type": "User",
-                        "identity": username,
-                        "privilege_level": "Admin",
-                        "policies": list(user_policies & admin_policy_arns),
-                        "active_access_keys": len(active_keys),
-                        "created": user["CreateDate"].isoformat(),
-                        "last_used": str(user.get("PasswordLastUsed", "Never")),
-                        "recommendation": "Migrate to CyberArk ZSP",
-                    })
+                    standing.append(
+                        {
+                            "cloud": "AWS",
+                            "identity_type": "User",
+                            "identity": username,
+                            "privilege_level": "Admin",
+                            "policies": list(user_policies & admin_policy_arns),
+                            "active_access_keys": len(active_keys),
+                            "created": user["CreateDate"].isoformat(),
+                            "last_used": str(user.get("PasswordLastUsed", "Never")),
+                            "recommendation": "Migrate to CyberArk ZSP",
+                        }
+                    )
 
         # Check IAM roles (non-service-linked)
         role_paginator = iam.get_paginator("list_roles")
@@ -98,15 +103,17 @@ class StandingPrivilegeDiscovery:
                 } & admin_policy_arns
 
                 if role_admin_policies:
-                    standing.append({
-                        "cloud": "AWS",
-                        "identity_type": "Role",
-                        "identity": role["RoleName"],
-                        "privilege_level": "Admin",
-                        "policies": list(role_admin_policies),
-                        "created": role["CreateDate"].isoformat(),
-                        "recommendation": "Convert to ephemeral CyberArk SCA role",
-                    })
+                    standing.append(
+                        {
+                            "cloud": "AWS",
+                            "identity_type": "Role",
+                            "identity": role["RoleName"],
+                            "privilege_level": "Admin",
+                            "policies": list(role_admin_policies),
+                            "created": role["CreateDate"].isoformat(),
+                            "recommendation": "Convert to ephemeral CyberArk SCA role",
+                        }
+                    )
 
         self.findings.extend(standing)
         logger.info(f"Discovered {len(standing)} AWS standing privileged identities")
@@ -140,25 +147,29 @@ class StandingPrivilegeDiscovery:
         wave_num = 1
 
         for i in range(0, len(users), wave_size):
-            batch = users[i:i + wave_size]
-            plan["migration_waves"].append({
-                "wave": wave_num,
-                "type": "Users",
-                "identities": [u["identity"] for u in batch],
-                "count": len(batch),
-                "suggested_week": f"Week {wave_num}",
-            })
+            batch = users[i : i + wave_size]
+            plan["migration_waves"].append(
+                {
+                    "wave": wave_num,
+                    "type": "Users",
+                    "identities": [u["identity"] for u in batch],
+                    "count": len(batch),
+                    "suggested_week": f"Week {wave_num}",
+                }
+            )
             wave_num += 1
 
         for i in range(0, len(roles), wave_size):
-            batch = roles[i:i + wave_size]
-            plan["migration_waves"].append({
-                "wave": wave_num,
-                "type": "Roles",
-                "identities": [r["identity"] for r in batch],
-                "count": len(batch),
-                "suggested_week": f"Week {wave_num}",
-            })
+            batch = roles[i : i + wave_size]
+            plan["migration_waves"].append(
+                {
+                    "wave": wave_num,
+                    "type": "Roles",
+                    "identities": [r["identity"] for r in batch],
+                    "count": len(batch),
+                    "suggested_week": f"Week {wave_num}",
+                }
+            )
             wave_num += 1
 
         return plan

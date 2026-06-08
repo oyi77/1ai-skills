@@ -19,16 +19,34 @@ except ImportError:
     sys.exit(1)
 
 SUSPICIOUS_RULE_PATTERNS = {
-    "forward_external": {"severity": "HIGH", "desc": "Rule forwards to external domain"},
-    "delete_after_forward": {"severity": "CRITICAL", "desc": "Rule deletes after forwarding"},
+    "forward_external": {
+        "severity": "HIGH",
+        "desc": "Rule forwards to external domain",
+    },
+    "delete_after_forward": {
+        "severity": "CRITICAL",
+        "desc": "Rule deletes after forwarding",
+    },
     "move_to_rss": {"severity": "HIGH", "desc": "Rule moves to RSS Feeds folder"},
     "move_to_junk": {"severity": "MEDIUM", "desc": "Rule moves to Junk folder"},
-    "keyword_financial": {"severity": "HIGH", "desc": "Rule targets financial keywords"},
+    "keyword_financial": {
+        "severity": "HIGH",
+        "desc": "Rule targets financial keywords",
+    },
     "mark_as_read": {"severity": "MEDIUM", "desc": "Rule marks messages as read"},
 }
 
-FINANCIAL_KEYWORDS = ["invoice", "payment", "wire", "transfer", "bank",
-                       "ach", "routing", "remittance", "purchase order"]
+FINANCIAL_KEYWORDS = [
+    "invoice",
+    "payment",
+    "wire",
+    "transfer",
+    "bank",
+    "ach",
+    "routing",
+    "remittance",
+    "purchase order",
+]
 
 
 def get_mailbox_rules(token, user_id="me"):
@@ -62,40 +80,53 @@ def analyze_rules(rules, org_domain=""):
         all_forwards = forward_to + redirect_to
         for fwd in all_forwards:
             addr = fwd.get("emailAddress", {}).get("address", "")
-            if org_domain and addr and not addr.lower().endswith(f"@{org_domain.lower()}"):
+            if (
+                org_domain
+                and addr
+                and not addr.lower().endswith(f"@{org_domain.lower()}")
+            ):
                 severity = "CRITICAL" if delete else "HIGH"
-                findings.append({
-                    "rule_name": rule_name,
-                    "type": "external_forwarding",
-                    "forward_to": addr,
-                    "delete_after": delete,
-                    "is_enabled": is_enabled,
-                    "severity": severity,
-                    "mitre": "T1114.003",
-                })
+                findings.append(
+                    {
+                        "rule_name": rule_name,
+                        "type": "external_forwarding",
+                        "forward_to": addr,
+                        "delete_after": delete,
+                        "is_enabled": is_enabled,
+                        "severity": severity,
+                        "mitre": "T1114.003",
+                    }
+                )
 
         subject_contains = conditions.get("subjectContains", [])
         body_contains = conditions.get("bodyContains", [])
         all_keywords = [k.lower() for k in subject_contains + body_contains]
         matched_financial = [k for k in all_keywords if k in FINANCIAL_KEYWORDS]
         if matched_financial and all_forwards:
-            findings.append({
-                "rule_name": rule_name,
-                "type": "financial_keyword_forwarding",
-                "keywords": matched_financial,
-                "forward_to": [f.get("emailAddress", {}).get("address", "") for f in all_forwards],
-                "severity": "CRITICAL",
-                "mitre": "T1114.003",
-            })
+            findings.append(
+                {
+                    "rule_name": rule_name,
+                    "type": "financial_keyword_forwarding",
+                    "keywords": matched_financial,
+                    "forward_to": [
+                        f.get("emailAddress", {}).get("address", "")
+                        for f in all_forwards
+                    ],
+                    "severity": "CRITICAL",
+                    "mitre": "T1114.003",
+                }
+            )
 
         if mark_read and all_forwards:
-            findings.append({
-                "rule_name": rule_name,
-                "type": "silent_forwarding",
-                "mark_as_read": True,
-                "severity": "HIGH",
-                "description": "Rule forwards and marks as read to hide activity",
-            })
+            findings.append(
+                {
+                    "rule_name": rule_name,
+                    "type": "silent_forwarding",
+                    "mark_as_read": True,
+                    "severity": "HIGH",
+                    "description": "Rule forwards and marks as read to hide activity",
+                }
+            )
 
     return findings
 
@@ -105,21 +136,31 @@ def parse_audit_log_for_rules(filepath):
     with open(filepath, "r", encoding="utf-8", errors="replace") as f:
         for line in f:
             if "New-InboxRule" in line or "Set-InboxRule" in line:
-                forward = re.search(r'ForwardTo["\s:]+([^\s"]+@[^\s"]+)', line, re.IGNORECASE)
+                forward = re.search(
+                    r'ForwardTo["\s:]+([^\s"]+@[^\s"]+)', line, re.IGNORECASE
+                )
                 user = re.search(r'UserId["\s:]+([^\s"]+)', line, re.IGNORECASE)
-                findings.append({
-                    "type": "rule_creation_audit",
-                    "command": "New-InboxRule" if "New-InboxRule" in line else "Set-InboxRule",
-                    "user": user.group(1) if user else "",
-                    "forward_to": forward.group(1) if forward else "",
-                    "severity": "HIGH",
-                    "raw": line.strip()[:300],
-                })
+                findings.append(
+                    {
+                        "type": "rule_creation_audit",
+                        "command": (
+                            "New-InboxRule"
+                            if "New-InboxRule" in line
+                            else "Set-InboxRule"
+                        ),
+                        "user": user.group(1) if user else "",
+                        "forward_to": forward.group(1) if forward else "",
+                        "severity": "HIGH",
+                        "raw": line.strip()[:300],
+                    }
+                )
     return findings
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Email Forwarding Rules Attack Detector")
+    parser = argparse.ArgumentParser(
+        description="Email Forwarding Rules Attack Detector"
+    )
     parser.add_argument("--token", help="Microsoft Graph API bearer token")
     parser.add_argument("--user-id", default="me", help="User ID or UPN")
     parser.add_argument("--org-domain", default="", help="Organization email domain")

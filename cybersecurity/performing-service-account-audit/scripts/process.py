@@ -17,10 +17,13 @@ from collections import defaultdict
 @dataclass
 class ServiceAccount:
     """Represents a service account across any platform."""
+
     account_id: str
     username: str
     platform: str  # ad, aws, azure, gcp, database, application
-    account_type: str  # service, gmsa, iam_user, iam_role, service_principal, managed_identity
+    account_type: (
+        str  # service, gmsa, iam_user, iam_role, service_principal, managed_identity
+    )
     owner: str = ""
     application: str = ""
     privilege_level: str = "standard"  # standard, elevated, admin, domain_admin
@@ -71,14 +74,16 @@ class ServiceAccountAuditor:
     def _check_orphaned_accounts(self):
         orphaned = [a for a in self.accounts if not a.owner and a.status == "active"]
         if orphaned:
-            self.findings.append(AuditFinding(
-                severity="high",
-                category="Orphaned Accounts",
-                title=f"{len(orphaned)} service accounts have no assigned owner",
-                details="Accounts without owners cannot be reviewed or maintained.",
-                affected_accounts=[f"{a.username}@{a.platform}" for a in orphaned],
-                remediation="Assign owner using CMDB/application inventory. Disable if no owner found."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="high",
+                    category="Orphaned Accounts",
+                    title=f"{len(orphaned)} service accounts have no assigned owner",
+                    details="Accounts without owners cannot be reviewed or maintained.",
+                    affected_accounts=[f"{a.username}@{a.platform}" for a in orphaned],
+                    remediation="Assign owner using CMDB/application inventory. Disable if no owner found.",
+                )
+            )
 
     def _check_password_age(self):
         now = datetime.datetime.now()
@@ -98,14 +103,16 @@ class ServiceAccountAuditor:
                 stale_pwd.append(f"{a.username}@{a.platform}: unknown age")
 
         if stale_pwd:
-            self.findings.append(AuditFinding(
-                severity="critical",
-                category="Password Age",
-                title=f"{len(stale_pwd)} service accounts exceed {self.password_max_age}-day password policy",
-                details="Stale passwords increase risk of credential compromise.",
-                affected_accounts=stale_pwd,
-                remediation="Rotate credentials immediately. Implement automated rotation."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="critical",
+                    category="Password Age",
+                    title=f"{len(stale_pwd)} service accounts exceed {self.password_max_age}-day password policy",
+                    details="Stale passwords increase risk of credential compromise.",
+                    affected_accounts=stale_pwd,
+                    remediation="Rotate credentials immediately. Implement automated rotation.",
+                )
+            )
 
     def _check_stale_accounts(self):
         now = datetime.datetime.now()
@@ -124,79 +131,117 @@ class ServiceAccountAuditor:
                 stale.append(a)
 
         if stale:
-            self.findings.append(AuditFinding(
-                severity="medium",
-                category="Stale Accounts",
-                title=f"{len(stale)} service accounts inactive for {self.stale_threshold}+ days",
-                details="Unused accounts are attack surface without business value.",
-                affected_accounts=[f"{a.username}@{a.platform}" for a in stale],
-                remediation="Validate with application owners. Disable if no longer needed."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="medium",
+                    category="Stale Accounts",
+                    title=f"{len(stale)} service accounts inactive for {self.stale_threshold}+ days",
+                    details="Unused accounts are attack surface without business value.",
+                    affected_accounts=[f"{a.username}@{a.platform}" for a in stale],
+                    remediation="Validate with application owners. Disable if no longer needed.",
+                )
+            )
 
     def _check_privilege_levels(self):
-        over_priv = [a for a in self.accounts
-                     if a.member_of_privileged_group and a.status == "active"]
+        over_priv = [
+            a
+            for a in self.accounts
+            if a.member_of_privileged_group and a.status == "active"
+        ]
         if over_priv:
-            self.findings.append(AuditFinding(
-                severity="critical",
-                category="Over-Privileged",
-                title=f"{len(over_priv)} service accounts in privileged groups",
-                details="Service accounts with admin privileges are high-value targets.",
-                affected_accounts=[f"{a.username}@{a.platform} ({a.privilege_level})" for a in over_priv],
-                remediation="Reduce to minimum required permissions. Vault credentials in PAM."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="critical",
+                    category="Over-Privileged",
+                    title=f"{len(over_priv)} service accounts in privileged groups",
+                    details="Service accounts with admin privileges are high-value targets.",
+                    affected_accounts=[
+                        f"{a.username}@{a.platform} ({a.privilege_level})"
+                        for a in over_priv
+                    ],
+                    remediation="Reduce to minimum required permissions. Vault credentials in PAM.",
+                )
+            )
 
     def _check_interactive_logon(self):
-        interactive = [a for a in self.accounts
-                       if a.interactive_logon_allowed and a.status == "active"]
+        interactive = [
+            a
+            for a in self.accounts
+            if a.interactive_logon_allowed and a.status == "active"
+        ]
         if interactive:
-            self.findings.append(AuditFinding(
-                severity="high",
-                category="Interactive Logon",
-                title=f"{len(interactive)} service accounts allow interactive logon",
-                details="Service accounts should not permit interactive/remote logon.",
-                affected_accounts=[f"{a.username}@{a.platform}" for a in interactive],
-                remediation="Deny interactive logon via GPO/policy. Service accounts should only run as services."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="high",
+                    category="Interactive Logon",
+                    title=f"{len(interactive)} service accounts allow interactive logon",
+                    details="Service accounts should not permit interactive/remote logon.",
+                    affected_accounts=[
+                        f"{a.username}@{a.platform}" for a in interactive
+                    ],
+                    remediation="Deny interactive logon via GPO/policy. Service accounts should only run as services.",
+                )
+            )
 
     def _check_password_never_expires(self):
-        never_exp = [a for a in self.accounts
-                     if a.password_never_expires and a.account_type != "gmsa" and a.status == "active"]
+        never_exp = [
+            a
+            for a in self.accounts
+            if a.password_never_expires
+            and a.account_type != "gmsa"
+            and a.status == "active"
+        ]
         if never_exp:
-            self.findings.append(AuditFinding(
-                severity="high",
-                category="Password Policy",
-                title=f"{len(never_exp)} service accounts with PasswordNeverExpires",
-                details="Non-expiring passwords circumvent rotation policies.",
-                affected_accounts=[f"{a.username}@{a.platform}" for a in never_exp],
-                remediation="Migrate to gMSA or implement automated PAM rotation."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="high",
+                    category="Password Policy",
+                    title=f"{len(never_exp)} service accounts with PasswordNeverExpires",
+                    details="Non-expiring passwords circumvent rotation policies.",
+                    affected_accounts=[f"{a.username}@{a.platform}" for a in never_exp],
+                    remediation="Migrate to gMSA or implement automated PAM rotation.",
+                )
+            )
 
     def _check_kerberoastable(self):
-        kerberoastable = [a for a in self.accounts
-                          if a.has_spn and a.account_type == "service" and a.status == "active"]
+        kerberoastable = [
+            a
+            for a in self.accounts
+            if a.has_spn and a.account_type == "service" and a.status == "active"
+        ]
         if kerberoastable:
-            self.findings.append(AuditFinding(
-                severity="high",
-                category="Kerberoasting",
-                title=f"{len(kerberoastable)} accounts vulnerable to Kerberoasting",
-                details="Accounts with SPNs can have their password hashes extracted offline.",
-                affected_accounts=[f"{a.username}@{a.platform}" for a in kerberoastable],
-                remediation="Use long (25+ char) passwords. Migrate to gMSA. Monitor for Kerberoast attacks."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="high",
+                    category="Kerberoasting",
+                    title=f"{len(kerberoastable)} accounts vulnerable to Kerberoasting",
+                    details="Accounts with SPNs can have their password hashes extracted offline.",
+                    affected_accounts=[
+                        f"{a.username}@{a.platform}" for a in kerberoastable
+                    ],
+                    remediation="Use long (25+ char) passwords. Migrate to gMSA. Monitor for Kerberoast attacks.",
+                )
+            )
 
     def _check_gmsa_candidates(self):
-        candidates = [a for a in self.accounts
-                      if a.platform == "ad" and a.account_type == "service" and a.status == "active"]
+        candidates = [
+            a
+            for a in self.accounts
+            if a.platform == "ad"
+            and a.account_type == "service"
+            and a.status == "active"
+        ]
         if candidates:
-            self.findings.append(AuditFinding(
-                severity="low",
-                category="gMSA Migration",
-                title=f"{len(candidates)} AD service accounts eligible for gMSA migration",
-                details="Group Managed Service Accounts provide automatic password rotation.",
-                affected_accounts=[f"{a.username}" for a in candidates],
-                remediation="Evaluate each account for gMSA compatibility. Plan migration."
-            ))
+            self.findings.append(
+                AuditFinding(
+                    severity="low",
+                    category="gMSA Migration",
+                    title=f"{len(candidates)} AD service accounts eligible for gMSA migration",
+                    details="Group Managed Service Accounts provide automatic password rotation.",
+                    affected_accounts=[f"{a.username}" for a in candidates],
+                    remediation="Evaluate each account for gMSA compatibility. Plan migration.",
+                )
+            )
 
     def generate_report(self) -> str:
         if not self.findings:
@@ -209,7 +254,8 @@ class ServiceAccountAuditor:
             f"Report Date: {datetime.datetime.now().isoformat()}",
             f"Total Accounts Audited: {len(self.accounts)}",
             f"Findings: {len(self.findings)}",
-            "-" * 70, ""
+            "-" * 70,
+            "",
         ]
 
         by_platform = defaultdict(int)
@@ -243,23 +289,61 @@ class ServiceAccountAuditor:
 
 def main():
     auditor = ServiceAccountAuditor()
-    auditor.load_accounts([
-        {"account_id": "1", "username": "svc_backup", "platform": "ad", "account_type": "service",
-         "owner": "ops-team", "application": "Veeam Backup", "privilege_level": "admin",
-         "password_last_set": "2025-06-15", "last_logon": "2026-02-22",
-         "password_never_expires": True, "member_of_privileged_group": True, "has_spn": True},
-        {"account_id": "2", "username": "svc_monitoring", "platform": "ad", "account_type": "service",
-         "owner": "", "application": "", "privilege_level": "standard",
-         "password_last_set": "2024-08-01", "last_logon": "2025-03-01",
-         "password_never_expires": True, "has_spn": True},
-        {"account_id": "3", "username": "app-api-key", "platform": "aws", "account_type": "iam_user",
-         "owner": "dev-team", "application": "Web API", "privilege_level": "elevated",
-         "password_last_set": "2026-01-15", "last_logon": "2026-02-23"},
-        {"account_id": "4", "username": "svc_sql_agent", "platform": "ad", "account_type": "service",
-         "owner": "dba-team", "application": "SQL Server", "privilege_level": "admin",
-         "password_last_set": "2026-02-20", "last_logon": "2026-02-23",
-         "interactive_logon_allowed": True, "member_of_privileged_group": True},
-    ])
+    auditor.load_accounts(
+        [
+            {
+                "account_id": "1",
+                "username": "svc_backup",
+                "platform": "ad",
+                "account_type": "service",
+                "owner": "ops-team",
+                "application": "Veeam Backup",
+                "privilege_level": "admin",
+                "password_last_set": "2025-06-15",
+                "last_logon": "2026-02-22",
+                "password_never_expires": True,
+                "member_of_privileged_group": True,
+                "has_spn": True,
+            },
+            {
+                "account_id": "2",
+                "username": "svc_monitoring",
+                "platform": "ad",
+                "account_type": "service",
+                "owner": "",
+                "application": "",
+                "privilege_level": "standard",
+                "password_last_set": "2024-08-01",
+                "last_logon": "2025-03-01",
+                "password_never_expires": True,
+                "has_spn": True,
+            },
+            {
+                "account_id": "3",
+                "username": "app-api-key",
+                "platform": "aws",
+                "account_type": "iam_user",
+                "owner": "dev-team",
+                "application": "Web API",
+                "privilege_level": "elevated",
+                "password_last_set": "2026-01-15",
+                "last_logon": "2026-02-23",
+            },
+            {
+                "account_id": "4",
+                "username": "svc_sql_agent",
+                "platform": "ad",
+                "account_type": "service",
+                "owner": "dba-team",
+                "application": "SQL Server",
+                "privilege_level": "admin",
+                "password_last_set": "2026-02-20",
+                "last_logon": "2026-02-23",
+                "interactive_logon_allowed": True,
+                "member_of_privileged_group": True,
+            },
+        ]
+    )
     print(auditor.generate_report())
 
 

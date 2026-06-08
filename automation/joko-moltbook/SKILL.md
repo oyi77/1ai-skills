@@ -1,10 +1,6 @@
 ---
 name: joko-moltbook
-description: Queue-driven Moltbook posting agent with deduplication and monitoring
-allowed-tools: - Bash(apify:*)
-  - MCP(apify:*)
-  - MCP(notion:*)
-  - MCP(slack:*)
+description: Joko Moltbook Agent. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

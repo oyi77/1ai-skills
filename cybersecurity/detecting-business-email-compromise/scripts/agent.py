@@ -22,8 +22,18 @@ BEC_URGENCY_PATTERNS = [
     r"\b(act now|deadline today|end of day|before close)\b",
 ]
 
-EXECUTIVE_TITLES = ["ceo", "cfo", "coo", "cto", "president", "chairman",
-                    "managing director", "vice president", "vp", "director"]
+EXECUTIVE_TITLES = [
+    "ceo",
+    "cfo",
+    "coo",
+    "cto",
+    "president",
+    "chairman",
+    "managing director",
+    "vice president",
+    "vp",
+    "director",
+]
 
 
 def parse_email_file(filepath):
@@ -59,9 +69,13 @@ def check_display_name_spoofing(msg, vip_names):
     for vip in vip_names:
         if vip.lower() in display_name:
             domain = email_addr.split("@")[-1] if "@" in email_addr else ""
-            return {"display_name": display_name, "email": email_addr,
-                    "matched_vip": vip, "domain": domain,
-                    "indicator": "Display name matches VIP but email may be external"}
+            return {
+                "display_name": display_name,
+                "email": email_addr,
+                "matched_vip": vip,
+                "domain": domain,
+                "indicator": "Display name matches VIP but email may be external",
+            }
     return None
 
 
@@ -70,16 +84,21 @@ def check_reply_to_mismatch(msg):
     reply_to = msg.get("Reply-To", "")
     if not reply_to:
         return None
-    from_match = re.search(r'<([^>]+)>', from_addr) or re.search(r'(\S+@\S+)', from_addr)
-    reply_match = re.search(r'<([^>]+)>', reply_to) or re.search(r'(\S+@\S+)', reply_to)
+    from_match = re.search(r"<([^>]+)>", from_addr) or re.search(
+        r"(\S+@\S+)", from_addr
+    )
+    reply_match = re.search(r"<([^>]+)>", reply_to) or re.search(r"(\S+@\S+)", reply_to)
     if from_match and reply_match:
         from_email = from_match.group(1).lower()
         reply_email = reply_match.group(1).lower()
         from_domain = from_email.split("@")[-1]
         reply_domain = reply_email.split("@")[-1]
         if from_domain != reply_domain:
-            return {"from": from_email, "reply_to": reply_email,
-                    "indicator": "Reply-To domain differs from From domain"}
+            return {
+                "from": from_email,
+                "reply_to": reply_email,
+                "indicator": "Reply-To domain differs from From domain",
+            }
     return None
 
 
@@ -119,7 +138,11 @@ def analyze_email(filepath, vip_names):
     urgency = detect_urgency_language(body_text)
     score = calculate_bec_score(auth, spoofing, reply_mismatch, urgency)
 
-    risk = "CRITICAL" if score >= 70 else "HIGH" if score >= 50 else "MEDIUM" if score >= 30 else "LOW"
+    risk = (
+        "CRITICAL"
+        if score >= 70
+        else "HIGH" if score >= 50 else "MEDIUM" if score >= 30 else "LOW"
+    )
 
     return {
         "file": str(filepath),
@@ -139,7 +162,9 @@ def analyze_email(filepath, vip_names):
 def main():
     parser = argparse.ArgumentParser(description="BEC Email Analyzer")
     parser.add_argument("--email-file", required=True, help="Path to .eml file")
-    parser.add_argument("--vip-names", nargs="+", default=[], help="VIP display names to check")
+    parser.add_argument(
+        "--vip-names", nargs="+", default=[], help="VIP display names to check"
+    )
     parser.add_argument("--scan-dir", help="Scan all .eml files in directory")
     args = parser.parse_args()
 

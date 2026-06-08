@@ -76,11 +76,16 @@ class SDPControllerClient:
         self._authenticate(username, password)
 
     def _authenticate(self, username, password):
-        resp = self.session.post(f"{self.base_url}/admin/login", json={
-            "providerName": "local",
-            "username": username,
-            "password": password,
-        }, timeout=15, verify=True)
+        resp = self.session.post(
+            f"{self.base_url}/admin/login",
+            json={
+                "providerName": "local",
+                "username": username,
+                "password": password,
+            },
+            timeout=15,
+            verify=True,
+        )
         resp.raise_for_status()
         token = resp.json().get("token", "")
         self.session.headers.update({"Authorization": f"Bearer {token}"})
@@ -116,7 +121,11 @@ def run_audit(args):
     report = {}
 
     if args.scan_host:
-        ports = [int(p) for p in args.ports.split(",")] if args.ports else [22, 443, 8443, 3389]
+        ports = (
+            [int(p) for p in args.ports.split(",")]
+            if args.ports
+            else [22, 443, 8443, 3389]
+        )
         dark_results = audit_dark_ports(args.scan_host, ports)
         report["dark_port_scan"] = dark_results
         print(f"--- DARK PORT SCAN ({args.scan_host}) ---")
@@ -125,8 +134,9 @@ def run_audit(args):
             print(f"  Port {r['port']}: {status} — {r['finding']}")
 
     if args.mtls_host:
-        mtls = check_tls_mutual_auth(args.mtls_host, args.mtls_port or 443,
-                                      args.client_cert, args.client_key)
+        mtls = check_tls_mutual_auth(
+            args.mtls_host, args.mtls_port or 443, args.client_cert, args.client_key
+        )
         report["mtls_check"] = mtls
         print(f"\n--- MUTUAL TLS CHECK ---")
         print(f"  Host: {mtls['host']}:{mtls['port']}")
@@ -140,13 +150,17 @@ def run_audit(args):
         report["appliances"] = len(appliances)
         print(f"\n--- SDP APPLIANCES ({len(appliances)}) ---")
         for a in appliances[:10]:
-            print(f"  {a.get('name', '')}: {a.get('function', '')} ({a.get('state', '')})")
+            print(
+                f"  {a.get('name', '')}: {a.get('function', '')} ({a.get('state', '')})"
+            )
 
         entitlements = client.list_entitlements()
         report["entitlements"] = len(entitlements)
         print(f"\n--- ENTITLEMENTS ({len(entitlements)}) ---")
         for e in entitlements[:10]:
-            print(f"  {e.get('name', '')}: {e.get('site', '')} -> {e.get('actions', [])}")
+            print(
+                f"  {e.get('name', '')}: {e.get('site', '')} -> {e.get('actions', [])}"
+            )
 
     return report
 
@@ -154,7 +168,9 @@ def run_audit(args):
 def main():
     parser = argparse.ArgumentParser(description="SDP Deployment Audit")
     parser.add_argument("--scan-host", help="Host to scan for dark ports")
-    parser.add_argument("--ports", help="Comma-separated ports to scan (default: 22,443,8443,3389)")
+    parser.add_argument(
+        "--ports", help="Comma-separated ports to scan (default: 22,443,8443,3389)"
+    )
     parser.add_argument("--mtls-host", help="Host to check mutual TLS")
     parser.add_argument("--mtls-port", type=int, default=443, help="mTLS port")
     parser.add_argument("--client-cert", help="Client certificate for mTLS test")

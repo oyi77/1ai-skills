@@ -12,7 +12,6 @@ import sys
 import os
 from datetime import datetime
 
-
 RECOMMENDED_SETTINGS = {
     "RealTimeProtectionEnabled": True,
     "BehaviorMonitoringEnabled": True,
@@ -31,18 +30,54 @@ RECOMMENDED_SETTINGS = {
 }
 
 RECOMMENDED_ASR_RULES = {
-    "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550": {"name": "Block executable content from email", "mode": 1},
-    "D4F940AB-401B-4EFC-AADC-AD5F3C50688A": {"name": "Block Office child processes", "mode": 1},
-    "3B576869-A4EC-4529-8536-B80A7769E899": {"name": "Block Office executable creation", "mode": 1},
-    "75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84": {"name": "Block Office code injection", "mode": 1},
-    "D3E037E1-3EB8-44C8-A917-57927947596D": {"name": "Block JS/VBS launching executables", "mode": 1},
-    "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC": {"name": "Block obfuscated scripts", "mode": 1},
-    "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B": {"name": "Block Win32 API from macros", "mode": 1},
-    "9E6C4E1F-7D60-472F-BA1A-A39EF669E4B2": {"name": "Block LSASS credential stealing", "mode": 1},
-    "D1E49AAC-8F56-4280-B9BA-993A6D77406C": {"name": "Block PSExec/WMI processes", "mode": 1},
-    "B2B3F03D-6A65-4F7B-A9C7-1C7EF74A9BA4": {"name": "Block untrusted USB processes", "mode": 1},
-    "E6DB77E5-3DF2-4CF1-B95A-636979351E5B": {"name": "Block WMI persistence", "mode": 1},
-    "56A863A9-875E-4185-98A7-B882C64B5CE5": {"name": "Block vulnerable signed drivers", "mode": 1},
+    "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550": {
+        "name": "Block executable content from email",
+        "mode": 1,
+    },
+    "D4F940AB-401B-4EFC-AADC-AD5F3C50688A": {
+        "name": "Block Office child processes",
+        "mode": 1,
+    },
+    "3B576869-A4EC-4529-8536-B80A7769E899": {
+        "name": "Block Office executable creation",
+        "mode": 1,
+    },
+    "75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84": {
+        "name": "Block Office code injection",
+        "mode": 1,
+    },
+    "D3E037E1-3EB8-44C8-A917-57927947596D": {
+        "name": "Block JS/VBS launching executables",
+        "mode": 1,
+    },
+    "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC": {
+        "name": "Block obfuscated scripts",
+        "mode": 1,
+    },
+    "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B": {
+        "name": "Block Win32 API from macros",
+        "mode": 1,
+    },
+    "9E6C4E1F-7D60-472F-BA1A-A39EF669E4B2": {
+        "name": "Block LSASS credential stealing",
+        "mode": 1,
+    },
+    "D1E49AAC-8F56-4280-B9BA-993A6D77406C": {
+        "name": "Block PSExec/WMI processes",
+        "mode": 1,
+    },
+    "B2B3F03D-6A65-4F7B-A9C7-1C7EF74A9BA4": {
+        "name": "Block untrusted USB processes",
+        "mode": 1,
+    },
+    "E6DB77E5-3DF2-4CF1-B95A-636979351E5B": {
+        "name": "Block WMI persistence",
+        "mode": 1,
+    },
+    "56A863A9-875E-4185-98A7-B882C64B5CE5": {
+        "name": "Block vulnerable signed drivers",
+        "mode": 1,
+    },
 }
 
 
@@ -94,7 +129,9 @@ def collect_defender_settings() -> dict:
     try:
         result = subprocess.run(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            capture_output=True, text=True, timeout=30,
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         if result.returncode == 0 and result.stdout.strip():
             return json.loads(result.stdout)
@@ -132,21 +169,32 @@ def audit_settings(settings: dict) -> dict:
 
         if actual == expected:
             passed_checks += 1
-            findings["compliant"].append({
-                "setting": setting,
-                "expected": expected,
-                "actual": actual,
-            })
+            findings["compliant"].append(
+                {
+                    "setting": setting,
+                    "expected": expected,
+                    "actual": actual,
+                }
+            )
         else:
-            findings["non_compliant"].append({
-                "setting": setting,
-                "expected": expected,
-                "actual": actual,
-                "severity": "high" if setting in (
-                    "RealTimeProtectionEnabled", "AntivirusEnabled",
-                    "EnableNetworkProtection", "MAPSReporting",
-                ) else "medium",
-            })
+            findings["non_compliant"].append(
+                {
+                    "setting": setting,
+                    "expected": expected,
+                    "actual": actual,
+                    "severity": (
+                        "high"
+                        if setting
+                        in (
+                            "RealTimeProtectionEnabled",
+                            "AntivirusEnabled",
+                            "EnableNetworkProtection",
+                            "MAPSReporting",
+                        )
+                        else "medium"
+                    ),
+                }
+            )
 
     asr_rules = settings.get("ASRRules", {})
     for rule_guid, rule_info in RECOMMENDED_ASR_RULES.items():
@@ -155,21 +203,33 @@ def audit_settings(settings: dict) -> dict:
 
         if mode == 1:
             passed_checks += 1
-            findings["asr_rules"]["enabled_block"].append({
-                "guid": rule_guid, "name": rule_info["name"],
-            })
+            findings["asr_rules"]["enabled_block"].append(
+                {
+                    "guid": rule_guid,
+                    "name": rule_info["name"],
+                }
+            )
         elif mode == 2:
-            findings["asr_rules"]["enabled_audit"].append({
-                "guid": rule_guid, "name": rule_info["name"],
-            })
+            findings["asr_rules"]["enabled_audit"].append(
+                {
+                    "guid": rule_guid,
+                    "name": rule_info["name"],
+                }
+            )
         elif mode == 0:
-            findings["asr_rules"]["disabled"].append({
-                "guid": rule_guid, "name": rule_info["name"],
-            })
+            findings["asr_rules"]["disabled"].append(
+                {
+                    "guid": rule_guid,
+                    "name": rule_info["name"],
+                }
+            )
         else:
-            findings["asr_rules"]["missing"].append({
-                "guid": rule_guid, "name": rule_info["name"],
-            })
+            findings["asr_rules"]["missing"].append(
+                {
+                    "guid": rule_guid,
+                    "name": rule_info["name"],
+                }
+            )
 
     if total_checks > 0:
         findings["score"] = round((passed_checks / total_checks) * 100, 2)
@@ -230,4 +290,6 @@ if __name__ == "__main__":
     if findings["non_compliant"]:
         print(f"\nNon-compliant settings requiring remediation:")
         for item in findings["non_compliant"]:
-            print(f"  [{item['severity'].upper()}] {item['setting']}: expected={item['expected']}, actual={item['actual']}")
+            print(
+                f"  [{item['severity'].upper()}] {item['setting']}: expected={item['expected']}, actual={item['actual']}"
+            )

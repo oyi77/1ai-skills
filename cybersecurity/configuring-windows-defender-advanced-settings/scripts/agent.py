@@ -12,7 +12,11 @@ def get_defender_status():
     cmd = ["powershell", "-Command", "Get-MpComputerStatus | ConvertTo-Json"]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        return json.loads(result.stdout) if result.stdout.strip() else {"error": "No output"}
+        return (
+            json.loads(result.stdout)
+            if result.stdout.strip()
+            else {"error": "No output"}
+        )
     except (FileNotFoundError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
         return {"error": str(e)}
 
@@ -22,15 +26,22 @@ def get_defender_preferences():
     cmd = ["powershell", "-Command", "Get-MpPreference | ConvertTo-Json"]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        return json.loads(result.stdout) if result.stdout.strip() else {"error": "No output"}
+        return (
+            json.loads(result.stdout)
+            if result.stdout.strip()
+            else {"error": "No output"}
+        )
     except (FileNotFoundError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
         return {"error": str(e)}
 
 
 def audit_asr_rules():
     """Audit Attack Surface Reduction rules configuration."""
-    cmd = ["powershell", "-Command",
-           "Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Ids | ConvertTo-Json"]
+    cmd = [
+        "powershell",
+        "-Command",
+        "Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Ids | ConvertTo-Json",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         rule_ids = json.loads(result.stdout) if result.stdout.strip() else []
@@ -50,19 +61,22 @@ def audit_asr_rules():
     missing = []
     for rule_id, desc in critical_asr_rules.items():
         if rule_id not in configured:
-            missing.append({"rule_id": rule_id, "description": desc, "severity": "HIGH"})
+            missing.append(
+                {"rule_id": rule_id, "description": desc, "severity": "HIGH"}
+            )
     return {"configured_count": len(configured), "missing_critical": missing}
 
 
 def check_tamper_protection():
     """Check tamper protection status."""
-    cmd = ["powershell", "-Command",
-           "(Get-MpComputerStatus).IsTamperProtected"]
+    cmd = ["powershell", "-Command", "(Get-MpComputerStatus).IsTamperProtected"]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
         enabled = "true" in result.stdout.strip().lower()
-        return {"tamper_protection": enabled,
-                "severity": "CRITICAL" if not enabled else "INFO"}
+        return {
+            "tamper_protection": enabled,
+            "severity": "CRITICAL" if not enabled else "INFO",
+        }
     except (FileNotFoundError, subprocess.TimeoutExpired):
         return {"error": "Cannot check tamper protection"}
 
@@ -77,7 +91,9 @@ def run_audit():
     status = get_defender_status()
     print(f"--- DEFENDER STATUS ---")
     if "error" not in status:
-        print(f"  Real-time protection: {status.get('RealTimeProtectionEnabled', 'N/A')}")
+        print(
+            f"  Real-time protection: {status.get('RealTimeProtectionEnabled', 'N/A')}"
+        )
         print(f"  Behavior monitoring: {status.get('BehaviorMonitorEnabled', 'N/A')}")
         print(f"  Cloud protection: {status.get('OnAccessProtectionEnabled', 'N/A')}")
         print(f"  Signature version: {status.get('AntivirusSignatureVersion', 'N/A')}")

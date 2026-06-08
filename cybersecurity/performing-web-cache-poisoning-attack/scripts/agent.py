@@ -64,13 +64,15 @@ def test_cache_hit_miss(target_url):
     for i in range(3):
         try:
             resp = requests.get(test_url, timeout=10, verify=False)
-            results.append({
-                "request": i + 1,
-                "x_cache": resp.headers.get("X-Cache", ""),
-                "cf_cache": resp.headers.get("CF-Cache-Status", ""),
-                "age": resp.headers.get("Age", ""),
-                "status": resp.status_code,
-            })
+            results.append(
+                {
+                    "request": i + 1,
+                    "x_cache": resp.headers.get("X-Cache", ""),
+                    "cf_cache": resp.headers.get("CF-Cache-Status", ""),
+                    "age": resp.headers.get("Age", ""),
+                    "status": resp.status_code,
+                }
+            )
         except RequestException:
             pass
         time.sleep(1)
@@ -99,19 +101,20 @@ def test_unkeyed_headers(target_url):
         test_url = f"{target_url}?{cb}=1"
         try:
             resp = requests.get(
-                test_url, headers={header_name: header_value},
-                timeout=10, verify=False
+                test_url, headers={header_name: header_value}, timeout=10, verify=False
             )
             if header_value in resp.text:
                 poisoned_resp = requests.get(test_url, timeout=10, verify=False)
                 cached_poison = header_value in poisoned_resp.text
-                findings.append({
-                    "header": header_name,
-                    "value": header_value,
-                    "reflected": True,
-                    "cached_poison": cached_poison,
-                    "risk": "CRITICAL" if cached_poison else "HIGH",
-                })
+                findings.append(
+                    {
+                        "header": header_name,
+                        "value": header_value,
+                        "reflected": True,
+                        "cached_poison": cached_poison,
+                        "risk": "CRITICAL" if cached_poison else "HIGH",
+                    }
+                )
         except RequestException:
             pass
     return findings
@@ -130,12 +133,15 @@ def test_cache_key_normalization(target_url):
     for url, desc in variations:
         try:
             resp = requests.get(url, timeout=10, verify=False)
-            tests.append({
-                "variation": desc, "url": url,
-                "status": resp.status_code,
-                "x_cache": resp.headers.get("X-Cache", ""),
-                "content_length": len(resp.content),
-            })
+            tests.append(
+                {
+                    "variation": desc,
+                    "url": url,
+                    "status": resp.status_code,
+                    "x_cache": resp.headers.get("X-Cache", ""),
+                    "content_length": len(resp.content),
+                }
+            )
         except RequestException:
             pass
     return tests
@@ -155,15 +161,19 @@ def test_cache_deception(target_url):
         test_url = f"{target_url.rstrip('/')}{path}?{cb}=1"
         try:
             resp = requests.get(test_url, timeout=10, verify=False)
-            cache_status = resp.headers.get("X-Cache", resp.headers.get("CF-Cache-Status", ""))
+            cache_status = resp.headers.get(
+                "X-Cache", resp.headers.get("CF-Cache-Status", "")
+            )
             if "HIT" in cache_status.upper() or resp.headers.get("Age"):
-                findings.append({
-                    "path": path,
-                    "cached": True,
-                    "status": resp.status_code,
-                    "content_type": resp.headers.get("Content-Type", ""),
-                    "risk": "HIGH",
-                })
+                findings.append(
+                    {
+                        "path": path,
+                        "cached": True,
+                        "status": resp.status_code,
+                        "content_type": resp.headers.get("Content-Type", ""),
+                        "risk": "HIGH",
+                    }
+                )
         except RequestException:
             pass
     return findings
@@ -189,7 +199,9 @@ def run_assessment(target_url):
         "cdn": report["cache_layer"].get("cdn_detected", "Unknown"),
         "critical_findings": critical_count,
         "high_findings": high_count,
-        "poisonable_headers": [f["header"] for f in report["unkeyed_headers"] if f.get("cached_poison")],
+        "poisonable_headers": [
+            f["header"] for f in report["unkeyed_headers"] if f.get("cached_poison")
+        ],
     }
     return report
 
@@ -207,7 +219,11 @@ def print_report(report):
             print(f"  - {h}")
     print(f"\nUnkeyed Header Tests:")
     for f in report["unkeyed_headers"]:
-        status = "POISON" if f.get("cached_poison") else ("REFLECTED" if f.get("reflected") else "SAFE")
+        status = (
+            "POISON"
+            if f.get("cached_poison")
+            else ("REFLECTED" if f.get("reflected") else "SAFE")
+        )
         print(f"  {f['header']}: {status} [{f.get('risk', 'N/A')}]")
     if report["cache_deception"]:
         print(f"\nCache Deception:")

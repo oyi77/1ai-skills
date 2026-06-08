@@ -12,9 +12,13 @@ from typing import List
 try:
     import requests
 except ImportError:
-    import sys; sys.exit("requests is required: pip install requests")
+    import sys
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+    sys.exit("requests is required: pip install requests")
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 MITRE_ATTACK_URL = "https://raw.githubusercontent.com/mitre/cti/master/enterprise-attack/enterprise-attack.json"
@@ -45,6 +49,7 @@ class RedTeamOperation:
 def load_attack_techniques(cache_file: str = "attack_enterprise.json") -> dict:
     """Load MITRE ATT&CK Enterprise techniques from local cache or upstream."""
     import os
+
     if os.path.exists(cache_file):
         with open(cache_file) as f:
             return json.load(f)
@@ -61,7 +66,10 @@ def get_actor_techniques(attack_data: dict, actor_name: str) -> List[dict]:
     """Extract techniques used by a specific threat actor from ATT&CK data."""
     actor_id = None
     for obj in attack_data.get("objects", []):
-        if obj.get("type") == "intrusion-set" and actor_name.lower() in obj.get("name", "").lower():
+        if (
+            obj.get("type") == "intrusion-set"
+            and actor_name.lower() in obj.get("name", "").lower()
+        ):
             actor_id = obj["id"]
             break
 
@@ -79,7 +87,14 @@ def get_actor_techniques(attack_data: dict, actor_name: str) -> List[dict]:
     for obj in attack_data.get("objects", []):
         if obj.get("id") in technique_refs and obj.get("type") == "attack-pattern":
             ext_refs = obj.get("external_references", [])
-            tech_id = next((r["external_id"] for r in ext_refs if r.get("source_name") == "mitre-attack"), "")
+            tech_id = next(
+                (
+                    r["external_id"]
+                    for r in ext_refs
+                    if r.get("source_name") == "mitre-attack"
+                ),
+                "",
+            )
             kill_chain = obj.get("kill_chain_phases", [{}])
             tactic = kill_chain[0].get("phase_name", "") if kill_chain else ""
             techniques.append({"id": tech_id, "name": obj["name"], "tactic": tactic})
@@ -88,27 +103,33 @@ def get_actor_techniques(attack_data: dict, actor_name: str) -> List[dict]:
     return techniques
 
 
-def build_operation_plan(actor_name: str, target: str, objectives: List[str],
-                         attack_data: dict) -> RedTeamOperation:
+def build_operation_plan(
+    actor_name: str, target: str, objectives: List[str], attack_data: dict
+) -> RedTeamOperation:
     """Create a red team operation plan based on emulated threat actor TTPs."""
     techniques = get_actor_techniques(attack_data, actor_name)
     executions = [
         TechniqueExecution(
-            technique_id=t["id"], technique_name=t["name"],
-            tactic=t["tactic"], status="planned",
+            technique_id=t["id"],
+            technique_name=t["name"],
+            tactic=t["tactic"],
+            status="planned",
         )
         for t in techniques
     ]
     return RedTeamOperation(
         operation_name=f"{actor_name} Emulation - {target}",
-        target_org=target, emulated_actor=actor_name,
+        target_org=target,
+        emulated_actor=actor_name,
         start_date=datetime.utcnow().isoformat(),
-        objectives=objectives, techniques=executions,
+        objectives=objectives,
+        techniques=executions,
     )
 
 
-def log_technique_execution(op: RedTeamOperation, technique_id: str,
-                             detected: bool = False, notes: str = "") -> None:
+def log_technique_execution(
+    op: RedTeamOperation, technique_id: str, detected: bool = False, notes: str = ""
+) -> None:
     """Mark a technique as executed and record detection status."""
     for tech in op.techniques:
         if tech.technique_id == technique_id:
@@ -136,7 +157,9 @@ def generate_detection_gap_report(op: RedTeamOperation) -> dict:
         "techniques_executed": len(executed),
         "techniques_detected": len(detected),
         "techniques_missed": len(missed),
-        "detection_rate": f"{len(detected)/len(executed)*100:.1f}%" if executed else "N/A",
+        "detection_rate": (
+            f"{len(detected)/len(executed)*100:.1f}%" if executed else "N/A"
+        ),
         "detected_list": [asdict(t) for t in detected],
         "missed_list": [asdict(t) for t in missed],
         "recommendations": [
@@ -148,9 +171,13 @@ def generate_detection_gap_report(op: RedTeamOperation) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Red Team Exercise Agent")
-    parser.add_argument("--actor", required=True, help="Threat actor to emulate (e.g., APT29)")
+    parser.add_argument(
+        "--actor", required=True, help="Threat actor to emulate (e.g., APT29)"
+    )
     parser.add_argument("--target", required=True, help="Target organization name")
-    parser.add_argument("--objectives", nargs="+", default=["Demonstrate domain compromise"])
+    parser.add_argument(
+        "--objectives", nargs="+", default=["Demonstrate domain compromise"]
+    )
     parser.add_argument("--output", default="redteam_plan.json")
     args = parser.parse_args()
 

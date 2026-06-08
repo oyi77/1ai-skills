@@ -8,15 +8,24 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
 def ise_request(base_url, username, password, endpoint):
     """Execute Cisco ISE ERS API request."""
-    cmd = ["curl", "-s", "-k", "-u", f"{username}:{password}",
-           "-H", "Accept: application/json",
-           f"{base_url}/ers/config{endpoint}"]
+    cmd = [
+        "curl",
+        "-s",
+        "-k",
+        "-u",
+        f"{username}:{password}",
+        "-H",
+        "Accept: application/json",
+        f"{base_url}/ers/config{endpoint}",
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     return json.loads(result.stdout) if result.stdout else {}
 
@@ -35,9 +44,16 @@ def get_authorization_policies(base_url, user, pw):
 
 def get_active_sessions(base_url, user, pw):
     """Get active RADIUS sessions via MnT API."""
-    cmd = ["curl", "-s", "-k", "-u", f"{user}:{pw}",
-           "-H", "Accept: application/json",
-           f"{base_url}/admin/API/mnt/Session/ActiveList"]
+    cmd = [
+        "curl",
+        "-s",
+        "-k",
+        "-u",
+        f"{user}:{pw}",
+        "-H",
+        "Accept: application/json",
+        f"{base_url}/admin/API/mnt/Session/ActiveList",
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     return json.loads(result.stdout) if result.stdout else {}
 
@@ -48,7 +64,13 @@ def audit_authorization_profiles(profiles):
     for profile in profiles.get("SearchResult", {}).get("resources", []):
         name = profile.get("name", "")
         if "permit" in name.lower() and "all" in name.lower():
-            findings.append({"profile": name, "issue": "overly_permissive_profile", "severity": "high"})
+            findings.append(
+                {
+                    "profile": name,
+                    "issue": "overly_permissive_profile",
+                    "severity": "high",
+                }
+            )
     return findings
 
 
@@ -100,7 +122,9 @@ def generate_report(devices, profiles, sessions, base_url):
 
 def main():
     parser = argparse.ArgumentParser(description="Cisco ISE NAC Audit Agent")
-    parser.add_argument("--ise-url", required=True, help="ISE admin URL (https://ise.example.com:9060)")
+    parser.add_argument(
+        "--ise-url", required=True, help="ISE admin URL (https://ise.example.com:9060)"
+    )
     parser.add_argument("--username", required=True, help="ISE ERS API username")
     parser.add_argument("--password", required=True, help="ISE ERS API password")
     parser.add_argument("--output", default="ise_nac_report.json")
@@ -112,9 +136,12 @@ def main():
     report = generate_report(devices, profiles, sessions, args.ise_url)
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("ISE audit: 802.1X coverage %.1f%%, %d active sessions, %d findings",
-                report["dot1x_deployment"]["coverage_percent"],
-                report["session_analysis"]["total_sessions"], report["total_findings"])
+    logger.info(
+        "ISE audit: 802.1X coverage %.1f%%, %d active sessions, %d findings",
+        report["dot1x_deployment"]["coverage_percent"],
+        report["session_analysis"]["total_sessions"],
+        report["total_findings"],
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

@@ -9,11 +9,17 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
-
 UAC_BYPASS_BINARIES = [
-    "fodhelper.exe", "computerdefaults.exe", "eventvwr.exe",
-    "sdclt.exe", "slui.exe", "cmstp.exe", "mmc.exe",
-    "wsreset.exe", "changepk.exe", "dism.exe",
+    "fodhelper.exe",
+    "computerdefaults.exe",
+    "eventvwr.exe",
+    "sdclt.exe",
+    "slui.exe",
+    "cmstp.exe",
+    "mmc.exe",
+    "wsreset.exe",
+    "changepk.exe",
+    "dism.exe",
 ]
 
 UAC_BYPASS_REGISTRY_KEYS = [
@@ -45,12 +51,14 @@ def check_uac_bypass_registry():
                 ["reg", "query", key], text=True, errors="replace", timeout=5
             )
             if result.strip() and "ERROR" not in result:
-                findings.append({
-                    "type": "uac_registry",
-                    "key": key,
-                    "value": result.strip()[:200],
-                    "severity": "HIGH",
-                })
+                findings.append(
+                    {
+                        "type": "uac_registry",
+                        "key": key,
+                        "value": result.strip()[:200],
+                        "severity": "HIGH",
+                    }
+                )
         except subprocess.SubprocessError:
             pass
     return findings
@@ -75,7 +83,9 @@ def check_uac_bypass_processes():
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip() else []
         if not isinstance(data, list):
@@ -83,13 +93,15 @@ def check_uac_bypass_processes():
         for evt in data:
             parent = (evt.get("ParentImage", "") or "").lower()
             if "explorer.exe" not in parent and "svchost.exe" not in parent:
-                findings.append({
-                    "type": "uac_auto_elevate",
-                    "time": evt.get("TimeCreated", ""),
-                    "image": evt.get("Image", ""),
-                    "parent": evt.get("ParentImage", ""),
-                    "commandline": evt.get("CommandLine", "")[:200],
-                })
+                findings.append(
+                    {
+                        "type": "uac_auto_elevate",
+                        "time": evt.get("TimeCreated", ""),
+                        "image": evt.get("Image", ""),
+                        "parent": evt.get("ParentImage", ""),
+                        "commandline": evt.get("CommandLine", "")[:200],
+                    }
+                )
     except (subprocess.SubprocessError, json.JSONDecodeError):
         pass
     return findings
@@ -111,12 +123,14 @@ def check_linux_sudo_abuse():
                         continue
                     for pat in SUDO_ABUSE_PATTERNS:
                         if re.search(pat, line, re.IGNORECASE):
-                            findings.append({
-                                "type": "sudo_abuse",
-                                "log": log_path,
-                                "line": line.strip()[:200],
-                                "pattern": pat,
-                            })
+                            findings.append(
+                                {
+                                    "type": "sudo_abuse",
+                                    "log": log_path,
+                                    "line": line.strip()[:200],
+                                    "pattern": pat,
+                                }
+                            )
         except PermissionError:
             pass
 
@@ -127,11 +141,13 @@ def check_linux_sudo_abuse():
         if "NOPASSWD" in result:
             for line in result.splitlines():
                 if "NOPASSWD" in line:
-                    findings.append({
-                        "type": "nopasswd_sudo",
-                        "rule": line.strip(),
-                        "severity": "MEDIUM",
-                    })
+                    findings.append(
+                        {
+                            "type": "nopasswd_sudo",
+                            "rule": line.strip(),
+                            "severity": "MEDIUM",
+                        }
+                    )
     except subprocess.SubprocessError:
         pass
     return findings
@@ -145,10 +161,19 @@ def check_setuid_binaries():
     try:
         result = subprocess.check_output(
             ["find", "/", "-perm", "-4000", "-type", "f"],
-            text=True, errors="replace", timeout=30, stderr=subprocess.DEVNULL
+            text=True,
+            errors="replace",
+            timeout=30,
+            stderr=subprocess.DEVNULL,
         )
-        known_suid = {"/usr/bin/sudo", "/usr/bin/passwd", "/usr/bin/su",
-                      "/usr/bin/mount", "/usr/bin/umount", "/usr/bin/ping"}
+        known_suid = {
+            "/usr/bin/sudo",
+            "/usr/bin/passwd",
+            "/usr/bin/su",
+            "/usr/bin/mount",
+            "/usr/bin/umount",
+            "/usr/bin/ping",
+        }
         for line in result.strip().splitlines():
             path = line.strip()
             if path and path not in known_suid:
@@ -182,8 +207,14 @@ def main():
         report["findings"]["suid_binaries"] = suid
         print(f"[*] Sudo abuse: {len(sudo)}, SUID binaries: {len(suid)}")
 
-    total = sum(len(v) if isinstance(v, list) else 0 for v in report["findings"].values())
-    report["risk_level"] = "CRITICAL" if total >= 5 else "HIGH" if total >= 2 else "MEDIUM" if total > 0 else "LOW"
+    total = sum(
+        len(v) if isinstance(v, list) else 0 for v in report["findings"].values()
+    )
+    report["risk_level"] = (
+        "CRITICAL"
+        if total >= 5
+        else "HIGH" if total >= 2 else "MEDIUM" if total > 0 else "LOW"
+    )
 
     if args.output:
         with open(args.output, "w") as f:

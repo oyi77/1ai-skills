@@ -7,7 +7,6 @@ import re
 from datetime import datetime
 from collections import Counter
 
-
 GDPR_ARTICLES = {
     "Art5": "Principles of processing",
     "Art6": "Lawful basis",
@@ -50,9 +49,12 @@ def scan_for_pii(file_path, max_bytes=1024 * 1024):
             matches[pii_type] = len(found)
     if not matches:
         return None
-    return {"file": str(file_path), "pii_types": matches,
-            "total_matches": sum(matches.values()),
-            "category": classify_data_category(matches)}
+    return {
+        "file": str(file_path),
+        "pii_types": matches,
+        "total_matches": sum(matches.values()),
+        "category": classify_data_category(matches),
+    }
 
 
 def classify_data_category(matches):
@@ -69,19 +71,27 @@ def assess_ropa_completeness(ropa_json):
     with open(ropa_json) as f:
         ropa = json.load(f)
     required_fields = [
-        "controller_name", "purposes", "data_categories", "data_subjects",
-        "recipients", "transfers", "retention_periods", "security_measures",
+        "controller_name",
+        "purposes",
+        "data_categories",
+        "data_subjects",
+        "recipients",
+        "transfers",
+        "retention_periods",
+        "security_measures",
     ]
     findings = []
     activities = ropa if isinstance(ropa, list) else ropa.get("activities", [])
     for activity in activities:
         missing = [f for f in required_fields if not activity.get(f)]
-        findings.append({
-            "activity": activity.get("name", activity.get("purpose", "unknown")),
-            "complete": len(missing) == 0,
-            "missing_fields": missing,
-            "compliance": "COMPLIANT" if not missing else "NON_COMPLIANT",
-        })
+        findings.append(
+            {
+                "activity": activity.get("name", activity.get("purpose", "unknown")),
+                "complete": len(missing) == 0,
+                "missing_fields": missing,
+                "compliance": "COMPLIANT" if not missing else "NON_COMPLIANT",
+            }
+        )
     total = len(findings)
     compliant = sum(1 for f in findings if f["compliance"] == "COMPLIANT")
     return {
@@ -96,7 +106,11 @@ def assess_dsr_handling(dsr_log_path):
     """Assess Data Subject Request handling compliance."""
     with open(dsr_log_path) as f:
         requests_log = json.load(f)
-    dsrs = requests_log if isinstance(requests_log, list) else requests_log.get("requests", [])
+    dsrs = (
+        requests_log
+        if isinstance(requests_log, list)
+        else requests_log.get("requests", [])
+    )
     findings = []
     for dsr in dsrs:
         received = datetime.fromisoformat(dsr.get("received_date", "2024-01-01"))
@@ -107,14 +121,16 @@ def assess_dsr_handling(dsr_log_path):
         else:
             days = (datetime.utcnow() - received).days
         overdue = days > 30  # GDPR requires response within one month
-        findings.append({
-            "request_id": dsr.get("id", ""),
-            "type": dsr.get("type", dsr.get("right", "")),
-            "status": dsr.get("status", "pending"),
-            "days_elapsed": days,
-            "overdue": overdue,
-            "severity": "HIGH" if overdue else "INFO",
-        })
+        findings.append(
+            {
+                "request_id": dsr.get("id", ""),
+                "type": dsr.get("type", dsr.get("right", "")),
+                "status": dsr.get("status", "pending"),
+                "days_elapsed": days,
+                "overdue": overdue,
+                "severity": "HIGH" if overdue else "INFO",
+            }
+        )
     overdue_count = sum(1 for f in findings if f["overdue"])
     return {
         "total_requests": len(findings),
@@ -128,7 +144,9 @@ def assess_breach_notification_readiness(breach_log_path):
     """Assess breach notification compliance (Art 33/34)."""
     with open(breach_log_path) as f:
         breaches = json.load(f)
-    breach_list = breaches if isinstance(breaches, list) else breaches.get("breaches", [])
+    breach_list = (
+        breaches if isinstance(breaches, list) else breaches.get("breaches", [])
+    )
     findings = []
     for breach in breach_list:
         detected = datetime.fromisoformat(breach.get("detected", "2024-01-01"))
@@ -139,18 +157,28 @@ def assess_breach_notification_readiness(breach_log_path):
         else:
             hours = None
         compliant = hours is not None and hours <= 72
-        findings.append({
-            "breach_id": breach.get("id", ""),
-            "detected": str(detected),
-            "notification_hours": round(hours, 1) if hours else None,
-            "art33_compliant": compliant,
-            "data_subjects_affected": breach.get("subjects_affected", 0),
-            "severity": breach.get("severity", "HIGH"),
-        })
-    return {"total_breaches": len(findings), "details": findings,
-            "art33_compliance_rate": round(
-                sum(1 for f in findings if f["art33_compliant"]) / len(findings) * 100, 1
-            ) if findings else 0}
+        findings.append(
+            {
+                "breach_id": breach.get("id", ""),
+                "detected": str(detected),
+                "notification_hours": round(hours, 1) if hours else None,
+                "art33_compliant": compliant,
+                "data_subjects_affected": breach.get("subjects_affected", 0),
+                "severity": breach.get("severity", "HIGH"),
+            }
+        )
+    return {
+        "total_breaches": len(findings),
+        "details": findings,
+        "art33_compliance_rate": (
+            round(
+                sum(1 for f in findings if f["art33_compliant"]) / len(findings) * 100,
+                1,
+            )
+            if findings
+            else 0
+        ),
+    }
 
 
 def generate_art32_checklist():
@@ -190,8 +218,11 @@ def main():
     parser.add_argument("--ropa", help="ROPA JSON file for completeness check")
     parser.add_argument("--dsr-log", help="Data Subject Request log JSON")
     parser.add_argument("--breach-log", help="Breach notification log JSON")
-    parser.add_argument("--action", choices=["scan", "ropa", "dsr", "breach",
-                                              "art32", "full"], default="full")
+    parser.add_argument(
+        "--action",
+        choices=["scan", "ropa", "dsr", "breach", "art32", "full"],
+        default="full",
+    )
     parser.add_argument("--output", default="gdpr_compliance_report.json")
     args = parser.parse_args()
 
@@ -201,7 +232,9 @@ def main():
         result = scan_for_pii(args.scan_pii)
         report["results"]["pii_scan"] = result
         if result:
-            print(f"[+] PII found: {result['total_matches']} matches ({result['category']})")
+            print(
+                f"[+] PII found: {result['total_matches']} matches ({result['category']})"
+            )
         else:
             print("[+] No PII detected")
 
@@ -213,7 +246,9 @@ def main():
     if args.action in ("dsr", "full") and args.dsr_log:
         result = assess_dsr_handling(args.dsr_log)
         report["results"]["dsr"] = result
-        print(f"[+] DSRs: {result['total_requests']} total, {result['overdue']} overdue")
+        print(
+            f"[+] DSRs: {result['total_requests']} total, {result['overdue']} overdue"
+        )
 
     if args.action in ("breach", "full") and args.breach_log:
         result = assess_breach_notification_readiness(args.breach_log)

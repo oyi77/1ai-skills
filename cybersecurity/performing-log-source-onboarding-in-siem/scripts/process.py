@@ -14,9 +14,16 @@ from typing import Optional
 class LogSource:
     """Represents a log source to be onboarded into a SIEM."""
 
-    def __init__(self, name: str, source_type: str, log_format: str,
-                 estimated_eps: int, avg_event_size_bytes: int = 500,
-                 security_tier: str = "medium", collection_method: str = "syslog"):
+    def __init__(
+        self,
+        name: str,
+        source_type: str,
+        log_format: str,
+        estimated_eps: int,
+        avg_event_size_bytes: int = 500,
+        security_tier: str = "medium",
+        collection_method: str = "syslog",
+    ):
         self.name = name
         self.source_type = source_type
         self.log_format = log_format
@@ -29,7 +36,9 @@ class LogSource:
         self.validation_results = {}
 
     def estimate_daily_volume_gb(self) -> float:
-        return round(self.estimated_eps * self.avg_event_size_bytes * 86400 / 1_073_741_824, 2)
+        return round(
+            self.estimated_eps * self.avg_event_size_bytes * 86400 / 1_073_741_824, 2
+        )
 
     def estimate_monthly_volume_gb(self) -> float:
         return round(self.estimate_daily_volume_gb() * 30, 2)
@@ -94,15 +103,22 @@ class OnboardingTracker:
 
     def add_source(self, source: LogSource):
         self.sources.append(source)
-        self.step_completion[source.name] = {step: False for step in self.ONBOARDING_STEPS}
+        self.step_completion[source.name] = {
+            step: False for step in self.ONBOARDING_STEPS
+        }
 
     def complete_step(self, source_name: str, step: str):
-        if source_name in self.step_completion and step in self.step_completion[source_name]:
+        if (
+            source_name in self.step_completion
+            and step in self.step_completion[source_name]
+        ):
             self.step_completion[source_name][step] = True
             # Update status
             for src in self.sources:
                 if src.name == source_name:
-                    completed = sum(1 for v in self.step_completion[source_name].values() if v)
+                    completed = sum(
+                        1 for v in self.step_completion[source_name].values() if v
+                    )
                     total = len(self.ONBOARDING_STEPS)
                     if completed == total:
                         src.status = "completed"
@@ -115,27 +131,43 @@ class OnboardingTracker:
             "completed": sum(1 for s in self.sources if s.status == "completed"),
             "in_progress": sum(1 for s in self.sources if s.status == "in_progress"),
             "pending": sum(1 for s in self.sources if s.status == "pending"),
-            "total_daily_volume_gb": sum(s.estimate_daily_volume_gb() for s in self.sources),
-            "total_monthly_volume_gb": sum(s.estimate_monthly_volume_gb() for s in self.sources),
+            "total_daily_volume_gb": sum(
+                s.estimate_daily_volume_gb() for s in self.sources
+            ),
+            "total_monthly_volume_gb": sum(
+                s.estimate_monthly_volume_gb() for s in self.sources
+            ),
             "sources": [],
         }
         for source in self.sources:
             steps = self.step_completion.get(source.name, {})
             completed_steps = sum(1 for v in steps.values() if v)
-            report["sources"].append({
-                "name": source.name,
-                "type": source.source_type,
-                "status": source.status,
-                "progress": f"{completed_steps}/{len(self.ONBOARDING_STEPS)}",
-                "daily_volume_gb": source.estimate_daily_volume_gb(),
-                "security_tier": source.security_tier,
-                "next_step": next((s for s, v in steps.items() if not v), "complete"),
-            })
+            report["sources"].append(
+                {
+                    "name": source.name,
+                    "type": source.source_type,
+                    "status": source.status,
+                    "progress": f"{completed_steps}/{len(self.ONBOARDING_STEPS)}",
+                    "daily_volume_gb": source.estimate_daily_volume_gb(),
+                    "security_tier": source.security_tier,
+                    "next_step": next(
+                        (s for s, v in steps.items() if not v), "complete"
+                    ),
+                }
+            )
         return report
 
 
 CIM_REQUIRED_FIELDS = {
-    "Network_Traffic": ["src_ip", "dest_ip", "dest_port", "action", "bytes", "protocol", "transport"],
+    "Network_Traffic": [
+        "src_ip",
+        "dest_ip",
+        "dest_port",
+        "action",
+        "bytes",
+        "protocol",
+        "transport",
+    ],
     "Authentication": ["src_ip", "user", "action", "app", "dest"],
     "Endpoint": ["dest", "process", "process_id", "user", "action"],
     "Web": ["url", "http_method", "status", "src_ip", "dest_ip", "http_user_agent"],
@@ -147,10 +179,42 @@ if __name__ == "__main__":
     tracker = OnboardingTracker()
 
     sources = [
-        LogSource("Palo Alto Firewall", "pan:traffic", "syslog-CEF", 500, 600, "critical", "syslog"),
-        LogSource("Windows Domain Controllers", "WinEventLog:Security", "windows-xml", 200, 800, "critical", "windows_event"),
-        LogSource("Squid Web Proxy", "squid:access", "squid-native", 1000, 400, "high", "file_monitor"),
-        LogSource("Custom App Server", "app:custom", "json", 50, 300, "medium", "http_event_collector"),
+        LogSource(
+            "Palo Alto Firewall",
+            "pan:traffic",
+            "syslog-CEF",
+            500,
+            600,
+            "critical",
+            "syslog",
+        ),
+        LogSource(
+            "Windows Domain Controllers",
+            "WinEventLog:Security",
+            "windows-xml",
+            200,
+            800,
+            "critical",
+            "windows_event",
+        ),
+        LogSource(
+            "Squid Web Proxy",
+            "squid:access",
+            "squid-native",
+            1000,
+            400,
+            "high",
+            "file_monitor",
+        ),
+        LogSource(
+            "Custom App Server",
+            "app:custom",
+            "json",
+            50,
+            300,
+            "medium",
+            "http_event_collector",
+        ),
     ]
 
     for src in sources:
@@ -170,8 +234,17 @@ if __name__ == "__main__":
     tracker.complete_step("Squid Web Proxy", "discovery")
 
     # CIM validation
-    sources[0].cim_fields_mapped = ["src_ip", "dest_ip", "dest_port", "action", "bytes", "protocol"]
-    cim_result = sources[0].validate_cim_compliance(CIM_REQUIRED_FIELDS["Network_Traffic"])
+    sources[0].cim_fields_mapped = [
+        "src_ip",
+        "dest_ip",
+        "dest_port",
+        "action",
+        "bytes",
+        "protocol",
+    ]
+    cim_result = sources[0].validate_cim_compliance(
+        CIM_REQUIRED_FIELDS["Network_Traffic"]
+    )
 
     print("=" * 70)
     print("SIEM LOG SOURCE ONBOARDING TRACKER")
@@ -179,14 +252,20 @@ if __name__ == "__main__":
 
     report = tracker.get_progress_report()
     print(f"\nTotal Sources: {report['total_sources']}")
-    print(f"Completed: {report['completed']} | In Progress: {report['in_progress']} | Pending: {report['pending']}")
+    print(
+        f"Completed: {report['completed']} | In Progress: {report['in_progress']} | Pending: {report['pending']}"
+    )
     print(f"Total Daily Volume: {report['total_daily_volume_gb']} GB")
     print(f"Total Monthly Volume: {report['total_monthly_volume_gb']} GB")
 
-    print(f"\n{'Source':<30} {'Status':<15} {'Progress':<10} {'Volume/Day':<12} {'Next Step'}")
+    print(
+        f"\n{'Source':<30} {'Status':<15} {'Progress':<10} {'Volume/Day':<12} {'Next Step'}"
+    )
     print("-" * 85)
     for s in report["sources"]:
-        print(f"{s['name']:<30} {s['status']:<15} {s['progress']:<10} {s['daily_volume_gb']:<12} {s['next_step']}")
+        print(
+            f"{s['name']:<30} {s['status']:<15} {s['progress']:<10} {s['daily_volume_gb']:<12} {s['next_step']}"
+        )
 
     print(f"\nCIM Compliance - Palo Alto Firewall:")
     print(f"  Coverage: {cim_result['coverage_pct']}%")

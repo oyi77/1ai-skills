@@ -11,7 +11,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-
 RECOVERY_PRIORITY = [
     ("Domain Controllers", "critical", "Rebuild from clean media first"),
     ("DNS/DHCP Servers", "critical", "Required for network functionality"),
@@ -33,20 +32,27 @@ class RansomwareRecoveryAgent:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.recovery = {
-            "case_id": case_id, "status": "in_progress",
-            "timeline": [], "systems": [], "checklists": {},
+            "case_id": case_id,
+            "status": "in_progress",
+            "timeline": [],
+            "systems": [],
+            "checklists": {},
         }
 
     def log_event(self, event_type, description):
-        self.recovery["timeline"].append({
-            "timestamp": datetime.utcnow().isoformat(),
-            "type": event_type, "description": description,
-        })
+        self.recovery["timeline"].append(
+            {
+                "timestamp": datetime.utcnow().isoformat(),
+                "type": event_type,
+                "description": description,
+            }
+        )
 
     def verify_backup(self, backup_path, backup_type, last_verified=None):
         """Record backup verification status."""
         status = {
-            "path": backup_path, "type": backup_type,
+            "path": backup_path,
+            "type": backup_type,
             "verified_date": last_verified or datetime.utcnow().isoformat(),
             "integrity": "pending",
         }
@@ -60,13 +66,19 @@ class RansomwareRecoveryAgent:
         """Generate prioritized system recovery plan."""
         systems = []
         for name, priority, note in RECOVERY_PRIORITY:
-            systems.append({
-                "system": name, "priority": priority, "note": note,
-                "status": "pending", "recovery_method": (
-                    "Restore from backup" if clean_backup_available
-                    else "Rebuild from scratch"
-                ),
-            })
+            systems.append(
+                {
+                    "system": name,
+                    "priority": priority,
+                    "note": note,
+                    "status": "pending",
+                    "recovery_method": (
+                        "Restore from backup"
+                        if clean_backup_available
+                        else "Rebuild from scratch"
+                    ),
+                }
+            )
         self.recovery["systems"] = systems
         self.log_event("plan_created", f"{len(systems)} systems in recovery plan")
         return systems
@@ -77,30 +89,53 @@ class RansomwareRecoveryAgent:
                 sys_entry["status"] = status
                 if notes:
                     sys_entry["recovery_notes"] = notes
-                self.log_event("system_update",
-                               f"{system_name}: {status}")
+                self.log_event("system_update", f"{system_name}: {status}")
                 return sys_entry
         return None
 
     def generate_credential_reset_checklist(self):
         """Generate credential reset checklist for post-recovery."""
         checklist = [
-            {"item": "Reset KRBTGT password (twice, 12h apart)", "status": "pending",
-             "priority": "critical"},
-            {"item": "Reset all Domain Admin passwords", "status": "pending",
-             "priority": "critical"},
-            {"item": "Reset all service account passwords", "status": "pending",
-             "priority": "critical"},
-            {"item": "Reset all user passwords", "status": "pending",
-             "priority": "high"},
-            {"item": "Revoke and reissue all certificates", "status": "pending",
-             "priority": "high"},
-            {"item": "Rotate all API keys and tokens", "status": "pending",
-             "priority": "high"},
-            {"item": "Reset cloud IAM credentials", "status": "pending",
-             "priority": "high"},
-            {"item": "Deploy LAPS for local admin passwords", "status": "pending",
-             "priority": "medium"},
+            {
+                "item": "Reset KRBTGT password (twice, 12h apart)",
+                "status": "pending",
+                "priority": "critical",
+            },
+            {
+                "item": "Reset all Domain Admin passwords",
+                "status": "pending",
+                "priority": "critical",
+            },
+            {
+                "item": "Reset all service account passwords",
+                "status": "pending",
+                "priority": "critical",
+            },
+            {
+                "item": "Reset all user passwords",
+                "status": "pending",
+                "priority": "high",
+            },
+            {
+                "item": "Revoke and reissue all certificates",
+                "status": "pending",
+                "priority": "high",
+            },
+            {
+                "item": "Rotate all API keys and tokens",
+                "status": "pending",
+                "priority": "high",
+            },
+            {
+                "item": "Reset cloud IAM credentials",
+                "status": "pending",
+                "priority": "high",
+            },
+            {
+                "item": "Deploy LAPS for local admin passwords",
+                "status": "pending",
+                "priority": "medium",
+            },
         ]
         self.recovery["checklists"]["credential_reset"] = checklist
         return checklist
@@ -124,8 +159,11 @@ class RansomwareRecoveryAgent:
     def get_recovery_progress(self):
         """Calculate overall recovery progress."""
         total = len(self.recovery["systems"])
-        completed = sum(1 for s in self.recovery["systems"]
-                        if s["status"] in ("recovered", "verified"))
+        completed = sum(
+            1
+            for s in self.recovery["systems"]
+            if s["status"] in ("recovered", "verified")
+        )
         return {
             "total_systems": total,
             "recovered": completed,

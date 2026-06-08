@@ -16,7 +16,16 @@ except ImportError:
     sys.exit(1)
 
 try:
-    from pysnmp.hlapi import nextCmd, SnmpEngine, CommunityData, UdpTransportTarget, ContextData, ObjectType, ObjectIdentity
+    from pysnmp.hlapi import (
+        nextCmd,
+        SnmpEngine,
+        CommunityData,
+        UdpTransportTarget,
+        ContextData,
+        ObjectType,
+        ObjectIdentity,
+    )
+
     HAS_SNMP = True
 except ImportError:
     HAS_SNMP = False
@@ -24,8 +33,7 @@ except ImportError:
 
 def test_radius_auth(server, secret, username, password, port=1812):
     """Test RADIUS authentication for a user credential pair."""
-    srv = Client(server=server, secret=secret.encode(),
-                 dict=Dictionary(dict_file=None))
+    srv = Client(server=server, secret=secret.encode(), dict=Dictionary(dict_file=None))
     srv.AuthPort = port
     req = srv.CreateAuthPacket(code=packet.AccessRequest, User_Name=username)
     req["User-Password"] = req.PwCrypt(password)
@@ -40,9 +48,17 @@ def test_radius_auth(server, secret, username, password, port=1812):
                 attrs[key] = reply[key]
             return {"status": "ACCEPT", "user": username, "attributes": str(attrs)}
         elif reply.code == packet.AccessReject:
-            return {"status": "REJECT", "user": username, "reason": "Invalid credentials"}
+            return {
+                "status": "REJECT",
+                "user": username,
+                "reason": "Invalid credentials",
+            }
         elif reply.code == packet.AccessChallenge:
-            return {"status": "CHALLENGE", "user": username, "reason": "Additional auth required"}
+            return {
+                "status": "CHALLENGE",
+                "user": username,
+                "reason": "Additional auth required",
+            }
     except Exception as e:
         return {"status": "ERROR", "user": username, "error": str(e)}
 
@@ -57,7 +73,10 @@ def parse_radius_log(log_file, max_lines=1000):
                     break
                 if "Auth:" in line or "Login" in line:
                     parts = line.strip().split()
-                    event = {"raw": line.strip(), "timestamp": " ".join(parts[:3]) if len(parts) > 3 else ""}
+                    event = {
+                        "raw": line.strip(),
+                        "timestamp": " ".join(parts[:3]) if len(parts) > 3 else "",
+                    }
                     if "Login OK" in line:
                         event["result"] = "SUCCESS"
                     elif "Login incorrect" in line:
@@ -80,11 +99,13 @@ def check_switch_port_status(switch_ip, community="public"):
     dot1x_auth_oid = "1.3.6.1.2.1.8802.1.1.1.1.2.1.1.1"
     results = []
     iterator = nextCmd(
-        SnmpEngine(), CommunityData(community),
+        SnmpEngine(),
+        CommunityData(community),
         UdpTransportTarget((switch_ip, 161)),
         ContextData(),
         ObjectType(ObjectIdentity(dot1x_auth_oid)),
-        maxRows=100)
+        maxRows=100,
+    )
 
     for errorIndication, errorStatus, errorIndex, varBinds in iterator:
         if errorIndication or errorStatus:
@@ -93,14 +114,24 @@ def check_switch_port_status(switch_ip, community="public"):
         for varBind in varBinds:
             oid, value = varBind
             port_index = str(oid).split(".")[-1]
-            auth_states = {1: "initialize", 2: "disconnected", 3: "connecting",
-                           4: "authenticating", 5: "authenticated",
-                           6: "aborting", 7: "held", 8: "forceAuth", 9: "forceUnauth"}
-            results.append({
-                "port": port_index,
-                "state": auth_states.get(int(value), f"unknown({value})"),
-                "state_code": int(value)
-            })
+            auth_states = {
+                1: "initialize",
+                2: "disconnected",
+                3: "connecting",
+                4: "authenticating",
+                5: "authenticated",
+                6: "aborting",
+                7: "held",
+                8: "forceAuth",
+                9: "forceUnauth",
+            }
+            results.append(
+                {
+                    "port": port_index,
+                    "state": auth_states.get(int(value), f"unknown({value})"),
+                    "state_code": int(value),
+                }
+            )
     return results
 
 
@@ -117,11 +148,17 @@ def analyze_auth_events(events):
         "failures": failures,
         "invalid_users": result_counts.get("INVALID_USER", 0),
         "success_rate": success_rate,
-        "risk_level": "HIGH" if failures > total * 0.3 else "MEDIUM" if failures > total * 0.1 else "LOW",
+        "risk_level": (
+            "HIGH"
+            if failures > total * 0.3
+            else "MEDIUM" if failures > total * 0.1 else "LOW"
+        ),
     }
 
     if failures > 20:
-        analysis["alert"] = "High number of authentication failures - possible brute force attack"
+        analysis["alert"] = (
+            "High number of authentication failures - possible brute force attack"
+        )
 
     return analysis
 
@@ -129,22 +166,46 @@ def analyze_auth_events(events):
 def generate_nac_policy_check():
     """Generate a NAC compliance policy checklist."""
     policies = [
-        {"check": "802.1X enforcement", "requirement": "All access ports configured for dot1x",
-         "standard": "PCI-DSS 1.2"},
-        {"check": "Guest VLAN isolation", "requirement": "Unauthenticated devices on restricted VLAN",
-         "standard": "NIST 800-53 AC-4"},
-        {"check": "MAB fallback", "requirement": "MAC Authentication Bypass for non-supplicant devices",
-         "standard": "Best Practice"},
-        {"check": "EAP-TLS certificates", "requirement": "Certificate-based auth for managed devices",
-         "standard": "NIST 800-53 IA-5"},
-        {"check": "Posture assessment", "requirement": "Endpoint compliance check before full access",
-         "standard": "PCI-DSS 5.3"},
-        {"check": "Dynamic VLAN assignment", "requirement": "Role-based VLAN via RADIUS attributes",
-         "standard": "NIST 800-53 AC-6"},
-        {"check": "Re-authentication timer", "requirement": "Periodic re-auth every 3600 seconds",
-         "standard": "Best Practice"},
-        {"check": "RADIUS accounting", "requirement": "Accounting enabled for audit trail",
-         "standard": "SOC 2 CC6.1"},
+        {
+            "check": "802.1X enforcement",
+            "requirement": "All access ports configured for dot1x",
+            "standard": "PCI-DSS 1.2",
+        },
+        {
+            "check": "Guest VLAN isolation",
+            "requirement": "Unauthenticated devices on restricted VLAN",
+            "standard": "NIST 800-53 AC-4",
+        },
+        {
+            "check": "MAB fallback",
+            "requirement": "MAC Authentication Bypass for non-supplicant devices",
+            "standard": "Best Practice",
+        },
+        {
+            "check": "EAP-TLS certificates",
+            "requirement": "Certificate-based auth for managed devices",
+            "standard": "NIST 800-53 IA-5",
+        },
+        {
+            "check": "Posture assessment",
+            "requirement": "Endpoint compliance check before full access",
+            "standard": "PCI-DSS 5.3",
+        },
+        {
+            "check": "Dynamic VLAN assignment",
+            "requirement": "Role-based VLAN via RADIUS attributes",
+            "standard": "NIST 800-53 AC-6",
+        },
+        {
+            "check": "Re-authentication timer",
+            "requirement": "Periodic re-auth every 3600 seconds",
+            "standard": "Best Practice",
+        },
+        {
+            "check": "RADIUS accounting",
+            "requirement": "Accounting enabled for audit trail",
+            "standard": "SOC 2 CC6.1",
+        },
     ]
     return policies
 
@@ -193,8 +254,12 @@ def main():
     parser.add_argument("--radius-log", help="Path to FreeRADIUS log file")
     parser.add_argument("--switch", help="Switch IP for SNMP 802.1X status check")
     parser.add_argument("--community", default="public", help="SNMP community string")
-    parser.add_argument("--test-auth", nargs=4, metavar=("SERVER", "SECRET", "USER", "PASS"),
-                        help="Test RADIUS authentication")
+    parser.add_argument(
+        "--test-auth",
+        nargs=4,
+        metavar=("SERVER", "SECRET", "USER", "PASS"),
+        help="Test RADIUS authentication",
+    )
     parser.add_argument("--output", help="Save report to JSON")
     args = parser.parse_args()
 

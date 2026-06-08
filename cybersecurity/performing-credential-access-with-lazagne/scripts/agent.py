@@ -6,6 +6,7 @@ endpoints by scanning for process artifacts, file system indicators,
 and Windows event log entries associated with credential dumping.
 Used for defensive detection and incident response, not offensive use.
 """
+
 import argparse
 import json
 import os
@@ -13,14 +14,17 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
-
 LAZAGNE_INDICATORS = {
     "file_paths": [
-        "lazagne.exe", "LaZagne.exe", "laZagne.py",
-        "lazagne_output.txt", "credentials.txt",
+        "lazagne.exe",
+        "LaZagne.exe",
+        "laZagne.py",
+        "lazagne_output.txt",
+        "credentials.txt",
     ],
     "process_names": [
-        "lazagne.exe", "python.exe lazagne",
+        "lazagne.exe",
+        "python.exe lazagne",
     ],
     "registry_keys": [
         r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
@@ -68,15 +72,19 @@ def scan_filesystem_indicators(search_paths=None):
                     if indicator.lower() in fname_lower:
                         full_path = os.path.join(root, fname)
                         stat = os.stat(full_path)
-                        findings.append({
-                            "type": "file_indicator",
-                            "path": full_path,
-                            "indicator": indicator,
-                            "size": stat.st_size,
-                            "modified": datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
-                            "severity": "CRITICAL",
-                            "description": f"LaZagne artifact found: {fname}",
-                        })
+                        findings.append(
+                            {
+                                "type": "file_indicator",
+                                "path": full_path,
+                                "indicator": indicator,
+                                "size": stat.st_size,
+                                "modified": datetime.fromtimestamp(
+                                    stat.st_mtime, tz=timezone.utc
+                                ).isoformat(),
+                                "severity": "CRITICAL",
+                                "description": f"LaZagne artifact found: {fname}",
+                            }
+                        )
             # Limit directory depth to avoid slow scans
             if root.count(os.sep) - search_path.count(os.sep) > 3:
                 dirs.clear()
@@ -108,7 +116,9 @@ def check_windows_event_logs():
     """
     result = subprocess.run(
         ["powershell", "-Command", ps_script],
-        capture_output=True, text=True, timeout=60,
+        capture_output=True,
+        text=True,
+        timeout=60,
     )
     if result.returncode == 0 and result.stdout.strip():
         try:
@@ -116,16 +126,18 @@ def check_windows_event_logs():
             if isinstance(events, dict):
                 events = [events]
             for evt in events:
-                findings.append({
-                    "type": "event_log",
-                    "event_id": 4688,
-                    "time": str(evt.get("TimeCreated", "")),
-                    "process": evt.get("ProcessName", ""),
-                    "command_line": evt.get("CommandLine", "")[:200],
-                    "user": evt.get("User", ""),
-                    "severity": "CRITICAL",
-                    "description": "LaZagne process execution detected in event logs",
-                })
+                findings.append(
+                    {
+                        "type": "event_log",
+                        "event_id": 4688,
+                        "time": str(evt.get("TimeCreated", "")),
+                        "process": evt.get("ProcessName", ""),
+                        "command_line": evt.get("CommandLine", "")[:200],
+                        "user": evt.get("User", ""),
+                        "severity": "CRITICAL",
+                        "description": "LaZagne process execution detected in event logs",
+                    }
+                )
         except json.JSONDecodeError:
             pass
 
@@ -143,7 +155,9 @@ def check_windows_event_logs():
     """
     result = subprocess.run(
         ["powershell", "-Command", ps_script2],
-        capture_output=True, text=True, timeout=60,
+        capture_output=True,
+        text=True,
+        timeout=60,
     )
     if result.returncode == 0 and result.stdout.strip():
         try:
@@ -151,15 +165,17 @@ def check_windows_event_logs():
             if isinstance(events, dict):
                 events = [events]
             for evt in events:
-                findings.append({
-                    "type": "credential_access",
-                    "event_id": 4663,
-                    "time": str(evt.get("TimeCreated", "")),
-                    "object": evt.get("ObjectName", ""),
-                    "process": evt.get("ProcessName", ""),
-                    "severity": "HIGH",
-                    "description": "Credential store accessed by process",
-                })
+                findings.append(
+                    {
+                        "type": "credential_access",
+                        "event_id": 4663,
+                        "time": str(evt.get("TimeCreated", "")),
+                        "object": evt.get("ObjectName", ""),
+                        "process": evt.get("ProcessName", ""),
+                        "severity": "HIGH",
+                        "description": "Credential store accessed by process",
+                    }
+                )
         except json.JSONDecodeError:
             pass
 
@@ -176,12 +192,25 @@ def check_credential_store_integrity():
         appdata = os.environ.get("APPDATA", "")
         localappdata = os.environ.get("LOCALAPPDATA", "")
         stores_to_check = [
-            (os.path.join(localappdata, "Google", "Chrome", "User Data", "Default", "Login Data"), "Chrome"),
+            (
+                os.path.join(
+                    localappdata,
+                    "Google",
+                    "Chrome",
+                    "User Data",
+                    "Default",
+                    "Login Data",
+                ),
+                "Chrome",
+            ),
             (os.path.join(appdata, "Mozilla", "Firefox"), "Firefox"),
         ]
     else:
         stores_to_check = [
-            (os.path.expanduser("~/.config/google-chrome/Default/Login Data"), "Chrome"),
+            (
+                os.path.expanduser("~/.config/google-chrome/Default/Login Data"),
+                "Chrome",
+            ),
             (os.path.expanduser("~/.mozilla/firefox"), "Firefox"),
             (os.path.expanduser("~/.ssh"), "SSH Keys"),
         ]
@@ -192,14 +221,16 @@ def check_credential_store_integrity():
                 stat = os.stat(path)
                 access_time = datetime.fromtimestamp(stat.st_atime, tz=timezone.utc)
                 mod_time = datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc)
-                findings.append({
-                    "type": "credential_store",
-                    "store": store_name,
-                    "path": path,
-                    "last_accessed": access_time.isoformat(),
-                    "last_modified": mod_time.isoformat(),
-                    "severity": "INFO",
-                })
+                findings.append(
+                    {
+                        "type": "credential_store",
+                        "store": store_name,
+                        "path": path,
+                        "last_accessed": access_time.isoformat(),
+                        "last_modified": mod_time.isoformat(),
+                        "severity": "INFO",
+                    }
+                )
 
     return findings
 
@@ -211,7 +242,9 @@ def format_summary(all_findings):
     print(f"{'='*60}")
 
     file_findings = [f for f in all_findings if f["type"] == "file_indicator"]
-    event_findings = [f for f in all_findings if f["type"] in ("event_log", "credential_access")]
+    event_findings = [
+        f for f in all_findings if f["type"] in ("event_log", "credential_access")
+    ]
     store_findings = [f for f in all_findings if f["type"] == "credential_store"]
 
     print(f"  File Indicators  : {len(file_findings)}")
@@ -236,8 +269,12 @@ def main():
         description="LaZagne credential access detection agent (defensive use)"
     )
     parser.add_argument("--search-paths", nargs="+", help="Paths to scan for artifacts")
-    parser.add_argument("--skip-events", action="store_true", help="Skip Windows event log check")
-    parser.add_argument("--skip-stores", action="store_true", help="Skip credential store check")
+    parser.add_argument(
+        "--skip-events", action="store_true", help="Skip Windows event log check"
+    )
+    parser.add_argument(
+        "--skip-stores", action="store_true", help="Skip credential store check"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
@@ -257,9 +294,9 @@ def main():
         "findings": all_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else "HIGH" if severity_counts.get("HIGH", 0) > 0 else "LOW"
         ),
     }
 

@@ -48,7 +48,9 @@ def extract_packet_info(packets):
         else:
             info["protocol"] = str(pkt[IP].proto)
         if pkt.haslayer(DNS) and pkt.haslayer(DNSQR):
-            info["dns_query"] = pkt[DNSQR].qname.decode("utf-8", errors="ignore").rstrip(".")
+            info["dns_query"] = (
+                pkt[DNSQR].qname.decode("utf-8", errors="ignore").rstrip(".")
+            )
             info["dns_type"] = pkt[DNSQR].qtype
         records.append(info)
     return records
@@ -87,14 +89,16 @@ def detect_syn_flood(records, threshold=100):
         ack_count = synack_counts.get(ip, 0)
         ratio = ack_count / count if count > 0 else 1.0
         if count >= threshold and ratio < 0.3:
-            alerts.append({
-                "detection": "SYN Flood",
-                "target_ip": ip,
-                "syn_count": count,
-                "synack_count": ack_count,
-                "synack_ratio": round(ratio, 4),
-                "severity": "critical",
-            })
+            alerts.append(
+                {
+                    "detection": "SYN Flood",
+                    "target_ip": ip,
+                    "syn_count": count,
+                    "synack_count": ack_count,
+                    "synack_ratio": round(ratio, 4),
+                    "severity": "critical",
+                }
+            )
     return alerts
 
 
@@ -115,15 +119,20 @@ def detect_dns_tunneling(records, length_threshold=50, entropy_threshold=3.5):
         if not query:
             continue
         subdomain = query.split(".")[0] if "." in query else query
-        if len(subdomain) >= length_threshold or calculate_entropy(subdomain) >= entropy_threshold:
-            alerts.append({
-                "detection": "DNS Tunneling Indicator",
-                "query": query,
-                "subdomain_length": len(subdomain),
-                "entropy": round(calculate_entropy(subdomain), 4),
-                "src_ip": r["src_ip"],
-                "severity": "high",
-            })
+        if (
+            len(subdomain) >= length_threshold
+            or calculate_entropy(subdomain) >= entropy_threshold
+        ):
+            alerts.append(
+                {
+                    "detection": "DNS Tunneling Indicator",
+                    "query": query,
+                    "subdomain_length": len(subdomain),
+                    "entropy": round(calculate_entropy(subdomain), 4),
+                    "src_ip": r["src_ip"],
+                    "severity": "high",
+                }
+            )
     return alerts
 
 
@@ -136,23 +145,41 @@ def detect_port_scan(records, threshold=20):
     alerts = []
     for ip, ports in src_ports.items():
         if len(ports) >= threshold:
-            alerts.append({
-                "detection": "Port Scan",
-                "source_ip": ip,
-                "unique_ports_probed": len(ports),
-                "sample_ports": sorted(list(ports))[:20],
-                "severity": "high",
-            })
+            alerts.append(
+                {
+                    "detection": "Port Scan",
+                    "source_ip": ip,
+                    "unique_ports_probed": len(ports),
+                    "sample_ports": sorted(list(ports))[:20],
+                    "severity": "high",
+                }
+            )
     return alerts
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Network Packet Analysis Agent (Scapy)")
+    parser = argparse.ArgumentParser(
+        description="Network Packet Analysis Agent (Scapy)"
+    )
     parser.add_argument("--pcap", required=True, help="Path to pcap/pcapng file")
-    parser.add_argument("--syn-threshold", type=int, default=100, help="SYN flood detection threshold")
-    parser.add_argument("--dns-length", type=int, default=50, help="DNS tunneling subdomain length threshold")
-    parser.add_argument("--scan-threshold", type=int, default=20, help="Port scan unique ports threshold")
-    parser.add_argument("--output", default="packet_analysis_report.json", help="Output report path")
+    parser.add_argument(
+        "--syn-threshold", type=int, default=100, help="SYN flood detection threshold"
+    )
+    parser.add_argument(
+        "--dns-length",
+        type=int,
+        default=50,
+        help="DNS tunneling subdomain length threshold",
+    )
+    parser.add_argument(
+        "--scan-threshold",
+        type=int,
+        default=20,
+        help="Port scan unique ports threshold",
+    )
+    parser.add_argument(
+        "--output", default="packet_analysis_report.json", help="Output report path"
+    )
     args = parser.parse_args()
 
     packets = load_pcap(args.pcap)

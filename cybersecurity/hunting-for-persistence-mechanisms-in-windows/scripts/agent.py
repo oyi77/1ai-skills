@@ -22,12 +22,21 @@ REGISTRY_PERSISTENCE_KEYS = [
 ]
 
 SUSPICIOUS_INDICATORS = [
-    r"\\temp\\", r"\\tmp\\", r"\\appdata\\local\\temp\\",
-    r"powershell.*-enc", r"cmd\.exe.*/c\s+",
-    r"\\users\\public\\", r"\\programdata\\",
-    r"mshta\.exe", r"rundll32\.exe", r"regsvr32\.exe",
-    r"wscript\.exe", r"cscript\.exe",
-    r"base64", r"iex\s*\(", r"downloadstring",
+    r"\\temp\\",
+    r"\\tmp\\",
+    r"\\appdata\\local\\temp\\",
+    r"powershell.*-enc",
+    r"cmd\.exe.*/c\s+",
+    r"\\users\\public\\",
+    r"\\programdata\\",
+    r"mshta\.exe",
+    r"rundll32\.exe",
+    r"regsvr32\.exe",
+    r"wscript\.exe",
+    r"cscript\.exe",
+    r"base64",
+    r"iex\s*\(",
+    r"downloadstring",
 ]
 
 
@@ -70,12 +79,14 @@ def parse_reg_output(output, parent_key):
             continue
         parts = re.split(r"\s{2,}", line, maxsplit=2)
         if len(parts) >= 3:
-            entries.append({
-                "key": current_key,
-                "name": parts[0],
-                "type": parts[1],
-                "value": parts[2],
-            })
+            entries.append(
+                {
+                    "key": current_key,
+                    "name": parts[0],
+                    "type": parts[1],
+                    "value": parts[2],
+                }
+            )
     return entries
 
 
@@ -84,13 +95,16 @@ def enumerate_scheduled_tasks():
     try:
         result = subprocess.run(
             ["schtasks", "/query", "/fo", "CSV", "/v"],
-            capture_output=True, text=True, timeout=30
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
     except (subprocess.TimeoutExpired, FileNotFoundError):
         return {"error": "schtasks not available"}
     findings = []
     import csv
     from io import StringIO
+
     reader = csv.DictReader(StringIO(result.stdout))
     for row in reader:
         task_name = row.get("TaskName", "")
@@ -98,14 +112,16 @@ def enumerate_scheduled_tasks():
         author = row.get("Author", "")
         suspicious = any(re.search(p, action, re.I) for p in SUSPICIOUS_INDICATORS)
         if suspicious or "\\Microsoft\\" not in task_name:
-            findings.append({
-                "task_name": task_name,
-                "action": action[:500],
-                "author": author,
-                "status": row.get("Status", ""),
-                "next_run": row.get("Next Run Time", ""),
-                "suspicious": suspicious,
-            })
+            findings.append(
+                {
+                    "task_name": task_name,
+                    "action": action[:500],
+                    "author": author,
+                    "status": row.get("Status", ""),
+                    "next_run": row.get("Next Run Time", ""),
+                    "suspicious": suspicious,
+                }
+            )
     return {
         "total_tasks": len(findings),
         "suspicious_tasks": sum(1 for f in findings if f["suspicious"]),
@@ -118,7 +134,9 @@ def enumerate_services():
     try:
         result = subprocess.run(
             ["wmic", "service", "get", "Name,PathName,StartMode,State", "/format:csv"],
-            capture_output=True, text=True, timeout=30
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
     except (subprocess.TimeoutExpired, FileNotFoundError):
         return {"error": "wmic not available"}
@@ -128,11 +146,15 @@ def enumerate_services():
         if len(parts) >= 5:
             path = parts[3]
             suspicious = any(re.search(p, path, re.I) for p in SUSPICIOUS_INDICATORS)
-            findings.append({
-                "name": parts[1], "path": path,
-                "start_mode": parts[4] if len(parts) > 4 else "",
-                "state": parts[2], "suspicious": suspicious,
-            })
+            findings.append(
+                {
+                    "name": parts[1],
+                    "path": path,
+                    "start_mode": parts[4] if len(parts) > 4 else "",
+                    "state": parts[2],
+                    "suspicious": suspicious,
+                }
+            )
     return {
         "total_services": len(findings),
         "suspicious_services": sum(1 for f in findings if f["suspicious"]),
@@ -141,7 +163,9 @@ def enumerate_services():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Hunt for Windows persistence mechanisms")
+    parser = argparse.ArgumentParser(
+        description="Hunt for Windows persistence mechanisms"
+    )
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("registry", help="Enumerate registry persistence keys")
     sub.add_parser("tasks", help="Enumerate scheduled tasks")

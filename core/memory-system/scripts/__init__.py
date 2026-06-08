@@ -7,6 +7,7 @@ Quick start:
     mm.store("User prefers XAUUSD scalping", importance=0.9, tags=["trading"])
     results = mm.search("trading preferences", top_k=5)
 """
+
 from .memory_manager import MemoryManager
 
 __all__ = ["MemoryManager"]

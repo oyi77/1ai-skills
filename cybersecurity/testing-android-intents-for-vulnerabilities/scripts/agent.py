@@ -26,7 +26,9 @@ class AndroidIntentTestAgent:
     def _adb(self, args, timeout=15):
         cmd = ["adb", "shell"] + args
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=timeout
+            )
             return result.stdout.strip(), result.returncode
         except (FileNotFoundError, subprocess.TimeoutExpired):
             return "", -1
@@ -45,7 +47,10 @@ class AndroidIntentTestAgent:
         output = self._drozer("app.package.attacksurface")
         surface = {"activities": 0, "services": 0, "receivers": 0, "providers": 0}
 
-        for m in re.finditer(r"(\d+)\s+(activities|broadcast receivers|content providers|services)\s+exported", output):
+        for m in re.finditer(
+            r"(\d+)\s+(activities|broadcast receivers|content providers|services)\s+exported",
+            output,
+        ):
             count = int(m.group(1))
             comp_type = m.group(2)
             if "activities" in comp_type:
@@ -59,12 +64,14 @@ class AndroidIntentTestAgent:
 
         total = sum(surface.values())
         if total > 0:
-            self.findings.append({
-                "severity": "info",
-                "type": "Attack Surface",
-                "detail": f"{total} exported components found",
-                "breakdown": surface,
-            })
+            self.findings.append(
+                {
+                    "severity": "info",
+                    "type": "Attack Surface",
+                    "detail": f"{total} exported components found",
+                    "breakdown": surface,
+                }
+            )
         return surface
 
     def list_exported_activities(self):
@@ -80,23 +87,35 @@ class AndroidIntentTestAgent:
         output, rc = self._adb(["am", "start", "-n", f"{self.package}/{activity_name}"])
         accessible = "Error" not in output and rc == 0
         if accessible:
-            self.findings.append({
-                "severity": "high",
-                "type": "Exported Activity Access",
-                "detail": f"Activity {activity_name} accessible without authentication",
-            })
-        return {"activity": activity_name, "accessible": accessible, "output": output[:200]}
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Exported Activity Access",
+                    "detail": f"Activity {activity_name} accessible without authentication",
+                }
+            )
+        return {
+            "activity": activity_name,
+            "accessible": accessible,
+            "output": output[:200],
+        }
 
     def test_content_provider_query(self, uri):
         """Test content provider for data leakage."""
         output = self._drozer("app.provider.query", uri)
-        has_data = bool(output) and "No results" not in output and "error" not in output.lower()
+        has_data = (
+            bool(output)
+            and "No results" not in output
+            and "error" not in output.lower()
+        )
         if has_data:
-            self.findings.append({
-                "severity": "high",
-                "type": "Content Provider Data Leakage",
-                "detail": f"Data accessible via {uri}",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Content Provider Data Leakage",
+                    "detail": f"Data accessible via {uri}",
+                }
+            )
         return {"uri": uri, "has_data": has_data, "preview": output[:300]}
 
     def test_sql_injection(self, uri):
@@ -104,11 +123,13 @@ class AndroidIntentTestAgent:
         output = self._drozer("scanner.provider.injection")
         injectable = "Injectable" in output or "injection" in output.lower()
         if injectable:
-            self.findings.append({
-                "severity": "critical",
-                "type": "Content Provider SQL Injection",
-                "detail": f"SQL injection possible in {self.package}",
-            })
+            self.findings.append(
+                {
+                    "severity": "critical",
+                    "type": "Content Provider SQL Injection",
+                    "detail": f"SQL injection possible in {self.package}",
+                }
+            )
         return {"package": self.package, "injectable": injectable}
 
     def test_path_traversal(self):
@@ -116,11 +137,13 @@ class AndroidIntentTestAgent:
         output = self._drozer("scanner.provider.traversal")
         vulnerable = "Vulnerable" in output or "traversal" in output.lower()
         if vulnerable:
-            self.findings.append({
-                "severity": "critical",
-                "type": "Content Provider Path Traversal",
-                "detail": f"Path traversal in {self.package}",
-            })
+            self.findings.append(
+                {
+                    "severity": "critical",
+                    "type": "Content Provider Path Traversal",
+                    "detail": f"Path traversal in {self.package}",
+                }
+            )
         return {"vulnerable": vulnerable}
 
     def send_broadcast(self, action, extras=None):
@@ -137,11 +160,13 @@ class AndroidIntentTestAgent:
         output, _ = self._adb(["run-as", self.package, "id"])
         debuggable = "uid=" in output
         if debuggable:
-            self.findings.append({
-                "severity": "high",
-                "type": "Debuggable Application",
-                "detail": f"{self.package} is debuggable",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Debuggable Application",
+                    "detail": f"{self.package} is debuggable",
+                }
+            )
         return debuggable
 
     def generate_report(self):

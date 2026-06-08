@@ -22,8 +22,9 @@ except ImportError:
 class OAuth2TestAgent:
     """Tests OAuth 2.0 / OIDC implementations for security flaws."""
 
-    def __init__(self, auth_url, token_url, client_id, redirect_uri,
-                 output_dir="./oauth2_test"):
+    def __init__(
+        self, auth_url, token_url, client_id, redirect_uri, output_dir="./oauth2_test"
+    ):
         self.auth_url = auth_url
         self.token_url = token_url
         self.client_id = client_id
@@ -65,92 +66,146 @@ class OAuth2TestAgent:
         results = []
         for uri in bypasses:
             params = {
-                "response_type": "code", "client_id": self.client_id,
-                "redirect_uri": uri, "scope": "openid",
+                "response_type": "code",
+                "client_id": self.client_id,
+                "redirect_uri": uri,
+                "scope": "openid",
                 "state": secrets.token_urlsafe(16),
             }
             resp = self._get(f"{self.auth_url}?{urlencode(params)}")
             if resp and resp.status_code in (301, 302, 303, 307):
                 location = resp.headers.get("Location", "")
                 if "code=" in location or uri in location:
-                    results.append({"redirect_uri": uri, "accepted": True, "location": location[:200]})
-                    self.findings.append({"severity": "critical", "type": "Redirect URI Bypass",
-                                          "detail": f"Server accepted redirect_uri: {uri}"})
+                    results.append(
+                        {
+                            "redirect_uri": uri,
+                            "accepted": True,
+                            "location": location[:200],
+                        }
+                    )
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": "Redirect URI Bypass",
+                            "detail": f"Server accepted redirect_uri: {uri}",
+                        }
+                    )
         return results
 
     def test_state_parameter(self):
         """Test if state parameter is enforced (CSRF protection)."""
         params = {
-            "response_type": "code", "client_id": self.client_id,
-            "redirect_uri": self.redirect_uri, "scope": "openid",
+            "response_type": "code",
+            "client_id": self.client_id,
+            "redirect_uri": self.redirect_uri,
+            "scope": "openid",
         }
         resp = self._get(f"{self.auth_url}?{urlencode(params)}")
         if resp and resp.status_code in (301, 302, 303, 307):
             location = resp.headers.get("Location", "")
             if "state=" not in location:
-                self.findings.append({"severity": "high", "type": "Missing State Parameter",
-                                      "detail": "OAuth flow proceeds without state (CSRF risk)"})
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Missing State Parameter",
+                        "detail": "OAuth flow proceeds without state (CSRF risk)",
+                    }
+                )
                 return {"state_enforced": False}
         return {"state_enforced": True}
 
     def test_pkce_enforcement(self):
         """Test if PKCE is required for public clients."""
         params = {
-            "response_type": "code", "client_id": self.client_id,
-            "redirect_uri": self.redirect_uri, "scope": "openid",
+            "response_type": "code",
+            "client_id": self.client_id,
+            "redirect_uri": self.redirect_uri,
+            "scope": "openid",
             "state": secrets.token_urlsafe(16),
         }
         resp = self._get(f"{self.auth_url}?{urlencode(params)}")
         if resp and resp.status_code in (301, 302, 303, 307):
-            self.findings.append({"severity": "high", "type": "PKCE Not Required",
-                                  "detail": "Authorization proceeds without code_challenge"})
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "PKCE Not Required",
+                    "detail": "Authorization proceeds without code_challenge",
+                }
+            )
             return {"pkce_required": False}
         return {"pkce_required": True}
 
     def test_scope_escalation(self, extra_scopes=None):
         """Test requesting more scopes than authorized."""
-        scopes = extra_scopes or ["admin", "write", "delete", "users:admin", "openid profile email"]
+        scopes = extra_scopes or [
+            "admin",
+            "write",
+            "delete",
+            "users:admin",
+            "openid profile email",
+        ]
         results = []
         for scope in scopes:
             params = {
-                "response_type": "code", "client_id": self.client_id,
-                "redirect_uri": self.redirect_uri, "scope": scope,
+                "response_type": "code",
+                "client_id": self.client_id,
+                "redirect_uri": self.redirect_uri,
+                "scope": scope,
                 "state": secrets.token_urlsafe(16),
             }
             resp = self._get(f"{self.auth_url}?{urlencode(params)}")
             if resp and resp.status_code in (301, 302, 303, 307):
                 results.append({"scope": scope, "accepted": True})
-                self.findings.append({"severity": "high", "type": "Scope Escalation",
-                                      "detail": f"Server granted scope: {scope}"})
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Scope Escalation",
+                        "detail": f"Server granted scope: {scope}",
+                    }
+                )
         return results
 
     def test_code_reuse(self, auth_code):
         """Test if authorization code can be reused multiple times."""
         data = {
-            "grant_type": "authorization_code", "code": auth_code,
-            "client_id": self.client_id, "redirect_uri": self.redirect_uri,
+            "grant_type": "authorization_code",
+            "code": auth_code,
+            "client_id": self.client_id,
+            "redirect_uri": self.redirect_uri,
         }
         resp1 = self._post(self.token_url, data=data)
         resp2 = self._post(self.token_url, data=data)
         if resp2 and resp2.status_code == 200:
-            self.findings.append({"severity": "high", "type": "Code Reuse",
-                                  "detail": "Authorization code accepted multiple times"})
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Code Reuse",
+                    "detail": "Authorization code accepted multiple times",
+                }
+            )
             return {"reusable": True}
         return {"reusable": False}
 
     def test_token_in_url(self):
         """Test if implicit flow returns tokens in URL fragment."""
         params = {
-            "response_type": "token", "client_id": self.client_id,
-            "redirect_uri": self.redirect_uri, "scope": "openid",
+            "response_type": "token",
+            "client_id": self.client_id,
+            "redirect_uri": self.redirect_uri,
+            "scope": "openid",
             "state": secrets.token_urlsafe(16),
         }
         resp = self._get(f"{self.auth_url}?{urlencode(params)}")
         if resp and resp.status_code in (301, 302, 303, 307):
             location = resp.headers.get("Location", "")
             if "access_token=" in location:
-                self.findings.append({"severity": "medium", "type": "Implicit Flow Token Exposure",
-                                      "detail": "Access token returned in URL fragment"})
+                self.findings.append(
+                    {
+                        "severity": "medium",
+                        "type": "Implicit Flow Token Exposure",
+                        "detail": "Access token returned in URL fragment",
+                    }
+                )
                 return {"token_in_url": True}
         return {"token_in_url": False}
 
@@ -183,7 +238,9 @@ class OAuth2TestAgent:
 
 def main():
     if len(sys.argv) < 5:
-        print("Usage: agent.py <auth_url> <token_url> <client_id> <redirect_uri> [--code <auth_code>]")
+        print(
+            "Usage: agent.py <auth_url> <token_url> <client_id> <redirect_uri> [--code <auth_code>]"
+        )
         sys.exit(1)
     auth_url, token_url, client_id, redirect_uri = sys.argv[1:5]
     code = None

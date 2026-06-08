@@ -31,7 +31,9 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.backends import default_backend
 from cryptography.exceptions import InvalidSignature
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 RECOMMENDED_KEY_SIZE = 4096
@@ -129,7 +131,9 @@ def load_private_key(key_path: str, passphrase: Optional[str] = None):
     """Load an RSA private key from PEM file."""
     key_data = Path(key_path).read_bytes()
     pwd = passphrase.encode() if passphrase else None
-    return serialization.load_pem_private_key(key_data, password=pwd, backend=default_backend())
+    return serialization.load_pem_private_key(
+        key_data, password=pwd, backend=default_backend()
+    )
 
 
 def load_public_key(key_path: str):
@@ -204,7 +208,9 @@ def get_key_info(key_path: str, passphrase: Optional[str] = None) -> Dict:
 
     try:
         pwd = passphrase.encode() if passphrase else None
-        key = serialization.load_pem_private_key(key_data, password=pwd, backend=default_backend())
+        key = serialization.load_pem_private_key(
+            key_data, password=pwd, backend=default_backend()
+        )
         key_type = "private"
         public_key = key.public_key()
     except (ValueError, TypeError):
@@ -256,7 +262,9 @@ def rotate_keys(keystore_dir: str, passphrase: Optional[str] = None) -> Dict:
         key_size=RECOMMENDED_KEY_SIZE, passphrase=passphrase
     )
 
-    result = save_keypair(keystore_dir, private_pem, public_pem, metadata, version=version)
+    result = save_keypair(
+        keystore_dir, private_pem, public_pem, metadata, version=version
+    )
 
     # Update current key symlink info
     current_meta = {

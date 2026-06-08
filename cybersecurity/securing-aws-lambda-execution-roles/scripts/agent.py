@@ -16,13 +16,17 @@ def list_lambda_roles(region="us-east-1"):
         for func in page["Functions"]:
             role_arn = func["Role"]
             role_name = role_arn.split("/")[-1]
-            functions.append({
-                "function_name": func["FunctionName"],
-                "runtime": func.get("Runtime", "N/A"),
-                "role_name": role_name,
-                "role_arn": role_arn,
-            })
-            print(f"  {func['FunctionName']} -> {role_name} ({func.get('Runtime', 'N/A')})")
+            functions.append(
+                {
+                    "function_name": func["FunctionName"],
+                    "runtime": func.get("Runtime", "N/A"),
+                    "role_name": role_name,
+                    "role_arn": role_arn,
+                }
+            )
+            print(
+                f"  {func['FunctionName']} -> {role_name} ({func.get('Runtime', 'N/A')})"
+            )
     print(f"\n[*] Total Lambda functions: {len(functions)}")
     return functions
 
@@ -32,20 +36,31 @@ def audit_role_permissions(role_name):
     iam = boto3.client("iam")
     findings = []
     attached = iam.list_attached_role_policies(RoleName=role_name)["AttachedPolicies"]
-    broad_policies = ["AdministratorAccess", "PowerUserAccess", "AmazonS3FullAccess",
-                      "AmazonDynamoDBFullAccess", "AmazonSQSFullAccess"]
+    broad_policies = [
+        "AdministratorAccess",
+        "PowerUserAccess",
+        "AmazonS3FullAccess",
+        "AmazonDynamoDBFullAccess",
+        "AmazonSQSFullAccess",
+    ]
     for pol in attached:
         if pol["PolicyName"] in broad_policies:
-            findings.append({
-                "type": "OVERPRIVILEGED_MANAGED_POLICY", "severity": "CRITICAL",
-                "role": role_name, "policy": pol["PolicyName"],
-                "detail": f"Broad managed policy '{pol['PolicyName']}' attached to Lambda role",
-            })
+            findings.append(
+                {
+                    "type": "OVERPRIVILEGED_MANAGED_POLICY",
+                    "severity": "CRITICAL",
+                    "role": role_name,
+                    "policy": pol["PolicyName"],
+                    "detail": f"Broad managed policy '{pol['PolicyName']}' attached to Lambda role",
+                }
+            )
             print(f"  [!] CRITICAL: {role_name} has {pol['PolicyName']}")
 
     inline_names = iam.list_role_policies(RoleName=role_name)["PolicyNames"]
     for pol_name in inline_names:
-        doc = iam.get_role_policy(RoleName=role_name, PolicyName=pol_name)["PolicyDocument"]
+        doc = iam.get_role_policy(RoleName=role_name, PolicyName=pol_name)[
+            "PolicyDocument"
+        ]
         for stmt in doc.get("Statement", []):
             if stmt.get("Effect") != "Allow":
                 continue
@@ -57,11 +72,15 @@ def audit_role_permissions(role_name):
                 resources = [resources]
             wildcard_actions = [a for a in actions if a.endswith(":*") or a == "*"]
             if wildcard_actions and "*" in resources:
-                findings.append({
-                    "type": "WILDCARD_POLICY", "severity": "HIGH",
-                    "role": role_name, "policy": pol_name,
-                    "detail": f"Wildcard actions {wildcard_actions} on Resource '*'",
-                })
+                findings.append(
+                    {
+                        "type": "WILDCARD_POLICY",
+                        "severity": "HIGH",
+                        "role": role_name,
+                        "policy": pol_name,
+                        "detail": f"Wildcard actions {wildcard_actions} on Resource '*'",
+                    }
+                )
                 print(f"  [!] HIGH: {role_name}/{pol_name} has wildcard actions on *")
     return findings
 
@@ -90,12 +109,17 @@ def check_trust_policy(role_name):
         principal = stmt.get("Principal", {})
         service = principal.get("Service", "")
         if service == "lambda.amazonaws.com" and not conditions:
-            findings.append({
-                "type": "MISSING_TRUST_CONDITION", "severity": "MEDIUM",
-                "role": role_name,
-                "detail": "Trust policy lacks aws:SourceAccount or aws:SourceArn condition",
-            })
-            print(f"  [!] MEDIUM: {role_name} trust policy lacks confused deputy prevention")
+            findings.append(
+                {
+                    "type": "MISSING_TRUST_CONDITION",
+                    "severity": "MEDIUM",
+                    "role": role_name,
+                    "detail": "Trust policy lacks aws:SourceAccount or aws:SourceArn condition",
+                }
+            )
+            print(
+                f"  [!] MEDIUM: {role_name} trust policy lacks confused deputy prevention"
+            )
     return findings
 
 
@@ -129,23 +153,40 @@ def full_audit(region="us-east-1"):
         all_findings.extend(check_trust_policy(role_name))
         has_boundary = check_permission_boundary(role_name)
         if not has_boundary:
-            all_findings.append({
-                "type": "NO_PERMISSION_BOUNDARY", "severity": "MEDIUM",
-                "role": role_name, "detail": "No permission boundary applied",
-            })
+            all_findings.append(
+                {
+                    "type": "NO_PERMISSION_BOUNDARY",
+                    "severity": "MEDIUM",
+                    "role": role_name,
+                    "detail": "No permission boundary applied",
+                }
+            )
 
     critical = sum(1 for f in all_findings if f["severity"] == "CRITICAL")
     high = sum(1 for f in all_findings if f["severity"] == "HIGH")
     medium = sum(1 for f in all_findings if f["severity"] == "MEDIUM")
-    print(f"\n[*] Audit complete: {len(all_findings)} findings "
-          f"(Critical: {critical}, High: {high}, Medium: {medium})")
+    print(
+        f"\n[*] Audit complete: {len(all_findings)} findings "
+        f"(Critical: {critical}, High: {high}, Medium: {medium})"
+    )
     return all_findings
 
 
 def main():
-    parser = argparse.ArgumentParser(description="AWS Lambda Execution Role Security Agent")
-    parser.add_argument("action", choices=["list", "audit-role", "full-audit", "check-boundary",
-                                           "check-trust", "validate-policy"])
+    parser = argparse.ArgumentParser(
+        description="AWS Lambda Execution Role Security Agent"
+    )
+    parser.add_argument(
+        "action",
+        choices=[
+            "list",
+            "audit-role",
+            "full-audit",
+            "check-boundary",
+            "check-trust",
+            "validate-policy",
+        ],
+    )
     parser.add_argument("--role", help="Role name to audit")
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("--policy-file", help="Policy JSON file to validate")

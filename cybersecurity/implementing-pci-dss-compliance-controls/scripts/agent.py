@@ -5,6 +5,7 @@ Audits systems and configurations against PCI DSS v4.0 requirements
 including network segmentation, encryption, access controls, logging,
 vulnerability management, and secure configuration checks.
 """
+
 import argparse
 import json
 import os
@@ -27,36 +28,57 @@ def check_tls_configuration(host, port=443):
                 protocol = ssock.version()
                 cipher = ssock.cipher()
                 if protocol in ("TLSv1.0", "TLSv1.1", "SSLv3", "SSLv2"):
-                    findings.append({
-                        "requirement": "4.2.1", "check": "TLS Protocol Version",
-                        "status": "FAIL", "severity": "CRITICAL",
-                        "detail": f"Deprecated protocol: {protocol}",
-                    })
+                    findings.append(
+                        {
+                            "requirement": "4.2.1",
+                            "check": "TLS Protocol Version",
+                            "status": "FAIL",
+                            "severity": "CRITICAL",
+                            "detail": f"Deprecated protocol: {protocol}",
+                        }
+                    )
                 else:
-                    findings.append({
-                        "requirement": "4.2.1", "check": "TLS Protocol Version",
-                        "status": "PASS", "severity": "INFO",
-                        "detail": f"Protocol: {protocol}",
-                    })
+                    findings.append(
+                        {
+                            "requirement": "4.2.1",
+                            "check": "TLS Protocol Version",
+                            "status": "PASS",
+                            "severity": "INFO",
+                            "detail": f"Protocol: {protocol}",
+                        }
+                    )
                 if cipher:
                     weak_ciphers = ["RC4", "DES", "3DES", "NULL", "EXPORT", "MD5"]
                     if any(w in cipher[0] for w in weak_ciphers):
-                        findings.append({
-                            "requirement": "4.2.1", "check": "Cipher Strength",
-                            "status": "FAIL", "severity": "HIGH",
-                            "detail": f"Weak cipher: {cipher[0]}",
-                        })
+                        findings.append(
+                            {
+                                "requirement": "4.2.1",
+                                "check": "Cipher Strength",
+                                "status": "FAIL",
+                                "severity": "HIGH",
+                                "detail": f"Weak cipher: {cipher[0]}",
+                            }
+                        )
                     else:
-                        findings.append({
-                            "requirement": "4.2.1", "check": "Cipher Strength",
-                            "status": "PASS", "severity": "INFO",
-                            "detail": f"Cipher: {cipher[0]} ({cipher[2]} bits)",
-                        })
+                        findings.append(
+                            {
+                                "requirement": "4.2.1",
+                                "check": "Cipher Strength",
+                                "status": "PASS",
+                                "severity": "INFO",
+                                "detail": f"Cipher: {cipher[0]} ({cipher[2]} bits)",
+                            }
+                        )
     except Exception as e:
-        findings.append({
-            "requirement": "4.2.1", "check": "TLS Connection",
-            "status": "ERROR", "severity": "HIGH", "detail": str(e)[:100],
-        })
+        findings.append(
+            {
+                "requirement": "4.2.1",
+                "check": "TLS Connection",
+                "status": "ERROR",
+                "severity": "HIGH",
+                "detail": str(e)[:100],
+            }
+        )
     return findings
 
 
@@ -67,33 +89,48 @@ def check_password_policy():
 
     if sys.platform != "win32":
         # Check PAM password quality
-        pam_files = ["/etc/pam.d/common-password", "/etc/pam.d/system-auth",
-                     "/etc/security/pwquality.conf"]
+        pam_files = [
+            "/etc/pam.d/common-password",
+            "/etc/pam.d/system-auth",
+            "/etc/security/pwquality.conf",
+        ]
         for pam_file in pam_files:
             if os.path.isfile(pam_file):
                 with open(pam_file, "r") as f:
                     content = f.read()
                 if "minlen" in content:
-                    match = re.search(r'minlen\s*=\s*(\d+)', content)
+                    match = re.search(r"minlen\s*=\s*(\d+)", content)
                     if match and int(match.group(1)) >= 12:
-                        findings.append({
-                            "requirement": "8.3.6", "check": "Min password length",
-                            "status": "PASS", "severity": "INFO",
-                            "detail": f"minlen={match.group(1)} in {pam_file}",
-                        })
+                        findings.append(
+                            {
+                                "requirement": "8.3.6",
+                                "check": "Min password length",
+                                "status": "PASS",
+                                "severity": "INFO",
+                                "detail": f"minlen={match.group(1)} in {pam_file}",
+                            }
+                        )
                     else:
-                        findings.append({
-                            "requirement": "8.3.6", "check": "Min password length",
-                            "status": "FAIL", "severity": "HIGH",
-                            "detail": f"Password minlen < 12 in {pam_file}",
-                        })
+                        findings.append(
+                            {
+                                "requirement": "8.3.6",
+                                "check": "Min password length",
+                                "status": "FAIL",
+                                "severity": "HIGH",
+                                "detail": f"Password minlen < 12 in {pam_file}",
+                            }
+                        )
                 break
         else:
-            findings.append({
-                "requirement": "8.3.6", "check": "Password policy config",
-                "status": "WARN", "severity": "MEDIUM",
-                "detail": "Could not find PAM password config",
-            })
+            findings.append(
+                {
+                    "requirement": "8.3.6",
+                    "check": "Password policy config",
+                    "status": "WARN",
+                    "severity": "MEDIUM",
+                    "detail": "Could not find PAM password config",
+                }
+            )
     return findings
 
 
@@ -106,31 +143,47 @@ def check_audit_logging():
         # Check auditd
         result = subprocess.run(
             ["systemctl", "is-active", "auditd"],
-            capture_output=True, text=True, timeout=10,
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         if result.stdout.strip() == "active":
-            findings.append({
-                "requirement": "10.2", "check": "Audit daemon running",
-                "status": "PASS", "severity": "INFO",
-            })
+            findings.append(
+                {
+                    "requirement": "10.2",
+                    "check": "Audit daemon running",
+                    "status": "PASS",
+                    "severity": "INFO",
+                }
+            )
         else:
-            findings.append({
-                "requirement": "10.2", "check": "Audit daemon running",
-                "status": "FAIL", "severity": "CRITICAL",
-                "detail": "auditd is not running",
-            })
+            findings.append(
+                {
+                    "requirement": "10.2",
+                    "check": "Audit daemon running",
+                    "status": "FAIL",
+                    "severity": "CRITICAL",
+                    "detail": "auditd is not running",
+                }
+            )
 
         # Check syslog
         for syslog in ["rsyslog", "syslog-ng"]:
             result = subprocess.run(
                 ["systemctl", "is-active", syslog],
-                capture_output=True, text=True, timeout=10,
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             if result.stdout.strip() == "active":
-                findings.append({
-                    "requirement": "10.2", "check": f"{syslog} running",
-                    "status": "PASS", "severity": "INFO",
-                })
+                findings.append(
+                    {
+                        "requirement": "10.2",
+                        "check": f"{syslog} running",
+                        "status": "PASS",
+                        "severity": "INFO",
+                    }
+                )
                 break
     return findings
 
@@ -151,20 +204,28 @@ def check_file_integrity():
     for tool_name, paths in fim_tools.items():
         for path in paths:
             if os.path.isfile(path):
-                findings.append({
-                    "requirement": "11.5.2", "check": f"FIM tool: {tool_name}",
-                    "status": "PASS", "severity": "INFO",
-                    "detail": f"Found at {path}",
-                })
+                findings.append(
+                    {
+                        "requirement": "11.5.2",
+                        "check": f"FIM tool: {tool_name}",
+                        "status": "PASS",
+                        "severity": "INFO",
+                        "detail": f"Found at {path}",
+                    }
+                )
                 found_fim = True
                 break
 
     if not found_fim:
-        findings.append({
-            "requirement": "11.5.2", "check": "File integrity monitoring",
-            "status": "FAIL", "severity": "HIGH",
-            "detail": "No FIM tool detected (AIDE, OSSEC, Tripwire, Samhain)",
-        })
+        findings.append(
+            {
+                "requirement": "11.5.2",
+                "check": "File integrity monitoring",
+                "status": "FAIL",
+                "severity": "HIGH",
+                "detail": "No FIM tool detected (AIDE, OSSEC, Tripwire, Samhain)",
+            }
+        )
 
     return findings
 
@@ -182,12 +243,19 @@ def check_default_credentials():
                 if len(parts) >= 7:
                     username = parts[0]
                     shell = parts[6]
-                    if username in ("guest", "test", "demo", "admin") and shell not in ("/usr/sbin/nologin", "/bin/false"):
-                        findings.append({
-                            "requirement": "2.2.2", "check": f"Default account: {username}",
-                            "status": "FAIL", "severity": "HIGH",
-                            "detail": f"Account '{username}' has login shell: {shell}",
-                        })
+                    if username in ("guest", "test", "demo", "admin") and shell not in (
+                        "/usr/sbin/nologin",
+                        "/bin/false",
+                    ):
+                        findings.append(
+                            {
+                                "requirement": "2.2.2",
+                                "check": f"Default account: {username}",
+                                "status": "FAIL",
+                                "severity": "HIGH",
+                                "detail": f"Account '{username}' has login shell: {shell}",
+                            }
+                        )
 
     return findings
 
@@ -206,20 +274,28 @@ def check_network_segmentation(target_ip, ports=None):
             result = sock.connect_ex((target_ip, port))
             sock.close()
             if result == 0:
-                findings.append({
-                    "requirement": "1.3", "check": f"Port {port} reachable",
-                    "status": "WARN", "severity": "MEDIUM",
-                    "detail": f"{target_ip}:{port} is open from this network segment",
-                })
+                findings.append(
+                    {
+                        "requirement": "1.3",
+                        "check": f"Port {port} reachable",
+                        "status": "WARN",
+                        "severity": "MEDIUM",
+                        "detail": f"{target_ip}:{port} is open from this network segment",
+                    }
+                )
         except Exception:
             pass
 
     if not findings:
-        findings.append({
-            "requirement": "1.3", "check": "Network segmentation",
-            "status": "PASS", "severity": "INFO",
-            "detail": f"No tested ports reachable on {target_ip}",
-        })
+        findings.append(
+            {
+                "requirement": "1.3",
+                "check": "Network segmentation",
+                "status": "PASS",
+                "severity": "INFO",
+                "detail": f"No tested ports reachable on {target_ip}",
+            }
+        )
 
     return findings
 
@@ -256,7 +332,9 @@ def format_summary(all_findings):
         print(f"\n  Failed Checks:")
         for f in all_findings:
             if f["status"] == "FAIL":
-                print(f"    [{f['severity']:8s}] Req {f['requirement']}: {f['check']} - {f.get('detail', '')}")
+                print(
+                    f"    [{f['severity']:8s}] Req {f['requirement']}: {f['check']} - {f.get('detail', '')}"
+                )
 
     severity_counts = {}
     for f in all_findings:
@@ -267,7 +345,9 @@ def format_summary(all_findings):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="PCI DSS compliance control audit agent")
+    parser = argparse.ArgumentParser(
+        description="PCI DSS compliance control audit agent"
+    )
     parser.add_argument("--tls-host", help="Host to check TLS configuration")
     parser.add_argument("--tls-port", type=int, default=443)
     parser.add_argument("--segment-target", help="IP to check network segmentation")
@@ -293,7 +373,9 @@ def main():
         all_findings.extend(check_network_segmentation(args.segment_target))
 
     if not all_findings:
-        print("[!] No checks performed. Use --tls-host or other options.", file=sys.stderr)
+        print(
+            "[!] No checks performed. Use --tls-host or other options.", file=sys.stderr
+        )
         sys.exit(1)
 
     severity_counts = format_summary(all_findings)
@@ -305,10 +387,13 @@ def main():
         "findings": all_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0
-            else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0 else "LOW"
+            )
         ),
     }
 

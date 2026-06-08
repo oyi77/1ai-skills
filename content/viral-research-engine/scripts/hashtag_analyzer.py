@@ -12,38 +12,117 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-
 # Base hashtags to track per niche
 NICHE_HASHTAGS = {
     "ai_tools": [
-        "#aitools", "#chatgpt", "#artificialintelligence", "#toolsai", "#aibisnis",
-        "#aigratis", "#teknologiai", "#automatisasi", "#promptengineer", "#chatgptindonesia",
-        "#kecerdasanbuatan", "#digitaltools", "#productivity", "#aimarketing", "#aicontent",
-        "#gemini", "#midjourney", "#stablediffusion", "#nolangkode", "#nocode",
+        "#aitools",
+        "#chatgpt",
+        "#artificialintelligence",
+        "#toolsai",
+        "#aibisnis",
+        "#aigratis",
+        "#teknologiai",
+        "#automatisasi",
+        "#promptengineer",
+        "#chatgptindonesia",
+        "#kecerdasanbuatan",
+        "#digitaltools",
+        "#productivity",
+        "#aimarketing",
+        "#aicontent",
+        "#gemini",
+        "#midjourney",
+        "#stablediffusion",
+        "#nolangkode",
+        "#nocode",
     ],
     "digital_marketing": [
-        "#digitalmarketing", "#contentcreator", "#tipskonten", "#socialmedia", "#marketingtips",
-        "#digitalmarketingindonesia", "#contentmarketing", "#copywriting", "#seotools", "#growthacking",
-        "#instagramgrowth", "#tiktokmarketing", "#viralmarketing", "#onlinemarketing", "#brandingstrategy",
-        "#growthhacking", "#emailmarketing", "#affiliatemarketing", "#funnelmarketing", "#kontenkreatif",
+        "#digitalmarketing",
+        "#contentcreator",
+        "#tipskonten",
+        "#socialmedia",
+        "#marketingtips",
+        "#digitalmarketingindonesia",
+        "#contentmarketing",
+        "#copywriting",
+        "#seotools",
+        "#growthacking",
+        "#instagramgrowth",
+        "#tiktokmarketing",
+        "#viralmarketing",
+        "#onlinemarketing",
+        "#brandingstrategy",
+        "#growthhacking",
+        "#emailmarketing",
+        "#affiliatemarketing",
+        "#funnelmarketing",
+        "#kontenkreatif",
     ],
     "kuliner": [
-        "#bisniskuliner", "#kulinerviral", "#resepbisnis", "#foodbusiness", "#kuliner",
-        "#makananenak", "#resepmasakan", "#foodpreneur", "#jajananenak", "#streetfood",
-        "#kulinerindonesia", "#warungmakan", "#bisnismakanan", "#foodcontent", "#resepviralindo",
-        "#masakanenak", "#makanansehat", "#dessertindonesia", "#snackviral", "#kopisusu",
+        "#bisniskuliner",
+        "#kulinerviral",
+        "#resepbisnis",
+        "#foodbusiness",
+        "#kuliner",
+        "#makananenak",
+        "#resepmasakan",
+        "#foodpreneur",
+        "#jajananenak",
+        "#streetfood",
+        "#kulinerindonesia",
+        "#warungmakan",
+        "#bisnismakanan",
+        "#foodcontent",
+        "#resepviralindo",
+        "#masakanenak",
+        "#makanansehat",
+        "#dessertindonesia",
+        "#snackviral",
+        "#kopisusu",
     ],
     "side_hustle": [
-        "#sidehustle", "#jualanonline", "#penghasilanpasif", "#bisnisonline", "#cariacuan",
-        "#bisnissampingan", "#pasiveincome", "#dropship", "#reseller", "#affiliateindonesia",
-        "#kerjadarirumah", "#workfromhome", "#freelance", "#digitalproduct", "#jualdigital",
-        "#lazadaaffiliate", "#tokopediaaffiliate", "#shopeeaffiliate", "#jualbuku", "#jasaonline",
+        "#sidehustle",
+        "#jualanonline",
+        "#penghasilanpasif",
+        "#bisnisonline",
+        "#cariacuan",
+        "#bisnissampingan",
+        "#pasiveincome",
+        "#dropship",
+        "#reseller",
+        "#affiliateindonesia",
+        "#kerjadarirumah",
+        "#workfromhome",
+        "#freelance",
+        "#digitalproduct",
+        "#jualdigital",
+        "#lazadaaffiliate",
+        "#tokopediaaffiliate",
+        "#shopeeaffiliate",
+        "#jualbuku",
+        "#jasaonline",
     ],
     "education": [
-        "#selfimprovement", "#belajar", "#edukasi", "#finansial", "#pengembangandiri",
-        "#investasi", "#belajarinvestasi", "#literasikeuangan", "#belajardigital", "#skillup",
-        "#motivasi", "#inspirasi", "#tipskarir", "#successmindset", "#growthmindset",
-        "#belajaronline", "#kursusonline", "#sertifikasi", "#upskilling", "#kursusgratis",
+        "#selfimprovement",
+        "#belajar",
+        "#edukasi",
+        "#finansial",
+        "#pengembangandiri",
+        "#investasi",
+        "#belajarinvestasi",
+        "#literasikeuangan",
+        "#belajardigital",
+        "#skillup",
+        "#motivasi",
+        "#inspirasi",
+        "#tipskarir",
+        "#successmindset",
+        "#growthmindset",
+        "#belajaronline",
+        "#kursusonline",
+        "#sertifikasi",
+        "#upskilling",
+        "#kursusgratis",
     ],
 }
 
@@ -108,24 +187,29 @@ def get_hashtag_recommendations(niche_key: str) -> list[dict]:
     recommendations = []
 
     for tag in tags:
-        tag_data = KNOWN_REACH.get(tag, {
-            "posts": 50_000,
-            "tier": "mid",
-            "weekly_growth": "+10%",
-        })
+        tag_data = KNOWN_REACH.get(
+            tag,
+            {
+                "posts": 50_000,
+                "tier": "mid",
+                "weekly_growth": "+10%",
+            },
+        )
 
         score = score_hashtag(tag, tag_data)
         tier_info = REACH_TIERS.get(tag_data["tier"], REACH_TIERS["micro"])
 
-        recommendations.append({
-            "hashtag": tag,
-            "estimated_posts": tag_data["posts"],
-            "estimated_reach": tier_info["est_reach"],
-            "competition_level": tier_info["competition"],
-            "weekly_growth": tag_data.get("weekly_growth", "N/A"),
-            "relevance_score": round(score, 2),
-            "tier": tag_data["tier"],
-        })
+        recommendations.append(
+            {
+                "hashtag": tag,
+                "estimated_posts": tag_data["posts"],
+                "estimated_reach": tier_info["est_reach"],
+                "competition_level": tier_info["competition"],
+                "weekly_growth": tag_data.get("weekly_growth", "N/A"),
+                "relevance_score": round(score, 2),
+                "tier": tag_data["tier"],
+            }
+        )
 
     # Sort by relevance score descending
     recommendations.sort(key=lambda x: x["relevance_score"], reverse=True)
@@ -183,7 +267,14 @@ def analyze_all_niches() -> dict:
         results["summary"][niche_key] = {
             "name": niche_name,
             "top_3": [r["hashtag"] for r in all_recs[:3]],
-            "best_growth": max(all_recs, key=lambda x: float(x["weekly_growth"].replace("+","").replace("%","") if isinstance(x["weekly_growth"], str) else 0))["hashtag"],
+            "best_growth": max(
+                all_recs,
+                key=lambda x: float(
+                    x["weekly_growth"].replace("+", "").replace("%", "")
+                    if isinstance(x["weekly_growth"], str)
+                    else 0
+                ),
+            )["hashtag"],
         }
 
     return results
@@ -209,7 +300,7 @@ def save_hashtag_recommendations(output_dir: str = None) -> str:
 
 if __name__ == "__main__":
     path = save_hashtag_recommendations()
-    
+
     # Print quick summary
     data = json.loads(Path(path).read_text())
     print("\n📊 HASHTAG ANALYSIS SUMMARY:")

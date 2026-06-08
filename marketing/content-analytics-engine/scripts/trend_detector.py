@@ -22,9 +22,9 @@ def parse_dt(dt_str: str) -> datetime | None:
 
 def group_by_date(analytics: list) -> dict:
     """Group analytics by published date (UTC+7)."""
-    daily = defaultdict(lambda: {
-        "views": 0, "likes": 0, "comments": 0, "shares": 0, "posts": 0
-    })
+    daily = defaultdict(
+        lambda: {"views": 0, "likes": 0, "comments": 0, "shares": 0, "posts": 0}
+    )
 
     for a in analytics:
         dt = parse_dt(a.get("platform_created_at"))
@@ -46,9 +46,7 @@ def group_by_date(analytics: list) -> dict:
 
 def group_by_hour(analytics: list) -> dict:
     """Group analytics by hour-of-day (UTC+7) — time-of-day analysis."""
-    hourly = defaultdict(lambda: {
-        "views": 0, "likes": 0, "posts": 0, "engagement": 0
-    })
+    hourly = defaultdict(lambda: {"views": 0, "likes": 0, "posts": 0, "engagement": 0})
 
     for a in analytics:
         dt = parse_dt(a.get("platform_created_at"))
@@ -81,7 +79,15 @@ def group_by_hour(analytics: list) -> dict:
 
 def group_by_day_of_week(analytics: list) -> dict:
     """Group by day of week to find best publishing days."""
-    dow_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    dow_names = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+    ]
     dow = defaultdict(lambda: {"views": 0, "posts": 0, "engagement": 0})
 
     for a in analytics:
@@ -141,7 +147,7 @@ def compute_growth_rate(daily: dict) -> dict:
         "first_half_views": v1,
         "second_half_views": v2,
         "first_period": f"{first_half[0]} → {first_half[-1]}",
-        "second_period": f"{second_half[0]} → {second_half[-1]}"
+        "second_period": f"{second_half[0]} → {second_half[-1]}",
     }
 
 
@@ -152,17 +158,21 @@ def best_posting_times(analytics: list) -> dict:
 
     # Best hours (by avg views, only count hours with posts)
     active_hours = {h: d for h, d in hourly.items() if d["posts"] > 0}
-    best_hours = sorted(active_hours.items(), key=lambda x: x[1]["avg_views"], reverse=True)[:3]
+    best_hours = sorted(
+        active_hours.items(), key=lambda x: x[1]["avg_views"], reverse=True
+    )[:3]
 
     # Best days
     active_days = {d: v for d, v in dow.items() if v["posts"] > 0}
-    best_days = sorted(active_days.items(), key=lambda x: x[1]["avg_views"], reverse=True)[:3]
+    best_days = sorted(
+        active_days.items(), key=lambda x: x[1]["avg_views"], reverse=True
+    )[:3]
 
     return {
         "best_hours": [{"hour": h, **d} for h, d in best_hours],
         "best_days": [{"day": d, **v} for d, v in best_days],
         "hourly_breakdown": hourly,
-        "daily_breakdown": dow
+        "daily_breakdown": dow,
     }
 
 
@@ -185,12 +195,13 @@ def weekly_trend_report(analytics: list) -> dict:
         "growth_analysis": growth,
         "platform_trends": platform_trends,
         "timing": timing,
-        "generated_at": datetime.now().isoformat()
+        "generated_at": datetime.now().isoformat(),
     }
 
 
 if __name__ == "__main__":
     import sys
+
     sys.path.insert(0, ".")
     from analytics_collector import collect_all
     import json
@@ -201,5 +212,7 @@ if __name__ == "__main__":
     print("📈 TREND ANALYSIS")
     print(f"Trend: {report['growth_analysis']['trend'].upper()}")
     print(f"Growth: {report['growth_analysis']['growth_pct']}%")
-    print(f"\nBest posting hours: {[x['hour'] for x in report['timing']['best_hours']]}")
+    print(
+        f"\nBest posting hours: {[x['hour'] for x in report['timing']['best_hours']]}"
+    )
     print(f"Best posting days: {[x['day'] for x in report['timing']['best_days']]}")

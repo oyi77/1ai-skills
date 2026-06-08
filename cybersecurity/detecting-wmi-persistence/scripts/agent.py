@@ -9,7 +9,9 @@ import re
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 REPLICATION_GUIDS = {
@@ -31,13 +33,23 @@ def query_sysmon_wmi_events(evtx_path=None, hours_back=72):
     events = []
     for event_id in [19, 20, 21]:
         cmd = [
-            "wevtutil", "qe", "Microsoft-Windows-Sysmon/Operational",
+            "wevtutil",
+            "qe",
+            "Microsoft-Windows-Sysmon/Operational",
             "/q:*[System[EventID={}]]".format(event_id),
-            "/f:xml", "/c:500",
+            "/f:xml",
+            "/c:500",
         ]
         if evtx_path:
-            cmd = ["wevtutil", "qe", evtx_path, "/lf:true",
-                   "/q:*[System[EventID={}]]".format(event_id), "/f:xml", "/c:500"]
+            cmd = [
+                "wevtutil",
+                "qe",
+                evtx_path,
+                "/lf:true",
+                "/q:*[System[EventID={}]]".format(event_id),
+                "/f:xml",
+                "/c:500",
+            ]
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
         for event_xml in re.findall(r"<Event.*?</Event>", result.stdout, re.DOTALL):
             try:
@@ -46,19 +58,23 @@ def query_sysmon_wmi_events(evtx_path=None, hours_back=72):
                 data = {}
                 for el in root.findall(".//s:Data", ns):
                     data[el.get("Name", "")] = el.text or ""
-                events.append({
-                    "event_id": event_id,
-                    "timestamp": root.findtext(".//s:TimeCreated/@SystemTime", "", ns),
-                    "computer": root.findtext(".//s:Computer", "", ns),
-                    "operation": data.get("Operation", ""),
-                    "event_type": data.get("EventType", ""),
-                    "consumer_type": data.get("Type", ""),
-                    "name": data.get("Name", ""),
-                    "destination": data.get("Destination", ""),
-                    "query": data.get("Query", ""),
-                    "user": data.get("User", ""),
-                    "raw_data": data,
-                })
+                events.append(
+                    {
+                        "event_id": event_id,
+                        "timestamp": root.findtext(
+                            ".//s:TimeCreated/@SystemTime", "", ns
+                        ),
+                        "computer": root.findtext(".//s:Computer", "", ns),
+                        "operation": data.get("Operation", ""),
+                        "event_type": data.get("EventType", ""),
+                        "consumer_type": data.get("Type", ""),
+                        "name": data.get("Name", ""),
+                        "destination": data.get("Destination", ""),
+                        "query": data.get("Query", ""),
+                        "user": data.get("User", ""),
+                        "raw_data": data,
+                    }
+                )
             except ET.ParseError:
                 continue
     logger.info("Parsed %d Sysmon WMI events (IDs 19/20/21)", len(events))
@@ -98,30 +114,52 @@ def analyze_suspicious_subscriptions(subscriptions):
             cmd_template = consumer.get("CommandLineTemplate", "")
             script_text = consumer.get("ScriptText", "")
             payload = cmd_template or script_text
-            if any(kw in payload.lower() for kw in ["powershell", "cmd.exe", "wscript", "cscript", "mshta", "certutil", "bitsadmin"]):
+            if any(
+                kw in payload.lower()
+                for kw in [
+                    "powershell",
+                    "cmd.exe",
+                    "wscript",
+                    "cscript",
+                    "mshta",
+                    "certutil",
+                    "bitsadmin",
+                ]
+            ):
                 severity = "critical"
             elif payload:
                 severity = "high"
-            findings.append({
-                "type": "suspicious_consumer",
-                "consumer_class": consumer_class,
-                "name": name,
-                "payload": payload[:500],
-                "severity": severity,
-                "mitre_technique": "T1546.003",
-            })
+            findings.append(
+                {
+                    "type": "suspicious_consumer",
+                    "consumer_class": consumer_class,
+                    "name": name,
+                    "payload": payload[:500],
+                    "severity": severity,
+                    "mitre_technique": "T1546.003",
+                }
+            )
     for filt in subscriptions.get("filters", []):
         name = filt.get("Name", "")
         query = filt.get("Query", "")
         if name not in KNOWN_GOOD_FILTERS:
-            if any(kw in query.lower() for kw in ["win32_processstarttr", "__instancecreationevent", "win32_logonsession"]):
-                findings.append({
-                    "type": "suspicious_filter",
-                    "name": name,
-                    "wql_query": query,
-                    "severity": "high",
-                    "mitre_technique": "T1546.003",
-                })
+            if any(
+                kw in query.lower()
+                for kw in [
+                    "win32_processstarttr",
+                    "__instancecreationevent",
+                    "win32_logonsession",
+                ]
+            ):
+                findings.append(
+                    {
+                        "type": "suspicious_filter",
+                        "name": name,
+                        "wql_query": query,
+                        "severity": "high",
+                        "mitre_technique": "T1546.003",
+                    }
+                )
     return findings
 
 
@@ -132,33 +170,49 @@ def analyze_sysmon_events(events):
         eid = event["event_id"]
         if eid == 20 and event.get("consumer_type") in SUSPICIOUS_CONSUMERS:
             destination = event.get("destination", "")
-            suspicious_cmds = ["powershell", "cmd.exe", "wscript", "mshta", "certutil", "regsvr32"]
+            suspicious_cmds = [
+                "powershell",
+                "cmd.exe",
+                "wscript",
+                "mshta",
+                "certutil",
+                "regsvr32",
+            ]
             if any(cmd in destination.lower() for cmd in suspicious_cmds):
-                findings.append({
-                    "type": "sysmon_suspicious_consumer",
-                    "event_id": eid,
-                    "consumer_type": event["consumer_type"],
-                    "destination": destination[:500],
-                    "computer": event["computer"],
-                    "timestamp": event["timestamp"],
-                    "user": event["user"],
-                    "severity": "critical",
-                })
+                findings.append(
+                    {
+                        "type": "sysmon_suspicious_consumer",
+                        "event_id": eid,
+                        "consumer_type": event["consumer_type"],
+                        "destination": destination[:500],
+                        "computer": event["computer"],
+                        "timestamp": event["timestamp"],
+                        "user": event["user"],
+                        "severity": "critical",
+                    }
+                )
         if eid == 19:
             query = event.get("query", "")
-            if "__instancecreationevent" in query.lower() or "win32_processstarttr" in query.lower():
-                findings.append({
-                    "type": "sysmon_suspicious_filter",
-                    "event_id": eid,
-                    "wql_query": query,
-                    "computer": event["computer"],
-                    "timestamp": event["timestamp"],
-                    "severity": "high",
-                })
+            if (
+                "__instancecreationevent" in query.lower()
+                or "win32_processstarttr" in query.lower()
+            ):
+                findings.append(
+                    {
+                        "type": "sysmon_suspicious_filter",
+                        "event_id": eid,
+                        "wql_query": query,
+                        "computer": event["computer"],
+                        "timestamp": event["timestamp"],
+                        "severity": "high",
+                    }
+                )
     return findings
 
 
-def generate_report(sysmon_events, live_subscriptions, sysmon_findings, subscription_findings):
+def generate_report(
+    sysmon_events, live_subscriptions, sysmon_findings, subscription_findings
+):
     """Generate comprehensive WMI persistence hunt report."""
     all_findings = sysmon_findings + subscription_findings
     report = {
@@ -171,7 +225,9 @@ def generate_report(sysmon_events, live_subscriptions, sysmon_findings, subscrip
             "bindings": len(live_subscriptions.get("bindings", [])),
         },
         "total_findings": len(all_findings),
-        "critical_findings": sum(1 for f in all_findings if f.get("severity") == "critical"),
+        "critical_findings": sum(
+            1 for f in all_findings if f.get("severity") == "critical"
+        ),
         "high_findings": sum(1 for f in all_findings if f.get("severity") == "high"),
         "findings": all_findings,
     }
@@ -181,7 +237,9 @@ def generate_report(sysmon_events, live_subscriptions, sysmon_findings, subscrip
 def main():
     parser = argparse.ArgumentParser(description="WMI Persistence Detection Agent")
     parser.add_argument("--evtx", help="Path to exported Sysmon .evtx file (optional)")
-    parser.add_argument("--skip-live", action="store_true", help="Skip live WMI enumeration")
+    parser.add_argument(
+        "--skip-live", action="store_true", help="Skip live WMI enumeration"
+    )
     parser.add_argument("--output", default="wmi_persistence_report.json")
     args = parser.parse_args()
 
@@ -197,8 +255,12 @@ def main():
     report = generate_report(sysmon_events, live_subs, sysmon_findings, sub_findings)
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("WMI hunt: %d events, %d findings (%d critical)",
-                len(sysmon_events), report["total_findings"], report["critical_findings"])
+    logger.info(
+        "WMI hunt: %d events, %d findings (%d critical)",
+        len(sysmon_events),
+        report["total_findings"],
+        report["critical_findings"],
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

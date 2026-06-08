@@ -55,27 +55,51 @@ class BoundaryTerraformGenerator:
         self.roles: list[BoundaryRole] = []
         self.oidc_config: dict = {}
 
-    def add_scope(self, name: str, description: str, scope_type: str = "project",
-                  parent: str = "global") -> BoundaryScope:
-        scope = BoundaryScope(name=name, description=description,
-                              scope_type=scope_type, parent_scope_id=parent)
+    def add_scope(
+        self,
+        name: str,
+        description: str,
+        scope_type: str = "project",
+        parent: str = "global",
+    ) -> BoundaryScope:
+        scope = BoundaryScope(
+            name=name,
+            description=description,
+            scope_type=scope_type,
+            parent_scope_id=parent,
+        )
         self.scopes.append(scope)
         return scope
 
-    def add_target(self, name: str, description: str, target_type: str,
-                   port: int, hosts: list, **kwargs) -> BoundaryTarget:
+    def add_target(
+        self,
+        name: str,
+        description: str,
+        target_type: str,
+        port: int,
+        hosts: list,
+        **kwargs,
+    ) -> BoundaryTarget:
         target = BoundaryTarget(
-            name=name, description=description, target_type=target_type,
-            default_port=port, host_addresses=hosts, **kwargs
+            name=name,
+            description=description,
+            target_type=target_type,
+            default_port=port,
+            host_addresses=hosts,
+            **kwargs,
         )
         self.targets.append(target)
         return target
 
-    def add_role(self, name: str, description: str, scope_id: str,
-                 grants: list, groups: list) -> BoundaryRole:
+    def add_role(
+        self, name: str, description: str, scope_id: str, grants: list, groups: list
+    ) -> BoundaryRole:
         role = BoundaryRole(
-            name=name, description=description, scope_id=scope_id,
-            grant_strings=grants, principal_groups=groups
+            name=name,
+            description=description,
+            scope_id=scope_id,
+            grant_strings=grants,
+            principal_groups=groups,
         )
         self.roles.append(role)
         return role
@@ -88,7 +112,7 @@ class BoundaryTerraformGenerator:
         }
 
     def generate_provider_block(self) -> str:
-        return f'''terraform {{
+        return f"""terraform {{
   required_providers {{
     boundary = {{
       source  = "hashicorp/boundary"
@@ -101,14 +125,14 @@ provider "boundary" {{
   addr             = "{self.boundary_addr}"
   recovery_kms_hcl = file("recovery_kms.hcl")
 }}
-'''
+"""
 
     def generate_scopes(self) -> str:
         blocks = []
         for scope in self.scopes:
             resource_name = scope.name.replace("-", "_")
             if scope.scope_type == "org":
-                blocks.append(f'''
+                blocks.append(f"""
 resource "boundary_scope" "{resource_name}" {{
   scope_id                 = "{scope.parent_scope_id}"
   name                     = "{scope.name}"
@@ -116,10 +140,10 @@ resource "boundary_scope" "{resource_name}" {{
   auto_create_admin_role   = true
   auto_create_default_role = true
 }}
-''')
+""")
             else:
                 parent_ref = scope.parent_scope_id.replace("-", "_")
-                blocks.append(f'''
+                blocks.append(f"""
 resource "boundary_scope" "{resource_name}" {{
   name                     = "{scope.name}"
   description              = "{scope.description}"
@@ -127,7 +151,7 @@ resource "boundary_scope" "{resource_name}" {{
   auto_create_admin_role   = true
   auto_create_default_role = true
 }}
-''')
+""")
         return "\n".join(blocks)
 
     def generate_targets(self) -> str:
@@ -152,7 +176,7 @@ resource "boundary_scope" "{resource_name}" {{
     boundary_credential_library_vault_ssh_certificate.{resource_name}_cert.id
   ]"""
 
-            blocks.append(f'''
+            blocks.append(f"""
 resource "boundary_target" "{resource_name}" {{
   name         = "{target.name}"
   description  = "{target.description}"
@@ -163,7 +187,7 @@ resource "boundary_target" "{resource_name}" {{
   session_max_seconds      = {target.session_max_seconds}
   session_connection_limit = {target.session_connection_limit}{recording_block}{credential_block}
 }}
-''')
+""")
         return "\n".join(blocks)
 
     def generate_roles(self) -> str:
@@ -175,7 +199,7 @@ resource "boundary_target" "{resource_name}" {{
                 f'boundary_managed_group.{g.replace("-", "_")}.id'
                 for g in role.principal_groups
             )
-            blocks.append(f'''
+            blocks.append(f"""
 resource "boundary_role" "{resource_name}" {{
   name          = "{role.name}"
   description   = "{role.description}"
@@ -187,7 +211,7 @@ resource "boundary_role" "{resource_name}" {{
     {principals}
   ]
 }}
-''')
+""")
         return "\n".join(blocks)
 
     def generate_full_config(self) -> str:
@@ -220,52 +244,68 @@ class BoundaryAccessAuditor:
     def check_session_limits(self, targets: list[BoundaryTarget]) -> list[dict]:
         for target in targets:
             if target.session_max_seconds > 7200:
-                self.findings.append({
-                    "severity": "WARNING",
-                    "target": target.name,
-                    "finding": f"Session max exceeds 2 hours ({target.session_max_seconds}s)",
-                    "recommendation": "Reduce session duration for privileged targets",
-                })
+                self.findings.append(
+                    {
+                        "severity": "WARNING",
+                        "target": target.name,
+                        "finding": f"Session max exceeds 2 hours ({target.session_max_seconds}s)",
+                        "recommendation": "Reduce session duration for privileged targets",
+                    }
+                )
             if target.session_connection_limit == -1:
-                self.findings.append({
-                    "severity": "INFO",
-                    "target": target.name,
-                    "finding": "Unlimited connections per session",
-                    "recommendation": "Consider setting connection limits for sensitive targets",
-                })
+                self.findings.append(
+                    {
+                        "severity": "INFO",
+                        "target": target.name,
+                        "finding": "Unlimited connections per session",
+                        "recommendation": "Consider setting connection limits for sensitive targets",
+                    }
+                )
             if target.default_port == 22 and not target.enable_recording:
-                self.findings.append({
-                    "severity": "HIGH",
-                    "target": target.name,
-                    "finding": "SSH target without session recording",
-                    "recommendation": "Enable session recording for SSH access",
-                })
+                self.findings.append(
+                    {
+                        "severity": "HIGH",
+                        "target": target.name,
+                        "finding": "SSH target without session recording",
+                        "recommendation": "Enable session recording for SSH access",
+                    }
+                )
             if target.credential_type == "none":
-                self.findings.append({
-                    "severity": "MEDIUM",
-                    "target": target.name,
-                    "finding": "No credential management configured",
-                    "recommendation": "Use Vault credential brokering or injection",
-                })
+                self.findings.append(
+                    {
+                        "severity": "MEDIUM",
+                        "target": target.name,
+                        "finding": "No credential management configured",
+                        "recommendation": "Use Vault credential brokering or injection",
+                    }
+                )
         return self.findings
 
     def check_role_grants(self, roles: list[BoundaryRole]) -> list[dict]:
         for role in roles:
             for grant in role.grant_strings:
                 if "ids=*" in grant and "actions=*" in grant:
-                    self.findings.append({
-                        "severity": "CRITICAL",
-                        "role": role.name,
-                        "finding": "Wildcard IDs and actions grant (admin-level access)",
-                        "recommendation": "Restrict to specific resource types and actions",
-                    })
-                if "type=target" in grant and "authorize-session" in grant and "ids=*" in grant:
-                    self.findings.append({
-                        "severity": "HIGH",
-                        "role": role.name,
-                        "finding": "Role can authorize sessions to all targets",
-                        "recommendation": "Restrict to specific target IDs or use target-level grants",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "CRITICAL",
+                            "role": role.name,
+                            "finding": "Wildcard IDs and actions grant (admin-level access)",
+                            "recommendation": "Restrict to specific resource types and actions",
+                        }
+                    )
+                if (
+                    "type=target" in grant
+                    and "authorize-session" in grant
+                    and "ids=*" in grant
+                ):
+                    self.findings.append(
+                        {
+                            "severity": "HIGH",
+                            "role": role.name,
+                            "finding": "Role can authorize sessions to all targets",
+                            "recommendation": "Restrict to specific target IDs or use target-level grants",
+                        }
+                    )
         return self.findings
 
     def generate_report(self) -> dict:
@@ -285,49 +325,65 @@ def main():
     """Generate example Boundary Terraform configuration."""
     gen = BoundaryTerraformGenerator(
         boundary_addr="https://boundary.example.com:9200",
-        vault_addr="https://vault.example.com:8200"
+        vault_addr="https://vault.example.com:8200",
     )
 
     # Create scopes
     gen.add_scope("production-org", "Production Organization", "org")
-    gen.add_scope("production", "Production Infrastructure", "project", "production-org")
+    gen.add_scope(
+        "production", "Production Infrastructure", "project", "production-org"
+    )
 
     # Create targets
     gen.add_target(
-        "ssh-web-servers", "SSH to production web servers", "ssh", 22,
+        "ssh-web-servers",
+        "SSH to production web servers",
+        "ssh",
+        22,
         ["10.0.1.10", "10.0.1.11"],
-        session_max_seconds=3600, enable_recording=True,
-        credential_type="injected", vault_path="ssh-signer/sign/web"
+        session_max_seconds=3600,
+        enable_recording=True,
+        credential_type="injected",
+        vault_path="ssh-signer/sign/web",
     )
     gen.add_target(
-        "postgres-production", "Production PostgreSQL", "tcp", 5432,
+        "postgres-production",
+        "Production PostgreSQL",
+        "tcp",
+        5432,
         ["10.0.2.20"],
         session_max_seconds=1800,
-        credential_type="brokered", vault_path="database/creds/readonly"
+        credential_type="brokered",
+        vault_path="database/creds/readonly",
     )
     gen.add_target(
-        "redis-cache", "Production Redis cache", "tcp", 6379,
+        "redis-cache",
+        "Production Redis cache",
+        "tcp",
+        6379,
         ["10.0.3.30"],
-        session_max_seconds=900
+        session_max_seconds=900,
     )
 
     # Create roles
     gen.add_role(
-        "sre-full-access", "SRE team full production access",
+        "sre-full-access",
+        "SRE team full production access",
         "boundary_scope.production.id",
         [
             "ids=*;type=target;actions=list,read,authorize-session",
             "ids=*;type=session;actions=list,read,cancel",
         ],
-        ["sre-team"]
+        ["sre-team"],
     )
     gen.add_role(
-        "dev-readonly", "Dev team read-only access",
+        "dev-readonly",
+        "Dev team read-only access",
         "boundary_scope.production.id",
         [
             "ids=*;type=target;actions=list,read",
         ],
-        ["dev-team"]
+        ["dev-team"],
     )
 
     # Generate and export

@@ -5,6 +5,7 @@ Run this, wait for WAITING status, then:
   echo -n "OTPCODE" | base64   → encode
   echo "BASE64STR" | base64 -d > /tmp/tg_code.txt  → inject
 """
+
 import asyncio, os, time
 from telethon import TelegramClient
 

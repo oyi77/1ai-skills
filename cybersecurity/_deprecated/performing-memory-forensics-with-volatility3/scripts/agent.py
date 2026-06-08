@@ -27,7 +27,11 @@ class MemoryForensicsAgent:
         if extra_args:
             cmd.extend(extra_args)
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
-        return {"output": result.stdout, "stderr": result.stderr, "rc": result.returncode}
+        return {
+            "output": result.stdout,
+            "stderr": result.stderr,
+            "rc": result.returncode,
+        }
 
     def get_os_info(self):
         """Identify the operating system from the memory dump."""
@@ -64,9 +68,9 @@ class MemoryForensicsAgent:
         """Dump memory of a specific process."""
         dump_dir = self.output_dir / "process_dumps"
         dump_dir.mkdir(exist_ok=True)
-        return self._run_vol("windows.memmap", [
-            "--pid", str(pid), "--dump", "-o", str(dump_dir)
-        ])
+        return self._run_vol(
+            "windows.memmap", ["--pid", str(pid), "--dump", "-o", str(dump_dir)]
+        )
 
     def extract_hashes(self):
         """Extract cached password hashes."""

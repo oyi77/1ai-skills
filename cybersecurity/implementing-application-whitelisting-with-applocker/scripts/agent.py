@@ -8,7 +8,6 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
 
-
 APPLOCKER_EVENT_IDS = {
     8002: ("EXE/DLL allowed", "INFO"),
     8003: ("EXE/DLL denied", "HIGH"),
@@ -57,38 +56,51 @@ def audit_applocker_rules(rules):
     findings = []
     for rule in rules:
         if rule.get("enforcement_mode") == "AuditOnly":
-            findings.append({
-                "collection": rule["collection"],
-                "issue": "audit_mode_only",
-                "severity": "MEDIUM",
-                "recommendation": "Switch to Enforce mode after validation",
-            })
+            findings.append(
+                {
+                    "collection": rule["collection"],
+                    "issue": "audit_mode_only",
+                    "severity": "MEDIUM",
+                    "recommendation": "Switch to Enforce mode after validation",
+                }
+            )
         if rule.get("enforcement_mode") == "NotConfigured":
-            findings.append({
-                "collection": rule["collection"],
-                "issue": "not_configured",
-                "severity": "HIGH",
-                "recommendation": "Enable enforcement for this rule collection",
-            })
+            findings.append(
+                {
+                    "collection": rule["collection"],
+                    "issue": "not_configured",
+                    "severity": "HIGH",
+                    "recommendation": "Enable enforcement for this rule collection",
+                }
+            )
         path = rule.get("path", "")
         if path and rule.get("action") == "Allow":
-            risky_paths = [r"\\Users\\", r"\\Temp\\", r"\\Downloads\\",
-                          r"\\AppData\\", r"\\ProgramData\\"]
+            risky_paths = [
+                r"\\Users\\",
+                r"\\Temp\\",
+                r"\\Downloads\\",
+                r"\\AppData\\",
+                r"\\ProgramData\\",
+            ]
             for rp in risky_paths:
                 if re.search(rp, path, re.IGNORECASE):
-                    findings.append({
-                        "rule_name": rule["name"],
-                        "path": path,
-                        "issue": "allow_from_user_writable_path",
-                        "severity": "CRITICAL",
-                    })
+                    findings.append(
+                        {
+                            "rule_name": rule["name"],
+                            "path": path,
+                            "issue": "allow_from_user_writable_path",
+                            "severity": "CRITICAL",
+                        }
+                    )
                     break
         if rule.get("user_or_group") == "S-1-1-0" and rule.get("action") == "Allow":
-            findings.append({
-                "rule_name": rule["name"],
-                "issue": "allow_for_everyone",
-                "severity": "MEDIUM",
-            })
+            findings.append(
+                {
+                    "rule_name": rule["name"],
+                    "issue": "allow_for_everyone",
+                    "severity": "MEDIUM",
+                }
+            )
     return findings
 
 
@@ -104,16 +116,20 @@ def analyze_applocker_events(log_path):
             event_id = int(entry.get("EventID", entry.get("event_id", 0)))
             if event_id in APPLOCKER_EVENT_IDS:
                 desc, severity = APPLOCKER_EVENT_IDS[event_id]
-                events.append({
-                    "event_id": event_id,
-                    "description": desc,
-                    "severity": severity,
-                    "timestamp": entry.get("TimeCreated", entry.get("timestamp", "")),
-                    "computer": entry.get("Computer", entry.get("hostname", "")),
-                    "user": entry.get("User", entry.get("user", "")),
-                    "file_path": entry.get("FilePath", entry.get("file_path", "")),
-                    "publisher": entry.get("Publisher", ""),
-                })
+                events.append(
+                    {
+                        "event_id": event_id,
+                        "description": desc,
+                        "severity": severity,
+                        "timestamp": entry.get(
+                            "TimeCreated", entry.get("timestamp", "")
+                        ),
+                        "computer": entry.get("Computer", entry.get("hostname", "")),
+                        "user": entry.get("User", entry.get("user", "")),
+                        "file_path": entry.get("FilePath", entry.get("file_path", "")),
+                        "publisher": entry.get("Publisher", ""),
+                    }
+                )
     denied = [e for e in events if "denied" in e["description"].lower()]
     audit = [e for e in events if "audit" in e["description"].lower()]
     return {"total_events": len(events), "denied": denied, "audit_blocks": audit}
@@ -149,8 +165,9 @@ def main():
     parser.add_argument("--policy", help="Exported AppLocker policy XML")
     parser.add_argument("--events", help="AppLocker event log (JSON lines)")
     parser.add_argument("--output", default="applocker_audit_report.json")
-    parser.add_argument("--action", choices=["audit", "events", "baseline", "full"],
-                        default="full")
+    parser.add_argument(
+        "--action", choices=["audit", "events", "baseline", "full"], default="full"
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

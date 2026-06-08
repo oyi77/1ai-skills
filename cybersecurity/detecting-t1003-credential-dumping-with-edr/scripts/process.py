@@ -12,10 +12,24 @@ import datetime
 import re
 from pathlib import Path
 
-LSASS_SUSPICIOUS_ACCESS = {"0x1fffff", "0x1f3fff", "0x143a", "0x1f0fff", "0x0040", "0x1010", "0x1410"}
+LSASS_SUSPICIOUS_ACCESS = {
+    "0x1fffff",
+    "0x1f3fff",
+    "0x143a",
+    "0x1f0fff",
+    "0x0040",
+    "0x1010",
+    "0x1410",
+}
 LSASS_LEGITIMATE_SOURCES = {
-    "csrss.exe", "lsass.exe", "svchost.exe", "msmpe ng.exe", "wmiprvse.exe",
-    "securityhealthservice.exe", "smartscreen.exe", "taskmgr.exe",
+    "csrss.exe",
+    "lsass.exe",
+    "svchost.exe",
+    "msmpe ng.exe",
+    "wmiprvse.exe",
+    "securityhealthservice.exe",
+    "smartscreen.exe",
+    "taskmgr.exe",
 }
 
 CREDENTIAL_TOOL_PATTERNS = [
@@ -25,9 +39,24 @@ CREDENTIAL_TOOL_PATTERNS = [
     (r"(?i)comsvcs.*MiniDump", "Comsvcs_MiniDump", "T1003.001", "CRITICAL"),
     (r"(?i)ntdsutil.*ifm", "NTDS_IFM_Creation", "T1003.003", "CRITICAL"),
     (r"(?i)vssadmin.*create\s+shadow", "VSS_Shadow_Copy", "T1003.003", "HIGH"),
-    (r"(?i)reg\s+(save|export)\s+hklm\\\\sam", "SAM_Hive_Export", "T1003.002", "CRITICAL"),
-    (r"(?i)reg\s+(save|export)\s+hklm\\\\security", "SECURITY_Hive_Export", "T1003.004", "CRITICAL"),
-    (r"(?i)reg\s+(save|export)\s+hklm\\\\system", "SYSTEM_Hive_Export", "T1003.002", "HIGH"),
+    (
+        r"(?i)reg\s+(save|export)\s+hklm\\\\sam",
+        "SAM_Hive_Export",
+        "T1003.002",
+        "CRITICAL",
+    ),
+    (
+        r"(?i)reg\s+(save|export)\s+hklm\\\\security",
+        "SECURITY_Hive_Export",
+        "T1003.004",
+        "CRITICAL",
+    ),
+    (
+        r"(?i)reg\s+(save|export)\s+hklm\\\\system",
+        "SYSTEM_Hive_Export",
+        "T1003.002",
+        "HIGH",
+    ),
     (r"(?i)esentutl.*ntds", "NTDS_Esentutl", "T1003.003", "CRITICAL"),
     (r"(?i)lazagne", "LaZagne", "T1003", "HIGH"),
 ]
@@ -65,31 +94,46 @@ def detect_credential_dumping(events: list[dict]) -> list[dict]:
                 continue
             if access not in LSASS_SUSPICIOUS_ACCESS:
                 continue
-            findings.append({
-                "timestamp": timestamp, "computer": computer, "user": user,
-                "detection_type": "LSASS_Access",
-                "source_process": source, "target": "lsass.exe",
-                "access_mask": access,
-                "technique": "T1003.001", "severity": "CRITICAL",
-                "description": f"{source_name} accessed LSASS with {access}",
-            })
+            findings.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": computer,
+                    "user": user,
+                    "detection_type": "LSASS_Access",
+                    "source_process": source,
+                    "target": "lsass.exe",
+                    "access_mask": access,
+                    "technique": "T1003.001",
+                    "severity": "CRITICAL",
+                    "description": f"{source_name} accessed LSASS with {access}",
+                }
+            )
 
         elif event_code == "1":
             cmdline = event.get("CommandLine", "")
             image = event.get("Image", "")
             for pattern, tool_name, technique, severity in CREDENTIAL_TOOL_PATTERNS:
                 if re.search(pattern, cmdline):
-                    findings.append({
-                        "timestamp": timestamp, "computer": computer, "user": user,
-                        "detection_type": "Credential_Tool",
-                        "tool": tool_name, "image": image,
-                        "command_line": cmdline,
-                        "technique": technique, "severity": severity,
-                        "description": f"Credential dumping tool detected: {tool_name}",
-                    })
+                    findings.append(
+                        {
+                            "timestamp": timestamp,
+                            "computer": computer,
+                            "user": user,
+                            "detection_type": "Credential_Tool",
+                            "tool": tool_name,
+                            "image": image,
+                            "command_line": cmdline,
+                            "technique": technique,
+                            "severity": severity,
+                            "description": f"Credential dumping tool detected: {tool_name}",
+                        }
+                    )
                     break
 
-    return sorted(findings, key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 3))
+    return sorted(
+        findings,
+        key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 3),
+    )
 
 
 def run_hunt(input_path: str, output_dir: str) -> None:
@@ -101,9 +145,18 @@ def run_hunt(input_path: str, output_dir: str) -> None:
 
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
-    with open(output_path / "credential_dumping_findings.json", "w", encoding="utf-8") as f:
-        json.dump({"hunt_id": f"TH-CRED-{datetime.date.today().isoformat()}",
-                    "findings_count": len(findings), "findings": findings}, f, indent=2)
+    with open(
+        output_path / "credential_dumping_findings.json", "w", encoding="utf-8"
+    ) as f:
+        json.dump(
+            {
+                "hunt_id": f"TH-CRED-{datetime.date.today().isoformat()}",
+                "findings_count": len(findings),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
     print(f"[+] Results written to {output_dir}")
 
 

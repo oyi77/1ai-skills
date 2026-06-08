@@ -10,7 +10,9 @@ from datetime import datetime
 import requests
 from stix2 import Indicator, Bundle
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 IPV4_PATTERN = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
@@ -55,7 +57,11 @@ def enrich_ip_virustotal(ip_address, api_key):
             "asn": data.get("asn", 0),
             "as_owner": data.get("as_owner", "unknown"),
         }
-        logger.info("VT enrichment for %s: %d malicious detections", ip_address, result["malicious"])
+        logger.info(
+            "VT enrichment for %s: %d malicious detections",
+            ip_address,
+            result["malicious"],
+        )
         return result
     return {"ip": ip_address, "error": resp.status_code}
 
@@ -138,7 +144,9 @@ def export_stix_bundle(iocs_with_scores, output_path):
     bundle = Bundle(objects=stix_indicators)
     with open(output_path, "w") as f:
         f.write(bundle.serialize(pretty=True))
-    logger.info("STIX bundle exported: %d indicators to %s", len(stix_indicators), output_path)
+    logger.info(
+        "STIX bundle exported: %d indicators to %s", len(stix_indicators), output_path
+    )
 
 
 def generate_ioc_report(iocs_with_scores):
@@ -155,7 +163,9 @@ def generate_ioc_report(iocs_with_scores):
         if typed:
             lines.append(f"\n{ioc_type.upper()} ({len(typed)}):")
             for ioc in typed[:10]:
-                lines.append(f"  {ioc['value'][:60]:60s} Confidence: {ioc.get('confidence', 'N/A')}")
+                lines.append(
+                    f"  {ioc['value'][:60]:60s} Confidence: {ioc.get('confidence', 'N/A')}"
+                )
     print("\n".join(lines))
 
 
@@ -164,7 +174,9 @@ def main():
     parser.add_argument("--input-file", help="File to extract IOCs from")
     parser.add_argument("--input-text", help="Text string to extract IOCs from")
     parser.add_argument("--vt-key", help="VirusTotal API key for enrichment")
-    parser.add_argument("--output", default="ioc_bundle.json", help="STIX bundle output")
+    parser.add_argument(
+        "--output", default="ioc_bundle.json", help="STIX bundle output"
+    )
     args = parser.parse_args()
 
     raw_iocs = {}

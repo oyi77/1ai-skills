@@ -22,7 +22,9 @@ def run_cosign(args: list) -> dict:
     }
 
 
-def sign_image(image: str, key: str = None, annotations: dict = None, keyless: bool = False) -> bool:
+def sign_image(
+    image: str, key: str = None, annotations: dict = None, keyless: bool = False
+) -> bool:
     """Sign a container image."""
     args = ["sign"]
     if key:
@@ -43,8 +45,9 @@ def sign_image(image: str, key: str = None, annotations: dict = None, keyless: b
         return False
 
 
-def verify_image(image: str, key: str = None, identity: str = None,
-                 issuer: str = None) -> dict:
+def verify_image(
+    image: str, key: str = None, identity: str = None, issuer: str = None
+) -> dict:
     """Verify a container image signature."""
     args = ["verify"]
     if key:
@@ -73,8 +76,9 @@ def verify_image(image: str, key: str = None, identity: str = None,
     }
 
 
-def verify_attestation(image: str, att_type: str, key: str = None,
-                       identity: str = None, issuer: str = None) -> dict:
+def verify_attestation(
+    image: str, att_type: str, key: str = None, identity: str = None, issuer: str = None
+) -> dict:
     """Verify an attestation on a container image."""
     args = ["verify-attestation", "--type", att_type]
     if key:
@@ -95,8 +99,9 @@ def verify_attestation(image: str, att_type: str, key: str = None,
     }
 
 
-def audit_images(images: list, key: str = None, identity: str = None,
-                 issuer: str = None) -> list:
+def audit_images(
+    images: list, key: str = None, identity: str = None, issuer: str = None
+) -> list:
     """Audit multiple images for valid signatures."""
     results = []
     for image in images:
@@ -138,7 +143,9 @@ def main():
     sign_cmd.add_argument("image", help="Image reference")
     sign_cmd.add_argument("--key", help="Signing key path")
     sign_cmd.add_argument("--keyless", action="store_true", help="Use keyless signing")
-    sign_cmd.add_argument("--annotation", "-a", action="append", help="key=value annotations")
+    sign_cmd.add_argument(
+        "--annotation", "-a", action="append", help="key=value annotations"
+    )
 
     verify_cmd = subparsers.add_parser("verify", help="Verify image signature")
     verify_cmd.add_argument("image", help="Image reference")
@@ -147,7 +154,9 @@ def main():
     verify_cmd.add_argument("--issuer", help="OIDC issuer")
 
     audit_cmd = subparsers.add_parser("audit", help="Audit multiple images")
-    audit_cmd.add_argument("--images-file", required=True, help="File with image refs (one per line)")
+    audit_cmd.add_argument(
+        "--images-file", required=True, help="File with image refs (one per line)"
+    )
     audit_cmd.add_argument("--key", help="Public key path")
     audit_cmd.add_argument("--identity", help="Certificate identity")
     audit_cmd.add_argument("--issuer", help="OIDC issuer")
@@ -161,19 +170,22 @@ def main():
             for a in args.annotation:
                 k, v = a.split("=", 1)
                 annotations[k] = v
-        sign_image(args.image, key=args.key, annotations=annotations,
-                  keyless=args.keyless)
+        sign_image(
+            args.image, key=args.key, annotations=annotations, keyless=args.keyless
+        )
 
     elif args.command == "verify":
-        result = verify_image(args.image, key=args.key,
-                            identity=args.identity, issuer=args.issuer)
+        result = verify_image(
+            args.image, key=args.key, identity=args.identity, issuer=args.issuer
+        )
         print(json.dumps(result, indent=2))
         sys.exit(0 if result["verified"] else 1)
 
     elif args.command == "audit":
         images = Path(args.images_file).read_text().strip().split("\n")
-        results = audit_images(images, key=args.key,
-                             identity=args.identity, issuer=args.issuer)
+        results = audit_images(
+            images, key=args.key, identity=args.identity, issuer=args.issuer
+        )
         report = generate_report(results)
         if args.report:
             Path(args.report).write_text(report)

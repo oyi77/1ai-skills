@@ -11,6 +11,7 @@ import datetime
 
 try:
     from pymisp import PyMISP
+
     HAS_PYMISP = True
 except ImportError:
     HAS_PYMISP = False
@@ -42,8 +43,12 @@ def search_events(misp, tags=None, date_from=None, published=True, limit=50):
                 "uuid": e.uuid,
                 "info": e.info,
                 "date": str(e.date),
-                "threat_level": {1: "High", 2: "Medium", 3: "Low", 4: "Undefined"}.get(e.threat_level_id, "?"),
-                "analysis": {0: "Initial", 1: "Ongoing", 2: "Complete"}.get(e.analysis, "?"),
+                "threat_level": {1: "High", 2: "Medium", 3: "Low", 4: "Undefined"}.get(
+                    e.threat_level_id, "?"
+                ),
+                "analysis": {0: "Initial", 1: "Ongoing", 2: "Complete"}.get(
+                    e.analysis, "?"
+                ),
                 "attribute_count": e.attribute_count,
                 "org": e.Orgc.name if hasattr(e, "Orgc") and e.Orgc else "",
                 "tags": [t.name for t in (e.tags or [])],
@@ -85,7 +90,12 @@ def collect_iocs_by_type(misp, ioc_types, date_from=None, limit=500):
     results = {}
     for ioc_type in ioc_types:
         try:
-            kwargs = {"type_attribute": ioc_type, "to_ids": True, "pythonify": True, "limit": limit}
+            kwargs = {
+                "type_attribute": ioc_type,
+                "to_ids": True,
+                "pythonify": True,
+                "limit": limit,
+            }
             if date_from:
                 kwargs["date_from"] = date_from
             attrs = misp.search("attributes", **kwargs)
@@ -131,8 +141,16 @@ def export_stix2(misp, event_id):
 
 
 COMMON_IOC_TYPES = [
-    "ip-dst", "ip-src", "domain", "hostname", "url",
-    "md5", "sha1", "sha256", "email-src", "filename",
+    "ip-dst",
+    "ip-src",
+    "domain",
+    "hostname",
+    "url",
+    "md5",
+    "sha1",
+    "sha256",
+    "email-src",
+    "filename",
 ]
 
 
@@ -159,7 +177,11 @@ if __name__ == "__main__":
         if isinstance(events, list):
             print("  Found {} events".format(len(events)))
             for e in events[:5]:
-                print("    [{}] {} ({} attrs)".format(e["id"], e["info"][:60], e["attribute_count"]))
+                print(
+                    "    [{}] {} ({} attrs)".format(
+                        e["id"], e["info"][:60], e["attribute_count"]
+                    )
+                )
         else:
             print("  Error: {}".format(events))
 

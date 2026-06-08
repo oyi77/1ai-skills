@@ -28,17 +28,20 @@ import base64
 from pathlib import Path
 from typing import Dict, Optional, Tuple
 
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
+from cryptography.hazmat.primitives.asymmetric.ed25519 import (
+    Ed25519PrivateKey,
+    Ed25519PublicKey,
+)
 from cryptography.hazmat.primitives import serialization
 from cryptography.exceptions import InvalidSignature
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
-def generate_ed25519_keypair(
-    output_dir: str, passphrase: Optional[str] = None
-) -> Dict:
+def generate_ed25519_keypair(output_dir: str, passphrase: Optional[str] = None) -> Dict:
     """Generate an Ed25519 key pair."""
     private_key = Ed25519PrivateKey.generate()
     public_key = private_key.public_key()
@@ -169,7 +172,9 @@ def verify_file(key_path: str, input_path: str, sig_path: str) -> Dict:
     }
 
 
-def code_sign(key_path: str, artifact_path: str, passphrase: Optional[str] = None) -> Dict:
+def code_sign(
+    key_path: str, artifact_path: str, passphrase: Optional[str] = None
+) -> Dict:
     """Create a code signing manifest for an artifact."""
     private_key = load_private_key(key_path, passphrase)
     data = Path(artifact_path).read_bytes()
@@ -240,7 +245,9 @@ def benchmark():
     for _ in range(count):
         Ed25519PrivateKey.generate()
     elapsed = time.time() - start
-    print(f"Key generation: {count / elapsed:.0f} keys/s ({elapsed / count * 1e6:.1f} us/key)")
+    print(
+        f"Key generation: {count / elapsed:.0f} keys/s ({elapsed / count * 1e6:.1f} us/key)"
+    )
 
     # Signing
     key = Ed25519PrivateKey.generate()
@@ -250,7 +257,9 @@ def benchmark():
     for _ in range(count):
         key.sign(message)
     elapsed = time.time() - start
-    print(f"Signing:        {count / elapsed:.0f} sigs/s ({elapsed / count * 1e6:.1f} us/sig)")
+    print(
+        f"Signing:        {count / elapsed:.0f} sigs/s ({elapsed / count * 1e6:.1f} us/sig)"
+    )
 
     # Verification
     public_key = key.public_key()
@@ -260,7 +269,9 @@ def benchmark():
     for _ in range(count):
         public_key.verify(signature, message)
     elapsed = time.time() - start
-    print(f"Verification:   {count / elapsed:.0f} verifs/s ({elapsed / count * 1e6:.1f} us/verify)")
+    print(
+        f"Verification:   {count / elapsed:.0f} verifs/s ({elapsed / count * 1e6:.1f} us/verify)"
+    )
 
 
 def main():

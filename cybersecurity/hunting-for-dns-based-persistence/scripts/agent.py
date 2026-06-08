@@ -8,13 +8,23 @@ import requests
 import subprocess
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 DANGLING_CNAME_SERVICES = [
-    "s3.amazonaws.com", "cloudfront.net", "azurewebsites.net", "herokuapp.com",
-    "github.io", "pantheonsite.io", "readme.io", "surge.sh",
-    "unbouncepages.com", "wordpress.com", "shopify.com",
+    "s3.amazonaws.com",
+    "cloudfront.net",
+    "azurewebsites.net",
+    "herokuapp.com",
+    "github.io",
+    "pantheonsite.io",
+    "readme.io",
+    "surge.sh",
+    "unbouncepages.com",
+    "wordpress.com",
+    "shopify.com",
 ]
 
 
@@ -54,13 +64,17 @@ def detect_dangling_cnames(subdomains):
                 if cname.rstrip(".").endswith(service):
                     a_records = resolve_record(cname, "A")
                     if not a_records:
-                        findings.append({
-                            "subdomain": subdomain, "cname": cname.rstrip("."),
-                            "service": service, "resolves": False,
-                            "severity": "critical",
-                            "issue": "Dangling CNAME - subdomain takeover possible",
-                            "mitre": "T1584.001",
-                        })
+                        findings.append(
+                            {
+                                "subdomain": subdomain,
+                                "cname": cname.rstrip("."),
+                                "service": service,
+                                "resolves": False,
+                                "severity": "critical",
+                                "issue": "Dangling CNAME - subdomain takeover possible",
+                                "mitre": "T1584.001",
+                            }
+                        )
     return findings
 
 
@@ -70,12 +84,15 @@ def detect_wildcard_abuse(domain):
     random_sub = f"randomtestxyz123.{domain}"
     results = resolve_record(random_sub, "A")
     if results:
-        findings.append({
-            "domain": domain, "wildcard_target": results,
-            "severity": "high",
-            "issue": "Wildcard DNS record detected - all subdomains resolve",
-            "detail": f"Random subdomain {random_sub} resolves to {results}",
-        })
+        findings.append(
+            {
+                "domain": domain,
+                "wildcard_target": results,
+                "severity": "high",
+                "issue": "Wildcard DNS record detected - all subdomains resolve",
+                "detail": f"Random subdomain {random_sub} resolves to {results}",
+            }
+        )
     return findings
 
 
@@ -88,12 +105,15 @@ def check_ns_delegation(domain):
         ns_lower = ns.lower().rstrip(".")
         is_known = any(provider in ns_lower for provider in known_providers)
         if not is_known:
-            findings.append({
-                "domain": domain, "nameserver": ns_lower,
-                "severity": "high",
-                "issue": "NS record points to unrecognized nameserver",
-                "recommendation": "Verify this is an authorized nameserver for the domain",
-            })
+            findings.append(
+                {
+                    "domain": domain,
+                    "nameserver": ns_lower,
+                    "severity": "high",
+                    "issue": "NS record points to unrecognized nameserver",
+                    "recommendation": "Verify this is an authorized nameserver for the domain",
+                }
+            )
     return findings
 
 
@@ -105,17 +125,21 @@ def analyze_dns_history(domain, api_key):
         records = history.get("records", [])
         if len(records) >= 2:
             for i in range(1, len(records)):
-                prev_ips = set(v.get("ip", "") for v in records[i - 1].get("values", []))
+                prev_ips = set(
+                    v.get("ip", "") for v in records[i - 1].get("values", [])
+                )
                 curr_ips = set(v.get("ip", "") for v in records[i].get("values", []))
                 changed = curr_ips - prev_ips
                 if changed:
-                    findings.append({
-                        "domain": domain,
-                        "first_seen": records[i].get("first_seen", ""),
-                        "new_ips": list(changed),
-                        "severity": "medium",
-                        "issue": f"DNS A record changed: added {changed}",
-                    })
+                    findings.append(
+                        {
+                            "domain": domain,
+                            "first_seen": records[i].get("first_seen", ""),
+                            "new_ips": list(changed),
+                            "severity": "medium",
+                            "issue": f"DNS A record changed: added {changed}",
+                        }
+                    )
     except requests.RequestException as e:
         logger.warning("SecurityTrails query failed: %s", e)
     return findings
@@ -150,11 +174,18 @@ def main():
     wildcard = detect_wildcard_abuse(args.domain)
     ns_findings = check_ns_delegation(args.domain)
     history_findings = analyze_dns_history(args.domain, args.api_key)
-    report = generate_report(args.domain, dangling, wildcard, ns_findings, history_findings)
+    report = generate_report(
+        args.domain, dangling, wildcard, ns_findings, history_findings
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("DNS hunt: %s - %d findings (%d critical), %d subdomains checked",
-                args.domain, report["total_findings"], report["critical_findings"], len(subdomains))
+    logger.info(
+        "DNS hunt: %s - %d findings (%d critical), %d subdomains checked",
+        args.domain,
+        report["total_findings"],
+        report["critical_findings"],
+        len(subdomains),
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

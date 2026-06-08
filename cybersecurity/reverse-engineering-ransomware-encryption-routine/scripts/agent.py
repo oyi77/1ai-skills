@@ -15,7 +15,6 @@ import hashlib
 from pathlib import Path
 from datetime import datetime
 
-
 CRYPTO_CONSTANTS = {
     "AES S-Box": bytes([0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5]),
     "AES Inv S-Box": bytes([0x52, 0x09, 0x6A, 0xD5, 0x30, 0x36, 0xA5, 0x38]),
@@ -23,15 +22,17 @@ CRYPTO_CONSTANTS = {
     "ChaCha20 Constant": b"expand 32-byte k",
     "Salsa20 Constant": b"expand 32-byte k",
     "RC4 State Init": bytes(range(8)),
-    "SHA256 Init H0": struct.pack(">I", 0x6a09e667),
+    "SHA256 Init H0": struct.pack(">I", 0x6A09E667),
 }
 
 RANSOMWARE_PATTERNS = {
-    "file_extension_change": re.compile(rb'\.\w{3,10}(?=\x00)'),
-    "ransom_note_name": re.compile(rb'(?:README|RECOVER|DECRYPT|HOW.TO)[\w.-]*\.(?:txt|html|hta)', re.I),
-    "bitcoin_address": re.compile(rb'[13][a-km-zA-HJ-NP-Z1-9]{25,34}'),
-    "onion_url": re.compile(rb'[\w]{16,56}\.onion'),
-    "email_address": re.compile(rb'[\w.+-]+@[\w-]+\.[\w.]{2,}'),
+    "file_extension_change": re.compile(rb"\.\w{3,10}(?=\x00)"),
+    "ransom_note_name": re.compile(
+        rb"(?:README|RECOVER|DECRYPT|HOW.TO)[\w.-]*\.(?:txt|html|hta)", re.I
+    ),
+    "bitcoin_address": re.compile(rb"[13][a-km-zA-HJ-NP-Z1-9]{25,34}"),
+    "onion_url": re.compile(rb"[\w]{16,56}\.onion"),
+    "email_address": re.compile(rb"[\w.+-]+@[\w-]+\.[\w.]{2,}"),
 }
 
 
@@ -52,15 +53,22 @@ class RansomwareREAgent:
         for name, constant in CRYPTO_CONSTANTS.items():
             offset = data.find(constant)
             if offset != -1:
-                detected.append({
-                    "algorithm": name,
-                    "offset": hex(offset),
-                    "context": data[max(0, offset - 16):offset + len(constant) + 16].hex(),
-                })
-                self.findings.append({
-                    "type": "Crypto Algorithm Detected",
-                    "algorithm": name, "offset": hex(offset),
-                })
+                detected.append(
+                    {
+                        "algorithm": name,
+                        "offset": hex(offset),
+                        "context": data[
+                            max(0, offset - 16) : offset + len(constant) + 16
+                        ].hex(),
+                    }
+                )
+                self.findings.append(
+                    {
+                        "type": "Crypto Algorithm Detected",
+                        "algorithm": name,
+                        "offset": hex(offset),
+                    }
+                )
         return detected
 
     def extract_encryption_indicators(self):
@@ -103,7 +111,9 @@ class RansomwareREAgent:
             analysis["size_difference"] = len(enc_data) - len(orig_data)
             if analysis["size_difference"] > 0:
                 analysis["appended_bytes"] = analysis["size_difference"]
-                analysis["footer_metadata"] = enc_data[len(orig_data):len(orig_data) + 128].hex()
+                analysis["footer_metadata"] = enc_data[
+                    len(orig_data) : len(orig_data) + 128
+                ].hex()
 
         return analysis
 
@@ -112,6 +122,7 @@ class RansomwareREAgent:
         if not data:
             return 0.0
         import math
+
         freq = [0] * 256
         for byte in data:
             freq[byte] += 1
@@ -125,23 +136,28 @@ class RansomwareREAgent:
 
     def extract_key_material(self, memory_dump_path=None):
         """Search for potential encryption key material."""
-        search_data = (Path(memory_dump_path).read_bytes()
-                       if memory_dump_path else self.sample_path.read_bytes())
+        search_data = (
+            Path(memory_dump_path).read_bytes()
+            if memory_dump_path
+            else self.sample_path.read_bytes()
+        )
         potential_keys = []
 
         for offset in range(0, min(len(search_data), 10_000_000), 16):
-            block = search_data[offset:offset + 32]
+            block = search_data[offset : offset + 32]
             if len(block) < 16:
                 break
             entropy = self._calculate_entropy(block)
             if entropy > 4.5 and all(b != 0 for b in block[:16]):
                 if not all(b == block[0] for b in block[:16]):
-                    potential_keys.append({
-                        "offset": hex(offset),
-                        "length": len(block),
-                        "entropy": entropy,
-                        "sha256": hashlib.sha256(block).hexdigest()[:16],
-                    })
+                    potential_keys.append(
+                        {
+                            "offset": hex(offset),
+                            "length": len(block),
+                            "entropy": entropy,
+                            "sha256": hashlib.sha256(block).hexdigest()[:16],
+                        }
+                    )
             if len(potential_keys) >= 50:
                 break
 

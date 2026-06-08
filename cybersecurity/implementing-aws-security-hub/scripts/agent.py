@@ -23,8 +23,9 @@ def get_hub_client(region="us-east-1"):
 def enable_security_hub(client):
     """Enable Security Hub with default standards."""
     try:
-        client.enable_security_hub(EnableDefaultStandards=True,
-                                   Tags={"ManagedBy": "security-agent"})
+        client.enable_security_hub(
+            EnableDefaultStandards=True, Tags={"ManagedBy": "security-agent"}
+        )
         return {"status": "enabled"}
     except ClientError as e:
         if "already enabled" in str(e).lower():
@@ -49,8 +50,10 @@ def enable_standards(client, standards):
     if requests:
         try:
             resp = client.batch_enable_standards(StandardsSubscriptionRequests=requests)
-            return [{"arn": s["StandardsArn"], "status": s["StandardsStatus"]}
-                    for s in resp.get("StandardsSubscriptions", [])]
+            return [
+                {"arn": s["StandardsArn"], "status": s["StandardsStatus"]}
+                for s in resp.get("StandardsSubscriptions", [])
+            ]
         except ClientError as e:
             return [{"error": str(e)}]
     return []
@@ -60,8 +63,10 @@ def get_enabled_standards(client):
     """List all enabled security standards and their status."""
     try:
         resp = client.get_enabled_standards()
-        return [{"arn": s["StandardsArn"], "status": s["StandardsStatus"]}
-                for s in resp.get("StandardsSubscriptions", [])]
+        return [
+            {"arn": s["StandardsArn"], "status": s["StandardsStatus"]}
+            for s in resp.get("StandardsSubscriptions", [])
+        ]
     except ClientError as e:
         return [{"error": str(e)}]
 
@@ -70,19 +75,25 @@ def get_findings_summary(client, max_results=100):
     """Retrieve active findings grouped by severity."""
     try:
         resp = client.get_findings(
-            Filters={"RecordState": [{"Value": "ACTIVE", "Comparison": "EQUALS"}],
-                     "WorkflowStatus": [{"Value": "NEW", "Comparison": "EQUALS"}]},
+            Filters={
+                "RecordState": [{"Value": "ACTIVE", "Comparison": "EQUALS"}],
+                "WorkflowStatus": [{"Value": "NEW", "Comparison": "EQUALS"}],
+            },
             SortCriteria=[{"Field": "SeverityNormalized", "SortOrder": "desc"}],
-            MaxResults=max_results)
+            MaxResults=max_results,
+        )
         findings = resp.get("Findings", [])
         severity_counts = Counter(f["Severity"]["Label"] for f in findings)
         failed_controls = Counter()
         for f in findings:
             if f.get("Compliance", {}).get("Status") == "FAILED":
                 failed_controls[f.get("Title", "Unknown")] += 1
-        return {"total": len(findings), "by_severity": dict(severity_counts),
-                "top_failed_controls": dict(failed_controls.most_common(10)),
-                "findings": findings}
+        return {
+            "total": len(findings),
+            "by_severity": dict(severity_counts),
+            "top_failed_controls": dict(failed_controls.most_common(10)),
+            "findings": findings,
+        }
     except ClientError as e:
         return {"error": str(e)}
 
@@ -94,15 +105,23 @@ def get_compliance_scores(client):
     for std in standards:
         if "error" in std:
             continue
-        scores.append({"standard": std["arn"].split("/")[-3] if "/" in std["arn"] else std["arn"],
-                        "status": std["status"]})
+        scores.append(
+            {
+                "standard": (
+                    std["arn"].split("/")[-3] if "/" in std["arn"] else std["arn"]
+                ),
+                "status": std["status"],
+            }
+        )
     return scores
 
 
 def create_custom_insight(client, name, group_by, filters):
     """Create a custom Security Hub insight."""
     try:
-        resp = client.create_insight(Name=name, Filters=filters, GroupByAttribute=group_by)
+        resp = client.create_insight(
+            Name=name, Filters=filters, GroupByAttribute=group_by
+        )
         return {"insight_arn": resp["InsightArn"], "status": "created"}
     except ClientError as e:
         return {"error": str(e)}
@@ -110,12 +129,15 @@ def create_custom_insight(client, name, group_by, filters):
 
 def batch_update_findings(client, finding_ids, workflow_status, note):
     """Update findings workflow status in batch."""
-    identifiers = [{"Id": fid["Id"], "ProductArn": fid["ProductArn"]} for fid in finding_ids]
+    identifiers = [
+        {"Id": fid["Id"], "ProductArn": fid["ProductArn"]} for fid in finding_ids
+    ]
     try:
         client.batch_update_findings(
             FindingIdentifiers=identifiers,
             Workflow={"Status": workflow_status},
-            Note={"Text": note, "UpdatedBy": "security-hub-agent"})
+            Note={"Text": note, "UpdatedBy": "security-hub-agent"},
+        )
         return {"updated": len(identifiers), "status": workflow_status}
     except ClientError as e:
         return {"error": str(e)}
@@ -154,8 +176,12 @@ def main():
     parser = argparse.ArgumentParser(description="AWS Security Hub Agent")
     parser.add_argument("--region", default="us-east-1", help="AWS region")
     parser.add_argument("--enable", action="store_true", help="Enable Security Hub")
-    parser.add_argument("--standards", nargs="+", choices=["cis", "fsbp", "pci", "nist"],
-                        help="Enable specific standards")
+    parser.add_argument(
+        "--standards",
+        nargs="+",
+        choices=["cis", "fsbp", "pci", "nist"],
+        help="Enable specific standards",
+    )
     parser.add_argument("--audit", action="store_true", help="Run Security Hub audit")
     parser.add_argument("--output", help="Save report to JSON")
     args = parser.parse_args()

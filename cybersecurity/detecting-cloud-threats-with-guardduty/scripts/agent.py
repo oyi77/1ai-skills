@@ -28,16 +28,25 @@ def get_detector_id():
 
 def enable_guardduty():
     """Enable GuardDuty with all protection plans."""
-    result = aws_cli([
-        "guardduty", "create-detector",
-        "--enable",
-        "--finding-publishing-frequency", "FIFTEEN_MINUTES",
-        "--data-sources", json.dumps({
-            "S3Logs": {"Enable": True},
-            "Kubernetes": {"AuditLogs": {"Enable": True}},
-            "MalwareProtection": {"ScanEc2InstanceWithFindings": {"EbsVolumes": True}},
-        }),
-    ])
+    result = aws_cli(
+        [
+            "guardduty",
+            "create-detector",
+            "--enable",
+            "--finding-publishing-frequency",
+            "FIFTEEN_MINUTES",
+            "--data-sources",
+            json.dumps(
+                {
+                    "S3Logs": {"Enable": True},
+                    "Kubernetes": {"AuditLogs": {"Enable": True}},
+                    "MalwareProtection": {
+                        "ScanEc2InstanceWithFindings": {"EbsVolumes": True}
+                    },
+                }
+            ),
+        ]
+    )
     return result
 
 
@@ -63,13 +72,20 @@ def list_findings(detector_id=None, severity_min=4.0, max_results=50):
             "service.archived": {"Eq": ["false"]},
         }
     }
-    result = aws_cli([
-        "guardduty", "list-findings",
-        "--detector-id", detector_id,
-        "--finding-criteria", json.dumps(criteria),
-        "--max-results", str(max_results),
-        "--sort-criteria", json.dumps({"AttributeName": "severity", "OrderBy": "DESC"}),
-    ])
+    result = aws_cli(
+        [
+            "guardduty",
+            "list-findings",
+            "--detector-id",
+            detector_id,
+            "--finding-criteria",
+            json.dumps(criteria),
+            "--max-results",
+            str(max_results),
+            "--sort-criteria",
+            json.dumps({"AttributeName": "severity", "OrderBy": "DESC"}),
+        ]
+    )
     return result
 
 
@@ -77,30 +93,31 @@ def get_finding_details(detector_id, finding_ids):
     """Get detailed information about specific findings."""
     if isinstance(finding_ids, str):
         finding_ids = [finding_ids]
-    result = aws_cli([
-        "guardduty", "get-findings",
-        "--detector-id", detector_id,
-        "--finding-ids"] + finding_ids[:25]
+    result = aws_cli(
+        ["guardduty", "get-findings", "--detector-id", detector_id, "--finding-ids"]
+        + finding_ids[:25]
     )
     findings = []
     for f in result.get("Findings", []):
         resource = f.get("Resource", {})
         service = f.get("Service", {})
-        findings.append({
-            "id": f.get("Id"),
-            "type": f.get("Type"),
-            "severity": f.get("Severity"),
-            "title": f.get("Title"),
-            "description": f.get("Description", "")[:200],
-            "region": f.get("Region"),
-            "account_id": f.get("AccountId"),
-            "resource_type": resource.get("ResourceType"),
-            "instance_id": resource.get("InstanceDetails", {}).get("InstanceId"),
-            "action": service.get("Action", {}),
-            "first_seen": service.get("EventFirstSeen"),
-            "last_seen": service.get("EventLastSeen"),
-            "count": service.get("Count"),
-        })
+        findings.append(
+            {
+                "id": f.get("Id"),
+                "type": f.get("Type"),
+                "severity": f.get("Severity"),
+                "title": f.get("Title"),
+                "description": f.get("Description", "")[:200],
+                "region": f.get("Region"),
+                "account_id": f.get("AccountId"),
+                "resource_type": resource.get("ResourceType"),
+                "instance_id": resource.get("InstanceDetails", {}).get("InstanceId"),
+                "action": service.get("Action", {}),
+                "first_seen": service.get("EventFirstSeen"),
+                "last_seen": service.get("EventLastSeen"),
+                "count": service.get("Count"),
+            }
+        )
     return findings
 
 
@@ -108,34 +125,47 @@ def archive_finding(detector_id, finding_ids):
     """Archive (suppress) GuardDuty findings."""
     if isinstance(finding_ids, str):
         finding_ids = [finding_ids]
-    return aws_cli([
-        "guardduty", "archive-findings",
-        "--detector-id", detector_id,
-        "--finding-ids"] + finding_ids
+    return aws_cli(
+        ["guardduty", "archive-findings", "--detector-id", detector_id, "--finding-ids"]
+        + finding_ids
     )
 
 
 def create_ip_threat_intel_set(detector_id, name, s3_uri):
     """Create a custom threat intelligence IP set."""
-    return aws_cli([
-        "guardduty", "create-threat-intel-set",
-        "--detector-id", detector_id,
-        "--name", name,
-        "--format", "TXT",
-        "--location", s3_uri,
-        "--activate",
-    ])
+    return aws_cli(
+        [
+            "guardduty",
+            "create-threat-intel-set",
+            "--detector-id",
+            detector_id,
+            "--name",
+            name,
+            "--format",
+            "TXT",
+            "--location",
+            s3_uri,
+            "--activate",
+        ]
+    )
 
 
 def create_suppression_filter(detector_id, name, criterion):
     """Create a suppression filter to auto-archive known benign findings."""
-    return aws_cli([
-        "guardduty", "create-filter",
-        "--detector-id", detector_id,
-        "--name", name,
-        "--action", "ARCHIVE",
-        "--finding-criteria", json.dumps({"Criterion": criterion}),
-    ])
+    return aws_cli(
+        [
+            "guardduty",
+            "create-filter",
+            "--detector-id",
+            detector_id,
+            "--name",
+            name,
+            "--action",
+            "ARCHIVE",
+            "--finding-criteria",
+            json.dumps({"Criterion": criterion}),
+        ]
+    )
 
 
 def generate_report(detector_id=None):
@@ -192,4 +222,6 @@ if __name__ == "__main__":
     elif action == "archive" and len(sys.argv) > 2:
         print(json.dumps(archive_finding(det, sys.argv[2:]), indent=2))
     else:
-        print("Usage: agent.py [report|enable|status|findings [min_severity]|details <id>|archive <id>]")
+        print(
+            "Usage: agent.py [report|enable|status|findings [min_severity]|details <id>|archive <id>]"
+        )

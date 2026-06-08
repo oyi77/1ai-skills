@@ -143,14 +143,26 @@ def get_incident_timeline(service, incident_id):
 def main():
     parser = argparse.ArgumentParser(description="Incident Response Dashboard Agent")
     parser.add_argument("--host", default=os.getenv("SPLUNK_HOST", "localhost"))
-    parser.add_argument("--port", type=int, default=int(os.getenv("SPLUNK_PORT", "8089")))
+    parser.add_argument(
+        "--port", type=int, default=int(os.getenv("SPLUNK_PORT", "8089"))
+    )
     parser.add_argument("--username", default=os.getenv("SPLUNK_USERNAME", "admin"))
     parser.add_argument("--password", default=os.getenv("SPLUNK_PASSWORD", ""))
     parser.add_argument("--incident-id", help="Specific incident ID to track")
     parser.add_argument("--output", default="ir_dashboard_report.json")
-    parser.add_argument("--action", choices=[
-        "summary", "systems", "iocs", "metrics", "workload", "timeline", "full_dashboard"
-    ], default="full_dashboard")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "summary",
+            "systems",
+            "iocs",
+            "metrics",
+            "workload",
+            "timeline",
+            "full_dashboard",
+        ],
+        default="full_dashboard",
+    )
     args = parser.parse_args()
 
     service = connect_splunk(args.host, args.port, args.username, args.password)
@@ -161,7 +173,9 @@ def main():
         print(f"[+] Incident summary loaded for {args.incident_id}")
 
     if args.action in ("systems", "full_dashboard") and args.incident_id:
-        report["data"]["affected_systems"] = get_affected_systems(service, args.incident_id)
+        report["data"]["affected_systems"] = get_affected_systems(
+            service, args.incident_id
+        )
         print(f"[+] Affected systems: {len(report['data']['affected_systems'])}")
 
     if args.action in ("metrics", "full_dashboard"):
@@ -170,7 +184,9 @@ def main():
 
     if args.action in ("workload", "full_dashboard"):
         report["data"]["analyst_workload"] = get_analyst_workload(service)
-        print(f"[+] Analyst workload: {len(report['data']['analyst_workload'])} analysts")
+        print(
+            f"[+] Analyst workload: {len(report['data']['analyst_workload'])} analysts"
+        )
 
     if args.action in ("timeline", "full_dashboard") and args.incident_id:
         report["data"]["timeline"] = get_incident_timeline(service, args.incident_id)

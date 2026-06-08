@@ -11,7 +11,9 @@ from datetime import datetime
 
 from neo4j import GraphDatabase
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -104,7 +106,9 @@ def find_local_admin_paths(driver, target_computer):
         "ORDER BY hops ASC LIMIT 50"
     )
     with driver.session() as session:
-        results = [dict(record) for record in session.run(query, {"computer": target_computer})]
+        results = [
+            dict(record) for record in session.run(query, {"computer": target_computer})
+        ]
     logger.info("Found %d users with admin access to %s", len(results), target_computer)
     return results
 
@@ -137,11 +141,17 @@ def assess_ad_risk(da_members, paths, kerberoastable, asrep, unconstrained, gpo_
         score += 15
     if len(gpo_paths) > 0:
         score += 20
-    risk = "Critical" if score >= 60 else "High" if score >= 40 else "Medium" if score >= 20 else "Low"
+    risk = (
+        "Critical"
+        if score >= 60
+        else "High" if score >= 40 else "Medium" if score >= 20 else "Low"
+    )
     return {"score": score, "risk_level": risk}
 
 
-def generate_report(da_members, paths, kerberoastable, asrep, unconstrained, gpo_paths, risk):
+def generate_report(
+    da_members, paths, kerberoastable, asrep, unconstrained, gpo_paths, risk
+):
     """Generate BloodHound analysis report."""
     report = {
         "timestamp": datetime.utcnow().isoformat(),
@@ -158,7 +168,9 @@ def generate_report(da_members, paths, kerberoastable, asrep, unconstrained, gpo
 
 
 def main():
-    parser = argparse.ArgumentParser(description="BloodHound Attack Path Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="BloodHound Attack Path Analysis Agent"
+    )
     parser.add_argument("--neo4j-uri", default="bolt://localhost:7687")
     parser.add_argument("--neo4j-user", default="neo4j")
     parser.add_argument("--neo4j-password", required=True)
@@ -173,9 +185,13 @@ def main():
     asrep = find_asrep_roastable(driver)
     unconstrained = find_unconstrained_delegation(driver)
     gpo_paths = find_gpo_attack_paths(driver)
-    risk = assess_ad_risk(da_members, paths, kerberoastable, asrep, unconstrained, gpo_paths)
+    risk = assess_ad_risk(
+        da_members, paths, kerberoastable, asrep, unconstrained, gpo_paths
+    )
 
-    report = generate_report(da_members, paths, kerberoastable, asrep, unconstrained, gpo_paths, risk)
+    report = generate_report(
+        da_members, paths, kerberoastable, asrep, unconstrained, gpo_paths, risk
+    )
     driver.close()
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)

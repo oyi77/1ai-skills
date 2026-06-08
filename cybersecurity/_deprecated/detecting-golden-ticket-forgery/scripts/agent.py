@@ -36,18 +36,20 @@ def detect_rc4_in_aes_environment(events):
             continue
         enc_type = ev.get("TicketEncryptionType", "")
         if enc_type in ("0x17", "23"):
-            alerts.append({
-                "detection": "RC4 Encryption in TGS Request",
-                "mitre_technique": "T1558.001",
-                "timestamp": ev["timestamp"],
-                "user": ev.get("TargetUserName", ""),
-                "domain": ev.get("TargetDomainName", ""),
-                "service": ev.get("ServiceName", ""),
-                "ip_address": ev.get("IpAddress", ""),
-                "encryption_type": enc_type,
-                "severity": "critical",
-                "description": "RC4 (0x17) encryption detected in TGS request; Golden Ticket indicator in AES-enforced environments",
-            })
+            alerts.append(
+                {
+                    "detection": "RC4 Encryption in TGS Request",
+                    "mitre_technique": "T1558.001",
+                    "timestamp": ev["timestamp"],
+                    "user": ev.get("TargetUserName", ""),
+                    "domain": ev.get("TargetDomainName", ""),
+                    "service": ev.get("ServiceName", ""),
+                    "ip_address": ev.get("IpAddress", ""),
+                    "encryption_type": enc_type,
+                    "severity": "critical",
+                    "description": "RC4 (0x17) encryption detected in TGS request; Golden Ticket indicator in AES-enforced environments",
+                }
+            )
     return alerts
 
 
@@ -56,7 +58,9 @@ def detect_orphaned_tgs(events):
     tgt_users = set()
     for ev in events:
         if ev["event_id"] == 4768:
-            tgt_users.add(f"{ev.get('TargetUserName', '')}@{ev.get('TargetDomainName', '')}")
+            tgt_users.add(
+                f"{ev.get('TargetUserName', '')}@{ev.get('TargetDomainName', '')}"
+            )
     alerts = []
     tgs_without_tgt = defaultdict(list)
     for ev in events:
@@ -66,17 +70,19 @@ def detect_orphaned_tgs(events):
         if user_key not in tgt_users and ev.get("TargetUserName", ""):
             tgs_without_tgt[user_key].append(ev)
     for user, tgs_events in tgs_without_tgt.items():
-        alerts.append({
-            "detection": "Orphaned TGS Request (No Preceding TGT)",
-            "mitre_technique": "T1558.001",
-            "user": user,
-            "tgs_count": len(tgs_events),
-            "services": list({e.get("ServiceName", "") for e in tgs_events}),
-            "source_ips": list({e.get("IpAddress", "") for e in tgs_events}),
-            "first_seen": tgs_events[0]["timestamp"],
-            "severity": "critical",
-            "description": "TGS requests without corresponding TGT; forged ticket likely",
-        })
+        alerts.append(
+            {
+                "detection": "Orphaned TGS Request (No Preceding TGT)",
+                "mitre_technique": "T1558.001",
+                "user": user,
+                "tgs_count": len(tgs_events),
+                "services": list({e.get("ServiceName", "") for e in tgs_events}),
+                "source_ips": list({e.get("IpAddress", "") for e in tgs_events}),
+                "first_seen": tgs_events[0]["timestamp"],
+                "severity": "critical",
+                "description": "TGS requests without corresponding TGT; forged ticket likely",
+            }
+        )
     return alerts
 
 
@@ -98,15 +104,17 @@ def detect_abnormal_ticket_lifetime(events, max_lifetime_hours=10):
         for i in range(1, len(times)):
             gap_hours = (times[i] - times[i - 1]).total_seconds() / 3600
             if gap_hours > max_lifetime_hours * 2:
-                alerts.append({
-                    "detection": "Abnormal TGT Renewal Gap",
-                    "mitre_technique": "T1558.001",
-                    "user": user,
-                    "gap_hours": round(gap_hours, 2),
-                    "max_expected_hours": max_lifetime_hours,
-                    "severity": "high",
-                    "description": f"TGT renewal gap of {gap_hours:.1f}h exceeds 2x MaxTicketAge ({max_lifetime_hours}h)",
-                })
+                alerts.append(
+                    {
+                        "detection": "Abnormal TGT Renewal Gap",
+                        "mitre_technique": "T1558.001",
+                        "user": user,
+                        "gap_hours": round(gap_hours, 2),
+                        "max_expected_hours": max_lifetime_hours,
+                        "severity": "high",
+                        "description": f"TGT renewal gap of {gap_hours:.1f}h exceeds 2x MaxTicketAge ({max_lifetime_hours}h)",
+                    }
+                )
     return alerts
 
 
@@ -114,17 +122,21 @@ def detect_krbtgt_service_anomaly(events):
     """Detect TGS requests targeting the krbtgt service (unusual and suspicious)."""
     alerts = []
     for ev in events:
-        if ev["event_id"] == 4769 and ev.get("ServiceName", "").lower().startswith("krbtgt"):
-            alerts.append({
-                "detection": "TGS Request Targeting krbtgt Service",
-                "mitre_technique": "T1558.001",
-                "timestamp": ev["timestamp"],
-                "user": ev.get("TargetUserName", ""),
-                "service": ev.get("ServiceName", ""),
-                "ip_address": ev.get("IpAddress", ""),
-                "severity": "critical",
-                "description": "Direct TGS request for krbtgt service is highly anomalous",
-            })
+        if ev["event_id"] == 4769 and ev.get("ServiceName", "").lower().startswith(
+            "krbtgt"
+        ):
+            alerts.append(
+                {
+                    "detection": "TGS Request Targeting krbtgt Service",
+                    "mitre_technique": "T1558.001",
+                    "timestamp": ev["timestamp"],
+                    "user": ev.get("TargetUserName", ""),
+                    "service": ev.get("ServiceName", ""),
+                    "ip_address": ev.get("IpAddress", ""),
+                    "severity": "critical",
+                    "description": "Direct TGS request for krbtgt service is highly anomalous",
+                }
+            )
     return alerts
 
 
@@ -134,17 +146,17 @@ def generate_splunk_queries():
         "rc4_downgrade": (
             'index=wineventlog sourcetype="WinEventLog:Security" EventCode=4769 '
             'TicketEncryptionType=0x17 ServiceName!="krbtgt" '
-            '| stats count by TargetUserName, IpAddress, ServiceName'
+            "| stats count by TargetUserName, IpAddress, ServiceName"
         ),
         "orphaned_tgs": (
-            'index=wineventlog EventCode=4769 '
-            '| join type=left TargetUserName [search index=wineventlog EventCode=4768 '
-            '| rename TargetUserName as tgt_user | dedup tgt_user | fields tgt_user] '
-            '| where isnull(tgt_user) | stats count by TargetUserName, IpAddress'
+            "index=wineventlog EventCode=4769 "
+            "| join type=left TargetUserName [search index=wineventlog EventCode=4768 "
+            "| rename TargetUserName as tgt_user | dedup tgt_user | fields tgt_user] "
+            "| where isnull(tgt_user) | stats count by TargetUserName, IpAddress"
         ),
         "krbtgt_tgs": (
             'index=wineventlog EventCode=4769 ServiceName="krbtgt*" '
-            '| table _time, TargetUserName, IpAddress, ServiceName, TicketEncryptionType'
+            "| table _time, TargetUserName, IpAddress, ServiceName, TicketEncryptionType"
         ),
     }
 
@@ -152,9 +164,18 @@ def generate_splunk_queries():
 def main():
     parser = argparse.ArgumentParser(description="Golden Ticket Forgery Detector")
     parser.add_argument("--evtx-xml", help="Path to exported Security event log XML")
-    parser.add_argument("--max-ticket-hours", type=int, default=10, help="MaxTicketAge in hours (default: 10)")
-    parser.add_argument("--output", default="golden_ticket_report.json", help="Output report path")
-    parser.add_argument("--show-splunk", action="store_true", help="Print Splunk SPL queries")
+    parser.add_argument(
+        "--max-ticket-hours",
+        type=int,
+        default=10,
+        help="MaxTicketAge in hours (default: 10)",
+    )
+    parser.add_argument(
+        "--output", default="golden_ticket_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--show-splunk", action="store_true", help="Print Splunk SPL queries"
+    )
     args = parser.parse_args()
 
     if args.show_splunk:
@@ -183,7 +204,10 @@ def main():
             "abnormal_ticket_lifetime": lifetime_alerts,
             "krbtgt_service_anomaly": krbtgt_alerts,
         },
-        "total_alerts": len(rc4_alerts) + len(orphan_alerts) + len(lifetime_alerts) + len(krbtgt_alerts),
+        "total_alerts": len(rc4_alerts)
+        + len(orphan_alerts)
+        + len(lifetime_alerts)
+        + len(krbtgt_alerts),
         "mitre_techniques": ["T1558.001"],
         "splunk_queries": generate_splunk_queries(),
     }

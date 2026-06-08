@@ -20,8 +20,14 @@ import requests
 class DevicePostureAuditor:
     """Audit device posture compliance across EDR and MDM platforms."""
 
-    def __init__(self, cs_client_id: str, cs_client_secret: str,
-                 azure_tenant_id: str, azure_client_id: str, azure_client_secret: str):
+    def __init__(
+        self,
+        cs_client_id: str,
+        cs_client_secret: str,
+        azure_tenant_id: str,
+        azure_client_id: str,
+        azure_client_secret: str,
+    ):
         self.cs_client_id = cs_client_id
         self.cs_client_secret = cs_client_secret
         self.azure_tenant_id = azure_tenant_id
@@ -36,9 +42,9 @@ class DevicePostureAuditor:
             "https://api.crowdstrike.com/oauth2/token",
             data={
                 "client_id": self.cs_client_id,
-                "client_secret": self.cs_client_secret
+                "client_secret": self.cs_client_secret,
             },
-            timeout=30
+            timeout=30,
         )
         resp.raise_for_status()
         self.cs_token = resp.json()["access_token"]
@@ -52,9 +58,9 @@ class DevicePostureAuditor:
                 "client_id": self.azure_client_id,
                 "client_secret": self.azure_client_secret,
                 "scope": "https://graph.microsoft.com/.default",
-                "grant_type": "client_credentials"
+                "grant_type": "client_credentials",
             },
-            timeout=30
+            timeout=30,
         )
         resp.raise_for_status()
         self.azure_token = resp.json()["access_token"]
@@ -70,7 +76,7 @@ class DevicePostureAuditor:
             "https://api.crowdstrike.com/zero-trust-assessment/queries/assessments/v1",
             headers=headers,
             params={"limit": 5000},
-            timeout=60
+            timeout=60,
         )
         resp.raise_for_status()
         device_ids = resp.json().get("resources", [])
@@ -82,22 +88,24 @@ class DevicePostureAuditor:
         # Get detailed assessments in batches of 100
         scores = []
         for i in range(0, len(device_ids), 100):
-            batch = device_ids[i:i+100]
+            batch = device_ids[i : i + 100]
             resp = requests.get(
                 "https://api.crowdstrike.com/zero-trust-assessment/entities/assessments/v1",
                 headers=headers,
                 params={"ids": batch},
-                timeout=60
+                timeout=60,
             )
             if resp.status_code == 200:
                 for resource in resp.json().get("resources", []):
                     assessment = resource.get("assessment", {})
-                    scores.append({
-                        "aid": resource.get("aid"),
-                        "overall": assessment.get("overall", 0),
-                        "os_score": assessment.get("os", 0),
-                        "sensor_score": assessment.get("sensor_config", 0)
-                    })
+                    scores.append(
+                        {
+                            "aid": resource.get("aid"),
+                            "overall": assessment.get("overall", 0),
+                            "os_score": assessment.get("os", 0),
+                            "sensor_score": assessment.get("sensor_config", 0),
+                        }
+                    )
 
         # Calculate distribution
         distribution = {
@@ -117,7 +125,7 @@ class DevicePostureAuditor:
             "total": len(scores),
             "average_score": round(avg_score, 1),
             "distribution": distribution,
-            "below_threshold_50": distribution["blocked_below_50"]
+            "below_threshold_50": distribution["blocked_below_50"],
         }
 
     def get_intune_compliance(self) -> dict[str, Any]:
@@ -130,11 +138,11 @@ class DevicePostureAuditor:
             headers=headers,
             params={
                 "$select": "id,deviceName,userPrincipalName,complianceState,"
-                           "operatingSystem,osVersion,isEncrypted,lastSyncDateTime,"
-                           "managementAgent",
-                "$top": 999
+                "operatingSystem,osVersion,isEncrypted,lastSyncDateTime,"
+                "managementAgent",
+                "$top": 999,
             },
-            timeout=60
+            timeout=60,
         )
         resp.raise_for_status()
         devices = resp.json().get("value", [])
@@ -148,7 +156,7 @@ class DevicePostureAuditor:
             "os_distribution": {},
             "encryption_status": {"encrypted": 0, "not_encrypted": 0},
             "stale_devices": 0,
-            "noncompliant_details": []
+            "noncompliant_details": [],
         }
 
         now = datetime.now(timezone.utc)
@@ -157,7 +165,9 @@ class DevicePostureAuditor:
             os_name = device.get("operatingSystem", "unknown")
             encrypted = device.get("isEncrypted", False)
 
-            stats["os_distribution"][os_name] = stats["os_distribution"].get(os_name, 0) + 1
+            stats["os_distribution"][os_name] = (
+                stats["os_distribution"].get(os_name, 0) + 1
+            )
 
             if encrypted:
                 stats["encryption_status"]["encrypted"] += 1
@@ -168,12 +178,14 @@ class DevicePostureAuditor:
                 stats["compliant"] += 1
             elif compliance == "noncompliant":
                 stats["noncompliant"] += 1
-                stats["noncompliant_details"].append({
-                    "device": device.get("deviceName"),
-                    "user": device.get("userPrincipalName"),
-                    "os": f"{os_name} {device.get('osVersion', '')}",
-                    "encrypted": encrypted
-                })
+                stats["noncompliant_details"].append(
+                    {
+                        "device": device.get("deviceName"),
+                        "user": device.get("userPrincipalName"),
+                        "os": f"{os_name} {device.get('osVersion', '')}",
+                        "encrypted": encrypted,
+                    }
+                )
             elif compliance == "inGracePeriod":
                 stats["in_grace_period"] += 1
             else:
@@ -189,9 +201,15 @@ class DevicePostureAuditor:
                 except (ValueError, TypeError):
                     pass
 
-        compliance_rate = (stats["compliant"] / stats["total"] * 100) if stats["total"] else 0
-        print(f"  Total: {stats['total']}, Compliant: {stats['compliant']} ({compliance_rate:.1f}%)")
-        print(f"  Non-compliant: {stats['noncompliant']}, Grace period: {stats['in_grace_period']}")
+        compliance_rate = (
+            (stats["compliant"] / stats["total"] * 100) if stats["total"] else 0
+        )
+        print(
+            f"  Total: {stats['total']}, Compliant: {stats['compliant']} ({compliance_rate:.1f}%)"
+        )
+        print(
+            f"  Non-compliant: {stats['noncompliant']}, Grace period: {stats['in_grace_period']}"
+        )
         print(f"  Encryption: {stats['encryption_status']}")
         print(f"  Stale devices (>30d no sync): {stats['stale_devices']}")
 
@@ -207,15 +225,23 @@ class DevicePostureAuditor:
 
         overall_compliance = min(
             (zta_passing / zta["total"] * 100) if zta["total"] else 0,
-            (intune_passing / intune["total"] * 100) if intune["total"] else 0
+            (intune_passing / intune["total"] * 100) if intune["total"] else 0,
         )
 
         summary = {
             "estimated_total_devices": total_devices,
-            "zta_passing_rate": round((zta_passing / zta["total"] * 100) if zta["total"] else 0, 1),
-            "intune_passing_rate": round((intune_passing / intune["total"] * 100) if intune["total"] else 0, 1),
+            "zta_passing_rate": round(
+                (zta_passing / zta["total"] * 100) if zta["total"] else 0, 1
+            ),
+            "intune_passing_rate": round(
+                (intune_passing / intune["total"] * 100) if intune["total"] else 0, 1
+            ),
             "overall_compliance_rate": round(overall_compliance, 1),
-            "risk_level": "LOW" if overall_compliance >= 90 else "MEDIUM" if overall_compliance >= 75 else "HIGH"
+            "risk_level": (
+                "LOW"
+                if overall_compliance >= 90
+                else "MEDIUM" if overall_compliance >= 75 else "HIGH"
+            ),
         }
 
         print(f"  ZTA passing: {summary['zta_passing_rate']}%")
@@ -263,13 +289,21 @@ Generated: {now}
 """
         recs = []
         if zta["distribution"].get("blocked_below_50", 0) > 0:
-            recs.append(f"   - {zta['distribution']['blocked_below_50']} devices below ZTA 50 - investigate immediately")
+            recs.append(
+                f"   - {zta['distribution']['blocked_below_50']} devices below ZTA 50 - investigate immediately"
+            )
         if intune["encryption_status"]["not_encrypted"] > 0:
-            recs.append(f"   - {intune['encryption_status']['not_encrypted']} devices lack encryption - enforce BitLocker/FileVault")
+            recs.append(
+                f"   - {intune['encryption_status']['not_encrypted']} devices lack encryption - enforce BitLocker/FileVault"
+            )
         if intune["stale_devices"] > 0:
-            recs.append(f"   - {intune['stale_devices']} stale devices - verify active use or remove")
+            recs.append(
+                f"   - {intune['stale_devices']} stale devices - verify active use or remove"
+            )
         if correlated["overall_compliance_rate"] < 95:
-            recs.append(f"   - Overall compliance {correlated['overall_compliance_rate']}% below 95% target")
+            recs.append(
+                f"   - Overall compliance {correlated['overall_compliance_rate']}% below 95% target"
+            )
         if not recs:
             recs.append("   - All devices meet compliance requirements")
         report += "\n".join(recs)
@@ -278,8 +312,10 @@ Generated: {now}
 
 def main():
     if len(sys.argv) < 6:
-        print("Usage: python process.py <cs_client_id> <cs_client_secret> "
-              "<azure_tenant_id> <azure_client_id> <azure_client_secret>")
+        print(
+            "Usage: python process.py <cs_client_id> <cs_client_secret> "
+            "<azure_tenant_id> <azure_client_id> <azure_client_secret>"
+        )
         sys.exit(1)
 
     auditor = DevicePostureAuditor(*sys.argv[1:6])

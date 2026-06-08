@@ -7,23 +7,52 @@ import re
 import csv
 
 LOLBIN_SIGNATURES = {
-    "certutil.exe": {"mitre": "T1140", "patterns": [r"-urlcache", r"-decode", r"-encode", r"-split.*http"]},
-    "mshta.exe": {"mitre": "T1218.005", "patterns": [r"vbscript:", r"javascript:", r"https?://"]},
-    "regsvr32.exe": {"mitre": "T1218.010", "patterns": [r"/s\s+/n\s+/u\s+/i:", r"scrobj\.dll"]},
-    "rundll32.exe": {"mitre": "T1218.011", "patterns": [r"javascript:", r"shell32.*ShellExec"]},
-    "bitsadmin.exe": {"mitre": "T1197", "patterns": [r"/transfer", r"/download", r"https?://"]},
+    "certutil.exe": {
+        "mitre": "T1140",
+        "patterns": [r"-urlcache", r"-decode", r"-encode", r"-split.*http"],
+    },
+    "mshta.exe": {
+        "mitre": "T1218.005",
+        "patterns": [r"vbscript:", r"javascript:", r"https?://"],
+    },
+    "regsvr32.exe": {
+        "mitre": "T1218.010",
+        "patterns": [r"/s\s+/n\s+/u\s+/i:", r"scrobj\.dll"],
+    },
+    "rundll32.exe": {
+        "mitre": "T1218.011",
+        "patterns": [r"javascript:", r"shell32.*ShellExec"],
+    },
+    "bitsadmin.exe": {
+        "mitre": "T1197",
+        "patterns": [r"/transfer", r"/download", r"https?://"],
+    },
     "wmic.exe": {"mitre": "T1047", "patterns": [r"process\s+call\s+create", r"/node:"]},
     "msiexec.exe": {"mitre": "T1218.007", "patterns": [r"/q.*https?://", r"/q.*/i\s+"]},
     "cmstp.exe": {"mitre": "T1218.003", "patterns": [r"/ni\s+/s", r"\.inf"]},
     "forfiles.exe": {"mitre": "T1202", "patterns": [r"/c\s+cmd", r"/c\s+powershell"]},
     "pcalua.exe": {"mitre": "T1202", "patterns": [r"-a\s+.*\.exe", r"-a\s+.*\.dll"]},
-    "csc.exe": {"mitre": "T1127", "patterns": [r"/out:.*\\temp\\", r"/out:.*\\appdata\\"]},
+    "csc.exe": {
+        "mitre": "T1127",
+        "patterns": [r"/out:.*\\temp\\", r"/out:.*\\appdata\\"],
+    },
     "installutil.exe": {"mitre": "T1218.004", "patterns": [r"/logfile=", r"/U\s+"]},
-    "msbuild.exe": {"mitre": "T1127.001", "patterns": [r"\.xml$", r"\.csproj$", r"\\temp\\"]},
-    "powershell.exe": {"mitre": "T1059.001", "patterns": [
-        r"-enc\s+", r"IEX", r"Invoke-Expression", r"DownloadString",
-        r"Net\.WebClient", r"-w\s+hidden", r"-nop\s+",
-    ]},
+    "msbuild.exe": {
+        "mitre": "T1127.001",
+        "patterns": [r"\.xml$", r"\.csproj$", r"\\temp\\"],
+    },
+    "powershell.exe": {
+        "mitre": "T1059.001",
+        "patterns": [
+            r"-enc\s+",
+            r"IEX",
+            r"Invoke-Expression",
+            r"DownloadString",
+            r"Net\.WebClient",
+            r"-w\s+hidden",
+            r"-nop\s+",
+        ],
+    },
 }
 
 
@@ -40,16 +69,20 @@ def scan_csv_logs(csv_file, process_col="Image", cmdline_col="CommandLine"):
                 sig = LOLBIN_SIGNATURES[proc_name]
                 for pattern in sig["patterns"]:
                     if re.search(pattern, cmdline, re.I):
-                        findings.append({
-                            "row": row_num,
-                            "binary": proc_name,
-                            "mitre": sig["mitre"],
-                            "command_line": cmdline[:500],
-                            "matched_pattern": pattern,
-                            "user": row.get("User", row.get("user", "")),
-                            "host": row.get("Computer", row.get("hostname", "")),
-                            "timestamp": row.get("UtcTime", row.get("@timestamp", "")),
-                        })
+                        findings.append(
+                            {
+                                "row": row_num,
+                                "binary": proc_name,
+                                "mitre": sig["mitre"],
+                                "command_line": cmdline[:500],
+                                "matched_pattern": pattern,
+                                "user": row.get("User", row.get("user", "")),
+                                "host": row.get("Computer", row.get("hostname", "")),
+                                "timestamp": row.get(
+                                    "UtcTime", row.get("@timestamp", "")
+                                ),
+                            }
+                        )
                         break
     severity_map = {"T1059.001": "high", "T1218.005": "high", "T1140": "medium"}
     for f_item in findings:
@@ -82,16 +115,22 @@ def scan_evtx_sysmon(evtx_file):
                     sig = LOLBIN_SIGNATURES[binary]
                     for pattern in sig["patterns"]:
                         if re.search(pattern, xml_str, re.I):
-                            findings.append({
-                                "record_id": record.record_num(),
-                                "binary": binary,
-                                "mitre": sig["mitre"],
-                                "pattern": pattern,
-                                "xml_snippet": xml_str[:600],
-                            })
+                            findings.append(
+                                {
+                                    "record_id": record.record_num(),
+                                    "binary": binary,
+                                    "mitre": sig["mitre"],
+                                    "pattern": pattern,
+                                    "xml_snippet": xml_str[:600],
+                                }
+                            )
                             break
                     break
-    return {"file": evtx_file, "total_findings": len(findings), "findings": findings[:300]}
+    return {
+        "file": evtx_file,
+        "total_findings": len(findings),
+        "findings": findings[:300],
+    }
 
 
 def _count_by(items, key):
@@ -103,12 +142,18 @@ def _count_by(items, key):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Hunt for LOLBin execution in endpoint logs")
+    parser = argparse.ArgumentParser(
+        description="Hunt for LOLBin execution in endpoint logs"
+    )
     sub = parser.add_subparsers(dest="command")
     c = sub.add_parser("csv", help="Scan CSV-exported endpoint logs")
     c.add_argument("--file", required=True, help="CSV log file path")
-    c.add_argument("--process-col", default="Image", help="Column name for process path")
-    c.add_argument("--cmdline-col", default="CommandLine", help="Column name for command line")
+    c.add_argument(
+        "--process-col", default="Image", help="Column name for process path"
+    )
+    c.add_argument(
+        "--cmdline-col", default="CommandLine", help="Column name for command line"
+    )
     e = sub.add_parser("evtx", help="Scan Sysmon EVTX log")
     e.add_argument("--file", required=True, help="EVTX file path")
     args = parser.parse_args()

@@ -95,7 +95,7 @@ class InfrastructureTracker:
             "cobalt-strike": 'product:"Cobalt Strike Beacon"',
             "metasploit": 'product:"Metasploit"',
             "sliver": 'ssl:"multiplayer" ssl:"operators"',
-            "havoc": 'http.html_hash:-1472705893',
+            "havoc": "http.html_hash:-1472705893",
             "brute-ratel": 'http.html_hash:"-1957161625"',
         }
 
@@ -104,14 +104,16 @@ class InfrastructureTracker:
             results = self.shodan_api.search(query, limit=limit)
             servers = []
             for match in results.get("matches", []):
-                servers.append({
-                    "ip": match["ip_str"],
-                    "port": match["port"],
-                    "org": match.get("org", ""),
-                    "asn": match.get("asn", ""),
-                    "country": match.get("location", {}).get("country_name", ""),
-                    "timestamp": match.get("timestamp", ""),
-                })
+                servers.append(
+                    {
+                        "ip": match["ip_str"],
+                        "port": match["port"],
+                        "org": match.get("org", ""),
+                        "asn": match.get("asn", ""),
+                        "country": match.get("location", {}).get("country_name", ""),
+                        "timestamp": match.get("timestamp", ""),
+                    }
+                )
             print(f"[+] Found {len(servers)} {framework} servers")
             return servers
         except Exception as e:
@@ -121,9 +123,7 @@ class InfrastructureTracker:
     def ct_log_search(self, domain: str) -> Optional[dict]:
         """Search Certificate Transparency logs via crt.sh."""
         try:
-            resp = requests.get(
-                f"https://crt.sh/?q=%.{domain}&output=json", timeout=30
-            )
+            resp = requests.get(f"https://crt.sh/?q=%.{domain}&output=json", timeout=30)
             if resp.status_code == 200:
                 certs = resp.json()
                 unique_domains = set()
@@ -148,7 +148,9 @@ class InfrastructureTracker:
                     ],
                 }
                 self.findings["certificates"].append(result)
-                print(f"[+] CT: {domain} - {len(certs)} certs, {len(unique_domains)} domains")
+                print(
+                    f"[+] CT: {domain} - {len(certs)} certs, {len(unique_domains)} domains"
+                )
                 return result
         except Exception as e:
             print(f"[-] CT search error: {e}")
@@ -196,20 +198,24 @@ class InfrastructureTracker:
         shodan_data = self.shodan_host_lookup(ip)
         if shodan_data:
             for hostname in shodan_data.get("hostnames", []):
-                pivot_results["discovered"].append({
-                    "type": "domain",
-                    "value": hostname,
-                    "source": "shodan_hostname",
-                })
+                pivot_results["discovered"].append(
+                    {
+                        "type": "domain",
+                        "value": hostname,
+                        "source": "shodan_hostname",
+                    }
+                )
 
             for svc in shodan_data.get("services", []):
                 cert_cn = svc.get("cert_subject", {}).get("CN", "")
                 if cert_cn and cert_cn != ip:
-                    pivot_results["discovered"].append({
-                        "type": "domain",
-                        "value": cert_cn,
-                        "source": "ssl_certificate",
-                    })
+                    pivot_results["discovered"].append(
+                        {
+                            "type": "domain",
+                            "value": cert_cn,
+                            "source": "ssl_certificate",
+                        }
+                    )
 
         # CT search for discovered domains
         seen_domains = set()
@@ -222,11 +228,13 @@ class InfrastructureTracker:
                     if ct:
                         for d in ct.get("unique_domains", []):
                             if d not in seen_domains:
-                                pivot_results["discovered"].append({
-                                    "type": "domain",
-                                    "value": d,
-                                    "source": "ct_log",
-                                })
+                                pivot_results["discovered"].append(
+                                    {
+                                        "type": "domain",
+                                        "value": d,
+                                        "source": "ct_log",
+                                    }
+                                )
 
         self.findings["pivots"].append(pivot_results)
         return pivot_results

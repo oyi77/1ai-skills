@@ -56,11 +56,17 @@ def parse_zeek_dns(input_path: str) -> list[dict]:
 
 
 def detect_dns_tunneling(queries: list[dict]) -> list[dict]:
-    domain_stats = defaultdict(lambda: {
-        "queries": 0, "unique_subdomains": set(), "total_length": 0,
-        "max_length": 0, "record_types": Counter(), "sources": set(),
-        "subdomain_entropy_samples": [],
-    })
+    domain_stats = defaultdict(
+        lambda: {
+            "queries": 0,
+            "unique_subdomains": set(),
+            "total_length": 0,
+            "max_length": 0,
+            "record_types": Counter(),
+            "sources": set(),
+            "subdomain_entropy_samples": [],
+        }
+    )
 
     for q in queries:
         query = q.get("query", "")
@@ -93,7 +99,9 @@ def detect_dns_tunneling(queries: list[dict]) -> list[dict]:
 
         avg_entropy = 0.0
         if stats["subdomain_entropy_samples"]:
-            entropies = [calculate_entropy(s) for s in stats["subdomain_entropy_samples"]]
+            entropies = [
+                calculate_entropy(s) for s in stats["subdomain_entropy_samples"]
+            ]
             avg_entropy = sum(entropies) / len(entropies)
 
         risk = 0
@@ -112,7 +120,9 @@ def detect_dns_tunneling(queries: list[dict]) -> list[dict]:
             risk += 10
             indicators.append(f"High query volume: {stats['queries']}")
 
-        suspicious_types = sum(stats["record_types"].get(rt, 0) for rt in SUSPICIOUS_RECORD_TYPES)
+        suspicious_types = sum(
+            stats["record_types"].get(rt, 0) for rt in SUSPICIOUS_RECORD_TYPES
+        )
         if suspicious_types > stats["queries"] * 0.5:
             risk += 15
             indicators.append(f"Unusual record types: {dict(stats['record_types'])}")
@@ -121,19 +131,21 @@ def detect_dns_tunneling(queries: list[dict]) -> list[dict]:
             continue
 
         risk_level = "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM"
-        findings.append({
-            "source_ip": src,
-            "base_domain": base_domain,
-            "query_count": stats["queries"],
-            "unique_subdomains": unique_subs,
-            "avg_query_length": round(avg_len, 1),
-            "max_query_length": stats["max_length"],
-            "avg_subdomain_entropy": round(avg_entropy, 3),
-            "record_types": dict(stats["record_types"]),
-            "risk_score": risk,
-            "risk_level": risk_level,
-            "indicators": indicators,
-        })
+        findings.append(
+            {
+                "source_ip": src,
+                "base_domain": base_domain,
+                "query_count": stats["queries"],
+                "unique_subdomains": unique_subs,
+                "avg_query_length": round(avg_len, 1),
+                "max_query_length": stats["max_length"],
+                "avg_subdomain_entropy": round(avg_entropy, 3),
+                "record_types": dict(stats["record_types"]),
+                "risk_score": risk,
+                "risk_level": risk_level,
+                "indicators": indicators,
+            }
+        )
 
     return sorted(findings, key=lambda x: x["risk_score"], reverse=True)
 
@@ -148,8 +160,15 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
     with open(output_path / "dns_tunnel_findings.json", "w", encoding="utf-8") as f:
-        json.dump({"hunt_id": f"TH-DNSTUNNEL-{datetime.date.today().isoformat()}",
-                    "total_queries": len(queries), "findings": findings}, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-DNSTUNNEL-{datetime.date.today().isoformat()}",
+                "total_queries": len(queries),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
     print(f"[+] Results written to {output_dir}")
 
 

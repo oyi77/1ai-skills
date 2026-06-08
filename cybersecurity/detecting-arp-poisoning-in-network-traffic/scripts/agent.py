@@ -31,17 +31,21 @@ def analyze_pcap_arp(pcap_path):
         if arp.op == 2:  # ARP reply
             ip_to_macs[arp.psrc].add(arp.hwsrc)
             mac_to_ips[arp.hwsrc].add(arp.psrc)
-            arp_replies.append({
-                "src_mac": arp.hwsrc,
-                "src_ip": arp.psrc,
-                "dst_mac": arp.hwdst,
-                "dst_ip": arp.pdst,
-            })
+            arp_replies.append(
+                {
+                    "src_mac": arp.hwsrc,
+                    "src_ip": arp.psrc,
+                    "dst_mac": arp.hwdst,
+                    "dst_ip": arp.pdst,
+                }
+            )
         if arp.op == 2 and arp.pdst == arp.psrc:
-            gratuitous_arps.append({
-                "mac": arp.hwsrc,
-                "ip": arp.psrc,
-            })
+            gratuitous_arps.append(
+                {
+                    "mac": arp.hwsrc,
+                    "ip": arp.psrc,
+                }
+            )
 
     return {
         "total_arp_packets": len(arp_packets),
@@ -60,31 +64,37 @@ def detect_arp_spoofing(arp_data):
 
     for ip, macs in ip_to_macs.items():
         if len(macs) > 1:
-            findings.append({
-                "indicator": "duplicate_mac_for_ip",
-                "ip": ip,
-                "macs": macs,
-                "issue": f"IP {ip} associated with {len(macs)} different MACs — ARP spoofing likely",
-                "severity": "CRITICAL",
-            })
+            findings.append(
+                {
+                    "indicator": "duplicate_mac_for_ip",
+                    "ip": ip,
+                    "macs": macs,
+                    "issue": f"IP {ip} associated with {len(macs)} different MACs — ARP spoofing likely",
+                    "severity": "CRITICAL",
+                }
+            )
 
     for mac, ips in mac_to_ips.items():
         if len(ips) > 3:
-            findings.append({
-                "indicator": "mac_claiming_many_ips",
-                "mac": mac,
-                "ips": ips,
-                "issue": f"MAC {mac} claims {len(ips)} IPs — possible ARP poisoning",
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "indicator": "mac_claiming_many_ips",
+                    "mac": mac,
+                    "ips": ips,
+                    "issue": f"MAC {mac} claims {len(ips)} IPs — possible ARP poisoning",
+                    "severity": "HIGH",
+                }
+            )
 
     if arp_data.get("gratuitous_arps", 0) > 10:
-        findings.append({
-            "indicator": "excessive_gratuitous_arp",
-            "count": arp_data["gratuitous_arps"],
-            "issue": f"Excessive gratuitous ARPs ({arp_data['gratuitous_arps']}) — suspicious",
-            "severity": "MEDIUM",
-        })
+        findings.append(
+            {
+                "indicator": "excessive_gratuitous_arp",
+                "count": arp_data["gratuitous_arps"],
+                "issue": f"Excessive gratuitous ARPs ({arp_data['gratuitous_arps']}) — suspicious",
+                "severity": "MEDIUM",
+            }
+        )
 
     return findings
 
@@ -92,7 +102,9 @@ def detect_arp_spoofing(arp_data):
 def check_arp_table():
     """Read current system ARP table and check for duplicates."""
     try:
-        result = subprocess.run(["arp", "-a"], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["arp", "-a"], capture_output=True, text=True, timeout=10
+        )
         lines = result.stdout.strip().split("\n")
     except Exception as e:
         return {"error": str(e)}
@@ -103,15 +115,21 @@ def check_arp_table():
         parts = line.split()
         if len(parts) >= 3:
             ip = parts[0].strip("()")
-            mac = parts[1] if ":" in parts[1] else (parts[3] if len(parts) > 3 and "-" in parts[3] else "")
+            mac = (
+                parts[1]
+                if ":" in parts[1]
+                else (parts[3] if len(parts) > 3 and "-" in parts[3] else "")
+            )
             if mac and ip in ip_mac_map and ip_mac_map[ip] != mac:
-                duplicates.append({
-                    "ip": ip,
-                    "mac_1": ip_mac_map[ip],
-                    "mac_2": mac,
-                    "issue": "Duplicate IP with different MACs in ARP table",
-                    "severity": "CRITICAL",
-                })
+                duplicates.append(
+                    {
+                        "ip": ip,
+                        "mac_1": ip_mac_map[ip],
+                        "mac_2": mac,
+                        "issue": "Duplicate IP with different MACs in ARP table",
+                        "severity": "CRITICAL",
+                    }
+                )
             if mac:
                 ip_mac_map[ip] = mac
 
@@ -126,12 +144,14 @@ def check_arpwatch_log(log_path="/var/lib/arpwatch/arp.dat"):
             for line in f:
                 parts = line.strip().split("\t")
                 if len(parts) >= 3:
-                    entries.append({
-                        "mac": parts[0],
-                        "ip": parts[1],
-                        "timestamp": parts[2] if len(parts) > 2 else "",
-                        "hostname": parts[3] if len(parts) > 3 else "",
-                    })
+                    entries.append(
+                        {
+                            "mac": parts[0],
+                            "ip": parts[1],
+                            "timestamp": parts[2] if len(parts) > 2 else "",
+                            "hostname": parts[3] if len(parts) > 3 else "",
+                        }
+                    )
     except FileNotFoundError:
         return {"error": f"arpwatch database not found at {log_path}"}
     except Exception as e:
@@ -194,7 +214,9 @@ def run_audit(args):
 def main():
     parser = argparse.ArgumentParser(description="ARP Poisoning Detection Agent")
     parser.add_argument("--pcap", help="PCAP file to analyze for ARP spoofing")
-    parser.add_argument("--check-table", action="store_true", help="Check system ARP table")
+    parser.add_argument(
+        "--check-table", action="store_true", help="Check system ARP table"
+    )
     parser.add_argument("--arpwatch-db", help="Path to arpwatch database")
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()

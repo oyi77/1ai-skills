@@ -55,17 +55,19 @@ def create_call_tracking_sheet(targets):
     """Create tracking sheet for pretext calls."""
     tracking = []
     for target in targets:
-        tracking.append({
-            "name": target.get("name", ""),
-            "phone": target.get("phone", ""),
-            "department": target.get("department", ""),
-            "pretext": target.get("pretext", "IT Help Desk"),
-            "status": "pending",
-            "result": None,
-            "info_obtained": [],
-            "call_duration": None,
-            "notes": "",
-        })
+        tracking.append(
+            {
+                "name": target.get("name", ""),
+                "phone": target.get("phone", ""),
+                "department": target.get("department", ""),
+                "pretext": target.get("pretext", "IT Help Desk"),
+                "status": "pending",
+                "result": None,
+                "info_obtained": [],
+                "call_duration": None,
+                "notes": "",
+            }
+        )
     return tracking
 
 

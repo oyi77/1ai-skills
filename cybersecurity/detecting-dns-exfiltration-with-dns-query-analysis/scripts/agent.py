@@ -12,8 +12,14 @@ from collections import Counter, defaultdict
 from datetime import datetime
 
 KNOWN_TUNNEL_DOMAINS = {
-    "dnscat2", "iodine", "dns2tcp", "heyoka", "ozyman",
-    "tuns", "dnscapy", "dns-tunnel",
+    "dnscat2",
+    "iodine",
+    "dns2tcp",
+    "heyoka",
+    "ozyman",
+    "tuns",
+    "dnscapy",
+    "dns-tunnel",
 }
 
 TXT_THRESHOLD = 0.3
@@ -46,32 +52,43 @@ def parse_dns_log(filepath, log_format="zeek"):
                 fields = line.strip().split("\t")
                 if len(fields) >= len(headers):
                     record = dict(zip(headers, fields))
-                    queries.append({
-                        "timestamp": record.get("ts", ""),
-                        "source": record.get("id.orig_h", ""),
-                        "query": record.get("query", ""),
-                        "qtype": record.get("qtype_name", record.get("qtype", "")),
-                        "rcode": record.get("rcode_name", ""),
-                        "answers": record.get("answers", ""),
-                    })
+                    queries.append(
+                        {
+                            "timestamp": record.get("ts", ""),
+                            "source": record.get("id.orig_h", ""),
+                            "query": record.get("query", ""),
+                            "qtype": record.get("qtype_name", record.get("qtype", "")),
+                            "rcode": record.get("rcode_name", ""),
+                            "answers": record.get("answers", ""),
+                        }
+                    )
         else:
             for line in f:
                 parts = line.strip().split()
                 if len(parts) >= 3:
-                    queries.append({
-                        "timestamp": parts[0],
-                        "source": parts[1] if len(parts) > 3 else "",
-                        "query": parts[-2] if len(parts) > 2 else parts[1],
-                        "qtype": parts[-1] if len(parts) > 2 else "",
-                    })
+                    queries.append(
+                        {
+                            "timestamp": parts[0],
+                            "source": parts[1] if len(parts) > 3 else "",
+                            "query": parts[-2] if len(parts) > 2 else parts[1],
+                            "qtype": parts[-1] if len(parts) > 2 else "",
+                        }
+                    )
     return queries
 
 
 def analyze_queries(queries):
     findings = []
-    domain_stats = defaultdict(lambda: {"count": 0, "sources": set(),
-                                         "entropies": [], "lengths": [],
-                                         "txt_count": 0, "total": 0})
+    domain_stats = defaultdict(
+        lambda: {
+            "count": 0,
+            "sources": set(),
+            "entropies": [],
+            "lengths": [],
+            "txt_count": 0,
+            "total": 0,
+        }
+    )
     for q in queries:
         query = q.get("query", "")
         if not query or query == "-":
@@ -92,26 +109,35 @@ def analyze_queries(queries):
             stats["entropies"].append(entropy)
             stats["lengths"].append(len(subdomain))
 
-            if entropy > ENTROPY_THRESHOLD and len(subdomain) > SUBDOMAIN_LENGTH_THRESHOLD:
-                findings.append({
-                    "type": "high_entropy_long_subdomain",
-                    "query": query,
-                    "subdomain": subdomain,
-                    "entropy": round(entropy, 3),
-                    "length": len(subdomain),
-                    "source": q.get("source", ""),
-                    "severity": "HIGH",
-                })
+            if (
+                entropy > ENTROPY_THRESHOLD
+                and len(subdomain) > SUBDOMAIN_LENGTH_THRESHOLD
+            ):
+                findings.append(
+                    {
+                        "type": "high_entropy_long_subdomain",
+                        "query": query,
+                        "subdomain": subdomain,
+                        "entropy": round(entropy, 3),
+                        "length": len(subdomain),
+                        "source": q.get("source", ""),
+                        "severity": "HIGH",
+                    }
+                )
 
         if q.get("qtype", "").upper() in ("TXT", "NULL", "CNAME"):
             stats["txt_count"] += 1
 
     for domain, stats in domain_stats.items():
         if stats["total"] > QUERY_RATE_THRESHOLD:
-            avg_entropy = (sum(stats["entropies"]) / len(stats["entropies"])
-                           if stats["entropies"] else 0)
-            avg_length = (sum(stats["lengths"]) / len(stats["lengths"])
-                          if stats["lengths"] else 0)
+            avg_entropy = (
+                sum(stats["entropies"]) / len(stats["entropies"])
+                if stats["entropies"]
+                else 0
+            )
+            avg_length = (
+                sum(stats["lengths"]) / len(stats["lengths"]) if stats["lengths"] else 0
+            )
             txt_ratio = stats["txt_count"] / stats["total"]
 
             score = 0
@@ -125,17 +151,19 @@ def analyze_queries(queries):
                 score += 25
 
             if score >= 50:
-                findings.append({
-                    "type": "suspected_dns_tunnel",
-                    "domain": domain,
-                    "total_queries": stats["total"],
-                    "avg_entropy": round(avg_entropy, 3),
-                    "avg_subdomain_length": round(avg_length, 1),
-                    "txt_ratio": round(txt_ratio, 3),
-                    "tunnel_score": score,
-                    "unique_sources": len(stats["sources"]),
-                    "severity": "CRITICAL" if score >= 75 else "HIGH",
-                })
+                findings.append(
+                    {
+                        "type": "suspected_dns_tunnel",
+                        "domain": domain,
+                        "total_queries": stats["total"],
+                        "avg_entropy": round(avg_entropy, 3),
+                        "avg_subdomain_length": round(avg_length, 1),
+                        "txt_ratio": round(txt_ratio, 3),
+                        "tunnel_score": score,
+                        "unique_sources": len(stats["sources"]),
+                        "severity": "CRITICAL" if score >= 75 else "HIGH",
+                    }
+                )
 
     return findings
 
@@ -146,7 +174,9 @@ def main():
     parser.add_argument("--dns-log", required=True, help="DNS log file (Zeek or text)")
     parser.add_argument("--format", choices=["zeek", "text"], default="zeek")
     parser.add_argument("--entropy-threshold", type=float, default=ENTROPY_THRESHOLD)
-    parser.add_argument("--length-threshold", type=int, default=SUBDOMAIN_LENGTH_THRESHOLD)
+    parser.add_argument(
+        "--length-threshold", type=int, default=SUBDOMAIN_LENGTH_THRESHOLD
+    )
     args = parser.parse_args()
 
     ENTROPY_THRESHOLD = args.entropy_threshold

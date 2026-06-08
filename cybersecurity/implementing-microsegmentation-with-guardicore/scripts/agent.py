@@ -9,17 +9,27 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 GC_API = os.environ.get("GUARDICORE_API_URL", "https://gc-centra.example.com/api/v3.0")
 
 
 def gc_request(api_url, token, endpoint, method="GET", data=None):
-    cmd = ["curl", "-s", "-k", "-X", method,
-           "-H", f"Authorization: Bearer {token}",
-           "-H", "Content-Type: application/json",
-           f"{api_url}{endpoint}"]
+    cmd = [
+        "curl",
+        "-s",
+        "-k",
+        "-X",
+        method,
+        "-H",
+        f"Authorization: Bearer {token}",
+        "-H",
+        "Content-Type: application/json",
+        f"{api_url}{endpoint}",
+    ]
     if data:
         cmd.extend(["-d", json.dumps(data)])
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
@@ -69,23 +79,31 @@ def analyze_policy_coverage(policies, flows):
         src_label = flow.get("source_label", "unknown")
         dst_label = flow.get("destination_label", "unknown")
         port = str(flow.get("destination_port", ""))
-        if (src_label, dst_label, port) in policy_rules or ("any", "any", "any") in policy_rules:
+        if (src_label, dst_label, port) in policy_rules or (
+            "any",
+            "any",
+            "any",
+        ) in policy_rules:
             covered += 1
         else:
-            uncovered_flows.append({
-                "source": flow.get("source_ip", ""),
-                "destination": flow.get("destination_ip", ""),
-                "port": port,
-                "protocol": flow.get("protocol", ""),
-                "bytes": flow.get("bytes_total", 0),
-            })
+            uncovered_flows.append(
+                {
+                    "source": flow.get("source_ip", ""),
+                    "destination": flow.get("destination_ip", ""),
+                    "port": port,
+                    "protocol": flow.get("protocol", ""),
+                    "bytes": flow.get("bytes_total", 0),
+                }
+            )
     total = len(flows)
     return {
         "total_flows": total,
         "covered_by_policy": covered,
         "uncovered": len(uncovered_flows),
         "coverage_percent": round(covered / max(total, 1) * 100, 1),
-        "top_uncovered_flows": sorted(uncovered_flows, key=lambda x: x["bytes"], reverse=True)[:20],
+        "top_uncovered_flows": sorted(
+            uncovered_flows, key=lambda x: x["bytes"], reverse=True
+        )[:20],
     }
 
 
@@ -100,7 +118,9 @@ def detect_lateral_movement_risk(flows):
     risks = []
     for src, targets in source_targets.items():
         if len(targets) > 10:
-            risks.append({"source_ip": src, "unique_targets": len(targets), "risk": "high"})
+            risks.append(
+                {"source_ip": src, "unique_targets": len(targets), "risk": "high"}
+            )
     return sorted(risks, key=lambda x: x["unique_targets"], reverse=True)
 
 
@@ -108,8 +128,12 @@ def audit_agent_health(agents):
     """Audit deployment agent health status."""
     healthy = sum(1 for a in agents if a.get("status") == "online")
     offline = sum(1 for a in agents if a.get("status") == "offline")
-    return {"total": len(agents), "online": healthy, "offline": offline,
-            "health_percent": round(healthy / max(len(agents), 1) * 100, 1)}
+    return {
+        "total": len(agents),
+        "online": healthy,
+        "offline": offline,
+        "health_percent": round(healthy / max(len(agents), 1) * 100, 1),
+    }
 
 
 def generate_report(policies, flows, agents, api_url):
@@ -128,11 +152,15 @@ def generate_report(policies, flows, agents, api_url):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Guardicore Microsegmentation Audit Agent")
+    parser = argparse.ArgumentParser(
+        description="Guardicore Microsegmentation Audit Agent"
+    )
     parser.add_argument("--api-url", default=GC_API, help="Guardicore Centra API URL")
     parser.add_argument("--username", required=True, help="API username")
     parser.add_argument("--password", required=True, help="API password")
-    parser.add_argument("--hours-back", type=int, default=24, help="Flow analysis window (hours)")
+    parser.add_argument(
+        "--hours-back", type=int, default=24, help="Flow analysis window (hours)"
+    )
     parser.add_argument("--output", default="microseg_report.json")
     args = parser.parse_args()
 
@@ -143,8 +171,11 @@ def main():
     report = generate_report(policies, flows, agents, args.api_url)
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("Coverage: %.1f%%, Agent health: %.1f%%",
-                report["policy_coverage"]["coverage_percent"], report["agent_health"]["health_percent"])
+    logger.info(
+        "Coverage: %.1f%%, Agent health: %.1f%%",
+        report["policy_coverage"]["coverage_percent"],
+        report["agent_health"]["health_percent"],
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

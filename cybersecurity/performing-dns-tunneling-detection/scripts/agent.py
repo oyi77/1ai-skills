@@ -16,7 +16,9 @@ def shannon_entropy(data):
         return 0.0
     counter = Counter(data)
     length = len(data)
-    return -sum((count / length) * math.log2(count / length) for count in counter.values())
+    return -sum(
+        (count / length) * math.log2(count / length) for count in counter.values()
+    )
 
 
 def extract_dns_queries(pcap_path):
@@ -28,12 +30,14 @@ def extract_dns_queries(pcap_path):
             qname = pkt[DNSQR].qname.decode().rstrip(".")
             qtype = pkt[DNSQR].qtype
             src_ip = pkt.src if hasattr(pkt, "src") else ""
-            queries.append({
-                "query": qname,
-                "qtype": qtype,
-                "src_ip": src_ip,
-                "timestamp": float(pkt.time),
-            })
+            queries.append(
+                {
+                    "query": qname,
+                    "qtype": qtype,
+                    "src_ip": src_ip,
+                    "timestamp": float(pkt.time),
+                }
+            )
     return queries
 
 
@@ -50,13 +54,15 @@ def analyze_entropy(queries, threshold=3.8):
             continue
         entropy = shannon_entropy(subdomain)
         if entropy > threshold:
-            suspicious.append({
-                "query": domain,
-                "subdomain": subdomain,
-                "entropy": round(entropy, 3),
-                "length": len(subdomain),
-                "src_ip": q.get("src_ip", ""),
-            })
+            suspicious.append(
+                {
+                    "query": domain,
+                    "subdomain": subdomain,
+                    "entropy": round(entropy, 3),
+                    "length": len(subdomain),
+                    "src_ip": q.get("src_ip", ""),
+                }
+            )
     return sorted(suspicious, key=lambda x: x["entropy"], reverse=True)
 
 
@@ -65,11 +71,13 @@ def analyze_query_lengths(queries, length_threshold=50):
     long_queries = []
     for q in queries:
         if len(q["query"]) > length_threshold:
-            long_queries.append({
-                "query": q["query"],
-                "length": len(q["query"]),
-                "src_ip": q.get("src_ip", ""),
-            })
+            long_queries.append(
+                {
+                    "query": q["query"],
+                    "length": len(q["query"]),
+                    "src_ip": q.get("src_ip", ""),
+                }
+            )
     return long_queries
 
 
@@ -83,8 +91,7 @@ def analyze_txt_records(pcap_path):
             parent = ".".join(domain.split(".")[-2:])
             txt_counts[parent] += 1
     suspicious = [
-        {"domain": d, "txt_query_count": c}
-        for d, c in txt_counts.items() if c > 20
+        {"domain": d, "txt_query_count": c} for d, c in txt_counts.items() if c > 20
     ]
     return sorted(suspicious, key=lambda x: x["txt_query_count"], reverse=True)
 
@@ -101,11 +108,13 @@ def analyze_subdomain_cardinality(queries):
     high_cardinality = []
     for parent, subs in parent_subdomains.items():
         if len(subs) > 50:
-            high_cardinality.append({
-                "parent_domain": parent,
-                "unique_subdomains": len(subs),
-                "sample_subdomains": list(subs)[:5],
-            })
+            high_cardinality.append(
+                {
+                    "parent_domain": parent,
+                    "unique_subdomains": len(subs),
+                    "sample_subdomains": list(subs)[:5],
+                }
+            )
     return sorted(high_cardinality, key=lambda x: x["unique_subdomains"], reverse=True)
 
 
@@ -124,11 +133,13 @@ def analyze_character_distribution(queries):
             continue
         digit_ratio = digit_count / total
         if digit_ratio > 0.4 or (alpha_count / total) < 0.5:
-            suspicious.append({
-                "query": q["query"],
-                "digit_ratio": round(digit_ratio, 3),
-                "subdomain_length": len(subdomain),
-            })
+            suspicious.append(
+                {
+                    "query": q["query"],
+                    "digit_ratio": round(digit_ratio, 3),
+                    "subdomain_length": len(subdomain),
+                }
+            )
     return suspicious
 
 
@@ -137,13 +148,18 @@ def main():
     parser.add_argument("--pcap", required=True, help="Path to PCAP file")
     parser.add_argument("--entropy-threshold", type=float, default=3.8)
     parser.add_argument("--output", default="dns_tunnel_report.json")
-    parser.add_argument("--action", choices=[
-        "entropy", "length", "txt", "cardinality", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=["entropy", "length", "txt", "cardinality", "full_analysis"],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
-    report = {"pcap": args.pcap, "generated_at": datetime.utcnow().isoformat(),
-              "findings": {}}
+    report = {
+        "pcap": args.pcap,
+        "generated_at": datetime.utcnow().isoformat(),
+        "findings": {},
+    }
 
     queries = extract_dns_queries(args.pcap)
     report["total_queries"] = len(queries)

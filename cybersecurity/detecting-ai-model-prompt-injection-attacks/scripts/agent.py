@@ -30,24 +30,78 @@ logger = logging.getLogger(__name__)
 # Regex patterns for known prompt injection signatures
 # ---------------------------------------------------------------------------
 INJECTION_PATTERNS: list[tuple[str, str]] = [
-    ("system_prompt_override", r"(?i)\b(ignore|disregard|forget|override|bypass)\b.{0,30}\b(previous|above|prior|all|system|initial)\b.{0,20}\b(instructions?|prompts?|rules?|directives?|context)\b"),
-    ("role_play_escape", r"(?i)\b(you\s+are\s+now|act\s+as|pretend\s+(to\s+be|you\s+are)|simulate\s+being|switch\s+to|enter\s+.{0,10}mode)\b"),
-    ("instruction_hijack", r"(?i)\b(do\s+not\s+follow|stop\s+following|new\s+instructions?|instead\s+(do|say|output|respond|print))\b"),
-    ("delimiter_escape", r"(?i)(```\s*(system|assistant|user)\s*\n|<\s*/?\s*(system|instruction|prompt)\s*>|\[INST\]|\[/INST\]|<<\s*SYS\s*>>)"),
-    ("data_exfiltration", r"(?i)\b(output|reveal|show|display|print|leak|exfiltrate|extract)\b.{0,30}\b(system\s+prompt|instructions?|config|password|secret|api\s*key|token|credentials?)\b"),
-    ("encoding_obfuscation", r"(?i)\b(base64|rot13|hex\s*encode|url\s*encode|unicode\s*escape)\b.{0,30}\b(decode|convert|translate|interpret)\b"),
-    ("sql_injection_via_prompt", r"(?i)(;\s*(DROP|DELETE|UPDATE|INSERT|ALTER|EXEC)\b|'\s*(OR|AND)\s+['\d]|UNION\s+SELECT)"),
-    ("command_injection_via_prompt", r"(?i)(;\s*(rm|cat|wget|curl|bash|sh|python|exec|eval)\b|\|\s*(cat|ls|id|whoami|nc)\b|`[^`]+`)"),
-    ("markdown_injection", r"(?i)(\!\[.*?\]\(javascript:|<img\s+[^>]*onerror|<script\b|<iframe\b)"),
-    ("context_manipulation", r"(?i)\b(the\s+above\s+(is|was)\s+(a\s+)?(test|joke|example|fake)|end\s+of\s+(system|initial)\s+(message|prompt)|---+\s*(new|real|actual)\s+(instructions?|task))\b"),
-    ("multi_language_obfuscation", r"(?i)(ignorar\s+instruc|ignorer\s+les\s+instruc|ignoriere\s+die\s+anweis|alle\s+bisherigen|toutes\s+les\s+instructions\s+pr)"),
-    ("token_smuggling", r"(?i)(\u200b|\u200c|\u200d|\ufeff|[\x00-\x08\x0b\x0c\x0e-\x1f])"),
-    ("repetitive_override", r"(?i)((?:ignore\s+){3,}|(?:yes\s+){5,}|(?:please\s+){5,})"),
-    ("developer_mode", r"(?i)\b(developer\s+mode|DAN\s+mode|jailbreak\s+mode|god\s+mode|sudo\s+mode|admin\s+mode|unrestricted\s+mode)\b"),
-    ("prompt_leaking", r"(?i)\b(what\s+(is|are)\s+your\s+(system\s+)?instructions?|repeat\s+(your\s+)?(system\s+)?prompt|show\s+me\s+your\s+(rules|prompt|instructions?))\b"),
-    ("few_shot_injection", r"(?i)(user:\s*.{0,50}\nassistant:\s*.{0,50}\nuser:|human:\s*.{0,50}\nassistant:\s*.{0,50}\nhuman:)"),
-    ("indirect_injection_marker", r"(?i)(BEGIN\s+INJECTION|INJECTED\s+INSTRUCTION|HIDDEN\s+COMMAND|AI\s*,?\s+please\s+ignore\s+the\s+above)"),
-    ("virtual_prompt", r"(?i)(completion:\s*\n|response:\s*\n|answer:\s*\n).{0,50}(ignore|forget|disregard|override)"),
+    (
+        "system_prompt_override",
+        r"(?i)\b(ignore|disregard|forget|override|bypass)\b.{0,30}\b(previous|above|prior|all|system|initial)\b.{0,20}\b(instructions?|prompts?|rules?|directives?|context)\b",
+    ),
+    (
+        "role_play_escape",
+        r"(?i)\b(you\s+are\s+now|act\s+as|pretend\s+(to\s+be|you\s+are)|simulate\s+being|switch\s+to|enter\s+.{0,10}mode)\b",
+    ),
+    (
+        "instruction_hijack",
+        r"(?i)\b(do\s+not\s+follow|stop\s+following|new\s+instructions?|instead\s+(do|say|output|respond|print))\b",
+    ),
+    (
+        "delimiter_escape",
+        r"(?i)(```\s*(system|assistant|user)\s*\n|<\s*/?\s*(system|instruction|prompt)\s*>|\[INST\]|\[/INST\]|<<\s*SYS\s*>>)",
+    ),
+    (
+        "data_exfiltration",
+        r"(?i)\b(output|reveal|show|display|print|leak|exfiltrate|extract)\b.{0,30}\b(system\s+prompt|instructions?|config|password|secret|api\s*key|token|credentials?)\b",
+    ),
+    (
+        "encoding_obfuscation",
+        r"(?i)\b(base64|rot13|hex\s*encode|url\s*encode|unicode\s*escape)\b.{0,30}\b(decode|convert|translate|interpret)\b",
+    ),
+    (
+        "sql_injection_via_prompt",
+        r"(?i)(;\s*(DROP|DELETE|UPDATE|INSERT|ALTER|EXEC)\b|'\s*(OR|AND)\s+['\d]|UNION\s+SELECT)",
+    ),
+    (
+        "command_injection_via_prompt",
+        r"(?i)(;\s*(rm|cat|wget|curl|bash|sh|python|exec|eval)\b|\|\s*(cat|ls|id|whoami|nc)\b|`[^`]+`)",
+    ),
+    (
+        "markdown_injection",
+        r"(?i)(\!\[.*?\]\(javascript:|<img\s+[^>]*onerror|<script\b|<iframe\b)",
+    ),
+    (
+        "context_manipulation",
+        r"(?i)\b(the\s+above\s+(is|was)\s+(a\s+)?(test|joke|example|fake)|end\s+of\s+(system|initial)\s+(message|prompt)|---+\s*(new|real|actual)\s+(instructions?|task))\b",
+    ),
+    (
+        "multi_language_obfuscation",
+        r"(?i)(ignorar\s+instruc|ignorer\s+les\s+instruc|ignoriere\s+die\s+anweis|alle\s+bisherigen|toutes\s+les\s+instructions\s+pr)",
+    ),
+    (
+        "token_smuggling",
+        r"(?i)(\u200b|\u200c|\u200d|\ufeff|[\x00-\x08\x0b\x0c\x0e-\x1f])",
+    ),
+    (
+        "repetitive_override",
+        r"(?i)((?:ignore\s+){3,}|(?:yes\s+){5,}|(?:please\s+){5,})",
+    ),
+    (
+        "developer_mode",
+        r"(?i)\b(developer\s+mode|DAN\s+mode|jailbreak\s+mode|god\s+mode|sudo\s+mode|admin\s+mode|unrestricted\s+mode)\b",
+    ),
+    (
+        "prompt_leaking",
+        r"(?i)\b(what\s+(is|are)\s+your\s+(system\s+)?instructions?|repeat\s+(your\s+)?(system\s+)?prompt|show\s+me\s+your\s+(rules|prompt|instructions?))\b",
+    ),
+    (
+        "few_shot_injection",
+        r"(?i)(user:\s*.{0,50}\nassistant:\s*.{0,50}\nuser:|human:\s*.{0,50}\nassistant:\s*.{0,50}\nhuman:)",
+    ),
+    (
+        "indirect_injection_marker",
+        r"(?i)(BEGIN\s+INJECTION|INJECTED\s+INSTRUCTION|HIDDEN\s+COMMAND|AI\s*,?\s+please\s+ignore\s+the\s+above)",
+    ),
+    (
+        "virtual_prompt",
+        r"(?i)(completion:\s*\n|response:\s*\n|answer:\s*\n).{0,50}(ignore|forget|disregard|override)",
+    ),
     ("payload_separator", r"[-=]{10,}|[#]{5,}\s*(new|real|actual|override)"),
     ("base64_payload", r"[A-Za-z0-9+/]{40,}={0,2}"),
 ]
@@ -56,19 +110,55 @@ INJECTION_PATTERNS: list[tuple[str, str]] = [
 # Suspicious keyword sets for heuristic analysis
 # ---------------------------------------------------------------------------
 INSTRUCTION_KEYWORDS = {
-    "ignore", "disregard", "forget", "override", "bypass", "instead",
-    "pretend", "simulate", "act", "roleplay", "imagine", "hypothetically",
-    "jailbreak", "unrestricted", "unfiltered", "uncensored", "unlimited",
-    "reveal", "output", "print", "show", "display", "leak", "extract",
-    "system", "prompt", "instruction", "directive", "rule", "constraint",
+    "ignore",
+    "disregard",
+    "forget",
+    "override",
+    "bypass",
+    "instead",
+    "pretend",
+    "simulate",
+    "act",
+    "roleplay",
+    "imagine",
+    "hypothetically",
+    "jailbreak",
+    "unrestricted",
+    "unfiltered",
+    "uncensored",
+    "unlimited",
+    "reveal",
+    "output",
+    "print",
+    "show",
+    "display",
+    "leak",
+    "extract",
+    "system",
+    "prompt",
+    "instruction",
+    "directive",
+    "rule",
+    "constraint",
 }
 
-DELIMITER_CHARS = {"```", "---", "===", "###", "<|", "|>", "[INST]", "[/INST]", "<<SYS>>"}
+DELIMITER_CHARS = {
+    "```",
+    "---",
+    "===",
+    "###",
+    "<|",
+    "|>",
+    "[INST]",
+    "[/INST]",
+    "<<SYS>>",
+}
 
 
 @dataclass
 class DetectionResult:
     """Result of prompt injection analysis across all detection layers."""
+
     input_text: str
     injection_detected: bool = False
     composite_score: float = 0.0
@@ -107,7 +197,9 @@ class HeuristicScorer:
         word_count = max(len(words), 1)
 
         # Feature 1: Instruction keyword density
-        instruction_count = sum(1 for w in words if w.lower().strip(".,!?;:") in INSTRUCTION_KEYWORDS)
+        instruction_count = sum(
+            1 for w in words if w.lower().strip(".,!?;:") in INSTRUCTION_KEYWORDS
+        )
         features["instruction_density"] = min(1.0, instruction_count / word_count * 3)
 
         # Feature 2: Special character ratio
@@ -122,7 +214,9 @@ class HeuristicScorer:
         upper_chars = sum(1 for c in text if c.isupper())
         alpha_chars = max(sum(1 for c in text if c.isalpha()), 1)
         cap_ratio = upper_chars / alpha_chars
-        features["capitalization_ratio"] = 1.0 if cap_ratio > 0.6 and len(text) > 20 else cap_ratio * 0.5
+        features["capitalization_ratio"] = (
+            1.0 if cap_ratio > 0.6 and len(text) > 20 else cap_ratio * 0.5
+        )
 
         # Feature 5: Line count anomaly (many short lines suggest structured injection)
         lines = text.strip().split("\n")
@@ -132,13 +226,19 @@ class HeuristicScorer:
             features["line_structure_anomaly"] = 0.0
 
         # Feature 6: Unicode anomaly (zero-width characters, control characters)
-        zwc_count = sum(1 for c in text if ord(c) in (0x200B, 0x200C, 0x200D, 0xFEFF) or 0x00 <= ord(c) <= 0x08)
+        zwc_count = sum(
+            1
+            for c in text
+            if ord(c) in (0x200B, 0x200C, 0x200D, 0xFEFF) or 0x00 <= ord(c) <= 0x08
+        )
         features["unicode_anomaly"] = min(1.0, zwc_count * 0.5)
 
         # Feature 7: Repetition score
         if word_count >= 4:
             unique_ratio = len(set(w.lower() for w in words)) / word_count
-            features["repetition_score"] = max(0.0, 1.0 - unique_ratio) if unique_ratio < 0.4 else 0.0
+            features["repetition_score"] = (
+                max(0.0, 1.0 - unique_ratio) if unique_ratio < 0.4 else 0.0
+            )
         else:
             features["repetition_score"] = 0.0
 
@@ -171,7 +271,11 @@ class ClassifierDetector:
             return
         try:
             from transformers import pipeline as hf_pipeline
-            logger.info("Loading DeBERTa prompt injection classifier from %s ...", self.MODEL_NAME)
+
+            logger.info(
+                "Loading DeBERTa prompt injection classifier from %s ...",
+                self.MODEL_NAME,
+            )
             self._pipeline = hf_pipeline(
                 "text-classification",
                 model=self.MODEL_NAME,
@@ -181,7 +285,9 @@ class ClassifierDetector:
             )
             logger.info("Classifier loaded successfully.")
         except ImportError:
-            logger.error("transformers library not installed. Run: pip install transformers torch")
+            logger.error(
+                "transformers library not installed. Run: pip install transformers torch"
+            )
             raise
         except Exception as exc:
             logger.error("Failed to load classifier model: %s", exc)
@@ -258,7 +364,9 @@ class PromptInjectionDetector:
             try:
                 classifier_score, classifier_label = self.classifier.predict(text)
             except Exception as exc:
-                logger.warning("Classifier failed, falling back to regex+heuristic: %s", exc)
+                logger.warning(
+                    "Classifier failed, falling back to regex+heuristic: %s", exc
+                )
                 classifier_score = 0.0
                 classifier_label = "ERROR"
 
@@ -326,21 +434,26 @@ Examples:
         """,
     )
     parser.add_argument("--input", "-i", type=str, help="Single prompt to analyze")
-    parser.add_argument("--file", "-f", type=str, help="File with one prompt per line to scan")
     parser.add_argument(
-        "--mode", "-m",
+        "--file", "-f", type=str, help="File with one prompt per line to scan"
+    )
+    parser.add_argument(
+        "--mode",
+        "-m",
         choices=["regex", "heuristic", "full"],
         default="full",
         help="Detection mode: regex (fast), heuristic (no model), full (all layers). Default: full",
     )
     parser.add_argument(
-        "--threshold", "-t",
+        "--threshold",
+        "-t",
         type=float,
         default=0.85,
         help="Classifier confidence threshold for injection label. Default: 0.85",
     )
     parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         choices=["text", "json"],
         default="text",
         help="Output format. Default: text",
@@ -401,7 +514,9 @@ Examples:
     # Summary
     if args.output == "text" and len(prompts) > 1:
         print(f"\n{'=' * 70}")
-        print(f"SUMMARY: {injection_count}/{len(prompts)} prompts flagged as injection attempts")
+        print(
+            f"SUMMARY: {injection_count}/{len(prompts)} prompts flagged as injection attempts"
+        )
         total_time = sum(r.detection_time_ms for r in results)
         print(f"Total detection time: {total_time:.2f} ms")
         print(f"Average per prompt  : {total_time / len(prompts):.2f} ms")

@@ -6,6 +6,7 @@ collections on endpoints, retrieve results, and generate IR reports.
 Supports common forensic artifacts including process listings, network
 connections, autoruns, event logs, and file system evidence.
 """
+
 import argparse
 import json
 import os
@@ -21,6 +22,7 @@ except ImportError:
 
 try:
     import grpc
+
     HAS_GRPC = True
 except ImportError:
     HAS_GRPC = False
@@ -54,28 +56,34 @@ def search_clients(api_url, api_key, query, cert_path=None):
     """Search for Velociraptor clients by hostname, label, or client ID."""
     print(f"[*] Searching for clients: {query}")
     data = {"query": query, "count": 100}
-    result = velo_api_call(api_url, api_key, "/api/v1/SearchClients", "POST", data, cert_path)
+    result = velo_api_call(
+        api_url, api_key, "/api/v1/SearchClients", "POST", data, cert_path
+    )
     clients = result.get("items", [])
     print(f"[+] Found {len(clients)} client(s)")
     for c in clients:
         os_info = c.get("os_info", {})
-        print(f"    {c.get('client_id', 'N/A'):20s} | "
-              f"{os_info.get('hostname', 'unknown'):20s} | "
-              f"{os_info.get('system', 'unknown'):10s} | "
-              f"Last seen: {c.get('last_seen_at', 'N/A')}")
+        print(
+            f"    {c.get('client_id', 'N/A'):20s} | "
+            f"{os_info.get('hostname', 'unknown'):20s} | "
+            f"{os_info.get('system', 'unknown'):10s} | "
+            f"Last seen: {c.get('last_seen_at', 'N/A')}"
+        )
     return clients
 
 
-def collect_artifact(api_url, api_key, client_id, artifacts, parameters=None, cert_path=None):
+def collect_artifact(
+    api_url, api_key, client_id, artifacts, parameters=None, cert_path=None
+):
     """Schedule an artifact collection on a specific client."""
     print(f"[*] Scheduling collection on {client_id}: {', '.join(artifacts)}")
     specs = []
     for artifact in artifacts:
         spec = {"artifact": artifact}
         if parameters and artifact in parameters:
-            spec["parameters"] = {"env": [
-                {"key": k, "value": v} for k, v in parameters[artifact].items()
-            ]}
+            spec["parameters"] = {
+                "env": [{"key": k, "value": v} for k, v in parameters[artifact].items()]
+            }
         specs.append(spec)
 
     data = {
@@ -83,7 +91,9 @@ def collect_artifact(api_url, api_key, client_id, artifacts, parameters=None, ce
         "artifacts": artifacts,
         "specs": specs,
     }
-    result = velo_api_call(api_url, api_key, "/api/v1/CollectArtifact", "POST", data, cert_path)
+    result = velo_api_call(
+        api_url, api_key, "/api/v1/CollectArtifact", "POST", data, cert_path
+    )
     flow_id = result.get("flow_id", "")
     print(f"[+] Collection started, flow ID: {flow_id}")
     return flow_id
@@ -92,27 +102,38 @@ def collect_artifact(api_url, api_key, client_id, artifacts, parameters=None, ce
 def get_flow_status(api_url, api_key, client_id, flow_id, cert_path=None):
     """Check the status of a collection flow."""
     data = {"client_id": client_id, "flow_id": flow_id}
-    result = velo_api_call(api_url, api_key, "/api/v1/GetFlowDetails", "POST", data, cert_path)
+    result = velo_api_call(
+        api_url, api_key, "/api/v1/GetFlowDetails", "POST", data, cert_path
+    )
     context = result.get("context", {})
     state = context.get("state", "UNSET")
     return state, context
 
 
-def wait_for_collection(api_url, api_key, client_id, flow_id, max_wait=300, cert_path=None):
+def wait_for_collection(
+    api_url, api_key, client_id, flow_id, max_wait=300, cert_path=None
+):
     """Poll until a collection flow completes."""
     print(f"[*] Waiting for collection to complete (max {max_wait}s)...")
     elapsed = 0
     interval = 10
     while elapsed < max_wait:
-        state, context = get_flow_status(api_url, api_key, client_id, flow_id, cert_path)
+        state, context = get_flow_status(
+            api_url, api_key, client_id, flow_id, cert_path
+        )
         if state == "FINISHED":
             total_rows = context.get("total_collected_rows", 0)
             total_bytes = context.get("total_uploaded_bytes", 0)
-            print(f"[+] Collection complete: {total_rows} rows, "
-                  f"{total_bytes / 1024:.1f} KB uploaded")
+            print(
+                f"[+] Collection complete: {total_rows} rows, "
+                f"{total_bytes / 1024:.1f} KB uploaded"
+            )
             return True, context
         if state == "ERROR":
-            print(f"[!] Collection failed: {context.get('status', 'unknown')}", file=sys.stderr)
+            print(
+                f"[!] Collection failed: {context.get('status', 'unknown')}",
+                file=sys.stderr,
+            )
             return False, context
         print(f"    State: {state} ({elapsed}s elapsed)")
         time.sleep(interval)
@@ -130,7 +151,9 @@ def get_flow_results(api_url, api_key, client_id, flow_id, artifact, cert_path=N
         "artifact": artifact,
         "count": 10000,
     }
-    result = velo_api_call(api_url, api_key, "/api/v1/GetTable", "POST", data, cert_path)
+    result = velo_api_call(
+        api_url, api_key, "/api/v1/GetTable", "POST", data, cert_path
+    )
     rows = result.get("rows", [])
     columns = result.get("columns", [])
     print(f"[+] Retrieved {len(rows)} row(s), {len(columns)} column(s)")
@@ -188,26 +211,35 @@ def format_summary(client_id, artifacts, flow_context, results_summary):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Velociraptor IR collection agent"
-    )
+    parser = argparse.ArgumentParser(description="Velociraptor IR collection agent")
     sub = parser.add_subparsers(dest="command")
 
     p_search = sub.add_parser("search", help="Search for clients")
-    p_search.add_argument("--query", required=True, help="Search query (hostname, label, client ID)")
+    p_search.add_argument(
+        "--query", required=True, help="Search query (hostname, label, client ID)"
+    )
 
     p_collect = sub.add_parser("collect", help="Collect artifacts from client")
     p_collect.add_argument("--client-id", required=True, help="Velociraptor client ID")
-    p_collect.add_argument("--artifacts", nargs="+", help="Specific artifact names to collect")
-    p_collect.add_argument("--preset", choices=list(IR_ARTIFACT_SETS.keys()),
-                          help="Use a predefined IR artifact set")
-    p_collect.add_argument("--wait", type=int, default=300, help="Max wait time in seconds")
+    p_collect.add_argument(
+        "--artifacts", nargs="+", help="Specific artifact names to collect"
+    )
+    p_collect.add_argument(
+        "--preset",
+        choices=list(IR_ARTIFACT_SETS.keys()),
+        help="Use a predefined IR artifact set",
+    )
+    p_collect.add_argument(
+        "--wait", type=int, default=300, help="Max wait time in seconds"
+    )
 
     p_status = sub.add_parser("status", help="Check collection status")
     p_status.add_argument("--client-id", required=True)
     p_status.add_argument("--flow-id", required=True)
 
-    parser.add_argument("--api-url", help="Velociraptor API URL (or VELOCIRAPTOR_API_URL env)")
+    parser.add_argument(
+        "--api-url", help="Velociraptor API URL (or VELOCIRAPTOR_API_URL env)"
+    )
     parser.add_argument("--api-key", help="API key (or VELOCIRAPTOR_API_KEY env)")
     parser.add_argument("--cert", help="CA cert path (or VELOCIRAPTOR_CERT env)")
     parser.add_argument("--output", "-o", help="Output JSON report path")
@@ -241,24 +273,42 @@ def main():
         if not artifacts:
             print("[!] Specify --artifacts or --preset", file=sys.stderr)
             sys.exit(1)
-        flow_id = collect_artifact(api_url, api_key, args.client_id, artifacts, cert_path=cert_path)
-        success, context = wait_for_collection(api_url, api_key, args.client_id, flow_id, args.wait, cert_path)
+        flow_id = collect_artifact(
+            api_url, api_key, args.client_id, artifacts, cert_path=cert_path
+        )
+        success, context = wait_for_collection(
+            api_url, api_key, args.client_id, flow_id, args.wait, cert_path
+        )
         results_summary = {}
         if success:
             for artifact in artifacts:
                 try:
-                    rows, cols = get_flow_results(api_url, api_key, args.client_id, flow_id, artifact, cert_path)
+                    rows, cols = get_flow_results(
+                        api_url, api_key, args.client_id, flow_id, artifact, cert_path
+                    )
                     results_summary[artifact] = len(rows)
                 except Exception as e:
                     results_summary[artifact] = f"Error: {e}"
         format_summary(args.client_id, artifacts, context, results_summary)
-        result = {"action": "collect", "client_id": args.client_id, "flow_id": flow_id,
-                  "state": context.get("state", "UNKNOWN"), "artifacts": results_summary}
+        result = {
+            "action": "collect",
+            "client_id": args.client_id,
+            "flow_id": flow_id,
+            "state": context.get("state", "UNKNOWN"),
+            "artifacts": results_summary,
+        }
 
     elif args.command == "status":
-        state, context = get_flow_status(api_url, api_key, args.client_id, args.flow_id, cert_path)
+        state, context = get_flow_status(
+            api_url, api_key, args.client_id, args.flow_id, cert_path
+        )
         print(f"[*] Flow {args.flow_id}: {state}")
-        result = {"action": "status", "flow_id": args.flow_id, "state": state, "context": context}
+        result = {
+            "action": "status",
+            "flow_id": args.flow_id,
+            "state": state,
+            "context": context,
+        }
 
     report = {
         "timestamp": datetime.now(timezone.utc).isoformat(),

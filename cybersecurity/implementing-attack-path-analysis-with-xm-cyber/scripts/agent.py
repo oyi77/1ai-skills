@@ -14,7 +14,9 @@ try:
 except ImportError:
     sys.exit("requests required: pip install requests")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -24,10 +26,12 @@ class XMCyberClient:
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url.rstrip("/")
         self.session = requests.Session()
-        self.session.headers.update({
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        })
+        self.session.headers.update(
+            {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            }
+        )
 
     def get_scenarios(self) -> List[dict]:
         """List all attack scenarios."""
@@ -38,14 +42,16 @@ class XMCyberClient:
     def get_attack_paths(self, scenario_id: str) -> List[dict]:
         """Get attack paths for a specific scenario."""
         resp = self.session.get(
-            f"{self.base_url}/api/v1/scenarios/{scenario_id}/attack-paths", timeout=30)
+            f"{self.base_url}/api/v1/scenarios/{scenario_id}/attack-paths", timeout=30
+        )
         resp.raise_for_status()
         return resp.json().get("data", [])
 
     def get_choke_points(self, scenario_id: str) -> List[dict]:
         """Get choke points where multiple attack paths converge."""
         resp = self.session.get(
-            f"{self.base_url}/api/v1/scenarios/{scenario_id}/choke-points", timeout=30)
+            f"{self.base_url}/api/v1/scenarios/{scenario_id}/choke-points", timeout=30
+        )
         resp.raise_for_status()
         return resp.json().get("data", [])
 
@@ -58,27 +64,35 @@ class XMCyberClient:
     def get_entities_at_risk(self, scenario_id: str) -> List[dict]:
         """Get entities at risk of compromise in a scenario."""
         resp = self.session.get(
-            f"{self.base_url}/api/v1/scenarios/{scenario_id}/entities-at-risk", timeout=30)
+            f"{self.base_url}/api/v1/scenarios/{scenario_id}/entities-at-risk",
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json().get("data", [])
 
     def get_remediation_actions(self, scenario_id: str) -> List[dict]:
         """Get recommended remediation actions prioritized by impact."""
         resp = self.session.get(
-            f"{self.base_url}/api/v1/scenarios/{scenario_id}/remediations", timeout=30)
+            f"{self.base_url}/api/v1/scenarios/{scenario_id}/remediations", timeout=30
+        )
         resp.raise_for_status()
         return resp.json().get("data", [])
 
 
 def analyze_choke_points(choke_points: List[dict]) -> dict:
     """Analyze choke points to identify highest-impact remediation targets."""
-    sorted_cp = sorted(choke_points, key=lambda c: c.get("paths_through", 0), reverse=True)
+    sorted_cp = sorted(
+        choke_points, key=lambda c: c.get("paths_through", 0), reverse=True
+    )
     return {
         "total_choke_points": len(choke_points),
         "top_choke_points": [
-            {"entity": cp.get("entity_name", ""), "type": cp.get("entity_type", ""),
-             "paths_through": cp.get("paths_through", 0),
-             "techniques": cp.get("techniques", [])}
+            {
+                "entity": cp.get("entity_name", ""),
+                "type": cp.get("entity_type", ""),
+                "paths_through": cp.get("paths_through", 0),
+                "techniques": cp.get("techniques", []),
+            }
             for cp in sorted_cp[:10]
         ],
     }
@@ -114,13 +128,16 @@ def generate_report(client: XMCyberClient) -> dict:
         paths = client.get_attack_paths(sid)
         choke = client.get_choke_points(sid)
         remediations = client.get_remediation_actions(sid)
-        report["scenarios"].append({
-            "id": sid, "name": scenario.get("name", ""),
-            "attack_paths": len(paths),
-            "choke_point_analysis": analyze_choke_points(choke),
-            "risk_score": compute_risk_score(paths, critical_assets),
-            "top_remediations": remediations[:5],
-        })
+        report["scenarios"].append(
+            {
+                "id": sid,
+                "name": scenario.get("name", ""),
+                "attack_paths": len(paths),
+                "choke_point_analysis": analyze_choke_points(choke),
+                "risk_score": compute_risk_score(paths, critical_assets),
+                "top_remediations": remediations[:5],
+            }
+        )
     return report
 
 

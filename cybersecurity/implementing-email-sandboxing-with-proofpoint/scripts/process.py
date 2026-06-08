@@ -22,6 +22,7 @@ from dataclasses import dataclass, field, asdict
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -39,8 +40,9 @@ class ProofpointTAPClient:
         self.base = PP_BASE_URL
 
     def _get(self, endpoint: str, params: dict = None) -> dict:
-        resp = requests.get(f"{self.base}{endpoint}",
-                            auth=self.auth, params=params, timeout=30)
+        resp = requests.get(
+            f"{self.base}{endpoint}", auth=self.auth, params=params, timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -92,7 +94,11 @@ def analyze_threats(threat_data: dict) -> dict:
             if threat.get("threatType") == "attachment":
                 threat_families[threat.get("threat", "unknown")] += 1
 
-        for recipient in msg.get("recipient", []) if isinstance(msg.get("recipient"), list) else [msg.get("recipient", "")]:
+        for recipient in (
+            msg.get("recipient", [])
+            if isinstance(msg.get("recipient"), list)
+            else [msg.get("recipient", "")]
+        ):
             if recipient:
                 targeted_users[recipient] += 1
 
@@ -106,12 +112,15 @@ def analyze_threats(threat_data: dict) -> dict:
         "total_clicks_blocked": len(clicks_blocked),
         "total_clicks_permitted": len(clicks_permitted),
         "threat_type_breakdown": dict(threat_types),
-        "top_threat_families": dict(sorted(threat_families.items(),
-                                           key=lambda x: x[1], reverse=True)[:10]),
-        "top_targeted_users": dict(sorted(targeted_users.items(),
-                                          key=lambda x: x[1], reverse=True)[:10]),
-        "top_sender_domains": dict(sorted(sender_domains.items(),
-                                          key=lambda x: x[1], reverse=True)[:10]),
+        "top_threat_families": dict(
+            sorted(threat_families.items(), key=lambda x: x[1], reverse=True)[:10]
+        ),
+        "top_targeted_users": dict(
+            sorted(targeted_users.items(), key=lambda x: x[1], reverse=True)[:10]
+        ),
+        "top_sender_domains": dict(
+            sorted(sender_domains.items(), key=lambda x: x[1], reverse=True)[:10]
+        ),
     }
     return summary
 
@@ -123,20 +132,25 @@ def format_threat_report(summary: dict, hours: int) -> str:
     lines.append("  PROOFPOINT TAP THREAT REPORT")
     lines.append("=" * 60)
     lines.append(f"  Period: Last {hours} hours")
-    lines.append(f"  Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+    lines.append(
+        f"  Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}"
+    )
     lines.append("")
 
     lines.append("[OVERVIEW]")
     lines.append(f"  Messages Blocked:           {summary['total_messages_blocked']}")
-    lines.append(f"  Delivered with Threats:      {summary['total_messages_delivered_with_threats']}")
+    lines.append(
+        f"  Delivered with Threats:      {summary['total_messages_delivered_with_threats']}"
+    )
     lines.append(f"  Clicks Blocked:              {summary['total_clicks_blocked']}")
     lines.append(f"  Clicks Permitted:            {summary['total_clicks_permitted']}")
     lines.append("")
 
     if summary["threat_type_breakdown"]:
         lines.append("[THREAT TYPES]")
-        for t, count in sorted(summary["threat_type_breakdown"].items(),
-                                key=lambda x: x[1], reverse=True):
+        for t, count in sorted(
+            summary["threat_type_breakdown"].items(), key=lambda x: x[1], reverse=True
+        ):
             lines.append(f"  {t}: {count}")
         lines.append("")
 
@@ -187,7 +201,10 @@ def main():
 
     if not principal or not secret:
         print("Error: Proofpoint TAP credentials required.", file=sys.stderr)
-        print("Set PP_SERVICE_PRINCIPAL and PP_SECRET environment variables.", file=sys.stderr)
+        print(
+            "Set PP_SERVICE_PRINCIPAL and PP_SECRET environment variables.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     client = ProofpointTAPClient(principal, secret)
@@ -207,8 +224,10 @@ def main():
         print(f"Very Attacked People (last {args.window} days):")
         for user in users:
             identity = user.get("identity", {})
-            print(f"  {identity.get('emails', [''])[0]} - "
-                  f"Attacks: {user.get('threatStatistics', {}).get('attackIndex', 0)}")
+            print(
+                f"  {identity.get('emails', [''])[0]} - "
+                f"Attacks: {user.get('threatStatistics', {}).get('attackIndex', 0)}"
+            )
 
     elif args.command == "campaign":
         data = client.get_campaign(args.id)

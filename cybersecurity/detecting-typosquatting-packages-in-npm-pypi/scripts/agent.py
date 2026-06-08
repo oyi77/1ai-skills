@@ -34,7 +34,9 @@ except ImportError:
         return prev_row[-1]
 
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 PYPI_API = "https://pypi.org/pypi/{}/json"
@@ -43,7 +45,9 @@ NPM_DOWNLOADS_API = "https://api.npmjs.org/downloads/point/last-week/{}"
 PYPISTATS_API = "https://pypistats.org/api/packages/{}/recent"
 
 SESSION = requests.Session()
-SESSION.headers.update({"Accept": "application/json", "User-Agent": "typosquat-detector/1.0"})
+SESSION.headers.update(
+    {"Accept": "application/json", "User-Agent": "typosquat-detector/1.0"}
+)
 
 
 def normalize_pypi_name(name):
@@ -62,7 +66,7 @@ def generate_typosquat_candidates(name):
 
     # Character omission: remove each character one at a time
     for i in range(len(lower_name)):
-        candidate = lower_name[:i] + lower_name[i + 1:]
+        candidate = lower_name[:i] + lower_name[i + 1 :]
         if candidate and candidate != lower_name:
             candidates.add(candidate)
 
@@ -82,16 +86,36 @@ def generate_typosquat_candidates(name):
 
     # Keyboard-adjacent substitution (QWERTY layout)
     qwerty_neighbors = {
-        "q": "wa", "w": "qeas", "e": "wrds", "r": "etfs", "t": "ryg",
-        "y": "tuh", "u": "yij", "i": "uok", "o": "ipl", "p": "ol",
-        "a": "qwsz", "s": "wedxza", "d": "erfcxs", "f": "rtgvcd",
-        "g": "tyhbvf", "h": "yujng", "j": "uikmh", "k": "ioljm",
-        "l": "opk", "z": "asx", "x": "zsdc", "c": "xdfv", "v": "cfgb",
-        "b": "vghn", "n": "bhjm", "m": "njk",
+        "q": "wa",
+        "w": "qeas",
+        "e": "wrds",
+        "r": "etfs",
+        "t": "ryg",
+        "y": "tuh",
+        "u": "yij",
+        "i": "uok",
+        "o": "ipl",
+        "p": "ol",
+        "a": "qwsz",
+        "s": "wedxza",
+        "d": "erfcxs",
+        "f": "rtgvcd",
+        "g": "tyhbvf",
+        "h": "yujng",
+        "j": "uikmh",
+        "k": "ioljm",
+        "l": "opk",
+        "z": "asx",
+        "x": "zsdc",
+        "c": "xdfv",
+        "v": "cfgb",
+        "b": "vghn",
+        "n": "bhjm",
+        "m": "njk",
     }
     for i, ch in enumerate(lower_name):
         for neighbor in qwerty_neighbors.get(ch, ""):
-            candidate = lower_name[:i] + neighbor + lower_name[i + 1:]
+            candidate = lower_name[:i] + neighbor + lower_name[i + 1 :]
             if candidate != lower_name:
                 candidates.add(candidate)
 
@@ -194,7 +218,11 @@ def query_npm_package(name, delay=0.5):
             "version_count": len(data.get("versions", {})),
             "license": data.get("license"),
             "homepage": data.get("homepage"),
-            "repository": data.get("repository", {}).get("url") if isinstance(data.get("repository"), dict) else data.get("repository"),
+            "repository": (
+                data.get("repository", {}).get("url")
+                if isinstance(data.get("repository"), dict)
+                else data.get("repository")
+            ),
             "exists": True,
         }
     except requests.RequestException as e:
@@ -300,7 +328,9 @@ def compute_suspicion_score(candidate_meta, target_meta, target_name, registry):
         candidate_author = (candidate_meta.get("author") or "").lower().strip()
         target_author = (target_meta.get("author") or "").lower().strip()
     else:
-        candidate_author = set(m.lower() for m in (candidate_meta.get("maintainers") or []))
+        candidate_author = set(
+            m.lower() for m in (candidate_meta.get("maintainers") or [])
+        )
         target_author = set(m.lower() for m in (target_meta.get("maintainers") or []))
 
     if candidate_author and target_author and candidate_author != target_author:
@@ -316,7 +346,11 @@ def compute_suspicion_score(candidate_meta, target_meta, target_name, registry):
         score += 5
 
     # Repository URL presence
-    repo = candidate_meta.get("home_page") or candidate_meta.get("homepage") or candidate_meta.get("repository")
+    repo = (
+        candidate_meta.get("home_page")
+        or candidate_meta.get("homepage")
+        or candidate_meta.get("repository")
+    )
     signals["has_repository"] = bool(repo)
     if not repo:
         score += 5
@@ -351,13 +385,19 @@ def scan_package(target_name, registry="pypi", max_candidates=None):
 
     if not target_meta:
         logger.warning("Target package '%s' not found on %s", target_name, registry)
-        return {"target": target_name, "registry": registry, "error": "Target package not found"}
+        return {
+            "target": target_name,
+            "registry": registry,
+            "error": "Target package not found",
+        }
 
     # Generate candidates
     candidates = generate_typosquat_candidates(target_name)
     if max_candidates:
         candidates = candidates[:max_candidates]
-    logger.info("Generated %d typosquat candidates for '%s'", len(candidates), target_name)
+    logger.info(
+        "Generated %d typosquat candidates for '%s'", len(candidates), target_name
+    )
 
     # Query registry for each candidate
     results = []
@@ -372,18 +412,23 @@ def scan_package(target_name, registry="pypi", max_candidates=None):
                 meta, target_meta, target_name, registry
             )
             risk = classify_risk(score)
-            results.append({
-                "candidate": candidate,
-                "target": target_name,
-                "registry": registry,
-                "score": score,
-                "risk": risk,
-                "signals": signals,
-                "metadata": meta,
-            })
+            results.append(
+                {
+                    "candidate": candidate,
+                    "target": target_name,
+                    "registry": registry,
+                    "score": score,
+                    "risk": risk,
+                    "signals": signals,
+                    "metadata": meta,
+                }
+            )
             logger.info(
                 "  [%s] %s (score=%d, lev=%d)",
-                risk, candidate, score, signals.get("levenshtein_distance", -1),
+                risk,
+                candidate,
+                score,
+                signals.get("levenshtein_distance", -1),
             )
 
         if (i + 1) % 50 == 0:
@@ -480,28 +525,44 @@ def main():
     # scan single package
     scan_p = sub.add_parser("scan", help="Scan for typosquats of a single package")
     scan_p.add_argument("package", help="Target package name to scan for typosquats")
-    scan_p.add_argument("--registry", choices=["pypi", "npm"], default="pypi",
-                        help="Package registry to scan (default: pypi)")
+    scan_p.add_argument(
+        "--registry",
+        choices=["pypi", "npm"],
+        default="pypi",
+        help="Package registry to scan (default: pypi)",
+    )
     scan_p.add_argument("--max-candidates", type=int, help="Limit candidates to check")
 
     # scan dependency file
     file_p = sub.add_parser("scan-file", help="Scan dependencies from a file")
     file_p.add_argument("file", help="Path to requirements.txt, package.json, etc.")
-    file_p.add_argument("--registry", choices=["pypi", "npm"], default="pypi",
-                        help="Package registry to scan (default: pypi)")
-    file_p.add_argument("--max-candidates", type=int, help="Limit candidates per package")
+    file_p.add_argument(
+        "--registry",
+        choices=["pypi", "npm"],
+        default="pypi",
+        help="Package registry to scan (default: pypi)",
+    )
+    file_p.add_argument(
+        "--max-candidates", type=int, help="Limit candidates per package"
+    )
 
     # check single candidate
-    check_p = sub.add_parser("check", help="Check a specific package name against a target")
+    check_p = sub.add_parser(
+        "check", help="Check a specific package name against a target"
+    )
     check_p.add_argument("candidate", help="Candidate package name to check")
     check_p.add_argument("target", help="Legitimate target package name")
     check_p.add_argument("--registry", choices=["pypi", "npm"], default="pypi")
 
     # generate candidates only (no registry queries)
-    gen_p = sub.add_parser("generate", help="Generate typosquat candidates without querying registry")
+    gen_p = sub.add_parser(
+        "generate", help="Generate typosquat candidates without querying registry"
+    )
     gen_p.add_argument("package", help="Package name to generate candidates for")
 
-    parser.add_argument("--output", default="typosquat_report.json", help="Output report path")
+    parser.add_argument(
+        "--output", default="typosquat_report.json", help="Output report path"
+    )
     args = parser.parse_args()
 
     result = {}

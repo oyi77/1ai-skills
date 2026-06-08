@@ -9,7 +9,9 @@ from collections import defaultdict
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -24,14 +26,20 @@ def query_crtsh(domain):
 
 def query_urlhaus(ioc, ioc_type="host"):
     """Query URLhaus for malicious URL hosting information."""
-    resp = requests.post("https://urlhaus-api.abuse.ch/v1/host/", data={ioc_type: ioc}, timeout=15)
+    resp = requests.post(
+        "https://urlhaus-api.abuse.ch/v1/host/", data={ioc_type: ioc}, timeout=15
+    )
     resp.raise_for_status()
     return resp.json()
 
 
 def query_threatfox(ioc):
     """Query ThreatFox for IOC intelligence."""
-    resp = requests.post("https://threatfox-api.abuse.ch/api/v1/", json={"query": "search_ioc", "search_term": ioc}, timeout=15)
+    resp = requests.post(
+        "https://threatfox-api.abuse.ch/api/v1/",
+        json={"query": "search_ioc", "search_term": ioc},
+        timeout=15,
+    )
     resp.raise_for_status()
     return resp.json()
 
@@ -48,7 +56,10 @@ def pivot_on_certificate(cert_data):
                 related_domains.add(domain)
         issuer = cert.get("issuer_name", "")
         issuers[issuer].append(cert.get("serial_number", ""))
-    return {"related_domains": sorted(related_domains), "issuers": {k: len(v) for k, v in issuers.items()}}
+    return {
+        "related_domains": sorted(related_domains),
+        "issuers": {k: len(v) for k, v in issuers.items()},
+    }
 
 
 def build_infrastructure_map(seed_iocs, ioc_types):
@@ -63,7 +74,9 @@ def build_infrastructure_map(seed_iocs, ioc_types):
                 node["ct_domains"] = pivot["related_domains"][:20]
                 node["sources"].append("crt.sh")
                 for related in pivot["related_domains"][:5]:
-                    infra_map["edges"].append({"from": ioc, "to": related, "relation": "shared_certificate"})
+                    infra_map["edges"].append(
+                        {"from": ioc, "to": related, "relation": "shared_certificate"}
+                    )
             except requests.RequestException as e:
                 node["ct_error"] = str(e)
         try:
@@ -94,14 +107,22 @@ def generate_report(infra_map, seed_iocs):
         "edges_discovered": len(infra_map["edges"]),
         "infrastructure_map": infra_map,
     }
-    print(f"INFRA REPORT: {len(infra_map['nodes'])} nodes, {len(infra_map['edges'])} edges")
+    print(
+        f"INFRA REPORT: {len(infra_map['nodes'])} nodes, {len(infra_map['edges'])} edges"
+    )
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Adversary Infrastructure Tracking Agent")
-    parser.add_argument("--iocs", nargs="+", required=True, help="Seed IOCs (domains/IPs)")
-    parser.add_argument("--types", nargs="+", required=True, help="IOC types (domain/ip)")
+    parser = argparse.ArgumentParser(
+        description="Adversary Infrastructure Tracking Agent"
+    )
+    parser.add_argument(
+        "--iocs", nargs="+", required=True, help="Seed IOCs (domains/IPs)"
+    )
+    parser.add_argument(
+        "--types", nargs="+", required=True, help="IOC types (domain/ip)"
+    )
     parser.add_argument("--output", default="infra_tracking_report.json")
     args = parser.parse_args()
 
