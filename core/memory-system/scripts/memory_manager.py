@@ -362,11 +362,15 @@ class MemoryManager:
 
             # Archive originals
             self._archive.archive(cluster_mems)
-            for m in cluster_mems:
+
+            # ⚡ Bolt Optimization: Batch database updates using executemany
+            # This replaces an individual UPDATE in a loop with a single executemany call,
+            # avoiding multiple database connections and reducing round-trips.
+            updates = [(m["id"],) for m in cluster_mems]
+            if updates:
                 with self._semantic._conn() as conn:
-                    conn.execute(
-                        "UPDATE memories SET archived=1 WHERE id=?", (m["id"],)
-                    )
+                    conn.executemany("UPDATE memories SET archived=1 WHERE id=?", updates)
+
             # Link originals → compacted
             for m in cluster_mems:
                 try:
