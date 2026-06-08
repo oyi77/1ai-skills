@@ -6,7 +6,6 @@ Pipeline:
 
 HNSW is backed by hnswlib when available; falls back to brute-force numpy cosine search.
 """
-
 import json
 import logging
 import os
@@ -33,20 +32,17 @@ class _HNSWIndex:
         self._dim = dim
         self._lib = None
         self._index = None
-        self._ids: List[str] = []  # int_label → memory_id
+        self._ids: List[str] = []          # int_label → memory_id
         self._lock = threading.RLock()
         self._try_load_lib()
 
     def _try_load_lib(self):
         try:
             import hnswlib
-
             self._lib = hnswlib
             logger.info("HNSW: using hnswlib")
         except ImportError:
-            logger.warning(
-                "HNSW: hnswlib not available — using numpy brute-force fallback"
-            )
+            logger.warning("HNSW: hnswlib not available — using numpy brute-force fallback")
 
     def _ensure_index(self, dim: int) -> None:
         if self._lib is None:
@@ -217,9 +213,7 @@ class EpisodicMemory:
         eid = str(uuid.uuid4())
         now = time.time()
         raw_json = json.dumps(raw_messages) if raw_messages else None
-        emb_blob = (
-            embedding.astype(np.float32).tobytes() if embedding is not None else None
-        )
+        emb_blob = embedding.astype(np.float32).tobytes() if embedding is not None else None
 
         with self._lock:
             with self._conn() as conn:
@@ -227,16 +221,7 @@ class EpisodicMemory:
                     """INSERT INTO episodes
                        (id, summary, raw_messages, embedding_blob, timestamp, last_accessed, importance, message_count, archived)
                        VALUES (?,?,?,?,?,?,?,?,0)""",
-                    (
-                        eid,
-                        summary,
-                        raw_json,
-                        emb_blob,
-                        now,
-                        now,
-                        importance,
-                        message_count,
-                    ),
+                    (eid, summary, raw_json, emb_blob, now, now, importance, message_count),
                 )
             if embedding is not None:
                 self._hnsw.add(eid, embedding)
@@ -312,14 +297,20 @@ class EpisodicMemory:
                 rows = conn.execute(
                     "SELECT id, importance, last_accessed FROM episodes WHERE archived=0"
                 ).fetchall()
+
+                updates = []
                 for eid, imp, la in rows:
                     days = (now - la) / 86400.0
-                    new_imp = imp * (config.DECAY_RATE**days)
-                    conn.execute(
+                    new_imp = imp * (config.DECAY_RATE ** days)
+                    # ⚡ Bolt Optimization: Batch N+1 UPDATE queries into a single executemany call
+                    updates.append((max(0.0, new_imp), eid))
+
+                if updates:
+                    conn.executemany(
                         "UPDATE episodes SET importance=? WHERE id=?",
-                        (max(0.0, new_imp), eid),
+                        updates,
                     )
-                    updated += 1
+                    updated = len(updates)
         return updated
 
     def _maybe_archive_old(self) -> None:
@@ -342,8 +333,7 @@ class EpisodicMemory:
     def count(self, archived: bool = False) -> int:
         with self._conn() as conn:
             return conn.execute(
-                "SELECT COUNT(*) FROM episodes WHERE archived=?",
-                (1 if archived else 0,),
+                "SELECT COUNT(*) FROM episodes WHERE archived=?", (1 if archived else 0,)
             ).fetchone()[0]
 
     # ── Helpers ──────────────────────────────────────────────────────────────

@@ -11,7 +11,6 @@ Features:
   • Auto-archive low-importance old entries
   • Thread-safe
 """
-
 import hashlib
 import json
 import logging
@@ -57,15 +56,9 @@ class SemanticMemory:
                 )
             """)
             conn.execute("CREATE INDEX IF NOT EXISTS idx_mem_ts ON memories(timestamp)")
-            conn.execute(
-                "CREATE INDEX IF NOT EXISTS idx_mem_imp ON memories(importance)"
-            )
-            conn.execute(
-                "CREATE INDEX IF NOT EXISTS idx_mem_arch ON memories(archived)"
-            )
-            conn.execute(
-                "CREATE INDEX IF NOT EXISTS idx_mem_la ON memories(last_accessed)"
-            )
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_mem_imp ON memories(importance)")
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_mem_arch ON memories(archived)")
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_mem_la ON memories(last_accessed)")
             # FTS5 for keyword search
             conn.execute("""
                 CREATE VIRTUAL TABLE IF NOT EXISTS memories_fts USING fts5(
@@ -108,9 +101,7 @@ class SemanticMemory:
     ) -> str:
         mid = memory_id or str(uuid.uuid4())
         now = _now()
-        emb_blob = (
-            embedding.astype(np.float32).tobytes() if embedding is not None else None
-        )
+        emb_blob = embedding.astype(np.float32).tobytes() if embedding is not None else None
         tags_json = json.dumps(tags or [])
         refs_json = json.dumps(entity_refs or [])
         with self._lock:
@@ -119,17 +110,7 @@ class SemanticMemory:
                     """INSERT OR IGNORE INTO memories
                        (id, text, embedding_blob, timestamp, last_accessed, importance, tags, entity_refs, source, archived)
                        VALUES (?,?,?,?,?,?,?,?,?,0)""",
-                    (
-                        mid,
-                        text,
-                        emb_blob,
-                        now,
-                        now,
-                        importance,
-                        tags_json,
-                        refs_json,
-                        source,
-                    ),
+                    (mid, text, emb_blob, now, now, importance, tags_json, refs_json, source),
                 )
         return mid
 
@@ -215,8 +196,7 @@ class SemanticMemory:
     def count(self, archived: bool = False) -> int:
         with self._conn() as conn:
             return conn.execute(
-                "SELECT COUNT(*) FROM memories WHERE archived=?",
-                (1 if archived else 0,),
+                "SELECT COUNT(*) FROM memories WHERE archived=?", (1 if archived else 0,)
             ).fetchone()[0]
 
     # ── Decay & archiving ───────────────────────────────────────────────────
@@ -230,14 +210,20 @@ class SemanticMemory:
                 rows = conn.execute(
                     "SELECT id, importance, last_accessed FROM memories WHERE archived=0"
                 ).fetchall()
+
+                updates = []
                 for mid, imp, last_acc in rows:
                     days = (now - last_acc) / 86400.0
-                    new_imp = imp * (config.DECAY_RATE**days)
-                    conn.execute(
+                    new_imp = imp * (config.DECAY_RATE ** days)
+                    # ⚡ Bolt Optimization: Batch N+1 UPDATE queries into a single executemany call
+                    updates.append((max(0.0, new_imp), mid))
+
+                if updates:
+                    conn.executemany(
                         "UPDATE memories SET importance=? WHERE id=?",
-                        (max(0.0, new_imp), mid),
+                        updates,
                     )
-                    updated += 1
+                    updated = len(updates)
         return updated
 
     def archive_low_importance(self) -> int:
@@ -255,9 +241,7 @@ class SemanticMemory:
     def _boost_importance(self, memory_id: str, _conn=None) -> None:
         now = _now()
         with self._conn() as conn:
-            row = conn.execute(
-                "SELECT importance FROM memories WHERE id=?", (memory_id,)
-            ).fetchone()
+            row = conn.execute("SELECT importance FROM memories WHERE id=?", (memory_id,)).fetchone()
             if row:
                 new_imp = min(1.0, row[0] + config.DECAY_ACCESS_BOOST)
                 conn.execute(
