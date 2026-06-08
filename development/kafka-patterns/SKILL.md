@@ -1,6 +1,8 @@
 ---
 name: kafka-patterns
-description: Apache Kafka patterns — producers, consumers, topics, consumer groups, exactly-once semantics, event sourcing
+description: Apache Kafka patterns — producers, consumers, topics, consumer groups,
+  exactly-once semantics, event sourcing
+domain: development
 ---
 
 

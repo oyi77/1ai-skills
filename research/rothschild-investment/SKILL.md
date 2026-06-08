@@ -1,6 +1,7 @@
 ---
 name: rothschild-investment
 description: Rothschild Dynasty System. Use when relevant to this domain.
+domain: research
 ---
 # Rothschild Dynasty System
 

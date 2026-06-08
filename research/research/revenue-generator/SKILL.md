@@ -3,7 +3,12 @@ name: revenue-generator
 description: Generate ranked revenue playbook for BerkahKarya based on current assets
 version: 1.0.0
 author: BerkahKarya Intelligence Unit
-tags: [revenue, strategy, playbook, business]
+tags:
+- revenue
+- strategy
+- playbook
+- business
+domain: research
 ---
 persona:
   name: "Domain Expert"

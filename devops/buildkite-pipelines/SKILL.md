@@ -1,6 +1,8 @@
 ---
 name: buildkite-pipelines
-description: Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines
+description: Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test
+  splitting, dynamic pipelines
+domain: devops
 ---
 
 

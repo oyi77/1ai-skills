@@ -1,6 +1,7 @@
 ---
 name: subagent-orchestration
 description: Subagent Context Package. Use when relevant to this domain.
+domain: agents
 ---
 ## Overview
 

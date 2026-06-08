@@ -1,6 +1,8 @@
 ---
 name: llamaindex-patterns
-description: LlamaIndex data framework — ingestion, indexing, query engines, chat engines, agents
+description: LlamaIndex data framework — ingestion, indexing, query engines, chat
+  engines, agents
+domain: core
 ---
 
 ## Overview

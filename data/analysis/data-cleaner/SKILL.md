@@ -1,6 +1,9 @@
 ---
 name: data-cleaner
-description: Data Cleaner skill for automated data workflows. Provides tools and templates for clean, cleaner, data operations, integration with AI pipelines, and performance optimization.
+description: Data Cleaner skill for automated data workflows. Provides tools and templates
+  for clean, cleaner, data operations, integration with AI pipelines, and performance
+  optimization.
+domain: data
 ---
 
 

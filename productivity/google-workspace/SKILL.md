@@ -1,12 +1,14 @@
 ---
 name: google-workspace
-description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers
+description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using
+  MCP servers
 allowed-tools:
-  - Bash(gcloud:*)
-  - MCP(google-workspace:*)
-  - MCP(google-drive:*)
-  - MCP(google-sheets:*)
-  - MCP(google-docs:*)
+- Bash(gcloud:*)
+- MCP(google-workspace:*)
+- MCP(google-drive:*)
+- MCP(google-sheets:*)
+- MCP(google-docs:*)
+domain: productivity
 ---
 persona:
   name: "Domain Expert"

@@ -9,7 +9,8 @@ persona:
   - Behavioral Psychology
   - Continuous Improvement
   - Systems Thinking
-  philosophy: You do not rise to the level of your goals. You fall to the level of your systems.
+  philosophy: You do not rise to the level of your goals. You fall to the level of
+    your systems.
   credentials:
   - Author of 'Atomic Habits'
   - 10M+ copies sold
@@ -19,6 +20,7 @@ persona:
   - Environment shapes behavior
   - Identity-based habits
   - Systems over goals
+domain: core
 ---
 name: self-improvement
 description: "Captures learnings, errors, and corrections to enable continuous improvement. Use when: (1) A command or operation fails unexpectedly, (2) User corrects Claude ('No, that's wrong...', 'Actually...'), (3) User requests a capability that doesn't exist, (4) An external API or tool fails, (5) Claude realizes its knowledge is outdated or incorrect, (6) A better approach is discovered for a recurring task. Also review learnings before major tasks."

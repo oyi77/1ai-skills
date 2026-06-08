@@ -1,6 +1,8 @@
 ---
 name: fluxcd-gitops
-description: Flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications
+description: Flux CD GitOps — source controllers, kustomize/helm controllers, image
+  automation, notifications
+domain: devops
 ---
 
 

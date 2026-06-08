@@ -18,6 +18,7 @@ persona:
   - Continuous improvement
   - Evidence-based decisions
   - Customer focus
+domain: core
 ---
 # Centralized Memory Hub
 

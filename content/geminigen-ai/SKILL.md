@@ -1,6 +1,7 @@
 ---
 name: geminigen-ai
 description: GeminiGen AI - Multimedia AI Platform. Use when relevant to this domain.
+domain: content
 ---
 
 # GeminiGen AI - Multimedia AI Platform

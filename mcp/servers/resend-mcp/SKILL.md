@@ -1,6 +1,7 @@
 ---
 name: resend-mcp
 description: MCP server for Resend email
+domain: mcp
 ---
 ## Resend Mcp
 

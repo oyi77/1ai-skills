@@ -1,6 +1,9 @@
 ---
 name: seo-optimizer
-description: Optimize content for search engines. Perform keyword research, analyze on-page SEO, track rankings, audit technical SEO, and improve organic visibility for sustainable traffic growth.
+description: Optimize content for search engines. Perform keyword research, analyze
+  on-page SEO, track rankings, audit technical SEO, and improve organic visibility
+  for sustainable traffic growth.
+domain: marketing
 ---
 
 persona:

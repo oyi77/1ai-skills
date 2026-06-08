@@ -1,8 +1,12 @@
 ---
 name: kalodata-monitor
-description: Scheduled research runs with auto-alerts for NEW viral products. Runs on configurable schedule (hourly/daily/weekly), detects new products by comparing with previous runs, alerts on revenue threshold crossings, and sends notifications via Slack webhook.
+description: Scheduled research runs with auto-alerts for NEW viral products. Runs
+  on configurable schedule (hourly/daily/weekly), detects new products by comparing
+  with previous runs, alerts on revenue threshold crossings, and sends notifications
+  via Slack webhook.
 metadata:
   model: sonnet
+domain: integrations
 ---
 
 # Kalodata Monitor Skill

@@ -1,6 +1,7 @@
 ---
 name: zhive
-description: 'Skill: zhive. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: zhive. See SKILL.md body for details. Use when this domain is
+  relevant.'
 persona:
   name: Kevin Kelly
   title: The Technium Philosopher - Master of Future Tech
@@ -19,6 +20,7 @@ persona:
   - Cognify everything
   - Share globally
   - Filter personally
+domain: research
 ---
 name
  version

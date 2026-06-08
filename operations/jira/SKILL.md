@@ -1,6 +1,8 @@
 ---
 name: jira
-description: 'Skill: jira. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: jira. See SKILL.md body for details. Use when this domain is
+  relevant.'
+domain: operations
 ---
 *Use Jira for structured project tracking. Every task has a home.*
 

@@ -19,6 +19,7 @@ persona:
   - Capture semantic relationships
   - Train on large corpora
   - Visualize in 2D/3D
+domain: core
 ---
 # ZVec Skill
 

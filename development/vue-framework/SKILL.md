@@ -1,6 +1,8 @@
 ---
 name: vue-framework
-description: Vue.js 3 development — Composition API, Pinia, Vue Router, Nuxt, SSR/SSG patterns
+description: Vue.js 3 development — Composition API, Pinia, Vue Router, Nuxt, SSR/SSG
+  patterns
+domain: development
 ---
 
 

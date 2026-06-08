@@ -1,20 +1,61 @@
 ---
 name: maybe-hft
-description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker.
-metadata: {
-    "openclaw": { "emoji": "🛡️", "requires": { "python": true, "pyEnv": "trading-venv" } },
-    "parameters": {
-      "lots": { "type": "float", "default": 0.10, "desc": "Ukuran lot per transaksi" },
-      "stoploss": { "type": "int", "default": 1500, "desc": "StopLoss dalam point" },
-      "trailing": { "type": "int", "default": 500, "desc": "Jarak trailing dalam point" },
-      "trail_start": { "type": "int", "default": 1000, "desc": "Profit minimal sebelum trailing aktif" },
-      "x_distance": { "type": "int", "default": 300, "desc": "Jarak pending dari SL" },
-      "start_direction": { "type": "int", "default": 0, "desc": "0=BUY dulu, 1=SELL dulu", "choices": [0, 1] },
-      "broker": { "type": "str", "default": "auto", "desc": "Broker: mt5, simulated, auto", "choices": ["mt5", "simulated", "auto"] },
-      "mode": { "type": "str", "default": "paper", "desc": "Mode: paper, live", "choices": ["paper", "live"] },
-      "once": { "type": "bool", "default": false, "desc": "Jalan sekali aja, tidak loop" }
-    }
-  }
+description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted
+  dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker.
+metadata:
+  openclaw:
+    emoji: 🛡️
+    requires:
+      python: true
+      pyEnv: trading-venv
+  parameters:
+    lots:
+      type: float
+      default: 0.1
+      desc: Ukuran lot per transaksi
+    stoploss:
+      type: int
+      default: 1500
+      desc: StopLoss dalam point
+    trailing:
+      type: int
+      default: 500
+      desc: Jarak trailing dalam point
+    trail_start:
+      type: int
+      default: 1000
+      desc: Profit minimal sebelum trailing aktif
+    x_distance:
+      type: int
+      default: 300
+      desc: Jarak pending dari SL
+    start_direction:
+      type: int
+      default: 0
+      desc: 0=BUY dulu, 1=SELL dulu
+      choices:
+      - 0
+      - 1
+    broker:
+      type: str
+      default: auto
+      desc: 'Broker: mt5, simulated, auto'
+      choices:
+      - mt5
+      - simulated
+      - auto
+    mode:
+      type: str
+      default: paper
+      desc: 'Mode: paper, live'
+      choices:
+      - paper
+      - live
+    once:
+      type: bool
+      default: false
+      desc: Jalan sekali aja, tidak loop
+domain: research
 ---
 
 # Maybe HFT Hedging EA

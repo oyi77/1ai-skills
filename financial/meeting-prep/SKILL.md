@@ -1,6 +1,8 @@
 ---
 name: meeting-prep
-description: Prepares briefing pack before client/investor meetings. Use when user says "prep for meeting", "briefing pack", "client meeting".
+description: Prepares briefing pack before client/investor meetings. Use when user
+  says "prep for meeting", "briefing pack", "client meeting".
+domain: financial
 ---
 
 # Meeting Prep!
@@ -15,7 +17,7 @@ description: Prepares briefing pack before client/investor meetings. Use when us
 
 Prepares comprehensive briefing packs before client/investor meetings. Handles the full workflow: research → analyze → synthesize → brief.
 
-## When to Use:!
+## When to Use
 
 - Client meeting (wealth management)
 - Investor pitch (fundraising)
@@ -124,7 +126,7 @@ qa_prep = {
 }
 ```
 
-## Common Rationalizations:!
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -133,7 +135,7 @@ qa_prep = {
 | "Skip Q&A prep" | Q&A = meeting moment of truth, must prepare |
 | "Financials are boring, skip details" | VCs/Investors live in the numbers, must cover |
 
-## Red Flags:!
+## Red Flags
 
 - No financials beyond 2 years (insufficient trend)
 - Thesis has no "Risks" section (unrealistic)
@@ -142,7 +144,7 @@ qa_prep = {
 - Meeting agenda > 60 mins (attention span limit)
 - No "Why now?" catalyst (timing is critical!)
 
-## Verification:!
+## Verification
 
 After completing meeting prep, confirm:
 

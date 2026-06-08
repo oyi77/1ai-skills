@@ -1,6 +1,7 @@
 ---
 name: rockefeller-wealth
 description: Rockefeller Wealth System. Use when relevant to this domain.
+domain: research
 ---
 # Rockefeller Wealth System
 

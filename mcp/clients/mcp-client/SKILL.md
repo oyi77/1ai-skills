@@ -1,6 +1,7 @@
 ---
 name: mcp-client
 description: Generic MCP client implementation
+domain: mcp
 ---
 ## Mcp Client
 

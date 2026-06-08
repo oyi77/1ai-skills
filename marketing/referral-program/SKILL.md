@@ -1,6 +1,8 @@
 ---
 name: referral-program
-description: Referral program design and automation — incentive structures, tracking, viral loops, reward fulfillment. Use when building referral or affiliate programs.
+description: Referral program design and automation — incentive structures, tracking,
+  viral loops, reward fulfillment. Use when building referral or affiliate programs.
+domain: marketing
 ---
 
 

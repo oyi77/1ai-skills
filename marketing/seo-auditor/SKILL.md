@@ -1,6 +1,10 @@
 ---
 name: seo-auditor
-description: SEO analysis and optimization automation for websites. Use when conducting technical SEO audits, tracking keyword rankings, analyzing competitor SEO, monitoring backlink profiles, optimizing existing content, improving local SEO visibility, generating SEO reports for clients, or automating website health checks.
+description: SEO analysis and optimization automation for websites. Use when conducting
+  technical SEO audits, tracking keyword rankings, analyzing competitor SEO, monitoring
+  backlink profiles, optimizing existing content, improving local SEO visibility,
+  generating SEO reports for clients, or automating website health checks.
+domain: marketing
 ---
 
 

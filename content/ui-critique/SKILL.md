@@ -1,6 +1,8 @@
 ---
 name: ui-critique
-description: Structured UI review — visual hierarchy, consistency, accessibility, and actionable improvement feedback
+description: Structured UI review — visual hierarchy, consistency, accessibility,
+  and actionable improvement feedback
+domain: content
 ---
 
 

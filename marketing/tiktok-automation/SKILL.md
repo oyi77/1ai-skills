@@ -1,6 +1,7 @@
 ---
 name: tiktok-automation
 description: TikTok Automation Skill 🎵. Use when relevant to this domain.
+domain: marketing
 ---
 
 # TikTok Automation Skill 🎵

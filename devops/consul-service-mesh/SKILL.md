@@ -1,6 +1,8 @@
 ---
 name: consul-service-mesh
-description: HashiCorp Consul — service discovery, health checking, KV store, service mesh, intentions
+description: HashiCorp Consul — service discovery, health checking, KV store, service
+  mesh, intentions
+domain: devops
 ---
 
 

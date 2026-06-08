@@ -1,6 +1,7 @@
 ---
 name: talent-crm
 description: talent-crm. Use when relevant to this domain.
+domain: sales
 ---
 
 

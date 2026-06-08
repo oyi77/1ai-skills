@@ -1,6 +1,7 @@
 ---
 name: code-research
 description: Code Research Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Code Research Agent
 

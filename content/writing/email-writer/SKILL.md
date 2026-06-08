@@ -1,6 +1,7 @@
 ---
 name: email-writer
 description: Write high-converting emails
+domain: content
 ---
 
 

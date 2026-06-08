@@ -1,6 +1,7 @@
 ---
 name: slack-mcp
 description: MCP server for Slack integration
+domain: mcp
 ---
 ## Slack Mcp
 

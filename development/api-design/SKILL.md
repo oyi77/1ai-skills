@@ -1,6 +1,8 @@
 ---
 name: api-design
-description: REST API design — resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation
+description: REST API design — resource modeling, versioning, pagination, error handling,
+  OpenAPI/Swagger documentation
+domain: development
 ---
 
 

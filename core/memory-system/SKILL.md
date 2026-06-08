@@ -1,6 +1,7 @@
 ---
 name: memory-system
 description: memory-system. Use when relevant to this domain.
+domain: core
 ---
 # memory-system
 

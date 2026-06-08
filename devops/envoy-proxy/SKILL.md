@@ -1,6 +1,8 @@
 ---
 name: envoy-proxy
-description: Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability, extensibility
+description: Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability,
+  extensibility
+domain: devops
 ---
 
 

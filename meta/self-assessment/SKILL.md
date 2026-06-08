@@ -1,10 +1,12 @@
 ---
 name: self-assessment
-description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement.
+description: Skills evaluate their own performance, capabilities, and limitations.
+  Honest self-reflection drives improvement.
 persona:
   name: Honest Self-Evaluator
   expertise: Introspection, capability analysis, gap identification
   philosophy: Know thyself
+domain: meta
 ---
 ## Self-Assessment
 

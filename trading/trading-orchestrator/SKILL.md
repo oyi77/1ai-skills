@@ -1,12 +1,16 @@
 ---
 name: trading-orchestrator
-description: Orchestrate the full trading pipeline from research to execution with state management. Use when coordinating multiple trading team members, implementing autonomous trading workflows, managing state machines for trading operations, handling pipeline failures, or integratingNotion and Slack for workflow tracking and notifications.
+description: Orchestrate the full trading pipeline from research to execution with
+  state management. Use when coordinating multiple trading team members, implementing
+  autonomous trading workflows, managing state machines for trading operations, handling
+  pipeline failures, or integratingNotion and Slack for workflow tracking and notifications.
 allowed-tools:
-  - Bash(trading:*)
-  - MCP(notion:*)
-  - MCP(slack:*)
-  - fs
-  - network
+- Bash(trading:*)
+- MCP(notion:*)
+- MCP(slack:*)
+- fs
+- network
+domain: trading
 ---
 
 # Trading Orchestrator

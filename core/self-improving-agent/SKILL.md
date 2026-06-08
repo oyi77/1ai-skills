@@ -1,9 +1,11 @@
 ---
 name: self-improving-agent
-description: Agent that learns from feedback and improves its own performance over time
+description: Agent that learns from feedback and improves its own performance over
+  time
 allowed-tools:
-  - MCP(notion:*)
-  - MCP(slack:*)
+- MCP(notion:*)
+- MCP(slack:*)
+domain: core
 ---
 persona:
   name: "Domain Expert"

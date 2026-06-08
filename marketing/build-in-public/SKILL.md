@@ -1,6 +1,9 @@
 ---
 name: build-in-public
-description: Document and share your startup journey, revenue, and learnings on social media. Build audience, attract customers, and find co-founders through transparent sharing.
+description: Document and share your startup journey, revenue, and learnings on social
+  media. Build audience, attract customers, and find co-founders through transparent
+  sharing.
+domain: marketing
 ---
 
 
@@ -391,7 +394,7 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [twitter-automation](/skills/twitter-automation) - Schedule and automate posts
-- [larry-playbook](/skills/larry-playbook) - Viral content creation
-- [marketing](/skills/marketing) - Broader marketing strategy
-- [sales](/skills/sales) - Convert engagement to revenue
+- [twitter-automation](../twitter-automation/SKILL.md) - Schedule and automate posts
+- [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral content creation
+- [marketing](../marketing/) - Broader marketing strategy
+- [sales](../sales/) - Convert engagement to revenue

@@ -1,6 +1,7 @@
 ---
 name: telegram-bot
 description: Telegram bot patterns for message handling and webhook integrations
+domain: automation
 ---
 ## Telegram Bot
 

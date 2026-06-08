@@ -1,6 +1,8 @@
 ---
 name: content-validation-workflow
-description: 'Content Workflow: Generate Sample → Human Review → Batch Production. Use when relevant to this domain.'
+description: 'Content Workflow: Generate Sample → Human Review → Batch Production.
+  Use when relevant to this domain.'
+domain: development
 ---
 # Content Workflow: Generate Sample → Human Review → Batch Production
 

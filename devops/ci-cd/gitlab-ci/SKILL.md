@@ -1,6 +1,7 @@
 ---
 name: gitlab-ci
 description: Create GitLab CI pipelines
+domain: devops
 ---
 
 

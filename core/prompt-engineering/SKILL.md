@@ -1,6 +1,8 @@
 ---
 name: prompt-engineering
-description: Advanced prompt patterns — chain-of-thought, few-shot, tree-of-thought, self-consistency, and meta-prompting
+description: Advanced prompt patterns — chain-of-thought, few-shot, tree-of-thought,
+  self-consistency, and meta-prompting
+domain: core
 ---
 
 ## Overview

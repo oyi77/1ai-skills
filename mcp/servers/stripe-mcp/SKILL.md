@@ -1,6 +1,7 @@
 ---
 name: stripe-mcp
 description: MCP server for Stripe payments
+domain: mcp
 ---
 ## Stripe Mcp
 

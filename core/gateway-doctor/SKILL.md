@@ -19,6 +19,7 @@ persona:
   - Find the bottleneck
   - Optimize the critical path
   - Monitor continuously
+domain: core
 ---
 # gateway-doctor
 

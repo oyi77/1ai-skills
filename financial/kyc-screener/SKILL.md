@@ -1,6 +1,8 @@
 ---
 name: kyc-screener
-description: Parses onboarding docs, runs rules engine, flags compliance gaps. Use when user says "KYC check", "onboard client", "screen company".
+description: Parses onboarding docs, runs rules engine, flags compliance gaps. Use
+  when user says "KYC check", "onboard client", "screen company".
+domain: financial
 ---
 
 # KYC Screener
@@ -15,7 +17,7 @@ description: Parses onboarding docs, runs rules engine, flags compliance gaps. U
 
 Parses onboarding documents, runs compliance rules engine, and flags gaps. Handles the full KYC workflow: ingest → parse → screen → flag → report.
 
-## When to Use:
+## When to Use
 
 - New client onboarding (PE/Venture/Wealth Management)
 - Annual KYC refresh required
@@ -127,7 +129,7 @@ Composite risk rating based on sanctions hits, UBO completeness, PEP status, and
 - [ ] Documents < 90 days old
 ```
 
-## Common Rationalizations:
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -137,7 +139,7 @@ Composite risk rating based on sanctions hits, UBO completeness, PEP status, and
 | "Sanctions check takes too long" | Automated APIs respond < 2 seconds |
 | "PEP doesn't apply here" | PEP applies to all senior political positions |
 
-## Red Flags:
+## Red Flags
 
 - Sanctions hit but proceeding anyway
 - UBOs incomplete (>25% unaccounted)
@@ -146,7 +148,7 @@ Composite risk rating based on sanctions hits, UBO completeness, PEP status, and
 - Revenue > $5M but no beneficial ownership
 - Approving with active red flags
 
-## Verification:
+## Verification
 
 After completing KYC screening, confirm:
 

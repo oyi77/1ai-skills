@@ -1,6 +1,8 @@
 ---
 name: linkerd-mesh
-description: Linkerd service mesh — lightweight Kubernetes mesh, mTLS, traffic splitting, observability
+description: Linkerd service mesh — lightweight Kubernetes mesh, mTLS, traffic splitting,
+  observability
+domain: devops
 ---
 
 

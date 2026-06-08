@@ -1,6 +1,8 @@
 ---
 name: ci-cd-pipeline
-description: CI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy automation. Use when setting up CI/CD pipelines or automating deployments.
+description: CI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy
+  automation. Use when setting up CI/CD pipelines or automating deployments.
+domain: devops
 ---
 
 

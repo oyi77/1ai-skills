@@ -1,6 +1,9 @@
 ---
 name: kalodata-dashboard
-description: Use when generating CLI-based visual reports from Kalodata product research data, including ASCII trend charts, product cards, interactive dashboards, and markdown exports.
+description: Use when generating CLI-based visual reports from Kalodata product research
+  data, including ASCII trend charts, product cards, interactive dashboards, and markdown
+  exports.
+domain: integrations
 ---
 
 # Kalodata Dashboard Skill

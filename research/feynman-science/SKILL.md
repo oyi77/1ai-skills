@@ -1,6 +1,7 @@
 ---
 name: feynman-science
 description: Feynman Scientific Method. Use when relevant to this domain.
+domain: research
 ---
 # Feynman Scientific Method
 

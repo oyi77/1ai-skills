@@ -1,11 +1,12 @@
 ---
 name: auto-learner
-description: Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed
-  executions without human intervention.
+description: Autonomous learning from execution data. Skills improve themselves by
+  identifying patterns in successful vs failed executions without human intervention.
 persona:
   name: Autonomous Learner
   expertise: Machine learning, pattern recognition, self-supervision
   philosophy: Learn by doing, improve by reflecting
+domain: meta
 ---
 ## Auto Learner
 

@@ -1,6 +1,8 @@
 ---
 name: langchain-patterns
-description: LangChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows
+description: LangChain/LangGraph patterns — chains, agents, tools, memory, retrieval,
+  graph workflows
+domain: core
 ---
 
 ## Overview

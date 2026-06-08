@@ -1,6 +1,8 @@
 ---
 name: statement-auditor
-description: Audits LP statements before distribution. Use when user says "audit statement", "review LP package", "distribution check".
+description: Audits LP statements before distribution. Use when user says "audit statement",
+  "review LP package", "distribution check".
+domain: financial
 ---
 
 # Statement Auditor!
@@ -15,7 +17,7 @@ description: Audits LP statements before distribution. Use when user says "audit
 
 Audits LP (Limited Partner) statements before distribution. Handles the full audit workflow: ingest → reconcile → verify → approve. Uses waterfal methodology for systematic coverage.
 
-## When to Use:
+## When to Use
 
 - LP statements received (quarterly/monthly)
 - Distribution approval needed
@@ -119,7 +121,7 @@ Overall audit verdict based on reconciliation results and exception count.
 - **Approved by:** [Partner]
 ```
 
-## Common Rationalizations:!
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -128,7 +130,7 @@ Overall audit verdict based on reconciliation results and exception count.
 | "Distributions small, dont audit" | Small errors compound — $10K today = $1M tomorrow |
 | "Audit takes too long" | Automated audit < 30 mins, waterfal calc < 5 mins |
 
-## Red Flags:!
+## Red Flags
 
 - Tier 1+2+3 < distributions (over-distribution!)
 - Allocations ≠ 100% (should be exact)
@@ -137,7 +139,7 @@ Overall audit verdict based on reconciliation results and exception count.
 - Waterfal bypassed (direct payments to GP)
 - Ending balance ≠ mathematics (beginning ± activity)
 
-## Verification:!
+## Verification
 
 After completing statement audit, confirm:
 

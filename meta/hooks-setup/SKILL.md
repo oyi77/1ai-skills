@@ -1,6 +1,9 @@
 ---
 name: hooks-setup
-description: Use when user says "install hooks", "setup hooks", "hooks setup", "configure hooks", "/hooks-setup". Installs and configures 1ai-skills auto-evolve hooks for Claude Code.
+description: Use when user says "install hooks", "setup hooks", "hooks setup", "configure
+  hooks", "/hooks-setup". Installs and configures 1ai-skills auto-evolve hooks for
+  Claude Code.
+domain: meta
 ---
 
 # Hooks Setup — AI Agent Installation Guide

@@ -1,6 +1,8 @@
 ---
 name: ant-design
-description: Ant Design React component library — enterprise UI, forms, tables, charts, theming, ProComponents
+description: Ant Design React component library — enterprise UI, forms, tables, charts,
+  theming, ProComponents
+domain: content
 ---
 
 

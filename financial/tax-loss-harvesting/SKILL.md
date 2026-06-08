@@ -1,6 +1,8 @@
 ---
 name: tax-loss-harvesting
-description: Identify TLH opportunities, manage wash sales. Use when user says "tax loss harvest", "TLH", "wash sale check".
+description: Identify TLH opportunities, manage wash sales. Use when user says "tax
+  loss harvest", "TLH", "wash sale check".
+domain: financial
 ---
 
 # Tax Loss Harvesting!
@@ -15,7 +17,7 @@ description: Identify TLH opportunities, manage wash sales. Use when user says "
 
 Identifies tax-loss harvesting opportunities, manages wash sale constraints, and optimizes year-end tax positioning. Handles: scan → identify → trade → document.
 
-## When to Use:!
+## When to Use
 
 - Year-end tax planning (November-December)
 - Portfolio down > 10% (harvest losses)
@@ -133,7 +135,7 @@ tax_alpha = {
 - **Action**: Set calendar reminders for wash sale dates
 ```
 
-## Common Rationalizations:!
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -142,7 +144,7 @@ tax_alpha = {
 | "Only do TLH in December" | Year-round TLH = 3x more opportunities |
 | "Small losses aren't worth it" | $1K loss = $370 tax savings (37% bracket) |
 
-## Red Flags:!
+## Red Flags
 
 - Selling with wash sale violation (cannot claim loss!)
 - Harvesting > $3K net losses (limitation per year)
@@ -151,7 +153,7 @@ tax_alpha = {
 - Missing tax documentation (IRS audit risk)
 - Harvesting in IRA/401k (no tax benefit!)
 
-## Verification:!
+## Verification
 
 After completing TLH analysis, confirm:
 

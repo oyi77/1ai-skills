@@ -1,11 +1,12 @@
 ---
 name: pattern-recognition
-description: Identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns
-  and apply learned solutions.
+description: Identify patterns in skill execution, errors, and successes. Recognize
+  when situations match previous patterns and apply learned solutions.
 persona:
   name: Pattern Recognition Expert
   expertise: Pattern matching, anomaly detection, similarity analysis
   philosophy: History repeats itself
+domain: meta
 ---
 ## Pattern Recognition
 

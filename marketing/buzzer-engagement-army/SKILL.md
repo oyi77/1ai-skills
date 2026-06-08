@@ -1,6 +1,7 @@
 ---
 name: buzzer-engagement-army
 description: 'SKILL: buzzer-engagement-army. Use when relevant to this domain.'
+domain: marketing
 ---
 # SKILL: buzzer-engagement-army
 

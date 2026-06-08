@@ -1,6 +1,8 @@
 ---
 name: vite-config
-description: Vite build tool configuration — plugins, SSR, library mode, environment variables, dev server proxy
+description: Vite build tool configuration — plugins, SSR, library mode, environment
+  variables, dev server proxy
+domain: development
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: ai-consulting
-description: Offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.
+description: Offer fractional AI engineering and consulting services. Act as a part-time
+  AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.
+domain: sales
 ---
 
 
@@ -374,9 +376,9 @@ Say: "$3,000 project that typically saves $50K/year"
 
 ## Related Skills
 
-- [ai-agent-development](/skills/ai-agent-development) - Build for clients
-- [ai-lead-generation](/skills/ai-lead-generation) - Find clients
-- [automation](/skills/automation) - Implement solutions
+- [ai-agent-development](../ai-agent-development/SKILL.md) - Build for clients
+- [ai-lead-generation](../ai-lead-generation/SKILL.md) - Find clients
+- [automation](../automation/) - Implement solutions
 
 ## How to Use
 

@@ -1,6 +1,8 @@
 ---
 name: airflow-pipelines
-description: Apache Airflow workflow orchestration — DAGs, operators, sensors, XComs, pools, scheduling
+description: Apache Airflow workflow orchestration — DAGs, operators, sensors, XComs,
+  pools, scheduling
+domain: data
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 name: postbridge-social-manager
 description: PostBridge Social Manager. Use when relevant to this domain.
+domain: automation
 ---
 # PostBridge Social Manager
 

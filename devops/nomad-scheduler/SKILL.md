@@ -1,6 +1,8 @@
 ---
 name: nomad-scheduler
-description: HashiCorp Nomad — job scheduling, task drivers, allocations, scaling, federation
+description: HashiCorp Nomad — job scheduling, task drivers, allocations, scaling,
+  federation
+domain: devops
 ---
 
 

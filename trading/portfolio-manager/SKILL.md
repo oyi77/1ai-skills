@@ -1,6 +1,8 @@
 ---
 name: portfolio-manager
-description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this domain.
+description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this
+  domain.
+domain: trading
 ---
 # Portfolio Manager — BerkahKarya Quant Fund
 

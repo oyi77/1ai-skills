@@ -1,6 +1,7 @@
 ---
 name: citedy-video-shorts
 description: AI Video Shorts — Skill Instructions. Use when relevant to this domain.
+domain: research
 ---
 persona:
   name: "Domain Expert"

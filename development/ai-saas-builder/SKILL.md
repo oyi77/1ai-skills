@@ -1,6 +1,8 @@
 ---
 name: ai-saas-builder
-description: Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database, API, and billing
+description: Takes a problem statement and produces a deployable micro-SaaS product
+  — landing page, auth, payments, database, API, and billing
+domain: development
 ---
 
 

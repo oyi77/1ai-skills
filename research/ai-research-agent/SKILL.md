@@ -1,6 +1,8 @@
 ---
 name: ai-research-agent
-description: Autonomous AI agent that continuously researches, learns, and enhances skills. Self-improving system that discovers new opportunities and updates workflows.
+description: Autonomous AI agent that continuously researches, learns, and enhances
+  skills. Self-improving system that discovers new opportunities and updates workflows.
+domain: research
 ---
 persona:
   name: "Domain Expert"
@@ -423,6 +425,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [mckinsey-research](/skills/mckinsey-research) - Deep research
-- [self-improving-agent](/skills/self-improving-agent) - Learning system
+- [mckinsey-research](../mckinsey-research/SKILL.md) - Deep research
+- [self-improving-agent](../../core/self-improving-agent/SKILL.md) - Learning system
 - All 1ai-skills - Research targets

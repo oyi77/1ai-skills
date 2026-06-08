@@ -1,6 +1,8 @@
 ---
 name: lead-generation-engine
-description: AI-powered lead generation that scrapes intent signals, scores leads, generates personalized multi-channel outreach, and manages the full CRM pipeline
+description: AI-powered lead generation that scrapes intent signals, scores leads,
+  generates personalized multi-channel outreach, and manages the full CRM pipeline
+domain: sales
 ---
 
 

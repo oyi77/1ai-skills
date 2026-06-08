@@ -1,6 +1,7 @@
 ---
 name: project-management
 description: Project Management. Use when relevant to this domain.
+domain: operations
 ---
 persona:
   name: "Domain Expert"

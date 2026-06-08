@@ -1,6 +1,8 @@
 ---
 name: task-scheduler
-description: Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd timers. Recurring jobs, distributed scheduling
+description: Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd
+  timers. Recurring jobs, distributed scheduling
+domain: development
 ---
 
 

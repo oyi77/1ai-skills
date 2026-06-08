@@ -1,6 +1,7 @@
 ---
 name: black-edge
 description: Analyze parking lot data vs. consensus. Use when relevant to this domain.
+domain: trading
 ---
 ## Skill Definition
 

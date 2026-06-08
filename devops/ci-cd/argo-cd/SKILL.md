@@ -1,6 +1,7 @@
 ---
 name: argo-cd
 description: Create ArgoCD configs
+domain: devops
 ---
 
 

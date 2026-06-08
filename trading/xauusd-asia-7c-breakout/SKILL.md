@@ -1,10 +1,14 @@
 ---
 name: xauusd-asia-7c-breakout
-description: XAUUSD Asia 7-Candle Breakout strategy with backtest, paper trade, and real trade modes. Use when trading gold on the Asia session breakout strategy, running historical backtests, setting up paper trading simulations, or executing live trades with the 7-candle breakout system.
+description: XAUUSD Asia 7-Candle Breakout strategy with backtest, paper trade, and
+  real trade modes. Use when trading gold on the Asia session breakout strategy, running
+  historical backtests, setting up paper trading simulations, or executing live trades
+  with the 7-candle breakout system.
 allowed-tools:
-  - Bash(trading:*)
-  - fs
-  - network
+- Bash(trading:*)
+- fs
+- network
+domain: trading
 ---
 
 # XAUUSD Asia 7-Candle Breakout Strategy

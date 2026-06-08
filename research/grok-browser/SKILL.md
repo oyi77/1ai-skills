@@ -1,6 +1,7 @@
 ---
 name: grok-browser
 description: Grok Browser Skill. Use when relevant to this domain.
+domain: research
 ---
 name: grok-browser
 description: Query Grok AI via browser automation. Use when you need to ask Grok questions, get AI responses, or use Grok's DeepSearch/Think features. Copies response text instead of using screenshots.

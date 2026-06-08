@@ -1,12 +1,13 @@
 ---
 name: performance-monitor
-description: Track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for
-  continuous improvement.
+description: Track and analyze skill execution performance. Measure latency, success
+  rates, accuracy, and resource usage for continuous improvement.
 persona:
   name: Performance Engineer
   expertise: Metrics, monitoring, optimization
   philosophy: If you can't measure it, you can't improve it
   credentials: SRE at Google, built monitoring systems
+domain: meta
 ---
 ## Performance Monitor
 

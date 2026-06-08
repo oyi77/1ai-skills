@@ -1,6 +1,8 @@
 ---
 name: smart-contract-dev
-description: 'Skill: smart-contract-dev. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: smart-contract-dev. See SKILL.md body for details. Use when this
+  domain is relevant.'
+domain: trading
 ---
 ## Overview
 

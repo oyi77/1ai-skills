@@ -1,6 +1,8 @@
 ---
 name: webpack-config
-description: Webpack 5 configuration — loaders, plugins, code splitting, tree shaking, module federation, dev server
+description: Webpack 5 configuration — loaders, plugins, code splitting, tree shaking,
+  module federation, dev server
+domain: development
 ---
 
 

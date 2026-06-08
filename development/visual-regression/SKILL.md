@@ -1,6 +1,8 @@
 ---
 name: visual-regression
-description: Visual regression testing — screenshot comparison, baseline management, and UI change detection
+description: Visual regression testing — screenshot comparison, baseline management,
+  and UI change detection
+domain: development
 ---
 
 

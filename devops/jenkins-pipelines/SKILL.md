@@ -1,6 +1,8 @@
 ---
 name: jenkins-pipelines
-description: Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials
+description: Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries,
+  agents, stages, credentials
+domain: devops
 ---
 
 

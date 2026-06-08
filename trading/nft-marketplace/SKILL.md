@@ -1,6 +1,8 @@
 ---
 name: nft-marketplace
-description: 'Skill: nft-marketplace. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: nft-marketplace. See SKILL.md body for details. Use when this
+  domain is relevant.'
+domain: trading
 ---
 ## Overview
 

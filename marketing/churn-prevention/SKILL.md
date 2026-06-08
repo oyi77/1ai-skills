@@ -1,6 +1,9 @@
 ---
 name: churn-prevention
-description: Retention messaging, cancellation flows, win-back campaigns, and customer health scoring. Use when reducing churn rates, designing retention campaigns, or implementing cancellation flows.
+description: Retention messaging, cancellation flows, win-back campaigns, and customer
+  health scoring. Use when reducing churn rates, designing retention campaigns, or
+  implementing cancellation flows.
+domain: marketing
 ---
 
 

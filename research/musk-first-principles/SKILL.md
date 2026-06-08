@@ -1,6 +1,7 @@
 ---
 name: musk-first-principles
 description: Musk First-Principles Problem Solving. Use when relevant to this domain.
+domain: research
 ---
 # Musk First-Principles Problem Solving
 

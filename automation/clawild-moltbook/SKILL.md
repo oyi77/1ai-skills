@@ -1,6 +1,7 @@
 ---
 name: clawild-moltbook
 description: CLAWILD 🦞. Use when relevant to this domain.
+domain: automation
 ---
 persona:
   name: "Domain Expert"

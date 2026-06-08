@@ -1,6 +1,8 @@
 ---
 name: valuation-reviewer
-description: Ingests GP packages, runs valuation template, stages LP reporting. Use when user says "review valuation", "LP reporting", "GP package".
+description: Ingests GP packages, runs valuation template, stages LP reporting. Use
+  when user says "review valuation", "LP reporting", "GP package".
+domain: financial
 ---
 
 # Valuation Reviewer!
@@ -15,7 +17,7 @@ description: Ingests GP packages, runs valuation template, stages LP reporting. 
 
 Ingests GP (General Partner) packages, runs valuation templates, and stages LP reporting. Handles the full workflow: ingest → validate → calculate → report.
 
-## When to Use:
+## When to Use
 
 - GP package received (quarterly)
 - LP reporting cycle (quarterly/monthly)
@@ -120,7 +122,7 @@ metrics = {
 - Carried Interest (20%): $4M
 ```
 
-## Common Rationalizations:!
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -129,7 +131,7 @@ metrics = {
 | "IRR > 20% is great" | IRR > 25% = potential carry manipulation |
 | "Level 3 is small, skip disclosure" | Level 3 > 20% = red flag, must disclose |
 
-## Red Flags:!
+## Red Flags
 
 - IRR > 25% (potential manipulation)
 - Level 3 > 30% of portfolio (excessive unobservable)
@@ -138,7 +140,7 @@ metrics = {
 - No valuation policy disclosed (ASC 820 violation)
 - Management fees > 2.5% (excessive for fund size)
 
-## Verification:!
+## Verification
 
 After completing valuation review, confirm:
 

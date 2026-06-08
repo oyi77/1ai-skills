@@ -3,9 +3,22 @@ name: self-improving
 slug: self-improving
 version: 1.2.1
 homepage: https://clawic.com/skills/self-improving
-description: Self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently.
-changelog: Clarified the core promise to highlight auto-learning from corrections and self-organizing memory for continuous improvement.
-metadata: {"clawdbot":{"emoji":"🧠","requires":{"bins":[]},"os":["linux","darwin","win32"],"configPaths":["~/self-improving/"]}}
+description: Self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing
+  memory. Agent evaluates its own work, catches mistakes, and improves permanently.
+changelog: Clarified the core promise to highlight auto-learning from corrections
+  and self-organizing memory for continuous improvement.
+metadata:
+  clawdbot:
+    emoji: 🧠
+    requires:
+      bins: []
+    os:
+    - linux
+    - darwin
+    - win32
+    configPaths:
+    - ~/self-improving/
+domain: core
 ---
 
 ## When NOT to Use

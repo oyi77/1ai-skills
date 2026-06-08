@@ -1,6 +1,7 @@
 ---
 name: rag-knowledge-base
 description: RAG Knowledge Base Builder. Use when relevant to this domain.
+domain: research
 ---
 persona:
   name: "Domain Expert"

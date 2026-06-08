@@ -1,6 +1,8 @@
 ---
 name: sequential-thinking
-description: Dynamic problem-solving through thought sequences — iterative reasoning, hypothesis testing, and solution refinement
+description: Dynamic problem-solving through thought sequences — iterative reasoning,
+  hypothesis testing, and solution refinement
+domain: mcp
 ---
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: social-listener
 description: Listen to social media mentions
+domain: automation
 ---
 ## Social Listener
 

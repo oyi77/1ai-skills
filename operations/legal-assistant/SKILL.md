@@ -1,10 +1,22 @@
 ---
 name: legal-assistant
 version: 1.0.0
-description: Legal assistant for BerkahKarya — contract review checklists, IP protection, Indonesian business compliance (PT/PKP/SPT), GDPR/privacy for digital products, DMCA, software licensing, employment law (PKWT/PKWTT), and dispute resolution. Built for 1-man company scaling to team.
+description: Legal assistant for BerkahKarya — contract review checklists, IP protection,
+  Indonesian business compliance (PT/PKP/SPT), GDPR/privacy for digital products,
+  DMCA, software licensing, employment law (PKWT/PKWTT), and dispute resolution. Built
+  for 1-man company scaling to team.
 author: Vilona / BerkahKarya
-tags: [legal, compliance, ip, gdpr, indonesia, employment, licensing, dmca]
+tags:
+- legal
+- compliance
+- ip
+- gdpr
+- indonesia
+- employment
+- licensing
+- dmca
 requires: []
+domain: operations
 ---
 
 # Legal Assistant Skill

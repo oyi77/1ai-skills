@@ -1,6 +1,8 @@
 ---
 name: skill-performance-monitor
-description: Monitor and analyze skill effectiveness in real-time. Track usage, success rates, response quality, and user satisfaction for continuous optimization.
+description: Monitor and analyze skill effectiveness in real-time. Track usage, success
+  rates, response quality, and user satisfaction for continuous optimization.
+domain: core
 ---
 persona:
   name: "Brendan Gregg"
@@ -403,6 +405,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [runtime-self-improvement](/skills/runtime-self-improvement) - Apply improvements
-- [auto-git-commiter](/skills/auto-git-commiter) - Commit changes
-- [self-improving-agent](/skills/self-improving-agent) - Learn and improve
+- [runtime-self-improvement](../runtime-self-improvement/SKILL.md) - Apply improvements
+- [auto-git-commiter](../auto-git-commiter/SKILL.md) - Commit changes
+- [self-improving-agent](../self-improving-agent/SKILL.md) - Learn and improve

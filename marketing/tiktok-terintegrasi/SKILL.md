@@ -1,6 +1,7 @@
 ---
 name: tiktok-terintegrasi
 description: 1. Upload media. Use when relevant to this domain.
+domain: marketing
 ---
 
 TikTok Content Suite skill suite with 9 specialized workflows integrated.

@@ -1,6 +1,8 @@
 ---
 name: google-canvas
-description: Use when creating, opening, reading, editing, or collaborating on Google Canvas documents and Gemini Canvas shared applications through browser automation.
+description: Use when creating, opening, reading, editing, or collaborating on Google
+  Canvas documents and Gemini Canvas shared applications through browser automation.
+domain: productivity
 ---
 persona:
   name: "Domain Expert"

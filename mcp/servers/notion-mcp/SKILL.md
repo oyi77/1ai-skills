@@ -1,6 +1,7 @@
 ---
 name: notion-mcp
 description: MCP server for Notion databases
+domain: mcp
 ---
 ## Notion Mcp
 

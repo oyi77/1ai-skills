@@ -1,6 +1,7 @@
 ---
 name: polymarket-analyst
 description: Polymarket Analyst. Use when relevant to this domain.
+domain: research
 ---
 persona:
   name: "Domain Expert"

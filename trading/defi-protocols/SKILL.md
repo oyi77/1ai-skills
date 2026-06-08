@@ -1,6 +1,8 @@
 ---
 name: defi-protocols
-description: 'Skill: defi-protocols. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: defi-protocols. See SKILL.md body for details. Use when this
+  domain is relevant.'
+domain: trading
 ---
 ## Overview
 

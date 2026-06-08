@@ -1,6 +1,8 @@
 ---
 name: lynk
-description: LYNK - Complete Affiliate Link Management with Browser Automation. Use when relevant to this domain.
+description: LYNK - Complete Affiliate Link Management with Browser Automation. Use
+  when relevant to this domain.
+domain: marketing
 ---
 
 

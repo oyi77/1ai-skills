@@ -1,9 +1,11 @@
 ---
 name: joko-proactive-agent
-description: Proactive agent that detects signals and suggests actions with Slack notifications
+description: Proactive agent that detects signals and suggests actions with Slack
+  notifications
 allowed-tools:
-  - MCP(slack:*)
-  - MCP(notion:*)
+- MCP(slack:*)
+- MCP(notion:*)
+domain: core
 ---
 persona:
   name: "Adam Cheyer"

@@ -1,6 +1,9 @@
 ---
 name: ai-seo
-description: Optimize for AI search engines — Perplexity, ChatGPT Search, Google AI Overviews, answer engine optimization. Use when adapting SEO strategy for AI-powered search, optimizing for featured snippets, or building AI-friendly content.
+description: Optimize for AI search engines — Perplexity, ChatGPT Search, Google AI
+  Overviews, answer engine optimization. Use when adapting SEO strategy for AI-powered
+  search, optimizing for featured snippets, or building AI-friendly content.
+domain: marketing
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: pandacss-styling
-description: Panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles
+description: Panda CSS zero-runtime styling — token system, patterns, recipes, conditions,
+  JSX styles
+domain: content
 ---
 
 

@@ -1,12 +1,16 @@
 ---
 name: trading-executor
-description: Execute trades on broker with slippage checks and safe abort procedures. Use when placing live orders, validating slippage before confirmation, handling partial fills, implementing safe abort procedures on abnormal conditions, or integrating with broker APIs for trade execution.
+description: Execute trades on broker with slippage checks and safe abort procedures.
+  Use when placing live orders, validating slippage before confirmation, handling
+  partial fills, implementing safe abort procedures on abnormal conditions, or integrating
+  with broker APIs for trade execution.
 allowed-tools:
-  - Bash(trading:*)
-  - MCP(mt5:*)
-  - MCP(slack:*)
-  - fs
-  - network
+- Bash(trading:*)
+- MCP(mt5:*)
+- MCP(slack:*)
+- fs
+- network
+domain: trading
 ---
 
 # Trading Executor

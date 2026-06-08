@@ -1,6 +1,7 @@
 ---
 name: clay-art-video-generator
 description: CLAY ART VIDEO GENERATOR SKILL. Use when relevant to this domain.
+domain: content
 ---
 
 # CLAY ART VIDEO GENERATOR SKILL

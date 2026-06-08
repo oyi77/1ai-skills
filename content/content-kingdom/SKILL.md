@@ -1,18 +1,27 @@
 ---
 name: content-kingdom
-description: |
-  >
-    Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases
-    for BerkahKarya / JENDRALBOT. Sequences research → plan → script → create →
-    review → schedule → post → engage → analyze → optimize → repurpose → scale.
-    Thin coordinator: imports existing autopilot_affiliate_engine and content-generator
-    scripts; only builds truly new modules (comment_manager, engagement_engine).
-    v2.0: GeminiGen API as primary media provider + Veris Design System enforced.
+description: ">\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12\
+  \ content phases\n  for BerkahKarya / JENDRALBOT. Sequences research → plan → script\
+  \ → create →\n  review → schedule → post → engage → analyze → optimize → repurpose\
+  \ → scale.\n  Thin coordinator: imports existing autopilot_affiliate_engine and\
+  \ content-generator\n  scripts; only builds truly new modules (comment_manager,\
+  \ engagement_engine).\n  v2.0: GeminiGen API as primary media provider + Veris Design\
+  \ System enforced.\n"
 version: 2.0.0
 author: Vilona / BerkahKarya AI
-tags: [content, automation, tiktok, instagram, postbridge, jendralbot, berkahkarya, geminigen, veris]
+tags:
+- content
+- automation
+- tiktok
+- instagram
+- postbridge
+- jendralbot
+- berkahkarya
+- geminigen
+- veris
 skill_dir: skills/1ai-skills/content/content-kingdom
 symlink: skills/content-kingdom
+domain: content
 ---
 
 

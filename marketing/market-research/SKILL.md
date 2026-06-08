@@ -1,11 +1,9 @@
 ---
 name: market-research
-description: Conduct market research, competitive analysis, and industry insights with Exa and Firecrawl
-allowed-tools: |
-  |
-    - MCP(exa:*)
-      - MCP(firecrawl:*)
-      - MCP(notion:*)
+description: Conduct market research, competitive analysis, and industry insights
+  with Exa and Firecrawl
+allowed-tools: "|\n  - MCP(exa:*)\n    - MCP(firecrawl:*)\n    - MCP(notion:*)\n"
+domain: marketing
 ---
 
 

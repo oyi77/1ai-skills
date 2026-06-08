@@ -1,6 +1,8 @@
 ---
 name: observability
-description: Observability stack — Prometheus, Grafana, Loki, OpenTelemetry. Metrics, logs, traces, alerting, SLO monitoring
+description: Observability stack — Prometheus, Grafana, Loki, OpenTelemetry. Metrics,
+  logs, traces, alerting, SLO monitoring
+domain: devops
 ---
 
 

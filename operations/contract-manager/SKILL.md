@@ -1,10 +1,23 @@
 ---
 name: contract-manager
 version: 1.0.0
-description: Contract lifecycle management for BerkahKarya — draft, review, negotiate, sign, track, archive. Covers talent agreements, client deals, vendor contracts, employment. Indonesian law compliant (PKS format). Telegram alerts for renewals and breaches.
+description: Contract lifecycle management for BerkahKarya — draft, review, negotiate,
+  sign, track, archive. Covers talent agreements, client deals, vendor contracts,
+  employment. Indonesian law compliant (PKS format). Telegram alerts for renewals
+  and breaches.
 author: Vilona / BerkahKarya
-tags: [contracts, legal, operations, talent, indonesian-law, lifecycle]
-requires: [python3, telegram-bot (optional), docusign/pdf-sign (optional)]
+tags:
+- contracts
+- legal
+- operations
+- talent
+- indonesian-law
+- lifecycle
+requires:
+- python3
+- telegram-bot (optional)
+- docusign/pdf-sign (optional)
+domain: operations
 ---
 
 # Contract Manager Skill

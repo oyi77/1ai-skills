@@ -1,6 +1,9 @@
 ---
 name: auth-killer
-description: Authentication and authorization bypass specialist — OAuth, SAML, JWT, SSO, MFA bypass. Use when testing login flows, breaking authentication mechanisms, or finding auth bypass vulnerabilities.
+description: Authentication and authorization bypass specialist — OAuth, SAML, JWT,
+  SSO, MFA bypass. Use when testing login flows, breaking authentication mechanisms,
+  or finding auth bypass vulnerabilities.
+domain: cybersecurity
 ---
 
 # Auth Killer

@@ -1,6 +1,8 @@
 ---
 name: brainstorming
-description: Effective brainstorming skill for features and projects. Clarify intent, explore options, and guide design decisions to align with user goals.
+description: Effective brainstorming skill for features and projects. Clarify intent,
+  explore options, and guide design decisions to align with user goals.
+domain: development
 ---
 
 persona:
@@ -312,6 +314,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [prd-generator](/skills/prd-generator) - Generate specifications
-- [frontend-design](/skills/frontend-design) - Design implementation
-- [code-reviewer](/skills/code-reviewer) - Review implementation
+- [prd-generator](../prd-generator/SKILL.md) - Generate specifications
+- [frontend-design](../../content/frontend-design/SKILL.md) - Design implementation
+- [code-reviewer](../code-reviewer/SKILL.md) - Review implementation

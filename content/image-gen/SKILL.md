@@ -1,6 +1,8 @@
 ---
 name: image-gen
-description: AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet
+description: AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI.
+  Prompt engineering for images, inpainting, outpainting, ControlNet
+domain: content
 ---
 
 

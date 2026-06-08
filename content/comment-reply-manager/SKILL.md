@@ -1,6 +1,7 @@
 ---
 name: comment-reply-manager
 description: comment-reply-manager. Use when relevant to this domain.
+domain: content
 ---
 
 # comment-reply-manager

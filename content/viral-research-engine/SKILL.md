@@ -1,6 +1,7 @@
 ---
 name: viral-research-engine
 description: Viral Research Engine. Use when relevant to this domain.
+domain: content
 ---
 
 # Viral Research Engine

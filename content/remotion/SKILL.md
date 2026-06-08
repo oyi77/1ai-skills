@@ -1,6 +1,7 @@
 ---
 name: remotion
 description: Remotion Video Skill. Use when relevant to this domain.
+domain: content
 ---
 
 # Remotion Video Skill

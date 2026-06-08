@@ -1,6 +1,8 @@
 ---
 name: ai-readiness
-description: Assess portfolio company AI readiness, AI adoption maturity. Use when user says "AI readiness", "AI maturity", "assess AI adoption".
+description: Assess portfolio company AI readiness, AI adoption maturity. Use when
+  user says "AI readiness", "AI maturity", "assess AI adoption".
+domain: financial
 ---
 
 # AI Readiness!
@@ -15,7 +17,7 @@ description: Assess portfolio company AI readiness, AI adoption maturity. Use wh
 
 Assesses portfolio company AI readiness across 5 dimensions: Strategy, Data, Tech, Culture, ROI. Outputs maturity score (1-5) and roadmap.
 
-## When to Use:!
+## When to Use
 
 - Due diligence (pre-investment)
 - Board presentation (AI strategy update)
@@ -167,7 +169,7 @@ maturity_score = {
 3. Target AI Readiness: 4.0+ (up from 3.4)
 ```
 
-## Common Rationalizations:!
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -176,7 +178,7 @@ maturity_score = {
 | "Startup, skip assessment" | Early-stage = biggest AI upsie potential OR downfall |
 | "5.0 is the goal always" | 3.5-4.0 is plenty for most B2B companies |
 
-## Red Flags:!
+## Red Flags
 
 - AI readiness < 2.0 (novice — heavy discount or pass)
 - No AI strategy (CEO doesn't mention AI in earnings)
@@ -186,7 +188,7 @@ maturity_score = {
 - No AI KPIs (not measured = not managed)
 - Culture score < 2.5 (leaders don't understand AI)
 
-## Verification:!
+## Verification
 
 After completing AI readiness assessment, confirm:
 

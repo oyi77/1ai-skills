@@ -1,6 +1,8 @@
 ---
 name: websocket
-description: WebSocket development — real-time bidirectional communication, Socket.IO, native WebSocket API, scaling patterns
+description: WebSocket development — real-time bidirectional communication, Socket.IO,
+  native WebSocket API, scaling patterns
+domain: development
 ---
 
 

@@ -1,20 +1,24 @@
 ---
 name: influencer-scouting
 version: 1.0.0
-description: |
-  |
-    >
-      Full influencer scouting, outreach, and performance tracking system for BerkahKarya.
-      Covers platform search across TikTok, Instagram, and YouTube for Indonesian creators,
-      scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement.
-      Integrates with Kalodata for TikTok analytics.
+description: "|\n  >\n    Full influencer scouting, outreach, and performance tracking\
+  \ system for BerkahKarya.\n    Covers platform search across TikTok, Instagram,\
+  \ and YouTube for Indonesian creators,\n    scoring/qualification, DM outreach,\
+  \ negotiation, deal tracking, and ROI measurement.\n    Integrates with Kalodata\
+  \ for TikTok analytics.\n"
 author: Vilona / BerkahKarya
 language: id-ID / en
-tags: [influencer, marketing, tiktok, instagram, youtube, kol, affiliate, indonesia]
-scripts: |
-  |
-    - scripts/ig_scout.py
-      - scripts/tiktok_scout.py
+tags:
+- influencer
+- marketing
+- tiktok
+- instagram
+- youtube
+- kol
+- affiliate
+- indonesia
+scripts: "|\n  - scripts/ig_scout.py\n    - scripts/tiktok_scout.py\n"
+domain: sales
 ---
 
 

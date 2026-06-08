@@ -1,6 +1,9 @@
 ---
 name: dockerfile-opt
-description: Dockerfile Opt skill for automated devops workflows. Provides tools and templates for dockerfile, dockerfiles, opt operations, integration with AI pipelines, and performance optimization.
+description: Dockerfile Opt skill for automated devops workflows. Provides tools and
+  templates for dockerfile, dockerfiles, opt operations, integration with AI pipelines,
+  and performance optimization.
+domain: devops
 ---
 
 

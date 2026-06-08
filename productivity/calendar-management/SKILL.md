@@ -1,10 +1,12 @@
 ---
 name: calendar-management
-description: Advanced calendar management, scheduling, and meeting automation with Google Calendar MCP
+description: Advanced calendar management, scheduling, and meeting automation with
+  Google Calendar MCP
 allowed-tools:
-  - Bash(calendar:*)
-  - MCP(google-calendar:*)
-  - MCP(tldv:*)
+- Bash(calendar:*)
+- MCP(google-calendar:*)
+- MCP(tldv:*)
+domain: productivity
 ---
 persona:
   name: "Domain Expert"

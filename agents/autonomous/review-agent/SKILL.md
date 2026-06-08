@@ -1,6 +1,7 @@
 ---
 name: review-agent
 description: Review Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Review Agent
 

@@ -1,6 +1,7 @@
 ---
 name: value-investing
 description: Value Investing System. Use when relevant to this domain.
+domain: research
 ---
 # Value Investing System
 

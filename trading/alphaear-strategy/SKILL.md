@@ -1,6 +1,7 @@
 ---
 name: alphaear-strategy
 description: Component scores (0-100). Use when relevant to this domain.
+domain: trading
 ---
 ## Skill Definition
 

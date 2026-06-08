@@ -1,6 +1,7 @@
 ---
 name: operations-team
 description: Operations Team. Use when relevant to this domain.
+domain: operations
 ---
 persona:
   name: "Domain Expert"

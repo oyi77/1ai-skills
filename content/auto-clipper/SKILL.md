@@ -1,14 +1,10 @@
 ---
 name: auto-clipper
-description: AI-powered video clipper - Convert long videos into viral Shorts/TikToks/Reels automatically
-dependencies: |
-  - faster-whisper
-    - textblob
-    - vadersentiment
-    - moviepy
-    - opencv-python
-    - ffmpeg-python
-    - customtkinter
+description: AI-powered video clipper - Convert long videos into viral Shorts/TikToks/Reels
+  automatically
+dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n \
+  \ - opencv-python\n  - ffmpeg-python\n  - customtkinter\n"
+domain: content
 ---
 
 

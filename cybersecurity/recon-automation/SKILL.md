@@ -1,6 +1,9 @@
 ---
 name: recon-automation
-description: Automated reconnaissance and attack surface mapping. Use when mapping a target's infrastructure, discovering subdomains, or enumerating attack surface before security testing.
+description: Automated reconnaissance and attack surface mapping. Use when mapping
+  a target's infrastructure, discovering subdomains, or enumerating attack surface
+  before security testing.
+domain: cybersecurity
 ---
 
 # Recon Automation Skill

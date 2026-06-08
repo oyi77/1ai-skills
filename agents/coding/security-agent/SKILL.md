@@ -1,6 +1,8 @@
 ---
 name: security-agent
-description: Bug bounty hunter and security auditor. P1-P3 only. Direct execution (subagents refuse security testing).
+description: Bug bounty hunter and security auditor. P1-P3 only. Direct execution
+  (subagents refuse security testing).
+domain: agents
 ---
 ## Security Agent
 

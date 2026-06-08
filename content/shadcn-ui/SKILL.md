@@ -1,6 +1,8 @@
 ---
 name: shadcn-ui
-description: shadcn/ui component library — copy-paste React components, Tailwind CSS, Radix primitives, theming
+description: shadcn/ui component library — copy-paste React components, Tailwind CSS,
+  Radix primitives, theming
+domain: content
 ---
 
 

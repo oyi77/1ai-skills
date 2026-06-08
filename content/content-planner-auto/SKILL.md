@@ -1,6 +1,7 @@
 ---
 name: content-planner-auto
 description: content-planner-auto. Use when relevant to this domain.
+domain: content
 ---
 
 # content-planner-auto

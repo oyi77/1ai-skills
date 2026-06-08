@@ -1,6 +1,8 @@
 ---
 name: pocketbase-patterns
-description: PocketBase — single-file backend with SQLite, realtime subscriptions, auth, file storage, custom JS extensions
+description: PocketBase — single-file backend with SQLite, realtime subscriptions,
+  auth, file storage, custom JS extensions
+domain: development
 ---
 
 

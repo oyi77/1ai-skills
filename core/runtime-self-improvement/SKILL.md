@@ -1,6 +1,8 @@
 ---
 name: runtime-self-improvement
-description: Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect gaps, enhance skills, and self-optimize during operation.
+description: Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance,
+  detect gaps, enhance skills, and self-optimize during operation.
+domain: core
 ---
 persona:
   name: "Domain Expert"
@@ -308,6 +310,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [self-improving-agent](/skills/self-improving-agent) - Basic self-improvement
-- [auto-git-commiter](/skills/auto-git-commiter) - Auto-commit changes
-- [skill-performance-monitor](/skills/skill-performance-monitor) - Monitor skill effectiveness
+- [self-improving-agent](../self-improving-agent/SKILL.md) - Basic self-improvement
+- [auto-git-commiter](../auto-git-commiter/SKILL.md) - Auto-commit changes
+- [skill-performance-monitor](../skill-performance-monitor/SKILL.md) - Monitor skill effectiveness

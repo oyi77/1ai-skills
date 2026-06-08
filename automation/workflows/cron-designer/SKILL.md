@@ -1,6 +1,7 @@
 ---
 name: cron-designer
 description: Design complex cron schedules
+domain: automation
 ---
 ## Cron Designer
 

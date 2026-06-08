@@ -1,6 +1,8 @@
 ---
 name: typeorm-patterns
-description: TypeORM patterns — entities, repositories, migrations, relations, query builder, active record vs data mapper
+description: TypeORM patterns — entities, repositories, migrations, relations, query
+  builder, active record vs data mapper
+domain: development
 ---
 
 

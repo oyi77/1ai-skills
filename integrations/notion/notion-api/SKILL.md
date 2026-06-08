@@ -1,6 +1,7 @@
 ---
 name: notion-api
 description: Full Notion API integration
+domain: integrations
 ---
 ## Notion Api
 

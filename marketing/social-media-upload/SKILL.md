@@ -1,6 +1,9 @@
 ---
 name: social-media-upload
-description: Distribute content across multiple social media platforms (X, Instagram, TikTok, LinkedIn, Facebook, YouTube). Upload images, videos, and text with platform-specific optimization.
+description: Distribute content across multiple social media platforms (X, Instagram,
+  TikTok, LinkedIn, Facebook, YouTube). Upload images, videos, and text with platform-specific
+  optimization.
+domain: marketing
 ---
 
 

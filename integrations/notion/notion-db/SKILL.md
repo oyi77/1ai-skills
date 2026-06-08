@@ -1,6 +1,7 @@
 ---
 name: notion-db
 description: Manage Notion databases
+domain: integrations
 ---
 ## Notion Db
 

@@ -1,6 +1,7 @@
 ---
 name: github-pr
-description: "Skill for Handle pull requests. Provides automation and best practices."
+description: Skill for Handle pull requests. Provides automation and best practices.
+domain: integrations
 ---
 ## Github Pr
 

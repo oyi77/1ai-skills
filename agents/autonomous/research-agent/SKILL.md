@@ -1,6 +1,7 @@
 ---
 name: research-agent
 description: Research Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Research Agent
 

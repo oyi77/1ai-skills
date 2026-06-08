@@ -1,6 +1,8 @@
 ---
 name: customer-success
-description: Automated customer onboarding, health scoring, churn prediction, proactive outreach, and support ticket resolution
+description: Automated customer onboarding, health scoring, churn prediction, proactive
+  outreach, and support ticket resolution
+domain: operations
 ---
 
 ## Overview

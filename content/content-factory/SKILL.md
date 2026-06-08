@@ -1,6 +1,7 @@
 ---
 name: content-factory
 description: Content Factory. Use when relevant to this domain.
+domain: content
 ---
 
 

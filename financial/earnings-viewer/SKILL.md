@@ -1,6 +1,9 @@
 ---
 name: earnings-viewer
-description: Analyzes earnings calls + SEC filings, updates financial models, and drafts earnings notes. Use when user says "analyze earnings", "earnings call", "update model after earnings".
+description: Analyzes earnings calls + SEC filings, updates financial models, and
+  drafts earnings notes. Use when user says "analyze earnings", "earnings call", "update
+  model after earnings".
+domain: financial
 ---
 
 # Earnings Viewer
@@ -15,7 +18,7 @@ description: Analyzes earnings calls + SEC filings, updates financial models, an
 
 Automatically processes earnings calls and SEC filings to update financial models and draft analyst-quality earnings notes. Handles the full workflow: ingest → parse → model update → draft note.
 
-## When to Use:
+## When to Use
 
 - Earnings call just concluded (same day analysis)
 - 10-Q/10-K filing published
@@ -121,7 +124,7 @@ lbo_updates = {
 | "Earnings are boring, skip notes" | Earnings notes are the #1 most-referenced internal doc |
 | "I'll draft tomorrow" | While memory is fresh = 2x faster, better quality |
 
-## Red Flags:
+## Red Flags
 
 - Model not updated within 24 hours of earnings
 - Missing reconciliation: GAAP vs. Non-GAAP adjustments
@@ -130,7 +133,7 @@ lbo_updates = {
 - Note exceeds 3 pages (loses readability)
 - No variance analysis: actuals vs. prior guidance
 
-## Verification:
+## Verification
 
 After completing an earnings analysis, confirm:
 

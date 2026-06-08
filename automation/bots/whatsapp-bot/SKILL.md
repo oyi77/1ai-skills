@@ -1,6 +1,7 @@
 ---
 name: whatsapp-bot
 description: WhatsApp bot patterns for message automation and business API integration
+domain: automation
 ---
 ## Whatsapp Bot
 

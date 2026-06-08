@@ -1,6 +1,7 @@
 ---
 name: slack-bot
-description: "Skill for Build Slack bots. Provides automation and best practices."
+description: Skill for Build Slack bots. Provides automation and best practices.
+domain: integrations
 ---
 ## Slack Bot
 

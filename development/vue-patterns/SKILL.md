@@ -1,6 +1,8 @@
 ---
 name: vue-patterns
-description: Vue.js 3 development patterns — Composition API, Pinia state management, Vue Router, Nuxt.js, component architecture
+description: Vue.js 3 development patterns — Composition API, Pinia state management,
+  Vue Router, Nuxt.js, component architecture
+domain: development
 ---
 
 

@@ -1,6 +1,9 @@
 ---
 name: iot-hunter
-description: IoT and embedded device security testing — firmware analysis, hardware interfaces, protocol exploitation. Use when testing IoT devices, extracting firmware, analyzing embedded systems, or finding hardware vulnerabilities.
+description: IoT and embedded device security testing — firmware analysis, hardware
+  interfaces, protocol exploitation. Use when testing IoT devices, extracting firmware,
+  analyzing embedded systems, or finding hardware vulnerabilities.
+domain: cybersecurity
 ---
 
 # IoT Hunter

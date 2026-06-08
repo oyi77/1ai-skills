@@ -1,6 +1,8 @@
 ---
 name: digital-real-estate
-description: Build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling research, writing, SEO, and updates
+description: Build and manage a portfolio of niche content sites generating affiliate
+  and AdSense revenue with AI handling research, writing, SEO, and updates
+domain: content
 ---
 
 

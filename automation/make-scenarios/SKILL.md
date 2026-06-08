@@ -1,6 +1,8 @@
 ---
 name: make-scenarios
-description: Make.com scenario automation — modules, routes, filters, error handlers, data stores, webhooks
+description: Make.com scenario automation — modules, routes, filters, error handlers,
+  data stores, webhooks
+domain: automation
 ---
 
 ## Overview

@@ -1,6 +1,8 @@
 ---
 name: cypress-e2e
-description: Cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration
+description: Cypress E2E testing — component testing, API testing, fixtures, custom
+  commands, CI integration
+domain: development
 ---
 
 

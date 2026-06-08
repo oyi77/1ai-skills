@@ -1,6 +1,8 @@
 ---
 name: stripe-revenue-bot
-description: Automate posting your Stripe revenue milestones to Twitter/X. Build trust through transparency, attract customers, and join the "build in public" movement.
+description: Automate posting your Stripe revenue milestones to Twitter/X. Build trust
+  through transparency, attract customers, and join the "build in public" movement.
+domain: marketing
 ---
 
 persona:
@@ -352,6 +354,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [build-in-public](/skills/build-in-public) - Broader transparency strategy
-- [twitter-automation](/skills/twitter-automation) - Posting automation
-- [sales](/skills/sales) - Convert customers
+- [build-in-public](../build-in-public/SKILL.md) - Broader transparency strategy
+- [twitter-automation](../twitter-automation/SKILL.md) - Posting automation
+- [sales](../sales/) - Convert customers

@@ -1,6 +1,7 @@
 ---
 name: best-hacker
 description: The Hacker Mindset. Use when relevant to this domain.
+domain: research
 ---
 # The Hacker Mindset
 

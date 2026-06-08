@@ -1,6 +1,7 @@
 ---
 name: finance-ops
 description: Accounts Payable. Use when relevant to this domain.
+domain: operations
 ---
 ## Skill Definition
 

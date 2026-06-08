@@ -1,6 +1,7 @@
 ---
 name: github-issues
-description: "Skill for Manage GitHub issues. Provides automation and best practices."
+description: Skill for Manage GitHub issues. Provides automation and best practices.
+domain: integrations
 ---
 ## Github Issues
 

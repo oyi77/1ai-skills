@@ -1,6 +1,7 @@
 ---
 name: revenue-engine
 description: Revenue Engine. Use when relevant to this domain.
+domain: core
 ---
 # Revenue Engine
 

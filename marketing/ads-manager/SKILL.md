@@ -1,8 +1,18 @@
 ---
 name: ads-manager
-description: Research trending ads, analyze competitor strategies, and clone successful ad patterns using integrated MCP servers
+description: Research trending ads, analyze competitor strategies, and clone successful
+  ad patterns using integrated MCP servers
 category: marketing
-tags: [advertising, competitive-analysis, marketing, mcp, google-ads, meta-ads, tiktok, linkedin]
+tags:
+- advertising
+- competitive-analysis
+- marketing
+- mcp
+- google-ads
+- meta-ads
+- tiktok
+- linkedin
+domain: marketing
 ---
 
 

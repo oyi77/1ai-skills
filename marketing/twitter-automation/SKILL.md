@@ -1,6 +1,8 @@
 ---
 name: twitter-automation
-description: Automate Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.
+description: Automate Twitter/X presence with AI-powered posting, engagement, and
+  growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.
+domain: marketing
 ---
 
 persona:
@@ -321,7 +323,7 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [larry-playbook](/skills/larry-playbook) - Viral TikTok content
-- [content-creator](/skills/content-creator) - Multi-platform content
-- [marketing](/skills/marketing) - Broader marketing strategy
-- [sales](/skills/sales) - Convert engagement to revenue
+- [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral TikTok content
+- [content-creator](../content-creator/SKILL.md) - Multi-platform content
+- [marketing](../marketing/) - Broader marketing strategy
+- [sales](../sales/) - Convert engagement to revenue

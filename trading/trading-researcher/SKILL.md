@@ -1,12 +1,16 @@
 ---
 name: trading-researcher
-description: Automated market research and data collection for trading strategies. Use when analyzing market conditions, collecting OHLCV data, scanning for trading opportunities, generating market analysis reports, or integrating data sources like Yahoo Finance and Exa for trading research.
+description: Automated market research and data collection for trading strategies.
+  Use when analyzing market conditions, collecting OHLCV data, scanning for trading
+  opportunities, generating market analysis reports, or integrating data sources like
+  Yahoo Finance and Exa for trading research.
 allowed-tools:
-  - Bash(trading:*)
-  - MCP(yahoo:*)
-  - MCP(exa:*)
-  - fs
-  - network
+- Bash(trading:*)
+- MCP(yahoo:*)
+- MCP(exa:*)
+- fs
+- network
+domain: trading
 ---
 
 # Trading Researcher

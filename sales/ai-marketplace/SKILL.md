@@ -1,6 +1,8 @@
 ---
 name: ai-marketplace
-description: Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients and generate $2K-10K/month.
+description: Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation,
+  content, and development services. Build recurring clients and generate $2K-10K/month.
+domain: sales
 ---
 
 persona:
@@ -386,6 +388,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [ai-agent-development](/skills/ai-agent-development) - Deliver AI services
-- [automation](/skills/automation) - Build systems
-- [ai-lead-generation](/skills/ai-lead-generation) - Find clients
+- [ai-agent-development](../ai-agent-development/SKILL.md) - Deliver AI services
+- [automation](../automation/) - Build systems
+- [ai-lead-generation](../ai-lead-generation/SKILL.md) - Find clients

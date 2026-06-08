@@ -1,6 +1,7 @@
 ---
 name: slack-notifier
 description: Send Slack notifications
+domain: integrations
 ---
 ## Slack Notifier
 

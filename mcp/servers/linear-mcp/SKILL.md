@@ -1,6 +1,7 @@
 ---
 name: linear-mcp
 description: MCP server for Linear issues
+domain: mcp
 ---
 ## Linear Mcp
 

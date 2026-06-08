@@ -1,6 +1,8 @@
 ---
 name: ai-agent-development
-description: Build and sell custom AI agents as services or products. Create vertical-specific AI solutions for clients and generate $2K-$8K/month recurring revenue.
+description: Build and sell custom AI agents as services or products. Create vertical-specific
+  AI solutions for clients and generate $2K-$8K/month recurring revenue.
+domain: sales
 ---
 
 
@@ -335,9 +337,9 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 
 ## Related Skills
 
-- [voice-ai-agent](/skills/voice-ai-agent) - Voice agent building
-- [ai-consulting](/skills/ai-consulting) - Client acquisition
-- [automation](/skills/automation) - Workflow building
+- [voice-ai-agent](../../automation/voice-ai-agent/SKILL.md) - Voice agent building
+- [ai-consulting](../ai-consulting/SKILL.md) - Client acquisition
+- [automation](../automation/) - Workflow building
 
 ## How to Use
 

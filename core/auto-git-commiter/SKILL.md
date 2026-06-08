@@ -1,6 +1,8 @@
 ---
 name: auto-git-commiter
-description: Automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning, changelogs, and deployment-ready commits.
+description: Automatically commit and push OpenClaw changes to GitHub. Enable continuous
+  improvement with automatic versioning, changelogs, and deployment-ready commits.
+domain: core
 ---
 persona:
   name: "Linus Torvalds"
@@ -385,6 +387,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [runtime-self-improvement](/skills/runtime-self-improvement) - Apply improvements
-- [skill-performance-monitor](/skills/skill-performance-monitor) - Track improvements
-- [self-improving-agent](/skills/self-improving-agent) - Learn and improve
+- [runtime-self-improvement](../runtime-self-improvement/SKILL.md) - Apply improvements
+- [skill-performance-monitor](../skill-performance-monitor/SKILL.md) - Track improvements
+- [self-improving-agent](../self-improving-agent/SKILL.md) - Learn and improve

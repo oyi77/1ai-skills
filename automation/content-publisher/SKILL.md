@@ -1,6 +1,7 @@
 ---
 name: content-publisher
 description: Content Publisher Agent. Use when relevant to this domain.
+domain: automation
 ---
 persona:
   name: "Domain Expert"

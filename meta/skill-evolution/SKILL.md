@@ -1,11 +1,12 @@
 ---
 name: skill-evolution
-description: Manage skill versions, track changes, and enable safe evolution. Version control, dependency management, and
-  rollback capabilities for skills.
+description: Manage skill versions, track changes, and enable safe evolution. Version
+  control, dependency management, and rollback capabilities for skills.
 persona:
   name: Version Control Expert
   expertise: Git, semantic versioning, dependency management
   philosophy: Change is constant, safety is paramount
+domain: meta
 ---
 ## Skill Evolution
 

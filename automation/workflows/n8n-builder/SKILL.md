@@ -1,6 +1,7 @@
 ---
 name: n8n-builder
 description: Build n8n automation workflows
+domain: automation
 ---
 ## N8N Builder
 

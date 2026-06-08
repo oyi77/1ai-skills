@@ -1,6 +1,8 @@
 ---
 name: electron-apps
-description: Electron desktop app development — main/renderer process, IPC, native menus, auto-update, packaging
+description: Electron desktop app development — main/renderer process, IPC, native
+  menus, auto-update, packaging
+domain: development
 ---
 
 

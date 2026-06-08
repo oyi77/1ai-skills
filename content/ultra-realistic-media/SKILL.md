@@ -1,6 +1,8 @@
 ---
 name: ultra-realistic-media
-description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant to this domain.
+description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant
+  to this domain.
+domain: content
 ---
 
 # ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL

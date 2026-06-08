@@ -1,6 +1,8 @@
 ---
 name: n8n-workflows
-description: n8n workflow automation — nodes, triggers, expressions, credentials, webhooks, error handling
+description: n8n workflow automation — nodes, triggers, expressions, credentials,
+  webhooks, error handling
+domain: automation
 ---
 
 ## Overview

@@ -1,6 +1,8 @@
 ---
 name: query-optimizer
-description: Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection, and caching strategies
+description: Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection,
+  and caching strategies
+domain: development
 ---
 
 

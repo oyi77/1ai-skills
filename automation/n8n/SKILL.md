@@ -1,6 +1,7 @@
 ---
 name: n8n
 description: Install n8n. Use when relevant to this domain.
+domain: automation
 ---
 ## Setup (Legacy)
 

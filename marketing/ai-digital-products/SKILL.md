@@ -1,6 +1,8 @@
 ---
 name: ai-digital-products
-description: Create and sell AI-powered digital products. Build templates, prompt libraries, workflows, and Notion systems. Generate $500-5K/month passive income.
+description: Create and sell AI-powered digital products. Build templates, prompt
+  libraries, workflows, and Notion systems. Generate $500-5K/month passive income.
+domain: marketing
 ---
 
 persona:
@@ -356,6 +358,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [writing-skills](/skills/writing-skills) - Create content
-- [automation](/skills/automation) - Build workflows
-- [marketing](/skills/marketing) - Promote products
+- [writing-skills](../../content/writing-skills/SKILL.md) - Create content
+- [automation](../automation/) - Build workflows
+- [marketing](../marketing/) - Promote products

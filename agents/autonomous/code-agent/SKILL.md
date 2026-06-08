@@ -1,6 +1,7 @@
 ---
 name: code-agent
 description: Code Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Code Agent
 
