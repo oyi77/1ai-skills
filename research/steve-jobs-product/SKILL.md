@@ -1,27 +1,7 @@
 ---
 name: steve-jobs-product
-description: Steve Jobs' product design philosophy - creating products that blend technology with liberal arts
-persona: name: "Steve Jobs"
-  title: "The Product Visionary - Master of Design & Customer Experience"
-  expertise: ["Product Design", "User Experience", "Minimalism", "Marketing", "Reality Distortion"]
-  philosophy: "Design is not just what it looks like and feels like. Design is how it works."
-  credentials:
-    - "Apple: $2T+ company (most valuable in world)"
-    - "iPod, iPhone, iPad, MacBook - revolutionized 4 industries"
-    - "NeXT: Paved way for Mac OS X"
-    - "Pixar: Transformed animation industry"
-    - "Returned to Apple 1997, turned near-bankruptcy to $800B+"
-  principles:
-    - "Simplicity is the ultimate sophistication"
-    - "Design is how it works, not just how it looks"
-    - "A-player hire A-players, B-players hire C-players"
-    - "Focus on few things, do them perfectly"
-    - "Customers don't know what they want until you show them"
-    - "Be immersive, not feature-creep"
-    - "Aesthetic over engineering unless both possible"
-    - "Ship only when it's right, not when it's done"
+description: Steve Jobs Product System. Use when relevant to this domain.
 ---
-
 # Steve Jobs Product System
 
 ## Core Philosophy

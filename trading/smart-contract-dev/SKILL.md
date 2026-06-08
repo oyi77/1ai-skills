@@ -1,48 +1,7 @@
 ---
 name: smart-contract-dev
-description: Smart contract development — Solidity, Hardhat, Foundry. DeFi, NFTs, upgradeable contracts, security patterns
-
-## Red Flags
-
-- Missing ReentrancyGuard on external state-changing functions
-- Ownable contract uses deprecated Ownable instead of Ownable2Step
-- No access control on critical admin functions (mint, pause, upgrade)
-- Upgradeable proxy missing _authorizeUpgrade override
-- Constructor sets state that initializer should set (bypassed in proxy)
-- Hardcoded gas limits that may break on network upgrades
-
-## Verification
-
-After completing smart contract development, confirm:
-
-- [ ] All external state changes follow Checks-Effects-Interactions pattern
-- [ ] ReentrancyGuard applied to withdrawal and transfer functions
-- [ ] AccessControl or Ownable2Step used for admin functions
-- [ ] Unit tests cover happy path, revert conditions, and edge cases
-- [ ] Fork tests validate behavior against mainnet state
-- [ ] Upgradeable contracts tested with proxy deployment and upgrade flow
-
-
-## Red Flags
-
-- Missing ReentrancyGuard on external state-changing functions
-- Ownable contract uses deprecated Ownable instead of Ownable2Step
-- No access control on critical admin functions (mint, pause, upgrade)
-- Upgradeable proxy missing _authorizeUpgrade override
-- Hardcoded gas limits that may break on network upgrades
-
-## Verification
-
-After completing smart contract development, confirm:
-
-- [ ] All external state changes follow Checks-Effects-Interactions pattern
-- [ ] ReentrancyGuard applied to withdrawal and transfer functions
-- [ ] AccessControl or Ownable2Step used for admin functions
-- [ ] Unit tests cover happy path, revert conditions, and edge cases
-- [ ] Fork tests validate behavior against mainnet state
-
+description: 'Skill: smart-contract-dev. See SKILL.md body for details. Use when this domain is relevant.'
 ---
-
 ## Overview
 
 Smart contract development for EVM chains using Solidity. Hardhat and Foundry toolchains, testing, deployment, upgradeable proxies, and security patterns.

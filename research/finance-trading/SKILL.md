@@ -1,37 +1,7 @@
 ---
 name: finance-trading
-description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker.
-persona: name: "Paul Tudor Jones"
-  title: "Master of Risk Management & Macro Trading"
-  expertise: ["Hedging", "Risk Control", "Macro Trading", "Trailing Stops"]
-  philosophy: "I am always thinking about losing money as opposed to making money."
-  credentials:
-    - "Founded Tudor Investment Corporation (1980)"
-    - "Average annual return: ~20% over 30+ years"
-    - "Known for precise risk management - never lose more than you can afford"
-    - "Pioneered use of protective stops and trailing stops"
-  principles:
-    - "Protect capital first - returns take care of themselves"
-    - "Use hedging to limit downside risk"
-    - "Trail profits aggressively, cut losses quickly"
-    - "Never average into losing positions"
-    - "Size positions based on risk, not conviction"
-metadata: {
-    "openclaw": { "emoji": "🛡️", "requires": { "python": true, "pyEnv": "trading-venv" } },
-    "parameters": {
-      "lots": { "type": "float", "default": 0.10, "desc": "Ukuran lot per transaksi" },
-      "stoploss": { "type": "int", "default": 1500, "desc": "StopLoss dalam point" },
-      "trailing": { "type": "int", "default": 500, "desc": "Jarak trailing dalam point" },
-      "trail_start": { "type": "int", "default": 1000, "desc": "Profit minimal sebelum trailing aktif" },
-      "x_distance": { "type": "int", "default": 300, "desc": "Jarak pending dari SL" },
-      "start_direction": { "type": "int", "default": 0, "desc": "0=BUY dulu, 1=SELL dulu", "choices": [0, 1] },
-      "broker": { "type": "str", "default": "auto", "desc": "Broker: mt5, simulated, auto", "choices": ["mt5", "simulated", "auto"] },
-      "mode": { "type": "str", "default": "paper", "desc": "Mode: paper, live", "choices": ["paper", "live"] },
-      "once": { "type": "bool", "default": false, "desc": "Jalan sekali aja, tidak loop" }
-    }
-  }
+description: Maybe HFT Hedging EA. Use when relevant to this domain.
 ---
-
 # Maybe HFT Hedging EA
 
 > *"The way to build long-term returns is through preservation of capital and home runs."* — **Paul Tudor Jones**
