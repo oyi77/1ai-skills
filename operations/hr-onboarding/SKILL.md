@@ -1,19 +1,7 @@
 ---
 name: hr-onboarding
-version: 1.0.0
-description: >
-  End-to-end HR and onboarding system for BerkahKarya. Covers hiring workflow
-  (JD → sourcing → screening → interview → offer → onboard), role-specific frameworks
-  for content creators, developers, sales, and trading analysts. Includes PKWT templates,
-  Indonesia rate benchmarks, 30/60/90 day reviews, offboarding, and Telegram-based
-  team communication structure.
-author: Vilona / BerkahKarya
-language: id-ID / en
-tags: [hr, hiring, onboarding, pkwt, indonesia, team, operations, offboarding]
-scripts: - scripts/onboarding_checklist.py
-  - scripts/payroll_calc.py
+description: HR & Onboarding Skill 🚀. Use when relevant to this domain.
 ---
-
 # HR & Onboarding Skill 🚀
 
 Build and operate the BerkahKarya team — from job description to first 90 days.

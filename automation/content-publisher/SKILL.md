@@ -1,10 +1,6 @@
 ---
 name: content-publisher
-description: Automates drafting and publishing articles to Substack and Medium with Apify and Notion integration
-allowed-tools: - Bash(apify:*)
-  - MCP(apify:*)
-  - MCP(notion:*)
-  - MCP(slack:*)
+description: Content Publisher Agent. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

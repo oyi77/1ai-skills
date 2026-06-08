@@ -1,48 +1,7 @@
 ---
 name: crypto-wallet
-description: Crypto wallet development — HD wallets, key management, transaction signing, multi-chain, WalletConnect
-
-## Red Flags
-
-- Private keys stored in plaintext or logged to console output
-- No mnemonic backup recovery flow implemented
-- Gas estimation missing for transaction signing
-- WalletConnect session not properly disconnected on app close
-- Nonce management collisions causing stuck transactions
-- Hardware wallet integration bypassing user confirmation prompts
-
-## Verification
-
-After completing wallet implementation, confirm:
-
-- [ ] HD wallet derivation produces correct addresses for m/44'/60'/0'/0/0 path
-- [ ] Transaction signing handles EIP-1559 gas parameters correctly
-- [ ] Multi-chain support tested on at least 2 EVM networks
-- [ ] WalletConnect v2 session lifecycle managed (connect, disconnect, restore)
-- [ ] Private keys never logged or stored in plaintext
-- [ ] Gas estimation returns reasonable values before transaction broadcast
-
-
-## Red Flags
-
-- Private keys stored in plaintext or logged to console output
-- No mnemonic backup recovery flow implemented
-- Gas estimation missing for transaction signing
-- WalletConnect session not properly disconnected on app close
-- Nonce management collisions causing stuck transactions
-
-## Verification
-
-After completing wallet implementation, confirm:
-
-- [ ] HD wallet derivation produces correct addresses for m/44'/60'/0'/0/0 path
-- [ ] Transaction signing handles EIP-1559 gas parameters correctly
-- [ ] Multi-chain support tested on at least 2 EVM networks
-- [ ] Private keys never logged or stored in plaintext
-- [ ] Gas estimation returns reasonable values before transaction broadcast
-
+description: 'Skill: crypto-wallet. See SKILL.md body for details. Use when this domain is relevant.'
 ---
-
 ## Overview
 
 Crypto wallet development covering HD wallet derivation (BIP-32/39/44), transaction signing, EIP-1559 gas, multi-chain support, and WalletConnect v2 integration.
