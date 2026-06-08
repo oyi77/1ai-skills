@@ -26,16 +26,20 @@ def run_full_cycle(dry_run: bool = True):
     # 1. Get posts with engagement from PostBridge
     print("[1/4] Fetching posts with comments from PostBridge...")
     engaged_posts = get_posts_with_engagement(min_comments=1)
-    
+
     if not engaged_posts:
         print("  ℹ️  No posts with comments found via PostBridge.")
         print("  → Check if posts are published and analytics are synced")
-        print("  → Try running: curl -H 'Authorization: Bearer REDACTED_ROTATED_CREDENTIAL'")
+        print(
+            "  → Try running: curl -H 'Authorization: Bearer REDACTED_ROTATED_CREDENTIAL'"
+        )
         print("       'https://api.post-bridge.com/v1/analytics/sync' -X POST")
     else:
         print(f"  Found {len(engaged_posts)} posts with comments")
         for p in engaged_posts[:5]:
-            print(f"    {p['platform']} @{p['username']}: {p['comments_count']} comments — {p['url']}")
+            print(
+                f"    {p['platform']} @{p['username']}: {p['comments_count']} comments — {p['url']}"
+            )
 
     # 2. Process comments (requires platform-specific comment fetching)
     # PostBridge doesn't return individual comments, only counts.
@@ -45,7 +49,7 @@ def run_full_cycle(dry_run: bool = True):
     print("  → For TikTok: Use TikTok Research API or browser automation")
     print("  → For Instagram: Use Instagram Graph API with comments permission")
     print("  → Posts with comments detected above — manual review needed")
-    
+
     # Show platform map for manual action
     pmap = get_platform_post_ids()
     print(f"\n  Platform distribution:")
@@ -57,12 +61,12 @@ def run_full_cycle(dry_run: bool = True):
 
     # 3. Run sample simulated comments for demo
     print("\n[3/4] Processing queued/simulated comments...")
-    
+
     # Load from any existing comment queue file
     comment_queue_file = os.path.expanduser(
         "~/.openclaw/workspace/skills/1ai-skills/content/comment-reply-manager/cache/comment_queue.jsonl"
     )
-    
+
     comments = []
     if os.path.exists(comment_queue_file):
         with open(comment_queue_file) as f:
@@ -132,10 +136,18 @@ def mode_report():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Comment Reply Manager")
-    parser.add_argument("--dry-run", action="store_true", default=True, help="Dry run (default)")
-    parser.add_argument("--live", action="store_true", help="Live mode (actually send replies)")
-    parser.add_argument("--mode", choices=["monitor", "process", "dms", "report", "full"],
-                        default="full", help="Operation mode")
+    parser.add_argument(
+        "--dry-run", action="store_true", default=True, help="Dry run (default)"
+    )
+    parser.add_argument(
+        "--live", action="store_true", help="Live mode (actually send replies)"
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["monitor", "process", "dms", "report", "full"],
+        default="full",
+        help="Operation mode",
+    )
     args = parser.parse_args()
 
     dry_run = not args.live

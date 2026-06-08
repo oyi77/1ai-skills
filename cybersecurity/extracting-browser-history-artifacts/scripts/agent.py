@@ -10,7 +10,9 @@ import sqlite3
 from datetime import datetime, timedelta
 from typing import List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 CHROME_EPOCH = datetime(1601, 1, 1)
@@ -46,19 +48,26 @@ def extract_chrome_history(db_path: str, limit: int = 5000) -> List[dict]:
         return []
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     cursor = conn.cursor()
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT urls.url, urls.title, urls.last_visit_time, urls.visit_count, urls.typed_count
         FROM urls ORDER BY urls.last_visit_time DESC LIMIT ?
-    """, (limit,))
+    """,
+        (limit,),
+    )
     rows = cursor.fetchall()
     conn.close()
     results = []
     for url, title, last_visit, visit_count, typed_count in rows:
-        results.append({
-            "url": url, "title": title or "",
-            "last_visit": chrome_time_to_utc(last_visit),
-            "visit_count": visit_count, "typed_count": typed_count,
-        })
+        results.append(
+            {
+                "url": url,
+                "title": title or "",
+                "last_visit": chrome_time_to_utc(last_visit),
+                "visit_count": visit_count,
+                "typed_count": typed_count,
+            }
+        )
     logger.info("Extracted %d Chrome history entries from %s", len(results), db_path)
     return results
 
@@ -69,17 +78,27 @@ def extract_chrome_downloads(db_path: str, limit: int = 1000) -> List[dict]:
         return []
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     cursor = conn.cursor()
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT current_path, tab_url, total_bytes, start_time, end_time, mime_type, danger_type
         FROM downloads ORDER BY start_time DESC LIMIT ?
-    """, (limit,))
+    """,
+        (limit,),
+    )
     rows = cursor.fetchall()
     conn.close()
-    return [{
-        "path": r[0], "source_url": r[1], "size_bytes": r[2],
-        "start_time": chrome_time_to_utc(r[3]), "end_time": chrome_time_to_utc(r[4]),
-        "mime_type": r[5], "danger_type": r[6],
-    } for r in rows]
+    return [
+        {
+            "path": r[0],
+            "source_url": r[1],
+            "size_bytes": r[2],
+            "start_time": chrome_time_to_utc(r[3]),
+            "end_time": chrome_time_to_utc(r[4]),
+            "mime_type": r[5],
+            "danger_type": r[6],
+        }
+        for r in rows
+    ]
 
 
 def extract_chrome_cookies(db_path: str, limit: int = 5000) -> List[dict]:
@@ -88,17 +107,27 @@ def extract_chrome_cookies(db_path: str, limit: int = 5000) -> List[dict]:
         return []
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     cursor = conn.cursor()
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT host_key, name, path, creation_utc, last_access_utc, is_secure, is_httponly
         FROM cookies ORDER BY last_access_utc DESC LIMIT ?
-    """, (limit,))
+    """,
+        (limit,),
+    )
     rows = cursor.fetchall()
     conn.close()
-    return [{
-        "host": r[0], "name": r[1], "path": r[2],
-        "created": chrome_time_to_utc(r[3]), "last_access": chrome_time_to_utc(r[4]),
-        "secure": bool(r[5]), "httponly": bool(r[6]),
-    } for r in rows]
+    return [
+        {
+            "host": r[0],
+            "name": r[1],
+            "path": r[2],
+            "created": chrome_time_to_utc(r[3]),
+            "last_access": chrome_time_to_utc(r[4]),
+            "secure": bool(r[5]),
+            "httponly": bool(r[6]),
+        }
+        for r in rows
+    ]
 
 
 def extract_firefox_history(db_path: str, limit: int = 5000) -> List[dict]:
@@ -108,20 +137,28 @@ def extract_firefox_history(db_path: str, limit: int = 5000) -> List[dict]:
         return []
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     cursor = conn.cursor()
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT moz_places.url, moz_places.title, moz_historyvisits.visit_date,
                moz_places.visit_count, moz_historyvisits.visit_type
         FROM moz_places
         JOIN moz_historyvisits ON moz_places.id = moz_historyvisits.place_id
         ORDER BY moz_historyvisits.visit_date DESC LIMIT ?
-    """, (limit,))
+    """,
+        (limit,),
+    )
     rows = cursor.fetchall()
     conn.close()
-    return [{
-        "url": r[0], "title": r[1] or "",
-        "visit_date": firefox_time_to_utc(r[2]),
-        "visit_count": r[3], "visit_type": r[4],
-    } for r in rows]
+    return [
+        {
+            "url": r[0],
+            "title": r[1] or "",
+            "visit_date": firefox_time_to_utc(r[2]),
+            "visit_count": r[3],
+            "visit_type": r[4],
+        }
+        for r in rows
+    ]
 
 
 def extract_firefox_cookies(db_path: str, limit: int = 5000) -> List[dict]:
@@ -130,17 +167,27 @@ def extract_firefox_cookies(db_path: str, limit: int = 5000) -> List[dict]:
         return []
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     cursor = conn.cursor()
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT host, name, path, creationTime, lastAccessed, isSecure, isHttpOnly
         FROM moz_cookies ORDER BY lastAccessed DESC LIMIT ?
-    """, (limit,))
+    """,
+        (limit,),
+    )
     rows = cursor.fetchall()
     conn.close()
-    return [{
-        "host": r[0], "name": r[1], "path": r[2],
-        "created": firefox_time_to_utc(r[3]), "last_access": firefox_time_to_utc(r[4]),
-        "secure": bool(r[5]), "httponly": bool(r[6]),
-    } for r in rows]
+    return [
+        {
+            "host": r[0],
+            "name": r[1],
+            "path": r[2],
+            "created": firefox_time_to_utc(r[3]),
+            "last_access": firefox_time_to_utc(r[4]),
+            "secure": bool(r[5]),
+            "httponly": bool(r[6]),
+        }
+        for r in rows
+    ]
 
 
 def export_to_csv(data: List[dict], output_path: str) -> None:
@@ -154,8 +201,9 @@ def export_to_csv(data: List[dict], output_path: str) -> None:
     logger.info("Exported %d rows to %s", len(data), output_path)
 
 
-def generate_report(chrome_dir: str = "", firefox_dir: str = "",
-                     output_dir: str = ".") -> dict:
+def generate_report(
+    chrome_dir: str = "", firefox_dir: str = "", output_dir: str = "."
+) -> dict:
     """Generate comprehensive browser forensics report."""
     report = {"analysis_date": datetime.utcnow().isoformat(), "browsers": {}}
 
@@ -164,7 +212,8 @@ def generate_report(chrome_dir: str = "", firefox_dir: str = "",
         downloads = extract_chrome_downloads(os.path.join(chrome_dir, "History"))
         cookies = extract_chrome_cookies(os.path.join(chrome_dir, "Cookies"))
         report["browsers"]["chrome"] = {
-            "history_count": len(history), "download_count": len(downloads),
+            "history_count": len(history),
+            "download_count": len(downloads),
             "cookie_count": len(cookies),
         }
         export_to_csv(history, os.path.join(output_dir, "chrome_history.csv"))
@@ -174,7 +223,8 @@ def generate_report(chrome_dir: str = "", firefox_dir: str = "",
         history = extract_firefox_history(os.path.join(firefox_dir, "places.sqlite"))
         cookies = extract_firefox_cookies(os.path.join(firefox_dir, "cookies.sqlite"))
         report["browsers"]["firefox"] = {
-            "history_count": len(history), "cookie_count": len(cookies),
+            "history_count": len(history),
+            "cookie_count": len(cookies),
         }
         export_to_csv(history, os.path.join(output_dir, "firefox_history.csv"))
 
@@ -183,9 +233,15 @@ def generate_report(chrome_dir: str = "", firefox_dir: str = "",
 
 def main():
     parser = argparse.ArgumentParser(description="Browser History Extraction Agent")
-    parser.add_argument("--chrome-dir", default="", help="Path to Chrome/Edge User Data/Default")
-    parser.add_argument("--firefox-dir", default="", help="Path to Firefox profile directory")
-    parser.add_argument("--output-dir", default=".", help="Output directory for CSVs and report")
+    parser.add_argument(
+        "--chrome-dir", default="", help="Path to Chrome/Edge User Data/Default"
+    )
+    parser.add_argument(
+        "--firefox-dir", default="", help="Path to Firefox profile directory"
+    )
+    parser.add_argument(
+        "--output-dir", default=".", help="Output directory for CSVs and report"
+    )
     parser.add_argument("--output", default="browser_report.json")
     args = parser.parse_args()
 

@@ -5,6 +5,7 @@ Automates incident containment procedures in AWS environments including
 EC2 instance isolation, IAM credential revocation, security group lockdown,
 S3 bucket access restriction, and forensic snapshot creation using boto3.
 """
+
 import argparse
 import json
 import os
@@ -41,11 +42,22 @@ def isolate_ec2_instance(session, instance_id, vpc_id=None):
         instance = resp["Reservations"][0]["Instances"][0]
         current_sgs = [sg["GroupId"] for sg in instance.get("SecurityGroups", [])]
         instance_vpc = instance.get("VpcId", vpc_id)
-        findings.append({"action": "describe_instance", "status": "OK",
-                         "detail": f"Current SGs: {current_sgs}"})
+        findings.append(
+            {
+                "action": "describe_instance",
+                "status": "OK",
+                "detail": f"Current SGs: {current_sgs}",
+            }
+        )
     except ClientError as e:
-        findings.append({"action": "describe_instance", "status": "FAIL",
-                         "severity": "CRITICAL", "detail": str(e)})
+        findings.append(
+            {
+                "action": "describe_instance",
+                "status": "FAIL",
+                "severity": "CRITICAL",
+                "detail": str(e),
+            }
+        )
         return findings
 
     # Create or find isolation security group
@@ -53,8 +65,10 @@ def isolate_ec2_instance(session, instance_id, vpc_id=None):
     isolation_sg_id = None
     try:
         existing = ec2.describe_security_groups(
-            Filters=[{"Name": "group-name", "Values": [isolation_sg_name]},
-                     {"Name": "vpc-id", "Values": [instance_vpc]}]
+            Filters=[
+                {"Name": "group-name", "Values": [isolation_sg_name]},
+                {"Name": "vpc-id", "Values": [instance_vpc]},
+            ]
         )
         if existing["SecurityGroups"]:
             isolation_sg_id = existing["SecurityGroups"][0]["GroupId"]
@@ -68,13 +82,26 @@ def isolate_ec2_instance(session, instance_id, vpc_id=None):
             # Revoke default egress rule
             ec2.revoke_security_group_egress(
                 GroupId=isolation_sg_id,
-                IpPermissions=[{"IpProtocol": "-1", "IpRanges": [{"CidrIp": "0.0.0.0/0"}]}],
+                IpPermissions=[
+                    {"IpProtocol": "-1", "IpRanges": [{"CidrIp": "0.0.0.0/0"}]}
+                ],
             )
-        findings.append({"action": "create_isolation_sg", "status": "OK",
-                         "detail": f"SG: {isolation_sg_id} (no ingress, no egress)"})
+        findings.append(
+            {
+                "action": "create_isolation_sg",
+                "status": "OK",
+                "detail": f"SG: {isolation_sg_id} (no ingress, no egress)",
+            }
+        )
     except ClientError as e:
-        findings.append({"action": "create_isolation_sg", "status": "FAIL",
-                         "severity": "HIGH", "detail": str(e)})
+        findings.append(
+            {
+                "action": "create_isolation_sg",
+                "status": "FAIL",
+                "severity": "HIGH",
+                "detail": str(e),
+            }
+        )
         return findings
 
     # Replace security groups with isolation SG
@@ -83,11 +110,22 @@ def isolate_ec2_instance(session, instance_id, vpc_id=None):
             InstanceId=instance_id,
             Groups=[isolation_sg_id],
         )
-        findings.append({"action": "apply_isolation_sg", "status": "OK",
-                         "detail": f"Replaced {current_sgs} with [{isolation_sg_id}]"})
+        findings.append(
+            {
+                "action": "apply_isolation_sg",
+                "status": "OK",
+                "detail": f"Replaced {current_sgs} with [{isolation_sg_id}]",
+            }
+        )
     except ClientError as e:
-        findings.append({"action": "apply_isolation_sg", "status": "FAIL",
-                         "severity": "CRITICAL", "detail": str(e)})
+        findings.append(
+            {
+                "action": "apply_isolation_sg",
+                "status": "FAIL",
+                "severity": "CRITICAL",
+                "detail": str(e),
+            }
+        )
 
     # Tag instance as contained
     try:
@@ -95,7 +133,10 @@ def isolate_ec2_instance(session, instance_id, vpc_id=None):
             Resources=[instance_id],
             Tags=[
                 {"Key": "IncidentStatus", "Value": "CONTAINED"},
-                {"Key": "ContainmentTime", "Value": datetime.now(timezone.utc).isoformat()},
+                {
+                    "Key": "ContainmentTime",
+                    "Value": datetime.now(timezone.utc).isoformat(),
+                },
                 {"Key": "OriginalSecurityGroups", "Value": ",".join(current_sgs)},
             ],
         )
@@ -121,7 +162,9 @@ def create_forensic_snapshot(session, instance_id):
             if vol_id:
                 volumes.append((mapping["DeviceName"], vol_id))
     except ClientError as e:
-        findings.append({"action": "describe_volumes", "status": "FAIL", "detail": str(e)})
+        findings.append(
+            {"action": "describe_volumes", "status": "FAIL", "detail": str(e)}
+        )
         return findings
 
     for device_name, vol_id in volumes:
@@ -129,25 +172,34 @@ def create_forensic_snapshot(session, instance_id):
             snap = ec2.create_snapshot(
                 VolumeId=vol_id,
                 Description=f"Forensic snapshot - {instance_id} {device_name} - "
-                            f"{datetime.now(timezone.utc).isoformat()}",
-                TagSpecifications=[{
-                    "ResourceType": "snapshot",
-                    "Tags": [
-                        {"Key": "Purpose", "Value": "Forensic-Preservation"},
-                        {"Key": "SourceInstance", "Value": instance_id},
-                        {"Key": "SourceVolume", "Value": vol_id},
-                        {"Key": "CreatedBy", "Value": "incident-containment-agent"},
-                    ],
-                }],
+                f"{datetime.now(timezone.utc).isoformat()}",
+                TagSpecifications=[
+                    {
+                        "ResourceType": "snapshot",
+                        "Tags": [
+                            {"Key": "Purpose", "Value": "Forensic-Preservation"},
+                            {"Key": "SourceInstance", "Value": instance_id},
+                            {"Key": "SourceVolume", "Value": vol_id},
+                            {"Key": "CreatedBy", "Value": "incident-containment-agent"},
+                        ],
+                    }
+                ],
             )
-            findings.append({
-                "action": "create_snapshot",
-                "status": "OK",
-                "detail": f"{vol_id} ({device_name}) -> {snap['SnapshotId']}",
-            })
+            findings.append(
+                {
+                    "action": "create_snapshot",
+                    "status": "OK",
+                    "detail": f"{vol_id} ({device_name}) -> {snap['SnapshotId']}",
+                }
+            )
         except ClientError as e:
-            findings.append({"action": "create_snapshot", "status": "FAIL",
-                             "detail": f"{vol_id}: {e}"})
+            findings.append(
+                {
+                    "action": "create_snapshot",
+                    "status": "FAIL",
+                    "detail": f"{vol_id}: {e}",
+                }
+            )
 
     return findings
 
@@ -166,36 +218,59 @@ def revoke_iam_credentials(session, username):
             iam.update_access_key(
                 UserName=username, AccessKeyId=key_id, Status="Inactive"
             )
-            findings.append({"action": "deactivate_access_key", "status": "OK",
-                             "detail": f"Key {key_id[:8]}... deactivated"})
+            findings.append(
+                {
+                    "action": "deactivate_access_key",
+                    "status": "OK",
+                    "detail": f"Key {key_id[:8]}... deactivated",
+                }
+            )
     except ClientError as e:
-        findings.append({"action": "deactivate_access_keys", "status": "FAIL", "detail": str(e)})
+        findings.append(
+            {"action": "deactivate_access_keys", "status": "FAIL", "detail": str(e)}
+        )
 
     # Invalidate console session by attaching deny-all inline policy
-    deny_policy = json.dumps({
-        "Version": "2012-10-17",
-        "Statement": [{"Effect": "Deny", "Action": "*", "Resource": "*"}],
-    })
+    deny_policy = json.dumps(
+        {
+            "Version": "2012-10-17",
+            "Statement": [{"Effect": "Deny", "Action": "*", "Resource": "*"}],
+        }
+    )
     try:
         iam.put_user_policy(
             UserName=username,
             PolicyName="IncidentDenyAll",
             PolicyDocument=deny_policy,
         )
-        findings.append({"action": "attach_deny_policy", "status": "OK",
-                         "detail": "Deny-all policy attached"})
+        findings.append(
+            {
+                "action": "attach_deny_policy",
+                "status": "OK",
+                "detail": "Deny-all policy attached",
+            }
+        )
     except ClientError as e:
-        findings.append({"action": "attach_deny_policy", "status": "FAIL", "detail": str(e)})
+        findings.append(
+            {"action": "attach_deny_policy", "status": "FAIL", "detail": str(e)}
+        )
 
     # Delete login profile (console access)
     try:
         iam.delete_login_profile(UserName=username)
         findings.append({"action": "delete_console_access", "status": "OK"})
     except iam.exceptions.NoSuchEntityException:
-        findings.append({"action": "delete_console_access", "status": "SKIP",
-                         "detail": "No console access configured"})
+        findings.append(
+            {
+                "action": "delete_console_access",
+                "status": "SKIP",
+                "detail": "No console access configured",
+            }
+        )
     except ClientError as e:
-        findings.append({"action": "delete_console_access", "status": "FAIL", "detail": str(e)})
+        findings.append(
+            {"action": "delete_console_access", "status": "FAIL", "detail": str(e)}
+        )
 
     return findings
 
@@ -219,7 +294,9 @@ def restrict_s3_bucket(session, bucket_name):
         )
         findings.append({"action": "block_public_access", "status": "OK"})
     except ClientError as e:
-        findings.append({"action": "block_public_access", "status": "FAIL", "detail": str(e)})
+        findings.append(
+            {"action": "block_public_access", "status": "FAIL", "detail": str(e)}
+        )
 
     # Enable versioning (preserve evidence)
     try:
@@ -229,7 +306,9 @@ def restrict_s3_bucket(session, bucket_name):
         )
         findings.append({"action": "enable_versioning", "status": "OK"})
     except ClientError as e:
-        findings.append({"action": "enable_versioning", "status": "FAIL", "detail": str(e)})
+        findings.append(
+            {"action": "enable_versioning", "status": "FAIL", "detail": str(e)}
+        )
 
     return findings
 
@@ -253,9 +332,7 @@ def format_summary(all_actions):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="AWS cloud incident containment agent"
-    )
+    parser = argparse.ArgumentParser(description="AWS cloud incident containment agent")
     sub = parser.add_subparsers(dest="command")
 
     p_iso = sub.add_parser("isolate", help="Isolate EC2 instance")
@@ -270,7 +347,9 @@ def main():
     p_s3 = sub.add_parser("restrict-s3", help="Restrict S3 bucket")
     p_s3.add_argument("--bucket", required=True)
 
-    p_full = sub.add_parser("full-contain", help="Full containment: isolate + snapshot + IAM")
+    p_full = sub.add_parser(
+        "full-contain", help="Full containment: isolate + snapshot + IAM"
+    )
     p_full.add_argument("--instance-id", required=True)
     p_full.add_argument("--username", help="IAM user to revoke")
     p_full.add_argument("--bucket", help="S3 bucket to restrict")

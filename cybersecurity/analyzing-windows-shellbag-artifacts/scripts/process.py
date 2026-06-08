@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Shellbag Forensic Analyzer - Parses SBECmd CSV output for investigation."""
+
 import csv, json, os, sys
 from datetime import datetime
 from collections import defaultdict
+
 
 def analyze_shellbags(csv_path: str, output_dir: str) -> str:
     os.makedirs(output_dir, exist_ok=True)
@@ -28,8 +30,11 @@ def analyze_shellbags(csv_path: str, output_dir: str) -> str:
     report_path = os.path.join(output_dir, "shellbag_analysis.json")
     with open(report_path, "w") as f:
         json.dump(report, f, indent=2)
-    print(f"[*] Total entries: {len(entries)}, USB: {len(usb_access)}, Network: {len(network_access)}")
+    print(
+        f"[*] Total entries: {len(entries)}, USB: {len(usb_access)}, Network: {len(network_access)}"
+    )
     return report_path
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

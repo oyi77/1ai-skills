@@ -107,24 +107,30 @@ class ATTACKAnalyzer:
         print(f"[+] {group_name} ({group_id}): {len(technique_map)} techniques")
         return technique_map
 
-    def create_navigator_layer(self, group_name: str, technique_map: dict,
-                                color: str = "#ff6666") -> dict:
+    def create_navigator_layer(
+        self, group_name: str, technique_map: dict, color: str = "#ff6666"
+    ) -> dict:
         """Generate ATT&CK Navigator layer JSON."""
         techniques_list = []
         for tech_id, info in technique_map.items():
             for tactic in info["tactics"]:
-                techniques_list.append({
-                    "techniqueID": tech_id,
-                    "tactic": tactic,
-                    "color": color,
-                    "comment": info["name"],
-                    "enabled": True,
-                    "score": 100,
-                    "metadata": [
-                        {"name": "group", "value": group_name},
-                        {"name": "platforms", "value": ", ".join(info["platforms"])},
-                    ],
-                })
+                techniques_list.append(
+                    {
+                        "techniqueID": tech_id,
+                        "tactic": tactic,
+                        "color": color,
+                        "comment": info["name"],
+                        "enabled": True,
+                        "score": 100,
+                        "metadata": [
+                            {"name": "group", "value": group_name},
+                            {
+                                "name": "platforms",
+                                "value": ", ".join(info["platforms"]),
+                            },
+                        ],
+                    }
+                )
 
         layer = {
             "name": f"{group_name} TTP Coverage",
@@ -137,8 +143,14 @@ class ATTACKAnalyzer:
             "description": f"Techniques attributed to {group_name}",
             "filters": {
                 "platforms": [
-                    "Linux", "macOS", "Windows", "Cloud",
-                    "Azure AD", "Office 365", "SaaS", "Google Workspace",
+                    "Linux",
+                    "macOS",
+                    "Windows",
+                    "Cloud",
+                    "Azure AD",
+                    "Office 365",
+                    "SaaS",
+                    "Google Workspace",
                 ]
             },
             "sorting": 0,
@@ -200,9 +212,11 @@ class ATTACKAnalyzer:
                 "total": len(techs),
                 "unique": sorted(unique),
                 "unique_count": len(unique),
-                "overlap_percentage": round(
-                    len(techs.intersection(others)) / len(techs) * 100, 1
-                ) if techs else 0,
+                "overlap_percentage": (
+                    round(len(techs.intersection(others)) / len(techs) * 100, 1)
+                    if techs
+                    else 0
+                ),
             }
 
         # Technique frequency across groups
@@ -218,8 +232,7 @@ class ATTACKAnalyzer:
 
         return comparison
 
-    def gap_analysis(self, group_name: str,
-                     detected_techniques: set) -> dict:
+    def gap_analysis(self, group_name: str, detected_techniques: set) -> dict:
         """Analyze detection gaps for a specific threat group."""
         actor_techs = self.get_group_techniques(group_name)
         actor_tech_ids = set(actor_techs.keys())
@@ -230,22 +243,26 @@ class ATTACKAnalyzer:
         gap_details = []
         for tech_id in sorted(gaps):
             info = actor_techs.get(tech_id, {})
-            gap_details.append({
-                "technique_id": tech_id,
-                "name": info.get("name", ""),
-                "tactics": info.get("tactics", []),
-                "data_sources": info.get("data_sources", []),
-                "platforms": info.get("platforms", []),
-            })
+            gap_details.append(
+                {
+                    "technique_id": tech_id,
+                    "name": info.get("name", ""),
+                    "tactics": info.get("tactics", []),
+                    "data_sources": info.get("data_sources", []),
+                    "platforms": info.get("platforms", []),
+                }
+            )
 
         analysis = {
             "group": group_name,
             "total_actor_techniques": len(actor_tech_ids),
             "detected": len(covered),
             "gaps": len(gaps),
-            "coverage_percentage": round(
-                len(covered) / len(actor_tech_ids) * 100, 1
-            ) if actor_tech_ids else 0,
+            "coverage_percentage": (
+                round(len(covered) / len(actor_tech_ids) * 100, 1)
+                if actor_tech_ids
+                else 0
+            ),
             "detected_techniques": sorted(covered),
             "gap_details": gap_details,
             "recommended_data_sources": self._recommend_data_sources(gap_details),
@@ -274,17 +291,28 @@ class ATTACKAnalyzer:
 
         for tech_id, info in techs.items():
             for tactic in info["tactics"]:
-                tactic_map[tactic].append({
-                    "id": tech_id,
-                    "name": info["name"],
-                })
+                tactic_map[tactic].append(
+                    {
+                        "id": tech_id,
+                        "name": info["name"],
+                    }
+                )
 
         tactic_order = [
-            "reconnaissance", "resource-development", "initial-access",
-            "execution", "persistence", "privilege-escalation",
-            "defense-evasion", "credential-access", "discovery",
-            "lateral-movement", "collection", "command-and-control",
-            "exfiltration", "impact",
+            "reconnaissance",
+            "resource-development",
+            "initial-access",
+            "execution",
+            "persistence",
+            "privilege-escalation",
+            "defense-evasion",
+            "credential-access",
+            "discovery",
+            "lateral-movement",
+            "collection",
+            "command-and-control",
+            "exfiltration",
+            "impact",
         ]
 
         breakdown = {}

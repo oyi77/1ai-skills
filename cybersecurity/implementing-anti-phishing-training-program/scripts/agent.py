@@ -21,26 +21,42 @@ def calculate_department_metrics(df):
     for dept, group in df.groupby("department"):
         total = len(group)
         clicked = group["clicked"].sum()
-        submitted = group["submitted_credentials"].sum() if "submitted_credentials" in group.columns else 0
+        submitted = (
+            group["submitted_credentials"].sum()
+            if "submitted_credentials" in group.columns
+            else 0
+        )
         reported = group["reported"].sum() if "reported" in group.columns else 0
-        results.append({
-            "department": dept,
-            "total_recipients": int(total),
-            "click_rate": round(clicked / total * 100, 1) if total > 0 else 0,
-            "submission_rate": round(submitted / total * 100, 1) if total > 0 else 0,
-            "report_rate": round(reported / total * 100, 1) if total > 0 else 0,
-            "risk_level": "HIGH" if clicked / total > 0.3 else "MEDIUM" if clicked / total > 0.15 else "LOW",
-        })
+        results.append(
+            {
+                "department": dept,
+                "total_recipients": int(total),
+                "click_rate": round(clicked / total * 100, 1) if total > 0 else 0,
+                "submission_rate": (
+                    round(submitted / total * 100, 1) if total > 0 else 0
+                ),
+                "report_rate": round(reported / total * 100, 1) if total > 0 else 0,
+                "risk_level": (
+                    "HIGH"
+                    if clicked / total > 0.3
+                    else "MEDIUM" if clicked / total > 0.15 else "LOW"
+                ),
+            }
+        )
     return sorted(results, key=lambda x: x["click_rate"], reverse=True)
 
 
 def analyze_trend(df):
     """Analyze phishing simulation trends over time."""
     df["month"] = df["timestamp"].dt.to_period("M")
-    monthly = df.groupby("month").agg(
-        total=("clicked", "count"),
-        clicks=("clicked", "sum"),
-    ).reset_index()
+    monthly = (
+        df.groupby("month")
+        .agg(
+            total=("clicked", "count"),
+            clicks=("clicked", "sum"),
+        )
+        .reset_index()
+    )
     monthly["click_rate"] = (monthly["clicks"] / monthly["total"] * 100).round(1)
     monthly["month"] = monthly["month"].astype(str)
     trend = monthly.to_dict(orient="records")
@@ -56,12 +72,18 @@ def analyze_trend(df):
 def identify_repeat_clickers(df):
     """Identify users who repeatedly click phishing links."""
     clickers = df[df["clicked"] == True]
-    repeat = clickers.groupby("email").agg(
-        click_count=("clicked", "sum"),
-        department=("department", "first"),
-        name=("name", "first") if "name" in df.columns else ("email", "first"),
-    ).reset_index()
-    repeat = repeat[repeat["click_count"] >= 2].sort_values("click_count", ascending=False)
+    repeat = (
+        clickers.groupby("email")
+        .agg(
+            click_count=("clicked", "sum"),
+            department=("department", "first"),
+            name=("name", "first") if "name" in df.columns else ("email", "first"),
+        )
+        .reset_index()
+    )
+    repeat = repeat[repeat["click_count"] >= 2].sort_values(
+        "click_count", ascending=False
+    )
     return repeat.to_dict(orient="records")
 
 
@@ -71,12 +93,16 @@ def calculate_training_completion(training_df):
     for module, group in training_df.groupby("module_name"):
         total = len(group)
         completed = group["completed"].sum()
-        results.append({
-            "module": module,
-            "enrolled": int(total),
-            "completed": int(completed),
-            "completion_rate": round(completed / total * 100, 1) if total > 0 else 0,
-        })
+        results.append(
+            {
+                "module": module,
+                "enrolled": int(total),
+                "completed": int(completed),
+                "completion_rate": (
+                    round(completed / total * 100, 1) if total > 0 else 0
+                ),
+            }
+        )
     return sorted(results, key=lambda x: x["completion_rate"])
 
 
@@ -110,21 +136,25 @@ def recommend_training(dept_metrics, repeat_clickers):
     recommendations = []
     high_risk_depts = [d for d in dept_metrics if d["risk_level"] == "HIGH"]
     for dept in high_risk_depts:
-        recommendations.append({
-            "target": dept["department"],
-            "type": "department",
-            "action": "Mandatory phishing awareness training",
-            "priority": "HIGH",
-            "reason": f"Click rate {dept['click_rate']}% exceeds 30% threshold",
-        })
+        recommendations.append(
+            {
+                "target": dept["department"],
+                "type": "department",
+                "action": "Mandatory phishing awareness training",
+                "priority": "HIGH",
+                "reason": f"Click rate {dept['click_rate']}% exceeds 30% threshold",
+            }
+        )
     for user in repeat_clickers[:20]:
-        recommendations.append({
-            "target": user.get("email", ""),
-            "type": "individual",
-            "action": "One-on-one coaching session",
-            "priority": "CRITICAL",
-            "reason": f"Clicked {user['click_count']} times across simulations",
-        })
+        recommendations.append(
+            {
+                "target": user.get("email", ""),
+                "type": "individual",
+                "action": "One-on-one coaching session",
+                "priority": "CRITICAL",
+                "reason": f"Clicked {user['click_count']} times across simulations",
+            }
+        )
     return recommendations
 
 
@@ -133,9 +163,11 @@ def main():
     parser.add_argument("--simulation-csv", help="Phishing simulation results CSV")
     parser.add_argument("--training-csv", help="Training completion CSV")
     parser.add_argument("--output", default="phishing_training_report.json")
-    parser.add_argument("--action", choices=[
-        "departments", "trends", "repeaters", "completion", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=["departments", "trends", "repeaters", "completion", "full_analysis"],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

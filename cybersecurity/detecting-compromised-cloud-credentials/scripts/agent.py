@@ -37,28 +37,43 @@ def get_guardduty_credential_findings():
         "InitialAccess:IAMUser/AnomalousBehavior",
         "Persistence:IAMUser/AnomalousBehavior",
     ]
-    criteria = {"Criterion": {"type": {"Eq": credential_types}, "service.archived": {"Eq": ["false"]}}}
-    findings_result = aws_cli([
-        "guardduty", "list-findings",
-        "--detector-id", detector_id,
-        "--finding-criteria", json.dumps(criteria),
-    ])
+    criteria = {
+        "Criterion": {
+            "type": {"Eq": credential_types},
+            "service.archived": {"Eq": ["false"]},
+        }
+    }
+    findings_result = aws_cli(
+        [
+            "guardduty",
+            "list-findings",
+            "--detector-id",
+            detector_id,
+            "--finding-criteria",
+            json.dumps(criteria),
+        ]
+    )
     finding_ids = findings_result.get("FindingIds", [])
     if not finding_ids:
         return {"findings": [], "count": 0}
 
-    details = aws_cli(["guardduty", "get-findings", "--detector-id", detector_id, "--finding-ids"] + finding_ids[:25])
+    details = aws_cli(
+        ["guardduty", "get-findings", "--detector-id", detector_id, "--finding-ids"]
+        + finding_ids[:25]
+    )
     parsed = []
     for f in details.get("Findings", []):
-        parsed.append({
-            "type": f.get("Type"),
-            "severity": f.get("Severity"),
-            "title": f.get("Title"),
-            "account": f.get("AccountId"),
-            "region": f.get("Region"),
-            "resource": f.get("Resource", {}).get("AccessKeyDetails", {}),
-            "action": f.get("Service", {}).get("Action", {}),
-        })
+        parsed.append(
+            {
+                "type": f.get("Type"),
+                "severity": f.get("Severity"),
+                "title": f.get("Title"),
+                "account": f.get("AccountId"),
+                "region": f.get("Region"),
+                "resource": f.get("Resource", {}).get("AccessKeyDetails", {}),
+                "action": f.get("Service", {}).get("Action", {}),
+            }
+        )
     return {"count": len(parsed), "findings": parsed}
 
 
@@ -66,24 +81,35 @@ def query_cloudtrail_for_key(access_key_id, hours=24):
     """Query CloudTrail for all API calls made with a specific access key."""
     end_time = datetime.utcnow()
     start_time = end_time - timedelta(hours=hours)
-    result = aws_cli([
-        "cloudtrail", "lookup-events",
-        "--lookup-attributes", json.dumps([{"AttributeKey": "AccessKeyId", "AttributeValue": access_key_id}]),
-        "--start-time", start_time.isoformat() + "Z",
-        "--end-time", end_time.isoformat() + "Z",
-        "--max-results", "50",
-    ])
+    result = aws_cli(
+        [
+            "cloudtrail",
+            "lookup-events",
+            "--lookup-attributes",
+            json.dumps(
+                [{"AttributeKey": "AccessKeyId", "AttributeValue": access_key_id}]
+            ),
+            "--start-time",
+            start_time.isoformat() + "Z",
+            "--end-time",
+            end_time.isoformat() + "Z",
+            "--max-results",
+            "50",
+        ]
+    )
     events = []
     for e in result.get("Events", []):
         detail = json.loads(e.get("CloudTrailEvent", "{}"))
-        events.append({
-            "time": e.get("EventTime"),
-            "event_name": e.get("EventName"),
-            "source_ip": detail.get("sourceIPAddress"),
-            "user_agent": detail.get("userAgent", "")[:100],
-            "region": detail.get("awsRegion"),
-            "resources": e.get("Resources", []),
-        })
+        events.append(
+            {
+                "time": e.get("EventTime"),
+                "event_name": e.get("EventName"),
+                "source_ip": detail.get("sourceIPAddress"),
+                "user_agent": detail.get("userAgent", "")[:100],
+                "region": detail.get("awsRegion"),
+                "resources": e.get("Resources", []),
+            }
+        )
     return {"access_key": access_key_id, "events": events, "total": len(events)}
 
 
@@ -95,8 +121,16 @@ def detect_anomalous_api_calls(access_key_id, hours=24):
     regions = set()
     ips = set()
     api_calls = {}
-    recon_apis = ["ListBuckets", "DescribeInstances", "ListUsers", "GetCallerIdentity",
-                  "ListRoles", "ListAccessKeys", "DescribeRegions", "ListFunctions"]
+    recon_apis = [
+        "ListBuckets",
+        "DescribeInstances",
+        "ListUsers",
+        "GetCallerIdentity",
+        "ListRoles",
+        "ListAccessKeys",
+        "DescribeRegions",
+        "ListFunctions",
+    ]
     recon_count = 0
 
     for e in events:
@@ -120,7 +154,10 @@ def detect_anomalous_api_calls(access_key_id, hours=24):
     if recon_count > 5:
         anomaly_score += 25
         indicators.append(f"Reconnaissance APIs: {recon_count} calls")
-    if any(api in api_calls for api in ["CreateUser", "CreateAccessKey", "AttachUserPolicy"]):
+    if any(
+        api in api_calls
+        for api in ["CreateUser", "CreateAccessKey", "AttachUserPolicy"]
+    ):
         anomaly_score += 40
         indicators.append("Persistence API calls detected")
 
@@ -136,33 +173,51 @@ def detect_anomalous_api_calls(access_key_id, hours=24):
 
 def revoke_iam_sessions(username):
     """Revoke all active sessions for an IAM user by adding inline deny policy."""
-    policy = json.dumps({
-        "Version": "2012-10-17",
-        "Statement": [{
-            "Effect": "Deny",
-            "Action": "*",
-            "Resource": "*",
-            "Condition": {
-                "DateLessThan": {"aws:TokenIssueTime": datetime.utcnow().isoformat() + "Z"}
-            },
-        }],
-    })
-    return aws_cli([
-        "iam", "put-user-policy",
-        "--user-name", username,
-        "--policy-name", "RevokeOldSessions",
-        "--policy-document", policy,
-    ])
+    policy = json.dumps(
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Deny",
+                    "Action": "*",
+                    "Resource": "*",
+                    "Condition": {
+                        "DateLessThan": {
+                            "aws:TokenIssueTime": datetime.utcnow().isoformat() + "Z"
+                        }
+                    },
+                }
+            ],
+        }
+    )
+    return aws_cli(
+        [
+            "iam",
+            "put-user-policy",
+            "--user-name",
+            username,
+            "--policy-name",
+            "RevokeOldSessions",
+            "--policy-document",
+            policy,
+        ]
+    )
 
 
 def deactivate_access_key(access_key_id, username):
     """Deactivate a compromised access key."""
-    return aws_cli([
-        "iam", "update-access-key",
-        "--access-key-id", access_key_id,
-        "--user-name", username,
-        "--status", "Inactive",
-    ])
+    return aws_cli(
+        [
+            "iam",
+            "update-access-key",
+            "--access-key-id",
+            access_key_id,
+            "--user-name",
+            username,
+            "--status",
+            "Inactive",
+        ]
+    )
 
 
 def generate_report():
@@ -181,12 +236,20 @@ if __name__ == "__main__":
         print(json.dumps(get_guardduty_credential_findings(), indent=2, default=str))
     elif action == "trail" and len(sys.argv) > 2:
         hours = int(sys.argv[3]) if len(sys.argv) > 3 else 24
-        print(json.dumps(query_cloudtrail_for_key(sys.argv[2], hours), indent=2, default=str))
+        print(
+            json.dumps(
+                query_cloudtrail_for_key(sys.argv[2], hours), indent=2, default=str
+            )
+        )
     elif action == "analyze" and len(sys.argv) > 2:
-        print(json.dumps(detect_anomalous_api_calls(sys.argv[2]), indent=2, default=str))
+        print(
+            json.dumps(detect_anomalous_api_calls(sys.argv[2]), indent=2, default=str)
+        )
     elif action == "deactivate" and len(sys.argv) > 3:
         print(json.dumps(deactivate_access_key(sys.argv[2], sys.argv[3]), indent=2))
     elif action == "revoke" and len(sys.argv) > 2:
         print(json.dumps(revoke_iam_sessions(sys.argv[2]), indent=2))
     else:
-        print("Usage: agent.py [report|findings|trail <key_id> [hours]|analyze <key_id>|deactivate <key_id> <user>|revoke <user>]")
+        print(
+            "Usage: agent.py [report|findings|trail <key_id> [hours]|analyze <key_id>|deactivate <key_id> <user>|revoke <user>]"
+        )

@@ -30,7 +30,9 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import rsa, ec
 from cryptography.hazmat.backends import default_backend
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -49,11 +51,13 @@ def save_key(key, path: Path, passphrase: Optional[str] = None):
         enc = serialization.BestAvailableEncryption(passphrase.encode())
     else:
         enc = serialization.NoEncryption()
-    path.write_bytes(key.private_bytes(
-        encoding=serialization.Encoding.PEM,
-        format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=enc,
-    ))
+    path.write_bytes(
+        key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=enc,
+        )
+    )
 
 
 def save_cert(cert, path: Path):
@@ -76,11 +80,13 @@ def build_root_ca(
     key = generate_key("rsa", 4096)
     save_key(key, ca_dir / "private" / "root-ca.key")
 
-    subject = x509.Name([
-        x509.NameAttribute(NameOID.COUNTRY_NAME, country),
-        x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization),
-        x509.NameAttribute(NameOID.COMMON_NAME, f"{organization} Root CA"),
-    ])
+    subject = x509.Name(
+        [
+            x509.NameAttribute(NameOID.COUNTRY_NAME, country),
+            x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization),
+            x509.NameAttribute(NameOID.COMMON_NAME, f"{organization} Root CA"),
+        ]
+    )
 
     now = datetime.datetime.utcnow()
     cert = (
@@ -91,15 +97,18 @@ def build_root_ca(
         .serial_number(x509.random_serial_number())
         .not_valid_before(now)
         .not_valid_after(now + datetime.timedelta(days=validity_years * 365))
-        .add_extension(
-            x509.BasicConstraints(ca=True, path_length=1), critical=True
-        )
+        .add_extension(x509.BasicConstraints(ca=True, path_length=1), critical=True)
         .add_extension(
             x509.KeyUsage(
-                digital_signature=True, key_cert_sign=True, crl_sign=True,
-                content_commitment=False, key_encipherment=False,
-                data_encipherment=False, key_agreement=False,
-                encipher_only=False, decipher_only=False,
+                digital_signature=True,
+                key_cert_sign=True,
+                crl_sign=True,
+                content_commitment=False,
+                key_encipherment=False,
+                data_encipherment=False,
+                key_agreement=False,
+                encipher_only=False,
+                decipher_only=False,
             ),
             critical=True,
         )
@@ -141,7 +150,9 @@ def build_intermediate_ca(
     (int_dir / "private").mkdir(exist_ok=True)
 
     root_key_data = (root_dir / "private" / "root-ca.key").read_bytes()
-    root_key = serialization.load_pem_private_key(root_key_data, password=None, backend=default_backend())
+    root_key = serialization.load_pem_private_key(
+        root_key_data, password=None, backend=default_backend()
+    )
 
     root_cert_data = (root_dir / "certs" / "root-ca.crt").read_bytes()
     root_cert = x509.load_pem_x509_certificate(root_cert_data, default_backend())
@@ -149,11 +160,13 @@ def build_intermediate_ca(
     int_key = generate_key("rsa", 4096)
     save_key(int_key, int_dir / "private" / "intermediate-ca.key")
 
-    subject = x509.Name([
-        x509.NameAttribute(NameOID.COUNTRY_NAME, country),
-        x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization),
-        x509.NameAttribute(NameOID.COMMON_NAME, f"{organization} Intermediate CA"),
-    ])
+    subject = x509.Name(
+        [
+            x509.NameAttribute(NameOID.COUNTRY_NAME, country),
+            x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization),
+            x509.NameAttribute(NameOID.COMMON_NAME, f"{organization} Intermediate CA"),
+        ]
+    )
 
     now = datetime.datetime.utcnow()
     cert = (
@@ -164,15 +177,18 @@ def build_intermediate_ca(
         .serial_number(x509.random_serial_number())
         .not_valid_before(now)
         .not_valid_after(now + datetime.timedelta(days=validity_years * 365))
-        .add_extension(
-            x509.BasicConstraints(ca=True, path_length=0), critical=True
-        )
+        .add_extension(x509.BasicConstraints(ca=True, path_length=0), critical=True)
         .add_extension(
             x509.KeyUsage(
-                digital_signature=True, key_cert_sign=True, crl_sign=True,
-                content_commitment=False, key_encipherment=False,
-                data_encipherment=False, key_agreement=False,
-                encipher_only=False, decipher_only=False,
+                digital_signature=True,
+                key_cert_sign=True,
+                crl_sign=True,
+                content_commitment=False,
+                key_encipherment=False,
+                data_encipherment=False,
+                key_agreement=False,
+                encipher_only=False,
+                decipher_only=False,
             ),
             critical=True,
         )
@@ -190,7 +206,9 @@ def build_intermediate_ca(
     save_cert(cert, int_dir / "certs" / "intermediate-ca.crt")
 
     # Create chain file
-    chain = cert.public_bytes(serialization.Encoding.PEM) + root_cert.public_bytes(serialization.Encoding.PEM)
+    chain = cert.public_bytes(serialization.Encoding.PEM) + root_cert.public_bytes(
+        serialization.Encoding.PEM
+    )
     (int_dir / "certs" / "ca-chain.crt").write_bytes(chain)
 
     # Initialize serial and index
@@ -220,7 +238,9 @@ def issue_certificate(
     int_dir = ca_dir / "intermediate-ca"
 
     int_key_data = (int_dir / "private" / "intermediate-ca.key").read_bytes()
-    int_key = serialization.load_pem_private_key(int_key_data, password=None, backend=default_backend())
+    int_key = serialization.load_pem_private_key(
+        int_key_data, password=None, backend=default_backend()
+    )
 
     int_cert_data = (int_dir / "certs" / "intermediate-ca.crt").read_bytes()
     int_cert = x509.load_pem_x509_certificate(int_cert_data, default_backend())
@@ -233,9 +253,11 @@ def issue_certificate(
 
     # Generate end-entity key
     ee_key = generate_key("ecdsa")
-    subject = x509.Name([
-        x509.NameAttribute(NameOID.COMMON_NAME, domain),
-    ])
+    subject = x509.Name(
+        [
+            x509.NameAttribute(NameOID.COMMON_NAME, domain),
+        ]
+    )
 
     san_list = [x509.DNSName(domain)]
     if san_domains:
@@ -247,10 +269,12 @@ def issue_certificate(
     elif cert_type == "client":
         eku = x509.ExtendedKeyUsage([x509.oid.ExtendedKeyUsageOID.CLIENT_AUTH])
     else:
-        eku = x509.ExtendedKeyUsage([
-            x509.oid.ExtendedKeyUsageOID.SERVER_AUTH,
-            x509.oid.ExtendedKeyUsageOID.CLIENT_AUTH,
-        ])
+        eku = x509.ExtendedKeyUsage(
+            [
+                x509.oid.ExtendedKeyUsageOID.SERVER_AUTH,
+                x509.oid.ExtendedKeyUsageOID.CLIENT_AUTH,
+            ]
+        )
 
     now = datetime.datetime.utcnow()
     cert = (
@@ -264,10 +288,15 @@ def issue_certificate(
         .add_extension(x509.BasicConstraints(ca=False, path_length=None), critical=True)
         .add_extension(
             x509.KeyUsage(
-                digital_signature=True, key_encipherment=True,
-                key_cert_sign=False, crl_sign=False,
-                content_commitment=False, data_encipherment=False,
-                key_agreement=False, encipher_only=False, decipher_only=False,
+                digital_signature=True,
+                key_encipherment=True,
+                key_cert_sign=False,
+                crl_sign=False,
+                content_commitment=False,
+                data_encipherment=False,
+                key_agreement=False,
+                encipher_only=False,
+                decipher_only=False,
             ),
             critical=True,
         )
@@ -288,14 +317,16 @@ def issue_certificate(
 
     # Update index
     index_data = json.loads((int_dir / "index.json").read_text())
-    index_data["certificates"].append({
-        "serial": serial_num,
-        "domain": domain,
-        "type": cert_type,
-        "issued": now.isoformat(),
-        "expires": (now + datetime.timedelta(days=validity_days)).isoformat(),
-        "status": "valid",
-    })
+    index_data["certificates"].append(
+        {
+            "serial": serial_num,
+            "domain": domain,
+            "type": cert_type,
+            "issued": now.isoformat(),
+            "expires": (now + datetime.timedelta(days=validity_days)).isoformat(),
+            "status": "valid",
+        }
+    )
     (int_dir / "index.json").write_text(json.dumps(index_data, indent=2))
 
     logger.info(f"Issued {cert_type} certificate for {domain} (serial: {serial_num})")
@@ -339,11 +370,13 @@ def revoke_certificate(ca_dir: Path, serial: int, reason: str = "unspecified") -
     if "revoked" not in index_data:
         index_data["revoked"] = []
 
-    index_data["revoked"].append({
-        "serial": serial,
-        "revoked_at": datetime.datetime.utcnow().isoformat(),
-        "reason": reason,
-    })
+    index_data["revoked"].append(
+        {
+            "serial": serial,
+            "revoked_at": datetime.datetime.utcnow().isoformat(),
+            "reason": reason,
+        }
+    )
 
     (int_dir / "index.json").write_text(json.dumps(index_data, indent=2))
     logger.info(f"Revoked certificate serial {serial} (reason: {reason})")
@@ -356,7 +389,9 @@ def generate_crl(ca_dir: Path, validity_days: int = 30) -> Dict:
     int_dir = ca_dir / "intermediate-ca"
 
     int_key_data = (int_dir / "private" / "intermediate-ca.key").read_bytes()
-    int_key = serialization.load_pem_private_key(int_key_data, password=None, backend=default_backend())
+    int_key = serialization.load_pem_private_key(
+        int_key_data, password=None, backend=default_backend()
+    )
 
     int_cert_data = (int_dir / "certs" / "intermediate-ca.crt").read_bytes()
     int_cert = x509.load_pem_x509_certificate(int_cert_data, default_backend())
@@ -383,7 +418,11 @@ def generate_crl(ca_dir: Path, validity_days: int = 30) -> Dict:
             .serial_number(entry["serial"])
             .revocation_date(datetime.datetime.fromisoformat(entry["revoked_at"]))
             .add_extension(
-                x509.CRLReason(reason_map.get(entry.get("reason", "unspecified"), x509.ReasonFlags.unspecified)),
+                x509.CRLReason(
+                    reason_map.get(
+                        entry.get("reason", "unspecified"), x509.ReasonFlags.unspecified
+                    )
+                ),
                 critical=False,
             )
             .build()
@@ -396,7 +435,9 @@ def generate_crl(ca_dir: Path, validity_days: int = 30) -> Dict:
     crl_path.parent.mkdir(exist_ok=True)
     crl_path.write_bytes(crl.public_bytes(serialization.Encoding.PEM))
 
-    logger.info(f"Generated CRL with {len(index_data.get('revoked', []))} revoked certificates")
+    logger.info(
+        f"Generated CRL with {len(index_data.get('revoked', []))} revoked certificates"
+    )
     return {
         "crl_path": str(crl_path),
         "revoked_count": len(index_data.get("revoked", [])),

@@ -13,13 +13,17 @@ from typing import List
 
 try:
     from cryptography.hazmat.primitives.asymmetric.ed25519 import (
-        Ed25519PrivateKey, Ed25519PublicKey)
+        Ed25519PrivateKey,
+        Ed25519PublicKey,
+    )
     from cryptography.hazmat.primitives import serialization
     from cryptography.exceptions import InvalidSignature
 except ImportError:
     sys.exit("cryptography required: pip install cryptography")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -29,10 +33,12 @@ def generate_keypair(output_dir: str, key_name: str = "ed25519") -> dict:
     priv_pem = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption())
+        encryption_algorithm=serialization.NoEncryption(),
+    )
     pub_pem = private_key.public_key().public_bytes(
         encoding=serialization.Encoding.PEM,
-        format=serialization.PublicFormat.SubjectPublicKeyInfo)
+        format=serialization.PublicFormat.SubjectPublicKeyInfo,
+    )
     priv_path = os.path.join(output_dir, f"{key_name}_private.pem")
     pub_path = os.path.join(output_dir, f"{key_name}_public.pem")
     with open(priv_path, "wb") as f:
@@ -74,10 +80,16 @@ def sign_file(private_key_path: str, file_path: str) -> dict:
     result = sign_message(private_key_path, data)
     sig_path = file_path + ".ed25519.sig"
     with open(sig_path, "w") as f:
-        json.dump({"signature": result["signature_b64"],
-                    "file_hash": result["message_hash"],
-                    "algorithm": "Ed25519",
-                    "signed_at": datetime.utcnow().isoformat()}, f, indent=2)
+        json.dump(
+            {
+                "signature": result["signature_b64"],
+                "file_hash": result["message_hash"],
+                "algorithm": "Ed25519",
+                "signed_at": datetime.utcnow().isoformat(),
+            },
+            f,
+            indent=2,
+        )
     result["signature_file"] = sig_path
     return result
 
@@ -114,7 +126,9 @@ def batch_verify(public_key_path: str, files: List[str]) -> List[dict]:
         if os.path.isfile(sig_path):
             results.append(verify_file(public_key_path, file_path, sig_path))
         else:
-            results.append({"file": file_path, "valid": False, "error": "No signature file"})
+            results.append(
+                {"file": file_path, "valid": False, "error": "No signature file"}
+            )
     return results
 
 
@@ -139,9 +153,11 @@ def main():
         print(json.dumps(result, indent=2))
     elif args.verify and args.public_key:
         results = batch_verify(args.public_key, args.verify)
-        report = {"verifications": results,
-                  "valid": sum(1 for r in results if r.get("valid")),
-                  "invalid": sum(1 for r in results if not r.get("valid"))}
+        report = {
+            "verifications": results,
+            "valid": sum(1 for r in results if r.get("valid")),
+            "invalid": sum(1 for r in results if not r.get("valid")),
+        }
         out_path = os.path.join(args.output_dir, args.output)
         with open(out_path, "w") as f:
             json.dump(report, f, indent=2)

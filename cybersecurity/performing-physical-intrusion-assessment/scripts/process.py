@@ -16,6 +16,7 @@ from dataclasses import dataclass, field, asdict
 @dataclass
 class PhysicalAccessAttempt:
     """A single physical access test attempt."""
+
     attempt_id: str
     timestamp: str
     location: str
@@ -46,7 +47,10 @@ class PhysicalAssessmentTracker:
         """Log an access attempt."""
         # Auto-assign severity
         if not attempt.severity:
-            if attempt.target_area in ("server_room", "data_center") and attempt.successful:
+            if (
+                attempt.target_area in ("server_room", "data_center")
+                and attempt.successful
+            ):
                 attempt.severity = "critical"
             elif attempt.successful and not attempt.detected:
                 attempt.severity = "high"
@@ -92,7 +96,8 @@ class PhysicalAssessmentTracker:
             "area_breakdown": dict(area_stats),
             "avg_time_inside": (
                 sum(a.time_inside_minutes for a in successful) / len(successful)
-                if successful else 0
+                if successful
+                else 0
             ),
         }
 
@@ -117,13 +122,18 @@ class PhysicalAssessmentTracker:
         lines.append(f"  Detection Rate:        {metrics['detection_rate']:.1f}%")
         lines.append(f"  Challenge Rate:        {metrics['challenge_rate']:.1f}%")
         lines.append(f"  Devices Deployed:      {metrics['devices_deployed']}")
-        lines.append(f"  Avg Time Inside:       {metrics['avg_time_inside']:.0f} minutes")
+        lines.append(
+            f"  Avg Time Inside:       {metrics['avg_time_inside']:.0f} minutes"
+        )
 
         risk = (
-            "CRITICAL" if metrics['success_rate'] > 60
-            else "HIGH" if metrics['success_rate'] > 40
-            else "MEDIUM" if metrics['success_rate'] > 20
-            else "LOW"
+            "CRITICAL"
+            if metrics["success_rate"] > 60
+            else (
+                "HIGH"
+                if metrics["success_rate"] > 40
+                else "MEDIUM" if metrics["success_rate"] > 20 else "LOW"
+            )
         )
         lines.append(f"\n  OVERALL RISK: {risk}")
 
@@ -131,22 +141,33 @@ class PhysicalAssessmentTracker:
         lines.append("-" * 70)
         for tech, stats in metrics["technique_breakdown"].items():
             rate = stats["success"] / stats["total"] * 100 if stats["total"] else 0
-            lines.append(f"  {tech:<25} {rate:>5.1f}% ({stats['success']}/{stats['total']})")
+            lines.append(
+                f"  {tech:<25} {rate:>5.1f}% ({stats['success']}/{stats['total']})"
+            )
 
         lines.append(f"\nAREA ACCESS:")
         lines.append("-" * 70)
         for area, stats in metrics["area_breakdown"].items():
             rate = stats["success"] / stats["total"] * 100 if stats["total"] else 0
-            lines.append(f"  {area:<25} {rate:>5.1f}% ({stats['success']}/{stats['total']})")
+            lines.append(
+                f"  {area:<25} {rate:>5.1f}% ({stats['success']}/{stats['total']})"
+            )
 
         lines.append(f"\nDETAILED FINDINGS:")
         lines.append("-" * 70)
-        for a in sorted(self.attempts, key=lambda x: {"critical": 0, "high": 1, "medium": 2, "low": 3}.get(x.severity, 4)):
+        for a in sorted(
+            self.attempts,
+            key=lambda x: {"critical": 0, "high": 1, "medium": 2, "low": 3}.get(
+                x.severity, 4
+            ),
+        ):
             status = "SUCCESS" if a.successful else "FAILED"
             lines.append(f"\n  [{a.severity.upper()}] {a.location} - {a.entry_point}")
             lines.append(f"    Technique: {a.technique} | Result: {status}")
-            lines.append(f"    Detected: {'Yes' if a.detected else 'No'} | "
-                        f"Challenged: {'Yes' if a.challenged else 'No'}")
+            lines.append(
+                f"    Detected: {'Yes' if a.detected else 'No'} | "
+                f"Challenged: {'Yes' if a.challenged else 'No'}"
+            )
             if a.device_deployed:
                 lines.append(f"    Device Deployed: {a.device_type}")
             if a.notes:
@@ -155,7 +176,9 @@ class PhysicalAssessmentTracker:
         lines.append(f"\nREMEDIATIONS:")
         lines.append("-" * 70)
         if metrics["success_rate"] > 50:
-            lines.append("  [CRITICAL] Physical access controls require immediate review")
+            lines.append(
+                "  [CRITICAL] Physical access controls require immediate review"
+            )
         if any(a.technique == "tailgating" and a.successful for a in self.attempts):
             lines.append("  [HIGH] Install mantraps or anti-tailgating turnstiles")
             lines.append("  [HIGH] Implement security awareness training on tailgating")
@@ -174,22 +197,78 @@ def main():
     tracker = PhysicalAssessmentTracker("PHYS-2025-001", "Example Corp HQ")
 
     attempts = [
-        PhysicalAccessAttempt("P001", "2025-02-10T08:45:00", "Main Building",
-            "main_entrance", "tailgating", "lobby", True, False, False, False, 45,
-            notes="Followed group during morning rush"),
-        PhysicalAccessAttempt("P002", "2025-02-10T10:00:00", "Main Building",
-            "side_door", "badge_clone", "office_floor", True, False, False, False, 30,
-            notes="Cloned badge from elevator reading"),
-        PhysicalAccessAttempt("P003", "2025-02-10T14:00:00", "Data Center Wing",
-            "secured_door", "badge_clone", "server_room", True, True, True, True, 5,
-            device_deployed=True, device_type="LAN Turtle",
-            notes="Guard challenged but accepted fake contractor story"),
-        PhysicalAccessAttempt("P004", "2025-02-11T07:30:00", "Loading Dock",
-            "loading_dock", "social_engineering", "warehouse", True, False, False, False, 20,
-            notes="Posed as delivery driver with empty boxes"),
-        PhysicalAccessAttempt("P005", "2025-02-11T12:00:00", "Executive Floor",
-            "elevator", "tailgating", "executive_office", False, True, True, True, 0,
-            notes="Security escort required, access denied"),
+        PhysicalAccessAttempt(
+            "P001",
+            "2025-02-10T08:45:00",
+            "Main Building",
+            "main_entrance",
+            "tailgating",
+            "lobby",
+            True,
+            False,
+            False,
+            False,
+            45,
+            notes="Followed group during morning rush",
+        ),
+        PhysicalAccessAttempt(
+            "P002",
+            "2025-02-10T10:00:00",
+            "Main Building",
+            "side_door",
+            "badge_clone",
+            "office_floor",
+            True,
+            False,
+            False,
+            False,
+            30,
+            notes="Cloned badge from elevator reading",
+        ),
+        PhysicalAccessAttempt(
+            "P003",
+            "2025-02-10T14:00:00",
+            "Data Center Wing",
+            "secured_door",
+            "badge_clone",
+            "server_room",
+            True,
+            True,
+            True,
+            True,
+            5,
+            device_deployed=True,
+            device_type="LAN Turtle",
+            notes="Guard challenged but accepted fake contractor story",
+        ),
+        PhysicalAccessAttempt(
+            "P004",
+            "2025-02-11T07:30:00",
+            "Loading Dock",
+            "loading_dock",
+            "social_engineering",
+            "warehouse",
+            True,
+            False,
+            False,
+            False,
+            20,
+            notes="Posed as delivery driver with empty boxes",
+        ),
+        PhysicalAccessAttempt(
+            "P005",
+            "2025-02-11T12:00:00",
+            "Executive Floor",
+            "elevator",
+            "tailgating",
+            "executive_office",
+            False,
+            True,
+            True,
+            True,
+            0,
+            notes="Security escort required, access denied",
+        ),
     ]
 
     for attempt in attempts:

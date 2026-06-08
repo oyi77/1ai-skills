@@ -6,24 +6,49 @@ import argparse
 import re
 from datetime import datetime
 
-
 WEB_SERVER_PROCESSES = [
-    "w3wp.exe", "httpd", "apache2", "nginx", "tomcat", "java",
-    "php-cgi", "php-fpm", "node", "iisexpress",
+    "w3wp.exe",
+    "httpd",
+    "apache2",
+    "nginx",
+    "tomcat",
+    "java",
+    "php-cgi",
+    "php-fpm",
+    "node",
+    "iisexpress",
 ]
 
 SHELL_SPAWNS = [
-    "cmd.exe", "powershell.exe", "pwsh.exe", "bash", "sh",
-    "wscript.exe", "cscript.exe", "certutil.exe", "whoami.exe",
-    "net.exe", "net1.exe", "ipconfig.exe", "systeminfo.exe",
-    "tasklist.exe", "nslookup.exe",
+    "cmd.exe",
+    "powershell.exe",
+    "pwsh.exe",
+    "bash",
+    "sh",
+    "wscript.exe",
+    "cscript.exe",
+    "certutil.exe",
+    "whoami.exe",
+    "net.exe",
+    "net1.exe",
+    "ipconfig.exe",
+    "systeminfo.exe",
+    "tasklist.exe",
+    "nslookup.exe",
 ]
 
 WEBSHELL_HTTP_PATTERNS = [
     r"POST\s+.*\.(asp|aspx|php|jsp|jspx)\s+",
-    r"cmd=", r"exec=", r"command=", r"shell=",
-    r"c99shell", r"r57shell", r"b374k", r"weevely",
-    r"china\s*chopper", r"antsword",
+    r"cmd=",
+    r"exec=",
+    r"command=",
+    r"shell=",
+    r"c99shell",
+    r"r57shell",
+    r"b374k",
+    r"weevely",
+    r"china\s*chopper",
+    r"antsword",
 ]
 
 
@@ -49,16 +74,18 @@ def detect_webserver_child_shells(process_logs):
         is_shell_child = any(sh in child for sh in SHELL_SPAWNS)
         if is_web_parent and is_shell_child:
             cmd = entry.get("CommandLine", entry.get("command_line", ""))
-            findings.append({
-                "timestamp": entry.get("UtcTime", entry.get("timestamp", "")),
-                "hostname": entry.get("Computer", entry.get("hostname", "")),
-                "parent_process": parent,
-                "child_process": child,
-                "command_line": cmd[:500],
-                "user": entry.get("User", ""),
-                "severity": "CRITICAL",
-                "technique": "T1505.003",
-            })
+            findings.append(
+                {
+                    "timestamp": entry.get("UtcTime", entry.get("timestamp", "")),
+                    "hostname": entry.get("Computer", entry.get("hostname", "")),
+                    "parent_process": parent,
+                    "child_process": child,
+                    "command_line": cmd[:500],
+                    "user": entry.get("User", ""),
+                    "severity": "CRITICAL",
+                    "technique": "T1505.003",
+                }
+            )
     return findings
 
 
@@ -70,13 +97,15 @@ def analyze_web_access_logs(access_log_path):
             for pattern in WEBSHELL_HTTP_PATTERNS:
                 if re.search(pattern, line, re.IGNORECASE):
                     ip_match = re.match(r"^(\S+)", line)
-                    findings.append({
-                        "line_number": i,
-                        "source_ip": ip_match.group(1) if ip_match else "",
-                        "log_entry": line.strip()[:500],
-                        "pattern_matched": pattern,
-                        "severity": "HIGH",
-                    })
+                    findings.append(
+                        {
+                            "line_number": i,
+                            "source_ip": ip_match.group(1) if ip_match else "",
+                            "log_entry": line.strip()[:500],
+                            "pattern_matched": pattern,
+                            "severity": "HIGH",
+                        }
+                    )
                     break
     return findings
 
@@ -85,8 +114,11 @@ def detect_file_creation_in_webroot(file_events, webroot_paths=None):
     """Detect new script files created in web server directories."""
     if webroot_paths is None:
         webroot_paths = [
-            "/var/www", "/opt/lampp/htdocs", "inetpub/wwwroot",
-            "/usr/share/nginx/html", "/srv/www",
+            "/var/www",
+            "/opt/lampp/htdocs",
+            "inetpub/wwwroot",
+            "/usr/share/nginx/html",
+            "/srv/www",
         ]
     script_extensions = [".php", ".asp", ".aspx", ".jsp", ".jspx", ".cgi", ".cfm"]
     findings = []
@@ -95,14 +127,16 @@ def detect_file_creation_in_webroot(file_events, webroot_paths=None):
         in_webroot = any(wr in filepath for wr in webroot_paths)
         is_script = any(filepath.endswith(ext) for ext in script_extensions)
         if in_webroot and is_script:
-            findings.append({
-                "timestamp": event.get("UtcTime", event.get("timestamp", "")),
-                "file_path": filepath,
-                "process": event.get("Image", event.get("process_name", "")),
-                "hostname": event.get("Computer", event.get("hostname", "")),
-                "severity": "CRITICAL",
-                "reason": "script_created_in_webroot",
-            })
+            findings.append(
+                {
+                    "timestamp": event.get("UtcTime", event.get("timestamp", "")),
+                    "file_path": filepath,
+                    "process": event.get("Image", event.get("process_name", "")),
+                    "hostname": event.get("Computer", event.get("hostname", "")),
+                    "severity": "CRITICAL",
+                    "reason": "script_created_in_webroot",
+                }
+            )
     return findings
 
 
@@ -125,13 +159,15 @@ def detect_post_exploitation(process_logs):
         cmd = entry.get("CommandLine", entry.get("command_line", ""))
         for pattern, category in recon_patterns:
             if re.search(pattern, cmd, re.IGNORECASE):
-                findings.append({
-                    "timestamp": entry.get("UtcTime", entry.get("timestamp", "")),
-                    "command": cmd[:300],
-                    "category": category,
-                    "parent": parent,
-                    "severity": "HIGH",
-                })
+                findings.append(
+                    {
+                        "timestamp": entry.get("UtcTime", entry.get("timestamp", "")),
+                        "command": cmd[:300],
+                        "category": category,
+                        "parent": parent,
+                        "severity": "HIGH",
+                    }
+                )
                 break
     return findings
 

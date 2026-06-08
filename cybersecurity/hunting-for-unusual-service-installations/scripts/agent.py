@@ -56,7 +56,9 @@ def parse_evtx_events(evtx_path):
         for record in log.records():
             try:
                 xml = record.xml()
-                root = etree.fromstring(xml.encode("utf-8") if isinstance(xml, str) else xml)
+                root = etree.fromstring(
+                    xml.encode("utf-8") if isinstance(xml, str) else xml
+                )
                 event_id_el = root.find(".//e:System/e:EventID", ns)
                 if event_id_el is None or event_id_el.text != "7045":
                     continue
@@ -71,16 +73,18 @@ def parse_evtx_events(evtx_path):
                 timestamp = time_el.get("SystemTime", "") if time_el is not None else ""
                 computer_el = system.find("e:Computer", ns)
                 computer = computer_el.text if computer_el is not None else ""
-                events.append({
-                    "timestamp": timestamp,
-                    "event_id": 7045,
-                    "computer": computer,
-                    "service_name": data_fields.get("ServiceName", ""),
-                    "image_path": data_fields.get("ImagePath", ""),
-                    "service_type": data_fields.get("ServiceType", ""),
-                    "start_type": data_fields.get("StartType", ""),
-                    "account_name": data_fields.get("AccountName", ""),
-                })
+                events.append(
+                    {
+                        "timestamp": timestamp,
+                        "event_id": 7045,
+                        "computer": computer,
+                        "service_name": data_fields.get("ServiceName", ""),
+                        "image_path": data_fields.get("ImagePath", ""),
+                        "service_type": data_fields.get("ServiceType", ""),
+                        "start_type": data_fields.get("StartType", ""),
+                        "account_name": data_fields.get("AccountName", ""),
+                    }
+                )
             except Exception:
                 continue
     return events
@@ -93,7 +97,9 @@ def analyze_service_path(image_path):
     for pattern, indicator in SUSPICIOUS_PATH_PATTERNS:
         if re.search(pattern, path_lower, re.IGNORECASE):
             findings.append(indicator)
-    is_legitimate = any(re.match(p, image_path, re.IGNORECASE) for p in LEGITIMATE_SERVICE_PATHS)
+    is_legitimate = any(
+        re.match(p, image_path, re.IGNORECASE) for p in LEGITIMATE_SERVICE_PATHS
+    )
     risk_score = 0
     if not is_legitimate:
         risk_score += 20
@@ -103,7 +109,11 @@ def analyze_service_path(image_path):
         "suspicious_indicators": findings,
         "legitimate_path": is_legitimate,
         "risk_score": risk_score,
-        "risk_level": "CRITICAL" if risk_score >= 70 else "HIGH" if risk_score >= 50 else "MEDIUM" if risk_score >= 20 else "LOW",
+        "risk_level": (
+            "CRITICAL"
+            if risk_score >= 70
+            else "HIGH" if risk_score >= 50 else "MEDIUM" if risk_score >= 20 else "LOW"
+        ),
     }
 
 
@@ -114,9 +124,14 @@ def hunt_suspicious_services(evtx_path):
     for event in events:
         analysis = analyze_service_path(event.get("image_path", ""))
         entry = {**event, **analysis}
-        if entry.get("account_name", "").lower() == "localsystem" and not analysis["legitimate_path"]:
+        if (
+            entry.get("account_name", "").lower() == "localsystem"
+            and not analysis["legitimate_path"]
+        ):
             entry["risk_score"] = min(entry["risk_score"] + 20, 100)
-            entry["risk_level"] = "CRITICAL" if entry["risk_score"] >= 70 else entry["risk_level"]
+            entry["risk_level"] = (
+                "CRITICAL" if entry["risk_score"] >= 70 else entry["risk_level"]
+            )
             entry["suspicious_indicators"].append("localsystem_nonstandard_path")
         results.append(entry)
     results.sort(key=lambda x: x.get("risk_score", 0), reverse=True)
@@ -159,13 +174,18 @@ def full_hunt(evtx_path):
             "name": "Create or Modify System Process: Windows Service",
             "tactic": "Persistence, Privilege Escalation",
         },
-        "recommendation": "Investigate CRITICAL and HIGH services. Verify binary hashes against known-good baselines." if stats["critical_count"] + stats["high_count"] > 0
-            else "No high-risk service installations detected.",
+        "recommendation": (
+            "Investigate CRITICAL and HIGH services. Verify binary hashes against known-good baselines."
+            if stats["critical_count"] + stats["high_count"] > 0
+            else "No high-risk service installations detected."
+        ),
     }
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Service Installation Threat Hunting Agent (T1543.003)")
+    parser = argparse.ArgumentParser(
+        description="Service Installation Threat Hunting Agent (T1543.003)"
+    )
     parser.add_argument("evtx", help="Path to System.evtx file")
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("parse", help="Parse and list all Event ID 7045 records")

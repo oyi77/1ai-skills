@@ -6,6 +6,7 @@ for provisioned applications, user assignments, group memberships, and
 deprovisioning status. Identifies orphaned accounts, mismatched
 assignments, and provisioning failures.
 """
+
 import argparse
 import json
 import os
@@ -51,19 +52,26 @@ def list_provisioning_apps(org_url, token):
     scim_apps = []
     for app in apps:
         features = app.get("features", [])
-        if any(f in features for f in [
-            "PUSH_NEW_USERS", "PUSH_USER_DEACTIVATION",
-            "IMPORT_NEW_USERS", "PUSH_PROFILE_UPDATES"
-        ]):
-            scim_apps.append({
-                "id": app.get("id"),
-                "name": app.get("name", ""),
-                "label": app.get("label", ""),
-                "status": app.get("status", ""),
-                "features": features,
-                "sign_on_mode": app.get("signOnMode", ""),
-                "created": app.get("created", ""),
-            })
+        if any(
+            f in features
+            for f in [
+                "PUSH_NEW_USERS",
+                "PUSH_USER_DEACTIVATION",
+                "IMPORT_NEW_USERS",
+                "PUSH_PROFILE_UPDATES",
+            ]
+        ):
+            scim_apps.append(
+                {
+                    "id": app.get("id"),
+                    "name": app.get("name", ""),
+                    "label": app.get("label", ""),
+                    "status": app.get("status", ""),
+                    "features": features,
+                    "sign_on_mode": app.get("signOnMode", ""),
+                    "created": app.get("created", ""),
+                }
+            )
     print(f"[+] Found {len(scim_apps)} SCIM-enabled apps")
     return scim_apps
 
@@ -82,28 +90,34 @@ def audit_app_assignments(org_url, token, app_id, app_label):
         sync_state = user.get("syncState", "")
 
         if status == "PROVISIONED" and sync_state == "ERROR":
-            findings.append({
-                "app": app_label,
-                "user": user.get("credentials", {}).get("userName", "unknown"),
-                "check": "Provisioning sync error",
-                "severity": "HIGH",
-                "detail": f"User sync state: ERROR (status: {status})",
-            })
+            findings.append(
+                {
+                    "app": app_label,
+                    "user": user.get("credentials", {}).get("userName", "unknown"),
+                    "check": "Provisioning sync error",
+                    "severity": "HIGH",
+                    "detail": f"User sync state: ERROR (status: {status})",
+                }
+            )
         if status == "DEPROVISIONED":
-            findings.append({
-                "app": app_label,
-                "user": user.get("credentials", {}).get("userName", "unknown"),
-                "check": "Deprovisioned user still assigned",
-                "severity": "MEDIUM",
-                "detail": "User is deprovisioned but assignment exists",
-            })
+            findings.append(
+                {
+                    "app": app_label,
+                    "user": user.get("credentials", {}).get("userName", "unknown"),
+                    "check": "Deprovisioned user still assigned",
+                    "severity": "MEDIUM",
+                    "detail": "User is deprovisioned but assignment exists",
+                }
+            )
 
-    findings.append({
-        "app": app_label,
-        "check": "Assignment summary",
-        "severity": "INFO",
-        "detail": f"Total: {len(users)}, Status: {json.dumps(status_counts)}",
-    })
+    findings.append(
+        {
+            "app": app_label,
+            "check": "Assignment summary",
+            "severity": "INFO",
+            "detail": f"Total: {len(users)}, Status: {json.dumps(status_counts)}",
+        }
+    )
     return findings, users
 
 
@@ -112,22 +126,26 @@ def audit_group_assignments(org_url, token, app_id, app_label):
     findings = []
     groups = okta_api(org_url, token, f"/apps/{app_id}/groups", params={"limit": 200})
     if not groups:
-        findings.append({
-            "app": app_label,
-            "check": "Group assignments",
-            "severity": "MEDIUM",
-            "detail": "No group assignments found (user-level only)",
-        })
+        findings.append(
+            {
+                "app": app_label,
+                "check": "Group assignments",
+                "severity": "MEDIUM",
+                "detail": "No group assignments found (user-level only)",
+            }
+        )
     else:
         for group in groups:
             group_id = group.get("id", "")
             priority = group.get("priority", 0)
-            findings.append({
-                "app": app_label,
-                "check": f"Group assignment: {group_id}",
-                "severity": "INFO",
-                "detail": f"Priority: {priority}",
-            })
+            findings.append(
+                {
+                    "app": app_label,
+                    "check": f"Group assignment: {group_id}",
+                    "severity": "INFO",
+                    "detail": f"Priority: {priority}",
+                }
+            )
     return findings
 
 
@@ -135,30 +153,38 @@ def check_deprovisioning(org_url, token):
     """Check for deactivated Okta users that still have active app assignments."""
     findings = []
     print("[*] Checking for orphaned provisioning assignments...")
-    deactivated = okta_api(org_url, token, "/users",
-                           params={"filter": 'status eq "DEPROVISIONED"', "limit": 200})
+    deactivated = okta_api(
+        org_url,
+        token,
+        "/users",
+        params={"filter": 'status eq "DEPROVISIONED"', "limit": 200},
+    )
     for user in deactivated[:50]:  # Check first 50
         user_id = user.get("id")
         login = user.get("profile", {}).get("login", "unknown")
         try:
             apps = okta_api(org_url, token, f"/users/{user_id}/appLinks")
             if apps:
-                findings.append({
-                    "check": "Orphaned app assignment",
-                    "user": login,
-                    "severity": "HIGH",
-                    "detail": f"Deactivated user has {len(apps)} active app link(s)",
-                    "apps": [a.get("appName", "") for a in apps[:5]],
-                })
+                findings.append(
+                    {
+                        "check": "Orphaned app assignment",
+                        "user": login,
+                        "severity": "HIGH",
+                        "detail": f"Deactivated user has {len(apps)} active app link(s)",
+                        "apps": [a.get("appName", "") for a in apps[:5]],
+                    }
+                )
         except requests.RequestException:
             pass
 
     if not findings:
-        findings.append({
-            "check": "Deprovisioning audit",
-            "severity": "INFO",
-            "detail": f"No orphaned assignments found ({len(deactivated)} deactivated users checked)",
-        })
+        findings.append(
+            {
+                "check": "Deprovisioning audit",
+                "severity": "INFO",
+                "detail": f"No orphaned assignments found ({len(deactivated)} deactivated users checked)",
+            }
+        )
     return findings
 
 
@@ -184,8 +210,10 @@ def format_summary(scim_apps, all_findings):
     if scim_apps:
         print(f"\n  Provisioning-Enabled Apps:")
         for app in scim_apps:
-            print(f"    {app['label']:30s} | {app['status']:10s} | "
-                  f"Features: {', '.join(app['features'][:3])}")
+            print(
+                f"    {app['label']:30s} | {app['status']:10s} | "
+                f"Features: {', '.join(app['features'][:3])}"
+            )
 
     issues = [f for f in all_findings if f["severity"] in ("CRITICAL", "HIGH")]
     if issues:
@@ -220,7 +248,9 @@ def main():
             continue
         findings, _ = audit_app_assignments(org_url, token, app["id"], app["label"])
         all_findings.extend(findings)
-        group_findings = audit_group_assignments(org_url, token, app["id"], app["label"])
+        group_findings = audit_group_assignments(
+            org_url, token, app["id"], app["label"]
+        )
         all_findings.extend(group_findings)
 
     if not args.skip_deprovisioning:
@@ -235,10 +265,13 @@ def main():
         "findings": all_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0
-            else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0 else "LOW"
+            )
         ),
     }
 

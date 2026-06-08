@@ -9,7 +9,9 @@ import sys
 from datetime import datetime
 from typing import List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 try:
@@ -186,7 +188,9 @@ def render_report(report_type: str, data: dict) -> str:
     """Render a threat intelligence report from template and data."""
     template_str = REPORT_TEMPLATES.get(report_type)
     if not template_str:
-        raise ValueError(f"Unknown report type: {report_type}. Available: {list(REPORT_TEMPLATES.keys())}")
+        raise ValueError(
+            f"Unknown report type: {report_type}. Available: {list(REPORT_TEMPLATES.keys())}"
+        )
 
     data.setdefault("date", datetime.utcnow().strftime("%Y-%m-%d"))
     data.setdefault("org", "Security Operations")
@@ -207,10 +211,17 @@ def validate_report_data(report_type: str, data: dict) -> List[str]:
         if field not in data:
             errors.append(f"Missing required field: {field}")
     if data.get("tlp") and data["tlp"] not in TLP_LEVELS:
-        errors.append(f"Invalid TLP level: {data['tlp']}. Valid: {list(TLP_LEVELS.keys())}")
+        errors.append(
+            f"Invalid TLP level: {data['tlp']}. Valid: {list(TLP_LEVELS.keys())}"
+        )
 
     type_required = {
-        "strategic": ["executive_summary", "threat_overview", "key_judgments", "recommendations"],
+        "strategic": [
+            "executive_summary",
+            "threat_overview",
+            "key_judgments",
+            "recommendations",
+        ],
         "operational": ["executive_summary", "adversary", "ttps", "recommendations"],
         "tactical": ["summary", "iocs"],
         "flash": ["what_is_happening", "immediate_risk", "immediate_actions"],
@@ -233,7 +244,9 @@ def quality_check(rendered: str) -> List[str]:
         if keyword in rendered.lower():
             unqualified += 1
     if unqualified > 0:
-        issues.append(f"Found {unqualified} statements that may need confidence qualifiers")
+        issues.append(
+            f"Found {unqualified} statements that may need confidence qualifiers"
+        )
     return issues
 
 
@@ -269,9 +282,15 @@ def generate_report(report_type: str, data_path: str, output_dir: str) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Threat Intelligence Report Generator")
-    parser.add_argument("--type", required=True, choices=list(REPORT_TEMPLATES.keys()),
-                        help="Report type: strategic, operational, tactical, flash")
-    parser.add_argument("--data", required=True, help="Path to JSON data file with report content")
+    parser.add_argument(
+        "--type",
+        required=True,
+        choices=list(REPORT_TEMPLATES.keys()),
+        help="Report type: strategic, operational, tactical, flash",
+    )
+    parser.add_argument(
+        "--data", required=True, help="Path to JSON data file with report content"
+    )
     parser.add_argument("--output-dir", default=".", help="Output directory")
     parser.add_argument("--output", default="report_meta.json")
     args = parser.parse_args()

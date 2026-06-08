@@ -10,7 +10,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 SPLUNK_BASE = os.environ.get("SPLUNK_URL", "https://localhost:8089")
@@ -22,7 +24,8 @@ def authenticate_splunk(base_url, username, password):
     resp = requests.post(
         f"{base_url}/services/auth/login",
         data={"username": username, "password": password},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     resp.raise_for_status()
@@ -43,7 +46,8 @@ def run_splunk_search(base_url, headers, query, earliest="-30d", latest="now"):
         f"{base_url}/services/search/jobs",
         headers=headers,
         data=search_body,
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     resp.raise_for_status()
@@ -54,7 +58,8 @@ def run_splunk_search(base_url, headers, query, earliest="-30d", latest="now"):
             f"{base_url}/services/search/jobs/{sid}",
             headers=headers,
             params={"output_mode": "json"},
-            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+            == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             timeout=30,
         ).json()
         if status["entry"][0]["content"]["isDone"]:
@@ -65,7 +70,8 @@ def run_splunk_search(base_url, headers, query, earliest="-30d", latest="now"):
         f"{base_url}/services/search/jobs/{sid}/results",
         headers=headers,
         params={"output_mode": "json", "count": 0},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     ).json()
     return results.get("results", [])
@@ -169,7 +175,9 @@ def main():
     parser.add_argument("--splunk-url", default=SPLUNK_BASE, help="Splunk base URL")
     parser.add_argument("--username", default="admin", help="Splunk username")
     parser.add_argument("--password", required=True, help="Splunk password")
-    parser.add_argument("--output", default="soc_metrics_report.json", help="Output JSON file")
+    parser.add_argument(
+        "--output", default="soc_metrics_report.json", help="Output JSON file"
+    )
     args = parser.parse_args()
 
     headers = authenticate_splunk(args.splunk_url, args.username, args.password)

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # For authorized penetration testing and lab environments only
 """iOS App Security Assessment Agent - Automates Frida-based iOS security testing including
-SSL pinning bypass, keychain extraction, IPA static analysis, and runtime method hooking."""
+SSL pinning bypass, keychain extraction, IPA static analysis, and runtime method hooking.
+"""
 
 import argparse
 import json
@@ -15,7 +16,9 @@ import zipfile
 from datetime import datetime
 from pathlib import Path
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 # Frida JavaScript payloads for iOS instrumentation
@@ -263,14 +266,16 @@ def analyze_ipa_static(ipa_path, output_dir):
         # Check App Transport Security configuration
         ats = plist_data.get("NSAppTransportSecurity", {})
         if ats.get("NSAllowsArbitraryLoads", False):
-            findings.append({
-                "id": "IOS-STATIC-001",
-                "severity": "Medium",
-                "title": "App Transport Security Disabled",
-                "detail": "NSAllowsArbitraryLoads is set to true, allowing cleartext HTTP traffic",
-                "masvs": "MASVS-NETWORK",
-                "mastg": "MASTG-TEST-0066",
-            })
+            findings.append(
+                {
+                    "id": "IOS-STATIC-001",
+                    "severity": "Medium",
+                    "title": "App Transport Security Disabled",
+                    "detail": "NSAllowsArbitraryLoads is set to true, allowing cleartext HTTP traffic",
+                    "masvs": "MASVS-NETWORK",
+                    "mastg": "MASTG-TEST-0066",
+                }
+            )
 
         # Check URL schemes for deep link hijacking potential
         url_types = plist_data.get("CFBundleURLTypes", [])
@@ -279,31 +284,37 @@ def analyze_ipa_static(ipa_path, output_dir):
             schemes = url_type.get("CFBundleURLSchemes", [])
             custom_schemes.extend(schemes)
         if custom_schemes:
-            findings.append({
-                "id": "IOS-STATIC-002",
-                "severity": "Informational",
-                "title": "Custom URL Schemes Registered",
-                "detail": f"App registers URL schemes: {', '.join(custom_schemes)}. "
-                          "Test for deep link hijacking and parameter injection.",
-                "masvs": "MASVS-PLATFORM",
-                "mastg": "MASTG-TEST-0075",
-            })
+            findings.append(
+                {
+                    "id": "IOS-STATIC-002",
+                    "severity": "Informational",
+                    "title": "Custom URL Schemes Registered",
+                    "detail": f"App registers URL schemes: {', '.join(custom_schemes)}. "
+                    "Test for deep link hijacking and parameter injection.",
+                    "masvs": "MASVS-PLATFORM",
+                    "mastg": "MASTG-TEST-0075",
+                }
+            )
 
         # Check for background modes that could leak data
         bg_modes = plist_data.get("UIBackgroundModes", [])
         if bg_modes:
-            findings.append({
-                "id": "IOS-STATIC-003",
-                "severity": "Informational",
-                "title": "Background Execution Modes Enabled",
-                "detail": f"Background modes: {', '.join(bg_modes)}. "
-                          "Verify sensitive operations are not exposed in background.",
-                "masvs": "MASVS-STORAGE",
-                "mastg": "MASTG-TEST-0058",
-            })
+            findings.append(
+                {
+                    "id": "IOS-STATIC-003",
+                    "severity": "Informational",
+                    "title": "Background Execution Modes Enabled",
+                    "detail": f"Background modes: {', '.join(bg_modes)}. "
+                    "Verify sensitive operations are not exposed in background.",
+                    "masvs": "MASVS-STORAGE",
+                    "mastg": "MASTG-TEST-0058",
+                }
+            )
 
     # Scan binary strings for hardcoded secrets
-    executable_name = plist_data.get("CFBundleExecutable", app_dirs[0].replace(".app", ""))
+    executable_name = plist_data.get(
+        "CFBundleExecutable", app_dirs[0].replace(".app", "")
+    )
     executable_path = os.path.join(app_path, executable_name)
 
     if os.path.exists(executable_path):
@@ -311,16 +322,18 @@ def analyze_ipa_static(ipa_path, output_dir):
             (r'(?i)api[_-]?key\s*[:=]\s*["\'][A-Za-z0-9_\-]{16,}', "Hardcoded API Key"),
             (r'(?i)secret\s*[:=]\s*["\'][A-Za-z0-9_\-]{8,}', "Hardcoded Secret"),
             (r'(?i)password\s*[:=]\s*["\'][^"\']{4,}', "Hardcoded Password"),
-            (r'https?://[a-zA-Z0-9._\-]+\.firebaseio\.com', "Firebase URL"),
-            (r'AIza[0-9A-Za-z_\-]{35}', "Google API Key"),
-            (r'AKIA[0-9A-Z]{16}', "AWS Access Key ID"),
-            (r'-----BEGIN (?:RSA )?PRIVATE KEY-----', "Embedded Private Key"),
+            (r"https?://[a-zA-Z0-9._\-]+\.firebaseio\.com", "Firebase URL"),
+            (r"AIza[0-9A-Za-z_\-]{35}", "Google API Key"),
+            (r"AKIA[0-9A-Z]{16}", "AWS Access Key ID"),
+            (r"-----BEGIN (?:RSA )?PRIVATE KEY-----", "Embedded Private Key"),
         ]
 
         try:
             result = subprocess.run(
                 ["strings", executable_path],
-                capture_output=True, text=True, timeout=60,
+                capture_output=True,
+                text=True,
+                timeout=60,
             )
             binary_strings = result.stdout
         except (subprocess.SubprocessError, FileNotFoundError):
@@ -335,15 +348,17 @@ def analyze_ipa_static(ipa_path, output_dir):
         for pattern, label in secret_patterns:
             matches = re.findall(pattern, binary_strings)
             if matches:
-                findings.append({
-                    "id": "IOS-STATIC-004",
-                    "severity": "High",
-                    "title": f"{label} Found in Binary",
-                    "detail": f"Pattern match for {label}: {len(matches)} occurrence(s) found. "
-                              f"Sample: {matches[0][:60]}...",
-                    "masvs": "MASVS-STORAGE",
-                    "mastg": "MASTG-TEST-0058",
-                })
+                findings.append(
+                    {
+                        "id": "IOS-STATIC-004",
+                        "severity": "High",
+                        "title": f"{label} Found in Binary",
+                        "detail": f"Pattern match for {label}: {len(matches)} occurrence(s) found. "
+                        f"Sample: {matches[0][:60]}...",
+                        "masvs": "MASVS-STORAGE",
+                        "mastg": "MASTG-TEST-0058",
+                    }
+                )
 
     # Check for embedded provisioning profile
     provision_path = os.path.join(app_path, "embedded.mobileprovision")
@@ -351,18 +366,22 @@ def analyze_ipa_static(ipa_path, output_dir):
         try:
             result = subprocess.run(
                 ["security", "cms", "-D", "-i", provision_path],
-                capture_output=True, text=True, timeout=30,
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
             if "get-task-allow" in result.stdout and "<true/>" in result.stdout:
-                findings.append({
-                    "id": "IOS-STATIC-005",
-                    "severity": "Medium",
-                    "title": "Debug Entitlement Enabled (get-task-allow)",
-                    "detail": "The provisioning profile has get-task-allow=true, "
-                              "indicating a development/debug build that allows attaching debuggers.",
-                    "masvs": "MASVS-RESILIENCE",
-                    "mastg": "MASTG-TEST-0083",
-                })
+                findings.append(
+                    {
+                        "id": "IOS-STATIC-005",
+                        "severity": "Medium",
+                        "title": "Debug Entitlement Enabled (get-task-allow)",
+                        "detail": "The provisioning profile has get-task-allow=true, "
+                        "indicating a development/debug build that allows attaching debuggers.",
+                        "masvs": "MASVS-RESILIENCE",
+                        "mastg": "MASTG-TEST-0083",
+                    }
+                )
         except (subprocess.SubprocessError, FileNotFoundError):
             pass
 
@@ -371,15 +390,17 @@ def analyze_ipa_static(ipa_path, output_dir):
     if os.path.isdir(frameworks_dir):
         frameworks = [f for f in os.listdir(frameworks_dir) if f.endswith(".framework")]
         if frameworks:
-            findings.append({
-                "id": "IOS-STATIC-006",
-                "severity": "Informational",
-                "title": "Embedded Frameworks Inventory",
-                "detail": f"App embeds {len(frameworks)} frameworks: {', '.join(frameworks[:10])}. "
-                          "Review for known vulnerable versions.",
-                "masvs": "MASVS-RESILIENCE",
-                "mastg": "MASTG-TEST-0083",
-            })
+            findings.append(
+                {
+                    "id": "IOS-STATIC-006",
+                    "severity": "Informational",
+                    "title": "Embedded Frameworks Inventory",
+                    "detail": f"App embeds {len(frameworks)} frameworks: {', '.join(frameworks[:10])}. "
+                    "Review for known vulnerable versions.",
+                    "masvs": "MASVS-RESILIENCE",
+                    "mastg": "MASTG-TEST-0083",
+                }
+            )
 
     logger.info("Static analysis complete: %d findings", len(findings))
     return findings
@@ -430,6 +451,7 @@ def run_frida_script(target_bundle, script_source, device_type="usb", timeout_se
         script.load()
 
         import time
+
         time.sleep(timeout_sec)
 
         script.unload()
@@ -447,10 +469,16 @@ def run_objection_command(bundle_id, command):
     try:
         result = subprocess.run(
             ["objection", "--gadget", bundle_id, "run", command],
-            capture_output=True, text=True, timeout=60,
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
-        return {"command": command, "stdout": result.stdout, "stderr": result.stderr,
-                "returncode": result.returncode}
+        return {
+            "command": command,
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "returncode": result.returncode,
+        }
     except FileNotFoundError:
         logger.error("Objection not found: pip install objection")
         return {"command": command, "error": "objection not installed"}
@@ -483,30 +511,36 @@ def assess_keychain_security(bundle_id):
     for item in items:
         accessible = item.get("accessible", "")
         if any(a in accessible for a in insecure_accessibility):
-            findings.append({
-                "id": "IOS-KEYCHAIN-001",
-                "severity": "High",
-                "title": "Insecure Keychain Accessibility Attribute",
-                "detail": f"Keychain item '{item.get('service', 'unknown')}' uses "
-                          f"accessibility '{accessible}'. Data may be accessible "
-                          "without device unlock.",
-                "masvs": "MASVS-STORAGE",
-                "mastg": "MASTG-TEST-0055",
-            })
+            findings.append(
+                {
+                    "id": "IOS-KEYCHAIN-001",
+                    "severity": "High",
+                    "title": "Insecure Keychain Accessibility Attribute",
+                    "detail": f"Keychain item '{item.get('service', 'unknown')}' uses "
+                    f"accessibility '{accessible}'. Data may be accessible "
+                    "without device unlock.",
+                    "masvs": "MASVS-STORAGE",
+                    "mastg": "MASTG-TEST-0055",
+                }
+            )
 
         # Check for unprotected password items
         if item.get("class") == "genp" and not item.get("accessControl"):
-            findings.append({
-                "id": "IOS-KEYCHAIN-002",
-                "severity": "Medium",
-                "title": "Keychain Password Without Access Control",
-                "detail": f"Generic password '{item.get('service', 'unknown')}' lacks "
-                          "biometric or passcode access control constraints.",
-                "masvs": "MASVS-STORAGE",
-                "mastg": "MASTG-TEST-0055",
-            })
+            findings.append(
+                {
+                    "id": "IOS-KEYCHAIN-002",
+                    "severity": "Medium",
+                    "title": "Keychain Password Without Access Control",
+                    "detail": f"Generic password '{item.get('service', 'unknown')}' lacks "
+                    "biometric or passcode access control constraints.",
+                    "masvs": "MASVS-STORAGE",
+                    "mastg": "MASTG-TEST-0055",
+                }
+            )
 
-    logger.info("Keychain analysis: %d findings from %d items", len(findings), len(items))
+    logger.info(
+        "Keychain analysis: %d findings from %d items", len(findings), len(items)
+    )
     return findings
 
 
@@ -541,26 +575,43 @@ def main():
     parser = argparse.ArgumentParser(
         description="iOS App Security Assessment Agent - Frida/Objection-based testing"
     )
-    parser.add_argument("--bundle-id", help="Target app bundle identifier (e.g., com.target.app)")
+    parser.add_argument(
+        "--bundle-id", help="Target app bundle identifier (e.g., com.target.app)"
+    )
     parser.add_argument("--ipa", help="Path to IPA file for static analysis")
-    parser.add_argument("--device", choices=["usb", "remote", "local"], default="usb",
-                        help="Frida device type (default: usb)")
-    parser.add_argument("--ssl-bypass", action="store_true",
-                        help="Run SSL pinning bypass script")
-    parser.add_argument("--keychain", action="store_true",
-                        help="Dump and analyze keychain security")
-    parser.add_argument("--jailbreak-bypass", action="store_true",
-                        help="Run jailbreak detection bypass")
-    parser.add_argument("--frida-timeout", type=int, default=30,
-                        help="Frida script execution timeout in seconds")
-    parser.add_argument("--output", default="ios_assessment_report.json",
-                        help="Output report file path")
-    parser.add_argument("--output-dir", default=".",
-                        help="Directory for extracted IPA and artifacts")
+    parser.add_argument(
+        "--device",
+        choices=["usb", "remote", "local"],
+        default="usb",
+        help="Frida device type (default: usb)",
+    )
+    parser.add_argument(
+        "--ssl-bypass", action="store_true", help="Run SSL pinning bypass script"
+    )
+    parser.add_argument(
+        "--keychain", action="store_true", help="Dump and analyze keychain security"
+    )
+    parser.add_argument(
+        "--jailbreak-bypass", action="store_true", help="Run jailbreak detection bypass"
+    )
+    parser.add_argument(
+        "--frida-timeout",
+        type=int,
+        default=30,
+        help="Frida script execution timeout in seconds",
+    )
+    parser.add_argument(
+        "--output", default="ios_assessment_report.json", help="Output report file path"
+    )
+    parser.add_argument(
+        "--output-dir", default=".", help="Directory for extracted IPA and artifacts"
+    )
     args = parser.parse_args()
 
     if not args.bundle_id and not args.ipa:
-        parser.error("Provide --bundle-id for dynamic testing or --ipa for static analysis")
+        parser.error(
+            "Provide --bundle-id for dynamic testing or --ipa for static analysis"
+        )
 
     findings = []
 
@@ -573,34 +624,46 @@ def main():
     if args.bundle_id:
         if args.ssl_bypass:
             logger.info("=== SSL Pinning Bypass ===")
-            msgs = run_frida_script(args.bundle_id, SSL_PINNING_BYPASS_SCRIPT,
-                                    args.device, args.frida_timeout)
+            msgs = run_frida_script(
+                args.bundle_id,
+                SSL_PINNING_BYPASS_SCRIPT,
+                args.device,
+                args.frida_timeout,
+            )
             if any("success" in str(m).lower() for m in msgs):
-                findings.append({
-                    "id": "IOS-NET-001",
-                    "severity": "Informational",
-                    "title": "SSL Pinning Successfully Bypassed",
-                    "detail": "Certificate pinning was bypassed using Frida hooks on "
-                              "SecTrustEvaluate, SecTrustEvaluateWithError, and framework-specific "
-                              "trust evaluation methods. Traffic can be intercepted via proxy.",
-                    "masvs": "MASVS-NETWORK",
-                    "mastg": "MASTG-TEST-0068",
-                })
+                findings.append(
+                    {
+                        "id": "IOS-NET-001",
+                        "severity": "Informational",
+                        "title": "SSL Pinning Successfully Bypassed",
+                        "detail": "Certificate pinning was bypassed using Frida hooks on "
+                        "SecTrustEvaluate, SecTrustEvaluateWithError, and framework-specific "
+                        "trust evaluation methods. Traffic can be intercepted via proxy.",
+                        "masvs": "MASVS-NETWORK",
+                        "mastg": "MASTG-TEST-0068",
+                    }
+                )
 
         if args.jailbreak_bypass:
             logger.info("=== Jailbreak Detection Bypass ===")
-            msgs = run_frida_script(args.bundle_id, JAILBREAK_DETECTION_BYPASS_SCRIPT,
-                                    args.device, args.frida_timeout)
+            msgs = run_frida_script(
+                args.bundle_id,
+                JAILBREAK_DETECTION_BYPASS_SCRIPT,
+                args.device,
+                args.frida_timeout,
+            )
             if any("bypass" in str(m).lower() for m in msgs):
-                findings.append({
-                    "id": "IOS-RES-001",
-                    "severity": "Medium",
-                    "title": "Jailbreak Detection Bypassed at Runtime",
-                    "detail": "Jailbreak detection checks (file existence, URL scheme, fork) "
-                              "were all bypassed using Frida method hooks.",
-                    "masvs": "MASVS-RESILIENCE",
-                    "mastg": "MASTG-TEST-0079",
-                })
+                findings.append(
+                    {
+                        "id": "IOS-RES-001",
+                        "severity": "Medium",
+                        "title": "Jailbreak Detection Bypassed at Runtime",
+                        "detail": "Jailbreak detection checks (file existence, URL scheme, fork) "
+                        "were all bypassed using Frida method hooks.",
+                        "masvs": "MASVS-RESILIENCE",
+                        "mastg": "MASTG-TEST-0079",
+                    }
+                )
 
         if args.keychain:
             logger.info("=== Keychain Security Analysis ===")

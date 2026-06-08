@@ -25,9 +25,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1110",
         "tactic": "credential-access",
         "data_sources": ["Windows Security 4625", "Linux auth.log", "VPN logs"],
-        "splunk_query": ('index=wineventlog EventCode=4625 '
-                         '| stats count by src_ip, TargetUserName '
-                         '| where count > 10'),
+        "splunk_query": (
+            "index=wineventlog EventCode=4625 "
+            "| stats count by src_ip, TargetUserName "
+            "| where count > 10"
+        ),
         "threshold": 10,
         "severity": "high",
         "sla_response": "15 minutes",
@@ -37,9 +39,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1021.002",
         "tactic": "lateral-movement",
         "data_sources": ["Windows Security 7045", "Sysmon EventID 1"],
-        "splunk_query": ('index=wineventlog EventCode=7045 '
-                         'ServiceFileName="*PSEXESVC*" '
-                         '| stats count by ComputerName, ServiceName'),
+        "splunk_query": (
+            "index=wineventlog EventCode=7045 "
+            'ServiceFileName="*PSEXESVC*" '
+            "| stats count by ComputerName, ServiceName"
+        ),
         "threshold": 1,
         "severity": "critical",
         "sla_response": "5 minutes",
@@ -49,9 +53,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1059.001",
         "tactic": "execution",
         "data_sources": ["Sysmon EventID 1", "PowerShell 4104"],
-        "splunk_query": ('index=sysmon EventCode=1 Image="*powershell.exe" '
-                         '(CommandLine="*-enc*" OR CommandLine="*invoke-expression*" '
-                         'OR CommandLine="*downloadstring*")'),
+        "splunk_query": (
+            'index=sysmon EventCode=1 Image="*powershell.exe" '
+            '(CommandLine="*-enc*" OR CommandLine="*invoke-expression*" '
+            'OR CommandLine="*downloadstring*")'
+        ),
         "threshold": 1,
         "severity": "high",
         "sla_response": "10 minutes",
@@ -61,9 +67,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1048.003",
         "tactic": "exfiltration",
         "data_sources": ["DNS query logs", "Zeek dns.log"],
-        "splunk_query": ('index=dns query_length>50 '
-                         '| stats count dc(query) as unique_queries by src_ip '
-                         '| where unique_queries > 100'),
+        "splunk_query": (
+            "index=dns query_length>50 "
+            "| stats count dc(query) as unique_queries by src_ip "
+            "| where unique_queries > 100"
+        ),
         "threshold": 100,
         "severity": "high",
         "sla_response": "15 minutes",
@@ -73,9 +81,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1098",
         "tactic": "persistence",
         "data_sources": ["Windows Security 4728", "Windows Security 4732"],
-        "splunk_query": ('index=wineventlog (EventCode=4728 OR EventCode=4732) '
-                         'TargetGroup="Administrators" '
-                         '| stats count by SubjectUserName, MemberName, TargetGroup'),
+        "splunk_query": (
+            "index=wineventlog (EventCode=4728 OR EventCode=4732) "
+            'TargetGroup="Administrators" '
+            "| stats count by SubjectUserName, MemberName, TargetGroup"
+        ),
         "threshold": 1,
         "severity": "critical",
         "sla_response": "5 minutes",
@@ -85,9 +95,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1003.001",
         "tactic": "credential-access",
         "data_sources": ["Sysmon EventID 10"],
-        "splunk_query": ('index=sysmon EventCode=10 TargetImage="*lsass.exe" '
-                         'NOT SourceImage IN ("*\\csrss.exe","*\\services.exe") '
-                         '| stats count by SourceImage, SourceUser'),
+        "splunk_query": (
+            'index=sysmon EventCode=10 TargetImage="*lsass.exe" '
+            'NOT SourceImage IN ("*\\csrss.exe","*\\services.exe") '
+            "| stats count by SourceImage, SourceUser"
+        ),
         "threshold": 1,
         "severity": "critical",
         "sla_response": "5 minutes",
@@ -97,9 +109,11 @@ USE_CASE_TEMPLATES = {
         "technique": "T1486",
         "tactic": "impact",
         "data_sources": ["Sysmon EventID 11", "Windows Security 4663"],
-        "splunk_query": ('index=sysmon EventCode=11 '
-                         '| stats dc(TargetFilename) as file_count by Image '
-                         '| where file_count > 100'),
+        "splunk_query": (
+            "index=sysmon EventCode=11 "
+            "| stats dc(TargetFilename) as file_count by Image "
+            "| where file_count > 100"
+        ),
         "threshold": 100,
         "severity": "critical",
         "sla_response": "immediate",
@@ -111,13 +125,21 @@ def get_attack_coverage(techniques_covered):
     """Calculate ATT&CK coverage percentage."""
     client = attack_client()
     all_techniques = client.get_techniques()
-    enterprise = [t for t in all_techniques
-                  if any("enterprise-attack" in ref.get("url", "")
-                         for ref in t.get("external_references", []))]
+    enterprise = [
+        t
+        for t in all_techniques
+        if any(
+            "enterprise-attack" in ref.get("url", "")
+            for ref in t.get("external_references", [])
+        )
+    ]
     total = len(enterprise)
     covered = len(set(techniques_covered))
-    return {"total_techniques": total, "covered": covered,
-            "coverage_pct": round(covered / max(total, 1) * 100, 1)}
+    return {
+        "total_techniques": total,
+        "covered": covered,
+        "coverage_pct": round(covered / max(total, 1) * 100, 1),
+    }
 
 
 def map_use_cases_to_attack():
@@ -127,8 +149,11 @@ def map_use_cases_to_attack():
     for uc_id, uc in USE_CASE_TEMPLATES.items():
         tactic_coverage[uc["tactic"]] += 1
         technique_list.append(uc["technique"])
-    return {"tactics": dict(tactic_coverage), "techniques": technique_list,
-            "total_use_cases": len(USE_CASE_TEMPLATES)}
+    return {
+        "tactics": dict(tactic_coverage),
+        "techniques": technique_list,
+        "total_use_cases": len(USE_CASE_TEMPLATES),
+    }
 
 
 def validate_use_case_data_sources(use_case_id):
@@ -153,7 +178,9 @@ def generate_sigma_rule(use_case_id):
         "id": f"sigma-{use_case_id}",
         "status": "experimental",
         "description": f"Detects {uc['name']} mapped to ATT&CK {uc['technique']}",
-        "references": [f"https://attack.mitre.org/techniques/{uc['technique'].replace('.', '/')}/"],
+        "references": [
+            f"https://attack.mitre.org/techniques/{uc['technique'].replace('.', '/')}/"
+        ],
         "tags": [f"attack.{uc['tactic']}", f"attack.{uc['technique'].lower()}"],
         "logsource": {"product": "windows", "service": "security"},
         "detection": {"condition": "selection"},
@@ -173,7 +200,9 @@ def run_detection_coverage_report():
     print(f"--- USE CASE LIBRARY ({mapping['total_use_cases']} rules) ---")
     for uc_id, uc in USE_CASE_TEMPLATES.items():
         print(f"  [{uc['severity'].upper():>8}] {uc['name']}")
-        print(f"           ATT&CK: {uc['technique']} ({uc['tactic']}) | SLA: {uc['sla_response']}")
+        print(
+            f"           ATT&CK: {uc['technique']} ({uc['tactic']}) | SLA: {uc['sla_response']}"
+        )
 
     print(f"\n--- TACTIC COVERAGE ---")
     for tactic, count in sorted(mapping["tactics"].items(), key=lambda x: -x[1]):
@@ -202,7 +231,9 @@ def run_detection_coverage_report():
 
 def main():
     parser = argparse.ArgumentParser(description="SIEM Use Case Detection Agent")
-    parser.add_argument("--report", action="store_true", help="Generate detection coverage report")
+    parser.add_argument(
+        "--report", action="store_true", help="Generate detection coverage report"
+    )
     parser.add_argument("--sigma", help="Generate Sigma rule for use case ID")
     parser.add_argument("--validate", help="Validate data sources for use case ID")
     parser.add_argument("--output", help="Save report to JSON")
@@ -215,7 +246,9 @@ def main():
                 json.dump(report, f, indent=2, default=str)
     elif args.sigma:
         rule = generate_sigma_rule(args.sigma)
-        print(json.dumps(rule, indent=2) if rule else f"Use case '{args.sigma}' not found")
+        print(
+            json.dumps(rule, indent=2) if rule else f"Use case '{args.sigma}' not found"
+        )
     elif args.validate:
         result = validate_use_case_data_sources(args.validate)
         print(json.dumps(result, indent=2))

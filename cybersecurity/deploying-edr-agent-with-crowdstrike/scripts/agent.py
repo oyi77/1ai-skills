@@ -28,15 +28,17 @@ def list_hosts(client_id, client_secret, filter_query=None):
     detail_resp = hosts.get_device_details(ids=device_ids)
     results = []
     for device in detail_resp["body"].get("resources", []):
-        results.append({
-            "hostname": device.get("hostname", ""),
-            "device_id": device.get("device_id", ""),
-            "platform": device.get("platform_name", ""),
-            "os_version": device.get("os_version", ""),
-            "sensor_version": device.get("agent_version", ""),
-            "status": device.get("status", ""),
-            "last_seen": device.get("last_seen", ""),
-        })
+        results.append(
+            {
+                "hostname": device.get("hostname", ""),
+                "device_id": device.get("device_id", ""),
+                "platform": device.get("platform_name", ""),
+                "os_version": device.get("os_version", ""),
+                "sensor_version": device.get("agent_version", ""),
+                "status": device.get("status", ""),
+                "last_seen": device.get("last_seen", ""),
+            }
+        )
     return results
 
 
@@ -55,15 +57,25 @@ def get_detections(client_id, client_secret, severity=None):
     detail_resp = detections.get_detect_summaries(body={"ids": detect_ids})
     results = []
     for det in detail_resp["body"].get("resources", []):
-        results.append({
-            "detection_id": det.get("detection_id", ""),
-            "hostname": det.get("device", {}).get("hostname", ""),
-            "severity": det.get("max_severity_displayname", ""),
-            "tactic": det.get("behaviors", [{}])[0].get("tactic", "") if det.get("behaviors") else "",
-            "technique": det.get("behaviors", [{}])[0].get("technique", "") if det.get("behaviors") else "",
-            "status": det.get("status", ""),
-            "timestamp": det.get("last_behavior", ""),
-        })
+        results.append(
+            {
+                "detection_id": det.get("detection_id", ""),
+                "hostname": det.get("device", {}).get("hostname", ""),
+                "severity": det.get("max_severity_displayname", ""),
+                "tactic": (
+                    det.get("behaviors", [{}])[0].get("tactic", "")
+                    if det.get("behaviors")
+                    else ""
+                ),
+                "technique": (
+                    det.get("behaviors", [{}])[0].get("technique", "")
+                    if det.get("behaviors")
+                    else ""
+                ),
+                "status": det.get("status", ""),
+                "timestamp": det.get("last_behavior", ""),
+            }
+        )
     return results
 
 
@@ -86,7 +98,9 @@ def run_audit(client_id, client_secret):
     hosts_data = list_hosts(client_id, client_secret)
     print(f"--- MANAGED HOSTS ({len(hosts_data)}) ---")
     for h in hosts_data[:10]:
-        print(f"  {h['hostname']}: {h['platform']} v{h['sensor_version']} ({h['status']})")
+        print(
+            f"  {h['hostname']}: {h['platform']} v{h['sensor_version']} ({h['status']})"
+        )
 
     versions = check_sensor_versions(hosts_data)
     print(f"\n--- SENSOR VERSIONS ---")
@@ -104,7 +118,9 @@ def run_audit(client_id, client_secret):
 def main():
     parser = argparse.ArgumentParser(description="CrowdStrike EDR Agent")
     parser.add_argument("--client-id", required=True, help="CrowdStrike API client ID")
-    parser.add_argument("--client-secret", required=True, help="CrowdStrike API client secret")
+    parser.add_argument(
+        "--client-secret", required=True, help="CrowdStrike API client secret"
+    )
     parser.add_argument("--audit", action="store_true", help="Run full audit")
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()

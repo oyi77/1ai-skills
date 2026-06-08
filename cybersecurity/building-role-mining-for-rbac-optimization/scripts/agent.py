@@ -8,7 +8,9 @@ import csv
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -18,8 +20,13 @@ def load_entitlements(csv_path):
     with open(csv_path, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            assignments.append({"user": row.get("user", "").strip(), "entitlement": row.get("entitlement", "").strip(),
-                                "system": row.get("system", "").strip()})
+            assignments.append(
+                {
+                    "user": row.get("user", "").strip(),
+                    "entitlement": row.get("entitlement", "").strip(),
+                    "system": row.get("system", "").strip(),
+                }
+            )
     logger.info("Loaded %d user-entitlement assignments", len(assignments))
     return assignments
 
@@ -44,14 +51,18 @@ def mine_roles_bottom_up(user_matrix, min_users=2):
     for perm_set, users in perm_set_users.items():
         if len(users) >= min_users:
             role_id += 1
-            candidate_roles.append({
-                "role_id": f"ROLE-{role_id:03d}",
-                "permissions": list(perm_set),
-                "assigned_users": users,
-                "user_count": len(users),
-            })
+            candidate_roles.append(
+                {
+                    "role_id": f"ROLE-{role_id:03d}",
+                    "permissions": list(perm_set),
+                    "assigned_users": users,
+                    "user_count": len(users),
+                }
+            )
     candidate_roles.sort(key=lambda r: r["user_count"], reverse=True)
-    logger.info("Mined %d candidate roles (min_users=%d)", len(candidate_roles), min_users)
+    logger.info(
+        "Mined %d candidate roles (min_users=%d)", len(candidate_roles), min_users
+    )
     return candidate_roles
 
 
@@ -81,9 +92,16 @@ def mine_roles_top_down(user_matrix, similarity_threshold=0.8):
             common_perms = set(user_matrix[cluster[0]])
             for u in cluster[1:]:
                 common_perms &= set(user_matrix[u])
-            clusters.append({"users": cluster, "common_permissions": sorted(common_perms),
-                             "user_count": len(cluster)})
-    logger.info("Found %d user clusters (threshold=%.2f)", len(clusters), similarity_threshold)
+            clusters.append(
+                {
+                    "users": cluster,
+                    "common_permissions": sorted(common_perms),
+                    "user_count": len(cluster),
+                }
+            )
+    logger.info(
+        "Found %d user clusters (threshold=%.2f)", len(clusters), similarity_threshold
+    )
     return clusters
 
 
@@ -96,8 +114,14 @@ def detect_outliers(user_matrix, candidate_roles):
     for user, perms in user_matrix.items():
         uncovered = set(perms) - role_perms
         if uncovered:
-            outliers.append({"user": user, "uncovered_permissions": sorted(uncovered),
-                             "total_permissions": len(perms), "uncovered_count": len(uncovered)})
+            outliers.append(
+                {
+                    "user": user,
+                    "uncovered_permissions": sorted(uncovered),
+                    "total_permissions": len(perms),
+                    "uncovered_count": len(uncovered),
+                }
+            )
     outliers.sort(key=lambda o: o["uncovered_count"], reverse=True)
     logger.info("Found %d users with uncovered permissions", len(outliers))
     return outliers
@@ -117,8 +141,12 @@ def calculate_optimization_metrics(user_matrix, candidate_roles):
         "total_assignments": total_assignments,
         "candidate_roles": len(candidate_roles),
         "role_coverage_users": role_assignments,
-        "avg_permissions_per_user": round(total_assignments / total_users, 1) if total_users else 0,
-        "avg_users_per_role": round(role_assignments / len(candidate_roles), 1) if candidate_roles else 0,
+        "avg_permissions_per_user": (
+            round(total_assignments / total_users, 1) if total_users else 0
+        ),
+        "avg_users_per_role": (
+            round(role_assignments / len(candidate_roles), 1) if candidate_roles else 0
+        ),
     }
 
 
@@ -131,16 +159,24 @@ def generate_report(candidate_roles, clusters, outliers, metrics):
         "user_clusters": clusters[:20],
         "permission_outliers": outliers[:20],
     }
-    print(f"RBAC REPORT: {metrics['total_users']} users, {metrics['candidate_roles']} candidate roles, "
-          f"{len(outliers)} outliers")
+    print(
+        f"RBAC REPORT: {metrics['total_users']} users, {metrics['candidate_roles']} candidate roles, "
+        f"{len(outliers)} outliers"
+    )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="Role Mining for RBAC Optimization")
-    parser.add_argument("--input", required=True, help="CSV file with user,entitlement,system columns")
-    parser.add_argument("--min-users", type=int, default=2, help="Minimum users for role candidate")
-    parser.add_argument("--similarity", type=float, default=0.8, help="Jaccard similarity threshold")
+    parser.add_argument(
+        "--input", required=True, help="CSV file with user,entitlement,system columns"
+    )
+    parser.add_argument(
+        "--min-users", type=int, default=2, help="Minimum users for role candidate"
+    )
+    parser.add_argument(
+        "--similarity", type=float, default=0.8, help="Jaccard similarity threshold"
+    )
     parser.add_argument("--output", default="rbac_mining_report.json")
     args = parser.parse_args()
 

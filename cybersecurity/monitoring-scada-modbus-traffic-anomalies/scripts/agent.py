@@ -13,7 +13,9 @@ from pathlib import Path
 
 import numpy as np
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 MODBUS_PORT = 502
@@ -88,7 +90,7 @@ def parse_modbus_pdu(data):
             for i in range(result["quantity"]):
                 offset = 6 + i * 2
                 if offset + 2 <= len(pdu):
-                    values.append(struct.unpack(">H", pdu[offset:offset + 2])[0])
+                    values.append(struct.unpack(">H", pdu[offset : offset + 2])[0])
             result["values"] = values
         elif fc == 15 and len(pdu) >= 6:
             result["start_address"] = struct.unpack(">H", pdu[1:3])[0]
@@ -106,7 +108,9 @@ class ModbusBaseline:
         self.register_values = defaultdict(list)
         self.total_packets = defaultdict(int)
 
-    def record(self, src_ip, dst_ip, function_code, timestamp, registers=None, values=None):
+    def record(
+        self, src_ip, dst_ip, function_code, timestamp, registers=None, values=None
+    ):
         pair_key = (src_ip, dst_ip)
         self.function_code_counts[pair_key][function_code] += 1
         self.total_packets[pair_key] += 1
@@ -150,12 +154,10 @@ class ModbusBaseline:
     def save(self, filepath):
         data = {
             "fc_counts": {
-                f"{k[0]}->{k[1]}": dict(v)
-                for k, v in self.function_code_counts.items()
+                f"{k[0]}->{k[1]}": dict(v) for k, v in self.function_code_counts.items()
             },
             "register_ranges": {
-                f"{k[0]}->{k[1]}": sorted(v)
-                for k, v in self.register_ranges.items()
+                f"{k[0]}->{k[1]}": sorted(v) for k, v in self.register_ranges.items()
             },
             "total_packets": {
                 f"{k[0]}->{k[1]}": v for k, v in self.total_packets.items()
@@ -193,8 +195,13 @@ class ModbusBaseline:
 class ModbusAnomalyDetector:
     """Detects anomalies in Modbus TCP traffic based on baseline profiles."""
 
-    def __init__(self, authorized_masters=None, authorized_writers=None,
-                 register_limits=None, baseline=None):
+    def __init__(
+        self,
+        authorized_masters=None,
+        authorized_writers=None,
+        register_limits=None,
+        baseline=None,
+    ):
         self.authorized_masters = set(authorized_masters or [])
         self.authorized_writers = set(authorized_writers or [])
         self.register_limits = register_limits or {}
@@ -217,14 +224,16 @@ class ModbusAnomalyDetector:
 
         mbap = parse_mbap_header(raw_payload)
         if not mbap:
-            packet_alerts.append({
-                "alert": "MALFORMED_MBAP_HEADER",
-                "severity": "MEDIUM",
-                "timestamp": timestamp,
-                "src_ip": src_ip,
-                "dst_ip": dst_ip,
-                "description": "Modbus frame with invalid MBAP header",
-            })
+            packet_alerts.append(
+                {
+                    "alert": "MALFORMED_MBAP_HEADER",
+                    "severity": "MEDIUM",
+                    "timestamp": timestamp,
+                    "src_ip": src_ip,
+                    "dst_ip": dst_ip,
+                    "description": "Modbus frame with invalid MBAP header",
+                }
+            )
             return packet_alerts
 
         pdu = parse_modbus_pdu(raw_payload)
@@ -277,13 +286,16 @@ class ModbusAnomalyDetector:
                 "src_ip": src_ip,
                 "target_slave": dst_ip,
                 "description": f"Unauthorized device {src_ip} initiating Modbus connection "
-                               f"to slave {dst_ip}",
+                f"to slave {dst_ip}",
             }
         return None
 
     def _check_unauthorized_write(self, src_ip, function_code, dst_ip, timestamp):
-        if function_code in WRITE_FUNCTION_CODES and self.authorized_writers and \
-                src_ip not in self.authorized_writers:
+        if (
+            function_code in WRITE_FUNCTION_CODES
+            and self.authorized_writers
+            and src_ip not in self.authorized_writers
+        ):
             return {
                 "alert": "UNAUTHORIZED_MODBUS_WRITE",
                 "severity": "CRITICAL",
@@ -293,8 +305,8 @@ class ModbusAnomalyDetector:
                 "function_code": function_code,
                 "function_name": FUNCTION_CODE_NAMES.get(function_code, "Unknown"),
                 "description": f"Write FC {function_code} "
-                               f"({FUNCTION_CODE_NAMES.get(function_code, 'Unknown')}) "
-                               f"from unauthorized source {src_ip}",
+                f"({FUNCTION_CODE_NAMES.get(function_code, 'Unknown')}) "
+                f"from unauthorized source {src_ip}",
             }
         return None
 
@@ -313,7 +325,7 @@ class ModbusAnomalyDetector:
                 "function_name": FUNCTION_CODE_NAMES.get(function_code, "Unknown"),
                 "unique_targets": len(targets),
                 "description": f"Diagnostic FC {function_code} from {src_ip} to {dst_ip}. "
-                               f"Total unique targets scanned: {len(targets)}",
+                f"Total unique targets scanned: {len(targets)}",
             }
         return None
 
@@ -332,31 +344,39 @@ class ModbusAnomalyDetector:
                 "function_code": function_code,
                 "function_name": FUNCTION_CODE_NAMES.get(function_code, "Unknown"),
                 "description": f"FC {function_code} "
-                               f"({FUNCTION_CODE_NAMES.get(function_code, 'Unknown')}) "
-                               f"never seen before for {src_ip} -> {dst_ip}",
+                f"({FUNCTION_CODE_NAMES.get(function_code, 'Unknown')}) "
+                f"never seen before for {src_ip} -> {dst_ip}",
             }
         return None
 
-    def _check_exception_burst(self, src_ip, dst_ip, function_code, exception_code, timestamp):
+    def _check_exception_burst(
+        self, src_ip, dst_ip, function_code, exception_code, timestamp
+    ):
         pair_key = (src_ip, dst_ip)
         minute_key = int(timestamp // 60)
         self.exception_counts[pair_key][minute_key] += 1
         count = self.exception_counts[pair_key][minute_key]
-        exception_names = {1: "Illegal Function", 2: "Illegal Data Address",
-                           3: "Illegal Data Value", 4: "Slave Device Failure"}
+        exception_names = {
+            1: "Illegal Function",
+            2: "Illegal Data Address",
+            3: "Illegal Data Value",
+            4: "Slave Device Failure",
+        }
         if count == 10:
-            return [{
-                "alert": "EXCEPTION_BURST",
-                "severity": "HIGH",
-                "timestamp": timestamp,
-                "src_ip": src_ip,
-                "dst_ip": dst_ip,
-                "exception_code": exception_code,
-                "exception_name": exception_names.get(exception_code, "Unknown"),
-                "count_per_minute": count,
-                "description": f"Burst of {count} Modbus exceptions from {dst_ip} in response "
-                               f"to requests from {src_ip}. Possible scanning or fuzzing.",
-            }]
+            return [
+                {
+                    "alert": "EXCEPTION_BURST",
+                    "severity": "HIGH",
+                    "timestamp": timestamp,
+                    "src_ip": src_ip,
+                    "dst_ip": dst_ip,
+                    "exception_code": exception_code,
+                    "exception_name": exception_names.get(exception_code, "Unknown"),
+                    "count_per_minute": count,
+                    "description": f"Burst of {count} Modbus exceptions from {dst_ip} in response "
+                    f"to requests from {src_ip}. Possible scanning or fuzzing.",
+                }
+            ]
         return None
 
     def _check_register_values(self, src_ip, dst_ip, pdu, timestamp):
@@ -383,45 +403,54 @@ class ModbusAnomalyDetector:
         alerts = []
         if register_addr in self.register_limits:
             limits = self.register_limits[register_addr]
-            if new_value < limits.get("min", float("-inf")) or \
-                    new_value > limits.get("max", float("inf")):
-                alerts.append({
-                    "alert": "REGISTER_VALUE_OUT_OF_RANGE",
-                    "severity": "CRITICAL",
-                    "timestamp": timestamp,
-                    "src_ip": src_ip,
-                    "dst_ip": dst_ip,
-                    "register": register_addr,
-                    "register_name": limits.get("name", f"Register {register_addr}"),
-                    "value": new_value,
-                    "safe_range": f"{limits.get('min', 'N/A')}-{limits.get('max', 'N/A')} "
-                                  f"{limits.get('unit', '')}",
-                    "description": f"Register {register_addr} "
-                                   f"({limits.get('name', 'Unknown')}) set to {new_value}, "
-                                   f"outside safe range "
-                                   f"{limits.get('min')}-{limits.get('max')} "
-                                   f"{limits.get('unit', '')}",
-                })
+            if new_value < limits.get("min", float("-inf")) or new_value > limits.get(
+                "max", float("inf")
+            ):
+                alerts.append(
+                    {
+                        "alert": "REGISTER_VALUE_OUT_OF_RANGE",
+                        "severity": "CRITICAL",
+                        "timestamp": timestamp,
+                        "src_ip": src_ip,
+                        "dst_ip": dst_ip,
+                        "register": register_addr,
+                        "register_name": limits.get(
+                            "name", f"Register {register_addr}"
+                        ),
+                        "value": new_value,
+                        "safe_range": f"{limits.get('min', 'N/A')}-{limits.get('max', 'N/A')} "
+                        f"{limits.get('unit', '')}",
+                        "description": f"Register {register_addr} "
+                        f"({limits.get('name', 'Unknown')}) set to {new_value}, "
+                        f"outside safe range "
+                        f"{limits.get('min')}-{limits.get('max')} "
+                        f"{limits.get('unit', '')}",
+                    }
+                )
         prev = self.previous_register_values.get(register_addr)
         if prev is not None and register_addr in self.register_limits:
             limits = self.register_limits[register_addr]
             max_rate = limits.get("max_rate")
             if max_rate and abs(new_value - prev) > max_rate:
-                alerts.append({
-                    "alert": "REGISTER_VALUE_EXCESSIVE_RATE",
-                    "severity": "HIGH",
-                    "timestamp": timestamp,
-                    "src_ip": src_ip,
-                    "dst_ip": dst_ip,
-                    "register": register_addr,
-                    "register_name": limits.get("name", f"Register {register_addr}"),
-                    "previous_value": prev,
-                    "new_value": new_value,
-                    "change": abs(new_value - prev),
-                    "max_allowed_change": max_rate,
-                    "description": f"Register {register_addr} changed by "
-                                   f"{abs(new_value - prev)} (max allowed: {max_rate})",
-                })
+                alerts.append(
+                    {
+                        "alert": "REGISTER_VALUE_EXCESSIVE_RATE",
+                        "severity": "HIGH",
+                        "timestamp": timestamp,
+                        "src_ip": src_ip,
+                        "dst_ip": dst_ip,
+                        "register": register_addr,
+                        "register_name": limits.get(
+                            "name", f"Register {register_addr}"
+                        ),
+                        "previous_value": prev,
+                        "new_value": new_value,
+                        "change": abs(new_value - prev),
+                        "max_allowed_change": max_rate,
+                        "description": f"Register {register_addr} changed by "
+                        f"{abs(new_value - prev)} (max allowed: {max_rate})",
+                    }
+                )
         self.previous_register_values[register_addr] = new_value
         return alerts if alerts else None
 
@@ -447,7 +476,7 @@ class ModbusAnomalyDetector:
                 "expected_std": round(stats["std"], 4),
                 "deviation_sigma": round(deviation, 2),
                 "description": f"Inter-packet interval {interval:.4f}s deviates "
-                               f"{deviation:.1f} sigma from mean {stats['mean']:.4f}s",
+                f"{deviation:.1f} sigma from mean {stats['mean']:.4f}s",
             }
         return None
 
@@ -491,7 +520,9 @@ class ModbusAnomalyDetector:
             "report_generated": datetime.now(timezone.utc).isoformat(),
             "total_anomalies": len(sorted_alerts),
             "severity_summary": {
-                "CRITICAL": sum(1 for a in sorted_alerts if a["severity"] == "CRITICAL"),
+                "CRITICAL": sum(
+                    1 for a in sorted_alerts if a["severity"] == "CRITICAL"
+                ),
                 "HIGH": sum(1 for a in sorted_alerts if a["severity"] == "HIGH"),
                 "MEDIUM": sum(1 for a in sorted_alerts if a["severity"] == "MEDIUM"),
                 "LOW": sum(1 for a in sorted_alerts if a["severity"] == "LOW"),
@@ -532,10 +563,13 @@ def analyze_pcap(pcap_file, detector):
         alerts = detector.analyze_packet(src_ip, dst_ip, dst_port, payload, timestamp)
         modbus_count += 1
         for alert in alerts:
-            logger.warning("[%s] %s: %s", alert["severity"], alert["alert"],
-                           alert["description"])
+            logger.warning(
+                "[%s] %s: %s", alert["severity"], alert["alert"], alert["description"]
+            )
 
-    logger.info("Analyzed %d Modbus packets from %d total packets", modbus_count, len(packets))
+    logger.info(
+        "Analyzed %d Modbus packets from %d total packets", modbus_count, len(packets)
+    )
 
 
 def live_capture(interface, detector, duration=0):
@@ -558,12 +592,17 @@ def live_capture(interface, detector, duration=0):
             ip.src, ip.dst, tcp.dport, payload, float(pkt.time)
         )
         for alert in alerts:
-            logger.warning("[%s] %s: %s", alert["severity"], alert["alert"],
-                           alert["description"])
+            logger.warning(
+                "[%s] %s: %s", alert["severity"], alert["alert"], alert["description"]
+            )
 
     logger.info("Starting live capture on %s (filter: port 502)", interface)
-    kwargs = {"iface": interface, "filter": "tcp port 502", "prn": process_packet,
-              "store": False}
+    kwargs = {
+        "iface": interface,
+        "filter": "tcp port 502",
+        "prn": process_packet,
+        "store": False,
+    }
     if duration > 0:
         kwargs["timeout"] = duration
     sniff(**kwargs)
@@ -575,20 +614,34 @@ def main():
     )
     parser.add_argument("--pcap", help="Path to pcap file to analyze")
     parser.add_argument("--interface", help="Network interface for live capture")
-    parser.add_argument("--duration", type=int, default=0,
-                        help="Live capture duration in seconds (0=indefinite)")
-    parser.add_argument("--authorized-masters", nargs="+",
-                        help="List of authorized Modbus master IPs")
-    parser.add_argument("--authorized-writers", nargs="+",
-                        help="List of IPs authorized to send write commands")
-    parser.add_argument("--register-limits-file",
-                        help="JSON file defining safe register value ranges")
-    parser.add_argument("--baseline-file",
-                        help="Path to load/save baseline profile")
-    parser.add_argument("--baseline-mode", action="store_true",
-                        help="Run in baseline-building mode (no alerting)")
-    parser.add_argument("--output", default="modbus_anomaly_report.json",
-                        help="Output report file (default: modbus_anomaly_report.json)")
+    parser.add_argument(
+        "--duration",
+        type=int,
+        default=0,
+        help="Live capture duration in seconds (0=indefinite)",
+    )
+    parser.add_argument(
+        "--authorized-masters", nargs="+", help="List of authorized Modbus master IPs"
+    )
+    parser.add_argument(
+        "--authorized-writers",
+        nargs="+",
+        help="List of IPs authorized to send write commands",
+    )
+    parser.add_argument(
+        "--register-limits-file", help="JSON file defining safe register value ranges"
+    )
+    parser.add_argument("--baseline-file", help="Path to load/save baseline profile")
+    parser.add_argument(
+        "--baseline-mode",
+        action="store_true",
+        help="Run in baseline-building mode (no alerting)",
+    )
+    parser.add_argument(
+        "--output",
+        default="modbus_anomaly_report.json",
+        help="Output report file (default: modbus_anomaly_report.json)",
+    )
     args = parser.parse_args()
 
     register_limits = {}
@@ -597,7 +650,11 @@ def main():
         logger.info("Loaded register limits for %d registers", len(register_limits))
 
     baseline = ModbusBaseline()
-    if args.baseline_file and Path(args.baseline_file).exists() and not args.baseline_mode:
+    if (
+        args.baseline_file
+        and Path(args.baseline_file).exists()
+        and not args.baseline_mode
+    ):
         baseline.load(args.baseline_file)
 
     detector = ModbusAnomalyDetector(
@@ -620,8 +677,11 @@ def main():
     else:
         report = detector.generate_report()
         Path(args.output).write_text(json.dumps(report, indent=2, default=str))
-        logger.info("Report saved to %s (%d anomalies detected)",
-                     args.output, report["total_anomalies"])
+        logger.info(
+            "Report saved to %s (%d anomalies detected)",
+            args.output,
+            report["total_anomalies"],
+        )
 
 
 if __name__ == "__main__":

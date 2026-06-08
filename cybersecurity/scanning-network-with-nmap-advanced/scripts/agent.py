@@ -30,8 +30,14 @@ def scan_ports(scanner, hosts, ports="1-1024", timing="T4"):
     """Run SYN scan on discovered hosts for specified ports."""
     results = {}
     target_str = " ".join(hosts) if isinstance(hosts, list) else hosts
-    print(f"\n[*] Scanning ports {ports} on {len(hosts) if isinstance(hosts, list) else 1} host(s)...")
-    scanner.scan(hosts=target_str, ports=ports, arguments=f"-sS -{timing} --min-rate 3000 --max-retries 2")
+    print(
+        f"\n[*] Scanning ports {ports} on {len(hosts) if isinstance(hosts, list) else 1} host(s)..."
+    )
+    scanner.scan(
+        hosts=target_str,
+        ports=ports,
+        arguments=f"-sS -{timing} --min-rate 3000 --max-retries 2",
+    )
     for host in scanner.all_hosts():
         results[host] = []
         for proto in scanner[host].all_protocols():
@@ -39,16 +45,20 @@ def scan_ports(scanner, hosts, ports="1-1024", timing="T4"):
             for port in ports_list:
                 port_info = scanner[host][proto][port]
                 if port_info["state"] == "open":
-                    results[host].append({
-                        "port": port,
-                        "protocol": proto,
-                        "state": port_info["state"],
-                        "service": port_info.get("name", "unknown"),
-                        "version": port_info.get("version", ""),
-                        "product": port_info.get("product", ""),
-                    })
-                    print(f"  [+] {host}:{port}/{proto} - {port_info.get('name', '?')} "
-                          f"{port_info.get('product', '')} {port_info.get('version', '')}")
+                    results[host].append(
+                        {
+                            "port": port,
+                            "protocol": proto,
+                            "state": port_info["state"],
+                            "service": port_info.get("name", "unknown"),
+                            "version": port_info.get("version", ""),
+                            "product": port_info.get("product", ""),
+                        }
+                    )
+                    print(
+                        f"  [+] {host}:{port}/{proto} - {port_info.get('name', '?')} "
+                        f"{port_info.get('product', '')} {port_info.get('version', '')}"
+                    )
     return results
 
 
@@ -56,20 +66,31 @@ def service_version_scan(scanner, host, open_ports):
     """Run aggressive service version detection on open ports."""
     port_str = ",".join(str(p["port"]) for p in open_ports)
     print(f"\n[*] Running service version detection on {host} ports {port_str}...")
-    scanner.scan(hosts=host, ports=port_str, arguments="-sV --version-intensity 5 -sC -O --osscan-guess")
+    scanner.scan(
+        hosts=host,
+        ports=port_str,
+        arguments="-sV --version-intensity 5 -sC -O --osscan-guess",
+    )
     info = {"os_matches": [], "services": []}
     if host in scanner.all_hosts():
         if "osmatch" in scanner[host]:
             for os_match in scanner[host]["osmatch"][:3]:
-                info["os_matches"].append({"name": os_match["name"], "accuracy": os_match["accuracy"]})
+                info["os_matches"].append(
+                    {"name": os_match["name"], "accuracy": os_match["accuracy"]}
+                )
         for proto in scanner[host].all_protocols():
             for port in sorted(scanner[host][proto].keys()):
                 svc = scanner[host][proto][port]
-                info["services"].append({
-                    "port": port, "protocol": proto, "service": svc.get("name", ""),
-                    "product": svc.get("product", ""), "version": svc.get("version", ""),
-                    "extrainfo": svc.get("extrainfo", ""),
-                })
+                info["services"].append(
+                    {
+                        "port": port,
+                        "protocol": proto,
+                        "service": svc.get("name", ""),
+                        "product": svc.get("product", ""),
+                        "version": svc.get("version", ""),
+                        "extrainfo": svc.get("extrainfo", ""),
+                    }
+                )
     return info
 
 
@@ -85,8 +106,18 @@ def vuln_scan(scanner, host, open_ports):
                 svc = scanner[host][proto][port]
                 if "script" in svc:
                     for script_name, output in svc["script"].items():
-                        if "VULNERABLE" in str(output).upper() or "CVE-" in str(output).upper():
-                            vulns.append({"host": host, "port": port, "script": script_name, "output": output[:500]})
+                        if (
+                            "VULNERABLE" in str(output).upper()
+                            or "CVE-" in str(output).upper()
+                        ):
+                            vulns.append(
+                                {
+                                    "host": host,
+                                    "port": port,
+                                    "script": script_name,
+                                    "output": output[:500],
+                                }
+                            )
                             print(f"  [!] VULN {host}:{port} - {script_name}")
     return vulns
 
@@ -113,7 +144,16 @@ def generate_report(discovery, port_results, version_info, vulnerabilities, outp
         writer.writerow(["Host", "Port", "Protocol", "Service", "Product", "Version"])
         for host, ports in port_results.items():
             for p in ports:
-                writer.writerow([host, p["port"], p["protocol"], p["service"], p["product"], p["version"]])
+                writer.writerow(
+                    [
+                        host,
+                        p["port"],
+                        p["protocol"],
+                        p["service"],
+                        p["product"],
+                        p["version"],
+                    ]
+                )
     print(f"[*] CSV report saved to {csv_path}")
     return json_path, csv_path
 
@@ -121,11 +161,21 @@ def generate_report(discovery, port_results, version_info, vulnerabilities, outp
 def main():
     parser = argparse.ArgumentParser(description="Nmap Advanced Network Scanner Agent")
     parser.add_argument("target", help="Target IP, CIDR range, or hostname")
-    parser.add_argument("-p", "--ports", default="1-1024", help="Port range to scan (default: 1-1024)")
-    parser.add_argument("-t", "--timing", default="T4", choices=["T0", "T1", "T2", "T3", "T4", "T5"])
-    parser.add_argument("--vuln", action="store_true", help="Run NSE vulnerability scripts")
-    parser.add_argument("--version-scan", action="store_true", help="Run service version detection")
-    parser.add_argument("-o", "--output", default=".", help="Output directory for reports")
+    parser.add_argument(
+        "-p", "--ports", default="1-1024", help="Port range to scan (default: 1-1024)"
+    )
+    parser.add_argument(
+        "-t", "--timing", default="T4", choices=["T0", "T1", "T2", "T3", "T4", "T5"]
+    )
+    parser.add_argument(
+        "--vuln", action="store_true", help="Run NSE vulnerability scripts"
+    )
+    parser.add_argument(
+        "--version-scan", action="store_true", help="Run service version detection"
+    )
+    parser.add_argument(
+        "-o", "--output", default=".", help="Output directory for reports"
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output, exist_ok=True)
@@ -151,7 +201,9 @@ def main():
 
     generate_report(hosts, port_results, version_info, vulnerabilities, args.output)
     total_open = sum(len(p) for p in port_results.values())
-    print(f"\n[*] Scan complete: {len(hosts)} hosts, {total_open} open ports, {len(vulnerabilities)} vulns found")
+    print(
+        f"\n[*] Scan complete: {len(hosts)} hosts, {total_open} open ports, {len(vulnerabilities)} vulns found"
+    )
 
 
 if __name__ == "__main__":

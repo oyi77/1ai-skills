@@ -22,7 +22,9 @@ def gh_api(endpoint, method="GET"):
 
 def get_code_scanning_alerts(owner, repo, state="open"):
     """Get code scanning alerts for a repository."""
-    alerts = gh_api(f"/repos/{owner}/{repo}/code-scanning/alerts?state={state}&per_page=100")
+    alerts = gh_api(
+        f"/repos/{owner}/{repo}/code-scanning/alerts?state={state}&per_page=100"
+    )
     if isinstance(alerts, dict) and "error" in alerts:
         return alerts
     return alerts if isinstance(alerts, list) else []
@@ -30,7 +32,9 @@ def get_code_scanning_alerts(owner, repo, state="open"):
 
 def get_secret_scanning_alerts(owner, repo, state="open"):
     """Get secret scanning alerts for a repository."""
-    alerts = gh_api(f"/repos/{owner}/{repo}/secret-scanning/alerts?state={state}&per_page=100")
+    alerts = gh_api(
+        f"/repos/{owner}/{repo}/secret-scanning/alerts?state={state}&per_page=100"
+    )
     if isinstance(alerts, dict) and "error" in alerts:
         return alerts
     return alerts if isinstance(alerts, list) else []
@@ -38,7 +42,9 @@ def get_secret_scanning_alerts(owner, repo, state="open"):
 
 def get_dependabot_alerts(owner, repo, state="open"):
     """Get Dependabot alerts for a repository."""
-    alerts = gh_api(f"/repos/{owner}/{repo}/dependabot/alerts?state={state}&per_page=100")
+    alerts = gh_api(
+        f"/repos/{owner}/{repo}/dependabot/alerts?state={state}&per_page=100"
+    )
     if isinstance(alerts, dict) and "error" in alerts:
         return alerts
     return alerts if isinstance(alerts, list) else []
@@ -60,15 +66,17 @@ def analyze_code_scanning_alerts(alerts):
         tool = alert.get("tool", {}).get("name", "unknown")
         by_tool[tool] += 1
         if severity in ("critical", "high"):
-            critical_alerts.append({
-                "number": alert.get("number"),
-                "rule": rule.get("id", ""),
-                "description": rule.get("description", "")[:120],
-                "severity": severity,
-                "state": alert.get("state", ""),
-                "created_at": alert.get("created_at", ""),
-                "html_url": alert.get("html_url", ""),
-            })
+            critical_alerts.append(
+                {
+                    "number": alert.get("number"),
+                    "rule": rule.get("id", ""),
+                    "description": rule.get("description", "")[:120],
+                    "severity": severity,
+                    "state": alert.get("state", ""),
+                    "created_at": alert.get("created_at", ""),
+                    "html_url": alert.get("html_url", ""),
+                }
+            )
     return {
         "total_alerts": len(alerts),
         "by_severity": dict(by_severity),
@@ -84,13 +92,19 @@ def analyze_secret_alerts(alerts):
         return {"error": "No alerts data"}
     by_type = Counter()
     for alert in alerts:
-        by_type[alert.get("secret_type_display_name", alert.get("secret_type", "unknown"))] += 1
+        by_type[
+            alert.get("secret_type_display_name", alert.get("secret_type", "unknown"))
+        ] += 1
     return {
         "total_secrets": len(alerts),
         "by_type": dict(by_type),
         "alerts": [
-            {"number": a.get("number"), "type": a.get("secret_type_display_name", ""),
-             "state": a.get("state", ""), "created_at": a.get("created_at", "")}
+            {
+                "number": a.get("number"),
+                "type": a.get("secret_type_display_name", ""),
+                "state": a.get("state", ""),
+                "created_at": a.get("created_at", ""),
+            }
             for a in alerts[:20]
         ],
     }
@@ -168,10 +182,14 @@ def main():
     parser = argparse.ArgumentParser(description="GitHub Advanced Security Agent")
     parser.add_argument("--owner", help="Repository owner")
     parser.add_argument("--repo", help="Repository name")
-    parser.add_argument("--action", choices=["audit", "code-alerts", "secrets",
-                                              "dependabot", "gen-workflow"],
-                        default="audit")
-    parser.add_argument("--languages", nargs="+", default=["python", "javascript-typescript"])
+    parser.add_argument(
+        "--action",
+        choices=["audit", "code-alerts", "secrets", "dependabot", "gen-workflow"],
+        default="audit",
+    )
+    parser.add_argument(
+        "--languages", nargs="+", default=["python", "javascript-typescript"]
+    )
     parser.add_argument("--output", default="ghas_report.json")
     args = parser.parse_args()
 

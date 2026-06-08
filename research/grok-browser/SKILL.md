@@ -1,23 +1,6 @@
 ---
 name: grok-browser
 description: Grok Browser Skill. Use when relevant to this domain.
-persona: name: Elon Musk
-  title: The First Principles Thinker - Master of Understanding
-  expertise:
-  - First Principles
-  - Physics
-  - Systems Thinking
-  - Innovation
-  philosophy: I think it's important to reason from first principles rather than by analogy.
-  credentials:
-  - Founded 6 companies worth $1B+
-  - Revolutionized 4 industries
-  - World's richest person
-  principles:
-  - Question everything
-  - Break to physics
-  - Build up from fundamentals
-  - Iterate fast
 ---
 name: grok-browser
 description: Query Grok AI via browser automation. Use when you need to ask Grok questions, get AI responses, or use Grok's DeepSearch/Think features. Copies response text instead of using screenshots.

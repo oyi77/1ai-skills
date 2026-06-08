@@ -24,6 +24,7 @@ from dataclasses import dataclass, field, asdict
 @dataclass
 class UserRecord:
     """Training and simulation record for a single user."""
+
     email: str = ""
     name: str = ""
     department: str = ""
@@ -42,6 +43,7 @@ class UserRecord:
 @dataclass
 class DepartmentMetrics:
     """Aggregated metrics for a department."""
+
     name: str = ""
     total_users: int = 0
     avg_click_rate: float = 0.0
@@ -55,6 +57,7 @@ class DepartmentMetrics:
 @dataclass
 class ProgramDashboard:
     """Overall program dashboard metrics."""
+
     total_users: int = 0
     total_simulations_sent: int = 0
     overall_click_rate: float = 0.0
@@ -173,7 +176,9 @@ def process_program_data(data: dict) -> ProgramDashboard:
     dashboard.overall_click_rate = round(total_clicked / max(total_sent, 1) * 100, 1)
     dashboard.overall_submit_rate = round(total_submitted / max(total_sent, 1) * 100, 1)
     dashboard.overall_report_rate = round(total_reported / max(total_sent, 1) * 100, 1)
-    dashboard.training_completion_rate = round(total_completed / max(total_assigned, 1) * 100, 1)
+    dashboard.training_completion_rate = round(
+        total_completed / max(total_assigned, 1) * 100, 1
+    )
 
     # Repeat offenders (clicked 2+ times)
     repeat_offenders = [u for u in all_users if u.simulations_clicked >= 2]
@@ -208,14 +213,22 @@ def process_program_data(data: dict) -> ProgramDashboard:
     # Top risk users
     risk_users = sorted(all_users, key=lambda u: u.simulations_submitted, reverse=True)
     dashboard.top_risks = [
-        {"email": u.email, "name": u.name, "department": u.department,
-         "click_count": u.simulations_clicked, "submit_count": u.simulations_submitted,
-         "risk_level": u.risk_level}
-        for u in risk_users[:20] if u.simulations_clicked > 0
+        {
+            "email": u.email,
+            "name": u.name,
+            "department": u.department,
+            "click_count": u.simulations_clicked,
+            "submit_count": u.simulations_submitted,
+            "risk_level": u.risk_level,
+        }
+        for u in risk_users[:20]
+        if u.simulations_clicked > 0
     ]
 
     # Monthly trends from simulation data
-    monthly = defaultdict(lambda: {"sent": 0, "clicked": 0, "submitted": 0, "reported": 0})
+    monthly = defaultdict(
+        lambda: {"sent": 0, "clicked": 0, "submitted": 0, "reported": 0}
+    )
     for sim in simulations:
         month = sim.get("date", "")[:7]  # YYYY-MM
         for result in sim.get("results", []):
@@ -229,13 +242,15 @@ def process_program_data(data: dict) -> ProgramDashboard:
 
     for month in sorted(monthly.keys()):
         m = monthly[month]
-        dashboard.monthly_trends.append({
-            "month": month,
-            "sent": m["sent"],
-            "click_rate": round(m["clicked"] / max(m["sent"], 1) * 100, 1),
-            "submit_rate": round(m["submitted"] / max(m["sent"], 1) * 100, 1),
-            "report_rate": round(m["reported"] / max(m["sent"], 1) * 100, 1),
-        })
+        dashboard.monthly_trends.append(
+            {
+                "month": month,
+                "sent": m["sent"],
+                "click_rate": round(m["clicked"] / max(m["sent"], 1) * 100, 1),
+                "submit_rate": round(m["submitted"] / max(m["sent"], 1) * 100, 1),
+                "report_rate": round(m["reported"] / max(m["sent"], 1) * 100, 1),
+            }
+        )
 
     dashboard.maturity_level = assess_maturity(dashboard)
 
@@ -248,7 +263,9 @@ def format_dashboard(dashboard: ProgramDashboard) -> str:
     lines.append("=" * 65)
     lines.append("  ANTI-PHISHING TRAINING PROGRAM DASHBOARD")
     lines.append("=" * 65)
-    lines.append(f"  Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+    lines.append(
+        f"  Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}"
+    )
     lines.append(f"  Maturity Level: {dashboard.maturity_level}/5 (SANS Model)")
     lines.append("")
 
@@ -259,36 +276,50 @@ def format_dashboard(dashboard: ProgramDashboard) -> str:
     lines.append(f"  Overall Submit Rate:      {dashboard.overall_submit_rate}%")
     lines.append(f"  Overall Report Rate:      {dashboard.overall_report_rate}%")
     lines.append(f"  Training Completion:      {dashboard.training_completion_rate}%")
-    lines.append(f"  Repeat Offenders:         {dashboard.repeat_offender_count} "
-                 f"({dashboard.repeat_offender_rate}%)")
+    lines.append(
+        f"  Repeat Offenders:         {dashboard.repeat_offender_count} "
+        f"({dashboard.repeat_offender_rate}%)"
+    )
     lines.append("")
 
     lines.append("[DEPARTMENT BREAKDOWN]")
-    lines.append(f"  {'Department':<20} {'Users':>6} {'Click%':>7} {'Submit%':>8} "
-                 f"{'Report%':>8} {'Training%':>10} {'Repeat':>7}")
+    lines.append(
+        f"  {'Department':<20} {'Users':>6} {'Click%':>7} {'Submit%':>8} "
+        f"{'Report%':>8} {'Training%':>10} {'Repeat':>7}"
+    )
     lines.append("  " + "-" * 66)
-    for dept in sorted(dashboard.departments, key=lambda d: d.avg_click_rate, reverse=True):
-        lines.append(f"  {dept.name:<20} {dept.total_users:>6} {dept.avg_click_rate:>6.1f}% "
-                     f"{dept.avg_submit_rate:>7.1f}% {dept.avg_report_rate:>7.1f}% "
-                     f"{dept.training_completion:>9.1f}% {dept.repeat_offenders:>7}")
+    for dept in sorted(
+        dashboard.departments, key=lambda d: d.avg_click_rate, reverse=True
+    ):
+        lines.append(
+            f"  {dept.name:<20} {dept.total_users:>6} {dept.avg_click_rate:>6.1f}% "
+            f"{dept.avg_submit_rate:>7.1f}% {dept.avg_report_rate:>7.1f}% "
+            f"{dept.training_completion:>9.1f}% {dept.repeat_offenders:>7}"
+        )
     lines.append("")
 
     if dashboard.top_risks:
         lines.append("[TOP RISK USERS]")
         for i, user in enumerate(dashboard.top_risks[:10], 1):
-            lines.append(f"  {i}. {user['name']} ({user['department']}) - "
-                         f"Clicked: {user['click_count']}, Submitted: {user['submit_count']} "
-                         f"[{user['risk_level'].upper()}]")
+            lines.append(
+                f"  {i}. {user['name']} ({user['department']}) - "
+                f"Clicked: {user['click_count']}, Submitted: {user['submit_count']} "
+                f"[{user['risk_level'].upper()}]"
+            )
         lines.append("")
 
     if dashboard.monthly_trends:
         lines.append("[MONTHLY TRENDS]")
-        lines.append(f"  {'Month':<10} {'Sent':>6} {'Click%':>7} {'Submit%':>8} {'Report%':>8}")
+        lines.append(
+            f"  {'Month':<10} {'Sent':>6} {'Click%':>7} {'Submit%':>8} {'Report%':>8}"
+        )
         lines.append("  " + "-" * 39)
         for trend in dashboard.monthly_trends[-12:]:
-            lines.append(f"  {trend['month']:<10} {trend['sent']:>6} "
-                         f"{trend['click_rate']:>6.1f}% {trend['submit_rate']:>7.1f}% "
-                         f"{trend['report_rate']:>7.1f}%")
+            lines.append(
+                f"  {trend['month']:<10} {trend['sent']:>6} "
+                f"{trend['click_rate']:>6.1f}% {trend['submit_rate']:>7.1f}% "
+                f"{trend['report_rate']:>7.1f}%"
+            )
 
     lines.append("")
     lines.append("=" * 65)
@@ -296,19 +327,27 @@ def format_dashboard(dashboard: ProgramDashboard) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Anti-Phishing Training Program Analytics")
+    parser = argparse.ArgumentParser(
+        description="Anti-Phishing Training Program Analytics"
+    )
     subparsers = parser.add_subparsers(dest="command")
 
     dash_parser = subparsers.add_parser("dashboard", help="Generate program dashboard")
     dash_parser.add_argument("--data", required=True, help="Program data JSON file")
     dash_parser.add_argument("--output", "-o", help="Output file")
 
-    dept_parser = subparsers.add_parser("department-report", help="Department breakdown")
+    dept_parser = subparsers.add_parser(
+        "department-report", help="Department breakdown"
+    )
     dept_parser.add_argument("--data", required=True)
 
-    repeat_parser = subparsers.add_parser("repeat-offenders", help="List repeat offenders")
+    repeat_parser = subparsers.add_parser(
+        "repeat-offenders", help="List repeat offenders"
+    )
     repeat_parser.add_argument("--data", required=True)
-    repeat_parser.add_argument("--threshold", type=int, default=2, help="Minimum click count")
+    repeat_parser.add_argument(
+        "--threshold", type=int, default=2, help="Minimum click count"
+    )
 
     trend_parser = subparsers.add_parser("trend", help="Show monthly trends")
     trend_parser.add_argument("--data", required=True)
@@ -341,25 +380,33 @@ def main():
             print(output)
 
     elif args.command == "department-report":
-        for dept in sorted(dashboard.departments, key=lambda d: d.avg_click_rate, reverse=True):
+        for dept in sorted(
+            dashboard.departments, key=lambda d: d.avg_click_rate, reverse=True
+        ):
             if args.json:
                 print(json.dumps(asdict(dept), indent=2))
             else:
-                print(f"{dept.name}: {dept.total_users} users, "
-                      f"click={dept.avg_click_rate}%, report={dept.avg_report_rate}%, "
-                      f"training={dept.training_completion}%")
+                print(
+                    f"{dept.name}: {dept.total_users} users, "
+                    f"click={dept.avg_click_rate}%, report={dept.avg_report_rate}%, "
+                    f"training={dept.training_completion}%"
+                )
 
     elif args.command == "repeat-offenders":
         for user in dashboard.top_risks:
             if user["click_count"] >= args.threshold:
-                print(f"  {user['name']} ({user['department']}): "
-                      f"clicked {user['click_count']}x, submitted {user['submit_count']}x "
-                      f"[{user['risk_level']}]")
+                print(
+                    f"  {user['name']} ({user['department']}): "
+                    f"clicked {user['click_count']}x, submitted {user['submit_count']}x "
+                    f"[{user['risk_level']}]"
+                )
 
     elif args.command == "trend":
-        for trend in dashboard.monthly_trends[-args.months:]:
-            print(f"  {trend['month']}: click={trend['click_rate']}%, "
-                  f"submit={trend['submit_rate']}%, report={trend['report_rate']}%")
+        for trend in dashboard.monthly_trends[-args.months :]:
+            print(
+                f"  {trend['month']}: click={trend['click_rate']}%, "
+                f"submit={trend['submit_rate']}%, report={trend['report_rate']}%"
+            )
 
 
 if __name__ == "__main__":

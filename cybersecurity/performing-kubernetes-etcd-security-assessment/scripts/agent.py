@@ -16,7 +16,17 @@ def check_etcd_encryption(kubeconfig=None):
         cmd += ["--kubeconfig", kubeconfig]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        enc_cmd = ["kubectl", "get", "pods", "-n", "kube-system", "-l", "component=kube-apiserver", "-o", "json"]
+        enc_cmd = [
+            "kubectl",
+            "get",
+            "pods",
+            "-n",
+            "kube-system",
+            "-l",
+            "component=kube-apiserver",
+            "-o",
+            "json",
+        ]
         if kubeconfig:
             enc_cmd += ["--kubeconfig", kubeconfig]
         result = subprocess.run(enc_cmd, capture_output=True, text=True, timeout=30)
@@ -30,21 +40,27 @@ def check_etcd_encryption(kubeconfig=None):
                 has_encryption = "--encryption-provider-config" in args_str
                 has_audit = "--audit-log-path" in args_str
                 etcd_servers = re.findall(r"--etcd-servers=([^\s]+)", args_str)
-                uses_tls = all("https" in s for s in etcd_servers) if etcd_servers else False
-                findings.append({
-                    "pod": pod.get("metadata", {}).get("name"),
-                    "encryption_at_rest": has_encryption,
-                    "audit_logging": has_audit,
-                    "etcd_tls": uses_tls,
-                    "etcd_servers": etcd_servers,
-                })
+                uses_tls = (
+                    all("https" in s for s in etcd_servers) if etcd_servers else False
+                )
+                findings.append(
+                    {
+                        "pod": pod.get("metadata", {}).get("name"),
+                        "encryption_at_rest": has_encryption,
+                        "audit_logging": has_audit,
+                        "etcd_tls": uses_tls,
+                        "etcd_servers": etcd_servers,
+                    }
+                )
         return {"checks": findings, "timestamp": datetime.utcnow().isoformat()}
     except Exception as e:
         return {"error": str(e)}
 
 
 def check_etcd_access(etcd_endpoint=None, cert=None, key=None, cacert=None):
-    etcd_endpoint = etcd_endpoint or os.environ.get("ETCD_ENDPOINT", "https://127.0.0.1:2379")
+    etcd_endpoint = etcd_endpoint or os.environ.get(
+        "ETCD_ENDPOINT", "https://127.0.0.1:2379"
+    )
     """Test etcd access and check for unauthenticated access."""
     cmd = ["etcdctl", "endpoint", "health", "--endpoints", etcd_endpoint]
     if cert:
@@ -52,15 +68,28 @@ def check_etcd_access(etcd_endpoint=None, cert=None, key=None, cacert=None):
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
         healthy = "healthy" in result.stdout.lower()
-        unauth_cmd = ["etcdctl", "get", "/", "--prefix", "--limit", "1", "--endpoints", etcd_endpoint]
-        unauth_result = subprocess.run(unauth_cmd, capture_output=True, text=True, timeout=10)
+        unauth_cmd = [
+            "etcdctl",
+            "get",
+            "/",
+            "--prefix",
+            "--limit",
+            "1",
+            "--endpoints",
+            etcd_endpoint,
+        ]
+        unauth_result = subprocess.run(
+            unauth_cmd, capture_output=True, text=True, timeout=10
+        )
         unauth_access = unauth_result.returncode == 0 and unauth_result.stdout.strip()
         return {
             "endpoint": etcd_endpoint,
             "healthy": healthy,
             "unauthenticated_access": unauth_access,
             "severity": "CRITICAL" if unauth_access else "INFO",
-            "finding": "ETCD_UNAUTHENTICATED_ACCESS" if unauth_access else "ETCD_AUTH_REQUIRED",
+            "finding": (
+                "ETCD_UNAUTHENTICATED_ACCESS" if unauth_access else "ETCD_AUTH_REQUIRED"
+            ),
         }
     except FileNotFoundError:
         return {"error": "etcdctl not found"}
@@ -84,7 +113,10 @@ def dump_secrets_check(kubeconfig=None):
             secret_types[stype] = secret_types.get(stype, 0) + 1
             name = s.get("metadata", {}).get("name", "")
             ns = s.get("metadata", {}).get("namespace", "")
-            if any(kw in name.lower() for kw in ["password", "token", "key", "cert", "credential", "tls"]):
+            if any(
+                kw in name.lower()
+                for kw in ["password", "token", "key", "cert", "credential", "tls"]
+            ):
                 sensitive.append({"name": name, "namespace": ns, "type": stype})
         return {
             "total_secrets": len(secrets),
@@ -98,7 +130,17 @@ def dump_secrets_check(kubeconfig=None):
 
 def check_etcd_tls_config():
     """Verify etcd TLS certificate configuration."""
-    cmd = ["kubectl", "get", "pods", "-n", "kube-system", "-l", "component=etcd", "-o", "json"]
+    cmd = [
+        "kubectl",
+        "get",
+        "pods",
+        "-n",
+        "kube-system",
+        "-l",
+        "component=etcd",
+        "-o",
+        "json",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         data = json.loads(result.stdout)
@@ -106,22 +148,31 @@ def check_etcd_tls_config():
         for pod in data.get("items", []):
             for c in pod.get("spec", {}).get("containers", []):
                 args_str = " ".join(c.get("command", []) + c.get("args", []))
-                peer_tls = "--peer-cert-file" in args_str and "--peer-key-file" in args_str
+                peer_tls = (
+                    "--peer-cert-file" in args_str and "--peer-key-file" in args_str
+                )
                 client_tls = "--cert-file" in args_str and "--key-file" in args_str
-                client_auth = "--client-cert-auth=true" in args_str or "--client-cert-auth true" in args_str
-                findings.append({
-                    "pod": pod.get("metadata", {}).get("name"),
-                    "peer_tls_enabled": peer_tls,
-                    "client_tls_enabled": client_tls,
-                    "client_cert_auth": client_auth,
-                    "issues": [
-                        i for i in [
-                            "NO_PEER_TLS" if not peer_tls else None,
-                            "NO_CLIENT_TLS" if not client_tls else None,
-                            "NO_CLIENT_CERT_AUTH" if not client_auth else None,
-                        ] if i
-                    ],
-                })
+                client_auth = (
+                    "--client-cert-auth=true" in args_str
+                    or "--client-cert-auth true" in args_str
+                )
+                findings.append(
+                    {
+                        "pod": pod.get("metadata", {}).get("name"),
+                        "peer_tls_enabled": peer_tls,
+                        "client_tls_enabled": client_tls,
+                        "client_cert_auth": client_auth,
+                        "issues": [
+                            i
+                            for i in [
+                                "NO_PEER_TLS" if not peer_tls else None,
+                                "NO_CLIENT_TLS" if not client_tls else None,
+                                "NO_CLIENT_CERT_AUTH" if not client_auth else None,
+                            ]
+                            if i
+                        ],
+                    }
+                )
         return {"etcd_tls_checks": findings}
     except Exception as e:
         return {"error": str(e)}
@@ -151,12 +202,16 @@ def full_assessment(kubeconfig=None, etcd_endpoint=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kubernetes etcd Security Assessment Agent")
+    parser = argparse.ArgumentParser(
+        description="Kubernetes etcd Security Assessment Agent"
+    )
     parser.add_argument("--kubeconfig", help="Path to kubeconfig file")
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("encrypt", help="Check encryption at rest")
     a = sub.add_parser("access", help="Test etcd access")
-    a.add_argument("--endpoint", default=os.environ.get("ETCD_ENDPOINT", "https://127.0.0.1:2379"))
+    a.add_argument(
+        "--endpoint", default=os.environ.get("ETCD_ENDPOINT", "https://127.0.0.1:2379")
+    )
     a.add_argument("--cert", help="Client certificate")
     a.add_argument("--key", help="Client key")
     a.add_argument("--cacert", help="CA certificate")
@@ -175,7 +230,9 @@ def main():
     elif args.command == "tls":
         result = check_etcd_tls_config()
     elif args.command == "full":
-        result = full_assessment(kc, args.endpoint if hasattr(args, "endpoint") else None)
+        result = full_assessment(
+            kc, args.endpoint if hasattr(args, "endpoint") else None
+        )
     else:
         parser.print_help()
         return

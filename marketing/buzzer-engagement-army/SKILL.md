@@ -1,8 +1,7 @@
 ---
 name: buzzer-engagement-army
-description: SKILL: buzzer-engagement-army. Use when relevant to this domain.
+description: 'SKILL: buzzer-engagement-army. Use when relevant to this domain.'
 ---
-
 # SKILL: buzzer-engagement-army
 
 > Multi-account engagement system for BerkahKarya social media.

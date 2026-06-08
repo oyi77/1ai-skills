@@ -61,7 +61,9 @@ def lsb_analysis(filepath):
         elif ratio > 0.55 or ratio < 0.45:
             anomaly = "SIGNIFICANT_DEVIATION"
         results[name] = {
-            "zeros": zeros, "ones": ones, "ratio": round(ratio, 4),
+            "zeros": zeros,
+            "ones": ones,
+            "ratio": round(ratio, 4),
             "anomaly": anomaly,
         }
     return results
@@ -87,7 +89,11 @@ def extract_lsb_data(filepath, output_path):
         detected = "JPEG image"
     elif header[:4] == b"%PDF":
         detected = "PDF document"
-    return {"output": output_path, "header_hex": header.hex(), "detected_format": detected}
+    return {
+        "output": output_path,
+        "header_hex": header.hex(),
+        "detected_format": detected,
+    }
 
 
 def run_binwalk(filepath):
@@ -125,12 +131,25 @@ def run_steghide_extract(filepath, passwords=None):
         try:
             out_file = f"/tmp/steghide_{pwd or 'empty'}.bin"
             result = subprocess.run(
-                ["steghide", "extract", "-sf", filepath, "-p", pwd,
-                 "-xf", out_file, "-f"],
-                capture_output=True, text=True, timeout=10
+                [
+                    "steghide",
+                    "extract",
+                    "-sf",
+                    filepath,
+                    "-p",
+                    pwd,
+                    "-xf",
+                    out_file,
+                    "-f",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             if "extracted" in result.stdout.lower() or result.returncode == 0:
-                results.append({"password": pwd or "(empty)", "success": True, "output": out_file})
+                results.append(
+                    {"password": pwd or "(empty)", "success": True, "output": out_file}
+                )
         except (FileNotFoundError, subprocess.TimeoutExpired):
             break
     return results
@@ -143,32 +162,43 @@ def analyze_file(filepath, output_dir=None):
     report = {"file": filepath, "findings": []}
     trailing = check_trailing_data(filepath)
     if trailing["trailing_bytes"] > 0:
-        report["findings"].append({
-            "type": "trailing_data",
-            "detail": f"{trailing['trailing_bytes']} bytes after {trailing.get('format', 'unknown')} end marker",
-        })
+        report["findings"].append(
+            {
+                "type": "trailing_data",
+                "detail": f"{trailing['trailing_bytes']} bytes after {trailing.get('format', 'unknown')} end marker",
+            }
+        )
     if "embedded_zip" in trailing:
-        report["findings"].append({"type": "embedded_archive", "detail": f"ZIP at offset {trailing['embedded_zip']}"})
+        report["findings"].append(
+            {
+                "type": "embedded_archive",
+                "detail": f"ZIP at offset {trailing['embedded_zip']}",
+            }
+        )
     ext = Path(filepath).suffix.lower()
     if ext in (".png", ".bmp", ".jpg", ".jpeg", ".gif"):
         report["lsb_analysis"] = lsb_analysis(filepath)
         lsb_out = os.path.join(output_dir, "lsb_extracted.bin")
         report["lsb_extract"] = extract_lsb_data(filepath, lsb_out)
         if report["lsb_extract"]["detected_format"]:
-            report["findings"].append({
-                "type": "lsb_hidden_file",
-                "detail": f"Detected {report['lsb_extract']['detected_format']} in LSB data",
-            })
+            report["findings"].append(
+                {
+                    "type": "lsb_hidden_file",
+                    "detail": f"Detected {report['lsb_extract']['detected_format']} in LSB data",
+                }
+            )
     report["binwalk"] = run_binwalk(filepath)
     if ext in (".png", ".bmp"):
         report["zsteg"] = run_zsteg(filepath)
     if ext in (".jpg", ".jpeg", ".bmp", ".wav", ".au"):
         report["steghide"] = run_steghide_extract(filepath)
         if report["steghide"]:
-            report["findings"].append({
-                "type": "steghide_extraction",
-                "detail": f"Data extracted with {len(report['steghide'])} password(s)",
-            })
+            report["findings"].append(
+                {
+                    "type": "steghide_extraction",
+                    "detail": f"Data extracted with {len(report['steghide'])} password(s)",
+                }
+            )
     return report
 
 

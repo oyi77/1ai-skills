@@ -30,15 +30,20 @@ def list_available_techniques(atomics_path):
             if yaml_file.exists():
                 with open(yaml_file) as f:
                     data = yaml.safe_load(f)
-                techniques.append({
-                    "technique_id": technique_dir.name,
-                    "name": data.get("display_name", ""),
-                    "test_count": len(data.get("atomic_tests", [])),
-                    "platforms": list(set(
-                        p for t in data.get("atomic_tests", [])
-                        for p in t.get("supported_platforms", [])
-                    )),
-                })
+                techniques.append(
+                    {
+                        "technique_id": technique_dir.name,
+                        "name": data.get("display_name", ""),
+                        "test_count": len(data.get("atomic_tests", [])),
+                        "platforms": list(
+                            set(
+                                p
+                                for t in data.get("atomic_tests", [])
+                                for p in t.get("supported_platforms", [])
+                            )
+                        ),
+                    }
+                )
     return techniques
 
 
@@ -49,16 +54,18 @@ def get_test_details(atomics_path, technique_id):
         return []
     tests = []
     for i, test in enumerate(data.get("atomic_tests", [])):
-        tests.append({
-            "test_number": i + 1,
-            "name": test.get("name", ""),
-            "description": test.get("description", ""),
-            "platforms": test.get("supported_platforms", []),
-            "executor": test.get("executor", {}).get("name", ""),
-            "command": test.get("executor", {}).get("command", "")[:200],
-            "cleanup": test.get("executor", {}).get("cleanup_command", "")[:200],
-            "input_arguments": list(test.get("input_arguments", {}).keys()),
-        })
+        tests.append(
+            {
+                "test_number": i + 1,
+                "name": test.get("name", ""),
+                "description": test.get("description", ""),
+                "platforms": test.get("supported_platforms", []),
+                "executor": test.get("executor", {}).get("name", ""),
+                "command": test.get("executor", {}).get("command", "")[:200],
+                "cleanup": test.get("executor", {}).get("cleanup_command", "")[:200],
+                "input_arguments": list(test.get("input_arguments", {}).keys()),
+            }
+        )
     return tests
 
 
@@ -66,14 +73,19 @@ def execute_atomic_test(atomics_path, technique_id, test_number=1, platform="lin
     """Execute an Atomic Red Team test using atomic-operator."""
     try:
         from atomic_operator import AtomicOperator
+
         operator = AtomicOperator()
         result = operator.run(
             technique=technique_id,
             atomics_path=str(atomics_path),
             test_numbers=[test_number],
         )
-        return {"status": "executed", "technique": technique_id,
-                "test_number": test_number, "result": str(result)}
+        return {
+            "status": "executed",
+            "technique": technique_id,
+            "test_number": test_number,
+            "result": str(result),
+        }
     except ImportError:
         return execute_atomic_manual(atomics_path, technique_id, test_number, platform)
 
@@ -97,7 +109,11 @@ def execute_atomic_manual(atomics_path, technique_id, test_number, platform):
     try:
         # shell=True required: Atomic Red Team commands are shell scripts by design
         result = subprocess.run(
-            command, shell=True, capture_output=True, text=True, timeout=60,
+            command,
+            shell=True,
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         return {
             "status": "executed",
@@ -145,25 +161,31 @@ def build_coverage_matrix(atomics_path, detection_rules):
     matrix = []
     for t in techniques:
         tid = t["technique_id"]
-        matrix.append({
-            "technique_id": tid,
-            "name": t["name"],
-            "has_atomic_test": True,
-            "has_detection_rule": tid in covered,
-            "gap": tid not in covered,
-        })
+        matrix.append(
+            {
+                "technique_id": tid,
+                "name": t["name"],
+                "has_atomic_test": True,
+                "has_detection_rule": tid in covered,
+                "gap": tid not in covered,
+            }
+        )
     return matrix
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Atomic Red Team Threat Emulation Agent")
+    parser = argparse.ArgumentParser(
+        description="Atomic Red Team Threat Emulation Agent"
+    )
     parser.add_argument("--atomics-path", default="./atomic-red-team/atomics")
     parser.add_argument("--technique", help="ATT&CK technique ID (e.g., T1059.001)")
     parser.add_argument("--test-number", type=int, default=1)
     parser.add_argument("--output", default="atomic_report.json")
-    parser.add_argument("--action", choices=[
-        "list", "details", "execute", "cleanup", "coverage"
-    ], default="list")
+    parser.add_argument(
+        "--action",
+        choices=["list", "details", "execute", "cleanup", "coverage"],
+        default="list",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "results": {}}
@@ -179,9 +201,13 @@ def main():
         print(f"[+] Tests for {args.technique}: {len(tests)}")
 
     if args.action == "execute" and args.technique:
-        result = execute_atomic_test(args.atomics_path, args.technique, args.test_number)
+        result = execute_atomic_test(
+            args.atomics_path, args.technique, args.test_number
+        )
         report["results"]["execution"] = result
-        print(f"[+] Executed {args.technique} test #{args.test_number}: {result['status']}")
+        print(
+            f"[+] Executed {args.technique} test #{args.test_number}: {result['status']}"
+        )
 
     if args.action == "cleanup" and args.technique:
         result = run_cleanup(args.atomics_path, args.technique, args.test_number)

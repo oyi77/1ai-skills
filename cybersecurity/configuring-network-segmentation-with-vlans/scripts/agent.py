@@ -9,7 +9,9 @@ from datetime import datetime
 from netmiko import ConnectHandler
 from napalm import get_network_driver
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -33,12 +35,14 @@ def get_vlan_config(conn):
     if isinstance(output, list):
         vlans = []
         for entry in output:
-            vlans.append({
-                "vlan_id": entry.get("vlan_id", ""),
-                "name": entry.get("name", ""),
-                "status": entry.get("status", ""),
-                "interfaces": entry.get("interfaces", []),
-            })
+            vlans.append(
+                {
+                    "vlan_id": entry.get("vlan_id", ""),
+                    "name": entry.get("name", ""),
+                    "status": entry.get("status", ""),
+                    "interfaces": entry.get("interfaces", []),
+                }
+            )
         logger.info("Retrieved %d VLANs", len(vlans))
         return vlans
     return []
@@ -92,12 +96,14 @@ def harden_unused_ports(conn, interfaces):
     """Shut down and assign unused ports to a quarantine VLAN."""
     commands = []
     for iface in interfaces:
-        commands.extend([
-            f"interface {iface}",
-            "switchport mode access",
-            "switchport access vlan 999",
-            "shutdown",
-        ])
+        commands.extend(
+            [
+                f"interface {iface}",
+                "switchport mode access",
+                "switchport access vlan 999",
+                "shutdown",
+            ]
+        )
     output = conn.send_config_set(commands)
     logger.info("Hardened %d unused ports", len(interfaces))
     return output
@@ -120,30 +126,36 @@ def audit_vlan_security(conn):
     if "VLAN0001" in vlan_output:
         trunk_output = conn.send_command("show interfaces trunk")
         if "1" in trunk_output:
-            findings.append({
-                "check": "Native VLAN",
-                "finding": "Default VLAN 1 may be used as native VLAN on trunks",
-                "severity": "Medium",
-                "remediation": "Change native VLAN to unused VLAN (e.g., 999)",
-            })
+            findings.append(
+                {
+                    "check": "Native VLAN",
+                    "finding": "Default VLAN 1 may be used as native VLAN on trunks",
+                    "severity": "Medium",
+                    "remediation": "Change native VLAN to unused VLAN (e.g., 999)",
+                }
+            )
 
     port_output = conn.send_command("show interfaces status")
     if "notconnect" in port_output.lower():
-        findings.append({
-            "check": "Unused Ports",
-            "finding": "Ports in notconnect state may not be hardened",
-            "severity": "Low",
-            "remediation": "Assign to quarantine VLAN and shut down",
-        })
+        findings.append(
+            {
+                "check": "Unused Ports",
+                "finding": "Ports in notconnect state may not be hardened",
+                "severity": "Low",
+                "remediation": "Assign to quarantine VLAN and shut down",
+            }
+        )
 
     dtp_output = conn.send_command("show dtp")
     if "DESIRABLE" in dtp_output or "AUTO" in dtp_output:
-        findings.append({
-            "check": "DTP Negotiation",
-            "finding": "DTP negotiation enabled - VLAN hopping risk",
-            "severity": "High",
-            "remediation": "Set all access ports to 'switchport nonegotiate'",
-        })
+        findings.append(
+            {
+                "check": "DTP Negotiation",
+                "finding": "DTP negotiation enabled - VLAN hopping risk",
+                "severity": "High",
+                "remediation": "Set all access ports to 'switchport nonegotiate'",
+            }
+        )
 
     logger.info("Security audit: %d findings", len(findings))
     return findings
@@ -170,7 +182,9 @@ def generate_report(host, vlans, audit_findings, actions):
         "security_findings": audit_findings,
         "configuration_actions": actions,
     }
-    print(f"VLAN SEGMENTATION REPORT: {len(vlans)} VLANs, {len(audit_findings)} findings")
+    print(
+        f"VLAN SEGMENTATION REPORT: {len(vlans)} VLANs, {len(audit_findings)} findings"
+    )
     return report
 
 
@@ -179,8 +193,12 @@ def main():
     parser.add_argument("--host", required=True, help="Switch management IP")
     parser.add_argument("--username", required=True, help="SSH username")
     parser.add_argument("--password", required=True, help="SSH password")
-    parser.add_argument("--device-type", default="cisco_ios", help="Netmiko device type")
-    parser.add_argument("--audit-only", action="store_true", help="Audit without changes")
+    parser.add_argument(
+        "--device-type", default="cisco_ios", help="Netmiko device type"
+    )
+    parser.add_argument(
+        "--audit-only", action="store_true", help="Audit without changes"
+    )
     parser.add_argument("--output", default="vlan_report.json")
     args = parser.parse_args()
 
@@ -190,7 +208,9 @@ def main():
 
     actions = []
     if not args.audit_only:
-        logger.info("Audit-only mode not set - configuration changes require explicit commands")
+        logger.info(
+            "Audit-only mode not set - configuration changes require explicit commands"
+        )
 
     report = generate_report(args.host, vlans, findings, actions)
     conn.disconnect()

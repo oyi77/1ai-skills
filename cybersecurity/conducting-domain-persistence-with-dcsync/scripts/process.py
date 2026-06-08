@@ -13,7 +13,6 @@ import json
 from datetime import datetime
 from collections import defaultdict
 
-
 REPLICATION_GUIDS = {
     "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2": "DS-Replication-Get-Changes",
     "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2": "DS-Replication-Get-Changes-All",
@@ -30,7 +29,7 @@ def parse_secretsdump_output(filepath: str) -> dict:
         "machine_accounts": [],
         "user_accounts": [],
         "krbtgt_hash": None,
-        "admin_hash": None
+        "admin_hash": None,
     }
 
     try:
@@ -58,7 +57,7 @@ def parse_secretsdump_output(filepath: str) -> dict:
                 "rid": rid,
                 "lm_hash": lm_hash,
                 "nt_hash": nt_hash,
-                "is_machine": username.endswith("$")
+                "is_machine": username.endswith("$"),
             }
 
             results["ntds_hashes"].append(entry)
@@ -75,10 +74,12 @@ def parse_secretsdump_output(filepath: str) -> dict:
 
         cleartext_match = cleartext_pattern.match(line)
         if cleartext_match:
-            results["cleartext_passwords"].append({
-                "username": cleartext_match.group(1),
-                "password": cleartext_match.group(2)
-            })
+            results["cleartext_passwords"].append(
+                {
+                    "username": cleartext_match.group(1),
+                    "password": cleartext_match.group(2),
+                }
+            )
 
     return results
 
@@ -88,7 +89,9 @@ def analyze_password_reuse(hashes: list) -> dict:
     hash_groups = defaultdict(list)
 
     for entry in hashes:
-        if entry["nt_hash"] != "31d6cfe0d16ae931b73c59d7e0c089c0":  # Skip empty passwords
+        if (
+            entry["nt_hash"] != "31d6cfe0d16ae931b73c59d7e0c089c0"
+        ):  # Skip empty passwords
             hash_groups[entry["nt_hash"]].append(entry["username"])
 
     reuse = {nt_hash: users for nt_hash, users in hash_groups.items() if len(users) > 1}
@@ -109,7 +112,7 @@ def generate_dcsync_report(results: dict, source_file: str) -> str:
         f"  User Accounts: {len(results['user_accounts'])}",
         f"  Machine Accounts: {len(results['machine_accounts'])}",
         f"  Cleartext Passwords: {len(results['cleartext_passwords'])}",
-        ""
+        "",
     ]
 
     # KRBTGT hash (most critical)
@@ -129,27 +132,33 @@ def generate_dcsync_report(results: dict, source_file: str) -> str:
     # Password reuse analysis
     reuse = analyze_password_reuse(results["user_accounts"])
     if reuse:
-        report.append(f"[HIGH] Password Reuse Detected ({len(reuse)} shared passwords):")
+        report.append(
+            f"[HIGH] Password Reuse Detected ({len(reuse)} shared passwords):"
+        )
         for nt_hash, users in list(reuse.items())[:10]:
             report.append(f"  Hash ...{nt_hash[-8:]}: {', '.join(users[:5])}")
         report.append("")
 
     # Cleartext passwords
     if results["cleartext_passwords"]:
-        report.append(f"[HIGH] Cleartext Passwords Found ({len(results['cleartext_passwords'])}):")
+        report.append(
+            f"[HIGH] Cleartext Passwords Found ({len(results['cleartext_passwords'])}):"
+        )
         for entry in results["cleartext_passwords"][:10]:
             report.append(f"  {entry['username']}: [REDACTED]")
         report.append("")
 
-    report.extend([
-        "[Persistence Opportunities]",
-        "  1. Golden Ticket: Use KRBTGT hash for indefinite domain access",
-        "  2. Silver Tickets: Use machine account hashes for service impersonation",
-        "  3. Pass-the-Hash: Use NT hashes for immediate lateral movement",
-        "  4. Password Cracking: Offline cracking of user hashes",
-        "",
-        "=" * 70
-    ])
+    report.extend(
+        [
+            "[Persistence Opportunities]",
+            "  1. Golden Ticket: Use KRBTGT hash for indefinite domain access",
+            "  2. Silver Tickets: Use machine account hashes for service impersonation",
+            "  3. Pass-the-Hash: Use NT hashes for immediate lateral movement",
+            "  4. Password Cracking: Offline cracking of user hashes",
+            "",
+            "=" * 70,
+        ]
+    )
 
     return "\n".join(report)
 

@@ -46,11 +46,16 @@ def sign_with_gpg(file_path: str, gpg_key: str) -> dict:
     """Sign a file with GPG detached signature."""
     sig_path = f"{file_path}.asc"
     cmd = [
-        "gpg", "--batch", "--yes",
-        "--detach-sign", "--armor",
-        "--local-user", gpg_key,
-        "--output", sig_path,
-        file_path
+        "gpg",
+        "--batch",
+        "--yes",
+        "--detach-sign",
+        "--armor",
+        "--local-user",
+        gpg_key,
+        "--output",
+        sig_path,
+        file_path,
     ]
 
     try:
@@ -68,10 +73,14 @@ def sign_with_cosign(file_path: str) -> dict:
     cert_path = f"{file_path}.cert"
 
     cmd = [
-        "cosign", "sign-blob", file_path,
-        "--output-signature", sig_path,
-        "--output-certificate", cert_path,
-        "--yes"
+        "cosign",
+        "sign-blob",
+        file_path,
+        "--output-signature",
+        sig_path,
+        "--output-certificate",
+        cert_path,
+        "--yes",
     ]
 
     try:
@@ -87,9 +96,14 @@ def sign_with_cosign(file_path: str) -> dict:
                 "signature": sig_path,
                 "certificate": cert_path,
                 "log_index": log_index,
-                "error": ""
+                "error": "",
             }
-        return {"signature": "", "certificate": "", "log_index": "", "error": proc.stderr[:200]}
+        return {
+            "signature": "",
+            "certificate": "",
+            "log_index": "",
+            "error": proc.stderr[:200],
+        }
     except (subprocess.TimeoutExpired, FileNotFoundError) as e:
         return {"signature": "", "certificate": "", "log_index": "", "error": str(e)}
 
@@ -120,12 +134,18 @@ def generate_checksums(artifacts_dir: str, artifacts: list) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description="Artifact Code Signing Pipeline")
-    parser.add_argument("--artifacts-dir", required=True, help="Directory containing artifacts to sign")
+    parser.add_argument(
+        "--artifacts-dir", required=True, help="Directory containing artifacts to sign"
+    )
     parser.add_argument("--method", default="both", choices=["gpg", "sigstore", "both"])
     parser.add_argument("--gpg-key", default=None, help="GPG key identity for signing")
     parser.add_argument("--output", default="signing-report.json")
-    parser.add_argument("--extensions", nargs="*", default=[".tar.gz", ".zip", ".whl", ".deb", ".rpm"],
-                        help="File extensions to sign")
+    parser.add_argument(
+        "--extensions",
+        nargs="*",
+        default=[".tar.gz", ".zip", ".whl", ".deb", ".rpm"],
+        help="File extensions to sign",
+    )
     args = parser.parse_args()
 
     artifacts_dir = os.path.abspath(args.artifacts_dir)
@@ -150,8 +170,12 @@ def main():
             gpg_result = sign_with_gpg(file_path, args.gpg_key)
             result.gpg_signature = gpg_result["signature"]
             if gpg_result["signature"]:
-                result.gpg_verified = verify_gpg_signature(file_path, gpg_result["signature"])
-                print(f"  [GPG] {filename}: {'OK' if result.gpg_verified else 'FAILED'}")
+                result.gpg_verified = verify_gpg_signature(
+                    file_path, gpg_result["signature"]
+                )
+                print(
+                    f"  [GPG] {filename}: {'OK' if result.gpg_verified else 'FAILED'}"
+                )
             else:
                 print(f"  [GPG] {filename}: ERROR - {gpg_result['error']}")
 
@@ -163,7 +187,9 @@ def main():
             if result.sigstore_signature:
                 print(f"  [Sigstore] {filename}: OK (log: {result.sigstore_log_index})")
             else:
-                print(f"  [Sigstore] {filename}: ERROR - {cosign_result.get('error', 'unknown')}")
+                print(
+                    f"  [Sigstore] {filename}: ERROR - {cosign_result.get('error', 'unknown')}"
+                )
                 result.error = cosign_result.get("error", "")
 
         results.append(result)
@@ -175,7 +201,7 @@ def main():
         "metadata": {
             "signing_date": datetime.now(timezone.utc).isoformat(),
             "method": args.method,
-            "artifacts_count": len(results)
+            "artifacts_count": len(results),
         },
         "artifacts": [
             {
@@ -184,10 +210,10 @@ def main():
                 "gpg_signed": bool(r.gpg_signature),
                 "gpg_verified": r.gpg_verified,
                 "sigstore_signed": bool(r.sigstore_signature),
-                "sigstore_log_index": r.sigstore_log_index
+                "sigstore_log_index": r.sigstore_log_index,
             }
             for r in results
-        ]
+        ],
     }
 
     output_path = os.path.abspath(args.output)
@@ -196,8 +222,8 @@ def main():
     print(f"[*] Report: {output_path}")
 
     all_signed = all(
-        (r.gpg_verified or args.method == "sigstore") and
-        (bool(r.sigstore_signature) or args.method == "gpg")
+        (r.gpg_verified or args.method == "sigstore")
+        and (bool(r.sigstore_signature) or args.method == "gpg")
         for r in results
     )
     print(f"\n[{'PASS' if all_signed else 'FAIL'}] All artifacts signed: {all_signed}")

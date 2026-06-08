@@ -17,7 +17,7 @@ CACHE_DIR = Path("/home/openclaw/.openclaw/workspace/reports/cache")
 
 HEADERS = {
     "Authorization": f"Bearer {POSTBRIDGE_KEY}",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
 }
 
 
@@ -77,7 +77,7 @@ def sync_analytics(platforms: list = None) -> dict:
                 f"{POSTBRIDGE_BASE}/analytics/sync",
                 headers=HEADERS,
                 params={"platform": platform},
-                timeout=30
+                timeout=30,
             )
             results[platform] = resp.status_code == 200
         except Exception as e:
@@ -88,11 +88,11 @@ def sync_analytics(platforms: list = None) -> dict:
 def collect_all(use_cache: bool = False, force_sync: bool = False) -> dict:
     """
     Master collection function. Returns full dataset dict.
-    
+
     Args:
         use_cache: Load from disk cache if available
         force_sync: Trigger PostBridge sync before collecting
-    
+
     Returns:
         {
           "analytics": [...],
@@ -138,7 +138,7 @@ def collect_all(use_cache: bool = False, force_sync: bool = False) -> dict:
         "posts": posts,
         "post_results": post_results,
         "social_accounts": social_accounts,
-        "collected_at": datetime.now().isoformat()
+        "collected_at": datetime.now().isoformat(),
     }
 
     # Save cache
@@ -173,15 +173,20 @@ def build_lookup_maps(dataset: dict) -> dict:
         "post_by_id": post_by_id,
         "account_by_id": account_by_id,
         "results_by_post_id": results_by_post_id,
-        "analytics_by_result_id": analytics_by_result_id
+        "analytics_by_result_id": analytics_by_result_id,
     }
 
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser(description="Collect PostBridge analytics data")
-    parser.add_argument("--sync", action="store_true", help="Force analytics sync first")
-    parser.add_argument("--cache", action="store_true", help="Use cached data if available")
+    parser.add_argument(
+        "--sync", action="store_true", help="Force analytics sync first"
+    )
+    parser.add_argument(
+        "--cache", action="store_true", help="Use cached data if available"
+    )
     args = parser.parse_args()
 
     data = collect_all(use_cache=args.cache, force_sync=args.sync)

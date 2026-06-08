@@ -12,7 +12,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -48,7 +50,9 @@ def parse_email_file(eml_path):
     elif "dmarc=fail" in auth_results:
         parsed["dmarc"] = "fail"
 
-    logger.info("Parsed email: Subject='%s' From='%s'", parsed["subject"], parsed["from"])
+    logger.info(
+        "Parsed email: Subject='%s' From='%s'", parsed["subject"], parsed["from"]
+    )
     return parsed, msg
 
 
@@ -77,13 +81,15 @@ def extract_attachments(msg):
             if content:
                 sha256 = hashlib.sha256(content).hexdigest()
                 md5 = hashlib.md5(content).hexdigest()
-                attachments.append({
-                    "filename": filename,
-                    "content_type": part.get_content_type(),
-                    "size": len(content),
-                    "sha256": sha256,
-                    "md5": md5,
-                })
+                attachments.append(
+                    {
+                        "filename": filename,
+                        "content_type": part.get_content_type(),
+                        "size": len(content),
+                        "sha256": sha256,
+                        "md5": md5,
+                    }
+                )
                 logger.info("Attachment: %s (SHA256: %s)", filename, sha256[:16])
     return attachments
 
@@ -91,6 +97,7 @@ def extract_attachments(msg):
 def check_url_virustotal(url, api_key):
     """Check URL reputation on VirusTotal."""
     import base64
+
     url_id = base64.urlsafe_b64encode(url.encode()).decode().strip("=")
     vt_url = f"https://www.virustotal.com/api/v3/urls/{url_id}"
     headers = {"x-apikey": api_key}
@@ -129,7 +136,9 @@ def check_hash_virustotal(file_hash, api_key):
         return {
             "hash": file_hash,
             "malicious": attrs["last_analysis_stats"].get("malicious", 0),
-            "threat_name": attrs.get("popular_threat_classification", {}).get("suggested_threat_label", ""),
+            "threat_name": attrs.get("popular_threat_classification", {}).get(
+                "suggested_threat_label", ""
+            ),
         }
     return {"hash": file_hash, "status": "not_found"}
 
@@ -158,7 +167,9 @@ def assess_phishing_severity(parsed_email, url_results, attachment_results):
     return {"severity": severity, "indicators": indicators}
 
 
-def generate_phishing_report(parsed_email, urls, attachments, url_results, att_results, assessment):
+def generate_phishing_report(
+    parsed_email, urls, attachments, url_results, att_results, assessment
+):
     """Generate phishing incident response report."""
     report = {
         "timestamp": datetime.utcnow().isoformat(),
@@ -170,7 +181,9 @@ def generate_phishing_report(parsed_email, urls, attachments, url_results, att_r
         "severity_assessment": assessment,
     }
     print(f"PHISHING IR REPORT - Severity: {assessment['severity']}")
-    print(f"URLs: {len(urls)}, Attachments: {len(attachments)}, Indicators: {len(assessment['indicators'])}")
+    print(
+        f"URLs: {len(urls)}, Attachments: {len(attachments)}, Indicators: {len(assessment['indicators'])}"
+    )
     return report
 
 
@@ -196,7 +209,9 @@ def main():
             att_results.append(check_hash_virustotal(att["sha256"], args.vt_key))
 
     assessment = assess_phishing_severity(parsed, url_results, att_results)
-    report = generate_phishing_report(parsed, urls, attachments, url_results, att_results, assessment)
+    report = generate_phishing_report(
+        parsed, urls, attachments, url_results, att_results, assessment
+    )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)

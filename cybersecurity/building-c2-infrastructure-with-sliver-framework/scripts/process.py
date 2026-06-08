@@ -40,9 +40,15 @@ def check_ssl_certificate(host: str, port: int = 443) -> dict:
                 cert = ssock.getpeercert(binary_form=False)
                 return {
                     "status": "valid",
-                    "subject": str(cert.get("subject", "N/A")) if cert else "No cert data",
-                    "issuer": str(cert.get("issuer", "N/A")) if cert else "No cert data",
-                    "expiry": str(cert.get("notAfter", "N/A")) if cert else "No cert data"
+                    "subject": (
+                        str(cert.get("subject", "N/A")) if cert else "No cert data"
+                    ),
+                    "issuer": (
+                        str(cert.get("issuer", "N/A")) if cert else "No cert data"
+                    ),
+                    "expiry": (
+                        str(cert.get("notAfter", "N/A")) if cert else "No cert data"
+                    ),
                 }
     except ssl.SSLError as e:
         return {"status": "ssl_error", "error": str(e)}
@@ -54,12 +60,11 @@ def check_dns_listener(domain: str, nameserver: str = "8.8.8.8") -> dict:
     """Check if DNS C2 domain resolves correctly."""
     try:
         result = subprocess.run(
-            ["nslookup", domain, nameserver],
-            capture_output=True, text=True, timeout=10
+            ["nslookup", domain, nameserver], capture_output=True, text=True, timeout=10
         )
         return {
             "status": "active" if result.returncode == 0 else "inactive",
-            "output": result.stdout.strip()[:500]
+            "output": result.stdout.strip()[:500],
         }
     except (subprocess.TimeoutExpired, FileNotFoundError) as e:
         return {"status": "error", "error": str(e)}
@@ -71,7 +76,7 @@ def check_redirector_health(redirector_ip: str, port: int = 443) -> dict:
         "ip": redirector_ip,
         "port": port,
         "port_open": check_port_open(redirector_ip, port),
-        "ssl": check_ssl_certificate(redirector_ip, port) if port == 443 else "N/A"
+        "ssl": check_ssl_certificate(redirector_ip, port) if port == 443 else "N/A",
     }
     return result
 
@@ -83,7 +88,7 @@ def generate_infrastructure_report(config: dict) -> str:
         f"Sliver C2 Infrastructure Health Report",
         f"Generated: {datetime.now().isoformat()}",
         "=" * 60,
-        ""
+        "",
     ]
 
     team_server = config.get("team_server", {})
@@ -145,16 +150,13 @@ def main():
         print(f"Config file not found: {config_path}")
         print("Creating example configuration...")
         example_config = {
-            "team_server": {
-                "host": "10.0.0.1",
-                "ports": [443, 8888, 53, 51820]
-            },
+            "team_server": {"host": "10.0.0.1", "ports": [443, 8888, 53, 51820]},
             "redirectors": [
                 {"ip": "203.0.113.10", "port": 443},
-                {"ip": "203.0.113.20", "port": 443}
+                {"ip": "203.0.113.20", "port": 443},
             ],
             "dns_domains": ["c2dns.example.com"],
-            "https_hosts": ["c2.example.com"]
+            "https_hosts": ["c2.example.com"],
         }
         with open(config_path, "w") as f:
             json.dump(example_config, f, indent=2)

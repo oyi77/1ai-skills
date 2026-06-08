@@ -15,16 +15,30 @@ def analyze_alerts(csv_file, threshold=5):
         rows = list(reader)
     alerts = []
     for row in rows:
-        alerts.append({
-            "rule": row.get("rule_name", row.get("Rule", row.get("alert_name", ""))),
-            "source": row.get("src_ip", row.get("source_ip", row.get("Source", ""))),
-            "dest": row.get("dst_ip", row.get("dest_ip", row.get("Destination", ""))),
-            "severity": row.get("severity", row.get("Severity", "")),
-            "status": row.get("status", row.get("Status", row.get("disposition", ""))).lower(),
-            "timestamp": row.get("timestamp", row.get("Time", "")),
-        })
+        alerts.append(
+            {
+                "rule": row.get(
+                    "rule_name", row.get("Rule", row.get("alert_name", ""))
+                ),
+                "source": row.get(
+                    "src_ip", row.get("source_ip", row.get("Source", ""))
+                ),
+                "dest": row.get(
+                    "dst_ip", row.get("dest_ip", row.get("Destination", ""))
+                ),
+                "severity": row.get("severity", row.get("Severity", "")),
+                "status": row.get(
+                    "status", row.get("Status", row.get("disposition", ""))
+                ).lower(),
+                "timestamp": row.get("timestamp", row.get("Time", "")),
+            }
+        )
     total = len(alerts)
-    fp_alerts = [a for a in alerts if a["status"] in ("false_positive", "fp", "closed_fp", "benign")]
+    fp_alerts = [
+        a
+        for a in alerts
+        if a["status"] in ("false_positive", "fp", "closed_fp", "benign")
+    ]
     fp_rate = len(fp_alerts) / total * 100 if total else 0
     rule_counts = Counter(a["rule"] for a in alerts)
     fp_by_rule = Counter(a["rule"] for a in fp_alerts)
@@ -33,9 +47,18 @@ def analyze_alerts(csv_file, threshold=5):
         fp_count = fp_by_rule.get(rule, 0)
         rate = fp_count / count * 100 if count else 0
         if rate >= threshold or fp_count >= 10:
-            noisy_rules.append({"rule": rule, "total": count, "false_positives": fp_count, "fp_rate": round(rate, 1)})
+            noisy_rules.append(
+                {
+                    "rule": rule,
+                    "total": count,
+                    "false_positives": fp_count,
+                    "fp_rate": round(rate, 1),
+                }
+            )
     source_fp = Counter(a["source"] for a in fp_alerts)
-    top_fp_sources = [{"source": s, "fp_count": c} for s, c in source_fp.most_common(10)]
+    top_fp_sources = [
+        {"source": s, "fp_count": c} for s, c in source_fp.most_common(10)
+    ]
     return {
         "total_alerts": total,
         "false_positives": len(fp_alerts),
@@ -62,7 +85,9 @@ def generate_tuning_recommendations(csv_file):
         else:
             action = "REVIEW"
             reason = f"FP rate {rule['fp_rate']}% with {rule['false_positives']} FPs — manual review needed"
-        recommendations.append({"rule": rule["rule"], "action": action, "reason": reason, **rule})
+        recommendations.append(
+            {"rule": rule["rule"], "action": action, "reason": reason, **rule}
+        )
     return {
         "generated": datetime.utcnow().isoformat(),
         "overall_fp_rate": analysis["fp_rate_pct"],
@@ -93,7 +118,12 @@ def simulate_tuning_impact(csv_file, rules_to_disable=None, sources_to_whitelist
             continue
         remaining.append(row)
     reduction = (1 - len(remaining) / original) * 100 if original else 0
-    fp_remaining = sum(1 for r in remaining if r.get("status", r.get("Status", "")).lower() in ("false_positive", "fp", "closed_fp", "benign"))
+    fp_remaining = sum(
+        1
+        for r in remaining
+        if r.get("status", r.get("Status", "")).lower()
+        in ("false_positive", "fp", "closed_fp", "benign")
+    )
     new_fp_rate = fp_remaining / len(remaining) * 100 if remaining else 0
     return {
         "original_alerts": original,
@@ -122,7 +152,9 @@ def main():
     elif args.command == "tune":
         result = generate_tuning_recommendations(args.csv)
     elif args.command == "simulate":
-        result = simulate_tuning_impact(args.csv, args.disable_rules, args.whitelist_sources)
+        result = simulate_tuning_impact(
+            args.csv, args.disable_rules, args.whitelist_sources
+        )
     else:
         parser.print_help()
         return

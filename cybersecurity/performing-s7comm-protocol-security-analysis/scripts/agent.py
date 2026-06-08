@@ -38,17 +38,19 @@ def load_pcap(pcap_path: str, display_filter: str = "s7comm") -> list:
     for pkt in cap:
         try:
             s7_layer = pkt.s7comm
-            packets.append({
-                "timestamp": str(pkt.sniff_time),
-                "src_ip": str(pkt.ip.src),
-                "dst_ip": str(pkt.ip.dst),
-                "src_port": str(pkt.tcp.srcport),
-                "dst_port": str(pkt.tcp.dstport),
-                "rosctr": getattr(s7_layer, "rosctr", "unknown"),
-                "function": getattr(s7_layer, "param_func", "unknown"),
-                "error_class": getattr(s7_layer, "error_class", "0"),
-                "error_code": getattr(s7_layer, "error_code", "0"),
-            })
+            packets.append(
+                {
+                    "timestamp": str(pkt.sniff_time),
+                    "src_ip": str(pkt.ip.src),
+                    "dst_ip": str(pkt.ip.dst),
+                    "src_port": str(pkt.tcp.srcport),
+                    "dst_port": str(pkt.tcp.dstport),
+                    "rosctr": getattr(s7_layer, "rosctr", "unknown"),
+                    "function": getattr(s7_layer, "param_func", "unknown"),
+                    "error_class": getattr(s7_layer, "error_class", "0"),
+                    "error_code": getattr(s7_layer, "error_code", "0"),
+                }
+            )
         except AttributeError:
             continue
     cap.close()
@@ -64,14 +66,16 @@ def detect_unauthorized_access(packets: list) -> list[dict]:
 
     for plc_ip, sources in plc_connections.items():
         if len(sources) > 3:
-            findings.append({
-                "type": "multiple_sources_to_plc",
-                "severity": "high",
-                "plc_ip": plc_ip,
-                "source_count": len(sources),
-                "sources": sorted(sources),
-                "detail": f"PLC {plc_ip} accessed by {len(sources)} unique sources",
-            })
+            findings.append(
+                {
+                    "type": "multiple_sources_to_plc",
+                    "severity": "high",
+                    "plc_ip": plc_ip,
+                    "source_count": len(sources),
+                    "sources": sorted(sources),
+                    "detail": f"PLC {plc_ip} accessed by {len(sources)} unique sources",
+                }
+            )
     return findings
 
 
@@ -82,15 +86,17 @@ def detect_dangerous_operations(packets: list) -> list[dict]:
         func_code = pkt.get("function", "unknown")
         func_name = S7_FUNCTION_CODES.get(func_code, func_code)
         if func_name in DANGEROUS_FUNCTIONS:
-            findings.append({
-                "type": f"dangerous_operation_{func_name}",
-                "severity": "critical" if func_name in ("stop", "run") else "high",
-                "src_ip": pkt["src_ip"],
-                "dst_ip": pkt["dst_ip"],
-                "timestamp": pkt["timestamp"],
-                "function": func_name,
-                "detail": f"{func_name} operation from {pkt['src_ip']} to PLC {pkt['dst_ip']}",
-            })
+            findings.append(
+                {
+                    "type": f"dangerous_operation_{func_name}",
+                    "severity": "critical" if func_name in ("stop", "run") else "high",
+                    "src_ip": pkt["src_ip"],
+                    "dst_ip": pkt["dst_ip"],
+                    "timestamp": pkt["timestamp"],
+                    "function": func_name,
+                    "detail": f"{func_name} operation from {pkt['src_ip']} to PLC {pkt['dst_ip']}",
+                }
+            )
     return findings
 
 
@@ -105,14 +111,16 @@ def detect_brute_force(packets: list, threshold: int = 10) -> list[dict]:
 
     for (src, dst), count in error_counts.items():
         if count >= threshold:
-            findings.append({
-                "type": "potential_brute_force",
-                "severity": "critical",
-                "src_ip": src,
-                "dst_ip": dst,
-                "error_count": count,
-                "detail": f"{count} error responses from PLC {dst} to {src} — possible brute-force",
-            })
+            findings.append(
+                {
+                    "type": "potential_brute_force",
+                    "severity": "critical",
+                    "src_ip": src,
+                    "dst_ip": dst,
+                    "error_count": count,
+                    "detail": f"{count} error responses from PLC {dst} to {src} — possible brute-force",
+                }
+            )
     return findings
 
 
@@ -159,9 +167,18 @@ def generate_report(pcap_path: str, brute_threshold: int) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="S7comm Protocol Security Analysis Agent")
-    parser.add_argument("--pcap", required=True, help="Path to PCAP file with S7comm traffic")
-    parser.add_argument("--brute-threshold", type=int, default=10, help="Error count threshold for brute-force (default: 10)")
+    parser = argparse.ArgumentParser(
+        description="S7comm Protocol Security Analysis Agent"
+    )
+    parser.add_argument(
+        "--pcap", required=True, help="Path to PCAP file with S7comm traffic"
+    )
+    parser.add_argument(
+        "--brute-threshold",
+        type=int,
+        default=10,
+        help="Error count threshold for brute-force (default: 10)",
+    )
     parser.add_argument("--output", help="Output JSON file path")
     args = parser.parse_args()
 

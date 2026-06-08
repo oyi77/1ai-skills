@@ -22,10 +22,14 @@ def scan_image_trivy(image, severity="HIGH,CRITICAL", output_format="json"):
                 vulns = target.get("Vulnerabilities", [])
                 total_vulns += len(vulns)
                 if vulns:
-                    print(f"  Target: {target.get('Target', 'unknown')}: {len(vulns)} vulnerabilities")
+                    print(
+                        f"  Target: {target.get('Target', 'unknown')}: {len(vulns)} vulnerabilities"
+                    )
                     for v in vulns[:5]:
-                        print(f"    [{v.get('Severity', '?')}] {v.get('VulnerabilityID', '?')} "
-                              f"- {v.get('PkgName', '?')} {v.get('InstalledVersion', '?')}")
+                        print(
+                            f"    [{v.get('Severity', '?')}] {v.get('VulnerabilityID', '?')} "
+                            f"- {v.get('PkgName', '?')} {v.get('InstalledVersion', '?')}"
+                        )
             print(f"[*] Total vulnerabilities found: {total_vulns}")
             return data
         else:
@@ -55,7 +59,9 @@ def generate_sbom(image, output_format="spdx-json", output_file="sbom.json"):
             return data
         return None
     except FileNotFoundError:
-        print("  [-] Syft not installed. Install: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh")
+        print(
+            "  [-] Syft not installed. Install: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh"
+        )
         return None
 
 
@@ -84,21 +90,35 @@ def audit_ecr_repository(repo_name, region="us-east-1"):
     ecr = boto3.client("ecr", region_name=region)
     findings = []
     try:
-        scan_config = ecr.describe_repositories(repositoryNames=[repo_name])["repositories"][0]
+        scan_config = ecr.describe_repositories(repositoryNames=[repo_name])[
+            "repositories"
+        ][0]
         repo_uri = scan_config["repositoryUri"]
         print(f"\n[*] Auditing ECR repository: {repo_name}")
         print(f"  URI: {repo_uri}")
 
         img_scan = scan_config.get("imageScanningConfiguration", {})
         if not img_scan.get("scanOnPush", False):
-            findings.append({"check": "scan_on_push", "status": "FAIL", "detail": "Scan on push disabled"})
+            findings.append(
+                {
+                    "check": "scan_on_push",
+                    "status": "FAIL",
+                    "detail": "Scan on push disabled",
+                }
+            )
             print("  [!] Scan on push: DISABLED")
         else:
             print("  [+] Scan on push: ENABLED")
 
         mutability = scan_config.get("imageTagMutability", "MUTABLE")
         if mutability == "MUTABLE":
-            findings.append({"check": "tag_immutability", "status": "FAIL", "detail": "Tags are mutable"})
+            findings.append(
+                {
+                    "check": "tag_immutability",
+                    "status": "FAIL",
+                    "detail": "Tags are mutable",
+                }
+            )
             print("  [!] Tag immutability: MUTABLE (tags can be overwritten)")
         else:
             print("  [+] Tag immutability: IMMUTABLE")
@@ -107,10 +127,18 @@ def audit_ecr_repository(repo_name, region="us-east-1"):
             lifecycle = ecr.get_lifecycle_policy(repositoryName=repo_name)
             print("  [+] Lifecycle policy: CONFIGURED")
         except ecr.exceptions.LifecyclePolicyNotFoundException:
-            findings.append({"check": "lifecycle_policy", "status": "FAIL", "detail": "No lifecycle policy"})
+            findings.append(
+                {
+                    "check": "lifecycle_policy",
+                    "status": "FAIL",
+                    "detail": "No lifecycle policy",
+                }
+            )
             print("  [!] Lifecycle policy: NOT CONFIGURED")
 
-        images = ecr.list_images(repositoryName=repo_name, filter={"tagStatus": "UNTAGGED"})
+        images = ecr.list_images(
+            repositoryName=repo_name, filter={"tagStatus": "UNTAGGED"}
+        )
         untagged = len(images.get("imageIds", []))
         if untagged > 0:
             print(f"  [!] Untagged images: {untagged}")
@@ -125,7 +153,8 @@ def get_ecr_scan_findings(repo_name, tag="latest", region="us-east-1"):
     ecr = boto3.client("ecr", region_name=region)
     try:
         response = ecr.describe_image_scan_findings(
-            repositoryName=repo_name, imageId={"imageTag": tag},
+            repositoryName=repo_name,
+            imageId={"imageTag": tag},
         )
         findings = response.get("imageScanFindings", {})
         severity_counts = findings.get("findingSeverityCounts", {})
@@ -168,11 +197,18 @@ def full_audit(image, repo_name=None, region="us-east-1", output_dir="."):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Container Registry Image Security Agent")
-    parser.add_argument("action", choices=["scan", "sbom", "verify", "ecr-audit", "ecr-findings", "full-audit"])
+    parser = argparse.ArgumentParser(
+        description="Container Registry Image Security Agent"
+    )
+    parser.add_argument(
+        "action",
+        choices=["scan", "sbom", "verify", "ecr-audit", "ecr-findings", "full-audit"],
+    )
     parser.add_argument("--image", help="Container image reference")
     parser.add_argument("--repo", help="ECR repository name")
-    parser.add_argument("--tag", default="latest", help="Image tag for ECR scan results")
+    parser.add_argument(
+        "--tag", default="latest", help="Image tag for ECR scan results"
+    )
     parser.add_argument("--key", help="Cosign public key file")
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("-o", "--output", default=".")

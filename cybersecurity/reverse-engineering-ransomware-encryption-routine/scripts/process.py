@@ -46,7 +46,7 @@ CRYPTO_APIS = {
     "AES_set_encrypt_key": ("OpenSSL", "aes_init"),
 }
 
-AES_SBOX_PREFIX = bytes([0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5])
+AES_SBOX_PREFIX = bytes([0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5])
 CHACHA_CONST = b"expand 32-byte k"
 SALSA_CONST = b"expand 32-byte k"
 
@@ -56,16 +56,19 @@ def entropy(data):
         return 0.0
     freq = Counter(data)
     length = len(data)
-    return -sum(
-        (c / length) * math.log2(c / length) for c in freq.values()
-    )
+    return -sum((c / length) * math.log2(c / length) for c in freq.values())
 
 
 def analyze_sample(filepath):
-    report = {"file": str(filepath), "crypto_apis": [], "constants": [],
-              "embedded_keys": [], "target_extensions": []}
+    report = {
+        "file": str(filepath),
+        "crypto_apis": [],
+        "constants": [],
+        "embedded_keys": [],
+        "target_extensions": [],
+    }
 
-    with open(filepath, 'rb') as f:
+    with open(filepath, "rb") as f:
         data = f.read()
 
     report["size"] = len(data)
@@ -75,20 +78,22 @@ def analyze_sample(filepath):
     if pefile:
         try:
             pe = pefile.PE(filepath)
-            if hasattr(pe, 'DIRECTORY_ENTRY_IMPORT'):
+            if hasattr(pe, "DIRECTORY_ENTRY_IMPORT"):
                 for entry in pe.DIRECTORY_ENTRY_IMPORT:
-                    dll = entry.dll.decode('utf-8', errors='replace')
+                    dll = entry.dll.decode("utf-8", errors="replace")
                     for imp in entry.imports:
                         if imp.name:
-                            name = imp.name.decode('utf-8', errors='replace')
+                            name = imp.name.decode("utf-8", errors="replace")
                             if name in CRYPTO_APIS:
                                 framework, op = CRYPTO_APIS[name]
-                                report["crypto_apis"].append({
-                                    "dll": dll,
-                                    "function": name,
-                                    "framework": framework,
-                                    "operation": op,
-                                })
+                                report["crypto_apis"].append(
+                                    {
+                                        "dll": dll,
+                                        "function": name,
+                                        "framework": framework,
+                                        "operation": op,
+                                    }
+                                )
         except Exception:
             pass
 
@@ -99,26 +104,30 @@ def analyze_sample(filepath):
         report["constants"].append("ChaCha20/Salsa20")
 
     # RSA keys
-    pem_markers = [b'-----BEGIN PUBLIC KEY-----',
-                   b'-----BEGIN RSA PUBLIC KEY-----']
+    pem_markers = [b"-----BEGIN PUBLIC KEY-----", b"-----BEGIN RSA PUBLIC KEY-----"]
     for marker in pem_markers:
         idx = data.find(marker)
         if idx != -1:
-            end = data.find(b'-----END', idx)
+            end = data.find(b"-----END", idx)
             if end != -1:
-                key_data = data[idx:end + 30].decode('ascii', errors='replace')
-                report["embedded_keys"].append({
-                    "type": "PEM RSA Public Key",
-                    "offset": f"0x{idx:x}",
-                    "preview": key_data[:100],
-                })
+                key_data = data[idx : end + 30].decode("ascii", errors="replace")
+                report["embedded_keys"].append(
+                    {
+                        "type": "PEM RSA Public Key",
+                        "offset": f"0x{idx:x}",
+                        "preview": key_data[:100],
+                    }
+                )
 
     # Target extensions
-    ext_pattern = re.compile(rb'\.(?:doc|docx|xls|xlsx|pdf|ppt|pptx|'
-                              rb'jpg|png|sql|mdb|bak|zip|rar|7z|'
-                              rb'psd|dwg|vmdk|raw|db)\b', re.I)
+    ext_pattern = re.compile(
+        rb"\.(?:doc|docx|xls|xlsx|pdf|ppt|pptx|"
+        rb"jpg|png|sql|mdb|bak|zip|rar|7z|"
+        rb"psd|dwg|vmdk|raw|db)\b",
+        re.I,
+    )
     for m in ext_pattern.finditer(data):
-        ext = m.group().decode('ascii', errors='replace').lower()
+        ext = m.group().decode("ascii", errors="replace").lower()
         if ext not in report["target_extensions"]:
             report["target_extensions"].append(ext)
 
@@ -126,7 +135,7 @@ def analyze_sample(filepath):
 
 
 def analyze_encrypted_file(filepath):
-    with open(filepath, 'rb') as f:
+    with open(filepath, "rb") as f:
         data = f.read()
 
     report = {
@@ -143,18 +152,18 @@ def analyze_encrypted_file(filepath):
             tail = data[-key_size:]
             tail_entropy = entropy(tail)
             if tail_entropy > 7.5:
-                report["possible_appended_key"].append({
-                    "size": key_size,
-                    "entropy": round(tail_entropy, 3),
-                })
+                report["possible_appended_key"].append(
+                    {
+                        "size": key_size,
+                        "entropy": round(tail_entropy, 3),
+                    }
+                )
 
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Ransomware Encryption Analyzer"
-    )
+    parser = argparse.ArgumentParser(description="Ransomware Encryption Analyzer")
     parser.add_argument("--sample", help="Ransomware binary")
     parser.add_argument("--encrypted-file", help="Encrypted file to analyze")
     parser.add_argument("--output", help="Output JSON report")
@@ -171,7 +180,7 @@ def main():
 
     print(json.dumps(report, indent=2))
     if args.output:
-        with open(args.output, 'w') as f:
+        with open(args.output, "w") as f:
             json.dump(report, f, indent=2)
 
 

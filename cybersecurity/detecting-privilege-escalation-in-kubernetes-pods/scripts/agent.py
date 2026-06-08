@@ -11,8 +11,13 @@ import subprocess
 from datetime import datetime
 
 DANGEROUS_CAPABILITIES = {
-    "SYS_ADMIN", "SYS_PTRACE", "SYS_MODULE", "NET_ADMIN",
-    "NET_RAW", "DAC_READ_SEARCH", "SYS_RAWIO",
+    "SYS_ADMIN",
+    "SYS_PTRACE",
+    "SYS_MODULE",
+    "NET_ADMIN",
+    "NET_RAW",
+    "DAC_READ_SEARCH",
+    "SYS_RAWIO",
 }
 
 
@@ -38,9 +43,13 @@ def audit_pod(pod):
     spec = pod.get("spec", {})
 
     if spec.get("hostPID"):
-        findings.append({"check": "hostPID", "severity": "CRITICAL", "desc": "Host PID namespace"})
+        findings.append(
+            {"check": "hostPID", "severity": "CRITICAL", "desc": "Host PID namespace"}
+        )
     if spec.get("hostNetwork"):
-        findings.append({"check": "hostNetwork", "severity": "HIGH", "desc": "Host network"})
+        findings.append(
+            {"check": "hostNetwork", "severity": "HIGH", "desc": "Host network"}
+        )
     if spec.get("hostIPC"):
         findings.append({"check": "hostIPC", "severity": "MEDIUM", "desc": "Host IPC"})
 
@@ -48,29 +57,71 @@ def audit_pod(pod):
         ctx = container.get("securityContext", {})
         c_name = container.get("name", "")
         if ctx.get("privileged"):
-            findings.append({"container": c_name, "check": "privileged",
-                             "severity": "CRITICAL", "desc": "Privileged container"})
+            findings.append(
+                {
+                    "container": c_name,
+                    "check": "privileged",
+                    "severity": "CRITICAL",
+                    "desc": "Privileged container",
+                }
+            )
         if ctx.get("allowPrivilegeEscalation", True):
-            findings.append({"container": c_name, "check": "allowPrivilegeEscalation",
-                             "severity": "HIGH", "desc": "Privilege escalation allowed"})
+            findings.append(
+                {
+                    "container": c_name,
+                    "check": "allowPrivilegeEscalation",
+                    "severity": "HIGH",
+                    "desc": "Privilege escalation allowed",
+                }
+            )
         run_as = ctx.get("runAsUser")
         if run_as == 0 or (run_as is None and not ctx.get("runAsNonRoot")):
-            findings.append({"container": c_name, "check": "runAsRoot",
-                             "severity": "HIGH", "desc": "May run as root"})
+            findings.append(
+                {
+                    "container": c_name,
+                    "check": "runAsRoot",
+                    "severity": "HIGH",
+                    "desc": "May run as root",
+                }
+            )
         if not ctx.get("readOnlyRootFilesystem"):
-            findings.append({"container": c_name, "check": "mutableFS",
-                             "severity": "MEDIUM", "desc": "Writable root FS"})
+            findings.append(
+                {
+                    "container": c_name,
+                    "check": "mutableFS",
+                    "severity": "MEDIUM",
+                    "desc": "Writable root FS",
+                }
+            )
         caps = ctx.get("capabilities", {})
         for cap in set(caps.get("add", [])) & DANGEROUS_CAPABILITIES:
-            findings.append({"container": c_name, "check": "dangerous_cap",
-                             "capability": cap, "severity": "CRITICAL"})
+            findings.append(
+                {
+                    "container": c_name,
+                    "check": "dangerous_cap",
+                    "capability": cap,
+                    "severity": "CRITICAL",
+                }
+            )
         for vm in container.get("volumeMounts", []):
-            if vm.get("mountPath") in ("/var/run/docker.sock", "/run/containerd/containerd.sock"):
-                findings.append({"container": c_name, "check": "runtime_socket",
-                                 "severity": "CRITICAL", "desc": f"Socket: {vm['mountPath']}"})
+            if vm.get("mountPath") in (
+                "/var/run/docker.sock",
+                "/run/containerd/containerd.sock",
+            ):
+                findings.append(
+                    {
+                        "container": c_name,
+                        "check": "runtime_socket",
+                        "severity": "CRITICAL",
+                        "desc": f"Socket: {vm['mountPath']}",
+                    }
+                )
 
-    risk = "CRITICAL" if any(f["severity"] == "CRITICAL" for f in findings) else \
-           "HIGH" if any(f["severity"] == "HIGH" for f in findings) else "MEDIUM"
+    risk = (
+        "CRITICAL"
+        if any(f["severity"] == "CRITICAL" for f in findings)
+        else "HIGH" if any(f["severity"] == "HIGH" for f in findings) else "MEDIUM"
+    )
     return {"pod": pod_name, "namespace": namespace, "findings": findings, "risk": risk}
 
 

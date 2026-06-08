@@ -53,7 +53,9 @@ class MobSFScanner:
         print(f"[+] Uploaded: {apk_file.name} (hash: {result.get('hash', 'N/A')})")
         return result
 
-    def run_static_scan(self, file_hash: str, file_name: str, scan_type: str = "apk") -> dict:
+    def run_static_scan(
+        self, file_hash: str, file_name: str, scan_type: str = "apk"
+    ) -> dict:
         """Trigger static analysis scan."""
         endpoint = f"{self.base_url}/api/v1/scan"
         data = {
@@ -111,11 +113,13 @@ def extract_critical_findings(report: dict) -> dict:
         for item in manifest:
             severity = item.get("stat", item.get("severity", "info"))
             if severity.lower() in ("high", "warning"):
-                findings["manifest_issues"].append({
-                    "title": item.get("title", "Unknown"),
-                    "description": item.get("desc", item.get("description", "")),
-                    "severity": severity,
-                })
+                findings["manifest_issues"].append(
+                    {
+                        "title": item.get("title", "Unknown"),
+                        "description": item.get("desc", item.get("description", "")),
+                        "severity": severity,
+                    }
+                )
 
     # Code analysis
     code_analysis = report.get("code_analysis", {})
@@ -125,12 +129,14 @@ def extract_critical_findings(report: dict) -> dict:
                 metadata = items.get("metadata", {})
                 severity = metadata.get("severity", "info")
                 if severity.lower() in ("high", "warning"):
-                    findings["code_issues"].append({
-                        "category": category,
-                        "description": metadata.get("description", ""),
-                        "severity": severity,
-                        "files": list(items.get("files", {}).keys())[:5],
-                    })
+                    findings["code_issues"].append(
+                        {
+                            "category": category,
+                            "description": metadata.get("description", ""),
+                            "severity": severity,
+                            "files": list(items.get("files", {}).keys())[:5],
+                        }
+                    )
 
     # Network security
     network = report.get("network_security", [])
@@ -138,11 +144,13 @@ def extract_critical_findings(report: dict) -> dict:
         for item in network:
             severity = item.get("severity", "info")
             if severity.lower() in ("high", "warning"):
-                findings["network_issues"].append({
-                    "title": item.get("scope", "Unknown"),
-                    "description": item.get("description", ""),
-                    "severity": severity,
-                })
+                findings["network_issues"].append(
+                    {
+                        "title": item.get("scope", "Unknown"),
+                        "description": item.get("description", ""),
+                        "severity": severity,
+                    }
+                )
 
     return findings
 
@@ -172,7 +180,9 @@ def main():
     parser.add_argument(
         "--threshold", type=int, default=60, help="Minimum security score (0-100)"
     )
-    parser.add_argument("--output", default="mobsf_report.json", help="Output report path")
+    parser.add_argument(
+        "--output", default="mobsf_report.json", help="Output report path"
+    )
     parser.add_argument("--pdf", help="Optional PDF report output path")
     parser.add_argument(
         "--ci-mode", action="store_true", help="Exit with non-zero code on failure"

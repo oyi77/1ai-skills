@@ -8,7 +8,6 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
-
 LSASS_ACCESS_MASKS = {
     0x1010: "PROCESS_QUERY_LIMITED_INFORMATION | PROCESS_VM_READ",
     0x1FFFFF: "PROCESS_ALL_ACCESS",
@@ -17,10 +16,21 @@ LSASS_ACCESS_MASKS = {
 }
 
 CREDENTIAL_DUMP_TOOLS = [
-    "mimikatz", "procdump", "sqldumper", "comsvcs.dll",
-    "nanodump", "pypykatz", "lazagne", "secretsdump",
-    "gsecdump", "wce.exe", "fgdump", "pwdump",
-    "ntdsutil", "reg save hklm\\sam", "reg save hklm\\system",
+    "mimikatz",
+    "procdump",
+    "sqldumper",
+    "comsvcs.dll",
+    "nanodump",
+    "pypykatz",
+    "lazagne",
+    "secretsdump",
+    "gsecdump",
+    "wce.exe",
+    "fgdump",
+    "pwdump",
+    "ntdsutil",
+    "reg save hklm\\sam",
+    "reg save hklm\\system",
 ]
 
 SYSMON_EVENTS = {
@@ -50,7 +60,9 @@ def check_lsass_access_sysmon():
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip() else []
         if not isinstance(data, list):
@@ -58,14 +70,19 @@ def check_lsass_access_sysmon():
         for evt in data:
             source = evt.get("SourceProcess", "")
             access = evt.get("GrantedAccess", "")
-            if not any(safe in source.lower() for safe in ["svchost", "csrss", "lsass", "wmiprvse"]):
-                findings.append({
-                    "time": evt.get("TimeCreated", ""),
-                    "source": source,
-                    "target": evt.get("TargetProcess", ""),
-                    "access_mask": access,
-                    "suspicious": True,
-                })
+            if not any(
+                safe in source.lower()
+                for safe in ["svchost", "csrss", "lsass", "wmiprvse"]
+            ):
+                findings.append(
+                    {
+                        "time": evt.get("TimeCreated", ""),
+                        "source": source,
+                        "target": evt.get("TargetProcess", ""),
+                        "access_mask": access,
+                        "suspicious": True,
+                    }
+                )
     except (subprocess.SubprocessError, json.JSONDecodeError):
         pass
     return findings
@@ -88,7 +105,9 @@ def check_credential_dump_processes():
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip() else []
         if not isinstance(data, list):
@@ -98,12 +117,14 @@ def check_credential_dump_processes():
             image = (evt.get("Image", "") or "").lower()
             for tool in CREDENTIAL_DUMP_TOOLS:
                 if tool.lower() in cmdline or tool.lower() in image:
-                    findings.append({
-                        "time": evt.get("TimeCreated", ""),
-                        "image": evt.get("Image", ""),
-                        "commandline": evt.get("CommandLine", "")[:200],
-                        "tool_match": tool,
-                    })
+                    findings.append(
+                        {
+                            "time": evt.get("TimeCreated", ""),
+                            "image": evt.get("Image", ""),
+                            "commandline": evt.get("CommandLine", "")[:200],
+                            "tool_match": tool,
+                        }
+                    )
                     break
     except (subprocess.SubprocessError, json.JSONDecodeError):
         pass
@@ -132,7 +153,9 @@ def check_sam_ntds_access():
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip() else []
         if not isinstance(data, list):
@@ -141,11 +164,13 @@ def check_sam_ntds_access():
             cmdline = (evt.get("CommandLine", "") or "").lower()
             for pat in patterns:
                 if re.search(pat, cmdline):
-                    findings.append({
-                        "time": evt.get("TimeCreated", ""),
-                        "commandline": cmdline[:200],
-                        "pattern": pat,
-                    })
+                    findings.append(
+                        {
+                            "time": evt.get("TimeCreated", ""),
+                            "commandline": cmdline[:200],
+                            "pattern": pat,
+                        }
+                    )
     except (subprocess.SubprocessError, json.JSONDecodeError):
         pass
     return findings
@@ -175,7 +200,11 @@ def main():
     print(f"[*] SAM/NTDS access events: {len(sam)}")
 
     total = len(lsass) + len(tools) + len(sam)
-    report["risk_level"] = "CRITICAL" if total >= 5 else "HIGH" if total >= 2 else "MEDIUM" if total > 0 else "LOW"
+    report["risk_level"] = (
+        "CRITICAL"
+        if total >= 5
+        else "HIGH" if total >= 2 else "MEDIUM" if total > 0 else "LOW"
+    )
 
     if args.output:
         with open(args.output, "w") as f:

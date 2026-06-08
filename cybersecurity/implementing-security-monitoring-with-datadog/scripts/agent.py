@@ -20,8 +20,9 @@ except ImportError:
 class DatadogSecurityAgent:
     """Manages Datadog security monitoring configuration."""
 
-    def __init__(self, api_key, app_key, site="datadoghq.com",
-                 output_dir="./datadog_security"):
+    def __init__(
+        self, api_key, app_key, site="datadoghq.com", output_dir="./datadog_security"
+    ):
         self.api_key = api_key
         self.app_key = app_key
         self.base_url = f"https://api.{site}/api"
@@ -34,8 +35,12 @@ class DatadogSecurityAgent:
             return None
         try:
             return requests.get(
-                f"{self.base_url}{path}", params=params,
-                headers={"DD-API-KEY": self.api_key, "DD-APPLICATION-KEY": self.app_key},
+                f"{self.base_url}{path}",
+                params=params,
+                headers={
+                    "DD-API-KEY": self.api_key,
+                    "DD-APPLICATION-KEY": self.app_key,
+                },
                 timeout=15,
             )
         except requests.RequestException:
@@ -46,9 +51,13 @@ class DatadogSecurityAgent:
             return None
         try:
             return requests.post(
-                f"{self.base_url}{path}", json=data,
-                headers={"DD-API-KEY": self.api_key, "DD-APPLICATION-KEY": self.app_key,
-                          "Content-Type": "application/json"},
+                f"{self.base_url}{path}",
+                json=data,
+                headers={
+                    "DD-API-KEY": self.api_key,
+                    "DD-APPLICATION-KEY": self.app_key,
+                    "Content-Type": "application/json",
+                },
                 timeout=15,
             )
         except requests.RequestException:
@@ -59,8 +68,15 @@ class DatadogSecurityAgent:
         resp = self._get("/v2/security_monitoring/rules")
         if resp and resp.status_code == 200:
             rules = resp.json().get("data", [])
-            return [{"id": r["id"], "name": r.get("name"), "enabled": r.get("isEnabled"),
-                     "type": r.get("type")} for r in rules]
+            return [
+                {
+                    "id": r["id"],
+                    "name": r.get("name"),
+                    "enabled": r.get("isEnabled"),
+                    "type": r.get("type"),
+                }
+                for r in rules
+            ]
         return []
 
     def query_security_signals(self, query="*", hours=24):
@@ -68,7 +84,8 @@ class DatadogSecurityAgent:
         now = datetime.utcnow()
         body = {
             "filter": {"query": query, "from": f"now-{hours}h", "to": "now"},
-            "sort": "timestamp", "page": {"limit": 25},
+            "sort": "timestamp",
+            "page": {"limit": 25},
         }
         resp = self._post("/v2/security_monitoring/signals/search", body)
         if resp and resp.status_code == 200:
@@ -85,8 +102,15 @@ class DatadogSecurityAgent:
         resp = self._get("/v1/logs/config/pipelines")
         if resp and resp.status_code == 200:
             pipelines = resp.json()
-            return [{"id": p["id"], "name": p.get("name"), "enabled": p.get("is_enabled"),
-                     "type": p.get("type")} for p in pipelines]
+            return [
+                {
+                    "id": p["id"],
+                    "name": p.get("name"),
+                    "enabled": p.get("is_enabled"),
+                    "type": p.get("type"),
+                }
+                for p in pipelines
+            ]
         return []
 
     def check_log_indexes(self):
@@ -97,8 +121,13 @@ class DatadogSecurityAgent:
             for idx in indexes:
                 retention = idx.get("num_retention_days", 0)
                 if retention < 90:
-                    self.findings.append({"severity": "medium", "type": "Short Log Retention",
-                                          "detail": f"Index '{idx.get('name')}' retains {retention} days"})
+                    self.findings.append(
+                        {
+                            "severity": "medium",
+                            "type": "Short Log Retention",
+                            "detail": f"Index '{idx.get('name')}' retains {retention} days",
+                        }
+                    )
             return indexes
         return []
 
@@ -107,8 +136,12 @@ class DatadogSecurityAgent:
         resp = self._get("/v1/monitor", params={"tags": "security"})
         if resp and resp.status_code == 200:
             monitors = resp.json()
-            return {"total": len(monitors),
-                    "by_state": self._count_by(monitors, lambda m: m.get("overall_state", "unknown"))}
+            return {
+                "total": len(monitors),
+                "by_state": self._count_by(
+                    monitors, lambda m: m.get("overall_state", "unknown")
+                ),
+            }
         return {"total": 0}
 
     def _count_by(self, items, key_fn):
@@ -126,8 +159,13 @@ class DatadogSecurityAgent:
         monitors = self.audit_monitors()
 
         if len(rules) < 10:
-            self.findings.append({"severity": "medium", "type": "Low Rule Coverage",
-                                  "detail": f"Only {len(rules)} detection rules configured"})
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Low Rule Coverage",
+                    "detail": f"Only {len(rules)} detection rules configured",
+                }
+            )
 
         report = {
             "report_date": datetime.utcnow().isoformat(),

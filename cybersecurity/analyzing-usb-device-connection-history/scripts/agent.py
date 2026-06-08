@@ -55,10 +55,12 @@ def parse_mounted_devices(system_hive_path):
                 try:
                     device_path = data.decode("utf-16-le").strip("\x00")
                     if "USBSTOR" in device_path or "USB#" in device_path:
-                        mappings.append({
-                            "drive_letter": drive_letter,
-                            "device_path": device_path,
-                        })
+                        mappings.append(
+                            {
+                                "drive_letter": drive_letter,
+                                "device_path": device_path,
+                            }
+                        )
                 except (UnicodeDecodeError, ValueError):
                     pass
     return mappings
@@ -75,16 +77,19 @@ def parse_mountpoints2(ntuser_path):
         return mount_points
     for subkey in mp2_key.iter_subkeys():
         if "{" in subkey.name:
-            mount_points.append({
-                "volume_guid": subkey.name,
-                "last_accessed": str(subkey.header.last_modified),
-            })
+            mount_points.append(
+                {
+                    "volume_guid": subkey.name,
+                    "last_accessed": str(subkey.header.last_modified),
+                }
+            )
     return mount_points
 
 
 def parse_setupapi_log(log_path):
     """Parse setupapi.dev.log for USB first-install timestamps."""
     import re
+
     installs = []
     with open(log_path, "r", errors="ignore") as f:
         content = f.read()
@@ -93,10 +98,12 @@ def parse_setupapi_log(log_path):
         timestamp, section = match.group(1), match.group(2)
         dev_match = re.search(r"(USBSTOR\\[^\s]+|USB\\VID_\w+&PID_\w+[^\s]*)", section)
         if dev_match:
-            installs.append({
-                "first_install": timestamp,
-                "device_id": dev_match.group(1),
-            })
+            installs.append(
+                {
+                    "first_install": timestamp,
+                    "device_id": dev_match.group(1),
+                }
+            )
     return installs
 
 
@@ -104,23 +111,27 @@ def build_timeline(devices, mappings, mount_points):
     """Build a unified USB activity timeline."""
     timeline = []
     for dev in devices:
-        timeline.append({
-            "timestamp": dev["last_connected"],
-            "source": "USBSTOR",
-            "device": f"{dev['vendor']} {dev['product']}",
-            "serial": dev["serial"],
-            "event": "Last Connected",
-            "detail": dev.get("friendly_name", ""),
-        })
+        timeline.append(
+            {
+                "timestamp": dev["last_connected"],
+                "source": "USBSTOR",
+                "device": f"{dev['vendor']} {dev['product']}",
+                "serial": dev["serial"],
+                "event": "Last Connected",
+                "detail": dev.get("friendly_name", ""),
+            }
+        )
     for mp in mount_points:
-        timeline.append({
-            "timestamp": mp["last_accessed"],
-            "source": "MountPoints2",
-            "device": mp["volume_guid"],
-            "serial": "",
-            "event": "Volume Accessed",
-            "detail": "",
-        })
+        timeline.append(
+            {
+                "timestamp": mp["last_accessed"],
+                "source": "MountPoints2",
+                "device": mp["volume_guid"],
+                "serial": "",
+                "event": "Volume Accessed",
+                "detail": "",
+            }
+        )
     timeline.sort(key=lambda x: x["timestamp"])
     return timeline
 
@@ -137,7 +148,9 @@ def export_timeline_csv(timeline, output_path):
 
 def main():
     parser = argparse.ArgumentParser(description="USB Device Connection History Agent")
-    parser.add_argument("--system-hive", required=True, help="Path to SYSTEM registry hive")
+    parser.add_argument(
+        "--system-hive", required=True, help="Path to SYSTEM registry hive"
+    )
     parser.add_argument("--ntuser", help="Path to NTUSER.DAT hive")
     parser.add_argument("--setupapi-log", help="Path to setupapi.dev.log")
     parser.add_argument("--output-dir", default="./usb_analysis")

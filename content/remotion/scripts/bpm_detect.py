@@ -112,8 +112,7 @@ def print_usage_examples(data: dict) -> None:
     fpb = data["framesPerBeat"]
     fps = data["fps"]
 
-    print(
-        f"""
+    print(f"""
 ╔══════════════════════════════════════════════╗
 ║           BPM Detection Results              ║
 ╠══════════════════════════════════════════════╣
@@ -149,8 +148,7 @@ const currentBeat = Math.floor(frame / beat);
 
 // Check if frame is within N frames of any detected beat
 const nearBeat = bpmData.beatFrames.some(bf => Math.abs(frame - bf) < 3);
-"""
-    )
+""")
 
 
 def main():

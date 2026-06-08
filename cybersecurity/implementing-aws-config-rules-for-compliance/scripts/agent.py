@@ -39,8 +39,11 @@ def check_recorder_status(client):
     try:
         recorders = client.describe_configuration_recorder_status()
         for r in recorders.get("ConfigurationRecordersStatus", []):
-            return {"name": r["name"], "recording": r["recording"],
-                    "lastStatus": r.get("lastStatus", "Unknown")}
+            return {
+                "name": r["name"],
+                "recording": r["recording"],
+                "lastStatus": r.get("lastStatus", "Unknown"),
+            }
     except ClientError as e:
         return {"error": str(e)}
     return {"error": "No recorder found"}
@@ -53,10 +56,12 @@ def deploy_managed_rules(client, rules=None):
     deployed = []
     for rule_name, source_id in rules.items():
         try:
-            client.put_config_rule(ConfigRule={
-                "ConfigRuleName": rule_name,
-                "Source": {"Owner": "AWS", "SourceIdentifier": source_id}
-            })
+            client.put_config_rule(
+                ConfigRule={
+                    "ConfigRuleName": rule_name,
+                    "Source": {"Owner": "AWS", "SourceIdentifier": source_id},
+                }
+            )
             deployed.append({"rule": rule_name, "status": "deployed"})
         except ClientError as e:
             deployed.append({"rule": rule_name, "status": "error", "message": str(e)})
@@ -69,10 +74,17 @@ def get_compliance_summary(client):
         response = client.get_compliance_summary_by_config_rule()
         summary = response.get("ComplianceSummary", {})
         compliant = summary.get("CompliantResourceCount", {}).get("CappedCount", 0)
-        non_compliant = summary.get("NonCompliantResourceCount", {}).get("CappedCount", 0)
-        return {"compliant": compliant, "non_compliant": non_compliant,
-                "total": compliant + non_compliant,
-                "compliance_pct": round(compliant / max(compliant + non_compliant, 1) * 100, 1)}
+        non_compliant = summary.get("NonCompliantResourceCount", {}).get(
+            "CappedCount", 0
+        )
+        return {
+            "compliant": compliant,
+            "non_compliant": non_compliant,
+            "total": compliant + non_compliant,
+            "compliance_pct": round(
+                compliant / max(compliant + non_compliant, 1) * 100, 1
+            ),
+        }
     except ClientError as e:
         return {"error": str(e)}
 
@@ -81,16 +93,21 @@ def get_non_compliant_resources(client, rule_name):
     """List non-compliant resources for a specific rule."""
     try:
         response = client.get_compliance_details_by_config_rule(
-            ConfigRuleName=rule_name, ComplianceTypes=["NON_COMPLIANT"], Limit=25)
+            ConfigRuleName=rule_name, ComplianceTypes=["NON_COMPLIANT"], Limit=25
+        )
         resources = []
         for result in response.get("EvaluationResults", []):
-            qual = result.get("EvaluationResultIdentifier", {}).get("EvaluationResultQualifier", {})
-            resources.append({
-                "resource_type": qual.get("ResourceType"),
-                "resource_id": qual.get("ResourceId"),
-                "annotation": result.get("Annotation", ""),
-                "timestamp": str(result.get("ResultRecordedTime", ""))
-            })
+            qual = result.get("EvaluationResultIdentifier", {}).get(
+                "EvaluationResultQualifier", {}
+            )
+            resources.append(
+                {
+                    "resource_type": qual.get("ResourceType"),
+                    "resource_id": qual.get("ResourceId"),
+                    "annotation": result.get("Annotation", ""),
+                    "timestamp": str(result.get("ResultRecordedTime", "")),
+                }
+            )
         return resources
     except ClientError as e:
         return [{"error": str(e)}]
@@ -99,15 +116,19 @@ def get_non_compliant_resources(client, rule_name):
 def configure_remediation(client, rule_name, ssm_document, params):
     """Set up auto-remediation for a Config rule."""
     try:
-        client.put_remediation_configurations(RemediationConfigurations=[{
-            "ConfigRuleName": rule_name,
-            "TargetType": "SSM_DOCUMENT",
-            "TargetId": ssm_document,
-            "Parameters": params,
-            "Automatic": True,
-            "MaximumAutomaticAttempts": 3,
-            "RetryAttemptSeconds": 60,
-        }])
+        client.put_remediation_configurations(
+            RemediationConfigurations=[
+                {
+                    "ConfigRuleName": rule_name,
+                    "TargetType": "SSM_DOCUMENT",
+                    "TargetId": ssm_document,
+                    "Parameters": params,
+                    "Automatic": True,
+                    "MaximumAutomaticAttempts": 3,
+                    "RetryAttemptSeconds": 60,
+                }
+            ]
+        )
         return {"rule": rule_name, "remediation": ssm_document, "status": "configured"}
     except ClientError as e:
         return {"rule": rule_name, "status": "error", "message": str(e)}
@@ -154,7 +175,9 @@ def run_compliance_audit(region="us-east-1"):
 def main():
     parser = argparse.ArgumentParser(description="AWS Config Compliance Agent")
     parser.add_argument("--region", default="us-east-1", help="AWS region")
-    parser.add_argument("--deploy-rules", action="store_true", help="Deploy managed Config rules")
+    parser.add_argument(
+        "--deploy-rules", action="store_true", help="Deploy managed Config rules"
+    )
     parser.add_argument("--audit", action="store_true", help="Run compliance audit")
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()

@@ -15,8 +15,14 @@ def parse_oscap_results(xml_path: str) -> dict:
     root = tree.getroot()
     ns = {"xccdf": "http://checklists.nist.gov/xccdf/1.2"}
 
-    results = {"total": 0, "passed": 0, "failed": 0, "notapplicable": 0,
-               "findings": [], "score": 0.0}
+    results = {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "notapplicable": 0,
+        "findings": [],
+        "score": 0.0,
+    }
 
     for rr in root.iter():
         if rr.tag.endswith("}rule-result"):
@@ -31,11 +37,13 @@ def parse_oscap_results(xml_path: str) -> dict:
                     results["passed"] += 1
                 elif val == "fail":
                     results["failed"] += 1
-                    results["findings"].append({
-                        "rule_id": rr.get("idref", ""),
-                        "severity": rr.get("severity", ""),
-                        "result": "FAIL",
-                    })
+                    results["findings"].append(
+                        {
+                            "rule_id": rr.get("idref", ""),
+                            "severity": rr.get("severity", ""),
+                            "result": "FAIL",
+                        }
+                    )
                 elif val == "notapplicable":
                     results["notapplicable"] += 1
 
@@ -68,4 +76,6 @@ if __name__ == "__main__":
     results = parse_oscap_results(sys.argv[1])
     out = os.path.join(os.path.dirname(sys.argv[1]) or ".", "linux_cis_report.json")
     generate_report(results, out)
-    print(f"Score: {results['score']}% | Passed: {results['passed']} | Failed: {results['failed']}")
+    print(
+        f"Score: {results['score']}% | Passed: {results['passed']} | Failed: {results['failed']}"
+    )

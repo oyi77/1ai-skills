@@ -42,9 +42,17 @@ DCOM_CLSIDS = {
 
 # Suspicious child processes when spawned by DCOM parent processes
 SUSPICIOUS_CHILDREN = [
-    "cmd.exe", "powershell.exe", "pwsh.exe", "wscript.exe",
-    "cscript.exe", "mshta.exe", "rundll32.exe", "regsvr32.exe",
-    "certutil.exe", "bitsadmin.exe", "msbuild.exe",
+    "cmd.exe",
+    "powershell.exe",
+    "pwsh.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+    "certutil.exe",
+    "bitsadmin.exe",
+    "msbuild.exe",
 ]
 
 # DCOM parent processes that spawn child processes during lateral movement
@@ -127,56 +135,62 @@ def detect_dcom_process_creation(events):
 
         # Pattern 1: mmc.exe spawning suspicious child (MMC20.Application)
         if "mmc.exe" in parent_image.lower() and is_suspicious_child(image):
-            findings.append({
-                "timestamp": time_created,
-                "computer": computer,
-                "detection_type": "MMC20.Application DCOM Lateral Movement",
-                "dcom_object": "MMC20.Application",
-                "clsid": "{49B2791A-B1AE-4C90-9B8E-E860BA07F889}",
-                "parent_image": parent_image,
-                "parent_commandline": parent_cmdline,
-                "child_image": image,
-                "child_commandline": cmdline,
-                "user": user,
-                "severity": "HIGH",
-                "mitre": "T1021.003",
-            })
+            findings.append(
+                {
+                    "timestamp": time_created,
+                    "computer": computer,
+                    "detection_type": "MMC20.Application DCOM Lateral Movement",
+                    "dcom_object": "MMC20.Application",
+                    "clsid": "{49B2791A-B1AE-4C90-9B8E-E860BA07F889}",
+                    "parent_image": parent_image,
+                    "parent_commandline": parent_cmdline,
+                    "child_image": image,
+                    "child_commandline": cmdline,
+                    "user": user,
+                    "severity": "HIGH",
+                    "mitre": "T1021.003",
+                }
+            )
 
         # Pattern 2: DcomLaunch svchost spawning dllhost or mmc
         if check_dcomllaunch_parent(parent_cmdline) and is_suspicious_child(image):
-            findings.append({
-                "timestamp": time_created,
-                "computer": computer,
-                "detection_type": "DcomLaunch Service Spawning Suspicious Process",
-                "dcom_object": "Unknown (DcomLaunch)",
-                "clsid": "N/A",
-                "parent_image": parent_image,
-                "parent_commandline": parent_cmdline,
-                "child_image": image,
-                "child_commandline": cmdline,
-                "user": user,
-                "severity": "HIGH",
-                "mitre": "T1021.003",
-            })
+            findings.append(
+                {
+                    "timestamp": time_created,
+                    "computer": computer,
+                    "detection_type": "DcomLaunch Service Spawning Suspicious Process",
+                    "dcom_object": "Unknown (DcomLaunch)",
+                    "clsid": "N/A",
+                    "parent_image": parent_image,
+                    "parent_commandline": parent_cmdline,
+                    "child_image": image,
+                    "child_commandline": cmdline,
+                    "user": user,
+                    "severity": "HIGH",
+                    "mitre": "T1021.003",
+                }
+            )
 
         # Pattern 3: explorer.exe spawning cmd/powershell on servers
         # (ShellWindows/ShellBrowserWindow)
         if "explorer.exe" in parent_image.lower() and is_suspicious_child(image):
             # Check if this might be interactive (less suspicious) or DCOM (more suspicious)
-            findings.append({
-                "timestamp": time_created,
-                "computer": computer,
-                "detection_type": "ShellWindows/ShellBrowserWindow DCOM Lateral Movement (Requires Correlation)",
-                "dcom_object": "ShellWindows or ShellBrowserWindow",
-                "clsid": "{9BA05972-F6A8-11CF-A442-00A0C90A8F39} or {C08AFD90-F2A1-11D1-8455-00A0C91F3880}",
-                "parent_image": parent_image,
-                "parent_commandline": parent_cmdline,
-                "child_image": image,
-                "child_commandline": cmdline,
-                "user": user,
-                "severity": "MEDIUM",
-                "mitre": "T1021.003",
-            })
+            findings.append(
+                {
+                    "timestamp": time_created,
+                    "computer": computer,
+                    "detection_type": "ShellWindows/ShellBrowserWindow DCOM Lateral Movement (Requires Correlation)",
+                    "dcom_object": "ShellWindows or ShellBrowserWindow",
+                    "clsid": "{9BA05972-F6A8-11CF-A442-00A0C90A8F39} or {C08AFD90-F2A1-11D1-8455-00A0C91F3880}",
+                    "parent_image": parent_image,
+                    "parent_commandline": parent_cmdline,
+                    "child_image": image,
+                    "child_commandline": cmdline,
+                    "user": user,
+                    "severity": "MEDIUM",
+                    "mitre": "T1021.003",
+                }
+            )
 
         # Pattern 4: dllhost.exe spawning suspicious children
         if "dllhost.exe" in parent_image.lower() and is_suspicious_child(image):
@@ -189,20 +203,22 @@ def detect_dcom_process_creation(events):
 
             dcom_name = DCOM_CLSIDS.get(detected_clsid.upper(), "Unknown DCOM Object")
 
-            findings.append({
-                "timestamp": time_created,
-                "computer": computer,
-                "detection_type": "DCOM Object Execution via dllhost.exe",
-                "dcom_object": dcom_name,
-                "clsid": detected_clsid,
-                "parent_image": parent_image,
-                "parent_commandline": parent_cmdline,
-                "child_image": image,
-                "child_commandline": cmdline,
-                "user": user,
-                "severity": "HIGH",
-                "mitre": "T1021.003",
-            })
+            findings.append(
+                {
+                    "timestamp": time_created,
+                    "computer": computer,
+                    "detection_type": "DCOM Object Execution via dllhost.exe",
+                    "dcom_object": dcom_name,
+                    "clsid": detected_clsid,
+                    "parent_image": parent_image,
+                    "parent_commandline": parent_cmdline,
+                    "child_image": image,
+                    "child_commandline": cmdline,
+                    "user": user,
+                    "severity": "HIGH",
+                    "mitre": "T1021.003",
+                }
+            )
 
     return findings
 
@@ -228,38 +244,44 @@ def detect_dcom_network_connections(events):
 
         # Inbound RPC connection (port 135) -- DCOM always starts here
         if dest_port == "135" and initiated.lower() == "false":
-            findings.append({
-                "timestamp": time_created,
-                "computer": computer,
-                "detection_type": "Inbound RPC Endpoint Mapper Connection",
-                "source_ip": source_ip,
-                "destination_ip": dest_ip,
-                "destination_port": dest_port,
-                "process_image": image,
-                "severity": "MEDIUM",
-                "mitre": "T1021.003",
-                "note": "DCOM communication begins with RPC endpoint mapper query on port 135",
-            })
+            findings.append(
+                {
+                    "timestamp": time_created,
+                    "computer": computer,
+                    "detection_type": "Inbound RPC Endpoint Mapper Connection",
+                    "source_ip": source_ip,
+                    "destination_ip": dest_ip,
+                    "destination_port": dest_port,
+                    "process_image": image,
+                    "severity": "MEDIUM",
+                    "mitre": "T1021.003",
+                    "note": "DCOM communication begins with RPC endpoint mapper query on port 135",
+                }
+            )
 
         # DCOM process making outbound connection on high port (dynamic RPC)
         if is_dcom_parent(image) and dest_port and int(dest_port) > 49151:
-            findings.append({
-                "timestamp": time_created,
-                "computer": computer,
-                "detection_type": "DCOM Process Dynamic RPC Connection",
-                "source_ip": source_ip,
-                "destination_ip": dest_ip,
-                "destination_port": dest_port,
-                "process_image": image,
-                "severity": "LOW",
-                "mitre": "T1021.003",
-                "note": "DCOM process communicating on dynamic RPC port range",
-            })
+            findings.append(
+                {
+                    "timestamp": time_created,
+                    "computer": computer,
+                    "detection_type": "DCOM Process Dynamic RPC Connection",
+                    "source_ip": source_ip,
+                    "destination_ip": dest_ip,
+                    "destination_port": dest_port,
+                    "process_image": image,
+                    "severity": "LOW",
+                    "mitre": "T1021.003",
+                    "note": "DCOM process communicating on dynamic RPC port range",
+                }
+            )
 
     return findings
 
 
-def correlate_network_and_process(process_findings, network_findings, window_seconds=60):
+def correlate_network_and_process(
+    process_findings, network_findings, window_seconds=60
+):
     """
     Correlate network connections with process creation events.
     A network connection to port 135 followed by DCOM process creation
@@ -294,26 +316,28 @@ def correlate_network_and_process(process_findings, network_findings, window_sec
             time_diff = abs((proc_dt - net_dt).total_seconds())
 
             if time_diff <= window_seconds and net_dt <= proc_dt:
-                correlated.append({
-                    "correlation_type": "DCOM Lateral Movement Chain",
-                    "severity": "CRITICAL",
-                    "mitre": "T1021.003",
-                    "computer": proc_computer,
-                    "network_event": {
-                        "timestamp": net_time,
-                        "source_ip": net.get("source_ip"),
-                        "destination_port": net.get("destination_port"),
-                    },
-                    "process_event": {
-                        "timestamp": proc_time,
-                        "dcom_object": proc.get("dcom_object"),
-                        "parent_image": proc.get("parent_image"),
-                        "child_image": proc.get("child_image"),
-                        "child_commandline": proc.get("child_commandline"),
-                        "user": proc.get("user"),
-                    },
-                    "time_delta_seconds": round(time_diff, 2),
-                })
+                correlated.append(
+                    {
+                        "correlation_type": "DCOM Lateral Movement Chain",
+                        "severity": "CRITICAL",
+                        "mitre": "T1021.003",
+                        "computer": proc_computer,
+                        "network_event": {
+                            "timestamp": net_time,
+                            "source_ip": net.get("source_ip"),
+                            "destination_port": net.get("destination_port"),
+                        },
+                        "process_event": {
+                            "timestamp": proc_time,
+                            "dcom_object": proc.get("dcom_object"),
+                            "parent_image": proc.get("parent_image"),
+                            "child_image": proc.get("child_image"),
+                            "child_commandline": proc.get("child_commandline"),
+                            "user": proc.get("user"),
+                        },
+                        "time_delta_seconds": round(time_diff, 2),
+                    }
+                )
 
     return correlated
 
@@ -394,25 +418,20 @@ def main():
     parser = argparse.ArgumentParser(
         description="Detect DCOM lateral movement from Sysmon and Security event logs"
     )
-    parser.add_argument(
-        "--evtx", required=True,
-        help="Path to Sysmon .evtx log file"
-    )
+    parser.add_argument("--evtx", required=True, help="Path to Sysmon .evtx log file")
     parser.add_argument(
         "--security",
-        help="Path to Windows Security .evtx log file (optional, for 4624 correlation)"
+        help="Path to Windows Security .evtx log file (optional, for 4624 correlation)",
     )
     parser.add_argument(
-        "--json", action="store_true",
-        help="Output results in JSON format"
+        "--json", action="store_true", help="Output results in JSON format"
     )
+    parser.add_argument("--output", "-o", help="Output file path (default: stdout)")
     parser.add_argument(
-        "--output", "-o",
-        help="Output file path (default: stdout)"
-    )
-    parser.add_argument(
-        "--correlation-window", type=int, default=60,
-        help="Time window in seconds for correlating network and process events (default: 60)"
+        "--correlation-window",
+        type=int,
+        default=60,
+        help="Time window in seconds for correlating network and process events (default: 60)",
     )
     args = parser.parse_args()
 
@@ -454,7 +473,9 @@ def main():
             "network_detections": len(network_findings),
             "correlated_chains": len(correlated),
             "critical_findings": len([c for c in correlated]),
-            "high_findings": len([f for f in process_findings if f.get("severity") == "HIGH"]),
+            "high_findings": len(
+                [f for f in process_findings if f.get("severity") == "HIGH"]
+            ),
         },
     }
 

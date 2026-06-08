@@ -10,7 +10,6 @@ import re
 from collections import defaultdict
 from datetime import datetime
 
-
 DIAMOND_DIMENSIONS = {
     "adversary": "Threat actor identity, group attribution",
     "capability": "Malware, exploits, tools used",
@@ -34,7 +33,9 @@ CONFIDENCE_LEVELS = {
 }
 
 
-def diamond_model_analysis(adversary=None, capability=None, infrastructure=None, victim=None):
+def diamond_model_analysis(
+    adversary=None, capability=None, infrastructure=None, victim=None
+):
     """Structure evidence using the Diamond Model of Intrusion Analysis."""
     model = {
         "adversary": {
@@ -58,9 +59,13 @@ def diamond_model_analysis(adversary=None, capability=None, infrastructure=None,
         "pivot_opportunities": [],
     }
     if infrastructure and infrastructure.get("c2"):
-        model["pivot_opportunities"].append("Pivot from C2 infrastructure to related campaigns")
+        model["pivot_opportunities"].append(
+            "Pivot from C2 infrastructure to related campaigns"
+        )
     if capability and capability.get("malware"):
-        model["pivot_opportunities"].append("Pivot from malware samples to shared infrastructure")
+        model["pivot_opportunities"].append(
+            "Pivot from malware samples to shared infrastructure"
+        )
     return model
 
 
@@ -151,7 +156,12 @@ def ach_analysis(hypotheses, evidence_items):
     matrix = {}
     for hyp in hypotheses:
         hyp_name = hyp["name"]
-        matrix[hyp_name] = {"consistent": 0, "inconsistent": 0, "neutral": 0, "score": 0}
+        matrix[hyp_name] = {
+            "consistent": 0,
+            "inconsistent": 0,
+            "neutral": 0,
+            "score": 0,
+        }
         for evidence in evidence_items:
             ev_name = evidence["name"]
             consistency = evidence.get("hypotheses", {}).get(hyp_name, "neutral")
@@ -187,21 +197,25 @@ def generate_attribution_report(campaign_name, candidate_actor, evidence):
     details = {}
 
     infra_score, infra_overlap = evaluate_infrastructure_overlap(
-        evidence.get("campaign_infra", []), evidence.get("actor_infra", []))
+        evidence.get("campaign_infra", []), evidence.get("actor_infra", [])
+    )
     scores["infrastructure_overlap"] = infra_score
     details["infrastructure_overlap"] = infra_overlap
 
     ttp_score, ttp_overlap = evaluate_ttp_consistency(
-        evidence.get("campaign_ttps", []), evidence.get("actor_ttps", []))
+        evidence.get("campaign_ttps", []), evidence.get("actor_ttps", [])
+    )
     scores["ttp_consistency"] = ttp_score
     details["ttp_consistency"] = ttp_overlap
 
     malware_score = evaluate_malware_similarity(
-        evidence.get("sample_features", []), evidence.get("known_features", []))
+        evidence.get("sample_features", []), evidence.get("known_features", [])
+    )
     scores["malware_code_similarity"] = malware_score
 
     timing = evaluate_timing_pattern(
-        evidence.get("timestamps", []), evidence.get("tz_offset"))
+        evidence.get("timestamps", []), evidence.get("tz_offset")
+    )
     scores["timing_pattern"] = timing.get("score", 0.0)
     details["timing"] = timing
 
@@ -231,11 +245,22 @@ if __name__ == "__main__":
         "campaign_infra": ["185.220.101.1", "evil-domain.com", "c2.attacker.net"],
         "actor_infra": ["185.220.101.1", "c2.attacker.net", "other-domain.org"],
         "campaign_ttps": ["T1566.001", "T1059.001", "T1053.005", "T1071.001", "T1041"],
-        "actor_ttps": ["T1566.001", "T1059.001", "T1053.005", "T1071.001", "T1021.001", "T1003.001"],
+        "actor_ttps": [
+            "T1566.001",
+            "T1059.001",
+            "T1053.005",
+            "T1071.001",
+            "T1021.001",
+            "T1003.001",
+        ],
         "sample_features": ["xor_0x55", "mutex_Global\\QWE", "ua_Mozilla5", "rc4_key"],
         "known_features": ["xor_0x55", "mutex_Global\\QWE", "ua_Mozilla5", "aes_cbc"],
-        "timestamps": ["2024-03-15T06:30:00Z", "2024-03-15T07:15:00Z",
-                        "2024-03-16T08:00:00Z", "2024-03-16T09:45:00Z"],
+        "timestamps": [
+            "2024-03-15T06:30:00Z",
+            "2024-03-15T07:15:00Z",
+            "2024-03-16T08:00:00Z",
+            "2024-03-16T09:45:00Z",
+        ],
         "tz_offset": 3,
         "strings": ["Привет мир", "connect to server", "upload file"],
     }

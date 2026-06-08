@@ -20,8 +20,13 @@ except ImportError:
 def check_dcsync_permissions(server_ip, domain, username, password):
     """Check which accounts have DCSync-capable permissions (Replicating Directory Changes)."""
     server = Server(server_ip, get_info=ALL)
-    conn = Connection(server, user=f"{domain}\\{username}", password=password,
-                      authentication=NTLM, auto_bind=True)
+    conn = Connection(
+        server,
+        user=f"{domain}\\{username}",
+        password=password,
+        authentication=NTLM,
+        auto_bind=True,
+    )
     base_dn = ",".join([f"DC={p}" for p in domain.split(".")])
     conn.search(
         search_base=base_dn,
@@ -37,13 +42,15 @@ def check_dcsync_permissions(server_ip, domain, username, password):
         attributes=["sAMAccountName", "distinguishedName", "memberOf"],
     )
     for entry in conn.entries:
-        dcsync_accounts.append({
-            "account": str(entry.sAMAccountName),
-            "dn": str(entry.distinguishedName),
-            "admin_count": True,
-            "risk": "HIGH",
-            "note": "adminCount=1 — potential DCSync privilege holder",
-        })
+        dcsync_accounts.append(
+            {
+                "account": str(entry.sAMAccountName),
+                "dn": str(entry.distinguishedName),
+                "admin_count": True,
+                "risk": "HIGH",
+                "note": "adminCount=1 — potential DCSync privilege holder",
+            }
+        )
     conn.unbind()
     return dcsync_accounts
 
@@ -70,14 +77,16 @@ def detect_dcsync_events(log_file=None):
                     props = event.get("Properties", "")
                     for guid in REPL_GUIDS:
                         if guid in str(props).lower():
-                            detections.append({
-                                "event_id": eid,
-                                "timestamp": event.get("TimeCreated", ""),
-                                "account": event.get("SubjectUserName", ""),
-                                "operation": dcsync_indicators[eid],
-                                "guid_matched": guid,
-                                "severity": "CRITICAL",
-                            })
+                            detections.append(
+                                {
+                                    "event_id": eid,
+                                    "timestamp": event.get("TimeCreated", ""),
+                                    "account": event.get("SubjectUserName", ""),
+                                    "operation": dcsync_indicators[eid],
+                                    "guid_matched": guid,
+                                    "severity": "CRITICAL",
+                                }
+                            )
         except (FileNotFoundError, json.JSONDecodeError) as e:
             detections.append({"error": str(e)})
     return detections
@@ -142,7 +151,9 @@ def main():
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 
-    report = run_audit(args.server, args.domain, args.username, args.password, args.log_file)
+    report = run_audit(
+        args.server, args.domain, args.username, args.password, args.log_file
+    )
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2, default=str)

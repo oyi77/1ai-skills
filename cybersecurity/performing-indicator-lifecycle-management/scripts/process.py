@@ -26,11 +26,16 @@ class IOCLifecycleManager:
     def add_indicator(self, ioc_type, value, source, confidence=50):
         key = f"{ioc_type}:{value}"
         self.indicators[key] = {
-            "type": ioc_type, "value": value, "source": source,
-            "confidence": confidence, "state": "discovered",
+            "type": ioc_type,
+            "value": value,
+            "source": source,
+            "confidence": confidence,
+            "state": "discovered",
             "created": datetime.utcnow().isoformat(),
             "last_updated": datetime.utcnow().isoformat(),
-            "hit_count": 0, "fp_count": 0, "last_seen": None,
+            "hit_count": 0,
+            "fp_count": 0,
+            "last_seen": None,
         }
 
     def apply_decay(self):
@@ -73,8 +78,10 @@ class IOCLifecycleManager:
             "total": len(self.indicators),
             "by_state": states,
             "avg_confidence": (
-                sum(i["confidence"] for i in self.indicators.values()) / len(self.indicators)
-                if self.indicators else 0
+                sum(i["confidence"] for i in self.indicators.values())
+                / len(self.indicators)
+                if self.indicators
+                else 0
             ),
         }
 
@@ -108,8 +115,10 @@ def main():
             reader = csv.DictReader(f)
             for row in reader:
                 mgr.add_indicator(
-                    row.get("type", "ip"), row.get("value", ""),
-                    row.get("source", "import"), int(row.get("confidence", 50)),
+                    row.get("type", "ip"),
+                    row.get("value", ""),
+                    row.get("source", "import"),
+                    int(row.get("confidence", 50)),
                 )
         mgr.save(args.db)
 

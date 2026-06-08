@@ -8,11 +8,13 @@ import argparse
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 COMBINED_LOG_PATTERN = re.compile(
-    r'(?P<ip>\S+) \S+ \S+ \[(?P<time>[^\]]+)\] '
+    r"(?P<ip>\S+) \S+ \S+ \[(?P<time>[^\]]+)\] "
     r'"(?P<method>\S+) (?P<uri>\S+) (?P<proto>[^"]*)" '
     r'(?P<status>\d+) (?P<size>\S+) "(?P<referer>[^"]*)" "(?P<ua>[^"]*)"'
 )
@@ -91,26 +93,36 @@ def detect_attacks(entries):
         entry_findings = []
         for pattern, desc in SQLI_PATTERNS:
             if re.search(pattern, uri):
-                entry_findings.append({"type": "SQLi", "pattern": desc, "severity": "critical"})
+                entry_findings.append(
+                    {"type": "SQLi", "pattern": desc, "severity": "critical"}
+                )
         for pattern, desc in LFI_PATTERNS:
             if re.search(pattern, uri):
-                entry_findings.append({"type": "LFI", "pattern": desc, "severity": "high"})
+                entry_findings.append(
+                    {"type": "LFI", "pattern": desc, "severity": "high"}
+                )
         for pattern, desc in XSS_PATTERNS:
             if re.search(pattern, uri):
-                entry_findings.append({"type": "XSS", "pattern": desc, "severity": "high"})
+                entry_findings.append(
+                    {"type": "XSS", "pattern": desc, "severity": "high"}
+                )
         for pattern, desc in SCANNER_UA_PATTERNS:
             if re.search(pattern, ua):
-                entry_findings.append({"type": "Scanner", "pattern": desc, "severity": "medium"})
+                entry_findings.append(
+                    {"type": "Scanner", "pattern": desc, "severity": "medium"}
+                )
         if entry_findings:
-            findings.append({
-                "ip": entry["ip"],
-                "timestamp": entry["time"],
-                "method": entry["method"],
-                "uri": entry["uri"][:200],
-                "status": entry["status"],
-                "user_agent": entry["ua"][:150],
-                "attacks": entry_findings,
-            })
+            findings.append(
+                {
+                    "ip": entry["ip"],
+                    "timestamp": entry["time"],
+                    "method": entry["method"],
+                    "uri": entry["uri"][:200],
+                    "status": entry["status"],
+                    "user_agent": entry["ua"][:150],
+                    "attacks": entry_findings,
+                }
+            )
     logger.info("Detected %d suspicious requests", len(findings))
     return findings
 
@@ -118,7 +130,13 @@ def detect_attacks(entries):
 def detect_brute_force(entries, threshold=50, endpoint_patterns=None):
     """Detect brute-force login attempts by IP frequency."""
     if endpoint_patterns is None:
-        endpoint_patterns = ["/login", "/wp-login", "/admin/login", "/api/auth", "/signin"]
+        endpoint_patterns = [
+            "/login",
+            "/wp-login",
+            "/admin/login",
+            "/api/auth",
+            "/signin",
+        ]
     ip_post_counts = defaultdict(int)
     for entry in entries:
         if entry["method"] == "POST":
@@ -128,7 +146,9 @@ def detect_brute_force(entries, threshold=50, endpoint_patterns=None):
     for ip, count in ip_post_counts.items():
         if count >= threshold:
             brute_force.append({"ip": ip, "post_count": count, "severity": "high"})
-            logger.warning("Brute force: %s sent %d POST requests to login endpoints", ip, count)
+            logger.warning(
+                "Brute force: %s sent %d POST requests to login endpoints", ip, count
+            )
     return brute_force
 
 
@@ -136,6 +156,7 @@ def enrich_with_geoip(findings, geoip_db_path):
     """Enrich findings with GeoIP location data."""
     try:
         import geoip2.database
+
         reader = geoip2.database.Reader(geoip_db_path)
         for finding in findings:
             try:
@@ -156,7 +177,9 @@ def enrich_with_geoip(findings, geoip_db_path):
 
 def summarize_attackers(findings):
     """Aggregate findings by source IP for attacker profiling."""
-    ip_summary = defaultdict(lambda: {"attacks": defaultdict(int), "total": 0, "uris": set()})
+    ip_summary = defaultdict(
+        lambda: {"attacks": defaultdict(int), "total": 0, "uris": set()}
+    )
     for f in findings:
         ip = f["ip"]
         ip_summary[ip]["total"] += 1
@@ -164,13 +187,17 @@ def summarize_attackers(findings):
         for attack in f["attacks"]:
             ip_summary[ip]["attacks"][attack["type"]] += 1
     result = []
-    for ip, data in sorted(ip_summary.items(), key=lambda x: x[1]["total"], reverse=True):
-        result.append({
-            "ip": ip,
-            "total_hits": data["total"],
-            "attack_types": dict(data["attacks"]),
-            "unique_uris": len(data["uris"]),
-        })
+    for ip, data in sorted(
+        ip_summary.items(), key=lambda x: x[1]["total"], reverse=True
+    ):
+        result.append(
+            {
+                "ip": ip,
+                "total_hits": data["total"],
+                "attack_types": dict(data["attacks"]),
+                "unique_uris": len(data["uris"]),
+            }
+        )
     return result[:50]
 
 
@@ -190,7 +217,9 @@ def generate_report(entries, findings, brute_force, attacker_summary):
         "brute_force_details": brute_force,
         "sample_findings": findings[:30],
     }
-    print(f"WEB LOG ANALYSIS: {len(findings)} suspicious, {len(brute_force)} brute force sources")
+    print(
+        f"WEB LOG ANALYSIS: {len(findings)} suspicious, {len(brute_force)} brute force sources"
+    )
     return report
 
 

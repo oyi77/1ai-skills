@@ -9,7 +9,9 @@ import platform
 import subprocess
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -29,22 +31,39 @@ def check_disk_encryption() -> dict:
     if system == "Windows":
         try:
             result = subprocess.run(
-                ["manage-bde", "-status", "C:"], capture_output=True, text=True, timeout=10)
+                ["manage-bde", "-status", "C:"],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
             encrypted = "Fully Encrypted" in result.stdout or "100%" in result.stdout
-            return {"enabled": encrypted, "tool": "BitLocker", "output": result.stdout[:200]}
+            return {
+                "enabled": encrypted,
+                "tool": "BitLocker",
+                "output": result.stdout[:200],
+            }
         except FileNotFoundError:
-            return {"enabled": False, "tool": "BitLocker", "error": "manage-bde not found"}
+            return {
+                "enabled": False,
+                "tool": "BitLocker",
+                "error": "manage-bde not found",
+            }
     elif system == "Darwin":
         try:
             result = subprocess.run(
-                ["fdesetup", "status"], capture_output=True, text=True, timeout=10)
+                ["fdesetup", "status"], capture_output=True, text=True, timeout=10
+            )
             return {"enabled": "On" in result.stdout, "tool": "FileVault"}
         except FileNotFoundError:
             return {"enabled": False, "error": "fdesetup not found"}
     elif system == "Linux":
         try:
             result = subprocess.run(
-                ["lsblk", "-o", "NAME,TYPE,FSTYPE"], capture_output=True, text=True, timeout=10)
+                ["lsblk", "-o", "NAME,TYPE,FSTYPE"],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
             encrypted = "crypto_LUKS" in result.stdout or "crypt" in result.stdout
             return {"enabled": encrypted, "tool": "LUKS"}
         except FileNotFoundError:
@@ -59,7 +78,10 @@ def check_firewall_status() -> dict:
         try:
             result = subprocess.run(
                 ["netsh", "advfirewall", "show", "allprofiles", "state"],
-                capture_output=True, text=True, timeout=10)
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
             enabled = "ON" in result.stdout.upper()
             return {"enabled": enabled, "tool": "Windows Firewall"}
         except FileNotFoundError:
@@ -67,7 +89,8 @@ def check_firewall_status() -> dict:
     elif system == "Linux":
         try:
             result = subprocess.run(
-                ["ufw", "status"], capture_output=True, text=True, timeout=10)
+                ["ufw", "status"], capture_output=True, text=True, timeout=10
+            )
             return {"enabled": "active" in result.stdout.lower(), "tool": "UFW"}
         except FileNotFoundError:
             return {"enabled": False, "error": "ufw not found"}
@@ -80,12 +103,21 @@ def check_antivirus() -> dict:
     if system == "Windows":
         try:
             result = subprocess.run(
-                ["powershell", "-Command", "Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled | ConvertTo-Json"],
-                capture_output=True, text=True, timeout=15)
+                [
+                    "powershell",
+                    "-Command",
+                    "Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled | ConvertTo-Json",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=15,
+            )
             if result.stdout:
                 data = json.loads(result.stdout)
-                return {"enabled": data.get("RealTimeProtectionEnabled", False),
-                        "tool": "Windows Defender"}
+                return {
+                    "enabled": data.get("RealTimeProtectionEnabled", False),
+                    "tool": "Windows Defender",
+                }
         except (FileNotFoundError, json.JSONDecodeError):
             pass
     return {"enabled": False, "tool": "unknown"}
@@ -97,9 +129,15 @@ def check_screen_lock() -> dict:
     if system == "Windows":
         try:
             result = subprocess.run(
-                ["powershell", "-Command",
-                 "(Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').InactivityTimeoutSecs"],
-                capture_output=True, text=True, timeout=10)
+                [
+                    "powershell",
+                    "-Command",
+                    "(Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').InactivityTimeoutSecs",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
             timeout = int(result.stdout.strip()) if result.stdout.strip() else 0
             return {"configured": timeout > 0, "timeout_seconds": timeout}
         except (FileNotFoundError, ValueError):
@@ -109,8 +147,13 @@ def check_screen_lock() -> dict:
 
 def compute_posture_score(checks: dict) -> dict:
     """Compute device posture compliance score."""
-    weights = {"disk_encryption": 25, "firewall": 20, "antivirus": 25,
-               "screen_lock": 15, "os_supported": 15}
+    weights = {
+        "disk_encryption": 25,
+        "firewall": 20,
+        "antivirus": 25,
+        "screen_lock": 15,
+        "os_supported": 15,
+    }
     score = 0
     if checks.get("disk_encryption", {}).get("enabled"):
         score += weights["disk_encryption"]

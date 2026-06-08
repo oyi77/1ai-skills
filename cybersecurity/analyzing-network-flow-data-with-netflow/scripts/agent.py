@@ -8,7 +8,9 @@ import argparse
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -23,6 +25,7 @@ def load_flow_data(flow_file):
 def parse_netflow_capture(pcap_file):
     """Parse NetFlow packets from a PCAP capture using the netflow library."""
     import netflow
+
     templates = {}
     flows = []
     with open(pcap_file, "rb") as f:
@@ -33,18 +36,21 @@ def parse_netflow_capture(pcap_file):
                     break
                 packet, templates = netflow.parse_packet(data, templates)
                 for flow in packet.flows:
-                    flows.append({
-                        "src_ip": str(getattr(flow, "IPV4_SRC_ADDR", "")),
-                        "dst_ip": str(getattr(flow, "IPV4_DST_ADDR", "")),
-                        "src_port": getattr(flow, "L4_SRC_PORT", 0),
-                        "dst_port": getattr(flow, "L4_DST_PORT", 0),
-                        "protocol": getattr(flow, "PROTOCOL", 0),
-                        "bytes_in": getattr(flow, "IN_BYTES", 0),
-                        "bytes_out": getattr(flow, "OUT_BYTES", 0),
-                        "packets": getattr(flow, "IN_PKTS", 0),
-                        "duration": getattr(flow, "LAST_SWITCHED", 0) - getattr(flow, "FIRST_SWITCHED", 0),
-                        "tcp_flags": getattr(flow, "TCP_FLAGS", 0),
-                    })
+                    flows.append(
+                        {
+                            "src_ip": str(getattr(flow, "IPV4_SRC_ADDR", "")),
+                            "dst_ip": str(getattr(flow, "IPV4_DST_ADDR", "")),
+                            "src_port": getattr(flow, "L4_SRC_PORT", 0),
+                            "dst_port": getattr(flow, "L4_DST_PORT", 0),
+                            "protocol": getattr(flow, "PROTOCOL", 0),
+                            "bytes_in": getattr(flow, "IN_BYTES", 0),
+                            "bytes_out": getattr(flow, "OUT_BYTES", 0),
+                            "packets": getattr(flow, "IN_PKTS", 0),
+                            "duration": getattr(flow, "LAST_SWITCHED", 0)
+                            - getattr(flow, "FIRST_SWITCHED", 0),
+                            "tcp_flags": getattr(flow, "TCP_FLAGS", 0),
+                        }
+                    )
             except Exception:
                 break
     logger.info("Parsed %d flows from PCAP", len(flows))
@@ -60,25 +66,29 @@ def detect_port_scanning(flows, threshold=20):
     for src, dst_map in src_dst_ports.items():
         for dst, ports in dst_map.items():
             if len(ports) >= threshold:
-                scanners.append({
-                    "source": src,
-                    "target": dst,
-                    "unique_ports": len(ports),
-                    "ports_sample": sorted(list(ports))[:20],
-                    "severity": "high",
-                    "indicator": "Port scan detected",
-                })
+                scanners.append(
+                    {
+                        "source": src,
+                        "target": dst,
+                        "unique_ports": len(ports),
+                        "ports_sample": sorted(list(ports))[:20],
+                        "severity": "high",
+                        "indicator": "Port scan detected",
+                    }
+                )
     total_targets = sum(len(d) for d in src_dst_ports.values())
     for src, dst_map in src_dst_ports.items():
         if len(dst_map) >= 50:
             total_ports = sum(len(p) for p in dst_map.values())
-            scanners.append({
-                "source": src,
-                "unique_targets": len(dst_map),
-                "total_ports_probed": total_ports,
-                "severity": "critical",
-                "indicator": "Network sweep detected",
-            })
+            scanners.append(
+                {
+                    "source": src,
+                    "unique_targets": len(dst_map),
+                    "total_ports_probed": total_ports,
+                    "severity": "critical",
+                    "indicator": "Network sweep detected",
+                }
+            )
     logger.info("Detected %d scanning activities", len(scanners))
     return scanners
 
@@ -92,14 +102,16 @@ def detect_data_exfiltration(flows, byte_threshold=100_000_000):
     exfil_candidates = []
     for (src, dst), total_bytes in src_dst_bytes.items():
         if total_bytes >= byte_threshold:
-            exfil_candidates.append({
-                "source": src,
-                "destination": dst,
-                "total_bytes": total_bytes,
-                "total_mb": round(total_bytes / 1_000_000, 1),
-                "severity": "critical",
-                "indicator": "High-volume data transfer (potential exfiltration)",
-            })
+            exfil_candidates.append(
+                {
+                    "source": src,
+                    "destination": dst,
+                    "total_bytes": total_bytes,
+                    "total_mb": round(total_bytes / 1_000_000, 1),
+                    "severity": "critical",
+                    "indicator": "High-volume data transfer (potential exfiltration)",
+                }
+            )
     exfil_candidates.sort(key=lambda x: x["total_bytes"], reverse=True)
     logger.info("Detected %d high-volume transfer pairs", len(exfil_candidates))
     return exfil_candidates
@@ -115,26 +127,28 @@ def detect_beaconing(flows, min_connections=10, jitter_threshold=0.15):
     for (src, dst, port), indices in pair_timestamps.items():
         if len(indices) < min_connections:
             continue
-        intervals = [indices[i+1] - indices[i] for i in range(len(indices)-1)]
+        intervals = [indices[i + 1] - indices[i] for i in range(len(indices) - 1)]
         if not intervals:
             continue
         mean_interval = sum(intervals) / len(intervals)
         if mean_interval == 0:
             continue
-        variance = sum((x - mean_interval)**2 for x in intervals) / len(intervals)
+        variance = sum((x - mean_interval) ** 2 for x in intervals) / len(intervals)
         std_dev = math.sqrt(variance)
         jitter = std_dev / mean_interval
         if jitter < jitter_threshold:
-            beacons.append({
-                "source": src,
-                "destination": dst,
-                "port": port,
-                "connection_count": len(indices),
-                "mean_interval": round(mean_interval, 2),
-                "jitter_ratio": round(jitter, 3),
-                "severity": "critical",
-                "indicator": "Periodic beaconing (potential C2)",
-            })
+            beacons.append(
+                {
+                    "source": src,
+                    "destination": dst,
+                    "port": port,
+                    "connection_count": len(indices),
+                    "mean_interval": round(mean_interval, 2),
+                    "jitter_ratio": round(jitter, 3),
+                    "severity": "critical",
+                    "indicator": "Periodic beaconing (potential C2)",
+                }
+            )
     logger.info("Detected %d beaconing patterns", len(beacons))
     return beacons
 
@@ -152,7 +166,9 @@ def build_traffic_baseline(flows):
         "total_flows": len(flows),
         "total_bytes": total_bytes,
         "protocol_distribution": dict(protocol_bytes),
-        "top_ports": dict(sorted(port_counts.items(), key=lambda x: x[1], reverse=True)[:20]),
+        "top_ports": dict(
+            sorted(port_counts.items(), key=lambda x: x[1], reverse=True)[:20]
+        ),
     }
 
 

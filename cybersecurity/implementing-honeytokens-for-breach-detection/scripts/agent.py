@@ -12,7 +12,7 @@ import re
 
 import requests
 
-_SAFE_TABLE_RE = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*$')
+_SAFE_TABLE_RE = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]*$")
 
 
 def create_dns_canarytoken(email, memo, webhook_url=None):
@@ -106,11 +106,22 @@ def deploy_database_honeytoken(db_connection_string, table_name="users"):
             f"INSERT INTO [{table_name}] (username, email, role, api_key) "
             "VALUES (?, ?, ?, ?);"
         )
-        sql_statements.append({
-            "query": sql,
-            "params": [user["username"], user["email"], user["role"], user["api_key"]],
-        })
-    return {"token_id": token_id, "sql_statements": sql_statements, "records": fake_users}
+        sql_statements.append(
+            {
+                "query": sql,
+                "params": [
+                    user["username"],
+                    user["email"],
+                    user["role"],
+                    user["api_key"],
+                ],
+            }
+        )
+    return {
+        "token_id": token_id,
+        "sql_statements": sql_statements,
+        "records": fake_users,
+    }
 
 
 def deploy_dns_token_in_config(config_path, dns_hostname, key_name="backup_server"):
@@ -131,16 +142,31 @@ def create_deployment_plan(target_environment):
     plan = {
         "environment": target_environment,
         "tokens": [
-            {"type": "aws_credentials", "location": "/opt/backup/.aws/credentials",
-             "description": "Fake AWS creds in backup directory"},
-            {"type": "dns", "location": "/etc/app/config.yml",
-             "description": "DNS canary in app config"},
-            {"type": "database", "location": "users table",
-             "description": "Honeytoken admin accounts"},
-            {"type": "web_bug", "location": "internal wiki",
-             "description": "Image beacon in sensitive docs"},
-            {"type": "dns", "location": "/root/.ssh/config",
-             "description": "DNS canary in SSH config"},
+            {
+                "type": "aws_credentials",
+                "location": "/opt/backup/.aws/credentials",
+                "description": "Fake AWS creds in backup directory",
+            },
+            {
+                "type": "dns",
+                "location": "/etc/app/config.yml",
+                "description": "DNS canary in app config",
+            },
+            {
+                "type": "database",
+                "location": "users table",
+                "description": "Honeytoken admin accounts",
+            },
+            {
+                "type": "web_bug",
+                "location": "internal wiki",
+                "description": "Image beacon in sensitive docs",
+            },
+            {
+                "type": "dns",
+                "location": "/root/.ssh/config",
+                "description": "DNS canary in SSH config",
+            },
         ],
     }
     return plan
@@ -155,12 +181,14 @@ def check_token_alerts(webhook_log_path):
     alerts = []
     for entry in logs:
         if entry.get("type") == "canarytoken_triggered":
-            alerts.append({
-                "token_memo": entry.get("memo", ""),
-                "source_ip": entry.get("src_ip", ""),
-                "triggered_at": entry.get("time", ""),
-                "token_type": entry.get("token_type", ""),
-            })
+            alerts.append(
+                {
+                    "token_memo": entry.get("memo", ""),
+                    "source_ip": entry.get("src_ip", ""),
+                    "triggered_at": entry.get("time", ""),
+                    "token_type": entry.get("token_type", ""),
+                }
+            )
     return alerts
 
 
@@ -169,9 +197,11 @@ def main():
     parser.add_argument("--email", default=os.getenv("CANARY_EMAIL", "soc@company.com"))
     parser.add_argument("--webhook", default=os.getenv("CANARY_WEBHOOK"))
     parser.add_argument("--output", default="honeytoken_report.json")
-    parser.add_argument("--action", choices=[
-        "create_dns", "create_aws", "create_web", "plan", "full_deploy"
-    ], default="plan")
+    parser.add_argument(
+        "--action",
+        choices=["create_dns", "create_aws", "create_web", "plan", "full_deploy"],
+        default="plan",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "tokens": {}}
@@ -182,12 +212,16 @@ def main():
         print(f"[+] Deployment plan: {len(plan['tokens'])} tokens")
 
     if args.action in ("create_dns", "full_deploy"):
-        token = create_dns_canarytoken(args.email, "Production honeytoken", args.webhook)
+        token = create_dns_canarytoken(
+            args.email, "Production honeytoken", args.webhook
+        )
         report["tokens"]["dns"] = token
         print(f"[+] DNS canary token created")
 
     if args.action in ("create_aws", "full_deploy"):
-        token = create_aws_key_token(args.email, "AWS credential honeytoken", args.webhook)
+        token = create_aws_key_token(
+            args.email, "AWS credential honeytoken", args.webhook
+        )
         report["tokens"]["aws"] = token
         print(f"[+] AWS credential token created")
 

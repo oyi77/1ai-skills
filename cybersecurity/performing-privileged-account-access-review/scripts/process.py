@@ -17,12 +17,14 @@ from pathlib import Path
 
 try:
     import ldap3
+
     HAS_LDAP = True
 except ImportError:
     HAS_LDAP = False
 
 try:
     import boto3
+
     HAS_BOTO = True
 except ImportError:
     HAS_BOTO = False
@@ -34,16 +36,18 @@ class PrivilegedAccountDiscovery:
     def __init__(self):
         self.accounts = []
 
-    def discover_ad_privileged_accounts(self, server_address, domain_dn,
-                                         bind_user, bind_password):
+    def discover_ad_privileged_accounts(
+        self, server_address, domain_dn, bind_user, bind_password
+    ):
         """Enumerate privileged accounts from Active Directory."""
         if not HAS_LDAP:
             print("[WARN] ldap3 not installed, skipping AD discovery")
             return []
 
         server = ldap3.Server(server_address, use_ssl=True, get_info=ldap3.ALL)
-        conn = ldap3.Connection(server, user=bind_user, password=bind_password,
-                                auto_bind=True)
+        conn = ldap3.Connection(
+            server, user=bind_user, password=bind_password, auto_bind=True
+        )
 
         privileged_groups = [
             "Domain Admins",
@@ -60,34 +64,68 @@ class PrivilegedAccountDiscovery:
 
         for group_name in privileged_groups:
             search_filter = f"(&(objectClass=group)(cn={group_name}))"
-            conn.search(domain_dn, search_filter,
-                        attributes=["member", "distinguishedName"])
+            conn.search(
+                domain_dn, search_filter, attributes=["member", "distinguishedName"]
+            )
 
             for entry in conn.entries:
                 members = entry.member.values if hasattr(entry.member, "values") else []
                 for member_dn in members:
-                    conn.search(member_dn, "(objectClass=user)",
-                                attributes=["sAMAccountName", "displayName",
-                                             "mail", "lastLogonTimestamp",
-                                             "whenCreated", "userAccountControl",
-                                             "adminCount", "servicePrincipalName"])
+                    conn.search(
+                        member_dn,
+                        "(objectClass=user)",
+                        attributes=[
+                            "sAMAccountName",
+                            "displayName",
+                            "mail",
+                            "lastLogonTimestamp",
+                            "whenCreated",
+                            "userAccountControl",
+                            "adminCount",
+                            "servicePrincipalName",
+                        ],
+                    )
                     for user_entry in conn.entries:
-                        uac = int(str(user_entry.userAccountControl)) if user_entry.userAccountControl else 0
+                        uac = (
+                            int(str(user_entry.userAccountControl))
+                            if user_entry.userAccountControl
+                            else 0
+                        )
                         is_disabled = bool(uac & 0x0002)
                         is_service = bool(user_entry.servicePrincipalName)
 
                         account = {
                             "platform": "Active Directory",
                             "username": str(user_entry.sAMAccountName),
-                            "display_name": str(user_entry.displayName) if user_entry.displayName else "",
+                            "display_name": (
+                                str(user_entry.displayName)
+                                if user_entry.displayName
+                                else ""
+                            ),
                             "email": str(user_entry.mail) if user_entry.mail else "",
                             "privileged_group": group_name,
                             "account_type": "service" if is_service else "user",
                             "is_disabled": is_disabled,
-                            "created_date": str(user_entry.whenCreated) if user_entry.whenCreated else "",
-                            "last_logon": str(user_entry.lastLogonTimestamp) if user_entry.lastLogonTimestamp else "Never",
-                            "admin_count": str(user_entry.adminCount) if user_entry.adminCount else "0",
-                            "risk_level": "Critical" if group_name in ["Domain Admins", "Enterprise Admins"] else "High",
+                            "created_date": (
+                                str(user_entry.whenCreated)
+                                if user_entry.whenCreated
+                                else ""
+                            ),
+                            "last_logon": (
+                                str(user_entry.lastLogonTimestamp)
+                                if user_entry.lastLogonTimestamp
+                                else "Never"
+                            ),
+                            "admin_count": (
+                                str(user_entry.adminCount)
+                                if user_entry.adminCount
+                                else "0"
+                            ),
+                            "risk_level": (
+                                "Critical"
+                                if group_name in ["Domain Admins", "Enterprise Admins"]
+                                else "High"
+                            ),
                         }
                         discovered.append(account)
 
@@ -118,13 +156,17 @@ class PrivilegedAccountDiscovery:
                 create_date = user["CreateDate"]
 
                 attached_policies = iam.list_attached_user_policies(UserName=username)
-                user_policies = [p["PolicyArn"] for p in attached_policies["AttachedPolicies"]]
+                user_policies = [
+                    p["PolicyArn"] for p in attached_policies["AttachedPolicies"]
+                ]
 
                 is_admin = any(p in admin_policies for p in user_policies)
 
                 user_groups = iam.list_groups_for_user(UserName=username)
                 for group in user_groups["Groups"]:
-                    group_policies = iam.list_attached_group_policies(GroupName=group["GroupName"])
+                    group_policies = iam.list_attached_group_policies(
+                        GroupName=group["GroupName"]
+                    )
                     for gp in group_policies["AttachedPolicies"]:
                         if gp["PolicyArn"] in admin_policies:
                             is_admin = True
@@ -140,8 +182,11 @@ class PrivilegedAccountDiscovery:
                     has_mfa = len(mfa_devices["MFADevices"]) > 0
 
                     access_keys = iam.list_access_keys(UserName=username)
-                    active_keys = [k for k in access_keys["AccessKeyMetadata"]
-                                   if k["Status"] == "Active"]
+                    active_keys = [
+                        k
+                        for k in access_keys["AccessKeyMetadata"]
+                        if k["Status"] == "Active"
+                    ]
 
                     account = {
                         "platform": "AWS IAM",
@@ -170,10 +215,20 @@ class PrivilegedAccountDiscovery:
             return
 
         fieldnames = [
-            "platform", "username", "display_name", "email",
-            "privileged_group", "account_type", "is_disabled",
-            "created_date", "last_logon", "risk_level",
-            "reviewer", "decision", "justification", "review_date"
+            "platform",
+            "username",
+            "display_name",
+            "email",
+            "privileged_group",
+            "account_type",
+            "is_disabled",
+            "created_date",
+            "last_logon",
+            "risk_level",
+            "reviewer",
+            "decision",
+            "justification",
+            "review_date",
         ]
 
         with open(output_path, "w", newline="", encoding="utf-8") as f:
@@ -260,26 +315,33 @@ class AccessReviewTracker:
             "metrics": status,
             "dormant_accounts": len(dormant),
             "dormant_account_list": [
-                {"username": a["username"], "platform": a["platform"],
-                 "last_logon": a.get("last_logon", "Unknown")}
+                {
+                    "username": a["username"],
+                    "platform": a["platform"],
+                    "last_logon": a.get("last_logon", "Unknown"),
+                }
                 for a in dormant
             ],
             "findings": [],
         }
 
         if status["pending"] > 0:
-            report["findings"].append({
-                "finding": f"{status['pending']} accounts have not been reviewed",
-                "severity": "High",
-                "recommendation": "Complete reviews within SLA or auto-revoke"
-            })
+            report["findings"].append(
+                {
+                    "finding": f"{status['pending']} accounts have not been reviewed",
+                    "severity": "High",
+                    "recommendation": "Complete reviews within SLA or auto-revoke",
+                }
+            )
 
         if dormant:
-            report["findings"].append({
-                "finding": f"{len(dormant)} dormant privileged accounts detected",
-                "severity": "Critical",
-                "recommendation": "Disable dormant accounts and rotate credentials"
-            })
+            report["findings"].append(
+                {
+                    "finding": f"{len(dormant)} dormant privileged accounts detected",
+                    "severity": "Critical",
+                    "recommendation": "Disable dormant accounts and rotate credentials",
+                }
+            )
 
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2)

@@ -19,7 +19,6 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Optional
 
-
 RISK_LEVELS = {"High": 0, "Medium": 1, "Low": 2, "Informational": 3}
 
 
@@ -39,31 +38,42 @@ class ZapAlert:
     instances_count: int = 1
 
 
-def run_zap_scan(target: str, scan_type: str = "baseline",
-                 rules_file: Optional[str] = None,
-                 openapi_url: Optional[str] = None,
-                 report_dir: str = "/tmp/zap") -> dict:
+def run_zap_scan(
+    target: str,
+    scan_type: str = "baseline",
+    rules_file: Optional[str] = None,
+    openapi_url: Optional[str] = None,
+    report_dir: str = "/tmp/zap",
+) -> dict:
     """Run ZAP scan via Docker and return results."""
     os.makedirs(report_dir, exist_ok=True)
 
     scan_scripts = {
         "baseline": "zap-baseline.py",
         "full": "zap-full-scan.py",
-        "api": "zap-api-scan.py"
+        "api": "zap-api-scan.py",
     }
 
     script = scan_scripts.get(scan_type, "zap-baseline.py")
 
     cmd = [
-        "docker", "run", "--rm",
-        "-v", f"{report_dir}:/zap/wrk",
-        "--network", "host",
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        f"{report_dir}:/zap/wrk",
+        "--network",
+        "host",
         "zaproxy/zap-stable",
         script,
-        "-t", target,
-        "-J", "report.json",
-        "-r", "report.html",
-        "-w", "report.md"
+        "-t",
+        target,
+        "-J",
+        "report.json",
+        "-r",
+        "report.html",
+        "-w",
+        "report.md",
     ]
 
     if rules_file and os.path.exists(rules_file):
@@ -99,20 +109,26 @@ def parse_zap_results(zap_json: dict) -> list:
             instances = alert.get("instances", [])
             first_instance = instances[0] if instances else {}
 
-            alerts.append(ZapAlert(
-                alert_id=int(alert.get("pluginid", 0)),
-                name=alert.get("name", ""),
-                risk=alert.get("riskdesc", "").split(" ")[0] if alert.get("riskdesc") else "Informational",
-                confidence=alert.get("confidence", ""),
-                description=alert.get("desc", "")[:300],
-                url=first_instance.get("uri", ""),
-                method=first_instance.get("method", ""),
-                evidence=first_instance.get("evidence", "")[:200],
-                solution=alert.get("solution", "")[:300],
-                cwe_id=int(alert.get("cweid", 0)),
-                wasc_id=int(alert.get("wascid", 0)),
-                instances_count=len(instances)
-            ))
+            alerts.append(
+                ZapAlert(
+                    alert_id=int(alert.get("pluginid", 0)),
+                    name=alert.get("name", ""),
+                    risk=(
+                        alert.get("riskdesc", "").split(" ")[0]
+                        if alert.get("riskdesc")
+                        else "Informational"
+                    ),
+                    confidence=alert.get("confidence", ""),
+                    description=alert.get("desc", "")[:300],
+                    url=first_instance.get("uri", ""),
+                    method=first_instance.get("method", ""),
+                    evidence=first_instance.get("evidence", "")[:200],
+                    solution=alert.get("solution", "")[:300],
+                    cwe_id=int(alert.get("cweid", 0)),
+                    wasc_id=int(alert.get("wascid", 0)),
+                    instances_count=len(instances),
+                )
+            )
 
     return alerts
 
@@ -142,8 +158,9 @@ def apply_rules(alerts: list, rules_file: Optional[str]) -> list:
     return filtered
 
 
-def evaluate_quality_gate(alerts: list, threshold: str,
-                          rules_file: Optional[str] = None) -> dict:
+def evaluate_quality_gate(
+    alerts: list, threshold: str, rules_file: Optional[str] = None
+) -> dict:
     """Evaluate quality gate based on alert risk levels."""
     threshold_level = RISK_LEVELS.get(threshold, 1)
 
@@ -175,32 +192,44 @@ def evaluate_quality_gate(alerts: list, threshold: str,
         "blocking_count": len(blocking),
         "risk_counts": risk_counts,
         "blocking_details": [
-            {"id": a.alert_id, "name": a.name, "risk": a.risk,
-             "url": a.url, "cwe": a.cwe_id}
+            {
+                "id": a.alert_id,
+                "name": a.name,
+                "risk": a.risk,
+                "url": a.url,
+                "cwe": a.cwe_id,
+            }
             for a in blocking[:15]
-        ]
+        ],
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description="OWASP ZAP DAST Pipeline")
     parser.add_argument("--target", required=True, help="Target URL to scan")
-    parser.add_argument("--scan-type", default="baseline", choices=["baseline", "full", "api"])
+    parser.add_argument(
+        "--scan-type", default="baseline", choices=["baseline", "full", "api"]
+    )
     parser.add_argument("--rules-file", default=None, help="Path to rules.tsv")
-    parser.add_argument("--openapi-url", default=None, help="OpenAPI spec URL for API scan")
+    parser.add_argument(
+        "--openapi-url", default=None, help="OpenAPI spec URL for API scan"
+    )
     parser.add_argument("--output", default="dast-report.json")
     parser.add_argument("--report-dir", default="/tmp/zap")
-    parser.add_argument("--risk-threshold", default="Medium", choices=["High", "Medium", "Low"])
+    parser.add_argument(
+        "--risk-threshold", default="Medium", choices=["High", "Medium", "Low"]
+    )
     parser.add_argument("--fail-on-findings", action="store_true")
     args = parser.parse_args()
 
     print(f"[*] Running ZAP {args.scan_type} scan against {args.target}")
 
     zap_json = run_zap_scan(
-        args.target, args.scan_type,
+        args.target,
+        args.scan_type,
         rules_file=args.rules_file,
         openapi_url=args.openapi_url,
-        report_dir=args.report_dir
+        report_dir=args.report_dir,
     )
 
     if "error" in zap_json:
@@ -214,15 +243,22 @@ def main():
         "metadata": {
             "target": args.target,
             "scan_type": args.scan_type,
-            "scan_date": datetime.now(timezone.utc).isoformat()
+            "scan_date": datetime.now(timezone.utc).isoformat(),
         },
         "quality_gate": quality_gate,
         "alerts": [
-            {"id": a.alert_id, "name": a.name, "risk": a.risk,
-             "url": a.url, "method": a.method, "cwe": a.cwe_id,
-             "solution": a.solution, "instances": a.instances_count}
+            {
+                "id": a.alert_id,
+                "name": a.name,
+                "risk": a.risk,
+                "url": a.url,
+                "method": a.method,
+                "cwe": a.cwe_id,
+                "solution": a.solution,
+                "instances": a.instances_count,
+            }
             for a in sorted(alerts, key=lambda x: RISK_LEVELS.get(x.risk, 3))
-        ]
+        ],
     }
 
     output_path = os.path.abspath(args.output)
@@ -231,7 +267,9 @@ def main():
     print(f"[*] Report: {output_path}")
 
     if quality_gate["passed"]:
-        print(f"\n[PASS] Quality gate passed. {quality_gate['total_alerts']} alerts, none blocking.")
+        print(
+            f"\n[PASS] Quality gate passed. {quality_gate['total_alerts']} alerts, none blocking."
+        )
     else:
         print(f"\n[FAIL] {quality_gate['blocking_count']} blocking alerts:")
         for d in quality_gate["blocking_details"]:

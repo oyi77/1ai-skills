@@ -39,13 +39,15 @@ def list_partitions(image_path):
         for line in stdout.splitlines():
             parts = line.split()
             if len(parts) >= 6 and parts[2].isdigit():
-                partitions.append({
-                    "slot": parts[0].rstrip(":"),
-                    "start": int(parts[2]),
-                    "end": int(parts[3]),
-                    "length": int(parts[4]),
-                    "description": " ".join(parts[5:]),
-                })
+                partitions.append(
+                    {
+                        "slot": parts[0].rstrip(":"),
+                        "start": int(parts[2]),
+                        "end": int(parts[3]),
+                        "length": int(parts[4]),
+                        "description": " ".join(parts[5:]),
+                    }
+                )
     return partitions
 
 
@@ -73,12 +75,14 @@ def list_files(image_path, offset, path="/", recursive=False):
                     if "-" in token and token.replace("-", "").isdigit():
                         inode = token
                         break
-                files.append({
-                    "name": name,
-                    "inode": inode,
-                    "type": "directory" if file_type == "d" else "file",
-                    "deleted": deleted,
-                })
+                files.append(
+                    {
+                        "name": name,
+                        "inode": inode,
+                        "type": "directory" if file_type == "d" else "file",
+                        "deleted": deleted,
+                    }
+                )
     return files
 
 
@@ -117,7 +121,8 @@ def create_bodyfile(image_path, offset, output_path):
     """Generate a TSK bodyfile for timeline creation."""
     result = subprocess.run(
         ["fls", "-r", "-m", "/", "-o", str(offset), image_path],
-        capture_output=True, text=True,
+        capture_output=True,
+        text=True,
         timeout=120,
     )
     if result.returncode == 0:
@@ -142,13 +147,16 @@ def search_keywords(image_path, offset, keyword):
     """Search for keyword strings in the disk image."""
     result = subprocess.run(
         ["srch_strings", "-a", "-o", str(offset), image_path],
-        capture_output=True, text=True,
+        capture_output=True,
+        text=True,
         timeout=120,
     )
     if result.returncode != 0 or not result.stdout:
         return []
     keyword_lower = keyword.lower()
-    return [line for line in result.stdout.splitlines() if keyword_lower in line.lower()]
+    return [
+        line for line in result.stdout.splitlines() if keyword_lower in line.lower()
+    ]
 
 
 def find_file_signature(image_path, offset, hex_signature):
@@ -170,7 +178,9 @@ def analyze_image(image_path, case_dir):
     results["partitions"] = partitions
 
     for part in partitions:
-        if "NTFS" in part.get("description", "") or "Linux" in part.get("description", ""):
+        if "NTFS" in part.get("description", "") or "Linux" in part.get(
+            "description", ""
+        ):
             offset = part["start"]
             print(f"[*] Listing files at offset {offset} ({part['description']})...")
             files = list_files(image_path, offset, recursive=True)
@@ -178,7 +188,9 @@ def analyze_image(image_path, case_dir):
                 "total": len(files),
                 "deleted": sum(1 for f in files if f["deleted"]),
             }
-            print(f"    Total: {len(files)}, Deleted: {results[f'files_offset_{offset}']['deleted']}")
+            print(
+                f"    Total: {len(files)}, Deleted: {results[f'files_offset_{offset}']['deleted']}"
+            )
 
             print(f"[*] Creating bodyfile for timeline...")
             bf_path = os.path.join(case_dir, f"bodyfile_{offset}.txt")
@@ -203,7 +215,14 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         image = sys.argv[1]
         import tempfile
-        case = sys.argv[2] if len(sys.argv) > 2 else os.environ.get("AUTOPSY_CASE_DIR", os.path.join(tempfile.gettempdir(), "autopsy_case"))
+
+        case = (
+            sys.argv[2]
+            if len(sys.argv) > 2
+            else os.environ.get(
+                "AUTOPSY_CASE_DIR", os.path.join(tempfile.gettempdir(), "autopsy_case")
+            )
+        )
         if os.path.exists(image):
             analyze_image(image, case)
         else:

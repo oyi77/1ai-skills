@@ -84,14 +84,23 @@ class BloodHoundAnalyzer:
                     print(f"[-] Failed to parse {filename}")
                     continue
 
-            if "users" in filename.lower() or (isinstance(data, dict) and data.get("meta", {}).get("type") == "users"):
+            if "users" in filename.lower() or (
+                isinstance(data, dict) and data.get("meta", {}).get("type") == "users"
+            ):
                 self._parse_users(data)
-            elif "computers" in filename.lower() or (isinstance(data, dict) and data.get("meta", {}).get("type") == "computers"):
+            elif "computers" in filename.lower() or (
+                isinstance(data, dict)
+                and data.get("meta", {}).get("type") == "computers"
+            ):
                 self._parse_computers(data)
-            elif "groups" in filename.lower() or (isinstance(data, dict) and data.get("meta", {}).get("type") == "groups"):
+            elif "groups" in filename.lower() or (
+                isinstance(data, dict) and data.get("meta", {}).get("type") == "groups"
+            ):
                 self._parse_groups(data)
 
-        print(f"[+] Loaded: {len(self.users)} users, {len(self.computers)} computers, {len(self.groups)} groups")
+        print(
+            f"[+] Loaded: {len(self.users)} users, {len(self.computers)} computers, {len(self.groups)} groups"
+        )
 
     def _parse_users(self, data: dict) -> None:
         """Parse user data from BloodHound JSON."""
@@ -144,7 +153,11 @@ class BloodHoundAnalyzer:
             name = props.get("name", group_data.get("name", "unknown"))
 
             members_raw = group_data.get("Members", group_data.get("members", []))
-            members = [m.get("MemberId", m.get("ObjectIdentifier", "")) for m in members_raw] if members_raw else []
+            members = (
+                [m.get("MemberId", m.get("ObjectIdentifier", "")) for m in members_raw]
+                if members_raw
+                else []
+            )
 
             group = ADGroup(
                 name=name,
@@ -163,29 +176,29 @@ class BloodHoundAnalyzer:
         findings = []
 
         if kerberoastable:
-            privileged_kerberoastable = [
-                u for u in kerberoastable if u.admin_count
-            ]
+            privileged_kerberoastable = [u for u in kerberoastable if u.admin_count]
 
-            findings.append(Finding(
-                severity="critical" if privileged_kerberoastable else "high",
-                category="Kerberoasting",
-                title=f"Found {len(kerberoastable)} Kerberoastable Accounts",
-                description=(
-                    f"{len(kerberoastable)} enabled user accounts have Service Principal Names (SPNs) "
-                    f"set, making them vulnerable to Kerberoasting (T1558.003). "
-                    f"{len(privileged_kerberoastable)} of these are privileged accounts."
-                ),
-                affected_objects=[u.name for u in kerberoastable],
-                attack_path="GetUserSPNs.py -> Request TGS -> Crack offline with hashcat -m 13100",
-                remediation=(
-                    "1. Use Group Managed Service Accounts (gMSA) where possible\n"
-                    "2. Set 25+ character passwords on service accounts\n"
-                    "3. Enable AES encryption only (disable RC4)\n"
-                    "4. Monitor Event ID 4769 for anomalous TGS requests"
-                ),
-                mitre_technique="T1558.003",
-            ))
+            findings.append(
+                Finding(
+                    severity="critical" if privileged_kerberoastable else "high",
+                    category="Kerberoasting",
+                    title=f"Found {len(kerberoastable)} Kerberoastable Accounts",
+                    description=(
+                        f"{len(kerberoastable)} enabled user accounts have Service Principal Names (SPNs) "
+                        f"set, making them vulnerable to Kerberoasting (T1558.003). "
+                        f"{len(privileged_kerberoastable)} of these are privileged accounts."
+                    ),
+                    affected_objects=[u.name for u in kerberoastable],
+                    attack_path="GetUserSPNs.py -> Request TGS -> Crack offline with hashcat -m 13100",
+                    remediation=(
+                        "1. Use Group Managed Service Accounts (gMSA) where possible\n"
+                        "2. Set 25+ character passwords on service accounts\n"
+                        "3. Enable AES encryption only (disable RC4)\n"
+                        "4. Monitor Event ID 4769 for anomalous TGS requests"
+                    ),
+                    mitre_technique="T1558.003",
+                )
+            )
 
         return findings
 
@@ -195,90 +208,98 @@ class BloodHoundAnalyzer:
         findings = []
 
         if asrep:
-            findings.append(Finding(
-                severity="high",
-                category="AS-REP Roasting",
-                title=f"Found {len(asrep)} AS-REP Roastable Accounts",
-                description=(
-                    f"{len(asrep)} accounts have 'Do not require Kerberos pre-authentication' "
-                    f"enabled, allowing offline password cracking (T1558.004)."
-                ),
-                affected_objects=[u.name for u in asrep],
-                attack_path="GetNPUsers.py -> Request AS-REP -> Crack with hashcat -m 18200",
-                remediation=(
-                    "1. Enable Kerberos pre-authentication for all accounts\n"
-                    "2. Use strong passwords (25+ characters) on affected accounts\n"
-                    "3. Monitor Event ID 4768 with pre-auth type 0"
-                ),
-                mitre_technique="T1558.004",
-            ))
+            findings.append(
+                Finding(
+                    severity="high",
+                    category="AS-REP Roasting",
+                    title=f"Found {len(asrep)} AS-REP Roastable Accounts",
+                    description=(
+                        f"{len(asrep)} accounts have 'Do not require Kerberos pre-authentication' "
+                        f"enabled, allowing offline password cracking (T1558.004)."
+                    ),
+                    affected_objects=[u.name for u in asrep],
+                    attack_path="GetNPUsers.py -> Request AS-REP -> Crack with hashcat -m 18200",
+                    remediation=(
+                        "1. Enable Kerberos pre-authentication for all accounts\n"
+                        "2. Use strong passwords (25+ characters) on affected accounts\n"
+                        "3. Monitor Event ID 4768 with pre-auth type 0"
+                    ),
+                    mitre_technique="T1558.004",
+                )
+            )
 
         return findings
 
     def find_unconstrained_delegation(self) -> list[Finding]:
         """Identify computers with unconstrained delegation."""
         unconstrained = [
-            c for c in self.computers.values()
-            if c.unconstrained_delegation and c.enabled
+            c
+            for c in self.computers.values()
+            if c.unconstrained_delegation
+            and c.enabled
             and "DOMAIN CONTROLLER" not in c.name.upper()
         ]
         findings = []
 
         if unconstrained:
-            findings.append(Finding(
-                severity="critical",
-                category="Delegation Abuse",
-                title=f"Found {len(unconstrained)} Non-DC Computers with Unconstrained Delegation",
-                description=(
-                    f"{len(unconstrained)} computers (excluding DCs) have unconstrained delegation "
-                    f"enabled. An attacker with admin access to these systems can capture TGTs "
-                    f"from any user that authenticates to them, including Domain Admins."
-                ),
-                affected_objects=[c.name for c in unconstrained],
-                attack_path=(
-                    "Compromise unconstrained host -> Coerce DC auth (PetitPotam/PrinterBug) -> "
-                    "Capture DC TGT with Rubeus monitor -> DCSync"
-                ),
-                remediation=(
-                    "1. Remove unconstrained delegation from non-DC computers\n"
-                    "2. Migrate to constrained delegation or RBCD\n"
-                    "3. Add sensitive accounts to 'Protected Users' group\n"
-                    "4. Enable 'Account is sensitive and cannot be delegated'"
-                ),
-                mitre_technique="T1558.001",
-            ))
+            findings.append(
+                Finding(
+                    severity="critical",
+                    category="Delegation Abuse",
+                    title=f"Found {len(unconstrained)} Non-DC Computers with Unconstrained Delegation",
+                    description=(
+                        f"{len(unconstrained)} computers (excluding DCs) have unconstrained delegation "
+                        f"enabled. An attacker with admin access to these systems can capture TGTs "
+                        f"from any user that authenticates to them, including Domain Admins."
+                    ),
+                    affected_objects=[c.name for c in unconstrained],
+                    attack_path=(
+                        "Compromise unconstrained host -> Coerce DC auth (PetitPotam/PrinterBug) -> "
+                        "Capture DC TGT with Rubeus monitor -> DCSync"
+                    ),
+                    remediation=(
+                        "1. Remove unconstrained delegation from non-DC computers\n"
+                        "2. Migrate to constrained delegation or RBCD\n"
+                        "3. Add sensitive accounts to 'Protected Users' group\n"
+                        "4. Enable 'Account is sensitive and cannot be delegated'"
+                    ),
+                    mitre_technique="T1558.001",
+                )
+            )
 
         return findings
 
     def find_constrained_delegation(self) -> list[Finding]:
         """Identify constrained delegation abuse opportunities."""
         constrained = [
-            c for c in self.computers.values()
-            if c.allowed_to_delegate and c.enabled
+            c for c in self.computers.values() if c.allowed_to_delegate and c.enabled
         ]
         findings = []
 
         if constrained:
-            findings.append(Finding(
-                severity="high",
-                category="Delegation Abuse",
-                title=f"Found {len(constrained)} Computers with Constrained Delegation",
-                description=(
-                    f"{len(constrained)} computers have constrained delegation configured. "
-                    f"If protocol transition is enabled (TrustedToAuthForDelegation), an attacker "
-                    f"can abuse S4U2Self and S4U2Proxy to impersonate any user to the target service."
-                ),
-                affected_objects=[
-                    f"{c.name} -> {', '.join(c.allowed_to_delegate)}" for c in constrained
-                ],
-                remediation=(
-                    "1. Review all constrained delegation configurations\n"
-                    "2. Disable protocol transition where not needed\n"
-                    "3. Use RBCD instead of traditional constrained delegation\n"
-                    "4. Add sensitive accounts to 'Protected Users' group"
-                ),
-                mitre_technique="T1550.003",
-            ))
+            findings.append(
+                Finding(
+                    severity="high",
+                    category="Delegation Abuse",
+                    title=f"Found {len(constrained)} Computers with Constrained Delegation",
+                    description=(
+                        f"{len(constrained)} computers have constrained delegation configured. "
+                        f"If protocol transition is enabled (TrustedToAuthForDelegation), an attacker "
+                        f"can abuse S4U2Self and S4U2Proxy to impersonate any user to the target service."
+                    ),
+                    affected_objects=[
+                        f"{c.name} -> {', '.join(c.allowed_to_delegate)}"
+                        for c in constrained
+                    ],
+                    remediation=(
+                        "1. Review all constrained delegation configurations\n"
+                        "2. Disable protocol transition where not needed\n"
+                        "3. Use RBCD instead of traditional constrained delegation\n"
+                        "4. Add sensitive accounts to 'Protected Users' group"
+                    ),
+                    mitre_technique="T1550.003",
+                )
+            )
 
         return findings
 
@@ -322,7 +343,9 @@ class BloodHoundAnalyzer:
         lines.append("=" * 70)
 
         for i, finding in enumerate(self.findings, 1):
-            lines.append(f"\n--- Finding #{i}: [{finding.severity.upper()}] {finding.title} ---")
+            lines.append(
+                f"\n--- Finding #{i}: [{finding.severity.upper()}] {finding.title} ---"
+            )
             lines.append(f"Category: {finding.category}")
             lines.append(f"MITRE ATT&CK: {finding.mitre_technique}")
             lines.append(f"\nDescription:\n  {finding.description}")
@@ -345,46 +368,113 @@ def main():
     sample_users = {
         "meta": {"type": "users"},
         "data": [
-            {"Properties": {"name": "SVC_SQL@CORP.LOCAL", "enabled": True, "hasspn": True,
-                            "dontreqpreauth": False, "admincount": True, "description": "SQL Service Account"}},
-            {"Properties": {"name": "SVC_WEB@CORP.LOCAL", "enabled": True, "hasspn": True,
-                            "dontreqpreauth": False, "admincount": False, "description": "Web Service"}},
-            {"Properties": {"name": "SVC_BACKUP@CORP.LOCAL", "enabled": True, "hasspn": True,
-                            "dontreqpreauth": False, "admincount": True, "description": "Backup Service"}},
-            {"Properties": {"name": "J.SMITH@CORP.LOCAL", "enabled": True, "hasspn": False,
-                            "dontreqpreauth": True, "admincount": False}},
-            {"Properties": {"name": "ADMIN@CORP.LOCAL", "enabled": True, "hasspn": False,
-                            "dontreqpreauth": False, "admincount": True}},
+            {
+                "Properties": {
+                    "name": "SVC_SQL@CORP.LOCAL",
+                    "enabled": True,
+                    "hasspn": True,
+                    "dontreqpreauth": False,
+                    "admincount": True,
+                    "description": "SQL Service Account",
+                }
+            },
+            {
+                "Properties": {
+                    "name": "SVC_WEB@CORP.LOCAL",
+                    "enabled": True,
+                    "hasspn": True,
+                    "dontreqpreauth": False,
+                    "admincount": False,
+                    "description": "Web Service",
+                }
+            },
+            {
+                "Properties": {
+                    "name": "SVC_BACKUP@CORP.LOCAL",
+                    "enabled": True,
+                    "hasspn": True,
+                    "dontreqpreauth": False,
+                    "admincount": True,
+                    "description": "Backup Service",
+                }
+            },
+            {
+                "Properties": {
+                    "name": "J.SMITH@CORP.LOCAL",
+                    "enabled": True,
+                    "hasspn": False,
+                    "dontreqpreauth": True,
+                    "admincount": False,
+                }
+            },
+            {
+                "Properties": {
+                    "name": "ADMIN@CORP.LOCAL",
+                    "enabled": True,
+                    "hasspn": False,
+                    "dontreqpreauth": False,
+                    "admincount": True,
+                }
+            },
         ],
     }
 
     sample_computers = {
         "meta": {"type": "computers"},
         "data": [
-            {"Properties": {"name": "DC01.CORP.LOCAL", "enabled": True,
-                            "unconstraineddelegation": True, "operatingsystem": "Windows Server 2022"}},
-            {"Properties": {"name": "WEB01.CORP.LOCAL", "enabled": True,
-                            "unconstraineddelegation": True, "operatingsystem": "Windows Server 2019"}},
-            {"Properties": {"name": "SQL01.CORP.LOCAL", "enabled": True,
-                            "unconstraineddelegation": False, "operatingsystem": "Windows Server 2019",
-                            "allowedtodelegate": ["MSSQLSvc/DB01.CORP.LOCAL:1433"]}},
+            {
+                "Properties": {
+                    "name": "DC01.CORP.LOCAL",
+                    "enabled": True,
+                    "unconstraineddelegation": True,
+                    "operatingsystem": "Windows Server 2022",
+                }
+            },
+            {
+                "Properties": {
+                    "name": "WEB01.CORP.LOCAL",
+                    "enabled": True,
+                    "unconstraineddelegation": True,
+                    "operatingsystem": "Windows Server 2019",
+                }
+            },
+            {
+                "Properties": {
+                    "name": "SQL01.CORP.LOCAL",
+                    "enabled": True,
+                    "unconstraineddelegation": False,
+                    "operatingsystem": "Windows Server 2019",
+                    "allowedtodelegate": ["MSSQLSvc/DB01.CORP.LOCAL:1433"],
+                }
+            },
         ],
     }
 
     sample_groups = {
         "meta": {"type": "groups"},
         "data": [
-            {"Properties": {"name": "DOMAIN ADMINS@CORP.LOCAL", "highvalue": True},
-             "Members": [{"MemberId": "S-1-5-21-xxx-500"}]},
-            {"Properties": {"name": "BACKUP OPERATORS@CORP.LOCAL", "highvalue": True},
-             "Members": []},
+            {
+                "Properties": {"name": "DOMAIN ADMINS@CORP.LOCAL", "highvalue": True},
+                "Members": [{"MemberId": "S-1-5-21-xxx-500"}],
+            },
+            {
+                "Properties": {
+                    "name": "BACKUP OPERATORS@CORP.LOCAL",
+                    "highvalue": True,
+                },
+                "Members": [],
+            },
         ],
     }
 
     # Write sample data
     sample_dir = "./bloodhound_sample"
     os.makedirs(sample_dir, exist_ok=True)
-    for name, data in [("users.json", sample_users), ("computers.json", sample_computers), ("groups.json", sample_groups)]:
+    for name, data in [
+        ("users.json", sample_users),
+        ("computers.json", sample_computers),
+        ("groups.json", sample_groups),
+    ]:
         with open(os.path.join(sample_dir, name), "w") as f:
             json.dump(data, f)
 
@@ -395,6 +485,7 @@ def main():
 
     # Cleanup
     import shutil
+
     shutil.rmtree(sample_dir)
 
 

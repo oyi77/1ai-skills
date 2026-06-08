@@ -1,48 +1,7 @@
 ---
 name: defi-protocols
-description: DeFi protocol development — AMMs, lending, staking, yield farming. Uniswap, Aave patterns
-
-## Red Flags
-
-- Slippage tolerance set too high (excessive price impact accepted)
-- Flash loan repayment not verified before fund transfer
-- Oracle price feed manipulation not mitigated (TWAP recommended)
-- Reentrancy vulnerability in external calls to borrower contracts
-- Fee-on-transfer tokens not handled in swap calculations
-- Liquidity pool imbalance not checked before large swaps
-
-## Verification
-
-After completing DeFi protocol implementation, confirm:
-
-- [ ] AMM swap formula matches x*y=k with correct fee deduction
-- [ ] Flash loan repaid in full within same transaction
-- [ ] Slippage protection enforced (minAmountOut check)
-- [ ] Oracle integration uses TWAP, not spot price
-- [ ] ReentrancyGuard applied to all state-changing external calls
-- [ ] Test coverage includes edge cases (zero liquidity, max uint256)
-
-
-## Red Flags
-
-- Slippage tolerance set too high (excessive price impact accepted)
-- Flash loan repayment not verified before fund transfer
-- Oracle price feed manipulation not mitigated (TWAP recommended)
-- Reentrancy vulnerability in external calls to borrower contracts
-- Fee-on-transfer tokens not handled in swap calculations
-
-## Verification
-
-After completing DeFi protocol implementation, confirm:
-
-- [ ] AMM swap formula matches x*y=k with correct fee deduction
-- [ ] Flash loan repaid in full within same transaction
-- [ ] Slippage protection enforced (minAmountOut check)
-- [ ] Oracle integration uses TWAP, not spot price
-- [ ] ReentrancyGuard applied to all state-changing external calls
-
+description: 'Skill: defi-protocols. See SKILL.md body for details. Use when this domain is relevant.'
 ---
-
 ## Overview
 
 DeFi protocol patterns for AMMs, lending, staking, and yield farming. Covers Uniswap-style constant product AMMs, Aave-like lending pools, and flash loan mechanics.

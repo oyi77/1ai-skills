@@ -9,7 +9,9 @@ from collections import defaultdict, Counter
 
 from pymisp import PyMISP
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 THREAT_LEVELS = {1: "High", 2: "Medium", 3: "Low", 4: "Undefined"}
@@ -42,7 +44,10 @@ def analyze_threat_levels(events):
         level = getattr(event, "threat_level_id", 4)
         counter[THREAT_LEVELS.get(int(level), "Undefined")] += 1
     total = sum(counter.values()) or 1
-    return {level: {"count": count, "percent": round(count / total * 100, 1)} for level, count in counter.most_common()}
+    return {
+        level: {"count": count, "percent": round(count / total * 100, 1)}
+        for level, count in counter.most_common()
+    }
 
 
 def analyze_attribute_types(events):
@@ -70,13 +75,13 @@ def extract_tags(events):
             tag_name = tag.name
             all_tags[tag_name] += 1
             if tag_name.startswith(MITRE_TAG_PREFIX):
-                technique = tag_name[len(MITRE_TAG_PREFIX):].strip('"').strip("'")
+                technique = tag_name[len(MITRE_TAG_PREFIX) :].strip('"').strip("'")
                 mitre_techniques[technique] += 1
             elif tag_name.startswith(THREAT_ACTOR_PREFIX):
-                actor = tag_name[len(THREAT_ACTOR_PREFIX):].strip('"').strip("'")
+                actor = tag_name[len(THREAT_ACTOR_PREFIX) :].strip('"').strip("'")
                 threat_actors[actor] += 1
             elif tag_name.startswith(MALWARE_PREFIX):
-                malware = tag_name[len(MALWARE_PREFIX):].strip('"').strip("'")
+                malware = tag_name[len(MALWARE_PREFIX) :].strip('"').strip("'")
                 malware_families[malware] += 1
 
     return {
@@ -126,7 +131,9 @@ def compute_ioc_stats(events):
     }
 
 
-def generate_report(events, threat_levels, attr_types, tags, trends, orgs, ioc_stats, days):
+def generate_report(
+    events, threat_levels, attr_types, tags, trends, orgs, ioc_stats, days
+):
     """Generate threat landscape report."""
     report = {
         "timestamp": datetime.utcnow().isoformat(),
@@ -144,7 +151,9 @@ def generate_report(events, threat_levels, attr_types, tags, trends, orgs, ioc_s
     high_pct = threat_levels.get("High", {}).get("percent", 0)
     top_technique = next(iter(tags["mitre_techniques"]), "N/A")
     top_actor = next(iter(tags["threat_actors"]), "N/A")
-    print(f"THREAT LANDSCAPE: {len(events)} events, {high_pct}% high severity, top technique: {top_technique}, top actor: {top_actor}")
+    print(
+        f"THREAT LANDSCAPE: {len(events)} events, {high_pct}% high severity, top technique: {top_technique}, top actor: {top_actor}"
+    )
     return report
 
 
@@ -153,7 +162,9 @@ def main():
     parser.add_argument("--misp-url", required=True, help="MISP instance URL")
     parser.add_argument("--api-key", required=True, help="MISP API key")
     parser.add_argument("--days", type=int, default=90, help="Analysis period in days")
-    parser.add_argument("--no-ssl", action="store_true", help="Disable SSL verification")
+    parser.add_argument(
+        "--no-ssl", action="store_true", help="Disable SSL verification"
+    )
     parser.add_argument("--output", default="landscape_report.json")
     args = parser.parse_args()
 
@@ -167,7 +178,9 @@ def main():
     orgs = analyze_organizations(events)
     ioc_stats = compute_ioc_stats(events)
 
-    report = generate_report(events, threat_levels, attr_types, tags, trends, orgs, ioc_stats, args.days)
+    report = generate_report(
+        events, threat_levels, attr_types, tags, trends, orgs, ioc_stats, args.days
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)
     logger.info("Report saved to %s", args.output)

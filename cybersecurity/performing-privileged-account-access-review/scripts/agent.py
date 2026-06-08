@@ -23,18 +23,35 @@ def check_stale_accounts(accounts: list[dict], max_days: int = 90) -> list[dict]
     for acct in accounts:
         last_used = acct.get("last_used", "")
         if not last_used:
-            findings.append({"account": acct.get("username", ""), "issue": "no_last_used_date",
-                             "severity": "high", "detail": "Account has no recorded last-used date"})
+            findings.append(
+                {
+                    "account": acct.get("username", ""),
+                    "issue": "no_last_used_date",
+                    "severity": "high",
+                    "detail": "Account has no recorded last-used date",
+                }
+            )
             continue
         try:
             used_dt = datetime.strptime(last_used, "%Y-%m-%d")
             if used_dt < cutoff:
-                findings.append({"account": acct.get("username", ""),
-                                 "issue": "stale_account", "severity": "high",
-                                 "detail": f"Last used {last_used}, exceeds {max_days}-day threshold"})
+                findings.append(
+                    {
+                        "account": acct.get("username", ""),
+                        "issue": "stale_account",
+                        "severity": "high",
+                        "detail": f"Last used {last_used}, exceeds {max_days}-day threshold",
+                    }
+                )
         except ValueError:
-            findings.append({"account": acct.get("username", ""), "issue": "invalid_date",
-                             "severity": "medium", "detail": f"Cannot parse last_used: {last_used}"})
+            findings.append(
+                {
+                    "account": acct.get("username", ""),
+                    "issue": "invalid_date",
+                    "severity": "medium",
+                    "detail": f"Cannot parse last_used: {last_used}",
+                }
+            )
     return findings
 
 
@@ -47,45 +64,73 @@ def check_shared_accounts(accounts: list[dict]) -> list[dict]:
         owner = acct.get("owner", "").strip()
         for pat in shared_patterns:
             if pat in uname and not owner:
-                findings.append({"account": acct.get("username", ""),
-                                 "issue": "shared_account_no_owner", "severity": "critical",
-                                 "detail": f"Appears shared (matches '{pat}') with no assigned owner"})
+                findings.append(
+                    {
+                        "account": acct.get("username", ""),
+                        "issue": "shared_account_no_owner",
+                        "severity": "critical",
+                        "detail": f"Appears shared (matches '{pat}') with no assigned owner",
+                    }
+                )
                 break
     return findings
 
 
 def check_excessive_privileges(accounts: list[dict]) -> list[dict]:
     """Flag accounts with overly broad privilege sets."""
-    high_risk_roles = {"domain admin", "enterprise admin", "schema admin",
-                       "global admin", "super admin", "root"}
+    high_risk_roles = {
+        "domain admin",
+        "enterprise admin",
+        "schema admin",
+        "global admin",
+        "super admin",
+        "root",
+    }
     findings = []
     for acct in accounts:
         roles = {r.strip().lower() for r in acct.get("roles", "").split(";")}
         overlap = roles & high_risk_roles
         if overlap:
-            findings.append({"account": acct.get("username", ""),
-                             "issue": "excessive_privilege", "severity": "critical",
-                             "detail": f"Holds high-risk roles: {', '.join(sorted(overlap))}"})
+            findings.append(
+                {
+                    "account": acct.get("username", ""),
+                    "issue": "excessive_privilege",
+                    "severity": "critical",
+                    "detail": f"Holds high-risk roles: {', '.join(sorted(overlap))}",
+                }
+            )
     return findings
 
 
-def check_recertification(accounts: list[dict], cert_interval_days: int = 180) -> list[dict]:
+def check_recertification(
+    accounts: list[dict], cert_interval_days: int = 180
+) -> list[dict]:
     """Flag accounts overdue for recertification."""
     cutoff = datetime.utcnow() - timedelta(days=cert_interval_days)
     findings = []
     for acct in accounts:
         cert_date = acct.get("last_certified", "")
         if not cert_date:
-            findings.append({"account": acct.get("username", ""),
-                             "issue": "never_certified", "severity": "critical",
-                             "detail": "Account has never been certified"})
+            findings.append(
+                {
+                    "account": acct.get("username", ""),
+                    "issue": "never_certified",
+                    "severity": "critical",
+                    "detail": "Account has never been certified",
+                }
+            )
             continue
         try:
             cert_dt = datetime.strptime(cert_date, "%Y-%m-%d")
             if cert_dt < cutoff:
-                findings.append({"account": acct.get("username", ""),
-                                 "issue": "overdue_recertification", "severity": "high",
-                                 "detail": f"Last certified {cert_date}, exceeds {cert_interval_days}-day cycle"})
+                findings.append(
+                    {
+                        "account": acct.get("username", ""),
+                        "issue": "overdue_recertification",
+                        "severity": "high",
+                        "detail": f"Last certified {cert_date}, exceeds {cert_interval_days}-day cycle",
+                    }
+                )
         except ValueError:
             pass
     return findings
@@ -114,10 +159,24 @@ def generate_report(accounts: list[dict], stale_days: int, cert_days: int) -> di
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Privileged Account Access Review Agent")
-    parser.add_argument("--input", required=True, help="CSV file with privileged account inventory")
-    parser.add_argument("--stale-days", type=int, default=90, help="Max days of inactivity (default: 90)")
-    parser.add_argument("--cert-days", type=int, default=180, help="Recertification interval in days (default: 180)")
+    parser = argparse.ArgumentParser(
+        description="Privileged Account Access Review Agent"
+    )
+    parser.add_argument(
+        "--input", required=True, help="CSV file with privileged account inventory"
+    )
+    parser.add_argument(
+        "--stale-days",
+        type=int,
+        default=90,
+        help="Max days of inactivity (default: 90)",
+    )
+    parser.add_argument(
+        "--cert-days",
+        type=int,
+        default=180,
+        help="Recertification interval in days (default: 180)",
+    )
     parser.add_argument("--output", help="Output JSON file path")
     args = parser.parse_args()
 

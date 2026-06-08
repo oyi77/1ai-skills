@@ -28,18 +28,20 @@ def collect_cloudtrail_events(
     ):
         for event in page.get("Events", []):
             cloud_event = json.loads(event.get("CloudTrailEvent", "{}"))
-            events.append({
-                "timestamp": str(event.get("EventTime", "")),
-                "event_name": event.get("EventName", ""),
-                "event_source": event.get("EventSource", ""),
-                "username": event.get("Username", ""),
-                "source_ip": cloud_event.get("sourceIPAddress", ""),
-                "user_agent": cloud_event.get("userAgent", ""),
-                "region": cloud_event.get("awsRegion", ""),
-                "error_code": cloud_event.get("errorCode", ""),
-                "error_message": cloud_event.get("errorMessage", ""),
-                "resources": event.get("Resources", []),
-            })
+            events.append(
+                {
+                    "timestamp": str(event.get("EventTime", "")),
+                    "event_name": event.get("EventName", ""),
+                    "event_source": event.get("EventSource", ""),
+                    "username": event.get("Username", ""),
+                    "source_ip": cloud_event.get("sourceIPAddress", ""),
+                    "user_agent": cloud_event.get("userAgent", ""),
+                    "region": cloud_event.get("awsRegion", ""),
+                    "error_code": cloud_event.get("errorCode", ""),
+                    "error_message": cloud_event.get("errorMessage", ""),
+                    "resources": event.get("Resources", []),
+                }
+            )
 
     return events
 
@@ -65,20 +67,32 @@ def identify_suspicious_activity(events: list[dict]) -> list[dict]:
     for event in events:
         event_name = event["event_name"]
         if event_name in suspicious_patterns:
-            suspicious.append({
-                **event,
-                "reason": suspicious_patterns[event_name],
-                "severity": "HIGH" if event_name in (
-                    "StopLogging", "DeleteTrail", "CreateAccessKey", "AttachUserPolicy"
-                ) else "MEDIUM",
-            })
+            suspicious.append(
+                {
+                    **event,
+                    "reason": suspicious_patterns[event_name],
+                    "severity": (
+                        "HIGH"
+                        if event_name
+                        in (
+                            "StopLogging",
+                            "DeleteTrail",
+                            "CreateAccessKey",
+                            "AttachUserPolicy",
+                        )
+                        else "MEDIUM"
+                    ),
+                }
+            )
 
         if event.get("error_code") == "AccessDenied":
-            suspicious.append({
-                **event,
-                "reason": "Access denied - possible reconnaissance",
-                "severity": "LOW",
-            })
+            suspicious.append(
+                {
+                    **event,
+                    "reason": "Access denied - possible reconnaissance",
+                    "severity": "LOW",
+                }
+            )
 
     return suspicious
 
@@ -100,28 +114,34 @@ def snapshot_ec2_instance(instance_id: str, region: str = "us-east-1") -> list[d
                 for mapping in inst.get("BlockDeviceMappings", []):
                     vol_id = mapping.get("Ebs", {}).get("VolumeId")
                     if vol_id:
-                        volumes.append({"volume_id": vol_id, "device": mapping["DeviceName"]})
+                        volumes.append(
+                            {"volume_id": vol_id, "device": mapping["DeviceName"]}
+                        )
 
         for vol in volumes:
             snap = ec2.create_snapshot(
                 VolumeId=vol["volume_id"],
                 Description=f"Forensic snapshot - {instance_id} - {vol['device']} - "
-                            f"{datetime.now(timezone.utc).strftime('%Y%m%d')}",
-                TagSpecifications=[{
-                    "ResourceType": "snapshot",
-                    "Tags": [
-                        {"Key": "Purpose", "Value": "forensics"},
-                        {"Key": "SourceInstance", "Value": instance_id},
-                        {"Key": "SourceVolume", "Value": vol["volume_id"]},
-                    ],
-                }],
+                f"{datetime.now(timezone.utc).strftime('%Y%m%d')}",
+                TagSpecifications=[
+                    {
+                        "ResourceType": "snapshot",
+                        "Tags": [
+                            {"Key": "Purpose", "Value": "forensics"},
+                            {"Key": "SourceInstance", "Value": instance_id},
+                            {"Key": "SourceVolume", "Value": vol["volume_id"]},
+                        ],
+                    }
+                ],
             )
-            snapshots.append({
-                "snapshot_id": snap["SnapshotId"],
-                "volume_id": vol["volume_id"],
-                "device": vol["device"],
-                "state": snap["State"],
-            })
+            snapshots.append(
+                {
+                    "snapshot_id": snap["SnapshotId"],
+                    "volume_id": vol["volume_id"],
+                    "device": vol["device"],
+                    "state": snap["State"],
+                }
+            )
 
     except ClientError as e:
         snapshots.append({"error": str(e)})
@@ -138,13 +158,21 @@ def collect_iam_activity(username: str) -> dict:
         keys = iam.list_access_keys(UserName=username)
         for key in keys.get("AccessKeyMetadata", []):
             last_used = iam.get_access_key_last_used(AccessKeyId=key["AccessKeyId"])
-            result["access_keys"].append({
-                "key_id": key["AccessKeyId"],
-                "status": key["Status"],
-                "created": str(key["CreateDate"]),
-                "last_used": str(last_used.get("AccessKeyLastUsed", {}).get("LastUsedDate", "Never")),
-                "last_service": last_used.get("AccessKeyLastUsed", {}).get("ServiceName", "N/A"),
-            })
+            result["access_keys"].append(
+                {
+                    "key_id": key["AccessKeyId"],
+                    "status": key["Status"],
+                    "created": str(key["CreateDate"]),
+                    "last_used": str(
+                        last_used.get("AccessKeyLastUsed", {}).get(
+                            "LastUsedDate", "Never"
+                        )
+                    ),
+                    "last_service": last_used.get("AccessKeyLastUsed", {}).get(
+                        "ServiceName", "N/A"
+                    ),
+                }
+            )
 
         policies = iam.list_attached_user_policies(UserName=username)
         result["policies"] = [p["PolicyArn"] for p in policies["AttachedPolicies"]]
@@ -175,18 +203,24 @@ def generate_report(events: list, suspicious: list, snapshots: list, iam: dict) 
 
     for s in suspicious[:15]:
         lines.append(f"  [{s['severity']}] {s['timestamp']} - {s['event_name']}")
-        lines.append(f"    User: {s['username']} | IP: {s['source_ip']} | {s['reason']}")
+        lines.append(
+            f"    User: {s['username']} | IP: {s['source_ip']} | {s['reason']}"
+        )
 
     if snapshots:
         lines.extend(["", "FORENSIC SNAPSHOTS:"])
         for snap in snapshots:
             if "error" not in snap:
-                lines.append(f"  {snap['snapshot_id']} (vol: {snap['volume_id']}, device: {snap['device']})")
+                lines.append(
+                    f"  {snap['snapshot_id']} (vol: {snap['volume_id']}, device: {snap['device']})"
+                )
 
     if iam.get("access_keys"):
         lines.extend(["", f"IAM ACTIVITY ({iam['user']}):"])
         for key in iam["access_keys"]:
-            lines.append(f"  Key: {key['key_id']} | Status: {key['status']} | Last Used: {key['last_used']}")
+            lines.append(
+                f"  Key: {key['key_id']} | Status: {key['status']} | Last Used: {key['last_used']}"
+            )
 
     return "\n".join(lines)
 
@@ -217,7 +251,18 @@ if __name__ == "__main__":
     report = generate_report(events, suspicious, snapshots, iam_data)
     print(report)
 
-    output = f"cloud_forensics_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
+    output = (
+        f"cloud_forensics_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
+    )
     with open(output, "w") as f:
-        json.dump({"events": events, "suspicious": suspicious, "snapshots": snapshots, "iam": iam_data}, f, indent=2)
+        json.dump(
+            {
+                "events": events,
+                "suspicious": suspicious,
+                "snapshots": snapshots,
+                "iam": iam_data,
+            },
+            f,
+            indent=2,
+        )
     print(f"\n[*] Results saved to {output}")

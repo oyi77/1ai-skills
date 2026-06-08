@@ -36,13 +36,17 @@ class InsightVMAPI:
     def __init__(self, console_url, username=None, password=None, api_key=None):
         self.base_url = f"{console_url.rstrip('/')}/api/3"
         self.session = requests.Session()
-        self.session.verify = not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true"  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        self.session.verify = (
+            not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true"
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
 
         if api_key:
-            self.session.headers.update({
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json"
-            })
+            self.session.headers.update(
+                {
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                }
+            )
         elif username and password:
             self.session.auth = (username, password)
             self.session.headers.update({"Content-Type": "application/json"})
@@ -76,9 +80,7 @@ class InsightVMAPI:
 
     def get_site(self, site_id):
         """Get details for a specific site."""
-        response = self.session.get(
-            f"{self.base_url}/sites/{site_id}", timeout=30
-        )
+        response = self.session.get(f"{self.base_url}/sites/{site_id}", timeout=30)
         response.raise_for_status()
         return response.json()
 
@@ -93,17 +95,14 @@ class InsightVMAPI:
             payload["hosts"] = hosts
 
         response = self.session.post(
-            f"{self.base_url}/sites/{site_id}/scans",
-            json=payload, timeout=30
+            f"{self.base_url}/sites/{site_id}/scans", json=payload, timeout=30
         )
         response.raise_for_status()
         return response.json()
 
     def get_scan_status(self, scan_id):
         """Get the status of a scan."""
-        response = self.session.get(
-            f"{self.base_url}/scans/{scan_id}", timeout=30
-        )
+        response = self.session.get(f"{self.base_url}/scans/{scan_id}", timeout=30)
         response.raise_for_status()
         return response.json()
 
@@ -113,9 +112,11 @@ class InsightVMAPI:
         while time.time() - start_time < timeout:
             status = self.get_scan_status(scan_id)
             state = status.get("status", "unknown")
-            print(f"  Scan {scan_id}: {state} "
-                  f"({status.get('assets', 0)} assets, "
-                  f"{status.get('vulnerabilities', {}).get('total', 0)} vulns)")
+            print(
+                f"  Scan {scan_id}: {state} "
+                f"({status.get('assets', 0)} assets, "
+                f"{status.get('vulnerabilities', {}).get('total', 0)} vulns)"
+            )
             if state in ("finished", "stopped", "error", "aborted"):
                 return status
             time.sleep(poll_interval)
@@ -160,8 +161,10 @@ def cmd_list_sites(api):
         last_scan = site.get("lastScanTime", "Never")
         if last_scan != "Never":
             last_scan = last_scan[:19]
-        print(f"{site['id']:<6} {site['name'][:34]:<35} "
-              f"{site.get('assets', 0):<10} {last_scan:<20}")
+        print(
+            f"{site['id']:<6} {site['name'][:34]:<35} "
+            f"{site.get('assets', 0):<10} {last_scan:<20}"
+        )
 
 
 def cmd_start_scan(api, site_id, engine_id=None, template_id=None, wait=False):
@@ -209,10 +212,12 @@ def cmd_asset_vulns(api, asset_id):
     print(f"{'Vuln ID':<40} {'Severity':<10} {'CVSS':<8} {'Status':<12}")
     print("-" * 72)
     for v in sorted(vulns, key=lambda x: x.get("severity", ""), reverse=True):
-        print(f"{v.get('id', 'N/A')[:39]:<40} "
-              f"{v.get('severity', 'N/A'):<10} "
-              f"{v.get('cvssV3Score', 'N/A'):<8} "
-              f"{v.get('status', 'N/A'):<12}")
+        print(
+            f"{v.get('id', 'N/A')[:39]:<40} "
+            f"{v.get('severity', 'N/A'):<10} "
+            f"{v.get('cvssV3Score', 'N/A'):<8} "
+            f"{v.get('status', 'N/A'):<12}"
+        )
 
 
 def cmd_export_report(api, site_id, output_file):
@@ -230,17 +235,19 @@ def cmd_export_report(api, site_id, output_file):
 
         vulns = api.get_asset_vulnerabilities(asset_id)
         for v in vulns:
-            all_findings.append({
-                "asset_id": asset_id,
-                "hostname": hostname,
-                "ip_address": ip,
-                "os": os_name,
-                "vulnerability_id": v.get("id", ""),
-                "severity": v.get("severity", ""),
-                "cvss_v3_score": v.get("cvssV3Score", ""),
-                "status": v.get("status", ""),
-                "first_found": v.get("since", ""),
-            })
+            all_findings.append(
+                {
+                    "asset_id": asset_id,
+                    "hostname": hostname,
+                    "ip_address": ip,
+                    "os": os_name,
+                    "vulnerability_id": v.get("id", ""),
+                    "severity": v.get("severity", ""),
+                    "cvss_v3_score": v.get("cvssV3Score", ""),
+                    "status": v.get("status", ""),
+                    "first_found": v.get("since", ""),
+                }
+            )
 
         print(f"  Processed {hostname}: {len(vulns)} vulnerabilities")
 
@@ -260,8 +267,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="Rapid7 InsightVM Scan Automation Tool"
     )
-    parser.add_argument("--console", default="https://localhost:3780",
-                        help="InsightVM console URL")
+    parser.add_argument(
+        "--console", default="https://localhost:3780", help="InsightVM console URL"
+    )
     parser.add_argument("--username", help="Console username")
     parser.add_argument("--password", help="Console password")
     parser.add_argument("--api-key", help="API key (alternative to user/pass)")
@@ -299,14 +307,13 @@ def main():
         args.console,
         username=args.username,
         password=args.password,
-        api_key=args.api_key
+        api_key=args.api_key,
     )
 
     if args.command == "sites":
         cmd_list_sites(api)
     elif args.command == "scan":
-        cmd_start_scan(api, args.site_id, args.engine_id,
-                       args.template_id, args.wait)
+        cmd_start_scan(api, args.site_id, args.engine_id, args.template_id, args.wait)
     elif args.command == "status":
         cmd_scan_status(api, args.scan_id)
     elif args.command == "vulns":

@@ -8,10 +8,11 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-
 IOC_PATTERNS = {
     "ipv4": re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"),
-    "domain": re.compile(r"\b(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}\b"),
+    "domain": re.compile(
+        r"\b(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}\b"
+    ),
     "md5": re.compile(r"\b[a-f0-9]{32}\b", re.I),
     "sha256": re.compile(r"\b[a-f0-9]{64}\b", re.I),
     "sha1": re.compile(r"\b[a-f0-9]{40}\b", re.I),
@@ -30,7 +31,12 @@ def extract_iocs(text_file):
         if matches:
             extracted[ioc_type] = matches[:100]
     total = sum(len(v) for v in extracted.values())
-    return {"source": text_file, "total_iocs": total, "by_type": {k: len(v) for k, v in extracted.items()}, "indicators": extracted}
+    return {
+        "source": text_file,
+        "total_iocs": total,
+        "by_type": {k: len(v) for k, v in extracted.items()},
+        "indicators": extracted,
+    }
 
 
 def ingest_ioc_feed(csv_file):
@@ -40,22 +46,30 @@ def ingest_ioc_feed(csv_file):
         rows = list(reader)
     iocs = []
     for row in rows:
-        indicator = row.get("indicator", row.get("ioc", row.get("value", row.get("Indicator", ""))))
+        indicator = row.get(
+            "indicator", row.get("ioc", row.get("value", row.get("Indicator", "")))
+        )
         ioc_type = row.get("type", row.get("ioc_type", row.get("Type", "")))
         if not ioc_type:
             for t, p in IOC_PATTERNS.items():
                 if p.fullmatch(indicator.strip()):
                     ioc_type = t
                     break
-        iocs.append({
-            "indicator": indicator.strip(),
-            "type": ioc_type,
-            "source": row.get("source", row.get("feed", "")),
-            "confidence": row.get("confidence", row.get("score", "")),
-            "first_seen": row.get("first_seen", row.get("date", "")),
-            "tags": row.get("tags", row.get("malware_family", "")),
-        })
-    return {"total_ingested": len(iocs), "by_type": _count_field(iocs, "type"), "iocs": iocs[:50]}
+        iocs.append(
+            {
+                "indicator": indicator.strip(),
+                "type": ioc_type,
+                "source": row.get("source", row.get("feed", "")),
+                "confidence": row.get("confidence", row.get("score", "")),
+                "first_seen": row.get("first_seen", row.get("date", "")),
+                "tags": row.get("tags", row.get("malware_family", "")),
+            }
+        )
+    return {
+        "total_ingested": len(iocs),
+        "by_type": _count_field(iocs, "type"),
+        "iocs": iocs[:50],
+    }
 
 
 def check_expiration(ioc_db_file, ttl_days=90):
@@ -69,7 +83,9 @@ def check_expiration(ioc_db_file, ttl_days=90):
     for row in rows:
         date_str = row.get("first_seen", row.get("date", row.get("added", "")))
         try:
-            added = datetime.fromisoformat(date_str.replace("Z", "+00:00").replace("+00:00", ""))
+            added = datetime.fromisoformat(
+                date_str.replace("Z", "+00:00").replace("+00:00", "")
+            )
         except (ValueError, AttributeError):
             active.append(row)
             continue
@@ -79,8 +95,11 @@ def check_expiration(ioc_db_file, ttl_days=90):
         else:
             active.append(row)
     return {
-        "total": len(rows), "active": len(active), "expired": len(expired),
-        "ttl_days": ttl_days, "expired_indicators": expired[:30],
+        "total": len(rows),
+        "active": len(active),
+        "expired": len(expired),
+        "ttl_days": ttl_days,
+        "expired_indicators": expired[:30],
     }
 
 
@@ -96,11 +115,25 @@ def deduplicate_iocs(csv_file):
             seen[key]["sources"].add(row.get("source", ""))
             seen[key]["count"] += 1
         else:
-            seen[key] = {"indicator": key, "type": row.get("type", ""), "sources": {row.get("source", "")}, "count": 1, "first_row": row}
-    unique = [{"indicator": v["indicator"], "type": v["type"], "sources": list(v["sources"]), "occurrences": v["count"]}
-              for v in seen.values()]
+            seen[key] = {
+                "indicator": key,
+                "type": row.get("type", ""),
+                "sources": {row.get("source", "")},
+                "count": 1,
+                "first_row": row,
+            }
+    unique = [
+        {
+            "indicator": v["indicator"],
+            "type": v["type"],
+            "sources": list(v["sources"]),
+            "occurrences": v["count"],
+        }
+        for v in seen.values()
+    ]
     return {
-        "original_count": len(rows), "unique_count": len(unique),
+        "original_count": len(rows),
+        "unique_count": len(unique),
         "duplicates_removed": len(rows) - len(unique),
         "multi_source": [u for u in unique if u["occurrences"] > 1][:20],
         "unique_iocs": unique[:50],

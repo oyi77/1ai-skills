@@ -9,7 +9,6 @@ import sys
 import tempfile
 import time
 
-
 SEVERITY_ORDER = {"critical": 4, "high": 3, "medium": 2, "low": 1, "info": 0}
 
 GITLEAKS_SEVERITY_MAP = {
@@ -37,11 +36,16 @@ def run_gitleaks(scan_path: str) -> list:
     report_path = report_file.name
     report_file.close()
     cmd = [
-        "gitleaks", "dir",
-        "--source", scan_path,
-        "--report-format", "json",
-        "--report-path", report_path,
-        "--exit-code", "0",
+        "gitleaks",
+        "dir",
+        "--source",
+        scan_path,
+        "--report-format",
+        "json",
+        "--report-path",
+        report_path,
+        "--exit-code",
+        "0",
         "--no-banner",
     ]
     proc = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
@@ -54,28 +58,33 @@ def run_gitleaks(scan_path: str) -> list:
             severity = GITLEAKS_SEVERITY_MAP.get(rule_id, "medium")
             secret_val = item.get("Secret", "")
             redacted = secret_val[:4] + "****" if len(secret_val) > 4 else "****"
-            findings.append({
-                "tool": "gitleaks",
-                "rule_id": rule_id,
-                "description": item.get("Description", ""),
-                "file": item.get("File", ""),
-                "line": item.get("StartLine", 0),
-                "severity": severity,
-                "redacted_secret": redacted,
-                "commit": item.get("Commit", ""),
-                "author": item.get("Author", ""),
-                "entropy": item.get("Entropy", 0.0),
-            })
+            findings.append(
+                {
+                    "tool": "gitleaks",
+                    "rule_id": rule_id,
+                    "description": item.get("Description", ""),
+                    "file": item.get("File", ""),
+                    "line": item.get("StartLine", 0),
+                    "severity": severity,
+                    "redacted_secret": redacted,
+                    "commit": item.get("Commit", ""),
+                    "author": item.get("Author", ""),
+                    "entropy": item.get("Entropy", 0.0),
+                }
+            )
     os.unlink(report_path)
     return findings
 
 
 def run_trufflehog(scan_path: str) -> list:
     cmd = [
-        "trufflehog", "filesystem", scan_path,
+        "trufflehog",
+        "filesystem",
+        scan_path,
         "--json",
         "--no-verification",
-        "--concurrency", "10",
+        "--concurrency",
+        "10",
     ]
     proc = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     findings = []
@@ -89,17 +98,19 @@ def run_trufflehog(scan_path: str) -> list:
         raw_secret = item.get("Raw", "")
         redacted = raw_secret[:4] + "****" if len(raw_secret) > 4 else "****"
         severity = "critical" if item.get("Verified", False) else "high"
-        findings.append({
-            "tool": "trufflehog",
-            "rule_id": detector,
-            "description": f"Detected {detector} secret",
-            "file": fs_data.get("file", ""),
-            "line": fs_data.get("line", 0),
-            "severity": severity,
-            "redacted_secret": redacted,
-            "verified": item.get("Verified", False),
-            "decoder_name": item.get("DecoderName", ""),
-        })
+        findings.append(
+            {
+                "tool": "trufflehog",
+                "rule_id": detector,
+                "description": f"Detected {detector} secret",
+                "file": fs_data.get("file", ""),
+                "line": fs_data.get("line", 0),
+                "severity": severity,
+                "redacted_secret": redacted,
+                "verified": item.get("Verified", False),
+                "decoder_name": item.get("DecoderName", ""),
+            }
+        )
     return findings
 
 
@@ -126,10 +137,18 @@ def evaluate_gate(findings: list, fail_on_severity: str) -> dict:
 def main():
     parser = argparse.ArgumentParser(description="Secrets scanning CI/CD gate")
     parser.add_argument("--path", required=True, help="Path to scan for secrets")
-    parser.add_argument("--tool", choices=["gitleaks", "trufflehog", "both"],
-                        default="both", help="Scanner tool to use")
-    parser.add_argument("--fail-on-severity", choices=["critical", "high", "medium", "low"],
-                        default="high", help="Minimum severity to fail CI gate")
+    parser.add_argument(
+        "--tool",
+        choices=["gitleaks", "trufflehog", "both"],
+        default="both",
+        help="Scanner tool to use",
+    )
+    parser.add_argument(
+        "--fail-on-severity",
+        choices=["critical", "high", "medium", "low"],
+        default="high",
+        help="Minimum severity to fail CI gate",
+    )
     parser.add_argument("--output", default=None, help="Output JSON file path")
     args = parser.parse_args()
 

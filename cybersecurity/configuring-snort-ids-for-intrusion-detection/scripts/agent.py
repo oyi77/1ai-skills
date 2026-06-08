@@ -9,7 +9,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-
 SNORT_BIN = os.environ.get("SNORT_BIN", "/usr/local/bin/snort")
 SNORT_CONF = os.environ.get("SNORT_CONF", "/usr/local/etc/snort/snort.lua")
 RULES_DIR = os.environ.get("SNORT_RULES_DIR", "/usr/local/etc/snort/rules")
@@ -38,7 +37,9 @@ def validate_configuration(config_path=SNORT_CONF):
     try:
         result = subprocess.run(
             [SNORT_BIN, "-c", config_path, "--daq-dir", DAQ_DIR, "-T"],
-            capture_output=True, text=True, timeout=60
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         success = result.returncode == 0
         rules_loaded = None
@@ -71,16 +72,20 @@ def parse_alert_fast(log_path=None):
             if not line:
                 continue
             sid_match = re.search(r"\[(\d+):(\d+):(\d+)\]", line)
-            msg_match = re.search(r'\] (.+?) \[', line)
+            msg_match = re.search(r"\] (.+?) \[", line)
             if sid_match:
                 gid, sid, rev = sid_match.groups()
                 key = f"{gid}:{sid}"
                 sid_counts[key] = sid_counts.get(key, 0) + 1
-                alerts.append({
-                    "gid": gid, "sid": sid, "rev": rev,
-                    "message": msg_match.group(1) if msg_match else "",
-                    "raw": line[:200],
-                })
+                alerts.append(
+                    {
+                        "gid": gid,
+                        "sid": sid,
+                        "rev": rev,
+                        "message": msg_match.group(1) if msg_match else "",
+                        "raw": line[:200],
+                    }
+                )
 
     top_rules = sorted(sid_counts.items(), key=lambda x: x[1], reverse=True)[:20]
     return {
@@ -119,7 +124,9 @@ def parse_alert_json(log_path=None):
 
     return {
         "total_alerts": len(alerts),
-        "top_source_ips": sorted(src_ips.items(), key=lambda x: x[1], reverse=True)[:10],
+        "top_source_ips": sorted(src_ips.items(), key=lambda x: x[1], reverse=True)[
+            :10
+        ],
         "top_dest_ips": sorted(dst_ips.items(), key=lambda x: x[1], reverse=True)[:10],
         "recent_alerts": alerts[-5:],
     }
@@ -130,13 +137,23 @@ def test_rule_against_pcap(pcap_path, rule_file=None):
     if not os.path.exists(pcap_path):
         return {"error": f"PCAP file not found: {pcap_path}"}
 
-    output_dir = os.path.join(LOG_DIR, "test_" + datetime.now().strftime("%Y%m%d_%H%M%S"))
+    output_dir = os.path.join(
+        LOG_DIR, "test_" + datetime.now().strftime("%Y%m%d_%H%M%S")
+    )
     os.makedirs(output_dir, exist_ok=True)
 
     cmd = [
-        SNORT_BIN, "-c", SNORT_CONF,
-        "--daq-dir", DAQ_DIR,
-        "-r", pcap_path, "-l", output_dir, "-A", "fast",
+        SNORT_BIN,
+        "-c",
+        SNORT_CONF,
+        "--daq-dir",
+        DAQ_DIR,
+        "-r",
+        pcap_path,
+        "-l",
+        output_dir,
+        "-A",
+        "fast",
     ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
@@ -199,4 +216,6 @@ if __name__ == "__main__":
     elif action == "test-pcap" and len(sys.argv) > 2:
         print(json.dumps(test_rule_against_pcap(sys.argv[2]), indent=2))
     else:
-        print("Usage: agent.py [report|validate|alerts|alerts-json|rules|test-pcap <file>]")
+        print(
+            "Usage: agent.py [report|validate|alerts|alerts-json|rules|test-pcap <file>]"
+        )

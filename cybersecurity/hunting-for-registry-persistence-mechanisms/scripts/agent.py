@@ -40,13 +40,22 @@ PERSISTENCE_KEYS = {
 }
 
 SUSPICIOUS_PATTERNS = [
-    r"\\temp\\", r"\\tmp\\", r"\\appdata\\local\\temp",
-    r"powershell.*-enc", r"powershell.*-nop",
-    r"cmd\.exe\s+/c\s+", r"mshta\.exe", r"rundll32\.exe.*javascript",
+    r"\\temp\\",
+    r"\\tmp\\",
+    r"\\appdata\\local\\temp",
+    r"powershell.*-enc",
+    r"powershell.*-nop",
+    r"cmd\.exe\s+/c\s+",
+    r"mshta\.exe",
+    r"rundll32\.exe.*javascript",
     r"regsvr32\.exe.*/s\s+/n\s+/u\s+/i:",
-    r"\\users\\public\\", r"\\programdata\\[^m]",
-    r"certutil.*-decode", r"bitsadmin.*transfer",
-    r"base64", r"downloadstring", r"iex\s*\(",
+    r"\\users\\public\\",
+    r"\\programdata\\[^m]",
+    r"certutil.*-decode",
+    r"bitsadmin.*transfer",
+    r"base64",
+    r"downloadstring",
+    r"iex\s*\(",
 ]
 
 
@@ -54,14 +63,21 @@ def scan_persistence_keys(categories=None):
     """Scan specified registry persistence key categories."""
     if categories is None:
         categories = list(PERSISTENCE_KEYS.keys())
-    results = {"timestamp": datetime.utcnow().isoformat(), "categories": {}, "all_suspicious": []}
+    results = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "categories": {},
+        "all_suspicious": [],
+    }
     for category in categories:
         keys = PERSISTENCE_KEYS.get(category, [])
         category_findings = []
         for key in keys:
             try:
                 proc = subprocess.run(
-                    ["reg", "query", key, "/s"], capture_output=True, text=True, timeout=10
+                    ["reg", "query", key, "/s"],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
                 )
                 if proc.returncode == 0:
                     entries = _parse_reg(proc.stdout, key)
@@ -94,7 +110,14 @@ def _parse_reg(output, default_key):
             continue
         parts = re.split(r"\s{2,}", line, maxsplit=2)
         if len(parts) >= 3:
-            entries.append({"key": current_key, "name": parts[0], "type": parts[1], "value": parts[2]})
+            entries.append(
+                {
+                    "key": current_key,
+                    "name": parts[0],
+                    "type": parts[1],
+                    "value": parts[2],
+                }
+            )
     return entries
 
 
@@ -111,11 +134,17 @@ def compare_baseline(baseline_file, current_scan=None):
     baseline_set = set()
     for cat_data in baseline.get("categories", {}).values():
         for entry in cat_data.get("entries", []):
-            baseline_set.add((entry.get("key", ""), entry.get("name", ""), entry.get("value", "")))
+            baseline_set.add(
+                (entry.get("key", ""), entry.get("name", ""), entry.get("value", ""))
+            )
     new_entries = []
     for cat_name, cat_data in current_scan["categories"].items():
         for entry in cat_data.get("entries", []):
-            key_tuple = (entry.get("key", ""), entry.get("name", ""), entry.get("value", ""))
+            key_tuple = (
+                entry.get("key", ""),
+                entry.get("name", ""),
+                entry.get("value", ""),
+            )
             if key_tuple not in baseline_set:
                 entry["status"] = "NEW"
                 new_entries.append(entry)
@@ -127,11 +156,17 @@ def compare_baseline(baseline_file, current_scan=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Hunt for registry persistence mechanisms")
+    parser = argparse.ArgumentParser(
+        description="Hunt for registry persistence mechanisms"
+    )
     sub = parser.add_subparsers(dest="command")
     s = sub.add_parser("scan", help="Scan registry persistence keys")
-    s.add_argument("--categories", nargs="*", choices=list(PERSISTENCE_KEYS.keys()),
-                   help="Categories to scan (default: all)")
+    s.add_argument(
+        "--categories",
+        nargs="*",
+        choices=list(PERSISTENCE_KEYS.keys()),
+        help="Categories to scan (default: all)",
+    )
     s.add_argument("--save-baseline", help="Save scan as baseline JSON file")
     c = sub.add_parser("compare", help="Compare against baseline")
     c.add_argument("--baseline", required=True, help="Baseline JSON file")

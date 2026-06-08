@@ -24,25 +24,33 @@ class InsiderThreatAgent:
         self.events = []
         self.baseline = {}
 
-    def load_events_csv(self, csv_path, timestamp_col="timestamp",
-                        user_col="user", action_col="action"):
+    def load_events_csv(
+        self, csv_path, timestamp_col="timestamp", user_col="user", action_col="action"
+    ):
         """Load user activity events from a CSV file."""
         with open(csv_path, "r") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                self.events.append({
-                    "timestamp": row.get(timestamp_col, ""),
-                    "user": row.get(user_col, ""),
-                    "action": row.get(action_col, ""),
-                    "source": row.get("source", "unknown"),
-                    "details": row.get("details", ""),
-                    "destination": row.get("destination", ""),
-                    "bytes": int(row.get("bytes", 0) or 0),
-                })
+                self.events.append(
+                    {
+                        "timestamp": row.get(timestamp_col, ""),
+                        "user": row.get(user_col, ""),
+                        "action": row.get(action_col, ""),
+                        "source": row.get("source", "unknown"),
+                        "details": row.get("details", ""),
+                        "destination": row.get("destination", ""),
+                        "bytes": int(row.get("bytes", 0) or 0),
+                    }
+                )
 
-    def set_baseline(self, avg_files_per_day=20, avg_emails_per_day=50,
-                     avg_data_mb_per_day=50, normal_hours=(8, 18),
-                     usb_usage=False):
+    def set_baseline(
+        self,
+        avg_files_per_day=20,
+        avg_emails_per_day=50,
+        avg_data_mb_per_day=50,
+        normal_hours=(8, 18),
+        usb_usage=False,
+    ):
         """Set behavioral baseline for comparison."""
         self.baseline = {
             "avg_files_per_day": avg_files_per_day,
@@ -75,7 +83,9 @@ class InsiderThreatAgent:
         return {
             "total_events": len(user_events),
             "after_hours_events": len(after_hours),
-            "after_hours_pct": round(len(after_hours) / max(len(user_events), 1) * 100, 1),
+            "after_hours_pct": round(
+                len(after_hours) / max(len(user_events), 1) * 100, 1
+            ),
             "events": after_hours[:50],
         }
 
@@ -93,7 +103,13 @@ class InsiderThreatAgent:
         exfil_keywords = {
             "usb_connections": ["usb", "removable", "mass_storage"],
             "large_transfers": ["transfer", "copy", "download"],
-            "email_forwarding": ["forward", "auto-forward", "gmail", "yahoo", "hotmail"],
+            "email_forwarding": [
+                "forward",
+                "auto-forward",
+                "gmail",
+                "yahoo",
+                "hotmail",
+            ],
             "cloud_uploads": ["dropbox", "gdrive", "onedrive", "mega", "wetransfer"],
             "print_jobs": ["print", "printer"],
         }
@@ -118,9 +134,13 @@ class InsiderThreatAgent:
         user_events = self.filter_events_by_user(username)
         sorted_events = sorted(user_events, key=lambda e: e.get("timestamp", ""))
 
-        daily_summary = defaultdict(lambda: {
-            "event_count": 0, "total_bytes": 0, "actions": defaultdict(int),
-        })
+        daily_summary = defaultdict(
+            lambda: {
+                "event_count": 0,
+                "total_bytes": 0,
+                "actions": defaultdict(int),
+            }
+        )
 
         for event in sorted_events:
             try:
@@ -144,9 +164,11 @@ class InsiderThreatAgent:
                     "event_count": s["event_count"],
                     "total_bytes": s["total_bytes"],
                     "total_mb": round(s["total_bytes"] / 1_048_576, 1),
-                    "top_actions": dict(sorted(
-                        s["actions"].items(), key=lambda x: x[1], reverse=True
-                    )[:5]),
+                    "top_actions": dict(
+                        sorted(s["actions"].items(), key=lambda x: x[1], reverse=True)[
+                            :5
+                        ]
+                    ),
                 }
                 for day, s in sorted(daily_summary.items())
             },
@@ -190,8 +212,8 @@ class InsiderThreatAgent:
             "anomaly_score": self.calculate_anomaly_score(username),
             "after_hours_analysis": self.detect_after_hours_activity(username),
             "exfiltration_indicators": {
-                k: len(v) for k, v in
-                self.detect_data_exfiltration_indicators(username).items()
+                k: len(v)
+                for k, v in self.detect_data_exfiltration_indicators(username).items()
             },
             "activity_timeline": self.build_activity_timeline(username),
         }

@@ -10,7 +10,9 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 # DCOM COM object CLSIDs used for lateral movement
@@ -24,9 +26,16 @@ DCOM_CLSIDS = {
 
 DCOM_PARENT_PROCESSES = ["mmc.exe", "dllhost.exe", "explorer.exe"]
 SUSPICIOUS_CHILDREN = [
-    "cmd.exe", "powershell.exe", "pwsh.exe", "wscript.exe",
-    "cscript.exe", "mshta.exe", "rundll32.exe", "regsvr32.exe",
-    "certutil.exe", "bitsadmin.exe",
+    "cmd.exe",
+    "powershell.exe",
+    "pwsh.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+    "certutil.exe",
+    "bitsadmin.exe",
 ]
 
 SYSMON_NS = "http://schemas.microsoft.com/win/2004/08/events/event"
@@ -60,7 +69,9 @@ def parse_evtx_records(evtx_path):
                 for elem in root.findall(".//evt:EventData/evt:Data", ns):
                     data[elem.get("Name", "")] = elem.text or ""
                 time_elem = root.find(".//evt:System/evt:TimeCreated", ns)
-                timestamp = time_elem.get("SystemTime", "") if time_elem is not None else ""
+                timestamp = (
+                    time_elem.get("SystemTime", "") if time_elem is not None else ""
+                )
                 comp_elem = root.find(".//evt:System/evt:Computer", ns)
                 computer = comp_elem.text if comp_elem is not None else ""
                 data["EventID"] = eid
@@ -85,19 +96,21 @@ def detect_mmc20_lateral(events):
             continue
         if not any(child in image for child in SUSPICIOUS_CHILDREN):
             continue
-        findings.append({
-            "detection": "MMC20.Application DCOM Lateral Movement",
-            "severity": "HIGH",
-            "mitre": "T1021.003",
-            "timestamp": ev.get("TimeCreated"),
-            "computer": ev.get("Computer"),
-            "parent_image": ev.get("ParentImage"),
-            "parent_cmdline": ev.get("ParentCommandLine"),
-            "child_image": ev.get("Image"),
-            "child_cmdline": ev.get("CommandLine"),
-            "user": ev.get("User"),
-            "clsid": "{49B2791A-B1AE-4C90-9B8E-E860BA07F889}",
-        })
+        findings.append(
+            {
+                "detection": "MMC20.Application DCOM Lateral Movement",
+                "severity": "HIGH",
+                "mitre": "T1021.003",
+                "timestamp": ev.get("TimeCreated"),
+                "computer": ev.get("Computer"),
+                "parent_image": ev.get("ParentImage"),
+                "parent_cmdline": ev.get("ParentCommandLine"),
+                "child_image": ev.get("Image"),
+                "child_cmdline": ev.get("CommandLine"),
+                "user": ev.get("User"),
+                "clsid": "{49B2791A-B1AE-4C90-9B8E-E860BA07F889}",
+            }
+        )
     logger.info("MMC20 detections: %d", len(findings))
     return findings
 
@@ -112,21 +125,32 @@ def detect_shell_dcom_lateral(events):
         image = ev.get("Image", "").lower()
         if "explorer.exe" not in parent:
             continue
-        if not any(child in image for child in ["cmd.exe", "powershell.exe", "pwsh.exe",
-                                                  "mshta.exe", "wscript.exe", "cscript.exe"]):
+        if not any(
+            child in image
+            for child in [
+                "cmd.exe",
+                "powershell.exe",
+                "pwsh.exe",
+                "mshta.exe",
+                "wscript.exe",
+                "cscript.exe",
+            ]
+        ):
             continue
-        findings.append({
-            "detection": "ShellWindows/ShellBrowserWindow DCOM Lateral Movement",
-            "severity": "MEDIUM",
-            "mitre": "T1021.003",
-            "timestamp": ev.get("TimeCreated"),
-            "computer": ev.get("Computer"),
-            "parent_image": ev.get("ParentImage"),
-            "child_image": ev.get("Image"),
-            "child_cmdline": ev.get("CommandLine"),
-            "user": ev.get("User"),
-            "clsid": "{9BA05972} or {C08AFD90}",
-        })
+        findings.append(
+            {
+                "detection": "ShellWindows/ShellBrowserWindow DCOM Lateral Movement",
+                "severity": "MEDIUM",
+                "mitre": "T1021.003",
+                "timestamp": ev.get("TimeCreated"),
+                "computer": ev.get("Computer"),
+                "parent_image": ev.get("ParentImage"),
+                "child_image": ev.get("Image"),
+                "child_cmdline": ev.get("CommandLine"),
+                "user": ev.get("User"),
+                "clsid": "{9BA05972} or {C08AFD90}",
+            }
+        )
     logger.info("ShellWindows/ShellBrowserWindow detections: %d", len(findings))
     return findings
 
@@ -150,20 +174,22 @@ def detect_dllhost_lateral(events):
             clsid_raw = parent_cmdline[start:].strip().strip("{}")
             clsid = "{" + clsid_raw + "}"
         dcom_name = DCOM_CLSIDS.get(clsid.upper(), "Unknown DCOM Object")
-        findings.append({
-            "detection": f"DCOM via dllhost.exe ({dcom_name})",
-            "severity": "HIGH",
-            "mitre": "T1021.003",
-            "timestamp": ev.get("TimeCreated"),
-            "computer": ev.get("Computer"),
-            "parent_image": ev.get("ParentImage"),
-            "parent_cmdline": parent_cmdline,
-            "child_image": ev.get("Image"),
-            "child_cmdline": ev.get("CommandLine"),
-            "user": ev.get("User"),
-            "clsid": clsid,
-            "dcom_object": dcom_name,
-        })
+        findings.append(
+            {
+                "detection": f"DCOM via dllhost.exe ({dcom_name})",
+                "severity": "HIGH",
+                "mitre": "T1021.003",
+                "timestamp": ev.get("TimeCreated"),
+                "computer": ev.get("Computer"),
+                "parent_image": ev.get("ParentImage"),
+                "parent_cmdline": parent_cmdline,
+                "child_image": ev.get("Image"),
+                "child_cmdline": ev.get("CommandLine"),
+                "user": ev.get("User"),
+                "clsid": clsid,
+                "dcom_object": dcom_name,
+            }
+        )
     logger.info("dllhost.exe DCOM detections: %d", len(findings))
     return findings
 
@@ -177,16 +203,18 @@ def detect_rpc_connections(events):
         dest_port = ev.get("DestinationPort", "")
         initiated = ev.get("Initiated", "").lower()
         if dest_port == "135" and initiated == "false":
-            rpc_connections.append({
-                "detection": "Inbound RPC Connection (DCOM Prerequisite)",
-                "severity": "LOW",
-                "timestamp": ev.get("TimeCreated"),
-                "computer": ev.get("Computer"),
-                "source_ip": ev.get("SourceIp"),
-                "dest_ip": ev.get("DestinationIp"),
-                "dest_port": dest_port,
-                "image": ev.get("Image"),
-            })
+            rpc_connections.append(
+                {
+                    "detection": "Inbound RPC Connection (DCOM Prerequisite)",
+                    "severity": "LOW",
+                    "timestamp": ev.get("TimeCreated"),
+                    "computer": ev.get("Computer"),
+                    "source_ip": ev.get("SourceIp"),
+                    "dest_ip": ev.get("DestinationIp"),
+                    "dest_port": dest_port,
+                    "image": ev.get("Image"),
+                }
+            )
     logger.info("Inbound RPC (port 135) connections: %d", len(rpc_connections))
     return rpc_connections
 
@@ -214,20 +242,22 @@ def correlate_rpc_with_process(rpc_events, process_findings, window_seconds=60):
                 continue
             delta = (proc_dt - rpc_dt).total_seconds()
             if 0 <= delta <= window_seconds:
-                correlated.append({
-                    "detection": "CORRELATED: RPC Connection -> DCOM Process Creation",
-                    "severity": "CRITICAL",
-                    "mitre": "T1021.003",
-                    "computer": proc_computer,
-                    "source_ip": rpc.get("source_ip"),
-                    "rpc_time": rpc_time_str,
-                    "process_time": proc_time_str,
-                    "time_delta_seconds": round(delta, 2),
-                    "dcom_detection": proc.get("detection"),
-                    "child_image": proc.get("child_image"),
-                    "child_cmdline": proc.get("child_cmdline"),
-                    "user": proc.get("user"),
-                })
+                correlated.append(
+                    {
+                        "detection": "CORRELATED: RPC Connection -> DCOM Process Creation",
+                        "severity": "CRITICAL",
+                        "mitre": "T1021.003",
+                        "computer": proc_computer,
+                        "source_ip": rpc.get("source_ip"),
+                        "rpc_time": rpc_time_str,
+                        "process_time": proc_time_str,
+                        "time_delta_seconds": round(delta, 2),
+                        "dcom_detection": proc.get("detection"),
+                        "child_image": proc.get("child_image"),
+                        "child_cmdline": proc.get("child_cmdline"),
+                        "user": proc.get("user"),
+                    }
+                )
                 break
     logger.info("Correlated RPC->Process chains: %d", len(correlated))
     return correlated
@@ -244,29 +274,54 @@ def audit_dcom_config():
         try:
             result = subprocess.run(
                 ["reg", "query", f"HKLM\\SOFTWARE\\Classes\\CLSID\\{clsid}"],
-                capture_output=True, text=True, timeout=10
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             exists = result.returncode == 0
-            audit_results.append({
-                "clsid": clsid,
-                "name": name,
-                "registered": exists,
-                "risk": "HIGH" if exists else "N/A",
-            })
+            audit_results.append(
+                {
+                    "clsid": clsid,
+                    "name": name,
+                    "registered": exists,
+                    "risk": "HIGH" if exists else "N/A",
+                }
+            )
         except subprocess.TimeoutExpired:
-            audit_results.append({"clsid": clsid, "name": name, "registered": "TIMEOUT", "risk": "UNKNOWN"})
+            audit_results.append(
+                {
+                    "clsid": clsid,
+                    "name": name,
+                    "registered": "TIMEOUT",
+                    "risk": "UNKNOWN",
+                }
+            )
         except Exception as e:
-            audit_results.append({"clsid": clsid, "name": name, "registered": f"ERROR: {e}", "risk": "UNKNOWN"})
+            audit_results.append(
+                {
+                    "clsid": clsid,
+                    "name": name,
+                    "registered": f"ERROR: {e}",
+                    "risk": "UNKNOWN",
+                }
+            )
 
     # Check if DCOM is enabled
     try:
         result = subprocess.run(
             ["reg", "query", "HKLM\\SOFTWARE\\Microsoft\\Ole", "/v", "EnableDCOM"],
-            capture_output=True, text=True, timeout=10
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         dcom_enabled = "Y" in result.stdout if result.returncode == 0 else "UNKNOWN"
-        audit_results.append({"check": "DCOM Enabled", "value": dcom_enabled,
-                              "risk": "HIGH" if dcom_enabled == "Y" else "LOW"})
+        audit_results.append(
+            {
+                "check": "DCOM Enabled",
+                "value": dcom_enabled,
+                "risk": "HIGH" if dcom_enabled == "Y" else "LOW",
+            }
+        )
     except (subprocess.TimeoutExpired, Exception):
         pass
 
@@ -280,7 +335,9 @@ def generate_report(all_findings, dcom_audit, output_path):
         "mitre_technique": "T1021.003",
         "summary": {
             "total_findings": len(all_findings),
-            "critical": len([f for f in all_findings if f.get("severity") == "CRITICAL"]),
+            "critical": len(
+                [f for f in all_findings if f.get("severity") == "CRITICAL"]
+            ),
             "high": len([f for f in all_findings if f.get("severity") == "HIGH"]),
             "medium": len([f for f in all_findings if f.get("severity") == "MEDIUM"]),
             "low": len([f for f in all_findings if f.get("severity") == "LOW"]),
@@ -296,7 +353,9 @@ def generate_report(all_findings, dcom_audit, output_path):
     s = report["summary"]
     print(f"\nDCOM LATERAL MOVEMENT DETECTION REPORT")
     print(f"  Total findings: {s['total_findings']}")
-    print(f"  Critical: {s['critical']}, High: {s['high']}, Medium: {s['medium']}, Low: {s['low']}")
+    print(
+        f"  Critical: {s['critical']}, High: {s['high']}, Medium: {s['medium']}, Low: {s['low']}"
+    )
     if s["critical"] > 0:
         print("  [!!!] CRITICAL: Correlated RPC + process creation chains detected")
     return report
@@ -307,13 +366,26 @@ def main():
         description="DCOM Lateral Movement Detection Agent (T1021.003)"
     )
     parser.add_argument("--evtx", required=True, help="Path to Sysmon .evtx log file")
-    parser.add_argument("--output", "-o", default="dcom_detection_report.json",
-                        help="Output JSON report path (default: dcom_detection_report.json)")
-    parser.add_argument("--correlation-window", type=int, default=60,
-                        help="Seconds window for RPC-to-process correlation (default: 60)")
-    parser.add_argument("--audit-dcom", action="store_true",
-                        help="Audit local DCOM object registration (Windows only)")
-    parser.add_argument("--verbose", "-v", action="store_true", help="Enable debug logging")
+    parser.add_argument(
+        "--output",
+        "-o",
+        default="dcom_detection_report.json",
+        help="Output JSON report path (default: dcom_detection_report.json)",
+    )
+    parser.add_argument(
+        "--correlation-window",
+        type=int,
+        default=60,
+        help="Seconds window for RPC-to-process correlation (default: 60)",
+    )
+    parser.add_argument(
+        "--audit-dcom",
+        action="store_true",
+        help="Audit local DCOM object registration (Windows only)",
+    )
+    parser.add_argument(
+        "--verbose", "-v", action="store_true", help="Enable debug logging"
+    )
     args = parser.parse_args()
 
     if args.verbose:

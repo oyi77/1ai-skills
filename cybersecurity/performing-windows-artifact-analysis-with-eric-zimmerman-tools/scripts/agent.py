@@ -26,69 +26,106 @@ class EZToolsAgent:
     def _run_tool(self, tool, args, timeout=300):
         cmd = [tool] + args
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-            return {"return_code": result.returncode,
-                    "stdout_lines": len(result.stdout.splitlines()),
-                    "stderr": result.stderr[:300] if result.stderr else ""}
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=timeout
+            )
+            return {
+                "return_code": result.returncode,
+                "stdout_lines": len(result.stdout.splitlines()),
+                "stderr": result.stderr[:300] if result.stderr else "",
+            }
         except FileNotFoundError:
-            return {"error": f"{tool} not found. Download from https://ericzimmerman.github.io/"}
+            return {
+                "error": f"{tool} not found. Download from https://ericzimmerman.github.io/"
+            }
         except subprocess.TimeoutExpired:
             return {"error": f"{tool} timed out"}
 
     def parse_mft(self, mft_path):
         """Parse $MFT using MFTECmd and extract file creation/modification."""
         csv_out = self.output_dir / "mft_output.csv"
-        result = self._run_tool("MFTECmd.exe", ["-f", mft_path,
-                                                  "--csv", str(self.output_dir),
-                                                  "--csvf", "mft_output.csv"])
+        result = self._run_tool(
+            "MFTECmd.exe",
+            ["-f", mft_path, "--csv", str(self.output_dir), "--csvf", "mft_output.csv"],
+        )
         if "error" in result:
             return result
-        return self._parse_csv(csv_out, "MFT",
-                               time_cols=["Created0x10", "LastModified0x10"])
+        return self._parse_csv(
+            csv_out, "MFT", time_cols=["Created0x10", "LastModified0x10"]
+        )
 
     def parse_prefetch(self, prefetch_dir):
         """Parse Prefetch files using PECmd for program execution evidence."""
         csv_out = self.output_dir / "prefetch_output.csv"
-        result = self._run_tool("PECmd.exe", ["-d", prefetch_dir,
-                                               "--csv", str(self.output_dir),
-                                               "--csvf", "prefetch_output.csv"])
+        result = self._run_tool(
+            "PECmd.exe",
+            [
+                "-d",
+                prefetch_dir,
+                "--csv",
+                str(self.output_dir),
+                "--csvf",
+                "prefetch_output.csv",
+            ],
+        )
         if "error" in result:
             return result
-        return self._parse_csv(csv_out, "Prefetch",
-                               time_cols=["LastRun", "PreviousRun0"])
+        return self._parse_csv(
+            csv_out, "Prefetch", time_cols=["LastRun", "PreviousRun0"]
+        )
 
     def parse_lnk_files(self, lnk_dir):
         """Parse LNK shortcut files using LECmd."""
         csv_out = self.output_dir / "lnk_output.csv"
-        result = self._run_tool("LECmd.exe", ["-d", lnk_dir,
-                                               "--csv", str(self.output_dir),
-                                               "--csvf", "lnk_output.csv"])
+        result = self._run_tool(
+            "LECmd.exe",
+            ["-d", lnk_dir, "--csv", str(self.output_dir), "--csvf", "lnk_output.csv"],
+        )
         if "error" in result:
             return result
-        return self._parse_csv(csv_out, "LNK",
-                               time_cols=["TargetCreated", "TargetModified"])
+        return self._parse_csv(
+            csv_out, "LNK", time_cols=["TargetCreated", "TargetModified"]
+        )
 
     def parse_jump_lists(self, jl_dir):
         """Parse Jump Lists using JLECmd for recent file access."""
         csv_out = self.output_dir / "jumplist_output.csv"
-        result = self._run_tool("JLECmd.exe", ["-d", jl_dir,
-                                                "--csv", str(self.output_dir),
-                                                "--csvf", "jumplist_output.csv"])
+        result = self._run_tool(
+            "JLECmd.exe",
+            [
+                "-d",
+                jl_dir,
+                "--csv",
+                str(self.output_dir),
+                "--csvf",
+                "jumplist_output.csv",
+            ],
+        )
         if "error" in result:
             return result
-        return self._parse_csv(csv_out, "JumpList",
-                               time_cols=["TargetCreated", "TargetModified"])
+        return self._parse_csv(
+            csv_out, "JumpList", time_cols=["TargetCreated", "TargetModified"]
+        )
 
     def parse_shellbags(self, registry_hive):
         """Parse ShellBags from NTUSER.DAT/UsrClass.dat."""
         csv_out = self.output_dir / "shellbags_output.csv"
-        result = self._run_tool("SBECmd.exe", ["-d", registry_hive,
-                                                "--csv", str(self.output_dir),
-                                                "--csvf", "shellbags_output.csv"])
+        result = self._run_tool(
+            "SBECmd.exe",
+            [
+                "-d",
+                registry_hive,
+                "--csv",
+                str(self.output_dir),
+                "--csvf",
+                "shellbags_output.csv",
+            ],
+        )
         if "error" in result:
             return result
-        return self._parse_csv(csv_out, "ShellBag",
-                               time_cols=["LastWriteTime", "FirstExplored"])
+        return self._parse_csv(
+            csv_out, "ShellBag", time_cols=["LastWriteTime", "FirstExplored"]
+        )
 
     def _parse_csv(self, csv_path, artifact_type, time_cols=None):
         """Parse EZ tool CSV output into timeline entries."""
@@ -108,13 +145,18 @@ class EZToolsAgent:
                             ts = row.get(tc, "")
                             if ts:
                                 entry["timestamp"] = ts
-                                self.timeline.append({
-                                    "timestamp": ts,
-                                    "artifact": artifact_type,
-                                    "source": csv_path.name,
-                                    "details": {k: v for k, v in row.items()
-                                                if v and k != tc}
-                                })
+                                self.timeline.append(
+                                    {
+                                        "timestamp": ts,
+                                        "artifact": artifact_type,
+                                        "source": csv_path.name,
+                                        "details": {
+                                            k: v
+                                            for k, v in row.items()
+                                            if v and k != tc
+                                        },
+                                    }
+                                )
                                 break
                     entries.append(entry)
         except (csv.Error, UnicodeDecodeError) as exc:
@@ -148,9 +190,13 @@ def main():
     agent = EZToolsAgent()
     atype = sys.argv[1]
     path = sys.argv[2]
-    dispatch = {"mft": agent.parse_mft, "prefetch": agent.parse_prefetch,
-                "lnk": agent.parse_lnk_files, "jumplist": agent.parse_jump_lists,
-                "shellbag": agent.parse_shellbags}
+    dispatch = {
+        "mft": agent.parse_mft,
+        "prefetch": agent.parse_prefetch,
+        "lnk": agent.parse_lnk_files,
+        "jumplist": agent.parse_jump_lists,
+        "shellbag": agent.parse_shellbags,
+    }
     fn = dispatch.get(atype)
     if fn:
         fn(path)

@@ -8,7 +8,9 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 SWC_REGISTRY = {
@@ -38,7 +40,15 @@ def run_slither(contract_path):
 
 def run_mythril(contract_path, timeout=300):
     """Run Mythril symbolic execution analysis."""
-    cmd = ["myth", "analyze", contract_path, "--execution-timeout", str(timeout), "-o", "json"]
+    cmd = [
+        "myth",
+        "analyze",
+        contract_path,
+        "--execution-timeout",
+        str(timeout),
+        "-o",
+        "json",
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 60)
     try:
         return json.loads(result.stdout) if result.stdout else {}
@@ -61,20 +71,31 @@ def analyze_slither_results(slither_output):
         location = ""
         if elements:
             elem = elements[0]
-            location = f"{elem.get('source_mapping', {}).get('filename_short', '')}:" \
-                       f"L{elem.get('source_mapping', {}).get('lines', [0])[0] if elem.get('source_mapping', {}).get('lines') else 0}"
-        findings.append({
-            "detector": det_name,
-            "severity": severity,
-            "description": detector.get("description", "")[:200],
-            "location": location,
-            "confidence": detector.get("confidence", ""),
-        })
+            location = (
+                f"{elem.get('source_mapping', {}).get('filename_short', '')}:"
+                f"L{elem.get('source_mapping', {}).get('lines', [0])[0] if elem.get('source_mapping', {}).get('lines') else 0}"
+            )
+        findings.append(
+            {
+                "detector": det_name,
+                "severity": severity,
+                "description": detector.get("description", "")[:200],
+                "location": location,
+                "confidence": detector.get("confidence", ""),
+            }
+        )
     return {
         "total": len(findings),
         "by_severity": dict(by_severity),
-        "by_detector": dict(sorted(by_detector.items(), key=lambda x: x[1], reverse=True)[:15]),
-        "findings": sorted(findings, key=lambda x: {"high": 0, "medium": 1, "low": 2, "informational": 3}.get(x["severity"], 4)),
+        "by_detector": dict(
+            sorted(by_detector.items(), key=lambda x: x[1], reverse=True)[:15]
+        ),
+        "findings": sorted(
+            findings,
+            key=lambda x: {"high": 0, "medium": 1, "low": 2, "informational": 3}.get(
+                x["severity"], 4
+            ),
+        ),
     }
 
 
@@ -87,15 +108,17 @@ def analyze_mythril_results(mythril_output):
         swc_key = f"SWC-{swc_id}" if swc_id else "unknown"
         by_swc[swc_key] += 1
         severity = issue.get("severity", "Medium").lower()
-        findings.append({
-            "swc_id": swc_key,
-            "swc_title": SWC_REGISTRY.get(swc_key, issue.get("title", "")),
-            "severity": severity,
-            "description": issue.get("description", "")[:200],
-            "contract": issue.get("contract", ""),
-            "function": issue.get("function", ""),
-            "line_number": issue.get("lineno", 0),
-        })
+        findings.append(
+            {
+                "swc_id": swc_key,
+                "swc_title": SWC_REGISTRY.get(swc_key, issue.get("title", "")),
+                "severity": severity,
+                "description": issue.get("description", "")[:200],
+                "contract": issue.get("contract", ""),
+                "function": issue.get("function", ""),
+                "line_number": issue.get("lineno", 0),
+            }
+        )
     return {
         "total": len(findings),
         "by_swc": dict(by_swc),
@@ -113,7 +136,10 @@ def deduplicate_findings(slither_findings, mythril_findings):
             seen.add(key)
             combined.append({**f, "source": "slither"})
     for f in mythril_findings.get("findings", []):
-        key = (f.get("contract", "") + str(f.get("line_number", 0)), f.get("swc_id", ""))
+        key = (
+            f.get("contract", "") + str(f.get("line_number", 0)),
+            f.get("swc_id", ""),
+        )
         if key not in seen:
             seen.add(key)
             combined.append({**f, "source": "mythril"})
@@ -121,7 +147,9 @@ def deduplicate_findings(slither_findings, mythril_findings):
 
 
 def generate_report(contract_path, slither_analysis, mythril_analysis, combined):
-    critical_high = sum(1 for f in combined if f.get("severity") in ("high", "critical"))
+    critical_high = sum(
+        1 for f in combined if f.get("severity") in ("high", "critical")
+    )
     return {
         "timestamp": datetime.utcnow().isoformat(),
         "contract": contract_path,
@@ -142,10 +170,25 @@ def generate_report(contract_path, slither_analysis, mythril_analysis, combined)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Solidity Smart Contract Security Analysis Agent")
-    parser.add_argument("--contract", required=True, help="Path to Solidity contract or project directory")
-    parser.add_argument("--mythril-timeout", type=int, default=300, help="Mythril execution timeout (seconds)")
-    parser.add_argument("--skip-mythril", action="store_true", help="Skip Mythril (slow symbolic execution)")
+    parser = argparse.ArgumentParser(
+        description="Solidity Smart Contract Security Analysis Agent"
+    )
+    parser.add_argument(
+        "--contract",
+        required=True,
+        help="Path to Solidity contract or project directory",
+    )
+    parser.add_argument(
+        "--mythril-timeout",
+        type=int,
+        default=300,
+        help="Mythril execution timeout (seconds)",
+    )
+    parser.add_argument(
+        "--skip-mythril",
+        action="store_true",
+        help="Skip Mythril (slow symbolic execution)",
+    )
     parser.add_argument("--output", default="smart_contract_audit_report.json")
     args = parser.parse_args()
 
@@ -156,11 +199,17 @@ def main():
         mythril_output = run_mythril(args.contract, args.mythril_timeout)
         mythril_analysis = analyze_mythril_results(mythril_output)
     combined = deduplicate_findings(slither_analysis, mythril_analysis)
-    report = generate_report(args.contract, slither_analysis, mythril_analysis, combined)
+    report = generate_report(
+        args.contract, slither_analysis, mythril_analysis, combined
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("Smart contract audit: %d findings (%d critical/high), result: %s",
-                report["combined_findings"], report["critical_high_findings"], report["audit_result"])
+    logger.info(
+        "Smart contract audit: %d findings (%d critical/high), result: %s",
+        report["combined_findings"],
+        report["critical_high_findings"],
+        report["audit_result"],
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

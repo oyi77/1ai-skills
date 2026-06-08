@@ -6,6 +6,7 @@ logs for suspicious domain registrations, performing DNS lookups for
 typosquatting domains, and scanning social media profile names. Uses
 crt.sh API and DNS resolution to identify potential phishing domains.
 """
+
 import argparse
 import json
 import os
@@ -32,11 +33,21 @@ def generate_typosquat_variants(domain):
     # Character swap
     for i in range(len(name) - 1):
         swapped = list(name)
-        swapped[i], swapped[i+1] = swapped[i+1], swapped[i]
+        swapped[i], swapped[i + 1] = swapped[i + 1], swapped[i]
         variants.add(f"{''.join(swapped)}.{tld}")
     # Character replacement (adjacent keys)
-    adjacent = {"a": "sq", "e": "wr", "i": "uo", "o": "ip", "u": "yi",
-                "s": "ad", "n": "bm", "r": "et", "t": "ry", "l": "kp"}
+    adjacent = {
+        "a": "sq",
+        "e": "wr",
+        "i": "uo",
+        "o": "ip",
+        "u": "yi",
+        "s": "ad",
+        "n": "bm",
+        "r": "et",
+        "t": "ry",
+        "l": "kp",
+    }
     for i, c in enumerate(name):
         for adj in adjacent.get(c, ""):
             variants.add(f"{name[:i]}{adj}{name[i+1:]}.{tld}")
@@ -72,12 +83,14 @@ def check_domain_resolution(domains, max_check=200):
         checked += 1
         try:
             ip = socket.gethostbyname(domain)
-            resolved.append({
-                "domain": domain,
-                "ip": ip,
-                "resolves": True,
-                "severity": "HIGH",
-            })
+            resolved.append(
+                {
+                    "domain": domain,
+                    "ip": ip,
+                    "resolves": True,
+                    "severity": "HIGH",
+                }
+            )
         except socket.gaierror:
             pass
     print(f"[+] Checked {checked} domains, {len(resolved)} resolve to an IP")
@@ -98,16 +111,21 @@ def search_certificate_transparency(domain):
             seen_names = set()
             for cert in certs:
                 common_name = cert.get("common_name", "")
-                if common_name not in seen_names and domain not in common_name.split(".")[-2:]:
+                if (
+                    common_name not in seen_names
+                    and domain not in common_name.split(".")[-2:]
+                ):
                     seen_names.add(common_name)
-                    findings.append({
-                        "type": "ct_log",
-                        "common_name": common_name,
-                        "issuer": cert.get("issuer_name", ""),
-                        "not_before": cert.get("not_before", ""),
-                        "not_after": cert.get("not_after", ""),
-                        "severity": "MEDIUM",
-                    })
+                    findings.append(
+                        {
+                            "type": "ct_log",
+                            "common_name": common_name,
+                            "issuer": cert.get("issuer_name", ""),
+                            "not_before": cert.get("not_before", ""),
+                            "not_after": cert.get("not_after", ""),
+                            "severity": "MEDIUM",
+                        }
+                    )
             print(f"[+] Found {len(findings)} suspicious certificates")
     except requests.RequestException as e:
         print(f"[!] CT search error: {e}")
@@ -137,10 +155,18 @@ def format_summary(domain, variants_count, resolved, ct_findings):
 
 def main():
     parser = argparse.ArgumentParser(description="Brand impersonation monitoring agent")
-    parser.add_argument("--domain", required=True, help="Brand domain to monitor (e.g., example.com)")
-    parser.add_argument("--max-check", type=int, default=200, help="Max domains to DNS-check")
-    parser.add_argument("--skip-ct", action="store_true", help="Skip Certificate Transparency search")
-    parser.add_argument("--skip-dns", action="store_true", help="Skip DNS resolution check")
+    parser.add_argument(
+        "--domain", required=True, help="Brand domain to monitor (e.g., example.com)"
+    )
+    parser.add_argument(
+        "--max-check", type=int, default=200, help="Max domains to DNS-check"
+    )
+    parser.add_argument(
+        "--skip-ct", action="store_true", help="Skip Certificate Transparency search"
+    )
+    parser.add_argument(
+        "--skip-dns", action="store_true", help="Skip DNS resolution check"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
@@ -166,10 +192,9 @@ def main():
         "resolved_domains": resolved,
         "ct_findings": ct_findings,
         "risk_level": (
-            "CRITICAL" if len(resolved) > 10
-            else "HIGH" if resolved
-            else "MEDIUM" if ct_findings
-            else "LOW"
+            "CRITICAL"
+            if len(resolved) > 10
+            else "HIGH" if resolved else "MEDIUM" if ct_findings else "LOW"
         ),
     }
 

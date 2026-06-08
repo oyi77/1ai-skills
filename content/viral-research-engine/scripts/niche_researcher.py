@@ -12,7 +12,6 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-
 NICHE_PROFILES = {
     "ai_tools": {
         "name": "AI Tools for Business",
@@ -56,7 +55,12 @@ NICHE_PROFILES = {
             "Tidak ada bukti nyata ROI",
             "Bahasa Inggris dominan — gap konten Bahasa Indonesia",
         ],
-        "monetization": ["Affiliate tool links", "Digital products", "Consulting", "Courses"],
+        "monetization": [
+            "Affiliate tool links",
+            "Digital products",
+            "Consulting",
+            "Courses",
+        ],
     },
     "digital_marketing": {
         "name": "Digital Marketing Tips",
@@ -144,7 +148,12 @@ NICHE_PROFILES = {
             "Video quality low, tidak ada audio yang baik",
             "Tidak follow up ke episode berikutnya",
         ],
-        "monetization": ["Physical products (bumbu, frozen)", "Courses", "Consulting", "Affiliate"],
+        "monetization": [
+            "Physical products (bumbu, frozen)",
+            "Courses",
+            "Consulting",
+            "Affiliate",
+        ],
     },
     "side_hustle": {
         "name": "Side Hustle / Passive Income",
@@ -240,19 +249,27 @@ NICHE_PROFILES = {
 def research_niche(niche_key: str) -> dict:
     """Deep research on a specific niche."""
     if niche_key not in NICHE_PROFILES:
-        return {"error": f"Niche '{niche_key}' not found. Available: {list(NICHE_PROFILES.keys())}"}
+        return {
+            "error": f"Niche '{niche_key}' not found. Available: {list(NICHE_PROFILES.keys())}"
+        }
 
     profile = NICHE_PROFILES[niche_key]
 
     # Build content calendar suggestions
     content_calendar = []
     for i, topic in enumerate(profile["trending_topics_2025"][:7]):
-        content_calendar.append({
-            "day": i + 1,
-            "topic": topic,
-            "suggested_format": "Tutorial" if i % 3 == 0 else ("Controversy" if i % 3 == 1 else "Storytelling"),
-            "platform": "TikTok" if i % 2 == 0 else "Instagram Reels",
-        })
+        content_calendar.append(
+            {
+                "day": i + 1,
+                "topic": topic,
+                "suggested_format": (
+                    "Tutorial"
+                    if i % 3 == 0
+                    else ("Controversy" if i % 3 == 1 else "Storytelling")
+                ),
+                "platform": "TikTok" if i % 2 == 0 else "Instagram Reels",
+            }
+        )
 
     return {
         "niche_key": niche_key,
@@ -315,10 +332,10 @@ if __name__ == "__main__":
     print(f"  Quick wins:")
     for win in result["quick_wins"]:
         print(f"    → {win}")
-    
+
     print("\n💡 7-Day Content Calendar (AI Tools):")
     for day in result["7_day_content_calendar"]:
         print(f"  Day {day['day']}: {day['topic'][:50]} [{day['suggested_format']}]")
-    
+
     # Full research
     save_niche_research()

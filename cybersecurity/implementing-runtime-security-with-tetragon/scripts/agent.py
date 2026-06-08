@@ -28,12 +28,22 @@ def check_tetragon_deployment(namespace="kube-system"):
                 desired = ds.status.desired_number_scheduled or 0
                 ready = ds.status.number_ready or 0
                 if ready < desired:
-                    findings.append({"check": "Tetragon Readiness",
-                                     "desired": desired, "ready": ready,
-                                     "severity": "HIGH"})
+                    findings.append(
+                        {
+                            "check": "Tetragon Readiness",
+                            "desired": desired,
+                            "ready": ready,
+                            "severity": "HIGH",
+                        }
+                    )
         if not tetragon_found:
-            findings.append({"check": "Tetragon Deployment", "status": "NOT_FOUND",
-                             "severity": "CRITICAL"})
+            findings.append(
+                {
+                    "check": "Tetragon Deployment",
+                    "status": "NOT_FOUND",
+                    "severity": "CRITICAL",
+                }
+            )
     except Exception as e:
         findings.append({"error": str(e)})
     return findings
@@ -45,23 +55,35 @@ def check_tracing_policies():
     try:
         result = subprocess.check_output(
             ["kubectl", "get", "tracingpolicies", "-o", "json"],
-            text=True, timeout=10,
+            text=True,
+            timeout=10,
         )
         data = json.loads(result)
         items = data.get("items", [])
         if not items:
-            findings.append({"check": "TracingPolicies", "count": 0,
-                             "severity": "MEDIUM",
-                             "recommendation": "Deploy TracingPolicy for runtime enforcement"})
+            findings.append(
+                {
+                    "check": "TracingPolicies",
+                    "count": 0,
+                    "severity": "MEDIUM",
+                    "recommendation": "Deploy TracingPolicy for runtime enforcement",
+                }
+            )
         for item in items:
             name = item.get("metadata", {}).get("name", "unknown")
             spec = item.get("spec", {})
             if not spec.get("kprobes") and not spec.get("tracepoints"):
-                findings.append({"check": f"Policy: {name}", "severity": "LOW",
-                                 "recommendation": "Add kprobes or tracepoints"})
+                findings.append(
+                    {
+                        "check": f"Policy: {name}",
+                        "severity": "LOW",
+                        "recommendation": "Add kprobes or tracepoints",
+                    }
+                )
     except (subprocess.SubprocessError, json.JSONDecodeError):
-        findings.append({"check": "TracingPolicies", "status": "query_failed",
-                         "severity": "MEDIUM"})
+        findings.append(
+            {"check": "TracingPolicies", "status": "query_failed", "severity": "MEDIUM"}
+        )
     return findings
 
 
@@ -70,18 +92,23 @@ def check_tetragon_cli():
     findings = []
     try:
         result = subprocess.check_output(
-            ["tetra", "status"], text=True, timeout=5,
+            ["tetra", "status"],
+            text=True,
+            timeout=5,
         )
         if "running" not in result.lower():
             findings.append({"check": "Tetragon Status", "severity": "HIGH"})
     except (subprocess.SubprocessError, FileNotFoundError):
-        findings.append({"check": "Tetra CLI", "status": "not_available",
-                         "severity": "LOW"})
+        findings.append(
+            {"check": "Tetra CLI", "status": "not_available", "severity": "LOW"}
+        )
     return findings
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Tetragon runtime security audit agent")
+    parser = argparse.ArgumentParser(
+        description="Tetragon runtime security audit agent"
+    )
     parser.add_argument("--namespace", default="kube-system")
     parser.add_argument("--output", "-o", help="Output JSON report")
     parser.add_argument("--verbose", "-v", action="store_true")
@@ -93,13 +120,16 @@ def main():
     report["findings"].extend(check_tracing_policies())
     report["findings"].extend(check_tetragon_cli())
     crit = sum(1 for f in report["findings"] if f.get("severity") == "CRITICAL")
-    report["risk_level"] = "CRITICAL" if crit > 0 else "HIGH" if report["findings"] else "LOW"
+    report["risk_level"] = (
+        "CRITICAL" if crit > 0 else "HIGH" if report["findings"] else "LOW"
+    )
     print(f"[*] {len(report['findings'])} findings, risk: {report['risk_level']}")
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2)
     else:
         print(json.dumps(report, indent=2))
+
 
 if __name__ == "__main__":
     main()

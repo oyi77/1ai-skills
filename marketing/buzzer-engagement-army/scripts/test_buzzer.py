@@ -8,6 +8,7 @@ Usage:
   python test_buzzer.py --fast   # Skip slow tests
   python test_buzzer.py --api    # Include real API calls
 """
+
 import sys
 import os
 import json
@@ -56,8 +57,11 @@ def run_test(name, fn, *args, **kwargs):
 def test_comment_library():
     print("\n[1] Comment Library")
     from comment_library import (
-        get_comment, detect_niche, get_comments_for_post,
-        count_comments, COMMENTS
+        get_comment,
+        detect_niche,
+        get_comments_for_post,
+        count_comments,
+        COMMENTS,
     )
 
     def check_niches():
@@ -99,8 +103,11 @@ def test_comment_library():
 def test_account_manager():
     print("\n[2] Account Manager")
     from account_manager import (
-        KNOWN_ACCOUNTS, get_account_warmup_level,
-        get_actions_today, can_act, get_account_status_report
+        KNOWN_ACCOUNTS,
+        get_account_warmup_level,
+        get_actions_today,
+        can_act,
+        get_account_status_report,
     )
 
     def check_known_accounts():
@@ -140,8 +147,11 @@ def test_account_manager():
 def test_warmup_manager():
     print("\n[3] Warmup Manager")
     from warmup_manager import (
-        get_warmup_phase, days_active, get_safe_accounts,
-        register_new_account, get_all_account_warmup_status
+        get_warmup_phase,
+        days_active,
+        get_safe_accounts,
+        register_new_account,
+        get_all_account_warmup_status,
     )
 
     def check_warmup_phase():
@@ -181,7 +191,9 @@ def test_warmup_manager():
 def test_engagement_scheduler():
     print("\n[4] Engagement Scheduler")
     from engagement_scheduler import (
-        random_delay, generate_engagement_schedule, print_schedule
+        random_delay,
+        generate_engagement_schedule,
+        print_schedule,
     )
 
     def check_random_delay():
@@ -228,7 +240,9 @@ def test_like_bot():
     from like_bot import simulate_like, run_like_campaign
 
     def check_simulate_like():
-        result = simulate_like(48374, "https://tiktok.com/@test/123", "tiktok", dry_run=True)
+        result = simulate_like(
+            48374, "https://tiktok.com/@test/123", "tiktok", dry_run=True
+        )
         assert result == True
         return result
 
@@ -238,7 +252,7 @@ def test_like_bot():
             post_url="https://tiktok.com/@test/123",
             platform="tiktok",
             delay_range=(0, 0.1),  # No delay in test
-            dry_run=True
+            dry_run=True,
         )
         assert "success" in result
         assert "failed" in result
@@ -257,7 +271,9 @@ def test_comment_bot():
     from comment_bot import post_comment_via_api, run_comment_campaign
 
     def check_post_comment():
-        result = post_comment_via_api(48374, "test_post_001", "tiktok", "Test comment!", dry_run=True)
+        result = post_comment_via_api(
+            48374, "test_post_001", "tiktok", "Test comment!", dry_run=True
+        )
         assert result == True
         return result
 
@@ -268,13 +284,15 @@ def test_comment_bot():
             post_caption="tips kesehatan harian",
             platform="tiktok",
             delay_range=(0, 0.1),
-            dry_run=True
+            dry_run=True,
         )
         assert "success" in result
         assert "comments" in result
         # Each successful comment should have unique text
         comment_texts = [c["comment"] for c in result["comments"]]
-        assert len(set(comment_texts)) == len(comment_texts), "Duplicate comments detected!"
+        assert len(set(comment_texts)) == len(
+            comment_texts
+        ), "Duplicate comments detected!"
         return result
 
     run_test("post_comment_via_api dry run", check_post_comment)
@@ -292,7 +310,7 @@ def test_api_connectivity(skip=False):
         return
 
     import requests
-    
+
     POSTBRIDGE_KEY = "REDACTED_ROTATED_CREDENTIAL"
     HEADERS = {"Authorization": f"Bearer {POSTBRIDGE_KEY}"}
     BASE = "https://api.post-bridge.com/v1"
@@ -305,14 +323,18 @@ def test_api_connectivity(skip=False):
         return len(accounts)
 
     def check_posts():
-        resp = requests.get(f"{BASE}/posts", headers=HEADERS, params={"limit": 5}, timeout=10)
+        resp = requests.get(
+            f"{BASE}/posts", headers=HEADERS, params={"limit": 5}, timeout=10
+        )
         assert resp.status_code == 200, f"Status {resp.status_code}"
         data = resp.json()
         posts = data if isinstance(data, list) else data.get("data", [])
         return len(posts)
 
     def check_post_results():
-        resp = requests.get(f"{BASE}/post-results", headers=HEADERS, params={"limit": 5}, timeout=10)
+        resp = requests.get(
+            f"{BASE}/post-results", headers=HEADERS, params={"limit": 5}, timeout=10
+        )
         assert resp.status_code == 200, f"Status {resp.status_code}"
         return True
 
@@ -326,14 +348,16 @@ def test_api_connectivity(skip=False):
 # ============================================================
 def test_coordinator():
     print("\n[8] Engagement Coordinator (dry run)")
-    
+
     def check_coordinator_import():
         from engagement_coordinator import ACCOUNTS, fetch_posts, select_posts_for_boost
+
         assert len(ACCOUNTS["tiktok"]) == 7
         return True
 
     def check_post_selection():
         from engagement_coordinator import fetch_posts
+
         posts = fetch_posts(limit=3)
         assert isinstance(posts, list)
         return len(posts)
@@ -368,9 +392,11 @@ def main():
     # Summary
     total = results["passed"] + results["failed"]
     print("\n" + "=" * 60)
-    print(f"  RESULTS: {results['passed']}/{total} passed | "
-          f"{results['failed']} failed | {results['skipped']} skipped")
-    
+    print(
+        f"  RESULTS: {results['passed']}/{total} passed | "
+        f"{results['failed']} failed | {results['skipped']} skipped"
+    )
+
     if results["failed"] == 0:
         print(f"  {PASS} ALL TESTS PASSED — System ready for production!")
     else:

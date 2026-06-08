@@ -22,12 +22,14 @@ def get_running_instances(session, filters=None):
     for page in paginator.paginate(**params):
         for res in page["Reservations"]:
             for inst in res["Instances"]:
-                instances.append({
-                    "instance_id": inst["InstanceId"],
-                    "type": inst["InstanceType"],
-                    "ip": inst.get("PrivateIpAddress", ""),
-                    "launch_time": str(inst["LaunchTime"]),
-                })
+                instances.append(
+                    {
+                        "instance_id": inst["InstanceId"],
+                        "type": inst["InstanceType"],
+                        "ip": inst.get("PrivateIpAddress", ""),
+                        "launch_time": str(inst["LaunchTime"]),
+                    }
+                )
     return instances
 
 
@@ -66,12 +68,14 @@ def scan_for_cryptominers(session, instance_ids):
     findings = []
     for iid, result in results.items():
         if result.get("stdout", "").strip():
-            findings.append({
-                "instance_id": iid,
-                "type": "cryptominer",
-                "severity": "CRITICAL",
-                "output": result["stdout"].strip(),
-            })
+            findings.append(
+                {
+                    "instance_id": iid,
+                    "type": "cryptominer",
+                    "severity": "CRITICAL",
+                    "output": result["stdout"].strip(),
+                }
+            )
     return findings
 
 
@@ -85,12 +89,14 @@ def scan_for_reverse_shells(session, instance_ids):
     findings = []
     for iid, result in results.items():
         if result.get("stdout", "").strip():
-            findings.append({
-                "instance_id": iid,
-                "type": "suspicious_connections",
-                "severity": "HIGH",
-                "output": result["stdout"].strip(),
-            })
+            findings.append(
+                {
+                    "instance_id": iid,
+                    "type": "suspicious_connections",
+                    "severity": "HIGH",
+                    "output": result["stdout"].strip(),
+                }
+            )
     return findings
 
 
@@ -105,12 +111,14 @@ def check_file_integrity(session, instance_ids):
     findings = []
     for iid, result in results.items():
         if result.get("stdout", "").strip():
-            findings.append({
-                "instance_id": iid,
-                "type": "file_integrity",
-                "severity": "MEDIUM",
-                "modified_files": result["stdout"].strip().splitlines(),
-            })
+            findings.append(
+                {
+                    "instance_id": iid,
+                    "type": "file_integrity",
+                    "severity": "MEDIUM",
+                    "modified_files": result["stdout"].strip().splitlines(),
+                }
+            )
     return findings
 
 
@@ -130,23 +138,36 @@ def check_cpu_anomaly(session, instance_ids):
         )
         for dp in resp.get("Datapoints", []):
             if dp["Average"] > 90:
-                anomalies.append({
-                    "instance_id": iid,
-                    "cpu_avg": round(dp["Average"], 1),
-                    "timestamp": str(dp["Timestamp"]),
-                    "severity": "HIGH",
-                })
+                anomalies.append(
+                    {
+                        "instance_id": iid,
+                        "cpu_avg": round(dp["Average"], 1),
+                        "timestamp": str(dp["Timestamp"]),
+                        "severity": "HIGH",
+                    }
+                )
     return anomalies
 
 
 def main():
     parser = argparse.ArgumentParser(description="Cloud Workload Protection Agent")
     parser.add_argument("--profile", default=os.getenv("AWS_PROFILE"))
-    parser.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION", "us-east-1"))
+    parser.add_argument(
+        "--region", default=os.getenv("AWS_DEFAULT_REGION", "us-east-1")
+    )
     parser.add_argument("--output", default="cwp_report.json")
-    parser.add_argument("--action", choices=[
-        "list", "cryptominer", "reverse_shell", "integrity", "cpu", "full_scan"
-    ], default="full_scan")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "list",
+            "cryptominer",
+            "reverse_shell",
+            "integrity",
+            "cpu",
+            "full_scan",
+        ],
+        default="full_scan",
+    )
     args = parser.parse_args()
 
     session = boto3.Session(profile_name=args.profile, region_name=args.region)

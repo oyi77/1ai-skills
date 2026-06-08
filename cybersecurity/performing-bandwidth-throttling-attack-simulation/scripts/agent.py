@@ -22,18 +22,37 @@ def run_cmd(cmd: list[str]) -> dict:
     """Execute shell command and return output."""
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        return {"success": result.returncode == 0, "stdout": result.stdout, "stderr": result.stderr}
+        return {
+            "success": result.returncode == 0,
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+        }
     except Exception as e:
         return {"success": False, "stdout": "", "stderr": str(e)}
 
 
-def setup_tc_throttle(interface: str, rate: str = "100kbit", latency: str = "200ms") -> dict:
+def setup_tc_throttle(
+    interface: str, rate: str = "100kbit", latency: str = "200ms"
+) -> dict:
     """Configure tc (traffic control) to throttle bandwidth on an interface."""
     clear = run_cmd(["tc", "qdisc", "del", "dev", interface, "root"])
-    result = run_cmd([
-        "tc", "qdisc", "add", "dev", interface, "root", "netem",
-        "rate", rate, "delay", latency, "loss", "5%",
-    ])
+    result = run_cmd(
+        [
+            "tc",
+            "qdisc",
+            "add",
+            "dev",
+            interface,
+            "root",
+            "netem",
+            "rate",
+            rate,
+            "delay",
+            latency,
+            "loss",
+            "5%",
+        ]
+    )
     return {
         "interface": interface,
         "rate_limit": rate,
@@ -47,11 +66,15 @@ def setup_tc_throttle(interface: str, rate: str = "100kbit", latency: str = "200
 def remove_tc_throttle(interface: str) -> dict:
     """Remove tc throttling rules from interface."""
     result = run_cmd(["tc", "qdisc", "del", "dev", interface, "root"])
-    return {"removed": result["success"], "error": result["stderr"] if not result["success"] else ""}
+    return {
+        "removed": result["success"],
+        "error": result["stderr"] if not result["success"] else "",
+    }
 
 
-def generate_bandwidth_flood(target_ip: str, target_port: int, packet_count: int = 100,
-                              packet_size: int = 1400) -> dict:
+def generate_bandwidth_flood(
+    target_ip: str, target_port: int, packet_count: int = 100, packet_size: int = 1400
+) -> dict:
     """Generate controlled bandwidth consumption traffic using Scapy."""
     payload = Raw(load=b"X" * packet_size)
     packets_sent = 0
@@ -72,7 +95,9 @@ def generate_bandwidth_flood(target_ip: str, target_port: int, packet_count: int
         "total_bytes": total_bytes,
         "total_mb": round(total_bytes / (1024 * 1024), 2),
         "duration_seconds": round(duration, 2),
-        "rate_mbps": round((total_bytes * 8) / (duration * 1_000_000), 2) if duration > 0 else 0,
+        "rate_mbps": (
+            round((total_bytes * 8) / (duration * 1_000_000), 2) if duration > 0 else 0
+        ),
     }
 
 
@@ -91,7 +116,9 @@ def measure_baseline(target_ip: str, port: int = 5201) -> dict:
     return {"error": result["stderr"], "bandwidth_mbps": 0}
 
 
-def generate_report(baseline: dict, throttle: dict, flood: dict, post_baseline: dict) -> str:
+def generate_report(
+    baseline: dict, throttle: dict, flood: dict, post_baseline: dict
+) -> str:
     """Generate bandwidth throttling simulation report."""
     lines = [
         "BANDWIDTH THROTTLING ATTACK SIMULATION REPORT — AUTHORIZED TESTING ONLY",
@@ -120,8 +147,14 @@ def generate_report(baseline: dict, throttle: dict, flood: dict, post_baseline: 
 
     if baseline.get("bandwidth_mbps") and post_baseline.get("bandwidth_mbps"):
         degradation = baseline["bandwidth_mbps"] - post_baseline["bandwidth_mbps"]
-        pct = round(degradation / baseline["bandwidth_mbps"] * 100, 1) if baseline["bandwidth_mbps"] > 0 else 0
-        lines.append(f"  Bandwidth Degradation: {degradation:.2f} Mbps ({pct}% reduction)")
+        pct = (
+            round(degradation / baseline["bandwidth_mbps"] * 100, 1)
+            if baseline["bandwidth_mbps"] > 0
+            else 0
+        )
+        lines.append(
+            f"  Bandwidth Degradation: {degradation:.2f} Mbps ({pct}% reduction)"
+        )
 
     return "\n".join(lines)
 

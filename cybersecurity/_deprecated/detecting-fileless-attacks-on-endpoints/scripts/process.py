@@ -23,12 +23,16 @@ def scan_powershell_logs(csv_path: str) -> list:
             script = row.get("ScriptBlockText", row.get("Message", ""))
             for pattern_name, pattern in FILELESS_PATTERNS.items():
                 if re.search(pattern, script):
-                    detections.append({
-                        "timestamp": row.get("TimeCreated", row.get("Date and Time", "")),
-                        "host": row.get("Computer", row.get("MachineName", "")),
-                        "technique": pattern_name,
-                        "script_excerpt": script[:300],
-                    })
+                    detections.append(
+                        {
+                            "timestamp": row.get(
+                                "TimeCreated", row.get("Date and Time", "")
+                            ),
+                            "host": row.get("Computer", row.get("MachineName", "")),
+                            "technique": pattern_name,
+                            "script_excerpt": script[:300],
+                        }
+                    )
                     break
     return detections
 
@@ -50,6 +54,8 @@ if __name__ == "__main__":
         print("Usage: python process.py <powershell_logs.csv>")
         sys.exit(1)
     detections = scan_powershell_logs(sys.argv[1])
-    out = os.path.join(os.path.dirname(sys.argv[1]) or ".", "fileless_detection_report.json")
+    out = os.path.join(
+        os.path.dirname(sys.argv[1]) or ".", "fileless_detection_report.json"
+    )
     generate_report(detections, out)
     print(f"Detections: {len(detections)}")

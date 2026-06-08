@@ -130,7 +130,9 @@ def main():
     parser.add_argument("--package", required=True, help="App package/bundle ID")
     parser.add_argument("--device-id", help="Device serial/UDID")
     parser.add_argument("--output", default="pinning_bypass.json", help="Output report")
-    parser.add_argument("--execute", action="store_true", help="Execute bypass immediately")
+    parser.add_argument(
+        "--execute", action="store_true", help="Execute bypass immediately"
+    )
     args = parser.parse_args()
 
     result = run_bypass(args.platform, args.package, args.device_id)

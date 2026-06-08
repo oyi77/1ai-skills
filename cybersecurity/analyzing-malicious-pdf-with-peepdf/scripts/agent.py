@@ -10,16 +10,37 @@ import os
 import re
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 SUSPICIOUS_KEYWORDS = [
-    "/JS", "/JavaScript", "/OpenAction", "/AA", "/Launch", "/EmbeddedFile",
-    "/RichMedia", "/XFA", "/AcroForm", "/JBIG2Decode", "/URI", "/SubmitForm",
-    "/ImportData", "/Names", "/ObjStm",
+    "/JS",
+    "/JavaScript",
+    "/OpenAction",
+    "/AA",
+    "/Launch",
+    "/EmbeddedFile",
+    "/RichMedia",
+    "/XFA",
+    "/AcroForm",
+    "/JBIG2Decode",
+    "/URI",
+    "/SubmitForm",
+    "/ImportData",
+    "/Names",
+    "/ObjStm",
 ]
 
-HIGH_RISK_KEYWORDS = ["/JS", "/JavaScript", "/OpenAction", "/Launch", "/EmbeddedFile", "/XFA"]
+HIGH_RISK_KEYWORDS = [
+    "/JS",
+    "/JavaScript",
+    "/OpenAction",
+    "/Launch",
+    "/EmbeddedFile",
+    "/XFA",
+]
 
 
 def compute_hashes(filepath):
@@ -109,11 +130,13 @@ def extract_javascript(filepath, peepdf_analysis):
         cmd = ["pdf-parser.py", "-o", str(obj_id), "-f", "-w", filepath]
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
         if result.stdout:
-            js_content.append({
-                "object_id": obj_id,
-                "content_preview": result.stdout[:1000],
-                "length": len(result.stdout),
-            })
+            js_content.append(
+                {
+                    "object_id": obj_id,
+                    "content_preview": result.stdout[:1000],
+                    "length": len(result.stdout),
+                }
+            )
     return js_content
 
 
@@ -148,11 +171,17 @@ def calculate_risk_score(pdfid_results, peepdf_analysis, shellcode_patterns):
     score += len(peepdf_analysis.get("vulns", [])) * 30
     score += len(peepdf_analysis.get("js_objects", [])) * 15
     score += sum(shellcode_patterns.values()) * 10
-    risk_level = "critical" if score >= 80 else "high" if score >= 50 else "medium" if score >= 20 else "low"
+    risk_level = (
+        "critical"
+        if score >= 80
+        else "high" if score >= 50 else "medium" if score >= 20 else "low"
+    )
     return {"score": min(score, 100), "risk_level": risk_level}
 
 
-def generate_report(filepath, hashes, pdfid_results, peepdf_analysis, js_content, shellcode, risk):
+def generate_report(
+    filepath, hashes, pdfid_results, peepdf_analysis, js_content, shellcode, risk
+):
     """Generate comprehensive PDF malware analysis report."""
     report = {
         "timestamp": datetime.utcnow().isoformat(),
@@ -182,7 +211,9 @@ def generate_report(filepath, hashes, pdfid_results, peepdf_analysis, js_content
 def main():
     parser = argparse.ArgumentParser(description="Malicious PDF Analysis Agent")
     parser.add_argument("file", help="Path to PDF file to analyze")
-    parser.add_argument("--extract-js", action="store_true", help="Extract JavaScript objects")
+    parser.add_argument(
+        "--extract-js", action="store_true", help="Extract JavaScript objects"
+    )
     parser.add_argument("--output", default="pdf_analysis_report.json")
     args = parser.parse_args()
 
@@ -205,13 +236,20 @@ def main():
         shellcode = detect_shellcode_patterns(all_js)
 
     risk = calculate_risk_score(pdfid_results, peepdf_analysis, shellcode)
-    report = generate_report(args.file, hashes, pdfid_results, peepdf_analysis, js_content, shellcode, risk)
+    report = generate_report(
+        args.file, hashes, pdfid_results, peepdf_analysis, js_content, shellcode, risk
+    )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("Risk: %s (score %d), %d suspicious keywords, %d JS objects, %d CVEs",
-                risk["risk_level"], risk["score"], report["suspicious_keyword_count"],
-                len(peepdf_analysis.get("js_objects", [])), len(peepdf_analysis.get("vulns", [])))
+    logger.info(
+        "Risk: %s (score %d), %d suspicious keywords, %d JS objects, %d CVEs",
+        risk["risk_level"],
+        risk["score"],
+        report["suspicious_keyword_count"],
+        len(peepdf_analysis.get("js_objects", [])),
+        len(peepdf_analysis.get("vulns", [])),
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

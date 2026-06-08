@@ -8,7 +8,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -31,8 +33,15 @@ def list_sketches(session, host):
     resp = session.get(f"{host}/api/v1/sketches/", timeout=15)
     resp.raise_for_status()
     sketches = resp.json().get("objects", [])
-    return [{"id": s["id"], "name": s["name"], "status": s.get("status", [{}])[0].get("status", "unknown"),
-             "timelines": len(s.get("timelines", []))} for s in sketches]
+    return [
+        {
+            "id": s["id"],
+            "name": s["name"],
+            "status": s.get("status", [{}])[0].get("status", "unknown"),
+            "timelines": len(s.get("timelines", [])),
+        }
+        for s in sketches
+    ]
 
 
 def create_sketch(session, host, name, description=""):
@@ -62,19 +71,37 @@ def upload_timeline(session, host, sketch_id, file_path, timeline_name):
     return resp.json()
 
 
-def search_events(session, host, sketch_id, query, time_start=None, time_end=None, max_entries=500):
+def search_events(
+    session, host, sketch_id, query, time_start=None, time_end=None, max_entries=500
+):
     """Search events in a sketch using OpenSearch query string."""
-    body = {"query": query, "limit": max_entries, "fields": ["datetime", "timestamp_desc", "message", "source_short"]}
+    body = {
+        "query": query,
+        "limit": max_entries,
+        "fields": ["datetime", "timestamp_desc", "message", "source_short"],
+    }
     chips = []
     if time_start and time_end:
-        chips.append({"type": "datetime_range", "value": f"{time_start},{time_end}", "active": True})
+        chips.append(
+            {
+                "type": "datetime_range",
+                "value": f"{time_start},{time_end}",
+                "active": True,
+            }
+        )
         body["filter"] = {"chips": chips}
-    resp = session.post(f"{host}/api/v1/sketches/{sketch_id}/explore/", json=body, timeout=30)
+    resp = session.post(
+        f"{host}/api/v1/sketches/{sketch_id}/explore/", json=body, timeout=30
+    )
     resp.raise_for_status()
     data = resp.json()
     events = data.get("objects", [])
     meta = data.get("meta", {})
-    logger.info("Search returned %d events (total: %s)", len(events), meta.get("total_count", "?"))
+    logger.info(
+        "Search returned %d events (total: %s)",
+        len(events),
+        meta.get("total_count", "?"),
+    )
     return events, meta
 
 
@@ -97,12 +124,26 @@ def build_timeline_summary(events):
     sorted_events = sorted(events, key=lambda e: e.get("datetime", ""))
     milestones = []
     if sorted_events:
-        milestones.append({"type": "first_event", "datetime": sorted_events[0].get("datetime"),
-                           "message": sorted_events[0].get("message", "")[:200]})
-        milestones.append({"type": "last_event", "datetime": sorted_events[-1].get("datetime"),
-                           "message": sorted_events[-1].get("message", "")[:200]})
-    return {"total_events": len(events), "time_range": {"start": earliest, "end": latest},
-            "sources": sources, "milestones": milestones}
+        milestones.append(
+            {
+                "type": "first_event",
+                "datetime": sorted_events[0].get("datetime"),
+                "message": sorted_events[0].get("message", "")[:200],
+            }
+        )
+        milestones.append(
+            {
+                "type": "last_event",
+                "datetime": sorted_events[-1].get("datetime"),
+                "message": sorted_events[-1].get("message", "")[:200],
+            }
+        )
+    return {
+        "total_events": len(events),
+        "time_range": {"start": earliest, "end": latest},
+        "sources": sources,
+        "milestones": milestones,
+    }
 
 
 def tag_events(session, host, sketch_id, event_ids, tags):
@@ -111,7 +152,11 @@ def tag_events(session, host, sketch_id, event_ids, tags):
     for eid in event_ids:
         resp = session.post(
             f"{host}/api/v1/sketches/{sketch_id}/event/annotate/",
-            json={"annotation": ",".join(tags), "annotation_type": "tag", "events": {"event_id": eid}},
+            json={
+                "annotation": ",".join(tags),
+                "annotation_type": "tag",
+                "events": {"event_id": eid},
+            },
             timeout=15,
         )
         results.append({"event_id": eid, "status": resp.status_code})
@@ -130,12 +175,16 @@ def generate_report(sketches, search_results, summary):
         "milestones": summary.get("milestones", []),
     }
     status = "EVENTS_FOUND" if summary.get("total_events", 0) > 0 else "NO_EVENTS"
-    print(f"TIMELINE REPORT: {status}, {summary.get('total_events', 0)} events across {len(summary.get('sources', {}))} sources")
+    print(
+        f"TIMELINE REPORT: {status}, {summary.get('total_events', 0)} events across {len(summary.get('sources', {}))} sources"
+    )
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Incident Timeline Builder with Timesketch")
+    parser = argparse.ArgumentParser(
+        description="Incident Timeline Builder with Timesketch"
+    )
     parser.add_argument("--host", required=True, help="Timesketch server URL")
     parser.add_argument("--username", required=True)
     parser.add_argument("--password", required=True)
@@ -152,7 +201,14 @@ def main():
     search_results = []
     summary = {"total_events": 0, "sources": {}, "milestones": []}
     if args.sketch_id:
-        events, meta = search_events(session, args.host, args.sketch_id, args.query, args.time_start, args.time_end)
+        events, meta = search_events(
+            session,
+            args.host,
+            args.sketch_id,
+            args.query,
+            args.time_start,
+            args.time_end,
+        )
         search_results = events
         summary = build_timeline_summary(events)
 

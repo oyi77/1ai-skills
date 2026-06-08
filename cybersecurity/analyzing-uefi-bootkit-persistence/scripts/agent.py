@@ -107,21 +107,26 @@ KNOWN_FV_GUIDS = {
 # ESP Partition Analysis
 # ---------------------------------------------------------------------------
 
+
 def scan_esp_partition(esp_mount_path):
     """Scan a mounted EFI System Partition for bootkit indicators."""
     findings = []
     if not os.path.isdir(esp_mount_path):
-        return [{"severity": "ERROR", "message": f"ESP path not found: {esp_mount_path}"}]
+        return [
+            {"severity": "ERROR", "message": f"ESP path not found: {esp_mount_path}"}
+        ]
 
     # Check for BlackLotus system32 directory
     system32_path = os.path.join(esp_mount_path, "system32")
     if os.path.exists(system32_path):
-        findings.append({
-            "severity": "CRITICAL",
-            "indicator": "BlackLotus",
-            "message": f"BlackLotus artifact: system32/ directory found on ESP at {system32_path}",
-            "path": system32_path,
-        })
+        findings.append(
+            {
+                "severity": "CRITICAL",
+                "indicator": "BlackLotus",
+                "message": f"BlackLotus artifact: system32/ directory found on ESP at {system32_path}",
+                "path": system32_path,
+            }
+        )
 
     # Enumerate all EFI binaries
     efi_files = []
@@ -132,23 +137,27 @@ def scan_esp_partition(esp_mount_path):
                 rel_path = os.path.relpath(full_path, esp_mount_path)
                 file_hash = hash_file(full_path)
                 file_size = os.path.getsize(full_path)
-                efi_files.append({
-                    "path": rel_path,
-                    "full_path": full_path,
-                    "sha256": file_hash,
-                    "size": file_size,
-                })
+                efi_files.append(
+                    {
+                        "path": rel_path,
+                        "full_path": full_path,
+                        "sha256": file_hash,
+                        "size": file_size,
+                    }
+                )
 
     # Check for unauthorized grubx64.efi (BlackLotus indicator)
     for ef in efi_files:
         if "grubx64.efi" in ef["path"].lower():
             # grubx64.efi on a Windows-only system is suspicious
-            findings.append({
-                "severity": "HIGH",
-                "indicator": "BlackLotus/Bootkitty",
-                "message": f"Suspicious grubx64.efi found: {ef['path']} ({ef['size']} bytes)",
-                "sha256": ef["sha256"],
-            })
+            findings.append(
+                {
+                    "severity": "HIGH",
+                    "indicator": "BlackLotus/Bootkitty",
+                    "message": f"Suspicious grubx64.efi found: {ef['path']} ({ef['size']} bytes)",
+                    "sha256": ef["sha256"],
+                }
+            )
 
     # Check for files outside standard EFI directories
     standard_dirs = {"efi", "boot", "microsoft", "ubuntu", "debian", "fedora", "grub"}
@@ -156,12 +165,14 @@ def scan_esp_partition(esp_mount_path):
         parts = Path(ef["path"]).parts
         top_dirs = {p.lower() for p in parts[:-1]}
         if not top_dirs.intersection(standard_dirs):
-            findings.append({
-                "severity": "MEDIUM",
-                "indicator": "Unknown",
-                "message": f"EFI binary in non-standard location: {ef['path']}",
-                "sha256": ef["sha256"],
-            })
+            findings.append(
+                {
+                    "severity": "MEDIUM",
+                    "indicator": "Unknown",
+                    "message": f"EFI binary in non-standard location: {ef['path']}",
+                    "sha256": ef["sha256"],
+                }
+            )
 
     return findings, efi_files
 
@@ -217,14 +228,18 @@ def scan_firmware_dump(firmware_path):
             # Parse FV header length (8 bytes at offset 0x20)
             fv_length = struct.unpack_from("<Q", data, fv_start + 0x20)[0]
             # Extract GUID (16 bytes at offset 0x10)
-            guid_bytes = data[fv_start + 0x10:fv_start + 0x20]
+            guid_bytes = data[fv_start + 0x10 : fv_start + 0x20]
             guid_str = format_guid(guid_bytes)
-            results["firmware_volumes"].append({
-                "offset": f"0x{fv_start:08X}",
-                "length": fv_length,
-                "guid": guid_str,
-                "description": KNOWN_FV_GUIDS.get(guid_str, "Unknown firmware volume"),
-            })
+            results["firmware_volumes"].append(
+                {
+                    "offset": f"0x{fv_start:08X}",
+                    "length": fv_length,
+                    "guid": guid_str,
+                    "description": KNOWN_FV_GUIDS.get(
+                        guid_str, "Unknown firmware volume"
+                    ),
+                }
+            )
         offset = idx + 4
 
     # Find PE/COFF executables (EFI binaries)
@@ -237,12 +252,14 @@ def scan_firmware_dump(firmware_path):
         if idx + 0x3C < len(data):
             pe_offset = struct.unpack_from("<I", data, idx + 0x3C)[0]
             if idx + pe_offset + 4 < len(data):
-                pe_sig = data[idx + pe_offset:idx + pe_offset + 4]
+                pe_sig = data[idx + pe_offset : idx + pe_offset + 4]
                 if pe_sig == b"PE\x00\x00":
-                    results["pe_executables"].append({
-                        "offset": f"0x{idx:08X}",
-                        "pe_header_offset": f"0x{idx + pe_offset:08X}",
-                    })
+                    results["pe_executables"].append(
+                        {
+                            "offset": f"0x{idx:08X}",
+                            "pe_header_offset": f"0x{idx + pe_offset:08X}",
+                        }
+                    )
         offset = idx + 2
 
     # Scan for suspicious strings in firmware
@@ -261,12 +278,14 @@ def scan_firmware_dump(firmware_path):
     for pattern, description in suspicious_patterns:
         matches = [m.start() for m in re.finditer(pattern, data, re.IGNORECASE)]
         if matches:
-            results["suspicious_strings"].append({
-                "pattern": pattern.decode("ascii", errors="replace"),
-                "description": description,
-                "occurrences": len(matches),
-                "offsets": [f"0x{o:08X}" for o in matches[:5]],
-            })
+            results["suspicious_strings"].append(
+                {
+                    "pattern": pattern.decode("ascii", errors="replace"),
+                    "description": description,
+                    "occurrences": len(matches),
+                    "offsets": [f"0x{o:08X}" for o in matches[:5]],
+                }
+            )
 
     return results
 
@@ -277,15 +296,18 @@ def format_guid(guid_bytes):
         return guid_bytes.hex().upper()
     part1 = struct.unpack_from("<IHH", guid_bytes, 0)
     part2 = guid_bytes[8:16]
-    return (f"{part1[0]:08X}-{part1[1]:04X}-{part1[2]:04X}-"
-            f"{part2[0]:02X}{part2[1]:02X}-"
-            f"{part2[2]:02X}{part2[3]:02X}{part2[4]:02X}"
-            f"{part2[5]:02X}{part2[6]:02X}{part2[7]:02X}")
+    return (
+        f"{part1[0]:08X}-{part1[1]:04X}-{part1[2]:04X}-"
+        f"{part2[0]:02X}{part2[1]:02X}-"
+        f"{part2[2]:02X}{part2[3]:02X}{part2[4]:02X}"
+        f"{part2[5]:02X}{part2[6]:02X}{part2[7]:02X}"
+    )
 
 
 # ---------------------------------------------------------------------------
 # Secure Boot Verification
 # ---------------------------------------------------------------------------
+
 
 def check_secure_boot_status():
     """Check Secure Boot status on the local system (Linux)."""
@@ -295,8 +317,7 @@ def check_secure_boot_status():
     if os.path.isdir(efivar_path):
         results["efi_available"] = True
         secureboot_var = os.path.join(
-            efivar_path,
-            f"SecureBoot-{SECUREBOOT_GUID.lower()}"
+            efivar_path, f"SecureBoot-{SECUREBOOT_GUID.lower()}"
         )
         if os.path.exists(secureboot_var):
             with open(secureboot_var, "rb") as f:
@@ -307,8 +328,7 @@ def check_secure_boot_status():
                 results["secure_boot_enabled"] = value == 1
                 results["secure_boot_value"] = value
         setupmode_var = os.path.join(
-            efivar_path,
-            f"SetupMode-{SECUREBOOT_GUID.lower()}"
+            efivar_path, f"SetupMode-{SECUREBOOT_GUID.lower()}"
         )
         if os.path.exists(setupmode_var):
             with open(setupmode_var, "rb") as f:
@@ -324,6 +344,7 @@ def check_secure_boot_status():
 # ---------------------------------------------------------------------------
 # Chipsec Subprocess Interface
 # ---------------------------------------------------------------------------
+
 
 def run_chipsec_module(module_name, args=None):
     """Run a chipsec module via subprocess and return output."""
@@ -351,7 +372,11 @@ def run_chipsec_spi_dump(output_path):
     cmd = ["python", "chipsec_util.py", "spi", "dump", output_path]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
-        return {"stdout": result.stdout, "stderr": result.stderr, "rc": result.returncode}
+        return {
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "rc": result.returncode,
+        }
     except FileNotFoundError:
         return {"error": "chipsec not found in PATH", "rc": -1}
     except subprocess.TimeoutExpired:
@@ -382,6 +407,7 @@ def run_firmware_security_audit():
 # Entropy Analysis for Firmware Regions
 # ---------------------------------------------------------------------------
 
+
 def firmware_entropy_map(firmware_path, block_size=4096):
     """Generate block-level entropy map to detect encrypted/compressed firmware regions."""
     results = []
@@ -397,17 +423,24 @@ def firmware_entropy_map(firmware_path, block_size=4096):
                 entropy = 0.0
             else:
                 entropy = -sum(
-                    (c / length) * math.log2(c / length)
-                    for c in counter.values()
+                    (c / length) * math.log2(c / length) for c in counter.values()
                 )
-            classification = "empty" if entropy < 1.0 else \
-                            "code/data" if entropy < 5.0 else \
-                            "compressed" if entropy < 7.5 else "encrypted/random"
-            results.append({
-                "offset": f"0x{offset:08X}",
-                "entropy": round(entropy, 4),
-                "classification": classification,
-            })
+            classification = (
+                "empty"
+                if entropy < 1.0
+                else (
+                    "code/data"
+                    if entropy < 5.0
+                    else "compressed" if entropy < 7.5 else "encrypted/random"
+                )
+            )
+            results.append(
+                {
+                    "offset": f"0x{offset:08X}",
+                    "entropy": round(entropy, 4),
+                    "classification": classification,
+                }
+            )
             offset += len(block)
     return results
 
@@ -415,6 +448,7 @@ def firmware_entropy_map(firmware_path, block_size=4096):
 # ---------------------------------------------------------------------------
 # Main Entry Point
 # ---------------------------------------------------------------------------
+
 
 def analyze_uefi_bootkit(target_path, target_type="firmware"):
     """Perform UEFI bootkit persistence analysis on a firmware dump or ESP mount point."""
@@ -432,7 +466,9 @@ def analyze_uefi_bootkit(target_path, target_type="firmware"):
         fw_results = scan_firmware_dump(target_path)
         print(f"  Firmware volumes found: {len(fw_results['firmware_volumes'])}")
         for fv in fw_results["firmware_volumes"]:
-            print(f"    {fv['offset']}  GUID={fv['guid']}  Size={fv['length']}  [{fv['description']}]")
+            print(
+                f"    {fv['offset']}  GUID={fv['guid']}  Size={fv['length']}  [{fv['description']}]"
+            )
         print(f"  PE/COFF executables found: {len(fw_results['pe_executables'])}")
         for pe in fw_results["pe_executables"][:10]:
             print(f"    {pe['offset']}  (PE header at {pe['pe_header_offset']})")
@@ -441,8 +477,10 @@ def analyze_uefi_bootkit(target_path, target_type="firmware"):
         if fw_results["suspicious_strings"]:
             print("\n--- Suspicious Strings in Firmware ---")
             for ss in fw_results["suspicious_strings"]:
-                print(f"  [!] {ss['description']}: \"{ss['pattern']}\" "
-                      f"({ss['occurrences']} occurrences)")
+                print(
+                    f"  [!] {ss['description']}: \"{ss['pattern']}\" "
+                    f"({ss['occurrences']} occurrences)"
+                )
                 for off in ss["offsets"]:
                     print(f"      at {off}")
 
@@ -461,7 +499,9 @@ def analyze_uefi_bootkit(target_path, target_type="firmware"):
         findings, efi_files = scan_esp_partition(target_path)
         print(f"  Total EFI binaries: {len(efi_files)}")
         for ef in efi_files:
-            print(f"    {ef['path']}  ({ef['size']} bytes)  SHA-256={ef['sha256'][:16]}...")
+            print(
+                f"    {ef['path']}  ({ef['size']} bytes)  SHA-256={ef['sha256'][:16]}..."
+            )
 
         if findings:
             print("\n--- Bootkit Indicators ---")
@@ -487,8 +527,8 @@ def analyze_uefi_bootkit(target_path, target_type="firmware"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="UEFI bootkit persistence analysis agent for detecting firmware "
-                    "implants, ESP modifications, Secure Boot bypasses, and UEFI "
-                    "variable manipulation.",
+        "implants, ESP modifications, Secure Boot bypasses, and UEFI "
+        "variable manipulation.",
         epilog="Authorized use only. Requires appropriate system access for firmware analysis.",
     )
     parser.add_argument(
@@ -496,29 +536,35 @@ if __name__ == "__main__":
         help="Path to a firmware dump (.rom, .bin) or a mounted ESP directory",
     )
     parser.add_argument(
-        "--type", "-t",
+        "--type",
+        "-t",
         choices=["firmware", "esp", "auto"],
         default="auto",
         help="Target type: 'firmware' for SPI flash dumps, 'esp' for mounted ESP "
-             "partition, 'auto' to detect (default: auto)",
+        "partition, 'auto' to detect (default: auto)",
     )
     parser.add_argument(
-        "--check-secureboot", "-s",
+        "--check-secureboot",
+        "-s",
         action="store_true",
         help="Check Secure Boot status on the local system (Linux efivarfs)",
     )
     parser.add_argument(
-        "--run-chipsec-audit", "-c",
+        "--run-chipsec-audit",
+        "-c",
         action="store_true",
         help="Run comprehensive chipsec firmware security audit modules",
     )
     parser.add_argument(
-        "--baseline", "-b",
-        type=str, default=None,
+        "--baseline",
+        "-b",
+        type=str,
+        default=None,
         help="Path to known-good firmware baseline for comparison",
     )
     parser.add_argument(
-        "--json-output", "-j",
+        "--json-output",
+        "-j",
         action="store_true",
         help="Output results in JSON format instead of text",
     )
@@ -559,5 +605,9 @@ if __name__ == "__main__":
         print("\n--- Chipsec Firmware Security Audit ---")
         audit_results = run_firmware_security_audit()
         for module, result in audit_results.items():
-            status = "PASSED" if result.get("passed") else "FAILED" if result.get("failed") else "UNKNOWN"
+            status = (
+                "PASSED"
+                if result.get("passed")
+                else "FAILED" if result.get("failed") else "UNKNOWN"
+            )
             print(f"  [{status}] {module}: {result.get('description', '')}")

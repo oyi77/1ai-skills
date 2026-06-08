@@ -12,9 +12,15 @@ from typing import Optional
 from sentiment_analyzer import analyze_sentiment, SentimentResult
 from faq_responder import find_faq_response
 from comment_templates import (
-    get_positive_reply, get_question_reply, get_interest_reply,
-    get_negative_reply, get_price_reply, get_dm_public_reply,
-    get_generic_reply, find_product_by_keywords, PRODUCTS,
+    get_positive_reply,
+    get_question_reply,
+    get_interest_reply,
+    get_negative_reply,
+    get_price_reply,
+    get_dm_public_reply,
+    get_generic_reply,
+    find_product_by_keywords,
+    PRODUCTS,
 )
 
 # ─── CONFIG ────────────────────────────────────────────────────────────────────
@@ -30,8 +36,11 @@ REPLY_DELAY_SECONDS = 2.0
 
 # ─── REPLY DECISION ENGINE ─────────────────────────────────────────────────────
 
+
 class ReplyDecision:
-    def __init__(self, comment: dict, reply_text: str, should_dm: bool, dm_product: dict = None):
+    def __init__(
+        self, comment: dict, reply_text: str, should_dm: bool, dm_product: dict = None
+    ):
         self.comment = comment
         self.reply_text = reply_text
         self.should_dm = should_dm
@@ -139,6 +148,7 @@ def decide_reply(comment: dict) -> ReplyDecision:
 
 # ─── REPLY TRACKING ────────────────────────────────────────────────────────────
 
+
 def load_replied_ids() -> set:
     if not os.path.exists(REPLIED_IDS_FILE):
         return set()
@@ -165,6 +175,7 @@ def already_replied(comment_id: str, replied_ids: set) -> bool:
 
 # ─── PLATFORM REPLY DISPATCHER ─────────────────────────────────────────────────
 
+
 def reply_to_comment_tiktok(comment: dict, reply_text: str) -> bool:
     """
     Reply to TikTok comment.
@@ -184,7 +195,9 @@ def reply_to_comment_instagram(comment: dict, reply_text: str) -> bool:
     Reply to Instagram comment via Instagram Graph API (if token available).
     Returns True on success.
     """
-    print(f"[Instagram] Would reply to @{comment.get('username')}: {reply_text[:60]}...")
+    print(
+        f"[Instagram] Would reply to @{comment.get('username')}: {reply_text[:60]}..."
+    )
     log_manual_action(comment, reply_text, "instagram")
     return False  # Requires IG access token
 
@@ -205,6 +218,7 @@ MANUAL_QUEUE_FILE = os.path.expanduser(
     "~/.openclaw/workspace/skills/1ai-skills/content/comment-reply-manager/logs/manual_queue.jsonl"
 )
 
+
 def log_manual_action(comment: dict, reply_text: str, platform: str):
     """Log action to manual queue for human to execute."""
     os.makedirs(os.path.dirname(MANUAL_QUEUE_FILE), exist_ok=True)
@@ -224,6 +238,7 @@ def log_manual_action(comment: dict, reply_text: str, platform: str):
 
 
 # ─── MAIN PROCESSOR ────────────────────────────────────────────────────────────
+
 
 def process_comments(comments: list, dry_run: bool = True) -> dict:
     """
@@ -285,13 +300,55 @@ def process_comments(comments: list, dry_run: bool = True) -> dict:
 if __name__ == "__main__":
     # Test with sample comments
     sample_comments = [
-        {"id": "1", "platform": "tiktok", "username": "user_a", "text": "Kak harganya berapa?", "post_caption": "AI Tools"},
-        {"id": "2", "platform": "tiktok", "username": "user_b", "text": "Mantap banget nih!", "post_caption": "AI Tools"},
-        {"id": "3", "platform": "instagram", "username": "user_c", "text": "Mau dong, cara belinya gimana?", "post_caption": "JobMagnet"},
-        {"id": "4", "platform": "tiktok", "username": "user_d", "text": "Scam! Penipuan!", "post_caption": "AI"},
-        {"id": "5", "platform": "tiktok", "username": "user_e", "text": "Ini bisa buat apa ya?", "post_caption": "AI Studio"},
-        {"id": "6", "platform": "tiktok", "username": "user_f", "text": "Follow back dong!", "post_caption": ""},
-        {"id": "7", "platform": "tiktok", "username": "user_g", "text": "Pengen coba TikTok affiliate", "post_caption": ""},
+        {
+            "id": "1",
+            "platform": "tiktok",
+            "username": "user_a",
+            "text": "Kak harganya berapa?",
+            "post_caption": "AI Tools",
+        },
+        {
+            "id": "2",
+            "platform": "tiktok",
+            "username": "user_b",
+            "text": "Mantap banget nih!",
+            "post_caption": "AI Tools",
+        },
+        {
+            "id": "3",
+            "platform": "instagram",
+            "username": "user_c",
+            "text": "Mau dong, cara belinya gimana?",
+            "post_caption": "JobMagnet",
+        },
+        {
+            "id": "4",
+            "platform": "tiktok",
+            "username": "user_d",
+            "text": "Scam! Penipuan!",
+            "post_caption": "AI",
+        },
+        {
+            "id": "5",
+            "platform": "tiktok",
+            "username": "user_e",
+            "text": "Ini bisa buat apa ya?",
+            "post_caption": "AI Studio",
+        },
+        {
+            "id": "6",
+            "platform": "tiktok",
+            "username": "user_f",
+            "text": "Follow back dong!",
+            "post_caption": "",
+        },
+        {
+            "id": "7",
+            "platform": "tiktok",
+            "username": "user_g",
+            "text": "Pengen coba TikTok affiliate",
+            "post_caption": "",
+        },
     ]
 
     print("=== Auto Replier Test (DRY RUN) ===\n")

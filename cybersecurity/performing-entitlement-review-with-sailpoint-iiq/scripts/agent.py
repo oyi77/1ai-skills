@@ -18,10 +18,12 @@ class SailPointIIQAgent:
         self.base_url = base_url.rstrip("/")
         self.session = requests.Session()
         self.session.auth = (username, password)
-        self.session.headers.update({
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        })
+        self.session.headers.update(
+            {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+        )
 
     def get_certifications(self, phase="Active"):
         """Retrieve certification campaigns filtered by phase."""
@@ -58,7 +60,9 @@ class SailPointIIQAgent:
 
     def check_sod_violations(self, identity_id):
         """Check for separation of duties violations on an identity."""
-        url = f"{self.base_url}/identityiq/rest/identities/{identity_id}/policyViolations"
+        url = (
+            f"{self.base_url}/identityiq/rest/identities/{identity_id}/policyViolations"
+        )
         resp = self.session.get(url, timeout=30)
         resp.raise_for_status()
         return resp.json()
@@ -72,7 +76,9 @@ class SailPointIIQAgent:
 
     def make_certification_decision(self, cert_id, item_id, decision, comments=""):
         """Submit a certification decision (approve/revoke) for an item."""
-        url = f"{self.base_url}/identityiq/rest/certifications/{cert_id}/items/{item_id}"
+        url = (
+            f"{self.base_url}/identityiq/rest/certifications/{cert_id}/items/{item_id}"
+        )
         payload = {
             "decision": decision,
             "comments": comments,
@@ -109,7 +115,10 @@ class SailPointIIQAgent:
             }
             if campaign_info["total_items"] > 0:
                 campaign_info["completion_pct"] = round(
-                    campaign_info["completed_items"] / campaign_info["total_items"] * 100, 1
+                    campaign_info["completed_items"]
+                    / campaign_info["total_items"]
+                    * 100,
+                    1,
                 )
             report["active_campaigns"].append(campaign_info)
 
@@ -121,13 +130,15 @@ class SailPointIIQAgent:
             total_items += items
             total_revoked += revoked
             total_approved += approved
-            report["completed_campaigns"].append({
-                "name": cert.get("name", "Unknown"),
-                "items_reviewed": items,
-                "approved": approved,
-                "revoked": revoked,
-                "signed_off": cert.get("signedOff", False),
-            })
+            report["completed_campaigns"].append(
+                {
+                    "name": cert.get("name", "Unknown"),
+                    "items_reviewed": items,
+                    "approved": approved,
+                    "revoked": revoked,
+                    "signed_off": cert.get("signedOff", False),
+                }
+            )
 
         report["summary"] = {
             "total_campaigns": len(active_certs) + len(completed_certs),

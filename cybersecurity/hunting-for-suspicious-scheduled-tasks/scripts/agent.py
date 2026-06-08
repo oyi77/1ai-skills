@@ -14,19 +14,33 @@ except ImportError:
 
 
 SUSPICIOUS_ACTIONS = [
-    r"powershell", r"pwsh", r"cmd\.exe.*/c", r"wscript", r"cscript",
-    r"mshta", r"rundll32", r"regsvr32", r"certutil",
-    r"bitsadmin", r"msiexec.*http",
+    r"powershell",
+    r"pwsh",
+    r"cmd\.exe.*/c",
+    r"wscript",
+    r"cscript",
+    r"mshta",
+    r"rundll32",
+    r"regsvr32",
+    r"certutil",
+    r"bitsadmin",
+    r"msiexec.*http",
 ]
 
 SUSPICIOUS_PATHS = [
-    r"\\temp\\", r"\\tmp\\", r"\\appdata\\", r"\\downloads\\",
-    r"\\public\\", r"\\programdata\\", r"\\users\\.*\\desktop\\",
+    r"\\temp\\",
+    r"\\tmp\\",
+    r"\\appdata\\",
+    r"\\downloads\\",
+    r"\\public\\",
+    r"\\programdata\\",
+    r"\\users\\.*\\desktop\\",
     r"c:\\windows\\temp",
 ]
 
 LEGITIMATE_TASK_PREFIXES = [
-    "\\Microsoft\\Windows\\", "\\Microsoft\\Office\\",
+    "\\Microsoft\\Windows\\",
+    "\\Microsoft\\Office\\",
     "\\Microsoft\\EdgeUpdate\\",
 ]
 
@@ -34,19 +48,22 @@ LEGITIMATE_TASK_PREFIXES = [
 def parse_schtasks_csv(csv_path):
     """Parse output of schtasks /query /fo CSV /v."""
     import csv
+
     tasks = []
     with open(csv_path, newline="", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            tasks.append({
-                "hostname": row.get("HostName", ""),
-                "task_name": row.get("TaskName", ""),
-                "status": row.get("Status", ""),
-                "task_to_run": row.get("Task To Run", ""),
-                "run_as_user": row.get("Run As User", ""),
-                "schedule_type": row.get("Schedule Type", ""),
-                "author": row.get("Author", ""),
-            })
+            tasks.append(
+                {
+                    "hostname": row.get("HostName", ""),
+                    "task_name": row.get("TaskName", ""),
+                    "status": row.get("Status", ""),
+                    "task_to_run": row.get("Task To Run", ""),
+                    "run_as_user": row.get("Run As User", ""),
+                    "schedule_type": row.get("Schedule Type", ""),
+                    "author": row.get("Author", ""),
+                }
+            )
     return tasks
 
 
@@ -81,16 +98,22 @@ def analyze_tasks(tasks):
             risk_score += 35
             reasons.append("encoded_command")
         if risk_score > 0:
-            severity = "CRITICAL" if risk_score >= 60 else "HIGH" if risk_score >= 30 else "MEDIUM"
-            findings.append({
-                "task_name": name,
-                "action": action[:500],
-                "run_as_user": run_as,
-                "risk_score": risk_score,
-                "severity": severity,
-                "reasons": reasons,
-                "hostname": task.get("hostname", ""),
-            })
+            severity = (
+                "CRITICAL"
+                if risk_score >= 60
+                else "HIGH" if risk_score >= 30 else "MEDIUM"
+            )
+            findings.append(
+                {
+                    "task_name": name,
+                    "action": action[:500],
+                    "run_as_user": run_as,
+                    "risk_score": risk_score,
+                    "severity": severity,
+                    "reasons": reasons,
+                    "hostname": task.get("hostname", ""),
+                }
+            )
     return sorted(findings, key=lambda x: x["risk_score"], reverse=True)
 
 
@@ -114,15 +137,19 @@ def hunt_evtx_4698(evtx_path):
                 task_name = data.get("TaskName", "")
                 task_content = data.get("TaskContent", "")
                 is_suspicious = any(
-                    re.search(p, task_content, re.IGNORECASE) for p in SUSPICIOUS_ACTIONS)
+                    re.search(p, task_content, re.IGNORECASE)
+                    for p in SUSPICIOUS_ACTIONS
+                )
                 if is_suspicious:
-                    findings.append({
-                        "timestamp": record.timestamp().isoformat(),
-                        "task_name": task_name,
-                        "user": data.get("SubjectUserName", ""),
-                        "task_content_preview": task_content[:500],
-                        "severity": "HIGH",
-                    })
+                    findings.append(
+                        {
+                            "timestamp": record.timestamp().isoformat(),
+                            "task_name": task_name,
+                            "user": data.get("SubjectUserName", ""),
+                            "task_content_preview": task_content[:500],
+                            "severity": "HIGH",
+                        }
+                    )
             except ET.ParseError:
                 continue
     return findings
@@ -138,10 +165,23 @@ def generate_sigma_rule():
         "logsource": {"product": "windows", "service": "security"},
         "detection": {
             "selection": {"EventID": 4698},
-            "filter_legit": {"TaskName|startswith": ["\\Microsoft\\Windows\\", "\\Microsoft\\Office\\"]},
+            "filter_legit": {
+                "TaskName|startswith": [
+                    "\\Microsoft\\Windows\\",
+                    "\\Microsoft\\Office\\",
+                ]
+            },
             "suspicious_content": {
-                "TaskContent|contains": ["powershell", "cmd /c", "wscript", "mshta",
-                                          "\\Temp\\", "\\AppData\\", "http://", "https://"],
+                "TaskContent|contains": [
+                    "powershell",
+                    "cmd /c",
+                    "wscript",
+                    "mshta",
+                    "\\Temp\\",
+                    "\\AppData\\",
+                    "http://",
+                    "https://",
+                ],
             },
             "condition": "selection and not filter_legit and suspicious_content",
         },
@@ -154,8 +194,9 @@ def main():
     parser.add_argument("--csv", help="schtasks CSV export")
     parser.add_argument("--evtx", help="Security EVTX log file")
     parser.add_argument("--output", default="schtask_hunt_report.json")
-    parser.add_argument("--action", choices=["analyze", "hunt_evtx", "sigma", "full"],
-                        default="full")
+    parser.add_argument(
+        "--action", choices=["analyze", "hunt_evtx", "sigma", "full"], default="full"
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

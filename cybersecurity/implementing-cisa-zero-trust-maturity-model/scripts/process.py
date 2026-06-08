@@ -306,20 +306,37 @@ class ZTMMAssessment:
         path.parent.mkdir(parents=True, exist_ok=True)
         with open(path, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "Pillar", "Function", "Current Stage", "Target Stage",
-                "Gap", "Priority", "Effort", "Evidence"
-            ])
+            writer.writerow(
+                [
+                    "Pillar",
+                    "Function",
+                    "Current Stage",
+                    "Target Stage",
+                    "Gap",
+                    "Priority",
+                    "Effort",
+                    "Evidence",
+                ]
+            )
             for name, pa in self.pillar_assessments.items():
                 for func in pa.functions:
                     gap = func.target_stage.value - func.current_stage.value
-                    writer.writerow([
-                        name, func.function_name,
-                        func.current_stage.name, func.target_stage.name,
-                        gap, max(1, 4 - gap),
-                        "high" if func.current_stage == MaturityStage.TRADITIONAL else "medium",
-                        func.evidence,
-                    ])
+                    writer.writerow(
+                        [
+                            name,
+                            func.function_name,
+                            func.current_stage.name,
+                            func.target_stage.name,
+                            gap,
+                            max(1, 4 - gap),
+                            (
+                                "high"
+                                if func.current_stage == MaturityStage.TRADITIONAL
+                                else "medium"
+                            ),
+                            func.evidence,
+                        ]
+                    )
 
 
 def run_sample_assessment():
@@ -327,55 +344,131 @@ def run_sample_assessment():
     assessment = ZTMMAssessment("Example Federal Agency")
 
     # Identity Pillar Assessment
-    assessment.assess_function("Identity", "authentication", 1, 3,
-                               evidence="MFA deployed for 60% of users, not phishing-resistant",
-                               gaps=["No FIDO2/WebAuthn deployment", "Service accounts lack MFA"])
-    assessment.assess_function("Identity", "identity_stores", 1, 3,
-                               evidence="Centralized AD, partial cloud identity integration")
-    assessment.assess_function("Identity", "risk_assessment", 0, 3,
-                               evidence="No risk-based authentication in place")
-    assessment.assess_function("Identity", "access_management", 1, 3,
-                               evidence="Basic RBAC, no attribute-based access control")
-    assessment.assess_function("Identity", "identity_lifecycle", 1, 3,
-                               evidence="Manual provisioning, no HR integration")
+    assessment.assess_function(
+        "Identity",
+        "authentication",
+        1,
+        3,
+        evidence="MFA deployed for 60% of users, not phishing-resistant",
+        gaps=["No FIDO2/WebAuthn deployment", "Service accounts lack MFA"],
+    )
+    assessment.assess_function(
+        "Identity",
+        "identity_stores",
+        1,
+        3,
+        evidence="Centralized AD, partial cloud identity integration",
+    )
+    assessment.assess_function(
+        "Identity",
+        "risk_assessment",
+        0,
+        3,
+        evidence="No risk-based authentication in place",
+    )
+    assessment.assess_function(
+        "Identity",
+        "access_management",
+        1,
+        3,
+        evidence="Basic RBAC, no attribute-based access control",
+    )
+    assessment.assess_function(
+        "Identity",
+        "identity_lifecycle",
+        1,
+        3,
+        evidence="Manual provisioning, no HR integration",
+    )
 
     # Devices Pillar Assessment
-    assessment.assess_function("Devices", "policy_enforcement", 1, 3,
-                               evidence="MDM deployed, basic compliance checks")
-    assessment.assess_function("Devices", "asset_management", 1, 3,
-                               evidence="Partial inventory, no IoT coverage")
-    assessment.assess_function("Devices", "device_compliance", 0, 3,
-                               evidence="No real-time compliance checking")
-    assessment.assess_function("Devices", "device_threat_protection", 1, 3,
-                               evidence="EDR on 70% of endpoints")
+    assessment.assess_function(
+        "Devices",
+        "policy_enforcement",
+        1,
+        3,
+        evidence="MDM deployed, basic compliance checks",
+    )
+    assessment.assess_function(
+        "Devices",
+        "asset_management",
+        1,
+        3,
+        evidence="Partial inventory, no IoT coverage",
+    )
+    assessment.assess_function(
+        "Devices",
+        "device_compliance",
+        0,
+        3,
+        evidence="No real-time compliance checking",
+    )
+    assessment.assess_function(
+        "Devices", "device_threat_protection", 1, 3, evidence="EDR on 70% of endpoints"
+    )
 
     # Networks Pillar Assessment
-    assessment.assess_function("Networks", "network_segmentation", 0, 3,
-                               evidence="Flat network, basic VLAN segmentation only")
-    assessment.assess_function("Networks", "threat_protection", 1, 3,
-                               evidence="Perimeter firewall, no NDR")
-    assessment.assess_function("Networks", "encryption", 1, 3,
-                               evidence="TLS for external, plaintext internal")
-    assessment.assess_function("Networks", "network_resilience", 1, 3,
-                               evidence="Basic redundancy, no SD-WAN")
+    assessment.assess_function(
+        "Networks",
+        "network_segmentation",
+        0,
+        3,
+        evidence="Flat network, basic VLAN segmentation only",
+    )
+    assessment.assess_function(
+        "Networks", "threat_protection", 1, 3, evidence="Perimeter firewall, no NDR"
+    )
+    assessment.assess_function(
+        "Networks", "encryption", 1, 3, evidence="TLS for external, plaintext internal"
+    )
+    assessment.assess_function(
+        "Networks", "network_resilience", 1, 3, evidence="Basic redundancy, no SD-WAN"
+    )
 
     # Applications Pillar Assessment
-    assessment.assess_function("Applications", "access_authorization", 1, 3,
-                               evidence="VPN-based access for internal apps")
-    assessment.assess_function("Applications", "threat_protection", 1, 3,
-                               evidence="WAF for public apps only")
-    assessment.assess_function("Applications", "application_security", 0, 3,
-                               evidence="Annual pen tests, no CI/CD security integration")
+    assessment.assess_function(
+        "Applications",
+        "access_authorization",
+        1,
+        3,
+        evidence="VPN-based access for internal apps",
+    )
+    assessment.assess_function(
+        "Applications", "threat_protection", 1, 3, evidence="WAF for public apps only"
+    )
+    assessment.assess_function(
+        "Applications",
+        "application_security",
+        0,
+        3,
+        evidence="Annual pen tests, no CI/CD security integration",
+    )
 
     # Data Pillar Assessment
-    assessment.assess_function("Data", "data_inventory", 0, 3,
-                               evidence="No comprehensive data inventory")
-    assessment.assess_function("Data", "data_categorization", 1, 3,
-                               evidence="Basic classification, manual process")
-    assessment.assess_function("Data", "data_access", 1, 3,
-                               evidence="Role-based access, no fine-grained controls")
-    assessment.assess_function("Data", "data_encryption", 1, 3,
-                               evidence="Encryption at rest for databases, not all storage")
+    assessment.assess_function(
+        "Data", "data_inventory", 0, 3, evidence="No comprehensive data inventory"
+    )
+    assessment.assess_function(
+        "Data",
+        "data_categorization",
+        1,
+        3,
+        evidence="Basic classification, manual process",
+    )
+    assessment.assess_function(
+        "Data",
+        "data_access",
+        1,
+        3,
+        evidence="Role-based access, no fine-grained controls",
+    )
+    assessment.assess_function(
+        "Data",
+        "data_encryption",
+        1,
+        3,
+        evidence="Encryption at rest for databases, not all storage",
+    )
 
     # Calculate and report
     assessment.calculate_maturity()
@@ -387,23 +480,31 @@ def run_sample_assessment():
     print("=" * 70)
 
     summary = assessment.get_summary()
-    print(f"\nOverall Maturity: {summary['overall_maturity']} (Score: {summary.get('overall_score', 'N/A')})")
+    print(
+        f"\nOverall Maturity: {summary['overall_maturity']} (Score: {summary.get('overall_score', 'N/A')})"
+    )
     print("\nPillar Maturity Scores:")
     for pillar, data in summary["pillars"].items():
         compliance = " [COMPLIANCE GAP]" if data["compliance_gap"] else " [COMPLIANT]"
-        print(f"  {pillar:20s}: {data['stage']:12s} (Score: {data['score']}){compliance}")
+        print(
+            f"  {pillar:20s}: {data['stage']:12s} (Score: {data['score']}){compliance}"
+        )
 
     print("\nOMB M-22-09 Compliance Status:")
     compliance = assessment.get_compliance_status()
     for pillar, status in compliance.items():
         icon = "PASS" if status["compliant"] else "FAIL"
-        print(f"  [{icon}] {pillar}: {status['current_stage']} / Required: {status['required_stage']}")
+        print(
+            f"  [{icon}] {pillar}: {status['current_stage']} / Required: {status['required_stage']}"
+        )
 
     print(f"\nPrioritized Roadmap ({len(roadmap)} items):")
     for i, item in enumerate(roadmap[:10], 1):
-        print(f"  {i}. [{item.pillar}] {item.function_name}: "
-              f"{item.current_stage} -> {item.target_stage} "
-              f"(Priority: {item.priority}, Effort: {item.effort})")
+        print(
+            f"  {i}. [{item.pillar}] {item.function_name}: "
+            f"{item.current_stage} -> {item.target_stage} "
+            f"(Priority: {item.priority}, Effort: {item.effort})"
+        )
 
     # Export reports
     assessment.export_report("ztmm_assessment_report.json")

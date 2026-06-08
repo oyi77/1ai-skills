@@ -19,7 +19,7 @@ PRODUCTS = [
             "AI yang bikin CV kamu langsung dilirik HRD 👀",
             "1000 lamaran vs 1 AI — siapa yang menang?",
             "Cara dapet kerja 10x lebih cepat pakai AI 🚀",
-        ]
+        ],
     },
     {
         "name": "ContentAI Pro",
@@ -30,7 +30,7 @@ PRODUCTS = [
             "Bikin 30 konten dalam 10 menit pakai AI 🤖",
             "Content creator yang nggak pakai AI bakal ketinggalan 😬",
             "Viral formula yang AI pelajari dari 1 juta TikTok 📱",
-        ]
+        ],
     },
     {
         "name": "TradingBot Ai",
@@ -41,7 +41,7 @@ PRODUCTS = [
             "Bot yang bisa analisis XAUUSD lebih cepat dari manusia ⚡",
             "Kenapa trader pro pakai AI untuk entry signal? 📊",
             "GRATIS vs AI signal — perbandingan yang bikin shock 😮",
-        ]
+        ],
     },
     {
         "name": "CopywriterAi",
@@ -52,7 +52,7 @@ PRODUCTS = [
             "Caption yang convert 10x lebih banyak — bikin pakai AI 💰",
             "Copywriter 10 tahun pengalaman vs AI — hasilnya mengejutkan 🤯",
             "Script iklan yang selalu viral — formula AI-nya bocor! 🔥",
-        ]
+        ],
     },
     {
         "name": "Free AI Toolkit",
@@ -63,7 +63,7 @@ PRODUCTS = [
             "5 AI tools GRATIS yang wajib kamu pakai sekarang 🎁",
             "Nggak perlu bayar mahal — AI gratis ini udah powerful 💪",
             "Download gratis! AI toolkit buat freelancer Indonesia 🇮🇩",
-        ]
+        ],
     },
 ]
 
@@ -107,7 +107,7 @@ PILLARS = {
             "facebook": ["testimonial_post"],
         },
         "caption_templates": [
-            "Customer kami berhasil [hasil] dalam [waktu] pakai {product} 🎉\n\n[Screenshot/Quote testimonial]\n\n\"[Kutipan dari customer]\"\n\nKamu bisa achieve hasil yang sama! Link di bio 🔗\n\n",
+            'Customer kami berhasil [hasil] dalam [waktu] pakai {product} 🎉\n\n[Screenshot/Quote testimonial]\n\n"[Kutipan dari customer]"\n\nKamu bisa achieve hasil yang sama! Link di bio 🔗\n\n',
             "Real results dari pengguna {product}:\n\nSebelum: [before state]\nSesudah: [after state]\n\nPerbedaan yang bikin gue speechless 😱\n\nCoba sekarang → link di bio 👆\n\n",
         ],
     },
@@ -195,11 +195,41 @@ def select_product(pillar: str, day_index: int) -> Dict:
 def get_hashtags(pillar: str, platform: str, product_name: str) -> List[str]:
     """Generate relevant hashtags for the post."""
     base_hashtags = {
-        "ai_tools_demo": ["#aitools", "#kecerdasanbuatan", "#teknologiai", "#aiindonesia", "#digitaltools"],
-        "tips_tricks": ["#tipsdantricks", "#belajarai", "#tipsai", "#produktivitas", "#digitalskills"],
-        "social_proof": ["#testimoni", "#hasil", "#successstory", "#review", "#buktihasil"],
-        "behind_the_scenes": ["#buildinpublic", "#startup", "#dibalikLayar", "#berkahkarya", "#entrepreneurindonesia"],
-        "promo_cta": ["#promosi", "#diskon", "#sale", "#dapatkansekarang", "#limitedoffer"],
+        "ai_tools_demo": [
+            "#aitools",
+            "#kecerdasanbuatan",
+            "#teknologiai",
+            "#aiindonesia",
+            "#digitaltools",
+        ],
+        "tips_tricks": [
+            "#tipsdantricks",
+            "#belajarai",
+            "#tipsai",
+            "#produktivitas",
+            "#digitalskills",
+        ],
+        "social_proof": [
+            "#testimoni",
+            "#hasil",
+            "#successstory",
+            "#review",
+            "#buktihasil",
+        ],
+        "behind_the_scenes": [
+            "#buildinpublic",
+            "#startup",
+            "#dibalikLayar",
+            "#berkahkarya",
+            "#entrepreneurindonesia",
+        ],
+        "promo_cta": [
+            "#promosi",
+            "#diskon",
+            "#sale",
+            "#dapatkansekarang",
+            "#limitedoffer",
+        ],
     }
 
     platform_hashtags = {

@@ -111,11 +111,15 @@ def list_analytics_rules(credential, subscription_id, resource_group, workspace_
     rules = client.alert_rules.list(resource_group, workspace_name)
     result = []
     for rule in rules:
-        result.append({
-            "name": rule.display_name if hasattr(rule, "display_name") else rule.name,
-            "severity": getattr(rule, "severity", "Unknown"),
-            "enabled": getattr(rule, "enabled", True),
-        })
+        result.append(
+            {
+                "name": (
+                    rule.display_name if hasattr(rule, "display_name") else rule.name
+                ),
+                "severity": getattr(rule, "severity", "Unknown"),
+                "enabled": getattr(rule, "enabled", True),
+            }
+        )
     return result
 
 
@@ -126,10 +130,18 @@ def main():
     parser.add_argument("--client-id", default=os.getenv("AZURE_CLIENT_ID"))
     parser.add_argument("--client-secret", default=os.getenv("AZURE_CLIENT_SECRET"))
     parser.add_argument("--output", default="sentinel_report.json")
-    parser.add_argument("--action", choices=[
-        "impossible_travel", "aws_abuse", "mass_deletion",
-        "incidents", "threat_intel", "full_hunt"
-    ], default="full_hunt")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "impossible_travel",
+            "aws_abuse",
+            "mass_deletion",
+            "incidents",
+            "threat_intel",
+            "full_hunt",
+        ],
+        default="full_hunt",
+    )
     args = parser.parse_args()
 
     credential = get_credential(args.tenant_id, args.client_id, args.client_secret)

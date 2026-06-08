@@ -5,6 +5,7 @@ Run: python3 test_comment_manager.py
 
 import sys
 import os
+
 sys.path.insert(0, os.path.dirname(__file__))
 
 import json
@@ -12,10 +13,11 @@ from datetime import datetime
 
 # ─── TEST RUNNERS ──────────────────────────────────────────────────────────────
 
+
 def test_sentiment_analyzer():
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST: Sentiment Analyzer")
-    print("="*60)
+    print("=" * 60)
 
     from sentiment_analyzer import analyze_sentiment
 
@@ -41,7 +43,9 @@ def test_sentiment_analyzer():
             passed += 1
         else:
             failed += 1
-        print(f"  {status} [{result.category:12s}] conf={result.confidence:.2f} dm={result.is_dm_trigger} | '{comment}'")
+        print(
+            f"  {status} [{result.category:12s}] conf={result.confidence:.2f} dm={result.is_dm_trigger} | '{comment}'"
+        )
         if result.category != expected:
             print(f"       Expected: {expected}")
 
@@ -50,9 +54,9 @@ def test_sentiment_analyzer():
 
 
 def test_faq_responder():
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST: FAQ Responder")
-    print("="*60)
+    print("=" * 60)
 
     from faq_responder import find_faq_response
 
@@ -83,14 +87,20 @@ def test_faq_responder():
 
 
 def test_comment_templates():
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST: Comment Templates")
-    print("="*60)
+    print("=" * 60)
 
     from comment_templates import (
-        get_positive_reply, get_question_reply, get_interest_reply,
-        get_negative_reply, get_price_reply, get_dm_public_reply,
-        get_dm_message, find_product_by_keywords, PRODUCTS,
+        get_positive_reply,
+        get_question_reply,
+        get_interest_reply,
+        get_negative_reply,
+        get_price_reply,
+        get_dm_public_reply,
+        get_dm_message,
+        find_product_by_keywords,
+        PRODUCTS,
     )
 
     passed = 0
@@ -113,7 +123,9 @@ def test_comment_templates():
             passed += 1
             print(f"  ✅ '{query}' → {product['name']}")
         else:
-            print(f"  ❌ '{query}' → {product['name']} (expected: {expected_product['name']})")
+            print(
+                f"  ❌ '{query}' → {product['name']} (expected: {expected_product['name']})"
+            )
 
     # Test template generation (no crash)
     tests += 1
@@ -140,19 +152,55 @@ def test_comment_templates():
 
 
 def test_auto_replier():
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST: Auto Replier (Decision Engine)")
-    print("="*60)
+    print("=" * 60)
 
     from auto_replier import decide_reply, process_comments
 
     test_comments = [
-        {"id": "t1", "platform": "tiktok", "username": "buyer_a", "text": "Harganya berapa kak?", "post_caption": "AI Tools"},
-        {"id": "t2", "platform": "tiktok", "username": "fan_b", "text": "Keren banget! 🔥", "post_caption": ""},
-        {"id": "t3", "platform": "instagram", "username": "curious_c", "text": "Mau beli dong, cara ordernya?", "post_caption": "JobMagnet"},
-        {"id": "t4", "platform": "tiktok", "username": "hater_d", "text": "Produk sampah!", "post_caption": ""},
-        {"id": "t5", "platform": "tiktok", "username": "spammer_e", "text": "Follow back ya!", "post_caption": ""},
-        {"id": "t6", "platform": "tiktok", "username": "asker_f", "text": "Ini bisa buat apa ya?", "post_caption": "Studio"},
+        {
+            "id": "t1",
+            "platform": "tiktok",
+            "username": "buyer_a",
+            "text": "Harganya berapa kak?",
+            "post_caption": "AI Tools",
+        },
+        {
+            "id": "t2",
+            "platform": "tiktok",
+            "username": "fan_b",
+            "text": "Keren banget! 🔥",
+            "post_caption": "",
+        },
+        {
+            "id": "t3",
+            "platform": "instagram",
+            "username": "curious_c",
+            "text": "Mau beli dong, cara ordernya?",
+            "post_caption": "JobMagnet",
+        },
+        {
+            "id": "t4",
+            "platform": "tiktok",
+            "username": "hater_d",
+            "text": "Produk sampah!",
+            "post_caption": "",
+        },
+        {
+            "id": "t5",
+            "platform": "tiktok",
+            "username": "spammer_e",
+            "text": "Follow back ya!",
+            "post_caption": "",
+        },
+        {
+            "id": "t6",
+            "platform": "tiktok",
+            "username": "asker_f",
+            "text": "Ini bisa buat apa ya?",
+            "post_caption": "Studio",
+        },
     ]
 
     expected_dms = {"t1", "t3"}  # Price ask and interest should trigger DM
@@ -172,7 +220,11 @@ def test_auto_replier():
         is_spam_comment = cid in expected_skip_spam
         if is_spam_comment and "[SKIP" in decision.reply_text:
             passed += 1  # correctly skipped spam
-        elif not is_spam_comment and "[SKIP" not in decision.reply_text and len(decision.reply_text) > 10:
+        elif (
+            not is_spam_comment
+            and "[SKIP" not in decision.reply_text
+            and len(decision.reply_text) > 10
+        ):
             passed += 1  # valid reply
         elif not is_spam_comment and "[SKIP" in decision.reply_text:
             print(f"  ❌ Non-spam comment incorrectly skipped")
@@ -187,21 +239,20 @@ def test_auto_replier():
 
 
 def test_dm_funnel():
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST: DM Funnel")
-    print("="*60)
+    print("=" * 60)
 
     # Reset state for clean test
     import dm_funnel as _dmf
+
     _dmf.save_dm_cooldowns({})
 
     from dm_funnel import build_dm_content, process_dm_funnel, PRODUCTS
 
     # Test DM content building
     dm_data = build_dm_content(
-        "test_user",
-        "Mau beli dong, buat cari kerja",
-        "JobMagnet AI"
+        "test_user", "Mau beli dong, buat cari kerja", "JobMagnet AI"
     )
     assert dm_data["product"] == "JobMagnet Ai", f"Wrong product: {dm_data['product']}"
     assert "lynk.id" in dm_data["message"], "No LYNK URL in DM"
@@ -212,9 +263,27 @@ def test_dm_funnel():
 
     # Test full funnel (dry run)
     candidates = [
-        {"username": "buyer1", "platform": "tiktok", "comment_text": "Mau beli!", "post_caption": "AI Tools", "post_url": ""},
-        {"username": "buyer2", "platform": "instagram", "comment_text": "Harganya berapa?", "post_caption": "", "post_url": ""},
-        {"username": "buyer1", "platform": "tiktok", "comment_text": "Still want to buy", "post_caption": "", "post_url": ""},  # cooldown
+        {
+            "username": "buyer1",
+            "platform": "tiktok",
+            "comment_text": "Mau beli!",
+            "post_caption": "AI Tools",
+            "post_url": "",
+        },
+        {
+            "username": "buyer2",
+            "platform": "instagram",
+            "comment_text": "Harganya berapa?",
+            "post_caption": "",
+            "post_url": "",
+        },
+        {
+            "username": "buyer1",
+            "platform": "tiktok",
+            "comment_text": "Still want to buy",
+            "post_caption": "",
+            "post_url": "",
+        },  # cooldown
     ]
 
     stats = process_dm_funnel(candidates, dry_run=True)
@@ -228,9 +297,9 @@ def test_dm_funnel():
 
 
 def test_postbridge_connection():
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST: PostBridge API Connection")
-    print("="*60)
+    print("=" * 60)
 
     from comment_monitor import fetch_posts, fetch_post_results
 
@@ -254,9 +323,9 @@ def test_postbridge_connection():
 # ─── RUN ALL TESTS ─────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("\n" + "🔥"*20)
+    print("\n" + "🔥" * 20)
     print("COMMENT-REPLY-MANAGER — Full Test Suite")
-    print("🔥"*20)
+    print("🔥" * 20)
 
     total_passed = 0
     total_failed = 0
@@ -280,17 +349,18 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"  ❌ TEST CRASHED: {e}")
             import traceback
+
             traceback.print_exc()
             total_failed += 1
             results.append((name, 0, 1, "❌"))
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("TEST SUMMARY")
-    print("="*60)
+    print("=" * 60)
     for name, p, f, status in results:
         print(f"  {status} {name}: {p} passed, {f} failed")
     print(f"\n  TOTAL: {total_passed} passed, {total_failed} failed")
-    print("="*60)
+    print("=" * 60)
 
     if total_failed == 0:
         print("\n✅ ALL TESTS PASSED — Production ready!")

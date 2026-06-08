@@ -48,7 +48,10 @@ def run_all_tests():
     # ─── Test 1: Viral Pattern DB ───────────────────────────────
     print("\n📦 Module: viral_pattern_db")
     from viral_pattern_db import (
-        initialize_db, get_top_patterns, get_best_format, get_posting_schedule
+        initialize_db,
+        get_top_patterns,
+        get_best_format,
+        get_posting_schedule,
     )
 
     ok, _ = test_module("initialize_db()", initialize_db)
@@ -64,7 +67,9 @@ def run_all_tests():
     if fmt:
         print(f"     → Best format for ai_tools: {fmt['format']}")
 
-    ok, sched = test_module("get_posting_schedule('tiktok')", get_posting_schedule, "tiktok")
+    ok, sched = test_module(
+        "get_posting_schedule('tiktok')", get_posting_schedule, "tiktok"
+    )
     results["tests"]["viral_pattern_db_schedule"] = ok
     if sched:
         print(f"     → TikTok peak days: {', '.join(sched.get('peak_days', []))}")
@@ -72,21 +77,33 @@ def run_all_tests():
     # ─── Test 2: Hashtag Analyzer ────────────────────────────────
     print("\n🏷️  Module: hashtag_analyzer")
     from hashtag_analyzer import (
-        get_hashtag_recommendations, build_optimal_hashtag_set, save_hashtag_recommendations
+        get_hashtag_recommendations,
+        build_optimal_hashtag_set,
+        save_hashtag_recommendations,
     )
 
-    ok, recs = test_module("get_hashtag_recommendations('ai_tools')", get_hashtag_recommendations, "ai_tools")
+    ok, recs = test_module(
+        "get_hashtag_recommendations('ai_tools')",
+        get_hashtag_recommendations,
+        "ai_tools",
+    )
     results["tests"]["hashtag_recommendations"] = ok
     if recs:
         print(f"     → {len(recs)} hashtags analyzed")
-        print(f"     → Top hashtag: {recs[0]['hashtag']} (score: {recs[0]['relevance_score']})")
+        print(
+            f"     → Top hashtag: {recs[0]['hashtag']} (score: {recs[0]['relevance_score']})"
+        )
 
-    ok, opt = test_module("build_optimal_hashtag_set('kuliner')", build_optimal_hashtag_set, "kuliner")
+    ok, opt = test_module(
+        "build_optimal_hashtag_set('kuliner')", build_optimal_hashtag_set, "kuliner"
+    )
     results["tests"]["hashtag_optimal_set"] = ok
     if opt:
         print(f"     → Optimal 10: {' '.join(opt['optimal_10'][:5])}...")
 
-    ok, path = test_module("save_hashtag_recommendations()", save_hashtag_recommendations)
+    ok, path = test_module(
+        "save_hashtag_recommendations()", save_hashtag_recommendations
+    )
     results["tests"]["hashtag_save"] = ok
     if path:
         print(f"     → Saved to: {path}")
@@ -94,16 +111,26 @@ def run_all_tests():
     # ─── Test 3: Hook Generator ──────────────────────────────────
     print("\n🎣 Module: hook_generator")
     from hook_generator import (
-        generate_hook, generate_full_content_brief, save_generated_hooks
+        generate_hook,
+        generate_full_content_brief,
+        save_generated_hooks,
     )
 
-    ok, hooks = test_module("generate_hook('ai_tools', count=3)", generate_hook, "ai_tools", count=3)
+    ok, hooks = test_module(
+        "generate_hook('ai_tools', count=3)", generate_hook, "ai_tools", count=3
+    )
     results["tests"]["hook_generator_basic"] = ok
     if hooks:
         print(f"     → {len(hooks)} hooks generated")
-        print(f"     → Best hook [{hooks[0]['virality_score']}★]: {hooks[0]['hook'][:60]}...")
+        print(
+            f"     → Best hook [{hooks[0]['virality_score']}★]: {hooks[0]['hook'][:60]}..."
+        )
 
-    ok, brief = test_module("generate_full_content_brief('side_hustle')", generate_full_content_brief, "side_hustle")
+    ok, brief = test_module(
+        "generate_full_content_brief('side_hustle')",
+        generate_full_content_brief,
+        "side_hustle",
+    )
     results["tests"]["hook_generator_brief"] = ok
     if brief:
         print(f"     → Brief format: {brief['format']}")
@@ -128,11 +155,17 @@ def run_all_tests():
     print("\n🕵️  Module: competitor_scraper")
     from competitor_scraper import analyze_niche_competitors, save_competitor_analysis
 
-    ok, comp_data = test_module("analyze_niche_competitors('digital_marketing')", analyze_niche_competitors, "digital_marketing")
+    ok, comp_data = test_module(
+        "analyze_niche_competitors('digital_marketing')",
+        analyze_niche_competitors,
+        "digital_marketing",
+    )
     results["tests"]["competitor_scraper_basic"] = ok
     if comp_data:
         benchmarks = comp_data.get("niche_benchmarks", {})
-        print(f"     → Avg engagement: {benchmarks.get('avg_engagement_rate', 0)*100:.1f}%")
+        print(
+            f"     → Avg engagement: {benchmarks.get('avg_engagement_rate', 0)*100:.1f}%"
+        )
         print(f"     → Common weakness: {comp_data['common_weaknesses'][0][:60]}")
 
     ok, path = test_module("save_competitor_analysis()", save_competitor_analysis)

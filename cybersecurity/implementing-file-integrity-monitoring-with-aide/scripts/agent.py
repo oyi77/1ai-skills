@@ -37,15 +37,25 @@ AIDE_RULE_SETS = {
 }
 
 AIDE_EXCLUSIONS = [
-    "!/var/log/.*", "!/var/spool/.*", "!/var/cache/.*",
-    "!/proc", "!/sys", "!/dev", "!/run", "!/tmp",
-    "!/var/lib/dpkg/.*", "!/var/lib/apt/.*",
+    "!/var/log/.*",
+    "!/var/spool/.*",
+    "!/var/cache/.*",
+    "!/proc",
+    "!/sys",
+    "!/dev",
+    "!/run",
+    "!/tmp",
+    "!/var/lib/dpkg/.*",
+    "!/var/lib/apt/.*",
 ]
 
 
-def generate_aide_config(rule_sets=None, db_path="/var/lib/aide/aide.db",
-                         db_new_path="/var/lib/aide/aide.db.new",
-                         log_path="/var/log/aide/aide.log"):
+def generate_aide_config(
+    rule_sets=None,
+    db_path="/var/lib/aide/aide.db",
+    db_new_path="/var/lib/aide/aide.db.new",
+    log_path="/var/log/aide/aide.log",
+):
     """Generate aide.conf configuration file content."""
     if rule_sets is None:
         rule_sets = list(AIDE_RULE_SETS.keys())
@@ -96,12 +106,15 @@ def initialize_baseline():
     """Run aide --init to create the baseline database."""
     result = subprocess.run(
         ["aide", "--init", "--config=/etc/aide/aide.conf"],
-        capture_output=True, text=True, timeout=600
+        capture_output=True,
+        text=True,
+        timeout=600,
     )
     if result.returncode == 0:
         subprocess.run(
             ["cp", "/var/lib/aide/aide.db.new", "/var/lib/aide/aide.db"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             timeout=120,
         )
         return {"status": "success", "output": result.stdout[:500]}
@@ -112,7 +125,9 @@ def run_integrity_check():
     """Run aide --check and parse the results."""
     result = subprocess.run(
         ["aide", "--check", "--config=/etc/aide/aide.conf"],
-        capture_output=True, text=True, timeout=600
+        capture_output=True,
+        text=True,
+        timeout=600,
     )
     return parse_aide_output(result.stdout, result.returncode)
 
@@ -135,9 +150,13 @@ def parse_aide_output(output, return_code):
             if match and section:
                 filepath = match.group(1).strip()
                 severity = _classify_severity(filepath, section)
-                findings[section].append({
-                    "path": filepath, "severity": severity, "change_type": section,
-                })
+                findings[section].append(
+                    {
+                        "path": filepath,
+                        "severity": severity,
+                        "change_type": section,
+                    }
+                )
         elif "Number of entries" in line:
             match = re.match(r"Number of entries:\s*(\d+)", line)
             if match:
@@ -147,14 +166,25 @@ def parse_aide_output(output, return_code):
     findings["summary"]["removed_count"] = len(findings["removed"])
     findings["summary"]["changed_count"] = len(findings["changed"])
     findings["summary"]["return_code"] = return_code
-    findings["summary"]["integrity_status"] = "clean" if return_code == 0 else "changes_detected"
+    findings["summary"]["integrity_status"] = (
+        "clean" if return_code == 0 else "changes_detected"
+    )
     return findings
 
 
 def _classify_severity(filepath, change_type):
     """Classify severity based on file path and change type."""
-    critical_paths = ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/boot/", "/etc/shadow",
-                      "/etc/passwd", "/etc/sudoers", "/etc/ssh/"]
+    critical_paths = [
+        "/bin/",
+        "/sbin/",
+        "/usr/bin/",
+        "/usr/sbin/",
+        "/boot/",
+        "/etc/shadow",
+        "/etc/passwd",
+        "/etc/sudoers",
+        "/etc/ssh/",
+    ]
     high_paths = ["/etc/", "/lib/", "/lib64/", "/usr/lib/"]
 
     if change_type == "removed" and any(filepath.startswith(p) for p in critical_paths):
@@ -175,8 +205,12 @@ def generate_cron_config(schedule="0 5 * * *", email=None):
     cron_script += "EXIT_CODE=$?\n"
     cron_script += "if [ $EXIT_CODE -ne 0 ]; then\n"
     if email:
-        cron_script += f'  mail -s "AIDE Alert: Integrity changes detected" {email} < $LOGFILE\n'
-    cron_script += '  logger -t aide "Integrity check found changes (exit code $EXIT_CODE)"\n'
+        cron_script += (
+            f'  mail -s "AIDE Alert: Integrity changes detected" {email} < $LOGFILE\n'
+        )
+    cron_script += (
+        '  logger -t aide "Integrity check found changes (exit code $EXIT_CODE)"\n'
+    )
     cron_script += "fi\n"
 
     cron_entry = f"{schedule} root /usr/local/bin/aide-check.sh"
@@ -198,13 +232,24 @@ def generate_report(config_content, baseline_status, check_findings, cron_config
 
 def main():
     parser = argparse.ArgumentParser(description="AIDE File Integrity Monitoring Agent")
-    parser.add_argument("--action", choices=["generate", "init", "check", "full"],
-                        default="generate", help="Action to perform")
-    parser.add_argument("--config-output", default="/etc/aide/aide.conf", help="Config output path")
+    parser.add_argument(
+        "--action",
+        choices=["generate", "init", "check", "full"],
+        default="generate",
+        help="Action to perform",
+    )
+    parser.add_argument(
+        "--config-output", default="/etc/aide/aide.conf", help="Config output path"
+    )
     parser.add_argument("--alert-email", help="Email for cron alert notifications")
     parser.add_argument("--output", default="aide_report.json")
-    parser.add_argument("--rule-sets", nargs="+", default=None,
-                        choices=list(AIDE_RULE_SETS.keys()), help="Rule sets to enable")
+    parser.add_argument(
+        "--rule-sets",
+        nargs="+",
+        default=None,
+        choices=list(AIDE_RULE_SETS.keys()),
+        help="Rule sets to enable",
+    )
     args = parser.parse_args()
 
     config_content = generate_aide_config(args.rule_sets)
@@ -224,11 +269,15 @@ def main():
     if args.action in ("check", "full"):
         check_findings = run_integrity_check()
         s = check_findings.get("summary", {})
-        print(f"[+] Check: added={s.get('added_count', 0)} removed={s.get('removed_count', 0)} "
-              f"changed={s.get('changed_count', 0)}")
+        print(
+            f"[+] Check: added={s.get('added_count', 0)} removed={s.get('removed_count', 0)} "
+            f"changed={s.get('changed_count', 0)}"
+        )
 
     cron_config = generate_cron_config(email=args.alert_email)
-    report = generate_report(config_content, baseline_status, check_findings, cron_config)
+    report = generate_report(
+        config_content, baseline_status, check_findings, cron_config
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
     print(f"[+] Report saved to {args.output}")

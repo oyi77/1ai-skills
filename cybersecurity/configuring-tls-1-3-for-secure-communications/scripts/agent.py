@@ -19,14 +19,19 @@ def check_tls_versions(host, port=443):
     """Check supported TLS versions on a server."""
     results = {}
     protocols = {
-        "TLSv1.0": ssl.TLSVersion.TLSv1 if hasattr(ssl.TLSVersion, 'TLSv1') else None,
-        "TLSv1.1": ssl.TLSVersion.TLSv1_1 if hasattr(ssl.TLSVersion, 'TLSv1_1') else None,
+        "TLSv1.0": ssl.TLSVersion.TLSv1 if hasattr(ssl.TLSVersion, "TLSv1") else None,
+        "TLSv1.1": (
+            ssl.TLSVersion.TLSv1_1 if hasattr(ssl.TLSVersion, "TLSv1_1") else None
+        ),
         "TLSv1.2": ssl.TLSVersion.TLSv1_2,
         "TLSv1.3": ssl.TLSVersion.TLSv1_3,
     }
     for version_name, version in protocols.items():
         if version is None:
-            results[version_name] = {"supported": False, "note": "Not available in this Python build"}
+            results[version_name] = {
+                "supported": False,
+                "note": "Not available in this Python build",
+            }
             continue
         try:
             ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
@@ -39,7 +44,11 @@ def check_tls_versions(host, port=443):
                     results[version_name] = {
                         "supported": True,
                         "cipher": ssock.cipher()[0],
-                        "severity": "CRITICAL" if "1.0" in version_name or "1.1" in version_name else "INFO",
+                        "severity": (
+                            "CRITICAL"
+                            if "1.0" in version_name or "1.1" in version_name
+                            else "INFO"
+                        ),
                     }
         except (ssl.SSLError, ConnectionRefusedError, socket.timeout, OSError):
             results[version_name] = {"supported": False}
@@ -56,14 +65,20 @@ def get_certificate_info(host, port=443):
             with ctx.wrap_socket(sock, server_hostname=host) as ssock:
                 der_cert = ssock.getpeercert(binary_form=True)
                 cert = x509.load_der_x509_certificate(der_cert)
-                days_remaining = (cert.not_valid_after_utc.replace(tzinfo=None) - datetime.utcnow()).days
+                days_remaining = (
+                    cert.not_valid_after_utc.replace(tzinfo=None) - datetime.utcnow()
+                ).days
                 return {
                     "subject": cert.subject.rfc4514_string(),
                     "issuer": cert.issuer.rfc4514_string(),
                     "not_after": str(cert.not_valid_after_utc),
                     "days_remaining": days_remaining,
                     "key_size": cert.public_key().key_size,
-                    "signature_algorithm": cert.signature_hash_algorithm.name if cert.signature_hash_algorithm else "unknown",
+                    "signature_algorithm": (
+                        cert.signature_hash_algorithm.name
+                        if cert.signature_hash_algorithm
+                        else "unknown"
+                    ),
                     "issues": [],
                 }
     except Exception as e:
@@ -83,8 +98,11 @@ def check_cipher_suites(host, port=443):
                     "negotiated_cipher": cipher[0],
                     "protocol": cipher[1],
                     "bits": cipher[2],
-                    "tls13_ciphers": ["TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256",
-                                       "TLS_CHACHA20_POLY1305_SHA256"],
+                    "tls13_ciphers": [
+                        "TLS_AES_256_GCM_SHA384",
+                        "TLS_AES_128_GCM_SHA256",
+                        "TLS_CHACHA20_POLY1305_SHA256",
+                    ],
                 }
     except Exception as e:
         return {"error": str(e)}

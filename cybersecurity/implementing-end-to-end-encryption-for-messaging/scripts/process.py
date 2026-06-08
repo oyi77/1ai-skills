@@ -24,13 +24,18 @@ import logging
 from dataclasses import dataclass, field
 from typing import Dict, Optional, Tuple, List
 
-from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey, X25519PublicKey
+from cryptography.hazmat.primitives.asymmetric.x25519 import (
+    X25519PrivateKey,
+    X25519PublicKey,
+)
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives import hashes, hmac, serialization
 from cryptography.hazmat.backends import default_backend
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 INFO_ROOT_KEY = b"DoubleRatchetRootKey"
@@ -88,7 +93,9 @@ def kdf_ck(chain_key: bytes) -> Tuple[bytes, bytes]:
     return new_chain_key, message_key
 
 
-def encrypt_message(message_key: bytes, plaintext: bytes, associated_data: bytes = b"") -> bytes:
+def encrypt_message(
+    message_key: bytes, plaintext: bytes, associated_data: bytes = b""
+) -> bytes:
     """Encrypt a message using AES-256-GCM."""
     nonce = os.urandom(12)
     aesgcm = AESGCM(message_key)
@@ -96,7 +103,9 @@ def encrypt_message(message_key: bytes, plaintext: bytes, associated_data: bytes
     return nonce + ciphertext
 
 
-def decrypt_message(message_key: bytes, data: bytes, associated_data: bytes = b"") -> bytes:
+def decrypt_message(
+    message_key: bytes, data: bytes, associated_data: bytes = b""
+) -> bytes:
     """Decrypt a message using AES-256-GCM."""
     nonce = data[:12]
     ciphertext = data[12:]
@@ -107,14 +116,14 @@ def decrypt_message(message_key: bytes, data: bytes, associated_data: bytes = b"
 @dataclass
 class MessageHeader:
     """Header included with each encrypted message."""
+
     dh_public_key: bytes
     previous_chain_length: int
     message_number: int
 
     def serialize(self) -> bytes:
-        return (
-            self.dh_public_key
-            + struct.pack(">II", self.previous_chain_length, self.message_number)
+        return self.dh_public_key + struct.pack(
+            ">II", self.previous_chain_length, self.message_number
         )
 
     @classmethod
@@ -127,6 +136,7 @@ class MessageHeader:
 @dataclass
 class DoubleRatchetState:
     """State for one side of the Double Ratchet."""
+
     dh_self_private: Optional[X25519PrivateKey] = None
     dh_self_public: bytes = b""
     dh_remote_public: bytes = b""
@@ -157,7 +167,9 @@ def initialize_alice(shared_secret: bytes, bob_dh_public: bytes) -> DoubleRatche
     return state
 
 
-def initialize_bob(shared_secret: bytes, bob_dh_keypair: Tuple[X25519PrivateKey, bytes]) -> DoubleRatchetState:
+def initialize_bob(
+    shared_secret: bytes, bob_dh_keypair: Tuple[X25519PrivateKey, bytes]
+) -> DoubleRatchetState:
     """Initialize the ratchet for Bob (responder)."""
     state = DoubleRatchetState()
     state.dh_self_private = bob_dh_keypair[0]
@@ -172,7 +184,9 @@ def initialize_bob(shared_secret: bytes, bob_dh_keypair: Tuple[X25519PrivateKey,
     return state
 
 
-def ratchet_encrypt(state: DoubleRatchetState, plaintext: bytes) -> Tuple[MessageHeader, bytes]:
+def ratchet_encrypt(
+    state: DoubleRatchetState, plaintext: bytes
+) -> Tuple[MessageHeader, bytes]:
     """Encrypt a message using the Double Ratchet."""
     state.sending_chain_key, message_key = kdf_ck(state.sending_chain_key)
 
@@ -217,7 +231,9 @@ def skip_message_keys(state: DoubleRatchetState, until: int):
             del state.skipped_keys[oldest]
 
 
-def ratchet_decrypt(state: DoubleRatchetState, header: MessageHeader, ciphertext: bytes) -> bytes:
+def ratchet_decrypt(
+    state: DoubleRatchetState, header: MessageHeader, ciphertext: bytes
+) -> bytes:
     """Decrypt a message using the Double Ratchet."""
     # Check skipped keys
     skip_key = (header.dh_public_key, header.message_number)

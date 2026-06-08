@@ -19,7 +19,9 @@ try:
 except ImportError:
     sys.exit("ldap3 is required: pip install ldap3")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -27,28 +29,39 @@ def ldap_enum_users(dc_ip: str, domain: str, username: str, password: str) -> li
     """Enumerate domain users via LDAP, returning accounts with SPNs and no preauth."""
     base_dn = ",".join(f"DC={part}" for part in domain.split("."))
     server = Server(dc_ip, get_info=ALL, use_ssl=False)
-    conn = Connection(server, user=f"{domain}\\{username}", password=password, auto_bind=True)
+    conn = Connection(
+        server, user=f"{domain}\\{username}", password=password, auto_bind=True
+    )
 
     conn.search(
         base_dn,
         "(objectClass=user)",
         search_scope=SUBTREE,
         attributes=[
-            "sAMAccountName", "servicePrincipalName", "userAccountControl",
-            "memberOf", "adminCount", "pwdLastSet", "lastLogon",
+            "sAMAccountName",
+            "servicePrincipalName",
+            "userAccountControl",
+            "memberOf",
+            "adminCount",
+            "pwdLastSet",
+            "lastLogon",
         ],
     )
     users = []
     for entry in conn.entries:
         uac = int(str(entry.userAccountControl)) if entry.userAccountControl else 0
-        spn_list = list(entry.servicePrincipalName) if entry.servicePrincipalName else []
+        spn_list = (
+            list(entry.servicePrincipalName) if entry.servicePrincipalName else []
+        )
         no_preauth = bool(uac & 0x400000)
-        users.append({
-            "samaccountname": str(entry.sAMAccountName),
-            "spns": spn_list,
-            "no_preauth": no_preauth,
-            "admin_count": str(entry.adminCount) if entry.adminCount else "0",
-        })
+        users.append(
+            {
+                "samaccountname": str(entry.sAMAccountName),
+                "spns": spn_list,
+                "no_preauth": no_preauth,
+                "admin_count": str(entry.adminCount) if entry.adminCount else "0",
+            }
+        )
     conn.unbind()
     logger.info("Enumerated %d domain users via LDAP", len(users))
     return users
@@ -72,11 +85,16 @@ def enum_groups(dc_ip: str, domain: str, username: str, password: str) -> dict:
     """Enumerate high-value group memberships via LDAP."""
     base_dn = ",".join(f"DC={part}" for part in domain.split("."))
     server = Server(dc_ip, get_info=ALL)
-    conn = Connection(server, user=f"{domain}\\{username}", password=password, auto_bind=True)
+    conn = Connection(
+        server, user=f"{domain}\\{username}", password=password, auto_bind=True
+    )
 
     high_value_groups = [
-        "Domain Admins", "Enterprise Admins", "Schema Admins",
-        "Backup Operators", "Account Operators",
+        "Domain Admins",
+        "Enterprise Admins",
+        "Schema Admins",
+        "Backup Operators",
+        "Account Operators",
     ]
     results = {}
     for group_name in high_value_groups:
@@ -132,17 +150,25 @@ def generate_report(users: list, groups: dict, dc_ip: str) -> dict:
             f"HIGH: {len(asrep)} accounts lack Kerberos pre-authentication"
         )
     if not smb_signing:
-        report["risk_summary"].append("HIGH: SMB signing not required on DC - relay attacks possible")
+        report["risk_summary"].append(
+            "HIGH: SMB signing not required on DC - relay attacks possible"
+        )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="AD Attack Simulation Agent")
     parser.add_argument("--dc-ip", required=True, help="Domain Controller IP")
-    parser.add_argument("--domain", required=True, help="Domain FQDN (e.g., corp.local)")
-    parser.add_argument("--username", required=True, help="Low-privilege domain username")
+    parser.add_argument(
+        "--domain", required=True, help="Domain FQDN (e.g., corp.local)"
+    )
+    parser.add_argument(
+        "--username", required=True, help="Low-privilege domain username"
+    )
     parser.add_argument("--password", required=True, help="Domain user password")
-    parser.add_argument("--output", default="ad_assessment.json", help="Output JSON report path")
+    parser.add_argument(
+        "--output", default="ad_assessment.json", help="Output JSON report path"
+    )
     args = parser.parse_args()
 
     logger.info("Starting AD attack simulation against %s", args.domain)

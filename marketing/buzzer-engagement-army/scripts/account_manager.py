@@ -2,6 +2,7 @@
 Account Manager — manages all PostBridge connected accounts.
 Fetches account details, tracks warmup state, and provides account metadata.
 """
+
 import os
 import json
 import time
@@ -15,14 +16,14 @@ POSTBRIDGE_KEY = os.environ.get("POSTBRIDGE_KEY", "REDACTED_ROTATED_CREDENTIAL")
 
 HEADERS = {
     "Authorization": f"Bearer {POSTBRIDGE_KEY}",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
 }
 
 # Known account IDs
 KNOWN_ACCOUNTS = {
     "tiktok": [48374, 48373, 48372, 48338, 48337, 48336, 48335],
     "instagram": [48186],
-    "facebook": [48178, 48177, 48176, 48175]
+    "facebook": [48178, 48177, 48176, 48175],
 }
 
 # State file for warmup tracking
@@ -48,7 +49,9 @@ def _save_state(state: dict):
 def fetch_social_accounts() -> list:
     """Fetch all connected social accounts from PostBridge."""
     try:
-        resp = requests.get(f"{POSTBRIDGE_BASE}/social-accounts", headers=HEADERS, timeout=15)
+        resp = requests.get(
+            f"{POSTBRIDGE_BASE}/social-accounts", headers=HEADERS, timeout=15
+        )
         resp.raise_for_status()
         data = resp.json()
         # Handle both list and dict with 'data' key
@@ -71,16 +74,20 @@ def get_accounts_by_platform(platform: str = None) -> list:
         accounts = []
         for plat, ids in KNOWN_ACCOUNTS.items():
             for acc_id in ids:
-                accounts.append({
-                    "id": acc_id,
-                    "platform": plat,
-                    "name": f"{plat}_{acc_id}",
-                    "status": "unknown"
-                })
+                accounts.append(
+                    {
+                        "id": acc_id,
+                        "platform": plat,
+                        "name": f"{plat}_{acc_id}",
+                        "status": "unknown",
+                    }
+                )
 
     if platform:
         platform = platform.lower()
-        accounts = [a for a in accounts if str(a.get("platform", "")).lower() == platform]
+        accounts = [
+            a for a in accounts if str(a.get("platform", "")).lower() == platform
+        ]
 
     return accounts
 
@@ -99,7 +106,9 @@ def get_account_warmup_level(account_id: int) -> int:
         state[key] = {"first_seen": date.today().isoformat(), "total_actions": 0}
         _save_state(state)
 
-    first_seen = date.fromisoformat(state[key].get("first_seen", date.today().isoformat()))
+    first_seen = date.fromisoformat(
+        state[key].get("first_seen", date.today().isoformat())
+    )
     days_active = (date.today() - first_seen).days + 1
 
     if days_active <= 3:
@@ -150,14 +159,16 @@ def get_account_status_report() -> dict:
             state = _load_state()
             key = str(acc_id)
             first_seen = state.get(key, {}).get("first_seen", "new")
-            report[platform].append({
-                "id": acc_id,
-                "daily_limit": limit,
-                "used_today": used,
-                "remaining": max(0, limit - used),
-                "can_act": can_act(acc_id),
-                "first_seen": first_seen
-            })
+            report[platform].append(
+                {
+                    "id": acc_id,
+                    "daily_limit": limit,
+                    "used_today": used,
+                    "remaining": max(0, limit - used),
+                    "can_act": can_act(acc_id),
+                    "first_seen": first_seen,
+                }
+            )
     return report
 
 
@@ -168,7 +179,9 @@ def print_status():
         print(f"\n[{platform.upper()}]")
         for acc in accounts:
             status = "✅" if acc["can_act"] else "🔴"
-            print(f"  {status} ID {acc['id']} | limit:{acc['daily_limit']} used:{acc['used_today']} remaining:{acc['remaining']} | first_seen:{acc['first_seen']}")
+            print(
+                f"  {status} ID {acc['id']} | limit:{acc['daily_limit']} used:{acc['used_today']} remaining:{acc['remaining']} | first_seen:{acc['first_seen']}"
+            )
 
 
 if __name__ == "__main__":

@@ -23,18 +23,20 @@ def parse_flow_data(flow_file: str) -> list:
         with open(flow_file) as f:
             reader = csv.DictReader(f)
             for row in reader:
-                flows.append({
-                    "src_ip": row.get("src_ip", ""),
-                    "dst_ip": row.get("dst_ip", ""),
-                    "src_port": int(row.get("src_port", 0)),
-                    "dst_port": int(row.get("dst_port", 0)),
-                    "protocol": row.get("protocol", "tcp").lower(),
-                    "bytes": int(row.get("bytes", 0)),
-                    "packets": int(row.get("packets", 0)),
-                    "timestamp": row.get("timestamp", ""),
-                    "src_label": row.get("src_label", ""),
-                    "dst_label": row.get("dst_label", ""),
-                })
+                flows.append(
+                    {
+                        "src_ip": row.get("src_ip", ""),
+                        "dst_ip": row.get("dst_ip", ""),
+                        "src_port": int(row.get("src_port", 0)),
+                        "dst_port": int(row.get("dst_port", 0)),
+                        "protocol": row.get("protocol", "tcp").lower(),
+                        "bytes": int(row.get("bytes", 0)),
+                        "packets": int(row.get("packets", 0)),
+                        "timestamp": row.get("timestamp", ""),
+                        "src_label": row.get("src_label", ""),
+                        "dst_label": row.get("dst_label", ""),
+                    }
+                )
     elif path.suffix == ".json":
         with open(flow_file) as f:
             flows = json.load(f)
@@ -43,10 +45,17 @@ def parse_flow_data(flow_file: str) -> list:
 
 def build_dependency_map(flows: list) -> dict:
     """Build an application dependency map from flow data."""
-    dep_map = defaultdict(lambda: defaultdict(lambda: {
-        "ports": set(), "protocols": set(), "total_bytes": 0,
-        "total_packets": 0, "flow_count": 0
-    }))
+    dep_map = defaultdict(
+        lambda: defaultdict(
+            lambda: {
+                "ports": set(),
+                "protocols": set(),
+                "total_bytes": 0,
+                "total_packets": 0,
+                "flow_count": 0,
+            }
+        )
+    )
 
     for flow in flows:
         src = flow.get("src_label") or flow["src_ip"]
@@ -83,28 +92,32 @@ def generate_segmentation_rules(dep_map: dict, default_action: str = "deny") -> 
         for dst, stats in destinations.items():
             for port in stats["ports"]:
                 for proto in stats["protocols"]:
-                    rules.append({
-                        "id": rule_id,
-                        "action": "allow",
-                        "src": src,
-                        "dst": dst,
-                        "port": port,
-                        "protocol": proto,
-                        "justification": f"Observed {stats['flow_count']} flows, {stats['total_bytes']} bytes",
-                        "status": "proposed",
-                    })
+                    rules.append(
+                        {
+                            "id": rule_id,
+                            "action": "allow",
+                            "src": src,
+                            "dst": dst,
+                            "port": port,
+                            "protocol": proto,
+                            "justification": f"Observed {stats['flow_count']} flows, {stats['total_bytes']} bytes",
+                            "status": "proposed",
+                        }
+                    )
                     rule_id += 1
 
-    rules.append({
-        "id": rule_id,
-        "action": default_action,
-        "src": "any",
-        "dst": "any",
-        "port": "any",
-        "protocol": "any",
-        "justification": "Default deny - zero trust baseline",
-        "status": "proposed",
-    })
+    rules.append(
+        {
+            "id": rule_id,
+            "action": default_action,
+            "src": "any",
+            "dst": "any",
+            "port": "any",
+            "protocol": "any",
+            "justification": "Default deny - zero trust baseline",
+            "status": "proposed",
+        }
+    )
     return rules
 
 
@@ -145,22 +158,34 @@ def validate_policy_against_flows(policy_rules: list, flows: list) -> dict:
         if not matched:
             if has_default_deny:
                 results["blocked_flows"] += 1
-                results["blocked_details"].append({
-                    "src": src, "dst": dst, "port": port, "protocol": proto,
-                    "timestamp": flow.get("timestamp", ""),
-                })
+                results["blocked_details"].append(
+                    {
+                        "src": src,
+                        "dst": dst,
+                        "port": port,
+                        "protocol": proto,
+                        "timestamp": flow.get("timestamp", ""),
+                    }
+                )
             else:
                 results["unmatched_flows"] += 1
-                results["unmatched_details"].append({
-                    "src": src, "dst": dst, "port": port, "protocol": proto,
-                })
+                results["unmatched_details"].append(
+                    {
+                        "src": src,
+                        "dst": dst,
+                        "port": port,
+                        "protocol": proto,
+                    }
+                )
 
     return results
 
 
 def identify_segmentation_zones(flows: list, workload_labels: dict) -> dict:
     """Identify natural segmentation zones from flow patterns and labels."""
-    zones = defaultdict(lambda: {"workloads": set(), "internal_flows": 0, "external_flows": 0})
+    zones = defaultdict(
+        lambda: {"workloads": set(), "internal_flows": 0, "external_flows": 0}
+    )
 
     for flow in flows:
         src_ip = flow["src_ip"]
@@ -186,8 +211,9 @@ def identify_segmentation_zones(flows: list, workload_labels: dict) -> dict:
             "internal_flows": stats["internal_flows"],
             "external_flows": stats["external_flows"],
             "isolation_ratio": round(
-                stats["internal_flows"] / max(stats["internal_flows"] + stats["external_flows"], 1),
-                2
+                stats["internal_flows"]
+                / max(stats["internal_flows"] + stats["external_flows"], 1),
+                2,
             ),
         }
     return serializable
@@ -216,21 +242,25 @@ def detect_anomalous_flows(flows: list, policy_rules: list) -> list:
         )
 
         if not is_allowed:
-            anomalies.append({
-                "src": src,
-                "dst": dst,
-                "port": port,
-                "protocol": proto,
-                "bytes": flow.get("bytes", 0),
-                "timestamp": flow.get("timestamp", ""),
-                "severity": "high" if port in [22, 3389, 445, 135] else "medium",
-                "reason": "Flow not covered by any allow rule",
-            })
+            anomalies.append(
+                {
+                    "src": src,
+                    "dst": dst,
+                    "port": port,
+                    "protocol": proto,
+                    "bytes": flow.get("bytes", 0),
+                    "timestamp": flow.get("timestamp", ""),
+                    "severity": "high" if port in [22, 3389, 445, 135] else "medium",
+                    "reason": "Flow not covered by any allow rule",
+                }
+            )
 
     return sorted(anomalies, key=lambda x: x["severity"])
 
 
-def generate_segmentation_report(flows: list, policy_rules: list, workload_labels: dict) -> dict:
+def generate_segmentation_report(
+    flows: list, policy_rules: list, workload_labels: dict
+) -> dict:
     """Generate comprehensive microsegmentation report."""
     dep_map = build_dependency_map(flows)
     zones = identify_segmentation_zones(flows, workload_labels)
@@ -257,9 +287,7 @@ def generate_segmentation_report(flows: list, policy_rules: list, workload_label
         "zones": zones,
         "validation": validation,
         "anomalies": anomalies[:50],
-        "dependency_map_summary": {
-            src: len(dsts) for src, dsts in dep_map.items()
-        },
+        "dependency_map_summary": {src: len(dsts) for src, dsts in dep_map.items()},
     }
 
 
@@ -270,9 +298,15 @@ def main():
     parser.add_argument("--flows", type=str, help="Path to flow data (CSV or JSON)")
     parser.add_argument("--policy", type=str, help="Path to policy rules JSON")
     parser.add_argument("--labels", type=str, help="Path to workload labels JSON")
-    parser.add_argument("--action", choices=["map", "rules", "validate", "report", "anomalies"],
-                        default="report", help="Action to perform")
-    parser.add_argument("--output", type=str, default="segmentation_report.json", help="Output file")
+    parser.add_argument(
+        "--action",
+        choices=["map", "rules", "validate", "report", "anomalies"],
+        default="report",
+        help="Action to perform",
+    )
+    parser.add_argument(
+        "--output", type=str, default="segmentation_report.json", help="Output file"
+    )
     args = parser.parse_args()
 
     if not args.flows:
@@ -312,7 +346,9 @@ def main():
         results = validate_policy_against_flows(policy_rules, flows)
         with open(args.output, "w") as f:
             json.dump(results, f, indent=2)
-        print(f"Allowed: {results['allowed_flows']}, Blocked: {results['blocked_flows']}")
+        print(
+            f"Allowed: {results['allowed_flows']}, Blocked: {results['blocked_flows']}"
+        )
 
     elif args.action == "anomalies":
         if not policy_rules:

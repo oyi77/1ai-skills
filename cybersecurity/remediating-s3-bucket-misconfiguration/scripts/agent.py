@@ -27,12 +27,14 @@ def check_public_access_block(s3, bucket):
     try:
         config = s3.get_public_access_block(Bucket=bucket)
         block = config["PublicAccessBlockConfiguration"]
-        all_blocked = all([
-            block.get("BlockPublicAcls", False),
-            block.get("IgnorePublicAcls", False),
-            block.get("BlockPublicPolicy", False),
-            block.get("RestrictPublicBuckets", False),
-        ])
+        all_blocked = all(
+            [
+                block.get("BlockPublicAcls", False),
+                block.get("IgnorePublicAcls", False),
+                block.get("BlockPublicPolicy", False),
+                block.get("RestrictPublicBuckets", False),
+            ]
+        )
         return {"bucket": bucket, "block_config": block, "fully_blocked": all_blocked}
     except ClientError as e:
         if e.response["Error"]["Code"] == "NoSuchPublicAccessBlockConfiguration":
@@ -50,13 +52,15 @@ def check_bucket_policy(s3, bucket):
             effect = stmt.get("Effect", "")
             if principal == "*" or principal == {"AWS": "*"}:
                 if effect == "Allow":
-                    findings.append({
-                        "sid": stmt.get("Sid", "unnamed"),
-                        "effect": effect,
-                        "principal": str(principal),
-                        "action": stmt.get("Action"),
-                        "risk": "CRITICAL",
-                    })
+                    findings.append(
+                        {
+                            "sid": stmt.get("Sid", "unnamed"),
+                            "effect": effect,
+                            "principal": str(principal),
+                            "action": stmt.get("Action"),
+                            "risk": "CRITICAL",
+                        }
+                    )
         return {"bucket": bucket, "has_policy": True, "public_statements": findings}
     except ClientError as e:
         if e.response["Error"]["Code"] == "NoSuchBucketPolicy":
@@ -72,11 +76,17 @@ def check_bucket_acl(s3, bucket):
         grantee = grant.get("Grantee", {})
         uri = grantee.get("URI", "")
         if "AllUsers" in uri or "AuthenticatedUsers" in uri:
-            public_grants.append({
-                "grantee": uri,
-                "permission": grant.get("Permission"),
-                "risk": "CRITICAL" if grant.get("Permission") in ("FULL_CONTROL", "WRITE") else "HIGH",
-            })
+            public_grants.append(
+                {
+                    "grantee": uri,
+                    "permission": grant.get("Permission"),
+                    "risk": (
+                        "CRITICAL"
+                        if grant.get("Permission") in ("FULL_CONTROL", "WRITE")
+                        else "HIGH"
+                    ),
+                }
+            )
     return {"bucket": bucket, "public_grants": public_grants}
 
 
@@ -91,7 +101,10 @@ def check_encryption(s3, bucket):
             encryption = sse.get("SSEAlgorithm")
         return {"bucket": bucket, "encrypted": True, "algorithm": encryption}
     except ClientError as e:
-        if e.response["Error"]["Code"] == "ServerSideEncryptionConfigurationNotFoundError":
+        if (
+            e.response["Error"]["Code"]
+            == "ServerSideEncryptionConfigurationNotFoundError"
+        ):
             return {"bucket": bucket, "encrypted": False, "algorithm": None}
         raise
 
@@ -134,10 +147,12 @@ def enable_public_access_block(s3, bucket):
 def enable_encryption(s3, bucket, algorithm="aws:kms"):
     """Enable default encryption on a bucket."""
     config = {
-        "Rules": [{
-            "ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": algorithm},
-            "BucketKeyEnabled": True,
-        }]
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": algorithm},
+                "BucketKeyEnabled": True,
+            }
+        ]
     }
     s3.put_bucket_encryption(
         Bucket=bucket,
@@ -166,7 +181,9 @@ def audit_all_buckets(s3):
             finding["issues"].append("Public access block not fully enabled")
         policy = check_bucket_policy(s3, bucket)
         if policy["public_statements"]:
-            finding["issues"].append(f"{len(policy['public_statements'])} public policy statement(s)")
+            finding["issues"].append(
+                f"{len(policy['public_statements'])} public policy statement(s)"
+            )
         acl = check_bucket_acl(s3, bucket)
         if acl["public_grants"]:
             finding["issues"].append(f"{len(acl['public_grants'])} public ACL grant(s)")
@@ -180,8 +197,14 @@ def audit_all_buckets(s3):
         if not log["logging_enabled"]:
             finding["issues"].append("Access logging disabled")
         finding["issue_count"] = len(finding["issues"])
-        finding["risk"] = "CRITICAL" if any("public" in i.lower() for i in finding["issues"]) else (
-            "HIGH" if finding["issue_count"] >= 3 else "MEDIUM" if finding["issue_count"] >= 1 else "LOW"
+        finding["risk"] = (
+            "CRITICAL"
+            if any("public" in i.lower() for i in finding["issues"])
+            else (
+                "HIGH"
+                if finding["issue_count"] >= 3
+                else "MEDIUM" if finding["issue_count"] >= 1 else "LOW"
+            )
         )
         results.append(finding)
     return sorted(results, key=lambda x: -x["issue_count"])

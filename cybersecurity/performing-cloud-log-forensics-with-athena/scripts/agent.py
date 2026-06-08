@@ -13,7 +13,6 @@ from datetime import datetime, timedelta
 import boto3
 from botocore.exceptions import ClientError
 
-
 CLOUDTRAIL_DDL = """
 CREATE EXTERNAL TABLE IF NOT EXISTS {database}.cloudtrail_logs (
     eventVersion STRING,
@@ -642,11 +641,11 @@ class AthenaForensicsAgent:
         report["summary"]["overall_severity"] = (
             "CRITICAL"
             if len(critical_indicators) >= 3
-            else "HIGH"
-            if len(critical_indicators) >= 2
-            else "MEDIUM"
-            if len(critical_indicators) >= 1
-            else "LOW"
+            else (
+                "HIGH"
+                if len(critical_indicators) >= 2
+                else "MEDIUM" if len(critical_indicators) >= 1 else "LOW"
+            )
         )
 
         return report
@@ -684,9 +683,7 @@ class AthenaForensicsAgent:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="AWS Athena Cloud Log Forensics Agent"
-    )
+    parser = argparse.ArgumentParser(description="AWS Athena Cloud Log Forensics Agent")
     parser.add_argument(
         "--action",
         required=True,
@@ -777,9 +774,7 @@ def main():
             "timeline_events": results or [],
         }
     else:
-        results = agent.run_forensic_query(
-            args.action, args.start_date, args.end_date
-        )
+        results = agent.run_forensic_query(args.action, args.start_date, args.end_date)
         report = {
             "investigation_type": args.action,
             "generated_at": datetime.utcnow().isoformat(),

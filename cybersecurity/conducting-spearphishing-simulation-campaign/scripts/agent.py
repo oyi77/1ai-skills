@@ -11,6 +11,7 @@ from datetime import datetime
 
 try:
     import requests
+
     requests.packages.urllib3.disable_warnings()
 except ImportError:
     print("Install: pip install requests")
@@ -25,18 +26,31 @@ class GoPhishCampaign:
         self.headers = {"Authorization": f"Bearer {api_key}"}
 
     def _req(self, method, endpoint, data=None):
-        resp = requests.request(method, f"{self.url}/api/{endpoint}",
-                                headers=self.headers, json=data, verify=False)
+        resp = requests.request(
+            method,
+            f"{self.url}/api/{endpoint}",
+            headers=self.headers,
+            json=data,
+            verify=False,
+        )
         resp.raise_for_status()
         return resp.json()
 
-    def create_campaign(self, name, template_id, page_id, smtp_id, group_id, launch_date=None):
-        return self._req("POST", "campaigns/", {
-            "name": name, "template": {"id": template_id},
-            "page": {"id": page_id}, "smtp": {"id": smtp_id},
-            "groups": [{"id": group_id}],
-            "launch_date": launch_date or datetime.utcnow().isoformat() + "Z",
-        })
+    def create_campaign(
+        self, name, template_id, page_id, smtp_id, group_id, launch_date=None
+    ):
+        return self._req(
+            "POST",
+            "campaigns/",
+            {
+                "name": name,
+                "template": {"id": template_id},
+                "page": {"id": page_id},
+                "smtp": {"id": smtp_id},
+                "groups": [{"id": group_id}],
+                "launch_date": launch_date or datetime.utcnow().isoformat() + "Z",
+            },
+        )
 
     def get_summary(self, campaign_id):
         return self._req("GET", f"campaigns/{campaign_id}/summary")
@@ -91,7 +105,9 @@ def analyze_campaign_metrics(summary):
         "reported": stats.get("email_reported", 0),
         "open_rate_pct": round(stats.get("opened", 0) / max(total, 1) * 100, 1),
         "click_rate_pct": round(stats.get("clicked", 0) / max(total, 1) * 100, 1),
-        "submit_rate_pct": round(stats.get("submitted_data", 0) / max(total, 1) * 100, 1),
+        "submit_rate_pct": round(
+            stats.get("submitted_data", 0) / max(total, 1) * 100, 1
+        ),
     }
 
 

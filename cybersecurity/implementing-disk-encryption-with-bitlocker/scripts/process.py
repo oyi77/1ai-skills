@@ -55,7 +55,9 @@ def check_bitlocker_status() -> dict:
     try:
         result = subprocess.run(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            capture_output=True, text=True, timeout=30,
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         if result.returncode == 0 and result.stdout.strip():
             return json.loads(result.stdout)
@@ -95,18 +97,27 @@ def assess_compliance(status: dict) -> dict:
 
         if vol["ProtectionStatus"] != "On":
             vol_finding["compliant"] = False
-            vol_finding["issues"].append(f"Protection not enabled: {vol['ProtectionStatus']}")
+            vol_finding["issues"].append(
+                f"Protection not enabled: {vol['ProtectionStatus']}"
+            )
 
         if vol["EncryptionMethod"] not in ("XtsAes256", "XtsAes128"):
-            vol_finding["issues"].append(f"Weak encryption method: {vol['EncryptionMethod']}")
+            vol_finding["issues"].append(
+                f"Weak encryption method: {vol['EncryptionMethod']}"
+            )
 
         protector_types = [kp["Type"] for kp in vol.get("KeyProtectors", [])]
-        has_recovery = "RecoveryPassword" in protector_types or "NumericalPassword" in protector_types
+        has_recovery = (
+            "RecoveryPassword" in protector_types
+            or "NumericalPassword" in protector_types
+        )
         if not has_recovery:
             vol_finding["compliant"] = False
             vol_finding["issues"].append("No recovery password protector configured")
 
-        has_tpm = any(t in protector_types for t in ["Tpm", "TpmPin", "TpmPinStartupKey"])
+        has_tpm = any(
+            t in protector_types for t in ["Tpm", "TpmPin", "TpmPinStartupKey"]
+        )
         if vol["VolumeType"] == "OperatingSystem" and not has_tpm:
             vol_finding["compliant"] = False
             vol_finding["issues"].append("OS volume missing TPM protector")
@@ -124,23 +135,27 @@ def generate_report(status: dict, compliance: dict, output_path: str) -> None:
     report = {
         "report_generated": datetime.utcnow().isoformat() + "Z",
         "hostname": status.get("Hostname", "unknown"),
-        "overall_compliance": "COMPLIANT" if compliance["overall_compliant"] else "NON-COMPLIANT",
+        "overall_compliance": (
+            "COMPLIANT" if compliance["overall_compliant"] else "NON-COMPLIANT"
+        ),
         "tpm_status": compliance["tpm_status"],
         "tpm_details": status.get("TPM", {}),
         "volumes": [],
     }
 
     for vol, finding in zip(status.get("Volumes", []), compliance["volume_findings"]):
-        report["volumes"].append({
-            "mount_point": vol["MountPoint"],
-            "status": vol["VolumeStatus"],
-            "protection": vol["ProtectionStatus"],
-            "encryption_method": vol["EncryptionMethod"],
-            "encryption_percent": vol["EncryptionPercentage"],
-            "key_protectors": [kp["Type"] for kp in vol.get("KeyProtectors", [])],
-            "compliant": finding["compliant"],
-            "issues": finding["issues"],
-        })
+        report["volumes"].append(
+            {
+                "mount_point": vol["MountPoint"],
+                "status": vol["VolumeStatus"],
+                "protection": vol["ProtectionStatus"],
+                "encryption_method": vol["EncryptionMethod"],
+                "encryption_percent": vol["EncryptionPercentage"],
+                "key_protectors": [kp["Type"] for kp in vol.get("KeyProtectors", [])],
+                "compliant": finding["compliant"],
+                "issues": finding["issues"],
+            }
+        )
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
@@ -166,7 +181,9 @@ if __name__ == "__main__":
 
     print(f"\n--- BitLocker Compliance ---")
     print(f"Hostname: {compliance['hostname']}")
-    print(f"Overall: {'COMPLIANT' if compliance['overall_compliant'] else 'NON-COMPLIANT'}")
+    print(
+        f"Overall: {'COMPLIANT' if compliance['overall_compliant'] else 'NON-COMPLIANT'}"
+    )
     print(f"TPM: {compliance['tpm_status']}")
 
     for vf in compliance["volume_findings"]:

@@ -34,20 +34,28 @@ class KubesecScanAgent:
 
         findings = []
         for item in parsed:
-            findings.append({
-                "object": item.get("object", ""),
-                "score": item.get("score", 0),
-                "message": item.get("message", ""),
-                "passed": [p.get("id") for p in item.get("scoring", {}).get("passed", [])],
-                "advise": [
-                    {"id": a.get("id"), "reason": a.get("reason"), "points": a.get("points")}
-                    for a in item.get("scoring", {}).get("advise", [])
-                ],
-                "critical": [
-                    {"id": c.get("id"), "reason": c.get("reason")}
-                    for c in item.get("scoring", {}).get("critical", [])
-                ],
-            })
+            findings.append(
+                {
+                    "object": item.get("object", ""),
+                    "score": item.get("score", 0),
+                    "message": item.get("message", ""),
+                    "passed": [
+                        p.get("id") for p in item.get("scoring", {}).get("passed", [])
+                    ],
+                    "advise": [
+                        {
+                            "id": a.get("id"),
+                            "reason": a.get("reason"),
+                            "points": a.get("points"),
+                        }
+                        for a in item.get("scoring", {}).get("advise", [])
+                    ],
+                    "critical": [
+                        {"id": c.get("id"), "reason": c.get("reason")}
+                        for c in item.get("scoring", {}).get("critical", [])
+                    ],
+                }
+            )
 
         scan = {
             "file": manifest_path,
@@ -61,27 +69,42 @@ class KubesecScanAgent:
         """Fallback: scan via Kubesec public HTTP API."""
         try:
             import requests
+
             with open(manifest_path, "rb") as f:
-                resp = requests.post("https://v2.kubesec.io/scan",
-                                     data=f.read(), timeout=30)
+                resp = requests.post(
+                    "https://v2.kubesec.io/scan", data=f.read(), timeout=30
+                )
             parsed = resp.json()
             findings = []
             for item in parsed:
-                findings.append({
-                    "object": item.get("object", ""),
-                    "score": item.get("score", 0),
-                    "message": item.get("message", ""),
-                    "passed": [p.get("id") for p in item.get("scoring", {}).get("passed", [])],
-                    "advise": [
-                        {"id": a.get("id"), "reason": a.get("reason"), "points": a.get("points")}
-                        for a in item.get("scoring", {}).get("advise", [])
-                    ],
-                    "critical": [
-                        {"id": c.get("id"), "reason": c.get("reason")}
-                        for c in item.get("scoring", {}).get("critical", [])
-                    ],
-                })
-            scan = {"file": manifest_path, "scan_date": datetime.utcnow().isoformat(), "findings": findings}
+                findings.append(
+                    {
+                        "object": item.get("object", ""),
+                        "score": item.get("score", 0),
+                        "message": item.get("message", ""),
+                        "passed": [
+                            p.get("id")
+                            for p in item.get("scoring", {}).get("passed", [])
+                        ],
+                        "advise": [
+                            {
+                                "id": a.get("id"),
+                                "reason": a.get("reason"),
+                                "points": a.get("points"),
+                            }
+                            for a in item.get("scoring", {}).get("advise", [])
+                        ],
+                        "critical": [
+                            {"id": c.get("id"), "reason": c.get("reason")}
+                            for c in item.get("scoring", {}).get("critical", [])
+                        ],
+                    }
+                )
+            scan = {
+                "file": manifest_path,
+                "scan_date": datetime.utcnow().isoformat(),
+                "findings": findings,
+            }
             self.scan_results.append(scan)
             return scan
         except Exception as e:
@@ -101,17 +124,21 @@ class KubesecScanAgent:
         for scan in self.scan_results:
             for finding in scan.get("findings", []):
                 if finding.get("score", 0) < min_score:
-                    failures.append({
-                        "file": scan["file"],
-                        "object": finding["object"],
-                        "score": finding["score"],
-                    })
+                    failures.append(
+                        {
+                            "file": scan["file"],
+                            "object": finding["object"],
+                            "score": finding["score"],
+                        }
+                    )
                 if finding.get("critical"):
-                    failures.append({
-                        "file": scan["file"],
-                        "object": finding["object"],
-                        "critical_issues": finding["critical"],
-                    })
+                    failures.append(
+                        {
+                            "file": scan["file"],
+                            "object": finding["object"],
+                            "critical_issues": finding["critical"],
+                        }
+                    )
         return {"gate": "FAILED" if failures else "PASSED", "failures": failures}
 
     def generate_report(self):

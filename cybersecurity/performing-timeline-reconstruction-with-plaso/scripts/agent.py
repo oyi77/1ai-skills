@@ -14,7 +14,9 @@ def verify_plaso_installed():
     tools = {}
     for tool in ["log2timeline.py", "psort.py"]:
         result = subprocess.run(
-            [tool, "--version"], capture_output=True, text=True,
+            [tool, "--version"],
+            capture_output=True,
+            text=True,
             timeout=120,
         )
         tools[tool] = result.stdout.strip() if result.returncode == 0 else None
@@ -38,8 +40,9 @@ def run_log2timeline(image_path, storage_file, parsers=None, filter_file=None):
     }
 
 
-def run_psort_export(storage_file, output_file, output_format="l2tcsv",
-                     date_filter=None):
+def run_psort_export(
+    storage_file, output_file, output_format="l2tcsv", date_filter=None
+):
     """Export timeline from Plaso storage using psort.py."""
     cmd = ["psort.py", "-o", output_format, "-w", output_file, storage_file]
     if date_filter:
@@ -92,9 +95,7 @@ def analyze_timeline_csv(csv_path, max_rows=500000):
             except (ValueError, TypeError):
                 pass
     avg_per_hour = total / max(len(events_by_hour), 1)
-    spikes = {
-        h: c for h, c in events_by_hour.items() if c > avg_per_hour * 3
-    }
+    spikes = {h: c for h, c in events_by_hour.items() if c > avg_per_hour * 3}
     return {
         "total_events": total,
         "source_counts": dict(sorted(source_counts.items(), key=lambda x: -x[1])),
@@ -120,7 +121,9 @@ def full_pipeline(image_path, output_dir, parsers=None, start_date=None, end_dat
     filter_path = os.path.join(output_dir, "filter.txt")
     create_filter_file(filter_path)
     results = {"steps": []}
-    l2t_result = run_log2timeline(image_path, storage_file, parsers=parsers, filter_file=filter_path)
+    l2t_result = run_log2timeline(
+        image_path, storage_file, parsers=parsers, filter_file=filter_path
+    )
     results["steps"].append({"step": "log2timeline", **l2t_result})
     if l2t_result["returncode"] != 0:
         results["error"] = "log2timeline failed"
@@ -131,7 +134,9 @@ def full_pipeline(image_path, output_dir, parsers=None, start_date=None, end_dat
     if os.path.exists(full_csv):
         results["analysis"] = analyze_timeline_csv(full_csv)
     if start_date and end_date:
-        window_result = generate_incident_window(storage_file, output_dir, start_date, end_date)
+        window_result = generate_incident_window(
+            storage_file, output_dir, start_date, end_date
+        )
         results["steps"].append({"step": "incident_window", **window_result})
         window_csv = os.path.join(output_dir, "incident_window.csv")
         if os.path.exists(window_csv):
@@ -162,7 +167,9 @@ def print_report(results):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: python agent.py <disk_image> <output_dir> [start_date] [end_date]")
+        print(
+            "Usage: python agent.py <disk_image> <output_dir> [start_date] [end_date]"
+        )
         sys.exit(1)
     image = sys.argv[1]
     out_dir = sys.argv[2]

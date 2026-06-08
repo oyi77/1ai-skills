@@ -31,14 +31,16 @@ def detect_brute_force(logs, failure_threshold=10, window_minutes=5):
     findings = []
     for ip, timestamps in ip_failures.items():
         if len(timestamps) >= failure_threshold:
-            findings.append({
-                "client_ip": ip,
-                "auth_failures": len(timestamps),
-                "severity": "CRITICAL" if len(timestamps) > 50 else "HIGH",
-                "category": "brute_force",
-                "first_seen": timestamps[0],
-                "last_seen": timestamps[-1],
-            })
+            findings.append(
+                {
+                    "client_ip": ip,
+                    "auth_failures": len(timestamps),
+                    "severity": "CRITICAL" if len(timestamps) > 50 else "HIGH",
+                    "category": "brute_force",
+                    "first_seen": timestamps[0],
+                    "last_seen": timestamps[-1],
+                }
+            )
     return sorted(findings, key=lambda x: x["auth_failures"], reverse=True)
 
 
@@ -54,13 +56,15 @@ def detect_api_scraping(logs, threshold=500):
     findings = []
     for ip, count in ip_counts.items():
         if count >= threshold:
-            findings.append({
-                "client_ip": ip,
-                "total_requests": count,
-                "unique_endpoints": len(ip_endpoints[ip]),
-                "severity": "HIGH",
-                "category": "api_scraping",
-            })
+            findings.append(
+                {
+                    "client_ip": ip,
+                    "total_requests": count,
+                    "unique_endpoints": len(ip_endpoints[ip]),
+                    "severity": "HIGH",
+                    "category": "api_scraping",
+                }
+            )
     return sorted(findings, key=lambda x: x["total_requests"], reverse=True)
 
 
@@ -76,12 +80,14 @@ def detect_credential_stuffing(logs, threshold=20):
     findings = []
     for ip, users in ip_users.items():
         if len(users) >= threshold:
-            findings.append({
-                "client_ip": ip,
-                "unique_usernames": len(users),
-                "severity": "CRITICAL",
-                "category": "credential_stuffing",
-            })
+            findings.append(
+                {
+                    "client_ip": ip,
+                    "unique_usernames": len(users),
+                    "severity": "CRITICAL",
+                    "category": "credential_stuffing",
+                }
+            )
     return sorted(findings, key=lambda x: x["unique_usernames"], reverse=True)
 
 
@@ -95,13 +101,15 @@ def detect_rate_limit_bypass(logs):
         ip_ua_combos[ip].add(ua)
     for ip, agents in ip_ua_combos.items():
         if len(agents) >= 10:
-            findings.append({
-                "client_ip": ip,
-                "unique_user_agents": len(agents),
-                "severity": "HIGH",
-                "category": "ua_rotation",
-                "reason": "Rotating User-Agent to bypass rate limits",
-            })
+            findings.append(
+                {
+                    "client_ip": ip,
+                    "unique_user_agents": len(agents),
+                    "severity": "HIGH",
+                    "category": "ua_rotation",
+                    "reason": "Rotating User-Agent to bypass rate limits",
+                }
+            )
     ip_429_count = Counter()
     for entry in logs:
         if int(entry.get("status_code", entry.get("status", 0))) == 429:
@@ -109,13 +117,15 @@ def detect_rate_limit_bypass(logs):
             ip_429_count[ip] += 1
     for ip, count in ip_429_count.items():
         if count >= 50:
-            findings.append({
-                "client_ip": ip,
-                "rate_limit_hits": count,
-                "severity": "MEDIUM",
-                "category": "rate_limit_persistence",
-                "reason": "Continuing requests after rate limiting",
-            })
+            findings.append(
+                {
+                    "client_ip": ip,
+                    "rate_limit_hits": count,
+                    "severity": "MEDIUM",
+                    "category": "rate_limit_persistence",
+                    "reason": "Continuing requests after rate limiting",
+                }
+            )
     return findings
 
 
@@ -125,8 +135,11 @@ def generate_rate_limit_config(logs):
     for entry in logs:
         path = entry.get("path", entry.get("endpoint", ""))
         endpoint_counts[path] += 1
-    auth_endpoints = [p for p in endpoint_counts if any(
-        k in p for k in ["login", "auth", "signin", "register", "password"])]
+    auth_endpoints = [
+        p
+        for p in endpoint_counts
+        if any(k in p for k in ["login", "auth", "signin", "register", "password"])
+    ]
     config = {
         "global": {"requests_per_minute": 100, "burst": 20},
         "auth_endpoints": {
@@ -148,14 +161,26 @@ def main():
     parser = argparse.ArgumentParser(description="API Abuse Detection Agent")
     parser.add_argument("--log", required=True, help="API access log (JSON lines)")
     parser.add_argument("--output", default="api_abuse_report.json")
-    parser.add_argument("--action", choices=[
-        "brute_force", "scraping", "stuffing", "bypass", "config", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "brute_force",
+            "scraping",
+            "stuffing",
+            "bypass",
+            "config",
+            "full_analysis",
+        ],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     logs = load_access_logs(args.log)
-    report = {"generated_at": datetime.utcnow().isoformat(), "total_requests": len(logs),
-              "findings": {}}
+    report = {
+        "generated_at": datetime.utcnow().isoformat(),
+        "total_requests": len(logs),
+        "findings": {},
+    }
     print(f"[+] Loaded {len(logs)} API requests")
 
     if args.action in ("brute_force", "full_analysis"):

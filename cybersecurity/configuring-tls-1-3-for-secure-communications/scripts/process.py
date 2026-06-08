@@ -32,7 +32,9 @@ from cryptography.x509.oid import NameOID, ExtensionOID
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec, rsa
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 TLS_13_CIPHERS = [
@@ -187,12 +189,14 @@ def generate_self_signed_cert(
         key_filename = "server-rsa.key"
         cert_filename = "server-rsa.crt"
 
-    subject = issuer = x509.Name([
-        x509.NameAttribute(NameOID.COUNTRY_NAME, "US"),
-        x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, "California"),
-        x509.NameAttribute(NameOID.ORGANIZATION_NAME, "Test Organization"),
-        x509.NameAttribute(NameOID.COMMON_NAME, domain),
-    ])
+    subject = issuer = x509.Name(
+        [
+            x509.NameAttribute(NameOID.COUNTRY_NAME, "US"),
+            x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, "California"),
+            x509.NameAttribute(NameOID.ORGANIZATION_NAME, "Test Organization"),
+            x509.NameAttribute(NameOID.COMMON_NAME, domain),
+        ]
+    )
 
     cert = (
         x509.CertificateBuilder()
@@ -203,10 +207,12 @@ def generate_self_signed_cert(
         .not_valid_before(datetime.datetime.utcnow())
         .not_valid_after(datetime.datetime.utcnow() + datetime.timedelta(days=365))
         .add_extension(
-            x509.SubjectAlternativeName([
-                x509.DNSName(domain),
-                x509.DNSName(f"*.{domain}"),
-            ]),
+            x509.SubjectAlternativeName(
+                [
+                    x509.DNSName(domain),
+                    x509.DNSName(f"*.{domain}"),
+                ]
+            ),
             critical=False,
         )
         .add_extension(
@@ -366,17 +372,23 @@ def main():
     subparsers = parser.add_subparsers(dest="command")
 
     # Test server
-    test = subparsers.add_parser("test-server", help="Test TLS configuration of a server")
+    test = subparsers.add_parser(
+        "test-server", help="Test TLS configuration of a server"
+    )
     test.add_argument("--host", required=True, help="Server hostname")
     test.add_argument("--port", type=int, default=443, help="Server port")
 
     # Check ciphers
-    ciphers = subparsers.add_parser("check-ciphers", help="Check supported cipher suites")
+    ciphers = subparsers.add_parser(
+        "check-ciphers", help="Check supported cipher suites"
+    )
     ciphers.add_argument("--host", required=True, help="Server hostname")
     ciphers.add_argument("--port", type=int, default=443, help="Server port")
 
     # Generate certificate
-    cert = subparsers.add_parser("generate-cert", help="Generate self-signed certificate")
+    cert = subparsers.add_parser(
+        "generate-cert", help="Generate self-signed certificate"
+    )
     cert.add_argument("--domain", required=True, help="Domain name")
     cert.add_argument("--output", default="./certs", help="Output directory")
     cert.add_argument("--key-type", choices=["ecdsa", "rsa"], default="ecdsa")
@@ -386,7 +398,9 @@ def main():
     nginx.add_argument("--domain", required=True, help="Domain name")
     nginx.add_argument("--cert-path", required=True, help="Certificate file path")
     nginx.add_argument("--key-path", required=True, help="Private key file path")
-    nginx.add_argument("--tls12", action="store_true", default=True, help="Enable TLS 1.2")
+    nginx.add_argument(
+        "--tls12", action="store_true", default=True, help="Enable TLS 1.2"
+    )
 
     # Generate Apache config
     apache = subparsers.add_parser("generate-apache", help="Generate Apache TLS config")
@@ -406,7 +420,9 @@ def main():
         result = generate_self_signed_cert(args.domain, args.output, args.key_type)
         print(json.dumps(result, indent=2))
     elif args.command == "generate-nginx":
-        config = generate_nginx_config(args.domain, args.cert_path, args.key_path, args.tls12)
+        config = generate_nginx_config(
+            args.domain, args.cert_path, args.key_path, args.tls12
+        )
         print(config)
     elif args.command == "generate-apache":
         config = generate_apache_config(args.domain, args.cert_path, args.key_path)

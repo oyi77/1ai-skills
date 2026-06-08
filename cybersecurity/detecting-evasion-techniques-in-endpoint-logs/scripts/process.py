@@ -14,7 +14,6 @@ import os
 from collections import defaultdict
 from datetime import datetime
 
-
 EVASION_PATTERNS = {
     "T1070.001-log_clearing": {
         "name": "Indicator Removal: Clear Windows Event Logs",
@@ -104,7 +103,10 @@ def analyze_sysmon_csv(csv_path: str) -> list:
                     detected = True
                     detection_detail = f"Event ID {event_id} detected"
 
-                if "sysmon_event_ids" in technique and event_id in technique["sysmon_event_ids"]:
+                if (
+                    "sysmon_event_ids" in technique
+                    and event_id in technique["sysmon_event_ids"]
+                ):
                     detected = True
                     detection_detail = f"Sysmon Event ID {event_id}"
 
@@ -116,24 +118,28 @@ def analyze_sysmon_csv(csv_path: str) -> list:
 
                 if "suspicious_paths" in technique and image:
                     image_lower = image.lower()
-                    for proc_name, expected_path in technique["suspicious_paths"].items():
+                    for proc_name, expected_path in technique[
+                        "suspicious_paths"
+                    ].items():
                         if proc_name in image_lower:
                             if not re.match(expected_path, image, re.IGNORECASE):
                                 detected = True
                                 detection_detail = f"Masquerading: {proc_name} from unexpected path {image}"
 
                 if detected:
-                    detections.append({
-                        "timestamp": timestamp,
-                        "technique_id": technique_id.split("-")[0],
-                        "technique_name": technique["name"],
-                        "severity": technique["severity"],
-                        "event_id": event_id,
-                        "process": image,
-                        "command_line": command_line[:300],
-                        "detail": detection_detail,
-                        "host": row.get("Computer", row.get("host", "")),
-                    })
+                    detections.append(
+                        {
+                            "timestamp": timestamp,
+                            "technique_id": technique_id.split("-")[0],
+                            "technique_name": technique["name"],
+                            "severity": technique["severity"],
+                            "event_id": event_id,
+                            "process": image,
+                            "command_line": command_line[:300],
+                            "detail": detection_detail,
+                            "host": row.get("Computer", row.get("host", "")),
+                        }
+                    )
 
     return detections
 
@@ -168,7 +174,9 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python process.py <sysmon_events.csv>")
         print()
-        print("Analyzes exported Sysmon/Windows event logs for defense evasion techniques.")
+        print(
+            "Analyzes exported Sysmon/Windows event logs for defense evasion techniques."
+        )
         sys.exit(1)
 
     csv_path = sys.argv[1]

@@ -5,6 +5,7 @@ Audits an OpenTAXII server instance by checking service discovery,
 collection availability, content block statistics, and API health.
 Supports both TAXII 1.1 and 2.0/2.1 endpoints.
 """
+
 import argparse
 import json
 import os
@@ -20,6 +21,7 @@ except ImportError:
 try:
     from taxii2client.v20 import Server as Server20
     from taxii2client.v21 import Server as Server21
+
     HAS_TAXII_CLIENT = True
 except ImportError:
     HAS_TAXII_CLIENT = False
@@ -31,9 +33,11 @@ def check_taxii1_discovery(base_url, username=None, password=None):
     discovery_url = f"{base_url}/services/discovery"
     print(f"[*] Checking TAXII 1.1 discovery: {discovery_url}")
 
-    headers = {"Content-Type": "application/xml",
-               "X-TAXII-Content-Type": "urn:taxii.mitre.org:message:xml:1.1",
-               "X-TAXII-Protocol": "urn:taxii.mitre.org:protocol:http:1.0"}
+    headers = {
+        "Content-Type": "application/xml",
+        "X-TAXII-Content-Type": "urn:taxii.mitre.org:message:xml:1.1",
+        "X-TAXII-Protocol": "urn:taxii.mitre.org:protocol:http:1.0",
+    }
     discovery_xml = (
         '<Discovery_Request xmlns="http://taxii.mitre.org/messages/taxii_xml_binding-1.1" '
         'message_id="1"/>'
@@ -41,29 +45,36 @@ def check_taxii1_discovery(base_url, username=None, password=None):
 
     auth = (username, password) if username else None
     try:
-        resp = requests.post(discovery_url, data=discovery_xml, headers=headers,
-                             auth=auth, timeout=15)
+        resp = requests.post(
+            discovery_url, data=discovery_xml, headers=headers, auth=auth, timeout=15
+        )
         if resp.status_code == 200:
-            findings.append({
-                "check": "TAXII 1.1 Discovery",
-                "status": "PASS",
-                "severity": "INFO",
-                "detail": f"Discovery service responding ({len(resp.content)} bytes)",
-            })
+            findings.append(
+                {
+                    "check": "TAXII 1.1 Discovery",
+                    "status": "PASS",
+                    "severity": "INFO",
+                    "detail": f"Discovery service responding ({len(resp.content)} bytes)",
+                }
+            )
         else:
-            findings.append({
+            findings.append(
+                {
+                    "check": "TAXII 1.1 Discovery",
+                    "status": "FAIL",
+                    "severity": "HIGH",
+                    "detail": f"HTTP {resp.status_code}",
+                }
+            )
+    except requests.RequestException as e:
+        findings.append(
+            {
                 "check": "TAXII 1.1 Discovery",
                 "status": "FAIL",
                 "severity": "HIGH",
-                "detail": f"HTTP {resp.status_code}",
-            })
-    except requests.RequestException as e:
-        findings.append({
-            "check": "TAXII 1.1 Discovery",
-            "status": "FAIL",
-            "severity": "HIGH",
-            "detail": str(e)[:100],
-        })
+                "detail": str(e)[:100],
+            }
+        )
 
     return findings
 
@@ -84,35 +95,44 @@ def check_taxii2_discovery(base_url, username=None, password=None, version="2.1"
             else:
                 server = Server21(base_url, **kwargs)
 
-            findings.append({
-                "check": f"TAXII {version} Discovery",
-                "status": "PASS",
-                "severity": "INFO",
-                "detail": f"Server: {server.title or 'Untitled'}",
-            })
+            findings.append(
+                {
+                    "check": f"TAXII {version} Discovery",
+                    "status": "PASS",
+                    "severity": "INFO",
+                    "detail": f"Server: {server.title or 'Untitled'}",
+                }
+            )
 
             for api_root in server.api_roots:
                 collections = list(api_root.collections)
-                findings.append({
-                    "check": f"API Root: {api_root.title or api_root.url}",
-                    "status": "PASS",
-                    "severity": "INFO",
-                    "detail": f"{len(collections)} collections",
-                    "collections": [{
-                        "id": c.id,
-                        "title": c.title,
-                        "can_read": getattr(c, "can_read", True),
-                        "can_write": getattr(c, "can_write", False),
-                    } for c in collections],
-                })
+                findings.append(
+                    {
+                        "check": f"API Root: {api_root.title or api_root.url}",
+                        "status": "PASS",
+                        "severity": "INFO",
+                        "detail": f"{len(collections)} collections",
+                        "collections": [
+                            {
+                                "id": c.id,
+                                "title": c.title,
+                                "can_read": getattr(c, "can_read", True),
+                                "can_write": getattr(c, "can_write", False),
+                            }
+                            for c in collections
+                        ],
+                    }
+                )
 
         except Exception as e:
-            findings.append({
-                "check": f"TAXII {version} Discovery",
-                "status": "FAIL",
-                "severity": "HIGH",
-                "detail": str(e)[:100],
-            })
+            findings.append(
+                {
+                    "check": f"TAXII {version} Discovery",
+                    "status": "FAIL",
+                    "severity": "HIGH",
+                    "detail": str(e)[:100],
+                }
+            )
     else:
         # Fallback to raw HTTP
         auth = (username, password) if username else None
@@ -121,27 +141,33 @@ def check_taxii2_discovery(base_url, username=None, password=None, version="2.1"
             resp = requests.get(base_url, headers=headers, auth=auth, timeout=15)
             if resp.status_code == 200:
                 data = resp.json()
-                findings.append({
-                    "check": f"TAXII {version} Discovery",
-                    "status": "PASS",
-                    "severity": "INFO",
-                    "detail": f"Title: {data.get('title', 'N/A')}, "
-                              f"API Roots: {len(data.get('api_roots', []))}",
-                })
+                findings.append(
+                    {
+                        "check": f"TAXII {version} Discovery",
+                        "status": "PASS",
+                        "severity": "INFO",
+                        "detail": f"Title: {data.get('title', 'N/A')}, "
+                        f"API Roots: {len(data.get('api_roots', []))}",
+                    }
+                )
             else:
-                findings.append({
+                findings.append(
+                    {
+                        "check": f"TAXII {version} Discovery",
+                        "status": "FAIL",
+                        "severity": "HIGH",
+                        "detail": f"HTTP {resp.status_code}",
+                    }
+                )
+        except requests.RequestException as e:
+            findings.append(
+                {
                     "check": f"TAXII {version} Discovery",
                     "status": "FAIL",
                     "severity": "HIGH",
-                    "detail": f"HTTP {resp.status_code}",
-                })
-        except requests.RequestException as e:
-            findings.append({
-                "check": f"TAXII {version} Discovery",
-                "status": "FAIL",
-                "severity": "HIGH",
-                "detail": str(e)[:100],
-            })
+                    "detail": str(e)[:100],
+                }
+            )
 
     return findings
 
@@ -153,37 +179,45 @@ def check_server_health(base_url):
 
     # Check TLS
     if base_url.startswith("https://"):
-        findings.append({
-            "check": "TLS enabled",
-            "status": "PASS",
-            "severity": "INFO",
-        })
+        findings.append(
+            {
+                "check": "TLS enabled",
+                "status": "PASS",
+                "severity": "INFO",
+            }
+        )
     else:
-        findings.append({
-            "check": "TLS enabled",
-            "status": "FAIL",
-            "severity": "HIGH",
-            "detail": "TAXII server not using HTTPS",
-        })
+        findings.append(
+            {
+                "check": "TLS enabled",
+                "status": "FAIL",
+                "severity": "HIGH",
+                "detail": "TAXII server not using HTTPS",
+            }
+        )
 
     # Check response time
     try:
         resp = requests.get(base_url, timeout=10)
         response_time = resp.elapsed.total_seconds()
         if response_time > 5:
-            findings.append({
-                "check": "Response time",
-                "status": "WARN",
-                "severity": "MEDIUM",
-                "detail": f"{response_time:.2f}s (slow)",
-            })
+            findings.append(
+                {
+                    "check": "Response time",
+                    "status": "WARN",
+                    "severity": "MEDIUM",
+                    "detail": f"{response_time:.2f}s (slow)",
+                }
+            )
         else:
-            findings.append({
-                "check": "Response time",
-                "status": "PASS",
-                "severity": "INFO",
-                "detail": f"{response_time:.2f}s",
-            })
+            findings.append(
+                {
+                    "check": "Response time",
+                    "status": "PASS",
+                    "severity": "INFO",
+                    "detail": f"{response_time:.2f}s",
+                }
+            )
     except requests.RequestException:
         pass
 
@@ -204,7 +238,9 @@ def format_summary(all_findings, base_url):
     print(f"  Failed       : {fail_count}")
 
     for f in all_findings:
-        icon = "OK" if f["status"] == "PASS" else "!!" if f["status"] == "FAIL" else "~~"
+        icon = (
+            "OK" if f["status"] == "PASS" else "!!" if f["status"] == "FAIL" else "~~"
+        )
         print(f"    [{icon}] {f['check']}: {f.get('detail', '')[:50]}")
 
     severity_counts = {}
@@ -228,9 +264,13 @@ def main():
     all_findings.extend(check_server_health(args.url))
 
     if args.version == "1.1":
-        all_findings.extend(check_taxii1_discovery(args.url, args.username, args.password))
+        all_findings.extend(
+            check_taxii1_discovery(args.url, args.username, args.password)
+        )
     else:
-        all_findings.extend(check_taxii2_discovery(args.url, args.username, args.password, args.version))
+        all_findings.extend(
+            check_taxii2_discovery(args.url, args.username, args.password, args.version)
+        )
 
     severity_counts = format_summary(all_findings, args.url)
 

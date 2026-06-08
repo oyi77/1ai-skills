@@ -8,7 +8,9 @@ import subprocess
 import os
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -35,20 +37,24 @@ def check_syscall_hooks(memory_dump, isf_url=None):
             symbol = item.get("Symbol", item.get("symbol", ""))
             module = item.get("Module", item.get("module", ""))
             if module and module != "kernel":
-                hooked.append({
-                    "syscall_number": item.get("Index", item.get("index", "")),
-                    "expected_handler": symbol,
-                    "actual_module": module,
-                    "severity": "critical",
-                    "indicator": "syscall_hook",
-                })
+                hooked.append(
+                    {
+                        "syscall_number": item.get("Index", item.get("index", "")),
+                        "expected_handler": symbol,
+                        "actual_module": module,
+                        "severity": "critical",
+                        "indicator": "syscall_hook",
+                    }
+                )
     return hooked
 
 
 def detect_hidden_modules(memory_dump, isf_url=None):
     """Detect hidden kernel modules using cross-view analysis."""
     lsmod_results = run_vol3_plugin(memory_dump, "linux.lsmod.Lsmod", isf_url)
-    hidden_results = run_vol3_plugin(memory_dump, "linux.hidden_modules.Hidden_modules", isf_url)
+    hidden_results = run_vol3_plugin(
+        memory_dump, "linux.hidden_modules.Hidden_modules", isf_url
+    )
     lsmod_names = set()
     for entry in lsmod_results:
         name = entry.get("Name", entry.get("name", ""))
@@ -58,13 +64,15 @@ def detect_hidden_modules(memory_dump, isf_url=None):
     for entry in hidden_results:
         name = entry.get("Name", entry.get("name", ""))
         if name:
-            hidden.append({
-                "module_name": name,
-                "in_lsmod": name in lsmod_names,
-                "severity": "critical",
-                "indicator": "hidden_kernel_module",
-                "detail": f"Module '{name}' hidden from standard listing",
-            })
+            hidden.append(
+                {
+                    "module_name": name,
+                    "in_lsmod": name in lsmod_names,
+                    "severity": "critical",
+                    "indicator": "hidden_kernel_module",
+                    "detail": f"Module '{name}' hidden from standard listing",
+                }
+            )
     return hidden
 
 
@@ -75,28 +83,38 @@ def check_idt_hooks(memory_dump, isf_url=None):
     for entry in results:
         module = entry.get("Module", entry.get("module", ""))
         if module and module != "kernel":
-            hooked.append({
-                "interrupt": entry.get("Index", ""),
-                "handler_module": module,
-                "severity": "critical",
-                "indicator": "idt_hook",
-            })
+            hooked.append(
+                {
+                    "interrupt": entry.get("Index", ""),
+                    "handler_module": module,
+                    "severity": "critical",
+                    "indicator": "idt_hook",
+                }
+            )
     return hooked
 
 
 def run_rkhunter():
     """Run rkhunter rootkit scanner on live system."""
-    cmd = ["rkhunter", "--check", "--skip-keypress", "--report-warnings-only", "--nocolors"]
+    cmd = [
+        "rkhunter",
+        "--check",
+        "--skip-keypress",
+        "--report-warnings-only",
+        "--nocolors",
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     findings = []
     for line in result.stdout.split("\n"):
         line = line.strip()
         if "Warning:" in line or "[ Warning ]" in line:
-            findings.append({
-                "tool": "rkhunter",
-                "finding": line.replace("Warning:", "").strip(),
-                "severity": "high",
-            })
+            findings.append(
+                {
+                    "tool": "rkhunter",
+                    "finding": line.replace("Warning:", "").strip(),
+                    "severity": "high",
+                }
+            )
     return findings
 
 
@@ -119,16 +137,23 @@ def check_proc_sys_discrepancy():
     for mod in only_in_sys:
         if not os.path.exists(f"/sys/module/{mod}/initstate"):
             continue
-        findings.append({
-            "module": mod, "indicator": "proc_sys_discrepancy",
-            "severity": "high",
-            "detail": f"Module '{mod}' in /sys/module but missing from /proc/modules",
-        })
+        findings.append(
+            {
+                "module": mod,
+                "indicator": "proc_sys_discrepancy",
+                "severity": "high",
+                "detail": f"Module '{mod}' in /sys/module but missing from /proc/modules",
+            }
+        )
     return findings
 
 
-def generate_report(syscall_hooks, hidden_mods, idt_hooks, rkhunter_findings, proc_findings, source):
-    all_findings = syscall_hooks + hidden_mods + idt_hooks + rkhunter_findings + proc_findings
+def generate_report(
+    syscall_hooks, hidden_mods, idt_hooks, rkhunter_findings, proc_findings, source
+):
+    all_findings = (
+        syscall_hooks + hidden_mods + idt_hooks + rkhunter_findings + proc_findings
+    )
     critical = sum(1 for f in all_findings if f.get("severity") == "critical")
     return {
         "timestamp": datetime.utcnow().isoformat(),
@@ -146,9 +171,15 @@ def generate_report(syscall_hooks, hidden_mods, idt_hooks, rkhunter_findings, pr
 
 def main():
     parser = argparse.ArgumentParser(description="Linux Kernel Rootkit Detection Agent")
-    parser.add_argument("--memory-dump", help="Path to Linux memory dump for Volatility3 analysis")
+    parser.add_argument(
+        "--memory-dump", help="Path to Linux memory dump for Volatility3 analysis"
+    )
     parser.add_argument("--isf-url", help="Volatility3 ISF symbol table URL")
-    parser.add_argument("--live-scan", action="store_true", help="Run rkhunter + /proc analysis on live system")
+    parser.add_argument(
+        "--live-scan",
+        action="store_true",
+        help="Run rkhunter + /proc analysis on live system",
+    )
     parser.add_argument("--output", default="rootkit_detection_report.json")
     args = parser.parse_args()
 
@@ -164,11 +195,17 @@ def main():
         source = "live_system" if source == "none" else source + "+live_system"
         rkhunter_findings = run_rkhunter()
         proc_findings = check_proc_sys_discrepancy()
-    report = generate_report(syscall_hooks, hidden_mods, idt_hooks, rkhunter_findings, proc_findings, source)
+    report = generate_report(
+        syscall_hooks, hidden_mods, idt_hooks, rkhunter_findings, proc_findings, source
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
-    logger.info("Rootkit scan: %d findings (%d critical), rootkit detected: %s",
-                report["total_findings"], report["critical_findings"], report["rootkit_detected"])
+    logger.info(
+        "Rootkit scan: %d findings (%d critical), rootkit detected: %s",
+        report["total_findings"],
+        report["critical_findings"],
+        report["rootkit_detected"],
+    )
     print(json.dumps(report, indent=2, default=str))
 
 

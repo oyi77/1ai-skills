@@ -23,33 +23,39 @@ def audit_jit_requests(requests_path):
 
         duration_hours = req.get("duration_hours", req.get("duration", 0))
         if duration_hours > 8:
-            findings.append({
-                "request_id": req.get("id", ""),
-                "issue": f"Long access duration: {duration_hours}h",
-                "severity": "MEDIUM",
-                "user": req.get("requestor", req.get("user", "")),
-            })
+            findings.append(
+                {
+                    "request_id": req.get("id", ""),
+                    "issue": f"Long access duration: {duration_hours}h",
+                    "severity": "MEDIUM",
+                    "user": req.get("requestor", req.get("user", "")),
+                }
+            )
         if duration_hours > 24:
             findings[-1]["severity"] = "HIGH"
 
         if status == "approved" and not req.get("approver"):
-            findings.append({
-                "request_id": req.get("id", ""),
-                "issue": "Auto-approved without approver record",
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "request_id": req.get("id", ""),
+                    "issue": "Auto-approved without approver record",
+                    "severity": "HIGH",
+                }
+            )
 
         granted = req.get("granted_at", "")
         expired = req.get("expired_at", req.get("revoked_at", ""))
         if granted and not expired and status == "active":
             granted_dt = datetime.fromisoformat(granted.replace("Z", ""))
             if (datetime.utcnow() - granted_dt).total_seconds() > duration_hours * 3600:
-                findings.append({
-                    "request_id": req.get("id", ""),
-                    "issue": "Access not revoked after expiration",
-                    "severity": "CRITICAL",
-                    "user": req.get("requestor", ""),
-                })
+                findings.append(
+                    {
+                        "request_id": req.get("id", ""),
+                        "issue": "Access not revoked after expiration",
+                        "severity": "CRITICAL",
+                        "user": req.get("requestor", ""),
+                    }
+                )
 
     return {
         "total_requests": len(requests_list),
@@ -70,8 +76,10 @@ def audit_standing_privileges(privileges_path):
     for priv in privs:
         role = priv.get("role", priv.get("permission", "")).lower()
         usage = priv.get("last_used", priv.get("last_access", ""))
-        is_privileged = any(k in role for k in [
-            "admin", "root", "owner", "superuser", "dba", "operator"])
+        is_privileged = any(
+            k in role
+            for k in ["admin", "root", "owner", "superuser", "dba", "operator"]
+        )
 
         days_unused = 0
         if usage:
@@ -82,22 +90,26 @@ def audit_standing_privileges(privileges_path):
                 pass
 
         if is_privileged and days_unused > 30:
-            candidates.append({
-                "user": priv.get("user", priv.get("identity", "")),
-                "role": priv.get("role", ""),
-                "resource": priv.get("resource", priv.get("target", "")),
-                "days_unused": days_unused,
-                "severity": "CRITICAL" if days_unused > 90 else "HIGH",
-                "recommendation": "Convert to JIT access",
-            })
+            candidates.append(
+                {
+                    "user": priv.get("user", priv.get("identity", "")),
+                    "role": priv.get("role", ""),
+                    "resource": priv.get("resource", priv.get("target", "")),
+                    "days_unused": days_unused,
+                    "severity": "CRITICAL" if days_unused > 90 else "HIGH",
+                    "recommendation": "Convert to JIT access",
+                }
+            )
         elif is_privileged:
-            candidates.append({
-                "user": priv.get("user", ""),
-                "role": priv.get("role", ""),
-                "days_unused": days_unused,
-                "severity": "MEDIUM",
-                "recommendation": "Evaluate for JIT conversion",
-            })
+            candidates.append(
+                {
+                    "user": priv.get("user", ""),
+                    "role": priv.get("role", ""),
+                    "days_unused": days_unused,
+                    "severity": "MEDIUM",
+                    "recommendation": "Evaluate for JIT conversion",
+                }
+            )
 
     return {
         "total_privileges": len(privs),
@@ -139,10 +151,18 @@ def calculate_jit_metrics(requests_path):
     return {
         "total_requests": total,
         "auto_approved_rate": round(auto_approved / total * 100, 1) if total else 0,
-        "avg_approval_time_min": round(sum(approval_times) / len(approval_times), 1) if approval_times else 0,
-        "avg_duration_hours": round(sum(durations) / len(durations), 1) if durations else 0,
+        "avg_approval_time_min": (
+            round(sum(approval_times) / len(approval_times), 1) if approval_times else 0
+        ),
+        "avg_duration_hours": (
+            round(sum(durations) / len(durations), 1) if durations else 0
+        ),
         "max_duration_hours": max(durations) if durations else 0,
-        "p95_approval_time_min": sorted(approval_times)[int(len(approval_times) * 0.95)] if approval_times else 0,
+        "p95_approval_time_min": (
+            sorted(approval_times)[int(len(approval_times) * 0.95)]
+            if approval_times
+            else 0
+        ),
     }
 
 
@@ -185,8 +205,11 @@ def main():
     parser = argparse.ArgumentParser(description="JIT Access Provisioning Agent")
     parser.add_argument("--requests", help="JIT requests log JSON")
     parser.add_argument("--privileges", help="Standing privileges JSON")
-    parser.add_argument("--action", choices=["audit", "standing", "metrics", "policy", "full"],
-                        default="full")
+    parser.add_argument(
+        "--action",
+        choices=["audit", "standing", "metrics", "policy", "full"],
+        default="full",
+    )
     parser.add_argument("--output", default="jit_access_report.json")
     args = parser.parse_args()
 
@@ -195,7 +218,9 @@ def main():
     if args.action in ("audit", "full") and args.requests:
         result = audit_jit_requests(args.requests)
         report["results"]["audit"] = result
-        print(f"[+] JIT audit: {result['total_requests']} requests, {result['anomaly_count']} issues")
+        print(
+            f"[+] JIT audit: {result['total_requests']} requests, {result['anomaly_count']} issues"
+        )
 
     if args.action in ("standing", "full") and args.privileges:
         result = audit_standing_privileges(args.privileges)

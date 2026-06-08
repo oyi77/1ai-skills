@@ -29,16 +29,18 @@ def generate_honeytoken_credentials(count: int = 5) -> list[dict]:
     for i in range(min(count, len(templates))):
         username, description = templates[i]
         token_id = secrets.token_hex(4)
-        honeytokens.append({
-            "token_id": f"HT-{token_id}",
-            "type": "credential",
-            "username": f"{username}_{token_id[:4]}",
-            "password": secrets.token_urlsafe(24),
-            "description": description,
-            "deployment_location": "Active Directory / LSASS memory",
-            "alert_on": "Any authentication attempt",
-            "created": datetime.now(timezone.utc).isoformat(),
-        })
+        honeytokens.append(
+            {
+                "token_id": f"HT-{token_id}",
+                "type": "credential",
+                "username": f"{username}_{token_id[:4]}",
+                "password": secrets.token_urlsafe(24),
+                "description": description,
+                "deployment_location": "Active Directory / LSASS memory",
+                "alert_on": "Any authentication attempt",
+                "created": datetime.now(timezone.utc).isoformat(),
+            }
+        )
 
     return honeytokens
 
@@ -70,22 +72,26 @@ def generate_canary_files(output_dir: str, count: int = 5) -> list[dict]:
             content += "admin:P@ssw0rd_fake_canary_2024\n"
             content += "root:SuperSecret_fake_canary!\n"
         elif "aws" in filename:
-            content += f"[default]\naws_access_key_id = AKIA{secrets.token_hex(8).upper()}\n"
+            content += (
+                f"[default]\naws_access_key_id = AKIA{secrets.token_hex(8).upper()}\n"
+            )
             content += f"aws_secret_access_key = {secrets.token_hex(20)}\n"
 
         with open(filepath, "w") as f:
             f.write(content)
 
-        canary_files.append({
-            "token_id": f"CF-{token_id}",
-            "type": "canary_file",
-            "filename": filename,
-            "filepath": filepath,
-            "description": description,
-            "sha256": hashlib.sha256(content.encode()).hexdigest(),
-            "alert_on": "File open / read access",
-            "created": datetime.now(timezone.utc).isoformat(),
-        })
+        canary_files.append(
+            {
+                "token_id": f"CF-{token_id}",
+                "type": "canary_file",
+                "filename": filename,
+                "filepath": filepath,
+                "description": description,
+                "sha256": hashlib.sha256(content.encode()).hexdigest(),
+                "alert_on": "File open / read access",
+                "created": datetime.now(timezone.utc).isoformat(),
+            }
+        )
 
     return canary_files
 
@@ -96,14 +102,16 @@ def generate_dns_canary_tokens(domain: str, count: int = 3) -> list[dict]:
     for i in range(count):
         token_id = secrets.token_hex(8)
         hostname = f"{token_id}.{domain}"
-        tokens.append({
-            "token_id": f"DNS-{token_id[:8]}",
-            "type": "dns_canary",
-            "hostname": hostname,
-            "usage": f"Embed in config files, documents, or network shares",
-            "alert_on": "DNS resolution of hostname",
-            "created": datetime.now(timezone.utc).isoformat(),
-        })
+        tokens.append(
+            {
+                "token_id": f"DNS-{token_id[:8]}",
+                "type": "dns_canary",
+                "hostname": hostname,
+                "usage": f"Embed in config files, documents, or network shares",
+                "alert_on": "DNS resolution of hostname",
+                "created": datetime.now(timezone.utc).isoformat(),
+            }
+        )
 
     return tokens
 
@@ -175,7 +183,9 @@ def generate_deployment_report(
         f"HONEYTOKEN CREDENTIALS ({len(credentials)}):",
     ]
     for cred in credentials:
-        lines.append(f"  [{cred['token_id']}] {cred['username']} - {cred['description']}")
+        lines.append(
+            f"  [{cred['token_id']}] {cred['username']} - {cred['description']}"
+        )
 
     lines.append(f"\nCANARY FILES ({len(canary_files)}):")
     for cf in canary_files:

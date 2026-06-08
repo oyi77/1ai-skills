@@ -15,7 +15,9 @@ try:
 except ImportError:
     sys.exit("boto3 required: pip install boto3")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -25,25 +27,36 @@ def get_iam_client(profile: str = "", region: str = "us-east-1"):
     return session.client("iam", region_name=region)
 
 
-def create_permission_boundary(client, policy_name: str, allowed_services: List[str],
-                                allowed_regions: List[str] = None) -> dict:
+def create_permission_boundary(
+    client,
+    policy_name: str,
+    allowed_services: List[str],
+    allowed_regions: List[str] = None,
+) -> dict:
     """Create a permission boundary policy restricting services and regions."""
-    statements = [{
-        "Sid": "AllowedServices",
-        "Effect": "Allow",
-        "Action": [f"{svc}:*" for svc in allowed_services],
-        "Resource": "*",
-    }]
+    statements = [
+        {
+            "Sid": "AllowedServices",
+            "Effect": "Allow",
+            "Action": [f"{svc}:*" for svc in allowed_services],
+            "Resource": "*",
+        }
+    ]
     if allowed_regions:
         statements[0]["Condition"] = {
             "StringEquals": {"aws:RequestedRegion": allowed_regions}
         }
-    statements.append({
-        "Sid": "DenyBoundaryChanges",
-        "Effect": "Deny",
-        "Action": ["iam:DeleteRolePermissionsBoundary", "iam:PutRolePermissionsBoundary"],
-        "Resource": "*",
-    })
+    statements.append(
+        {
+            "Sid": "DenyBoundaryChanges",
+            "Effect": "Deny",
+            "Action": [
+                "iam:DeleteRolePermissionsBoundary",
+                "iam:PutRolePermissionsBoundary",
+            ],
+            "Resource": "*",
+        }
+    )
     policy_doc = {"Version": "2012-10-17", "Statement": statements}
     try:
         resp = client.create_policy(
@@ -62,7 +75,8 @@ def attach_boundary_to_role(client, role_name: str, boundary_arn: str) -> dict:
     """Attach permission boundary to an IAM role."""
     try:
         client.put_role_permissions_boundary(
-            RoleName=role_name, PermissionsBoundary=boundary_arn)
+            RoleName=role_name, PermissionsBoundary=boundary_arn
+        )
         logger.info("Attached boundary %s to role %s", boundary_arn, role_name)
         return {"role": role_name, "boundary_arn": boundary_arn, "attached": True}
     except ClientError as exc:
@@ -76,11 +90,13 @@ def audit_roles_without_boundary(client) -> List[dict]:
     for page in paginator.paginate():
         for role in page["Roles"]:
             if "PermissionsBoundary" not in role:
-                unbounded.append({
-                    "role_name": role["RoleName"],
-                    "arn": role["Arn"],
-                    "created": role["CreateDate"].isoformat(),
-                })
+                unbounded.append(
+                    {
+                        "role_name": role["RoleName"],
+                        "arn": role["Arn"],
+                        "created": role["CreateDate"].isoformat(),
+                    }
+                )
     logger.info("Found %d roles without permission boundary", len(unbounded))
     return unbounded
 
@@ -95,7 +111,9 @@ def audit_boundary_effectiveness(client, role_name: str) -> dict:
         return {
             "role": role_name,
             "boundary_arn": boundary.get("PermissionsBoundaryArn", "NONE"),
-            "attached_policies": [p["PolicyName"] for p in policies_resp["AttachedPolicies"]],
+            "attached_policies": [
+                p["PolicyName"] for p in policies_resp["AttachedPolicies"]
+            ],
             "inline_policies": inline_resp["PolicyNames"],
         }
     except ClientError as exc:
@@ -113,7 +131,8 @@ def generate_report(client) -> dict:
     }
     if unbounded:
         report["recommendations"].append(
-            f"Attach permission boundaries to {len(unbounded)} roles lacking boundaries")
+            f"Attach permission boundaries to {len(unbounded)} roles lacking boundaries"
+        )
     return report
 
 
@@ -121,7 +140,9 @@ def main():
     parser = argparse.ArgumentParser(description="AWS IAM Permission Boundary Agent")
     parser.add_argument("--profile", default="", help="AWS CLI profile name")
     parser.add_argument("--region", default="us-east-1")
-    parser.add_argument("--audit", action="store_true", help="Audit roles without boundaries")
+    parser.add_argument(
+        "--audit", action="store_true", help="Audit roles without boundaries"
+    )
     parser.add_argument("--output-dir", default=".")
     parser.add_argument("--output", default="iam_boundary_report.json")
     args = parser.parse_args()

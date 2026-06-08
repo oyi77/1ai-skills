@@ -64,47 +64,70 @@ ASR_RULES = {
 }
 
 CFA_RECOMMENDED_FOLDERS = [
-    "Documents", "Desktop", "Pictures", "Videos", "Music", "Favorites",
+    "Documents",
+    "Desktop",
+    "Pictures",
+    "Videos",
+    "Music",
+    "Favorites",
 ]
 
 GPO_CHECKS = {
     "applocker_enabled": {
         "description": "AppLocker Application Control is enabled",
-        "check_command": ["powershell", "-Command",
-                          "Get-AppLockerPolicy -Effective -ErrorAction SilentlyContinue | "
-                          "ConvertTo-Json -Depth 3"],
+        "check_command": [
+            "powershell",
+            "-Command",
+            "Get-AppLockerPolicy -Effective -ErrorAction SilentlyContinue | "
+            "ConvertTo-Json -Depth 3",
+        ],
         "priority": "Critical",
     },
     "cfa_enabled": {
         "description": "Controlled Folder Access is enabled",
-        "check_command": ["powershell", "-Command",
-                          "(Get-MpPreference).EnableControlledFolderAccess"],
+        "check_command": [
+            "powershell",
+            "-Command",
+            "(Get-MpPreference).EnableControlledFolderAccess",
+        ],
         "priority": "Critical",
     },
     "asr_rules": {
         "description": "Attack Surface Reduction rules are configured",
-        "check_command": ["powershell", "-Command",
-                          "(Get-MpPreference).AttackSurfaceReductionRules_Ids"],
+        "check_command": [
+            "powershell",
+            "-Command",
+            "(Get-MpPreference).AttackSurfaceReductionRules_Ids",
+        ],
         "priority": "High",
     },
     "asr_actions": {
         "description": "ASR rule actions (0=Disabled,1=Block,2=Audit,6=Warn)",
-        "check_command": ["powershell", "-Command",
-                          "(Get-MpPreference).AttackSurfaceReductionRules_Actions"],
+        "check_command": [
+            "powershell",
+            "-Command",
+            "(Get-MpPreference).AttackSurfaceReductionRules_Actions",
+        ],
         "priority": "High",
     },
     "smbv1_disabled": {
         "description": "SMBv1 protocol is disabled",
-        "check_command": ["powershell", "-Command",
-                          "(Get-SmbServerConfiguration).EnableSMB1Protocol"],
+        "check_command": [
+            "powershell",
+            "-Command",
+            "(Get-SmbServerConfiguration).EnableSMB1Protocol",
+        ],
         "priority": "Critical",
     },
     "autoplay_disabled": {
         "description": "AutoPlay is disabled",
-        "check_command": ["powershell", "-Command",
-                          "Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows"
-                          "\\CurrentVersion\\Policies\\Explorer' -Name NoDriveTypeAutoRun "
-                          "-ErrorAction SilentlyContinue | Select-Object -ExpandProperty NoDriveTypeAutoRun"],
+        "check_command": [
+            "powershell",
+            "-Command",
+            "Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows"
+            "\\CurrentVersion\\Policies\\Explorer' -Name NoDriveTypeAutoRun "
+            "-ErrorAction SilentlyContinue | Select-Object -ExpandProperty NoDriveTypeAutoRun",
+        ],
         "priority": "Medium",
     },
 }
@@ -123,7 +146,9 @@ def run_check(check_name, check_info):
     try:
         proc = subprocess.run(
             check_info["check_command"],
-            capture_output=True, text=True, timeout=30,
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         output = proc.stdout.strip()
         result["output"] = output
@@ -150,10 +175,18 @@ def run_check(check_name, check_info):
 def assess_asr_compliance(asr_ids_output, asr_actions_output):
     """Assess ASR rule compliance against recommended baseline."""
     active_ids = [line.strip() for line in asr_ids_output.split("\n") if line.strip()]
-    active_actions = [line.strip() for line in asr_actions_output.split("\n") if line.strip()]
+    active_actions = [
+        line.strip() for line in asr_actions_output.split("\n") if line.strip()
+    ]
 
-    assessment = {"total_recommended": len(ASR_RULES), "enabled": 0,
-                  "blocking": 0, "audit_only": 0, "missing": [], "details": []}
+    assessment = {
+        "total_recommended": len(ASR_RULES),
+        "enabled": 0,
+        "blocking": 0,
+        "audit_only": 0,
+        "missing": [],
+        "details": [],
+    }
 
     id_action_map = {}
     for i, rule_id in enumerate(active_ids):
@@ -179,13 +212,15 @@ def assess_asr_compliance(asr_ids_output, asr_actions_output):
         else:
             status = "DISABLED"
 
-        assessment["details"].append({
-            "id": rule_id,
-            "name": rule_info["name"],
-            "category": rule_info["category"],
-            "status": status,
-            "recommended": rule_info["recommended"],
-        })
+        assessment["details"].append(
+            {
+                "id": rule_id,
+                "name": rule_info["name"],
+                "category": rule_info["category"],
+                "status": status,
+                "recommended": rule_info["recommended"],
+            }
+        )
 
     assessment["compliance_pct"] = round(
         (assessment["blocking"] / assessment["total_recommended"]) * 100, 1
@@ -251,13 +286,17 @@ def generate_remediation_script(report):
     for rule in asr.get("details", []):
         if rule["status"] in ("NOT CONFIGURED", "DISABLED", "AUDIT"):
             lines.append(f"# Enable ASR rule: {rule['name']}")
-            lines.append(f"Add-MpPreference -AttackSurfaceReductionRules_Ids {rule['id']} "
-                          f"-AttackSurfaceReductionRules_Actions Enabled")
+            lines.append(
+                f"Add-MpPreference -AttackSurfaceReductionRules_Ids {rule['id']} "
+                f"-AttackSurfaceReductionRules_Actions Enabled"
+            )
             lines.append("")
 
     lines.append("# Disable AutoPlay")
-    lines.append('Set-ItemProperty -Path "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion'
-                  '\\Policies\\Explorer" -Name NoDriveTypeAutoRun -Value 255')
+    lines.append(
+        'Set-ItemProperty -Path "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion'
+        '\\Policies\\Explorer" -Name NoDriveTypeAutoRun -Value 255'
+    )
 
     return "\n".join(lines)
 

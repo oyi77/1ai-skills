@@ -11,7 +11,9 @@ from collections import defaultdict
 import requests
 from requests.auth import HTTPDigestAuth
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -19,7 +21,13 @@ def arkime_request(base_url, endpoint, auth, params=None):
     """Make an authenticated request to Arkime API v3."""
     url = f"{base_url}{endpoint}"
     try:
-        resp = requests.get(url, auth=HTTPDigestAuth(*auth), params=params, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=30)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.get(
+            url,
+            auth=HTTPDigestAuth(*auth),
+            params=params,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=30,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         resp.raise_for_status()
         return resp.json()
     except requests.RequestException as e:
@@ -37,7 +45,9 @@ def search_sessions(base_url, auth, expression, date_range=1, length=500):
     }
     data = arkime_request(base_url, "/api/sessions", auth, params)
     if data and "data" in data:
-        logger.info("Found %d sessions for expression: %s", len(data["data"]), expression)
+        logger.info(
+            "Found %d sessions for expression: %s", len(data["data"]), expression
+        )
         return data["data"]
     return []
 
@@ -56,7 +66,11 @@ def get_connections(base_url, auth, expression, date_range=1):
 
 def get_spi_view(base_url, auth, expression, date_range=1):
     """Get SPI view field statistics from Arkime."""
-    params = {"date": date_range, "expression": expression, "spi": "srcIp,dstIp,dstPort"}
+    params = {
+        "date": date_range,
+        "expression": expression,
+        "spi": "srcIp,dstIp,dstPort",
+    }
     data = arkime_request(base_url, "/api/spiview", auth, params)
     return data if data else {}
 
@@ -73,27 +87,35 @@ def detect_beaconing(sessions, interval_threshold=0.15):
         if len(timestamps) < 10:
             continue
         timestamps.sort()
-        intervals = [timestamps[i + 1] - timestamps[i] for i in range(len(timestamps) - 1)]
+        intervals = [
+            timestamps[i + 1] - timestamps[i] for i in range(len(timestamps) - 1)
+        ]
         if not intervals:
             continue
         avg_interval = sum(intervals) / len(intervals)
         if avg_interval == 0:
             continue
-        std_dev = (sum((i - avg_interval) ** 2 for i in intervals) / len(intervals)) ** 0.5
+        std_dev = (
+            sum((i - avg_interval) ** 2 for i in intervals) / len(intervals)
+        ) ** 0.5
         jitter_ratio = std_dev / avg_interval
 
         if jitter_ratio < interval_threshold:
-            beacons.append({
-                "src_ip": src,
-                "dst_ip": dst,
-                "dst_port": port,
-                "session_count": len(timestamps),
-                "avg_interval_sec": round(avg_interval / 1000, 1),
-                "jitter_ratio": round(jitter_ratio, 4),
-                "confidence": "high" if jitter_ratio < 0.05 else "medium",
-                "severity": "critical",
-            })
-            logger.warning("Beaconing: %s -> %s:%d (jitter: %.4f)", src, dst, port, jitter_ratio)
+            beacons.append(
+                {
+                    "src_ip": src,
+                    "dst_ip": dst,
+                    "dst_port": port,
+                    "session_count": len(timestamps),
+                    "avg_interval_sec": round(avg_interval / 1000, 1),
+                    "jitter_ratio": round(jitter_ratio, 4),
+                    "confidence": "high" if jitter_ratio < 0.05 else "medium",
+                    "severity": "critical",
+                }
+            )
+            logger.warning(
+                "Beaconing: %s -> %s:%d (jitter: %.4f)", src, dst, port, jitter_ratio
+            )
     return beacons
 
 
@@ -111,14 +133,16 @@ def detect_dns_tunneling(sessions, query_len_threshold=50):
     for src, stats in src_stats.items():
         avg_bytes = stats["total_bytes"] / max(stats["count"], 1)
         if stats["count"] > 100 and avg_bytes > query_len_threshold:
-            suspicious.append({
-                "src_ip": src,
-                "dns_query_count": stats["count"],
-                "avg_bytes_per_query": round(avg_bytes, 1),
-                "total_bytes": stats["total_bytes"],
-                "severity": "high",
-                "indicator": "DNS tunneling - high volume with large payloads",
-            })
+            suspicious.append(
+                {
+                    "src_ip": src,
+                    "dns_query_count": stats["count"],
+                    "avg_bytes_per_query": round(avg_bytes, 1),
+                    "total_bytes": stats["total_bytes"],
+                    "severity": "high",
+                    "indicator": "DNS tunneling - high volume with large payloads",
+                }
+            )
     return suspicious
 
 
@@ -129,14 +153,16 @@ def detect_large_transfers(sessions, threshold_mb=100):
     for s in sessions:
         total = s.get("srcBytes", 0) + s.get("dstBytes", 0)
         if total > threshold_bytes:
-            large.append({
-                "src_ip": s.get("srcIp", ""),
-                "dst_ip": s.get("dstIp", ""),
-                "dst_port": s.get("dstPort", 0),
-                "total_bytes": total,
-                "total_mb": round(total / (1024 * 1024), 2),
-                "severity": "high",
-            })
+            large.append(
+                {
+                    "src_ip": s.get("srcIp", ""),
+                    "dst_ip": s.get("dstIp", ""),
+                    "dst_port": s.get("dstPort", 0),
+                    "total_bytes": total,
+                    "total_mb": round(total / (1024 * 1024), 2),
+                    "severity": "high",
+                }
+            )
     return large
 
 
@@ -151,25 +177,31 @@ def detect_tls_anomalies(sessions):
         issuer_cn = tls.get("issuerCN", "")
         not_after = tls.get("notAfter", 0)
         if issuer_cn and issuer_cn == tls.get("subjectCN", ""):
-            anomalies.append({
-                "src_ip": s.get("srcIp", ""),
-                "dst_ip": s.get("dstIp", ""),
-                "issue": "self-signed certificate",
-                "issuer": issuer_cn,
-                "severity": "medium",
-            })
+            anomalies.append(
+                {
+                    "src_ip": s.get("srcIp", ""),
+                    "dst_ip": s.get("dstIp", ""),
+                    "issue": "self-signed certificate",
+                    "issuer": issuer_cn,
+                    "severity": "medium",
+                }
+            )
         if not_after and not_after < int(datetime.utcnow().timestamp() * 1000):
-            anomalies.append({
-                "src_ip": s.get("srcIp", ""),
-                "dst_ip": s.get("dstIp", ""),
-                "issue": "expired certificate",
-                "issuer": issuer_cn,
-                "severity": "medium",
-            })
+            anomalies.append(
+                {
+                    "src_ip": s.get("srcIp", ""),
+                    "dst_ip": s.get("dstIp", ""),
+                    "issue": "expired certificate",
+                    "issuer": issuer_cn,
+                    "severity": "medium",
+                }
+            )
     return anomalies
 
 
-def generate_report(beacons, dns_tunneling, large_transfers, tls_anomalies, session_count):
+def generate_report(
+    beacons, dns_tunneling, large_transfers, tls_anomalies, session_count
+):
     """Generate network traffic analysis report."""
     all_findings = beacons + dns_tunneling + large_transfers + tls_anomalies
     critical = [f for f in all_findings if f.get("severity") == "critical"]
@@ -183,12 +215,16 @@ def generate_report(beacons, dns_tunneling, large_transfers, tls_anomalies, sess
         "large_transfers": large_transfers,
         "tls_anomalies": tls_anomalies,
     }
-    print(f"ARKIME REPORT: {len(all_findings)} findings ({len(critical)} critical) from {session_count} sessions")
+    print(
+        f"ARKIME REPORT: {len(all_findings)} findings ({len(critical)} critical) from {session_count} sessions"
+    )
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Arkime Network Traffic Analysis Agent")
+    parser = argparse.ArgumentParser(
+        description="Arkime Network Traffic Analysis Agent"
+    )
     parser.add_argument("--arkime-url", required=True, help="Arkime viewer URL")
     parser.add_argument("--user", required=True)
     parser.add_argument("--password", required=True)

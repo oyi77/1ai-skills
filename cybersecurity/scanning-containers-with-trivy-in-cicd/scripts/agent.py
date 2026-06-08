@@ -51,14 +51,16 @@ class TrivyCICDAgent:
         vulns = []
         for result in raw.get("Results", []):
             for v in result.get("Vulnerabilities", []):
-                vulns.append({
-                    "id": v.get("VulnerabilityID", ""),
-                    "severity": v.get("Severity", "UNKNOWN"),
-                    "package": v.get("PkgName", ""),
-                    "installed": v.get("InstalledVersion", ""),
-                    "fixed": v.get("FixedVersion", ""),
-                    "title": v.get("Title", ""),
-                })
+                vulns.append(
+                    {
+                        "id": v.get("VulnerabilityID", ""),
+                        "severity": v.get("Severity", "UNKNOWN"),
+                        "package": v.get("PkgName", ""),
+                        "installed": v.get("InstalledVersion", ""),
+                        "fixed": v.get("FixedVersion", ""),
+                        "title": v.get("Title", ""),
+                    }
+                )
 
         summary = {}
         for v in vulns:
@@ -85,13 +87,15 @@ class TrivyCICDAgent:
         misconfigs = []
         for result in raw.get("Results", []):
             for mc in result.get("Misconfigurations", []):
-                misconfigs.append({
-                    "id": mc.get("ID", ""),
-                    "severity": mc.get("Severity", "UNKNOWN"),
-                    "title": mc.get("Title", ""),
-                    "message": mc.get("Message", ""),
-                    "resolution": mc.get("Resolution", ""),
-                })
+                misconfigs.append(
+                    {
+                        "id": mc.get("ID", ""),
+                        "severity": mc.get("Severity", "UNKNOWN"),
+                        "title": mc.get("Title", ""),
+                        "message": mc.get("Message", ""),
+                        "resolution": mc.get("Resolution", ""),
+                    }
+                )
 
         scan = {
             "path": path,
@@ -106,8 +110,15 @@ class TrivyCICDAgent:
     def generate_sbom(self, image_ref, sbom_format="cyclonedx"):
         """Generate an SBOM for a container image."""
         out_file = self.output_dir / f"sbom.{sbom_format}.json"
-        cmd = ["trivy", "image", "--format", sbom_format,
-               "--output", str(out_file), image_ref]
+        cmd = [
+            "trivy",
+            "image",
+            "--format",
+            sbom_format,
+            "--output",
+            str(out_file),
+            image_ref,
+        ]
         try:
             subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             return {"sbom_path": str(out_file)}
@@ -117,14 +128,21 @@ class TrivyCICDAgent:
     def enforce_quality_gate(self, severity_threshold="HIGH"):
         """Check if any scan result exceeds the severity threshold."""
         sev_order = ["CRITICAL", "HIGH", "MEDIUM", "LOW"]
-        threshold_idx = sev_order.index(severity_threshold) if severity_threshold in sev_order else 0
-        blocking_sevs = sev_order[:threshold_idx + 1]
+        threshold_idx = (
+            sev_order.index(severity_threshold)
+            if severity_threshold in sev_order
+            else 0
+        )
+        blocking_sevs = sev_order[: threshold_idx + 1]
 
         for scan in self.scan_results:
             summary = scan.get("summary", {})
             for sev in blocking_sevs:
                 if summary.get(sev, 0) > 0:
-                    return {"gate": "FAILED", "reason": f"{summary[sev]} {sev} findings in {scan.get('image', scan.get('path', ''))}"}
+                    return {
+                        "gate": "FAILED",
+                        "reason": f"{summary[sev]} {sev} findings in {scan.get('image', scan.get('path', ''))}",
+                    }
         return {"gate": "PASSED"}
 
     def generate_report(self):
@@ -143,7 +161,9 @@ class TrivyCICDAgent:
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: agent.py <image_ref> [--config <path>] [--severity CRITICAL,HIGH]")
+        print(
+            "Usage: agent.py <image_ref> [--config <path>] [--severity CRITICAL,HIGH]"
+        )
         sys.exit(1)
 
     agent = TrivyCICDAgent()

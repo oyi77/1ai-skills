@@ -48,31 +48,35 @@ def load_sherlock_results(filepath):
             for row in reader:
                 status = row.get("exists", row.get("status", "")).strip().lower()
                 if status in ("claimed", "true", "yes"):
-                    findings.append({
-                        "source": "sherlock",
-                        "type": "social_profile",
-                        "platform": row.get("name", row.get("platform", "")),
-                        "url": row.get("url_user", row.get("url", "")),
-                        "username": row.get("username", ""),
-                        "collected_at": datetime.now(timezone.utc).isoformat(),
-                    })
+                    findings.append(
+                        {
+                            "source": "sherlock",
+                            "type": "social_profile",
+                            "platform": row.get("name", row.get("platform", "")),
+                            "url": row.get("url_user", row.get("url", "")),
+                            "username": row.get("username", ""),
+                            "collected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
     except (csv.Error, KeyError):
         # Try line-by-line format (Sherlock text output)
         with open(filepath, "r", errors="replace") as f:
             for line in f:
                 line = line.strip()
                 if line.startswith("[+]") or line.startswith("http"):
-                    url_match = re.search(r'(https?://\S+)', line)
+                    url_match = re.search(r"(https?://\S+)", line)
                     if url_match:
                         url = url_match.group(1)
                         platform = url.split("/")[2].replace("www.", "").split(".")[0]
-                        findings.append({
-                            "source": "sherlock",
-                            "type": "social_profile",
-                            "platform": platform,
-                            "url": url,
-                            "collected_at": datetime.now(timezone.utc).isoformat(),
-                        })
+                        findings.append(
+                            {
+                                "source": "sherlock",
+                                "type": "social_profile",
+                                "platform": platform,
+                                "url": url,
+                                "collected_at": datetime.now(timezone.utc).isoformat(),
+                            }
+                        )
     return findings
 
 
@@ -89,26 +93,32 @@ def load_harvester_results(filepath):
         return findings
 
     for email in data.get("emails", []):
-        findings.append({
-            "source": "theHarvester",
-            "type": "email",
-            "value": email,
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-        })
+        findings.append(
+            {
+                "source": "theHarvester",
+                "type": "email",
+                "value": email,
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
     for host in data.get("hosts", []):
-        findings.append({
-            "source": "theHarvester",
-            "type": "hostname",
-            "value": host,
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-        })
+        findings.append(
+            {
+                "source": "theHarvester",
+                "type": "hostname",
+                "value": host,
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
     for ip in data.get("ips", []):
-        findings.append({
-            "source": "theHarvester",
-            "type": "ip_address",
-            "value": ip,
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-        })
+        findings.append(
+            {
+                "source": "theHarvester",
+                "type": "ip_address",
+                "value": ip,
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
     return findings
 
 
@@ -126,13 +136,15 @@ def load_spiderfoot_results(filepath):
 
     items = data if isinstance(data, list) else data.get("results", [])
     for item in items:
-        findings.append({
-            "source": "spiderfoot",
-            "type": item.get("type", "unknown"),
-            "value": item.get("data", item.get("value", "")),
-            "module": item.get("module", ""),
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-        })
+        findings.append(
+            {
+                "source": "spiderfoot",
+                "type": item.get("type", "unknown"),
+                "value": item.get("data", item.get("value", "")),
+                "module": item.get("module", ""),
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
     return findings
 
 
@@ -150,14 +162,16 @@ def load_breach_results(filepath):
 
     breaches = data if isinstance(data, list) else [data]
     for breach in breaches:
-        findings.append({
-            "source": "breach_database",
-            "type": "breach_exposure",
-            "breach_name": breach.get("Name", breach.get("name", "")),
-            "breach_date": breach.get("BreachDate", breach.get("date", "")),
-            "data_classes": breach.get("DataClasses", breach.get("data_types", [])),
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-        })
+        findings.append(
+            {
+                "source": "breach_database",
+                "type": "breach_exposure",
+                "breach_name": breach.get("Name", breach.get("name", "")),
+                "breach_date": breach.get("BreachDate", breach.get("date", "")),
+                "data_classes": breach.get("DataClasses", breach.get("data_types", [])),
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
     return findings
 
 
@@ -289,11 +303,11 @@ def correlate_findings(findings):
             entity["linked_accounts"].append(link)
 
         # Risk assessment
-        breach_findings = [f for f in group_findings if f.get("type") == "breach_exposure"]
+        breach_findings = [
+            f for f in group_findings if f.get("type") == "breach_exposure"
+        ]
         if breach_findings:
-            entity["flags"].append(
-                f"Exposed in {len(breach_findings)} breach(es)"
-            )
+            entity["flags"].append(f"Exposed in {len(breach_findings)} breach(es)")
             entity["risk_level"] = "high"
         elif len(sources_seen) >= 3:
             entity["risk_level"] = "medium"
@@ -356,8 +370,10 @@ def generate_markdown_report(report, output_path):
         md += f"### {eid} (Confidence: {conf:.0%}, Risk: {risk_level})\n\n"
         md += "| Source | Platform | Value |\n|--------|----------|-------|\n"
         for link in entity.get("linked_accounts", []):
-            md += (f"| {link.get('source', '')} | {link.get('platform', '')} "
-                   f"| {link.get('value', '')} |\n")
+            md += (
+                f"| {link.get('source', '')} | {link.get('platform', '')} "
+                f"| {link.get('value', '')} |\n"
+            )
         for flag in entity.get("flags", []):
             md += f"\n- WARNING: {flag}\n"
         md += "\n"
@@ -368,18 +384,20 @@ def generate_markdown_report(report, output_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="AI-Driven OSINT Correlation Agent"
+    parser = argparse.ArgumentParser(description="AI-Driven OSINT Correlation Agent")
+    parser.add_argument(
+        "--target", default="unknown", help="Target identifier (domain, username, etc.)"
     )
-    parser.add_argument("--target", default="unknown",
-                        help="Target identifier (domain, username, etc.)")
     parser.add_argument("--sherlock", help="Sherlock results file (CSV or text)")
     parser.add_argument("--harvester", help="theHarvester results file (JSON)")
     parser.add_argument("--spiderfoot", help="SpiderFoot results file (JSON)")
     parser.add_argument("--breach", help="Breach/HIBP results file (JSON)")
     parser.add_argument("--generic", help="Generic normalized findings JSON")
-    parser.add_argument("--normalize-only", action="store_true",
-                        help="Only normalize data, skip correlation")
+    parser.add_argument(
+        "--normalize-only",
+        action="store_true",
+        help="Only normalize data, skip correlation",
+    )
     parser.add_argument("--markdown", help="Output Markdown report path")
     parser.add_argument("--output", "-o", help="Output JSON report path")
     args = parser.parse_args()
@@ -400,8 +418,10 @@ def main():
         print("\n[!] Provide at least one data source file.")
         return
 
-    print(f"[*] Loading data from {len(active_sources)} source(s): "
-          f"{', '.join(active_sources.keys())}")
+    print(
+        f"[*] Loading data from {len(active_sources)} source(s): "
+        f"{', '.join(active_sources.keys())}"
+    )
 
     findings = normalize_all_sources(source_files)
     print(f"[*] Normalized {len(findings)} findings")

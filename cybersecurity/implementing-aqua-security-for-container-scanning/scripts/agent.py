@@ -10,21 +10,26 @@ import sys
 from datetime import datetime
 from typing import List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
 def check_trivy_installed() -> bool:
     """Check if Trivy CLI is available."""
     try:
-        result = subprocess.run(["trivy", "--version"], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["trivy", "--version"], capture_output=True, text=True, timeout=10
+        )
         return result.returncode == 0
     except FileNotFoundError:
         return False
 
 
-def scan_image(image: str, severity: str = "CRITICAL,HIGH",
-               ignore_unfixed: bool = True) -> dict:
+def scan_image(
+    image: str, severity: str = "CRITICAL,HIGH", ignore_unfixed: bool = True
+) -> dict:
     """Scan a container image for vulnerabilities using Trivy."""
     cmd = ["trivy", "image", "--format", "json", "--severity", severity, image]
     if ignore_unfixed:
@@ -78,15 +83,17 @@ def parse_vuln_results(scan_data: dict) -> List[dict]:
     for result in scan_data.get("Results", []):
         target = result.get("Target", "")
         for vuln in result.get("Vulnerabilities", []):
-            vulns.append({
-                "target": target,
-                "vuln_id": vuln.get("VulnerabilityID", ""),
-                "pkg_name": vuln.get("PkgName", ""),
-                "installed": vuln.get("InstalledVersion", ""),
-                "fixed": vuln.get("FixedVersion", ""),
-                "severity": vuln.get("Severity", ""),
-                "title": vuln.get("Title", ""),
-            })
+            vulns.append(
+                {
+                    "target": target,
+                    "vuln_id": vuln.get("VulnerabilityID", ""),
+                    "pkg_name": vuln.get("PkgName", ""),
+                    "installed": vuln.get("InstalledVersion", ""),
+                    "fixed": vuln.get("FixedVersion", ""),
+                    "severity": vuln.get("Severity", ""),
+                    "title": vuln.get("Title", ""),
+                }
+            )
     return vulns
 
 
@@ -110,10 +117,13 @@ def scan_multiple_images(images: List[str], severity: str) -> dict:
         logger.info("Scanning %s...", image)
         scan_data = scan_image(image, severity)
         vulns = parse_vuln_results(scan_data)
-        report["images"].append({
-            "image": image, "vulnerabilities": vulns,
-            "summary": compute_summary(vulns),
-        })
+        report["images"].append(
+            {
+                "image": image,
+                "vulnerabilities": vulns,
+                "summary": compute_summary(vulns),
+            }
+        )
     totals = {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "total": 0}
     for img in report["images"]:
         for k in totals:
@@ -123,16 +133,24 @@ def scan_multiple_images(images: List[str], severity: str) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Container Image Vulnerability Scanner (Trivy)")
-    parser.add_argument("--images", nargs="+", required=True, help="Container images to scan")
+    parser = argparse.ArgumentParser(
+        description="Container Image Vulnerability Scanner (Trivy)"
+    )
+    parser.add_argument(
+        "--images", nargs="+", required=True, help="Container images to scan"
+    )
     parser.add_argument("--severity", default="CRITICAL,HIGH", help="Severity filter")
-    parser.add_argument("--sbom", action="store_true", help="Generate SBOM for each image")
+    parser.add_argument(
+        "--sbom", action="store_true", help="Generate SBOM for each image"
+    )
     parser.add_argument("--output-dir", default=".", help="Output directory")
     parser.add_argument("--output", default="trivy_report.json")
     args = parser.parse_args()
 
     if not check_trivy_installed():
-        logger.error("Trivy CLI not found. Install: https://aquasecurity.github.io/trivy/")
+        logger.error(
+            "Trivy CLI not found. Install: https://aquasecurity.github.io/trivy/"
+        )
         sys.exit(1)
 
     os.makedirs(args.output_dir, exist_ok=True)

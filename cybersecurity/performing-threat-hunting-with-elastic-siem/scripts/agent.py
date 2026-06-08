@@ -23,12 +23,24 @@ def get_es_client(host=None, api_key=None, verify_certs=True):
 def hunt_lolbins(es, index="logs-endpoint.events.process-*", days=30):
     """Hunt for living-off-the-land binary abuse."""
     lolbins = [
-        "certutil.exe", "mshta.exe", "regsvr32.exe", "rundll32.exe",
-        "cscript.exe", "wscript.exe", "bitsadmin.exe",
+        "certutil.exe",
+        "mshta.exe",
+        "regsvr32.exe",
+        "rundll32.exe",
+        "cscript.exe",
+        "wscript.exe",
+        "bitsadmin.exe",
     ]
     suspicious_args = [
-        "-urlcache", "-split", "-decode", "-encode", "javascript:",
-        "scrobj.dll", "/transfer", "-encodedcommand", "-enc",
+        "-urlcache",
+        "-split",
+        "-decode",
+        "-encode",
+        "javascript:",
+        "scrobj.dll",
+        "/transfer",
+        "-encodedcommand",
+        "-enc",
     ]
     query = {
         "size": 100,
@@ -38,7 +50,9 @@ def hunt_lolbins(es, index="logs-endpoint.events.process-*", days=30):
                     {"terms": {"process.name": lolbins}},
                     {"range": {"@timestamp": {"gte": f"now-{days}d"}}},
                 ],
-                "should": [{"match_phrase": {"process.args": arg}} for arg in suspicious_args],
+                "should": [
+                    {"match_phrase": {"process.args": arg}} for arg in suspicious_args
+                ],
                 "minimum_should_match": 1,
                 "must_not": [
                     {"terms": {"process.parent.name": ["ccmexec.exe", "sccm.exe"]}},
@@ -51,15 +65,21 @@ def hunt_lolbins(es, index="logs-endpoint.events.process-*", days=30):
     hits = []
     for hit in result["hits"]["hits"]:
         src = hit["_source"]
-        hits.append({
-            "timestamp": src.get("@timestamp"),
-            "host": src.get("host", {}).get("name"),
-            "user": src.get("user", {}).get("name"),
-            "process": src.get("process", {}).get("name"),
-            "args": src.get("process", {}).get("args"),
-            "parent": src.get("process", {}).get("parent", {}).get("name"),
-        })
-    return {"hunt": "LOLBin Abuse", "total_hits": result["hits"]["total"]["value"], "findings": hits}
+        hits.append(
+            {
+                "timestamp": src.get("@timestamp"),
+                "host": src.get("host", {}).get("name"),
+                "user": src.get("user", {}).get("name"),
+                "process": src.get("process", {}).get("name"),
+                "args": src.get("process", {}).get("args"),
+                "parent": src.get("process", {}).get("parent", {}).get("name"),
+            }
+        )
+    return {
+        "hunt": "LOLBin Abuse",
+        "total_hits": result["hits"]["total"]["value"],
+        "findings": hits,
+    }
 
 
 def hunt_credential_dumping(es, index="logs-endpoint.events.process-*", days=30):
@@ -70,17 +90,37 @@ def hunt_credential_dumping(es, index="logs-endpoint.events.process-*", days=30)
             "bool": {
                 "must": [{"range": {"@timestamp": {"gte": f"now-{days}d"}}}],
                 "should": [
-                    {"bool": {"must": [
-                        {"terms": {"process.name": ["procdump.exe", "procdump64.exe", "rundll32.exe"]}},
-                        {"match_phrase": {"process.args": "lsass"}},
-                    ]}},
-                    {"bool": {"must": [
-                        {"term": {"process.name": "mimikatz.exe"}},
-                    ]}},
-                    {"bool": {"must": [
-                        {"term": {"process.name": "powershell.exe"}},
-                        {"match_phrase": {"process.args": "sekurlsa"}},
-                    ]}},
+                    {
+                        "bool": {
+                            "must": [
+                                {
+                                    "terms": {
+                                        "process.name": [
+                                            "procdump.exe",
+                                            "procdump64.exe",
+                                            "rundll32.exe",
+                                        ]
+                                    }
+                                },
+                                {"match_phrase": {"process.args": "lsass"}},
+                            ]
+                        }
+                    },
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"process.name": "mimikatz.exe"}},
+                            ]
+                        }
+                    },
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"process.name": "powershell.exe"}},
+                                {"match_phrase": {"process.args": "sekurlsa"}},
+                            ]
+                        }
+                    },
                 ],
                 "minimum_should_match": 1,
             }
@@ -90,13 +130,19 @@ def hunt_credential_dumping(es, index="logs-endpoint.events.process-*", days=30)
     hits = []
     for hit in result["hits"]["hits"]:
         src = hit["_source"]
-        hits.append({
-            "timestamp": src.get("@timestamp"),
-            "host": src.get("host", {}).get("name"),
-            "process": src.get("process", {}).get("name"),
-            "args": src.get("process", {}).get("args"),
-        })
-    return {"hunt": "Credential Dumping (T1003)", "total_hits": result["hits"]["total"]["value"], "findings": hits}
+        hits.append(
+            {
+                "timestamp": src.get("@timestamp"),
+                "host": src.get("host", {}).get("name"),
+                "process": src.get("process", {}).get("name"),
+                "args": src.get("process", {}).get("args"),
+            }
+        )
+    return {
+        "hunt": "Credential Dumping (T1003)",
+        "total_hits": result["hits"]["total"]["value"],
+        "findings": hits,
+    }
 
 
 def hunt_lateral_movement(es, index="logs-endpoint.events.*", days=14):
@@ -108,14 +154,22 @@ def hunt_lateral_movement(es, index="logs-endpoint.events.*", days=14):
                 "must": [{"range": {"@timestamp": {"gte": f"now-{days}d"}}}],
                 "should": [
                     {"term": {"process.name": "psexesvc.exe"}},
-                    {"bool": {"must": [
-                        {"term": {"process.name": "powershell.exe"}},
-                        {"match_phrase": {"process.args": "invoke-command"}},
-                    ]}},
-                    {"bool": {"must": [
-                        {"term": {"event.action": "network_flow"}},
-                        {"terms": {"destination.port": [445, 135, 5985, 5986]}},
-                    ]}},
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"process.name": "powershell.exe"}},
+                                {"match_phrase": {"process.args": "invoke-command"}},
+                            ]
+                        }
+                    },
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"event.action": "network_flow"}},
+                                {"terms": {"destination.port": [445, 135, 5985, 5986]}},
+                            ]
+                        }
+                    },
                 ],
                 "minimum_should_match": 1,
             }
@@ -125,15 +179,21 @@ def hunt_lateral_movement(es, index="logs-endpoint.events.*", days=14):
     hits = []
     for hit in result["hits"]["hits"]:
         src = hit["_source"]
-        hits.append({
-            "timestamp": src.get("@timestamp"),
-            "host": src.get("host", {}).get("name"),
-            "process": src.get("process", {}).get("name"),
-            "source_ip": src.get("source", {}).get("ip"),
-            "dest_ip": src.get("destination", {}).get("ip"),
-            "dest_port": src.get("destination", {}).get("port"),
-        })
-    return {"hunt": "Lateral Movement (T1021)", "total_hits": result["hits"]["total"]["value"], "findings": hits}
+        hits.append(
+            {
+                "timestamp": src.get("@timestamp"),
+                "host": src.get("host", {}).get("name"),
+                "process": src.get("process", {}).get("name"),
+                "source_ip": src.get("source", {}).get("ip"),
+                "dest_ip": src.get("destination", {}).get("ip"),
+                "dest_port": src.get("destination", {}).get("port"),
+            }
+        )
+    return {
+        "hunt": "Lateral Movement (T1021)",
+        "total_hits": result["hits"]["total"]["value"],
+        "findings": hits,
+    }
 
 
 def hunt_persistence(es, index="logs-endpoint.events.*", days=30):
@@ -144,18 +204,38 @@ def hunt_persistence(es, index="logs-endpoint.events.*", days=30):
             "bool": {
                 "must": [{"range": {"@timestamp": {"gte": f"now-{days}d"}}}],
                 "should": [
-                    {"bool": {"must": [
-                        {"term": {"process.name": "schtasks.exe"}},
-                        {"match_phrase": {"process.args": "/create"}},
-                    ]}},
-                    {"bool": {"must": [
-                        {"term": {"process.name": "reg.exe"}},
-                        {"match_phrase": {"process.args": "CurrentVersion\\Run"}},
-                    ]}},
-                    {"bool": {"must": [
-                        {"term": {"event.action": "registry_value_set"}},
-                        {"wildcard": {"registry.path": "*CurrentVersion\\Run*"}},
-                    ]}},
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"process.name": "schtasks.exe"}},
+                                {"match_phrase": {"process.args": "/create"}},
+                            ]
+                        }
+                    },
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"process.name": "reg.exe"}},
+                                {
+                                    "match_phrase": {
+                                        "process.args": "CurrentVersion\\Run"
+                                    }
+                                },
+                            ]
+                        }
+                    },
+                    {
+                        "bool": {
+                            "must": [
+                                {"term": {"event.action": "registry_value_set"}},
+                                {
+                                    "wildcard": {
+                                        "registry.path": "*CurrentVersion\\Run*"
+                                    }
+                                },
+                            ]
+                        }
+                    },
                 ],
                 "minimum_should_match": 1,
             }
@@ -165,13 +245,19 @@ def hunt_persistence(es, index="logs-endpoint.events.*", days=30):
     hits = []
     for hit in result["hits"]["hits"]:
         src = hit["_source"]
-        hits.append({
-            "timestamp": src.get("@timestamp"),
-            "host": src.get("host", {}).get("name"),
-            "process": src.get("process", {}).get("name"),
-            "args": src.get("process", {}).get("args"),
-        })
-    return {"hunt": "Persistence (T1053/T1547)", "total_hits": result["hits"]["total"]["value"], "findings": hits}
+        hits.append(
+            {
+                "timestamp": src.get("@timestamp"),
+                "host": src.get("host", {}).get("name"),
+                "process": src.get("process", {}).get("name"),
+                "args": src.get("process", {}).get("args"),
+            }
+        )
+    return {
+        "hunt": "Persistence (T1053/T1547)",
+        "total_hits": result["hits"]["total"]["value"],
+        "findings": hits,
+    }
 
 
 def create_detection_rule(es, kibana_url, name, query, severity="high", risk_score=73):
@@ -211,15 +297,21 @@ def print_hunt_report(hunts):
         print(f"--- {hunt['hunt']} ---")
         print(f"Hits: {hunt['total_hits']}")
         for f in hunt["findings"][:5]:
-            print(f"  {f.get('timestamp', 'N/A')} | {f.get('host', 'N/A')} | "
-                  f"{f.get('process', 'N/A')} | {f.get('args', '')}")
+            print(
+                f"  {f.get('timestamp', 'N/A')} | {f.get('host', 'N/A')} | "
+                f"{f.get('process', 'N/A')} | {f.get('args', '')}"
+            )
         if hunt["total_hits"] > 5:
             print(f"  ... and {hunt['total_hits'] - 5} more")
         print()
 
 
 if __name__ == "__main__":
-    host = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("ES_HOSTS", "https://localhost:9200")
+    host = (
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else os.environ.get("ES_HOSTS", "https://localhost:9200")
+    )
     es = get_es_client(host=host, verify_certs=False)
     results = run_all_hunts(es)
     print_hunt_report(results)

@@ -7,12 +7,14 @@ from datetime import datetime
 
 try:
     import shodan
+
     HAS_SHODAN = True
 except ImportError:
     HAS_SHODAN = False
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -37,8 +39,12 @@ def shodan_host_lookup(api_key, ip):
         "hostnames": result.get("hostnames", []),
         "last_update": result.get("last_update"),
         "services": [
-            {"port": s.get("port"), "transport": s.get("transport"),
-             "product": s.get("product"), "version": s.get("version")}
+            {
+                "port": s.get("port"),
+                "transport": s.get("transport"),
+                "product": s.get("product"),
+                "version": s.get("version"),
+            }
             for s in result.get("data", [])
         ][:20],
     }
@@ -46,8 +52,12 @@ def shodan_host_lookup(api_key, ip):
 
 def abuseipdb_check(api_key, ip, max_age_days=90):
     """Check IP reputation on AbuseIPDB."""
-    resp = requests.get(ABUSEIPDB_URL, headers={"Key": api_key, "Accept": "application/json"},
-                        params={"ipAddress": ip, "maxAgeInDays": max_age_days}, timeout=15)
+    resp = requests.get(
+        ABUSEIPDB_URL,
+        headers={"Key": api_key, "Accept": "application/json"},
+        params={"ipAddress": ip, "maxAgeInDays": max_age_days},
+        timeout=15,
+    )
     resp.raise_for_status()
     data = resp.json().get("data", {})
     return {
@@ -91,7 +101,11 @@ def bulk_reputation(shodan_key, ips, abuseipdb_key=None):
             risk = "medium"
         entry["risk"] = risk
         results.append(entry)
-    return {"timestamp": datetime.utcnow().isoformat(), "total": len(results), "results": results}
+    return {
+        "timestamp": datetime.utcnow().isoformat(),
+        "total": len(results),
+        "results": results,
+    }
 
 
 def main():

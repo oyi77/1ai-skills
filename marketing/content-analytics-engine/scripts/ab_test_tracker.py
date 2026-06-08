@@ -7,7 +7,11 @@ import json
 from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
-from performance_analyzer import compute_engagement_rate, detect_hook_type, detect_content_type
+from performance_analyzer import (
+    compute_engagement_rate,
+    detect_hook_type,
+    detect_content_type,
+)
 
 AB_TESTS_FILE = Path("/home/openclaw/.openclaw/workspace/reports/ab_tests.json")
 
@@ -27,8 +31,13 @@ def save_ab_tests(tests: list):
         json.dump(tests, f, indent=2, default=str)
 
 
-def create_ab_test(name: str, variant_a: str, variant_b: str,
-                   hypothesis: str, metric: str = "avg_views") -> dict:
+def create_ab_test(
+    name: str,
+    variant_a: str,
+    variant_b: str,
+    hypothesis: str,
+    metric: str = "avg_views",
+) -> dict:
     """Create a new A/B test."""
     tests = load_ab_tests()
     test = {
@@ -40,7 +49,7 @@ def create_ab_test(name: str, variant_a: str, variant_b: str,
         "metric": metric,
         "status": "running",
         "created_at": datetime.now().isoformat(),
-        "results": None
+        "results": None,
     }
     tests.append(test)
     save_ab_tests(tests)
@@ -82,7 +91,7 @@ def auto_detect_hook_tests(analytics: list) -> dict:
         "variants": dict(ranked),
         "winner": winner,
         "recommendation": f"Use '{winner}' hook style — {results.get(winner, {}).get('avg_views', 0)} avg views",
-        "analyzed_at": datetime.now().isoformat()
+        "analyzed_at": datetime.now().isoformat(),
     }
 
 
@@ -114,7 +123,7 @@ def auto_detect_platform_tests(analytics: list) -> dict:
         "variants": dict(ranked),
         "winner": winner,
         "recommendation": f"Focus on {winner.upper()} — best avg views per post",
-        "analyzed_at": datetime.now().isoformat()
+        "analyzed_at": datetime.now().isoformat(),
     }
 
 
@@ -153,7 +162,7 @@ def auto_detect_content_length_tests(analytics: list) -> dict:
         "variants": dict(ranked),
         "winner": winner,
         "recommendation": f"Use {winner} captions — {results.get(winner, {}).get('avg_views', 0)} avg views",
-        "analyzed_at": datetime.now().isoformat()
+        "analyzed_at": datetime.now().isoformat(),
     }
 
 
@@ -166,12 +175,13 @@ def run_all_auto_tests(analytics: list) -> dict:
         "manual_tests": load_ab_tests(),
         "note": "Auto-tests derived from existing post performance data. Run more posts for statistical significance.",
         "min_sample_warning": len(analytics) < 30,
-        "generated_at": datetime.now().isoformat()
+        "generated_at": datetime.now().isoformat(),
     }
 
 
 if __name__ == "__main__":
     import sys
+
     sys.path.insert(0, ".")
     from analytics_collector import collect_all
 
@@ -184,4 +194,6 @@ if __name__ == "__main__":
     print(f"📝 Caption Length Winner: {tests['length_test']['winner']}")
 
     if tests["min_sample_warning"]:
-        print(f"\n⚠️  Warning: Only {len(data['analytics'])} analytics records — need 30+ for significance")
+        print(
+            f"\n⚠️  Warning: Only {len(data['analytics'])} analytics records — need 30+ for significance"
+        )

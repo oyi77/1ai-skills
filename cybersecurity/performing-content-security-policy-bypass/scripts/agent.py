@@ -9,6 +9,7 @@ missing directives, and known CSP bypass patterns.
 AUTHORIZED TESTING ONLY: Only use against targets you have explicit
 written permission to test.
 """
+
 import argparse
 import json
 import re
@@ -23,10 +24,23 @@ except ImportError:
 
 
 CSP_DIRECTIVES = [
-    "default-src", "script-src", "style-src", "img-src", "font-src",
-    "connect-src", "media-src", "object-src", "frame-src", "child-src",
-    "worker-src", "frame-ancestors", "form-action", "base-uri",
-    "manifest-src", "prefetch-src", "navigate-to",
+    "default-src",
+    "script-src",
+    "style-src",
+    "img-src",
+    "font-src",
+    "connect-src",
+    "media-src",
+    "object-src",
+    "frame-src",
+    "child-src",
+    "worker-src",
+    "frame-ancestors",
+    "form-action",
+    "base-uri",
+    "manifest-src",
+    "prefetch-src",
+    "navigate-to",
 ]
 
 
@@ -71,59 +85,71 @@ def analyze_csp(directives, csp_string):
 
     # Missing CSP entirely
     if not directives:
-        findings.append({
-            "check": "CSP Header Present",
-            "severity": "HIGH",
-            "status": "MISSING",
-            "description": "No Content-Security-Policy header",
-            "recommendation": "Implement a CSP header",
-        })
+        findings.append(
+            {
+                "check": "CSP Header Present",
+                "severity": "HIGH",
+                "status": "MISSING",
+                "description": "No Content-Security-Policy header",
+                "recommendation": "Implement a CSP header",
+            }
+        )
         return findings
 
     # Check for missing critical directives
     if "default-src" not in directives:
-        findings.append({
-            "check": "default-src directive",
-            "severity": "HIGH",
-            "status": "MISSING",
-            "description": "No default-src fallback directive",
-            "recommendation": "Add default-src 'none' or default-src 'self'",
-        })
+        findings.append(
+            {
+                "check": "default-src directive",
+                "severity": "HIGH",
+                "status": "MISSING",
+                "description": "No default-src fallback directive",
+                "recommendation": "Add default-src 'none' or default-src 'self'",
+            }
+        )
 
     if "script-src" not in directives and "default-src" not in directives:
-        findings.append({
-            "check": "script-src directive",
-            "severity": "CRITICAL",
-            "status": "MISSING",
-            "description": "No script-src or default-src; scripts unrestricted",
-        })
+        findings.append(
+            {
+                "check": "script-src directive",
+                "severity": "CRITICAL",
+                "status": "MISSING",
+                "description": "No script-src or default-src; scripts unrestricted",
+            }
+        )
 
     if "object-src" not in directives:
-        findings.append({
-            "check": "object-src directive",
-            "severity": "MEDIUM",
-            "status": "MISSING",
-            "description": "Missing object-src; plugin-based XSS possible",
-            "recommendation": "Add object-src 'none'",
-        })
+        findings.append(
+            {
+                "check": "object-src directive",
+                "severity": "MEDIUM",
+                "status": "MISSING",
+                "description": "Missing object-src; plugin-based XSS possible",
+                "recommendation": "Add object-src 'none'",
+            }
+        )
 
     if "base-uri" not in directives:
-        findings.append({
-            "check": "base-uri directive",
-            "severity": "MEDIUM",
-            "status": "MISSING",
-            "description": "Missing base-uri; base tag injection possible",
-            "recommendation": "Add base-uri 'self' or base-uri 'none'",
-        })
+        findings.append(
+            {
+                "check": "base-uri directive",
+                "severity": "MEDIUM",
+                "status": "MISSING",
+                "description": "Missing base-uri; base tag injection possible",
+                "recommendation": "Add base-uri 'self' or base-uri 'none'",
+            }
+        )
 
     if "frame-ancestors" not in directives:
-        findings.append({
-            "check": "frame-ancestors directive",
-            "severity": "MEDIUM",
-            "status": "MISSING",
-            "description": "Missing frame-ancestors; clickjacking possible",
-            "recommendation": "Add frame-ancestors 'self'",
-        })
+        findings.append(
+            {
+                "check": "frame-ancestors directive",
+                "severity": "MEDIUM",
+                "status": "MISSING",
+                "description": "Missing frame-ancestors; clickjacking possible",
+                "recommendation": "Add frame-ancestors 'self'",
+            }
+        )
 
     # Analyze each directive
     for directive, values in directives.items():
@@ -132,74 +158,105 @@ def analyze_csp(directives, csp_string):
         # unsafe-inline
         if "'unsafe-inline'" in values:
             sev = "CRITICAL" if directive in ("script-src", "default-src") else "MEDIUM"
-            findings.append({
-                "check": f"unsafe-inline in {directive}",
-                "severity": sev,
-                "status": "FAIL",
-                "description": f"'unsafe-inline' allows inline scripts/styles in {directive}",
-                "bypass": "Inject inline <script> or event handlers",
-            })
+            findings.append(
+                {
+                    "check": f"unsafe-inline in {directive}",
+                    "severity": sev,
+                    "status": "FAIL",
+                    "description": f"'unsafe-inline' allows inline scripts/styles in {directive}",
+                    "bypass": "Inject inline <script> or event handlers",
+                }
+            )
 
         # unsafe-eval
         if "'unsafe-eval'" in values:
-            findings.append({
-                "check": f"unsafe-eval in {directive}",
-                "severity": "CRITICAL" if directive in ("script-src", "default-src") else "HIGH",
-                "status": "FAIL",
-                "description": f"'unsafe-eval' allows eval() and similar in {directive}",
-                "bypass": "Use eval(), Function(), setTimeout('string') for XSS",
-            })
+            findings.append(
+                {
+                    "check": f"unsafe-eval in {directive}",
+                    "severity": (
+                        "CRITICAL"
+                        if directive in ("script-src", "default-src")
+                        else "HIGH"
+                    ),
+                    "status": "FAIL",
+                    "description": f"'unsafe-eval' allows eval() and similar in {directive}",
+                    "bypass": "Use eval(), Function(), setTimeout('string') for XSS",
+                }
+            )
 
         # Wildcard sources
         if "*" in values:
-            findings.append({
-                "check": f"Wildcard (*) in {directive}",
-                "severity": "HIGH",
-                "status": "FAIL",
-                "description": f"Wildcard source in {directive} allows loading from any origin",
-                "bypass": "Host payload on any domain",
-            })
-
-        # data: URI
-        if "data:" in values and directive in ("script-src", "default-src", "object-src"):
-            findings.append({
-                "check": f"data: URI in {directive}",
-                "severity": "HIGH",
-                "status": "FAIL",
-                "description": f"data: URI in {directive} allows inline data execution",
-                "bypass": "Use data:text/html payload or data:application/javascript",
-            })
-
-        # blob: URI
-        if "blob:" in values and directive in ("script-src", "default-src", "worker-src"):
-            findings.append({
-                "check": f"blob: URI in {directive}",
-                "severity": "MEDIUM",
-                "status": "FAIL",
-                "description": f"blob: URI in {directive} may allow bypass via Blob URLs",
-            })
-
-        # Known bypass CDNs
-        bypass_cdns = ["cdn.jsdelivr.net", "cdnjs.cloudflare.com", "unpkg.com",
-                       "ajax.googleapis.com", "raw.githubusercontent.com"]
-        for cdn in bypass_cdns:
-            if cdn in values_str:
-                findings.append({
-                    "check": f"Bypassable CDN in {directive}",
+            findings.append(
+                {
+                    "check": f"Wildcard (*) in {directive}",
                     "severity": "HIGH",
                     "status": "FAIL",
-                    "description": f"{cdn} in {directive} can host arbitrary scripts",
-                    "bypass": f"Upload/find malicious script on {cdn}",
-                })
+                    "description": f"Wildcard source in {directive} allows loading from any origin",
+                    "bypass": "Host payload on any domain",
+                }
+            )
+
+        # data: URI
+        if "data:" in values and directive in (
+            "script-src",
+            "default-src",
+            "object-src",
+        ):
+            findings.append(
+                {
+                    "check": f"data: URI in {directive}",
+                    "severity": "HIGH",
+                    "status": "FAIL",
+                    "description": f"data: URI in {directive} allows inline data execution",
+                    "bypass": "Use data:text/html payload or data:application/javascript",
+                }
+            )
+
+        # blob: URI
+        if "blob:" in values and directive in (
+            "script-src",
+            "default-src",
+            "worker-src",
+        ):
+            findings.append(
+                {
+                    "check": f"blob: URI in {directive}",
+                    "severity": "MEDIUM",
+                    "status": "FAIL",
+                    "description": f"blob: URI in {directive} may allow bypass via Blob URLs",
+                }
+            )
+
+        # Known bypass CDNs
+        bypass_cdns = [
+            "cdn.jsdelivr.net",
+            "cdnjs.cloudflare.com",
+            "unpkg.com",
+            "ajax.googleapis.com",
+            "raw.githubusercontent.com",
+        ]
+        for cdn in bypass_cdns:
+            if cdn in values_str:
+                findings.append(
+                    {
+                        "check": f"Bypassable CDN in {directive}",
+                        "severity": "HIGH",
+                        "status": "FAIL",
+                        "description": f"{cdn} in {directive} can host arbitrary scripts",
+                        "bypass": f"Upload/find malicious script on {cdn}",
+                    }
+                )
 
         # http: in HTTPS context
         if any(v.startswith("http:") for v in values):
-            findings.append({
-                "check": f"HTTP source in {directive}",
-                "severity": "MEDIUM",
-                "status": "FAIL",
-                "description": f"HTTP source allows MitM injection in {directive}",
-            })
+            findings.append(
+                {
+                    "check": f"HTTP source in {directive}",
+                    "severity": "MEDIUM",
+                    "status": "FAIL",
+                    "description": f"HTTP source allows MitM injection in {directive}",
+                }
+            )
 
     return findings
 
@@ -244,7 +301,9 @@ def main():
         description="CSP analysis and bypass testing agent (authorized testing only)"
     )
     parser.add_argument("--url", required=True, help="Target URL to fetch CSP from")
-    parser.add_argument("--csp-string", help="Analyze a CSP string directly instead of fetching")
+    parser.add_argument(
+        "--csp-string", help="Analyze a CSP string directly instead of fetching"
+    )
     parser.add_argument("--header", nargs="+", help="Custom headers (key:value)")
     parser.add_argument("--cookie", help="Cookie string")
     parser.add_argument("--output", "-o", help="Output JSON report path")
@@ -267,19 +326,23 @@ def main():
                 if "=" in pair:
                     k, v = pair.strip().split("=", 1)
                     cookies[k] = v
-        csp_string, csp_ro, status_code = fetch_csp(args.url, headers or None, cookies or None)
+        csp_string, csp_ro, status_code = fetch_csp(
+            args.url, headers or None, cookies or None
+        )
 
     directives = parse_csp(csp_string)
     findings = analyze_csp(directives, csp_string)
 
     if csp_ro:
         ro_directives = parse_csp(csp_ro)
-        findings.append({
-            "check": "CSP-Report-Only mode",
-            "severity": "MEDIUM",
-            "status": "WARN",
-            "description": "CSP in report-only mode does not enforce restrictions",
-        })
+        findings.append(
+            {
+                "check": "CSP-Report-Only mode",
+                "severity": "MEDIUM",
+                "status": "WARN",
+                "description": "CSP in report-only mode does not enforce restrictions",
+            }
+        )
 
     severity_counts = format_summary(args.url, directives, findings, csp_string)
 
@@ -293,10 +356,13 @@ def main():
         "findings": findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0
-            else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0 else "LOW"
+            )
         ),
     }
 

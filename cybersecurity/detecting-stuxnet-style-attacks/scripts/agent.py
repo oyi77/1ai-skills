@@ -8,7 +8,6 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
-
 STUXNET_IOCS = {
     "file_hashes": [
         "b4b290906e3a8f1eabbb2b2864e6e7f7",
@@ -23,7 +22,8 @@ STUXNET_IOCS = {
         "Global\\{A3BD0EA3-CD10-4258-8784-2F53E56E2010}",
     ],
     "driver_files": [
-        "mrxcls.sys", "mrxnet.sys",
+        "mrxcls.sys",
+        "mrxnet.sys",
     ],
 }
 
@@ -42,11 +42,28 @@ def check_plc_communication(pcap_path):
     findings = []
     try:
         result = subprocess.check_output(
-            ["tshark", "-r", pcap_path, "-Y", "modbus || s7comm",
-             "-T", "fields", "-e", "ip.src", "-e", "ip.dst",
-             "-e", "modbus.func_code", "-e", "s7comm.param.func",
-             "-e", "frame.time"],
-            text=True, errors="replace", timeout=60
+            [
+                "tshark",
+                "-r",
+                pcap_path,
+                "-Y",
+                "modbus || s7comm",
+                "-T",
+                "fields",
+                "-e",
+                "ip.src",
+                "-e",
+                "ip.dst",
+                "-e",
+                "modbus.func_code",
+                "-e",
+                "s7comm.param.func",
+                "-e",
+                "frame.time",
+            ],
+            text=True,
+            errors="replace",
+            timeout=60,
         )
         write_count = 0
         for line in result.strip().splitlines():
@@ -59,18 +76,23 @@ def check_plc_communication(pcap_path):
                         if fc in MODBUS_FUNCTION_CODES:
                             write_count += 1
                             if write_count <= 20:
-                                findings.append({
-                                    "src": fields[0], "dst": fields[1],
-                                    "function": MODBUS_FUNCTION_CODES[fc],
-                                    "func_code": fc,
-                                })
+                                findings.append(
+                                    {
+                                        "src": fields[0],
+                                        "dst": fields[1],
+                                        "function": MODBUS_FUNCTION_CODES[fc],
+                                        "func_code": fc,
+                                    }
+                                )
                     except ValueError:
                         pass
         if write_count > 100:
-            findings.append({
-                "alert": f"Excessive PLC write operations: {write_count}",
-                "severity": "CRITICAL",
-            })
+            findings.append(
+                {
+                    "alert": f"Excessive PLC write operations: {write_count}",
+                    "severity": "CRITICAL",
+                }
+            )
     except (subprocess.SubprocessError, FileNotFoundError):
         findings.append({"error": "tshark not available or PCAP parse failed"})
     return findings
@@ -85,11 +107,13 @@ def scan_for_rootkit_drivers():
             continue
         for fname in os.listdir(d):
             if fname.lower() in [df.lower() for df in STUXNET_IOCS["driver_files"]]:
-                findings.append({
-                    "type": "rootkit_driver",
-                    "path": os.path.join(d, fname),
-                    "severity": "CRITICAL",
-                })
+                findings.append(
+                    {
+                        "type": "rootkit_driver",
+                        "path": os.path.join(d, fname),
+                        "severity": "CRITICAL",
+                    }
+                )
     return findings
 
 
@@ -104,11 +128,13 @@ def check_registry_indicators():
                 ["reg", "query", key], text=True, errors="replace", timeout=5
             )
             if result.strip():
-                findings.append({
-                    "type": "registry_ioc",
-                    "key": key,
-                    "severity": "CRITICAL",
-                })
+                findings.append(
+                    {
+                        "type": "registry_ioc",
+                        "key": key,
+                        "severity": "CRITICAL",
+                    }
+                )
         except subprocess.SubprocessError:
             pass
     return findings
@@ -124,12 +150,16 @@ def analyze_step7_project(project_dir):
             fpath = os.path.join(root, f)
             if f.lower().startswith("ob") and f.lower().endswith((".awl", ".mc7")):
                 stat = os.stat(fpath)
-                findings.append({
-                    "file": fpath,
-                    "size": stat.st_size,
-                    "modified": datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
-                    "note": "Organization Block file — verify integrity",
-                })
+                findings.append(
+                    {
+                        "file": fpath,
+                        "size": stat.st_size,
+                        "modified": datetime.fromtimestamp(
+                            stat.st_mtime, tz=timezone.utc
+                        ).isoformat(),
+                        "note": "Organization Block file — verify integrity",
+                    }
+                )
     return findings
 
 
@@ -163,7 +193,9 @@ def main():
         report["findings"]["step7_files"] = s7
         print(f"[*] Step 7 files to verify: {len(s7)}")
 
-    total = sum(len(v) if isinstance(v, list) else 0 for v in report["findings"].values())
+    total = sum(
+        len(v) if isinstance(v, list) else 0 for v in report["findings"].values()
+    )
     report["risk_level"] = "CRITICAL" if total >= 3 else "HIGH" if total >= 1 else "LOW"
 
     if args.output:

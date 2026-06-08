@@ -29,6 +29,7 @@ DISCLAIMER = """
 # Entropy Analysis
 # ---------------------------------------------------------------------------
 
+
 def calculate_entropy(data):
     """Calculate Shannon entropy of a byte sequence (0.0 = uniform, 8.0 = max random)."""
     if not data:
@@ -36,8 +37,7 @@ def calculate_entropy(data):
     counter = Counter(data)
     length = len(data)
     entropy = -sum(
-        (count / length) * math.log2(count / length)
-        for count in counter.values()
+        (count / length) * math.log2(count / length) for count in counter.values()
     )
     return round(entropy, 4)
 
@@ -52,12 +52,14 @@ def entropy_map(file_path, block_size=4096):
             if not block:
                 break
             ent = calculate_entropy(block)
-            results.append({
-                "offset": offset,
-                "offset_hex": f"0x{offset:08X}",
-                "entropy": ent,
-                "classification": classify_entropy(ent),
-            })
+            results.append(
+                {
+                    "offset": offset,
+                    "offset_hex": f"0x{offset:08X}",
+                    "entropy": ent,
+                    "classification": classify_entropy(ent),
+                }
+            )
             offset += len(block)
     return results
 
@@ -108,19 +110,19 @@ MAGIC_SIGNATURES = {
     b"\x27\x05\x19\x56": "U-Boot image header (uImage)",
     b"\x68\x73\x71\x73": "SquashFS filesystem (little-endian)",
     b"\x73\x71\x73\x68": "SquashFS filesystem (big-endian)",
-    b"\x45\x3D\xCD\x28": "CramFS filesystem",
+    b"\x45\x3d\xcd\x28": "CramFS filesystem",
     b"\x85\x19\x01\x20": "JFFS2 filesystem (little-endian)",
     b"\x19\x85\x20\x01": "JFFS2 filesystem (big-endian)",
-    b"\x1F\x8B\x08": "gzip compressed data",
-    b"\x5D\x00\x00": "LZMA compressed data",
-    b"\xFD\x37\x7A\x58\x5A\x00": "XZ compressed data",
+    b"\x1f\x8b\x08": "gzip compressed data",
+    b"\x5d\x00\x00": "LZMA compressed data",
+    b"\xfd\x37\x7a\x58\x5a\x00": "XZ compressed data",
     b"\x30\x37\x30\x37\x30\x31": "CPIO archive",
-    b"\x55\xAA": "x86 boot sector",
-    b"\xD0\x0D\xFE\xED": "Device Tree Blob (DTB)",
-    b"\x4D\x5A": "PE/COFF executable (EFI binary)",
-    b"\x7F\x45\x4C\x46": "ELF executable",
-    b"\x89\x50\x4E\x47": "PNG image",
-    b"\xFF\xD8\xFF": "JPEG image",
+    b"\x55\xaa": "x86 boot sector",
+    b"\xd0\x0d\xfe\xed": "Device Tree Blob (DTB)",
+    b"\x4d\x5a": "PE/COFF executable (EFI binary)",
+    b"\x7f\x45\x4c\x46": "ELF executable",
+    b"\x89\x50\x4e\x47": "PNG image",
+    b"\xff\xd8\xff": "JPEG image",
 }
 
 
@@ -142,12 +144,14 @@ def scan_signatures(file_path, chunk_size=65536):
                     if idx == -1:
                         break
                     absolute_offset = offset + idx
-                    matches.append({
-                        "offset": absolute_offset,
-                        "offset_hex": f"0x{absolute_offset:08X}",
-                        "magic_hex": magic.hex().upper(),
-                        "description": description,
-                    })
+                    matches.append(
+                        {
+                            "offset": absolute_offset,
+                            "offset_hex": f"0x{absolute_offset:08X}",
+                            "magic_hex": magic.hex().upper(),
+                            "description": description,
+                        }
+                    )
                     pos = idx + 1
             offset += chunk_size - max(len(m) for m in MAGIC_SIGNATURES) + 1
     matches.sort(key=lambda x: x["offset"])
@@ -176,16 +180,50 @@ def parse_uboot_header(file_path, offset=0):
     comp_type = header[31]
     name = header[32:64].split(b"\x00")[0].decode("ascii", errors="replace")
 
-    OS_TYPES = {0: "Invalid", 1: "OpenBSD", 2: "NetBSD", 3: "FreeBSD",
-                4: "4_4BSD", 5: "Linux", 6: "SVR4", 7: "Esix", 8: "Solaris",
-                9: "Irix", 10: "SCO", 11: "Dell", 12: "NCR", 14: "QNX",
-                15: "U-Boot", 16: "RTEMS"}
-    ARCH_TYPES = {0: "Invalid", 1: "Alpha", 2: "ARM", 3: "x86", 4: "IA64",
-                  5: "MIPS", 6: "MIPS64", 7: "PowerPC", 8: "S390",
-                  9: "SuperH", 10: "SPARC", 11: "SPARC64", 12: "M68K",
-                  15: "AArch64", 22: "RISC-V"}
-    COMP_TYPES = {0: "none", 1: "gzip", 2: "bzip2", 3: "lzma", 4: "lzo",
-                  5: "lz4", 6: "zstd"}
+    OS_TYPES = {
+        0: "Invalid",
+        1: "OpenBSD",
+        2: "NetBSD",
+        3: "FreeBSD",
+        4: "4_4BSD",
+        5: "Linux",
+        6: "SVR4",
+        7: "Esix",
+        8: "Solaris",
+        9: "Irix",
+        10: "SCO",
+        11: "Dell",
+        12: "NCR",
+        14: "QNX",
+        15: "U-Boot",
+        16: "RTEMS",
+    }
+    ARCH_TYPES = {
+        0: "Invalid",
+        1: "Alpha",
+        2: "ARM",
+        3: "x86",
+        4: "IA64",
+        5: "MIPS",
+        6: "MIPS64",
+        7: "PowerPC",
+        8: "S390",
+        9: "SuperH",
+        10: "SPARC",
+        11: "SPARC64",
+        12: "M68K",
+        15: "AArch64",
+        22: "RISC-V",
+    }
+    COMP_TYPES = {
+        0: "none",
+        1: "gzip",
+        2: "bzip2",
+        3: "lzma",
+        4: "lzo",
+        5: "lz4",
+        6: "zstd",
+    }
 
     return {
         "magic": f"0x{magic:08X}",
@@ -234,11 +272,13 @@ def scan_strings(file_path, min_length=8):
         for pattern, description in SENSITIVE_PATTERNS:
             if pattern.search(s):
                 offset = data.find(s)
-                findings.append({
-                    "offset": f"0x{offset:08X}",
-                    "type": description,
-                    "value": s[:120].decode("ascii", errors="replace"),
-                })
+                findings.append(
+                    {
+                        "offset": f"0x{offset:08X}",
+                        "type": description,
+                        "value": s[:120].decode("ascii", errors="replace"),
+                    }
+                )
                 break
     return findings
 
@@ -247,14 +287,21 @@ def scan_strings(file_path, min_length=8):
 # Binwalk Subprocess Interface
 # ---------------------------------------------------------------------------
 
+
 def run_binwalk_scan(firmware_path):
     """Run binwalk signature scan via subprocess and return parsed output."""
     try:
         result = subprocess.run(
             ["binwalk", firmware_path],
-            capture_output=True, text=True, timeout=120,
+            capture_output=True,
+            text=True,
+            timeout=120,
         )
-        return {"stdout": result.stdout, "stderr": result.stderr, "rc": result.returncode}
+        return {
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "rc": result.returncode,
+        }
     except FileNotFoundError:
         return {"stdout": "", "stderr": "binwalk not found in PATH", "rc": -1}
     except subprocess.TimeoutExpired:
@@ -271,7 +318,11 @@ def run_binwalk_extract(firmware_path, output_dir=None, recursive=False):
     cmd.append(firmware_path)
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
-        return {"stdout": result.stdout, "stderr": result.stderr, "rc": result.returncode}
+        return {
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "rc": result.returncode,
+        }
     except FileNotFoundError:
         return {"stdout": "", "stderr": "binwalk not found in PATH", "rc": -1}
     except subprocess.TimeoutExpired:
@@ -283,9 +334,15 @@ def run_binwalk_entropy(firmware_path):
     try:
         result = subprocess.run(
             ["binwalk", "-E", firmware_path],
-            capture_output=True, text=True, timeout=120,
+            capture_output=True,
+            text=True,
+            timeout=120,
         )
-        return {"stdout": result.stdout, "stderr": result.stderr, "rc": result.returncode}
+        return {
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "rc": result.returncode,
+        }
     except FileNotFoundError:
         return {"stdout": "", "stderr": "binwalk not found in PATH", "rc": -1}
     except subprocess.TimeoutExpired:
@@ -295,6 +352,7 @@ def run_binwalk_entropy(firmware_path):
 # ---------------------------------------------------------------------------
 # Firmware Metadata
 # ---------------------------------------------------------------------------
+
 
 def get_firmware_metadata(file_path):
     """Compute basic metadata for a firmware image file."""
@@ -312,8 +370,11 @@ def get_firmware_metadata(file_path):
         "file": os.path.basename(file_path),
         "path": str(Path(file_path).resolve()),
         "size_bytes": file_size,
-        "size_human": f"{file_size / (1024*1024):.2f} MB" if file_size > 1048576
-                      else f"{file_size / 1024:.2f} KB",
+        "size_human": (
+            f"{file_size / (1024*1024):.2f} MB"
+            if file_size > 1048576
+            else f"{file_size / 1024:.2f} KB"
+        ),
         "sha256": sha256.hexdigest(),
         "md5": md5.hexdigest(),
     }
@@ -322,6 +383,7 @@ def get_firmware_metadata(file_path):
 # ---------------------------------------------------------------------------
 # Main Entry Point
 # ---------------------------------------------------------------------------
+
 
 def analyze_firmware(firmware_path):
     """Perform a complete firmware analysis pipeline."""
@@ -364,8 +426,10 @@ def analyze_firmware(firmware_path):
     regions = detect_entropy_regions(emap)
     for r in regions:
         size_bytes = (r["block_count"]) * 8192
-        print(f"  {r['start_hex']} - 0x{r['end_offset']:08X}  "
-              f"({size_bytes:>8} bytes)  [{r['classification']}]")
+        print(
+            f"  {r['start_hex']} - 0x{r['end_offset']:08X}  "
+            f"({size_bytes:>8} bytes)  [{r['classification']}]"
+        )
 
     # String analysis for sensitive data
     print("\n--- Sensitive String Analysis ---")
@@ -396,8 +460,8 @@ def analyze_firmware(firmware_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Firmware extraction and analysis agent using binwalk for "
-                    "signature scanning, entropy analysis, filesystem extraction, "
-                    "and string-based credential discovery.",
+        "signature scanning, entropy analysis, filesystem extraction, "
+        "and string-based credential discovery.",
         epilog="Authorized use only. Ensure you have permission to analyze the target firmware.",
     )
     parser.add_argument(
@@ -405,32 +469,41 @@ if __name__ == "__main__":
         help="Path to a firmware image file (.bin, .img, .rom)",
     )
     parser.add_argument(
-        "--block-size", "-b",
-        type=int, default=8192,
+        "--block-size",
+        "-b",
+        type=int,
+        default=8192,
         help="Block size in bytes for entropy analysis (default: 8192)",
     )
     parser.add_argument(
-        "--min-string-length", "-s",
-        type=int, default=8,
+        "--min-string-length",
+        "-s",
+        type=int,
+        default=8,
         help="Minimum string length for sensitive string scanning (default: 8)",
     )
     parser.add_argument(
-        "--extract", "-e",
+        "--extract",
+        "-e",
         action="store_true",
         help="Run binwalk extraction after analysis",
     )
     parser.add_argument(
-        "--recursive", "-M",
+        "--recursive",
+        "-M",
         action="store_true",
         help="Enable recursive (matryoshka) extraction",
     )
     parser.add_argument(
-        "--output-dir", "-o",
-        type=str, default=None,
+        "--output-dir",
+        "-o",
+        type=str,
+        default=None,
         help="Output directory for extraction results",
     )
     parser.add_argument(
-        "--json-output", "-j",
+        "--json-output",
+        "-j",
         action="store_true",
         help="Output results in JSON format instead of text",
     )

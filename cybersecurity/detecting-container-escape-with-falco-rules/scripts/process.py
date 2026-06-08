@@ -58,7 +58,7 @@ ESCAPE_RULES = {
     "shadow_file": {
         "rule": "Container Reading Host Shadow File",
         "desc": "Detect container reading /etc/shadow",
-        "condition": 'open_read and container and (fd.name = /etc/shadow or fd.name startswith /host/etc/shadow)',
+        "condition": "open_read and container and (fd.name = /etc/shadow or fd.name startswith /host/etc/shadow)",
         "priority": "CRITICAL",
         "tags": ["container", "credential-access", "T1003"],
     },
@@ -126,15 +126,21 @@ def parse_falco_alerts(log_file: str) -> list:
             continue
         try:
             alert = json.loads(line)
-            alerts.append({
-                "time": alert.get("time", ""),
-                "rule": alert.get("rule", ""),
-                "priority": alert.get("priority", ""),
-                "output": alert.get("output", ""),
-                "tags": alert.get("tags", []),
-                "container_name": alert.get("output_fields", {}).get("container.name", ""),
-                "container_image": alert.get("output_fields", {}).get("container.image.repository", ""),
-            })
+            alerts.append(
+                {
+                    "time": alert.get("time", ""),
+                    "rule": alert.get("rule", ""),
+                    "priority": alert.get("priority", ""),
+                    "output": alert.get("output", ""),
+                    "tags": alert.get("tags", []),
+                    "container_name": alert.get("output_fields", {}).get(
+                        "container.name", ""
+                    ),
+                    "container_image": alert.get("output_fields", {}).get(
+                        "container.image.repository", ""
+                    ),
+                }
+            )
         except json.JSONDecodeError:
             continue
 
@@ -143,7 +149,12 @@ def parse_falco_alerts(log_file: str) -> list:
 
 def summarize_alerts(alerts: list) -> dict:
     """Summarize Falco alerts by rule and severity."""
-    summary = {"total": len(alerts), "by_priority": {}, "by_rule": {}, "escape_attempts": []}
+    summary = {
+        "total": len(alerts),
+        "by_priority": {},
+        "by_rule": {},
+        "escape_attempts": [],
+    }
 
     for alert in alerts:
         pri = alert["priority"]
@@ -160,9 +171,19 @@ def summarize_alerts(alerts: list) -> dict:
 def check_falco_health() -> dict:
     """Check if Falco is running and healthy."""
     result = subprocess.run(
-        ["kubectl", "get", "pods", "-n", "falco", "-l", "app.kubernetes.io/name=falco",
-         "-o", "json"],
-        capture_output=True, text=True,
+        [
+            "kubectl",
+            "get",
+            "pods",
+            "-n",
+            "falco",
+            "-l",
+            "app.kubernetes.io/name=falco",
+            "-o",
+            "json",
+        ],
+        capture_output=True,
+        text=True,
     )
     if result.returncode != 0:
         return {"healthy": False, "error": result.stderr}
@@ -186,7 +207,9 @@ def main():
     subparsers.add_parser("generate", help="Generate container escape detection rules")
 
     parse_cmd = subparsers.add_parser("parse-alerts", help="Parse Falco alert logs")
-    parse_cmd.add_argument("--log-file", required=True, help="Path to Falco JSON log file")
+    parse_cmd.add_argument(
+        "--log-file", required=True, help="Path to Falco JSON log file"
+    )
 
     subparsers.add_parser("health", help="Check Falco deployment health")
 
@@ -210,14 +233,26 @@ def main():
     elif args.command == "deploy":
         rules_yaml = generate_all_rules()
         proc = subprocess.run(
-            ["kubectl", "create", "configmap", "falco-escape-rules",
-             "-n", args.namespace, "--from-literal=container-escape.yaml=" + rules_yaml,
-             "--dry-run=client", "-o", "yaml"],
-            capture_output=True, text=True,
+            [
+                "kubectl",
+                "create",
+                "configmap",
+                "falco-escape-rules",
+                "-n",
+                args.namespace,
+                "--from-literal=container-escape.yaml=" + rules_yaml,
+                "--dry-run=client",
+                "-o",
+                "yaml",
+            ],
+            capture_output=True,
+            text=True,
         )
         apply = subprocess.run(
             ["kubectl", "apply", "-f", "-"],
-            input=proc.stdout, capture_output=True, text=True,
+            input=proc.stdout,
+            capture_output=True,
+            text=True,
         )
         print(apply.stdout)
         if apply.returncode == 0:

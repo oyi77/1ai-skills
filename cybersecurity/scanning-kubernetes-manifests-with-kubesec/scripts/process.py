@@ -13,7 +13,6 @@ import argparse
 from pathlib import Path
 from collections import defaultdict
 
-
 MINIMUM_SCORE_THRESHOLD = 0
 RECOMMENDED_SCORE_THRESHOLD = 5
 
@@ -28,13 +27,24 @@ def scan_manifest_with_kubesec(file_path: str, kubesec_url: str = "") -> list[di
     try:
         if kubesec_url:
             result = subprocess.run(
-                ["curl", "-sSX", "POST", "--data-binary", f"@{file_path}", f"{kubesec_url}/scan"],
-                capture_output=True, text=True, timeout=30
+                [
+                    "curl",
+                    "-sSX",
+                    "POST",
+                    "--data-binary",
+                    f"@{file_path}",
+                    f"{kubesec_url}/scan",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
         else:
             result = subprocess.run(
                 ["kubesec", "scan", file_path],
-                capture_output=True, text=True, timeout=30
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
 
         if result.returncode != 0:
@@ -43,7 +53,9 @@ def scan_manifest_with_kubesec(file_path: str, kubesec_url: str = "") -> list[di
 
         return json.loads(result.stdout)
     except FileNotFoundError:
-        print("[ERROR] kubesec binary not found. Install from https://github.com/controlplaneio/kubesec")
+        print(
+            "[ERROR] kubesec binary not found. Install from https://github.com/controlplaneio/kubesec"
+        )
         return []
     except json.JSONDecodeError:
         print(f"[ERROR] Invalid JSON output from kubesec for {file_path}")
@@ -61,7 +73,11 @@ def scan_directory(directory: str, kubesec_url: str = "") -> list[dict]:
         return []
 
     all_results = []
-    yaml_files = list(dir_path.glob("**/*.yaml")) + list(dir_path.glob("**/*.yml")) + list(dir_path.glob("**/*.json"))
+    yaml_files = (
+        list(dir_path.glob("**/*.yaml"))
+        + list(dir_path.glob("**/*.yml"))
+        + list(dir_path.glob("**/*.json"))
+    )
 
     for manifest_file in sorted(yaml_files):
         print(f"[INFO] Scanning {manifest_file}...")
@@ -75,12 +91,7 @@ def scan_directory(directory: str, kubesec_url: str = "") -> list[dict]:
 
 def categorize_findings(results: list[dict]) -> dict:
     """Categorize scan findings by severity."""
-    categories = {
-        "critical": [],
-        "warning": [],
-        "info": [],
-        "passed": []
-    }
+    categories = {"critical": [], "warning": [], "info": [], "passed": []}
 
     for result in results:
         score = result.get("score", 0)
@@ -94,7 +105,7 @@ def categorize_findings(results: list[dict]) -> dict:
             "score": score,
             "critical": scoring.get("critical", []),
             "advise": scoring.get("advise", []),
-            "passed": scoring.get("passed", [])
+            "passed": scoring.get("passed", []),
         }
 
         if score < 0:
@@ -138,7 +149,7 @@ def generate_report(results: list[dict], output_format: str = "text") -> str:
             "warning_count": len(categories["warning"]),
             "passed_count": len(categories["passed"]),
             "results": results,
-            "categories": categories
+            "categories": categories,
         }
         return json.dumps(report, indent=2)
 
@@ -149,8 +160,12 @@ def generate_report(results: list[dict], output_format: str = "text") -> str:
 
     lines.append(f"\nTotal Resources Scanned: {len(results)}")
     lines.append(f"  Critical (score < 0): {len(categories['critical'])}")
-    lines.append(f"  Warning (score < {RECOMMENDED_SCORE_THRESHOLD}): {len(categories['warning'])}")
-    lines.append(f"  Passed (score >= {RECOMMENDED_SCORE_THRESHOLD}): {len(categories['passed'])}")
+    lines.append(
+        f"  Warning (score < {RECOMMENDED_SCORE_THRESHOLD}): {len(categories['warning'])}"
+    )
+    lines.append(
+        f"  Passed (score >= {RECOMMENDED_SCORE_THRESHOLD}): {len(categories['passed'])}"
+    )
 
     if results:
         scores = [r.get("score", 0) for r in results]
@@ -168,7 +183,9 @@ def generate_report(results: list[dict], output_format: str = "text") -> str:
             lines.append(f"  File: {item['source_file']}")
             lines.append(f"  Score: {item['score']}")
             for crit in item["critical"]:
-                lines.append(f"    [CRITICAL] {crit.get('id', '')}: {crit.get('reason', '')}")
+                lines.append(
+                    f"    [CRITICAL] {crit.get('id', '')}: {crit.get('reason', '')}"
+                )
 
     if categories["warning"]:
         lines.append(f"\n{'=' * 50}")
@@ -179,7 +196,9 @@ def generate_report(results: list[dict], output_format: str = "text") -> str:
             lines.append(f"  File: {item['source_file']}")
             lines.append(f"  Score: {item['score']}")
             for adv in item["advise"][:5]:
-                lines.append(f"    [ADVISE +{adv.get('points', 0)}] {adv.get('id', '')}: {adv.get('reason', '')}")
+                lines.append(
+                    f"    [ADVISE +{adv.get('points', 0)}] {adv.get('id', '')}: {adv.get('reason', '')}"
+                )
 
     lines.append(f"\n{'=' * 50}")
     lines.append("REMEDIATION SUMMARY")
@@ -206,9 +225,17 @@ def main():
     parser = argparse.ArgumentParser(description="Kubesec Manifest Scanner Automation")
     parser.add_argument("--file", help="Single manifest file to scan")
     parser.add_argument("--directory", help="Directory containing manifests to scan")
-    parser.add_argument("--url", default="", help="Kubesec API URL (optional, uses local binary if not set)")
-    parser.add_argument("--format", choices=["text", "json"], default="text", help="Output format")
-    parser.add_argument("--threshold", type=int, default=0, help="Minimum passing score (default: 0)")
+    parser.add_argument(
+        "--url",
+        default="",
+        help="Kubesec API URL (optional, uses local binary if not set)",
+    )
+    parser.add_argument(
+        "--format", choices=["text", "json"], default="text", help="Output format"
+    )
+    parser.add_argument(
+        "--threshold", type=int, default=0, help="Minimum passing score (default: 0)"
+    )
     args = parser.parse_args()
 
     global MINIMUM_SCORE_THRESHOLD

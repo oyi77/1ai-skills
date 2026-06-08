@@ -8,7 +8,9 @@ import os
 from datetime import datetime
 from typing import Dict, List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 PILLARS = ["Identity", "Devices", "Networks", "Applications", "Data"]
@@ -116,8 +118,12 @@ def compute_overall_maturity(pillar_results: List[dict]) -> dict:
         level = "Initial"
     else:
         level = "Traditional"
-    return {"overall_score": total_score, "max_score": total_max,
-            "percentage": round(pct, 1), "maturity_level": level}
+    return {
+        "overall_score": total_score,
+        "max_score": total_max,
+        "percentage": round(pct, 1),
+        "maturity_level": level,
+    }
 
 
 def generate_recommendations(pillar_results: List[dict]) -> List[dict]:
@@ -126,12 +132,14 @@ def generate_recommendations(pillar_results: List[dict]) -> List[dict]:
     for pillar in pillar_results:
         for control in pillar["controls"]:
             if not control["implemented"]:
-                recs.append({
-                    "pillar": pillar["pillar"],
-                    "control": control["control"],
-                    "priority": "HIGH" if pillar["percentage"] < 50 else "MEDIUM",
-                    "action": f"Implement: {control['control']}",
-                })
+                recs.append(
+                    {
+                        "pillar": pillar["pillar"],
+                        "control": control["control"],
+                        "priority": "HIGH" if pillar["percentage"] < 50 else "MEDIUM",
+                        "action": f"Implement: {control['control']}",
+                    }
+                )
     recs.sort(key=lambda r: 0 if r["priority"] == "HIGH" else 1)
     return recs
 
@@ -156,7 +164,9 @@ def generate_report(data_path: str) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="CISA Zero Trust Maturity Model Assessment")
+    parser = argparse.ArgumentParser(
+        description="CISA Zero Trust Maturity Model Assessment"
+    )
     parser.add_argument("--data", required=True, help="Path to assessment data JSON")
     parser.add_argument("--output-dir", default=".")
     parser.add_argument("--output", default="ztmm_report.json")

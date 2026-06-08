@@ -22,25 +22,54 @@ RUN_KEY_PATHS = [
 ]
 
 SUSPICIOUS_PATHS = [
-    r"\\temp\\", r"\\tmp\\", r"\\appdata\\local\\temp",
-    r"\\downloads\\", r"\\programdata\\", r"\\public\\",
-    r"\\users\\public", r"\\recycler\\", r"\\perflogs\\",
+    r"\\temp\\",
+    r"\\tmp\\",
+    r"\\appdata\\local\\temp",
+    r"\\downloads\\",
+    r"\\programdata\\",
+    r"\\public\\",
+    r"\\users\\public",
+    r"\\recycler\\",
+    r"\\perflogs\\",
 ]
 
 LOLBINS = [
-    "mshta.exe", "rundll32.exe", "regsvr32.exe", "wscript.exe", "cscript.exe",
-    "certutil.exe", "bitsadmin.exe", "msiexec.exe", "forfiles.exe",
-    "pcalua.exe", "bash.exe", "scriptrunner.exe",
+    "mshta.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "certutil.exe",
+    "bitsadmin.exe",
+    "msiexec.exe",
+    "forfiles.exe",
+    "pcalua.exe",
+    "bash.exe",
+    "scriptrunner.exe",
 ]
 
 SUSPICIOUS_MODIFIERS = [
-    "cmd.exe", "powershell.exe", "pwsh.exe", "python.exe", "python3.exe",
-    "wmic.exe", "reg.exe", "mshta.exe", "cscript.exe", "wscript.exe",
+    "cmd.exe",
+    "powershell.exe",
+    "pwsh.exe",
+    "python.exe",
+    "python3.exe",
+    "wmic.exe",
+    "reg.exe",
+    "mshta.exe",
+    "cscript.exe",
+    "wscript.exe",
 ]
 
 KNOWN_GOOD_VALUES = [
-    "SecurityHealth", "WindowsDefender", "iTunesHelper", "VMware",
-    "RealTimeProtection", "OneDrive", "Teams", "Spotify",
+    "SecurityHealth",
+    "WindowsDefender",
+    "iTunesHelper",
+    "VMware",
+    "RealTimeProtection",
+    "OneDrive",
+    "Teams",
+    "Spotify",
 ]
 
 
@@ -66,8 +95,12 @@ def analyze_sysmon_events(events):
             continue
         event_data = evt.get("EventData", evt)
         target_obj = event_data.get("TargetObject", event_data.get("target_object", ""))
-        details = event_data.get("Details", event_data.get("details", event_data.get("value", "")))
-        image = event_data.get("Image", event_data.get("image", event_data.get("process", "")))
+        details = event_data.get(
+            "Details", event_data.get("details", event_data.get("value", ""))
+        )
+        image = event_data.get(
+            "Image", event_data.get("image", event_data.get("process", ""))
+        )
         user = event_data.get("User", event_data.get("user", ""))
         timestamp = evt.get("TimeCreated", evt.get("timestamp", evt.get("UtcTime", "")))
         if not is_run_key(target_obj):
@@ -85,36 +118,52 @@ def analyze_sysmon_events(events):
                 severity = "high"
                 indicators.append(f"lolbin:{lolbin}")
                 break
-        if "powershell" in details_lower and ("-enc" in details_lower or "-e " in details_lower or "encodedcommand" in details_lower):
+        if "powershell" in details_lower and (
+            "-enc" in details_lower
+            or "-e " in details_lower
+            or "encodedcommand" in details_lower
+        ):
             severity = "critical"
             indicators.append("encoded_powershell")
-        if re.search(r"(FromBase64|IEX|Invoke-Expression|DownloadString|Net\.WebClient)", details or "", re.IGNORECASE):
+        if re.search(
+            r"(FromBase64|IEX|Invoke-Expression|DownloadString|Net\.WebClient)",
+            details or "",
+            re.IGNORECASE,
+        ):
             severity = "critical"
             indicators.append("malicious_powershell_pattern")
         image_name = (image or "").split("\\")[-1].lower()
         for susp_mod in SUSPICIOUS_MODIFIERS:
             if susp_mod.lower() == image_name:
-                severity = max(severity, "high", key=lambda x: {"low": 0, "medium": 1, "high": 2, "critical": 3}[x])
+                severity = max(
+                    severity,
+                    "high",
+                    key=lambda x: {"low": 0, "medium": 1, "high": 2, "critical": 3}[x],
+                )
                 indicators.append(f"suspicious_modifier:{susp_mod}")
                 break
         value_name = target_obj.split("\\")[-1] if "\\" in target_obj else target_obj
-        is_known_good = any(kg.lower() in value_name.lower() for kg in KNOWN_GOOD_VALUES)
+        is_known_good = any(
+            kg.lower() in value_name.lower() for kg in KNOWN_GOOD_VALUES
+        )
         if is_known_good:
             severity = "low"
             indicators.append("known_good_match")
-        findings.append({
-            "type": "registry_run_key_persistence",
-            "severity": severity,
-            "resource": target_obj,
-            "detail": f"Run key set by {image_name or 'unknown'}: {(details or '')[:120]}",
-            "mitre_technique": "T1547.001",
-            "mitre_tactic": "Persistence",
-            "modifying_process": image,
-            "registry_value": details,
-            "user": user,
-            "timestamp": timestamp,
-            "indicators": indicators,
-        })
+        findings.append(
+            {
+                "type": "registry_run_key_persistence",
+                "severity": severity,
+                "resource": target_obj,
+                "detail": f"Run key set by {image_name or 'unknown'}: {(details or '')[:120]}",
+                "mitre_technique": "T1547.001",
+                "mitre_tactic": "Persistence",
+                "modifying_process": image,
+                "registry_value": details,
+                "user": user,
+                "timestamp": timestamp,
+                "indicators": indicators,
+            }
+        )
     return findings
 
 
@@ -125,7 +174,9 @@ def analyze_registry_snapshot(entries):
         key_path = entry.get("key", entry.get("path", ""))
         value_name = entry.get("name", entry.get("value_name", ""))
         value_data = entry.get("data", entry.get("value_data", entry.get("value", "")))
-        if not is_run_key(key_path) and not any(rk.lower().split("\\")[-1] in key_path.lower() for rk in RUN_KEY_PATHS[:4]):
+        if not is_run_key(key_path) and not any(
+            rk.lower().split("\\")[-1] in key_path.lower() for rk in RUN_KEY_PATHS[:4]
+        ):
             continue
         severity = "medium"
         indicators = []
@@ -140,19 +191,35 @@ def analyze_registry_snapshot(entries):
                 severity = "high"
                 indicators.append(f"lolbin:{lolbin}")
                 break
-        if not Path(value_data.strip('"').split(" ")[0]).suffix.lower() in (".exe", ".dll", ".bat", ".cmd", ".ps1", ".vbs", ".js", ".hta", ".scr", ".com", ""):
+        if not Path(value_data.strip('"').split(" ")[0]).suffix.lower() in (
+            ".exe",
+            ".dll",
+            ".bat",
+            ".cmd",
+            ".ps1",
+            ".vbs",
+            ".js",
+            ".hta",
+            ".scr",
+            ".com",
+            "",
+        ):
             pass
-        is_known = any(kg.lower() in (value_name or "").lower() for kg in KNOWN_GOOD_VALUES)
+        is_known = any(
+            kg.lower() in (value_name or "").lower() for kg in KNOWN_GOOD_VALUES
+        )
         if is_known:
             severity = "low"
-        findings.append({
-            "type": "run_key_entry",
-            "severity": severity,
-            "resource": f"{key_path}\\{value_name}",
-            "detail": f"Value: {(value_data or '')[:120]}",
-            "mitre_technique": "T1547.001",
-            "indicators": indicators,
-        })
+        findings.append(
+            {
+                "type": "run_key_entry",
+                "severity": severity,
+                "resource": f"{key_path}\\{value_name}",
+                "detail": f"Value: {(value_data or '')[:120]}",
+                "mitre_technique": "T1547.001",
+                "indicators": indicators,
+            }
+        )
     return findings
 
 
@@ -179,7 +246,9 @@ def generate_sigma_rule(finding):
 def analyze(data):
     findings = []
     if isinstance(data, list):
-        has_event_id = any("EventID" in e or "event_id" in e or "EventCode" in e for e in data)
+        has_event_id = any(
+            "EventID" in e or "event_id" in e or "EventCode" in e for e in data
+        )
         if has_event_id:
             findings.extend(analyze_sysmon_events(data))
         else:
@@ -212,7 +281,11 @@ def generate_report(input_path):
 
 def main():
     ap = argparse.ArgumentParser(description="Registry Run Key Persistence Hunter")
-    ap.add_argument("--input", required=True, help="Input JSON with Sysmon events or registry snapshot")
+    ap.add_argument(
+        "--input",
+        required=True,
+        help="Input JSON with Sysmon events or registry snapshot",
+    )
     ap.add_argument("--output", help="Output JSON report path")
     args = ap.parse_args()
     report = generate_report(args.input)

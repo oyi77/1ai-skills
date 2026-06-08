@@ -90,12 +90,14 @@ def generate_attack_navigator_layer(techniques, layer_name="Sigma Detection Cove
         "techniques": [],
     }
     for tid, rule_names in techniques.items():
-        layer["techniques"].append({
-            "techniqueID": tid,
-            "color": "#31a354",
-            "score": len(rule_names),
-            "comment": "; ".join(rule_names[:3]),
-        })
+        layer["techniques"].append(
+            {
+                "techniqueID": tid,
+                "color": "#31a354",
+                "score": len(rule_names),
+                "comment": "; ".join(rule_names[:3]),
+            }
+        )
     return layer
 
 
@@ -107,12 +109,14 @@ def batch_convert(directory, backend_name="splunk"):
         try:
             if backend_name == "splunk":
                 queries = convert_to_splunk(entry["rule"])
-                converted.append({
-                    "file": entry["path"],
-                    "title": str(entry["rule"].title),
-                    "level": str(entry["rule"].level),
-                    "queries": [str(q) for q in queries],
-                })
+                converted.append(
+                    {
+                        "file": entry["path"],
+                        "title": str(entry["rule"].title),
+                        "level": str(entry["rule"].level),
+                        "queries": [str(q) for q in queries],
+                    }
+                )
         except Exception as e:
             converted.append({"file": entry["path"], "error": str(e)})
     return converted
@@ -124,9 +128,11 @@ def main():
     parser.add_argument("--directory", help="Directory of Sigma rules")
     parser.add_argument("--backend", choices=["splunk"], default="splunk")
     parser.add_argument("--output", default="sigma_output.json")
-    parser.add_argument("--action", choices=[
-        "validate", "convert", "batch_convert", "coverage", "full_pipeline"
-    ], default="full_pipeline")
+    parser.add_argument(
+        "--action",
+        choices=["validate", "convert", "batch_convert", "coverage", "full_pipeline"],
+        default="full_pipeline",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat()}
@@ -145,7 +151,10 @@ def main():
         print(f"[+] Converted '{rule.title}' to Splunk SPL:")
         for q in queries:
             print(f"    {q}")
-        report["conversion"] = {"title": str(rule.title), "queries": [str(q) for q in queries]}
+        report["conversion"] = {
+            "title": str(rule.title),
+            "queries": [str(q) for q in queries],
+        }
 
     if args.action in ("batch_convert", "full_pipeline") and args.directory:
         converted = batch_convert(args.directory, args.backend)
@@ -160,7 +169,9 @@ def main():
         layer_path = args.output.replace(".json", "_layer.json")
         with open(layer_path, "w") as f:
             json.dump(layer, f, indent=2)
-        print(f"[+] ATT&CK coverage: {len(techniques)} techniques from {len(rules)} rules")
+        print(
+            f"[+] ATT&CK coverage: {len(techniques)} techniques from {len(rules)} rules"
+        )
         print(f"[+] Navigator layer saved to {layer_path}")
         report["coverage"] = {"techniques": len(techniques), "rules": len(rules)}
 

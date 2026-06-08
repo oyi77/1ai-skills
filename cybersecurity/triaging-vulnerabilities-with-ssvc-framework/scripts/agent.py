@@ -49,12 +49,39 @@ class SSVCDecision:
 
 SSVC_DECISION_TREE = {
     (ExploitationStatus.ACTIVE, TechnicalImpact.TOTAL): SSVCDecision.ACT,
-    (ExploitationStatus.ACTIVE, TechnicalImpact.PARTIAL, Automatability.YES): SSVCDecision.ACT,
-    (ExploitationStatus.ACTIVE, TechnicalImpact.PARTIAL, Automatability.NO, MissionPrevalence.ESSENTIAL): SSVCDecision.ACT,
-    (ExploitationStatus.ACTIVE, TechnicalImpact.PARTIAL, Automatability.NO, MissionPrevalence.SUPPORT): SSVCDecision.ATTEND,
-    (ExploitationStatus.ACTIVE, TechnicalImpact.PARTIAL, Automatability.NO, MissionPrevalence.MINIMAL): SSVCDecision.ATTEND,
-    (ExploitationStatus.POC, TechnicalImpact.TOTAL, Automatability.YES): SSVCDecision.ATTEND,
-    (ExploitationStatus.POC, TechnicalImpact.TOTAL, Automatability.NO): SSVCDecision.TRACK_STAR,
+    (
+        ExploitationStatus.ACTIVE,
+        TechnicalImpact.PARTIAL,
+        Automatability.YES,
+    ): SSVCDecision.ACT,
+    (
+        ExploitationStatus.ACTIVE,
+        TechnicalImpact.PARTIAL,
+        Automatability.NO,
+        MissionPrevalence.ESSENTIAL,
+    ): SSVCDecision.ACT,
+    (
+        ExploitationStatus.ACTIVE,
+        TechnicalImpact.PARTIAL,
+        Automatability.NO,
+        MissionPrevalence.SUPPORT,
+    ): SSVCDecision.ATTEND,
+    (
+        ExploitationStatus.ACTIVE,
+        TechnicalImpact.PARTIAL,
+        Automatability.NO,
+        MissionPrevalence.MINIMAL,
+    ): SSVCDecision.ATTEND,
+    (
+        ExploitationStatus.POC,
+        TechnicalImpact.TOTAL,
+        Automatability.YES,
+    ): SSVCDecision.ATTEND,
+    (
+        ExploitationStatus.POC,
+        TechnicalImpact.TOTAL,
+        Automatability.NO,
+    ): SSVCDecision.TRACK_STAR,
     (ExploitationStatus.POC, TechnicalImpact.PARTIAL): SSVCDecision.TRACK_STAR,
     (ExploitationStatus.NONE, TechnicalImpact.TOTAL): SSVCDecision.TRACK_STAR,
     (ExploitationStatus.NONE, TechnicalImpact.PARTIAL): SSVCDecision.TRACK,
@@ -99,7 +126,9 @@ class SSVCTriageAgent:
         if not requests:
             return None
         try:
-            resp = requests.get(f"https://api.first.org/data/v1/epss?cve={cve_id}", timeout=10)
+            resp = requests.get(
+                f"https://api.first.org/data/v1/epss?cve={cve_id}", timeout=10
+            )
             if resp and resp.status_code == 200:
                 data = resp.json().get("data", [])
                 if data:
@@ -124,8 +153,13 @@ class SSVCTriageAgent:
             return ExploitationStatus.POC, epss
         return ExploitationStatus.NONE, epss
 
-    def evaluate_decision(self, exploitation, technical_impact, automatability=None,
-                          mission_prevalence=None):
+    def evaluate_decision(
+        self,
+        exploitation,
+        technical_impact,
+        automatability=None,
+        mission_prevalence=None,
+    ):
         """Walk the SSVC decision tree to produce a prioritization."""
         if (exploitation, technical_impact) in SSVC_DECISION_TREE:
             return SSVC_DECISION_TREE[(exploitation, technical_impact)]
@@ -134,18 +168,28 @@ class SSVCTriageAgent:
             if key in SSVC_DECISION_TREE:
                 return SSVC_DECISION_TREE[key]
             if mission_prevalence:
-                key = (exploitation, technical_impact, automatability, mission_prevalence)
+                key = (
+                    exploitation,
+                    technical_impact,
+                    automatability,
+                    mission_prevalence,
+                )
                 if key in SSVC_DECISION_TREE:
                     return SSVC_DECISION_TREE[key]
         return SSVCDecision.TRACK
 
-    def triage_cve(self, cve_id, technical_impact=TechnicalImpact.PARTIAL,
-                   automatability=Automatability.NO,
-                   mission_prevalence=MissionPrevalence.SUPPORT):
+    def triage_cve(
+        self,
+        cve_id,
+        technical_impact=TechnicalImpact.PARTIAL,
+        automatability=Automatability.NO,
+        mission_prevalence=MissionPrevalence.SUPPORT,
+    ):
         """Full SSVC triage for a single CVE."""
         exploitation, enrichment = self.determine_exploitation(cve_id)
-        decision = self.evaluate_decision(exploitation, technical_impact,
-                                          automatability, mission_prevalence)
+        decision = self.evaluate_decision(
+            exploitation, technical_impact, automatability, mission_prevalence
+        )
         result = {
             "cve_id": cve_id,
             "exploitation_status": exploitation,
@@ -174,9 +218,13 @@ class SSVCTriageAgent:
         for cve in cves:
             self.triage_cve(
                 cve,
-                technical_impact=defaults.get("technical_impact", TechnicalImpact.PARTIAL),
+                technical_impact=defaults.get(
+                    "technical_impact", TechnicalImpact.PARTIAL
+                ),
                 automatability=defaults.get("automatability", Automatability.NO),
-                mission_prevalence=defaults.get("mission_prevalence", MissionPrevalence.SUPPORT),
+                mission_prevalence=defaults.get(
+                    "mission_prevalence", MissionPrevalence.SUPPORT
+                ),
             )
         return self.results
 

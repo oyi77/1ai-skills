@@ -27,12 +27,14 @@ from collections import defaultdict
 
 try:
     import dns.resolver
+
     HAS_DNSPYTHON = True
 except ImportError:
     HAS_DNSPYTHON = False
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -41,6 +43,7 @@ except ImportError:
 @dataclass
 class SPFRecord:
     """Parsed SPF record details."""
+
     raw: str = ""
     version: str = ""
     mechanisms: list = field(default_factory=list)
@@ -56,6 +59,7 @@ class SPFRecord:
 @dataclass
 class DKIMRecord:
     """Parsed DKIM record details."""
+
     selector: str = ""
     raw: str = ""
     version: str = ""
@@ -69,6 +73,7 @@ class DKIMRecord:
 @dataclass
 class DMARCRecord:
     """Parsed DMARC record details."""
+
     raw: str = ""
     version: str = ""
     policy: str = ""
@@ -86,6 +91,7 @@ class DMARCRecord:
 @dataclass
 class DMARCReportRecord:
     """Single record from a DMARC aggregate report."""
+
     source_ip: str = ""
     count: int = 0
     disposition: str = ""
@@ -102,6 +108,7 @@ class DMARCReportRecord:
 @dataclass
 class DMARCReportSummary:
     """Summary of a parsed DMARC aggregate report."""
+
     org_name: str = ""
     report_id: str = ""
     date_begin: str = ""
@@ -125,14 +132,17 @@ def query_dns_txt(domain: str) -> list:
                 txt = b"".join(rdata.strings).decode("utf-8", errors="replace")
                 results.append(txt)
             return results
-        except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer,
-                dns.resolver.NoNameservers, dns.resolver.Timeout):
+        except (
+            dns.resolver.NXDOMAIN,
+            dns.resolver.NoAnswer,
+            dns.resolver.NoNameservers,
+            dns.resolver.Timeout,
+        ):
             return []
     elif HAS_REQUESTS:
         try:
             resp = requests.get(
-                f"https://dns.google/resolve?name={domain}&type=TXT",
-                timeout=10
+                f"https://dns.google/resolve?name={domain}&type=TXT", timeout=10
             )
             if resp.status_code == 200:
                 data = resp.json()
@@ -158,7 +168,9 @@ def check_spf(domain: str) -> SPFRecord:
         return record
 
     if len(spf_records) > 1:
-        record.errors.append(f"Multiple SPF records found ({len(spf_records)}) - RFC violation")
+        record.errors.append(
+            f"Multiple SPF records found ({len(spf_records)}) - RFC violation"
+        )
 
     record.raw = spf_records[0]
     record.version = "spf1"
@@ -196,7 +208,9 @@ def check_spf(domain: str) -> SPFRecord:
     record.dns_lookup_count = lookup_count
 
     if lookup_count > 10:
-        record.errors.append(f"SPF exceeds 10 DNS lookup limit ({lookup_count} lookups)")
+        record.errors.append(
+            f"SPF exceeds 10 DNS lookup limit ({lookup_count} lookups)"
+        )
 
     if record.qualifier == "+all":
         record.errors.append("SPF uses +all which allows any sender (insecure)")
@@ -214,12 +228,18 @@ def check_dkim(domain: str, selectors: list = None) -> list:
     """Check DKIM records for common selectors."""
     if selectors is None:
         selectors = [
-            "selector1", "selector2",  # Microsoft 365
-            "google", "default",  # Google Workspace
-            "s1", "s2",  # Generic
-            "dkim", "mail",  # Common
-            "k1", "k2",  # Mailchimp
-            "sm1", "sm2",  # SendGrid
+            "selector1",
+            "selector2",  # Microsoft 365
+            "google",
+            "default",  # Google Workspace
+            "s1",
+            "s2",  # Generic
+            "dkim",
+            "mail",  # Common
+            "k1",
+            "k2",  # Mailchimp
+            "sm1",
+            "sm2",  # SendGrid
         ]
 
     results = []
@@ -237,16 +257,18 @@ def check_dkim(domain: str, selectors: list = None) -> list:
                 record.version = "DKIM1"
 
             import re
-            key_match = re.search(r'k=(\w+)', record.raw)
+
+            key_match = re.search(r"k=(\w+)", record.raw)
             if key_match:
                 record.key_type = key_match.group(1)
             else:
                 record.key_type = "rsa"  # default
 
-            pub_match = re.search(r'p=([A-Za-z0-9+/=]+)', record.raw)
+            pub_match = re.search(r"p=([A-Za-z0-9+/=]+)", record.raw)
             if pub_match:
                 record.public_key = pub_match.group(1)
                 import base64
+
                 try:
                     key_bytes = base64.b64decode(record.public_key)
                     record.key_length = len(key_bytes) * 8
@@ -283,8 +305,9 @@ def check_dmarc(domain: str) -> DMARCRecord:
     record.version = "DMARC1"
 
     import re
+
     tags = {}
-    for tag_match in re.finditer(r'(\w+)\s*=\s*([^;]+)', record.raw):
+    for tag_match in re.finditer(r"(\w+)\s*=\s*([^;]+)", record.raw):
         tags[tag_match.group(1).strip()] = tag_match.group(2).strip()
 
     record.policy = tags.get("p", "")
@@ -315,7 +338,10 @@ def check_dmarc(domain: str) -> DMARCRecord:
     if not record.rua:
         record.errors.append("No aggregate report URI (rua) configured")
 
-    record.valid = len([e for e in record.errors if "monitor only" not in e and "rua" not in e]) == 0
+    record.valid = (
+        len([e for e in record.errors if "monitor only" not in e and "rua" not in e])
+        == 0
+    )
     return record
 
 
@@ -424,8 +450,9 @@ def load_report_file(filepath: str) -> str:
     return ""
 
 
-def format_domain_check(domain: str, spf: SPFRecord, dkim_records: list,
-                        dmarc: DMARCRecord) -> str:
+def format_domain_check(
+    domain: str, spf: SPFRecord, dkim_records: list, dmarc: DMARCRecord
+) -> str:
     """Format domain authentication check results."""
     lines = []
     lines.append("=" * 70)
@@ -457,7 +484,9 @@ def format_domain_check(domain: str, spf: SPFRecord, dkim_records: list,
                 lines.append(f"  WARNING: {err}")
     else:
         lines.append("[DKIM] NO RECORDS FOUND")
-        lines.append("  Checked selectors: selector1, selector2, google, default, s1, s2, dkim, mail")
+        lines.append(
+            "  Checked selectors: selector1, selector2, google, default, s1, s2, dkim, mail"
+        )
     lines.append("")
 
     # DMARC
@@ -467,8 +496,12 @@ def format_domain_check(domain: str, spf: SPFRecord, dkim_records: list,
     lines.append(f"  Policy: {dmarc.policy}")
     lines.append(f"  Subdomain Policy: {dmarc.subdomain_policy}")
     lines.append(f"  Percentage: {dmarc.pct}%")
-    lines.append(f"  DKIM Alignment: {dmarc.adkim} ({'relaxed' if dmarc.adkim == 'r' else 'strict'})")
-    lines.append(f"  SPF Alignment: {dmarc.aspf} ({'relaxed' if dmarc.aspf == 'r' else 'strict'})")
+    lines.append(
+        f"  DKIM Alignment: {dmarc.adkim} ({'relaxed' if dmarc.adkim == 'r' else 'strict'})"
+    )
+    lines.append(
+        f"  SPF Alignment: {dmarc.aspf} ({'relaxed' if dmarc.aspf == 'r' else 'strict'})"
+    )
     lines.append(f"  Aggregate Reports: {', '.join(dmarc.rua) or 'not configured'}")
     lines.append(f"  Forensic Reports: {', '.join(dmarc.ruf) or 'not configured'}")
     for err in dmarc.errors:
@@ -481,9 +514,13 @@ def format_domain_check(domain: str, spf: SPFRecord, dkim_records: list,
     if all_valid and dmarc.policy == "reject":
         lines.append("  OVERALL: STRONG - Full email authentication with reject policy")
     elif all_valid and dmarc.policy == "quarantine":
-        lines.append("  OVERALL: GOOD - Full authentication, consider upgrading to reject")
+        lines.append(
+            "  OVERALL: GOOD - Full authentication, consider upgrading to reject"
+        )
     elif all_valid:
-        lines.append("  OVERALL: MONITORING - Authentication configured but DMARC not enforcing")
+        lines.append(
+            "  OVERALL: MONITORING - Authentication configured but DMARC not enforcing"
+        )
     else:
         lines.append("  OVERALL: WEAK - Email authentication has gaps")
     lines.append("=" * 70)
@@ -503,8 +540,12 @@ def format_report_summary(summary: DMARCReportSummary) -> str:
     lines.append(f"  Domain: {summary.domain}")
     lines.append("")
     lines.append(f"  Total Messages: {summary.total_messages}")
-    lines.append(f"  Passed: {summary.pass_count} ({summary.pass_count*100//max(summary.total_messages,1)}%)")
-    lines.append(f"  Failed: {summary.fail_count} ({summary.fail_count*100//max(summary.total_messages,1)}%)")
+    lines.append(
+        f"  Passed: {summary.pass_count} ({summary.pass_count*100//max(summary.total_messages,1)}%)"
+    )
+    lines.append(
+        f"  Failed: {summary.fail_count} ({summary.fail_count*100//max(summary.total_messages,1)}%)"
+    )
     lines.append("")
 
     if summary.top_failing_ips:
@@ -517,9 +558,11 @@ def format_report_summary(summary: DMARCReportSummary) -> str:
     for rec in summary.records[:50]:
         status = "PASS" if (rec.dkim_aligned or rec.spf_aligned) else "FAIL"
         lines.append(f"  {rec.source_ip} ({rec.count} msgs) - {status}")
-        lines.append(f"    Disposition: {rec.disposition} | "
-                     f"DKIM: {rec.dkim_result} ({rec.dkim_domain}) | "
-                     f"SPF: {rec.spf_result} ({rec.spf_domain})")
+        lines.append(
+            f"    Disposition: {rec.disposition} | "
+            f"DKIM: {rec.dkim_result} ({rec.dkim_domain}) | "
+            f"SPF: {rec.spf_result} ({rec.spf_domain})"
+        )
 
     lines.append("=" * 70)
     return "\n".join(lines)
@@ -531,7 +574,9 @@ def main():
     )
     subparsers = parser.add_subparsers(dest="command")
 
-    check_parser = subparsers.add_parser("check", help="Check domain authentication records")
+    check_parser = subparsers.add_parser(
+        "check", help="Check domain authentication records"
+    )
     check_parser.add_argument("domain", help="Domain to check")
     check_parser.add_argument("--selectors", nargs="+", help="DKIM selectors to check")
     check_parser.add_argument("--json", action="store_true", help="Output as JSON")
@@ -549,7 +594,9 @@ def main():
     args = parser.parse_args()
 
     domain = getattr(args, "domain", None) or args.check_domain
-    report_path = getattr(args, "path", None) or args.parse_report or args.parse_report_dir
+    report_path = (
+        getattr(args, "path", None) or args.parse_report or args.parse_report_dir
+    )
 
     if domain:
         spf = check_spf(domain)

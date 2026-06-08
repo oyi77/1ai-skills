@@ -42,11 +42,39 @@ def detect_content_type(caption: str) -> str:
     caption_lower = caption.lower()
 
     patterns = {
-        "cashback": ["cashback", "mova", "belanja tetap", "uang kembali", "hemat", "diskon"],
-        "tutorial": ["cara", "langkah", "tips", "trik", "bagaimana", "how to", "tutorial"],
+        "cashback": [
+            "cashback",
+            "mova",
+            "belanja tetap",
+            "uang kembali",
+            "hemat",
+            "diskon",
+        ],
+        "tutorial": [
+            "cara",
+            "langkah",
+            "tips",
+            "trik",
+            "bagaimana",
+            "how to",
+            "tutorial",
+        ],
         "story": ["cerita", "dulu", "ternyata", "awalnya", "kaget", "bun,", "bun aku"],
-        "product_promo": ["lynk.id", "link in bio", "klik", "beli sekarang", "jendralbot", "produk"],
-        "brand": ["berkah karya", "content factory", "digital marketing", "talent agency", "manifesto"],
+        "product_promo": [
+            "lynk.id",
+            "link in bio",
+            "klik",
+            "beli sekarang",
+            "jendralbot",
+            "produk",
+        ],
+        "brand": [
+            "berkah karya",
+            "content factory",
+            "digital marketing",
+            "talent agency",
+            "manifesto",
+        ],
         "viral_hook": ["viral", "fyp", "trending", "#viral", "#fyp"],
     }
 
@@ -100,10 +128,16 @@ def platform_summary(analytics: list) -> dict:
     Aggregate metrics by platform.
     Returns: {platform: {views, likes, comments, shares, posts, avg_engagement}}
     """
-    summary = defaultdict(lambda: {
-        "views": 0, "likes": 0, "comments": 0, "shares": 0,
-        "posts": 0, "engagement_rates": []
-    })
+    summary = defaultdict(
+        lambda: {
+            "views": 0,
+            "likes": 0,
+            "comments": 0,
+            "shares": 0,
+            "posts": 0,
+            "engagement_rates": [],
+        }
+    )
 
     for a in analytics:
         p = a.get("platform", "unknown")
@@ -124,7 +158,9 @@ def platform_summary(analytics: list) -> dict:
             "comments": d["comments"],
             "shares": d["shares"],
             "posts": d["posts"],
-            "avg_views_per_post": round(d["views"] / d["posts"], 1) if d["posts"] else 0,
+            "avg_views_per_post": (
+                round(d["views"] / d["posts"], 1) if d["posts"] else 0
+            ),
             "avg_engagement_rate": avg_eng,
         }
 
@@ -142,10 +178,16 @@ def content_type_summary(analytics: list, posts: list) -> dict:
     for p in posts:
         caption_map[p["id"]] = p.get("caption", "")
 
-    type_stats = defaultdict(lambda: {
-        "views": 0, "likes": 0, "comments": 0, "posts": 0,
-        "engagement_rates": [], "examples": []
-    })
+    type_stats = defaultdict(
+        lambda: {
+            "views": 0,
+            "likes": 0,
+            "comments": 0,
+            "posts": 0,
+            "engagement_rates": [],
+            "examples": [],
+        }
+    )
 
     for a in analytics:
         # Use video_description from analytics as caption proxy
@@ -159,12 +201,14 @@ def content_type_summary(analytics: list, posts: list) -> dict:
         type_stats[ctype]["posts"] += 1
         type_stats[ctype]["engagement_rates"].append(compute_engagement_rate(a))
         if len(type_stats[ctype]["examples"]) < 3:
-            type_stats[ctype]["examples"].append({
-                "platform": a.get("platform"),
-                "views": a.get("view_count", 0),
-                "hook": hook,
-                "url": a.get("share_url", "")
-            })
+            type_stats[ctype]["examples"].append(
+                {
+                    "platform": a.get("platform"),
+                    "views": a.get("view_count", 0),
+                    "hook": hook,
+                    "url": a.get("share_url", ""),
+                }
+            )
 
     result = {}
     for ctype, d in type_stats.items():
@@ -173,19 +217,25 @@ def content_type_summary(analytics: list, posts: list) -> dict:
             "posts": d["posts"],
             "total_views": d["views"],
             "total_likes": d["likes"],
-            "avg_views_per_post": round(d["views"] / d["posts"], 1) if d["posts"] else 0,
+            "avg_views_per_post": (
+                round(d["views"] / d["posts"], 1) if d["posts"] else 0
+            ),
             "avg_engagement_rate": round(sum(rates) / len(rates), 4) if rates else 0,
-            "examples": d["examples"]
+            "examples": d["examples"],
         }
 
-    return dict(sorted(result.items(), key=lambda x: x[1]["avg_views_per_post"], reverse=True))
+    return dict(
+        sorted(result.items(), key=lambda x: x[1]["avg_views_per_post"], reverse=True)
+    )
 
 
 def error_analysis(post_results: list, social_accounts: list) -> dict:
     """Analyze post failures by platform and error type."""
     account_map = {a["id"]: a for a in social_accounts}
 
-    errors = defaultdict(lambda: {"count": 0, "error_types": defaultdict(int), "examples": []})
+    errors = defaultdict(
+        lambda: {"count": 0, "error_types": defaultdict(int), "examples": []}
+    )
     successes = defaultdict(int)
 
     for r in post_results:
@@ -218,7 +268,7 @@ def error_analysis(post_results: list, social_accounts: list) -> dict:
             "total": total,
             "success_rate": round(successes.get(p, 0) / total * 100, 1) if total else 0,
             "error_types": dict(errors.get(p, {}).get("error_types", {})),
-            "examples": errors.get(p, {}).get("examples", [])
+            "examples": errors.get(p, {}).get("examples", []),
         }
 
     return dict(sorted(result.items(), key=lambda x: x[1]["total"], reverse=True))
@@ -238,12 +288,14 @@ def full_analysis(dataset: dict) -> dict:
     total_likes = sum(a.get("like_count", 0) or 0 for a in analytics)
     total_comments = sum(a.get("comment_count", 0) or 0 for a in analytics)
     total_shares = sum(a.get("share_count", 0) or 0 for a in analytics)
-    overall_er = compute_engagement_rate({
-        "view_count": total_views,
-        "like_count": total_likes,
-        "comment_count": total_comments,
-        "share_count": total_shares
-    })
+    overall_er = compute_engagement_rate(
+        {
+            "view_count": total_views,
+            "like_count": total_likes,
+            "comment_count": total_comments,
+            "share_count": total_shares,
+        }
+    )
 
     return {
         "summary": {
@@ -262,16 +314,19 @@ def full_analysis(dataset: dict) -> dict:
         "top_posts_by_engagement": by_engagement[:10],
         "worst_posts": top_posts[-5:][::-1],
         "error_analysis": error_analysis(post_results, social_accounts),
-        "analyzed_at": datetime.now().isoformat()
+        "analyzed_at": datetime.now().isoformat(),
     }
 
 
 if __name__ == "__main__":
     from analytics_collector import collect_all
     import json
+
     data = collect_all(use_cache=True)
     result = full_analysis(data)
     print(json.dumps(result["summary"], indent=2))
     print("\n📊 Platform breakdown:")
     for p, s in result["platform_breakdown"].items():
-        print(f"  {p}: {s['views']} views, {s['posts']} posts, ER={s['avg_engagement_rate']}%")
+        print(
+            f"  {p}: {s['views']} views, {s['posts']} posts, ER={s['avg_engagement_rate']}%"
+        )

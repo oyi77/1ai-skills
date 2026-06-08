@@ -120,7 +120,10 @@ THREAT_ACTOR_PROFILES = {
                 {"id": "T1114", "name": "Email Collection"},
             ],
             "Exfiltration": [
-                {"id": "T1048.002", "name": "Exfiltration Over Asymmetric Encrypted Non-C2"},
+                {
+                    "id": "T1048.002",
+                    "name": "Exfiltration Over Asymmetric Encrypted Non-C2",
+                },
             ],
             "Command and Control": [
                 {"id": "T1071.001", "name": "Web Protocols"},
@@ -516,9 +519,7 @@ def generate_attack_plan(
 ) -> str:
     """Generate a phased attack plan based on threat actor profile."""
     if threat_actor not in THREAT_ACTOR_PROFILES:
-        console.print(
-            f"[red][-] Unknown threat actor: {threat_actor}[/red]"
-        )
+        console.print(f"[red][-] Unknown threat actor: {threat_actor}[/red]")
         console.print(
             f"[yellow]Available: {', '.join(THREAT_ACTOR_PROFILES.keys())}[/yellow]"
         )
@@ -719,9 +720,7 @@ def display_threat_actor_table():
     table.add_column("Techniques", style="green")
 
     for actor, profile in THREAT_ACTOR_PROFILES.items():
-        total_techniques = sum(
-            len(techs) for techs in profile["techniques"].values()
-        )
+        total_techniques = sum(len(techs) for techs in profile["techniques"].values())
         table.add_row(
             actor,
             ", ".join(profile["aliases"]),
@@ -793,7 +792,9 @@ def export_attack_navigator_layer(threat_actor: str, output_path: str):
     with open(layer_path, "w") as f:
         json.dump(layer, f, indent=2)
 
-    console.print(f"[green][+] ATT&CK Navigator layer exported to: {layer_path}[/green]")
+    console.print(
+        f"[green][+] ATT&CK Navigator layer exported to: {layer_path}[/green]"
+    )
 
 
 def main():
@@ -812,7 +813,9 @@ def main():
     )
     parser.add_argument("--start-date", help="Start date (YYYY-MM-DD)")
     parser.add_argument("--threat-actor", help="Threat actor to emulate")
-    parser.add_argument("--output", default="./engagement_plan", help="Output directory")
+    parser.add_argument(
+        "--output", default="./engagement_plan", help="Output directory"
+    )
     parser.add_argument(
         "--generate-attack-plan", action="store_true", help="Generate attack plan"
     )
@@ -871,9 +874,7 @@ def main():
     if args.generate_attack_plan or args.generate_all:
         if args.threat_actor:
             console.print("[yellow][*] Generating Attack Plan...[/yellow]")
-            plan = generate_attack_plan(
-                args.threat_actor, args.type, args.duration
-            )
+            plan = generate_attack_plan(args.threat_actor, args.type, args.duration)
             plan_path = output_dir / "attack_plan.md"
             with open(plan_path, "w") as f:
                 f.write(plan)
@@ -889,7 +890,9 @@ def main():
         matrix_path = output_dir / "deconfliction_matrix.md"
         with open(matrix_path, "w") as f:
             f.write(matrix)
-        console.print(f"[green][+] Deconfliction matrix saved to: {matrix_path}[/green]")
+        console.print(
+            f"[green][+] Deconfliction matrix saved to: {matrix_path}[/green]"
+        )
 
         console.print("[yellow][*] Generating Metrics Template...[/yellow]")
         metrics = generate_metrics_template(args.type)
@@ -901,7 +904,9 @@ def main():
     if args.export_navigator and args.threat_actor:
         export_attack_navigator_layer(args.threat_actor, str(output_dir))
 
-    console.print("\n[bold green][+] Engagement planning documents generated successfully![/bold green]")
+    console.print(
+        "\n[bold green][+] Engagement planning documents generated successfully![/bold green]"
+    )
 
 
 if __name__ == "__main__":

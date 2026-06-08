@@ -12,32 +12,86 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-
 NICHES = {
     "ai_tools": {
         "name": "AI Tools for Business",
-        "keywords": ["AI tools bisnis", "ChatGPT Indonesia", "tools AI gratis", "otomasi bisnis AI"],
-        "hashtags": ["#aitools", "#chatgpt", "#artificialintelligence", "#toolsai", "#aibisnis"],
+        "keywords": [
+            "AI tools bisnis",
+            "ChatGPT Indonesia",
+            "tools AI gratis",
+            "otomasi bisnis AI",
+        ],
+        "hashtags": [
+            "#aitools",
+            "#chatgpt",
+            "#artificialintelligence",
+            "#toolsai",
+            "#aibisnis",
+        ],
     },
     "digital_marketing": {
         "name": "Digital Marketing Tips",
-        "keywords": ["digital marketing Indonesia", "konten viral TikTok", "strategi sosmed", "content creator tips"],
-        "hashtags": ["#digitalmarketing", "#contentcreator", "#tipskonten", "#socialmedia", "#marketingtips"],
+        "keywords": [
+            "digital marketing Indonesia",
+            "konten viral TikTok",
+            "strategi sosmed",
+            "content creator tips",
+        ],
+        "hashtags": [
+            "#digitalmarketing",
+            "#contentcreator",
+            "#tipskonten",
+            "#socialmedia",
+            "#marketingtips",
+        ],
     },
     "kuliner": {
         "name": "Kuliner / Food Business",
-        "keywords": ["bisnis kuliner 2025", "makanan viral Indonesia", "resep bisnis kuliner", "food business tips"],
-        "hashtags": ["#bisniskuliner", "#kulinerviral", "#resepbisnis", "#foodbusiness", "#kuliner"],
+        "keywords": [
+            "bisnis kuliner 2025",
+            "makanan viral Indonesia",
+            "resep bisnis kuliner",
+            "food business tips",
+        ],
+        "hashtags": [
+            "#bisniskuliner",
+            "#kulinerviral",
+            "#resepbisnis",
+            "#foodbusiness",
+            "#kuliner",
+        ],
     },
     "side_hustle": {
         "name": "Side Hustle / Passive Income",
-        "keywords": ["side hustle Indonesia 2025", "penghasilan pasif", "bisnis sampingan", "jualan online"],
-        "hashtags": ["#sidehustle", "#jualanonline", "#penghasilanpasif", "#bisnisonline", "#cariacuan"],
+        "keywords": [
+            "side hustle Indonesia 2025",
+            "penghasilan pasif",
+            "bisnis sampingan",
+            "jualan online",
+        ],
+        "hashtags": [
+            "#sidehustle",
+            "#jualanonline",
+            "#penghasilanpasif",
+            "#bisnisonline",
+            "#cariacuan",
+        ],
     },
     "education": {
         "name": "Education / Self-Improvement",
-        "keywords": ["self improvement Indonesia", "belajar investasi", "skill digital", "pengembangan diri"],
-        "hashtags": ["#selfimprovement", "#belajar", "#edukasi", "#finansial", "#pengembangandiri"],
+        "keywords": [
+            "self improvement Indonesia",
+            "belajar investasi",
+            "skill digital",
+            "pengembangan diri",
+        ],
+        "hashtags": [
+            "#selfimprovement",
+            "#belajar",
+            "#edukasi",
+            "#finansial",
+            "#pengembangandiri",
+        ],
     },
 }
 
@@ -58,11 +112,13 @@ def web_search_wrapper(query: str, count: int = 5) -> list[dict]:
             results = []
             for item in data.get("RelatedTopics", [])[:count]:
                 if isinstance(item, dict) and "Text" in item:
-                    results.append({
-                        "title": item.get("Text", "")[:100],
-                        "url": item.get("FirstURL", ""),
-                        "snippet": item.get("Text", ""),
-                    })
+                    results.append(
+                        {
+                            "title": item.get("Text", "")[:100],
+                            "url": item.get("FirstURL", ""),
+                            "snippet": item.get("Text", ""),
+                        }
+                    )
             return results
     except Exception as e:
         return [{"error": str(e), "query": query}]
@@ -85,11 +141,13 @@ def fetch_tiktok_trends(niche_key: str) -> dict:
         results = web_search_wrapper(query, count=5)
         for r in results:
             if r.get("title"):
-                trends["trending_topics"].append({
-                    "topic": r["title"],
-                    "source": r.get("url", ""),
-                    "keyword": keyword,
-                })
+                trends["trending_topics"].append(
+                    {
+                        "topic": r["title"],
+                        "source": r.get("url", ""),
+                        "keyword": keyword,
+                    }
+                )
         time.sleep(0.5)
 
     return trends
@@ -110,10 +168,12 @@ def fetch_instagram_trends(niche_key: str) -> dict:
         results = web_search_wrapper(query, count=3)
         for r in results:
             if r.get("title"):
-                trends["trending_topics"].append({
-                    "topic": r["title"],
-                    "source": r.get("url", ""),
-                })
+                trends["trending_topics"].append(
+                    {
+                        "topic": r["title"],
+                        "source": r.get("url", ""),
+                    }
+                )
         time.sleep(0.5)
 
     return trends
@@ -144,16 +204,16 @@ def save_trends(trends: dict, output_dir: str = None) -> str:
     """Save trend data to JSON file."""
     if output_dir is None:
         output_dir = Path(__file__).parent.parent / "data"
-    
+
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
-    
+
     filename = f"trends_{datetime.now().strftime('%Y%m%d_%H%M')}.json"
     filepath = output_path / filename
-    
+
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(trends, f, ensure_ascii=False, indent=2)
-    
+
     print(f"✅ Trends saved to: {filepath}")
     return str(filepath)
 
@@ -161,7 +221,7 @@ def save_trends(trends: dict, output_dir: str = None) -> str:
 if __name__ == "__main__":
     trends = scrape_all_trends()
     save_trends(trends)
-    
+
     # Print summary
     print("\n📈 TREND SUMMARY:")
     for niche_key, data in trends["niches"].items():

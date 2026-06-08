@@ -22,10 +22,28 @@ except ImportError:
 
 
 REDIRECT_PARAMS = [
-    "url", "redirect", "redirect_uri", "redirect_url", "next",
-    "return", "returnTo", "return_to", "goto", "target", "dest",
-    "destination", "rurl", "continue", "forward", "out", "view",
-    "ref", "callback", "redir", "login_url", "logout",
+    "url",
+    "redirect",
+    "redirect_uri",
+    "redirect_url",
+    "next",
+    "return",
+    "returnTo",
+    "return_to",
+    "goto",
+    "target",
+    "dest",
+    "destination",
+    "rurl",
+    "continue",
+    "forward",
+    "out",
+    "view",
+    "ref",
+    "callback",
+    "redir",
+    "login_url",
+    "logout",
 ]
 
 BYPASS_PAYLOADS = [
@@ -75,7 +93,9 @@ class OpenRedirectTestAgent:
                 if resp and resp.status_code in (301, 302, 303, 307, 308):
                     location = resp.headers.get("Location", "")
                     if "example.com" in location:
-                        found.append({"path": path, "param": param, "location": location})
+                        found.append(
+                            {"path": path, "param": param, "location": location}
+                        )
         return found
 
     def test_redirect_bypass(self, path, param):
@@ -96,17 +116,21 @@ class OpenRedirectTestAgent:
                         redirected = True
 
             if redirected:
-                results.append({
-                    "payload": payload,
-                    "status": resp.status_code,
-                    "location": location,
-                    "bypassed": True,
-                })
-                self.findings.append({
-                    "severity": "medium",
-                    "type": "Open Redirect",
-                    "detail": f"{path}?{param}={payload} redirects to {location}",
-                })
+                results.append(
+                    {
+                        "payload": payload,
+                        "status": resp.status_code,
+                        "location": location,
+                        "bypassed": True,
+                    }
+                )
+                self.findings.append(
+                    {
+                        "severity": "medium",
+                        "type": "Open Redirect",
+                        "detail": f"{path}?{param}={payload} redirects to {location}",
+                    }
+                )
         return results
 
     def test_all_endpoints(self, redirect_points=None):
@@ -126,11 +150,13 @@ class OpenRedirectTestAgent:
             js_patterns = ["window.location", "document.location", "meta http-equiv"]
             for pattern in js_patterns:
                 if pattern in resp.text:
-                    self.findings.append({
-                        "severity": "medium",
-                        "type": "JavaScript Redirect",
-                        "detail": f"Client-side redirect via {pattern}",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "medium",
+                            "type": "JavaScript Redirect",
+                            "detail": f"Client-side redirect via {pattern}",
+                        }
+                    )
                     return {"pattern": pattern, "found": True}
         return {"found": False}
 

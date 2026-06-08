@@ -15,20 +15,36 @@ from pathlib import Path
 
 # Lateral movement logon types
 LATERAL_LOGON_TYPES = {
-    "3": {"name": "Network", "techniques": ["T1021.002", "T1021.006", "T1047"], "risk_base": 20},
+    "3": {
+        "name": "Network",
+        "techniques": ["T1021.002", "T1021.006", "T1047"],
+        "risk_base": 20,
+    },
     "10": {"name": "RemoteInteractive", "techniques": ["T1021.001"], "risk_base": 25},
 }
 
 # Suspicious account patterns
-SYSTEM_ACCOUNTS = {"system", "anonymous logon", "anonymous", "local service", "network service", "dwm-1", "umfd-0"}
+SYSTEM_ACCOUNTS = {
+    "system",
+    "anonymous logon",
+    "anonymous",
+    "local service",
+    "network service",
+    "dwm-1",
+    "umfd-0",
+}
 
 # Admin share indicators
 ADMIN_SHARES = {"admin$", "c$", "ipc$", "d$", "e$"}
 
 # PsExec and service-based indicators
 SERVICE_LATERAL_PATTERNS = [
-    r"psexec", r"PSEXESVC", r"csexec", r"remcom",
-    r"cmd\.exe\s+/c", r"powershell.*-enc",
+    r"psexec",
+    r"PSEXESVC",
+    r"csexec",
+    r"remcom",
+    r"cmd\.exe\s+/c",
+    r"powershell.*-enc",
 ]
 
 
@@ -55,7 +71,11 @@ def normalize_event(event: dict) -> dict:
         "source_host": ["Workstation_Name", "WorkstationName", "source_host"],
         "dest_host": ["Computer", "hostname", "DeviceName", "host.name"],
         "logon_process": ["Logon_Process", "LogonProcessName", "logon_process"],
-        "auth_package": ["Authentication_Package", "AuthenticationPackageName", "auth_package"],
+        "auth_package": [
+            "Authentication_Package",
+            "AuthenticationPackageName",
+            "auth_package",
+        ],
         "share_name": ["Share_Name", "ShareName", "share_name"],
         "service_name": ["Service_Name", "ServiceName", "service_name"],
         "service_path": ["Service_File_Name", "ServiceFileName", "service_path"],
@@ -195,16 +215,20 @@ def build_movement_graph(findings: list[dict]) -> dict:
         src = finding.get("source_ip") or finding.get("source_host", "unknown")
         dst = finding.get("dest_host", "unknown")
         if src and dst and src != dst:
-            graph[src][dst].append({
-                "account": finding.get("account", ""),
-                "technique": finding.get("technique", ""),
-                "timestamp": finding.get("timestamp", ""),
-                "type": finding.get("detection_type", ""),
-            })
+            graph[src][dst].append(
+                {
+                    "account": finding.get("account", ""),
+                    "technique": finding.get("technique", ""),
+                    "timestamp": finding.get("timestamp", ""),
+                    "type": finding.get("detection_type", ""),
+                }
+            )
     return dict(graph)
 
 
-def analyze_velocity(findings: list[dict], window_minutes: int = 10, threshold: int = 5) -> list[dict]:
+def analyze_velocity(
+    findings: list[dict], window_minutes: int = 10, threshold: int = 5
+) -> list[dict]:
     """Detect rapid multi-host access patterns."""
     account_events = defaultdict(list)
     for f in findings:
@@ -220,15 +244,19 @@ def analyze_velocity(findings: list[dict], window_minutes: int = 10, threshold: 
         for i, event in enumerate(events):
             unique_dests.add(event.get("dest_host", ""))
             if len(unique_dests) >= threshold:
-                velocity_alerts.append({
-                    "detection_type": "VELOCITY_ANOMALY",
-                    "account": account,
-                    "unique_destinations": len(unique_dests),
-                    "destinations": list(unique_dests),
-                    "risk_score": 80,
-                    "risk_level": "CRITICAL",
-                    "indicators": [f"Account accessed {len(unique_dests)} hosts rapidly"],
-                })
+                velocity_alerts.append(
+                    {
+                        "detection_type": "VELOCITY_ANOMALY",
+                        "account": account,
+                        "unique_destinations": len(unique_dests),
+                        "destinations": list(unique_dests),
+                        "risk_score": 80,
+                        "risk_level": "CRITICAL",
+                        "indicators": [
+                            f"Account accessed {len(unique_dests)} hosts rapidly"
+                        ],
+                    }
+                )
                 break
 
     return velocity_alerts
@@ -258,8 +286,9 @@ def run_hunt(input_path: str, output_dir: str) -> None:
             if result:
                 risk = result["risk_score"]
                 result["risk_level"] = (
-                    "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50
-                    else "MEDIUM" if risk >= 30 else "LOW"
+                    "CRITICAL"
+                    if risk >= 70
+                    else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 30 else "LOW"
                 )
                 findings.append(result)
                 stats[result["detection_type"]] += 1
@@ -276,15 +305,21 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
-    with open(output_path / "lateral_movement_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-LATMOV-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "total_findings": len(findings),
-            "statistics": dict(stats),
-            "movement_graph": {src: dict(dsts) for src, dsts in graph.items()},
-            "findings": findings,
-        }, f, indent=2)
+    with open(
+        output_path / "lateral_movement_findings.json", "w", encoding="utf-8"
+    ) as f:
+        json.dump(
+            {
+                "hunt_id": f"TH-LATMOV-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "total_findings": len(findings),
+                "statistics": dict(stats),
+                "movement_graph": {src: dict(dsts) for src, dsts in graph.items()},
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
 
     with open(output_path / "hunt_report.md", "w", encoding="utf-8") as f:
         f.write(f"# Lateral Movement Hunt Report\n\n")
@@ -296,7 +331,9 @@ def run_hunt(input_path: str, output_dir: str) -> None:
                 f.write(f"- `{src}` -> `{dst}` ({len(connections)} connections)\n")
         f.write("\n## Velocity Anomalies\n\n")
         for alert in velocity_alerts:
-            f.write(f"- **{alert['account']}**: {alert['unique_destinations']} hosts in short window\n")
+            f.write(
+                f"- **{alert['account']}**: {alert['unique_destinations']} hosts in short window\n"
+            )
 
     print(f"[+] {len(findings)} findings, {len(graph)} source nodes in movement graph")
 
@@ -319,7 +356,7 @@ def main():
         print("=== Splunk Lateral Movement Queries ===\n")
         queries = {
             "Network Logons": 'index=wineventlog EventCode=4624 Logon_Type=3\n| where NOT match(Account_Name, "(?i)(SYSTEM|ANONYMOUS|\\\\$)")\n| stats count dc(Computer) by Account_Name Source_Network_Address\n| where count > 3',
-            "RDP Sessions": 'index=wineventlog EventCode=4624 Logon_Type=10\n| stats count by Account_Name Source_Network_Address Computer',
+            "RDP Sessions": "index=wineventlog EventCode=4624 Logon_Type=10\n| stats count by Account_Name Source_Network_Address Computer",
             "Admin Shares": 'index=wineventlog EventCode=5140 Share_Name IN ("*ADMIN$","*C$")\n| stats count by Account_Name Source_Address Computer Share_Name',
             "PsExec Services": 'index=wineventlog EventCode=7045\n| where match(Service_File_Name, "(?i)(psexec|PSEXESVC)")\n| table _time Computer Service_Name Service_File_Name',
         }

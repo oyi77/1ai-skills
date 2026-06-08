@@ -49,18 +49,20 @@ def detect_beaconing(conn_df, min_connections=10, max_cv=0.3):
         cv = std_dev / mean_interval
         beacon_score = calculate_beacon_score(intervals)
         if cv <= max_cv:
-            beacons.append({
-                "src_ip": src,
-                "dst_ip": dst,
-                "dst_port": int(port) if not pd.isna(port) else 0,
-                "connection_count": len(group),
-                "mean_interval_sec": round(mean_interval, 2),
-                "std_dev_sec": round(std_dev, 2),
-                "coefficient_of_variation": round(cv, 4),
-                "beacon_score": beacon_score,
-                "first_seen": str(times.iloc[0]),
-                "last_seen": str(times.iloc[-1]),
-            })
+            beacons.append(
+                {
+                    "src_ip": src,
+                    "dst_ip": dst,
+                    "dst_port": int(port) if not pd.isna(port) else 0,
+                    "connection_count": len(group),
+                    "mean_interval_sec": round(mean_interval, 2),
+                    "std_dev_sec": round(std_dev, 2),
+                    "coefficient_of_variation": round(cv, 4),
+                    "beacon_score": beacon_score,
+                    "first_seen": str(times.iloc[0]),
+                    "last_seen": str(times.iloc[-1]),
+                }
+            )
     return sorted(beacons, key=lambda x: x["beacon_score"], reverse=True)
 
 
@@ -79,14 +81,16 @@ def detect_jitter_beaconing(conn_df, base_interval=60, jitter_pct=0.2, min_conns
         matching = np.sum((intervals >= lower) & (intervals <= upper))
         match_pct = matching / len(intervals)
         if match_pct > 0.7:
-            matches.append({
-                "src_ip": src,
-                "dst_ip": dst,
-                "connections": len(group),
-                "matching_intervals": int(matching),
-                "match_percentage": round(match_pct * 100, 1),
-                "expected_interval": base_interval,
-            })
+            matches.append(
+                {
+                    "src_ip": src,
+                    "dst_ip": dst,
+                    "connections": len(group),
+                    "matching_intervals": int(matching),
+                    "match_percentage": round(match_pct * 100, 1),
+                    "expected_interval": base_interval,
+                }
+            )
     return matches
 
 
@@ -110,23 +114,30 @@ def analyze_dns_beaconing(dns_log_path, min_queries=20, max_cv=0.25):
             continue
         cv = std_dev / mean_val
         if cv <= max_cv:
-            beacons.append({
-                "src_ip": src,
-                "query": query,
-                "query_count": len(group),
-                "mean_interval_sec": round(mean_val, 2),
-                "std_dev_sec": round(std_dev, 2),
-                "cv": round(cv, 4),
-                "beacon_score": calculate_beacon_score(intervals),
-            })
+            beacons.append(
+                {
+                    "src_ip": src,
+                    "query": query,
+                    "query_count": len(group),
+                    "mean_interval_sec": round(mean_val, 2),
+                    "std_dev_sec": round(std_dev, 2),
+                    "cv": round(cv, 4),
+                    "beacon_score": calculate_beacon_score(intervals),
+                }
+            )
     return sorted(beacons, key=lambda x: x["beacon_score"], reverse=True)
 
 
 def filter_whitelisted(beacons, whitelist_domains=None):
     """Remove known-good destinations from beacon results."""
     if not whitelist_domains:
-        whitelist_domains = ["microsoft.com", "google.com", "amazonaws.com",
-                            "cloudflare.com", "akamai.net"]
+        whitelist_domains = [
+            "microsoft.com",
+            "google.com",
+            "amazonaws.com",
+            "cloudflare.com",
+            "akamai.net",
+        ]
     filtered = []
     for b in beacons:
         dst = b.get("dst_ip", "") or b.get("query", "")
@@ -142,9 +153,11 @@ def main():
     parser.add_argument("--min-connections", type=int, default=10)
     parser.add_argument("--max-cv", type=float, default=0.3)
     parser.add_argument("--output", default="beacon_report.json")
-    parser.add_argument("--action", choices=[
-        "conn_beacon", "dns_beacon", "full_hunt"
-    ], default="full_hunt")
+    parser.add_argument(
+        "--action",
+        choices=["conn_beacon", "dns_beacon", "full_hunt"],
+        default="full_hunt",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

@@ -19,8 +19,21 @@ except ImportError:
 
 PACKAGE_MANAGERS = {"apt", "apt-get", "yum", "dnf", "apk", "pip", "pip3", "npm", "gem"}
 SHELLS = {"bash", "sh", "dash", "zsh", "csh", "ash"}
-SUSPICIOUS_BINARIES = {"curl", "wget", "nc", "ncat", "netcat", "socat", "python",
-                       "perl", "gcc", "cc", "make", "nmap", "tcpdump"}
+SUSPICIOUS_BINARIES = {
+    "curl",
+    "wget",
+    "nc",
+    "ncat",
+    "netcat",
+    "socat",
+    "python",
+    "perl",
+    "gcc",
+    "cc",
+    "make",
+    "nmap",
+    "tcpdump",
+}
 
 
 def get_container_diff(client, container_id):
@@ -46,7 +59,10 @@ def get_running_processes(container_id):
     try:
         result = subprocess.run(
             ["docker", "top", container_id, "-eo", "pid,user,comm,args"],
-            capture_output=True, text=True, timeout=10)
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
         if result.returncode != 0:
             return []
         lines = result.stdout.strip().split("\n")[1:]
@@ -54,10 +70,14 @@ def get_running_processes(container_id):
         for line in lines:
             parts = line.split(None, 3)
             if len(parts) >= 3:
-                processes.append({
-                    "pid": parts[0], "user": parts[1],
-                    "command": parts[2], "args": parts[3] if len(parts) > 3 else ""
-                })
+                processes.append(
+                    {
+                        "pid": parts[0],
+                        "user": parts[1],
+                        "command": parts[2],
+                        "args": parts[3] if len(parts) > 3 else "",
+                    }
+                )
         return processes
     except (subprocess.TimeoutExpired, FileNotFoundError):
         return []
@@ -68,26 +88,39 @@ def detect_drift_indicators(changes, processes):
     for path in changes.get("added", []):
         basename = path.rsplit("/", 1)[-1]
         if basename in SUSPICIOUS_BINARIES:
-            findings.append({"type": "suspicious_binary_added", "path": path,
-                             "severity": "HIGH"})
+            findings.append(
+                {"type": "suspicious_binary_added", "path": path, "severity": "HIGH"}
+            )
         if path.startswith("/usr/bin/") or path.startswith("/usr/sbin/"):
-            findings.append({"type": "binary_added_to_system_path", "path": path,
-                             "severity": "HIGH"})
+            findings.append(
+                {
+                    "type": "binary_added_to_system_path",
+                    "path": path,
+                    "severity": "HIGH",
+                }
+            )
     for path in changes.get("modified", []):
         if path in ("/etc/passwd", "/etc/shadow", "/etc/sudoers"):
-            findings.append({"type": "sensitive_file_modified", "path": path,
-                             "severity": "CRITICAL"})
+            findings.append(
+                {
+                    "type": "sensitive_file_modified",
+                    "path": path,
+                    "severity": "CRITICAL",
+                }
+            )
         if path.startswith("/etc/cron"):
             findings.append({"type": "cron_modified", "path": path, "severity": "HIGH"})
 
     for proc in processes:
         cmd = proc.get("command", "")
         if cmd in PACKAGE_MANAGERS:
-            findings.append({"type": "package_manager_running", "process": cmd,
-                             "severity": "HIGH"})
+            findings.append(
+                {"type": "package_manager_running", "process": cmd, "severity": "HIGH"}
+            )
         if cmd in SHELLS and proc.get("user") == "root":
-            findings.append({"type": "root_shell_active", "process": cmd,
-                             "severity": "MEDIUM"})
+            findings.append(
+                {"type": "root_shell_active", "process": cmd, "severity": "MEDIUM"}
+            )
     return findings
 
 
@@ -115,16 +148,32 @@ def audit_container(client, container_id):
     image_info = check_image_digest(client, container_id)
 
     if not image_info.get("read_only_rootfs"):
-        findings.append({"type": "mutable_rootfs", "severity": "MEDIUM",
-                         "detail": "readOnlyRootFilesystem not enabled"})
+        findings.append(
+            {
+                "type": "mutable_rootfs",
+                "severity": "MEDIUM",
+                "detail": "readOnlyRootFilesystem not enabled",
+            }
+        )
     if image_info.get("privileged"):
-        findings.append({"type": "privileged_container", "severity": "CRITICAL",
-                         "detail": "Container running in privileged mode"})
+        findings.append(
+            {
+                "type": "privileged_container",
+                "severity": "CRITICAL",
+                "detail": "Container running in privileged mode",
+            }
+        )
 
     total_changes = sum(len(v) for v in changes.values())
-    risk = "CRITICAL" if any(f["severity"] == "CRITICAL" for f in findings) else \
-           "HIGH" if total_changes > 20 or any(f["severity"] == "HIGH" for f in findings) else \
-           "MEDIUM" if total_changes > 5 else "LOW"
+    risk = (
+        "CRITICAL"
+        if any(f["severity"] == "CRITICAL" for f in findings)
+        else (
+            "HIGH"
+            if total_changes > 20 or any(f["severity"] == "HIGH" for f in findings)
+            else "MEDIUM" if total_changes > 5 else "LOW"
+        )
+    )
 
     return {
         "container_id": container_id,
@@ -141,7 +190,9 @@ def audit_container(client, container_id):
 def main():
     parser = argparse.ArgumentParser(description="Container Drift Detector")
     parser.add_argument("--container", required=True, help="Container ID or name")
-    parser.add_argument("--all", action="store_true", help="Audit all running containers")
+    parser.add_argument(
+        "--all", action="store_true", help="Audit all running containers"
+    )
     args = parser.parse_args()
 
     client = docker.from_env()

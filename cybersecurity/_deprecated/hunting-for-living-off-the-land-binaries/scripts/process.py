@@ -141,10 +141,20 @@ LOLBIN_SIGNATURES = {
 
 # Suspicious parent processes for LOLBins
 SUSPICIOUS_PARENTS = {
-    "winword.exe", "excel.exe", "powerpnt.exe", "outlook.exe",
-    "wmiprvse.exe", "w3wp.exe", "php-cgi.exe", "httpd.exe",
-    "nginx.exe", "tomcat.exe", "sqlservr.exe", "python.exe",
-    "wscript.exe", "cscript.exe",
+    "winword.exe",
+    "excel.exe",
+    "powerpnt.exe",
+    "outlook.exe",
+    "wmiprvse.exe",
+    "w3wp.exe",
+    "php-cgi.exe",
+    "httpd.exe",
+    "nginx.exe",
+    "tomcat.exe",
+    "sqlservr.exe",
+    "python.exe",
+    "wscript.exe",
+    "cscript.exe",
 }
 
 
@@ -205,8 +215,19 @@ def normalize_event(event: dict) -> dict:
     normalized = {}
     field_mappings = {
         "image": ["Image", "image", "process_name", "FileName", "process.executable"],
-        "command_line": ["CommandLine", "command_line", "ProcessCommandLine", "process.command_line", "cmdline"],
-        "parent_image": ["ParentImage", "parent_image", "InitiatingProcessFileName", "process.parent.executable"],
+        "command_line": [
+            "CommandLine",
+            "command_line",
+            "ProcessCommandLine",
+            "process.command_line",
+            "cmdline",
+        ],
+        "parent_image": [
+            "ParentImage",
+            "parent_image",
+            "InitiatingProcessFileName",
+            "process.parent.executable",
+        ],
         "user": ["User", "user", "AccountName", "user.name", "SubjectUserName"],
         "timestamp": ["UtcTime", "timestamp", "Timestamp", "@timestamp", "TimeCreated"],
         "hostname": ["Computer", "hostname", "DeviceName", "host.name", "ComputerName"],
@@ -240,7 +261,9 @@ def analyze_lolbin_event(event: dict) -> dict | None:
         "attack_id": sig["attack_id"],
         "description": sig["description"],
         "command_line": command_line,
-        "parent_process": parent_image.split("\\")[-1].split("/")[-1] if parent_image else "unknown",
+        "parent_process": (
+            parent_image.split("\\")[-1].split("/")[-1] if parent_image else "unknown"
+        ),
         "user": event.get("user", "unknown"),
         "hostname": event.get("hostname", "unknown"),
         "timestamp": event.get("timestamp", "unknown"),
@@ -271,7 +294,14 @@ def analyze_lolbin_event(event: dict) -> dict | None:
         finding["indicators"].append("Contains encoding/decoding operation")
 
     # Check for execution from unusual paths
-    unusual_paths = [r"\\temp\\", r"\\tmp\\", r"\\appdata\\", r"\\programdata\\", r"\\public\\", r"\\downloads\\"]
+    unusual_paths = [
+        r"\\temp\\",
+        r"\\tmp\\",
+        r"\\appdata\\",
+        r"\\programdata\\",
+        r"\\public\\",
+        r"\\downloads\\",
+    ]
     for path_pattern in unusual_paths:
         if re.search(path_pattern, command_line, re.IGNORECASE):
             finding["risk_score"] += 10
@@ -280,10 +310,13 @@ def analyze_lolbin_event(event: dict) -> dict | None:
     # Only return if there are actual indicators
     if finding["indicators"]:
         finding["risk_level"] = (
-            "CRITICAL" if finding["risk_score"] >= 60
-            else "HIGH" if finding["risk_score"] >= 40
-            else "MEDIUM" if finding["risk_score"] >= 20
-            else "LOW"
+            "CRITICAL"
+            if finding["risk_score"] >= 60
+            else (
+                "HIGH"
+                if finding["risk_score"] >= 40
+                else "MEDIUM" if finding["risk_score"] >= 20 else "LOW"
+            )
         )
         return finding
     return None
@@ -342,7 +375,9 @@ def generate_kql_queries() -> dict[str, str]:
 | summarize ConnectionCount=count(), RemoteIPs=make_set(RemoteIP) by InitiatingProcessFileName, DeviceName
 | order by ConnectionCount desc"""
 
-    queries["lolbin_from_office"] = """DeviceProcessEvents
+    queries[
+        "lolbin_from_office"
+    ] = """DeviceProcessEvents
 | where Timestamp > ago(7d)
 | where InitiatingProcessFileName in~ ("winword.exe","excel.exe","powerpnt.exe","outlook.exe")
 | where FileName in~ ("certutil.exe","mshta.exe","rundll32.exe","regsvr32.exe","powershell.exe","cmd.exe","wscript.exe","cscript.exe")
@@ -403,14 +438,18 @@ def run_hunt(input_path: str, output_dir: str, log_format: str = "auto") -> None
     # Write findings JSON
     findings_file = output_path / "lolbin_findings.json"
     with open(findings_file, "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-LOLBIN-{datetime.date.today().isoformat()}",
-            "timestamp": datetime.datetime.now().isoformat(),
-            "total_events_analyzed": len(raw_events),
-            "total_findings": len(findings),
-            "statistics": dict(stats),
-            "findings": findings,
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-LOLBIN-{datetime.date.today().isoformat()}",
+                "timestamp": datetime.datetime.now().isoformat(),
+                "total_events_analyzed": len(raw_events),
+                "total_findings": len(findings),
+                "statistics": dict(stats),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
     print(f"[+] Findings written to {findings_file}")
 
     # Write CSV summary
@@ -438,8 +477,12 @@ def run_hunt(input_path: str, output_dir: str, log_format: str = "auto") -> None
         for key, count in sorted(stats.items()):
             f.write(f"| {key} | {count} |\n")
         f.write("\n## Top Findings\n\n")
-        for finding in sorted(findings, key=lambda x: x["risk_score"], reverse=True)[:20]:
-            f.write(f"### [{finding['risk_level']}] {finding['binary']} - {finding['attack_id']}\n")
+        for finding in sorted(findings, key=lambda x: x["risk_score"], reverse=True)[
+            :20
+        ]:
+            f.write(
+                f"### [{finding['risk_level']}] {finding['binary']} - {finding['attack_id']}\n"
+            )
             f.write(f"- **Host**: {finding['hostname']}\n")
             f.write(f"- **User**: {finding['user']}\n")
             f.write(f"- **Parent**: {finding['parent_process']}\n")
@@ -468,13 +511,21 @@ def main():
 
     # Hunt command
     hunt_parser = subparsers.add_parser("hunt", help="Run LOLBin hunt against log data")
-    hunt_parser.add_argument("--input", "-i", required=True, help="Path to log file (XML, CSV, JSON)")
-    hunt_parser.add_argument("--output", "-o", default="./hunt_output", help="Output directory")
-    hunt_parser.add_argument("--format", "-f", default="auto", choices=["auto", "xml", "csv", "json"])
+    hunt_parser.add_argument(
+        "--input", "-i", required=True, help="Path to log file (XML, CSV, JSON)"
+    )
+    hunt_parser.add_argument(
+        "--output", "-o", default="./hunt_output", help="Output directory"
+    )
+    hunt_parser.add_argument(
+        "--format", "-f", default="auto", choices=["auto", "xml", "csv", "json"]
+    )
 
     # Queries command
     queries_parser = subparsers.add_parser("queries", help="Generate hunting queries")
-    queries_parser.add_argument("--platform", "-p", choices=["splunk", "kql", "all"], default="all")
+    queries_parser.add_argument(
+        "--platform", "-p", choices=["splunk", "kql", "all"], default="all"
+    )
     queries_parser.add_argument("--output", "-o", help="Output file for queries")
 
     # Signatures command

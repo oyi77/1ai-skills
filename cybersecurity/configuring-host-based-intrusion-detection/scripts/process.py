@@ -24,20 +24,26 @@ def parse_wazuh_alerts(json_path: str) -> list:
                 continue
             try:
                 alert = json.loads(line)
-                alerts.append({
-                    "timestamp": alert.get("timestamp", ""),
-                    "rule_id": alert.get("rule", {}).get("id", ""),
-                    "rule_description": alert.get("rule", {}).get("description", ""),
-                    "rule_level": alert.get("rule", {}).get("level", 0),
-                    "rule_groups": alert.get("rule", {}).get("groups", []),
-                    "agent_name": alert.get("agent", {}).get("name", ""),
-                    "agent_ip": alert.get("agent", {}).get("ip", ""),
-                    "syscheck_path": alert.get("syscheck", {}).get("path", ""),
-                    "syscheck_event": alert.get("syscheck", {}).get("event", ""),
-                    "syscheck_md5_after": alert.get("syscheck", {}).get("md5_after", ""),
-                    "src_ip": alert.get("data", {}).get("srcip", ""),
-                    "full_log": alert.get("full_log", "")[:300],
-                })
+                alerts.append(
+                    {
+                        "timestamp": alert.get("timestamp", ""),
+                        "rule_id": alert.get("rule", {}).get("id", ""),
+                        "rule_description": alert.get("rule", {}).get(
+                            "description", ""
+                        ),
+                        "rule_level": alert.get("rule", {}).get("level", 0),
+                        "rule_groups": alert.get("rule", {}).get("groups", []),
+                        "agent_name": alert.get("agent", {}).get("name", ""),
+                        "agent_ip": alert.get("agent", {}).get("ip", ""),
+                        "syscheck_path": alert.get("syscheck", {}).get("path", ""),
+                        "syscheck_event": alert.get("syscheck", {}).get("event", ""),
+                        "syscheck_md5_after": alert.get("syscheck", {}).get(
+                            "md5_after", ""
+                        ),
+                        "src_ip": alert.get("data", {}).get("srcip", ""),
+                        "full_log": alert.get("full_log", "")[:300],
+                    }
+                )
             except json.JSONDecodeError:
                 continue
 
@@ -75,20 +81,24 @@ def analyze_alerts(alerts: list) -> dict:
             event = alert["syscheck_event"]
             if event == "modified":
                 analysis["fim_events"]["modified"] += 1
-                analysis["fim_events"]["top_modified_files"][alert["syscheck_path"]] += 1
+                analysis["fim_events"]["top_modified_files"][
+                    alert["syscheck_path"]
+                ] += 1
             elif event == "added":
                 analysis["fim_events"]["added"] += 1
             elif event == "deleted":
                 analysis["fim_events"]["deleted"] += 1
 
         if level >= 10:
-            analysis["high_severity"].append({
-                "timestamp": alert["timestamp"],
-                "agent": alert["agent_name"],
-                "rule": alert["rule_description"],
-                "level": level,
-                "detail": alert["full_log"],
-            })
+            analysis["high_severity"].append(
+                {
+                    "timestamp": alert["timestamp"],
+                    "agent": alert["agent_name"],
+                    "rule": alert["rule_description"],
+                    "level": level,
+                    "detail": alert["full_log"],
+                }
+            )
 
         if alert["src_ip"]:
             analysis["attack_sources"][alert["src_ip"]] += 1
@@ -109,7 +119,9 @@ def generate_report(analysis: dict, output_path: str) -> None:
             "files_modified": analysis["fim_events"]["modified"],
             "files_added": analysis["fim_events"]["added"],
             "files_deleted": analysis["fim_events"]["deleted"],
-            "top_modified": dict(analysis["fim_events"]["top_modified_files"].most_common(20)),
+            "top_modified": dict(
+                analysis["fim_events"]["top_modified_files"].most_common(20)
+            ),
         },
         "high_severity_alerts": analysis["high_severity"][:50],
         "top_attack_sources": dict(analysis["attack_sources"].most_common(20)),
@@ -147,6 +159,8 @@ if __name__ == "__main__":
     print(f"\n--- HIDS Alert Summary ---")
     print(f"Total alerts: {analysis['total_alerts']}")
     print(f"High severity (level >= 10): {len(analysis['high_severity'])}")
-    print(f"FIM: {analysis['fim_events']['modified']} modified, "
-          f"{analysis['fim_events']['added']} added, "
-          f"{analysis['fim_events']['deleted']} deleted")
+    print(
+        f"FIM: {analysis['fim_events']['modified']} modified, "
+        f"{analysis['fim_events']['added']} added, "
+        f"{analysis['fim_events']['deleted']} deleted"
+    )

@@ -12,6 +12,7 @@ Graceful degradation:
   • If FTS fails → LIKE fallback
   • Always returns results (may be less accurate)
 """
+
 import logging
 import math
 import time
@@ -25,6 +26,7 @@ logger = logging.getLogger(__name__)
 
 try:
     from rank_bm25 import BM25Okapi
+
     _HAS_BM25 = True
 except ImportError:
     _HAS_BM25 = False
@@ -93,7 +95,9 @@ class HybridSearch:
             try:
                 query_vec = self._emb.embed(query)
             except Exception as e:
-                logger.warning("hybrid_search: embedding failed (%s) — using keyword only", e)
+                logger.warning(
+                    "hybrid_search: embedding failed (%s) — using keyword only", e
+                )
 
         # 2. Gather candidates from each source
         if "semantic" in sources and self._sem:
@@ -116,27 +120,31 @@ class HybridSearch:
 
         # Filter by min_importance
         if min_importance > 0:
-            candidates = [c for c in candidates if c.get("importance", 0) >= min_importance]
+            candidates = [
+                c for c in candidates if c.get("importance", 0) >= min_importance
+            ]
 
         # 4. BM25 scoring over candidate texts
         bm25_scores = self._bm25_score(query, candidates)
 
         # 5. Compute hybrid score for each candidate
-        w_sem   = config.WEIGHT_SEMANTIC   if query_vec is not None else 0.0
-        w_rec   = config.WEIGHT_RECENCY
-        w_imp   = config.WEIGHT_IMPORTANCE
-        w_bm25  = config.WEIGHT_BM25 + (config.WEIGHT_SEMANTIC if query_vec is None else 0.0)
+        w_sem = config.WEIGHT_SEMANTIC if query_vec is not None else 0.0
+        w_rec = config.WEIGHT_RECENCY
+        w_imp = config.WEIGHT_IMPORTANCE
+        w_bm25 = config.WEIGHT_BM25 + (
+            config.WEIGHT_SEMANTIC if query_vec is None else 0.0
+        )
 
         for i, c in enumerate(candidates):
-            sem_sim  = c.pop("semantic_similarity", 0.0)
-            rec      = _recency_score(c.get("timestamp", now), now)
-            imp      = float(c.get("importance", 0.5))
-            bm25     = bm25_scores[i]
-            score    = w_sem * sem_sim + w_rec * rec + w_imp * imp + w_bm25 * bm25
-            c["score"]             = round(score, 4)
-            c["_debug_semantic"]   = round(sem_sim, 4)
-            c["_debug_recency"]    = round(rec, 4)
-            c["_debug_bm25"]       = round(bm25, 4)
+            sem_sim = c.pop("semantic_similarity", 0.0)
+            rec = _recency_score(c.get("timestamp", now), now)
+            imp = float(c.get("importance", 0.5))
+            bm25 = bm25_scores[i]
+            score = w_sem * sem_sim + w_rec * rec + w_imp * imp + w_bm25 * bm25
+            c["score"] = round(score, 4)
+            c["_debug_semantic"] = round(sem_sim, 4)
+            c["_debug_recency"] = round(rec, 4)
+            c["_debug_bm25"] = round(bm25, 4)
 
         # 6. Sort descending and return top_k
         candidates.sort(key=lambda x: x["score"], reverse=True)

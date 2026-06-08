@@ -50,52 +50,224 @@ class ControlTestResult(Enum):
 
 # Trust Services Criteria - Common Criteria (Security)
 TSC_CRITERIA = {
-    "CC1.1": {"series": "CC1", "title": "Demonstrates commitment to integrity and ethical values", "category": "Security"},
-    "CC1.2": {"series": "CC1", "title": "Board exercises oversight responsibility", "category": "Security"},
-    "CC1.3": {"series": "CC1", "title": "Management establishes structures, reporting lines, and authorities", "category": "Security"},
-    "CC1.4": {"series": "CC1", "title": "Demonstrates commitment to attract, develop, and retain competent individuals", "category": "Security"},
-    "CC1.5": {"series": "CC1", "title": "Holds individuals accountable for internal control responsibilities", "category": "Security"},
-    "CC2.1": {"series": "CC2", "title": "Obtains or generates relevant, quality information", "category": "Security"},
-    "CC2.2": {"series": "CC2", "title": "Internally communicates information supporting internal control", "category": "Security"},
-    "CC2.3": {"series": "CC2", "title": "Communicates with external parties", "category": "Security"},
-    "CC3.1": {"series": "CC3", "title": "Specifies objectives with sufficient clarity", "category": "Security"},
-    "CC3.2": {"series": "CC3", "title": "Identifies risks to the achievement of objectives", "category": "Security"},
-    "CC3.3": {"series": "CC3", "title": "Considers potential for fraud", "category": "Security"},
-    "CC3.4": {"series": "CC3", "title": "Identifies and assesses changes that could impact internal control", "category": "Security"},
-    "CC4.1": {"series": "CC4", "title": "Selects, develops, and performs ongoing and separate evaluations", "category": "Security"},
-    "CC4.2": {"series": "CC4", "title": "Evaluates and communicates internal control deficiencies", "category": "Security"},
-    "CC5.1": {"series": "CC5", "title": "Selects and develops control activities", "category": "Security"},
-    "CC5.2": {"series": "CC5", "title": "Selects and develops general controls over technology", "category": "Security"},
-    "CC5.3": {"series": "CC5", "title": "Deploys through policies that establish expectations and procedures", "category": "Security"},
-    "CC6.1": {"series": "CC6", "title": "Logical access security software, infrastructure, and architectures", "category": "Security"},
-    "CC6.2": {"series": "CC6", "title": "Prior to credential issuance, registration and authorization", "category": "Security"},
-    "CC6.3": {"series": "CC6", "title": "Access removal and modification upon changes", "category": "Security"},
-    "CC6.4": {"series": "CC6", "title": "Physical access restrictions to facilities", "category": "Security"},
-    "CC6.5": {"series": "CC6", "title": "Discontinuation of physical access", "category": "Security"},
-    "CC6.6": {"series": "CC6", "title": "Logical access security against threats from external sources", "category": "Security"},
-    "CC6.7": {"series": "CC6", "title": "Restricts transmission, movement, and removal of information", "category": "Security"},
-    "CC6.8": {"series": "CC6", "title": "Controls against threats from unauthorized or malicious code", "category": "Security"},
-    "CC7.1": {"series": "CC7", "title": "Detection and monitoring procedures for anomalies", "category": "Security"},
-    "CC7.2": {"series": "CC7", "title": "Monitors system components for anomalies", "category": "Security"},
-    "CC7.3": {"series": "CC7", "title": "Evaluates security events to determine incidents", "category": "Security"},
-    "CC7.4": {"series": "CC7", "title": "Responds to identified security incidents", "category": "Security"},
-    "CC7.5": {"series": "CC7", "title": "Identifies and remediates vulnerabilities", "category": "Security"},
-    "CC8.1": {"series": "CC8", "title": "Authorizes, designs, develops, tests, approves, and implements changes", "category": "Security"},
-    "CC9.1": {"series": "CC9", "title": "Identifies and assesses risk mitigation activities", "category": "Security"},
-    "CC9.2": {"series": "CC9", "title": "Assesses and manages risks associated with vendors and partners", "category": "Security"},
+    "CC1.1": {
+        "series": "CC1",
+        "title": "Demonstrates commitment to integrity and ethical values",
+        "category": "Security",
+    },
+    "CC1.2": {
+        "series": "CC1",
+        "title": "Board exercises oversight responsibility",
+        "category": "Security",
+    },
+    "CC1.3": {
+        "series": "CC1",
+        "title": "Management establishes structures, reporting lines, and authorities",
+        "category": "Security",
+    },
+    "CC1.4": {
+        "series": "CC1",
+        "title": "Demonstrates commitment to attract, develop, and retain competent individuals",
+        "category": "Security",
+    },
+    "CC1.5": {
+        "series": "CC1",
+        "title": "Holds individuals accountable for internal control responsibilities",
+        "category": "Security",
+    },
+    "CC2.1": {
+        "series": "CC2",
+        "title": "Obtains or generates relevant, quality information",
+        "category": "Security",
+    },
+    "CC2.2": {
+        "series": "CC2",
+        "title": "Internally communicates information supporting internal control",
+        "category": "Security",
+    },
+    "CC2.3": {
+        "series": "CC2",
+        "title": "Communicates with external parties",
+        "category": "Security",
+    },
+    "CC3.1": {
+        "series": "CC3",
+        "title": "Specifies objectives with sufficient clarity",
+        "category": "Security",
+    },
+    "CC3.2": {
+        "series": "CC3",
+        "title": "Identifies risks to the achievement of objectives",
+        "category": "Security",
+    },
+    "CC3.3": {
+        "series": "CC3",
+        "title": "Considers potential for fraud",
+        "category": "Security",
+    },
+    "CC3.4": {
+        "series": "CC3",
+        "title": "Identifies and assesses changes that could impact internal control",
+        "category": "Security",
+    },
+    "CC4.1": {
+        "series": "CC4",
+        "title": "Selects, develops, and performs ongoing and separate evaluations",
+        "category": "Security",
+    },
+    "CC4.2": {
+        "series": "CC4",
+        "title": "Evaluates and communicates internal control deficiencies",
+        "category": "Security",
+    },
+    "CC5.1": {
+        "series": "CC5",
+        "title": "Selects and develops control activities",
+        "category": "Security",
+    },
+    "CC5.2": {
+        "series": "CC5",
+        "title": "Selects and develops general controls over technology",
+        "category": "Security",
+    },
+    "CC5.3": {
+        "series": "CC5",
+        "title": "Deploys through policies that establish expectations and procedures",
+        "category": "Security",
+    },
+    "CC6.1": {
+        "series": "CC6",
+        "title": "Logical access security software, infrastructure, and architectures",
+        "category": "Security",
+    },
+    "CC6.2": {
+        "series": "CC6",
+        "title": "Prior to credential issuance, registration and authorization",
+        "category": "Security",
+    },
+    "CC6.3": {
+        "series": "CC6",
+        "title": "Access removal and modification upon changes",
+        "category": "Security",
+    },
+    "CC6.4": {
+        "series": "CC6",
+        "title": "Physical access restrictions to facilities",
+        "category": "Security",
+    },
+    "CC6.5": {
+        "series": "CC6",
+        "title": "Discontinuation of physical access",
+        "category": "Security",
+    },
+    "CC6.6": {
+        "series": "CC6",
+        "title": "Logical access security against threats from external sources",
+        "category": "Security",
+    },
+    "CC6.7": {
+        "series": "CC6",
+        "title": "Restricts transmission, movement, and removal of information",
+        "category": "Security",
+    },
+    "CC6.8": {
+        "series": "CC6",
+        "title": "Controls against threats from unauthorized or malicious code",
+        "category": "Security",
+    },
+    "CC7.1": {
+        "series": "CC7",
+        "title": "Detection and monitoring procedures for anomalies",
+        "category": "Security",
+    },
+    "CC7.2": {
+        "series": "CC7",
+        "title": "Monitors system components for anomalies",
+        "category": "Security",
+    },
+    "CC7.3": {
+        "series": "CC7",
+        "title": "Evaluates security events to determine incidents",
+        "category": "Security",
+    },
+    "CC7.4": {
+        "series": "CC7",
+        "title": "Responds to identified security incidents",
+        "category": "Security",
+    },
+    "CC7.5": {
+        "series": "CC7",
+        "title": "Identifies and remediates vulnerabilities",
+        "category": "Security",
+    },
+    "CC8.1": {
+        "series": "CC8",
+        "title": "Authorizes, designs, develops, tests, approves, and implements changes",
+        "category": "Security",
+    },
+    "CC9.1": {
+        "series": "CC9",
+        "title": "Identifies and assesses risk mitigation activities",
+        "category": "Security",
+    },
+    "CC9.2": {
+        "series": "CC9",
+        "title": "Assesses and manages risks associated with vendors and partners",
+        "category": "Security",
+    },
     # Availability criteria
-    "A1.1": {"series": "A1", "title": "Maintains, monitors, and evaluates current processing capacity", "category": "Availability"},
-    "A1.2": {"series": "A1", "title": "Environmental protections, software, data backup and recovery", "category": "Availability"},
-    "A1.3": {"series": "A1", "title": "Tests recovery plan procedures", "category": "Availability"},
+    "A1.1": {
+        "series": "A1",
+        "title": "Maintains, monitors, and evaluates current processing capacity",
+        "category": "Availability",
+    },
+    "A1.2": {
+        "series": "A1",
+        "title": "Environmental protections, software, data backup and recovery",
+        "category": "Availability",
+    },
+    "A1.3": {
+        "series": "A1",
+        "title": "Tests recovery plan procedures",
+        "category": "Availability",
+    },
     # Confidentiality criteria
-    "C1.1": {"series": "C1", "title": "Identifies and maintains confidential information", "category": "Confidentiality"},
-    "C1.2": {"series": "C1", "title": "Disposes of confidential information", "category": "Confidentiality"},
+    "C1.1": {
+        "series": "C1",
+        "title": "Identifies and maintains confidential information",
+        "category": "Confidentiality",
+    },
+    "C1.2": {
+        "series": "C1",
+        "title": "Disposes of confidential information",
+        "category": "Confidentiality",
+    },
     # Processing Integrity criteria
-    "PI1.1": {"series": "PI1", "title": "Obtains or generates relevant, quality information", "category": "Processing Integrity"},
-    "PI1.2": {"series": "PI1", "title": "System inputs are complete, accurate, and timely", "category": "Processing Integrity"},
-    "PI1.3": {"series": "PI1", "title": "Processing is complete, valid, accurate, timely, and authorized", "category": "Processing Integrity"},
-    "PI1.4": {"series": "PI1", "title": "System output is complete, valid, accurate, timely, and authorized", "category": "Processing Integrity"},
-    "PI1.5": {"series": "PI1", "title": "Data stored is complete, valid, accurate, timely, and authorized", "category": "Processing Integrity"},
+    "PI1.1": {
+        "series": "PI1",
+        "title": "Obtains or generates relevant, quality information",
+        "category": "Processing Integrity",
+    },
+    "PI1.2": {
+        "series": "PI1",
+        "title": "System inputs are complete, accurate, and timely",
+        "category": "Processing Integrity",
+    },
+    "PI1.3": {
+        "series": "PI1",
+        "title": "Processing is complete, valid, accurate, timely, and authorized",
+        "category": "Processing Integrity",
+    },
+    "PI1.4": {
+        "series": "PI1",
+        "title": "System output is complete, valid, accurate, timely, and authorized",
+        "category": "Processing Integrity",
+    },
+    "PI1.5": {
+        "series": "PI1",
+        "title": "Data stored is complete, valid, accurate, timely, and authorized",
+        "category": "Processing Integrity",
+    },
 }
 
 
@@ -140,13 +312,19 @@ class ReadinessItem:
 class SOC2AuditPrep:
     """Manages SOC 2 Type II audit preparation."""
 
-    def __init__(self, output_dir: str = "./soc2_output",
-                 audit_start: str = "", audit_end: str = ""):
+    def __init__(
+        self,
+        output_dir: str = "./soc2_output",
+        audit_start: str = "",
+        audit_end: str = "",
+    ):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.controls: list[Control] = []
         self.evidence: list[EvidenceItem] = []
-        self.audit_start = audit_start or (datetime.now() - timedelta(days=365)).strftime("%Y-%m-%d")
+        self.audit_start = audit_start or (
+            datetime.now() - timedelta(days=365)
+        ).strftime("%Y-%m-%d")
         self.audit_end = audit_end or datetime.now().strftime("%Y-%m-%d")
         self.selected_categories: list[str] = ["Security"]
 
@@ -194,13 +372,16 @@ class SOC2AuditPrep:
             covered_criteria.update(ctrl.tsc_criteria)
 
         applicable_criteria = {
-            k for k, v in TSC_CRITERIA.items()
+            k
+            for k, v in TSC_CRITERIA.items()
             if v["category"] in self.selected_categories
         }
         uncovered = applicable_criteria - covered_criteria
 
         print(f"\n  Total Controls: {len(self.controls)}")
-        print(f"  Criteria Covered: {len(covered_criteria)} / {len(applicable_criteria)}")
+        print(
+            f"  Criteria Covered: {len(covered_criteria)} / {len(applicable_criteria)}"
+        )
         if uncovered:
             print(f"  GAPS - Uncovered Criteria: {', '.join(sorted(uncovered))}")
         else:
@@ -215,24 +396,35 @@ class SOC2AuditPrep:
         csv_path = self.output_dir / "control_matrix.csv"
         with open(csv_path, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "Control ID", "Description", "TSC Criteria", "Control Type",
-                "Frequency", "Owner", "Evidence Type", "Automated",
-                "Test Result", "Exceptions"
-            ])
+            writer.writerow(
+                [
+                    "Control ID",
+                    "Description",
+                    "TSC Criteria",
+                    "Control Type",
+                    "Frequency",
+                    "Owner",
+                    "Evidence Type",
+                    "Automated",
+                    "Test Result",
+                    "Exceptions",
+                ]
+            )
             for ctrl in self.controls:
-                writer.writerow([
-                    ctrl.control_id,
-                    ctrl.description,
-                    "; ".join(ctrl.tsc_criteria),
-                    ctrl.control_type,
-                    ctrl.frequency,
-                    ctrl.owner,
-                    ctrl.evidence_type,
-                    "Yes" if ctrl.automated else "No",
-                    ctrl.test_result,
-                    "; ".join(ctrl.exceptions) if ctrl.exceptions else "",
-                ])
+                writer.writerow(
+                    [
+                        ctrl.control_id,
+                        ctrl.description,
+                        "; ".join(ctrl.tsc_criteria),
+                        ctrl.control_type,
+                        ctrl.frequency,
+                        ctrl.owner,
+                        ctrl.evidence_type,
+                        "Yes" if ctrl.automated else "No",
+                        ctrl.test_result,
+                        "; ".join(ctrl.exceptions) if ctrl.exceptions else "",
+                    ]
+                )
 
         print(f"  Control Matrix saved to: {matrix_path}")
         return self.controls
@@ -259,7 +451,11 @@ class SOC2AuditPrep:
         missing = status_counts.get(EvidenceStatus.MISSING.value, 0)
 
         print(f"\n  Evidence Items: {total}")
-        print(f"  Collected: {collected} ({collected/total*100:.1f}%)" if total > 0 else "")
+        print(
+            f"  Collected: {collected} ({collected/total*100:.1f}%)"
+            if total > 0
+            else ""
+        )
         print(f"  Pending: {pending}")
         print(f"  Missing: {missing}")
 
@@ -267,7 +463,9 @@ class SOC2AuditPrep:
             print(f"\n  ALERT: {missing} evidence items are missing!")
             for item in self.evidence:
                 if item.status == EvidenceStatus.MISSING.value:
-                    print(f"    - [{item.evidence_id}] {item.description} (Control: {item.control_id})")
+                    print(
+                        f"    - [{item.evidence_id}] {item.description} (Control: {item.control_id})"
+                    )
 
         # Save evidence tracker
         tracker_path = self.output_dir / "evidence_tracker.json"
@@ -284,30 +482,56 @@ class SOC2AuditPrep:
         print("=" * 70)
 
         readiness_checks = [
-            ReadinessItem("Documentation", "System Description Document completed", False),
-            ReadinessItem("Documentation", "Management Assertion Letter drafted", False),
-            ReadinessItem("Documentation", "Control matrix documented and reviewed", bool(self.controls)),
-            ReadinessItem("Documentation", "Security policies current and approved", False),
-            ReadinessItem("Documentation", "Risk assessment completed within audit period", False),
-
-            ReadinessItem("Controls", "All TSC criteria mapped to at least one control", False),
+            ReadinessItem(
+                "Documentation", "System Description Document completed", False
+            ),
+            ReadinessItem(
+                "Documentation", "Management Assertion Letter drafted", False
+            ),
+            ReadinessItem(
+                "Documentation",
+                "Control matrix documented and reviewed",
+                bool(self.controls),
+            ),
+            ReadinessItem(
+                "Documentation", "Security policies current and approved", False
+            ),
+            ReadinessItem(
+                "Documentation", "Risk assessment completed within audit period", False
+            ),
+            ReadinessItem(
+                "Controls", "All TSC criteria mapped to at least one control", False
+            ),
             ReadinessItem("Controls", "Control owners identified and briefed", False),
             ReadinessItem("Controls", "No control design gaps identified", False),
-            ReadinessItem("Controls", "Compensating controls documented for exceptions", False),
-
-            ReadinessItem("Evidence", "Evidence collection covers full audit period", False),
+            ReadinessItem(
+                "Controls", "Compensating controls documented for exceptions", False
+            ),
+            ReadinessItem(
+                "Evidence", "Evidence collection covers full audit period", False
+            ),
             ReadinessItem("Evidence", "Quarterly access reviews completed", False),
             ReadinessItem("Evidence", "Annual penetration test completed", False),
-            ReadinessItem("Evidence", "Security awareness training records available", False),
-            ReadinessItem("Evidence", "Change management tickets with approvals", False),
+            ReadinessItem(
+                "Evidence", "Security awareness training records available", False
+            ),
+            ReadinessItem(
+                "Evidence", "Change management tickets with approvals", False
+            ),
             ReadinessItem("Evidence", "Incident response logs available", False),
-            ReadinessItem("Evidence", "Vulnerability scan reports for audit period", False),
-
-            ReadinessItem("Operations", "Background checks completed for new hires", False),
+            ReadinessItem(
+                "Evidence", "Vulnerability scan reports for audit period", False
+            ),
+            ReadinessItem(
+                "Operations", "Background checks completed for new hires", False
+            ),
             ReadinessItem("Operations", "MFA enabled for all in-scope systems", False),
-            ReadinessItem("Operations", "Encryption at rest and in transit verified", False),
-            ReadinessItem("Operations", "Backup and recovery testing documented", False),
-
+            ReadinessItem(
+                "Operations", "Encryption at rest and in transit verified", False
+            ),
+            ReadinessItem(
+                "Operations", "Backup and recovery testing documented", False
+            ),
             ReadinessItem("Vendor", "Subservice organizations identified", False),
             ReadinessItem("Vendor", "Carve-out or inclusive method determined", False),
             ReadinessItem("Vendor", "CUECs documented", False),
@@ -319,7 +543,9 @@ class SOC2AuditPrep:
             readiness_checks[5].status = True  # Controls mapped
 
         if self.evidence:
-            collected = sum(1 for e in self.evidence if e.status == EvidenceStatus.COLLECTED.value)
+            collected = sum(
+                1 for e in self.evidence if e.status == EvidenceStatus.COLLECTED.value
+            )
             if collected == len(self.evidence) and len(self.evidence) > 0:
                 readiness_checks[9].status = True
 
@@ -347,7 +573,9 @@ class SOC2AuditPrep:
         elif pct >= 70:
             print(f"\n  RECOMMENDATION: Address remaining items within 2-4 weeks.")
         else:
-            print(f"\n  RECOMMENDATION: Significant gaps remain. Delay audit until addressed.")
+            print(
+                f"\n  RECOMMENDATION: Significant gaps remain. Delay audit until addressed."
+            )
 
         # Save readiness report
         report = {
@@ -375,17 +603,31 @@ class SOC2AuditPrep:
             "tsc_categories": self.selected_categories,
             "controls": {
                 "total": len(self.controls),
-                "preventive": sum(1 for c in self.controls if c.control_type == "Preventive"),
-                "detective": sum(1 for c in self.controls if c.control_type == "Detective"),
-                "corrective": sum(1 for c in self.controls if c.control_type == "Corrective"),
+                "preventive": sum(
+                    1 for c in self.controls if c.control_type == "Preventive"
+                ),
+                "detective": sum(
+                    1 for c in self.controls if c.control_type == "Detective"
+                ),
+                "corrective": sum(
+                    1 for c in self.controls if c.control_type == "Corrective"
+                ),
                 "automated": sum(1 for c in self.controls if c.automated),
                 "manual": sum(1 for c in self.controls if not c.automated),
             },
             "evidence": {
                 "total": len(self.evidence),
-                "collected": sum(1 for e in self.evidence if e.status == EvidenceStatus.COLLECTED.value),
-                "pending": sum(1 for e in self.evidence if e.status == EvidenceStatus.PENDING.value),
-                "missing": sum(1 for e in self.evidence if e.status == EvidenceStatus.MISSING.value),
+                "collected": sum(
+                    1
+                    for e in self.evidence
+                    if e.status == EvidenceStatus.COLLECTED.value
+                ),
+                "pending": sum(
+                    1 for e in self.evidence if e.status == EvidenceStatus.PENDING.value
+                ),
+                "missing": sum(
+                    1 for e in self.evidence if e.status == EvidenceStatus.MISSING.value
+                ),
             },
         }
 
@@ -411,13 +653,12 @@ class SOC2AuditPrep:
 
 def main():
     """Run SOC 2 Type II audit preparation."""
-    prep = SOC2AuditPrep(
-        audit_start="2024-01-01",
-        audit_end="2024-12-31"
-    )
+    prep = SOC2AuditPrep(audit_start="2024-01-01", audit_end="2024-12-31")
 
     # Select TSC categories
-    criteria = prep.select_tsc_categories(["Security", "Availability", "Confidentiality"])
+    criteria = prep.select_tsc_categories(
+        ["Security", "Availability", "Confidentiality"]
+    )
 
     # Create control matrix
     sample_controls = [

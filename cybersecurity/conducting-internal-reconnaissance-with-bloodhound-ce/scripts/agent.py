@@ -20,8 +20,18 @@ except ImportError:
 def collect_bloodhound_data(domain, username, password, dc_ip, method="all"):
     """Run BloodHound Python ingestor to collect AD data."""
     cmd = [
-        "bloodhound-python", "-d", domain, "-u", username, "-p", password,
-        "-ns", dc_ip, "-c", method, "--zip",
+        "bloodhound-python",
+        "-d",
+        domain,
+        "-u",
+        username,
+        "-p",
+        password,
+        "-ns",
+        dc_ip,
+        "-c",
+        method,
+        "--zip",
     ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
@@ -52,8 +62,10 @@ def query_kerberoastable_users(driver):
             "RETURN u.name AS user, u.serviceprincipalnames AS spns, "
             "u.admincount AS admin_count ORDER BY u.admincount DESC"
         )
-        return [{"user": r["user"], "spns": r["spns"],
-                 "admin": r["admin_count"]} for r in result]
+        return [
+            {"user": r["user"], "spns": r["spns"], "admin": r["admin_count"]}
+            for r in result
+        ]
 
 
 def query_unconstrained_delegation(driver):
@@ -105,16 +117,24 @@ def run_recon(neo4j_uri, neo4j_user, neo4j_password):
         print(f"  {a['user']} (admin={a['admin']})")
 
     driver.close()
-    return {"paths_to_da": paths, "kerberoastable": kerb,
-            "unconstrained_delegation": deleg, "asrep_roastable": asrep}
+    return {
+        "paths_to_da": paths,
+        "kerberoastable": kerb,
+        "unconstrained_delegation": deleg,
+        "asrep_roastable": asrep,
+    }
 
 
 def main():
     parser = argparse.ArgumentParser(description="BloodHound CE Recon Agent")
-    parser.add_argument("--neo4j-uri", default="bolt://localhost:7687", help="Neo4j URI")
+    parser.add_argument(
+        "--neo4j-uri", default="bolt://localhost:7687", help="Neo4j URI"
+    )
     parser.add_argument("--neo4j-user", default="neo4j", help="Neo4j username")
     parser.add_argument("--neo4j-password", required=True, help="Neo4j password")
-    parser.add_argument("--collect", action="store_true", help="Run data collection first")
+    parser.add_argument(
+        "--collect", action="store_true", help="Run data collection first"
+    )
     parser.add_argument("--domain", help="AD domain for collection")
     parser.add_argument("--ad-user", help="AD username for collection")
     parser.add_argument("--ad-pass", help="AD password for collection")
@@ -123,7 +143,9 @@ def main():
     args = parser.parse_args()
 
     if args.collect and args.domain:
-        result = collect_bloodhound_data(args.domain, args.ad_user, args.ad_pass, args.dc_ip)
+        result = collect_bloodhound_data(
+            args.domain, args.ad_user, args.ad_pass, args.dc_ip
+        )
         print(json.dumps(result, indent=2))
 
     report = run_recon(args.neo4j_uri, args.neo4j_user, args.neo4j_password)

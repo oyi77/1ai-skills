@@ -9,7 +9,6 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
-
 EMPIRE_LAUNCHER_PATTERN = re.compile(
     r"powershell\s+-noP\s+-sta\s+-w\s+1\s+-enc\s+", re.IGNORECASE
 )
@@ -59,13 +58,18 @@ EMPIRE_DEFAULT_USER_AGENTS = [
 ]
 
 
-def query_event_log(event_id, log_name="Microsoft-Windows-PowerShell/Operational", max_events=1000):
+def query_event_log(
+    event_id, log_name="Microsoft-Windows-PowerShell/Operational", max_events=1000
+):
     """Query Windows Event Log for specific event ID using wevtutil."""
     cmd = [
-        "wevtutil", "qe", log_name,
+        "wevtutil",
+        "qe",
+        log_name,
         "/q:*[System[(EventID={})]]".format(event_id),
         "/c:{}".format(max_events),
-        "/f:xml", "/rd:true"
+        "/f:xml",
+        "/rd:true",
     ]
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
@@ -90,13 +94,15 @@ def parse_script_block_events(xml_data):
         sid_match = re.search(r"<Security\s+UserID='([^']+)'", block)
 
         if script_match:
-            events.append({
-                "timestamp": time_match.group(1) if time_match else "",
-                "computer": computer_match.group(1) if computer_match else "",
-                "user_sid": sid_match.group(1) if sid_match else "",
-                "script_block": script_match.group(1),
-                "event_id": 4104
-            })
+            events.append(
+                {
+                    "timestamp": time_match.group(1) if time_match else "",
+                    "computer": computer_match.group(1) if computer_match else "",
+                    "user_sid": sid_match.group(1) if sid_match else "",
+                    "script_block": script_match.group(1),
+                    "event_id": 4104,
+                }
+            )
     return events
 
 
@@ -120,12 +126,14 @@ def analyze_script_block(script_text):
 
     # Check for default launcher pattern
     if EMPIRE_LAUNCHER_PATTERN.search(script_text):
-        findings.append({
-            "indicator": "empire_default_launcher",
-            "severity": "Critical",
-            "description": "Default Empire launcher pattern detected: 'powershell -noP -sta -w 1 -enc'",
-            "mitre": "T1059.001"
-        })
+        findings.append(
+            {
+                "indicator": "empire_default_launcher",
+                "severity": "Critical",
+                "description": "Default Empire launcher pattern detected: 'powershell -noP -sta -w 1 -enc'",
+                "mitre": "T1059.001",
+            }
+        )
         # Try to extract and decode the Base64 payload
         b64_match = re.search(r"-enc\s+([A-Za-z0-9+/=]+)", script_text)
         if b64_match:
@@ -139,59 +147,69 @@ def analyze_script_block(script_text):
         if pattern.search(script_text):
             matched_stagers.append(pattern.pattern)
     if len(matched_stagers) >= 2:
-        findings.append({
-            "indicator": "empire_stager_patterns",
-            "severity": "High",
-            "description": f"Multiple Empire stager patterns detected: {', '.join(matched_stagers[:5])}",
-            "matched_count": len(matched_stagers),
-            "mitre": "T1059.001"
-        })
+        findings.append(
+            {
+                "indicator": "empire_stager_patterns",
+                "severity": "High",
+                "description": f"Multiple Empire stager patterns detected: {', '.join(matched_stagers[:5])}",
+                "matched_count": len(matched_stagers),
+                "mitre": "T1059.001",
+            }
+        )
 
     # Check for known Empire module signatures
     for module in EMPIRE_MODULE_SIGNATURES:
         if module.lower() in script_text.lower():
-            findings.append({
-                "indicator": "empire_module",
-                "severity": "Critical",
-                "module_name": module,
-                "description": f"Empire post-exploitation module detected: {module}",
-                "mitre": "T1059.001"
-            })
+            findings.append(
+                {
+                    "indicator": "empire_module",
+                    "severity": "Critical",
+                    "module_name": module,
+                    "description": f"Empire post-exploitation module detected: {module}",
+                    "mitre": "T1059.001",
+                }
+            )
 
     # Check for Empire default URIs
     for uri in EMPIRE_DEFAULT_URIS:
         if uri in script_text:
-            findings.append({
-                "indicator": "empire_staging_uri",
-                "severity": "High",
-                "uri": uri,
-                "description": f"Default Empire staging URI detected: {uri}",
-                "mitre": "T1071.001"
-            })
+            findings.append(
+                {
+                    "indicator": "empire_staging_uri",
+                    "severity": "High",
+                    "uri": uri,
+                    "description": f"Default Empire staging URI detected: {uri}",
+                    "mitre": "T1071.001",
+                }
+            )
 
     # Check for Empire user agents
     for ua in EMPIRE_DEFAULT_USER_AGENTS:
         if ua in script_text:
-            findings.append({
-                "indicator": "empire_default_useragent",
-                "severity": "Medium",
-                "user_agent": ua,
-                "description": "Default Empire HTTP listener user agent detected",
-                "mitre": "T1071.001"
-            })
+            findings.append(
+                {
+                    "indicator": "empire_default_useragent",
+                    "severity": "Medium",
+                    "user_agent": ua,
+                    "description": "Default Empire HTTP listener user agent detected",
+                    "mitre": "T1071.001",
+                }
+            )
 
     # Check for encoded command patterns
     b64_blocks = re.findall(r"[A-Za-z0-9+/]{100,}={0,2}", script_text)
     for b64 in b64_blocks[:5]:
         decoded = decode_base64_payload(b64)
         if decoded and any(p.search(decoded) for p in EMPIRE_STAGER_PATTERNS):
-            findings.append({
-                "indicator": "encoded_empire_payload",
-                "severity": "Critical",
-                "description": "Base64 encoded payload contains Empire stager patterns",
-                "decoded_preview": decoded[:300],
-                "mitre": "T1027"
-            })
+            findings.append(
+                {
+                    "indicator": "encoded_empire_payload",
+                    "severity": "Critical",
+                    "description": "Base64 encoded payload contains Empire stager patterns",
+                    "decoded_preview": decoded[:300],
+                    "mitre": "T1027",
+                }
+            )
 
     return findings
 
@@ -202,29 +220,28 @@ def scan_event_logs(max_events=1000):
         "scan_time": datetime.now(timezone.utc).isoformat(),
         "events_analyzed": 0,
         "suspicious_events": [],
-        "summary": {
-            "total_findings": 0,
-            "critical": 0,
-            "high": 0,
-            "medium": 0
-        }
+        "summary": {"total_findings": 0, "critical": 0, "high": 0, "medium": 0},
     }
 
     # Query Event ID 4104 (Script Block Logging)
-    xml_data = query_event_log(4104, "Microsoft-Windows-PowerShell/Operational", max_events)
+    xml_data = query_event_log(
+        4104, "Microsoft-Windows-PowerShell/Operational", max_events
+    )
     events = parse_script_block_events(xml_data)
     results["events_analyzed"] = len(events)
 
     for event in events:
         findings = analyze_script_block(event["script_block"])
         if findings:
-            results["suspicious_events"].append({
-                "timestamp": event["timestamp"],
-                "computer": event["computer"],
-                "user_sid": event["user_sid"],
-                "findings": findings,
-                "script_preview": event["script_block"][:200]
-            })
+            results["suspicious_events"].append(
+                {
+                    "timestamp": event["timestamp"],
+                    "computer": event["computer"],
+                    "user_sid": event["user_sid"],
+                    "findings": findings,
+                    "script_preview": event["script_block"][:200],
+                }
+            )
             for f in findings:
                 results["summary"]["total_findings"] += 1
                 sev = f.get("severity", "").lower()
@@ -232,22 +249,28 @@ def scan_event_logs(max_events=1000):
                     results["summary"][sev] += 1
 
     # Also check Event ID 4103 (Module Logging)
-    xml_4103 = query_event_log(4103, "Microsoft-Windows-PowerShell/Operational", max_events)
+    xml_4103 = query_event_log(
+        4103, "Microsoft-Windows-PowerShell/Operational", max_events
+    )
     events_4103 = parse_script_block_events(xml_4103)
     for event in events_4103:
         for module in EMPIRE_MODULE_SIGNATURES:
             if module.lower() in event.get("script_block", "").lower():
-                results["suspicious_events"].append({
-                    "timestamp": event["timestamp"],
-                    "computer": event["computer"],
-                    "event_id": 4103,
-                    "findings": [{
-                        "indicator": "empire_module_in_module_log",
-                        "severity": "Critical",
-                        "module_name": module,
-                        "mitre": "T1059.001"
-                    }]
-                })
+                results["suspicious_events"].append(
+                    {
+                        "timestamp": event["timestamp"],
+                        "computer": event["computer"],
+                        "event_id": 4103,
+                        "findings": [
+                            {
+                                "indicator": "empire_module_in_module_log",
+                                "severity": "Critical",
+                                "module_name": module,
+                                "mitre": "T1059.001",
+                            }
+                        ],
+                    }
+                )
                 results["summary"]["total_findings"] += 1
                 results["summary"]["critical"] += 1
 
@@ -264,7 +287,7 @@ def analyze_script_file(filepath):
         "file": filepath,
         "scan_time": datetime.now(timezone.utc).isoformat(),
         "findings": findings,
-        "finding_count": len(findings)
+        "finding_count": len(findings),
     }
 
 
@@ -274,13 +297,24 @@ def main():
     )
     subparsers = parser.add_subparsers(dest="command", help="Analysis mode")
 
-    scan_parser = subparsers.add_parser("scan-logs", help="Scan Windows event logs for Empire IOCs")
-    scan_parser.add_argument("--max-events", type=int, default=1000, help="Max events to query (default: 1000)")
+    scan_parser = subparsers.add_parser(
+        "scan-logs", help="Scan Windows event logs for Empire IOCs"
+    )
+    scan_parser.add_argument(
+        "--max-events",
+        type=int,
+        default=1000,
+        help="Max events to query (default: 1000)",
+    )
 
-    file_parser = subparsers.add_parser("analyze-file", help="Analyze a PowerShell script or log file")
+    file_parser = subparsers.add_parser(
+        "analyze-file", help="Analyze a PowerShell script or log file"
+    )
     file_parser.add_argument("file", help="Path to script or log file")
 
-    decode_parser = subparsers.add_parser("decode", help="Decode Base64 encoded PowerShell payload")
+    decode_parser = subparsers.add_parser(
+        "decode", help="Decode Base64 encoded PowerShell payload"
+    )
     decode_parser.add_argument("payload", help="Base64 encoded string")
 
     args = parser.parse_args()
@@ -292,9 +326,11 @@ def main():
     elif args.command == "decode":
         decoded = decode_base64_payload(args.payload)
         result = {
-            "encoded": args.payload[:100] + "..." if len(args.payload) > 100 else args.payload,
+            "encoded": (
+                args.payload[:100] + "..." if len(args.payload) > 100 else args.payload
+            ),
             "decoded": decoded,
-            "empire_indicators": analyze_script_block(decoded) if decoded else []
+            "empire_indicators": analyze_script_block(decoded) if decoded else [],
         }
     else:
         parser.print_help()

@@ -23,18 +23,20 @@ class TrivyDockerAgent:
 
     def _run(self, cmd, timeout=300):
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=timeout
+            )
             return result.stdout, result.stderr, result.returncode
         except FileNotFoundError:
             return "", "trivy not found", -1
         except subprocess.TimeoutExpired:
             return "", "timeout", -2
 
-    def scan_image(self, image_ref, scanners="vuln", severity=None,
-                   ignore_unfixed=False):
+    def scan_image(
+        self, image_ref, scanners="vuln", severity=None, ignore_unfixed=False
+    ):
         """Scan a Docker image with specified scanners."""
-        cmd = ["trivy", "image", "--format", "json", "--quiet",
-               "--scanners", scanners]
+        cmd = ["trivy", "image", "--format", "json", "--quiet", "--scanners", scanners]
         if severity:
             cmd.extend(["--severity", severity])
         if ignore_unfixed:
@@ -56,28 +58,34 @@ class TrivyDockerAgent:
         for result in raw.get("Results", []):
             target = result.get("Target", "")
             for v in result.get("Vulnerabilities", []):
-                vulns.append({
-                    "id": v.get("VulnerabilityID"),
-                    "severity": v.get("Severity"),
-                    "package": v.get("PkgName"),
-                    "installed": v.get("InstalledVersion"),
-                    "fixed": v.get("FixedVersion", ""),
-                    "target": target,
-                })
+                vulns.append(
+                    {
+                        "id": v.get("VulnerabilityID"),
+                        "severity": v.get("Severity"),
+                        "package": v.get("PkgName"),
+                        "installed": v.get("InstalledVersion"),
+                        "fixed": v.get("FixedVersion", ""),
+                        "target": target,
+                    }
+                )
             for mc in result.get("Misconfigurations", []):
-                misconfigs.append({
-                    "id": mc.get("ID"),
-                    "severity": mc.get("Severity"),
-                    "title": mc.get("Title"),
-                    "target": target,
-                })
+                misconfigs.append(
+                    {
+                        "id": mc.get("ID"),
+                        "severity": mc.get("Severity"),
+                        "title": mc.get("Title"),
+                        "target": target,
+                    }
+                )
             for s in result.get("Secrets", []):
-                secrets.append({
-                    "rule_id": s.get("RuleID"),
-                    "severity": s.get("Severity"),
-                    "title": s.get("Title"),
-                    "target": target,
-                })
+                secrets.append(
+                    {
+                        "rule_id": s.get("RuleID"),
+                        "severity": s.get("Severity"),
+                        "title": s.get("Title"),
+                        "target": target,
+                    }
+                )
 
         summary = {}
         for v in vulns:
@@ -101,8 +109,7 @@ class TrivyDockerAgent:
 
     def scan_tar(self, tar_path, severity=None):
         """Scan a saved Docker image tar archive."""
-        cmd = ["trivy", "image", "--format", "json", "--quiet",
-               "--input", tar_path]
+        cmd = ["trivy", "image", "--format", "json", "--quiet", "--input", tar_path]
         if severity:
             cmd.extend(["--severity", severity])
         stdout, stderr, rc = self._run(cmd)
@@ -118,8 +125,15 @@ class TrivyDockerAgent:
         trivy_fmt = "cyclonedx" if fmt == "cyclonedx" else "spdx-json"
         ext = "cdx" if fmt == "cyclonedx" else "spdx"
         out_file = self.output_dir / f"sbom.{ext}.json"
-        cmd = ["trivy", "image", "--format", trivy_fmt,
-               "--output", str(out_file), image_ref]
+        cmd = [
+            "trivy",
+            "image",
+            "--format",
+            trivy_fmt,
+            "--output",
+            str(out_file),
+            image_ref,
+        ]
         _, stderr, rc = self._run(cmd)
         if rc == 0:
             return {"sbom_path": str(out_file), "format": fmt}

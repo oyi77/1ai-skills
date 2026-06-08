@@ -11,7 +11,6 @@ import subprocess
 import tempfile
 from datetime import datetime, timezone
 
-
 TRACING_POLICY_TEMPLATE = {
     "apiVersion": "cilium.io/v1alpha1",
     "kind": "TracingPolicy",
@@ -251,9 +250,7 @@ def generate_reverse_shell_detection_policy(
                     "args": [{"index": 0, "type": "sock"}],
                     "selectors": [
                         {
-                            "matchBinaries": [
-                                {"operator": "In", "values": binaries}
-                            ],
+                            "matchBinaries": [{"operator": "In", "values": binaries}],
                             "matchActions": [{"action": action}],
                         }
                     ],
@@ -342,8 +339,12 @@ def generate_write_monitoring_policy(
                     "syscall": True,
                     "args": [
                         {"index": 0, "type": "fd"},
-                        {"index": 1, "type": "char_buf",
-                         "sizeArgIndex": 3, "returnCopy": True},
+                        {
+                            "index": 1,
+                            "type": "char_buf",
+                            "sizeArgIndex": 3,
+                            "returnCopy": True,
+                        },
                         {"index": 2, "type": "size_t"},
                     ],
                     "selectors": [
@@ -372,9 +373,7 @@ def apply_policy(policy, dry_run=False):
     if dry_run:
         return {"status": "dry_run", "yaml": policy_yaml}
 
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".yaml", delete=False
-    ) as f:
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
         f.write(policy_yaml)
         temp_path = f.name
 
@@ -488,9 +487,7 @@ def parse_tetragon_log(log_path, event_types=None):
                         kprobe_data = event[etype]
                         policy_name = kprobe_data.get("policy_name", "")
                         func = kprobe_data.get("function_name", "")
-                        binary = (
-                            kprobe_data.get("process", {}).get("binary", "")
-                        )
+                        binary = kprobe_data.get("process", {}).get("binary", "")
                         alerts.append(
                             {
                                 "type": etype,
@@ -586,27 +583,40 @@ def generate_full_monitoring_suite(output_dir, dry_run=False):
 def install_tetragon_helm(namespace="kube-system", values_file=None, dry_run=False):
     """Install or upgrade Tetragon via Helm."""
     cmd = [
-        "helm", "upgrade", "--install", "tetragon",
-        "cilium/tetragon", "-n", namespace,
+        "helm",
+        "upgrade",
+        "--install",
+        "tetragon",
+        "cilium/tetragon",
+        "-n",
+        namespace,
     ]
     if values_file:
         cmd.extend(["-f", values_file])
     else:
-        cmd.extend([
-            "--set", "tetragon.enableProcessCred=true",
-            "--set", "tetragon.enableProcessNs=true",
-        ])
+        cmd.extend(
+            [
+                "--set",
+                "tetragon.enableProcessCred=true",
+                "--set",
+                "tetragon.enableProcessNs=true",
+            ]
+        )
     if dry_run:
         cmd.append("--dry-run")
 
     try:
         add_repo = subprocess.run(
             ["helm", "repo", "add", "cilium", "https://helm.cilium.io"],
-            capture_output=True, text=True, timeout=30,
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         subprocess.run(
             ["helm", "repo", "update"],
-            capture_output=True, text=True, timeout=60,
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
         return {
@@ -624,10 +634,20 @@ def verify_installation(namespace="kube-system"):
 
     try:
         result = subprocess.run(
-            ["kubectl", "get", "pods", "-n", namespace,
-             "-l", "app.kubernetes.io/name=tetragon",
-             "-o", "json"],
-            capture_output=True, text=True, timeout=30,
+            [
+                "kubectl",
+                "get",
+                "pods",
+                "-n",
+                namespace,
+                "-l",
+                "app.kubernetes.io/name=tetragon",
+                "-o",
+                "json",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         if result.returncode == 0:
             pods = json.loads(result.stdout)
@@ -654,7 +674,9 @@ def verify_installation(namespace="kube-system"):
     try:
         result = subprocess.run(
             ["kubectl", "api-resources", "--api-group=cilium.io"],
-            capture_output=True, text=True, timeout=30,
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         checks["crds_available"] = "tracingpolicies" in result.stdout.lower()
     except Exception:
@@ -682,30 +704,45 @@ def main():
         default="check",
         help="Action to perform",
     )
-    parser.add_argument("--output-dir", default="./tetragon-policies",
-                        help="Directory for generated policies")
-    parser.add_argument("--output", default="ebpf_monitoring_report.json",
-                        help="Output report file")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Generate without applying")
+    parser.add_argument(
+        "--output-dir",
+        default="./tetragon-policies",
+        help="Directory for generated policies",
+    )
+    parser.add_argument(
+        "--output", default="ebpf_monitoring_report.json", help="Output report file"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Generate without applying"
+    )
     parser.add_argument("--log-path", help="Path to Tetragon log file")
     parser.add_argument("--event-filter", help="Filter events by keyword")
-    parser.add_argument("--limit", type=int, default=100,
-                        help="Max events to stream")
-    parser.add_argument("--namespace", default="kube-system",
-                        help="Kubernetes namespace")
+    parser.add_argument("--limit", type=int, default=100, help="Max events to stream")
+    parser.add_argument(
+        "--namespace", default="kube-system", help="Kubernetes namespace"
+    )
     parser.add_argument("--values-file", help="Helm values file path")
-    parser.add_argument("--policy-type",
-                        choices=[
-                            "file-access", "network", "privilege-escalation",
-                            "crypto-miner", "reverse-shell", "container-escape",
-                            "write-monitor", "all",
-                        ],
-                        default="all",
-                        help="Type of policy to generate/apply")
+    parser.add_argument(
+        "--policy-type",
+        choices=[
+            "file-access",
+            "network",
+            "privilege-escalation",
+            "crypto-miner",
+            "reverse-shell",
+            "container-escape",
+            "write-monitor",
+            "all",
+        ],
+        default="all",
+        help="Type of policy to generate/apply",
+    )
     args = parser.parse_args()
 
-    report = {"generated_at": datetime.now(timezone.utc).isoformat(), "action": args.action}
+    report = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "action": args.action,
+    }
 
     if args.action == "check":
         prereqs = check_prerequisites()
@@ -802,7 +839,9 @@ def main():
                     print(f"    {ps['name']}: {ps['phase']} ({ready_str})")
             else:
                 print(f"[-] Pod check error: {pod_info.get('error', 'unknown')}")
-        print(f"[+] TracingPolicy CRDs available: {checks.get('crds_available', False)}")
+        print(
+            f"[+] TracingPolicy CRDs available: {checks.get('crds_available', False)}"
+        )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)

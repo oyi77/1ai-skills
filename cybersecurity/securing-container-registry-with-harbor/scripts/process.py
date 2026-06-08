@@ -52,9 +52,13 @@ def harbor_api_call(base_url: str, endpoint: str, username: str, password: str) 
         return {}
 
 
-def audit_projects(base_url: str, username: str, password: str, report: HarborAuditReport):
+def audit_projects(
+    base_url: str, username: str, password: str, report: HarborAuditReport
+):
     """Audit all projects for security configurations."""
-    projects = harbor_api_call(base_url, "/projects?page=1&page_size=100", username, password)
+    projects = harbor_api_call(
+        base_url, "/projects?page=1&page_size=100", username, password
+    )
     if not projects:
         return
 
@@ -65,46 +69,59 @@ def audit_projects(base_url: str, username: str, password: str, report: HarborAu
 
         # Check auto-scan
         if metadata.get("auto_scan") != "true":
-            report.findings.append(HarborFinding(
-                category="Scanning",
-                title=f"Auto-scan disabled for project: {name}",
-                severity="HIGH",
-                details="Images pushed to this project are not automatically scanned",
-                remediation=f"Enable auto_scan for project '{name}'"
-            ))
+            report.findings.append(
+                HarborFinding(
+                    category="Scanning",
+                    title=f"Auto-scan disabled for project: {name}",
+                    severity="HIGH",
+                    details="Images pushed to this project are not automatically scanned",
+                    remediation=f"Enable auto_scan for project '{name}'",
+                )
+            )
 
         # Check vulnerability prevention
         if metadata.get("prevent_vul") != "true":
-            report.findings.append(HarborFinding(
-                category="Scanning",
-                title=f"Vulnerability prevention disabled for project: {name}",
-                severity="HIGH",
-                details="Vulnerable images can be pulled from this project",
-                remediation=f"Enable prevent_vul for project '{name}'"
-            ))
+            report.findings.append(
+                HarborFinding(
+                    category="Scanning",
+                    title=f"Vulnerability prevention disabled for project: {name}",
+                    severity="HIGH",
+                    details="Vulnerable images can be pulled from this project",
+                    remediation=f"Enable prevent_vul for project '{name}'",
+                )
+            )
 
         # Check content trust
-        if metadata.get("enable_content_trust") != "true" and metadata.get("enable_content_trust_cosign") != "true":
-            report.findings.append(HarborFinding(
-                category="Content Trust",
-                title=f"Content trust not enforced for project: {name}",
-                severity="MEDIUM",
-                details="Unsigned images can be used from this project",
-                remediation=f"Enable content trust (Cosign) for project '{name}'"
-            ))
+        if (
+            metadata.get("enable_content_trust") != "true"
+            and metadata.get("enable_content_trust_cosign") != "true"
+        ):
+            report.findings.append(
+                HarborFinding(
+                    category="Content Trust",
+                    title=f"Content trust not enforced for project: {name}",
+                    severity="MEDIUM",
+                    details="Unsigned images can be used from this project",
+                    remediation=f"Enable content trust (Cosign) for project '{name}'",
+                )
+            )
 
         # Check public visibility
         if metadata.get("public") == "true":
-            report.findings.append(HarborFinding(
-                category="Access Control",
-                title=f"Project is publicly accessible: {name}",
-                severity="MEDIUM",
-                details="Anyone can pull images from this project",
-                remediation=f"Set project '{name}' to private unless intentionally public"
-            ))
+            report.findings.append(
+                HarborFinding(
+                    category="Access Control",
+                    title=f"Project is publicly accessible: {name}",
+                    severity="MEDIUM",
+                    details="Anyone can pull images from this project",
+                    remediation=f"Set project '{name}' to private unless intentionally public",
+                )
+            )
 
 
-def audit_system_config(base_url: str, username: str, password: str, report: HarborAuditReport):
+def audit_system_config(
+    base_url: str, username: str, password: str, report: HarborAuditReport
+):
     """Audit system-level Harbor configuration."""
     config = harbor_api_call(base_url, "/configurations", username, password)
     if not config:
@@ -113,24 +130,28 @@ def audit_system_config(base_url: str, username: str, password: str, report: Har
     # Check auth mode
     auth_mode = config.get("auth_mode", {}).get("value", "db_auth")
     if auth_mode == "db_auth":
-        report.findings.append(HarborFinding(
-            category="Authentication",
-            title="Using local database authentication",
-            severity="MEDIUM",
-            details="Harbor uses local DB auth instead of enterprise IdP",
-            remediation="Configure OIDC or LDAP authentication"
-        ))
+        report.findings.append(
+            HarborFinding(
+                category="Authentication",
+                title="Using local database authentication",
+                severity="MEDIUM",
+                details="Harbor uses local DB auth instead of enterprise IdP",
+                remediation="Configure OIDC or LDAP authentication",
+            )
+        )
 
     # Check self-registration
     self_reg = config.get("self_registration", {}).get("value", False)
     if self_reg:
-        report.findings.append(HarborFinding(
-            category="Authentication",
-            title="Self-registration is enabled",
-            severity="HIGH",
-            details="Anyone can create an account on this Harbor instance",
-            remediation="Disable self-registration in Harbor configuration"
-        ))
+        report.findings.append(
+            HarborFinding(
+                category="Authentication",
+                title="Self-registration is enabled",
+                severity="HIGH",
+                details="Anyone can create an account on this Harbor instance",
+                remediation="Disable self-registration in Harbor configuration",
+            )
+        )
 
 
 def print_report(report: HarborAuditReport):
@@ -153,8 +174,11 @@ def print_report(report: HarborAuditReport):
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(description="Harbor Registry Security Auditor")
-    parser.add_argument("--url", required=True, help="Harbor URL (e.g., https://harbor.example.com)")
+    parser.add_argument(
+        "--url", required=True, help="Harbor URL (e.g., https://harbor.example.com)"
+    )
     parser.add_argument("--username", default="admin", help="Harbor admin username")
     parser.add_argument("--password", required=True, help="Harbor admin password")
     args = parser.parse_args()
@@ -167,12 +191,22 @@ def main():
     print_report(report)
 
     with open("harbor_audit_report.json", "w") as f:
-        json.dump({
-            "harbor_url": report.harbor_url,
-            "findings": [{"category": f.category, "title": f.title,
-                         "severity": f.severity, "remediation": f.remediation}
-                        for f in report.findings]
-        }, f, indent=2)
+        json.dump(
+            {
+                "harbor_url": report.harbor_url,
+                "findings": [
+                    {
+                        "category": f.category,
+                        "title": f.title,
+                        "severity": f.severity,
+                        "remediation": f.remediation,
+                    }
+                    for f in report.findings
+                ],
+            },
+            f,
+            indent=2,
+        )
     print("\n[*] Report saved to harbor_audit_report.json")
 
 

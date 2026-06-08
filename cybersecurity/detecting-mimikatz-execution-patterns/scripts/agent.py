@@ -60,7 +60,7 @@ def scan_evtx(filepath):
     with evtx.Evtx(filepath) as log:
         for record in log.records():
             xml = record.xml()
-            event_id_match = re.search(r'<EventID[^>]*>(\d+)</EventID>', xml)
+            event_id_match = re.search(r"<EventID[^>]*>(\d+)</EventID>", xml)
             if not event_id_match:
                 continue
             event_id = int(event_id_match.group(1))
@@ -78,38 +78,44 @@ def scan_evtx(filepath):
 
             for pattern, severity in MIMIKATZ_BINARY_INDICATORS:
                 if re.search(pattern, proc, re.IGNORECASE):
-                    findings.append({
-                        "event_id": event_id,
-                        "timestamp": time_match.group(1) if time_match else "",
-                        "type": "mimikatz_binary",
-                        "process": proc,
-                        "severity": severity,
-                        "mitre": "T1003.001",
-                    })
+                    findings.append(
+                        {
+                            "event_id": event_id,
+                            "timestamp": time_match.group(1) if time_match else "",
+                            "type": "mimikatz_binary",
+                            "process": proc,
+                            "severity": severity,
+                            "mitre": "T1003.001",
+                        }
+                    )
 
             for pattern, severity, desc in MIMIKATZ_CMDLINE_PATTERNS:
                 if re.search(pattern, cmd, re.IGNORECASE):
-                    findings.append({
-                        "event_id": event_id,
-                        "timestamp": time_match.group(1) if time_match else "",
-                        "type": "mimikatz_command",
-                        "command": cmd[:300],
-                        "description": desc,
-                        "severity": severity,
-                        "mitre": "T1003",
-                    })
+                    findings.append(
+                        {
+                            "event_id": event_id,
+                            "timestamp": time_match.group(1) if time_match else "",
+                            "type": "mimikatz_command",
+                            "command": cmd[:300],
+                            "description": desc,
+                            "severity": severity,
+                            "mitre": "T1003",
+                        }
+                    )
 
             for pattern, severity, desc in LSASS_DUMP_PATTERNS:
                 if re.search(pattern, cmd, re.IGNORECASE):
-                    findings.append({
-                        "event_id": event_id,
-                        "timestamp": time_match.group(1) if time_match else "",
-                        "type": "lsass_dump",
-                        "command": cmd[:300],
-                        "description": desc,
-                        "severity": severity,
-                        "mitre": "T1003.001",
-                    })
+                    findings.append(
+                        {
+                            "event_id": event_id,
+                            "timestamp": time_match.group(1) if time_match else "",
+                            "type": "lsass_dump",
+                            "command": cmd[:300],
+                            "description": desc,
+                            "severity": severity,
+                            "mitre": "T1003.001",
+                        }
+                    )
 
     return findings
 
@@ -118,12 +124,18 @@ def scan_text_log(filepath):
     findings = []
     with open(filepath, "r", encoding="utf-8", errors="replace") as f:
         for num, line in enumerate(f, 1):
-            for pattern, severity, desc in MIMIKATZ_CMDLINE_PATTERNS + LSASS_DUMP_PATTERNS:
+            for pattern, severity, desc in (
+                MIMIKATZ_CMDLINE_PATTERNS + LSASS_DUMP_PATTERNS
+            ):
                 if re.search(pattern, line, re.IGNORECASE):
-                    findings.append({
-                        "line": num, "severity": severity,
-                        "description": desc, "excerpt": line.strip()[:200],
-                    })
+                    findings.append(
+                        {
+                            "line": num,
+                            "severity": severity,
+                            "description": desc,
+                            "excerpt": line.strip()[:200],
+                        }
+                    )
     return findings
 
 

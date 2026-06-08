@@ -23,9 +23,20 @@ SECRET_PATTERNS = {
 }
 
 SENSITIVE_FIELDS = [
-    "password", "password_hash", "salt", "ssn", "social_security",
-    "credit_card", "card_number", "cvv", "secret_key", "api_key",
-    "private_key", "token", "access_token", "refresh_token",
+    "password",
+    "password_hash",
+    "salt",
+    "ssn",
+    "social_security",
+    "credit_card",
+    "card_number",
+    "cvv",
+    "secret_key",
+    "api_key",
+    "private_key",
+    "token",
+    "access_token",
+    "refresh_token",
 ]
 
 
@@ -50,11 +61,18 @@ def scan_javascript_files(base_url):
                 for name, pattern in SECRET_PATTERNS.items():
                     matches = re.findall(pattern, js_resp.text)
                     if matches:
-                        findings.append({
-                            "type": "SECRET_IN_JS", "file": js_url,
-                            "pattern": name, "count": len(matches), "severity": "HIGH",
-                        })
-                        print(f"  [!] {name} found in {js_path} ({len(matches)} matches)")
+                        findings.append(
+                            {
+                                "type": "SECRET_IN_JS",
+                                "file": js_url,
+                                "pattern": name,
+                                "count": len(matches),
+                                "severity": "HIGH",
+                            }
+                        )
+                        print(
+                            f"  [!] {name} found in {js_path} ({len(matches)} matches)"
+                        )
             except requests.RequestException:
                 continue
     except requests.RequestException as e:
@@ -67,10 +85,21 @@ def check_config_files(base_url):
     print("\n[*] Checking for exposed configuration files...")
     findings = []
     config_files = [
-        ".env", ".env.local", ".env.production", "config.json", "settings.json",
-        ".aws/credentials", ".docker/config.json", "wp-config.php",
-        ".git/config", ".git/HEAD", "composer.json", "package.json",
-        ".htaccess", "web.config", "phpinfo.php",
+        ".env",
+        ".env.local",
+        ".env.production",
+        "config.json",
+        "settings.json",
+        ".aws/credentials",
+        ".docker/config.json",
+        "wp-config.php",
+        ".git/config",
+        ".git/HEAD",
+        "composer.json",
+        "package.json",
+        ".htaccess",
+        "web.config",
+        "phpinfo.php",
     ]
     for cf in config_files:
         url = urljoin(base_url, cf)
@@ -79,10 +108,15 @@ def check_config_files(base_url):
             if resp.status_code == 200 and len(resp.text) > 10:
                 content_type = resp.headers.get("Content-Type", "")
                 if "text/html" not in content_type or cf.endswith((".json", ".php")):
-                    findings.append({
-                        "type": "EXPOSED_CONFIG", "file": cf, "url": url,
-                        "size": len(resp.text), "severity": "CRITICAL",
-                    })
+                    findings.append(
+                        {
+                            "type": "EXPOSED_CONFIG",
+                            "file": cf,
+                            "url": url,
+                            "size": len(resp.text),
+                            "severity": "CRITICAL",
+                        }
+                    )
                     print(f"  [!] FOUND: {cf} ({len(resp.text)} bytes)")
         except requests.RequestException:
             continue
@@ -102,10 +136,14 @@ def check_api_data_exposure(base_url, token, endpoints):
                 data_str = resp.text.lower()
                 exposed = [f for f in SENSITIVE_FIELDS if f in data_str]
                 if exposed:
-                    findings.append({
-                        "type": "API_DATA_EXPOSURE", "endpoint": endpoint,
-                        "exposed_fields": exposed, "severity": "HIGH",
-                    })
+                    findings.append(
+                        {
+                            "type": "API_DATA_EXPOSURE",
+                            "endpoint": endpoint,
+                            "exposed_fields": exposed,
+                            "severity": "HIGH",
+                        }
+                    )
                     print(f"  [!] {endpoint}: Exposes {exposed}")
         except requests.RequestException:
             continue
@@ -122,11 +160,17 @@ def check_security_headers(base_url, sensitive_endpoints):
             resp = requests.get(url, timeout=10, verify=False)
             cache_control = resp.headers.get("Cache-Control", "")
             if "no-store" not in cache_control and resp.status_code == 200:
-                findings.append({
-                    "type": "MISSING_NO_STORE", "endpoint": endpoint,
-                    "cache_control": cache_control, "severity": "MEDIUM",
-                })
-                print(f"  [!] {endpoint}: Missing no-store (Cache-Control: {cache_control})")
+                findings.append(
+                    {
+                        "type": "MISSING_NO_STORE",
+                        "endpoint": endpoint,
+                        "cache_control": cache_control,
+                        "severity": "MEDIUM",
+                    }
+                )
+                print(
+                    f"  [!] {endpoint}: Missing no-store (Cache-Control: {cache_control})"
+                )
         except requests.RequestException:
             continue
     return findings
@@ -137,12 +181,18 @@ def check_tls_config(host):
     print(f"\n[*] Checking TLS on {host}...")
     findings = []
     try:
-        resp = requests.get(f"http://{host}/", timeout=5, allow_redirects=False, verify=False)
+        resp = requests.get(
+            f"http://{host}/", timeout=5, allow_redirects=False, verify=False
+        )
         if resp.status_code not in (301, 302, 307, 308):
-            findings.append({
-                "type": "NO_HTTPS_REDIRECT", "host": host,
-                "status": resp.status_code, "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "type": "NO_HTTPS_REDIRECT",
+                    "host": host,
+                    "status": resp.status_code,
+                    "severity": "HIGH",
+                }
+            )
             print(f"  [!] HTTP does not redirect to HTTPS (status {resp.status_code})")
         else:
             location = resp.headers.get("Location", "")
@@ -155,7 +205,9 @@ def check_tls_config(host):
         resp = requests.get(f"https://{host}/", timeout=5, verify=False)
         hsts = resp.headers.get("Strict-Transport-Security", "")
         if not hsts:
-            findings.append({"type": "MISSING_HSTS", "host": host, "severity": "MEDIUM"})
+            findings.append(
+                {"type": "MISSING_HSTS", "host": host, "severity": "MEDIUM"}
+            )
             print(f"  [!] Missing HSTS header")
         else:
             print(f"  [+] HSTS: {hsts}")
@@ -173,20 +225,33 @@ def check_error_verbosity(base_url):
         {"method": "GET", "url": "/api/nonexistent/path"},
         {"method": "GET", "url": "/api/users/999999999"},
     ]
-    verbose_patterns = ["traceback", "stack trace", "exception", "sql", "at line",
-                        "file \"", "internal server", "debug"]
+    verbose_patterns = [
+        "traceback",
+        "stack trace",
+        "exception",
+        "sql",
+        "at line",
+        'file "',
+        "internal server",
+        "debug",
+    ]
     for tr in test_requests:
         url = urljoin(base_url, tr["url"])
         try:
-            resp = requests.request(tr["method"], url, data=tr.get("data"),
-                                    timeout=10, verify=False)
+            resp = requests.request(
+                tr["method"], url, data=tr.get("data"), timeout=10, verify=False
+            )
             text_lower = resp.text.lower()
             matches = [p for p in verbose_patterns if p in text_lower]
             if matches:
-                findings.append({
-                    "type": "VERBOSE_ERROR", "url": tr["url"],
-                    "patterns": matches, "severity": "MEDIUM",
-                })
+                findings.append(
+                    {
+                        "type": "VERBOSE_ERROR",
+                        "url": tr["url"],
+                        "patterns": matches,
+                        "severity": "MEDIUM",
+                    }
+                )
                 print(f"  [!] {tr['url']}: Verbose error ({matches})")
         except requests.RequestException:
             continue
@@ -210,11 +275,16 @@ def generate_report(findings, output_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Sensitive Data Exposure Testing Agent")
+    parser = argparse.ArgumentParser(
+        description="Sensitive Data Exposure Testing Agent"
+    )
     parser.add_argument("base_url", help="Base URL of the target")
     parser.add_argument("--token", help="Bearer token for authenticated testing")
-    parser.add_argument("--endpoints", nargs="+",
-                        default=["/api/users/me", "/api/users", "/api/account"])
+    parser.add_argument(
+        "--endpoints",
+        nargs="+",
+        default=["/api/users/me", "/api/users", "/api/account"],
+    )
     parser.add_argument("-o", "--output", default="data_exposure_report.json")
     args = parser.parse_args()
 
@@ -224,10 +294,13 @@ def main():
     findings.extend(check_config_files(args.base_url))
     findings.extend(check_error_verbosity(args.base_url))
     from urllib.parse import urlparse
+
     host = urlparse(args.base_url).netloc
     findings.extend(check_tls_config(host))
     if args.token:
-        findings.extend(check_api_data_exposure(args.base_url, args.token, args.endpoints))
+        findings.extend(
+            check_api_data_exposure(args.base_url, args.token, args.endpoints)
+        )
         findings.extend(check_security_headers(args.base_url, args.endpoints))
     generate_report(findings, args.output)
 

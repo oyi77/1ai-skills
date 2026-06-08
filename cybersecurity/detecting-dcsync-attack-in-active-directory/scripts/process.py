@@ -18,7 +18,9 @@ REPLICATION_GUIDS = {
     "89e95b76-444d-4c62-991a-0facbeda640c": "DS-Replication-Get-Changes-In-Filtered-Set",
 }
 
-GUID_PATTERN = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.IGNORECASE)
+GUID_PATTERN = re.compile(
+    r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.IGNORECASE
+)
 
 
 def load_dc_list(dc_file: str) -> set:
@@ -53,7 +55,9 @@ def detect_dcsync(events: list[dict], known_dcs: set) -> list[dict]:
     """Detect DCSync activity from Event 4662 logs."""
     findings = []
     for event in events:
-        event_id = str(event.get("EventID", event.get("EventCode", event.get("event_id", ""))))
+        event_id = str(
+            event.get("EventID", event.get("EventCode", event.get("event_id", "")))
+        )
         if event_id != "4662":
             continue
 
@@ -67,9 +71,13 @@ def detect_dcsync(events: list[dict], known_dcs: set) -> list[dict]:
             continue
 
         subject_user = event.get("SubjectUserName", event.get("subject_user_name", ""))
-        subject_domain = event.get("SubjectDomainName", event.get("subject_domain_name", ""))
+        subject_domain = event.get(
+            "SubjectDomainName", event.get("subject_domain_name", "")
+        )
         computer = event.get("Computer", event.get("computer", ""))
-        timestamp = event.get("TimeCreated", event.get("_time", event.get("timestamp", "")))
+        timestamp = event.get(
+            "TimeCreated", event.get("_time", event.get("timestamp", ""))
+        )
 
         # Check if this is a legitimate domain controller
         is_dc = False
@@ -86,18 +94,20 @@ def detect_dcsync(events: list[dict], known_dcs: set) -> list[dict]:
 
         severity = "CRITICAL" if has_get_changes_all else "HIGH"
 
-        findings.append({
-            "timestamp": timestamp,
-            "subject_user": subject_user,
-            "subject_domain": subject_domain,
-            "computer": computer,
-            "replication_guids": replication_guids,
-            "replication_rights": replication_rights,
-            "has_get_changes_all": has_get_changes_all,
-            "is_machine_account": subject_user.endswith("$"),
-            "severity": severity,
-            "description": f"Non-DC account '{subject_user}' requested replication rights: {', '.join(replication_rights)}",
-        })
+        findings.append(
+            {
+                "timestamp": timestamp,
+                "subject_user": subject_user,
+                "subject_domain": subject_domain,
+                "computer": computer,
+                "replication_guids": replication_guids,
+                "replication_rights": replication_rights,
+                "has_get_changes_all": has_get_changes_all,
+                "is_machine_account": subject_user.endswith("$"),
+                "severity": severity,
+                "description": f"Non-DC account '{subject_user}' requested replication rights: {', '.join(replication_rights)}",
+            }
+        )
 
     return sorted(findings, key=lambda x: x.get("timestamp", ""), reverse=True)
 
@@ -119,12 +129,16 @@ def run_hunt(input_path: str, dc_file: str, output_dir: str) -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     with open(output_path / "dcsync_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-DCSYNC-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "findings_count": len(findings),
-            "findings": findings,
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-DCSYNC-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "findings_count": len(findings),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
 
     with open(output_path / "dcsync_report.md", "w", encoding="utf-8") as f:
         f.write("# DCSync Attack Detection Report\n\n")
@@ -143,9 +157,15 @@ def run_hunt(input_path: str, dc_file: str, output_dir: str) -> None:
 
 def main():
     parser = argparse.ArgumentParser(description="DCSync Attack Detection")
-    parser.add_argument("--input", "-i", required=True, help="Path to Windows event logs")
-    parser.add_argument("--dc-list", "-d", default="", help="File with known DC accounts")
-    parser.add_argument("--output", "-o", default="./dcsync_hunt_output", help="Output directory")
+    parser.add_argument(
+        "--input", "-i", required=True, help="Path to Windows event logs"
+    )
+    parser.add_argument(
+        "--dc-list", "-d", default="", help="File with known DC accounts"
+    )
+    parser.add_argument(
+        "--output", "-o", default="./dcsync_hunt_output", help="Output directory"
+    )
     args = parser.parse_args()
     run_hunt(args.input, args.dc_list, args.output)
 

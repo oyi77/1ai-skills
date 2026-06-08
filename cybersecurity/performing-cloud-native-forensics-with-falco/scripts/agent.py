@@ -11,15 +11,14 @@ from pathlib import Path
 import yaml
 import requests
 
-
 FALCO_RULES = [
     {
         "rule": "Shell Spawned in Container",
         "desc": "Detect shell process started in a container",
         "condition": "spawned_process and container and proc.name in (bash, sh, zsh, dash) "
-                     "and not proc.pname in (docker-entrypo, supervisord, crond)",
+        "and not proc.pname in (docker-entrypo, supervisord, crond)",
         "output": "Shell spawned (user=%user.name command=%proc.cmdline "
-                  "container=%container.name image=%container.image.repository)",
+        "container=%container.name image=%container.image.repository)",
         "priority": "WARNING",
         "tags": ["container", "shell", "mitre_execution"],
     },
@@ -27,9 +26,9 @@ FALCO_RULES = [
         "rule": "Sensitive File Access in Container",
         "desc": "Detect read of sensitive files in container",
         "condition": "open_read and container and fd.name in (/etc/shadow, /etc/passwd, "
-                     "/etc/sudoers) and not proc.name in (su, sudo, login)",
+        "/etc/sudoers) and not proc.name in (su, sudo, login)",
         "output": "Sensitive file read (file=%fd.name user=%user.name "
-                  "container=%container.name)",
+        "container=%container.name)",
         "priority": "WARNING",
         "tags": ["container", "filesystem", "mitre_credential_access"],
     },
@@ -37,10 +36,10 @@ FALCO_RULES = [
         "rule": "Outbound Connection from Container",
         "desc": "Detect unexpected outbound network connections from containers",
         "condition": "evt.type=connect and fd.typechar=4 and fd.ip != 0.0.0.0 "
-                     "and container and not fd.snet in (10.0.0.0/8, 172.16.0.0/12, "
-                     "192.168.0.0/16)",
+        "and container and not fd.snet in (10.0.0.0/8, 172.16.0.0/12, "
+        "192.168.0.0/16)",
         "output": "Outbound connection (command=%proc.cmdline dest=%fd.name "
-                  "container=%container.name)",
+        "container=%container.name)",
         "priority": "NOTICE",
         "tags": ["container", "network", "mitre_command_and_control"],
     },
@@ -48,9 +47,9 @@ FALCO_RULES = [
         "rule": "Privilege Escalation in Container",
         "desc": "Detect setuid/setgid calls in container",
         "condition": "evt.type in (setuid, setgid) and container "
-                     "and not user.name=root",
+        "and not user.name=root",
         "output": "Privilege escalation attempt (user=%user.name command=%proc.cmdline "
-                  "container=%container.name)",
+        "container=%container.name)",
         "priority": "CRITICAL",
         "tags": ["container", "privilege_escalation", "mitre_privilege_escalation"],
     },
@@ -59,7 +58,7 @@ FALCO_RULES = [
         "desc": "Detect mount syscall in container indicating escape attempt",
         "condition": "evt.type=mount and container",
         "output": "Mount in container (user=%user.name command=%proc.cmdline "
-                  "container=%container.name)",
+        "container=%container.name)",
         "priority": "CRITICAL",
         "tags": ["container", "escape", "mitre_privilege_escalation"],
     },
@@ -84,15 +83,17 @@ def parse_falco_alerts(alert_file):
                 continue
             try:
                 alert = json.loads(line)
-                alerts.append({
-                    "time": alert.get("time", ""),
-                    "rule": alert.get("rule", ""),
-                    "priority": alert.get("priority", ""),
-                    "output": alert.get("output", ""),
-                    "output_fields": alert.get("output_fields", {}),
-                    "source": alert.get("source", ""),
-                    "tags": alert.get("tags", []),
-                })
+                alerts.append(
+                    {
+                        "time": alert.get("time", ""),
+                        "rule": alert.get("rule", ""),
+                        "priority": alert.get("priority", ""),
+                        "output": alert.get("output", ""),
+                        "output_fields": alert.get("output_fields", {}),
+                        "source": alert.get("source", ""),
+                        "tags": alert.get("tags", []),
+                    }
+                )
             except json.JSONDecodeError:
                 continue
     return alerts
@@ -121,8 +122,10 @@ def check_falco_health(falco_url=None):
     """Check Falco health via HTTP endpoint."""
     try:
         resp = requests.get(f"{falco_url}/healthz", timeout=5)
-        return {"status": "healthy" if resp.status_code == 200 else "unhealthy",
-                "code": resp.status_code}
+        return {
+            "status": "healthy" if resp.status_code == 200 else "unhealthy",
+            "code": resp.status_code,
+        }
     except requests.RequestException as e:
         return {"status": "unreachable", "error": str(e)}
 
@@ -157,11 +160,15 @@ def main():
     parser = argparse.ArgumentParser(description="Falco Cloud Native Forensics Agent")
     parser.add_argument("--alert-file", help="Path to Falco JSON alert log")
     parser.add_argument("--rules-output", default="custom_falco_rules.yaml")
-    parser.add_argument("--falco-url", default=os.environ.get("FALCO_URL", "http://localhost:8765"))
+    parser.add_argument(
+        "--falco-url", default=os.environ.get("FALCO_URL", "http://localhost:8765")
+    )
     parser.add_argument("--output", default="falco_report.json")
-    parser.add_argument("--action", choices=[
-        "generate_rules", "parse_alerts", "health", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=["generate_rules", "parse_alerts", "health", "full_analysis"],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat(), "findings": {}}

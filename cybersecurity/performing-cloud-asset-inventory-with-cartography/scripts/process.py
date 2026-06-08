@@ -26,7 +26,7 @@ SECURITY_QUERIES = {
             WHERE b.anonymous_access = true
             RETURN b.name AS bucket, b.region AS region, b.arn AS arn
             ORDER BY b.name
-        """
+        """,
     },
     "admin_iam_users": {
         "description": "IAM users with administrator access",
@@ -35,7 +35,7 @@ SECURITY_QUERIES = {
             MATCH (user:AWSUser)-[:POLICY]->(policy:AWSPolicy)
             WHERE policy.name = 'AdministratorAccess'
             RETURN user.name AS username, user.arn AS arn, policy.name AS policy
-        """
+        """,
     },
     "public_ec2_ssh": {
         "description": "EC2 instances with SSH exposed to internet",
@@ -47,7 +47,7 @@ SECURITY_QUERIES = {
               AND '0.0.0.0/0' IN rule.ipranges
             RETURN i.instanceid AS instance, i.publicipaddress AS public_ip,
                    sg.name AS security_group
-        """
+        """,
     },
     "cross_account_trusts": {
         "description": "Cross-account IAM trust relationships",
@@ -58,7 +58,7 @@ SECURITY_QUERIES = {
               AND NOT p.arn CONTAINS role.accountid
             RETURN role.name AS role, role.arn AS role_arn,
                    p.arn AS trusted_principal
-        """
+        """,
     },
     "unencrypted_rds": {
         "description": "RDS instances without encryption",
@@ -68,7 +68,7 @@ SECURITY_QUERIES = {
             WHERE rds.storage_encrypted = false
             RETURN rds.db_instance_identifier AS database,
                    rds.engine AS engine, rds.region AS region
-        """
+        """,
     },
     "unused_iam_roles": {
         "description": "IAM roles unused for 90+ days",
@@ -78,7 +78,7 @@ SECURITY_QUERIES = {
             WHERE role.last_used IS NULL
             RETURN role.name AS role, role.arn AS arn
             LIMIT 50
-        """
+        """,
     },
     "lambda_admin_roles": {
         "description": "Lambda functions with admin permissions",
@@ -87,8 +87,8 @@ SECURITY_QUERIES = {
             MATCH (f:AWSLambda)-[:STS_ASSUME_ROLE_ALLOWS]->(r:AWSRole)-[:POLICY]->(p:AWSPolicy)
             WHERE p.name = 'AdministratorAccess'
             RETURN f.name AS function_name, r.name AS role, p.name AS policy
-        """
-    }
+        """,
+    },
 }
 
 
@@ -99,7 +99,9 @@ def run_security_audit(uri, user, password):
 
     with driver.session() as session:
         for check_name, check_config in SECURITY_QUERIES.items():
-            print(f"\n[*] Running: {check_config['description']} [{check_config['severity']}]")
+            print(
+                f"\n[*] Running: {check_config['description']} [{check_config['severity']}]"
+            )
             try:
                 result = session.run(check_config["query"])
                 records = [dict(record) for record in result]
@@ -107,7 +109,7 @@ def run_security_audit(uri, user, password):
                     "description": check_config["description"],
                     "severity": check_config["severity"],
                     "findings": records,
-                    "count": len(records)
+                    "count": len(records),
                 }
                 if records:
                     print(f"  [!] Found {len(records)} issues")
@@ -132,12 +134,18 @@ def generate_report(results, output_file=None):
         "=" * 60,
         "Cartography Cloud Asset Security Audit",
         f"Generated: {timestamp}",
-        "=" * 60
+        "=" * 60,
     ]
 
-    total_findings = sum(r.get("count", 0) for r in results.values() if "error" not in r)
-    critical = sum(r.get("count", 0) for r in results.values() if r.get("severity") == "CRITICAL")
-    high = sum(r.get("count", 0) for r in results.values() if r.get("severity") == "HIGH")
+    total_findings = sum(
+        r.get("count", 0) for r in results.values() if "error" not in r
+    )
+    critical = sum(
+        r.get("count", 0) for r in results.values() if r.get("severity") == "CRITICAL"
+    )
+    high = sum(
+        r.get("count", 0) for r in results.values() if r.get("severity") == "HIGH"
+    )
 
     lines.append(f"\nTotal Findings: {total_findings}")
     lines.append(f"Critical: {critical} | High: {high}")
@@ -162,6 +170,7 @@ def generate_report(results, output_file=None):
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser(description="Cartography Security Audit")
     parser.add_argument("--neo4j-uri", default="bolt://localhost:7687")
     parser.add_argument("--neo4j-user", default="neo4j")

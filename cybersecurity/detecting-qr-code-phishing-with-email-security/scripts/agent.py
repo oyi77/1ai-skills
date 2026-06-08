@@ -13,6 +13,7 @@ from urllib.parse import urlparse
 try:
     from PIL import Image
     from pyzbar.pyzbar import decode as qr_decode
+
     HAS_QR = True
 except ImportError:
     HAS_QR = False
@@ -24,14 +25,38 @@ except ImportError:
 
 
 SUSPICIOUS_TLDS = {
-    ".xyz", ".top", ".club", ".work", ".buzz", ".tk", ".ml", ".ga", ".cf",
-    ".gq", ".info", ".online", ".site", ".icu",
+    ".xyz",
+    ".top",
+    ".club",
+    ".work",
+    ".buzz",
+    ".tk",
+    ".ml",
+    ".ga",
+    ".cf",
+    ".gq",
+    ".info",
+    ".online",
+    ".site",
+    ".icu",
 }
 
 PHISHING_KEYWORDS = [
-    "verify", "account", "suspended", "confirm", "urgent", "expire",
-    "password", "login", "credential", "security", "update", "click",
-    "immediate", "unauthorized", "invoice",
+    "verify",
+    "account",
+    "suspended",
+    "confirm",
+    "urgent",
+    "expire",
+    "password",
+    "login",
+    "credential",
+    "security",
+    "update",
+    "click",
+    "immediate",
+    "unauthorized",
+    "invoice",
 ]
 
 
@@ -47,7 +72,9 @@ def extract_images_from_eml(eml_path):
             if payload:
                 ext = content_type.split("/")[1].split(";")[0]
                 fname = part.get_filename() or f"inline_image.{ext}"
-                images.append({"filename": fname, "data": payload, "type": content_type})
+                images.append(
+                    {"filename": fname, "data": payload, "type": content_type}
+                )
     return images, msg
 
 
@@ -56,6 +83,7 @@ def decode_qr_from_bytes(image_data):
     if not HAS_QR:
         return []
     import io
+
     img = Image.open(io.BytesIO(image_data))
     results = qr_decode(img)
     return [r.data.decode("utf-8", errors="replace") for r in results]
@@ -118,7 +146,9 @@ def analyze_email(eml_path):
     subject_lower = results["subject"].lower()
     for kw in PHISHING_KEYWORDS:
         if kw in subject_lower:
-            results["phishing_indicators"].append(f"Phishing keyword in subject: '{kw}'")
+            results["phishing_indicators"].append(
+                f"Phishing keyword in subject: '{kw}'"
+            )
 
     all_urls = []
     for img_info in images:
@@ -174,7 +204,9 @@ def main():
     report = {
         "scan_time": datetime.now(timezone.utc).isoformat(),
         "files_scanned": len(results),
-        "qr_phishing_detected": sum(1 for r in results if r["risk_level"] in ("HIGH", "CRITICAL")),
+        "qr_phishing_detected": sum(
+            1 for r in results if r["risk_level"] in ("HIGH", "CRITICAL")
+        ),
         "results": results,
     }
 

@@ -72,7 +72,8 @@ class BurpTrafficAnalyzer:
                 is_base64 = req_elem.get("base64", "false") == "true"
                 request_data["request_body"] = (
                     base64.b64decode(req_elem.text).decode("utf-8", errors="replace")
-                    if is_base64 else req_elem.text
+                    if is_base64
+                    else req_elem.text
                 )
             else:
                 request_data["request_body"] = ""
@@ -83,7 +84,8 @@ class BurpTrafficAnalyzer:
                 is_base64 = resp_elem.get("base64", "false") == "true"
                 request_data["response_body"] = (
                     base64.b64decode(resp_elem.text).decode("utf-8", errors="replace")
-                    if is_base64 else resp_elem.text
+                    if is_base64
+                    else resp_elem.text
                 )
             else:
                 request_data["response_body"] = ""
@@ -94,20 +96,19 @@ class BurpTrafficAnalyzer:
 
     def analyze_cleartext_traffic(self) -> list:
         """Identify HTTP (non-HTTPS) traffic."""
-        cleartext = [
-            r for r in self.requests
-            if r["protocol"].lower() == "http"
-        ]
+        cleartext = [r for r in self.requests if r["protocol"].lower() == "http"]
 
         if cleartext:
-            self.findings.append({
-                "type": "cleartext_traffic",
-                "severity": "HIGH",
-                "owasp_mobile": "M5",
-                "count": len(cleartext),
-                "urls": list(set(r["url"] for r in cleartext))[:10],
-                "description": f"{len(cleartext)} requests sent over unencrypted HTTP",
-            })
+            self.findings.append(
+                {
+                    "type": "cleartext_traffic",
+                    "severity": "HIGH",
+                    "owasp_mobile": "M5",
+                    "count": len(cleartext),
+                    "urls": list(set(r["url"] for r in cleartext))[:10],
+                    "description": f"{len(cleartext)} requests sent over unencrypted HTTP",
+                }
+            )
         return cleartext
 
     def analyze_sensitive_data(self) -> list:
@@ -119,22 +120,26 @@ class BurpTrafficAnalyzer:
             for pattern_name, pattern_regex in self.SENSITIVE_PATTERNS.items():
                 matches = re.findall(pattern_regex, combined_text)
                 if matches:
-                    sensitive_findings.append({
-                        "url": req["url"],
-                        "pattern": pattern_name,
-                        "match_count": len(matches),
-                        "sample": matches[0][:20] + "..." if matches else "",
-                    })
+                    sensitive_findings.append(
+                        {
+                            "url": req["url"],
+                            "pattern": pattern_name,
+                            "match_count": len(matches),
+                            "sample": matches[0][:20] + "..." if matches else "",
+                        }
+                    )
 
         if sensitive_findings:
-            self.findings.append({
-                "type": "sensitive_data_exposure",
-                "severity": "HIGH",
-                "owasp_mobile": "M9",
-                "count": len(sensitive_findings),
-                "details": sensitive_findings[:20],
-                "description": f"Sensitive data patterns found in {len(sensitive_findings)} request/response pairs",
-            })
+            self.findings.append(
+                {
+                    "type": "sensitive_data_exposure",
+                    "severity": "HIGH",
+                    "owasp_mobile": "M9",
+                    "count": len(sensitive_findings),
+                    "details": sensitive_findings[:20],
+                    "description": f"Sensitive data patterns found in {len(sensitive_findings)} request/response pairs",
+                }
+            )
         return sensitive_findings
 
     def analyze_security_headers(self) -> dict:
@@ -153,14 +158,16 @@ class BurpTrafficAnalyzer:
         missing = [h for h, count in header_coverage.items() if count == 0]
 
         if missing:
-            self.findings.append({
-                "type": "missing_security_headers",
-                "severity": "MEDIUM",
-                "owasp_mobile": "M8",
-                "missing_headers": missing,
-                "total_responses": total_responses,
-                "description": f"Missing security headers: {', '.join(missing)}",
-            })
+            self.findings.append(
+                {
+                    "type": "missing_security_headers",
+                    "severity": "MEDIUM",
+                    "owasp_mobile": "M8",
+                    "missing_headers": missing,
+                    "total_responses": total_responses,
+                    "description": f"Missing security headers: {', '.join(missing)}",
+                }
+            )
         return header_coverage
 
     def analyze_authentication(self) -> list:
@@ -174,32 +181,42 @@ class BurpTrafficAnalyzer:
             parsed = urlparse(req["url"])
             params = parse_qs(parsed.query)
             sensitive_params = [
-                k for k in params
-                if any(s in k.lower() for s in ["password", "token", "key", "secret", "auth"])
+                k
+                for k in params
+                if any(
+                    s in k.lower()
+                    for s in ["password", "token", "key", "secret", "auth"]
+                )
             ]
             if sensitive_params:
-                auth_findings.append({
-                    "url": req["url"],
-                    "issue": "credentials_in_url",
-                    "parameters": sensitive_params,
-                })
+                auth_findings.append(
+                    {
+                        "url": req["url"],
+                        "issue": "credentials_in_url",
+                        "parameters": sensitive_params,
+                    }
+                )
 
             # Check for basic auth
             if "Authorization: Basic" in body:
-                auth_findings.append({
-                    "url": req["url"],
-                    "issue": "basic_auth_used",
-                })
+                auth_findings.append(
+                    {
+                        "url": req["url"],
+                        "issue": "basic_auth_used",
+                    }
+                )
 
         if auth_findings:
-            self.findings.append({
-                "type": "authentication_issues",
-                "severity": "HIGH",
-                "owasp_mobile": "M1",
-                "count": len(auth_findings),
-                "details": auth_findings[:10],
-                "description": f"{len(auth_findings)} authentication-related issues found",
-            })
+            self.findings.append(
+                {
+                    "type": "authentication_issues",
+                    "severity": "HIGH",
+                    "owasp_mobile": "M1",
+                    "count": len(auth_findings),
+                    "details": auth_findings[:10],
+                    "description": f"{len(auth_findings)} authentication-related issues found",
+                }
+            )
         return auth_findings
 
     def analyze_api_surface(self) -> dict:
@@ -246,8 +263,12 @@ def main():
     parser = argparse.ArgumentParser(
         description="Analyze Burp Suite XML exports for mobile security findings"
     )
-    parser.add_argument("--burp-xml", required=True, help="Path to Burp Suite XML export")
-    parser.add_argument("--output", default="traffic_analysis.json", help="Output report path")
+    parser.add_argument(
+        "--burp-xml", required=True, help="Path to Burp Suite XML export"
+    )
+    parser.add_argument(
+        "--output", default="traffic_analysis.json", help="Output report path"
+    )
     args = parser.parse_args()
 
     if not Path(args.burp_xml).exists():

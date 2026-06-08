@@ -44,7 +44,9 @@ class ForensicLogAnalyzer:
                     if event_id not in target_ids:
                         continue
                     time_elem = root.find(".//ns:TimeCreated", ns)
-                    timestamp = time_elem.get("SystemTime") if time_elem is not None else ""
+                    timestamp = (
+                        time_elem.get("SystemTime") if time_elem is not None else ""
+                    )
                     data_fields = {}
                     for data in root.findall(".//ns:Data", ns):
                         name = data.get("Name", "")
@@ -110,22 +112,30 @@ class ForensicLogAnalyzer:
     def detect_attack_patterns(self, web_events):
         """Detect common web attack patterns in access logs."""
         patterns = {
-            "sql_injection": re.compile(r"(union.*select|or\s+1\s*=\s*1|drop\s+table)", re.I),
+            "sql_injection": re.compile(
+                r"(union.*select|or\s+1\s*=\s*1|drop\s+table)", re.I
+            ),
             "xss": re.compile(r"(<script|javascript:|onerror=|onload=)", re.I),
-            "path_traversal": re.compile(r"(\.\./|\.\.\\|/etc/passwd|/etc/shadow)", re.I),
-            "command_injection": re.compile(r"(;\s*(ls|cat|wget|curl|nc)\b|`|\$\()", re.I),
+            "path_traversal": re.compile(
+                r"(\.\./|\.\.\\|/etc/passwd|/etc/shadow)", re.I
+            ),
+            "command_injection": re.compile(
+                r"(;\s*(ls|cat|wget|curl|nc)\b|`|\$\()", re.I
+            ),
         }
         findings = defaultdict(list)
         for event in web_events:
             request = event.get("request", "")
             for attack_type, pattern in patterns.items():
                 if pattern.search(request):
-                    findings[attack_type].append({
-                        "timestamp": event["timestamp"],
-                        "client_ip": event.get("client_ip", ""),
-                        "request": request[:200],
-                        "status": event.get("status", ""),
-                    })
+                    findings[attack_type].append(
+                        {
+                            "timestamp": event["timestamp"],
+                            "client_ip": event.get("client_ip", ""),
+                            "request": request[:200],
+                            "status": event.get("status", ""),
+                        }
+                    )
         return dict(findings)
 
     def detect_brute_force(self):
@@ -139,18 +149,18 @@ class ForensicLogAnalyzer:
                 failed_by_source[src]["users"].add(user)
 
         return [
-            {"source_ip": src, "failed_attempts": data["count"],
-             "targeted_users": sorted(data["users"])}
+            {
+                "source_ip": src,
+                "failed_attempts": data["count"],
+                "targeted_users": sorted(data["users"]),
+            }
             for src, data in failed_by_source.items()
             if data["count"] > 5
         ]
 
     def detect_log_clearing(self):
         """Detect audit log clearing events (anti-forensics)."""
-        return [
-            event for event in self.events
-            if event.get("event_id") == "1102"
-        ]
+        return [event for event in self.events if event.get("event_id") == "1102"]
 
     def build_correlated_timeline(self):
         """Build a unified correlated timeline from all log sources."""
@@ -199,7 +209,9 @@ class ForensicLogAnalyzer:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: agent.py <case_id> <output_dir> [evtx_file] [syslog_file] [access_log]")
+        print(
+            "Usage: agent.py <case_id> <output_dir> [evtx_file] [syslog_file] [access_log]"
+        )
         sys.exit(1)
 
     case_id = sys.argv[1]

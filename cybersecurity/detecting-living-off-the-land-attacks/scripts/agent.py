@@ -17,6 +17,7 @@ from datetime import datetime
 
 try:
     import Evtx.Evtx as evtx
+
     HAS_EVTX = True
 except ImportError:
     HAS_EVTX = False
@@ -186,19 +187,41 @@ LOLBIN_SIGNATURES = {
 # Suspicious parent-child process relationships
 PARENT_CHILD_RULES = [
     {
-        "parents": ["winword.exe", "excel.exe", "powerpnt.exe", "outlook.exe",
-                     "msaccess.exe", "mspub.exe", "visio.exe", "onenote.exe"],
-        "children": ["cmd.exe", "powershell.exe", "pwsh.exe", "mshta.exe",
-                      "wscript.exe", "cscript.exe", "certutil.exe", "regsvr32.exe",
-                      "rundll32.exe", "bitsadmin.exe"],
+        "parents": [
+            "winword.exe",
+            "excel.exe",
+            "powerpnt.exe",
+            "outlook.exe",
+            "msaccess.exe",
+            "mspub.exe",
+            "visio.exe",
+            "onenote.exe",
+        ],
+        "children": [
+            "cmd.exe",
+            "powershell.exe",
+            "pwsh.exe",
+            "mshta.exe",
+            "wscript.exe",
+            "cscript.exe",
+            "certutil.exe",
+            "regsvr32.exe",
+            "rundll32.exe",
+            "bitsadmin.exe",
+        ],
         "severity": "critical",
         "mitre": "T1204.002",
         "description": "Office application spawned command interpreter or LOLBin",
     },
     {
         "parents": ["wmiprvse.exe"],
-        "children": ["cmd.exe", "powershell.exe", "pwsh.exe", "mshta.exe",
-                      "rundll32.exe"],
+        "children": [
+            "cmd.exe",
+            "powershell.exe",
+            "pwsh.exe",
+            "mshta.exe",
+            "rundll32.exe",
+        ],
         "severity": "critical",
         "mitre": "T1047",
         "description": "WMI Provider Host spawned process (possible remote WMI execution)",
@@ -212,16 +235,28 @@ PARENT_CHILD_RULES = [
     },
     {
         "parents": ["explorer.exe"],
-        "children": ["mshta.exe", "regsvr32.exe", "msbuild.exe", "installutil.exe",
-                      "cmstp.exe", "mavinject.exe"],
+        "children": [
+            "mshta.exe",
+            "regsvr32.exe",
+            "msbuild.exe",
+            "installutil.exe",
+            "cmstp.exe",
+            "mavinject.exe",
+        ],
         "severity": "high",
         "mitre": "T1218",
         "description": "Explorer spawned proxy execution binary",
     },
     {
         "parents": ["taskeng.exe", "taskhostw.exe"],
-        "children": ["cmd.exe", "powershell.exe", "mshta.exe", "certutil.exe",
-                      "wscript.exe", "cscript.exe"],
+        "children": [
+            "cmd.exe",
+            "powershell.exe",
+            "mshta.exe",
+            "certutil.exe",
+            "wscript.exe",
+            "cscript.exe",
+        ],
         "severity": "high",
         "mitre": "T1053.005",
         "description": "Scheduled task spawned suspicious process",
@@ -230,9 +265,18 @@ PARENT_CHILD_RULES = [
 
 # LOLBins that should not make outbound network connections
 NETWORK_SUSPICIOUS_LOLBINS = {
-    "certutil.exe", "mshta.exe", "rundll32.exe", "regsvr32.exe",
-    "msbuild.exe", "installutil.exe", "bitsadmin.exe", "esentutl.exe",
-    "expand.exe", "replace.exe", "cmstp.exe", "presentationhost.exe",
+    "certutil.exe",
+    "mshta.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+    "msbuild.exe",
+    "installutil.exe",
+    "bitsadmin.exe",
+    "esentutl.exe",
+    "expand.exe",
+    "replace.exe",
+    "cmstp.exe",
+    "presentationhost.exe",
     "mavinject.exe",
 }
 
@@ -328,22 +372,35 @@ def detect_lolbin_abuse(process_events):
             if binary_name == lolbin.lower():
                 for pattern in config["patterns"]:
                     if re.search(pattern, cmdline, re.IGNORECASE):
-                        alerts.append({
-                            "type": "lolbin_suspicious_cmdline",
-                            "severity": config["severity"],
-                            "lolbin": lolbin,
-                            "description": config["description"],
-                            "mitre": config["mitre"],
-                            "command_line": cmdline[:500],
-                            "image": event.get("Image", event.get("image", "")),
-                            "parent_image": event.get("ParentImage", event.get("parent_image", "")),
-                            "user": event.get("User", event.get("user", "")),
-                            "hostname": event.get("Computer", event.get("hostname", "")),
-                            "timestamp": event.get("UtcTime", event.get("timestamp", "")),
-                            "pid": event.get("ProcessId", event.get("process_id", "")),
-                            "ppid": event.get("ParentProcessId", event.get("parent_process_id", "")),
-                            "matched_pattern": pattern,
-                        })
+                        alerts.append(
+                            {
+                                "type": "lolbin_suspicious_cmdline",
+                                "severity": config["severity"],
+                                "lolbin": lolbin,
+                                "description": config["description"],
+                                "mitre": config["mitre"],
+                                "command_line": cmdline[:500],
+                                "image": event.get("Image", event.get("image", "")),
+                                "parent_image": event.get(
+                                    "ParentImage", event.get("parent_image", "")
+                                ),
+                                "user": event.get("User", event.get("user", "")),
+                                "hostname": event.get(
+                                    "Computer", event.get("hostname", "")
+                                ),
+                                "timestamp": event.get(
+                                    "UtcTime", event.get("timestamp", "")
+                                ),
+                                "pid": event.get(
+                                    "ProcessId", event.get("process_id", "")
+                                ),
+                                "ppid": event.get(
+                                    "ParentProcessId",
+                                    event.get("parent_process_id", ""),
+                                ),
+                                "matched_pattern": pattern,
+                            }
+                        )
                         break
     return alerts
 
@@ -354,23 +411,29 @@ def detect_parent_child_anomalies(process_events):
     for event in process_events:
         parent = event.get("ParentImage", event.get("parent_image", "")).lower()
         child = event.get("Image", event.get("image", "")).lower()
-        parent_name = parent.split("\\")[-1] if "\\" in parent else parent.split("/")[-1]
+        parent_name = (
+            parent.split("\\")[-1] if "\\" in parent else parent.split("/")[-1]
+        )
         child_name = child.split("\\")[-1] if "\\" in child else child.split("/")[-1]
 
         for rule in PARENT_CHILD_RULES:
             if parent_name in rule["parents"] and child_name in rule["children"]:
-                alerts.append({
-                    "type": "suspicious_parent_child",
-                    "severity": rule["severity"],
-                    "mitre": rule["mitre"],
-                    "description": rule["description"],
-                    "parent_process": parent,
-                    "child_process": child,
-                    "command_line": event.get("CommandLine", event.get("command_line", ""))[:500],
-                    "user": event.get("User", event.get("user", "")),
-                    "hostname": event.get("Computer", event.get("hostname", "")),
-                    "timestamp": event.get("UtcTime", event.get("timestamp", "")),
-                })
+                alerts.append(
+                    {
+                        "type": "suspicious_parent_child",
+                        "severity": rule["severity"],
+                        "mitre": rule["mitre"],
+                        "description": rule["description"],
+                        "parent_process": parent,
+                        "child_process": child,
+                        "command_line": event.get(
+                            "CommandLine", event.get("command_line", "")
+                        )[:500],
+                        "user": event.get("User", event.get("user", "")),
+                        "hostname": event.get("Computer", event.get("hostname", "")),
+                        "timestamp": event.get("UtcTime", event.get("timestamp", "")),
+                    }
+                )
                 break
     return alerts
 
@@ -386,19 +449,25 @@ def detect_lolbin_network(network_events):
             dest_ip = event.get("DestinationIp", event.get("destination_ip", ""))
             if dest_ip.startswith("127.") or dest_ip == "::1":
                 continue
-            alerts.append({
-                "type": "lolbin_network_connection",
-                "severity": "critical",
-                "binary": binary_name,
-                "image": event.get("Image", event.get("image", "")),
-                "destination_ip": dest_ip,
-                "destination_port": event.get("DestinationPort", event.get("destination_port", "")),
-                "destination_hostname": event.get("DestinationHostname", event.get("destination_hostname", "")),
-                "source_ip": event.get("SourceIp", event.get("source_ip", "")),
-                "user": event.get("User", event.get("user", "")),
-                "hostname": event.get("Computer", event.get("hostname", "")),
-                "timestamp": event.get("UtcTime", event.get("timestamp", "")),
-            })
+            alerts.append(
+                {
+                    "type": "lolbin_network_connection",
+                    "severity": "critical",
+                    "binary": binary_name,
+                    "image": event.get("Image", event.get("image", "")),
+                    "destination_ip": dest_ip,
+                    "destination_port": event.get(
+                        "DestinationPort", event.get("destination_port", "")
+                    ),
+                    "destination_hostname": event.get(
+                        "DestinationHostname", event.get("destination_hostname", "")
+                    ),
+                    "source_ip": event.get("SourceIp", event.get("source_ip", "")),
+                    "user": event.get("User", event.get("user", "")),
+                    "hostname": event.get("Computer", event.get("hostname", "")),
+                    "timestamp": event.get("UtcTime", event.get("timestamp", "")),
+                }
+            )
     return alerts
 
 
@@ -444,10 +513,14 @@ if __name__ == "__main__":
     if not input_path or not os.path.exists(input_path):
         print(f"\n[DEMO] Usage: python agent.py <sysmon_events.evtx|json|jsonl>")
         print("[*] Provide Sysmon event logs (EVTX or JSON) for LOLBin analysis.")
-        print(f"[*] Monitors {len(LOLBIN_SIGNATURES)} LOLBins with "
-              f"{sum(len(v['patterns']) for v in LOLBIN_SIGNATURES.values())} detection patterns")
+        print(
+            f"[*] Monitors {len(LOLBIN_SIGNATURES)} LOLBins with "
+            f"{sum(len(v['patterns']) for v in LOLBIN_SIGNATURES.values())} detection patterns"
+        )
         print(f"[*] {len(PARENT_CHILD_RULES)} parent-child anomaly rules")
-        print(f"[*] {len(NETWORK_SUSPICIOUS_LOLBINS)} LOLBins monitored for network activity")
+        print(
+            f"[*] {len(NETWORK_SUSPICIOUS_LOLBINS)} LOLBins monitored for network activity"
+        )
         sys.exit(0)
 
     print(f"\n[*] Loading events from: {input_path}")
@@ -462,7 +535,9 @@ if __name__ == "__main__":
     print(f"  Suspicious LOLBin executions: {len(cmdline_alerts)}")
     for a in cmdline_alerts[:15]:
         print(f"  [{a['severity'].upper()}] {a['lolbin']} on {a.get('hostname', '?')}")
-        print(f"    MITRE: {', '.join(a['mitre']) if isinstance(a['mitre'], list) else a['mitre']}")
+        print(
+            f"    MITRE: {', '.join(a['mitre']) if isinstance(a['mitre'], list) else a['mitre']}"
+        )
         print(f"    Cmd: {a['command_line'][:120]}")
         print(f"    Parent: {a['parent_image']}")
         print(f"    User: {a['user']}")
@@ -481,8 +556,10 @@ if __name__ == "__main__":
     net_alerts = detect_lolbin_network(network_events)
     print(f"  LOLBin network connections: {len(net_alerts)}")
     for a in net_alerts[:15]:
-        print(f"  [CRITICAL] {a['binary']} -> {a['destination_ip']}:{a['destination_port']}"
-              f" ({a.get('destination_hostname', 'N/A')})")
+        print(
+            f"  [CRITICAL] {a['binary']} -> {a['destination_ip']}:{a['destination_port']}"
+            f" ({a.get('destination_hostname', 'N/A')})"
+        )
     all_alerts.extend(net_alerts)
 
     stats = generate_statistics(process_events, all_alerts)
@@ -493,9 +570,13 @@ if __name__ == "__main__":
         print(f"  {sev.upper()}: {count}")
     if stats["mitre_technique_counts"]:
         print("\nMITRE ATT&CK techniques triggered:")
-        for tech, count in sorted(stats["mitre_technique_counts"].items(), key=lambda x: -x[1]):
+        for tech, count in sorted(
+            stats["mitre_technique_counts"].items(), key=lambda x: -x[1]
+        ):
             print(f"  {tech}: {count}")
     if stats["lolbin_execution_counts"]:
         print("\nLOLBin execution counts:")
-        for binary, count in sorted(stats["lolbin_execution_counts"].items(), key=lambda x: -x[1])[:20]:
+        for binary, count in sorted(
+            stats["lolbin_execution_counts"].items(), key=lambda x: -x[1]
+        )[:20]:
             print(f"  {binary}: {count}")

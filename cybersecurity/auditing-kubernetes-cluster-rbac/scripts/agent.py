@@ -30,12 +30,14 @@ def list_cluster_roles_with_wildcards():
             verbs = rule.verbs or []
             resources = rule.resources or []
             if "*" in verbs or "*" in resources:
-                risky.append({
-                    "name": role.metadata.name,
-                    "verbs": verbs,
-                    "resources": resources,
-                    "api_groups": rule.api_groups or [],
-                })
+                risky.append(
+                    {
+                        "name": role.metadata.name,
+                        "verbs": verbs,
+                        "resources": resources,
+                        "api_groups": rule.api_groups or [],
+                    }
+                )
     return risky
 
 
@@ -48,14 +50,17 @@ def list_secret_access_roles():
         for rule in role.rules or []:
             resources = rule.resources or []
             verbs = rule.verbs or []
-            if ("secrets" in resources or "*" in resources) and \
-               ("get" in verbs or "list" in verbs or "*" in verbs):
+            if ("secrets" in resources or "*" in resources) and (
+                "get" in verbs or "list" in verbs or "*" in verbs
+            ):
                 if not role.metadata.name.startswith("system:"):
-                    results.append({
-                        "role": role.metadata.name,
-                        "verbs": verbs,
-                        "resources": resources,
-                    })
+                    results.append(
+                        {
+                            "role": role.metadata.name,
+                            "verbs": verbs,
+                            "resources": resources,
+                        }
+                    )
     return results
 
 
@@ -68,15 +73,19 @@ def list_cluster_admin_bindings():
         if binding.role_ref.name == "cluster-admin":
             subjects = []
             for s in binding.subjects or []:
-                subjects.append({
-                    "kind": s.kind,
-                    "name": s.name,
-                    "namespace": s.namespace or "cluster-wide",
-                })
-            results.append({
-                "binding": binding.metadata.name,
-                "subjects": subjects,
-            })
+                subjects.append(
+                    {
+                        "kind": s.kind,
+                        "name": s.name,
+                        "namespace": s.namespace or "cluster-wide",
+                    }
+                )
+            results.append(
+                {
+                    "binding": binding.metadata.name,
+                    "subjects": subjects,
+                }
+            )
     return results
 
 
@@ -88,11 +97,13 @@ def find_dangerous_bindings():
     for binding in bindings.items:
         for s in binding.subjects or []:
             if s.name in ("system:authenticated", "system:unauthenticated"):
-                dangerous.append({
-                    "binding": binding.metadata.name,
-                    "role": binding.role_ref.name,
-                    "subject": s.name,
-                })
+                dangerous.append(
+                    {
+                        "binding": binding.metadata.name,
+                        "role": binding.role_ref.name,
+                        "subject": s.name,
+                    }
+                )
     return dangerous
 
 
@@ -106,12 +117,14 @@ def audit_service_account_tokens():
         sa = spec.service_account_name or "default"
         automount = spec.automount_service_account_token
         if automount is not False and sa != "default":
-            risky_pods.append({
-                "namespace": pod.metadata.namespace,
-                "pod": pod.metadata.name,
-                "service_account": sa,
-                "automount": True,
-            })
+            risky_pods.append(
+                {
+                    "namespace": pod.metadata.namespace,
+                    "pod": pod.metadata.name,
+                    "service_account": sa,
+                    "automount": True,
+                }
+            )
     return risky_pods
 
 
@@ -127,13 +140,15 @@ def find_privileged_containers():
                 is_privileged = getattr(sc, "privileged", False)
                 run_as_root = getattr(sc, "run_as_user", None) == 0
                 if is_privileged or run_as_root:
-                    privileged.append({
-                        "namespace": pod.metadata.namespace,
-                        "pod": pod.metadata.name,
-                        "container": container.name,
-                        "privileged": is_privileged,
-                        "run_as_root": run_as_root,
-                    })
+                    privileged.append(
+                        {
+                            "namespace": pod.metadata.namespace,
+                            "pod": pod.metadata.name,
+                            "container": container.name,
+                            "privileged": is_privileged,
+                            "run_as_root": run_as_root,
+                        }
+                    )
     return privileged
 
 
@@ -142,10 +157,19 @@ def main():
     parser.add_argument("--kubeconfig", default=os.getenv("KUBECONFIG"))
     parser.add_argument("--context", help="Kubernetes context to use")
     parser.add_argument("--output", default="k8s_rbac_audit.json")
-    parser.add_argument("--action", choices=[
-        "wildcards", "secrets", "cluster_admin", "dangerous",
-        "tokens", "privileged", "full_audit"
-    ], default="full_audit")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "wildcards",
+            "secrets",
+            "cluster_admin",
+            "dangerous",
+            "tokens",
+            "privileged",
+            "full_audit",
+        ],
+        default="full_audit",
+    )
     args = parser.parse_args()
 
     load_kube_config(args.kubeconfig, args.context)

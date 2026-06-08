@@ -3,7 +3,6 @@
 
 import datetime
 
-
 KILL_CHAIN_PHASES = {
     1: {
         "name": "Reconnaissance",
@@ -144,13 +143,37 @@ def map_event_to_phase(event_description):
     keyword_phase_map = {
         1: ["recon", "scan", "enumerat", "shodan", "whois", "dns lookup"],
         2: ["weaponiz", "builder", "compile", "payload creat"],
-        3: ["phish", "email", "deliver", "download", "usb", "attachment", "watering hole"],
+        3: [
+            "phish",
+            "email",
+            "deliver",
+            "download",
+            "usb",
+            "attachment",
+            "watering hole",
+        ],
         4: ["exploit", "cve-", "buffer overflow", "shellcode", "rce"],
-        5: ["persist", "scheduled task", "registry", "run key", "service install",
-            "web shell", "backdoor", "startup"],
+        5: [
+            "persist",
+            "scheduled task",
+            "registry",
+            "run key",
+            "service install",
+            "web shell",
+            "backdoor",
+            "startup",
+        ],
         6: ["beacon", "c2", "c&c", "command and control", "callback", "dns tunnel"],
-        7: ["exfiltrat", "lateral", "ransomware", "encrypt", "data stag", "credential dump",
-            "mimikatz", "wiper"],
+        7: [
+            "exfiltrat",
+            "lateral",
+            "ransomware",
+            "encrypt",
+            "data stag",
+            "credential dump",
+            "mimikatz",
+            "wiper",
+        ],
     }
     scores = {phase: 0 for phase in range(1, 8)}
     for phase, keywords in keyword_phase_map.items():
@@ -165,8 +188,10 @@ def map_event_to_phase(event_description):
 
 def analyze_incident(events):
     """Analyze a list of incident events and map to kill chain phases."""
-    analysis = {phase: {"events": [], "detected": False, "completed": False}
-                for phase in range(1, 8)}
+    analysis = {
+        phase: {"events": [], "detected": False, "completed": False}
+        for phase in range(1, 8)
+    }
     for event in events:
         phase = map_event_to_phase(event.get("description", ""))
         if phase:
@@ -200,13 +225,15 @@ def generate_report(analysis):
         report_lines.append(f"Phase {phase_num}: {phase_info['name']} -> {status}")
         for evt in phase_data["events"]:
             report_lines.append(f"  - {evt.get('description', 'N/A')}")
-    report_lines.extend([
-        "",
-        f"Deepest phase reached: {deepest_phase} ({KILL_CHAIN_PHASES.get(deepest_phase, {}).get('name', 'N/A')})",
-        f"First detection at phase: {detection_phase or 'None'}",
-        "",
-        "RECOMMENDED COURSES OF ACTION:",
-    ])
+    report_lines.extend(
+        [
+            "",
+            f"Deepest phase reached: {deepest_phase} ({KILL_CHAIN_PHASES.get(deepest_phase, {}).get('name', 'N/A')})",
+            f"First detection at phase: {detection_phase or 'None'}",
+            "",
+            "RECOMMENDED COURSES OF ACTION:",
+        ]
+    )
     for phase_num in range(1, deepest_phase + 1):
         phase_info = KILL_CHAIN_PHASES[phase_num]
         report_lines.append(f"\n  Phase {phase_num} - {phase_info['name']}:")
@@ -223,16 +250,31 @@ if __name__ == "__main__":
 
     # Demo incident events
     demo_events = [
-        {"description": "Shodan scans detected from 203.0.113.50 targeting web servers",
-         "timestamp": "2025-09-10T08:00:00Z", "detected": False},
-        {"description": "Phishing email with malicious .docm attachment delivered to 5 users",
-         "timestamp": "2025-09-11T09:15:00Z", "detected": False},
-        {"description": "CVE-2023-23397 exploitation detected in Outlook process crash",
-         "timestamp": "2025-09-11T09:20:00Z", "detected": False},
-        {"description": "Scheduled task created for persistence by malware dropper",
-         "timestamp": "2025-09-11T09:25:00Z", "detected": True},
-        {"description": "C2 beacon detected to 185.220.101.42 on port 443",
-         "timestamp": "2025-09-11T09:30:00Z", "detected": True},
+        {
+            "description": "Shodan scans detected from 203.0.113.50 targeting web servers",
+            "timestamp": "2025-09-10T08:00:00Z",
+            "detected": False,
+        },
+        {
+            "description": "Phishing email with malicious .docm attachment delivered to 5 users",
+            "timestamp": "2025-09-11T09:15:00Z",
+            "detected": False,
+        },
+        {
+            "description": "CVE-2023-23397 exploitation detected in Outlook process crash",
+            "timestamp": "2025-09-11T09:20:00Z",
+            "detected": False,
+        },
+        {
+            "description": "Scheduled task created for persistence by malware dropper",
+            "timestamp": "2025-09-11T09:25:00Z",
+            "detected": True,
+        },
+        {
+            "description": "C2 beacon detected to 185.220.101.42 on port 443",
+            "timestamp": "2025-09-11T09:30:00Z",
+            "detected": True,
+        },
     ]
 
     print("\n[*] Analyzing demo incident events...")

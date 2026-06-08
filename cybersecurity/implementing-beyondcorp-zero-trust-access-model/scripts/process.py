@@ -35,10 +35,9 @@ def audit_iap_enabled_services(project_id: str) -> list[dict[str, Any]]:
     """List all backend services with IAP enabled and their policy bindings."""
     print("\n[1/6] Auditing IAP-enabled backend services...")
 
-    backends = run_gcloud([
-        "compute", "backend-services", "list",
-        "--project", project_id
-    ])
+    backends = run_gcloud(
+        ["compute", "backend-services", "list", "--project", project_id]
+    )
     if not isinstance(backends, list):
         print("  No backend services found or unable to list.")
         return []
@@ -51,26 +50,38 @@ def audit_iap_enabled_services(project_id: str) -> list[dict[str, Any]]:
 
         if iap_enabled:
             # Get IAM policy for this backend service
-            policy = run_gcloud([
-                "iap", "web", "get-iam-policy",
-                "--resource-type=backend-services",
-                "--service", name,
-                "--project", project_id
-            ])
+            policy = run_gcloud(
+                [
+                    "iap",
+                    "web",
+                    "get-iam-policy",
+                    "--resource-type=backend-services",
+                    "--service",
+                    name,
+                    "--project",
+                    project_id,
+                ]
+            )
             bindings = policy.get("bindings", []) if isinstance(policy, dict) else []
 
-            iap_services.append({
-                "service_name": name,
-                "iap_enabled": True,
-                "oauth2_client_id": iap_config.get("oauth2ClientId", "N/A"),
-                "bindings_count": len(bindings),
-                "bindings": bindings,
-                "has_access_level_conditions": any(
-                    b.get("condition") for b in bindings
-                )
-            })
-            status = "WITH" if iap_services[-1]["has_access_level_conditions"] else "WITHOUT"
-            print(f"  [IAP ON]  {name} - {len(bindings)} bindings {status} access level conditions")
+            iap_services.append(
+                {
+                    "service_name": name,
+                    "iap_enabled": True,
+                    "oauth2_client_id": iap_config.get("oauth2ClientId", "N/A"),
+                    "bindings_count": len(bindings),
+                    "bindings": bindings,
+                    "has_access_level_conditions": any(
+                        b.get("condition") for b in bindings
+                    ),
+                }
+            )
+            status = (
+                "WITH" if iap_services[-1]["has_access_level_conditions"] else "WITHOUT"
+            )
+            print(
+                f"  [IAP ON]  {name} - {len(bindings)} bindings {status} access level conditions"
+            )
         else:
             print(f"  [IAP OFF] {name}")
 
@@ -81,10 +92,9 @@ def audit_access_levels(policy_id: str) -> list[dict[str, Any]]:
     """Enumerate and validate Access Context Manager access levels."""
     print("\n[2/6] Auditing Access Context Manager access levels...")
 
-    levels = run_gcloud([
-        "access-context-manager", "levels", "list",
-        "--policy", policy_id
-    ])
+    levels = run_gcloud(
+        ["access-context-manager", "levels", "list", "--policy", policy_id]
+    )
     if not isinstance(levels, list):
         print("  No access levels found or unable to list.")
         return []
@@ -126,9 +136,11 @@ def audit_access_levels(policy_id: str) -> list[dict[str, Any]]:
 
         access_levels.append(level_info)
         print(f"  [{level_info['type'].upper()}] {title} ({name})")
-        print(f"    Device policy: {level_info['has_device_policy']}, "
-              f"Encryption: {level_info['requires_encryption']}, "
-              f"Screen lock: {level_info['requires_screenlock']}")
+        print(
+            f"    Device policy: {level_info['has_device_policy']}, "
+            f"Encryption: {level_info['requires_encryption']}, "
+            f"Screen lock: {level_info['requires_screenlock']}"
+        )
 
     return access_levels
 
@@ -137,12 +149,11 @@ def audit_endpoint_verification(project_id: str) -> dict[str, Any]:
     """Check Endpoint Verification device enrollment and compliance."""
     print("\n[3/6] Auditing Endpoint Verification device compliance...")
 
-    devices = run_gcloud([
-        "alpha", "devices", "list",
-        "--format=json"
-    ])
+    devices = run_gcloud(["alpha", "devices", "list", "--format=json"])
     if not isinstance(devices, list):
-        print("  Unable to retrieve device inventory. Ensure Endpoint Verification is deployed.")
+        print(
+            "  Unable to retrieve device inventory. Ensure Endpoint Verification is deployed."
+        )
         return {"total": 0, "compliant": 0, "non_compliant": 0}
 
     stats = {
@@ -151,7 +162,7 @@ def audit_endpoint_verification(project_id: str) -> dict[str, Any]:
         "non_compliant": 0,
         "os_distribution": {},
         "encryption_status": {"encrypted": 0, "unencrypted": 0, "unknown": 0},
-        "non_compliant_devices": []
+        "non_compliant_devices": [],
     }
 
     for device in devices:
@@ -163,13 +174,17 @@ def audit_endpoint_verification(project_id: str) -> dict[str, Any]:
             stats["compliant"] += 1
         else:
             stats["non_compliant"] += 1
-            stats["non_compliant_devices"].append({
-                "device_id": device.get("name", "unknown"),
-                "os": os_type,
-                "compliance_state": compliance
-            })
+            stats["non_compliant_devices"].append(
+                {
+                    "device_id": device.get("name", "unknown"),
+                    "os": os_type,
+                    "compliance_state": compliance,
+                }
+            )
 
-    compliance_rate = (stats["compliant"] / stats["total"] * 100) if stats["total"] > 0 else 0
+    compliance_rate = (
+        (stats["compliant"] / stats["total"] * 100) if stats["total"] > 0 else 0
+    )
     print(f"  Total devices: {stats['total']}")
     print(f"  Compliant: {stats['compliant']} ({compliance_rate:.1f}%)")
     print(f"  Non-compliant: {stats['non_compliant']}")
@@ -189,11 +204,9 @@ def audit_iap_access_logs(project_id: str, hours: int = 24) -> dict[str, Any]:
         f'AND timestamp >= "{start_time}"'
     )
 
-    logs = run_gcloud([
-        "logging", "read", log_filter,
-        "--project", project_id,
-        "--limit=1000"
-    ])
+    logs = run_gcloud(
+        ["logging", "read", log_filter, "--project", project_id, "--limit=1000"]
+    )
     if not isinstance(logs, list):
         print("  No IAP access logs found or unable to query.")
         return {"total": 0, "allowed": 0, "denied": 0}
@@ -204,21 +217,29 @@ def audit_iap_access_logs(project_id: str, hours: int = 24) -> dict[str, Any]:
         "denied": 0,
         "denied_users": {},
         "denied_applications": {},
-        "top_accessed_apps": {}
+        "top_accessed_apps": {},
     }
 
     for entry in logs:
         payload = entry.get("jsonPayload", {})
         decision = payload.get("decision", "ALLOW")
         user = payload.get("authenticationInfo", {}).get("principalEmail", "unknown")
-        resource = entry.get("resource", {}).get("labels", {}).get("backend_service_name", "unknown")
+        resource = (
+            entry.get("resource", {})
+            .get("labels", {})
+            .get("backend_service_name", "unknown")
+        )
 
-        stats["top_accessed_apps"][resource] = stats["top_accessed_apps"].get(resource, 0) + 1
+        stats["top_accessed_apps"][resource] = (
+            stats["top_accessed_apps"].get(resource, 0) + 1
+        )
 
         if decision == "DENY":
             stats["denied"] += 1
             stats["denied_users"][user] = stats["denied_users"].get(user, 0) + 1
-            stats["denied_applications"][resource] = stats["denied_applications"].get(resource, 0) + 1
+            stats["denied_applications"][resource] = (
+                stats["denied_applications"].get(resource, 0) + 1
+            )
         else:
             stats["allowed"] += 1
 
@@ -227,7 +248,9 @@ def audit_iap_access_logs(project_id: str, hours: int = 24) -> dict[str, Any]:
     print(f"  Allowed: {stats['allowed']}")
     print(f"  Denied: {stats['denied']} ({denial_rate:.1f}%)")
     if stats["denied_users"]:
-        top_denied = sorted(stats["denied_users"].items(), key=lambda x: x[1], reverse=True)[:5]
+        top_denied = sorted(
+            stats["denied_users"].items(), key=lambda x: x[1], reverse=True
+        )[:5]
         print(f"  Top denied users: {top_denied}")
 
     return stats
@@ -237,10 +260,9 @@ def audit_session_policies(project_id: str) -> list[dict[str, Any]]:
     """Check IAP session duration and re-authentication settings."""
     print("\n[5/6] Auditing IAP session and re-authentication policies...")
 
-    backends = run_gcloud([
-        "compute", "backend-services", "list",
-        "--project", project_id
-    ])
+    backends = run_gcloud(
+        ["compute", "backend-services", "list", "--project", project_id]
+    )
     if not isinstance(backends, list):
         return []
 
@@ -251,24 +273,34 @@ def audit_session_policies(project_id: str) -> list[dict[str, Any]]:
             continue
 
         name = backend.get("name", "unknown")
-        settings = run_gcloud([
-            "iap", "settings", "get",
-            "--project", project_id,
-            "--resource-type=compute",
-            "--service", name
-        ])
+        settings = run_gcloud(
+            [
+                "iap",
+                "settings",
+                "get",
+                "--project",
+                project_id,
+                "--resource-type=compute",
+                "--service",
+                name,
+            ]
+        )
 
         if isinstance(settings, dict):
             access_settings = settings.get("accessSettings", {})
             reauth = access_settings.get("reauthSettings", {})
-            session_policies.append({
-                "service": name,
-                "max_session_duration": reauth.get("maxAge", "Not configured"),
-                "reauth_method": reauth.get("method", "Not configured"),
-                "policy_type": reauth.get("policyType", "DEFAULT")
-            })
-            print(f"  {name}: session={reauth.get('maxAge', 'default')}, "
-                  f"method={reauth.get('method', 'default')}")
+            session_policies.append(
+                {
+                    "service": name,
+                    "max_session_duration": reauth.get("maxAge", "Not configured"),
+                    "reauth_method": reauth.get("method", "Not configured"),
+                    "policy_type": reauth.get("policyType", "DEFAULT"),
+                }
+            )
+            print(
+                f"  {name}: session={reauth.get('maxAge', 'default')}, "
+                f"method={reauth.get('method', 'default')}"
+            )
 
     return session_policies
 
@@ -279,7 +311,7 @@ def generate_compliance_report(
     access_levels: list,
     device_stats: dict,
     log_stats: dict,
-    session_policies: list
+    session_policies: list,
 ) -> str:
     """Generate a comprehensive BeyondCorp compliance report."""
     print("\n[6/6] Generating BeyondCorp compliance report...")
@@ -289,7 +321,8 @@ def generate_compliance_report(
     with_conditions = sum(1 for s in iap_services if s["has_access_level_conditions"])
     device_compliance = (
         (device_stats["compliant"] / device_stats["total"] * 100)
-        if device_stats["total"] > 0 else 0
+        if device_stats["total"] > 0
+        else 0
     )
 
     report = f"""
@@ -376,12 +409,18 @@ def main():
     session_policies = audit_session_policies(project_id)
 
     report = generate_compliance_report(
-        project_id, iap_services, access_levels,
-        device_stats, log_stats, session_policies
+        project_id,
+        iap_services,
+        access_levels,
+        device_stats,
+        log_stats,
+        session_policies,
     )
     print(report)
 
-    report_path = f"beyondcorp_audit_{project_id}_{datetime.now().strftime('%Y%m%d')}.txt"
+    report_path = (
+        f"beyondcorp_audit_{project_id}_{datetime.now().strftime('%Y%m%d')}.txt"
+    )
     with open(report_path, "w") as f:
         f.write(report)
     print(f"\nReport saved to: {report_path}")

@@ -55,30 +55,54 @@ KERBEROS_ENCRYPTION = {
 
 # Realistic service account naming patterns
 SERVICE_ACCOUNT_TEMPLATES = [
-    {"prefix": "svc_", "services": [
-        "sqlbackup", "exchange_legacy", "sharepoint_crawl", "adfs_proxy",
-        "scom_monitoring", "sccm_push", "wsus_sync", "dns_update",
-        "print_spool", "backup_exec", "veeam_proxy", "citrix_sf",
-    ]},
-    {"prefix": "admin.", "services": [
-        "maintenance", "helpdesk_legacy", "deployment", "monitoring",
-    ]},
-    {"prefix": "", "services": [
-        "ScanService", "ReportRunner", "TaskScheduler", "AutomationSvc",
-    ]},
+    {
+        "prefix": "svc_",
+        "services": [
+            "sqlbackup",
+            "exchange_legacy",
+            "sharepoint_crawl",
+            "adfs_proxy",
+            "scom_monitoring",
+            "sccm_push",
+            "wsus_sync",
+            "dns_update",
+            "print_spool",
+            "backup_exec",
+            "veeam_proxy",
+            "citrix_sf",
+        ],
+    },
+    {
+        "prefix": "admin.",
+        "services": [
+            "maintenance",
+            "helpdesk_legacy",
+            "deployment",
+            "monitoring",
+        ],
+    },
+    {
+        "prefix": "",
+        "services": [
+            "ScanService",
+            "ReportRunner",
+            "TaskScheduler",
+            "AutomationSvc",
+        ],
+    },
 ]
 
 # Realistic SPN service classes
 SPN_SERVICE_CLASSES = [
-    "MSSQLSvc",     # SQL Server
-    "HTTP",         # Web services / IIS
-    "TERMSRV",      # Terminal Services
+    "MSSQLSvc",  # SQL Server
+    "HTTP",  # Web services / IIS
+    "TERMSRV",  # Terminal Services
     "exchangeMDB",  # Exchange
-    "FIMService",   # Forefront Identity Manager
-    "WSMAN",        # WS-Management
-    "mongodb",      # MongoDB
-    "postgres",     # PostgreSQL
-    "oracle",       # Oracle DB
+    "FIMService",  # Forefront Identity Manager
+    "WSMAN",  # WS-Management
+    "mongodb",  # MongoDB
+    "postgres",  # PostgreSQL
+    "oracle",  # Oracle DB
 ]
 
 # GPP cpassword AES key (publicly known, documented by Microsoft)
@@ -90,6 +114,7 @@ GPP_AES_KEY_B64 = "4e9906e8fcb66cc9faf49310620ffee8f496e806cc057990209b09a433b66
 # ===========================================================================
 # PowerShell Script Generator
 # ===========================================================================
+
 
 class PowerShellGenerator:
     """Generates PowerShell scripts for AD honeytoken deployment."""
@@ -185,7 +210,7 @@ Write-Host "[+] Monitor Event IDs: 4662 (object access), 4624/4625 (logon attemp
     ) -> str:
         """Generate PowerShell to add a fake SPN for Kerberoasting detection."""
         spn = f"{service_class}/{hostname}:{port}"
-        return f'''# ============================================================
+        return f"""# ============================================================
 # Add Fake SPN for Kerberoasting Detection (Honeyroasting)
 # Reference: ADSecurity.org - Detecting Kerberoasting Activity Part 2
 # ============================================================
@@ -225,7 +250,7 @@ Write-Host ""
 Write-Host "[+] Honeyroasting SPN deployed successfully" -ForegroundColor Cyan
 Write-Host "[+] DETECTION: Monitor Event ID 4769 where ServiceName = '$Account'" -ForegroundColor Cyan
 Write-Host "[+] Any TGS request for this SPN is MALICIOUS (service does not exist)" -ForegroundColor Yellow
-'''
+"""
 
     @staticmethod
     def generate_decoy_gpo(
@@ -339,7 +364,7 @@ Write-Host "    4. Correlate: 4663 + 4625 for same source IP = confirmed attacke
         intermediate_ou: str = "OU=Service Accounts",
     ) -> str:
         """Generate PowerShell to create fake BloodHound attack paths."""
-        return f'''# ============================================================
+        return f"""# ============================================================
 # Create Deceptive BloodHound Attack Paths
 # Reference: APT29a Blog - Deploying Honeytokens in AD
 # ============================================================
@@ -414,12 +439,12 @@ Write-Host "    $RegularGroup -[GenericAll]-> $HoneytokenAccount" -ForegroundCol
 Write-Host "    $HoneytokenAccount -[MemberOf]-> $DeceptiveGroupName" -ForegroundColor White
 Write-Host "    $HoneytokenAccount -[WriteDacl]-> $TargetGroup (blocked by deny ACE)" -ForegroundColor White
 Write-Host "[+] Any attempt to abuse this path triggers honeytoken alerts" -ForegroundColor Yellow
-'''
+"""
 
     @staticmethod
     def generate_validation_script(sam_account_name: str) -> str:
         """Generate PowerShell to validate honeytoken deployment."""
-        return f'''# ============================================================
+        return f"""# ============================================================
 # Validate Honeytoken Deployment
 # ============================================================
 
@@ -507,12 +532,13 @@ if ($FailCount -eq 0) {{
 }} else {{
     Write-Host "[-] $FailCount checks failed - review above" -ForegroundColor Red
 }}
-'''
+"""
 
 
 # ===========================================================================
 # SIEM Detection Rule Generator
 # ===========================================================================
+
 
 class SIEMRuleGenerator:
     """Generates detection rules for SIEM platforms targeting honeytoken activity."""
@@ -520,10 +546,13 @@ class SIEMRuleGenerator:
     def __init__(self):
         self.rules = []
 
-    def generate_detection_rules(self, honeytoken_accounts: list[str],
-                                 honey_spns: list[str],
-                                 gpo_trap_accounts: list[str],
-                                 siem: str = "sigma") -> list[dict]:
+    def generate_detection_rules(
+        self,
+        honeytoken_accounts: list[str],
+        honey_spns: list[str],
+        gpo_trap_accounts: list[str],
+        siem: str = "sigma",
+    ) -> list[dict]:
         """Generate detection rules for the specified SIEM platform."""
         generators = {
             "sigma": self._generate_sigma_rules,
@@ -533,30 +562,33 @@ class SIEMRuleGenerator:
 
         generator = generators.get(siem)
         if not generator:
-            raise ValueError(f"Unsupported SIEM: {siem}. Use: {list(generators.keys())}")
+            raise ValueError(
+                f"Unsupported SIEM: {siem}. Use: {list(generators.keys())}"
+            )
 
         rules = generator(honeytoken_accounts, honey_spns, gpo_trap_accounts)
         self.rules.extend(rules)
         return rules
 
-    def _generate_sigma_rules(self, accounts: list[str],
-                              spns: list[str],
-                              gpo_accounts: list[str]) -> list[dict]:
+    def _generate_sigma_rules(
+        self, accounts: list[str], spns: list[str], gpo_accounts: list[str]
+    ) -> list[dict]:
         """Generate Sigma detection rules."""
         rules = []
 
         # Rule 1: Kerberoasting against honey SPN
         if accounts:
             account_list = "\n".join(f"            - '{a}'" for a in accounts)
-            rules.append({
-                "title": "Honeytoken Kerberoast Detected",
-                "id": str(uuid.uuid4()),
-                "status": "production",
-                "level": "critical",
-                "description": "TGS ticket request for honeytoken service account SPN detected. "
-                               "This is a high-confidence indicator of Kerberoasting reconnaissance.",
-                "detection_logic": f"EventID 4769 AND ServiceName IN {accounts}",
-                "rule": f"""title: Honeytoken Kerberoast Detected
+            rules.append(
+                {
+                    "title": "Honeytoken Kerberoast Detected",
+                    "id": str(uuid.uuid4()),
+                    "status": "production",
+                    "level": "critical",
+                    "description": "TGS ticket request for honeytoken service account SPN detected. "
+                    "This is a high-confidence indicator of Kerberoasting reconnaissance.",
+                    "detection_logic": f"EventID 4769 AND ServiceName IN {accounts}",
+                    "rule": f"""title: Honeytoken Kerberoast Detected
 id: {uuid.uuid4()}
 status: production
 level: critical
@@ -586,20 +618,22 @@ detection:
 falsepositives:
     - None expected - any match is suspicious
 level: critical""",
-            })
+                }
+            )
 
         # Rule 2: Logon attempt with GPO trap credentials
         if gpo_accounts:
             gpo_list = "\n".join(f"            - '{a}'" for a in gpo_accounts)
-            rules.append({
-                "title": "Honeytoken GPO Credential Use Detected",
-                "id": str(uuid.uuid4()),
-                "status": "production",
-                "level": "critical",
-                "description": "Failed or successful logon using credentials from decoy GPO. "
-                               "Attacker has harvested Group Policy Preference passwords.",
-                "detection_logic": f"EventID IN (4624, 4625) AND TargetUserName IN {gpo_accounts}",
-                "rule": f"""title: Honeytoken GPO Credential Use Detected
+            rules.append(
+                {
+                    "title": "Honeytoken GPO Credential Use Detected",
+                    "id": str(uuid.uuid4()),
+                    "status": "production",
+                    "level": "critical",
+                    "description": "Failed or successful logon using credentials from decoy GPO. "
+                    "Attacker has harvested Group Policy Preference passwords.",
+                    "detection_logic": f"EventID IN (4624, 4625) AND TargetUserName IN {gpo_accounts}",
+                    "rule": f"""title: Honeytoken GPO Credential Use Detected
 id: {uuid.uuid4()}
 status: production
 level: critical
@@ -628,19 +662,21 @@ detection:
 falsepositives:
     - None expected
 level: critical""",
-            })
+                }
+            )
 
         # Rule 3: DACL access on honeytoken object
         if accounts:
-            rules.append({
-                "title": "Honeytoken AD Object Accessed",
-                "id": str(uuid.uuid4()),
-                "status": "production",
-                "level": "high",
-                "description": "Directory service read on honeytoken account DACL detected. "
-                               "Indicates AD reconnaissance or enumeration.",
-                "detection_logic": f"EventID 4662 AND ObjectName contains honeytoken DN",
-                "rule": f"""title: Honeytoken AD Object Accessed
+            rules.append(
+                {
+                    "title": "Honeytoken AD Object Accessed",
+                    "id": str(uuid.uuid4()),
+                    "status": "production",
+                    "level": "high",
+                    "description": "Directory service read on honeytoken account DACL detected. "
+                    "Indicates AD reconnaissance or enumeration.",
+                    "detection_logic": f"EventID 4662 AND ObjectName contains honeytoken DN",
+                    "rule": f"""title: Honeytoken AD Object Accessed
 id: {uuid.uuid4()}
 status: production
 level: high
@@ -666,22 +702,24 @@ detection:
 falsepositives:
     - Legitimate AD administration tools
 level: high""",
-            })
+                }
+            )
 
         return rules
 
-    def _generate_splunk_rules(self, accounts: list[str],
-                               spns: list[str],
-                               gpo_accounts: list[str]) -> list[dict]:
+    def _generate_splunk_rules(
+        self, accounts: list[str], spns: list[str], gpo_accounts: list[str]
+    ) -> list[dict]:
         """Generate Splunk SPL detection queries."""
         rules = []
 
         if accounts:
             account_filter = " OR ".join(f'ServiceName="{a}"' for a in accounts)
-            rules.append({
-                "title": "Honeytoken Kerberoast Detection (Splunk)",
-                "detection_logic": f"EventCode=4769 AND ({account_filter})",
-                "rule": f"""| `Notable` title="Honeytoken Kerberoast Detected"
+            rules.append(
+                {
+                    "title": "Honeytoken Kerberoast Detection (Splunk)",
+                    "detection_logic": f"EventCode=4769 AND ({account_filter})",
+                    "rule": f"""| `Notable` title="Honeytoken Kerberoast Detected"
 index=wineventlog sourcetype="WinEventLog:Security" EventCode=4769
     ({account_filter})
 | eval ticket_type=case(
@@ -695,14 +733,16 @@ index=wineventlog sourcetype="WinEventLog:Security" EventCode=4769
 | eval mitre_technique="T1558.003"
 | table _time, src_ip, Account_Name, ServiceName, ticket_type, Client_Address
 | sort - _time""",
-            })
+                }
+            )
 
         if gpo_accounts:
             gpo_filter = " OR ".join(f'TargetUserName="{a}"' for a in gpo_accounts)
-            rules.append({
-                "title": "Honeytoken GPO Credential Use (Splunk)",
-                "detection_logic": f"EventCode IN (4624,4625) AND ({gpo_filter})",
-                "rule": f"""index=wineventlog sourcetype="WinEventLog:Security"
+            rules.append(
+                {
+                    "title": "Honeytoken GPO Credential Use (Splunk)",
+                    "detection_logic": f"EventCode IN (4624,4625) AND ({gpo_filter})",
+                    "rule": f"""index=wineventlog sourcetype="WinEventLog:Security"
     (EventCode=4624 OR EventCode=4625)
     ({gpo_filter})
 | eval alert_severity="critical"
@@ -711,14 +751,16 @@ index=wineventlog sourcetype="WinEventLog:Security" EventCode=4769
 | eval logon_result=if(EventCode=4624, "SUCCESS - INVESTIGATE IMMEDIATELY", "Failed")
 | table _time, src_ip, TargetUserName, EventCode, logon_result, Logon_Type, Workstation_Name
 | sort - _time""",
-            })
+                }
+            )
 
         # Correlation rule: SYSVOL access followed by credential use
         if gpo_accounts:
-            rules.append({
-                "title": "Honeytoken Attack Chain: SYSVOL Enum + Credential Use (Splunk)",
-                "detection_logic": "Correlation: EventCode 4663 (SYSVOL read) -> 4625 (failed logon)",
-                "rule": f"""index=wineventlog sourcetype="WinEventLog:Security"
+            rules.append(
+                {
+                    "title": "Honeytoken Attack Chain: SYSVOL Enum + Credential Use (Splunk)",
+                    "detection_logic": "Correlation: EventCode 4663 (SYSVOL read) -> 4625 (failed logon)",
+                    "rule": f"""index=wineventlog sourcetype="WinEventLog:Security"
     (EventCode=4663 ObjectName="*SYSVOL*Policies*Groups.xml*")
     OR (EventCode=4625 ({" OR ".join(f'TargetUserName="{a}"' for a in gpo_accounts)}))
 | eval stage=case(
@@ -732,22 +774,24 @@ index=wineventlog sourcetype="WinEventLog:Security" EventCode=4769
 | eval alert_type="honeytoken_attack_chain_confirmed"
 | eval alert_severity="critical"
 | sort - last_seen""",
-            })
+                }
+            )
 
         return rules
 
-    def _generate_sentinel_rules(self, accounts: list[str],
-                                 spns: list[str],
-                                 gpo_accounts: list[str]) -> list[dict]:
+    def _generate_sentinel_rules(
+        self, accounts: list[str], spns: list[str], gpo_accounts: list[str]
+    ) -> list[dict]:
         """Generate Microsoft Sentinel KQL detection rules."""
         rules = []
 
         if accounts:
             account_list = ", ".join(f'"{a}"' for a in accounts)
-            rules.append({
-                "title": "Honeytoken Kerberoast Detection (Sentinel)",
-                "detection_logic": f"EventID == 4769 AND ServiceName in ({account_list})",
-                "rule": f"""// Honeytoken Kerberoast Detection
+            rules.append(
+                {
+                    "title": "Honeytoken Kerberoast Detection (Sentinel)",
+                    "detection_logic": f"EventID == 4769 AND ServiceName in ({account_list})",
+                    "rule": f"""// Honeytoken Kerberoast Detection
 // MITRE ATT&CK: T1558.003 - Kerberoasting
 // Severity: Critical - ANY match is malicious
 SecurityEvent
@@ -765,14 +809,16 @@ SecurityEvent
 | project TimeGenerated, Computer, Account, ServiceName,
     IpAddress, EncryptionType, AlertSeverity, AlertType
 | sort by TimeGenerated desc""",
-            })
+                }
+            )
 
         if gpo_accounts:
             gpo_list = ", ".join(f'"{a}"' for a in gpo_accounts)
-            rules.append({
-                "title": "Honeytoken GPO Credential Use (Sentinel)",
-                "detection_logic": f"EventID in (4624,4625) AND TargetUserName in ({gpo_list})",
-                "rule": f"""// Honeytoken GPO Credential Trap Triggered
+            rules.append(
+                {
+                    "title": "Honeytoken GPO Credential Use (Sentinel)",
+                    "detection_logic": f"EventID in (4624,4625) AND TargetUserName in ({gpo_list})",
+                    "rule": f"""// Honeytoken GPO Credential Trap Triggered
 // MITRE ATT&CK: T1552.006 - Group Policy Preferences
 // Severity: Critical
 SecurityEvent
@@ -786,7 +832,8 @@ SecurityEvent
 | project TimeGenerated, Computer, TargetUserName, EventID,
     LogonResult, IpAddress, LogonTypeName, WorkstationName
 | sort by TimeGenerated desc""",
-            })
+                }
+            )
 
         return rules
 
@@ -798,7 +845,9 @@ SecurityEvent
 
         for i, rule in enumerate(self.rules):
             if format == "json":
-                filename = f"rule_{i+1}_{rule['title'].lower().replace(' ', '_')[:40]}.json"
+                filename = (
+                    f"rule_{i+1}_{rule['title'].lower().replace(' ', '_')[:40]}.json"
+                )
                 filepath = out_path / filename
                 filepath.write_text(json.dumps(rule, indent=2))
             elif format == "yaml" and "rule" in rule:
@@ -814,6 +863,7 @@ SecurityEvent
 # AD Honeytoken Monitor (Python-based log analysis)
 # ===========================================================================
 
+
 class ADHoneytokenMonitor:
     """Monitors Windows Event Logs for honeytoken interactions."""
 
@@ -825,9 +875,12 @@ class ADHoneytokenMonitor:
         self.honeytokens: dict[str, dict] = {}
         self.alerts: list[dict] = []
 
-    def register_honeytoken(self, identifier: str,
-                            token_type: str = "admin_account",
-                            metadata: dict | None = None) -> dict:
+    def register_honeytoken(
+        self,
+        identifier: str,
+        token_type: str = "admin_account",
+        metadata: dict | None = None,
+    ) -> dict:
         """Register a honeytoken for monitoring."""
         token = {
             "identifier": identifier,
@@ -855,63 +908,87 @@ class ADHoneytokenMonitor:
                 service_name = event.get("ServiceName", "")
                 if service_name in self.honeytokens:
                     enc_type = event.get("TicketEncryptionType", "unknown")
-                    alerts.append(self._create_alert(
-                        event=event,
-                        alert_type="KERBEROAST_HONEYTOKEN",
-                        severity="critical",
-                        description=f"Kerberoasting detected against honeytoken SPN: {service_name}",
-                        mitre_technique="T1558.003",
-                        encryption_type=KERBEROS_ENCRYPTION.get(
-                            int(enc_type, 16) if isinstance(enc_type, str) else enc_type,
-                            str(enc_type)
-                        ),
-                    ))
+                    alerts.append(
+                        self._create_alert(
+                            event=event,
+                            alert_type="KERBEROAST_HONEYTOKEN",
+                            severity="critical",
+                            description=f"Kerberoasting detected against honeytoken SPN: {service_name}",
+                            mitre_technique="T1558.003",
+                            encryption_type=KERBEROS_ENCRYPTION.get(
+                                (
+                                    int(enc_type, 16)
+                                    if isinstance(enc_type, str)
+                                    else enc_type
+                                ),
+                                str(enc_type),
+                            ),
+                        )
+                    )
 
             # Check for logon attempts (Event 4624/4625)
             elif event_id in (4624, 4625):
                 target_user = event.get("TargetUserName", "")
                 if target_user in self.honeytokens:
-                    alerts.append(self._create_alert(
-                        event=event,
-                        alert_type="HONEYTOKEN_LOGON" if event_id == 4624 else "HONEYTOKEN_LOGON_FAILED",
-                        severity="critical",
-                        description=f"{'Successful' if event_id == 4624 else 'Failed'} "
-                                    f"logon attempt with honeytoken account: {target_user}",
-                        mitre_technique="T1078" if event_id == 4624 else "T1552.006",
-                    ))
+                    alerts.append(
+                        self._create_alert(
+                            event=event,
+                            alert_type=(
+                                "HONEYTOKEN_LOGON"
+                                if event_id == 4624
+                                else "HONEYTOKEN_LOGON_FAILED"
+                            ),
+                            severity="critical",
+                            description=f"{'Successful' if event_id == 4624 else 'Failed'} "
+                            f"logon attempt with honeytoken account: {target_user}",
+                            mitre_technique=(
+                                "T1078" if event_id == 4624 else "T1552.006"
+                            ),
+                        )
+                    )
 
             # Check for directory object access (Event 4662)
             elif event_id == 4662:
                 object_name = event.get("ObjectName", "")
                 for ht_id, ht_info in self.honeytokens.items():
                     if ht_id in object_name:
-                        alerts.append(self._create_alert(
-                            event=event,
-                            alert_type="HONEYTOKEN_DACL_READ",
-                            severity="high",
-                            description=f"Directory service read on honeytoken object: {ht_id}",
-                            mitre_technique="T1087.002",
-                        ))
+                        alerts.append(
+                            self._create_alert(
+                                event=event,
+                                alert_type="HONEYTOKEN_DACL_READ",
+                                severity="high",
+                                description=f"Directory service read on honeytoken object: {ht_id}",
+                                mitre_technique="T1087.002",
+                            )
+                        )
 
             # Check for GPO modifications (Event 5136)
             elif event_id == 5136:
                 object_dn = event.get("ObjectDN", "")
                 for ht_id, ht_info in self.honeytokens.items():
                     if ht_info.get("type") == "gpo_credential" and ht_id in object_dn:
-                        alerts.append(self._create_alert(
-                            event=event,
-                            alert_type="HONEYTOKEN_GPO_MODIFIED",
-                            severity="critical",
-                            description=f"Decoy GPO modification detected: {object_dn}",
-                            mitre_technique="T1484.001",
-                        ))
+                        alerts.append(
+                            self._create_alert(
+                                event=event,
+                                alert_type="HONEYTOKEN_GPO_MODIFIED",
+                                severity="critical",
+                                description=f"Decoy GPO modification detected: {object_dn}",
+                                mitre_technique="T1484.001",
+                            )
+                        )
 
         self.alerts.extend(alerts)
         return alerts
 
-    def _create_alert(self, event: dict, alert_type: str,
-                      severity: str, description: str,
-                      mitre_technique: str, **kwargs) -> dict:
+    def _create_alert(
+        self,
+        event: dict,
+        alert_type: str,
+        severity: str,
+        description: str,
+        mitre_technique: str,
+        **kwargs,
+    ) -> dict:
         """Create a structured alert from an event."""
         alert = {
             "alert_id": f"ALERT-{uuid.uuid4().hex[:12].upper()}",
@@ -921,7 +998,8 @@ class ADHoneytokenMonitor:
             "mitre_technique": mitre_technique,
             "source_ip": event.get("IpAddress") or event.get("src_ip", "unknown"),
             "source_host": event.get("Computer") or event.get("Workstation", "unknown"),
-            "account": event.get("TargetUserName") or event.get("ServiceName", "unknown"),
+            "account": event.get("TargetUserName")
+            or event.get("ServiceName", "unknown"),
             "event_id": event.get("EventID") or event.get("EventCode"),
             "timestamp": event.get("TimeGenerated") or datetime.utcnow().isoformat(),
             "raw_event": event,
@@ -933,12 +1011,19 @@ class ADHoneytokenMonitor:
         """Generate SIEM detection rules for all registered honeytokens."""
         generator = SIEMRuleGenerator()
 
-        accounts = [ht_id for ht_id, info in self.honeytokens.items()
-                     if info["type"] in ("admin_account", "spn")]
-        spns = [ht_id for ht_id, info in self.honeytokens.items()
-                if info["type"] == "spn"]
-        gpo_accounts = [ht_id for ht_id, info in self.honeytokens.items()
-                        if info["type"] == "gpo_credential"]
+        accounts = [
+            ht_id
+            for ht_id, info in self.honeytokens.items()
+            if info["type"] in ("admin_account", "spn")
+        ]
+        spns = [
+            ht_id for ht_id, info in self.honeytokens.items() if info["type"] == "spn"
+        ]
+        gpo_accounts = [
+            ht_id
+            for ht_id, info in self.honeytokens.items()
+            if info["type"] == "gpo_credential"
+        ]
 
         return generator.generate_detection_rules(accounts, spns, gpo_accounts, siem)
 
@@ -972,12 +1057,16 @@ class ADHoneytokenMonitor:
 # Deployment Orchestrator
 # ===========================================================================
 
+
 class HoneytokenDeployer:
     """Orchestrates full honeytoken deployment and generates all artifacts."""
 
-    def __init__(self, domain: str = "corp.example.com",
-                 service_account_ou: str = "OU=Service Accounts",
-                 sysvol_path: str = ""):
+    def __init__(
+        self,
+        domain: str = "corp.example.com",
+        service_account_ou: str = "OU=Service Accounts",
+        sysvol_path: str = "",
+    ):
         self.domain = domain
         self.service_account_ou = service_account_ou
         self.sysvol_path = sysvol_path or f"\\\\{domain}\\SYSVOL\\{domain}\\Policies"
@@ -1001,11 +1090,14 @@ class HoneytokenDeployer:
             "hostname": hostname,
         }
 
-    def deploy_full_suite(self, token_count: int = 3,
-                          include_spn: bool = True,
-                          include_gpo: bool = True,
-                          include_bloodhound: bool = True,
-                          siem_type: str = "sigma") -> dict:
+    def deploy_full_suite(
+        self,
+        token_count: int = 3,
+        include_spn: bool = True,
+        include_gpo: bool = True,
+        include_bloodhound: bool = True,
+        siem_type: str = "sigma",
+    ) -> dict:
         """Generate complete deployment artifacts for a full honeytoken suite."""
         deployment = {
             "deployment_id": f"DEPLOY-{uuid.uuid4().hex[:8].upper()}",
@@ -1023,7 +1115,9 @@ class HoneytokenDeployer:
         for i in range(token_count):
             naming = self.generate_realistic_name()
             sam = naming["sam_account_name"]
-            ou_dn = f"{self.service_account_ou},DC={',DC='.join(self.domain.split('.'))}"
+            ou_dn = (
+                f"{self.service_account_ou},DC={',DC='.join(self.domain.split('.'))}"
+            )
 
             # Generate admin account script
             account_script = self.ps_gen.generate_create_honeytoken_account(
@@ -1034,11 +1128,13 @@ class HoneytokenDeployer:
                 password_length=128,
                 set_admin_count=True,
             )
-            deployment["scripts"].append({
-                "type": "create_account",
-                "filename": f"01_create_{sam}.ps1",
-                "content": account_script,
-            })
+            deployment["scripts"].append(
+                {
+                    "type": "create_account",
+                    "filename": f"01_create_{sam}.ps1",
+                    "content": account_script,
+                }
+            )
             all_accounts.append(sam)
 
             token_info = {
@@ -1058,11 +1154,13 @@ class HoneytokenDeployer:
                     hostname=naming["hostname"],
                     port=port,
                 )
-                deployment["scripts"].append({
-                    "type": "add_spn",
-                    "filename": f"02_add_spn_{sam}.ps1",
-                    "content": spn_script,
-                })
+                deployment["scripts"].append(
+                    {
+                        "type": "add_spn",
+                        "filename": f"02_add_spn_{sam}.ps1",
+                        "content": spn_script,
+                    }
+                )
                 spn_value = f"{spn_class}/{naming['hostname']}:{port}"
                 all_spns.append(spn_value)
                 token_info["spn"] = spn_value
@@ -1079,37 +1177,45 @@ class HoneytokenDeployer:
                 decoy_domain=domain_short,
                 sysvol_path=self.sysvol_path,
             )
-            deployment["scripts"].append({
-                "type": "decoy_gpo",
-                "filename": "03_create_decoy_gpo.ps1",
-                "content": gpo_script,
-            })
+            deployment["scripts"].append(
+                {
+                    "type": "decoy_gpo",
+                    "filename": "03_create_decoy_gpo.ps1",
+                    "content": gpo_script,
+                }
+            )
             gpo_accounts.append(gpo_username)
-            deployment["tokens"].append({
-                "name": gpo_username,
-                "type": "gpo_credential",
-                "description": "Decoy GPO cpassword trap",
-            })
+            deployment["tokens"].append(
+                {
+                    "name": gpo_username,
+                    "type": "gpo_credential",
+                    "description": "Decoy GPO cpassword trap",
+                }
+            )
 
         # Generate BloodHound deception
         if include_bloodhound and all_accounts:
             bh_script = self.ps_gen.generate_deceptive_bloodhound_path(
                 honeytoken_sam=all_accounts[0],
             )
-            deployment["scripts"].append({
-                "type": "bloodhound_deception",
-                "filename": "04_create_bloodhound_paths.ps1",
-                "content": bh_script,
-            })
+            deployment["scripts"].append(
+                {
+                    "type": "bloodhound_deception",
+                    "filename": "04_create_bloodhound_paths.ps1",
+                    "content": bh_script,
+                }
+            )
 
         # Generate validation script
         if all_accounts:
             val_script = self.ps_gen.generate_validation_script(all_accounts[0])
-            deployment["scripts"].append({
-                "type": "validation",
-                "filename": "05_validate_deployment.ps1",
-                "content": val_script,
-            })
+            deployment["scripts"].append(
+                {
+                    "type": "validation",
+                    "filename": "05_validate_deployment.ps1",
+                    "content": val_script,
+                }
+            )
 
         # Generate SIEM detection rules
         rules = self.siem_gen.generate_detection_rules(
@@ -1163,6 +1269,7 @@ class HoneytokenDeployer:
 # CLI Entry Point
 # ===========================================================================
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Active Directory Honeytoken Deployment Agent"
@@ -1170,8 +1277,14 @@ def main():
     parser.add_argument(
         "--action",
         choices=[
-            "deploy_account", "deploy_spn", "deploy_gpo", "deploy_bloodhound",
-            "full_deploy", "generate_rules", "validate", "analyze_logs",
+            "deploy_account",
+            "deploy_spn",
+            "deploy_gpo",
+            "deploy_bloodhound",
+            "full_deploy",
+            "generate_rules",
+            "validate",
+            "analyze_logs",
         ],
         default="full_deploy",
         help="Action to perform",
@@ -1181,7 +1294,9 @@ def main():
     parser.add_argument("--sysvol", default="")
     parser.add_argument("--account-name", default="svc_sqlbackup_legacy")
     parser.add_argument("--token-count", type=int, default=3)
-    parser.add_argument("--siem", choices=["sigma", "splunk", "sentinel"], default="sigma")
+    parser.add_argument(
+        "--siem", choices=["sigma", "splunk", "sentinel"], default="sigma"
+    )
     parser.add_argument("--output-dir", default="honeytoken_deployment")
     parser.add_argument("--include-spn", action="store_true", default=True)
     parser.add_argument("--include-gpo", action="store_true", default=True)
@@ -1217,8 +1332,10 @@ def main():
         print(f"\n[+] Deployment ID: {deployment['deployment_id']}")
         print(f"[+] Tokens generated: {len(deployment['tokens'])}")
         for token in deployment["tokens"]:
-            print(f"    - {token['name']} ({token['type']})"
-                  + (f" SPN: {token.get('spn', 'N/A')}" if token.get('spn') else ""))
+            print(
+                f"    - {token['name']} ({token['type']})"
+                + (f" SPN: {token.get('spn', 'N/A')}" if token.get("spn") else "")
+            )
 
         print(f"\n[+] Scripts generated: {len(deployment['scripts'])}")
         for script in deployment["scripts"]:
@@ -1262,15 +1379,21 @@ def main():
         alerts = monitor.analyze_event_log(events)
         print(f"\n[+] Alerts generated: {len(alerts)}")
         for alert in alerts:
-            print(f"  [{alert['severity'].upper()}] {alert['alert_type']}: "
-                  f"{alert['description']}")
-            print(f"    Source: {alert['source_ip']} | "
-                  f"Account: {alert['account']} | "
-                  f"MITRE: {alert['mitre_technique']}")
+            print(
+                f"  [{alert['severity'].upper()}] {alert['alert_type']}: "
+                f"{alert['description']}"
+            )
+            print(
+                f"    Source: {alert['source_ip']} | "
+                f"Account: {alert['account']} | "
+                f"MITRE: {alert['mitre_technique']}"
+            )
 
         summary = monitor.get_alert_summary()
-        print(f"\n[+] Summary: {summary['total_alerts']} alerts, "
-              f"sources: {list(summary['by_source_ip'].keys())}")
+        print(
+            f"\n[+] Summary: {summary['total_alerts']} alerts, "
+            f"sources: {list(summary['by_source_ip'].keys())}"
+        )
 
     elif args.action == "deploy_account":
         ps_gen = PowerShellGenerator()

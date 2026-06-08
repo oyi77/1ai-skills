@@ -22,7 +22,6 @@ from datetime import datetime
 import pandas as pd
 import requests
 
-
 MSRC_API = "https://api.msrc.microsoft.com/cvrf/v3.0/cvrf"
 MSRC_UPDATES_API = "https://api.msrc.microsoft.com/cvrf/v3.0/updates"
 KEV_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
@@ -50,10 +49,9 @@ class PatchTuesdayAnalyzer:
 
     def __init__(self):
         self.session = requests.Session()
-        self.session.headers.update({
-            "Accept": "application/json",
-            "User-Agent": "PatchTuesday-Analyzer/1.0"
-        })
+        self.session.headers.update(
+            {"Accept": "application/json", "User-Agent": "PatchTuesday-Analyzer/1.0"}
+        )
         self.kev_catalog = set()
 
     def load_kev_catalog(self):
@@ -62,9 +60,7 @@ class PatchTuesdayAnalyzer:
             response = self.session.get(KEV_URL, timeout=30)
             if response.status_code == 200:
                 data = response.json()
-                self.kev_catalog = {
-                    v["cveID"] for v in data.get("vulnerabilities", [])
-                }
+                self.kev_catalog = {v["cveID"] for v in data.get("vulnerabilities", [])}
                 print(f"[+] Loaded {len(self.kev_catalog)} CVEs from CISA KEV")
         except Exception as e:
             print(f"[!] Failed to load KEV: {e}")
@@ -73,12 +69,10 @@ class PatchTuesdayAnalyzer:
         """Fetch EPSS scores for CVEs."""
         scores = {}
         for i in range(0, len(cve_list), 100):
-            batch = cve_list[i:i + 100]
+            batch = cve_list[i : i + 100]
             try:
                 response = self.session.get(
-                    EPSS_API,
-                    params={"cve": ",".join(batch)},
-                    timeout=30
+                    EPSS_API, params={"cve": ",".join(batch)}, timeout=30
                 )
                 if response.status_code == 200:
                     for entry in response.json().get("data", []):
@@ -124,24 +118,25 @@ class PatchTuesdayAnalyzer:
 
             ring = self.classify_patch(patch)
 
-            plan.append({
-                "cve_id": cve_id,
-                "product": patch.get("product", ""),
-                "severity": patch.get("severity", ""),
-                "attack_type": patch.get("attack_type", ""),
-                "cvss_score": patch.get("cvss_score", 0),
-                "epss_score": round(patch.get("epss_score", 0), 4),
-                "in_cisa_kev": patch.get("in_cisa_kev", False),
-                "actively_exploited": patch.get("actively_exploited", False),
-                "deployment_ring": ring["ring"],
-                "ring_name": ring["name"],
-                "sla_hours": ring["sla_hours"],
-                "kb_article": patch.get("kb_article", ""),
-            })
+            plan.append(
+                {
+                    "cve_id": cve_id,
+                    "product": patch.get("product", ""),
+                    "severity": patch.get("severity", ""),
+                    "attack_type": patch.get("attack_type", ""),
+                    "cvss_score": patch.get("cvss_score", 0),
+                    "epss_score": round(patch.get("epss_score", 0), 4),
+                    "in_cisa_kev": patch.get("in_cisa_kev", False),
+                    "actively_exploited": patch.get("actively_exploited", False),
+                    "deployment_ring": ring["ring"],
+                    "ring_name": ring["name"],
+                    "sla_hours": ring["sla_hours"],
+                    "kb_article": patch.get("kb_article", ""),
+                }
+            )
 
         df = pd.DataFrame(plan)
-        df = df.sort_values(["deployment_ring", "cvss_score"],
-                            ascending=[True, False])
+        df = df.sort_values(["deployment_ring", "cvss_score"], ascending=[True, False])
         return df
 
     def print_summary(self, df):
@@ -160,17 +155,17 @@ class PatchTuesdayAnalyzer:
             ring_data = df[df["deployment_ring"] == ring]
             ring_name = ring_data.iloc[0]["ring_name"]
             sla = ring_data.iloc[0]["sla_hours"]
-            print(f"  Ring {ring} ({ring_name}): {len(ring_data)} patches, "
-                  f"SLA: {sla}h")
+            print(
+                f"  Ring {ring} ({ring_name}): {len(ring_data)} patches, "
+                f"SLA: {sla}h"
+            )
 
         print(f"\nBy Attack Type:")
         print(df["attack_type"].value_counts().head(5).to_string())
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Patch Tuesday Response Automation"
-    )
+    parser = argparse.ArgumentParser(description="Patch Tuesday Response Automation")
     subparsers = parser.add_subparsers(dest="command")
 
     plan_p = subparsers.add_parser("plan", help="Generate deployment plan from CSV")

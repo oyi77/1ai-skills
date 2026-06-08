@@ -93,7 +93,9 @@ def create_target(gmp, name, hosts, ssh_cred_id=None, smb_cred_id=None, ssh_port
     return target_id
 
 
-def create_scan_task(gmp, name, target_id, config_id=FULL_AND_FAST_CONFIG, schedule_id=None):
+def create_scan_task(
+    gmp, name, target_id, config_id=FULL_AND_FAST_CONFIG, schedule_id=None
+):
     """Create scan task with target and configuration."""
     kwargs = {
         "name": name,
@@ -144,15 +146,17 @@ def export_report_csv(gmp, report_id, output_path):
         port = result.find("port")
         severity = result.find("severity")
         cve_refs = nvt.find("cve")
-        results.append({
-            "host": host.text if host is not None else "",
-            "port": port.text if port is not None else "",
-            "nvt_name": nvt.findtext("name", ""),
-            "nvt_oid": nvt.get("oid", ""),
-            "severity": severity.text if severity is not None else "",
-            "cve": cve_refs.text if cve_refs is not None else "",
-            "description": result.findtext("description", "")[:500],
-        })
+        results.append(
+            {
+                "host": host.text if host is not None else "",
+                "port": port.text if port is not None else "",
+                "nvt_name": nvt.findtext("name", ""),
+                "nvt_oid": nvt.get("oid", ""),
+                "severity": severity.text if severity is not None else "",
+                "cve": cve_refs.text if cve_refs is not None else "",
+                "description": result.findtext("description", "")[:500],
+            }
+        )
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         if results:
@@ -201,7 +205,9 @@ def check_auth_success(gmp, report_id):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="OpenVAS Authenticated Scan Automation")
+    parser = argparse.ArgumentParser(
+        description="OpenVAS Authenticated Scan Automation"
+    )
     parser.add_argument("--socket", default=DEFAULT_SOCKET, help="GVM socket path")
     parser.add_argument("--username", default="admin", help="GVM username")
     parser.add_argument("--password", required=True, help="GVM password")
@@ -241,7 +247,9 @@ def main():
 
     if args.command == "create-credential":
         if args.type == "ssh":
-            create_ssh_credential(gmp, args.name, args.login, args.key_path, args.cred_password)
+            create_ssh_credential(
+                gmp, args.name, args.login, args.key_path, args.cred_password
+            )
         else:
             create_smb_credential(gmp, args.name, args.login, args.cred_password)
     elif args.command == "create-target":

@@ -8,7 +8,6 @@ import sys
 from collections import Counter
 from datetime import datetime
 
-
 SURICATA_BIN = os.environ.get("SURICATA_BIN", "/usr/bin/suricata")
 SURICATA_CONF = os.environ.get("SURICATA_CONF", "/etc/suricata/suricata.yaml")
 EVE_LOG = os.environ.get("SURICATA_EVE_LOG", "/var/log/suricata/eve.json")
@@ -33,7 +32,9 @@ def check_suricata_status():
 
     running = False
     try:
-        r = subprocess.run(["pgrep", "-x", "suricata"], capture_output=True, text=True, timeout=120)
+        r = subprocess.run(
+            ["pgrep", "-x", "suricata"], capture_output=True, text=True, timeout=120
+        )
         running = r.returncode == 0
     except FileNotFoundError:
         pass
@@ -46,11 +47,17 @@ def validate_config():
     try:
         result = subprocess.run(
             [SURICATA_BIN, "-T", "-c", SURICATA_CONF, "-v"],
-            capture_output=True, text=True, timeout=60
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         return {
             "valid": result.returncode == 0,
-            "output": result.stderr.strip()[-500:] if result.stderr else result.stdout.strip()[-500:],
+            "output": (
+                result.stderr.strip()[-500:]
+                if result.stderr
+                else result.stdout.strip()[-500:]
+            ),
         }
     except Exception as e:
         return {"valid": False, "error": str(e)}
@@ -87,14 +94,16 @@ def parse_eve_alerts(log_path=None, limit=10000):
             src_ips[event.get("src_ip", "unknown")] += 1
             dest_ips[event.get("dest_ip", "unknown")] += 1
             severities[alert_info.get("severity", 0)] += 1
-            alerts.append({
-                "timestamp": event.get("timestamp"),
-                "src_ip": event.get("src_ip"),
-                "dest_ip": event.get("dest_ip"),
-                "signature": sig,
-                "sid": alert_info.get("signature_id"),
-                "severity": alert_info.get("severity"),
-            })
+            alerts.append(
+                {
+                    "timestamp": event.get("timestamp"),
+                    "src_ip": event.get("src_ip"),
+                    "dest_ip": event.get("dest_ip"),
+                    "signature": sig,
+                    "sid": alert_info.get("signature_id"),
+                    "severity": alert_info.get("severity"),
+                }
+            )
 
     return {
         "total_alerts": len(alerts),
@@ -132,11 +141,13 @@ def parse_eve_dns(log_path=None, limit=50000):
                 domains[rrname] += 1
                 query_types[dns.get("rrtype", "unknown")] += 1
                 if len(rrname) > 60:
-                    long_queries.append({
-                        "src_ip": event.get("src_ip"),
-                        "query": rrname,
-                        "length": len(rrname),
-                    })
+                    long_queries.append(
+                        {
+                            "src_ip": event.get("src_ip"),
+                            "query": rrname,
+                            "length": len(rrname),
+                        }
+                    )
 
     return {
         "unique_domains": len(domains),
@@ -190,7 +201,10 @@ def update_rules():
         result = subprocess.run(
             ["suricata-update"], capture_output=True, text=True, timeout=120
         )
-        return {"success": result.returncode == 0, "output": result.stdout.strip()[-500:]}
+        return {
+            "success": result.returncode == 0,
+            "output": result.stdout.strip()[-500:],
+        }
     except FileNotFoundError:
         return {"success": False, "error": "suricata-update not found"}
 

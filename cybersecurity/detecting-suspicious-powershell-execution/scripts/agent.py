@@ -9,27 +9,39 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
-
 SUSPICIOUS_CMDLETS = [
-    "Invoke-Expression", "IEX", "Invoke-WebRequest", "Invoke-RestMethod",
-    "Start-Process", "New-Object Net.WebClient", "DownloadString",
-    "DownloadFile", "System.Reflection.Assembly", "FromBase64String",
-    "Invoke-Mimikatz", "Invoke-Shellcode", "Invoke-DllInjection",
-    "Invoke-ReflectivePEInjection", "Get-Keystrokes", "Get-GPPPassword",
-    "Invoke-CredentialInjection", "Invoke-TokenManipulation",
-    "Add-Exfiltration", "Get-TimedScreenshot",
+    "Invoke-Expression",
+    "IEX",
+    "Invoke-WebRequest",
+    "Invoke-RestMethod",
+    "Start-Process",
+    "New-Object Net.WebClient",
+    "DownloadString",
+    "DownloadFile",
+    "System.Reflection.Assembly",
+    "FromBase64String",
+    "Invoke-Mimikatz",
+    "Invoke-Shellcode",
+    "Invoke-DllInjection",
+    "Invoke-ReflectivePEInjection",
+    "Get-Keystrokes",
+    "Get-GPPPassword",
+    "Invoke-CredentialInjection",
+    "Invoke-TokenManipulation",
+    "Add-Exfiltration",
+    "Get-TimedScreenshot",
 ]
 
 OBFUSCATION_PATTERNS = [
-    (r'\-[eE][nN][cC]\s', "Encoded command (-enc)"),
-    (r'[Ff][Rr][Oo][Mm][Bb][Aa][Ss][Ee]64', "Base64 decoding"),
-    (r'\$\{[^}]+\}', "Variable obfuscation ${...}"),
+    (r"\-[eE][nN][cC]\s", "Encoded command (-enc)"),
+    (r"[Ff][Rr][Oo][Mm][Bb][Aa][Ss][Ee]64", "Base64 decoding"),
+    (r"\$\{[^}]+\}", "Variable obfuscation ${...}"),
     (r"'[^']*'\s*\+\s*'[^']*'", "String concatenation obfuscation"),
-    (r'\-[Ww]indow[Ss]tyle\s+[Hh]idden', "Hidden window execution"),
-    (r'\-[Nn]o[Pp]rofile', "NoProfile flag"),
-    (r'\-[Ee]xecution[Pp]olicy\s+[Bb]ypass', "Execution policy bypass"),
-    (r'[Ss]et-[Mm]pPreference.*-[Dd]isable', "Defender bypass attempt"),
-    (r'[Aa][Mm][Ss][Ii]', "AMSI reference"),
+    (r"\-[Ww]indow[Ss]tyle\s+[Hh]idden", "Hidden window execution"),
+    (r"\-[Nn]o[Pp]rofile", "NoProfile flag"),
+    (r"\-[Ee]xecution[Pp]olicy\s+[Bb]ypass", "Execution policy bypass"),
+    (r"[Ss]et-[Mm]pPreference.*-[Dd]isable", "Defender bypass attempt"),
+    (r"[Aa][Mm][Ss][Ii]", "AMSI reference"),
 ]
 
 
@@ -47,7 +59,9 @@ def parse_script_block_logs():
     try:
         result = subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", ps_cmd],
-            text=True, errors="replace", timeout=30
+            text=True,
+            errors="replace",
+            timeout=30,
         )
         data = json.loads(result) if result.strip() else []
         return data if isinstance(data, list) else [data]
@@ -69,10 +83,11 @@ def analyze_script_content(script_text):
         if re.search(pattern, script_text):
             findings.append({"type": "obfuscation", "pattern": desc})
 
-    b64_match = re.findall(r'[A-Za-z0-9+/]{40,}={0,2}', script_text)
+    b64_match = re.findall(r"[A-Za-z0-9+/]{40,}={0,2}", script_text)
     for b64 in b64_match[:3]:
         try:
             import base64
+
             decoded = base64.b64decode(b64).decode("utf-8", errors="replace")
             if any(c.lower() in decoded.lower() for c in SUSPICIOUS_CMDLETS[:10]):
                 findings.append({"type": "encoded_payload", "preview": decoded[:100]})
@@ -90,11 +105,13 @@ def analyze_log_file(log_path):
             content = f.read()
         results = analyze_script_content(content)
         if results:
-            findings.append({
-                "file": log_path,
-                "indicators": results,
-                "indicator_count": len(results),
-            })
+            findings.append(
+                {
+                    "file": log_path,
+                    "indicators": results,
+                    "indicator_count": len(results),
+                }
+            )
     except FileNotFoundError:
         print(f"[!] File not found: {log_path}")
     return findings
@@ -104,8 +121,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="Detect suspicious PowerShell execution patterns"
     )
-    parser.add_argument("--event-logs", action="store_true",
-                        help="Parse Windows PowerShell event logs")
+    parser.add_argument(
+        "--event-logs", action="store_true", help="Parse Windows PowerShell event logs"
+    )
     parser.add_argument("--script", help="Analyze a PowerShell script file")
     parser.add_argument("--log-dir", help="Directory of PS log files to scan")
     parser.add_argument("--output", "-o", help="Output JSON report")
@@ -121,13 +139,15 @@ def main():
             script = evt.get("ScriptBlock", "")
             indicators = analyze_script_content(script)
             if indicators:
-                report["findings"].append({
-                    "source": "event_log",
-                    "time": evt.get("TimeCreated", ""),
-                    "path": evt.get("Path", ""),
-                    "indicators": indicators,
-                    "preview": script[:200] if args.verbose else "",
-                })
+                report["findings"].append(
+                    {
+                        "source": "event_log",
+                        "time": evt.get("TimeCreated", ""),
+                        "path": evt.get("Path", ""),
+                        "indicators": indicators,
+                        "preview": script[:200] if args.verbose else "",
+                    }
+                )
         print(f"[*] Analyzed {len(events)} script block events")
 
     if args.script:
@@ -143,10 +163,13 @@ def main():
 
     report["total_suspicious"] = len(report["findings"])
     report["risk_level"] = (
-        "CRITICAL" if len(report["findings"]) >= 10
-        else "HIGH" if len(report["findings"]) >= 5
-        else "MEDIUM" if report["findings"]
-        else "LOW"
+        "CRITICAL"
+        if len(report["findings"]) >= 10
+        else (
+            "HIGH"
+            if len(report["findings"]) >= 5
+            else "MEDIUM" if report["findings"] else "LOW"
+        )
     )
     print(f"[*] Suspicious findings: {len(report['findings'])}")
 

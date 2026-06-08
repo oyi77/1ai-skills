@@ -15,7 +15,7 @@ import re
 from datetime import datetime, timedelta
 from pathlib import Path
 
-_SAFE_TABLE_RE = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*$')
+_SAFE_TABLE_RE = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]*$")
 
 
 class SQLiteForensicsAgent:
@@ -51,7 +51,8 @@ class SQLiteForensicsAgent:
             "total_freelist_pages": struct.unpack(">I", header[36:40])[0],
             "schema_cookie": struct.unpack(">I", header[40:44])[0],
             "text_encoding": {1: "UTF-8", 2: "UTF-16le", 3: "UTF-16be"}.get(
-                struct.unpack(">I", header[52:56])[0], "unknown"),
+                struct.unpack(">I", header[52:56])[0], "unknown"
+            ),
             "db_size_bytes": os.path.getsize(self.db_path),
         }
 
@@ -78,18 +79,25 @@ class SQLiteForensicsAgent:
                 leaf_count = struct.unpack(">I", page_data[4:8])[0]
                 leaves = []
                 for i in range(leaf_count):
-                    lp = struct.unpack(">I", page_data[8 + i * 4:12 + i * 4])[0]
+                    lp = struct.unpack(">I", page_data[8 + i * 4 : 12 + i * 4])[0]
                     leaves.append(lp)
                 trunk_pages.append({"page": trunk, "leaf_count": leaf_count})
                 leaf_pages.extend(leaves)
                 trunk = next_trunk
 
         if leaf_pages:
-            self.findings.append({"type": "freelist_data",
-                                  "pages": len(leaf_pages),
-                                  "note": "Deleted records may be recoverable"})
-        return {"freelist_pages": total_free,
-                "trunk_pages": trunk_pages, "leaf_pages": leaf_pages}
+            self.findings.append(
+                {
+                    "type": "freelist_data",
+                    "pages": len(leaf_pages),
+                    "note": "Deleted records may be recoverable",
+                }
+            )
+        return {
+            "freelist_pages": total_free,
+            "trunk_pages": trunk_pages,
+            "leaf_pages": leaf_pages,
+        }
 
     def extract_freelist_pages(self):
         """Dump raw freelist leaf pages for hex analysis."""
@@ -127,14 +135,20 @@ class SQLiteForensicsAgent:
                 f.seek(offset)
                 fh = f.read(24)
                 page_number = struct.unpack(">I", fh[0:4])[0]
-                frames.append({"frame": frame_num, "page": page_number,
-                                "offset": offset})
+                frames.append(
+                    {"frame": frame_num, "page": page_number, "offset": offset}
+                )
                 offset += 24 + page_size
                 frame_num += 1
 
-        return {"wal_exists": True, "magic": hex(magic),
-                "page_size": page_size, "checkpoint_seq": checkpoint_seq,
-                "total_frames": len(frames), "frames": frames[:50]}
+        return {
+            "wal_exists": True,
+            "magic": hex(magic),
+            "page_size": page_size,
+            "checkpoint_seq": checkpoint_seq,
+            "total_frames": len(frames),
+            "frames": frames[:50],
+        }
 
     def query_tables(self):
         """List all tables and row counts in the database."""
@@ -163,7 +177,8 @@ class SQLiteForensicsAgent:
             elif fmt == "chrome":
                 epoch_delta = 11644473600
                 return datetime.utcfromtimestamp(
-                    (value / 1_000_000) - epoch_delta).isoformat()
+                    (value / 1_000_000) - epoch_delta
+                ).isoformat()
             elif fmt == "mac_absolute":
                 mac_epoch = datetime(2001, 1, 1)
                 return (mac_epoch + timedelta(seconds=value)).isoformat()

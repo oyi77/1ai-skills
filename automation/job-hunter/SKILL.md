@@ -1,12 +1,6 @@
 ---
 name: job-hunter
-description: Autonomous job hunting agent with state tracking, tailored applications, and multi-platform job search
-allowed-tools: - Bash(browser-use:*)
-  - Bash(linkedin:*)
-  - Bash(indeed:*)
-  - MCP(google-sheets:*)
-  - MCP(gmail:*)
-cron: 0 9 * * 1-5
+description: Job Hunter Agent (Autonomous). Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

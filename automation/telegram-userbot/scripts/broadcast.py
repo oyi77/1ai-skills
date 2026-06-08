@@ -3,16 +3,18 @@
 Bulk DM broadcaster with rate limiting.
 Usage: python3 broadcast.py --targets prospects.csv --message "Halo {name}!" --delay 30
 """
+
 import asyncio, csv, argparse, sys
 from telethon import TelegramClient
 from telethon.errors import FloodWaitError, UserPrivacyRestrictedError, PeerFloodError
 
 SESSION = "/home/openclaw/.openclaw/workspace/.vilona/sessions/paijo.session"
 
+
 async def bulk_dm(targets: list, message: str, delay: int = 30):
     client = TelegramClient(SESSION, 23913448, "REDACTED_ROTATED_CREDENTIAL")
     await client.connect()
-    
+
     sent, failed = 0, 0
     for t in targets:
         username = t.get("username", t) if isinstance(t, dict) else t
@@ -32,9 +34,10 @@ async def bulk_dm(targets: list, message: str, delay: int = 30):
         except Exception as e:
             print(f"❌ {username}: {e}")
             failed += 1
-    
+
     print(f"\n📊 Done: {sent} sent, {failed} failed")
     await client.disconnect()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -42,11 +45,11 @@ if __name__ == "__main__":
     parser.add_argument("--message", required=True)
     parser.add_argument("--delay", type=int, default=30)
     args = parser.parse_args()
-    
+
     if args.targets.endswith(".csv"):
         with open(args.targets) as f:
             targets = list(csv.DictReader(f))
     else:
         targets = [args.targets]
-    
+
     asyncio.run(bulk_dm(targets, args.message, args.delay))

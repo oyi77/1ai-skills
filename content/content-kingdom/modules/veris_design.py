@@ -16,41 +16,42 @@ from __future__ import annotations
 # ── Color Palette ─────────────────────────────────────────────────────────────
 
 VERIS_PALETTE = {
-    "bg_primary": "#000000",       # Pure black — mandatory background
-    "bg_secondary": "#000020",     # Very dark navy — secondary backgrounds
-    "text_primary": "#FFFFFF",     # Pure white — headlines & primary copy
-    "text_secondary": "#808080",   # Mid-grey — supporting text
-    "accent_trust": "#202040",     # Dark indigo — trust signals, borders
-    "accent_urgency": "#200000",   # Very dark red — urgency, scarcity
-    "accent_soft": "#606080",      # Muted slate — decorative elements
+    "bg_primary": "#000000",  # Pure black — mandatory background
+    "bg_secondary": "#000020",  # Very dark navy — secondary backgrounds
+    "text_primary": "#FFFFFF",  # Pure white — headlines & primary copy
+    "text_secondary": "#808080",  # Mid-grey — supporting text
+    "accent_trust": "#202040",  # Dark indigo — trust signals, borders
+    "accent_urgency": "#200000",  # Very dark red — urgency, scarcity
+    "accent_soft": "#606080",  # Muted slate — decorative elements
 }
 
 # ── Canvas Formats ─────────────────────────────────────────────────────────────
 
 VERIS_FORMATS = {
     "instagram_portrait": {"width": 1024, "height": 1280, "ratio": "4:5"},  # PRIMARY
-    "instagram_feed": {"width": 800,  "height": 800,  "ratio": "1:1"},
+    "instagram_feed": {"width": 800, "height": 800, "ratio": "1:1"},
     "tiktok": {"width": 1080, "height": 1920, "ratio": "9:16"},
 }
 
 # ── Three-Zone Layout ─────────────────────────────────────────────────────────
 
 VERIS_LAYOUT = {
-    "hook_zone": "top 20-30%",       # Headline — first thing eyes land on
-    "body_zone": "middle 40-50%",    # Product detail — builds desire
-    "cta_zone": "bottom 20-30%",     # Action button — converts
+    "hook_zone": "top 20-30%",  # Headline — first thing eyes land on
+    "body_zone": "middle 40-50%",  # Product detail — builds desire
+    "cta_zone": "bottom 20-30%",  # Action button — converts
 }
 
 # ── Platform Priority (Veris approach) ────────────────────────────────────────
 
 PLATFORM_PRIORITY = [
     "instagram",  # PRIMARY — where ads convert
-    "facebook",   # SECONDARY — older audience
-    "threads",    # TERTIARY — IG companion
-    "tiktok",     # QUATERNARY — volume play
+    "facebook",  # SECONDARY — older audience
+    "threads",  # TERTIARY — IG companion
+    "tiktok",  # QUATERNARY — volume play
 ]
 
 # ── Prompt Builders ───────────────────────────────────────────────────────────
+
 
 def build_veris_prompt(
     product_name: str,
@@ -145,7 +146,7 @@ def veris_prompt_for_platform(
     if platform in ("tiktok", "youtube", "reels"):
         payload["aspect_ratio"] = "9:16"
     elif platform in ("instagram", "facebook", "threads"):
-        payload["aspect_ratio"] = "3:4"   # 4:5 portrait — Instagram sweet spot
+        payload["aspect_ratio"] = "3:4"  # 4:5 portrait — Instagram sweet spot
     # 1:1 square: keep default 3:4 (GeminiGen will crop; IG square can use portrait)
 
     return payload

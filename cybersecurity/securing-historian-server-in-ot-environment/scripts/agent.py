@@ -12,7 +12,6 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
-
 HISTORIAN_PORTS = {
     5450: ("PI Data Archive", "PI SDK/API connections"),
     5457: ("PI AF Server", "PI Asset Framework"),
@@ -34,8 +33,9 @@ UNNECESSARY_PORTS = {80, 135, 445, 3389, 8080}
 class HistorianSecurityAgent:
     """Audits OT historian server security configuration."""
 
-    def __init__(self, historian_ip, historian_type="PI",
-                 output_dir="./historian_audit"):
+    def __init__(
+        self, historian_ip, historian_type="PI", output_dir="./historian_audit"
+    ):
         self.ip = historian_ip
         self.hist_type = historian_type
         self.output_dir = Path(output_dir)
@@ -52,28 +52,36 @@ class HistorianSecurityAgent:
                 result = sock.connect_ex((self.ip, port))
                 sock.close()
                 if result == 0:
-                    exposed.append({
-                        "port": port, "service": service, "description": desc,
-                        "unnecessary": port in UNNECESSARY_PORTS,
-                    })
+                    exposed.append(
+                        {
+                            "port": port,
+                            "service": service,
+                            "description": desc,
+                            "unnecessary": port in UNNECESSARY_PORTS,
+                        }
+                    )
             except (socket.error, OSError):
                 pass
 
         for svc in exposed:
             if svc["unnecessary"]:
-                self.findings.append({
-                    "severity": "high",
-                    "category": "Network Exposure",
-                    "title": f"Unnecessary service: {svc['service']} (port {svc['port']})",
-                    "remediation": f"Disable {svc['service']} or restrict via firewall",
-                })
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "category": "Network Exposure",
+                        "title": f"Unnecessary service: {svc['service']} (port {svc['port']})",
+                        "remediation": f"Disable {svc['service']} or restrict via firewall",
+                    }
+                )
         if any(s["port"] == 80 for s in exposed):
-            self.findings.append({
-                "severity": "high",
-                "category": "Encryption",
-                "title": "HTTP (unencrypted) web interface exposed",
-                "remediation": "Redirect HTTP to HTTPS and disable port 80",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "category": "Encryption",
+                    "title": "HTTP (unencrypted) web interface exposed",
+                    "remediation": "Redirect HTTP to HTTPS and disable port 80",
+                }
+            )
         return exposed
 
     def check_authentication(self):
@@ -105,13 +113,15 @@ class HistorianSecurityAgent:
             },
         ]
         for c in checks:
-            self.findings.append({
-                "severity": c["severity"],
-                "category": "Authentication",
-                "title": f"Review: {c['check']}",
-                "detail": c["risk"],
-                "remediation": c["remediation"],
-            })
+            self.findings.append(
+                {
+                    "severity": c["severity"],
+                    "category": "Authentication",
+                    "title": f"Review: {c['check']}",
+                    "detail": c["risk"],
+                    "remediation": c["remediation"],
+                }
+            )
         return checks
 
     def check_data_integrity(self):
@@ -137,13 +147,15 @@ class HistorianSecurityAgent:
             },
         ]
         for c in checks:
-            self.findings.append({
-                "severity": c["severity"],
-                "category": "Data Integrity",
-                "title": c["check"],
-                "detail": c["detail"],
-                "remediation": c["remediation"],
-            })
+            self.findings.append(
+                {
+                    "severity": c["severity"],
+                    "category": "Data Integrity",
+                    "title": c["check"],
+                    "detail": c["detail"],
+                    "remediation": c["remediation"],
+                }
+            )
         return checks
 
     def check_dmz_architecture(self):
@@ -163,13 +175,15 @@ class HistorianSecurityAgent:
             },
         ]
         for c in checks:
-            self.findings.append({
-                "severity": c["severity"],
-                "category": "DMZ Architecture",
-                "title": c["check"],
-                "detail": c["detail"],
-                "remediation": c["remediation"],
-            })
+            self.findings.append(
+                {
+                    "severity": c["severity"],
+                    "category": "DMZ Architecture",
+                    "title": c["check"],
+                    "detail": c["detail"],
+                    "remediation": c["remediation"],
+                }
+            )
         return checks
 
     def generate_report(self):

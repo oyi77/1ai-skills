@@ -11,12 +11,18 @@ from collections import Counter, defaultdict
 from datetime import datetime
 
 MODBUS_FUNCTIONS = {
-    1: ("Read Coils", "read"), 2: ("Read Discrete Inputs", "read"),
-    3: ("Read Holding Registers", "read"), 4: ("Read Input Registers", "read"),
-    5: ("Write Single Coil", "write"), 6: ("Write Single Register", "write"),
-    15: ("Write Multiple Coils", "write"), 16: ("Write Multiple Registers", "write"),
-    8: ("Diagnostics", "diagnostic"), 17: ("Report Server ID", "diagnostic"),
-    22: ("Mask Write Register", "write"), 23: ("Read/Write Multiple", "write"),
+    1: ("Read Coils", "read"),
+    2: ("Read Discrete Inputs", "read"),
+    3: ("Read Holding Registers", "read"),
+    4: ("Read Input Registers", "read"),
+    5: ("Write Single Coil", "write"),
+    6: ("Write Single Register", "write"),
+    15: ("Write Multiple Coils", "write"),
+    16: ("Write Multiple Registers", "write"),
+    8: ("Diagnostics", "diagnostic"),
+    17: ("Report Server ID", "diagnostic"),
+    22: ("Mask Write Register", "write"),
+    23: ("Read/Write Multiple", "write"),
     43: ("Read Device ID", "diagnostic"),
 }
 
@@ -62,27 +68,38 @@ def analyze_modbus_traffic(events, authorized_masters=None):
         src_dst[f"{src}->{dst}"] += 1
 
         if authorized_masters and src not in authorized_masters:
-            findings.append({
-                "type": "unauthorized_master",
-                "source": src, "destination": dst,
-                "function": fc_info[0], "function_code": fc,
-                "severity": "CRITICAL" if fc in DANGEROUS_FUNCTIONS else "HIGH",
-            })
+            findings.append(
+                {
+                    "type": "unauthorized_master",
+                    "source": src,
+                    "destination": dst,
+                    "function": fc_info[0],
+                    "function_code": fc,
+                    "severity": "CRITICAL" if fc in DANGEROUS_FUNCTIONS else "HIGH",
+                }
+            )
 
         if fc in DANGEROUS_FUNCTIONS:
-            write_ops.append({
-                "timestamp": evt.get("ts", ""),
-                "source": src, "destination": dst,
-                "function": fc_info[0], "function_code": fc,
-            })
+            write_ops.append(
+                {
+                    "timestamp": evt.get("ts", ""),
+                    "source": src,
+                    "destination": dst,
+                    "function": fc_info[0],
+                    "function_code": fc,
+                }
+            )
 
         if fc not in MODBUS_FUNCTIONS:
-            findings.append({
-                "type": "unknown_function_code",
-                "source": src, "function_code": fc,
-                "severity": "HIGH",
-                "description": f"Non-standard Modbus function code: {fc}",
-            })
+            findings.append(
+                {
+                    "type": "unknown_function_code",
+                    "source": src,
+                    "function_code": fc,
+                    "severity": "HIGH",
+                    "description": f"Non-standard Modbus function code: {fc}",
+                }
+            )
 
     return {
         "total_events": len(events),
@@ -114,14 +131,16 @@ def detect_write_floods(events, threshold=20, window_seconds=60):
         timestamps.sort()
         for i in range(len(timestamps) - threshold):
             if timestamps[i + threshold] - timestamps[i] <= window_seconds:
-                findings.append({
-                    "type": "write_flood",
-                    "source": src,
-                    "writes_in_window": threshold,
-                    "window_seconds": window_seconds,
-                    "severity": "CRITICAL",
-                    "description": f">{threshold} write commands in {window_seconds}s from {src}",
-                })
+                findings.append(
+                    {
+                        "type": "write_flood",
+                        "source": src,
+                        "writes_in_window": threshold,
+                        "window_seconds": window_seconds,
+                        "severity": "CRITICAL",
+                        "description": f">{threshold} write commands in {window_seconds}s from {src}",
+                    }
+                )
                 break
     return findings
 

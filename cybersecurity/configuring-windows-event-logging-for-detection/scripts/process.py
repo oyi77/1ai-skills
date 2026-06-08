@@ -10,7 +10,9 @@ def get_audit_policy() -> dict:
     try:
         result = subprocess.run(
             ["auditpol", "/get", "/category:*"],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         if result.returncode != 0:
             return {"error": result.stderr}

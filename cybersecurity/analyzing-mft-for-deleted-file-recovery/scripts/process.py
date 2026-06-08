@@ -44,14 +44,16 @@ class MFTDeletedFileAnalyzer:
                     si_dt = datetime.fromisoformat(si_created.replace("Z", "+00:00"))
                     fn_dt = datetime.fromisoformat(fn_created.replace("Z", "+00:00"))
                     if si_dt < fn_dt:
-                        self.timestomped_files.append({
-                            "entry_number": row.get("EntryNumber", ""),
-                            "filename": row.get("FileName", ""),
-                            "parent_path": row.get("ParentPath", ""),
-                            "si_created": si_created,
-                            "fn_created": fn_created,
-                            "delta_seconds": (fn_dt - si_dt).total_seconds()
-                        })
+                        self.timestomped_files.append(
+                            {
+                                "entry_number": row.get("EntryNumber", ""),
+                                "filename": row.get("FileName", ""),
+                                "parent_path": row.get("ParentPath", ""),
+                                "si_created": si_created,
+                                "fn_created": fn_created,
+                                "delta_seconds": (fn_dt - si_dt).total_seconds(),
+                            }
+                        )
                 except (ValueError, TypeError):
                     continue
 
@@ -60,13 +62,15 @@ class MFTDeletedFileAnalyzer:
         by_ext = defaultdict(list)
         for record in self.deleted_files:
             ext = record.get("Extension", "NO_EXT").upper()
-            by_ext[ext].append({
-                "filename": record.get("FileName", ""),
-                "parent_path": record.get("ParentPath", ""),
-                "file_size": record.get("FileSize", ""),
-                "created": record.get("Created0x10", ""),
-                "modified": record.get("LastModified0x10", "")
-            })
+            by_ext[ext].append(
+                {
+                    "filename": record.get("FileName", ""),
+                    "parent_path": record.get("ParentPath", ""),
+                    "file_size": record.get("FileSize", ""),
+                    "created": record.get("Created0x10", ""),
+                    "modified": record.get("LastModified0x10", ""),
+                }
+            )
         return dict(by_ext)
 
     def generate_report(self) -> str:
@@ -88,10 +92,10 @@ class MFTDeletedFileAnalyzer:
                     "filename": r.get("FileName", ""),
                     "parent_path": r.get("ParentPath", ""),
                     "file_size": r.get("FileSize", ""),
-                    "entry_number": r.get("EntryNumber", "")
+                    "entry_number": r.get("EntryNumber", ""),
                 }
                 for r in self.deleted_files[:100]
-            ]
+            ],
         }
 
         report_path = os.path.join(self.output_dir, "mft_deleted_analysis.json")

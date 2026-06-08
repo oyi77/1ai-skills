@@ -7,7 +7,9 @@ import argparse
 import subprocess
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -39,9 +41,22 @@ def analyze_processes(memory_file):
     processes = run_volatility(memory_file, "windows.pslist")
     suspicious = []
     suspicious_names = [
-        "mimikatz", "procdump", "psexec", "cobalt", "beacon", "meterpreter",
-        "nc.exe", "ncat", "powershell", "cmd.exe", "wscript", "cscript",
-        "certutil", "bitsadmin", "mshta", "regsvr32",
+        "mimikatz",
+        "procdump",
+        "psexec",
+        "cobalt",
+        "beacon",
+        "meterpreter",
+        "nc.exe",
+        "ncat",
+        "powershell",
+        "cmd.exe",
+        "wscript",
+        "cscript",
+        "certutil",
+        "bitsadmin",
+        "mshta",
+        "regsvr32",
     ]
     for proc in processes:
         name = proc.get("ImageFileName", "").lower()
@@ -56,7 +71,11 @@ def analyze_network_connections(memory_file):
     """Extract network connections and identify C2 communication."""
     connections = run_volatility(memory_file, "windows.netscan")
     established = [c for c in connections if c.get("State") == "ESTABLISHED"]
-    logger.info("Network connections: %d total, %d established", len(connections), len(established))
+    logger.info(
+        "Network connections: %d total, %d established",
+        len(connections),
+        len(established),
+    )
     return connections, established
 
 
@@ -65,13 +84,15 @@ def detect_process_injection(memory_file):
     malfind_results = run_volatility(memory_file, "windows.malfind")
     injected = []
     for entry in malfind_results:
-        injected.append({
-            "pid": entry.get("PID", ""),
-            "process": entry.get("Process", ""),
-            "start_vpn": entry.get("Start VPN", ""),
-            "protection": entry.get("Protection", ""),
-            "tag": entry.get("Tag", ""),
-        })
+        injected.append(
+            {
+                "pid": entry.get("PID", ""),
+                "process": entry.get("Process", ""),
+                "start_vpn": entry.get("Start VPN", ""),
+                "protection": entry.get("Protection", ""),
+                "tag": entry.get("Tag", ""),
+            }
+        )
     logger.info("Malfind: %d potential injections detected", len(injected))
     return injected
 
@@ -88,16 +109,26 @@ def extract_command_history(memory_file):
     cmdline = run_volatility(memory_file, "windows.cmdline")
     suspicious_cmds = []
     indicators = [
-        "powershell -enc", "invoke-expression", "downloadstring", "net user",
-        "mimikatz", "sekurlsa", "lsadump", "reg save", "vssadmin",
-        "certutil -urlcache", "bitsadmin /transfer",
+        "powershell -enc",
+        "invoke-expression",
+        "downloadstring",
+        "net user",
+        "mimikatz",
+        "sekurlsa",
+        "lsadump",
+        "reg save",
+        "vssadmin",
+        "certutil -urlcache",
+        "bitsadmin /transfer",
     ]
     for entry in cmdline:
         args = entry.get("Args", "").lower()
         if any(ind in args for ind in indicators):
             entry["suspicious_reason"] = "Suspicious command pattern"
             suspicious_cmds.append(entry)
-    logger.info("Command lines: %d total, %d suspicious", len(cmdline), len(suspicious_cmds))
+    logger.info(
+        "Command lines: %d total, %d suspicious", len(cmdline), len(suspicious_cmds)
+    )
     return cmdline, suspicious_cmds
 
 
@@ -121,8 +152,15 @@ def check_kernel_modules(memory_file):
     return modules, hidden
 
 
-def generate_forensics_report(memory_file, processes, suspicious_procs, connections,
-                               injections, suspicious_cmds, hidden_drivers):
+def generate_forensics_report(
+    memory_file,
+    processes,
+    suspicious_procs,
+    connections,
+    injections,
+    suspicious_cmds,
+    hidden_drivers,
+):
     """Generate memory forensics analysis report."""
     report = {
         "memory_image": memory_file,
@@ -143,13 +181,20 @@ def generate_forensics_report(memory_file, processes, suspicious_procs, connecti
         "suspicious_commands": suspicious_cmds[:20],
         "hidden_drivers": hidden_drivers,
     }
-    total_findings = len(suspicious_procs) + len(injections) + len(suspicious_cmds) + len(hidden_drivers)
+    total_findings = (
+        len(suspicious_procs)
+        + len(injections)
+        + len(suspicious_cmds)
+        + len(hidden_drivers)
+    )
     print(f"MEMORY FORENSICS REPORT - {total_findings} findings")
     return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Memory Forensics Agent (Volatility 3)")
+    parser = argparse.ArgumentParser(
+        description="Memory Forensics Agent (Volatility 3)"
+    )
     parser.add_argument("--memory-file", required=True, help="Path to memory dump file")
     parser.add_argument("--output", default="memory_forensics_report.json")
     args = parser.parse_args()
@@ -161,8 +206,13 @@ def main():
     modules, hidden = check_kernel_modules(args.memory_file)
 
     report = generate_forensics_report(
-        args.memory_file, processes, suspicious, established,
-        injections, suspicious_cmds, hidden,
+        args.memory_file,
+        processes,
+        suspicious,
+        established,
+        injections,
+        suspicious_cmds,
+        hidden,
     )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)

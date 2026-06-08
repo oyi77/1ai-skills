@@ -27,7 +27,7 @@ class CloudflareAccessAuditor:
         self.account_id = account_id
         self.headers = {
             "Authorization": f"Bearer {api_token}",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }
 
     def _get(self, endpoint: str, params: dict = None) -> dict:
@@ -51,7 +51,7 @@ class CloudflareAccessAuditor:
             "vnc": 0,
             "without_policies": 0,
             "session_durations": {},
-            "apps": []
+            "apps": [],
         }
 
         for app in apps:
@@ -74,12 +74,21 @@ class CloudflareAccessAuditor:
                 stats["without_policies"] += 1
                 print(f"  [WARN] App '{name}' has no access policies!")
 
-            stats["session_durations"][session] = stats["session_durations"].get(session, 0) + 1
-            stats["apps"].append({
-                "name": name, "type": app_type, "domain": domain,
-                "session": session, "policies": policies_count
-            })
-            print(f"  [{app_type.upper()}] {name} ({domain}) - {policies_count} policies, session: {session}")
+            stats["session_durations"][session] = (
+                stats["session_durations"].get(session, 0) + 1
+            )
+            stats["apps"].append(
+                {
+                    "name": name,
+                    "type": app_type,
+                    "domain": domain,
+                    "session": session,
+                    "policies": policies_count,
+                }
+            )
+            print(
+                f"  [{app_type.upper()}] {name} ({domain}) - {policies_count} policies, session: {session}"
+            )
 
         return stats
 
@@ -94,7 +103,7 @@ class CloudflareAccessAuditor:
             "healthy": 0,
             "degraded": 0,
             "inactive": 0,
-            "tunnels": []
+            "tunnels": [],
         }
 
         for tunnel in tunnels:
@@ -112,13 +121,19 @@ class CloudflareAccessAuditor:
                 stats["inactive"] += 1
                 print(f"  [WARN] Tunnel '{name}' is inactive")
 
-            stats["tunnels"].append({
-                "name": name, "status": status,
-                "connections": len(connections), "created": created
-            })
+            stats["tunnels"].append(
+                {
+                    "name": name,
+                    "status": status,
+                    "connections": len(connections),
+                    "created": created,
+                }
+            )
 
-        print(f"  Total: {stats['total']}, Healthy: {stats['healthy']}, "
-              f"Degraded: {stats['degraded']}, Inactive: {stats['inactive']}")
+        print(
+            f"  Total: {stats['total']}, Healthy: {stats['healthy']}, "
+            f"Degraded: {stats['degraded']}, Inactive: {stats['inactive']}"
+        )
         return stats
 
     def audit_device_posture(self) -> dict[str, Any]:
@@ -127,11 +142,7 @@ class CloudflareAccessAuditor:
         data = self._get("devices/posture")
         rules = data.get("result", [])
 
-        stats = {
-            "total": len(rules),
-            "types": {},
-            "rules": []
-        }
+        stats = {"total": len(rules), "types": {}, "rules": []}
 
         for rule in rules:
             name = rule.get("name", "unknown")
@@ -157,18 +168,26 @@ class CloudflareAccessAuditor:
             "total": len(devices),
             "os_distribution": {},
             "active": 0,
-            "revoked": 0
+            "revoked": 0,
         }
 
         for device in devices:
-            os_type = device.get("os_version", "unknown").split(" ")[0] if device.get("os_version") else "unknown"
-            stats["os_distribution"][os_type] = stats["os_distribution"].get(os_type, 0) + 1
+            os_type = (
+                device.get("os_version", "unknown").split(" ")[0]
+                if device.get("os_version")
+                else "unknown"
+            )
+            stats["os_distribution"][os_type] = (
+                stats["os_distribution"].get(os_type, 0) + 1
+            )
             if device.get("revoked_at"):
                 stats["revoked"] += 1
             else:
                 stats["active"] += 1
 
-        print(f"  Total: {stats['total']}, Active: {stats['active']}, Revoked: {stats['revoked']}")
+        print(
+            f"  Total: {stats['total']}, Active: {stats['active']}, Revoked: {stats['revoked']}"
+        )
         print(f"  OS Distribution: {stats['os_distribution']}")
         return stats
 
@@ -209,10 +228,14 @@ Generated: {now}
 5. RECOMMENDATIONS
 """
         recs = []
-        if apps['without_policies'] > 0:
-            recs.append(f"   - {apps['without_policies']} app(s) without policies - add access rules immediately")
-        if tunnels['degraded'] > 0 or tunnels['inactive'] > 0:
-            recs.append(f"   - {tunnels['degraded'] + tunnels['inactive']} tunnel(s) need attention")
+        if apps["without_policies"] > 0:
+            recs.append(
+                f"   - {apps['without_policies']} app(s) without policies - add access rules immediately"
+            )
+        if tunnels["degraded"] > 0 or tunnels["inactive"] > 0:
+            recs.append(
+                f"   - {tunnels['degraded'] + tunnels['inactive']} tunnel(s) need attention"
+            )
         if "disk_encryption" not in posture.get("types", {}):
             recs.append("   - Add disk encryption posture rule")
         if "os_version" not in posture.get("types", {}):

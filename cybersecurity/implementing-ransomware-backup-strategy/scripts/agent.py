@@ -6,6 +6,7 @@ Audits backup infrastructure for ransomware resilience by checking
 backup encryption status, recovery point objectives (RPO), and
 backup integrity verification schedules.
 """
+
 import argparse
 import json
 import os
@@ -19,8 +20,14 @@ def check_veeam_backups(server_url, token):
     try:
         import requests
     except ImportError:
-        return [{"check": "Veeam API", "status": "SKIP", "severity": "INFO",
-                 "detail": "requests library not installed"}]
+        return [
+            {
+                "check": "Veeam API",
+                "status": "SKIP",
+                "severity": "INFO",
+                "detail": "requests library not installed",
+            }
+        ]
 
     findings = []
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
@@ -35,29 +42,41 @@ def check_veeam_backups(server_url, token):
             last_result = job.get("lastResult", "None")
             schedule_enabled = job.get("scheduleEnabled", False)
             if last_result == "Failed":
-                findings.append({
-                    "check": f"Backup job: {job_name}",
-                    "status": "FAIL",
-                    "severity": "CRITICAL",
-                    "detail": "Last backup failed",
-                })
+                findings.append(
+                    {
+                        "check": f"Backup job: {job_name}",
+                        "status": "FAIL",
+                        "severity": "CRITICAL",
+                        "detail": "Last backup failed",
+                    }
+                )
             elif not schedule_enabled:
-                findings.append({
-                    "check": f"Backup job: {job_name}",
-                    "status": "WARN",
-                    "severity": "HIGH",
-                    "detail": "Schedule disabled",
-                })
+                findings.append(
+                    {
+                        "check": f"Backup job: {job_name}",
+                        "status": "WARN",
+                        "severity": "HIGH",
+                        "detail": "Schedule disabled",
+                    }
+                )
             else:
-                findings.append({
-                    "check": f"Backup job: {job_name}",
-                    "status": "PASS",
-                    "severity": "INFO",
-                    "detail": f"Last result: {last_result}",
-                })
+                findings.append(
+                    {
+                        "check": f"Backup job: {job_name}",
+                        "status": "PASS",
+                        "severity": "INFO",
+                        "detail": f"Last result: {last_result}",
+                    }
+                )
     except Exception as e:
-        findings.append({"check": "Veeam job check", "status": "ERROR",
-                         "severity": "HIGH", "detail": str(e)})
+        findings.append(
+            {
+                "check": "Veeam job check",
+                "status": "ERROR",
+                "severity": "HIGH",
+                "detail": str(e),
+            }
+        )
     return findings
 
 
@@ -71,8 +90,14 @@ def check_restic_repository(repo_path, password_file=None):
                 restic_bin = os.path.join(d, name)
                 break
     if not restic_bin:
-        findings.append({"check": "Restic binary", "status": "SKIP",
-                         "severity": "INFO", "detail": "restic not found"})
+        findings.append(
+            {
+                "check": "Restic binary",
+                "status": "SKIP",
+                "severity": "INFO",
+                "detail": "restic not found",
+            }
+        )
         return findings
 
     env = dict(os.environ)
@@ -84,54 +109,115 @@ def check_restic_repository(repo_path, password_file=None):
     try:
         result = subprocess.run(
             [restic_bin, "snapshots", "--json"],
-            capture_output=True, text=True, timeout=120, env=env,
+            capture_output=True,
+            text=True,
+            timeout=120,
+            env=env,
         )
         if result.returncode == 0:
             snapshots = json.loads(result.stdout)
             if not snapshots:
-                findings.append({"check": "Snapshots exist", "status": "FAIL",
-                                 "severity": "CRITICAL", "detail": "No snapshots found"})
+                findings.append(
+                    {
+                        "check": "Snapshots exist",
+                        "status": "FAIL",
+                        "severity": "CRITICAL",
+                        "detail": "No snapshots found",
+                    }
+                )
             else:
                 latest = max(snapshots, key=lambda s: s.get("time", ""))
                 latest_time = latest.get("time", "")[:19]
-                findings.append({"check": "Latest snapshot", "status": "PASS",
-                                 "severity": "INFO",
-                                 "detail": f"{latest_time} ({len(snapshots)} total)"})
+                findings.append(
+                    {
+                        "check": "Latest snapshot",
+                        "status": "PASS",
+                        "severity": "INFO",
+                        "detail": f"{latest_time} ({len(snapshots)} total)",
+                    }
+                )
                 try:
-                    latest_dt = datetime.fromisoformat(latest_time.replace("Z", "+00:00"))
-                    age_hours = (datetime.now(timezone.utc) - latest_dt).total_seconds() / 3600
+                    latest_dt = datetime.fromisoformat(
+                        latest_time.replace("Z", "+00:00")
+                    )
+                    age_hours = (
+                        datetime.now(timezone.utc) - latest_dt
+                    ).total_seconds() / 3600
                     if age_hours > 48:
-                        findings.append({"check": "Backup freshness", "status": "FAIL",
-                                        "severity": "HIGH",
-                                        "detail": f"Latest backup is {age_hours:.0f}h old (>48h)"})
+                        findings.append(
+                            {
+                                "check": "Backup freshness",
+                                "status": "FAIL",
+                                "severity": "HIGH",
+                                "detail": f"Latest backup is {age_hours:.0f}h old (>48h)",
+                            }
+                        )
                     elif age_hours > 24:
-                        findings.append({"check": "Backup freshness", "status": "WARN",
-                                        "severity": "MEDIUM",
-                                        "detail": f"Latest backup is {age_hours:.0f}h old (>24h)"})
+                        findings.append(
+                            {
+                                "check": "Backup freshness",
+                                "status": "WARN",
+                                "severity": "MEDIUM",
+                                "detail": f"Latest backup is {age_hours:.0f}h old (>24h)",
+                            }
+                        )
                 except (ValueError, TypeError):
                     pass
         else:
-            findings.append({"check": "Repository access", "status": "FAIL",
-                             "severity": "CRITICAL", "detail": result.stderr[:200]})
+            findings.append(
+                {
+                    "check": "Repository access",
+                    "status": "FAIL",
+                    "severity": "CRITICAL",
+                    "detail": result.stderr[:200],
+                }
+            )
     except subprocess.TimeoutExpired:
-        findings.append({"check": "Repository access", "status": "FAIL",
-                         "severity": "HIGH", "detail": "Command timed out"})
+        findings.append(
+            {
+                "check": "Repository access",
+                "status": "FAIL",
+                "severity": "HIGH",
+                "detail": "Command timed out",
+            }
+        )
 
     # Check repository integrity
     try:
         result = subprocess.run(
             [restic_bin, "check", "--read-data-subset=1%"],
-            capture_output=True, text=True, timeout=300, env=env,
+            capture_output=True,
+            text=True,
+            timeout=300,
+            env=env,
         )
         if result.returncode == 0:
-            findings.append({"check": "Repository integrity", "status": "PASS",
-                             "severity": "INFO", "detail": "Integrity check passed"})
+            findings.append(
+                {
+                    "check": "Repository integrity",
+                    "status": "PASS",
+                    "severity": "INFO",
+                    "detail": "Integrity check passed",
+                }
+            )
         else:
-            findings.append({"check": "Repository integrity", "status": "FAIL",
-                             "severity": "CRITICAL", "detail": "Integrity check failed"})
+            findings.append(
+                {
+                    "check": "Repository integrity",
+                    "status": "FAIL",
+                    "severity": "CRITICAL",
+                    "detail": "Integrity check failed",
+                }
+            )
     except subprocess.TimeoutExpired:
-        findings.append({"check": "Repository integrity", "status": "WARN",
-                         "severity": "MEDIUM", "detail": "Integrity check timed out"})
+        findings.append(
+            {
+                "check": "Repository integrity",
+                "status": "WARN",
+                "severity": "MEDIUM",
+                "detail": "Integrity check timed out",
+            }
+        )
 
     return findings
 
@@ -147,55 +233,118 @@ def audit_321_rule(backup_config):
 
     # 3 copies
     if copies >= 3:
-        findings.append({"check": "3-2-1: At least 3 copies", "status": "PASS",
-                         "severity": "INFO", "detail": f"{copies} copies"})
+        findings.append(
+            {
+                "check": "3-2-1: At least 3 copies",
+                "status": "PASS",
+                "severity": "INFO",
+                "detail": f"{copies} copies",
+            }
+        )
     else:
-        findings.append({"check": "3-2-1: At least 3 copies", "status": "FAIL",
-                         "severity": "CRITICAL",
-                         "detail": f"Only {copies} copies (need 3)"})
+        findings.append(
+            {
+                "check": "3-2-1: At least 3 copies",
+                "status": "FAIL",
+                "severity": "CRITICAL",
+                "detail": f"Only {copies} copies (need 3)",
+            }
+        )
 
     # 2 different media types
     if len(media_types) >= 2:
-        findings.append({"check": "3-2-1: 2 different media types", "status": "PASS",
-                         "severity": "INFO", "detail": ", ".join(media_types)})
+        findings.append(
+            {
+                "check": "3-2-1: 2 different media types",
+                "status": "PASS",
+                "severity": "INFO",
+                "detail": ", ".join(media_types),
+            }
+        )
     else:
-        findings.append({"check": "3-2-1: 2 different media types", "status": "FAIL",
-                         "severity": "HIGH",
-                         "detail": f"Only {len(media_types)} type(s): {', '.join(media_types)}"})
+        findings.append(
+            {
+                "check": "3-2-1: 2 different media types",
+                "status": "FAIL",
+                "severity": "HIGH",
+                "detail": f"Only {len(media_types)} type(s): {', '.join(media_types)}",
+            }
+        )
 
     # 1 offsite copy
     if offsite_locations:
-        findings.append({"check": "3-2-1: 1 offsite copy", "status": "PASS",
-                         "severity": "INFO", "detail": ", ".join(offsite_locations)})
+        findings.append(
+            {
+                "check": "3-2-1: 1 offsite copy",
+                "status": "PASS",
+                "severity": "INFO",
+                "detail": ", ".join(offsite_locations),
+            }
+        )
     else:
-        findings.append({"check": "3-2-1: 1 offsite copy", "status": "FAIL",
-                         "severity": "CRITICAL", "detail": "No offsite backup"})
+        findings.append(
+            {
+                "check": "3-2-1: 1 offsite copy",
+                "status": "FAIL",
+                "severity": "CRITICAL",
+                "detail": "No offsite backup",
+            }
+        )
 
     # Immutable backup (ransomware protection)
     if immutable:
-        findings.append({"check": "Immutable backup", "status": "PASS",
-                         "severity": "INFO", "detail": "WORM/immutable storage enabled"})
+        findings.append(
+            {
+                "check": "Immutable backup",
+                "status": "PASS",
+                "severity": "INFO",
+                "detail": "WORM/immutable storage enabled",
+            }
+        )
     else:
-        findings.append({"check": "Immutable backup", "status": "FAIL",
-                         "severity": "CRITICAL",
-                         "detail": "No immutable backup - vulnerable to ransomware encryption"})
+        findings.append(
+            {
+                "check": "Immutable backup",
+                "status": "FAIL",
+                "severity": "CRITICAL",
+                "detail": "No immutable backup - vulnerable to ransomware encryption",
+            }
+        )
 
     # Air-gapped backup
     if air_gapped:
-        findings.append({"check": "Air-gapped backup", "status": "PASS",
-                         "severity": "INFO", "detail": "Offline/air-gapped copy exists"})
+        findings.append(
+            {
+                "check": "Air-gapped backup",
+                "status": "PASS",
+                "severity": "INFO",
+                "detail": "Offline/air-gapped copy exists",
+            }
+        )
     else:
-        findings.append({"check": "Air-gapped backup", "status": "WARN",
-                         "severity": "HIGH",
-                         "detail": "No air-gapped backup - consider tape or offline storage"})
+        findings.append(
+            {
+                "check": "Air-gapped backup",
+                "status": "WARN",
+                "severity": "HIGH",
+                "detail": "No air-gapped backup - consider tape or offline storage",
+            }
+        )
 
     # Encryption
     if backup_config.get("encrypted", False):
-        findings.append({"check": "Backup encryption", "status": "PASS",
-                         "severity": "INFO"})
+        findings.append(
+            {"check": "Backup encryption", "status": "PASS", "severity": "INFO"}
+        )
     else:
-        findings.append({"check": "Backup encryption", "status": "FAIL",
-                         "severity": "HIGH", "detail": "Backups are not encrypted"})
+        findings.append(
+            {
+                "check": "Backup encryption",
+                "status": "FAIL",
+                "severity": "HIGH",
+                "detail": "Backups are not encrypted",
+            }
+        )
 
     return findings
 
@@ -228,10 +377,14 @@ def format_summary(all_findings):
 
     print(f"\n  Detailed Results:")
     for f in all_findings:
-        status_icon = "OK" if f["status"] == "PASS" else "!!" if f["status"] == "FAIL" else "~~"
+        status_icon = (
+            "OK" if f["status"] == "PASS" else "!!" if f["status"] == "FAIL" else "~~"
+        )
         detail = f.get("detail", "")
-        print(f"    [{status_icon}] [{f['severity']:8s}] {f['check']}"
-              + (f": {detail}" if detail else ""))
+        print(
+            f"    [{status_icon}] [{f['severity']:8s}] {f['check']}"
+            + (f": {detail}" if detail else "")
+        )
 
     return severity_counts
 
@@ -257,14 +410,18 @@ def main():
         all_findings.extend(audit_321_rule(backup_config))
 
     if args.restic_repo:
-        all_findings.extend(check_restic_repository(args.restic_repo, args.restic_password_file))
+        all_findings.extend(
+            check_restic_repository(args.restic_repo, args.restic_password_file)
+        )
 
     if args.veeam_url and args.veeam_token:
         all_findings.extend(check_veeam_backups(args.veeam_url, args.veeam_token))
 
     if not all_findings:
-        print("[!] No audit sources specified. Use --config, --restic-repo, or --veeam-url.",
-              file=sys.stderr)
+        print(
+            "[!] No audit sources specified. Use --config, --restic-repo, or --veeam-url.",
+            file=sys.stderr,
+        )
         parser.print_help()
         sys.exit(1)
 
@@ -276,10 +433,13 @@ def main():
         "findings": all_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0
-            else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0 else "LOW"
+            )
         ),
     }
 

@@ -10,10 +10,10 @@ from typing import Optional, Dict, List
 # Model tier configuration
 MODEL_TIERS = {
     "fast": "nvidia/meta/llama-3.2-1b-instruct",
-    "balanced": "nvidia/minimaxai/minimax-m2.1", 
+    "balanced": "nvidia/minimaxai/minimax-m2.1",
     "advanced": "nvidia/moonshotai/kimi-k2.5",
     "reasoning": "nvidia/deepseek-ai/deepseek-r1-distill-qwen-32b",
-    "code": "nvvidia/qwen/qwen2.5-coder-32b-instruct"
+    "code": "nvvidia/qwen/qwen2.5-coder-32b-instruct",
 }
 
 # Task patterns for auto-detection
@@ -57,20 +57,20 @@ TASK_PATTERNS = {
         r"(refactor|rewrite).*(code|function|class)",
         r"(implement|build).*(feature|solution)",
         r"```.*```",  # Code blocks
-    ]
+    ],
 }
 
 
 def detect_tier(task: str) -> str:
     """Detect the appropriate model tier based on task content."""
     task_lower = task.lower()
-    
+
     # Check from most complex to simplest
     for tier in ["reasoning", "code", "advanced", "balanced", "fast"]:
         for pattern in TASK_PATTERNS.get(tier, []):
             if re.search(pattern, task_lower, re.IGNORECASE):
                 return tier
-    
+
     # Default to fast for simple queries
     return "balanced"
 
@@ -78,11 +78,11 @@ def detect_tier(task: str) -> str:
 def format_spawn_command(task: str, tier: str, timeout: int = 120) -> str:
     """Generate subagent spawn command."""
     model = MODEL_TIERS.get(tier, MODEL_TIERS["balanced"])
-    
+
     # Create a focused task description
     task_clean = task.strip().replace('"', '\\"')
-    
-    return f'''sessions_spawn(task="{task_clean}", model="{model}", runTimeoutSeconds={timeout})'''
+
+    return f"""sessions_spawn(task="{task_clean}", model="{model}", runTimeoutSeconds={timeout})"""
 
 
 def should_spawn(task: str) -> bool:
@@ -104,25 +104,25 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: router.py <task> [--model tier] [--timeout seconds]")
         sys.exit(1)
-    
+
     task = sys.argv[1]
-    
+
     # Parse args
     specified_tier = None
     timeout = 120
-    
+
     for i, arg in enumerate(sys.argv):
         if arg == "--model" and i + 1 < len(sys.argv):
             specified_tier = sys.argv[i + 1]
         if arg == "--timeout" and i + 1 < len(sys.argv):
             timeout = int(sys.argv[i + 1])
-    
+
     # Determine tier
     if specified_tier:
         tier = specified_tier if specified_tier in MODEL_TIERS else "balanced"
     else:
         tier = detect_tier(task)
-    
+
     # Output result
     print(f"TIER: {tier}")
     print(f"MODEL: {MODEL_TIERS[tier]}")

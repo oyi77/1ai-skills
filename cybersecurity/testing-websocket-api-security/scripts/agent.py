@@ -27,7 +27,7 @@ except ImportError:
 INJECTION_PAYLOADS = [
     '{"action":"admin","data":"test"}',
     '{"action":"subscribe","channel":"../admin"}',
-    '<script>alert(1)</script>',
+    "<script>alert(1)</script>",
     "' OR 1=1 --",
     '{"__proto__":{"isAdmin":true}}',
     '{"action":"eval","code":"process.exit()"}',
@@ -67,8 +67,13 @@ class WebSocketSecurityAgent:
             await ws.send('{"action":"ping"}')
             try:
                 resp = await asyncio.wait_for(ws.recv(), timeout=3)
-                self.findings.append({"severity": "high", "type": "No Auth on WebSocket",
-                                      "detail": "WebSocket accepts connection without credentials"})
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "No Auth on WebSocket",
+                        "detail": "WebSocket accepts connection without credentials",
+                    }
+                )
                 await ws.close()
                 return {"connected": True, "response": resp[:200]}
             except Exception:
@@ -80,8 +85,13 @@ class WebSocketSecurityAgent:
         """Test Cross-Site WebSocket Hijacking via Origin header."""
         ws = await self._connect(origin=evil_origin)
         if ws:
-            self.findings.append({"severity": "critical", "type": "CSWSH",
-                                  "detail": f"WebSocket accepts connection from origin: {evil_origin}"})
+            self.findings.append(
+                {
+                    "severity": "critical",
+                    "type": "CSWSH",
+                    "detail": f"WebSocket accepts connection from origin: {evil_origin}",
+                }
+            )
             await ws.close()
             return {"vulnerable": True, "origin": evil_origin}
         return {"vulnerable": False}
@@ -97,10 +107,20 @@ class WebSocketSecurityAgent:
                 await ws.send(payload)
                 resp = await asyncio.wait_for(ws.recv(), timeout=3)
                 if "error" not in resp.lower() and len(resp) > 10:
-                    results.append({"payload": payload[:80], "response": resp[:200],
-                                    "potential_issue": True})
-                    self.findings.append({"severity": "medium", "type": "Injection Accepted",
-                                          "detail": f"Payload accepted: {payload[:50]}"})
+                    results.append(
+                        {
+                            "payload": payload[:80],
+                            "response": resp[:200],
+                            "potential_issue": True,
+                        }
+                    )
+                    self.findings.append(
+                        {
+                            "severity": "medium",
+                            "type": "Injection Accepted",
+                            "detail": f"Payload accepted: {payload[:50]}",
+                        }
+                    )
             except Exception:
                 continue
         await ws.close()
@@ -119,8 +139,13 @@ class WebSocketSecurityAgent:
                 resp = await asyncio.wait_for(ws.recv(), timeout=3)
                 if "error" not in resp.lower() and "denied" not in resp.lower():
                     results.append({"channel": ch, "response": resp[:200]})
-                    self.findings.append({"severity": "high", "type": "Channel Auth Bypass",
-                                          "detail": f"Subscribed to restricted channel: {ch}"})
+                    self.findings.append(
+                        {
+                            "severity": "high",
+                            "type": "Channel Auth Bypass",
+                            "detail": f"Subscribed to restricted channel: {ch}",
+                        }
+                    )
             except Exception:
                 continue
         await ws.close()
@@ -142,21 +167,37 @@ class WebSocketSecurityAgent:
         elapsed = time.time() - start
         await ws.close()
         if sent == count:
-            self.findings.append({"severity": "medium", "type": "No Rate Limiting",
-                                  "detail": f"Accepted {count} messages in {elapsed:.2f}s"})
-        return {"sent": sent, "elapsed": round(elapsed, 2), "rate_limited": sent < count}
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "No Rate Limiting",
+                    "detail": f"Accepted {count} messages in {elapsed:.2f}s",
+                }
+            )
+        return {
+            "sent": sent,
+            "elapsed": round(elapsed, 2),
+            "rate_limited": sent < count,
+        }
 
     def check_upgrade_headers(self):
         """Check HTTP upgrade response headers for security issues."""
         if not requests:
             return {"error": "requests not available"}
-        http_url = self.http_url or self.ws_url.replace("ws://", "http://").replace("wss://", "https://")
+        http_url = self.http_url or self.ws_url.replace("ws://", "http://").replace(
+            "wss://", "https://"
+        )
         try:
-            resp = requests.get(http_url, headers={
-                "Upgrade": "websocket", "Connection": "Upgrade",
-                "Sec-WebSocket-Key": "dGhlIHNhbXBsZSBub25jZQ==",
-                "Sec-WebSocket-Version": "13",
-            }, timeout=10)
+            resp = requests.get(
+                http_url,
+                headers={
+                    "Upgrade": "websocket",
+                    "Connection": "Upgrade",
+                    "Sec-WebSocket-Key": "dGhlIHNhbXBsZSBub25jZQ==",
+                    "Sec-WebSocket-Version": "13",
+                },
+                timeout=10,
+            )
             issues = []
             if "Sec-WebSocket-Accept" in resp.headers and resp.status_code == 101:
                 if "strict-transport-security" not in {k.lower() for k in resp.headers}:
@@ -164,8 +205,13 @@ class WebSocketSecurityAgent:
                 if "x-frame-options" not in {k.lower() for k in resp.headers}:
                     issues.append("Missing X-Frame-Options")
             for issue in issues:
-                self.findings.append({"severity": "low", "type": "Missing Security Header",
-                                      "detail": issue})
+                self.findings.append(
+                    {
+                        "severity": "low",
+                        "type": "Missing Security Header",
+                        "detail": issue,
+                    }
+                )
             return {"status": resp.status_code, "issues": issues}
         except requests.RequestException:
             return {"error": "connection failed"}
@@ -178,12 +224,18 @@ class WebSocketSecurityAgent:
         flood = await self.test_message_flood(auth_headers=auth_headers)
         upgrade = self.check_upgrade_headers()
         return {
-            "no_auth": no_auth, "cswsh": cswsh, "injection": injection,
-            "authz_bypass": authz, "flood": flood, "upgrade_headers": upgrade,
+            "no_auth": no_auth,
+            "cswsh": cswsh,
+            "injection": injection,
+            "authz_bypass": authz,
+            "flood": flood,
+            "upgrade_headers": upgrade,
         }
 
     def generate_report(self, auth_headers=None):
-        results = asyncio.get_event_loop().run_until_complete(self.run_all_tests(auth_headers))
+        results = asyncio.get_event_loop().run_until_complete(
+            self.run_all_tests(auth_headers)
+        )
         report = {
             "report_date": datetime.utcnow().isoformat(),
             "target": self.ws_url,

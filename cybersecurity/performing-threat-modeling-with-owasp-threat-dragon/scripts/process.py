@@ -27,18 +27,20 @@ def extract_threats(model: dict) -> list:
             cell_data = cell.get("data", {})
             cell_threats = cell_data.get("threats", [])
             for threat in cell_threats:
-                threats.append({
-                    "diagram": diagram_title,
-                    "element": cell_data.get("name", cell.get("id", "unknown")),
-                    "element_type": cell_data.get("type", "unknown"),
-                    "title": threat.get("title", ""),
-                    "description": threat.get("description", ""),
-                    "severity": threat.get("severity", "Unknown"),
-                    "status": threat.get("status", "Open"),
-                    "type": threat.get("type", ""),
-                    "mitigation": threat.get("mitigation", ""),
-                    "model_type": threat.get("modelType", "STRIDE"),
-                })
+                threats.append(
+                    {
+                        "diagram": diagram_title,
+                        "element": cell_data.get("name", cell.get("id", "unknown")),
+                        "element_type": cell_data.get("type", "unknown"),
+                        "title": threat.get("title", ""),
+                        "description": threat.get("description", ""),
+                        "severity": threat.get("severity", "Unknown"),
+                        "status": threat.get("status", "Open"),
+                        "type": threat.get("type", ""),
+                        "mitigation": threat.get("mitigation", ""),
+                        "model_type": threat.get("modelType", "STRIDE"),
+                    }
+                )
     return threats
 
 
@@ -83,14 +85,21 @@ def identify_gaps(threats: list) -> list:
     gaps = []
     for threat in threats:
         if threat["status"].lower() == "open" and not threat["mitigation"].strip():
-            gaps.append({
-                "diagram": threat["diagram"],
-                "element": threat["element"],
-                "threat_title": threat["title"],
-                "severity": threat["severity"],
-                "type": threat["type"],
-            })
-    return sorted(gaps, key=lambda g: {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}.get(g["severity"], 4))
+            gaps.append(
+                {
+                    "diagram": threat["diagram"],
+                    "element": threat["element"],
+                    "threat_title": threat["title"],
+                    "severity": threat["severity"],
+                    "type": threat["type"],
+                }
+            )
+    return sorted(
+        gaps,
+        key=lambda g: {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}.get(
+            g["severity"], 4
+        ),
+    )
 
 
 def stride_coverage_check(threats: list) -> dict:
@@ -123,7 +132,9 @@ def print_report(model: dict, coverage: dict, gaps: list, stride: dict) -> None:
     diagrams = model.get("detail", {}).get("diagrams", [])
     print(f"\nDiagrams: {len(diagrams)}")
     for d in diagrams:
-        print(f"  - {d.get('title', 'Untitled')} ({d.get('diagramType', 'Unknown')} type)")
+        print(
+            f"  - {d.get('title', 'Untitled')} ({d.get('diagramType', 'Unknown')} type)"
+        )
 
     print(f"\nThreat Summary:")
     print(f"  Total threats: {coverage['total_threats']}")

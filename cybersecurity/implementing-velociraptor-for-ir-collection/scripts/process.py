@@ -41,7 +41,9 @@ class VelociraptorCollector:
         "Linux.Services",
     ]
 
-    def __init__(self, server_url=None, api_key=None, output_dir="velociraptor_results"):
+    def __init__(
+        self, server_url=None, api_key=None, output_dir="velociraptor_results"
+    ):
         self.server_url = server_url or "https://localhost:8001"
         self.api_key = api_key
         self.output_dir = Path(output_dir)
@@ -58,11 +60,13 @@ class VelociraptorCollector:
 
         vql_queries = []
         for artifact in artifacts:
-            vql_queries.append({
-                "artifact": artifact,
-                "vql": f"SELECT * FROM Artifact.{artifact}()",
-                "description": f"Collect {artifact.split('.')[-1]} artifacts",
-            })
+            vql_queries.append(
+                {
+                    "artifact": artifact,
+                    "vql": f"SELECT * FROM Artifact.{artifact}()",
+                    "description": f"Collect {artifact.split('.')[-1]} artifacts",
+                }
+            )
 
         pack = {
             "name": f"IR Triage Pack - {target_os.title()}",
@@ -82,8 +86,15 @@ class VelociraptorCollector:
         print(f"    Artifacts: {len(vql_queries)}")
         return pack
 
-    def generate_hunt_config(self, hunt_name, description, artifacts, parameters=None,
-                              include_labels=None, exclude_labels=None):
+    def generate_hunt_config(
+        self,
+        hunt_name,
+        description,
+        artifacts,
+        parameters=None,
+        include_labels=None,
+        exclude_labels=None,
+    ):
         """Generate hunt configuration for enterprise-wide collection."""
         hunt_config = {
             "hunt_name": hunt_name,
@@ -117,46 +128,56 @@ class VelociraptorCollector:
 
         if "hashes" in iocs:
             hash_list = "|".join(iocs["hashes"])
-            vql_queries.append({
-                "name": "Hash Hunt",
-                "vql": f"""SELECT * FROM Artifact.Generic.Detection.HashHunter(
+            vql_queries.append(
+                {
+                    "name": "Hash Hunt",
+                    "vql": f"""SELECT * FROM Artifact.Generic.Detection.HashHunter(
                     Hashes='{hash_list}'
                 )""",
-            })
+                }
+            )
 
         if "ips" in iocs:
             ip_regex = "|".join(ip.replace(".", "\\.") for ip in iocs["ips"])
-            vql_queries.append({
-                "name": "Network Connection Hunt",
-                "vql": f"""SELECT * FROM Artifact.Windows.Network.Netstat()
+            vql_queries.append(
+                {
+                    "name": "Network Connection Hunt",
+                    "vql": f"""SELECT * FROM Artifact.Windows.Network.Netstat()
                     WHERE RemoteAddr =~ '{ip_regex}'""",
-            })
+                }
+            )
 
         if "domains" in iocs:
             domain_regex = "|".join(d.replace(".", "\\.") for d in iocs["domains"])
-            vql_queries.append({
-                "name": "DNS Cache Hunt",
-                "vql": f"""SELECT * FROM Artifact.Windows.Network.DNSCache()
+            vql_queries.append(
+                {
+                    "name": "DNS Cache Hunt",
+                    "vql": f"""SELECT * FROM Artifact.Windows.Network.DNSCache()
                     WHERE Name =~ '{domain_regex}'""",
-            })
+                }
+            )
 
         if "filenames" in iocs:
             file_regex = "|".join(iocs["filenames"])
-            vql_queries.append({
-                "name": "File Hunt",
-                "vql": f"""SELECT * FROM Artifact.Windows.NTFS.MFT(
+            vql_queries.append(
+                {
+                    "name": "File Hunt",
+                    "vql": f"""SELECT * FROM Artifact.Windows.NTFS.MFT(
                     FileRegex='{file_regex}'
                 )""",
-            })
+                }
+            )
 
         if "yara_rules" in iocs:
             for rule_name, rule_content in iocs["yara_rules"].items():
-                vql_queries.append({
-                    "name": f"YARA Hunt - {rule_name}",
-                    "vql": f"""SELECT * FROM Artifact.Windows.Detection.Yara.Process(
+                vql_queries.append(
+                    {
+                        "name": f"YARA Hunt - {rule_name}",
+                        "vql": f"""SELECT * FROM Artifact.Windows.Detection.Yara.Process(
                         YaraRule='{rule_content}'
                     )""",
-                })
+                    }
+                )
 
         hunt_file = self.output_dir / f"ioc_hunt_{hunt_name.replace(' ', '_')}.json"
         with open(hunt_file, "w") as f:
@@ -177,30 +198,72 @@ class VelociraptorCollector:
             target = {
                 "hostname": host,
                 "collections": [
-                    {"artifact": "Volatile Data", "status": "pending", "items": [
-                        "Running processes", "Network connections", "DNS cache",
-                        "Logged-in users", "Open files",
-                    ]},
-                    {"artifact": "Event Logs", "status": "pending", "items": [
-                        "Security.evtx", "System.evtx", "Application.evtx",
-                        "PowerShell/Operational.evtx", "Sysmon/Operational.evtx",
-                    ]},
-                    {"artifact": "Execution Evidence", "status": "pending", "items": [
-                        "Prefetch files", "Amcache.hve", "Shimcache",
-                        "UserAssist", "BAM/DAM",
-                    ]},
-                    {"artifact": "Persistence Mechanisms", "status": "pending", "items": [
-                        "Scheduled tasks", "Services", "Registry Run keys",
-                        "WMI subscriptions", "Startup items",
-                    ]},
-                    {"artifact": "File System", "status": "pending", "items": [
-                        "MFT entries", "USN Journal", "Recycle Bin",
-                        "Recent files", "Downloads folder",
-                    ]},
-                    {"artifact": "User Activity", "status": "pending", "items": [
-                        "Browser history", "PowerShell history", "RDP cache",
-                        "Recent documents", "Jump lists",
-                    ]},
+                    {
+                        "artifact": "Volatile Data",
+                        "status": "pending",
+                        "items": [
+                            "Running processes",
+                            "Network connections",
+                            "DNS cache",
+                            "Logged-in users",
+                            "Open files",
+                        ],
+                    },
+                    {
+                        "artifact": "Event Logs",
+                        "status": "pending",
+                        "items": [
+                            "Security.evtx",
+                            "System.evtx",
+                            "Application.evtx",
+                            "PowerShell/Operational.evtx",
+                            "Sysmon/Operational.evtx",
+                        ],
+                    },
+                    {
+                        "artifact": "Execution Evidence",
+                        "status": "pending",
+                        "items": [
+                            "Prefetch files",
+                            "Amcache.hve",
+                            "Shimcache",
+                            "UserAssist",
+                            "BAM/DAM",
+                        ],
+                    },
+                    {
+                        "artifact": "Persistence Mechanisms",
+                        "status": "pending",
+                        "items": [
+                            "Scheduled tasks",
+                            "Services",
+                            "Registry Run keys",
+                            "WMI subscriptions",
+                            "Startup items",
+                        ],
+                    },
+                    {
+                        "artifact": "File System",
+                        "status": "pending",
+                        "items": [
+                            "MFT entries",
+                            "USN Journal",
+                            "Recycle Bin",
+                            "Recent files",
+                            "Downloads folder",
+                        ],
+                    },
+                    {
+                        "artifact": "User Activity",
+                        "status": "pending",
+                        "items": [
+                            "Browser history",
+                            "PowerShell history",
+                            "RDP cache",
+                            "Recent documents",
+                            "Jump lists",
+                        ],
+                    },
                 ],
             }
             checklist["targets"].append(target)
@@ -209,7 +272,9 @@ class VelociraptorCollector:
         with open(checklist_file, "w") as f:
             json.dump(checklist, f, indent=2)
 
-        print(f"[+] Collection checklist for {len(target_hosts)} hosts: {checklist_file}")
+        print(
+            f"[+] Collection checklist for {len(target_hosts)} hosts: {checklist_file}"
+        )
         return checklist
 
     def analyze_collection_results(self, results_dir):
@@ -239,14 +304,27 @@ class VelociraptorCollector:
     def _check_for_indicators(self, item, source_file):
         """Check a single result item for suspicious indicators."""
         suspicious_processes = [
-            "mimikatz", "rubeus", "lazagne", "sharphound", "bloodhound",
-            "cobaltstrike", "beacon", "psexec", "wmiexec", "smbexec",
+            "mimikatz",
+            "rubeus",
+            "lazagne",
+            "sharphound",
+            "bloodhound",
+            "cobaltstrike",
+            "beacon",
+            "psexec",
+            "wmiexec",
+            "smbexec",
         ]
         suspicious_commands = [
-            "invoke-mimikatz", "invoke-expression", "downloadstring",
-            "net user /add", "net localgroup administrators",
-            "reg save hklm\\sam", "reg save hklm\\system",
-            "ntdsutil", "vssadmin create shadow",
+            "invoke-mimikatz",
+            "invoke-expression",
+            "downloadstring",
+            "net user /add",
+            "net localgroup administrators",
+            "reg save hklm\\sam",
+            "reg save hklm\\system",
+            "ntdsutil",
+            "vssadmin create shadow",
         ]
 
         name = str(item.get("Name", "") or item.get("CommandLine", "")).lower()
@@ -292,9 +370,17 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Velociraptor IR Collection Manager")
-    parser.add_argument("--action", choices=[
-        "triage-pack", "hunt-config", "ioc-hunt", "checklist", "analyze",
-    ], required=True)
+    parser.add_argument(
+        "--action",
+        choices=[
+            "triage-pack",
+            "hunt-config",
+            "ioc-hunt",
+            "checklist",
+            "analyze",
+        ],
+        required=True,
+    )
     parser.add_argument("--os", default="windows", choices=["windows", "linux"])
     parser.add_argument("--case-id", default="IR-2025-001")
     parser.add_argument("--hosts", nargs="+", help="Target hostnames")
@@ -308,8 +394,9 @@ def main():
     if args.action == "triage-pack":
         collector.generate_vql_triage_pack(target_os=args.os)
     elif args.action == "hunt-config":
-        collector.generate_hunt_config("IR Hunt", "Incident response hunt",
-                                        collector.TRIAGE_ARTIFACTS_WINDOWS)
+        collector.generate_hunt_config(
+            "IR Hunt", "Incident response hunt", collector.TRIAGE_ARTIFACTS_WINDOWS
+        )
     elif args.action == "ioc-hunt":
         if args.iocs:
             with open(args.iocs) as f:

@@ -53,7 +53,10 @@ class DarkWebMonitor:
                 for domain in self.domains:
                     for breach in breaches:
                         breach_domain = breach.get("Domain", "").lower()
-                        if domain.lower() in breach_domain or breach_domain in domain.lower():
+                        if (
+                            domain.lower() in breach_domain
+                            or breach_domain in domain.lower()
+                        ):
                             leak = {
                                 "type": "credential_leak",
                                 "source": "HIBP",
@@ -125,12 +128,14 @@ class DarkWebMonitor:
                 if resp.status_code == 200:
                     data = resp.json()
                     if data.get("result"):
-                        breaches.append({
-                            "type": "breach_directory",
-                            "domain": domain,
-                            "entries_found": len(data.get("result", [])),
-                            "severity": "HIGH",
-                        })
+                        breaches.append(
+                            {
+                                "type": "breach_directory",
+                                "domain": domain,
+                                "entries_found": len(data.get("result", [])),
+                                "severity": "HIGH",
+                            }
+                        )
         except Exception as e:
             print(f"[-] Breach directory check failed: {e}")
         return breaches

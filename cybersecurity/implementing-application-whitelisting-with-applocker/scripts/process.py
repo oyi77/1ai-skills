@@ -85,8 +85,14 @@ def analyze_blocked_applications(events: list) -> dict:
     }
 
     user_writable_indicators = [
-        "\\users\\", "\\appdata\\", "\\temp\\", "\\downloads\\",
-        "\\desktop\\", "\\documents\\", "%temp%", "%appdata%",
+        "\\users\\",
+        "\\appdata\\",
+        "\\temp\\",
+        "\\downloads\\",
+        "\\desktop\\",
+        "\\documents\\",
+        "%temp%",
+        "%appdata%",
     ]
 
     signed_publishers = set()
@@ -110,19 +116,23 @@ def analyze_blocked_applications(events: list) -> dict:
 
             is_user_writable = any(ind in file_path for ind in user_writable_indicators)
             if is_user_writable:
-                analysis["user_writable_blocks"].append({
-                    "file": file_path,
-                    "user": user,
-                    "timestamp": event.get("timestamp", ""),
-                })
+                analysis["user_writable_blocks"].append(
+                    {
+                        "file": file_path,
+                        "user": user,
+                        "timestamp": event.get("timestamp", ""),
+                    }
+                )
 
             if publisher and publisher != "Unknown" and not is_user_writable:
-                analysis["potential_legitimate"].append({
-                    "file": file_path,
-                    "publisher": publisher,
-                    "user": user,
-                    "recommendation": "Consider creating publisher rule",
-                })
+                analysis["potential_legitimate"].append(
+                    {
+                        "file": file_path,
+                        "publisher": publisher,
+                        "user": user,
+                        "recommendation": "Consider creating publisher rule",
+                    }
+                )
 
         elif action == "allowed":
             analysis["allowed_events"] += 1
@@ -141,35 +151,39 @@ def generate_rule_recommendations(analysis: dict) -> list:
     recommendations = []
 
     for item in analysis.get("potential_legitimate", []):
-        recommendations.append({
-            "type": "publisher_rule",
-            "action": "allow",
-            "publisher": item["publisher"],
-            "file": item["file"],
-            "reason": f"Signed application blocked for user {item['user']}",
-            "priority": "high",
-        })
+        recommendations.append(
+            {
+                "type": "publisher_rule",
+                "action": "allow",
+                "publisher": item["publisher"],
+                "file": item["file"],
+                "reason": f"Signed application blocked for user {item['user']}",
+                "priority": "high",
+            }
+        )
 
     top_blocked = analysis.get("top_blocked_files", Counter())
     for file_path, count in top_blocked.most_common(20):
         if count >= 10:
-            is_in_recommendations = any(
-                r["file"] == file_path for r in recommendations
-            )
+            is_in_recommendations = any(r["file"] == file_path for r in recommendations)
             if not is_in_recommendations:
-                recommendations.append({
-                    "type": "investigate",
-                    "action": "review",
-                    "file": file_path,
-                    "count": count,
-                    "reason": f"Blocked {count} times - determine if legitimate",
-                    "priority": "medium",
-                })
+                recommendations.append(
+                    {
+                        "type": "investigate",
+                        "action": "review",
+                        "file": file_path,
+                        "count": count,
+                        "reason": f"Blocked {count} times - determine if legitimate",
+                        "priority": "medium",
+                    }
+                )
 
     return recommendations
 
 
-def export_analysis_report(analysis: dict, recommendations: list, output_path: str) -> None:
+def export_analysis_report(
+    analysis: dict, recommendations: list, output_path: str
+) -> None:
     """Export analysis and recommendations to JSON report."""
     report = {
         "report_generated": datetime.utcnow().isoformat() + "Z",
@@ -205,7 +219,9 @@ if __name__ == "__main__":
         print("Usage: python process.py <applocker_events.csv>")
         print()
         print("Analyzes AppLocker audit events exported from Windows Event Viewer.")
-        print("Export events from: Event Viewer → AppLocker/EXE and DLL → Save All Events As CSV")
+        print(
+            "Export events from: Event Viewer → AppLocker/EXE and DLL → Save All Events As CSV"
+        )
         sys.exit(1)
 
     csv_path = sys.argv[1]

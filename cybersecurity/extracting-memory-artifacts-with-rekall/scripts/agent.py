@@ -28,12 +28,14 @@ def list_processes(s):
     """List all processes using pslist plugin."""
     processes = []
     for proc in s.plugins.pslist():
-        processes.append({
-            "pid": int(proc.pid),
-            "ppid": int(proc.ppid),
-            "name": str(proc.name),
-            "create_time": str(getattr(proc, "create_time", "")),
-        })
+        processes.append(
+            {
+                "pid": int(proc.pid),
+                "ppid": int(proc.ppid),
+                "name": str(proc.name),
+                "create_time": str(getattr(proc, "create_time", "")),
+            }
+        )
     return processes
 
 
@@ -56,13 +58,15 @@ def detect_code_injection(s):
     """Detect injected code using malfind plugin (VAD analysis)."""
     injections = []
     for result in s.plugins.malfind():
-        injections.append({
-            "pid": int(getattr(result, "pid", 0)),
-            "process": str(getattr(result, "name", "")),
-            "address": hex(getattr(result, "address", 0)),
-            "protection": str(getattr(result, "protection", "")),
-            "tag": str(getattr(result, "tag", "")),
-        })
+        injections.append(
+            {
+                "pid": int(getattr(result, "pid", 0)),
+                "process": str(getattr(result, "name", "")),
+                "address": hex(getattr(result, "address", 0)),
+                "protection": str(getattr(result, "protection", "")),
+                "tag": str(getattr(result, "tag", "")),
+            }
+        )
     return injections
 
 
@@ -70,13 +74,15 @@ def list_network_connections(s):
     """List network connections using netscan plugin."""
     connections = []
     for conn in s.plugins.netscan():
-        connections.append({
-            "pid": int(getattr(conn, "pid", 0)),
-            "local_addr": str(getattr(conn, "local_addr", "")),
-            "remote_addr": str(getattr(conn, "remote_addr", "")),
-            "state": str(getattr(conn, "state", "")),
-            "protocol": str(getattr(conn, "protocol", "")),
-        })
+        connections.append(
+            {
+                "pid": int(getattr(conn, "pid", 0)),
+                "local_addr": str(getattr(conn, "local_addr", "")),
+                "remote_addr": str(getattr(conn, "remote_addr", "")),
+                "state": str(getattr(conn, "state", "")),
+                "protocol": str(getattr(conn, "protocol", "")),
+            }
+        )
     return connections
 
 
@@ -84,13 +90,15 @@ def list_dlls(s, target_pid=None):
     """List loaded DLLs for processes using dlllist plugin."""
     dlls = []
     for entry in s.plugins.dlllist(pids=[target_pid] if target_pid else None):
-        dlls.append({
-            "pid": int(getattr(entry, "pid", 0)),
-            "process": str(getattr(entry, "name", "")),
-            "dll_path": str(getattr(entry, "path", "")),
-            "base": hex(getattr(entry, "base", 0)),
-            "size": int(getattr(entry, "size", 0)),
-        })
+        dlls.append(
+            {
+                "pid": int(getattr(entry, "pid", 0)),
+                "process": str(getattr(entry, "name", "")),
+                "dll_path": str(getattr(entry, "path", "")),
+                "base": hex(getattr(entry, "base", 0)),
+                "size": int(getattr(entry, "size", 0)),
+            }
+        )
     return dlls
 
 
@@ -98,11 +106,13 @@ def check_drivers(s):
     """List loaded kernel drivers using modules plugin."""
     drivers = []
     for mod in s.plugins.modules():
-        drivers.append({
-            "name": str(getattr(mod, "name", "")),
-            "base": hex(getattr(mod, "base", 0)),
-            "size": int(getattr(mod, "size", 0)),
-        })
+        drivers.append(
+            {
+                "name": str(getattr(mod, "name", "")),
+                "base": hex(getattr(mod, "base", 0)),
+                "size": int(getattr(mod, "size", 0)),
+            }
+        )
     return drivers
 
 
@@ -110,13 +120,15 @@ def analyze_vad(s, target_pid):
     """Analyze Virtual Address Descriptor tree for a process."""
     vad_entries = []
     for entry in s.plugins.vadinfo(pids=[target_pid]):
-        vad_entries.append({
-            "start": hex(getattr(entry, "start", 0)),
-            "end": hex(getattr(entry, "end", 0)),
-            "protection": str(getattr(entry, "protection", "")),
-            "tag": str(getattr(entry, "tag", "")),
-            "filename": str(getattr(entry, "filename", "")),
-        })
+        vad_entries.append(
+            {
+                "start": hex(getattr(entry, "start", 0)),
+                "end": hex(getattr(entry, "end", 0)),
+                "protection": str(getattr(entry, "protection", "")),
+                "tag": str(getattr(entry, "tag", "")),
+                "filename": str(getattr(entry, "filename", "")),
+            }
+        )
     return vad_entries
 
 
@@ -126,14 +138,19 @@ def main():
     parser.add_argument("--profile-path", help="Path to Rekall profiles")
     parser.add_argument("--pid", type=int, help="Target PID for focused analysis")
     parser.add_argument("--output", default="rekall_report.json")
-    parser.add_argument("--action", choices=[
-        "pslist", "hidden", "malfind", "netscan", "dlls", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=["pslist", "hidden", "malfind", "netscan", "dlls", "full_analysis"],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     s = create_session(args.image, args.profile_path)
-    report = {"image": args.image, "generated_at": datetime.utcnow().isoformat(),
-              "findings": {}}
+    report = {
+        "image": args.image,
+        "generated_at": datetime.utcnow().isoformat(),
+        "findings": {},
+    }
 
     if args.action in ("pslist", "full_analysis"):
         procs = list_processes(s)

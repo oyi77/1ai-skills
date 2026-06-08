@@ -64,8 +64,14 @@ class NextDNSPolicyGenerator:
     ]
 
     NATIVE_TRACKING = [
-        "windows", "apple", "samsung", "xiaomi",
-        "huawei", "roku", "sonos", "alexa",
+        "windows",
+        "apple",
+        "samsung",
+        "xiaomi",
+        "huawei",
+        "roku",
+        "sonos",
+        "alexa",
     ]
 
     def create_enterprise_policy(self, name: str) -> DNSPolicy:
@@ -161,20 +167,24 @@ class DNSLogAnalyzer:
             subdomain = log.domain.split(".")[0]
             entropy = self.calculate_entropy(log.domain)
             if entropy > threshold and len(subdomain) > 20:
-                suspects.append({
-                    "domain": log.domain,
-                    "entropy": round(entropy, 2),
-                    "subdomain_length": len(subdomain),
-                    "device": log.device,
-                    "timestamp": log.timestamp,
-                })
+                suspects.append(
+                    {
+                        "domain": log.domain,
+                        "entropy": round(entropy, 2),
+                        "subdomain_length": len(subdomain),
+                        "device": log.device,
+                        "timestamp": log.timestamp,
+                    }
+                )
         if suspects:
-            self.findings.append({
-                "type": "dns_tunneling_suspect",
-                "severity": "HIGH",
-                "count": len(suspects),
-                "details": suspects[:20],
-            })
+            self.findings.append(
+                {
+                    "type": "dns_tunneling_suspect",
+                    "severity": "HIGH",
+                    "count": len(suspects),
+                    "details": suspects[:20],
+                }
+            )
         return suspects
 
     def detect_dga_domains(self) -> list[dict]:
@@ -185,23 +195,29 @@ class DNSLogAnalyzer:
             if len(parts) >= 2:
                 sld = parts[-2]
                 entropy = self.calculate_entropy(sld + "." + parts[-1])
-                if entropy > 3.5 and len(sld) > 8 and not any(
-                    c in sld for c in ["-", "_"]
+                if (
+                    entropy > 3.5
+                    and len(sld) > 8
+                    and not any(c in sld for c in ["-", "_"])
                 ):
                     digits = sum(1 for c in sld if c.isdigit())
                     if digits / len(sld) > 0.3:
-                        suspects.append({
-                            "domain": log.domain,
-                            "entropy": round(entropy, 2),
-                            "digit_ratio": round(digits / len(sld), 2),
-                        })
+                        suspects.append(
+                            {
+                                "domain": log.domain,
+                                "entropy": round(entropy, 2),
+                                "digit_ratio": round(digits / len(sld), 2),
+                            }
+                        )
         if suspects:
-            self.findings.append({
-                "type": "dga_domain_suspect",
-                "severity": "HIGH",
-                "count": len(suspects),
-                "details": suspects[:20],
-            })
+            self.findings.append(
+                {
+                    "type": "dga_domain_suspect",
+                    "severity": "HIGH",
+                    "count": len(suspects),
+                    "details": suspects[:20],
+                }
+            )
         return suspects
 
     def get_blocked_summary(self) -> dict:
@@ -221,7 +237,9 @@ class DNSLogAnalyzer:
         return {
             "total_blocked": len(blocked),
             "total_allowed": len(self.logs) - len(blocked),
-            "block_rate": round(len(blocked) / len(self.logs) * 100, 2) if self.logs else 0,
+            "block_rate": (
+                round(len(blocked) / len(self.logs) * 100, 2) if self.logs else 0
+            ),
             "by_reason": by_reason,
             "top_blocked_domains": dict(top_blocked),
         }
@@ -242,7 +260,11 @@ def main():
     # Generate policies
     gen = NextDNSPolicyGenerator()
     enterprise = gen.create_enterprise_policy("Enterprise Standard")
-    enterprise.allowlist = ["login.microsoftonline.com", "graph.microsoft.com", "*.company.com"]
+    enterprise.allowlist = [
+        "login.microsoftonline.com",
+        "graph.microsoft.com",
+        "*.company.com",
+    ]
     enterprise.denylist = ["malware-c2.example.com", "data-exfil.example.com"]
 
     config = gen.export_policy(enterprise, "nextdns_enterprise_policy.json")
@@ -252,16 +274,43 @@ def main():
     # Analyze sample DNS logs
     analyzer = DNSLogAnalyzer()
     sample_logs = [
-        DNSQueryLog("2024-01-15T10:00:00Z", "google.com", "A", "allowed", device="laptop-1"),
-        DNSQueryLog("2024-01-15T10:00:01Z", "malware.example.com", "A", "blocked",
-                    "threat_intelligence", "laptop-2"),
-        DNSQueryLog("2024-01-15T10:00:02Z", "aHR0cHM6Ly9leGFtcGxlLmNvbQ.tunnel.evil.com",
-                    "TXT", "allowed", device="server-1"),
-        DNSQueryLog("2024-01-15T10:00:03Z", "x8k3m9p2q5.botnet.com", "A", "blocked",
-                    "dga_protection", "laptop-3"),
-        DNSQueryLog("2024-01-15T10:00:04Z", "office.com", "A", "allowed", device="laptop-1"),
-        DNSQueryLog("2024-01-15T10:00:05Z", "ads.tracker.com", "A", "blocked",
-                    "ad_blocker", "laptop-1"),
+        DNSQueryLog(
+            "2024-01-15T10:00:00Z", "google.com", "A", "allowed", device="laptop-1"
+        ),
+        DNSQueryLog(
+            "2024-01-15T10:00:01Z",
+            "malware.example.com",
+            "A",
+            "blocked",
+            "threat_intelligence",
+            "laptop-2",
+        ),
+        DNSQueryLog(
+            "2024-01-15T10:00:02Z",
+            "aHR0cHM6Ly9leGFtcGxlLmNvbQ.tunnel.evil.com",
+            "TXT",
+            "allowed",
+            device="server-1",
+        ),
+        DNSQueryLog(
+            "2024-01-15T10:00:03Z",
+            "x8k3m9p2q5.botnet.com",
+            "A",
+            "blocked",
+            "dga_protection",
+            "laptop-3",
+        ),
+        DNSQueryLog(
+            "2024-01-15T10:00:04Z", "office.com", "A", "allowed", device="laptop-1"
+        ),
+        DNSQueryLog(
+            "2024-01-15T10:00:05Z",
+            "ads.tracker.com",
+            "A",
+            "blocked",
+            "ad_blocker",
+            "laptop-1",
+        ),
     ]
 
     for log in sample_logs:

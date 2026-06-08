@@ -14,12 +14,12 @@ def check_hsts_header(target_url):
     """Check HSTS header on a target URL using curl."""
     result = subprocess.run(
         ["curl", "-sI", "--max-time", "10", target_url],
-        capture_output=True, text=True, timeout=15
+        capture_output=True,
+        text=True,
+        timeout=15,
     )
     headers = result.stdout
-    hsts_match = re.search(
-        r"strict-transport-security:\s*(.+)", headers, re.IGNORECASE
-    )
+    hsts_match = re.search(r"strict-transport-security:\s*(.+)", headers, re.IGNORECASE)
     findings = {"url": target_url, "hsts_present": False, "details": {}}
     if hsts_match:
         hsts_value = hsts_match.group(1).strip()
@@ -28,7 +28,9 @@ def check_hsts_header(target_url):
         max_age = re.search(r"max-age=(\d+)", hsts_value)
         if max_age:
             findings["details"]["max_age"] = int(max_age.group(1))
-        findings["details"]["include_subdomains"] = "includesubdomains" in hsts_value.lower()
+        findings["details"]["include_subdomains"] = (
+            "includesubdomains" in hsts_value.lower()
+        )
         findings["details"]["preload"] = "preload" in hsts_value.lower()
     return findings
 
@@ -38,7 +40,9 @@ def check_hsts_preload(domain):
     try:
         result = subprocess.run(
             ["curl", "-s", f"https://hstspreload.org/api/v2/status?domain={domain}"],
-            capture_output=True, text=True, timeout=15
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         data = json.loads(result.stdout)
         return {
@@ -53,9 +57,20 @@ def check_hsts_preload(domain):
 def check_redirect_chain(url):
     """Follow HTTP redirects and check for HTTPS upgrade."""
     result = subprocess.run(
-        ["curl", "-sIL", "--max-time", "10", "-o", "/dev/null",
-         "-w", "%{redirect_url}\\n%{url_effective}\\n%{scheme}", url],
-        capture_output=True, text=True, timeout=15
+        [
+            "curl",
+            "-sIL",
+            "--max-time",
+            "10",
+            "-o",
+            "/dev/null",
+            "-w",
+            "%{redirect_url}\\n%{url_effective}\\n%{scheme}",
+            url,
+        ],
+        capture_output=True,
+        text=True,
+        timeout=15,
     )
     lines = result.stdout.strip().split("\n")
     return {
@@ -71,7 +86,9 @@ def check_mixed_content(url):
     """Fetch page and check for HTTP resources on an HTTPS page."""
     result = subprocess.run(
         ["curl", "-s", "--max-time", "10", url],
-        capture_output=True, text=True, timeout=15
+        capture_output=True,
+        text=True,
+        timeout=15,
     )
     body = result.stdout
     http_refs = re.findall(r'(src|href|action)=["\']http://', body, re.IGNORECASE)
@@ -86,7 +103,9 @@ def check_security_headers(url):
     """Check for key security headers that complement HSTS."""
     result = subprocess.run(
         ["curl", "-sI", "--max-time", "10", url],
-        capture_output=True, text=True, timeout=15
+        capture_output=True,
+        text=True,
+        timeout=15,
     )
     headers_text = result.stdout.lower()
     checks = {
@@ -115,8 +134,10 @@ def run_assessment(targets):
             or not entry["preload"]["preloaded"]
             or entry["mixed_content"]["mixed_content_found"]
         )
-        entry["ssl_strip_risk"] = "HIGH" if not entry["hsts"]["hsts_present"] else (
-            "MEDIUM" if not entry["preload"]["preloaded"] else "LOW"
+        entry["ssl_strip_risk"] = (
+            "HIGH"
+            if not entry["hsts"]["hsts_present"]
+            else ("MEDIUM" if not entry["preload"]["preloaded"] else "LOW")
         )
         results.append(entry)
     return results

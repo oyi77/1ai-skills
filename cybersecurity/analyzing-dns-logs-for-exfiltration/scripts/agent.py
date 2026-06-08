@@ -12,8 +12,7 @@ def shannon_entropy(text):
     counter = Counter(text.lower())
     length = len(text)
     entropy = -sum(
-        (count / length) * math.log2(count / length)
-        for count in counter.values()
+        (count / length) * math.log2(count / length) for count in counter.values()
     )
     return round(entropy, 4)
 
@@ -36,8 +35,14 @@ def extract_registered_domain(fqdn):
 
 def detect_tunneling(dns_records, subdomain_len_threshold=50, min_queries=20):
     """Detect DNS tunneling based on subdomain length anomalies."""
-    domain_stats = defaultdict(lambda: {"queries": 0, "unique_queries": set(),
-                                         "subdomain_lengths": [], "sources": set()})
+    domain_stats = defaultdict(
+        lambda: {
+            "queries": 0,
+            "unique_queries": set(),
+            "subdomain_lengths": [],
+            "sources": set(),
+        }
+    )
     for record in dns_records:
         query = record.get("query", "")
         src = record.get("src_ip", "unknown")
@@ -54,15 +59,17 @@ def detect_tunneling(dns_records, subdomain_len_threshold=50, min_queries=20):
         if stats["queries"] >= min_queries:
             avg_len = sum(stats["subdomain_lengths"]) / len(stats["subdomain_lengths"])
             max_len = max(stats["subdomain_lengths"])
-            alerts.append({
-                "domain": domain,
-                "queries": stats["queries"],
-                "unique_queries": len(stats["unique_queries"]),
-                "avg_subdomain_length": round(avg_len, 1),
-                "max_subdomain_length": max_len,
-                "sources": list(stats["sources"]),
-                "verdict": "CRITICAL - Likely DNS tunneling",
-            })
+            alerts.append(
+                {
+                    "domain": domain,
+                    "queries": stats["queries"],
+                    "unique_queries": len(stats["unique_queries"]),
+                    "avg_subdomain_length": round(avg_len, 1),
+                    "max_subdomain_length": max_len,
+                    "sources": list(stats["sources"]),
+                    "verdict": "CRITICAL - Likely DNS tunneling",
+                }
+            )
     return sorted(alerts, key=lambda x: x["avg_subdomain_length"], reverse=True)
 
 
@@ -86,13 +93,15 @@ def detect_dga(dns_records, entropy_threshold=3.5, min_sld_length=12):
     alerts = []
     for domain, data in suspicious.items():
         avg_entropy = sum(data["entropies"]) / len(data["entropies"])
-        alerts.append({
-            "domain": domain,
-            "queries": data["count"],
-            "avg_entropy": round(avg_entropy, 4),
-            "sources": list(data["sources"]),
-            "verdict": "HIGH - Possible DGA domain",
-        })
+        alerts.append(
+            {
+                "domain": domain,
+                "queries": data["count"],
+                "avg_entropy": round(avg_entropy, 4),
+                "sources": list(data["sources"]),
+                "verdict": "HIGH - Possible DGA domain",
+            }
+        )
     return sorted(alerts, key=lambda x: x["avg_entropy"], reverse=True)
 
 
@@ -109,20 +118,22 @@ def detect_volume_anomaly(dns_records, z_score_threshold=3.0):
     if len(values) < 2:
         return []
     variance = sum((x - mean_q) ** 2 for x in values) / (len(values) - 1)
-    stdev_q = variance ** 0.5
+    stdev_q = variance**0.5
     if stdev_q == 0:
         return []
     anomalies = []
     for host, count in host_counts.items():
         z = (count - mean_q) / stdev_q
         if z > z_score_threshold:
-            anomalies.append({
-                "src_ip": host,
-                "queries": count,
-                "z_score": round(z, 2),
-                "mean": round(mean_q, 1),
-                "verdict": "HIGH - Anomalous query volume",
-            })
+            anomalies.append(
+                {
+                    "src_ip": host,
+                    "queries": count,
+                    "z_score": round(z, 2),
+                    "mean": round(mean_q, 1),
+                    "verdict": "HIGH - Anomalous query volume",
+                }
+            )
     return sorted(anomalies, key=lambda x: x["z_score"], reverse=True)
 
 
@@ -138,13 +149,19 @@ def detect_txt_abuse(dns_records, threshold=100):
     alerts = []
     for src, data in txt_counts.items():
         if data["count"] > threshold:
-            level = "CRITICAL" if data["count"] > 1000 else "HIGH" if data["count"] > 500 else "MEDIUM"
-            alerts.append({
-                "src_ip": src,
-                "txt_queries": data["count"],
-                "unique_domains": len(data["unique_domains"]),
-                "verdict": f"{level} - Possible DNS tunneling via TXT records",
-            })
+            level = (
+                "CRITICAL"
+                if data["count"] > 1000
+                else "HIGH" if data["count"] > 500 else "MEDIUM"
+            )
+            alerts.append(
+                {
+                    "src_ip": src,
+                    "txt_queries": data["count"],
+                    "unique_domains": len(data["unique_domains"]),
+                    "verdict": f"{level} - Possible DNS tunneling via TXT records",
+                }
+            )
     return sorted(alerts, key=lambda x: x["txt_queries"], reverse=True)
 
 
@@ -178,14 +195,16 @@ def parse_zeek_dns_log(log_path):
                 continue
             parts = line.strip().split("\t")
             if len(parts) >= 10:
-                records.append({
-                    "timestamp": parts[0],
-                    "src_ip": parts[2],
-                    "src_port": parts[3],
-                    "dst_ip": parts[4],
-                    "query": parts[9] if len(parts) > 9 else "",
-                    "query_type": parts[13] if len(parts) > 13 else "",
-                })
+                records.append(
+                    {
+                        "timestamp": parts[0],
+                        "src_ip": parts[2],
+                        "src_port": parts[3],
+                        "dst_ip": parts[4],
+                        "query": parts[9] if len(parts) > 9 else "",
+                        "query_type": parts[13] if len(parts) > 13 else "",
+                    }
+                )
     return records
 
 
@@ -196,22 +215,38 @@ if __name__ == "__main__":
     print("=" * 60)
 
     # Demo with synthetic DNS records
-    demo_records = [
-        {"query": f"{'a' * 60}.evil-tunnel.com", "src_ip": "192.168.1.105",
-         "query_type": "TXT"} for _ in range(50)
-    ] + [
-        {"query": "x8kj2m9p4qw7nz3.xyz", "src_ip": "192.168.1.110",
-         "query_type": "A"} for _ in range(5)
-    ] + [
-        {"query": "google.com", "src_ip": "192.168.1.50", "query_type": "A"}
-        for _ in range(10)
-    ]
+    demo_records = (
+        [
+            {
+                "query": f"{'a' * 60}.evil-tunnel.com",
+                "src_ip": "192.168.1.105",
+                "query_type": "TXT",
+            }
+            for _ in range(50)
+        ]
+        + [
+            {
+                "query": "x8kj2m9p4qw7nz3.xyz",
+                "src_ip": "192.168.1.110",
+                "query_type": "A",
+            }
+            for _ in range(5)
+        ]
+        + [
+            {"query": "google.com", "src_ip": "192.168.1.50", "query_type": "A"}
+            for _ in range(10)
+        ]
+    )
 
     print("\n--- DNS Tunneling Detection ---")
-    tunneling = detect_tunneling(demo_records, subdomain_len_threshold=30, min_queries=10)
+    tunneling = detect_tunneling(
+        demo_records, subdomain_len_threshold=30, min_queries=10
+    )
     for t in tunneling:
-        print(f"[!] {t['domain']}: {t['queries']} queries, "
-              f"avg subdomain len={t['avg_subdomain_length']}")
+        print(
+            f"[!] {t['domain']}: {t['queries']} queries, "
+            f"avg subdomain len={t['avg_subdomain_length']}"
+        )
 
     print("\n--- DGA Detection ---")
     dga = detect_dga(demo_records, entropy_threshold=3.0, min_sld_length=10)

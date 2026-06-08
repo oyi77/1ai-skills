@@ -5,6 +5,7 @@ Evaluates security policies against infrastructure configurations using
 the OPA REST API or CLI. Supports evaluating Rego policies for Kubernetes
 admission control, Terraform plans, IAM policies, and custom security rules.
 """
+
 import argparse
 import json
 import os
@@ -148,7 +149,9 @@ def format_summary(violations, test_results, policy_path, input_path):
     print(f"  Violations: {len(violations)}")
 
     if test_results:
-        passed = sum(1 for t in test_results if t.get("pass", t.get("result") == "pass"))
+        passed = sum(
+            1 for t in test_results if t.get("pass", t.get("result") == "pass")
+        )
         failed = len(test_results) - passed
         print(f"  Tests     : {passed} passed, {failed} failed")
 
@@ -184,20 +187,31 @@ def main():
     sub = parser.add_subparsers(dest="command", help="Action")
 
     p_eval = sub.add_parser("eval", help="Evaluate policy against input")
-    p_eval.add_argument("--policy", required=True, help="Path to Rego policy or bundle dir")
+    p_eval.add_argument(
+        "--policy", required=True, help="Path to Rego policy or bundle dir"
+    )
     p_eval.add_argument("--input", dest="input_file", help="Path to input JSON")
     p_eval.add_argument("--data", help="Path to external data JSON")
     p_eval.add_argument("--query", default="data", help="OPA query (default: data)")
-    p_eval.add_argument("--violation-key", default="violations",
-                        help="Key in result containing violations")
+    p_eval.add_argument(
+        "--violation-key",
+        default="violations",
+        help="Key in result containing violations",
+    )
 
     p_api = sub.add_parser("api", help="Evaluate via OPA REST API")
     p_api.add_argument("--url", default="http://localhost:8181", help="OPA server URL")
-    p_api.add_argument("--policy-path", required=True, help="OPA document path (e.g., authz.allow)")
-    p_api.add_argument("--input", dest="input_file", required=True, help="Input JSON file")
+    p_api.add_argument(
+        "--policy-path", required=True, help="OPA document path (e.g., authz.allow)"
+    )
+    p_api.add_argument(
+        "--input", dest="input_file", required=True, help="Input JSON file"
+    )
 
     p_test = sub.add_parser("test", help="Run OPA test suite")
-    p_test.add_argument("--policy-dir", required=True, help="Directory containing policies and tests")
+    p_test.add_argument(
+        "--policy-dir", required=True, help="Directory containing policies and tests"
+    )
 
     p_check = sub.add_parser("check", help="Check Rego syntax")
     p_check.add_argument("--policy", required=True, help="Policy file or directory")
@@ -255,9 +269,9 @@ def main():
         "violations": violations,
         "test_results": test_results,
         "risk_level": (
-            "CRITICAL" if len(violations) > 10
-            else "HIGH" if len(violations) > 0
-            else "LOW"
+            "CRITICAL"
+            if len(violations) > 10
+            else "HIGH" if len(violations) > 0 else "LOW"
         ),
     }
 

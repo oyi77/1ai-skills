@@ -41,8 +41,10 @@ def parse_credentials(data: list) -> list:
                             "password": entry.get("Password", ""),
                             "url": entry.get("URL", entry.get("Host", "")),
                             "port": entry.get("Port", ""),
-                            "source": entry.get("Software", entry.get("Module", category)),
-                            "raw": entry
+                            "source": entry.get(
+                                "Software", entry.get("Module", category)
+                            ),
+                            "raw": entry,
                         }
                         if cred["username"] or cred["password"]:
                             credentials.append(cred)
@@ -59,7 +61,7 @@ def deduplicate_credentials(credentials: list) -> list:
         key = (
             cred["username"].lower(),
             cred["password"],
-            cred["url"].lower() if cred["url"] else ""
+            cred["url"].lower() if cred["url"] else "",
         )
         if key not in seen:
             seen.add(key)
@@ -77,7 +79,7 @@ def categorize_credentials(credentials: list) -> dict:
         "remote_access": [],
         "email": [],
         "web": [],
-        "other": []
+        "other": [],
     }
 
     cloud_indicators = ["aws", "azure", "gcp", "cloud", "console."]
@@ -91,8 +93,10 @@ def categorize_credentials(credentials: list) -> dict:
         combined = source_lower + " " + url_lower
 
         if "\\" in cred["username"] or "@" in cred["username"]:
-            if any(domain_hint in cred["username"].lower()
-                   for domain_hint in [".local", ".corp", ".internal", "\\"]):
+            if any(
+                domain_hint in cred["username"].lower()
+                for domain_hint in [".local", ".corp", ".internal", "\\"]
+            ):
                 categories["domain"].append(cred)
                 continue
 
@@ -131,7 +135,7 @@ def generate_report(credentials: list, categories: dict, source_file: str) -> st
         f"  [MEDIUM]   Email Credentials: {len(categories['email'])}",
         f"  [LOW]      Web Credentials: {len(categories['web'])}",
         f"  [INFO]     Other: {len(categories['other'])}",
-        ""
+        "",
     ]
 
     priority_order = [

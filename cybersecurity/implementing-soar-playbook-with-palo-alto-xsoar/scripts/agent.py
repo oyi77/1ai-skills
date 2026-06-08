@@ -6,6 +6,7 @@ security playbooks, automation scripts, incidents, and integrations.
 Supports listing playbooks, checking incident statistics, and
 verifying integration health.
 """
+
 import argparse
 import json
 import os
@@ -32,14 +33,26 @@ def get_xsoar_config():
 def xsoar_api(server, api_key, endpoint, method="POST", data=None):
     """Make authenticated XSOAR API call."""
     url = f"{server}{endpoint}"
-    headers = {"Authorization": api_key, "Content-Type": "application/json",
-               "Accept": "application/json"}
+    headers = {
+        "Authorization": api_key,
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
     if method == "GET":
-        resp = requests.get(url, headers=headers,
-                            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=30)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.get(
+            url,
+            headers=headers,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=30,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
     else:
-        resp = requests.post(url, headers=headers, json=data or {},
-                             verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=30)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.post(
+            url,
+            headers=headers,
+            json=data or {},
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=30,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
     resp.raise_for_status()
     return resp.json()
 
@@ -51,15 +64,18 @@ def list_playbooks(server, api_key, query=""):
     result = xsoar_api(server, api_key, "/playbook/search", data=data)
     playbooks = result.get("playbooks", [])
     print(f"[+] Found {len(playbooks)} playbooks")
-    return [{
-        "id": pb.get("id", ""),
-        "name": pb.get("name", ""),
-        "version": pb.get("version", 0),
-        "deprecated": pb.get("deprecated", False),
-        "hidden": pb.get("hidden", False),
-        "system": pb.get("system", False),
-        "modified": pb.get("modified", ""),
-    } for pb in playbooks]
+    return [
+        {
+            "id": pb.get("id", ""),
+            "name": pb.get("name", ""),
+            "version": pb.get("version", 0),
+            "deprecated": pb.get("deprecated", False),
+            "hidden": pb.get("hidden", False),
+            "system": pb.get("system", False),
+            "modified": pb.get("modified", ""),
+        }
+        for pb in playbooks
+    ]
 
 
 def get_incident_stats(server, api_key, days=30):
@@ -72,11 +88,16 @@ def get_incident_stats(server, api_key, days=30):
 
     # Get status breakdown
     statuses = {}
-    data_with_agg = {"size": 0, "filter": {"period": {"by": "day", "fromValue": days}},
-                     "aggregations": [{"field": "status", "type": "terms"}]}
+    data_with_agg = {
+        "size": 0,
+        "filter": {"period": {"by": "day", "fromValue": days}},
+        "aggregations": [{"field": "status", "type": "terms"}],
+    }
     try:
         agg_result = xsoar_api(server, api_key, "/incidents/search", data=data_with_agg)
-        for bucket in agg_result.get("aggregations", {}).get("status", {}).get("buckets", []):
+        for bucket in (
+            agg_result.get("aggregations", {}).get("status", {}).get("buckets", [])
+        ):
             statuses[bucket.get("key", "unknown")] = bucket.get("doc_count", 0)
     except (requests.RequestException, KeyError):
         pass
@@ -87,18 +108,21 @@ def get_incident_stats(server, api_key, days=30):
 def list_integrations(server, api_key):
     """List configured integrations and their health."""
     print("[*] Fetching integrations...")
-    result = xsoar_api(server, api_key, "/settings/integration/search",
-                       data={"size": 500})
+    result = xsoar_api(
+        server, api_key, "/settings/integration/search", data={"size": 500}
+    )
     instances = result.get("instances", [])
     integrations = []
     for inst in instances:
-        integrations.append({
-            "name": inst.get("name", ""),
-            "brand": inst.get("brand", ""),
-            "enabled": inst.get("enabled", ""),
-            "is_long_running": inst.get("isLongRunning", False),
-            "configured": inst.get("configurationStatus", ""),
-        })
+        integrations.append(
+            {
+                "name": inst.get("name", ""),
+                "brand": inst.get("brand", ""),
+                "enabled": inst.get("enabled", ""),
+                "is_long_running": inst.get("isLongRunning", False),
+                "configured": inst.get("configurationStatus", ""),
+            }
+        )
     print(f"[+] Found {len(integrations)} integration instances")
     return integrations
 
@@ -108,21 +132,25 @@ def audit_playbook_health(playbooks, integrations):
     findings = []
     deprecated = [pb for pb in playbooks if pb.get("deprecated")]
     if deprecated:
-        findings.append({
-            "check": "Deprecated playbooks in use",
-            "severity": "MEDIUM",
-            "count": len(deprecated),
-            "detail": ", ".join(pb["name"] for pb in deprecated[:5]),
-        })
+        findings.append(
+            {
+                "check": "Deprecated playbooks in use",
+                "severity": "MEDIUM",
+                "count": len(deprecated),
+                "detail": ", ".join(pb["name"] for pb in deprecated[:5]),
+            }
+        )
 
     disabled_integrations = [i for i in integrations if i.get("enabled") == "false"]
     if disabled_integrations:
-        findings.append({
-            "check": "Disabled integrations",
-            "severity": "HIGH",
-            "count": len(disabled_integrations),
-            "detail": ", ".join(i["name"] for i in disabled_integrations[:5]),
-        })
+        findings.append(
+            {
+                "check": "Disabled integrations",
+                "severity": "HIGH",
+                "count": len(disabled_integrations),
+                "detail": ", ".join(i["name"] for i in disabled_integrations[:5]),
+            }
+        )
 
     return findings
 
@@ -134,7 +162,9 @@ def format_summary(playbooks, incident_stats, integrations, findings):
     print(f"{'='*60}")
     print(f"  Playbooks    : {len(playbooks)}")
     print(f"  Integrations : {len(integrations)}")
-    print(f"  Incidents    : {incident_stats.get('total', 0)} (last {incident_stats.get('period_days', 30)}d)")
+    print(
+        f"  Incidents    : {incident_stats.get('total', 0)} (last {incident_stats.get('period_days', 30)}d)"
+    )
     print(f"  Findings     : {len(findings)}")
 
     if incident_stats.get("by_status"):
@@ -143,7 +173,9 @@ def format_summary(playbooks, incident_stats, integrations, findings):
             print(f"    {status:15s}: {count}")
 
     enabled_count = sum(1 for i in integrations if i.get("enabled") != "false")
-    print(f"\n  Integrations: {enabled_count} enabled, {len(integrations) - enabled_count} disabled")
+    print(
+        f"\n  Integrations: {enabled_count} enabled, {len(integrations) - enabled_count} disabled"
+    )
 
     severity_counts = {}
     for f in findings:

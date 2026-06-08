@@ -14,7 +14,6 @@ import re
 import sys
 import datetime
 
-
 TIMESTOMP_INDICATORS = {
     "zero_nanoseconds": "Nanosecond field is exactly 0000000 (common in timestomping tools)",
     "si_before_fn": "$STANDARD_INFORMATION created before $FILE_NAME created",
@@ -34,15 +33,32 @@ def parse_mft_csv(csv_path):
                 entry = {
                     "record_number": row.get("Record Number", ""),
                     "filename": row.get("Filename", row.get("Good", "")),
-                    "si_created": row.get("SI Created", row.get("STD_INFO Creation date", "")),
-                    "si_modified": row.get("SI Modified", row.get("STD_INFO Modification date", "")),
-                    "si_accessed": row.get("SI Accessed", row.get("STD_INFO Access date", "")),
-                    "si_entry_modified": row.get("SI Entry Modified", row.get("STD_INFO Entry date", "")),
-                    "fn_created": row.get("FN Created", row.get("FN Creation date", "")),
-                    "fn_modified": row.get("FN Modified", row.get("FN Modification date", "")),
-                    "fn_accessed": row.get("FN Accessed", row.get("FN Access date", "")),
-                    "fn_entry_modified": row.get("FN Entry Modified", row.get("FN Entry date", "")),
-                    "in_use": row.get("Active", row.get("In Use", "")).lower() in ("true", "1", "yes"),
+                    "si_created": row.get(
+                        "SI Created", row.get("STD_INFO Creation date", "")
+                    ),
+                    "si_modified": row.get(
+                        "SI Modified", row.get("STD_INFO Modification date", "")
+                    ),
+                    "si_accessed": row.get(
+                        "SI Accessed", row.get("STD_INFO Access date", "")
+                    ),
+                    "si_entry_modified": row.get(
+                        "SI Entry Modified", row.get("STD_INFO Entry date", "")
+                    ),
+                    "fn_created": row.get(
+                        "FN Created", row.get("FN Creation date", "")
+                    ),
+                    "fn_modified": row.get(
+                        "FN Modified", row.get("FN Modification date", "")
+                    ),
+                    "fn_accessed": row.get(
+                        "FN Accessed", row.get("FN Access date", "")
+                    ),
+                    "fn_entry_modified": row.get(
+                        "FN Entry Modified", row.get("FN Entry date", "")
+                    ),
+                    "in_use": row.get("Active", row.get("In Use", "")).lower()
+                    in ("true", "1", "yes"),
                 }
                 if entry["filename"]:
                     entries.append(entry)
@@ -110,16 +126,18 @@ def detect_timestomping(entries, os_install_date=None):
                 reasons.append("round_seconds")
 
         if reasons:
-            findings.append({
-                "filename": entry.get("filename", ""),
-                "record_number": entry.get("record_number", ""),
-                "si_created": entry.get("si_created", ""),
-                "fn_created": entry.get("fn_created", ""),
-                "indicators": reasons,
-                "descriptions": [TIMESTOMP_INDICATORS.get(r, r) for r in reasons],
-                "confidence": "HIGH" if "si_before_fn" in reasons else "MEDIUM",
-                "mitre": "T1070.006",
-            })
+            findings.append(
+                {
+                    "filename": entry.get("filename", ""),
+                    "record_number": entry.get("record_number", ""),
+                    "si_created": entry.get("si_created", ""),
+                    "fn_created": entry.get("fn_created", ""),
+                    "indicators": reasons,
+                    "descriptions": [TIMESTOMP_INDICATORS.get(r, r) for r in reasons],
+                    "confidence": "HIGH" if "si_before_fn" in reasons else "MEDIUM",
+                    "mitre": "T1070.006",
+                }
+            )
 
     return findings
 
@@ -131,10 +149,18 @@ def generate_report(entries, findings):
         "total_mft_entries": len(entries) if isinstance(entries, list) else 0,
         "total_findings": len(findings),
         "high_confidence": sum(1 for f in findings if f.get("confidence") == "HIGH"),
-        "medium_confidence": sum(1 for f in findings if f.get("confidence") == "MEDIUM"),
-        "indicator_counts": dict(collections.Counter(
-            ind for f in findings for ind in f.get("indicators", [])
-        )) if findings else {},
+        "medium_confidence": sum(
+            1 for f in findings if f.get("confidence") == "MEDIUM"
+        ),
+        "indicator_counts": (
+            dict(
+                collections.Counter(
+                    ind for f in findings for ind in f.get("indicators", [])
+                )
+            )
+            if findings
+            else {}
+        ),
         "mitre_technique": "T1070.006 - Indicator Removal: Timestomp",
     }
 
@@ -148,8 +174,12 @@ def main():
         description="NTFS timestomping detection via MFT analysis (MITRE T1070.006)"
     )
     parser.add_argument("mft_csv", nargs="?", help="Path to analyzeMFT CSV output")
-    parser.add_argument("--os-install", help="OS install date (YYYY-MM-DD) for baseline")
-    parser.add_argument("--high-only", action="store_true", help="Show only HIGH confidence findings")
+    parser.add_argument(
+        "--os-install", help="OS install date (YYYY-MM-DD) for baseline"
+    )
+    parser.add_argument(
+        "--high-only", action="store_true", help="Show only HIGH confidence findings"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report path")
     args = parser.parse_args()
 
@@ -164,7 +194,11 @@ def main():
         print("\n  Indicators detected:")
         for name, desc in TIMESTOMP_INDICATORS.items():
             print(f"    - {name}: {desc}")
-        print(json.dumps({"demo": True, "indicators": len(TIMESTOMP_INDICATORS)}, indent=2))
+        print(
+            json.dumps(
+                {"demo": True, "indicators": len(TIMESTOMP_INDICATORS)}, indent=2
+            )
+        )
         sys.exit(0)
 
     os_date = None

@@ -33,6 +33,7 @@ import numpy as np
 
 try:
     import tldextract
+
     HAS_TLDEXTRACT = True
 except ImportError:
     HAS_TLDEXTRACT = False
@@ -43,6 +44,7 @@ try:
     from sklearn.metrics import classification_report, confusion_matrix
     from sklearn.preprocessing import StandardScaler
     import pickle
+
     HAS_SKLEARN = True
 except ImportError:
     HAS_SKLEARN = False
@@ -59,16 +61,46 @@ BASE32_CHARS = set("abcdefghijklmnopqrstuvwxyz234567")
 
 # English bigram frequencies (top 40, from Peter Norvig's analysis)
 ENGLISH_BIGRAMS = {
-    "th": 0.0356, "he": 0.0307, "in": 0.0243, "er": 0.0205,
-    "an": 0.0199, "re": 0.0185, "on": 0.0176, "at": 0.0149,
-    "en": 0.0145, "nd": 0.0135, "ti": 0.0134, "es": 0.0134,
-    "or": 0.0128, "te": 0.0120, "of": 0.0117, "ed": 0.0117,
-    "is": 0.0113, "it": 0.0112, "al": 0.0109, "ar": 0.0107,
-    "st": 0.0105, "to": 0.0104, "nt": 0.0104, "ng": 0.0095,
-    "se": 0.0093, "ha": 0.0093, "as": 0.0087, "ou": 0.0087,
-    "io": 0.0083, "le": 0.0083, "ve": 0.0083, "co": 0.0079,
-    "me": 0.0079, "de": 0.0076, "hi": 0.0076, "ri": 0.0073,
-    "ro": 0.0073, "ic": 0.0070, "ne": 0.0069, "ea": 0.0069,
+    "th": 0.0356,
+    "he": 0.0307,
+    "in": 0.0243,
+    "er": 0.0205,
+    "an": 0.0199,
+    "re": 0.0185,
+    "on": 0.0176,
+    "at": 0.0149,
+    "en": 0.0145,
+    "nd": 0.0135,
+    "ti": 0.0134,
+    "es": 0.0134,
+    "or": 0.0128,
+    "te": 0.0120,
+    "of": 0.0117,
+    "ed": 0.0117,
+    "is": 0.0113,
+    "it": 0.0112,
+    "al": 0.0109,
+    "ar": 0.0107,
+    "st": 0.0105,
+    "to": 0.0104,
+    "nt": 0.0104,
+    "ng": 0.0095,
+    "se": 0.0093,
+    "ha": 0.0093,
+    "as": 0.0087,
+    "ou": 0.0087,
+    "io": 0.0083,
+    "le": 0.0083,
+    "ve": 0.0083,
+    "co": 0.0079,
+    "me": 0.0079,
+    "de": 0.0076,
+    "hi": 0.0076,
+    "ri": 0.0073,
+    "ro": 0.0073,
+    "ic": 0.0070,
+    "ne": 0.0069,
+    "ea": 0.0069,
 }
 
 # Known tunneling tool signatures
@@ -126,6 +158,7 @@ WHITELIST_PATTERNS = [
 # Core Functions
 # ---------------------------------------------------------------------------
 
+
 def shannon_entropy(data):
     """Calculate Shannon entropy of a string in bits per character."""
     if not data:
@@ -182,6 +215,7 @@ def parse_timestamp(ts_str):
 # Log Parsers
 # ---------------------------------------------------------------------------
 
+
 def parse_zeek_dns_log(filepath):
     """Parse Zeek dns.log (tab-separated format)."""
     queries = []
@@ -216,13 +250,15 @@ def parse_zeek_dns_log(filepath):
             answers = record.get("answers", "")
 
             if query and query != "-":
-                queries.append({
-                    "timestamp": ts,
-                    "src_ip": src_ip,
-                    "query": query,
-                    "qtype": qtype,
-                    "answers": answers,
-                })
+                queries.append(
+                    {
+                        "timestamp": ts,
+                        "src_ip": src_ip,
+                        "query": query,
+                        "qtype": qtype,
+                        "answers": answers,
+                    }
+                )
 
     return queries
 
@@ -257,13 +293,15 @@ def parse_suricata_eve(filepath):
                 )
 
             if query:
-                queries.append({
-                    "timestamp": ts,
-                    "src_ip": src_ip,
-                    "query": query,
-                    "qtype": str(qtype),
-                    "answers": answers,
-                })
+                queries.append(
+                    {
+                        "timestamp": ts,
+                        "src_ip": src_ip,
+                        "query": query,
+                        "qtype": str(qtype),
+                        "answers": answers,
+                    }
+                )
 
     return queries
 
@@ -276,13 +314,19 @@ def parse_csv_dns(filepath):
         for row in reader:
             query = row.get("query", row.get("domain", row.get("qname", "")))
             if query:
-                queries.append({
-                    "timestamp": row.get("timestamp", row.get("ts", "")),
-                    "src_ip": row.get("src_ip", row.get("source", row.get("client_ip", ""))),
-                    "query": query,
-                    "qtype": row.get("qtype", row.get("type", row.get("qtype_name", ""))),
-                    "answers": row.get("answers", row.get("answer", "")),
-                })
+                queries.append(
+                    {
+                        "timestamp": row.get("timestamp", row.get("ts", "")),
+                        "src_ip": row.get(
+                            "src_ip", row.get("source", row.get("client_ip", ""))
+                        ),
+                        "query": query,
+                        "qtype": row.get(
+                            "qtype", row.get("type", row.get("qtype_name", ""))
+                        ),
+                        "answers": row.get("answers", row.get("answer", "")),
+                    }
+                )
     return queries
 
 
@@ -303,6 +347,7 @@ def load_dns_queries(filepath, fmt="zeek"):
 # ---------------------------------------------------------------------------
 # Entropy Analysis
 # ---------------------------------------------------------------------------
+
 
 def analyze_entropy(queries, entropy_threshold=3.5, length_threshold=30):
     """Analyze DNS queries for tunneling indicators via entropy and subdomain length."""
@@ -372,19 +417,21 @@ def analyze_entropy(queries, entropy_threshold=3.5, length_threshold=30):
                         break
 
         if flags:
-            results.append({
-                "fqdn": fqdn,
-                "subdomain": subdomain,
-                "base_domain": base_domain,
-                "entropy": round(entropy, 4),
-                "subdomain_length": length,
-                "label_count": label_count,
-                "score": round(score, 2),
-                "flags": flags,
-                "src_ip": q.get("src_ip", ""),
-                "timestamp": q.get("timestamp", ""),
-                "qtype": q.get("qtype", ""),
-            })
+            results.append(
+                {
+                    "fqdn": fqdn,
+                    "subdomain": subdomain,
+                    "base_domain": base_domain,
+                    "entropy": round(entropy, 4),
+                    "subdomain_length": length,
+                    "label_count": label_count,
+                    "score": round(score, 2),
+                    "flags": flags,
+                    "src_ip": q.get("src_ip", ""),
+                    "timestamp": q.get("timestamp", ""),
+                    "qtype": q.get("qtype", ""),
+                }
+            )
 
     results.sort(key=lambda x: x["score"], reverse=True)
     return results
@@ -394,8 +441,10 @@ def analyze_entropy(queries, entropy_threshold=3.5, length_threshold=30):
 # Beaconing Detection
 # ---------------------------------------------------------------------------
 
-def detect_beaconing(queries, min_queries=10, max_jitter_pct=25,
-                     min_interval=10, max_interval=7200):
+
+def detect_beaconing(
+    queries, min_queries=10, max_jitter_pct=25, min_interval=10, max_interval=7200
+):
     """Detect periodic DNS beaconing patterns."""
     groups = defaultdict(list)
 
@@ -418,10 +467,12 @@ def detect_beaconing(queries, min_queries=10, max_jitter_pct=25,
             continue
 
         timestamps.sort()
-        intervals = np.array([
-            (timestamps[i+1] - timestamps[i]).total_seconds()
-            for i in range(len(timestamps) - 1)
-        ])
+        intervals = np.array(
+            [
+                (timestamps[i + 1] - timestamps[i]).total_seconds()
+                for i in range(len(timestamps) - 1)
+            ]
+        )
 
         # Remove zero/negative intervals
         intervals = intervals[intervals > 0]
@@ -475,20 +526,22 @@ def detect_beaconing(queries, min_queries=10, max_jitter_pct=25,
                 flags.append(f"common_c2_interval:~{ci}s")
                 break
 
-        beacons.append({
-            "src_ip": src_ip,
-            "base_domain": base_domain,
-            "query_count": len(timestamps),
-            "mean_interval": round(mean_int, 2),
-            "median_interval": round(median_int, 2),
-            "std_interval": round(std_int, 2),
-            "jitter_cv": round(cv, 2),
-            "first_seen": timestamps[0].isoformat(),
-            "last_seen": timestamps[-1].isoformat(),
-            "duration_hours": round(hours, 2),
-            "score": round(score, 1),
-            "flags": flags,
-        })
+        beacons.append(
+            {
+                "src_ip": src_ip,
+                "base_domain": base_domain,
+                "query_count": len(timestamps),
+                "mean_interval": round(mean_int, 2),
+                "median_interval": round(median_int, 2),
+                "std_interval": round(std_int, 2),
+                "jitter_cv": round(cv, 2),
+                "first_seen": timestamps[0].isoformat(),
+                "last_seen": timestamps[-1].isoformat(),
+                "duration_hours": round(hours, 2),
+                "score": round(score, 1),
+                "flags": flags,
+            }
+        )
 
     beacons.sort(key=lambda x: x["score"], reverse=True)
     return beacons
@@ -498,15 +551,13 @@ def detect_beaconing(queries, min_queries=10, max_jitter_pct=25,
 # TXT Record Analysis
 # ---------------------------------------------------------------------------
 
+
 def analyze_txt_records(queries):
     """Analyze TXT record queries and responses for C2 payload indicators."""
     findings = []
 
     # Filter TXT queries
-    txt_queries = [
-        q for q in queries
-        if q.get("qtype", "").upper() in ("TXT", "16")
-    ]
+    txt_queries = [q for q in queries if q.get("qtype", "").upper() in ("TXT", "16")]
 
     if not txt_queries:
         return findings
@@ -528,17 +579,21 @@ def analyze_txt_records(queries):
 
         # Volume anomaly
         if count > 50:
-            indicators.append({
-                "type": "high_txt_volume",
-                "detail": f"{count} TXT queries to {base_domain}",
-                "severity": "high",
-            })
+            indicators.append(
+                {
+                    "type": "high_txt_volume",
+                    "detail": f"{count} TXT queries to {base_domain}",
+                    "severity": "high",
+                }
+            )
         elif count > 20:
-            indicators.append({
-                "type": "elevated_txt_volume",
-                "detail": f"{count} TXT queries to {base_domain}",
-                "severity": "medium",
-            })
+            indicators.append(
+                {
+                    "type": "elevated_txt_volume",
+                    "detail": f"{count} TXT queries to {base_domain}",
+                    "severity": "medium",
+                }
+            )
 
         # Check answer content
         for q in group:
@@ -548,78 +603,101 @@ def analyze_txt_records(queries):
 
             # Large TXT response
             if len(answer) > 500:
-                indicators.append({
-                    "type": "oversized_txt_response",
-                    "detail": f"TXT response length: {len(answer)}",
-                    "severity": "high",
-                })
+                indicators.append(
+                    {
+                        "type": "oversized_txt_response",
+                        "detail": f"TXT response length: {len(answer)}",
+                        "severity": "high",
+                    }
+                )
 
             # High entropy in response
             ent = shannon_entropy(answer)
             if ent > 4.5 and len(answer) > 100:
-                indicators.append({
-                    "type": "high_entropy_txt",
-                    "detail": f"TXT response entropy: {ent:.3f}",
-                    "severity": "high",
-                })
+                indicators.append(
+                    {
+                        "type": "high_entropy_txt",
+                        "detail": f"TXT response entropy: {ent:.3f}",
+                        "severity": "high",
+                    }
+                )
 
             # Base64 pattern in response
-            b64_pattern = re.compile(r'[A-Za-z0-9+/]{40,}={0,2}')
+            b64_pattern = re.compile(r"[A-Za-z0-9+/]{40,}={0,2}")
             if b64_pattern.search(answer):
-                indicators.append({
-                    "type": "base64_in_txt",
-                    "detail": "Base64-encoded content in TXT response",
-                    "severity": "high",
-                })
+                indicators.append(
+                    {
+                        "type": "base64_in_txt",
+                        "detail": "Base64-encoded content in TXT response",
+                        "severity": "high",
+                    }
+                )
 
                 # Try to decode and check for executable
                 try:
                     match = b64_pattern.search(answer)
                     decoded = base64.b64decode(match.group())
-                    if decoded[:2] == b'MZ':
-                        indicators.append({
-                            "type": "pe_in_txt",
-                            "detail": "PE executable found in decoded TXT response",
-                            "severity": "critical",
-                        })
-                    if decoded[:4] == b'\x7fELF':
-                        indicators.append({
-                            "type": "elf_in_txt",
-                            "detail": "ELF executable found in decoded TXT response",
-                            "severity": "critical",
-                        })
+                    if decoded[:2] == b"MZ":
+                        indicators.append(
+                            {
+                                "type": "pe_in_txt",
+                                "detail": "PE executable found in decoded TXT response",
+                                "severity": "critical",
+                            }
+                        )
+                    if decoded[:4] == b"\x7fELF":
+                        indicators.append(
+                            {
+                                "type": "elf_in_txt",
+                                "detail": "ELF executable found in decoded TXT response",
+                                "severity": "critical",
+                            }
+                        )
                     decoded_str = decoded.decode("utf-8", errors="ignore")
                     ps_patterns = [
-                        r"Invoke-Expression", r"IEX\s*\(", r"DownloadString",
-                        r"FromBase64String", r"New-Object\s+System\.Net",
+                        r"Invoke-Expression",
+                        r"IEX\s*\(",
+                        r"DownloadString",
+                        r"FromBase64String",
+                        r"New-Object\s+System\.Net",
                     ]
                     for pat in ps_patterns:
                         if re.search(pat, decoded_str, re.IGNORECASE):
-                            indicators.append({
-                                "type": "powershell_stager_in_txt",
-                                "detail": f"PowerShell pattern in decoded TXT: {pat}",
-                                "severity": "critical",
-                            })
+                            indicators.append(
+                                {
+                                    "type": "powershell_stager_in_txt",
+                                    "detail": f"PowerShell pattern in decoded TXT: {pat}",
+                                    "severity": "critical",
+                                }
+                            )
                             break
                 except Exception:
                     pass
 
         if indicators:
-            findings.append({
-                "base_domain": base_domain,
-                "txt_query_count": count,
-                "source_ips": sorted(src_ips),
-                "indicators": indicators,
-                "max_severity": max(
-                    (i["severity"] for i in indicators),
-                    key=lambda s: {"critical": 4, "high": 3, "medium": 2, "low": 1}.get(s, 0)
-                ),
-                "sample_queries": [q["query"] for q in group[:5]],
-            })
+            findings.append(
+                {
+                    "base_domain": base_domain,
+                    "txt_query_count": count,
+                    "source_ips": sorted(src_ips),
+                    "indicators": indicators,
+                    "max_severity": max(
+                        (i["severity"] for i in indicators),
+                        key=lambda s: {
+                            "critical": 4,
+                            "high": 3,
+                            "medium": 2,
+                            "low": 1,
+                        }.get(s, 0),
+                    ),
+                    "sample_queries": [q["query"] for q in group[:5]],
+                }
+            )
 
     findings.sort(
         key=lambda x: {"critical": 4, "high": 3, "medium": 2, "low": 1}.get(
-            x["max_severity"], 0),
+            x["max_severity"], 0
+        ),
         reverse=True,
     )
     return findings
@@ -630,10 +708,20 @@ def analyze_txt_records(queries):
 # ---------------------------------------------------------------------------
 
 DGA_FEATURE_COLUMNS = [
-    "length", "entropy", "digit_ratio", "vowel_ratio", "consonant_ratio",
-    "max_consonant_run", "distinct_chars", "distinct_ratio",
-    "english_bigram_score", "label_count", "hex_ratio",
-    "transition_ratio", "repeat_ratio", "special_count",
+    "length",
+    "entropy",
+    "digit_ratio",
+    "vowel_ratio",
+    "consonant_ratio",
+    "max_consonant_run",
+    "distinct_chars",
+    "distinct_ratio",
+    "english_bigram_score",
+    "label_count",
+    "hex_ratio",
+    "transition_ratio",
+    "repeat_ratio",
+    "special_count",
 ]
 
 
@@ -664,18 +752,22 @@ def extract_domain_features(domain):
             current_run = 0
 
     distinct_chars = len(set(flat))
-    bigrams = [flat[i:i+2] for i in range(len(flat) - 1)]
+    bigrams = [flat[i : i + 2] for i in range(len(flat) - 1)]
     english_score = (
         sum(ENGLISH_BIGRAMS.get(bg, 0) for bg in bigrams) / len(bigrams)
-        if bigrams else 0
+        if bigrams
+        else 0
     )
 
     hex_ratio = sum(1 for c in flat if c in HEX_CHARS) / length
     transitions = sum(
-        1 for i in range(1, len(flat))
-        if flat[i].isdigit() != flat[i-1].isdigit()
+        1 for i in range(1, len(flat)) if flat[i].isdigit() != flat[i - 1].isdigit()
     )
-    repeats = sum(1 for i in range(1, len(flat)) if flat[i] == flat[i-1]) if length > 1 else 0
+    repeats = (
+        sum(1 for i in range(1, len(flat)) if flat[i] == flat[i - 1])
+        if length > 1
+        else 0
+    )
 
     return {
         "domain": domain,
@@ -692,7 +784,7 @@ def extract_domain_features(domain):
         "hex_ratio": round(hex_ratio, 4),
         "transition_ratio": round(transitions / max(length - 1, 1), 4),
         "repeat_ratio": round(repeats / max(length - 1, 1), 4),
-        "special_count": sum(1 for c in flat if c == '-'),
+        "special_count": sum(1 for c in flat if c == "-"),
     }
 
 
@@ -701,20 +793,29 @@ def features_to_vector(features):
     return np.array([features[col] for col in DGA_FEATURE_COLUMNS])
 
 
-def train_dga_model(legit_domains, dga_domains, model_type="random_forest",
-                    output_model=None):
+def train_dga_model(
+    legit_domains, dga_domains, model_type="random_forest", output_model=None
+):
     """Train and evaluate a DGA classification model."""
     if not HAS_SKLEARN:
         print("[ERROR] scikit-learn required: pip install scikit-learn")
         return None, None, None
 
-    print(f"[*] Extracting features from {len(legit_domains)} legitimate "
-          f"and {len(dga_domains)} DGA domains...")
+    print(
+        f"[*] Extracting features from {len(legit_domains)} legitimate "
+        f"and {len(dga_domains)} DGA domains..."
+    )
 
-    X_legit = [features_to_vector(f) for d in legit_domains
-               if (f := extract_domain_features(d)) is not None]
-    X_dga = [features_to_vector(f) for d in dga_domains
-             if (f := extract_domain_features(d)) is not None]
+    X_legit = [
+        features_to_vector(f)
+        for d in legit_domains
+        if (f := extract_domain_features(d)) is not None
+    ]
+    X_dga = [
+        features_to_vector(f)
+        for d in dga_domains
+        if (f := extract_domain_features(d)) is not None
+    ]
 
     if len(X_legit) < 100 or len(X_dga) < 100:
         print(f"[ERROR] Insufficient data: {len(X_legit)} legit, {len(X_dga)} DGA")
@@ -734,21 +835,28 @@ def train_dga_model(legit_domains, dga_domains, model_type="random_forest",
 
     if model_type == "gradient_boosting":
         model = GradientBoostingClassifier(
-            n_estimators=200, max_depth=6, learning_rate=0.1,
-            min_samples_split=10, random_state=42,
+            n_estimators=200,
+            max_depth=6,
+            learning_rate=0.1,
+            min_samples_split=10,
+            random_state=42,
         )
     else:
         model = RandomForestClassifier(
-            n_estimators=200, max_depth=15, min_samples_split=5,
-            random_state=42, n_jobs=-1,
+            n_estimators=200,
+            max_depth=15,
+            min_samples_split=5,
+            random_state=42,
+            n_jobs=-1,
         )
 
     print(f"[*] Training {model_type} classifier...")
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)
-    report = classification_report(y_test, y_pred, target_names=["legitimate", "dga"],
-                                   output_dict=True)
+    report = classification_report(
+        y_test, y_pred, target_names=["legitimate", "dga"], output_dict=True
+    )
     cm = confusion_matrix(y_test, y_pred)
     cv_scores = cross_val_score(model, X_scaled, y, cv=5, scoring="f1")
 
@@ -777,8 +885,9 @@ def train_dga_model(legit_domains, dga_domains, model_type="random_forest",
     print(f"    DGA Recall:    {metrics['dga_recall']}")
     print(f"    CV F1 (5-fold): {metrics['cv_f1_mean']} +/- {metrics['cv_f1_std']}")
 
-    top_feats = sorted(metrics["feature_importance"].items(),
-                       key=lambda x: x[1], reverse=True)[:5]
+    top_feats = sorted(
+        metrics["feature_importance"].items(), key=lambda x: x[1], reverse=True
+    )[:5]
     print(f"    Top features:  {', '.join(f'{k}={v:.3f}' for k, v in top_feats)}")
 
     if output_model:
@@ -802,14 +911,16 @@ def classify_domains_dga(domains, model, scaler, threshold=0.65):
         prob = model.predict_proba(vec_scaled)[0]
 
         if prob[1] >= threshold:
-            results.append({
-                "domain": domain,
-                "prediction": "dga" if prob[1] >= 0.5 else "legitimate",
-                "dga_probability": round(float(prob[1]), 4),
-                "confidence": "high" if prob[1] > 0.85 else "medium",
-                "entropy": feats["entropy"],
-                "length": feats["length"],
-            })
+            results.append(
+                {
+                    "domain": domain,
+                    "prediction": "dga" if prob[1] >= 0.5 else "legitimate",
+                    "dga_probability": round(float(prob[1]), 4),
+                    "confidence": "high" if prob[1] > 0.85 else "medium",
+                    "entropy": feats["entropy"],
+                    "length": feats["length"],
+                }
+            )
 
     results.sort(key=lambda x: x["dga_probability"], reverse=True)
     return results
@@ -819,8 +930,10 @@ def classify_domains_dga(domains, model, scaler, threshold=0.65):
 # Reporting
 # ---------------------------------------------------------------------------
 
-def print_report(entropy_results, beacons, txt_findings, dga_results,
-                 total_queries, unique_domains):
+
+def print_report(
+    entropy_results, beacons, txt_findings, dga_results, total_queries, unique_domains
+):
     """Print unified DNS C2 detection report."""
     print("=" * 80)
     print("  DNS C2 DETECTION ANALYSIS REPORT")
@@ -837,7 +950,9 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
 
     if entropy_results:
         # Group by base domain
-        domain_agg = defaultdict(lambda: {"count": 0, "max_ent": 0, "max_score": 0, "ips": set()})
+        domain_agg = defaultdict(
+            lambda: {"count": 0, "max_ent": 0, "max_score": 0, "ips": set()}
+        )
         for r in entropy_results:
             bd = r["base_domain"]
             domain_agg[bd]["count"] += 1
@@ -845,11 +960,19 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
             domain_agg[bd]["max_score"] = max(domain_agg[bd]["max_score"], r["score"])
             domain_agg[bd]["ips"].add(r["src_ip"])
 
-        sorted_domains = sorted(domain_agg.items(), key=lambda x: x[1]["max_score"], reverse=True)
+        sorted_domains = sorted(
+            domain_agg.items(), key=lambda x: x[1]["max_score"], reverse=True
+        )
         for domain, data in sorted_domains[:10]:
-            severity = "CRITICAL" if data["max_score"] > 60 else "HIGH" if data["max_score"] > 30 else "MEDIUM"
+            severity = (
+                "CRITICAL"
+                if data["max_score"] > 60
+                else "HIGH" if data["max_score"] > 30 else "MEDIUM"
+            )
             print(f"\n    [{severity}] {domain}")
-            print(f"      Suspicious queries: {data['count']}  Max entropy: {data['max_ent']:.3f}")
+            print(
+                f"      Suspicious queries: {data['count']}  Max entropy: {data['max_ent']:.3f}"
+            )
             print(f"      Source IPs: {', '.join(sorted(data['ips']))}")
 
             # Show tool signature if matched
@@ -866,11 +989,17 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
     print("  " + "-" * 76)
     print(f"  Beacon patterns: {len(beacons)}")
     for b in beacons[:10]:
-        severity = "CRITICAL" if b["score"] > 70 else "HIGH" if b["score"] > 50 else "MEDIUM"
+        severity = (
+            "CRITICAL" if b["score"] > 70 else "HIGH" if b["score"] > 50 else "MEDIUM"
+        )
         print(f"\n    [{severity}] {b['src_ip']} -> {b['base_domain']}")
-        print(f"      Score: {b['score']}  Queries: {b['query_count']}  "
-              f"Interval: {b['mean_interval']:.1f}s +/- {b['std_interval']:.1f}s")
-        print(f"      Jitter: {b['jitter_cv']:.1f}%  Duration: {b['duration_hours']:.1f}h")
+        print(
+            f"      Score: {b['score']}  Queries: {b['query_count']}  "
+            f"Interval: {b['mean_interval']:.1f}s +/- {b['std_interval']:.1f}s"
+        )
+        print(
+            f"      Jitter: {b['jitter_cv']:.1f}%  Duration: {b['duration_hours']:.1f}h"
+        )
         print(f"      Flags: {', '.join(b['flags'])}")
     print()
 
@@ -880,8 +1009,10 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
     print(f"  Suspicious TXT patterns: {len(txt_findings)}")
     for finding in txt_findings[:10]:
         print(f"\n    [{finding['max_severity'].upper()}] {finding['base_domain']}")
-        print(f"      TXT queries: {finding['txt_query_count']}  "
-              f"Sources: {', '.join(finding['source_ips'][:3])}")
+        print(
+            f"      TXT queries: {finding['txt_query_count']}  "
+            f"Sources: {', '.join(finding['source_ips'][:3])}"
+        )
         for ind in finding["indicators"][:3]:
             print(f"      - {ind['type']}: {ind['detail']}")
     print()
@@ -895,8 +1026,10 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
         print(f"  High confidence DGA: {len(high_conf)}")
         print(f"  Medium confidence:   {len(med_conf)}")
         for r in dga_results[:15]:
-            print(f"    [{r['confidence'].upper()}] {r['domain']}  "
-                  f"(prob: {r['dga_probability']:.3f}, ent: {r['entropy']:.2f})")
+            print(
+                f"    [{r['confidence'].upper()}] {r['domain']}  "
+                f"(prob: {r['dga_probability']:.3f}, ent: {r['entropy']:.2f})"
+            )
         print()
 
     # Recommendations
@@ -916,8 +1049,10 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
             critical_domains.add(f["base_domain"])
 
     if critical_domains:
-        print(f"  {action_num}. [CRITICAL] Block in DNS RPZ/firewall: "
-              f"{', '.join(sorted(critical_domains)[:5])}")
+        print(
+            f"  {action_num}. [CRITICAL] Block in DNS RPZ/firewall: "
+            f"{', '.join(sorted(critical_domains)[:5])}"
+        )
         action_num += 1
 
     critical_ips = set()
@@ -929,18 +1064,24 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
             critical_ips.add(b["src_ip"])
 
     if critical_ips:
-        print(f"  {action_num}. [CRITICAL] Isolate and investigate hosts: "
-              f"{', '.join(sorted(critical_ips)[:5])}")
+        print(
+            f"  {action_num}. [CRITICAL] Isolate and investigate hosts: "
+            f"{', '.join(sorted(critical_ips)[:5])}"
+        )
         action_num += 1
 
     if dga_results:
         high_dga = [r["domain"] for r in dga_results if r["confidence"] == "high"]
         if high_dga:
-            print(f"  {action_num}. [HIGH] Block {len(high_dga)} high-confidence DGA domains")
+            print(
+                f"  {action_num}. [HIGH] Block {len(high_dga)} high-confidence DGA domains"
+            )
             action_num += 1
 
     if txt_findings:
-        print(f"  {action_num}. [HIGH] Review {len(txt_findings)} domains with suspicious TXT activity")
+        print(
+            f"  {action_num}. [HIGH] Review {len(txt_findings)} domains with suspicious TXT activity"
+        )
         action_num += 1
 
     print(f"  {action_num}. [MEDIUM] Deploy Zeek/Suricata DNS tunneling signatures")
@@ -951,41 +1092,76 @@ def print_report(entropy_results, beacons, txt_findings, dga_results,
 # Main
 # ---------------------------------------------------------------------------
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="DNS C2 Detection Agent - Tunneling, DGA, Beaconing, TXT Payload Analysis"
     )
     parser.add_argument("--dns-log", help="Path to DNS log file")
-    parser.add_argument("--format", choices=["zeek", "suricata", "csv"],
-                        default="zeek", help="DNS log format")
-    parser.add_argument("--mode", choices=["full", "entropy", "beacon", "txt",
-                                           "dga-classify", "train-dga"],
-                        default="full", help="Analysis mode")
+    parser.add_argument(
+        "--format",
+        choices=["zeek", "suricata", "csv"],
+        default="zeek",
+        help="DNS log format",
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["full", "entropy", "beacon", "txt", "dga-classify", "train-dga"],
+        default="full",
+        help="Analysis mode",
+    )
 
     # Thresholds
-    parser.add_argument("--entropy-threshold", type=float, default=3.5,
-                        help="Shannon entropy threshold for suspicious queries")
-    parser.add_argument("--length-threshold", type=int, default=30,
-                        help="Subdomain length threshold")
-    parser.add_argument("--beacon-min-queries", type=int, default=10,
-                        help="Minimum queries for beacon detection")
-    parser.add_argument("--beacon-max-jitter", type=float, default=25,
-                        help="Maximum jitter CV%% for beacon detection")
-    parser.add_argument("--dga-threshold", type=float, default=0.65,
-                        help="DGA probability threshold for reporting")
+    parser.add_argument(
+        "--entropy-threshold",
+        type=float,
+        default=3.5,
+        help="Shannon entropy threshold for suspicious queries",
+    )
+    parser.add_argument(
+        "--length-threshold", type=int, default=30, help="Subdomain length threshold"
+    )
+    parser.add_argument(
+        "--beacon-min-queries",
+        type=int,
+        default=10,
+        help="Minimum queries for beacon detection",
+    )
+    parser.add_argument(
+        "--beacon-max-jitter",
+        type=float,
+        default=25,
+        help="Maximum jitter CV%% for beacon detection",
+    )
+    parser.add_argument(
+        "--dga-threshold",
+        type=float,
+        default=0.65,
+        help="DGA probability threshold for reporting",
+    )
 
     # DGA training
-    parser.add_argument("--legit-domains", help="File with legitimate domains (one per line)")
+    parser.add_argument(
+        "--legit-domains", help="File with legitimate domains (one per line)"
+    )
     parser.add_argument("--dga-domains", help="File with DGA domains (one per line)")
-    parser.add_argument("--model-type", choices=["random_forest", "gradient_boosting"],
-                        default="random_forest", help="ML model type for DGA")
+    parser.add_argument(
+        "--model-type",
+        choices=["random_forest", "gradient_boosting"],
+        default="random_forest",
+        help="ML model type for DGA",
+    )
     parser.add_argument("--dga-model", help="Path to saved DGA model (pickle)")
 
     # Output
-    parser.add_argument("--output", default="dns_c2_report.json",
-                        help="Output path for JSON report")
-    parser.add_argument("--output-model", default="dga_model.pkl",
-                        help="Output path for trained DGA model")
+    parser.add_argument(
+        "--output", default="dns_c2_report.json", help="Output path for JSON report"
+    )
+    parser.add_argument(
+        "--output-model",
+        default="dga_model.pkl",
+        help="Output path for trained DGA model",
+    )
 
     args = parser.parse_args()
 
@@ -1075,17 +1251,30 @@ def main():
             print("[WARN] scikit-learn not available, skipping DGA classification")
 
         if model and scaler:
-            domains = list(set(q.get("query", "").lower().rstrip(".")
-                              for q in queries if q.get("query")))
+            domains = list(
+                set(
+                    q.get("query", "").lower().rstrip(".")
+                    for q in queries
+                    if q.get("query")
+                )
+            )
             print(f"[*] Classifying {len(domains)} unique domains...")
-            dga_results = classify_domains_dga(domains, model, scaler, args.dga_threshold)
+            dga_results = classify_domains_dga(
+                domains, model, scaler, args.dga_threshold
+            )
             print(f"    DGA candidates: {len(dga_results)}")
 
     print()
 
     # Print report
-    print_report(entropy_results, beacons, txt_findings, dga_results,
-                 len(queries), unique_domains)
+    print_report(
+        entropy_results,
+        beacons,
+        txt_findings,
+        dga_results,
+        len(queries),
+        unique_domains,
+    )
 
     # Save JSON report
     report = {

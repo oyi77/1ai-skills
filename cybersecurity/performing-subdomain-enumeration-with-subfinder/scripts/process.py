@@ -23,7 +23,9 @@ def run_subfinder(domain: str, output_dir: str, use_all_sources: bool = False) -
         cmd.append("-all")
 
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
-    subdomains = [line.strip() for line in result.stdout.strip().split("\n") if line.strip()]
+    subdomains = [
+        line.strip() for line in result.stdout.strip().split("\n") if line.strip()
+    ]
 
     with open(output_file, "w") as f:
         f.write("\n".join(subdomains))
@@ -36,8 +38,13 @@ def validate_with_httpx(subdomains: list, output_dir: str) -> list:
     """Validate discovered subdomains using httpx."""
     input_data = "\n".join(subdomains)
     cmd = [
-        "httpx", "-silent", "-status-code", "-title",
-        "-tech-detect", "-json", "-no-color"
+        "httpx",
+        "-silent",
+        "-status-code",
+        "-title",
+        "-tech-detect",
+        "-json",
+        "-no-color",
     ]
 
     result = subprocess.run(
@@ -64,10 +71,21 @@ def validate_with_httpx(subdomains: list, output_dir: str) -> list:
 def detect_takeover_candidates(subdomains: list) -> list:
     """Identify subdomains with CNAME records pointing to potentially claimable services."""
     takeover_services = [
-        "amazonaws.com", "azurewebsites.net", "cloudfront.net",
-        "herokuapp.com", "github.io", "gitlab.io", "pantheon.io",
-        "shopify.com", "surge.sh", "fastly.net", "ghost.io",
-        "myshopify.com", "zendesk.com", "readme.io", "bitbucket.io"
+        "amazonaws.com",
+        "azurewebsites.net",
+        "cloudfront.net",
+        "herokuapp.com",
+        "github.io",
+        "gitlab.io",
+        "pantheon.io",
+        "shopify.com",
+        "surge.sh",
+        "fastly.net",
+        "ghost.io",
+        "myshopify.com",
+        "zendesk.com",
+        "readme.io",
+        "bitbucket.io",
     ]
 
     candidates = []
@@ -75,17 +93,17 @@ def detect_takeover_candidates(subdomains: list) -> list:
         try:
             result = subprocess.run(
                 ["dig", "+short", "CNAME", subdomain],
-                capture_output=True, text=True, timeout=10
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             cname = result.stdout.strip()
             if cname:
                 for service in takeover_services:
                     if service in cname:
-                        candidates.append({
-                            "subdomain": subdomain,
-                            "cname": cname,
-                            "service": service
-                        })
+                        candidates.append(
+                            {"subdomain": subdomain, "cname": cname, "service": service}
+                        )
                         break
         except (subprocess.TimeoutExpired, FileNotFoundError):
             continue
@@ -93,8 +111,13 @@ def detect_takeover_candidates(subdomains: list) -> list:
     return candidates
 
 
-def generate_report(domain: str, subdomains: list, live_hosts: list,
-                    takeover_candidates: list, output_dir: str) -> str:
+def generate_report(
+    domain: str,
+    subdomains: list,
+    live_hosts: list,
+    takeover_candidates: list,
+    output_dir: str,
+) -> str:
     """Generate a markdown report of enumeration results."""
     report_path = os.path.join(output_dir, f"{domain}_report.md")
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -122,7 +145,9 @@ def generate_report(domain: str, subdomains: list, live_hosts: list,
             f.write("| Subdomain | CNAME | Service |\n")
             f.write("|-----------|-------|---------|\n")
             for candidate in takeover_candidates:
-                f.write(f"| {candidate['subdomain']} | {candidate['cname']} | {candidate['service']} |\n")
+                f.write(
+                    f"| {candidate['subdomain']} | {candidate['cname']} | {candidate['service']} |\n"
+                )
 
         f.write("\n## All Discovered Subdomains\n\n")
         for sub in sorted(subdomains):
@@ -138,7 +163,11 @@ def main():
         sys.exit(1)
 
     domain = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "./recon_output"
+    output_dir = (
+        sys.argv[2]
+        if len(sys.argv) > 2 and not sys.argv[2].startswith("--")
+        else "./recon_output"
+    )
     use_all = "--all" in sys.argv
 
     print(f"[*] Starting subdomain enumeration for {domain}")

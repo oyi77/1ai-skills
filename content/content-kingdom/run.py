@@ -24,8 +24,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from modules.learning_engine import (
-    get_learning_stats, get_active_rules, get_design_guidelines,
-    get_copy_guidelines, bootstrap_veris, capture_feedback,
+    get_learning_stats,
+    get_active_rules,
+    get_design_guidelines,
+    get_copy_guidelines,
+    bootstrap_veris,
+    capture_feedback,
     get_top_performing_patterns,
 )
 from modules.chat_learning_hook import process_user_feedback
@@ -40,22 +44,24 @@ def cmd_stats():
     print(f"  Active rules:    {stats['active_rules']}")
     print(f"  Total rules:     {stats['total_rules']}")
     print(f"  Training sessions: {stats['training_sessions']}")
-    
-    if stats['by_type']:
+
+    if stats["by_type"]:
         print(f"\n  By type:")
-        for t, c in stats['by_type'].items():
+        for t, c in stats["by_type"].items():
             print(f"    {t}: {c}")
-    
-    if stats['by_source']:
+
+    if stats["by_source"]:
         print(f"\n  By source:")
-        for s, c in stats['by_source'].items():
+        for s, c in stats["by_source"].items():
             print(f"    {s}: {c}")
-    
+
     patterns = get_top_performing_patterns()
     if patterns and "message" not in patterns:
         print(f"\n  Top performing patterns:")
         for platform, data in patterns.items():
-            print(f"    {platform}: {data['total_posts']} posts, avg engagement {data['avg_engagement']}")
+            print(
+                f"    {platform}: {data['total_posts']} posts, avg engagement {data['avg_engagement']}"
+            )
 
 
 def cmd_rules(category=None):
@@ -66,7 +72,7 @@ def cmd_rules(category=None):
     print(f"{'='*50}")
     for r in rules:
         print(f"  [{r['category']:10}] p{r['priority']}: {r['rule'][:70]}")
-        if r.get('description'):
+        if r.get("description"):
             print(f"             {r['description'][:70]}")
 
 
@@ -74,13 +80,13 @@ def cmd_guidelines():
     """Show consolidated guidelines."""
     design = get_design_guidelines()
     copy = get_copy_guidelines()
-    
+
     print(f"\n🎨 Design Guidelines")
     print(f"{'='*40}")
     for k, v in design.items():
         if k != "rules":
             print(f"  {k}: {v}")
-    
+
     print(f"\n📝 Copy Guidelines")
     print(f"{'='*40}")
     for k, v in copy.items():
@@ -109,16 +115,21 @@ def cmd_pipeline():
     """Run full daily pipeline through Content Kingdom."""
     print("🚀 Content Kingdom — Daily Pipeline")
     print(f"{'='*40}")
-    
+
     # Import orchestrator
     try:
         from orchestrator import run_daily_pipeline
+
         result = run_daily_pipeline()
         print(f"✅ Pipeline complete: {result}")
     except ImportError:
         # Fallback: call daily_content_poster.py
         import subprocess
-        poster = Path(__file__).parent.parent.parent.parent / "scripts/daily_content_poster.py"
+
+        poster = (
+            Path(__file__).parent.parent.parent.parent
+            / "scripts/daily_content_poster.py"
+        )
         if poster.exists():
             print(f"  Falling back to {poster}")
             subprocess.run([sys.executable, str(poster)], check=True)
@@ -132,13 +143,17 @@ def main():
     parser.add_argument("--stats", action="store_true", help="Show learning stats")
     parser.add_argument("--rules", action="store_true", help="Show active rules")
     parser.add_argument("--rules-category", help="Filter rules by category")
-    parser.add_argument("--guidelines", action="store_true", help="Show design/copy guidelines")
-    parser.add_argument("--bootstrap", action="store_true", help="Bootstrap training data")
+    parser.add_argument(
+        "--guidelines", action="store_true", help="Show design/copy guidelines"
+    )
+    parser.add_argument(
+        "--bootstrap", action="store_true", help="Bootstrap training data"
+    )
     parser.add_argument("--feedback", help="Add manual feedback")
     parser.add_argument("--feedback-source", default="user", help="Feedback source")
-    
+
     args = parser.parse_args()
-    
+
     if args.stats:
         cmd_stats()
     elif args.rules or args.rules_category:
@@ -158,6 +173,7 @@ def main():
         else:
             try:
                 from orchestrator import run_phase
+
                 run_phase(args.phase)
             except ImportError:
                 print(f"❌ Phase '{args.phase}' not available in standalone mode")

@@ -24,17 +24,19 @@ def parse_evtx_xml(xml_path):
         fields = {}
         for d in data_el.findall("e:Data", ns):
             fields[d.attrib.get("Name", "")] = d.text or ""
-        events.append({
-            "event_id": event_id,
-            "timestamp": time_created,
-            "target_user": fields.get("TargetUserName", ""),
-            "target_domain": fields.get("TargetDomainName", ""),
-            "ip_address": fields.get("IpAddress", ""),
-            "service_name": fields.get("ServiceName", ""),
-            "ticket_encryption_type": fields.get("TicketEncryptionType", ""),
-            "status": fields.get("Status", ""),
-            "pre_auth_type": fields.get("PreAuthType", ""),
-        })
+        events.append(
+            {
+                "event_id": event_id,
+                "timestamp": time_created,
+                "target_user": fields.get("TargetUserName", ""),
+                "target_domain": fields.get("TargetDomainName", ""),
+                "ip_address": fields.get("IpAddress", ""),
+                "service_name": fields.get("ServiceName", ""),
+                "ticket_encryption_type": fields.get("TicketEncryptionType", ""),
+                "status": fields.get("Status", ""),
+                "pre_auth_type": fields.get("PreAuthType", ""),
+            }
+        )
     return events
 
 
@@ -44,19 +46,21 @@ def detect_rc4_downgrade(events):
     for ev in events:
         enc_type = ev["ticket_encryption_type"]
         if enc_type in ("0x17", "23"):
-            alerts.append({
-                "detection": "RC4 Encryption Downgrade",
-                "mitre_technique": "T1550.003",
-                "event_id": ev["event_id"],
-                "timestamp": ev["timestamp"],
-                "user": ev["target_user"],
-                "domain": ev["target_domain"],
-                "service": ev["service_name"],
-                "ip_address": ev["ip_address"],
-                "encryption_type": enc_type,
-                "severity": "high",
-                "description": "RC4 (0x17) ticket encryption detected; may indicate Pass-the-Ticket or Kerberoasting",
-            })
+            alerts.append(
+                {
+                    "detection": "RC4 Encryption Downgrade",
+                    "mitre_technique": "T1550.003",
+                    "event_id": ev["event_id"],
+                    "timestamp": ev["timestamp"],
+                    "user": ev["target_user"],
+                    "domain": ev["target_domain"],
+                    "service": ev["service_name"],
+                    "ip_address": ev["ip_address"],
+                    "encryption_type": enc_type,
+                    "severity": "high",
+                    "description": "RC4 (0x17) ticket encryption detected; may indicate Pass-the-Ticket or Kerberoasting",
+                }
+            )
     return alerts
 
 
@@ -73,17 +77,19 @@ def detect_cross_host_ticket_reuse(events):
     for user, ips in user_ips.items():
         if len(ips) >= 2:
             sample = user_events[user][:5]
-            alerts.append({
-                "detection": "Cross-Host Ticket Reuse",
-                "mitre_technique": "T1550.003",
-                "user": user,
-                "source_ips": list(ips),
-                "ip_count": len(ips),
-                "request_count": len(user_events[user]),
-                "severity": "critical",
-                "sample_timestamps": [e["timestamp"] for e in sample],
-                "description": "Same user ticket used from multiple IPs, indicating stolen ticket replay",
-            })
+            alerts.append(
+                {
+                    "detection": "Cross-Host Ticket Reuse",
+                    "mitre_technique": "T1550.003",
+                    "user": user,
+                    "source_ips": list(ips),
+                    "ip_count": len(ips),
+                    "request_count": len(user_events[user]),
+                    "severity": "critical",
+                    "sample_timestamps": [e["timestamp"] for e in sample],
+                    "description": "Same user ticket used from multiple IPs, indicating stolen ticket replay",
+                }
+            )
     return alerts
 
 
@@ -96,15 +102,17 @@ def detect_anomalous_tgs_volume(events, threshold=50):
     alerts = []
     for user, count in user_tgs.items():
         if count >= threshold:
-            alerts.append({
-                "detection": "Anomalous TGS Volume",
-                "mitre_technique": "T1550.003",
-                "user": user,
-                "tgs_request_count": count,
-                "threshold": threshold,
-                "severity": "high",
-                "description": f"User requested {count} service tickets (threshold: {threshold})",
-            })
+            alerts.append(
+                {
+                    "detection": "Anomalous TGS Volume",
+                    "mitre_technique": "T1550.003",
+                    "user": user,
+                    "tgs_request_count": count,
+                    "threshold": threshold,
+                    "severity": "high",
+                    "description": f"User requested {count} service tickets (threshold: {threshold})",
+                }
+            )
     return alerts
 
 
@@ -117,14 +125,16 @@ def detect_preauth_failures(events, threshold=10):
     alerts = []
     for user, count in user_failures.items():
         if count >= threshold:
-            alerts.append({
-                "detection": "Excessive Pre-Auth Failures",
-                "mitre_technique": "T1110.003",
-                "user": user,
-                "failure_count": count,
-                "severity": "medium",
-                "description": f"{count} Kerberos pre-authentication failures detected",
-            })
+            alerts.append(
+                {
+                    "detection": "Excessive Pre-Auth Failures",
+                    "mitre_technique": "T1110.003",
+                    "user": user,
+                    "failure_count": count,
+                    "severity": "medium",
+                    "description": f"{count} Kerberos pre-authentication failures detected",
+                }
+            )
     return alerts
 
 
@@ -133,19 +143,19 @@ def generate_splunk_queries():
     return {
         "rc4_downgrade": (
             'index=wineventlog sourcetype="WinEventLog:Security" EventCode=4769 '
-            'TicketEncryptionType=0x17 | stats count by TargetUserName, IpAddress, ServiceName'
+            "TicketEncryptionType=0x17 | stats count by TargetUserName, IpAddress, ServiceName"
         ),
         "cross_host_reuse": (
-            'index=wineventlog EventCode=4769 | stats dc(IpAddress) as ip_count, '
-            'values(IpAddress) as source_ips by TargetUserName | where ip_count > 1'
+            "index=wineventlog EventCode=4769 | stats dc(IpAddress) as ip_count, "
+            "values(IpAddress) as source_ips by TargetUserName | where ip_count > 1"
         ),
         "tgs_volume_anomaly": (
-            'index=wineventlog EventCode=4769 | stats count by TargetUserName '
-            '| where count > 50 | sort -count'
+            "index=wineventlog EventCode=4769 | stats count by TargetUserName "
+            "| where count > 50 | sort -count"
         ),
         "preauth_failures": (
-            'index=wineventlog EventCode=4771 | stats count by TargetUserName, IpAddress '
-            '| where count > 10'
+            "index=wineventlog EventCode=4771 | stats count by TargetUserName, IpAddress "
+            "| where count > 10"
         ),
     }
 
@@ -153,10 +163,18 @@ def generate_splunk_queries():
 def main():
     parser = argparse.ArgumentParser(description="Pass-the-Ticket Attack Detector")
     parser.add_argument("--evtx-xml", help="Path to exported Security event log XML")
-    parser.add_argument("--tgs-threshold", type=int, default=50, help="TGS volume alert threshold")
-    parser.add_argument("--preauth-threshold", type=int, default=10, help="Pre-auth failure threshold")
-    parser.add_argument("--output", default="ptt_detection_report.json", help="Output report path")
-    parser.add_argument("--show-splunk", action="store_true", help="Print Splunk SPL queries")
+    parser.add_argument(
+        "--tgs-threshold", type=int, default=50, help="TGS volume alert threshold"
+    )
+    parser.add_argument(
+        "--preauth-threshold", type=int, default=10, help="Pre-auth failure threshold"
+    )
+    parser.add_argument(
+        "--output", default="ptt_detection_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--show-splunk", action="store_true", help="Print Splunk SPL queries"
+    )
     args = parser.parse_args()
 
     if args.show_splunk:
@@ -187,15 +205,20 @@ def main():
             "anomalous_tgs_volume": volume_alerts,
             "preauth_failures": preauth_alerts,
         },
-        "total_alerts": len(rc4_alerts) + len(reuse_alerts) + len(volume_alerts) + len(preauth_alerts),
+        "total_alerts": len(rc4_alerts)
+        + len(reuse_alerts)
+        + len(volume_alerts)
+        + len(preauth_alerts),
         "mitre_techniques": ["T1550.003", "T1558.003", "T1110.003"],
         "splunk_queries": generate_splunk_queries(),
     }
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)
-    print(f"[+] Alerts: RC4={len(rc4_alerts)}, Reuse={len(reuse_alerts)}, "
-          f"Volume={len(volume_alerts)}, PreAuth={len(preauth_alerts)}")
+    print(
+        f"[+] Alerts: RC4={len(rc4_alerts)}, Reuse={len(reuse_alerts)}, "
+        f"Volume={len(volume_alerts)}, PreAuth={len(preauth_alerts)}"
+    )
     print(f"[+] Report saved to {args.output}")
 
 

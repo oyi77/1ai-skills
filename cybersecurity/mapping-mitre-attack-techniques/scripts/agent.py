@@ -36,13 +36,15 @@ def get_all_techniques(attack_data: MitreAttackData) -> list[dict]:
             if phase.get("kill_chain_name") == "mitre-attack":
                 tactics.append(phase.get("phase_name", ""))
 
-        result.append({
-            "id": tech_id,
-            "name": tech.name,
-            "tactics": tactics,
-            "platforms": platforms,
-            "is_subtechnique": tech.get("x_mitre_is_subtechnique", False),
-        })
+        result.append(
+            {
+                "id": tech_id,
+                "name": tech.name,
+                "tactics": tactics,
+                "platforms": platforms,
+                "is_subtechnique": tech.get("x_mitre_is_subtechnique", False),
+            }
+        )
 
     return sorted(result, key=lambda x: x["id"])
 
@@ -95,7 +97,11 @@ def calculate_coverage(all_techniques: list[dict], detected_technique_ids: set) 
             continue
         for tactic in tech["tactics"]:
             if tactic not in tactic_coverage:
-                tactic_coverage[tactic] = {"total": 0, "covered": 0, "uncovered_techniques": []}
+                tactic_coverage[tactic] = {
+                    "total": 0,
+                    "covered": 0,
+                    "uncovered_techniques": [],
+                }
             tactic_coverage[tactic]["total"] += 1
             if tech["id"] in detected_technique_ids:
                 tactic_coverage[tactic]["covered"] += 1
@@ -106,7 +112,10 @@ def calculate_coverage(all_techniques: list[dict], detected_technique_ids: set) 
         data["coverage_pct"] = round(data["covered"] / max(data["total"], 1) * 100, 1)
 
     total_techniques = len([t for t in all_techniques if not t["is_subtechnique"]])
-    covered = len(detected_technique_ids & {t["id"] for t in all_techniques if not t["is_subtechnique"]})
+    covered = len(
+        detected_technique_ids
+        & {t["id"] for t in all_techniques if not t["is_subtechnique"]}
+    )
 
     return {
         "overall_coverage_pct": round(covered / max(total_techniques, 1) * 100, 1),
@@ -116,18 +125,22 @@ def calculate_coverage(all_techniques: list[dict], detected_technique_ids: set) 
     }
 
 
-def generate_navigator_layer(techniques: list[dict], detected_ids: set, layer_name: str) -> dict:
+def generate_navigator_layer(
+    techniques: list[dict], detected_ids: set, layer_name: str
+) -> dict:
     """Generate ATT&CK Navigator JSON layer for visualization."""
     tech_entries = []
     for tech in techniques:
         score = 1 if tech["id"] in detected_ids else 0
         color = "#31a354" if score == 1 else ""
-        tech_entries.append({
-            "techniqueID": tech["id"],
-            "score": score,
-            "color": color,
-            "enabled": True,
-        })
+        tech_entries.append(
+            {
+                "techniqueID": tech["id"],
+                "score": score,
+                "color": color,
+                "enabled": True,
+            }
+        )
 
     return {
         "name": layer_name,
@@ -148,7 +161,12 @@ def identify_priority_gaps(coverage: dict, group_techniques: list[str]) -> list[
 
     for tech_id in group_techniques:
         if tech_id in all_uncovered:
-            gaps.append({"technique_id": tech_id, "reason": "Used by target threat group, no detection"})
+            gaps.append(
+                {
+                    "technique_id": tech_id,
+                    "reason": "Used by target threat group, no detection",
+                }
+            )
 
     return gaps
 
@@ -166,7 +184,9 @@ def generate_report(coverage: dict, gaps: list, group_name: str) -> str:
         "COVERAGE BY TACTIC:",
     ]
     for tactic, data in sorted(coverage["by_tactic"].items()):
-        bar = "#" * int(data["coverage_pct"] / 5) + "." * (20 - int(data["coverage_pct"] / 5))
+        bar = "#" * int(data["coverage_pct"] / 5) + "." * (
+            20 - int(data["coverage_pct"] / 5)
+        )
         lines.append(f"  {tactic:35s} [{bar}] {data['coverage_pct']}%")
 
     if gaps:

@@ -101,10 +101,20 @@ REGISTRY_PERSISTENCE_KEYS = {
 
 # Suspicious service binary paths
 SUSPICIOUS_SERVICE_PATHS = [
-    r"\\temp\\", r"\\tmp\\", r"\\appdata\\", r"\\programdata\\",
-    r"\\public\\", r"\\downloads\\", r"\\users\\.*\\desktop\\",
-    r"powershell", r"cmd\.exe.*\/c", r"wscript", r"cscript",
-    r"mshta", r"rundll32", r"regsvr32",
+    r"\\temp\\",
+    r"\\tmp\\",
+    r"\\appdata\\",
+    r"\\programdata\\",
+    r"\\public\\",
+    r"\\downloads\\",
+    r"\\users\\.*\\desktop\\",
+    r"powershell",
+    r"cmd\.exe.*\/c",
+    r"wscript",
+    r"cscript",
+    r"mshta",
+    r"rundll32",
+    r"regsvr32",
 ]
 
 # Legitimate system paths for services
@@ -134,7 +144,12 @@ def normalize_event(event: dict) -> dict:
     field_map = {
         "event_id": ["EventCode", "EventID", "event_id", "event.code"],
         "registry_key": ["TargetObject", "RegistryKey", "registry.key", "registry_key"],
-        "registry_value": ["Details", "RegistryValueData", "registry.data", "registry_value"],
+        "registry_value": [
+            "Details",
+            "RegistryValueData",
+            "registry.data",
+            "registry_value",
+        ],
         "image": ["Image", "image", "process.executable", "InitiatingProcessFileName"],
         "command_line": ["CommandLine", "command_line", "ProcessCommandLine"],
         "user": ["User", "user", "AccountName", "user.name"],
@@ -189,9 +204,9 @@ def analyze_registry_persistence(event: dict) -> dict | None:
                             break
 
                 risk_level = (
-                    "CRITICAL" if risk >= 80 else
-                    "HIGH" if risk >= 60 else
-                    "MEDIUM" if risk >= 40 else "LOW"
+                    "CRITICAL"
+                    if risk >= 80
+                    else "HIGH" if risk >= 60 else "MEDIUM" if risk >= 40 else "LOW"
                 )
 
                 return {
@@ -243,9 +258,9 @@ def analyze_service_persistence(event: dict) -> dict | None:
         return None
 
     risk_level = (
-        "CRITICAL" if risk >= 80 else
-        "HIGH" if risk >= 60 else
-        "MEDIUM" if risk >= 40 else "LOW"
+        "CRITICAL"
+        if risk >= 80
+        else "HIGH" if risk >= 60 else "MEDIUM" if risk >= 40 else "LOW"
     )
 
     return {
@@ -305,9 +320,17 @@ def analyze_scheduled_task(event: dict) -> dict | None:
     indicators = []
 
     suspicious_task_patterns = [
-        r"powershell", r"cmd\.exe", r"wscript", r"cscript",
-        r"mshta", r"http[s]?://", r"-enc\s", r"iex\s",
-        r"downloadstring", r"\\temp\\", r"\\appdata\\",
+        r"powershell",
+        r"cmd\.exe",
+        r"wscript",
+        r"cscript",
+        r"mshta",
+        r"http[s]?://",
+        r"-enc\s",
+        r"iex\s",
+        r"downloadstring",
+        r"\\temp\\",
+        r"\\appdata\\",
     ]
 
     for pattern in suspicious_task_patterns:
@@ -319,9 +342,9 @@ def analyze_scheduled_task(event: dict) -> dict | None:
         return None
 
     risk_level = (
-        "CRITICAL" if risk >= 80 else
-        "HIGH" if risk >= 60 else
-        "MEDIUM" if risk >= 40 else "LOW"
+        "CRITICAL"
+        if risk >= 80
+        else "HIGH" if risk >= 60 else "MEDIUM" if risk >= 40 else "LOW"
     )
 
     return {
@@ -368,20 +391,28 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     with open(output_path / "persistence_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-PERSIST-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "total_findings": len(findings),
-            "statistics": dict(stats),
-            "findings": findings,
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-PERSIST-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "total_findings": len(findings),
+                "statistics": dict(stats),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
 
     with open(output_path / "hunt_report.md", "w", encoding="utf-8") as f:
         f.write(f"# Windows Persistence Hunt Report\n\n")
         f.write(f"**Date**: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"**Findings**: {len(findings)}\n\n")
-        for finding in sorted(findings, key=lambda x: x.get("risk_score", 0), reverse=True)[:30]:
-            f.write(f"### [{finding['risk_level']}] {finding['persistence_type']} - {finding.get('technique','')}\n")
+        for finding in sorted(
+            findings, key=lambda x: x.get("risk_score", 0), reverse=True
+        )[:30]:
+            f.write(
+                f"### [{finding['risk_level']}] {finding['persistence_type']} - {finding.get('technique','')}\n"
+            )
             f.write(f"- **Host**: {finding['hostname']}\n")
             if finding.get("registry_key"):
                 f.write(f"- **Key**: `{finding['registry_key']}`\n")
@@ -403,7 +434,9 @@ def main():
     hunt_p.add_argument("--output", "-o", default="./persistence_output")
 
     query_p = subparsers.add_parser("queries")
-    query_p.add_argument("--platform", "-p", choices=["splunk", "kql", "all"], default="all")
+    query_p.add_argument(
+        "--platform", "-p", choices=["splunk", "kql", "all"], default="all"
+    )
 
     args = parser.parse_args()
 

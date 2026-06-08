@@ -22,6 +22,7 @@ from collections import defaultdict
 
 try:
     import dns.resolver
+
     HAS_DNS = True
 except ImportError:
     HAS_DNS = False
@@ -30,6 +31,7 @@ except ImportError:
 @dataclass
 class DMARCStatus:
     """Current DMARC deployment status."""
+
     domain: str = ""
     dmarc_record: str = ""
     dmarc_policy: str = ""
@@ -49,6 +51,7 @@ class DMARCStatus:
 @dataclass
 class ReportSummary:
     """DMARC aggregate report summary."""
+
     report_org: str = ""
     report_domain: str = ""
     date_range: str = ""
@@ -63,14 +66,14 @@ class ReportSummary:
 def count_spf_lookups(spf_record: str) -> int:
     """Count DNS lookups in SPF record (max 10 allowed)."""
     lookup_count = 0
-    lookup_mechanisms = ['include:', 'a:', 'mx:', 'redirect=', 'exists:']
+    lookup_mechanisms = ["include:", "a:", "mx:", "redirect=", "exists:"]
     for mechanism in lookup_mechanisms:
         lookup_count += spf_record.lower().count(mechanism)
     # bare 'a' and 'mx' without ':' also count
     parts = spf_record.split()
     for part in parts:
-        p = part.lstrip('+').lstrip('-').lstrip('~').lstrip('?')
-        if p in ('a', 'mx'):
+        p = part.lstrip("+").lstrip("-").lstrip("~").lstrip("?")
+        if p in ("a", "mx"):
             lookup_count += 1
     return lookup_count
 
@@ -80,37 +83,39 @@ def check_dmarc_status(domain: str) -> DMARCStatus:
     status = DMARCStatus(domain=domain)
 
     if not HAS_DNS:
-        status.issues.append("dnspython not installed. Install with: pip install dnspython")
+        status.issues.append(
+            "dnspython not installed. Install with: pip install dnspython"
+        )
         return status
 
     # Check DMARC
     try:
-        answers = dns.resolver.resolve(f"_dmarc.{domain}", 'TXT')
+        answers = dns.resolver.resolve(f"_dmarc.{domain}", "TXT")
         for rdata in answers:
             txt = str(rdata).strip('"')
-            if txt.startswith('v=DMARC1'):
+            if txt.startswith("v=DMARC1"):
                 status.dmarc_record = txt
-                policy = re.search(r'p=(\w+)', txt)
+                policy = re.search(r"p=(\w+)", txt)
                 if policy:
                     status.dmarc_policy = policy.group(1)
-                pct = re.search(r'pct=(\d+)', txt)
+                pct = re.search(r"pct=(\d+)", txt)
                 if pct:
                     status.dmarc_pct = int(pct.group(1))
-                sp = re.search(r'sp=(\w+)', txt)
+                sp = re.search(r"sp=(\w+)", txt)
                 if sp:
                     status.subdomain_policy = sp.group(1)
-                status.rua_configured = 'rua=' in txt
-                status.ruf_configured = 'ruf=' in txt
+                status.rua_configured = "rua=" in txt
+                status.ruf_configured = "ruf=" in txt
                 break
     except Exception:
         status.issues.append("No DMARC record found - start with p=none")
 
     # Check SPF
     try:
-        answers = dns.resolver.resolve(domain, 'TXT')
+        answers = dns.resolver.resolve(domain, "TXT")
         for rdata in answers:
             txt = str(rdata).strip('"')
-            if txt.startswith('v=spf1'):
+            if txt.startswith("v=spf1"):
                 status.spf_record = txt
                 status.spf_lookup_count = count_spf_lookups(txt)
                 status.spf_valid = status.spf_lookup_count <= 10
@@ -124,11 +129,20 @@ def check_dmarc_status(domain: str) -> DMARCStatus:
         status.issues.append("No SPF record found")
 
     # Check common DKIM selectors
-    selectors = ['default', 'google', 'selector1', 'selector2', 'proofpoint',
-                 'mimecast', 's1', 's2', 'k1']
+    selectors = [
+        "default",
+        "google",
+        "selector1",
+        "selector2",
+        "proofpoint",
+        "mimecast",
+        "s1",
+        "s2",
+        "k1",
+    ]
     for selector in selectors:
         try:
-            dns.resolver.resolve(f"{selector}._domainkey.{domain}", 'TXT')
+            dns.resolver.resolve(f"{selector}._domainkey.{domain}", "TXT")
             status.dkim_found = True
             break
         except Exception:
@@ -143,7 +157,9 @@ def check_dmarc_status(domain: str) -> DMARCStatus:
         status.next_action = "Publish DMARC record with p=none and rua= for monitoring"
     elif status.dmarc_policy == "none":
         status.current_phase = "Monitoring (p=none)"
-        status.next_action = "Analyze reports, fix auth issues, then move to p=quarantine pct=10"
+        status.next_action = (
+            "Analyze reports, fix auth issues, then move to p=quarantine pct=10"
+        )
     elif status.dmarc_policy == "quarantine":
         if status.dmarc_pct < 100:
             status.current_phase = f"Quarantine at {status.dmarc_pct}%"
@@ -159,13 +175,17 @@ def check_dmarc_status(domain: str) -> DMARCStatus:
             status.next_action = f"Increase pct to {next_pct} after reviewing reports"
         else:
             status.current_phase = "FULL ENFORCEMENT (p=reject 100%)"
-            status.next_action = "Maintain: monitor reports, update auth for new sources"
+            status.next_action = (
+                "Maintain: monitor reports, update auth for new sources"
+            )
 
     if not status.rua_configured and status.dmarc_record:
         status.issues.append("No rua= tag - add aggregate report destination")
 
     if status.dmarc_policy == "reject" and not status.subdomain_policy:
-        status.issues.append("No subdomain policy (sp=) - subdomains can still be spoofed")
+        status.issues.append(
+            "No subdomain policy (sp=) - subdomains can still be spoofed"
+        )
 
     return status
 
@@ -178,28 +198,28 @@ def parse_dmarc_report(xml_file: str) -> ReportSummary:
     root = tree.getroot()
 
     # Report metadata
-    metadata = root.find('.//report_metadata')
+    metadata = root.find(".//report_metadata")
     if metadata is not None:
-        org = metadata.find('org_name')
+        org = metadata.find("org_name")
         if org is not None:
             summary.report_org = org.text or ""
 
-    policy = root.find('.//policy_published')
+    policy = root.find(".//policy_published")
     if policy is not None:
-        domain = policy.find('domain')
+        domain = policy.find("domain")
         if domain is not None:
             summary.report_domain = domain.text or ""
 
-    date_range = root.find('.//date_range')
+    date_range = root.find(".//date_range")
     if date_range is not None:
-        begin = date_range.find('begin')
-        end = date_range.find('end')
+        begin = date_range.find("begin")
+        end = date_range.find("end")
         if begin is not None and end is not None:
             summary.date_range = f"{begin.text} - {end.text}"
 
     # Process records
-    for record in root.findall('.//record'):
-        row = record.find('row')
+    for record in root.findall(".//record"):
+        row = record.find("row")
         if row is None:
             continue
 
@@ -209,19 +229,19 @@ def parse_dmarc_report(xml_file: str) -> ReportSummary:
         dkim_result = ""
         disposition = ""
 
-        ip_elem = row.find('source_ip')
+        ip_elem = row.find("source_ip")
         if ip_elem is not None:
             source_ip = ip_elem.text or ""
 
-        count_elem = row.find('count')
+        count_elem = row.find("count")
         if count_elem is not None:
             count = int(count_elem.text or 0)
 
-        policy_eval = row.find('policy_evaluated')
+        policy_eval = row.find("policy_evaluated")
         if policy_eval is not None:
-            dkim_elem = policy_eval.find('dkim')
-            spf_elem = policy_eval.find('spf')
-            disp_elem = policy_eval.find('disposition')
+            dkim_elem = policy_eval.find("dkim")
+            spf_elem = policy_eval.find("spf")
+            disp_elem = policy_eval.find("disposition")
             if dkim_elem is not None:
                 dkim_result = dkim_elem.text or ""
             if spf_elem is not None:
@@ -230,7 +250,7 @@ def parse_dmarc_report(xml_file: str) -> ReportSummary:
                 disposition = disp_elem.text or ""
 
         summary.total_messages += count
-        passed = (spf_result == "pass" or dkim_result == "pass")
+        passed = spf_result == "pass" or dkim_result == "pass"
 
         source_info = {
             "source_ip": source_ip,
@@ -238,7 +258,7 @@ def parse_dmarc_report(xml_file: str) -> ReportSummary:
             "spf": spf_result,
             "dkim": dkim_result,
             "disposition": disposition,
-            "passed": passed
+            "passed": passed,
         }
         summary.sources.append(source_info)
 
@@ -286,13 +306,17 @@ def format_status_report(status: DMARCStatus) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="DMARC Policy Enforcement Rollout Analyzer")
+    parser = argparse.ArgumentParser(
+        description="DMARC Policy Enforcement Rollout Analyzer"
+    )
     subparsers = parser.add_subparsers(dest="command")
 
     check_parser = subparsers.add_parser("check", help="Check DMARC deployment status")
     check_parser.add_argument("--domain", required=True)
 
-    report_parser = subparsers.add_parser("parse-report", help="Parse DMARC aggregate report")
+    report_parser = subparsers.add_parser(
+        "parse-report", help="Parse DMARC aggregate report"
+    )
     report_parser.add_argument("--report-file", required=True)
 
     spf_parser = subparsers.add_parser("spf-audit", help="Audit SPF record")
@@ -321,8 +345,10 @@ def main():
             if result.failing_sources:
                 print(f"\nFailing sources ({len(result.failing_sources)}):")
                 for src in result.failing_sources:
-                    print(f"  IP: {src['source_ip']} | Count: {src['count']} | "
-                          f"SPF: {src['spf']} | DKIM: {src['dkim']}")
+                    print(
+                        f"  IP: {src['source_ip']} | Count: {src['count']} | "
+                        f"SPF: {src['spf']} | DKIM: {src['dkim']}"
+                    )
 
     elif args.command == "spf-audit":
         status = check_dmarc_status(args.domain)

@@ -34,13 +34,15 @@ class AttributionEngine:
             self.evidence = json.load(f)
 
     def add_evidence(self, category, description, value, confidence):
-        self.evidence.append({
-            "id": len(self.evidence),
-            "category": category,
-            "description": description,
-            "value": value,
-            "confidence": confidence,
-        })
+        self.evidence.append(
+            {
+                "id": len(self.evidence),
+                "category": category,
+                "description": description,
+                "value": value,
+                "confidence": confidence,
+            }
+        )
 
     def add_hypothesis(self, actor_name, supporting_info=""):
         self.hypotheses[actor_name] = {
@@ -62,18 +64,22 @@ class AttributionEngine:
     def generate_ach_matrix(self):
         matrix = {"evidence": [], "hypotheses": {}}
         for e in self.evidence:
-            matrix["evidence"].append({
-                "id": e["id"],
-                "category": e["category"],
-                "description": e["description"],
-            })
+            matrix["evidence"].append(
+                {
+                    "id": e["id"],
+                    "category": e["category"],
+                    "description": e["description"],
+                }
+            )
 
         for actor, data in self.hypotheses.items():
             matrix["hypotheses"][actor] = {
                 "assessments": data["assessments"],
                 "score": data["score"],
                 "consistent": sum(1 for a in data["assessments"].values() if a == "C"),
-                "inconsistent": sum(1 for a in data["assessments"].values() if a == "I"),
+                "inconsistent": sum(
+                    1 for a in data["assessments"].values() if a == "I"
+                ),
                 "neutral": sum(1 for a in data["assessments"].values() if a == "N"),
             }
 
@@ -86,14 +92,19 @@ class AttributionEngine:
         results = []
         for name, data in ranked:
             incon = sum(1 for a in data["assessments"].values() if a == "I")
-            confidence = "HIGH" if data["score"] >= 80 and incon == 0 else \
-                        "MODERATE" if data["score"] >= 40 else "LOW"
-            results.append({
-                "actor": name,
-                "score": data["score"],
-                "confidence": confidence,
-                "inconsistent_count": incon,
-            })
+            confidence = (
+                "HIGH"
+                if data["score"] >= 80 and incon == 0
+                else "MODERATE" if data["score"] >= 40 else "LOW"
+            )
+            results.append(
+                {
+                    "actor": name,
+                    "score": data["score"],
+                    "confidence": confidence,
+                    "inconsistent_count": incon,
+                }
+            )
         return results
 
 
@@ -102,11 +113,15 @@ def compare_ttp_similarity(campaign_techs, actor_techs):
     actor_set = set(actor_techs)
     common = campaign_set & actor_set
 
-    jaccard = len(common) / len(campaign_set | actor_set) if (campaign_set | actor_set) else 0
+    jaccard = (
+        len(common) / len(campaign_set | actor_set) if (campaign_set | actor_set) else 0
+    )
     return {
         "common": sorted(common),
         "jaccard_similarity": round(jaccard, 3),
-        "campaign_coverage": round(len(common) / len(campaign_set) * 100, 1) if campaign_set else 0,
+        "campaign_coverage": (
+            round(len(common) / len(campaign_set) * 100, 1) if campaign_set else 0
+        ),
     }
 
 
@@ -146,10 +161,15 @@ def main():
         if args.actor:
             try:
                 from attackcti import attack_client
+
                 lift = attack_client()
                 groups = lift.get_groups()
                 group = next(
-                    (g for g in groups if args.actor.lower() in g.get("name", "").lower()),
+                    (
+                        g
+                        for g in groups
+                        if args.actor.lower() in g.get("name", "").lower()
+                    ),
                     None,
                 )
                 if group:
@@ -157,7 +177,8 @@ def main():
                     techs = lift.get_techniques_used_by_group(gid)
                     actor_techs = [
                         t["external_references"][0]["external_id"]
-                        for t in techs if t.get("external_references")
+                        for t in techs
+                        if t.get("external_references")
                     ]
                     result = compare_ttp_similarity(campaign_techs, actor_techs)
                     print(json.dumps(result, indent=2))

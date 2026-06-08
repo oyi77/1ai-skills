@@ -7,15 +7,18 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-
 APIGEE_POLICIES = {
     "JSONThreatProtection": {
-        "max_depth": 5, "max_string_length": 500,
-        "max_entries": 25, "max_array_elements": 100,
+        "max_depth": 5,
+        "max_string_length": 500,
+        "max_entries": 25,
+        "max_array_elements": 100,
     },
     "XMLThreatProtection": {
-        "max_depth": 5, "max_attributes": 10,
-        "max_element_name_length": 128, "max_text_length": 500,
+        "max_depth": 5,
+        "max_attributes": 10,
+        "max_element_name_length": 128,
+        "max_text_length": 500,
     },
     "RegularExpressionProtection": {
         "patterns": [
@@ -25,7 +28,8 @@ APIGEE_POLICIES = {
         ]
     },
     "SpikeArrest": {
-        "rate": "30ps", "identifier": "request.header.x-api-key",
+        "rate": "30ps",
+        "identifier": "request.header.x-api-key",
     },
 }
 
@@ -96,11 +100,13 @@ def analyze_apigee_proxy_bundle(bundle_path):
                     has_policy = True
                     break
         if not has_policy:
-            findings.append({
-                "issue": f"missing_{issue_name}",
-                "policy_type": policy_type,
-                "severity": severity,
-            })
+            findings.append(
+                {
+                    "issue": f"missing_{issue_name}",
+                    "policy_type": policy_type,
+                    "severity": severity,
+                }
+            )
     return findings
 
 
@@ -110,35 +116,46 @@ def audit_threat_protection_config(policy_path):
     content = Path(policy_path).read_text(errors="ignore")
     depth_match = re.search(r"<ContainerDepth>(\d+)</ContainerDepth>", content)
     if depth_match and int(depth_match.group(1)) > 10:
-        findings.append({
-            "issue": "excessive_container_depth",
-            "value": int(depth_match.group(1)),
-            "recommended": 5, "severity": "MEDIUM",
-        })
+        findings.append(
+            {
+                "issue": "excessive_container_depth",
+                "value": int(depth_match.group(1)),
+                "recommended": 5,
+                "severity": "MEDIUM",
+            }
+        )
     string_match = re.search(r"<StringValueLength>(\d+)</StringValueLength>", content)
     if string_match and int(string_match.group(1)) > 10000:
-        findings.append({
-            "issue": "excessive_string_length",
-            "value": int(string_match.group(1)),
-            "recommended": 500, "severity": "MEDIUM",
-        })
+        findings.append(
+            {
+                "issue": "excessive_string_length",
+                "value": int(string_match.group(1)),
+                "recommended": 500,
+                "severity": "MEDIUM",
+            }
+        )
     rate_match = re.search(r"<Rate>(\d+)(ps|pm)</Rate>", content)
     if rate_match:
         rate_val = int(rate_match.group(1))
         unit = rate_match.group(2)
         if unit == "ps" and rate_val > 100:
-            findings.append({
-                "issue": "spike_arrest_too_permissive",
-                "rate": f"{rate_val}{unit}", "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "issue": "spike_arrest_too_permissive",
+                    "rate": f"{rate_val}{unit}",
+                    "severity": "HIGH",
+                }
+            )
     return findings
 
 
 def main():
     parser = argparse.ArgumentParser(description="Apigee API Threat Protection Agent")
-    parser.add_argument("--action", choices=[
-        "generate", "audit_bundle", "audit_policy", "full"
-    ], default="generate")
+    parser.add_argument(
+        "--action",
+        choices=["generate", "audit_bundle", "audit_policy", "full"],
+        default="generate",
+    )
     parser.add_argument("--bundle", help="Apigee proxy bundle path")
     parser.add_argument("--policy", help="Policy XML file to audit")
     parser.add_argument("--output", default="apigee_threat_protection_report.json")

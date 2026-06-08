@@ -23,9 +23,15 @@ def list_modules(session):
     resp = session.get(f"{session.base_url}/api/modules", timeout=30)
     resp.raise_for_status()
     modules = resp.json()
-    return [{"name": m.get("name", ""), "descr": m.get("descr", ""),
-             "group": m.get("group", ""), "provides": m.get("provides", [])}
-            for m in modules]
+    return [
+        {
+            "name": m.get("name", ""),
+            "descr": m.get("descr", ""),
+            "group": m.get("group", ""),
+            "provides": m.get("provides", []),
+        }
+        for m in modules
+    ]
 
 
 def list_scan_types(session):
@@ -83,14 +89,25 @@ def get_scan_results(session, scan_id):
 def categorize_results(results):
     """Categorize scan results by data element type."""
     categories = {
-        "domains": [], "ips": [], "emails": [], "credentials": [],
-        "dns_records": [], "urls": [], "hostnames": [], "other": [],
+        "domains": [],
+        "ips": [],
+        "emails": [],
+        "credentials": [],
+        "dns_records": [],
+        "urls": [],
+        "hostnames": [],
+        "other": [],
     }
     type_map = {
-        "INTERNET_NAME": "domains", "IP_ADDRESS": "ips", "EMAILADDR": "emails",
-        "LEAKSITE_CONTENT": "credentials", "DNS_TEXT": "dns_records",
-        "LINKED_URL_INTERNAL": "urls", "LINKED_URL_EXTERNAL": "urls",
-        "AFFILIATE_INTERNET_NAME": "hostnames", "CO_HOSTED_SITE": "hostnames",
+        "INTERNET_NAME": "domains",
+        "IP_ADDRESS": "ips",
+        "EMAILADDR": "emails",
+        "LEAKSITE_CONTENT": "credentials",
+        "DNS_TEXT": "dns_records",
+        "LINKED_URL_INTERNAL": "urls",
+        "LINKED_URL_EXTERNAL": "urls",
+        "AFFILIATE_INTERNET_NAME": "hostnames",
+        "CO_HOSTED_SITE": "hostnames",
     }
     for result in results:
         data_type = result.get("type", "")
@@ -131,16 +148,35 @@ def generate_target_profile(target, categories):
 
 def main():
     parser = argparse.ArgumentParser(description="SpiderFoot OSINT Agent")
-    parser.add_argument("--target", required=True, help="Scan target (domain, IP, email, name)")
-    parser.add_argument("--server", default=os.environ.get("SPIDERFOOT_URL", "http://127.0.0.1:5001"),
-                        help="SpiderFoot server URL")
-    parser.add_argument("--use-case", choices=["all", "footprint", "investigate", "passive"],
-                        default="footprint", help="Scan use case")
-    parser.add_argument("--scan-name", default="", help="Scan name (default: auto-generated)")
-    parser.add_argument("--timeout", type=int, default=600, help="Scan timeout in seconds")
-    parser.add_argument("--poll-interval", type=int, default=10, help="Status poll interval in seconds")
-    parser.add_argument("--output", default="osint_report.json", help="Output report path")
-    parser.add_argument("--list-modules", action="store_true", help="List available modules and exit")
+    parser.add_argument(
+        "--target", required=True, help="Scan target (domain, IP, email, name)"
+    )
+    parser.add_argument(
+        "--server",
+        default=os.environ.get("SPIDERFOOT_URL", "http://127.0.0.1:5001"),
+        help="SpiderFoot server URL",
+    )
+    parser.add_argument(
+        "--use-case",
+        choices=["all", "footprint", "investigate", "passive"],
+        default="footprint",
+        help="Scan use case",
+    )
+    parser.add_argument(
+        "--scan-name", default="", help="Scan name (default: auto-generated)"
+    )
+    parser.add_argument(
+        "--timeout", type=int, default=600, help="Scan timeout in seconds"
+    )
+    parser.add_argument(
+        "--poll-interval", type=int, default=10, help="Status poll interval in seconds"
+    )
+    parser.add_argument(
+        "--output", default="osint_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--list-modules", action="store_true", help="List available modules and exit"
+    )
     args = parser.parse_args()
 
     session = get_sf_session(args.server)
@@ -152,7 +188,10 @@ def main():
         print(f"\n[+] Total modules: {len(modules)}")
         return
 
-    scan_name = args.scan_name or f"osint-{args.target}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+    scan_name = (
+        args.scan_name
+        or f"osint-{args.target}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+    )
     scan_id = start_scan(session, args.target, scan_name, args.use_case)
     final_status = wait_for_scan(session, scan_id, args.poll_interval, args.timeout)
 
@@ -167,8 +206,10 @@ def main():
 
     with open(args.output, "w") as f:
         json.dump(profile, f, indent=2)
-    print(f"[+] Domains: {profile['summary']['domains_found']}, IPs: {profile['summary']['ips_found']}, "
-          f"Emails: {profile['summary']['emails_found']}")
+    print(
+        f"[+] Domains: {profile['summary']['domains_found']}, IPs: {profile['summary']['ips_found']}, "
+        f"Emails: {profile['summary']['emails_found']}"
+    )
     print(f"[+] Report saved to {args.output}")
 
 

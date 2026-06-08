@@ -8,6 +8,7 @@ Design:
   • TTL: each item carries an expiry timestamp
   • <1 ms per operation
 """
+
 import time
 import threading
 import json
@@ -33,7 +34,7 @@ class WorkingMemory:
     ):
         self._max = max_items
         self._default_ttl = default_ttl
-        self._store: OrderedDict[str, dict] = OrderedDict()   # key → {value, expiry}
+        self._store: OrderedDict[str, dict] = OrderedDict()  # key → {value, expiry}
         self._lock = threading.RLock()
 
     # ── Public API ──────────────────────────────────────────────────────────
@@ -45,7 +46,7 @@ class WorkingMemory:
         expiry = time.time() + ttl if ttl > 0 else float("inf")
         with self._lock:
             if key in self._store:
-                del self._store[key]       # remove so we re-insert at end (LRU)
+                del self._store[key]  # remove so we re-insert at end (LRU)
             self._store[key] = {"value": value, "expiry": expiry}
             if len(self._store) > self._max:
                 self._evict()
@@ -95,18 +96,19 @@ class WorkingMemory:
         """Snapshot of all non-expired values."""
         now = time.time()
         with self._lock:
-            return {
-                k: v["value"]
-                for k, v in self._store.items()
-                if v["expiry"] > now
-            }
+            return {k: v["value"] for k, v in self._store.items() if v["expiry"] > now}
 
     def stats(self) -> dict:
         now = time.time()
         with self._lock:
             total = len(self._store)
             expired = sum(1 for v in self._store.values() if v["expiry"] <= now)
-        return {"total": total, "active": total - expired, "expired": expired, "max": self._max}
+        return {
+            "total": total,
+            "active": total - expired,
+            "expired": expired,
+            "max": self._max,
+        }
 
     # ── Internals ───────────────────────────────────────────────────────────
 

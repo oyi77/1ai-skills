@@ -11,26 +11,42 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 
-
 SCOPE_RISK = {
     "critical": [
-        "Directory.ReadWrite.All", "Application.ReadWrite.All",
-        "Mail.ReadWrite", "Mail.Send", "Files.ReadWrite.All",
-        "Sites.FullControl.All", "User.ReadWrite.All",
+        "Directory.ReadWrite.All",
+        "Application.ReadWrite.All",
+        "Mail.ReadWrite",
+        "Mail.Send",
+        "Files.ReadWrite.All",
+        "Sites.FullControl.All",
+        "User.ReadWrite.All",
         "RoleManagement.ReadWrite.Directory",
     ],
     "high": [
-        "Mail.Read", "Files.Read.All", "User.Read.All",
-        "Group.Read.All", "Directory.Read.All", "AuditLog.Read.All",
-        "Calendars.ReadWrite", "Contacts.ReadWrite",
+        "Mail.Read",
+        "Files.Read.All",
+        "User.Read.All",
+        "Group.Read.All",
+        "Directory.Read.All",
+        "AuditLog.Read.All",
+        "Calendars.ReadWrite",
+        "Contacts.ReadWrite",
     ],
     "medium": [
-        "Calendars.Read", "Files.ReadWrite", "Tasks.ReadWrite",
-        "Chat.ReadWrite", "ChannelMessage.Send",
+        "Calendars.Read",
+        "Files.ReadWrite",
+        "Tasks.ReadWrite",
+        "Chat.ReadWrite",
+        "ChannelMessage.Send",
     ],
     "low": [
-        "User.Read", "openid", "profile", "email", "offline_access",
-        "People.Read", "User.ReadBasic.All",
+        "User.Read",
+        "openid",
+        "profile",
+        "email",
+        "offline_access",
+        "People.Read",
+        "User.ReadBasic.All",
     ],
 }
 
@@ -46,12 +62,16 @@ class OAuthScopeAuditor:
 
     def _get_token(self, client_id, client_secret):
         url = f"https://login.microsoftonline.com/{self.tenant_id}/oauth2/v2.0/token"
-        resp = requests.post(url, data={
-            "grant_type": "client_credentials",
-            "client_id": client_id,
-            "client_secret": client_secret,
-            "scope": "https://graph.microsoft.com/.default",
-        }, timeout=30)
+        resp = requests.post(
+            url,
+            data={
+                "grant_type": "client_credentials",
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "scope": "https://graph.microsoft.com/.default",
+            },
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json()["access_token"]
 
@@ -74,9 +94,7 @@ class OAuthScopeAuditor:
 
     def get_oauth_grants(self):
         """Get all delegated permission grants."""
-        return self._paginated_get(
-            f"{self.base_url}/oauth2PermissionGrants?$top=999"
-        )
+        return self._paginated_get(f"{self.base_url}/oauth2PermissionGrants?$top=999")
 
     def classify_scope(self, scope):
         """Classify a scope by risk level."""
@@ -98,15 +116,18 @@ class OAuthScopeAuditor:
             for scope in scopes:
                 if not scope:
                     continue
-                inventory.append({
-                    "app_name": sp.get("displayName", "Unknown"),
-                    "app_id": grant.get("clientId"),
-                    "scope": scope,
-                    "risk_level": self.classify_scope(scope),
-                    "consent_type": grant.get("consentType"),
-                    "is_third_party": sp.get("appOwnerOrganizationId") != self.tenant_id,
-                    "is_enabled": sp.get("accountEnabled", True),
-                })
+                inventory.append(
+                    {
+                        "app_name": sp.get("displayName", "Unknown"),
+                        "app_id": grant.get("clientId"),
+                        "scope": scope,
+                        "risk_level": self.classify_scope(scope),
+                        "consent_type": grant.get("consentType"),
+                        "is_third_party": sp.get("appOwnerOrganizationId")
+                        != self.tenant_id,
+                        "is_enabled": sp.get("accountEnabled", True),
+                    }
+                )
         return inventory
 
     def find_over_permissioned(self, inventory, approved_scopes=None):
@@ -121,20 +142,24 @@ class OAuthScopeAuditor:
             high = [p for p in perms if p["risk_level"] == "high"]
 
             if critical:
-                findings.append({
-                    "app_name": app_name,
-                    "severity": "CRITICAL",
-                    "finding": f"{len(critical)} critical scopes granted",
-                    "critical_scopes": [p["scope"] for p in critical],
-                    "is_third_party": perms[0].get("is_third_party", False),
-                })
+                findings.append(
+                    {
+                        "app_name": app_name,
+                        "severity": "CRITICAL",
+                        "finding": f"{len(critical)} critical scopes granted",
+                        "critical_scopes": [p["scope"] for p in critical],
+                        "is_third_party": perms[0].get("is_third_party", False),
+                    }
+                )
             elif len(high) > 3:
-                findings.append({
-                    "app_name": app_name,
-                    "severity": "HIGH",
-                    "finding": f"{len(high)} high-risk scopes granted",
-                    "high_scopes": [p["scope"] for p in high],
-                })
+                findings.append(
+                    {
+                        "app_name": app_name,
+                        "severity": "HIGH",
+                        "finding": f"{len(high)} high-risk scopes granted",
+                        "high_scopes": [p["scope"] for p in high],
+                    }
+                )
         return findings
 
     def find_broad_permissions(self, inventory):
@@ -153,12 +178,14 @@ class OAuthScopeAuditor:
         for app_name, scopes in app_scopes.items():
             for broad, narrow in downgrades:
                 if broad in scopes:
-                    findings.append({
-                        "app_name": app_name,
-                        "current_scope": broad,
-                        "recommended_scope": narrow,
-                        "recommendation": f"Downgrade from {broad} to {narrow}",
-                    })
+                    findings.append(
+                        {
+                            "app_name": app_name,
+                            "current_scope": broad,
+                            "recommended_scope": narrow,
+                            "recommendation": f"Downgrade from {broad} to {narrow}",
+                        }
+                    )
         return findings
 
     def generate_report(self):

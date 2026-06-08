@@ -18,6 +18,7 @@ from typing import Optional
 
 try:
     import requests
+
     requests.packages.urllib3.disable_warnings()
 except ImportError:
     print("Install requests: pip install requests")
@@ -68,8 +69,12 @@ def analyze_campaign(campaign: dict) -> dict:
 
     for entry in results:
         status = entry.get("status", "")
-        if status == "Email Sent" or status in ("Email Opened", "Clicked Link",
-                                                  "Submitted Data", "Email Reported"):
+        if status == "Email Sent" or status in (
+            "Email Opened",
+            "Clicked Link",
+            "Submitted Data",
+            "Email Reported",
+        ):
             stats["emails_sent"] += 1
         if status in ("Email Opened", "Clicked Link", "Submitted Data"):
             stats["emails_opened"] += 1
@@ -90,7 +95,9 @@ def analyze_campaign(campaign: dict) -> dict:
         stats["submit_rate"] = round(stats["credentials_submitted"] / total * 100, 1)
         stats["report_rate"] = round(stats["emails_reported"] / total * 100, 1)
     else:
-        stats["open_rate"] = stats["click_rate"] = stats["submit_rate"] = stats["report_rate"] = 0
+        stats["open_rate"] = stats["click_rate"] = stats["submit_rate"] = stats[
+            "report_rate"
+        ] = 0
 
     return stats
 
@@ -102,7 +109,10 @@ def analyze_by_department(results: list[dict]) -> dict[str, dict]:
         dept = entry.get("position", "Unknown")
         if dept not in departments:
             departments[dept] = {
-                "total": 0, "clicked": 0, "submitted": 0, "reported": 0
+                "total": 0,
+                "clicked": 0,
+                "submitted": 0,
+                "reported": 0,
             }
         departments[dept]["total"] += 1
         status = entry.get("status", "")
@@ -119,7 +129,9 @@ def analyze_by_department(results: list[dict]) -> dict[str, dict]:
 def generate_report(stats: dict, dept_analysis: dict, output_dir: Path) -> str:
     """Generate campaign analysis report."""
     report_file = output_dir / "se_campaign_report.md"
-    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime(
+        "%Y-%m-%d %H:%M UTC"
+    )
 
     with open(report_file, "w") as f:
         f.write("# Social Engineering Campaign Analysis Report\n\n")
@@ -131,16 +143,26 @@ def generate_report(stats: dict, dept_analysis: dict, output_dir: Path) -> str:
         f.write("|--------|-------|------|\n")
         f.write(f"| Targets | {stats['total_targets']} | 100% |\n")
         f.write(f"| Emails Sent | {stats['emails_sent']} | — |\n")
-        f.write(f"| Emails Opened | {stats['emails_opened']} | {stats['open_rate']}% |\n")
-        f.write(f"| Links Clicked | {stats['links_clicked']} | {stats['click_rate']}% |\n")
-        f.write(f"| Credentials Submitted | {stats['credentials_submitted']} | {stats['submit_rate']}% |\n")
-        f.write(f"| Reported to Security | {stats['emails_reported']} | {stats['report_rate']}% |\n\n")
+        f.write(
+            f"| Emails Opened | {stats['emails_opened']} | {stats['open_rate']}% |\n"
+        )
+        f.write(
+            f"| Links Clicked | {stats['links_clicked']} | {stats['click_rate']}% |\n"
+        )
+        f.write(
+            f"| Credentials Submitted | {stats['credentials_submitted']} | {stats['submit_rate']}% |\n"
+        )
+        f.write(
+            f"| Reported to Security | {stats['emails_reported']} | {stats['report_rate']}% |\n\n"
+        )
 
         f.write("## Department Breakdown\n\n")
         f.write("| Department | Total | Clicked | Submitted | Reported |\n")
         f.write("|-----------|-------|---------|-----------|----------|\n")
         for dept, data in sorted(dept_analysis.items()):
-            f.write(f"| {dept} | {data['total']} | {data['clicked']} | {data['submitted']} | {data['reported']} |\n")
+            f.write(
+                f"| {dept} | {data['total']} | {data['clicked']} | {data['submitted']} | {data['reported']} |\n"
+            )
         f.write("\n")
 
         f.write("## Risk Assessment\n\n")

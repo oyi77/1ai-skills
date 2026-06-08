@@ -22,6 +22,7 @@ from collections import defaultdict, Counter
 @dataclass
 class BECAIResult:
     """AI-powered BEC detection result."""
+
     from_address: str = ""
     subject: str = ""
     impostor_score: float = 0.0
@@ -37,27 +38,44 @@ class BECAIResult:
 
 # NLP feature patterns
 URGENCY_PATTERNS = [
-    (r'\burgent(ly)?\b', 3), (r'\bimmediately\b', 3), (r'\basap\b', 3),
-    (r'\btime.?sensitive\b', 2), (r'\btoday\b', 1), (r'\bright\s+now\b', 2),
-    (r'\bdeadline\b', 1), (r'\boverdue\b', 2), (r'\bcritical\b', 2),
+    (r"\burgent(ly)?\b", 3),
+    (r"\bimmediately\b", 3),
+    (r"\basap\b", 3),
+    (r"\btime.?sensitive\b", 2),
+    (r"\btoday\b", 1),
+    (r"\bright\s+now\b", 2),
+    (r"\bdeadline\b", 1),
+    (r"\boverdue\b", 2),
+    (r"\bcritical\b", 2),
 ]
 
 SECRECY_PATTERNS = [
-    (r'\bconfidential\b', 2), (r'\bdo\s+not\s+(share|tell|discuss)\b', 3),
-    (r'\bkeep.*between\s+us\b', 3), (r'\bquietly\b', 2),
-    (r'\bdon.t\s+mention\b', 2), (r'\bprivate\s+matter\b', 2),
+    (r"\bconfidential\b", 2),
+    (r"\bdo\s+not\s+(share|tell|discuss)\b", 3),
+    (r"\bkeep.*between\s+us\b", 3),
+    (r"\bquietly\b", 2),
+    (r"\bdon.t\s+mention\b", 2),
+    (r"\bprivate\s+matter\b", 2),
 ]
 
 FINANCIAL_PATTERNS = [
-    (r'\bwire\s+transfer\b', 3), (r'\binvoice\b', 2), (r'\bpayment\b', 2),
-    (r'\bbank\s+(account|details|transfer)\b', 3), (r'\bgift\s+card\b', 4),
-    (r'\bbitcoin\b', 3), (r'\baccount\s+number\b', 2), (r'\bswift\b', 2),
+    (r"\bwire\s+transfer\b", 3),
+    (r"\binvoice\b", 2),
+    (r"\bpayment\b", 2),
+    (r"\bbank\s+(account|details|transfer)\b", 3),
+    (r"\bgift\s+card\b", 4),
+    (r"\bbitcoin\b", 3),
+    (r"\baccount\s+number\b", 2),
+    (r"\bswift\b", 2),
 ]
 
 AUTHORITY_PATTERNS = [
-    (r'\bi\s+need\s+you\s+to\b', 2), (r'\bi.m\s+in\s+a\s+meeting\b', 3),
-    (r'\bhandle\s+this\b', 2), (r'\bi\s+authorize\b', 2),
-    (r'\bapproved\s+by\s+me\b', 3), (r'\bdon.t\s+call\b', 2),
+    (r"\bi\s+need\s+you\s+to\b", 2),
+    (r"\bi.m\s+in\s+a\s+meeting\b", 3),
+    (r"\bhandle\s+this\b", 2),
+    (r"\bi\s+authorize\b", 2),
+    (r"\bapproved\s+by\s+me\b", 3),
+    (r"\bdon.t\s+call\b", 2),
 ]
 
 
@@ -112,7 +130,7 @@ def compute_impostor_score(email_data: dict, vip_list: list = None) -> tuple:
     reply_to = email_data.get("reply_to", "")
 
     from_domain = ""
-    match = re.search(r'@([\w.-]+)', from_email)
+    match = re.search(r"@([\w.-]+)", from_email)
     if match:
         from_domain = match.group(1).lower()
 
@@ -131,12 +149,14 @@ def compute_impostor_score(email_data: dict, vip_list: list = None) -> tuple:
     # Reply-to mismatch
     if reply_to:
         reply_domain = ""
-        match = re.search(r'@([\w.-]+)', reply_to)
+        match = re.search(r"@([\w.-]+)", reply_to)
         if match:
             reply_domain = match.group(1).lower()
         if reply_domain and from_domain and reply_domain != from_domain:
             score += 0.3
-            indicators.append(f"Reply-to domain mismatch: {reply_domain} vs {from_domain}")
+            indicators.append(
+                f"Reply-to domain mismatch: {reply_domain} vs {from_domain}"
+            )
 
     return min(score, 1.0), indicators
 
@@ -168,16 +188,21 @@ def compute_behavioral_score(email_data: dict, baseline: dict) -> tuple:
     typical_topics = sender_baseline.get("typical_topics", [])
     subject = email_data.get("subject", "").lower()
     if typical_topics:
-        financial = any(w in subject for w in ["payment", "wire", "invoice", "transfer"])
+        financial = any(
+            w in subject for w in ["payment", "wire", "invoice", "transfer"]
+        )
         if financial and "financial" not in typical_topics:
             score += 0.3
-            indicators.append("Financial request from sender who doesn't typically discuss finances")
+            indicators.append(
+                "Financial request from sender who doesn't typically discuss finances"
+            )
 
     return min(score, 1.0), indicators
 
 
-def detect_bec_ai(email_data: dict, baseline: dict = None,
-                  vip_list: list = None) -> BECAIResult:
+def detect_bec_ai(
+    email_data: dict, baseline: dict = None, vip_list: list = None
+) -> BECAIResult:
     """Run full AI BEC detection pipeline."""
     result = BECAIResult()
     result.from_address = email_data.get("from", "")
@@ -191,7 +216,9 @@ def detect_bec_ai(email_data: dict, baseline: dict = None,
     result.indicators.extend(nlp_indicators)
 
     # Impostor detection
-    result.impostor_score, imp_indicators = compute_impostor_score(email_data, vip_list or [])
+    result.impostor_score, imp_indicators = compute_impostor_score(
+        email_data, vip_list or []
+    )
     result.indicators.extend(imp_indicators)
 
     # Behavioral analysis
@@ -204,9 +231,9 @@ def detect_bec_ai(email_data: dict, baseline: dict = None,
     # Weighted aggregate score
     weights = {"nlp": 0.35, "impostor": 0.40, "behavioral": 0.25}
     result.overall_score = (
-        result.nlp_score * weights["nlp"] +
-        result.impostor_score * weights["impostor"] +
-        result.behavioral_score * weights["behavioral"]
+        result.nlp_score * weights["nlp"]
+        + result.impostor_score * weights["impostor"]
+        + result.behavioral_score * weights["behavioral"]
     )
     result.confidence = min(result.overall_score * 1.2, 1.0)
 
@@ -227,12 +254,14 @@ def detect_bec_ai(email_data: dict, baseline: dict = None,
 
 def train_baseline(emails: list) -> dict:
     """Build behavioral baselines from historical email data."""
-    baselines = defaultdict(lambda: {
-        "recipients": set(),
-        "typical_hours": [],
-        "typical_topics": set(),
-        "email_count": 0,
-    })
+    baselines = defaultdict(
+        lambda: {
+            "recipients": set(),
+            "typical_hours": [],
+            "typical_topics": set(),
+            "email_count": 0,
+        }
+    )
 
     for email in emails:
         sender = email.get("from", "")
@@ -280,7 +309,9 @@ def main():
     detect_parser.add_argument("--baseline-file")
     detect_parser.add_argument("--vip-file")
 
-    train_parser = subparsers.add_parser("train-baseline", help="Train behavioral baseline")
+    train_parser = subparsers.add_parser(
+        "train-baseline", help="Train behavioral baseline"
+    )
     train_parser.add_argument("--email-log", required=True)
     train_parser.add_argument("--output", required=True)
 
@@ -316,7 +347,7 @@ def main():
         with open(args.email_log) as f:
             emails = json.load(f)
         baseline = train_baseline(emails)
-        with open(args.output, 'w') as f:
+        with open(args.output, "w") as f:
             json.dump(baseline, f, indent=2)
         print(f"Baseline trained for {len(baseline)} senders")
 

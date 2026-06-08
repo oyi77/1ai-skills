@@ -97,7 +97,9 @@ class ObjectionAssessor:
                 current_item["account"] = line.split(":", 1)[-1].strip()
             elif "Data" in line and ":" in line:
                 data = line.split(":", 1)[-1].strip()
-                current_item["data_preview"] = data[:50] + "..." if len(data) > 50 else data
+                current_item["data_preview"] = (
+                    data[:50] + "..." if len(data) > 50 else data
+                )
                 current_item["data_length"] = len(data)
 
         if current_item:
@@ -119,8 +121,15 @@ class ObjectionAssessor:
         """Inspect NSUserDefaults for sensitive data."""
         output = self._run_objection_command("ios nsuserdefaults get")
         sensitive_patterns = [
-            "password", "token", "secret", "key", "auth",
-            "session", "credential", "api_key", "apikey",
+            "password",
+            "token",
+            "secret",
+            "key",
+            "auth",
+            "session",
+            "credential",
+            "api_key",
+            "apikey",
         ]
 
         sensitive_entries = []
@@ -155,7 +164,8 @@ class ObjectionAssessor:
             "pinning_detected": pinning_detected,
             "bypass_output": output[:500],
             "severity": "MEDIUM" if not pinning_detected else "INFO",
-            "description": "SSL pinning " + ("detected and bypassed" if pinning_detected else "not detected"),
+            "description": "SSL pinning "
+            + ("detected and bypassed" if pinning_detected else "not detected"),
         }
         self.findings.append(finding)
         return finding
@@ -172,7 +182,8 @@ class ObjectionAssessor:
             "detection_implemented": detection_found,
             "bypass_output": output[:500],
             "severity": "MEDIUM" if not detection_found else "INFO",
-            "description": "Jailbreak detection " + ("found" if detection_found else "not found or not implemented"),
+            "description": "Jailbreak detection "
+            + ("found" if detection_found else "not found or not implemented"),
         }
         self.findings.append(finding)
         return finding
@@ -186,10 +197,12 @@ class ObjectionAssessor:
             output = self._run_objection_command(f'memory search "{pattern}" --string')
             matches = output.count("Found")
             if matches > 0:
-                memory_findings.append({
-                    "pattern": pattern,
-                    "matches": matches,
-                })
+                memory_findings.append(
+                    {
+                        "pattern": pattern,
+                        "matches": matches,
+                    }
+                )
 
         finding = {
             "check": "memory_search",
@@ -232,7 +245,9 @@ class ObjectionAssessor:
                 "total_checks": len(self.findings),
                 "severity_breakdown": severity_counts,
                 "critical_findings": [
-                    f for f in self.findings if f.get("severity") in ("HIGH", "CRITICAL")
+                    f
+                    for f in self.findings
+                    if f.get("severity") in ("HIGH", "CRITICAL")
                 ],
             },
             "findings": self.findings,
@@ -245,10 +260,15 @@ def main():
     )
     parser.add_argument("--bundle-id", required=True, help="iOS app bundle identifier")
     parser.add_argument("--device-id", help="Device UDID for targeting specific device")
-    parser.add_argument("--output", default="objection_report.json", help="Output report path")
-    parser.add_argument("--checks", nargs="+",
-                        default=["keychain", "nsuserdefaults", "ssl", "jailbreak", "memory"],
-                        help="Checks to run")
+    parser.add_argument(
+        "--output", default="objection_report.json", help="Output report path"
+    )
+    parser.add_argument(
+        "--checks",
+        nargs="+",
+        default=["keychain", "nsuserdefaults", "ssl", "jailbreak", "memory"],
+        help="Checks to run",
+    )
     args = parser.parse_args()
 
     assessor = ObjectionAssessor(args.bundle_id, args.device_id)

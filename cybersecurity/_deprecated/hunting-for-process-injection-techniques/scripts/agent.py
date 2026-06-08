@@ -7,25 +7,45 @@ from datetime import datetime
 from collections import defaultdict
 
 LEGITIMATE_INJECTION_PAIRS = {
-    ("csrss.exe", "svchost.exe"), ("lsass.exe", "svchost.exe"),
-    ("services.exe", "svchost.exe"), ("smss.exe", "csrss.exe"),
-    ("wininit.exe", "services.exe"), ("svchost.exe", "runtimebroker.exe"),
+    ("csrss.exe", "svchost.exe"),
+    ("lsass.exe", "svchost.exe"),
+    ("services.exe", "svchost.exe"),
+    ("smss.exe", "csrss.exe"),
+    ("wininit.exe", "services.exe"),
+    ("svchost.exe", "runtimebroker.exe"),
     ("msmpeng.exe", "svchost.exe"),  # Windows Defender
     ("mbamservice.exe", "svchost.exe"),  # Malwarebytes
     ("avp.exe", "svchost.exe"),  # Kaspersky
 }
 
 SUSPICIOUS_SOURCE_PROCESSES = {
-    "powershell.exe", "powershell_ise.exe", "pwsh.exe", "cmd.exe",
-    "wscript.exe", "cscript.exe", "mshta.exe", "rundll32.exe",
-    "regsvr32.exe", "msbuild.exe", "installutil.exe",
-    "winword.exe", "excel.exe", "powerpnt.exe",
+    "powershell.exe",
+    "powershell_ise.exe",
+    "pwsh.exe",
+    "cmd.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+    "msbuild.exe",
+    "installutil.exe",
+    "winword.exe",
+    "excel.exe",
+    "powerpnt.exe",
 }
 
 HIGH_VALUE_TARGETS = {
-    "lsass.exe", "svchost.exe", "explorer.exe", "winlogon.exe",
-    "csrss.exe", "services.exe", "spoolsv.exe", "taskhost.exe",
-    "dllhost.exe", "wininit.exe",
+    "lsass.exe",
+    "svchost.exe",
+    "explorer.exe",
+    "winlogon.exe",
+    "csrss.exe",
+    "services.exe",
+    "spoolsv.exe",
+    "taskhost.exe",
+    "dllhost.exe",
+    "wininit.exe",
 }
 
 DANGEROUS_ACCESS_RIGHTS = {
@@ -77,8 +97,12 @@ def detect_remote_thread_injection(events):
     for event in events:
         source_image = event.get("SourceImage", "").lower()
         target_image = event.get("TargetImage", "").lower()
-        source_name = source_image.rsplit("\\", 1)[-1] if "\\" in source_image else source_image
-        target_name = target_image.rsplit("\\", 1)[-1] if "\\" in target_image else target_image
+        source_name = (
+            source_image.rsplit("\\", 1)[-1] if "\\" in source_image else source_image
+        )
+        target_name = (
+            target_image.rsplit("\\", 1)[-1] if "\\" in target_image else target_image
+        )
 
         if (source_name, target_name) in LEGITIMATE_INJECTION_PAIRS:
             continue
@@ -93,22 +117,24 @@ def detect_remote_thread_injection(events):
         start_module = event.get("StartModule", "")
         subtechnique = INJECTION_SUBTECHNIQUES.get("CreateRemoteThread", {})
 
-        detections.append({
-            "event_id": 8,
-            "timestamp": event.get("UtcTime", event.get("TimeCreated", "")),
-            "source_image": event.get("SourceImage", ""),
-            "target_image": event.get("TargetImage", ""),
-            "start_function": start_function,
-            "start_module": start_module,
-            "source_pid": event.get("SourceProcessId", ""),
-            "target_pid": event.get("TargetProcessId", ""),
-            "new_thread_id": event.get("NewThreadId", ""),
-            "user": event.get("User", "unknown"),
-            "severity": severity,
-            "mitre_technique": subtechnique.get("id", "T1055"),
-            "mitre_name": subtechnique.get("name", "Process Injection"),
-            "indicator": f"CreateRemoteThread: {source_name} -> {target_name}",
-        })
+        detections.append(
+            {
+                "event_id": 8,
+                "timestamp": event.get("UtcTime", event.get("TimeCreated", "")),
+                "source_image": event.get("SourceImage", ""),
+                "target_image": event.get("TargetImage", ""),
+                "start_function": start_function,
+                "start_module": start_module,
+                "source_pid": event.get("SourceProcessId", ""),
+                "target_pid": event.get("TargetProcessId", ""),
+                "new_thread_id": event.get("NewThreadId", ""),
+                "user": event.get("User", "unknown"),
+                "severity": severity,
+                "mitre_technique": subtechnique.get("id", "T1055"),
+                "mitre_name": subtechnique.get("name", "Process Injection"),
+                "indicator": f"CreateRemoteThread: {source_name} -> {target_name}",
+            }
+        )
     return detections
 
 
@@ -118,15 +144,24 @@ def detect_suspicious_process_access(events):
     for event in events:
         source_image = event.get("SourceImage", "").lower()
         target_image = event.get("TargetImage", "").lower()
-        source_name = source_image.rsplit("\\", 1)[-1] if "\\" in source_image else source_image
-        target_name = target_image.rsplit("\\", 1)[-1] if "\\" in target_image else target_image
+        source_name = (
+            source_image.rsplit("\\", 1)[-1] if "\\" in source_image else source_image
+        )
+        target_name = (
+            target_image.rsplit("\\", 1)[-1] if "\\" in target_image else target_image
+        )
         granted_access = event.get("GrantedAccess", "").lower()
 
         if (source_name, target_name) in LEGITIMATE_INJECTION_PAIRS:
             continue
 
         access_label = DANGEROUS_ACCESS_RIGHTS.get(granted_access, "")
-        if not access_label and granted_access not in {"0x1f0fff", "0x001a", "0x143a", "0x0020"}:
+        if not access_label and granted_access not in {
+            "0x1f0fff",
+            "0x001a",
+            "0x143a",
+            "0x0020",
+        }:
             continue
 
         severity = "medium"
@@ -137,20 +172,22 @@ def detect_suspicious_process_access(events):
         if "ALL_ACCESS" in access_label:
             severity = "critical"
 
-        detections.append({
-            "event_id": 10,
-            "timestamp": event.get("UtcTime", event.get("TimeCreated", "")),
-            "source_image": event.get("SourceImage", ""),
-            "target_image": event.get("TargetImage", ""),
-            "granted_access": granted_access,
-            "access_label": access_label,
-            "source_pid": event.get("SourceProcessId", ""),
-            "target_pid": event.get("TargetProcessId", ""),
-            "user": event.get("User", "unknown"),
-            "severity": severity,
-            "mitre_technique": "T1055",
-            "indicator": f"Suspicious process access: {source_name} -> {target_name} ({access_label})",
-        })
+        detections.append(
+            {
+                "event_id": 10,
+                "timestamp": event.get("UtcTime", event.get("TimeCreated", "")),
+                "source_image": event.get("SourceImage", ""),
+                "target_image": event.get("TargetImage", ""),
+                "granted_access": granted_access,
+                "access_label": access_label,
+                "source_pid": event.get("SourceProcessId", ""),
+                "target_pid": event.get("TargetProcessId", ""),
+                "user": event.get("User", "unknown"),
+                "severity": severity,
+                "mitre_technique": "T1055",
+                "indicator": f"Suspicious process access: {source_name} -> {target_name} ({access_label})",
+            }
+        )
     return detections
 
 
@@ -158,15 +195,27 @@ def build_injection_graph(thread_detections, access_detections):
     """Build a source->target injection relationship graph."""
     graph = defaultdict(lambda: {"targets": set(), "event_count": 0})
     for d in thread_detections + access_detections:
-        src = d["source_image"].rsplit("\\", 1)[-1] if "\\" in d["source_image"] else d["source_image"]
-        tgt = d["target_image"].rsplit("\\", 1)[-1] if "\\" in d["target_image"] else d["target_image"]
+        src = (
+            d["source_image"].rsplit("\\", 1)[-1]
+            if "\\" in d["source_image"]
+            else d["source_image"]
+        )
+        tgt = (
+            d["target_image"].rsplit("\\", 1)[-1]
+            if "\\" in d["target_image"]
+            else d["target_image"]
+        )
         graph[src]["targets"].add(tgt)
         graph[src]["event_count"] += 1
-    return {src: {"targets": list(info["targets"]), "event_count": info["event_count"]}
-            for src, info in graph.items()}
+    return {
+        src: {"targets": list(info["targets"]), "event_count": info["event_count"]}
+        for src, info in graph.items()
+    }
 
 
-def generate_report(events, thread_detections, access_detections, injection_graph, log_path):
+def generate_report(
+    events, thread_detections, access_detections, injection_graph, log_path
+):
     """Generate process injection hunt report."""
     all_detections = thread_detections + access_detections
     severity_counts = defaultdict(int)
@@ -190,7 +239,9 @@ def generate_report(events, thread_detections, access_detections, injection_grap
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Process Injection Detection Agent (T1055)")
+    parser = argparse.ArgumentParser(
+        description="Process Injection Detection Agent (T1055)"
+    )
     parser.add_argument("--log-file", required=True, help="Sysmon JSON event log file")
     parser.add_argument("--output", default="process_injection_report.json")
     args = parser.parse_args()
@@ -200,12 +251,16 @@ def main():
     access_detections = detect_suspicious_process_access(events["process_access"])
     injection_graph = build_injection_graph(thread_detections, access_detections)
 
-    report = generate_report(events, thread_detections, access_detections, injection_graph, args.log_file)
+    report = generate_report(
+        events, thread_detections, access_detections, injection_graph, args.log_file
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
     total = len(thread_detections) + len(access_detections)
     print(f"[+] Parsed {sum(len(v) for v in events.values())} Sysmon events")
-    print(f"[+] CreateRemoteThread: {len(thread_detections)} | ProcessAccess: {len(access_detections)}")
+    print(
+        f"[+] CreateRemoteThread: {len(thread_detections)} | ProcessAccess: {len(access_detections)}"
+    )
     print(f"[+] Total injections detected: {total}")
     print(f"[+] Report saved to {args.output}")
 

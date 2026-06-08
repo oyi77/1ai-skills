@@ -16,12 +16,23 @@ except ImportError:
 
 def run_prowler_scan(provider="aws", compliance="cis_level1", output_format="json"):
     """Run Prowler CSPM scan against a cloud provider."""
-    cmd = ["prowler", provider, "--compliance", compliance,
-           "-M", output_format, "--output-directory", "/tmp/prowler-output"]
+    cmd = [
+        "prowler",
+        provider,
+        "--compliance",
+        compliance,
+        "-M",
+        output_format,
+        "--output-directory",
+        "/tmp/prowler-output",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
-        return {"status": "completed", "returncode": result.returncode,
-                "output_dir": "/tmp/prowler-output"}
+        return {
+            "status": "completed",
+            "returncode": result.returncode,
+            "output_dir": "/tmp/prowler-output",
+        }
     except FileNotFoundError:
         return {"error": "Prowler not installed. Run: pip install prowler"}
     except subprocess.TimeoutExpired:
@@ -42,21 +53,45 @@ def check_aws_security_posture(region="us-east-1"):
             try:
                 pab = s3.get_public_access_block(Bucket=name)
                 config = pab["PublicAccessBlockConfiguration"]
-                if not all([config["BlockPublicAcls"], config["BlockPublicPolicy"],
-                            config["IgnorePublicAcls"], config["RestrictPublicBuckets"]]):
-                    findings.append({"check": "S3_PUBLIC_ACCESS", "resource": name,
-                                     "severity": "HIGH", "status": "FAIL",
-                                     "detail": "Public access block not fully enabled"})
+                if not all(
+                    [
+                        config["BlockPublicAcls"],
+                        config["BlockPublicPolicy"],
+                        config["IgnorePublicAcls"],
+                        config["RestrictPublicBuckets"],
+                    ]
+                ):
+                    findings.append(
+                        {
+                            "check": "S3_PUBLIC_ACCESS",
+                            "resource": name,
+                            "severity": "HIGH",
+                            "status": "FAIL",
+                            "detail": "Public access block not fully enabled",
+                        }
+                    )
             except ClientError:
-                findings.append({"check": "S3_PUBLIC_ACCESS", "resource": name,
-                                 "severity": "HIGH", "status": "FAIL",
-                                 "detail": "No public access block configured"})
+                findings.append(
+                    {
+                        "check": "S3_PUBLIC_ACCESS",
+                        "resource": name,
+                        "severity": "HIGH",
+                        "status": "FAIL",
+                        "detail": "No public access block configured",
+                    }
+                )
             try:
                 s3.get_bucket_encryption(Bucket=name)
             except ClientError:
-                findings.append({"check": "S3_ENCRYPTION", "resource": name,
-                                 "severity": "MEDIUM", "status": "FAIL",
-                                 "detail": "Default encryption not enabled"})
+                findings.append(
+                    {
+                        "check": "S3_ENCRYPTION",
+                        "resource": name,
+                        "severity": "MEDIUM",
+                        "status": "FAIL",
+                        "detail": "Default encryption not enabled",
+                    }
+                )
     except ClientError as e:
         findings.append({"check": "S3_ACCESS", "status": "ERROR", "detail": str(e)})
 
@@ -64,18 +99,30 @@ def check_aws_security_posture(region="us-east-1"):
     try:
         acct_summary = iam.get_account_summary()["SummaryMap"]
         if acct_summary.get("AccountMFAEnabled", 0) == 0:
-            findings.append({"check": "ROOT_MFA", "resource": "root-account",
-                             "severity": "CRITICAL", "status": "FAIL",
-                             "detail": "Root account MFA not enabled"})
+            findings.append(
+                {
+                    "check": "ROOT_MFA",
+                    "resource": "root-account",
+                    "severity": "CRITICAL",
+                    "status": "FAIL",
+                    "detail": "Root account MFA not enabled",
+                }
+            )
         users = iam.list_users()["Users"]
         for user in users:
             keys = iam.list_access_keys(UserName=user["UserName"])["AccessKeyMetadata"]
             for key in keys:
                 age = (datetime.utcnow() - key["CreateDate"].replace(tzinfo=None)).days
                 if age > 90:
-                    findings.append({"check": "IAM_KEY_ROTATION", "resource": user["UserName"],
-                                     "severity": "MEDIUM", "status": "FAIL",
-                                     "detail": f"Access key {key['AccessKeyId']} is {age} days old"})
+                    findings.append(
+                        {
+                            "check": "IAM_KEY_ROTATION",
+                            "resource": user["UserName"],
+                            "severity": "MEDIUM",
+                            "status": "FAIL",
+                            "detail": f"Access key {key['AccessKeyId']} is {age} days old",
+                        }
+                    )
     except ClientError as e:
         findings.append({"check": "IAM_ACCESS", "status": "ERROR", "detail": str(e)})
 
@@ -88,9 +135,15 @@ def check_aws_security_posture(region="us-east-1"):
                     if ip_range.get("CidrIp") == "0.0.0.0/0":
                         port = rule.get("FromPort", "all")
                         if port in [22, 3389, 0, -1]:
-                            findings.append({"check": "SG_OPEN_PORTS", "resource": sg["GroupId"],
-                                             "severity": "HIGH", "status": "FAIL",
-                                             "detail": f"Port {port} open to 0.0.0.0/0"})
+                            findings.append(
+                                {
+                                    "check": "SG_OPEN_PORTS",
+                                    "resource": sg["GroupId"],
+                                    "severity": "HIGH",
+                                    "status": "FAIL",
+                                    "detail": f"Port {port} open to 0.0.0.0/0",
+                                }
+                            )
     except ClientError as e:
         findings.append({"check": "EC2_ACCESS", "status": "ERROR", "detail": str(e)})
 
@@ -98,17 +151,31 @@ def check_aws_security_posture(region="us-east-1"):
     try:
         trails = ct.describe_trails()["trailList"]
         if not trails:
-            findings.append({"check": "CLOUDTRAIL_ENABLED", "resource": "account",
-                             "severity": "CRITICAL", "status": "FAIL",
-                             "detail": "No CloudTrail trails configured"})
+            findings.append(
+                {
+                    "check": "CLOUDTRAIL_ENABLED",
+                    "resource": "account",
+                    "severity": "CRITICAL",
+                    "status": "FAIL",
+                    "detail": "No CloudTrail trails configured",
+                }
+            )
         for trail in trails:
             status = ct.get_trail_status(Name=trail["TrailARN"])
             if not status.get("IsLogging"):
-                findings.append({"check": "CLOUDTRAIL_LOGGING", "resource": trail["Name"],
-                                 "severity": "CRITICAL", "status": "FAIL",
-                                 "detail": "CloudTrail is not actively logging"})
+                findings.append(
+                    {
+                        "check": "CLOUDTRAIL_LOGGING",
+                        "resource": trail["Name"],
+                        "severity": "CRITICAL",
+                        "status": "FAIL",
+                        "detail": "CloudTrail is not actively logging",
+                    }
+                )
     except ClientError as e:
-        findings.append({"check": "CLOUDTRAIL_ACCESS", "status": "ERROR", "detail": str(e)})
+        findings.append(
+            {"check": "CLOUDTRAIL_ACCESS", "status": "ERROR", "detail": str(e)}
+        )
 
     return findings
 
@@ -143,8 +210,12 @@ def generate_posture_report(findings):
             print(f"    {f.get('detail', '')}")
 
     print(f"\n{'='*60}\n")
-    return {"total": len(findings), "failed": fail_count, "pass_rate": pass_rate,
-            "by_severity": dict(severity_counts)}
+    return {
+        "total": len(findings),
+        "failed": fail_count,
+        "pass_rate": pass_rate,
+        "by_severity": dict(severity_counts),
+    }
 
 
 def main():
@@ -164,7 +235,9 @@ def main():
         report = generate_posture_report(findings)
         if args.output:
             with open(args.output, "w") as f:
-                json.dump({"findings": findings, "summary": report}, f, indent=2, default=str)
+                json.dump(
+                    {"findings": findings, "summary": report}, f, indent=2, default=str
+                )
             print(f"[+] Report saved to {args.output}")
     else:
         parser.print_help()

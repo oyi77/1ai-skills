@@ -14,7 +14,13 @@ except ImportError:
 LOLBINS = {
     "certutil.exe": {
         "mitre": "T1140,T1105",
-        "suspicious_args": [r"-urlcache", r"-split", r"-decode", r"-encode", r"-f\s+http"],
+        "suspicious_args": [
+            r"-urlcache",
+            r"-split",
+            r"-decode",
+            r"-encode",
+            r"-f\s+http",
+        ],
         "description": "Certificate utility abused for download and decode",
     },
     "mshta.exe": {
@@ -24,17 +30,32 @@ LOLBINS = {
     },
     "regsvr32.exe": {
         "mitre": "T1218.010",
-        "suspicious_args": [r"/s\s+/n\s+/u\s+/i:", r"scrobj\.dll", r"http://", r"https://"],
+        "suspicious_args": [
+            r"/s\s+/n\s+/u\s+/i:",
+            r"scrobj\.dll",
+            r"http://",
+            r"https://",
+        ],
         "description": "COM registration abused for proxy execution",
     },
     "rundll32.exe": {
         "mitre": "T1218.011",
-        "suspicious_args": [r"javascript:", r"shell32\.dll.*ShellExec_RunDLL", r"url\.dll.*FileProtocolHandler"],
+        "suspicious_args": [
+            r"javascript:",
+            r"shell32\.dll.*ShellExec_RunDLL",
+            r"url\.dll.*FileProtocolHandler",
+        ],
         "description": "DLL loader abused for proxy execution",
     },
     "bitsadmin.exe": {
         "mitre": "T1197",
-        "suspicious_args": [r"/transfer", r"/download", r"/create", r"http://", r"https://"],
+        "suspicious_args": [
+            r"/transfer",
+            r"/download",
+            r"/create",
+            r"http://",
+            r"https://",
+        ],
         "description": "BITS service abused for file download",
     },
     "wmic.exe": {
@@ -54,7 +75,13 @@ LOLBINS = {
     },
     "wscript.exe": {
         "mitre": "T1059.005",
-        "suspicious_args": [r"\.js$", r"\.vbs$", r"\.wsf$", r"//e:jscript", r"//e:vbscript"],
+        "suspicious_args": [
+            r"\.js$",
+            r"\.vbs$",
+            r"\.wsf$",
+            r"//e:jscript",
+            r"//e:vbscript",
+        ],
         "description": "Windows Script Host for script execution",
     },
     "cscript.exe": {
@@ -65,9 +92,16 @@ LOLBINS = {
     "powershell.exe": {
         "mitre": "T1059.001",
         "suspicious_args": [
-            r"-enc\s+", r"-encodedcommand", r"-nop\s+", r"-noprofile",
-            r"IEX\s*\(", r"Invoke-Expression", r"DownloadString",
-            r"Net\.WebClient", r"bitstransfer", r"-w\s+hidden",
+            r"-enc\s+",
+            r"-encodedcommand",
+            r"-nop\s+",
+            r"-noprofile",
+            r"IEX\s*\(",
+            r"Invoke-Expression",
+            r"DownloadString",
+            r"Net\.WebClient",
+            r"bitstransfer",
+            r"-w\s+hidden",
         ],
         "description": "PowerShell with obfuscation or download cradles",
     },
@@ -87,34 +121,53 @@ def hunt_lolbins_elastic(es_host, es_index, api_key=None, hours=24):
     if api_key:
         kwargs["api_key"] = api_key
     es = Elasticsearch(**kwargs)
-    results = {"timestamp": datetime.utcnow().isoformat(), "detections": [], "total_suspicious": 0}
+    results = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "detections": [],
+        "total_suspicious": 0,
+    }
     for binary, info in LOLBINS.items():
-        query = {"bool": {"must": [
-            {"term": {"process.name": binary}},
-            {"range": {"@timestamp": {"gte": f"now-{hours}h"}}}
-        ]}}
-        resp = es.search(index=es_index, body={"query": query, "size": 200, "sort": [{"@timestamp": "desc"}]})
+        query = {
+            "bool": {
+                "must": [
+                    {"term": {"process.name": binary}},
+                    {"range": {"@timestamp": {"gte": f"now-{hours}h"}}},
+                ]
+            }
+        }
+        resp = es.search(
+            index=es_index,
+            body={"query": query, "size": 200, "sort": [{"@timestamp": "desc"}]},
+        )
         suspicious = []
         for hit in resp["hits"]["hits"]:
             src = hit["_source"]
             cmdline = src.get("process", {}).get("command_line", "")
             for pattern in info["suspicious_args"]:
                 if re.search(pattern, cmdline, re.I):
-                    suspicious.append({
-                        "timestamp": src.get("@timestamp"),
-                        "host": src.get("host", {}).get("name"),
-                        "user": src.get("user", {}).get("name"),
-                        "command_line": cmdline[:500],
-                        "parent_process": src.get("process", {}).get("parent", {}).get("name"),
-                        "matched_pattern": pattern,
-                    })
+                    suspicious.append(
+                        {
+                            "timestamp": src.get("@timestamp"),
+                            "host": src.get("host", {}).get("name"),
+                            "user": src.get("user", {}).get("name"),
+                            "command_line": cmdline[:500],
+                            "parent_process": src.get("process", {})
+                            .get("parent", {})
+                            .get("name"),
+                            "matched_pattern": pattern,
+                        }
+                    )
                     break
         if suspicious:
-            results["detections"].append({
-                "binary": binary, "mitre": info["mitre"],
-                "description": info["description"],
-                "count": len(suspicious), "events": suspicious[:50],
-            })
+            results["detections"].append(
+                {
+                    "binary": binary,
+                    "mitre": info["mitre"],
+                    "description": info["description"],
+                    "count": len(suspicious),
+                    "events": suspicious[:50],
+                }
+            )
             results["total_suspicious"] += len(suspicious)
     return results
 
@@ -134,9 +187,15 @@ def scan_sysmon_log(evtx_file):
                 continue
             for binary in lolbin_names:
                 if binary in xml.lower():
-                    findings.append({"record_id": record.record_num(), "xml_snippet": xml[:800]})
+                    findings.append(
+                        {"record_id": record.record_num(), "xml_snippet": xml[:800]}
+                    )
                     break
-    return {"file": evtx_file, "lolbin_events": len(findings), "findings": findings[:200]}
+    return {
+        "file": evtx_file,
+        "lolbin_events": len(findings),
+        "findings": findings[:200],
+    }
 
 
 def main():
@@ -151,7 +210,9 @@ def main():
     s.add_argument("--evtx-file", required=True)
     args = parser.parse_args()
     if args.command == "hunt":
-        result = hunt_lolbins_elastic(args.es_host, args.index, args.api_key, args.hours)
+        result = hunt_lolbins_elastic(
+            args.es_host, args.index, args.api_key, args.hours
+        )
     elif args.command == "sysmon":
         result = scan_sysmon_log(args.evtx_file)
     else:

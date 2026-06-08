@@ -14,15 +14,17 @@ def list_functions(region="us-east-1"):
     paginator = lam.get_paginator("list_functions")
     for page in paginator.paginate():
         for f in page["Functions"]:
-            functions.append({
-                "name": f["FunctionName"],
-                "runtime": f.get("Runtime", "N/A"),
-                "role": f["Role"].split("/")[-1],
-                "timeout": f.get("Timeout", 3),
-                "memory": f.get("MemorySize", 128),
-                "kms_key": f.get("KMSKeyArn", "None (default)"),
-                "vpc": bool(f.get("VpcConfig", {}).get("SubnetIds")),
-            })
+            functions.append(
+                {
+                    "name": f["FunctionName"],
+                    "runtime": f.get("Runtime", "N/A"),
+                    "role": f["Role"].split("/")[-1],
+                    "timeout": f.get("Timeout", 3),
+                    "memory": f.get("MemorySize", 128),
+                    "kms_key": f.get("KMSKeyArn", "None (default)"),
+                    "vpc": bool(f.get("VpcConfig", {}).get("SubnetIds")),
+                }
+            )
     print(f"[*] Found {len(functions)} Lambda functions")
     for fn in functions:
         print(f"  {fn['name']} | {fn['runtime']} | role={fn['role']} | VPC={fn['vpc']}")
@@ -40,14 +42,18 @@ def check_function_urls(region="us-east-1"):
                 url_config = lam.get_function_url_config(FunctionName=f["FunctionName"])
                 auth_type = url_config.get("AuthType", "NONE")
                 if auth_type == "NONE":
-                    findings.append({
-                        "function": f["FunctionName"],
-                        "url": url_config.get("FunctionUrl", ""),
-                        "auth_type": auth_type,
-                        "severity": "CRITICAL",
-                    })
-                    print(f"  [!] CRITICAL: {f['FunctionName']} has unauthenticated URL: "
-                          f"{url_config.get('FunctionUrl', '')}")
+                    findings.append(
+                        {
+                            "function": f["FunctionName"],
+                            "url": url_config.get("FunctionUrl", ""),
+                            "auth_type": auth_type,
+                            "severity": "CRITICAL",
+                        }
+                    )
+                    print(
+                        f"  [!] CRITICAL: {f['FunctionName']} has unauthenticated URL: "
+                        f"{url_config.get('FunctionUrl', '')}"
+                    )
                 else:
                     print(f"  [+] {f['FunctionName']}: URL auth={auth_type}")
             except lam.exceptions.ResourceNotFoundException:
@@ -60,8 +66,18 @@ def check_env_variables(region="us-east-1"):
     """Scan Lambda environment variables for potential hardcoded secrets."""
     lam = boto3.client("lambda", region_name=region)
     findings = []
-    secret_patterns = ["password", "secret", "api_key", "apikey", "token", "private_key",
-                       "access_key", "db_pass", "database_url", "smtp"]
+    secret_patterns = [
+        "password",
+        "secret",
+        "api_key",
+        "apikey",
+        "token",
+        "private_key",
+        "access_key",
+        "db_pass",
+        "database_url",
+        "smtp",
+    ]
     paginator = lam.get_paginator("list_functions")
     for page in paginator.paginate():
         for f in page["Functions"]:
@@ -71,12 +87,14 @@ def check_env_variables(region="us-east-1"):
                 key_lower = key.lower()
                 if any(p in key_lower for p in secret_patterns):
                     has_kms = bool(kms_key)
-                    findings.append({
-                        "function": f["FunctionName"],
-                        "variable": key,
-                        "encrypted": has_kms,
-                        "severity": "HIGH" if not has_kms else "MEDIUM",
-                    })
+                    findings.append(
+                        {
+                            "function": f["FunctionName"],
+                            "variable": key,
+                            "encrypted": has_kms,
+                            "severity": "HIGH" if not has_kms else "MEDIUM",
+                        }
+                    )
                     enc_status = "KMS-encrypted" if has_kms else "PLAINTEXT"
                     print(f"  [!] {f['FunctionName']}: {key} ({enc_status})")
     print(f"[*] {len(findings)} potential secrets in environment variables")
@@ -100,7 +118,9 @@ def check_shared_roles(region="us-east-1"):
     for role, funcs in role_map.items():
         if len(funcs) > 1:
             findings.append({"role": role, "functions": funcs, "count": len(funcs)})
-            print(f"  [!] Role '{role}' shared by {len(funcs)} functions: {', '.join(funcs[:5])}")
+            print(
+                f"  [!] Role '{role}' shared by {len(funcs)} functions: {', '.join(funcs[:5])}"
+            )
     print(f"[*] {len(findings)} shared roles found")
     return findings
 
@@ -136,8 +156,11 @@ def full_audit(region="us-east-1", output_path="serverless_audit.json"):
         "shared_roles": check_shared_roles(region),
         "no_concurrency_limit": check_reserved_concurrency(region),
     }
-    total_findings = (len(report["unauthenticated_urls"]) + len(report["env_secrets"]) +
-                      len(report["shared_roles"]))
+    total_findings = (
+        len(report["unauthenticated_urls"])
+        + len(report["env_secrets"])
+        + len(report["shared_roles"])
+    )
     report["total_findings"] = total_findings
     with open(output_path, "w") as f:
         json.dump(report, f, indent=2, default=str)
@@ -147,8 +170,17 @@ def full_audit(region="us-east-1", output_path="serverless_audit.json"):
 
 def main():
     parser = argparse.ArgumentParser(description="Serverless Function Security Agent")
-    parser.add_argument("action", choices=["list", "urls", "env-secrets", "shared-roles",
-                                           "concurrency", "full-audit"])
+    parser.add_argument(
+        "action",
+        choices=[
+            "list",
+            "urls",
+            "env-secrets",
+            "shared-roles",
+            "concurrency",
+            "full-audit",
+        ],
+    )
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("-o", "--output", default="serverless_audit.json")
     args = parser.parse_args()

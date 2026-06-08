@@ -52,22 +52,26 @@ class GitHubActionsSecurityAgent:
                 return unpinned
 
         for line_num, line in enumerate(raw.splitlines(), 1):
-            m = re.search(r'uses:\s+([^@\s]+)@([^\s#]+)', line)
+            m = re.search(r"uses:\s+([^@\s]+)@([^\s#]+)", line)
             if m:
                 action, ref = m.group(1), m.group(2)
-                if not re.match(r'^[a-f0-9]{40}$', ref):
-                    unpinned.append({
-                        "action": action,
-                        "ref": ref,
-                        "line": line_num,
-                        "file": str(workflow_path),
-                    })
-                    self.findings.append({
-                        "severity": "medium",
-                        "type": "Unpinned Action",
-                        "detail": f"{action}@{ref} at line {line_num}",
-                        "file": str(workflow_path),
-                    })
+                if not re.match(r"^[a-f0-9]{40}$", ref):
+                    unpinned.append(
+                        {
+                            "action": action,
+                            "ref": ref,
+                            "line": line_num,
+                            "file": str(workflow_path),
+                        }
+                    )
+                    self.findings.append(
+                        {
+                            "severity": "medium",
+                            "type": "Unpinned Action",
+                            "detail": f"{action}@{ref} at line {line_num}",
+                            "file": str(workflow_path),
+                        }
+                    )
         return unpinned
 
     def check_permissions(self, workflow_path, content):
@@ -78,27 +82,37 @@ class GitHubActionsSecurityAgent:
 
         top_perms = content.get("permissions")
         if top_perms is None:
-            issues.append({
-                "issue": "No top-level permissions defined (inherits defaults)",
-                "file": str(workflow_path),
-            })
-            self.findings.append({
-                "severity": "medium",
-                "type": "Missing Permissions",
-                "detail": "Workflow has no permissions block",
-                "file": str(workflow_path),
-            })
+            issues.append(
+                {
+                    "issue": "No top-level permissions defined (inherits defaults)",
+                    "file": str(workflow_path),
+                }
+            )
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Missing Permissions",
+                    "detail": "Workflow has no permissions block",
+                    "file": str(workflow_path),
+                }
+            )
 
-        if top_perms == "write-all" or (isinstance(top_perms, dict) and
-                top_perms.get("contents") == "write" and
-                top_perms.get("actions") == "write"):
-            issues.append({"issue": "Overly permissive write-all", "file": str(workflow_path)})
-            self.findings.append({
-                "severity": "high",
-                "type": "Excessive Permissions",
-                "detail": "write-all permissions granted",
-                "file": str(workflow_path),
-            })
+        if top_perms == "write-all" or (
+            isinstance(top_perms, dict)
+            and top_perms.get("contents") == "write"
+            and top_perms.get("actions") == "write"
+        ):
+            issues.append(
+                {"issue": "Overly permissive write-all", "file": str(workflow_path)}
+            )
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Excessive Permissions",
+                    "detail": "write-all permissions granted",
+                    "file": str(workflow_path),
+                }
+            )
 
         return issues
 
@@ -127,21 +141,33 @@ class GitHubActionsSecurityAgent:
             stripped = line.strip()
             if stripped.startswith("run:") or stripped.startswith("run: |"):
                 in_run = True
-            elif in_run and not stripped.startswith("-") and not stripped.startswith("#"):
+            elif (
+                in_run and not stripped.startswith("-") and not stripped.startswith("#")
+            ):
                 for ctx in dangerous_contexts:
                     if f"${{{{ {ctx}" in line or f"${{{{{ctx}" in line:
-                        injections.append({
-                            "context": ctx,
-                            "line": line_num,
-                            "file": str(workflow_path),
-                        })
-                        self.findings.append({
-                            "severity": "high",
-                            "type": "Script Injection",
-                            "detail": f"{ctx} in run step at line {line_num}",
-                            "file": str(workflow_path),
-                        })
-            if stripped and not stripped.startswith("-") and not stripped.startswith("#") and ":" in stripped and not stripped.startswith("run"):
+                        injections.append(
+                            {
+                                "context": ctx,
+                                "line": line_num,
+                                "file": str(workflow_path),
+                            }
+                        )
+                        self.findings.append(
+                            {
+                                "severity": "high",
+                                "type": "Script Injection",
+                                "detail": f"{ctx} in run step at line {line_num}",
+                                "file": str(workflow_path),
+                            }
+                        )
+            if (
+                stripped
+                and not stripped.startswith("-")
+                and not stripped.startswith("#")
+                and ":" in stripped
+                and not stripped.startswith("run")
+            ):
                 in_run = False
 
         return injections
@@ -152,24 +178,32 @@ class GitHubActionsSecurityAgent:
         if not isinstance(content, dict) or "raw" in content:
             raw = content.get("raw", "")
             if "pull_request_target" in raw:
-                issues.append({"trigger": "pull_request_target", "file": str(workflow_path)})
-                self.findings.append({
-                    "severity": "high",
-                    "type": "Dangerous Trigger",
-                    "detail": "pull_request_target allows fork code to run with base permissions",
-                    "file": str(workflow_path),
-                })
+                issues.append(
+                    {"trigger": "pull_request_target", "file": str(workflow_path)}
+                )
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Dangerous Trigger",
+                        "detail": "pull_request_target allows fork code to run with base permissions",
+                        "file": str(workflow_path),
+                    }
+                )
             return issues
 
         on_block = content.get("on", content.get(True, {}))
         if isinstance(on_block, dict) and "pull_request_target" in on_block:
-            issues.append({"trigger": "pull_request_target", "file": str(workflow_path)})
-            self.findings.append({
-                "severity": "high",
-                "type": "Dangerous Trigger",
-                "detail": "pull_request_target trigger used",
-                "file": str(workflow_path),
-            })
+            issues.append(
+                {"trigger": "pull_request_target", "file": str(workflow_path)}
+            )
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Dangerous Trigger",
+                    "detail": "pull_request_target trigger used",
+                    "file": str(workflow_path),
+                }
+            )
         return issues
 
     def audit_all(self):
@@ -182,13 +216,15 @@ class GitHubActionsSecurityAgent:
             perms = self.check_permissions(wf, content)
             injections = self.check_script_injection(wf, content)
             triggers = self.check_dangerous_triggers(wf, content)
-            results.append({
-                "workflow": str(wf),
-                "unpinned_actions": len(unpinned),
-                "permission_issues": len(perms),
-                "script_injections": len(injections),
-                "dangerous_triggers": len(triggers),
-            })
+            results.append(
+                {
+                    "workflow": str(wf),
+                    "unpinned_actions": len(unpinned),
+                    "permission_issues": len(perms),
+                    "script_injections": len(injections),
+                    "dangerous_triggers": len(triggers),
+                }
+            )
         return results
 
     def generate_report(self):

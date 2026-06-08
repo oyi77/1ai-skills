@@ -6,6 +6,7 @@ processing/normalization of IOCs, analysis/enrichment via VirusTotal
 and AbuseIPDB, dissemination to SIEM/firewalls, and tracking of
 IOC aging and confidence scoring.
 """
+
 import argparse
 import csv
 import hashlib
@@ -22,13 +23,15 @@ except ImportError:
 
 
 IOC_PATTERNS = {
-    "ipv4": re.compile(r'\b(?:\d{1,3}\.){3}\d{1,3}\b'),
-    "domain": re.compile(r'\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}\b', re.I),
-    "md5": re.compile(r'\b[a-fA-F0-9]{32}\b'),
-    "sha1": re.compile(r'\b[a-fA-F0-9]{40}\b'),
-    "sha256": re.compile(r'\b[a-fA-F0-9]{64}\b'),
+    "ipv4": re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"),
+    "domain": re.compile(
+        r"\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}\b", re.I
+    ),
+    "md5": re.compile(r"\b[a-fA-F0-9]{32}\b"),
+    "sha1": re.compile(r"\b[a-fA-F0-9]{40}\b"),
+    "sha256": re.compile(r"\b[a-fA-F0-9]{64}\b"),
     "url": re.compile(r'https?://[^\s<>"{}|\\^`\[\]]+'),
-    "email": re.compile(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'),
+    "email": re.compile(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"),
 }
 
 
@@ -39,9 +42,13 @@ def extract_iocs(text):
         matches = set(pattern.findall(text))
         # Filter out private IPs for ipv4
         if ioc_type == "ipv4":
-            matches = {ip for ip in matches
-                      if not ip.startswith(("10.", "192.168.", "127.", "0."))
-                      and not ip.startswith("172.") or not (16 <= int(ip.split(".")[1]) <= 31)}
+            matches = {
+                ip
+                for ip in matches
+                if not ip.startswith(("10.", "192.168.", "127.", "0."))
+                and not ip.startswith("172.")
+                or not (16 <= int(ip.split(".")[1]) <= 31)
+            }
         if matches:
             iocs[ioc_type] = sorted(matches)
     return iocs
@@ -155,7 +162,9 @@ def calculate_confidence(ioc, enrichment=None):
             if "T" in first_seen:
                 seen_dt = datetime.fromisoformat(first_seen.replace("Z", "+00:00"))
             else:
-                seen_dt = datetime.strptime(first_seen[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                seen_dt = datetime.strptime(first_seen[:10], "%Y-%m-%d").replace(
+                    tzinfo=timezone.utc
+                )
             age_days = (datetime.now(timezone.utc) - seen_dt).days
             if age_days > 180:
                 score = max(score - 20, 0)
@@ -194,15 +203,25 @@ def format_summary(iocs, enriched_count):
     if high_conf:
         print(f"\n  High-Confidence IOCs:")
         for i in high_conf[:15]:
-            print(f"    [{i['type']:8s}] {i['value'][:50]:50s} (confidence: {i.get('confidence', 0)})")
+            print(
+                f"    [{i['type']:8s}] {i['value'][:50]:50s} (confidence: {i.get('confidence', 0)})"
+            )
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Threat intelligence lifecycle management agent")
-    parser.add_argument("--source", required=True, help="IOC source file (JSON/CSV/text)")
+    parser = argparse.ArgumentParser(
+        description="Threat intelligence lifecycle management agent"
+    )
+    parser.add_argument(
+        "--source", required=True, help="IOC source file (JSON/CSV/text)"
+    )
     parser.add_argument("--vt-key", help="VirusTotal API key (or VT_API_KEY env)")
-    parser.add_argument("--enrich", action="store_true", help="Enrich IOCs via VirusTotal")
-    parser.add_argument("--min-confidence", type=int, default=0, help="Min confidence to include")
+    parser.add_argument(
+        "--enrich", action="store_true", help="Enrich IOCs via VirusTotal"
+    )
+    parser.add_argument(
+        "--min-confidence", type=int, default=0, help="Min confidence to include"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()

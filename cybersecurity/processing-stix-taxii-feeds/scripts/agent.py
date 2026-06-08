@@ -24,23 +24,28 @@ def discover_server(taxii_url, user=None, password=None):
     for api_root in server.api_roots:
         collections = []
         for coll in api_root.collections:
-            collections.append({
-                "id": coll.id,
-                "title": coll.title,
-                "can_read": coll.can_read,
-                "can_write": coll.can_write,
-                "media_types": getattr(coll, "media_types", []),
-            })
-        roots.append({
-            "title": api_root.title,
-            "url": api_root.url,
-            "collections": collections,
-        })
+            collections.append(
+                {
+                    "id": coll.id,
+                    "title": coll.title,
+                    "can_read": coll.can_read,
+                    "can_write": coll.can_write,
+                    "media_types": getattr(coll, "media_types", []),
+                }
+            )
+        roots.append(
+            {
+                "title": api_root.title,
+                "url": api_root.url,
+                "collections": collections,
+            }
+        )
     return {"server": taxii_url, "api_roots": roots}
 
 
-def fetch_collection(taxii_url, collection_id, user=None, password=None,
-                     added_after=None, limit=100):
+def fetch_collection(
+    taxii_url, collection_id, user=None, password=None, added_after=None, limit=100
+):
     """Fetch STIX objects from a TAXII collection with pagination."""
     kwargs = {}
     if user and password:
@@ -74,9 +79,14 @@ def parse_stix_bundle(bundle_data):
     if isinstance(bundle_data, str):
         bundle_data = json.loads(bundle_data)
     categories = {
-        "indicators": [], "malware": [], "threat_actors": [],
-        "attack_patterns": [], "campaigns": [], "relationships": [],
-        "identities": [], "other": [],
+        "indicators": [],
+        "malware": [],
+        "threat_actors": [],
+        "attack_patterns": [],
+        "campaigns": [],
+        "relationships": [],
+        "identities": [],
+        "other": [],
     }
     errors = []
     for obj in bundle_data.get("objects", []):
@@ -84,56 +94,70 @@ def parse_stix_bundle(bundle_data):
         try:
             parsed = stix_parse(obj, allow_custom=True)
             if obj_type == "indicator":
-                categories["indicators"].append({
-                    "id": parsed.id,
-                    "name": getattr(parsed, "name", ""),
-                    "pattern": parsed.pattern,
-                    "pattern_type": parsed.pattern_type,
-                    "valid_from": str(parsed.valid_from),
-                    "labels": getattr(parsed, "labels", []),
-                })
+                categories["indicators"].append(
+                    {
+                        "id": parsed.id,
+                        "name": getattr(parsed, "name", ""),
+                        "pattern": parsed.pattern,
+                        "pattern_type": parsed.pattern_type,
+                        "valid_from": str(parsed.valid_from),
+                        "labels": getattr(parsed, "labels", []),
+                    }
+                )
             elif obj_type == "malware":
-                categories["malware"].append({
-                    "id": parsed.id,
-                    "name": parsed.name,
-                    "is_family": parsed.is_family,
-                    "malware_types": getattr(parsed, "malware_types", []),
-                })
+                categories["malware"].append(
+                    {
+                        "id": parsed.id,
+                        "name": parsed.name,
+                        "is_family": parsed.is_family,
+                        "malware_types": getattr(parsed, "malware_types", []),
+                    }
+                )
             elif obj_type == "threat-actor":
-                categories["threat_actors"].append({
-                    "id": parsed.id,
-                    "name": parsed.name,
-                    "threat_actor_types": getattr(parsed, "threat_actor_types", []),
-                    "aliases": getattr(parsed, "aliases", []),
-                })
+                categories["threat_actors"].append(
+                    {
+                        "id": parsed.id,
+                        "name": parsed.name,
+                        "threat_actor_types": getattr(parsed, "threat_actor_types", []),
+                        "aliases": getattr(parsed, "aliases", []),
+                    }
+                )
             elif obj_type == "attack-pattern":
-                categories["attack_patterns"].append({
-                    "id": parsed.id,
-                    "name": parsed.name,
-                    "external_references": [
-                        {"source": r.get("source_name"), "id": r.get("external_id")}
-                        for r in getattr(parsed, "external_references", [])
-                        if isinstance(r, dict)
-                    ],
-                })
+                categories["attack_patterns"].append(
+                    {
+                        "id": parsed.id,
+                        "name": parsed.name,
+                        "external_references": [
+                            {"source": r.get("source_name"), "id": r.get("external_id")}
+                            for r in getattr(parsed, "external_references", [])
+                            if isinstance(r, dict)
+                        ],
+                    }
+                )
             elif obj_type == "campaign":
-                categories["campaigns"].append({
-                    "id": parsed.id,
-                    "name": parsed.name,
-                    "first_seen": str(getattr(parsed, "first_seen", "")),
-                })
+                categories["campaigns"].append(
+                    {
+                        "id": parsed.id,
+                        "name": parsed.name,
+                        "first_seen": str(getattr(parsed, "first_seen", "")),
+                    }
+                )
             elif obj_type == "relationship":
-                categories["relationships"].append({
-                    "id": parsed.id,
-                    "type": parsed.relationship_type,
-                    "source": parsed.source_ref,
-                    "target": parsed.target_ref,
-                })
+                categories["relationships"].append(
+                    {
+                        "id": parsed.id,
+                        "type": parsed.relationship_type,
+                        "source": parsed.source_ref,
+                        "target": parsed.target_ref,
+                    }
+                )
             elif obj_type == "identity":
-                categories["identities"].append({
-                    "id": parsed.id,
-                    "name": parsed.name,
-                })
+                categories["identities"].append(
+                    {
+                        "id": parsed.id,
+                        "name": parsed.name,
+                    }
+                )
             else:
                 categories["other"].append({"id": obj.get("id"), "type": obj_type})
         except (InvalidValueError, Exception) as e:
@@ -143,11 +167,20 @@ def parse_stix_bundle(bundle_data):
 
 def extract_iocs(parsed_bundle):
     """Extract actionable IOCs from parsed STIX indicators."""
-    iocs = {"ipv4": [], "ipv6": [], "domain": [], "url": [], "hash_md5": [],
-            "hash_sha1": [], "hash_sha256": [], "email": []}
+    iocs = {
+        "ipv4": [],
+        "ipv6": [],
+        "domain": [],
+        "url": [],
+        "hash_md5": [],
+        "hash_sha1": [],
+        "hash_sha256": [],
+        "email": [],
+    }
     for indicator in parsed_bundle["categories"]["indicators"]:
         pattern = indicator.get("pattern", "")
         import re
+
         ipv4 = re.findall(r"ipv4-addr:value\s*=\s*'([^']+)'", pattern)
         iocs["ipv4"].extend(ipv4)
         domains = re.findall(r"domain-name:value\s*=\s*'([^']+)'", pattern)
@@ -170,15 +203,21 @@ def build_relationship_graph(parsed_bundle):
     for cat_name, objects in parsed_bundle["categories"].items():
         for obj in objects:
             if "id" in obj:
-                all_objects[obj["id"]] = {"type": cat_name, "name": obj.get("name", obj["id"])}
+                all_objects[obj["id"]] = {
+                    "type": cat_name,
+                    "name": obj.get("name", obj["id"]),
+                }
     for rel in parsed_bundle["categories"]["relationships"]:
         src = rel["source"]
         tgt = rel["target"]
         src_name = all_objects.get(src, {}).get("name", src)
         tgt_name = all_objects.get(tgt, {}).get("name", tgt)
-        graph.setdefault(src_name, []).append({
-            "relationship": rel["type"], "target": tgt_name,
-        })
+        graph.setdefault(src_name, []).append(
+            {
+                "relationship": rel["type"],
+                "target": tgt_name,
+            }
+        )
     return graph
 
 
@@ -205,6 +244,7 @@ if __name__ == "__main__":
     taxii_url = sys.argv[1] if len(sys.argv) > 1 else "https://cti.example.com/taxii/"
     user = os.environ.get("TAXII_USER") if "os" in dir() else None
     import os
+
     user = os.environ.get("TAXII_USER")
     password = os.environ.get("TAXII_PASSWORD")
     print(f"Discovering TAXII server: {taxii_url}")

@@ -11,29 +11,74 @@ import math
 import re
 from collections import Counter
 
-URGENCY_WORDS = {"urgent", "immediately", "asap", "deadline", "critical",
-                 "important", "expedite", "priority", "rush", "now"}
-PRESSURE_WORDS = {"confidential", "secret", "private", "classified",
-                  "between us", "do not share", "don't discuss", "quiet"}
-FINANCIAL_WORDS = {"wire", "transfer", "payment", "invoice", "bank",
-                   "account", "routing", "ach", "swift", "funds"}
-AUTHORITY_WORDS = {"ceo", "cfo", "president", "director", "boss",
-                   "chairman", "executive", "management", "vp"}
+URGENCY_WORDS = {
+    "urgent",
+    "immediately",
+    "asap",
+    "deadline",
+    "critical",
+    "important",
+    "expedite",
+    "priority",
+    "rush",
+    "now",
+}
+PRESSURE_WORDS = {
+    "confidential",
+    "secret",
+    "private",
+    "classified",
+    "between us",
+    "do not share",
+    "don't discuss",
+    "quiet",
+}
+FINANCIAL_WORDS = {
+    "wire",
+    "transfer",
+    "payment",
+    "invoice",
+    "bank",
+    "account",
+    "routing",
+    "ach",
+    "swift",
+    "funds",
+}
+AUTHORITY_WORDS = {
+    "ceo",
+    "cfo",
+    "president",
+    "director",
+    "boss",
+    "chairman",
+    "executive",
+    "management",
+    "vp",
+}
 
 
 def extract_features(text):
     words = text.lower().split()
     word_count = len(words) if words else 1
-    sentences = re.split(r'[.!?]+', text)
+    sentences = re.split(r"[.!?]+", text)
     sentence_count = len([s for s in sentences if s.strip()]) or 1
 
     word_freq = Counter(words)
     unique_ratio = len(set(words)) / word_count
 
-    urgency_score = sum(1 for w in words if w.strip(".,!?") in URGENCY_WORDS) / word_count
-    pressure_score = sum(1 for w in words if w.strip(".,!?") in PRESSURE_WORDS) / word_count
-    financial_score = sum(1 for w in words if w.strip(".,!?") in FINANCIAL_WORDS) / word_count
-    authority_score = sum(1 for w in words if w.strip(".,!?") in AUTHORITY_WORDS) / word_count
+    urgency_score = (
+        sum(1 for w in words if w.strip(".,!?") in URGENCY_WORDS) / word_count
+    )
+    pressure_score = (
+        sum(1 for w in words if w.strip(".,!?") in PRESSURE_WORDS) / word_count
+    )
+    financial_score = (
+        sum(1 for w in words if w.strip(".,!?") in FINANCIAL_WORDS) / word_count
+    )
+    authority_score = (
+        sum(1 for w in words if w.strip(".,!?") in AUTHORITY_WORDS) / word_count
+    )
 
     exclamation_ratio = text.count("!") / sentence_count
     caps_ratio = sum(1 for c in text if c.isupper()) / max(len(text), 1)
@@ -57,8 +102,12 @@ def extract_features(text):
 
 def compute_bec_probability(features):
     weights = {
-        "urgency_score": 3.5, "pressure_score": 3.0, "financial_score": 4.0,
-        "authority_score": 2.5, "exclamation_ratio": 1.0, "caps_ratio": 1.5,
+        "urgency_score": 3.5,
+        "pressure_score": 3.0,
+        "financial_score": 4.0,
+        "authority_score": 2.5,
+        "exclamation_ratio": 1.0,
+        "caps_ratio": 1.5,
     }
     raw = sum(features.get(k, 0) * w for k, w in weights.items())
     probability = 1 / (1 + math.exp(-10 * (raw - 0.15)))
@@ -66,7 +115,7 @@ def compute_bec_probability(features):
 
 
 def analyze_writing_style(text):
-    sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
+    sentences = [s.strip() for s in re.split(r"[.!?]+", text) if s.strip()]
     if not sentences:
         return {"style_consistency": 1.0}
     lengths = [len(s.split()) for s in sentences]
@@ -84,15 +133,26 @@ def detect_impersonation_signals(text, known_sender_style=None):
     signals = []
     if re.search(r"sent from my (iphone|ipad|android|mobile)", text, re.IGNORECASE):
         signals.append("mobile_signature_present")
-    if re.search(r"(please|kindly).*(do not|don't).*(reply|respond|call)", text, re.IGNORECASE):
+    if re.search(
+        r"(please|kindly).*(do not|don't).*(reply|respond|call)", text, re.IGNORECASE
+    ):
         signals.append("discourages_verification")
-    if re.search(r"(i am|i'm).*(in a meeting|traveling|on a flight|busy)", text, re.IGNORECASE):
+    if re.search(
+        r"(i am|i'm).*(in a meeting|traveling|on a flight|busy)", text, re.IGNORECASE
+    ):
         signals.append("unavailability_excuse")
-    if re.search(r"(handle|process|complete).*(today|immediately|by end of day)", text, re.IGNORECASE):
+    if re.search(
+        r"(handle|process|complete).*(today|immediately|by end of day)",
+        text,
+        re.IGNORECASE,
+    ):
         signals.append("time_pressure")
     if known_sender_style:
         current = analyze_writing_style(text)
-        diff = abs(current["mean_sentence_length"] - known_sender_style.get("mean_sentence_length", 15))
+        diff = abs(
+            current["mean_sentence_length"]
+            - known_sender_style.get("mean_sentence_length", 15)
+        )
         if diff > 8:
             signals.append("writing_style_deviation")
     return signals
@@ -104,8 +164,11 @@ def analyze_email(text, known_style=None):
     style = analyze_writing_style(text)
     signals = detect_impersonation_signals(text, known_style)
 
-    risk = "CRITICAL" if probability > 0.8 else "HIGH" if probability > 0.6 else \
-           "MEDIUM" if probability > 0.3 else "LOW"
+    risk = (
+        "CRITICAL"
+        if probability > 0.8
+        else "HIGH" if probability > 0.6 else "MEDIUM" if probability > 0.3 else "LOW"
+    )
 
     return {
         "features": features,

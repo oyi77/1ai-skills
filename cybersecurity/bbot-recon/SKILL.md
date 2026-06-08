@@ -501,6 +501,8 @@ RETURN path
 
 ## Scan Profiles for Bug Bounty
 
+Recommended scan profiles by time budget and target type:
+
 ### Quick Recon (5 min)
 ```bash
 bbot -t evilcorp.com -p subdomain-enum -rf passive
@@ -628,6 +630,8 @@ Combine BBOT recon with:
 - `recon-automation` — Build automated recon pipelines
 
 ## Troubleshooting
+
+Common issues and performance tuning for BBOT scans:
 
 ### Common Issues
 

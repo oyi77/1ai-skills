@@ -8,18 +8,27 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
 def query_cloudtrail_s3_events(bucket_name, hours_back=24):
     """Query CloudTrail for S3 data events on a specific bucket."""
-    start_time = (datetime.utcnow() - timedelta(hours=hours_back)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    start_time = (datetime.utcnow() - timedelta(hours=hours_back)).strftime(
+        "%Y-%m-%dT%H:%M:%SZ"
+    )
     cmd = [
-        "aws", "cloudtrail", "lookup-events",
-        "--lookup-attributes", f"AttributeKey=ResourceType,AttributeValue=AWS::S3::Object",
-        "--start-time", start_time,
-        "--output", "json",
+        "aws",
+        "cloudtrail",
+        "lookup-events",
+        "--lookup-attributes",
+        f"AttributeKey=ResourceType,AttributeValue=AWS::S3::Object",
+        "--start-time",
+        start_time,
+        "--output",
+        "json",
     ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     if result.returncode != 0:
@@ -31,17 +40,21 @@ def query_cloudtrail_s3_events(bucket_name, hours_back=24):
         ct_event = json.loads(event.get("CloudTrailEvent", "{}"))
         req_params = ct_event.get("requestParameters", {})
         if req_params.get("bucketName") == bucket_name or not bucket_name:
-            s3_events.append({
-                "timestamp": event.get("EventTime", ""),
-                "event_name": event.get("EventName", ""),
-                "username": event.get("Username", ""),
-                "source_ip": ct_event.get("sourceIPAddress", ""),
-                "user_agent": ct_event.get("userAgent", ""),
-                "bucket": req_params.get("bucketName", ""),
-                "key": req_params.get("key", ""),
-                "user_arn": ct_event.get("userIdentity", {}).get("arn", ""),
-            })
-    logger.info("Retrieved %d S3 events for bucket '%s'", len(s3_events), bucket_name or "all")
+            s3_events.append(
+                {
+                    "timestamp": event.get("EventTime", ""),
+                    "event_name": event.get("EventName", ""),
+                    "username": event.get("Username", ""),
+                    "source_ip": ct_event.get("sourceIPAddress", ""),
+                    "user_agent": ct_event.get("userAgent", ""),
+                    "bucket": req_params.get("bucketName", ""),
+                    "key": req_params.get("key", ""),
+                    "user_arn": ct_event.get("userIdentity", {}).get("arn", ""),
+                }
+            )
+    logger.info(
+        "Retrieved %d S3 events for bucket '%s'", len(s3_events), bucket_name or "all"
+    )
     return s3_events
 
 
@@ -55,16 +68,18 @@ def detect_bulk_downloads(events, threshold=100):
     for user_arn, downloads in user_downloads.items():
         if len(downloads) >= threshold:
             keys = [d["key"] for d in downloads]
-            alerts.append({
-                "user_arn": user_arn,
-                "download_count": len(downloads),
-                "unique_keys": len(set(keys)),
-                "source_ips": list({d["source_ip"] for d in downloads}),
-                "first_access": downloads[0]["timestamp"],
-                "last_access": downloads[-1]["timestamp"],
-                "severity": "critical",
-                "indicator": "Bulk download (potential exfiltration)",
-            })
+            alerts.append(
+                {
+                    "user_arn": user_arn,
+                    "download_count": len(downloads),
+                    "unique_keys": len(set(keys)),
+                    "source_ips": list({d["source_ip"] for d in downloads}),
+                    "first_access": downloads[0]["timestamp"],
+                    "last_access": downloads[-1]["timestamp"],
+                    "severity": "critical",
+                    "indicator": "Bulk download (potential exfiltration)",
+                }
+            )
     logger.info("Found %d bulk download alerts", len(alerts))
     return alerts
 
@@ -102,7 +117,9 @@ def detect_new_source_ips(events, known_ips=None):
             event["severity"] = "high"
             new_ip_events.append(event)
     unique_new = len({e["source_ip"] for e in new_ip_events})
-    logger.info("Found %d events from %d new source IPs", len(new_ip_events), unique_new)
+    logger.info(
+        "Found %d events from %d new source IPs", len(new_ip_events), unique_new
+    )
     return new_ip_events
 
 
@@ -115,12 +132,14 @@ def detect_enumeration(events, threshold=20):
     alerts = []
     for user_arn, count in user_listings.items():
         if count >= threshold:
-            alerts.append({
-                "user_arn": user_arn,
-                "list_count": count,
-                "severity": "high",
-                "indicator": "Bucket enumeration spike (reconnaissance)",
-            })
+            alerts.append(
+                {
+                    "user_arn": user_arn,
+                    "list_count": count,
+                    "severity": "high",
+                    "indicator": "Bucket enumeration spike (reconnaissance)",
+                }
+            )
     return alerts
 
 
@@ -170,7 +189,9 @@ def generate_report(events, bulk_alerts, after_hours, new_ips, enum_alerts, base
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Cloud Storage Access Pattern Analyzer")
+    parser = argparse.ArgumentParser(
+        description="Cloud Storage Access Pattern Analyzer"
+    )
     parser.add_argument("--bucket", default="", help="S3 bucket name to analyze")
     parser.add_argument("--hours-back", type=int, default=24)
     parser.add_argument("--bulk-threshold", type=int, default=100)
@@ -190,7 +211,9 @@ def main():
     new_ips = detect_new_source_ips(events, known_ips)
     enum_alerts = detect_enumeration(events)
 
-    report = generate_report(events, bulk_alerts, after_hours, new_ips, enum_alerts, baseline)
+    report = generate_report(
+        events, bulk_alerts, after_hours, new_ips, enum_alerts, baseline
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)
     logger.info("Report saved to %s", args.output)

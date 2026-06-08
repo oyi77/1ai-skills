@@ -32,7 +32,9 @@ def _get(endpoint: str, params: dict = None) -> dict:
         resp.raise_for_status()
         return resp.json()
     except requests.exceptions.HTTPError as e:
-        print(f"[PostBridge] HTTP Error {e.response.status_code}: {e.response.text[:200]}")
+        print(
+            f"[PostBridge] HTTP Error {e.response.status_code}: {e.response.text[:200]}"
+        )
         return {}
     except Exception as e:
         print(f"[PostBridge] Error: {e}")
@@ -79,18 +81,24 @@ def get_posts_with_engagement(min_comments: int = 1) -> list:
         # PostBridge post-results format may vary
         comments = result.get("comments_count", result.get("comment_count", 0)) or 0
         if comments >= min_comments:
-            engaged_posts.append({
-                "postbridge_id": result.get("id") or result.get("post_id"),
-                "platform": result.get("platform", "unknown"),
-                "platform_post_id": result.get("platform_post_id") or result.get("external_id"),
-                "account_id": result.get("social_account_id") or result.get("account_id"),
-                "username": result.get("username") or result.get("account_username", ""),
-                "url": result.get("url") or result.get("post_url", ""),
-                "comments_count": comments,
-                "likes_count": result.get("likes_count", 0) or 0,
-                "caption": result.get("caption", "")[:100],
-                "published_at": result.get("published_at") or result.get("created_at", ""),
-            })
+            engaged_posts.append(
+                {
+                    "postbridge_id": result.get("id") or result.get("post_id"),
+                    "platform": result.get("platform", "unknown"),
+                    "platform_post_id": result.get("platform_post_id")
+                    or result.get("external_id"),
+                    "account_id": result.get("social_account_id")
+                    or result.get("account_id"),
+                    "username": result.get("username")
+                    or result.get("account_username", ""),
+                    "url": result.get("url") or result.get("post_url", ""),
+                    "comments_count": comments,
+                    "likes_count": result.get("likes_count", 0) or 0,
+                    "caption": result.get("caption", "")[:100],
+                    "published_at": result.get("published_at")
+                    or result.get("created_at", ""),
+                }
+            )
 
     print(f"[Monitor] {len(engaged_posts)} posts with >={min_comments} comments")
     return engaged_posts
@@ -114,11 +122,13 @@ def get_platform_post_ids() -> dict:
             platform_map[platform] = []
 
         if post_id or url:
-            platform_map[platform].append({
-                "username": username,
-                "post_id": post_id,
-                "url": url,
-            })
+            platform_map[platform].append(
+                {
+                    "username": username,
+                    "post_id": post_id,
+                    "url": url,
+                }
+            )
 
     return platform_map
 
@@ -127,10 +137,14 @@ def cache_posts(posts: list):
     """Save posts to local cache."""
     os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
     with open(CACHE_FILE, "w") as f:
-        json.dump({
-            "cached_at": datetime.now().isoformat(),
-            "posts": posts,
-        }, f, indent=2)
+        json.dump(
+            {
+                "cached_at": datetime.now().isoformat(),
+                "posts": posts,
+            },
+            f,
+            indent=2,
+        )
     print(f"[Monitor] Cached {len(posts)} posts to {CACHE_FILE}")
 
 
@@ -164,8 +178,10 @@ def monitor_loop(interval_seconds: int = 300, callback=None):
                     if callback:
                         callback(post)
                     else:
-                        print(f"[Monitor] New engaged post: {post['platform']} @{post['username']} "
-                              f"({post['comments_count']} comments) — {post['url']}")
+                        print(
+                            f"[Monitor] New engaged post: {post['platform']} @{post['username']} "
+                            f"({post['comments_count']} comments) — {post['url']}"
+                        )
         except Exception as e:
             print(f"[Monitor] Loop error: {e}")
 
@@ -174,25 +190,27 @@ def monitor_loop(interval_seconds: int = 300, callback=None):
 
 if __name__ == "__main__":
     print("=== PostBridge Comment Monitor ===\n")
-    
+
     print("[1] Fetching posts...")
     posts = fetch_posts(limit=10)
     if posts:
         print(f"    Sample post: {json.dumps(posts[0], indent=2)[:300]}")
-    
+
     print("\n[2] Fetching post results (with platform IDs)...")
     results = fetch_post_results(limit=5)
     if results:
         print(f"    Sample result: {json.dumps(results[0], indent=2)[:300]}")
-    
+
     print("\n[3] Platform post ID map:")
     pmap = get_platform_post_ids()
     for platform, items in pmap.items():
         print(f"    {platform}: {len(items)} posts")
         if items:
             print(f"      Sample: {items[0]}")
-    
+
     print("\n[4] Posts with engagement:")
     engaged = get_posts_with_engagement(min_comments=0)
     for p in engaged[:5]:
-        print(f"    {p['platform']} @{p['username']} — {p['comments_count']} comments — {p['url']}")
+        print(
+            f"    {p['platform']} @{p['username']} — {p['comments_count']} comments — {p['url']}"
+        )

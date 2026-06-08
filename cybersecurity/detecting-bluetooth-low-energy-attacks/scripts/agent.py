@@ -16,7 +16,9 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 # Standard BLE service UUIDs for identification
@@ -67,7 +69,12 @@ async def scan_ble_devices(scan_duration=10.0):
             "connectable": getattr(adv_data, "connectable", None),
         }
         devices_found.append(device_info)
-        logger.info("Found: %s (%s) RSSI: %d dBm", device.name or "Unknown", address, adv_data.rssi)
+        logger.info(
+            "Found: %s (%s) RSSI: %d dBm",
+            device.name or "Unknown",
+            address,
+            adv_data.rssi,
+        )
 
     logger.info("Scan complete: %d devices found", len(devices_found))
     return devices_found
@@ -121,16 +128,26 @@ async def enumerate_gatt_services(target_address, timeout=30.0):
                             # Check for sensitive data exposure
                             try:
                                 decoded = value.decode("utf-8", errors="ignore")
-                                if any(kw in decoded.lower() for kw in
-                                       ["password", "key", "token", "secret", "admin"]):
-                                    gatt_profile["security_findings"].append({
-                                        "id": "BLE-GATT-001",
-                                        "severity": "High",
-                                        "title": "Sensitive Data in Readable Characteristic",
-                                        "detail": f"Characteristic {char.uuid} contains potentially "
-                                                  f"sensitive data readable without authentication: "
-                                                  f"{decoded[:50]}",
-                                    })
+                                if any(
+                                    kw in decoded.lower()
+                                    for kw in [
+                                        "password",
+                                        "key",
+                                        "token",
+                                        "secret",
+                                        "admin",
+                                    ]
+                                ):
+                                    gatt_profile["security_findings"].append(
+                                        {
+                                            "id": "BLE-GATT-001",
+                                            "severity": "High",
+                                            "title": "Sensitive Data in Readable Characteristic",
+                                            "detail": f"Characteristic {char.uuid} contains potentially "
+                                            f"sensitive data readable without authentication: "
+                                            f"{decoded[:50]}",
+                                        }
+                                    )
                             except Exception:
                                 pass
                         except Exception as e:
@@ -138,48 +155,58 @@ async def enumerate_gatt_services(target_address, timeout=30.0):
 
                     # Flag writable characteristics without authentication
                     if WRITABLE_PROPS & set(char.properties):
-                        gatt_profile["security_findings"].append({
-                            "id": "BLE-GATT-002",
-                            "severity": "Medium",
-                            "title": "Writable Characteristic Without Authentication",
-                            "detail": f"Characteristic {char.uuid} in service {svc_name} "
-                                      f"allows write operations ({', '.join(char.properties)}). "
-                                      "Verify authentication is enforced at the application layer.",
-                        })
+                        gatt_profile["security_findings"].append(
+                            {
+                                "id": "BLE-GATT-002",
+                                "severity": "Medium",
+                                "title": "Writable Characteristic Without Authentication",
+                                "detail": f"Characteristic {char.uuid} in service {svc_name} "
+                                f"allows write operations ({', '.join(char.properties)}). "
+                                "Verify authentication is enforced at the application layer.",
+                            }
+                        )
 
                     # Flag write-without-response (no confirmation)
                     if "write-without-response" in char.properties:
-                        gatt_profile["security_findings"].append({
-                            "id": "BLE-GATT-003",
-                            "severity": "Medium",
-                            "title": "Write-Without-Response Characteristic",
-                            "detail": f"Characteristic {char.uuid} supports write-without-response. "
-                                      "Commands sent to this characteristic have no delivery "
-                                      "confirmation, making replay attacks harder to detect.",
-                        })
+                        gatt_profile["security_findings"].append(
+                            {
+                                "id": "BLE-GATT-003",
+                                "severity": "Medium",
+                                "title": "Write-Without-Response Characteristic",
+                                "detail": f"Characteristic {char.uuid} supports write-without-response. "
+                                "Commands sent to this characteristic have no delivery "
+                                "confirmation, making replay attacks harder to detect.",
+                            }
+                        )
 
                     # Read descriptors
                     for desc in char.descriptors:
                         try:
                             desc_val = await client.read_gatt_descriptor(desc.handle)
-                            char_info["descriptors"].append({
-                                "uuid": desc.uuid,
-                                "handle": desc.handle,
-                                "value": desc_val.hex(),
-                            })
+                            char_info["descriptors"].append(
+                                {
+                                    "uuid": desc.uuid,
+                                    "handle": desc.handle,
+                                    "value": desc_val.hex(),
+                                }
+                            )
                         except Exception:
-                            char_info["descriptors"].append({
-                                "uuid": desc.uuid,
-                                "handle": desc.handle,
-                                "value": "read_error",
-                            })
+                            char_info["descriptors"].append(
+                                {
+                                    "uuid": desc.uuid,
+                                    "handle": desc.handle,
+                                    "value": "read_error",
+                                }
+                            )
 
                     service_info["characteristics"].append(char_info)
                 gatt_profile["services"].append(service_info)
 
-            logger.info("Enumerated %d services, %d findings",
-                        len(gatt_profile["services"]),
-                        len(gatt_profile["security_findings"]))
+            logger.info(
+                "Enumerated %d services, %d findings",
+                len(gatt_profile["services"]),
+                len(gatt_profile["security_findings"]),
+            )
 
     except Exception as e:
         logger.error("GATT enumeration failed for %s: %s", target_address, e)
@@ -188,7 +215,9 @@ async def enumerate_gatt_services(target_address, timeout=30.0):
     return gatt_profile
 
 
-async def test_replay_vulnerability(target_address, char_uuid, test_payload_hex, read_after=True):
+async def test_replay_vulnerability(
+    target_address, char_uuid, test_payload_hex, read_after=True
+):
     """Test if a BLE characteristic is vulnerable to replay attacks."""
     try:
         from bleak import BleakClient
@@ -254,8 +283,12 @@ async def test_replay_vulnerability(target_address, char_uuid, test_payload_hex,
                             "No freshness validation detected."
                         )
                     else:
-                        result["detail"] = "Replay accepted but no observable state change."
-                        result["vulnerable"] = True  # Still accepted, just no visible effect
+                        result["detail"] = (
+                            "Replay accepted but no observable state change."
+                        )
+                        result["vulnerable"] = (
+                            True  # Still accepted, just no visible effect
+                        )
                 except Exception:
                     result["vulnerable"] = True
                     result["detail"] = "Replay accepted; could not verify state change."
@@ -290,7 +323,8 @@ async def detect_advertising_spoofing(scan_duration=30.0, known_devices=None):
             "timestamp": time.time(),
             "service_uuids": advertisement_data.service_uuids or [],
             "manufacturer_data": {
-                str(k): v.hex() for k, v in (advertisement_data.manufacturer_data or {}).items()
+                str(k): v.hex()
+                for k, v in (advertisement_data.manufacturer_data or {}).items()
             },
         }
         device_history[key].append(entry)
@@ -306,43 +340,52 @@ async def detect_advertising_spoofing(scan_duration=30.0, known_devices=None):
 
         # Multiple addresses with same name (possible spoofing)
         if len(addresses) > 1 and name != "Unknown":
-            findings.append({
-                "id": "BLE-SPOOF-001",
-                "severity": "High",
-                "title": "Multiple Addresses for Same Device Name",
-                "detail": f"Device '{name}' advertised from {len(addresses)} different "
-                          f"addresses: {', '.join(addresses)}. This may indicate address "
-                          "spoofing or a cloned device (GATTacker-style MITM).",
-                "addresses": list(addresses),
-            })
+            findings.append(
+                {
+                    "id": "BLE-SPOOF-001",
+                    "severity": "High",
+                    "title": "Multiple Addresses for Same Device Name",
+                    "detail": f"Device '{name}' advertised from {len(addresses)} different "
+                    f"addresses: {', '.join(addresses)}. This may indicate address "
+                    "spoofing or a cloned device (GATTacker-style MITM).",
+                    "addresses": list(addresses),
+                }
+            )
 
         # Check for known device impersonation
         if known_devices:
             for entry in entries:
-                if entry["address"] not in known_devices and name in known_devices.values():
-                    findings.append({
-                        "id": "BLE-SPOOF-002",
-                        "severity": "Critical",
-                        "title": "Known Device Name from Unknown Address",
-                        "detail": f"Device '{name}' is advertising from unknown address "
-                                  f"{entry['address']}. Expected address for this device "
-                                  f"is in the known device list. Possible impersonation.",
-                    })
+                if (
+                    entry["address"] not in known_devices
+                    and name in known_devices.values()
+                ):
+                    findings.append(
+                        {
+                            "id": "BLE-SPOOF-002",
+                            "severity": "Critical",
+                            "title": "Known Device Name from Unknown Address",
+                            "detail": f"Device '{name}' is advertising from unknown address "
+                            f"{entry['address']}. Expected address for this device "
+                            f"is in the known device list. Possible impersonation.",
+                        }
+                    )
 
         # Rapid RSSI fluctuations (possible relay attack)
         if len(entries) >= 5:
             rssi_values = [e["rssi"] for e in entries]
             rssi_range = max(rssi_values) - min(rssi_values)
             if rssi_range > 40:
-                findings.append({
-                    "id": "BLE-SPOOF-003",
-                    "severity": "Medium",
-                    "title": "Abnormal RSSI Fluctuation",
-                    "detail": f"Device '{name}' ({entries[0]['address']}) shows RSSI range "
-                              f"of {rssi_range} dBm (min: {min(rssi_values)}, max: "
-                              f"{max(rssi_values)}). Large fluctuations may indicate a "
-                              "relay attack or signal amplification.",
-                })
+                findings.append(
+                    {
+                        "id": "BLE-SPOOF-003",
+                        "severity": "Medium",
+                        "title": "Abnormal RSSI Fluctuation",
+                        "detail": f"Device '{name}' ({entries[0]['address']}) shows RSSI range "
+                        f"of {rssi_range} dBm (min: {min(rssi_values)}, max: "
+                        f"{max(rssi_values)}). Large fluctuations may indicate a "
+                        "relay attack or signal amplification.",
+                    }
+                )
 
     logger.info("Spoofing detection complete: %d findings", len(findings))
     return findings
@@ -359,9 +402,22 @@ def analyze_pcap_for_ble_attacks(pcap_path):
     # Check for Legacy Pairing (vulnerable to crackle)
     try:
         result = subprocess.run(
-            ["tshark", "-r", pcap_path, "-Y", "btsmp.opcode == 0x01",
-             "-T", "fields", "-e", "btsmp.io_capability", "-e", "btsmp.auth_req"],
-            capture_output=True, text=True, timeout=60,
+            [
+                "tshark",
+                "-r",
+                pcap_path,
+                "-Y",
+                "btsmp.opcode == 0x01",
+                "-T",
+                "fields",
+                "-e",
+                "btsmp.io_capability",
+                "-e",
+                "btsmp.auth_req",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         if result.stdout.strip():
             lines = result.stdout.strip().split("\n")
@@ -372,25 +428,29 @@ def analyze_pcap_for_ble_attacks(pcap_path):
 
                 # io_capability 0x03 = NoInputNoOutput (Just Works)
                 if io_cap == "0x03" or io_cap == "3":
-                    findings.append({
-                        "id": "BLE-PAIR-001",
-                        "severity": "Critical",
-                        "title": "BLE Just Works Pairing Detected",
-                        "detail": "Pairing exchange uses NoInputNoOutput IO capability "
-                                  "(Just Works). TK=0, trivially crackable with crackle. "
-                                  "No MITM protection.",
-                    })
+                    findings.append(
+                        {
+                            "id": "BLE-PAIR-001",
+                            "severity": "Critical",
+                            "title": "BLE Just Works Pairing Detected",
+                            "detail": "Pairing exchange uses NoInputNoOutput IO capability "
+                            "(Just Works). TK=0, trivially crackable with crackle. "
+                            "No MITM protection.",
+                        }
+                    )
 
                 # Check if Secure Connections flag is not set
                 if auth_req and not (int(auth_req, 0) & 0x08):
-                    findings.append({
-                        "id": "BLE-PAIR-002",
-                        "severity": "High",
-                        "title": "BLE Legacy Pairing (No Secure Connections)",
-                        "detail": "Pairing uses Legacy Pairing without SC flag. "
-                                  "Vulnerable to passive eavesdropping and LTK recovery "
-                                  "via crackle tool.",
-                    })
+                    findings.append(
+                        {
+                            "id": "BLE-PAIR-002",
+                            "severity": "High",
+                            "title": "BLE Legacy Pairing (No Secure Connections)",
+                            "detail": "Pairing uses Legacy Pairing without SC flag. "
+                            "Vulnerable to passive eavesdropping and LTK recovery "
+                            "via crackle tool.",
+                        }
+                    )
     except FileNotFoundError:
         logger.warning("tshark not found; skipping pcap pairing analysis")
     except subprocess.TimeoutExpired:
@@ -399,10 +459,22 @@ def analyze_pcap_for_ble_attacks(pcap_path):
     # Count unique connection events
     try:
         result = subprocess.run(
-            ["tshark", "-r", pcap_path, "-Y",
-             "btle.advertising_header.pdu_type == 0x05",
-             "-T", "fields", "-e", "btle.master_bd_addr", "-e", "btle.slave_bd_addr"],
-            capture_output=True, text=True, timeout=60,
+            [
+                "tshark",
+                "-r",
+                pcap_path,
+                "-Y",
+                "btle.advertising_header.pdu_type == 0x05",
+                "-T",
+                "fields",
+                "-e",
+                "btle.master_bd_addr",
+                "-e",
+                "btle.slave_bd_addr",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         if result.stdout.strip():
             connections = result.stdout.strip().split("\n")
@@ -410,24 +482,28 @@ def analyze_pcap_for_ble_attacks(pcap_path):
             for conn in connections:
                 unique_pairs.add(conn.strip())
 
-            findings.append({
-                "id": "BLE-PCAP-001",
-                "severity": "Informational",
-                "title": "BLE Connection Events Summary",
-                "detail": f"Captured {len(connections)} connection requests across "
-                          f"{len(unique_pairs)} unique device pairs.",
-            })
+            findings.append(
+                {
+                    "id": "BLE-PCAP-001",
+                    "severity": "Informational",
+                    "title": "BLE Connection Events Summary",
+                    "detail": f"Captured {len(connections)} connection requests across "
+                    f"{len(unique_pairs)} unique device pairs.",
+                }
+            )
 
             # Multiple rapid connections to same device (possible attack)
             if len(connections) > 10 and len(unique_pairs) < 3:
-                findings.append({
-                    "id": "BLE-PCAP-002",
-                    "severity": "Medium",
-                    "title": "Excessive Connection Attempts",
-                    "detail": f"{len(connections)} connection attempts to "
-                              f"{len(unique_pairs)} devices. May indicate brute-force "
-                              "pairing or denial-of-service attack.",
-                })
+                findings.append(
+                    {
+                        "id": "BLE-PCAP-002",
+                        "severity": "Medium",
+                        "title": "Excessive Connection Attempts",
+                        "detail": f"{len(connections)} connection attempts to "
+                        f"{len(unique_pairs)} devices. May indicate brute-force "
+                        "pairing or denial-of-service attack.",
+                    }
+                )
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
 
@@ -435,25 +511,31 @@ def analyze_pcap_for_ble_attacks(pcap_path):
     try:
         result = subprocess.run(
             ["crackle", "-i", pcap_path],
-            capture_output=True, text=True, timeout=120,
+            capture_output=True,
+            text=True,
+            timeout=120,
         )
         if "LTK" in result.stdout or "key" in result.stdout.lower():
-            findings.append({
-                "id": "BLE-CRACK-001",
-                "severity": "Critical",
-                "title": "BLE Encryption Key Recovered",
-                "detail": f"crackle successfully recovered encryption key from captured "
-                          f"pairing exchange. Encrypted traffic can be decrypted. "
-                          f"Output: {result.stdout[:200]}",
-            })
+            findings.append(
+                {
+                    "id": "BLE-CRACK-001",
+                    "severity": "Critical",
+                    "title": "BLE Encryption Key Recovered",
+                    "detail": f"crackle successfully recovered encryption key from captured "
+                    f"pairing exchange. Encrypted traffic can be decrypted. "
+                    f"Output: {result.stdout[:200]}",
+                }
+            )
         elif "LE Secure Connections" in result.stdout:
-            findings.append({
-                "id": "BLE-CRACK-002",
-                "severity": "Informational",
-                "title": "LE Secure Connections Detected",
-                "detail": "Pairing uses LE Secure Connections (ECDH). Not vulnerable "
-                          "to crackle-based key recovery.",
-            })
+            findings.append(
+                {
+                    "id": "BLE-CRACK-002",
+                    "severity": "Informational",
+                    "title": "LE Secure Connections Detected",
+                    "detail": "Pairing uses LE Secure Connections (ECDH). Not vulnerable "
+                    "to crackle-based key recovery.",
+                }
+            )
     except FileNotFoundError:
         logger.info("crackle not installed; skipping encryption analysis")
     except subprocess.TimeoutExpired:
@@ -463,12 +545,16 @@ def analyze_pcap_for_ble_attacks(pcap_path):
     return findings
 
 
-def run_ubertooth_capture(output_path, target_address=None, duration=60, pcap_format="pcapng"):
+def run_ubertooth_capture(
+    output_path, target_address=None, duration=60, pcap_format="pcapng"
+):
     """Start a BLE packet capture with Ubertooth One."""
     cmd = ["ubertooth-btle"]
 
     if target_address:
-        cmd.extend(["-f", "-t", target_address])  # Follow mode targeting specific device
+        cmd.extend(
+            ["-f", "-t", target_address]
+        )  # Follow mode targeting specific device
     else:
         cmd.append("-p")  # Promiscuous mode
 
@@ -497,8 +583,14 @@ def run_ubertooth_capture(output_path, target_address=None, duration=60, pcap_fo
         return False
 
 
-def generate_report(scan_results, gatt_profiles, replay_results, spoofing_findings,
-                    pcap_findings, output_path):
+def generate_report(
+    scan_results,
+    gatt_profiles,
+    replay_results,
+    spoofing_findings,
+    pcap_findings,
+    output_path,
+):
     """Generate comprehensive BLE security assessment report."""
     all_findings = []
 
@@ -509,13 +601,15 @@ def generate_report(scan_results, gatt_profiles, replay_results, spoofing_findin
     # Collect other findings
     for result in replay_results:
         if result and result.get("vulnerable"):
-            all_findings.append({
-                "id": "BLE-REPLAY-001",
-                "severity": "Critical",
-                "title": "Replay Attack Vulnerability",
-                "detail": f"Device {result['target']} characteristic {result['characteristic']} "
-                          f"is vulnerable to replay attacks. {result.get('detail', '')}",
-            })
+            all_findings.append(
+                {
+                    "id": "BLE-REPLAY-001",
+                    "severity": "Critical",
+                    "title": "Replay Attack Vulnerability",
+                    "detail": f"Device {result['target']} characteristic {result['characteristic']} "
+                    f"is vulnerable to replay attacks. {result.get('detail', '')}",
+                }
+            )
 
     all_findings.extend(spoofing_findings)
     all_findings.extend(pcap_findings)
@@ -534,7 +628,10 @@ def generate_report(scan_results, gatt_profiles, replay_results, spoofing_findin
             "critical": len(critical),
             "high": len(high),
             "medium": len(medium),
-            "informational": len(all_findings) - len(critical) - len(high) - len(medium),
+            "informational": len(all_findings)
+            - len(critical)
+            - len(high)
+            - len(medium),
         },
         "scan_results": scan_results,
         "gatt_profiles": gatt_profiles,
@@ -550,22 +647,46 @@ def generate_report(scan_results, gatt_profiles, replay_results, spoofing_findin
 
 def main():
     parser = argparse.ArgumentParser(description="BLE Attack Detection Agent")
-    parser.add_argument("--mode", choices=["scan", "enumerate", "replay", "monitor",
-                                           "analyze", "full"],
-                        default="scan", help="Operating mode")
-    parser.add_argument("--target", help="Target BLE device address (AA:BB:CC:DD:EE:FF)")
-    parser.add_argument("--scan-duration", type=float, default=10.0,
-                        help="BLE scan duration in seconds (default: 10)")
-    parser.add_argument("--char-uuid", help="Target GATT characteristic UUID for replay test")
-    parser.add_argument("--replay-payload", help="Hex payload for replay test (e.g., 0102030405)")
+    parser.add_argument(
+        "--mode",
+        choices=["scan", "enumerate", "replay", "monitor", "analyze", "full"],
+        default="scan",
+        help="Operating mode",
+    )
+    parser.add_argument(
+        "--target", help="Target BLE device address (AA:BB:CC:DD:EE:FF)"
+    )
+    parser.add_argument(
+        "--scan-duration",
+        type=float,
+        default=10.0,
+        help="BLE scan duration in seconds (default: 10)",
+    )
+    parser.add_argument(
+        "--char-uuid", help="Target GATT characteristic UUID for replay test"
+    )
+    parser.add_argument(
+        "--replay-payload", help="Hex payload for replay test (e.g., 0102030405)"
+    )
     parser.add_argument("--pcap", help="Path to BLE pcap/pcapng file for analysis")
-    parser.add_argument("--ubertooth-capture", type=int, default=0,
-                        help="Capture with Ubertooth for N seconds (0=disabled)")
-    parser.add_argument("--pcap-format", choices=["pcapng", "ppi", "le"],
-                        default="pcapng", help="Ubertooth capture format")
-    parser.add_argument("--known-devices", help="JSON file mapping known device addresses to names")
-    parser.add_argument("--output", default="ble_security_report.json",
-                        help="Output report file path")
+    parser.add_argument(
+        "--ubertooth-capture",
+        type=int,
+        default=0,
+        help="Capture with Ubertooth for N seconds (0=disabled)",
+    )
+    parser.add_argument(
+        "--pcap-format",
+        choices=["pcapng", "ppi", "le"],
+        default="pcapng",
+        help="Ubertooth capture format",
+    )
+    parser.add_argument(
+        "--known-devices", help="JSON file mapping known device addresses to names"
+    )
+    parser.add_argument(
+        "--output", default="ble_security_report.json", help="Output report file path"
+    )
     args = parser.parse_args()
 
     scan_results = []
@@ -586,7 +707,9 @@ def main():
     # Ubertooth capture
     if args.ubertooth_capture > 0:
         capture_path = args.pcap or "ubertooth_capture.pcapng"
-        run_ubertooth_capture(capture_path, args.target, args.ubertooth_capture, args.pcap_format)
+        run_ubertooth_capture(
+            capture_path, args.target, args.ubertooth_capture, args.pcap_format
+        )
         if not args.pcap:
             args.pcap = capture_path
 
@@ -598,7 +721,12 @@ def main():
         if profile:
             gatt_profiles.append(profile)
 
-    if args.mode in ("replay", "full") and args.target and args.char_uuid and args.replay_payload:
+    if (
+        args.mode in ("replay", "full")
+        and args.target
+        and args.char_uuid
+        and args.replay_payload
+    ):
         result = asyncio.run(
             test_replay_vulnerability(args.target, args.char_uuid, args.replay_payload)
         )
@@ -613,8 +741,14 @@ def main():
     if args.mode in ("analyze", "full") and args.pcap:
         pcap_findings = analyze_pcap_for_ble_attacks(args.pcap)
 
-    report = generate_report(scan_results, gatt_profiles, replay_results,
-                             spoofing_findings, pcap_findings, args.output)
+    report = generate_report(
+        scan_results,
+        gatt_profiles,
+        replay_results,
+        spoofing_findings,
+        pcap_findings,
+        args.output,
+    )
 
     print(json.dumps(report["summary"], indent=2))
 

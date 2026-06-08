@@ -9,12 +9,14 @@ from collections import defaultdict
 
 try:
     from scapy.all import rdpcap, IP, TCP, DNS, DNSQR
+
     HAS_SCAPY = True
 except ImportError:
     HAS_SCAPY = False
 
 try:
     import dpkt
+
     HAS_DPKT = True
 except ImportError:
     HAS_DPKT = False
@@ -78,21 +80,25 @@ def extract_http_requests(pcap_path):
                     decoded_body = None
                     if http.body:
                         try:
-                            decoded_body = base64.b64decode(http.body).decode("utf-8", errors="replace")
+                            decoded_body = base64.b64decode(http.body).decode(
+                                "utf-8", errors="replace"
+                            )
                         except Exception:
                             decoded_body = http.body[:200]
-                    requests.append({
-                        "timestamp": ts,
-                        "src_ip": ".".join(str(b) for b in ip.src),
-                        "dst_ip": ".".join(str(b) for b in ip.dst),
-                        "dst_port": tcp.dport,
-                        "method": http.method,
-                        "uri": http.uri,
-                        "host": http.headers.get("host", ""),
-                        "user_agent": http.headers.get("user-agent", ""),
-                        "body_size": len(http.body) if http.body else 0,
-                        "decoded_body_preview": decoded_body,
-                    })
+                    requests.append(
+                        {
+                            "timestamp": ts,
+                            "src_ip": ".".join(str(b) for b in ip.src),
+                            "dst_ip": ".".join(str(b) for b in ip.dst),
+                            "dst_port": tcp.dport,
+                            "method": http.method,
+                            "uri": http.uri,
+                            "host": http.headers.get("host", ""),
+                            "user_agent": http.headers.get("user-agent", ""),
+                            "body_size": len(http.body) if http.body else 0,
+                            "decoded_body_preview": decoded_body,
+                        }
+                    )
                 except (dpkt.dpkt.NeedData, dpkt.dpkt.UnpackError):
                     pass
             except Exception:
@@ -109,36 +115,50 @@ def extract_dns_queries(pcap_path):
     for pkt in packets:
         if DNS in pkt and pkt[DNS].qr == 0 and DNSQR in pkt:
             qname = pkt[DNSQR].qname.decode("utf-8", errors="replace").rstrip(".")
-            queries.append({
-                "src_ip": pkt[IP].src if IP in pkt else "?",
-                "query": qname,
-                "type": pkt[DNSQR].qtype,
-            })
+            queries.append(
+                {
+                    "src_ip": pkt[IP].src if IP in pkt else "?",
+                    "query": qname,
+                    "type": pkt[DNSQR].qtype,
+                }
+            )
     return queries
 
 
 def identify_c2_framework(http_requests):
     """Match HTTP request patterns against known C2 framework signatures."""
-    cs_uris = ["/pixel", "/submit.php", "/__utm.gif", "/ca", "/dpixel",
-               "/push", "/visit.js", "/tab_icon"]
+    cs_uris = [
+        "/pixel",
+        "/submit.php",
+        "/__utm.gif",
+        "/ca",
+        "/dpixel",
+        "/push",
+        "/visit.js",
+        "/tab_icon",
+    ]
     framework_hits = []
     for req in http_requests:
         uri = req.get("uri", "")
         ua = req.get("user_agent", "")
         for cs_uri in cs_uris:
             if cs_uri in uri:
-                framework_hits.append({
-                    "framework": "Cobalt Strike",
-                    "indicator": f"URI pattern: {cs_uri}",
-                    "request": req,
-                })
+                framework_hits.append(
+                    {
+                        "framework": "Cobalt Strike",
+                        "indicator": f"URI pattern: {cs_uri}",
+                        "request": req,
+                    }
+                )
                 break
         if "MeterSSL" in ua or len(uri) == 5 and uri.startswith("/"):
-            framework_hits.append({
-                "framework": "Metasploit/Meterpreter",
-                "indicator": f"URI/UA pattern: {uri} / {ua[:50]}",
-                "request": req,
-            })
+            framework_hits.append(
+                {
+                    "framework": "Metasploit/Meterpreter",
+                    "indicator": f"URI/UA pattern: {uri} / {ua[:50]}",
+                    "request": req,
+                }
+            )
     return framework_hits
 
 
@@ -149,23 +169,23 @@ def generate_suricata_rules(beacons, http_requests):
     for beacon in beacons:
         dst_ip, dst_port = beacon["destination"].rsplit(":", 1)
         rules.append(
-            f'alert tcp $HOME_NET any -> {dst_ip} {dst_port} ('
+            f"alert tcp $HOME_NET any -> {dst_ip} {dst_port} ("
             f'msg:"MALWARE Detected C2 Beacon to {dst_ip}:{dst_port}"; '
-            f'flow:established,to_server; '
-            f'threshold:type threshold, track by_src, count 5, seconds 600; '
-            f'sid:{sid}; rev:1;)'
+            f"flow:established,to_server; "
+            f"threshold:type threshold, track by_src, count 5, seconds 600; "
+            f"sid:{sid}; rev:1;)"
         )
         sid += 1
     for req in http_requests[:5]:
         if req.get("uri"):
             uri = req["uri"]
             rules.append(
-                f'alert http $HOME_NET any -> $EXTERNAL_NET any ('
+                f"alert http $HOME_NET any -> $EXTERNAL_NET any ("
                 f'msg:"MALWARE Suspected C2 HTTP Request {uri}"; '
-                f'flow:established,to_server; '
+                f"flow:established,to_server; "
                 f'http.method; content:"{req["method"]}"; '
                 f'http.uri; content:"{uri}"; '
-                f'sid:{sid}; rev:1;)'
+                f"sid:{sid}; rev:1;)"
             )
             sid += 1
     return rules
@@ -185,10 +205,12 @@ if __name__ == "__main__":
         print("\n--- Beacon Detection ---")
         beacons = detect_beacons(pcap_file)
         for b in beacons:
-            print(f"[!] BEACON: {b['destination']} "
-                  f"interval={b['avg_interval_seconds']}s "
-                  f"jitter={b['jitter_percent']}% "
-                  f"sessions={b['connections']}")
+            print(
+                f"[!] BEACON: {b['destination']} "
+                f"interval={b['avg_interval_seconds']}s "
+                f"jitter={b['jitter_percent']}% "
+                f"sessions={b['connections']}"
+            )
 
         print("\n--- HTTP Requests ---")
         http_reqs = extract_http_requests(pcap_file)

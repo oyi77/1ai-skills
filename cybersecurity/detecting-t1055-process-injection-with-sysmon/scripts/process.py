@@ -13,15 +13,31 @@ import re
 from pathlib import Path
 
 HIGH_VALUE_TARGETS = {
-    "svchost.exe", "explorer.exe", "lsass.exe", "winlogon.exe",
-    "csrss.exe", "services.exe", "spoolsv.exe", "dllhost.exe",
-    "runtimebroker.exe", "dwm.exe", "smss.exe",
+    "svchost.exe",
+    "explorer.exe",
+    "lsass.exe",
+    "winlogon.exe",
+    "csrss.exe",
+    "services.exe",
+    "spoolsv.exe",
+    "dllhost.exe",
+    "runtimebroker.exe",
+    "dwm.exe",
+    "smss.exe",
 }
 
 LEGITIMATE_SOURCES = {
-    "csrss.exe", "lsass.exe", "services.exe", "svchost.exe",
-    "msmpe ng.exe", "securityhealthservice.exe", "vmtoolsd.exe",
-    "taskmgr.exe", "procexp64.exe", "procexp.exe", "procmon.exe",
+    "csrss.exe",
+    "lsass.exe",
+    "services.exe",
+    "svchost.exe",
+    "msmpe ng.exe",
+    "securityhealthservice.exe",
+    "vmtoolsd.exe",
+    "taskmgr.exe",
+    "procexp64.exe",
+    "procexp.exe",
+    "procmon.exe",
 }
 
 SUSPICIOUS_ACCESS_MASKS = {
@@ -52,7 +68,9 @@ def detect_injection(events: list[dict]) -> list[dict]:
     findings = []
 
     for event in events:
-        event_code = str(event.get("EventCode", event.get("EventID", event.get("event_id", ""))))
+        event_code = str(
+            event.get("EventCode", event.get("EventID", event.get("event_id", "")))
+        )
         computer = event.get("Computer", event.get("host", ""))
         timestamp = event.get("UtcTime", event.get("_time", event.get("timestamp", "")))
         user = event.get("User", event.get("user", ""))
@@ -69,17 +87,19 @@ def detect_injection(events: list[dict]) -> list[dict]:
                 continue
 
             severity = "CRITICAL" if target_name in HIGH_VALUE_TARGETS else "HIGH"
-            findings.append({
-                "timestamp": timestamp,
-                "computer": computer,
-                "event_type": "CreateRemoteThread",
-                "sysmon_event": 8,
-                "source_image": source,
-                "target_image": target,
-                "severity": severity,
-                "technique": "T1055.001",
-                "description": f"Remote thread created by {source_name} in {target_name}",
-            })
+            findings.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": computer,
+                    "event_type": "CreateRemoteThread",
+                    "sysmon_event": 8,
+                    "source_image": source,
+                    "target_image": target,
+                    "severity": severity,
+                    "technique": "T1055.001",
+                    "description": f"Remote thread created by {source_name} in {target_name}",
+                }
+            )
 
         elif event_code == "10":
             source = event.get("SourceImage", "")
@@ -96,36 +116,45 @@ def detect_injection(events: list[dict]) -> list[dict]:
                 continue
 
             severity = "CRITICAL" if target_name == "lsass.exe" else "HIGH"
-            findings.append({
-                "timestamp": timestamp,
-                "computer": computer,
-                "event_type": "ProcessAccess",
-                "sysmon_event": 10,
-                "source_image": source,
-                "target_image": target,
-                "granted_access": access,
-                "access_description": SUSPICIOUS_ACCESS_MASKS.get(access, "Unknown"),
-                "severity": severity,
-                "technique": "T1055",
-                "description": f"{source_name} accessed {target_name} with {access} ({SUSPICIOUS_ACCESS_MASKS.get(access, '')})",
-            })
+            findings.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": computer,
+                    "event_type": "ProcessAccess",
+                    "sysmon_event": 10,
+                    "source_image": source,
+                    "target_image": target,
+                    "granted_access": access,
+                    "access_description": SUSPICIOUS_ACCESS_MASKS.get(
+                        access, "Unknown"
+                    ),
+                    "severity": severity,
+                    "technique": "T1055",
+                    "description": f"{source_name} accessed {target_name} with {access} ({SUSPICIOUS_ACCESS_MASKS.get(access, '')})",
+                }
+            )
 
         elif event_code == "25":
             image = event.get("Image", "")
             tampering_type = event.get("Type", "")
-            findings.append({
-                "timestamp": timestamp,
-                "computer": computer,
-                "event_type": "ProcessTampering",
-                "sysmon_event": 25,
-                "image": image,
-                "tampering_type": tampering_type,
-                "severity": "CRITICAL",
-                "technique": "T1055.012",
-                "description": f"Process tampering detected: {image} - {tampering_type}",
-            })
+            findings.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": computer,
+                    "event_type": "ProcessTampering",
+                    "sysmon_event": 25,
+                    "image": image,
+                    "tampering_type": tampering_type,
+                    "severity": "CRITICAL",
+                    "technique": "T1055.012",
+                    "description": f"Process tampering detected: {image} - {tampering_type}",
+                }
+            )
 
-    return sorted(findings, key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 3))
+    return sorted(
+        findings,
+        key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 3),
+    )
 
 
 def run_hunt(input_path: str, output_dir: str) -> None:
@@ -141,12 +170,16 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     with open(output_path / "injection_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-INJECT-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "findings_count": len(findings),
-            "findings": findings,
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-INJECT-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "findings_count": len(findings),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
 
     print(f"[+] Results written to {output_dir}")
 

@@ -5,6 +5,7 @@ Acquires forensic copies of cloud storage objects from AWS S3, Azure Blob
 Storage, and GCP Cloud Storage with integrity verification using SHA-256
 hashes, metadata preservation, and chain-of-custody logging.
 """
+
 import argparse
 import hashlib
 import json
@@ -15,6 +16,7 @@ from datetime import datetime, timezone
 try:
     import boto3
     from botocore.exceptions import ClientError
+
     HAS_BOTO3 = True
 except ImportError:
     HAS_BOTO3 = False
@@ -60,9 +62,11 @@ def acquire_s3_objects(bucket, prefix="", output_dir=".", profile=None, region=N
                 head = s3.head_object(Bucket=bucket, Key=key)
                 metadata = {
                     "content_type": head.get("ContentType", ""),
-                    "last_modified": head.get("LastModified", "").isoformat()
-                                     if hasattr(head.get("LastModified", ""), "isoformat")
-                                     else str(head.get("LastModified", "")),
+                    "last_modified": (
+                        head.get("LastModified", "").isoformat()
+                        if hasattr(head.get("LastModified", ""), "isoformat")
+                        else str(head.get("LastModified", ""))
+                    ),
                     "etag": head.get("ETag", "").strip('"'),
                     "version_id": head.get("VersionId", ""),
                     "server_side_encryption": head.get("ServerSideEncryption", ""),
@@ -94,7 +98,9 @@ def acquire_s3_objects(bucket, prefix="", output_dir=".", profile=None, region=N
                     "acquired_at": datetime.now(timezone.utc).isoformat(),
                     "status": "OK",
                 }
-                print(f"    [{total_objects:4d}] {key} ({size} bytes, SHA256: {file_hash[:16]}...)")
+                print(
+                    f"    [{total_objects:4d}] {key} ({size} bytes, SHA256: {file_hash[:16]}...)"
+                )
             except ClientError as e:
                 entry = {
                     "source": f"s3://{bucket}/{key}",
@@ -143,8 +149,12 @@ def acquire_s3_versions(bucket, key, output_dir=".", profile=None, region=None):
         local_path = os.path.join(output_dir, f"{base_name}.v_{safe_vid}")
 
         try:
-            s3.download_file(bucket, key, local_path,
-                             ExtraArgs={"VersionId": vid} if vid != "null" else {})
+            s3.download_file(
+                bucket,
+                key,
+                local_path,
+                ExtraArgs={"VersionId": vid} if vid != "null" else {},
+            )
             sha256 = hashlib.sha256()
             with open(local_path, "rb") as f:
                 while True:
@@ -164,23 +174,31 @@ def acquire_s3_versions(bucket, key, output_dir=".", profile=None, region=None):
                 "acquired_at": datetime.now(timezone.utc).isoformat(),
                 "status": "OK",
             }
-            print(f"    Version {vid[:12]:12s} | {size:10d} bytes | "
-                  f"{'LATEST' if is_latest else '      '} | SHA256: {sha256.hexdigest()[:16]}...")
+            print(
+                f"    Version {vid[:12]:12s} | {size:10d} bytes | "
+                f"{'LATEST' if is_latest else '      '} | SHA256: {sha256.hexdigest()[:16]}..."
+            )
         except ClientError as e:
-            entry = {"source": f"s3://{bucket}/{key}", "version_id": vid,
-                     "status": "FAIL", "error": str(e)}
+            entry = {
+                "source": f"s3://{bucket}/{key}",
+                "version_id": vid,
+                "status": "FAIL",
+                "error": str(e),
+            }
 
         evidence_log.append(entry)
 
     # Also acquire delete markers
     for marker in versions.get("DeleteMarkers", []):
-        evidence_log.append({
-            "source": f"s3://{bucket}/{key}",
-            "version_id": marker.get("VersionId", ""),
-            "type": "DELETE_MARKER",
-            "last_modified": str(marker.get("LastModified", "")),
-            "is_latest": marker.get("IsLatest", False),
-        })
+        evidence_log.append(
+            {
+                "source": f"s3://{bucket}/{key}",
+                "version_id": marker.get("VersionId", ""),
+                "type": "DELETE_MARKER",
+                "last_modified": str(marker.get("LastModified", "")),
+                "is_latest": marker.get("IsLatest", False),
+            }
+        )
 
     return evidence_log
 
@@ -245,7 +263,9 @@ def main():
     p_s3 = sub.add_parser("s3", help="Acquire S3 bucket objects")
     p_s3.add_argument("--bucket", required=True, help="S3 bucket name")
     p_s3.add_argument("--prefix", default="", help="Object key prefix filter")
-    p_s3.add_argument("--output-dir", default="./evidence", help="Local output directory")
+    p_s3.add_argument(
+        "--output-dir", default="./evidence", help="Local output directory"
+    )
 
     p_ver = sub.add_parser("s3-versions", help="Acquire all versions of S3 object")
     p_ver.add_argument("--bucket", required=True)
@@ -254,7 +274,9 @@ def main():
 
     parser.add_argument("--profile", help="AWS CLI profile")
     parser.add_argument("--region", help="AWS region")
-    parser.add_argument("--skip-verify", action="store_true", help="Skip integrity verification")
+    parser.add_argument(
+        "--skip-verify", action="store_true", help="Skip integrity verification"
+    )
     parser.add_argument("--output", "-o", help="Output JSON report path")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()

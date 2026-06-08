@@ -41,15 +41,22 @@ class GraphQLSecurityAgent:
             }
         }"""
         result = self._query(query)
-        has_schema = "data" in result.get("body", {}) and "__schema" in result.get("body", {}).get("data", {})
+        has_schema = "data" in result.get("body", {}) and "__schema" in result.get(
+            "body", {}
+        ).get("data", {})
         types = []
         if has_schema:
-            types = [t["name"] for t in result["body"]["data"]["__schema"].get("types", [])
-                     if not t["name"].startswith("__")]
+            types = [
+                t["name"]
+                for t in result["body"]["data"]["__schema"].get("types", [])
+                if not t["name"].startswith("__")
+            ]
         return {
             "vulnerable": has_schema,
             "severity": "Medium",
-            "finding": "Introspection enabled" if has_schema else "Introspection disabled",
+            "finding": (
+                "Introspection enabled" if has_schema else "Introspection disabled"
+            ),
             "types_exposed": len(types),
             "type_names": types[:20],
         }
@@ -66,7 +73,9 @@ class GraphQLSecurityAgent:
             "vulnerable": not has_error,
             "severity": "High" if not has_error else "Info",
             "depth_tested": max_depth,
-            "finding": "No query depth limit" if not has_error else "Query depth limited",
+            "finding": (
+                "No query depth limit" if not has_error else "Query depth limited"
+            ),
         }
 
     def test_batch_queries(self):
@@ -83,7 +92,9 @@ class GraphQLSecurityAgent:
             return {
                 "vulnerable": is_array,
                 "severity": "High" if is_array else "Info",
-                "finding": "Batch queries accepted" if is_array else "Batch queries rejected",
+                "finding": (
+                    "Batch queries accepted" if is_array else "Batch queries rejected"
+                ),
                 "response_count": len(body) if is_array else 0,
             }
         except Exception as e:
@@ -102,7 +113,9 @@ class GraphQLSecurityAgent:
         return {
             "vulnerable": len(suggestions) > 0,
             "severity": "Low",
-            "finding": "Field suggestions enabled" if suggestions else "No field suggestions",
+            "finding": (
+                "Field suggestions enabled" if suggestions else "No field suggestions"
+            ),
             "suggestions": suggestions,
         }
 
@@ -118,14 +131,18 @@ class GraphQLSecurityAgent:
         for query, test_name in queries:
             result = self._query(query)
             has_data = "data" in result.get("body", {})
-            has_null_data = has_data and all(
-                v is None for v in result["body"]["data"].values()
-            ) if has_data else False
-            results.append({
-                "test": test_name,
-                "accessible": has_data and not has_null_data,
-                "status": result.get("status"),
-            })
+            has_null_data = (
+                has_data and all(v is None for v in result["body"]["data"].values())
+                if has_data
+                else False
+            )
+            results.append(
+                {
+                    "test": test_name,
+                    "accessible": has_data and not has_null_data,
+                    "status": result.get("status"),
+                }
+            )
         if saved_auth:
             self.session.headers["Authorization"] = saved_auth
         accessible_count = sum(1 for r in results if r["accessible"])
@@ -138,7 +155,7 @@ class GraphQLSecurityAgent:
 
     def test_alias_overloading(self, count=50):
         """Test for alias-based resource exhaustion."""
-        aliases = " ".join(f'a{i}: __typename' for i in range(count))
+        aliases = " ".join(f"a{i}: __typename" for i in range(count))
         query = f"{{ {aliases} }}"
         result = self._query(query)
         has_error = "errors" in result.get("body", {})
@@ -146,7 +163,9 @@ class GraphQLSecurityAgent:
             "vulnerable": not has_error,
             "severity": "Medium" if not has_error else "Info",
             "aliases_tested": count,
-            "finding": f"Accepted {count} aliases" if not has_error else "Alias limit enforced",
+            "finding": (
+                f"Accepted {count} aliases" if not has_error else "Alias limit enforced"
+            ),
         }
 
     def run_full_assessment(self):
@@ -172,10 +191,26 @@ class GraphQLSecurityAgent:
         report["summary"] = {
             "total_tests": len(report["findings"]),
             "vulnerabilities_found": vulnerable_count,
-            "critical": sum(1 for f in report["findings"] if f.get("severity") == "Critical" and f.get("vulnerable")),
-            "high": sum(1 for f in report["findings"] if f.get("severity") == "High" and f.get("vulnerable")),
-            "medium": sum(1 for f in report["findings"] if f.get("severity") == "Medium" and f.get("vulnerable")),
-            "low": sum(1 for f in report["findings"] if f.get("severity") == "Low" and f.get("vulnerable")),
+            "critical": sum(
+                1
+                for f in report["findings"]
+                if f.get("severity") == "Critical" and f.get("vulnerable")
+            ),
+            "high": sum(
+                1
+                for f in report["findings"]
+                if f.get("severity") == "High" and f.get("vulnerable")
+            ),
+            "medium": sum(
+                1
+                for f in report["findings"]
+                if f.get("severity") == "Medium" and f.get("vulnerable")
+            ),
+            "low": sum(
+                1
+                for f in report["findings"]
+                if f.get("severity") == "Low" and f.get("vulnerable")
+            ),
         }
         return report
 

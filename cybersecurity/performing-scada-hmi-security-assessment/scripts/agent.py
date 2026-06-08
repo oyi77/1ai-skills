@@ -27,16 +27,23 @@ SCADA_PORTS = {
 }
 
 DEFAULT_CREDENTIALS = [
-    ("admin", "admin"), ("admin", "password"), ("admin", "1234"),
-    ("operator", "operator"), ("engineer", "engineer"),
-    ("guest", "guest"), ("user", "user"),
-    ("Administrator", ""), ("root", "root"),
+    ("admin", "admin"),
+    ("admin", "password"),
+    ("admin", "1234"),
+    ("operator", "operator"),
+    ("engineer", "engineer"),
+    ("guest", "guest"),
+    ("user", "user"),
+    ("Administrator", ""),
+    ("root", "root"),
 ]
 
 INSECURE_PROTOCOLS = {"modbus", "s7comm", "dnp3", "bacnet", "enip"}
 
 
-def scan_open_ports(target: str, ports: list[int] = None, timeout: float = 2.0) -> list[dict]:
+def scan_open_ports(
+    target: str, ports: list[int] = None, timeout: float = 2.0
+) -> list[dict]:
     """Check for open SCADA-specific ports on target."""
     if ports is None:
         ports = list(SCADA_PORTS.keys())
@@ -47,12 +54,14 @@ def scan_open_ports(target: str, ports: list[int] = None, timeout: float = 2.0) 
             sock.settimeout(timeout)
             result = sock.connect_ex((target, port))
             if result == 0:
-                results.append({
-                    "port": port,
-                    "protocol": SCADA_PORTS.get(port, "unknown"),
-                    "status": "open",
-                    "risk": "high" if port in (502, 102, 20000) else "medium",
-                })
+                results.append(
+                    {
+                        "port": port,
+                        "protocol": SCADA_PORTS.get(port, "unknown"),
+                        "status": "open",
+                        "risk": "high" if port in (502, 102, 20000) else "medium",
+                    }
+                )
             sock.close()
         except socket.error:
             pass
@@ -63,21 +72,26 @@ def check_default_credentials_http(target: str, port: int = 80) -> list[dict]:
     """Check for default credentials on HMI web interface."""
     import urllib.request
     import base64
+
     findings = []
     for user, pwd in DEFAULT_CREDENTIALS:
         try:
             url = f"http://{target}:{port}/"
             creds = base64.b64encode(f"{user}:{pwd}".encode()).decode()
-            req = urllib.request.Request(url, headers={"Authorization": f"Basic {creds}"})
+            req = urllib.request.Request(
+                url, headers={"Authorization": f"Basic {creds}"}
+            )
             resp = urllib.request.urlopen(req, timeout=5)
             if resp.status == 200:
-                findings.append({
-                    "type": "default_credential",
-                    "severity": "critical",
-                    "username": user,
-                    "port": port,
-                    "detail": f"Default credential {user}:{pwd} accepted on port {port}",
-                })
+                findings.append(
+                    {
+                        "type": "default_credential",
+                        "severity": "critical",
+                        "username": user,
+                        "port": port,
+                        "detail": f"Default credential {user}:{pwd} accepted on port {port}",
+                    }
+                )
         except Exception:
             continue
     return findings
@@ -101,13 +115,15 @@ def analyze_pcap_protocols(pcap_path: str) -> list[dict]:
         return [{"error": str(e)}]
 
     for proto, count in protocol_counts.items():
-        findings.append({
-            "type": "insecure_protocol",
-            "severity": "high",
-            "protocol": proto,
-            "packet_count": count,
-            "detail": f"{proto} traffic detected ({count} packets) — no encryption or authentication",
-        })
+        findings.append(
+            {
+                "type": "insecure_protocol",
+                "severity": "high",
+                "protocol": proto,
+                "packet_count": count,
+                "detail": f"{proto} traffic detected ({count} packets) — no encryption or authentication",
+            }
+        )
     return findings
 
 
@@ -120,34 +136,65 @@ def check_hmi_configuration(config_path: str) -> list[dict]:
         return [{"error": str(e)}]
 
     if not config.get("authentication", {}).get("enabled", True):
-        findings.append({"type": "auth_disabled", "severity": "critical",
-                         "detail": "Authentication is disabled on HMI"})
+        findings.append(
+            {
+                "type": "auth_disabled",
+                "severity": "critical",
+                "detail": "Authentication is disabled on HMI",
+            }
+        )
     if config.get("session_timeout", 0) == 0:
-        findings.append({"type": "no_session_timeout", "severity": "high",
-                         "detail": "No session timeout configured"})
+        findings.append(
+            {
+                "type": "no_session_timeout",
+                "severity": "high",
+                "detail": "No session timeout configured",
+            }
+        )
     if not config.get("encryption", {}).get("tls_enabled", True):
-        findings.append({"type": "no_tls", "severity": "high",
-                         "detail": "TLS not enabled for HMI communications"})
+        findings.append(
+            {
+                "type": "no_tls",
+                "severity": "high",
+                "detail": "TLS not enabled for HMI communications",
+            }
+        )
     if config.get("remote_access", {}).get("enabled", False):
         if not config.get("remote_access", {}).get("vpn_required", True):
-            findings.append({"type": "remote_no_vpn", "severity": "critical",
-                             "detail": "Remote access enabled without VPN requirement"})
+            findings.append(
+                {
+                    "type": "remote_no_vpn",
+                    "severity": "critical",
+                    "detail": "Remote access enabled without VPN requirement",
+                }
+            )
     roles = config.get("roles", [])
     if len(roles) <= 1:
-        findings.append({"type": "no_rbac", "severity": "high",
-                         "detail": "No role-based access control — single role or no roles defined"})
+        findings.append(
+            {
+                "type": "no_rbac",
+                "severity": "high",
+                "detail": "No role-based access control — single role or no roles defined",
+            }
+        )
     return findings
 
 
-def generate_report(target: str, pcap_path: str = None,
-                    config_path: str = None, scan_ports: bool = True) -> dict:
+def generate_report(
+    target: str, pcap_path: str = None, config_path: str = None, scan_ports: bool = True
+) -> dict:
     """Run all assessments and build consolidated report."""
     findings = []
     if scan_ports:
         open_ports = scan_open_ports(target)
         for p in open_ports:
-            findings.append({"type": "open_scada_port", "severity": p["risk"],
-                             "detail": f"Port {p['port']} ({p['protocol']}) is open"})
+            findings.append(
+                {
+                    "type": "open_scada_port",
+                    "severity": p["risk"],
+                    "detail": f"Port {p['port']} ({p['protocol']}) is open",
+                }
+            )
     if pcap_path:
         findings.extend(analyze_pcap_protocols(pcap_path))
     if config_path:

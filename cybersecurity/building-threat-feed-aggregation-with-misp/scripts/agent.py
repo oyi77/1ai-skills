@@ -10,19 +10,36 @@ from collections import defaultdict
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
 def misp_request(url, key, endpoint, method="GET", data=None):
     """Make authenticated MISP API request."""
-    headers = {"Authorization": key, "Accept": "application/json", "Content-Type": "application/json"}
+    headers = {
+        "Authorization": key,
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }
     full_url = f"{url}/{endpoint}"
     try:
         if method == "GET":
-            resp = requests.get(full_url, headers=headers, timeout=30, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            resp = requests.get(
+                full_url,
+                headers=headers,
+                timeout=30,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         else:
-            resp = requests.post(full_url, headers=headers, json=data or {}, timeout=30, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            resp = requests.post(
+                full_url,
+                headers=headers,
+                json=data or {},
+                timeout=30,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         resp.raise_for_status()
         return resp.json()
     except requests.RequestException as e:
@@ -36,10 +53,22 @@ def list_feeds(url, key):
     feeds = data if isinstance(data, list) else data.get("Feed", [])
     result = []
     for feed in feeds:
-        f = feed.get("Feed", feed) if isinstance(feed, dict) and "Feed" in feed else feed
-        result.append({"id": f.get("id"), "name": f.get("name"), "provider": f.get("provider"),
-                       "url": f.get("url"), "enabled": f.get("enabled"), "source_format": f.get("source_format"),
-                       "caching_enabled": f.get("caching_enabled")})
+        f = (
+            feed.get("Feed", feed)
+            if isinstance(feed, dict) and "Feed" in feed
+            else feed
+        )
+        result.append(
+            {
+                "id": f.get("id"),
+                "name": f.get("name"),
+                "provider": f.get("provider"),
+                "url": f.get("url"),
+                "enabled": f.get("enabled"),
+                "source_format": f.get("source_format"),
+                "caching_enabled": f.get("caching_enabled"),
+            }
+        )
     logger.info("Found %d configured feeds", len(result))
     return result
 
@@ -58,19 +87,33 @@ def search_attributes(url, key, attr_type=None, value=None, last_days=30):
         search_body["type"] = attr_type
     if value:
         search_body["value"] = value
-    data = misp_request(url, key, "attributes/restSearch", method="POST", data=search_body)
+    data = misp_request(
+        url, key, "attributes/restSearch", method="POST", data=search_body
+    )
     attributes = data.get("response", {}).get("Attribute", [])
-    logger.info("Found %d attributes (type=%s, last %dd)", len(attributes), attr_type, last_days)
+    logger.info(
+        "Found %d attributes (type=%s, last %dd)", len(attributes), attr_type, last_days
+    )
     return attributes
 
 
 def aggregate_feed_statistics(url, key, last_days=30):
     """Aggregate statistics across all feeds."""
-    events_data = misp_request(url, key, "events/restSearch", method="POST",
-                                data={"returnFormat": "json", "limit": 500, "last": f"{last_days}d"})
+    events_data = misp_request(
+        url,
+        key,
+        "events/restSearch",
+        method="POST",
+        data={"returnFormat": "json", "limit": 500, "last": f"{last_days}d"},
+    )
     events = events_data.get("response", [])
-    stats = {"total_events": len(events), "by_threat_level": defaultdict(int),
-             "by_org": defaultdict(int), "by_tag": defaultdict(int), "attribute_types": defaultdict(int)}
+    stats = {
+        "total_events": len(events),
+        "by_threat_level": defaultdict(int),
+        "by_org": defaultdict(int),
+        "by_tag": defaultdict(int),
+        "attribute_types": defaultdict(int),
+    }
     threat_levels = {"1": "High", "2": "Medium", "3": "Low", "4": "Undefined"}
     for event_wrap in events:
         event = event_wrap.get("Event", event_wrap)
@@ -87,8 +130,13 @@ def aggregate_feed_statistics(url, key, last_days=30):
 
 def correlate_across_feeds(url, key, ioc_value):
     """Correlate an IOC across all feed events."""
-    data = misp_request(url, key, "attributes/restSearch", method="POST",
-                        data={"returnFormat": "json", "value": ioc_value, "limit": 100})
+    data = misp_request(
+        url,
+        key,
+        "attributes/restSearch",
+        method="POST",
+        data={"returnFormat": "json", "value": ioc_value, "limit": 100},
+    )
     attributes = data.get("response", {}).get("Attribute", [])
     correlations = []
     seen_events = set()
@@ -96,8 +144,14 @@ def correlate_across_feeds(url, key, ioc_value):
         event_id = attr.get("event_id")
         if event_id not in seen_events:
             seen_events.add(event_id)
-            correlations.append({"event_id": event_id, "type": attr.get("type"), "category": attr.get("category"),
-                                 "comment": attr.get("comment", "")[:100]})
+            correlations.append(
+                {
+                    "event_id": event_id,
+                    "type": attr.get("type"),
+                    "category": attr.get("category"),
+                    "comment": attr.get("comment", "")[:100],
+                }
+            )
     logger.info("IOC '%s' found in %d events", ioc_value, len(correlations))
     return correlations
 
@@ -107,8 +161,13 @@ def assess_feed_health(feeds):
     total = len(feeds)
     enabled = sum(1 for f in feeds if f.get("enabled"))
     cached = sum(1 for f in feeds if f.get("caching_enabled"))
-    return {"total_feeds": total, "enabled": enabled, "disabled": total - enabled,
-            "caching_enabled": cached, "health_score": round(enabled / total * 100, 1) if total else 0}
+    return {
+        "total_feeds": total,
+        "enabled": enabled,
+        "disabled": total - enabled,
+        "caching_enabled": cached,
+        "health_score": round(enabled / total * 100, 1) if total else 0,
+    }
 
 
 def generate_report(feeds, stats, feed_health):
@@ -119,8 +178,10 @@ def generate_report(feeds, stats, feed_health):
         "feed_health": feed_health,
         "aggregated_statistics": stats,
     }
-    print(f"FEED REPORT: {feed_health['total_feeds']} feeds, {feed_health['enabled']} enabled, "
-          f"{stats.get('total_events', 0)} events")
+    print(
+        f"FEED REPORT: {feed_health['total_feeds']} feeds, {feed_health['enabled']} enabled, "
+        f"{stats.get('total_events', 0)} events"
+    )
     return report
 
 
@@ -138,7 +199,9 @@ def main():
     feed_health = assess_feed_health(feeds)
     report = generate_report(feeds, stats, feed_health)
     if args.correlate:
-        report["correlation_results"] = correlate_across_feeds(args.url, args.key, args.correlate)
+        report["correlation_results"] = correlate_across_feeds(
+            args.url, args.key, args.correlate
+        )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)
     logger.info("Report saved to %s", args.output)

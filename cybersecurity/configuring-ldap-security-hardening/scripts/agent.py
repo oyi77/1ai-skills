@@ -42,16 +42,25 @@ def check_ldaps(server_ip):
         conn.unbind()
         return {"check": "LDAPS", "port": 636, "available": True, "severity": "INFO"}
     except Exception as e:
-        return {"check": "LDAPS", "available": False, "severity": "HIGH",
-                "recommendation": "Enable LDAPS by installing a certificate on the domain controller"}
+        return {
+            "check": "LDAPS",
+            "available": False,
+            "severity": "HIGH",
+            "recommendation": "Enable LDAPS by installing a certificate on the domain controller",
+        }
 
 
 def check_channel_binding(server_ip, domain, username, password):
     """Check LDAP channel binding enforcement."""
     try:
         server = Server(server_ip, get_info=ALL)
-        conn = Connection(server, user=f"{domain}\\{username}", password=password,
-                          authentication=NTLM, auto_bind=True)
+        conn = Connection(
+            server,
+            user=f"{domain}\\{username}",
+            password=password,
+            authentication=NTLM,
+            auto_bind=True,
+        )
         conn.unbind()
         return {
             "check": "Channel binding",
@@ -71,20 +80,28 @@ def audit_anonymous_access(server_ip):
         conn = Connection(server, auto_bind=True)
         conn.search("", "(objectClass=*)", search_scope=ldap3.BASE, attributes=["*"])
         if conn.entries:
-            findings.append({
-                "issue": "Anonymous rootDSE access",
-                "severity": "MEDIUM",
-                "detail": "Server exposes rootDSE information to unauthenticated clients",
-            })
-        base_dn = server.info.other.get("defaultNamingContext", [""])[0] if server.info else ""
+            findings.append(
+                {
+                    "issue": "Anonymous rootDSE access",
+                    "severity": "MEDIUM",
+                    "detail": "Server exposes rootDSE information to unauthenticated clients",
+                }
+            )
+        base_dn = (
+            server.info.other.get("defaultNamingContext", [""])[0]
+            if server.info
+            else ""
+        )
         if base_dn:
             conn.search(base_dn, "(objectClass=user)", attributes=["sAMAccountName"])
             if conn.entries:
-                findings.append({
-                    "issue": "Anonymous user enumeration",
-                    "severity": "CRITICAL",
-                    "detail": f"Anonymous bind can enumerate {len(conn.entries)} user objects",
-                })
+                findings.append(
+                    {
+                        "issue": "Anonymous user enumeration",
+                        "severity": "CRITICAL",
+                        "detail": f"Anonymous bind can enumerate {len(conn.entries)} user objects",
+                    }
+                )
         conn.unbind()
     except Exception as e:
         findings.append({"issue": "Anonymous access test", "error": str(e)})

@@ -92,7 +92,7 @@ def build_incident_timeline(service, hosts, users, earliest="-24h", latest="now"
     query = (
         f"index=windows OR index=sysmon OR index=proxy OR index=firewall "
         f"({host_filter} OR {user_filter}) "
-        '| eval event_summary=case('
+        "| eval event_summary=case("
         '    sourcetype=="WinEventLog:Security" AND EventCode==4624, '
         '    "Logon: ".TargetUserName." from ".src_ip, '
         '    sourcetype=="WinEventLog:Security" AND EventCode==4625, '
@@ -118,16 +118,30 @@ def generate_report(findings):
 def main():
     parser = argparse.ArgumentParser(description="Splunk Security Log Analysis Agent")
     parser.add_argument("--host", default=os.getenv("SPLUNK_HOST", "localhost"))
-    parser.add_argument("--port", type=int, default=int(os.getenv("SPLUNK_PORT", "8089")))
+    parser.add_argument(
+        "--port", type=int, default=int(os.getenv("SPLUNK_PORT", "8089"))
+    )
     parser.add_argument("--username", default=os.getenv("SPLUNK_USERNAME", "admin"))
     parser.add_argument("--password", default=os.getenv("SPLUNK_PASSWORD", ""))
     parser.add_argument("--earliest", default="-24h", help="Search earliest time")
-    parser.add_argument("--action", choices=[
-        "brute_force", "lateral_movement", "powershell",
-        "lsass_access", "timeline", "full_investigation"
-    ], default="full_investigation")
-    parser.add_argument("--hosts", nargs="*", default=[], help="Target hosts for timeline")
-    parser.add_argument("--users", nargs="*", default=[], help="Target users for timeline")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "brute_force",
+            "lateral_movement",
+            "powershell",
+            "lsass_access",
+            "timeline",
+            "full_investigation",
+        ],
+        default="full_investigation",
+    )
+    parser.add_argument(
+        "--hosts", nargs="*", default=[], help="Target hosts for timeline"
+    )
+    parser.add_argument(
+        "--users", nargs="*", default=[], help="Target users for timeline"
+    )
     parser.add_argument("--threshold", type=int, default=10)
     args = parser.parse_args()
 
@@ -135,16 +149,24 @@ def main():
     findings = {}
 
     if args.action in ("brute_force", "full_investigation"):
-        findings["brute_force"] = detect_brute_force(service, args.threshold, args.earliest)
+        findings["brute_force"] = detect_brute_force(
+            service, args.threshold, args.earliest
+        )
         print(f"[+] Brute force: {len(findings['brute_force'])} accounts targeted")
 
     if args.action in ("lateral_movement", "full_investigation"):
         findings["lateral_movement"] = detect_lateral_movement(service, args.earliest)
-        print(f"[+] Lateral movement: {len(findings['lateral_movement'])} suspicious paths")
+        print(
+            f"[+] Lateral movement: {len(findings['lateral_movement'])} suspicious paths"
+        )
 
     if args.action in ("powershell", "full_investigation"):
-        findings["suspicious_powershell"] = detect_suspicious_powershell(service, args.earliest)
-        print(f"[+] Suspicious PowerShell: {len(findings['suspicious_powershell'])} events")
+        findings["suspicious_powershell"] = detect_suspicious_powershell(
+            service, args.earliest
+        )
+        print(
+            f"[+] Suspicious PowerShell: {len(findings['suspicious_powershell'])} events"
+        )
 
     if args.action in ("lsass_access", "full_investigation"):
         findings["lsass_access"] = detect_lsass_access(service, args.earliest)

@@ -1,9 +1,6 @@
 ---
 name: clawild-moltbook
-description: Use when interacting with the CLAWILD autonomous crypto intelligence agent on Moltbook
-allowed-tools: - Bash(apify:*)
-  - MCP(apify:*)
-  - MCP(slack:*)
+description: CLAWILD 🦞. Use when relevant to this domain.
 ---
 persona:
   name: "Domain Expert"

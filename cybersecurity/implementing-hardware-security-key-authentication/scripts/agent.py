@@ -21,7 +21,15 @@ from base64 import urlsafe_b64decode, urlsafe_b64encode
 from datetime import datetime, timezone
 from pathlib import Path
 
-from flask import Flask, abort, jsonify, redirect, request, session, render_template_string
+from flask import (
+    Flask,
+    abort,
+    jsonify,
+    redirect,
+    request,
+    session,
+    render_template_string,
+)
 
 from fido2.server import Fido2Server
 from fido2.webauthn import (
@@ -46,6 +54,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # Database layer
 # ---------------------------------------------------------------------------
+
 
 def init_database(db_path: str) -> sqlite3.Connection:
     """Initialize SQLite database for credential and user storage."""
@@ -112,6 +121,7 @@ def init_database(db_path: str) -> sqlite3.Connection:
 # User management
 # ---------------------------------------------------------------------------
 
+
 def create_user(conn: sqlite3.Connection, username: str, display_name: str) -> dict:
     """Create a new user with a random user handle."""
     user_handle = secrets.token_bytes(32)
@@ -174,6 +184,7 @@ def get_user_by_handle(conn: sqlite3.Connection, user_handle: bytes) -> dict | N
 # Credential management
 # ---------------------------------------------------------------------------
 
+
 def store_credential(
     conn: sqlite3.Connection,
     user_id: int,
@@ -192,8 +203,12 @@ def store_credential(
             transports, is_discoverable)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
         (
-            user_id, credential_id, public_key, sign_count,
-            aaguid, label,
+            user_id,
+            credential_id,
+            public_key,
+            sign_count,
+            aaguid,
+            label,
             json.dumps(transports) if transports else None,
             1 if is_discoverable else 0,
         ),
@@ -202,7 +217,9 @@ def store_credential(
     cred_id = cursor.lastrowid
     logger.info(
         "Stored credential for user %d: %s (label: %s)",
-        user_id, urlsafe_b64encode(credential_id).decode(), label,
+        user_id,
+        urlsafe_b64encode(credential_id).decode(),
+        label,
     )
     return cred_id
 
@@ -218,18 +235,20 @@ def get_user_credentials(conn: sqlite3.Connection, user_id: int) -> list[dict]:
     ).fetchall()
     creds = []
     for row in rows:
-        creds.append({
-            "db_id": row[0],
-            "credential_id": row[1],
-            "public_key": row[2],
-            "sign_count": row[3],
-            "aaguid": row[4],
-            "label": row[5],
-            "transports": json.loads(row[6]) if row[6] else [],
-            "created_at": row[7],
-            "last_used": row[8],
-            "is_discoverable": bool(row[9]),
-        })
+        creds.append(
+            {
+                "db_id": row[0],
+                "credential_id": row[1],
+                "public_key": row[2],
+                "sign_count": row[3],
+                "aaguid": row[4],
+                "label": row[5],
+                "transports": json.loads(row[6]) if row[6] else [],
+                "created_at": row[7],
+                "last_used": row[8],
+                "is_discoverable": bool(row[9]),
+            }
+        )
     return creds
 
 
@@ -251,7 +270,9 @@ def get_all_credentials(conn: sqlite3.Connection) -> list[dict]:
     ]
 
 
-def revoke_credential(conn: sqlite3.Connection, credential_db_id: int, user_id: int) -> bool:
+def revoke_credential(
+    conn: sqlite3.Connection, credential_db_id: int, user_id: int
+) -> bool:
     """Revoke a credential (soft delete)."""
     cursor = conn.execute(
         "UPDATE credentials SET is_revoked = 1 WHERE id = ? AND user_id = ?",
@@ -274,7 +295,10 @@ def update_sign_count(conn: sqlite3.Connection, credential_id: bytes, new_count:
 # Recovery codes
 # ---------------------------------------------------------------------------
 
-def generate_recovery_codes(conn: sqlite3.Connection, user_id: int, count: int = 8) -> list[str]:
+
+def generate_recovery_codes(
+    conn: sqlite3.Connection, user_id: int, count: int = 8
+) -> list[str]:
     """Generate one-time recovery codes for account recovery."""
     # Invalidate existing codes
     conn.execute("DELETE FROM recovery_codes WHERE user_id = ?", (user_id,))
@@ -310,6 +334,7 @@ def verify_recovery_code(conn: sqlite3.Connection, user_id: int, code: str) -> b
 # Auth event logging
 # ---------------------------------------------------------------------------
 
+
 def log_auth_event(
     conn: sqlite3.Connection,
     user_id: int,
@@ -325,8 +350,15 @@ def log_auth_event(
         """INSERT INTO auth_events
            (user_id, credential_id, event_type, success, ip_address, user_agent, details)
            VALUES (?, ?, ?, ?, ?, ?, ?)""",
-        (user_id, credential_id, event_type, 1 if success else 0,
-         ip_address, user_agent, details),
+        (
+            user_id,
+            credential_id,
+            event_type,
+            1 if success else 0,
+            ip_address,
+            user_agent,
+            details,
+        ),
     )
     conn.commit()
 
@@ -334,6 +366,7 @@ def log_auth_event(
 # ---------------------------------------------------------------------------
 # Credential data helpers for python-fido2
 # ---------------------------------------------------------------------------
+
 
 def build_credential_descriptors(creds: list[dict]) -> list:
     """Build PublicKeyCredentialDescriptor list from stored credentials."""
@@ -355,6 +388,7 @@ def reconstruct_credential_data(creds: list[dict]):
     We rebuild them from our database records.
     """
     from fido2.webauthn import AttestedCredentialData
+
     result = []
     for c in creds:
         cred_data = AttestedCredentialData.create(
@@ -580,7 +614,8 @@ def create_app(
         exclude_list = build_credential_descriptors(existing_creds)
 
         resident_req = (
-            ResidentKeyRequirement.REQUIRED if resident_key
+            ResidentKeyRequirement.REQUIRED
+            if resident_key
             else ResidentKeyRequirement.DISCOURAGED
         )
 
@@ -590,7 +625,9 @@ def create_app(
                 name=user["username"],
                 display_name=user["display_name"],
             ),
-            credentials=reconstruct_credential_data(existing_creds) if existing_creds else [],
+            credentials=(
+                reconstruct_credential_data(existing_creds) if existing_creds else []
+            ),
             user_verification=uv_pref,
             authenticator_attachment=None,
             resident_key_requirement=resident_req,
@@ -620,7 +657,10 @@ def create_app(
         except Exception as exc:
             logger.warning("Registration verification failed: %s", exc)
             log_auth_event(
-                conn, user_id, "registration", False,
+                conn,
+                user_id,
+                "registration",
+                False,
                 ip_address=request.remote_addr,
                 user_agent=request.headers.get("User-Agent", ""),
                 details=str(exc),
@@ -637,12 +677,18 @@ def create_app(
             public_key=cred_data.public_key,
             sign_count=auth_data.sign_count if hasattr(auth_data, "sign_count") else 0,
             aaguid=aaguid_hex,
-            label=data.get("label", f"Key registered {datetime.now(timezone.utc).strftime('%Y-%m-%d')}"),
+            label=data.get(
+                "label",
+                f"Key registered {datetime.now(timezone.utc).strftime('%Y-%m-%d')}",
+            ),
             is_discoverable=is_resident,
         )
 
         log_auth_event(
-            conn, user_id, "registration", True,
+            conn,
+            user_id,
+            "registration",
+            True,
             credential_id=cred_data.credential_id,
             ip_address=request.remote_addr,
             user_agent=request.headers.get("User-Agent", ""),
@@ -654,7 +700,9 @@ def create_app(
         if len(user_creds) == 1:
             codes = generate_recovery_codes(conn, user_id)
             response_data["recovery_codes"] = codes
-            response_data["message"] = "Save these recovery codes securely. They will not be shown again."
+            response_data["message"] = (
+                "Save these recovery codes securely. They will not be shown again."
+            )
 
         return jsonify(response_data)
 
@@ -719,7 +767,10 @@ def create_app(
             logger.warning("Authentication verification failed: %s", exc)
             if expected_user_id:
                 log_auth_event(
-                    conn, expected_user_id, "authentication", False,
+                    conn,
+                    expected_user_id,
+                    "authentication",
+                    False,
                     ip_address=request.remote_addr,
                     user_agent=request.headers.get("User-Agent", ""),
                     details=str(exc),
@@ -738,7 +789,8 @@ def create_app(
                         "SECURITY: Sign count regression for credential %s "
                         "(stored: %d, received: %d) -- possible cloned key!",
                         urlsafe_b64encode(used_cred_id).decode(),
-                        c["sign_count"], new_sign_count,
+                        c["sign_count"],
+                        new_sign_count,
                     )
                 break
 
@@ -761,7 +813,10 @@ def create_app(
             ).fetchone()
             username = user[0] if user else "unknown"
             log_auth_event(
-                conn, user_id, "authentication", True,
+                conn,
+                user_id,
+                "authentication",
+                True,
                 credential_id=used_cred_id,
                 ip_address=request.remote_addr,
                 user_agent=request.headers.get("User-Agent", ""),
@@ -783,19 +838,21 @@ def create_app(
         if not user:
             abort(404, "User not found")
         creds = get_user_credentials(conn, user["id"])
-        return jsonify([
-            {
-                "id": c["db_id"],
-                "label": c["label"],
-                "aaguid": c["aaguid"],
-                "created_at": c["created_at"],
-                "last_used": c["last_used"],
-                "sign_count": c["sign_count"],
-                "is_discoverable": c["is_discoverable"],
-                "credential_id_b64": urlsafe_b64encode(c["credential_id"]).decode(),
-            }
-            for c in creds
-        ])
+        return jsonify(
+            [
+                {
+                    "id": c["db_id"],
+                    "label": c["label"],
+                    "aaguid": c["aaguid"],
+                    "created_at": c["created_at"],
+                    "last_used": c["last_used"],
+                    "sign_count": c["sign_count"],
+                    "is_discoverable": c["is_discoverable"],
+                    "credential_id_b64": urlsafe_b64encode(c["credential_id"]).decode(),
+                }
+                for c in creds
+            ]
+        )
 
     @app.route("/api/keys/<int:key_id>/revoke", methods=["POST"])
     def revoke_key(key_id):
@@ -813,7 +870,10 @@ def create_app(
 
         if revoke_credential(conn, key_id, user["id"]):
             log_auth_event(
-                conn, user["id"], "key_revocation", True,
+                conn,
+                user["id"],
+                "key_revocation",
+                True,
                 ip_address=request.remote_addr,
                 details=f"Revoked key ID {key_id}",
             )
@@ -855,16 +915,24 @@ def create_app(
             session["authenticated_user"] = username
             session["recovery_mode"] = True
             log_auth_event(
-                conn, user["id"], "recovery", True,
+                conn,
+                user["id"],
+                "recovery",
+                True,
                 ip_address=request.remote_addr,
                 details="Authenticated via recovery code",
             )
-            return jsonify({
-                "status": "OK",
-                "message": "Recovery successful. Please register a new security key immediately.",
-            })
+            return jsonify(
+                {
+                    "status": "OK",
+                    "message": "Recovery successful. Please register a new security key immediately.",
+                }
+            )
         log_auth_event(
-            conn, user["id"], "recovery", False,
+            conn,
+            user["id"],
+            "recovery",
+            False,
             ip_address=request.remote_addr,
             details="Invalid recovery code",
         )
@@ -883,40 +951,34 @@ def create_app(
                WHERE is_revoked = 0
                GROUP BY user_id HAVING COUNT(*) >= 2"""
         ).fetchall()
-        recent_auths = conn.execute(
-            """SELECT COUNT(*) FROM auth_events
+        recent_auths = conn.execute("""SELECT COUNT(*) FROM auth_events
                WHERE event_type = 'authentication' AND success = 1
-               AND created_at >= datetime('now', '-30 days')"""
-        ).fetchone()[0]
-        auth_failures = conn.execute(
-            """SELECT COUNT(*) FROM auth_events
+               AND created_at >= datetime('now', '-30 days')""").fetchone()[0]
+        auth_failures = conn.execute("""SELECT COUNT(*) FROM auth_events
                WHERE event_type = 'authentication' AND success = 0
-               AND created_at >= datetime('now', '-30 days')"""
-        ).fetchone()[0]
-        sign_count_warnings = conn.execute(
-            """SELECT COUNT(*) FROM auth_events
+               AND created_at >= datetime('now', '-30 days')""").fetchone()[0]
+        sign_count_warnings = conn.execute("""SELECT COUNT(*) FROM auth_events
                WHERE details LIKE '%sign count regression%'
-               AND created_at >= datetime('now', '-30 days')"""
-        ).fetchone()[0]
+               AND created_at >= datetime('now', '-30 days')""").fetchone()[0]
 
         # AAGUID distribution (authenticator model breakdown)
-        aaguid_dist = conn.execute(
-            """SELECT aaguid, COUNT(*) as cnt
+        aaguid_dist = conn.execute("""SELECT aaguid, COUNT(*) as cnt
                FROM credentials WHERE is_revoked = 0 AND aaguid IS NOT NULL
-               GROUP BY aaguid ORDER BY cnt DESC"""
-        ).fetchall()
+               GROUP BY aaguid ORDER BY cnt DESC""").fetchall()
 
-        return jsonify({
-            "total_users": total_users,
-            "total_active_credentials": total_creds,
-            "users_with_backup_key": len(users_with_backup),
-            "auth_last_30_days": recent_auths,
-            "auth_failures_last_30_days": auth_failures,
-            "sign_count_regressions_30d": sign_count_warnings,
-            "authenticator_models": [
-                {"aaguid": r[0], "count": r[1]} for r in aaguid_dist
-            ],
-        })
+        return jsonify(
+            {
+                "total_users": total_users,
+                "total_active_credentials": total_creds,
+                "users_with_backup_key": len(users_with_backup),
+                "auth_last_30_days": recent_auths,
+                "auth_failures_last_30_days": auth_failures,
+                "sign_count_regressions_30d": sign_count_warnings,
+                "authenticator_models": [
+                    {"aaguid": r[0], "count": r[1]} for r in aaguid_dist
+                ],
+            }
+        )
 
     @app.route("/api/admin/audit-log", methods=["GET"])
     def audit_log():
@@ -928,13 +990,19 @@ def create_app(
                ORDER BY ae.created_at DESC LIMIT ?""",
             (min(limit, 1000),),
         ).fetchall()
-        return jsonify([
-            {
-                "timestamp": r[0], "username": r[1], "event": r[2],
-                "success": bool(r[3]), "ip": r[4], "details": r[5],
-            }
-            for r in rows
-        ])
+        return jsonify(
+            [
+                {
+                    "timestamp": r[0],
+                    "username": r[1],
+                    "event": r[2],
+                    "success": bool(r[3]),
+                    "ip": r[4],
+                    "details": r[5],
+                }
+                for r in rows
+            ]
+        )
 
     return app
 
@@ -942,6 +1010,7 @@ def create_app(
 # ---------------------------------------------------------------------------
 # CLI entry point
 # ---------------------------------------------------------------------------
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -960,20 +1029,40 @@ Examples:
   python agent.py --rp-id example.com --rp-name "Example" --port 8443
         """,
     )
-    parser.add_argument("--rp-id", default="localhost", help="Relying Party ID (domain, default: localhost)")
-    parser.add_argument("--rp-name", default="FIDO2 Demo", help="Relying Party display name")
-    parser.add_argument("--host", default="localhost", help="Server bind address (default: localhost)")
-    parser.add_argument("--port", type=int, default=5000, help="Server port (default: 5000)")
-    parser.add_argument("--db", default="webauthn.db", help="SQLite database path (default: webauthn.db)")
     parser.add_argument(
-        "--attestation", choices=["none", "indirect", "direct", "enterprise"],
-        default="none", help="Attestation conveyance preference (default: none)",
+        "--rp-id",
+        default="localhost",
+        help="Relying Party ID (domain, default: localhost)",
     )
     parser.add_argument(
-        "--user-verification", choices=["required", "preferred", "discouraged"],
-        default="preferred", help="User verification requirement (default: preferred)",
+        "--rp-name", default="FIDO2 Demo", help="Relying Party display name"
     )
-    parser.add_argument("-v", "--verbose", action="store_true", help="Enable debug logging")
+    parser.add_argument(
+        "--host", default="localhost", help="Server bind address (default: localhost)"
+    )
+    parser.add_argument(
+        "--port", type=int, default=5000, help="Server port (default: 5000)"
+    )
+    parser.add_argument(
+        "--db",
+        default="webauthn.db",
+        help="SQLite database path (default: webauthn.db)",
+    )
+    parser.add_argument(
+        "--attestation",
+        choices=["none", "indirect", "direct", "enterprise"],
+        default="none",
+        help="Attestation conveyance preference (default: none)",
+    )
+    parser.add_argument(
+        "--user-verification",
+        choices=["required", "preferred", "discouraged"],
+        default="preferred",
+        help="User verification requirement (default: preferred)",
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Enable debug logging"
+    )
 
     args = parser.parse_args()
 

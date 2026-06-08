@@ -15,50 +15,136 @@ import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 
-
 # Zeek TSV log field definitions per log type
 CONN_FIELDS = [
-    "ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p",
-    "proto", "service", "duration", "orig_bytes", "resp_bytes",
-    "conn_state", "local_orig", "local_resp", "missed_bytes", "history",
-    "orig_pkts", "orig_ip_bytes", "resp_pkts", "resp_ip_bytes",
+    "ts",
+    "uid",
+    "id.orig_h",
+    "id.orig_p",
+    "id.resp_h",
+    "id.resp_p",
+    "proto",
+    "service",
+    "duration",
+    "orig_bytes",
+    "resp_bytes",
+    "conn_state",
+    "local_orig",
+    "local_resp",
+    "missed_bytes",
+    "history",
+    "orig_pkts",
+    "orig_ip_bytes",
+    "resp_pkts",
+    "resp_ip_bytes",
     "tunnel_parents",
 ]
 
 SMB_MAPPING_FIELDS = [
-    "ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p",
-    "path", "service", "native_file_system", "share_type",
+    "ts",
+    "uid",
+    "id.orig_h",
+    "id.orig_p",
+    "id.resp_h",
+    "id.resp_p",
+    "path",
+    "service",
+    "native_file_system",
+    "share_type",
 ]
 
 SMB_FILES_FIELDS = [
-    "ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p",
-    "fuid", "action", "path", "name", "size", "prev_name", "times.modified",
-    "times.accessed", "times.created", "times.changed",
+    "ts",
+    "uid",
+    "id.orig_h",
+    "id.orig_p",
+    "id.resp_h",
+    "id.resp_p",
+    "fuid",
+    "action",
+    "path",
+    "name",
+    "size",
+    "prev_name",
+    "times.modified",
+    "times.accessed",
+    "times.created",
+    "times.changed",
 ]
 
 DCE_RPC_FIELDS = [
-    "ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p",
-    "rtt", "named_pipe", "endpoint", "operation",
+    "ts",
+    "uid",
+    "id.orig_h",
+    "id.orig_p",
+    "id.resp_h",
+    "id.resp_p",
+    "rtt",
+    "named_pipe",
+    "endpoint",
+    "operation",
 ]
 
 NTLM_FIELDS = [
-    "ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p",
-    "username", "hostname", "domainname", "server_nb_computer_name",
-    "server_dns_computer_name", "server_tree_name", "success",
+    "ts",
+    "uid",
+    "id.orig_h",
+    "id.orig_p",
+    "id.resp_h",
+    "id.resp_p",
+    "username",
+    "hostname",
+    "domainname",
+    "server_nb_computer_name",
+    "server_dns_computer_name",
+    "server_tree_name",
+    "success",
 ]
 
 KERBEROS_FIELDS = [
-    "ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p",
-    "request_type", "client", "service", "success", "error_msg",
-    "from", "till", "cipher", "forwardable", "renewable", "client_cert_subject",
-    "client_cert_fuid", "server_cert_subject", "server_cert_fuid",
+    "ts",
+    "uid",
+    "id.orig_h",
+    "id.orig_p",
+    "id.resp_h",
+    "id.resp_p",
+    "request_type",
+    "client",
+    "service",
+    "success",
+    "error_msg",
+    "from",
+    "till",
+    "cipher",
+    "forwardable",
+    "renewable",
+    "client_cert_subject",
+    "client_cert_fuid",
+    "server_cert_subject",
+    "server_cert_fuid",
 ]
 
 # Internal RFC1918 ranges
-INTERNAL_PREFIXES = ("10.", "172.16.", "172.17.", "172.18.", "172.19.",
-                     "172.20.", "172.21.", "172.22.", "172.23.", "172.24.",
-                     "172.25.", "172.26.", "172.27.", "172.28.", "172.29.",
-                     "172.30.", "172.31.", "192.168.")
+INTERNAL_PREFIXES = (
+    "10.",
+    "172.16.",
+    "172.17.",
+    "172.18.",
+    "172.19.",
+    "172.20.",
+    "172.21.",
+    "172.22.",
+    "172.23.",
+    "172.24.",
+    "172.25.",
+    "172.26.",
+    "172.27.",
+    "172.28.",
+    "172.29.",
+    "172.30.",
+    "172.31.",
+    "192.168.",
+)
 
 # Lateral movement ports
 LATERAL_PORTS = {
@@ -185,16 +271,18 @@ def analyze_conn_log(log_dir):
         host_pair_bytes[pair_key] += total
 
         if resp_p in LATERAL_PORTS:
-            findings.append({
-                "type": "lateral_port_connection",
-                "timestamp": ts_to_iso(rec.get("ts", "")),
-                "src": orig,
-                "dst": resp,
-                "port": resp_p,
-                "service_label": LATERAL_PORTS[resp_p],
-                "zeek_service": service,
-                "uid": rec.get("uid", ""),
-            })
+            findings.append(
+                {
+                    "type": "lateral_port_connection",
+                    "timestamp": ts_to_iso(rec.get("ts", "")),
+                    "src": orig,
+                    "dst": resp,
+                    "port": resp_p,
+                    "service_label": LATERAL_PORTS[resp_p],
+                    "zeek_service": service,
+                    "uid": rec.get("uid", ""),
+                }
+            )
 
     return findings, host_pair_counts, host_pair_bytes
 
@@ -208,27 +296,37 @@ def analyze_smb_mapping(log_dir):
     for rec in records:
         path = rec.get("path", "")
         if ADMIN_SHARES.search(path):
-            findings.append({
-                "type": "admin_share_access",
-                "severity": "HIGH",
-                "timestamp": ts_to_iso(rec.get("ts", "")),
-                "src": rec.get("id.orig_h", ""),
-                "dst": rec.get("id.resp_h", ""),
-                "share_path": path,
-                "share_type": rec.get("share_type", ""),
-                "uid": rec.get("uid", ""),
-            })
+            findings.append(
+                {
+                    "type": "admin_share_access",
+                    "severity": "HIGH",
+                    "timestamp": ts_to_iso(rec.get("ts", "")),
+                    "src": rec.get("id.orig_h", ""),
+                    "dst": rec.get("id.resp_h", ""),
+                    "share_path": path,
+                    "share_type": rec.get("share_type", ""),
+                    "uid": rec.get("uid", ""),
+                }
+            )
     return findings
 
 
 def analyze_smb_files(log_dir):
     """Analyze smb_files.log for file writes to network shares."""
-    records = parse_zeek_log(
-        os.path.join(log_dir, "smb_files.log"), SMB_FILES_FIELDS
-    )
+    records = parse_zeek_log(os.path.join(log_dir, "smb_files.log"), SMB_FILES_FIELDS)
     findings = []
-    suspicious_extensions = (".exe", ".dll", ".bat", ".ps1", ".vbs", ".scr",
-                             ".cmd", ".msi", ".hta", ".sys")
+    suspicious_extensions = (
+        ".exe",
+        ".dll",
+        ".bat",
+        ".ps1",
+        ".vbs",
+        ".scr",
+        ".cmd",
+        ".msi",
+        ".hta",
+        ".sys",
+    )
     for rec in records:
         action = rec.get("action", "")
         name = rec.get("name", "")
@@ -236,54 +334,58 @@ def analyze_smb_files(log_dir):
             severity = "MEDIUM"
             if any(name.lower().endswith(ext) for ext in suspicious_extensions):
                 severity = "CRITICAL"
-            findings.append({
-                "type": "smb_file_write",
-                "severity": severity,
-                "timestamp": ts_to_iso(rec.get("ts", "")),
-                "src": rec.get("id.orig_h", ""),
-                "dst": rec.get("id.resp_h", ""),
-                "action": action,
-                "path": rec.get("path", ""),
-                "filename": name,
-                "size": rec.get("size", "-"),
-                "uid": rec.get("uid", ""),
-            })
+            findings.append(
+                {
+                    "type": "smb_file_write",
+                    "severity": severity,
+                    "timestamp": ts_to_iso(rec.get("ts", "")),
+                    "src": rec.get("id.orig_h", ""),
+                    "dst": rec.get("id.resp_h", ""),
+                    "action": action,
+                    "path": rec.get("path", ""),
+                    "filename": name,
+                    "size": rec.get("size", "-"),
+                    "uid": rec.get("uid", ""),
+                }
+            )
     return findings
 
 
 def analyze_dce_rpc(log_dir):
     """Analyze dce_rpc.log for remote execution operations."""
-    records = parse_zeek_log(
-        os.path.join(log_dir, "dce_rpc.log"), DCE_RPC_FIELDS
-    )
+    records = parse_zeek_log(os.path.join(log_dir, "dce_rpc.log"), DCE_RPC_FIELDS)
     findings = []
     for rec in records:
         endpoint = rec.get("endpoint", "").lower()
         operation = rec.get("operation", "")
         for sus_ep, description in SUSPICIOUS_ENDPOINTS.items():
             if sus_ep.lower() in endpoint:
-                severity = "CRITICAL" if sus_ep in ("svcctl", "atsvc", "ITaskSchedulerService") else "HIGH"
-                findings.append({
-                    "type": "suspicious_dce_rpc",
-                    "severity": severity,
-                    "timestamp": ts_to_iso(rec.get("ts", "")),
-                    "src": rec.get("id.orig_h", ""),
-                    "dst": rec.get("id.resp_h", ""),
-                    "endpoint": endpoint,
-                    "operation": operation,
-                    "description": description,
-                    "named_pipe": rec.get("named_pipe", ""),
-                    "uid": rec.get("uid", ""),
-                })
+                severity = (
+                    "CRITICAL"
+                    if sus_ep in ("svcctl", "atsvc", "ITaskSchedulerService")
+                    else "HIGH"
+                )
+                findings.append(
+                    {
+                        "type": "suspicious_dce_rpc",
+                        "severity": severity,
+                        "timestamp": ts_to_iso(rec.get("ts", "")),
+                        "src": rec.get("id.orig_h", ""),
+                        "dst": rec.get("id.resp_h", ""),
+                        "endpoint": endpoint,
+                        "operation": operation,
+                        "description": description,
+                        "named_pipe": rec.get("named_pipe", ""),
+                        "uid": rec.get("uid", ""),
+                    }
+                )
                 break
     return findings
 
 
 def analyze_ntlm(log_dir):
     """Analyze ntlm.log for Pass-the-Hash and authentication anomalies."""
-    records = parse_zeek_log(
-        os.path.join(log_dir, "ntlm.log"), NTLM_FIELDS
-    )
+    records = parse_zeek_log(os.path.join(log_dir, "ntlm.log"), NTLM_FIELDS)
     findings = []
     user_source_map = defaultdict(set)
     failed_auths = defaultdict(int)
@@ -303,35 +405,37 @@ def analyze_ntlm(log_dir):
     # Detect one user authenticating from multiple source IPs (Pass-the-Hash indicator)
     for username, sources in user_source_map.items():
         if len(sources) > 2:
-            findings.append({
-                "type": "multi_source_ntlm_auth",
-                "severity": "HIGH",
-                "description": "Single user authenticating from multiple source IPs (possible PtH)",
-                "username": username,
-                "source_ips": sorted(sources),
-                "source_count": len(sources),
-            })
+            findings.append(
+                {
+                    "type": "multi_source_ntlm_auth",
+                    "severity": "HIGH",
+                    "description": "Single user authenticating from multiple source IPs (possible PtH)",
+                    "username": username,
+                    "source_ips": sorted(sources),
+                    "source_count": len(sources),
+                }
+            )
 
     # Detect brute force / credential spray
     for (orig, resp, username), count in failed_auths.items():
         if count >= 5:
-            findings.append({
-                "type": "ntlm_brute_force",
-                "severity": "HIGH",
-                "src": orig,
-                "dst": resp,
-                "username": username,
-                "failed_attempts": count,
-            })
+            findings.append(
+                {
+                    "type": "ntlm_brute_force",
+                    "severity": "HIGH",
+                    "src": orig,
+                    "dst": resp,
+                    "username": username,
+                    "failed_attempts": count,
+                }
+            )
 
     return findings
 
 
 def analyze_kerberos(log_dir):
     """Analyze kerberos.log for ticket anomalies."""
-    records = parse_zeek_log(
-        os.path.join(log_dir, "kerberos.log"), KERBEROS_FIELDS
-    )
+    records = parse_zeek_log(os.path.join(log_dir, "kerberos.log"), KERBEROS_FIELDS)
     findings = []
     tgt_sources = defaultdict(set)
 
@@ -347,27 +451,31 @@ def analyze_kerberos(log_dir):
 
         # Kerberos pre-auth failures (credential testing)
         if error_msg and "PREAUTH_FAILED" in error_msg.upper():
-            findings.append({
-                "type": "kerberos_preauth_failure",
-                "severity": "MEDIUM",
-                "timestamp": ts_to_iso(rec.get("ts", "")),
-                "src": orig,
-                "dst": rec.get("id.resp_h", ""),
-                "client": client,
-                "error": error_msg,
-            })
+            findings.append(
+                {
+                    "type": "kerberos_preauth_failure",
+                    "severity": "MEDIUM",
+                    "timestamp": ts_to_iso(rec.get("ts", "")),
+                    "src": orig,
+                    "dst": rec.get("id.resp_h", ""),
+                    "client": client,
+                    "error": error_msg,
+                }
+            )
 
     # Detect TGT requested from multiple IPs (possible Pass-the-Ticket)
     for client, sources in tgt_sources.items():
         if len(sources) > 2:
-            findings.append({
-                "type": "multi_source_tgt_request",
-                "severity": "HIGH",
-                "description": "TGT requested from multiple source IPs (possible Pass-the-Ticket)",
-                "client": client,
-                "source_ips": sorted(sources),
-                "source_count": len(sources),
-            })
+            findings.append(
+                {
+                    "type": "multi_source_tgt_request",
+                    "severity": "HIGH",
+                    "description": "TGT requested from multiple source IPs (possible Pass-the-Ticket)",
+                    "client": client,
+                    "source_ips": sorted(sources),
+                    "source_count": len(sources),
+                }
+            )
 
     return findings
 
@@ -385,16 +493,18 @@ def detect_psexec_pattern(smb_findings, dce_findings):
         if "svcctl" in f.get("endpoint", ""):
             key = (f["src"], f["dst"])
             if key in smb_writes:
-                correlated.append({
-                    "type": "psexec_pattern",
-                    "severity": "CRITICAL",
-                    "description": "SMB executable write followed by svcctl service creation (PsExec-style)",
-                    "src": f["src"],
-                    "dst": f["dst"],
-                    "smb_writes": smb_writes[key],
-                    "dce_rpc_operation": f["operation"],
-                    "timestamp": f["timestamp"],
-                })
+                correlated.append(
+                    {
+                        "type": "psexec_pattern",
+                        "severity": "CRITICAL",
+                        "description": "SMB executable write followed by svcctl service creation (PsExec-style)",
+                        "src": f["src"],
+                        "dst": f["dst"],
+                        "smb_writes": smb_writes[key],
+                        "dce_rpc_operation": f["operation"],
+                        "timestamp": f["timestamp"],
+                    }
+                )
     return correlated
 
 
@@ -417,9 +527,7 @@ def generate_report(all_findings, host_pair_counts, host_pair_bytes):
             "by_severity": dict(severity_counts),
             "by_type": dict(type_counts),
         },
-        "top_connection_pairs": [
-            {"pair": k, "connections": v} for k, v in top_pairs
-        ],
+        "top_connection_pairs": [{"pair": k, "connections": v} for k, v in top_pairs],
         "top_data_transfer_pairs": [
             {"pair": k, "bytes": v, "megabytes": round(v / (1024 * 1024), 2)}
             for k, v in top_bytes
@@ -440,14 +548,22 @@ if __name__ == "__main__":
     if not os.path.isdir(log_dir):
         print(f"\n[ERROR] Log directory not found: {log_dir}")
         print("[DEMO] Usage: python agent.py <zeek_log_directory>")
-        print("[*] Provide a directory containing Zeek log files (conn.log, smb_mapping.log, etc.)")
+        print(
+            "[*] Provide a directory containing Zeek log files (conn.log, smb_mapping.log, etc.)"
+        )
         sys.exit(1)
 
     print(f"\n[*] Analyzing Zeek logs in: {log_dir}")
 
     # Check which log files are available
-    log_files = ["conn.log", "smb_mapping.log", "smb_files.log",
-                 "dce_rpc.log", "ntlm.log", "kerberos.log"]
+    log_files = [
+        "conn.log",
+        "smb_mapping.log",
+        "smb_files.log",
+        "dce_rpc.log",
+        "ntlm.log",
+        "kerberos.log",
+    ]
     for lf in log_files:
         path = os.path.join(log_dir, lf)
         status = "found" if os.path.exists(path) else "NOT FOUND"
@@ -475,35 +591,47 @@ if __name__ == "__main__":
     print("\n--- SMB File Writes (smb_files.log) ---")
     smb_file_findings = analyze_smb_files(log_dir)
     critical_writes = [f for f in smb_file_findings if f["severity"] == "CRITICAL"]
-    print(f"  Total file writes: {len(smb_file_findings)}, Critical (executables): {len(critical_writes)}")
+    print(
+        f"  Total file writes: {len(smb_file_findings)}, Critical (executables): {len(critical_writes)}"
+    )
     for f in critical_writes[:10]:
-        print(f"  [CRITICAL] {f['src']} -> {f['dst']} wrote {f['filename']} ({f['size']} bytes)")
+        print(
+            f"  [CRITICAL] {f['src']} -> {f['dst']} wrote {f['filename']} ({f['size']} bytes)"
+        )
     all_findings.extend(smb_file_findings)
 
     print("\n--- DCE/RPC Remote Execution (dce_rpc.log) ---")
     dce_findings = analyze_dce_rpc(log_dir)
     print(f"  Suspicious DCE/RPC operations: {len(dce_findings)}")
     for f in dce_findings[:10]:
-        print(f"  [{f['severity']}] {f['src']} -> {f['dst']} "
-              f"endpoint={f['endpoint']} op={f['operation']} ({f['description']})")
+        print(
+            f"  [{f['severity']}] {f['src']} -> {f['dst']} "
+            f"endpoint={f['endpoint']} op={f['operation']} ({f['description']})"
+        )
     all_findings.extend(dce_findings)
 
     print("\n--- NTLM Authentication Analysis (ntlm.log) ---")
     ntlm_findings = analyze_ntlm(log_dir)
     for f in ntlm_findings:
         if f["type"] == "multi_source_ntlm_auth":
-            print(f"  [HIGH] PtH indicator: user '{f['username']}' from {f['source_count']} IPs: "
-                  f"{', '.join(f['source_ips'][:5])}")
+            print(
+                f"  [HIGH] PtH indicator: user '{f['username']}' from {f['source_count']} IPs: "
+                f"{', '.join(f['source_ips'][:5])}"
+            )
         elif f["type"] == "ntlm_brute_force":
-            print(f"  [HIGH] Brute force: {f['src']} -> {f['dst']} "
-                  f"user='{f['username']}' failures={f['failed_attempts']}")
+            print(
+                f"  [HIGH] Brute force: {f['src']} -> {f['dst']} "
+                f"user='{f['username']}' failures={f['failed_attempts']}"
+            )
     all_findings.extend(ntlm_findings)
 
     print("\n--- Kerberos Analysis (kerberos.log) ---")
     krb_findings = analyze_kerberos(log_dir)
     for f in krb_findings:
         if f["type"] == "multi_source_tgt_request":
-            print(f"  [HIGH] PtT indicator: client '{f['client']}' TGT from {f['source_count']} IPs")
+            print(
+                f"  [HIGH] PtT indicator: client '{f['client']}' TGT from {f['source_count']} IPs"
+            )
         elif f["type"] == "kerberos_preauth_failure":
             print(f"  [MEDIUM] Pre-auth failure: {f['src']} client={f['client']}")
     all_findings.extend(krb_findings)
@@ -511,8 +639,10 @@ if __name__ == "__main__":
     print("\n--- PsExec Pattern Correlation ---")
     psexec = detect_psexec_pattern(smb_file_findings, dce_findings)
     for p in psexec:
-        print(f"  [CRITICAL] PsExec-style: {p['src']} -> {p['dst']} "
-              f"(exe write + svcctl {p['dce_rpc_operation']})")
+        print(
+            f"  [CRITICAL] PsExec-style: {p['src']} -> {p['dst']} "
+            f"(exe write + svcctl {p['dce_rpc_operation']})"
+        )
     all_findings.extend(psexec)
 
     report = generate_report(all_findings, pair_counts, pair_bytes)

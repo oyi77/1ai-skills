@@ -24,6 +24,7 @@ from datetime import datetime
 @dataclass
 class PolicyAudit:
     """TTP policy configuration audit result."""
+
     url_protect_enabled: bool = False
     url_rewriting: bool = False
     url_predelivery_hold: bool = False
@@ -40,6 +41,7 @@ class PolicyAudit:
 @dataclass
 class TTPMetrics:
     """TTP detection metrics from log analysis."""
+
     total_emails: int = 0
     url_threats_blocked: int = 0
     attachment_threats_blocked: int = 0
@@ -53,6 +55,7 @@ class TTPMetrics:
 @dataclass
 class ImpersonationCheck:
     """VIP impersonation check result."""
+
     from_display_name: str = ""
     from_email: str = ""
     matched_vip: str = ""
@@ -67,22 +70,11 @@ REQUIRED_POLICIES = {
         "enabled": True,
         "rewriting": True,
         "predelivery_hold": True,
-        "weight": 25
+        "weight": 25,
     },
-    "attachment_protect": {
-        "enabled": True,
-        "sandbox_mode": "dynamic",
-        "weight": 25
-    },
-    "impersonation_protect": {
-        "enabled": True,
-        "min_vips": 5,
-        "weight": 25
-    },
-    "internal_email_protect": {
-        "enabled": True,
-        "weight": 25
-    }
+    "attachment_protect": {"enabled": True, "sandbox_mode": "dynamic", "weight": 25},
+    "impersonation_protect": {"enabled": True, "min_vips": 5, "weight": 25},
+    "internal_email_protect": {"enabled": True, "weight": 25},
 }
 
 
@@ -101,7 +93,9 @@ def audit_config(config: dict) -> PolicyAudit:
         if audit.url_rewriting:
             audit.score += 8
         else:
-            audit.findings.append("URL rewriting not enabled - URLs not protected at click time")
+            audit.findings.append(
+                "URL rewriting not enabled - URLs not protected at click time"
+            )
         if audit.url_predelivery_hold:
             audit.score += 7
         else:
@@ -217,7 +211,7 @@ def check_impersonation(email_data: dict, vip_list: list) -> ImpersonationCheck:
     check.from_email = email_data.get("from", "")
 
     from_domain = ""
-    match = re.search(r'@([\w.-]+)', check.from_email)
+    match = re.search(r"@([\w.-]+)", check.from_email)
     if match:
         from_domain = match.group(1).lower()
 
@@ -242,7 +236,10 @@ def check_impersonation(email_data: dict, vip_list: list) -> ImpersonationCheck:
 
         # Check domain similarity (lookalike)
         if vip_domain and from_domain:
-            if _domain_similarity(from_domain, vip_domain) > 0.8 and from_domain != vip_domain:
+            if (
+                _domain_similarity(from_domain, vip_domain) > 0.8
+                and from_domain != vip_domain
+            ):
                 check.indicators.append(
                     f"Domain '{from_domain}' is visually similar to '{vip_domain}'"
                 )
@@ -303,10 +300,18 @@ def main():
             print(json.dumps(asdict(result), indent=2))
         else:
             print(f"TTP Configuration Score: {result.score}/{result.max_score}")
-            print(f"URL Protect: {'Enabled' if result.url_protect_enabled else 'DISABLED'}")
-            print(f"Attachment Protect: {'Enabled' if result.attachment_protect_enabled else 'DISABLED'}")
-            print(f"Impersonation Protect: {'Enabled' if result.impersonation_protect_enabled else 'DISABLED'}")
-            print(f"Internal Email Protect: {'Enabled' if result.internal_email_protect else 'DISABLED'}")
+            print(
+                f"URL Protect: {'Enabled' if result.url_protect_enabled else 'DISABLED'}"
+            )
+            print(
+                f"Attachment Protect: {'Enabled' if result.attachment_protect_enabled else 'DISABLED'}"
+            )
+            print(
+                f"Impersonation Protect: {'Enabled' if result.impersonation_protect_enabled else 'DISABLED'}"
+            )
+            print(
+                f"Internal Email Protect: {'Enabled' if result.internal_email_protect else 'DISABLED'}"
+            )
             if result.findings:
                 print(f"\nFindings ({len(result.findings)}):")
                 for i, f_item in enumerate(result.findings, 1):

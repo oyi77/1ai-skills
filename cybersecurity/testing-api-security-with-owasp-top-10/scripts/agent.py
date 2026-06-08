@@ -21,13 +21,25 @@ def test_bola(base_url, token, endpoints, id_range=(1, 20)):
         for obj_id in range(id_range[0], id_range[1]):
             url = urljoin(base_url, endpoint.replace("{id}", str(obj_id)))
             try:
-                resp = requests.get(url, headers=headers, timeout=10, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+                resp = requests.get(
+                    url,
+                    headers=headers,
+                    timeout=10,
+                    verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+                )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
                 if resp.status_code == 200 and len(resp.text) > 50:
-                    findings.append({
-                        "risk": "API1-BOLA", "url": url, "status": resp.status_code,
-                        "body_length": len(resp.text), "severity": "CRITICAL",
-                    })
-                    print(f"  [!] VULNERABLE: GET {url} -> {resp.status_code} ({len(resp.text)} bytes)")
+                    findings.append(
+                        {
+                            "risk": "API1-BOLA",
+                            "url": url,
+                            "status": resp.status_code,
+                            "body_length": len(resp.text),
+                            "severity": "CRITICAL",
+                        }
+                    )
+                    print(
+                        f"  [!] VULNERABLE: GET {url} -> {resp.status_code} ({len(resp.text)} bytes)"
+                    )
             except requests.RequestException:
                 continue
     return findings
@@ -41,8 +53,12 @@ def test_broken_auth(base_url, login_endpoint="/api/v1/auth/login", attempts=50)
     rate_limited = False
     for i in range(1, attempts + 1):
         try:
-            resp = requests.post(url, json={"email": "test@test.com", "password": f"wrong{i}"},
-                                 timeout=10, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            resp = requests.post(
+                url,
+                json={"email": "test@test.com", "password": f"wrong{i}"},
+                timeout=10,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             if resp.status_code == 429:
                 print(f"  [+] Rate limited at attempt {i}")
                 rate_limited = True
@@ -50,10 +66,14 @@ def test_broken_auth(base_url, login_endpoint="/api/v1/auth/login", attempts=50)
         except requests.RequestException:
             break
     if not rate_limited:
-        findings.append({
-            "risk": "API2-BROKEN_AUTH", "url": url, "severity": "HIGH",
-            "detail": f"No rate limiting after {attempts} failed login attempts",
-        })
+        findings.append(
+            {
+                "risk": "API2-BROKEN_AUTH",
+                "url": url,
+                "severity": "HIGH",
+                "detail": f"No rate limiting after {attempts} failed login attempts",
+            }
+        )
         print(f"  [!] No rate limiting after {attempts} attempts")
     return findings
 
@@ -62,23 +82,41 @@ def test_data_exposure(base_url, token, endpoints):
     """Test for Broken Object Property Level Authorization (API3)."""
     print("\n[*] Testing API3: Excessive Data Exposure...")
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
-    sensitive_fields = ["password", "password_hash", "ssn", "credit_card", "secret",
-                        "api_key", "token", "internal_id", "salt"]
+    sensitive_fields = [
+        "password",
+        "password_hash",
+        "ssn",
+        "credit_card",
+        "secret",
+        "api_key",
+        "token",
+        "internal_id",
+        "salt",
+    ]
     findings = []
     for endpoint in endpoints:
         url = urljoin(base_url, endpoint)
         try:
-            resp = requests.get(url, headers=headers, timeout=10, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            resp = requests.get(
+                url,
+                headers=headers,
+                timeout=10,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             if resp.status_code == 200:
                 try:
                     data = resp.json()
                     data_str = json.dumps(data).lower()
                     exposed = [f for f in sensitive_fields if f in data_str]
                     if exposed:
-                        findings.append({
-                            "risk": "API3-DATA_EXPOSURE", "url": url,
-                            "exposed_fields": exposed, "severity": "HIGH",
-                        })
+                        findings.append(
+                            {
+                                "risk": "API3-DATA_EXPOSURE",
+                                "url": url,
+                                "exposed_fields": exposed,
+                                "severity": "HIGH",
+                            }
+                        )
                         print(f"  [!] {url}: Exposes {exposed}")
                 except json.JSONDecodeError:
                     pass
@@ -95,16 +133,28 @@ def test_mass_assignment(base_url, token, endpoint, payload_extras):
     findings = []
     for field, value in payload_extras.items():
         try:
-            resp = requests.patch(url, headers=headers, json={field: value},
-                                  timeout=10, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            resp = requests.patch(
+                url,
+                headers=headers,
+                json={field: value},
+                timeout=10,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             if resp.status_code in (200, 201):
                 resp_data = resp.json() if resp.text else {}
                 if str(value) in json.dumps(resp_data):
-                    findings.append({
-                        "risk": "API3-MASS_ASSIGNMENT", "url": url,
-                        "field": field, "value": value, "severity": "CRITICAL",
-                    })
-                    print(f"  [!] VULNERABLE: Field '{field}' accepted with value '{value}'")
+                    findings.append(
+                        {
+                            "risk": "API3-MASS_ASSIGNMENT",
+                            "url": url,
+                            "field": field,
+                            "value": value,
+                            "severity": "CRITICAL",
+                        }
+                    )
+                    print(
+                        f"  [!] VULNERABLE: Field '{field}' accepted with value '{value}'"
+                    )
         except requests.RequestException:
             continue
     return findings
@@ -115,7 +165,11 @@ def test_security_headers(base_url):
     print("\n[*] Testing API8: Security Misconfiguration (headers)...")
     findings = []
     try:
-        resp = requests.get(base_url, timeout=10, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.get(
+            base_url,
+            timeout=10,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         required_headers = {
             "Strict-Transport-Security": "HSTS",
             "X-Content-Type-Options": "nosniff",
@@ -124,10 +178,14 @@ def test_security_headers(base_url):
         }
         for header, desc in required_headers.items():
             if header.lower() not in {k.lower(): v for k, v in resp.headers.items()}:
-                findings.append({
-                    "risk": "API8-MISCONFIGURATION", "header": header,
-                    "detail": f"Missing {desc}", "severity": "MEDIUM",
-                })
+                findings.append(
+                    {
+                        "risk": "API8-MISCONFIGURATION",
+                        "header": header,
+                        "detail": f"Missing {desc}",
+                        "severity": "MEDIUM",
+                    }
+                )
                 print(f"  [!] Missing: {header} ({desc})")
             else:
                 print(f"  [+] Present: {header}")
@@ -145,14 +203,23 @@ def test_cors(base_url, endpoints):
         url = urljoin(base_url, endpoint)
         for origin in evil_origins:
             try:
-                resp = requests.get(url, headers={"Origin": origin}, timeout=10, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+                resp = requests.get(
+                    url,
+                    headers={"Origin": origin},
+                    timeout=10,
+                    verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+                )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
                 acao = resp.headers.get("Access-Control-Allow-Origin", "")
                 acac = resp.headers.get("Access-Control-Allow-Credentials", "")
                 if acao == origin and acac.lower() == "true":
-                    findings.append({
-                        "risk": "CORS_MISCONFIGURATION", "url": url,
-                        "origin": origin, "severity": "HIGH",
-                    })
+                    findings.append(
+                        {
+                            "risk": "CORS_MISCONFIGURATION",
+                            "url": url,
+                            "origin": origin,
+                            "severity": "HIGH",
+                        }
+                    )
                     print(f"  [!] {url}: Reflects origin '{origin}' with credentials")
             except requests.RequestException:
                 continue
@@ -167,9 +234,15 @@ def test_api_versions(base_url, path_prefix="/api"):
     for v in versions:
         url = urljoin(base_url, f"{path_prefix}/{v}/users")
         try:
-            resp = requests.get(url, timeout=5, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true")  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            resp = requests.get(
+                url,
+                timeout=5,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             if resp.status_code not in (404, 000):
-                findings.append({"risk": "API9-INVENTORY", "url": url, "status": resp.status_code})
+                findings.append(
+                    {"risk": "API9-INVENTORY", "url": url, "status": resp.status_code}
+                )
                 print(f"  [+] {v}: {resp.status_code}")
         except requests.RequestException:
             continue
@@ -196,10 +269,16 @@ def generate_report(all_findings, output_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="OWASP API Security Top 10 Testing Agent")
-    parser.add_argument("base_url", help="Base URL of the API (e.g., https://api.target.com)")
+    parser = argparse.ArgumentParser(
+        description="OWASP API Security Top 10 Testing Agent"
+    )
+    parser.add_argument(
+        "base_url", help="Base URL of the API (e.g., https://api.target.com)"
+    )
     parser.add_argument("--token", help="Bearer token for authentication")
-    parser.add_argument("--endpoints", nargs="+", default=["/api/v1/users/{id}", "/api/v1/orders/{id}"])
+    parser.add_argument(
+        "--endpoints", nargs="+", default=["/api/v1/users/{id}", "/api/v1/orders/{id}"]
+    )
     parser.add_argument("--login-endpoint", default="/api/v1/auth/login")
     parser.add_argument("-o", "--output", default="api_security_report.json")
     args = parser.parse_args()
@@ -213,9 +292,17 @@ def main():
     all_findings.extend(test_broken_auth(args.base_url, args.login_endpoint))
     if args.token:
         all_findings.extend(test_bola(args.base_url, args.token, args.endpoints))
-        all_findings.extend(test_data_exposure(args.base_url, args.token, args.endpoints))
-        all_findings.extend(test_mass_assignment(args.base_url, args.token, args.endpoints[0],
-                                                  {"role": "admin", "is_admin": True}))
+        all_findings.extend(
+            test_data_exposure(args.base_url, args.token, args.endpoints)
+        )
+        all_findings.extend(
+            test_mass_assignment(
+                args.base_url,
+                args.token,
+                args.endpoints[0],
+                {"role": "admin", "is_admin": True},
+            )
+        )
     generate_report(all_findings, args.output)
 
 

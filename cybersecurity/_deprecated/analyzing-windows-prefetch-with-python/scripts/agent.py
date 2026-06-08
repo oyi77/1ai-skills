@@ -19,20 +19,57 @@ except ImportError:
     windowsprefetch = None
 
 SUSPICIOUS_EXECUTABLES = {
-    "mimikatz", "psexec", "psexesvc", "procdump", "lazagne",
-    "rubeus", "sharphound", "bloodhound", "cobalt", "beacon",
-    "meterpreter", "powersploit", "empire", "covenant",
-    "secretsdump", "wce", "fgdump", "pwdump", "gsecdump",
-    "certutil", "bitsadmin", "mshta", "regsvr32", "rundll32",
-    "wscript", "cscript", "msiexec", "installutil",
+    "mimikatz",
+    "psexec",
+    "psexesvc",
+    "procdump",
+    "lazagne",
+    "rubeus",
+    "sharphound",
+    "bloodhound",
+    "cobalt",
+    "beacon",
+    "meterpreter",
+    "powersploit",
+    "empire",
+    "covenant",
+    "secretsdump",
+    "wce",
+    "fgdump",
+    "pwdump",
+    "gsecdump",
+    "certutil",
+    "bitsadmin",
+    "mshta",
+    "regsvr32",
+    "rundll32",
+    "wscript",
+    "cscript",
+    "msiexec",
+    "installutil",
 }
 
 LOLBINS = {
-    "certutil.exe", "bitsadmin.exe", "mshta.exe", "regsvr32.exe",
-    "rundll32.exe", "wscript.exe", "cscript.exe", "msiexec.exe",
-    "installutil.exe", "regasm.exe", "regsvcs.exe", "msconfig.exe",
-    "esentutl.exe", "expand.exe", "extrac32.exe", "findstr.exe",
-    "hh.exe", "ie4uinit.exe", "makecab.exe", "replace.exe",
+    "certutil.exe",
+    "bitsadmin.exe",
+    "mshta.exe",
+    "regsvr32.exe",
+    "rundll32.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "msiexec.exe",
+    "installutil.exe",
+    "regasm.exe",
+    "regsvcs.exe",
+    "msconfig.exe",
+    "esentutl.exe",
+    "expand.exe",
+    "extrac32.exe",
+    "findstr.exe",
+    "hh.exe",
+    "ie4uinit.exe",
+    "makecab.exe",
+    "replace.exe",
 }
 
 
@@ -48,7 +85,9 @@ class PrefetchAnalyzer:
     def parse_prefetch_file(self, pf_path):
         """Parse a single Prefetch file and extract execution data."""
         if windowsprefetch is None:
-            raise RuntimeError("windowsprefetch not installed: pip install windowsprefetch")
+            raise RuntimeError(
+                "windowsprefetch not installed: pip install windowsprefetch"
+            )
         try:
             pf = windowsprefetch.Prefetch(pf_path)
         except Exception:
@@ -69,18 +108,26 @@ class PrefetchAnalyzer:
         volumes = []
         if hasattr(pf, "volumes"):
             for v in pf.volumes:
-                volumes.append({
-                    "name": getattr(v, "name", str(v)),
-                    "serial": getattr(v, "serialNumber", ""),
-                })
+                volumes.append(
+                    {
+                        "name": getattr(v, "name", str(v)),
+                        "serial": getattr(v, "serialNumber", ""),
+                    }
+                )
 
         entry = {
             "file": str(pf_path),
-            "executable": pf.executableName if hasattr(pf, "executableName") else Path(pf_path).stem,
+            "executable": (
+                pf.executableName
+                if hasattr(pf, "executableName")
+                else Path(pf_path).stem
+            ),
             "run_count": pf.runCount if hasattr(pf, "runCount") else 0,
             "last_run_time": timestamps[0] if timestamps else "",
             "all_timestamps": timestamps,
-            "pf_hash": Path(pf_path).stem.split("-")[-1] if "-" in Path(pf_path).stem else "",
+            "pf_hash": (
+                Path(pf_path).stem.split("-")[-1] if "-" in Path(pf_path).stem else ""
+            ),
             "resources_count": len(resources),
             "volumes": volumes,
             "file_size": os.path.getsize(pf_path),
@@ -99,7 +146,9 @@ class PrefetchAnalyzer:
     def parse_directory(self, prefetch_dir):
         """Parse all .pf files in a directory."""
         pf_dir = Path(prefetch_dir)
-        pf_files = sorted(pf_dir.glob("*.pf"), key=lambda p: p.stat().st_mtime, reverse=True)
+        pf_files = sorted(
+            pf_dir.glob("*.pf"), key=lambda p: p.stat().st_mtime, reverse=True
+        )
         for pf_file in pf_files:
             self.parse_prefetch_file(str(pf_file))
         return len(pf_files)
@@ -110,17 +159,23 @@ class PrefetchAnalyzer:
             exe = entry["executable"].lower()
             exe_base = exe.replace(".exe", "")
             if exe_base in SUSPICIOUS_EXECUTABLES:
-                self.findings.append({
-                    "severity": "critical", "type": "Attack Tool Executed",
-                    "detail": f"{entry['executable']} run {entry['run_count']} times, "
-                              f"last: {entry['last_run_time']}",
-                })
+                self.findings.append(
+                    {
+                        "severity": "critical",
+                        "type": "Attack Tool Executed",
+                        "detail": f"{entry['executable']} run {entry['run_count']} times, "
+                        f"last: {entry['last_run_time']}",
+                    }
+                )
             elif exe in LOLBINS:
                 if entry["run_count"] > 10:
-                    self.findings.append({
-                        "severity": "medium", "type": "LOLBin High Usage",
-                        "detail": f"{entry['executable']} run {entry['run_count']} times",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "medium",
+                            "type": "LOLBin High Usage",
+                            "detail": f"{entry['executable']} run {entry['run_count']} times",
+                        }
+                    )
 
     def detect_renamed_binaries(self):
         """Detect potential binary renaming/masquerading."""
@@ -129,10 +184,13 @@ class PrefetchAnalyzer:
             pf_name = Path(entry["file"]).stem.upper()
             expected_prefix = exe.replace(".EXE", "")
             if not pf_name.startswith(expected_prefix):
-                self.findings.append({
-                    "severity": "high", "type": "Possible Renamed Binary",
-                    "detail": f"PF name '{pf_name}' does not match executable '{exe}'",
-                })
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Possible Renamed Binary",
+                        "detail": f"PF name '{pf_name}' does not match executable '{exe}'",
+                    }
+                )
 
     def build_timeline(self):
         """Build chronological execution timeline."""
@@ -140,11 +198,13 @@ class PrefetchAnalyzer:
         for entry in self.executions:
             for ts in entry["all_timestamps"]:
                 if ts:
-                    timeline.append({
-                        "timestamp": ts,
-                        "executable": entry["executable"],
-                        "run_count": entry["run_count"],
-                    })
+                    timeline.append(
+                        {
+                            "timestamp": ts,
+                            "executable": entry["executable"],
+                            "run_count": entry["run_count"],
+                        }
+                    )
         timeline.sort(key=lambda x: x["timestamp"], reverse=True)
         return timeline[:100]
 

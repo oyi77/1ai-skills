@@ -132,7 +132,9 @@ def generate_org_report(org: str, token: str) -> dict:
         )
 
     report["severity_summary"] = dict(report["severity_summary"])
-    top_cwes_sorted = sorted(report["top_cwes"].items(), key=lambda x: x[1], reverse=True)[:10]
+    top_cwes_sorted = sorted(
+        report["top_cwes"].items(), key=lambda x: x[1], reverse=True
+    )[:10]
     report["top_cwes"] = dict(top_cwes_sorted)
     return report
 
@@ -160,11 +162,17 @@ def print_report(report: dict) -> None:
     for cwe, count in report.get("top_cwes", {}).items():
         print(f"  {cwe:15s}: {count}")
     print(f"\nRepository Details:")
-    for repo in sorted(report["repo_details"], key=lambda r: r["open_alerts"], reverse=True):
+    for repo in sorted(
+        report["repo_details"], key=lambda r: r["open_alerts"], reverse=True
+    ):
         mttr_str = (
-            f"{repo['mttr']['avg_mttr_hours']}h" if repo["mttr"]["avg_mttr_hours"] else "N/A"
+            f"{repo['mttr']['avg_mttr_hours']}h"
+            if repo["mttr"]["avg_mttr_hours"]
+            else "N/A"
         )
-        print(f"  {repo['repository']:40s} | Open: {repo['open_alerts']:4d} | Avg MTTR: {mttr_str}")
+        print(
+            f"  {repo['repository']:40s} | Open: {repo['open_alerts']:4d} | Avg MTTR: {mttr_str}"
+        )
 
 
 def main():

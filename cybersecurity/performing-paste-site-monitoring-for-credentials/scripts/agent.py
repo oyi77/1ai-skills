@@ -19,15 +19,25 @@ def check_haveibeenpwned(email, api_key=None):
     if api_key:
         headers["hibp-api-key"] = api_key
     try:
-        resp = requests.get(f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}",
-                            headers=headers, timeout=15)
+        resp = requests.get(
+            f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}",
+            headers=headers,
+            timeout=15,
+        )
         if resp.status_code == 200:
             breaches = resp.json()
             return {
-                "email": email, "breached": True,
+                "email": email,
+                "breached": True,
                 "breach_count": len(breaches),
-                "breaches": [{"name": b["Name"], "date": b["BreachDate"],
-                              "data_classes": b["DataClasses"]} for b in breaches[:10]],
+                "breaches": [
+                    {
+                        "name": b["Name"],
+                        "date": b["BreachDate"],
+                        "data_classes": b["DataClasses"],
+                    }
+                    for b in breaches[:10]
+                ],
             }
         elif resp.status_code == 404:
             return {"email": email, "breached": False}
@@ -43,16 +53,26 @@ def check_paste_dumps(email, api_key=None):
     if api_key:
         headers["hibp-api-key"] = api_key
     try:
-        resp = requests.get(f"https://haveibeenpwned.com/api/v3/pasteaccount/{email}",
-                            headers=headers, timeout=15)
+        resp = requests.get(
+            f"https://haveibeenpwned.com/api/v3/pasteaccount/{email}",
+            headers=headers,
+            timeout=15,
+        )
         if resp.status_code == 200:
             pastes = resp.json()
             return {
-                "email": email, "found_in_pastes": True,
+                "email": email,
+                "found_in_pastes": True,
                 "paste_count": len(pastes),
-                "pastes": [{"source": p.get("Source"), "title": p.get("Title", "")[:100],
-                            "date": p.get("Date"), "email_count": p.get("EmailCount")}
-                           for p in pastes[:15]],
+                "pastes": [
+                    {
+                        "source": p.get("Source"),
+                        "title": p.get("Title", "")[:100],
+                        "date": p.get("Date"),
+                        "email_count": p.get("EmailCount"),
+                    }
+                    for p in pastes[:15]
+                ],
             }
         elif resp.status_code == 404:
             return {"email": email, "found_in_pastes": False}
@@ -65,7 +85,12 @@ def check_paste_dumps(email, api_key=None):
 def bulk_check_domain(domain, email_list_file, api_key=None):
     """Check all emails from a domain for breach exposure."""
     from pathlib import Path
-    emails = [e.strip() for e in Path(email_list_file).read_text().splitlines() if e.strip() and domain in e]
+
+    emails = [
+        e.strip()
+        for e in Path(email_list_file).read_text().splitlines()
+        if e.strip() and domain in e
+    ]
     results = []
     for email in emails[:50]:
         result = check_haveibeenpwned(email, api_key)
@@ -84,14 +109,25 @@ def bulk_check_domain(domain, email_list_file, api_key=None):
 def scan_text_for_credentials(text_file):
     """Scan a text file (paste dump) for credential patterns."""
     from pathlib import Path
+
     content = Path(text_file).read_text(encoding="utf-8", errors="replace")
     patterns = {
-        "email_password": re.compile(r"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[:|;]\s*(\S+)"),
-        "username_password": re.compile(r"(?:user(?:name)?|login)\s*[:|=]\s*(\S+)\s+(?:pass(?:word)?)\s*[:|=]\s*(\S+)", re.I),
-        "api_key": re.compile(r"(?:api[_-]?key|apikey|access[_-]?token)\s*[:|=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?", re.I),
+        "email_password": re.compile(
+            r"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[:|;]\s*(\S+)"
+        ),
+        "username_password": re.compile(
+            r"(?:user(?:name)?|login)\s*[:|=]\s*(\S+)\s+(?:pass(?:word)?)\s*[:|=]\s*(\S+)",
+            re.I,
+        ),
+        "api_key": re.compile(
+            r"(?:api[_-]?key|apikey|access[_-]?token)\s*[:|=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?",
+            re.I,
+        ),
         "aws_key": re.compile(r"AKIA[0-9A-Z]{16}"),
         "private_key": re.compile(r"-----BEGIN (?:RSA |EC )?PRIVATE KEY-----"),
-        "jwt_token": re.compile(r"eyJ[a-zA-Z0-9_-]+\.eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+"),
+        "jwt_token": re.compile(
+            r"eyJ[a-zA-Z0-9_-]+\.eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+"
+        ),
     }
     findings = {}
     for name, pattern in patterns.items():
@@ -110,7 +146,9 @@ def scan_text_for_credentials(text_file):
         "credential_types_found": list(findings.keys()),
         "total_matches": sum(len(v) for v in findings.values()),
         "findings": findings,
-        "affected_domains": dict(sorted(domain_counts.items(), key=lambda x: -x[1])[:15]),
+        "affected_domains": dict(
+            sorted(domain_counts.items(), key=lambda x: -x[1])[:15]
+        ),
     }
 
 
@@ -139,7 +177,9 @@ def main():
     if not requests:
         print(json.dumps({"error": "requests not installed"}))
         return
-    parser = argparse.ArgumentParser(description="Paste Site Credential Monitoring Agent")
+    parser = argparse.ArgumentParser(
+        description="Paste Site Credential Monitoring Agent"
+    )
     parser.add_argument("--api-key", help="HIBP API key")
     sub = parser.add_subparsers(dest="command")
     c = sub.add_parser("check", help="Check single email")

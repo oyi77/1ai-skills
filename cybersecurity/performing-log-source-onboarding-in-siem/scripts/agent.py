@@ -8,11 +8,26 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-
-SYSLOG_FACILITIES = {0: "kern", 1: "user", 2: "mail", 3: "daemon", 4: "auth", 5: "syslog",
-                     6: "lpr", 7: "news", 10: "authpriv", 13: "audit", 16: "local0",
-                     17: "local1", 18: "local2", 19: "local3", 20: "local4",
-                     21: "local5", 22: "local6", 23: "local7"}
+SYSLOG_FACILITIES = {
+    0: "kern",
+    1: "user",
+    2: "mail",
+    3: "daemon",
+    4: "auth",
+    5: "syslog",
+    6: "lpr",
+    7: "news",
+    10: "authpriv",
+    13: "audit",
+    16: "local0",
+    17: "local1",
+    18: "local2",
+    19: "local3",
+    20: "local4",
+    21: "local5",
+    22: "local6",
+    23: "local7",
+}
 
 LOG_FORMAT_PATTERNS = {
     "syslog_rfc3164": re.compile(r"^<\d+>\w{3}\s+\d+\s+\d+:\d+:\d+"),
@@ -83,7 +98,10 @@ def generate_parsing_config(log_format, source_type, fields=None):
                 "transforms_conf": f"[{source_type}_extract]\nREGEX = ^<(\\d+)>(\\w{{3}}\\s+\\d+\\s+\\d+:\\d+:\\d+)\\s+(\\S+)\\s+(\\S+?)(?:\\[(\\d+)\\])?:\\s+(.*)\nFORMAT = priority::$1 timestamp::$2 host::$3 program::$4 pid::$5 message::$6",
             },
             "elastic": {
-                "filebeat_module": {"module": "system", "syslog": {"enabled": True, "var.paths": ["/var/log/syslog"]}},
+                "filebeat_module": {
+                    "module": "system",
+                    "syslog": {"enabled": True, "var.paths": ["/var/log/syslog"]},
+                },
             },
         },
         "json": {
@@ -91,7 +109,12 @@ def generate_parsing_config(log_format, source_type, fields=None):
                 "props_conf": f"[{source_type}]\nKV_MODE = json\nSHOULD_LINEMERGE = false\nTIME_FORMAT = %Y-%m-%dT%H:%M:%S",
             },
             "elastic": {
-                "filebeat_input": {"type": "filestream", "parsers": [{"ndjson": {"keys_under_root": True, "add_error_key": True}}]},
+                "filebeat_input": {
+                    "type": "filestream",
+                    "parsers": [
+                        {"ndjson": {"keys_under_root": True, "add_error_key": True}}
+                    ],
+                },
             },
         },
         "cef": {
@@ -107,7 +130,9 @@ def generate_parsing_config(log_format, source_type, fields=None):
     return {
         "log_format": log_format,
         "source_type": source_type,
-        "configurations": config if config else {"note": f"No template for format: {log_format}"},
+        "configurations": (
+            config if config else {"note": f"No template for format: {log_format}"}
+        ),
     }
 
 
@@ -118,16 +143,48 @@ def create_onboarding_checklist(source_name, log_format, siem_host, siem_port=51
         "log_format": log_format,
         "timestamp": datetime.utcnow().isoformat(),
         "checklist": [
-            {"step": 1, "task": "Collect log samples (minimum 100 lines)", "status": "pending"},
+            {
+                "step": 1,
+                "task": "Collect log samples (minimum 100 lines)",
+                "status": "pending",
+            },
             {"step": 2, "task": f"Validate format: {log_format}", "status": "pending"},
-            {"step": 3, "task": f"Test connectivity to {siem_host}:{siem_port}", "status": "pending"},
-            {"step": 4, "task": "Create source type / index configuration", "status": "pending"},
-            {"step": 5, "task": "Configure field extraction / parsing rules", "status": "pending"},
-            {"step": 6, "task": "Verify timestamp parsing and timezone", "status": "pending"},
-            {"step": 7, "task": "Validate event flow (check event count)", "status": "pending"},
-            {"step": 8, "task": "Create correlation rules / alerts", "status": "pending"},
+            {
+                "step": 3,
+                "task": f"Test connectivity to {siem_host}:{siem_port}",
+                "status": "pending",
+            },
+            {
+                "step": 4,
+                "task": "Create source type / index configuration",
+                "status": "pending",
+            },
+            {
+                "step": 5,
+                "task": "Configure field extraction / parsing rules",
+                "status": "pending",
+            },
+            {
+                "step": 6,
+                "task": "Verify timestamp parsing and timezone",
+                "status": "pending",
+            },
+            {
+                "step": 7,
+                "task": "Validate event flow (check event count)",
+                "status": "pending",
+            },
+            {
+                "step": 8,
+                "task": "Create correlation rules / alerts",
+                "status": "pending",
+            },
             {"step": 9, "task": "Document source in CMDB", "status": "pending"},
-            {"step": 10, "task": "Monitor for 48h and verify parsing accuracy", "status": "pending"},
+            {
+                "step": 10,
+                "task": "Monitor for 48h and verify parsing accuracy",
+                "status": "pending",
+            },
         ],
     }
 
@@ -157,7 +214,9 @@ def main():
     elif args.command == "parse-config":
         result = generate_parsing_config(args.format, args.source_type)
     elif args.command == "checklist":
-        result = create_onboarding_checklist(args.source, args.format, args.siem_host, args.siem_port)
+        result = create_onboarding_checklist(
+            args.source, args.format, args.siem_host, args.siem_port
+        )
     else:
         parser.print_help()
         return

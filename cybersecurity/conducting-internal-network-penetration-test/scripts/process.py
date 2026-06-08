@@ -63,25 +63,46 @@ def port_scan(hosts_file: str, output_dir: Path) -> dict:
     output_prefix = str(output_dir / "port_scan")
 
     stdout, stderr, rc = run_command(
-        ["nmap", "-sS", "-sV", "-T4", "--top-ports", "1000",
-         "-iL", hosts_file, "-oA", output_prefix],
-        timeout=3600
+        [
+            "nmap",
+            "-sS",
+            "-sV",
+            "-T4",
+            "--top-ports",
+            "1000",
+            "-iL",
+            hosts_file,
+            "-oA",
+            output_prefix,
+        ],
+        timeout=3600,
     )
 
     return {"output_prefix": output_prefix, "return_code": rc}
 
 
-def enumerate_smb_shares(hosts: list[str], username: str, password: str,
-                          domain: str, output_dir: Path) -> list[dict]:
+def enumerate_smb_shares(
+    hosts: list[str], username: str, password: str, domain: str, output_dir: Path
+) -> list[dict]:
     """Enumerate SMB shares across internal hosts."""
     print("[*] Enumerating SMB shares...")
     results = []
 
     for host in hosts:
         stdout, stderr, rc = run_command(
-            ["netexec", "smb", host, "-u", username, "-p", password,
-             "-d", domain, "--shares"],
-            timeout=30
+            [
+                "netexec",
+                "smb",
+                host,
+                "-u",
+                username,
+                "-p",
+                password,
+                "-d",
+                domain,
+                "--shares",
+            ],
+            timeout=30,
         )
         if rc == 0 and stdout:
             results.append({"host": host, "output": stdout})
@@ -101,9 +122,14 @@ def check_smb_signing(hosts: list[str], output_dir: Path) -> list[dict]:
 
     for host in hosts:
         stdout, stderr, rc = run_command(
-            ["netexec", "smb", host, "--gen-relay-list",
-             str(output_dir / "relay_targets.txt")],
-            timeout=30
+            [
+                "netexec",
+                "smb",
+                host,
+                "--gen-relay-list",
+                str(output_dir / "relay_targets.txt"),
+            ],
+            timeout=30,
         )
         if "signing:False" in stdout:
             results.append({"host": host, "smb_signing": False})
@@ -119,16 +145,28 @@ def check_smb_signing(hosts: list[str], output_dir: Path) -> list[dict]:
     return results
 
 
-def run_bloodhound_collection(username: str, password: str,
-                                domain: str, dc_ip: str,
-                                output_dir: Path) -> str:
+def run_bloodhound_collection(
+    username: str, password: str, domain: str, dc_ip: str, output_dir: Path
+) -> str:
     """Run BloodHound data collection."""
     print("[*] Running BloodHound collection...")
     stdout, stderr, rc = run_command(
-        ["bloodhound-python", "-u", username, "-p", password,
-         "-d", domain, "-ns", dc_ip, "-c", "all",
-         "--output-prefix", str(output_dir / "bloodhound")],
-        timeout=600
+        [
+            "bloodhound-python",
+            "-u",
+            username,
+            "-p",
+            password,
+            "-d",
+            domain,
+            "-ns",
+            dc_ip,
+            "-c",
+            "all",
+            "--output-prefix",
+            str(output_dir / "bloodhound"),
+        ],
+        timeout=600,
     )
 
     if rc == 0:
@@ -139,25 +177,42 @@ def run_bloodhound_collection(username: str, password: str,
     return str(output_dir)
 
 
-def check_password_policy(domain: str, dc_ip: str, username: str,
-                           password: str) -> dict:
+def check_password_policy(
+    domain: str, dc_ip: str, username: str, password: str
+) -> dict:
     """Retrieve domain password policy."""
     print("[*] Retrieving domain password policy...")
     stdout, stderr, rc = run_command(
-        ["netexec", "smb", dc_ip, "-u", username, "-p", password,
-         "-d", domain, "--pass-pol"],
-        timeout=30
+        [
+            "netexec",
+            "smb",
+            dc_ip,
+            "-u",
+            username,
+            "-p",
+            password,
+            "-d",
+            domain,
+            "--pass-pol",
+        ],
+        timeout=30,
     )
 
     return {"output": stdout, "return_code": rc}
 
 
-def generate_report(live_hosts: list[str], smb_results: list[dict],
-                     signing_results: list[dict], output_dir: Path) -> str:
+def generate_report(
+    live_hosts: list[str],
+    smb_results: list[dict],
+    signing_results: list[dict],
+    output_dir: Path,
+) -> str:
     """Generate internal pentest summary report."""
     print("[*] Generating report...")
     report_file = output_dir / "internal_pentest_report.md"
-    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime(
+        "%Y-%m-%d %H:%M UTC"
+    )
 
     with open(report_file, "w") as f:
         f.write("# Internal Network Penetration Test Report\n\n")
@@ -171,7 +226,9 @@ def generate_report(live_hosts: list[str], smb_results: list[dict],
 
         f.write("## SMB Signing Status\n\n")
         unsigned = [r for r in signing_results if not r.get("smb_signing")]
-        f.write(f"Hosts without SMB signing: **{len(unsigned)}** (vulnerable to relay)\n\n")
+        f.write(
+            f"Hosts without SMB signing: **{len(unsigned)}** (vulnerable to relay)\n\n"
+        )
         if unsigned:
             f.write("| Host | SMB Signing |\n|------|------------|\n")
             for r in unsigned:

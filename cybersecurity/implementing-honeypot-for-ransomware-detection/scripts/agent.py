@@ -10,13 +10,27 @@ from datetime import datetime
 from pathlib import Path
 from collections import Counter
 
-
-CANARY_EXTENSIONS = [".docx", ".xlsx", ".pdf", ".pptx", ".csv", ".txt",
-                     ".jpg", ".png", ".sql", ".bak"]
+CANARY_EXTENSIONS = [
+    ".docx",
+    ".xlsx",
+    ".pdf",
+    ".pptx",
+    ".csv",
+    ".txt",
+    ".jpg",
+    ".png",
+    ".sql",
+    ".bak",
+]
 CANARY_PREFIX_NAMES = [
-    "!Accounting_Report_2024", "!Budget_Final", "!Confidential_HR",
-    "!Employee_SSN_List", "!Financial_Audit", "!Payroll_Records",
-    "~$Customer_Database", "~$Executive_Compensation",
+    "!Accounting_Report_2024",
+    "!Budget_Final",
+    "!Confidential_HR",
+    "!Employee_SSN_List",
+    "!Financial_Audit",
+    "!Payroll_Records",
+    "~$Customer_Database",
+    "~$Executive_Compensation",
 ]
 
 
@@ -31,12 +45,14 @@ def create_canary_files(target_dir, count=10):
             content = os.urandom(1024 * (i + 1))
             path.write_bytes(content)
             file_hash = hashlib.sha256(content).hexdigest()
-            canaries.append({
-                "path": str(path),
-                "hash": file_hash,
-                "size": len(content),
-                "created": datetime.utcnow().isoformat(),
-            })
+            canaries.append(
+                {
+                    "path": str(path),
+                    "hash": file_hash,
+                    "size": len(content),
+                    "created": datetime.utcnow().isoformat(),
+                }
+            )
     return canaries
 
 
@@ -60,32 +76,38 @@ def check_canary_integrity(manifest_path):
     for canary in manifest.get("canaries", []):
         path = Path(canary["path"])
         if not path.exists():
-            alerts.append({
-                "type": "DELETED",
-                "path": canary["path"],
-                "severity": "CRITICAL",
-                "detail": "Canary file deleted - possible ransomware wiper",
-            })
+            alerts.append(
+                {
+                    "type": "DELETED",
+                    "path": canary["path"],
+                    "severity": "CRITICAL",
+                    "detail": "Canary file deleted - possible ransomware wiper",
+                }
+            )
             continue
         current_hash = hashlib.sha256(path.read_bytes()).hexdigest()
         if current_hash != canary["hash"]:
-            alerts.append({
-                "type": "MODIFIED",
-                "path": canary["path"],
-                "severity": "CRITICAL",
-                "original_hash": canary["hash"],
-                "current_hash": current_hash,
-                "detail": "Canary file modified - possible ransomware encryption",
-            })
+            alerts.append(
+                {
+                    "type": "MODIFIED",
+                    "path": canary["path"],
+                    "severity": "CRITICAL",
+                    "original_hash": canary["hash"],
+                    "current_hash": current_hash,
+                    "detail": "Canary file modified - possible ransomware encryption",
+                }
+            )
         current_size = path.stat().st_size
         if abs(current_size - canary["size"]) > canary["size"] * 0.1:
-            alerts.append({
-                "type": "SIZE_CHANGE",
-                "path": canary["path"],
-                "severity": "HIGH",
-                "original_size": canary["size"],
-                "current_size": current_size,
-            })
+            alerts.append(
+                {
+                    "type": "SIZE_CHANGE",
+                    "path": canary["path"],
+                    "severity": "HIGH",
+                    "original_size": canary["size"],
+                    "current_size": current_size,
+                }
+            )
     checked = len(manifest.get("canaries", []))
     return {
         "checked": checked,
@@ -111,26 +133,37 @@ def detect_ransomware_indicators(watch_dir, window_seconds=60):
             if now - mtime < window_seconds:
                 recently_modified.append(str(fp))
                 ext = fp.suffix.lower()
-                if ext in (".encrypted", ".locked", ".crypto", ".crypt",
-                           ".enc", ".pay", ".ransom"):
+                if ext in (
+                    ".encrypted",
+                    ".locked",
+                    ".crypto",
+                    ".crypt",
+                    ".enc",
+                    ".pay",
+                    ".ransom",
+                ):
                     new_extensions[ext] += 1
         except (OSError, PermissionError):
             continue
 
     indicators = []
     if len(recently_modified) > 50:
-        indicators.append({
-            "indicator": "Mass file modification",
-            "count": len(recently_modified),
-            "severity": "CRITICAL",
-            "detail": f"{len(recently_modified)} files modified in {window_seconds}s",
-        })
+        indicators.append(
+            {
+                "indicator": "Mass file modification",
+                "count": len(recently_modified),
+                "severity": "CRITICAL",
+                "detail": f"{len(recently_modified)} files modified in {window_seconds}s",
+            }
+        )
     if new_extensions:
-        indicators.append({
-            "indicator": "Ransomware file extensions detected",
-            "extensions": dict(new_extensions),
-            "severity": "CRITICAL",
-        })
+        indicators.append(
+            {
+                "indicator": "Ransomware file extensions detected",
+                "extensions": dict(new_extensions),
+                "severity": "CRITICAL",
+            }
+        )
     return {
         "files_checked_window": window_seconds,
         "recently_modified": len(recently_modified),
@@ -139,7 +172,9 @@ def detect_ransomware_indicators(watch_dir, window_seconds=60):
     }
 
 
-def generate_honeypot_share_config(share_name="FinanceArchive", share_path="/srv/honeypot"):
+def generate_honeypot_share_config(
+    share_name="FinanceArchive", share_path="/srv/honeypot"
+):
     """Generate SMB honeypot share configuration."""
     return {
         "samba_config": {
@@ -172,15 +207,20 @@ def analyze_honeypot_logs(log_path):
     items = events if isinstance(events, list) else events.get("events", [])
     by_user = Counter(e.get("user", "unknown") for e in items)
     by_action = Counter(e.get("action", "unknown") for e in items)
-    write_events = [e for e in items if e.get("action") in ("write", "rename", "delete")]
+    write_events = [
+        e for e in items if e.get("action") in ("write", "rename", "delete")
+    ]
     return {
         "total_events": len(items),
         "by_user": dict(by_user.most_common(10)),
         "by_action": dict(by_action),
         "write_events": len(write_events),
         "suspicious": len(write_events) > 5,
-        "severity": "CRITICAL" if len(write_events) > 20 else
-                    "HIGH" if len(write_events) > 5 else "INFO",
+        "severity": (
+            "CRITICAL"
+            if len(write_events) > 20
+            else "HIGH" if len(write_events) > 5 else "INFO"
+        ),
     }
 
 
@@ -190,8 +230,11 @@ def main():
     parser.add_argument("--manifest", help="Canary manifest JSON for integrity check")
     parser.add_argument("--watch", help="Directory to watch for ransomware indicators")
     parser.add_argument("--honeypot-log", help="Honeypot access log JSON")
-    parser.add_argument("--action", choices=["deploy", "check", "detect", "analyze",
-                                              "share-config", "full"], default="full")
+    parser.add_argument(
+        "--action",
+        choices=["deploy", "check", "detect", "analyze", "share-config", "full"],
+        default="full",
+    )
     parser.add_argument("--output", default="ransomware_honeypot_report.json")
     args = parser.parse_args()
 
@@ -199,7 +242,9 @@ def main():
 
     if args.action in ("deploy", "full") and args.deploy:
         canaries = create_canary_files(args.deploy)
-        manifest = generate_canary_manifest(canaries, args.deploy + "/canary_manifest.json")
+        manifest = generate_canary_manifest(
+            canaries, args.deploy + "/canary_manifest.json"
+        )
         report["results"]["deployed"] = {"count": len(canaries), "manifest": manifest}
         print(f"[+] Deployed {len(canaries)} canary files")
 
@@ -221,7 +266,9 @@ def main():
     if args.action in ("analyze", "full") and args.honeypot_log:
         result = analyze_honeypot_logs(args.honeypot_log)
         report["results"]["log_analysis"] = result
-        print(f"[+] Honeypot events: {result['total_events']}, writes: {result['write_events']}")
+        print(
+            f"[+] Honeypot events: {result['total_events']}, writes: {result['write_events']}"
+        )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)

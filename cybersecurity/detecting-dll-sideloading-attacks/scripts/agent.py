@@ -30,8 +30,10 @@ KNOWN_SIDELOAD_TARGETS = {
 }
 
 STANDARD_DLL_DIRS = {
-    r"c:\windows\system32", r"c:\windows\syswow64",
-    r"c:\windows\winsxs", r"c:\program files",
+    r"c:\windows\system32",
+    r"c:\windows\syswow64",
+    r"c:\windows\winsxs",
+    r"c:\program files",
     r"c:\program files (x86)",
 }
 
@@ -63,23 +65,27 @@ def parse_sysmon_dll_loads(filepath):
             dll_dir = dll_path.rsplit("\\", 1)[0] if "\\" in dll_path else ""
 
             is_standard_dir = any(dll_dir.startswith(d) for d in STANDARD_DLL_DIRS)
-            is_known_target = (image_name in KNOWN_SIDELOAD_TARGETS and
-                               dll_name in KNOWN_SIDELOAD_TARGETS[image_name])
+            is_known_target = (
+                image_name in KNOWN_SIDELOAD_TARGETS
+                and dll_name in KNOWN_SIDELOAD_TARGETS[image_name]
+            )
 
             if is_signed == "false" and not is_standard_dir:
                 severity = "CRITICAL" if is_known_target else "HIGH"
-                findings.append({
-                    "timestamp": time_created.group(1) if time_created else "",
-                    "host_process": image_path,
-                    "loaded_dll": dll_path,
-                    "signed": is_signed,
-                    "signature_status": sig_status.group(1) if sig_status else "",
-                    "hash": sha256.group(1) if sha256 else "",
-                    "known_sideload_target": is_known_target,
-                    "non_standard_path": True,
-                    "severity": severity,
-                    "mitre": "T1574.002",
-                })
+                findings.append(
+                    {
+                        "timestamp": time_created.group(1) if time_created else "",
+                        "host_process": image_path,
+                        "loaded_dll": dll_path,
+                        "signed": is_signed,
+                        "signature_status": sig_status.group(1) if sig_status else "",
+                        "hash": sha256.group(1) if sha256 else "",
+                        "known_sideload_target": is_known_target,
+                        "non_standard_path": True,
+                        "severity": severity,
+                        "mitre": "T1574.002",
+                    }
+                )
     return findings
 
 
@@ -95,15 +101,17 @@ def scan_directory_for_sideloading(directory):
         if exe_name in KNOWN_SIDELOAD_TARGETS:
             for dll in dll_files:
                 if dll.name.lower() in KNOWN_SIDELOAD_TARGETS[exe_name]:
-                    findings.append({
-                        "exe_path": str(exe),
-                        "dll_path": str(dll),
-                        "dll_size_bytes": dll.stat().st_size,
-                        "known_sideload_pair": True,
-                        "severity": "CRITICAL",
-                        "mitre": "T1574.002",
-                        "description": f"Known sideloading pair: {exe.name} + {dll.name}",
-                    })
+                    findings.append(
+                        {
+                            "exe_path": str(exe),
+                            "dll_path": str(dll),
+                            "dll_size_bytes": dll.stat().st_size,
+                            "known_sideload_pair": True,
+                            "severity": "CRITICAL",
+                            "mitre": "T1574.002",
+                            "description": f"Known sideloading pair: {exe.name} + {dll.name}",
+                        }
+                    )
     return findings
 
 
@@ -114,11 +122,15 @@ def generate_sigma_rule():
         "logsource": {"product": "windows", "category": "image_load"},
         "detection": {
             "selection": {"EventID": 7, "Signed": "false"},
-            "filter_standard": {"ImageLoaded|startswith": [
-                "C:\\Windows\\System32\\", "C:\\Windows\\SysWOW64\\",
-                "C:\\Program Files\\", "C:\\Program Files (x86)\\"
-            ]},
-            "condition": "selection and not filter_standard"
+            "filter_standard": {
+                "ImageLoaded|startswith": [
+                    "C:\\Windows\\System32\\",
+                    "C:\\Windows\\SysWOW64\\",
+                    "C:\\Program Files\\",
+                    "C:\\Program Files (x86)\\",
+                ]
+            },
+            "condition": "selection and not filter_standard",
         },
         "level": "high",
         "tags": ["attack.defense_evasion", "attack.t1574.002"],

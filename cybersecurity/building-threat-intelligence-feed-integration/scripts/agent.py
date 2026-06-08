@@ -12,7 +12,9 @@ import requests
 from taxii2client.v21 import Collection
 from stix2 import Indicator, Bundle, parse
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -26,12 +28,14 @@ def ingest_taxii_feed(taxii_url, collection_url, username, password, hours_back=
     indicators = []
     for obj in response.get("objects", []):
         indicator = parse(obj)
-        indicators.append({
-            "id": str(indicator.id),
-            "pattern": indicator.pattern,
-            "valid_from": str(indicator.valid_from),
-            "source": "taxii",
-        })
+        indicators.append(
+            {
+                "id": str(indicator.id),
+                "pattern": indicator.pattern,
+                "valid_from": str(indicator.valid_from),
+                "source": "taxii",
+            }
+        )
     logger.info("Ingested %d indicators from TAXII feed", len(indicators))
     return indicators
 
@@ -43,14 +47,16 @@ def ingest_urlhaus_feed():
     data = resp.json()
     indicators = []
     for entry in data.get("urls", []):
-        indicators.append({
-            "type": "url",
-            "value": entry["url"],
-            "threat": entry.get("threat", "unknown"),
-            "status": entry.get("url_status", "unknown"),
-            "tags": entry.get("tags", []),
-            "source": "urlhaus",
-        })
+        indicators.append(
+            {
+                "type": "url",
+                "value": entry["url"],
+                "threat": entry.get("threat", "unknown"),
+                "status": entry.get("url_status", "unknown"),
+                "tags": entry.get("tags", []),
+                "source": "urlhaus",
+            }
+        )
     logger.info("Ingested %d URLs from URLhaus", len(indicators))
     return indicators
 
@@ -61,14 +67,16 @@ def ingest_feodotracker():
     resp = requests.get(url, timeout=30)
     indicators = []
     for entry in resp.json():
-        indicators.append({
-            "type": "ipv4",
-            "value": entry["ip_address"],
-            "port": entry.get("port"),
-            "malware": entry.get("malware", "unknown"),
-            "first_seen": entry.get("first_seen"),
-            "source": "feodotracker",
-        })
+        indicators.append(
+            {
+                "type": "ipv4",
+                "value": entry["ip_address"],
+                "port": entry.get("port"),
+                "malware": entry.get("malware", "unknown"),
+                "first_seen": entry.get("first_seen"),
+                "source": "feodotracker",
+            }
+        )
     logger.info("Ingested %d C2 IPs from Feodo Tracker", len(indicators))
     return indicators
 
@@ -102,11 +110,15 @@ def deduplicate(indicators):
     seen = set()
     unique = []
     for ioc in indicators:
-        key = hashlib.sha256(f"{ioc.get('type', '')}:{ioc['value']}".encode()).hexdigest()
+        key = hashlib.sha256(
+            f"{ioc.get('type', '')}:{ioc['value']}".encode()
+        ).hexdigest()
         if key not in seen:
             seen.add(key)
             unique.append(ioc)
-    logger.info("Deduplicated: %d -> %d unique indicators", len(indicators), len(unique))
+    logger.info(
+        "Deduplicated: %d -> %d unique indicators", len(indicators), len(unique)
+    )
     return unique
 
 
@@ -115,7 +127,9 @@ def export_stix_bundle(stix_objects, output_path):
     bundle = Bundle(objects=stix_objects)
     with open(output_path, "w") as f:
         f.write(bundle.serialize(pretty=True))
-    logger.info("STIX bundle exported to %s (%d indicators)", output_path, len(stix_objects))
+    logger.info(
+        "STIX bundle exported to %s (%d indicators)", output_path, len(stix_objects)
+    )
 
 
 def push_to_splunk_ti(splunk_url, session_key, indicators):
@@ -123,11 +137,16 @@ def push_to_splunk_ti(splunk_url, session_key, indicators):
     headers = {"Authorization": f"Splunk {session_key}"}
     pushed = 0
     for ioc in indicators:
-        data = {"ip": ioc["value"], "description": f"{ioc.get('source')}: {ioc['value']}"}
+        data = {
+            "ip": ioc["value"],
+            "description": f"{ioc.get('source')}: {ioc['value']}",
+        }
         resp = requests.post(
             f"{splunk_url}/services/data/threat_intel/item/ip_intel",
-            headers=headers, data=data,
-            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+            headers=headers,
+            data=data,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+            == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             timeout=30,
         )
         if resp.status_code == 201:
@@ -136,13 +155,17 @@ def push_to_splunk_ti(splunk_url, session_key, indicators):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Threat Intelligence Feed Integration Agent")
+    parser = argparse.ArgumentParser(
+        description="Threat Intelligence Feed Integration Agent"
+    )
     parser.add_argument("--taxii-url", help="TAXII 2.1 server URL")
     parser.add_argument("--taxii-collection", help="TAXII collection URL")
     parser.add_argument("--taxii-user", help="TAXII username")
     parser.add_argument("--taxii-pass", help="TAXII password")
     parser.add_argument("--urlhaus", action="store_true", help="Ingest URLhaus feed")
-    parser.add_argument("--feodo", action="store_true", help="Ingest Feodo Tracker feed")
+    parser.add_argument(
+        "--feodo", action="store_true", help="Ingest Feodo Tracker feed"
+    )
     parser.add_argument("--output", default="ti_bundle.json", help="STIX bundle output")
     args = parser.parse_args()
 

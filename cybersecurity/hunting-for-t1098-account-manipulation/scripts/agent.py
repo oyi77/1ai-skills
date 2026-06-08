@@ -5,6 +5,7 @@ Detects shadow admin creation, SID history injection, privileged
 group membership changes, and credential modifications by parsing
 Windows Security Event Logs for key event IDs.
 """
+
 # For authorized threat hunting and blue team use only
 
 import argparse
@@ -37,16 +38,27 @@ T1098_EVENT_IDS = {
 }
 
 PRIVILEGED_GROUPS = {
-    "domain admins", "enterprise admins", "schema admins",
-    "administrators", "backup operators", "server operators",
-    "account operators", "print operators", "dns admins",
-    "group policy creator owners", "remote desktop users",
+    "domain admins",
+    "enterprise admins",
+    "schema admins",
+    "administrators",
+    "backup operators",
+    "server operators",
+    "account operators",
+    "print operators",
+    "dns admins",
+    "group policy creator owners",
+    "remote desktop users",
 }
 
 SENSITIVE_ATTRIBUTES = {
-    "sidhistory", "serviceprincipalname", "msds-allowedtodelegateto",
-    "msds-allowedtoactonbehalfofotheridentity", "admincount",
-    "useraccountcontrol", "primarygroupid",
+    "sidhistory",
+    "serviceprincipalname",
+    "msds-allowedtodelegateto",
+    "msds-allowedtoactonbehalfofotheridentity",
+    "admincount",
+    "useraccountcontrol",
+    "primarygroupid",
 }
 
 
@@ -86,19 +98,23 @@ class T1098HuntingAgent:
                     continue
                 event_id, ts, data = _parse_event(xml_str)
                 if event_id in T1098_EVENT_IDS:
-                    self.events.append({
-                        "event_id": event_id,
-                        "description": T1098_EVENT_IDS[event_id],
-                        "timestamp": ts,
-                        "subject_user": data.get("SubjectUserName", ""),
-                        "subject_domain": data.get("SubjectDomainName", ""),
-                        "target_user": data.get("TargetUserName", data.get("MemberName", "")),
-                        "target_domain": data.get("TargetDomainName", ""),
-                        "group_name": data.get("TargetUserName", ""),
-                        "member_sid": data.get("MemberSid", ""),
-                        "attribute_name": data.get("AttributeLDAPDisplayName", ""),
-                        "attribute_value": data.get("AttributeValue", "")[:200],
-                    })
+                    self.events.append(
+                        {
+                            "event_id": event_id,
+                            "description": T1098_EVENT_IDS[event_id],
+                            "timestamp": ts,
+                            "subject_user": data.get("SubjectUserName", ""),
+                            "subject_domain": data.get("SubjectDomainName", ""),
+                            "target_user": data.get(
+                                "TargetUserName", data.get("MemberName", "")
+                            ),
+                            "target_domain": data.get("TargetDomainName", ""),
+                            "group_name": data.get("TargetUserName", ""),
+                            "member_sid": data.get("MemberSid", ""),
+                            "attribute_name": data.get("AttributeLDAPDisplayName", ""),
+                            "attribute_value": data.get("AttributeValue", "")[:200],
+                        }
+                    )
 
     def detect_privileged_group_changes(self):
         """Detect additions to privileged security groups."""
@@ -109,13 +125,15 @@ class T1098HuntingAgent:
                 group = event["group_name"].lower()
                 if any(pg in group for pg in PRIVILEGED_GROUPS):
                     alerts.append(event)
-                    self.findings.append({
-                        "severity": "critical",
-                        "type": "Privileged Group Addition",
-                        "detail": f"{event['subject_user']} added {event['target_user']} "
-                                  f"to '{event['group_name']}' at {event['timestamp']}",
-                        "mitre": "T1098.001",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": "Privileged Group Addition",
+                            "detail": f"{event['subject_user']} added {event['target_user']} "
+                            f"to '{event['group_name']}' at {event['timestamp']}",
+                            "mitre": "T1098.001",
+                        }
+                    )
         return alerts
 
     def detect_sid_history_injection(self):
@@ -126,13 +144,15 @@ class T1098HuntingAgent:
                 attr = event["attribute_name"].lower()
                 if attr == "sidhistory":
                     alerts.append(event)
-                    self.findings.append({
-                        "severity": "critical",
-                        "type": "SID History Injection",
-                        "detail": f"SID History modified on {event['target_user']} "
-                                  f"by {event['subject_user']} at {event['timestamp']}",
-                        "mitre": "T1134.005",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": "SID History Injection",
+                            "detail": f"SID History modified on {event['target_user']} "
+                            f"by {event['subject_user']} at {event['timestamp']}",
+                            "mitre": "T1134.005",
+                        }
+                    )
         return alerts
 
     def detect_sensitive_attribute_changes(self):
@@ -143,21 +163,26 @@ class T1098HuntingAgent:
                 attr = event["attribute_name"].lower()
                 if attr in SENSITIVE_ATTRIBUTES:
                     alerts.append(event)
-                    self.findings.append({
-                        "severity": "high",
-                        "type": "Sensitive Attribute Modified",
-                        "detail": f"Attribute '{event['attribute_name']}' changed on "
-                                  f"{event['target_user']} by {event['subject_user']}",
-                        "mitre": "T1098",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "high",
+                            "type": "Sensitive Attribute Modified",
+                            "detail": f"Attribute '{event['attribute_name']}' changed on "
+                            f"{event['target_user']} by {event['subject_user']}",
+                            "mitre": "T1098",
+                        }
+                    )
         return alerts
 
     def detect_shadow_admin(self):
         """Detect potential shadow admin creation patterns."""
         alerts = []
-        admin_adds = [e for e in self.events
-                      if e["event_id"] in ("4728", "4732", "4756") and
-                      any(pg in e["group_name"].lower() for pg in PRIVILEGED_GROUPS)]
+        admin_adds = [
+            e
+            for e in self.events
+            if e["event_id"] in ("4728", "4732", "4756")
+            and any(pg in e["group_name"].lower() for pg in PRIVILEGED_GROUPS)
+        ]
         account_changes = [e for e in self.events if e["event_id"] == "4738"]
 
         changed_accounts = {e["target_user"].lower() for e in account_changes}
@@ -165,13 +190,15 @@ class T1098HuntingAgent:
             target = add_event["target_user"].lower()
             if target in changed_accounts:
                 alerts.append(add_event)
-                self.findings.append({
-                    "severity": "critical",
-                    "type": "Shadow Admin Indicator",
-                    "detail": f"Account '{add_event['target_user']}' modified and then "
-                              f"added to '{add_event['group_name']}'",
-                    "mitre": "T1098",
-                })
+                self.findings.append(
+                    {
+                        "severity": "critical",
+                        "type": "Shadow Admin Indicator",
+                        "detail": f"Account '{add_event['target_user']}' modified and then "
+                        f"added to '{add_event['group_name']}'",
+                        "mitre": "T1098",
+                    }
+                )
         return alerts
 
     def generate_report(self):
@@ -182,7 +209,9 @@ class T1098HuntingAgent:
         shadow = self.detect_shadow_admin()
 
         event_summary = Counter(e["event_id"] for e in self.events)
-        actor_summary = Counter(e["subject_user"] for e in self.events if e["subject_user"])
+        actor_summary = Counter(
+            e["subject_user"] for e in self.events if e["subject_user"]
+        )
 
         report = {
             "report_date": datetime.utcnow().isoformat(),
@@ -210,8 +239,9 @@ def main():
         description="Hunt for MITRE T1098 account manipulation in Windows Event Logs"
     )
     parser.add_argument("evtx_file", help="Path to Security.evtx log file")
-    parser.add_argument("--output-dir", default="./t1098_hunt",
-                        help="Output directory for hunt report")
+    parser.add_argument(
+        "--output-dir", default="./t1098_hunt", help="Output directory for hunt report"
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)

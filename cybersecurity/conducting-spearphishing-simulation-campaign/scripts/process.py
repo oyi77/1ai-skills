@@ -206,19 +206,33 @@ def validate_email_authentication(domain: str) -> dict:
                 results["spf"]["record"] = txt
 
                 if "~all" in txt:
-                    results["spf"]["issues"].append("Soft fail (~all) - consider using -all")
+                    results["spf"]["issues"].append(
+                        "Soft fail (~all) - consider using -all"
+                    )
                 elif "+all" in txt:
                     results["spf"]["issues"].append("WARNING: +all allows any sender")
                 elif "-all" in txt:
-                    results["spf"]["issues"].append("Hard fail (-all) - strict configuration")
+                    results["spf"]["issues"].append(
+                        "Hard fail (-all) - strict configuration"
+                    )
 
                 if txt.count("include:") > 10:
-                    results["spf"]["issues"].append("Too many includes - may exceed DNS lookup limit")
+                    results["spf"]["issues"].append(
+                        "Too many includes - may exceed DNS lookup limit"
+                    )
     except Exception as e:
         results["spf"]["issues"].append(f"DNS query failed: {e}")
 
     # Check DKIM (common selectors)
-    dkim_selectors = ["default", "google", "selector1", "selector2", "k1", "mail", "dkim"]
+    dkim_selectors = [
+        "default",
+        "google",
+        "selector1",
+        "selector2",
+        "k1",
+        "mail",
+        "dkim",
+    ]
     for selector in dkim_selectors:
         try:
             answers = dns.resolver.resolve(f"{selector}._domainkey.{domain}", "TXT")
@@ -246,11 +260,17 @@ def validate_email_authentication(domain: str) -> dict:
                 results["dmarc"]["record"] = txt
 
                 if "p=none" in txt:
-                    results["dmarc"]["issues"].append("Policy is 'none' - no enforcement")
+                    results["dmarc"]["issues"].append(
+                        "Policy is 'none' - no enforcement"
+                    )
                 elif "p=quarantine" in txt:
-                    results["dmarc"]["issues"].append("Policy is 'quarantine' - moderate enforcement")
+                    results["dmarc"]["issues"].append(
+                        "Policy is 'quarantine' - moderate enforcement"
+                    )
                 elif "p=reject" in txt:
-                    results["dmarc"]["issues"].append("Policy is 'reject' - strict enforcement")
+                    results["dmarc"]["issues"].append(
+                        "Policy is 'reject' - strict enforcement"
+                    )
     except Exception as e:
         results["dmarc"]["issues"].append(f"No DMARC record found: {e}")
 
@@ -268,7 +288,9 @@ def generate_email_template(
 
     if pretext not in PRETEXT_TEMPLATES:
         console.print(f"[red][-] Unknown pretext: {pretext}[/red]")
-        console.print(f"[yellow]Available: {', '.join(PRETEXT_TEMPLATES.keys())}[/yellow]")
+        console.print(
+            f"[yellow]Available: {', '.join(PRETEXT_TEMPLATES.keys())}[/yellow]"
+        )
         return []
 
     template = PRETEXT_TEMPLATES[pretext]
@@ -296,7 +318,9 @@ def generate_email_template(
                         phishing_url=phishing_url,
                         sender_name="Michael Thompson",
                         sender_title="VP of Finance",
-                        deadline_date=(datetime.now() + timedelta(days=3)).strftime("%B %d, %Y"),
+                        deadline_date=(datetime.now() + timedelta(days=3)).strftime(
+                            "%B %d, %Y"
+                        ),
                         current_date=datetime.now().strftime("%B %d, %Y %I:%M %p"),
                         invoice_number="INV-2024-4821",
                         amount="4,750.00",
@@ -336,20 +360,26 @@ def check_domain_reputation(domain: str) -> dict:
     # Check if domain resolves
     try:
         import socket
+
         ip = socket.gethostbyname(domain)
         results["resolves_to"] = ip
     except Exception:
         results["resolves_to"] = "DOES NOT RESOLVE"
 
     # Check Google Safe Browsing (requires API key)
-    results["checks"]["google_safe_browsing"] = "Manual check required: https://transparencyreport.google.com/safe-browsing/search"
+    results["checks"][
+        "google_safe_browsing"
+    ] = "Manual check required: https://transparencyreport.google.com/safe-browsing/search"
 
     # Check VirusTotal
-    results["checks"]["virustotal"] = f"Manual check required: https://www.virustotal.com/gui/domain/{domain}"
+    results["checks"][
+        "virustotal"
+    ] = f"Manual check required: https://www.virustotal.com/gui/domain/{domain}"
 
     # Check domain age via WHOIS
     try:
         import whois as python_whois
+
         w = python_whois.whois(domain)
         if w.creation_date:
             creation = w.creation_date
@@ -358,9 +388,13 @@ def check_domain_reputation(domain: str) -> dict:
             age_days = (datetime.now() - creation).days
             results["domain_age_days"] = age_days
             if age_days < 14:
-                results["domain_age_warning"] = "Domain is less than 14 days old - high risk of being blocked"
+                results["domain_age_warning"] = (
+                    "Domain is less than 14 days old - high risk of being blocked"
+                )
             elif age_days < 30:
-                results["domain_age_warning"] = "Domain is less than 30 days old - moderate risk"
+                results["domain_age_warning"] = (
+                    "Domain is less than 30 days old - moderate risk"
+                )
             else:
                 results["domain_age_warning"] = "Domain age is acceptable"
     except Exception:
@@ -368,8 +402,12 @@ def check_domain_reputation(domain: str) -> dict:
 
     # Check categorization services
     results["checks"]["bluecoat"] = "Manual check: https://sitereview.bluecoat.com/"
-    results["checks"]["fortiguard"] = "Manual check: https://www.fortiguard.com/webfilter"
-    results["checks"]["paloalto"] = "Manual check: https://urlfiltering.paloaltonetworks.com/"
+    results["checks"][
+        "fortiguard"
+    ] = "Manual check: https://www.fortiguard.com/webfilter"
+    results["checks"][
+        "paloalto"
+    ] = "Manual check: https://urlfiltering.paloaltonetworks.com/"
     results["checks"]["mcafee"] = "Manual check: https://trustedsource.org/"
 
     return results
@@ -389,10 +427,14 @@ def analyze_campaign_results(results_file: str, output_dir: str = "./reports") -
 
     # Calculate metrics
     total_sent = len(data.get("results", []))
-    delivered = sum(1 for r in data.get("results", []) if r.get("status") == "delivered")
+    delivered = sum(
+        1 for r in data.get("results", []) if r.get("status") == "delivered"
+    )
     opened = sum(1 for r in data.get("results", []) if r.get("opened", False))
     clicked = sum(1 for r in data.get("results", []) if r.get("clicked", False))
-    submitted = sum(1 for r in data.get("results", []) if r.get("submitted_data", False))
+    submitted = sum(
+        1 for r in data.get("results", []) if r.get("submitted_data", False)
+    )
     reported = sum(1 for r in data.get("results", []) if r.get("reported", False))
 
     metrics = {
@@ -405,7 +447,9 @@ def analyze_campaign_results(results_file: str, output_dir: str = "./reports") -
         "delivery_rate": (delivered / total_sent * 100) if total_sent > 0 else 0,
         "open_rate": (opened / delivered * 100) if delivered > 0 else 0,
         "click_rate": (clicked / delivered * 100) if delivered > 0 else 0,
-        "credential_capture_rate": (submitted / delivered * 100) if delivered > 0 else 0,
+        "credential_capture_rate": (
+            (submitted / delivered * 100) if delivered > 0 else 0
+        ),
         "report_rate": (reported / delivered * 100) if delivered > 0 else 0,
     }
 
@@ -474,7 +518,11 @@ def analyze_campaign_results(results_file: str, output_dir: str = "./reports") -
     table.add_row("Delivered", str(delivered), f"{metrics['delivery_rate']:.1f}%")
     table.add_row("Opened", str(opened), f"{metrics['open_rate']:.1f}%")
     table.add_row("Clicked", str(clicked), f"{metrics['click_rate']:.1f}%")
-    table.add_row("Credentials Captured", str(submitted), f"{metrics['credential_capture_rate']:.1f}%")
+    table.add_row(
+        "Credentials Captured",
+        str(submitted),
+        f"{metrics['credential_capture_rate']:.1f}%",
+    )
     table.add_row("Reported", str(reported), f"{metrics['report_rate']:.1f}%")
 
     console.print(table)
@@ -489,14 +537,23 @@ def main():
     parser.add_argument(
         "--mode",
         required=True,
-        choices=["setup", "template", "validate", "report", "list-pretexts", "check-domain"],
+        choices=[
+            "setup",
+            "template",
+            "validate",
+            "report",
+            "list-pretexts",
+            "check-domain",
+        ],
         help="Operation mode",
     )
     parser.add_argument("--domain", help="Phishing domain to validate")
     parser.add_argument("--pretext", help="Pretext template name")
     parser.add_argument("--targets", help="Path to targets CSV file")
     parser.add_argument("--company", default="Target Corp", help="Target company name")
-    parser.add_argument("--phishing-url", default="https://login.example.com", help="Phishing URL")
+    parser.add_argument(
+        "--phishing-url", default="https://login.example.com", help="Phishing URL"
+    )
     parser.add_argument("--campaign-data", help="Path to campaign results JSON")
     parser.add_argument("--output", default="./output", help="Output directory")
 
@@ -523,7 +580,9 @@ def main():
             console.print("[red][-] --domain required for validation mode[/red]")
             return
 
-        console.print(f"[yellow][*] Validating email authentication for {args.domain}...[/yellow]")
+        console.print(
+            f"[yellow][*] Validating email authentication for {args.domain}...[/yellow]"
+        )
         auth_results = validate_email_authentication(args.domain)
 
         table = Table(title=f"Email Authentication: {args.domain}")
@@ -544,7 +603,9 @@ def main():
 
     elif args.mode == "template":
         if not args.pretext or not args.targets:
-            console.print("[red][-] --pretext and --targets required for template mode[/red]")
+            console.print(
+                "[red][-] --pretext and --targets required for template mode[/red]"
+            )
             return
 
         generate_email_template(
@@ -556,10 +617,14 @@ def main():
             console.print("[red][-] --domain required[/red]")
             return
 
-        console.print(f"[yellow][*] Checking domain reputation for {args.domain}...[/yellow]")
+        console.print(
+            f"[yellow][*] Checking domain reputation for {args.domain}...[/yellow]"
+        )
         rep_results = check_domain_reputation(args.domain)
 
-        console.print(Panel(json.dumps(rep_results, indent=2), title="Domain Reputation"))
+        console.print(
+            Panel(json.dumps(rep_results, indent=2), title="Domain Reputation")
+        )
 
     elif args.mode == "report":
         if not args.campaign_data:

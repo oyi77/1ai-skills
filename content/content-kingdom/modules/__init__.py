@@ -61,27 +61,51 @@ from .chat_learning_hook import (
 
 __all__ = [
     # Core
-    "BaseModule", "load_config",
+    "BaseModule",
+    "load_config",
     # Content modules
-    "PersonaManager", "ContentPlanner", "QualityGate",
-    "AnalyticsEngine", "CommentManager", "EngagementEngine",
-    "ContentRepurposer", "TrendScanner",
+    "PersonaManager",
+    "ContentPlanner",
+    "QualityGate",
+    "AnalyticsEngine",
+    "CommentManager",
+    "EngagementEngine",
+    "ContentRepurposer",
+    "TrendScanner",
     # Publishing
-    "PostBridgePublisher", "Orchestrator",
+    "PostBridgePublisher",
+    "Orchestrator",
     # Media generation (legacy fallback chain)
-    "generate_image", "generate_video", "generate_media",
+    "generate_image",
+    "generate_video",
+    "generate_media",
     # v2.0: Veris Design System
-    "VERIS_PALETTE", "VERIS_FORMATS", "VERIS_LAYOUT", "PLATFORM_PRIORITY",
-    "build_veris_prompt", "build_video_prompt", "veris_prompt_for_platform",
+    "VERIS_PALETTE",
+    "VERIS_FORMATS",
+    "VERIS_LAYOUT",
+    "PLATFORM_PRIORITY",
+    "build_veris_prompt",
+    "build_video_prompt",
+    "veris_prompt_for_platform",
     # v2.0: GeminiGen API client
     "GeminiGenClient",
     # v2.0: Learning Engine (self-improving)
-    "capture_feedback", "capture_trainer_session", "capture_performance",
-    "add_rule", "get_active_rules", "get_design_guidelines", "get_copy_guidelines",
-    "build_prompt_with_learnings", "get_top_performing_patterns", "get_learning_stats",
+    "capture_feedback",
+    "capture_trainer_session",
+    "capture_performance",
+    "add_rule",
+    "get_active_rules",
+    "get_design_guidelines",
+    "get_copy_guidelines",
+    "build_prompt_with_learnings",
+    "get_top_performing_patterns",
+    "get_learning_stats",
     "bootstrap_veris",
     # v2.0: Chat Learning Hook
-    "process_user_feedback", "process_trainer_input", "is_known_trainer", "KNOWN_TRAINERS",
+    "process_user_feedback",
+    "process_trainer_input",
+    "is_known_trainer",
+    "KNOWN_TRAINERS",
     # v2.0: Video Producer (replaces 4 deprecated skills)
     "VideoProducer",
 ]

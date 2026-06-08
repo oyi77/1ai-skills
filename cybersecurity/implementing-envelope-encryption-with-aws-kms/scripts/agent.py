@@ -91,7 +91,11 @@ def decrypt_file(input_path, output_path, region="us-east-1"):
     plaintext = decrypt_data(envelope, region)
     with open(output_path, "wb") as f:
         f.write(plaintext)
-    return {"input": str(input_path), "output": str(output_path), "decrypted_size": len(plaintext)}
+    return {
+        "input": str(input_path),
+        "output": str(output_path),
+        "decrypted_size": len(plaintext),
+    }
 
 
 def list_kms_keys(region="us-east-1"):
@@ -104,14 +108,16 @@ def list_kms_keys(region="us-east-1"):
             try:
                 desc = kms.describe_key(KeyId=key["KeyId"])
                 meta = desc["KeyMetadata"]
-                keys.append({
-                    "key_id": meta["KeyId"],
-                    "arn": meta["Arn"],
-                    "description": meta.get("Description", ""),
-                    "state": meta["KeyState"],
-                    "key_usage": meta["KeyUsage"],
-                    "origin": meta["Origin"],
-                })
+                keys.append(
+                    {
+                        "key_id": meta["KeyId"],
+                        "arn": meta["Arn"],
+                        "description": meta.get("Description", ""),
+                        "state": meta["KeyState"],
+                        "key_usage": meta["KeyUsage"],
+                        "origin": meta["Origin"],
+                    }
+                )
             except ClientError:
                 keys.append({"key_id": key["KeyId"], "error": "access denied"})
     return {"keys": keys, "total": len(keys)}
@@ -120,16 +126,20 @@ def list_kms_keys(region="us-east-1"):
 def audit_key_policy(key_id, region="us-east-1"):
     """Audit a KMS key's policy for overly permissive access."""
     kms = boto3.client("kms", region_name=region)
-    policy = json.loads(kms.get_key_policy(KeyId=key_id, PolicyName="default")["Policy"])
+    policy = json.loads(
+        kms.get_key_policy(KeyId=key_id, PolicyName="default")["Policy"]
+    )
     findings = []
     for stmt in policy.get("Statement", []):
         principal = stmt.get("Principal", {})
         if principal == "*" or principal.get("AWS") == "*":
-            findings.append({
-                "severity": "HIGH",
-                "finding": "Key policy allows access to all AWS principals",
-                "statement_id": stmt.get("Sid", "unknown"),
-            })
+            findings.append(
+                {
+                    "severity": "HIGH",
+                    "finding": "Key policy allows access to all AWS principals",
+                    "statement_id": stmt.get("Sid", "unknown"),
+                }
+            )
     return {"key_id": key_id, "policy": policy, "findings": findings}
 
 

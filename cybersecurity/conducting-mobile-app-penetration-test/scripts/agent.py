@@ -10,7 +10,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -30,8 +32,13 @@ def extract_strings_from_apk(apk_path):
     cmd = ["strings", apk_path]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
     sensitive_patterns = {
-        "api_key": [], "password": [], "secret": [], "token": [],
-        "http://": [], "aws_access": [], "private_key": [],
+        "api_key": [],
+        "password": [],
+        "secret": [],
+        "token": [],
+        "http://": [],
+        "aws_access": [],
+        "private_key": [],
     }
     for line in result.stdout.split("\n"):
         line_lower = line.strip().lower()
@@ -49,21 +56,34 @@ def check_android_manifest(manifest_path):
     with open(manifest_path, "r", errors="ignore") as f:
         content = f.read()
     checks = [
-        ("android:debuggable=\"true\"", "App is debuggable - allows runtime manipulation"),
-        ("android:allowBackup=\"true\"", "Backup allowed - data extractable via adb backup"),
-        ("android:exported=\"true\"", "Components exported without permission protection"),
-        ("android:usesCleartextTraffic=\"true\"", "Cleartext HTTP traffic allowed"),
+        (
+            'android:debuggable="true"',
+            "App is debuggable - allows runtime manipulation",
+        ),
+        (
+            'android:allowBackup="true"',
+            "Backup allowed - data extractable via adb backup",
+        ),
+        (
+            'android:exported="true"',
+            "Components exported without permission protection",
+        ),
+        ('android:usesCleartextTraffic="true"', "Cleartext HTTP traffic allowed"),
         ("android:networkSecurityConfig", None),
     ]
     for pattern, description in checks:
         if description and pattern in content:
-            findings.append({"check": pattern, "finding": description, "severity": "Medium"})
+            findings.append(
+                {"check": pattern, "finding": description, "severity": "Medium"}
+            )
     if "android:networkSecurityConfig" not in content:
-        findings.append({
-            "check": "Missing networkSecurityConfig",
-            "finding": "No custom network security configuration - may trust user-installed CAs",
-            "severity": "Medium",
-        })
+        findings.append(
+            {
+                "check": "Missing networkSecurityConfig",
+                "finding": "No custom network security configuration - may trust user-installed CAs",
+                "severity": "Medium",
+            }
+        )
     logger.info("Manifest analysis: %d findings", len(findings))
     return findings
 
@@ -85,7 +105,10 @@ def test_certificate_pinning(target_url):
 def check_insecure_storage_adb():
     """Check for insecure data storage on connected Android device via adb."""
     checks = [
-        ("shared_prefs", "run-as com.target.app ls /data/data/com.target.app/shared_prefs/"),
+        (
+            "shared_prefs",
+            "run-as com.target.app ls /data/data/com.target.app/shared_prefs/",
+        ),
         ("databases", "run-as com.target.app ls /data/data/com.target.app/databases/"),
         ("external_storage", "ls /sdcard/Android/data/com.target.app/"),
     ]
@@ -94,11 +117,15 @@ def check_insecure_storage_adb():
         cmd = ["adb", "shell"] + adb_cmd.split()
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
         if result.returncode == 0 and result.stdout.strip():
-            findings.append({
-                "check": check_name,
-                "files_found": result.stdout.strip().split("\n"),
-                "severity": "High" if check_name == "external_storage" else "Medium",
-            })
+            findings.append(
+                {
+                    "check": check_name,
+                    "files_found": result.stdout.strip().split("\n"),
+                    "severity": (
+                        "High" if check_name == "external_storage" else "Medium"
+                    ),
+                }
+            )
     logger.info("Storage checks: %d findings", len(findings))
     return findings
 
@@ -143,7 +170,9 @@ def check_root_detection(package_name):
     }
 
 
-def generate_report(apk_analysis, manifest_findings, storage_findings, api_results, cert_pinning):
+def generate_report(
+    apk_analysis, manifest_findings, storage_findings, api_results, cert_pinning
+):
     """Generate mobile app penetration test report."""
     report = {
         "timestamp": datetime.utcnow().isoformat(),
@@ -153,7 +182,11 @@ def generate_report(apk_analysis, manifest_findings, storage_findings, api_resul
         "api_security": api_results,
         "certificate_pinning": cert_pinning,
     }
-    total = len(manifest_findings) + len(storage_findings) + len([r for r in api_results if r.get("auth_bypass")])
+    total = (
+        len(manifest_findings)
+        + len(storage_findings)
+        + len([r for r in api_results if r.get("auth_bypass")])
+    )
     print(f"MOBILE PENTEST REPORT - {total} findings")
     return report
 
@@ -173,12 +206,19 @@ def main():
 
     api_results = []
     if args.api_url:
-        endpoints = ["/api/v1/user/profile", "/api/v1/users", "/api/v1/settings", "/api/v1/admin"]
+        endpoints = [
+            "/api/v1/user/profile",
+            "/api/v1/users",
+            "/api/v1/settings",
+            "/api/v1/admin",
+        ]
         api_results = test_api_endpoints(args.api_url, endpoints, args.auth_token)
 
     cert_pinning = test_certificate_pinning(args.api_url) if args.api_url else {}
 
-    report = generate_report(apk_strings, manifest_findings, storage, api_results, cert_pinning)
+    report = generate_report(
+        apk_strings, manifest_findings, storage, api_results, cert_pinning
+    )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)
     logger.info("Report saved to %s", args.output)

@@ -19,25 +19,50 @@ except ImportError:
 NS = {"e": "http://schemas.microsoft.com/win/2004/08/events/event"}
 
 AMSI_INDICATORS = [
-    "amsiutils", "amsiinitfailed", "amsicontext", "amsisession",
-    "amsiinitialize", "amsi.dll", "amsiScanBuffer",
+    "amsiutils",
+    "amsiinitfailed",
+    "amsicontext",
+    "amsisession",
+    "amsiinitialize",
+    "amsi.dll",
+    "amsiScanBuffer",
     "System.Management.Automation.AmsiUtils",
 ]
 
 SUSPICIOUS_KEYWORDS = [
-    "Invoke-Mimikatz", "Invoke-Kerberoast", "Invoke-ShellCode",
-    "Invoke-ReflectivePEInjection", "Invoke-TokenManipulation",
-    "Get-GPPPassword", "Get-Keystrokes", "Get-TimedScreenshot",
-    "Out-Minidump", "Invoke-NinjaCopy", "Invoke-CredentialInjection",
-    "Invoke-DllInjection", "Invoke-WMICommand", "PowerSploit",
-    "Empire", "BloodHound", "Rubeus", "SharpHound",
-    "Invoke-PSInject", "Invoke-RunAs", "PowerView",
+    "Invoke-Mimikatz",
+    "Invoke-Kerberoast",
+    "Invoke-ShellCode",
+    "Invoke-ReflectivePEInjection",
+    "Invoke-TokenManipulation",
+    "Get-GPPPassword",
+    "Get-Keystrokes",
+    "Get-TimedScreenshot",
+    "Out-Minidump",
+    "Invoke-NinjaCopy",
+    "Invoke-CredentialInjection",
+    "Invoke-DllInjection",
+    "Invoke-WMICommand",
+    "PowerSploit",
+    "Empire",
+    "BloodHound",
+    "Rubeus",
+    "SharpHound",
+    "Invoke-PSInject",
+    "Invoke-RunAs",
+    "PowerView",
 ]
 
 DOWNLOAD_PATTERNS = [
-    r"Net\.WebClient", r"Invoke-WebRequest", r"wget\s", r"curl\s",
-    r"DownloadString", r"DownloadFile", r"DownloadData",
-    r"Start-BitsTransfer", r"Invoke-RestMethod",
+    r"Net\.WebClient",
+    r"Invoke-WebRequest",
+    r"wget\s",
+    r"curl\s",
+    r"DownloadString",
+    r"DownloadFile",
+    r"DownloadData",
+    r"Start-BitsTransfer",
+    r"Invoke-RestMethod",
     r"New-Object\s+IO\.MemoryStream",
 ]
 
@@ -74,14 +99,16 @@ def parse_evtx_4104(evtx_path, max_events=10000):
             for el in root.findall(".//e:EventData/e:Data", NS):
                 name = el.get("Name", "")
                 data[name] = el.text or ""
-            events.append({
-                "timestamp": timestamp,
-                "script_block_id": data.get("ScriptBlockId", ""),
-                "script_block_text": data.get("ScriptBlockText", ""),
-                "message_number": data.get("MessageNumber", "1"),
-                "message_total": data.get("MessageTotal", "1"),
-                "path": data.get("Path", ""),
-            })
+            events.append(
+                {
+                    "timestamp": timestamp,
+                    "script_block_id": data.get("ScriptBlockId", ""),
+                    "script_block_text": data.get("ScriptBlockText", ""),
+                    "message_number": data.get("MessageNumber", "1"),
+                    "message_total": data.get("MessageTotal", "1"),
+                    "path": data.get("Path", ""),
+                }
+            )
     return events
 
 
@@ -96,13 +123,15 @@ def reassemble_script_blocks(events):
     for sb_id, parts in blocks.items():
         parts.sort(key=lambda x: int(x.get("message_number", "1")))
         full_text = "".join(p.get("script_block_text", "") for p in parts)
-        assembled.append({
-            "script_block_id": sb_id,
-            "timestamp": parts[0].get("timestamp", ""),
-            "path": parts[0].get("path", ""),
-            "parts": len(parts),
-            "full_text": full_text,
-        })
+        assembled.append(
+            {
+                "script_block_id": sb_id,
+                "timestamp": parts[0].get("timestamp", ""),
+                "path": parts[0].get("path", ""),
+                "parts": len(parts),
+                "full_text": full_text,
+            }
+        )
     return assembled
 
 
@@ -143,12 +172,16 @@ def detect_obfuscation(script_text):
     b64_match = re.search(r"[A-Za-z0-9+/=]{40,}", script_text)
     if b64_match:
         try:
-            decoded = base64.b64decode(b64_match.group()).decode("utf-16-le", errors="ignore")
+            decoded = base64.b64decode(b64_match.group()).decode(
+                "utf-16-le", errors="ignore"
+            )
             if any(c.isalpha() for c in decoded[:20]):
-                findings.append({
-                    "type": "encoded_payload",
-                    "decoded_preview": decoded[:200],
-                })
+                findings.append(
+                    {
+                        "type": "encoded_payload",
+                        "decoded_preview": decoded[:200],
+                    }
+                )
         except Exception:
             pass
     return findings
@@ -167,17 +200,23 @@ def hunt_scripts(assembled_blocks):
         findings.extend(detect_download_cradles(text))
         findings.extend(detect_obfuscation(text))
         if findings:
-            results.append({
-                "script_block_id": block["script_block_id"],
-                "timestamp": block["timestamp"],
-                "path": block["path"],
-                "text_preview": text[:300],
-                "findings": findings,
-                "severity": "high" if any(
-                    f["type"] in ("amsi_bypass", "credential_or_offensive_tool")
-                    for f in findings
-                ) else "medium",
-            })
+            results.append(
+                {
+                    "script_block_id": block["script_block_id"],
+                    "timestamp": block["timestamp"],
+                    "path": block["path"],
+                    "text_preview": text[:300],
+                    "findings": findings,
+                    "severity": (
+                        "high"
+                        if any(
+                            f["type"] in ("amsi_bypass", "credential_or_offensive_tool")
+                            for f in findings
+                        )
+                        else "medium"
+                    ),
+                }
+            )
     return results
 
 
@@ -201,10 +240,20 @@ def run_audit(args):
     report["suspicious_blocks"] = len(results)
     report["findings"] = results
 
-    amsi = sum(1 for r in results if any(f["type"] == "amsi_bypass" for f in r["findings"]))
-    cred = sum(1 for r in results if any(f["type"] == "credential_or_offensive_tool" for f in r["findings"]))
-    dl = sum(1 for r in results if any(f["type"] == "download_cradle" for f in r["findings"]))
-    obf = sum(1 for r in results if any(f["type"] == "obfuscation" for f in r["findings"]))
+    amsi = sum(
+        1 for r in results if any(f["type"] == "amsi_bypass" for f in r["findings"])
+    )
+    cred = sum(
+        1
+        for r in results
+        if any(f["type"] == "credential_or_offensive_tool" for f in r["findings"])
+    )
+    dl = sum(
+        1 for r in results if any(f["type"] == "download_cradle" for f in r["findings"])
+    )
+    obf = sum(
+        1 for r in results if any(f["type"] == "obfuscation" for f in r["findings"])
+    )
     report["summary"] = {
         "amsi_bypass_attempts": amsi,
         "credential_access": cred,
@@ -228,11 +277,18 @@ def run_audit(args):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="PowerShell Script Block Hunting Agent")
-    parser.add_argument("--evtx", required=True,
-                        help="Path to PowerShell Operational .evtx file")
-    parser.add_argument("--max-events", type=int, default=10000,
-                        help="Max events to parse (default: 10000)")
+    parser = argparse.ArgumentParser(
+        description="PowerShell Script Block Hunting Agent"
+    )
+    parser.add_argument(
+        "--evtx", required=True, help="Path to PowerShell Operational .evtx file"
+    )
+    parser.add_argument(
+        "--max-events",
+        type=int,
+        default=10000,
+        help="Max events to parse (default: 10000)",
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

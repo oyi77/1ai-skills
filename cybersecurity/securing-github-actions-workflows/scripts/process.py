@@ -33,7 +33,9 @@ class SecurityFinding:
 
 SHA_PATTERN = re.compile(r"@[0-9a-f]{40}")
 TAG_PATTERN = re.compile(r"@v?\d+(\.\d+)*$")
-INJECTION_PATTERN = re.compile(r"\$\{\{\s*github\.event\.(issue|pull_request|comment|review)\.\w+")
+INJECTION_PATTERN = re.compile(
+    r"\$\{\{\s*github\.event\.(issue|pull_request|comment|review)\.\w+"
+)
 DANGEROUS_CONTEXTS = [
     "github.event.issue.title",
     "github.event.issue.body",
@@ -65,13 +67,16 @@ def check_action_pinning(workflow: dict, filepath: str) -> list:
             if not uses or uses.startswith("./"):
                 continue
             if not SHA_PATTERN.search(uses):
-                findings.append(SecurityFinding(
-                    file=filename, line=0,
-                    check="ACTION_PINNING",
-                    severity="HIGH",
-                    message=f"Job '{job_name}' step {i}: '{uses}' not pinned to SHA digest",
-                    remediation=f"Pin to SHA: {uses.split('@')[0]}@<commit-sha>"
-                ))
+                findings.append(
+                    SecurityFinding(
+                        file=filename,
+                        line=0,
+                        check="ACTION_PINNING",
+                        severity="HIGH",
+                        message=f"Job '{job_name}' step {i}: '{uses}' not pinned to SHA digest",
+                        remediation=f"Pin to SHA: {uses.split('@')[0]}@<commit-sha>",
+                    )
+                )
     return findings
 
 
@@ -82,22 +87,29 @@ def check_permissions(workflow: dict, filepath: str) -> list:
 
     top_perms = workflow.get("permissions")
     if top_perms is None:
-        findings.append(SecurityFinding(
-            file=filename, line=0,
-            check="PERMISSIONS",
-            severity="MEDIUM",
-            message="No top-level permissions defined. Inherits default (may be write-all).",
-            remediation="Add 'permissions: {}' at workflow level and grant per-job."
-        ))
-    elif top_perms == "write-all" or (isinstance(top_perms, dict) and
-                                       all(v == "write" for v in top_perms.values())):
-        findings.append(SecurityFinding(
-            file=filename, line=0,
-            check="PERMISSIONS",
-            severity="HIGH",
-            message="Workflow has write-all permissions.",
-            remediation="Restrict to minimum required permissions per job."
-        ))
+        findings.append(
+            SecurityFinding(
+                file=filename,
+                line=0,
+                check="PERMISSIONS",
+                severity="MEDIUM",
+                message="No top-level permissions defined. Inherits default (may be write-all).",
+                remediation="Add 'permissions: {}' at workflow level and grant per-job.",
+            )
+        )
+    elif top_perms == "write-all" or (
+        isinstance(top_perms, dict) and all(v == "write" for v in top_perms.values())
+    ):
+        findings.append(
+            SecurityFinding(
+                file=filename,
+                line=0,
+                check="PERMISSIONS",
+                severity="HIGH",
+                message="Workflow has write-all permissions.",
+                remediation="Restrict to minimum required permissions per job.",
+            )
+        )
     return findings
 
 
@@ -113,13 +125,18 @@ def check_script_injection(workflow: dict, filepath: str) -> list:
                 continue
             for ctx in DANGEROUS_CONTEXTS:
                 if f"${{{{ {ctx}" in run_cmd or f"${{{{{ctx}" in run_cmd:
-                    findings.append(SecurityFinding(
-                        file=filename, line=0,
-                        check="SCRIPT_INJECTION",
-                        severity="CRITICAL",
-                        message=f"Job '{job_name}' step {i}: '{ctx}' interpolated in run step",
-                        remediation="Use env variable: env: VAR: ${{ " + ctx + " }} then ${VAR}"
-                    ))
+                    findings.append(
+                        SecurityFinding(
+                            file=filename,
+                            line=0,
+                            check="SCRIPT_INJECTION",
+                            severity="CRITICAL",
+                            message=f"Job '{job_name}' step {i}: '{ctx}' interpolated in run step",
+                            remediation="Use env variable: env: VAR: ${{ "
+                            + ctx
+                            + " }} then ${VAR}",
+                        )
+                    )
     return findings
 
 
@@ -136,13 +153,16 @@ def check_pr_target(workflow: dict, filepath: str) -> list:
                 if "checkout" in uses:
                     with_ref = step.get("with", {}).get("ref", "")
                     if "pull_request" in with_ref or "head" in with_ref:
-                        findings.append(SecurityFinding(
-                            file=filename, line=0,
-                            check="PR_TARGET_CHECKOUT",
-                            severity="CRITICAL",
-                            message=f"Job '{job_name}': pull_request_target with PR code checkout",
-                            remediation="Never checkout PR code in pull_request_target workflows."
-                        ))
+                        findings.append(
+                            SecurityFinding(
+                                file=filename,
+                                line=0,
+                                check="PR_TARGET_CHECKOUT",
+                                severity="CRITICAL",
+                                message=f"Job '{job_name}': pull_request_target with PR code checkout",
+                                remediation="Never checkout PR code in pull_request_target workflows.",
+                            )
+                        )
     return findings
 
 
@@ -156,7 +176,9 @@ def main():
     workflows_dir = os.path.abspath(args.workflows_dir)
     all_findings = []
 
-    workflow_files = list(Path(workflows_dir).glob("*.yml")) + list(Path(workflows_dir).glob("*.yaml"))
+    workflow_files = list(Path(workflows_dir).glob("*.yml")) + list(
+        Path(workflows_dir).glob("*.yaml")
+    )
     print(f"[*] Auditing {len(workflow_files)} workflow files in {workflows_dir}")
 
     for wf_path in workflow_files:
@@ -177,18 +199,27 @@ def main():
         "metadata": {
             "directory": workflows_dir,
             "date": datetime.now(timezone.utc).isoformat(),
-            "workflows_scanned": len(workflow_files)
+            "workflows_scanned": len(workflow_files),
         },
         "summary": {
             "total_findings": len(all_findings),
-            "severity_counts": severity_counts
+            "severity_counts": severity_counts,
         },
         "findings": [
-            {"file": f.file, "check": f.check, "severity": f.severity,
-             "message": f.message, "remediation": f.remediation}
-            for f in sorted(all_findings,
-                            key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}.get(x.severity, 4))
-        ]
+            {
+                "file": f.file,
+                "check": f.check,
+                "severity": f.severity,
+                "message": f.message,
+                "remediation": f.remediation,
+            }
+            for f in sorted(
+                all_findings,
+                key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}.get(
+                    x.severity, 4
+                ),
+            )
+        ],
     }
 
     output_path = os.path.abspath(args.output)

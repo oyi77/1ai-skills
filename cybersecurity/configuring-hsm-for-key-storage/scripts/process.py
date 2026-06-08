@@ -31,7 +31,9 @@ import platform
 from pathlib import Path
 from typing import Dict, List, Optional
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 # Common SoftHSM2 library paths
@@ -77,9 +79,20 @@ def init_token_via_cli(label: str, pin: str, so_pin: str) -> Dict:
     """Initialize a SoftHSM2 token using command-line tool."""
     try:
         result = subprocess.run(
-            ["softhsm2-util", "--init-token", "--free",
-             "--label", label, "--pin", pin, "--so-pin", so_pin],
-            capture_output=True, text=True, timeout=30,
+            [
+                "softhsm2-util",
+                "--init-token",
+                "--free",
+                "--label",
+                label,
+                "--pin",
+                pin,
+                "--so-pin",
+                so_pin,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=30,
         )
         if result.returncode == 0:
             logger.info(f"Token '{label}' initialized successfully")
@@ -128,100 +141,131 @@ def pkcs11_operations_demo(token_label: str, pin: str, lib_path: str) -> Dict:
         # Generate AES-256 key
         try:
             aes_key = session.generate_key(
-                KeyType.AES, 256,
+                KeyType.AES,
+                256,
                 label="demo-aes-256",
                 store=True,
                 capabilities=pkcs11.defaults.DEFAULT_KEY_CAPABILITIES[KeyType.AES],
             )
-            results["operations"].append({
-                "operation": "generate_aes_key",
-                "status": "success",
-                "label": "demo-aes-256",
-                "key_type": "AES-256",
-            })
+            results["operations"].append(
+                {
+                    "operation": "generate_aes_key",
+                    "status": "success",
+                    "label": "demo-aes-256",
+                    "key_type": "AES-256",
+                }
+            )
         except Exception as e:
-            results["operations"].append({
-                "operation": "generate_aes_key",
-                "status": "error",
-                "message": str(e),
-            })
+            results["operations"].append(
+                {
+                    "operation": "generate_aes_key",
+                    "status": "error",
+                    "message": str(e),
+                }
+            )
 
         # Generate RSA-2048 key pair
         try:
             pub_key, priv_key = session.generate_keypair(
-                KeyType.RSA, 2048,
+                KeyType.RSA,
+                2048,
                 label="demo-rsa-2048",
                 store=True,
             )
-            results["operations"].append({
-                "operation": "generate_rsa_keypair",
-                "status": "success",
-                "label": "demo-rsa-2048",
-                "key_type": "RSA-2048",
-            })
+            results["operations"].append(
+                {
+                    "operation": "generate_rsa_keypair",
+                    "status": "success",
+                    "label": "demo-rsa-2048",
+                    "key_type": "RSA-2048",
+                }
+            )
         except Exception as e:
-            results["operations"].append({
-                "operation": "generate_rsa_keypair",
-                "status": "error",
-                "message": str(e),
-            })
+            results["operations"].append(
+                {
+                    "operation": "generate_rsa_keypair",
+                    "status": "error",
+                    "message": str(e),
+                }
+            )
 
         # AES Encryption/Decryption
         try:
-            for key in session.get_objects({
-                Attribute.CLASS: ObjectClass.SECRET_KEY,
-                Attribute.LABEL: "demo-aes-256",
-            }):
+            for key in session.get_objects(
+                {
+                    Attribute.CLASS: ObjectClass.SECRET_KEY,
+                    Attribute.LABEL: "demo-aes-256",
+                }
+            ):
                 iv = os.urandom(16)
                 plaintext = b"HSM encryption test data for PKCS#11"
                 padded = plaintext + (b"\x10" * (16 - len(plaintext) % 16))
-                ciphertext = key.encrypt(padded, mechanism=Mechanism.AES_CBC_PAD, mechanism_param=iv)
-                decrypted = key.decrypt(ciphertext, mechanism=Mechanism.AES_CBC_PAD, mechanism_param=iv)
-                results["operations"].append({
-                    "operation": "aes_encrypt_decrypt",
-                    "status": "success",
-                    "match": decrypted.rstrip(b"\x10")[:len(plaintext)] == plaintext,
-                })
+                ciphertext = key.encrypt(
+                    padded, mechanism=Mechanism.AES_CBC_PAD, mechanism_param=iv
+                )
+                decrypted = key.decrypt(
+                    ciphertext, mechanism=Mechanism.AES_CBC_PAD, mechanism_param=iv
+                )
+                results["operations"].append(
+                    {
+                        "operation": "aes_encrypt_decrypt",
+                        "status": "success",
+                        "match": decrypted.rstrip(b"\x10")[: len(plaintext)]
+                        == plaintext,
+                    }
+                )
                 break
         except Exception as e:
-            results["operations"].append({
-                "operation": "aes_encrypt_decrypt",
-                "status": "error",
-                "message": str(e),
-            })
+            results["operations"].append(
+                {
+                    "operation": "aes_encrypt_decrypt",
+                    "status": "error",
+                    "message": str(e),
+                }
+            )
 
         # RSA Sign/Verify
         try:
-            for key in session.get_objects({
-                Attribute.CLASS: ObjectClass.PRIVATE_KEY,
-                Attribute.LABEL: "demo-rsa-2048",
-            }):
+            for key in session.get_objects(
+                {
+                    Attribute.CLASS: ObjectClass.PRIVATE_KEY,
+                    Attribute.LABEL: "demo-rsa-2048",
+                }
+            ):
                 data = b"Data to sign with HSM-resident RSA key"
                 signature = key.sign(data, mechanism=Mechanism.SHA256_RSA_PKCS)
-                results["operations"].append({
-                    "operation": "rsa_sign",
-                    "status": "success",
-                    "signature_length": len(signature),
-                })
+                results["operations"].append(
+                    {
+                        "operation": "rsa_sign",
+                        "status": "success",
+                        "signature_length": len(signature),
+                    }
+                )
                 break
 
-            for key in session.get_objects({
-                Attribute.CLASS: ObjectClass.PUBLIC_KEY,
-                Attribute.LABEL: "demo-rsa-2048",
-            }):
+            for key in session.get_objects(
+                {
+                    Attribute.CLASS: ObjectClass.PUBLIC_KEY,
+                    Attribute.LABEL: "demo-rsa-2048",
+                }
+            ):
                 valid = key.verify(data, signature, mechanism=Mechanism.SHA256_RSA_PKCS)
-                results["operations"].append({
-                    "operation": "rsa_verify",
-                    "status": "success",
-                    "valid": True,
-                })
+                results["operations"].append(
+                    {
+                        "operation": "rsa_verify",
+                        "status": "success",
+                        "valid": True,
+                    }
+                )
                 break
         except Exception as e:
-            results["operations"].append({
-                "operation": "rsa_sign_verify",
-                "status": "error",
-                "message": str(e),
-            })
+            results["operations"].append(
+                {
+                    "operation": "rsa_sign_verify",
+                    "status": "error",
+                    "message": str(e),
+                }
+            )
 
         # List all objects
         try:
@@ -244,15 +288,22 @@ def list_tokens(lib_path: str) -> Dict:
     """List all available PKCS#11 tokens."""
     try:
         import pkcs11
+
         lib = pkcs11.lib(lib_path)
         tokens = []
         for slot in lib.get_slots(token_present=True):
             token = slot.get_token()
-            tokens.append({
-                "slot_id": slot.slot_id,
-                "label": token.label.strip(),
-                "manufacturer": token.manufacturer_id.strip() if hasattr(token, 'manufacturer_id') else "N/A",
-            })
+            tokens.append(
+                {
+                    "slot_id": slot.slot_id,
+                    "label": token.label.strip(),
+                    "manufacturer": (
+                        token.manufacturer_id.strip()
+                        if hasattr(token, "manufacturer_id")
+                        else "N/A"
+                    ),
+                }
+            )
         return {"status": "success", "tokens": tokens}
     except ImportError:
         return {"status": "error", "message": "python-pkcs11 not installed"}
@@ -328,17 +379,27 @@ def main():
     elif args.command == "demo":
         lib_path = args.lib or find_softhsm_lib()
         if not lib_path:
-            print(json.dumps({
-                "status": "error",
-                "message": "SoftHSM2 library not found. Set SOFTHSM2_LIB env var or use --lib.",
-            }, indent=2))
+            print(
+                json.dumps(
+                    {
+                        "status": "error",
+                        "message": "SoftHSM2 library not found. Set SOFTHSM2_LIB env var or use --lib.",
+                    },
+                    indent=2,
+                )
+            )
             sys.exit(1)
         result = pkcs11_operations_demo(args.token, args.pin, lib_path)
         print(json.dumps(result, indent=2))
     elif args.command == "list-tokens":
         lib_path = args.lib or find_softhsm_lib()
         if not lib_path:
-            print(json.dumps({"status": "error", "message": "SoftHSM2 library not found."}, indent=2))
+            print(
+                json.dumps(
+                    {"status": "error", "message": "SoftHSM2 library not found."},
+                    indent=2,
+                )
+            )
             sys.exit(1)
         result = list_tokens(lib_path)
         print(json.dumps(result, indent=2))

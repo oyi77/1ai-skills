@@ -20,14 +20,16 @@ def list_cloudhsm_clusters(session):
     clusters = []
     response = client.describe_clusters()
     for cluster in response.get("Clusters", []):
-        clusters.append({
-            "id": cluster["ClusterId"],
-            "state": cluster["State"],
-            "hsm_type": cluster["HsmType"],
-            "vpc_id": cluster.get("VpcId", ""),
-            "hsms": len(cluster.get("Hsms", [])),
-            "security_group": cluster.get("SecurityGroup", ""),
-        })
+        clusters.append(
+            {
+                "id": cluster["ClusterId"],
+                "state": cluster["State"],
+                "hsm_type": cluster["HsmType"],
+                "vpc_id": cluster.get("VpcId", ""),
+                "hsms": len(cluster.get("Hsms", [])),
+                "security_group": cluster.get("SecurityGroup", ""),
+            }
+        )
     return clusters
 
 
@@ -38,12 +40,14 @@ def list_hsm_instances(session, cluster_id):
     hsms = []
     for cluster in response.get("Clusters", []):
         for hsm in cluster.get("Hsms", []):
-            hsms.append({
-                "hsm_id": hsm["HsmId"],
-                "az": hsm.get("AvailabilityZone", ""),
-                "ip": hsm.get("EniIp", ""),
-                "state": hsm.get("State", ""),
-            })
+            hsms.append(
+                {
+                    "hsm_id": hsm["HsmId"],
+                    "az": hsm.get("AvailabilityZone", ""),
+                    "ip": hsm.get("EniIp", ""),
+                    "state": hsm.get("State", ""),
+                }
+            )
     return hsms
 
 
@@ -58,14 +62,16 @@ def audit_kms_keys(session):
                 desc = kms.describe_key(KeyId=key["KeyId"])
                 meta = desc["KeyMetadata"]
                 if meta.get("CustomKeyStoreId"):
-                    custom_store_keys.append({
-                        "key_id": meta["KeyId"],
-                        "description": meta.get("Description", ""),
-                        "key_state": meta["KeyState"],
-                        "key_spec": meta.get("KeySpec", ""),
-                        "custom_store_id": meta["CustomKeyStoreId"],
-                        "origin": meta.get("Origin", ""),
-                    })
+                    custom_store_keys.append(
+                        {
+                            "key_id": meta["KeyId"],
+                            "description": meta.get("Description", ""),
+                            "key_state": meta["KeyState"],
+                            "key_spec": meta.get("KeySpec", ""),
+                            "custom_store_id": meta["CustomKeyStoreId"],
+                            "origin": meta.get("Origin", ""),
+                        }
+                    )
             except ClientError:
                 pass
     return custom_store_keys
@@ -77,12 +83,14 @@ def check_cloudhsm_backup(session):
     response = client.describe_backups()
     backups = []
     for backup in response.get("Backups", []):
-        backups.append({
-            "backup_id": backup["BackupId"],
-            "state": backup["BackupState"],
-            "cluster_id": backup.get("ClusterId", ""),
-            "create_time": str(backup.get("CreateTimestamp", "")),
-        })
+        backups.append(
+            {
+                "backup_id": backup["BackupId"],
+                "state": backup["BackupState"],
+                "cluster_id": backup.get("ClusterId", ""),
+                "create_time": str(backup.get("CreateTimestamp", "")),
+            }
+        )
     return sorted(backups, key=lambda x: x["create_time"], reverse=True)
 
 

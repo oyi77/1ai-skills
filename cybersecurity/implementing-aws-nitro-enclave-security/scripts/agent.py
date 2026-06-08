@@ -24,7 +24,9 @@ try:
 except ImportError:
     cbor2 = None
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -43,7 +45,11 @@ def get_nitro_instances(ec2_client, region):
                     "state": instance["State"]["Name"],
                     "enclave_enabled": True,
                     "iam_role": None,
-                    "launch_time": instance.get("LaunchTime", "").isoformat() if instance.get("LaunchTime") else None,
+                    "launch_time": (
+                        instance.get("LaunchTime", "").isoformat()
+                        if instance.get("LaunchTime")
+                        else None
+                    ),
                     "region": region,
                 }
                 if instance.get("IamInstanceProfile"):
@@ -70,7 +76,9 @@ def audit_kms_key_policy(kms_client, key_id):
         result["key_state"] = key_meta["KeyMetadata"]["KeyState"]
         result["key_usage"] = key_meta["KeyMetadata"]["KeyUsage"]
 
-        policy_json = kms_client.get_key_policy(KeyId=key_id, PolicyName="default")["Policy"]
+        policy_json = kms_client.get_key_policy(KeyId=key_id, PolicyName="default")[
+            "Policy"
+        ]
         policy = json.loads(policy_json)
 
         for statement in policy.get("Statement", []):
@@ -97,18 +105,30 @@ def audit_kms_key_policy(kms_client, key_id):
                         result["has_attestation_condition"] = True
                         if "ImageSha384" in cond_key:
                             result["image_sha_condition"] = True
-                            result["pcr_conditions"].append({
-                                "type": "ImageSha384 (PCR0)",
-                                "operator": operator_key,
-                                "value": cond_value[:32] + "..." if len(str(cond_value)) > 32 else cond_value,
-                            })
+                            result["pcr_conditions"].append(
+                                {
+                                    "type": "ImageSha384 (PCR0)",
+                                    "operator": operator_key,
+                                    "value": (
+                                        cond_value[:32] + "..."
+                                        if len(str(cond_value)) > 32
+                                        else cond_value
+                                    ),
+                                }
+                            )
                         elif "PCR" in cond_key:
                             pcr_id = cond_key.split(":")[-1]
-                            result["pcr_conditions"].append({
-                                "type": pcr_id,
-                                "operator": operator_key,
-                                "value": cond_value[:32] + "..." if len(str(cond_value)) > 32 else cond_value,
-                            })
+                            result["pcr_conditions"].append(
+                                {
+                                    "type": pcr_id,
+                                    "operator": operator_key,
+                                    "value": (
+                                        cond_value[:32] + "..."
+                                        if len(str(cond_value)) > 32
+                                        else cond_value
+                                    ),
+                                }
+                            )
 
             # Check for missing attestation on decrypt actions
             has_decrypt = any("Decrypt" in a or "GenerateDataKey" in a for a in actions)
@@ -126,7 +146,9 @@ def audit_kms_key_policy(kms_client, key_id):
             )
 
     except ClientError as e:
-        result["issues"].append(f"Error accessing key: {e.response['Error']['Message']}")
+        result["issues"].append(
+            f"Error accessing key: {e.response['Error']['Message']}"
+        )
 
     return result
 
@@ -173,7 +195,9 @@ def audit_iam_role_for_enclave(iam_client, role_name):
         # Check inline policies
         inline = iam_client.list_role_policies(RoleName=role_name)
         for policy_name in inline["PolicyNames"]:
-            policy_doc = iam_client.get_role_policy(RoleName=role_name, PolicyName=policy_name)
+            policy_doc = iam_client.get_role_policy(
+                RoleName=role_name, PolicyName=policy_name
+            )
             for stmt in policy_doc["PolicyDocument"].get("Statement", []):
                 actions = stmt.get("Action", [])
                 if isinstance(actions, str):
@@ -191,10 +215,14 @@ def audit_iam_role_for_enclave(iam_client, role_name):
                     )
 
         if not result["has_kms_permissions"]:
-            result["issues"].append("Role has no KMS permissions - cannot perform enclave-side decryption")
+            result["issues"].append(
+                "Role has no KMS permissions - cannot perform enclave-side decryption"
+            )
 
     except ClientError as e:
-        result["issues"].append(f"Error auditing role: {e.response['Error']['Message']}")
+        result["issues"].append(
+            f"Error auditing role: {e.response['Error']['Message']}"
+        )
 
     return result
 
@@ -213,12 +241,15 @@ def check_enclave_allocator_config(instance_id, ssm_client):
             InstanceIds=[instance_id],
             DocumentName="AWS-RunShellScript",
             Parameters={
-                "commands": ["cat /etc/nitro_enclaves/allocator.yaml 2>/dev/null || echo 'NOT_FOUND'"]
+                "commands": [
+                    "cat /etc/nitro_enclaves/allocator.yaml 2>/dev/null || echo 'NOT_FOUND'"
+                ]
             },
         )
         command_id = response["Command"]["CommandId"]
 
         import time
+
         time.sleep(3)
 
         output = ssm_client.get_command_invocation(
@@ -227,7 +258,9 @@ def check_enclave_allocator_config(instance_id, ssm_client):
         stdout = output.get("StandardOutputContent", "")
 
         if "NOT_FOUND" in stdout:
-            result["issues"].append("Allocator config not found at /etc/nitro_enclaves/allocator.yaml")
+            result["issues"].append(
+                "Allocator config not found at /etc/nitro_enclaves/allocator.yaml"
+            )
         else:
             result["allocator_configured"] = True
             for line in stdout.splitlines():
@@ -255,7 +288,9 @@ def check_enclave_allocator_config(instance_id, ssm_client):
 def validate_attestation_document_structure(attestation_b64):
     """Validate the structure of a base64-encoded attestation document."""
     if cbor2 is None:
-        return {"error": "cbor2 package required for attestation validation. Install with: pip install cbor2"}
+        return {
+            "error": "cbor2 package required for attestation validation. Install with: pip install cbor2"
+        }
 
     result = {
         "valid_structure": False,
@@ -293,20 +328,34 @@ def validate_attestation_document_structure(attestation_b64):
 
         pcrs = payload.get("pcrs", {})
         for idx, value in pcrs.items():
-            result["pcrs"][f"PCR{idx}"] = value.hex() if isinstance(value, bytes) else str(value)
+            result["pcrs"][f"PCR{idx}"] = (
+                value.hex() if isinstance(value, bytes) else str(value)
+            )
 
-        result["has_certificate"] = "certificate" in payload and payload["certificate"] is not None
-        result["has_cabundle"] = "cabundle" in payload and len(payload.get("cabundle", [])) > 0
-        result["has_public_key"] = "public_key" in payload and payload["public_key"] is not None
+        result["has_certificate"] = (
+            "certificate" in payload and payload["certificate"] is not None
+        )
+        result["has_cabundle"] = (
+            "cabundle" in payload and len(payload.get("cabundle", [])) > 0
+        )
+        result["has_public_key"] = (
+            "public_key" in payload and payload["public_key"] is not None
+        )
 
         result["valid_structure"] = True
 
         if not result["has_cabundle"]:
-            result["issues"].append("Missing CA bundle - cannot verify certificate chain to AWS root")
+            result["issues"].append(
+                "Missing CA bundle - cannot verify certificate chain to AWS root"
+            )
         if not result["has_public_key"]:
-            result["issues"].append("No public key in attestation - KMS cannot encrypt response to enclave")
+            result["issues"].append(
+                "No public key in attestation - KMS cannot encrypt response to enclave"
+            )
         if "PCR0" not in result["pcrs"]:
-            result["issues"].append("PCR0 (image hash) not present in attestation document")
+            result["issues"].append(
+                "PCR0 (image hash) not present in attestation document"
+            )
 
     except Exception as e:
         result["issues"].append(f"Attestation parsing error: {str(e)}")
@@ -317,6 +366,7 @@ def validate_attestation_document_structure(attestation_b64):
 def audit_cloudtrail_enclave_events(cloudtrail_client, days_back=7):
     """Search CloudTrail for enclave-related security events."""
     from datetime import timedelta
+
     end_time = datetime.now(timezone.utc)
     start_time = end_time - timedelta(days=days_back)
 
@@ -347,13 +397,15 @@ def audit_cloudtrail_enclave_events(cloudtrail_client, days_back=7):
                 if event_name == "RunInstances":
                     enclave_opts = req_params.get("enclaveOptions", {})
                     if enclave_opts.get("enabled"):
-                        findings.append({
-                            "event": event_name,
-                            "time": event["EventTime"].isoformat(),
-                            "user": event.get("Username"),
-                            "detail": "Enclave-enabled instance launched",
-                            "source_ip": ct_event.get("sourceIPAddress"),
-                        })
+                        findings.append(
+                            {
+                                "event": event_name,
+                                "time": event["EventTime"].isoformat(),
+                                "user": event.get("Username"),
+                                "detail": "Enclave-enabled instance launched",
+                                "source_ip": ct_event.get("sourceIPAddress"),
+                            }
+                        )
         except ClientError:
             continue
 
@@ -372,14 +424,16 @@ def audit_cloudtrail_enclave_events(cloudtrail_client, days_back=7):
                 ct_event = json.loads(event.get("CloudTrailEvent", "{}"))
                 req_params = ct_event.get("requestParameters", {})
                 if "recipient" in req_params or "Recipient" in req_params:
-                    findings.append({
-                        "event": event_name,
-                        "time": event["EventTime"].isoformat(),
-                        "user": event.get("Username"),
-                        "detail": "KMS operation with enclave attestation document",
-                        "key_id": req_params.get("keyId"),
-                        "source_ip": ct_event.get("sourceIPAddress"),
-                    })
+                    findings.append(
+                        {
+                            "event": event_name,
+                            "time": event["EventTime"].isoformat(),
+                            "user": event.get("Username"),
+                            "detail": "KMS operation with enclave attestation document",
+                            "key_id": req_params.get("keyId"),
+                            "source_ip": ct_event.get("sourceIPAddress"),
+                        }
+                    )
         except ClientError:
             continue
 
@@ -387,7 +441,9 @@ def audit_cloudtrail_enclave_events(cloudtrail_client, days_back=7):
     return findings
 
 
-def generate_report(instances, kms_audits, iam_audits, cloudtrail_events, attestation_results=None):
+def generate_report(
+    instances, kms_audits, iam_audits, cloudtrail_events, attestation_results=None
+):
     """Generate comprehensive Nitro Enclave security assessment report."""
     total_issues = 0
     critical_issues = []
@@ -395,7 +451,9 @@ def generate_report(instances, kms_audits, iam_audits, cloudtrail_events, attest
     for audit in kms_audits:
         total_issues += len(audit.get("issues", []))
         if not audit.get("has_attestation_condition"):
-            critical_issues.append(f"KMS key {audit['key_id']} has no attestation conditions")
+            critical_issues.append(
+                f"KMS key {audit['key_id']} has no attestation conditions"
+            )
 
     for audit in iam_audits:
         total_issues += len(audit.get("issues", []))
@@ -427,13 +485,28 @@ def generate_report(instances, kms_audits, iam_audits, cloudtrail_events, attest
 
 
 def main():
-    parser = argparse.ArgumentParser(description="AWS Nitro Enclave Security Assessment Agent")
+    parser = argparse.ArgumentParser(
+        description="AWS Nitro Enclave Security Assessment Agent"
+    )
     parser.add_argument("--region", default="us-east-1", help="AWS region")
     parser.add_argument("--kms-key-ids", nargs="+", help="KMS key IDs to audit")
-    parser.add_argument("--iam-roles", nargs="+", help="IAM role names to audit for enclave permissions")
-    parser.add_argument("--attestation-doc", help="Base64-encoded attestation document to validate")
-    parser.add_argument("--cloudtrail-days", type=int, default=7, help="Days of CloudTrail history to search")
-    parser.add_argument("--output", default="nitro_enclave_security_report.json", help="Output report file")
+    parser.add_argument(
+        "--iam-roles", nargs="+", help="IAM role names to audit for enclave permissions"
+    )
+    parser.add_argument(
+        "--attestation-doc", help="Base64-encoded attestation document to validate"
+    )
+    parser.add_argument(
+        "--cloudtrail-days",
+        type=int,
+        default=7,
+        help="Days of CloudTrail history to search",
+    )
+    parser.add_argument(
+        "--output",
+        default="nitro_enclave_security_report.json",
+        help="Output report file",
+    )
     args = parser.parse_args()
 
     session = boto3.Session(region_name=args.region)
@@ -459,7 +532,9 @@ def main():
             keys_response = kms_client.list_keys(Limit=100)
             for key in keys_response.get("Keys", []):
                 audit = audit_kms_key_policy(kms_client, key["KeyId"])
-                if audit.get("has_attestation_condition") or audit.get("allowed_actions"):
+                if audit.get("has_attestation_condition") or audit.get(
+                    "allowed_actions"
+                ):
                     kms_audits.append(audit)
         except ClientError as e:
             logger.warning("Cannot list KMS keys: %s", e)
@@ -472,16 +547,22 @@ def main():
             iam_audits.append(audit_iam_role_for_enclave(iam_client, role_name))
 
     # Step 4: Search CloudTrail events
-    cloudtrail_events = audit_cloudtrail_enclave_events(cloudtrail_client, args.cloudtrail_days)
+    cloudtrail_events = audit_cloudtrail_enclave_events(
+        cloudtrail_client, args.cloudtrail_days
+    )
 
     # Step 5: Validate attestation document if provided
     attestation_results = None
     if args.attestation_doc:
         logger.info("Validating attestation document")
-        attestation_results = validate_attestation_document_structure(args.attestation_doc)
+        attestation_results = validate_attestation_document_structure(
+            args.attestation_doc
+        )
 
     # Generate report
-    report = generate_report(instances, kms_audits, iam_audits, cloudtrail_events, attestation_results)
+    report = generate_report(
+        instances, kms_audits, iam_audits, cloudtrail_events, attestation_results
+    )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)

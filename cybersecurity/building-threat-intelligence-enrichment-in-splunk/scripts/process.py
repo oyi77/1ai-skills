@@ -15,10 +15,19 @@ from typing import Optional
 class ThreatIndicator:
     """Represents a single threat intelligence indicator."""
 
-    def __init__(self, value: str, indicator_type: str, source: str,
-                 threat_type: str, confidence: int, description: str = "",
-                 severity: str = "medium", first_seen: Optional[str] = None,
-                 last_seen: Optional[str] = None, tags: Optional[list] = None):
+    def __init__(
+        self,
+        value: str,
+        indicator_type: str,
+        source: str,
+        threat_type: str,
+        confidence: int,
+        description: str = "",
+        severity: str = "medium",
+        first_seen: Optional[str] = None,
+        last_seen: Optional[str] = None,
+        tags: Optional[list] = None,
+    ):
         self.value = value
         self.indicator_type = indicator_type
         self.source = source
@@ -36,7 +45,9 @@ class ThreatIndicator:
         return hashlib.sha256(hash_input.encode()).hexdigest()[:16]
 
     def is_expired(self, max_age_days: int = 90) -> bool:
-        last = datetime.fromisoformat(self.last_seen.replace("Z", "+00:00").replace("+00:00", ""))
+        last = datetime.fromisoformat(
+            self.last_seen.replace("Z", "+00:00").replace("+00:00", "")
+        )
         return (datetime.utcnow() - last).days > max_age_days
 
     def to_kv_store_record(self) -> dict:
@@ -65,8 +76,14 @@ class ThreatIndicator:
 class ThreatFeed:
     """Represents a threat intelligence feed source."""
 
-    def __init__(self, name: str, feed_type: str, url: str,
-                 polling_interval: int = 3600, api_key: str = ""):
+    def __init__(
+        self,
+        name: str,
+        feed_type: str,
+        url: str,
+        polling_interval: int = 3600,
+        api_key: str = "",
+    ):
         self.name = name
         self.feed_type = feed_type
         self.url = url
@@ -74,7 +91,11 @@ class ThreatFeed:
         self.api_key = api_key
         self.indicators = []
         self.last_poll = None
-        self.stats = {"total_ingested": 0, "duplicates_skipped": 0, "expired_removed": 0}
+        self.stats = {
+            "total_ingested": 0,
+            "duplicates_skipped": 0,
+            "expired_removed": 0,
+        }
 
     def add_indicator(self, indicator: ThreatIndicator):
         self.indicators.append(indicator)
@@ -100,7 +121,12 @@ class EnrichmentPipeline:
 
     def __init__(self):
         self.feeds = []
-        self.kv_store = {"ip_intel": [], "domain_intel": [], "file_intel": [], "url_intel": []}
+        self.kv_store = {
+            "ip_intel": [],
+            "domain_intel": [],
+            "file_intel": [],
+            "url_intel": [],
+        }
         self.correlation_hits = []
 
     def add_feed(self, feed: ThreatFeed):
@@ -127,7 +153,11 @@ class EnrichmentPipeline:
         """Simulate correlating events against TI indicators."""
         hits = []
         ip_iocs = {r["ip"]: r for r in self.kv_store.get("ip_intel", []) if "ip" in r}
-        domain_iocs = {r["domain"]: r for r in self.kv_store.get("domain_intel", []) if "domain" in r}
+        domain_iocs = {
+            r["domain"]: r
+            for r in self.kv_store.get("domain_intel", [])
+            if "domain" in r
+        }
 
         for event in events:
             dest_ip = event.get("dest_ip", "")
@@ -135,27 +165,31 @@ class EnrichmentPipeline:
 
             if dest_ip in ip_iocs:
                 ioc = ip_iocs[dest_ip]
-                hits.append({
-                    "event": event,
-                    "match_type": "ip",
-                    "matched_value": dest_ip,
-                    "threat_type": ioc["threat_type"],
-                    "confidence": ioc["confidence"],
-                    "source": ioc["source"],
-                    "severity": ioc["severity"],
-                })
+                hits.append(
+                    {
+                        "event": event,
+                        "match_type": "ip",
+                        "matched_value": dest_ip,
+                        "threat_type": ioc["threat_type"],
+                        "confidence": ioc["confidence"],
+                        "source": ioc["source"],
+                        "severity": ioc["severity"],
+                    }
+                )
 
             if domain in domain_iocs:
                 ioc = domain_iocs[domain]
-                hits.append({
-                    "event": event,
-                    "match_type": "domain",
-                    "matched_value": domain,
-                    "threat_type": ioc["threat_type"],
-                    "confidence": ioc["confidence"],
-                    "source": ioc["source"],
-                    "severity": ioc["severity"],
-                })
+                hits.append(
+                    {
+                        "event": event,
+                        "match_type": "domain",
+                        "matched_value": domain,
+                        "threat_type": ioc["threat_type"],
+                        "confidence": ioc["confidence"],
+                        "source": ioc["source"],
+                        "severity": ioc["severity"],
+                    }
+                )
 
         self.correlation_hits = hits
         return hits
@@ -175,27 +209,27 @@ class EnrichmentPipeline:
     def generate_spl_correlation(self, indicator_type: str) -> str:
         templates = {
             "ip": (
-                '| tstats summariesonly=true count from datamodel=Network_Traffic '
-                'where All_Traffic.action=allowed by All_Traffic.dest_ip, All_Traffic.src_ip, _time span=5m\n'
+                "| tstats summariesonly=true count from datamodel=Network_Traffic "
+                "where All_Traffic.action=allowed by All_Traffic.dest_ip, All_Traffic.src_ip, _time span=5m\n"
                 '| rename "All_Traffic.*" as *\n'
-                '| lookup ip_threat_intel_lookup ip as dest_ip '
-                'OUTPUT threat_type, confidence, source as ti_source, severity as ti_severity\n'
-                '| where isnotnull(threat_type) AND confidence > 70\n'
+                "| lookup ip_threat_intel_lookup ip as dest_ip "
+                "OUTPUT threat_type, confidence, source as ti_source, severity as ti_severity\n"
+                "| where isnotnull(threat_type) AND confidence > 70\n"
                 '| eval description="TI Hit: ".dest_ip." (".threat_type.") from ".ti_source'
             ),
             "domain": (
-                'index=dns sourcetype=stream:dns\n'
-                '| lookup domain_threat_intel_lookup domain as query '
-                'OUTPUT threat_type, confidence, source as ti_source\n'
-                '| where isnotnull(threat_type) AND confidence > 70\n'
-                '| stats count dc(src_ip) as unique_sources by query, threat_type, ti_source\n'
+                "index=dns sourcetype=stream:dns\n"
+                "| lookup domain_threat_intel_lookup domain as query "
+                "OUTPUT threat_type, confidence, source as ti_source\n"
+                "| where isnotnull(threat_type) AND confidence > 70\n"
+                "| stats count dc(src_ip) as unique_sources by query, threat_type, ti_source\n"
                 '| eval description="DNS to malicious domain ".query." from ".unique_sources." sources"'
             ),
             "file_hash": (
-                'index=endpoint sourcetype=sysmon EventCode=1\n'
-                '| lookup file_hash_intel_lookup file_hash as Hashes '
-                'OUTPUT malware_family, confidence, source as ti_source\n'
-                '| where isnotnull(malware_family)\n'
+                "index=endpoint sourcetype=sysmon EventCode=1\n"
+                "| lookup file_hash_intel_lookup file_hash as Hashes "
+                "OUTPUT malware_family, confidence, source as ti_source\n"
+                "| where isnotnull(malware_family)\n"
                 '| eval description="Known malware ".malware_family." on ".Computer'
             ),
         }
@@ -206,14 +240,50 @@ if __name__ == "__main__":
     pipeline = EnrichmentPipeline()
 
     # Create sample feeds
-    otx_feed = ThreatFeed("AlienVault_OTX", "api", "https://otx.alienvault.com/api/v1/pulses/subscribed")
-    otx_feed.add_indicator(ThreatIndicator("203.0.113.50", "ip", "OTX", "C2", 85, "Known C2 server", "high"))
-    otx_feed.add_indicator(ThreatIndicator("198.51.100.25", "ip", "OTX", "Scanner", 60, "Port scanner", "medium"))
-    otx_feed.add_indicator(ThreatIndicator("evil-domain.com", "domain", "OTX", "Phishing", 92, "Phishing domain", "critical"))
+    otx_feed = ThreatFeed(
+        "AlienVault_OTX", "api", "https://otx.alienvault.com/api/v1/pulses/subscribed"
+    )
+    otx_feed.add_indicator(
+        ThreatIndicator(
+            "203.0.113.50", "ip", "OTX", "C2", 85, "Known C2 server", "high"
+        )
+    )
+    otx_feed.add_indicator(
+        ThreatIndicator(
+            "198.51.100.25", "ip", "OTX", "Scanner", 60, "Port scanner", "medium"
+        )
+    )
+    otx_feed.add_indicator(
+        ThreatIndicator(
+            "evil-domain.com",
+            "domain",
+            "OTX",
+            "Phishing",
+            92,
+            "Phishing domain",
+            "critical",
+        )
+    )
 
-    abuse_feed = ThreatFeed("AbuseIPDB", "csv", "https://api.abuseipdb.com/api/v2/blacklist")
-    abuse_feed.add_indicator(ThreatIndicator("203.0.113.50", "ip", "AbuseIPDB", "C2", 90, "Reported C2", "high"))
-    abuse_feed.add_indicator(ThreatIndicator("192.0.2.100", "ip", "AbuseIPDB", "Brute Force", 75, "SSH brute forcer", "medium"))
+    abuse_feed = ThreatFeed(
+        "AbuseIPDB", "csv", "https://api.abuseipdb.com/api/v2/blacklist"
+    )
+    abuse_feed.add_indicator(
+        ThreatIndicator(
+            "203.0.113.50", "ip", "AbuseIPDB", "C2", 90, "Reported C2", "high"
+        )
+    )
+    abuse_feed.add_indicator(
+        ThreatIndicator(
+            "192.0.2.100",
+            "ip",
+            "AbuseIPDB",
+            "Brute Force",
+            75,
+            "SSH brute forcer",
+            "medium",
+        )
+    )
 
     pipeline.add_feed(otx_feed)
     pipeline.add_feed(abuse_feed)
@@ -221,10 +291,30 @@ if __name__ == "__main__":
 
     # Simulate events
     events = [
-        {"src_ip": "10.0.0.50", "dest_ip": "203.0.113.50", "dest_port": 443, "domain": ""},
-        {"src_ip": "10.0.1.100", "dest_ip": "8.8.8.8", "dest_port": 53, "domain": "google.com"},
-        {"src_ip": "10.0.2.75", "dest_ip": "93.184.216.34", "dest_port": 80, "domain": "evil-domain.com"},
-        {"src_ip": "10.0.0.10", "dest_ip": "192.0.2.100", "dest_port": 22, "domain": ""},
+        {
+            "src_ip": "10.0.0.50",
+            "dest_ip": "203.0.113.50",
+            "dest_port": 443,
+            "domain": "",
+        },
+        {
+            "src_ip": "10.0.1.100",
+            "dest_ip": "8.8.8.8",
+            "dest_port": 53,
+            "domain": "google.com",
+        },
+        {
+            "src_ip": "10.0.2.75",
+            "dest_ip": "93.184.216.34",
+            "dest_port": 80,
+            "domain": "evil-domain.com",
+        },
+        {
+            "src_ip": "10.0.0.10",
+            "dest_ip": "192.0.2.100",
+            "dest_port": 22,
+            "domain": "",
+        },
     ]
 
     hits = pipeline.simulate_correlation(events)
@@ -240,8 +330,10 @@ if __name__ == "__main__":
 
     print(f"\nCorrelation Hits: {len(hits)}")
     for hit in hits:
-        print(f"  [{hit['severity'].upper()}] {hit['match_type']}: {hit['matched_value']} "
-              f"({hit['threat_type']}) - Confidence: {hit['confidence']}% - Source: {hit['source']}")
+        print(
+            f"  [{hit['severity'].upper()}] {hit['match_type']}: {hit['matched_value']} "
+            f"({hit['threat_type']}) - Confidence: {hit['confidence']}% - Source: {hit['source']}"
+        )
 
     print(f"\n{'=' * 70}")
     print("GENERATED SPL CORRELATION SEARCHES")

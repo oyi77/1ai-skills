@@ -6,7 +6,6 @@ import argparse
 import csv
 from datetime import datetime
 
-
 CRITICALITY_WEIGHTS = {
     "data_sensitivity": 0.25,
     "business_function": 0.20,
@@ -17,29 +16,48 @@ CRITICALITY_WEIGHTS = {
 }
 
 DATA_SENSITIVITY_SCORES = {
-    "public": 1, "internal": 2, "confidential": 3,
-    "restricted": 4, "pci": 5, "phi": 5, "pii": 4,
+    "public": 1,
+    "internal": 2,
+    "confidential": 3,
+    "restricted": 4,
+    "pci": 5,
+    "phi": 5,
+    "pii": 4,
 }
 
 BUSINESS_FUNCTION_SCORES = {
-    "test": 1, "development": 2, "staging": 2,
-    "internal-tool": 3, "customer-facing": 4,
-    "revenue-generating": 5, "critical-infrastructure": 5,
+    "test": 1,
+    "development": 2,
+    "staging": 2,
+    "internal-tool": 3,
+    "customer-facing": 4,
+    "revenue-generating": 5,
+    "critical-infrastructure": 5,
 }
 
 REGULATORY_SCOPE_SCORES = {
-    "none": 1, "internal-policy": 2, "soc2": 3,
-    "gdpr": 4, "pci-dss": 5, "hipaa": 5, "fedramp": 5,
+    "none": 1,
+    "internal-policy": 2,
+    "soc2": 3,
+    "gdpr": 4,
+    "pci-dss": 5,
+    "hipaa": 5,
+    "fedramp": 5,
 }
 
 NETWORK_EXPOSURE_SCORES = {
-    "air-gapped": 1, "internal-only": 2, "vpn-accessible": 3,
-    "dmz": 4, "internet-facing": 5,
+    "air-gapped": 1,
+    "internal-only": 2,
+    "vpn-accessible": 3,
+    "dmz": 4,
+    "internet-facing": 5,
 }
 
 RECOVERABILITY_SCORES = {
-    "auto-recovery": 1, "backup-available": 2,
-    "manual-recovery": 3, "extended-downtime": 4,
+    "auto-recovery": 1,
+    "backup-available": 2,
+    "manual-recovery": 3,
+    "extended-downtime": 4,
     "no-recovery": 5,
 }
 
@@ -58,15 +76,20 @@ def calculate_criticality_score(asset):
     """Calculate weighted criticality score for a single asset."""
     scores = {}
     scores["data_sensitivity"] = DATA_SENSITIVITY_SCORES.get(
-        asset.get("data_classification", "internal").lower(), 2)
+        asset.get("data_classification", "internal").lower(), 2
+    )
     scores["business_function"] = BUSINESS_FUNCTION_SCORES.get(
-        asset.get("business_function", "internal-tool").lower(), 3)
+        asset.get("business_function", "internal-tool").lower(), 3
+    )
     scores["regulatory_scope"] = REGULATORY_SCOPE_SCORES.get(
-        asset.get("regulatory_scope", "none").lower(), 1)
+        asset.get("regulatory_scope", "none").lower(), 1
+    )
     scores["network_exposure"] = NETWORK_EXPOSURE_SCORES.get(
-        asset.get("network_exposure", "internal-only").lower(), 2)
+        asset.get("network_exposure", "internal-only").lower(), 2
+    )
     scores["recoverability"] = RECOVERABILITY_SCORES.get(
-        asset.get("recoverability", "backup-available").lower(), 2)
+        asset.get("recoverability", "backup-available").lower(), 2
+    )
 
     user_count = int(asset.get("user_count", 0))
     if user_count > 10000:
@@ -81,8 +104,7 @@ def calculate_criticality_score(asset):
         scores["user_count"] = 1
 
     weighted_score = sum(
-        scores[factor] * weight
-        for factor, weight in CRITICALITY_WEIGHTS.items()
+        scores[factor] * weight for factor, weight in CRITICALITY_WEIGHTS.items()
     )
 
     if weighted_score >= 4.0:
@@ -152,8 +174,10 @@ def run_audit(args):
 
         print(f"--- ASSET CRITICALITY SCORES ({len(scored)} assets) ---")
         for s in scored[:20]:
-            print(f"  Tier {s['tier']} ({s['tier_name']}): {s['asset']} "
-                  f"— score {s['weighted_score']}")
+            print(
+                f"  Tier {s['tier']} ({s['tier_name']}): {s['asset']} "
+                f"— score {s['weighted_score']}"
+            )
 
         print(f"\n--- TIER DISTRIBUTION ---")
         for tier_name, count in sorted(tier_counts.items()):
@@ -162,8 +186,10 @@ def run_audit(args):
         print(f"\n--- REMEDIATION SLA MATRIX ---")
         for tier in range(1, 6):
             sla = generate_sla_matrix(tier)
-            print(f"  Tier {tier}: Critical={sla['critical']} High={sla['high']} "
-                  f"Medium={sla['medium']} Low={sla['low']}")
+            print(
+                f"  Tier {tier}: Critical={sla['critical']} High={sla['high']} "
+                f"Medium={sla['medium']} Low={sla['low']}"
+            )
 
     if args.cvss_score and args.asset_tier:
         adjusted = calculate_risk_adjusted_priority(args.asset_tier, args.cvss_score)
@@ -185,8 +211,12 @@ def main():
     parser = argparse.ArgumentParser(description="Asset Criticality Scoring Agent")
     parser.add_argument("--inventory", help="CSV file with asset inventory")
     parser.add_argument("--cvss-score", type=float, help="CVSS score to adjust")
-    parser.add_argument("--asset-tier", type=int, choices=[1, 2, 3, 4, 5],
-                        help="Asset criticality tier (1=highest)")
+    parser.add_argument(
+        "--asset-tier",
+        type=int,
+        choices=[1, 2, 3, 4, 5],
+        help="Asset criticality tier (1=highest)",
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

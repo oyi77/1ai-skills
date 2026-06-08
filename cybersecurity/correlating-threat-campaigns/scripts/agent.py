@@ -27,7 +27,9 @@ class MISPClient:
     def _request(self, method, path, data=None):
         url = f"{self.base_url}{path}"
         body = json.dumps(data).encode() if data else None
-        req = urllib.request.Request(url, data=body, headers=self.headers, method=method)
+        req = urllib.request.Request(
+            url, data=body, headers=self.headers, method=method
+        )
         try:
             with urllib.request.urlopen(req, context=self.ctx, timeout=60) as resp:
                 return json.loads(resp.read().decode())
@@ -64,13 +66,15 @@ class MISPClient:
         for attr in ev.get("Attribute", []):
             if attr.get("RelatedAttribute"):
                 for rel in attr["RelatedAttribute"]:
-                    correlations.append({
-                        "source_event": event_id,
-                        "source_attr": attr.get("value"),
-                        "source_type": attr.get("type"),
-                        "related_event": rel.get("event_id"),
-                        "related_value": rel.get("value"),
-                    })
+                    correlations.append(
+                        {
+                            "source_event": event_id,
+                            "source_attr": attr.get("value"),
+                            "source_type": attr.get("type"),
+                            "related_event": rel.get("event_id"),
+                            "related_value": rel.get("value"),
+                        }
+                    )
         return correlations
 
 
@@ -148,7 +152,11 @@ def extract_campaign_iocs(events):
         "total_unique_iocs": len(ioc_events),
         "shared_iocs": len(shared),
         "shared_indicators": [
-            {"type": k.split(":")[0], "value": ":".join(k.split(":")[1:]), "event_count": len(v)}
+            {
+                "type": k.split(":")[0],
+                "value": ":".join(k.split(":")[1:]),
+                "event_count": len(v),
+            }
             for k, v in sorted(shared.items(), key=lambda x: len(x[1]), reverse=True)
         ][:50],
     }
@@ -172,7 +180,10 @@ def build_campaign_report(campaign_name, events, attribution=None):
     return {
         "campaign_name": campaign_name,
         "report_date": datetime.utcnow().isoformat() + "Z",
-        "timeline": {"first_seen": min(dates) if dates else None, "last_seen": max(dates) if dates else None},
+        "timeline": {
+            "first_seen": min(dates) if dates else None,
+            "last_seen": max(dates) if dates else None,
+        },
         "attribution": attribution or "Unattributed",
         "confidence": confidence,
         "shared_indicators": iocs,
@@ -183,6 +194,7 @@ def build_campaign_report(campaign_name, events, attribution=None):
 
 if __name__ == "__main__":
     import os
+
     misp_url = os.environ.get("MISP_URL", "https://misp.example.com")
     misp_key = os.environ.get("MISP_KEY", "")
 
@@ -201,5 +213,7 @@ if __name__ == "__main__":
         result = client.search_events(tags=tags)
         print(json.dumps(result, indent=2, default=str))
     else:
-        print("Usage: agent.py [search <type> <value>|correlations <event_id>|events [tag]]")
+        print(
+            "Usage: agent.py [search <type> <value>|correlations <event_id>|events [tag]]"
+        )
         print("Env: MISP_URL, MISP_KEY")

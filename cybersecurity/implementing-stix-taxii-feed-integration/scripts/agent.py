@@ -5,6 +5,7 @@ Connects to TAXII 2.0/2.1 servers to discover and consume threat intelligence
 feeds in STIX format. Extracts indicators of compromise (IOCs), threat actors,
 malware families, and attack patterns from STIX bundles.
 """
+
 import argparse
 import json
 import os
@@ -14,12 +15,14 @@ from datetime import datetime, timezone
 try:
     from taxii2client.v20 import Server as Server20, Collection as Collection20
     from taxii2client.v21 import Server as Server21, Collection as Collection21
+
     HAS_TAXII_CLIENT = True
 except ImportError:
     HAS_TAXII_CLIENT = False
 
 try:
     from stix2 import parse as stix_parse
+
     HAS_STIX2 = True
 except ImportError:
     HAS_STIX2 = False
@@ -107,19 +110,21 @@ def extract_indicators(stix_objects):
     for obj in stix_objects:
         obj_type = obj.get("type", "")
         if obj_type == "indicator":
-            indicators.append({
-                "type": "indicator",
-                "id": obj.get("id", ""),
-                "name": obj.get("name", ""),
-                "description": obj.get("description", "")[:200],
-                "pattern": obj.get("pattern", ""),
-                "pattern_type": obj.get("pattern_type", "stix"),
-                "valid_from": obj.get("valid_from", ""),
-                "valid_until": obj.get("valid_until", ""),
-                "labels": obj.get("labels", []),
-                "confidence": obj.get("confidence", 0),
-                "created": obj.get("created", ""),
-            })
+            indicators.append(
+                {
+                    "type": "indicator",
+                    "id": obj.get("id", ""),
+                    "name": obj.get("name", ""),
+                    "description": obj.get("description", "")[:200],
+                    "pattern": obj.get("pattern", ""),
+                    "pattern_type": obj.get("pattern_type", "stix"),
+                    "valid_from": obj.get("valid_from", ""),
+                    "valid_until": obj.get("valid_until", ""),
+                    "labels": obj.get("labels", []),
+                    "confidence": obj.get("confidence", 0),
+                    "created": obj.get("created", ""),
+                }
+            )
     return indicators
 
 
@@ -128,18 +133,20 @@ def extract_threat_actors(stix_objects):
     actors = []
     for obj in stix_objects:
         if obj.get("type") == "threat-actor":
-            actors.append({
-                "type": "threat-actor",
-                "id": obj.get("id", ""),
-                "name": obj.get("name", ""),
-                "description": obj.get("description", "")[:200],
-                "aliases": obj.get("aliases", []),
-                "roles": obj.get("roles", []),
-                "goals": obj.get("goals", []),
-                "sophistication": obj.get("sophistication", ""),
-                "resource_level": obj.get("resource_level", ""),
-                "primary_motivation": obj.get("primary_motivation", ""),
-            })
+            actors.append(
+                {
+                    "type": "threat-actor",
+                    "id": obj.get("id", ""),
+                    "name": obj.get("name", ""),
+                    "description": obj.get("description", "")[:200],
+                    "aliases": obj.get("aliases", []),
+                    "roles": obj.get("roles", []),
+                    "goals": obj.get("goals", []),
+                    "sophistication": obj.get("sophistication", ""),
+                    "resource_level": obj.get("resource_level", ""),
+                    "primary_motivation": obj.get("primary_motivation", ""),
+                }
+            )
     return actors
 
 
@@ -148,16 +155,18 @@ def extract_malware(stix_objects):
     malware = []
     for obj in stix_objects:
         if obj.get("type") == "malware":
-            malware.append({
-                "type": "malware",
-                "id": obj.get("id", ""),
-                "name": obj.get("name", ""),
-                "description": obj.get("description", "")[:200],
-                "malware_types": obj.get("malware_types", []),
-                "is_family": obj.get("is_family", False),
-                "aliases": obj.get("aliases", []),
-                "capabilities": obj.get("capabilities", []),
-            })
+            malware.append(
+                {
+                    "type": "malware",
+                    "id": obj.get("id", ""),
+                    "name": obj.get("name", ""),
+                    "description": obj.get("description", "")[:200],
+                    "malware_types": obj.get("malware_types", []),
+                    "is_family": obj.get("is_family", False),
+                    "aliases": obj.get("aliases", []),
+                    "capabilities": obj.get("capabilities", []),
+                }
+            )
     return malware
 
 
@@ -172,14 +181,16 @@ def extract_attack_patterns(stix_objects):
                 if ref.get("source_name") in ("mitre-attack", "mitre-mobile-attack"):
                     mitre_id = ref.get("external_id", "")
                     break
-            patterns.append({
-                "type": "attack-pattern",
-                "id": obj.get("id", ""),
-                "name": obj.get("name", ""),
-                "mitre_id": mitre_id,
-                "description": obj.get("description", "")[:200],
-                "kill_chain_phases": obj.get("kill_chain_phases", []),
-            })
+            patterns.append(
+                {
+                    "type": "attack-pattern",
+                    "id": obj.get("id", ""),
+                    "name": obj.get("name", ""),
+                    "mitre_id": mitre_id,
+                    "description": obj.get("description", "")[:200],
+                    "kill_chain_phases": obj.get("kill_chain_phases", []),
+                }
+            )
     return patterns
 
 
@@ -205,14 +216,18 @@ def format_summary(type_counts, indicators, actors, malware, attack_patterns):
     if indicators:
         print(f"\n  Indicators ({len(indicators)}):")
         for ind in indicators[:10]:
-            print(f"    {ind['name'][:40]:40s} | {ind['pattern_type']:8s} | "
-                  f"{ind['pattern'][:50]}")
+            print(
+                f"    {ind['name'][:40]:40s} | {ind['pattern_type']:8s} | "
+                f"{ind['pattern'][:50]}"
+            )
 
     if actors:
         print(f"\n  Threat Actors ({len(actors)}):")
         for actor in actors[:10]:
             aliases = ", ".join(actor["aliases"][:3]) if actor["aliases"] else ""
-            print(f"    {actor['name']:30s} | {actor['sophistication']:12s} | {aliases}")
+            print(
+                f"    {actor['name']:30s} | {actor['sophistication']:12s} | {aliases}"
+            )
 
     if malware:
         print(f"\n  Malware Families ({len(malware)}):")
@@ -233,21 +248,36 @@ def main():
     parser.add_argument("--server", required=True, help="TAXII server discovery URL")
     parser.add_argument("--username", help="TAXII authentication username")
     parser.add_argument("--password", help="TAXII authentication password")
-    parser.add_argument("--version", choices=["2.0", "2.1"], default="2.1",
-                        help="TAXII version (default: 2.1)")
+    parser.add_argument(
+        "--version",
+        choices=["2.0", "2.1"],
+        default="2.1",
+        help="TAXII version (default: 2.1)",
+    )
     parser.add_argument("--collection-id", help="Specific collection ID to fetch")
-    parser.add_argument("--added-after", help="Only fetch objects added after date (ISO format)")
-    parser.add_argument("--type", dest="obj_type",
-                        help="Filter by STIX object type (e.g., indicator, malware)")
-    parser.add_argument("--limit", type=int, default=500,
-                        help="Max objects to retrieve (default: 500)")
-    parser.add_argument("--discover-only", action="store_true",
-                        help="Only discover collections, don't fetch objects")
+    parser.add_argument(
+        "--added-after", help="Only fetch objects added after date (ISO format)"
+    )
+    parser.add_argument(
+        "--type",
+        dest="obj_type",
+        help="Filter by STIX object type (e.g., indicator, malware)",
+    )
+    parser.add_argument(
+        "--limit", type=int, default=500, help="Max objects to retrieve (default: 500)"
+    )
+    parser.add_argument(
+        "--discover-only",
+        action="store_true",
+        help="Only discover collections, don't fetch objects",
+    )
     parser.add_argument("--output", "-o", help="Output JSON report path")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
 
-    server = connect_taxii_server(args.server, args.username, args.password, args.version)
+    server = connect_taxii_server(
+        args.server, args.username, args.password, args.version
+    )
     collections = discover_collections(server, args.version)
 
     if args.discover_only:
@@ -276,14 +306,18 @@ def main():
             if args.version == "2.0":
                 col = Collection20(
                     f"{args.server.rstrip('/')}/collections/{col_info['id']}/",
-                    user=args.username, password=args.password
+                    user=args.username,
+                    password=args.password,
                 )
             else:
                 col = Collection21(
                     f"{args.server.rstrip('/')}/collections/{col_info['id']}/",
-                    user=args.username, password=args.password
+                    user=args.username,
+                    password=args.password,
                 )
-            objects = fetch_collection_objects(col, args.added_after, args.limit, args.obj_type)
+            objects = fetch_collection_objects(
+                col, args.added_after, args.limit, args.obj_type
+            )
             all_objects.extend(objects)
         except Exception as e:
             print(f"[!] Error fetching {col_info['title']}: {e}")

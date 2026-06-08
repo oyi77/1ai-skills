@@ -94,7 +94,9 @@ class ADCompromiseInvestigator:
 
         event = {
             "event_id": int(event_id_elem.text) if event_id_elem is not None else 0,
-            "timestamp": time_elem.get("SystemTime", "") if time_elem is not None else "",
+            "timestamp": (
+                time_elem.get("SystemTime", "") if time_elem is not None else ""
+            ),
             "computer": computer_elem.text if computer_elem is not None else "",
             "data": {},
         }
@@ -120,14 +122,16 @@ class ADCompromiseInvestigator:
             for guid in self.DCSYNC_GUIDS:
                 if guid.lower() in properties.lower():
                     subject = event["data"].get("SubjectUserName", "Unknown")
-                    dcsync_events.append({
-                        "timestamp": event["timestamp"],
-                        "account": subject,
-                        "computer": event["computer"],
-                        "guid": guid,
-                        "severity": "CRITICAL",
-                        "description": f"DCSync replication rights used by {subject}",
-                    })
+                    dcsync_events.append(
+                        {
+                            "timestamp": event["timestamp"],
+                            "account": subject,
+                            "computer": event["computer"],
+                            "guid": guid,
+                            "severity": "CRITICAL",
+                            "description": f"DCSync replication rights used by {subject}",
+                        }
+                    )
                     self.compromised_accounts.add(subject)
 
         if dcsync_events:
@@ -137,7 +141,7 @@ class ADCompromiseInvestigator:
                 "count": len(dcsync_events),
                 "details": dcsync_events,
                 "recommendation": "Immediately revoke replication rights from non-DC accounts. "
-                                  "Double-rotate krbtgt password. Reset all domain passwords.",
+                "Double-rotate krbtgt password. Reset all domain passwords.",
             }
             self.findings.append(finding)
             print(f"  [!] CRITICAL: {len(dcsync_events)} DCSync events detected!")
@@ -166,21 +170,25 @@ class ADCompromiseInvestigator:
             encryption = ticket["data"].get("TicketEncryptionType", "")
             # RC4 encryption (0x17) when AES should be used indicates forged ticket
             if encryption == "0x17":
-                golden_ticket_indicators.append({
-                    "timestamp": ticket["timestamp"],
-                    "account": account,
-                    "indicator": "RC4 encryption on service ticket (should be AES)",
-                    "encryption_type": encryption,
-                    "severity": "HIGH",
-                })
+                golden_ticket_indicators.append(
+                    {
+                        "timestamp": ticket["timestamp"],
+                        "account": account,
+                        "indicator": "RC4 encryption on service ticket (should be AES)",
+                        "encryption_type": encryption,
+                        "severity": "HIGH",
+                    }
+                )
             # Service ticket without corresponding TGT request
             if account and account not in tgt_requests:
-                golden_ticket_indicators.append({
-                    "timestamp": ticket["timestamp"],
-                    "account": account,
-                    "indicator": "Service ticket without matching TGT request",
-                    "severity": "CRITICAL",
-                })
+                golden_ticket_indicators.append(
+                    {
+                        "timestamp": ticket["timestamp"],
+                        "account": account,
+                        "indicator": "Service ticket without matching TGT request",
+                        "severity": "CRITICAL",
+                    }
+                )
 
         if golden_ticket_indicators:
             finding = {
@@ -189,10 +197,12 @@ class ADCompromiseInvestigator:
                 "count": len(golden_ticket_indicators),
                 "details": golden_ticket_indicators,
                 "recommendation": "Double-rotate krbtgt password immediately. "
-                                  "Wait for full replication between rotations.",
+                "Wait for full replication between rotations.",
             }
             self.findings.append(finding)
-            print(f"  [!] CRITICAL: {len(golden_ticket_indicators)} Golden Ticket indicators!")
+            print(
+                f"  [!] CRITICAL: {len(golden_ticket_indicators)} Golden Ticket indicators!"
+            )
         else:
             print("  [+] No Golden Ticket indicators detected.")
 
@@ -212,25 +222,29 @@ class ADCompromiseInvestigator:
             account = event["data"].get("TargetUserName", "")
 
             if service_name and not service_name.endswith("$"):
-                tgs_requests_by_source[source_ip].append({
-                    "timestamp": event["timestamp"],
-                    "service": service_name,
-                    "account": account,
-                    "encryption": encryption,
-                })
+                tgs_requests_by_source[source_ip].append(
+                    {
+                        "timestamp": event["timestamp"],
+                        "service": service_name,
+                        "account": account,
+                        "encryption": encryption,
+                    }
+                )
 
         kerberoasting_sources = []
         for source_ip, requests in tgs_requests_by_source.items():
             # Threshold: more than 5 unique service tickets in short timeframe
             unique_services = set(r["service"] for r in requests)
             if len(unique_services) >= 5:
-                kerberoasting_sources.append({
-                    "source_ip": source_ip,
-                    "unique_services_requested": len(unique_services),
-                    "total_requests": len(requests),
-                    "services": list(unique_services)[:20],
-                    "severity": "HIGH",
-                })
+                kerberoasting_sources.append(
+                    {
+                        "source_ip": source_ip,
+                        "unique_services_requested": len(unique_services),
+                        "total_requests": len(requests),
+                        "services": list(unique_services)[:20],
+                        "severity": "HIGH",
+                    }
+                )
 
         if kerberoasting_sources:
             finding = {
@@ -239,11 +253,13 @@ class ADCompromiseInvestigator:
                 "count": len(kerberoasting_sources),
                 "details": kerberoasting_sources,
                 "recommendation": "Reset passwords of targeted service accounts. "
-                                  "Use Group Managed Service Accounts (gMSA) where possible. "
-                                  "Enforce long, complex passwords on service accounts.",
+                "Use Group Managed Service Accounts (gMSA) where possible. "
+                "Enforce long, complex passwords on service accounts.",
             }
             self.findings.append(finding)
-            print(f"  [!] HIGH: {len(kerberoasting_sources)} sources performing Kerberoasting!")
+            print(
+                f"  [!] HIGH: {len(kerberoasting_sources)} sources performing Kerberoasting!"
+            )
         else:
             print("  [+] No Kerberoasting activity detected.")
 
@@ -262,19 +278,25 @@ class ADCompromiseInvestigator:
             logon_process = event["data"].get("LogonProcessName", "")
 
             # Type 3 (Network) + NTLM + NtLmSsp = potential PtH
-            if logon_type == "3" and "NTLM" in auth_package and "NtLmSsp" in logon_process:
+            if (
+                logon_type == "3"
+                and "NTLM" in auth_package
+                and "NtLmSsp" in logon_process
+            ):
                 account = event["data"].get("TargetUserName", "")
                 source_ip = event["data"].get("IpAddress", "")
                 workstation = event["data"].get("WorkstationName", "")
 
-                pth_indicators.append({
-                    "timestamp": event["timestamp"],
-                    "account": account,
-                    "source_ip": source_ip,
-                    "workstation": workstation,
-                    "severity": "HIGH",
-                    "description": f"NTLM network logon from {source_ip} as {account}",
-                })
+                pth_indicators.append(
+                    {
+                        "timestamp": event["timestamp"],
+                        "account": account,
+                        "source_ip": source_ip,
+                        "workstation": workstation,
+                        "severity": "HIGH",
+                        "description": f"NTLM network logon from {source_ip} as {account}",
+                    }
+                )
 
         if pth_indicators:
             finding = {
@@ -283,11 +305,13 @@ class ADCompromiseInvestigator:
                 "count": len(pth_indicators),
                 "details": pth_indicators[:50],
                 "recommendation": "Enable Credential Guard. Enforce NTLMv2 only. "
-                                  "Add privileged accounts to Protected Users group. "
-                                  "Implement tiered administration.",
+                "Add privileged accounts to Protected Users group. "
+                "Implement tiered administration.",
             }
             self.findings.append(finding)
-            print(f"  [!] HIGH: {len(pth_indicators)} Pass-the-Hash indicators detected!")
+            print(
+                f"  [!] HIGH: {len(pth_indicators)} Pass-the-Hash indicators detected!"
+            )
         else:
             print("  [+] No Pass-the-Hash indicators detected.")
 
@@ -309,14 +333,16 @@ class ADCompromiseInvestigator:
 
             for priv_group in self.PRIVILEGED_GROUPS:
                 if priv_group.lower() in group_name.lower():
-                    escalations.append({
-                        "timestamp": event["timestamp"],
-                        "group": group_name,
-                        "member_added": member_added,
-                        "changed_by": changed_by,
-                        "computer": event["computer"],
-                        "severity": "CRITICAL",
-                    })
+                    escalations.append(
+                        {
+                            "timestamp": event["timestamp"],
+                            "group": group_name,
+                            "member_added": member_added,
+                            "changed_by": changed_by,
+                            "computer": event["computer"],
+                            "severity": "CRITICAL",
+                        }
+                    )
 
         self.privilege_escalations = escalations
 
@@ -327,7 +353,7 @@ class ADCompromiseInvestigator:
                 "count": len(escalations),
                 "details": escalations,
                 "recommendation": "Review all privileged group membership changes. "
-                                  "Remove unauthorized members. Audit AdminSDHolder.",
+                "Remove unauthorized members. Audit AdminSDHolder.",
             }
             self.findings.append(finding)
             print(f"  [!] CRITICAL: {len(escalations)} privileged group modifications!")
@@ -358,25 +384,31 @@ class ADCompromiseInvestigator:
         for account, sources in auth_chain.items():
             for source_ip, targets in sources.items():
                 if len(targets) >= 3:
-                    movement_paths.append({
-                        "account": account,
-                        "source_ip": source_ip,
-                        "targets_accessed": list(targets),
-                        "target_count": len(targets),
-                        "severity": "HIGH" if len(targets) >= 5 else "MEDIUM",
-                    })
+                    movement_paths.append(
+                        {
+                            "account": account,
+                            "source_ip": source_ip,
+                            "targets_accessed": list(targets),
+                            "target_count": len(targets),
+                            "severity": "HIGH" if len(targets) >= 5 else "MEDIUM",
+                        }
+                    )
 
         if movement_paths:
             finding = {
                 "category": "Lateral Movement Patterns",
                 "severity": "HIGH",
                 "count": len(movement_paths),
-                "details": sorted(movement_paths, key=lambda x: x["target_count"], reverse=True)[:20],
+                "details": sorted(
+                    movement_paths, key=lambda x: x["target_count"], reverse=True
+                )[:20],
                 "recommendation": "Investigate accounts with wide lateral movement. "
-                                  "Implement network segmentation. Enable credential guard.",
+                "Implement network segmentation. Enable credential guard.",
             }
             self.findings.append(finding)
-            print(f"  [!] HIGH: {len(movement_paths)} lateral movement patterns detected!")
+            print(
+                f"  [!] HIGH: {len(movement_paths)} lateral movement patterns detected!"
+            )
         else:
             print("  [+] No significant lateral movement patterns detected.")
 
@@ -396,14 +428,16 @@ class ADCompromiseInvestigator:
                 attribute = event["data"].get("AttributeLDAPDisplayName", "")
                 value = event["data"].get("AttributeValue", "")
 
-                gpo_changes.append({
-                    "timestamp": event["timestamp"],
-                    "changed_by": changed_by,
-                    "attribute": attribute,
-                    "value": value[:200],
-                    "computer": event["computer"],
-                    "severity": "HIGH",
-                })
+                gpo_changes.append(
+                    {
+                        "timestamp": event["timestamp"],
+                        "changed_by": changed_by,
+                        "attribute": attribute,
+                        "value": value[:200],
+                        "computer": event["computer"],
+                        "severity": "HIGH",
+                    }
+                )
 
         if gpo_changes:
             finding = {
@@ -412,8 +446,8 @@ class ADCompromiseInvestigator:
                 "count": len(gpo_changes),
                 "details": gpo_changes,
                 "recommendation": "Review all GPO changes for unauthorized modifications. "
-                                  "Check for malicious scheduled tasks, login scripts, "
-                                  "or software installation policies.",
+                "Check for malicious scheduled tasks, login scripts, "
+                "or software installation policies.",
             }
             self.findings.append(finding)
             print(f"  [!] HIGH: {len(gpo_changes)} GPO modifications detected!")
@@ -429,8 +463,12 @@ class ADCompromiseInvestigator:
             "generated_at": datetime.utcnow().isoformat(),
             "summary": {
                 "total_findings": len(self.findings),
-                "critical_findings": sum(1 for f in self.findings if f["severity"] == "CRITICAL"),
-                "high_findings": sum(1 for f in self.findings if f["severity"] == "HIGH"),
+                "critical_findings": sum(
+                    1 for f in self.findings if f["severity"] == "CRITICAL"
+                ),
+                "high_findings": sum(
+                    1 for f in self.findings if f["severity"] == "HIGH"
+                ),
                 "compromised_accounts": list(self.compromised_accounts),
             },
             "findings": self.findings,
@@ -451,40 +489,48 @@ class ADCompromiseInvestigator:
         has_critical = any(f["severity"] == "CRITICAL" for f in self.findings)
 
         if has_critical:
-            recommendations.append({
-                "priority": 1,
-                "action": "Double-rotate krbtgt password",
-                "detail": "Reset krbtgt twice with full AD replication between rotations. "
-                          "This invalidates all Kerberos tickets including Golden Tickets.",
-            })
-            recommendations.append({
-                "priority": 2,
-                "action": "Reset all privileged account passwords",
-                "detail": "Reset passwords for Domain Admins, Enterprise Admins, "
-                          "and all service accounts with SPNs.",
-            })
+            recommendations.append(
+                {
+                    "priority": 1,
+                    "action": "Double-rotate krbtgt password",
+                    "detail": "Reset krbtgt twice with full AD replication between rotations. "
+                    "This invalidates all Kerberos tickets including Golden Tickets.",
+                }
+            )
+            recommendations.append(
+                {
+                    "priority": 2,
+                    "action": "Reset all privileged account passwords",
+                    "detail": "Reset passwords for Domain Admins, Enterprise Admins, "
+                    "and all service accounts with SPNs.",
+                }
+            )
 
         if self.compromised_accounts:
-            recommendations.append({
-                "priority": 3,
-                "action": "Disable and investigate compromised accounts",
-                "detail": f"Accounts to investigate: {', '.join(self.compromised_accounts)}",
-            })
+            recommendations.append(
+                {
+                    "priority": 3,
+                    "action": "Disable and investigate compromised accounts",
+                    "detail": f"Accounts to investigate: {', '.join(self.compromised_accounts)}",
+                }
+            )
 
-        recommendations.extend([
-            {
-                "priority": 4,
-                "action": "Implement tiered administration model",
-                "detail": "Separate Tier 0 (AD), Tier 1 (servers), Tier 2 (workstations) "
-                          "with no credential reuse across tiers.",
-            },
-            {
-                "priority": 5,
-                "action": "Deploy advanced monitoring",
-                "detail": "Enable Microsoft Defender for Identity or equivalent. "
-                          "Configure advanced audit policies on all DCs.",
-            },
-        ])
+        recommendations.extend(
+            [
+                {
+                    "priority": 4,
+                    "action": "Implement tiered administration model",
+                    "detail": "Separate Tier 0 (AD), Tier 1 (servers), Tier 2 (workstations) "
+                    "with no credential reuse across tiers.",
+                },
+                {
+                    "priority": 5,
+                    "action": "Deploy advanced monitoring",
+                    "detail": "Enable Microsoft Defender for Identity or equivalent. "
+                    "Configure advanced audit policies on all DCs.",
+                },
+            ]
+        )
 
         return recommendations
 
@@ -539,7 +585,8 @@ def main():
         help="Windows Security event log XML files to analyze",
     )
     parser.add_argument(
-        "-o", "--output",
+        "-o",
+        "--output",
         default="ad_investigation_results",
         help="Output directory for investigation results",
     )

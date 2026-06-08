@@ -49,11 +49,14 @@ def audit_network_policies():
         policies = netpols.get("items", []) if netpols else []
 
         if not policies:
-            findings.append(NetPolFinding(
-                namespace=ns_name, severity="HIGH",
-                issue="No NetworkPolicies defined",
-                remediation=f"Create default-deny ingress/egress policy in namespace '{ns_name}'"
-            ))
+            findings.append(
+                NetPolFinding(
+                    namespace=ns_name,
+                    severity="HIGH",
+                    issue="No NetworkPolicies defined",
+                    remediation=f"Create default-deny ingress/egress policy in namespace '{ns_name}'",
+                )
+            )
             continue
 
         # Check for default-deny
@@ -65,25 +68,33 @@ def audit_network_policies():
             pod_selector = spec.get("podSelector", {})
             policy_types = spec.get("policyTypes", [])
 
-            if not pod_selector.get("matchLabels") and not pod_selector.get("matchExpressions"):
+            if not pod_selector.get("matchLabels") and not pod_selector.get(
+                "matchExpressions"
+            ):
                 if "Ingress" in policy_types and not spec.get("ingress"):
                     has_default_deny_ingress = True
                 if "Egress" in policy_types and not spec.get("egress"):
                     has_default_deny_egress = True
 
         if not has_default_deny_ingress:
-            findings.append(NetPolFinding(
-                namespace=ns_name, severity="HIGH",
-                issue="Missing default-deny ingress policy",
-                remediation="Create NetworkPolicy with empty podSelector and Ingress policyType with no ingress rules"
-            ))
+            findings.append(
+                NetPolFinding(
+                    namespace=ns_name,
+                    severity="HIGH",
+                    issue="Missing default-deny ingress policy",
+                    remediation="Create NetworkPolicy with empty podSelector and Ingress policyType with no ingress rules",
+                )
+            )
 
         if not has_default_deny_egress:
-            findings.append(NetPolFinding(
-                namespace=ns_name, severity="MEDIUM",
-                issue="Missing default-deny egress policy",
-                remediation="Create NetworkPolicy with empty podSelector and Egress policyType with no egress rules"
-            ))
+            findings.append(
+                NetPolFinding(
+                    namespace=ns_name,
+                    severity="MEDIUM",
+                    issue="Missing default-deny egress policy",
+                    remediation="Create NetworkPolicy with empty podSelector and Egress policyType with no egress rules",
+                )
+            )
 
     return findings
 
@@ -106,9 +117,21 @@ def main():
                 print(f"    Fix: {f.remediation}")
 
     with open("netpol_audit_report.json", "w") as fh:
-        json.dump({"findings": [{"namespace": f.namespace, "severity": f.severity,
-                                  "issue": f.issue, "remediation": f.remediation}
-                                 for f in findings]}, fh, indent=2)
+        json.dump(
+            {
+                "findings": [
+                    {
+                        "namespace": f.namespace,
+                        "severity": f.severity,
+                        "issue": f.issue,
+                        "remediation": f.remediation,
+                    }
+                    for f in findings
+                ]
+            },
+            fh,
+            indent=2,
+        )
     print("\n[*] Report saved to netpol_audit_report.json")
 
     if any(f.severity in ("CRITICAL", "HIGH") for f in findings):

@@ -43,18 +43,22 @@ def analyze_results(results: list) -> dict:
         columns = entry.get("columns", {})
 
         if action == "added":
-            analysis["added_items"].append({
-                "query": name,
-                "host": entry.get("hostIdentifier", ""),
-                "timestamp": entry.get("unixTime", ""),
-                "data": columns,
-            })
+            analysis["added_items"].append(
+                {
+                    "query": name,
+                    "host": entry.get("hostIdentifier", ""),
+                    "timestamp": entry.get("unixTime", ""),
+                    "data": columns,
+                }
+            )
         elif action == "removed":
-            analysis["removed_items"].append({
-                "query": name,
-                "host": entry.get("hostIdentifier", ""),
-                "data": columns,
-            })
+            analysis["removed_items"].append(
+                {
+                    "query": name,
+                    "host": entry.get("hostIdentifier", ""),
+                    "data": columns,
+                }
+            )
 
     return analysis
 
@@ -82,4 +86,6 @@ if __name__ == "__main__":
     analysis = analyze_results(results)
     out = os.path.join(os.path.dirname(sys.argv[1]) or ".", "osquery_analysis.json")
     generate_report(analysis, out)
-    print(f"Entries: {analysis['total_entries']} | New items: {len(analysis['added_items'])}")
+    print(
+        f"Entries: {analysis['total_entries']} | New items: {len(analysis['added_items'])}"
+    )

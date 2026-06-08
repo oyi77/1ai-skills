@@ -6,15 +6,14 @@ Tracks ROI for each content piece and overall campaign
 from datetime import datetime
 from collections import defaultdict
 
-
 # Cost assumptions (IDR) — update these as actuals are known
 COST_CONFIG = {
-    "api_cost_per_post_idr": 0,        # PostBridge free tier
-    "ai_generation_cost_per_post": 500, # Estimated OpenAI/Claude cost per post
-    "time_cost_per_post_minutes": 2,    # Agent time to generate + schedule
-    "hourly_rate_idr": 50000,           # Operator time cost IDR/hour
-    "platform_fee_pct": 0,             # PostBridge no rev share
-    "lynk_fee_pct": 5,                 # LYNK affiliate platform fee (est)
+    "api_cost_per_post_idr": 0,  # PostBridge free tier
+    "ai_generation_cost_per_post": 500,  # Estimated OpenAI/Claude cost per post
+    "time_cost_per_post_minutes": 2,  # Agent time to generate + schedule
+    "hourly_rate_idr": 50000,  # Operator time cost IDR/hour
+    "platform_fee_pct": 0,  # PostBridge no rev share
+    "lynk_fee_pct": 5,  # LYNK affiliate platform fee (est)
 }
 
 # Product prices (IDR)
@@ -46,7 +45,7 @@ def cost_per_post(num_posts: int, config: dict = None) -> dict:
             "ai_generation": ai_cost,
             "time_cost": round(time_cost),
         },
-        "num_posts": num_posts
+        "num_posts": num_posts,
     }
 
 
@@ -61,12 +60,17 @@ def revenue_summary(lynk_sales: int = 0, avg_product_price: int = 49000) -> dict
         "avg_price_idr": avg_product_price,
         "gross_revenue_idr": gross_revenue,
         "platform_fee_idr": lynk_fee,
-        "net_revenue_idr": net_revenue
+        "net_revenue_idr": net_revenue,
     }
 
 
-def compute_roi(analytics: list, posts: list, lynk_sales: int = 0,
-                lynk_clicks: int = 196, config: dict = None) -> dict:
+def compute_roi(
+    analytics: list,
+    posts: list,
+    lynk_sales: int = 0,
+    lynk_clicks: int = 196,
+    config: dict = None,
+) -> dict:
     """
     Full ROI calculation for the content campaign.
 
@@ -108,7 +112,9 @@ def compute_roi(analytics: list, posts: list, lynk_sales: int = 0,
     lynk_fee = round(avg_price * c["lynk_fee_pct"] / 100)
     net_per_sale = avg_price - lynk_fee
     break_even_sales = max(1, round(total_cost / net_per_sale))
-    break_even_views = round(break_even_sales / max(lynk_sales / max(total_views, 1), 0.001))
+    break_even_views = round(
+        break_even_sales / max(lynk_sales / max(total_views, 1), 0.001)
+    )
 
     # Current status
     if roi_pct > 0:
@@ -124,7 +130,7 @@ def compute_roi(analytics: list, posts: list, lynk_sales: int = 0,
             "total_cost_idr": total_cost,
             "cost_per_post_idr": costs["cost_per_post_idr"],
             "num_posts": num_posts,
-            "cost_breakdown": costs["breakdown"]
+            "cost_breakdown": costs["breakdown"],
         },
         "revenue": revenue,
         "profitability": {
@@ -140,19 +146,20 @@ def compute_roi(analytics: list, posts: list, lynk_sales: int = 0,
         "break_even": {
             "sales_needed": break_even_sales,
             "views_needed_est": break_even_views,
-            "explanation": f"Need {break_even_sales} sales at avg IDR {avg_price:,} to cover IDR {total_cost:,} investment"
+            "explanation": f"Need {break_even_sales} sales at avg IDR {avg_price:,} to cover IDR {total_cost:,} investment",
         },
         "totals": {
             "views": total_views,
             "engagement": total_engagement,
             "lynk_clicks": lynk_clicks,
         },
-        "calculated_at": datetime.now().isoformat()
+        "calculated_at": datetime.now().isoformat(),
     }
 
 
-def platform_roi_breakdown(analytics: list, post_results: list,
-                           social_accounts: list) -> dict:
+def platform_roi_breakdown(
+    analytics: list, post_results: list, social_accounts: list
+) -> dict:
     """Break down ROI investment by platform."""
     account_map = {a["id"]: a for a in social_accounts}
 
@@ -189,6 +196,7 @@ def platform_roi_breakdown(analytics: list, post_results: list,
 
 if __name__ == "__main__":
     import sys, json
+
     sys.path.insert(0, ".")
     from analytics_collector import collect_all
 

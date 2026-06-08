@@ -16,7 +16,11 @@ def run_checkov(target_path, framework=None):
         cmd.extend(["--framework", framework])
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     try:
-        return json.loads(result.stdout) if result.stdout.strip() else {"error": result.stderr}
+        return (
+            json.loads(result.stdout)
+            if result.stdout.strip()
+            else {"error": result.stderr}
+        )
     except json.JSONDecodeError:
         return {"raw": result.stdout[:2000], "error": result.stderr}
 
@@ -26,7 +30,11 @@ def run_tfsec(target_path):
     cmd = ["tfsec", target_path, "--format", "json"]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     try:
-        return json.loads(result.stdout) if result.stdout.strip() else {"error": result.stderr}
+        return (
+            json.loads(result.stdout)
+            if result.stdout.strip()
+            else {"error": result.stderr}
+        )
     except json.JSONDecodeError:
         return {"raw": result.stdout[:2000]}
 
@@ -46,21 +54,25 @@ def analyze_checkov_results(results):
     findings = []
 
     for check in all_checks:
-        severity = check.get("severity", check.get("check_result", {}).get("severity", "MEDIUM"))
+        severity = check.get(
+            "severity", check.get("check_result", {}).get("severity", "MEDIUM")
+        )
         by_severity[severity] += 1
         resource = check.get("resource", "unknown")
         by_resource_type[resource.split(".")[0]] += 1
         by_check[check.get("check_id", "unknown")] += 1
         if severity in ("CRITICAL", "HIGH"):
-            findings.append({
-                "check_id": check.get("check_id", ""),
-                "check_name": check.get("check", check.get("name", "")),
-                "resource": resource,
-                "file": check.get("file_path", check.get("repo_file_path", "")),
-                "line": check.get("file_line_range", []),
-                "severity": severity,
-                "guideline": check.get("guideline", ""),
-            })
+            findings.append(
+                {
+                    "check_id": check.get("check_id", ""),
+                    "check_name": check.get("check", check.get("name", "")),
+                    "resource": resource,
+                    "file": check.get("file_path", check.get("repo_file_path", "")),
+                    "line": check.get("file_line_range", []),
+                    "severity": severity,
+                    "guideline": check.get("guideline", ""),
+                }
+            )
 
     return {
         "total_failures": len(all_checks),
@@ -78,8 +90,14 @@ def scan_terraform_files(dir_path):
 
     risky_patterns = {
         '"0.0.0.0/0"': {"issue": "Open CIDR block", "severity": "HIGH"},
-        "cidr_blocks = [": {"issue": "Check CIDR block restrictions", "severity": "MEDIUM"},
-        "publicly_accessible": {"issue": "Public accessibility setting", "severity": "HIGH"},
+        "cidr_blocks = [": {
+            "issue": "Check CIDR block restrictions",
+            "severity": "MEDIUM",
+        },
+        "publicly_accessible": {
+            "issue": "Public accessibility setting",
+            "severity": "HIGH",
+        },
         "encrypted = false": {"issue": "Encryption disabled", "severity": "CRITICAL"},
         "enable_logging = false": {"issue": "Logging disabled", "severity": "HIGH"},
         "versioning {": {"issue": "Check versioning enabled", "severity": "MEDIUM"},
@@ -92,16 +110,21 @@ def scan_terraform_files(dir_path):
             content = tf_file.read_text(encoding="utf-8", errors="ignore")
             for pattern, info in risky_patterns.items():
                 if pattern in content:
-                    lines = [i + 1 for i, line in enumerate(content.split("\n"))
-                             if pattern in line]
+                    lines = [
+                        i + 1
+                        for i, line in enumerate(content.split("\n"))
+                        if pattern in line
+                    ]
                     for line in lines[:5]:
-                        findings.append({
-                            "file": str(tf_file),
-                            "line": line,
-                            "pattern": pattern,
-                            "issue": info["issue"],
-                            "severity": info["severity"],
-                        })
+                        findings.append(
+                            {
+                                "file": str(tf_file),
+                                "line": line,
+                                "pattern": pattern,
+                                "issue": info["issue"],
+                                "severity": info["severity"],
+                            }
+                        )
         except (OSError, PermissionError):
             continue
 
@@ -145,9 +168,13 @@ jobs:
 def main():
     parser = argparse.ArgumentParser(description="IaC Security Scanning Agent")
     parser.add_argument("--scan-dir", help="Directory to scan")
-    parser.add_argument("--framework", choices=["terraform", "cloudformation",
-                                                  "kubernetes", "helm", "all"])
-    parser.add_argument("--scanner", choices=["checkov", "tfsec", "builtin"], default="builtin")
+    parser.add_argument(
+        "--framework",
+        choices=["terraform", "cloudformation", "kubernetes", "helm", "all"],
+    )
+    parser.add_argument(
+        "--scanner", choices=["checkov", "tfsec", "builtin"], default="builtin"
+    )
     parser.add_argument("--gen-ci", action="store_true", help="Generate CI config")
     parser.add_argument("--output", default="iac_security_report.json")
     args = parser.parse_args()
@@ -170,7 +197,9 @@ def main():
             print(f"[+] Built-in scan: {len(findings)} findings")
 
     if args.gen_ci:
-        configs = generate_ci_config(args.scanner or "checkov", args.framework or "terraform")
+        configs = generate_ci_config(
+            args.scanner or "checkov", args.framework or "terraform"
+        )
         report["results"]["ci_configs"] = configs
         print("[+] CI configs generated")
 

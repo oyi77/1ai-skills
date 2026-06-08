@@ -75,22 +75,26 @@ def audit_phishing_protection(config_path):
 
     for check_name, check_info in checks.items():
         enabled = safety.get(check_info["key"], False)
-        findings.append({
-            "control": check_info["description"],
-            "enabled": enabled,
-            "status": "COMPLIANT" if enabled else "NON_COMPLIANT",
-            "severity": "INFO" if enabled else check_info["severity"],
-        })
+        findings.append(
+            {
+                "control": check_info["description"],
+                "enabled": enabled,
+                "status": "COMPLIANT" if enabled else "NON_COMPLIANT",
+                "severity": "INFO" if enabled else check_info["severity"],
+            }
+        )
 
     quarantine = safety.get("quarantine_action", "")
     if quarantine not in ("quarantine", "reject"):
-        findings.append({
-            "control": "Quarantine action for detected threats",
-            "current": quarantine or "not configured",
-            "status": "NON_COMPLIANT",
-            "severity": "HIGH",
-            "recommendation": "Set action to quarantine or reject",
-        })
+        findings.append(
+            {
+                "control": "Quarantine action for detected threats",
+                "current": quarantine or "not configured",
+                "status": "NON_COMPLIANT",
+                "severity": "HIGH",
+                "recommendation": "Set action to quarantine or reject",
+            }
+        )
 
     return findings
 
@@ -102,7 +106,9 @@ def audit_dmarc_alignment(dmarc_report_path):
     records = report if isinstance(report, list) else report.get("records", [])
     total = len(records)
     aligned = sum(1 for r in records if r.get("dkim_aligned") and r.get("spf_aligned"))
-    failures = [r for r in records if not r.get("dkim_aligned") or not r.get("spf_aligned")]
+    failures = [
+        r for r in records if not r.get("dkim_aligned") or not r.get("spf_aligned")
+    ]
     return {
         "total_records": total,
         "aligned": aligned,
@@ -153,12 +159,17 @@ def generate_recommended_settings():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Google Workspace Phishing Protection Agent")
+    parser = argparse.ArgumentParser(
+        description="Google Workspace Phishing Protection Agent"
+    )
     parser.add_argument("--config", help="Workspace safety config JSON to audit")
     parser.add_argument("--dmarc-report", help="DMARC aggregate report JSON")
     parser.add_argument("--incidents", help="Phishing incident log JSON")
-    parser.add_argument("--action", choices=["audit", "dmarc", "incidents",
-                                              "recommend", "full"], default="full")
+    parser.add_argument(
+        "--action",
+        choices=["audit", "dmarc", "incidents", "recommend", "full"],
+        default="full",
+    )
     parser.add_argument("--output", default="gws_phishing_report.json")
     args = parser.parse_args()
 
@@ -178,7 +189,9 @@ def main():
     if args.action in ("incidents", "full") and args.incidents:
         result = analyze_phishing_incidents(args.incidents)
         report["results"]["incidents"] = result
-        print(f"[+] Incidents: {result['total_incidents']}, click rate: {result['click_rate']}%")
+        print(
+            f"[+] Incidents: {result['total_incidents']}, click rate: {result['click_rate']}%"
+        )
 
     if args.action in ("recommend", "full"):
         settings = generate_recommended_settings()

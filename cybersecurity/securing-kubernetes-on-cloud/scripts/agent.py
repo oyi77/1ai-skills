@@ -30,8 +30,14 @@ def check_pod_security_standards():
         enforce = labels.get("pod-security.kubernetes.io/enforce", "NOT SET")
         audit = labels.get("pod-security.kubernetes.io/audit", "NOT SET")
         warn = labels.get("pod-security.kubernetes.io/warn", "NOT SET")
-        if enforce == "NOT SET" and name not in ("kube-system", "kube-public", "kube-node-lease"):
-            findings.append({"namespace": name, "issue": "No PSA enforcement", "severity": "HIGH"})
+        if enforce == "NOT SET" and name not in (
+            "kube-system",
+            "kube-public",
+            "kube-node-lease",
+        ):
+            findings.append(
+                {"namespace": name, "issue": "No PSA enforcement", "severity": "HIGH"}
+            )
             print(f"  [!] {name}: enforce={enforce}")
         elif enforce in ("baseline", "restricted"):
             print(f"  [+] {name}: enforce={enforce}, audit={audit}, warn={warn}")
@@ -50,11 +56,17 @@ def check_rbac_clusterroles():
         subjects = binding.subjects or []
         if role_ref in ("cluster-admin", "admin"):
             for subj in subjects:
-                if subj.kind in ("User", "Group") and subj.name not in ("system:masters",):
-                    findings.append({
-                        "binding": binding.metadata.name, "role": role_ref,
-                        "subject": f"{subj.kind}/{subj.name}", "severity": "CRITICAL",
-                    })
+                if subj.kind in ("User", "Group") and subj.name not in (
+                    "system:masters",
+                ):
+                    findings.append(
+                        {
+                            "binding": binding.metadata.name,
+                            "role": role_ref,
+                            "subject": f"{subj.kind}/{subj.name}",
+                            "severity": "CRITICAL",
+                        }
+                    )
                     print(f"  [!] CRITICAL: {subj.kind}/{subj.name} -> {role_ref}")
     print(f"[*] {len(findings)} overprivileged ClusterRoleBindings found")
     return findings
@@ -74,10 +86,14 @@ def check_service_account_tokens():
         if auto_mount is None or auto_mount is True:
             sa = pod.spec.service_account_name or "default"
             if sa == "default":
-                findings.append({
-                    "pod": pod.metadata.name, "namespace": ns,
-                    "service_account": sa, "severity": "MEDIUM",
-                })
+                findings.append(
+                    {
+                        "pod": pod.metadata.name,
+                        "namespace": ns,
+                        "service_account": sa,
+                        "severity": "MEDIUM",
+                    }
+                )
     if findings:
         print(f"  [!] {len(findings)} pods with default SA token auto-mounted")
         for f in findings[:10]:
@@ -99,18 +115,28 @@ def check_privileged_pods():
             sc = container.security_context
             if sc:
                 if sc.privileged:
-                    findings.append({
-                        "pod": pod.metadata.name, "namespace": ns,
-                        "container": container.name, "issue": "privileged=true",
-                        "severity": "CRITICAL",
-                    })
-                    print(f"  [!] CRITICAL: {ns}/{pod.metadata.name}/{container.name} is PRIVILEGED")
+                    findings.append(
+                        {
+                            "pod": pod.metadata.name,
+                            "namespace": ns,
+                            "container": container.name,
+                            "issue": "privileged=true",
+                            "severity": "CRITICAL",
+                        }
+                    )
+                    print(
+                        f"  [!] CRITICAL: {ns}/{pod.metadata.name}/{container.name} is PRIVILEGED"
+                    )
                 if sc.run_as_user == 0:
-                    findings.append({
-                        "pod": pod.metadata.name, "namespace": ns,
-                        "container": container.name, "issue": "running as root (UID 0)",
-                        "severity": "HIGH",
-                    })
+                    findings.append(
+                        {
+                            "pod": pod.metadata.name,
+                            "namespace": ns,
+                            "container": container.name,
+                            "issue": "running as root (UID 0)",
+                            "severity": "HIGH",
+                        }
+                    )
     print(f"[*] {len(findings)} privileged/root container findings")
     return findings
 
@@ -128,12 +154,19 @@ def check_network_policies():
             continue
         policies = net_v1.list_namespaced_network_policy(name).items
         if not policies:
-            findings.append({"namespace": name, "issue": "No network policies", "severity": "HIGH"})
+            findings.append(
+                {"namespace": name, "issue": "No network policies", "severity": "HIGH"}
+            )
             print(f"  [!] {name}: NO network policies")
         else:
-            deny_all = any(not p.spec.pod_selector.match_labels for p in policies
-                          if p.spec.pod_selector)
-            print(f"  [+] {name}: {len(policies)} policies (default-deny: {'Yes' if deny_all else 'No'})")
+            deny_all = any(
+                not p.spec.pod_selector.match_labels
+                for p in policies
+                if p.spec.pod_selector
+            )
+            print(
+                f"  [+] {name}: {len(policies)} policies (default-deny: {'Yes' if deny_all else 'No'})"
+            )
     return findings
 
 
@@ -150,10 +183,14 @@ def check_image_registries():
             registry = image.split("/")[0] if "/" in image else "docker.io"
             registries[registry] = registries.get(registry, 0) + 1
             if "@sha256:" not in image and ":latest" in image:
-                issues.append({
-                    "pod": pod.metadata.name, "namespace": pod.metadata.namespace,
-                    "image": image, "issue": "Using :latest tag",
-                })
+                issues.append(
+                    {
+                        "pod": pod.metadata.name,
+                        "namespace": pod.metadata.namespace,
+                        "image": image,
+                        "issue": "Using :latest tag",
+                    }
+                )
     print("  Image registries in use:")
     for reg, count in sorted(registries.items(), key=lambda x: -x[1]):
         print(f"    {reg}: {count} containers")
@@ -183,9 +220,21 @@ def full_audit(output_path="k8s_security_audit.json"):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kubernetes Cloud Security Audit Agent")
-    parser.add_argument("action", choices=["full-audit", "psa", "rbac", "privileged",
-                                           "network-policies", "images", "sa-tokens"])
+    parser = argparse.ArgumentParser(
+        description="Kubernetes Cloud Security Audit Agent"
+    )
+    parser.add_argument(
+        "action",
+        choices=[
+            "full-audit",
+            "psa",
+            "rbac",
+            "privileged",
+            "network-policies",
+            "images",
+            "sa-tokens",
+        ],
+    )
     parser.add_argument("--context", help="Kubeconfig context name")
     parser.add_argument("-o", "--output", default="k8s_security_audit.json")
     args = parser.parse_args()

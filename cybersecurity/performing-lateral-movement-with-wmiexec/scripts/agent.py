@@ -34,30 +34,39 @@ def detect_wmiexec_artifacts_evtx(evtx_file):
                     parent = data.get("ParentImage", "").lower()
                     cmdline = data.get("CommandLine", "")
                     if "wmiprvse.exe" in parent:
-                        indicators["wmi_process_creation"].append({
-                            "image": data.get("Image"), "cmdline": cmdline[:200],
-                            "user": data.get("User"), "parent": data.get("ParentImage"),
-                        })
+                        indicators["wmi_process_creation"].append(
+                            {
+                                "image": data.get("Image"),
+                                "cmdline": cmdline[:200],
+                                "user": data.get("User"),
+                                "parent": data.get("ParentImage"),
+                            }
+                        )
                 elif eid == "4624":
                     logon_type = data.get("LogonType", "")
                     if logon_type == "3":
-                        indicators["network_logon"].append({
-                            "user": data.get("TargetUserName"),
-                            "source_ip": data.get("IpAddress"),
-                            "workstation": data.get("WorkstationName"),
-                        })
+                        indicators["network_logon"].append(
+                            {
+                                "user": data.get("TargetUserName"),
+                                "source_ip": data.get("IpAddress"),
+                                "workstation": data.get("WorkstationName"),
+                            }
+                        )
                 elif eid == "7045":
                     svc_name = data.get("ServiceName", "")
                     if re.search(r"(BTOBTO|wmiprvse|wmi_|cmd\.exe)", svc_name, re.I):
-                        indicators["service_install"].append({
-                            "service": svc_name,
-                            "path": data.get("ImagePath", "")[:200],
-                        })
+                        indicators["service_install"].append(
+                            {
+                                "service": svc_name,
+                                "path": data.get("ImagePath", "")[:200],
+                            }
+                        )
             except Exception:
                 continue
     total = sum(len(v) for v in indicators.values())
     return {
-        "evtx_file": evtx_file, "total_indicators": total,
+        "evtx_file": evtx_file,
+        "total_indicators": total,
         "wmi_process_creations": len(indicators["wmi_process_creation"]),
         "network_logons": len(indicators["network_logon"]),
         "service_installs": len(indicators["service_install"]),
@@ -68,13 +77,21 @@ def detect_wmiexec_artifacts_evtx(evtx_file):
 
 def run_wmiexec_impacket(target, domain, username, command="whoami"):
     """Execute command via Impacket wmiexec (authorized pentest use)."""
-    cmd = ["python3", "-m", "impacket.examples.wmiexec",
-           f"{domain}/{username}@{target}", command]
+    cmd = [
+        "python3",
+        "-m",
+        "impacket.examples.wmiexec",
+        f"{domain}/{username}@{target}",
+        command,
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         return {
-            "target": target, "domain": domain, "user": username,
-            "command": command, "output": result.stdout[:500],
+            "target": target,
+            "domain": domain,
+            "user": username,
+            "command": command,
+            "output": result.stdout[:500],
             "success": result.returncode == 0,
             "stderr": result.stderr[:200] if result.stderr else "",
         }
@@ -86,23 +103,51 @@ def run_wmiexec_impacket(target, domain, username, command="whoami"):
 
 def detect_wmi_network_traffic(pcap_file):
     """Analyze PCAP for WMI lateral movement network indicators."""
-    cmd = ["tshark", "-r", pcap_file, "-Y",
-           "dcerpc.cn_bind_uuid == 4d9f4ab8-7d1c-11cf-861e-0020af6e7c57 || tcp.port == 135 || dcom",
-           "-T", "fields", "-e", "ip.src", "-e", "ip.dst", "-e", "tcp.dstport",
-           "-e", "dcerpc.cn_bind_uuid", "-e", "frame.time"]
+    cmd = [
+        "tshark",
+        "-r",
+        pcap_file,
+        "-Y",
+        "dcerpc.cn_bind_uuid == 4d9f4ab8-7d1c-11cf-861e-0020af6e7c57 || tcp.port == 135 || dcom",
+        "-T",
+        "fields",
+        "-e",
+        "ip.src",
+        "-e",
+        "ip.dst",
+        "-e",
+        "tcp.dstport",
+        "-e",
+        "dcerpc.cn_bind_uuid",
+        "-e",
+        "frame.time",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
         connections = []
         for line in result.stdout.strip().splitlines():
             parts = line.split("\t")
             if len(parts) >= 3:
-                connections.append({"src": parts[0], "dst": parts[1], "port": parts[2],
-                                    "uuid": parts[3] if len(parts) > 3 else "", "time": parts[4] if len(parts) > 4 else ""})
+                connections.append(
+                    {
+                        "src": parts[0],
+                        "dst": parts[1],
+                        "port": parts[2],
+                        "uuid": parts[3] if len(parts) > 3 else "",
+                        "time": parts[4] if len(parts) > 4 else "",
+                    }
+                )
         dcom_uuid = "4d9f4ab8-7d1c-11cf-861e-0020af6e7c57"
-        wmi_traffic = [c for c in connections if c.get("uuid") == dcom_uuid or c.get("port") == "135"]
+        wmi_traffic = [
+            c
+            for c in connections
+            if c.get("uuid") == dcom_uuid or c.get("port") == "135"
+        ]
         return {
-            "pcap_file": pcap_file, "total_connections": len(connections),
-            "wmi_related": len(wmi_traffic), "connections": wmi_traffic[:20],
+            "pcap_file": pcap_file,
+            "total_connections": len(connections),
+            "wmi_related": len(wmi_traffic),
+            "connections": wmi_traffic[:20],
         }
     except FileNotFoundError:
         return {"error": "tshark not found — install Wireshark"}
@@ -113,25 +158,55 @@ def detect_wmi_network_traffic(pcap_file):
 def check_wmi_persistence():
     """Check for WMI-based persistence mechanisms on local system."""
     checks = {
-        "event_subscriptions": ["wmic", "/namespace:\\\\root\\subscription", "path", "__EventFilter", "get", "/format:list"],
-        "consumers": ["wmic", "/namespace:\\\\root\\subscription", "path", "CommandLineEventConsumer", "get", "/format:list"],
-        "bindings": ["wmic", "/namespace:\\\\root\\subscription", "path", "__FilterToConsumerBinding", "get", "/format:list"],
+        "event_subscriptions": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "__EventFilter",
+            "get",
+            "/format:list",
+        ],
+        "consumers": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "CommandLineEventConsumer",
+            "get",
+            "/format:list",
+        ],
+        "bindings": [
+            "wmic",
+            "/namespace:\\\\root\\subscription",
+            "path",
+            "__FilterToConsumerBinding",
+            "get",
+            "/format:list",
+        ],
     }
     results = {}
     for name, cmd in checks.items():
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
-            entries = [line.strip() for line in result.stdout.splitlines() if "=" in line]
+            entries = [
+                line.strip() for line in result.stdout.splitlines() if "=" in line
+            ]
             results[name] = {"count": len(entries), "entries": entries[:10]}
         except Exception as e:
             results[name] = {"error": str(e)}
-    total = sum(r.get("count", 0) for r in results.values() if isinstance(r.get("count"), int))
-    return {"wmi_persistence": results, "total_subscriptions": total,
-            "finding": "WMI_PERSISTENCE_FOUND" if total > 0 else "NO_WMI_PERSISTENCE"}
+    total = sum(
+        r.get("count", 0) for r in results.values() if isinstance(r.get("count"), int)
+    )
+    return {
+        "wmi_persistence": results,
+        "total_subscriptions": total,
+        "finding": "WMI_PERSISTENCE_FOUND" if total > 0 else "NO_WMI_PERSISTENCE",
+    }
 
 
 def main():
-    parser = argparse.ArgumentParser(description="WMIExec Lateral Movement Agent (Authorized Testing Only)")
+    parser = argparse.ArgumentParser(
+        description="WMIExec Lateral Movement Agent (Authorized Testing Only)"
+    )
     sub = parser.add_subparsers(dest="command")
     d = sub.add_parser("detect", help="Detect WMIExec in EVTX logs")
     d.add_argument("--evtx", required=True)

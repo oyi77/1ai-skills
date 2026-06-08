@@ -11,6 +11,7 @@ from collections import defaultdict
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -45,14 +46,16 @@ def find_lookalike_domains(target_domain, ct_results):
                 continue
             similarity = calculate_similarity(base, name.split(".")[0])
             if similarity > 0.6 and name != target_domain:
-                lookalikes.append({
-                    "domain": name,
-                    "similarity": round(similarity, 3),
-                    "issuer": cert.get("issuer_name", ""),
-                    "not_before": cert.get("not_before", ""),
-                    "not_after": cert.get("not_after", ""),
-                    "cert_id": cert.get("id"),
-                })
+                lookalikes.append(
+                    {
+                        "domain": name,
+                        "similarity": round(similarity, 3),
+                        "issuer": cert.get("issuer_name", ""),
+                        "not_before": cert.get("not_before", ""),
+                        "not_after": cert.get("not_after", ""),
+                        "cert_id": cert.get("id"),
+                    }
+                )
     seen = set()
     unique = []
     for l in sorted(lookalikes, key=lambda x: -x["similarity"]):
@@ -76,17 +79,23 @@ def calculate_similarity(s1, s2):
         matrix[0][j] = j
     for i in range(1, len1 + 1):
         for j in range(1, len2 + 1):
-            cost = 0 if s1[i-1] == s2[j-1] else 1
-            matrix[i][j] = min(matrix[i-1][j] + 1, matrix[i][j-1] + 1,
-                               matrix[i-1][j-1] + cost)
+            cost = 0 if s1[i - 1] == s2[j - 1] else 1
+            matrix[i][j] = min(
+                matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost
+            )
     distance = matrix[len1][len2]
     return 1.0 - distance / max(len1, len2)
 
 
 HOMOGLYPH_MAP = {
-    "a": ["а", "@", "4"], "e": ["е", "3"], "o": ["о", "0"],
-    "i": ["і", "1", "l"], "l": ["1", "i", "I"],
-    "s": ["5", "$"], "t": ["7"], "g": ["9", "q"],
+    "a": ["а", "@", "4"],
+    "e": ["е", "3"],
+    "o": ["о", "0"],
+    "i": ["і", "1", "l"],
+    "l": ["1", "i", "I"],
+    "s": ["5", "$"],
+    "t": ["7"],
+    "g": ["9", "q"],
 }
 
 
@@ -104,12 +113,14 @@ def detect_homoglyph_domains(target_domain, ct_results):
             if len(name_base) == len(base):
                 diffs = sum(1 for a, b in zip(base, name_base) if a != b)
                 if 0 < diffs <= 2:
-                    findings.append({
-                        "domain": name,
-                        "char_differences": diffs,
-                        "cert_id": cert.get("id"),
-                        "issuer": cert.get("issuer_name", ""),
-                    })
+                    findings.append(
+                        {
+                            "domain": name,
+                            "char_differences": diffs,
+                            "cert_id": cert.get("id"),
+                            "issuer": cert.get("issuer_name", ""),
+                        }
+                    )
     return findings
 
 
@@ -121,7 +132,8 @@ def analyze_issuer_patterns(ct_results):
         issuer = cert.get("issuer_name", "Unknown")
         issuer_counts[issuer] += 1
     free_ca_certs = sum(
-        count for issuer, count in issuer_counts.items()
+        count
+        for issuer, count in issuer_counts.items()
         if any(ca.lower() in issuer.lower() for ca in free_cas)
     )
     return {
@@ -138,11 +150,13 @@ def detect_wildcard_abuse(ct_results):
     for cert in ct_results:
         cn = cert.get("common_name", "")
         if cn.startswith("*."):
-            wildcards.append({
-                "domain": cn,
-                "issuer": cert.get("issuer_name", ""),
-                "not_before": cert.get("not_before", ""),
-            })
+            wildcards.append(
+                {
+                    "domain": cn,
+                    "issuer": cert.get("issuer_name", ""),
+                    "not_before": cert.get("not_before", ""),
+                }
+            )
     return wildcards
 
 
@@ -167,7 +181,9 @@ def generate_report(target_domain, ct_results):
         "issuer_analysis": issuer_analysis,
         "wildcard_certs": wildcards[:10],
         "risk_score": risk_score,
-        "risk_level": "HIGH" if risk_score >= 60 else "MEDIUM" if risk_score >= 30 else "LOW",
+        "risk_level": (
+            "HIGH" if risk_score >= 60 else "MEDIUM" if risk_score >= 30 else "LOW"
+        ),
     }
 
 
@@ -203,8 +219,9 @@ if __name__ == "__main__":
         print(f"  [diff={h['char_differences']}] {h['domain']}")
 
     print(f"\n--- Issuer Analysis ---")
-    for issuer, count in sorted(report["issuer_analysis"]["issuers"].items(),
-                                 key=lambda x: -x[1])[:5]:
+    for issuer, count in sorted(
+        report["issuer_analysis"]["issuers"].items(), key=lambda x: -x[1]
+    )[:5]:
         print(f"  {count:4d} | {issuer[:60]}")
 
     print(f"\n[*] Risk Score: {report['risk_score']}/100 ({report['risk_level']})")

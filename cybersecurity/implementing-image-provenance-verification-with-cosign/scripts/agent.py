@@ -18,14 +18,22 @@ def run_cosign(args_list):
     }
 
 
-def verify_image(image_ref, key=None, certificate_identity=None, certificate_oidc_issuer=None):
+def verify_image(
+    image_ref, key=None, certificate_identity=None, certificate_oidc_issuer=None
+):
     """Verify a container image signature with Cosign."""
     args = ["verify"]
     if key:
         args.extend(["--key", key])
     elif certificate_identity and certificate_oidc_issuer:
-        args.extend(["--certificate-identity", certificate_identity,
-                      "--certificate-oidc-issuer", certificate_oidc_issuer])
+        args.extend(
+            [
+                "--certificate-identity",
+                certificate_identity,
+                "--certificate-oidc-issuer",
+                certificate_oidc_issuer,
+            ]
+        )
     args.append(image_ref)
     result = run_cosign(args)
     verified = result["returncode"] == 0
@@ -38,7 +46,9 @@ def verify_image(image_ref, key=None, certificate_identity=None, certificate_oid
     return {
         "image": image_ref,
         "verified": verified,
-        "attestations": attestations if isinstance(attestations, list) else [attestations],
+        "attestations": (
+            attestations if isinstance(attestations, list) else [attestations]
+        ),
         "error": result["stderr"] if not verified else None,
     }
 
@@ -88,8 +98,12 @@ def audit_registry_images(images_list, key=None, identity=None, issuer=None):
     """Audit multiple container images for valid signatures."""
     results = []
     for image in images_list:
-        result = verify_image(image, key=key, certificate_identity=identity,
-                              certificate_oidc_issuer=issuer)
+        result = verify_image(
+            image,
+            key=key,
+            certificate_identity=identity,
+            certificate_oidc_issuer=issuer,
+        )
         result["severity"] = "INFO" if result["verified"] else "HIGH"
         results.append(result)
     signed = sum(1 for r in results if r["verified"])
@@ -111,21 +125,34 @@ def generate_kyverno_policy(image_patterns, key=None, identity=None, issuer=None
         "spec": {
             "validationFailureAction": "Enforce",
             "webhookTimeoutSeconds": 30,
-            "rules": [{
-                "name": "verify-cosign-signature",
-                "match": {"any": [{"resources": {"kinds": ["Pod"]}}]},
-                "verifyImages": [{
-                    "imageReferences": image_patterns,
-                    "attestors": [{
-                        "entries": [{
-                            "keyless": {
-                                "subject": identity or "*",
-                                "issuer": issuer or "https://token.actions.githubusercontent.com",
-                            }
-                        }] if not key else [{"keys": {"publicKeys": key}}]
-                    }],
-                }],
-            }],
+            "rules": [
+                {
+                    "name": "verify-cosign-signature",
+                    "match": {"any": [{"resources": {"kinds": ["Pod"]}}]},
+                    "verifyImages": [
+                        {
+                            "imageReferences": image_patterns,
+                            "attestors": [
+                                {
+                                    "entries": (
+                                        [
+                                            {
+                                                "keyless": {
+                                                    "subject": identity or "*",
+                                                    "issuer": issuer
+                                                    or "https://token.actions.githubusercontent.com",
+                                                }
+                                            }
+                                        ]
+                                        if not key
+                                        else [{"keys": {"publicKeys": key}}]
+                                    )
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ],
         },
     }
     return policy
@@ -168,9 +195,13 @@ def main():
     parser.add_argument("--sign", help="Image to sign")
     parser.add_argument("--audit", nargs="+", help="Images to audit for signatures")
     parser.add_argument("--key", help="Cosign public key for verification")
-    parser.add_argument("--identity", help="Certificate identity for keyless verification")
+    parser.add_argument(
+        "--identity", help="Certificate identity for keyless verification"
+    )
     parser.add_argument("--issuer", help="OIDC issuer for keyless verification")
-    parser.add_argument("--gen-policy", nargs="+", help="Image patterns for Kyverno policy")
+    parser.add_argument(
+        "--gen-policy", nargs="+", help="Image patterns for Kyverno policy"
+    )
     parser.add_argument("--gen-workflow", help="Image ref for CI workflow generation")
     parser.add_argument("--output", default="cosign_provenance_report.json")
     args = parser.parse_args()
@@ -178,22 +209,27 @@ def main():
     report = {"generated_at": datetime.utcnow().isoformat(), "results": {}}
 
     if args.verify:
-        result = verify_image(args.verify, key=args.key,
-                              certificate_identity=args.identity,
-                              certificate_oidc_issuer=args.issuer)
+        result = verify_image(
+            args.verify,
+            key=args.key,
+            certificate_identity=args.identity,
+            certificate_oidc_issuer=args.issuer,
+        )
         report["results"]["verification"] = result
         status = "VERIFIED" if result["verified"] else "FAILED"
         print(f"[+] {args.verify}: {status}")
 
     if args.audit:
-        result = audit_registry_images(args.audit, key=args.key,
-                                       identity=args.identity, issuer=args.issuer)
+        result = audit_registry_images(
+            args.audit, key=args.key, identity=args.identity, issuer=args.issuer
+        )
         report["results"]["audit"] = result
         print(f"[+] Audit: {result['signed']}/{result['total_images']} signed")
 
     if args.gen_policy:
-        policy = generate_kyverno_policy(args.gen_policy, key=args.key,
-                                          identity=args.identity, issuer=args.issuer)
+        policy = generate_kyverno_policy(
+            args.gen_policy, key=args.key, identity=args.identity, issuer=args.issuer
+        )
         report["results"]["kyverno_policy"] = policy
         print("[+] Kyverno policy generated")
 

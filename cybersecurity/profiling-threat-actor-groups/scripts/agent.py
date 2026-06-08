@@ -35,27 +35,39 @@ def list_threat_groups(src):
     result = []
     for g in groups:
         aliases = getattr(g, "aliases", [])
-        result.append({
-            "id": g.id,
-            "name": g.name,
-            "aliases": aliases if aliases else [],
-            "description": (g.description[:200] + "...") if hasattr(g, "description") and g.description else "",
-            "created": str(g.created),
-            "modified": str(g.modified),
-        })
+        result.append(
+            {
+                "id": g.id,
+                "name": g.name,
+                "aliases": aliases if aliases else [],
+                "description": (
+                    (g.description[:200] + "...")
+                    if hasattr(g, "description") and g.description
+                    else ""
+                ),
+                "created": str(g.created),
+                "modified": str(g.modified),
+            }
+        )
     return sorted(result, key=lambda x: x["name"])
 
 
 def get_group_profile(src, group_name):
     """Build a comprehensive profile for a specific threat actor group."""
-    groups = src.query([
-        Filter("type", "=", "intrusion-set"),
-        Filter("name", "=", group_name),
-    ])
+    groups = src.query(
+        [
+            Filter("type", "=", "intrusion-set"),
+            Filter("name", "=", group_name),
+        ]
+    )
     if not groups:
         groups = src.query([Filter("type", "=", "intrusion-set")])
-        groups = [g for g in groups if group_name.lower() in g.name.lower()
-                  or any(group_name.lower() in a.lower() for a in getattr(g, "aliases", []))]
+        groups = [
+            g
+            for g in groups
+            if group_name.lower() in g.name.lower()
+            or any(group_name.lower() in a.lower() for a in getattr(g, "aliases", []))
+        ]
     if not groups:
         return {"error": f"Group '{group_name}' not found"}
     group = groups[0]
@@ -70,15 +82,19 @@ def get_group_profile(src, group_name):
     }
     for ref in getattr(group, "external_references", []):
         if hasattr(ref, "source_name"):
-            profile["external_references"].append({
-                "source": ref.source_name,
-                "url": getattr(ref, "url", ""),
-                "external_id": getattr(ref, "external_id", ""),
-            })
-    relationships = src.query([
-        Filter("type", "=", "relationship"),
-        Filter("source_ref", "=", group.id),
-    ])
+            profile["external_references"].append(
+                {
+                    "source": ref.source_name,
+                    "url": getattr(ref, "url", ""),
+                    "external_id": getattr(ref, "external_id", ""),
+                }
+            )
+    relationships = src.query(
+        [
+            Filter("type", "=", "relationship"),
+            Filter("source_ref", "=", group.id),
+        ]
+    )
     profile["techniques"] = []
     profile["software"] = []
     for rel in relationships:
@@ -88,18 +104,28 @@ def get_group_profile(src, group_name):
                 technique = {
                     "name": target.name,
                     "technique_id": "",
-                    "description": rel.description[:200] if hasattr(rel, "description") and rel.description else "",
+                    "description": (
+                        rel.description[:200]
+                        if hasattr(rel, "description") and rel.description
+                        else ""
+                    ),
                 }
                 for ref in getattr(target, "external_references", []):
                     if hasattr(ref, "external_id") and ref.external_id.startswith("T"):
                         technique["technique_id"] = ref.external_id
                 profile["techniques"].append(technique)
             elif target.type in ("malware", "tool"):
-                profile["software"].append({
-                    "name": target.name,
-                    "type": target.type,
-                    "description": (target.description[:200] + "...") if hasattr(target, "description") and target.description else "",
-                })
+                profile["software"].append(
+                    {
+                        "name": target.name,
+                        "type": target.type,
+                        "description": (
+                            (target.description[:200] + "...")
+                            if hasattr(target, "description") and target.description
+                            else ""
+                        ),
+                    }
+                )
     return profile
 
 
@@ -116,15 +142,19 @@ def get_group_techniques_by_tactic(src, group_name):
             if hasattr(ref, "external_id") and ref.external_id.startswith("T"):
                 tech_lookup[t.name] = {
                     "id": ref.external_id,
-                    "tactics": [p["phase_name"] for p in getattr(t, "kill_chain_phases", [])],
+                    "tactics": [
+                        p["phase_name"] for p in getattr(t, "kill_chain_phases", [])
+                    ],
                 }
     for tech in profile["techniques"]:
         info = tech_lookup.get(tech["name"], {})
         for tactic in info.get("tactics", ["unknown"]):
-            tactic_map.setdefault(tactic, []).append({
-                "technique": tech["name"],
-                "id": info.get("id", tech.get("technique_id", "")),
-            })
+            tactic_map.setdefault(tactic, []).append(
+                {
+                    "technique": tech["name"],
+                    "id": info.get("id", tech.get("technique_id", "")),
+                }
+            )
     return {"group": group_name, "tactics": tactic_map}
 
 

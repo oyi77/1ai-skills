@@ -93,8 +93,9 @@ def load_daemon_config(config_path: str = "/etc/docker/daemon.json") -> dict:
 
 def get_docker_info() -> dict:
     """Get Docker system info."""
-    result = subprocess.run(["docker", "info", "--format", "{{json .}}"],
-                          capture_output=True, text=True)
+    result = subprocess.run(
+        ["docker", "info", "--format", "{{json .}}"], capture_output=True, text=True
+    )
     if result.returncode != 0:
         print(f"Error running docker info: {result.stderr}", file=sys.stderr)
         return {}
@@ -120,14 +121,18 @@ def audit_config(config: dict) -> list:
         elif "expected_value" in check:
             passed = value == check["expected_value"]
 
-        results.append({
-            "id": check_id,
-            "description": check["description"],
-            "severity": check["severity"],
-            "passed": passed,
-            "expected": check.get("expected", check.get("expected_value", "non-empty")),
-            "actual": actual,
-        })
+        results.append(
+            {
+                "id": check_id,
+                "description": check["description"],
+                "severity": check["severity"],
+                "passed": passed,
+                "expected": check.get(
+                    "expected", check.get("expected_value", "non-empty")
+                ),
+                "actual": actual,
+            }
+        )
     return results
 
 
@@ -153,6 +158,7 @@ def check_socket_permissions() -> dict:
     """Check Docker socket file permissions."""
     import os
     import stat
+
     socket_path = "/var/run/docker.sock"
     if not os.path.exists(socket_path):
         return {"exists": False}
@@ -192,7 +198,9 @@ def generate_report(audit_results: list, tls_info: dict, config_path: str) -> st
 | Status | Severity | Check | Expected | Actual |
 |--------|----------|-------|----------|--------|
 """
-    for r in sorted(audit_results, key=lambda x: (0 if not x["passed"] else 1, x["severity"])):
+    for r in sorted(
+        audit_results, key=lambda x: (0 if not x["passed"] else 1, x["severity"])
+    ):
         status = "PASS" if r["passed"] else "FAIL"
         report += f"| {status} | {r['severity']} | {r['description']} | {r['expected']} | {r['actual']} |\n"
 
@@ -227,11 +235,13 @@ def generate_hardened_config(existing: dict) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Docker Daemon Hardening Auditor")
-    parser.add_argument("--config", default="/etc/docker/daemon.json",
-                       help="Path to daemon.json")
+    parser.add_argument(
+        "--config", default="/etc/docker/daemon.json", help="Path to daemon.json"
+    )
     parser.add_argument("--audit", action="store_true", help="Run hardening audit")
-    parser.add_argument("--generate", action="store_true",
-                       help="Generate hardened daemon.json")
+    parser.add_argument(
+        "--generate", action="store_true", help="Generate hardened daemon.json"
+    )
     parser.add_argument("--report", help="Save audit report to file")
     parser.add_argument("--output", help="Output path for generated config")
 

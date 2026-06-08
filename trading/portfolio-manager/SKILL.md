@@ -1,45 +1,6 @@
 ---
 name: portfolio-manager
 description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this domain.
-
-## When to Use
-
-- Managing capital allocation across multiple trading strategies
-- Tracking performance metrics (IRR, MOIC, Sharpe, win rate) for a quant fund
-- Implementing phase gates for progression from paper to live to scaled trading
-- Calculating position sizes with risk-based formulas
-- Generating investor reports for fund performance review
-
-## When NOT to Use
-
-- Task is about portfolio management, not trading (use portfolio skills)
-- Task is about financial analysis (use analysis skills)
-- You need to analyze trade results (use analytics skills)
-- Task is about risk management (use risk skills)
-- You don't have trading capital
-- Task requires financial advice (consult advisors)
-
-
-## Red Flags
-
-- Position sizing exceeds 1% risk per trade without override justification
-- Drawdown exceeds daily 3% limit without automatic trading halt
-- Win rate below 55% after 30+ trades (strategy underperforming)
-- Moving from paper to live without meeting all phase gate criteria
-- No trade log maintained (missing audit trail for performance review)
-- Multiple strategies correlated >0.7 without diversification adjustment
-
-## Verification
-
-After completing portfolio management setup, confirm:
-
-- [ ] Position sizing formula tested with known account balances and risk percentages
-- [ ] Drawdown limits configured: daily 3%, weekly 7%, monthly 15%, account 25%
-- [ ] Trade log format captures all required fields (entry, SL, TP, P&L, strategy)
-- [ ] Phase gate criteria documented and measurable (30 trades, 55% WR, PF 1.5)
-- [ ] Monthly report template generates correct P&L, Sharpe, and drawdown stats
-- [ ] Risk rules enforced automatically (halt on drawdown breach)
-
 ---
 # Portfolio Manager — BerkahKarya Quant Fund
 

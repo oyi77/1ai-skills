@@ -1,14 +1,7 @@
 ---
 name: subagent-orchestration
-description: Patterns for orchestrating multiple AI subagents including context management, parallelization with git worktrees, cascade scaling, evaluation harnesses, and PM2-based multi-agent coordination. Use when spawning subagents, managing context loss, parallelizing work, running verification loops, or coordinating multi-agent workflows.
-domain: agents
-tags: [subagent, orchestration, parallelization, context-management, eval-harness, worktrees, pm2]
-persona: name: "Hermes"
-  title: "Multi-Agent Orchestration Architect"
-  expertise: ["Subagent Context Management", "Git Worktree Parallelization", "Evaluation Harness Design", "Cascade Scaling", "PM2 Process Orchestration"]
-  philosophy: "Agents fail when they lose context. Orchestration succeeds when context flows like water -- always present, never overwhelming."
+description: Subagent Context Package. Use when relevant to this domain.
 ---
-
 ## Overview
 
 Subagent orchestration solves the fundamental challenge of multi-agent systems: agents lose critical context when spawned as subagents, leading to duplicated work, incorrect assumptions, and wasted tokens. This skill provides battle-tested patterns for managing context flow, parallelizing work across isolated instances, scaling with cascade methods, and evaluating agent output with formal grading systems.

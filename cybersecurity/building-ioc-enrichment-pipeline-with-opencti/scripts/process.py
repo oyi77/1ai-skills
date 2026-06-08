@@ -91,7 +91,9 @@ class OpenCTIEnrichmentPipeline:
                 if classification == "malicious":
                     results["confidence_score"] += 20
                 elif classification == "benign":
-                    results["confidence_score"] = max(0, results["confidence_score"] - 20)
+                    results["confidence_score"] = max(
+                        0, results["confidence_score"] - 20
+                    )
 
         results["confidence_score"] = min(100, results["confidence_score"])
         self.stats["enriched"] += 1
@@ -284,8 +286,9 @@ class OpenCTIEnrichmentPipeline:
             print(f"[-] GreyNoise query failed for {ip}: {e}")
         return None
 
-    def update_opencti_observable(self, observable_value: str,
-                                  enrichment: dict) -> bool:
+    def update_opencti_observable(
+        self, observable_value: str, enrichment: dict
+    ) -> bool:
         """Update OpenCTI observable with enrichment results."""
         try:
             # Search for existing observable
@@ -388,9 +391,7 @@ class OpenCTIEnrichmentPipeline:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="OpenCTI IOC Enrichment Pipeline"
-    )
+    parser = argparse.ArgumentParser(description="OpenCTI IOC Enrichment Pipeline")
     parser.add_argument("--url", required=True, help="OpenCTI instance URL")
     parser.add_argument("--token", required=True, help="OpenCTI API token")
     parser.add_argument("--enrich-ip", help="Enrich a single IP address")
@@ -402,7 +403,8 @@ def main():
     parser.add_argument("--days", type=int, default=1, help="Lookback days for bulk")
     parser.add_argument("--max-items", type=int, default=100, help="Max items for bulk")
     parser.add_argument(
-        "--update-opencti", action="store_true",
+        "--update-opencti",
+        action="store_true",
         help="Update results back to OpenCTI",
     )
     parser.add_argument("--output", help="Output file for enrichment results")

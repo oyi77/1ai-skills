@@ -33,7 +33,9 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec, rsa
 from cryptography.hazmat.backends import default_backend
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 EXPIRY_WARNING_DAYS = 30
@@ -62,7 +64,9 @@ def generate_csr(
         x509.NameAttribute(NameOID.COMMON_NAME, domain),
     ]
     if organization:
-        subject_attrs.insert(0, x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization))
+        subject_attrs.insert(
+            0, x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization)
+        )
 
     subject = x509.Name(subject_attrs)
 
@@ -121,8 +125,12 @@ def parse_certificate(cert_path: str) -> Dict:
 
     san_names = []
     try:
-        san_ext = cert.extensions.get_extension_for_oid(ExtensionOID.SUBJECT_ALTERNATIVE_NAME)
-        san_names = [name.value for name in san_ext.value.get_values_for_type(x509.DNSName)]
+        san_ext = cert.extensions.get_extension_for_oid(
+            ExtensionOID.SUBJECT_ALTERNATIVE_NAME
+        )
+        san_names = [
+            name.value for name in san_ext.value.get_values_for_type(x509.DNSName)
+        ]
     except x509.ExtensionNotFound:
         pass
 
@@ -134,7 +142,11 @@ def parse_certificate(cert_path: str) -> Dict:
     if isinstance(pub_key, rsa.RSAPublicKey):
         key_info = {"type": "RSA", "size": pub_key.key_size}
     elif isinstance(pub_key, ec.EllipticCurvePublicKey):
-        key_info = {"type": "ECDSA", "curve": pub_key.curve.name, "size": pub_key.key_size}
+        key_info = {
+            "type": "ECDSA",
+            "curve": pub_key.curve.name,
+            "size": pub_key.key_size,
+        }
     else:
         key_info = {"type": "Unknown"}
 
@@ -270,17 +282,21 @@ def verify_certificate_chain(cert_path: str, ca_bundle_path: str) -> Dict:
 
     chain = []
     current = cert
-    chain.append({
-        "subject": current.subject.rfc4514_string(),
-        "issuer": current.issuer.rfc4514_string(),
-    })
+    chain.append(
+        {
+            "subject": current.subject.rfc4514_string(),
+            "issuer": current.issuer.rfc4514_string(),
+        }
+    )
 
     for ca in ca_certs:
         if current.issuer == ca.subject:
-            chain.append({
-                "subject": ca.subject.rfc4514_string(),
-                "issuer": ca.issuer.rfc4514_string(),
-            })
+            chain.append(
+                {
+                    "subject": ca.subject.rfc4514_string(),
+                    "issuer": ca.issuer.rfc4514_string(),
+                }
+            )
             current = ca
             if ca.issuer == ca.subject:
                 break
@@ -317,7 +333,9 @@ def main():
 
     mon = subparsers.add_parser("monitor", help="Monitor multiple domains")
     mon.add_argument("--domains", required=True, help="File with domain list")
-    mon.add_argument("--threshold", type=int, default=30, help="Warning threshold (days)")
+    mon.add_argument(
+        "--threshold", type=int, default=30, help="Warning threshold (days)"
+    )
 
     chain = subparsers.add_parser("verify-chain", help="Verify certificate chain")
     chain.add_argument("--cert", required=True, help="Certificate file")
@@ -326,7 +344,9 @@ def main():
     args = parser.parse_args()
 
     if args.command == "generate-csr":
-        result = generate_csr(args.domain, args.output, args.key_type, args.san, args.org)
+        result = generate_csr(
+            args.domain, args.output, args.key_type, args.san, args.org
+        )
         print(json.dumps(result, indent=2))
     elif args.command == "parse-cert":
         result = parse_certificate(args.cert)

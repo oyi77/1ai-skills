@@ -58,29 +58,37 @@ def check_compliance(policy: dict, baseline: dict) -> list:
     for control, expected in baseline.items():
         actual = checks.get(control)
         if actual is None:
-            findings.append({
-                "control": control,
-                "status": "MISSING",
-                "expected": expected,
-                "actual": None,
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "control": control,
+                    "status": "MISSING",
+                    "expected": expected,
+                    "actual": None,
+                    "severity": "HIGH",
+                }
+            )
         elif isinstance(expected, bool) and actual != expected:
-            findings.append({
-                "control": control,
-                "status": "NON_COMPLIANT",
-                "expected": expected,
-                "actual": actual,
-                "severity": "HIGH",
-            })
-        elif isinstance(expected, int) and isinstance(actual, int) and actual < expected:
-            findings.append({
-                "control": control,
-                "status": "BELOW_MINIMUM",
-                "expected": f">= {expected}",
-                "actual": actual,
-                "severity": "MEDIUM",
-            })
+            findings.append(
+                {
+                    "control": control,
+                    "status": "NON_COMPLIANT",
+                    "expected": expected,
+                    "actual": actual,
+                    "severity": "HIGH",
+                }
+            )
+        elif (
+            isinstance(expected, int) and isinstance(actual, int) and actual < expected
+        ):
+            findings.append(
+                {
+                    "control": control,
+                    "status": "BELOW_MINIMUM",
+                    "expected": f">= {expected}",
+                    "actual": actual,
+                    "severity": "MEDIUM",
+                }
+            )
 
     return findings
 
@@ -100,7 +108,11 @@ def main():
 
     compliant_count = len(baseline) - len(findings)
     report = {
-        "check": {"policy": args.policy, "baseline": args.baseline, "date": datetime.now().isoformat()},
+        "check": {
+            "policy": args.policy,
+            "baseline": args.baseline,
+            "date": datetime.now().isoformat(),
+        },
         "summary": {
             "total_controls": len(baseline),
             "compliant": compliant_count,

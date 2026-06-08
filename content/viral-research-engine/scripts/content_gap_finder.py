@@ -9,7 +9,6 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-
 # Content gap analysis: topics with high demand but low supply
 CONTENT_GAPS = {
     "ai_tools": {
@@ -229,13 +228,16 @@ def find_gaps(niche: str = None, min_gap_score: float = 5.0) -> dict:
 
     for niche_key, niche_data in gaps.items():
         high_demand = [
-            g for g in niche_data.get("high_demand_low_supply", [])
+            g
+            for g in niche_data.get("high_demand_low_supply", [])
             if g.get("gap_score", 0) >= min_gap_score
         ]
 
         results["gaps"][niche_key] = {
             "high_demand_low_supply": high_demand,
-            "trending_undersaturated": niche_data.get("trending_but_undersaturated", []),
+            "trending_undersaturated": niche_data.get(
+                "trending_but_undersaturated", []
+            ),
             "total_gaps_found": len(high_demand),
         }
 
@@ -256,15 +258,17 @@ def get_quick_wins(niche: str = None) -> list[dict]:
 
     quick_wins = []
     for opp in opportunities[:3]:
-        quick_wins.append({
-            "rank": len(quick_wins) + 1,
-            "topic": opp["topic"],
-            "niche": opp.get("niche", ""),
-            "gap_score": opp.get("gap_score", 0),
-            "content_angle": opp.get("content_angle", ""),
-            "estimated_views": opp.get("estimated_views", ""),
-            "why_opportunity": opp.get("why_gap", ""),
-        })
+        quick_wins.append(
+            {
+                "rank": len(quick_wins) + 1,
+                "topic": opp["topic"],
+                "niche": opp.get("niche", ""),
+                "gap_score": opp.get("gap_score", 0),
+                "content_angle": opp.get("content_angle", ""),
+                "estimated_views": opp.get("estimated_views", ""),
+                "why_opportunity": opp.get("why_gap", ""),
+            }
+        )
 
     return quick_wins
 
@@ -281,7 +285,11 @@ def generate_content_opportunities_report() -> dict:
             "total_gaps_identified": sum(
                 v["total_gaps_found"] for v in all_gaps["gaps"].values()
             ),
-            "top_opportunity": all_gaps["top_opportunities"][0]["topic"] if all_gaps["top_opportunities"] else "N/A",
+            "top_opportunity": (
+                all_gaps["top_opportunities"][0]["topic"]
+                if all_gaps["top_opportunities"]
+                else "N/A"
+            ),
         },
         "top_10_opportunities": all_gaps["top_opportunities"],
         "by_niche": all_gaps["gaps"],
@@ -323,7 +331,9 @@ if __name__ == "__main__":
     quick_wins = get_quick_wins()
     print("\n🏆 TOP 3 QUICK WIN OPPORTUNITIES:")
     for win in quick_wins:
-        print(f"\n  #{win['rank']} [{win['gap_score']} gap score] {win['niche'].upper()}")
+        print(
+            f"\n  #{win['rank']} [{win['gap_score']} gap score] {win['niche'].upper()}"
+        )
         print(f"  Topic: {win['topic']}")
         print(f"  Angle: {win['content_angle']}")
         print(f"  Est. Views: {win['estimated_views']}")

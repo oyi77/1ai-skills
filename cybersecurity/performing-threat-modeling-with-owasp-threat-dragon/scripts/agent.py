@@ -11,31 +11,45 @@ import sys
 import uuid
 from datetime import datetime
 
-
 STRIDE_BY_ELEMENT = {
-    "process": ["Spoofing", "Tampering", "Repudiation",
-                "Information Disclosure", "Denial of Service",
-                "Elevation of Privilege"],
-    "data_store": ["Tampering", "Information Disclosure",
-                   "Denial of Service"],
-    "data_flow": ["Tampering", "Information Disclosure",
-                  "Denial of Service"],
+    "process": [
+        "Spoofing",
+        "Tampering",
+        "Repudiation",
+        "Information Disclosure",
+        "Denial of Service",
+        "Elevation of Privilege",
+    ],
+    "data_store": ["Tampering", "Information Disclosure", "Denial of Service"],
+    "data_flow": ["Tampering", "Information Disclosure", "Denial of Service"],
     "external_entity": ["Spoofing", "Repudiation"],
 }
 
 STRIDE_MITIGATIONS = {
-    "Spoofing": ["Implement strong authentication (MFA)",
-                 "Use mutual TLS for service-to-service"],
-    "Tampering": ["Use integrity checks (HMAC, digital signatures)",
-                  "Implement input validation"],
-    "Repudiation": ["Enable comprehensive audit logging",
-                    "Use tamper-evident log storage"],
-    "Information Disclosure": ["Encrypt data at rest and in transit",
-                               "Implement least-privilege access"],
-    "Denial of Service": ["Implement rate limiting",
-                          "Use auto-scaling and circuit breakers"],
-    "Elevation of Privilege": ["Enforce RBAC and least privilege",
-                               "Validate authorization on every request"],
+    "Spoofing": [
+        "Implement strong authentication (MFA)",
+        "Use mutual TLS for service-to-service",
+    ],
+    "Tampering": [
+        "Use integrity checks (HMAC, digital signatures)",
+        "Implement input validation",
+    ],
+    "Repudiation": [
+        "Enable comprehensive audit logging",
+        "Use tamper-evident log storage",
+    ],
+    "Information Disclosure": [
+        "Encrypt data at rest and in transit",
+        "Implement least-privilege access",
+    ],
+    "Denial of Service": [
+        "Implement rate limiting",
+        "Use auto-scaling and circuit breakers",
+    ],
+    "Elevation of Privilege": [
+        "Enforce RBAC and least privilege",
+        "Validate authorization on every request",
+    ],
 }
 
 
@@ -77,8 +91,7 @@ class ThreatModelAgent:
         self.model["detail"]["diagrams"].append(diagram)
         return diagram_id
 
-    def add_element(self, diagram_id, element_type, name,
-                    x=100, y=100, description=""):
+    def add_element(self, diagram_id, element_type, name, x=100, y=100, description=""):
         """Add a DFD element to a diagram."""
         element_id = str(uuid.uuid4())
         type_map = {
@@ -119,9 +132,10 @@ class ThreatModelAgent:
                 "status": "Open",
                 "severity": "Medium",
                 "description": f"Potential {category.lower()} threat "
-                               f"against {element['name']}",
+                f"against {element['name']}",
                 "mitigation": "; ".join(
-                    STRIDE_MITIGATIONS.get(category, ["Review required"])),
+                    STRIDE_MITIGATIONS.get(category, ["Review required"])
+                ),
                 "modelType": "STRIDE",
                 "element_id": element_id,
             }
@@ -145,15 +159,20 @@ class ThreatModelAgent:
 
     def get_threat_summary(self):
         """Summarize threats by status and category."""
-        summary = {"total": len(self.threats), "by_status": {},
-                   "by_type": {}, "by_severity": {}}
+        summary = {
+            "total": len(self.threats),
+            "by_status": {},
+            "by_type": {},
+            "by_severity": {},
+        }
         for t in self.threats:
-            summary["by_status"][t["status"]] = \
+            summary["by_status"][t["status"]] = (
                 summary["by_status"].get(t["status"], 0) + 1
-            summary["by_type"][t["type"]] = \
-                summary["by_type"].get(t["type"], 0) + 1
-            summary["by_severity"][t["severity"]] = \
+            )
+            summary["by_type"][t["type"]] = summary["by_type"].get(t["type"], 0) + 1
+            summary["by_severity"][t["severity"]] = (
                 summary["by_severity"].get(t["severity"], 0) + 1
+            )
         return summary
 
     def save_model(self, output_path):
@@ -172,8 +191,9 @@ class ThreatModelAgent:
             "diagrams": len(self.model["detail"]["diagrams"]),
             "threat_summary": summary,
             "open_threats": [t for t in self.threats if t["status"] == "Open"],
-            "mitigated_threats": [t for t in self.threats
-                                  if t["status"] == "Mitigated"],
+            "mitigated_threats": [
+                t for t in self.threats if t["status"] == "Mitigated"
+            ],
         }
         print(json.dumps(report, indent=2))
         return report
@@ -183,8 +203,9 @@ def main():
     title = sys.argv[1] if len(sys.argv) > 1 else "Sample Application"
     output = sys.argv[2] if len(sys.argv) > 2 else "./threat_model.json"
 
-    agent = ThreatModelAgent(title, owner="Security Team",
-                             description="Automated threat model")
+    agent = ThreatModelAgent(
+        title, owner="Security Team", description="Automated threat model"
+    )
     did = agent.add_diagram("Main Data Flow")
     web = agent.add_element(did, "external_entity", "Web Browser", 50, 50)
     api = agent.add_element(did, "process", "API Gateway", 250, 50)

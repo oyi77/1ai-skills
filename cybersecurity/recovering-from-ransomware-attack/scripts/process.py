@@ -63,7 +63,9 @@ class RecoveryOrchestrator:
             if sys.name == system_name:
                 # Check dependencies are online
                 for dep in sys.dependencies:
-                    dep_sys = next((s for s in self.plan.systems if s.name == dep), None)
+                    dep_sys = next(
+                        (s for s in self.plan.systems if s.name == dep), None
+                    )
                     if dep_sys and dep_sys.status != "online":
                         raise ValueError(
                             f"Cannot restore {system_name}: dependency {dep} "
@@ -103,16 +105,19 @@ class RecoveryOrchestrator:
 
             if sys.status in ("pending", "restoring", "validating"):
                 if datetime.now() > rto_deadline:
-                    violations.append({
-                        "system": sys.name,
-                        "tier": sys.tier,
-                        "rto_hours": sys.rto_hours,
-                        "deadline": rto_deadline.isoformat(),
-                        "status": sys.status,
-                        "exceeded_by_hours": round(
-                            (datetime.now() - rto_deadline).total_seconds() / 3600, 1
-                        ),
-                    })
+                    violations.append(
+                        {
+                            "system": sys.name,
+                            "tier": sys.tier,
+                            "rto_hours": sys.rto_hours,
+                            "deadline": rto_deadline.isoformat(),
+                            "status": sys.status,
+                            "exceeded_by_hours": round(
+                                (datetime.now() - rto_deadline).total_seconds() / 3600,
+                                1,
+                            ),
+                        }
+                    )
         return violations
 
     def get_recovery_progress(self) -> dict:
@@ -148,7 +153,8 @@ class RecoveryOrchestrator:
                 continue
             deps_met = all(
                 next((s for s in self.plan.systems if s.name == dep), None) is not None
-                and next((s for s in self.plan.systems if s.name == dep)).status == "online"
+                and next((s for s in self.plan.systems if s.name == dep)).status
+                == "online"
                 for dep in sys.dependencies
             )
             if deps_met or not sys.dependencies:
@@ -181,8 +187,10 @@ class RecoveryOrchestrator:
         if violations:
             lines.append(f"\nRTO VIOLATIONS ({len(violations)}):")
             for v in violations:
-                lines.append(f"  {v['system']} (Tier {v['tier']}): "
-                           f"RTO {v['rto_hours']}h exceeded by {v['exceeded_by_hours']}h")
+                lines.append(
+                    f"  {v['system']} (Tier {v['tier']}): "
+                    f"RTO {v['rto_hours']}h exceeded by {v['exceeded_by_hours']}h"
+                )
 
         # System details
         lines.append("\nSystem Recovery Status:")
@@ -191,9 +199,16 @@ class RecoveryOrchestrator:
             tier_systems = [s for s in self.plan.systems if s.tier == tier]
             lines.append(f"\n  Tier {tier}:")
             for sys in tier_systems:
-                status_icon = {"pending": "[ ]", "restoring": "[~]", "validating": "[?]",
-                              "online": "[+]", "failed": "[X]"}.get(sys.status, "[?]")
-                lines.append(f"    {status_icon} {sys.name} ({sys.system_type}) - {sys.status}")
+                status_icon = {
+                    "pending": "[ ]",
+                    "restoring": "[~]",
+                    "validating": "[?]",
+                    "online": "[+]",
+                    "failed": "[X]",
+                }.get(sys.status, "[?]")
+                lines.append(
+                    f"    {status_icon} {sys.name} ({sys.system_type}) - {sys.status}"
+                )
                 if sys.restore_start and sys.restore_end:
                     start = datetime.fromisoformat(sys.restore_start)
                     end = datetime.fromisoformat(sys.restore_end)
@@ -228,54 +243,110 @@ def main():
     )
 
     # Define systems with dependencies
-    orch.add_system(RecoverableSystem(
-        name="DC01", tier=1, system_type="dc", rto_hours=4,
-    ))
-    orch.add_system(RecoverableSystem(
-        name="DC02", tier=1, system_type="dc", rto_hours=4,
-    ))
-    orch.add_system(RecoverableSystem(
-        name="DNS01", tier=1, system_type="dns", rto_hours=4,
-        dependencies=["DC01"],
-    ))
-    orch.add_system(RecoverableSystem(
-        name="SQL-ERP", tier=1, system_type="database", rto_hours=8,
-        dependencies=["DC01", "DNS01"],
-    ))
-    orch.add_system(RecoverableSystem(
-        name="ERP-APP", tier=1, system_type="application", rto_hours=12,
-        dependencies=["SQL-ERP", "DC01"],
-    ))
-    orch.add_system(RecoverableSystem(
-        name="Exchange", tier=2, system_type="email", rto_hours=12,
-        dependencies=["DC01", "DC02"],
-    ))
-    orch.add_system(RecoverableSystem(
-        name="FileServer01", tier=2, system_type="fileserver", rto_hours=24,
-        dependencies=["DC01"],
-    ))
-    orch.add_system(RecoverableSystem(
-        name="WebApp01", tier=2, system_type="web", rto_hours=24,
-        dependencies=["SQL-ERP"],
-    ))
-    orch.add_system(RecoverableSystem(
-        name="DevServer", tier=3, system_type="other", rto_hours=48,
-        dependencies=["DC01"],
-    ))
+    orch.add_system(
+        RecoverableSystem(
+            name="DC01",
+            tier=1,
+            system_type="dc",
+            rto_hours=4,
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="DC02",
+            tier=1,
+            system_type="dc",
+            rto_hours=4,
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="DNS01",
+            tier=1,
+            system_type="dns",
+            rto_hours=4,
+            dependencies=["DC01"],
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="SQL-ERP",
+            tier=1,
+            system_type="database",
+            rto_hours=8,
+            dependencies=["DC01", "DNS01"],
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="ERP-APP",
+            tier=1,
+            system_type="application",
+            rto_hours=12,
+            dependencies=["SQL-ERP", "DC01"],
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="Exchange",
+            tier=2,
+            system_type="email",
+            rto_hours=12,
+            dependencies=["DC01", "DC02"],
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="FileServer01",
+            tier=2,
+            system_type="fileserver",
+            rto_hours=24,
+            dependencies=["DC01"],
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="WebApp01",
+            tier=2,
+            system_type="web",
+            rto_hours=24,
+            dependencies=["SQL-ERP"],
+        )
+    )
+    orch.add_system(
+        RecoverableSystem(
+            name="DevServer",
+            tier=3,
+            system_type="other",
+            rto_hours=48,
+            dependencies=["DC01"],
+        )
+    )
 
     # Simulate recovery progress
     orch.start_restore("DC01", "Immutable Veeam Hardened Repo")
     orch.complete_restore("DC01")
-    orch.validate_system("DC01", {
-        "dcdiag": True, "repadmin": True, "dns_resolution": True,
-        "krbtgt_reset": True, "persistence_scan": True,
-    })
+    orch.validate_system(
+        "DC01",
+        {
+            "dcdiag": True,
+            "repadmin": True,
+            "dns_resolution": True,
+            "krbtgt_reset": True,
+            "persistence_scan": True,
+        },
+    )
 
     orch.start_restore("DC02", "Immutable Veeam Hardened Repo")
     orch.complete_restore("DC02")
-    orch.validate_system("DC02", {
-        "dcdiag": True, "repadmin": True, "replication": True,
-    })
+    orch.validate_system(
+        "DC02",
+        {
+            "dcdiag": True,
+            "repadmin": True,
+            "replication": True,
+        },
+    )
 
     orch.start_restore("DNS01", "Immutable Veeam Hardened Repo")
 

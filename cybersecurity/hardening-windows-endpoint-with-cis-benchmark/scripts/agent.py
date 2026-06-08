@@ -13,7 +13,9 @@ def run_ps(command, timeout=15):
     try:
         return subprocess.check_output(
             ["powershell", "-NoProfile", "-Command", command],
-            text=True, errors="replace", timeout=timeout
+            text=True,
+            errors="replace",
+            timeout=timeout,
         ).strip()
     except subprocess.SubprocessError:
         return ""
@@ -27,15 +29,33 @@ def check_password_policy():
         if "Minimum password length" in line:
             val = int(line.split(":")[-1].strip())
             if val < 14:
-                findings.append({"check": "1.1.4", "issue": f"Min password length: {val} (should be >= 14)", "severity": "HIGH"})
+                findings.append(
+                    {
+                        "check": "1.1.4",
+                        "issue": f"Min password length: {val} (should be >= 14)",
+                        "severity": "HIGH",
+                    }
+                )
         if "Maximum password age" in line:
             val = line.split(":")[-1].strip()
             if val == "Unlimited":
-                findings.append({"check": "1.1.2", "issue": "No max password age", "severity": "MEDIUM"})
+                findings.append(
+                    {
+                        "check": "1.1.2",
+                        "issue": "No max password age",
+                        "severity": "MEDIUM",
+                    }
+                )
         if "Lockout threshold" in line:
             val = line.split(":")[-1].strip()
             if val == "Never" or (val.isdigit() and int(val) > 10):
-                findings.append({"check": "1.2.1", "issue": f"Account lockout threshold: {val}", "severity": "MEDIUM"})
+                findings.append(
+                    {
+                        "check": "1.2.1",
+                        "issue": f"Account lockout threshold: {val}",
+                        "severity": "MEDIUM",
+                    }
+                )
     return findings
 
 
@@ -55,10 +75,13 @@ def check_audit_policy():
             for line in result.splitlines():
                 if subcategory in line:
                     if "No Auditing" in line:
-                        findings.append({
-                            "check": "17.x", "issue": f"Audit not configured: {subcategory}",
-                            "severity": "HIGH",
-                        })
+                        findings.append(
+                            {
+                                "check": "17.x",
+                                "issue": f"Audit not configured: {subcategory}",
+                                "severity": "HIGH",
+                            }
+                        )
     return findings
 
 
@@ -67,11 +90,19 @@ def check_windows_firewall():
     findings = []
     profiles = ["Domain", "Private", "Public"]
     for profile in profiles:
-        result = run_ps(f"Get-NetFirewallProfile -Name {profile} | Select-Object Enabled | ConvertTo-Json")
+        result = run_ps(
+            f"Get-NetFirewallProfile -Name {profile} | Select-Object Enabled | ConvertTo-Json"
+        )
         try:
             data = json.loads(result) if result else {}
             if not data.get("Enabled"):
-                findings.append({"check": "9.1", "issue": f"Firewall {profile} profile disabled", "severity": "HIGH"})
+                findings.append(
+                    {
+                        "check": "9.1",
+                        "issue": f"Firewall {profile} profile disabled",
+                        "severity": "HIGH",
+                    }
+                )
         except json.JSONDecodeError:
             pass
     return findings
@@ -81,19 +112,41 @@ def check_security_options():
     """CIS 2.3 — Security Options."""
     findings = []
     checks = [
-        ("HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa", "LmCompatibilityLevel", 5,
-         "2.3.11.7", "LAN Manager auth level not NTLMv2 only"),
-        ("HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "EnableLUA", 1,
-         "2.3.17.1", "UAC not enabled"),
-        ("HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters", "SMB1", 0,
-         "18.3.2", "SMBv1 not disabled"),
+        (
+            "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+            "LmCompatibilityLevel",
+            5,
+            "2.3.11.7",
+            "LAN Manager auth level not NTLMv2 only",
+        ),
+        (
+            "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+            "EnableLUA",
+            1,
+            "2.3.17.1",
+            "UAC not enabled",
+        ),
+        (
+            "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters",
+            "SMB1",
+            0,
+            "18.3.2",
+            "SMBv1 not disabled",
+        ),
     ]
     for path, name, expected, cis_id, desc in checks:
         result = run_ps(
             f"(Get-ItemProperty -Path '{path}' -Name '{name}' -ErrorAction SilentlyContinue).{name}"
         )
         if result.strip().isdigit() and int(result.strip()) != expected:
-            findings.append({"check": cis_id, "issue": desc, "current": result.strip(), "severity": "HIGH"})
+            findings.append(
+                {
+                    "check": cis_id,
+                    "issue": desc,
+                    "current": result.strip(),
+                    "severity": "HIGH",
+                }
+            )
     return findings
 
 
@@ -109,7 +162,13 @@ def check_windows_features():
         try:
             data = json.loads(result) if result else {}
             if data.get("State") == 1:  # Enabled
-                findings.append({"check": "18.x", "issue": f"Risky feature enabled: {feature}", "severity": "MEDIUM"})
+                findings.append(
+                    {
+                        "check": "18.x",
+                        "issue": f"Risky feature enabled: {feature}",
+                        "severity": "MEDIUM",
+                    }
+                )
         except json.JSONDecodeError:
             pass
     return findings

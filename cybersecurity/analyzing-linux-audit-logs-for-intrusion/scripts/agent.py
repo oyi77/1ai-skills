@@ -13,7 +13,6 @@ import datetime
 import collections
 import subprocess
 
-
 SUSPICIOUS_SYSCALLS = {
     "execve": "Program execution",
     "connect": "Network connection",
@@ -31,16 +30,35 @@ SUSPICIOUS_SYSCALLS = {
 }
 
 SENSITIVE_PATHS = [
-    "/etc/passwd", "/etc/shadow", "/etc/sudoers",
-    "/etc/ssh/sshd_config", "/root/.ssh/authorized_keys",
-    "/etc/crontab", "/var/spool/cron",
+    "/etc/passwd",
+    "/etc/shadow",
+    "/etc/sudoers",
+    "/etc/ssh/sshd_config",
+    "/root/.ssh/authorized_keys",
+    "/etc/crontab",
+    "/var/spool/cron",
 ]
 
 SUSPICIOUS_COMMANDS = [
-    "curl", "wget", "nc", "ncat", "nmap", "tcpdump",
-    "python", "perl", "ruby", "gcc", "cc", "make",
-    "useradd", "usermod", "groupadd", "visudo",
-    "iptables", "ip6tables", "nft",
+    "curl",
+    "wget",
+    "nc",
+    "ncat",
+    "nmap",
+    "tcpdump",
+    "python",
+    "perl",
+    "ruby",
+    "gcc",
+    "cc",
+    "make",
+    "useradd",
+    "usermod",
+    "groupadd",
+    "visudo",
+    "iptables",
+    "ip6tables",
+    "nft",
 ]
 
 
@@ -81,24 +99,32 @@ def detect_privilege_escalation(events):
     """Detect privilege escalation indicators in audit events."""
     findings = []
     for e in events:
-        if e.get("type") == "SYSCALL" and e.get("syscall_name") in ("setuid", "setgid", "execve"):
+        if e.get("type") == "SYSCALL" and e.get("syscall_name") in (
+            "setuid",
+            "setgid",
+            "execve",
+        ):
             if e.get("uid") != "0" and e.get("euid") == "0":
-                findings.append({
-                    "type": "privilege_escalation",
-                    "detail": f"UID {e.get('uid')} escalated to eUID 0",
-                    "command": e.get("comm", ""),
-                    "exe": e.get("exe", ""),
-                    "timestamp": e.get("timestamp"),
-                    "severity": "CRITICAL",
-                })
+                findings.append(
+                    {
+                        "type": "privilege_escalation",
+                        "detail": f"UID {e.get('uid')} escalated to eUID 0",
+                        "command": e.get("comm", ""),
+                        "exe": e.get("exe", ""),
+                        "timestamp": e.get("timestamp"),
+                        "severity": "CRITICAL",
+                    }
+                )
         if e.get("type") == "USER_CMD" and "sudo" in e.get("cmd", "").lower():
-            findings.append({
-                "type": "sudo_usage",
-                "user": e.get("acct", e.get("uid", "")),
-                "command": e.get("cmd", ""),
-                "timestamp": e.get("timestamp"),
-                "severity": "MEDIUM",
-            })
+            findings.append(
+                {
+                    "type": "sudo_usage",
+                    "user": e.get("acct", e.get("uid", "")),
+                    "command": e.get("cmd", ""),
+                    "timestamp": e.get("timestamp"),
+                    "severity": "MEDIUM",
+                }
+            )
     return findings
 
 
@@ -110,14 +136,16 @@ def detect_file_access(events):
             path = e.get("name", e.get("exe", ""))
             for sensitive in SENSITIVE_PATHS:
                 if sensitive in path:
-                    findings.append({
-                        "type": "sensitive_file_access",
-                        "path": path,
-                        "syscall": e.get("syscall_name", e.get("syscall", "")),
-                        "user": e.get("uid", ""),
-                        "timestamp": e.get("timestamp"),
-                        "severity": "HIGH",
-                    })
+                    findings.append(
+                        {
+                            "type": "sensitive_file_access",
+                            "path": path,
+                            "syscall": e.get("syscall_name", e.get("syscall", "")),
+                            "user": e.get("uid", ""),
+                            "timestamp": e.get("timestamp"),
+                            "severity": "HIGH",
+                        }
+                    )
                     break
     return findings
 
@@ -131,14 +159,16 @@ def detect_suspicious_commands(events):
             exe = e.get("exe", "").lower()
             for cmd in SUSPICIOUS_COMMANDS:
                 if cmd in comm or cmd in exe:
-                    findings.append({
-                        "type": "suspicious_command",
-                        "command": comm,
-                        "exe": exe,
-                        "user": e.get("uid", ""),
-                        "timestamp": e.get("timestamp"),
-                        "severity": "MEDIUM",
-                    })
+                    findings.append(
+                        {
+                            "type": "suspicious_command",
+                            "command": comm,
+                            "exe": exe,
+                            "user": e.get("uid", ""),
+                            "timestamp": e.get("timestamp"),
+                            "severity": "MEDIUM",
+                        }
+                    )
                     break
     return findings
 
@@ -175,10 +205,18 @@ def generate_summary(events, findings):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Linux audit log intrusion detection agent")
-    parser.add_argument("log_file", nargs="?", default="/var/log/audit/audit.log",
-                        help="Path to audit.log (default: /var/log/audit/audit.log)")
-    parser.add_argument("--max-lines", type=int, default=50000, help="Max log lines to parse")
+    parser = argparse.ArgumentParser(
+        description="Linux audit log intrusion detection agent"
+    )
+    parser.add_argument(
+        "log_file",
+        nargs="?",
+        default="/var/log/audit/audit.log",
+        help="Path to audit.log (default: /var/log/audit/audit.log)",
+    )
+    parser.add_argument(
+        "--max-lines", type=int, default=50000, help="Max log lines to parse"
+    )
     parser.add_argument("--ausearch-key", help="Run ausearch with this key")
     parser.add_argument("--output", "-o", help="Output JSON report path")
     args = parser.parse_args()
@@ -194,7 +232,11 @@ def main():
     if isinstance(events, dict) and "error" in events:
         print(f"[!] {events['error']}")
         print("[DEMO] Specify a valid audit.log path or run on a Linux system")
-        print(json.dumps({"demo": True, "monitored_syscalls": len(SUSPICIOUS_SYSCALLS)}, indent=2))
+        print(
+            json.dumps(
+                {"demo": True, "monitored_syscalls": len(SUSPICIOUS_SYSCALLS)}, indent=2
+            )
+        )
         sys.exit(0)
 
     findings = []

@@ -3,49 +3,106 @@
 
 import datetime
 
-
 SCENARIO_TEMPLATES = {
     "ransomware": {
         "title": "Ransomware Attack Scenario",
         "phases": [
-            {"time": "T+0", "inject": "Shadow copy deletion detected on file server",
-             "questions": ["Initial assessment?", "What data sources to query?"]},
-            {"time": "T+10", "inject": "Mass file encryption with .locked extension across 7 hosts",
-             "questions": ["Severity assignment?", "Containment actions?", "Notification chain?"]},
-            {"time": "T+25", "inject": "Ransom note found, data exfiltration confirmed",
-             "questions": ["Containment strategy order?", "Executive notification plan?"]},
-            {"time": "T+45", "inject": "CFO demands access for SEC filing, media inquiry received",
-             "questions": ["Business vs security balance?", "Ransom payment recommendation?"]},
-            {"time": "T+70", "inject": "Forensics reveal 5-day dwell time, 15GB exfiltrated PII",
-             "questions": ["Regulatory notifications?", "Law enforcement engagement?"]},
-            {"time": "T+90", "inject": "Recovery decision point, CEO briefing in 30 minutes",
-             "questions": ["Executive briefing content?", "Recovery timeline?"]},
+            {
+                "time": "T+0",
+                "inject": "Shadow copy deletion detected on file server",
+                "questions": ["Initial assessment?", "What data sources to query?"],
+            },
+            {
+                "time": "T+10",
+                "inject": "Mass file encryption with .locked extension across 7 hosts",
+                "questions": [
+                    "Severity assignment?",
+                    "Containment actions?",
+                    "Notification chain?",
+                ],
+            },
+            {
+                "time": "T+25",
+                "inject": "Ransom note found, data exfiltration confirmed",
+                "questions": [
+                    "Containment strategy order?",
+                    "Executive notification plan?",
+                ],
+            },
+            {
+                "time": "T+45",
+                "inject": "CFO demands access for SEC filing, media inquiry received",
+                "questions": [
+                    "Business vs security balance?",
+                    "Ransom payment recommendation?",
+                ],
+            },
+            {
+                "time": "T+70",
+                "inject": "Forensics reveal 5-day dwell time, 15GB exfiltrated PII",
+                "questions": [
+                    "Regulatory notifications?",
+                    "Law enforcement engagement?",
+                ],
+            },
+            {
+                "time": "T+90",
+                "inject": "Recovery decision point, CEO briefing in 30 minutes",
+                "questions": ["Executive briefing content?", "Recovery timeline?"],
+            },
         ],
     },
     "data_breach": {
         "title": "Data Breach / Insider Threat Scenario",
         "phases": [
-            {"time": "T+0", "inject": "DLP alert: large data transfer to personal cloud storage",
-             "questions": ["Initial triage steps?", "Who to involve?"]},
-            {"time": "T+15", "inject": "Employee identified is in notice period, accessing HR data",
-             "questions": ["Containment approach?", "Legal considerations?"]},
-            {"time": "T+30", "inject": "Evidence of systematic data collection over 2 weeks",
-             "questions": ["Forensic preservation?", "HR and Legal coordination?"]},
-            {"time": "T+50", "inject": "Customer PII confirmed in exfiltrated data",
-             "questions": ["Breach notification timeline?", "Regulatory requirements?"]},
+            {
+                "time": "T+0",
+                "inject": "DLP alert: large data transfer to personal cloud storage",
+                "questions": ["Initial triage steps?", "Who to involve?"],
+            },
+            {
+                "time": "T+15",
+                "inject": "Employee identified is in notice period, accessing HR data",
+                "questions": ["Containment approach?", "Legal considerations?"],
+            },
+            {
+                "time": "T+30",
+                "inject": "Evidence of systematic data collection over 2 weeks",
+                "questions": ["Forensic preservation?", "HR and Legal coordination?"],
+            },
+            {
+                "time": "T+50",
+                "inject": "Customer PII confirmed in exfiltrated data",
+                "questions": [
+                    "Breach notification timeline?",
+                    "Regulatory requirements?",
+                ],
+            },
         ],
     },
     "supply_chain": {
         "title": "Supply Chain Compromise Scenario",
         "phases": [
-            {"time": "T+0", "inject": "Vendor software update contains backdoor, CISA advisory published",
-             "questions": ["Impact assessment scope?", "Vendor communication?"]},
-            {"time": "T+15", "inject": "Affected software deployed on 40% of endpoints",
-             "questions": ["Isolation strategy?", "Business continuity?"]},
-            {"time": "T+35", "inject": "C2 beaconing detected from 12 hosts",
-             "questions": ["Containment priority order?", "Evidence preservation?"]},
-            {"time": "T+55", "inject": "Attacker accessed domain controller via compromised agent",
-             "questions": ["Credential reset plan?", "Recovery sequence?"]},
+            {
+                "time": "T+0",
+                "inject": "Vendor software update contains backdoor, CISA advisory published",
+                "questions": ["Impact assessment scope?", "Vendor communication?"],
+            },
+            {
+                "time": "T+15",
+                "inject": "Affected software deployed on 40% of endpoints",
+                "questions": ["Isolation strategy?", "Business continuity?"],
+            },
+            {
+                "time": "T+35",
+                "inject": "C2 beaconing detected from 12 hosts",
+                "questions": ["Containment priority order?", "Evidence preservation?"],
+            },
+            {
+                "time": "T+55",
+                "inject": "Attacker accessed domain controller via compromised agent",
+                "questions": ["Credential reset plan?", "Recovery sequence?"],
+            },
         ],
     },
 }
@@ -66,7 +123,9 @@ def generate_exercise_id():
 
 def create_exercise(scenario_type, participants, duration_hours=3):
     if scenario_type not in SCENARIO_TEMPLATES:
-        raise ValueError(f"Unknown scenario: {scenario_type}. Choose from: {list(SCENARIO_TEMPLATES)}")
+        raise ValueError(
+            f"Unknown scenario: {scenario_type}. Choose from: {list(SCENARIO_TEMPLATES)}"
+        )
     template = SCENARIO_TEMPLATES[scenario_type]
     exercise = {
         "exercise_id": generate_exercise_id(),
@@ -100,7 +159,12 @@ def score_response(category, score):
         rating = "Adequate"
     else:
         rating = "Needs Improvement"
-    return {"category": category, "score": clamped, "rating": rating, "weight": criteria["weight"]}
+    return {
+        "category": category,
+        "score": clamped,
+        "rating": rating,
+        "weight": criteria["weight"],
+    }
 
 
 def calculate_overall_score(scores):
@@ -182,8 +246,16 @@ if __name__ == "__main__":
         score_response("business_continuity", 65),
     ]
     gaps = [
-        {"finding": "No after-hours CISO notification procedure", "risk": "High", "owner": "SOC Manager"},
-        {"finding": "Backup recovery untested for 6 months", "risk": "Critical", "owner": "IT Ops Lead"},
+        {
+            "finding": "No after-hours CISO notification procedure",
+            "risk": "High",
+            "owner": "SOC Manager",
+        },
+        {
+            "finding": "Backup recovery untested for 6 months",
+            "risk": "Critical",
+            "owner": "IT Ops Lead",
+        },
     ]
     strengths = [
         "Ransomware indicators correctly identified immediately",

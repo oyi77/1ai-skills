@@ -22,18 +22,21 @@ from datetime import datetime, timezone
 try:
     from watchdog.observers import Observer
     from watchdog.events import FileSystemEventHandler
+
     HAS_WATCHDOG = True
 except ImportError:
     HAS_WATCHDOG = False
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
 
 try:
     import psutil
+
     HAS_PSUTIL = True
 except ImportError:
     HAS_PSUTIL = False
@@ -49,8 +52,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 CANARY_FILE_TEMPLATES = {
-    "Passwords.xlsx": b"PK\x03\x04" + b"\x00" * 26 + b"[Content_Types].xml" + os.urandom(512),
-    "Financial_Report_2026.docx": b"PK\x03\x04" + b"\x00" * 26 + b"word/document.xml" + os.urandom(512),
+    "Passwords.xlsx": b"PK\x03\x04"
+    + b"\x00" * 26
+    + b"[Content_Types].xml"
+    + os.urandom(512),
+    "Financial_Report_2026.docx": b"PK\x03\x04"
+    + b"\x00" * 26
+    + b"word/document.xml"
+    + os.urandom(512),
     "backup_credentials.csv": (
         b"hostname,username,password,last_rotated\n"
         b"dc01.corp.local,svc_backup,R3st0re$ecur3!2026,2026-01-15\n"
@@ -58,8 +67,12 @@ CANARY_FILE_TEMPLATES = {
         b"vpn-gateway,admin,VPN@dm1n_2026!,2026-03-01\n"
         b"nas-backup,root,B4ckup_N4S!2026,2025-12-20\n"
     ),
-    "Employee_SSN_List.xlsx": b"PK\x03\x04" + b"\x00" * 26 + b"xl/worksheets/sheet1.xml" + os.urandom(512),
-    "tax_returns_2025.pdf": b"%PDF-1.7\n1 0 obj\n<< /Type /Catalog >>\nendobj\n" + os.urandom(256),
+    "Employee_SSN_List.xlsx": b"PK\x03\x04"
+    + b"\x00" * 26
+    + b"xl/worksheets/sheet1.xml"
+    + os.urandom(512),
+    "tax_returns_2025.pdf": b"%PDF-1.7\n1 0 obj\n<< /Type /Catalog >>\nendobj\n"
+    + os.urandom(256),
     "bitcoin_wallet_seed.txt": (
         b"BIP39 Mnemonic Seed Phrase (DO NOT SHARE)\n"
         b"abandon ability able about above absent absorb abstract absurd abuse\n"
@@ -107,6 +120,7 @@ def compute_entropy(filepath):
         return 0.0
     from collections import Counter
     import math
+
     byte_counts = Counter(data)
     length = len(data)
     entropy = -sum(
@@ -122,17 +136,21 @@ def get_process_info():
     if not HAS_PSUTIL:
         return {"error": "psutil not installed"}
     suspicious = []
-    for proc in psutil.process_iter(["pid", "name", "username", "cmdline", "create_time"]):
+    for proc in psutil.process_iter(
+        ["pid", "name", "username", "cmdline", "create_time"]
+    ):
         try:
             info = proc.info
             if info["create_time"] and (time.time() - info["create_time"]) < 30:
-                suspicious.append({
-                    "pid": info["pid"],
-                    "name": info["name"],
-                    "username": info["username"],
-                    "cmdline": " ".join(info["cmdline"] or []),
-                    "age_seconds": round(time.time() - info["create_time"], 1),
-                })
+                suspicious.append(
+                    {
+                        "pid": info["pid"],
+                        "name": info["name"],
+                        "username": info["username"],
+                        "cmdline": " ".join(info["cmdline"] or []),
+                        "age_seconds": round(time.time() - info["create_time"], 1),
+                    }
+                )
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             continue
     return suspicious[:10]
@@ -181,11 +199,15 @@ def deploy_canary_files(target_dirs, custom_files=None):
     manifest_path = Path("canary_manifest.json")
     with open(manifest_path, "w") as f:
         json.dump(manifest, f, indent=2)
-    logger.info("Deployed %d canary files, manifest saved to %s", len(deployed), manifest_path)
+    logger.info(
+        "Deployed %d canary files, manifest saved to %s", len(deployed), manifest_path
+    )
     return manifest
 
 
-def send_email_alert(alert_data, smtp_host, smtp_port, sender, recipients, password=None):
+def send_email_alert(
+    alert_data, smtp_host, smtp_port, sender, recipients, password=None
+):
     """Send alert email via SMTP."""
     subject = f"RANSOMWARE CANARY ALERT: {alert_data['event_type']} on {alert_data['canary_file']}"
     body = json.dumps(alert_data, indent=2, default=str)
@@ -223,25 +245,34 @@ def send_slack_alert(alert_data, webhook_url):
         "blocks": [
             {
                 "type": "header",
-                "text": {"type": "plain_text", "text": "Ransomware Canary File Triggered"}
+                "text": {
+                    "type": "plain_text",
+                    "text": "Ransomware Canary File Triggered",
+                },
             },
             {
                 "type": "section",
                 "fields": [
                     {"type": "mrkdwn", "text": f"*Event:*\n{alert_data['event_type']}"},
-                    {"type": "mrkdwn", "text": f"*File:*\n`{alert_data['canary_file']}`"},
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*File:*\n`{alert_data['canary_file']}`",
+                    },
                     {"type": "mrkdwn", "text": f"*Time:*\n{alert_data['timestamp']}"},
-                    {"type": "mrkdwn", "text": f"*Host:*\n{alert_data.get('hostname', 'unknown')}"},
-                ]
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*Host:*\n{alert_data.get('hostname', 'unknown')}",
+                    },
+                ],
             },
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"*Immediate Action Required:* Investigate potential ransomware activity on `{alert_data.get('hostname', 'unknown')}`"
-                }
-            }
-        ]
+                    "text": f"*Immediate Action Required:* Investigate potential ransomware activity on `{alert_data.get('hostname', 'unknown')}`",
+                },
+            },
+        ],
     }
     try:
         resp = requests.post(webhook_url, json=payload, timeout=10)
@@ -258,6 +289,7 @@ def send_slack_alert(alert_data, webhook_url):
 def send_syslog_alert(alert_data, syslog_server="127.0.0.1", syslog_port=514):
     """Send alert to syslog server via UDP."""
     import socket
+
     priority = 8 * 4 + 1  # facility=security, severity=alert
     message = (
         f"<{priority}>1 {alert_data['timestamp']} {alert_data.get('hostname', '-')} "
@@ -283,7 +315,9 @@ class CanaryFileHandler(FileSystemEventHandler):
 
     def __init__(self, canary_files, config):
         super().__init__()
-        self.canary_files = {str(Path(f).resolve()): compute_sha256(f) for f in canary_files}
+        self.canary_files = {
+            str(Path(f).resolve()): compute_sha256(f) for f in canary_files
+        }
         self.config = config
         self.alert_count = 0
         self.last_alert_time = {}
@@ -307,9 +341,15 @@ class CanaryFileHandler(FileSystemEventHandler):
             "canary_file": src_path,
             "hostname": platform.node(),
             "platform": platform.system(),
-            "hash_before": self.canary_files.get(str(Path(src_path).resolve()), "unknown"),
-            "hash_after": compute_sha256(src_path) if os.path.exists(src_path) else "file_deleted",
-            "entropy_after": compute_entropy(src_path) if os.path.exists(src_path) else 0.0,
+            "hash_before": self.canary_files.get(
+                str(Path(src_path).resolve()), "unknown"
+            ),
+            "hash_after": (
+                compute_sha256(src_path) if os.path.exists(src_path) else "file_deleted"
+            ),
+            "entropy_after": (
+                compute_entropy(src_path) if os.path.exists(src_path) else 0.0
+            ),
             "alert_number": self.alert_count + 1,
         }
         if dest_path:
@@ -322,7 +362,9 @@ class CanaryFileHandler(FileSystemEventHandler):
         self.alert_count += 1
         logger.critical(
             "CANARY TRIGGERED: %s on %s (alert #%d)",
-            alert["event_type"], alert["canary_file"], self.alert_count
+            alert["event_type"],
+            alert["canary_file"],
+            self.alert_count,
         )
         with open("canary_alerts.jsonl", "a") as f:
             f.write(json.dumps(alert, default=str) + "\n")
@@ -371,9 +413,22 @@ class CanaryFileHandler(FileSystemEventHandler):
             alert = self._build_alert("FILE_RENAMED", event.src_path, event.dest_path)
             extension = Path(event.dest_path).suffix.lower()
             ransomware_extensions = {
-                ".encrypted", ".locked", ".lockbit", ".crypt", ".enc",
-                ".ransom", ".pay", ".aes", ".rsa", ".cry", ".ryk",
-                ".revil", ".conti", ".hive", ".black", ".basta",
+                ".encrypted",
+                ".locked",
+                ".lockbit",
+                ".crypt",
+                ".enc",
+                ".ransom",
+                ".pay",
+                ".aes",
+                ".rsa",
+                ".cry",
+                ".ryk",
+                ".revil",
+                ".conti",
+                ".hive",
+                ".black",
+                ".basta",
             }
             if extension in ransomware_extensions:
                 alert["ransomware_extension_detected"] = extension
@@ -385,8 +440,16 @@ class CanaryFileHandler(FileSystemEventHandler):
             return
         parent = str(Path(event.src_path).parent)
         ransom_note_patterns = [
-            "readme", "decrypt", "restore", "recover", "how_to",
-            "ransom", "locked", "unlock", "pay", "instruction",
+            "readme",
+            "decrypt",
+            "restore",
+            "recover",
+            "how_to",
+            "ransom",
+            "locked",
+            "unlock",
+            "pay",
+            "instruction",
         ]
         basename = Path(event.src_path).stem.lower()
         if any(pattern in basename for pattern in ransom_note_patterns):
@@ -425,7 +488,11 @@ def start_monitoring(manifest_path, config):
         observer.schedule(handler, directory, recursive=False)
         logger.info("Watching directory: %s", directory)
 
-    logger.info("Monitoring %d canary files across %d directories", len(canary_files), len(watch_dirs))
+    logger.info(
+        "Monitoring %d canary files across %d directories",
+        len(canary_files),
+        len(watch_dirs),
+    )
     observer.start()
     try:
         while True:
@@ -453,13 +520,15 @@ def verify_canary_integrity(manifest_path):
                 results["details"].append({"file": filepath, "status": "INTACT"})
             else:
                 results["modified"] += 1
-                results["details"].append({
-                    "file": filepath,
-                    "status": "MODIFIED",
-                    "original_hash": original_hash,
-                    "current_hash": current_hash,
-                    "entropy": compute_entropy(filepath),
-                })
+                results["details"].append(
+                    {
+                        "file": filepath,
+                        "status": "MODIFIED",
+                        "original_hash": original_hash,
+                        "current_hash": current_hash,
+                        "entropy": compute_entropy(filepath),
+                    }
+                )
     return results
 
 
@@ -474,15 +543,18 @@ def simulate_ransomware_test(manifest_path):
         test_file = filepath + ".test_canary"
         try:
             import shutil
+
             shutil.copy2(filepath, test_file)
             with open(test_file, "ab") as f:
                 f.write(os.urandom(64))
-            test_results.append({
-                "file": filepath,
-                "test_action": "modified_copy",
-                "test_file": test_file,
-                "status": "triggered",
-            })
+            test_results.append(
+                {
+                    "file": filepath,
+                    "test_action": "modified_copy",
+                    "test_file": test_file,
+                    "status": "triggered",
+                }
+            )
             os.remove(test_file)
         except Exception as e:
             test_results.append({"file": filepath, "error": str(e)})
@@ -490,11 +562,19 @@ def simulate_ransomware_test(manifest_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Ransomware Canary File Deployment and Monitoring Agent")
-    parser.add_argument("--action", choices=["deploy", "monitor", "verify", "test"],
-                        default="deploy", help="Action to perform")
+    parser = argparse.ArgumentParser(
+        description="Ransomware Canary File Deployment and Monitoring Agent"
+    )
+    parser.add_argument(
+        "--action",
+        choices=["deploy", "monitor", "verify", "test"],
+        default="deploy",
+        help="Action to perform",
+    )
     parser.add_argument("--dirs", nargs="+", help="Directories to deploy canary files")
-    parser.add_argument("--manifest", default="canary_manifest.json", help="Canary manifest file path")
+    parser.add_argument(
+        "--manifest", default="canary_manifest.json", help="Canary manifest file path"
+    )
     parser.add_argument("--config", help="JSON config file for alert settings")
     parser.add_argument("--slack-webhook", help="Slack incoming webhook URL")
     parser.add_argument("--smtp-host", help="SMTP server hostname")
@@ -520,9 +600,13 @@ def main():
 
     if args.action == "deploy":
         if not args.dirs:
-            print("Usage: python agent.py --action deploy --dirs /path/to/dir1 /path/to/dir2")
+            print(
+                "Usage: python agent.py --action deploy --dirs /path/to/dir1 /path/to/dir2"
+            )
             print("\nExample:")
-            print("  python agent.py --action deploy --dirs /srv/shares/finance /home/admin/Documents")
+            print(
+                "  python agent.py --action deploy --dirs /srv/shares/finance /home/admin/Documents"
+            )
             return
         manifest = deploy_canary_files(args.dirs)
         print(json.dumps(manifest, indent=2))
@@ -541,7 +625,9 @@ def main():
         results = verify_canary_integrity(args.manifest)
         print(json.dumps(results, indent=2))
         if results["modified"] > 0 or results["missing"] > 0:
-            print(f"\n[ALERT] {results['modified']} modified, {results['missing']} missing canary files!")
+            print(
+                f"\n[ALERT] {results['modified']} modified, {results['missing']} missing canary files!"
+            )
 
     elif args.action == "test":
         if not os.path.exists(args.manifest):

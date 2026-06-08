@@ -14,6 +14,7 @@ def get_credential_report():
     iam = boto3.client("iam")
     iam.generate_credential_report()
     import time
+
     for _ in range(10):
         try:
             response = iam.get_credential_report()
@@ -39,13 +40,21 @@ def find_stale_access_keys(max_age_days=90):
         for key in keys:
             if key["CreateDate"] < cutoff and key["Status"] == "Active":
                 last_used = iam.get_access_key_last_used(AccessKeyId=key["AccessKeyId"])
-                last_used_date = last_used["AccessKeyLastUsed"].get("LastUsedDate", "Never")
-                stale_keys.append({
-                    "user": user["UserName"], "key_id": key["AccessKeyId"],
-                    "created": key["CreateDate"].isoformat(), "last_used": str(last_used_date),
-                })
-                print(f"  [!] Stale key: {user['UserName']} - {key['AccessKeyId']} "
-                      f"(created: {key['CreateDate'].strftime('%Y-%m-%d')})")
+                last_used_date = last_used["AccessKeyLastUsed"].get(
+                    "LastUsedDate", "Never"
+                )
+                stale_keys.append(
+                    {
+                        "user": user["UserName"],
+                        "key_id": key["AccessKeyId"],
+                        "created": key["CreateDate"].isoformat(),
+                        "last_used": str(last_used_date),
+                    }
+                )
+                print(
+                    f"  [!] Stale key: {user['UserName']} - {key['AccessKeyId']} "
+                    f"(created: {key['CreateDate'].strftime('%Y-%m-%d')})"
+                )
     print(f"[*] Found {len(stale_keys)} stale access keys (>{max_age_days} days)")
     return stale_keys
 
@@ -58,17 +67,30 @@ def find_overprivileged_roles():
     for role in roles:
         if role["Path"].startswith("/aws-service-role/"):
             continue
-        attached = iam.list_attached_role_policies(RoleName=role["RoleName"])["AttachedPolicies"]
+        attached = iam.list_attached_role_policies(RoleName=role["RoleName"])[
+            "AttachedPolicies"
+        ]
         for policy in attached:
             if policy["PolicyName"] in ("AdministratorAccess", "PowerUserAccess"):
-                findings.append({
-                    "role": role["RoleName"], "policy": policy["PolicyName"],
-                    "severity": "CRITICAL" if policy["PolicyName"] == "AdministratorAccess" else "HIGH",
-                })
+                findings.append(
+                    {
+                        "role": role["RoleName"],
+                        "policy": policy["PolicyName"],
+                        "severity": (
+                            "CRITICAL"
+                            if policy["PolicyName"] == "AdministratorAccess"
+                            else "HIGH"
+                        ),
+                    }
+                )
                 print(f"  [!] {role['RoleName']} has {policy['PolicyName']}")
-        inline_policies = iam.list_role_policies(RoleName=role["RoleName"])["PolicyNames"]
+        inline_policies = iam.list_role_policies(RoleName=role["RoleName"])[
+            "PolicyNames"
+        ]
         for pol_name in inline_policies:
-            pol_doc = iam.get_role_policy(RoleName=role["RoleName"], PolicyName=pol_name)["PolicyDocument"]
+            pol_doc = iam.get_role_policy(
+                RoleName=role["RoleName"], PolicyName=pol_name
+            )["PolicyDocument"]
             for stmt in pol_doc.get("Statement", []):
                 actions = stmt.get("Action", [])
                 resources = stmt.get("Resource", [])
@@ -76,12 +98,21 @@ def find_overprivileged_roles():
                     actions = [actions]
                 if isinstance(resources, str):
                     resources = [resources]
-                if "*" in actions and "*" in resources and stmt.get("Effect") == "Allow":
-                    findings.append({
-                        "role": role["RoleName"], "policy": f"inline:{pol_name}",
-                        "severity": "CRITICAL",
-                    })
-                    print(f"  [!] {role['RoleName']} inline policy '{pol_name}' has *:* Allow")
+                if (
+                    "*" in actions
+                    and "*" in resources
+                    and stmt.get("Effect") == "Allow"
+                ):
+                    findings.append(
+                        {
+                            "role": role["RoleName"],
+                            "policy": f"inline:{pol_name}",
+                            "severity": "CRITICAL",
+                        }
+                    )
+                    print(
+                        f"  [!] {role['RoleName']} inline policy '{pol_name}' has *:* Allow"
+                    )
     print(f"[*] Found {len(findings)} overprivileged roles")
     return findings
 
@@ -116,8 +147,9 @@ def check_access_analyzer(region="us-east-1"):
         aa.create_analyzer(analyzerName="account-analyzer", type="ACCOUNT")
         return []
     analyzer_arn = analyzers[0]["arn"]
-    findings = aa.list_findings(analyzerArn=analyzer_arn,
-                                 filter={"status": {"eq": ["ACTIVE"]}})["findings"]
+    findings = aa.list_findings(
+        analyzerArn=analyzer_arn, filter={"status": {"eq": ["ACTIVE"]}}
+    )["findings"]
     print(f"[*] Access Analyzer active findings: {len(findings)}")
     for f in findings[:10]:
         print(f"  [!] {f['resourceType']}: {f['resource']} - {f.get('condition', {})}")
@@ -147,9 +179,20 @@ def generate_audit_report(stale_keys, overpriv_roles, no_mfa, aa_findings, outpu
 
 def main():
     parser = argparse.ArgumentParser(description="AWS IAM Security Audit Agent")
-    parser.add_argument("action", choices=["full-audit", "stale-keys", "overpriv-roles", "mfa-check",
-                                           "access-analyzer", "credential-report"])
-    parser.add_argument("--max-key-age", type=int, default=90, help="Max access key age in days")
+    parser.add_argument(
+        "action",
+        choices=[
+            "full-audit",
+            "stale-keys",
+            "overpriv-roles",
+            "mfa-check",
+            "access-analyzer",
+            "credential-report",
+        ],
+    )
+    parser.add_argument(
+        "--max-key-age", type=int, default=90, help="Max access key age in days"
+    )
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("-o", "--output", default="iam_audit_report.json")
     args = parser.parse_args()

@@ -7,8 +7,7 @@ import re
 from datetime import datetime
 from collections import defaultdict
 
-
-SECTION_PATTERN = re.compile(r'^--([a-f0-9]+)-([A-Z])--$')
+SECTION_PATTERN = re.compile(r"^--([a-f0-9]+)-([A-Z])--$")
 
 CRS_CATEGORIES = {
     "911": "Method Enforcement",
@@ -76,16 +75,17 @@ def parse_audit_log(log_path, max_entries=5000):
         section_h = entry["sections"].get("H", "")
         record["rules_matched"] = []
         for rule_match in re.finditer(
-            r'\[id "(\d+)"\].*?\[msg "([^"]+)"\].*?\[severity "([^"]+)"\]',
-            section_h
+            r'\[id "(\d+)"\].*?\[msg "([^"]+)"\].*?\[severity "([^"]+)"\]', section_h
         ):
-            record["rules_matched"].append({
-                "rule_id": rule_match.group(1),
-                "message": rule_match.group(2),
-                "severity": rule_match.group(3),
-            })
+            record["rules_matched"].append(
+                {
+                    "rule_id": rule_match.group(1),
+                    "message": rule_match.group(2),
+                    "severity": rule_match.group(3),
+                }
+            )
 
-        anomaly = re.search(r'Inbound Anomaly Score.*?(\d+)', section_h)
+        anomaly = re.search(r"Inbound Anomaly Score.*?(\d+)", section_h)
         if anomaly:
             record["anomaly_score"] = int(anomaly.group(1))
 
@@ -107,12 +107,14 @@ def analyze_rule_frequency(entries):
     results = []
     for rid, count in sorted_rules:
         category = CRS_CATEGORIES.get(rid[:3], "Other")
-        results.append({
-            "rule_id": rid,
-            "count": count,
-            "message": rule_msgs.get(rid, ""),
-            "category": category,
-        })
+        results.append(
+            {
+                "rule_id": rid,
+                "count": count,
+                "message": rule_msgs.get(rid, ""),
+                "category": category,
+            }
+        )
     return results
 
 
@@ -132,14 +134,16 @@ def identify_false_positive_candidates(entries, threshold=50):
     candidates = []
     for rid, count in rule_counts.items():
         if count >= threshold and len(rule_ips[rid]) > 10:
-            candidates.append({
-                "rule_id": rid,
-                "hit_count": count,
-                "unique_ips": len(rule_ips[rid]),
-                "unique_uris": len(rule_uris[rid]),
-                "recommendation": f"SecRuleRemoveById {rid}",
-                "reason": "High frequency across many IPs — likely false positive",
-            })
+            candidates.append(
+                {
+                    "rule_id": rid,
+                    "hit_count": count,
+                    "unique_ips": len(rule_ips[rid]),
+                    "unique_uris": len(rule_uris[rid]),
+                    "recommendation": f"SecRuleRemoveById {rid}",
+                    "reason": "High frequency across many IPs — likely false positive",
+                }
+            )
     return candidates
 
 
@@ -147,8 +151,10 @@ def generate_exclusion_rules(candidates):
     """Generate ModSecurity rule exclusion configuration."""
     lines = ["# Auto-generated false positive exclusions"]
     for c in candidates:
-        lines.append(f"# Rule {c['rule_id']}: {c['hit_count']} hits, "
-                     f"{c['unique_ips']} unique IPs")
+        lines.append(
+            f"# Rule {c['rule_id']}: {c['hit_count']} hits, "
+            f"{c['unique_ips']} unique IPs"
+        )
         lines.append(f"SecRuleRemoveById {c['rule_id']}")
     return "\n".join(lines)
 
@@ -168,9 +174,13 @@ def analyze_attack_summary(entries):
             top_attackers[entry.get("client_ip", "")] += 1
 
     return {
-        "by_category": dict(sorted(category_counts.items(), key=lambda x: x[1], reverse=True)),
+        "by_category": dict(
+            sorted(category_counts.items(), key=lambda x: x[1], reverse=True)
+        ),
         "by_severity": dict(severity_counts),
-        "top_attackers": dict(sorted(top_attackers.items(), key=lambda x: x[1], reverse=True)[:20]),
+        "top_attackers": dict(
+            sorted(top_attackers.items(), key=lambda x: x[1], reverse=True)[:20]
+        ),
     }
 
 
@@ -208,8 +218,10 @@ def run_audit(args):
         report["false_positive_candidates"] = fp_candidates
         print(f"\n--- FALSE POSITIVE CANDIDATES ({len(fp_candidates)}) ---")
         for c in fp_candidates[:10]:
-            print(f"  Rule {c['rule_id']}: {c['hit_count']} hits, "
-                  f"{c['unique_ips']} IPs — {c['reason']}")
+            print(
+                f"  Rule {c['rule_id']}: {c['hit_count']} hits, "
+                f"{c['unique_ips']} IPs — {c['reason']}"
+            )
         if fp_candidates:
             exclusions = generate_exclusion_rules(fp_candidates)
             report["exclusion_config"] = exclusions
@@ -219,14 +231,26 @@ def run_audit(args):
 
 def main():
     parser = argparse.ArgumentParser(description="ModSecurity Audit Log Agent")
-    parser.add_argument("--audit-log", required=True,
-                        help="Path to ModSecurity audit log file")
-    parser.add_argument("--max-entries", type=int, default=5000,
-                        help="Max log entries to parse (default: 5000)")
-    parser.add_argument("--tune", action="store_true",
-                        help="Identify false positive candidates for tuning")
-    parser.add_argument("--fp-threshold", type=int, default=50,
-                        help="Minimum hits for false positive candidate (default: 50)")
+    parser.add_argument(
+        "--audit-log", required=True, help="Path to ModSecurity audit log file"
+    )
+    parser.add_argument(
+        "--max-entries",
+        type=int,
+        default=5000,
+        help="Max log entries to parse (default: 5000)",
+    )
+    parser.add_argument(
+        "--tune",
+        action="store_true",
+        help="Identify false positive candidates for tuning",
+    )
+    parser.add_argument(
+        "--fp-threshold",
+        type=int,
+        default=50,
+        help="Minimum hits for false positive candidate (default: 50)",
+    )
     parser.add_argument("--output", help="Save report to JSON file")
     args = parser.parse_args()
 

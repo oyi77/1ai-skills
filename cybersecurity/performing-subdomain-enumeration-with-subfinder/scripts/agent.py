@@ -37,15 +37,20 @@ class SubdomainEnumerationAgent:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             if out_file.exists():
                 self.subdomains = [
-                    line.strip() for line in out_file.read_text().splitlines()
+                    line.strip()
+                    for line in out_file.read_text().splitlines()
                     if line.strip()
                 ]
-            return {"count": len(self.subdomains),
-                    "output_file": str(out_file),
-                    "stderr": result.stderr[:200] if result.stderr else ""}
+            return {
+                "count": len(self.subdomains),
+                "output_file": str(out_file),
+                "stderr": result.stderr[:200] if result.stderr else "",
+            }
         except FileNotFoundError:
-            return {"error": "subfinder not installed. Install: go install -v "
-                    "github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"}
+            return {
+                "error": "subfinder not installed. Install: go install -v "
+                "github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+            }
         except subprocess.TimeoutExpired:
             return {"error": "subfinder timed out after 300s"}
 
@@ -77,8 +82,19 @@ class SubdomainEnumerationAgent:
         input_file.write_text("\n".join(self.subdomains))
         out_file = self.output_dir / f"{self.domain}_live.json"
 
-        cmd = ["httpx", "-l", str(input_file), "-ports", ports,
-               "-status-code", "-title", "-json", "-o", str(out_file), "-silent"]
+        cmd = [
+            "httpx",
+            "-l",
+            str(input_file),
+            "-ports",
+            ports,
+            "-status-code",
+            "-title",
+            "-json",
+            "-o",
+            str(out_file),
+            "-silent",
+        ]
         try:
             subprocess.run(cmd, capture_output=True, text=True, timeout=600)
             if out_file.exists():
@@ -113,18 +129,27 @@ class SubdomainEnumerationAgent:
     def detect_takeover_candidates(self):
         """Identify subdomains potentially vulnerable to takeover."""
         candidates = []
-        cloud_cnames = ["amazonaws.com", "azurewebsites.net", "cloudfront.net",
-                        "herokuapp.com", "github.io", "s3.amazonaws.com",
-                        "blob.core.windows.net", "cloudapp.azure.com"]
+        cloud_cnames = [
+            "amazonaws.com",
+            "azurewebsites.net",
+            "cloudfront.net",
+            "herokuapp.com",
+            "github.io",
+            "s3.amazonaws.com",
+            "blob.core.windows.net",
+            "cloudapp.azure.com",
+        ]
         dns_records = self.resolve_dns()
         for record in dns_records:
             cname = record.get("cname", "")
             if any(cloud in cname for cloud in cloud_cnames):
-                candidates.append({
-                    "subdomain": record.get("host", ""),
-                    "cname": cname,
-                    "risk": "Potential subdomain takeover"
-                })
+                candidates.append(
+                    {
+                        "subdomain": record.get("host", ""),
+                        "cname": cname,
+                        "risk": "Potential subdomain takeover",
+                    }
+                )
         return candidates
 
     def generate_report(self):

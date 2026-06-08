@@ -22,8 +22,7 @@ except ImportError:
 class WazuhDetectionAgent:
     """Manages Wazuh endpoint detection via its REST API."""
 
-    def __init__(self, wazuh_url, username, password,
-                 output_dir="./wazuh_detection"):
+    def __init__(self, wazuh_url, username, password, output_dir="./wazuh_detection"):
         self.base_url = wazuh_url.rstrip("/")
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -38,7 +37,8 @@ class WazuhDetectionAgent:
             resp = requests.post(
                 f"{self.base_url}/security/user/authenticate",
                 auth=HTTPBasicAuth(username, password),
-                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=10,  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+                timeout=10,  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             )
             if resp.status_code == 200:
                 return resp.json().get("data", {}).get("token")
@@ -51,9 +51,13 @@ class WazuhDetectionAgent:
             return None
         try:
             resp = requests.request(
-                method, f"{self.base_url}{path}",
+                method,
+                f"{self.base_url}{path}",
                 headers={"Authorization": f"Bearer {self.token}"},
-                params=params, json=data, verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=15,  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+                params=params,
+                json=data,
+                verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+                timeout=15,  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
             )
             return resp.json() if resp.status_code == 200 else None
         except requests.RequestException:
@@ -61,16 +65,26 @@ class WazuhDetectionAgent:
 
     def list_agents(self):
         """List all registered Wazuh agents with status."""
-        data = self._api("GET", "/agents", params={"limit": 500, "select": "id,name,status,os.name,os.version,version,lastKeepAlive,ip"})
+        data = self._api(
+            "GET",
+            "/agents",
+            params={
+                "limit": 500,
+                "select": "id,name,status,os.name,os.version,version,lastKeepAlive,ip",
+            },
+        )
         if not data:
             return []
         agents = data.get("data", {}).get("affected_items", [])
         disconnected = [a for a in agents if a.get("status") == "disconnected"]
         if disconnected:
-            self.findings.append({
-                "severity": "medium", "type": "Disconnected Agents",
-                "detail": f"{len(disconnected)} agents disconnected",
-            })
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Disconnected Agents",
+                    "detail": f"{len(disconnected)} agents disconnected",
+                }
+            )
         return agents
 
     def get_agent_summary(self):
@@ -82,26 +96,38 @@ class WazuhDetectionAgent:
 
     def query_alerts(self, limit=20, level_min=10):
         """Query recent high-severity alerts."""
-        data = self._api("GET", "/alerts", params={
-            "limit": limit, "sort": "-timestamp",
-            "q": f"rule.level>={level_min}",
-        })
+        data = self._api(
+            "GET",
+            "/alerts",
+            params={
+                "limit": limit,
+                "sort": "-timestamp",
+                "q": f"rule.level>={level_min}",
+            },
+        )
         if not data:
             return []
         alerts = data.get("data", {}).get("affected_items", [])
-        return [{
-            "id": a.get("id"),
-            "timestamp": a.get("timestamp"),
-            "rule_id": a.get("rule", {}).get("id"),
-            "rule_description": a.get("rule", {}).get("description"),
-            "rule_level": a.get("rule", {}).get("level"),
-            "agent_name": a.get("agent", {}).get("name"),
-            "agent_id": a.get("agent", {}).get("id"),
-        } for a in alerts]
+        return [
+            {
+                "id": a.get("id"),
+                "timestamp": a.get("timestamp"),
+                "rule_id": a.get("rule", {}).get("id"),
+                "rule_description": a.get("rule", {}).get("description"),
+                "rule_level": a.get("rule", {}).get("level"),
+                "agent_name": a.get("agent", {}).get("name"),
+                "agent_id": a.get("agent", {}).get("id"),
+            }
+            for a in alerts
+        ]
 
     def get_rules_summary(self):
         """Get summary of active detection rules."""
-        data = self._api("GET", "/rules", params={"limit": 500, "select": "id,description,level,groups"})
+        data = self._api(
+            "GET",
+            "/rules",
+            params={"limit": 500, "select": "id,description,level,groups"},
+        )
         if not data:
             return {"total": 0}
         rules = data.get("data", {}).get("affected_items", [])
@@ -114,11 +140,15 @@ class WazuhDetectionAgent:
 
     def test_logtest(self, log_line, log_format="syslog"):
         """Test a log line against Wazuh decoders and rules."""
-        data = self._api("PUT", "/logtest", data={
-            "log_format": log_format,
-            "location": "test",
-            "event": log_line,
-        })
+        data = self._api(
+            "PUT",
+            "/logtest",
+            data={
+                "log_format": log_format,
+                "location": "test",
+                "event": log_line,
+            },
+        )
         if not data:
             return {"error": "Logtest failed"}
         result = data.get("data", {})
@@ -132,17 +162,25 @@ class WazuhDetectionAgent:
 
     def check_vulnerability_detection(self):
         """Check if vulnerability detection module is enabled."""
-        data = self._api("GET", "/manager/configuration",
-                         params={"section": "vulnerability-detector"})
+        data = self._api(
+            "GET",
+            "/manager/configuration",
+            params={"section": "vulnerability-detector"},
+        )
         if data:
             config = data.get("data", {}).get("affected_items", [])
             if config:
-                enabled = config[0].get("vulnerability-detector", {}).get("enabled", "no")
+                enabled = (
+                    config[0].get("vulnerability-detector", {}).get("enabled", "no")
+                )
                 if enabled != "yes":
-                    self.findings.append({
-                        "severity": "medium", "type": "Vuln Detection Disabled",
-                        "detail": "Vulnerability detection module is not enabled",
-                    })
+                    self.findings.append(
+                        {
+                            "severity": "medium",
+                            "type": "Vuln Detection Disabled",
+                            "detail": "Vulnerability detection module is not enabled",
+                        }
+                    )
                 return {"enabled": enabled == "yes"}
         return {"enabled": False}
 
@@ -183,8 +221,9 @@ def main():
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
-    agent = WazuhDetectionAgent(args.wazuh_url, args.username, args.password,
-                                output_dir=args.output_dir)
+    agent = WazuhDetectionAgent(
+        args.wazuh_url, args.username, args.password, output_dir=args.output_dir
+    )
     agent.generate_report()
 
 

@@ -5,6 +5,7 @@ Audits Kubernetes Role-Based Access Control configuration for security
 weaknesses including overly permissive ClusterRoles, wildcard permissions,
 privilege escalation paths, and service account misconfigurations.
 """
+
 import argparse
 import json
 import os
@@ -33,9 +34,22 @@ def audit_cluster_roles():
         return findings
 
     dangerous_verbs = {"*", "create", "update", "patch", "delete"}
-    dangerous_resources = {"secrets", "pods/exec", "clusterroles", "clusterrolebindings",
-                           "roles", "rolebindings", "serviceaccounts", "nodes"}
-    escalation_resources = {"clusterroles", "clusterrolebindings", "roles", "rolebindings"}
+    dangerous_resources = {
+        "secrets",
+        "pods/exec",
+        "clusterroles",
+        "clusterrolebindings",
+        "roles",
+        "rolebindings",
+        "serviceaccounts",
+        "nodes",
+    }
+    escalation_resources = {
+        "clusterroles",
+        "clusterrolebindings",
+        "roles",
+        "rolebindings",
+    }
 
     for role in data.get("items", []):
         name = role.get("metadata", {}).get("name", "")
@@ -49,44 +63,69 @@ def audit_cluster_roles():
 
             # Wildcard everything
             if "*" in verbs and "*" in resources:
-                findings.append({
-                    "type": "wildcard_all", "role": name, "kind": "ClusterRole",
-                    "severity": "CRITICAL",
-                    "detail": "Full wildcard access (verbs: *, resources: *)",
-                    "recommendation": "Replace with specific verbs and resources",
-                })
+                findings.append(
+                    {
+                        "type": "wildcard_all",
+                        "role": name,
+                        "kind": "ClusterRole",
+                        "severity": "CRITICAL",
+                        "detail": "Full wildcard access (verbs: *, resources: *)",
+                        "recommendation": "Replace with specific verbs and resources",
+                    }
+                )
 
             # Secrets access
             if resources & {"secrets", "*"} and verbs & {"get", "list", "watch", "*"}:
-                findings.append({
-                    "type": "secrets_access", "role": name, "kind": "ClusterRole",
-                    "severity": "HIGH",
-                    "detail": f"Can read secrets (verbs: {verbs & {'get', 'list', 'watch', '*'}})",
-                })
+                findings.append(
+                    {
+                        "type": "secrets_access",
+                        "role": name,
+                        "kind": "ClusterRole",
+                        "severity": "HIGH",
+                        "detail": f"Can read secrets (verbs: {verbs & {'get', 'list', 'watch', '*'}})",
+                    }
+                )
 
             # Pod exec
             if "pods/exec" in resources or ("pods" in resources and "create" in verbs):
-                findings.append({
-                    "type": "pod_exec", "role": name, "kind": "ClusterRole",
-                    "severity": "HIGH",
-                    "detail": "Can exec into pods (container escape risk)",
-                })
+                findings.append(
+                    {
+                        "type": "pod_exec",
+                        "role": name,
+                        "kind": "ClusterRole",
+                        "severity": "HIGH",
+                        "detail": "Can exec into pods (container escape risk)",
+                    }
+                )
 
             # Privilege escalation via RBAC modification
-            if resources & escalation_resources and verbs & {"create", "update", "patch", "*"}:
-                findings.append({
-                    "type": "rbac_escalation", "role": name, "kind": "ClusterRole",
-                    "severity": "CRITICAL",
-                    "detail": f"Can modify RBAC resources: {resources & escalation_resources}",
-                })
+            if resources & escalation_resources and verbs & {
+                "create",
+                "update",
+                "patch",
+                "*",
+            }:
+                findings.append(
+                    {
+                        "type": "rbac_escalation",
+                        "role": name,
+                        "kind": "ClusterRole",
+                        "severity": "CRITICAL",
+                        "detail": f"Can modify RBAC resources: {resources & escalation_resources}",
+                    }
+                )
 
             # Node access
             if "nodes" in resources and verbs & {"get", "list", "proxy", "*"}:
-                findings.append({
-                    "type": "node_access", "role": name, "kind": "ClusterRole",
-                    "severity": "MEDIUM",
-                    "detail": "Can access node resources",
-                })
+                findings.append(
+                    {
+                        "type": "node_access",
+                        "role": name,
+                        "kind": "ClusterRole",
+                        "severity": "MEDIUM",
+                        "detail": "Can access node resources",
+                    }
+                )
 
     return findings
 
@@ -114,30 +153,46 @@ def audit_cluster_role_bindings():
 
             # Cluster-admin binding
             if role_name == "cluster-admin":
-                findings.append({
-                    "type": "cluster_admin_binding",
-                    "binding": name, "subject": f"{kind}/{subj_name}",
-                    "severity": "CRITICAL",
-                    "detail": f"cluster-admin bound to {kind} '{subj_name}'",
-                })
+                findings.append(
+                    {
+                        "type": "cluster_admin_binding",
+                        "binding": name,
+                        "subject": f"{kind}/{subj_name}",
+                        "severity": "CRITICAL",
+                        "detail": f"cluster-admin bound to {kind} '{subj_name}'",
+                    }
+                )
 
             # Group bindings to all authenticated/unauthenticated
-            if kind == "Group" and subj_name in ("system:authenticated", "system:unauthenticated"):
-                findings.append({
-                    "type": "broad_group_binding",
-                    "binding": name, "subject": subj_name,
-                    "severity": "CRITICAL" if subj_name == "system:unauthenticated" else "HIGH",
-                    "detail": f"Role '{role_name}' bound to group '{subj_name}'",
-                })
+            if kind == "Group" and subj_name in (
+                "system:authenticated",
+                "system:unauthenticated",
+            ):
+                findings.append(
+                    {
+                        "type": "broad_group_binding",
+                        "binding": name,
+                        "subject": subj_name,
+                        "severity": (
+                            "CRITICAL"
+                            if subj_name == "system:unauthenticated"
+                            else "HIGH"
+                        ),
+                        "detail": f"Role '{role_name}' bound to group '{subj_name}'",
+                    }
+                )
 
             # Default service account bindings
             if kind == "ServiceAccount" and subj_name == "default":
-                findings.append({
-                    "type": "default_sa_binding",
-                    "binding": name, "subject": f"default SA in {namespace}",
-                    "severity": "MEDIUM",
-                    "detail": f"Role '{role_name}' bound to default service account",
-                })
+                findings.append(
+                    {
+                        "type": "default_sa_binding",
+                        "binding": name,
+                        "subject": f"default SA in {namespace}",
+                        "severity": "MEDIUM",
+                        "detail": f"Role '{role_name}' bound to default service account",
+                    }
+                )
 
     return findings
 
@@ -145,7 +200,11 @@ def audit_cluster_role_bindings():
 def audit_service_accounts(namespace=None):
     """Audit service accounts for misconfigurations."""
     findings = []
-    cmd = ["get", "serviceaccounts", "--all-namespaces"] if not namespace else ["get", "serviceaccounts", "-n", namespace]
+    cmd = (
+        ["get", "serviceaccounts", "--all-namespaces"]
+        if not namespace
+        else ["get", "serviceaccounts", "-n", namespace]
+    )
     data = run_kubectl(cmd)
     if not data:
         return findings
@@ -156,22 +215,28 @@ def audit_service_accounts(namespace=None):
         automount = sa.get("automountServiceAccountToken", None)
 
         if name == "default" and automount is not False:
-            findings.append({
-                "type": "default_sa_automount",
-                "namespace": ns, "service_account": name,
-                "severity": "MEDIUM",
-                "detail": f"Default SA in '{ns}' has automountServiceAccountToken enabled",
-                "recommendation": "Set automountServiceAccountToken: false on default SA",
-            })
+            findings.append(
+                {
+                    "type": "default_sa_automount",
+                    "namespace": ns,
+                    "service_account": name,
+                    "severity": "MEDIUM",
+                    "detail": f"Default SA in '{ns}' has automountServiceAccountToken enabled",
+                    "recommendation": "Set automountServiceAccountToken: false on default SA",
+                }
+            )
 
         secrets = sa.get("secrets", [])
         if len(secrets) > 1:
-            findings.append({
-                "type": "sa_multiple_secrets",
-                "namespace": ns, "service_account": name,
-                "severity": "LOW",
-                "detail": f"SA has {len(secrets)} token secrets",
-            })
+            findings.append(
+                {
+                    "type": "sa_multiple_secrets",
+                    "namespace": ns,
+                    "service_account": name,
+                    "severity": "LOW",
+                    "detail": f"SA has {len(secrets)} token secrets",
+                }
+            )
 
     return findings
 
@@ -200,14 +265,21 @@ def format_summary(role_findings, binding_findings, sa_findings):
 
     if all_findings:
         print(f"\n  Top Findings:")
-        for f in sorted(all_findings, key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 9))[:15]:
-            print(f"    [{f['severity']:8s}] {f['type']:25s} | {f.get('detail', '')[:50]}")
+        for f in sorted(
+            all_findings,
+            key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 9),
+        )[:15]:
+            print(
+                f"    [{f['severity']:8s}] {f['type']:25s} | {f.get('detail', '')[:50]}"
+            )
 
     return severity_counts
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kubernetes RBAC hardening audit agent")
+    parser = argparse.ArgumentParser(
+        description="Kubernetes RBAC hardening audit agent"
+    )
     parser.add_argument("--namespace", "-n", help="Specific namespace to audit")
     parser.add_argument("--kubeconfig", help="Path to kubeconfig")
     parser.add_argument("--skip-roles", action="store_true")
@@ -234,10 +306,13 @@ def main():
         "sa_findings": sa_findings,
         "severity_counts": severity_counts,
         "risk_level": (
-            "CRITICAL" if severity_counts.get("CRITICAL", 0) > 0
-            else "HIGH" if severity_counts.get("HIGH", 0) > 0
-            else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0
-            else "LOW"
+            "CRITICAL"
+            if severity_counts.get("CRITICAL", 0) > 0
+            else (
+                "HIGH"
+                if severity_counts.get("HIGH", 0) > 0
+                else "MEDIUM" if severity_counts.get("MEDIUM", 0) > 0 else "LOW"
+            )
         ),
     }
 

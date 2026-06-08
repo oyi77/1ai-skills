@@ -11,23 +11,25 @@ import requests
 from email import policy
 from email.parser import BytesParser
 
-
 URL_PATTERN = re.compile(r'https?://[^\s<>"\']+', re.IGNORECASE)
-IP_PATTERN = re.compile(r'\b(?:\d{1,3}\.){3}\d{1,3}\b')
+IP_PATTERN = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 
 
 class SOARClient:
     def __init__(self, base_url: str, token: str, verify_ssl: bool = True):
         self.base_url = base_url.rstrip("/")
         self.session = requests.Session()
-        self.session.headers.update({
-            "ph-auth-token": token,
-            "Content-Type": "application/json",
-        })
+        self.session.headers.update(
+            {
+                "ph-auth-token": token,
+                "Content-Type": "application/json",
+            }
+        )
         self.session.verify = verify_ssl
 
-    def create_container(self, name: str, description: str, severity: str,
-                         label: str = "events") -> dict:
+    def create_container(
+        self, name: str, description: str, severity: str, label: str = "events"
+    ) -> dict:
         payload = {
             "name": name,
             "description": description,
@@ -36,14 +38,23 @@ class SOARClient:
             "status": "new",
             "sensitivity": "amber",
         }
-        resp = self.session.post(f"{self.base_url}/rest/container", json=payload, timeout=30)
+        resp = self.session.post(
+            f"{self.base_url}/rest/container", json=payload, timeout=30
+        )
         resp.raise_for_status()
         data = resp.json()
         return {"container_id": data.get("id"), "success": data.get("success", False)}
 
-    def add_artifact(self, container_id: int, name: str, cef: dict,
-                     label: str = "event", severity: str = "medium",
-                     artifact_type: str = "network", run_automation: bool = False) -> dict:
+    def add_artifact(
+        self,
+        container_id: int,
+        name: str,
+        cef: dict,
+        label: str = "event",
+        severity: str = "medium",
+        artifact_type: str = "network",
+        run_automation: bool = False,
+    ) -> dict:
         payload = {
             "container_id": container_id,
             "name": name,
@@ -53,20 +64,25 @@ class SOARClient:
             "cef": cef,
             "run_automation": run_automation,
         }
-        resp = self.session.post(f"{self.base_url}/rest/artifact", json=payload, timeout=30)
+        resp = self.session.post(
+            f"{self.base_url}/rest/artifact", json=payload, timeout=30
+        )
         resp.raise_for_status()
         data = resp.json()
         return {"artifact_id": data.get("id"), "success": data.get("success", False)}
 
-    def trigger_playbook(self, playbook_name: str, container_id: int,
-                         scope: str = "new") -> dict:
+    def trigger_playbook(
+        self, playbook_name: str, container_id: int, scope: str = "new"
+    ) -> dict:
         payload = {
             "container_id": container_id,
             "playbook_id": playbook_name,
             "scope": scope,
             "run": True,
         }
-        resp = self.session.post(f"{self.base_url}/rest/playbook_run", json=payload, timeout=30)
+        resp = self.session.post(
+            f"{self.base_url}/rest/playbook_run", json=payload, timeout=30
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -79,8 +95,9 @@ class SOARClient:
         resp.raise_for_status()
         return resp.json().get("data", [])
 
-    def poll_playbook(self, container_id: int, timeout: int = 300,
-                      interval: int = 10) -> list:
+    def poll_playbook(
+        self, container_id: int, timeout: int = 300, interval: int = 10
+    ) -> list:
         terminal_states = {"success", "failed", "cancelled"}
         elapsed = 0
         while elapsed < timeout:
@@ -167,29 +184,50 @@ def run_phishing_workflow(args) -> dict:
     cid = container["container_id"]
 
     artifacts_created = 0
-    client.add_artifact(cid, "Email Headers", {
-        "fromAddress": sender,
-        "toAddress": email_data["headers"]["to"],
-        "emailSubject": subject,
-        "emailMessageId": email_data["headers"]["message_id"],
-        "emailReplyTo": email_data["headers"]["reply_to"],
-        "emailReturnPath": email_data["headers"]["return_path"],
-    }, label="email", artifact_type="email", severity=severity)
+    client.add_artifact(
+        cid,
+        "Email Headers",
+        {
+            "fromAddress": sender,
+            "toAddress": email_data["headers"]["to"],
+            "emailSubject": subject,
+            "emailMessageId": email_data["headers"]["message_id"],
+            "emailReplyTo": email_data["headers"]["reply_to"],
+            "emailReturnPath": email_data["headers"]["return_path"],
+        },
+        label="email",
+        artifact_type="email",
+        severity=severity,
+    )
     artifacts_created += 1
 
     for ip in email_data["originating_ips"]:
-        client.add_artifact(cid, f"Originating IP: {ip}", {
-            "sourceAddress": ip,
-        }, label="email", artifact_type="ip", severity="medium")
+        client.add_artifact(
+            cid,
+            f"Originating IP: {ip}",
+            {
+                "sourceAddress": ip,
+            },
+            label="email",
+            artifact_type="ip",
+            severity="medium",
+        )
         artifacts_created += 1
 
     url_list = email_data["urls"]
     for i, url in enumerate(url_list):
         is_last = (i == len(url_list) - 1) and not args.playbook
-        client.add_artifact(cid, f"Embedded URL: {url[:60]}", {
-            "requestURL": url,
-        }, label="email", artifact_type="url", severity="high",
-            run_automation=is_last)
+        client.add_artifact(
+            cid,
+            f"Embedded URL: {url[:60]}",
+            {
+                "requestURL": url,
+            },
+            label="email",
+            artifact_type="url",
+            severity="high",
+            run_automation=is_last,
+        )
         artifacts_created += 1
 
     playbook_result = None
@@ -223,13 +261,21 @@ def main():
     parser = argparse.ArgumentParser(description="SOAR Phishing Playbook Automation")
     parser.add_argument("--soar-url", required=True, help="Splunk SOAR base URL")
     parser.add_argument("--token", required=True, help="SOAR API auth token")
-    parser.add_argument("--email-file", required=True, help="Path to .eml phishing email file")
-    parser.add_argument("--playbook", default=None,
-                        help="Playbook name or ID to trigger")
-    parser.add_argument("--poll-timeout", type=int, default=300,
-                        help="Max seconds to poll for playbook completion")
-    parser.add_argument("--no-verify", action="store_true",
-                        help="Disable SSL certificate verification")
+    parser.add_argument(
+        "--email-file", required=True, help="Path to .eml phishing email file"
+    )
+    parser.add_argument(
+        "--playbook", default=None, help="Playbook name or ID to trigger"
+    )
+    parser.add_argument(
+        "--poll-timeout",
+        type=int,
+        default=300,
+        help="Max seconds to poll for playbook completion",
+    )
+    parser.add_argument(
+        "--no-verify", action="store_true", help="Disable SSL certificate verification"
+    )
     parser.add_argument("--output", default=None, help="Output JSON file path")
     args = parser.parse_args()
 

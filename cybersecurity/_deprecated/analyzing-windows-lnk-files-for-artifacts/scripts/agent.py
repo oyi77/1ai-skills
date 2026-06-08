@@ -87,7 +87,8 @@ def filter_removable_media(results):
 def filter_network_shares(results):
     """Filter LNK files pointing to network shares."""
     return [
-        r for r in results
+        r
+        for r in results
         if "network" in r.get("drive_type", "").lower()
         or r.get("target_path", "").startswith("\\\\")
     ]
@@ -137,13 +138,26 @@ def extract_unique_machines(results):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Windows LNK File Forensic Analysis Agent")
-    parser.add_argument("--lnk-dir", required=True, help="Directory containing LNK files")
+    parser = argparse.ArgumentParser(
+        description="Windows LNK File Forensic Analysis Agent"
+    )
+    parser.add_argument(
+        "--lnk-dir", required=True, help="Directory containing LNK files"
+    )
     parser.add_argument("--startup-dir", help="Startup folder to check for persistence")
     parser.add_argument("--output-dir", default="./lnk_analysis")
-    parser.add_argument("--action", choices=[
-        "parse_all", "removable", "network", "startup", "machines", "full_analysis"
-    ], default="full_analysis")
+    parser.add_argument(
+        "--action",
+        choices=[
+            "parse_all",
+            "removable",
+            "network",
+            "startup",
+            "machines",
+            "full_analysis",
+        ],
+        default="full_analysis",
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -159,7 +173,9 @@ def main():
         removable = filter_removable_media(all_results)
         print(f"[+] Removable media files: {len(removable)}")
         for r in removable:
-            print(f"    {r['target_modified']} | {r['target_path']} | Vol: {r['volume_serial']}")
+            print(
+                f"    {r['target_modified']} | {r['target_path']} | Vol: {r['volume_serial']}"
+            )
 
     if args.action in ("network", "full_analysis"):
         network = filter_network_shares(all_results)
@@ -177,7 +193,15 @@ def main():
         for mid, mac in machines.items():
             print(f"    Machine: {mid} | MAC: {mac}")
 
-    print(json.dumps({"total_lnk": len(all_results), "generated_at": datetime.utcnow().isoformat()}, indent=2))
+    print(
+        json.dumps(
+            {
+                "total_lnk": len(all_results),
+                "generated_at": datetime.utcnow().isoformat(),
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

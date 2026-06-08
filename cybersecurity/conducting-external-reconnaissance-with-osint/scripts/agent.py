@@ -10,7 +10,9 @@ from datetime import datetime
 import requests
 import shodan
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -51,14 +53,16 @@ def shodan_org_search(api_key, org_name, max_results=50):
     results = api.search(f'org:"{org_name}"', limit=max_results)
     hosts = []
     for match in results["matches"]:
-        hosts.append({
-            "ip": match["ip_str"],
-            "port": match["port"],
-            "product": match.get("product", ""),
-            "version": match.get("version", ""),
-            "os": match.get("os", ""),
-            "hostnames": match.get("hostnames", []),
-        })
+        hosts.append(
+            {
+                "ip": match["ip_str"],
+                "port": match["port"],
+                "product": match.get("product", ""),
+                "version": match.get("version", ""),
+                "os": match.get("os", ""),
+                "hostnames": match.get("hostnames", []),
+            }
+        )
     logger.info("Shodan: %d hosts for org '%s'", len(hosts), org_name)
     return hosts
 
@@ -79,8 +83,12 @@ def check_email_security(domain):
                     email_security["dmarc"] = data
     email_security["spf_present"] = "spf" in email_security
     email_security["dmarc_present"] = "dmarc" in email_security
-    logger.info("Email security for %s: SPF=%s DMARC=%s",
-                domain, email_security["spf_present"], email_security["dmarc_present"])
+    logger.info(
+        "Email security for %s: SPF=%s DMARC=%s",
+        domain,
+        email_security["spf_present"],
+        email_security["dmarc_present"],
+    )
     return email_security
 
 
@@ -101,7 +109,9 @@ def check_web_technologies(domain):
     """Identify web technologies via HTTP response headers."""
     technologies = {}
     try:
-        resp = requests.get(f"https://{domain}", timeout=10, allow_redirects=True, verify=False)
+        resp = requests.get(
+            f"https://{domain}", timeout=10, allow_redirects=True, verify=False
+        )
         headers = resp.headers
         tech_headers = {
             "Server": headers.get("Server", ""),
@@ -127,22 +137,28 @@ def search_github_leaks(domain, github_token=None):
     for query in queries:
         resp = requests.get(
             "https://api.github.com/search/code",
-            headers=headers, params={"q": query, "per_page": 10}, timeout=15
+            headers=headers,
+            params={"q": query, "per_page": 10},
+            timeout=15,
         )
         if resp.status_code == 200:
             items = resp.json().get("items", [])
             for item in items:
-                all_results.append({
-                    "repo": item["repository"]["full_name"],
-                    "path": item["path"],
-                    "url": item["html_url"],
-                    "query": query,
-                })
+                all_results.append(
+                    {
+                        "repo": item["repository"]["full_name"],
+                        "path": item["path"],
+                        "url": item["html_url"],
+                        "query": query,
+                    }
+                )
     logger.info("GitHub: %d potential leaks for %s", len(all_results), domain)
     return all_results
 
 
-def generate_recon_report(domain, subdomains, dns, shodan_hosts, email_sec, technologies, github_leaks):
+def generate_recon_report(
+    domain, subdomains, dns, shodan_hosts, email_sec, technologies, github_leaks
+):
     """Generate external reconnaissance report."""
     report = {
         "target": domain,
@@ -155,7 +171,9 @@ def generate_recon_report(domain, subdomains, dns, shodan_hosts, email_sec, tech
         "github_leaks": github_leaks,
     }
     print(f"RECON REPORT - {domain}")
-    print(f"Subdomains: {len(subdomains)}, Shodan hosts: {len(shodan_hosts)}, GitHub leaks: {len(github_leaks)}")
+    print(
+        f"Subdomains: {len(subdomains)}, Shodan hosts: {len(shodan_hosts)}, GitHub leaks: {len(github_leaks)}"
+    )
     return report
 
 
@@ -177,10 +195,18 @@ def main():
     if args.shodan_key and args.org:
         shodan_hosts = shodan_org_search(args.shodan_key, args.org)
 
-    github_leaks = search_github_leaks(args.domain, args.github_token) if args.github_token else []
+    github_leaks = (
+        search_github_leaks(args.domain, args.github_token) if args.github_token else []
+    )
 
     report = generate_recon_report(
-        args.domain, subdomains, dns, shodan_hosts, email_sec, technologies, github_leaks
+        args.domain,
+        subdomains,
+        dns,
+        shodan_hosts,
+        email_sec,
+        technologies,
+        github_leaks,
     )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)

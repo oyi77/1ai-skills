@@ -130,15 +130,19 @@ def detect_conditional_access_changes(credential, workspace_id):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Azure Activity Log Threat Detection Agent")
+    parser = argparse.ArgumentParser(
+        description="Azure Activity Log Threat Detection Agent"
+    )
     parser.add_argument("--workspace-id", default=os.getenv("AZURE_WORKSPACE_ID"))
     parser.add_argument("--tenant-id", default=os.getenv("AZURE_TENANT_ID"))
     parser.add_argument("--client-id", default=os.getenv("AZURE_CLIENT_ID"))
     parser.add_argument("--client-secret", default=os.getenv("AZURE_CLIENT_SECRET"))
     parser.add_argument("--output", default="azure_threat_report.json")
-    parser.add_argument("--action", choices=[
-        "privesc", "nsg", "keyvault", "travel", "deletion", "full_hunt"
-    ], default="full_hunt")
+    parser.add_argument(
+        "--action",
+        choices=["privesc", "nsg", "keyvault", "travel", "deletion", "full_hunt"],
+        default="full_hunt",
+    )
     args = parser.parse_args()
 
     cred = get_credential(args.tenant_id, args.client_id, args.client_secret)

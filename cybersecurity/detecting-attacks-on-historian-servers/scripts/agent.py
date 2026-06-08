@@ -52,36 +52,52 @@ def check_pi_web_api(host, username=None, password=None):
     results = {"host": host, "checks": []}
 
     try:
-        resp = requests.get(f"{base}/system", auth=auth,
-                            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true", timeout=10)  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        resp = requests.get(
+            f"{base}/system",
+            auth=auth,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            timeout=10,
+        )  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         if resp.status_code == 200:
             data = resp.json()
             results["product_version"] = data.get("ProductTitle", "")
-            results["checks"].append({
-                "check": "PI Web API accessible",
-                "status": "PASS" if auth else "FAIL",
-                "detail": "Anonymous access enabled" if not auth and resp.status_code == 200 else "",
-                "severity": "CRITICAL" if not auth else "INFO",
-            })
+            results["checks"].append(
+                {
+                    "check": "PI Web API accessible",
+                    "status": "PASS" if auth else "FAIL",
+                    "detail": (
+                        "Anonymous access enabled"
+                        if not auth and resp.status_code == 200
+                        else ""
+                    ),
+                    "severity": "CRITICAL" if not auth else "INFO",
+                }
+            )
     except requests.exceptions.ConnectionError:
         results["checks"].append({"check": "PI Web API", "status": "UNREACHABLE"})
     except Exception as e:
         results["error"] = str(e)
 
     try:
-        resp = requests.get(f"{base}/points", auth=auth,
-                            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
-                            params={"maxCount": 10}, timeout=10)
+        resp = requests.get(
+            f"{base}/points",
+            auth=auth,
+            verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",
+            params={"maxCount": 10},
+            timeout=10,
+        )
         if resp.status_code == 200:
             points = resp.json().get("Items", [])
             results["exposed_points"] = len(points)
             results["sample_points"] = [p.get("Name", "") for p in points[:5]]
             if not auth:
-                results["checks"].append({
-                    "check": "Point data accessible without auth",
-                    "status": "FAIL",
-                    "severity": "CRITICAL",
-                })
+                results["checks"].append(
+                    {
+                        "check": "Point data accessible without auth",
+                        "status": "FAIL",
+                        "severity": "CRITICAL",
+                    }
+                )
     except Exception:
         pass
 
@@ -117,25 +133,32 @@ def analyze_historian_logs(log_entries):
         if entry.get("event_type") == "login_failed":
             src = entry.get("src_ip", "")
             failed_logins[src] = failed_logins.get(src, 0) + 1
-        if entry.get("event_type") == "data_read" and entry.get("point_count", 0) > 1000:
+        if (
+            entry.get("event_type") == "data_read"
+            and entry.get("point_count", 0) > 1000
+        ):
             src = entry.get("src_ip", "")
             bulk_reads[src] = bulk_reads.get(src, 0) + entry["point_count"]
 
     for ip, count in failed_logins.items():
         if count > 5:
-            findings.append({
-                "ip": ip,
-                "issue": f"Brute force attempt: {count} failed logins",
-                "severity": "HIGH",
-            })
+            findings.append(
+                {
+                    "ip": ip,
+                    "issue": f"Brute force attempt: {count} failed logins",
+                    "severity": "HIGH",
+                }
+            )
 
     for ip, points in bulk_reads.items():
         if points > 10000:
-            findings.append({
-                "ip": ip,
-                "issue": f"Bulk data exfiltration: {points} points read",
-                "severity": "CRITICAL",
-            })
+            findings.append(
+                {
+                    "ip": ip,
+                    "issue": f"Bulk data exfiltration: {points} points read",
+                    "severity": "CRITICAL",
+                }
+            )
 
     return findings
 

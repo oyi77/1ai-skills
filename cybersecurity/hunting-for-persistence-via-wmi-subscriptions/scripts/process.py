@@ -61,21 +61,27 @@ def detect_wmi_persistence(events: list[dict]) -> list[dict]:
         if event_code == "19":  # EventFilter
             name = event.get("Name", event.get("name", ""))
             query = event.get("Query", event.get("query", ""))
-            filters[name] = {"query": query, "computer": computer, "timestamp": timestamp}
+            filters[name] = {
+                "query": query,
+                "computer": computer,
+                "timestamp": timestamp,
+            }
 
             for pattern, trigger_type in SUSPICIOUS_FILTER_PATTERNS:
                 if re.search(pattern, query, re.IGNORECASE):
-                    findings.append({
-                        "timestamp": timestamp,
-                        "computer": computer,
-                        "user": user,
-                        "event_type": "EventFilter",
-                        "name": name,
-                        "query": query,
-                        "trigger_type": trigger_type,
-                        "severity": "HIGH",
-                        "technique": "T1546.003",
-                    })
+                    findings.append(
+                        {
+                            "timestamp": timestamp,
+                            "computer": computer,
+                            "user": user,
+                            "event_type": "EventFilter",
+                            "name": name,
+                            "query": query,
+                            "trigger_type": trigger_type,
+                            "severity": "HIGH",
+                            "technique": "T1546.003",
+                        }
+                    )
                     break
 
         elif event_code == "20":  # EventConsumer
@@ -84,7 +90,11 @@ def detect_wmi_persistence(events: list[dict]) -> list[dict]:
             destination = event.get("Destination", event.get("destination", ""))
             consumers[name] = {"type": consumer_type, "destination": destination}
 
-            severity = "CRITICAL" if any(dt in str(consumer_type) for dt in DANGEROUS_CONSUMER_TYPES) else "MEDIUM"
+            severity = (
+                "CRITICAL"
+                if any(dt in str(consumer_type) for dt in DANGEROUS_CONSUMER_TYPES)
+                else "MEDIUM"
+            )
 
             indicators = []
             for pattern, indicator in SUSPICIOUS_CONSUMER_PATTERNS:
@@ -92,32 +102,36 @@ def detect_wmi_persistence(events: list[dict]) -> list[dict]:
                     indicators.append(indicator)
                     severity = "CRITICAL"
 
-            findings.append({
-                "timestamp": timestamp,
-                "computer": computer,
-                "user": user,
-                "event_type": "EventConsumer",
-                "name": name,
-                "consumer_type": str(consumer_type),
-                "destination": destination,
-                "indicators": indicators,
-                "severity": severity,
-                "technique": "T1546.003",
-            })
+            findings.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": computer,
+                    "user": user,
+                    "event_type": "EventConsumer",
+                    "name": name,
+                    "consumer_type": str(consumer_type),
+                    "destination": destination,
+                    "indicators": indicators,
+                    "severity": severity,
+                    "technique": "T1546.003",
+                }
+            )
 
         elif event_code == "21":  # Binding
             consumer = event.get("Consumer", event.get("consumer", ""))
             filter_ref = event.get("Filter", event.get("filter", ""))
-            findings.append({
-                "timestamp": timestamp,
-                "computer": computer,
-                "user": user,
-                "event_type": "FilterToConsumerBinding",
-                "consumer": consumer,
-                "filter": filter_ref,
-                "severity": "HIGH",
-                "technique": "T1546.003",
-            })
+            findings.append(
+                {
+                    "timestamp": timestamp,
+                    "computer": computer,
+                    "user": user,
+                    "event_type": "FilterToConsumerBinding",
+                    "consumer": consumer,
+                    "filter": filter_ref,
+                    "severity": "HIGH",
+                    "technique": "T1546.003",
+                }
+            )
 
         elif event_code == "1":  # Process creation
             parent = event.get("ParentImage", "")
@@ -125,24 +139,37 @@ def detect_wmi_persistence(events: list[dict]) -> list[dict]:
             cmdline = event.get("CommandLine", "")
             if "wmiprvse.exe" in parent.lower():
                 image_name = image.split("\\")[-1].lower()
-                if image_name in {"cmd.exe", "powershell.exe", "wscript.exe", "cscript.exe", "mshta.exe"}:
-                    findings.append({
-                        "timestamp": timestamp,
-                        "computer": computer,
-                        "user": user,
-                        "event_type": "WmiPrvSe_Child_Process",
-                        "child_process": image,
-                        "command_line": cmdline,
-                        "severity": "HIGH",
-                        "technique": "T1546.003",
-                    })
+                if image_name in {
+                    "cmd.exe",
+                    "powershell.exe",
+                    "wscript.exe",
+                    "cscript.exe",
+                    "mshta.exe",
+                }:
+                    findings.append(
+                        {
+                            "timestamp": timestamp,
+                            "computer": computer,
+                            "user": user,
+                            "event_type": "WmiPrvSe_Child_Process",
+                            "child_process": image,
+                            "command_line": cmdline,
+                            "severity": "HIGH",
+                            "technique": "T1546.003",
+                        }
+                    )
 
-    return sorted(findings, key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 3))
+    return sorted(
+        findings,
+        key=lambda x: {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2}.get(x["severity"], 3),
+    )
 
 
 def run_hunt(input_path: str, output_dir: str) -> None:
     """Execute WMI subscription persistence hunt."""
-    print(f"[*] WMI Subscription Persistence Hunt - {datetime.datetime.now().isoformat()}")
+    print(
+        f"[*] WMI Subscription Persistence Hunt - {datetime.datetime.now().isoformat()}"
+    )
     events = parse_events(input_path)
     print(f"[*] Loaded {len(events)} events")
 
@@ -152,18 +179,26 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
-    with open(output_path / "wmi_persistence_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-WMI-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "findings_count": len(findings),
-            "findings": findings,
-        }, f, indent=2)
+    with open(
+        output_path / "wmi_persistence_findings.json", "w", encoding="utf-8"
+    ) as f:
+        json.dump(
+            {
+                "hunt_id": f"TH-WMI-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "findings_count": len(findings),
+                "findings": findings,
+            },
+            f,
+            indent=2,
+        )
     print(f"[+] Results written to {output_dir}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="WMI Subscription Persistence Detection")
+    parser = argparse.ArgumentParser(
+        description="WMI Subscription Persistence Detection"
+    )
     parser.add_argument("--input", "-i", required=True)
     parser.add_argument("--output", "-o", default="./wmi_hunt_output")
     args = parser.parse_args()

@@ -11,27 +11,47 @@ import subprocess
 import sys
 from datetime import datetime
 
-ESCAPE_RULE_TAGS = ["container", "escape", "T1611", "T1610", "namespace",
-                    "docker_socket", "cgroup", "kernel_module", "privileged"]
+ESCAPE_RULE_TAGS = [
+    "container",
+    "escape",
+    "T1611",
+    "T1610",
+    "namespace",
+    "docker_socket",
+    "cgroup",
+    "kernel_module",
+    "privileged",
+]
 
 SEVERITY_MAP = {
-    "Emergency": 0, "Alert": 1, "Critical": 2, "Error": 3,
-    "Warning": 4, "Notice": 5, "Informational": 6, "Debug": 7
+    "Emergency": 0,
+    "Alert": 1,
+    "Critical": 2,
+    "Error": 3,
+    "Warning": 4,
+    "Notice": 5,
+    "Informational": 6,
+    "Debug": 7,
 }
 
 
 def check_falco_status():
     try:
-        result = subprocess.run(["falco", "--version"],
-                                capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["falco", "--version"], capture_output=True, text=True, timeout=10
+        )
         if result.returncode == 0:
             version = result.stdout.strip()
             return {"installed": True, "version": version}
     except FileNotFoundError:
         pass
     try:
-        result = subprocess.run(["systemctl", "is-active", "falco"],
-                                capture_output=True, text=True, timeout=5)
+        result = subprocess.run(
+            ["systemctl", "is-active", "falco"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
         return {"installed": True, "service_status": result.stdout.strip()}
     except FileNotFoundError:
         pass
@@ -42,11 +62,17 @@ def validate_rules_file(rules_path):
     try:
         result = subprocess.run(
             ["falco", "--validate", rules_path],
-            capture_output=True, text=True, timeout=30)
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
         return {
             "valid": result.returncode == 0,
-            "output": result.stdout.strip() if result.returncode == 0
-                      else result.stderr.strip(),
+            "output": (
+                result.stdout.strip()
+                if result.returncode == 0
+                else result.stderr.strip()
+            ),
         }
     except (FileNotFoundError, subprocess.TimeoutExpired) as e:
         return {"valid": False, "error": str(e)}
@@ -139,13 +165,19 @@ def generate_escape_rules_yaml():
 
 def main():
     parser = argparse.ArgumentParser(description="Falco Container Escape Detection")
-    parser.add_argument("--check-status", action="store_true", help="Check Falco installation")
+    parser.add_argument(
+        "--check-status", action="store_true", help="Check Falco installation"
+    )
     parser.add_argument("--validate-rules", help="Validate a Falco rules file")
     parser.add_argument("--parse-alerts", help="Parse Falco JSON alert log")
-    parser.add_argument("--min-priority", default="Warning",
-                        choices=list(SEVERITY_MAP.keys()))
-    parser.add_argument("--generate-rules", action="store_true",
-                        help="Output escape detection rules YAML")
+    parser.add_argument(
+        "--min-priority", default="Warning", choices=list(SEVERITY_MAP.keys())
+    )
+    parser.add_argument(
+        "--generate-rules",
+        action="store_true",
+        help="Output escape detection rules YAML",
+    )
     args = parser.parse_args()
 
     results = {"timestamp": datetime.utcnow().isoformat() + "Z"}

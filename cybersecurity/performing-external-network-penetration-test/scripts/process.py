@@ -26,12 +26,7 @@ from typing import Optional
 def run_command(cmd: list[str], timeout: int = 300) -> tuple[str, str, int]:
     """Execute a shell command and return stdout, stderr, return code."""
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=timeout
-        )
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
         return result.stdout, result.stderr, result.returncode
     except subprocess.TimeoutExpired:
         return "", f"Command timed out after {timeout}s", -1
@@ -45,8 +40,7 @@ def enumerate_subdomains(domain: str, output_dir: Path) -> list[str]:
     subfinder_out = output_dir / "subdomains_subfinder.txt"
 
     stdout, stderr, rc = run_command(
-        ["subfinder", "-d", domain, "-silent", "-o", str(subfinder_out)],
-        timeout=600
+        ["subfinder", "-d", domain, "-silent", "-o", str(subfinder_out)], timeout=600
     )
 
     subdomains = set()
@@ -86,20 +80,53 @@ def nmap_scan(targets: str, output_dir: Path, scan_type: str = "quick") -> dict:
     output_prefix = str(output_dir / f"nmap_{scan_type}")
 
     if scan_type == "quick":
-        cmd = ["nmap", "-sS", "-sV", "--top-ports", "1000", "-T4",
-               "-oA", output_prefix, targets]
+        cmd = [
+            "nmap",
+            "-sS",
+            "-sV",
+            "--top-ports",
+            "1000",
+            "-T4",
+            "-oA",
+            output_prefix,
+            targets,
+        ]
     elif scan_type == "full":
-        cmd = ["nmap", "-sS", "-sV", "-p-", "-T4", "--min-rate", "1000",
-               "-oA", output_prefix, targets]
+        cmd = [
+            "nmap",
+            "-sS",
+            "-sV",
+            "-p-",
+            "-T4",
+            "--min-rate",
+            "1000",
+            "-oA",
+            output_prefix,
+            targets,
+        ]
     elif scan_type == "udp":
-        cmd = ["nmap", "-sU", "--top-ports", "100", "-T4",
-               "-oA", output_prefix, targets]
+        cmd = [
+            "nmap",
+            "-sU",
+            "--top-ports",
+            "100",
+            "-T4",
+            "-oA",
+            output_prefix,
+            targets,
+        ]
     elif scan_type == "scripts":
-        cmd = ["nmap", "-sV", "-sC", "--script=vuln,exploit",
-               "-oA", output_prefix, targets]
+        cmd = [
+            "nmap",
+            "-sV",
+            "-sC",
+            "--script=vuln,exploit",
+            "-oA",
+            output_prefix,
+            targets,
+        ]
     else:
-        cmd = ["nmap", "-sS", "-sV", "-T4",
-               "-oA", output_prefix, targets]
+        cmd = ["nmap", "-sS", "-sV", "-T4", "-oA", output_prefix, targets]
 
     stdout, stderr, rc = run_command(cmd, timeout=3600)
 
@@ -111,7 +138,7 @@ def nmap_scan(targets: str, output_dir: Path, scan_type: str = "quick") -> dict:
             "nmap": f"{output_prefix}.nmap",
             "xml": f"{output_prefix}.xml",
             "gnmap": f"{output_prefix}.gnmap",
-        }
+        },
     }
 
     if rc == 0:
@@ -132,7 +159,7 @@ def check_ssl_tls(host: str, port: int = 443) -> dict:
         "cert_subject": None,
         "cert_issuer": None,
         "cert_expiry": None,
-        "issues": []
+        "issues": [],
     }
 
     try:
@@ -170,12 +197,20 @@ def run_nuclei_scan(targets_file: str, output_dir: Path) -> str:
     output_file = output_dir / "nuclei_results.json"
 
     cmd = [
-        "nuclei", "-l", targets_file,
-        "-severity", "critical,high,medium",
-        "-json", "-o", str(output_file),
-        "-rate-limit", "50",
-        "-bulk-size", "25",
-        "-concurrency", "10"
+        "nuclei",
+        "-l",
+        targets_file,
+        "-severity",
+        "critical,high,medium",
+        "-json",
+        "-o",
+        str(output_file),
+        "-rate-limit",
+        "50",
+        "-bulk-size",
+        "25",
+        "-concurrency",
+        "10",
     ]
 
     stdout, stderr, rc = run_command(cmd, timeout=3600)
@@ -207,12 +242,14 @@ def parse_nmap_gnmap(gnmap_file: str) -> list[dict]:
                 for entry in port_entries:
                     fields = entry.strip().split("/")
                     if len(fields) >= 5 and fields[1] == "open":
-                        open_ports.append({
-                            "port": int(fields[0]),
-                            "protocol": fields[2],
-                            "service": fields[4],
-                            "version": fields[6] if len(fields) > 6 else ""
-                        })
+                        open_ports.append(
+                            {
+                                "port": int(fields[0]),
+                                "protocol": fields[2],
+                                "service": fields[4],
+                                "version": fields[6] if len(fields) > 6 else "",
+                            }
+                        )
                 if open_ports:
                     hosts.append({"ip": ip, "open_ports": open_ports})
     except FileNotFoundError:
@@ -222,15 +259,14 @@ def parse_nmap_gnmap(gnmap_file: str) -> list[dict]:
 
 
 def generate_report(
-    scan_results: dict,
-    resolved: dict,
-    ssl_results: list[dict],
-    output_dir: Path
+    scan_results: dict, resolved: dict, ssl_results: list[dict], output_dir: Path
 ) -> str:
     """Generate a summary report in markdown format."""
     print("[*] Generating report...")
     report_file = output_dir / "pentest_report.md"
-    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime(
+        "%Y-%m-%d %H:%M UTC"
+    )
 
     with open(report_file, "w") as f:
         f.write(f"# External Network Penetration Test Report\n\n")
@@ -273,7 +309,9 @@ def generate_report(
                 else:
                     f.write("No open ports discovered in this scan.\n\n")
             else:
-                f.write(f"Scan output not available (return code: {result.get('return_code')})\n\n")
+                f.write(
+                    f"Scan output not available (return code: {result.get('return_code')})\n\n"
+                )
 
         # SSL/TLS results
         f.write("## SSL/TLS Assessment\n\n")
@@ -291,7 +329,9 @@ def generate_report(
 
         # Recommendations
         f.write("## Recommendations\n\n")
-        f.write("1. Remediate all critical and high severity findings within 48 hours\n")
+        f.write(
+            "1. Remediate all critical and high severity findings within 48 hours\n"
+        )
         f.write("2. Patch all identified CVEs on internet-facing services\n")
         f.write("3. Implement network segmentation for exposed services\n")
         f.write("4. Enable MFA on all externally accessible portals\n")
@@ -311,14 +351,21 @@ def main():
     parser = argparse.ArgumentParser(
         description="External Network Penetration Test Automation"
     )
-    parser.add_argument("--target", required=True, help="Target domain (e.g., target.com)")
+    parser.add_argument(
+        "--target", required=True, help="Target domain (e.g., target.com)"
+    )
     parser.add_argument("--ip-range", help="Target IP range in CIDR notation")
     parser.add_argument("--output", default="./results", help="Output directory")
-    parser.add_argument("--skip-recon", action="store_true", help="Skip reconnaissance phase")
+    parser.add_argument(
+        "--skip-recon", action="store_true", help="Skip reconnaissance phase"
+    )
     parser.add_argument("--skip-scan", action="store_true", help="Skip scanning phase")
-    parser.add_argument("--scan-type", default="quick",
-                        choices=["quick", "full", "udp", "scripts"],
-                        help="Nmap scan type")
+    parser.add_argument(
+        "--scan-type",
+        default="quick",
+        choices=["quick", "full", "udp", "scripts"],
+        help="Nmap scan type",
+    )
     args = parser.parse_args()
 
     output_dir = Path(args.output)
@@ -330,7 +377,9 @@ def main():
     print(" External Network Penetration Test")
     print(f" Target: {args.target}")
     print(f" Output: {output_dir.absolute()}")
-    print(f" Started: {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+    print(
+        f" Started: {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}"
+    )
     print("=" * 60)
 
     # Phase 1: Reconnaissance

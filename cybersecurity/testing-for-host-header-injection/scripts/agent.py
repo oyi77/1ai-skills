@@ -21,8 +21,12 @@ except ImportError:
 
 
 ALTERNATIVE_HEADERS = [
-    "X-Forwarded-Host", "X-Host", "X-Forwarded-Server",
-    "X-HTTP-Host-Override", "Forwarded", "X-Original-URL",
+    "X-Forwarded-Host",
+    "X-Host",
+    "X-Forwarded-Server",
+    "X-HTTP-Host-Override",
+    "Forwarded",
+    "X-Original-URL",
     "X-Rewrite-URL",
 ]
 
@@ -36,14 +40,21 @@ class HostHeaderInjectionAgent:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.findings = []
 
-    def _request(self, method, path, headers=None, data=None, timeout=10,
-                 allow_redirects=False):
+    def _request(
+        self, method, path, headers=None, data=None, timeout=10, allow_redirects=False
+    ):
         if not requests:
             return None
         url = f"{self.target_url}{path}"
         try:
-            return requests.request(method, url, headers=headers, data=data,
-                                    timeout=timeout, allow_redirects=allow_redirects)
+            return requests.request(
+                method,
+                url,
+                headers=headers,
+                data=data,
+                timeout=timeout,
+                allow_redirects=allow_redirects,
+            )
         except requests.RequestException:
             return None
 
@@ -55,25 +66,30 @@ class HostHeaderInjectionAgent:
         resp = self._request("GET", path, headers={"Host": evil_host})
         if resp and evil_host in resp.text:
             results.append({"method": "Host header", "reflected": True})
-            self.findings.append({
-                "severity": "high",
-                "type": "Host Header Reflection",
-                "detail": f"Host header value '{evil_host}' reflected in response at {path}",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Host Header Reflection",
+                    "detail": f"Host header value '{evil_host}' reflected in response at {path}",
+                }
+            )
 
         for header in ALTERNATIVE_HEADERS:
             resp = self._request("GET", path, headers={header: evil_host})
             if resp and evil_host in resp.text:
                 results.append({"method": header, "reflected": True})
-                self.findings.append({
-                    "severity": "high",
-                    "type": "Alternative Host Header Reflection",
-                    "detail": f"{header}: {evil_host} reflected in response",
-                })
+                self.findings.append(
+                    {
+                        "severity": "high",
+                        "type": "Alternative Host Header Reflection",
+                        "detail": f"{header}: {evil_host} reflected in response",
+                    }
+                )
         return results
 
-    def test_password_reset_poisoning(self, reset_path="/forgot-password",
-                                       email="test@target.com"):
+    def test_password_reset_poisoning(
+        self, reset_path="/forgot-password", email="test@target.com"
+    ):
         """Test password reset for host header poisoning."""
         evil_host = "evil.attacker.com"
         results = []
@@ -85,38 +101,47 @@ class HostHeaderInjectionAgent:
         ]
 
         for headers in payloads:
-            resp = self._request("POST", reset_path, headers=headers,
-                                 data={"email": email})
+            resp = self._request(
+                "POST", reset_path, headers=headers, data={"email": email}
+            )
             if resp and resp.status_code in (200, 302):
                 if evil_host in resp.text:
-                    results.append({
-                        "headers": headers,
-                        "status": resp.status_code,
-                        "poisoned": True,
-                    })
-                    self.findings.append({
-                        "severity": "critical",
-                        "type": "Password Reset Poisoning",
-                        "detail": f"Reset link points to {evil_host}",
-                    })
+                    results.append(
+                        {
+                            "headers": headers,
+                            "status": resp.status_code,
+                            "poisoned": True,
+                        }
+                    )
+                    self.findings.append(
+                        {
+                            "severity": "critical",
+                            "type": "Password Reset Poisoning",
+                            "detail": f"Reset link points to {evil_host}",
+                        }
+                    )
         return results
 
     def test_cache_poisoning(self, path="/"):
         """Test for web cache poisoning via Host header."""
         import random
+
         cache_buster = f"?cb={random.randint(100000, 999999)}"
         evil_host = "evil.attacker.com"
 
-        resp1 = self._request("GET", f"{path}{cache_buster}",
-                               headers={"X-Forwarded-Host": evil_host})
+        resp1 = self._request(
+            "GET", f"{path}{cache_buster}", headers={"X-Forwarded-Host": evil_host}
+        )
         resp2 = self._request("GET", f"{path}{cache_buster}")
 
         if resp2 and evil_host in resp2.text:
-            self.findings.append({
-                "severity": "critical",
-                "type": "Web Cache Poisoning",
-                "detail": f"Cached response contains attacker host {evil_host}",
-            })
+            self.findings.append(
+                {
+                    "severity": "critical",
+                    "type": "Web Cache Poisoning",
+                    "detail": f"Cached response contains attacker host {evil_host}",
+                }
+            )
             return {"poisoned": True, "path": path}
         return {"poisoned": False}
 
@@ -131,27 +156,31 @@ class HostHeaderInjectionAgent:
     def test_double_host(self, path="/"):
         """Test duplicate Host header handling."""
         evil_host = "evil.attacker.com"
-        resp = self._request("GET", path,
-                             headers={"Host": evil_host})
+        resp = self._request("GET", path, headers={"Host": evil_host})
         if resp and evil_host in resp.text:
-            self.findings.append({
-                "severity": "medium",
-                "type": "Double Host Header",
-                "detail": "Server accepts duplicate or overridden Host header",
-            })
+            self.findings.append(
+                {
+                    "severity": "medium",
+                    "type": "Double Host Header",
+                    "detail": "Server accepts duplicate or overridden Host header",
+                }
+            )
             return True
         return False
 
     def test_port_injection(self, path="/"):
         """Test Host header with injected port."""
-        resp = self._request("GET", path,
-                             headers={"Host": "target.com:@evil.attacker.com"})
+        resp = self._request(
+            "GET", path, headers={"Host": "target.com:@evil.attacker.com"}
+        )
         if resp and "evil.attacker.com" in resp.text:
-            self.findings.append({
-                "severity": "high",
-                "type": "Port-based Host Injection",
-                "detail": "Host header port injection reflected",
-            })
+            self.findings.append(
+                {
+                    "severity": "high",
+                    "type": "Port-based Host Injection",
+                    "detail": "Host header port injection reflected",
+                }
+            )
             return True
         return False
 

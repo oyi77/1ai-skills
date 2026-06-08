@@ -49,6 +49,7 @@ def _save_db(path: Path, data):
 
 # ── CAPTURE ──────────────────────────────────────────────
 
+
 def capture_feedback(
     source: str,
     feedback_type: str,
@@ -58,12 +59,12 @@ def capture_feedback(
 ):
     """
     Capture ANY feedback from any source.
-    
+
     Args:
         source: Who gave feedback ("user", "veris", "analytics", "system")
         feedback_type: Type of feedback:
             - "positive" — user liked something
-            - "negative" — user disliked something  
+            - "negative" — user disliked something
             - "correction" — user corrected a mistake
             - "instruction" — user gave a new rule/preference
             - "training" — trainer provided design/content guidance
@@ -71,12 +72,12 @@ def capture_feedback(
         content: The actual feedback text or data
         context: Optional context (product, platform, post_id, etc.)
         tags: Optional tags for categorization
-    
+
     Returns:
         The stored learning entry
     """
     learnings = _load_db(LEARNINGS_DB)
-    
+
     entry = {
         "id": len(learnings) + 1,
         "timestamp": datetime.now().isoformat(),
@@ -88,14 +89,14 @@ def capture_feedback(
         "applied": False,
         "applied_count": 0,
     }
-    
+
     learnings.append(entry)
     _save_db(LEARNINGS_DB, learnings)
-    
+
     # Auto-extract rules from certain feedback types
     if feedback_type in ("instruction", "training", "correction"):
         _auto_extract_rule(entry)
-    
+
     return entry
 
 
@@ -106,14 +107,14 @@ def capture_trainer_session(
 ):
     """
     Capture a full training session from a human trainer.
-    
+
     Args:
         trainer_name: Name of trainer (e.g., "Veris")
         principles: List of {principle, description, priority}
         examples: Optional list of {description, good_example, bad_example}
     """
     log = _load_db(TRAINING_LOG)
-    
+
     session = {
         "id": len(log) + 1,
         "timestamp": datetime.now().isoformat(),
@@ -121,10 +122,10 @@ def capture_trainer_session(
         "principles": principles,
         "examples": examples or [],
     }
-    
+
     log.append(session)
     _save_db(TRAINING_LOG, log)
-    
+
     # Convert each principle to a rule
     for p in principles:
         add_rule(
@@ -134,7 +135,7 @@ def capture_trainer_session(
             source=f"trainer:{trainer_name}",
             priority=p.get("priority", 5),
         )
-    
+
     return session
 
 
@@ -148,7 +149,7 @@ def capture_performance(
 ):
     """
     Capture content performance data for learning.
-    
+
     Args:
         post_id: PostBridge post ID
         platform: Platform name (facebook, instagram, etc.)
@@ -174,6 +175,7 @@ def capture_performance(
 
 # ── STORE (Rules) ───────────────────────────────────────
 
+
 def add_rule(
     category: str,
     rule: str,
@@ -183,12 +185,12 @@ def add_rule(
 ):
     """
     Add or update a content generation rule.
-    
+
     Categories: design, copy, timing, platform, pricing, hook, cta, audience
     Priority: 1 (low) to 10 (critical)
     """
     rules = _load_db(RULES_DB)
-    
+
     # Check if similar rule exists (dedup by rule text)
     for existing in rules:
         if existing["rule"].lower().strip() == rule.lower().strip():
@@ -197,7 +199,7 @@ def add_rule(
             existing["sources"].append(source)
             _save_db(RULES_DB, rules)
             return existing
-    
+
     entry = {
         "id": len(rules) + 1,
         "category": category,
@@ -209,7 +211,7 @@ def add_rule(
         "updated": datetime.now().isoformat(),
         "active": True,
     }
-    
+
     rules.append(entry)
     _save_db(RULES_DB, rules)
     return entry
@@ -219,16 +221,26 @@ def _auto_extract_rule(entry: dict):
     """Auto-extract rules from feedback entries."""
     content = entry.get("content", "")
     source = entry.get("source", "user")
-    
+
     # Simple keyword-based rule extraction
     rule_keywords = {
-        "design": ["warna", "color", "background", "dark", "font", "layout", "format", "size", "resolution"],
+        "design": [
+            "warna",
+            "color",
+            "background",
+            "dark",
+            "font",
+            "layout",
+            "format",
+            "size",
+            "resolution",
+        ],
         "copy": ["caption", "hook", "teks", "text", "copy", "headline", "cta"],
         "timing": ["waktu", "jam", "time", "schedule", "posting"],
         "platform": ["instagram", "tiktok", "facebook", "threads", "youtube"],
         "pricing": ["harga", "price", "diskon", "gratis", "free"],
     }
-    
+
     content_lower = content.lower()
     for category, keywords in rule_keywords.items():
         if any(kw in content_lower for kw in keywords):
@@ -244,6 +256,7 @@ def _auto_extract_rule(entry: dict):
 
 # ── APPLY ────────────────────────────────────────────────
 
+
 def get_active_rules(category: str | None = None) -> list:
     """Get all active rules, optionally filtered by category."""
     rules = _load_db(RULES_DB)
@@ -256,7 +269,7 @@ def get_active_rules(category: str | None = None) -> list:
 def get_design_guidelines() -> dict:
     """Get consolidated design guidelines from all learnings."""
     rules = get_active_rules("design")
-    
+
     # Default Veris guidelines (baseline)
     guidelines = {
         "background": "#000000",
@@ -268,14 +281,14 @@ def get_design_guidelines() -> dict:
         "style": "minimalist_premium",
         "rules": [r["rule"] for r in rules],
     }
-    
+
     return guidelines
 
 
 def get_copy_guidelines() -> dict:
     """Get consolidated copy/caption guidelines."""
     rules = get_active_rules("copy")
-    
+
     return {
         "tone": "direct, premium, no fluff",
         "language": "bahasa gaul tapi profesional",
@@ -294,17 +307,17 @@ def get_copy_guidelines() -> dict:
 def build_prompt_with_learnings(base_prompt: str, category: str = "design") -> str:
     """Enhance a generation prompt with learned rules."""
     rules = get_active_rules(category)
-    
+
     if not rules:
         return base_prompt
-    
+
     rules_text = "\n".join(f"- {r['rule']}" for r in rules[:10])  # Top 10 by priority
-    
+
     enhanced = f"""{base_prompt}
 
 IMPORTANT RULES (learned from feedback):
 {rules_text}"""
-    
+
     return enhanced
 
 
@@ -312,58 +325,63 @@ def get_top_performing_patterns() -> dict:
     """Analyze performance data to find what works best."""
     learnings = _load_db(LEARNINGS_DB)
     performance = [l for l in learnings if l["type"] == "performance"]
-    
+
     if not performance:
         return {"message": "No performance data yet. Will learn from first posts."}
-    
+
     # Group by platform
     by_platform = {}
     for p in performance:
         ctx = p.get("context", {})
         platform = ctx.get("platform", "unknown")
         metrics = json.loads(p.get("content", "{}"))
-        
+
         if platform not in by_platform:
             by_platform[platform] = {"total": 0, "with_media": 0, "engagement": []}
-        
+
         by_platform[platform]["total"] += 1
         if ctx.get("had_media"):
             by_platform[platform]["with_media"] += 1
-        
+
         eng = sum(metrics.get(k, 0) for k in ["likes", "comments", "shares", "saves"])
         by_platform[platform]["engagement"].append(eng)
-    
+
     # Calculate averages
     result = {}
     for platform, data in by_platform.items():
-        avg_eng = sum(data["engagement"]) / len(data["engagement"]) if data["engagement"] else 0
+        avg_eng = (
+            sum(data["engagement"]) / len(data["engagement"])
+            if data["engagement"]
+            else 0
+        )
         result[platform] = {
             "total_posts": data["total"],
             "media_rate": data["with_media"] / data["total"] if data["total"] else 0,
             "avg_engagement": round(avg_eng, 1),
         }
-    
+
     return result
 
 
 # ── EVOLVE ───────────────────────────────────────────────
+
 
 def get_learning_stats() -> dict:
     """Get stats about the learning system."""
     learnings = _load_db(LEARNINGS_DB)
     rules = _load_db(RULES_DB)
     training = _load_db(TRAINING_LOG)
-    
+
     by_type = {}
     for l in learnings:
         t = l.get("type", "?")
         by_type[t] = by_type.get(t, 0) + 1
-    
+
     by_source = {}
     for l in learnings:
         s = l.get("source", "?")
         by_source[s] = by_source.get(s, 0) + 1
-    
+
     return {
         "total_learnings": len(learnings),
         "total_rules": len(rules),
@@ -376,12 +394,13 @@ def get_learning_stats() -> dict:
 
 # ── BOOTSTRAP: Load Veris Training ──────────────────────
 
+
 def bootstrap_veris():
     """Bootstrap with Veris's training data (run once)."""
     rules = _load_db(RULES_DB)
     if any(r.get("sources", [None])[0] == "trainer:Veris" for r in rules):
         return "Already bootstrapped"
-    
+
     capture_trainer_session(
         trainer_name="Veris",
         principles=[
@@ -447,5 +466,5 @@ def bootstrap_veris():
             },
         ],
     )
-    
+
     return "Veris training bootstrapped: 8 principles, 2 examples"

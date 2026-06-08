@@ -14,25 +14,45 @@ from collections import defaultdict
 from pathlib import Path
 
 CLOUD_STORAGE_DOMAINS = {
-    "drive.google.com", "docs.google.com", "storage.googleapis.com",
-    "dropbox.com", "dl.dropboxusercontent.com",
-    "box.com", "upload.box.com",
-    "onedrive.live.com", "sharepoint.com",
-    "mega.nz", "mega.co.nz",
-    "wetransfer.com", "sendspace.com",
-    "mediafire.com", "4shared.com",
-    "pastebin.com", "paste.ee", "hastebin.com",
-    "github.com", "gitlab.com", "bitbucket.org",
-    "discord.com", "cdn.discordapp.com",
-    "api.telegram.org", "slack.com",
+    "drive.google.com",
+    "docs.google.com",
+    "storage.googleapis.com",
+    "dropbox.com",
+    "dl.dropboxusercontent.com",
+    "box.com",
+    "upload.box.com",
+    "onedrive.live.com",
+    "sharepoint.com",
+    "mega.nz",
+    "mega.co.nz",
+    "wetransfer.com",
+    "sendspace.com",
+    "mediafire.com",
+    "4shared.com",
+    "pastebin.com",
+    "paste.ee",
+    "hastebin.com",
+    "github.com",
+    "gitlab.com",
+    "bitbucket.org",
+    "discord.com",
+    "cdn.discordapp.com",
+    "api.telegram.org",
+    "slack.com",
 }
 
 LEGITIMATE_HIGH_VOLUME = {
-    "windowsupdate.com", "microsoft.com", "windows.com",
-    "googleapis.com", "gstatic.com",
-    "amazonaws.com", "cloudfront.net",
-    "apple.com", "icloud.com",
-    "adobe.com", "akamai.net",
+    "windowsupdate.com",
+    "microsoft.com",
+    "windows.com",
+    "googleapis.com",
+    "gstatic.com",
+    "amazonaws.com",
+    "cloudfront.net",
+    "apple.com",
+    "icloud.com",
+    "adobe.com",
+    "akamai.net",
 }
 
 
@@ -103,18 +123,24 @@ def detect_volume_anomalies(events: list[dict]) -> list[dict]:
         if data["bytes_out"] > threshold_bytes:
             mb = data["bytes_out"] / (1024 * 1024)
             risk = min(90, 30 + int(mb / 100) * 10)
-            findings.append({
-                "detection_type": "VOLUME_ANOMALY",
-                "technique": "T1041",
-                "src_ip": src,
-                "bytes_out": data["bytes_out"],
-                "mb_out": round(mb, 2),
-                "unique_destinations": len(data["destinations"]),
-                "connection_count": data["count"],
-                "risk_score": risk,
-                "risk_level": "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM",
-                "indicators": [f"High outbound volume: {round(mb, 2)} MB to {len(data['destinations'])} destinations"],
-            })
+            findings.append(
+                {
+                    "detection_type": "VOLUME_ANOMALY",
+                    "technique": "T1041",
+                    "src_ip": src,
+                    "bytes_out": data["bytes_out"],
+                    "mb_out": round(mb, 2),
+                    "unique_destinations": len(data["destinations"]),
+                    "connection_count": data["count"],
+                    "risk_score": risk,
+                    "risk_level": (
+                        "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM"
+                    ),
+                    "indicators": [
+                        f"High outbound volume: {round(mb, 2)} MB to {len(data['destinations'])} destinations"
+                    ],
+                }
+            )
 
     return sorted(findings, key=lambda x: x["bytes_out"], reverse=True)
 
@@ -141,24 +167,30 @@ def detect_cloud_exfiltration(events: list[dict]) -> list[dict]:
     for src, data in cloud_uploads.items():
         if data["bytes_out"] > 50 * 1024 * 1024:  # 50 MB
             mb = data["bytes_out"] / (1024 * 1024)
-            findings.append({
-                "detection_type": "CLOUD_EXFILTRATION",
-                "technique": "T1567.002",
-                "source": src,
-                "bytes_out": data["bytes_out"],
-                "mb_out": round(mb, 2),
-                "cloud_services": list(data["services"]),
-                "upload_count": data["count"],
-                "risk_score": 60,
-                "risk_level": "HIGH",
-                "indicators": [f"Cloud upload: {round(mb, 2)} MB to {', '.join(data['services'])}"],
-            })
+            findings.append(
+                {
+                    "detection_type": "CLOUD_EXFILTRATION",
+                    "technique": "T1567.002",
+                    "source": src,
+                    "bytes_out": data["bytes_out"],
+                    "mb_out": round(mb, 2),
+                    "cloud_services": list(data["services"]),
+                    "upload_count": data["count"],
+                    "risk_score": 60,
+                    "risk_level": "HIGH",
+                    "indicators": [
+                        f"Cloud upload: {round(mb, 2)} MB to {', '.join(data['services'])}"
+                    ],
+                }
+            )
 
     return sorted(findings, key=lambda x: x["bytes_out"], reverse=True)
 
 
 def detect_dns_exfiltration(events: list[dict]) -> list[dict]:
-    domain_stats = defaultdict(lambda: {"queries": 0, "unique_subs": set(), "total_len": 0})
+    domain_stats = defaultdict(
+        lambda: {"queries": 0, "unique_subs": set(), "total_len": 0}
+    )
     for e in events:
         domain = e.get("domain", "")
         if not domain or "." not in domain:
@@ -190,17 +222,21 @@ def detect_dns_exfiltration(events: list[dict]) -> list[dict]:
             risk += 15
             indicators.append(f"High volume: {stats['queries']} queries")
         if risk >= 30:
-            findings.append({
-                "detection_type": "DNS_EXFILTRATION",
-                "technique": "T1048.003",
-                "domain": base,
-                "query_count": stats["queries"],
-                "unique_subdomains": unique,
-                "avg_query_length": round(avg_len, 1),
-                "risk_score": risk,
-                "risk_level": "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM",
-                "indicators": indicators,
-            })
+            findings.append(
+                {
+                    "detection_type": "DNS_EXFILTRATION",
+                    "technique": "T1048.003",
+                    "domain": base,
+                    "query_count": stats["queries"],
+                    "unique_subdomains": unique,
+                    "avg_query_length": round(avg_len, 1),
+                    "risk_score": risk,
+                    "risk_level": (
+                        "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM"
+                    ),
+                    "indicators": indicators,
+                }
+            )
 
     return sorted(findings, key=lambda x: x["risk_score"], reverse=True)
 
@@ -219,11 +255,15 @@ def run_hunt(input_path: str, output_dir: str) -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     with open(output_path / "exfil_findings.json", "w", encoding="utf-8") as f:
-        json.dump({
-            "hunt_id": f"TH-EXFIL-{datetime.date.today().isoformat()}",
-            "total_events": len(events),
-            "findings": all_findings,
-        }, f, indent=2)
+        json.dump(
+            {
+                "hunt_id": f"TH-EXFIL-{datetime.date.today().isoformat()}",
+                "total_events": len(events),
+                "findings": all_findings,
+            },
+            f,
+            indent=2,
+        )
 
     with open(output_path / "hunt_report.md", "w", encoding="utf-8") as f:
         f.write(f"# Data Exfiltration Hunt Report\n\n")
@@ -252,7 +292,9 @@ def main():
     elif args.command == "queries":
         print("=== Data Exfiltration Queries ===\n")
         print("--- Volume Anomaly ---")
-        print("index=proxy | stats sum(bytes_out) as total by src_ip\n| eval MB=round(total/1048576,2)\n| where MB > 100 | sort -MB")
+        print(
+            "index=proxy | stats sum(bytes_out) as total by src_ip\n| eval MB=round(total/1048576,2)\n| where MB > 100 | sort -MB"
+        )
     else:
         parser.print_help()
 

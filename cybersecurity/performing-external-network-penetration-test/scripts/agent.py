@@ -11,8 +11,30 @@ from datetime import datetime
 def tcp_port_scan(host, ports=None):
     """Scan common TCP ports on a target host."""
     if ports is None:
-        ports = [21, 22, 23, 25, 53, 80, 110, 135, 139, 143, 443, 445,
-                 993, 995, 1433, 1521, 3306, 3389, 5432, 5900, 8080, 8443]
+        ports = [
+            21,
+            22,
+            23,
+            25,
+            53,
+            80,
+            110,
+            135,
+            139,
+            143,
+            443,
+            445,
+            993,
+            995,
+            1433,
+            1521,
+            3306,
+            3389,
+            5432,
+            5900,
+            8080,
+            8443,
+        ]
     results = []
     for port in ports:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,7 +50,12 @@ def tcp_port_scan(host, ports=None):
             pass
         finally:
             sock.close()
-    return {"host": host, "open_ports": results, "scanned": len(ports), "timestamp": datetime.utcnow().isoformat()}
+    return {
+        "host": host,
+        "open_ports": results,
+        "scanned": len(ports),
+        "timestamp": datetime.utcnow().isoformat(),
+    }
 
 
 def run_nmap_scan(target, scan_type="quick"):
@@ -44,21 +71,36 @@ def run_nmap_scan(target, scan_type="quick"):
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
         import xml.etree.ElementTree as ET
+
         root = ET.fromstring(result.stdout)
         hosts = []
         for host in root.findall(".//host"):
-            addr = host.find("address").get("addr", "") if host.find("address") is not None else ""
+            addr = (
+                host.find("address").get("addr", "")
+                if host.find("address") is not None
+                else ""
+            )
             ports = []
             for port in host.findall(".//port"):
                 state = port.find("state")
                 service = port.find("service")
-                ports.append({
-                    "port": int(port.get("portid", 0)),
-                    "protocol": port.get("protocol", ""),
-                    "state": state.get("state", "") if state is not None else "",
-                    "service": service.get("name", "") if service is not None else "",
-                    "version": service.get("product", "") + " " + service.get("version", "") if service is not None else "",
-                })
+                ports.append(
+                    {
+                        "port": int(port.get("portid", 0)),
+                        "protocol": port.get("protocol", ""),
+                        "state": state.get("state", "") if state is not None else "",
+                        "service": (
+                            service.get("name", "") if service is not None else ""
+                        ),
+                        "version": (
+                            service.get("product", "")
+                            + " "
+                            + service.get("version", "")
+                            if service is not None
+                            else ""
+                        ),
+                    }
+                )
             hosts.append({"ip": addr, "ports": ports})
         return {"target": target, "scan_type": scan_type, "hosts": hosts}
     except FileNotFoundError:
@@ -80,12 +122,25 @@ def dns_enumeration(domain):
             records[rtype] = [str(r) for r in answers]
         except Exception:
             pass
-    subdomains = ["www", "mail", "ftp", "vpn", "remote", "api", "dev", "staging", "admin", "portal"]
+    subdomains = [
+        "www",
+        "mail",
+        "ftp",
+        "vpn",
+        "remote",
+        "api",
+        "dev",
+        "staging",
+        "admin",
+        "portal",
+    ]
     found_subs = []
     for sub in subdomains:
         try:
             answers = dns.resolver.resolve(f"{sub}.{domain}", "A")
-            found_subs.append({"subdomain": f"{sub}.{domain}", "ips": [str(r) for r in answers]})
+            found_subs.append(
+                {"subdomain": f"{sub}.{domain}", "ips": [str(r) for r in answers]}
+            )
         except Exception:
             pass
     return {"domain": domain, "records": records, "subdomains": found_subs}
@@ -94,6 +149,7 @@ def dns_enumeration(domain):
 def ssl_check(host, port=443):
     """Check SSL/TLS certificate details."""
     import ssl
+
     ctx = ssl.create_default_context()
     try:
         with ctx.wrap_socket(socket.socket(), server_hostname=host) as s:
@@ -101,7 +157,8 @@ def ssl_check(host, port=443):
             s.connect((host, port))
             cert = s.getpeercert()
             return {
-                "host": host, "port": port,
+                "host": host,
+                "port": port,
                 "subject": dict(x[0] for x in cert.get("subject", [])),
                 "issuer": dict(x[0] for x in cert.get("issuer", [])),
                 "notBefore": cert.get("notBefore"),
@@ -114,7 +171,9 @@ def ssl_check(host, port=443):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="External Network Penetration Test Agent")
+    parser = argparse.ArgumentParser(
+        description="External Network Penetration Test Agent"
+    )
     sub = parser.add_subparsers(dest="command")
     s = sub.add_parser("scan", help="TCP port scan")
     s.add_argument("--host", required=True)

@@ -7,7 +7,9 @@ import logging
 import argparse
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 GENESIS_HASH = "0" * 64
@@ -87,7 +89,9 @@ def append_entries(chain, log_entries):
         chain.append(entry)
         new_entries.append(entry)
         prev_hash = entry["chain_hash"]
-    logger.info("Appended %d entries to chain (total: %d)", len(new_entries), len(chain))
+    logger.info(
+        "Appended %d entries to chain (total: %d)", len(new_entries), len(chain)
+    )
     return new_entries
 
 
@@ -101,22 +105,30 @@ def verify_chain(chain):
         expected_input = f"{prev_hash}{entry['timestamp']}{entry['content_hash']}"
         expected_hash = compute_hash(expected_input)
         if entry["chain_hash"] != expected_hash:
-            breaks.append({
-                "index": entry["index"],
-                "expected_hash": expected_hash,
-                "actual_hash": entry["chain_hash"],
-                "prev_hash_match": entry["prev_hash"] == prev_hash,
-            })
+            breaks.append(
+                {
+                    "index": entry["index"],
+                    "expected_hash": expected_hash,
+                    "actual_hash": entry["chain_hash"],
+                    "prev_hash_match": entry["prev_hash"] == prev_hash,
+                }
+            )
         if entry["prev_hash"] != prev_hash:
-            breaks.append({
-                "index": entry["index"],
-                "issue": "prev_hash mismatch",
-                "expected_prev": prev_hash,
-                "actual_prev": entry["prev_hash"],
-            })
+            breaks.append(
+                {
+                    "index": entry["index"],
+                    "issue": "prev_hash mismatch",
+                    "expected_prev": prev_hash,
+                    "actual_prev": entry["prev_hash"],
+                }
+            )
         prev_hash = entry["chain_hash"]
     valid = len(breaks) == 0
-    logger.info("Chain verification: %d entries checked, %d breaks found", len(chain), len(breaks))
+    logger.info(
+        "Chain verification: %d entries checked, %d breaks found",
+        len(chain),
+        len(breaks),
+    )
     return {"valid": valid, "entries_checked": len(chain), "breaks": breaks}
 
 
@@ -147,7 +159,11 @@ def create_checkpoint(chain, checkpoint_file):
     }
     with open(checkpoint_file, "w") as f:
         json.dump(checkpoint, f, indent=2)
-    logger.info("Created checkpoint at index %d: %s", checkpoint["head_index"], checkpoint["checkpoint_hash"][:16])
+    logger.info(
+        "Created checkpoint at index %d: %s",
+        checkpoint["head_index"],
+        checkpoint["checkpoint_hash"][:16],
+    )
     return checkpoint
 
 
@@ -180,14 +196,18 @@ def generate_report(verification, checkpoint, chain_length):
         "checkpoint": checkpoint,
     }
     status = "INTACT" if verification["valid"] else "TAMPERED"
-    print(f"LOG INTEGRITY: {status} - {chain_length} entries, {len(verification['breaks'])} breaks")
+    print(
+        f"LOG INTEGRITY: {status} - {chain_length} entries, {len(verification['breaks'])} breaks"
+    )
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description="Log Integrity Chain Agent")
     parser.add_argument("--log-file", help="Log file to ingest")
-    parser.add_argument("--chain-file", default="log_chain.json", help="Hash chain storage file")
+    parser.add_argument(
+        "--chain-file", default="log_chain.json", help="Hash chain storage file"
+    )
     parser.add_argument("--verify", action="store_true", help="Verify chain integrity")
     parser.add_argument("--checkpoint", help="Create/verify checkpoint file")
     parser.add_argument("--output", default="integrity_report.json")

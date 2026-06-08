@@ -10,7 +10,15 @@ from pathlib import Path
 
 def compile_target(source_file, output_binary, compiler="afl-clang-fast"):
     """Compile target binary with AFL++ instrumentation."""
-    cmd = [compiler, "-g", "-O1", "-fno-omit-frame-pointer", "-o", output_binary, source_file]
+    cmd = [
+        compiler,
+        "-g",
+        "-O1",
+        "-fno-omit-frame-pointer",
+        "-o",
+        output_binary,
+        source_file,
+    ]
     env = os.environ.copy()
     env["AFL_HARDEN"] = "1"
     result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=120)
@@ -45,7 +53,17 @@ def prepare_corpus(seed_dir, corpus_dir):
 def minimize_corpus(binary, input_dir, output_dir, timeout=60):
     """Minimize seed corpus using afl-cmin."""
     Path(output_dir).mkdir(parents=True, exist_ok=True)
-    cmd = ["afl-cmin", "-i", input_dir, "-o", output_dir, "-t", str(timeout * 1000), "--", binary]
+    cmd = [
+        "afl-cmin",
+        "-i",
+        input_dir,
+        "-o",
+        output_dir,
+        "-t",
+        str(timeout * 1000),
+        "--",
+        binary,
+    ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     minimized = list(Path(output_dir).glob("*"))
     return {
@@ -64,16 +82,25 @@ def run_fuzzer(binary, input_dir, output_dir, duration_seconds=300, memory_limit
     env["AFL_NO_UI"] = "1"
     cmd = [
         "afl-fuzz",
-        "-i", input_dir,
-        "-o", output_dir,
-        "-m", memory_limit,
-        "-V", str(duration_seconds),
-        "--", binary,
+        "-i",
+        input_dir,
+        "-o",
+        output_dir,
+        "-m",
+        memory_limit,
+        "-V",
+        str(duration_seconds),
+        "--",
+        binary,
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=duration_seconds + 60)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, env=env, timeout=duration_seconds + 60
+    )
     stats = parse_fuzzer_stats(os.path.join(output_dir, "default", "fuzzer_stats"))
     crashes_dir = os.path.join(output_dir, "default", "crashes")
-    crash_files = list(Path(crashes_dir).glob("id:*")) if os.path.isdir(crashes_dir) else []
+    crash_files = (
+        list(Path(crashes_dir).glob("id:*")) if os.path.isdir(crashes_dir) else []
+    )
     return {
         "binary": binary,
         "duration_seconds": duration_seconds,
@@ -115,16 +142,19 @@ def triage_crashes(binary, crashes_dir):
         cmd = [binary]
         try:
             proc = subprocess.run(
-                cmd, input=crash_file.read_bytes(),
-                capture_output=True, timeout=5
+                cmd, input=crash_file.read_bytes(), capture_output=True, timeout=5
             )
-            results.append({
-                "file": str(crash_file),
-                "returncode": proc.returncode,
-                "signal": -proc.returncode if proc.returncode < 0 else None,
-                "stderr_snippet": proc.stderr[:200].decode("utf-8", errors="replace"),
-                "crash_type": _classify_signal(proc.returncode),
-            })
+            results.append(
+                {
+                    "file": str(crash_file),
+                    "returncode": proc.returncode,
+                    "signal": -proc.returncode if proc.returncode < 0 else None,
+                    "stderr_snippet": proc.stderr[:200].decode(
+                        "utf-8", errors="replace"
+                    ),
+                    "crash_type": _classify_signal(proc.returncode),
+                }
+            )
         except subprocess.TimeoutExpired:
             results.append({"file": str(crash_file), "crash_type": "hang/timeout"})
     return {
@@ -136,7 +166,13 @@ def triage_crashes(binary, crashes_dir):
 
 
 def _classify_signal(returncode):
-    signal_map = {-6: "SIGABRT", -11: "SIGSEGV", -8: "SIGFPE", -4: "SIGILL", -7: "SIGBUS"}
+    signal_map = {
+        -6: "SIGABRT",
+        -11: "SIGSEGV",
+        -8: "SIGFPE",
+        -4: "SIGILL",
+        -7: "SIGBUS",
+    }
     return signal_map.get(returncode, f"exit({returncode})")
 
 
@@ -170,7 +206,9 @@ def main():
     if args.command == "compile":
         result = compile_target(args.source, args.output, args.compiler)
     elif args.command == "fuzz":
-        result = run_fuzzer(args.binary, args.input, args.output, args.duration, args.memory)
+        result = run_fuzzer(
+            args.binary, args.input, args.output, args.duration, args.memory
+        )
     elif args.command == "triage":
         result = triage_crashes(args.binary, args.crashes_dir)
     elif args.command == "stats":

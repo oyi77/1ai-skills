@@ -28,7 +28,9 @@ def list_all_buckets(session):
     for b in response.get("Buckets", []):
         loc = s3.get_bucket_location(Bucket=b["Name"])
         region = loc.get("LocationConstraint") or "us-east-1"
-        buckets.append({"name": b["Name"], "created": str(b["CreationDate"]), "region": region})
+        buckets.append(
+            {"name": b["Name"], "created": str(b["CreationDate"]), "region": region}
+        )
     return buckets
 
 
@@ -61,10 +63,12 @@ def check_bucket_acl(session, bucket_name):
     for grant in acl.get("Grants", []):
         grantee = grant.get("Grantee", {})
         if grantee.get("URI") in public_uris:
-            public_grants.append({
-                "grantee": grantee.get("URI"),
-                "permission": grant.get("Permission"),
-            })
+            public_grants.append(
+                {
+                    "grantee": grantee.get("URI"),
+                    "permission": grant.get("Permission"),
+                }
+            )
     return public_grants
 
 
@@ -78,11 +82,13 @@ def check_bucket_policy(session, bucket_name):
         for stmt in policy.get("Statement", []):
             principal = stmt.get("Principal", {})
             if principal == "*" or principal == {"AWS": "*"}:
-                issues.append({
-                    "effect": stmt.get("Effect"),
-                    "action": stmt.get("Action"),
-                    "condition": stmt.get("Condition", "NONE"),
-                })
+                issues.append(
+                    {
+                        "effect": stmt.get("Effect"),
+                        "action": stmt.get("Action"),
+                        "condition": stmt.get("Condition", "NONE"),
+                    }
+                )
         return {"has_policy": True, "wildcard_issues": issues}
     except ClientError:
         return {"has_policy": False, "wildcard_issues": []}
@@ -95,7 +101,11 @@ def check_encryption(session, bucket_name):
         enc = s3.get_bucket_encryption(Bucket=bucket_name)
         rules = enc.get("ServerSideEncryptionConfiguration", {}).get("Rules", [])
         if rules:
-            algo = rules[0].get("ApplyServerSideEncryptionByDefault", {}).get("SSEAlgorithm")
+            algo = (
+                rules[0]
+                .get("ApplyServerSideEncryptionByDefault", {})
+                .get("SSEAlgorithm")
+            )
             return {"enabled": True, "algorithm": algo}
     except ClientError:
         pass
@@ -146,7 +156,9 @@ def classify_risk(audit_result):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="AWS S3 Bucket Permissions Audit Agent")
+    parser = argparse.ArgumentParser(
+        description="AWS S3 Bucket Permissions Audit Agent"
+    )
     parser.add_argument("--profile", default=os.getenv("AWS_PROFILE"))
     parser.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION"))
     parser.add_argument("--bucket", help="Audit a specific bucket")

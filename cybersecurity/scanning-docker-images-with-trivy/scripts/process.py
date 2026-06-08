@@ -58,7 +58,9 @@ def update_db():
     print("[*] Updating vulnerability database...")
     result = subprocess.run(
         ["trivy", "image", "--download-db-only"],
-        capture_output=True, text=True, timeout=300
+        capture_output=True,
+        text=True,
+        timeout=300,
     )
     if result.returncode == 0:
         print("[+] Database updated successfully")
@@ -69,9 +71,12 @@ def update_db():
 def scan_image(image: str, policy: ScanPolicy) -> dict:
     """Scan a Docker image with Trivy and return JSON results."""
     cmd = [
-        "trivy", "image",
-        "--format", "json",
-        "--scanners", ",".join(policy.scanners),
+        "trivy",
+        "image",
+        "--format",
+        "json",
+        "--scanners",
+        ",".join(policy.scanners),
     ]
 
     if policy.ignore_unfixed:
@@ -82,9 +87,7 @@ def scan_image(image: str, policy: ScanPolicy) -> dict:
     print(f"[*] Scanning image: {image}")
     print(f"[*] Scanners: {', '.join(policy.scanners)}")
 
-    result = subprocess.run(
-        cmd, capture_output=True, text=True, timeout=600
-    )
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
 
     if result.returncode != 0 and not result.stdout:
         print(f"[!] Scan failed: {result.stderr}")
@@ -128,42 +131,48 @@ def parse_results(scan_data: dict) -> tuple:
 
             summary.total += 1
 
-            vulnerabilities.append({
-                "target": target,
-                "type": result_type,
-                "vuln_id": vuln.get("VulnerabilityID", ""),
-                "pkg_name": vuln.get("PkgName", ""),
-                "installed_version": vuln.get("InstalledVersion", ""),
-                "fixed_version": vuln.get("FixedVersion", ""),
-                "severity": severity,
-                "title": vuln.get("Title", ""),
-                "description": vuln.get("Description", "")[:200],
-                "cvss_score": vuln.get("CVSS", {}).get("nvd", {}).get("V3Score", 0),
-                "references": vuln.get("References", [])[:3],
-            })
+            vulnerabilities.append(
+                {
+                    "target": target,
+                    "type": result_type,
+                    "vuln_id": vuln.get("VulnerabilityID", ""),
+                    "pkg_name": vuln.get("PkgName", ""),
+                    "installed_version": vuln.get("InstalledVersion", ""),
+                    "fixed_version": vuln.get("FixedVersion", ""),
+                    "severity": severity,
+                    "title": vuln.get("Title", ""),
+                    "description": vuln.get("Description", "")[:200],
+                    "cvss_score": vuln.get("CVSS", {}).get("nvd", {}).get("V3Score", 0),
+                    "references": vuln.get("References", [])[:3],
+                }
+            )
 
         # Parse secrets
         for secret in result.get("Secrets", []):
-            secrets.append({
-                "target": target,
-                "rule_id": secret.get("RuleID", ""),
-                "category": secret.get("Category", ""),
-                "severity": secret.get("Severity", ""),
-                "title": secret.get("Title", ""),
-                "match": secret.get("Match", "")[:50] + "...",
-            })
+            secrets.append(
+                {
+                    "target": target,
+                    "rule_id": secret.get("RuleID", ""),
+                    "category": secret.get("Category", ""),
+                    "severity": secret.get("Severity", ""),
+                    "title": secret.get("Title", ""),
+                    "match": secret.get("Match", "")[:50] + "...",
+                }
+            )
 
         # Parse misconfigurations
         for misconfig in result.get("Misconfigurations", []):
-            misconfigs.append({
-                "target": target,
-                "type": misconfig.get("Type", ""),
-                "id": misconfig.get("ID", ""),
-                "title": misconfig.get("Title", ""),
-                "severity": misconfig.get("Severity", ""),
-                "message": misconfig.get("Message", ""),
-                "resolution": misconfig.get("Resolution", ""),
-            })
+            misconfigs.append(
+                {
+                    "target": target,
+                    "type": misconfig.get("Type", ""),
+                    "id": misconfig.get("ID", ""),
+                    "title": misconfig.get("Title", ""),
+                    "severity": misconfig.get("Severity", ""),
+                    "message": misconfig.get("Message", ""),
+                    "resolution": misconfig.get("Resolution", ""),
+                }
+            )
 
     return summary, vulnerabilities, secrets, misconfigs
 
@@ -194,9 +203,15 @@ def evaluate_policy(summary: VulnSummary, policy: ScanPolicy) -> tuple:
     return passed, reasons
 
 
-def generate_report(image: str, summary: VulnSummary, vulnerabilities: list,
-                    secrets: list, misconfigs: list, policy_passed: bool,
-                    policy_reasons: list) -> dict:
+def generate_report(
+    image: str,
+    summary: VulnSummary,
+    vulnerabilities: list,
+    secrets: list,
+    misconfigs: list,
+    policy_passed: bool,
+    policy_reasons: list,
+) -> dict:
     """Generate comprehensive scan report."""
     return {
         "scan_metadata": {
@@ -222,9 +237,7 @@ def generate_report(image: str, summary: VulnSummary, vulnerabilities: list,
         "critical_vulnerabilities": [
             v for v in vulnerabilities if v["severity"] == "CRITICAL"
         ],
-        "high_vulnerabilities": [
-            v for v in vulnerabilities if v["severity"] == "HIGH"
-        ],
+        "high_vulnerabilities": [v for v in vulnerabilities if v["severity"] == "HIGH"],
         "secrets": secrets,
         "misconfigurations": misconfigs,
         "all_vulnerabilities": vulnerabilities,
@@ -266,7 +279,9 @@ def print_report(report: dict):
             print("-" * 70)
             for v in vulns:
                 fixed = v.get("fixed_version", "not fixed")
-                print(f"  {v['vuln_id']} | {v['pkg_name']} {v['installed_version']} -> {fixed}")
+                print(
+                    f"  {v['vuln_id']} | {v['pkg_name']} {v['installed_version']} -> {fixed}"
+                )
                 if v.get("title"):
                     print(f"    {v['title']}")
 
@@ -283,13 +298,26 @@ def print_report(report: dict):
 def main():
     parser = argparse.ArgumentParser(description="Trivy Docker Image Scanner")
     parser.add_argument("image", help="Docker image to scan (e.g., nginx:latest)")
-    parser.add_argument("--output", "-o", default="trivy_report.json", help="Output JSON file")
-    parser.add_argument("--max-critical", type=int, default=0, help="Max allowed CRITICAL vulns")
-    parser.add_argument("--max-high", type=int, default=5, help="Max allowed HIGH vulns")
-    parser.add_argument("--ignore-unfixed", action="store_true", help="Ignore unfixed vulns")
-    parser.add_argument("--scanners", default="vuln,secret",
-                        help="Comma-separated scanners: vuln,misconfig,secret,license")
-    parser.add_argument("--update-db", action="store_true", help="Update DB before scan")
+    parser.add_argument(
+        "--output", "-o", default="trivy_report.json", help="Output JSON file"
+    )
+    parser.add_argument(
+        "--max-critical", type=int, default=0, help="Max allowed CRITICAL vulns"
+    )
+    parser.add_argument(
+        "--max-high", type=int, default=5, help="Max allowed HIGH vulns"
+    )
+    parser.add_argument(
+        "--ignore-unfixed", action="store_true", help="Ignore unfixed vulns"
+    )
+    parser.add_argument(
+        "--scanners",
+        default="vuln,secret",
+        help="Comma-separated scanners: vuln,misconfig,secret,license",
+    )
+    parser.add_argument(
+        "--update-db", action="store_true", help="Update DB before scan"
+    )
     args = parser.parse_args()
 
     if not check_trivy_installed():
@@ -313,8 +341,13 @@ def main():
     policy_passed, policy_reasons = evaluate_policy(summary, policy)
 
     report = generate_report(
-        args.image, summary, vulnerabilities, secrets, misconfigs,
-        policy_passed, policy_reasons
+        args.image,
+        summary,
+        vulnerabilities,
+        secrets,
+        misconfigs,
+        policy_passed,
+        policy_reasons,
     )
 
     print_report(report)

@@ -29,21 +29,21 @@ RATE_THRESHOLD = 50
 
 def parse_access_log(log_path):
     """Parse NGINX/Apache combined log format for API requests."""
-    log_pattern = re.compile(
-        r'(\S+) \S+ \S+ \[([^\]]+)\] "(\S+) (\S+) \S+" (\d+) \d+'
-    )
+    log_pattern = re.compile(r'(\S+) \S+ \S+ \[([^\]]+)\] "(\S+) (\S+) \S+" (\d+) \d+')
     entries = []
     with open(log_path, "r") as f:
         for line in f:
             m = log_pattern.match(line)
             if m:
-                entries.append({
-                    "ip": m.group(1),
-                    "timestamp": m.group(2),
-                    "method": m.group(3),
-                    "path": m.group(4),
-                    "status": int(m.group(5)),
-                })
+                entries.append(
+                    {
+                        "ip": m.group(1),
+                        "timestamp": m.group(2),
+                        "method": m.group(3),
+                        "path": m.group(4),
+                        "status": int(m.group(5)),
+                    }
+                )
     return entries
 
 
@@ -61,16 +61,21 @@ def detect_sequential_ids(entries):
         if len(ids) < SEQUENTIAL_THRESHOLD:
             continue
         sorted_ids = sorted(ids)
-        sequential_count = sum(1 for i in range(1, len(sorted_ids))
-                               if sorted_ids[i] - sorted_ids[i-1] == 1)
+        sequential_count = sum(
+            1
+            for i in range(1, len(sorted_ids))
+            if sorted_ids[i] - sorted_ids[i - 1] == 1
+        )
         if sequential_count >= SEQUENTIAL_THRESHOLD:
-            findings.append({
-                "ip": ip,
-                "issue": f"Sequential ID enumeration detected ({sequential_count} sequential IDs)",
-                "severity": "HIGH",
-                "sample_ids": sorted_ids[:20],
-                "total_requests": len(ids),
-            })
+            findings.append(
+                {
+                    "ip": ip,
+                    "issue": f"Sequential ID enumeration detected ({sequential_count} sequential IDs)",
+                    "severity": "HIGH",
+                    "sample_ids": sorted_ids[:20],
+                    "total_requests": len(ids),
+                }
+            )
     return findings
 
 
@@ -90,21 +95,25 @@ def detect_rate_anomalies(entries, window_seconds=60):
     findings = []
     for ip, count in ip_counts.items():
         if count > RATE_THRESHOLD:
-            findings.append({
-                "ip": ip,
-                "issue": f"High API request rate ({count} requests)",
-                "severity": "MEDIUM",
-                "total_requests": count,
-                "404_count": ip_404s.get(ip, 0),
-                "401_count": ip_401s.get(ip, 0),
-            })
+            findings.append(
+                {
+                    "ip": ip,
+                    "issue": f"High API request rate ({count} requests)",
+                    "severity": "MEDIUM",
+                    "total_requests": count,
+                    "404_count": ip_404s.get(ip, 0),
+                    "401_count": ip_401s.get(ip, 0),
+                }
+            )
         if ip_404s.get(ip, 0) > 20:
-            findings.append({
-                "ip": ip,
-                "issue": f"Excessive 404s on API ({ip_404s[ip]} not-found responses)",
-                "severity": "HIGH",
-                "detail": "Possible endpoint discovery/fuzzing",
-            })
+            findings.append(
+                {
+                    "ip": ip,
+                    "issue": f"Excessive 404s on API ({ip_404s[ip]} not-found responses)",
+                    "severity": "HIGH",
+                    "detail": "Possible endpoint discovery/fuzzing",
+                }
+            )
     return findings
 
 
@@ -119,13 +128,15 @@ def detect_path_enumeration(entries):
         for pattern in ENUMERATION_PATTERNS:
             matched = [p for p in paths if pattern.search(p)]
             if len(matched) > 5:
-                findings.append({
-                    "ip": ip,
-                    "issue": f"Path enumeration pattern: {pattern.pattern}",
-                    "severity": "HIGH",
-                    "matched_paths": len(matched),
-                    "samples": list(matched)[:5],
-                })
+                findings.append(
+                    {
+                        "ip": ip,
+                        "issue": f"Path enumeration pattern: {pattern.pattern}",
+                        "severity": "HIGH",
+                        "matched_paths": len(matched),
+                        "samples": list(matched)[:5],
+                    }
+                )
     return findings
 
 
@@ -133,9 +144,12 @@ def query_waf_logs(waf_url, api_key, hours=24):
     """Query WAF API for blocked enumeration attempts."""
     headers = {"Authorization": f"Bearer {api_key}"}
     try:
-        resp = requests.get(f"{waf_url}/api/v1/events",
-                            params={"hours": hours, "rule_category": "api-abuse"},
-                            headers=headers, timeout=15)
+        resp = requests.get(
+            f"{waf_url}/api/v1/events",
+            params={"hours": hours, "rule_category": "api-abuse"},
+            headers=headers,
+            timeout=15,
+        )
         resp.raise_for_status()
         return resp.json().get("events", [])
     except Exception as e:

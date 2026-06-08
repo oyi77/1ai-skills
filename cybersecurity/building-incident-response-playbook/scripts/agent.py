@@ -8,7 +8,6 @@ from datetime import datetime
 
 import requests
 
-
 PLAYBOOK_TYPES = {
     "ransomware": {
         "name": "Ransomware Incident Response",
@@ -121,7 +120,12 @@ def generate_playbook(playbook_type):
             "detection": {"R": "SOC L1", "A": "SOC L2", "C": "IR Lead", "I": ""},
             "containment": {"R": "SOC L2", "A": "IR Lead", "C": "CISO", "I": "Legal"},
             "eradication": {"R": "IR Lead", "A": "CISO", "C": "IT Ops", "I": "Mgmt"},
-            "recovery": {"R": "IT Ops", "A": "IR Lead", "C": "Business Owner", "I": "CISO"},
+            "recovery": {
+                "R": "IT Ops",
+                "A": "IR Lead",
+                "C": "Business Owner",
+                "I": "CISO",
+            },
             "post_incident": {"R": "IR Lead", "A": "CISO", "C": "All", "I": "Exec"},
         },
         "phases": template["phases"],
@@ -142,38 +146,50 @@ def generate_playbook(playbook_type):
 def check_thehive_cases(thehive_url, api_key):
     """List open incident cases from TheHive."""
     headers = {"Authorization": f"Bearer {api_key}"}
-    resp = requests.post(f"{thehive_url}/api/v1/query", headers=headers, json={
-        "query": [
-            {"_name": "listCase"},
-            {"_name": "filter", "_field": "status", "_value": "Open"},
-            {"_name": "sort", "_fields": [{"startDate": "desc"}]},
-            {"_name": "page", "from": 0, "to": 50},
-        ]
-    }, timeout=30)
+    resp = requests.post(
+        f"{thehive_url}/api/v1/query",
+        headers=headers,
+        json={
+            "query": [
+                {"_name": "listCase"},
+                {"_name": "filter", "_field": "status", "_value": "Open"},
+                {"_name": "sort", "_fields": [{"startDate": "desc"}]},
+                {"_name": "page", "from": 0, "to": 50},
+            ]
+        },
+        timeout=30,
+    )
     resp.raise_for_status()
     cases = []
     for c in resp.json():
-        cases.append({
-            "number": c.get("number"),
-            "title": c.get("title"),
-            "severity": c.get("severity"),
-            "status": c.get("status"),
-            "start_date": c.get("startDate"),
-            "owner": c.get("owner"),
-        })
+        cases.append(
+            {
+                "number": c.get("number"),
+                "title": c.get("title"),
+                "severity": c.get("severity"),
+                "status": c.get("status"),
+                "start_date": c.get("startDate"),
+                "owner": c.get("owner"),
+            }
+        )
     return cases
 
 
 def calculate_ir_metrics(thehive_url, api_key, days=30):
     """Calculate incident response metrics from TheHive cases."""
     headers = {"Authorization": f"Bearer {api_key}"}
-    resp = requests.post(f"{thehive_url}/api/v1/query", headers=headers, json={
-        "query": [
-            {"_name": "listCase"},
-            {"_name": "filter", "_field": "status", "_value": "Resolved"},
-            {"_name": "page", "from": 0, "to": 500},
-        ]
-    }, timeout=30)
+    resp = requests.post(
+        f"{thehive_url}/api/v1/query",
+        headers=headers,
+        json={
+            "query": [
+                {"_name": "listCase"},
+                {"_name": "filter", "_field": "status", "_value": "Resolved"},
+                {"_name": "page", "from": 0, "to": 500},
+            ]
+        },
+        timeout=30,
+    )
     resp.raise_for_status()
     cases = resp.json()
     total_resolve_ms = 0
@@ -193,9 +209,11 @@ def main():
     parser.add_argument("--thehive-url", default=os.getenv("THEHIVE_URL"))
     parser.add_argument("--thehive-key", default=os.getenv("THEHIVE_API_KEY"))
     parser.add_argument("--output", default="ir_playbook_output.json")
-    parser.add_argument("--action", choices=[
-        "generate", "list_cases", "metrics", "all_playbooks"
-    ], default="generate")
+    parser.add_argument(
+        "--action",
+        choices=["generate", "list_cases", "metrics", "all_playbooks"],
+        default="generate",
+    )
     args = parser.parse_args()
 
     report = {"generated_at": datetime.utcnow().isoformat()}
@@ -219,7 +237,9 @@ def main():
     if args.action == "metrics" and args.thehive_url:
         metrics = calculate_ir_metrics(args.thehive_url, args.thehive_key)
         report["metrics"] = metrics
-        print(f"[+] Avg MTTR: {metrics['avg_mttr_hours']}h across {metrics['resolved_cases']} cases")
+        print(
+            f"[+] Avg MTTR: {metrics['avg_mttr_hours']}h across {metrics['resolved_cases']} cases"
+        )
 
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2, default=str)

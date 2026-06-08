@@ -31,22 +31,37 @@ def run_kube_bench(target="node", benchmark=None):
                 status = test.get("status", "").lower()
                 summary[status] = summary.get(status, 0) + 1
                 if status == "fail":
-                    failures.append({
-                        "id": test.get("test_number", test.get("TestNumber", "")),
-                        "desc": test.get("test_desc", test.get("TestDesc", ""))[:200],
-                        "remediation": test.get("remediation", test.get("Remediation", ""))[:300],
-                        "scored": test.get("scored", test.get("IsScored", True)),
-                    })
+                    failures.append(
+                        {
+                            "id": test.get("test_number", test.get("TestNumber", "")),
+                            "desc": test.get("test_desc", test.get("TestDesc", ""))[
+                                :200
+                            ],
+                            "remediation": test.get(
+                                "remediation", test.get("Remediation", "")
+                            )[:300],
+                            "scored": test.get("scored", test.get("IsScored", True)),
+                        }
+                    )
         return {
-            "target": target, "timestamp": datetime.utcnow().isoformat(),
-            "summary": summary, "total_checks": sum(summary.values()),
-            "compliance_pct": round(summary["pass"] / max(sum(summary.values()), 1) * 100, 1),
+            "target": target,
+            "timestamp": datetime.utcnow().isoformat(),
+            "summary": summary,
+            "total_checks": sum(summary.values()),
+            "compliance_pct": round(
+                summary["pass"] / max(sum(summary.values()), 1) * 100, 1
+            ),
             "failures": failures,
         }
     except FileNotFoundError:
-        return {"error": "kube-bench not found — install from github.com/aquasecurity/kube-bench"}
+        return {
+            "error": "kube-bench not found — install from github.com/aquasecurity/kube-bench"
+        }
     except json.JSONDecodeError:
-        return {"error": "Failed to parse kube-bench output", "raw": result.stdout[:500]}
+        return {
+            "error": "Failed to parse kube-bench output",
+            "raw": result.stdout[:500],
+        }
     except Exception as e:
         return {"error": str(e)}
 
@@ -71,15 +86,25 @@ def check_pod_security(namespace="default"):
                 if not sc.get("readOnlyRootFilesystem"):
                     issues.append("WRITABLE_ROOT_FS")
                 caps = sc.get("capabilities", {})
-                if caps.get("add") and any(c in caps["add"] for c in ["SYS_ADMIN", "NET_ADMIN", "ALL"]):
+                if caps.get("add") and any(
+                    c in caps["add"] for c in ["SYS_ADMIN", "NET_ADMIN", "ALL"]
+                ):
                     issues.append("DANGEROUS_CAPABILITIES")
                 if not sc.get("allowPrivilegeEscalation") is False:
                     issues.append("PRIVILEGE_ESCALATION_ALLOWED")
                 if issues:
-                    findings.append({"pod": name, "container": container.get("name"), "issues": issues})
+                    findings.append(
+                        {
+                            "pod": name,
+                            "container": container.get("name"),
+                            "issues": issues,
+                        }
+                    )
         return {
-            "namespace": namespace, "total_pods": len(pods),
-            "pods_with_issues": len(findings), "findings": findings,
+            "namespace": namespace,
+            "total_pods": len(pods),
+            "pods_with_issues": len(findings),
+            "findings": findings,
         }
     except FileNotFoundError:
         return {"error": "kubectl not found"}
@@ -102,18 +127,33 @@ def check_rbac_config():
                         verbs = rule.get("verbs", [])
                         resources = rule.get("resources", [])
                         if "*" in verbs and "*" in resources:
-                            findings.append({"type": "clusterrole", "name": name, "issue": "WILDCARD_ALL_PERMISSIONS"})
+                            findings.append(
+                                {
+                                    "type": "clusterrole",
+                                    "name": name,
+                                    "issue": "WILDCARD_ALL_PERMISSIONS",
+                                }
+                            )
                         elif "create" in verbs and "pods" in resources:
-                            findings.append({"type": "clusterrole", "name": name, "issue": "CAN_CREATE_PODS"})
+                            findings.append(
+                                {
+                                    "type": "clusterrole",
+                                    "name": name,
+                                    "issue": "CAN_CREATE_PODS",
+                                }
+                            )
                 elif resource == "clusterrolebindings":
                     subjects = item.get("subjects", [])
                     role_ref = item.get("roleRef", {}).get("name", "")
                     if role_ref == "cluster-admin":
                         for subj in subjects:
-                            findings.append({
-                                "type": "clusterrolebinding", "name": name,
-                                "issue": f"CLUSTER_ADMIN_BOUND_TO_{subj.get('kind', '')}:{subj.get('name', '')}",
-                            })
+                            findings.append(
+                                {
+                                    "type": "clusterrolebinding",
+                                    "name": name,
+                                    "issue": f"CLUSTER_ADMIN_BOUND_TO_{subj.get('kind', '')}:{subj.get('name', '')}",
+                                }
+                            )
         except Exception as e:
             findings.append({"type": resource, "error": str(e)})
     return {"total_findings": len(findings), "findings": findings}
@@ -127,25 +167,40 @@ def check_network_policies(namespace="default"):
         data = json.loads(result.stdout)
         policies = data.get("items", [])
         if not policies:
-            return {"namespace": namespace, "finding": "NO_NETWORK_POLICIES", "severity": "HIGH",
-                    "recommendation": "Implement default-deny NetworkPolicy"}
+            return {
+                "namespace": namespace,
+                "finding": "NO_NETWORK_POLICIES",
+                "severity": "HIGH",
+                "recommendation": "Implement default-deny NetworkPolicy",
+            }
         return {
-            "namespace": namespace, "policy_count": len(policies),
-            "policies": [{"name": p["metadata"]["name"],
-                          "pod_selector": p.get("spec", {}).get("podSelector", {}),
-                          "ingress_rules": len(p.get("spec", {}).get("ingress", [])),
-                          "egress_rules": len(p.get("spec", {}).get("egress", []))}
-                         for p in policies],
+            "namespace": namespace,
+            "policy_count": len(policies),
+            "policies": [
+                {
+                    "name": p["metadata"]["name"],
+                    "pod_selector": p.get("spec", {}).get("podSelector", {}),
+                    "ingress_rules": len(p.get("spec", {}).get("ingress", [])),
+                    "egress_rules": len(p.get("spec", {}).get("egress", [])),
+                }
+                for p in policies
+            ],
         }
     except Exception as e:
         return {"error": str(e)}
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kubernetes CIS Benchmark Agent (kube-bench)")
+    parser = argparse.ArgumentParser(
+        description="Kubernetes CIS Benchmark Agent (kube-bench)"
+    )
     sub = parser.add_subparsers(dest="command")
     b = sub.add_parser("bench", help="Run kube-bench CIS scan")
-    b.add_argument("--target", default="node", choices=["master", "controlplane", "node", "etcd", "policies"])
+    b.add_argument(
+        "--target",
+        default="node",
+        choices=["master", "controlplane", "node", "etcd", "policies"],
+    )
     b.add_argument("--benchmark", help="CIS benchmark version")
     p = sub.add_parser("pods", help="Check pod security settings")
     p.add_argument("--namespace", default="default")

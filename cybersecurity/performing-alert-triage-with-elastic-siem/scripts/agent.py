@@ -22,8 +22,13 @@ SIEM_SIGNALS_INDEX = ".siem-signals-*"
 SEVERITY_PRIORITY = {"critical": 1, "high": 2, "medium": 3, "low": 4}
 
 
-def create_client(host: str, api_key: str = None, username: str = None,
-                  password: str = None, verify_certs: bool = True) -> Elasticsearch:
+def create_client(
+    host: str,
+    api_key: str = None,
+    username: str = None,
+    password: str = None,
+    verify_certs: bool = True,
+) -> Elasticsearch:
     """Create Elasticsearch client."""
     kwargs = {"hosts": [host], "verify_certs": verify_certs}
     if api_key:
@@ -33,8 +38,9 @@ def create_client(host: str, api_key: str = None, username: str = None,
     return Elasticsearch(**kwargs)
 
 
-def get_open_alerts(es: Elasticsearch, hours_back: int = 24,
-                    severity: list[str] = None, size: int = 500) -> list[dict]:
+def get_open_alerts(
+    es: Elasticsearch, hours_back: int = 24, severity: list[str] = None, size: int = 500
+) -> list[dict]:
     """Retrieve open SIEM alerts from the signals index."""
     must_clauses = [
         {"range": {"@timestamp": {"gte": f"now-{hours_back}h", "lte": "now"}}},
@@ -44,27 +50,33 @@ def get_open_alerts(es: Elasticsearch, hours_back: int = 24,
         must_clauses.append({"terms": {"signal.rule.severity": severity}})
 
     query = {"bool": {"must": must_clauses}}
-    response = es.search(index=SIEM_SIGNALS_INDEX, query=query, size=size,
-                         sort=[{"@timestamp": {"order": "desc"}}])
+    response = es.search(
+        index=SIEM_SIGNALS_INDEX,
+        query=query,
+        size=size,
+        sort=[{"@timestamp": {"order": "desc"}}],
+    )
     alerts = []
     for hit in response["hits"]["hits"]:
         src = hit["_source"]
         signal = src.get("signal", {})
         rule = signal.get("rule", {})
-        alerts.append({
-            "alert_id": hit["_id"],
-            "timestamp": src.get("@timestamp", ""),
-            "rule_name": rule.get("name", ""),
-            "rule_id": rule.get("id", ""),
-            "severity": rule.get("severity", "unknown"),
-            "risk_score": rule.get("risk_score", 0),
-            "status": signal.get("status", ""),
-            "source_ip": src.get("source", {}).get("ip", ""),
-            "destination_ip": src.get("destination", {}).get("ip", ""),
-            "user": src.get("user", {}).get("name", ""),
-            "host": src.get("host", {}).get("name", ""),
-            "process": src.get("process", {}).get("name", ""),
-        })
+        alerts.append(
+            {
+                "alert_id": hit["_id"],
+                "timestamp": src.get("@timestamp", ""),
+                "rule_name": rule.get("name", ""),
+                "rule_id": rule.get("id", ""),
+                "severity": rule.get("severity", "unknown"),
+                "risk_score": rule.get("risk_score", 0),
+                "status": signal.get("status", ""),
+                "source_ip": src.get("source", {}).get("ip", ""),
+                "destination_ip": src.get("destination", {}).get("ip", ""),
+                "user": src.get("user", {}).get("name", ""),
+                "host": src.get("host", {}).get("name", ""),
+                "process": src.get("process", {}).get("name", ""),
+            }
+        )
     return alerts
 
 
@@ -96,10 +108,13 @@ def get_alert_aggregations(es: Elasticsearch, hours_back: int = 24) -> dict:
 
 def prioritize_alerts(alerts: list[dict]) -> list[dict]:
     """Sort and prioritize alerts by severity and risk score."""
-    return sorted(alerts, key=lambda a: (
-        SEVERITY_PRIORITY.get(a.get("severity", "low"), 5),
-        -a.get("risk_score", 0)
-    ))
+    return sorted(
+        alerts,
+        key=lambda a: (
+            SEVERITY_PRIORITY.get(a.get("severity", "low"), 5),
+            -a.get("risk_score", 0),
+        ),
+    )
 
 
 def identify_alert_clusters(alerts: list[dict]) -> list[dict]:
@@ -115,21 +130,31 @@ def identify_alert_clusters(alerts: list[dict]) -> list[dict]:
     for host, host_alerts in by_host.items():
         if len(host_alerts) >= 3:
             rules = list(set(a["rule_name"] for a in host_alerts))
-            max_severity = min(host_alerts, key=lambda a: SEVERITY_PRIORITY.get(a.get("severity", "low"), 5))
-            clusters.append({
-                "host": host,
-                "alert_count": len(host_alerts),
-                "unique_rules": len(rules),
-                "rules": rules[:10],
-                "max_severity": max_severity["severity"],
-                "recommendation": "Investigate as potential incident - multiple alerts on same host",
-            })
+            max_severity = min(
+                host_alerts,
+                key=lambda a: SEVERITY_PRIORITY.get(a.get("severity", "low"), 5),
+            )
+            clusters.append(
+                {
+                    "host": host,
+                    "alert_count": len(host_alerts),
+                    "unique_rules": len(rules),
+                    "rules": rules[:10],
+                    "max_severity": max_severity["severity"],
+                    "recommendation": "Investigate as potential incident - multiple alerts on same host",
+                }
+            )
     return clusters
 
 
-def generate_report(host: str, api_key: str = None, username: str = None,
-                    password: str = None, hours_back: int = 24,
-                    severity: list[str] = None) -> dict:
+def generate_report(
+    host: str,
+    api_key: str = None,
+    username: str = None,
+    password: str = None,
+    hours_back: int = 24,
+    severity: list[str] = None,
+) -> dict:
     """Run alert triage and build consolidated report."""
     es = create_client(host, api_key, username, password)
     alerts = get_open_alerts(es, hours_back, severity)
@@ -156,13 +181,16 @@ def main():
     parser.add_argument("--api-key", help="Elasticsearch API key")
     parser.add_argument("--username", help="Elasticsearch username")
     parser.add_argument("--password", help="Elasticsearch password")
-    parser.add_argument("--hours", type=int, default=24, help="Hours to look back (default: 24)")
+    parser.add_argument(
+        "--hours", type=int, default=24, help="Hours to look back (default: 24)"
+    )
     parser.add_argument("--severity", nargs="+", help="Filter by severity levels")
     parser.add_argument("--output", help="Output JSON file path")
     args = parser.parse_args()
 
-    report = generate_report(args.host, args.api_key, args.username,
-                             args.password, args.hours, args.severity)
+    report = generate_report(
+        args.host, args.api_key, args.username, args.password, args.hours, args.severity
+    )
     output = json.dumps(report, indent=2)
     if args.output:
         Path(args.output).write_text(output, encoding="utf-8")

@@ -10,7 +10,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -29,7 +31,9 @@ def query_nomoreransom(ransomware_family):
     url = f"https://www.nomoreransom.org/en/decryption-tools.html"
     resp = requests.get(url, timeout=30)
     if ransomware_family.lower() in resp.text.lower():
-        logger.info("Decryptor may be available for %s on No More Ransom", ransomware_family)
+        logger.info(
+            "Decryptor may be available for %s on No More Ransom", ransomware_family
+        )
         return True
     logger.info("No decryptor found for %s", ransomware_family)
     return False
@@ -77,7 +81,8 @@ def search_iocs_splunk(splunk_url, session_key, ioc_list):
         f"{splunk_url}/services/search/jobs",
         headers={"Authorization": f"Splunk {session_key}"},
         data={"search": f"search {query}", "output_mode": "json"},
-        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower() == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
+        verify=not os.environ.get("SKIP_TLS_VERIFY", "").lower()
+        == "true",  # Set SKIP_TLS_VERIFY=true for self-signed certs in lab environments
         timeout=30,
     )
     return resp.json()
@@ -150,7 +155,11 @@ def main():
         search_iocs_splunk(args.splunk_url, args.splunk_key, [iocs.get("sha256", "")])
 
     report = generate_ir_report(
-        args.incident_id, variant, [args.device_id] if args.device_id else [], containment_actions, iocs
+        args.incident_id,
+        variant,
+        [args.device_id] if args.device_id else [],
+        containment_actions,
+        iocs,
     )
     with open(args.output, "w") as f:
         json.dump(report, f, indent=2)

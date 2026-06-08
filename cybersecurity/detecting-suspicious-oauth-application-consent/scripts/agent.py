@@ -17,12 +17,19 @@ except ImportError:
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
 HIGH_RISK_SCOPES = [
-    "Mail.Read", "Mail.ReadWrite", "Mail.Send",
-    "Files.ReadWrite.All", "Files.Read.All",
-    "User.ReadWrite.All", "Directory.ReadWrite.All",
-    "Sites.ReadWrite.All", "Contacts.ReadWrite",
-    "MailboxSettings.ReadWrite", "People.Read.All",
-    "Calendars.ReadWrite", "Notes.ReadWrite.All",
+    "Mail.Read",
+    "Mail.ReadWrite",
+    "Mail.Send",
+    "Files.ReadWrite.All",
+    "Files.Read.All",
+    "User.ReadWrite.All",
+    "Directory.ReadWrite.All",
+    "Sites.ReadWrite.All",
+    "Contacts.ReadWrite",
+    "MailboxSettings.ReadWrite",
+    "People.Read.All",
+    "Calendars.ReadWrite",
+    "Notes.ReadWrite.All",
 ]
 
 
@@ -34,10 +41,14 @@ def get_access_token(tenant_id, client_id, client_secret):
     app = msal.ConfidentialClientApplication(
         client_id, authority=authority, client_credential=client_secret
     )
-    result = app.acquire_token_for_client(scopes=["https://graph.microsoft.com/.default"])
+    result = app.acquire_token_for_client(
+        scopes=["https://graph.microsoft.com/.default"]
+    )
     if "access_token" in result:
         return result["access_token"]
-    raise RuntimeError(f"Auth failed: {result.get('error_description', result.get('error'))}")
+    raise RuntimeError(
+        f"Auth failed: {result.get('error_description', result.get('error'))}"
+    )
 
 
 def graph_get(token, endpoint, params=None):
@@ -62,16 +73,18 @@ def enumerate_oauth_grants(token):
     for g in grants:
         scope_list = g.get("scope", "").split()
         risky = [s for s in scope_list if s in HIGH_RISK_SCOPES]
-        results.append({
-            "id": g.get("id"),
-            "clientId": g.get("clientId"),
-            "consentType": g.get("consentType"),
-            "principalId": g.get("principalId"),
-            "resourceId": g.get("resourceId"),
-            "scopes": scope_list,
-            "high_risk_scopes": risky,
-            "risk_score": len(risky) * 15,
-        })
+        results.append(
+            {
+                "id": g.get("id"),
+                "clientId": g.get("clientId"),
+                "consentType": g.get("consentType"),
+                "principalId": g.get("principalId"),
+                "resourceId": g.get("resourceId"),
+                "scopes": scope_list,
+                "high_risk_scopes": risky,
+                "risk_score": len(risky) * 15,
+            }
+        )
     return results
 
 
@@ -82,17 +95,19 @@ def list_service_principals(token):
     for sp in sps:
         app_roles = sp.get("appRoles", [])
         verified = sp.get("verifiedPublisher", {})
-        results.append({
-            "id": sp.get("id"),
-            "appId": sp.get("appId"),
-            "displayName": sp.get("displayName"),
-            "publisherName": sp.get("publisherName"),
-            "verifiedPublisher": verified.get("displayName") if verified else None,
-            "isVerified": bool(verified.get("verifiedPublisherId")),
-            "appRoleCount": len(app_roles),
-            "accountEnabled": sp.get("accountEnabled"),
-            "signInAudience": sp.get("signInAudience"),
-        })
+        results.append(
+            {
+                "id": sp.get("id"),
+                "appId": sp.get("appId"),
+                "displayName": sp.get("displayName"),
+                "publisherName": sp.get("publisherName"),
+                "verifiedPublisher": verified.get("displayName") if verified else None,
+                "isVerified": bool(verified.get("verifiedPublisherId")),
+                "appRoleCount": len(app_roles),
+                "accountEnabled": sp.get("accountEnabled"),
+                "signInAudience": sp.get("signInAudience"),
+            }
+        )
     return results
 
 
@@ -103,21 +118,25 @@ def query_consent_audit_logs(token, days=30):
         f"activityDisplayName eq 'Consent to application' "
         f"and activityDateTime ge {since}"
     )
-    logs = graph_get(token, "/auditLogs/directoryAudits", params={"$filter": filter_str})
+    logs = graph_get(
+        token, "/auditLogs/directoryAudits", params={"$filter": filter_str}
+    )
     events = []
     for log in logs:
         initiated = log.get("initiatedBy", {}).get("user", {})
         targets = log.get("targetResources", [])
-        events.append({
-            "activityDateTime": log.get("activityDateTime"),
-            "activityDisplayName": log.get("activityDisplayName"),
-            "result": log.get("result"),
-            "initiatedByUser": initiated.get("userPrincipalName"),
-            "initiatedByIp": initiated.get("ipAddress"),
-            "targetApp": targets[0].get("displayName") if targets else None,
-            "targetAppId": targets[0].get("id") if targets else None,
-            "additionalDetails": log.get("additionalDetails"),
-        })
+        events.append(
+            {
+                "activityDateTime": log.get("activityDateTime"),
+                "activityDisplayName": log.get("activityDisplayName"),
+                "result": log.get("result"),
+                "initiatedByUser": initiated.get("userPrincipalName"),
+                "initiatedByIp": initiated.get("ipAddress"),
+                "targetApp": targets[0].get("displayName") if targets else None,
+                "targetAppId": targets[0].get("id") if targets else None,
+                "additionalDetails": log.get("additionalDetails"),
+            }
+        )
     return events
 
 
@@ -133,19 +152,27 @@ def analyze_risk(grants, service_principals):
         if grant.get("consentType") == "AllPrincipals":
             risk += 20
         risk = min(risk, 100)
-        level = "CRITICAL" if risk >= 70 else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 25 else "LOW"
-        findings.append({
-            "appDisplayName": sp.get("displayName", "Unknown"),
-            "appId": sp.get("appId"),
-            "publisherVerified": sp.get("isVerified", False),
-            "consentType": grant.get("consentType"),
-            "highRiskScopes": grant.get("high_risk_scopes"),
-            "riskScore": risk,
-            "riskLevel": level,
-            "recommendation": "Revoke consent and investigate" if risk >= 50
-                else "Review scopes and publisher" if risk >= 25
-                else "Monitor",
-        })
+        level = (
+            "CRITICAL"
+            if risk >= 70
+            else "HIGH" if risk >= 50 else "MEDIUM" if risk >= 25 else "LOW"
+        )
+        findings.append(
+            {
+                "appDisplayName": sp.get("displayName", "Unknown"),
+                "appId": sp.get("appId"),
+                "publisherVerified": sp.get("isVerified", False),
+                "consentType": grant.get("consentType"),
+                "highRiskScopes": grant.get("high_risk_scopes"),
+                "riskScore": risk,
+                "riskLevel": level,
+                "recommendation": (
+                    "Revoke consent and investigate"
+                    if risk >= 50
+                    else "Review scopes and publisher" if risk >= 25 else "Monitor"
+                ),
+            }
+        )
     findings.sort(key=lambda x: x["riskScore"], reverse=True)
     return findings
 
@@ -176,7 +203,9 @@ def full_audit(token, days=30):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="OAuth Application Consent Audit Agent")
+    parser = argparse.ArgumentParser(
+        description="OAuth Application Consent Audit Agent"
+    )
     parser.add_argument("--tenant-id", required=True, help="Azure AD tenant ID")
     parser.add_argument("--client-id", required=True, help="App registration client ID")
     parser.add_argument("--client-secret", required=True, help="App client secret")

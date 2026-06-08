@@ -19,9 +19,7 @@ from pathlib import Path
 def run_kubectl_command(command: list[str]) -> str:
     """Execute a kubectl command and return output."""
     try:
-        result = subprocess.run(
-            command, capture_output=True, text=True, timeout=30
-        )
+        result = subprocess.run(command, capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
             print(f"[ERROR] kubectl command failed: {result.stderr.strip()}")
             return ""
@@ -36,35 +34,47 @@ def run_kubectl_command(command: list[str]) -> str:
 
 def get_tetragon_status() -> dict:
     """Check Tetragon DaemonSet health."""
-    output = run_kubectl_command([
-        "kubectl", "get", "ds", "tetragon", "-n", "kube-system",
-        "-o", "jsonpath={.status.desiredNumberScheduled},{.status.numberReady}"
-    ])
+    output = run_kubectl_command(
+        [
+            "kubectl",
+            "get",
+            "ds",
+            "tetragon",
+            "-n",
+            "kube-system",
+            "-o",
+            "jsonpath={.status.desiredNumberScheduled},{.status.numberReady}",
+        ]
+    )
     if not output:
         return {"healthy": False, "desired": 0, "ready": 0}
     parts = output.split(",")
     desired = int(parts[0]) if len(parts) > 0 and parts[0] else 0
     ready = int(parts[1]) if len(parts) > 1 and parts[1] else 0
-    return {"healthy": desired == ready and desired > 0, "desired": desired, "ready": ready}
+    return {
+        "healthy": desired == ready and desired > 0,
+        "desired": desired,
+        "ready": ready,
+    }
 
 
 def get_tracing_policies() -> list[dict]:
     """List all TracingPolicies deployed in the cluster."""
-    output = run_kubectl_command([
-        "kubectl", "get", "tracingpolicies", "-o", "json"
-    ])
+    output = run_kubectl_command(["kubectl", "get", "tracingpolicies", "-o", "json"])
     if not output:
         return []
     try:
         data = json.loads(output)
         policies = []
         for item in data.get("items", []):
-            policies.append({
-                "name": item["metadata"]["name"],
-                "created": item["metadata"].get("creationTimestamp", "unknown"),
-                "kprobes": len(item.get("spec", {}).get("kprobes", [])),
-                "tracepoints": len(item.get("spec", {}).get("tracepoints", []))
-            })
+            policies.append(
+                {
+                    "name": item["metadata"]["name"],
+                    "created": item["metadata"].get("creationTimestamp", "unknown"),
+                    "kprobes": len(item.get("spec", {}).get("kprobes", [])),
+                    "tracepoints": len(item.get("spec", {}).get("tracepoints", [])),
+                }
+            )
         return policies
     except (json.JSONDecodeError, KeyError):
         return []
@@ -108,7 +118,14 @@ def classify_event(event: dict) -> str:
 
 def extract_process_info(event: dict) -> dict:
     """Extract process information from a Tetragon event."""
-    info = {"binary": "", "args": "", "namespace": "", "pod": "", "uid": 0, "action": ""}
+    info = {
+        "binary": "",
+        "args": "",
+        "namespace": "",
+        "pod": "",
+        "uid": 0,
+        "action": "",
+    }
     for event_type in ["process_exec", "process_kprobe", "process_tracepoint"]:
         if event_type in event:
             process = event[event_type].get("process", {})
@@ -127,52 +144,83 @@ def extract_process_info(event: dict) -> dict:
 def detect_suspicious_binaries(events: list[dict]) -> list[dict]:
     """Detect execution of known suspicious binaries."""
     suspicious_binaries = {
-        "/bin/sh", "/bin/bash", "/bin/dash", "/usr/bin/curl",
-        "/usr/bin/wget", "/usr/bin/nc", "/usr/bin/ncat",
-        "/usr/bin/nmap", "/usr/bin/python", "/usr/bin/python3",
-        "/usr/bin/perl", "/usr/bin/ruby", "/usr/bin/gcc",
-        "/usr/bin/cc", "/usr/bin/make", "/usr/bin/xmrig",
-        "/tmp/xmrig", "/usr/bin/minerd",
-        "/usr/bin/sudo", "/bin/su", "/usr/bin/passwd",
-        "/usr/bin/nsenter", "/usr/bin/unshare"
+        "/bin/sh",
+        "/bin/bash",
+        "/bin/dash",
+        "/usr/bin/curl",
+        "/usr/bin/wget",
+        "/usr/bin/nc",
+        "/usr/bin/ncat",
+        "/usr/bin/nmap",
+        "/usr/bin/python",
+        "/usr/bin/python3",
+        "/usr/bin/perl",
+        "/usr/bin/ruby",
+        "/usr/bin/gcc",
+        "/usr/bin/cc",
+        "/usr/bin/make",
+        "/usr/bin/xmrig",
+        "/tmp/xmrig",
+        "/usr/bin/minerd",
+        "/usr/bin/sudo",
+        "/bin/su",
+        "/usr/bin/passwd",
+        "/usr/bin/nsenter",
+        "/usr/bin/unshare",
     }
     findings = []
     for event in events:
         info = extract_process_info(event)
         if info["binary"] in suspicious_binaries:
-            findings.append({
-                "severity": "HIGH" if info["binary"] in {"/usr/bin/xmrig", "/usr/bin/nsenter", "/usr/bin/unshare"} else "MEDIUM",
-                "binary": info["binary"],
-                "args": info["args"],
-                "namespace": info["namespace"],
-                "pod": info["pod"],
-                "description": f"Suspicious binary execution: {info['binary']}"
-            })
+            findings.append(
+                {
+                    "severity": (
+                        "HIGH"
+                        if info["binary"]
+                        in {"/usr/bin/xmrig", "/usr/bin/nsenter", "/usr/bin/unshare"}
+                        else "MEDIUM"
+                    ),
+                    "binary": info["binary"],
+                    "args": info["args"],
+                    "namespace": info["namespace"],
+                    "pod": info["pod"],
+                    "description": f"Suspicious binary execution: {info['binary']}",
+                }
+            )
     return findings
 
 
 def detect_privilege_escalation(events: list[dict]) -> list[dict]:
     """Detect privilege escalation attempts from event data."""
     findings = []
-    priv_esc_binaries = {"/usr/bin/sudo", "/bin/su", "/usr/bin/passwd", "/usr/bin/newgrp"}
+    priv_esc_binaries = {
+        "/usr/bin/sudo",
+        "/bin/su",
+        "/usr/bin/passwd",
+        "/usr/bin/newgrp",
+    }
     for event in events:
         info = extract_process_info(event)
         if info["binary"] in priv_esc_binaries and info["namespace"]:
-            findings.append({
-                "severity": "CRITICAL",
-                "binary": info["binary"],
-                "namespace": info["namespace"],
-                "pod": info["pod"],
-                "description": f"Privilege escalation attempt via {info['binary']} in pod {info['pod']}"
-            })
+            findings.append(
+                {
+                    "severity": "CRITICAL",
+                    "binary": info["binary"],
+                    "namespace": info["namespace"],
+                    "pod": info["pod"],
+                    "description": f"Privilege escalation attempt via {info['binary']} in pod {info['pod']}",
+                }
+            )
         if info["uid"] == 0 and info["binary"] and info["namespace"]:
-            findings.append({
-                "severity": "HIGH",
-                "binary": info["binary"],
-                "namespace": info["namespace"],
-                "pod": info["pod"],
-                "description": f"Process running as root (UID 0): {info['binary']}"
-            })
+            findings.append(
+                {
+                    "severity": "HIGH",
+                    "binary": info["binary"],
+                    "namespace": info["namespace"],
+                    "pod": info["pod"],
+                    "description": f"Process running as root (UID 0): {info['binary']}",
+                }
+            )
     return findings
 
 
@@ -190,15 +238,17 @@ def detect_container_escape_attempts(events: list[dict]) -> list[dict]:
             function_name = event["process_kprobe"].get("functionName", "")
             if function_name in escape_indicators:
                 info = extract_process_info(event)
-                findings.append({
-                    "severity": "CRITICAL",
-                    "function": function_name,
-                    "binary": info["binary"],
-                    "namespace": info["namespace"],
-                    "pod": info["pod"],
-                    "action": info["action"],
-                    "description": escape_indicators[function_name]
-                })
+                findings.append(
+                    {
+                        "severity": "CRITICAL",
+                        "function": function_name,
+                        "binary": info["binary"],
+                        "namespace": info["namespace"],
+                        "pod": info["pod"],
+                        "action": info["action"],
+                        "description": escape_indicators[function_name],
+                    }
+                )
     return findings
 
 
@@ -247,9 +297,9 @@ def generate_report(events: list[dict], output_format: str = "text") -> str:
             "findings": {
                 "suspicious_binaries": suspicious,
                 "privilege_escalation": priv_esc,
-                "container_escape_attempts": escape_attempts
+                "container_escape_attempts": escape_attempts,
             },
-            "risk_score": calculate_risk_score(suspicious, priv_esc, escape_attempts)
+            "risk_score": calculate_risk_score(suspicious, priv_esc, escape_attempts),
         }
         return json.dumps(report, indent=2)
 
@@ -261,11 +311,15 @@ def generate_report(events: list[dict], output_format: str = "text") -> str:
 
     lines.append("\n## Tetragon Health")
     lines.append(f"  Status: {'HEALTHY' if tetragon_status['healthy'] else 'DEGRADED'}")
-    lines.append(f"  Nodes: {tetragon_status['ready']}/{tetragon_status['desired']} ready")
+    lines.append(
+        f"  Nodes: {tetragon_status['ready']}/{tetragon_status['desired']} ready"
+    )
 
     lines.append(f"\n## TracingPolicies Deployed: {len(policies)}")
     for p in policies:
-        lines.append(f"  - {p['name']} (kprobes: {p['kprobes']}, tracepoints: {p['tracepoints']})")
+        lines.append(
+            f"  - {p['name']} (kprobes: {p['kprobes']}, tracepoints: {p['tracepoints']})"
+        )
 
     lines.append(f"\n## Event Summary")
     lines.append(f"  Total Events: {summary['total_events']}")
@@ -285,10 +339,14 @@ def generate_report(events: list[dict], output_format: str = "text") -> str:
     lines.append(f"\n## Risk Score: {risk['score']}/100 ({risk['level']})")
 
     if escape_attempts:
-        lines.append(f"\n## CRITICAL: Container Escape Attempts ({len(escape_attempts)})")
+        lines.append(
+            f"\n## CRITICAL: Container Escape Attempts ({len(escape_attempts)})"
+        )
         for f in escape_attempts:
             lines.append(f"  [{f['severity']}] {f['description']}")
-            lines.append(f"    Pod: {f['namespace']}/{f['pod']} | Binary: {f['binary']}")
+            lines.append(
+                f"    Pod: {f['namespace']}/{f['pod']} | Binary: {f['binary']}"
+            )
 
     if priv_esc:
         lines.append(f"\n## Privilege Escalation Findings ({len(priv_esc)})")
@@ -331,17 +389,17 @@ def main():
     parser = argparse.ArgumentParser(
         description="Tetragon Runtime Security Event Analyzer"
     )
+    parser.add_argument("--log-file", help="Path to Tetragon JSON event log file")
     parser.add_argument(
-        "--log-file",
-        help="Path to Tetragon JSON event log file"
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format (default: text)",
     )
     parser.add_argument(
-        "--format", choices=["text", "json"], default="text",
-        help="Output format (default: text)"
-    )
-    parser.add_argument(
-        "--status-only", action="store_true",
-        help="Only check Tetragon health and policy status"
+        "--status-only",
+        action="store_true",
+        help="Only check Tetragon health and policy status",
     )
     args = parser.parse_args()
 

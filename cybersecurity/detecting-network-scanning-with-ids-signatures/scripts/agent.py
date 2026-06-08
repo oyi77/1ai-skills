@@ -23,8 +23,12 @@ SCAN_SIGNATURES = {
 }
 
 NMAP_SIGNATURES = [
-    r"Nmap\s+Scripting\s+Engine", r"nmap", r"masscan",
-    r"zmap", r"rustscan", r"unicornscan",
+    r"Nmap\s+Scripting\s+Engine",
+    r"nmap",
+    r"masscan",
+    r"zmap",
+    r"rustscan",
+    r"unicornscan",
 ]
 
 
@@ -77,14 +81,17 @@ def detect_port_scan(connections, threshold=20):
         if len(ports) >= threshold:
             src = pair.split("->")[0]
             dst = pair.split("->")[1]
-            findings.append({
-                "type": "port_scan",
-                "source": src, "destination": dst,
-                "unique_ports": len(ports),
-                "total_connections": src_dst_count[pair],
-                "severity": "CRITICAL" if len(ports) > 100 else "HIGH",
-                "mitre": "T1046",
-            })
+            findings.append(
+                {
+                    "type": "port_scan",
+                    "source": src,
+                    "destination": dst,
+                    "unique_ports": len(ports),
+                    "total_connections": src_dst_count[pair],
+                    "severity": "CRITICAL" if len(ports) > 100 else "HIGH",
+                    "mitre": "T1046",
+                }
+            )
     return findings
 
 
@@ -103,14 +110,16 @@ def detect_host_sweep(connections, threshold=10):
     for src_p, hosts in src_port.items():
         if len(hosts) >= threshold:
             src, port = src_p.rsplit(":", 1)
-            findings.append({
-                "type": "host_sweep",
-                "source": src,
-                "port": port,
-                "unique_hosts": len(hosts),
-                "severity": "HIGH" if len(hosts) > 50 else "MEDIUM",
-                "mitre": "T1018",
-            })
+            findings.append(
+                {
+                    "type": "host_sweep",
+                    "source": src,
+                    "port": port,
+                    "unique_hosts": len(hosts),
+                    "severity": "HIGH" if len(hosts) > 50 else "MEDIUM",
+                    "mitre": "T1018",
+                }
+            )
     return findings
 
 
@@ -125,22 +134,29 @@ def analyze_ids_alerts(alerts):
 
         for pattern in NMAP_SIGNATURES:
             if re.search(pattern, sig, re.IGNORECASE):
-                findings.append({
-                    "type": "scanner_detected",
-                    "tool": pattern.replace("\\s+", " "),
-                    "source": src, "destination": dst,
-                    "signature": sig,
-                    "severity": "HIGH",
-                    "mitre": "T1046",
-                })
+                findings.append(
+                    {
+                        "type": "scanner_detected",
+                        "tool": pattern.replace("\\s+", " "),
+                        "source": src,
+                        "destination": dst,
+                        "signature": sig,
+                        "severity": "HIGH",
+                        "mitre": "T1046",
+                    }
+                )
 
         if "scan" in category.lower() or "scan" in sig.lower():
-            findings.append({
-                "type": "ids_scan_alert",
-                "source": src, "destination": dst,
-                "signature": sig, "category": category,
-                "severity": "HIGH" if severity <= 2 else "MEDIUM",
-            })
+            findings.append(
+                {
+                    "type": "ids_scan_alert",
+                    "source": src,
+                    "destination": dst,
+                    "signature": sig,
+                    "category": category,
+                    "severity": "HIGH" if severity <= 2 else "MEDIUM",
+                }
+            )
     return findings
 
 

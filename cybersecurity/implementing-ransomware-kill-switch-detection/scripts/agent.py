@@ -99,7 +99,9 @@ def check_mutex_exists_windows(mutex_name):
     try:
         result = subprocess.run(
             ["powershell", "-Command", ps_script],
-            capture_output=True, text=True, timeout=10,
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         return result.stdout.strip() == "EXISTS"
     except (FileNotFoundError, subprocess.TimeoutExpired):
@@ -109,15 +111,17 @@ def check_mutex_exists_windows(mutex_name):
 def create_mutex_windows(mutex_name):
     """Create a named mutex on Windows for vaccination."""
     ps_script = (
-        f'$created = $false; '
+        f"$created = $false; "
         f'$m = New-Object System.Threading.Mutex($true, "{mutex_name}", [ref]$created); '
         f'if ($created) {{ "CREATED" }} else {{ "ALREADY_EXISTS" }}; '
-        f'Start-Sleep -Seconds 2'
+        f"Start-Sleep -Seconds 2"
     )
     try:
         result = subprocess.run(
             ["powershell", "-Command", ps_script],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         output = result.stdout.strip()
         return output == "CREATED" or output == "ALREADY_EXISTS", output
@@ -160,7 +164,9 @@ def scan_all_kill_switches():
 
     # Check mutexes (Windows only)
     if platform.system() == "Windows":
-        logger.info("Checking %d known ransomware mutexes...", len(KNOWN_KILL_SWITCH_MUTEXES))
+        logger.info(
+            "Checking %d known ransomware mutexes...", len(KNOWN_KILL_SWITCH_MUTEXES)
+        )
         for mutex_name, info in KNOWN_KILL_SWITCH_MUTEXES.items():
             exists = check_mutex_exists_windows(mutex_name)
             check = {
@@ -175,10 +181,14 @@ def scan_all_kill_switches():
                 report["summary"]["active_vaccinations"] += 1
                 logger.warning("Mutex EXISTS: %s (%s)", mutex_name, info["family"])
     else:
-        logger.info("Mutex checking is Windows-only. Skipping on %s.", platform.system())
+        logger.info(
+            "Mutex checking is Windows-only. Skipping on %s.", platform.system()
+        )
 
     # Check kill switch domains
-    logger.info("Checking %d known kill switch domains...", len(KNOWN_KILL_SWITCH_DOMAINS))
+    logger.info(
+        "Checking %d known kill switch domains...", len(KNOWN_KILL_SWITCH_DOMAINS)
+    )
     for domain, info in KNOWN_KILL_SWITCH_DOMAINS.items():
         result = check_kill_switch_domain(domain)
         result["family"] = info["family"]
@@ -204,7 +214,11 @@ def vaccinate_endpoint(mutex_list=None):
         info = KNOWN_KILL_SWITCH_MUTEXES.get(mutex_name, {"family": "Custom"})
         success, status = create_mutex_windows(mutex_name)
 
-        record = {"mutex": mutex_name, "family": info.get("family", "Custom"), "status": status}
+        record = {
+            "mutex": mutex_name,
+            "family": info.get("family", "Custom"),
+            "status": status,
+        }
 
         if status == "CREATED":
             results["vaccinated"].append(record)
@@ -239,10 +253,12 @@ def generate_vaccination_script():
 
     for mutex_name, info in KNOWN_KILL_SWITCH_MUTEXES.items():
         lines.append(f"# {info['family']} - {info['notes']}")
-        lines.append(f'$created = $false')
-        lines.append(f'$m = New-Object System.Threading.Mutex($true, "{mutex_name}", [ref]$created)')
+        lines.append(f"$created = $false")
+        lines.append(
+            f'$m = New-Object System.Threading.Mutex($true, "{mutex_name}", [ref]$created)'
+        )
         lines.append(f'if ($created) {{ Write-Host "Vaccinated: {mutex_name}" }}')
-        lines.append(f'$mutexHandles += $m')
+        lines.append(f"$mutexHandles += $m")
         lines.append("")
 
     lines.append("# Keep script running to maintain mutex handles")
@@ -263,7 +279,9 @@ if __name__ == "__main__":
         print("  python agent.py scan                Scan for all known kill switches")
         print("  python agent.py vaccinate           Deploy mutex vaccinations")
         print("  python agent.py domains             Check kill switch domain status")
-        print("  python agent.py generate-script     Generate PowerShell vaccination script")
+        print(
+            "  python agent.py generate-script     Generate PowerShell vaccination script"
+        )
         print("  python agent.py list                List all known kill switches")
         sys.exit(0)
 
@@ -273,7 +291,9 @@ if __name__ == "__main__":
         report = scan_all_kill_switches()
         print(f"\n--- Kill Switch Scan Results ---")
         print(f"  Total checked: {report['summary']['total_checked']}")
-        print(f"  Active mutex vaccinations: {report['summary']['active_vaccinations']}")
+        print(
+            f"  Active mutex vaccinations: {report['summary']['active_vaccinations']}"
+        )
         print(f"  Active kill switch domains: {report['summary']['active_domains']}")
         for mc in report["mutex_checks"]:
             status = "VACCINATED" if mc["vaccinated"] else "not vaccinated"

@@ -6,7 +6,6 @@ import argparse
 import subprocess
 from pathlib import Path
 
-
 FRIDA_SSL_BYPASS_SCRIPT = """
 Java.perform(function() {
     // TrustManagerImpl bypass
@@ -55,7 +54,9 @@ def detect_pinning_implementation(apk_path):
         content = smali_file.read_text(encoding="utf-8", errors="replace")
         for indicator_name, pattern in pinning_indicators.items():
             if pattern in content:
-                findings.setdefault(indicator_name, []).append(str(smali_file.relative_to(smali_dir)))
+                findings.setdefault(indicator_name, []).append(
+                    str(smali_file.relative_to(smali_dir))
+                )
     nsc_file = smali_dir / "res" / "xml" / "network_security_config.xml"
     nsc_content = None
     if nsc_file.exists():
@@ -65,7 +66,9 @@ def detect_pinning_implementation(apk_path):
         "pinning_detected": bool(findings),
         "implementations": {k: v[:5] for k, v in findings.items()},
         "network_security_config": nsc_content[:500] if nsc_content else None,
-        "pinning_strength": "STRONG" if len(findings) >= 3 else "MODERATE" if findings else "NONE",
+        "pinning_strength": (
+            "STRONG" if len(findings) >= 3 else "MODERATE" if findings else "NONE"
+        ),
     }
 
 
@@ -75,7 +78,16 @@ def run_frida_bypass(package_name, device_id=None):
     script_path.write_text(FRIDA_SSL_BYPASS_SCRIPT)
     cmd = ["frida", "-U", "-l", str(script_path), "-f", package_name, "--no-pause"]
     if device_id:
-        cmd = ["frida", "-D", device_id, "-l", str(script_path), "-f", package_name, "--no-pause"]
+        cmd = [
+            "frida",
+            "-D",
+            device_id,
+            "-l",
+            str(script_path),
+            "-f",
+            package_name,
+            "--no-pause",
+        ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         return {
@@ -88,13 +100,23 @@ def run_frida_bypass(package_name, device_id=None):
     except FileNotFoundError:
         return {"error": "frida not installed — pip install frida-tools"}
     except subprocess.TimeoutExpired:
-        return {"package": package_name, "status": "RUNNING", "note": "Frida is attached — use Ctrl+C to detach"}
+        return {
+            "package": package_name,
+            "status": "RUNNING",
+            "note": "Frida is attached — use Ctrl+C to detach",
+        }
 
 
 def run_objection_bypass(package_name):
     """Use objection to disable SSL pinning on Android/iOS."""
-    cmd = ["objection", "-g", package_name, "explore", "-s",
-           "android sslpinning disable"]
+    cmd = [
+        "objection",
+        "-g",
+        package_name,
+        "explore",
+        "-s",
+        "android sslpinning disable",
+    ]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         return {
@@ -113,22 +135,40 @@ def check_proxy_setup():
     """Verify proxy setup for traffic interception."""
     checks = {}
     try:
-        result = subprocess.run(["adb", "shell", "settings", "get", "global", "http_proxy"],
-                                capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["adb", "shell", "settings", "get", "global", "http_proxy"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
         proxy = result.stdout.strip()
         checks["android_proxy"] = proxy if proxy and proxy != "null" else "NOT_SET"
     except Exception as e:
         checks["android_proxy_error"] = str(e)
     try:
-        result = subprocess.run(["adb", "shell", "ls", "/system/etc/security/cacerts/"],
-                                capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["adb", "shell", "ls", "/system/etc/security/cacerts/"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
         cert_count = len(result.stdout.strip().splitlines())
         checks["system_ca_certs"] = cert_count
     except Exception as e:
         checks["ca_cert_error"] = str(e)
     try:
-        result = subprocess.run(["adb", "shell", "su", "-c", "cat /data/misc/user/0/cacerts-added/ 2>/dev/null | wc -l"],
-                                capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            [
+                "adb",
+                "shell",
+                "su",
+                "-c",
+                "cat /data/misc/user/0/cacerts-added/ 2>/dev/null | wc -l",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
         checks["user_ca_certs"] = result.stdout.strip()
     except Exception:
         checks["user_ca_certs"] = "unknown"
@@ -136,7 +176,9 @@ def check_proxy_setup():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Mobile App Certificate Pinning Bypass Agent (Authorized Only)")
+    parser = argparse.ArgumentParser(
+        description="Mobile App Certificate Pinning Bypass Agent (Authorized Only)"
+    )
     sub = parser.add_subparsers(dest="command")
     d = sub.add_parser("detect", help="Detect pinning in APK")
     d.add_argument("--apk", required=True)

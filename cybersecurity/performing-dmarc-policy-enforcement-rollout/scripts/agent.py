@@ -34,24 +34,50 @@ def parse_dmarc_tags(record, domain):
     policy = tags.get("p", "none")
     findings = []
     if policy == "none":
-        findings.append({"severity": "HIGH", "finding": "DMARC policy is 'none' — no enforcement"})
+        findings.append(
+            {"severity": "HIGH", "finding": "DMARC policy is 'none' — no enforcement"}
+        )
     elif policy == "quarantine":
-        findings.append({"severity": "MEDIUM", "finding": "DMARC policy is 'quarantine' — partial enforcement"})
+        findings.append(
+            {
+                "severity": "MEDIUM",
+                "finding": "DMARC policy is 'quarantine' — partial enforcement",
+            }
+        )
     if "rua" not in tags:
-        findings.append({"severity": "MEDIUM", "finding": "No aggregate report URI (rua) configured"})
+        findings.append(
+            {
+                "severity": "MEDIUM",
+                "finding": "No aggregate report URI (rua) configured",
+            }
+        )
     pct = int(tags.get("pct", "100"))
     if pct < 100:
-        findings.append({"severity": "INFO", "finding": f"Policy applied to {pct}% of messages"})
+        findings.append(
+            {"severity": "INFO", "finding": f"Policy applied to {pct}% of messages"}
+        )
     sp = tags.get("sp", policy)
     if sp == "none" and policy != "none":
-        findings.append({"severity": "MEDIUM", "finding": "Subdomain policy (sp) is 'none'"})
+        findings.append(
+            {"severity": "MEDIUM", "finding": "Subdomain policy (sp) is 'none'"}
+        )
     return {
-        "domain": domain, "dmarc_found": True, "record": record,
-        "policy": policy, "subdomain_policy": sp, "percentage": pct,
-        "rua": tags.get("rua"), "ruf": tags.get("ruf"),
-        "adkim": tags.get("adkim", "r"), "aspf": tags.get("aspf", "r"),
+        "domain": domain,
+        "dmarc_found": True,
+        "record": record,
+        "policy": policy,
+        "subdomain_policy": sp,
+        "percentage": pct,
+        "rua": tags.get("rua"),
+        "ruf": tags.get("ruf"),
+        "adkim": tags.get("adkim", "r"),
+        "aspf": tags.get("aspf", "r"),
         "findings": findings,
-        "enforcement_level": "full" if policy == "reject" and pct == 100 else "partial" if policy != "none" else "none",
+        "enforcement_level": (
+            "full"
+            if policy == "reject" and pct == 100
+            else "partial" if policy != "none" else "none"
+        ),
     }
 
 
@@ -64,9 +90,14 @@ def check_spf(domain):
             if txt.startswith("v=spf1"):
                 mechanisms = txt.split()
                 qualifier = mechanisms[-1] if mechanisms else "~all"
-                return {"domain": domain, "spf_found": True, "record": txt,
-                        "mechanisms": mechanisms, "qualifier": qualifier,
-                        "strict": qualifier == "-all"}
+                return {
+                    "domain": domain,
+                    "spf_found": True,
+                    "record": txt,
+                    "mechanisms": mechanisms,
+                    "qualifier": qualifier,
+                    "strict": qualifier == "-all",
+                }
         return {"domain": domain, "spf_found": False}
     except Exception as e:
         return {"domain": domain, "spf_found": False, "error": str(e)}
@@ -80,10 +111,20 @@ def check_dkim(domain, selector="default"):
         for rdata in answers:
             txt = rdata.to_text().strip('"')
             if "p=" in txt:
-                return {"domain": domain, "selector": selector, "dkim_found": True, "record": txt[:200]}
+                return {
+                    "domain": domain,
+                    "selector": selector,
+                    "dkim_found": True,
+                    "record": txt[:200],
+                }
         return {"domain": domain, "selector": selector, "dkim_found": False}
     except Exception as e:
-        return {"domain": domain, "selector": selector, "dkim_found": False, "error": str(e)}
+        return {
+            "domain": domain,
+            "selector": selector,
+            "dkim_found": False,
+            "error": str(e),
+        }
 
 
 def audit_domains(domains, selectors=None):
@@ -112,10 +153,15 @@ def audit_domains(domains, selectors=None):
             score += 15
         if dkim_results:
             score += 30
-        results.append({
-            "domain": domain, "dmarc": dmarc, "spf": spf,
-            "dkim": dkim_results, "security_score": score,
-        })
+        results.append(
+            {
+                "domain": domain,
+                "dmarc": dmarc,
+                "spf": spf,
+                "dkim": dkim_results,
+                "security_score": score,
+            }
+        )
     return {"timestamp": datetime.utcnow().isoformat(), "domains": results}
 
 
@@ -123,7 +169,9 @@ def main():
     if not dns:
         print(json.dumps({"error": "dnspython not installed"}))
         return
-    parser = argparse.ArgumentParser(description="DMARC Policy Enforcement Rollout Agent")
+    parser = argparse.ArgumentParser(
+        description="DMARC Policy Enforcement Rollout Agent"
+    )
     sub = parser.add_subparsers(dest="command")
     d = sub.add_parser("check", help="Check single domain")
     d.add_argument("--domain", required=True)

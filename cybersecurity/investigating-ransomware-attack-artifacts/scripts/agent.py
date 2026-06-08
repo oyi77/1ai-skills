@@ -16,7 +16,6 @@ from pathlib import Path
 
 import requests
 
-
 RANSOMWARE_ID_URL = "https://id-ransomware.malwarehunterteam.com/api/"
 VT_API_KEY = ""
 
@@ -24,9 +23,18 @@ VT_API_KEY = ""
 def collect_ransom_notes(search_root: str) -> list[dict]:
     """Search filesystem for common ransom note filenames."""
     ransom_note_patterns = [
-        "README.txt", "DECRYPT*.txt", "HOW_TO_DECRYPT*", "RECOVER*",
-        "_readme.txt", "!README!*", "HELP_DECRYPT*", "YOUR_FILES*",
-        "ATTENTION*.txt", "RESTORE*FILES*", "#DECRYPT#*", "info.hta",
+        "README.txt",
+        "DECRYPT*.txt",
+        "HOW_TO_DECRYPT*",
+        "RECOVER*",
+        "_readme.txt",
+        "!README!*",
+        "HELP_DECRYPT*",
+        "YOUR_FILES*",
+        "ATTENTION*.txt",
+        "RESTORE*FILES*",
+        "#DECRYPT#*",
+        "info.hta",
     ]
     found_notes = []
     root = Path(search_root)
@@ -36,13 +44,15 @@ def collect_ransom_notes(search_root: str) -> list[dict]:
             if match.is_file() and match.stat().st_size < 1_000_000:
                 with open(match, "r", errors="ignore") as f:
                     content = f.read(4096)
-                found_notes.append({
-                    "path": str(match),
-                    "filename": match.name,
-                    "size": match.stat().st_size,
-                    "content_preview": content[:500],
-                    "sha256": hashlib.sha256(content.encode()).hexdigest(),
-                })
+                found_notes.append(
+                    {
+                        "path": str(match),
+                        "filename": match.name,
+                        "size": match.stat().st_size,
+                        "content_preview": content[:500],
+                        "sha256": hashlib.sha256(content.encode()).hexdigest(),
+                    }
+                )
 
     return found_notes
 
@@ -50,10 +60,26 @@ def collect_ransom_notes(search_root: str) -> list[dict]:
 def identify_encrypted_files(search_root: str) -> dict:
     """Identify encrypted files by extension and calculate scope."""
     known_extensions = [
-        ".encrypted", ".locked", ".crypto", ".crypt", ".enc",
-        ".locky", ".zepto", ".cerber", ".dharma", ".phobos",
-        ".ryuk", ".conti", ".lockbit", ".blackcat", ".hive",
-        ".akira", ".royal", ".play", ".clop", ".alphv",
+        ".encrypted",
+        ".locked",
+        ".crypto",
+        ".crypt",
+        ".enc",
+        ".locky",
+        ".zepto",
+        ".cerber",
+        ".dharma",
+        ".phobos",
+        ".ryuk",
+        ".conti",
+        ".lockbit",
+        ".blackcat",
+        ".hive",
+        ".akira",
+        ".royal",
+        ".play",
+        ".clop",
+        ".alphv",
     ]
     encrypted_files = []
     extension_counts = {}
@@ -83,8 +109,13 @@ def analyze_ransom_note_content(notes: list[dict]) -> dict:
     tor_pattern = re.compile(r"[a-z2-7]{16,56}\.onion")
     email_pattern = re.compile(r"[\w.+-]+@[\w-]+\.[a-zA-Z]{2,}")
 
-    iocs = {"bitcoin_addresses": set(), "monero_addresses": set(),
-            "tor_sites": set(), "email_contacts": set(), "ransom_amounts": []}
+    iocs = {
+        "bitcoin_addresses": set(),
+        "monero_addresses": set(),
+        "tor_sites": set(),
+        "email_contacts": set(),
+        "ransom_amounts": [],
+    }
 
     for note in notes:
         content = note.get("content_preview", "")
@@ -110,15 +141,17 @@ def check_hash_virustotal(file_hash: str, api_key: str) -> dict:
         return {"error": "VT_API_KEY not configured"}
     resp = requests.get(
         f"https://www.virustotal.com/api/v3/files/{file_hash}",
-        headers={"x-apikey": api_key}, timeout=30,
+        headers={"x-apikey": api_key},
+        timeout=30,
     )
     if resp.status_code == 200:
         attrs = resp.json().get("data", {}).get("attributes", {})
         return {
             "threat_label": attrs.get("popular_threat_classification", {}).get(
-                "suggested_threat_label", "unknown"),
+                "suggested_threat_label", "unknown"
+            ),
             "detection_ratio": f"{attrs.get('last_analysis_stats', {}).get('malicious', 0)}"
-                               f"/{sum(attrs.get('last_analysis_stats', {}).values())}",
+            f"/{sum(attrs.get('last_analysis_stats', {}).values())}",
             "first_seen": attrs.get("first_submission_date", ""),
             "names": attrs.get("names", [])[:5],
         }
@@ -132,18 +165,21 @@ def parse_windows_event_logs(evtx_export_path: str) -> list[dict]:
         return events
 
     import csv
+
     with open(evtx_export_path, "r", newline="", errors="ignore") as f:
         reader = csv.DictReader(f)
         for row in reader:
             event_id = row.get("EventID", row.get("event_id", ""))
             suspicious_ids = ["1102", "4688", "4697", "7045", "1116", "4624"]
             if str(event_id) in suspicious_ids:
-                events.append({
-                    "timestamp": row.get("TimeCreated", row.get("timestamp", "")),
-                    "event_id": event_id,
-                    "source": row.get("ProviderName", row.get("source", "")),
-                    "message": row.get("Message", row.get("message", ""))[:300],
-                })
+                events.append(
+                    {
+                        "timestamp": row.get("TimeCreated", row.get("timestamp", "")),
+                        "event_id": event_id,
+                        "source": row.get("ProviderName", row.get("source", "")),
+                        "message": row.get("Message", row.get("message", ""))[:300],
+                    }
+                )
 
     return events
 
@@ -161,22 +197,26 @@ def generate_report(notes: list, encrypted: dict, iocs: dict, events: list) -> s
     for note in notes[:5]:
         lines.append(f"  - {note['filename']} ({note['path']})")
 
-    lines.extend([
-        "",
-        "ENCRYPTION SCOPE:",
-        f"  Encrypted Files: {encrypted['total_encrypted_files']}",
-        f"  Total Size: {encrypted['total_encrypted_size_gb']} GB",
-        f"  Extensions: {json.dumps(encrypted['extensions_found'])}",
-        "",
-        "EXTRACTED IOCs:",
-        f"  Bitcoin Addresses: {len(iocs.get('bitcoin_addresses', []))}",
-        f"  Tor Sites: {len(iocs.get('tor_sites', []))}",
-        f"  Contact Emails: {len(iocs.get('email_contacts', []))}",
-        "",
-        f"SUSPICIOUS EVENTS: {len(events)}",
-    ])
+    lines.extend(
+        [
+            "",
+            "ENCRYPTION SCOPE:",
+            f"  Encrypted Files: {encrypted['total_encrypted_files']}",
+            f"  Total Size: {encrypted['total_encrypted_size_gb']} GB",
+            f"  Extensions: {json.dumps(encrypted['extensions_found'])}",
+            "",
+            "EXTRACTED IOCs:",
+            f"  Bitcoin Addresses: {len(iocs.get('bitcoin_addresses', []))}",
+            f"  Tor Sites: {len(iocs.get('tor_sites', []))}",
+            f"  Contact Emails: {len(iocs.get('email_contacts', []))}",
+            "",
+            f"SUSPICIOUS EVENTS: {len(events)}",
+        ]
+    )
     for evt in events[:10]:
-        lines.append(f"  [{evt['event_id']}] {evt['timestamp']} - {evt['message'][:80]}")
+        lines.append(
+            f"  [{evt['event_id']}] {evt['timestamp']} - {evt['message'][:80]}"
+        )
 
     return "\n".join(lines)
 
@@ -200,7 +240,18 @@ if __name__ == "__main__":
     report = generate_report(notes, encrypted, iocs, events)
     print(report)
 
-    output = f"ransomware_investigation_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
+    output = (
+        f"ransomware_investigation_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
+    )
     with open(output, "w") as f:
-        json.dump({"ransom_notes": notes, "encrypted_files": encrypted, "iocs": iocs, "events": events}, f, indent=2)
+        json.dump(
+            {
+                "ransom_notes": notes,
+                "encrypted_files": encrypted,
+                "iocs": iocs,
+                "events": events,
+            },
+            f,
+            indent=2,
+        )
     print(f"\n[*] Results saved to {output}")

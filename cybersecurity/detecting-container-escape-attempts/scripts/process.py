@@ -12,7 +12,6 @@ import json
 import sys
 from dataclasses import dataclass, field
 
-
 DANGEROUS_CAPABILITIES = {
     "SYS_ADMIN": 10,
     "SYS_PTRACE": 9,
@@ -102,13 +101,15 @@ def assess_escape_risk(container_data: dict) -> EscapeRisk:
     # Check privileged mode
     if host_config.get("Privileged", False):
         risk.risk_score += 10
-        risk.risk_factors.append({
-            "factor": "Privileged mode enabled",
-            "severity": "CRITICAL",
-            "score": 10,
-            "description": "Container has full host access, trivial escape",
-            "remediation": "Remove --privileged flag, use specific --cap-add"
-        })
+        risk.risk_factors.append(
+            {
+                "factor": "Privileged mode enabled",
+                "severity": "CRITICAL",
+                "score": 10,
+                "description": "Container has full host access, trivial escape",
+                "remediation": "Remove --privileged flag, use specific --cap-add",
+            }
+        )
 
     # Check capabilities
     cap_add = host_config.get("CapAdd") or []
@@ -120,36 +121,42 @@ def assess_escape_risk(container_data: dict) -> EscapeRisk:
         if cap_upper in DANGEROUS_CAPABILITIES:
             score = DANGEROUS_CAPABILITIES[cap_upper]
             risk.risk_score += score
-            risk.risk_factors.append({
-                "factor": f"Dangerous capability: {cap_upper}",
-                "severity": "CRITICAL" if score >= 8 else "HIGH",
-                "score": score,
-                "description": f"CAP_{cap_upper} can be used for container escape",
-                "remediation": f"Remove CAP_{cap_upper} unless absolutely required"
-            })
+            risk.risk_factors.append(
+                {
+                    "factor": f"Dangerous capability: {cap_upper}",
+                    "severity": "CRITICAL" if score >= 8 else "HIGH",
+                    "score": score,
+                    "description": f"CAP_{cap_upper} can be used for container escape",
+                    "remediation": f"Remove CAP_{cap_upper} unless absolutely required",
+                }
+            )
 
     if not all_dropped and not host_config.get("Privileged", False):
         risk.risk_score += 2
-        risk.risk_factors.append({
-            "factor": "Default capabilities not dropped",
-            "severity": "MEDIUM",
-            "score": 2,
-            "description": "Container retains default Linux capabilities",
-            "remediation": "Use --cap-drop ALL and add only required capabilities"
-        })
+        risk.risk_factors.append(
+            {
+                "factor": "Default capabilities not dropped",
+                "severity": "MEDIUM",
+                "score": 2,
+                "description": "Container retains default Linux capabilities",
+                "remediation": "Use --cap-drop ALL and add only required capabilities",
+            }
+        )
 
     # Check host namespaces
     for ns in ["NetworkMode", "PidMode", "IpcMode"]:
         value = host_config.get(ns, "")
         if value == "host":
             risk.risk_score += 7
-            risk.risk_factors.append({
-                "factor": f"Host namespace: {ns}={value}",
-                "severity": "CRITICAL",
-                "score": 7,
-                "description": f"Container shares host {ns}, enabling escape",
-                "remediation": f"Remove host {ns} configuration"
-            })
+            risk.risk_factors.append(
+                {
+                    "factor": f"Host namespace: {ns}={value}",
+                    "severity": "CRITICAL",
+                    "score": 7,
+                    "description": f"Container shares host {ns}, enabling escape",
+                    "remediation": f"Remove host {ns} configuration",
+                }
+            )
 
     # Check sensitive mounts
     for mount in mounts:
@@ -158,26 +165,30 @@ def assess_escape_risk(container_data: dict) -> EscapeRisk:
             if source == sensitive_path or source.startswith(sensitive_path):
                 score = 9 if "docker.sock" in source else 6
                 risk.risk_score += score
-                risk.risk_factors.append({
-                    "factor": f"Sensitive mount: {source}",
-                    "severity": "CRITICAL" if score >= 8 else "HIGH",
-                    "score": score,
-                    "description": f"Container has access to {source}",
-                    "remediation": f"Remove mount of {source}, use alternative access method"
-                })
+                risk.risk_factors.append(
+                    {
+                        "factor": f"Sensitive mount: {source}",
+                        "severity": "CRITICAL" if score >= 8 else "HIGH",
+                        "score": score,
+                        "description": f"Container has access to {source}",
+                        "remediation": f"Remove mount of {source}, use alternative access method",
+                    }
+                )
                 break
 
     # Check user
     user = config.get("User", "")
     if not user or user == "0" or user == "root":
         risk.risk_score += 3
-        risk.risk_factors.append({
-            "factor": "Running as root",
-            "severity": "HIGH",
-            "score": 3,
-            "description": "Container process runs as root (UID 0)",
-            "remediation": "Set USER in Dockerfile or use --user flag"
-        })
+        risk.risk_factors.append(
+            {
+                "factor": "Running as root",
+                "severity": "HIGH",
+                "score": 3,
+                "description": "Container process runs as root (UID 0)",
+                "remediation": "Set USER in Dockerfile or use --user flag",
+            }
+        )
 
     # Check security options
     security_opts = host_config.get("SecurityOpt") or []
@@ -187,34 +198,40 @@ def assess_escape_risk(container_data: dict) -> EscapeRisk:
 
     if not has_seccomp:
         risk.risk_score += 2
-        risk.risk_factors.append({
-            "factor": "No custom seccomp profile",
-            "severity": "MEDIUM",
-            "score": 2,
-            "description": "Container uses default seccomp profile or none",
-            "remediation": "Apply restrictive custom seccomp profile"
-        })
+        risk.risk_factors.append(
+            {
+                "factor": "No custom seccomp profile",
+                "severity": "MEDIUM",
+                "score": 2,
+                "description": "Container uses default seccomp profile or none",
+                "remediation": "Apply restrictive custom seccomp profile",
+            }
+        )
 
     if not no_new_privs:
         risk.risk_score += 2
-        risk.risk_factors.append({
-            "factor": "No new-privileges restriction missing",
-            "severity": "MEDIUM",
-            "score": 2,
-            "description": "Container can acquire new privileges via setuid binaries",
-            "remediation": "Add --security-opt no-new-privileges:true"
-        })
+        risk.risk_factors.append(
+            {
+                "factor": "No new-privileges restriction missing",
+                "severity": "MEDIUM",
+                "score": 2,
+                "description": "Container can acquire new privileges via setuid binaries",
+                "remediation": "Add --security-opt no-new-privileges:true",
+            }
+        )
 
     # Check read-only filesystem
     if not host_config.get("ReadonlyRootfs", False):
         risk.risk_score += 1
-        risk.risk_factors.append({
-            "factor": "Writable root filesystem",
-            "severity": "LOW",
-            "score": 1,
-            "description": "Container filesystem is writable, allowing tool download",
-            "remediation": "Use --read-only with --tmpfs for writable directories"
-        })
+        risk.risk_factors.append(
+            {
+                "factor": "Writable root filesystem",
+                "severity": "LOW",
+                "score": 1,
+                "description": "Container filesystem is writable, allowing tool download",
+                "remediation": "Use --read-only with --tmpfs for writable directories",
+            }
+        )
 
     # Cap score at 10
     risk.risk_score = min(risk.risk_score, 10)
@@ -241,42 +258,48 @@ def scan_kubernetes_pods() -> list:
         risk = EscapeRisk(
             container_name=f"{namespace}/{pod_name}",
             container_id="k8s",
-            image=spec.get("containers", [{}])[0].get("image", "unknown")
+            image=spec.get("containers", [{}])[0].get("image", "unknown"),
         )
 
         # Check host namespaces
         if spec.get("hostNetwork", False):
             risk.risk_score += 7
-            risk.risk_factors.append({
-                "factor": "hostNetwork enabled",
-                "severity": "CRITICAL",
-                "score": 7,
-                "description": "Pod shares host network namespace",
-                "remediation": "Set hostNetwork: false"
-            })
+            risk.risk_factors.append(
+                {
+                    "factor": "hostNetwork enabled",
+                    "severity": "CRITICAL",
+                    "score": 7,
+                    "description": "Pod shares host network namespace",
+                    "remediation": "Set hostNetwork: false",
+                }
+            )
 
         if spec.get("hostPID", False):
             risk.risk_score += 7
-            risk.risk_factors.append({
-                "factor": "hostPID enabled",
-                "severity": "CRITICAL",
-                "score": 7,
-                "description": "Pod shares host PID namespace",
-                "remediation": "Set hostPID: false"
-            })
+            risk.risk_factors.append(
+                {
+                    "factor": "hostPID enabled",
+                    "severity": "CRITICAL",
+                    "score": 7,
+                    "description": "Pod shares host PID namespace",
+                    "remediation": "Set hostPID: false",
+                }
+            )
 
         # Check containers
         for container in spec.get("containers", []):
             sc = container.get("securityContext", {})
             if sc.get("privileged", False):
                 risk.risk_score += 10
-                risk.risk_factors.append({
-                    "factor": f"Privileged container: {container.get('name')}",
-                    "severity": "CRITICAL",
-                    "score": 10,
-                    "description": "Container runs in privileged mode",
-                    "remediation": "Set privileged: false"
-                })
+                risk.risk_factors.append(
+                    {
+                        "factor": f"Privileged container: {container.get('name')}",
+                        "severity": "CRITICAL",
+                        "score": 10,
+                        "description": "Container runs in privileged mode",
+                        "remediation": "Set privileged: false",
+                    }
+                )
 
         # Check volumes
         for vol in spec.get("volumes", []):
@@ -284,13 +307,15 @@ def scan_kubernetes_pods() -> list:
                 path = vol["hostPath"].get("path", "")
                 if any(path.startswith(p) for p in SENSITIVE_MOUNT_PATHS):
                     risk.risk_score += 8
-                    risk.risk_factors.append({
-                        "factor": f"Sensitive hostPath: {path}",
-                        "severity": "CRITICAL",
-                        "score": 8,
-                        "description": f"Pod mounts sensitive host path: {path}",
-                        "remediation": "Remove hostPath volume"
-                    })
+                    risk.risk_factors.append(
+                        {
+                            "factor": f"Sensitive hostPath: {path}",
+                            "severity": "CRITICAL",
+                            "score": 8,
+                            "description": f"Pod mounts sensitive host path: {path}",
+                            "remediation": "Remove hostPath volume",
+                        }
+                    )
 
         risk.risk_score = min(risk.risk_score, 10)
         if risk.risk_factors:
@@ -332,7 +357,9 @@ def main():
     print(f"{'=' * 70}")
 
     for risk in risks:
-        print(f"\n[{risk.risk_level}] {risk.container_name} (score: {risk.risk_score}/10)")
+        print(
+            f"\n[{risk.risk_level}] {risk.container_name} (score: {risk.risk_score}/10)"
+        )
         print(f"  Image: {risk.image}")
         for factor in risk.risk_factors:
             print(f"  - [{factor['severity']}] {factor['factor']}")
@@ -358,10 +385,10 @@ def main():
                 "image": r.image,
                 "risk_score": r.risk_score,
                 "risk_level": r.risk_level,
-                "factors": r.risk_factors
+                "factors": r.risk_factors,
             }
             for r in risks
-        ]
+        ],
     }
 
     with open("escape_risk_report.json", "w") as f:

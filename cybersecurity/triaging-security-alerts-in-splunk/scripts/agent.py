@@ -13,7 +13,10 @@ def connect_splunk(host, port, username, password):
     """Connect to Splunk Enterprise instance."""
     try:
         service = splunk_client.connect(
-            host=host, port=port, username=username, password=password,
+            host=host,
+            port=port,
+            username=username,
+            password=password,
             autologin=True,
         )
         print(f"[*] Connected to Splunk {host}:{port}")
@@ -36,8 +39,10 @@ def get_notable_events(service, status="new", limit=50):
     for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
         if isinstance(result, dict):
             results.append(result)
-            print(f"  [{result.get('urgency', '?')}] {result.get('rule_name', 'Unknown')} "
-                  f"| src={result.get('src', 'N/A')} dest={result.get('dest', 'N/A')}")
+            print(
+                f"  [{result.get('urgency', '?')}] {result.get('rule_name', 'Unknown')} "
+                f"| src={result.get('src', 'N/A')} dest={result.get('dest', 'N/A')}"
+            )
     print(f"[*] Retrieved {len(results)} notable events")
     return results
 
@@ -55,17 +60,23 @@ src_ip="{src_ip}" earliest=-{hours}h latest=now
     for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
         if isinstance(result, dict):
             results.append(result)
-            print(f"  {result.get('src_ip')} -> {result.get('dest')} "
-                  f"user={result.get('user')} count={result.get('count')}")
+            print(
+                f"  {result.get('src_ip')} -> {result.get('dest')} "
+                f"user={result.get('user')} count={result.get('count')}"
+            )
 
     success_query = f"""search index=wineventlog sourcetype="WinEventLog:Security" EventCode=4624
 src_ip="{src_ip}" earliest=-{hours}h latest=now
 | stats count by src_ip, dest, user
 | where count > 0"""
     success_job = service.jobs.create(success_query, exec_mode="blocking")
-    for result in splunk_results.JSONResultsReader(success_job.results(output_mode="json")):
+    for result in splunk_results.JSONResultsReader(
+        success_job.results(output_mode="json")
+    ):
         if isinstance(result, dict):
-            print(f"  [!] SUCCESSFUL logon: {result.get('user')} on {result.get('dest')}")
+            print(
+                f"  [!] SUCCESSFUL logon: {result.get('user')} on {result.get('dest')}"
+            )
     return results
 
 
@@ -80,9 +91,11 @@ def correlate_across_sources(service, src_ip, hours=24):
     for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
         if isinstance(result, dict):
             results.append(result)
-            print(f"  {result.get('index')}/{result.get('sourcetype')}: "
-                  f"action={result.get('action')} port={result.get('dest_port')} "
-                  f"count={result.get('count')}")
+            print(
+                f"  {result.get('index')}/{result.get('sourcetype')}: "
+                f"action={result.get('action')} port={result.get('dest_port')} "
+                f"count={result.get('count')}"
+            )
     return results
 
 
@@ -102,8 +115,10 @@ def check_threat_intel(service, indicator, indicator_type="ip"):
     for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
         if isinstance(result, dict):
             matches.append(result)
-            print(f"  [!] TI Match: {result.get('threat_collection', 'Unknown')} "
-                  f"(weight: {result.get('weight', '?')})")
+            print(
+                f"  [!] TI Match: {result.get('threat_collection', 'Unknown')} "
+                f"(weight: {result.get('weight', '?')})"
+            )
     if not matches:
         print("  [+] No threat intelligence matches")
     return matches
@@ -121,8 +136,10 @@ def enrich_with_asset_identity(service, src_ip=None, username=None):
         for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
             if isinstance(result, dict):
                 results["asset"] = result
-                print(f"  Asset: {result.get('category', 'Unknown')} "
-                      f"owner={result.get('owner', 'N/A')} priority={result.get('priority', 'N/A')}")
+                print(
+                    f"  Asset: {result.get('category', 'Unknown')} "
+                    f"owner={result.get('owner', 'N/A')} priority={result.get('priority', 'N/A')}"
+                )
 
     if username:
         query = f"""| inputlookup identity_lookup_expanded
@@ -133,8 +150,10 @@ def enrich_with_asset_identity(service, src_ip=None, username=None):
         for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
             if isinstance(result, dict):
                 results["identity"] = result
-                print(f"  User: {result.get('first', '')} {result.get('last', '')} "
-                      f"dept={result.get('department', 'N/A')}")
+                print(
+                    f"  User: {result.get('first', '')} {result.get('last', '')} "
+                    f"dept={result.get('department', 'N/A')}"
+                )
     return results
 
 
@@ -150,12 +169,15 @@ def get_triage_metrics(service, days=30):
 | head 20
 | table rule_name, status_label, count, avg_min"""
     print(f"\n[*] Fetching triage metrics (last {days} days)...")
-    job = service.jobs.create(query, exec_mode="blocking",
-                               earliest_time=f"-{days}d", latest_time="now")
+    job = service.jobs.create(
+        query, exec_mode="blocking", earliest_time=f"-{days}d", latest_time="now"
+    )
     for result in splunk_results.JSONResultsReader(job.results(output_mode="json")):
         if isinstance(result, dict):
-            print(f"  {result.get('rule_name', 'Unknown')}: "
-                  f"{result.get('count', 0)} alerts, avg triage: {result.get('avg_min', '?')} min")
+            print(
+                f"  {result.get('rule_name', 'Unknown')}: "
+                f"{result.get('count', 0)} alerts, avg triage: {result.get('avg_min', '?')} min"
+            )
 
 
 def generate_triage_report(notable, correlations, ti_matches, enrichment, output_path):
@@ -174,8 +196,18 @@ def generate_triage_report(notable, correlations, ti_matches, enrichment, output
 
 def main():
     parser = argparse.ArgumentParser(description="Splunk ES Alert Triage Agent")
-    parser.add_argument("action", choices=["queue", "investigate", "correlate", "threat-intel",
-                                           "enrich", "metrics", "full-triage"])
+    parser.add_argument(
+        "action",
+        choices=[
+            "queue",
+            "investigate",
+            "correlate",
+            "threat-intel",
+            "enrich",
+            "metrics",
+            "full-triage",
+        ],
+    )
     parser.add_argument("--host", default="localhost", help="Splunk host")
     parser.add_argument("--port", type=int, default=8089, help="Splunk management port")
     parser.add_argument("--username", default="admin")
