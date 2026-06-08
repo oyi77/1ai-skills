@@ -187,64 +187,101 @@ def extract_subdomains_from_names(name_value: str) -> list[str]:
 
 def store_certificates(conn: sqlite3.Connection, certs: list[dict], monitored_domain: str) -> list[dict]:
     """Store certificates in database, return list of newly discovered ones."""
-    new_certs = []
     cursor = conn.cursor()
-    for cert in certs:
-        crtsh_id = cert.get("id")
-        if not crtsh_id:
-            continue
-        cursor.execute("SELECT 1 FROM certificates WHERE crtsh_id = ?", (crtsh_id,))
-        if cursor.fetchone():
-            continue
-        name_value = cert.get("name_value", "")
-        issuer_name = cert.get("issuer_name", "")
-        entry_ts = cert.get("entry_timestamp", "")
-        not_before = cert.get("not_before", "")
-        not_after = cert.get("not_after", "")
-        common_name = cert.get("common_name", "")
-        serial = cert.get("serial_number", "")
-        issuer_ca_id = cert.get("issuer_ca_id")
+    # Deduplicate valid_certs by id to ensure we return purely unique new certs
+    valid_certs = []
+    seen = set()
+    for c in certs:
+        c_id = c.get("id")
+        if c_id and c_id not in seen:
+            seen.add(c_id)
+            valid_certs.append(c)
 
-        is_precert = 1 if (entry_ts and "precert" in entry_ts.lower()) else 0
+    if not valid_certs:
+        return []
 
-        cursor.execute(
+    # ⚡ Bolt Optimization: Batch queries to check existence and executemany for inserts
+    # Eliminates N+1 queries when inserting certificates
+    CHUNK_SIZE = 900
+    existing_ids = set()
+    for i in range(0, len(valid_certs), CHUNK_SIZE):
+        chunk = valid_certs[i:i+CHUNK_SIZE]
+        ids = [c["id"] for c in chunk]
+        placeholders = ",".join("?" for _ in ids)
+        cursor.execute(f"SELECT crtsh_id FROM certificates WHERE crtsh_id IN ({placeholders})", ids)
+        existing_ids.update(row[0] for row in cursor.fetchall())
+
+    new_certs = [c for c in valid_certs if c["id"] not in existing_ids]
+    if new_certs:
+        params = []
+        for cert in new_certs:
+            entry_ts = cert.get("entry_timestamp", "")
+            is_precert = 1 if (entry_ts and "precert" in entry_ts.lower()) else 0
+            params.append((
+                cert["id"], monitored_domain, cert.get("common_name", ""),
+                cert.get("name_value", ""), cert.get("issuer_name", ""),
+                cert.get("issuer_ca_id"), cert.get("not_before", ""),
+                cert.get("not_after", ""), cert.get("serial_number", ""),
+                entry_ts, is_precert
+            ))
+
+        cursor.executemany(
             """INSERT OR IGNORE INTO certificates
                (crtsh_id, domain, common_name, name_value, issuer_name,
                 issuer_ca_id, not_before, not_after, serial_number,
                 entry_timestamp, is_precert)
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-            (crtsh_id, monitored_domain, common_name, name_value,
-             issuer_name, issuer_ca_id, not_before, not_after, serial,
-             entry_ts, is_precert),
+            params
         )
-        new_certs.append(cert)
     conn.commit()
     return new_certs
 
 
 def discover_subdomains(conn: sqlite3.Connection, certs: list[dict], parent_domain: str) -> list[str]:
     """Extract and store unique subdomains from certificate name_value fields."""
-    new_subdomains = []
     cursor = conn.cursor()
     now = datetime.now(timezone.utc).isoformat()
+
+    # ⚡ Bolt Optimization: Batch queries to check existence and executemany for inserts/updates
+    # Eliminates N+1 queries when processing new subdomains
+    unique_names = set()
     for cert in certs:
         names = extract_subdomains_from_names(cert.get("name_value", ""))
         for name in names:
-            if not name.endswith(parent_domain):
-                continue
-            cursor.execute("SELECT 1 FROM subdomains WHERE subdomain = ?", (name,))
-            if cursor.fetchone():
-                cursor.execute(
-                    "UPDATE subdomains SET last_seen = ? WHERE subdomain = ?",
-                    (now, name),
-                )
-            else:
-                cursor.execute(
-                    """INSERT INTO subdomains (subdomain, parent_domain, first_seen, last_seen)
-                       VALUES (?, ?, ?, ?)""",
-                    (name, parent_domain, now, now),
-                )
-                new_subdomains.append(name)
+            if name.endswith(parent_domain):
+                unique_names.add(name)
+
+    if not unique_names:
+        return []
+
+    unique_names_list = list(unique_names)
+    CHUNK_SIZE = 900
+    existing_subdomains = set()
+
+    for i in range(0, len(unique_names_list), CHUNK_SIZE):
+        chunk = unique_names_list[i:i+CHUNK_SIZE]
+        placeholders = ",".join("?" for _ in chunk)
+        cursor.execute(f"SELECT subdomain FROM subdomains WHERE subdomain IN ({placeholders})", chunk)
+        existing_subdomains.update(row[0] for row in cursor.fetchall())
+
+    new_subdomains = list(unique_names - existing_subdomains)
+
+    if new_subdomains:
+        cursor.executemany(
+            """INSERT INTO subdomains (subdomain, parent_domain, first_seen, last_seen)
+               VALUES (?, ?, ?, ?)""",
+            [(name, parent_domain, now, now) for name in new_subdomains]
+        )
+
+    if existing_subdomains:
+        existing_list = list(existing_subdomains)
+        for i in range(0, len(existing_list), CHUNK_SIZE):
+            chunk = existing_list[i:i+CHUNK_SIZE]
+            cursor.executemany(
+                "UPDATE subdomains SET last_seen = ? WHERE subdomain = ?",
+                [(now, name) for name in chunk]
+            )
+
     conn.commit()
     return new_subdomains
 

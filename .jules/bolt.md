@@ -18,3 +18,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2025-06-08 - [Avoid N+1 Queries during Existence Checks]
+**Learning:** Checking for row existence (e.g. `SELECT 1 FROM table WHERE id = ?`) inside a loop before insertion introduces severe N+1 query bottlenecks and slows down database writes.
+**Action:** Extract all identifiers from the loop, perform a batched `SELECT id FROM table WHERE id IN (?, ...)` query to filter out existing elements, and execute bulk inserts using `.executemany()`.
