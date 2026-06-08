@@ -1,11 +1,12 @@
 ---
 name: data
-description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution
-  history.
+description: Centralized database for meta-skill operations. Stores performance metrics,
+  feedback, patterns, and skill evolution history.
 persona:
   name: Database Architect
   expertise: SQLite, data modeling, query optimization
   philosophy: Data is the foundation of intelligence
+domain: meta
 ---
 ## Meta Skill Datastore
 

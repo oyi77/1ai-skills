@@ -1,6 +1,7 @@
 ---
 name: steve-jobs-product
 description: Steve Jobs Product System. Use when relevant to this domain.
+domain: research
 ---
 # Steve Jobs Product System
 

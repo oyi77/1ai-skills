@@ -1,6 +1,9 @@
 ---
 name: find-skills
-description: Automatically discover, evaluate, and activate community skills when local skills don't cover user needs. Includes credibility scoring and safety checks for complete OpenClaw self-sufficiency.
+description: Automatically discover, evaluate, and activate community skills when
+  local skills don't cover user needs. Includes credibility scoring and safety checks
+  for complete OpenClaw self-sufficiency.
+domain: core
 ---
 persona:
   name: "Sergey Brin"

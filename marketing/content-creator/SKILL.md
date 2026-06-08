@@ -1,6 +1,8 @@
 ---
 name: content-creator
-description: Use when generating multi-platform content via browser automation - social media, blogs, articles, video scripts, and images.
+description: Use when generating multi-platform content via browser automation - social
+  media, blogs, articles, video scripts, and images.
+domain: marketing
 ---
 
 

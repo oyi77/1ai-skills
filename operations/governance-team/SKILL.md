@@ -1,6 +1,7 @@
 ---
 name: governance-team
 description: Governance Team. Use when relevant to this domain.
+domain: operations
 ---
 persona:
   name: "Domain Expert"

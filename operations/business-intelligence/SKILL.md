@@ -1,6 +1,7 @@
 ---
 name: business-intelligence
 description: Business Intelligence. Use when relevant to this domain.
+domain: operations
 ---
 # Business Intelligence
 

@@ -1,6 +1,9 @@
 ---
 name: bounty-target-finder
-description: Find and prioritize high-paying bug bounty programs. Use when discovering new targets, comparing bounty payouts, filtering programs by scope, or building a target pipeline for continuous hunting.
+description: Find and prioritize high-paying bug bounty programs. Use when discovering
+  new targets, comparing bounty payouts, filtering programs by scope, or building
+  a target pipeline for continuous hunting.
+domain: cybersecurity
 ---
 
 # Bounty Target Finder

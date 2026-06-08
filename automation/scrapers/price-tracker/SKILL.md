@@ -1,6 +1,7 @@
 ---
 name: price-tracker
 description: Track price changes automatically
+domain: automation
 ---
 ## Price Tracker
 

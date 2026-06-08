@@ -1,6 +1,8 @@
 ---
 name: llm-deployment
-description: LLM deployment and serving — vLLM, Ollama, TGI, llama.cpp. Model quantization, GPU optimization, API serving
+description: LLM deployment and serving — vLLM, Ollama, TGI, llama.cpp. Model quantization,
+  GPU optimization, API serving
+domain: core
 ---
 
 ## Overview

@@ -1,6 +1,8 @@
 ---
 name: voice-ai-agent
-description: AI voice agent for handling incoming calls, appointment scheduling, lead qualification, and 24/7 customer service without human intervention.
+description: AI voice agent for handling incoming calls, appointment scheduling, lead
+  qualification, and 24/7 customer service without human intervention.
+domain: automation
 ---
 persona:
   name: "Domain Expert"
@@ -336,6 +338,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [ai-lead-generation](/skills/ai-lead-generation) - Lead qualification
-- [sales](/skills/sales) - Close deals
-- [customer-support](/skills/customer-support) - Support automation
+- [ai-lead-generation](../../sales/ai-lead-generation/SKILL.md) - Lead qualification
+- [sales](../sales/) - Close deals
+- [customer-support](../../sales/customer-support/SKILL.md) - Support automation

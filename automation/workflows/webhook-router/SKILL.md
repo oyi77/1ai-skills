@@ -1,6 +1,7 @@
 ---
 name: webhook-router
 description: Route webhooks intelligently
+domain: automation
 ---
 ## Webhook Router
 

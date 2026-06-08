@@ -1,6 +1,8 @@
 ---
 name: flowise-builder
-description: Flowise visual LLM workflow builder — drag-drop chatflows, API endpoints, document loaders, tools
+description: Flowise visual LLM workflow builder — drag-drop chatflows, API endpoints,
+  document loaders, tools
+domain: automation
 ---
 
 ## Overview

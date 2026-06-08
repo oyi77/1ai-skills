@@ -1,6 +1,7 @@
 ---
 name: viz-creator
 description: Create visualizations
+domain: data
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: agent-self-improvement
-description: Monitor performance of other skills, identify bottlenecks, suggest improvements, and auto-optimize the skill portfolio
+description: Monitor performance of other skills, identify bottlenecks, suggest improvements,
+  and auto-optimize the skill portfolio
+domain: core
 ---
 
 ## Overview

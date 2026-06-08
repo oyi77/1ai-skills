@@ -1,6 +1,8 @@
 ---
 name: terraform
-description: Infrastructure as Code with Terraform — HCL, modules, state management, providers, workspaces
+description: Infrastructure as Code with Terraform — HCL, modules, state management,
+  providers, workspaces
+domain: devops
 ---
 
 

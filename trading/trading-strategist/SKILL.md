@@ -1,11 +1,15 @@
 ---
 name: trading-strategist
-description: Build and optimize trading strategies with entry/exit rules and risk parameters. Use when creating new trading strategies, defining entry and exit conditions, optimizing strategy parameters, testing strategies across different market scenarios, or documenting strategy rules and rules in Notion for review.
+description: Build and optimize trading strategies with entry/exit rules and risk
+  parameters. Use when creating new trading strategies, defining entry and exit conditions,
+  optimizing strategy parameters, testing strategies across different market scenarios,
+  or documenting strategy rules and rules in Notion for review.
 allowed-tools:
-  - Bash(trading:*)
-  - MCP(notion:*)
-  - fs
-  - network
+- Bash(trading:*)
+- MCP(notion:*)
+- fs
+- network
+domain: trading
 ---
 
 # Trading Strategist

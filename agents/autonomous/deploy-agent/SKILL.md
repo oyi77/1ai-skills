@@ -1,6 +1,7 @@
 ---
 name: deploy-agent
 description: Deploy Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Deploy Agent
 

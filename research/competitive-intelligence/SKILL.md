@@ -1,6 +1,9 @@
 ---
 name: competitive-intelligence
-description: Continuous competitor monitoring — pricing changes, feature launches, job postings, ad spend, SEO rankings, social media activity — with weekly intelligence briefs and strategic recommendations
+description: Continuous competitor monitoring — pricing changes, feature launches,
+  job postings, ad spend, SEO rankings, social media activity — with weekly intelligence
+  briefs and strategic recommendations
+domain: research
 ---
 
 ## Overview

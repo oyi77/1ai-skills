@@ -1,6 +1,8 @@
 ---
 name: rabbitmq-patterns
-description: RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority queues, clustering
+description: RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority
+  queues, clustering
+domain: development
 ---
 
 

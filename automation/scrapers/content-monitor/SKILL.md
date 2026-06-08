@@ -1,6 +1,7 @@
 ---
 name: content-monitor
 description: Monitor content for changes
+domain: automation
 ---
 ## Content Monitor
 

@@ -1,6 +1,9 @@
 ---
 name: trend-jacker
-description: Trend Jacker skill for automated content workflows. Provides tools and templates for jacker, ride, topics operations, integration with AI pipelines, and performance optimization.
+description: Trend Jacker skill for automated content workflows. Provides tools and
+  templates for jacker, ride, topics operations, integration with AI pipelines, and
+  performance optimization.
+domain: content
 ---
 
 

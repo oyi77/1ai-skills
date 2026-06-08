@@ -1,6 +1,8 @@
 ---
 name: vilona-activate
-description: Activate Vilona persona with forced SOUL.md reload for BerkahKarya strategic business consulting
+description: Activate Vilona persona with forced SOUL.md reload for BerkahKarya strategic
+  business consulting
+domain: core
 ---
 
 # Vilona Activate Command

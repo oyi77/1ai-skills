@@ -1,6 +1,8 @@
 ---
 name: graphql-api
-description: GraphQL API development — schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization
+description: GraphQL API development — schema design, resolvers, subscriptions, federation.
+  Apollo, Relay, performance optimization
+domain: development
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: supabase-patterns
-description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions, and auth integration
+description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions,
+  and auth integration
+domain: development
 ---
 
 

@@ -1,6 +1,9 @@
 ---
 name: writeup-cash
-description: Monetize bug bounty findings through writeups, tools, and consulting. Use when turning security research into income streams, writing paid writeups, or building a security brand.
+description: Monetize bug bounty findings through writeups, tools, and consulting.
+  Use when turning security research into income streams, writing paid writeups, or
+  building a security brand.
+domain: cybersecurity
 ---
 
 # Writeup Cash

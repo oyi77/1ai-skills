@@ -1,6 +1,8 @@
 ---
 name: drizzle-orm
-description: Drizzle ORM — type-safe SQL, schema definitions, migrations, queries, relations for TypeScript/Node.js
+description: Drizzle ORM — type-safe SQL, schema definitions, migrations, queries,
+  relations for TypeScript/Node.js
+domain: development
 ---
 
 

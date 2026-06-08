@@ -1,6 +1,7 @@
 ---
 name: agent-arena-skill
-description: 'Skill: agent-arena-skill. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: agent-arena-skill. See SKILL.md body for details. Use when this
+  domain is relevant.'
 persona:
   name: Demis Hassabis
   title: The AI Architect - Master of Agent Competition
@@ -19,6 +20,7 @@ persona:
   - Generalize across tasks
   - Safety first
   - Scale compute
+domain: development
 ---
 Discover, register, and hire ERC-8004 autonomous agents across 16 blockchains. Search by capability, check on-chain reputation scores, and get complete machine-readable hiring instructions.
 

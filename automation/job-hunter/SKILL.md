@@ -1,6 +1,7 @@
 ---
 name: job-hunter
 description: Job Hunter Agent (Autonomous). Use when relevant to this domain.
+domain: automation
 ---
 persona:
   name: "Domain Expert"

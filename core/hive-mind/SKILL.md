@@ -19,6 +19,7 @@ persona:
   - No central control
   - Adapt to environment
   - Decentralized decisions
+domain: core
 ---
 name: hive-mind
 description: Sync memories across multiple agents using a shared TiDB Zero database.

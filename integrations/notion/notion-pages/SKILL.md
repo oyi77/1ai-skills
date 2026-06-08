@@ -1,6 +1,7 @@
 ---
 name: notion-pages
 description: Create and edit Notion pages
+domain: integrations
 ---
 ## Notion Pages
 

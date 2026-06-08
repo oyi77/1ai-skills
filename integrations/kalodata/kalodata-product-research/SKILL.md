@@ -1,6 +1,10 @@
 ---
 name: kalodata-product-research
-description: Query and analyze TikTok Shop products by category with intelligent filtering, sorting, and AI-powered research goal detection. Use when researching trending products, finding emerging winners, analyzing competition, or building product intelligence reports.
+description: Query and analyze TikTok Shop products by category with intelligent filtering,
+  sorting, and AI-powered research goal detection. Use when researching trending products,
+  finding emerging winners, analyzing competition, or building product intelligence
+  reports.
+domain: integrations
 ---
 
 # Kalodata Product Research

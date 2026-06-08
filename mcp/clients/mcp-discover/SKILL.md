@@ -1,6 +1,7 @@
 ---
 name: mcp-discover
 description: Discover and connect to MCP servers
+domain: mcp
 ---
 ## Mcp Discover
 

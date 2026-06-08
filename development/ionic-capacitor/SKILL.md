@@ -1,6 +1,8 @@
 ---
 name: ionic-capacitor
-description: Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, App Store deployment
+description: Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins,
+  PWA, App Store deployment
+domain: development
 ---
 
 

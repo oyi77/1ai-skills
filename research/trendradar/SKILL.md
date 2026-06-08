@@ -1,6 +1,9 @@
 ---
 name: trendradar
-description: AI-powered trending topic monitoring from 35+ platforms. Aggregate trends, analyze sentiment, and get real-time notifications. Based on TrendRadar MCP server (4.5K+ stars).
+description: AI-powered trending topic monitoring from 35+ platforms. Aggregate trends,
+  analyze sentiment, and get real-time notifications. Based on TrendRadar MCP server
+  (4.5K+ stars).
+domain: research
 ---
 persona:
   name: "Domain Expert"
@@ -360,7 +363,7 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [ai-research-agent](/skills/ai-research-agent) - Deep research
-- [larry-playbook](/skills/larry-playbook) - Viral content
-- [market-research](/skills/market-research) - Competitor analysis
-- [continuous-learning](/skills/continuous-learning) - Learn from trends
+- [ai-research-agent](../ai-research-agent/SKILL.md) - Deep research
+- [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral content
+- [market-research](../../marketing/market-research/SKILL.md) - Competitor analysis
+- [continuous-learning](../continuous-learning/SKILL.md) - Learn from trends

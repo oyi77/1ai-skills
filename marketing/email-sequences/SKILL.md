@@ -1,6 +1,8 @@
 ---
 name: email-sequences
-description: Automated email sequence design — welcome series, nurture funnels, re-engagement, transactional flows. Use when building email automation systems.
+description: Automated email sequence design — welcome series, nurture funnels, re-engagement,
+  transactional flows. Use when building email automation systems.
+domain: marketing
 ---
 
 

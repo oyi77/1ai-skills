@@ -1,6 +1,7 @@
 ---
 name: smart-scraper
 description: AI-powered web scraper
+domain: automation
 ---
 ## Smart Scraper
 

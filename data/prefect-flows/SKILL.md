@@ -1,6 +1,8 @@
 ---
 name: prefect-flows
-description: Prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries
+description: Prefect workflow orchestration — flows, tasks, deployments, work pools,
+  schedules, retries
+domain: data
 ---
 
 

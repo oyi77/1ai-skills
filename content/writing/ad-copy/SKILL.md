@@ -1,6 +1,7 @@
 ---
 name: ad-copy
 description: Write ad copy that converts
+domain: content
 ---
 
 

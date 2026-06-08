@@ -1,6 +1,9 @@
 ---
 name: kernel-killer
-description: Linux and Windows kernel exploitation for privilege escalation. Use when finding kernel vulnerabilities, exploiting kernel drivers, or escalating privileges from user to root/system.
+description: Linux and Windows kernel exploitation for privilege escalation. Use when
+  finding kernel vulnerabilities, exploiting kernel drivers, or escalating privileges
+  from user to root/system.
+domain: cybersecurity
 ---
 
 # Kernel Killer

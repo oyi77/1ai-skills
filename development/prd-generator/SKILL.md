@@ -1,6 +1,8 @@
 ---
 name: prd-generator
-description: Generate detailed Product Requirement Documents (PRDs) from feature descriptions. Create structured specifications ready for implementation.
+description: Generate detailed Product Requirement Documents (PRDs) from feature descriptions.
+  Create structured specifications ready for implementation.
+domain: development
 ---
 
 persona:
@@ -379,6 +381,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [brainstorming](/skills/brainstorming) - Explore options
-- [code-reviewer](/skills/code-reviewer) - Review implementation
-- [frontend-design](/skills/frontend-design) - Design implementation
+- [brainstorming](../brainstorming/SKILL.md) - Explore options
+- [code-reviewer](../code-reviewer/SKILL.md) - Review implementation
+- [frontend-design](../../content/frontend-design/SKILL.md) - Design implementation

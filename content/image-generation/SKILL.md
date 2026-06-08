@@ -1,6 +1,8 @@
 ---
 name: image-generation
-description: AI image generation — Stable Diffusion, Midjourney, DALL-E, Flux. Prompt engineering for visuals, inpainting, outpainting, style transfer
+description: AI image generation — Stable Diffusion, Midjourney, DALL-E, Flux. Prompt
+  engineering for visuals, inpainting, outpainting, style transfer
+domain: content
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: packer-images
-description: HashiCorp Packer — machine image building, builders, provisioners, post-processors for AWS/GCP/Azure
+description: HashiCorp Packer — machine image building, builders, provisioners, post-processors
+  for AWS/GCP/Azure
+domain: devops
 ---
 
 

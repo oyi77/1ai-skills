@@ -1,6 +1,9 @@
 ---
 name: program-player
-description: Get invited to private bug bounty programs and build reputation on platforms. Use when building platform reputation, applying to private programs, or optimizing your hunter profile for maximum opportunities.
+description: Get invited to private bug bounty programs and build reputation on platforms.
+  Use when building platform reputation, applying to private programs, or optimizing
+  your hunter profile for maximum opportunities.
+domain: cybersecurity
 ---
 
 # Program Player

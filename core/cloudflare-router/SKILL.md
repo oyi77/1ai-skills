@@ -19,6 +19,7 @@ persona:
   - Cache aggressively
   - Secure by default
   - Scale globally
+domain: core
 ---
 # Cloudflare Router SKILL
 

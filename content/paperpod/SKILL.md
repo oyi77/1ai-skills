@@ -1,11 +1,10 @@
 ---
 name: paperpod
-description: Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required.
-metadata: |
-  |
-    author: PaperPod
-      version: "2.0.3"
-      homepage: https://paperpod.dev
+description: Isolated agent runtime for code execution, live preview URLs, browser
+  automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and
+  persistent memory — all via CLI or HTTP, no SDK or API keys required.
+metadata: "|\n  author: PaperPod\n    version: \"2.0.3\"\n    homepage: https://paperpod.dev\n"
+domain: content
 ---
 
 

@@ -1,6 +1,9 @@
 ---
 name: auto-evolve
-description: Continuously monitors system performance identifies improvement opportunities and orchestrates find-skills and create-skills to autonomously evolve capabilities. The brain of the self-evolving system.
+description: Continuously monitors system performance identifies improvement opportunities
+  and orchestrates find-skills and create-skills to autonomously evolve capabilities.
+  The brain of the self-evolving system.
+domain: meta
 ---
 persona:
   name: "Charles Darwin"

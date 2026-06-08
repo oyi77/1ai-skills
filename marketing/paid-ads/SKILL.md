@@ -1,6 +1,9 @@
 ---
 name: paid-ads
-description: Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting, budget optimization, conversion tracking. Use when setting up ad campaigns, optimizing ad spend, or designing ad creative.
+description: Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting,
+  budget optimization, conversion tracking. Use when setting up ad campaigns, optimizing
+  ad spend, or designing ad creative.
+domain: marketing
 ---
 
 

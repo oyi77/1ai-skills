@@ -1,6 +1,8 @@
 ---
 name: storybook-ui
-description: Storybook for UI component development — stories, addons, controls, a11y testing, visual regression
+description: Storybook for UI component development — stories, addons, controls, a11y
+  testing, visual regression
+domain: content
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: prompt-engineering-expert
-description: Advanced expert in prompt engineering, custom instructions design, and prompt optimization for AI agents
+description: Advanced expert in prompt engineering, custom instructions design, and
+  prompt optimization for AI agents
+domain: core
 ---
 
 # Prompt Engineering Expert Skill

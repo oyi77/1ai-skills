@@ -1,6 +1,7 @@
 ---
 name: discord-bot
-description: "Skill for Build Discord bots. Provides automation and best practices."
+description: Skill for Build Discord bots. Provides automation and best practices.
+domain: integrations
 ---
 ## Discord Bot
 

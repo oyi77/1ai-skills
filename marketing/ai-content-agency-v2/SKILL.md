@@ -1,6 +1,7 @@
 ---
 name: ai-content-agency-v2
 description: ULTIMATE MASTER BLUEPRINT v2.0. Use when relevant to this domain.
+domain: marketing
 ---
 
 # ULTIMATE MASTER BLUEPRINT v2.0

@@ -1,6 +1,8 @@
 ---
 name: swiftui-patterns
-description: SwiftUI native iOS/macOS development — declarative UI, Combine, Core Data, widgets, App Clips
+description: SwiftUI native iOS/macOS development — declarative UI, Combine, Core
+  Data, widgets, App Clips
+domain: development
 ---
 
 

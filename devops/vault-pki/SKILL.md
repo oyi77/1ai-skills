@@ -1,6 +1,8 @@
 ---
 name: vault-pki
-description: Vault PKI secrets engine — certificate authority, dynamic certificates, certificate rotation
+description: Vault PKI secrets engine — certificate authority, dynamic certificates,
+  certificate rotation
+domain: devops
 ---
 
 

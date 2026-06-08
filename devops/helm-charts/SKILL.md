@@ -1,6 +1,8 @@
 ---
 name: helm-charts
-description: Helm chart development — templates, values, hooks, dependencies, chart testing, repository management
+description: Helm chart development — templates, values, hooks, dependencies, chart
+  testing, repository management
+domain: devops
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: azure-ops
-description: Azure operations — Virtual Machines, App Service, Azure Functions, AKS, Cosmos DB, Azure AD
+description: Azure operations — Virtual Machines, App Service, Azure Functions, AKS,
+  Cosmos DB, Azure AD
+domain: devops
 ---
 
 

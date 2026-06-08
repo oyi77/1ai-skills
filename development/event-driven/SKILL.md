@@ -1,6 +1,8 @@
 ---
 name: event-driven
-description: Event-driven architecture — event sourcing, CQRS, saga pattern, event buses, pub/sub patterns
+description: Event-driven architecture — event sourcing, CQRS, saga pattern, event
+  buses, pub/sub patterns
+domain: development
 ---
 
 

@@ -1,6 +1,9 @@
 ---
 name: social-engineer
-description: Social engineering and phishing for authorized security assessments. Use when testing human attack vectors, conducting phishing simulations, or assessing organizational security awareness.
+description: Social engineering and phishing for authorized security assessments.
+  Use when testing human attack vectors, conducting phishing simulations, or assessing
+  organizational security awareness.
+domain: cybersecurity
 ---
 
 # Social Engineer

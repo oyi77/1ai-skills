@@ -1,6 +1,7 @@
 ---
 name: zapier-alt
 description: Self-hosted Zapier alternative
+domain: automation
 ---
 ## Zapier Alt
 

@@ -1,6 +1,8 @@
 ---
 name: portfolio-monitor
-description: Track portfolio company KPIs, variances, returns analysis. Use when user says "monitor portfolio", "track KPIs", "portfolio returns".
+description: Track portfolio company KPIs, variances, returns analysis. Use when user
+  says "monitor portfolio", "track KPIs", "portfolio returns".
+domain: financial
 ---
 
 # Portfolio Monitor!
@@ -15,7 +17,7 @@ description: Track portfolio company KPIs, variances, returns analysis. Use when
 
 Tracks portfolio company KPIs, monitors variances vs. underwriting, and calculates returns (IRR, MOIC). Handles the full workflow: ingest → track → analyze → report.
 
-## When to Use:!
+## When to Use
 
 - Monthly portfolio review (all companies)
 - Quarterly board meetings (underwriting vs. actuals)
@@ -129,7 +131,7 @@ Top performers and watch-list companies ranked by IRR, MOIC, and variance.
 3. Co A: Double-down analysis (add $10M?)
 ```
 
-## Common Rationalizations:!
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -138,7 +140,7 @@ Top performers and watch-list companies ranked by IRR, MOIC, and variance.
 | "Portfolio is small, skip report" | <5 companies = higher concentration risk, monitor MORE |
 | "Quarterly is enough" | Monthly catches burns before they're fatal |
 
-## Red Flags:!
+## Red Flags
 
 - IRR < 15% for 3+ years (underperforming)
 - MOIC < 1.5x at exit year (failed investment)
@@ -147,7 +149,7 @@ Top performers and watch-list companies ranked by IRR, MOIC, and variance.
 - Gross margin < 50% (pricing problem)
 - 2+ companies on watch list (portfolio risk > 30%)
 
-## Verification:!
+## Verification
 
 After completing portfolio review, confirm:
 

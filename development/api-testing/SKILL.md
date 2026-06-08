@@ -1,6 +1,8 @@
 ---
 name: api-testing
-description: REST and GraphQL API testing — contract testing, schema validation, and integration test automation
+description: REST and GraphQL API testing — contract testing, schema validation, and
+  integration test automation
+domain: development
 ---
 
 

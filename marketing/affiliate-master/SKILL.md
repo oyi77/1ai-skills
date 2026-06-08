@@ -19,6 +19,7 @@ persona:
   - Disclose affiliate links
   - Provide value first
   - Build trust
+domain: marketing
 ---
 name
  description

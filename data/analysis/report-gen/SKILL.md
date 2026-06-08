@@ -1,6 +1,7 @@
 ---
 name: report-gen
 description: Generate automated reports
+domain: data
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 name: receiving-code-review
 description: Use when getting code feedback, before implementing suggestions.
+domain: development
 ---
 
 persona:

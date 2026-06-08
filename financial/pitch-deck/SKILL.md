@@ -1,6 +1,9 @@
 ---
 name: pitch-deck
-description: Populates branded pitch deck templates with financial data and market comps. Use when user says "create pitch deck", "pitch for investors", "populate pitchbook".
+description: Populates branded pitch deck templates with financial data and market
+  comps. Use when user says "create pitch deck", "pitch for investors", "populate
+  pitchbook".
+domain: financial
 ---
 
 # Pitch Deck
@@ -15,7 +18,7 @@ description: Populates branded pitch deck templates with financial data and mark
 
 Creates institutional-quality pitch decks for fundraising, M&A, and strategic initiatives. Populates branded PowerPoint templates with financial data, market analysis, and competitive positioning. Outputs .pptx files ready for investor meetings.
 
-## When to Use:
+## When to Use
 
 - Raising Series A/B/C or late-stage round
 - Pitching to VCs or PE firms
@@ -127,7 +130,7 @@ prs.save("output/investor_pitch_v3.pptx")
 | "I'll design later" | Template first = 2x faster, consistent branding |
 | "Competition slide is negative" | No competition = no market (red flag) |
 
-## Red Flags:
+## Red Flags
 
 - > 15 slides (loses narrative drive)
 - No "Why now?" slide (timing is critical)
@@ -137,7 +140,7 @@ prs.save("output/investor_pitch_v3.pptx")
 - Competitive slide missing (or shows "no competition")
 - Template not followed (branding inconsistency)
 
-## Verification:
+## Verification
 
 After creating a pitch deck, confirm:
 

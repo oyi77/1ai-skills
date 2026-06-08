@@ -1,6 +1,8 @@
 ---
 name: gl-reconciler
-description: Finds breaks, traces root cause, routes for sign-off. Use when user says "reconcile GL", "find breaks", "trace accounting error".
+description: Finds breaks, traces root cause, routes for sign-off. Use when user says
+  "reconcile GL", "find breaks", "trace accounting error".
+domain: financial
 ---
 
 # GL Reconciler
@@ -15,7 +17,7 @@ description: Finds breaks, traces root cause, routes for sign-off. Use when user
 
 Finds breaks between GL accounts, traces root causes, and routes for sign-off. Handles the full reconciliation workflow: extract → compare → trace → correct → approve.
 
-## When to Use:
+## When to Use
 
 - Month-end close process
 - Variance > 2% in any GL account
@@ -126,7 +128,7 @@ je = {
 }
 ```
 
-## Common Rationalizations:
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -135,7 +137,7 @@ je = {
 | "Intercompany will clear next month" | I/C breaks compound, must resolve current period |
 | "FX variance is just exchange rate" | FX must be revalued at period-end rates |
 
-## Red Flags:
+## Red Flags
 
 - Trial balance out of balance (debits != credits)
 - Suspense account with balance > $0
@@ -144,7 +146,7 @@ je = {
 - Sign-off by same person who prepared
 - Missing support documentation
 
-## Verification:
+## Verification
 
 After completing reconciliation, confirm:
 

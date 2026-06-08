@@ -18,6 +18,7 @@ persona:
   - Continuous improvement
   - Evidence-based
   - Customer focused
+domain: core
 ---
 # KB — BerkahKarya Knowledge Base Skill
 

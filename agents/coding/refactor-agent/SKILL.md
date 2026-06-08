@@ -1,6 +1,7 @@
 ---
 name: refactor-agent
 description: Refactor Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Refactor Agent
 

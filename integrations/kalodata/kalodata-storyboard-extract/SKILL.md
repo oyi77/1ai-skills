@@ -1,6 +1,9 @@
 ---
 name: kalodata-storyboard-extract
-description: Use when extracting AI-generated storyboards from viral TikTok Shop videos, including scene breakdowns, visual descriptions, camera work analysis, and auto-generating content ideas for replication.
+description: Use when extracting AI-generated storyboards from viral TikTok Shop videos,
+  including scene breakdowns, visual descriptions, camera work analysis, and auto-generating
+  content ideas for replication.
+domain: integrations
 ---
 
 # Kalodata Storyboard Extract

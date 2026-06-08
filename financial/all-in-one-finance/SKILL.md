@@ -1,6 +1,12 @@
 ---
 name: all-in-one-finance
-description: Use when user mentions ticker symbols, tokens, forex pairs, commodities, portfolio, trade, DCF, valuation, technical analysis, on-chain metrics, risk management, position sizing, financial reports, market sentiment, macro liquidity, earnings, crypto forensics, or any investment analysis query. Also triggers on "should I buy/sell", "analyze this stock", "what's the market doing", "build a hedge", "check my portfolio risk", or financial compliance questions.
+description: Use when user mentions ticker symbols, tokens, forex pairs, commodities,
+  portfolio, trade, DCF, valuation, technical analysis, on-chain metrics, risk management,
+  position sizing, financial reports, market sentiment, macro liquidity, earnings,
+  crypto forensics, or any investment analysis query. Also triggers on "should I buy/sell",
+  "analyze this stock", "what's the market doing", "build a hedge", "check my portfolio
+  risk", or financial compliance questions.
+domain: financial
 ---
 
 # All-in-One Finance Agent Skill Suite

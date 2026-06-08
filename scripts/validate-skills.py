@@ -133,7 +133,18 @@ def validate_one(path: Path) -> list[str]:
     if not desc or not isinstance(desc, str) or not desc.strip():
         errors.append("missing-description")
 
+    domain = meta.get("domain")
+    if not domain or not isinstance(domain, str) or not domain.strip():
+        errors.append("missing-domain")
+    else:
+        # domain should match the top-level category dir (relative to ROOT)
+        rel = path.relative_to(ROOT) if path.is_absolute() else path
+        expected_cat = rel.parts[0] if len(rel.parts) > 1 else None
+        if expected_cat and domain.strip() != expected_cat:
+            errors.append(f"domain-mismatch[name='{domain.strip()}', dir='{expected_cat}']")
+
     return errors
+
 
 
 def fix_one(path: Path) -> list[str]:
@@ -198,6 +209,15 @@ def fix_one(path: Path) -> list[str]:
             )
         fixes.append("backfilled-description")
 
+    # Case D: missing domain. Derive from category directory.
+    if not meta.get("domain") or not str(meta.get("domain")).strip():
+        rel = path.relative_to(ROOT) if path.is_absolute() else path
+        category = rel.parts[0] if len(rel.parts) > 1 else None
+        if category:
+            meta["domain"] = category
+            fixes.append("backfilled-domain")
+
+
     if not fixes:
         return []
 
@@ -218,6 +238,45 @@ def fix_one(path: Path) -> list[str]:
     )
     path.write_text(new_text, encoding="utf-8")
     return fixes
+
+
+
+def check_broken_links(skills: list[Path]) -> dict[str, list[str]]:
+    """Check for broken /skills/<name> internal links across all skills."""
+    import re as _re
+
+    # Build name -> path index
+    name_to_path: dict[str, str] = {}
+    for p in skills:
+        try:
+            text = p.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        fm, _, _ = split_frontmatter(text)
+        if fm is None:
+            continue
+        try:
+            meta = yaml.safe_load(fm) or {}
+        except Exception:
+            continue
+        if isinstance(meta, dict) and meta.get("name"):
+            name_to_path[meta["name"]] = p.relative_to(ROOT).as_posix()
+
+    broken: dict[str, list[str]] = {}
+    link_re = _re.compile(r"\[([^\]]*)\]\(/skills/([^)]+)\)")
+    for p in skills:
+        try:
+            text = p.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        for m in link_re.finditer(text):
+            skill_name = m.group(2)
+            rel = p.relative_to(ROOT).as_posix()
+            if skill_name not in name_to_path:
+                broken.setdefault(rel, []).append(
+                    f"broken-link[/skills/{skill_name}]"
+                )
+    return broken
 
 
 def main() -> int:
@@ -248,13 +307,19 @@ def main() -> int:
                     else:
                         del issues[rel]
 
+    # Cross-file: check for broken /skills/<name> links
+    broken_links = check_broken_links(skills)
+    issues.update(broken_links)
+
     report = {
         "total_skills": len(skills),
         "issues_count": len(issues),
         "fixes_applied": len(fix_log),
+        "broken_links": len(broken_links),
         "issues": issues,
         "fixes": fix_log,
     }
+
 
     if args.report:
         args.report.write_text(json.dumps(report, indent=2))

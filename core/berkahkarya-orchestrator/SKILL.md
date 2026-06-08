@@ -1,6 +1,7 @@
 ---
 name: berkahkarya-orchestrator
 description: BerkahKarya Orchestrator. Use when relevant to this domain.
+domain: core
 ---
 # BerkahKarya Orchestrator
 

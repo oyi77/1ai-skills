@@ -1,10 +1,8 @@
 ---
 name: content-scheduler
 description: Schedule and manage content publishing across platforms with Notion calendar
-allowed-tools: |
-  |
-    - MCP(notion:*)
-      - MCP(slack:*)
+allowed-tools: "|\n  - MCP(notion:*)\n    - MCP(slack:*)\n"
+domain: marketing
 ---
 
 

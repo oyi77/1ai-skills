@@ -1,10 +1,9 @@
 ---
 name: analytics-reporting
-description: Generate analytics reports, dashboards, and business metrics with Notion and Slack
-allowed-tools: |
-  |
-    - MCP(notion:*)
-      - MCP(slack:*)
+description: Generate analytics reports, dashboards, and business metrics with Notion
+  and Slack
+allowed-tools: "|\n  - MCP(notion:*)\n    - MCP(slack:*)\n"
+domain: marketing
 ---
 
 

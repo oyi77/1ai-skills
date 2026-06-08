@@ -1,6 +1,8 @@
 ---
 name: message-queue
-description: Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub, dead letter queues, retry logic
+description: Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub,
+  dead letter queues, retry logic
+domain: development
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: omniroute-integration
-description: Integrate with OmniRoute AI Router for multi-provider LLM routing, MCP server access, and A2A agent-to-agent orchestration
+description: Integrate with OmniRoute AI Router for multi-provider LLM routing, MCP
+  server access, and A2A agent-to-agent orchestration
+domain: core
 ---
 persona:
   name: "Sam Altman"

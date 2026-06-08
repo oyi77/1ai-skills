@@ -1,6 +1,8 @@
 ---
 name: neon-postgres
-description: Neon serverless Postgres — branching, autoscaling, connection pooling, edge-compatible Postgres
+description: Neon serverless Postgres — branching, autoscaling, connection pooling,
+  edge-compatible Postgres
+domain: development
 ---
 
 

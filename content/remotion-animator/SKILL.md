@@ -1,6 +1,7 @@
 ---
 name: remotion-animator
 description: Remotion Animator - SKILL.md. Use when relevant to this domain.
+domain: content
 ---
 
 # Remotion Animator - SKILL.md

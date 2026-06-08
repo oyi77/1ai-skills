@@ -1,6 +1,8 @@
 ---
 name: cockroachdb-patterns
-description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region
+description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation,
+  geo-partitioning, multi-region
+domain: development
 ---
 
 

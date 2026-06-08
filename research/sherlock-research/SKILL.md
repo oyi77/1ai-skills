@@ -1,6 +1,7 @@
 ---
 name: sherlock-research
 description: Sherlock Research Method. Use when relevant to this domain.
+domain: research
 ---
 # Sherlock Research Method
 

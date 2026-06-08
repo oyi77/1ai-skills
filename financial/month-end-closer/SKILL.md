@@ -1,6 +1,8 @@
 ---
 name: month-end-closer
-description: Accruals, roll-forwards, variance commentary. Use when user says "month-end close", "accruals", "roll-forward".
+description: Accruals, roll-forwards, variance commentary. Use when user says "month-end
+  close", "accruals", "roll-forward".
+domain: financial
 ---
 
 # Month-End Closer
@@ -15,7 +17,7 @@ description: Accruals, roll-forwards, variance commentary. Use when user says "m
 
 Automates the month-end close process: accruals, roll-forwards, variance commentary, and close checklist. Handles the full workflow: review → accrue → roll-forward → analyze → close.
 
-## When to Use:
+## When to Use
 
 - Month-end close (every month, 3-5 day cycle)
 - Quarter-end close (extended review)
@@ -125,7 +127,7 @@ All close tasks completed within the target 3.5-day window.
 ## CFO Sign-Off: ✅ Approved 2024-04-05
 ```
 
-## Common Rationalizations:
+## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
@@ -134,7 +136,7 @@ All close tasks completed within the target 3.5-day window.
 | "Q4 is always messy, skip details" | Q4 = hardest close, needs MORE detail |
 | "Prior accruals auto-reverse" | Must verify reversal, not assume |
 
-## Red Flags:
+## Red Flags
 
 - Close > 5 days (target: 3-4 days)
 - Variance > 5% without written explanation
@@ -143,7 +145,7 @@ All close tasks completed within the target 3.5-day window.
 - CFO hasn't sign-off within 24 hours
 - Prior month accruals not reversed
 
-## Verification:
+## Verification
 
 After month-end close, confirm:
 

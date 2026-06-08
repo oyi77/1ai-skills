@@ -1,6 +1,7 @@
 ---
 name: slash-commands
 description: Create Slack slash commands
+domain: integrations
 ---
 ## Slash Commands
 

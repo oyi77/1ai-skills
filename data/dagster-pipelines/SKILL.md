@@ -1,6 +1,8 @@
 ---
 name: dagster-pipelines
-description: Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers
+description: Dagster data orchestration — software-defined assets, ops, jobs, schedules,
+  sensors, IO managers
+domain: data
 ---
 
 

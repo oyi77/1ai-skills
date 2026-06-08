@@ -1,6 +1,8 @@
 ---
 name: monorepo-tooling
-description: Monorepo management — Turborepo, Nx, pnpm workspaces, shared packages, CI optimization
+description: Monorepo management — Turborepo, Nx, pnpm workspaces, shared packages,
+  CI optimization
+domain: development
 ---
 
 

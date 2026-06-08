@@ -1,6 +1,7 @@
 ---
 name: content-analytics-engine
 description: Content Analytics Engine. Use when relevant to this domain.
+domain: marketing
 ---
 
 # Content Analytics Engine

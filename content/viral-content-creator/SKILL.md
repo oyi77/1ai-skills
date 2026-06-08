@@ -1,6 +1,7 @@
 ---
 name: viral-content-creator
 description: Viral Content Creator. Use when relevant to this domain.
+domain: content
 ---
 
 

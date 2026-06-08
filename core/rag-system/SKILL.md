@@ -1,6 +1,8 @@
 ---
 name: rag-system
-description: 'Skill: rag-system. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: rag-system. See SKILL.md body for details. Use when this domain
+  is relevant.'
+domain: core
 ---
 *This RAG system powers Vilona's memory. Every significant decision, lesson learned, and insight gets stored and retrieved automatically.*
 

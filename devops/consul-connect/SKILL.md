@@ -1,6 +1,8 @@
 ---
 name: consul-connect
-description: Consul Connect service mesh — service-to-service encryption, intentions, sidecar proxies, gateways
+description: Consul Connect service mesh — service-to-service encryption, intentions,
+  sidecar proxies, gateways
+domain: devops
 ---
 
 

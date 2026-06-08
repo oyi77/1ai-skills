@@ -1,6 +1,8 @@
 ---
 name: vilona
-description: 'Skill: vilona. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: vilona. See SKILL.md body for details. Use when this domain is
+  relevant.'
+domain: core
 ---
 ## Available Tools (USE ALL)
 

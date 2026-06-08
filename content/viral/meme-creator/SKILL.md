@@ -1,6 +1,9 @@
 ---
 name: meme-creator
-description: Meme Creator skill for automated content workflows. Provides tools and templates for auto, creator, generate operations, integration with AI pipelines, and performance optimization.
+description: Meme Creator skill for automated content workflows. Provides tools and
+  templates for auto, creator, generate operations, integration with AI pipelines,
+  and performance optimization.
+domain: content
 ---
 
 

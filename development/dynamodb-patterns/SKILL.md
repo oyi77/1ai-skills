@@ -1,6 +1,8 @@
 ---
 name: dynamodb-patterns
-description: Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams, PartiQL, performance optimization
+description: Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams,
+  PartiQL, performance optimization
+domain: development
 ---
 
 

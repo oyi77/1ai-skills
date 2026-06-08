@@ -1,6 +1,7 @@
 ---
 name: notion
 description: Query tasks. Use when relevant to this domain.
+domain: productivity
 ---
 ## Usage Examples
 ```

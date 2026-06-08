@@ -1,6 +1,9 @@
 ---
 name: bug-hunting
-description: Automated bug bounty hunting workflow — recon, hunt, validate, report. Use when testing web applications for vulnerabilities, running security assessments, or preparing bug bounty submissions.
+description: Automated bug bounty hunting workflow — recon, hunt, validate, report.
+  Use when testing web applications for vulnerabilities, running security assessments,
+  or preparing bug bounty submissions.
+domain: cybersecurity
 ---
 
 # Bug Hunting Skill

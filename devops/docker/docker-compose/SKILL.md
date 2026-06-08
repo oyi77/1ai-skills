@@ -1,6 +1,7 @@
 ---
 name: docker-compose
 description: Generate docker-compose files
+domain: devops
 ---
 
 

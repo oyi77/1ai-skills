@@ -1,6 +1,8 @@
 ---
 name: ansible-automation
-description: Ansible automation — playbooks, roles, inventory, variables, handlers, Galaxy, AWX
+description: Ansible automation — playbooks, roles, inventory, variables, handlers,
+  Galaxy, AWX
+domain: devops
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: crewai-agents
-description: CrewAI multi-agent orchestration — agents, tasks, crews, tools, memory, delegation
+description: CrewAI multi-agent orchestration — agents, tasks, crews, tools, memory,
+  delegation
+domain: core
 ---
 
 ## Overview

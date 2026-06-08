@@ -1,6 +1,8 @@
 ---
 name: executing-plans
-description: Use when you have a completed, Momus-approved plan artifact ready for execution with checkpoint discipline
+description: Use when you have a completed, Momus-approved plan artifact ready for
+  execution with checkpoint discipline
+domain: development
 ---
 
 persona:

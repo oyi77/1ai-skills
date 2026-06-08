@@ -1,6 +1,9 @@
 ---
 name: meta-find-skills
-description: Automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency
+description: Automatically discover evaluate and activate community skills when local
+  skills dont cover user needs Includes credibility scoring and safety checks for
+  complete self-sufficiency
+domain: meta
 ---
 persona:
   name: "Ada Lovelace"

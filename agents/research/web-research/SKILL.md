@@ -1,6 +1,7 @@
 ---
 name: web-research
 description: Web Research Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Web Research Agent
 

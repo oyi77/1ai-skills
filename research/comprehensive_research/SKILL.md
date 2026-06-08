@@ -19,6 +19,7 @@ persona:
   - Use mental models
   - Stay within circle of competence
   - Be patient
+domain: research
 ---
 # Comprehensive Research Skill
 

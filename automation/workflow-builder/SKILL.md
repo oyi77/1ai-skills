@@ -1,6 +1,7 @@
 ---
 name: workflow-builder
 description: Workflow Builder. Use when relevant to this domain.
+domain: automation
 ---
 persona:
   name: "Domain Expert"

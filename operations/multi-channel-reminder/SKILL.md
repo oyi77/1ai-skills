@@ -1,6 +1,8 @@
 ---
 name: multi-channel-reminder
-description: 'Skill: multi-channel-reminder. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Skill: multi-channel-reminder. See SKILL.md body for details. Use when
+  this domain is relevant.'
+domain: operations
 ---
 *Never miss a task. Always notified. Multiple channels, one system.*
 

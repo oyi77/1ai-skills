@@ -1,22 +1,17 @@
 ---
 name: tiktok-slideshow
-description: |
-  |
-    >
-      Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge API.
-      Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,
-      post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation.
-      Do NOT use for: general TikTok account management, TikTok analytics or metrics, video editing or
-      video creation (this is for photo slideshows only), non-TikTok social media platforms, or any task unrelated
-      to creating visual slideshow content for TikTok.
-metadata: |
-  |
-    {
-        "openclaw": {
-          "emoji": "📱",
-          "requires": { "bins": ["ffmpeg", "curl"], "env": ["PEXELS_API_KEY"] }
-        }
-      }
+description: "|\n  >\n    Creates TikTok image carousels with text overlays using\
+  \ Pexels API & FFmpeg, then uploads via PostBridge API.\n    Use when the user wants\
+  \ to: create TikTok slideshows or carousels, search images for social media content,\n\
+  \    post or upload slideshow content to TikTok, edit slide text, or manage image\
+  \ collections for content creation.\n    Do NOT use for: general TikTok account\
+  \ management, TikTok analytics or metrics, video editing or\n    video creation\
+  \ (this is for photo slideshows only), non-TikTok social media platforms, or any\
+  \ task unrelated\n    to creating visual slideshow content for TikTok.\n"
+metadata: "|\n  {\n      \"openclaw\": {\n        \"emoji\": \"\U0001F4F1\",\n   \
+  \     \"requires\": { \"bins\": [\"ffmpeg\", \"curl\"], \"env\": [\"PEXELS_API_KEY\"\
+  ] }\n      }\n    }\n"
+domain: marketing
 ---
 
 

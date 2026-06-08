@@ -1,6 +1,8 @@
 ---
 name: postcss-plugins
-description: PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration
+description: PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins,
+  preset configuration
+domain: content
 ---
 
 

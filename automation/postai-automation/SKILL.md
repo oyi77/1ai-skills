@@ -1,6 +1,7 @@
 ---
 name: postai-automation
 description: POST AI Automation. Use when relevant to this domain.
+domain: automation
 ---
 # POST AI Automation
 

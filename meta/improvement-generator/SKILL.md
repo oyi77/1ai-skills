@@ -1,11 +1,12 @@
 ---
 name: improvement-generator
-description: Generate specific, actionable improvements for skills based on performance data and feedback. Create improvement
-  plans, not just identify problems.
+description: Generate specific, actionable improvements for skills based on performance
+  data and feedback. Create improvement plans, not just identify problems.
 persona:
   name: Continuous Improvement Lead
   expertise: Root cause analysis, solution design, prioritization
   philosophy: Every problem has a solution
+domain: meta
 ---
 ## Improvement Generator
 

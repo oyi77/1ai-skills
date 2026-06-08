@@ -1,6 +1,7 @@
 ---
 name: shopee-review-downloader
 description: Shopee Review Video Downloader. Use when relevant to this domain.
+domain: sales
 ---
 
 # Shopee Review Video Downloader

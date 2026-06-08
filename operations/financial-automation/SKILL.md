@@ -1,6 +1,8 @@
 ---
 name: financial-automation
-description: AI CFO for solo businesses — invoicing, expense categorization, tax optimization, cash flow forecasting, multi-currency management
+description: AI CFO for solo businesses — invoicing, expense categorization, tax optimization,
+  cash flow forecasting, multi-currency management
+domain: operations
 ---
 
 ## Overview

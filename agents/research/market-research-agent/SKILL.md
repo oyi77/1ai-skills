@@ -1,6 +1,7 @@
 ---
 name: market-research-agent
 description: Market Research Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Market Research Agent
 

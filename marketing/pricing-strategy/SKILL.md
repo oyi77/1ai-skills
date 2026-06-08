@@ -1,6 +1,9 @@
 ---
 name: pricing-strategy
-description: Pricing page design, tier structuring, anchoring psychology, conversion optimization. Use when designing pricing pages, setting up tier structures, or optimizing pricing conversion rates.
+description: Pricing page design, tier structuring, anchoring psychology, conversion
+  optimization. Use when designing pricing pages, setting up tier structures, or optimizing
+  pricing conversion rates.
+domain: marketing
 ---
 
 

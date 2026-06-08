@@ -1,6 +1,9 @@
 ---
 name: affiliate-marketing
-description: AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.
+description: AI-powered affiliate marketing automation. Research products, generate
+  content, optimize conversions, and build passive income through automated affiliate
+  campaigns.
+domain: marketing
 ---
 
 
@@ -517,8 +520,8 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [content-creator](/skills/content-creator) - Generate visual content
-- [writing-skills](/skills/writing-skills) - Write reviews
-- [seo-auditor](/skills/seo-auditor) - Optimize content
-- [twitter-automation](/skills/twitter-automation) - Promote content
-- [build-in-public](/skills/build-in-public) - Build audience
+- [content-creator](../content-creator/SKILL.md) - Generate visual content
+- [writing-skills](../../content/writing-skills/SKILL.md) - Write reviews
+- [seo-auditor](../seo-auditor/SKILL.md) - Optimize content
+- [twitter-automation](../twitter-automation/SKILL.md) - Promote content
+- [build-in-public](../build-in-public/SKILL.md) - Build audience

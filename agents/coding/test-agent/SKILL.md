@@ -1,6 +1,7 @@
 ---
 name: test-agent
 description: Test Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Test Agent
 

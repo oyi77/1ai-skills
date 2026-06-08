@@ -1,6 +1,8 @@
 ---
 name: payment-integration
-description: Payment platform integration — Stripe, Paddle, Lemon Squeezy. Checkout flows, subscriptions, webhooks, billing management
+description: Payment platform integration — Stripe, Paddle, Lemon Squeezy. Checkout
+  flows, subscriptions, webhooks, billing management
+domain: development
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 name: citedy-content-ingestion
 description: Content Ingestion — Skill Instructions. Use when relevant to this domain.
+domain: research
 ---
 persona:
   name: "Domain Expert"

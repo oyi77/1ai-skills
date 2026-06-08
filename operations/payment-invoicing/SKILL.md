@@ -1,6 +1,9 @@
 ---
 name: payment-invoicing
-description: Process payments and generate invoices using Indonesian payment gateways (TriPay, LYNK.ID, Midtrans). Create payment links, track transactions, and automate invoicing for 1-man company revenue collection.
+description: Process payments and generate invoices using Indonesian payment gateways
+  (TriPay, LYNK.ID, Midtrans). Create payment links, track transactions, and automate
+  invoicing for 1-man company revenue collection.
+domain: operations
 ---
 persona:
   name: "Domain Expert"

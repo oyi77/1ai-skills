@@ -1,6 +1,7 @@
 ---
 name: joko-moltbook
 description: Joko Moltbook Agent. Use when relevant to this domain.
+domain: automation
 ---
 persona:
   name: "Domain Expert"

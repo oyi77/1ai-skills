@@ -1,6 +1,7 @@
 ---
 name: company-kb
-description: company-kb — Company Knowledge Base Skill. Use when relevant to this domain.
+description: company-kb — Company Knowledge Base Skill. Use when relevant to this
+  domain.
 persona:
   name: Domain Expert
   title: Master of Company Kb
@@ -18,6 +19,7 @@ persona:
   - Continuous improvement
   - Evidence-based
   - Customer focused
+domain: core
 ---
 # company-kb — Company Knowledge Base Skill
 

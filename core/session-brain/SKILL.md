@@ -1,7 +1,9 @@
 ---
 name: session-brain
-description: Query bk-hub for project context on session start so every session begins with memory instead of starting blind
+description: Query bk-hub for project context on session start so every session begins
+  with memory instead of starting blind
 trigger: auto
+domain: core
 ---
 persona:
   name: "Marvin Minsky"

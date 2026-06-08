@@ -1,6 +1,8 @@
 ---
 name: multi-platform-distribution
-description: One piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post
+description: One piece of content becomes 10 — blog to Twitter thread, LinkedIn article,
+  YouTube script, newsletter, TikTok script, podcast outline, Reddit post
+domain: content
 ---
 
 

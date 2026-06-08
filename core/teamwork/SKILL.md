@@ -1,6 +1,9 @@
 ---
 name: teamwork
-description: Dynamically creates and manages AI agent teams for complex tasks. Invoke when user requests multi-agent collaboration, complex project execution, or when tasks require specialized roles and coordinated workflow.
+description: Dynamically creates and manages AI agent teams for complex tasks. Invoke
+  when user requests multi-agent collaboration, complex project execution, or when
+  tasks require specialized roles and coordinated workflow.
+domain: core
 ---
 persona:
   name: "Patrick Lencioni"

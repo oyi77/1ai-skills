@@ -1,6 +1,8 @@
 ---
 name: svelte-patterns
-description: Svelte 5 and SvelteKit development patterns — runes, stores, server-side rendering, form actions, edge deployment
+description: Svelte 5 and SvelteKit development patterns — runes, stores, server-side
+  rendering, form actions, edge deployment
+domain: development
 ---
 
 

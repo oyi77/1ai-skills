@@ -1,6 +1,9 @@
 ---
 name: hackingtool
-description: All-in-one terminal hacking toolkit — 185+ security tools across 20 categories with unified menu, search, and batch install. Use when setting up a pentest environment, launching security tools, or managing a hacking toolkit.
+description: All-in-one terminal hacking toolkit — 185+ security tools across 20 categories
+  with unified menu, search, and batch install. Use when setting up a pentest environment,
+  launching security tools, or managing a hacking toolkit.
+domain: cybersecurity
 ---
 
 ## Overview

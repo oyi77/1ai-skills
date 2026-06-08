@@ -1,6 +1,9 @@
 ---
 name: model-builder
-description: Builds and updates DCF, LBO, and 3-statement financial models in Excel with live data connections. Use when user says "build DCF", "create LBO model", "populate 3-statement model".
+description: Builds and updates DCF, LBO, and 3-statement financial models in Excel
+  with live data connections. Use when user says "build DCF", "create LBO model",
+  "populate 3-statement model".
+domain: financial
 ---
 
 # Model Builder
@@ -15,7 +18,7 @@ description: Builds and updates DCF, LBO, and 3-statement financial models in Ex
 
 Creates institutional-quality financial models: DCF (Discounted Cash Flow), LBO (Leveraged Buyout), and 3-Statement Models. Outputs live Excel files with embedded formulas, scenario switches, and sensitivity tables.
 
-## When to Use:
+## When to Use
 
 - Building a DCF for valuation
 - Creating an LBO model for private equity
@@ -120,7 +123,7 @@ sensitivity = {
 | "WACC is just 10%" | WACC drives 30%+ of valuation variance |
 | "Terminal value doesn't matter" | TV is 60-70% of total DCF value |
 
-## Red Flags:
+## Red Flags
 
 - Hardcoded numbers (not linked to assumptions tab)
 - Missing circularity switches (debt calculations)
@@ -129,7 +132,7 @@ sensitivity = {
 - Terminal value > 70% of total value (check!)
 - No data validation (negative revenue, etc.)
 
-## Verification:
+## Verification
 
 After building a model, confirm:
 

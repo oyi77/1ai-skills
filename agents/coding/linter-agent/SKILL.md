@@ -1,6 +1,7 @@
 ---
 name: linter-agent
 description: Linter Agent. Use when relevant to this domain.
+domain: agents
 ---
 # Linter Agent
 

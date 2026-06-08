@@ -1,6 +1,8 @@
 ---
 name: storage-mcp
-description: MCP servers for cloud storage. Connect AI agents to S3, Google Drive, Dropbox, and file storage for automated backup, sync, and management.
+description: MCP servers for cloud storage. Connect AI agents to S3, Google Drive,
+  Dropbox, and file storage for automated backup, sync, and management.
+domain: integrations
 ---
 
 # Storage MCP Skill
@@ -374,9 +376,9 @@ Refer to the skill overview for detailed usage instructions.
 
 ## Related Skills
 
-- [database-mcp](/skills/database-mcp) - Database operations
-- [cloud-mcp](/skills/cloud-mcp) - Cloud infrastructure
-- [automation](/skills/automation) - Workflow automation
+- [database-mcp](../database-mcp/SKILL.md) - Database operations
+- [cloud-mcp](../cloud-mcp/SKILL.md) - Cloud infrastructure
+- [automation](../automation/) - Workflow automation
 
 ## How to Use
 

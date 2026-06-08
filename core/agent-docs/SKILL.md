@@ -1,6 +1,9 @@
 ---
 name: agent-docs
-description: Use when writing documentation optimized for AI agent consumption - SKILL.md files, README files, API docs, or any documentation that will be read by LLMs in context windows.
+description: Use when writing documentation optimized for AI agent consumption - SKILL.md
+  files, README files, API docs, or any documentation that will be read by LLMs in
+  context windows.
+domain: core
 ---
 persona:
   name: "Don Knuth"

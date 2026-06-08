@@ -1,6 +1,9 @@
 ---
 name: analytics-dashboard
-description: Track performance across all platforms. Monitor social media metrics, ad performance, website analytics, and revenue. Generate automated reports and identify trends for data-driven decisions.
+description: Track performance across all platforms. Monitor social media metrics,
+  ad performance, website analytics, and revenue. Generate automated reports and identify
+  trends for data-driven decisions.
+domain: marketing
 ---
 
 persona:

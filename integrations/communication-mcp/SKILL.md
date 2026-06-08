@@ -1,6 +1,8 @@
 ---
 name: communication-mcp
-description: MCP servers for team communication. Connect AI agents to Slack, Discord, and Telegram for notifications, messaging, and channel management.
+description: MCP servers for team communication. Connect AI agents to Slack, Discord,
+  and Telegram for notifications, messaging, and channel management.
+domain: integrations
 ---
 
 # Communication MCP Skill
@@ -360,9 +362,9 @@ Refer to the skill overview for detailed usage instructions.
 
 ## Related Skills
 
-- [skill-performance-monitor](/skills/skill-performance-monitor) - Monitoring
-- [automation](/skills/automation) - Workflow automation
-- [alerting](/skills/alerting) - Alert management
+- [skill-performance-monitor](../../core/skill-performance-monitor/SKILL.md) - Monitoring
+- [automation](../automation/) - Workflow automation
+- [alerting](../alerting/) - Alert management
 
 ## How to Use
 

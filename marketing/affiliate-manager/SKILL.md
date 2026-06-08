@@ -1,6 +1,8 @@
 ---
 name: affiliate-manager
-description: Automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach, commission tracking, and placement optimization
+description: Automated discovery of affiliate programs, partnership opportunities,
+  and cross-promotion deals with outreach, commission tracking, and placement optimization
+domain: marketing
 ---
 
 

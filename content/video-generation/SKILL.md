@@ -1,6 +1,8 @@
 ---
 name: video-generation
-description: AI video generation — Sora, Runway, Kling, Pika, Luma. Text-to-video, image-to-video, video editing with AI
+description: AI video generation — Sora, Runway, Kling, Pika, Luma. Text-to-video,
+  image-to-video, video editing with AI
+domain: content
 ---
 
 

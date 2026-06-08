@@ -1,6 +1,8 @@
 ---
 name: tauri-apps
-description: Tauri desktop app development — Rust backend, web frontend, native APIs, small binary size, cross-platform
+description: Tauri desktop app development — Rust backend, web frontend, native APIs,
+  small binary size, cross-platform
+domain: development
 ---
 
 

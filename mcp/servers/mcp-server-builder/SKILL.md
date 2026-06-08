@@ -1,12 +1,13 @@
 ---
 name: mcp-server-builder
-description: Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts
-  that any AI agent can use.
+description: Create MCP (Model Context Protocol) servers for any API or service. Auto-generate
+  tools, resources, and prompts that any AI agent can use.
 persona:
   name: Anthropic MCP Team
   expertise: Protocol design, API integration, AI agent architecture
   philosophy: Standards enable interoperability
   credentials: Created MCP standard at Anthropic
+domain: mcp
 ---
 ## MCP Server Builder
 

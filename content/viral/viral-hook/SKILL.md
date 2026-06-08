@@ -1,6 +1,7 @@
 ---
 name: viral-hook
 description: Generate viral hooks instantly
+domain: content
 ---
 
 

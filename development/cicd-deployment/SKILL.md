@@ -1,6 +1,7 @@
 ---
 name: cicd-deployment
 description: cicd-deployment. Use when relevant to this domain.
+domain: development
 ---
 
 # cicd-deployment

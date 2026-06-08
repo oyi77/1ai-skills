@@ -1,6 +1,7 @@
 ---
 name: finance-tracker
 description: Finance Tracker — BerkahKarya. Use when relevant to this domain.
+domain: financial
 ---
 # Finance Tracker — BerkahKarya
 

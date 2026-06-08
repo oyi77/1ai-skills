@@ -1,6 +1,7 @@
 ---
 name: github-actions
 description: Automate GitHub Actions
+domain: integrations
 ---
 ## Github Actions
 

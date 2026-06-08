@@ -1,6 +1,8 @@
 ---
 name: postgres-queries
-description: PostgreSQL optimization — query tuning, schema design, indexing strategies, and performance analysis
+description: PostgreSQL optimization — query tuning, schema design, indexing strategies,
+  and performance analysis
+domain: development
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 name: appwrite-patterns
-description: Appwrite backend-as-a-service — auth, database, storage, functions, realtime for web/mobile/desktop
+description: Appwrite backend-as-a-service — auth, database, storage, functions, realtime
+  for web/mobile/desktop
+domain: development
 ---
 
 

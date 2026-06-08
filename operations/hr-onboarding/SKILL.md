@@ -1,6 +1,7 @@
 ---
 name: hr-onboarding
 description: HR & Onboarding Skill 🚀. Use when relevant to this domain.
+domain: operations
 ---
 # HR & Onboarding Skill 🚀
 

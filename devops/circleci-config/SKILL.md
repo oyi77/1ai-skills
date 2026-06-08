@@ -1,6 +1,8 @@
 ---
 name: circleci-config
-description: CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config
+description: CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic
+  config
+domain: devops
 ---
 
 

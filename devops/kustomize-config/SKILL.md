@@ -1,6 +1,8 @@
 ---
 name: kustomize-config
-description: Kustomize Kubernetes configuration — bases, overlays, patches, generators, transformers
+description: Kustomize Kubernetes configuration — bases, overlays, patches, generators,
+  transformers
+domain: devops
 ---
 
 

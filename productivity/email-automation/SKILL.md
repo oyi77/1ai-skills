@@ -2,9 +2,10 @@
 name: email-automation
 description: Automate email workflows, templates, and campaigns with Gmail MCP integration
 allowed-tools:
-  - Bash(gmail:*)
-  - MCP(gmail-mcp:*)
-  - MCP(nineteen-blocks:*)
+- Bash(gmail:*)
+- MCP(gmail-mcp:*)
+- MCP(nineteen-blocks:*)
+domain: productivity
 ---
 persona:
   name: "Domain Expert"

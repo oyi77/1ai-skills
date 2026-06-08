@@ -1,6 +1,7 @@
 ---
 name: finance-trading
 description: Maybe HFT Hedging EA. Use when relevant to this domain.
+domain: research
 ---
 # Maybe HFT Hedging EA
 
