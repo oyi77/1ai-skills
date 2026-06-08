@@ -1,8 +1,8 @@
-# 1ai-Skills — 1284 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 1286 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 1284](https://img.shields.io/badge/skills-1284-blue)](https://github.com/oyi77/1ai-skills)
+[![Skills: 1286](https://img.shields.io/badge/skills-1286-blue)](https://github.com/oyi77/1ai-skills)
 [![Categories: 18](https://img.shields.io/badge/categories-18-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **1284 production-ready AI agent skills** organized across **18 categories** — including **779 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **1286 production-ready AI agent skills** organized across **18 categories** — including **785 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -154,11 +154,11 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 1284 Skills by Category
+## All 1286 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
-| **cybersecurity/** | 779 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
+| **cybersecurity/** | 785 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
 | **development/** | 83 | TDD, systematic debugging, code review, cherry-picked agent skills, AI skill integration, free developer resources |
 | **content/** | 62 | Remotion video engine, video generation, UI/UX Pro Max (161 rules), anti-slop frontend (13 styles), design systems |
 | **devops/** | 38 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, free cloud infrastructure |
@@ -207,7 +207,7 @@ Skills now reference each other (not duplicate content):
 - **Faceless YouTube** — MrBeast-style automated YouTube content
 - **Seedance** — Cinematic AI video production
 
-### Cybersecurity (779 skills, 26 domains)
+### Cybersecurity (785 skills, 26 domains)
 - **Threat Hunting** — 55 skills: APT detection, MITRE ATT&CK mapping, Sigma rules, anomaly detection
 - **Cloud Security** — 60 skills: AWS/Azure/GCP hardening, CSPM, IAM, container security
 - **Digital Forensics** — 37 skills: memory forensics, disk imaging, malware reverse engineering
@@ -248,7 +248,7 @@ Each skill contains:
 ├── automation/    # Workflow automation & bots (21)
 ├── content/       # Content creation & media (22)
 ├── core/          # Infrastructure & memory (24)
-├── cybersecurity/ # Security skills — 26 domains (779) ← NEW
+├── cybersecurity/ # Security skills — 26 domains (785) ← NEW
 ├── data/          # Data analysis & visualization (4)
 ├── development/   # Coding, debugging, TDD (17)
 ├── devops/        # Docker, CI/CD, K8s (6)
@@ -268,7 +268,7 @@ Each skill contains:
 ## Use Cases
 
 - **AI Agent Developers** — Add expert-level capabilities to any LLM agent
-- **Security Teams** — 754 cybersecurity skills: threat hunting, forensics, pen testing, red teaming, SOC ops, cloud security, incident response
+- **Security Teams** — 785 cybersecurity skills: threat hunting, forensics, pen testing, red teaming, SOC ops, cloud security, incident response
 - **Automation Engineers** — Pre-built workflows for n8n, Slack, Discord, WhatsApp
 - **SEO Professionals** — Technical SEO, content optimization, GEO for AI Overviews
 - **Traders** — Black Edge intelligence, Polymarket analysis, crypto bots
