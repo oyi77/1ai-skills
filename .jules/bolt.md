@@ -17,3 +17,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2025-06-12 - [SQLite N+1 Batched Updates via executemany for Archive]
+**Learning:** Found an N+1 query problem in the `_maybe_archive_old` method in `episodic_memory.py` where enforcing the maximum items limit during `add_episode` executed an individual `UPDATE` statement inside a loop for each episode `id` fetched.
+**Action:** Always batch N+1 `UPDATE` operations into a single `sqlite3.Connection.executemany()` call. Ensure checking if the rows list is not empty before executing to prevent unnecessary database interaction.
