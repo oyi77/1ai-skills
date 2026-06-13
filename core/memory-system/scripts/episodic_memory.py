@@ -324,8 +324,8 @@ class EpisodicMemory:
                     "SELECT id FROM episodes WHERE archived=0 ORDER BY importance ASC, timestamp ASC LIMIT ?",
                     (over,),
                 ).fetchall()
-                for (eid,) in rows:
-                    conn.execute("UPDATE episodes SET archived=1 WHERE id=?", (eid,))
+                # ⚡ Bolt Optimization: Batch N+1 UPDATE queries into a single executemany call
+                conn.executemany("UPDATE episodes SET archived=1 WHERE id=?", rows)
 
     def rebuild_index(self) -> None:
         self._rebuild_hnsw_from_db()
