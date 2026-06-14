@@ -332,17 +332,23 @@ def resolve_all_subdomains(conn: sqlite3.Connection, parent_domain: str) -> list
     )
     rows = cursor.fetchall()
     results = []
+    updates = []
     for (subdomain,) in rows:
         dns_result = resolve_subdomain(subdomain)
         results.append(dns_result)
-        cursor.execute(
+        updates.append((
+            ",".join(dns_result["ips"]) if dns_result["ips"] else None,
+            dns_result["cname"],
+            subdomain,
+        ))
+
+    # ⚡ Bolt Optimization: Batch queries to executemany for updates
+    # Eliminates N+1 queries when updating subdomains resolution status
+    if updates:
+        cursor.executemany(
             """UPDATE subdomains SET dns_resolved = 1, resolved_ip = ?, cname_target = ?
                WHERE subdomain = ?""",
-            (
-                ",".join(dns_result["ips"]) if dns_result["ips"] else None,
-                dns_result["cname"],
-                subdomain,
-            ),
+            updates
         )
     conn.commit()
     logger.info("Resolved %d subdomains for %s", len(results), parent_domain)
