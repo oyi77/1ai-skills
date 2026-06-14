@@ -17,3 +17,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2025-06-10 - [Batching SQLite Updates in Iteration Loops]
+**Learning:** In `cybersecurity/auditing-tls-certificate-transparency-logs/scripts/agent.py`, the `resolve_all_subdomains` function updated DNS resolution status row-by-row using `cursor.execute(...)` inside a `for` loop over `cursor.fetchall()`. This results in severe N+1 database round-trips when dealing with large numbers of unresolved subdomains.
+**Action:** Always collect query parameters during loop iterations into an `updates` list and defer the database `UPDATE` action to a single batched `cursor.executemany(...)` execution immediately after the loop. Make sure to check `if updates:` before calling `executemany` to avoid executing an empty batch.
