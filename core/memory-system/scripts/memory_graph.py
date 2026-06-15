@@ -19,6 +19,7 @@ import sqlite3
 import threading
 import time
 from typing import Dict, List, Optional, Set, Tuple
+from collections import deque
 
 from . import config
 
@@ -165,10 +166,11 @@ class MemoryGraph:
                 return []
 
             visited: Dict[str, Dict] = {}
-            queue: List[Tuple] = [(start_id, 0, [start_id])]
+            # ⚡ Bolt Optimization: Replace list with deque to eliminate O(N) pop(0) in BFS traversal
+            queue = deque([(start_id, 0, [start_id])])
 
             while queue:
-                node, hop, path = queue.pop(0)
+                node, hop, path = queue.popleft()
                 if hop >= max_hops:
                     continue
 

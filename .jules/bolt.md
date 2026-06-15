@@ -17,3 +17,6 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+## 2024-06-15 - BFS Traversal Optimization
+**Learning:** Python lists used as queues in `while queue:` loops and mutated with `.pop(0)` represent a hidden O(N) performance bottleneck in large graphs, causing quadratic time complexity for BFS traversals.
+**Action:** Always refactor lists used as queues in BFS/FIFO patterns to use `collections.deque` with `.popleft()` for guaranteed O(1) performance without sacrificing readability.
