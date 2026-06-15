@@ -10,6 +10,7 @@ import json
 import yaml
 from datetime import datetime
 from typing import Optional
+from collections import deque
 
 
 class PlaybookTask:
@@ -87,9 +88,10 @@ class XSOARPlaybook:
 
         # Check for orphaned tasks (not reachable from start)
         reachable = set()
-        queue = [self.start_task_id]
+        # ⚡ Bolt Optimization: Replace list with deque to eliminate O(N) pop(0) in BFS traversal
+        queue = deque([self.start_task_id])
         while queue:
-            current = queue.pop(0)
+            current = queue.popleft()
             if current in reachable:
                 continue
             reachable.add(current)
