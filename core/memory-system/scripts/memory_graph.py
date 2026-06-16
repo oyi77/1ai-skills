@@ -18,7 +18,8 @@ import logging
 import sqlite3
 import threading
 import time
-from typing import Dict, List, Optional, Set, Tuple
+from collections import deque
+from typing import Deque, Dict, List, Optional, Set, Tuple
 
 from . import config
 
@@ -165,10 +166,11 @@ class MemoryGraph:
                 return []
 
             visited: Dict[str, Dict] = {}
-            queue: List[Tuple] = [(start_id, 0, [start_id])]
+            # Using collections.deque instead of List to optimize pop(0) which is O(N)
+            queue: Deque[Tuple] = deque([(start_id, 0, [start_id])])
 
             while queue:
-                node, hop, path = queue.pop(0)
+                node, hop, path = queue.popleft()
                 if hop >= max_hops:
                     continue
 
