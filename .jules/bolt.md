@@ -17,3 +17,6 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+## 2025-06-16 - [Optimize Graph BFS Traversal]
+**Learning:** Found a severe O(N) performance bottleneck in the memory graph BFS algorithm (`memory_graph.py`) where a standard Python `List` was used as a queue with `queue.pop(0)`.
+**Action:** When implementing Breadth-First Search (BFS) traversals, always use `collections.deque` and `popleft()` instead of `list.pop(0)` to ensure O(1) dequeue performance.
