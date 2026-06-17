@@ -17,3 +17,6 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+## 2024-05-18 - Replacing O(N) list.pop(0) with O(1) deque.popleft() for BFS
+**Learning:** In Python, using `queue.pop(0)` on a standard list for Breadth-First Search (BFS) graph traversals is an O(N) operation because all subsequent elements must be shifted. In large graphs, this becomes a significant bottleneck. This anti-pattern was found in `memory_graph.py` and `process.py`.
+**Action:** Always import and use `collections.deque` and its `.popleft()` method for any queue-based structures, especially BFS algorithms, to guarantee O(1) time complexity per pop operation.
