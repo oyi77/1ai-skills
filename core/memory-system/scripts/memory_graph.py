@@ -15,6 +15,7 @@ Features:
 """
 
 import logging
+import collections
 import sqlite3
 import threading
 import time
@@ -165,10 +166,11 @@ class MemoryGraph:
                 return []
 
             visited: Dict[str, Dict] = {}
-            queue: List[Tuple] = [(start_id, 0, [start_id])]
+            # ⚡ Bolt Optimization: Use collections.deque for O(1) popleft() instead of list pop(0) which is O(N)
+            queue = collections.deque([(start_id, 0, [start_id])])
 
             while queue:
-                node, hop, path = queue.pop(0)
+                node, hop, path = queue.popleft()
                 if hop >= max_hops:
                     continue
 
