@@ -1,2 +1,0 @@
-[2026-03-13 00:44:03] [ERROR] Failed to fetch posts: 400 Client Error: Bad Request for url: https://api.post-bridge.com/v1/posts?limit=3&status=published
-[2026-03-13 00:44:12] [ERROR] Failed to fetch posts: 400 Client Error: Bad Request for url: https://api.post-bridge.com/v1/posts?limit=3&status=published

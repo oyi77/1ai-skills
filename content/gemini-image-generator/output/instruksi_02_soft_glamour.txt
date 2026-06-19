@@ -1,1 +1,0 @@
-STYLE: Soft Glamour\nREFINER PRODUKSI: Studio\nRasio: 9:16\nLighting: Softbox dengan filter warna putih\nIntruksi tambahan: Buatlah model di studio dengan pencahayaan softbox dan filter warna putih.\n---\nCatatan: Upload pose_model.jpg + product_blouse.jpg ke Gemini Link: https://gemini.google.com/share/c7150b8213a4

@@ -1,1 +1,0 @@
-function generateReport(results) { return 

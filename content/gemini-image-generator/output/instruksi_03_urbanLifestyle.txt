@@ -1,1 +1,0 @@
-STYLE: Urban Lifestyle\nREFINER PRODUKSI: Kota\nRasio: 9:16\nLighting: Pencahayaan alami siang hari\nIntruksi tambahan: Buatlah model di kota dengan pencahayaan alami siang hari.\n---\nCatatan: Upload pose_model.jpg + product_blouse.jpg ke Gemini Link: https://gemini.google.com/share/c7150b8213a4

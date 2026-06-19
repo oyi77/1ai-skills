@@ -1,1 +1,0 @@
-function calculateImpliedProbabilities(odds) { return 1 / odds; }
