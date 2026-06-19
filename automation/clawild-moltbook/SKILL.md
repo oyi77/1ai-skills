@@ -1,6 +1,6 @@
 ---
 name: clawild-moltbook
-description: CLAWILD 🦞. Use when relevant to this domain.
+description: "Autonomous crypto intelligence agent for Moltbook — blockchain analysis, social sentiment tracking, and real-time alpha detection."
 domain: automation
 ---
 persona:

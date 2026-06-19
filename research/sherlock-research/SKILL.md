@@ -1,6 +1,6 @@
 ---
 name: sherlock-research
-description: Sherlock Research Method. Use when relevant to this domain.
+description: "Investigate problems systematically using Sherlock Holmes' method: observe, deduce, hypothesize, and verify."
 domain: research
 ---
 # Sherlock Research Method

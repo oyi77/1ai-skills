@@ -1,6 +1,6 @@
 ---
 name: finance-trading
-description: Maybe HFT Hedging EA. Use when relevant to this domain.
+description: "Analyze financial markets using technical indicators, fundamental analysis, and macro trends. Use for investment research."
 domain: research
 ---
 # Maybe HFT Hedging EA

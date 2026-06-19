@@ -1,6 +1,6 @@
 ---
 name: cloudflare-router
-description: Cloudflare Router SKILL. Use when relevant to this domain.
+description: "Manage Cloudflare DNS, CDN, and security rules via API. Use when configuring domains, SSL, WAF, or edge caching."
 persona:
   name: Matthew Prince
   title: The Edge Network Expert - Master of Global Routing

@@ -1,7 +1,6 @@
 ---
 name: continuous-learning
-description: Evolve insights from sessions into actionable skills. Create confidence-weighted
-  learning that improves agent performance over time. Based on playbooks.com continuous-learning-v2.
+description: "Transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes outcomes, and integrates learnings to improve agent performance."
 domain: research
 ---
 persona:
@@ -353,4 +352,4 @@ After completing this skill, confirm:
 
 - [runtime-self-improvement](../../core/runtime-self-improvement/SKILL.md) - Apply improvements
 - [skill-performance-monitor](../../core/skill-performance-monitor/SKILL.md) - Track effectiveness
-- [self-improving-agent](../../core/self-improving-agent/SKILL.md) - Basic self-improvement
+- [self-improving](../../core/self-improving/SKILL.md) - Basic self-improvement

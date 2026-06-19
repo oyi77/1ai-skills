@@ -1,6 +1,6 @@
 ---
 name: viral-content-creator
-description: Viral Content Creator. Use when relevant to this domain.
+description: "Generate 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube with hook-based A/B testing, viral score prediction, and autopilot scheduling."
 domain: content
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: finance-ops
-description: Accounts Payable. Use when relevant to this domain.
+description: "Run AI-powered CFO analysis for cost detection, financial modeling, scenario planning, and operational efficiency optimization."
 domain: operations
 ---
 ## Skill Definition

@@ -1,6 +1,6 @@
 ---
 name: hive-mind
-description: Hive Mind (Powered by TiDB Zero). Use when relevant to this domain.
+description: "Coordinate multi-agent consensus using TiDB-backed shared memory. Use when agents need to agree on decisions or share state."
 persona:
   name: Deborah Gordon
   title: The Swarm Intelligence Expert - Master of Collective Behavior

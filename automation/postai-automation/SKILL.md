@@ -1,6 +1,6 @@
 ---
 name: postai-automation
-description: POST AI Automation. Use when relevant to this domain.
+description: "Automate TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned, voiced-over variants for affiliate and e-commerce marketing."
 domain: automation
 ---
 # POST AI Automation

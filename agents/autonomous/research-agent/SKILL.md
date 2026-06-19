@@ -1,6 +1,6 @@
 ---
 name: research-agent
-description: Research Agent. Use when relevant to this domain.
+description: "Investigate topics deeply with cross-referenced sources and produce evidence-backed findings. Use when evaluating technologies before adoption, analyzing competitors, or investigating bug root causes across docs and issues."
 domain: agents
 ---
 # Research Agent

@@ -1,6 +1,6 @@
 ---
 name: job-hunter
-description: Job Hunter Agent (Autonomous). Use when relevant to this domain.
+description: "Autonomous job hunting agent with state tracking, tailored applications, ATS optimization, and multi-platform search across LinkedIn, Indeed, and Glassdoor."
 domain: automation
 ---
 persona:

@@ -310,6 +310,6 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [self-improving-agent](../self-improving-agent/SKILL.md) - Basic self-improvement
+- [self-improving](../self-improving/SKILL.md) - Basic self-improvement
 - [auto-git-commiter](../auto-git-commiter/SKILL.md) - Auto-commit changes
 - [skill-performance-monitor](../skill-performance-monitor/SKILL.md) - Monitor skill effectiveness

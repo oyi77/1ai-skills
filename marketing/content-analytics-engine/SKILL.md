@@ -1,6 +1,6 @@
 ---
 name: content-analytics-engine
-description: Content Analytics Engine. Use when relevant to this domain.
+description: "Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue funnel — views, engagement, clicks, and sales."
 domain: marketing
 ---
 

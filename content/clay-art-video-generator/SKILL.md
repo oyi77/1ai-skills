@@ -1,6 +1,6 @@
 ---
 name: clay-art-video-generator
-description: CLAY ART VIDEO GENERATOR SKILL. Use when relevant to this domain.
+description: "Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok, Reels, and Shorts. Supports story mode and product review mode with lighting presets, camera angles, and Indonesian overlays."
 domain: content
 ---
 

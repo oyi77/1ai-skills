@@ -1,6 +1,6 @@
 ---
 name: talent-crm
-description: talent-crm. Use when relevant to this domain.
+description: "Manage talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting CRM."
 domain: sales
 ---
 

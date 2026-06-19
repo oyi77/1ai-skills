@@ -1,6 +1,6 @@
 ---
 name: alphaear-strategy
-description: Component scores (0-100). Use when relevant to this domain.
+description: "Score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating entry/exit signals."
 domain: trading
 ---
 ## Skill Definition

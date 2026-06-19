@@ -1,6 +1,6 @@
 ---
 name: grok-browser
-description: Grok Browser Skill. Use when relevant to this domain.
+description: "Use Grok's browser capabilities to search the web, analyze pages, and synthesize real-time information."
 domain: research
 ---
 name: grok-browser

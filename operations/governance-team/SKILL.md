@@ -1,6 +1,6 @@
 ---
 name: governance-team
-description: Governance Team. Use when relevant to this domain.
+description: "Manage organizational policies, access control, compliance frameworks, and governance processes with radical transparency principles."
 domain: operations
 ---
 persona:

@@ -1,6 +1,6 @@
 ---
 name: refactor-agent
-description: Refactor Agent. Use when relevant to this domain.
+description: "Restructure code to improve readability, maintainability, and extensibility without changing external behavior. Use when reducing complexity, extracting reusable components, splitting monoliths, or modernizing legacy code."
 domain: agents
 ---
 # Refactor Agent

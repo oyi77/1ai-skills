@@ -1,6 +1,6 @@
 ---
 name: investing-algorithm-framework
-description: Parameter sweeps. Use when relevant to this domain.
+description: "Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks."
 domain: trading
 ---
 ## Overview

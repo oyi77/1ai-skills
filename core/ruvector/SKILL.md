@@ -1,6 +1,6 @@
 ---
 name: ruvector
-description: RuVector Skill. Use when relevant to this domain.
+description: "Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases."
 persona:
   name: Edo Liberty
   title: The Vector Search Expert - Master of Similarity Search

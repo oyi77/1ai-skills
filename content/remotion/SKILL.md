@@ -1,6 +1,6 @@
 ---
 name: remotion
-description: Remotion Video Skill. Use when relevant to this domain.
+description: "Create programmatic MP4 videos using React components rendered per-frame with Remotion. Supports narrated videos, TikTok/Shorts, music videos, captions, and template-based workflows."
 domain: content
 ---
 

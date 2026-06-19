@@ -1,6 +1,6 @@
 ---
 name: content-publisher
-description: Content Publisher Agent. Use when relevant to this domain.
+description: "Automates drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars, and cross-platform distribution."
 domain: automation
 ---
 persona:

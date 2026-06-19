@@ -407,4 +407,4 @@ After completing this skill, confirm:
 
 - [runtime-self-improvement](../runtime-self-improvement/SKILL.md) - Apply improvements
 - [auto-git-commiter](../auto-git-commiter/SKILL.md) - Commit changes
-- [self-improving-agent](../self-improving-agent/SKILL.md) - Learn and improve
+- [self-improving](../self-improving/SKILL.md) - Learn and improve

@@ -1,6 +1,6 @@
 ---
 name: growth-engine
-description: 'Prior: Beta(1, 1) = uniform. Use when relevant to this domain.'
+description: "Autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops."
 domain: marketing
 ---
 

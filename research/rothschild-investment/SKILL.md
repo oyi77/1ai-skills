@@ -1,6 +1,6 @@
 ---
 name: rothschild-investment
-description: Rothschild Dynasty System. Use when relevant to this domain.
+description: "Apply Rothschild dynasty principles for long-term wealth preservation, diversification, and generational planning."
 domain: research
 ---
 # Rothschild Dynasty System

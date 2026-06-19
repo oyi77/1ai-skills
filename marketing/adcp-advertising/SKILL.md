@@ -1,6 +1,6 @@
 ---
 name: adcp-advertising
-description: AdCP Advertising Skill. Use when relevant to this domain.
+description: "Automate ad campaigns via AdCP protocol — create ads, buy media, manage budgets, and optimize performance across display, video, CTV, and social channels."
 persona: "|\n  name: Gary Halbert\n    title: The Prince of Print - Master of Direct\
   \ Response\n    expertise:\n    - Direct Response\n    - Copywriting\n    - Advertising\n\
   \    - Sales Letters\n    philosophy: If you want to be successful, find someone\

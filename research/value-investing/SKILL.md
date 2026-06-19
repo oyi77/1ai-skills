@@ -1,6 +1,6 @@
 ---
 name: value-investing
-description: Value Investing System. Use when relevant to this domain.
+description: "Evaluate stocks using Warren Buffett's value investing: intrinsic value, margin of safety, and long-term moats."
 domain: research
 ---
 # Value Investing System

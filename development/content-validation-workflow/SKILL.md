@@ -1,7 +1,6 @@
 ---
 name: content-validation-workflow
-description: 'Content Workflow: Generate Sample → Human Review → Batch Production.
-  Use when relevant to this domain.'
+description: "Validate AI-generated content quality through sample generation, human review gates, and controlled batch production workflows."
 domain: development
 ---
 # Content Workflow: Generate Sample → Human Review → Batch Production
@@ -339,7 +338,7 @@ This validator integrates with:
 - **content-creator**: Generate initial content
 - **content-generator**: Create AI videos from scripts
 - **tiktok-automation**: Post approved content to TikTok
-- **post-bridge-social-manager**: Post to all 5 platforms
+- **postbridge-social-manager**: Post to all 5 platforms
 
 ---
 

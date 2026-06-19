@@ -1,6 +1,6 @@
 ---
 name: feynman-science
-description: Feynman Scientific Method. Use when relevant to this domain.
+description: "Explain complex concepts simply using Feynman's technique: teach, identify gaps, simplify, and analogize."
 domain: research
 ---
 # Feynman Scientific Method

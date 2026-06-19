@@ -1,6 +1,6 @@
 ---
 name: joko-moltbook
-description: Joko Moltbook Agent. Use when relevant to this domain.
+description: "Queue-driven Moltbook posting agent with deduplication, idempotent operations, exponential backoff retries, and real-time monitoring."
 domain: automation
 ---
 persona:

@@ -1,6 +1,6 @@
 ---
 name: deploy-agent
-description: Deploy Agent. Use when relevant to this domain.
+description: "Ship code to production through a controlled pipeline with verification gates and rollback plans. Use when deploying features, managing CI/CD, running database migrations, or performing post-incident hotfix recovery."
 domain: agents
 ---
 # Deploy Agent

@@ -1,6 +1,6 @@
 ---
 name: polymarket-analyst
-description: Polymarket Analyst. Use when relevant to this domain.
+description: "Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities."
 domain: research
 ---
 persona:

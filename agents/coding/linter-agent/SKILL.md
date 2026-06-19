@@ -1,6 +1,6 @@
 ---
 name: linter-agent
-description: Linter Agent. Use when relevant to this domain.
+description: "Detect and fix code style violations, enforce project conventions, and ensure consistent formatting across the codebase. Use when cleaning lint errors before PRs, migrating linters, or bulk-applying new rules."
 domain: agents
 ---
 # Linter Agent

@@ -1,9 +1,6 @@
 ---
 name: trading-risk-manager
-description: Calculate position sizes, validate trades against risk rules, and monitor
-  portfolio exposure. Use when position sizing calculations are needed, validating
-  trades before execution, monitoring portfolio risk exposure, implementing risk limits
-  across multiple positions, or generating risk reports for review and audit.
+description: "Monitor portfolio risk, enforce position limits, and trigger stop-losses. Use when managing exposure across strategies."
 allowed-tools:
 - Bash(trading:*)
 - MCP(notion:*)

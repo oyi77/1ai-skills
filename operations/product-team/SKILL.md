@@ -1,6 +1,6 @@
 ---
 name: product-team
-description: Product Team. Use when relevant to this domain.
+description: "Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion integration."
 domain: operations
 ---
 persona:

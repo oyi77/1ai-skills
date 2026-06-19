@@ -1,6 +1,6 @@
 ---
 name: content-factory
-description: Content Factory. Use when relevant to this domain.
+description: "All-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels)."
 domain: content
 ---
 

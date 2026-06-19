@@ -1,6 +1,6 @@
 ---
 name: steve-jobs-product
-description: Steve Jobs Product System. Use when relevant to this domain.
+description: "Design products using Steve Jobs' philosophy: simplicity, user experience, intersection of technology and liberal arts."
 domain: research
 ---
 # Steve Jobs Product System
