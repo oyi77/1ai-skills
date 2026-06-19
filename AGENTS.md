@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1307 skills across 19 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1308 skills across 19 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -27,11 +27,10 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | `financial/` | 15 | Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi, finance tracker |
 | `agents/` | 15 | Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents |
 | `meta/` | 13 | Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore |
-| `sales/` | 13 | High-ticket closing, lead generation, business development, B2B automation, CRM, influence |
-| `mcp/` | 12 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase) |
+| `mcp/` | 13 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory for code intelligence) |
 | `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 10 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
-| **TOTAL** | **1307** | |
+| **TOTAL** | **1308** | |
 
 ## Tooling Dirs (no skills, support infrastructure)
 
