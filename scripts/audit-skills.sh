@@ -19,7 +19,7 @@ WRITE=0
 # Top-level dirs that hold skills (skip tooling dirs).
 SKILL_DIRS=(
   agents automation content core cybersecurity data development
-  devops financial integrations marketing mcp meta operations
+  devops financial integrations marketing mcp meta mindset operations
   productivity research sales trading
 )
 # Tooling / docs dirs (not skill homes).

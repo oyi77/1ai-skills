@@ -1,21 +1,14 @@
 ---
 name: prompt-engineering
-description: Advanced prompt patterns — chain-of-thought, few-shot, tree-of-thought,
-  self-consistency, and meta-prompting
+description: Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought,
+  self-consistency, meta-prompting, system design, debugging, and optimization for
+  production AI systems.
 domain: core
 ---
 
-## Overview
+# Prompt Engineering
 
-Prompt engineering is the foundational skill for all AI work. This covers advanced patterns: chain-of-thought reasoning, few-shot examples, tree-of-thought exploration, self-consistency voting, and meta-prompting for prompt optimization.
-
-## Capabilities
-
-- Design prompts with chain-of-thought and reasoning scaffolds
-- Build few-shot example sets for consistent output quality
-- Implement tree-of-thought for complex problem exploration
-- Use self-consistency for reliable outputs across multiple runs
-- Create meta-prompts that optimize other prompts automatically
+Expert-level prompt design, optimization, and debugging for AI agents and LLM systems. Covers the full lifecycle: writing, testing, debugging, and scaling prompts.
 
 ## When to Use
 
@@ -23,36 +16,25 @@ Prompt engineering is the foundational skill for all AI work. This covers advanc
 - Complex reasoning tasks that need step-by-step thinking
 - Building reusable prompt templates for production systems
 - Optimizing prompts for cost (fewer tokens) or accuracy
+- Creating system prompts and custom instructions for AI agents
+- Debugging prompt performance issues
+- Designing multi-turn conversation flows
 
-## When NOT to Use
+## Core Techniques
 
-- Task is outside your authorization scope
-- You need to implement controls (use implementing-* skills)
-- Task is about analysis, not action (use analyzing-* skills)
-- You don't have access to target systems
-- Task requires compliance expertise (consult professionals)
-- Task is about defense, not offense (use defensive skills)
+| Technique | Best For | Example |
+|-----------|----------|--------|
+| Chain-of-thought | Multi-step reasoning | "Let's think step by step" |
+| Few-shot examples | Format consistency | 3-5 input/output pairs |
+| XML tags | Structured sections | `<context>...</context>` |
+| Role prompting | Domain expertise | "You are a senior SRE" |
+| Negative constraints | Preventing errors | "Do NOT include" |
+| Tree-of-thought | Complex exploration | Generate multiple reasoning paths, pick best |
+| Self-consistency | Reliable outputs | Generate N answers, take majority vote |
+| Meta-prompting | Prompt optimization | "Critique this prompt and suggest improvements" |
 
+## Chain-of-Thought
 
-## Pseudo Code
-```python
-# Example workflow for this skill
-def execute(input_data):
-    # Step 1: Validate input
-    if not input_data:
-        raise ValueError("Input data is required")
-
-    # Step 2: Process core logic
-    result = process(input_data)
-
-    # Step 3: Validate output
-    validate_output(result)
-
-    return result
-```
-
-
-### Chain-of-Thought
 ```python
 def chain_of_thought(question):
     return f"""Think step by step.
@@ -67,7 +49,8 @@ Let me break this down:
 Answer:"""
 ```
 
-### Few-Shot Template
+## Few-Shot Template
+
 ```python
 def few_shot_prompt(task, examples, input_text):
     header = f"Task: {task}\n\n"
@@ -78,32 +61,97 @@ def few_shot_prompt(task, examples, input_text):
     return f"{header}{shots}\n\nInput: {input_text}\nOutput:"
 ```
 
-### Self-Consistency
+## Self-Consistency
+
 ```python
 def self_consistent_answer(question, n=5):
     answers = [generate(question, temperature=0.7) for _ in range(n)]
     return most_common(answers)
 ```
 
-## Common Patterns
+## System Prompt Design
 
-- **System prompt first**: Set role, constraints, and output format in system message
-- **XML tags for structure**: Use `<context>`, `<instructions>`, `<output>` tags for clarity
-- **Negative examples**: Show what NOT to do, not just what to do
-- **Temperature tuning**: 0 for factual, 0.7 for creative, 1.0 for diverse
+Structure system prompts in this order:
+1. **Role**: Who the AI is
+2. **Context**: What situation it's in
+3. **Constraints**: What it must NOT do
+4. **Output format**: Exact format expected
+5. **Examples**: Few-shot if needed
 
-## How to Use
+### XML Tag Patterns
 
-1. Invoke the skill when relevant domain keywords appear in the request
-2. Provide required inputs as specified in the skill definition
-3. Review the output for correctness before delivering to the user
-4. Combine with related skills for complex multi-step workflows
+```xml
+<system>
+You are a senior security engineer. Be concise and evidence-based.
+</system>
+
+<context>
+{{user_context}}
+</context>
+
+<instructions>
+Analyze the code for vulnerabilities. List findings with severity.
+</instructions>
+
+<output format>
+For each finding:
+- File:Line
+- Severity: Critical/High/Medium/Low
+- Description: One sentence
+- Fix: Concrete code change
+</output>
+
+<constraints>
+- Only report real vulnerabilities, not style issues
+- Include file path and line number for every finding
+- Maximum 5 findings per scan
+</constraints>
+```
+
+## Prompt Debugging Checklist
+
+When a prompt isn't working:
+
+1. Is the task clearly stated in the first sentence?
+2. Are output format requirements explicit?
+3. Are edge cases covered with examples?
+4. Is the token budget sufficient for the response?
+5. Are negative constraints preventing known failure modes?
+6. Is the role/context appropriate for the task?
+7. Are examples representative of actual inputs?
+8. Is the temperature set correctly (0 factual, 0.7 creative, 1.0 diverse)?
+
+## Common Anti-Patterns
+
+| Anti-Pattern | Problem | Fix |
+|-------------|---------|-----|
+| Vague instructions | Model guesses wrong | Be specific about format, length, tone |
+| Missing negative examples | Model does unwanted things | Show what NOT to do |
+| Too many constraints | Model ignores some | Prioritize top 3-5 constraints |
+| No output format | Inconsistent results | Specify exact format with example |
+| Role too generic | Generic output | Give specific expertise level and context |
+
+## Prompt Optimization Process
+
+1. **Baseline**: Test current prompt, measure quality
+2. **Diagnose**: Identify failure modes (wrong format, wrong content, hallucination)
+3. **Iterate**: Change one variable at a time
+4. **A/B Test**: Compare variants on same inputs
+5. **Document**: Record what works and why
+
+## When NOT to Use
+
+- Task is outside your authorization scope
+- You need to implement controls (use implementing-* skills)
+- Task is about analysis, not action (use analyzing-* skills)
+- You don't have access to target systems
 
 ## Verification
 
 After completing this skill, confirm:
 
-- [ ] Output meets the defined quality and completeness requirements
-- [ ] All prerequisites are verified and documented
-- [ ] Error handling covers edge cases
-- [ ] Results are accurate and actionable
+- [ ] Prompt produces consistent, correct output across 5+ test cases
+- [ ] Output format matches specification exactly
+- [ ] Token usage is optimized (no unnecessary context)
+- [ ] Edge cases are handled (empty input, max length, special characters)
+- [ ] Prompt is documented with examples and failure modes
