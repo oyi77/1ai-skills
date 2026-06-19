@@ -1,6 +1,6 @@
 ---
 name: business-intelligence
-description: Business Intelligence. Use when relevant to this domain.
+description: "Define and track KPIs across revenue, marketing, and content performance with weekly business reviews and data-driven decisions."
 domain: operations
 ---
 # Business Intelligence

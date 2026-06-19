@@ -1,6 +1,6 @@
 ---
 name: planning-agent
-description: Planning Agent. Use when relevant to this domain.
+description: "Decompose complex tasks into executable, ordered steps with dependencies, risk assessments, and verification criteria. Use before implementing features touching 3+ files, coordinating multi-agent work, or migrating systems."
 domain: agents
 ---
 # Planning Agent

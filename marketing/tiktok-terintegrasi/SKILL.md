@@ -1,6 +1,6 @@
 ---
 name: tiktok-terintegrasi
-description: 1. Upload media. Use when relevant to this domain.
+description: "Integrated TikTok content suite with 9 specialized workflows — generates 9:16 videos and images using NVIDIA NIM, BytePlus Seedance, Kling AI, and ElevenLabs TTS."
 domain: marketing
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: revenue-team
-description: Revenue Team. Use when relevant to this domain.
+description: "Manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration."
 domain: operations
 ---
 persona:

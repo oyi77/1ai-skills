@@ -1,6 +1,6 @@
 ---
 name: operations-team
-description: Operations Team. Use when relevant to this domain.
+description: "Execute SOPs, triage on-call incidents, manage SLA breaches, and drive continuous improvement using lean operations principles."
 domain: operations
 ---
 persona:

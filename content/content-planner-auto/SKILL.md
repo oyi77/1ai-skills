@@ -1,6 +1,6 @@
 ---
 name: content-planner-auto
-description: content-planner-auto. Use when relevant to this domain.
+description: "Auto-generate 30-day content calendars with pillar rotation, platform-optimized timing, multi-account rotation, seasonal Indonesian events, and PostBridge batch scheduling."
 domain: content
 ---
 

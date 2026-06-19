@@ -1,6 +1,6 @@
 ---
 name: black-edge
-description: Analyze parking lot data vs. consensus. Use when relevant to this domain.
+description: "Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals."
 domain: trading
 ---
 ## Skill Definition

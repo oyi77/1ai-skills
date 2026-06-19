@@ -1,6 +1,6 @@
 ---
 name: workflow-builder
-description: Workflow Builder. Use when relevant to this domain.
+description: "Build and automate business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional process orchestration."
 domain: automation
 ---
 persona:

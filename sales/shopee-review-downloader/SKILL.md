@@ -1,6 +1,6 @@
 ---
 name: shopee-review-downloader
-description: Shopee Review Video Downloader. Use when relevant to this domain.
+description: "Download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market intelligence."
 domain: sales
 ---
 

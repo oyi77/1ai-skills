@@ -202,7 +202,7 @@ Refer to the skill overview for detailed usage instructions.
 - Status: Active, IDR 0 revenue (Day 5 crisis)
 - Next: Schedule 100 new posts via PostBridge
 - 30-day target: IDR 5M/month affiliate revenue
-- Key skill: marketing/affiliate-marketing, automation/post-bridge-social-manager
+- Key skill: marketing/affiliate-marketing, automation/postbridge-social-manager
 
 **Line 2: Digital Products** 💰
 - Status: 1 product live (Gumroad $15), 0 sales

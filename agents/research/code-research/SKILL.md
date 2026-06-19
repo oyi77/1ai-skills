@@ -1,6 +1,6 @@
 ---
 name: code-research
-description: Code Research Agent. Use when relevant to this domain.
+description: "Produce structured understanding of unfamiliar codebases — architecture, data flows, dependencies, and conventions. Use when joining a new project, tracing feature implementations, or mapping system architecture."
 domain: agents
 ---
 # Code Research Agent

@@ -1,6 +1,6 @@
 ---
 name: notion
-description: Query tasks. Use when relevant to this domain.
+description: "Automate Notion workflows including database CRUD, page creation, content publishing, and workspace management via API."
 domain: productivity
 ---
 ## Usage Examples

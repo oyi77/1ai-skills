@@ -1,6 +1,6 @@
 ---
 name: subagent-orchestration
-description: Subagent Context Package. Use when relevant to this domain.
+description: "Manage context flow across spawned subagents, parallelize work in git worktrees, scale from 1 to N agents, and evaluate agent output with grading systems. Use when spawning subagents that need codebase context."
 domain: agents
 ---
 ## Overview

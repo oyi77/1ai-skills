@@ -1,6 +1,6 @@
 ---
 name: project-management
-description: Project Management. Use when relevant to this domain.
+description: "Coordinate sprints, track deadlines, manage tasks, and maintain project documentation with Notion and Slack."
 domain: operations
 ---
 persona:

@@ -1,6 +1,6 @@
 ---
 name: zvec
-description: ZVec Skill. Use when relevant to this domain.
+description: "Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems."
 persona:
   name: Mikolov et al.
   title: The Word2Vec Pioneers - Masters of Vector Embeddings

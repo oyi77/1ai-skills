@@ -1,6 +1,6 @@
 ---
 name: postbridge-social-manager
-description: PostBridge Social Manager. Use when relevant to this domain.
+description: "Multi-platform social media posting, scheduling, analytics, and media management via PostBridge API for TikTok, Instagram, X, LinkedIn, and Facebook."
 domain: automation
 ---
 # PostBridge Social Manager

@@ -1,6 +1,6 @@
 ---
 name: hr-onboarding
-description: HR & Onboarding Skill 🚀. Use when relevant to this domain.
+description: "Design onboarding programs, manage new hire paperwork, and track 30-60-90 day milestones. Use when scaling teams or improving retention."
 domain: operations
 ---
 # HR & Onboarding Skill 🚀

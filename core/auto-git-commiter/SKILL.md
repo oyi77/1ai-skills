@@ -389,4 +389,4 @@ After completing this skill, confirm:
 
 - [runtime-self-improvement](../runtime-self-improvement/SKILL.md) - Apply improvements
 - [skill-performance-monitor](../skill-performance-monitor/SKILL.md) - Track improvements
-- [self-improving-agent](../self-improving-agent/SKILL.md) - Learn and improve
+- [self-improving](../self-improving/SKILL.md) - Learn and improve

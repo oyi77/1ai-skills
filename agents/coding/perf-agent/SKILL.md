@@ -1,6 +1,6 @@
 ---
 name: perf-agent
-description: Perf Agent. Use when relevant to this domain.
+description: "Measure before optimizing, target actual bottlenecks proven by profiling, and verify improvements with benchmarks. Use when the app is slow, memory is leaking, queries lag, or costs need reducing."
 domain: agents
 ---
 # Perf Agent

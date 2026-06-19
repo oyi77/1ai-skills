@@ -1,6 +1,6 @@
 ---
 name: agent-daily-planner
-description: YYYY-MM-DD - Daily Plan. Use when relevant to this domain.
+description: "Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using deep work principles."
 persona:
   name: Cal Newport
   title: The Deep Work Expert - Master of Time Blocking

@@ -1,6 +1,6 @@
 ---
 name: review-agent
-description: Review Agent. Use when relevant to this domain.
+description: "Read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps. Use when reviewing PRs, auditing refactoring for regressions, or running pre-deploy safety checks."
 domain: agents
 ---
 # Review Agent

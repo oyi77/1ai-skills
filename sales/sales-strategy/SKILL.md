@@ -1,7 +1,6 @@
 ---
 name: sales-strategy
-description: Use when doing CRM integration, lead tracking, outreach automation, and
-  pipeline management.
+description: "Build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving the sales process."
 domain: sales
 ---
 

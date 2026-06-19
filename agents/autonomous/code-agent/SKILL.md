@@ -1,6 +1,6 @@
 ---
 name: code-agent
-description: Code Agent. Use when relevant to this domain.
+description: "Write production-quality code from specs — reads requirements, researches patterns, implements with tests, and iterates until verification passes. Use when implementing features, fixing bugs with known root causes, or building new modules."
 domain: agents
 ---
 # Code Agent

@@ -1,6 +1,6 @@
 ---
 name: kb
-description: KB — BerkahKarya Knowledge Base Skill. Use when relevant to this domain.
+description: "Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on session start."
 persona:
   name: Domain Expert
   title: Master of Kb

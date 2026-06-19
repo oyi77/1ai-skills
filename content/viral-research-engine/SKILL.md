@@ -1,6 +1,6 @@
 ---
 name: viral-research-engine
-description: Viral Research Engine. Use when relevant to this domain.
+description: "Research trending topics, generate viral hooks, find content gaps, analyze competitors, and get hashtag recommendations for Indonesian short-form video creators on TikTok, Reels, and Shorts."
 domain: content
 ---
 

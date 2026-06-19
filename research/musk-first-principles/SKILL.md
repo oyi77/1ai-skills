@@ -1,6 +1,6 @@
 ---
 name: musk-first-principles
-description: Musk First-Principles Problem Solving. Use when relevant to this domain.
+description: "Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology."
 domain: research
 ---
 # Musk First-Principles Problem Solving

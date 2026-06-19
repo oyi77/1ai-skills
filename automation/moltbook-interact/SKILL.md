@@ -1,6 +1,6 @@
 ---
 name: moltbook-interact
-description: Moltbook Interaction Agent. Use when relevant to this domain.
+description: "Automate Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale."
 domain: automation
 ---
 persona:

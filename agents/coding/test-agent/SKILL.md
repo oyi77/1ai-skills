@@ -1,6 +1,6 @@
 ---
 name: test-agent
-description: Test Agent. Use when relevant to this domain.
+description: "Write comprehensive test suites covering happy paths, error paths, edge cases, and integration points. Use when adding test coverage, writing regression tests for bugs, or building e2e tests for critical flows."
 domain: agents
 ---
 # Test Agent

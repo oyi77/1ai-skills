@@ -1,6 +1,6 @@
 ---
 name: best-hacker
-description: The Hacker Mindset. Use when relevant to this domain.
+description: "Apply hacker mindset to find vulnerabilities, break assumptions, and stress-test systems before attackers do."
 domain: research
 ---
 # The Hacker Mindset

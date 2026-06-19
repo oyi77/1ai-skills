@@ -1,6 +1,6 @@
 ---
 name: gateway-doctor
-description: gateway-doctor. Use when relevant to this domain.
+description: "Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems."
 persona:
   name: Brendan Gregg
   title: The Systems Performance Expert - Master of Diagnostics

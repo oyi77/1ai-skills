@@ -1,6 +1,6 @@
 ---
 name: tiktok-automation
-description: TikTok Automation Skill 🎵. Use when relevant to this domain.
+description: "Production-ready TikTok posting automation — handles login session persistence, dynamic UI selector learning, fallback retries, and bulk video uploads."
 domain: marketing
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: cicd-deployment
-description: cicd-deployment. Use when relevant to this domain.
+description: "Build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and Telegram alerts."
 domain: development
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: revenue-engine
-description: Revenue Engine. Use when relevant to this domain.
+description: "Manage revenue pipelines, track Stripe/analytics metrics, and automate financial reporting for SaaS businesses."
 domain: core
 ---
 # Revenue Engine
@@ -262,7 +262,7 @@ if __name__ == "__main__":
 ```
 revenue-engine →  finance-tracker      (track & report)
               →  content-generator     (create driving content)
-              →  post-bridge-social-manager  (schedule & post)
+              →  postbridge-social-manager  (schedule & post)
               →  telegram-userbot      (alert escalation)
               →  talent-crm            (talent revenue tracking)
               →  b2b-sales-automation  (software house revenue)

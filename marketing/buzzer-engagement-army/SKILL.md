@@ -1,6 +1,6 @@
 ---
 name: buzzer-engagement-army
-description: 'SKILL: buzzer-engagement-army. Use when relevant to this domain.'
+description: "Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts."
 domain: marketing
 ---
 # SKILL: buzzer-engagement-army

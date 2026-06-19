@@ -1,7 +1,6 @@
 ---
 name: business-development
-description: Generate leads, research prospects, and manage outreach with HubSpot
-  and Exa integration
+description: "Generate leads, research prospects, and manage outreach sequences with HubSpot and Exa integration. Use for B2B pipeline building."
 allowed-tools: "|\n  - MCP(hubspot:*)\n    - MCP(exa:*)\n    - MCP(slack:*)\n"
 domain: sales
 ---

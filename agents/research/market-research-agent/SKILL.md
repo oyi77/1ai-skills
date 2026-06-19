@@ -1,6 +1,6 @@
 ---
 name: market-research-agent
-description: Market Research Agent. Use when relevant to this domain.
+description: "Analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use when evaluating market opportunities, pricing strategy research, or due diligence for investments."
 domain: agents
 ---
 # Market Research Agent

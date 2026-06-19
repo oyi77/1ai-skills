@@ -1,6 +1,6 @@
 ---
 name: comment-reply-manager
-description: comment-reply-manager. Use when relevant to this domain.
+description: "Monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert engagement into sales."
 domain: content
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: finance-tracker
-description: Finance Tracker — BerkahKarya. Use when relevant to this domain.
+description: "Track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold alerts via Telegram."
 domain: financial
 ---
 # Finance Tracker — BerkahKarya

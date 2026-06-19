@@ -1,6 +1,6 @@
 ---
 name: memory-system
-description: memory-system. Use when relevant to this domain.
+description: "Store, retrieve, and organize knowledge across sessions using structured memory files and entity tracking."
 domain: core
 ---
 # memory-system

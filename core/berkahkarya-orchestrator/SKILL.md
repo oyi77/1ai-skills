@@ -1,6 +1,6 @@
 ---
 name: berkahkarya-orchestrator
-description: BerkahKarya Orchestrator. Use when relevant to this domain.
+description: "Orchestrate BerkahKarya multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations."
 domain: core
 ---
 # BerkahKarya Orchestrator
@@ -27,7 +27,7 @@ Refer to the skill overview for detailed usage instructions.
 | Skill | When to Use |
 |-------|-------------|
 | `telegram-userbot` | DM, voice note, ring call, monitor groups, outreach |
-| `post-bridge-social-manager` | Schedule posts to TikTok/IG/YouTube via PostBridge |
+| `postbridge-social-manager` | Schedule posts to TikTok/IG/YouTube via PostBridge |
 | `n8n` | Build automated workflows, webhooks, integrations |
 | `workflow-builder` | Design multi-step automation flows |
 | `job-hunter` | Autonomous job search and application |
@@ -68,7 +68,7 @@ Refer to the skill overview for detailed usage instructions.
 | `runtime-self-improvement` | Real-time skill improvement |
 | `find-skills` | Discover new skills from ClawHub |
 | `agent-docs` | Write AI-optimized documentation |
-| `rag-system` | Retrieval-augmented generation |
+| _(rag-system removed)_ | Retrieval-augmented generation |
 | `vilona` | Vilona persona activation |
 
 ### 💻 DEVELOPMENT (`development/`)
