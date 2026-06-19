@@ -53,6 +53,7 @@ SKILL_DIRS = [
     "marketing",
     "mcp",
     "meta",
+    "mindset",
     "operations",
     "productivity",
     "research",

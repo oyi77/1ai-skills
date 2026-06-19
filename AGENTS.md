@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1286 skills across 18 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1307 skills across 19 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -14,23 +14,24 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 |----------|-------:|-------|
 | `cybersecurity/` | 785 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec |
 | `development/` | 83 | TDD, debugging, code review, PRD, git worktrees, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
-| `content/` | 62 | Video/podcast generation, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks, content kingdom |
-| `marketing/` | 47 | SEO, viral, Twitter automation, email, growth, ecommerce, affiliate management, buzzer engagement, TikTok |
-| `core/` | 48 | Self-improvement, memory, orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, autonomy engine |
-| `devops/` | 38 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
+| `content/` | 55 | Video/podcast generation, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks, content kingdom |
+| `mindset/` | 55 | Negotiation, persuasion, storytelling, presentation, public speaking, leadership, emotional intelligence, critical thinking, decision frameworks, productivity, resilience |
+| `marketing/` | 45 | SEO, viral, Twitter automation, email, growth, ecommerce, affiliate management, buzzer engagement, TikTok |
+| `core/` | 42 | Self-improvement, memory, orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, autonomy engine |
+| `devops/` | 33 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
 | `integrations/` | 32 | GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, MCP servers, team collaboration |
-| `automation/` | 30 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing, Airflow pipelines, telegram-userbot |
-| `research/` | 28 | McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence |
-| `operations/` | 19 | Governance, KYC, statement audit, GL reconciliation, team ops, project management, BI, HR, legal |
+| `automation/` | 28 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing, Airflow pipelines, telegram-userbot |
+| `research/` | 22 | McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence |
 | `trading/` | 20 | Crypto bot, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs, portfolio mgr |
-| `financial/` | 17 | Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi, finance tracker |
-| `agents/` | 17 | Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents |
-| `meta/` | 15 | Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore |
+| `operations/` | 19 | Governance, KYC, statement audit, GL reconciliation, team ops, project management, BI, HR, legal |
+| `financial/` | 15 | Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi, finance tracker |
+| `agents/` | 15 | Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents |
+| `meta/` | 13 | Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore |
 | `sales/` | 13 | High-ticket closing, lead generation, business development, B2B automation, CRM, influence |
 | `mcp/` | 12 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase) |
 | `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 10 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
-| **TOTAL** | **1286** | |
+| **TOTAL** | **1307** | |
 
 ## Tooling Dirs (no skills, support infrastructure)
 
@@ -56,8 +57,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 
 ### Working In This Directory
 - Skills are atomic, self-contained, and namespaced by category dir.
-- **Discovery order**: read `SKILLS.json` (totals) → read category `AGENTS.md` (if present) → read individual `SKILL.md`.
-- Do NOT walk all 1286 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
+- Do NOT walk all 1307 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
 - For the 785 cybersecurity skills, use `cybersecurity/AGENTS.md` for the subdomain map (avoids loading the whole tree into context).
 
 ### Adding a Skill
