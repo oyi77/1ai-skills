@@ -1,9 +1,9 @@
 # 1ai-Skills
-# 1307 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
+# 1308 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
 # https://github.com/oyi77/1ai-skills
 
 ## What This Is
-1ai-Skills is the largest open-source AI agent skill library. 1307 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
+1ai-Skills is the largest open-source AI agent skill library. 1308 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
 
 ## Installation
 ```bash
@@ -18,9 +18,9 @@ git clone https://github.com/oyi77/1ai-skills.git
 3. For `cybersecurity/` (785 skills), read `cybersecurity/AGENTS.md` for the subdomain map BEFORE loading individual skills.
 4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
 
-Do NOT walk all 1307 skill dirs. Grep `SKILLS.json` first.
+Do NOT walk all 1308 skill dirs. Grep `SKILLS.json` first.
 
-## Categories (1307 skills total, 19 categories)
+## Categories (1308 skills total, 19 categories)
 
 | Category | Skills | Focus |
 |---|---:|---|
@@ -40,7 +40,7 @@ Do NOT walk all 1307 skill dirs. Grep `SKILLS.json` first.
 | agents/ | 15 | Research, review, planning, code, deploy, refactor, subagent orchestration, security, autonomous trading agents |
 | meta/ | 13 | find-skills, create-skills, auto-evolve, skill evolution engine, auto-learner, skill datastore, continuous improvement |
 | sales/ | 13 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
-| mcp/ | 12 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear, Resend, financial MCP, Kalodata MCP |
+| mcp/ | 13 | MCP servers: GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory (code intelligence) |
 | data/ | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics |
 | productivity/ | 10 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation |
 
