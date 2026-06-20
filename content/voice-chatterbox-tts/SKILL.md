@@ -336,7 +336,7 @@ wav = model.generate("Hello world", audio_prompt_path=voice_path)
 1. **This skill** → Custom voice generation
 2. `skill://voice-ai-agent` → Call handling
  `skill://voice-ai-agent` → Conversation logic
- `skill://para-memory-files` → Context retention
+ `skill://session-brain` → Context retention
 
 ## Performance Benchmarks
 
