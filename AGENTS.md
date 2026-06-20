@@ -56,7 +56,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 
 ### Working In This Directory
 - Skills are atomic, self-contained, and namespaced by category dir.
-- Do NOT walk all 1307 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
+- Do NOT walk all 1308 skill dirs — agents should grep `SKILLS.json` or the relevant category sub-index.
 - For the 785 cybersecurity skills, use `cybersecurity/AGENTS.md` for the subdomain map (avoids loading the whole tree into context).
 
 ### Adding a Skill
