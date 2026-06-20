@@ -1,9 +1,9 @@
-# 1ai-Skills — 1286 Open-Source AI Agent Skills (Self-Evolving)
+# 1ai-Skills — 1315 Open-Source AI Agent Skills (Self-Evolving)
 
 > The world's largest open-source AI skill ecosystem with **self-evolving meta-skills** — agents that auto-find, auto-create, auto-evolve. Single install, then evolving forever.
 
-[![Skills: 1286](https://img.shields.io/badge/skills-1286-blue)](https://github.com/oyi77/1ai-skills)
-[![Categories: 18](https://img.shields.io/badge/categories-18-green)](https://github.com/oyi77/1ai-skills)
+[![Skills: 1315](https://img.shields.io/badge/skills-1315-blue)](https://github.com/oyi77/1ai-skills)
+[![Categories: 19](https://img.shields.io/badge/categories-19-green)](https://github.com/oyi77/1ai-skills)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
 [![Auto-Release](https://img.shields.io/badge/auto--release-enabled-brightgreen)](https://github.com/oyi77/1ai-skills/releases)
 
@@ -13,7 +13,7 @@
 
 ## What Is This?
 
-1ai-Skills is a collection of **1286 production-ready AI agent skills** organized across **18 categories** — including **785 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
+1ai-Skills is a collection of **1315 production-ready AI agent skills** organized across **19 categories** — including **786 cybersecurity skills** spanning 26 security domains. Each skill embeds expertise from world-class practitioners — Warren Buffett on investing, Elon Musk on first-principles thinking, Gary Vaynerchuk on viral marketing — translated into actionable frameworks AI agents can execute.
 
 **New in v3.0:** 13 **meta-skills** that form a **self-evolving agent operating system** — the system can find missing skills from the community, create new skills when none exist, and continuously evolve to improve itself. **Single install, then evolving forever.**
 
@@ -154,24 +154,24 @@ Skills now reference each other (not duplicate content):
 
 ## Quick Start
 
-## All 1286 Skills by Category
+## All 1315 Skills by Category
 
 | Category | Count | Highlights |
 |---|---|---|
-| **cybersecurity/** | 785 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
-| **development/** | 83 | TDD, systematic debugging, code review, cherry-picked agent skills, AI skill integration, free developer resources |
-| **content/** | 62 | Remotion video engine, video generation, UI/UX Pro Max (161 rules), anti-slop frontend (13 styles), design systems |
-| **devops/** | 38 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, free cloud infrastructure |
-| **automation/** | 30 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines |
-| **marketing/** | 47 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, ecommerce |
-| **core/** | 48 | Self-improvement, memory systems, AI engineering curriculum (382 lessons), Karpathy coding principles, agent harness |
-| **research/** | 28 | McKinsey analysis, deep research, Polymarket analyst, competitive intelligence, market research, trend analysis |
+| **cybersecurity/** | 786 | Cloud security, threat hunting, forensics, malware analysis, pen testing, red teaming, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM |
+| **development/** | 84 | TDD, systematic debugging, code review, cherry-picked agent skills, AI skill integration, free developer resources |
+| **content/** | 57 | Remotion video engine, video generation, UI/UX Pro Max (161 rules), anti-slop frontend (13 styles), design systems |
+| **devops/** | 33 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, free cloud infrastructure |
+| **automation/** | 28 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines |
+| **marketing/** | 45 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, ecommerce |
+| **core/** | 42 | Self-improvement, memory systems, AI engineering curriculum (382 lessons), Karpathy coding principles, agent harness |
+| **research/** | 23 | McKinsey analysis, deep research, Polymarket analyst, competitive intelligence, market research, trend analysis |
 | **integrations/** | 32 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs, free SaaS toolkit, team collaboration, MCP servers |
-| **financial/** | 17 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, commodities, DeFi |
+| **financial/** | 15 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, commodities, DeFi |
 | **operations/** | 19 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation |
-| **agents/** | 17 | Research, review, planning, code, deploy, refactor, subagent orchestration, security, autonomous trading agents |
-| **meta/** | 15 | find-skills, create-skills, auto-evolve, skill evolution engine, auto-learner, skill datastore, continuous improvement |
-| **mcp/** | 12 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear, Resend, financial MCP, Kalodata MCP |
+| **agents/** | 16 | Research, review, planning, code, deploy, refactor, subagent orchestration, security, autonomous trading agents |
+| **meta/** | 13 | find-skills, create-skills, auto-evolve, skill evolution engine, auto-learner, skill datastore, continuous improvement |
+| **mcp/** | 14 | MCP servers for Slack, GitHub, Notion, Stripe, Supabase, Linear, Resend, financial MCP, Kalodata MCP |
 | **trading/** | 20 | Black Edge, AlphaEar, Polymarket, investing algorithm framework, crypto trading bot, DeFi protocols, smart contracts |
 | **data/** | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning |
 | **sales/** | 13 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
@@ -207,7 +207,7 @@ Skills now reference each other (not duplicate content):
 - **Faceless YouTube** — MrBeast-style automated YouTube content
 - **Seedance** — Cinematic AI video production
 
-### Cybersecurity (779 skills, 26 domains)
+### Cybersecurity (786 skills, 26 domains)
 - **Threat Hunting** — 55 skills: APT detection, MITRE ATT&CK mapping, Sigma rules, anomaly detection
 - **Cloud Security** — 60 skills: AWS/Azure/GCP hardening, CSPM, IAM, container security
 - **Digital Forensics** — 37 skills: memory forensics, disk imaging, malware reverse engineering
@@ -244,23 +244,23 @@ Each skill contains:
 
 ```
 1ai-skills/
-├── agents/        # Autonomous agent skills (14)
-├── automation/    # Workflow automation & bots (21)
-├── content/       # Content creation & media (22)
-├── core/          # Infrastructure & memory (24)
-├── cybersecurity/ # Security skills — 26 domains (779) ← NEW
-├── data/          # Data analysis & visualization (4)
-├── development/   # Coding, debugging, TDD (17)
-├── devops/        # Docker, CI/CD, K8s (6)
-├── integrations/  # Slack, Discord, Notion, GitHub (11)
-├── marketing/     # SEO, growth, advertising (21)
-├── mcp/           # MCP server skills (10)
-├── meta/          # Self-improving agent system (9)
-├── operations/    # Business operations (10)
-├── productivity/  # Google, calendar, email (6)
-├── research/      # Analysis, investigation (25)
-├── sales/         # Closing, outreach, CRM (6)
-└── trading/       # Markets, algorithms (7)
+├── agents/        # Autonomous agent skills (16)
+├── automation/    # Workflow automation & bots (28)
+├── content/       # Content creation & media (57)
+├── core/          # Infrastructure & memory (42)
+├── cybersecurity/ # Security skills — 26 domains (786) ← NEW
+├── data/          # Data analysis & visualization (10)
+├── development/   # Coding, debugging, TDD (84)
+├── devops/        # Docker, CI/CD, K8s (33)
+├── integrations/  # Slack, Discord, Notion, GitHub (32)
+├── marketing/     # SEO, growth, advertising (45)
+├── mcp/           # MCP server skills (14)
+├── meta/          # Self-improving agent system (13)
+├── operations/    # Business operations (19)
+├── productivity/  # Google, calendar, email (10)
+├── research/      # Analysis, investigation (23)
+├── sales/         # Closing, outreach, CRM (13)
+└── trading/       # Markets, algorithms (20)
 ```
 
 ---
@@ -268,7 +268,7 @@ Each skill contains:
 ## Use Cases
 
 - **AI Agent Developers** — Add expert-level capabilities to any LLM agent
-- **Security Teams** — 785 cybersecurity skills: threat hunting, forensics, pen testing, red teaming, SOC ops, cloud security, incident response
+- **Security Teams** — 786 cybersecurity skills: threat hunting, forensics, pen testing, red teaming, SOC ops, cloud security, incident response
 - **Automation Engineers** — Pre-built workflows for n8n, Slack, Discord, WhatsApp
 - **SEO Professionals** — Technical SEO, content optimization, GEO for AI Overviews
 - **Traders** — Black Edge intelligence, Polymarket analysis, crypto bots
