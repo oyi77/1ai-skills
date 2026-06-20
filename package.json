@@ -1,7 +1,7 @@
 {
   "name": "1ai-skills",
   "version": "3.4.0",
-  "description": "1307 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
+  "description": "1308 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
   "scripts": {
     "postinstall": "node scripts/install-hooks.js",
     "test": "python3 scripts/test_quality.py",
